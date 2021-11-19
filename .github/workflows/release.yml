@@ -1,0 +1,243 @@
+---
+name: Release
+
+on:
+  push:
+    tags:
+      - v*.*.*
+
+env:
+  PROVIDER: proxmoxve
+  GO111MODULE: "on"
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
+  PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+  TRAVIS_OS_NAME: linux
+
+jobs:
+  build_provider:
+    runs-on: ubuntu-latest
+    name: Build Provider
+    strategy:
+      max-parallel: 4
+      matrix:
+        go-version: [ 1.16.x ]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Install Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: '${{ matrix.go-version }}'
+
+      - name: Install pulumictl
+        uses: jaxxstorm/action-install-gh-release@v1.3.1
+        with:
+          repo: pulumi/pulumictl
+      - name: Install Pulumi CLI
+        uses: pulumi/setup-pulumi@v2
+
+      - name: Build Provider
+        run: make provider
+
+      - name: Tar Provider Binaries
+        run: tar -zcf ${{ github.workspace }}/bin/provider.tar.gz -C ${{ github.workspace }}/bin/ pulumi-resource-${{ env.PROVIDER }} pulumi-tfgen-${{ env.PROVIDER }}
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.PROVIDER }}-provider.tar.gz
+          path: ${{ github.workspace }}/bin/provider.tar.gz
+
+  build_sdk:
+    runs-on: ubuntu-latest
+    name: Build SDK
+    strategy:
+      max-parallel: 4
+      matrix:
+        go-version: [ 1.16.x ]
+        node-version: [ 15 ]
+        dotnet-version: [ 3.1.301 ]
+        python-version: [ 3.7 ]
+        language:
+          - go
+          - nodejs
+          - python
+          - dotnet
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Install Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: '${{ matrix.go-version }}'
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '${{ matrix.node-version }}'
+      - name: Setup DotNet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '${{ matrix.dotnet-version }}'
+      - name: Setup Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: '${{ matrix.python-version }}'
+
+      - name: Install pulumictl
+        uses: jaxxstorm/action-install-gh-release@v1.3.1
+        with:
+          repo: pulumi/pulumictl
+      - name: Install Pulumi CLI
+        uses: pulumi/setup-pulumi@v2
+
+      - name: Download Provider
+        uses: actions/download-artifact@v2
+        with:
+          name: ${{ env.PROVIDER }}-provider.tar.gz
+          path: ${{ github.workspace }}/bin
+      - name: Untar Provider Binaries
+        run: |-
+          tar -zxf ${{ github.workspace }}/bin/provider.tar.gz -C ${{ github.workspace}}/bin
+          find ${{ github.workspace }} -name "pulumi-*-${{ env.PROVIDER }}" -print -exec chmod +x {} \;
+
+      - name: Install Plugins
+        run: make install_plugins
+      - name: Update Path
+        run: echo "${{ github.workspace }}/bin" >> $GITHUB_PATH
+
+      - name: Build SDK
+        run: make build_${{ matrix.language }}
+
+      - name: Compress SDK
+        run: tar -zcf sdk/${{ matrix.language }}.tar.gz -C sdk/${{ matrix.language }}
+      - name: Upload SDK
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ matrix.language  }}-sdk.tar.gz
+          path: ${{ github.workspace}}/sdk/${{ matrix.language }}.tar.gz
+
+  publish_provider:
+    runs-on: ubuntu-latest
+    name: Publish Provider
+    needs:
+      - build_provider
+      - build_sdk
+    strategy:
+      max-parallel: 4
+      matrix:
+        go-version: [ 1.16.x ]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Install Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: '${{ matrix.go-version }}'
+
+      - name: Install pulumictl
+        uses: jaxxstorm/action-install-gh-release@v1.3.1
+        with:
+          repo: pulumi/pulumictl
+      - name: Install Pulumi CLI
+        uses: pulumi/setup-pulumi@v2
+
+      - name: Release via GoReleaser
+        uses: goreleaser/goreleaser-action@v2
+        with:
+          args: -p 2 release --rm-dist --timeout 60m0s
+          version: latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  publish_sdk:
+    runs-on: ubuntu-latest
+    name: Publish SDK
+    needs:
+      - publish_provider
+    strategy:
+      max-parallel: 4
+      matrix:
+        go-version: [ 1.16.x ]
+        node-version: [ 15 ]
+        dotnet-version: [ 3.1.301 ]
+        python-version: [ 3.7 ]
+        language:
+          - go
+          - nodejs
+          - python
+          - dotnet
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Install Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: '${{ matrix.go-version }}'
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '${{ matrix.node-version }}'
+      - name: Setup DotNet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '${{ matrix.dotnet-version }}'
+      - name: Setup Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: '${{ matrix.python-version }}'
+
+      - name: Install pulumictl
+        uses: jaxxstorm/action-install-gh-release@v1.3.1
+        with:
+          repo: pulumi/pulumictl
+      - name: Install Pulumi CLI
+        uses: pulumi/setup-pulumi@v2
+
+      - name: Checkout Scripts Repo
+        uses: actions/checkout@v2
+        with:
+          path: ci-scripts
+          repository: pulumi/scripts
+      - name: Install Python Twine
+        run: python -m pip install pip twine
+
+      - name: Download Python SDK
+        uses: actions/download-artifact@v2
+        with:
+          name: python-sdk.tar.gz
+          path: ${{ github.workspace}}/sdk/
+      - name: Uncompress Python SDK
+        run: tar -zxf ${{github.workspace}}/sdk/python.tar.gz -C ${{github.workspace}}/sdk/python
+      - name: Download .NET SDK
+        uses: actions/download-artifact@v2
+        with:
+          name: dotnet-sdk.tar.gz
+          path: ${{ github.workspace}}/sdk/
+      - name: Uncompress .NET SDK
+        run: tar -zxf ${{github.workspace}}/sdk/dotnet.tar.gz -C ${{github.workspace}}/sdk/dotnet
+      - name: Download NodeJS SDK
+        uses: actions/download-artifact@v2
+        with:
+          name: nodejs-sdk.tar.gz
+          path: ${{ github.workspace}}/sdk/
+      - name: Uncompress NodeJS SDK
+        run: tar -zxf ${{github.workspace}}/sdk/nodejs.tar.gz -C ${{github.workspace}}/sdk/nodejs
+
+      - name: Publish SDKs
+        run: ./ci-scripts/ci/publish-tfgen-package ${{ github.workspace }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

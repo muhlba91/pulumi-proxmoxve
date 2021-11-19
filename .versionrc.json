@@ -1,0 +1,7 @@
+{
+  "releaseCommitMessageFormat": "chore(release): release {{currentTag}} [release]",
+  "tagPrefix": "v",
+  "bumpFiles": [],
+  "packageFiles": [],
+  "header": "# Changelog\n\n"
+}

@@ -1,0 +1,36 @@
+---
+archives:
+  - id: archive
+    name_template: '{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}'
+before:
+  hooks:
+    - make tfgen
+builds:
+  - binary: pulumi-resource-proxmoxve
+    dir: provider
+    env:
+      - CGO_ENABLED=0
+      - GO111MODULE=on
+    goarch:
+      - amd64
+      - arm64
+    goos:
+      - darwin
+      - windows
+      - linux
+    ldflags:
+      - -X github.com/muhlba91/pulumi-proxmoxve/provider/v4/pkg/version.Version={{ .Tag }}
+    main: ./cmd/pulumi-resource-proxmoxve/
+changelog:
+  skip: false
+  use: github
+  filters:
+    exclude:
+      - '^docs:'
+      - '^chore:'
+      - '^chore\(.*\):'
+      - typo
+release:
+  disable: false
+snapshot:
+  name_template: '{{ .Tag }}-SNAPSHOT'

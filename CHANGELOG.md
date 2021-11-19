@@ -1,6 +1,0 @@
-CHANGELOG
-=========
-
-## HEAD (Unreleased)
-
----
