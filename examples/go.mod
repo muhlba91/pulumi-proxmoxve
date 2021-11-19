@@ -1,3 +1,3 @@
-module github.com/pulumi/pulumi-xyz/examples
+module github.com/muhlba91/pulumi-proxmoxve/examples
 
 go 1.16

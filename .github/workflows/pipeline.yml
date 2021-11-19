@@ -1,0 +1,131 @@
+---
+name: Pipeline
+
+on:
+  push:
+    branches:
+      - '*'
+    paths-ignore:
+      - CHANGELOG.md
+      - README.md
+
+permissions:
+  contents: read
+  pull-requests: read
+
+env:
+  PROVIDER: proxmoxve
+  GO111MODULE: "on"
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  provider:
+    runs-on: ubuntu-latest
+    name: Build Provider
+    strategy:
+      max-parallel: 4
+      matrix:
+        go-version: [ 1.16.x ]
+        golangci-lint-version: [ v1.43.0 ]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Install Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: '${{ matrix.go-version }}'
+
+      - name: Install pulumictl
+        uses: jaxxstorm/action-install-gh-release@v1.3.1
+        with:
+          repo: pulumi/pulumictl
+      - name: Install Pulumi CLI
+        uses: pulumi/setup-pulumi@v2
+
+      - name: Build Provider
+        run: make provider
+      - name: Lint Provider
+        uses: golangci/golangci-lint-action@v2
+        with:
+          version: '${{ matrix.golangci-lint-version }}'
+          working-directory: provider
+          args: -c ../.golangci.yml
+          skip-go-installation: true
+          skip-pkg-cache: true
+          skip-build-cache: true
+
+  sdk:
+    runs-on: ubuntu-latest
+    name: Build SDK
+    strategy:
+      max-parallel: 4
+      matrix:
+        go-version: [ 1.16.x ]
+        node-version: [ 15 ]
+        dotnet-version: [ 3.1.301 ]
+        python-version: [ 3.7 ]
+        language:
+          - go
+          - nodejs
+          - python
+          - dotnet
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Install Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: '${{ matrix.go-version }}'
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '${{ matrix.node-version }}'
+      - name: Setup DotNet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '${{ matrix.dotnet-version }}'
+      - name: Setup Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: '${{ matrix.python-version }}'
+
+      - name: Install pulumictl
+        uses: jaxxstorm/action-install-gh-release@v1.3.1
+        with:
+          repo: pulumi/pulumictl
+      - name: Install Pulumi CLI
+        uses: pulumi/setup-pulumi@v2
+
+      - name: Build SDK
+        run: make build_${{ matrix.language }}
+
+  tag:
+    runs-on: ubuntu-latest
+    name: Tag Release
+    if: github.ref == 'refs/heads/main'
+    needs:
+      - provider
+      - sdk
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Setup Git
+        run: |
+          git config --local user.email "${{ env.GITHUB_ACTION }}+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git fetch --tags
+      - name: Versioning and Changelog
+        run: |
+          npx standard-version
+      - name: Push to Repository
+        run: |
+          git push --follow-tags

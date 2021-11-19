@@ -5,7 +5,7 @@ LICENSE or <http://www.apache.org/licenses/LICENSE-2.0>).
 This project is a larger work that combines with software written
 by third parties, licensed under their own terms.
 
-Notably, this larger work combines with the Terraform AWS Provider,
+Notably, this larger work combines with the Terraform Proxmox Provider,
 which is licensed under the Mozilla Public License 2.0 (see
 <https://www.mozilla.org/en-US/MPL/2.0/> or the project itself at
-<https://github.com/terraform-providers/terraform-provider-aws>).
+<https://github.com/bpg/terraform-provider-proxmox>).
