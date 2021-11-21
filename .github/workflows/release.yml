@@ -192,13 +192,15 @@ jobs:
       - name: Install Pulumi CLI
         uses: pulumi/setup-pulumi@v2
 
-      - name: Checkout Scripts Repo
-        uses: actions/checkout@v2
+      - name: Download .NET SDK
+        uses: actions/download-artifact@v2
         with:
-          path: ci-scripts
-          repository: pulumi/scripts
-      - name: Install Python Twine
-        run: python -m pip install pip twine
+          name: dotnet-sdk.tar.gz
+          path: ${{ github.workspace}}/sdk/
+      - name: Uncompress .NET SDK
+        run: tar -zxf ${{github.workspace}}/sdk/dotnet.tar.gz -C ${{github.workspace}}/sdk/dotnet
+      - name: Publish .NET SDK
+        run: find "${{github.workspace}}/sdk/dotnet/bin/Debug/" -name 'Pulumi.*.nupkg' -exec dotnet nuget push -k "${{ secrets.NUGET_PUBLISH_KEY }}" -s https://api.nuget.org/v3/index.json {} ';'
 
       - name: Download Python SDK
         uses: actions/download-artifact@v2
@@ -207,13 +209,13 @@ jobs:
           path: ${{ github.workspace}}/sdk/
       - name: Uncompress Python SDK
         run: tar -zxf ${{github.workspace}}/sdk/python.tar.gz -C ${{github.workspace}}/sdk/python
-      - name: Download .NET SDK
-        uses: actions/download-artifact@v2
+      - name: Publish Python SDK
+        uses: pypa/gh-action-pypi-publish@master
         with:
-          name: dotnet-sdk.tar.gz
-          path: ${{ github.workspace}}/sdk/
-      - name: Uncompress .NET SDK
-        run: tar -zxf ${{github.workspace}}/sdk/dotnet.tar.gz -C ${{github.workspace}}/sdk/dotnet
+          password: '${{ secrets.PYPI_PASSWORD }}'
+          skip_existing: true
+          packages_dir: '${{github.workspace}}/sdk/python/bin/dist/'
+
       - name: Download NodeJS SDK
         uses: actions/download-artifact@v2
         with:
@@ -221,8 +223,8 @@ jobs:
           path: ${{ github.workspace}}/sdk/
       - name: Uncompress NodeJS SDK
         run: tar -zxf ${{github.workspace}}/sdk/nodejs.tar.gz -C ${{github.workspace}}/sdk/nodejs
-
-      - name: Publish SDKs
-        run: ./ci-scripts/ci/publish-tfgen-package ${{ github.workspace }}
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish NodeJS SDK
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          package: ./sdk/nodejs/bin/package.json
+          token: ${{ secrets.NPM_TOKEN }}
