@@ -9,10 +9,6 @@ on:
       - CHANGELOG.md
       - README.md
 
-permissions:
-  contents: read
-  pull-requests: read
-
 env:
   PROVIDER: proxmoxve
   GO111MODULE: "on"
