@@ -114,6 +114,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
+          token: '${{ secrets.GH_PUSH_TOKEN }}'
       - name: Setup Git
         run: |
           git config --local user.email "${{ env.GITHUB_ACTION }}+github-actions[bot]@users.noreply.github.com"
@@ -125,5 +126,3 @@ jobs:
       - name: Push to Repository
         run: |
           git push --follow-tags
-        env:
-          GITHUB_TOKEN: '${{ secrets.GH_PUSH_TOKEN }}'
