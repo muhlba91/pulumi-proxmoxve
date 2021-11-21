@@ -125,3 +125,5 @@ jobs:
       - name: Push to Repository
         run: |
           git push --follow-tags
+        env:
+          GITHUB_TOKEN: '${{ secrets.GH_PUSH_TOKEN }}'
