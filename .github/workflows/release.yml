@@ -107,7 +107,7 @@ jobs:
         run: make build_${{ matrix.language }}
 
       - name: Compress SDK
-        run: tar -zcf sdk/${{ matrix.language }}.tar.gz -C sdk/${{ matrix.language }}
+        run: tar -zcf sdk/${{ matrix.language }}.tar.gz -C sdk/${{ matrix.language }} .
       - name: Upload SDK
         uses: actions/upload-artifact@v2
         with:
