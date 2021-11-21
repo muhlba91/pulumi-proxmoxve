@@ -8,6 +8,9 @@ on:
     paths-ignore:
       - CHANGELOG.md
       - README.md
+      - LICENSE
+      - COPYRIGHT
+      - CODE-OF-CONDUCT.md
 
 env:
   PROVIDER: proxmoxve

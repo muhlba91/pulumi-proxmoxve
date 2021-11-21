@@ -1,5 +1,16 @@
 # Proxmox VE Resource Provider
 
+[![](https://img.shields.io/github/license/muhlba91/pulumi-proxmoxve?style=for-the-badge)](LICENSE)
+[![](https://img.shields.io/github/workflow/status/muhlba91/pulumi-proxmoxve/Release?style=for-the-badge)](https://github.com/muhlba91/pulumi-proxmoxve/actions)
+[![](https://img.shields.io/github/release-date/muhlba91/pulumi-proxmoxve?style=for-the-badge)](https://github.com/muhlba91/pulumi-proxmoxve/releases)
+[![](https://img.shields.io/pypi/v/pulumi-proxmoxve?style=for-the-badge)](https://pypi.org/project/pulumi-proxmoxve/)
+[![](https://img.shields.io/pypi/dm/pulumi-proxmoxve?style=for-the-badge)](https://pypi.org/project/pulumi-proxmoxve/)
+[![](https://img.shields.io/nuget/v/Pulumi.ProxmoxVE?style=for-the-badge)](https://www.nuget.org/packages/Pulumi.ProxmoxVE/)
+[![](https://img.shields.io/nuget/dt/Pulumi.ProxmoxVE?style=for-the-badge)](https://www.nuget.org/packages/Pulumi.ProxmoxVE/)
+[![](https://img.shields.io/npm/v/@muhlba91/pulumi-proxmoxve?style=for-the-badge)](https://www.npmjs.com/package/@muhlba91/pulumi-proxmoxve)
+[![](https://img.shields.io/npm/dm/@muhlba91/pulumi-proxmoxve?style=for-the-badge)](https://www.npmjs.com/package/@muhlba91/pulumi-proxmoxve)
+<a href="https://www.buymeacoffee.com/muhlba91" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="28" width="150"></a>
+
 The Proxmox VE Resource Provider lets you manage [Proxmox VE](http://proxmox.com) resources.
 
 The provider is built on https://github.com/bpg/terraform-provider-proxmox.
@@ -33,7 +44,7 @@ yarn add @muhlba91/pulumi-proxmoxve
 To use from Python, install using `pip`:
 
 ```bash
-pip install pulumi_proxmoxve
+pip install pulumi-proxmoxve
 ```
 
 ### Go
