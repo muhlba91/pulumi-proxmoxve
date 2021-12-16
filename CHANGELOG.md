@@ -1,6 +1,13 @@
 # Changelog
 
 
+### [1.1.4](https://github.com/muhlba91/pulumi-proxmoxve/compare/v1.1.3...v1.1.4) (2021-12-16)
+
+
+### Bug Fixes
+
+* **ci:** fix goreleaser config ([42ef167](https://github.com/muhlba91/pulumi-proxmoxve/commit/42ef167275d343c7e0e7fb12a1e106335d05f018))
+
 ### [1.1.3](https://github.com/muhlba91/pulumi-proxmoxve/compare/v1.1.2...v1.1.3) (2021-12-16)
 
 
