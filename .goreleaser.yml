@@ -19,7 +19,7 @@ builds:
       - windows
       - linux
     ldflags:
-      - -X github.com/muhlba91/pulumi-proxmoxve/provider/v4/pkg/version.Version={{ .Tag }}
+      - -X github.com/muhlba91/pulumi-proxmoxve/provider/pkg/version.Version={{ .Tag }}
     main: ./cmd/pulumi-resource-proxmoxve/
 changelog:
   skip: false
