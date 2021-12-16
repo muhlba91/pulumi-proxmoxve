@@ -87,21 +87,21 @@ export class User extends pulumi.CustomResource {
      */
     constructor(name: string, args: UserArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: UserArgs | UserState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            inputs["acls"] = state ? state.acls : undefined;
-            inputs["comment"] = state ? state.comment : undefined;
-            inputs["email"] = state ? state.email : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["expirationDate"] = state ? state.expirationDate : undefined;
-            inputs["firstName"] = state ? state.firstName : undefined;
-            inputs["groups"] = state ? state.groups : undefined;
-            inputs["keys"] = state ? state.keys : undefined;
-            inputs["lastName"] = state ? state.lastName : undefined;
-            inputs["password"] = state ? state.password : undefined;
-            inputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["acls"] = state ? state.acls : undefined;
+            resourceInputs["comment"] = state ? state.comment : undefined;
+            resourceInputs["email"] = state ? state.email : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["expirationDate"] = state ? state.expirationDate : undefined;
+            resourceInputs["firstName"] = state ? state.firstName : undefined;
+            resourceInputs["groups"] = state ? state.groups : undefined;
+            resourceInputs["keys"] = state ? state.keys : undefined;
+            resourceInputs["lastName"] = state ? state.lastName : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["userId"] = state ? state.userId : undefined;
         } else {
             const args = argsOrState as UserArgs | undefined;
             if ((!args || args.password === undefined) && !opts.urn) {
@@ -110,22 +110,22 @@ export class User extends pulumi.CustomResource {
             if ((!args || args.userId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            inputs["acls"] = args ? args.acls : undefined;
-            inputs["comment"] = args ? args.comment : undefined;
-            inputs["email"] = args ? args.email : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["expirationDate"] = args ? args.expirationDate : undefined;
-            inputs["firstName"] = args ? args.firstName : undefined;
-            inputs["groups"] = args ? args.groups : undefined;
-            inputs["keys"] = args ? args.keys : undefined;
-            inputs["lastName"] = args ? args.lastName : undefined;
-            inputs["password"] = args ? args.password : undefined;
-            inputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["acls"] = args ? args.acls : undefined;
+            resourceInputs["comment"] = args ? args.comment : undefined;
+            resourceInputs["email"] = args ? args.email : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["expirationDate"] = args ? args.expirationDate : undefined;
+            resourceInputs["firstName"] = args ? args.firstName : undefined;
+            resourceInputs["groups"] = args ? args.groups : undefined;
+            resourceInputs["keys"] = args ? args.keys : undefined;
+            resourceInputs["lastName"] = args ? args.lastName : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["userId"] = args ? args.userId : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(User.__pulumiType, name, inputs, opts);
+        super(User.__pulumiType, name, resourceInputs, opts);
     }
 }
 

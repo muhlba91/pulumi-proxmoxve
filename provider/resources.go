@@ -16,19 +16,15 @@ package proxmoxve
 
 import (
 	"fmt"
-	"path/filepath"
-	"unicode"
-
 	"github.com/bpg/terraform-provider-proxmox/proxmoxtf"
 	"github.com/muhlba91/pulumi-proxmoxve/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+	"path/filepath"
 )
 
-// all of the token components used below.
 const (
 	// This variable controls the default name of the package in the package
 	// registries for nodejs and python:
@@ -42,46 +38,6 @@ const (
 	storageMod    = "Storage"
 )
 
-// makeMember manufactures a type token for the package and the given module and type.
-func makeMember(mod string, mem string) tokens.ModuleMember {
-	return tokens.ModuleMember(mainPkg + ":" + mod + ":" + mem)
-}
-
-// makeType manufactures a type token for the package and the given module and type.
-func makeType(mod string, typ string) tokens.Type {
-	return tokens.Type(makeMember(mod, typ))
-}
-
-// makeDataSource manufactures a standard resource token given a module and resource name.  It
-// automatically uses the main package and names the file by simply lower casing the data source's
-// first character.
-func makeDataSource(mod string, res string) tokens.ModuleMember {
-	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-	return makeMember(mod+"/"+fn, res)
-}
-
-// makeResource manufactures a standard resource token given a module and resource name.  It
-// automatically uses the main package and names the file by simply lower casing the resource's
-// first character.
-func makeResource(mod string, res string) tokens.Type {
-	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-	return makeType(mod+"/"+fn, res)
-}
-
-// boolRef returns a reference to the bool argument.
-func boolRef(b bool) *bool { //nolint:deadcode,unused
-	return &b
-}
-
-// stringValue gets a string value from a property map if present, else ""
-func stringValue(vars resource.PropertyMap, prop resource.PropertyKey) string { //nolint:deadcode,unused
-	val, ok := vars[prop]
-	if ok && val.IsString() {
-		return val.StringValue()
-	}
-	return ""
-}
-
 // preConfigureCallback is called before the providerConfigure function of the underlying provider.
 // It should validate that the provider can be configured, and provide actionable errors in the case
 // it cannot be. Configuration variables can be read from `vars` using the `stringValue` function -
@@ -89,9 +45,6 @@ func stringValue(vars resource.PropertyMap, prop resource.PropertyKey) string { 
 func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) error {
 	return nil
 }
-
-// managedByPulumi is a default used for some managed resources, in the absence of something more meaningful.
-var managedByPulumi = &tfbridge.DefaultInfo{Value: "Managed by Pulumi"} //nolint:deadcode,unused,varcheck
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
@@ -112,45 +65,45 @@ func Provider() tfbridge.ProviderInfo {
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
 			// Cluster
-			"proxmox_virtual_environment_cluster_alias": {Tok: makeResource(clusterMod, "ClusterAlias")},
-			"proxmox_virtual_environment_cluster_ipset": {Tok: makeResource(clusterMod, "ClusterIPSet")},
+			"proxmox_virtual_environment_cluster_alias": {Tok: tfbridge.MakeResource(mainPkg, clusterMod, "ClusterAlias")},
+			"proxmox_virtual_environment_cluster_ipset": {Tok: tfbridge.MakeResource(mainPkg, clusterMod, "ClusterIPSet")},
 			// VM/CT
-			"proxmox_virtual_environment_vm":        {Tok: makeResource(vmMod, "VirtualMachine")},
-			"proxmox_virtual_environment_container": {Tok: makeResource(containerMod, "Container")},
+			"proxmox_virtual_environment_vm":        {Tok: tfbridge.MakeResource(mainPkg, vmMod, "VirtualMachine")},
+			"proxmox_virtual_environment_container": {Tok: tfbridge.MakeResource(mainPkg, containerMod, "Container")},
 			// Storage
-			"proxmox_virtual_environment_file": {Tok: makeResource(storageMod, "File")},
+			"proxmox_virtual_environment_file": {Tok: tfbridge.MakeResource(mainPkg, storageMod, "File")},
 			// Environment
-			"proxmox_virtual_environment_dns":         {Tok: makeResource(mainMod, "DNS")},
-			"proxmox_virtual_environment_certificate": {Tok: makeResource(mainMod, "Certifi")},
-			"proxmox_virtual_environment_hosts":       {Tok: makeResource(mainMod, "Hosts")},
-			"proxmox_virtual_environment_time":        {Tok: makeResource(mainMod, "Time")},
+			"proxmox_virtual_environment_dns":         {Tok: tfbridge.MakeResource(mainPkg, mainMod, "DNS")},
+			"proxmox_virtual_environment_certificate": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Certifi")},
+			"proxmox_virtual_environment_hosts":       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Hosts")},
+			"proxmox_virtual_environment_time":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Time")},
 			// Permission
-			"proxmox_virtual_environment_user":  {Tok: makeResource(permissionMod, "User")},
-			"proxmox_virtual_environment_group": {Tok: makeResource(permissionMod, "Group")},
-			"proxmox_virtual_environment_pool":  {Tok: makeResource(permissionMod, "Pool")},
-			"proxmox_virtual_environment_role":  {Tok: makeResource(permissionMod, "Role")},
+			"proxmox_virtual_environment_user":  {Tok: tfbridge.MakeResource(mainPkg, permissionMod, "User")},
+			"proxmox_virtual_environment_group": {Tok: tfbridge.MakeResource(mainPkg, permissionMod, "Group")},
+			"proxmox_virtual_environment_pool":  {Tok: tfbridge.MakeResource(mainPkg, permissionMod, "Pool")},
+			"proxmox_virtual_environment_role":  {Tok: tfbridge.MakeResource(mainPkg, permissionMod, "Role")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Cluster
-			"proxmox_virtual_environment_cluster_alias":   {Tok: makeDataSource(clusterMod, "getClusterAlias")},
-			"proxmox_virtual_environment_cluster_aliases": {Tok: makeDataSource(clusterMod, "getClusterAliases")},
-			"proxmox_virtual_environment_nodes":           {Tok: makeDataSource(clusterMod, "getNodes")},
+			"proxmox_virtual_environment_cluster_alias":   {Tok: tfbridge.MakeDataSource(mainPkg, clusterMod, "getClusterAlias")},
+			"proxmox_virtual_environment_cluster_aliases": {Tok: tfbridge.MakeDataSource(mainPkg, clusterMod, "getClusterAliases")},
+			"proxmox_virtual_environment_nodes":           {Tok: tfbridge.MakeDataSource(mainPkg, clusterMod, "getNodes")},
 			// Storage
-			"proxmox_virtual_environment_datastores": {Tok: makeDataSource(storageMod, "getDatastores")},
+			"proxmox_virtual_environment_datastores": {Tok: tfbridge.MakeDataSource(mainPkg, storageMod, "getDatastores")},
 			// Environment
-			"proxmox_virtual_environment_dns":     {Tok: makeDataSource(mainMod, "getDNS")},
-			"proxmox_virtual_environment_time":    {Tok: makeDataSource(mainMod, "getTime")},
-			"proxmox_virtual_environment_hosts":   {Tok: makeDataSource(mainMod, "getHosts")},
-			"proxmox_virtual_environment_version": {Tok: makeDataSource(mainMod, "getVersion")},
+			"proxmox_virtual_environment_dns":     {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getDNS")},
+			"proxmox_virtual_environment_time":    {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getTime")},
+			"proxmox_virtual_environment_hosts":   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getHosts")},
+			"proxmox_virtual_environment_version": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getVersion")},
 			// Permissions
-			"proxmox_virtual_environment_users":  {Tok: makeDataSource(permissionMod, "getUsers")},
-			"proxmox_virtual_environment_user":   {Tok: makeDataSource(permissionMod, "getUser")},
-			"proxmox_virtual_environment_group":  {Tok: makeDataSource(permissionMod, "getGroup")},
-			"proxmox_virtual_environment_groups": {Tok: makeDataSource(permissionMod, "getGroups")},
-			"proxmox_virtual_environment_pool":   {Tok: makeDataSource(permissionMod, "getPool")},
-			"proxmox_virtual_environment_pools":  {Tok: makeDataSource(permissionMod, "getPools")},
-			"proxmox_virtual_environment_role":   {Tok: makeDataSource(permissionMod, "getRole")},
-			"proxmox_virtual_environment_roles":  {Tok: makeDataSource(permissionMod, "getRoles")},
+			"proxmox_virtual_environment_users":  {Tok: tfbridge.MakeDataSource(mainPkg, permissionMod, "getUsers")},
+			"proxmox_virtual_environment_user":   {Tok: tfbridge.MakeDataSource(mainPkg, permissionMod, "getUser")},
+			"proxmox_virtual_environment_group":  {Tok: tfbridge.MakeDataSource(mainPkg, permissionMod, "getGroup")},
+			"proxmox_virtual_environment_groups": {Tok: tfbridge.MakeDataSource(mainPkg, permissionMod, "getGroups")},
+			"proxmox_virtual_environment_pool":   {Tok: tfbridge.MakeDataSource(mainPkg, permissionMod, "getPool")},
+			"proxmox_virtual_environment_pools":  {Tok: tfbridge.MakeDataSource(mainPkg, permissionMod, "getPools")},
+			"proxmox_virtual_environment_role":   {Tok: tfbridge.MakeDataSource(mainPkg, permissionMod, "getRole")},
+			"proxmox_virtual_environment_roles":  {Tok: tfbridge.MakeDataSource(mainPkg, permissionMod, "getRoles")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			PackageName: "@muhlba91/pulumi-proxmoxve",

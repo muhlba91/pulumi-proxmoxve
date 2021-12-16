@@ -109,7 +109,7 @@ type DNSInput interface {
 }
 
 func (*DNS) ElementType() reflect.Type {
-	return reflect.TypeOf((*DNS)(nil))
+	return reflect.TypeOf((**DNS)(nil)).Elem()
 }
 
 func (i *DNS) ToDNSOutput() DNSOutput {
@@ -118,35 +118,6 @@ func (i *DNS) ToDNSOutput() DNSOutput {
 
 func (i *DNS) ToDNSOutputWithContext(ctx context.Context) DNSOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DNSOutput)
-}
-
-func (i *DNS) ToDNSPtrOutput() DNSPtrOutput {
-	return i.ToDNSPtrOutputWithContext(context.Background())
-}
-
-func (i *DNS) ToDNSPtrOutputWithContext(ctx context.Context) DNSPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DNSPtrOutput)
-}
-
-type DNSPtrInput interface {
-	pulumi.Input
-
-	ToDNSPtrOutput() DNSPtrOutput
-	ToDNSPtrOutputWithContext(ctx context.Context) DNSPtrOutput
-}
-
-type dnsPtrType DNSArgs
-
-func (*dnsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DNS)(nil))
-}
-
-func (i *dnsPtrType) ToDNSPtrOutput() DNSPtrOutput {
-	return i.ToDNSPtrOutputWithContext(context.Background())
-}
-
-func (i *dnsPtrType) ToDNSPtrOutputWithContext(ctx context.Context) DNSPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DNSPtrOutput)
 }
 
 // DNSArrayInput is an input type that accepts DNSArray and DNSArrayOutput values.
@@ -202,7 +173,7 @@ func (i DNSMap) ToDNSMapOutputWithContext(ctx context.Context) DNSMapOutput {
 type DNSOutput struct{ *pulumi.OutputState }
 
 func (DNSOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DNS)(nil))
+	return reflect.TypeOf((**DNS)(nil)).Elem()
 }
 
 func (o DNSOutput) ToDNSOutput() DNSOutput {
@@ -213,44 +184,10 @@ func (o DNSOutput) ToDNSOutputWithContext(ctx context.Context) DNSOutput {
 	return o
 }
 
-func (o DNSOutput) ToDNSPtrOutput() DNSPtrOutput {
-	return o.ToDNSPtrOutputWithContext(context.Background())
-}
-
-func (o DNSOutput) ToDNSPtrOutputWithContext(ctx context.Context) DNSPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DNS) *DNS {
-		return &v
-	}).(DNSPtrOutput)
-}
-
-type DNSPtrOutput struct{ *pulumi.OutputState }
-
-func (DNSPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DNS)(nil))
-}
-
-func (o DNSPtrOutput) ToDNSPtrOutput() DNSPtrOutput {
-	return o
-}
-
-func (o DNSPtrOutput) ToDNSPtrOutputWithContext(ctx context.Context) DNSPtrOutput {
-	return o
-}
-
-func (o DNSPtrOutput) Elem() DNSOutput {
-	return o.ApplyT(func(v *DNS) DNS {
-		if v != nil {
-			return *v
-		}
-		var ret DNS
-		return ret
-	}).(DNSOutput)
-}
-
 type DNSArrayOutput struct{ *pulumi.OutputState }
 
 func (DNSArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DNS)(nil))
+	return reflect.TypeOf((*[]*DNS)(nil)).Elem()
 }
 
 func (o DNSArrayOutput) ToDNSArrayOutput() DNSArrayOutput {
@@ -262,15 +199,15 @@ func (o DNSArrayOutput) ToDNSArrayOutputWithContext(ctx context.Context) DNSArra
 }
 
 func (o DNSArrayOutput) Index(i pulumi.IntInput) DNSOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DNS {
-		return vs[0].([]DNS)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DNS {
+		return vs[0].([]*DNS)[vs[1].(int)]
 	}).(DNSOutput)
 }
 
 type DNSMapOutput struct{ *pulumi.OutputState }
 
 func (DNSMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DNS)(nil))
+	return reflect.TypeOf((*map[string]*DNS)(nil)).Elem()
 }
 
 func (o DNSMapOutput) ToDNSMapOutput() DNSMapOutput {
@@ -282,14 +219,16 @@ func (o DNSMapOutput) ToDNSMapOutputWithContext(ctx context.Context) DNSMapOutpu
 }
 
 func (o DNSMapOutput) MapIndex(k pulumi.StringInput) DNSOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DNS {
-		return vs[0].(map[string]DNS)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DNS {
+		return vs[0].(map[string]*DNS)[vs[1].(string)]
 	}).(DNSOutput)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DNSInput)(nil)).Elem(), &DNS{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DNSArrayInput)(nil)).Elem(), DNSArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DNSMapInput)(nil)).Elem(), DNSMap{})
 	pulumi.RegisterOutputType(DNSOutput{})
-	pulumi.RegisterOutputType(DNSPtrOutput{})
 	pulumi.RegisterOutputType(DNSArrayOutput{})
 	pulumi.RegisterOutputType(DNSMapOutput{})
 }

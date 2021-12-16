@@ -55,23 +55,23 @@ export class ClusterIPSet extends pulumi.CustomResource {
      */
     constructor(name: string, args?: ClusterIPSetArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClusterIPSetArgs | ClusterIPSetState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterIPSetState | undefined;
-            inputs["cidrs"] = state ? state.cidrs : undefined;
-            inputs["comment"] = state ? state.comment : undefined;
-            inputs["name"] = state ? state.name : undefined;
+            resourceInputs["cidrs"] = state ? state.cidrs : undefined;
+            resourceInputs["comment"] = state ? state.comment : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as ClusterIPSetArgs | undefined;
-            inputs["cidrs"] = args ? args.cidrs : undefined;
-            inputs["comment"] = args ? args.comment : undefined;
-            inputs["name"] = args ? args.name : undefined;
+            resourceInputs["cidrs"] = args ? args.cidrs : undefined;
+            resourceInputs["comment"] = args ? args.comment : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ClusterIPSet.__pulumiType, name, inputs, opts);
+        super(ClusterIPSet.__pulumiType, name, resourceInputs, opts);
     }
 }
 

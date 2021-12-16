@@ -111,7 +111,7 @@ type TimeInput interface {
 }
 
 func (*Time) ElementType() reflect.Type {
-	return reflect.TypeOf((*Time)(nil))
+	return reflect.TypeOf((**Time)(nil)).Elem()
 }
 
 func (i *Time) ToTimeOutput() TimeOutput {
@@ -120,35 +120,6 @@ func (i *Time) ToTimeOutput() TimeOutput {
 
 func (i *Time) ToTimeOutputWithContext(ctx context.Context) TimeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TimeOutput)
-}
-
-func (i *Time) ToTimePtrOutput() TimePtrOutput {
-	return i.ToTimePtrOutputWithContext(context.Background())
-}
-
-func (i *Time) ToTimePtrOutputWithContext(ctx context.Context) TimePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TimePtrOutput)
-}
-
-type TimePtrInput interface {
-	pulumi.Input
-
-	ToTimePtrOutput() TimePtrOutput
-	ToTimePtrOutputWithContext(ctx context.Context) TimePtrOutput
-}
-
-type timePtrType TimeArgs
-
-func (*timePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Time)(nil))
-}
-
-func (i *timePtrType) ToTimePtrOutput() TimePtrOutput {
-	return i.ToTimePtrOutputWithContext(context.Background())
-}
-
-func (i *timePtrType) ToTimePtrOutputWithContext(ctx context.Context) TimePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TimePtrOutput)
 }
 
 // TimeArrayInput is an input type that accepts TimeArray and TimeArrayOutput values.
@@ -204,7 +175,7 @@ func (i TimeMap) ToTimeMapOutputWithContext(ctx context.Context) TimeMapOutput {
 type TimeOutput struct{ *pulumi.OutputState }
 
 func (TimeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Time)(nil))
+	return reflect.TypeOf((**Time)(nil)).Elem()
 }
 
 func (o TimeOutput) ToTimeOutput() TimeOutput {
@@ -215,44 +186,10 @@ func (o TimeOutput) ToTimeOutputWithContext(ctx context.Context) TimeOutput {
 	return o
 }
 
-func (o TimeOutput) ToTimePtrOutput() TimePtrOutput {
-	return o.ToTimePtrOutputWithContext(context.Background())
-}
-
-func (o TimeOutput) ToTimePtrOutputWithContext(ctx context.Context) TimePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Time) *Time {
-		return &v
-	}).(TimePtrOutput)
-}
-
-type TimePtrOutput struct{ *pulumi.OutputState }
-
-func (TimePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Time)(nil))
-}
-
-func (o TimePtrOutput) ToTimePtrOutput() TimePtrOutput {
-	return o
-}
-
-func (o TimePtrOutput) ToTimePtrOutputWithContext(ctx context.Context) TimePtrOutput {
-	return o
-}
-
-func (o TimePtrOutput) Elem() TimeOutput {
-	return o.ApplyT(func(v *Time) Time {
-		if v != nil {
-			return *v
-		}
-		var ret Time
-		return ret
-	}).(TimeOutput)
-}
-
 type TimeArrayOutput struct{ *pulumi.OutputState }
 
 func (TimeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Time)(nil))
+	return reflect.TypeOf((*[]*Time)(nil)).Elem()
 }
 
 func (o TimeArrayOutput) ToTimeArrayOutput() TimeArrayOutput {
@@ -264,15 +201,15 @@ func (o TimeArrayOutput) ToTimeArrayOutputWithContext(ctx context.Context) TimeA
 }
 
 func (o TimeArrayOutput) Index(i pulumi.IntInput) TimeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Time {
-		return vs[0].([]Time)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Time {
+		return vs[0].([]*Time)[vs[1].(int)]
 	}).(TimeOutput)
 }
 
 type TimeMapOutput struct{ *pulumi.OutputState }
 
 func (TimeMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Time)(nil))
+	return reflect.TypeOf((*map[string]*Time)(nil)).Elem()
 }
 
 func (o TimeMapOutput) ToTimeMapOutput() TimeMapOutput {
@@ -284,14 +221,16 @@ func (o TimeMapOutput) ToTimeMapOutputWithContext(ctx context.Context) TimeMapOu
 }
 
 func (o TimeMapOutput) MapIndex(k pulumi.StringInput) TimeOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Time {
-		return vs[0].(map[string]Time)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Time {
+		return vs[0].(map[string]*Time)[vs[1].(string)]
 	}).(TimeOutput)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeInput)(nil)).Elem(), &Time{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeArrayInput)(nil)).Elem(), TimeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeMapInput)(nil)).Elem(), TimeMap{})
 	pulumi.RegisterOutputType(TimeOutput{})
-	pulumi.RegisterOutputType(TimePtrOutput{})
 	pulumi.RegisterOutputType(TimeArrayOutput{})
 	pulumi.RegisterOutputType(TimeMapOutput{})
 }

@@ -99,48 +99,48 @@ export class Container extends pulumi.CustomResource {
      */
     constructor(name: string, args: ContainerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ContainerArgs | ContainerState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ContainerState | undefined;
-            inputs["clone"] = state ? state.clone : undefined;
-            inputs["console"] = state ? state.console : undefined;
-            inputs["cpu"] = state ? state.cpu : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["disk"] = state ? state.disk : undefined;
-            inputs["initialization"] = state ? state.initialization : undefined;
-            inputs["memory"] = state ? state.memory : undefined;
-            inputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
-            inputs["nodeName"] = state ? state.nodeName : undefined;
-            inputs["operatingSystem"] = state ? state.operatingSystem : undefined;
-            inputs["poolId"] = state ? state.poolId : undefined;
-            inputs["started"] = state ? state.started : undefined;
-            inputs["template"] = state ? state.template : undefined;
-            inputs["vmId"] = state ? state.vmId : undefined;
+            resourceInputs["clone"] = state ? state.clone : undefined;
+            resourceInputs["console"] = state ? state.console : undefined;
+            resourceInputs["cpu"] = state ? state.cpu : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["disk"] = state ? state.disk : undefined;
+            resourceInputs["initialization"] = state ? state.initialization : undefined;
+            resourceInputs["memory"] = state ? state.memory : undefined;
+            resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
+            resourceInputs["nodeName"] = state ? state.nodeName : undefined;
+            resourceInputs["operatingSystem"] = state ? state.operatingSystem : undefined;
+            resourceInputs["poolId"] = state ? state.poolId : undefined;
+            resourceInputs["started"] = state ? state.started : undefined;
+            resourceInputs["template"] = state ? state.template : undefined;
+            resourceInputs["vmId"] = state ? state.vmId : undefined;
         } else {
             const args = argsOrState as ContainerArgs | undefined;
             if ((!args || args.nodeName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nodeName'");
             }
-            inputs["clone"] = args ? args.clone : undefined;
-            inputs["console"] = args ? args.console : undefined;
-            inputs["cpu"] = args ? args.cpu : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["disk"] = args ? args.disk : undefined;
-            inputs["initialization"] = args ? args.initialization : undefined;
-            inputs["memory"] = args ? args.memory : undefined;
-            inputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
-            inputs["nodeName"] = args ? args.nodeName : undefined;
-            inputs["operatingSystem"] = args ? args.operatingSystem : undefined;
-            inputs["poolId"] = args ? args.poolId : undefined;
-            inputs["started"] = args ? args.started : undefined;
-            inputs["template"] = args ? args.template : undefined;
-            inputs["vmId"] = args ? args.vmId : undefined;
+            resourceInputs["clone"] = args ? args.clone : undefined;
+            resourceInputs["console"] = args ? args.console : undefined;
+            resourceInputs["cpu"] = args ? args.cpu : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["disk"] = args ? args.disk : undefined;
+            resourceInputs["initialization"] = args ? args.initialization : undefined;
+            resourceInputs["memory"] = args ? args.memory : undefined;
+            resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
+            resourceInputs["nodeName"] = args ? args.nodeName : undefined;
+            resourceInputs["operatingSystem"] = args ? args.operatingSystem : undefined;
+            resourceInputs["poolId"] = args ? args.poolId : undefined;
+            resourceInputs["started"] = args ? args.started : undefined;
+            resourceInputs["template"] = args ? args.template : undefined;
+            resourceInputs["vmId"] = args ? args.vmId : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Container.__pulumiType, name, inputs, opts);
+        super(Container.__pulumiType, name, resourceInputs, opts);
     }
 }
 

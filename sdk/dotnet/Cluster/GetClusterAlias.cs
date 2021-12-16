@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.ProxmoxVE.Cluster
 {
@@ -13,6 +14,9 @@ namespace Pulumi.ProxmoxVE.Cluster
     {
         public static Task<GetClusterAliasResult> InvokeAsync(GetClusterAliasArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterAliasResult>("proxmoxve:Cluster/getClusterAlias:getClusterAlias", args ?? new GetClusterAliasArgs(), options.WithVersion());
+
+        public static Output<GetClusterAliasResult> Invoke(GetClusterAliasInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetClusterAliasResult>("proxmoxve:Cluster/getClusterAlias:getClusterAlias", args ?? new GetClusterAliasInvokeArgs(), options.WithVersion());
     }
 
 
@@ -22,6 +26,16 @@ namespace Pulumi.ProxmoxVE.Cluster
         public string Name { get; set; } = null!;
 
         public GetClusterAliasArgs()
+        {
+        }
+    }
+
+    public sealed class GetClusterAliasInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetClusterAliasInvokeArgs()
         {
         }
     }

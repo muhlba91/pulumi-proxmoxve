@@ -102,7 +102,7 @@ type PoolInput interface {
 }
 
 func (*Pool) ElementType() reflect.Type {
-	return reflect.TypeOf((*Pool)(nil))
+	return reflect.TypeOf((**Pool)(nil)).Elem()
 }
 
 func (i *Pool) ToPoolOutput() PoolOutput {
@@ -111,35 +111,6 @@ func (i *Pool) ToPoolOutput() PoolOutput {
 
 func (i *Pool) ToPoolOutputWithContext(ctx context.Context) PoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PoolOutput)
-}
-
-func (i *Pool) ToPoolPtrOutput() PoolPtrOutput {
-	return i.ToPoolPtrOutputWithContext(context.Background())
-}
-
-func (i *Pool) ToPoolPtrOutputWithContext(ctx context.Context) PoolPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PoolPtrOutput)
-}
-
-type PoolPtrInput interface {
-	pulumi.Input
-
-	ToPoolPtrOutput() PoolPtrOutput
-	ToPoolPtrOutputWithContext(ctx context.Context) PoolPtrOutput
-}
-
-type poolPtrType PoolArgs
-
-func (*poolPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Pool)(nil))
-}
-
-func (i *poolPtrType) ToPoolPtrOutput() PoolPtrOutput {
-	return i.ToPoolPtrOutputWithContext(context.Background())
-}
-
-func (i *poolPtrType) ToPoolPtrOutputWithContext(ctx context.Context) PoolPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PoolPtrOutput)
 }
 
 // PoolArrayInput is an input type that accepts PoolArray and PoolArrayOutput values.
@@ -195,7 +166,7 @@ func (i PoolMap) ToPoolMapOutputWithContext(ctx context.Context) PoolMapOutput {
 type PoolOutput struct{ *pulumi.OutputState }
 
 func (PoolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Pool)(nil))
+	return reflect.TypeOf((**Pool)(nil)).Elem()
 }
 
 func (o PoolOutput) ToPoolOutput() PoolOutput {
@@ -206,44 +177,10 @@ func (o PoolOutput) ToPoolOutputWithContext(ctx context.Context) PoolOutput {
 	return o
 }
 
-func (o PoolOutput) ToPoolPtrOutput() PoolPtrOutput {
-	return o.ToPoolPtrOutputWithContext(context.Background())
-}
-
-func (o PoolOutput) ToPoolPtrOutputWithContext(ctx context.Context) PoolPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Pool) *Pool {
-		return &v
-	}).(PoolPtrOutput)
-}
-
-type PoolPtrOutput struct{ *pulumi.OutputState }
-
-func (PoolPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Pool)(nil))
-}
-
-func (o PoolPtrOutput) ToPoolPtrOutput() PoolPtrOutput {
-	return o
-}
-
-func (o PoolPtrOutput) ToPoolPtrOutputWithContext(ctx context.Context) PoolPtrOutput {
-	return o
-}
-
-func (o PoolPtrOutput) Elem() PoolOutput {
-	return o.ApplyT(func(v *Pool) Pool {
-		if v != nil {
-			return *v
-		}
-		var ret Pool
-		return ret
-	}).(PoolOutput)
-}
-
 type PoolArrayOutput struct{ *pulumi.OutputState }
 
 func (PoolArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Pool)(nil))
+	return reflect.TypeOf((*[]*Pool)(nil)).Elem()
 }
 
 func (o PoolArrayOutput) ToPoolArrayOutput() PoolArrayOutput {
@@ -255,15 +192,15 @@ func (o PoolArrayOutput) ToPoolArrayOutputWithContext(ctx context.Context) PoolA
 }
 
 func (o PoolArrayOutput) Index(i pulumi.IntInput) PoolOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Pool {
-		return vs[0].([]Pool)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Pool {
+		return vs[0].([]*Pool)[vs[1].(int)]
 	}).(PoolOutput)
 }
 
 type PoolMapOutput struct{ *pulumi.OutputState }
 
 func (PoolMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Pool)(nil))
+	return reflect.TypeOf((*map[string]*Pool)(nil)).Elem()
 }
 
 func (o PoolMapOutput) ToPoolMapOutput() PoolMapOutput {
@@ -275,14 +212,16 @@ func (o PoolMapOutput) ToPoolMapOutputWithContext(ctx context.Context) PoolMapOu
 }
 
 func (o PoolMapOutput) MapIndex(k pulumi.StringInput) PoolOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Pool {
-		return vs[0].(map[string]Pool)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Pool {
+		return vs[0].(map[string]*Pool)[vs[1].(string)]
 	}).(PoolOutput)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PoolInput)(nil)).Elem(), &Pool{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PoolArrayInput)(nil)).Elem(), PoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PoolMapInput)(nil)).Elem(), PoolMap{})
 	pulumi.RegisterOutputType(PoolOutput{})
-	pulumi.RegisterOutputType(PoolPtrOutput{})
 	pulumi.RegisterOutputType(PoolArrayOutput{})
 	pulumi.RegisterOutputType(PoolMapOutput{})
 }

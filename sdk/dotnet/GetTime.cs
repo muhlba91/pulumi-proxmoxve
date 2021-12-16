@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.ProxmoxVE
 {
@@ -13,6 +14,9 @@ namespace Pulumi.ProxmoxVE
     {
         public static Task<GetTimeResult> InvokeAsync(GetTimeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTimeResult>("proxmoxve:index/getTime:getTime", args ?? new GetTimeArgs(), options.WithVersion());
+
+        public static Output<GetTimeResult> Invoke(GetTimeInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTimeResult>("proxmoxve:index/getTime:getTime", args ?? new GetTimeInvokeArgs(), options.WithVersion());
     }
 
 
@@ -22,6 +26,16 @@ namespace Pulumi.ProxmoxVE
         public string NodeName { get; set; } = null!;
 
         public GetTimeArgs()
+        {
+        }
+    }
+
+    public sealed class GetTimeInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("nodeName", required: true)]
+        public Input<string> NodeName { get; set; } = null!;
+
+        public GetTimeInvokeArgs()
         {
         }
     }

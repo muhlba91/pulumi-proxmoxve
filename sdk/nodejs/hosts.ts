@@ -63,15 +63,15 @@ export class Hosts extends pulumi.CustomResource {
      */
     constructor(name: string, args: HostsArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: HostsArgs | HostsState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HostsState | undefined;
-            inputs["addresses"] = state ? state.addresses : undefined;
-            inputs["digest"] = state ? state.digest : undefined;
-            inputs["entries"] = state ? state.entries : undefined;
-            inputs["hostnames"] = state ? state.hostnames : undefined;
-            inputs["nodeName"] = state ? state.nodeName : undefined;
+            resourceInputs["addresses"] = state ? state.addresses : undefined;
+            resourceInputs["digest"] = state ? state.digest : undefined;
+            resourceInputs["entries"] = state ? state.entries : undefined;
+            resourceInputs["hostnames"] = state ? state.hostnames : undefined;
+            resourceInputs["nodeName"] = state ? state.nodeName : undefined;
         } else {
             const args = argsOrState as HostsArgs | undefined;
             if ((!args || args.entries === undefined) && !opts.urn) {
@@ -80,16 +80,16 @@ export class Hosts extends pulumi.CustomResource {
             if ((!args || args.nodeName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nodeName'");
             }
-            inputs["entries"] = args ? args.entries : undefined;
-            inputs["nodeName"] = args ? args.nodeName : undefined;
-            inputs["addresses"] = undefined /*out*/;
-            inputs["digest"] = undefined /*out*/;
-            inputs["hostnames"] = undefined /*out*/;
+            resourceInputs["entries"] = args ? args.entries : undefined;
+            resourceInputs["nodeName"] = args ? args.nodeName : undefined;
+            resourceInputs["addresses"] = undefined /*out*/;
+            resourceInputs["digest"] = undefined /*out*/;
+            resourceInputs["hostnames"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Hosts.__pulumiType, name, inputs, opts);
+        super(Hosts.__pulumiType, name, resourceInputs, opts);
     }
 }
 

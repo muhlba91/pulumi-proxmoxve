@@ -79,19 +79,19 @@ export class File extends pulumi.CustomResource {
      */
     constructor(name: string, args: FileArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FileArgs | FileState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FileState | undefined;
-            inputs["contentType"] = state ? state.contentType : undefined;
-            inputs["datastoreId"] = state ? state.datastoreId : undefined;
-            inputs["fileModificationDate"] = state ? state.fileModificationDate : undefined;
-            inputs["fileName"] = state ? state.fileName : undefined;
-            inputs["fileSize"] = state ? state.fileSize : undefined;
-            inputs["fileTag"] = state ? state.fileTag : undefined;
-            inputs["nodeName"] = state ? state.nodeName : undefined;
-            inputs["sourceFile"] = state ? state.sourceFile : undefined;
-            inputs["sourceRaw"] = state ? state.sourceRaw : undefined;
+            resourceInputs["contentType"] = state ? state.contentType : undefined;
+            resourceInputs["datastoreId"] = state ? state.datastoreId : undefined;
+            resourceInputs["fileModificationDate"] = state ? state.fileModificationDate : undefined;
+            resourceInputs["fileName"] = state ? state.fileName : undefined;
+            resourceInputs["fileSize"] = state ? state.fileSize : undefined;
+            resourceInputs["fileTag"] = state ? state.fileTag : undefined;
+            resourceInputs["nodeName"] = state ? state.nodeName : undefined;
+            resourceInputs["sourceFile"] = state ? state.sourceFile : undefined;
+            resourceInputs["sourceRaw"] = state ? state.sourceRaw : undefined;
         } else {
             const args = argsOrState as FileArgs | undefined;
             if ((!args || args.datastoreId === undefined) && !opts.urn) {
@@ -100,20 +100,20 @@ export class File extends pulumi.CustomResource {
             if ((!args || args.nodeName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nodeName'");
             }
-            inputs["contentType"] = args ? args.contentType : undefined;
-            inputs["datastoreId"] = args ? args.datastoreId : undefined;
-            inputs["nodeName"] = args ? args.nodeName : undefined;
-            inputs["sourceFile"] = args ? args.sourceFile : undefined;
-            inputs["sourceRaw"] = args ? args.sourceRaw : undefined;
-            inputs["fileModificationDate"] = undefined /*out*/;
-            inputs["fileName"] = undefined /*out*/;
-            inputs["fileSize"] = undefined /*out*/;
-            inputs["fileTag"] = undefined /*out*/;
+            resourceInputs["contentType"] = args ? args.contentType : undefined;
+            resourceInputs["datastoreId"] = args ? args.datastoreId : undefined;
+            resourceInputs["nodeName"] = args ? args.nodeName : undefined;
+            resourceInputs["sourceFile"] = args ? args.sourceFile : undefined;
+            resourceInputs["sourceRaw"] = args ? args.sourceRaw : undefined;
+            resourceInputs["fileModificationDate"] = undefined /*out*/;
+            resourceInputs["fileName"] = undefined /*out*/;
+            resourceInputs["fileSize"] = undefined /*out*/;
+            resourceInputs["fileTag"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(File.__pulumiType, name, inputs, opts);
+        super(File.__pulumiType, name, resourceInputs, opts);
     }
 }
 

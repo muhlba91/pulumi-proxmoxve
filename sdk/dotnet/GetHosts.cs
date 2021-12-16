@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.ProxmoxVE
 {
@@ -13,6 +14,9 @@ namespace Pulumi.ProxmoxVE
     {
         public static Task<GetHostsResult> InvokeAsync(GetHostsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetHostsResult>("proxmoxve:index/getHosts:getHosts", args ?? new GetHostsArgs(), options.WithVersion());
+
+        public static Output<GetHostsResult> Invoke(GetHostsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetHostsResult>("proxmoxve:index/getHosts:getHosts", args ?? new GetHostsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -22,6 +26,16 @@ namespace Pulumi.ProxmoxVE
         public string NodeName { get; set; } = null!;
 
         public GetHostsArgs()
+        {
+        }
+    }
+
+    public sealed class GetHostsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("nodeName", required: true)]
+        public Input<string> NodeName { get; set; } = null!;
+
+        public GetHostsInvokeArgs()
         {
         }
     }

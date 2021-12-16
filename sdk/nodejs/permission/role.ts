@@ -50,12 +50,12 @@ export class Role extends pulumi.CustomResource {
      */
     constructor(name: string, args: RoleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RoleArgs | RoleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RoleState | undefined;
-            inputs["privileges"] = state ? state.privileges : undefined;
-            inputs["roleId"] = state ? state.roleId : undefined;
+            resourceInputs["privileges"] = state ? state.privileges : undefined;
+            resourceInputs["roleId"] = state ? state.roleId : undefined;
         } else {
             const args = argsOrState as RoleArgs | undefined;
             if ((!args || args.privileges === undefined) && !opts.urn) {
@@ -64,13 +64,13 @@ export class Role extends pulumi.CustomResource {
             if ((!args || args.roleId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'roleId'");
             }
-            inputs["privileges"] = args ? args.privileges : undefined;
-            inputs["roleId"] = args ? args.roleId : undefined;
+            resourceInputs["privileges"] = args ? args.privileges : undefined;
+            resourceInputs["roleId"] = args ? args.roleId : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Role.__pulumiType, name, inputs, opts);
+        super(Role.__pulumiType, name, resourceInputs, opts);
     }
 }
 

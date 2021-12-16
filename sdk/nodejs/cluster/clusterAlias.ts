@@ -54,26 +54,26 @@ export class ClusterAlias extends pulumi.CustomResource {
      */
     constructor(name: string, args: ClusterAliasArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClusterAliasArgs | ClusterAliasState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterAliasState | undefined;
-            inputs["cidr"] = state ? state.cidr : undefined;
-            inputs["comment"] = state ? state.comment : undefined;
-            inputs["name"] = state ? state.name : undefined;
+            resourceInputs["cidr"] = state ? state.cidr : undefined;
+            resourceInputs["comment"] = state ? state.comment : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as ClusterAliasArgs | undefined;
             if ((!args || args.cidr === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cidr'");
             }
-            inputs["cidr"] = args ? args.cidr : undefined;
-            inputs["comment"] = args ? args.comment : undefined;
-            inputs["name"] = args ? args.name : undefined;
+            resourceInputs["cidr"] = args ? args.cidr : undefined;
+            resourceInputs["comment"] = args ? args.comment : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ClusterAlias.__pulumiType, name, inputs, opts);
+        super(ClusterAlias.__pulumiType, name, resourceInputs, opts);
     }
 }
 

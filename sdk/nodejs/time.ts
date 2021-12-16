@@ -58,14 +58,14 @@ export class Time extends pulumi.CustomResource {
      */
     constructor(name: string, args: TimeArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TimeArgs | TimeState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TimeState | undefined;
-            inputs["localTime"] = state ? state.localTime : undefined;
-            inputs["nodeName"] = state ? state.nodeName : undefined;
-            inputs["timeZone"] = state ? state.timeZone : undefined;
-            inputs["utcTime"] = state ? state.utcTime : undefined;
+            resourceInputs["localTime"] = state ? state.localTime : undefined;
+            resourceInputs["nodeName"] = state ? state.nodeName : undefined;
+            resourceInputs["timeZone"] = state ? state.timeZone : undefined;
+            resourceInputs["utcTime"] = state ? state.utcTime : undefined;
         } else {
             const args = argsOrState as TimeArgs | undefined;
             if ((!args || args.nodeName === undefined) && !opts.urn) {
@@ -74,15 +74,15 @@ export class Time extends pulumi.CustomResource {
             if ((!args || args.timeZone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'timeZone'");
             }
-            inputs["nodeName"] = args ? args.nodeName : undefined;
-            inputs["timeZone"] = args ? args.timeZone : undefined;
-            inputs["localTime"] = undefined /*out*/;
-            inputs["utcTime"] = undefined /*out*/;
+            resourceInputs["nodeName"] = args ? args.nodeName : undefined;
+            resourceInputs["timeZone"] = args ? args.timeZone : undefined;
+            resourceInputs["localTime"] = undefined /*out*/;
+            resourceInputs["utcTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Time.__pulumiType, name, inputs, opts);
+        super(Time.__pulumiType, name, resourceInputs, opts);
     }
 }
 

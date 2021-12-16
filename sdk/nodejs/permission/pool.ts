@@ -55,26 +55,26 @@ export class Pool extends pulumi.CustomResource {
      */
     constructor(name: string, args: PoolArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PoolArgs | PoolState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PoolState | undefined;
-            inputs["comment"] = state ? state.comment : undefined;
-            inputs["members"] = state ? state.members : undefined;
-            inputs["poolId"] = state ? state.poolId : undefined;
+            resourceInputs["comment"] = state ? state.comment : undefined;
+            resourceInputs["members"] = state ? state.members : undefined;
+            resourceInputs["poolId"] = state ? state.poolId : undefined;
         } else {
             const args = argsOrState as PoolArgs | undefined;
             if ((!args || args.poolId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'poolId'");
             }
-            inputs["comment"] = args ? args.comment : undefined;
-            inputs["poolId"] = args ? args.poolId : undefined;
-            inputs["members"] = undefined /*out*/;
+            resourceInputs["comment"] = args ? args.comment : undefined;
+            resourceInputs["poolId"] = args ? args.poolId : undefined;
+            resourceInputs["members"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Pool.__pulumiType, name, inputs, opts);
+        super(Pool.__pulumiType, name, resourceInputs, opts);
     }
 }
 

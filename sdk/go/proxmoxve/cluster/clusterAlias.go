@@ -106,7 +106,7 @@ type ClusterAliasInput interface {
 }
 
 func (*ClusterAlias) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterAlias)(nil))
+	return reflect.TypeOf((**ClusterAlias)(nil)).Elem()
 }
 
 func (i *ClusterAlias) ToClusterAliasOutput() ClusterAliasOutput {
@@ -115,35 +115,6 @@ func (i *ClusterAlias) ToClusterAliasOutput() ClusterAliasOutput {
 
 func (i *ClusterAlias) ToClusterAliasOutputWithContext(ctx context.Context) ClusterAliasOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterAliasOutput)
-}
-
-func (i *ClusterAlias) ToClusterAliasPtrOutput() ClusterAliasPtrOutput {
-	return i.ToClusterAliasPtrOutputWithContext(context.Background())
-}
-
-func (i *ClusterAlias) ToClusterAliasPtrOutputWithContext(ctx context.Context) ClusterAliasPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterAliasPtrOutput)
-}
-
-type ClusterAliasPtrInput interface {
-	pulumi.Input
-
-	ToClusterAliasPtrOutput() ClusterAliasPtrOutput
-	ToClusterAliasPtrOutputWithContext(ctx context.Context) ClusterAliasPtrOutput
-}
-
-type clusterAliasPtrType ClusterAliasArgs
-
-func (*clusterAliasPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterAlias)(nil))
-}
-
-func (i *clusterAliasPtrType) ToClusterAliasPtrOutput() ClusterAliasPtrOutput {
-	return i.ToClusterAliasPtrOutputWithContext(context.Background())
-}
-
-func (i *clusterAliasPtrType) ToClusterAliasPtrOutputWithContext(ctx context.Context) ClusterAliasPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterAliasPtrOutput)
 }
 
 // ClusterAliasArrayInput is an input type that accepts ClusterAliasArray and ClusterAliasArrayOutput values.
@@ -199,7 +170,7 @@ func (i ClusterAliasMap) ToClusterAliasMapOutputWithContext(ctx context.Context)
 type ClusterAliasOutput struct{ *pulumi.OutputState }
 
 func (ClusterAliasOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterAlias)(nil))
+	return reflect.TypeOf((**ClusterAlias)(nil)).Elem()
 }
 
 func (o ClusterAliasOutput) ToClusterAliasOutput() ClusterAliasOutput {
@@ -210,44 +181,10 @@ func (o ClusterAliasOutput) ToClusterAliasOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ClusterAliasOutput) ToClusterAliasPtrOutput() ClusterAliasPtrOutput {
-	return o.ToClusterAliasPtrOutputWithContext(context.Background())
-}
-
-func (o ClusterAliasOutput) ToClusterAliasPtrOutputWithContext(ctx context.Context) ClusterAliasPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterAlias) *ClusterAlias {
-		return &v
-	}).(ClusterAliasPtrOutput)
-}
-
-type ClusterAliasPtrOutput struct{ *pulumi.OutputState }
-
-func (ClusterAliasPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterAlias)(nil))
-}
-
-func (o ClusterAliasPtrOutput) ToClusterAliasPtrOutput() ClusterAliasPtrOutput {
-	return o
-}
-
-func (o ClusterAliasPtrOutput) ToClusterAliasPtrOutputWithContext(ctx context.Context) ClusterAliasPtrOutput {
-	return o
-}
-
-func (o ClusterAliasPtrOutput) Elem() ClusterAliasOutput {
-	return o.ApplyT(func(v *ClusterAlias) ClusterAlias {
-		if v != nil {
-			return *v
-		}
-		var ret ClusterAlias
-		return ret
-	}).(ClusterAliasOutput)
-}
-
 type ClusterAliasArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterAliasArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ClusterAlias)(nil))
+	return reflect.TypeOf((*[]*ClusterAlias)(nil)).Elem()
 }
 
 func (o ClusterAliasArrayOutput) ToClusterAliasArrayOutput() ClusterAliasArrayOutput {
@@ -259,15 +196,15 @@ func (o ClusterAliasArrayOutput) ToClusterAliasArrayOutputWithContext(ctx contex
 }
 
 func (o ClusterAliasArrayOutput) Index(i pulumi.IntInput) ClusterAliasOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterAlias {
-		return vs[0].([]ClusterAlias)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClusterAlias {
+		return vs[0].([]*ClusterAlias)[vs[1].(int)]
 	}).(ClusterAliasOutput)
 }
 
 type ClusterAliasMapOutput struct{ *pulumi.OutputState }
 
 func (ClusterAliasMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ClusterAlias)(nil))
+	return reflect.TypeOf((*map[string]*ClusterAlias)(nil)).Elem()
 }
 
 func (o ClusterAliasMapOutput) ToClusterAliasMapOutput() ClusterAliasMapOutput {
@@ -279,14 +216,16 @@ func (o ClusterAliasMapOutput) ToClusterAliasMapOutputWithContext(ctx context.Co
 }
 
 func (o ClusterAliasMapOutput) MapIndex(k pulumi.StringInput) ClusterAliasOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClusterAlias {
-		return vs[0].(map[string]ClusterAlias)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ClusterAlias {
+		return vs[0].(map[string]*ClusterAlias)[vs[1].(string)]
 	}).(ClusterAliasOutput)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAliasInput)(nil)).Elem(), &ClusterAlias{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAliasArrayInput)(nil)).Elem(), ClusterAliasArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAliasMapInput)(nil)).Elem(), ClusterAliasMap{})
 	pulumi.RegisterOutputType(ClusterAliasOutput{})
-	pulumi.RegisterOutputType(ClusterAliasPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAliasArrayOutput{})
 	pulumi.RegisterOutputType(ClusterAliasMapOutput{})
 }

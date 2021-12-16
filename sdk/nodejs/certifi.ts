@@ -98,24 +98,24 @@ export class Certifi extends pulumi.CustomResource {
      */
     constructor(name: string, args: CertifiArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CertifiArgs | CertifiState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CertifiState | undefined;
-            inputs["certificate"] = state ? state.certificate : undefined;
-            inputs["certificateChain"] = state ? state.certificateChain : undefined;
-            inputs["expirationDate"] = state ? state.expirationDate : undefined;
-            inputs["fileName"] = state ? state.fileName : undefined;
-            inputs["issuer"] = state ? state.issuer : undefined;
-            inputs["nodeName"] = state ? state.nodeName : undefined;
-            inputs["overwrite"] = state ? state.overwrite : undefined;
-            inputs["privateKey"] = state ? state.privateKey : undefined;
-            inputs["publicKeySize"] = state ? state.publicKeySize : undefined;
-            inputs["publicKeyType"] = state ? state.publicKeyType : undefined;
-            inputs["sslFingerprint"] = state ? state.sslFingerprint : undefined;
-            inputs["startDate"] = state ? state.startDate : undefined;
-            inputs["subject"] = state ? state.subject : undefined;
-            inputs["subjectAlternativeNames"] = state ? state.subjectAlternativeNames : undefined;
+            resourceInputs["certificate"] = state ? state.certificate : undefined;
+            resourceInputs["certificateChain"] = state ? state.certificateChain : undefined;
+            resourceInputs["expirationDate"] = state ? state.expirationDate : undefined;
+            resourceInputs["fileName"] = state ? state.fileName : undefined;
+            resourceInputs["issuer"] = state ? state.issuer : undefined;
+            resourceInputs["nodeName"] = state ? state.nodeName : undefined;
+            resourceInputs["overwrite"] = state ? state.overwrite : undefined;
+            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
+            resourceInputs["publicKeySize"] = state ? state.publicKeySize : undefined;
+            resourceInputs["publicKeyType"] = state ? state.publicKeyType : undefined;
+            resourceInputs["sslFingerprint"] = state ? state.sslFingerprint : undefined;
+            resourceInputs["startDate"] = state ? state.startDate : undefined;
+            resourceInputs["subject"] = state ? state.subject : undefined;
+            resourceInputs["subjectAlternativeNames"] = state ? state.subjectAlternativeNames : undefined;
         } else {
             const args = argsOrState as CertifiArgs | undefined;
             if ((!args || args.certificate === undefined) && !opts.urn) {
@@ -127,25 +127,25 @@ export class Certifi extends pulumi.CustomResource {
             if ((!args || args.privateKey === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'privateKey'");
             }
-            inputs["certificate"] = args ? args.certificate : undefined;
-            inputs["certificateChain"] = args ? args.certificateChain : undefined;
-            inputs["nodeName"] = args ? args.nodeName : undefined;
-            inputs["overwrite"] = args ? args.overwrite : undefined;
-            inputs["privateKey"] = args ? args.privateKey : undefined;
-            inputs["expirationDate"] = undefined /*out*/;
-            inputs["fileName"] = undefined /*out*/;
-            inputs["issuer"] = undefined /*out*/;
-            inputs["publicKeySize"] = undefined /*out*/;
-            inputs["publicKeyType"] = undefined /*out*/;
-            inputs["sslFingerprint"] = undefined /*out*/;
-            inputs["startDate"] = undefined /*out*/;
-            inputs["subject"] = undefined /*out*/;
-            inputs["subjectAlternativeNames"] = undefined /*out*/;
+            resourceInputs["certificate"] = args ? args.certificate : undefined;
+            resourceInputs["certificateChain"] = args ? args.certificateChain : undefined;
+            resourceInputs["nodeName"] = args ? args.nodeName : undefined;
+            resourceInputs["overwrite"] = args ? args.overwrite : undefined;
+            resourceInputs["privateKey"] = args ? args.privateKey : undefined;
+            resourceInputs["expirationDate"] = undefined /*out*/;
+            resourceInputs["fileName"] = undefined /*out*/;
+            resourceInputs["issuer"] = undefined /*out*/;
+            resourceInputs["publicKeySize"] = undefined /*out*/;
+            resourceInputs["publicKeyType"] = undefined /*out*/;
+            resourceInputs["sslFingerprint"] = undefined /*out*/;
+            resourceInputs["startDate"] = undefined /*out*/;
+            resourceInputs["subject"] = undefined /*out*/;
+            resourceInputs["subjectAlternativeNames"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Certifi.__pulumiType, name, inputs, opts);
+        super(Certifi.__pulumiType, name, resourceInputs, opts);
     }
 }
 

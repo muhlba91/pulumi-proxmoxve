@@ -102,7 +102,7 @@ type ClusterIPSetInput interface {
 }
 
 func (*ClusterIPSet) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterIPSet)(nil))
+	return reflect.TypeOf((**ClusterIPSet)(nil)).Elem()
 }
 
 func (i *ClusterIPSet) ToClusterIPSetOutput() ClusterIPSetOutput {
@@ -111,35 +111,6 @@ func (i *ClusterIPSet) ToClusterIPSetOutput() ClusterIPSetOutput {
 
 func (i *ClusterIPSet) ToClusterIPSetOutputWithContext(ctx context.Context) ClusterIPSetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterIPSetOutput)
-}
-
-func (i *ClusterIPSet) ToClusterIPSetPtrOutput() ClusterIPSetPtrOutput {
-	return i.ToClusterIPSetPtrOutputWithContext(context.Background())
-}
-
-func (i *ClusterIPSet) ToClusterIPSetPtrOutputWithContext(ctx context.Context) ClusterIPSetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterIPSetPtrOutput)
-}
-
-type ClusterIPSetPtrInput interface {
-	pulumi.Input
-
-	ToClusterIPSetPtrOutput() ClusterIPSetPtrOutput
-	ToClusterIPSetPtrOutputWithContext(ctx context.Context) ClusterIPSetPtrOutput
-}
-
-type clusterIPSetPtrType ClusterIPSetArgs
-
-func (*clusterIPSetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterIPSet)(nil))
-}
-
-func (i *clusterIPSetPtrType) ToClusterIPSetPtrOutput() ClusterIPSetPtrOutput {
-	return i.ToClusterIPSetPtrOutputWithContext(context.Background())
-}
-
-func (i *clusterIPSetPtrType) ToClusterIPSetPtrOutputWithContext(ctx context.Context) ClusterIPSetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterIPSetPtrOutput)
 }
 
 // ClusterIPSetArrayInput is an input type that accepts ClusterIPSetArray and ClusterIPSetArrayOutput values.
@@ -195,7 +166,7 @@ func (i ClusterIPSetMap) ToClusterIPSetMapOutputWithContext(ctx context.Context)
 type ClusterIPSetOutput struct{ *pulumi.OutputState }
 
 func (ClusterIPSetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterIPSet)(nil))
+	return reflect.TypeOf((**ClusterIPSet)(nil)).Elem()
 }
 
 func (o ClusterIPSetOutput) ToClusterIPSetOutput() ClusterIPSetOutput {
@@ -206,44 +177,10 @@ func (o ClusterIPSetOutput) ToClusterIPSetOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ClusterIPSetOutput) ToClusterIPSetPtrOutput() ClusterIPSetPtrOutput {
-	return o.ToClusterIPSetPtrOutputWithContext(context.Background())
-}
-
-func (o ClusterIPSetOutput) ToClusterIPSetPtrOutputWithContext(ctx context.Context) ClusterIPSetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterIPSet) *ClusterIPSet {
-		return &v
-	}).(ClusterIPSetPtrOutput)
-}
-
-type ClusterIPSetPtrOutput struct{ *pulumi.OutputState }
-
-func (ClusterIPSetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterIPSet)(nil))
-}
-
-func (o ClusterIPSetPtrOutput) ToClusterIPSetPtrOutput() ClusterIPSetPtrOutput {
-	return o
-}
-
-func (o ClusterIPSetPtrOutput) ToClusterIPSetPtrOutputWithContext(ctx context.Context) ClusterIPSetPtrOutput {
-	return o
-}
-
-func (o ClusterIPSetPtrOutput) Elem() ClusterIPSetOutput {
-	return o.ApplyT(func(v *ClusterIPSet) ClusterIPSet {
-		if v != nil {
-			return *v
-		}
-		var ret ClusterIPSet
-		return ret
-	}).(ClusterIPSetOutput)
-}
-
 type ClusterIPSetArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterIPSetArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ClusterIPSet)(nil))
+	return reflect.TypeOf((*[]*ClusterIPSet)(nil)).Elem()
 }
 
 func (o ClusterIPSetArrayOutput) ToClusterIPSetArrayOutput() ClusterIPSetArrayOutput {
@@ -255,15 +192,15 @@ func (o ClusterIPSetArrayOutput) ToClusterIPSetArrayOutputWithContext(ctx contex
 }
 
 func (o ClusterIPSetArrayOutput) Index(i pulumi.IntInput) ClusterIPSetOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterIPSet {
-		return vs[0].([]ClusterIPSet)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClusterIPSet {
+		return vs[0].([]*ClusterIPSet)[vs[1].(int)]
 	}).(ClusterIPSetOutput)
 }
 
 type ClusterIPSetMapOutput struct{ *pulumi.OutputState }
 
 func (ClusterIPSetMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ClusterIPSet)(nil))
+	return reflect.TypeOf((*map[string]*ClusterIPSet)(nil)).Elem()
 }
 
 func (o ClusterIPSetMapOutput) ToClusterIPSetMapOutput() ClusterIPSetMapOutput {
@@ -275,14 +212,16 @@ func (o ClusterIPSetMapOutput) ToClusterIPSetMapOutputWithContext(ctx context.Co
 }
 
 func (o ClusterIPSetMapOutput) MapIndex(k pulumi.StringInput) ClusterIPSetOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClusterIPSet {
-		return vs[0].(map[string]ClusterIPSet)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ClusterIPSet {
+		return vs[0].(map[string]*ClusterIPSet)[vs[1].(string)]
 	}).(ClusterIPSetOutput)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIPSetInput)(nil)).Elem(), &ClusterIPSet{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIPSetArrayInput)(nil)).Elem(), ClusterIPSetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIPSetMapInput)(nil)).Elem(), ClusterIPSetMap{})
 	pulumi.RegisterOutputType(ClusterIPSetOutput{})
-	pulumi.RegisterOutputType(ClusterIPSetPtrOutput{})
 	pulumi.RegisterOutputType(ClusterIPSetArrayOutput{})
 	pulumi.RegisterOutputType(ClusterIPSetMapOutput{})
 }

@@ -59,28 +59,28 @@ export class Group extends pulumi.CustomResource {
      */
     constructor(name: string, args: GroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GroupArgs | GroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
-            inputs["acls"] = state ? state.acls : undefined;
-            inputs["comment"] = state ? state.comment : undefined;
-            inputs["groupId"] = state ? state.groupId : undefined;
-            inputs["members"] = state ? state.members : undefined;
+            resourceInputs["acls"] = state ? state.acls : undefined;
+            resourceInputs["comment"] = state ? state.comment : undefined;
+            resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["members"] = state ? state.members : undefined;
         } else {
             const args = argsOrState as GroupArgs | undefined;
             if ((!args || args.groupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            inputs["acls"] = args ? args.acls : undefined;
-            inputs["comment"] = args ? args.comment : undefined;
-            inputs["groupId"] = args ? args.groupId : undefined;
-            inputs["members"] = undefined /*out*/;
+            resourceInputs["acls"] = args ? args.acls : undefined;
+            resourceInputs["comment"] = args ? args.comment : undefined;
+            resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["members"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Group.__pulumiType, name, inputs, opts);
+        super(Group.__pulumiType, name, resourceInputs, opts);
     }
 }
 

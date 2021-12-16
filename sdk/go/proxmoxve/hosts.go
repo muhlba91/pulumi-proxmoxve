@@ -117,7 +117,7 @@ type HostsInput interface {
 }
 
 func (*Hosts) ElementType() reflect.Type {
-	return reflect.TypeOf((*Hosts)(nil))
+	return reflect.TypeOf((**Hosts)(nil)).Elem()
 }
 
 func (i *Hosts) ToHostsOutput() HostsOutput {
@@ -126,35 +126,6 @@ func (i *Hosts) ToHostsOutput() HostsOutput {
 
 func (i *Hosts) ToHostsOutputWithContext(ctx context.Context) HostsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostsOutput)
-}
-
-func (i *Hosts) ToHostsPtrOutput() HostsPtrOutput {
-	return i.ToHostsPtrOutputWithContext(context.Background())
-}
-
-func (i *Hosts) ToHostsPtrOutputWithContext(ctx context.Context) HostsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HostsPtrOutput)
-}
-
-type HostsPtrInput interface {
-	pulumi.Input
-
-	ToHostsPtrOutput() HostsPtrOutput
-	ToHostsPtrOutputWithContext(ctx context.Context) HostsPtrOutput
-}
-
-type hostsPtrType HostsArgs
-
-func (*hostsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Hosts)(nil))
-}
-
-func (i *hostsPtrType) ToHostsPtrOutput() HostsPtrOutput {
-	return i.ToHostsPtrOutputWithContext(context.Background())
-}
-
-func (i *hostsPtrType) ToHostsPtrOutputWithContext(ctx context.Context) HostsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HostsPtrOutput)
 }
 
 // HostsArrayInput is an input type that accepts HostsArray and HostsArrayOutput values.
@@ -210,7 +181,7 @@ func (i HostsMap) ToHostsMapOutputWithContext(ctx context.Context) HostsMapOutpu
 type HostsOutput struct{ *pulumi.OutputState }
 
 func (HostsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Hosts)(nil))
+	return reflect.TypeOf((**Hosts)(nil)).Elem()
 }
 
 func (o HostsOutput) ToHostsOutput() HostsOutput {
@@ -221,44 +192,10 @@ func (o HostsOutput) ToHostsOutputWithContext(ctx context.Context) HostsOutput {
 	return o
 }
 
-func (o HostsOutput) ToHostsPtrOutput() HostsPtrOutput {
-	return o.ToHostsPtrOutputWithContext(context.Background())
-}
-
-func (o HostsOutput) ToHostsPtrOutputWithContext(ctx context.Context) HostsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Hosts) *Hosts {
-		return &v
-	}).(HostsPtrOutput)
-}
-
-type HostsPtrOutput struct{ *pulumi.OutputState }
-
-func (HostsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Hosts)(nil))
-}
-
-func (o HostsPtrOutput) ToHostsPtrOutput() HostsPtrOutput {
-	return o
-}
-
-func (o HostsPtrOutput) ToHostsPtrOutputWithContext(ctx context.Context) HostsPtrOutput {
-	return o
-}
-
-func (o HostsPtrOutput) Elem() HostsOutput {
-	return o.ApplyT(func(v *Hosts) Hosts {
-		if v != nil {
-			return *v
-		}
-		var ret Hosts
-		return ret
-	}).(HostsOutput)
-}
-
 type HostsArrayOutput struct{ *pulumi.OutputState }
 
 func (HostsArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Hosts)(nil))
+	return reflect.TypeOf((*[]*Hosts)(nil)).Elem()
 }
 
 func (o HostsArrayOutput) ToHostsArrayOutput() HostsArrayOutput {
@@ -270,15 +207,15 @@ func (o HostsArrayOutput) ToHostsArrayOutputWithContext(ctx context.Context) Hos
 }
 
 func (o HostsArrayOutput) Index(i pulumi.IntInput) HostsOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Hosts {
-		return vs[0].([]Hosts)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Hosts {
+		return vs[0].([]*Hosts)[vs[1].(int)]
 	}).(HostsOutput)
 }
 
 type HostsMapOutput struct{ *pulumi.OutputState }
 
 func (HostsMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Hosts)(nil))
+	return reflect.TypeOf((*map[string]*Hosts)(nil)).Elem()
 }
 
 func (o HostsMapOutput) ToHostsMapOutput() HostsMapOutput {
@@ -290,14 +227,16 @@ func (o HostsMapOutput) ToHostsMapOutputWithContext(ctx context.Context) HostsMa
 }
 
 func (o HostsMapOutput) MapIndex(k pulumi.StringInput) HostsOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Hosts {
-		return vs[0].(map[string]Hosts)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Hosts {
+		return vs[0].(map[string]*Hosts)[vs[1].(string)]
 	}).(HostsOutput)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*HostsInput)(nil)).Elem(), &Hosts{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostsArrayInput)(nil)).Elem(), HostsArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostsMapInput)(nil)).Elem(), HostsMap{})
 	pulumi.RegisterOutputType(HostsOutput{})
-	pulumi.RegisterOutputType(HostsPtrOutput{})
 	pulumi.RegisterOutputType(HostsArrayOutput{})
 	pulumi.RegisterOutputType(HostsMapOutput{})
 }

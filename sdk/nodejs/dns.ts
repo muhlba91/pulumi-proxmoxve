@@ -54,13 +54,13 @@ export class DNS extends pulumi.CustomResource {
      */
     constructor(name: string, args: DNSArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DNSArgs | DNSState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DNSState | undefined;
-            inputs["domain"] = state ? state.domain : undefined;
-            inputs["nodeName"] = state ? state.nodeName : undefined;
-            inputs["servers"] = state ? state.servers : undefined;
+            resourceInputs["domain"] = state ? state.domain : undefined;
+            resourceInputs["nodeName"] = state ? state.nodeName : undefined;
+            resourceInputs["servers"] = state ? state.servers : undefined;
         } else {
             const args = argsOrState as DNSArgs | undefined;
             if ((!args || args.domain === undefined) && !opts.urn) {
@@ -69,14 +69,14 @@ export class DNS extends pulumi.CustomResource {
             if ((!args || args.nodeName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nodeName'");
             }
-            inputs["domain"] = args ? args.domain : undefined;
-            inputs["nodeName"] = args ? args.nodeName : undefined;
-            inputs["servers"] = args ? args.servers : undefined;
+            resourceInputs["domain"] = args ? args.domain : undefined;
+            resourceInputs["nodeName"] = args ? args.nodeName : undefined;
+            resourceInputs["servers"] = args ? args.servers : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(DNS.__pulumiType, name, inputs, opts);
+        super(DNS.__pulumiType, name, resourceInputs, opts);
     }
 }
 
