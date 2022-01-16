@@ -11,6 +11,7 @@ import (
 )
 
 func GetDatastores(ctx *pulumi.Context, args *GetDatastoresArgs, opts ...pulumi.InvokeOption) (*GetDatastoresResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv GetDatastoresResult
 	err := ctx.Invoke("proxmoxve:Storage/getDatastores:getDatastores", args, &rv, opts...)
 	if err != nil {

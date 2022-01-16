@@ -22,6 +22,7 @@
         "typescript": "^4.3.5"
     },
     "pulumi": {
-        "resource": true
+        "resource": true,
+        "pluginDownloadURL": "https://github.com/muhlba91/pulumi-proxmoxve/releases/download/v${VERSION}"
     }
 }

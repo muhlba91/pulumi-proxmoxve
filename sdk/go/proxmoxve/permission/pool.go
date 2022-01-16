@@ -32,6 +32,7 @@ func NewPool(ctx *pulumi.Context,
 	if args.PoolId == nil {
 		return nil, errors.New("invalid value for required argument 'PoolId'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Pool
 	err := ctx.RegisterResource("proxmoxve:Permission/pool:Pool", name, args, &resource, opts...)
 	if err != nil {

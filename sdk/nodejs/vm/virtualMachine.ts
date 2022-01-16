@@ -263,9 +263,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["macAddresses"] = undefined /*out*/;
             resourceInputs["networkInterfaceNames"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VirtualMachine.__pulumiType, name, resourceInputs, opts);
     }
 }

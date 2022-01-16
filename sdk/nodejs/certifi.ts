@@ -142,9 +142,7 @@ export class Certifi extends pulumi.CustomResource {
             resourceInputs["subject"] = undefined /*out*/;
             resourceInputs["subjectAlternativeNames"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Certifi.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -11,6 +11,7 @@ import (
 )
 
 func LookupClusterAlias(ctx *pulumi.Context, args *LookupClusterAliasArgs, opts ...pulumi.InvokeOption) (*LookupClusterAliasResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupClusterAliasResult
 	err := ctx.Invoke("proxmoxve:Cluster/getClusterAlias:getClusterAlias", args, &rv, opts...)
 	if err != nil {

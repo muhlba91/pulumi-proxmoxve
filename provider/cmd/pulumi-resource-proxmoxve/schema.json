@@ -10,6 +10,7 @@
     "license": "Apache-2.0",
     "attribution": "This Pulumi package is based on the [`proxmoxve` Terraform Provider](https://github.com/bpg/terraform-provider-proxmoxve).",
     "repository": "https://github.com/muhlba91/pulumi-proxmoxve",
+    "pluginDownloadURL": "https://github.com/muhlba91/pulumi-proxmoxve/releases/download/v${VERSION}",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
     },
@@ -3952,6 +3953,7 @@
             }
         },
         "go": {
+            "generateExtraInputTypes": true,
             "generateResourceContainerTypes": true,
             "importBasePath": "github.com/muhlba91/pulumi-proxmoxve/sdk/go/proxmoxve"
         },

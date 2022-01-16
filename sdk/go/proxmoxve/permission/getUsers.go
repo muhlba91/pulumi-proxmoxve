@@ -8,6 +8,7 @@ import (
 )
 
 func GetUsers(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetUsersResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv GetUsersResult
 	err := ctx.Invoke("proxmoxve:Permission/getUsers:getUsers", nil, &rv, opts...)
 	if err != nil {

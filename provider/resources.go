@@ -61,6 +61,7 @@ func Provider() tfbridge.ProviderInfo {
 		Homepage:             "https://github.com/muhlba91/pulumi-proxmoxve",
 		Repository:           "https://github.com/muhlba91/pulumi-proxmoxve",
 		GitHubOrg:            "bpg",
+		PluginDownloadURL:    "https://github.com/muhlba91/pulumi-proxmoxve/releases/download/v${VERSION}",
 		Config:               map[string]*tfbridge.SchemaInfo{},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{

@@ -8,6 +8,7 @@ import (
 )
 
 func GetRoles(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetRolesResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv GetRolesResult
 	err := ctx.Invoke("proxmoxve:Permission/getRoles:getRoles", nil, &rv, opts...)
 	if err != nil {

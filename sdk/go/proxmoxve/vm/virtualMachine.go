@@ -96,6 +96,7 @@ func NewVirtualMachine(ctx *pulumi.Context,
 	if args.NodeName == nil {
 		return nil, errors.New("invalid value for required argument 'NodeName'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource VirtualMachine
 	err := ctx.RegisterResource("proxmoxve:VM/virtualMachine:VirtualMachine", name, args, &resource, opts...)
 	if err != nil {

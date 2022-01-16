@@ -11,6 +11,7 @@ import (
 )
 
 func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupUserResult
 	err := ctx.Invoke("proxmoxve:Permission/getUser:getUser", args, &rv, opts...)
 	if err != nil {

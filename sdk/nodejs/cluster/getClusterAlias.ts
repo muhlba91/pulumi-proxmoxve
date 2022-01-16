@@ -9,9 +9,7 @@ export function getClusterAlias(args: GetClusterAliasArgs, opts?: pulumi.InvokeO
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("proxmoxve:Cluster/getClusterAlias:getClusterAlias", {
         "name": args.name,
     }, opts);

@@ -60,6 +60,7 @@ func NewCertifi(ctx *pulumi.Context,
 	if args.PrivateKey == nil {
 		return nil, errors.New("invalid value for required argument 'PrivateKey'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Certifi
 	err := ctx.RegisterResource("proxmoxve:index/certifi:Certifi", name, args, &resource, opts...)
 	if err != nil {

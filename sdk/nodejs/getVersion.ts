@@ -9,9 +9,7 @@ export function getVersion(opts?: pulumi.InvokeOptions): Promise<GetVersionResul
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("proxmoxve:index/getVersion:getVersion", {
     }, opts);
 }

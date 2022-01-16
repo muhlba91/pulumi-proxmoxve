@@ -11,6 +11,7 @@ import (
 )
 
 func LookupDNS(ctx *pulumi.Context, args *LookupDNSArgs, opts ...pulumi.InvokeOption) (*LookupDNSResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupDNSResult
 	err := ctx.Invoke("proxmoxve:index/getDNS:getDNS", args, &rv, opts...)
 	if err != nil {

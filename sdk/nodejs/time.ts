@@ -79,9 +79,7 @@ export class Time extends pulumi.CustomResource {
             resourceInputs["localTime"] = undefined /*out*/;
             resourceInputs["utcTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Time.__pulumiType, name, resourceInputs, opts);
     }
 }

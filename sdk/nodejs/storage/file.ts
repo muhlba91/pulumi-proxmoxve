@@ -110,9 +110,7 @@ export class File extends pulumi.CustomResource {
             resourceInputs["fileSize"] = undefined /*out*/;
             resourceInputs["fileTag"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(File.__pulumiType, name, resourceInputs, opts);
     }
 }
