@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [1.2.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v1.1.4...v1.2.0) (2022-01-16)
+
+
+### Features
+
+* add PluginDownloadUrl for GitHub releases ([5ae5a31](https://github.com/muhlba91/pulumi-proxmoxve/commit/5ae5a31f06d8cc8c212fe916ab638b30c9413bb0))
+
 ### [1.1.4](https://github.com/muhlba91/pulumi-proxmoxve/compare/v1.1.3...v1.1.4) (2021-12-16)
 
 
