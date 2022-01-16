@@ -9,9 +9,7 @@ export function getDNS(args: GetDNSArgs, opts?: pulumi.InvokeOptions): Promise<G
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("proxmoxve:index/getDNS:getDNS", {
         "nodeName": args.nodeName,
     }, opts);

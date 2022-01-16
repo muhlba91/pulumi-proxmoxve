@@ -67,9 +67,7 @@ export class Role extends pulumi.CustomResource {
             resourceInputs["privileges"] = args ? args.privileges : undefined;
             resourceInputs["roleId"] = args ? args.roleId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Role.__pulumiType, name, resourceInputs, opts);
     }
 }

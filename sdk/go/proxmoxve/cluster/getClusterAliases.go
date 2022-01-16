@@ -8,6 +8,7 @@ import (
 )
 
 func GetClusterAliases(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetClusterAliasesResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv GetClusterAliasesResult
 	err := ctx.Invoke("proxmoxve:Cluster/getClusterAliases:getClusterAliases", nil, &rv, opts...)
 	if err != nil {

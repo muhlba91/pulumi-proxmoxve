@@ -11,6 +11,7 @@ import (
 )
 
 func LookupGroup(ctx *pulumi.Context, args *LookupGroupArgs, opts ...pulumi.InvokeOption) (*LookupGroupResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupGroupResult
 	err := ctx.Invoke("proxmoxve:Permission/getGroup:getGroup", args, &rv, opts...)
 	if err != nil {

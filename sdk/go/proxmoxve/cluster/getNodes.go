@@ -8,6 +8,7 @@ import (
 )
 
 func GetNodes(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetNodesResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv GetNodesResult
 	err := ctx.Invoke("proxmoxve:Cluster/getNodes:getNodes", nil, &rv, opts...)
 	if err != nil {

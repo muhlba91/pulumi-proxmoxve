@@ -8,6 +8,7 @@ import (
 )
 
 func GetVersion(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetVersionResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv GetVersionResult
 	err := ctx.Invoke("proxmoxve:index/getVersion:getVersion", nil, &rv, opts...)
 	if err != nil {

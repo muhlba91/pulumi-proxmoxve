@@ -15,7 +15,7 @@ class InstallPluginCommand(install):
     def run(self):
         install.run(self)
         try:
-            check_call(['pulumi', 'plugin', 'install', 'resource', 'proxmoxve', PLUGIN_VERSION])
+            check_call(['pulumi', 'plugin', 'install', 'resource', 'proxmoxve', PLUGIN_VERSION, '--server', 'https://github.com/muhlba91/pulumi-proxmoxve/releases/download/v${VERSION}'])
         except OSError as error:
             if error.errno == errno.ENOENT:
                 print(f"""
@@ -55,6 +55,7 @@ setup(name='pulumi_proxmoxve',
       package_data={
           'pulumi_proxmoxve': [
               'py.typed',
+              'pulumi-plugin.json',
           ]
       },
       install_requires=[

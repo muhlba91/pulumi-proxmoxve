@@ -9,9 +9,7 @@ export function getNodes(opts?: pulumi.InvokeOptions): Promise<GetNodesResult> {
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("proxmoxve:Cluster/getNodes:getNodes", {
     }, opts);
 }

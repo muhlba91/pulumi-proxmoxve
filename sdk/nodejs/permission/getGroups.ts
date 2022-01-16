@@ -9,9 +9,7 @@ export function getGroups(opts?: pulumi.InvokeOptions): Promise<GetGroupsResult>
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("proxmoxve:Permission/getGroups:getGroups", {
     }, opts);
 }

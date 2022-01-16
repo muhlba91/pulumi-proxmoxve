@@ -11,6 +11,7 @@ import (
 )
 
 func LookupHosts(ctx *pulumi.Context, args *LookupHostsArgs, opts ...pulumi.InvokeOption) (*LookupHostsResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupHostsResult
 	err := ctx.Invoke("proxmoxve:index/getHosts:getHosts", args, &rv, opts...)
 	if err != nil {

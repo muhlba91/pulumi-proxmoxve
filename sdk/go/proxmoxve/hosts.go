@@ -39,6 +39,7 @@ func NewHosts(ctx *pulumi.Context,
 	if args.NodeName == nil {
 		return nil, errors.New("invalid value for required argument 'NodeName'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Hosts
 	err := ctx.RegisterResource("proxmoxve:index/hosts:Hosts", name, args, &resource, opts...)
 	if err != nil {

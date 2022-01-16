@@ -28,6 +28,7 @@ func NewClusterIPSet(ctx *pulumi.Context,
 		args = &ClusterIPSetArgs{}
 	}
 
+	opts = pkgResourceDefaultOpts(opts)
 	var resource ClusterIPSet
 	err := ctx.RegisterResource("proxmoxve:Cluster/clusterIPSet:ClusterIPSet", name, args, &resource, opts...)
 	if err != nil {

@@ -9,9 +9,7 @@ export function getDatastores(args: GetDatastoresArgs, opts?: pulumi.InvokeOptio
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("proxmoxve:Storage/getDatastores:getDatastores", {
         "nodeName": args.nodeName,
     }, opts);

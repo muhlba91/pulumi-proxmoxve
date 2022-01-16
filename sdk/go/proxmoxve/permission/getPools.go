@@ -8,6 +8,7 @@ import (
 )
 
 func GetPools(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetPoolsResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv GetPoolsResult
 	err := ctx.Invoke("proxmoxve:Permission/getPools:getPools", nil, &rv, opts...)
 	if err != nil {

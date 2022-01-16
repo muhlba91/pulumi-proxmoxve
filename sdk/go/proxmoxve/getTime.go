@@ -11,6 +11,7 @@ import (
 )
 
 func LookupTime(ctx *pulumi.Context, args *LookupTimeArgs, opts ...pulumi.InvokeOption) (*LookupTimeResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupTimeResult
 	err := ctx.Invoke("proxmoxve:index/getTime:getTime", args, &rv, opts...)
 	if err != nil {

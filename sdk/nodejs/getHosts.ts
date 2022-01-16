@@ -10,9 +10,7 @@ export function getHosts(args: GetHostsArgs, opts?: pulumi.InvokeOptions): Promi
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("proxmoxve:index/getHosts:getHosts", {
         "nodeName": args.nodeName,
     }, opts);

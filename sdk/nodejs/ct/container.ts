@@ -137,9 +137,7 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["template"] = args ? args.template : undefined;
             resourceInputs["vmId"] = args ? args.vmId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Container.__pulumiType, name, resourceInputs, opts);
     }
 }

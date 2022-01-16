@@ -11,6 +11,7 @@ import (
 )
 
 func LookupPool(ctx *pulumi.Context, args *LookupPoolArgs, opts ...pulumi.InvokeOption) (*LookupPoolResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupPoolResult
 	err := ctx.Invoke("proxmoxve:Permission/getPool:getPool", args, &rv, opts...)
 	if err != nil {

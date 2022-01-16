@@ -8,6 +8,7 @@ import (
 )
 
 func GetGroups(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetGroupsResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv GetGroupsResult
 	err := ctx.Invoke("proxmoxve:Permission/getGroups:getGroups", nil, &rv, opts...)
 	if err != nil {

@@ -9,9 +9,7 @@ export function getRoles(opts?: pulumi.InvokeOptions): Promise<GetRolesResult> {
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("proxmoxve:Permission/getRoles:getRoles", {
     }, opts);
 }

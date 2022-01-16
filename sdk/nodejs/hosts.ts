@@ -86,9 +86,7 @@ export class Hosts extends pulumi.CustomResource {
             resourceInputs["digest"] = undefined /*out*/;
             resourceInputs["hostnames"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Hosts.__pulumiType, name, resourceInputs, opts);
     }
 }

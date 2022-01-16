@@ -32,6 +32,7 @@ func NewClusterAlias(ctx *pulumi.Context,
 	if args.Cidr == nil {
 		return nil, errors.New("invalid value for required argument 'Cidr'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource ClusterAlias
 	err := ctx.RegisterResource("proxmoxve:Cluster/clusterAlias:ClusterAlias", name, args, &resource, opts...)
 	if err != nil {

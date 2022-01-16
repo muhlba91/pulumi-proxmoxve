@@ -71,9 +71,7 @@ export class Pool extends pulumi.CustomResource {
             resourceInputs["poolId"] = args ? args.poolId : undefined;
             resourceInputs["members"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Pool.__pulumiType, name, resourceInputs, opts);
     }
 }
