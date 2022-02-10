@@ -1,9 +1,12 @@
-/vendor/
+.idea
+.code
+**/vendor/
 .pulumi
 **/bin/
 **/obj/
 Pulumi.*.yaml
-sdk/nodejs/node_modules
+**/node_modules/
+.DS_Store
 
 **/command-output/
 
@@ -11,4 +14,11 @@ sdk/nodejs/node_modules
 *.iml
 
 yarn.lock
-.DS_Store
+**/pulumiManifest.go
+
+ci-scripts
+provider/**/schema.go
+**/version.txt
+**/nuget
+**/dist
+.vscode/

@@ -12,7 +12,7 @@ namespace Pulumi.ProxmoxVE.Cluster
     public static class GetNodes
     {
         public static Task<GetNodesResult> InvokeAsync(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNodesResult>("proxmoxve:Cluster/getNodes:getNodes", InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNodesResult>("proxmoxve:Cluster/getNodes:getNodes", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

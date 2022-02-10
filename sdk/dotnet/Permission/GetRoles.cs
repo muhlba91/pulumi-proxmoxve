@@ -12,7 +12,7 @@ namespace Pulumi.ProxmoxVE.Permission
     public static class GetRoles
     {
         public static Task<GetRolesResult> InvokeAsync(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRolesResult>("proxmoxve:Permission/getRoles:getRoles", InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRolesResult>("proxmoxve:Permission/getRoles:getRoles", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

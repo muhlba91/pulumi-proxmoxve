@@ -1,5 +1,6 @@
 {
     "name": "proxmoxve",
+    "displayName": "ProxmoxVE",
     "description": "A Pulumi package for creating and managing Proxmox VE cloud resources.",
     "keywords": [
         "pulumi",
@@ -11,6 +12,7 @@
     "attribution": "This Pulumi package is based on the [`proxmoxve` Terraform Provider](https://github.com/bpg/terraform-provider-proxmoxve).",
     "repository": "https://github.com/muhlba91/pulumi-proxmoxve",
     "pluginDownloadURL": "https://github.com/muhlba91/pulumi-proxmoxve/releases/download/v${VERSION}",
+    "publisher": "Daniel Muehlbachler-Pietrzykowski",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
     },
@@ -30,7 +32,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 },
                 "nodeName": {
                     "type": "string",
@@ -38,7 +41,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 },
                 "vmId": {
                     "type": "integer",
@@ -46,7 +50,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 }
             },
             "type": "object",
@@ -120,7 +125,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 }
             },
             "type": "object"
@@ -160,7 +166,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 }
             },
             "type": "object"
@@ -260,7 +267,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 },
                 "password": {
                     "type": "string",
@@ -268,7 +276,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 }
             },
             "type": "object"
@@ -358,7 +367,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 },
                 "type": {
                     "type": "string",
@@ -382,7 +392,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 },
                 "name": {
                     "type": "string",
@@ -390,7 +401,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 },
                 "nomatch": {
                     "type": "boolean",
@@ -398,7 +410,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 }
             },
             "type": "object",
@@ -671,7 +684,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 },
                 "checksum": {
                     "type": "string",
@@ -679,7 +693,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 },
                 "fileName": {
                     "type": "string",
@@ -687,7 +702,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 },
                 "insecure": {
                     "type": "boolean",
@@ -695,7 +711,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 },
                 "path": {
                     "type": "string",
@@ -703,7 +720,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 }
             },
             "type": "object",
@@ -719,7 +737,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 },
                 "fileName": {
                     "type": "string",
@@ -727,7 +746,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 },
                 "resize": {
                     "type": "integer",
@@ -735,7 +755,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 }
             },
             "type": "object",
@@ -839,7 +860,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 },
                 "full": {
                     "type": "boolean",
@@ -847,7 +869,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 },
                 "nodeName": {
                     "type": "string",
@@ -855,7 +878,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 },
                 "retries": {
                     "type": "integer",
@@ -863,7 +887,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 },
                 "vmId": {
                     "type": "integer",
@@ -871,7 +896,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 }
             },
             "type": "object",
@@ -959,7 +985,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 },
                 "fileId": {
                     "type": "string",
@@ -967,7 +994,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 },
                 "interface": {
                     "type": "string",
@@ -1044,7 +1072,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 },
                 "dns": {
                     "$ref": "#/types/proxmoxve:VM/VirtualMachineInitializationDns:VirtualMachineInitializationDns",
@@ -1071,7 +1100,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 },
                 "userAccount": {
                     "$ref": "#/types/proxmoxve:VM/VirtualMachineInitializationUserAccount:VirtualMachineInitializationUserAccount",
@@ -1079,7 +1109,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 },
                 "userDataFileId": {
                     "type": "string",
@@ -1087,7 +1118,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 }
             },
             "type": "object"
@@ -1187,7 +1219,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 },
                 "password": {
                     "type": "string",
@@ -1195,7 +1228,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 },
                 "username": {
                     "type": "string",
@@ -1203,7 +1237,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 }
             },
             "type": "object"
@@ -1570,7 +1605,8 @@
                 },
                 "disk": {
                     "$ref": "#/types/proxmoxve:CT/ContainerDisk:ContainerDisk",
-                    "description": "The disks\n"
+                    "description": "The disks\n",
+                    "willReplaceOnChanges": true
                 },
                 "initialization": {
                     "$ref": "#/types/proxmoxve:CT/ContainerInitialization:ContainerInitialization",
@@ -1589,15 +1625,18 @@
                 },
                 "nodeName": {
                     "type": "string",
-                    "description": "The node name\n"
+                    "description": "The node name\n",
+                    "willReplaceOnChanges": true
                 },
                 "operatingSystem": {
                     "$ref": "#/types/proxmoxve:CT/ContainerOperatingSystem:ContainerOperatingSystem",
-                    "description": "The operating system configuration\n"
+                    "description": "The operating system configuration\n",
+                    "willReplaceOnChanges": true
                 },
                 "poolId": {
                     "type": "string",
-                    "description": "The ID of the pool to assign the container to\n"
+                    "description": "The ID of the pool to assign the container to\n",
+                    "willReplaceOnChanges": true
                 },
                 "started": {
                     "type": "boolean",
@@ -1605,11 +1644,13 @@
                 },
                 "template": {
                     "type": "boolean",
-                    "description": "Whether to create a template\n"
+                    "description": "Whether to create a template\n",
+                    "willReplaceOnChanges": true
                 },
                 "vmId": {
                     "type": "integer",
-                    "description": "The VM identifier\n"
+                    "description": "The VM identifier\n",
+                    "willReplaceOnChanges": true
                 }
             },
             "requiredInputs": [
@@ -1636,7 +1677,8 @@
                     },
                     "disk": {
                         "$ref": "#/types/proxmoxve:CT/ContainerDisk:ContainerDisk",
-                        "description": "The disks\n"
+                        "description": "The disks\n",
+                        "willReplaceOnChanges": true
                     },
                     "initialization": {
                         "$ref": "#/types/proxmoxve:CT/ContainerInitialization:ContainerInitialization",
@@ -1655,15 +1697,18 @@
                     },
                     "nodeName": {
                         "type": "string",
-                        "description": "The node name\n"
+                        "description": "The node name\n",
+                        "willReplaceOnChanges": true
                     },
                     "operatingSystem": {
                         "$ref": "#/types/proxmoxve:CT/ContainerOperatingSystem:ContainerOperatingSystem",
-                        "description": "The operating system configuration\n"
+                        "description": "The operating system configuration\n",
+                        "willReplaceOnChanges": true
                     },
                     "poolId": {
                         "type": "string",
-                        "description": "The ID of the pool to assign the container to\n"
+                        "description": "The ID of the pool to assign the container to\n",
+                        "willReplaceOnChanges": true
                     },
                     "started": {
                         "type": "boolean",
@@ -1671,11 +1716,13 @@
                     },
                     "template": {
                         "type": "boolean",
-                        "description": "Whether to create a template\n"
+                        "description": "Whether to create a template\n",
+                        "willReplaceOnChanges": true
                     },
                     "vmId": {
                         "type": "integer",
-                        "description": "The VM identifier\n"
+                        "description": "The VM identifier\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -1763,7 +1810,8 @@
                     "items": {
                         "$ref": "#/types/proxmoxve:Cluster/ClusterIPSetCidr:ClusterIPSetCidr"
                     },
-                    "description": "List of IP or Networks\n"
+                    "description": "List of IP or Networks\n",
+                    "willReplaceOnChanges": true
                 },
                 "comment": {
                     "type": "string",
@@ -1782,7 +1830,8 @@
                         "items": {
                             "$ref": "#/types/proxmoxve:Cluster/ClusterIPSetCidr:ClusterIPSetCidr"
                         },
-                        "description": "List of IP or Networks\n"
+                        "description": "List of IP or Networks\n",
+                        "willReplaceOnChanges": true
                     },
                     "comment": {
                         "type": "string",
@@ -1839,7 +1888,8 @@
                 },
                 "groupId": {
                     "type": "string",
-                    "description": "The group id\n"
+                    "description": "The group id\n",
+                    "willReplaceOnChanges": true
                 }
             },
             "requiredInputs": [
@@ -1861,7 +1911,8 @@
                     },
                     "groupId": {
                         "type": "string",
-                        "description": "The group id\n"
+                        "description": "The group id\n",
+                        "willReplaceOnChanges": true
                     },
                     "members": {
                         "type": "array",
@@ -1903,7 +1954,8 @@
                 },
                 "poolId": {
                     "type": "string",
-                    "description": "The pool id\n"
+                    "description": "The pool id\n",
+                    "willReplaceOnChanges": true
                 }
             },
             "requiredInputs": [
@@ -1925,7 +1977,8 @@
                     },
                     "poolId": {
                         "type": "string",
-                        "description": "The pool id\n"
+                        "description": "The pool id\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -1959,7 +2012,8 @@
                 },
                 "roleId": {
                     "type": "string",
-                    "description": "The role id\n"
+                    "description": "The role id\n",
+                    "willReplaceOnChanges": true
                 }
             },
             "requiredInputs": [
@@ -1978,7 +2032,8 @@
                     },
                     "roleId": {
                         "type": "string",
-                        "description": "The role id\n"
+                        "description": "The role id\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -2090,7 +2145,8 @@
                 },
                 "userId": {
                     "type": "string",
-                    "description": "The user id\n"
+                    "description": "The user id\n",
+                    "willReplaceOnChanges": true
                 }
             },
             "requiredInputs": [
@@ -2148,7 +2204,8 @@
                     },
                     "userId": {
                         "type": "string",
-                        "description": "The user id\n"
+                        "description": "The user id\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -2204,23 +2261,28 @@
             "inputProperties": {
                 "contentType": {
                     "type": "string",
-                    "description": "The content type\n"
+                    "description": "The content type\n",
+                    "willReplaceOnChanges": true
                 },
                 "datastoreId": {
                     "type": "string",
-                    "description": "The datastore id\n"
+                    "description": "The datastore id\n",
+                    "willReplaceOnChanges": true
                 },
                 "nodeName": {
                     "type": "string",
-                    "description": "The node name\n"
+                    "description": "The node name\n",
+                    "willReplaceOnChanges": true
                 },
                 "sourceFile": {
                     "$ref": "#/types/proxmoxve:Storage/FileSourceFile:FileSourceFile",
-                    "description": "The source file\n"
+                    "description": "The source file\n",
+                    "willReplaceOnChanges": true
                 },
                 "sourceRaw": {
                     "$ref": "#/types/proxmoxve:Storage/FileSourceRaw:FileSourceRaw",
-                    "description": "The raw source\n"
+                    "description": "The raw source\n",
+                    "willReplaceOnChanges": true
                 }
             },
             "requiredInputs": [
@@ -2232,15 +2294,18 @@
                 "properties": {
                     "contentType": {
                         "type": "string",
-                        "description": "The content type\n"
+                        "description": "The content type\n",
+                        "willReplaceOnChanges": true
                     },
                     "datastoreId": {
                         "type": "string",
-                        "description": "The datastore id\n"
+                        "description": "The datastore id\n",
+                        "willReplaceOnChanges": true
                     },
                     "fileModificationDate": {
                         "type": "string",
-                        "description": "The file modification date\n"
+                        "description": "The file modification date\n",
+                        "willReplaceOnChanges": true
                     },
                     "fileName": {
                         "type": "string",
@@ -2248,23 +2313,28 @@
                     },
                     "fileSize": {
                         "type": "integer",
-                        "description": "The file size in bytes\n"
+                        "description": "The file size in bytes\n",
+                        "willReplaceOnChanges": true
                     },
                     "fileTag": {
                         "type": "string",
-                        "description": "The file tag\n"
+                        "description": "The file tag\n",
+                        "willReplaceOnChanges": true
                     },
                     "nodeName": {
                         "type": "string",
-                        "description": "The node name\n"
+                        "description": "The node name\n",
+                        "willReplaceOnChanges": true
                     },
                     "sourceFile": {
                         "$ref": "#/types/proxmoxve:Storage/FileSourceFile:FileSourceFile",
-                        "description": "The source file\n"
+                        "description": "The source file\n",
+                        "willReplaceOnChanges": true
                     },
                     "sourceRaw": {
                         "$ref": "#/types/proxmoxve:Storage/FileSourceRaw:FileSourceRaw",
-                        "description": "The raw source\n"
+                        "description": "The raw source\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -2486,7 +2556,8 @@
                     "items": {
                         "$ref": "#/types/proxmoxve:VM/VirtualMachineDisk:VirtualMachineDisk"
                     },
-                    "description": "The disk devices\n"
+                    "description": "The disk devices\n",
+                    "willReplaceOnChanges": true
                 },
                 "initialization": {
                     "$ref": "#/types/proxmoxve:VM/VirtualMachineInitialization:VirtualMachineInitialization",
@@ -2513,7 +2584,8 @@
                 },
                 "nodeName": {
                     "type": "string",
-                    "description": "The node name\n"
+                    "description": "The node name\n",
+                    "willReplaceOnChanges": true
                 },
                 "onBoot": {
                     "type": "boolean",
@@ -2525,7 +2597,8 @@
                 },
                 "poolId": {
                     "type": "string",
-                    "description": "The ID of the pool to assign the virtual machine to\n"
+                    "description": "The ID of the pool to assign the virtual machine to\n",
+                    "willReplaceOnChanges": true
                 },
                 "reboot": {
                     "type": "boolean",
@@ -2548,7 +2621,8 @@
                 },
                 "template": {
                     "type": "boolean",
-                    "description": "Whether to create a template\n"
+                    "description": "Whether to create a template\n",
+                    "willReplaceOnChanges": true
                 },
                 "timeoutClone": {
                     "type": "integer",
@@ -2580,7 +2654,8 @@
                 },
                 "vmId": {
                     "type": "integer",
-                    "description": "The VM identifier\n"
+                    "description": "The VM identifier\n",
+                    "willReplaceOnChanges": true
                 }
             },
             "requiredInputs": [
@@ -2626,7 +2701,8 @@
                         "items": {
                             "$ref": "#/types/proxmoxve:VM/VirtualMachineDisk:VirtualMachineDisk"
                         },
-                        "description": "The disk devices\n"
+                        "description": "The disk devices\n",
+                        "willReplaceOnChanges": true
                     },
                     "initialization": {
                         "$ref": "#/types/proxmoxve:VM/VirtualMachineInitialization:VirtualMachineInitialization",
@@ -2687,7 +2763,8 @@
                     },
                     "nodeName": {
                         "type": "string",
-                        "description": "The node name\n"
+                        "description": "The node name\n",
+                        "willReplaceOnChanges": true
                     },
                     "onBoot": {
                         "type": "boolean",
@@ -2699,7 +2776,8 @@
                     },
                     "poolId": {
                         "type": "string",
-                        "description": "The ID of the pool to assign the virtual machine to\n"
+                        "description": "The ID of the pool to assign the virtual machine to\n",
+                        "willReplaceOnChanges": true
                     },
                     "reboot": {
                         "type": "boolean",
@@ -2722,7 +2800,8 @@
                     },
                     "template": {
                         "type": "boolean",
-                        "description": "Whether to create a template\n"
+                        "description": "Whether to create a template\n",
+                        "willReplaceOnChanges": true
                     },
                     "timeoutClone": {
                         "type": "integer",
@@ -2754,7 +2833,8 @@
                     },
                     "vmId": {
                         "type": "integer",
-                        "description": "The VM identifier\n"
+                        "description": "The VM identifier\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -2847,7 +2927,8 @@
                 },
                 "nodeName": {
                     "type": "string",
-                    "description": "The node name\n"
+                    "description": "The node name\n",
+                    "willReplaceOnChanges": true
                 },
                 "overwrite": {
                     "type": "boolean",
@@ -2888,7 +2969,8 @@
                     },
                     "nodeName": {
                         "type": "string",
-                        "description": "The node name\n"
+                        "description": "The node name\n",
+                        "willReplaceOnChanges": true
                     },
                     "overwrite": {
                         "type": "boolean",
@@ -2958,7 +3040,8 @@
                 },
                 "nodeName": {
                     "type": "string",
-                    "description": "The node name\n"
+                    "description": "The node name\n",
+                    "willReplaceOnChanges": true
                 },
                 "servers": {
                     "type": "array",
@@ -2981,7 +3064,8 @@
                     },
                     "nodeName": {
                         "type": "string",
-                        "description": "The node name\n"
+                        "description": "The node name\n",
+                        "willReplaceOnChanges": true
                     },
                     "servers": {
                         "type": "array",

@@ -2,15 +2,15 @@
 name: Pipeline
 
 on:
+  pull_request:
   push:
     branches:
       - '*'
-    paths-ignore:
-      - CHANGELOG.md
-      - README.md
-      - LICENSE
-      - COPYRIGHT
-      - CODE-OF-CONDUCT.md
+    paths:
+      - 'provider/**'
+      - 'sdk/**'
+      - 'Makefile'
+      - '.goreleaser.yml'
 
 env:
   PROVIDER: proxmoxve
@@ -24,8 +24,8 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        go-version: [ 1.16.x ]
-        golangci-lint-version: [ v1.43.0 ]
+        go-version: [ 1.17.x ]
+        golangci-lint-version: [ v1.46.2 ]
 
     steps:
       - name: Checkout repository
@@ -62,10 +62,10 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        go-version: [ 1.16.x ]
+        go-version: [ 1.17.x ]
         node-version: [ 15 ]
         dotnet-version: [ 3.1.301 ]
-        python-version: [ 3.7 ]
+        python-version: [ 3.9 ]
         language:
           - go
           - nodejs

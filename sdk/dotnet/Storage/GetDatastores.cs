@@ -6,17 +6,16 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.ProxmoxVE.Storage
 {
     public static class GetDatastores
     {
         public static Task<GetDatastoresResult> InvokeAsync(GetDatastoresArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatastoresResult>("proxmoxve:Storage/getDatastores:getDatastores", args ?? new GetDatastoresArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDatastoresResult>("proxmoxve:Storage/getDatastores:getDatastores", args ?? new GetDatastoresArgs(), options.WithDefaults());
 
         public static Output<GetDatastoresResult> Invoke(GetDatastoresInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDatastoresResult>("proxmoxve:Storage/getDatastores:getDatastores", args ?? new GetDatastoresInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDatastoresResult>("proxmoxve:Storage/getDatastores:getDatastores", args ?? new GetDatastoresInvokeArgs(), options.WithDefaults());
     }
 
 

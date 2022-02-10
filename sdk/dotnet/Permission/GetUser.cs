@@ -6,17 +6,16 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.ProxmoxVE.Permission
 {
     public static class GetUser
     {
         public static Task<GetUserResult> InvokeAsync(GetUserArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("proxmoxve:Permission/getUser:getUser", args ?? new GetUserArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("proxmoxve:Permission/getUser:getUser", args ?? new GetUserArgs(), options.WithDefaults());
 
         public static Output<GetUserResult> Invoke(GetUserInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetUserResult>("proxmoxve:Permission/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetUserResult>("proxmoxve:Permission/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
     }
 
 
