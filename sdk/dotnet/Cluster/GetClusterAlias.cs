@@ -6,17 +6,16 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.ProxmoxVE.Cluster
 {
     public static class GetClusterAlias
     {
         public static Task<GetClusterAliasResult> InvokeAsync(GetClusterAliasArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterAliasResult>("proxmoxve:Cluster/getClusterAlias:getClusterAlias", args ?? new GetClusterAliasArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterAliasResult>("proxmoxve:Cluster/getClusterAlias:getClusterAlias", args ?? new GetClusterAliasArgs(), options.WithDefaults());
 
         public static Output<GetClusterAliasResult> Invoke(GetClusterAliasInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetClusterAliasResult>("proxmoxve:Cluster/getClusterAlias:getClusterAlias", args ?? new GetClusterAliasInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetClusterAliasResult>("proxmoxve:Cluster/getClusterAlias:getClusterAlias", args ?? new GetClusterAliasInvokeArgs(), options.WithDefaults());
     }
 
 

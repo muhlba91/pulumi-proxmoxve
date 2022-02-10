@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Authors>Pulumi Corp.</Authors>
-    <Company>Pulumi Corp.</Company>
+    <Authors>Daniel Muehlbachler-Pietrzykowski</Authors>
+    <Company>Daniel Muehlbachler-Pietrzykowski</Company>
     <Description>A Pulumi package for creating and managing Proxmox VE cloud resources.</Description>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/muhlba91/pulumi-proxmoxve</PackageProjectUrl>

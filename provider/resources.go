@@ -55,7 +55,9 @@ func Provider() tfbridge.ProviderInfo {
 	prov := tfbridge.ProviderInfo{
 		P:                    p,
 		Name:                 "proxmoxve",
+		DisplayName:          "ProxmoxVE",
 		Description:          "A Pulumi package for creating and managing Proxmox VE cloud resources.",
+		Publisher:            "Daniel Muehlbachler-Pietrzykowski",
 		Keywords:             []string{"pulumi", "proxmox", "proxmoxve"},
 		License:              "Apache-2.0",
 		Homepage:             "https://github.com/muhlba91/pulumi-proxmoxve",

@@ -3,12 +3,10 @@ linters:
     - deadcode
     - errcheck
     - goconst
-    - gofmt
-    - golint
+    - revive
     - gosec
     - govet
     - ineffassign
-    - interfacer
     - lll
     - megacheck
     - misspell
@@ -19,7 +17,7 @@ linters:
   enable-all: false
 linters-settings:
   lll:
-    line-length: 125
+    line-length: 150
 run:
   skip-files:
     - schema.go
