@@ -25,6 +25,7 @@ jobs:
         with:
           repository: pulumi/pulumi-registry
           path: registry
+          ref: master
           fetch-depth: 0
           token: '${{ secrets.GH_PUSH_TOKEN }}'
 
