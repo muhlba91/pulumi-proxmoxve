@@ -11,10 +11,48 @@
     "license": "Apache-2.0",
     "attribution": "This Pulumi package is based on the [`proxmoxve` Terraform Provider](https://github.com/bpg/terraform-provider-proxmoxve).",
     "repository": "https://github.com/muhlba91/pulumi-proxmoxve",
-    "pluginDownloadURL": "https://github.com/muhlba91/pulumi-proxmoxve/releases/download/v${VERSION}",
+    "pluginDownloadURL": "github://api.github.com/muhlba91/pulumi-proxmoxve",
     "publisher": "Daniel Muehlbachler-Pietrzykowski",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
+    },
+    "language": {
+        "csharp": {
+            "compatibility": "tfbridge20",
+            "namespaces": {
+                "proxmoxve": "ProxmoxVE"
+            },
+            "packageReferences": {
+                "Pulumi": "3.*"
+            }
+        },
+        "go": {
+            "generateExtraInputTypes": true,
+            "generateResourceContainerTypes": true,
+            "importBasePath": "github.com/muhlba91/pulumi-proxmoxve/sdk/go/proxmoxve"
+        },
+        "nodejs": {
+            "compatibility": "tfbridge20",
+            "dependencies": {
+                "@pulumi/pulumi": "^3.0.0"
+            },
+            "devDependencies": {
+                "@types/mime": "^2.0.0",
+                "@types/node": "^10.0.0"
+            },
+            "disableUnionOutputTypes": true,
+            "packageDescription": "A Pulumi package for creating and managing Proxmox VE cloud resources.",
+            "packageName": "@muhlba91/pulumi-proxmoxve",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/bpg/terraform-provider-proxmoxve)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-proxmoxve` repo](https://github.com/pulumi/pulumi-proxmoxve/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`bpg/terraform-provider-proxmoxve` repo](https://github.com/bpg/terraform-provider-proxmoxve/issues).",
+            "typescriptVersion": ""
+        },
+        "python": {
+            "compatibility": "tfbridge20",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/bpg/terraform-provider-proxmoxve)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-proxmoxve` repo](https://github.com/pulumi/pulumi-proxmoxve/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`bpg/terraform-provider-proxmoxve` repo](https://github.com/bpg/terraform-provider-proxmoxve/issues).",
+            "requires": {
+                "pulumi": "\u003e=3.0.0,\u003c4.0.0"
+            }
+        }
     },
     "config": {
         "variables": {
@@ -4023,44 +4061,6 @@
                     "version",
                     "id"
                 ]
-            }
-        }
-    },
-    "language": {
-        "csharp": {
-            "compatibility": "tfbridge20",
-            "namespaces": {
-                "proxmoxve": "ProxmoxVE"
-            },
-            "packageReferences": {
-                "Pulumi": "3.*"
-            }
-        },
-        "go": {
-            "generateExtraInputTypes": true,
-            "generateResourceContainerTypes": true,
-            "importBasePath": "github.com/muhlba91/pulumi-proxmoxve/sdk/go/proxmoxve"
-        },
-        "nodejs": {
-            "compatibility": "tfbridge20",
-            "dependencies": {
-                "@pulumi/pulumi": "^3.0.0"
-            },
-            "devDependencies": {
-                "@types/mime": "^2.0.0",
-                "@types/node": "^10.0.0"
-            },
-            "disableUnionOutputTypes": true,
-            "packageDescription": "A Pulumi package for creating and managing Proxmox VE cloud resources.",
-            "packageName": "@muhlba91/pulumi-proxmoxve",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/bpg/terraform-provider-proxmoxve)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-proxmoxve` repo](https://github.com/pulumi/pulumi-proxmoxve/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`bpg/terraform-provider-proxmoxve` repo](https://github.com/bpg/terraform-provider-proxmoxve/issues).",
-            "typescriptVersion": ""
-        },
-        "python": {
-            "compatibility": "tfbridge20",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/bpg/terraform-provider-proxmoxve)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-proxmoxve` repo](https://github.com/pulumi/pulumi-proxmoxve/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`bpg/terraform-provider-proxmoxve` repo](https://github.com/bpg/terraform-provider-proxmoxve/issues).",
-            "requires": {
-                "pulumi": "\u003e=3.0.0,\u003c4.0.0"
             }
         }
     }

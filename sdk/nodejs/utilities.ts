@@ -50,5 +50,5 @@ export function getVersion(): string {
 
 /** @internal */
 export function resourceOptsDefaults(): any {
-    return { version: getVersion(), pluginDownloadURL: "https://github.com/muhlba91/pulumi-proxmoxve/releases/download/v${VERSION}" };
+    return { version: getVersion(), pluginDownloadURL: "github://api.github.com/muhlba91/pulumi-proxmoxve" };
 }

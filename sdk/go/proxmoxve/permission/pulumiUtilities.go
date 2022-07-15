@@ -88,14 +88,14 @@ func isZero(v interface{}) bool {
 
 // pkgResourceDefaultOpts provides package level defaults to pulumi.OptionResource.
 func pkgResourceDefaultOpts(opts []pulumi.ResourceOption) []pulumi.ResourceOption {
-	defaults := []pulumi.ResourceOption{pulumi.PluginDownloadURL("https://github.com/muhlba91/pulumi-proxmoxve/releases/download/v${VERSION}")}
+	defaults := []pulumi.ResourceOption{pulumi.PluginDownloadURL("github://api.github.com/muhlba91/pulumi-proxmoxve")}
 
 	return append(defaults, opts...)
 }
 
 // pkgInvokeDefaultOpts provides package level defaults to pulumi.OptionInvoke.
 func pkgInvokeDefaultOpts(opts []pulumi.InvokeOption) []pulumi.InvokeOption {
-	defaults := []pulumi.InvokeOption{pulumi.PluginDownloadURL("https://github.com/muhlba91/pulumi-proxmoxve/releases/download/v${VERSION}")}
+	defaults := []pulumi.InvokeOption{pulumi.PluginDownloadURL("github://api.github.com/muhlba91/pulumi-proxmoxve")}
 
 	return append(defaults, opts...)
 }
