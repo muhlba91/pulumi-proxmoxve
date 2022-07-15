@@ -16,13 +16,14 @@ package proxmoxve
 
 import (
 	"fmt"
+	"path/filepath"
+
 	"github.com/bpg/terraform-provider-proxmox/proxmoxtf"
 	"github.com/muhlba91/pulumi-proxmoxve/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
-	"path/filepath"
 )
 
 const (
@@ -63,7 +64,7 @@ func Provider() tfbridge.ProviderInfo {
 		Homepage:             "https://github.com/muhlba91/pulumi-proxmoxve",
 		Repository:           "https://github.com/muhlba91/pulumi-proxmoxve",
 		GitHubOrg:            "bpg",
-		PluginDownloadURL:    "https://github.com/muhlba91/pulumi-proxmoxve/releases/download/v${VERSION}",
+		PluginDownloadURL:    "github://api.github.com/muhlba91/pulumi-proxmoxve",
 		Config:               map[string]*tfbridge.SchemaInfo{},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{

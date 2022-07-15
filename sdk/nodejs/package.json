@@ -24,6 +24,6 @@
     },
     "pulumi": {
         "resource": true,
-        "pluginDownloadURL": "https://github.com/muhlba91/pulumi-proxmoxve/releases/download/v${VERSION}"
+        "server": "github://api.github.com/muhlba91/pulumi-proxmoxve"
     }
 }

@@ -98,6 +98,17 @@ _version_str = str(_version)
 def get_version():
     return _version_str
 
+def get_resource_opts_defaults() -> pulumi.ResourceOptions:
+    return pulumi.ResourceOptions(
+        version=get_version(),
+        plugin_download_url=get_plugin_download_url(),
+    )
+
+def get_invoke_opts_defaults() -> pulumi.InvokeOptions:
+    return pulumi.InvokeOptions(
+        version=get_version(),
+        plugin_download_url=get_plugin_download_url(),
+    )
 
 def get_resource_args_opts(resource_args_type, resource_options_type, *args, **kwargs):
     """
@@ -236,4 +247,4 @@ def lift_output_func(func: typing.Any) -> typing.Callable[[_F], _F]:
     return (lambda _: lifted_func)
 
 def get_plugin_download_url():
-	return "https://github.com/muhlba91/pulumi-proxmoxve/releases/download/v${VERSION}"
+	return "github://api.github.com/muhlba91/pulumi-proxmoxve"
