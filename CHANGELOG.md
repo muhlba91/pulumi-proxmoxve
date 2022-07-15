@@ -1,6 +1,23 @@
 # Changelog
 
 
+## [2.0.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v1.2.0...v2.0.0) (2022-07-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* update to new boilerplate and terraform provider
+
+### Features
+
+* add documentation; update dependencies; fix [#5](https://github.com/muhlba91/pulumi-proxmoxve/issues/5) ([01814f6](https://github.com/muhlba91/pulumi-proxmoxve/commit/01814f6dff8893697fc586757908bde05d6d780f))
+
+
+### Bug Fixes
+
+* **ci:** checkout master of registry ([378af01](https://github.com/muhlba91/pulumi-proxmoxve/commit/378af01b4d9562041e2037864b8d23b973a70dcd))
+* regenerate from tf ([c56e237](https://github.com/muhlba91/pulumi-proxmoxve/commit/c56e237090efde03d60e5a65df607304cacffa25))
+
 ## [1.2.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v1.1.4...v1.2.0) (2022-01-16)
 
 
