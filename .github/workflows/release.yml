@@ -229,3 +229,28 @@ jobs:
           package: ./sdk/nodejs/bin/package.json
           access: public
           token: ${{ secrets.NPM_TOKEN }}
+
+  tag_sdk:
+    runs-on: ubuntu-latest
+    name: Tag SDK Release
+    needs:
+      - publish_provider
+      - publish_sdk
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          token: '${{ secrets.GH_PUSH_TOKEN }}'
+      - name: Setup Git
+        run: |
+          git config --local user.email "${{ env.GITHUB_ACTION }}+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git fetch --tags
+      - name: Tag Go SDK Version
+        run: |
+          git tag -a sdk/${{ env.GITHUB_REF_NAME }} -m sdk/${{ env.GITHUB_REF_NAME }}
+      - name: Push to Repository
+        run: |
+          git push --follow-tags
