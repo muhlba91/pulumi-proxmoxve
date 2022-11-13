@@ -239,7 +239,7 @@ export interface ContainerArgs {
     /**
      * The network interfaces
      */
-    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.CT.ContainerNetworkInterface>[]>;
+    networkInterfaces: pulumi.Input<pulumi.Input<inputs.CT.ContainerNetworkInterface>[]>;
     /**
      * The node name
      */
@@ -247,7 +247,7 @@ export interface ContainerArgs {
     /**
      * The operating system configuration
      */
-    operatingSystem?: pulumi.Input<inputs.CT.ContainerOperatingSystem>;
+    operatingSystem: pulumi.Input<inputs.CT.ContainerOperatingSystem>;
     /**
      * The ID of the pool to assign the container to
      */
@@ -263,5 +263,5 @@ export interface ContainerArgs {
     /**
      * The VM identifier
      */
-    vmId?: pulumi.Input<number>;
+    vmId: pulumi.Input<number>;
 }
