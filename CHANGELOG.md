@@ -1,6 +1,18 @@
 # Changelog
 
 
+## [2.1.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v2.0.0...v2.1.0) (2022-12-02)
+
+
+### Features
+
+* update proxmoxve terraform provider to v0.7.0 ([54f4d9c](https://github.com/muhlba91/pulumi-proxmoxve/commit/54f4d9c40ab354d267b631222613c4e498c3af4f))
+
+
+### Bug Fixes
+
+* **ci:** create tag for go sdk on release ([9af7301](https://github.com/muhlba91/pulumi-proxmoxve/commit/9af730101af90cd92092643c4c48c7da4513caf2))
+
 ## [2.0.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v1.2.0...v2.0.0) (2022-07-15)
 
 
