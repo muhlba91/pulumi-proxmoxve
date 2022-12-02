@@ -249,7 +249,6 @@ jobs:
         run: |
           git config --local user.email "${{ env.GITHUB_ACTION }}+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git fetch --tags
       - name: Tag Go SDK Version
         run: |
           git tag -a sdk/${{ env.GITHUB_REF_NAME }} -m sdk/${{ env.GITHUB_REF_NAME }}
