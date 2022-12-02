@@ -31,7 +31,7 @@ namespace Pulumi.ProxmoxVE.Cluster
         public readonly ImmutableArray<bool> Onlines;
         public readonly ImmutableArray<string> SslFingerprints;
         public readonly ImmutableArray<string> SupportLevels;
-        public readonly ImmutableArray<string> Uptimes;
+        public readonly ImmutableArray<int> Uptimes;
 
         [OutputConstructor]
         private GetNodesResult(
@@ -53,7 +53,7 @@ namespace Pulumi.ProxmoxVE.Cluster
 
             ImmutableArray<string> supportLevels,
 
-            ImmutableArray<string> uptimes)
+            ImmutableArray<int> uptimes)
         {
             CpuCounts = cpuCounts;
             CpuUtilizations = cpuUtilizations;

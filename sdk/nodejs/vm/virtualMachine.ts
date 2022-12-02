@@ -122,7 +122,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly poolId!: pulumi.Output<string | undefined>;
     /**
-     * Wether to reboot vm after creation
+     * Whether to reboot vm after creation
      */
     public readonly reboot!: pulumi.Output<boolean | undefined>;
     /**
@@ -361,7 +361,7 @@ export interface VirtualMachineState {
      */
     poolId?: pulumi.Input<string>;
     /**
-     * Wether to reboot vm after creation
+     * Whether to reboot vm after creation
      */
     reboot?: pulumi.Input<boolean>;
     /**
@@ -491,7 +491,7 @@ export interface VirtualMachineArgs {
      */
     poolId?: pulumi.Input<string>;
     /**
-     * Wether to reboot vm after creation
+     * Whether to reboot vm after creation
      */
     reboot?: pulumi.Input<boolean>;
     /**

@@ -29,5 +29,5 @@ type GetNodesResult struct {
 	Onlines          []bool   `pulumi:"onlines"`
 	SslFingerprints  []string `pulumi:"sslFingerprints"`
 	SupportLevels    []string `pulumi:"supportLevels"`
-	Uptimes          []string `pulumi:"uptimes"`
+	Uptimes          []int    `pulumi:"uptimes"`
 }

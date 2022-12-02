@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.VM.Inputs
 {
 
-    public sealed class VirtualMachineVgaGetArgs : Pulumi.ResourceArgs
+    public sealed class VirtualMachineVgaGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public VirtualMachineVgaGetArgs()
         {
         }
+        public static new VirtualMachineVgaGetArgs Empty => new VirtualMachineVgaGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.VM.Inputs
 {
 
-    public sealed class VirtualMachineMemoryGetArgs : Pulumi.ResourceArgs
+    public sealed class VirtualMachineMemoryGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("dedicated")]
         public Input<int>? Dedicated { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public VirtualMachineMemoryGetArgs()
         {
         }
+        public static new VirtualMachineMemoryGetArgs Empty => new VirtualMachineMemoryGetArgs();
     }
 }

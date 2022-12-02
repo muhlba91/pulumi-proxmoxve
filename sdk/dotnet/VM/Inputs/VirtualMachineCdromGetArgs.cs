@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.VM.Inputs
 {
 
-    public sealed class VirtualMachineCdromGetArgs : Pulumi.ResourceArgs
+    public sealed class VirtualMachineCdromGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public VirtualMachineCdromGetArgs()
         {
         }
+        public static new VirtualMachineCdromGetArgs Empty => new VirtualMachineCdromGetArgs();
     }
 }

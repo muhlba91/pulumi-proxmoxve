@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.Storage.Inputs
 {
 
-    public sealed class FileSourceRawArgs : Pulumi.ResourceArgs
+    public sealed class FileSourceRawArgs : global::Pulumi.ResourceArgs
     {
         [Input("data", required: true)]
         public Input<string> Data { get; set; } = null!;
@@ -24,5 +24,6 @@ namespace Pulumi.ProxmoxVE.Storage.Inputs
         public FileSourceRawArgs()
         {
         }
+        public static new FileSourceRawArgs Empty => new FileSourceRawArgs();
     }
 }

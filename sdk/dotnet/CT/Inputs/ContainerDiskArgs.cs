@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.CT.Inputs
 {
 
-    public sealed class ContainerDiskArgs : Pulumi.ResourceArgs
+    public sealed class ContainerDiskArgs : global::Pulumi.ResourceArgs
     {
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
         public ContainerDiskArgs()
         {
         }
+        public static new ContainerDiskArgs Empty => new ContainerDiskArgs();
     }
 }

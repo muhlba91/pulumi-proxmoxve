@@ -19,7 +19,7 @@ namespace Pulumi.ProxmoxVE
     }
 
 
-    public sealed class GetTimeArgs : Pulumi.InvokeArgs
+    public sealed class GetTimeArgs : global::Pulumi.InvokeArgs
     {
         [Input("nodeName", required: true)]
         public string NodeName { get; set; } = null!;
@@ -27,9 +27,10 @@ namespace Pulumi.ProxmoxVE
         public GetTimeArgs()
         {
         }
+        public static new GetTimeArgs Empty => new GetTimeArgs();
     }
 
-    public sealed class GetTimeInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTimeInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("nodeName", required: true)]
         public Input<string> NodeName { get; set; } = null!;
@@ -37,6 +38,7 @@ namespace Pulumi.ProxmoxVE
         public GetTimeInvokeArgs()
         {
         }
+        public static new GetTimeInvokeArgs Empty => new GetTimeInvokeArgs();
     }
 
 

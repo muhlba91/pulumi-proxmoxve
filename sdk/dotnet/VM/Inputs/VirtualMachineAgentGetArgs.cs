@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.VM.Inputs
 {
 
-    public sealed class VirtualMachineAgentGetArgs : Pulumi.ResourceArgs
+    public sealed class VirtualMachineAgentGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public VirtualMachineAgentGetArgs()
         {
         }
+        public static new VirtualMachineAgentGetArgs Empty => new VirtualMachineAgentGetArgs();
     }
 }

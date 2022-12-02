@@ -21,7 +21,7 @@ type FileSourceFile struct {
 // FileSourceFileInput is an input type that accepts FileSourceFileArgs and FileSourceFileOutput values.
 // You can construct a concrete instance of `FileSourceFileInput` via:
 //
-//          FileSourceFileArgs{...}
+//	FileSourceFileArgs{...}
 type FileSourceFileInput interface {
 	pulumi.Input
 
@@ -60,11 +60,11 @@ func (i FileSourceFileArgs) ToFileSourceFilePtrOutputWithContext(ctx context.Con
 // FileSourceFilePtrInput is an input type that accepts FileSourceFileArgs, FileSourceFilePtr and FileSourceFilePtrOutput values.
 // You can construct a concrete instance of `FileSourceFilePtrInput` via:
 //
-//          FileSourceFileArgs{...}
+//	        FileSourceFileArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FileSourceFilePtrInput interface {
 	pulumi.Input
 
@@ -212,7 +212,7 @@ type FileSourceRaw struct {
 // FileSourceRawInput is an input type that accepts FileSourceRawArgs and FileSourceRawOutput values.
 // You can construct a concrete instance of `FileSourceRawInput` via:
 //
-//          FileSourceRawArgs{...}
+//	FileSourceRawArgs{...}
 type FileSourceRawInput interface {
 	pulumi.Input
 
@@ -249,11 +249,11 @@ func (i FileSourceRawArgs) ToFileSourceRawPtrOutputWithContext(ctx context.Conte
 // FileSourceRawPtrInput is an input type that accepts FileSourceRawArgs, FileSourceRawPtr and FileSourceRawPtrOutput values.
 // You can construct a concrete instance of `FileSourceRawPtrInput` via:
 //
-//          FileSourceRawArgs{...}
+//	        FileSourceRawArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FileSourceRawPtrInput interface {
 	pulumi.Input
 

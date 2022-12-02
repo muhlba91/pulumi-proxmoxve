@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.CT.Inputs
 {
 
-    public sealed class ContainerInitializationArgs : Pulumi.ResourceArgs
+    public sealed class ContainerInitializationArgs : global::Pulumi.ResourceArgs
     {
         [Input("dns")]
         public Input<Inputs.ContainerInitializationDnsArgs>? Dns { get; set; }
@@ -32,5 +32,6 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
         public ContainerInitializationArgs()
         {
         }
+        public static new ContainerInitializationArgs Empty => new ContainerInitializationArgs();
     }
 }

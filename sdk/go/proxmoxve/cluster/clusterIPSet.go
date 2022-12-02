@@ -117,7 +117,7 @@ func (i *ClusterIPSet) ToClusterIPSetOutputWithContext(ctx context.Context) Clus
 // ClusterIPSetArrayInput is an input type that accepts ClusterIPSetArray and ClusterIPSetArrayOutput values.
 // You can construct a concrete instance of `ClusterIPSetArrayInput` via:
 //
-//          ClusterIPSetArray{ ClusterIPSetArgs{...} }
+//	ClusterIPSetArray{ ClusterIPSetArgs{...} }
 type ClusterIPSetArrayInput interface {
 	pulumi.Input
 
@@ -142,7 +142,7 @@ func (i ClusterIPSetArray) ToClusterIPSetArrayOutputWithContext(ctx context.Cont
 // ClusterIPSetMapInput is an input type that accepts ClusterIPSetMap and ClusterIPSetMapOutput values.
 // You can construct a concrete instance of `ClusterIPSetMapInput` via:
 //
-//          ClusterIPSetMap{ "key": ClusterIPSetArgs{...} }
+//	ClusterIPSetMap{ "key": ClusterIPSetArgs{...} }
 type ClusterIPSetMapInput interface {
 	pulumi.Input
 

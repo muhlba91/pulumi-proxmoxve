@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.CT.Inputs
 {
 
-    public sealed class ContainerInitializationIpConfigIpv6GetArgs : Pulumi.ResourceArgs
+    public sealed class ContainerInitializationIpConfigIpv6GetArgs : global::Pulumi.ResourceArgs
     {
         [Input("address")]
         public Input<string>? Address { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
         public ContainerInitializationIpConfigIpv6GetArgs()
         {
         }
+        public static new ContainerInitializationIpConfigIpv6GetArgs Empty => new ContainerInitializationIpConfigIpv6GetArgs();
     }
 }

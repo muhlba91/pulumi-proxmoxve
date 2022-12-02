@@ -124,7 +124,7 @@ func (i *DNS) ToDNSOutputWithContext(ctx context.Context) DNSOutput {
 // DNSArrayInput is an input type that accepts DNSArray and DNSArrayOutput values.
 // You can construct a concrete instance of `DNSArrayInput` via:
 //
-//          DNSArray{ DNSArgs{...} }
+//	DNSArray{ DNSArgs{...} }
 type DNSArrayInput interface {
 	pulumi.Input
 
@@ -149,7 +149,7 @@ func (i DNSArray) ToDNSArrayOutputWithContext(ctx context.Context) DNSArrayOutpu
 // DNSMapInput is an input type that accepts DNSMap and DNSMapOutput values.
 // You can construct a concrete instance of `DNSMapInput` via:
 //
-//          DNSMap{ "key": DNSArgs{...} }
+//	DNSMap{ "key": DNSArgs{...} }
 type DNSMapInput interface {
 	pulumi.Input
 

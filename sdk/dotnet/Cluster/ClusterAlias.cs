@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.Cluster
 {
     [ProxmoxVEResourceType("proxmoxve:Cluster/clusterAlias:ClusterAlias")]
-    public partial class ClusterAlias : Pulumi.CustomResource
+    public partial class ClusterAlias : global::Pulumi.CustomResource
     {
         /// <summary>
         /// IP/CIDR block
@@ -75,7 +75,7 @@ namespace Pulumi.ProxmoxVE.Cluster
         }
     }
 
-    public sealed class ClusterAliasArgs : Pulumi.ResourceArgs
+    public sealed class ClusterAliasArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// IP/CIDR block
@@ -98,9 +98,10 @@ namespace Pulumi.ProxmoxVE.Cluster
         public ClusterAliasArgs()
         {
         }
+        public static new ClusterAliasArgs Empty => new ClusterAliasArgs();
     }
 
-    public sealed class ClusterAliasState : Pulumi.ResourceArgs
+    public sealed class ClusterAliasState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// IP/CIDR block
@@ -123,5 +124,6 @@ namespace Pulumi.ProxmoxVE.Cluster
         public ClusterAliasState()
         {
         }
+        public static new ClusterAliasState Empty => new ClusterAliasState();
     }
 }

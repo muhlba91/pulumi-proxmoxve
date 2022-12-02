@@ -19,7 +19,7 @@ namespace Pulumi.ProxmoxVE.Cluster
     }
 
 
-    public sealed class GetClusterAliasArgs : Pulumi.InvokeArgs
+    public sealed class GetClusterAliasArgs : global::Pulumi.InvokeArgs
     {
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -27,9 +27,10 @@ namespace Pulumi.ProxmoxVE.Cluster
         public GetClusterAliasArgs()
         {
         }
+        public static new GetClusterAliasArgs Empty => new GetClusterAliasArgs();
     }
 
-    public sealed class GetClusterAliasInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetClusterAliasInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -37,6 +38,7 @@ namespace Pulumi.ProxmoxVE.Cluster
         public GetClusterAliasInvokeArgs()
         {
         }
+        public static new GetClusterAliasInvokeArgs Empty => new GetClusterAliasInvokeArgs();
     }
 
 

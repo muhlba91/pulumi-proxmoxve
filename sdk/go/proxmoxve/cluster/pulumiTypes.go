@@ -19,7 +19,7 @@ type ClusterIPSetCidr struct {
 // ClusterIPSetCidrInput is an input type that accepts ClusterIPSetCidrArgs and ClusterIPSetCidrOutput values.
 // You can construct a concrete instance of `ClusterIPSetCidrInput` via:
 //
-//          ClusterIPSetCidrArgs{...}
+//	ClusterIPSetCidrArgs{...}
 type ClusterIPSetCidrInput interface {
 	pulumi.Input
 
@@ -48,7 +48,7 @@ func (i ClusterIPSetCidrArgs) ToClusterIPSetCidrOutputWithContext(ctx context.Co
 // ClusterIPSetCidrArrayInput is an input type that accepts ClusterIPSetCidrArray and ClusterIPSetCidrArrayOutput values.
 // You can construct a concrete instance of `ClusterIPSetCidrArrayInput` via:
 //
-//          ClusterIPSetCidrArray{ ClusterIPSetCidrArgs{...} }
+//	ClusterIPSetCidrArray{ ClusterIPSetCidrArgs{...} }
 type ClusterIPSetCidrArrayInput interface {
 	pulumi.Input
 

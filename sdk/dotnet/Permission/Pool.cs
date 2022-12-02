@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.Permission
 {
     [ProxmoxVEResourceType("proxmoxve:Permission/pool:Pool")]
-    public partial class Pool : Pulumi.CustomResource
+    public partial class Pool : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The pool comment
@@ -75,7 +75,7 @@ namespace Pulumi.ProxmoxVE.Permission
         }
     }
 
-    public sealed class PoolArgs : Pulumi.ResourceArgs
+    public sealed class PoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The pool comment
@@ -92,9 +92,10 @@ namespace Pulumi.ProxmoxVE.Permission
         public PoolArgs()
         {
         }
+        public static new PoolArgs Empty => new PoolArgs();
     }
 
-    public sealed class PoolState : Pulumi.ResourceArgs
+    public sealed class PoolState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The pool comment
@@ -123,5 +124,6 @@ namespace Pulumi.ProxmoxVE.Permission
         public PoolState()
         {
         }
+        public static new PoolState Empty => new PoolState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.Permission
 {
     [ProxmoxVEResourceType("proxmoxve:Permission/group:Group")]
-    public partial class Group : Pulumi.CustomResource
+    public partial class Group : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The access control list
@@ -81,7 +81,7 @@ namespace Pulumi.ProxmoxVE.Permission
         }
     }
 
-    public sealed class GroupArgs : Pulumi.ResourceArgs
+    public sealed class GroupArgs : global::Pulumi.ResourceArgs
     {
         [Input("acls")]
         private InputList<Inputs.GroupAclArgs>? _acls;
@@ -110,9 +110,10 @@ namespace Pulumi.ProxmoxVE.Permission
         public GroupArgs()
         {
         }
+        public static new GroupArgs Empty => new GroupArgs();
     }
 
-    public sealed class GroupState : Pulumi.ResourceArgs
+    public sealed class GroupState : global::Pulumi.ResourceArgs
     {
         [Input("acls")]
         private InputList<Inputs.GroupAclGetArgs>? _acls;
@@ -153,5 +154,6 @@ namespace Pulumi.ProxmoxVE.Permission
         public GroupState()
         {
         }
+        public static new GroupState Empty => new GroupState();
     }
 }

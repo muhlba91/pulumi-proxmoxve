@@ -231,7 +231,7 @@ func (i *Container) ToContainerOutputWithContext(ctx context.Context) ContainerO
 // ContainerArrayInput is an input type that accepts ContainerArray and ContainerArrayOutput values.
 // You can construct a concrete instance of `ContainerArrayInput` via:
 //
-//          ContainerArray{ ContainerArgs{...} }
+//	ContainerArray{ ContainerArgs{...} }
 type ContainerArrayInput interface {
 	pulumi.Input
 
@@ -256,7 +256,7 @@ func (i ContainerArray) ToContainerArrayOutputWithContext(ctx context.Context) C
 // ContainerMapInput is an input type that accepts ContainerMap and ContainerMapOutput values.
 // You can construct a concrete instance of `ContainerMapInput` via:
 //
-//          ContainerMap{ "key": ContainerArgs{...} }
+//	ContainerMap{ "key": ContainerArgs{...} }
 type ContainerMapInput interface {
 	pulumi.Input
 

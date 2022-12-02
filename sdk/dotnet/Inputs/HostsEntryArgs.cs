@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.Inputs
 {
 
-    public sealed class HostsEntryArgs : Pulumi.ResourceArgs
+    public sealed class HostsEntryArgs : global::Pulumi.ResourceArgs
     {
         [Input("address", required: true)]
         public Input<string> Address { get; set; } = null!;
@@ -26,5 +26,6 @@ namespace Pulumi.ProxmoxVE.Inputs
         public HostsEntryArgs()
         {
         }
+        public static new HostsEntryArgs Empty => new HostsEntryArgs();
     }
 }

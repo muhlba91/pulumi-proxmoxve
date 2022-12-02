@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE
 {
     [ProxmoxVEResourceType("proxmoxve:index/dNS:DNS")]
-    public partial class DNS : Pulumi.CustomResource
+    public partial class DNS : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The DNS search domain
@@ -75,7 +75,7 @@ namespace Pulumi.ProxmoxVE
         }
     }
 
-    public sealed class DNSArgs : Pulumi.ResourceArgs
+    public sealed class DNSArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The DNS search domain
@@ -104,9 +104,10 @@ namespace Pulumi.ProxmoxVE
         public DNSArgs()
         {
         }
+        public static new DNSArgs Empty => new DNSArgs();
     }
 
-    public sealed class DNSState : Pulumi.ResourceArgs
+    public sealed class DNSState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The DNS search domain
@@ -135,5 +136,6 @@ namespace Pulumi.ProxmoxVE
         public DNSState()
         {
         }
+        public static new DNSState Empty => new DNSState();
     }
 }

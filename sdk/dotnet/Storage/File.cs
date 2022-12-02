@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.Storage
 {
     [ProxmoxVEResourceType("proxmoxve:Storage/file:File")]
-    public partial class File : Pulumi.CustomResource
+    public partial class File : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The content type
@@ -111,7 +111,7 @@ namespace Pulumi.ProxmoxVE.Storage
         }
     }
 
-    public sealed class FileArgs : Pulumi.ResourceArgs
+    public sealed class FileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The content type
@@ -146,9 +146,10 @@ namespace Pulumi.ProxmoxVE.Storage
         public FileArgs()
         {
         }
+        public static new FileArgs Empty => new FileArgs();
     }
 
-    public sealed class FileState : Pulumi.ResourceArgs
+    public sealed class FileState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The content type
@@ -207,5 +208,6 @@ namespace Pulumi.ProxmoxVE.Storage
         public FileState()
         {
         }
+        public static new FileState Empty => new FileState();
     }
 }

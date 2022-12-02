@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.Storage.Inputs
 {
 
-    public sealed class FileSourceFileArgs : Pulumi.ResourceArgs
+    public sealed class FileSourceFileArgs : global::Pulumi.ResourceArgs
     {
         [Input("changed")]
         public Input<bool>? Changed { get; set; }
@@ -30,5 +30,6 @@ namespace Pulumi.ProxmoxVE.Storage.Inputs
         public FileSourceFileArgs()
         {
         }
+        public static new FileSourceFileArgs Empty => new FileSourceFileArgs();
     }
 }

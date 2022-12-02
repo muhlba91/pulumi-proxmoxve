@@ -287,17 +287,23 @@ class VirtualMachineDisk(dict):
     def __init__(__self__, *,
                  interface: str,
                  datastore_id: Optional[str] = None,
+                 discard: Optional[str] = None,
                  file_format: Optional[str] = None,
                  file_id: Optional[str] = None,
+                 iothread: Optional[bool] = None,
                  size: Optional[int] = None,
                  speed: Optional['outputs.VirtualMachineDiskSpeed'] = None):
         pulumi.set(__self__, "interface", interface)
         if datastore_id is not None:
             pulumi.set(__self__, "datastore_id", datastore_id)
+        if discard is not None:
+            pulumi.set(__self__, "discard", discard)
         if file_format is not None:
             pulumi.set(__self__, "file_format", file_format)
         if file_id is not None:
             pulumi.set(__self__, "file_id", file_id)
+        if iothread is not None:
+            pulumi.set(__self__, "iothread", iothread)
         if size is not None:
             pulumi.set(__self__, "size", size)
         if speed is not None:
@@ -314,6 +320,11 @@ class VirtualMachineDisk(dict):
         return pulumi.get(self, "datastore_id")
 
     @property
+    @pulumi.getter
+    def discard(self) -> Optional[str]:
+        return pulumi.get(self, "discard")
+
+    @property
     @pulumi.getter(name="fileFormat")
     def file_format(self) -> Optional[str]:
         return pulumi.get(self, "file_format")
@@ -322,6 +333,11 @@ class VirtualMachineDisk(dict):
     @pulumi.getter(name="fileId")
     def file_id(self) -> Optional[str]:
         return pulumi.get(self, "file_id")
+
+    @property
+    @pulumi.getter
+    def iothread(self) -> Optional[bool]:
+        return pulumi.get(self, "iothread")
 
     @property
     @pulumi.getter
@@ -403,6 +419,8 @@ class VirtualMachineInitialization(dict):
             suggest = "user_account"
         elif key == "userDataFileId":
             suggest = "user_data_file_id"
+        elif key == "vendorDataFileId":
+            suggest = "vendor_data_file_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in VirtualMachineInitialization. Access the value via the '{suggest}' property getter instead.")
@@ -421,7 +439,8 @@ class VirtualMachineInitialization(dict):
                  ip_configs: Optional[Sequence['outputs.VirtualMachineInitializationIpConfig']] = None,
                  type: Optional[str] = None,
                  user_account: Optional['outputs.VirtualMachineInitializationUserAccount'] = None,
-                 user_data_file_id: Optional[str] = None):
+                 user_data_file_id: Optional[str] = None,
+                 vendor_data_file_id: Optional[str] = None):
         if datastore_id is not None:
             pulumi.set(__self__, "datastore_id", datastore_id)
         if dns is not None:
@@ -434,6 +453,8 @@ class VirtualMachineInitialization(dict):
             pulumi.set(__self__, "user_account", user_account)
         if user_data_file_id is not None:
             pulumi.set(__self__, "user_data_file_id", user_data_file_id)
+        if vendor_data_file_id is not None:
+            pulumi.set(__self__, "vendor_data_file_id", vendor_data_file_id)
 
     @property
     @pulumi.getter(name="datastoreId")
@@ -464,6 +485,11 @@ class VirtualMachineInitialization(dict):
     @pulumi.getter(name="userDataFileId")
     def user_data_file_id(self) -> Optional[str]:
         return pulumi.get(self, "user_data_file_id")
+
+    @property
+    @pulumi.getter(name="vendorDataFileId")
+    def vendor_data_file_id(self) -> Optional[str]:
+        return pulumi.get(self, "vendor_data_file_id")
 
 
 @pulumi.output_type

@@ -117,7 +117,7 @@ func (i *Pool) ToPoolOutputWithContext(ctx context.Context) PoolOutput {
 // PoolArrayInput is an input type that accepts PoolArray and PoolArrayOutput values.
 // You can construct a concrete instance of `PoolArrayInput` via:
 //
-//          PoolArray{ PoolArgs{...} }
+//	PoolArray{ PoolArgs{...} }
 type PoolArrayInput interface {
 	pulumi.Input
 
@@ -142,7 +142,7 @@ func (i PoolArray) ToPoolArrayOutputWithContext(ctx context.Context) PoolArrayOu
 // PoolMapInput is an input type that accepts PoolMap and PoolMapOutput values.
 // You can construct a concrete instance of `PoolMapInput` via:
 //
-//          PoolMap{ "key": PoolArgs{...} }
+//	PoolMap{ "key": PoolArgs{...} }
 type PoolMapInput interface {
 	pulumi.Input
 

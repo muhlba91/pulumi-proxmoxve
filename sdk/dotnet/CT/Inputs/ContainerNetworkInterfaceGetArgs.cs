@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.CT.Inputs
 {
 
-    public sealed class ContainerNetworkInterfaceGetArgs : Pulumi.ResourceArgs
+    public sealed class ContainerNetworkInterfaceGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("bridge")]
         public Input<string>? Bridge { get; set; }
@@ -33,5 +33,6 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
         public ContainerNetworkInterfaceGetArgs()
         {
         }
+        public static new ContainerNetworkInterfaceGetArgs Empty => new ContainerNetworkInterfaceGetArgs();
     }
 }

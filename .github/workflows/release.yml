@@ -198,9 +198,9 @@ jobs:
           name: dotnet-sdk.tar.gz
           path: ${{ github.workspace}}/sdk/
       - name: Uncompress .NET SDK
-        run: tar -zxf ${{github.workspace}}/sdk/dotnet.tar.gz -C ${{github.workspace}}/sdk/dotnet
+        run: tar -zxf ${{ github.workspace }}/sdk/dotnet.tar.gz -C ${{ github.workspace }}/sdk/dotnet
       - name: Publish .NET SDK
-        run: find "${{github.workspace}}/sdk/dotnet/bin/Debug/" -name 'Pulumi.*.nupkg' -exec dotnet nuget push -k "${{ secrets.NUGET_PUBLISH_KEY }}" -s https://api.nuget.org/v3/index.json {} ';'
+        run: find "${{ github.workspace }}/sdk/dotnet/bin/Debug/" -name 'Pulumi.*.nupkg' -exec dotnet nuget push -k "${{ secrets.NUGET_PUBLISH_KEY }}" -s https://api.nuget.org/v3/index.json {} ';'
 
       - name: Download Python SDK
         uses: actions/download-artifact@v2
@@ -208,13 +208,13 @@ jobs:
           name: python-sdk.tar.gz
           path: ${{ github.workspace}}/sdk/
       - name: Uncompress Python SDK
-        run: tar -zxf ${{github.workspace}}/sdk/python.tar.gz -C ${{github.workspace}}/sdk/python
+        run: tar -zxf ${{ github.workspace }}/sdk/python.tar.gz -C ${{ github.workspace }}/sdk/python
       - name: Publish Python SDK
         uses: pypa/gh-action-pypi-publish@master
         with:
           password: '${{ secrets.PYPI_PASSWORD }}'
           skip_existing: true
-          packages_dir: '${{github.workspace}}/sdk/python/bin/dist/'
+          packages_dir: '${{ github.workspace }}/sdk/python/bin/dist/'
 
       - name: Download NodeJS SDK
         uses: actions/download-artifact@v2
@@ -222,7 +222,9 @@ jobs:
           name: nodejs-sdk.tar.gz
           path: ${{ github.workspace}}/sdk/
       - name: Uncompress NodeJS SDK
-        run: tar -zxf ${{github.workspace}}/sdk/nodejs.tar.gz -C ${{github.workspace}}/sdk/nodejs
+        run: tar -zxf ${{ github.workspace }}/sdk/nodejs.tar.gz -C ${{ github.workspace }}/sdk/nodejs
+      - name: Copy Over NodeJS Scripts
+        run: cp -rf ${{ github.workspace }}/sdk/nodejs/scripts ${{ github.workspace }}/sdk/nodejs/bin/
       - name: Publish NodeJS SDK
         uses: JS-DevTools/npm-publish@v1
         with:

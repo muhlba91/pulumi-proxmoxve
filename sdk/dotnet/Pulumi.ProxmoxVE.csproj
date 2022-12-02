@@ -4,7 +4,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Daniel Muehlbachler-Pietrzykowski</Authors>
     <Company>Daniel Muehlbachler-Pietrzykowski</Company>
-    <Description>A Pulumi package for creating and managing Proxmox VE cloud resources.</Description>
+    <Description>A Pulumi package for creating and managing Proxmox Virtual Environment cloud resources.</Description>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/muhlba91/pulumi-proxmoxve</PackageProjectUrl>
     <RepositoryUrl>https://github.com/muhlba91/pulumi-proxmoxve</RepositoryUrl>

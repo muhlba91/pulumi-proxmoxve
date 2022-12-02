@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.Inputs
 {
 
-    public sealed class ProviderVirtualEnvironmentArgs : Pulumi.ResourceArgs
+    public sealed class ProviderVirtualEnvironmentArgs : global::Pulumi.ResourceArgs
     {
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }
@@ -30,5 +30,6 @@ namespace Pulumi.ProxmoxVE.Inputs
         public ProviderVirtualEnvironmentArgs()
         {
         }
+        public static new ProviderVirtualEnvironmentArgs Empty => new ProviderVirtualEnvironmentArgs();
     }
 }

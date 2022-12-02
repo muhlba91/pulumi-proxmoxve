@@ -39,7 +39,7 @@ def readme():
 
 setup(name='pulumi_proxmoxve',
       version=VERSION,
-      description="A Pulumi package for creating and managing Proxmox VE cloud resources.",
+      description="A Pulumi package for creating and managing Proxmox Virtual Environment cloud resources.",
       long_description=readme(),
       long_description_content_type='text/markdown',
       cmdclass={

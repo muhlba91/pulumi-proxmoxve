@@ -14,9 +14,11 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     public sealed class VirtualMachineDisk
     {
         public readonly string? DatastoreId;
+        public readonly string? Discard;
         public readonly string? FileFormat;
         public readonly string? FileId;
         public readonly string Interface;
+        public readonly bool? Iothread;
         public readonly int? Size;
         public readonly Outputs.VirtualMachineDiskSpeed? Speed;
 
@@ -24,20 +26,26 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         private VirtualMachineDisk(
             string? datastoreId,
 
+            string? discard,
+
             string? fileFormat,
 
             string? fileId,
 
             string @interface,
 
+            bool? iothread,
+
             int? size,
 
             Outputs.VirtualMachineDiskSpeed? speed)
         {
             DatastoreId = datastoreId;
+            Discard = discard;
             FileFormat = fileFormat;
             FileId = fileId;
             Interface = @interface;
+            Iothread = iothread;
             Size = size;
             Speed = speed;
         }

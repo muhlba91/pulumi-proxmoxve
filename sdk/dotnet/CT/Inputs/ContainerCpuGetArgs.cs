@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.CT.Inputs
 {
 
-    public sealed class ContainerCpuGetArgs : Pulumi.ResourceArgs
+    public sealed class ContainerCpuGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("architecture")]
         public Input<string>? Architecture { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
         public ContainerCpuGetArgs()
         {
         }
+        public static new ContainerCpuGetArgs Empty => new ContainerCpuGetArgs();
     }
 }

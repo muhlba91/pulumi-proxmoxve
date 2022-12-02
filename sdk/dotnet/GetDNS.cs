@@ -19,7 +19,7 @@ namespace Pulumi.ProxmoxVE
     }
 
 
-    public sealed class GetDNSArgs : Pulumi.InvokeArgs
+    public sealed class GetDNSArgs : global::Pulumi.InvokeArgs
     {
         [Input("nodeName", required: true)]
         public string NodeName { get; set; } = null!;
@@ -27,9 +27,10 @@ namespace Pulumi.ProxmoxVE
         public GetDNSArgs()
         {
         }
+        public static new GetDNSArgs Empty => new GetDNSArgs();
     }
 
-    public sealed class GetDNSInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDNSInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("nodeName", required: true)]
         public Input<string> NodeName { get; set; } = null!;
@@ -37,6 +38,7 @@ namespace Pulumi.ProxmoxVE
         public GetDNSInvokeArgs()
         {
         }
+        public static new GetDNSInvokeArgs Empty => new GetDNSInvokeArgs();
     }
 
 

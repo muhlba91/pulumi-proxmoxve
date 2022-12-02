@@ -19,7 +19,7 @@ namespace Pulumi.ProxmoxVE.Permission
     }
 
 
-    public sealed class GetPoolArgs : Pulumi.InvokeArgs
+    public sealed class GetPoolArgs : global::Pulumi.InvokeArgs
     {
         [Input("poolId", required: true)]
         public string PoolId { get; set; } = null!;
@@ -27,9 +27,10 @@ namespace Pulumi.ProxmoxVE.Permission
         public GetPoolArgs()
         {
         }
+        public static new GetPoolArgs Empty => new GetPoolArgs();
     }
 
-    public sealed class GetPoolInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetPoolInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("poolId", required: true)]
         public Input<string> PoolId { get; set; } = null!;
@@ -37,6 +38,7 @@ namespace Pulumi.ProxmoxVE.Permission
         public GetPoolInvokeArgs()
         {
         }
+        public static new GetPoolInvokeArgs Empty => new GetPoolInvokeArgs();
     }
 
 

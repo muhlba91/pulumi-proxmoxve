@@ -1,7 +1,7 @@
 {
     "name": "@muhlba91/pulumi-proxmoxve",
     "version": "${VERSION}",
-    "description": "A Pulumi package for creating and managing Proxmox VE cloud resources.",
+    "description": "A Pulumi package for creating and managing Proxmox Virtual Environment cloud resources.",
     "keywords": [
         "pulumi",
         "proxmox",
@@ -24,6 +24,7 @@
     },
     "pulumi": {
         "resource": true,
+        "name": "proxmoxve",
         "server": "github://api.github.com/muhlba91/pulumi-proxmoxve"
     }
 }

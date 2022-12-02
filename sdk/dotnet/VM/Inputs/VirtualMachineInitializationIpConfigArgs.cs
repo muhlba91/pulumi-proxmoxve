@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.VM.Inputs
 {
 
-    public sealed class VirtualMachineInitializationIpConfigArgs : Pulumi.ResourceArgs
+    public sealed class VirtualMachineInitializationIpConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("ipv4")]
         public Input<Inputs.VirtualMachineInitializationIpConfigIpv4Args>? Ipv4 { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public VirtualMachineInitializationIpConfigArgs()
         {
         }
+        public static new VirtualMachineInitializationIpConfigArgs Empty => new VirtualMachineInitializationIpConfigArgs();
     }
 }

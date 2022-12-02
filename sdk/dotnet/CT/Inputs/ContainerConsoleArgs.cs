@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.CT.Inputs
 {
 
-    public sealed class ContainerConsoleArgs : Pulumi.ResourceArgs
+    public sealed class ContainerConsoleArgs : global::Pulumi.ResourceArgs
     {
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
         public ContainerConsoleArgs()
         {
         }
+        public static new ContainerConsoleArgs Empty => new ContainerConsoleArgs();
     }
 }

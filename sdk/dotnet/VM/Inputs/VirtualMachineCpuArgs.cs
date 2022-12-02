@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.VM.Inputs
 {
 
-    public sealed class VirtualMachineCpuArgs : Pulumi.ResourceArgs
+    public sealed class VirtualMachineCpuArgs : global::Pulumi.ResourceArgs
     {
         [Input("architecture")]
         public Input<string>? Architecture { get; set; }
@@ -41,5 +41,6 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public VirtualMachineCpuArgs()
         {
         }
+        public static new VirtualMachineCpuArgs Empty => new VirtualMachineCpuArgs();
     }
 }

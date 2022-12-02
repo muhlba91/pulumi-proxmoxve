@@ -32,13 +32,13 @@ type GetDatastoresResult struct {
 	DatastoreIds []string   `pulumi:"datastoreIds"`
 	Enableds     []bool     `pulumi:"enableds"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string `pulumi:"id"`
-	NodeName        string `pulumi:"nodeName"`
-	Shareds         []bool `pulumi:"shareds"`
-	SpaceAvailables []int  `pulumi:"spaceAvailables"`
-	SpaceTotals     []int  `pulumi:"spaceTotals"`
-	SpaceUseds      []int  `pulumi:"spaceUseds"`
-	Types           []int  `pulumi:"types"`
+	Id              string   `pulumi:"id"`
+	NodeName        string   `pulumi:"nodeName"`
+	Shareds         []bool   `pulumi:"shareds"`
+	SpaceAvailables []int    `pulumi:"spaceAvailables"`
+	SpaceTotals     []int    `pulumi:"spaceTotals"`
+	SpaceUseds      []int    `pulumi:"spaceUseds"`
+	Types           []string `pulumi:"types"`
 }
 
 func GetDatastoresOutput(ctx *pulumi.Context, args GetDatastoresOutputArgs, opts ...pulumi.InvokeOption) GetDatastoresResultOutput {
@@ -119,8 +119,8 @@ func (o GetDatastoresResultOutput) SpaceUseds() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetDatastoresResult) []int { return v.SpaceUseds }).(pulumi.IntArrayOutput)
 }
 
-func (o GetDatastoresResultOutput) Types() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v GetDatastoresResult) []int { return v.Types }).(pulumi.IntArrayOutput)
+func (o GetDatastoresResultOutput) Types() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDatastoresResult) []string { return v.Types }).(pulumi.StringArrayOutput)
 }
 
 func init() {

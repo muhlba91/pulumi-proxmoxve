@@ -132,7 +132,7 @@ func (i *Hosts) ToHostsOutputWithContext(ctx context.Context) HostsOutput {
 // HostsArrayInput is an input type that accepts HostsArray and HostsArrayOutput values.
 // You can construct a concrete instance of `HostsArrayInput` via:
 //
-//          HostsArray{ HostsArgs{...} }
+//	HostsArray{ HostsArgs{...} }
 type HostsArrayInput interface {
 	pulumi.Input
 
@@ -157,7 +157,7 @@ func (i HostsArray) ToHostsArrayOutputWithContext(ctx context.Context) HostsArra
 // HostsMapInput is an input type that accepts HostsMap and HostsMapOutput values.
 // You can construct a concrete instance of `HostsMapInput` via:
 //
-//          HostsMap{ "key": HostsArgs{...} }
+//	HostsMap{ "key": HostsArgs{...} }
 type HostsMapInput interface {
 	pulumi.Input
 

@@ -19,7 +19,7 @@ namespace Pulumi.ProxmoxVE.Permission
     }
 
 
-    public sealed class GetRoleArgs : Pulumi.InvokeArgs
+    public sealed class GetRoleArgs : global::Pulumi.InvokeArgs
     {
         [Input("roleId", required: true)]
         public string RoleId { get; set; } = null!;
@@ -27,9 +27,10 @@ namespace Pulumi.ProxmoxVE.Permission
         public GetRoleArgs()
         {
         }
+        public static new GetRoleArgs Empty => new GetRoleArgs();
     }
 
-    public sealed class GetRoleInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRoleInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("roleId", required: true)]
         public Input<string> RoleId { get; set; } = null!;
@@ -37,6 +38,7 @@ namespace Pulumi.ProxmoxVE.Permission
         public GetRoleInvokeArgs()
         {
         }
+        public static new GetRoleInvokeArgs Empty => new GetRoleInvokeArgs();
     }
 
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.VM.Inputs
 {
 
-    public sealed class VirtualMachineInitializationDnsArgs : Pulumi.ResourceArgs
+    public sealed class VirtualMachineInitializationDnsArgs : global::Pulumi.ResourceArgs
     {
         [Input("domain")]
         public Input<string>? Domain { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public VirtualMachineInitializationDnsArgs()
         {
         }
+        public static new VirtualMachineInitializationDnsArgs Empty => new VirtualMachineInitializationDnsArgs();
     }
 }

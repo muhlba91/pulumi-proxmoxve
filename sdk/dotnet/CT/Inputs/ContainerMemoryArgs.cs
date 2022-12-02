@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.CT.Inputs
 {
 
-    public sealed class ContainerMemoryArgs : Pulumi.ResourceArgs
+    public sealed class ContainerMemoryArgs : global::Pulumi.ResourceArgs
     {
         [Input("dedicated")]
         public Input<int>? Dedicated { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
         public ContainerMemoryArgs()
         {
         }
+        public static new ContainerMemoryArgs Empty => new ContainerMemoryArgs();
     }
 }

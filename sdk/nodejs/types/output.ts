@@ -198,9 +198,11 @@ export namespace VM {
 
     export interface VirtualMachineDisk {
         datastoreId?: string;
+        discard?: string;
         fileFormat?: string;
         fileId?: string;
         interface: string;
+        iothread?: boolean;
         size?: number;
         speed?: outputs.VM.VirtualMachineDiskSpeed;
     }
@@ -219,6 +221,7 @@ export namespace VM {
         type?: string;
         userAccount?: outputs.VM.VirtualMachineInitializationUserAccount;
         userDataFileId?: string;
+        vendorDataFileId?: string;
     }
 
     export interface VirtualMachineInitializationDns {

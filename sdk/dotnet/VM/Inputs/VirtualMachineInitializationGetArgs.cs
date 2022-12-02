@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.VM.Inputs
 {
 
-    public sealed class VirtualMachineInitializationGetArgs : Pulumi.ResourceArgs
+    public sealed class VirtualMachineInitializationGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
@@ -35,8 +35,12 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         [Input("userDataFileId")]
         public Input<string>? UserDataFileId { get; set; }
 
+        [Input("vendorDataFileId")]
+        public Input<string>? VendorDataFileId { get; set; }
+
         public VirtualMachineInitializationGetArgs()
         {
         }
+        public static new VirtualMachineInitializationGetArgs Empty => new VirtualMachineInitializationGetArgs();
     }
 }

@@ -58,7 +58,7 @@ type VirtualMachine struct {
 	OperatingSystem VirtualMachineOperatingSystemPtrOutput `pulumi:"operatingSystem"`
 	// The ID of the pool to assign the virtual machine to
 	PoolId pulumi.StringPtrOutput `pulumi:"poolId"`
-	// Wether to reboot vm after creation
+	// Whether to reboot vm after creation
 	Reboot pulumi.BoolPtrOutput `pulumi:"reboot"`
 	// The serial devices
 	SerialDevices VirtualMachineSerialDeviceArrayOutput `pulumi:"serialDevices"`
@@ -163,7 +163,7 @@ type virtualMachineState struct {
 	OperatingSystem *VirtualMachineOperatingSystem `pulumi:"operatingSystem"`
 	// The ID of the pool to assign the virtual machine to
 	PoolId *string `pulumi:"poolId"`
-	// Wether to reboot vm after creation
+	// Whether to reboot vm after creation
 	Reboot *bool `pulumi:"reboot"`
 	// The serial devices
 	SerialDevices []VirtualMachineSerialDevice `pulumi:"serialDevices"`
@@ -236,7 +236,7 @@ type VirtualMachineState struct {
 	OperatingSystem VirtualMachineOperatingSystemPtrInput
 	// The ID of the pool to assign the virtual machine to
 	PoolId pulumi.StringPtrInput
-	// Wether to reboot vm after creation
+	// Whether to reboot vm after creation
 	Reboot pulumi.BoolPtrInput
 	// The serial devices
 	SerialDevices VirtualMachineSerialDeviceArrayInput
@@ -305,7 +305,7 @@ type virtualMachineArgs struct {
 	OperatingSystem *VirtualMachineOperatingSystem `pulumi:"operatingSystem"`
 	// The ID of the pool to assign the virtual machine to
 	PoolId *string `pulumi:"poolId"`
-	// Wether to reboot vm after creation
+	// Whether to reboot vm after creation
 	Reboot *bool `pulumi:"reboot"`
 	// The serial devices
 	SerialDevices []VirtualMachineSerialDevice `pulumi:"serialDevices"`
@@ -371,7 +371,7 @@ type VirtualMachineArgs struct {
 	OperatingSystem VirtualMachineOperatingSystemPtrInput
 	// The ID of the pool to assign the virtual machine to
 	PoolId pulumi.StringPtrInput
-	// Wether to reboot vm after creation
+	// Whether to reboot vm after creation
 	Reboot pulumi.BoolPtrInput
 	// The serial devices
 	SerialDevices VirtualMachineSerialDeviceArrayInput
@@ -425,7 +425,7 @@ func (i *VirtualMachine) ToVirtualMachineOutputWithContext(ctx context.Context) 
 // VirtualMachineArrayInput is an input type that accepts VirtualMachineArray and VirtualMachineArrayOutput values.
 // You can construct a concrete instance of `VirtualMachineArrayInput` via:
 //
-//          VirtualMachineArray{ VirtualMachineArgs{...} }
+//	VirtualMachineArray{ VirtualMachineArgs{...} }
 type VirtualMachineArrayInput interface {
 	pulumi.Input
 
@@ -450,7 +450,7 @@ func (i VirtualMachineArray) ToVirtualMachineArrayOutputWithContext(ctx context.
 // VirtualMachineMapInput is an input type that accepts VirtualMachineMap and VirtualMachineMapOutput values.
 // You can construct a concrete instance of `VirtualMachineMapInput` via:
 //
-//          VirtualMachineMap{ "key": VirtualMachineArgs{...} }
+//	VirtualMachineMap{ "key": VirtualMachineArgs{...} }
 type VirtualMachineMapInput interface {
 	pulumi.Input
 
@@ -596,7 +596,7 @@ func (o VirtualMachineOutput) PoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.PoolId }).(pulumi.StringPtrOutput)
 }
 
-// Wether to reboot vm after creation
+// Whether to reboot vm after creation
 func (o VirtualMachineOutput) Reboot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.Reboot }).(pulumi.BoolPtrOutput)
 }

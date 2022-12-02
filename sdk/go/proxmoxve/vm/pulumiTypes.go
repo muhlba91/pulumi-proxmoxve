@@ -20,7 +20,7 @@ type VirtualMachineAgent struct {
 // VirtualMachineAgentInput is an input type that accepts VirtualMachineAgentArgs and VirtualMachineAgentOutput values.
 // You can construct a concrete instance of `VirtualMachineAgentInput` via:
 //
-//          VirtualMachineAgentArgs{...}
+//	VirtualMachineAgentArgs{...}
 type VirtualMachineAgentInput interface {
 	pulumi.Input
 
@@ -58,11 +58,11 @@ func (i VirtualMachineAgentArgs) ToVirtualMachineAgentPtrOutputWithContext(ctx c
 // VirtualMachineAgentPtrInput is an input type that accepts VirtualMachineAgentArgs, VirtualMachineAgentPtr and VirtualMachineAgentPtrOutput values.
 // You can construct a concrete instance of `VirtualMachineAgentPtrInput` via:
 //
-//          VirtualMachineAgentArgs{...}
+//	        VirtualMachineAgentArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type VirtualMachineAgentPtrInput interface {
 	pulumi.Input
 
@@ -197,7 +197,7 @@ type VirtualMachineAudioDevice struct {
 // VirtualMachineAudioDeviceInput is an input type that accepts VirtualMachineAudioDeviceArgs and VirtualMachineAudioDeviceOutput values.
 // You can construct a concrete instance of `VirtualMachineAudioDeviceInput` via:
 //
-//          VirtualMachineAudioDeviceArgs{...}
+//	VirtualMachineAudioDeviceArgs{...}
 type VirtualMachineAudioDeviceInput interface {
 	pulumi.Input
 
@@ -234,11 +234,11 @@ func (i VirtualMachineAudioDeviceArgs) ToVirtualMachineAudioDevicePtrOutputWithC
 // VirtualMachineAudioDevicePtrInput is an input type that accepts VirtualMachineAudioDeviceArgs, VirtualMachineAudioDevicePtr and VirtualMachineAudioDevicePtrOutput values.
 // You can construct a concrete instance of `VirtualMachineAudioDevicePtrInput` via:
 //
-//          VirtualMachineAudioDeviceArgs{...}
+//	        VirtualMachineAudioDeviceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type VirtualMachineAudioDevicePtrInput interface {
 	pulumi.Input
 
@@ -359,7 +359,7 @@ type VirtualMachineCdrom struct {
 // VirtualMachineCdromInput is an input type that accepts VirtualMachineCdromArgs and VirtualMachineCdromOutput values.
 // You can construct a concrete instance of `VirtualMachineCdromInput` via:
 //
-//          VirtualMachineCdromArgs{...}
+//	VirtualMachineCdromArgs{...}
 type VirtualMachineCdromInput interface {
 	pulumi.Input
 
@@ -395,11 +395,11 @@ func (i VirtualMachineCdromArgs) ToVirtualMachineCdromPtrOutputWithContext(ctx c
 // VirtualMachineCdromPtrInput is an input type that accepts VirtualMachineCdromArgs, VirtualMachineCdromPtr and VirtualMachineCdromPtrOutput values.
 // You can construct a concrete instance of `VirtualMachineCdromPtrInput` via:
 //
-//          VirtualMachineCdromArgs{...}
+//	        VirtualMachineCdromArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type VirtualMachineCdromPtrInput interface {
 	pulumi.Input
 
@@ -510,7 +510,7 @@ type VirtualMachineClone struct {
 // VirtualMachineCloneInput is an input type that accepts VirtualMachineCloneArgs and VirtualMachineCloneOutput values.
 // You can construct a concrete instance of `VirtualMachineCloneInput` via:
 //
-//          VirtualMachineCloneArgs{...}
+//	VirtualMachineCloneArgs{...}
 type VirtualMachineCloneInput interface {
 	pulumi.Input
 
@@ -549,11 +549,11 @@ func (i VirtualMachineCloneArgs) ToVirtualMachineClonePtrOutputWithContext(ctx c
 // VirtualMachineClonePtrInput is an input type that accepts VirtualMachineCloneArgs, VirtualMachineClonePtr and VirtualMachineClonePtrOutput values.
 // You can construct a concrete instance of `VirtualMachineClonePtrInput` via:
 //
-//          VirtualMachineCloneArgs{...}
+//	        VirtualMachineCloneArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type VirtualMachineClonePtrInput interface {
 	pulumi.Input
 
@@ -705,7 +705,7 @@ type VirtualMachineCpu struct {
 // VirtualMachineCpuInput is an input type that accepts VirtualMachineCpuArgs and VirtualMachineCpuOutput values.
 // You can construct a concrete instance of `VirtualMachineCpuInput` via:
 //
-//          VirtualMachineCpuArgs{...}
+//	VirtualMachineCpuArgs{...}
 type VirtualMachineCpuInput interface {
 	pulumi.Input
 
@@ -746,11 +746,11 @@ func (i VirtualMachineCpuArgs) ToVirtualMachineCpuPtrOutputWithContext(ctx conte
 // VirtualMachineCpuPtrInput is an input type that accepts VirtualMachineCpuArgs, VirtualMachineCpuPtr and VirtualMachineCpuPtrOutput values.
 // You can construct a concrete instance of `VirtualMachineCpuPtrInput` via:
 //
-//          VirtualMachineCpuArgs{...}
+//	        VirtualMachineCpuArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type VirtualMachineCpuPtrInput interface {
 	pulumi.Input
 
@@ -917,9 +917,11 @@ func (o VirtualMachineCpuPtrOutput) Units() pulumi.IntPtrOutput {
 
 type VirtualMachineDisk struct {
 	DatastoreId *string                  `pulumi:"datastoreId"`
+	Discard     *string                  `pulumi:"discard"`
 	FileFormat  *string                  `pulumi:"fileFormat"`
 	FileId      *string                  `pulumi:"fileId"`
 	Interface   string                   `pulumi:"interface"`
+	Iothread    *bool                    `pulumi:"iothread"`
 	Size        *int                     `pulumi:"size"`
 	Speed       *VirtualMachineDiskSpeed `pulumi:"speed"`
 }
@@ -927,7 +929,7 @@ type VirtualMachineDisk struct {
 // VirtualMachineDiskInput is an input type that accepts VirtualMachineDiskArgs and VirtualMachineDiskOutput values.
 // You can construct a concrete instance of `VirtualMachineDiskInput` via:
 //
-//          VirtualMachineDiskArgs{...}
+//	VirtualMachineDiskArgs{...}
 type VirtualMachineDiskInput interface {
 	pulumi.Input
 
@@ -937,9 +939,11 @@ type VirtualMachineDiskInput interface {
 
 type VirtualMachineDiskArgs struct {
 	DatastoreId pulumi.StringPtrInput           `pulumi:"datastoreId"`
+	Discard     pulumi.StringPtrInput           `pulumi:"discard"`
 	FileFormat  pulumi.StringPtrInput           `pulumi:"fileFormat"`
 	FileId      pulumi.StringPtrInput           `pulumi:"fileId"`
 	Interface   pulumi.StringInput              `pulumi:"interface"`
+	Iothread    pulumi.BoolPtrInput             `pulumi:"iothread"`
 	Size        pulumi.IntPtrInput              `pulumi:"size"`
 	Speed       VirtualMachineDiskSpeedPtrInput `pulumi:"speed"`
 }
@@ -959,7 +963,7 @@ func (i VirtualMachineDiskArgs) ToVirtualMachineDiskOutputWithContext(ctx contex
 // VirtualMachineDiskArrayInput is an input type that accepts VirtualMachineDiskArray and VirtualMachineDiskArrayOutput values.
 // You can construct a concrete instance of `VirtualMachineDiskArrayInput` via:
 //
-//          VirtualMachineDiskArray{ VirtualMachineDiskArgs{...} }
+//	VirtualMachineDiskArray{ VirtualMachineDiskArgs{...} }
 type VirtualMachineDiskArrayInput interface {
 	pulumi.Input
 
@@ -999,6 +1003,10 @@ func (o VirtualMachineDiskOutput) DatastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
 }
 
+func (o VirtualMachineDiskOutput) Discard() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.Discard }).(pulumi.StringPtrOutput)
+}
+
 func (o VirtualMachineDiskOutput) FileFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.FileFormat }).(pulumi.StringPtrOutput)
 }
@@ -1009,6 +1017,10 @@ func (o VirtualMachineDiskOutput) FileId() pulumi.StringPtrOutput {
 
 func (o VirtualMachineDiskOutput) Interface() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) string { return v.Interface }).(pulumi.StringOutput)
+}
+
+func (o VirtualMachineDiskOutput) Iothread() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineDisk) *bool { return v.Iothread }).(pulumi.BoolPtrOutput)
 }
 
 func (o VirtualMachineDiskOutput) Size() pulumi.IntPtrOutput {
@@ -1049,7 +1061,7 @@ type VirtualMachineDiskSpeed struct {
 // VirtualMachineDiskSpeedInput is an input type that accepts VirtualMachineDiskSpeedArgs and VirtualMachineDiskSpeedOutput values.
 // You can construct a concrete instance of `VirtualMachineDiskSpeedInput` via:
 //
-//          VirtualMachineDiskSpeedArgs{...}
+//	VirtualMachineDiskSpeedArgs{...}
 type VirtualMachineDiskSpeedInput interface {
 	pulumi.Input
 
@@ -1087,11 +1099,11 @@ func (i VirtualMachineDiskSpeedArgs) ToVirtualMachineDiskSpeedPtrOutputWithConte
 // VirtualMachineDiskSpeedPtrInput is an input type that accepts VirtualMachineDiskSpeedArgs, VirtualMachineDiskSpeedPtr and VirtualMachineDiskSpeedPtrOutput values.
 // You can construct a concrete instance of `VirtualMachineDiskSpeedPtrInput` via:
 //
-//          VirtualMachineDiskSpeedArgs{...}
+//	        VirtualMachineDiskSpeedArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type VirtualMachineDiskSpeedPtrInput interface {
 	pulumi.Input
 
@@ -1218,18 +1230,19 @@ func (o VirtualMachineDiskSpeedPtrOutput) WriteBurstable() pulumi.IntPtrOutput {
 }
 
 type VirtualMachineInitialization struct {
-	DatastoreId    *string                                  `pulumi:"datastoreId"`
-	Dns            *VirtualMachineInitializationDns         `pulumi:"dns"`
-	IpConfigs      []VirtualMachineInitializationIpConfig   `pulumi:"ipConfigs"`
-	Type           *string                                  `pulumi:"type"`
-	UserAccount    *VirtualMachineInitializationUserAccount `pulumi:"userAccount"`
-	UserDataFileId *string                                  `pulumi:"userDataFileId"`
+	DatastoreId      *string                                  `pulumi:"datastoreId"`
+	Dns              *VirtualMachineInitializationDns         `pulumi:"dns"`
+	IpConfigs        []VirtualMachineInitializationIpConfig   `pulumi:"ipConfigs"`
+	Type             *string                                  `pulumi:"type"`
+	UserAccount      *VirtualMachineInitializationUserAccount `pulumi:"userAccount"`
+	UserDataFileId   *string                                  `pulumi:"userDataFileId"`
+	VendorDataFileId *string                                  `pulumi:"vendorDataFileId"`
 }
 
 // VirtualMachineInitializationInput is an input type that accepts VirtualMachineInitializationArgs and VirtualMachineInitializationOutput values.
 // You can construct a concrete instance of `VirtualMachineInitializationInput` via:
 //
-//          VirtualMachineInitializationArgs{...}
+//	VirtualMachineInitializationArgs{...}
 type VirtualMachineInitializationInput interface {
 	pulumi.Input
 
@@ -1238,12 +1251,13 @@ type VirtualMachineInitializationInput interface {
 }
 
 type VirtualMachineInitializationArgs struct {
-	DatastoreId    pulumi.StringPtrInput                           `pulumi:"datastoreId"`
-	Dns            VirtualMachineInitializationDnsPtrInput         `pulumi:"dns"`
-	IpConfigs      VirtualMachineInitializationIpConfigArrayInput  `pulumi:"ipConfigs"`
-	Type           pulumi.StringPtrInput                           `pulumi:"type"`
-	UserAccount    VirtualMachineInitializationUserAccountPtrInput `pulumi:"userAccount"`
-	UserDataFileId pulumi.StringPtrInput                           `pulumi:"userDataFileId"`
+	DatastoreId      pulumi.StringPtrInput                           `pulumi:"datastoreId"`
+	Dns              VirtualMachineInitializationDnsPtrInput         `pulumi:"dns"`
+	IpConfigs        VirtualMachineInitializationIpConfigArrayInput  `pulumi:"ipConfigs"`
+	Type             pulumi.StringPtrInput                           `pulumi:"type"`
+	UserAccount      VirtualMachineInitializationUserAccountPtrInput `pulumi:"userAccount"`
+	UserDataFileId   pulumi.StringPtrInput                           `pulumi:"userDataFileId"`
+	VendorDataFileId pulumi.StringPtrInput                           `pulumi:"vendorDataFileId"`
 }
 
 func (VirtualMachineInitializationArgs) ElementType() reflect.Type {
@@ -1269,11 +1283,11 @@ func (i VirtualMachineInitializationArgs) ToVirtualMachineInitializationPtrOutpu
 // VirtualMachineInitializationPtrInput is an input type that accepts VirtualMachineInitializationArgs, VirtualMachineInitializationPtr and VirtualMachineInitializationPtrOutput values.
 // You can construct a concrete instance of `VirtualMachineInitializationPtrInput` via:
 //
-//          VirtualMachineInitializationArgs{...}
+//	        VirtualMachineInitializationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type VirtualMachineInitializationPtrInput interface {
 	pulumi.Input
 
@@ -1345,6 +1359,10 @@ func (o VirtualMachineInitializationOutput) UserAccount() VirtualMachineInitiali
 
 func (o VirtualMachineInitializationOutput) UserDataFileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitialization) *string { return v.UserDataFileId }).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineInitializationOutput) VendorDataFileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInitialization) *string { return v.VendorDataFileId }).(pulumi.StringPtrOutput)
 }
 
 type VirtualMachineInitializationPtrOutput struct{ *pulumi.OutputState }
@@ -1425,6 +1443,15 @@ func (o VirtualMachineInitializationPtrOutput) UserDataFileId() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o VirtualMachineInitializationPtrOutput) VendorDataFileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInitialization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VendorDataFileId
+	}).(pulumi.StringPtrOutput)
+}
+
 type VirtualMachineInitializationDns struct {
 	Domain *string `pulumi:"domain"`
 	Server *string `pulumi:"server"`
@@ -1433,7 +1460,7 @@ type VirtualMachineInitializationDns struct {
 // VirtualMachineInitializationDnsInput is an input type that accepts VirtualMachineInitializationDnsArgs and VirtualMachineInitializationDnsOutput values.
 // You can construct a concrete instance of `VirtualMachineInitializationDnsInput` via:
 //
-//          VirtualMachineInitializationDnsArgs{...}
+//	VirtualMachineInitializationDnsArgs{...}
 type VirtualMachineInitializationDnsInput interface {
 	pulumi.Input
 
@@ -1469,11 +1496,11 @@ func (i VirtualMachineInitializationDnsArgs) ToVirtualMachineInitializationDnsPt
 // VirtualMachineInitializationDnsPtrInput is an input type that accepts VirtualMachineInitializationDnsArgs, VirtualMachineInitializationDnsPtr and VirtualMachineInitializationDnsPtrOutput values.
 // You can construct a concrete instance of `VirtualMachineInitializationDnsPtrInput` via:
 //
-//          VirtualMachineInitializationDnsArgs{...}
+//	        VirtualMachineInitializationDnsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type VirtualMachineInitializationDnsPtrInput interface {
 	pulumi.Input
 
@@ -1581,7 +1608,7 @@ type VirtualMachineInitializationIpConfig struct {
 // VirtualMachineInitializationIpConfigInput is an input type that accepts VirtualMachineInitializationIpConfigArgs and VirtualMachineInitializationIpConfigOutput values.
 // You can construct a concrete instance of `VirtualMachineInitializationIpConfigInput` via:
 //
-//          VirtualMachineInitializationIpConfigArgs{...}
+//	VirtualMachineInitializationIpConfigArgs{...}
 type VirtualMachineInitializationIpConfigInput interface {
 	pulumi.Input
 
@@ -1609,7 +1636,7 @@ func (i VirtualMachineInitializationIpConfigArgs) ToVirtualMachineInitialization
 // VirtualMachineInitializationIpConfigArrayInput is an input type that accepts VirtualMachineInitializationIpConfigArray and VirtualMachineInitializationIpConfigArrayOutput values.
 // You can construct a concrete instance of `VirtualMachineInitializationIpConfigArrayInput` via:
 //
-//          VirtualMachineInitializationIpConfigArray{ VirtualMachineInitializationIpConfigArgs{...} }
+//	VirtualMachineInitializationIpConfigArray{ VirtualMachineInitializationIpConfigArgs{...} }
 type VirtualMachineInitializationIpConfigArrayInput interface {
 	pulumi.Input
 
@@ -1681,7 +1708,7 @@ type VirtualMachineInitializationIpConfigIpv4 struct {
 // VirtualMachineInitializationIpConfigIpv4Input is an input type that accepts VirtualMachineInitializationIpConfigIpv4Args and VirtualMachineInitializationIpConfigIpv4Output values.
 // You can construct a concrete instance of `VirtualMachineInitializationIpConfigIpv4Input` via:
 //
-//          VirtualMachineInitializationIpConfigIpv4Args{...}
+//	VirtualMachineInitializationIpConfigIpv4Args{...}
 type VirtualMachineInitializationIpConfigIpv4Input interface {
 	pulumi.Input
 
@@ -1717,11 +1744,11 @@ func (i VirtualMachineInitializationIpConfigIpv4Args) ToVirtualMachineInitializa
 // VirtualMachineInitializationIpConfigIpv4PtrInput is an input type that accepts VirtualMachineInitializationIpConfigIpv4Args, VirtualMachineInitializationIpConfigIpv4Ptr and VirtualMachineInitializationIpConfigIpv4PtrOutput values.
 // You can construct a concrete instance of `VirtualMachineInitializationIpConfigIpv4PtrInput` via:
 //
-//          VirtualMachineInitializationIpConfigIpv4Args{...}
+//	        VirtualMachineInitializationIpConfigIpv4Args{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type VirtualMachineInitializationIpConfigIpv4PtrInput interface {
 	pulumi.Input
 
@@ -1829,7 +1856,7 @@ type VirtualMachineInitializationIpConfigIpv6 struct {
 // VirtualMachineInitializationIpConfigIpv6Input is an input type that accepts VirtualMachineInitializationIpConfigIpv6Args and VirtualMachineInitializationIpConfigIpv6Output values.
 // You can construct a concrete instance of `VirtualMachineInitializationIpConfigIpv6Input` via:
 //
-//          VirtualMachineInitializationIpConfigIpv6Args{...}
+//	VirtualMachineInitializationIpConfigIpv6Args{...}
 type VirtualMachineInitializationIpConfigIpv6Input interface {
 	pulumi.Input
 
@@ -1865,11 +1892,11 @@ func (i VirtualMachineInitializationIpConfigIpv6Args) ToVirtualMachineInitializa
 // VirtualMachineInitializationIpConfigIpv6PtrInput is an input type that accepts VirtualMachineInitializationIpConfigIpv6Args, VirtualMachineInitializationIpConfigIpv6Ptr and VirtualMachineInitializationIpConfigIpv6PtrOutput values.
 // You can construct a concrete instance of `VirtualMachineInitializationIpConfigIpv6PtrInput` via:
 //
-//          VirtualMachineInitializationIpConfigIpv6Args{...}
+//	        VirtualMachineInitializationIpConfigIpv6Args{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type VirtualMachineInitializationIpConfigIpv6PtrInput interface {
 	pulumi.Input
 
@@ -1978,7 +2005,7 @@ type VirtualMachineInitializationUserAccount struct {
 // VirtualMachineInitializationUserAccountInput is an input type that accepts VirtualMachineInitializationUserAccountArgs and VirtualMachineInitializationUserAccountOutput values.
 // You can construct a concrete instance of `VirtualMachineInitializationUserAccountInput` via:
 //
-//          VirtualMachineInitializationUserAccountArgs{...}
+//	VirtualMachineInitializationUserAccountArgs{...}
 type VirtualMachineInitializationUserAccountInput interface {
 	pulumi.Input
 
@@ -2015,11 +2042,11 @@ func (i VirtualMachineInitializationUserAccountArgs) ToVirtualMachineInitializat
 // VirtualMachineInitializationUserAccountPtrInput is an input type that accepts VirtualMachineInitializationUserAccountArgs, VirtualMachineInitializationUserAccountPtr and VirtualMachineInitializationUserAccountPtrOutput values.
 // You can construct a concrete instance of `VirtualMachineInitializationUserAccountPtrInput` via:
 //
-//          VirtualMachineInitializationUserAccountArgs{...}
+//	        VirtualMachineInitializationUserAccountArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type VirtualMachineInitializationUserAccountPtrInput interface {
 	pulumi.Input
 
@@ -2141,7 +2168,7 @@ type VirtualMachineMemory struct {
 // VirtualMachineMemoryInput is an input type that accepts VirtualMachineMemoryArgs and VirtualMachineMemoryOutput values.
 // You can construct a concrete instance of `VirtualMachineMemoryInput` via:
 //
-//          VirtualMachineMemoryArgs{...}
+//	VirtualMachineMemoryArgs{...}
 type VirtualMachineMemoryInput interface {
 	pulumi.Input
 
@@ -2178,11 +2205,11 @@ func (i VirtualMachineMemoryArgs) ToVirtualMachineMemoryPtrOutputWithContext(ctx
 // VirtualMachineMemoryPtrInput is an input type that accepts VirtualMachineMemoryArgs, VirtualMachineMemoryPtr and VirtualMachineMemoryPtrOutput values.
 // You can construct a concrete instance of `VirtualMachineMemoryPtrInput` via:
 //
-//          VirtualMachineMemoryArgs{...}
+//	        VirtualMachineMemoryArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type VirtualMachineMemoryPtrInput interface {
 	pulumi.Input
 
@@ -2307,7 +2334,7 @@ type VirtualMachineNetworkDevice struct {
 // VirtualMachineNetworkDeviceInput is an input type that accepts VirtualMachineNetworkDeviceArgs and VirtualMachineNetworkDeviceOutput values.
 // You can construct a concrete instance of `VirtualMachineNetworkDeviceInput` via:
 //
-//          VirtualMachineNetworkDeviceArgs{...}
+//	VirtualMachineNetworkDeviceArgs{...}
 type VirtualMachineNetworkDeviceInput interface {
 	pulumi.Input
 
@@ -2339,7 +2366,7 @@ func (i VirtualMachineNetworkDeviceArgs) ToVirtualMachineNetworkDeviceOutputWith
 // VirtualMachineNetworkDeviceArrayInput is an input type that accepts VirtualMachineNetworkDeviceArray and VirtualMachineNetworkDeviceArrayOutput values.
 // You can construct a concrete instance of `VirtualMachineNetworkDeviceArrayInput` via:
 //
-//          VirtualMachineNetworkDeviceArray{ VirtualMachineNetworkDeviceArgs{...} }
+//	VirtualMachineNetworkDeviceArray{ VirtualMachineNetworkDeviceArgs{...} }
 type VirtualMachineNetworkDeviceArrayInput interface {
 	pulumi.Input
 
@@ -2426,7 +2453,7 @@ type VirtualMachineOperatingSystem struct {
 // VirtualMachineOperatingSystemInput is an input type that accepts VirtualMachineOperatingSystemArgs and VirtualMachineOperatingSystemOutput values.
 // You can construct a concrete instance of `VirtualMachineOperatingSystemInput` via:
 //
-//          VirtualMachineOperatingSystemArgs{...}
+//	VirtualMachineOperatingSystemArgs{...}
 type VirtualMachineOperatingSystemInput interface {
 	pulumi.Input
 
@@ -2461,11 +2488,11 @@ func (i VirtualMachineOperatingSystemArgs) ToVirtualMachineOperatingSystemPtrOut
 // VirtualMachineOperatingSystemPtrInput is an input type that accepts VirtualMachineOperatingSystemArgs, VirtualMachineOperatingSystemPtr and VirtualMachineOperatingSystemPtrOutput values.
 // You can construct a concrete instance of `VirtualMachineOperatingSystemPtrInput` via:
 //
-//          VirtualMachineOperatingSystemArgs{...}
+//	        VirtualMachineOperatingSystemArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type VirtualMachineOperatingSystemPtrInput interface {
 	pulumi.Input
 
@@ -2559,7 +2586,7 @@ type VirtualMachineSerialDevice struct {
 // VirtualMachineSerialDeviceInput is an input type that accepts VirtualMachineSerialDeviceArgs and VirtualMachineSerialDeviceOutput values.
 // You can construct a concrete instance of `VirtualMachineSerialDeviceInput` via:
 //
-//          VirtualMachineSerialDeviceArgs{...}
+//	VirtualMachineSerialDeviceArgs{...}
 type VirtualMachineSerialDeviceInput interface {
 	pulumi.Input
 
@@ -2586,7 +2613,7 @@ func (i VirtualMachineSerialDeviceArgs) ToVirtualMachineSerialDeviceOutputWithCo
 // VirtualMachineSerialDeviceArrayInput is an input type that accepts VirtualMachineSerialDeviceArray and VirtualMachineSerialDeviceArrayOutput values.
 // You can construct a concrete instance of `VirtualMachineSerialDeviceArrayInput` via:
 //
-//          VirtualMachineSerialDeviceArray{ VirtualMachineSerialDeviceArgs{...} }
+//	VirtualMachineSerialDeviceArray{ VirtualMachineSerialDeviceArgs{...} }
 type VirtualMachineSerialDeviceArrayInput interface {
 	pulumi.Input
 
@@ -2655,7 +2682,7 @@ type VirtualMachineVga struct {
 // VirtualMachineVgaInput is an input type that accepts VirtualMachineVgaArgs and VirtualMachineVgaOutput values.
 // You can construct a concrete instance of `VirtualMachineVgaInput` via:
 //
-//          VirtualMachineVgaArgs{...}
+//	VirtualMachineVgaArgs{...}
 type VirtualMachineVgaInput interface {
 	pulumi.Input
 
@@ -2692,11 +2719,11 @@ func (i VirtualMachineVgaArgs) ToVirtualMachineVgaPtrOutputWithContext(ctx conte
 // VirtualMachineVgaPtrInput is an input type that accepts VirtualMachineVgaArgs, VirtualMachineVgaPtr and VirtualMachineVgaPtrOutput values.
 // You can construct a concrete instance of `VirtualMachineVgaPtrInput` via:
 //
-//          VirtualMachineVgaArgs{...}
+//	        VirtualMachineVgaArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type VirtualMachineVgaPtrInput interface {
 	pulumi.Input
 

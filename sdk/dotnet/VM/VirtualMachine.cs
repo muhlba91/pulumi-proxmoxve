@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.VM
 {
     [ProxmoxVEResourceType("proxmoxve:VM/virtualMachine:VirtualMachine")]
-    public partial class VirtualMachine : Pulumi.CustomResource
+    public partial class VirtualMachine : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether to enable ACPI
@@ -145,7 +145,7 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<string?> PoolId { get; private set; } = null!;
 
         /// <summary>
-        /// Wether to reboot vm after creation
+        /// Whether to reboot vm after creation
         /// </summary>
         [Output("reboot")]
         public Output<bool?> Reboot { get; private set; } = null!;
@@ -267,7 +267,7 @@ namespace Pulumi.ProxmoxVE.VM
         }
     }
 
-    public sealed class VirtualMachineArgs : Pulumi.ResourceArgs
+    public sealed class VirtualMachineArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to enable ACPI
@@ -390,7 +390,7 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<string>? PoolId { get; set; }
 
         /// <summary>
-        /// Wether to reboot vm after creation
+        /// Whether to reboot vm after creation
         /// </summary>
         [Input("reboot")]
         public Input<bool>? Reboot { get; set; }
@@ -476,9 +476,10 @@ namespace Pulumi.ProxmoxVE.VM
         public VirtualMachineArgs()
         {
         }
+        public static new VirtualMachineArgs Empty => new VirtualMachineArgs();
     }
 
-    public sealed class VirtualMachineState : Pulumi.ResourceArgs
+    public sealed class VirtualMachineState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to enable ACPI
@@ -649,7 +650,7 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<string>? PoolId { get; set; }
 
         /// <summary>
-        /// Wether to reboot vm after creation
+        /// Whether to reboot vm after creation
         /// </summary>
         [Input("reboot")]
         public Input<bool>? Reboot { get; set; }
@@ -735,5 +736,6 @@ namespace Pulumi.ProxmoxVE.VM
         public VirtualMachineState()
         {
         }
+        public static new VirtualMachineState Empty => new VirtualMachineState();
     }
 }

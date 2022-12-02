@@ -1,6 +1,5 @@
 linters:
   enable:
-    - deadcode
     - errcheck
     - goconst
     - revive
@@ -11,9 +10,8 @@ linters:
     - megacheck
     - misspell
     - nakedret
-    - structcheck
     - unconvert
-    - varcheck
+    - unused
   enable-all: false
 linters-settings:
   lll:

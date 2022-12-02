@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE
 {
     [ProxmoxVEResourceType("proxmoxve:index/time:Time")]
-    public partial class Time : Pulumi.CustomResource
+    public partial class Time : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The local timestamp
@@ -81,7 +81,7 @@ namespace Pulumi.ProxmoxVE
         }
     }
 
-    public sealed class TimeArgs : Pulumi.ResourceArgs
+    public sealed class TimeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The node name
@@ -98,9 +98,10 @@ namespace Pulumi.ProxmoxVE
         public TimeArgs()
         {
         }
+        public static new TimeArgs Empty => new TimeArgs();
     }
 
-    public sealed class TimeState : Pulumi.ResourceArgs
+    public sealed class TimeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The local timestamp
@@ -129,5 +130,6 @@ namespace Pulumi.ProxmoxVE
         public TimeState()
         {
         }
+        public static new TimeState Empty => new TimeState();
     }
 }

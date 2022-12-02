@@ -16,7 +16,7 @@ namespace Pulumi.ProxmoxVE
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
     /// </summary>
     [ProxmoxVEResourceType("pulumi:providers:proxmoxve")]
-    public partial class Provider : Pulumi.ProviderResource
+    public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
@@ -44,7 +44,7 @@ namespace Pulumi.ProxmoxVE
         }
     }
 
-    public sealed class ProviderArgs : Pulumi.ResourceArgs
+    public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         [Input("virtualEnvironment", json: true)]
         public Input<Inputs.ProviderVirtualEnvironmentArgs>? VirtualEnvironment { get; set; }
@@ -52,5 +52,6 @@ namespace Pulumi.ProxmoxVE
         public ProviderArgs()
         {
         }
+        public static new ProviderArgs Empty => new ProviderArgs();
     }
 }

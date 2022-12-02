@@ -168,7 +168,7 @@ func (i *File) ToFileOutputWithContext(ctx context.Context) FileOutput {
 // FileArrayInput is an input type that accepts FileArray and FileArrayOutput values.
 // You can construct a concrete instance of `FileArrayInput` via:
 //
-//          FileArray{ FileArgs{...} }
+//	FileArray{ FileArgs{...} }
 type FileArrayInput interface {
 	pulumi.Input
 
@@ -193,7 +193,7 @@ func (i FileArray) ToFileArrayOutputWithContext(ctx context.Context) FileArrayOu
 // FileMapInput is an input type that accepts FileMap and FileMapOutput values.
 // You can construct a concrete instance of `FileMapInput` via:
 //
-//          FileMap{ "key": FileArgs{...} }
+//	FileMap{ "key": FileArgs{...} }
 type FileMapInput interface {
 	pulumi.Input
 

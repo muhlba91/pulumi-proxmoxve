@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.CT.Inputs
 {
 
-    public sealed class ContainerInitializationUserAccountArgs : Pulumi.ResourceArgs
+    public sealed class ContainerInitializationUserAccountArgs : global::Pulumi.ResourceArgs
     {
         [Input("keys")]
         private InputList<string>? _keys;
@@ -26,5 +26,6 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
         public ContainerInitializationUserAccountArgs()
         {
         }
+        public static new ContainerInitializationUserAccountArgs Empty => new ContainerInitializationUserAccountArgs();
     }
 }

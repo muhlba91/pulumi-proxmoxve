@@ -10,10 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.VM.Inputs
 {
 
-    public sealed class VirtualMachineDiskGetArgs : Pulumi.ResourceArgs
+    public sealed class VirtualMachineDiskGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
+
+        [Input("discard")]
+        public Input<string>? Discard { get; set; }
 
         [Input("fileFormat")]
         public Input<string>? FileFormat { get; set; }
@@ -24,6 +27,9 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         [Input("interface", required: true)]
         public Input<string> Interface { get; set; } = null!;
 
+        [Input("iothread")]
+        public Input<bool>? Iothread { get; set; }
+
         [Input("size")]
         public Input<int>? Size { get; set; }
 
@@ -33,5 +39,6 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public VirtualMachineDiskGetArgs()
         {
         }
+        public static new VirtualMachineDiskGetArgs Empty => new VirtualMachineDiskGetArgs();
     }
 }

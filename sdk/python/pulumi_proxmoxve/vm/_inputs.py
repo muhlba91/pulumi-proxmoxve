@@ -311,17 +311,23 @@ class VirtualMachineDiskArgs:
     def __init__(__self__, *,
                  interface: pulumi.Input[str],
                  datastore_id: Optional[pulumi.Input[str]] = None,
+                 discard: Optional[pulumi.Input[str]] = None,
                  file_format: Optional[pulumi.Input[str]] = None,
                  file_id: Optional[pulumi.Input[str]] = None,
+                 iothread: Optional[pulumi.Input[bool]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  speed: Optional[pulumi.Input['VirtualMachineDiskSpeedArgs']] = None):
         pulumi.set(__self__, "interface", interface)
         if datastore_id is not None:
             pulumi.set(__self__, "datastore_id", datastore_id)
+        if discard is not None:
+            pulumi.set(__self__, "discard", discard)
         if file_format is not None:
             pulumi.set(__self__, "file_format", file_format)
         if file_id is not None:
             pulumi.set(__self__, "file_id", file_id)
+        if iothread is not None:
+            pulumi.set(__self__, "iothread", iothread)
         if size is not None:
             pulumi.set(__self__, "size", size)
         if speed is not None:
@@ -346,6 +352,15 @@ class VirtualMachineDiskArgs:
         pulumi.set(self, "datastore_id", value)
 
     @property
+    @pulumi.getter
+    def discard(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "discard")
+
+    @discard.setter
+    def discard(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "discard", value)
+
+    @property
     @pulumi.getter(name="fileFormat")
     def file_format(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "file_format")
@@ -362,6 +377,15 @@ class VirtualMachineDiskArgs:
     @file_id.setter
     def file_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "file_id", value)
+
+    @property
+    @pulumi.getter
+    def iothread(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "iothread")
+
+    @iothread.setter
+    def iothread(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "iothread", value)
 
     @property
     @pulumi.getter
@@ -443,7 +467,8 @@ class VirtualMachineInitializationArgs:
                  ip_configs: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineInitializationIpConfigArgs']]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  user_account: Optional[pulumi.Input['VirtualMachineInitializationUserAccountArgs']] = None,
-                 user_data_file_id: Optional[pulumi.Input[str]] = None):
+                 user_data_file_id: Optional[pulumi.Input[str]] = None,
+                 vendor_data_file_id: Optional[pulumi.Input[str]] = None):
         if datastore_id is not None:
             pulumi.set(__self__, "datastore_id", datastore_id)
         if dns is not None:
@@ -456,6 +481,8 @@ class VirtualMachineInitializationArgs:
             pulumi.set(__self__, "user_account", user_account)
         if user_data_file_id is not None:
             pulumi.set(__self__, "user_data_file_id", user_data_file_id)
+        if vendor_data_file_id is not None:
+            pulumi.set(__self__, "vendor_data_file_id", vendor_data_file_id)
 
     @property
     @pulumi.getter(name="datastoreId")
@@ -510,6 +537,15 @@ class VirtualMachineInitializationArgs:
     @user_data_file_id.setter
     def user_data_file_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user_data_file_id", value)
+
+    @property
+    @pulumi.getter(name="vendorDataFileId")
+    def vendor_data_file_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "vendor_data_file_id")
+
+    @vendor_data_file_id.setter
+    def vendor_data_file_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vendor_data_file_id", value)
 
 
 @pulumi.input_type

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.Permission
 {
     [ProxmoxVEResourceType("proxmoxve:Permission/role:Role")]
-    public partial class Role : Pulumi.CustomResource
+    public partial class Role : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The role privileges
@@ -69,7 +69,7 @@ namespace Pulumi.ProxmoxVE.Permission
         }
     }
 
-    public sealed class RoleArgs : Pulumi.ResourceArgs
+    public sealed class RoleArgs : global::Pulumi.ResourceArgs
     {
         [Input("privileges", required: true)]
         private InputList<string>? _privileges;
@@ -92,9 +92,10 @@ namespace Pulumi.ProxmoxVE.Permission
         public RoleArgs()
         {
         }
+        public static new RoleArgs Empty => new RoleArgs();
     }
 
-    public sealed class RoleState : Pulumi.ResourceArgs
+    public sealed class RoleState : global::Pulumi.ResourceArgs
     {
         [Input("privileges")]
         private InputList<string>? _privileges;
@@ -117,5 +118,6 @@ namespace Pulumi.ProxmoxVE.Permission
         public RoleState()
         {
         }
+        public static new RoleState Empty => new RoleState();
     }
 }

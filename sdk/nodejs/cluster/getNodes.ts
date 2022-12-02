@@ -30,5 +30,5 @@ export interface GetNodesResult {
     readonly onlines: boolean[];
     readonly sslFingerprints: string[];
     readonly supportLevels: string[];
-    readonly uptimes: string[];
+    readonly uptimes: number[];
 }

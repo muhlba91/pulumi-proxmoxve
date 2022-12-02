@@ -19,7 +19,7 @@ type GroupAcl struct {
 // GroupAclInput is an input type that accepts GroupAclArgs and GroupAclOutput values.
 // You can construct a concrete instance of `GroupAclInput` via:
 //
-//          GroupAclArgs{...}
+//	GroupAclArgs{...}
 type GroupAclInput interface {
 	pulumi.Input
 
@@ -48,7 +48,7 @@ func (i GroupAclArgs) ToGroupAclOutputWithContext(ctx context.Context) GroupAclO
 // GroupAclArrayInput is an input type that accepts GroupAclArray and GroupAclArrayOutput values.
 // You can construct a concrete instance of `GroupAclArrayInput` via:
 //
-//          GroupAclArray{ GroupAclArgs{...} }
+//	GroupAclArray{ GroupAclArgs{...} }
 type GroupAclArrayInput interface {
 	pulumi.Input
 
@@ -127,7 +127,7 @@ type PoolMember struct {
 // PoolMemberInput is an input type that accepts PoolMemberArgs and PoolMemberOutput values.
 // You can construct a concrete instance of `PoolMemberInput` via:
 //
-//          PoolMemberArgs{...}
+//	PoolMemberArgs{...}
 type PoolMemberInput interface {
 	pulumi.Input
 
@@ -158,7 +158,7 @@ func (i PoolMemberArgs) ToPoolMemberOutputWithContext(ctx context.Context) PoolM
 // PoolMemberArrayInput is an input type that accepts PoolMemberArray and PoolMemberArrayOutput values.
 // You can construct a concrete instance of `PoolMemberArrayInput` via:
 //
-//          PoolMemberArray{ PoolMemberArgs{...} }
+//	PoolMemberArray{ PoolMemberArgs{...} }
 type PoolMemberArrayInput interface {
 	pulumi.Input
 
@@ -243,7 +243,7 @@ type UserAcl struct {
 // UserAclInput is an input type that accepts UserAclArgs and UserAclOutput values.
 // You can construct a concrete instance of `UserAclInput` via:
 //
-//          UserAclArgs{...}
+//	UserAclArgs{...}
 type UserAclInput interface {
 	pulumi.Input
 
@@ -272,7 +272,7 @@ func (i UserAclArgs) ToUserAclOutputWithContext(ctx context.Context) UserAclOutp
 // UserAclArrayInput is an input type that accepts UserAclArray and UserAclArrayOutput values.
 // You can construct a concrete instance of `UserAclArrayInput` via:
 //
-//          UserAclArray{ UserAclArgs{...} }
+//	UserAclArray{ UserAclArgs{...} }
 type UserAclArrayInput interface {
 	pulumi.Input
 
@@ -349,7 +349,7 @@ type GetGroupAcl struct {
 // GetGroupAclInput is an input type that accepts GetGroupAclArgs and GetGroupAclOutput values.
 // You can construct a concrete instance of `GetGroupAclInput` via:
 //
-//          GetGroupAclArgs{...}
+//	GetGroupAclArgs{...}
 type GetGroupAclInput interface {
 	pulumi.Input
 
@@ -378,7 +378,7 @@ func (i GetGroupAclArgs) ToGetGroupAclOutputWithContext(ctx context.Context) Get
 // GetGroupAclArrayInput is an input type that accepts GetGroupAclArray and GetGroupAclArrayOutput values.
 // You can construct a concrete instance of `GetGroupAclArrayInput` via:
 //
-//          GetGroupAclArray{ GetGroupAclArgs{...} }
+//	GetGroupAclArray{ GetGroupAclArgs{...} }
 type GetGroupAclArrayInput interface {
 	pulumi.Input
 
@@ -457,7 +457,7 @@ type GetPoolMember struct {
 // GetPoolMemberInput is an input type that accepts GetPoolMemberArgs and GetPoolMemberOutput values.
 // You can construct a concrete instance of `GetPoolMemberInput` via:
 //
-//          GetPoolMemberArgs{...}
+//	GetPoolMemberArgs{...}
 type GetPoolMemberInput interface {
 	pulumi.Input
 
@@ -488,7 +488,7 @@ func (i GetPoolMemberArgs) ToGetPoolMemberOutputWithContext(ctx context.Context)
 // GetPoolMemberArrayInput is an input type that accepts GetPoolMemberArray and GetPoolMemberArrayOutput values.
 // You can construct a concrete instance of `GetPoolMemberArrayInput` via:
 //
-//          GetPoolMemberArray{ GetPoolMemberArgs{...} }
+//	GetPoolMemberArray{ GetPoolMemberArgs{...} }
 type GetPoolMemberArrayInput interface {
 	pulumi.Input
 
@@ -573,7 +573,7 @@ type GetUserAcl struct {
 // GetUserAclInput is an input type that accepts GetUserAclArgs and GetUserAclOutput values.
 // You can construct a concrete instance of `GetUserAclInput` via:
 //
-//          GetUserAclArgs{...}
+//	GetUserAclArgs{...}
 type GetUserAclInput interface {
 	pulumi.Input
 
@@ -602,7 +602,7 @@ func (i GetUserAclArgs) ToGetUserAclOutputWithContext(ctx context.Context) GetUs
 // GetUserAclArrayInput is an input type that accepts GetUserAclArray and GetUserAclArrayOutput values.
 // You can construct a concrete instance of `GetUserAclArrayInput` via:
 //
-//          GetUserAclArray{ GetUserAclArgs{...} }
+//	GetUserAclArray{ GetUserAclArgs{...} }
 type GetUserAclArrayInput interface {
 	pulumi.Input
 

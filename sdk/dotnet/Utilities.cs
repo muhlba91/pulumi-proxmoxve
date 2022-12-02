@@ -75,7 +75,7 @@ namespace Pulumi.ProxmoxVE
         }
     }
 
-    internal sealed class ProxmoxVEResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    internal sealed class ProxmoxVEResourceTypeAttribute : global::Pulumi.ResourceTypeAttribute
     {
         public ProxmoxVEResourceTypeAttribute(string type) : base(type, Utilities.Version)
         {

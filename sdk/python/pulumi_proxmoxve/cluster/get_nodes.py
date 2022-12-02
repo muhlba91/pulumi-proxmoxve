@@ -102,7 +102,7 @@ class GetNodesResult:
 
     @property
     @pulumi.getter
-    def uptimes(self) -> Sequence[str]:
+    def uptimes(self) -> Sequence[int]:
         return pulumi.get(self, "uptimes")
 
 

@@ -94,3 +94,6 @@ const vm = new proxmox.vm.VirtualMachine(
 ## Reference
 
 For detailed reference documentation, please visit the upstream Terraform provider's documentation at: https://registry.terraform.io/providers/bpg/proxmox/latest.
+
+Some input parameters are required as per the [Proxmox API Viewer](https://pve.proxmox.com/pve-docs/api-viewer/index.html).
+Please refer to this documentation for more information regarding required parameters for your Proxmox VE version.

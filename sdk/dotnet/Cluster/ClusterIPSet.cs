@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.Cluster
 {
     [ProxmoxVEResourceType("proxmoxve:Cluster/clusterIPSet:ClusterIPSet")]
-    public partial class ClusterIPSet : Pulumi.CustomResource
+    public partial class ClusterIPSet : global::Pulumi.CustomResource
     {
         /// <summary>
         /// List of IP or Networks
@@ -75,7 +75,7 @@ namespace Pulumi.ProxmoxVE.Cluster
         }
     }
 
-    public sealed class ClusterIPSetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterIPSetArgs : global::Pulumi.ResourceArgs
     {
         [Input("cidrs")]
         private InputList<Inputs.ClusterIPSetCidrArgs>? _cidrs;
@@ -104,9 +104,10 @@ namespace Pulumi.ProxmoxVE.Cluster
         public ClusterIPSetArgs()
         {
         }
+        public static new ClusterIPSetArgs Empty => new ClusterIPSetArgs();
     }
 
-    public sealed class ClusterIPSetState : Pulumi.ResourceArgs
+    public sealed class ClusterIPSetState : global::Pulumi.ResourceArgs
     {
         [Input("cidrs")]
         private InputList<Inputs.ClusterIPSetCidrGetArgs>? _cidrs;
@@ -135,5 +136,6 @@ namespace Pulumi.ProxmoxVE.Cluster
         public ClusterIPSetState()
         {
         }
+        public static new ClusterIPSetState Empty => new ClusterIPSetState();
     }
 }

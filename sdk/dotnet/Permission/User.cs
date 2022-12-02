@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.Permission
 {
     [ProxmoxVEResourceType("proxmoxve:Permission/user:User")]
-    public partial class User : Pulumi.CustomResource
+    public partial class User : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The access control list
@@ -123,7 +123,7 @@ namespace Pulumi.ProxmoxVE.Permission
         }
     }
 
-    public sealed class UserArgs : Pulumi.ResourceArgs
+    public sealed class UserArgs : global::Pulumi.ResourceArgs
     {
         [Input("acls")]
         private InputList<Inputs.UserAclArgs>? _acls;
@@ -206,9 +206,10 @@ namespace Pulumi.ProxmoxVE.Permission
         public UserArgs()
         {
         }
+        public static new UserArgs Empty => new UserArgs();
     }
 
-    public sealed class UserState : Pulumi.ResourceArgs
+    public sealed class UserState : global::Pulumi.ResourceArgs
     {
         [Input("acls")]
         private InputList<Inputs.UserAclGetArgs>? _acls;
@@ -291,5 +292,6 @@ namespace Pulumi.ProxmoxVE.Permission
         public UserState()
         {
         }
+        public static new UserState Empty => new UserState();
     }
 }

@@ -126,7 +126,7 @@ func (i *Time) ToTimeOutputWithContext(ctx context.Context) TimeOutput {
 // TimeArrayInput is an input type that accepts TimeArray and TimeArrayOutput values.
 // You can construct a concrete instance of `TimeArrayInput` via:
 //
-//          TimeArray{ TimeArgs{...} }
+//	TimeArray{ TimeArgs{...} }
 type TimeArrayInput interface {
 	pulumi.Input
 
@@ -151,7 +151,7 @@ func (i TimeArray) ToTimeArrayOutputWithContext(ctx context.Context) TimeArrayOu
 // TimeMapInput is an input type that accepts TimeMap and TimeMapOutput values.
 // You can construct a concrete instance of `TimeMapInput` via:
 //
-//          TimeMap{ "key": TimeArgs{...} }
+//	TimeMap{ "key": TimeArgs{...} }
 type TimeMapInput interface {
 	pulumi.Input
 

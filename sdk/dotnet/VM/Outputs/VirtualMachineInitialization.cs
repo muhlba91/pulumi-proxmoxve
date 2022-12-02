@@ -19,6 +19,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         public readonly string? Type;
         public readonly Outputs.VirtualMachineInitializationUserAccount? UserAccount;
         public readonly string? UserDataFileId;
+        public readonly string? VendorDataFileId;
 
         [OutputConstructor]
         private VirtualMachineInitialization(
@@ -32,7 +33,9 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
 
             Outputs.VirtualMachineInitializationUserAccount? userAccount,
 
-            string? userDataFileId)
+            string? userDataFileId,
+
+            string? vendorDataFileId)
         {
             DatastoreId = datastoreId;
             Dns = dns;
@@ -40,6 +43,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
             Type = type;
             UserAccount = userAccount;
             UserDataFileId = userDataFileId;
+            VendorDataFileId = vendorDataFileId;
         }
     }
 }

@@ -176,9 +176,11 @@ export namespace VM {
 
     export interface VirtualMachineDisk {
         datastoreId?: pulumi.Input<string>;
+        discard?: pulumi.Input<string>;
         fileFormat?: pulumi.Input<string>;
         fileId?: pulumi.Input<string>;
         interface: pulumi.Input<string>;
+        iothread?: pulumi.Input<boolean>;
         size?: pulumi.Input<number>;
         speed?: pulumi.Input<inputs.VM.VirtualMachineDiskSpeed>;
     }
@@ -197,6 +199,7 @@ export namespace VM {
         type?: pulumi.Input<string>;
         userAccount?: pulumi.Input<inputs.VM.VirtualMachineInitializationUserAccount>;
         userDataFileId?: pulumi.Input<string>;
+        vendorDataFileId?: pulumi.Input<string>;
     }
 
     export interface VirtualMachineInitializationDns {

@@ -21,7 +21,7 @@ type VirtualEnvironment struct {
 // VirtualEnvironmentInput is an input type that accepts VirtualEnvironmentArgs and VirtualEnvironmentOutput values.
 // You can construct a concrete instance of `VirtualEnvironmentInput` via:
 //
-//          VirtualEnvironmentArgs{...}
+//	VirtualEnvironmentArgs{...}
 type VirtualEnvironmentInput interface {
 	pulumi.Input
 

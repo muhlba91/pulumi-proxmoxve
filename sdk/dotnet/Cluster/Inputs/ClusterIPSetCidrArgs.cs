@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.Cluster.Inputs
 {
 
-    public sealed class ClusterIPSetCidrArgs : Pulumi.ResourceArgs
+    public sealed class ClusterIPSetCidrArgs : global::Pulumi.ResourceArgs
     {
         [Input("comment")]
         public Input<string>? Comment { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.ProxmoxVE.Cluster.Inputs
         public ClusterIPSetCidrArgs()
         {
         }
+        public static new ClusterIPSetCidrArgs Empty => new ClusterIPSetCidrArgs();
     }
 }

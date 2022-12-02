@@ -201,7 +201,7 @@ func (i *Certifi) ToCertifiOutputWithContext(ctx context.Context) CertifiOutput 
 // CertifiArrayInput is an input type that accepts CertifiArray and CertifiArrayOutput values.
 // You can construct a concrete instance of `CertifiArrayInput` via:
 //
-//          CertifiArray{ CertifiArgs{...} }
+//	CertifiArray{ CertifiArgs{...} }
 type CertifiArrayInput interface {
 	pulumi.Input
 
@@ -226,7 +226,7 @@ func (i CertifiArray) ToCertifiArrayOutputWithContext(ctx context.Context) Certi
 // CertifiMapInput is an input type that accepts CertifiMap and CertifiMapOutput values.
 // You can construct a concrete instance of `CertifiMapInput` via:
 //
-//          CertifiMap{ "key": CertifiArgs{...} }
+//	CertifiMap{ "key": CertifiArgs{...} }
 type CertifiMapInput interface {
 	pulumi.Input
 

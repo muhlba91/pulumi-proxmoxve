@@ -22,7 +22,7 @@ import (
 	"github.com/muhlba91/pulumi-proxmoxve/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
-	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
+	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 )
 
@@ -50,14 +50,14 @@ func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) erro
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
-	p := shimv1.NewProvider(proxmoxtf.Provider())
+	p := shimv2.NewProvider(proxmoxtf.Provider())
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
 		P:                    p,
 		Name:                 "proxmoxve",
-		DisplayName:          "ProxmoxVE",
-		Description:          "A Pulumi package for creating and managing Proxmox VE cloud resources.",
+		DisplayName:          "Proxmox Virtual Environment (Proxmox VE)",
+		Description:          "A Pulumi package for creating and managing Proxmox Virtual Environment cloud resources.",
 		Publisher:            "Daniel Muehlbachler-Pietrzykowski",
 		Keywords:             []string{"pulumi", "proxmox", "proxmoxve"},
 		License:              "Apache-2.0",
@@ -100,8 +100,8 @@ func Provider() tfbridge.ProviderInfo {
 			"proxmox_virtual_environment_hosts":   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getHosts")},
 			"proxmox_virtual_environment_version": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getVersion")},
 			// Permissions
-			"proxmox_virtual_environment_users":  {Tok: tfbridge.MakeDataSource(mainPkg, permissionMod, "getUsers")},
 			"proxmox_virtual_environment_user":   {Tok: tfbridge.MakeDataSource(mainPkg, permissionMod, "getUser")},
+			"proxmox_virtual_environment_users":  {Tok: tfbridge.MakeDataSource(mainPkg, permissionMod, "getUsers")},
 			"proxmox_virtual_environment_group":  {Tok: tfbridge.MakeDataSource(mainPkg, permissionMod, "getGroup")},
 			"proxmox_virtual_environment_groups": {Tok: tfbridge.MakeDataSource(mainPkg, permissionMod, "getGroups")},
 			"proxmox_virtual_environment_pool":   {Tok: tfbridge.MakeDataSource(mainPkg, permissionMod, "getPool")},

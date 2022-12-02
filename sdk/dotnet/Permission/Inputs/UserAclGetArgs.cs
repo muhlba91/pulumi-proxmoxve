@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.Permission.Inputs
 {
 
-    public sealed class UserAclGetArgs : Pulumi.ResourceArgs
+    public sealed class UserAclGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
@@ -24,5 +24,6 @@ namespace Pulumi.ProxmoxVE.Permission.Inputs
         public UserAclGetArgs()
         {
         }
+        public static new UserAclGetArgs Empty => new UserAclGetArgs();
     }
 }

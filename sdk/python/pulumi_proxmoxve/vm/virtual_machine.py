@@ -67,7 +67,7 @@ class VirtualMachineArgs:
         :param pulumi.Input[bool] on_boot: Start VM on Node boot
         :param pulumi.Input['VirtualMachineOperatingSystemArgs'] operating_system: The operating system configuration
         :param pulumi.Input[str] pool_id: The ID of the pool to assign the virtual machine to
-        :param pulumi.Input[bool] reboot: Wether to reboot vm after creation
+        :param pulumi.Input[bool] reboot: Whether to reboot vm after creation
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]] serial_devices: The serial devices
         :param pulumi.Input[bool] started: Whether to start the virtual machine
         :param pulumi.Input[bool] tablet_device: Whether to enable the USB tablet device
@@ -363,7 +363,7 @@ class VirtualMachineArgs:
     @pulumi.getter
     def reboot(self) -> Optional[pulumi.Input[bool]]:
         """
-        Wether to reboot vm after creation
+        Whether to reboot vm after creation
         """
         return pulumi.get(self, "reboot")
 
@@ -578,7 +578,7 @@ class _VirtualMachineState:
         :param pulumi.Input[bool] on_boot: Start VM on Node boot
         :param pulumi.Input['VirtualMachineOperatingSystemArgs'] operating_system: The operating system configuration
         :param pulumi.Input[str] pool_id: The ID of the pool to assign the virtual machine to
-        :param pulumi.Input[bool] reboot: Wether to reboot vm after creation
+        :param pulumi.Input[bool] reboot: Whether to reboot vm after creation
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]] serial_devices: The serial devices
         :param pulumi.Input[bool] started: Whether to start the virtual machine
         :param pulumi.Input[bool] tablet_device: Whether to enable the USB tablet device
@@ -931,7 +931,7 @@ class _VirtualMachineState:
     @pulumi.getter
     def reboot(self) -> Optional[pulumi.Input[bool]]:
         """
-        Wether to reboot vm after creation
+        Whether to reboot vm after creation
         """
         return pulumi.get(self, "reboot")
 
@@ -1143,7 +1143,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[bool] on_boot: Start VM on Node boot
         :param pulumi.Input[pulumi.InputType['VirtualMachineOperatingSystemArgs']] operating_system: The operating system configuration
         :param pulumi.Input[str] pool_id: The ID of the pool to assign the virtual machine to
-        :param pulumi.Input[bool] reboot: Wether to reboot vm after creation
+        :param pulumi.Input[bool] reboot: Whether to reboot vm after creation
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]] serial_devices: The serial devices
         :param pulumi.Input[bool] started: Whether to start the virtual machine
         :param pulumi.Input[bool] tablet_device: Whether to enable the USB tablet device
@@ -1331,7 +1331,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[bool] on_boot: Start VM on Node boot
         :param pulumi.Input[pulumi.InputType['VirtualMachineOperatingSystemArgs']] operating_system: The operating system configuration
         :param pulumi.Input[str] pool_id: The ID of the pool to assign the virtual machine to
-        :param pulumi.Input[bool] reboot: Wether to reboot vm after creation
+        :param pulumi.Input[bool] reboot: Whether to reboot vm after creation
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]] serial_devices: The serial devices
         :param pulumi.Input[bool] started: Whether to start the virtual machine
         :param pulumi.Input[bool] tablet_device: Whether to enable the USB tablet device
@@ -1566,7 +1566,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter
     def reboot(self) -> pulumi.Output[Optional[bool]]:
         """
-        Wether to reboot vm after creation
+        Whether to reboot vm after creation
         """
         return pulumi.get(self, "reboot")
 

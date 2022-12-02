@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.Permission.Inputs
 {
 
-    public sealed class PoolMemberArgs : Pulumi.ResourceArgs
+    public sealed class PoolMemberArgs : global::Pulumi.ResourceArgs
     {
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
@@ -30,5 +30,6 @@ namespace Pulumi.ProxmoxVE.Permission.Inputs
         public PoolMemberArgs()
         {
         }
+        public static new PoolMemberArgs Empty => new PoolMemberArgs();
     }
 }

@@ -1,7 +1,7 @@
 {
     "name": "proxmoxve",
-    "displayName": "ProxmoxVE",
-    "description": "A Pulumi package for creating and managing Proxmox VE cloud resources.",
+    "displayName": "Proxmox Virtual Environment (Proxmox VE)",
+    "description": "A Pulumi package for creating and managing Proxmox Virtual Environment cloud resources.",
     "keywords": [
         "pulumi",
         "proxmox",
@@ -41,14 +41,14 @@
                 "@types/node": "^10.0.0"
             },
             "disableUnionOutputTypes": true,
-            "packageDescription": "A Pulumi package for creating and managing Proxmox VE cloud resources.",
+            "packageDescription": "A Pulumi package for creating and managing Proxmox Virtual Environment cloud resources.",
             "packageName": "@muhlba91/pulumi-proxmoxve",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/bpg/terraform-provider-proxmoxve)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-proxmoxve` repo](https://github.com/pulumi/pulumi-proxmoxve/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`bpg/terraform-provider-proxmoxve` repo](https://github.com/bpg/terraform-provider-proxmoxve/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/bpg/terraform-provider-proxmoxve)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-proxmoxve` repo](https://github.com/muhlba91/pulumi-proxmoxve/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-proxmoxve` repo](https://github.com/bpg/terraform-provider-proxmoxve/issues).",
             "typescriptVersion": ""
         },
         "python": {
             "compatibility": "tfbridge20",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/bpg/terraform-provider-proxmoxve)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-proxmoxve` repo](https://github.com/pulumi/pulumi-proxmoxve/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`bpg/terraform-provider-proxmoxve` repo](https://github.com/bpg/terraform-provider-proxmoxve/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/bpg/terraform-provider-proxmoxve)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-proxmoxve` repo](https://github.com/muhlba91/pulumi-proxmoxve/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-proxmoxve` repo](https://github.com/bpg/terraform-provider-proxmoxve/issues).",
             "requires": {
                 "pulumi": "\u003e=3.0.0,\u003c4.0.0"
             }
@@ -1017,6 +1017,14 @@
                         }
                     }
                 },
+                "discard": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "fileFormat": {
                     "type": "string",
                     "language": {
@@ -1037,6 +1045,14 @@
                 },
                 "interface": {
                     "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "iothread": {
+                    "type": "boolean",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1151,6 +1167,15 @@
                     "willReplaceOnChanges": true
                 },
                 "userDataFileId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                },
+                "vendorDataFileId": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -2494,7 +2519,7 @@
                 },
                 "reboot": {
                     "type": "boolean",
-                    "description": "Wether to reboot vm after creation\n"
+                    "description": "Whether to reboot vm after creation\n"
                 },
                 "serialDevices": {
                     "type": "array",
@@ -2640,7 +2665,7 @@
                 },
                 "reboot": {
                     "type": "boolean",
-                    "description": "Wether to reboot vm after creation\n"
+                    "description": "Whether to reboot vm after creation\n"
                 },
                 "serialDevices": {
                     "type": "array",
@@ -2819,7 +2844,7 @@
                     },
                     "reboot": {
                         "type": "boolean",
-                        "description": "Wether to reboot vm after creation\n"
+                        "description": "Whether to reboot vm after creation\n"
                     },
                     "serialDevices": {
                         "type": "array",
@@ -3399,7 +3424,7 @@
                     "uptimes": {
                         "type": "array",
                         "items": {
-                            "type": "string"
+                            "type": "integer"
                         }
                     }
                 },
@@ -3868,7 +3893,7 @@
                     "types": {
                         "type": "array",
                         "items": {
-                            "type": "integer"
+                            "type": "string"
                         }
                     }
                 },

@@ -19,7 +19,7 @@ namespace Pulumi.ProxmoxVE
     }
 
 
-    public sealed class GetHostsArgs : Pulumi.InvokeArgs
+    public sealed class GetHostsArgs : global::Pulumi.InvokeArgs
     {
         [Input("nodeName", required: true)]
         public string NodeName { get; set; } = null!;
@@ -27,9 +27,10 @@ namespace Pulumi.ProxmoxVE
         public GetHostsArgs()
         {
         }
+        public static new GetHostsArgs Empty => new GetHostsArgs();
     }
 
-    public sealed class GetHostsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetHostsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("nodeName", required: true)]
         public Input<string> NodeName { get; set; } = null!;
@@ -37,6 +38,7 @@ namespace Pulumi.ProxmoxVE
         public GetHostsInvokeArgs()
         {
         }
+        public static new GetHostsInvokeArgs Empty => new GetHostsInvokeArgs();
     }
 
 

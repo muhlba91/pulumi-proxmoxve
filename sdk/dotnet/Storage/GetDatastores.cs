@@ -19,7 +19,7 @@ namespace Pulumi.ProxmoxVE.Storage
     }
 
 
-    public sealed class GetDatastoresArgs : Pulumi.InvokeArgs
+    public sealed class GetDatastoresArgs : global::Pulumi.InvokeArgs
     {
         [Input("nodeName", required: true)]
         public string NodeName { get; set; } = null!;
@@ -27,9 +27,10 @@ namespace Pulumi.ProxmoxVE.Storage
         public GetDatastoresArgs()
         {
         }
+        public static new GetDatastoresArgs Empty => new GetDatastoresArgs();
     }
 
-    public sealed class GetDatastoresInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDatastoresInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("nodeName", required: true)]
         public Input<string> NodeName { get; set; } = null!;
@@ -37,6 +38,7 @@ namespace Pulumi.ProxmoxVE.Storage
         public GetDatastoresInvokeArgs()
         {
         }
+        public static new GetDatastoresInvokeArgs Empty => new GetDatastoresInvokeArgs();
     }
 
 
@@ -56,7 +58,7 @@ namespace Pulumi.ProxmoxVE.Storage
         public readonly ImmutableArray<int> SpaceAvailables;
         public readonly ImmutableArray<int> SpaceTotals;
         public readonly ImmutableArray<int> SpaceUseds;
-        public readonly ImmutableArray<int> Types;
+        public readonly ImmutableArray<string> Types;
 
         [OutputConstructor]
         private GetDatastoresResult(
@@ -80,7 +82,7 @@ namespace Pulumi.ProxmoxVE.Storage
 
             ImmutableArray<int> spaceUseds,
 
-            ImmutableArray<int> types)
+            ImmutableArray<string> types)
         {
             Actives = actives;
             ContentTypes = contentTypes;

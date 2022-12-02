@@ -121,7 +121,7 @@ func (i *ClusterAlias) ToClusterAliasOutputWithContext(ctx context.Context) Clus
 // ClusterAliasArrayInput is an input type that accepts ClusterAliasArray and ClusterAliasArrayOutput values.
 // You can construct a concrete instance of `ClusterAliasArrayInput` via:
 //
-//          ClusterAliasArray{ ClusterAliasArgs{...} }
+//	ClusterAliasArray{ ClusterAliasArgs{...} }
 type ClusterAliasArrayInput interface {
 	pulumi.Input
 
@@ -146,7 +146,7 @@ func (i ClusterAliasArray) ToClusterAliasArrayOutputWithContext(ctx context.Cont
 // ClusterAliasMapInput is an input type that accepts ClusterAliasMap and ClusterAliasMapOutput values.
 // You can construct a concrete instance of `ClusterAliasMapInput` via:
 //
-//          ClusterAliasMap{ "key": ClusterAliasArgs{...} }
+//	ClusterAliasMap{ "key": ClusterAliasArgs{...} }
 type ClusterAliasMapInput interface {
 	pulumi.Input
 

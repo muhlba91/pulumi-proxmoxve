@@ -19,7 +19,7 @@ type ContainerClone struct {
 // ContainerCloneInput is an input type that accepts ContainerCloneArgs and ContainerCloneOutput values.
 // You can construct a concrete instance of `ContainerCloneInput` via:
 //
-//          ContainerCloneArgs{...}
+//	ContainerCloneArgs{...}
 type ContainerCloneInput interface {
 	pulumi.Input
 
@@ -56,11 +56,11 @@ func (i ContainerCloneArgs) ToContainerClonePtrOutputWithContext(ctx context.Con
 // ContainerClonePtrInput is an input type that accepts ContainerCloneArgs, ContainerClonePtr and ContainerClonePtrOutput values.
 // You can construct a concrete instance of `ContainerClonePtrInput` via:
 //
-//          ContainerCloneArgs{...}
+//	        ContainerCloneArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ContainerClonePtrInput interface {
 	pulumi.Input
 
@@ -182,7 +182,7 @@ type ContainerConsole struct {
 // ContainerConsoleInput is an input type that accepts ContainerConsoleArgs and ContainerConsoleOutput values.
 // You can construct a concrete instance of `ContainerConsoleInput` via:
 //
-//          ContainerConsoleArgs{...}
+//	ContainerConsoleArgs{...}
 type ContainerConsoleInput interface {
 	pulumi.Input
 
@@ -219,11 +219,11 @@ func (i ContainerConsoleArgs) ToContainerConsolePtrOutputWithContext(ctx context
 // ContainerConsolePtrInput is an input type that accepts ContainerConsoleArgs, ContainerConsolePtr and ContainerConsolePtrOutput values.
 // You can construct a concrete instance of `ContainerConsolePtrInput` via:
 //
-//          ContainerConsoleArgs{...}
+//	        ContainerConsoleArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ContainerConsolePtrInput interface {
 	pulumi.Input
 
@@ -345,7 +345,7 @@ type ContainerCpu struct {
 // ContainerCpuInput is an input type that accepts ContainerCpuArgs and ContainerCpuOutput values.
 // You can construct a concrete instance of `ContainerCpuInput` via:
 //
-//          ContainerCpuArgs{...}
+//	ContainerCpuArgs{...}
 type ContainerCpuInput interface {
 	pulumi.Input
 
@@ -382,11 +382,11 @@ func (i ContainerCpuArgs) ToContainerCpuPtrOutputWithContext(ctx context.Context
 // ContainerCpuPtrInput is an input type that accepts ContainerCpuArgs, ContainerCpuPtr and ContainerCpuPtrOutput values.
 // You can construct a concrete instance of `ContainerCpuPtrInput` via:
 //
-//          ContainerCpuArgs{...}
+//	        ContainerCpuArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ContainerCpuPtrInput interface {
 	pulumi.Input
 
@@ -506,7 +506,7 @@ type ContainerDisk struct {
 // ContainerDiskInput is an input type that accepts ContainerDiskArgs and ContainerDiskOutput values.
 // You can construct a concrete instance of `ContainerDiskInput` via:
 //
-//          ContainerDiskArgs{...}
+//	ContainerDiskArgs{...}
 type ContainerDiskInput interface {
 	pulumi.Input
 
@@ -541,11 +541,11 @@ func (i ContainerDiskArgs) ToContainerDiskPtrOutputWithContext(ctx context.Conte
 // ContainerDiskPtrInput is an input type that accepts ContainerDiskArgs, ContainerDiskPtr and ContainerDiskPtrOutput values.
 // You can construct a concrete instance of `ContainerDiskPtrInput` via:
 //
-//          ContainerDiskArgs{...}
+//	        ContainerDiskArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ContainerDiskPtrInput interface {
 	pulumi.Input
 
@@ -642,7 +642,7 @@ type ContainerInitialization struct {
 // ContainerInitializationInput is an input type that accepts ContainerInitializationArgs and ContainerInitializationOutput values.
 // You can construct a concrete instance of `ContainerInitializationInput` via:
 //
-//          ContainerInitializationArgs{...}
+//	ContainerInitializationArgs{...}
 type ContainerInitializationInput interface {
 	pulumi.Input
 
@@ -680,11 +680,11 @@ func (i ContainerInitializationArgs) ToContainerInitializationPtrOutputWithConte
 // ContainerInitializationPtrInput is an input type that accepts ContainerInitializationArgs, ContainerInitializationPtr and ContainerInitializationPtrOutput values.
 // You can construct a concrete instance of `ContainerInitializationPtrInput` via:
 //
-//          ContainerInitializationArgs{...}
+//	        ContainerInitializationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ContainerInitializationPtrInput interface {
 	pulumi.Input
 
@@ -818,7 +818,7 @@ type ContainerInitializationDns struct {
 // ContainerInitializationDnsInput is an input type that accepts ContainerInitializationDnsArgs and ContainerInitializationDnsOutput values.
 // You can construct a concrete instance of `ContainerInitializationDnsInput` via:
 //
-//          ContainerInitializationDnsArgs{...}
+//	ContainerInitializationDnsArgs{...}
 type ContainerInitializationDnsInput interface {
 	pulumi.Input
 
@@ -854,11 +854,11 @@ func (i ContainerInitializationDnsArgs) ToContainerInitializationDnsPtrOutputWit
 // ContainerInitializationDnsPtrInput is an input type that accepts ContainerInitializationDnsArgs, ContainerInitializationDnsPtr and ContainerInitializationDnsPtrOutput values.
 // You can construct a concrete instance of `ContainerInitializationDnsPtrInput` via:
 //
-//          ContainerInitializationDnsArgs{...}
+//	        ContainerInitializationDnsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ContainerInitializationDnsPtrInput interface {
 	pulumi.Input
 
@@ -966,7 +966,7 @@ type ContainerInitializationIpConfig struct {
 // ContainerInitializationIpConfigInput is an input type that accepts ContainerInitializationIpConfigArgs and ContainerInitializationIpConfigOutput values.
 // You can construct a concrete instance of `ContainerInitializationIpConfigInput` via:
 //
-//          ContainerInitializationIpConfigArgs{...}
+//	ContainerInitializationIpConfigArgs{...}
 type ContainerInitializationIpConfigInput interface {
 	pulumi.Input
 
@@ -994,7 +994,7 @@ func (i ContainerInitializationIpConfigArgs) ToContainerInitializationIpConfigOu
 // ContainerInitializationIpConfigArrayInput is an input type that accepts ContainerInitializationIpConfigArray and ContainerInitializationIpConfigArrayOutput values.
 // You can construct a concrete instance of `ContainerInitializationIpConfigArrayInput` via:
 //
-//          ContainerInitializationIpConfigArray{ ContainerInitializationIpConfigArgs{...} }
+//	ContainerInitializationIpConfigArray{ ContainerInitializationIpConfigArgs{...} }
 type ContainerInitializationIpConfigArrayInput interface {
 	pulumi.Input
 
@@ -1066,7 +1066,7 @@ type ContainerInitializationIpConfigIpv4 struct {
 // ContainerInitializationIpConfigIpv4Input is an input type that accepts ContainerInitializationIpConfigIpv4Args and ContainerInitializationIpConfigIpv4Output values.
 // You can construct a concrete instance of `ContainerInitializationIpConfigIpv4Input` via:
 //
-//          ContainerInitializationIpConfigIpv4Args{...}
+//	ContainerInitializationIpConfigIpv4Args{...}
 type ContainerInitializationIpConfigIpv4Input interface {
 	pulumi.Input
 
@@ -1102,11 +1102,11 @@ func (i ContainerInitializationIpConfigIpv4Args) ToContainerInitializationIpConf
 // ContainerInitializationIpConfigIpv4PtrInput is an input type that accepts ContainerInitializationIpConfigIpv4Args, ContainerInitializationIpConfigIpv4Ptr and ContainerInitializationIpConfigIpv4PtrOutput values.
 // You can construct a concrete instance of `ContainerInitializationIpConfigIpv4PtrInput` via:
 //
-//          ContainerInitializationIpConfigIpv4Args{...}
+//	        ContainerInitializationIpConfigIpv4Args{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ContainerInitializationIpConfigIpv4PtrInput interface {
 	pulumi.Input
 
@@ -1214,7 +1214,7 @@ type ContainerInitializationIpConfigIpv6 struct {
 // ContainerInitializationIpConfigIpv6Input is an input type that accepts ContainerInitializationIpConfigIpv6Args and ContainerInitializationIpConfigIpv6Output values.
 // You can construct a concrete instance of `ContainerInitializationIpConfigIpv6Input` via:
 //
-//          ContainerInitializationIpConfigIpv6Args{...}
+//	ContainerInitializationIpConfigIpv6Args{...}
 type ContainerInitializationIpConfigIpv6Input interface {
 	pulumi.Input
 
@@ -1250,11 +1250,11 @@ func (i ContainerInitializationIpConfigIpv6Args) ToContainerInitializationIpConf
 // ContainerInitializationIpConfigIpv6PtrInput is an input type that accepts ContainerInitializationIpConfigIpv6Args, ContainerInitializationIpConfigIpv6Ptr and ContainerInitializationIpConfigIpv6PtrOutput values.
 // You can construct a concrete instance of `ContainerInitializationIpConfigIpv6PtrInput` via:
 //
-//          ContainerInitializationIpConfigIpv6Args{...}
+//	        ContainerInitializationIpConfigIpv6Args{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ContainerInitializationIpConfigIpv6PtrInput interface {
 	pulumi.Input
 
@@ -1362,7 +1362,7 @@ type ContainerInitializationUserAccount struct {
 // ContainerInitializationUserAccountInput is an input type that accepts ContainerInitializationUserAccountArgs and ContainerInitializationUserAccountOutput values.
 // You can construct a concrete instance of `ContainerInitializationUserAccountInput` via:
 //
-//          ContainerInitializationUserAccountArgs{...}
+//	ContainerInitializationUserAccountArgs{...}
 type ContainerInitializationUserAccountInput interface {
 	pulumi.Input
 
@@ -1398,11 +1398,11 @@ func (i ContainerInitializationUserAccountArgs) ToContainerInitializationUserAcc
 // ContainerInitializationUserAccountPtrInput is an input type that accepts ContainerInitializationUserAccountArgs, ContainerInitializationUserAccountPtr and ContainerInitializationUserAccountPtrOutput values.
 // You can construct a concrete instance of `ContainerInitializationUserAccountPtrInput` via:
 //
-//          ContainerInitializationUserAccountArgs{...}
+//	        ContainerInitializationUserAccountArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ContainerInitializationUserAccountPtrInput interface {
 	pulumi.Input
 
@@ -1510,7 +1510,7 @@ type ContainerMemory struct {
 // ContainerMemoryInput is an input type that accepts ContainerMemoryArgs and ContainerMemoryOutput values.
 // You can construct a concrete instance of `ContainerMemoryInput` via:
 //
-//          ContainerMemoryArgs{...}
+//	ContainerMemoryArgs{...}
 type ContainerMemoryInput interface {
 	pulumi.Input
 
@@ -1546,11 +1546,11 @@ func (i ContainerMemoryArgs) ToContainerMemoryPtrOutputWithContext(ctx context.C
 // ContainerMemoryPtrInput is an input type that accepts ContainerMemoryArgs, ContainerMemoryPtr and ContainerMemoryPtrOutput values.
 // You can construct a concrete instance of `ContainerMemoryPtrInput` via:
 //
-//          ContainerMemoryArgs{...}
+//	        ContainerMemoryArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ContainerMemoryPtrInput interface {
 	pulumi.Input
 
@@ -1662,7 +1662,7 @@ type ContainerNetworkInterface struct {
 // ContainerNetworkInterfaceInput is an input type that accepts ContainerNetworkInterfaceArgs and ContainerNetworkInterfaceOutput values.
 // You can construct a concrete instance of `ContainerNetworkInterfaceInput` via:
 //
-//          ContainerNetworkInterfaceArgs{...}
+//	ContainerNetworkInterfaceArgs{...}
 type ContainerNetworkInterfaceInput interface {
 	pulumi.Input
 
@@ -1694,7 +1694,7 @@ func (i ContainerNetworkInterfaceArgs) ToContainerNetworkInterfaceOutputWithCont
 // ContainerNetworkInterfaceArrayInput is an input type that accepts ContainerNetworkInterfaceArray and ContainerNetworkInterfaceArrayOutput values.
 // You can construct a concrete instance of `ContainerNetworkInterfaceArrayInput` via:
 //
-//          ContainerNetworkInterfaceArray{ ContainerNetworkInterfaceArgs{...} }
+//	ContainerNetworkInterfaceArray{ ContainerNetworkInterfaceArgs{...} }
 type ContainerNetworkInterfaceArrayInput interface {
 	pulumi.Input
 
@@ -1782,7 +1782,7 @@ type ContainerOperatingSystem struct {
 // ContainerOperatingSystemInput is an input type that accepts ContainerOperatingSystemArgs and ContainerOperatingSystemOutput values.
 // You can construct a concrete instance of `ContainerOperatingSystemInput` via:
 //
-//          ContainerOperatingSystemArgs{...}
+//	ContainerOperatingSystemArgs{...}
 type ContainerOperatingSystemInput interface {
 	pulumi.Input
 
@@ -1818,11 +1818,11 @@ func (i ContainerOperatingSystemArgs) ToContainerOperatingSystemPtrOutputWithCon
 // ContainerOperatingSystemPtrInput is an input type that accepts ContainerOperatingSystemArgs, ContainerOperatingSystemPtr and ContainerOperatingSystemPtrOutput values.
 // You can construct a concrete instance of `ContainerOperatingSystemPtrInput` via:
 //
-//          ContainerOperatingSystemArgs{...}
+//	        ContainerOperatingSystemArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ContainerOperatingSystemPtrInput interface {
 	pulumi.Input
 

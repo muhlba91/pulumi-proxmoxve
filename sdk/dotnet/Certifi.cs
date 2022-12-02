@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE
 {
     [ProxmoxVEResourceType("proxmoxve:index/certifi:Certifi")]
-    public partial class Certifi : Pulumi.CustomResource
+    public partial class Certifi : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The PEM encoded certificate
@@ -141,7 +141,7 @@ namespace Pulumi.ProxmoxVE
         }
     }
 
-    public sealed class CertifiArgs : Pulumi.ResourceArgs
+    public sealed class CertifiArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The PEM encoded certificate
@@ -176,9 +176,10 @@ namespace Pulumi.ProxmoxVE
         public CertifiArgs()
         {
         }
+        public static new CertifiArgs Empty => new CertifiArgs();
     }
 
-    public sealed class CertifiState : Pulumi.ResourceArgs
+    public sealed class CertifiState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The PEM encoded certificate
@@ -273,5 +274,6 @@ namespace Pulumi.ProxmoxVE
         public CertifiState()
         {
         }
+        public static new CertifiState Empty => new CertifiState();
     }
 }

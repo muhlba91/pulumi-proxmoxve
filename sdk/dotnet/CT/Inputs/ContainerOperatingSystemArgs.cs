@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.CT.Inputs
 {
 
-    public sealed class ContainerOperatingSystemArgs : Pulumi.ResourceArgs
+    public sealed class ContainerOperatingSystemArgs : global::Pulumi.ResourceArgs
     {
         [Input("templateFileId", required: true)]
         public Input<string> TemplateFileId { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
         public ContainerOperatingSystemArgs()
         {
         }
+        public static new ContainerOperatingSystemArgs Empty => new ContainerOperatingSystemArgs();
     }
 }

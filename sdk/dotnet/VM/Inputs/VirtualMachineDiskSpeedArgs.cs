@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.VM.Inputs
 {
 
-    public sealed class VirtualMachineDiskSpeedArgs : Pulumi.ResourceArgs
+    public sealed class VirtualMachineDiskSpeedArgs : global::Pulumi.ResourceArgs
     {
         [Input("read")]
         public Input<int>? Read { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public VirtualMachineDiskSpeedArgs()
         {
         }
+        public static new VirtualMachineDiskSpeedArgs Empty => new VirtualMachineDiskSpeedArgs();
     }
 }

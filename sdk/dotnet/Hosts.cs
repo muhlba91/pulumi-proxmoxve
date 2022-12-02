@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE
 {
     [ProxmoxVEResourceType("proxmoxve:index/hosts:Hosts")]
-    public partial class Hosts : Pulumi.CustomResource
+    public partial class Hosts : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The addresses
@@ -87,7 +87,7 @@ namespace Pulumi.ProxmoxVE
         }
     }
 
-    public sealed class HostsArgs : Pulumi.ResourceArgs
+    public sealed class HostsArgs : global::Pulumi.ResourceArgs
     {
         [Input("entries", required: true)]
         private InputList<Inputs.HostsEntryArgs>? _entries;
@@ -110,9 +110,10 @@ namespace Pulumi.ProxmoxVE
         public HostsArgs()
         {
         }
+        public static new HostsArgs Empty => new HostsArgs();
     }
 
-    public sealed class HostsState : Pulumi.ResourceArgs
+    public sealed class HostsState : global::Pulumi.ResourceArgs
     {
         [Input("addresses")]
         private InputList<string>? _addresses;
@@ -165,5 +166,6 @@ namespace Pulumi.ProxmoxVE
         public HostsState()
         {
         }
+        public static new HostsState Empty => new HostsState();
     }
 }

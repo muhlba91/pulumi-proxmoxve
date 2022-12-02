@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.VM.Inputs
 {
 
-    public sealed class VirtualMachineAudioDeviceGetArgs : Pulumi.ResourceArgs
+    public sealed class VirtualMachineAudioDeviceGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("device")]
         public Input<string>? Device { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public VirtualMachineAudioDeviceGetArgs()
         {
         }
+        public static new VirtualMachineAudioDeviceGetArgs Empty => new VirtualMachineAudioDeviceGetArgs();
     }
 }

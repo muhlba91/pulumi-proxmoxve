@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.VM.Inputs
 {
 
-    public sealed class VirtualMachineNetworkDeviceGetArgs : Pulumi.ResourceArgs
+    public sealed class VirtualMachineNetworkDeviceGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("bridge")]
         public Input<string>? Bridge { get; set; }
@@ -33,5 +33,6 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public VirtualMachineNetworkDeviceGetArgs()
         {
         }
+        public static new VirtualMachineNetworkDeviceGetArgs Empty => new VirtualMachineNetworkDeviceGetArgs();
     }
 }

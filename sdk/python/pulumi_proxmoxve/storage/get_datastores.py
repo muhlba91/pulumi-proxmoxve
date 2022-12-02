@@ -111,7 +111,7 @@ class GetDatastoresResult:
 
     @property
     @pulumi.getter
-    def types(self) -> Sequence[int]:
+    def types(self) -> Sequence[str]:
         return pulumi.get(self, "types")
 
 

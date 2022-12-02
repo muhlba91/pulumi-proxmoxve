@@ -18,7 +18,7 @@ type HostsEntry struct {
 // HostsEntryInput is an input type that accepts HostsEntryArgs and HostsEntryOutput values.
 // You can construct a concrete instance of `HostsEntryInput` via:
 //
-//          HostsEntryArgs{...}
+//	HostsEntryArgs{...}
 type HostsEntryInput interface {
 	pulumi.Input
 
@@ -46,7 +46,7 @@ func (i HostsEntryArgs) ToHostsEntryOutputWithContext(ctx context.Context) Hosts
 // HostsEntryArrayInput is an input type that accepts HostsEntryArray and HostsEntryArrayOutput values.
 // You can construct a concrete instance of `HostsEntryArrayInput` via:
 //
-//          HostsEntryArray{ HostsEntryArgs{...} }
+//	HostsEntryArray{ HostsEntryArgs{...} }
 type HostsEntryArrayInput interface {
 	pulumi.Input
 
@@ -121,7 +121,7 @@ type ProviderVirtualEnvironment struct {
 // ProviderVirtualEnvironmentInput is an input type that accepts ProviderVirtualEnvironmentArgs and ProviderVirtualEnvironmentOutput values.
 // You can construct a concrete instance of `ProviderVirtualEnvironmentInput` via:
 //
-//          ProviderVirtualEnvironmentArgs{...}
+//	ProviderVirtualEnvironmentArgs{...}
 type ProviderVirtualEnvironmentInput interface {
 	pulumi.Input
 
@@ -160,11 +160,11 @@ func (i ProviderVirtualEnvironmentArgs) ToProviderVirtualEnvironmentPtrOutputWit
 // ProviderVirtualEnvironmentPtrInput is an input type that accepts ProviderVirtualEnvironmentArgs, ProviderVirtualEnvironmentPtr and ProviderVirtualEnvironmentPtrOutput values.
 // You can construct a concrete instance of `ProviderVirtualEnvironmentPtrInput` via:
 //
-//          ProviderVirtualEnvironmentArgs{...}
+//	        ProviderVirtualEnvironmentArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ProviderVirtualEnvironmentPtrInput interface {
 	pulumi.Input
 
@@ -311,7 +311,7 @@ type GetHostsEntry struct {
 // GetHostsEntryInput is an input type that accepts GetHostsEntryArgs and GetHostsEntryOutput values.
 // You can construct a concrete instance of `GetHostsEntryInput` via:
 //
-//          GetHostsEntryArgs{...}
+//	GetHostsEntryArgs{...}
 type GetHostsEntryInput interface {
 	pulumi.Input
 
@@ -339,7 +339,7 @@ func (i GetHostsEntryArgs) ToGetHostsEntryOutputWithContext(ctx context.Context)
 // GetHostsEntryArrayInput is an input type that accepts GetHostsEntryArray and GetHostsEntryArrayOutput values.
 // You can construct a concrete instance of `GetHostsEntryArrayInput` via:
 //
-//          GetHostsEntryArray{ GetHostsEntryArgs{...} }
+//	GetHostsEntryArray{ GetHostsEntryArgs{...} }
 type GetHostsEntryArrayInput interface {
 	pulumi.Input
 

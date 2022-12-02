@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.VM.Inputs
 {
 
-    public sealed class VirtualMachineCloneArgs : Pulumi.ResourceArgs
+    public sealed class VirtualMachineCloneArgs : global::Pulumi.ResourceArgs
     {
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
@@ -30,5 +30,6 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public VirtualMachineCloneArgs()
         {
         }
+        public static new VirtualMachineCloneArgs Empty => new VirtualMachineCloneArgs();
     }
 }

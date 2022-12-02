@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.CT
 {
     [ProxmoxVEResourceType("proxmoxve:CT/container:Container")]
-    public partial class Container : Pulumi.CustomResource
+    public partial class Container : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The cloning configuration
@@ -141,7 +141,7 @@ namespace Pulumi.ProxmoxVE.CT
         }
     }
 
-    public sealed class ContainerArgs : Pulumi.ResourceArgs
+    public sealed class ContainerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The cloning configuration
@@ -236,9 +236,10 @@ namespace Pulumi.ProxmoxVE.CT
         public ContainerArgs()
         {
         }
+        public static new ContainerArgs Empty => new ContainerArgs();
     }
 
-    public sealed class ContainerState : Pulumi.ResourceArgs
+    public sealed class ContainerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The cloning configuration
@@ -333,5 +334,6 @@ namespace Pulumi.ProxmoxVE.CT
         public ContainerState()
         {
         }
+        public static new ContainerState Empty => new ContainerState();
     }
 }

@@ -39,7 +39,7 @@ export interface GetDatastoresResult {
     readonly spaceAvailables: number[];
     readonly spaceTotals: number[];
     readonly spaceUseds: number[];
-    readonly types: number[];
+    readonly types: string[];
 }
 
 export function getDatastoresOutput(args: GetDatastoresOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatastoresResult> {
