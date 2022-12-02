@@ -1,6 +1,6 @@
 {
     "name": "proxmoxve",
-    "displayName": "ProxmoxVE",
+    "displayName": "Proxmox Virtual Environment (Proxmox VE)",
     "description": "A Pulumi package for creating and managing Proxmox VE cloud resources.",
     "keywords": [
         "pulumi",

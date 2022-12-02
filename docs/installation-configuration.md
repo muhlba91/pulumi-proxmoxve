@@ -1,5 +1,5 @@
 ---
-title: Proxmox Virtual Environment (Proxmox VE) Setup
+title: Proxmox Virtual Environment (Proxmox VE) Installation & Configuration
 meta_desc: Provides an overview on how to setup the Proxmox VE Provider for Pulumi.
 layout: installation
 ---
