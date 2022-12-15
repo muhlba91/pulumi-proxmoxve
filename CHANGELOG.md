@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [2.2.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v2.1.0...v2.2.0) (2022-12-15)
+
+
+### Features
+
+* update upstream terraform provider to 0.8.0 ([bdee441](https://github.com/muhlba91/pulumi-proxmoxve/commit/bdee4410e5ca89e4a709c3b0cd61b9ffc88bde74))
+
 ## [2.1.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v2.0.0...v2.1.0) (2022-12-02)
 
 
