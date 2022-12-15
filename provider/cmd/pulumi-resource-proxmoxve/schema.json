@@ -367,6 +367,14 @@
                         }
                     }
                 },
+                "mtu": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "name": {
                     "type": "string",
                     "language": {
@@ -1074,6 +1082,14 @@
                             "mapCase": false
                         }
                     }
+                },
+                "ssd": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object",
@@ -1363,6 +1379,14 @@
                 },
                 "model": {
                     "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "mtu": {
+                    "type": "integer",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2536,6 +2560,13 @@
                     "type": "boolean",
                     "description": "Whether to enable the USB tablet device\n"
                 },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags of the virtual machine. This is only meta information.\n"
+                },
                 "template": {
                     "type": "boolean",
                     "description": "Whether to create a template\n"
@@ -2681,6 +2712,13 @@
                 "tabletDevice": {
                     "type": "boolean",
                     "description": "Whether to enable the USB tablet device\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags of the virtual machine. This is only meta information.\n"
                 },
                 "template": {
                     "type": "boolean",
@@ -2860,6 +2898,13 @@
                     "tabletDevice": {
                         "type": "boolean",
                         "description": "Whether to enable the USB tablet device\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Tags of the virtual machine. This is only meta information.\n"
                     },
                     "template": {
                         "type": "boolean",
