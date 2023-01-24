@@ -5,11 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 export function getTime(args: GetTimeArgs, opts?: pulumi.InvokeOptions): Promise<GetTimeResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("proxmoxve:index/getTime:getTime", {
         "nodeName": args.nodeName,
     }, opts);
@@ -35,9 +32,8 @@ export interface GetTimeResult {
     readonly timeZone: string;
     readonly utcTime: string;
 }
-
 export function getTimeOutput(args: GetTimeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTimeResult> {
-    return pulumi.output(args).apply(a => getTime(a, opts))
+    return pulumi.output(args).apply((a: any) => getTime(a, opts))
 }
 
 /**

@@ -2,15 +2,13 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export function getHosts(args: GetHostsArgs, opts?: pulumi.InvokeOptions): Promise<GetHostsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("proxmoxve:index/getHosts:getHosts", {
         "nodeName": args.nodeName,
     }, opts);
@@ -37,9 +35,8 @@ export interface GetHostsResult {
     readonly id: string;
     readonly nodeName: string;
 }
-
 export function getHostsOutput(args: GetHostsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostsResult> {
-    return pulumi.output(args).apply(a => getHosts(a, opts))
+    return pulumi.output(args).apply((a: any) => getHosts(a, opts))
 }
 
 /**

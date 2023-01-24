@@ -24,6 +24,9 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         [Input("model")]
         public Input<string>? Model { get; set; }
 
+        [Input("mtu")]
+        public Input<int>? Mtu { get; set; }
+
         [Input("rateLimit")]
         public Input<double>? RateLimit { get; set; }
 

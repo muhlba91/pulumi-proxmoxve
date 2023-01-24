@@ -16,6 +16,7 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
         public readonly string? Bridge;
         public readonly bool? Enabled;
         public readonly string? MacAddress;
+        public readonly int? Mtu;
         public readonly string Name;
         public readonly double? RateLimit;
         public readonly int? VlanId;
@@ -28,6 +29,8 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
 
             string? macAddress,
 
+            int? mtu,
+
             string name,
 
             double? rateLimit,
@@ -37,6 +40,7 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
             Bridge = bridge;
             Enabled = enabled;
             MacAddress = macAddress;
+            Mtu = mtu;
             Name = name;
             RateLimit = rateLimit;
             VlanId = vlanId;

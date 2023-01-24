@@ -396,7 +396,7 @@ class Certifi(pulumi.CustomResource):
             __props__.__dict__["overwrite"] = overwrite
             if private_key is None and not opts.urn:
                 raise TypeError("Missing required property 'private_key'")
-            __props__.__dict__["private_key"] = private_key
+            __props__.__dict__["private_key"] = None if private_key is None else pulumi.Output.secret(private_key)
             __props__.__dict__["expiration_date"] = None
             __props__.__dict__["file_name"] = None
             __props__.__dict__["issuer"] = None
@@ -406,6 +406,8 @@ class Certifi(pulumi.CustomResource):
             __props__.__dict__["start_date"] = None
             __props__.__dict__["subject"] = None
             __props__.__dict__["subject_alternative_names"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["privateKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Certifi, __self__).__init__(
             'proxmoxve:index/certifi:Certifi',
             resource_name,

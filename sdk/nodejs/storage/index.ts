@@ -5,11 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./file";
-export * from "./getDatastores";
+export { FileArgs, FileState } from "./file";
+export type File = import("./file").File;
+export const File: typeof import("./file").File = null as any;
+utilities.lazyLoad(exports, ["File"], () => require("./file"));
 
-// Import resources to register:
-import { File } from "./file";
+export { GetDatastoresArgs, GetDatastoresResult, GetDatastoresOutputArgs } from "./getDatastores";
+export const getDatastores: typeof import("./getDatastores").getDatastores = null as any;
+export const getDatastoresOutput: typeof import("./getDatastores").getDatastoresOutput = null as any;
+utilities.lazyLoad(exports, ["getDatastores","getDatastoresOutput"], () => require("./getDatastores"));
+
 
 const _module = {
     version: utilities.getVersion(),

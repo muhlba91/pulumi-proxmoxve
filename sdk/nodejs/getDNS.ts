@@ -5,11 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 export function getDNS(args: GetDNSArgs, opts?: pulumi.InvokeOptions): Promise<GetDNSResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("proxmoxve:index/getDNS:getDNS", {
         "nodeName": args.nodeName,
     }, opts);
@@ -34,9 +31,8 @@ export interface GetDNSResult {
     readonly nodeName: string;
     readonly servers: string[];
 }
-
 export function getDNSOutput(args: GetDNSOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDNSResult> {
-    return pulumi.output(args).apply(a => getDNS(a, opts))
+    return pulumi.output(args).apply((a: any) => getDNS(a, opts))
 }
 
 /**

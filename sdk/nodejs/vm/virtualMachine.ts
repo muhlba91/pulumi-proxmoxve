@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 export class VirtualMachine extends pulumi.CustomResource {
@@ -70,6 +71,10 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly disks!: pulumi.Output<outputs.VM.VirtualMachineDisk[] | undefined>;
     /**
+     * The Host PCI devices mapped to the VM
+     */
+    public readonly hostpcis!: pulumi.Output<outputs.VM.VirtualMachineHostpci[] | undefined>;
+    /**
      * The cloud-init configuration
      */
     public readonly initialization!: pulumi.Output<outputs.VM.VirtualMachineInitialization | undefined>;
@@ -86,9 +91,17 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly keyboardLayout!: pulumi.Output<string | undefined>;
     /**
+     * The args implementation
+     */
+    public readonly kvmArguments!: pulumi.Output<string | undefined>;
+    /**
      * The MAC addresses for the network interfaces
      */
     public /*out*/ readonly macAddresses!: pulumi.Output<string[]>;
+    /**
+     * The VM machine type, either default i440fx or q35
+     */
+    public readonly machine!: pulumi.Output<string | undefined>;
     /**
      * The memory allocation
      */
@@ -137,6 +150,10 @@ export class VirtualMachine extends pulumi.CustomResource {
      * Whether to enable the USB tablet device
      */
     public readonly tabletDevice!: pulumi.Output<boolean | undefined>;
+    /**
+     * Tags of the virtual machine. This is only meta information.
+     */
+    public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * Whether to create a template
      */
@@ -196,11 +213,14 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["cpu"] = state ? state.cpu : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["disks"] = state ? state.disks : undefined;
+            resourceInputs["hostpcis"] = state ? state.hostpcis : undefined;
             resourceInputs["initialization"] = state ? state.initialization : undefined;
             resourceInputs["ipv4Addresses"] = state ? state.ipv4Addresses : undefined;
             resourceInputs["ipv6Addresses"] = state ? state.ipv6Addresses : undefined;
             resourceInputs["keyboardLayout"] = state ? state.keyboardLayout : undefined;
+            resourceInputs["kvmArguments"] = state ? state.kvmArguments : undefined;
             resourceInputs["macAddresses"] = state ? state.macAddresses : undefined;
+            resourceInputs["machine"] = state ? state.machine : undefined;
             resourceInputs["memory"] = state ? state.memory : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkDevices"] = state ? state.networkDevices : undefined;
@@ -213,6 +233,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["serialDevices"] = state ? state.serialDevices : undefined;
             resourceInputs["started"] = state ? state.started : undefined;
             resourceInputs["tabletDevice"] = state ? state.tabletDevice : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["template"] = state ? state.template : undefined;
             resourceInputs["timeoutClone"] = state ? state.timeoutClone : undefined;
             resourceInputs["timeoutMoveDisk"] = state ? state.timeoutMoveDisk : undefined;
@@ -236,8 +257,11 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["cpu"] = args ? args.cpu : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["disks"] = args ? args.disks : undefined;
+            resourceInputs["hostpcis"] = args ? args.hostpcis : undefined;
             resourceInputs["initialization"] = args ? args.initialization : undefined;
             resourceInputs["keyboardLayout"] = args ? args.keyboardLayout : undefined;
+            resourceInputs["kvmArguments"] = args ? args.kvmArguments : undefined;
+            resourceInputs["machine"] = args ? args.machine : undefined;
             resourceInputs["memory"] = args ? args.memory : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkDevices"] = args ? args.networkDevices : undefined;
@@ -249,6 +273,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["serialDevices"] = args ? args.serialDevices : undefined;
             resourceInputs["started"] = args ? args.started : undefined;
             resourceInputs["tabletDevice"] = args ? args.tabletDevice : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["template"] = args ? args.template : undefined;
             resourceInputs["timeoutClone"] = args ? args.timeoutClone : undefined;
             resourceInputs["timeoutMoveDisk"] = args ? args.timeoutMoveDisk : undefined;
@@ -309,6 +334,10 @@ export interface VirtualMachineState {
      */
     disks?: pulumi.Input<pulumi.Input<inputs.VM.VirtualMachineDisk>[]>;
     /**
+     * The Host PCI devices mapped to the VM
+     */
+    hostpcis?: pulumi.Input<pulumi.Input<inputs.VM.VirtualMachineHostpci>[]>;
+    /**
      * The cloud-init configuration
      */
     initialization?: pulumi.Input<inputs.VM.VirtualMachineInitialization>;
@@ -325,9 +354,17 @@ export interface VirtualMachineState {
      */
     keyboardLayout?: pulumi.Input<string>;
     /**
+     * The args implementation
+     */
+    kvmArguments?: pulumi.Input<string>;
+    /**
      * The MAC addresses for the network interfaces
      */
     macAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The VM machine type, either default i440fx or q35
+     */
+    machine?: pulumi.Input<string>;
     /**
      * The memory allocation
      */
@@ -376,6 +413,10 @@ export interface VirtualMachineState {
      * Whether to enable the USB tablet device
      */
     tabletDevice?: pulumi.Input<boolean>;
+    /**
+     * Tags of the virtual machine. This is only meta information.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether to create a template
      */
@@ -455,6 +496,10 @@ export interface VirtualMachineArgs {
      */
     disks?: pulumi.Input<pulumi.Input<inputs.VM.VirtualMachineDisk>[]>;
     /**
+     * The Host PCI devices mapped to the VM
+     */
+    hostpcis?: pulumi.Input<pulumi.Input<inputs.VM.VirtualMachineHostpci>[]>;
+    /**
      * The cloud-init configuration
      */
     initialization?: pulumi.Input<inputs.VM.VirtualMachineInitialization>;
@@ -462,6 +507,14 @@ export interface VirtualMachineArgs {
      * The keyboard layout
      */
     keyboardLayout?: pulumi.Input<string>;
+    /**
+     * The args implementation
+     */
+    kvmArguments?: pulumi.Input<string>;
+    /**
+     * The VM machine type, either default i440fx or q35
+     */
+    machine?: pulumi.Input<string>;
     /**
      * The memory allocation
      */
@@ -506,6 +559,10 @@ export interface VirtualMachineArgs {
      * Whether to enable the USB tablet device
      */
     tabletDevice?: pulumi.Input<boolean>;
+    /**
+     * Tags of the virtual machine. This is only meta information.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether to create a template
      */

@@ -5,15 +5,50 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export * from "./certifi";
-export * from "./dns";
-export * from "./getDNS";
-export * from "./getHosts";
-export * from "./getTime";
-export * from "./getVersion";
-export * from "./hosts";
-export * from "./provider";
-export * from "./time";
+export { CertifiArgs, CertifiState } from "./certifi";
+export type Certifi = import("./certifi").Certifi;
+export const Certifi: typeof import("./certifi").Certifi = null as any;
+utilities.lazyLoad(exports, ["Certifi"], () => require("./certifi"));
+
+export { DNSArgs, DNSState } from "./dns";
+export type DNS = import("./dns").DNS;
+export const DNS: typeof import("./dns").DNS = null as any;
+utilities.lazyLoad(exports, ["DNS"], () => require("./dns"));
+
+export { GetDNSArgs, GetDNSResult, GetDNSOutputArgs } from "./getDNS";
+export const getDNS: typeof import("./getDNS").getDNS = null as any;
+export const getDNSOutput: typeof import("./getDNS").getDNSOutput = null as any;
+utilities.lazyLoad(exports, ["getDNS","getDNSOutput"], () => require("./getDNS"));
+
+export { GetHostsArgs, GetHostsResult, GetHostsOutputArgs } from "./getHosts";
+export const getHosts: typeof import("./getHosts").getHosts = null as any;
+export const getHostsOutput: typeof import("./getHosts").getHostsOutput = null as any;
+utilities.lazyLoad(exports, ["getHosts","getHostsOutput"], () => require("./getHosts"));
+
+export { GetTimeArgs, GetTimeResult, GetTimeOutputArgs } from "./getTime";
+export const getTime: typeof import("./getTime").getTime = null as any;
+export const getTimeOutput: typeof import("./getTime").getTimeOutput = null as any;
+utilities.lazyLoad(exports, ["getTime","getTimeOutput"], () => require("./getTime"));
+
+export { GetVersionResult } from "./getVersion";
+export const getVersion: typeof import("./getVersion").getVersion = null as any;
+utilities.lazyLoad(exports, ["getVersion"], () => require("./getVersion"));
+
+export { HostsArgs, HostsState } from "./hosts";
+export type Hosts = import("./hosts").Hosts;
+export const Hosts: typeof import("./hosts").Hosts = null as any;
+utilities.lazyLoad(exports, ["Hosts"], () => require("./hosts"));
+
+export { ProviderArgs } from "./provider";
+export type Provider = import("./provider").Provider;
+export const Provider: typeof import("./provider").Provider = null as any;
+utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+
+export { TimeArgs, TimeState } from "./time";
+export type Time = import("./time").Time;
+export const Time: typeof import("./time").Time = null as any;
+utilities.lazyLoad(exports, ["Time"], () => require("./time"));
+
 
 // Export sub-modules:
 import * as cluster from "./cluster";
@@ -33,12 +68,6 @@ export {
     types,
     vm,
 };
-
-// Import resources to register:
-import { Certifi } from "./certifi";
-import { DNS } from "./dns";
-import { Hosts } from "./hosts";
-import { Time } from "./time";
 
 const _module = {
     version: utilities.getVersion(),
@@ -61,9 +90,6 @@ pulumi.runtime.registerResourceModule("proxmoxve", "index/certifi", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "index/dNS", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "index/hosts", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "index/time", _module)
-
-import { Provider } from "./provider";
-
 pulumi.runtime.registerResourcePackage("proxmoxve", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

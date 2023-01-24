@@ -21,6 +21,9 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
         [Input("macAddress")]
         public Input<string>? MacAddress { get; set; }
 
+        [Input("mtu")]
+        public Input<int>? Mtu { get; set; }
+
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 

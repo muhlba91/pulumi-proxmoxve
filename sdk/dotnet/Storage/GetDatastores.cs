@@ -12,10 +12,10 @@ namespace Pulumi.ProxmoxVE.Storage
     public static class GetDatastores
     {
         public static Task<GetDatastoresResult> InvokeAsync(GetDatastoresArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatastoresResult>("proxmoxve:Storage/getDatastores:getDatastores", args ?? new GetDatastoresArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatastoresResult>("proxmoxve:Storage/getDatastores:getDatastores", args ?? new GetDatastoresArgs(), options.WithDefaults());
 
         public static Output<GetDatastoresResult> Invoke(GetDatastoresInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDatastoresResult>("proxmoxve:Storage/getDatastores:getDatastores", args ?? new GetDatastoresInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatastoresResult>("proxmoxve:Storage/getDatastores:getDatastores", args ?? new GetDatastoresInvokeArgs(), options.WithDefaults());
     }
 
 

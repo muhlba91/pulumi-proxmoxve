@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 export class Container extends pulumi.CustomResource {
@@ -82,6 +83,10 @@ export class Container extends pulumi.CustomResource {
      */
     public readonly started!: pulumi.Output<boolean | undefined>;
     /**
+     * Tags of the container. This is only meta information.
+     */
+    public readonly tags!: pulumi.Output<string[] | undefined>;
+    /**
      * Whether to create a template
      */
     public readonly template!: pulumi.Output<boolean | undefined>;
@@ -115,6 +120,7 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["operatingSystem"] = state ? state.operatingSystem : undefined;
             resourceInputs["poolId"] = state ? state.poolId : undefined;
             resourceInputs["started"] = state ? state.started : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["template"] = state ? state.template : undefined;
             resourceInputs["vmId"] = state ? state.vmId : undefined;
         } else {
@@ -134,6 +140,7 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["operatingSystem"] = args ? args.operatingSystem : undefined;
             resourceInputs["poolId"] = args ? args.poolId : undefined;
             resourceInputs["started"] = args ? args.started : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["template"] = args ? args.template : undefined;
             resourceInputs["vmId"] = args ? args.vmId : undefined;
         }
@@ -194,6 +201,10 @@ export interface ContainerState {
      * Whether to start the container
      */
     started?: pulumi.Input<boolean>;
+    /**
+     * Tags of the container. This is only meta information.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether to create a template
      */
@@ -256,6 +267,10 @@ export interface ContainerArgs {
      * Whether to start the container
      */
     started?: pulumi.Input<boolean>;
+    /**
+     * Tags of the container. This is only meta information.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether to create a template
      */

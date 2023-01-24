@@ -17,6 +17,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         public readonly bool? Enabled;
         public readonly string? MacAddress;
         public readonly string? Model;
+        public readonly int? Mtu;
         public readonly double? RateLimit;
         public readonly int? VlanId;
 
@@ -30,6 +31,8 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
 
             string? model,
 
+            int? mtu,
+
             double? rateLimit,
 
             int? vlanId)
@@ -38,6 +41,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
             Enabled = enabled;
             MacAddress = macAddress;
             Model = model;
+            Mtu = mtu;
             RateLimit = rateLimit;
             VlanId = vlanId;
         }

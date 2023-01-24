@@ -2,15 +2,13 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 export function getGroup(args: GetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("proxmoxve:Permission/getGroup:getGroup", {
         "groupId": args.groupId,
     }, opts);
@@ -36,9 +34,8 @@ export interface GetGroupResult {
     readonly id: string;
     readonly members: string[];
 }
-
 export function getGroupOutput(args: GetGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupResult> {
-    return pulumi.output(args).apply(a => getGroup(a, opts))
+    return pulumi.output(args).apply((a: any) => getGroup(a, opts))
 }
 
 /**

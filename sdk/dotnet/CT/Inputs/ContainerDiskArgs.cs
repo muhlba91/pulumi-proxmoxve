@@ -15,6 +15,9 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
 
+        [Input("size")]
+        public Input<int>? Size { get; set; }
+
         public ContainerDiskArgs()
         {
         }

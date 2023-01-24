@@ -5,10 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./virtualMachine";
+export { VirtualMachineArgs, VirtualMachineState } from "./virtualMachine";
+export type VirtualMachine = import("./virtualMachine").VirtualMachine;
+export const VirtualMachine: typeof import("./virtualMachine").VirtualMachine = null as any;
+utilities.lazyLoad(exports, ["VirtualMachine"], () => require("./virtualMachine"));
 
-// Import resources to register:
-import { VirtualMachine } from "./virtualMachine";
 
 const _module = {
     version: utilities.getVersion(),

@@ -12,10 +12,10 @@ namespace Pulumi.ProxmoxVE
     public static class GetHosts
     {
         public static Task<GetHostsResult> InvokeAsync(GetHostsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHostsResult>("proxmoxve:index/getHosts:getHosts", args ?? new GetHostsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetHostsResult>("proxmoxve:index/getHosts:getHosts", args ?? new GetHostsArgs(), options.WithDefaults());
 
         public static Output<GetHostsResult> Invoke(GetHostsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHostsResult>("proxmoxve:index/getHosts:getHosts", args ?? new GetHostsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetHostsResult>("proxmoxve:index/getHosts:getHosts", args ?? new GetHostsInvokeArgs(), options.WithDefaults());
     }
 
 

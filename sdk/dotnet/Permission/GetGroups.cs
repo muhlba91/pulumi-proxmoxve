@@ -12,7 +12,7 @@ namespace Pulumi.ProxmoxVE.Permission
     public static class GetGroups
     {
         public static Task<GetGroupsResult> InvokeAsync(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("proxmoxve:Permission/getGroups:getGroups", InvokeArgs.Empty, options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("proxmoxve:Permission/getGroups:getGroups", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

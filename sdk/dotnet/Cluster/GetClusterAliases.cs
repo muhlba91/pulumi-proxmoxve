@@ -12,7 +12,7 @@ namespace Pulumi.ProxmoxVE.Cluster
     public static class GetClusterAliases
     {
         public static Task<GetClusterAliasesResult> InvokeAsync(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterAliasesResult>("proxmoxve:Cluster/getClusterAliases:getClusterAliases", InvokeArgs.Empty, options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetClusterAliasesResult>("proxmoxve:Cluster/getClusterAliases:getClusterAliases", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

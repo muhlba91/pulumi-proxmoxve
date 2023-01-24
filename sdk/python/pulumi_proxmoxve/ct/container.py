@@ -28,6 +28,7 @@ class ContainerArgs:
                  operating_system: Optional[pulumi.Input['ContainerOperatingSystemArgs']] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
                  vm_id: Optional[pulumi.Input[int]] = None):
         """
@@ -44,6 +45,7 @@ class ContainerArgs:
         :param pulumi.Input['ContainerOperatingSystemArgs'] operating_system: The operating system configuration
         :param pulumi.Input[str] pool_id: The ID of the pool to assign the container to
         :param pulumi.Input[bool] started: Whether to start the container
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the container. This is only meta information.
         :param pulumi.Input[bool] template: Whether to create a template
         :param pulumi.Input[int] vm_id: The VM identifier
         """
@@ -70,6 +72,8 @@ class ContainerArgs:
             pulumi.set(__self__, "pool_id", pool_id)
         if started is not None:
             pulumi.set(__self__, "started", started)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if template is not None:
             pulumi.set(__self__, "template", template)
         if vm_id is not None:
@@ -221,6 +225,18 @@ class ContainerArgs:
 
     @property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tags of the container. This is only meta information.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
     def template(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to create a template
@@ -259,6 +275,7 @@ class _ContainerState:
                  operating_system: Optional[pulumi.Input['ContainerOperatingSystemArgs']] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
                  vm_id: Optional[pulumi.Input[int]] = None):
         """
@@ -275,6 +292,7 @@ class _ContainerState:
         :param pulumi.Input['ContainerOperatingSystemArgs'] operating_system: The operating system configuration
         :param pulumi.Input[str] pool_id: The ID of the pool to assign the container to
         :param pulumi.Input[bool] started: Whether to start the container
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the container. This is only meta information.
         :param pulumi.Input[bool] template: Whether to create a template
         :param pulumi.Input[int] vm_id: The VM identifier
         """
@@ -302,6 +320,8 @@ class _ContainerState:
             pulumi.set(__self__, "pool_id", pool_id)
         if started is not None:
             pulumi.set(__self__, "started", started)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if template is not None:
             pulumi.set(__self__, "template", template)
         if vm_id is not None:
@@ -453,6 +473,18 @@ class _ContainerState:
 
     @property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tags of the container. This is only meta information.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
     def template(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to create a template
@@ -493,6 +525,7 @@ class Container(pulumi.CustomResource):
                  operating_system: Optional[pulumi.Input[pulumi.InputType['ContainerOperatingSystemArgs']]] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
                  vm_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -512,6 +545,7 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ContainerOperatingSystemArgs']] operating_system: The operating system configuration
         :param pulumi.Input[str] pool_id: The ID of the pool to assign the container to
         :param pulumi.Input[bool] started: Whether to start the container
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the container. This is only meta information.
         :param pulumi.Input[bool] template: Whether to create a template
         :param pulumi.Input[int] vm_id: The VM identifier
         """
@@ -550,6 +584,7 @@ class Container(pulumi.CustomResource):
                  operating_system: Optional[pulumi.Input[pulumi.InputType['ContainerOperatingSystemArgs']]] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
                  vm_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -575,6 +610,7 @@ class Container(pulumi.CustomResource):
             __props__.__dict__["operating_system"] = operating_system
             __props__.__dict__["pool_id"] = pool_id
             __props__.__dict__["started"] = started
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["template"] = template
             __props__.__dict__["vm_id"] = vm_id
         super(Container, __self__).__init__(
@@ -599,6 +635,7 @@ class Container(pulumi.CustomResource):
             operating_system: Optional[pulumi.Input[pulumi.InputType['ContainerOperatingSystemArgs']]] = None,
             pool_id: Optional[pulumi.Input[str]] = None,
             started: Optional[pulumi.Input[bool]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             template: Optional[pulumi.Input[bool]] = None,
             vm_id: Optional[pulumi.Input[int]] = None) -> 'Container':
         """
@@ -620,6 +657,7 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ContainerOperatingSystemArgs']] operating_system: The operating system configuration
         :param pulumi.Input[str] pool_id: The ID of the pool to assign the container to
         :param pulumi.Input[bool] started: Whether to start the container
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the container. This is only meta information.
         :param pulumi.Input[bool] template: Whether to create a template
         :param pulumi.Input[int] vm_id: The VM identifier
         """
@@ -639,6 +677,7 @@ class Container(pulumi.CustomResource):
         __props__.__dict__["operating_system"] = operating_system
         __props__.__dict__["pool_id"] = pool_id
         __props__.__dict__["started"] = started
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["template"] = template
         __props__.__dict__["vm_id"] = vm_id
         return Container(resource_name, opts=opts, __props__=__props__)
@@ -738,6 +777,14 @@ class Container(pulumi.CustomResource):
         Whether to start the container
         """
         return pulumi.get(self, "started")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Tags of the container. This is only meta information.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter

@@ -131,7 +131,7 @@ export class Certifi extends pulumi.CustomResource {
             resourceInputs["certificateChain"] = args ? args.certificateChain : undefined;
             resourceInputs["nodeName"] = args ? args.nodeName : undefined;
             resourceInputs["overwrite"] = args ? args.overwrite : undefined;
-            resourceInputs["privateKey"] = args ? args.privateKey : undefined;
+            resourceInputs["privateKey"] = args?.privateKey ? pulumi.secret(args.privateKey) : undefined;
             resourceInputs["expirationDate"] = undefined /*out*/;
             resourceInputs["fileName"] = undefined /*out*/;
             resourceInputs["issuer"] = undefined /*out*/;
@@ -143,6 +143,8 @@ export class Certifi extends pulumi.CustomResource {
             resourceInputs["subjectAlternativeNames"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["privateKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Certifi.__pulumiType, name, resourceInputs, opts);
     }
 }

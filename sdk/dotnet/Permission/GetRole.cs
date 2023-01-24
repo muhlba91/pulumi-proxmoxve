@@ -12,10 +12,10 @@ namespace Pulumi.ProxmoxVE.Permission
     public static class GetRole
     {
         public static Task<GetRoleResult> InvokeAsync(GetRoleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRoleResult>("proxmoxve:Permission/getRole:getRole", args ?? new GetRoleArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRoleResult>("proxmoxve:Permission/getRole:getRole", args ?? new GetRoleArgs(), options.WithDefaults());
 
         public static Output<GetRoleResult> Invoke(GetRoleInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRoleResult>("proxmoxve:Permission/getRole:getRole", args ?? new GetRoleInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRoleResult>("proxmoxve:Permission/getRole:getRole", args ?? new GetRoleInvokeArgs(), options.WithDefaults());
     }
 
 

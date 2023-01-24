@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 
 export interface HostsEntry {
     address: pulumi.Input<string>;
@@ -37,6 +38,7 @@ export namespace CT {
 
     export interface ContainerDisk {
         datastoreId?: pulumi.Input<string>;
+        size?: pulumi.Input<number>;
     }
 
     export interface ContainerInitialization {
@@ -80,6 +82,7 @@ export namespace CT {
         bridge?: pulumi.Input<string>;
         enabled?: pulumi.Input<boolean>;
         macAddress?: pulumi.Input<string>;
+        mtu?: pulumi.Input<number>;
         name: pulumi.Input<string>;
         rateLimit?: pulumi.Input<number>;
         vlanId?: pulumi.Input<number>;
@@ -183,6 +186,7 @@ export namespace VM {
         iothread?: pulumi.Input<boolean>;
         size?: pulumi.Input<number>;
         speed?: pulumi.Input<inputs.VM.VirtualMachineDiskSpeed>;
+        ssd?: pulumi.Input<boolean>;
     }
 
     export interface VirtualMachineDiskSpeed {
@@ -192,10 +196,21 @@ export namespace VM {
         writeBurstable?: pulumi.Input<number>;
     }
 
+    export interface VirtualMachineHostpci {
+        device: pulumi.Input<string>;
+        id: pulumi.Input<string>;
+        mdev?: pulumi.Input<string>;
+        pcie?: pulumi.Input<boolean>;
+        romFile?: pulumi.Input<string>;
+        rombar?: pulumi.Input<boolean>;
+        xvga?: pulumi.Input<boolean>;
+    }
+
     export interface VirtualMachineInitialization {
         datastoreId?: pulumi.Input<string>;
         dns?: pulumi.Input<inputs.VM.VirtualMachineInitializationDns>;
         ipConfigs?: pulumi.Input<pulumi.Input<inputs.VM.VirtualMachineInitializationIpConfig>[]>;
+        networkDataFileId?: pulumi.Input<string>;
         type?: pulumi.Input<string>;
         userAccount?: pulumi.Input<inputs.VM.VirtualMachineInitializationUserAccount>;
         userDataFileId?: pulumi.Input<string>;
@@ -239,6 +254,7 @@ export namespace VM {
         enabled?: pulumi.Input<boolean>;
         macAddress?: pulumi.Input<string>;
         model?: pulumi.Input<string>;
+        mtu?: pulumi.Input<number>;
         rateLimit?: pulumi.Input<number>;
         vlanId?: pulumi.Input<number>;
     }

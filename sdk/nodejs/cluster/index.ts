@@ -5,15 +5,29 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./clusterAlias";
-export * from "./clusterIPSet";
-export * from "./getClusterAlias";
-export * from "./getClusterAliases";
-export * from "./getNodes";
+export { ClusterAliasArgs, ClusterAliasState } from "./clusterAlias";
+export type ClusterAlias = import("./clusterAlias").ClusterAlias;
+export const ClusterAlias: typeof import("./clusterAlias").ClusterAlias = null as any;
+utilities.lazyLoad(exports, ["ClusterAlias"], () => require("./clusterAlias"));
 
-// Import resources to register:
-import { ClusterAlias } from "./clusterAlias";
-import { ClusterIPSet } from "./clusterIPSet";
+export { ClusterIPSetArgs, ClusterIPSetState } from "./clusterIPSet";
+export type ClusterIPSet = import("./clusterIPSet").ClusterIPSet;
+export const ClusterIPSet: typeof import("./clusterIPSet").ClusterIPSet = null as any;
+utilities.lazyLoad(exports, ["ClusterIPSet"], () => require("./clusterIPSet"));
+
+export { GetClusterAliasArgs, GetClusterAliasResult, GetClusterAliasOutputArgs } from "./getClusterAlias";
+export const getClusterAlias: typeof import("./getClusterAlias").getClusterAlias = null as any;
+export const getClusterAliasOutput: typeof import("./getClusterAlias").getClusterAliasOutput = null as any;
+utilities.lazyLoad(exports, ["getClusterAlias","getClusterAliasOutput"], () => require("./getClusterAlias"));
+
+export { GetClusterAliasesResult } from "./getClusterAliases";
+export const getClusterAliases: typeof import("./getClusterAliases").getClusterAliases = null as any;
+utilities.lazyLoad(exports, ["getClusterAliases"], () => require("./getClusterAliases"));
+
+export { GetNodesResult } from "./getNodes";
+export const getNodes: typeof import("./getNodes").getNodes = null as any;
+utilities.lazyLoad(exports, ["getNodes"], () => require("./getNodes"));
+
 
 const _module = {
     version: utilities.getVersion(),

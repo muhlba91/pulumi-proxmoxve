@@ -85,6 +85,12 @@ namespace Pulumi.ProxmoxVE.CT
         public Output<bool?> Started { get; private set; } = null!;
 
         /// <summary>
+        /// Tags of the container. This is only meta information.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to create a template
         /// </summary>
         [Output("template")]
@@ -221,6 +227,18 @@ namespace Pulumi.ProxmoxVE.CT
         [Input("started")]
         public Input<bool>? Started { get; set; }
 
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// Tags of the container. This is only meta information.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// Whether to create a template
         /// </summary>
@@ -318,6 +336,18 @@ namespace Pulumi.ProxmoxVE.CT
         /// </summary>
         [Input("started")]
         public Input<bool>? Started { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// Tags of the container. This is only meta information.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// Whether to create a template

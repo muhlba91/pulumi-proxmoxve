@@ -38,6 +38,8 @@ type Container struct {
 	PoolId pulumi.StringPtrOutput `pulumi:"poolId"`
 	// Whether to start the container
 	Started pulumi.BoolPtrOutput `pulumi:"started"`
+	// Tags of the container. This is only meta information.
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Whether to create a template
 	Template pulumi.BoolPtrOutput `pulumi:"template"`
 	// The VM identifier
@@ -101,6 +103,8 @@ type containerState struct {
 	PoolId *string `pulumi:"poolId"`
 	// Whether to start the container
 	Started *bool `pulumi:"started"`
+	// Tags of the container. This is only meta information.
+	Tags []string `pulumi:"tags"`
 	// Whether to create a template
 	Template *bool `pulumi:"template"`
 	// The VM identifier
@@ -132,6 +136,8 @@ type ContainerState struct {
 	PoolId pulumi.StringPtrInput
 	// Whether to start the container
 	Started pulumi.BoolPtrInput
+	// Tags of the container. This is only meta information.
+	Tags pulumi.StringArrayInput
 	// Whether to create a template
 	Template pulumi.BoolPtrInput
 	// The VM identifier
@@ -167,6 +173,8 @@ type containerArgs struct {
 	PoolId *string `pulumi:"poolId"`
 	// Whether to start the container
 	Started *bool `pulumi:"started"`
+	// Tags of the container. This is only meta information.
+	Tags []string `pulumi:"tags"`
 	// Whether to create a template
 	Template *bool `pulumi:"template"`
 	// The VM identifier
@@ -199,6 +207,8 @@ type ContainerArgs struct {
 	PoolId pulumi.StringPtrInput
 	// Whether to start the container
 	Started pulumi.BoolPtrInput
+	// Tags of the container. This is only meta information.
+	Tags pulumi.StringArrayInput
 	// Whether to create a template
 	Template pulumi.BoolPtrInput
 	// The VM identifier
@@ -350,6 +360,11 @@ func (o ContainerOutput) PoolId() pulumi.StringPtrOutput {
 // Whether to start the container
 func (o ContainerOutput) Started() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Container) pulumi.BoolPtrOutput { return v.Started }).(pulumi.BoolPtrOutput)
+}
+
+// Tags of the container. This is only meta information.
+func (o ContainerOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Container) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 // Whether to create a template
