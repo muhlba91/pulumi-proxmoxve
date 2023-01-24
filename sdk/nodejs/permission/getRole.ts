@@ -5,11 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 export function getRole(args: GetRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("proxmoxve:Permission/getRole:getRole", {
         "roleId": args.roleId,
     }, opts);
@@ -33,9 +30,8 @@ export interface GetRoleResult {
     readonly privileges: string[];
     readonly roleId: string;
 }
-
 export function getRoleOutput(args: GetRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleResult> {
-    return pulumi.output(args).apply(a => getRole(a, opts))
+    return pulumi.output(args).apply((a: any) => getRole(a, opts))
 }
 
 /**

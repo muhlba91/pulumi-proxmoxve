@@ -5,11 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 export function getClusterAlias(args: GetClusterAliasArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterAliasResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("proxmoxve:Cluster/getClusterAlias:getClusterAlias", {
         "name": args.name,
     }, opts);
@@ -34,9 +31,8 @@ export interface GetClusterAliasResult {
     readonly id: string;
     readonly name: string;
 }
-
 export function getClusterAliasOutput(args: GetClusterAliasOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterAliasResult> {
-    return pulumi.output(args).apply(a => getClusterAlias(a, opts))
+    return pulumi.output(args).apply((a: any) => getClusterAlias(a, opts))
 }
 
 /**

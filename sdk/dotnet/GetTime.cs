@@ -12,10 +12,10 @@ namespace Pulumi.ProxmoxVE
     public static class GetTime
     {
         public static Task<GetTimeResult> InvokeAsync(GetTimeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTimeResult>("proxmoxve:index/getTime:getTime", args ?? new GetTimeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTimeResult>("proxmoxve:index/getTime:getTime", args ?? new GetTimeArgs(), options.WithDefaults());
 
         public static Output<GetTimeResult> Invoke(GetTimeInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTimeResult>("proxmoxve:index/getTime:getTime", args ?? new GetTimeInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTimeResult>("proxmoxve:index/getTime:getTime", args ?? new GetTimeInvokeArgs(), options.WithDefaults());
     }
 
 

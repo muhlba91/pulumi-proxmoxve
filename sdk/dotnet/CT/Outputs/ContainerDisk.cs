@@ -14,11 +14,16 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
     public sealed class ContainerDisk
     {
         public readonly string? DatastoreId;
+        public readonly int? Size;
 
         [OutputConstructor]
-        private ContainerDisk(string? datastoreId)
+        private ContainerDisk(
+            string? datastoreId,
+
+            int? size)
         {
             DatastoreId = datastoreId;
+            Size = size;
         }
     }
 }

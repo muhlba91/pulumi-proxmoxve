@@ -60,6 +60,13 @@ func NewCertifi(ctx *pulumi.Context,
 	if args.PrivateKey == nil {
 		return nil, errors.New("invalid value for required argument 'PrivateKey'")
 	}
+	if args.PrivateKey != nil {
+		args.PrivateKey = pulumi.ToSecret(args.PrivateKey).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"privateKey",
+	})
+	opts = append(opts, secrets)
 	opts = pkgResourceDefaultOpts(opts)
 	var resource Certifi
 	err := ctx.RegisterResource("proxmoxve:index/certifi:Certifi", name, args, &resource, opts...)

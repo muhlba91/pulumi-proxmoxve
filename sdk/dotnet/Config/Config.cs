@@ -30,7 +30,7 @@ namespace Pulumi.ProxmoxVE
             }
         }
 
-        private static readonly Pulumi.Config __config = new Pulumi.Config("proxmoxve");
+        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("proxmoxve");
 
         private static readonly __Value<Pulumi.ProxmoxVE.Config.Types.VirtualEnvironment?> _virtualEnvironment = new __Value<Pulumi.ProxmoxVE.Config.Types.VirtualEnvironment?>(() => __config.GetObject<Pulumi.ProxmoxVE.Config.Types.VirtualEnvironment>("virtualEnvironment"));
         public static Pulumi.ProxmoxVE.Config.Types.VirtualEnvironment? VirtualEnvironment

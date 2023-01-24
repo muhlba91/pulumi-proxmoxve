@@ -36,6 +36,9 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         [Input("speed")]
         public Input<Inputs.VirtualMachineDiskSpeedArgs>? Speed { get; set; }
 
+        [Input("ssd")]
+        public Input<bool>? Ssd { get; set; }
+
         public VirtualMachineDiskArgs()
         {
         }

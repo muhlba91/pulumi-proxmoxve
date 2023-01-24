@@ -26,8 +26,11 @@ class VirtualMachineArgs:
                  cpu: Optional[pulumi.Input['VirtualMachineCpuArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]] = None,
+                 hostpcis: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]]] = None,
                  initialization: Optional[pulumi.Input['VirtualMachineInitializationArgs']] = None,
                  keyboard_layout: Optional[pulumi.Input[str]] = None,
+                 kvm_arguments: Optional[pulumi.Input[str]] = None,
+                 machine: Optional[pulumi.Input[str]] = None,
                  memory: Optional[pulumi.Input['VirtualMachineMemoryArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_devices: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkDeviceArgs']]]] = None,
@@ -38,6 +41,7 @@ class VirtualMachineArgs:
                  serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
                  tablet_device: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
                  timeout_clone: Optional[pulumi.Input[int]] = None,
                  timeout_move_disk: Optional[pulumi.Input[int]] = None,
@@ -59,8 +63,11 @@ class VirtualMachineArgs:
         :param pulumi.Input['VirtualMachineCpuArgs'] cpu: The CPU allocation
         :param pulumi.Input[str] description: The description
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]] disks: The disk devices
+        :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]] hostpcis: The Host PCI devices mapped to the VM
         :param pulumi.Input['VirtualMachineInitializationArgs'] initialization: The cloud-init configuration
         :param pulumi.Input[str] keyboard_layout: The keyboard layout
+        :param pulumi.Input[str] kvm_arguments: The args implementation
+        :param pulumi.Input[str] machine: The VM machine type, either default i440fx or q35
         :param pulumi.Input['VirtualMachineMemoryArgs'] memory: The memory allocation
         :param pulumi.Input[str] name: The name
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkDeviceArgs']]] network_devices: The network devices
@@ -71,6 +78,7 @@ class VirtualMachineArgs:
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]] serial_devices: The serial devices
         :param pulumi.Input[bool] started: Whether to start the virtual machine
         :param pulumi.Input[bool] tablet_device: Whether to enable the USB tablet device
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the virtual machine. This is only meta information.
         :param pulumi.Input[bool] template: Whether to create a template
         :param pulumi.Input[int] timeout_clone: Clone VM timeout
         :param pulumi.Input[int] timeout_move_disk: MoveDisk timeout
@@ -100,10 +108,16 @@ class VirtualMachineArgs:
             pulumi.set(__self__, "description", description)
         if disks is not None:
             pulumi.set(__self__, "disks", disks)
+        if hostpcis is not None:
+            pulumi.set(__self__, "hostpcis", hostpcis)
         if initialization is not None:
             pulumi.set(__self__, "initialization", initialization)
         if keyboard_layout is not None:
             pulumi.set(__self__, "keyboard_layout", keyboard_layout)
+        if kvm_arguments is not None:
+            pulumi.set(__self__, "kvm_arguments", kvm_arguments)
+        if machine is not None:
+            pulumi.set(__self__, "machine", machine)
         if memory is not None:
             pulumi.set(__self__, "memory", memory)
         if name is not None:
@@ -124,6 +138,8 @@ class VirtualMachineArgs:
             pulumi.set(__self__, "started", started)
         if tablet_device is not None:
             pulumi.set(__self__, "tablet_device", tablet_device)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if template is not None:
             pulumi.set(__self__, "template", template)
         if timeout_clone is not None:
@@ -265,6 +281,18 @@ class VirtualMachineArgs:
 
     @property
     @pulumi.getter
+    def hostpcis(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]]]:
+        """
+        The Host PCI devices mapped to the VM
+        """
+        return pulumi.get(self, "hostpcis")
+
+    @hostpcis.setter
+    def hostpcis(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]]]):
+        pulumi.set(self, "hostpcis", value)
+
+    @property
+    @pulumi.getter
     def initialization(self) -> Optional[pulumi.Input['VirtualMachineInitializationArgs']]:
         """
         The cloud-init configuration
@@ -286,6 +314,30 @@ class VirtualMachineArgs:
     @keyboard_layout.setter
     def keyboard_layout(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "keyboard_layout", value)
+
+    @property
+    @pulumi.getter(name="kvmArguments")
+    def kvm_arguments(self) -> Optional[pulumi.Input[str]]:
+        """
+        The args implementation
+        """
+        return pulumi.get(self, "kvm_arguments")
+
+    @kvm_arguments.setter
+    def kvm_arguments(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kvm_arguments", value)
+
+    @property
+    @pulumi.getter
+    def machine(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VM machine type, either default i440fx or q35
+        """
+        return pulumi.get(self, "machine")
+
+    @machine.setter
+    def machine(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "machine", value)
 
     @property
     @pulumi.getter
@@ -409,6 +461,18 @@ class VirtualMachineArgs:
 
     @property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tags of the virtual machine. This is only meta information.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
     def template(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to create a template
@@ -528,11 +592,14 @@ class _VirtualMachineState:
                  cpu: Optional[pulumi.Input['VirtualMachineCpuArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]] = None,
+                 hostpcis: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]]] = None,
                  initialization: Optional[pulumi.Input['VirtualMachineInitializationArgs']] = None,
                  ipv4_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]]] = None,
                  ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]]] = None,
                  keyboard_layout: Optional[pulumi.Input[str]] = None,
+                 kvm_arguments: Optional[pulumi.Input[str]] = None,
                  mac_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 machine: Optional[pulumi.Input[str]] = None,
                  memory: Optional[pulumi.Input['VirtualMachineMemoryArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_devices: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkDeviceArgs']]]] = None,
@@ -545,6 +612,7 @@ class _VirtualMachineState:
                  serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
                  tablet_device: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
                  timeout_clone: Optional[pulumi.Input[int]] = None,
                  timeout_move_disk: Optional[pulumi.Input[int]] = None,
@@ -565,11 +633,14 @@ class _VirtualMachineState:
         :param pulumi.Input['VirtualMachineCpuArgs'] cpu: The CPU allocation
         :param pulumi.Input[str] description: The description
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]] disks: The disk devices
+        :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]] hostpcis: The Host PCI devices mapped to the VM
         :param pulumi.Input['VirtualMachineInitializationArgs'] initialization: The cloud-init configuration
         :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]] ipv4_addresses: The IPv4 addresses published by the QEMU agent
         :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]] ipv6_addresses: The IPv6 addresses published by the QEMU agent
         :param pulumi.Input[str] keyboard_layout: The keyboard layout
+        :param pulumi.Input[str] kvm_arguments: The args implementation
         :param pulumi.Input[Sequence[pulumi.Input[str]]] mac_addresses: The MAC addresses for the network interfaces
+        :param pulumi.Input[str] machine: The VM machine type, either default i440fx or q35
         :param pulumi.Input['VirtualMachineMemoryArgs'] memory: The memory allocation
         :param pulumi.Input[str] name: The name
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkDeviceArgs']]] network_devices: The network devices
@@ -582,6 +653,7 @@ class _VirtualMachineState:
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]] serial_devices: The serial devices
         :param pulumi.Input[bool] started: Whether to start the virtual machine
         :param pulumi.Input[bool] tablet_device: Whether to enable the USB tablet device
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the virtual machine. This is only meta information.
         :param pulumi.Input[bool] template: Whether to create a template
         :param pulumi.Input[int] timeout_clone: Clone VM timeout
         :param pulumi.Input[int] timeout_move_disk: MoveDisk timeout
@@ -610,6 +682,8 @@ class _VirtualMachineState:
             pulumi.set(__self__, "description", description)
         if disks is not None:
             pulumi.set(__self__, "disks", disks)
+        if hostpcis is not None:
+            pulumi.set(__self__, "hostpcis", hostpcis)
         if initialization is not None:
             pulumi.set(__self__, "initialization", initialization)
         if ipv4_addresses is not None:
@@ -618,8 +692,12 @@ class _VirtualMachineState:
             pulumi.set(__self__, "ipv6_addresses", ipv6_addresses)
         if keyboard_layout is not None:
             pulumi.set(__self__, "keyboard_layout", keyboard_layout)
+        if kvm_arguments is not None:
+            pulumi.set(__self__, "kvm_arguments", kvm_arguments)
         if mac_addresses is not None:
             pulumi.set(__self__, "mac_addresses", mac_addresses)
+        if machine is not None:
+            pulumi.set(__self__, "machine", machine)
         if memory is not None:
             pulumi.set(__self__, "memory", memory)
         if name is not None:
@@ -644,6 +722,8 @@ class _VirtualMachineState:
             pulumi.set(__self__, "started", started)
         if tablet_device is not None:
             pulumi.set(__self__, "tablet_device", tablet_device)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if template is not None:
             pulumi.set(__self__, "template", template)
         if timeout_clone is not None:
@@ -773,6 +853,18 @@ class _VirtualMachineState:
 
     @property
     @pulumi.getter
+    def hostpcis(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]]]:
+        """
+        The Host PCI devices mapped to the VM
+        """
+        return pulumi.get(self, "hostpcis")
+
+    @hostpcis.setter
+    def hostpcis(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]]]):
+        pulumi.set(self, "hostpcis", value)
+
+    @property
+    @pulumi.getter
     def initialization(self) -> Optional[pulumi.Input['VirtualMachineInitializationArgs']]:
         """
         The cloud-init configuration
@@ -820,6 +912,18 @@ class _VirtualMachineState:
         pulumi.set(self, "keyboard_layout", value)
 
     @property
+    @pulumi.getter(name="kvmArguments")
+    def kvm_arguments(self) -> Optional[pulumi.Input[str]]:
+        """
+        The args implementation
+        """
+        return pulumi.get(self, "kvm_arguments")
+
+    @kvm_arguments.setter
+    def kvm_arguments(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kvm_arguments", value)
+
+    @property
     @pulumi.getter(name="macAddresses")
     def mac_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -830,6 +934,18 @@ class _VirtualMachineState:
     @mac_addresses.setter
     def mac_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "mac_addresses", value)
+
+    @property
+    @pulumi.getter
+    def machine(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VM machine type, either default i440fx or q35
+        """
+        return pulumi.get(self, "machine")
+
+    @machine.setter
+    def machine(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "machine", value)
 
     @property
     @pulumi.getter
@@ -977,6 +1093,18 @@ class _VirtualMachineState:
 
     @property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tags of the virtual machine. This is only meta information.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
     def template(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to create a template
@@ -1098,8 +1226,11 @@ class VirtualMachine(pulumi.CustomResource):
                  cpu: Optional[pulumi.Input[pulumi.InputType['VirtualMachineCpuArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]]] = None,
+                 hostpcis: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineHostpciArgs']]]]] = None,
                  initialization: Optional[pulumi.Input[pulumi.InputType['VirtualMachineInitializationArgs']]] = None,
                  keyboard_layout: Optional[pulumi.Input[str]] = None,
+                 kvm_arguments: Optional[pulumi.Input[str]] = None,
+                 machine: Optional[pulumi.Input[str]] = None,
                  memory: Optional[pulumi.Input[pulumi.InputType['VirtualMachineMemoryArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNetworkDeviceArgs']]]]] = None,
@@ -1111,6 +1242,7 @@ class VirtualMachine(pulumi.CustomResource):
                  serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
                  tablet_device: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
                  timeout_clone: Optional[pulumi.Input[int]] = None,
                  timeout_move_disk: Optional[pulumi.Input[int]] = None,
@@ -1134,8 +1266,11 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['VirtualMachineCpuArgs']] cpu: The CPU allocation
         :param pulumi.Input[str] description: The description
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]] disks: The disk devices
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineHostpciArgs']]]] hostpcis: The Host PCI devices mapped to the VM
         :param pulumi.Input[pulumi.InputType['VirtualMachineInitializationArgs']] initialization: The cloud-init configuration
         :param pulumi.Input[str] keyboard_layout: The keyboard layout
+        :param pulumi.Input[str] kvm_arguments: The args implementation
+        :param pulumi.Input[str] machine: The VM machine type, either default i440fx or q35
         :param pulumi.Input[pulumi.InputType['VirtualMachineMemoryArgs']] memory: The memory allocation
         :param pulumi.Input[str] name: The name
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNetworkDeviceArgs']]]] network_devices: The network devices
@@ -1147,6 +1282,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]] serial_devices: The serial devices
         :param pulumi.Input[bool] started: Whether to start the virtual machine
         :param pulumi.Input[bool] tablet_device: Whether to enable the USB tablet device
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the virtual machine. This is only meta information.
         :param pulumi.Input[bool] template: Whether to create a template
         :param pulumi.Input[int] timeout_clone: Clone VM timeout
         :param pulumi.Input[int] timeout_move_disk: MoveDisk timeout
@@ -1189,8 +1325,11 @@ class VirtualMachine(pulumi.CustomResource):
                  cpu: Optional[pulumi.Input[pulumi.InputType['VirtualMachineCpuArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]]] = None,
+                 hostpcis: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineHostpciArgs']]]]] = None,
                  initialization: Optional[pulumi.Input[pulumi.InputType['VirtualMachineInitializationArgs']]] = None,
                  keyboard_layout: Optional[pulumi.Input[str]] = None,
+                 kvm_arguments: Optional[pulumi.Input[str]] = None,
+                 machine: Optional[pulumi.Input[str]] = None,
                  memory: Optional[pulumi.Input[pulumi.InputType['VirtualMachineMemoryArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNetworkDeviceArgs']]]]] = None,
@@ -1202,6 +1341,7 @@ class VirtualMachine(pulumi.CustomResource):
                  serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
                  tablet_device: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
                  timeout_clone: Optional[pulumi.Input[int]] = None,
                  timeout_move_disk: Optional[pulumi.Input[int]] = None,
@@ -1229,8 +1369,11 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["cpu"] = cpu
             __props__.__dict__["description"] = description
             __props__.__dict__["disks"] = disks
+            __props__.__dict__["hostpcis"] = hostpcis
             __props__.__dict__["initialization"] = initialization
             __props__.__dict__["keyboard_layout"] = keyboard_layout
+            __props__.__dict__["kvm_arguments"] = kvm_arguments
+            __props__.__dict__["machine"] = machine
             __props__.__dict__["memory"] = memory
             __props__.__dict__["name"] = name
             __props__.__dict__["network_devices"] = network_devices
@@ -1244,6 +1387,7 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["serial_devices"] = serial_devices
             __props__.__dict__["started"] = started
             __props__.__dict__["tablet_device"] = tablet_device
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["template"] = template
             __props__.__dict__["timeout_clone"] = timeout_clone
             __props__.__dict__["timeout_move_disk"] = timeout_move_disk
@@ -1276,11 +1420,14 @@ class VirtualMachine(pulumi.CustomResource):
             cpu: Optional[pulumi.Input[pulumi.InputType['VirtualMachineCpuArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]]] = None,
+            hostpcis: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineHostpciArgs']]]]] = None,
             initialization: Optional[pulumi.Input[pulumi.InputType['VirtualMachineInitializationArgs']]] = None,
             ipv4_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]]] = None,
             ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]]] = None,
             keyboard_layout: Optional[pulumi.Input[str]] = None,
+            kvm_arguments: Optional[pulumi.Input[str]] = None,
             mac_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            machine: Optional[pulumi.Input[str]] = None,
             memory: Optional[pulumi.Input[pulumi.InputType['VirtualMachineMemoryArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNetworkDeviceArgs']]]]] = None,
@@ -1293,6 +1440,7 @@ class VirtualMachine(pulumi.CustomResource):
             serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]]] = None,
             started: Optional[pulumi.Input[bool]] = None,
             tablet_device: Optional[pulumi.Input[bool]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             template: Optional[pulumi.Input[bool]] = None,
             timeout_clone: Optional[pulumi.Input[int]] = None,
             timeout_move_disk: Optional[pulumi.Input[int]] = None,
@@ -1318,11 +1466,14 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['VirtualMachineCpuArgs']] cpu: The CPU allocation
         :param pulumi.Input[str] description: The description
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]] disks: The disk devices
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineHostpciArgs']]]] hostpcis: The Host PCI devices mapped to the VM
         :param pulumi.Input[pulumi.InputType['VirtualMachineInitializationArgs']] initialization: The cloud-init configuration
         :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]] ipv4_addresses: The IPv4 addresses published by the QEMU agent
         :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]] ipv6_addresses: The IPv6 addresses published by the QEMU agent
         :param pulumi.Input[str] keyboard_layout: The keyboard layout
+        :param pulumi.Input[str] kvm_arguments: The args implementation
         :param pulumi.Input[Sequence[pulumi.Input[str]]] mac_addresses: The MAC addresses for the network interfaces
+        :param pulumi.Input[str] machine: The VM machine type, either default i440fx or q35
         :param pulumi.Input[pulumi.InputType['VirtualMachineMemoryArgs']] memory: The memory allocation
         :param pulumi.Input[str] name: The name
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNetworkDeviceArgs']]]] network_devices: The network devices
@@ -1335,6 +1486,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]] serial_devices: The serial devices
         :param pulumi.Input[bool] started: Whether to start the virtual machine
         :param pulumi.Input[bool] tablet_device: Whether to enable the USB tablet device
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the virtual machine. This is only meta information.
         :param pulumi.Input[bool] template: Whether to create a template
         :param pulumi.Input[int] timeout_clone: Clone VM timeout
         :param pulumi.Input[int] timeout_move_disk: MoveDisk timeout
@@ -1358,11 +1510,14 @@ class VirtualMachine(pulumi.CustomResource):
         __props__.__dict__["cpu"] = cpu
         __props__.__dict__["description"] = description
         __props__.__dict__["disks"] = disks
+        __props__.__dict__["hostpcis"] = hostpcis
         __props__.__dict__["initialization"] = initialization
         __props__.__dict__["ipv4_addresses"] = ipv4_addresses
         __props__.__dict__["ipv6_addresses"] = ipv6_addresses
         __props__.__dict__["keyboard_layout"] = keyboard_layout
+        __props__.__dict__["kvm_arguments"] = kvm_arguments
         __props__.__dict__["mac_addresses"] = mac_addresses
+        __props__.__dict__["machine"] = machine
         __props__.__dict__["memory"] = memory
         __props__.__dict__["name"] = name
         __props__.__dict__["network_devices"] = network_devices
@@ -1375,6 +1530,7 @@ class VirtualMachine(pulumi.CustomResource):
         __props__.__dict__["serial_devices"] = serial_devices
         __props__.__dict__["started"] = started
         __props__.__dict__["tablet_device"] = tablet_device
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["template"] = template
         __props__.__dict__["timeout_clone"] = timeout_clone
         __props__.__dict__["timeout_move_disk"] = timeout_move_disk
@@ -1460,6 +1616,14 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def hostpcis(self) -> pulumi.Output[Optional[Sequence['outputs.VirtualMachineHostpci']]]:
+        """
+        The Host PCI devices mapped to the VM
+        """
+        return pulumi.get(self, "hostpcis")
+
+    @property
+    @pulumi.getter
     def initialization(self) -> pulumi.Output[Optional['outputs.VirtualMachineInitialization']]:
         """
         The cloud-init configuration
@@ -1491,12 +1655,28 @@ class VirtualMachine(pulumi.CustomResource):
         return pulumi.get(self, "keyboard_layout")
 
     @property
+    @pulumi.getter(name="kvmArguments")
+    def kvm_arguments(self) -> pulumi.Output[Optional[str]]:
+        """
+        The args implementation
+        """
+        return pulumi.get(self, "kvm_arguments")
+
+    @property
     @pulumi.getter(name="macAddresses")
     def mac_addresses(self) -> pulumi.Output[Sequence[str]]:
         """
         The MAC addresses for the network interfaces
         """
         return pulumi.get(self, "mac_addresses")
+
+    @property
+    @pulumi.getter
+    def machine(self) -> pulumi.Output[Optional[str]]:
+        """
+        The VM machine type, either default i440fx or q35
+        """
+        return pulumi.get(self, "machine")
 
     @property
     @pulumi.getter
@@ -1593,6 +1773,14 @@ class VirtualMachine(pulumi.CustomResource):
         Whether to enable the USB tablet device
         """
         return pulumi.get(self, "tablet_device")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Tags of the virtual machine. This is only meta information.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter

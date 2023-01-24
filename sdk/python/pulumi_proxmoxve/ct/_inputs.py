@@ -150,9 +150,12 @@ class ContainerCpuArgs:
 @pulumi.input_type
 class ContainerDiskArgs:
     def __init__(__self__, *,
-                 datastore_id: Optional[pulumi.Input[str]] = None):
+                 datastore_id: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[int]] = None):
         if datastore_id is not None:
             pulumi.set(__self__, "datastore_id", datastore_id)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
 
     @property
     @pulumi.getter(name="datastoreId")
@@ -162,6 +165,15 @@ class ContainerDiskArgs:
     @datastore_id.setter
     def datastore_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "datastore_id", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "size", value)
 
 
 @pulumi.input_type
@@ -398,6 +410,7 @@ class ContainerNetworkInterfaceArgs:
                  bridge: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  mac_address: Optional[pulumi.Input[str]] = None,
+                 mtu: Optional[pulumi.Input[int]] = None,
                  rate_limit: Optional[pulumi.Input[float]] = None,
                  vlan_id: Optional[pulumi.Input[int]] = None):
         pulumi.set(__self__, "name", name)
@@ -407,6 +420,8 @@ class ContainerNetworkInterfaceArgs:
             pulumi.set(__self__, "enabled", enabled)
         if mac_address is not None:
             pulumi.set(__self__, "mac_address", mac_address)
+        if mtu is not None:
+            pulumi.set(__self__, "mtu", mtu)
         if rate_limit is not None:
             pulumi.set(__self__, "rate_limit", rate_limit)
         if vlan_id is not None:
@@ -447,6 +462,15 @@ class ContainerNetworkInterfaceArgs:
     @mac_address.setter
     def mac_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mac_address", value)
+
+    @property
+    @pulumi.getter
+    def mtu(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "mtu")
+
+    @mtu.setter
+    def mtu(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "mtu", value)
 
     @property
     @pulumi.getter(name="rateLimit")

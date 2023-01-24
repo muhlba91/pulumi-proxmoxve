@@ -17,6 +17,7 @@ __all__ = [
     'VirtualMachineCpuArgs',
     'VirtualMachineDiskArgs',
     'VirtualMachineDiskSpeedArgs',
+    'VirtualMachineHostpciArgs',
     'VirtualMachineInitializationArgs',
     'VirtualMachineInitializationDnsArgs',
     'VirtualMachineInitializationIpConfigArgs',
@@ -316,7 +317,8 @@ class VirtualMachineDiskArgs:
                  file_id: Optional[pulumi.Input[str]] = None,
                  iothread: Optional[pulumi.Input[bool]] = None,
                  size: Optional[pulumi.Input[int]] = None,
-                 speed: Optional[pulumi.Input['VirtualMachineDiskSpeedArgs']] = None):
+                 speed: Optional[pulumi.Input['VirtualMachineDiskSpeedArgs']] = None,
+                 ssd: Optional[pulumi.Input[bool]] = None):
         pulumi.set(__self__, "interface", interface)
         if datastore_id is not None:
             pulumi.set(__self__, "datastore_id", datastore_id)
@@ -332,6 +334,8 @@ class VirtualMachineDiskArgs:
             pulumi.set(__self__, "size", size)
         if speed is not None:
             pulumi.set(__self__, "speed", speed)
+        if ssd is not None:
+            pulumi.set(__self__, "ssd", ssd)
 
     @property
     @pulumi.getter
@@ -405,6 +409,15 @@ class VirtualMachineDiskArgs:
     def speed(self, value: Optional[pulumi.Input['VirtualMachineDiskSpeedArgs']]):
         pulumi.set(self, "speed", value)
 
+    @property
+    @pulumi.getter
+    def ssd(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "ssd")
+
+    @ssd.setter
+    def ssd(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ssd", value)
+
 
 @pulumi.input_type
 class VirtualMachineDiskSpeedArgs:
@@ -460,11 +473,99 @@ class VirtualMachineDiskSpeedArgs:
 
 
 @pulumi.input_type
+class VirtualMachineHostpciArgs:
+    def __init__(__self__, *,
+                 device: pulumi.Input[str],
+                 id: pulumi.Input[str],
+                 mdev: Optional[pulumi.Input[str]] = None,
+                 pcie: Optional[pulumi.Input[bool]] = None,
+                 rom_file: Optional[pulumi.Input[str]] = None,
+                 rombar: Optional[pulumi.Input[bool]] = None,
+                 xvga: Optional[pulumi.Input[bool]] = None):
+        pulumi.set(__self__, "device", device)
+        pulumi.set(__self__, "id", id)
+        if mdev is not None:
+            pulumi.set(__self__, "mdev", mdev)
+        if pcie is not None:
+            pulumi.set(__self__, "pcie", pcie)
+        if rom_file is not None:
+            pulumi.set(__self__, "rom_file", rom_file)
+        if rombar is not None:
+            pulumi.set(__self__, "rombar", rombar)
+        if xvga is not None:
+            pulumi.set(__self__, "xvga", xvga)
+
+    @property
+    @pulumi.getter
+    def device(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "device")
+
+    @device.setter
+    def device(self, value: pulumi.Input[str]):
+        pulumi.set(self, "device", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def mdev(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "mdev")
+
+    @mdev.setter
+    def mdev(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mdev", value)
+
+    @property
+    @pulumi.getter
+    def pcie(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "pcie")
+
+    @pcie.setter
+    def pcie(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "pcie", value)
+
+    @property
+    @pulumi.getter(name="romFile")
+    def rom_file(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "rom_file")
+
+    @rom_file.setter
+    def rom_file(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rom_file", value)
+
+    @property
+    @pulumi.getter
+    def rombar(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "rombar")
+
+    @rombar.setter
+    def rombar(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "rombar", value)
+
+    @property
+    @pulumi.getter
+    def xvga(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "xvga")
+
+    @xvga.setter
+    def xvga(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "xvga", value)
+
+
+@pulumi.input_type
 class VirtualMachineInitializationArgs:
     def __init__(__self__, *,
                  datastore_id: Optional[pulumi.Input[str]] = None,
                  dns: Optional[pulumi.Input['VirtualMachineInitializationDnsArgs']] = None,
                  ip_configs: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineInitializationIpConfigArgs']]]] = None,
+                 network_data_file_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  user_account: Optional[pulumi.Input['VirtualMachineInitializationUserAccountArgs']] = None,
                  user_data_file_id: Optional[pulumi.Input[str]] = None,
@@ -475,6 +576,8 @@ class VirtualMachineInitializationArgs:
             pulumi.set(__self__, "dns", dns)
         if ip_configs is not None:
             pulumi.set(__self__, "ip_configs", ip_configs)
+        if network_data_file_id is not None:
+            pulumi.set(__self__, "network_data_file_id", network_data_file_id)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if user_account is not None:
@@ -510,6 +613,15 @@ class VirtualMachineInitializationArgs:
     @ip_configs.setter
     def ip_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineInitializationIpConfigArgs']]]]):
         pulumi.set(self, "ip_configs", value)
+
+    @property
+    @pulumi.getter(name="networkDataFileId")
+    def network_data_file_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "network_data_file_id")
+
+    @network_data_file_id.setter
+    def network_data_file_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_data_file_id", value)
 
     @property
     @pulumi.getter
@@ -753,6 +865,7 @@ class VirtualMachineNetworkDeviceArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  mac_address: Optional[pulumi.Input[str]] = None,
                  model: Optional[pulumi.Input[str]] = None,
+                 mtu: Optional[pulumi.Input[int]] = None,
                  rate_limit: Optional[pulumi.Input[float]] = None,
                  vlan_id: Optional[pulumi.Input[int]] = None):
         if bridge is not None:
@@ -763,6 +876,8 @@ class VirtualMachineNetworkDeviceArgs:
             pulumi.set(__self__, "mac_address", mac_address)
         if model is not None:
             pulumi.set(__self__, "model", model)
+        if mtu is not None:
+            pulumi.set(__self__, "mtu", mtu)
         if rate_limit is not None:
             pulumi.set(__self__, "rate_limit", rate_limit)
         if vlan_id is not None:
@@ -803,6 +918,15 @@ class VirtualMachineNetworkDeviceArgs:
     @model.setter
     def model(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "model", value)
+
+    @property
+    @pulumi.getter
+    def mtu(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "mtu")
+
+    @mtu.setter
+    def mtu(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "mtu", value)
 
     @property
     @pulumi.getter(name="rateLimit")

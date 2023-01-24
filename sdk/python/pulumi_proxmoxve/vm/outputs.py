@@ -18,6 +18,7 @@ __all__ = [
     'VirtualMachineCpu',
     'VirtualMachineDisk',
     'VirtualMachineDiskSpeed',
+    'VirtualMachineHostpci',
     'VirtualMachineInitialization',
     'VirtualMachineInitializationDns',
     'VirtualMachineInitializationIpConfig',
@@ -292,7 +293,8 @@ class VirtualMachineDisk(dict):
                  file_id: Optional[str] = None,
                  iothread: Optional[bool] = None,
                  size: Optional[int] = None,
-                 speed: Optional['outputs.VirtualMachineDiskSpeed'] = None):
+                 speed: Optional['outputs.VirtualMachineDiskSpeed'] = None,
+                 ssd: Optional[bool] = None):
         pulumi.set(__self__, "interface", interface)
         if datastore_id is not None:
             pulumi.set(__self__, "datastore_id", datastore_id)
@@ -308,6 +310,8 @@ class VirtualMachineDisk(dict):
             pulumi.set(__self__, "size", size)
         if speed is not None:
             pulumi.set(__self__, "speed", speed)
+        if ssd is not None:
+            pulumi.set(__self__, "ssd", ssd)
 
     @property
     @pulumi.getter
@@ -348,6 +352,11 @@ class VirtualMachineDisk(dict):
     @pulumi.getter
     def speed(self) -> Optional['outputs.VirtualMachineDiskSpeed']:
         return pulumi.get(self, "speed")
+
+    @property
+    @pulumi.getter
+    def ssd(self) -> Optional[bool]:
+        return pulumi.get(self, "ssd")
 
 
 @pulumi.output_type
@@ -407,6 +416,82 @@ class VirtualMachineDiskSpeed(dict):
 
 
 @pulumi.output_type
+class VirtualMachineHostpci(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "romFile":
+            suggest = "rom_file"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineHostpci. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VirtualMachineHostpci.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VirtualMachineHostpci.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 device: str,
+                 id: str,
+                 mdev: Optional[str] = None,
+                 pcie: Optional[bool] = None,
+                 rom_file: Optional[str] = None,
+                 rombar: Optional[bool] = None,
+                 xvga: Optional[bool] = None):
+        pulumi.set(__self__, "device", device)
+        pulumi.set(__self__, "id", id)
+        if mdev is not None:
+            pulumi.set(__self__, "mdev", mdev)
+        if pcie is not None:
+            pulumi.set(__self__, "pcie", pcie)
+        if rom_file is not None:
+            pulumi.set(__self__, "rom_file", rom_file)
+        if rombar is not None:
+            pulumi.set(__self__, "rombar", rombar)
+        if xvga is not None:
+            pulumi.set(__self__, "xvga", xvga)
+
+    @property
+    @pulumi.getter
+    def device(self) -> str:
+        return pulumi.get(self, "device")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def mdev(self) -> Optional[str]:
+        return pulumi.get(self, "mdev")
+
+    @property
+    @pulumi.getter
+    def pcie(self) -> Optional[bool]:
+        return pulumi.get(self, "pcie")
+
+    @property
+    @pulumi.getter(name="romFile")
+    def rom_file(self) -> Optional[str]:
+        return pulumi.get(self, "rom_file")
+
+    @property
+    @pulumi.getter
+    def rombar(self) -> Optional[bool]:
+        return pulumi.get(self, "rombar")
+
+    @property
+    @pulumi.getter
+    def xvga(self) -> Optional[bool]:
+        return pulumi.get(self, "xvga")
+
+
+@pulumi.output_type
 class VirtualMachineInitialization(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -415,6 +500,8 @@ class VirtualMachineInitialization(dict):
             suggest = "datastore_id"
         elif key == "ipConfigs":
             suggest = "ip_configs"
+        elif key == "networkDataFileId":
+            suggest = "network_data_file_id"
         elif key == "userAccount":
             suggest = "user_account"
         elif key == "userDataFileId":
@@ -437,6 +524,7 @@ class VirtualMachineInitialization(dict):
                  datastore_id: Optional[str] = None,
                  dns: Optional['outputs.VirtualMachineInitializationDns'] = None,
                  ip_configs: Optional[Sequence['outputs.VirtualMachineInitializationIpConfig']] = None,
+                 network_data_file_id: Optional[str] = None,
                  type: Optional[str] = None,
                  user_account: Optional['outputs.VirtualMachineInitializationUserAccount'] = None,
                  user_data_file_id: Optional[str] = None,
@@ -447,6 +535,8 @@ class VirtualMachineInitialization(dict):
             pulumi.set(__self__, "dns", dns)
         if ip_configs is not None:
             pulumi.set(__self__, "ip_configs", ip_configs)
+        if network_data_file_id is not None:
+            pulumi.set(__self__, "network_data_file_id", network_data_file_id)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if user_account is not None:
@@ -470,6 +560,11 @@ class VirtualMachineInitialization(dict):
     @pulumi.getter(name="ipConfigs")
     def ip_configs(self) -> Optional[Sequence['outputs.VirtualMachineInitializationIpConfig']]:
         return pulumi.get(self, "ip_configs")
+
+    @property
+    @pulumi.getter(name="networkDataFileId")
+    def network_data_file_id(self) -> Optional[str]:
+        return pulumi.get(self, "network_data_file_id")
 
     @property
     @pulumi.getter
@@ -662,6 +757,7 @@ class VirtualMachineNetworkDevice(dict):
                  enabled: Optional[bool] = None,
                  mac_address: Optional[str] = None,
                  model: Optional[str] = None,
+                 mtu: Optional[int] = None,
                  rate_limit: Optional[float] = None,
                  vlan_id: Optional[int] = None):
         if bridge is not None:
@@ -672,6 +768,8 @@ class VirtualMachineNetworkDevice(dict):
             pulumi.set(__self__, "mac_address", mac_address)
         if model is not None:
             pulumi.set(__self__, "model", model)
+        if mtu is not None:
+            pulumi.set(__self__, "mtu", mtu)
         if rate_limit is not None:
             pulumi.set(__self__, "rate_limit", rate_limit)
         if vlan_id is not None:
@@ -696,6 +794,11 @@ class VirtualMachineNetworkDevice(dict):
     @pulumi.getter
     def model(self) -> Optional[str]:
         return pulumi.get(self, "model")
+
+    @property
+    @pulumi.getter
+    def mtu(self) -> Optional[int]:
+        return pulumi.get(self, "mtu")
 
     @property
     @pulumi.getter(name="rateLimit")

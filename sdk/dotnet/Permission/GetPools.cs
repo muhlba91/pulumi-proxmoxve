@@ -12,7 +12,7 @@ namespace Pulumi.ProxmoxVE.Permission
     public static class GetPools
     {
         public static Task<GetPoolsResult> InvokeAsync(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPoolsResult>("proxmoxve:Permission/getPools:getPools", InvokeArgs.Empty, options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPoolsResult>("proxmoxve:Permission/getPools:getPools", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

@@ -32,6 +32,8 @@ type VirtualMachine struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The disk devices
 	Disks VirtualMachineDiskArrayOutput `pulumi:"disks"`
+	// The Host PCI devices mapped to the VM
+	Hostpcis VirtualMachineHostpciArrayOutput `pulumi:"hostpcis"`
 	// The cloud-init configuration
 	Initialization VirtualMachineInitializationPtrOutput `pulumi:"initialization"`
 	// The IPv4 addresses published by the QEMU agent
@@ -40,8 +42,12 @@ type VirtualMachine struct {
 	Ipv6Addresses pulumi.StringArrayArrayOutput `pulumi:"ipv6Addresses"`
 	// The keyboard layout
 	KeyboardLayout pulumi.StringPtrOutput `pulumi:"keyboardLayout"`
+	// The args implementation
+	KvmArguments pulumi.StringPtrOutput `pulumi:"kvmArguments"`
 	// The MAC addresses for the network interfaces
 	MacAddresses pulumi.StringArrayOutput `pulumi:"macAddresses"`
+	// The VM machine type, either default i440fx or q35
+	Machine pulumi.StringPtrOutput `pulumi:"machine"`
 	// The memory allocation
 	Memory VirtualMachineMemoryPtrOutput `pulumi:"memory"`
 	// The name
@@ -66,6 +72,8 @@ type VirtualMachine struct {
 	Started pulumi.BoolPtrOutput `pulumi:"started"`
 	// Whether to enable the USB tablet device
 	TabletDevice pulumi.BoolPtrOutput `pulumi:"tabletDevice"`
+	// Tags of the virtual machine. This is only meta information.
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Whether to create a template
 	Template pulumi.BoolPtrOutput `pulumi:"template"`
 	// Clone VM timeout
@@ -137,6 +145,8 @@ type virtualMachineState struct {
 	Description *string `pulumi:"description"`
 	// The disk devices
 	Disks []VirtualMachineDisk `pulumi:"disks"`
+	// The Host PCI devices mapped to the VM
+	Hostpcis []VirtualMachineHostpci `pulumi:"hostpcis"`
 	// The cloud-init configuration
 	Initialization *VirtualMachineInitialization `pulumi:"initialization"`
 	// The IPv4 addresses published by the QEMU agent
@@ -145,8 +155,12 @@ type virtualMachineState struct {
 	Ipv6Addresses [][]string `pulumi:"ipv6Addresses"`
 	// The keyboard layout
 	KeyboardLayout *string `pulumi:"keyboardLayout"`
+	// The args implementation
+	KvmArguments *string `pulumi:"kvmArguments"`
 	// The MAC addresses for the network interfaces
 	MacAddresses []string `pulumi:"macAddresses"`
+	// The VM machine type, either default i440fx or q35
+	Machine *string `pulumi:"machine"`
 	// The memory allocation
 	Memory *VirtualMachineMemory `pulumi:"memory"`
 	// The name
@@ -171,6 +185,8 @@ type virtualMachineState struct {
 	Started *bool `pulumi:"started"`
 	// Whether to enable the USB tablet device
 	TabletDevice *bool `pulumi:"tabletDevice"`
+	// Tags of the virtual machine. This is only meta information.
+	Tags []string `pulumi:"tags"`
 	// Whether to create a template
 	Template *bool `pulumi:"template"`
 	// Clone VM timeout
@@ -210,6 +226,8 @@ type VirtualMachineState struct {
 	Description pulumi.StringPtrInput
 	// The disk devices
 	Disks VirtualMachineDiskArrayInput
+	// The Host PCI devices mapped to the VM
+	Hostpcis VirtualMachineHostpciArrayInput
 	// The cloud-init configuration
 	Initialization VirtualMachineInitializationPtrInput
 	// The IPv4 addresses published by the QEMU agent
@@ -218,8 +236,12 @@ type VirtualMachineState struct {
 	Ipv6Addresses pulumi.StringArrayArrayInput
 	// The keyboard layout
 	KeyboardLayout pulumi.StringPtrInput
+	// The args implementation
+	KvmArguments pulumi.StringPtrInput
 	// The MAC addresses for the network interfaces
 	MacAddresses pulumi.StringArrayInput
+	// The VM machine type, either default i440fx or q35
+	Machine pulumi.StringPtrInput
 	// The memory allocation
 	Memory VirtualMachineMemoryPtrInput
 	// The name
@@ -244,6 +266,8 @@ type VirtualMachineState struct {
 	Started pulumi.BoolPtrInput
 	// Whether to enable the USB tablet device
 	TabletDevice pulumi.BoolPtrInput
+	// Tags of the virtual machine. This is only meta information.
+	Tags pulumi.StringArrayInput
 	// Whether to create a template
 	Template pulumi.BoolPtrInput
 	// Clone VM timeout
@@ -287,10 +311,16 @@ type virtualMachineArgs struct {
 	Description *string `pulumi:"description"`
 	// The disk devices
 	Disks []VirtualMachineDisk `pulumi:"disks"`
+	// The Host PCI devices mapped to the VM
+	Hostpcis []VirtualMachineHostpci `pulumi:"hostpcis"`
 	// The cloud-init configuration
 	Initialization *VirtualMachineInitialization `pulumi:"initialization"`
 	// The keyboard layout
 	KeyboardLayout *string `pulumi:"keyboardLayout"`
+	// The args implementation
+	KvmArguments *string `pulumi:"kvmArguments"`
+	// The VM machine type, either default i440fx or q35
+	Machine *string `pulumi:"machine"`
 	// The memory allocation
 	Memory *VirtualMachineMemory `pulumi:"memory"`
 	// The name
@@ -313,6 +343,8 @@ type virtualMachineArgs struct {
 	Started *bool `pulumi:"started"`
 	// Whether to enable the USB tablet device
 	TabletDevice *bool `pulumi:"tabletDevice"`
+	// Tags of the virtual machine. This is only meta information.
+	Tags []string `pulumi:"tags"`
 	// Whether to create a template
 	Template *bool `pulumi:"template"`
 	// Clone VM timeout
@@ -353,10 +385,16 @@ type VirtualMachineArgs struct {
 	Description pulumi.StringPtrInput
 	// The disk devices
 	Disks VirtualMachineDiskArrayInput
+	// The Host PCI devices mapped to the VM
+	Hostpcis VirtualMachineHostpciArrayInput
 	// The cloud-init configuration
 	Initialization VirtualMachineInitializationPtrInput
 	// The keyboard layout
 	KeyboardLayout pulumi.StringPtrInput
+	// The args implementation
+	KvmArguments pulumi.StringPtrInput
+	// The VM machine type, either default i440fx or q35
+	Machine pulumi.StringPtrInput
 	// The memory allocation
 	Memory VirtualMachineMemoryPtrInput
 	// The name
@@ -379,6 +417,8 @@ type VirtualMachineArgs struct {
 	Started pulumi.BoolPtrInput
 	// Whether to enable the USB tablet device
 	TabletDevice pulumi.BoolPtrInput
+	// Tags of the virtual machine. This is only meta information.
+	Tags pulumi.StringArrayInput
 	// Whether to create a template
 	Template pulumi.BoolPtrInput
 	// Clone VM timeout
@@ -531,6 +571,11 @@ func (o VirtualMachineOutput) Disks() VirtualMachineDiskArrayOutput {
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineDiskArrayOutput { return v.Disks }).(VirtualMachineDiskArrayOutput)
 }
 
+// The Host PCI devices mapped to the VM
+func (o VirtualMachineOutput) Hostpcis() VirtualMachineHostpciArrayOutput {
+	return o.ApplyT(func(v *VirtualMachine) VirtualMachineHostpciArrayOutput { return v.Hostpcis }).(VirtualMachineHostpciArrayOutput)
+}
+
 // The cloud-init configuration
 func (o VirtualMachineOutput) Initialization() VirtualMachineInitializationPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineInitializationPtrOutput { return v.Initialization }).(VirtualMachineInitializationPtrOutput)
@@ -551,9 +596,19 @@ func (o VirtualMachineOutput) KeyboardLayout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.KeyboardLayout }).(pulumi.StringPtrOutput)
 }
 
+// The args implementation
+func (o VirtualMachineOutput) KvmArguments() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.KvmArguments }).(pulumi.StringPtrOutput)
+}
+
 // The MAC addresses for the network interfaces
 func (o VirtualMachineOutput) MacAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringArrayOutput { return v.MacAddresses }).(pulumi.StringArrayOutput)
+}
+
+// The VM machine type, either default i440fx or q35
+func (o VirtualMachineOutput) Machine() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.Machine }).(pulumi.StringPtrOutput)
 }
 
 // The memory allocation
@@ -614,6 +669,11 @@ func (o VirtualMachineOutput) Started() pulumi.BoolPtrOutput {
 // Whether to enable the USB tablet device
 func (o VirtualMachineOutput) TabletDevice() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.TabletDevice }).(pulumi.BoolPtrOutput)
+}
+
+// Tags of the virtual machine. This is only meta information.
+func (o VirtualMachineOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VirtualMachine) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 // Whether to create a template

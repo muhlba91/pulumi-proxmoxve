@@ -5,24 +5,62 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./getGroup";
-export * from "./getGroups";
-export * from "./getPool";
-export * from "./getPools";
-export * from "./getRole";
-export * from "./getRoles";
-export * from "./getUser";
-export * from "./getUsers";
-export * from "./group";
-export * from "./pool";
-export * from "./role";
-export * from "./user";
+export { GetGroupArgs, GetGroupResult, GetGroupOutputArgs } from "./getGroup";
+export const getGroup: typeof import("./getGroup").getGroup = null as any;
+export const getGroupOutput: typeof import("./getGroup").getGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getGroup","getGroupOutput"], () => require("./getGroup"));
 
-// Import resources to register:
-import { Group } from "./group";
-import { Pool } from "./pool";
-import { Role } from "./role";
-import { User } from "./user";
+export { GetGroupsResult } from "./getGroups";
+export const getGroups: typeof import("./getGroups").getGroups = null as any;
+utilities.lazyLoad(exports, ["getGroups"], () => require("./getGroups"));
+
+export { GetPoolArgs, GetPoolResult, GetPoolOutputArgs } from "./getPool";
+export const getPool: typeof import("./getPool").getPool = null as any;
+export const getPoolOutput: typeof import("./getPool").getPoolOutput = null as any;
+utilities.lazyLoad(exports, ["getPool","getPoolOutput"], () => require("./getPool"));
+
+export { GetPoolsResult } from "./getPools";
+export const getPools: typeof import("./getPools").getPools = null as any;
+utilities.lazyLoad(exports, ["getPools"], () => require("./getPools"));
+
+export { GetRoleArgs, GetRoleResult, GetRoleOutputArgs } from "./getRole";
+export const getRole: typeof import("./getRole").getRole = null as any;
+export const getRoleOutput: typeof import("./getRole").getRoleOutput = null as any;
+utilities.lazyLoad(exports, ["getRole","getRoleOutput"], () => require("./getRole"));
+
+export { GetRolesResult } from "./getRoles";
+export const getRoles: typeof import("./getRoles").getRoles = null as any;
+utilities.lazyLoad(exports, ["getRoles"], () => require("./getRoles"));
+
+export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
+export const getUser: typeof import("./getUser").getUser = null as any;
+export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
+utilities.lazyLoad(exports, ["getUser","getUserOutput"], () => require("./getUser"));
+
+export { GetUsersResult } from "./getUsers";
+export const getUsers: typeof import("./getUsers").getUsers = null as any;
+utilities.lazyLoad(exports, ["getUsers"], () => require("./getUsers"));
+
+export { GroupArgs, GroupState } from "./group";
+export type Group = import("./group").Group;
+export const Group: typeof import("./group").Group = null as any;
+utilities.lazyLoad(exports, ["Group"], () => require("./group"));
+
+export { PoolArgs, PoolState } from "./pool";
+export type Pool = import("./pool").Pool;
+export const Pool: typeof import("./pool").Pool = null as any;
+utilities.lazyLoad(exports, ["Pool"], () => require("./pool"));
+
+export { RoleArgs, RoleState } from "./role";
+export type Role = import("./role").Role;
+export const Role: typeof import("./role").Role = null as any;
+utilities.lazyLoad(exports, ["Role"], () => require("./role"));
+
+export { UserArgs, UserState } from "./user";
+export type User = import("./user").User;
+export const User: typeof import("./user").User = null as any;
+utilities.lazyLoad(exports, ["User"], () => require("./user"));
+
 
 const _module = {
     version: utilities.getVersion(),

@@ -21,6 +21,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         public readonly bool? Iothread;
         public readonly int? Size;
         public readonly Outputs.VirtualMachineDiskSpeed? Speed;
+        public readonly bool? Ssd;
 
         [OutputConstructor]
         private VirtualMachineDisk(
@@ -38,7 +39,9 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
 
             int? size,
 
-            Outputs.VirtualMachineDiskSpeed? speed)
+            Outputs.VirtualMachineDiskSpeed? speed,
+
+            bool? ssd)
         {
             DatastoreId = datastoreId;
             Discard = discard;
@@ -48,6 +51,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
             Iothread = iothread;
             Size = size;
             Speed = speed;
+            Ssd = ssd;
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Pulumi.ProxmoxVE
     public static class GetVersion
     {
         public static Task<GetVersionResult> InvokeAsync(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVersionResult>("proxmoxve:index/getVersion:getVersion", InvokeArgs.Empty, options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetVersionResult>("proxmoxve:index/getVersion:getVersion", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

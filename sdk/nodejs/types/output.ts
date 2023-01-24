@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 
 export interface GetHostsEntry {
     address: string;
@@ -35,6 +36,7 @@ export namespace CT {
 
     export interface ContainerDisk {
         datastoreId?: string;
+        size?: number;
     }
 
     export interface ContainerInitialization {
@@ -78,6 +80,7 @@ export namespace CT {
         bridge?: string;
         enabled?: boolean;
         macAddress?: string;
+        mtu?: number;
         name: string;
         rateLimit?: number;
         vlanId?: number;
@@ -205,6 +208,7 @@ export namespace VM {
         iothread?: boolean;
         size?: number;
         speed?: outputs.VM.VirtualMachineDiskSpeed;
+        ssd?: boolean;
     }
 
     export interface VirtualMachineDiskSpeed {
@@ -214,10 +218,21 @@ export namespace VM {
         writeBurstable?: number;
     }
 
+    export interface VirtualMachineHostpci {
+        device: string;
+        id: string;
+        mdev?: string;
+        pcie?: boolean;
+        romFile?: string;
+        rombar?: boolean;
+        xvga?: boolean;
+    }
+
     export interface VirtualMachineInitialization {
         datastoreId?: string;
         dns?: outputs.VM.VirtualMachineInitializationDns;
         ipConfigs?: outputs.VM.VirtualMachineInitializationIpConfig[];
+        networkDataFileId?: string;
         type?: string;
         userAccount?: outputs.VM.VirtualMachineInitializationUserAccount;
         userDataFileId?: string;
@@ -261,6 +276,7 @@ export namespace VM {
         enabled?: boolean;
         macAddress?: string;
         model?: string;
+        mtu?: number;
         rateLimit?: number;
         vlanId?: number;
     }

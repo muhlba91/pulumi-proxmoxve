@@ -170,14 +170,22 @@ class ContainerDisk(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 datastore_id: Optional[str] = None):
+                 datastore_id: Optional[str] = None,
+                 size: Optional[int] = None):
         if datastore_id is not None:
             pulumi.set(__self__, "datastore_id", datastore_id)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
 
     @property
     @pulumi.getter(name="datastoreId")
     def datastore_id(self) -> Optional[str]:
         return pulumi.get(self, "datastore_id")
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[int]:
+        return pulumi.get(self, "size")
 
 
 @pulumi.output_type
@@ -390,6 +398,7 @@ class ContainerNetworkInterface(dict):
                  bridge: Optional[str] = None,
                  enabled: Optional[bool] = None,
                  mac_address: Optional[str] = None,
+                 mtu: Optional[int] = None,
                  rate_limit: Optional[float] = None,
                  vlan_id: Optional[int] = None):
         pulumi.set(__self__, "name", name)
@@ -399,6 +408,8 @@ class ContainerNetworkInterface(dict):
             pulumi.set(__self__, "enabled", enabled)
         if mac_address is not None:
             pulumi.set(__self__, "mac_address", mac_address)
+        if mtu is not None:
+            pulumi.set(__self__, "mtu", mtu)
         if rate_limit is not None:
             pulumi.set(__self__, "rate_limit", rate_limit)
         if vlan_id is not None:
@@ -423,6 +434,11 @@ class ContainerNetworkInterface(dict):
     @pulumi.getter(name="macAddress")
     def mac_address(self) -> Optional[str]:
         return pulumi.get(self, "mac_address")
+
+    @property
+    @pulumi.getter
+    def mtu(self) -> Optional[int]:
+        return pulumi.get(self, "mtu")
 
     @property
     @pulumi.getter(name="rateLimit")

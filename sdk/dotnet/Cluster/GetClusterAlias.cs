@@ -12,10 +12,10 @@ namespace Pulumi.ProxmoxVE.Cluster
     public static class GetClusterAlias
     {
         public static Task<GetClusterAliasResult> InvokeAsync(GetClusterAliasArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterAliasResult>("proxmoxve:Cluster/getClusterAlias:getClusterAlias", args ?? new GetClusterAliasArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetClusterAliasResult>("proxmoxve:Cluster/getClusterAlias:getClusterAlias", args ?? new GetClusterAliasArgs(), options.WithDefaults());
 
         public static Output<GetClusterAliasResult> Invoke(GetClusterAliasInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetClusterAliasResult>("proxmoxve:Cluster/getClusterAlias:getClusterAlias", args ?? new GetClusterAliasInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetClusterAliasResult>("proxmoxve:Cluster/getClusterAlias:getClusterAlias", args ?? new GetClusterAliasInvokeArgs(), options.WithDefaults());
     }
 
 

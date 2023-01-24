@@ -924,6 +924,7 @@ type VirtualMachineDisk struct {
 	Iothread    *bool                    `pulumi:"iothread"`
 	Size        *int                     `pulumi:"size"`
 	Speed       *VirtualMachineDiskSpeed `pulumi:"speed"`
+	Ssd         *bool                    `pulumi:"ssd"`
 }
 
 // VirtualMachineDiskInput is an input type that accepts VirtualMachineDiskArgs and VirtualMachineDiskOutput values.
@@ -946,6 +947,7 @@ type VirtualMachineDiskArgs struct {
 	Iothread    pulumi.BoolPtrInput             `pulumi:"iothread"`
 	Size        pulumi.IntPtrInput              `pulumi:"size"`
 	Speed       VirtualMachineDiskSpeedPtrInput `pulumi:"speed"`
+	Ssd         pulumi.BoolPtrInput             `pulumi:"ssd"`
 }
 
 func (VirtualMachineDiskArgs) ElementType() reflect.Type {
@@ -1029,6 +1031,10 @@ func (o VirtualMachineDiskOutput) Size() pulumi.IntPtrOutput {
 
 func (o VirtualMachineDiskOutput) Speed() VirtualMachineDiskSpeedPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *VirtualMachineDiskSpeed { return v.Speed }).(VirtualMachineDiskSpeedPtrOutput)
+}
+
+func (o VirtualMachineDiskOutput) Ssd() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineDisk) *bool { return v.Ssd }).(pulumi.BoolPtrOutput)
 }
 
 type VirtualMachineDiskArrayOutput struct{ *pulumi.OutputState }
@@ -1229,14 +1235,145 @@ func (o VirtualMachineDiskSpeedPtrOutput) WriteBurstable() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type VirtualMachineHostpci struct {
+	Device  string  `pulumi:"device"`
+	Id      string  `pulumi:"id"`
+	Mdev    *string `pulumi:"mdev"`
+	Pcie    *bool   `pulumi:"pcie"`
+	RomFile *string `pulumi:"romFile"`
+	Rombar  *bool   `pulumi:"rombar"`
+	Xvga    *bool   `pulumi:"xvga"`
+}
+
+// VirtualMachineHostpciInput is an input type that accepts VirtualMachineHostpciArgs and VirtualMachineHostpciOutput values.
+// You can construct a concrete instance of `VirtualMachineHostpciInput` via:
+//
+//	VirtualMachineHostpciArgs{...}
+type VirtualMachineHostpciInput interface {
+	pulumi.Input
+
+	ToVirtualMachineHostpciOutput() VirtualMachineHostpciOutput
+	ToVirtualMachineHostpciOutputWithContext(context.Context) VirtualMachineHostpciOutput
+}
+
+type VirtualMachineHostpciArgs struct {
+	Device  pulumi.StringInput    `pulumi:"device"`
+	Id      pulumi.StringInput    `pulumi:"id"`
+	Mdev    pulumi.StringPtrInput `pulumi:"mdev"`
+	Pcie    pulumi.BoolPtrInput   `pulumi:"pcie"`
+	RomFile pulumi.StringPtrInput `pulumi:"romFile"`
+	Rombar  pulumi.BoolPtrInput   `pulumi:"rombar"`
+	Xvga    pulumi.BoolPtrInput   `pulumi:"xvga"`
+}
+
+func (VirtualMachineHostpciArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineHostpci)(nil)).Elem()
+}
+
+func (i VirtualMachineHostpciArgs) ToVirtualMachineHostpciOutput() VirtualMachineHostpciOutput {
+	return i.ToVirtualMachineHostpciOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineHostpciArgs) ToVirtualMachineHostpciOutputWithContext(ctx context.Context) VirtualMachineHostpciOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineHostpciOutput)
+}
+
+// VirtualMachineHostpciArrayInput is an input type that accepts VirtualMachineHostpciArray and VirtualMachineHostpciArrayOutput values.
+// You can construct a concrete instance of `VirtualMachineHostpciArrayInput` via:
+//
+//	VirtualMachineHostpciArray{ VirtualMachineHostpciArgs{...} }
+type VirtualMachineHostpciArrayInput interface {
+	pulumi.Input
+
+	ToVirtualMachineHostpciArrayOutput() VirtualMachineHostpciArrayOutput
+	ToVirtualMachineHostpciArrayOutputWithContext(context.Context) VirtualMachineHostpciArrayOutput
+}
+
+type VirtualMachineHostpciArray []VirtualMachineHostpciInput
+
+func (VirtualMachineHostpciArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualMachineHostpci)(nil)).Elem()
+}
+
+func (i VirtualMachineHostpciArray) ToVirtualMachineHostpciArrayOutput() VirtualMachineHostpciArrayOutput {
+	return i.ToVirtualMachineHostpciArrayOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineHostpciArray) ToVirtualMachineHostpciArrayOutputWithContext(ctx context.Context) VirtualMachineHostpciArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineHostpciArrayOutput)
+}
+
+type VirtualMachineHostpciOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineHostpciOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineHostpci)(nil)).Elem()
+}
+
+func (o VirtualMachineHostpciOutput) ToVirtualMachineHostpciOutput() VirtualMachineHostpciOutput {
+	return o
+}
+
+func (o VirtualMachineHostpciOutput) ToVirtualMachineHostpciOutputWithContext(ctx context.Context) VirtualMachineHostpciOutput {
+	return o
+}
+
+func (o VirtualMachineHostpciOutput) Device() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualMachineHostpci) string { return v.Device }).(pulumi.StringOutput)
+}
+
+func (o VirtualMachineHostpciOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualMachineHostpci) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o VirtualMachineHostpciOutput) Mdev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineHostpci) *string { return v.Mdev }).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineHostpciOutput) Pcie() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineHostpci) *bool { return v.Pcie }).(pulumi.BoolPtrOutput)
+}
+
+func (o VirtualMachineHostpciOutput) RomFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineHostpci) *string { return v.RomFile }).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineHostpciOutput) Rombar() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineHostpci) *bool { return v.Rombar }).(pulumi.BoolPtrOutput)
+}
+
+func (o VirtualMachineHostpciOutput) Xvga() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineHostpci) *bool { return v.Xvga }).(pulumi.BoolPtrOutput)
+}
+
+type VirtualMachineHostpciArrayOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineHostpciArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualMachineHostpci)(nil)).Elem()
+}
+
+func (o VirtualMachineHostpciArrayOutput) ToVirtualMachineHostpciArrayOutput() VirtualMachineHostpciArrayOutput {
+	return o
+}
+
+func (o VirtualMachineHostpciArrayOutput) ToVirtualMachineHostpciArrayOutputWithContext(ctx context.Context) VirtualMachineHostpciArrayOutput {
+	return o
+}
+
+func (o VirtualMachineHostpciArrayOutput) Index(i pulumi.IntInput) VirtualMachineHostpciOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualMachineHostpci {
+		return vs[0].([]VirtualMachineHostpci)[vs[1].(int)]
+	}).(VirtualMachineHostpciOutput)
+}
+
 type VirtualMachineInitialization struct {
-	DatastoreId      *string                                  `pulumi:"datastoreId"`
-	Dns              *VirtualMachineInitializationDns         `pulumi:"dns"`
-	IpConfigs        []VirtualMachineInitializationIpConfig   `pulumi:"ipConfigs"`
-	Type             *string                                  `pulumi:"type"`
-	UserAccount      *VirtualMachineInitializationUserAccount `pulumi:"userAccount"`
-	UserDataFileId   *string                                  `pulumi:"userDataFileId"`
-	VendorDataFileId *string                                  `pulumi:"vendorDataFileId"`
+	DatastoreId       *string                                  `pulumi:"datastoreId"`
+	Dns               *VirtualMachineInitializationDns         `pulumi:"dns"`
+	IpConfigs         []VirtualMachineInitializationIpConfig   `pulumi:"ipConfigs"`
+	NetworkDataFileId *string                                  `pulumi:"networkDataFileId"`
+	Type              *string                                  `pulumi:"type"`
+	UserAccount       *VirtualMachineInitializationUserAccount `pulumi:"userAccount"`
+	UserDataFileId    *string                                  `pulumi:"userDataFileId"`
+	VendorDataFileId  *string                                  `pulumi:"vendorDataFileId"`
 }
 
 // VirtualMachineInitializationInput is an input type that accepts VirtualMachineInitializationArgs and VirtualMachineInitializationOutput values.
@@ -1251,13 +1388,14 @@ type VirtualMachineInitializationInput interface {
 }
 
 type VirtualMachineInitializationArgs struct {
-	DatastoreId      pulumi.StringPtrInput                           `pulumi:"datastoreId"`
-	Dns              VirtualMachineInitializationDnsPtrInput         `pulumi:"dns"`
-	IpConfigs        VirtualMachineInitializationIpConfigArrayInput  `pulumi:"ipConfigs"`
-	Type             pulumi.StringPtrInput                           `pulumi:"type"`
-	UserAccount      VirtualMachineInitializationUserAccountPtrInput `pulumi:"userAccount"`
-	UserDataFileId   pulumi.StringPtrInput                           `pulumi:"userDataFileId"`
-	VendorDataFileId pulumi.StringPtrInput                           `pulumi:"vendorDataFileId"`
+	DatastoreId       pulumi.StringPtrInput                           `pulumi:"datastoreId"`
+	Dns               VirtualMachineInitializationDnsPtrInput         `pulumi:"dns"`
+	IpConfigs         VirtualMachineInitializationIpConfigArrayInput  `pulumi:"ipConfigs"`
+	NetworkDataFileId pulumi.StringPtrInput                           `pulumi:"networkDataFileId"`
+	Type              pulumi.StringPtrInput                           `pulumi:"type"`
+	UserAccount       VirtualMachineInitializationUserAccountPtrInput `pulumi:"userAccount"`
+	UserDataFileId    pulumi.StringPtrInput                           `pulumi:"userDataFileId"`
+	VendorDataFileId  pulumi.StringPtrInput                           `pulumi:"vendorDataFileId"`
 }
 
 func (VirtualMachineInitializationArgs) ElementType() reflect.Type {
@@ -1349,6 +1487,10 @@ func (o VirtualMachineInitializationOutput) IpConfigs() VirtualMachineInitializa
 	return o.ApplyT(func(v VirtualMachineInitialization) []VirtualMachineInitializationIpConfig { return v.IpConfigs }).(VirtualMachineInitializationIpConfigArrayOutput)
 }
 
+func (o VirtualMachineInitializationOutput) NetworkDataFileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInitialization) *string { return v.NetworkDataFileId }).(pulumi.StringPtrOutput)
+}
+
 func (o VirtualMachineInitializationOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitialization) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -1414,6 +1556,15 @@ func (o VirtualMachineInitializationPtrOutput) IpConfigs() VirtualMachineInitial
 		}
 		return v.IpConfigs
 	}).(VirtualMachineInitializationIpConfigArrayOutput)
+}
+
+func (o VirtualMachineInitializationPtrOutput) NetworkDataFileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInitialization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkDataFileId
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o VirtualMachineInitializationPtrOutput) Type() pulumi.StringPtrOutput {
@@ -2327,6 +2478,7 @@ type VirtualMachineNetworkDevice struct {
 	Enabled    *bool    `pulumi:"enabled"`
 	MacAddress *string  `pulumi:"macAddress"`
 	Model      *string  `pulumi:"model"`
+	Mtu        *int     `pulumi:"mtu"`
 	RateLimit  *float64 `pulumi:"rateLimit"`
 	VlanId     *int     `pulumi:"vlanId"`
 }
@@ -2347,6 +2499,7 @@ type VirtualMachineNetworkDeviceArgs struct {
 	Enabled    pulumi.BoolPtrInput    `pulumi:"enabled"`
 	MacAddress pulumi.StringPtrInput  `pulumi:"macAddress"`
 	Model      pulumi.StringPtrInput  `pulumi:"model"`
+	Mtu        pulumi.IntPtrInput     `pulumi:"mtu"`
 	RateLimit  pulumi.Float64PtrInput `pulumi:"rateLimit"`
 	VlanId     pulumi.IntPtrInput     `pulumi:"vlanId"`
 }
@@ -2416,6 +2569,10 @@ func (o VirtualMachineNetworkDeviceOutput) MacAddress() pulumi.StringPtrOutput {
 
 func (o VirtualMachineNetworkDeviceOutput) Model() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkDevice) *string { return v.Model }).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineNetworkDeviceOutput) Mtu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachineNetworkDevice) *int { return v.Mtu }).(pulumi.IntPtrOutput)
 }
 
 func (o VirtualMachineNetworkDeviceOutput) RateLimit() pulumi.Float64PtrOutput {
@@ -2851,6 +3008,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineDiskArrayInput)(nil)).Elem(), VirtualMachineDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineDiskSpeedInput)(nil)).Elem(), VirtualMachineDiskSpeedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineDiskSpeedPtrInput)(nil)).Elem(), VirtualMachineDiskSpeedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineHostpciInput)(nil)).Elem(), VirtualMachineHostpciArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineHostpciArrayInput)(nil)).Elem(), VirtualMachineHostpciArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineInitializationInput)(nil)).Elem(), VirtualMachineInitializationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineInitializationPtrInput)(nil)).Elem(), VirtualMachineInitializationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineInitializationDnsInput)(nil)).Elem(), VirtualMachineInitializationDnsArgs{})
@@ -2887,6 +3046,8 @@ func init() {
 	pulumi.RegisterOutputType(VirtualMachineDiskArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachineDiskSpeedOutput{})
 	pulumi.RegisterOutputType(VirtualMachineDiskSpeedPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineHostpciOutput{})
+	pulumi.RegisterOutputType(VirtualMachineHostpciArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachineInitializationOutput{})
 	pulumi.RegisterOutputType(VirtualMachineInitializationPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineInitializationDnsOutput{})

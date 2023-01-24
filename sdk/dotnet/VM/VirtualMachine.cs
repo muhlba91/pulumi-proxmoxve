@@ -67,6 +67,12 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<ImmutableArray<Outputs.VirtualMachineDisk>> Disks { get; private set; } = null!;
 
         /// <summary>
+        /// The Host PCI devices mapped to the VM
+        /// </summary>
+        [Output("hostpcis")]
+        public Output<ImmutableArray<Outputs.VirtualMachineHostpci>> Hostpcis { get; private set; } = null!;
+
+        /// <summary>
         /// The cloud-init configuration
         /// </summary>
         [Output("initialization")]
@@ -91,10 +97,22 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<string?> KeyboardLayout { get; private set; } = null!;
 
         /// <summary>
+        /// The args implementation
+        /// </summary>
+        [Output("kvmArguments")]
+        public Output<string?> KvmArguments { get; private set; } = null!;
+
+        /// <summary>
         /// The MAC addresses for the network interfaces
         /// </summary>
         [Output("macAddresses")]
         public Output<ImmutableArray<string>> MacAddresses { get; private set; } = null!;
+
+        /// <summary>
+        /// The VM machine type, either default i440fx or q35
+        /// </summary>
+        [Output("machine")]
+        public Output<string?> Machine { get; private set; } = null!;
 
         /// <summary>
         /// The memory allocation
@@ -167,6 +185,12 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Output("tabletDevice")]
         public Output<bool?> TabletDevice { get; private set; } = null!;
+
+        /// <summary>
+        /// Tags of the virtual machine. This is only meta information.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
         /// Whether to create a template
@@ -329,6 +353,18 @@ namespace Pulumi.ProxmoxVE.VM
             set => _disks = value;
         }
 
+        [Input("hostpcis")]
+        private InputList<Inputs.VirtualMachineHostpciArgs>? _hostpcis;
+
+        /// <summary>
+        /// The Host PCI devices mapped to the VM
+        /// </summary>
+        public InputList<Inputs.VirtualMachineHostpciArgs> Hostpcis
+        {
+            get => _hostpcis ?? (_hostpcis = new InputList<Inputs.VirtualMachineHostpciArgs>());
+            set => _hostpcis = value;
+        }
+
         /// <summary>
         /// The cloud-init configuration
         /// </summary>
@@ -340,6 +376,18 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Input("keyboardLayout")]
         public Input<string>? KeyboardLayout { get; set; }
+
+        /// <summary>
+        /// The args implementation
+        /// </summary>
+        [Input("kvmArguments")]
+        public Input<string>? KvmArguments { get; set; }
+
+        /// <summary>
+        /// The VM machine type, either default i440fx or q35
+        /// </summary>
+        [Input("machine")]
+        public Input<string>? Machine { get; set; }
 
         /// <summary>
         /// The memory allocation
@@ -418,6 +466,18 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Input("tabletDevice")]
         public Input<bool>? TabletDevice { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// Tags of the virtual machine. This is only meta information.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// Whether to create a template
@@ -541,6 +601,18 @@ namespace Pulumi.ProxmoxVE.VM
             set => _disks = value;
         }
 
+        [Input("hostpcis")]
+        private InputList<Inputs.VirtualMachineHostpciGetArgs>? _hostpcis;
+
+        /// <summary>
+        /// The Host PCI devices mapped to the VM
+        /// </summary>
+        public InputList<Inputs.VirtualMachineHostpciGetArgs> Hostpcis
+        {
+            get => _hostpcis ?? (_hostpcis = new InputList<Inputs.VirtualMachineHostpciGetArgs>());
+            set => _hostpcis = value;
+        }
+
         /// <summary>
         /// The cloud-init configuration
         /// </summary>
@@ -577,6 +649,12 @@ namespace Pulumi.ProxmoxVE.VM
         [Input("keyboardLayout")]
         public Input<string>? KeyboardLayout { get; set; }
 
+        /// <summary>
+        /// The args implementation
+        /// </summary>
+        [Input("kvmArguments")]
+        public Input<string>? KvmArguments { get; set; }
+
         [Input("macAddresses")]
         private InputList<string>? _macAddresses;
 
@@ -588,6 +666,12 @@ namespace Pulumi.ProxmoxVE.VM
             get => _macAddresses ?? (_macAddresses = new InputList<string>());
             set => _macAddresses = value;
         }
+
+        /// <summary>
+        /// The VM machine type, either default i440fx or q35
+        /// </summary>
+        [Input("machine")]
+        public Input<string>? Machine { get; set; }
 
         /// <summary>
         /// The memory allocation
@@ -678,6 +762,18 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Input("tabletDevice")]
         public Input<bool>? TabletDevice { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// Tags of the virtual machine. This is only meta information.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// Whether to create a template
