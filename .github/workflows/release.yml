@@ -4,7 +4,7 @@ name: Release
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
 
 env:
   PROVIDER: proxmoxve
@@ -23,20 +23,20 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        go-version: [ 1.18.x ]
+        go-version: [1.18.x]
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: Install Go
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v3
         with:
-          go-version: '${{ matrix.go-version }}'
+          go-version: "${{ matrix.go-version }}"
 
       - name: Install pulumictl
-        uses: jaxxstorm/action-install-gh-release@v1.3.1
+        uses: jaxxstorm/action-install-gh-release@v1.9.0
         with:
           repo: pulumi/pulumictl
       - name: Install Pulumi CLI
@@ -48,7 +48,7 @@ jobs:
       - name: Tar Provider Binaries
         run: tar -zcf ${{ github.workspace }}/bin/provider.tar.gz -C ${{ github.workspace }}/bin/ pulumi-resource-${{ env.PROVIDER }} pulumi-tfgen-${{ env.PROVIDER }}
       - name: Upload artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: ${{ env.PROVIDER }}-provider.tar.gz
           path: ${{ github.workspace }}/bin/provider.tar.gz
@@ -59,10 +59,10 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        go-version: [ 1.18.x ]
-        node-version: [ 16 ]
-        dotnet-version: [ 3.1.301 ]
-        python-version: [ 3.9 ]
+        go-version: [1.18.x]
+        node-version: [16]
+        dotnet-version: [3.1.301]
+        python-version: [3.9]
         language:
           - go
           - nodejs
@@ -71,28 +71,28 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: Install Go
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v3
         with:
-          go-version: '${{ matrix.go-version }}'
+          go-version: "${{ matrix.go-version }}"
       - name: Use Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '${{ matrix.node-version }}'
+          node-version: "${{ matrix.node-version }}"
       - name: Setup DotNet
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '${{ matrix.dotnet-version }}'
+          dotnet-version: "${{ matrix.dotnet-version }}"
       - name: Setup Python
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v4
         with:
-          python-version: '${{ matrix.python-version }}'
+          python-version: "${{ matrix.python-version }}"
 
       - name: Install pulumictl
-        uses: jaxxstorm/action-install-gh-release@v1.3.1
+        uses: jaxxstorm/action-install-gh-release@v1.9.0
         with:
           repo: pulumi/pulumictl
       - name: Install Pulumi CLI
@@ -109,7 +109,7 @@ jobs:
       - name: Compress SDK
         run: tar -zcf sdk/${{ matrix.language }}.tar.gz -C sdk/${{ matrix.language }} .
       - name: Upload SDK
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.language  }}-sdk.tar.gz
           path: ${{ github.workspace}}/sdk/${{ matrix.language }}.tar.gz
@@ -123,27 +123,27 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        go-version: [ 1.18.x ]
+        go-version: [1.18.x]
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: Install Go
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v3
         with:
-          go-version: '${{ matrix.go-version }}'
+          go-version: "${{ matrix.go-version }}"
 
       - name: Install pulumictl
-        uses: jaxxstorm/action-install-gh-release@v1.3.1
+        uses: jaxxstorm/action-install-gh-release@v1.9.0
         with:
           repo: pulumi/pulumictl
       - name: Install Pulumi CLI
         uses: pulumi/setup-pulumi@v2
 
       - name: Release via GoReleaser
-        uses: goreleaser/goreleaser-action@v2
+        uses: goreleaser/goreleaser-action@v4
         with:
           args: -p 2 release --rm-dist --timeout 60m0s
           version: latest
@@ -158,42 +158,42 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        go-version: [ 1.18.x ]
-        node-version: [ 16 ]
-        dotnet-version: [ 3.1.301 ]
-        python-version: [ 3.9 ]
+        go-version: [1.18.x]
+        node-version: [16]
+        dotnet-version: [3.1.301]
+        python-version: [3.9]
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: Install Go
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v3
         with:
-          go-version: '${{ matrix.go-version }}'
+          go-version: "${{ matrix.go-version }}"
       - name: Use Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '${{ matrix.node-version }}'
+          node-version: "${{ matrix.node-version }}"
       - name: Setup DotNet
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '${{ matrix.dotnet-version }}'
+          dotnet-version: "${{ matrix.dotnet-version }}"
       - name: Setup Python
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v4
         with:
-          python-version: '${{ matrix.python-version }}'
+          python-version: "${{ matrix.python-version }}"
 
       - name: Install pulumictl
-        uses: jaxxstorm/action-install-gh-release@v1.3.1
+        uses: jaxxstorm/action-install-gh-release@v1.9.0
         with:
           repo: pulumi/pulumictl
       - name: Install Pulumi CLI
         uses: pulumi/setup-pulumi@v2
 
       - name: Download .NET SDK
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: dotnet-sdk.tar.gz
           path: ${{ github.workspace}}/sdk/
@@ -203,21 +203,21 @@ jobs:
         run: find "${{ github.workspace }}/sdk/dotnet/bin/Debug/" -name 'Pulumi.*.nupkg' -exec dotnet nuget push -k "${{ secrets.NUGET_PUBLISH_KEY }}" -s https://api.nuget.org/v3/index.json {} ';'
 
       - name: Download Python SDK
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: python-sdk.tar.gz
           path: ${{ github.workspace}}/sdk/
       - name: Uncompress Python SDK
         run: tar -zxf ${{ github.workspace }}/sdk/python.tar.gz -C ${{ github.workspace }}/sdk/python
       - name: Publish Python SDK
-        uses: pypa/gh-action-pypi-publish@master
+        uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          password: '${{ secrets.PYPI_PASSWORD }}'
+          password: "${{ secrets.PYPI_PASSWORD }}"
           skip_existing: true
-          packages_dir: '${{ github.workspace }}/sdk/python/bin/dist/'
+          packages_dir: "${{ github.workspace }}/sdk/python/bin/dist/"
 
       - name: Download NodeJS SDK
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: nodejs-sdk.tar.gz
           path: ${{ github.workspace}}/sdk/
@@ -241,17 +241,17 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
-          token: '${{ secrets.GH_PUSH_TOKEN }}'
+          token: "${{ secrets.GH_PUSH_TOKEN }}"
       - name: Setup Git
         run: |
           git config --local user.email "${{ env.GITHUB_ACTION }}+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
       - name: Tag Go SDK Version
         run: |
-          git tag -a sdk/${{ env.GITHUB_REF_NAME }} -m sdk/${{ env.GITHUB_REF_NAME }}
+          git tag -a sdk/${{ github.ref_name }} -m sdk/${{ github.ref_name }}
       - name: Push to Repository
         run: |
           git push --follow-tags
