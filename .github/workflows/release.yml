@@ -254,4 +254,4 @@ jobs:
           git tag -a sdk/${{ github.ref_name }} -m sdk/${{ github.ref_name }}
       - name: Push to Repository
         run: |
-          git push --follow-tags
+          git push origin sdk/${{ github.ref_name }}
