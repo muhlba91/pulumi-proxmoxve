@@ -91,6 +91,10 @@ export class Container extends pulumi.CustomResource {
      */
     public readonly template!: pulumi.Output<boolean | undefined>;
     /**
+     * Whether the container runs as unprivileged on the host
+     */
+    public readonly unprivileged!: pulumi.Output<boolean | undefined>;
+    /**
      * The VM identifier
      */
     public readonly vmId!: pulumi.Output<number | undefined>;
@@ -122,6 +126,7 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["started"] = state ? state.started : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["template"] = state ? state.template : undefined;
+            resourceInputs["unprivileged"] = state ? state.unprivileged : undefined;
             resourceInputs["vmId"] = state ? state.vmId : undefined;
         } else {
             const args = argsOrState as ContainerArgs | undefined;
@@ -142,6 +147,7 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["started"] = args ? args.started : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["template"] = args ? args.template : undefined;
+            resourceInputs["unprivileged"] = args ? args.unprivileged : undefined;
             resourceInputs["vmId"] = args ? args.vmId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -210,6 +216,10 @@ export interface ContainerState {
      */
     template?: pulumi.Input<boolean>;
     /**
+     * Whether the container runs as unprivileged on the host
+     */
+    unprivileged?: pulumi.Input<boolean>;
+    /**
      * The VM identifier
      */
     vmId?: pulumi.Input<number>;
@@ -275,6 +285,10 @@ export interface ContainerArgs {
      * Whether to create a template
      */
     template?: pulumi.Input<boolean>;
+    /**
+     * Whether the container runs as unprivileged on the host
+     */
+    unprivileged?: pulumi.Input<boolean>;
     /**
      * The VM identifier
      */

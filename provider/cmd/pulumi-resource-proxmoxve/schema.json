@@ -1757,6 +1757,10 @@
                     "type": "boolean",
                     "description": "Whether to create a template\n"
                 },
+                "unprivileged": {
+                    "type": "boolean",
+                    "description": "Whether the container runs as unprivileged on the host\n"
+                },
                 "vmId": {
                     "type": "integer",
                     "description": "The VM identifier\n"
@@ -1831,6 +1835,11 @@
                 "template": {
                     "type": "boolean",
                     "description": "Whether to create a template\n",
+                    "willReplaceOnChanges": true
+                },
+                "unprivileged": {
+                    "type": "boolean",
+                    "description": "Whether the container runs as unprivileged on the host\n",
                     "willReplaceOnChanges": true
                 },
                 "vmId": {
@@ -1910,6 +1919,11 @@
                     "template": {
                         "type": "boolean",
                         "description": "Whether to create a template\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "unprivileged": {
+                        "type": "boolean",
+                        "description": "Whether the container runs as unprivileged on the host\n",
                         "willReplaceOnChanges": true
                     },
                     "vmId": {

@@ -42,6 +42,8 @@ type Container struct {
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Whether to create a template
 	Template pulumi.BoolPtrOutput `pulumi:"template"`
+	// Whether the container runs as unprivileged on the host
+	Unprivileged pulumi.BoolPtrOutput `pulumi:"unprivileged"`
 	// The VM identifier
 	VmId pulumi.IntPtrOutput `pulumi:"vmId"`
 }
@@ -107,6 +109,8 @@ type containerState struct {
 	Tags []string `pulumi:"tags"`
 	// Whether to create a template
 	Template *bool `pulumi:"template"`
+	// Whether the container runs as unprivileged on the host
+	Unprivileged *bool `pulumi:"unprivileged"`
 	// The VM identifier
 	VmId *int `pulumi:"vmId"`
 }
@@ -140,6 +144,8 @@ type ContainerState struct {
 	Tags pulumi.StringArrayInput
 	// Whether to create a template
 	Template pulumi.BoolPtrInput
+	// Whether the container runs as unprivileged on the host
+	Unprivileged pulumi.BoolPtrInput
 	// The VM identifier
 	VmId pulumi.IntPtrInput
 }
@@ -177,6 +183,8 @@ type containerArgs struct {
 	Tags []string `pulumi:"tags"`
 	// Whether to create a template
 	Template *bool `pulumi:"template"`
+	// Whether the container runs as unprivileged on the host
+	Unprivileged *bool `pulumi:"unprivileged"`
 	// The VM identifier
 	VmId *int `pulumi:"vmId"`
 }
@@ -211,6 +219,8 @@ type ContainerArgs struct {
 	Tags pulumi.StringArrayInput
 	// Whether to create a template
 	Template pulumi.BoolPtrInput
+	// Whether the container runs as unprivileged on the host
+	Unprivileged pulumi.BoolPtrInput
 	// The VM identifier
 	VmId pulumi.IntPtrInput
 }
@@ -370,6 +380,11 @@ func (o ContainerOutput) Tags() pulumi.StringArrayOutput {
 // Whether to create a template
 func (o ContainerOutput) Template() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Container) pulumi.BoolPtrOutput { return v.Template }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the container runs as unprivileged on the host
+func (o ContainerOutput) Unprivileged() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Container) pulumi.BoolPtrOutput { return v.Unprivileged }).(pulumi.BoolPtrOutput)
 }
 
 // The VM identifier

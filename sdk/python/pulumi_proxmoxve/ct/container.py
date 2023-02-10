@@ -30,6 +30,7 @@ class ContainerArgs:
                  started: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
+                 unprivileged: Optional[pulumi.Input[bool]] = None,
                  vm_id: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Container resource.
@@ -47,6 +48,7 @@ class ContainerArgs:
         :param pulumi.Input[bool] started: Whether to start the container
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the container. This is only meta information.
         :param pulumi.Input[bool] template: Whether to create a template
+        :param pulumi.Input[bool] unprivileged: Whether the container runs as unprivileged on the host
         :param pulumi.Input[int] vm_id: The VM identifier
         """
         pulumi.set(__self__, "node_name", node_name)
@@ -76,6 +78,8 @@ class ContainerArgs:
             pulumi.set(__self__, "tags", tags)
         if template is not None:
             pulumi.set(__self__, "template", template)
+        if unprivileged is not None:
+            pulumi.set(__self__, "unprivileged", unprivileged)
         if vm_id is not None:
             pulumi.set(__self__, "vm_id", vm_id)
 
@@ -248,6 +252,18 @@ class ContainerArgs:
         pulumi.set(self, "template", value)
 
     @property
+    @pulumi.getter
+    def unprivileged(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the container runs as unprivileged on the host
+        """
+        return pulumi.get(self, "unprivileged")
+
+    @unprivileged.setter
+    def unprivileged(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "unprivileged", value)
+
+    @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[int]]:
         """
@@ -277,6 +293,7 @@ class _ContainerState:
                  started: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
+                 unprivileged: Optional[pulumi.Input[bool]] = None,
                  vm_id: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering Container resources.
@@ -294,6 +311,7 @@ class _ContainerState:
         :param pulumi.Input[bool] started: Whether to start the container
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the container. This is only meta information.
         :param pulumi.Input[bool] template: Whether to create a template
+        :param pulumi.Input[bool] unprivileged: Whether the container runs as unprivileged on the host
         :param pulumi.Input[int] vm_id: The VM identifier
         """
         if clone is not None:
@@ -324,6 +342,8 @@ class _ContainerState:
             pulumi.set(__self__, "tags", tags)
         if template is not None:
             pulumi.set(__self__, "template", template)
+        if unprivileged is not None:
+            pulumi.set(__self__, "unprivileged", unprivileged)
         if vm_id is not None:
             pulumi.set(__self__, "vm_id", vm_id)
 
@@ -496,6 +516,18 @@ class _ContainerState:
         pulumi.set(self, "template", value)
 
     @property
+    @pulumi.getter
+    def unprivileged(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the container runs as unprivileged on the host
+        """
+        return pulumi.get(self, "unprivileged")
+
+    @unprivileged.setter
+    def unprivileged(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "unprivileged", value)
+
+    @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[int]]:
         """
@@ -527,6 +559,7 @@ class Container(pulumi.CustomResource):
                  started: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
+                 unprivileged: Optional[pulumi.Input[bool]] = None,
                  vm_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -547,6 +580,7 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[bool] started: Whether to start the container
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the container. This is only meta information.
         :param pulumi.Input[bool] template: Whether to create a template
+        :param pulumi.Input[bool] unprivileged: Whether the container runs as unprivileged on the host
         :param pulumi.Input[int] vm_id: The VM identifier
         """
         ...
@@ -586,6 +620,7 @@ class Container(pulumi.CustomResource):
                  started: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
+                 unprivileged: Optional[pulumi.Input[bool]] = None,
                  vm_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -612,6 +647,7 @@ class Container(pulumi.CustomResource):
             __props__.__dict__["started"] = started
             __props__.__dict__["tags"] = tags
             __props__.__dict__["template"] = template
+            __props__.__dict__["unprivileged"] = unprivileged
             __props__.__dict__["vm_id"] = vm_id
         super(Container, __self__).__init__(
             'proxmoxve:CT/container:Container',
@@ -637,6 +673,7 @@ class Container(pulumi.CustomResource):
             started: Optional[pulumi.Input[bool]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             template: Optional[pulumi.Input[bool]] = None,
+            unprivileged: Optional[pulumi.Input[bool]] = None,
             vm_id: Optional[pulumi.Input[int]] = None) -> 'Container':
         """
         Get an existing Container resource's state with the given name, id, and optional extra
@@ -659,6 +696,7 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[bool] started: Whether to start the container
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the container. This is only meta information.
         :param pulumi.Input[bool] template: Whether to create a template
+        :param pulumi.Input[bool] unprivileged: Whether the container runs as unprivileged on the host
         :param pulumi.Input[int] vm_id: The VM identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -679,6 +717,7 @@ class Container(pulumi.CustomResource):
         __props__.__dict__["started"] = started
         __props__.__dict__["tags"] = tags
         __props__.__dict__["template"] = template
+        __props__.__dict__["unprivileged"] = unprivileged
         __props__.__dict__["vm_id"] = vm_id
         return Container(resource_name, opts=opts, __props__=__props__)
 
@@ -793,6 +832,14 @@ class Container(pulumi.CustomResource):
         Whether to create a template
         """
         return pulumi.get(self, "template")
+
+    @property
+    @pulumi.getter
+    def unprivileged(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether the container runs as unprivileged on the host
+        """
+        return pulumi.get(self, "unprivileged")
 
     @property
     @pulumi.getter(name="vmId")

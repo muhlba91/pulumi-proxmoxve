@@ -8,7 +8,7 @@ replace (
 )
 
 require (
-	github.com/bpg/terraform-provider-proxmox v0.11.0
+	github.com/bpg/terraform-provider-proxmox v0.12.1
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.38.0
 	github.com/pulumi/pulumi/sdk/v3 v3.51.0
 )
@@ -191,6 +191,7 @@ require (
 	github.com/segmentio/encoding v0.3.5 // indirect
 	github.com/sergi/go-diff v1.2.0 // indirect
 	github.com/shopspring/decimal v1.3.1 // indirect
+	github.com/skeema/knownhosts v1.1.0 // indirect
 	github.com/spf13/afero v1.8.2 // indirect
 	github.com/spf13/cast v1.4.1 // indirect
 	github.com/spf13/cobra v1.6.1 // indirect

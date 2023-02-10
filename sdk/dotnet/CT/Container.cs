@@ -97,6 +97,12 @@ namespace Pulumi.ProxmoxVE.CT
         public Output<bool?> Template { get; private set; } = null!;
 
         /// <summary>
+        /// Whether the container runs as unprivileged on the host
+        /// </summary>
+        [Output("unprivileged")]
+        public Output<bool?> Unprivileged { get; private set; } = null!;
+
+        /// <summary>
         /// The VM identifier
         /// </summary>
         [Output("vmId")]
@@ -246,6 +252,12 @@ namespace Pulumi.ProxmoxVE.CT
         public Input<bool>? Template { get; set; }
 
         /// <summary>
+        /// Whether the container runs as unprivileged on the host
+        /// </summary>
+        [Input("unprivileged")]
+        public Input<bool>? Unprivileged { get; set; }
+
+        /// <summary>
         /// The VM identifier
         /// </summary>
         [Input("vmId")]
@@ -354,6 +366,12 @@ namespace Pulumi.ProxmoxVE.CT
         /// </summary>
         [Input("template")]
         public Input<bool>? Template { get; set; }
+
+        /// <summary>
+        /// Whether the container runs as unprivileged on the host
+        /// </summary>
+        [Input("unprivileged")]
+        public Input<bool>? Unprivileged { get; set; }
 
         /// <summary>
         /// The VM identifier
