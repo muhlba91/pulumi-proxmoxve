@@ -1,6 +1,14 @@
 # Changelog
 
 
+### [2.3.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v2.3.0...v2.3.1) (2023-02-10)
+
+
+### Bug Fixes
+
+* **ci:** push only sdk tag ([7d80903](https://github.com/muhlba91/pulumi-proxmoxve/commit/7d809036da1fdd801f3fb46592a9a5ee77a1c209))
+* update upstream to 0.12.1 ([feda997](https://github.com/muhlba91/pulumi-proxmoxve/commit/feda99795b359edf8636a7ae3578a4563a2c7de6))
+
 ## [2.3.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v2.2.0...v2.3.0) (2023-01-24)
 
 
