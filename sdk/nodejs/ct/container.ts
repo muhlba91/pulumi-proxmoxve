@@ -55,6 +55,10 @@ export class Container extends pulumi.CustomResource {
      */
     public readonly disk!: pulumi.Output<outputs.CT.ContainerDisk | undefined>;
     /**
+     * Features
+     */
+    public readonly features!: pulumi.Output<outputs.CT.ContainerFeatures | undefined>;
+    /**
      * The initialization configuration
      */
     public readonly initialization!: pulumi.Output<outputs.CT.ContainerInitialization | undefined>;
@@ -117,6 +121,7 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["cpu"] = state ? state.cpu : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["disk"] = state ? state.disk : undefined;
+            resourceInputs["features"] = state ? state.features : undefined;
             resourceInputs["initialization"] = state ? state.initialization : undefined;
             resourceInputs["memory"] = state ? state.memory : undefined;
             resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
@@ -138,6 +143,7 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["cpu"] = args ? args.cpu : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["disk"] = args ? args.disk : undefined;
+            resourceInputs["features"] = args ? args.features : undefined;
             resourceInputs["initialization"] = args ? args.initialization : undefined;
             resourceInputs["memory"] = args ? args.memory : undefined;
             resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
@@ -179,6 +185,10 @@ export interface ContainerState {
      * The disks
      */
     disk?: pulumi.Input<inputs.CT.ContainerDisk>;
+    /**
+     * Features
+     */
+    features?: pulumi.Input<inputs.CT.ContainerFeatures>;
     /**
      * The initialization configuration
      */
@@ -249,6 +259,10 @@ export interface ContainerArgs {
      * The disks
      */
     disk?: pulumi.Input<inputs.CT.ContainerDisk>;
+    /**
+     * Features
+     */
+    features?: pulumi.Input<inputs.CT.ContainerFeatures>;
     /**
      * The initialization configuration
      */

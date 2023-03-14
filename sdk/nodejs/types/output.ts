@@ -39,6 +39,10 @@ export namespace CT {
         size?: number;
     }
 
+    export interface ContainerFeatures {
+        nesting?: boolean;
+    }
+
     export interface ContainerInitialization {
         dns?: outputs.CT.ContainerInitializationDns;
         hostname?: string;

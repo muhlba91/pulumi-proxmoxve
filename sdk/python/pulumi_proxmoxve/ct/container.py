@@ -22,6 +22,7 @@ class ContainerArgs:
                  cpu: Optional[pulumi.Input['ContainerCpuArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk: Optional[pulumi.Input['ContainerDiskArgs']] = None,
+                 features: Optional[pulumi.Input['ContainerFeaturesArgs']] = None,
                  initialization: Optional[pulumi.Input['ContainerInitializationArgs']] = None,
                  memory: Optional[pulumi.Input['ContainerMemoryArgs']] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerNetworkInterfaceArgs']]]] = None,
@@ -40,6 +41,7 @@ class ContainerArgs:
         :param pulumi.Input['ContainerCpuArgs'] cpu: The CPU allocation
         :param pulumi.Input[str] description: The description
         :param pulumi.Input['ContainerDiskArgs'] disk: The disks
+        :param pulumi.Input['ContainerFeaturesArgs'] features: Features
         :param pulumi.Input['ContainerInitializationArgs'] initialization: The initialization configuration
         :param pulumi.Input['ContainerMemoryArgs'] memory: The memory allocation
         :param pulumi.Input[Sequence[pulumi.Input['ContainerNetworkInterfaceArgs']]] network_interfaces: The network interfaces
@@ -62,6 +64,8 @@ class ContainerArgs:
             pulumi.set(__self__, "description", description)
         if disk is not None:
             pulumi.set(__self__, "disk", disk)
+        if features is not None:
+            pulumi.set(__self__, "features", features)
         if initialization is not None:
             pulumi.set(__self__, "initialization", initialization)
         if memory is not None:
@@ -154,6 +158,18 @@ class ContainerArgs:
     @disk.setter
     def disk(self, value: Optional[pulumi.Input['ContainerDiskArgs']]):
         pulumi.set(self, "disk", value)
+
+    @property
+    @pulumi.getter
+    def features(self) -> Optional[pulumi.Input['ContainerFeaturesArgs']]:
+        """
+        Features
+        """
+        return pulumi.get(self, "features")
+
+    @features.setter
+    def features(self, value: Optional[pulumi.Input['ContainerFeaturesArgs']]):
+        pulumi.set(self, "features", value)
 
     @property
     @pulumi.getter
@@ -284,6 +300,7 @@ class _ContainerState:
                  cpu: Optional[pulumi.Input['ContainerCpuArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk: Optional[pulumi.Input['ContainerDiskArgs']] = None,
+                 features: Optional[pulumi.Input['ContainerFeaturesArgs']] = None,
                  initialization: Optional[pulumi.Input['ContainerInitializationArgs']] = None,
                  memory: Optional[pulumi.Input['ContainerMemoryArgs']] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerNetworkInterfaceArgs']]]] = None,
@@ -302,6 +319,7 @@ class _ContainerState:
         :param pulumi.Input['ContainerCpuArgs'] cpu: The CPU allocation
         :param pulumi.Input[str] description: The description
         :param pulumi.Input['ContainerDiskArgs'] disk: The disks
+        :param pulumi.Input['ContainerFeaturesArgs'] features: Features
         :param pulumi.Input['ContainerInitializationArgs'] initialization: The initialization configuration
         :param pulumi.Input['ContainerMemoryArgs'] memory: The memory allocation
         :param pulumi.Input[Sequence[pulumi.Input['ContainerNetworkInterfaceArgs']]] network_interfaces: The network interfaces
@@ -324,6 +342,8 @@ class _ContainerState:
             pulumi.set(__self__, "description", description)
         if disk is not None:
             pulumi.set(__self__, "disk", disk)
+        if features is not None:
+            pulumi.set(__self__, "features", features)
         if initialization is not None:
             pulumi.set(__self__, "initialization", initialization)
         if memory is not None:
@@ -406,6 +426,18 @@ class _ContainerState:
     @disk.setter
     def disk(self, value: Optional[pulumi.Input['ContainerDiskArgs']]):
         pulumi.set(self, "disk", value)
+
+    @property
+    @pulumi.getter
+    def features(self) -> Optional[pulumi.Input['ContainerFeaturesArgs']]:
+        """
+        Features
+        """
+        return pulumi.get(self, "features")
+
+    @features.setter
+    def features(self, value: Optional[pulumi.Input['ContainerFeaturesArgs']]):
+        pulumi.set(self, "features", value)
 
     @property
     @pulumi.getter
@@ -550,6 +582,7 @@ class Container(pulumi.CustomResource):
                  cpu: Optional[pulumi.Input[pulumi.InputType['ContainerCpuArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk: Optional[pulumi.Input[pulumi.InputType['ContainerDiskArgs']]] = None,
+                 features: Optional[pulumi.Input[pulumi.InputType['ContainerFeaturesArgs']]] = None,
                  initialization: Optional[pulumi.Input[pulumi.InputType['ContainerInitializationArgs']]] = None,
                  memory: Optional[pulumi.Input[pulumi.InputType['ContainerMemoryArgs']]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerNetworkInterfaceArgs']]]]] = None,
@@ -571,6 +604,7 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ContainerCpuArgs']] cpu: The CPU allocation
         :param pulumi.Input[str] description: The description
         :param pulumi.Input[pulumi.InputType['ContainerDiskArgs']] disk: The disks
+        :param pulumi.Input[pulumi.InputType['ContainerFeaturesArgs']] features: Features
         :param pulumi.Input[pulumi.InputType['ContainerInitializationArgs']] initialization: The initialization configuration
         :param pulumi.Input[pulumi.InputType['ContainerMemoryArgs']] memory: The memory allocation
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerNetworkInterfaceArgs']]]] network_interfaces: The network interfaces
@@ -611,6 +645,7 @@ class Container(pulumi.CustomResource):
                  cpu: Optional[pulumi.Input[pulumi.InputType['ContainerCpuArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk: Optional[pulumi.Input[pulumi.InputType['ContainerDiskArgs']]] = None,
+                 features: Optional[pulumi.Input[pulumi.InputType['ContainerFeaturesArgs']]] = None,
                  initialization: Optional[pulumi.Input[pulumi.InputType['ContainerInitializationArgs']]] = None,
                  memory: Optional[pulumi.Input[pulumi.InputType['ContainerMemoryArgs']]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerNetworkInterfaceArgs']]]]] = None,
@@ -636,6 +671,7 @@ class Container(pulumi.CustomResource):
             __props__.__dict__["cpu"] = cpu
             __props__.__dict__["description"] = description
             __props__.__dict__["disk"] = disk
+            __props__.__dict__["features"] = features
             __props__.__dict__["initialization"] = initialization
             __props__.__dict__["memory"] = memory
             __props__.__dict__["network_interfaces"] = network_interfaces
@@ -664,6 +700,7 @@ class Container(pulumi.CustomResource):
             cpu: Optional[pulumi.Input[pulumi.InputType['ContainerCpuArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disk: Optional[pulumi.Input[pulumi.InputType['ContainerDiskArgs']]] = None,
+            features: Optional[pulumi.Input[pulumi.InputType['ContainerFeaturesArgs']]] = None,
             initialization: Optional[pulumi.Input[pulumi.InputType['ContainerInitializationArgs']]] = None,
             memory: Optional[pulumi.Input[pulumi.InputType['ContainerMemoryArgs']]] = None,
             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerNetworkInterfaceArgs']]]]] = None,
@@ -687,6 +724,7 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ContainerCpuArgs']] cpu: The CPU allocation
         :param pulumi.Input[str] description: The description
         :param pulumi.Input[pulumi.InputType['ContainerDiskArgs']] disk: The disks
+        :param pulumi.Input[pulumi.InputType['ContainerFeaturesArgs']] features: Features
         :param pulumi.Input[pulumi.InputType['ContainerInitializationArgs']] initialization: The initialization configuration
         :param pulumi.Input[pulumi.InputType['ContainerMemoryArgs']] memory: The memory allocation
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerNetworkInterfaceArgs']]]] network_interfaces: The network interfaces
@@ -708,6 +746,7 @@ class Container(pulumi.CustomResource):
         __props__.__dict__["cpu"] = cpu
         __props__.__dict__["description"] = description
         __props__.__dict__["disk"] = disk
+        __props__.__dict__["features"] = features
         __props__.__dict__["initialization"] = initialization
         __props__.__dict__["memory"] = memory
         __props__.__dict__["network_interfaces"] = network_interfaces
@@ -760,6 +799,14 @@ class Container(pulumi.CustomResource):
         The disks
         """
         return pulumi.get(self, "disk")
+
+    @property
+    @pulumi.getter
+    def features(self) -> pulumi.Output[Optional['outputs.ContainerFeatures']]:
+        """
+        Features
+        """
+        return pulumi.get(self, "features")
 
     @property
     @pulumi.getter

@@ -14,6 +14,7 @@ __all__ = [
     'ContainerConsoleArgs',
     'ContainerCpuArgs',
     'ContainerDiskArgs',
+    'ContainerFeaturesArgs',
     'ContainerInitializationArgs',
     'ContainerInitializationDnsArgs',
     'ContainerInitializationIpConfigArgs',
@@ -174,6 +175,23 @@ class ContainerDiskArgs:
     @size.setter
     def size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "size", value)
+
+
+@pulumi.input_type
+class ContainerFeaturesArgs:
+    def __init__(__self__, *,
+                 nesting: Optional[pulumi.Input[bool]] = None):
+        if nesting is not None:
+            pulumi.set(__self__, "nesting", nesting)
+
+    @property
+    @pulumi.getter
+    def nesting(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "nesting")
+
+    @nesting.setter
+    def nesting(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "nesting", value)
 
 
 @pulumi.input_type
