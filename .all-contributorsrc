@@ -1,0 +1,46 @@
+{
+  "projectName": "pulumi-proxmoxve",
+  "projectOwner": "muhlba91",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "muhlba91",
+      "name": "Daniel Mühlbachler-Pietrzykowski",
+      "avatar_url": "https://avatars.githubusercontent.com/u/653739?v=4",
+      "profile": "https://muehlbachler.io/",
+      "contributions": [
+        "maintenance",
+        "code",
+        "doc"
+      ]
+    },
+    {
+      "login": "NCMartins",
+      "name": "Nelson Costa Martins",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11583533?v=4",
+      "profile": "https://github.com/NCMartins",
+      "contributions": [
+        "example"
+      ]
+    },
+    {
+      "login": "guineveresaenger",
+      "name": "Guinevere Saenger",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13116240?v=4",
+      "profile": "https://github.com/guineveresaenger",
+      "contributions": [
+        "doc"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "linkToUsage": true,
+  "skipCi": true,
+  "commitConvention": "angular"
+}
