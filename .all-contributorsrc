@@ -40,7 +40,7 @@
     }
   ],
   "contributorsPerLine": 7,
-  "linkToUsage": true,
+  "linkToUsage": false,
   "skipCi": true,
   "commitConvention": "angular"
 }
