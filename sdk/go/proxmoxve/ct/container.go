@@ -24,6 +24,8 @@ type Container struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The disks
 	Disk ContainerDiskPtrOutput `pulumi:"disk"`
+	// Features
+	Features ContainerFeaturesPtrOutput `pulumi:"features"`
 	// The initialization configuration
 	Initialization ContainerInitializationPtrOutput `pulumi:"initialization"`
 	// The memory allocation
@@ -91,6 +93,8 @@ type containerState struct {
 	Description *string `pulumi:"description"`
 	// The disks
 	Disk *ContainerDisk `pulumi:"disk"`
+	// Features
+	Features *ContainerFeatures `pulumi:"features"`
 	// The initialization configuration
 	Initialization *ContainerInitialization `pulumi:"initialization"`
 	// The memory allocation
@@ -126,6 +130,8 @@ type ContainerState struct {
 	Description pulumi.StringPtrInput
 	// The disks
 	Disk ContainerDiskPtrInput
+	// Features
+	Features ContainerFeaturesPtrInput
 	// The initialization configuration
 	Initialization ContainerInitializationPtrInput
 	// The memory allocation
@@ -165,6 +171,8 @@ type containerArgs struct {
 	Description *string `pulumi:"description"`
 	// The disks
 	Disk *ContainerDisk `pulumi:"disk"`
+	// Features
+	Features *ContainerFeatures `pulumi:"features"`
 	// The initialization configuration
 	Initialization *ContainerInitialization `pulumi:"initialization"`
 	// The memory allocation
@@ -201,6 +209,8 @@ type ContainerArgs struct {
 	Description pulumi.StringPtrInput
 	// The disks
 	Disk ContainerDiskPtrInput
+	// Features
+	Features ContainerFeaturesPtrInput
 	// The initialization configuration
 	Initialization ContainerInitializationPtrInput
 	// The memory allocation
@@ -335,6 +345,11 @@ func (o ContainerOutput) Description() pulumi.StringPtrOutput {
 // The disks
 func (o ContainerOutput) Disk() ContainerDiskPtrOutput {
 	return o.ApplyT(func(v *Container) ContainerDiskPtrOutput { return v.Disk }).(ContainerDiskPtrOutput)
+}
+
+// Features
+func (o ContainerOutput) Features() ContainerFeaturesPtrOutput {
+	return o.ApplyT(func(v *Container) ContainerFeaturesPtrOutput { return v.Features }).(ContainerFeaturesPtrOutput)
 }
 
 // The initialization configuration

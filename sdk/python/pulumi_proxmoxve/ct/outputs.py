@@ -15,6 +15,7 @@ __all__ = [
     'ContainerConsole',
     'ContainerCpu',
     'ContainerDisk',
+    'ContainerFeatures',
     'ContainerInitialization',
     'ContainerInitializationDns',
     'ContainerInitializationIpConfig',
@@ -186,6 +187,19 @@ class ContainerDisk(dict):
     @pulumi.getter
     def size(self) -> Optional[int]:
         return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class ContainerFeatures(dict):
+    def __init__(__self__, *,
+                 nesting: Optional[bool] = None):
+        if nesting is not None:
+            pulumi.set(__self__, "nesting", nesting)
+
+    @property
+    @pulumi.getter
+    def nesting(self) -> Optional[bool]:
+        return pulumi.get(self, "nesting")
 
 
 @pulumi.output_type

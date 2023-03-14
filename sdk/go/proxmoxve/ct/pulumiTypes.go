@@ -647,6 +647,139 @@ func (o ContainerDiskPtrOutput) Size() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type ContainerFeatures struct {
+	Nesting *bool `pulumi:"nesting"`
+}
+
+// ContainerFeaturesInput is an input type that accepts ContainerFeaturesArgs and ContainerFeaturesOutput values.
+// You can construct a concrete instance of `ContainerFeaturesInput` via:
+//
+//	ContainerFeaturesArgs{...}
+type ContainerFeaturesInput interface {
+	pulumi.Input
+
+	ToContainerFeaturesOutput() ContainerFeaturesOutput
+	ToContainerFeaturesOutputWithContext(context.Context) ContainerFeaturesOutput
+}
+
+type ContainerFeaturesArgs struct {
+	Nesting pulumi.BoolPtrInput `pulumi:"nesting"`
+}
+
+func (ContainerFeaturesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerFeatures)(nil)).Elem()
+}
+
+func (i ContainerFeaturesArgs) ToContainerFeaturesOutput() ContainerFeaturesOutput {
+	return i.ToContainerFeaturesOutputWithContext(context.Background())
+}
+
+func (i ContainerFeaturesArgs) ToContainerFeaturesOutputWithContext(ctx context.Context) ContainerFeaturesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerFeaturesOutput)
+}
+
+func (i ContainerFeaturesArgs) ToContainerFeaturesPtrOutput() ContainerFeaturesPtrOutput {
+	return i.ToContainerFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (i ContainerFeaturesArgs) ToContainerFeaturesPtrOutputWithContext(ctx context.Context) ContainerFeaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerFeaturesOutput).ToContainerFeaturesPtrOutputWithContext(ctx)
+}
+
+// ContainerFeaturesPtrInput is an input type that accepts ContainerFeaturesArgs, ContainerFeaturesPtr and ContainerFeaturesPtrOutput values.
+// You can construct a concrete instance of `ContainerFeaturesPtrInput` via:
+//
+//	        ContainerFeaturesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ContainerFeaturesPtrInput interface {
+	pulumi.Input
+
+	ToContainerFeaturesPtrOutput() ContainerFeaturesPtrOutput
+	ToContainerFeaturesPtrOutputWithContext(context.Context) ContainerFeaturesPtrOutput
+}
+
+type containerFeaturesPtrType ContainerFeaturesArgs
+
+func ContainerFeaturesPtr(v *ContainerFeaturesArgs) ContainerFeaturesPtrInput {
+	return (*containerFeaturesPtrType)(v)
+}
+
+func (*containerFeaturesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerFeatures)(nil)).Elem()
+}
+
+func (i *containerFeaturesPtrType) ToContainerFeaturesPtrOutput() ContainerFeaturesPtrOutput {
+	return i.ToContainerFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (i *containerFeaturesPtrType) ToContainerFeaturesPtrOutputWithContext(ctx context.Context) ContainerFeaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerFeaturesPtrOutput)
+}
+
+type ContainerFeaturesOutput struct{ *pulumi.OutputState }
+
+func (ContainerFeaturesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerFeatures)(nil)).Elem()
+}
+
+func (o ContainerFeaturesOutput) ToContainerFeaturesOutput() ContainerFeaturesOutput {
+	return o
+}
+
+func (o ContainerFeaturesOutput) ToContainerFeaturesOutputWithContext(ctx context.Context) ContainerFeaturesOutput {
+	return o
+}
+
+func (o ContainerFeaturesOutput) ToContainerFeaturesPtrOutput() ContainerFeaturesPtrOutput {
+	return o.ToContainerFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (o ContainerFeaturesOutput) ToContainerFeaturesPtrOutputWithContext(ctx context.Context) ContainerFeaturesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerFeatures) *ContainerFeatures {
+		return &v
+	}).(ContainerFeaturesPtrOutput)
+}
+
+func (o ContainerFeaturesOutput) Nesting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerFeatures) *bool { return v.Nesting }).(pulumi.BoolPtrOutput)
+}
+
+type ContainerFeaturesPtrOutput struct{ *pulumi.OutputState }
+
+func (ContainerFeaturesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerFeatures)(nil)).Elem()
+}
+
+func (o ContainerFeaturesPtrOutput) ToContainerFeaturesPtrOutput() ContainerFeaturesPtrOutput {
+	return o
+}
+
+func (o ContainerFeaturesPtrOutput) ToContainerFeaturesPtrOutputWithContext(ctx context.Context) ContainerFeaturesPtrOutput {
+	return o
+}
+
+func (o ContainerFeaturesPtrOutput) Elem() ContainerFeaturesOutput {
+	return o.ApplyT(func(v *ContainerFeatures) ContainerFeatures {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerFeatures
+		return ret
+	}).(ContainerFeaturesOutput)
+}
+
+func (o ContainerFeaturesPtrOutput) Nesting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ContainerFeatures) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Nesting
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ContainerInitialization struct {
 	Dns         *ContainerInitializationDns         `pulumi:"dns"`
 	Hostname    *string                             `pulumi:"hostname"`
@@ -1952,6 +2085,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerCpuPtrInput)(nil)).Elem(), ContainerCpuArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerDiskInput)(nil)).Elem(), ContainerDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerDiskPtrInput)(nil)).Elem(), ContainerDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerFeaturesInput)(nil)).Elem(), ContainerFeaturesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerFeaturesPtrInput)(nil)).Elem(), ContainerFeaturesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerInitializationInput)(nil)).Elem(), ContainerInitializationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerInitializationPtrInput)(nil)).Elem(), ContainerInitializationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerInitializationDnsInput)(nil)).Elem(), ContainerInitializationDnsArgs{})
@@ -1978,6 +2113,8 @@ func init() {
 	pulumi.RegisterOutputType(ContainerCpuPtrOutput{})
 	pulumi.RegisterOutputType(ContainerDiskOutput{})
 	pulumi.RegisterOutputType(ContainerDiskPtrOutput{})
+	pulumi.RegisterOutputType(ContainerFeaturesOutput{})
+	pulumi.RegisterOutputType(ContainerFeaturesPtrOutput{})
 	pulumi.RegisterOutputType(ContainerInitializationOutput{})
 	pulumi.RegisterOutputType(ContainerInitializationPtrOutput{})
 	pulumi.RegisterOutputType(ContainerInitializationDnsOutput{})

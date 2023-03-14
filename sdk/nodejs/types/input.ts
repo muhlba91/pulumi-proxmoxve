@@ -41,6 +41,10 @@ export namespace CT {
         size?: pulumi.Input<number>;
     }
 
+    export interface ContainerFeatures {
+        nesting?: pulumi.Input<boolean>;
+    }
+
     export interface ContainerInitialization {
         dns?: pulumi.Input<inputs.CT.ContainerInitializationDns>;
         hostname?: pulumi.Input<string>;

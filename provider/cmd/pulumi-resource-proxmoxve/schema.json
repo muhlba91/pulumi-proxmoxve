@@ -178,6 +178,20 @@
             },
             "type": "object"
         },
+        "proxmoxve:CT/ContainerFeatures:ContainerFeatures": {
+            "properties": {
+                "nesting": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object"
+        },
         "proxmoxve:CT/ContainerInitialization:ContainerInitialization": {
             "properties": {
                 "dns": {
@@ -1715,6 +1729,10 @@
                     "$ref": "#/types/proxmoxve:CT/ContainerDisk:ContainerDisk",
                     "description": "The disks\n"
                 },
+                "features": {
+                    "$ref": "#/types/proxmoxve:CT/ContainerFeatures:ContainerFeatures",
+                    "description": "Features\n"
+                },
                 "initialization": {
                     "$ref": "#/types/proxmoxve:CT/ContainerInitialization:ContainerInitialization",
                     "description": "The initialization configuration\n"
@@ -1789,6 +1807,11 @@
                 "disk": {
                     "$ref": "#/types/proxmoxve:CT/ContainerDisk:ContainerDisk",
                     "description": "The disks\n",
+                    "willReplaceOnChanges": true
+                },
+                "features": {
+                    "$ref": "#/types/proxmoxve:CT/ContainerFeatures:ContainerFeatures",
+                    "description": "Features\n",
                     "willReplaceOnChanges": true
                 },
                 "initialization": {
@@ -1873,6 +1896,11 @@
                     "disk": {
                         "$ref": "#/types/proxmoxve:CT/ContainerDisk:ContainerDisk",
                         "description": "The disks\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "features": {
+                        "$ref": "#/types/proxmoxve:CT/ContainerFeatures:ContainerFeatures",
+                        "description": "Features\n",
                         "willReplaceOnChanges": true
                     },
                     "initialization": {

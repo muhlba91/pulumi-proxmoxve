@@ -43,6 +43,12 @@ namespace Pulumi.ProxmoxVE.CT
         public Output<Outputs.ContainerDisk?> Disk { get; private set; } = null!;
 
         /// <summary>
+        /// Features
+        /// </summary>
+        [Output("features")]
+        public Output<Outputs.ContainerFeatures?> Features { get; private set; } = null!;
+
+        /// <summary>
         /// The initialization configuration
         /// </summary>
         [Output("initialization")]
@@ -186,6 +192,12 @@ namespace Pulumi.ProxmoxVE.CT
         public Input<Inputs.ContainerDiskArgs>? Disk { get; set; }
 
         /// <summary>
+        /// Features
+        /// </summary>
+        [Input("features")]
+        public Input<Inputs.ContainerFeaturesArgs>? Features { get; set; }
+
+        /// <summary>
         /// The initialization configuration
         /// </summary>
         [Input("initialization")]
@@ -300,6 +312,12 @@ namespace Pulumi.ProxmoxVE.CT
         /// </summary>
         [Input("disk")]
         public Input<Inputs.ContainerDiskGetArgs>? Disk { get; set; }
+
+        /// <summary>
+        /// Features
+        /// </summary>
+        [Input("features")]
+        public Input<Inputs.ContainerFeaturesGetArgs>? Features { get; set; }
 
         /// <summary>
         /// The initialization configuration
