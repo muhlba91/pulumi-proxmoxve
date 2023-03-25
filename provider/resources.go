@@ -43,7 +43,7 @@ const (
 // It should validate that the provider can be configured, and provide actionable errors in the case
 // it cannot be. Configuration variables can be read from `vars` using the `stringValue` function -
 // for example `stringValue(vars, "accessKey")`.
-func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) error {
+func preConfigureCallback(_ resource.PropertyMap, _ shim.ResourceConfig) error {
 	return nil
 }
 

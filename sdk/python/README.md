@@ -1,7 +1,7 @@
 # Proxmox VE Resource Provider
 
 [![](https://img.shields.io/github/license/muhlba91/pulumi-proxmoxve?style=for-the-badge)](LICENSE)
-[![](https://img.shields.io/github/workflow/status/muhlba91/pulumi-proxmoxve/Release?style=for-the-badge)](https://github.com/muhlba91/pulumi-proxmoxve/actions)
+[![](https://img.shields.io/github/actions/workflow/status/muhlba91/pulumi-proxmoxve/release.yml?style=for-the-badge)](https://github.com/muhlba91/pulumi-proxmoxve/actions)
 [![](https://img.shields.io/github/release-date/muhlba91/pulumi-proxmoxve?style=for-the-badge)](https://github.com/muhlba91/pulumi-proxmoxve/releases)
 [![](https://img.shields.io/pypi/v/pulumi-proxmoxve?style=for-the-badge)](https://pypi.org/project/pulumi-proxmoxve/)
 [![](https://img.shields.io/pypi/dm/pulumi-proxmoxve?style=for-the-badge)](https://pypi.org/project/pulumi-proxmoxve/)
@@ -9,6 +9,7 @@
 [![](https://img.shields.io/nuget/dt/Pulumi.ProxmoxVE?style=for-the-badge)](https://www.nuget.org/packages/Pulumi.ProxmoxVE/)
 [![](https://img.shields.io/npm/v/@muhlba91/pulumi-proxmoxve?style=for-the-badge)](https://www.npmjs.com/package/@muhlba91/pulumi-proxmoxve)
 [![](https://img.shields.io/npm/dm/@muhlba91/pulumi-proxmoxve?style=for-the-badge)](https://www.npmjs.com/package/@muhlba91/pulumi-proxmoxve)
+[![](https://img.shields.io/github/all-contributors/muhlba91/pulumi-proxmoxve?color=ee8449&style=for-the-badge)](#contributors)
 <a href="https://www.buymeacoffee.com/muhlba91" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="28" width="150"></a>
 
 The Proxmox VE Resource Provider lets you manage [Proxmox VE](http://proxmox.com) resources.
@@ -97,3 +98,27 @@ For detailed reference documentation, please visit the upstream Terraform provid
 
 Some input parameters are required as per the [Proxmox API Viewer](https://pve.proxmox.com/pve-docs/api-viewer/index.html).
 Please refer to this documentation for more information regarding required parameters for your Proxmox VE version.
+
+## Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://muehlbachler.io/"><img src="https://avatars.githubusercontent.com/u/653739?v=4?s=100" width="100px;" alt="Daniel Mühlbachler-Pietrzykowski"/><br /><sub><b>Daniel Mühlbachler-Pietrzykowski</b></sub></a><br /><a href="#maintenance-muhlba91" title="Maintenance">🚧</a> <a href="https://github.com/muhlba91/pulumi-proxmoxve/commits?author=muhlba91" title="Code">💻</a> <a href="https://github.com/muhlba91/pulumi-proxmoxve/commits?author=muhlba91" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/NCMartins"><img src="https://avatars.githubusercontent.com/u/11583533?v=4?s=100" width="100px;" alt="Nelson Costa Martins"/><br /><sub><b>Nelson Costa Martins</b></sub></a><br /><a href="#example-NCMartins" title="Examples">💡</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/guineveresaenger"><img src="https://avatars.githubusercontent.com/u/13116240?v=4?s=100" width="100px;" alt="Guinevere Saenger"/><br /><sub><b>Guinevere Saenger</b></sub></a><br /><a href="https://github.com/muhlba91/pulumi-proxmoxve/commits?author=guineveresaenger" title="Documentation">📖</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
