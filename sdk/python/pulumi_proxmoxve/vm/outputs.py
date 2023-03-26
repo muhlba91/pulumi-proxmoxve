@@ -30,6 +30,7 @@ __all__ = [
     'VirtualMachineOperatingSystem',
     'VirtualMachineSerialDevice',
     'VirtualMachineVga',
+    'GetVirtualMachinesVmResult',
 ]
 
 @pulumi.output_type
@@ -864,5 +865,38 @@ class VirtualMachineVga(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetVirtualMachinesVmResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 node_name: str,
+                 tags: Sequence[str],
+                 vm_id: int):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "node_name", node_name)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "vm_id", vm_id)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nodeName")
+    def node_name(self) -> str:
+        return pulumi.get(self, "node_name")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Sequence[str]:
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="vmId")
+    def vm_id(self) -> int:
+        return pulumi.get(self, "vm_id")
 
 

@@ -167,6 +167,13 @@ export namespace Storage {
 }
 
 export namespace VM {
+    export interface GetVirtualMachinesVm {
+        name: string;
+        nodeName: string;
+        tags: string[];
+        vmId: number;
+    }
+
     export interface VirtualMachineAgent {
         enabled?: boolean;
         timeout?: string;
@@ -206,7 +213,7 @@ export namespace VM {
     export interface VirtualMachineDisk {
         datastoreId?: string;
         discard?: string;
-        fileFormat?: string;
+        fileFormat: string;
         fileId?: string;
         interface: string;
         iothread?: boolean;

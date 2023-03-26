@@ -5,6 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { GetVirtualMachineArgs, GetVirtualMachineResult, GetVirtualMachineOutputArgs } from "./getVirtualMachine";
+export const getVirtualMachine: typeof import("./getVirtualMachine").getVirtualMachine = null as any;
+export const getVirtualMachineOutput: typeof import("./getVirtualMachine").getVirtualMachineOutput = null as any;
+utilities.lazyLoad(exports, ["getVirtualMachine","getVirtualMachineOutput"], () => require("./getVirtualMachine"));
+
+export { GetVirtualMachinesArgs, GetVirtualMachinesResult, GetVirtualMachinesOutputArgs } from "./getVirtualMachines";
+export const getVirtualMachines: typeof import("./getVirtualMachines").getVirtualMachines = null as any;
+export const getVirtualMachinesOutput: typeof import("./getVirtualMachines").getVirtualMachinesOutput = null as any;
+utilities.lazyLoad(exports, ["getVirtualMachines","getVirtualMachinesOutput"], () => require("./getVirtualMachines"));
+
 export { VirtualMachineArgs, VirtualMachineState } from "./virtualMachine";
 export type VirtualMachine = import("./virtualMachine").VirtualMachine;
 export const VirtualMachine: typeof import("./virtualMachine").VirtualMachine = null as any;

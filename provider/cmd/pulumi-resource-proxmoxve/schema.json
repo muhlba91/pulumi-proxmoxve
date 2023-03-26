@@ -1119,7 +1119,15 @@
             "type": "object",
             "required": [
                 "interface"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "fileFormat",
+                        "interface"
+                    ]
+                }
+            }
         },
         "proxmoxve:VM/VirtualMachineDiskSpeed:VirtualMachineDiskSpeed": {
             "properties": {
@@ -1565,6 +1573,57 @@
                 }
             },
             "type": "object"
+        },
+        "proxmoxve:VM/getVirtualMachinesVm:getVirtualMachinesVm": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nodeName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "vmId": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "nodeName",
+                "tags",
+                "vmId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "proxmoxve:config/virtualEnvironment:virtualEnvironment": {
             "properties": {
@@ -4152,6 +4211,102 @@
                     "spaceTotals",
                     "spaceUseds",
                     "types",
+                    "id"
+                ]
+            }
+        },
+        "proxmoxve:VM/getVirtualMachine:getVirtualMachine": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getVirtualMachine.\n",
+                "properties": {
+                    "nodeName": {
+                        "type": "string"
+                    },
+                    "vmId": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "nodeName",
+                    "vmId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getVirtualMachine.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "nodeName": {
+                        "type": "string"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "vmId": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "nodeName",
+                    "tags",
+                    "vmId",
+                    "id"
+                ]
+            }
+        },
+        "proxmoxve:VM/getVirtualMachines:getVirtualMachines": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getVirtualMachines.\n",
+                "properties": {
+                    "nodeName": {
+                        "type": "string"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getVirtualMachines.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "nodeName": {
+                        "type": "string"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "vms": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/proxmoxve:VM/getVirtualMachinesVm:getVirtualMachinesVm"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "vms",
                     "id"
                 ]
             }

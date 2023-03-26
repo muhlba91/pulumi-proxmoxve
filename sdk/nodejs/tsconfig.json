@@ -53,6 +53,8 @@
         "types/input.ts",
         "types/output.ts",
         "utilities.ts",
+        "vm/getVirtualMachine.ts",
+        "vm/getVirtualMachines.ts",
         "vm/index.ts",
         "vm/virtualMachine.ts"
     ]
