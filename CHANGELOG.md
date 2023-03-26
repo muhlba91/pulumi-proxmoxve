@@ -1,6 +1,19 @@
 # Changelog
 
 
+## [3.0.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v2.5.1...v3.0.0) (2023-03-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** upgrade to go 1.19
+* add datasource for vm and vms
+
+### Features
+
+* **deps:** upgrade to go 1.19 ([b543b05](https://github.com/muhlba91/pulumi-proxmoxve/commit/b543b05a7c885db7d3e6619755aa46b9235de6ae))
+* upgrade to upstream 0.15.0 ([f572f48](https://github.com/muhlba91/pulumi-proxmoxve/commit/f572f4850b88726ba0f72871ae3695aafe3659ef))
+
 ### [2.5.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v2.5.0...v2.5.1) (2023-03-25)
 
 
