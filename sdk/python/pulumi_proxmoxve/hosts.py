@@ -16,27 +16,27 @@ __all__ = ['HostsArgs', 'Hosts']
 @pulumi.input_type
 class HostsArgs:
     def __init__(__self__, *,
-                 entries: pulumi.Input[Sequence[pulumi.Input['HostsEntryArgs']]],
+                 entry: pulumi.Input[Sequence[pulumi.Input['HostsEntryArgs']]],
                  node_name: pulumi.Input[str]):
         """
         The set of arguments for constructing a Hosts resource.
-        :param pulumi.Input[Sequence[pulumi.Input['HostsEntryArgs']]] entries: The host entries
+        :param pulumi.Input[Sequence[pulumi.Input['HostsEntryArgs']]] entry: The host entries
         :param pulumi.Input[str] node_name: The node name
         """
-        pulumi.set(__self__, "entries", entries)
+        pulumi.set(__self__, "entry", entry)
         pulumi.set(__self__, "node_name", node_name)
 
     @property
     @pulumi.getter
-    def entries(self) -> pulumi.Input[Sequence[pulumi.Input['HostsEntryArgs']]]:
+    def entry(self) -> pulumi.Input[Sequence[pulumi.Input['HostsEntryArgs']]]:
         """
         The host entries
         """
-        return pulumi.get(self, "entries")
+        return pulumi.get(self, "entry")
 
-    @entries.setter
-    def entries(self, value: pulumi.Input[Sequence[pulumi.Input['HostsEntryArgs']]]):
-        pulumi.set(self, "entries", value)
+    @entry.setter
+    def entry(self, value: pulumi.Input[Sequence[pulumi.Input['HostsEntryArgs']]]):
+        pulumi.set(self, "entry", value)
 
     @property
     @pulumi.getter(name="nodeName")
@@ -57,6 +57,7 @@ class _HostsState:
                  addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  digest: Optional[pulumi.Input[str]] = None,
                  entries: Optional[pulumi.Input[Sequence[pulumi.Input['HostsEntryArgs']]]] = None,
+                 entry: Optional[pulumi.Input[Sequence[pulumi.Input['HostsEntryArgs']]]] = None,
                  hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]]] = None,
                  node_name: Optional[pulumi.Input[str]] = None):
         """
@@ -64,6 +65,7 @@ class _HostsState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: The addresses
         :param pulumi.Input[str] digest: The SHA1 digest
         :param pulumi.Input[Sequence[pulumi.Input['HostsEntryArgs']]] entries: The host entries
+        :param pulumi.Input[Sequence[pulumi.Input['HostsEntryArgs']]] entry: The host entries
         :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]] hostnames: The hostnames
         :param pulumi.Input[str] node_name: The node name
         """
@@ -73,6 +75,8 @@ class _HostsState:
             pulumi.set(__self__, "digest", digest)
         if entries is not None:
             pulumi.set(__self__, "entries", entries)
+        if entry is not None:
+            pulumi.set(__self__, "entry", entry)
         if hostnames is not None:
             pulumi.set(__self__, "hostnames", hostnames)
         if node_name is not None:
@@ -116,6 +120,18 @@ class _HostsState:
 
     @property
     @pulumi.getter
+    def entry(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostsEntryArgs']]]]:
+        """
+        The host entries
+        """
+        return pulumi.get(self, "entry")
+
+    @entry.setter
+    def entry(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostsEntryArgs']]]]):
+        pulumi.set(self, "entry", value)
+
+    @property
+    @pulumi.getter
     def hostnames(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]]]:
         """
         The hostnames
@@ -144,14 +160,14 @@ class Hosts(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 entries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostsEntryArgs']]]]] = None,
+                 entry: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostsEntryArgs']]]]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Create a Hosts resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostsEntryArgs']]]] entries: The host entries
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostsEntryArgs']]]] entry: The host entries
         :param pulumi.Input[str] node_name: The node name
         """
         ...
@@ -177,7 +193,7 @@ class Hosts(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 entries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostsEntryArgs']]]]] = None,
+                 entry: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostsEntryArgs']]]]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -188,14 +204,15 @@ class Hosts(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = HostsArgs.__new__(HostsArgs)
 
-            if entries is None and not opts.urn:
-                raise TypeError("Missing required property 'entries'")
-            __props__.__dict__["entries"] = entries
+            if entry is None and not opts.urn:
+                raise TypeError("Missing required property 'entry'")
+            __props__.__dict__["entry"] = entry
             if node_name is None and not opts.urn:
                 raise TypeError("Missing required property 'node_name'")
             __props__.__dict__["node_name"] = node_name
             __props__.__dict__["addresses"] = None
             __props__.__dict__["digest"] = None
+            __props__.__dict__["entries"] = None
             __props__.__dict__["hostnames"] = None
         super(Hosts, __self__).__init__(
             'proxmoxve:index/hosts:Hosts',
@@ -210,6 +227,7 @@ class Hosts(pulumi.CustomResource):
             addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             digest: Optional[pulumi.Input[str]] = None,
             entries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostsEntryArgs']]]]] = None,
+            entry: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostsEntryArgs']]]]] = None,
             hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]]] = None,
             node_name: Optional[pulumi.Input[str]] = None) -> 'Hosts':
         """
@@ -222,6 +240,7 @@ class Hosts(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: The addresses
         :param pulumi.Input[str] digest: The SHA1 digest
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostsEntryArgs']]]] entries: The host entries
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostsEntryArgs']]]] entry: The host entries
         :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]] hostnames: The hostnames
         :param pulumi.Input[str] node_name: The node name
         """
@@ -232,6 +251,7 @@ class Hosts(pulumi.CustomResource):
         __props__.__dict__["addresses"] = addresses
         __props__.__dict__["digest"] = digest
         __props__.__dict__["entries"] = entries
+        __props__.__dict__["entry"] = entry
         __props__.__dict__["hostnames"] = hostnames
         __props__.__dict__["node_name"] = node_name
         return Hosts(resource_name, opts=opts, __props__=__props__)
@@ -259,6 +279,14 @@ class Hosts(pulumi.CustomResource):
         The host entries
         """
         return pulumi.get(self, "entries")
+
+    @property
+    @pulumi.getter
+    def entry(self) -> pulumi.Output[Sequence['outputs.HostsEntry']]:
+        """
+        The host entries
+        """
+        return pulumi.get(self, "entry")
 
     @property
     @pulumi.getter
