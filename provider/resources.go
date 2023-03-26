@@ -92,6 +92,9 @@ func Provider() tfbridge.ProviderInfo {
 			"proxmox_virtual_environment_cluster_alias":   {Tok: tfbridge.MakeDataSource(mainPkg, clusterMod, "getClusterAlias")},
 			"proxmox_virtual_environment_cluster_aliases": {Tok: tfbridge.MakeDataSource(mainPkg, clusterMod, "getClusterAliases")},
 			"proxmox_virtual_environment_nodes":           {Tok: tfbridge.MakeDataSource(mainPkg, clusterMod, "getNodes")},
+			// VM/CT
+			"proxmox_virtual_environment_vm":  {Tok: tfbridge.MakeDataSource(mainPkg, vmMod, "getVirtualMachine")},
+			"proxmox_virtual_environment_vms": {Tok: tfbridge.MakeDataSource(mainPkg, vmMod, "getVirtualMachines")},
 			// Storage
 			"proxmox_virtual_environment_datastores": {Tok: tfbridge.MakeDataSource(mainPkg, storageMod, "getDatastores")},
 			// Environment

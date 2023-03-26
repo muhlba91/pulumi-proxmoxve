@@ -2993,6 +2993,118 @@ func (o VirtualMachineVgaPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetVirtualMachinesVm struct {
+	Name     string   `pulumi:"name"`
+	NodeName string   `pulumi:"nodeName"`
+	Tags     []string `pulumi:"tags"`
+	VmId     int      `pulumi:"vmId"`
+}
+
+// GetVirtualMachinesVmInput is an input type that accepts GetVirtualMachinesVmArgs and GetVirtualMachinesVmOutput values.
+// You can construct a concrete instance of `GetVirtualMachinesVmInput` via:
+//
+//	GetVirtualMachinesVmArgs{...}
+type GetVirtualMachinesVmInput interface {
+	pulumi.Input
+
+	ToGetVirtualMachinesVmOutput() GetVirtualMachinesVmOutput
+	ToGetVirtualMachinesVmOutputWithContext(context.Context) GetVirtualMachinesVmOutput
+}
+
+type GetVirtualMachinesVmArgs struct {
+	Name     pulumi.StringInput      `pulumi:"name"`
+	NodeName pulumi.StringInput      `pulumi:"nodeName"`
+	Tags     pulumi.StringArrayInput `pulumi:"tags"`
+	VmId     pulumi.IntInput         `pulumi:"vmId"`
+}
+
+func (GetVirtualMachinesVmArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVirtualMachinesVm)(nil)).Elem()
+}
+
+func (i GetVirtualMachinesVmArgs) ToGetVirtualMachinesVmOutput() GetVirtualMachinesVmOutput {
+	return i.ToGetVirtualMachinesVmOutputWithContext(context.Background())
+}
+
+func (i GetVirtualMachinesVmArgs) ToGetVirtualMachinesVmOutputWithContext(ctx context.Context) GetVirtualMachinesVmOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualMachinesVmOutput)
+}
+
+// GetVirtualMachinesVmArrayInput is an input type that accepts GetVirtualMachinesVmArray and GetVirtualMachinesVmArrayOutput values.
+// You can construct a concrete instance of `GetVirtualMachinesVmArrayInput` via:
+//
+//	GetVirtualMachinesVmArray{ GetVirtualMachinesVmArgs{...} }
+type GetVirtualMachinesVmArrayInput interface {
+	pulumi.Input
+
+	ToGetVirtualMachinesVmArrayOutput() GetVirtualMachinesVmArrayOutput
+	ToGetVirtualMachinesVmArrayOutputWithContext(context.Context) GetVirtualMachinesVmArrayOutput
+}
+
+type GetVirtualMachinesVmArray []GetVirtualMachinesVmInput
+
+func (GetVirtualMachinesVmArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVirtualMachinesVm)(nil)).Elem()
+}
+
+func (i GetVirtualMachinesVmArray) ToGetVirtualMachinesVmArrayOutput() GetVirtualMachinesVmArrayOutput {
+	return i.ToGetVirtualMachinesVmArrayOutputWithContext(context.Background())
+}
+
+func (i GetVirtualMachinesVmArray) ToGetVirtualMachinesVmArrayOutputWithContext(ctx context.Context) GetVirtualMachinesVmArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualMachinesVmArrayOutput)
+}
+
+type GetVirtualMachinesVmOutput struct{ *pulumi.OutputState }
+
+func (GetVirtualMachinesVmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVirtualMachinesVm)(nil)).Elem()
+}
+
+func (o GetVirtualMachinesVmOutput) ToGetVirtualMachinesVmOutput() GetVirtualMachinesVmOutput {
+	return o
+}
+
+func (o GetVirtualMachinesVmOutput) ToGetVirtualMachinesVmOutputWithContext(ctx context.Context) GetVirtualMachinesVmOutput {
+	return o
+}
+
+func (o GetVirtualMachinesVmOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualMachinesVm) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetVirtualMachinesVmOutput) NodeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualMachinesVm) string { return v.NodeName }).(pulumi.StringOutput)
+}
+
+func (o GetVirtualMachinesVmOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVirtualMachinesVm) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+func (o GetVirtualMachinesVmOutput) VmId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVirtualMachinesVm) int { return v.VmId }).(pulumi.IntOutput)
+}
+
+type GetVirtualMachinesVmArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVirtualMachinesVmArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVirtualMachinesVm)(nil)).Elem()
+}
+
+func (o GetVirtualMachinesVmArrayOutput) ToGetVirtualMachinesVmArrayOutput() GetVirtualMachinesVmArrayOutput {
+	return o
+}
+
+func (o GetVirtualMachinesVmArrayOutput) ToGetVirtualMachinesVmArrayOutputWithContext(ctx context.Context) GetVirtualMachinesVmArrayOutput {
+	return o
+}
+
+func (o GetVirtualMachinesVmArrayOutput) Index(i pulumi.IntInput) GetVirtualMachinesVmOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVirtualMachinesVm {
+		return vs[0].([]GetVirtualMachinesVm)[vs[1].(int)]
+	}).(GetVirtualMachinesVmOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineAgentInput)(nil)).Elem(), VirtualMachineAgentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineAgentPtrInput)(nil)).Elem(), VirtualMachineAgentArgs{})
@@ -3032,6 +3144,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineSerialDeviceArrayInput)(nil)).Elem(), VirtualMachineSerialDeviceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineVgaInput)(nil)).Elem(), VirtualMachineVgaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineVgaPtrInput)(nil)).Elem(), VirtualMachineVgaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachinesVmInput)(nil)).Elem(), GetVirtualMachinesVmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachinesVmArrayInput)(nil)).Elem(), GetVirtualMachinesVmArray{})
 	pulumi.RegisterOutputType(VirtualMachineAgentOutput{})
 	pulumi.RegisterOutputType(VirtualMachineAgentPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineAudioDeviceOutput{})
@@ -3070,4 +3184,6 @@ func init() {
 	pulumi.RegisterOutputType(VirtualMachineSerialDeviceArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachineVgaOutput{})
 	pulumi.RegisterOutputType(VirtualMachineVgaPtrOutput{})
+	pulumi.RegisterOutputType(GetVirtualMachinesVmOutput{})
+	pulumi.RegisterOutputType(GetVirtualMachinesVmArrayOutput{})
 }

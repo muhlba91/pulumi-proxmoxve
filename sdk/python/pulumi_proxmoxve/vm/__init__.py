@@ -5,6 +5,8 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .get_virtual_machine import *
+from .get_virtual_machines import *
 from .virtual_machine import *
 from ._inputs import *
 from . import outputs
