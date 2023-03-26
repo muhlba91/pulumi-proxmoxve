@@ -45,7 +45,11 @@ export class Hosts extends pulumi.CustomResource {
     /**
      * The host entries
      */
-    public readonly entries!: pulumi.Output<outputs.HostsEntry[]>;
+    public /*out*/ readonly entries!: pulumi.Output<outputs.HostsEntry[]>;
+    /**
+     * The host entries
+     */
+    public readonly entry!: pulumi.Output<outputs.HostsEntry[]>;
     /**
      * The hostnames
      */
@@ -71,20 +75,22 @@ export class Hosts extends pulumi.CustomResource {
             resourceInputs["addresses"] = state ? state.addresses : undefined;
             resourceInputs["digest"] = state ? state.digest : undefined;
             resourceInputs["entries"] = state ? state.entries : undefined;
+            resourceInputs["entry"] = state ? state.entry : undefined;
             resourceInputs["hostnames"] = state ? state.hostnames : undefined;
             resourceInputs["nodeName"] = state ? state.nodeName : undefined;
         } else {
             const args = argsOrState as HostsArgs | undefined;
-            if ((!args || args.entries === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'entries'");
+            if ((!args || args.entry === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'entry'");
             }
             if ((!args || args.nodeName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nodeName'");
             }
-            resourceInputs["entries"] = args ? args.entries : undefined;
+            resourceInputs["entry"] = args ? args.entry : undefined;
             resourceInputs["nodeName"] = args ? args.nodeName : undefined;
             resourceInputs["addresses"] = undefined /*out*/;
             resourceInputs["digest"] = undefined /*out*/;
+            resourceInputs["entries"] = undefined /*out*/;
             resourceInputs["hostnames"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -109,6 +115,10 @@ export interface HostsState {
      */
     entries?: pulumi.Input<pulumi.Input<inputs.HostsEntry>[]>;
     /**
+     * The host entries
+     */
+    entry?: pulumi.Input<pulumi.Input<inputs.HostsEntry>[]>;
+    /**
      * The hostnames
      */
     hostnames?: pulumi.Input<pulumi.Input<pulumi.Input<string>[]>[]>;
@@ -125,7 +135,7 @@ export interface HostsArgs {
     /**
      * The host entries
      */
-    entries: pulumi.Input<pulumi.Input<inputs.HostsEntry>[]>;
+    entry: pulumi.Input<pulumi.Input<inputs.HostsEntry>[]>;
     /**
      * The node name
      */

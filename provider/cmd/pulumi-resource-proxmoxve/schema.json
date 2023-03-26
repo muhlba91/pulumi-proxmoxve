@@ -3463,6 +3463,13 @@
                     },
                     "description": "The host entries\n"
                 },
+                "entry": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/proxmoxve:index/HostsEntry:HostsEntry"
+                    },
+                    "description": "The host entries\n"
+                },
                 "hostnames": {
                     "type": "array",
                     "items": {
@@ -3482,12 +3489,12 @@
                 "addresses",
                 "digest",
                 "entries",
-                "entries",
+                "entry",
                 "hostnames",
                 "nodeName"
             ],
             "inputProperties": {
-                "entries": {
+                "entry": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/proxmoxve:index/HostsEntry:HostsEntry"
@@ -3500,7 +3507,7 @@
                 }
             },
             "requiredInputs": [
-                "entries",
+                "entry",
                 "nodeName"
             ],
             "stateInputs": {
@@ -3518,6 +3525,13 @@
                         "description": "The SHA1 digest\n"
                     },
                     "entries": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/proxmoxve:index/HostsEntry:HostsEntry"
+                        },
+                        "description": "The host entries\n"
+                    },
+                    "entry": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/proxmoxve:index/HostsEntry:HostsEntry"

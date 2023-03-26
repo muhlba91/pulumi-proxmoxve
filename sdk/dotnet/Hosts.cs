@@ -31,6 +31,12 @@ namespace Pulumi.ProxmoxVE
         public Output<ImmutableArray<Outputs.HostsEntry>> Entries { get; private set; } = null!;
 
         /// <summary>
+        /// The host entries
+        /// </summary>
+        [Output("entry")]
+        public Output<ImmutableArray<Outputs.HostsEntry>> Entry { get; private set; } = null!;
+
+        /// <summary>
         /// The hostnames
         /// </summary>
         [Output("hostnames")]
@@ -89,16 +95,16 @@ namespace Pulumi.ProxmoxVE
 
     public sealed class HostsArgs : global::Pulumi.ResourceArgs
     {
-        [Input("entries", required: true)]
-        private InputList<Inputs.HostsEntryArgs>? _entries;
+        [Input("entry", required: true)]
+        private InputList<Inputs.HostsEntryArgs>? _entry;
 
         /// <summary>
         /// The host entries
         /// </summary>
-        public InputList<Inputs.HostsEntryArgs> Entries
+        public InputList<Inputs.HostsEntryArgs> Entry
         {
-            get => _entries ?? (_entries = new InputList<Inputs.HostsEntryArgs>());
-            set => _entries = value;
+            get => _entry ?? (_entry = new InputList<Inputs.HostsEntryArgs>());
+            set => _entry = value;
         }
 
         /// <summary>
@@ -143,6 +149,18 @@ namespace Pulumi.ProxmoxVE
         {
             get => _entries ?? (_entries = new InputList<Inputs.HostsEntryGetArgs>());
             set => _entries = value;
+        }
+
+        [Input("entry")]
+        private InputList<Inputs.HostsEntryGetArgs>? _entry;
+
+        /// <summary>
+        /// The host entries
+        /// </summary>
+        public InputList<Inputs.HostsEntryGetArgs> Entry
+        {
+            get => _entry ?? (_entry = new InputList<Inputs.HostsEntryGetArgs>());
+            set => _entry = value;
         }
 
         [Input("hostnames")]

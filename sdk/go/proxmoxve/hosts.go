@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,6 +20,8 @@ type Hosts struct {
 	Digest pulumi.StringOutput `pulumi:"digest"`
 	// The host entries
 	Entries HostsEntryArrayOutput `pulumi:"entries"`
+	// The host entries
+	Entry HostsEntryArrayOutput `pulumi:"entry"`
 	// The hostnames
 	Hostnames pulumi.StringArrayArrayOutput `pulumi:"hostnames"`
 	// The node name
@@ -33,8 +35,8 @@ func NewHosts(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Entries == nil {
-		return nil, errors.New("invalid value for required argument 'Entries'")
+	if args.Entry == nil {
+		return nil, errors.New("invalid value for required argument 'Entry'")
 	}
 	if args.NodeName == nil {
 		return nil, errors.New("invalid value for required argument 'NodeName'")
@@ -68,6 +70,8 @@ type hostsState struct {
 	Digest *string `pulumi:"digest"`
 	// The host entries
 	Entries []HostsEntry `pulumi:"entries"`
+	// The host entries
+	Entry []HostsEntry `pulumi:"entry"`
 	// The hostnames
 	Hostnames [][]string `pulumi:"hostnames"`
 	// The node name
@@ -81,6 +85,8 @@ type HostsState struct {
 	Digest pulumi.StringPtrInput
 	// The host entries
 	Entries HostsEntryArrayInput
+	// The host entries
+	Entry HostsEntryArrayInput
 	// The hostnames
 	Hostnames pulumi.StringArrayArrayInput
 	// The node name
@@ -93,7 +99,7 @@ func (HostsState) ElementType() reflect.Type {
 
 type hostsArgs struct {
 	// The host entries
-	Entries []HostsEntry `pulumi:"entries"`
+	Entry []HostsEntry `pulumi:"entry"`
 	// The node name
 	NodeName string `pulumi:"nodeName"`
 }
@@ -101,7 +107,7 @@ type hostsArgs struct {
 // The set of arguments for constructing a Hosts resource.
 type HostsArgs struct {
 	// The host entries
-	Entries HostsEntryArrayInput
+	Entry HostsEntryArrayInput
 	// The node name
 	NodeName pulumi.StringInput
 }
@@ -206,6 +212,11 @@ func (o HostsOutput) Digest() pulumi.StringOutput {
 // The host entries
 func (o HostsOutput) Entries() HostsEntryArrayOutput {
 	return o.ApplyT(func(v *Hosts) HostsEntryArrayOutput { return v.Entries }).(HostsEntryArrayOutput)
+}
+
+// The host entries
+func (o HostsOutput) Entry() HostsEntryArrayOutput {
+	return o.ApplyT(func(v *Hosts) HostsEntryArrayOutput { return v.Entry }).(HostsEntryArrayOutput)
 }
 
 // The hostnames
