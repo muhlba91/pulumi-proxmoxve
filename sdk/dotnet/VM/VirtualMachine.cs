@@ -169,6 +169,12 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<bool?> Reboot { get; private set; } = null!;
 
         /// <summary>
+        /// The SCSI hardware type
+        /// </summary>
+        [Output("scsiHardware")]
+        public Output<string?> ScsiHardware { get; private set; } = null!;
+
+        /// <summary>
         /// The serial devices
         /// </summary>
         [Output("serialDevices")]
@@ -442,6 +448,12 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Input("reboot")]
         public Input<bool>? Reboot { get; set; }
+
+        /// <summary>
+        /// The SCSI hardware type
+        /// </summary>
+        [Input("scsiHardware")]
+        public Input<string>? ScsiHardware { get; set; }
 
         [Input("serialDevices")]
         private InputList<Inputs.VirtualMachineSerialDeviceArgs>? _serialDevices;
@@ -738,6 +750,12 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Input("reboot")]
         public Input<bool>? Reboot { get; set; }
+
+        /// <summary>
+        /// The SCSI hardware type
+        /// </summary>
+        [Input("scsiHardware")]
+        public Input<string>? ScsiHardware { get; set; }
 
         [Input("serialDevices")]
         private InputList<Inputs.VirtualMachineSerialDeviceGetArgs>? _serialDevices;

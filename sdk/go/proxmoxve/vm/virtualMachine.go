@@ -66,6 +66,8 @@ type VirtualMachine struct {
 	PoolId pulumi.StringPtrOutput `pulumi:"poolId"`
 	// Whether to reboot vm after creation
 	Reboot pulumi.BoolPtrOutput `pulumi:"reboot"`
+	// The SCSI hardware type
+	ScsiHardware pulumi.StringPtrOutput `pulumi:"scsiHardware"`
 	// The serial devices
 	SerialDevices VirtualMachineSerialDeviceArrayOutput `pulumi:"serialDevices"`
 	// Whether to start the virtual machine
@@ -179,6 +181,8 @@ type virtualMachineState struct {
 	PoolId *string `pulumi:"poolId"`
 	// Whether to reboot vm after creation
 	Reboot *bool `pulumi:"reboot"`
+	// The SCSI hardware type
+	ScsiHardware *string `pulumi:"scsiHardware"`
 	// The serial devices
 	SerialDevices []VirtualMachineSerialDevice `pulumi:"serialDevices"`
 	// Whether to start the virtual machine
@@ -260,6 +264,8 @@ type VirtualMachineState struct {
 	PoolId pulumi.StringPtrInput
 	// Whether to reboot vm after creation
 	Reboot pulumi.BoolPtrInput
+	// The SCSI hardware type
+	ScsiHardware pulumi.StringPtrInput
 	// The serial devices
 	SerialDevices VirtualMachineSerialDeviceArrayInput
 	// Whether to start the virtual machine
@@ -337,6 +343,8 @@ type virtualMachineArgs struct {
 	PoolId *string `pulumi:"poolId"`
 	// Whether to reboot vm after creation
 	Reboot *bool `pulumi:"reboot"`
+	// The SCSI hardware type
+	ScsiHardware *string `pulumi:"scsiHardware"`
 	// The serial devices
 	SerialDevices []VirtualMachineSerialDevice `pulumi:"serialDevices"`
 	// Whether to start the virtual machine
@@ -411,6 +419,8 @@ type VirtualMachineArgs struct {
 	PoolId pulumi.StringPtrInput
 	// Whether to reboot vm after creation
 	Reboot pulumi.BoolPtrInput
+	// The SCSI hardware type
+	ScsiHardware pulumi.StringPtrInput
 	// The serial devices
 	SerialDevices VirtualMachineSerialDeviceArrayInput
 	// Whether to start the virtual machine
@@ -654,6 +664,11 @@ func (o VirtualMachineOutput) PoolId() pulumi.StringPtrOutput {
 // Whether to reboot vm after creation
 func (o VirtualMachineOutput) Reboot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.Reboot }).(pulumi.BoolPtrOutput)
+}
+
+// The SCSI hardware type
+func (o VirtualMachineOutput) ScsiHardware() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.ScsiHardware }).(pulumi.StringPtrOutput)
 }
 
 // The serial devices

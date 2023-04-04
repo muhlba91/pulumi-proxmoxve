@@ -139,6 +139,10 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly reboot!: pulumi.Output<boolean | undefined>;
     /**
+     * The SCSI hardware type
+     */
+    public readonly scsiHardware!: pulumi.Output<string | undefined>;
+    /**
      * The serial devices
      */
     public readonly serialDevices!: pulumi.Output<outputs.VM.VirtualMachineSerialDevice[] | undefined>;
@@ -230,6 +234,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["operatingSystem"] = state ? state.operatingSystem : undefined;
             resourceInputs["poolId"] = state ? state.poolId : undefined;
             resourceInputs["reboot"] = state ? state.reboot : undefined;
+            resourceInputs["scsiHardware"] = state ? state.scsiHardware : undefined;
             resourceInputs["serialDevices"] = state ? state.serialDevices : undefined;
             resourceInputs["started"] = state ? state.started : undefined;
             resourceInputs["tabletDevice"] = state ? state.tabletDevice : undefined;
@@ -270,6 +275,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["operatingSystem"] = args ? args.operatingSystem : undefined;
             resourceInputs["poolId"] = args ? args.poolId : undefined;
             resourceInputs["reboot"] = args ? args.reboot : undefined;
+            resourceInputs["scsiHardware"] = args ? args.scsiHardware : undefined;
             resourceInputs["serialDevices"] = args ? args.serialDevices : undefined;
             resourceInputs["started"] = args ? args.started : undefined;
             resourceInputs["tabletDevice"] = args ? args.tabletDevice : undefined;
@@ -401,6 +407,10 @@ export interface VirtualMachineState {
      * Whether to reboot vm after creation
      */
     reboot?: pulumi.Input<boolean>;
+    /**
+     * The SCSI hardware type
+     */
+    scsiHardware?: pulumi.Input<string>;
     /**
      * The serial devices
      */
@@ -547,6 +557,10 @@ export interface VirtualMachineArgs {
      * Whether to reboot vm after creation
      */
     reboot?: pulumi.Input<boolean>;
+    /**
+     * The SCSI hardware type
+     */
+    scsiHardware?: pulumi.Input<string>;
     /**
      * The serial devices
      */

@@ -38,6 +38,7 @@ class VirtualMachineArgs:
                  operating_system: Optional[pulumi.Input['VirtualMachineOperatingSystemArgs']] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
                  reboot: Optional[pulumi.Input[bool]] = None,
+                 scsi_hardware: Optional[pulumi.Input[str]] = None,
                  serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
                  tablet_device: Optional[pulumi.Input[bool]] = None,
@@ -75,6 +76,7 @@ class VirtualMachineArgs:
         :param pulumi.Input['VirtualMachineOperatingSystemArgs'] operating_system: The operating system configuration
         :param pulumi.Input[str] pool_id: The ID of the pool to assign the virtual machine to
         :param pulumi.Input[bool] reboot: Whether to reboot vm after creation
+        :param pulumi.Input[str] scsi_hardware: The SCSI hardware type
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]] serial_devices: The serial devices
         :param pulumi.Input[bool] started: Whether to start the virtual machine
         :param pulumi.Input[bool] tablet_device: Whether to enable the USB tablet device
@@ -132,6 +134,8 @@ class VirtualMachineArgs:
             pulumi.set(__self__, "pool_id", pool_id)
         if reboot is not None:
             pulumi.set(__self__, "reboot", reboot)
+        if scsi_hardware is not None:
+            pulumi.set(__self__, "scsi_hardware", scsi_hardware)
         if serial_devices is not None:
             pulumi.set(__self__, "serial_devices", serial_devices)
         if started is not None:
@@ -424,6 +428,18 @@ class VirtualMachineArgs:
         pulumi.set(self, "reboot", value)
 
     @property
+    @pulumi.getter(name="scsiHardware")
+    def scsi_hardware(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SCSI hardware type
+        """
+        return pulumi.get(self, "scsi_hardware")
+
+    @scsi_hardware.setter
+    def scsi_hardware(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scsi_hardware", value)
+
+    @property
     @pulumi.getter(name="serialDevices")
     def serial_devices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]]]:
         """
@@ -609,6 +625,7 @@ class _VirtualMachineState:
                  operating_system: Optional[pulumi.Input['VirtualMachineOperatingSystemArgs']] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
                  reboot: Optional[pulumi.Input[bool]] = None,
+                 scsi_hardware: Optional[pulumi.Input[str]] = None,
                  serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
                  tablet_device: Optional[pulumi.Input[bool]] = None,
@@ -650,6 +667,7 @@ class _VirtualMachineState:
         :param pulumi.Input['VirtualMachineOperatingSystemArgs'] operating_system: The operating system configuration
         :param pulumi.Input[str] pool_id: The ID of the pool to assign the virtual machine to
         :param pulumi.Input[bool] reboot: Whether to reboot vm after creation
+        :param pulumi.Input[str] scsi_hardware: The SCSI hardware type
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]] serial_devices: The serial devices
         :param pulumi.Input[bool] started: Whether to start the virtual machine
         :param pulumi.Input[bool] tablet_device: Whether to enable the USB tablet device
@@ -716,6 +734,8 @@ class _VirtualMachineState:
             pulumi.set(__self__, "pool_id", pool_id)
         if reboot is not None:
             pulumi.set(__self__, "reboot", reboot)
+        if scsi_hardware is not None:
+            pulumi.set(__self__, "scsi_hardware", scsi_hardware)
         if serial_devices is not None:
             pulumi.set(__self__, "serial_devices", serial_devices)
         if started is not None:
@@ -1056,6 +1076,18 @@ class _VirtualMachineState:
         pulumi.set(self, "reboot", value)
 
     @property
+    @pulumi.getter(name="scsiHardware")
+    def scsi_hardware(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SCSI hardware type
+        """
+        return pulumi.get(self, "scsi_hardware")
+
+    @scsi_hardware.setter
+    def scsi_hardware(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scsi_hardware", value)
+
+    @property
     @pulumi.getter(name="serialDevices")
     def serial_devices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]]]:
         """
@@ -1239,6 +1271,7 @@ class VirtualMachine(pulumi.CustomResource):
                  operating_system: Optional[pulumi.Input[pulumi.InputType['VirtualMachineOperatingSystemArgs']]] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
                  reboot: Optional[pulumi.Input[bool]] = None,
+                 scsi_hardware: Optional[pulumi.Input[str]] = None,
                  serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
                  tablet_device: Optional[pulumi.Input[bool]] = None,
@@ -1279,6 +1312,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['VirtualMachineOperatingSystemArgs']] operating_system: The operating system configuration
         :param pulumi.Input[str] pool_id: The ID of the pool to assign the virtual machine to
         :param pulumi.Input[bool] reboot: Whether to reboot vm after creation
+        :param pulumi.Input[str] scsi_hardware: The SCSI hardware type
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]] serial_devices: The serial devices
         :param pulumi.Input[bool] started: Whether to start the virtual machine
         :param pulumi.Input[bool] tablet_device: Whether to enable the USB tablet device
@@ -1338,6 +1372,7 @@ class VirtualMachine(pulumi.CustomResource):
                  operating_system: Optional[pulumi.Input[pulumi.InputType['VirtualMachineOperatingSystemArgs']]] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
                  reboot: Optional[pulumi.Input[bool]] = None,
+                 scsi_hardware: Optional[pulumi.Input[str]] = None,
                  serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
                  tablet_device: Optional[pulumi.Input[bool]] = None,
@@ -1384,6 +1419,7 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["operating_system"] = operating_system
             __props__.__dict__["pool_id"] = pool_id
             __props__.__dict__["reboot"] = reboot
+            __props__.__dict__["scsi_hardware"] = scsi_hardware
             __props__.__dict__["serial_devices"] = serial_devices
             __props__.__dict__["started"] = started
             __props__.__dict__["tablet_device"] = tablet_device
@@ -1437,6 +1473,7 @@ class VirtualMachine(pulumi.CustomResource):
             operating_system: Optional[pulumi.Input[pulumi.InputType['VirtualMachineOperatingSystemArgs']]] = None,
             pool_id: Optional[pulumi.Input[str]] = None,
             reboot: Optional[pulumi.Input[bool]] = None,
+            scsi_hardware: Optional[pulumi.Input[str]] = None,
             serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]]] = None,
             started: Optional[pulumi.Input[bool]] = None,
             tablet_device: Optional[pulumi.Input[bool]] = None,
@@ -1483,6 +1520,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['VirtualMachineOperatingSystemArgs']] operating_system: The operating system configuration
         :param pulumi.Input[str] pool_id: The ID of the pool to assign the virtual machine to
         :param pulumi.Input[bool] reboot: Whether to reboot vm after creation
+        :param pulumi.Input[str] scsi_hardware: The SCSI hardware type
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]] serial_devices: The serial devices
         :param pulumi.Input[bool] started: Whether to start the virtual machine
         :param pulumi.Input[bool] tablet_device: Whether to enable the USB tablet device
@@ -1527,6 +1565,7 @@ class VirtualMachine(pulumi.CustomResource):
         __props__.__dict__["operating_system"] = operating_system
         __props__.__dict__["pool_id"] = pool_id
         __props__.__dict__["reboot"] = reboot
+        __props__.__dict__["scsi_hardware"] = scsi_hardware
         __props__.__dict__["serial_devices"] = serial_devices
         __props__.__dict__["started"] = started
         __props__.__dict__["tablet_device"] = tablet_device
@@ -1749,6 +1788,14 @@ class VirtualMachine(pulumi.CustomResource):
         Whether to reboot vm after creation
         """
         return pulumi.get(self, "reboot")
+
+    @property
+    @pulumi.getter(name="scsiHardware")
+    def scsi_hardware(self) -> pulumi.Output[Optional[str]]:
+        """
+        The SCSI hardware type
+        """
+        return pulumi.get(self, "scsi_hardware")
 
     @property
     @pulumi.getter(name="serialDevices")
