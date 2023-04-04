@@ -29,7 +29,7 @@
         "go": {
             "generateExtraInputTypes": true,
             "generateResourceContainerTypes": true,
-            "importBasePath": "github.com/muhlba91/pulumi-proxmoxve/sdk/v2/go/proxmoxve"
+            "importBasePath": "github.com/muhlba91/pulumi-proxmoxve/sdk/v3/go/proxmoxve"
         },
         "nodejs": {
             "compatibility": "tfbridge20",
@@ -2767,6 +2767,10 @@
                     "type": "boolean",
                     "description": "Whether to reboot vm after creation\n"
                 },
+                "scsiHardware": {
+                    "type": "string",
+                    "description": "The SCSI hardware type\n"
+                },
                 "serialDevices": {
                     "type": "array",
                     "items": {
@@ -2935,6 +2939,10 @@
                 "reboot": {
                     "type": "boolean",
                     "description": "Whether to reboot vm after creation\n"
+                },
+                "scsiHardware": {
+                    "type": "string",
+                    "description": "The SCSI hardware type\n"
                 },
                 "serialDevices": {
                     "type": "array",
@@ -3137,6 +3145,10 @@
                     "reboot": {
                         "type": "boolean",
                         "description": "Whether to reboot vm after creation\n"
+                    },
+                    "scsiHardware": {
+                        "type": "string",
+                        "description": "The SCSI hardware type\n"
                     },
                     "serialDevices": {
                         "type": "array",

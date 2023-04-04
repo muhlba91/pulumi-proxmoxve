@@ -470,8 +470,8 @@ github.com/blang/semver v3.1.0+incompatible/go.mod h1:kRBLl5iJ+tD4TcOOxsy/0fnweb
 github.com/blang/semver v3.5.1+incompatible h1:cQNTCjp13qL8KC3Nbxr/y2Bqb63oX6wdnnjpJbkM4JQ=
 github.com/blang/semver v3.5.1+incompatible/go.mod h1:kRBLl5iJ+tD4TcOOxsy/0fnwebNt5EWlYSAyrTnjyyk=
 github.com/bmizerany/assert v0.0.0-20160611221934-b7ed37b82869/go.mod h1:Ekp36dRnpXw/yCqJaO+ZrUyxD+3VXMFFr56k5XYrpB4=
-github.com/bpg/terraform-provider-proxmox v0.15.0 h1:uwcULlJgZZRKvDMKeML2kgS/lplIqJj8nAqlg592zaY=
-github.com/bpg/terraform-provider-proxmox v0.15.0/go.mod h1:ao5ZT4o9596pnIZgsUnxH9Cdj9yNzwcufNHO22IkXLw=
+github.com/bpg/terraform-provider-proxmox v0.16.0 h1:XD17rUQYEOF/r9U2WvzP41AcIypJVtEY4jZdCU1g3BU=
+github.com/bpg/terraform-provider-proxmox v0.16.0/go.mod h1:z89NycD/ndJhTdhF+dkQmSVVxN8BZ79tjde42eQU9uM=
 github.com/bshuster-repo/logrus-logstash-hook v0.4.1/go.mod h1:zsTqEiSzDgAa/8GZR7E1qaXrhYNDKBYy5/dWPTIflbk=
 github.com/buger/jsonparser v0.0.0-20180808090653-f4dd9f5a6b44/go.mod h1:bbYlZJ7hK1yFx9hf58LP0zeX7UjIGs20ufpu3evjr+s=
 github.com/buger/jsonparser v1.1.1/go.mod h1:6RYKKt7H4d4+iWqouImQ9R2FZql3VbhNgx27UK13J/0=
