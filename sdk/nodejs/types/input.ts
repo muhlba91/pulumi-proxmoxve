@@ -85,6 +85,7 @@ export namespace CT {
     export interface ContainerNetworkInterface {
         bridge?: pulumi.Input<string>;
         enabled?: pulumi.Input<boolean>;
+        firewall?: pulumi.Input<boolean>;
         macAddress?: pulumi.Input<string>;
         mtu?: pulumi.Input<number>;
         name: pulumi.Input<string>;
@@ -98,11 +99,51 @@ export namespace CT {
     }
 }
 
-export namespace Cluster {
-    export interface ClusterIPSetCidr {
+export namespace Network {
+    export interface FirewallIPSetCidr {
         comment?: pulumi.Input<string>;
         name: pulumi.Input<string>;
         nomatch?: pulumi.Input<boolean>;
+    }
+
+    export interface FirewallLogRatelimit {
+        burst?: pulumi.Input<number>;
+        enabled?: pulumi.Input<boolean>;
+        rate?: pulumi.Input<string>;
+    }
+
+    export interface FirewallRulesRule {
+        action?: pulumi.Input<string>;
+        comment?: pulumi.Input<string>;
+        dest?: pulumi.Input<string>;
+        dport?: pulumi.Input<string>;
+        enabled?: pulumi.Input<boolean>;
+        iface?: pulumi.Input<string>;
+        log?: pulumi.Input<string>;
+        macro?: pulumi.Input<string>;
+        pos?: pulumi.Input<number>;
+        proto?: pulumi.Input<string>;
+        securityGroup?: pulumi.Input<string>;
+        source?: pulumi.Input<string>;
+        sport?: pulumi.Input<string>;
+        type?: pulumi.Input<string>;
+    }
+
+    export interface FirewallSecurityGroupRule {
+        action?: pulumi.Input<string>;
+        comment?: pulumi.Input<string>;
+        dest?: pulumi.Input<string>;
+        dport?: pulumi.Input<string>;
+        enabled?: pulumi.Input<boolean>;
+        iface?: pulumi.Input<string>;
+        log?: pulumi.Input<string>;
+        macro?: pulumi.Input<string>;
+        pos?: pulumi.Input<number>;
+        proto?: pulumi.Input<string>;
+        securityGroup?: pulumi.Input<string>;
+        source?: pulumi.Input<string>;
+        sport?: pulumi.Input<string>;
+        type?: pulumi.Input<string>;
     }
 }
 
@@ -256,6 +297,7 @@ export namespace VM {
     export interface VirtualMachineNetworkDevice {
         bridge?: pulumi.Input<string>;
         enabled?: pulumi.Input<boolean>;
+        firewall?: pulumi.Input<boolean>;
         macAddress?: pulumi.Input<string>;
         model?: pulumi.Input<string>;
         mtu?: pulumi.Input<number>;

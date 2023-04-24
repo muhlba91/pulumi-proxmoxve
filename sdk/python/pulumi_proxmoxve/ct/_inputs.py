@@ -427,6 +427,7 @@ class ContainerNetworkInterfaceArgs:
                  name: pulumi.Input[str],
                  bridge: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 firewall: Optional[pulumi.Input[bool]] = None,
                  mac_address: Optional[pulumi.Input[str]] = None,
                  mtu: Optional[pulumi.Input[int]] = None,
                  rate_limit: Optional[pulumi.Input[float]] = None,
@@ -436,6 +437,8 @@ class ContainerNetworkInterfaceArgs:
             pulumi.set(__self__, "bridge", bridge)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if firewall is not None:
+            pulumi.set(__self__, "firewall", firewall)
         if mac_address is not None:
             pulumi.set(__self__, "mac_address", mac_address)
         if mtu is not None:
@@ -471,6 +474,15 @@ class ContainerNetworkInterfaceArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def firewall(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "firewall")
+
+    @firewall.setter
+    def firewall(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "firewall", value)
 
     @property
     @pulumi.getter(name="macAddress")

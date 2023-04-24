@@ -37,6 +37,12 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<string?> Bios { get; private set; } = null!;
 
         /// <summary>
+        /// The guest will attempt to boot from devices in the order they appear here
+        /// </summary>
+        [Output("bootOrders")]
+        public Output<ImmutableArray<string>> BootOrders { get; private set; } = null!;
+
+        /// <summary>
         /// The CDROM drive
         /// </summary>
         [Output("cdrom")]
@@ -323,6 +329,18 @@ namespace Pulumi.ProxmoxVE.VM
         [Input("bios")]
         public Input<string>? Bios { get; set; }
 
+        [Input("bootOrders")]
+        private InputList<string>? _bootOrders;
+
+        /// <summary>
+        /// The guest will attempt to boot from devices in the order they appear here
+        /// </summary>
+        public InputList<string> BootOrders
+        {
+            get => _bootOrders ?? (_bootOrders = new InputList<string>());
+            set => _bootOrders = value;
+        }
+
         /// <summary>
         /// The CDROM drive
         /// </summary>
@@ -576,6 +594,18 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Input("bios")]
         public Input<string>? Bios { get; set; }
+
+        [Input("bootOrders")]
+        private InputList<string>? _bootOrders;
+
+        /// <summary>
+        /// The guest will attempt to boot from devices in the order they appear here
+        /// </summary>
+        public InputList<string> BootOrders
+        {
+            get => _bootOrders ?? (_bootOrders = new InputList<string>());
+            set => _bootOrders = value;
+        }
 
         /// <summary>
         /// The CDROM drive

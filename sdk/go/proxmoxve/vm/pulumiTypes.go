@@ -2476,6 +2476,7 @@ func (o VirtualMachineMemoryPtrOutput) Shared() pulumi.IntPtrOutput {
 type VirtualMachineNetworkDevice struct {
 	Bridge     *string  `pulumi:"bridge"`
 	Enabled    *bool    `pulumi:"enabled"`
+	Firewall   *bool    `pulumi:"firewall"`
 	MacAddress *string  `pulumi:"macAddress"`
 	Model      *string  `pulumi:"model"`
 	Mtu        *int     `pulumi:"mtu"`
@@ -2497,6 +2498,7 @@ type VirtualMachineNetworkDeviceInput interface {
 type VirtualMachineNetworkDeviceArgs struct {
 	Bridge     pulumi.StringPtrInput  `pulumi:"bridge"`
 	Enabled    pulumi.BoolPtrInput    `pulumi:"enabled"`
+	Firewall   pulumi.BoolPtrInput    `pulumi:"firewall"`
 	MacAddress pulumi.StringPtrInput  `pulumi:"macAddress"`
 	Model      pulumi.StringPtrInput  `pulumi:"model"`
 	Mtu        pulumi.IntPtrInput     `pulumi:"mtu"`
@@ -2561,6 +2563,10 @@ func (o VirtualMachineNetworkDeviceOutput) Bridge() pulumi.StringPtrOutput {
 
 func (o VirtualMachineNetworkDeviceOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkDevice) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o VirtualMachineNetworkDeviceOutput) Firewall() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineNetworkDevice) *bool { return v.Firewall }).(pulumi.BoolPtrOutput)
 }
 
 func (o VirtualMachineNetworkDeviceOutput) MacAddress() pulumi.StringPtrOutput {

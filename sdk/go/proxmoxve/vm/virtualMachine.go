@@ -22,6 +22,8 @@ type VirtualMachine struct {
 	AudioDevice VirtualMachineAudioDevicePtrOutput `pulumi:"audioDevice"`
 	// The BIOS implementation
 	Bios pulumi.StringPtrOutput `pulumi:"bios"`
+	// The guest will attempt to boot from devices in the order they appear here
+	BootOrders pulumi.StringArrayOutput `pulumi:"bootOrders"`
 	// The CDROM drive
 	Cdrom VirtualMachineCdromPtrOutput `pulumi:"cdrom"`
 	// The cloning configuration
@@ -137,6 +139,8 @@ type virtualMachineState struct {
 	AudioDevice *VirtualMachineAudioDevice `pulumi:"audioDevice"`
 	// The BIOS implementation
 	Bios *string `pulumi:"bios"`
+	// The guest will attempt to boot from devices in the order they appear here
+	BootOrders []string `pulumi:"bootOrders"`
 	// The CDROM drive
 	Cdrom *VirtualMachineCdrom `pulumi:"cdrom"`
 	// The cloning configuration
@@ -220,6 +224,8 @@ type VirtualMachineState struct {
 	AudioDevice VirtualMachineAudioDevicePtrInput
 	// The BIOS implementation
 	Bios pulumi.StringPtrInput
+	// The guest will attempt to boot from devices in the order they appear here
+	BootOrders pulumi.StringArrayInput
 	// The CDROM drive
 	Cdrom VirtualMachineCdromPtrInput
 	// The cloning configuration
@@ -307,6 +313,8 @@ type virtualMachineArgs struct {
 	AudioDevice *VirtualMachineAudioDevice `pulumi:"audioDevice"`
 	// The BIOS implementation
 	Bios *string `pulumi:"bios"`
+	// The guest will attempt to boot from devices in the order they appear here
+	BootOrders []string `pulumi:"bootOrders"`
 	// The CDROM drive
 	Cdrom *VirtualMachineCdrom `pulumi:"cdrom"`
 	// The cloning configuration
@@ -383,6 +391,8 @@ type VirtualMachineArgs struct {
 	AudioDevice VirtualMachineAudioDevicePtrInput
 	// The BIOS implementation
 	Bios pulumi.StringPtrInput
+	// The guest will attempt to boot from devices in the order they appear here
+	BootOrders pulumi.StringArrayInput
 	// The CDROM drive
 	Cdrom VirtualMachineCdromPtrInput
 	// The cloning configuration
@@ -554,6 +564,11 @@ func (o VirtualMachineOutput) AudioDevice() VirtualMachineAudioDevicePtrOutput {
 // The BIOS implementation
 func (o VirtualMachineOutput) Bios() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.Bios }).(pulumi.StringPtrOutput)
+}
+
+// The guest will attempt to boot from devices in the order they appear here
+func (o VirtualMachineOutput) BootOrders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VirtualMachine) pulumi.StringArrayOutput { return v.BootOrders }).(pulumi.StringArrayOutput)
 }
 
 // The CDROM drive

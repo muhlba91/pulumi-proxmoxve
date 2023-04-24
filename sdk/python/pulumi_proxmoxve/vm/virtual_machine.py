@@ -21,6 +21,7 @@ class VirtualMachineArgs:
                  agent: Optional[pulumi.Input['VirtualMachineAgentArgs']] = None,
                  audio_device: Optional[pulumi.Input['VirtualMachineAudioDeviceArgs']] = None,
                  bios: Optional[pulumi.Input[str]] = None,
+                 boot_orders: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  cdrom: Optional[pulumi.Input['VirtualMachineCdromArgs']] = None,
                  clone: Optional[pulumi.Input['VirtualMachineCloneArgs']] = None,
                  cpu: Optional[pulumi.Input['VirtualMachineCpuArgs']] = None,
@@ -59,6 +60,7 @@ class VirtualMachineArgs:
         :param pulumi.Input['VirtualMachineAgentArgs'] agent: The QEMU agent configuration
         :param pulumi.Input['VirtualMachineAudioDeviceArgs'] audio_device: The audio devices
         :param pulumi.Input[str] bios: The BIOS implementation
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] boot_orders: The guest will attempt to boot from devices in the order they appear here
         :param pulumi.Input['VirtualMachineCdromArgs'] cdrom: The CDROM drive
         :param pulumi.Input['VirtualMachineCloneArgs'] clone: The cloning configuration
         :param pulumi.Input['VirtualMachineCpuArgs'] cpu: The CPU allocation
@@ -100,6 +102,8 @@ class VirtualMachineArgs:
             pulumi.set(__self__, "audio_device", audio_device)
         if bios is not None:
             pulumi.set(__self__, "bios", bios)
+        if boot_orders is not None:
+            pulumi.set(__self__, "boot_orders", boot_orders)
         if cdrom is not None:
             pulumi.set(__self__, "cdrom", cdrom)
         if clone is not None:
@@ -222,6 +226,18 @@ class VirtualMachineArgs:
     @bios.setter
     def bios(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "bios", value)
+
+    @property
+    @pulumi.getter(name="bootOrders")
+    def boot_orders(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The guest will attempt to boot from devices in the order they appear here
+        """
+        return pulumi.get(self, "boot_orders")
+
+    @boot_orders.setter
+    def boot_orders(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "boot_orders", value)
 
     @property
     @pulumi.getter
@@ -603,6 +619,7 @@ class _VirtualMachineState:
                  agent: Optional[pulumi.Input['VirtualMachineAgentArgs']] = None,
                  audio_device: Optional[pulumi.Input['VirtualMachineAudioDeviceArgs']] = None,
                  bios: Optional[pulumi.Input[str]] = None,
+                 boot_orders: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  cdrom: Optional[pulumi.Input['VirtualMachineCdromArgs']] = None,
                  clone: Optional[pulumi.Input['VirtualMachineCloneArgs']] = None,
                  cpu: Optional[pulumi.Input['VirtualMachineCpuArgs']] = None,
@@ -645,6 +662,7 @@ class _VirtualMachineState:
         :param pulumi.Input['VirtualMachineAgentArgs'] agent: The QEMU agent configuration
         :param pulumi.Input['VirtualMachineAudioDeviceArgs'] audio_device: The audio devices
         :param pulumi.Input[str] bios: The BIOS implementation
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] boot_orders: The guest will attempt to boot from devices in the order they appear here
         :param pulumi.Input['VirtualMachineCdromArgs'] cdrom: The CDROM drive
         :param pulumi.Input['VirtualMachineCloneArgs'] clone: The cloning configuration
         :param pulumi.Input['VirtualMachineCpuArgs'] cpu: The CPU allocation
@@ -690,6 +708,8 @@ class _VirtualMachineState:
             pulumi.set(__self__, "audio_device", audio_device)
         if bios is not None:
             pulumi.set(__self__, "bios", bios)
+        if boot_orders is not None:
+            pulumi.set(__self__, "boot_orders", boot_orders)
         if cdrom is not None:
             pulumi.set(__self__, "cdrom", cdrom)
         if clone is not None:
@@ -810,6 +830,18 @@ class _VirtualMachineState:
     @bios.setter
     def bios(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "bios", value)
+
+    @property
+    @pulumi.getter(name="bootOrders")
+    def boot_orders(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The guest will attempt to boot from devices in the order they appear here
+        """
+        return pulumi.get(self, "boot_orders")
+
+    @boot_orders.setter
+    def boot_orders(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "boot_orders", value)
 
     @property
     @pulumi.getter
@@ -1253,6 +1285,7 @@ class VirtualMachine(pulumi.CustomResource):
                  agent: Optional[pulumi.Input[pulumi.InputType['VirtualMachineAgentArgs']]] = None,
                  audio_device: Optional[pulumi.Input[pulumi.InputType['VirtualMachineAudioDeviceArgs']]] = None,
                  bios: Optional[pulumi.Input[str]] = None,
+                 boot_orders: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  cdrom: Optional[pulumi.Input[pulumi.InputType['VirtualMachineCdromArgs']]] = None,
                  clone: Optional[pulumi.Input[pulumi.InputType['VirtualMachineCloneArgs']]] = None,
                  cpu: Optional[pulumi.Input[pulumi.InputType['VirtualMachineCpuArgs']]] = None,
@@ -1294,6 +1327,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['VirtualMachineAgentArgs']] agent: The QEMU agent configuration
         :param pulumi.Input[pulumi.InputType['VirtualMachineAudioDeviceArgs']] audio_device: The audio devices
         :param pulumi.Input[str] bios: The BIOS implementation
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] boot_orders: The guest will attempt to boot from devices in the order they appear here
         :param pulumi.Input[pulumi.InputType['VirtualMachineCdromArgs']] cdrom: The CDROM drive
         :param pulumi.Input[pulumi.InputType['VirtualMachineCloneArgs']] clone: The cloning configuration
         :param pulumi.Input[pulumi.InputType['VirtualMachineCpuArgs']] cpu: The CPU allocation
@@ -1354,6 +1388,7 @@ class VirtualMachine(pulumi.CustomResource):
                  agent: Optional[pulumi.Input[pulumi.InputType['VirtualMachineAgentArgs']]] = None,
                  audio_device: Optional[pulumi.Input[pulumi.InputType['VirtualMachineAudioDeviceArgs']]] = None,
                  bios: Optional[pulumi.Input[str]] = None,
+                 boot_orders: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  cdrom: Optional[pulumi.Input[pulumi.InputType['VirtualMachineCdromArgs']]] = None,
                  clone: Optional[pulumi.Input[pulumi.InputType['VirtualMachineCloneArgs']]] = None,
                  cpu: Optional[pulumi.Input[pulumi.InputType['VirtualMachineCpuArgs']]] = None,
@@ -1399,6 +1434,7 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["agent"] = agent
             __props__.__dict__["audio_device"] = audio_device
             __props__.__dict__["bios"] = bios
+            __props__.__dict__["boot_orders"] = boot_orders
             __props__.__dict__["cdrom"] = cdrom
             __props__.__dict__["clone"] = clone
             __props__.__dict__["cpu"] = cpu
@@ -1451,6 +1487,7 @@ class VirtualMachine(pulumi.CustomResource):
             agent: Optional[pulumi.Input[pulumi.InputType['VirtualMachineAgentArgs']]] = None,
             audio_device: Optional[pulumi.Input[pulumi.InputType['VirtualMachineAudioDeviceArgs']]] = None,
             bios: Optional[pulumi.Input[str]] = None,
+            boot_orders: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             cdrom: Optional[pulumi.Input[pulumi.InputType['VirtualMachineCdromArgs']]] = None,
             clone: Optional[pulumi.Input[pulumi.InputType['VirtualMachineCloneArgs']]] = None,
             cpu: Optional[pulumi.Input[pulumi.InputType['VirtualMachineCpuArgs']]] = None,
@@ -1498,6 +1535,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['VirtualMachineAgentArgs']] agent: The QEMU agent configuration
         :param pulumi.Input[pulumi.InputType['VirtualMachineAudioDeviceArgs']] audio_device: The audio devices
         :param pulumi.Input[str] bios: The BIOS implementation
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] boot_orders: The guest will attempt to boot from devices in the order they appear here
         :param pulumi.Input[pulumi.InputType['VirtualMachineCdromArgs']] cdrom: The CDROM drive
         :param pulumi.Input[pulumi.InputType['VirtualMachineCloneArgs']] clone: The cloning configuration
         :param pulumi.Input[pulumi.InputType['VirtualMachineCpuArgs']] cpu: The CPU allocation
@@ -1543,6 +1581,7 @@ class VirtualMachine(pulumi.CustomResource):
         __props__.__dict__["agent"] = agent
         __props__.__dict__["audio_device"] = audio_device
         __props__.__dict__["bios"] = bios
+        __props__.__dict__["boot_orders"] = boot_orders
         __props__.__dict__["cdrom"] = cdrom
         __props__.__dict__["clone"] = clone
         __props__.__dict__["cpu"] = cpu
@@ -1612,6 +1651,14 @@ class VirtualMachine(pulumi.CustomResource):
         The BIOS implementation
         """
         return pulumi.get(self, "bios")
+
+    @property
+    @pulumi.getter(name="bootOrders")
+    def boot_orders(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The guest will attempt to boot from devices in the order they appear here
+        """
+        return pulumi.get(self, "boot_orders")
 
     @property
     @pulumi.getter

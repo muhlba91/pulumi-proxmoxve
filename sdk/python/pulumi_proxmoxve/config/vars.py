@@ -17,6 +17,41 @@ __config__ = pulumi.Config('proxmoxve')
 
 class _ExportableConfig(types.ModuleType):
     @property
+    def endpoint(self) -> Optional[str]:
+        """
+        The endpoint for the Proxmox Virtual Environment API
+        """
+        return __config__.get('endpoint')
+
+    @property
+    def insecure(self) -> Optional[bool]:
+        """
+        Whether to skip the TLS verification step
+        """
+        return __config__.get_bool('insecure')
+
+    @property
+    def otp(self) -> Optional[str]:
+        """
+        The one-time password for the Proxmox Virtual Environment API
+        """
+        return __config__.get('otp')
+
+    @property
+    def password(self) -> Optional[str]:
+        """
+        The password for the Proxmox Virtual Environment API
+        """
+        return __config__.get('password')
+
+    @property
+    def username(self) -> Optional[str]:
+        """
+        The username for the Proxmox Virtual Environment API
+        """
+        return __config__.get('username')
+
+    @property
     def virtual_environment(self) -> Optional[str]:
         return __config__.get('virtualEnvironment')
 

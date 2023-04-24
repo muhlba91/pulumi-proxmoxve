@@ -32,6 +32,56 @@ namespace Pulumi.ProxmoxVE
 
         private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("proxmoxve");
 
+        private static readonly __Value<string?> _endpoint = new __Value<string?>(() => __config.Get("endpoint"));
+        /// <summary>
+        /// The endpoint for the Proxmox Virtual Environment API
+        /// </summary>
+        public static string? Endpoint
+        {
+            get => _endpoint.Get();
+            set => _endpoint.Set(value);
+        }
+
+        private static readonly __Value<bool?> _insecure = new __Value<bool?>(() => __config.GetBoolean("insecure"));
+        /// <summary>
+        /// Whether to skip the TLS verification step
+        /// </summary>
+        public static bool? Insecure
+        {
+            get => _insecure.Get();
+            set => _insecure.Set(value);
+        }
+
+        private static readonly __Value<string?> _otp = new __Value<string?>(() => __config.Get("otp"));
+        /// <summary>
+        /// The one-time password for the Proxmox Virtual Environment API
+        /// </summary>
+        public static string? Otp
+        {
+            get => _otp.Get();
+            set => _otp.Set(value);
+        }
+
+        private static readonly __Value<string?> _password = new __Value<string?>(() => __config.Get("password"));
+        /// <summary>
+        /// The password for the Proxmox Virtual Environment API
+        /// </summary>
+        public static string? Password
+        {
+            get => _password.Get();
+            set => _password.Set(value);
+        }
+
+        private static readonly __Value<string?> _username = new __Value<string?>(() => __config.Get("username"));
+        /// <summary>
+        /// The username for the Proxmox Virtual Environment API
+        /// </summary>
+        public static string? Username
+        {
+            get => _username.Get();
+            set => _username.Set(value);
+        }
+
         private static readonly __Value<Pulumi.ProxmoxVE.Config.Types.VirtualEnvironment?> _virtualEnvironment = new __Value<Pulumi.ProxmoxVE.Config.Types.VirtualEnvironment?>(() => __config.GetObject<Pulumi.ProxmoxVE.Config.Types.VirtualEnvironment>("virtualEnvironment"));
         public static Pulumi.ProxmoxVE.Config.Types.VirtualEnvironment? VirtualEnvironment
         {

@@ -18,6 +18,9 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        [Input("firewall")]
+        public Input<bool>? Firewall { get; set; }
+
         [Input("macAddress")]
         public Input<string>? MacAddress { get; set; }
 

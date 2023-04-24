@@ -25,6 +25,8 @@ if typing.TYPE_CHECKING:
     config = __config
     import pulumi_proxmoxve.ct as __ct
     ct = __ct
+    import pulumi_proxmoxve.network as __network
+    network = __network
     import pulumi_proxmoxve.permission as __permission
     permission = __permission
     import pulumi_proxmoxve.storage as __storage
@@ -35,6 +37,7 @@ else:
     cluster = _utilities.lazy_import('pulumi_proxmoxve.cluster')
     config = _utilities.lazy_import('pulumi_proxmoxve.config')
     ct = _utilities.lazy_import('pulumi_proxmoxve.ct')
+    network = _utilities.lazy_import('pulumi_proxmoxve.network')
     permission = _utilities.lazy_import('pulumi_proxmoxve.permission')
     storage = _utilities.lazy_import('pulumi_proxmoxve.storage')
     vm = _utilities.lazy_import('pulumi_proxmoxve.vm')
@@ -52,18 +55,50 @@ _utilities.register(
  },
  {
   "pkg": "proxmoxve",
-  "mod": "Cluster/clusterAlias",
-  "fqn": "pulumi_proxmoxve.cluster",
+  "mod": "Network/firewall",
+  "fqn": "pulumi_proxmoxve.network",
   "classes": {
-   "proxmoxve:Cluster/clusterAlias:ClusterAlias": "ClusterAlias"
+   "proxmoxve:Network/firewall:Firewall": "Firewall"
   }
  },
  {
   "pkg": "proxmoxve",
-  "mod": "Cluster/clusterIPSet",
-  "fqn": "pulumi_proxmoxve.cluster",
+  "mod": "Network/firewallAlias",
+  "fqn": "pulumi_proxmoxve.network",
   "classes": {
-   "proxmoxve:Cluster/clusterIPSet:ClusterIPSet": "ClusterIPSet"
+   "proxmoxve:Network/firewallAlias:FirewallAlias": "FirewallAlias"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "Network/firewallIPSet",
+  "fqn": "pulumi_proxmoxve.network",
+  "classes": {
+   "proxmoxve:Network/firewallIPSet:FirewallIPSet": "FirewallIPSet"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "Network/firewallOptions",
+  "fqn": "pulumi_proxmoxve.network",
+  "classes": {
+   "proxmoxve:Network/firewallOptions:FirewallOptions": "FirewallOptions"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "Network/firewallRules",
+  "fqn": "pulumi_proxmoxve.network",
+  "classes": {
+   "proxmoxve:Network/firewallRules:FirewallRules": "FirewallRules"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "Network/firewallSecurityGroup",
+  "fqn": "pulumi_proxmoxve.network",
+  "classes": {
+   "proxmoxve:Network/firewallSecurityGroup:FirewallSecurityGroup": "FirewallSecurityGroup"
   }
  },
  {

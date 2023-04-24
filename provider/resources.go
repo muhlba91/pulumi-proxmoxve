@@ -18,7 +18,7 @@ import (
 	"fmt"
 	"path/filepath"
 
-	"github.com/bpg/terraform-provider-proxmox/proxmoxtf"
+	"github.com/bpg/terraform-provider-proxmox/proxmoxtf/provider"
 	"github.com/muhlba91/pulumi-proxmoxve/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
@@ -37,6 +37,7 @@ const (
 	clusterMod    = "Cluster"
 	permissionMod = "Permission"
 	storageMod    = "Storage"
+	networkMod    = "Network"
 )
 
 // preConfigureCallback is called before the providerConfigure function of the underlying provider.
@@ -50,7 +51,7 @@ func preConfigureCallback(_ resource.PropertyMap, _ shim.ResourceConfig) error {
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
-	p := shimv2.NewProvider(proxmoxtf.Provider())
+	p := shimv2.NewProvider(provider.ProxmoxVirtualEnvironment())
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
@@ -68,9 +69,6 @@ func Provider() tfbridge.ProviderInfo {
 		Config:               map[string]*tfbridge.SchemaInfo{},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
-			// Cluster
-			"proxmox_virtual_environment_cluster_alias": {Tok: tfbridge.MakeResource(mainPkg, clusterMod, "ClusterAlias")},
-			"proxmox_virtual_environment_cluster_ipset": {Tok: tfbridge.MakeResource(mainPkg, clusterMod, "ClusterIPSet")},
 			// VM/CT
 			"proxmox_virtual_environment_vm":        {Tok: tfbridge.MakeResource(mainPkg, vmMod, "VirtualMachine")},
 			"proxmox_virtual_environment_container": {Tok: tfbridge.MakeResource(mainPkg, containerMod, "Container")},
@@ -86,12 +84,17 @@ func Provider() tfbridge.ProviderInfo {
 			"proxmox_virtual_environment_group": {Tok: tfbridge.MakeResource(mainPkg, permissionMod, "Group")},
 			"proxmox_virtual_environment_pool":  {Tok: tfbridge.MakeResource(mainPkg, permissionMod, "Pool")},
 			"proxmox_virtual_environment_role":  {Tok: tfbridge.MakeResource(mainPkg, permissionMod, "Role")},
+			// Network
+			"proxmox_virtual_environment_cluster_firewall":                {Tok: tfbridge.MakeResource(mainPkg, networkMod, "Firewall")},
+			"proxmox_virtual_environment_cluster_firewall_security_group": {Tok: tfbridge.MakeResource(mainPkg, networkMod, "FirewallSecurityGroup")},
+			"proxmox_virtual_environment_firewall_alias":                  {Tok: tfbridge.MakeResource(mainPkg, networkMod, "FirewallAlias")},
+			"proxmox_virtual_environment_firewall_ipset":                  {Tok: tfbridge.MakeResource(mainPkg, networkMod, "FirewallIPSet")},
+			"proxmox_virtual_environment_firewall_options":                {Tok: tfbridge.MakeResource(mainPkg, networkMod, "FirewallOptions")},
+			"proxmox_virtual_environment_firewall_rules":                  {Tok: tfbridge.MakeResource(mainPkg, networkMod, "FirewallRules")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Cluster
-			"proxmox_virtual_environment_cluster_alias":   {Tok: tfbridge.MakeDataSource(mainPkg, clusterMod, "getClusterAlias")},
-			"proxmox_virtual_environment_cluster_aliases": {Tok: tfbridge.MakeDataSource(mainPkg, clusterMod, "getClusterAliases")},
-			"proxmox_virtual_environment_nodes":           {Tok: tfbridge.MakeDataSource(mainPkg, clusterMod, "getNodes")},
+			"proxmox_virtual_environment_nodes": {Tok: tfbridge.MakeDataSource(mainPkg, clusterMod, "getNodes")},
 			// VM/CT
 			"proxmox_virtual_environment_vm":  {Tok: tfbridge.MakeDataSource(mainPkg, vmMod, "getVirtualMachine")},
 			"proxmox_virtual_environment_vms": {Tok: tfbridge.MakeDataSource(mainPkg, vmMod, "getVirtualMachines")},

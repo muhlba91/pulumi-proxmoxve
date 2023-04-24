@@ -1801,6 +1801,7 @@ func (o ContainerMemoryPtrOutput) Swap() pulumi.IntPtrOutput {
 type ContainerNetworkInterface struct {
 	Bridge     *string  `pulumi:"bridge"`
 	Enabled    *bool    `pulumi:"enabled"`
+	Firewall   *bool    `pulumi:"firewall"`
 	MacAddress *string  `pulumi:"macAddress"`
 	Mtu        *int     `pulumi:"mtu"`
 	Name       string   `pulumi:"name"`
@@ -1822,6 +1823,7 @@ type ContainerNetworkInterfaceInput interface {
 type ContainerNetworkInterfaceArgs struct {
 	Bridge     pulumi.StringPtrInput  `pulumi:"bridge"`
 	Enabled    pulumi.BoolPtrInput    `pulumi:"enabled"`
+	Firewall   pulumi.BoolPtrInput    `pulumi:"firewall"`
 	MacAddress pulumi.StringPtrInput  `pulumi:"macAddress"`
 	Mtu        pulumi.IntPtrInput     `pulumi:"mtu"`
 	Name       pulumi.StringInput     `pulumi:"name"`
@@ -1886,6 +1888,10 @@ func (o ContainerNetworkInterfaceOutput) Bridge() pulumi.StringPtrOutput {
 
 func (o ContainerNetworkInterfaceOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContainerNetworkInterface) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o ContainerNetworkInterfaceOutput) Firewall() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerNetworkInterface) *bool { return v.Firewall }).(pulumi.BoolPtrOutput)
 }
 
 func (o ContainerNetworkInterfaceOutput) MacAddress() pulumi.StringPtrOutput {

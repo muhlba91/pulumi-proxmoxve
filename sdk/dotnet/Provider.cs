@@ -19,6 +19,31 @@ namespace Pulumi.ProxmoxVE
     public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
+        /// The endpoint for the Proxmox Virtual Environment API
+        /// </summary>
+        [Output("endpoint")]
+        public Output<string?> Endpoint { get; private set; } = null!;
+
+        /// <summary>
+        /// The one-time password for the Proxmox Virtual Environment API
+        /// </summary>
+        [Output("otp")]
+        public Output<string?> Otp { get; private set; } = null!;
+
+        /// <summary>
+        /// The password for the Proxmox Virtual Environment API
+        /// </summary>
+        [Output("password")]
+        public Output<string?> Password { get; private set; } = null!;
+
+        /// <summary>
+        /// The username for the Proxmox Virtual Environment API
+        /// </summary>
+        [Output("username")]
+        public Output<string?> Username { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -46,6 +71,36 @@ namespace Pulumi.ProxmoxVE
 
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The endpoint for the Proxmox Virtual Environment API
+        /// </summary>
+        [Input("endpoint")]
+        public Input<string>? Endpoint { get; set; }
+
+        /// <summary>
+        /// Whether to skip the TLS verification step
+        /// </summary>
+        [Input("insecure", json: true)]
+        public Input<bool>? Insecure { get; set; }
+
+        /// <summary>
+        /// The one-time password for the Proxmox Virtual Environment API
+        /// </summary>
+        [Input("otp")]
+        public Input<string>? Otp { get; set; }
+
+        /// <summary>
+        /// The password for the Proxmox Virtual Environment API
+        /// </summary>
+        [Input("password")]
+        public Input<string>? Password { get; set; }
+
+        /// <summary>
+        /// The username for the Proxmox Virtual Environment API
+        /// </summary>
+        [Input("username")]
+        public Input<string>? Username { get; set; }
+
         [Input("virtualEnvironment", json: true)]
         public Input<Inputs.ProviderVirtualEnvironmentArgs>? VirtualEnvironment { get; set; }
 

@@ -83,6 +83,7 @@ export namespace CT {
     export interface ContainerNetworkInterface {
         bridge?: string;
         enabled?: boolean;
+        firewall?: boolean;
         macAddress?: string;
         mtu?: number;
         name: string;
@@ -97,11 +98,51 @@ export namespace CT {
 
 }
 
-export namespace Cluster {
-    export interface ClusterIPSetCidr {
+export namespace Network {
+    export interface FirewallIPSetCidr {
         comment?: string;
         name: string;
         nomatch?: boolean;
+    }
+
+    export interface FirewallLogRatelimit {
+        burst?: number;
+        enabled?: boolean;
+        rate?: string;
+    }
+
+    export interface FirewallRulesRule {
+        action?: string;
+        comment?: string;
+        dest?: string;
+        dport?: string;
+        enabled?: boolean;
+        iface?: string;
+        log?: string;
+        macro?: string;
+        pos: number;
+        proto?: string;
+        securityGroup?: string;
+        source?: string;
+        sport?: string;
+        type?: string;
+    }
+
+    export interface FirewallSecurityGroupRule {
+        action?: string;
+        comment?: string;
+        dest?: string;
+        dport?: string;
+        enabled?: boolean;
+        iface?: string;
+        log?: string;
+        macro?: string;
+        pos: number;
+        proto?: string;
+        securityGroup?: string;
+        source?: string;
+        sport?: string;
+        type?: string;
     }
 
 }
@@ -285,6 +326,7 @@ export namespace VM {
     export interface VirtualMachineNetworkDevice {
         bridge?: string;
         enabled?: boolean;
+        firewall?: boolean;
         macAddress?: string;
         model?: string;
         mtu?: number;

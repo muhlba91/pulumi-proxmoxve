@@ -54,6 +54,7 @@ utilities.lazyLoad(exports, ["Time"], () => require("./time"));
 import * as cluster from "./cluster";
 import * as config from "./config";
 import * as ct from "./ct";
+import * as network from "./network";
 import * as permission from "./permission";
 import * as storage from "./storage";
 import * as types from "./types";
@@ -63,6 +64,7 @@ export {
     cluster,
     config,
     ct,
+    network,
     permission,
     storage,
     types,

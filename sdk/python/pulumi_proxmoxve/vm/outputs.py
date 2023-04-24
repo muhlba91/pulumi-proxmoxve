@@ -756,6 +756,7 @@ class VirtualMachineNetworkDevice(dict):
     def __init__(__self__, *,
                  bridge: Optional[str] = None,
                  enabled: Optional[bool] = None,
+                 firewall: Optional[bool] = None,
                  mac_address: Optional[str] = None,
                  model: Optional[str] = None,
                  mtu: Optional[int] = None,
@@ -765,6 +766,8 @@ class VirtualMachineNetworkDevice(dict):
             pulumi.set(__self__, "bridge", bridge)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if firewall is not None:
+            pulumi.set(__self__, "firewall", firewall)
         if mac_address is not None:
             pulumi.set(__self__, "mac_address", mac_address)
         if model is not None:
@@ -785,6 +788,11 @@ class VirtualMachineNetworkDevice(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def firewall(self) -> Optional[bool]:
+        return pulumi.get(self, "firewall")
 
     @property
     @pulumi.getter(name="macAddress")

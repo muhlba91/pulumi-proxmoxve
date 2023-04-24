@@ -15,12 +15,95 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
+                 endpoint: Optional[pulumi.Input[str]] = None,
+                 insecure: Optional[pulumi.Input[bool]] = None,
+                 otp: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None,
                  virtual_environment: Optional[pulumi.Input['ProviderVirtualEnvironmentArgs']] = None):
         """
         The set of arguments for constructing a Provider resource.
+        :param pulumi.Input[str] endpoint: The endpoint for the Proxmox Virtual Environment API
+        :param pulumi.Input[bool] insecure: Whether to skip the TLS verification step
+        :param pulumi.Input[str] otp: The one-time password for the Proxmox Virtual Environment API
+        :param pulumi.Input[str] password: The password for the Proxmox Virtual Environment API
+        :param pulumi.Input[str] username: The username for the Proxmox Virtual Environment API
         """
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if insecure is not None:
+            pulumi.set(__self__, "insecure", insecure)
+        if otp is not None:
+            pulumi.set(__self__, "otp", otp)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if virtual_environment is not None:
+            warnings.warn("""Move attributes out of virtual_environment block""", DeprecationWarning)
+            pulumi.log.warn("""virtual_environment is deprecated: Move attributes out of virtual_environment block""")
         if virtual_environment is not None:
             pulumi.set(__self__, "virtual_environment", virtual_environment)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The endpoint for the Proxmox Virtual Environment API
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint", value)
+
+    @property
+    @pulumi.getter
+    def insecure(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to skip the TLS verification step
+        """
+        return pulumi.get(self, "insecure")
+
+    @insecure.setter
+    def insecure(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "insecure", value)
+
+    @property
+    @pulumi.getter
+    def otp(self) -> Optional[pulumi.Input[str]]:
+        """
+        The one-time password for the Proxmox Virtual Environment API
+        """
+        return pulumi.get(self, "otp")
+
+    @otp.setter
+    def otp(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "otp", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password for the Proxmox Virtual Environment API
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username for the Proxmox Virtual Environment API
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
 
     @property
     @pulumi.getter(name="virtualEnvironment")
@@ -37,6 +120,11 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 endpoint: Optional[pulumi.Input[str]] = None,
+                 insecure: Optional[pulumi.Input[bool]] = None,
+                 otp: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None,
                  virtual_environment: Optional[pulumi.Input[pulumi.InputType['ProviderVirtualEnvironmentArgs']]] = None,
                  __props__=None):
         """
@@ -47,6 +135,11 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] endpoint: The endpoint for the Proxmox Virtual Environment API
+        :param pulumi.Input[bool] insecure: Whether to skip the TLS verification step
+        :param pulumi.Input[str] otp: The one-time password for the Proxmox Virtual Environment API
+        :param pulumi.Input[str] password: The password for the Proxmox Virtual Environment API
+        :param pulumi.Input[str] username: The username for the Proxmox Virtual Environment API
         """
         ...
     @overload
@@ -75,6 +168,11 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 endpoint: Optional[pulumi.Input[str]] = None,
+                 insecure: Optional[pulumi.Input[bool]] = None,
+                 otp: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None,
                  virtual_environment: Optional[pulumi.Input[pulumi.InputType['ProviderVirtualEnvironmentArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -85,10 +183,50 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
+            __props__.__dict__["endpoint"] = endpoint
+            __props__.__dict__["insecure"] = pulumi.Output.from_input(insecure).apply(pulumi.runtime.to_json) if insecure is not None else None
+            __props__.__dict__["otp"] = otp
+            __props__.__dict__["password"] = password
+            __props__.__dict__["username"] = username
+            if virtual_environment is not None and not opts.urn:
+                warnings.warn("""Move attributes out of virtual_environment block""", DeprecationWarning)
+                pulumi.log.warn("""virtual_environment is deprecated: Move attributes out of virtual_environment block""")
             __props__.__dict__["virtual_environment"] = pulumi.Output.from_input(virtual_environment).apply(pulumi.runtime.to_json) if virtual_environment is not None else None
         super(Provider, __self__).__init__(
             'proxmoxve',
             resource_name,
             __props__,
             opts)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> pulumi.Output[Optional[str]]:
+        """
+        The endpoint for the Proxmox Virtual Environment API
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter
+    def otp(self) -> pulumi.Output[Optional[str]]:
+        """
+        The one-time password for the Proxmox Virtual Environment API
+        """
+        return pulumi.get(self, "otp")
+
+    @property
+    @pulumi.getter
+    def password(self) -> pulumi.Output[Optional[str]]:
+        """
+        The password for the Proxmox Virtual Environment API
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def username(self) -> pulumi.Output[Optional[str]]:
+        """
+        The username for the Proxmox Virtual Environment API
+        """
+        return pulumi.get(self, "username")
 

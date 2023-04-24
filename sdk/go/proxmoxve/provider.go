@@ -16,6 +16,15 @@ import (
 // [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
 type Provider struct {
 	pulumi.ProviderResourceState
+
+	// The endpoint for the Proxmox Virtual Environment API
+	Endpoint pulumi.StringPtrOutput `pulumi:"endpoint"`
+	// The one-time password for the Proxmox Virtual Environment API
+	Otp pulumi.StringPtrOutput `pulumi:"otp"`
+	// The password for the Proxmox Virtual Environment API
+	Password pulumi.StringPtrOutput `pulumi:"password"`
+	// The username for the Proxmox Virtual Environment API
+	Username pulumi.StringPtrOutput `pulumi:"username"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -35,11 +44,33 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
+	// The endpoint for the Proxmox Virtual Environment API
+	Endpoint *string `pulumi:"endpoint"`
+	// Whether to skip the TLS verification step
+	Insecure *bool `pulumi:"insecure"`
+	// The one-time password for the Proxmox Virtual Environment API
+	Otp *string `pulumi:"otp"`
+	// The password for the Proxmox Virtual Environment API
+	Password *string `pulumi:"password"`
+	// The username for the Proxmox Virtual Environment API
+	Username *string `pulumi:"username"`
+	// Deprecated: Move attributes out of virtual_environment block
 	VirtualEnvironment *ProviderVirtualEnvironment `pulumi:"virtualEnvironment"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
+	// The endpoint for the Proxmox Virtual Environment API
+	Endpoint pulumi.StringPtrInput
+	// Whether to skip the TLS verification step
+	Insecure pulumi.BoolPtrInput
+	// The one-time password for the Proxmox Virtual Environment API
+	Otp pulumi.StringPtrInput
+	// The password for the Proxmox Virtual Environment API
+	Password pulumi.StringPtrInput
+	// The username for the Proxmox Virtual Environment API
+	Username pulumi.StringPtrInput
+	// Deprecated: Move attributes out of virtual_environment block
 	VirtualEnvironment ProviderVirtualEnvironmentPtrInput
 }
 
@@ -78,6 +109,26 @@ func (o ProviderOutput) ToProviderOutput() ProviderOutput {
 
 func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) ProviderOutput {
 	return o
+}
+
+// The endpoint for the Proxmox Virtual Environment API
+func (o ProviderOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// The one-time password for the Proxmox Virtual Environment API
+func (o ProviderOutput) Otp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Otp }).(pulumi.StringPtrOutput)
+}
+
+// The password for the Proxmox Virtual Environment API
+func (o ProviderOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The username for the Proxmox Virtual Environment API
+func (o ProviderOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Username }).(pulumi.StringPtrOutput)
 }
 
 func init() {

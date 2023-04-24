@@ -8,6 +8,32 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
 
+// The endpoint for the Proxmox Virtual Environment API
+func GetEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "proxmoxve:endpoint")
+}
+
+// Whether to skip the TLS verification step
+func GetInsecure(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "proxmoxve:insecure")
+}
+
+// The one-time password for the Proxmox Virtual Environment API
+func GetOtp(ctx *pulumi.Context) string {
+	return config.Get(ctx, "proxmoxve:otp")
+}
+
+// The password for the Proxmox Virtual Environment API
+func GetPassword(ctx *pulumi.Context) string {
+	return config.Get(ctx, "proxmoxve:password")
+}
+
+// The username for the Proxmox Virtual Environment API
+func GetUsername(ctx *pulumi.Context) string {
+	return config.Get(ctx, "proxmoxve:username")
+}
+
+// Deprecated: Move attributes out of virtual_environment block
 func GetVirtualEnvironment(ctx *pulumi.Context) string {
 	return config.Get(ctx, "proxmoxve:virtualEnvironment")
 }

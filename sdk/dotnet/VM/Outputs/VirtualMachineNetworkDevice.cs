@@ -15,6 +15,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     {
         public readonly string? Bridge;
         public readonly bool? Enabled;
+        public readonly bool? Firewall;
         public readonly string? MacAddress;
         public readonly string? Model;
         public readonly int? Mtu;
@@ -26,6 +27,8 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
             string? bridge,
 
             bool? enabled,
+
+            bool? firewall,
 
             string? macAddress,
 
@@ -39,6 +42,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         {
             Bridge = bridge;
             Enabled = enabled;
+            Firewall = firewall;
             MacAddress = macAddress;
             Model = model;
             Mtu = mtu;

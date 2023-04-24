@@ -27,6 +27,22 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === Provider.__pulumiType;
     }
 
+    /**
+     * The endpoint for the Proxmox Virtual Environment API
+     */
+    public readonly endpoint!: pulumi.Output<string | undefined>;
+    /**
+     * The one-time password for the Proxmox Virtual Environment API
+     */
+    public readonly otp!: pulumi.Output<string | undefined>;
+    /**
+     * The password for the Proxmox Virtual Environment API
+     */
+    public readonly password!: pulumi.Output<string | undefined>;
+    /**
+     * The username for the Proxmox Virtual Environment API
+     */
+    public readonly username!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -39,6 +55,11 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
+            resourceInputs["endpoint"] = args ? args.endpoint : undefined;
+            resourceInputs["insecure"] = pulumi.output(args ? args.insecure : undefined).apply(JSON.stringify);
+            resourceInputs["otp"] = args ? args.otp : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["username"] = args ? args.username : undefined;
             resourceInputs["virtualEnvironment"] = pulumi.output(args ? args.virtualEnvironment : undefined).apply(JSON.stringify);
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -50,5 +71,28 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
+    /**
+     * The endpoint for the Proxmox Virtual Environment API
+     */
+    endpoint?: pulumi.Input<string>;
+    /**
+     * Whether to skip the TLS verification step
+     */
+    insecure?: pulumi.Input<boolean>;
+    /**
+     * The one-time password for the Proxmox Virtual Environment API
+     */
+    otp?: pulumi.Input<string>;
+    /**
+     * The password for the Proxmox Virtual Environment API
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * The username for the Proxmox Virtual Environment API
+     */
+    username?: pulumi.Input<string>;
+    /**
+     * @deprecated Move attributes out of virtual_environment block
+     */
     virtualEnvironment?: pulumi.Input<inputs.ProviderVirtualEnvironment>;
 }

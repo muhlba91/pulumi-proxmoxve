@@ -51,6 +51,10 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly bios!: pulumi.Output<string | undefined>;
     /**
+     * The guest will attempt to boot from devices in the order they appear here
+     */
+    public readonly bootOrders!: pulumi.Output<string[] | undefined>;
+    /**
      * The CDROM drive
      */
     public readonly cdrom!: pulumi.Output<outputs.VM.VirtualMachineCdrom | undefined>;
@@ -212,6 +216,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["agent"] = state ? state.agent : undefined;
             resourceInputs["audioDevice"] = state ? state.audioDevice : undefined;
             resourceInputs["bios"] = state ? state.bios : undefined;
+            resourceInputs["bootOrders"] = state ? state.bootOrders : undefined;
             resourceInputs["cdrom"] = state ? state.cdrom : undefined;
             resourceInputs["clone"] = state ? state.clone : undefined;
             resourceInputs["cpu"] = state ? state.cpu : undefined;
@@ -257,6 +262,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["agent"] = args ? args.agent : undefined;
             resourceInputs["audioDevice"] = args ? args.audioDevice : undefined;
             resourceInputs["bios"] = args ? args.bios : undefined;
+            resourceInputs["bootOrders"] = args ? args.bootOrders : undefined;
             resourceInputs["cdrom"] = args ? args.cdrom : undefined;
             resourceInputs["clone"] = args ? args.clone : undefined;
             resourceInputs["cpu"] = args ? args.cpu : undefined;
@@ -319,6 +325,10 @@ export interface VirtualMachineState {
      * The BIOS implementation
      */
     bios?: pulumi.Input<string>;
+    /**
+     * The guest will attempt to boot from devices in the order they appear here
+     */
+    bootOrders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The CDROM drive
      */
@@ -485,6 +495,10 @@ export interface VirtualMachineArgs {
      * The BIOS implementation
      */
     bios?: pulumi.Input<string>;
+    /**
+     * The guest will attempt to boot from devices in the order they appear here
+     */
+    bootOrders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The CDROM drive
      */

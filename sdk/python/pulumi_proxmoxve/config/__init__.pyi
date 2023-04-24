@@ -10,5 +10,30 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
+endpoint: Optional[str]
+"""
+The endpoint for the Proxmox Virtual Environment API
+"""
+
+insecure: Optional[bool]
+"""
+Whether to skip the TLS verification step
+"""
+
+otp: Optional[str]
+"""
+The one-time password for the Proxmox Virtual Environment API
+"""
+
+password: Optional[str]
+"""
+The password for the Proxmox Virtual Environment API
+"""
+
+username: Optional[str]
+"""
+The username for the Proxmox Virtual Environment API
+"""
+
 virtualEnvironment: Optional[str]
 

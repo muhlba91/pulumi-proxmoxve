@@ -9,6 +9,61 @@ import * as utilities from "../utilities";
 declare var exports: any;
 const __config = new pulumi.Config("proxmoxve");
 
+/**
+ * The endpoint for the Proxmox Virtual Environment API
+ */
+export declare const endpoint: string | undefined;
+Object.defineProperty(exports, "endpoint", {
+    get() {
+        return __config.get("endpoint");
+    },
+    enumerable: true,
+});
+
+/**
+ * Whether to skip the TLS verification step
+ */
+export declare const insecure: boolean | undefined;
+Object.defineProperty(exports, "insecure", {
+    get() {
+        return __config.getObject<boolean>("insecure");
+    },
+    enumerable: true,
+});
+
+/**
+ * The one-time password for the Proxmox Virtual Environment API
+ */
+export declare const otp: string | undefined;
+Object.defineProperty(exports, "otp", {
+    get() {
+        return __config.get("otp");
+    },
+    enumerable: true,
+});
+
+/**
+ * The password for the Proxmox Virtual Environment API
+ */
+export declare const password: string | undefined;
+Object.defineProperty(exports, "password", {
+    get() {
+        return __config.get("password");
+    },
+    enumerable: true,
+});
+
+/**
+ * The username for the Proxmox Virtual Environment API
+ */
+export declare const username: string | undefined;
+Object.defineProperty(exports, "username", {
+    get() {
+        return __config.get("username");
+    },
+    enumerable: true,
+});
+
 export declare const virtualEnvironment: outputs.config.VirtualEnvironment | undefined;
 Object.defineProperty(exports, "virtualEnvironment", {
     get() {
