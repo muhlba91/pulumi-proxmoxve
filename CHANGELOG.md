@@ -1,6 +1,17 @@
 # Changelog
 
 
+## [4.0.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v3.1.0...v4.0.0) (2023-04-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* dependency and upstream updates
+
+### Features
+
+* upgrade upstream to 0.18.1 ([d1f6c9d](https://github.com/muhlba91/pulumi-proxmoxve/commit/d1f6c9dcf6322f156fd8358f45e640e506eca1b2))
+
 ## [3.1.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v3.0.0...v3.1.0) (2023-04-04)
 
 
