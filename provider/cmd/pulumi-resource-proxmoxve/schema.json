@@ -29,7 +29,7 @@
         "go": {
             "generateExtraInputTypes": true,
             "generateResourceContainerTypes": true,
-            "importBasePath": "github.com/muhlba91/pulumi-proxmoxve/sdk/v3/go/proxmoxve"
+            "importBasePath": "github.com/muhlba91/pulumi-proxmoxve/sdk/v4/go/proxmoxve"
         },
         "nodejs": {
             "compatibility": "tfbridge20",
