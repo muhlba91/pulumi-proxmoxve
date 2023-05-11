@@ -74,12 +74,10 @@ Example for *Typescript*:
 import * as proxmox from '@muhlba91/pulumi-proxmoxve';
 
 const provider = new proxmox.Provider('proxmoxve', {
-  virtualEnvironment: {
-    endpoint: process.env.PROXMOX_VE_ENDPOINT,
-    insecure: process.env.PROXMOX_VE_INSECURE,
-    username: process.env.PROXMOX_VE_USERNAME,
-    password: process.env.PROXMOX_VE_PASSWORD
-  }
+  endpoint: process.env.PROXMOX_VE_ENDPOINT,
+  insecure: process.env.PROXMOX_VE_INSECURE,
+  username: process.env.PROXMOX_VE_USERNAME,
+  password: process.env.PROXMOX_VE_PASSWORD
 });
 
 const args = {};
