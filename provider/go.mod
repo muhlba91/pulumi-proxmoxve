@@ -8,7 +8,7 @@ replace (
 )
 
 require (
-	github.com/bpg/terraform-provider-proxmox v0.19.0
+	github.com/bpg/terraform-provider-proxmox v0.19.1
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.44.3
 	github.com/pulumi/pulumi/sdk/v3 v3.64.0
 )
