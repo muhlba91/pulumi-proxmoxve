@@ -17,109 +17,9 @@ env:
   TRAVIS_OS_NAME: linux
 
 jobs:
-  build_provider:
-    runs-on: ubuntu-latest
-    name: Build Provider
-    strategy:
-      max-parallel: 4
-      matrix:
-        go-version: [1.19.x]
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Install Go
-        uses: actions/setup-go@v3
-        with:
-          go-version: "${{ matrix.go-version }}"
-
-      - name: Install pulumictl
-        uses: jaxxstorm/action-install-gh-release@v1.9.0
-        with:
-          repo: pulumi/pulumictl
-      - name: Install Pulumi CLI
-        uses: pulumi/setup-pulumi@v2
-
-      - name: Build Provider
-        run: make provider
-
-      - name: Tar Provider Binaries
-        run: tar -zcf ${{ github.workspace }}/bin/provider.tar.gz -C ${{ github.workspace }}/bin/ pulumi-resource-${{ env.PROVIDER }} pulumi-tfgen-${{ env.PROVIDER }}
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: ${{ env.PROVIDER }}-provider.tar.gz
-          path: ${{ github.workspace }}/bin/provider.tar.gz
-
-  build_sdk:
-    runs-on: ubuntu-latest
-    name: Build SDK
-    strategy:
-      max-parallel: 4
-      matrix:
-        go-version: [1.19.x]
-        node-version: [16]
-        dotnet-version: [3.1.301]
-        python-version: [3.9]
-        language:
-          - go
-          - nodejs
-          - python
-          - dotnet
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Install Go
-        uses: actions/setup-go@v3
-        with:
-          go-version: "${{ matrix.go-version }}"
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "${{ matrix.node-version }}"
-      - name: Setup DotNet
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: "${{ matrix.dotnet-version }}"
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "${{ matrix.python-version }}"
-
-      - name: Install pulumictl
-        uses: jaxxstorm/action-install-gh-release@v1.9.0
-        with:
-          repo: pulumi/pulumictl
-      - name: Install Pulumi CLI
-        uses: pulumi/setup-pulumi@v2
-
-      - name: Install Plugins
-        run: make install_plugins
-      - name: Update Path
-        run: echo "${{ github.workspace }}/bin" >> $GITHUB_PATH
-
-      - name: Build SDK
-        run: make build_${{ matrix.language }}
-
-      - name: Compress SDK
-        run: tar -zcf sdk/${{ matrix.language }}.tar.gz -C sdk/${{ matrix.language }} .
-      - name: Upload SDK
-        uses: actions/upload-artifact@v3
-        with:
-          name: ${{ matrix.language  }}-sdk.tar.gz
-          path: ${{ github.workspace}}/sdk/${{ matrix.language }}.tar.gz
-
   publish_provider:
     runs-on: ubuntu-latest
     name: Publish Provider
-    needs:
-      - build_provider
-      - build_sdk
     strategy:
       max-parallel: 4
       matrix:
@@ -130,6 +30,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+
       - name: Install Go
         uses: actions/setup-go@v3
         with:
@@ -162,28 +63,22 @@ jobs:
         node-version: [16]
         dotnet-version: [3.1.301]
         python-version: [3.9]
+        language:
+          - go
+          - nodejs
+          - python
+          - dotnet
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+
       - name: Install Go
         uses: actions/setup-go@v3
         with:
           go-version: "${{ matrix.go-version }}"
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "${{ matrix.node-version }}"
-      - name: Setup DotNet
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: "${{ matrix.dotnet-version }}"
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "${{ matrix.python-version }}"
 
       - name: Install pulumictl
         uses: jaxxstorm/action-install-gh-release@v1.9.0
@@ -192,45 +87,52 @@ jobs:
       - name: Install Pulumi CLI
         uses: pulumi/setup-pulumi@v2
 
-      - name: Download .NET SDK
-        uses: actions/download-artifact@v3
+      - name: Setup DotNet
+        uses: actions/setup-dotnet@v3
         with:
-          name: dotnet-sdk.tar.gz
-          path: ${{ github.workspace}}/sdk/
-      - name: Uncompress .NET SDK
-        run: tar -zxf ${{ github.workspace }}/sdk/dotnet.tar.gz -C ${{ github.workspace }}/sdk/dotnet
+          dotnet-version: "${{ matrix.dotnet-version }}"
+        if: matrix.language == 'dotnet'
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "${{ matrix.python-version }}"
+        if: matrix.language == 'python'
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "${{ matrix.node-version }}"
+        if: matrix.language == 'nodejs'
+
+      - name: Install Plugins
+        run: make install_plugins
+      - name: Update Path
+        run: echo "${{ github.workspace }}/bin" >> $GITHUB_PATH
+
+      - name: Build SDK
+        run: make build_${{ matrix.language }}
+
       - name: Publish .NET SDK
         run: find "${{ github.workspace }}/sdk/dotnet/bin/Debug/" -name 'Pulumi.*.nupkg' -exec dotnet nuget push -k "${{ secrets.NUGET_PUBLISH_KEY }}" -s https://api.nuget.org/v3/index.json {} ';'
+        if: matrix.language == 'dotnet'
 
-      - name: Download Python SDK
-        uses: actions/download-artifact@v3
-        with:
-          name: python-sdk.tar.gz
-          path: ${{ github.workspace}}/sdk/
-      - name: Uncompress Python SDK
-        run: tar -zxf ${{ github.workspace }}/sdk/python.tar.gz -C ${{ github.workspace }}/sdk/python
       - name: Publish Python SDK
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           password: "${{ secrets.PYPI_PASSWORD }}"
-          skip_existing: true
-          packages_dir: "${{ github.workspace }}/sdk/python/bin/dist/"
+          skip-existing: true
+          packages-dir: "${{ github.workspace }}/sdk/python/bin/dist/"
+        if: matrix.language == 'python'
 
-      - name: Download NodeJS SDK
-        uses: actions/download-artifact@v3
-        with:
-          name: nodejs-sdk.tar.gz
-          path: ${{ github.workspace}}/sdk/
-      - name: Uncompress NodeJS SDK
-        run: tar -zxf ${{ github.workspace }}/sdk/nodejs.tar.gz -C ${{ github.workspace }}/sdk/nodejs
       - name: Copy Over NodeJS Scripts
         run: cp -rf ${{ github.workspace }}/sdk/nodejs/scripts ${{ github.workspace }}/sdk/nodejs/bin/
+        if: matrix.language == 'nodejs'
       - name: Publish NodeJS SDK
         uses: JS-DevTools/npm-publish@v1
         with:
           package: ./sdk/nodejs/bin/package.json
           access: public
           token: ${{ secrets.NPM_TOKEN }}
+        if: matrix.language == 'nodejs'
 
   tag_sdk:
     runs-on: ubuntu-latest
@@ -249,7 +151,8 @@ jobs:
         run: |
           git config --local user.email "${{ env.GITHUB_ACTION }}+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-      - name: Tag Go SDK Version
+
+      - name: Tag SDK Version
         run: |
           git tag -a sdk/${{ github.ref_name }} -m sdk/${{ github.ref_name }}
       - name: Push to Repository

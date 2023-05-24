@@ -1,6 +1,38 @@
 # Changelog
 
 
+## [5.0.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v4.1.1...v5.0.0) (2023-05-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* upgrades upstream to 0.20.1 and refactors auto-generation
+
+### Features
+
+* update to upstream 0.20.1 ([75cc397](https://github.com/muhlba91/pulumi-proxmoxve/commit/75cc397bb37186138702adb8ca2d63a2438966cc))
+
+
+### Bug Fixes
+
+* cleanup auto-generated resources ([27aad91](https://github.com/muhlba91/pulumi-proxmoxve/commit/27aad9111a84fbbf9fb11949264152570455c43f))
+
+## [5.0.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v4.1.1...v5.0.0) (2023-05-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* upgrades upstream to 0.20.1 and refactors auto-generation
+
+### Features
+
+* update to upstream 0.20.1 ([5c4db93](https://github.com/muhlba91/pulumi-proxmoxve/commit/5c4db93dffedd54e3ac8ae6533f9d735766834f0))
+
+
+### Bug Fixes
+
+* cleanup auto-generated resources ([27aad91](https://github.com/muhlba91/pulumi-proxmoxve/commit/27aad9111a84fbbf9fb11949264152570455c43f))
+
 ### [4.1.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v4.1.0...v4.1.1) (2023-05-14)
 
 

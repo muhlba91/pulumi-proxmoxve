@@ -32,6 +32,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+
       - name: Install Go
         uses: actions/setup-go@v3
         with:
@@ -76,22 +77,11 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+
       - name: Install Go
         uses: actions/setup-go@v3
         with:
           go-version: "${{ matrix.go-version }}"
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "${{ matrix.node-version }}"
-      - name: Setup DotNet
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: "${{ matrix.dotnet-version }}"
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "${{ matrix.python-version }}"
 
       - name: Install pulumictl
         uses: jaxxstorm/action-install-gh-release@v1.9.0
@@ -99,6 +89,22 @@ jobs:
           repo: pulumi/pulumictl
       - name: Install Pulumi CLI
         uses: pulumi/setup-pulumi@v2
+
+      - name: Setup DotNet
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: "${{ matrix.dotnet-version }}"
+        if: matrix.language == 'dotnet'
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "${{ matrix.python-version }}"
+        if: matrix.language == 'python'
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "${{ matrix.node-version }}"
+        if: matrix.language == 'nodejs'
 
       - name: Build SDK
         run: make build_${{ matrix.language }}
@@ -122,6 +128,7 @@ jobs:
           git config --local user.email "${{ env.GITHUB_ACTION }}+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git fetch --tags
+
       - name: Versioning and Changelog
         run: |
           npx standard-version
