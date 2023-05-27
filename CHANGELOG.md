@@ -1,6 +1,13 @@
 # Changelog
 
 
+### [5.0.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.0.0...v5.0.1) (2023-05-27)
+
+
+### Bug Fixes
+
+* revert ignoring schema files; fix [#49](https://github.com/muhlba91/pulumi-proxmoxve/issues/49) ([6492ae3](https://github.com/muhlba91/pulumi-proxmoxve/commit/6492ae3dde3c09ce6872ab30b64e8d0cff27b2a7))
+
 ## [5.0.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v4.1.1...v5.0.0) (2023-05-24)
 
 
