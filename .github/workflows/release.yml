@@ -127,7 +127,7 @@ jobs:
         run: cp -rf ${{ github.workspace }}/sdk/nodejs/scripts ${{ github.workspace }}/sdk/nodejs/bin/
         if: matrix.language == 'nodejs'
       - name: Publish NodeJS SDK
-        uses: JS-DevTools/npm-publish@v1
+        uses: JS-DevTools/npm-publish@v2
         with:
           package: ./sdk/nodejs/bin/package.json
           access: public
