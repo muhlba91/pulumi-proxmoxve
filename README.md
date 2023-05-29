@@ -21,6 +21,7 @@ The provider is built on https://github.com/bpg/terraform-provider-proxmox.
 This package is available in many languages in the standard packaging formats.
 
 ### Installing the Plugin
+
 1. Download the appropriate archive file from the Releases page:
    `wget https://github.com/muhlba91/pulumi-proxmoxve/releases/download/vX.Y.Z/pulumi-resource-proxmoxve-vX.Y.Z-OPERATING_SYSTEM-ARCH.tar.gz`
 2. Add the plugin to Pulumi:
@@ -70,6 +71,7 @@ Unfortunately, configuration via environment variables is not (yet) working.
 To configure the provider you must create and pass it through.
 
 Example for *Typescript*:
+
 ```typescript
 import * as proxmox from '@muhlba91/pulumi-proxmoxve';
 
