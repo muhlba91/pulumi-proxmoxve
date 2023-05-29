@@ -4,13 +4,6 @@ name: Pipeline
 on:
   pull_request:
   push:
-    branches:
-      - "*"
-    paths:
-      - "provider/**"
-      - "sdk/**"
-      - "Makefile"
-      - ".goreleaser.yml"
 
 permissions:
   contents: read
@@ -112,30 +105,3 @@ jobs:
 
       - name: Build SDK
         run: make build_${{ matrix.language }}
-
-  tag:
-    runs-on: ubuntu-latest
-    name: Tag Release
-    if: github.ref == 'refs/heads/main'
-    needs:
-      - provider
-      - sdk
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-          token: "${{ secrets.GH_PUSH_TOKEN }}"
-      - name: Setup Git
-        run: |
-          git config --local user.email "${{ env.GITHUB_ACTION }}+github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git fetch --tags
-
-      - name: Versioning and Changelog
-        run: |
-          npx standard-version
-      - name: Push to Repository
-        run: |
-          git push --follow-tags
