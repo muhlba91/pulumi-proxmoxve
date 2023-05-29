@@ -1,5 +1,5 @@
 ---
-name: Pipeline
+name: Verify
 
 on:
   pull_request:
@@ -17,7 +17,7 @@ env:
 jobs:
   provider:
     runs-on: ubuntu-latest
-    name: Build Provider
+    name: Lint Provider
     strategy:
       max-parallel: 4
       matrix:
