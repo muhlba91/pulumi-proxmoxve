@@ -41,7 +41,7 @@ jobs:
         with:
           repo: pulumi/pulumictl
       - name: Install Pulumi CLI
-        uses: pulumi/setup-pulumi@v2
+        uses: pulumi/actions@v4
 
       - name: Release via GoReleaser
         uses: goreleaser/goreleaser-action@v4
@@ -85,7 +85,7 @@ jobs:
         with:
           repo: pulumi/pulumictl
       - name: Install Pulumi CLI
-        uses: pulumi/setup-pulumi@v2
+        uses: pulumi/actions@v4
 
       - name: Setup DotNet
         uses: actions/setup-dotnet@v3

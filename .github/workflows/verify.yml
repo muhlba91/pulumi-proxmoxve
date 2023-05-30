@@ -40,7 +40,7 @@ jobs:
         with:
           repo: pulumi/pulumictl
       - name: Install Pulumi CLI
-        uses: pulumi/setup-pulumi@v2
+        uses: pulumi/actions@v4
 
       - name: Build Provider
         run: make provider
@@ -85,7 +85,7 @@ jobs:
         with:
           repo: pulumi/pulumictl
       - name: Install Pulumi CLI
-        uses: pulumi/setup-pulumi@v2
+        uses: pulumi/actions@v4
 
       - name: Setup DotNet
         uses: actions/setup-dotnet@v3
