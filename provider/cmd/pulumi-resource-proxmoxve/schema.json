@@ -56,6 +56,11 @@
     },
     "config": {
         "variables": {
+            "apiToken": {
+                "type": "string",
+                "description": "The API token for the Proxmox Virtual Environment API\n",
+                "secret": true
+            },
             "endpoint": {
                 "type": "string",
                 "description": "The endpoint for the Proxmox Virtual Environment API\n"
@@ -70,7 +75,8 @@
             },
             "password": {
                 "type": "string",
-                "description": "The password for the Proxmox Virtual Environment API\n"
+                "description": "The password for the Proxmox Virtual Environment API\n",
+                "secret": true
             },
             "ssh": {
                 "$ref": "#/types/proxmoxve:config/ssh:ssh",
@@ -972,7 +978,14 @@
                     "type": "integer"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "macAddress"
+                    ]
+                }
+            }
         },
         "proxmoxve:VM/VirtualMachineOperatingSystem:VirtualMachineOperatingSystem": {
             "properties": {
@@ -1043,8 +1056,12 @@
                 "agentSocket": {
                     "type": "string"
                 },
+                "node": {
+                    "$ref": "#/types/proxmoxve:config/sshNode:sshNode"
+                },
                 "password": {
-                    "type": "string"
+                    "type": "string",
+                    "secret": true
                 },
                 "username": {
                     "type": "string"
@@ -1052,8 +1069,32 @@
             },
             "type": "object"
         },
+        "proxmoxve:config/sshNode:sshNode": {
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "address",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "proxmoxve:config/virtualEnvironment:virtualEnvironment": {
             "properties": {
+                "apiToken": {
+                    "type": "string",
+                    "secret": true
+                },
                 "endpoint": {
                     "type": "string"
                 },
@@ -1064,7 +1105,8 @@
                     "type": "string"
                 },
                 "password": {
-                    "type": "string"
+                    "type": "string",
+                    "secret": true
                 },
                 "ssh": {
                     "$ref": "#/types/proxmoxve:config/virtualEnvironmentSsh:virtualEnvironmentSsh"
@@ -1083,14 +1125,38 @@
                 "agentSocket": {
                     "type": "string"
                 },
+                "node": {
+                    "$ref": "#/types/proxmoxve:config/virtualEnvironmentSshNode:virtualEnvironmentSshNode"
+                },
                 "password": {
-                    "type": "string"
+                    "type": "string",
+                    "secret": true
                 },
                 "username": {
                     "type": "string"
                 }
             },
             "type": "object"
+        },
+        "proxmoxve:config/virtualEnvironmentSshNode:virtualEnvironmentSshNode": {
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "address",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "proxmoxve:index/HostsEntry:HostsEntry": {
             "properties": {
@@ -1118,8 +1184,12 @@
                 "agentSocket": {
                     "type": "string"
                 },
+                "node": {
+                    "$ref": "#/types/proxmoxve:index/ProviderSshNode:ProviderSshNode"
+                },
                 "password": {
-                    "type": "string"
+                    "type": "string",
+                    "secret": true
                 },
                 "username": {
                     "type": "string"
@@ -1127,8 +1197,32 @@
             },
             "type": "object"
         },
+        "proxmoxve:index/ProviderSshNode:ProviderSshNode": {
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "address",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": []
+                }
+            }
+        },
         "proxmoxve:index/ProviderVirtualEnvironment:ProviderVirtualEnvironment": {
             "properties": {
+                "apiToken": {
+                    "type": "string",
+                    "secret": true
+                },
                 "endpoint": {
                     "type": "string"
                 },
@@ -1139,7 +1233,8 @@
                     "type": "string"
                 },
                 "password": {
-                    "type": "string"
+                    "type": "string",
+                    "secret": true
                 },
                 "ssh": {
                     "$ref": "#/types/proxmoxve:index/ProviderVirtualEnvironmentSsh:ProviderVirtualEnvironmentSsh"
@@ -1158,14 +1253,38 @@
                 "agentSocket": {
                     "type": "string"
                 },
+                "node": {
+                    "$ref": "#/types/proxmoxve:index/ProviderVirtualEnvironmentSshNode:ProviderVirtualEnvironmentSshNode"
+                },
                 "password": {
-                    "type": "string"
+                    "type": "string",
+                    "secret": true
                 },
                 "username": {
                     "type": "string"
                 }
             },
             "type": "object"
+        },
+        "proxmoxve:index/ProviderVirtualEnvironmentSshNode:ProviderVirtualEnvironmentSshNode": {
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "address",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": []
+                }
+            }
         },
         "proxmoxve:index/getHostsEntry:getHostsEntry": {
             "properties": {
@@ -1194,6 +1313,11 @@
     "provider": {
         "description": "The provider type for the proxmoxve package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
         "properties": {
+            "apiToken": {
+                "type": "string",
+                "description": "The API token for the Proxmox Virtual Environment API\n",
+                "secret": true
+            },
             "endpoint": {
                 "type": "string",
                 "description": "The endpoint for the Proxmox Virtual Environment API\n"
@@ -1208,7 +1332,8 @@
             },
             "password": {
                 "type": "string",
-                "description": "The password for the Proxmox Virtual Environment API\n"
+                "description": "The password for the Proxmox Virtual Environment API\n",
+                "secret": true
             },
             "ssh": {
                 "$ref": "#/types/proxmoxve:index/ProviderSsh:ProviderSsh",
@@ -1224,6 +1349,11 @@
             }
         },
         "inputProperties": {
+            "apiToken": {
+                "type": "string",
+                "description": "The API token for the Proxmox Virtual Environment API\n",
+                "secret": true
+            },
             "endpoint": {
                 "type": "string",
                 "description": "The endpoint for the Proxmox Virtual Environment API\n"
@@ -1238,7 +1368,8 @@
             },
             "password": {
                 "type": "string",
-                "description": "The password for the Proxmox Virtual Environment API\n"
+                "description": "The password for the Proxmox Virtual Environment API\n",
+                "secret": true
             },
             "ssh": {
                 "$ref": "#/types/proxmoxve:index/ProviderSsh:ProviderSsh",
