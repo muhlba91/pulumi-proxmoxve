@@ -1,6 +1,14 @@
 # Changelog
 
 
+## [5.1.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.0.1...v5.1.0) (2023-06-01)
+
+
+### Features
+
+* update dependencies ([17f4a78](https://github.com/muhlba91/pulumi-proxmoxve/commit/17f4a78f0af6b336facb86d7b3b38d958e1aa092))
+* update upstream to 0.21.0 ([95d1022](https://github.com/muhlba91/pulumi-proxmoxve/commit/95d10224be995cdb0279e05c09ee0dc3f118df68))
+
 ### [5.0.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.0.0...v5.0.1) (2023-05-27)
 
 
