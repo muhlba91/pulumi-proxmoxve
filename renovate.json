@@ -2,7 +2,8 @@
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "extends": [
         "config:base",
-        ":dependencyDashboard"
+        ":dependencyDashboard",
+	":semanticCommitTypeAll(chore)"
     ],
     "prHourlyLimit": 0,
     "prConcurrentLimit": 0,
@@ -15,20 +16,17 @@
         "npm"
     ],
     "github-actions": {
-        "commitMessageTopic": "chore(deps): update github actions {{ depName }}",
         "fileMatch": [
             "^(workflow-templates|\\.github/workflows)/[^/]+\\.ya?ml$",
             "(^|/)action\\.ya?ml$"
         ]
     },
     "gomod": {
-        "commitMessageTopic": "chore(deps): update go module {{ depName }}",
         "fileMatch": [
             "(^|/)go\\.mod$"
         ]
     },
     "npm": {
-        "commitMessageTopic": "chore(deps): update npm dependency {{ depName }}",
         "fileMatch": [
             "(^|/)package\\.json$"
         ],
