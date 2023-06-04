@@ -11,7 +11,7 @@
     "license": "Apache-2.0",
     "attribution": "This Pulumi package is based on the [`proxmoxve` Terraform Provider](https://github.com/bpg/terraform-provider-proxmoxve).",
     "repository": "https://github.com/muhlba91/pulumi-proxmoxve",
-    "logoUrl": "https://raw.githubusercontent.com/muhlba91/pulumi-proxmoxve/main/assets/proxmoxve-logo.svg",
+    "logoUrl": "https://raw.githubusercontent.com/muhlba91/pulumi-proxmoxve/main/assets/proxmox-logo.png",
     "pluginDownloadURL": "github://api.github.com/muhlba91/pulumi-proxmoxve",
     "publisher": "Daniel Muehlbachler-Pietrzykowski",
     "meta": {
