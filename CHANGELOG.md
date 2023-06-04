@@ -1,6 +1,13 @@
 # Changelog
 
 
+### [5.1.2](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.1.1...v5.1.2) (2023-06-04)
+
+
+### Bug Fixes
+
+* change logo from svg to png for nuget ([2049b2a](https://github.com/muhlba91/pulumi-proxmoxve/commit/2049b2a2273c4ec3cd68057bf1938074e08c1d49))
+
 ### [5.1.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.1.0...v5.1.1) (2023-06-04)
 
 
