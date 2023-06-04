@@ -1,6 +1,15 @@
 # Changelog
 
 
+### [5.1.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.1.0...v5.1.1) (2023-06-04)
+
+
+### Bug Fixes
+
+* **ci:** add permissions for release workflow ([ac79e47](https://github.com/muhlba91/pulumi-proxmoxve/commit/ac79e47c7da68b77d3147d077ca1ce33df2af4bf))
+* **ci:** fix renovate commit message ([206ee1d](https://github.com/muhlba91/pulumi-proxmoxve/commit/206ee1daf016f083901de7ae0ea42f73c21b9cb8))
+* fix resource descriptions ([5e47209](https://github.com/muhlba91/pulumi-proxmoxve/commit/5e47209a36173503c2c653cbaff4e47939a747cb))
+
 ## [5.1.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.0.1...v5.1.0) (2023-06-01)
 
 

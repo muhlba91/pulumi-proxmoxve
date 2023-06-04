@@ -64,6 +64,7 @@ func Provider() tfbridge.ProviderInfo {
 		License:              "Apache-2.0",
 		Homepage:             "https://github.com/muhlba91/pulumi-proxmoxve",
 		Repository:           "https://github.com/muhlba91/pulumi-proxmoxve",
+		LogoURL:              "https://raw.githubusercontent.com/muhlba91/pulumi-proxmoxve/main/assets/proxmoxve-logo.svg",
 		GitHubOrg:            "bpg",
 		PluginDownloadURL:    "github://api.github.com/muhlba91/pulumi-proxmoxve",
 		Config:               map[string]*tfbridge.SchemaInfo{},

@@ -20,6 +20,9 @@ jobs:
   publish_provider:
     runs-on: ubuntu-latest
     name: Publish Provider
+    permissions:
+      id-token: write
+      contents: write
     strategy:
       max-parallel: 4
       matrix:
@@ -148,6 +151,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+          token: ${{ secrets.GH_PAT_TOKEN }}
       - name: Setup Git
         run: |
           git config --local user.email "${{ env.GITHUB_ACTION }}+github-actions[bot]@users.noreply.github.com"
