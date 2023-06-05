@@ -3,7 +3,7 @@
     "extends": [
         "config:base",
         ":dependencyDashboard",
-	":semanticCommitTypeAll(chore)"
+        ":semanticCommitTypeAll(chore)"
     ],
     "prHourlyLimit": 0,
     "prConcurrentLimit": 0,
@@ -16,7 +16,8 @@
         "sdk/nodejs/**",
         "sdk/go/**",
         "sdk/dotnet/**",
-        "sdk/python/**"
+        "sdk/python/**",
+        "sdk/java/**"
     ],
     "enabledManagers": [
         "github-actions",

@@ -32,6 +32,11 @@
             "generateResourceContainerTypes": true,
             "importBasePath": "github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve"
         },
+        "java": {
+            "basePackage": "io.muehlbachler.pulumi",
+            "buildFiles": "",
+            "gradleNexusPublishPluginVersion": ""
+        },
         "nodejs": {
             "compatibility": "tfbridge20",
             "dependencies": {
