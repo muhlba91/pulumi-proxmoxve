@@ -58,6 +58,9 @@ jobs:
   publish_sdk:
     runs-on: ubuntu-latest
     name: Publish SDK
+    permissions:
+      id-token: write
+      contents: read
     needs:
       - publish_provider
     strategy:
