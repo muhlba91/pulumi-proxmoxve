@@ -10,6 +10,14 @@
     "baseBranches": [
         "main"
     ],
+    "ignorePaths": [
+        "**/node_modules/**",
+        "**/bower_components/**",
+        "sdk/nodejs/**",
+        "sdk/go/**",
+        "sdk/dotnet/**",
+        "sdk/python/**"
+    ],
     "enabledManagers": [
         "github-actions",
         "gomod",
