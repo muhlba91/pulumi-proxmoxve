@@ -1,6 +1,19 @@
 # Changelog
 
 
+## [5.3.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.2.0...v5.3.0) (2023-06-05)
+
+
+### Features
+
+* add java sdk ([9802ffd](https://github.com/muhlba91/pulumi-proxmoxve/commit/9802ffd0848bacabf5cc7af8aeb5595c62f7c2a7))
+
+
+### Bug Fixes
+
+* **ci:** add permissions for npm provenance ([3eefd6a](https://github.com/muhlba91/pulumi-proxmoxve/commit/3eefd6ad95a2fd27ddd2dc68c2948893625f8065))
+* **ci:** ignore sdk paths for renovate ([2a09b41](https://github.com/muhlba91/pulumi-proxmoxve/commit/2a09b414cb59d5b8af2a9f2acdc5f84bb641827c))
+
 ## [5.2.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.1.2...v5.2.0) (2023-06-05)
 
 
