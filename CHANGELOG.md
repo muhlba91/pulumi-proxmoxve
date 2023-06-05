@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [5.4.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.3.0...v5.4.0) (2023-06-05)
+
+
+### Features
+
+* upgrade node version 18 for builds ([b3f4ebb](https://github.com/muhlba91/pulumi-proxmoxve/commit/b3f4ebbccaeb3b4f112996d6ae89c88f89bb3d63))
+
 ## [5.3.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.2.0...v5.3.0) (2023-06-05)
 
 
