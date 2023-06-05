@@ -21,16 +21,43 @@ builds:
     ldflags:
       - -X github.com/muhlba91/pulumi-proxmoxve/provider/pkg/version.Version={{ .Tag }}
     main: ./cmd/pulumi-resource-proxmoxve/
+source:
+  enabled: true
+signs:
+  - cmd: cosign
+    env:
+      - COSIGN_EXPERIMENTAL=1
+    certificate: '${artifact}.pem'
+    args:
+      - sign-blob
+      - --yes
+      - '--output-certificate=${certificate}'
+      - '--bundle=${signature}'
+      - '${artifact}'
+    artifacts: all
+    output: true
+sboms:
+  - artifacts: archive
+  - id: source
+    artifacts: source
 changelog:
   skip: false
   use: github
   filters:
     exclude:
-      - '^docs:'
-      - '^chore:'
-      - '^chore\(.*\):'
-      - typo
+      - '^docs'
+      - '^chore'
+  groups:	
+    - title: 'New Features'	
+      regexp: "^.*feat[(\\w)]*:+.*$"	
+      order: 0	
+    - title: 'Bugfixes'	
+      regexp: "^.*fix[(\\w)]*:+.*$"	
+      order: 10	
+    - title: Other Work	
+      order: 999
 release:
   disable: false
+  prerelease: auto
 snapshot:
   name_template: '{{ .Tag }}-SNAPSHOT'
