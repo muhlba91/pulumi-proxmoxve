@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [5.2.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.1.2...v5.2.0) (2023-06-05)
+
+
+### Features
+
+* update dependencies; unignore sdks ([8ab72c7](https://github.com/muhlba91/pulumi-proxmoxve/commit/8ab72c7c0d87e5188b14a0a4ddc0368e39d85869))
+
 ### [5.1.2](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.1.1...v5.1.2) (2023-06-04)
 
 
