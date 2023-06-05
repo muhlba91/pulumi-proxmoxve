@@ -148,6 +148,9 @@ func Provider() tfbridge.ProviderInfo {
 				mainPkg: "ProxmoxVE",
 			},
 		},
+		Java: &tfbridge.JavaInfo{
+			BasePackage: "io.muehlbachler.pulumi",
+		},
 	}
 
 	prov.SetAutonaming(255, "-")

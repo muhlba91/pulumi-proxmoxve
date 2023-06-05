@@ -60,17 +60,19 @@ jobs:
     runs-on: ubuntu-latest
     name: Build SDK
     strategy:
-      max-parallel: 4
+      max-parallel: 10
       matrix:
         go-version: [1.20.x]
         node-version: [16]
         dotnet-version: [3.1.301]
         python-version: [3.9]
+        java-version: [11]
         language:
           - go
           - nodejs
           - python
           - dotnet
+          - java
 
     steps:
       - name: Checkout repository
@@ -105,6 +107,15 @@ jobs:
         with:
           node-version: "${{ matrix.node-version }}"
         if: matrix.language == 'nodejs'
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: corretto
+          java-version: ${{ matrix.java-version }}
+        if: matrix.language == 'java'
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+        if: matrix.language == 'java'
 
       - name: Build SDK
         run: make build_${{ matrix.language }}

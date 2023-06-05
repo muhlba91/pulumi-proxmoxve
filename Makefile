@@ -12,6 +12,9 @@ TFGEN           := pulumi-tfgen-${PACK}
 PROVIDER        := pulumi-resource-${PACK}
 VERSION         := $(shell pulumictl get version)
 
+JAVA_GEN 		 := pulumi-java-gen
+JAVA_GEN_VERSION := v0.9.3
+
 TESTPARALLELISM := 4
 
 WORKING_DIR     := $(shell pwd)
@@ -38,7 +41,7 @@ prepare::
 		find ./ ! -path './.git/*' -type f -exec sed -i '' 's/[x]yz/${NAME}/g' {} \; &> /dev/null; \
 	fi
 
-.PHONY: development provider build_sdks build_nodejs build_dotnet build_go build_python cleanup
+.PHONY: development provider build_sdks build_nodejs build_dotnet build_go build_python build_java cleanup
 
 development:: install_plugins provider lint_provider build_sdks install_sdks cleanup # Build the provider & SDKs for a development environment
 
@@ -54,7 +57,7 @@ tfgen:: install_plugins
 provider:: tfgen install_plugins # build the provider binary
 	(cd provider && go build -o $(WORKING_DIR)/bin/${PROVIDER} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${PROVIDER})
 
-build_sdks:: install_plugins provider build_nodejs build_python build_go build_dotnet # build all the sdks
+build_sdks:: install_plugins provider build_nodejs build_python build_go build_java build_dotnet # build all the sdks
 
 build_nodejs:: VERSION := $(shell pulumictl get version --language javascript)
 build_nodejs:: install_plugins tfgen # build the node sdk
@@ -87,6 +90,15 @@ build_dotnet:: install_plugins tfgen # build the dotnet sdk
 		echo "${DOTNET_VERSION}" >version.txt && \
         dotnet build /p:Version=${DOTNET_VERSION}
 
+build_java:: PACKAGE_VERSION := $(shell pulumictl get version --language generic)
+build_java:: install_plugins tfgen bin/pulumi-java-gen # build the java sdk
+	rm -rf sdk/dotnet/
+	pulumictl get version --language generic
+	$(WORKING_DIR)/bin/$(JAVA_GEN) generate --schema provider/cmd/$(PROVIDER)/schema.json --build gradle-nexus --out sdk/java
+	cd sdk/java/ && \
+		echo "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.20" > go.mod && \
+        gradle --console=plain build
+
 build_go:: install_plugins tfgen # build the go sdk
 	rm -rf sdk/go/
 	$(WORKING_DIR)/bin/$(TFGEN) go --overlays provider/overlays/go --out sdk/go/
@@ -108,7 +120,6 @@ clean::
 
 install_plugins::
 	[ -x $(shell which pulumi) ] || curl -fsSL https://get.pulumi.com | sh
-	pulumi plugin install resource random 4.3.1
 
 install_dotnet_sdk::
 	mkdir -p $(WORKING_DIR)/nuget
@@ -121,7 +132,12 @@ install_go_sdk::
 install_nodejs_sdk::
 	yarn link --cwd $(WORKING_DIR)/sdk/nodejs/bin
 
-install_sdks:: install_dotnet_sdk install_python_sdk install_nodejs_sdk
+install_java_sdk::
+
+install_sdks:: install_python_sdk install_nodejs_sdk install_java_sdk install_dotnet_sdk
 
 test::
 	cd examples && go test -v -tags=all -parallel ${TESTPARALLELISM} -timeout 2h
+
+bin/pulumi-java-gen:
+	pulumictl download-binary -n pulumi-language-java -v $(JAVA_GEN_VERSION) -r pulumi/pulumi-java
