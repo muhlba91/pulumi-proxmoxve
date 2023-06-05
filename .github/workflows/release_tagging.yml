@@ -10,6 +10,7 @@ on:
       - "sdk/**"
       - "Makefile"
       - ".goreleaser.yml"
+  workflow_dispatch:
 
 permissions:
   contents: read
