@@ -1062,8 +1062,11 @@
                 "agentSocket": {
                     "type": "string"
                 },
-                "node": {
-                    "$ref": "#/types/proxmoxve:config/sshNode:sshNode"
+                "nodes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/proxmoxve:config/sshNode:sshNode"
+                    }
                 },
                 "password": {
                     "type": "string",
@@ -1131,8 +1134,11 @@
                 "agentSocket": {
                     "type": "string"
                 },
-                "node": {
-                    "$ref": "#/types/proxmoxve:config/virtualEnvironmentSshNode:virtualEnvironmentSshNode"
+                "nodes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/proxmoxve:config/virtualEnvironmentSshNode:virtualEnvironmentSshNode"
+                    }
                 },
                 "password": {
                     "type": "string",
@@ -1190,8 +1196,11 @@
                 "agentSocket": {
                     "type": "string"
                 },
-                "node": {
-                    "$ref": "#/types/proxmoxve:index/ProviderSshNode:ProviderSshNode"
+                "nodes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/proxmoxve:index/ProviderSshNode:ProviderSshNode"
+                    }
                 },
                 "password": {
                     "type": "string",
@@ -1259,8 +1268,11 @@
                 "agentSocket": {
                     "type": "string"
                 },
-                "node": {
-                    "$ref": "#/types/proxmoxve:index/ProviderVirtualEnvironmentSshNode:ProviderVirtualEnvironmentSshNode"
+                "nodes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/proxmoxve:index/ProviderVirtualEnvironmentSshNode:ProviderVirtualEnvironmentSshNode"
+                    }
                 },
                 "password": {
                     "type": "string",
@@ -2966,7 +2978,8 @@
                 "macAddresses",
                 "name",
                 "networkInterfaceNames",
-                "nodeName"
+                "nodeName",
+                "vmId"
             ],
             "inputProperties": {
                 "acpi": {
@@ -3138,8 +3151,7 @@
                 },
                 "vmId": {
                     "type": "integer",
-                    "description": "The VM identifier\n",
-                    "willReplaceOnChanges": true
+                    "description": "The VM identifier\n"
                 }
             },
             "requiredInputs": [
@@ -3351,8 +3363,7 @@
                     },
                     "vmId": {
                         "type": "integer",
-                        "description": "The VM identifier\n",
-                        "willReplaceOnChanges": true
+                        "description": "The VM identifier\n"
                     }
                 },
                 "type": "object"

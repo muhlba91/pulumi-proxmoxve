@@ -18,8 +18,13 @@ namespace Pulumi.ProxmoxVE.Inputs
         [Input("agentSocket")]
         public Input<string>? AgentSocket { get; set; }
 
-        [Input("node")]
-        public Input<Inputs.ProviderVirtualEnvironmentSshNodeArgs>? Node { get; set; }
+        [Input("nodes")]
+        private InputList<Inputs.ProviderVirtualEnvironmentSshNodeArgs>? _nodes;
+        public InputList<Inputs.ProviderVirtualEnvironmentSshNodeArgs> Nodes
+        {
+            get => _nodes ?? (_nodes = new InputList<Inputs.ProviderVirtualEnvironmentSshNodeArgs>());
+            set => _nodes = value;
+        }
 
         [Input("password")]
         private Input<string>? _password;

@@ -1942,7 +1942,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vmId")
-    def vm_id(self) -> pulumi.Output[Optional[int]]:
+    def vm_id(self) -> pulumi.Output[int]:
         """
         The VM identifier
         """

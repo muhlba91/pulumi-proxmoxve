@@ -197,7 +197,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * The VM identifier
      */
-    public readonly vmId!: pulumi.Output<number | undefined>;
+    public readonly vmId!: pulumi.Output<number>;
 
     /**
      * Create a VirtualMachine resource with the given unique name, arguments, and options.

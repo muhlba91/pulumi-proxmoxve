@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import io.muehlbachler.pulumi.proxmoxve.inputs.ProviderVirtualEnvironmentSshNodeArgs;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -31,11 +32,11 @@ public final class ProviderVirtualEnvironmentSshArgs extends com.pulumi.resource
         return Optional.ofNullable(this.agentSocket);
     }
 
-    @Import(name="node")
-    private @Nullable Output<ProviderVirtualEnvironmentSshNodeArgs> node;
+    @Import(name="nodes")
+    private @Nullable Output<List<ProviderVirtualEnvironmentSshNodeArgs>> nodes;
 
-    public Optional<Output<ProviderVirtualEnvironmentSshNodeArgs>> node() {
-        return Optional.ofNullable(this.node);
+    public Optional<Output<List<ProviderVirtualEnvironmentSshNodeArgs>>> nodes() {
+        return Optional.ofNullable(this.nodes);
     }
 
     @Import(name="password")
@@ -57,7 +58,7 @@ public final class ProviderVirtualEnvironmentSshArgs extends com.pulumi.resource
     private ProviderVirtualEnvironmentSshArgs(ProviderVirtualEnvironmentSshArgs $) {
         this.agent = $.agent;
         this.agentSocket = $.agentSocket;
-        this.node = $.node;
+        this.nodes = $.nodes;
         this.password = $.password;
         this.username = $.username;
     }
@@ -98,13 +99,17 @@ public final class ProviderVirtualEnvironmentSshArgs extends com.pulumi.resource
             return agentSocket(Output.of(agentSocket));
         }
 
-        public Builder node(@Nullable Output<ProviderVirtualEnvironmentSshNodeArgs> node) {
-            $.node = node;
+        public Builder nodes(@Nullable Output<List<ProviderVirtualEnvironmentSshNodeArgs>> nodes) {
+            $.nodes = nodes;
             return this;
         }
 
-        public Builder node(ProviderVirtualEnvironmentSshNodeArgs node) {
-            return node(Output.of(node));
+        public Builder nodes(List<ProviderVirtualEnvironmentSshNodeArgs> nodes) {
+            return nodes(Output.of(nodes));
+        }
+
+        public Builder nodes(ProviderVirtualEnvironmentSshNodeArgs... nodes) {
+            return nodes(List.of(nodes));
         }
 
         public Builder password(@Nullable Output<String> password) {

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import io.muehlbachler.pulumi.proxmoxve.inputs.ProviderSshNodeArgs;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -31,11 +32,11 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.agentSocket);
     }
 
-    @Import(name="node")
-    private @Nullable Output<ProviderSshNodeArgs> node;
+    @Import(name="nodes")
+    private @Nullable Output<List<ProviderSshNodeArgs>> nodes;
 
-    public Optional<Output<ProviderSshNodeArgs>> node() {
-        return Optional.ofNullable(this.node);
+    public Optional<Output<List<ProviderSshNodeArgs>>> nodes() {
+        return Optional.ofNullable(this.nodes);
     }
 
     @Import(name="password")
@@ -57,7 +58,7 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
     private ProviderSshArgs(ProviderSshArgs $) {
         this.agent = $.agent;
         this.agentSocket = $.agentSocket;
-        this.node = $.node;
+        this.nodes = $.nodes;
         this.password = $.password;
         this.username = $.username;
     }
@@ -98,13 +99,17 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
             return agentSocket(Output.of(agentSocket));
         }
 
-        public Builder node(@Nullable Output<ProviderSshNodeArgs> node) {
-            $.node = node;
+        public Builder nodes(@Nullable Output<List<ProviderSshNodeArgs>> nodes) {
+            $.nodes = nodes;
             return this;
         }
 
-        public Builder node(ProviderSshNodeArgs node) {
-            return node(Output.of(node));
+        public Builder nodes(List<ProviderSshNodeArgs> nodes) {
+            return nodes(Output.of(nodes));
+        }
+
+        public Builder nodes(ProviderSshNodeArgs... nodes) {
+            return nodes(List.of(nodes));
         }
 
         public Builder password(@Nullable Output<String> password) {

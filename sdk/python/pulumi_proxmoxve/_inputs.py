@@ -50,15 +50,15 @@ class ProviderSshArgs:
     def __init__(__self__, *,
                  agent: Optional[pulumi.Input[bool]] = None,
                  agent_socket: Optional[pulumi.Input[str]] = None,
-                 node: Optional[pulumi.Input['ProviderSshNodeArgs']] = None,
+                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input['ProviderSshNodeArgs']]]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         if agent is not None:
             pulumi.set(__self__, "agent", agent)
         if agent_socket is not None:
             pulumi.set(__self__, "agent_socket", agent_socket)
-        if node is not None:
-            pulumi.set(__self__, "node", node)
+        if nodes is not None:
+            pulumi.set(__self__, "nodes", nodes)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if username is not None:
@@ -84,12 +84,12 @@ class ProviderSshArgs:
 
     @property
     @pulumi.getter
-    def node(self) -> Optional[pulumi.Input['ProviderSshNodeArgs']]:
-        return pulumi.get(self, "node")
+    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProviderSshNodeArgs']]]]:
+        return pulumi.get(self, "nodes")
 
-    @node.setter
-    def node(self, value: Optional[pulumi.Input['ProviderSshNodeArgs']]):
-        pulumi.set(self, "node", value)
+    @nodes.setter
+    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProviderSshNodeArgs']]]]):
+        pulumi.set(self, "nodes", value)
 
     @property
     @pulumi.getter
@@ -231,15 +231,15 @@ class ProviderVirtualEnvironmentSshArgs:
     def __init__(__self__, *,
                  agent: Optional[pulumi.Input[bool]] = None,
                  agent_socket: Optional[pulumi.Input[str]] = None,
-                 node: Optional[pulumi.Input['ProviderVirtualEnvironmentSshNodeArgs']] = None,
+                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input['ProviderVirtualEnvironmentSshNodeArgs']]]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         if agent is not None:
             pulumi.set(__self__, "agent", agent)
         if agent_socket is not None:
             pulumi.set(__self__, "agent_socket", agent_socket)
-        if node is not None:
-            pulumi.set(__self__, "node", node)
+        if nodes is not None:
+            pulumi.set(__self__, "nodes", nodes)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if username is not None:
@@ -265,12 +265,12 @@ class ProviderVirtualEnvironmentSshArgs:
 
     @property
     @pulumi.getter
-    def node(self) -> Optional[pulumi.Input['ProviderVirtualEnvironmentSshNodeArgs']]:
-        return pulumi.get(self, "node")
+    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProviderVirtualEnvironmentSshNodeArgs']]]]:
+        return pulumi.get(self, "nodes")
 
-    @node.setter
-    def node(self, value: Optional[pulumi.Input['ProviderVirtualEnvironmentSshNodeArgs']]):
-        pulumi.set(self, "node", value)
+    @nodes.setter
+    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProviderVirtualEnvironmentSshNodeArgs']]]]):
+        pulumi.set(self, "nodes", value)
 
     @property
     @pulumi.getter

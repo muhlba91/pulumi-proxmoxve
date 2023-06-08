@@ -354,7 +354,7 @@ export namespace config {
     export interface Ssh {
         agent?: boolean;
         agentSocket?: string;
-        node?: outputs.config.SshNode;
+        nodes?: outputs.config.SshNode[];
         password?: string;
         username?: string;
     }
@@ -377,7 +377,7 @@ export namespace config {
     export interface VirtualEnvironmentSsh {
         agent?: boolean;
         agentSocket?: string;
-        node?: outputs.config.VirtualEnvironmentSshNode;
+        nodes?: outputs.config.VirtualEnvironmentSshNode[];
         password?: string;
         username?: string;
     }

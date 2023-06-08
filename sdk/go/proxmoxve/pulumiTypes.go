@@ -111,11 +111,11 @@ func (o HostsEntryArrayOutput) Index(i pulumi.IntInput) HostsEntryOutput {
 }
 
 type ProviderSsh struct {
-	Agent       *bool            `pulumi:"agent"`
-	AgentSocket *string          `pulumi:"agentSocket"`
-	Node        *ProviderSshNode `pulumi:"node"`
-	Password    *string          `pulumi:"password"`
-	Username    *string          `pulumi:"username"`
+	Agent       *bool             `pulumi:"agent"`
+	AgentSocket *string           `pulumi:"agentSocket"`
+	Nodes       []ProviderSshNode `pulumi:"nodes"`
+	Password    *string           `pulumi:"password"`
+	Username    *string           `pulumi:"username"`
 }
 
 // ProviderSshInput is an input type that accepts ProviderSshArgs and ProviderSshOutput values.
@@ -130,11 +130,11 @@ type ProviderSshInput interface {
 }
 
 type ProviderSshArgs struct {
-	Agent       pulumi.BoolPtrInput     `pulumi:"agent"`
-	AgentSocket pulumi.StringPtrInput   `pulumi:"agentSocket"`
-	Node        ProviderSshNodePtrInput `pulumi:"node"`
-	Password    pulumi.StringPtrInput   `pulumi:"password"`
-	Username    pulumi.StringPtrInput   `pulumi:"username"`
+	Agent       pulumi.BoolPtrInput       `pulumi:"agent"`
+	AgentSocket pulumi.StringPtrInput     `pulumi:"agentSocket"`
+	Nodes       ProviderSshNodeArrayInput `pulumi:"nodes"`
+	Password    pulumi.StringPtrInput     `pulumi:"password"`
+	Username    pulumi.StringPtrInput     `pulumi:"username"`
 }
 
 func (ProviderSshArgs) ElementType() reflect.Type {
@@ -222,8 +222,8 @@ func (o ProviderSshOutput) AgentSocket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderSsh) *string { return v.AgentSocket }).(pulumi.StringPtrOutput)
 }
 
-func (o ProviderSshOutput) Node() ProviderSshNodePtrOutput {
-	return o.ApplyT(func(v ProviderSsh) *ProviderSshNode { return v.Node }).(ProviderSshNodePtrOutput)
+func (o ProviderSshOutput) Nodes() ProviderSshNodeArrayOutput {
+	return o.ApplyT(func(v ProviderSsh) []ProviderSshNode { return v.Nodes }).(ProviderSshNodeArrayOutput)
 }
 
 func (o ProviderSshOutput) Password() pulumi.StringPtrOutput {
@@ -276,13 +276,13 @@ func (o ProviderSshPtrOutput) AgentSocket() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ProviderSshPtrOutput) Node() ProviderSshNodePtrOutput {
-	return o.ApplyT(func(v *ProviderSsh) *ProviderSshNode {
+func (o ProviderSshPtrOutput) Nodes() ProviderSshNodeArrayOutput {
+	return o.ApplyT(func(v *ProviderSsh) []ProviderSshNode {
 		if v == nil {
 			return nil
 		}
-		return v.Node
-	}).(ProviderSshNodePtrOutput)
+		return v.Nodes
+	}).(ProviderSshNodeArrayOutput)
 }
 
 func (o ProviderSshPtrOutput) Password() pulumi.StringPtrOutput {
@@ -336,45 +336,29 @@ func (i ProviderSshNodeArgs) ToProviderSshNodeOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderSshNodeOutput)
 }
 
-func (i ProviderSshNodeArgs) ToProviderSshNodePtrOutput() ProviderSshNodePtrOutput {
-	return i.ToProviderSshNodePtrOutputWithContext(context.Background())
-}
-
-func (i ProviderSshNodeArgs) ToProviderSshNodePtrOutputWithContext(ctx context.Context) ProviderSshNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProviderSshNodeOutput).ToProviderSshNodePtrOutputWithContext(ctx)
-}
-
-// ProviderSshNodePtrInput is an input type that accepts ProviderSshNodeArgs, ProviderSshNodePtr and ProviderSshNodePtrOutput values.
-// You can construct a concrete instance of `ProviderSshNodePtrInput` via:
+// ProviderSshNodeArrayInput is an input type that accepts ProviderSshNodeArray and ProviderSshNodeArrayOutput values.
+// You can construct a concrete instance of `ProviderSshNodeArrayInput` via:
 //
-//	        ProviderSshNodeArgs{...}
-//
-//	or:
-//
-//	        nil
-type ProviderSshNodePtrInput interface {
+//	ProviderSshNodeArray{ ProviderSshNodeArgs{...} }
+type ProviderSshNodeArrayInput interface {
 	pulumi.Input
 
-	ToProviderSshNodePtrOutput() ProviderSshNodePtrOutput
-	ToProviderSshNodePtrOutputWithContext(context.Context) ProviderSshNodePtrOutput
+	ToProviderSshNodeArrayOutput() ProviderSshNodeArrayOutput
+	ToProviderSshNodeArrayOutputWithContext(context.Context) ProviderSshNodeArrayOutput
 }
 
-type providerSshNodePtrType ProviderSshNodeArgs
+type ProviderSshNodeArray []ProviderSshNodeInput
 
-func ProviderSshNodePtr(v *ProviderSshNodeArgs) ProviderSshNodePtrInput {
-	return (*providerSshNodePtrType)(v)
+func (ProviderSshNodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProviderSshNode)(nil)).Elem()
 }
 
-func (*providerSshNodePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProviderSshNode)(nil)).Elem()
+func (i ProviderSshNodeArray) ToProviderSshNodeArrayOutput() ProviderSshNodeArrayOutput {
+	return i.ToProviderSshNodeArrayOutputWithContext(context.Background())
 }
 
-func (i *providerSshNodePtrType) ToProviderSshNodePtrOutput() ProviderSshNodePtrOutput {
-	return i.ToProviderSshNodePtrOutputWithContext(context.Background())
-}
-
-func (i *providerSshNodePtrType) ToProviderSshNodePtrOutputWithContext(ctx context.Context) ProviderSshNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProviderSshNodePtrOutput)
+func (i ProviderSshNodeArray) ToProviderSshNodeArrayOutputWithContext(ctx context.Context) ProviderSshNodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderSshNodeArrayOutput)
 }
 
 type ProviderSshNodeOutput struct{ *pulumi.OutputState }
@@ -391,16 +375,6 @@ func (o ProviderSshNodeOutput) ToProviderSshNodeOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o ProviderSshNodeOutput) ToProviderSshNodePtrOutput() ProviderSshNodePtrOutput {
-	return o.ToProviderSshNodePtrOutputWithContext(context.Background())
-}
-
-func (o ProviderSshNodeOutput) ToProviderSshNodePtrOutputWithContext(ctx context.Context) ProviderSshNodePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProviderSshNode) *ProviderSshNode {
-		return &v
-	}).(ProviderSshNodePtrOutput)
-}
-
 func (o ProviderSshNodeOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v ProviderSshNode) string { return v.Address }).(pulumi.StringOutput)
 }
@@ -409,46 +383,24 @@ func (o ProviderSshNodeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ProviderSshNode) string { return v.Name }).(pulumi.StringOutput)
 }
 
-type ProviderSshNodePtrOutput struct{ *pulumi.OutputState }
+type ProviderSshNodeArrayOutput struct{ *pulumi.OutputState }
 
-func (ProviderSshNodePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProviderSshNode)(nil)).Elem()
+func (ProviderSshNodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProviderSshNode)(nil)).Elem()
 }
 
-func (o ProviderSshNodePtrOutput) ToProviderSshNodePtrOutput() ProviderSshNodePtrOutput {
+func (o ProviderSshNodeArrayOutput) ToProviderSshNodeArrayOutput() ProviderSshNodeArrayOutput {
 	return o
 }
 
-func (o ProviderSshNodePtrOutput) ToProviderSshNodePtrOutputWithContext(ctx context.Context) ProviderSshNodePtrOutput {
+func (o ProviderSshNodeArrayOutput) ToProviderSshNodeArrayOutputWithContext(ctx context.Context) ProviderSshNodeArrayOutput {
 	return o
 }
 
-func (o ProviderSshNodePtrOutput) Elem() ProviderSshNodeOutput {
-	return o.ApplyT(func(v *ProviderSshNode) ProviderSshNode {
-		if v != nil {
-			return *v
-		}
-		var ret ProviderSshNode
-		return ret
+func (o ProviderSshNodeArrayOutput) Index(i pulumi.IntInput) ProviderSshNodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProviderSshNode {
+		return vs[0].([]ProviderSshNode)[vs[1].(int)]
 	}).(ProviderSshNodeOutput)
-}
-
-func (o ProviderSshNodePtrOutput) Address() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProviderSshNode) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Address
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ProviderSshNodePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProviderSshNode) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
 }
 
 type ProviderVirtualEnvironment struct {
@@ -675,11 +627,11 @@ func (o ProviderVirtualEnvironmentPtrOutput) Username() pulumi.StringPtrOutput {
 }
 
 type ProviderVirtualEnvironmentSsh struct {
-	Agent       *bool                              `pulumi:"agent"`
-	AgentSocket *string                            `pulumi:"agentSocket"`
-	Node        *ProviderVirtualEnvironmentSshNode `pulumi:"node"`
-	Password    *string                            `pulumi:"password"`
-	Username    *string                            `pulumi:"username"`
+	Agent       *bool                               `pulumi:"agent"`
+	AgentSocket *string                             `pulumi:"agentSocket"`
+	Nodes       []ProviderVirtualEnvironmentSshNode `pulumi:"nodes"`
+	Password    *string                             `pulumi:"password"`
+	Username    *string                             `pulumi:"username"`
 }
 
 // ProviderVirtualEnvironmentSshInput is an input type that accepts ProviderVirtualEnvironmentSshArgs and ProviderVirtualEnvironmentSshOutput values.
@@ -694,11 +646,11 @@ type ProviderVirtualEnvironmentSshInput interface {
 }
 
 type ProviderVirtualEnvironmentSshArgs struct {
-	Agent       pulumi.BoolPtrInput                       `pulumi:"agent"`
-	AgentSocket pulumi.StringPtrInput                     `pulumi:"agentSocket"`
-	Node        ProviderVirtualEnvironmentSshNodePtrInput `pulumi:"node"`
-	Password    pulumi.StringPtrInput                     `pulumi:"password"`
-	Username    pulumi.StringPtrInput                     `pulumi:"username"`
+	Agent       pulumi.BoolPtrInput                         `pulumi:"agent"`
+	AgentSocket pulumi.StringPtrInput                       `pulumi:"agentSocket"`
+	Nodes       ProviderVirtualEnvironmentSshNodeArrayInput `pulumi:"nodes"`
+	Password    pulumi.StringPtrInput                       `pulumi:"password"`
+	Username    pulumi.StringPtrInput                       `pulumi:"username"`
 }
 
 func (ProviderVirtualEnvironmentSshArgs) ElementType() reflect.Type {
@@ -786,8 +738,8 @@ func (o ProviderVirtualEnvironmentSshOutput) AgentSocket() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v ProviderVirtualEnvironmentSsh) *string { return v.AgentSocket }).(pulumi.StringPtrOutput)
 }
 
-func (o ProviderVirtualEnvironmentSshOutput) Node() ProviderVirtualEnvironmentSshNodePtrOutput {
-	return o.ApplyT(func(v ProviderVirtualEnvironmentSsh) *ProviderVirtualEnvironmentSshNode { return v.Node }).(ProviderVirtualEnvironmentSshNodePtrOutput)
+func (o ProviderVirtualEnvironmentSshOutput) Nodes() ProviderVirtualEnvironmentSshNodeArrayOutput {
+	return o.ApplyT(func(v ProviderVirtualEnvironmentSsh) []ProviderVirtualEnvironmentSshNode { return v.Nodes }).(ProviderVirtualEnvironmentSshNodeArrayOutput)
 }
 
 func (o ProviderVirtualEnvironmentSshOutput) Password() pulumi.StringPtrOutput {
@@ -840,13 +792,13 @@ func (o ProviderVirtualEnvironmentSshPtrOutput) AgentSocket() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ProviderVirtualEnvironmentSshPtrOutput) Node() ProviderVirtualEnvironmentSshNodePtrOutput {
-	return o.ApplyT(func(v *ProviderVirtualEnvironmentSsh) *ProviderVirtualEnvironmentSshNode {
+func (o ProviderVirtualEnvironmentSshPtrOutput) Nodes() ProviderVirtualEnvironmentSshNodeArrayOutput {
+	return o.ApplyT(func(v *ProviderVirtualEnvironmentSsh) []ProviderVirtualEnvironmentSshNode {
 		if v == nil {
 			return nil
 		}
-		return v.Node
-	}).(ProviderVirtualEnvironmentSshNodePtrOutput)
+		return v.Nodes
+	}).(ProviderVirtualEnvironmentSshNodeArrayOutput)
 }
 
 func (o ProviderVirtualEnvironmentSshPtrOutput) Password() pulumi.StringPtrOutput {
@@ -900,45 +852,29 @@ func (i ProviderVirtualEnvironmentSshNodeArgs) ToProviderVirtualEnvironmentSshNo
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderVirtualEnvironmentSshNodeOutput)
 }
 
-func (i ProviderVirtualEnvironmentSshNodeArgs) ToProviderVirtualEnvironmentSshNodePtrOutput() ProviderVirtualEnvironmentSshNodePtrOutput {
-	return i.ToProviderVirtualEnvironmentSshNodePtrOutputWithContext(context.Background())
-}
-
-func (i ProviderVirtualEnvironmentSshNodeArgs) ToProviderVirtualEnvironmentSshNodePtrOutputWithContext(ctx context.Context) ProviderVirtualEnvironmentSshNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProviderVirtualEnvironmentSshNodeOutput).ToProviderVirtualEnvironmentSshNodePtrOutputWithContext(ctx)
-}
-
-// ProviderVirtualEnvironmentSshNodePtrInput is an input type that accepts ProviderVirtualEnvironmentSshNodeArgs, ProviderVirtualEnvironmentSshNodePtr and ProviderVirtualEnvironmentSshNodePtrOutput values.
-// You can construct a concrete instance of `ProviderVirtualEnvironmentSshNodePtrInput` via:
+// ProviderVirtualEnvironmentSshNodeArrayInput is an input type that accepts ProviderVirtualEnvironmentSshNodeArray and ProviderVirtualEnvironmentSshNodeArrayOutput values.
+// You can construct a concrete instance of `ProviderVirtualEnvironmentSshNodeArrayInput` via:
 //
-//	        ProviderVirtualEnvironmentSshNodeArgs{...}
-//
-//	or:
-//
-//	        nil
-type ProviderVirtualEnvironmentSshNodePtrInput interface {
+//	ProviderVirtualEnvironmentSshNodeArray{ ProviderVirtualEnvironmentSshNodeArgs{...} }
+type ProviderVirtualEnvironmentSshNodeArrayInput interface {
 	pulumi.Input
 
-	ToProviderVirtualEnvironmentSshNodePtrOutput() ProviderVirtualEnvironmentSshNodePtrOutput
-	ToProviderVirtualEnvironmentSshNodePtrOutputWithContext(context.Context) ProviderVirtualEnvironmentSshNodePtrOutput
+	ToProviderVirtualEnvironmentSshNodeArrayOutput() ProviderVirtualEnvironmentSshNodeArrayOutput
+	ToProviderVirtualEnvironmentSshNodeArrayOutputWithContext(context.Context) ProviderVirtualEnvironmentSshNodeArrayOutput
 }
 
-type providerVirtualEnvironmentSshNodePtrType ProviderVirtualEnvironmentSshNodeArgs
+type ProviderVirtualEnvironmentSshNodeArray []ProviderVirtualEnvironmentSshNodeInput
 
-func ProviderVirtualEnvironmentSshNodePtr(v *ProviderVirtualEnvironmentSshNodeArgs) ProviderVirtualEnvironmentSshNodePtrInput {
-	return (*providerVirtualEnvironmentSshNodePtrType)(v)
+func (ProviderVirtualEnvironmentSshNodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProviderVirtualEnvironmentSshNode)(nil)).Elem()
 }
 
-func (*providerVirtualEnvironmentSshNodePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProviderVirtualEnvironmentSshNode)(nil)).Elem()
+func (i ProviderVirtualEnvironmentSshNodeArray) ToProviderVirtualEnvironmentSshNodeArrayOutput() ProviderVirtualEnvironmentSshNodeArrayOutput {
+	return i.ToProviderVirtualEnvironmentSshNodeArrayOutputWithContext(context.Background())
 }
 
-func (i *providerVirtualEnvironmentSshNodePtrType) ToProviderVirtualEnvironmentSshNodePtrOutput() ProviderVirtualEnvironmentSshNodePtrOutput {
-	return i.ToProviderVirtualEnvironmentSshNodePtrOutputWithContext(context.Background())
-}
-
-func (i *providerVirtualEnvironmentSshNodePtrType) ToProviderVirtualEnvironmentSshNodePtrOutputWithContext(ctx context.Context) ProviderVirtualEnvironmentSshNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProviderVirtualEnvironmentSshNodePtrOutput)
+func (i ProviderVirtualEnvironmentSshNodeArray) ToProviderVirtualEnvironmentSshNodeArrayOutputWithContext(ctx context.Context) ProviderVirtualEnvironmentSshNodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderVirtualEnvironmentSshNodeArrayOutput)
 }
 
 type ProviderVirtualEnvironmentSshNodeOutput struct{ *pulumi.OutputState }
@@ -955,16 +891,6 @@ func (o ProviderVirtualEnvironmentSshNodeOutput) ToProviderVirtualEnvironmentSsh
 	return o
 }
 
-func (o ProviderVirtualEnvironmentSshNodeOutput) ToProviderVirtualEnvironmentSshNodePtrOutput() ProviderVirtualEnvironmentSshNodePtrOutput {
-	return o.ToProviderVirtualEnvironmentSshNodePtrOutputWithContext(context.Background())
-}
-
-func (o ProviderVirtualEnvironmentSshNodeOutput) ToProviderVirtualEnvironmentSshNodePtrOutputWithContext(ctx context.Context) ProviderVirtualEnvironmentSshNodePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProviderVirtualEnvironmentSshNode) *ProviderVirtualEnvironmentSshNode {
-		return &v
-	}).(ProviderVirtualEnvironmentSshNodePtrOutput)
-}
-
 func (o ProviderVirtualEnvironmentSshNodeOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v ProviderVirtualEnvironmentSshNode) string { return v.Address }).(pulumi.StringOutput)
 }
@@ -973,46 +899,24 @@ func (o ProviderVirtualEnvironmentSshNodeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ProviderVirtualEnvironmentSshNode) string { return v.Name }).(pulumi.StringOutput)
 }
 
-type ProviderVirtualEnvironmentSshNodePtrOutput struct{ *pulumi.OutputState }
+type ProviderVirtualEnvironmentSshNodeArrayOutput struct{ *pulumi.OutputState }
 
-func (ProviderVirtualEnvironmentSshNodePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProviderVirtualEnvironmentSshNode)(nil)).Elem()
+func (ProviderVirtualEnvironmentSshNodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProviderVirtualEnvironmentSshNode)(nil)).Elem()
 }
 
-func (o ProviderVirtualEnvironmentSshNodePtrOutput) ToProviderVirtualEnvironmentSshNodePtrOutput() ProviderVirtualEnvironmentSshNodePtrOutput {
+func (o ProviderVirtualEnvironmentSshNodeArrayOutput) ToProviderVirtualEnvironmentSshNodeArrayOutput() ProviderVirtualEnvironmentSshNodeArrayOutput {
 	return o
 }
 
-func (o ProviderVirtualEnvironmentSshNodePtrOutput) ToProviderVirtualEnvironmentSshNodePtrOutputWithContext(ctx context.Context) ProviderVirtualEnvironmentSshNodePtrOutput {
+func (o ProviderVirtualEnvironmentSshNodeArrayOutput) ToProviderVirtualEnvironmentSshNodeArrayOutputWithContext(ctx context.Context) ProviderVirtualEnvironmentSshNodeArrayOutput {
 	return o
 }
 
-func (o ProviderVirtualEnvironmentSshNodePtrOutput) Elem() ProviderVirtualEnvironmentSshNodeOutput {
-	return o.ApplyT(func(v *ProviderVirtualEnvironmentSshNode) ProviderVirtualEnvironmentSshNode {
-		if v != nil {
-			return *v
-		}
-		var ret ProviderVirtualEnvironmentSshNode
-		return ret
+func (o ProviderVirtualEnvironmentSshNodeArrayOutput) Index(i pulumi.IntInput) ProviderVirtualEnvironmentSshNodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProviderVirtualEnvironmentSshNode {
+		return vs[0].([]ProviderVirtualEnvironmentSshNode)[vs[1].(int)]
 	}).(ProviderVirtualEnvironmentSshNodeOutput)
-}
-
-func (o ProviderVirtualEnvironmentSshNodePtrOutput) Address() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProviderVirtualEnvironmentSshNode) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Address
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ProviderVirtualEnvironmentSshNodePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProviderVirtualEnvironmentSshNode) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
 }
 
 type GetHostsEntry struct {
@@ -1121,13 +1025,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSshInput)(nil)).Elem(), ProviderSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSshPtrInput)(nil)).Elem(), ProviderSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSshNodeInput)(nil)).Elem(), ProviderSshNodeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSshNodePtrInput)(nil)).Elem(), ProviderSshNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSshNodeArrayInput)(nil)).Elem(), ProviderSshNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderVirtualEnvironmentInput)(nil)).Elem(), ProviderVirtualEnvironmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderVirtualEnvironmentPtrInput)(nil)).Elem(), ProviderVirtualEnvironmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderVirtualEnvironmentSshInput)(nil)).Elem(), ProviderVirtualEnvironmentSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderVirtualEnvironmentSshPtrInput)(nil)).Elem(), ProviderVirtualEnvironmentSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderVirtualEnvironmentSshNodeInput)(nil)).Elem(), ProviderVirtualEnvironmentSshNodeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProviderVirtualEnvironmentSshNodePtrInput)(nil)).Elem(), ProviderVirtualEnvironmentSshNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderVirtualEnvironmentSshNodeArrayInput)(nil)).Elem(), ProviderVirtualEnvironmentSshNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHostsEntryInput)(nil)).Elem(), GetHostsEntryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHostsEntryArrayInput)(nil)).Elem(), GetHostsEntryArray{})
 	pulumi.RegisterOutputType(HostsEntryOutput{})
@@ -1135,13 +1039,13 @@ func init() {
 	pulumi.RegisterOutputType(ProviderSshOutput{})
 	pulumi.RegisterOutputType(ProviderSshPtrOutput{})
 	pulumi.RegisterOutputType(ProviderSshNodeOutput{})
-	pulumi.RegisterOutputType(ProviderSshNodePtrOutput{})
+	pulumi.RegisterOutputType(ProviderSshNodeArrayOutput{})
 	pulumi.RegisterOutputType(ProviderVirtualEnvironmentOutput{})
 	pulumi.RegisterOutputType(ProviderVirtualEnvironmentPtrOutput{})
 	pulumi.RegisterOutputType(ProviderVirtualEnvironmentSshOutput{})
 	pulumi.RegisterOutputType(ProviderVirtualEnvironmentSshPtrOutput{})
 	pulumi.RegisterOutputType(ProviderVirtualEnvironmentSshNodeOutput{})
-	pulumi.RegisterOutputType(ProviderVirtualEnvironmentSshNodePtrOutput{})
+	pulumi.RegisterOutputType(ProviderVirtualEnvironmentSshNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetHostsEntryOutput{})
 	pulumi.RegisterOutputType(GetHostsEntryArrayOutput{})
 }

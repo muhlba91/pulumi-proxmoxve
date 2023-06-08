@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import io.muehlbachler.pulumi.proxmoxve.config.outputs.SshNode;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,7 +16,7 @@ import javax.annotation.Nullable;
 public final class Ssh {
     private @Nullable Boolean agent;
     private @Nullable String agentSocket;
-    private @Nullable SshNode node;
+    private @Nullable List<SshNode> nodes;
     private @Nullable String password;
     private @Nullable String username;
 
@@ -26,8 +27,8 @@ public final class Ssh {
     public Optional<String> agentSocket() {
         return Optional.ofNullable(this.agentSocket);
     }
-    public Optional<SshNode> node() {
-        return Optional.ofNullable(this.node);
+    public List<SshNode> nodes() {
+        return this.nodes == null ? List.of() : this.nodes;
     }
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
@@ -47,7 +48,7 @@ public final class Ssh {
     public static final class Builder {
         private @Nullable Boolean agent;
         private @Nullable String agentSocket;
-        private @Nullable SshNode node;
+        private @Nullable List<SshNode> nodes;
         private @Nullable String password;
         private @Nullable String username;
         public Builder() {}
@@ -55,7 +56,7 @@ public final class Ssh {
     	      Objects.requireNonNull(defaults);
     	      this.agent = defaults.agent;
     	      this.agentSocket = defaults.agentSocket;
-    	      this.node = defaults.node;
+    	      this.nodes = defaults.nodes;
     	      this.password = defaults.password;
     	      this.username = defaults.username;
         }
@@ -71,9 +72,12 @@ public final class Ssh {
             return this;
         }
         @CustomType.Setter
-        public Builder node(@Nullable SshNode node) {
-            this.node = node;
+        public Builder nodes(@Nullable List<SshNode> nodes) {
+            this.nodes = nodes;
             return this;
+        }
+        public Builder nodes(SshNode... nodes) {
+            return nodes(List.of(nodes));
         }
         @CustomType.Setter
         public Builder password(@Nullable String password) {
@@ -89,7 +93,7 @@ public final class Ssh {
             final var o = new Ssh();
             o.agent = agent;
             o.agentSocket = agentSocket;
-            o.node = node;
+            o.nodes = nodes;
             o.password = password;
             o.username = username;
             return o;
