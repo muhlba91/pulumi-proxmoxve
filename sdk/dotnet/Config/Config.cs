@@ -116,7 +116,7 @@ namespace Pulumi.ProxmoxVE
              {
                 public bool? Agent { get; set; }
                 public string? AgentSocket { get; set; } = null!;
-                public Pulumi.ProxmoxVE.Config.Types.SshNode? Node { get; set; } = null!;
+                public ImmutableArray<Pulumi.ProxmoxVE.Config.Types.SshNode> Nodes { get; set; }
                 public string? Password { get; set; } = null!;
                 public string? Username { get; set; } = null!;
             }
@@ -142,7 +142,7 @@ namespace Pulumi.ProxmoxVE
              {
                 public bool? Agent { get; set; }
                 public string? AgentSocket { get; set; } = null!;
-                public Pulumi.ProxmoxVE.Config.Types.VirtualEnvironmentSshNode? Node { get; set; } = null!;
+                public ImmutableArray<Pulumi.ProxmoxVE.Config.Types.VirtualEnvironmentSshNode> Nodes { get; set; }
                 public string? Password { get; set; } = null!;
                 public string? Username { get; set; } = null!;
             }

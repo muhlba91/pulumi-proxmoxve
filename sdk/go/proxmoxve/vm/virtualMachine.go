@@ -95,7 +95,7 @@ type VirtualMachine struct {
 	// The VGA configuration
 	Vga VirtualMachineVgaPtrOutput `pulumi:"vga"`
 	// The VM identifier
-	VmId pulumi.IntPtrOutput `pulumi:"vmId"`
+	VmId pulumi.IntOutput `pulumi:"vmId"`
 }
 
 // NewVirtualMachine registers a new resource with the given unique name, arguments, and options.
@@ -747,8 +747,8 @@ func (o VirtualMachineOutput) Vga() VirtualMachineVgaPtrOutput {
 }
 
 // The VM identifier
-func (o VirtualMachineOutput) VmId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.VmId }).(pulumi.IntPtrOutput)
+func (o VirtualMachineOutput) VmId() pulumi.IntOutput {
+	return o.ApplyT(func(v *VirtualMachine) pulumi.IntOutput { return v.VmId }).(pulumi.IntOutput)
 }
 
 type VirtualMachineArrayOutput struct{ *pulumi.OutputState }

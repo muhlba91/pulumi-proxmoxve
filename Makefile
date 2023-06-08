@@ -13,7 +13,7 @@ PROVIDER        := pulumi-resource-${PACK}
 VERSION         := $(shell pulumictl get version)
 
 JAVA_GEN 		 := pulumi-java-gen
-JAVA_GEN_VERSION := v0.9.3
+JAVA_GEN_VERSION := v0.9.4
 
 TESTPARALLELISM := 4
 
@@ -91,8 +91,8 @@ build_dotnet:: install_plugins tfgen # build the dotnet sdk
         dotnet build /p:Version=${DOTNET_VERSION}
 
 build_java:: PACKAGE_VERSION := $(shell pulumictl get version --language generic)
-build_java:: install_plugins tfgen bin/pulumi-java-gen # build the java sdk
-	rm -rf sdk/dotnet/
+build_java:: install_plugins tfgen get-pulumi-java-gen # build the java sdk
+	rm -rf sdk/java/
 	pulumictl get version --language generic
 	$(WORKING_DIR)/bin/$(JAVA_GEN) generate --schema provider/cmd/$(PROVIDER)/schema.json --build gradle-nexus --out sdk/java
 	cd sdk/java/ && \
@@ -139,5 +139,5 @@ install_sdks:: install_python_sdk install_nodejs_sdk install_java_sdk install_do
 test::
 	cd examples && go test -v -tags=all -parallel ${TESTPARALLELISM} -timeout 2h
 
-bin/pulumi-java-gen:
+get-pulumi-java-gen:
 	pulumictl download-binary -n pulumi-language-java -v $(JAVA_GEN_VERSION) -r pulumi/pulumi-java

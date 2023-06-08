@@ -13,7 +13,7 @@ export interface HostsEntry {
 export interface ProviderSsh {
     agent?: pulumi.Input<boolean>;
     agentSocket?: pulumi.Input<string>;
-    node?: pulumi.Input<inputs.ProviderSshNode>;
+    nodes?: pulumi.Input<pulumi.Input<inputs.ProviderSshNode>[]>;
     password?: pulumi.Input<string>;
     username?: pulumi.Input<string>;
 }
@@ -36,7 +36,7 @@ export interface ProviderVirtualEnvironment {
 export interface ProviderVirtualEnvironmentSsh {
     agent?: pulumi.Input<boolean>;
     agentSocket?: pulumi.Input<string>;
-    node?: pulumi.Input<inputs.ProviderVirtualEnvironmentSshNode>;
+    nodes?: pulumi.Input<pulumi.Input<inputs.ProviderVirtualEnvironmentSshNode>[]>;
     password?: pulumi.Input<string>;
     username?: pulumi.Input<string>;
 }

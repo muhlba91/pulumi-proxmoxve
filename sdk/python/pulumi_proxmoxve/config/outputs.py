@@ -23,15 +23,15 @@ class Ssh(dict):
     def __init__(__self__, *,
                  agent: Optional[bool] = None,
                  agent_socket: Optional[str] = None,
-                 node: Optional['outputs.SshNode'] = None,
+                 nodes: Optional[Sequence['outputs.SshNode']] = None,
                  password: Optional[str] = None,
                  username: Optional[str] = None):
         if agent is not None:
             pulumi.set(__self__, "agent", agent)
         if agent_socket is not None:
             pulumi.set(__self__, "agent_socket", agent_socket)
-        if node is not None:
-            pulumi.set(__self__, "node", node)
+        if nodes is not None:
+            pulumi.set(__self__, "nodes", nodes)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if username is not None:
@@ -49,8 +49,8 @@ class Ssh(dict):
 
     @property
     @pulumi.getter
-    def node(self) -> Optional['outputs.SshNode']:
-        return pulumi.get(self, "node")
+    def nodes(self) -> Optional[Sequence['outputs.SshNode']]:
+        return pulumi.get(self, "nodes")
 
     @property
     @pulumi.getter
@@ -148,15 +148,15 @@ class VirtualEnvironmentSsh(dict):
     def __init__(__self__, *,
                  agent: Optional[bool] = None,
                  agent_socket: Optional[str] = None,
-                 node: Optional['outputs.VirtualEnvironmentSshNode'] = None,
+                 nodes: Optional[Sequence['outputs.VirtualEnvironmentSshNode']] = None,
                  password: Optional[str] = None,
                  username: Optional[str] = None):
         if agent is not None:
             pulumi.set(__self__, "agent", agent)
         if agent_socket is not None:
             pulumi.set(__self__, "agent_socket", agent_socket)
-        if node is not None:
-            pulumi.set(__self__, "node", node)
+        if nodes is not None:
+            pulumi.set(__self__, "nodes", nodes)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if username is not None:
@@ -174,8 +174,8 @@ class VirtualEnvironmentSsh(dict):
 
     @property
     @pulumi.getter
-    def node(self) -> Optional['outputs.VirtualEnvironmentSshNode']:
-        return pulumi.get(self, "node")
+    def nodes(self) -> Optional[Sequence['outputs.VirtualEnvironmentSshNode']]:
+        return pulumi.get(self, "nodes")
 
     @property
     @pulumi.getter

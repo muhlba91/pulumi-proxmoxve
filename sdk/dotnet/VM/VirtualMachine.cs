@@ -256,7 +256,7 @@ namespace Pulumi.ProxmoxVE.VM
         /// The VM identifier
         /// </summary>
         [Output("vmId")]
-        public Output<int?> VmId { get; private set; } = null!;
+        public Output<int> VmId { get; private set; } = null!;
 
 
         /// <summary>

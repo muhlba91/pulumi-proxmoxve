@@ -136,7 +136,8 @@ jobs:
         run: make build_${{ matrix.language }}
 
       - name: Publish .NET SDK
-        run: find "${{ github.workspace }}/sdk/dotnet/bin/Debug/" -name 'Pulumi.*.nupkg' -exec dotnet nuget push -k "${{ secrets.NUGET_PUBLISH_KEY }}" -s ${{ env.NUGET_FEED_URL }} {} ';'
+        run: |
+          dotnet nuget push -s "${{ env.NUGET_FEED_URL }}" -k "${{ secrets.NUGET_PUBLISH_KEY }}" ${{github.workspace}}/sdk/dotnet/bin/Debug/*.nupkg
         if: matrix.language == 'dotnet'
 
       - name: Publish Python SDK

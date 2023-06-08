@@ -11,11 +11,11 @@ import (
 )
 
 type Ssh struct {
-	Agent       *bool    `pulumi:"agent"`
-	AgentSocket *string  `pulumi:"agentSocket"`
-	Node        *SshNode `pulumi:"node"`
-	Password    *string  `pulumi:"password"`
-	Username    *string  `pulumi:"username"`
+	Agent       *bool     `pulumi:"agent"`
+	AgentSocket *string   `pulumi:"agentSocket"`
+	Nodes       []SshNode `pulumi:"nodes"`
+	Password    *string   `pulumi:"password"`
+	Username    *string   `pulumi:"username"`
 }
 
 // SshInput is an input type that accepts SshArgs and SshOutput values.
@@ -32,7 +32,7 @@ type SshInput interface {
 type SshArgs struct {
 	Agent       pulumi.BoolPtrInput   `pulumi:"agent"`
 	AgentSocket pulumi.StringPtrInput `pulumi:"agentSocket"`
-	Node        SshNodePtrInput       `pulumi:"node"`
+	Nodes       SshNodeArrayInput     `pulumi:"nodes"`
 	Password    pulumi.StringPtrInput `pulumi:"password"`
 	Username    pulumi.StringPtrInput `pulumi:"username"`
 }
@@ -71,8 +71,8 @@ func (o SshOutput) AgentSocket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Ssh) *string { return v.AgentSocket }).(pulumi.StringPtrOutput)
 }
 
-func (o SshOutput) Node() SshNodePtrOutput {
-	return o.ApplyT(func(v Ssh) *SshNode { return v.Node }).(SshNodePtrOutput)
+func (o SshOutput) Nodes() SshNodeArrayOutput {
+	return o.ApplyT(func(v Ssh) []SshNode { return v.Nodes }).(SshNodeArrayOutput)
 }
 
 func (o SshOutput) Password() pulumi.StringPtrOutput {
@@ -116,45 +116,29 @@ func (i SshNodeArgs) ToSshNodeOutputWithContext(ctx context.Context) SshNodeOutp
 	return pulumi.ToOutputWithContext(ctx, i).(SshNodeOutput)
 }
 
-func (i SshNodeArgs) ToSshNodePtrOutput() SshNodePtrOutput {
-	return i.ToSshNodePtrOutputWithContext(context.Background())
-}
-
-func (i SshNodeArgs) ToSshNodePtrOutputWithContext(ctx context.Context) SshNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SshNodeOutput).ToSshNodePtrOutputWithContext(ctx)
-}
-
-// SshNodePtrInput is an input type that accepts SshNodeArgs, SshNodePtr and SshNodePtrOutput values.
-// You can construct a concrete instance of `SshNodePtrInput` via:
+// SshNodeArrayInput is an input type that accepts SshNodeArray and SshNodeArrayOutput values.
+// You can construct a concrete instance of `SshNodeArrayInput` via:
 //
-//	        SshNodeArgs{...}
-//
-//	or:
-//
-//	        nil
-type SshNodePtrInput interface {
+//	SshNodeArray{ SshNodeArgs{...} }
+type SshNodeArrayInput interface {
 	pulumi.Input
 
-	ToSshNodePtrOutput() SshNodePtrOutput
-	ToSshNodePtrOutputWithContext(context.Context) SshNodePtrOutput
+	ToSshNodeArrayOutput() SshNodeArrayOutput
+	ToSshNodeArrayOutputWithContext(context.Context) SshNodeArrayOutput
 }
 
-type sshNodePtrType SshNodeArgs
+type SshNodeArray []SshNodeInput
 
-func SshNodePtr(v *SshNodeArgs) SshNodePtrInput {
-	return (*sshNodePtrType)(v)
+func (SshNodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SshNode)(nil)).Elem()
 }
 
-func (*sshNodePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SshNode)(nil)).Elem()
+func (i SshNodeArray) ToSshNodeArrayOutput() SshNodeArrayOutput {
+	return i.ToSshNodeArrayOutputWithContext(context.Background())
 }
 
-func (i *sshNodePtrType) ToSshNodePtrOutput() SshNodePtrOutput {
-	return i.ToSshNodePtrOutputWithContext(context.Background())
-}
-
-func (i *sshNodePtrType) ToSshNodePtrOutputWithContext(ctx context.Context) SshNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SshNodePtrOutput)
+func (i SshNodeArray) ToSshNodeArrayOutputWithContext(ctx context.Context) SshNodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SshNodeArrayOutput)
 }
 
 type SshNodeOutput struct{ *pulumi.OutputState }
@@ -171,16 +155,6 @@ func (o SshNodeOutput) ToSshNodeOutputWithContext(ctx context.Context) SshNodeOu
 	return o
 }
 
-func (o SshNodeOutput) ToSshNodePtrOutput() SshNodePtrOutput {
-	return o.ToSshNodePtrOutputWithContext(context.Background())
-}
-
-func (o SshNodeOutput) ToSshNodePtrOutputWithContext(ctx context.Context) SshNodePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SshNode) *SshNode {
-		return &v
-	}).(SshNodePtrOutput)
-}
-
 func (o SshNodeOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v SshNode) string { return v.Address }).(pulumi.StringOutput)
 }
@@ -189,46 +163,24 @@ func (o SshNodeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SshNode) string { return v.Name }).(pulumi.StringOutput)
 }
 
-type SshNodePtrOutput struct{ *pulumi.OutputState }
+type SshNodeArrayOutput struct{ *pulumi.OutputState }
 
-func (SshNodePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SshNode)(nil)).Elem()
+func (SshNodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SshNode)(nil)).Elem()
 }
 
-func (o SshNodePtrOutput) ToSshNodePtrOutput() SshNodePtrOutput {
+func (o SshNodeArrayOutput) ToSshNodeArrayOutput() SshNodeArrayOutput {
 	return o
 }
 
-func (o SshNodePtrOutput) ToSshNodePtrOutputWithContext(ctx context.Context) SshNodePtrOutput {
+func (o SshNodeArrayOutput) ToSshNodeArrayOutputWithContext(ctx context.Context) SshNodeArrayOutput {
 	return o
 }
 
-func (o SshNodePtrOutput) Elem() SshNodeOutput {
-	return o.ApplyT(func(v *SshNode) SshNode {
-		if v != nil {
-			return *v
-		}
-		var ret SshNode
-		return ret
+func (o SshNodeArrayOutput) Index(i pulumi.IntInput) SshNodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SshNode {
+		return vs[0].([]SshNode)[vs[1].(int)]
 	}).(SshNodeOutput)
-}
-
-func (o SshNodePtrOutput) Address() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SshNode) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Address
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o SshNodePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SshNode) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
 }
 
 type VirtualEnvironment struct {
@@ -317,11 +269,11 @@ func (o VirtualEnvironmentOutput) Username() pulumi.StringPtrOutput {
 }
 
 type VirtualEnvironmentSsh struct {
-	Agent       *bool                      `pulumi:"agent"`
-	AgentSocket *string                    `pulumi:"agentSocket"`
-	Node        *VirtualEnvironmentSshNode `pulumi:"node"`
-	Password    *string                    `pulumi:"password"`
-	Username    *string                    `pulumi:"username"`
+	Agent       *bool                       `pulumi:"agent"`
+	AgentSocket *string                     `pulumi:"agentSocket"`
+	Nodes       []VirtualEnvironmentSshNode `pulumi:"nodes"`
+	Password    *string                     `pulumi:"password"`
+	Username    *string                     `pulumi:"username"`
 }
 
 // VirtualEnvironmentSshInput is an input type that accepts VirtualEnvironmentSshArgs and VirtualEnvironmentSshOutput values.
@@ -336,11 +288,11 @@ type VirtualEnvironmentSshInput interface {
 }
 
 type VirtualEnvironmentSshArgs struct {
-	Agent       pulumi.BoolPtrInput               `pulumi:"agent"`
-	AgentSocket pulumi.StringPtrInput             `pulumi:"agentSocket"`
-	Node        VirtualEnvironmentSshNodePtrInput `pulumi:"node"`
-	Password    pulumi.StringPtrInput             `pulumi:"password"`
-	Username    pulumi.StringPtrInput             `pulumi:"username"`
+	Agent       pulumi.BoolPtrInput                 `pulumi:"agent"`
+	AgentSocket pulumi.StringPtrInput               `pulumi:"agentSocket"`
+	Nodes       VirtualEnvironmentSshNodeArrayInput `pulumi:"nodes"`
+	Password    pulumi.StringPtrInput               `pulumi:"password"`
+	Username    pulumi.StringPtrInput               `pulumi:"username"`
 }
 
 func (VirtualEnvironmentSshArgs) ElementType() reflect.Type {
@@ -428,8 +380,8 @@ func (o VirtualEnvironmentSshOutput) AgentSocket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualEnvironmentSsh) *string { return v.AgentSocket }).(pulumi.StringPtrOutput)
 }
 
-func (o VirtualEnvironmentSshOutput) Node() VirtualEnvironmentSshNodePtrOutput {
-	return o.ApplyT(func(v VirtualEnvironmentSsh) *VirtualEnvironmentSshNode { return v.Node }).(VirtualEnvironmentSshNodePtrOutput)
+func (o VirtualEnvironmentSshOutput) Nodes() VirtualEnvironmentSshNodeArrayOutput {
+	return o.ApplyT(func(v VirtualEnvironmentSsh) []VirtualEnvironmentSshNode { return v.Nodes }).(VirtualEnvironmentSshNodeArrayOutput)
 }
 
 func (o VirtualEnvironmentSshOutput) Password() pulumi.StringPtrOutput {
@@ -482,13 +434,13 @@ func (o VirtualEnvironmentSshPtrOutput) AgentSocket() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o VirtualEnvironmentSshPtrOutput) Node() VirtualEnvironmentSshNodePtrOutput {
-	return o.ApplyT(func(v *VirtualEnvironmentSsh) *VirtualEnvironmentSshNode {
+func (o VirtualEnvironmentSshPtrOutput) Nodes() VirtualEnvironmentSshNodeArrayOutput {
+	return o.ApplyT(func(v *VirtualEnvironmentSsh) []VirtualEnvironmentSshNode {
 		if v == nil {
 			return nil
 		}
-		return v.Node
-	}).(VirtualEnvironmentSshNodePtrOutput)
+		return v.Nodes
+	}).(VirtualEnvironmentSshNodeArrayOutput)
 }
 
 func (o VirtualEnvironmentSshPtrOutput) Password() pulumi.StringPtrOutput {
@@ -542,45 +494,29 @@ func (i VirtualEnvironmentSshNodeArgs) ToVirtualEnvironmentSshNodeOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualEnvironmentSshNodeOutput)
 }
 
-func (i VirtualEnvironmentSshNodeArgs) ToVirtualEnvironmentSshNodePtrOutput() VirtualEnvironmentSshNodePtrOutput {
-	return i.ToVirtualEnvironmentSshNodePtrOutputWithContext(context.Background())
-}
-
-func (i VirtualEnvironmentSshNodeArgs) ToVirtualEnvironmentSshNodePtrOutputWithContext(ctx context.Context) VirtualEnvironmentSshNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualEnvironmentSshNodeOutput).ToVirtualEnvironmentSshNodePtrOutputWithContext(ctx)
-}
-
-// VirtualEnvironmentSshNodePtrInput is an input type that accepts VirtualEnvironmentSshNodeArgs, VirtualEnvironmentSshNodePtr and VirtualEnvironmentSshNodePtrOutput values.
-// You can construct a concrete instance of `VirtualEnvironmentSshNodePtrInput` via:
+// VirtualEnvironmentSshNodeArrayInput is an input type that accepts VirtualEnvironmentSshNodeArray and VirtualEnvironmentSshNodeArrayOutput values.
+// You can construct a concrete instance of `VirtualEnvironmentSshNodeArrayInput` via:
 //
-//	        VirtualEnvironmentSshNodeArgs{...}
-//
-//	or:
-//
-//	        nil
-type VirtualEnvironmentSshNodePtrInput interface {
+//	VirtualEnvironmentSshNodeArray{ VirtualEnvironmentSshNodeArgs{...} }
+type VirtualEnvironmentSshNodeArrayInput interface {
 	pulumi.Input
 
-	ToVirtualEnvironmentSshNodePtrOutput() VirtualEnvironmentSshNodePtrOutput
-	ToVirtualEnvironmentSshNodePtrOutputWithContext(context.Context) VirtualEnvironmentSshNodePtrOutput
+	ToVirtualEnvironmentSshNodeArrayOutput() VirtualEnvironmentSshNodeArrayOutput
+	ToVirtualEnvironmentSshNodeArrayOutputWithContext(context.Context) VirtualEnvironmentSshNodeArrayOutput
 }
 
-type virtualEnvironmentSshNodePtrType VirtualEnvironmentSshNodeArgs
+type VirtualEnvironmentSshNodeArray []VirtualEnvironmentSshNodeInput
 
-func VirtualEnvironmentSshNodePtr(v *VirtualEnvironmentSshNodeArgs) VirtualEnvironmentSshNodePtrInput {
-	return (*virtualEnvironmentSshNodePtrType)(v)
+func (VirtualEnvironmentSshNodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualEnvironmentSshNode)(nil)).Elem()
 }
 
-func (*virtualEnvironmentSshNodePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**VirtualEnvironmentSshNode)(nil)).Elem()
+func (i VirtualEnvironmentSshNodeArray) ToVirtualEnvironmentSshNodeArrayOutput() VirtualEnvironmentSshNodeArrayOutput {
+	return i.ToVirtualEnvironmentSshNodeArrayOutputWithContext(context.Background())
 }
 
-func (i *virtualEnvironmentSshNodePtrType) ToVirtualEnvironmentSshNodePtrOutput() VirtualEnvironmentSshNodePtrOutput {
-	return i.ToVirtualEnvironmentSshNodePtrOutputWithContext(context.Background())
-}
-
-func (i *virtualEnvironmentSshNodePtrType) ToVirtualEnvironmentSshNodePtrOutputWithContext(ctx context.Context) VirtualEnvironmentSshNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualEnvironmentSshNodePtrOutput)
+func (i VirtualEnvironmentSshNodeArray) ToVirtualEnvironmentSshNodeArrayOutputWithContext(ctx context.Context) VirtualEnvironmentSshNodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualEnvironmentSshNodeArrayOutput)
 }
 
 type VirtualEnvironmentSshNodeOutput struct{ *pulumi.OutputState }
@@ -597,16 +533,6 @@ func (o VirtualEnvironmentSshNodeOutput) ToVirtualEnvironmentSshNodeOutputWithCo
 	return o
 }
 
-func (o VirtualEnvironmentSshNodeOutput) ToVirtualEnvironmentSshNodePtrOutput() VirtualEnvironmentSshNodePtrOutput {
-	return o.ToVirtualEnvironmentSshNodePtrOutputWithContext(context.Background())
-}
-
-func (o VirtualEnvironmentSshNodeOutput) ToVirtualEnvironmentSshNodePtrOutputWithContext(ctx context.Context) VirtualEnvironmentSshNodePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualEnvironmentSshNode) *VirtualEnvironmentSshNode {
-		return &v
-	}).(VirtualEnvironmentSshNodePtrOutput)
-}
-
 func (o VirtualEnvironmentSshNodeOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualEnvironmentSshNode) string { return v.Address }).(pulumi.StringOutput)
 }
@@ -615,63 +541,41 @@ func (o VirtualEnvironmentSshNodeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualEnvironmentSshNode) string { return v.Name }).(pulumi.StringOutput)
 }
 
-type VirtualEnvironmentSshNodePtrOutput struct{ *pulumi.OutputState }
+type VirtualEnvironmentSshNodeArrayOutput struct{ *pulumi.OutputState }
 
-func (VirtualEnvironmentSshNodePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VirtualEnvironmentSshNode)(nil)).Elem()
+func (VirtualEnvironmentSshNodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualEnvironmentSshNode)(nil)).Elem()
 }
 
-func (o VirtualEnvironmentSshNodePtrOutput) ToVirtualEnvironmentSshNodePtrOutput() VirtualEnvironmentSshNodePtrOutput {
+func (o VirtualEnvironmentSshNodeArrayOutput) ToVirtualEnvironmentSshNodeArrayOutput() VirtualEnvironmentSshNodeArrayOutput {
 	return o
 }
 
-func (o VirtualEnvironmentSshNodePtrOutput) ToVirtualEnvironmentSshNodePtrOutputWithContext(ctx context.Context) VirtualEnvironmentSshNodePtrOutput {
+func (o VirtualEnvironmentSshNodeArrayOutput) ToVirtualEnvironmentSshNodeArrayOutputWithContext(ctx context.Context) VirtualEnvironmentSshNodeArrayOutput {
 	return o
 }
 
-func (o VirtualEnvironmentSshNodePtrOutput) Elem() VirtualEnvironmentSshNodeOutput {
-	return o.ApplyT(func(v *VirtualEnvironmentSshNode) VirtualEnvironmentSshNode {
-		if v != nil {
-			return *v
-		}
-		var ret VirtualEnvironmentSshNode
-		return ret
+func (o VirtualEnvironmentSshNodeArrayOutput) Index(i pulumi.IntInput) VirtualEnvironmentSshNodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualEnvironmentSshNode {
+		return vs[0].([]VirtualEnvironmentSshNode)[vs[1].(int)]
 	}).(VirtualEnvironmentSshNodeOutput)
-}
-
-func (o VirtualEnvironmentSshNodePtrOutput) Address() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VirtualEnvironmentSshNode) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Address
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o VirtualEnvironmentSshNodePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VirtualEnvironmentSshNode) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SshInput)(nil)).Elem(), SshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SshNodeInput)(nil)).Elem(), SshNodeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SshNodePtrInput)(nil)).Elem(), SshNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SshNodeArrayInput)(nil)).Elem(), SshNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualEnvironmentInput)(nil)).Elem(), VirtualEnvironmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualEnvironmentSshInput)(nil)).Elem(), VirtualEnvironmentSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualEnvironmentSshPtrInput)(nil)).Elem(), VirtualEnvironmentSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualEnvironmentSshNodeInput)(nil)).Elem(), VirtualEnvironmentSshNodeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VirtualEnvironmentSshNodePtrInput)(nil)).Elem(), VirtualEnvironmentSshNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualEnvironmentSshNodeArrayInput)(nil)).Elem(), VirtualEnvironmentSshNodeArray{})
 	pulumi.RegisterOutputType(SshOutput{})
 	pulumi.RegisterOutputType(SshNodeOutput{})
-	pulumi.RegisterOutputType(SshNodePtrOutput{})
+	pulumi.RegisterOutputType(SshNodeArrayOutput{})
 	pulumi.RegisterOutputType(VirtualEnvironmentOutput{})
 	pulumi.RegisterOutputType(VirtualEnvironmentSshOutput{})
 	pulumi.RegisterOutputType(VirtualEnvironmentSshPtrOutput{})
 	pulumi.RegisterOutputType(VirtualEnvironmentSshNodeOutput{})
-	pulumi.RegisterOutputType(VirtualEnvironmentSshNodePtrOutput{})
+	pulumi.RegisterOutputType(VirtualEnvironmentSshNodeArrayOutput{})
 }
