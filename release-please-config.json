@@ -5,7 +5,10 @@
             "release-type": "go",
             "package-name": "main",
             "include-component-in-tag": false,
-            "changelog-path": "CHANGELOG.md"
+            "changelog-path": "CHANGELOG.md",
+            "extra-files": [
+                "sdk/go.mod"
+            ]
         }
     },
     "include-v-in-tag": true,
