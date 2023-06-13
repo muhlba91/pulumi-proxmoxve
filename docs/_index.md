@@ -1,7 +1,7 @@
 ---
 title: Proxmox Virtual Environment (Proxmox VE)
 meta_desc: Provides an overview of the Proxmox VE Provider for Pulumi.
-layout: overview
+layout: package
 ---
 
 The Proxmox Virtual Environment (Proxmox VE) provider for Pulumi can be used to provision virtual machines and
