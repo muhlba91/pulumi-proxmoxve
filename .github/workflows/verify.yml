@@ -15,7 +15,6 @@ permissions:
 env:
   PROVIDER: proxmoxve
   GO111MODULE: "on"
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   conform:

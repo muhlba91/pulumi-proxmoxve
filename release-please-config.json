@@ -1,0 +1,65 @@
+{
+    "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+    "packages": {
+        ".": {
+            "release-type": "go",
+            "package-name": "main",
+            "include-component-in-tag": false,
+            "changelog-path": "CHANGELOG.md"
+        }
+    },
+    "include-v-in-tag": true,
+    "skip-github-release": false,
+    "group-pull-request-title-pattern": "chore(release): release ${version}",
+    "pull-request-header": ":bellhop_bell: A release was created",
+    "label": "release",
+    "changelog-type": "default",
+    "changelog-sections": [
+        {
+            "type": "feat",
+            "section": "Features"
+        },
+        {
+            "type": "fix",
+            "section": "Bug Fixes"
+        },
+        {
+            "type": "perf",
+            "section": "Performance Improvements"
+        },
+        {
+            "type": "revert",
+            "section": "Reverts"
+        },
+        {
+            "type": "chore",
+            "section": "Miscellaneous Chores"
+        },
+        {
+            "type": "docs",
+            "section": "Documentation",
+            "hidden": true
+        },
+        {
+            "type": "refactor",
+            "section": "Code Refactoring",
+            "hidden": true
+        },
+        {
+            "type": "test",
+            "section": "Tests",
+            "hidden": true
+        },
+        {
+            "type": "build",
+            "section": "Build System",
+            "hidden": true
+        },
+        {
+            "type": "ci",
+            "section": "Continuous Integration",
+            "hidden": true
+        }
+    ],
+    "bootstrap-sha": "1be5ea4efcd4a6abd40dc412bb9c24030bddeaf4"
+}
