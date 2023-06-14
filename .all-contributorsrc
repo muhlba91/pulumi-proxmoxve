@@ -37,6 +37,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "susanev",
+      "name": "Susan Evans",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5489125?v=4",
+      "profile": "https://github.com/susanev",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
