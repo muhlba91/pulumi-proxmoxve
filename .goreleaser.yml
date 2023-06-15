@@ -41,7 +41,7 @@ sboms:
   - id: source
     artifacts: source
 changelog:
-  skip: false
+  skip: true
   use: github
   filters:
     exclude:
