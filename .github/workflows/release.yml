@@ -214,9 +214,14 @@ jobs:
           git config --local user.email "${{ env.GITHUB_ACTION }}+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
+      - name: Get Tag Name
+        run: |
+          REF_NAME=`git describe --abbrev=0 --tags`
+          echo "REF_NAME=${REF_NAME}" >> $GITHUB_ENV
+
       - name: Tag SDK Version
         run: |
-          git tag -a sdk/${{ github.ref_name }} -m sdk/${{ github.ref_name }}
+          git tag -a sdk/${{ env.REF_NAME }} -m sdk/${{ env.REF_NAME }}
       - name: Push to Repository
         run: |
-          git push origin sdk/${{ github.ref_name }}
+          git push origin sdk/${{ env.REF_NAME }}
