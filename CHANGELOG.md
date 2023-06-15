@@ -1,6 +1,28 @@
 # Changelog
 
 
+## [5.6.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.5.0...v5.6.0) (2023-06-15)
+
+
+### Features
+
+* update all dependencies; add susanev@ as contributor ([e1ff272](https://github.com/muhlba91/pulumi-proxmoxve/commit/e1ff272d384dce78b5155af2c1f1a172c9d61eb2))
+
+
+### Bug Fixes
+
+* **ci:** add tagging for go sdk ([4ef687f](https://github.com/muhlba91/pulumi-proxmoxve/commit/4ef687f86df585c2de5be98bd70850a3c225c70d))
+
+
+### Miscellaneous Chores
+
+* **ci:** add sdk/go.mod for version bumps ([3e2ffd9](https://github.com/muhlba91/pulumi-proxmoxve/commit/3e2ffd9f85b7c6e0bf17a9f10fd456c6c44b56e0))
+* **ci:** allow commit messages with up to 200 characters ([56feb82](https://github.com/muhlba91/pulumi-proxmoxve/commit/56feb82fe7516224308a1d3f08ead3907817063a))
+* **ci:** fix release-please commit message ([dd6e539](https://github.com/muhlba91/pulumi-proxmoxve/commit/dd6e5391440bcef1c88cdaec80300beaef2de91c))
+* **deps:** update module github.com/pulumi/pulumi-terraform-bridge/v3 to v3.50.1 ([d7f1769](https://github.com/muhlba91/pulumi-proxmoxve/commit/d7f176901cf2b87d62ee9a691ed9c1ab5c3d34ef))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.71.0 ([b3a8f1e](https://github.com/muhlba91/pulumi-proxmoxve/commit/b3a8f1e4ceae6ac641ba66335dd4f2775ac9158d))
+* replace standard-version with release-please; update dependencies ([c605c58](https://github.com/muhlba91/pulumi-proxmoxve/commit/c605c585fd60fc26ce40d5a6b36fa1ecd7ee2a14))
+
 ## [5.5.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.4.0...v5.5.0) (2023-06-08)
 
 
