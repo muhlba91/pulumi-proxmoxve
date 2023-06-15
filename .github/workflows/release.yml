@@ -166,7 +166,6 @@ jobs:
       - name: Publish Python SDK
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          password: "${{ secrets.PYPI_PASSWORD }}"
           skip-existing: true
           packages-dir: "${{ github.workspace }}/sdk/python/bin/dist/"
         if: matrix.language == 'python'
