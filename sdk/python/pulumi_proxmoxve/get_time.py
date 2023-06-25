@@ -91,11 +91,11 @@ def get_time(node_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('proxmoxve:index/getTime:getTime', __args__, opts=opts, typ=GetTimeResult).value
 
     return AwaitableGetTimeResult(
-        id=__ret__.id,
-        local_time=__ret__.local_time,
-        node_name=__ret__.node_name,
-        time_zone=__ret__.time_zone,
-        utc_time=__ret__.utc_time)
+        id=pulumi.get(__ret__, 'id'),
+        local_time=pulumi.get(__ret__, 'local_time'),
+        node_name=pulumi.get(__ret__, 'node_name'),
+        time_zone=pulumi.get(__ret__, 'time_zone'),
+        utc_time=pulumi.get(__ret__, 'utc_time'))
 
 
 @_utilities.lift_output_func(get_time)

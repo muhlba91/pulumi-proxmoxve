@@ -16,6 +16,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         public readonly string? DatastoreId;
         public readonly Outputs.VirtualMachineInitializationDns? Dns;
         public readonly ImmutableArray<Outputs.VirtualMachineInitializationIpConfig> IpConfigs;
+        public readonly string? MetaDataFileId;
         public readonly string? NetworkDataFileId;
         public readonly string? Type;
         public readonly Outputs.VirtualMachineInitializationUserAccount? UserAccount;
@@ -30,6 +31,8 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
 
             ImmutableArray<Outputs.VirtualMachineInitializationIpConfig> ipConfigs,
 
+            string? metaDataFileId,
+
             string? networkDataFileId,
 
             string? type,
@@ -43,6 +46,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
             DatastoreId = datastoreId;
             Dns = dns;
             IpConfigs = ipConfigs;
+            MetaDataFileId = metaDataFileId;
             NetworkDataFileId = networkDataFileId;
             Type = type;
             UserAccount = userAccount;

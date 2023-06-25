@@ -145,17 +145,17 @@ def get_datastores(node_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('proxmoxve:Storage/getDatastores:getDatastores', __args__, opts=opts, typ=GetDatastoresResult).value
 
     return AwaitableGetDatastoresResult(
-        actives=__ret__.actives,
-        content_types=__ret__.content_types,
-        datastore_ids=__ret__.datastore_ids,
-        enableds=__ret__.enableds,
-        id=__ret__.id,
-        node_name=__ret__.node_name,
-        shareds=__ret__.shareds,
-        space_availables=__ret__.space_availables,
-        space_totals=__ret__.space_totals,
-        space_useds=__ret__.space_useds,
-        types=__ret__.types)
+        actives=pulumi.get(__ret__, 'actives'),
+        content_types=pulumi.get(__ret__, 'content_types'),
+        datastore_ids=pulumi.get(__ret__, 'datastore_ids'),
+        enableds=pulumi.get(__ret__, 'enableds'),
+        id=pulumi.get(__ret__, 'id'),
+        node_name=pulumi.get(__ret__, 'node_name'),
+        shareds=pulumi.get(__ret__, 'shareds'),
+        space_availables=pulumi.get(__ret__, 'space_availables'),
+        space_totals=pulumi.get(__ret__, 'space_totals'),
+        space_useds=pulumi.get(__ret__, 'space_useds'),
+        types=pulumi.get(__ret__, 'types'))
 
 
 @_utilities.lift_output_func(get_datastores)

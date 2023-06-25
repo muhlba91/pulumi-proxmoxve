@@ -133,13 +133,13 @@ def get_nodes(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodesR
     __ret__ = pulumi.runtime.invoke('proxmoxve:Cluster/getNodes:getNodes', __args__, opts=opts, typ=GetNodesResult).value
 
     return AwaitableGetNodesResult(
-        cpu_counts=__ret__.cpu_counts,
-        cpu_utilizations=__ret__.cpu_utilizations,
-        id=__ret__.id,
-        memory_availables=__ret__.memory_availables,
-        memory_useds=__ret__.memory_useds,
-        names=__ret__.names,
-        onlines=__ret__.onlines,
-        ssl_fingerprints=__ret__.ssl_fingerprints,
-        support_levels=__ret__.support_levels,
-        uptimes=__ret__.uptimes)
+        cpu_counts=pulumi.get(__ret__, 'cpu_counts'),
+        cpu_utilizations=pulumi.get(__ret__, 'cpu_utilizations'),
+        id=pulumi.get(__ret__, 'id'),
+        memory_availables=pulumi.get(__ret__, 'memory_availables'),
+        memory_useds=pulumi.get(__ret__, 'memory_useds'),
+        names=pulumi.get(__ret__, 'names'),
+        onlines=pulumi.get(__ret__, 'onlines'),
+        ssl_fingerprints=pulumi.get(__ret__, 'ssl_fingerprints'),
+        support_levels=pulumi.get(__ret__, 'support_levels'),
+        uptimes=pulumi.get(__ret__, 'uptimes'))

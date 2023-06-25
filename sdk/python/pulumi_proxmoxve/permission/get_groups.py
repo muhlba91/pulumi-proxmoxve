@@ -70,6 +70,6 @@ def get_groups(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroup
     __ret__ = pulumi.runtime.invoke('proxmoxve:Permission/getGroups:getGroups', __args__, opts=opts, typ=GetGroupsResult).value
 
     return AwaitableGetGroupsResult(
-        comments=__ret__.comments,
-        group_ids=__ret__.group_ids,
-        id=__ret__.id)
+        comments=pulumi.get(__ret__, 'comments'),
+        group_ids=pulumi.get(__ret__, 'group_ids'),
+        id=pulumi.get(__ret__, 'id'))

@@ -24,70 +24,74 @@ import javax.annotation.Nullable;
 @ResourceType(type="pulumi:providers:proxmoxve")
 public class Provider extends com.pulumi.resources.ProviderResource {
     /**
-     * The API token for the Proxmox Virtual Environment API
+     * The API token for the Proxmox VE API.
      * 
      */
     @Export(name="apiToken", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> apiToken;
 
     /**
-     * @return The API token for the Proxmox Virtual Environment API
+     * @return The API token for the Proxmox VE API.
      * 
      */
     public Output<Optional<String>> apiToken() {
         return Codegen.optional(this.apiToken);
     }
     /**
-     * The endpoint for the Proxmox Virtual Environment API
+     * The endpoint for the Proxmox VE API.
      * 
      */
     @Export(name="endpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> endpoint;
 
     /**
-     * @return The endpoint for the Proxmox Virtual Environment API
+     * @return The endpoint for the Proxmox VE API.
      * 
      */
     public Output<Optional<String>> endpoint() {
         return Codegen.optional(this.endpoint);
     }
     /**
-     * The one-time password for the Proxmox Virtual Environment API
+     * The one-time password for the Proxmox VE API.
+     * 
+     * @deprecated
+     * The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.
      * 
      */
+    @Deprecated /* The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead. */
     @Export(name="otp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> otp;
 
     /**
-     * @return The one-time password for the Proxmox Virtual Environment API
+     * @return The one-time password for the Proxmox VE API.
      * 
      */
     public Output<Optional<String>> otp() {
         return Codegen.optional(this.otp);
     }
     /**
-     * The password for the Proxmox Virtual Environment API
+     * The password for the Proxmox VE API.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
-     * @return The password for the Proxmox Virtual Environment API
+     * @return The password for the Proxmox VE API.
      * 
      */
     public Output<Optional<String>> password() {
         return Codegen.optional(this.password);
     }
     /**
-     * The username for the Proxmox Virtual Environment API
+     * The username for the Proxmox VE API.
      * 
      */
     @Export(name="username", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> username;
 
     /**
-     * @return The username for the Proxmox Virtual Environment API
+     * @return The username for the Proxmox VE API.
      * 
      */
     public Output<Optional<String>> username() {

@@ -21,17 +21,16 @@ class ProviderArgs:
                  otp: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  ssh: Optional[pulumi.Input['ProviderSshArgs']] = None,
-                 username: Optional[pulumi.Input[str]] = None,
-                 virtual_environment: Optional[pulumi.Input['ProviderVirtualEnvironmentArgs']] = None):
+                 username: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
-        :param pulumi.Input[str] api_token: The API token for the Proxmox Virtual Environment API
-        :param pulumi.Input[str] endpoint: The endpoint for the Proxmox Virtual Environment API
-        :param pulumi.Input[bool] insecure: Whether to skip the TLS verification step
-        :param pulumi.Input[str] otp: The one-time password for the Proxmox Virtual Environment API
-        :param pulumi.Input[str] password: The password for the Proxmox Virtual Environment API
-        :param pulumi.Input['ProviderSshArgs'] ssh: The SSH connection configuration to a Proxmox node
-        :param pulumi.Input[str] username: The username for the Proxmox Virtual Environment API
+        :param pulumi.Input[str] api_token: The API token for the Proxmox VE API.
+        :param pulumi.Input[str] endpoint: The endpoint for the Proxmox VE API.
+        :param pulumi.Input[bool] insecure: Whether to skip the TLS verification step.
+        :param pulumi.Input[str] otp: The one-time password for the Proxmox VE API.
+        :param pulumi.Input[str] password: The password for the Proxmox VE API.
+        :param pulumi.Input['ProviderSshArgs'] ssh: The SSH configuration for the Proxmox nodes.
+        :param pulumi.Input[str] username: The username for the Proxmox VE API.
         """
         if api_token is not None:
             pulumi.set(__self__, "api_token", api_token)
@@ -40,6 +39,9 @@ class ProviderArgs:
         if insecure is not None:
             pulumi.set(__self__, "insecure", insecure)
         if otp is not None:
+            warnings.warn("""The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.""", DeprecationWarning)
+            pulumi.log.warn("""otp is deprecated: The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.""")
+        if otp is not None:
             pulumi.set(__self__, "otp", otp)
         if password is not None:
             pulumi.set(__self__, "password", password)
@@ -47,17 +49,12 @@ class ProviderArgs:
             pulumi.set(__self__, "ssh", ssh)
         if username is not None:
             pulumi.set(__self__, "username", username)
-        if virtual_environment is not None:
-            warnings.warn("""Move attributes out of virtual_environment block""", DeprecationWarning)
-            pulumi.log.warn("""virtual_environment is deprecated: Move attributes out of virtual_environment block""")
-        if virtual_environment is not None:
-            pulumi.set(__self__, "virtual_environment", virtual_environment)
 
     @property
     @pulumi.getter(name="apiToken")
     def api_token(self) -> Optional[pulumi.Input[str]]:
         """
-        The API token for the Proxmox Virtual Environment API
+        The API token for the Proxmox VE API.
         """
         return pulumi.get(self, "api_token")
 
@@ -69,7 +66,7 @@ class ProviderArgs:
     @pulumi.getter
     def endpoint(self) -> Optional[pulumi.Input[str]]:
         """
-        The endpoint for the Proxmox Virtual Environment API
+        The endpoint for the Proxmox VE API.
         """
         return pulumi.get(self, "endpoint")
 
@@ -81,7 +78,7 @@ class ProviderArgs:
     @pulumi.getter
     def insecure(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to skip the TLS verification step
+        Whether to skip the TLS verification step.
         """
         return pulumi.get(self, "insecure")
 
@@ -93,8 +90,11 @@ class ProviderArgs:
     @pulumi.getter
     def otp(self) -> Optional[pulumi.Input[str]]:
         """
-        The one-time password for the Proxmox Virtual Environment API
+        The one-time password for the Proxmox VE API.
         """
+        warnings.warn("""The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.""", DeprecationWarning)
+        pulumi.log.warn("""otp is deprecated: The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.""")
+
         return pulumi.get(self, "otp")
 
     @otp.setter
@@ -105,7 +105,7 @@ class ProviderArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password for the Proxmox Virtual Environment API
+        The password for the Proxmox VE API.
         """
         return pulumi.get(self, "password")
 
@@ -117,7 +117,7 @@ class ProviderArgs:
     @pulumi.getter
     def ssh(self) -> Optional[pulumi.Input['ProviderSshArgs']]:
         """
-        The SSH connection configuration to a Proxmox node
+        The SSH configuration for the Proxmox nodes.
         """
         return pulumi.get(self, "ssh")
 
@@ -129,22 +129,13 @@ class ProviderArgs:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         """
-        The username for the Proxmox Virtual Environment API
+        The username for the Proxmox VE API.
         """
         return pulumi.get(self, "username")
 
     @username.setter
     def username(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "username", value)
-
-    @property
-    @pulumi.getter(name="virtualEnvironment")
-    def virtual_environment(self) -> Optional[pulumi.Input['ProviderVirtualEnvironmentArgs']]:
-        return pulumi.get(self, "virtual_environment")
-
-    @virtual_environment.setter
-    def virtual_environment(self, value: Optional[pulumi.Input['ProviderVirtualEnvironmentArgs']]):
-        pulumi.set(self, "virtual_environment", value)
 
 
 class Provider(pulumi.ProviderResource):
@@ -159,7 +150,6 @@ class Provider(pulumi.ProviderResource):
                  password: Optional[pulumi.Input[str]] = None,
                  ssh: Optional[pulumi.Input[pulumi.InputType['ProviderSshArgs']]] = None,
                  username: Optional[pulumi.Input[str]] = None,
-                 virtual_environment: Optional[pulumi.Input[pulumi.InputType['ProviderVirtualEnvironmentArgs']]] = None,
                  __props__=None):
         """
         The provider type for the proxmoxve package. By default, resources use package-wide configuration
@@ -169,13 +159,13 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] api_token: The API token for the Proxmox Virtual Environment API
-        :param pulumi.Input[str] endpoint: The endpoint for the Proxmox Virtual Environment API
-        :param pulumi.Input[bool] insecure: Whether to skip the TLS verification step
-        :param pulumi.Input[str] otp: The one-time password for the Proxmox Virtual Environment API
-        :param pulumi.Input[str] password: The password for the Proxmox Virtual Environment API
-        :param pulumi.Input[pulumi.InputType['ProviderSshArgs']] ssh: The SSH connection configuration to a Proxmox node
-        :param pulumi.Input[str] username: The username for the Proxmox Virtual Environment API
+        :param pulumi.Input[str] api_token: The API token for the Proxmox VE API.
+        :param pulumi.Input[str] endpoint: The endpoint for the Proxmox VE API.
+        :param pulumi.Input[bool] insecure: Whether to skip the TLS verification step.
+        :param pulumi.Input[str] otp: The one-time password for the Proxmox VE API.
+        :param pulumi.Input[str] password: The password for the Proxmox VE API.
+        :param pulumi.Input[pulumi.InputType['ProviderSshArgs']] ssh: The SSH configuration for the Proxmox nodes.
+        :param pulumi.Input[str] username: The username for the Proxmox VE API.
         """
         ...
     @overload
@@ -211,7 +201,6 @@ class Provider(pulumi.ProviderResource):
                  password: Optional[pulumi.Input[str]] = None,
                  ssh: Optional[pulumi.Input[pulumi.InputType['ProviderSshArgs']]] = None,
                  username: Optional[pulumi.Input[str]] = None,
-                 virtual_environment: Optional[pulumi.Input[pulumi.InputType['ProviderVirtualEnvironmentArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -224,14 +213,13 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["api_token"] = None if api_token is None else pulumi.Output.secret(api_token)
             __props__.__dict__["endpoint"] = endpoint
             __props__.__dict__["insecure"] = pulumi.Output.from_input(insecure).apply(pulumi.runtime.to_json) if insecure is not None else None
+            if otp is not None and not opts.urn:
+                warnings.warn("""The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.""", DeprecationWarning)
+                pulumi.log.warn("""otp is deprecated: The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.""")
             __props__.__dict__["otp"] = otp
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["ssh"] = pulumi.Output.from_input(ssh).apply(pulumi.runtime.to_json) if ssh is not None else None
             __props__.__dict__["username"] = username
-            if virtual_environment is not None and not opts.urn:
-                warnings.warn("""Move attributes out of virtual_environment block""", DeprecationWarning)
-                pulumi.log.warn("""virtual_environment is deprecated: Move attributes out of virtual_environment block""")
-            __props__.__dict__["virtual_environment"] = pulumi.Output.from_input(virtual_environment).apply(pulumi.runtime.to_json) if virtual_environment is not None else None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["apiToken", "password"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
@@ -244,7 +232,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="apiToken")
     def api_token(self) -> pulumi.Output[Optional[str]]:
         """
-        The API token for the Proxmox Virtual Environment API
+        The API token for the Proxmox VE API.
         """
         return pulumi.get(self, "api_token")
 
@@ -252,7 +240,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def endpoint(self) -> pulumi.Output[Optional[str]]:
         """
-        The endpoint for the Proxmox Virtual Environment API
+        The endpoint for the Proxmox VE API.
         """
         return pulumi.get(self, "endpoint")
 
@@ -260,15 +248,18 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def otp(self) -> pulumi.Output[Optional[str]]:
         """
-        The one-time password for the Proxmox Virtual Environment API
+        The one-time password for the Proxmox VE API.
         """
+        warnings.warn("""The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.""", DeprecationWarning)
+        pulumi.log.warn("""otp is deprecated: The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.""")
+
         return pulumi.get(self, "otp")
 
     @property
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[str]]:
         """
-        The password for the Proxmox Virtual Environment API
+        The password for the Proxmox VE API.
         """
         return pulumi.get(self, "password")
 
@@ -276,7 +267,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def username(self) -> pulumi.Output[Optional[str]]:
         """
-        The username for the Proxmox Virtual Environment API
+        The username for the Proxmox VE API.
         """
         return pulumi.get(self, "username")
 

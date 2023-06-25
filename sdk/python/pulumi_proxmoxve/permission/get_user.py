@@ -146,17 +146,17 @@ def get_user(user_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('proxmoxve:Permission/getUser:getUser', __args__, opts=opts, typ=GetUserResult).value
 
     return AwaitableGetUserResult(
-        acls=__ret__.acls,
-        comment=__ret__.comment,
-        email=__ret__.email,
-        enabled=__ret__.enabled,
-        expiration_date=__ret__.expiration_date,
-        first_name=__ret__.first_name,
-        groups=__ret__.groups,
-        id=__ret__.id,
-        keys=__ret__.keys,
-        last_name=__ret__.last_name,
-        user_id=__ret__.user_id)
+        acls=pulumi.get(__ret__, 'acls'),
+        comment=pulumi.get(__ret__, 'comment'),
+        email=pulumi.get(__ret__, 'email'),
+        enabled=pulumi.get(__ret__, 'enabled'),
+        expiration_date=pulumi.get(__ret__, 'expiration_date'),
+        first_name=pulumi.get(__ret__, 'first_name'),
+        groups=pulumi.get(__ret__, 'groups'),
+        id=pulumi.get(__ret__, 'id'),
+        keys=pulumi.get(__ret__, 'keys'),
+        last_name=pulumi.get(__ret__, 'last_name'),
+        user_id=pulumi.get(__ret__, 'user_id'))
 
 
 @_utilities.lift_output_func(get_user)

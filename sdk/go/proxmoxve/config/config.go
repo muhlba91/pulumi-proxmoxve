@@ -8,42 +8,39 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
 
-// The API token for the Proxmox Virtual Environment API
+// The API token for the Proxmox VE API.
 func GetApiToken(ctx *pulumi.Context) string {
 	return config.Get(ctx, "proxmoxve:apiToken")
 }
 
-// The endpoint for the Proxmox Virtual Environment API
+// The endpoint for the Proxmox VE API.
 func GetEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "proxmoxve:endpoint")
 }
 
-// Whether to skip the TLS verification step
+// Whether to skip the TLS verification step.
 func GetInsecure(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "proxmoxve:insecure")
 }
 
-// The one-time password for the Proxmox Virtual Environment API
+// The one-time password for the Proxmox VE API.
+//
+// Deprecated: The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.
 func GetOtp(ctx *pulumi.Context) string {
 	return config.Get(ctx, "proxmoxve:otp")
 }
 
-// The password for the Proxmox Virtual Environment API
+// The password for the Proxmox VE API.
 func GetPassword(ctx *pulumi.Context) string {
 	return config.Get(ctx, "proxmoxve:password")
 }
 
-// The SSH connection configuration to a Proxmox node
+// The SSH configuration for the Proxmox nodes.
 func GetSsh(ctx *pulumi.Context) string {
 	return config.Get(ctx, "proxmoxve:ssh")
 }
 
-// The username for the Proxmox Virtual Environment API
+// The username for the Proxmox VE API.
 func GetUsername(ctx *pulumi.Context) string {
 	return config.Get(ctx, "proxmoxve:username")
-}
-
-// Deprecated: Move attributes out of virtual_environment block
-func GetVirtualEnvironment(ctx *pulumi.Context) string {
-	return config.Get(ctx, "proxmoxve:virtualEnvironment")
 }

@@ -22,29 +22,6 @@ export interface ProviderSshNode {
     address: pulumi.Input<string>;
     name: pulumi.Input<string>;
 }
-
-export interface ProviderVirtualEnvironment {
-    apiToken?: pulumi.Input<string>;
-    endpoint?: pulumi.Input<string>;
-    insecure?: pulumi.Input<boolean>;
-    otp?: pulumi.Input<string>;
-    password?: pulumi.Input<string>;
-    ssh?: pulumi.Input<inputs.ProviderVirtualEnvironmentSsh>;
-    username?: pulumi.Input<string>;
-}
-
-export interface ProviderVirtualEnvironmentSsh {
-    agent?: pulumi.Input<boolean>;
-    agentSocket?: pulumi.Input<string>;
-    nodes?: pulumi.Input<pulumi.Input<inputs.ProviderVirtualEnvironmentSshNode>[]>;
-    password?: pulumi.Input<string>;
-    username?: pulumi.Input<string>;
-}
-
-export interface ProviderVirtualEnvironmentSshNode {
-    address: pulumi.Input<string>;
-    name: pulumi.Input<string>;
-}
 export namespace CT {
     export interface ContainerClone {
         datastoreId?: pulumi.Input<string>;
@@ -283,6 +260,7 @@ export namespace VM {
         datastoreId?: pulumi.Input<string>;
         dns?: pulumi.Input<inputs.VM.VirtualMachineInitializationDns>;
         ipConfigs?: pulumi.Input<pulumi.Input<inputs.VM.VirtualMachineInitializationIpConfig>[]>;
+        metaDataFileId?: pulumi.Input<string>;
         networkDataFileId?: pulumi.Input<string>;
         type?: pulumi.Input<string>;
         userAccount?: pulumi.Input<inputs.VM.VirtualMachineInitializationUserAccount>;

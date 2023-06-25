@@ -1369,6 +1369,7 @@ type VirtualMachineInitialization struct {
 	DatastoreId       *string                                  `pulumi:"datastoreId"`
 	Dns               *VirtualMachineInitializationDns         `pulumi:"dns"`
 	IpConfigs         []VirtualMachineInitializationIpConfig   `pulumi:"ipConfigs"`
+	MetaDataFileId    *string                                  `pulumi:"metaDataFileId"`
 	NetworkDataFileId *string                                  `pulumi:"networkDataFileId"`
 	Type              *string                                  `pulumi:"type"`
 	UserAccount       *VirtualMachineInitializationUserAccount `pulumi:"userAccount"`
@@ -1391,6 +1392,7 @@ type VirtualMachineInitializationArgs struct {
 	DatastoreId       pulumi.StringPtrInput                           `pulumi:"datastoreId"`
 	Dns               VirtualMachineInitializationDnsPtrInput         `pulumi:"dns"`
 	IpConfigs         VirtualMachineInitializationIpConfigArrayInput  `pulumi:"ipConfigs"`
+	MetaDataFileId    pulumi.StringPtrInput                           `pulumi:"metaDataFileId"`
 	NetworkDataFileId pulumi.StringPtrInput                           `pulumi:"networkDataFileId"`
 	Type              pulumi.StringPtrInput                           `pulumi:"type"`
 	UserAccount       VirtualMachineInitializationUserAccountPtrInput `pulumi:"userAccount"`
@@ -1487,6 +1489,10 @@ func (o VirtualMachineInitializationOutput) IpConfigs() VirtualMachineInitializa
 	return o.ApplyT(func(v VirtualMachineInitialization) []VirtualMachineInitializationIpConfig { return v.IpConfigs }).(VirtualMachineInitializationIpConfigArrayOutput)
 }
 
+func (o VirtualMachineInitializationOutput) MetaDataFileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInitialization) *string { return v.MetaDataFileId }).(pulumi.StringPtrOutput)
+}
+
 func (o VirtualMachineInitializationOutput) NetworkDataFileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitialization) *string { return v.NetworkDataFileId }).(pulumi.StringPtrOutput)
 }
@@ -1556,6 +1562,15 @@ func (o VirtualMachineInitializationPtrOutput) IpConfigs() VirtualMachineInitial
 		}
 		return v.IpConfigs
 	}).(VirtualMachineInitializationIpConfigArrayOutput)
+}
+
+func (o VirtualMachineInitializationPtrOutput) MetaDataFileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInitialization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetaDataFileId
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o VirtualMachineInitializationPtrOutput) NetworkDataFileId() pulumi.StringPtrOutput {

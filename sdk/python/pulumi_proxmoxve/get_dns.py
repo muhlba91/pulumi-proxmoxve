@@ -82,10 +82,10 @@ def get_dns(node_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('proxmoxve:index/getDNS:getDNS', __args__, opts=opts, typ=GetDNSResult).value
 
     return AwaitableGetDNSResult(
-        domain=__ret__.domain,
-        id=__ret__.id,
-        node_name=__ret__.node_name,
-        servers=__ret__.servers)
+        domain=pulumi.get(__ret__, 'domain'),
+        id=pulumi.get(__ret__, 'id'),
+        node_name=pulumi.get(__ret__, 'node_name'),
+        servers=pulumi.get(__ret__, 'servers'))
 
 
 @_utilities.lift_output_func(get_dns)

@@ -284,6 +284,7 @@ export namespace VM {
         datastoreId?: string;
         dns?: outputs.VM.VirtualMachineInitializationDns;
         ipConfigs?: outputs.VM.VirtualMachineInitializationIpConfig[];
+        metaDataFileId?: string;
         networkDataFileId?: string;
         type?: string;
         userAccount?: outputs.VM.VirtualMachineInitializationUserAccount;
@@ -360,29 +361,6 @@ export namespace config {
     }
 
     export interface SshNode {
-        address: string;
-        name: string;
-    }
-
-    export interface VirtualEnvironment {
-        apiToken?: string;
-        endpoint?: string;
-        insecure?: boolean;
-        otp?: string;
-        password?: string;
-        ssh?: outputs.config.VirtualEnvironmentSsh;
-        username?: string;
-    }
-
-    export interface VirtualEnvironmentSsh {
-        agent?: boolean;
-        agentSocket?: string;
-        nodes?: outputs.config.VirtualEnvironmentSshNode[];
-        password?: string;
-        username?: string;
-    }
-
-    export interface VirtualEnvironmentSshNode {
         address: string;
         name: string;
     }

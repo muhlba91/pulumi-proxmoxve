@@ -61,5 +61,5 @@ def get_pools(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPoolsR
     __ret__ = pulumi.runtime.invoke('proxmoxve:Permission/getPools:getPools', __args__, opts=opts, typ=GetPoolsResult).value
 
     return AwaitableGetPoolsResult(
-        id=__ret__.id,
-        pool_ids=__ret__.pool_ids)
+        id=pulumi.get(__ret__, 'id'),
+        pool_ids=pulumi.get(__ret__, 'pool_ids'))

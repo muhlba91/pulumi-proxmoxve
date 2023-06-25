@@ -12,38 +12,36 @@ from . import outputs
 
 apiToken: Optional[str]
 """
-The API token for the Proxmox Virtual Environment API
+The API token for the Proxmox VE API.
 """
 
 endpoint: Optional[str]
 """
-The endpoint for the Proxmox Virtual Environment API
+The endpoint for the Proxmox VE API.
 """
 
 insecure: Optional[bool]
 """
-Whether to skip the TLS verification step
+Whether to skip the TLS verification step.
 """
 
 otp: Optional[str]
 """
-The one-time password for the Proxmox Virtual Environment API
+The one-time password for the Proxmox VE API.
 """
 
 password: Optional[str]
 """
-The password for the Proxmox Virtual Environment API
+The password for the Proxmox VE API.
 """
 
 ssh: Optional[str]
 """
-The SSH connection configuration to a Proxmox node
+The SSH configuration for the Proxmox nodes.
 """
 
 username: Optional[str]
 """
-The username for the Proxmox Virtual Environment API
+The username for the Proxmox VE API.
 """
-
-virtualEnvironment: Optional[str]
 

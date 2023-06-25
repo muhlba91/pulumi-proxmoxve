@@ -565,6 +565,7 @@ class VirtualMachineInitializationArgs:
                  datastore_id: Optional[pulumi.Input[str]] = None,
                  dns: Optional[pulumi.Input['VirtualMachineInitializationDnsArgs']] = None,
                  ip_configs: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineInitializationIpConfigArgs']]]] = None,
+                 meta_data_file_id: Optional[pulumi.Input[str]] = None,
                  network_data_file_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  user_account: Optional[pulumi.Input['VirtualMachineInitializationUserAccountArgs']] = None,
@@ -576,6 +577,8 @@ class VirtualMachineInitializationArgs:
             pulumi.set(__self__, "dns", dns)
         if ip_configs is not None:
             pulumi.set(__self__, "ip_configs", ip_configs)
+        if meta_data_file_id is not None:
+            pulumi.set(__self__, "meta_data_file_id", meta_data_file_id)
         if network_data_file_id is not None:
             pulumi.set(__self__, "network_data_file_id", network_data_file_id)
         if type is not None:
@@ -613,6 +616,15 @@ class VirtualMachineInitializationArgs:
     @ip_configs.setter
     def ip_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineInitializationIpConfigArgs']]]]):
         pulumi.set(self, "ip_configs", value)
+
+    @property
+    @pulumi.getter(name="metaDataFileId")
+    def meta_data_file_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "meta_data_file_id")
+
+    @meta_data_file_id.setter
+    def meta_data_file_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "meta_data_file_id", value)
 
     @property
     @pulumi.getter(name="networkDataFileId")

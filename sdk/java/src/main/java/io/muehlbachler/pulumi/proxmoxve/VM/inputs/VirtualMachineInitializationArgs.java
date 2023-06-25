@@ -40,6 +40,13 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
         return Optional.ofNullable(this.ipConfigs);
     }
 
+    @Import(name="metaDataFileId")
+    private @Nullable Output<String> metaDataFileId;
+
+    public Optional<Output<String>> metaDataFileId() {
+        return Optional.ofNullable(this.metaDataFileId);
+    }
+
     @Import(name="networkDataFileId")
     private @Nullable Output<String> networkDataFileId;
 
@@ -81,6 +88,7 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
         this.datastoreId = $.datastoreId;
         this.dns = $.dns;
         this.ipConfigs = $.ipConfigs;
+        this.metaDataFileId = $.metaDataFileId;
         this.networkDataFileId = $.networkDataFileId;
         this.type = $.type;
         this.userAccount = $.userAccount;
@@ -135,6 +143,15 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
 
         public Builder ipConfigs(VirtualMachineInitializationIpConfigArgs... ipConfigs) {
             return ipConfigs(List.of(ipConfigs));
+        }
+
+        public Builder metaDataFileId(@Nullable Output<String> metaDataFileId) {
+            $.metaDataFileId = metaDataFileId;
+            return this;
+        }
+
+        public Builder metaDataFileId(String metaDataFileId) {
+            return metaDataFileId(Output.of(metaDataFileId));
         }
 
         public Builder networkDataFileId(@Nullable Output<String> networkDataFileId) {

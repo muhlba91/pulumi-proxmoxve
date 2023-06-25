@@ -6,7 +6,6 @@ package io.muehlbachler.pulumi.proxmoxve;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import io.muehlbachler.pulumi.proxmoxve.inputs.ProviderSshArgs;
-import io.muehlbachler.pulumi.proxmoxve.inputs.ProviderVirtualEnvironmentArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -19,14 +18,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     public static final ProviderArgs Empty = new ProviderArgs();
 
     /**
-     * The API token for the Proxmox Virtual Environment API
+     * The API token for the Proxmox VE API.
      * 
      */
     @Import(name="apiToken")
     private @Nullable Output<String> apiToken;
 
     /**
-     * @return The API token for the Proxmox Virtual Environment API
+     * @return The API token for the Proxmox VE API.
      * 
      */
     public Optional<Output<String>> apiToken() {
@@ -34,14 +33,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The endpoint for the Proxmox Virtual Environment API
+     * The endpoint for the Proxmox VE API.
      * 
      */
     @Import(name="endpoint")
     private @Nullable Output<String> endpoint;
 
     /**
-     * @return The endpoint for the Proxmox Virtual Environment API
+     * @return The endpoint for the Proxmox VE API.
      * 
      */
     public Optional<Output<String>> endpoint() {
@@ -49,14 +48,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to skip the TLS verification step
+     * Whether to skip the TLS verification step.
      * 
      */
     @Import(name="insecure", json=true)
     private @Nullable Output<Boolean> insecure;
 
     /**
-     * @return Whether to skip the TLS verification step
+     * @return Whether to skip the TLS verification step.
      * 
      */
     public Optional<Output<Boolean>> insecure() {
@@ -64,29 +63,37 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The one-time password for the Proxmox Virtual Environment API
+     * The one-time password for the Proxmox VE API.
+     * 
+     * @deprecated
+     * The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.
      * 
      */
+    @Deprecated /* The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead. */
     @Import(name="otp")
     private @Nullable Output<String> otp;
 
     /**
-     * @return The one-time password for the Proxmox Virtual Environment API
+     * @return The one-time password for the Proxmox VE API.
+     * 
+     * @deprecated
+     * The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.
      * 
      */
+    @Deprecated /* The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead. */
     public Optional<Output<String>> otp() {
         return Optional.ofNullable(this.otp);
     }
 
     /**
-     * The password for the Proxmox Virtual Environment API
+     * The password for the Proxmox VE API.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The password for the Proxmox Virtual Environment API
+     * @return The password for the Proxmox VE API.
      * 
      */
     public Optional<Output<String>> password() {
@@ -94,14 +101,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The SSH connection configuration to a Proxmox node
+     * The SSH configuration for the Proxmox nodes.
      * 
      */
     @Import(name="ssh", json=true)
     private @Nullable Output<ProviderSshArgs> ssh;
 
     /**
-     * @return The SSH connection configuration to a Proxmox node
+     * @return The SSH configuration for the Proxmox nodes.
      * 
      */
     public Optional<Output<ProviderSshArgs>> ssh() {
@@ -109,37 +116,18 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The username for the Proxmox Virtual Environment API
+     * The username for the Proxmox VE API.
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return The username for the Proxmox Virtual Environment API
+     * @return The username for the Proxmox VE API.
      * 
      */
     public Optional<Output<String>> username() {
         return Optional.ofNullable(this.username);
-    }
-
-    /**
-     * @deprecated
-     * Move attributes out of virtual_environment block
-     * 
-     */
-    @Deprecated /* Move attributes out of virtual_environment block */
-    @Import(name="virtualEnvironment", json=true)
-    private @Nullable Output<ProviderVirtualEnvironmentArgs> virtualEnvironment;
-
-    /**
-     * @deprecated
-     * Move attributes out of virtual_environment block
-     * 
-     */
-    @Deprecated /* Move attributes out of virtual_environment block */
-    public Optional<Output<ProviderVirtualEnvironmentArgs>> virtualEnvironment() {
-        return Optional.ofNullable(this.virtualEnvironment);
     }
 
     private ProviderArgs() {}
@@ -152,7 +140,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.password = $.password;
         this.ssh = $.ssh;
         this.username = $.username;
-        this.virtualEnvironment = $.virtualEnvironment;
     }
 
     public static Builder builder() {
@@ -174,7 +161,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiToken The API token for the Proxmox Virtual Environment API
+         * @param apiToken The API token for the Proxmox VE API.
          * 
          * @return builder
          * 
@@ -185,7 +172,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiToken The API token for the Proxmox Virtual Environment API
+         * @param apiToken The API token for the Proxmox VE API.
          * 
          * @return builder
          * 
@@ -195,7 +182,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpoint The endpoint for the Proxmox Virtual Environment API
+         * @param endpoint The endpoint for the Proxmox VE API.
          * 
          * @return builder
          * 
@@ -206,7 +193,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpoint The endpoint for the Proxmox Virtual Environment API
+         * @param endpoint The endpoint for the Proxmox VE API.
          * 
          * @return builder
          * 
@@ -216,7 +203,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param insecure Whether to skip the TLS verification step
+         * @param insecure Whether to skip the TLS verification step.
          * 
          * @return builder
          * 
@@ -227,7 +214,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param insecure Whether to skip the TLS verification step
+         * @param insecure Whether to skip the TLS verification step.
          * 
          * @return builder
          * 
@@ -237,28 +224,36 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param otp The one-time password for the Proxmox Virtual Environment API
+         * @param otp The one-time password for the Proxmox VE API.
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.
+         * 
          */
+        @Deprecated /* The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead. */
         public Builder otp(@Nullable Output<String> otp) {
             $.otp = otp;
             return this;
         }
 
         /**
-         * @param otp The one-time password for the Proxmox Virtual Environment API
+         * @param otp The one-time password for the Proxmox VE API.
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.
+         * 
          */
+        @Deprecated /* The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead. */
         public Builder otp(String otp) {
             return otp(Output.of(otp));
         }
 
         /**
-         * @param password The password for the Proxmox Virtual Environment API
+         * @param password The password for the Proxmox VE API.
          * 
          * @return builder
          * 
@@ -269,7 +264,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password for the Proxmox Virtual Environment API
+         * @param password The password for the Proxmox VE API.
          * 
          * @return builder
          * 
@@ -279,7 +274,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssh The SSH connection configuration to a Proxmox node
+         * @param ssh The SSH configuration for the Proxmox nodes.
          * 
          * @return builder
          * 
@@ -290,7 +285,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssh The SSH connection configuration to a Proxmox node
+         * @param ssh The SSH configuration for the Proxmox nodes.
          * 
          * @return builder
          * 
@@ -300,7 +295,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username The username for the Proxmox Virtual Environment API
+         * @param username The username for the Proxmox VE API.
          * 
          * @return builder
          * 
@@ -311,38 +306,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username The username for the Proxmox Virtual Environment API
+         * @param username The username for the Proxmox VE API.
          * 
          * @return builder
          * 
          */
         public Builder username(String username) {
             return username(Output.of(username));
-        }
-
-        /**
-         * @return builder
-         * 
-         * @deprecated
-         * Move attributes out of virtual_environment block
-         * 
-         */
-        @Deprecated /* Move attributes out of virtual_environment block */
-        public Builder virtualEnvironment(@Nullable Output<ProviderVirtualEnvironmentArgs> virtualEnvironment) {
-            $.virtualEnvironment = virtualEnvironment;
-            return this;
-        }
-
-        /**
-         * @return builder
-         * 
-         * @deprecated
-         * Move attributes out of virtual_environment block
-         * 
-         */
-        @Deprecated /* Move attributes out of virtual_environment block */
-        public Builder virtualEnvironment(ProviderVirtualEnvironmentArgs virtualEnvironment) {
-            return virtualEnvironment(Output.of(virtualEnvironment));
         }
 
         public ProviderArgs build() {

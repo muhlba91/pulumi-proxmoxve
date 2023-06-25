@@ -18,6 +18,7 @@ public final class VirtualMachineInitialization {
     private @Nullable String datastoreId;
     private @Nullable VirtualMachineInitializationDns dns;
     private @Nullable List<VirtualMachineInitializationIpConfig> ipConfigs;
+    private @Nullable String metaDataFileId;
     private @Nullable String networkDataFileId;
     private @Nullable String type;
     private @Nullable VirtualMachineInitializationUserAccount userAccount;
@@ -33,6 +34,9 @@ public final class VirtualMachineInitialization {
     }
     public List<VirtualMachineInitializationIpConfig> ipConfigs() {
         return this.ipConfigs == null ? List.of() : this.ipConfigs;
+    }
+    public Optional<String> metaDataFileId() {
+        return Optional.ofNullable(this.metaDataFileId);
     }
     public Optional<String> networkDataFileId() {
         return Optional.ofNullable(this.networkDataFileId);
@@ -62,6 +66,7 @@ public final class VirtualMachineInitialization {
         private @Nullable String datastoreId;
         private @Nullable VirtualMachineInitializationDns dns;
         private @Nullable List<VirtualMachineInitializationIpConfig> ipConfigs;
+        private @Nullable String metaDataFileId;
         private @Nullable String networkDataFileId;
         private @Nullable String type;
         private @Nullable VirtualMachineInitializationUserAccount userAccount;
@@ -73,6 +78,7 @@ public final class VirtualMachineInitialization {
     	      this.datastoreId = defaults.datastoreId;
     	      this.dns = defaults.dns;
     	      this.ipConfigs = defaults.ipConfigs;
+    	      this.metaDataFileId = defaults.metaDataFileId;
     	      this.networkDataFileId = defaults.networkDataFileId;
     	      this.type = defaults.type;
     	      this.userAccount = defaults.userAccount;
@@ -97,6 +103,11 @@ public final class VirtualMachineInitialization {
         }
         public Builder ipConfigs(VirtualMachineInitializationIpConfig... ipConfigs) {
             return ipConfigs(List.of(ipConfigs));
+        }
+        @CustomType.Setter
+        public Builder metaDataFileId(@Nullable String metaDataFileId) {
+            this.metaDataFileId = metaDataFileId;
+            return this;
         }
         @CustomType.Setter
         public Builder networkDataFileId(@Nullable String networkDataFileId) {
@@ -128,6 +139,7 @@ public final class VirtualMachineInitialization {
             o.datastoreId = datastoreId;
             o.dns = dns;
             o.ipConfigs = ipConfigs;
+            o.metaDataFileId = metaDataFileId;
             o.networkDataFileId = networkDataFileId;
             o.type = type;
             o.userAccount = userAccount;

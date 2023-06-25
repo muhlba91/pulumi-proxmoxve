@@ -92,11 +92,11 @@ def get_group(group_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('proxmoxve:Permission/getGroup:getGroup', __args__, opts=opts, typ=GetGroupResult).value
 
     return AwaitableGetGroupResult(
-        acls=__ret__.acls,
-        comment=__ret__.comment,
-        group_id=__ret__.group_id,
-        id=__ret__.id,
-        members=__ret__.members)
+        acls=pulumi.get(__ret__, 'acls'),
+        comment=pulumi.get(__ret__, 'comment'),
+        group_id=pulumi.get(__ret__, 'group_id'),
+        id=pulumi.get(__ret__, 'id'),
+        members=pulumi.get(__ret__, 'members'))
 
 
 @_utilities.lift_output_func(get_group)

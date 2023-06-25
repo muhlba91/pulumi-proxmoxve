@@ -501,6 +501,8 @@ class VirtualMachineInitialization(dict):
             suggest = "datastore_id"
         elif key == "ipConfigs":
             suggest = "ip_configs"
+        elif key == "metaDataFileId":
+            suggest = "meta_data_file_id"
         elif key == "networkDataFileId":
             suggest = "network_data_file_id"
         elif key == "userAccount":
@@ -525,6 +527,7 @@ class VirtualMachineInitialization(dict):
                  datastore_id: Optional[str] = None,
                  dns: Optional['outputs.VirtualMachineInitializationDns'] = None,
                  ip_configs: Optional[Sequence['outputs.VirtualMachineInitializationIpConfig']] = None,
+                 meta_data_file_id: Optional[str] = None,
                  network_data_file_id: Optional[str] = None,
                  type: Optional[str] = None,
                  user_account: Optional['outputs.VirtualMachineInitializationUserAccount'] = None,
@@ -536,6 +539,8 @@ class VirtualMachineInitialization(dict):
             pulumi.set(__self__, "dns", dns)
         if ip_configs is not None:
             pulumi.set(__self__, "ip_configs", ip_configs)
+        if meta_data_file_id is not None:
+            pulumi.set(__self__, "meta_data_file_id", meta_data_file_id)
         if network_data_file_id is not None:
             pulumi.set(__self__, "network_data_file_id", network_data_file_id)
         if type is not None:
@@ -561,6 +566,11 @@ class VirtualMachineInitialization(dict):
     @pulumi.getter(name="ipConfigs")
     def ip_configs(self) -> Optional[Sequence['outputs.VirtualMachineInitializationIpConfig']]:
         return pulumi.get(self, "ip_configs")
+
+    @property
+    @pulumi.getter(name="metaDataFileId")
+    def meta_data_file_id(self) -> Optional[str]:
+        return pulumi.get(self, "meta_data_file_id")
 
     @property
     @pulumi.getter(name="networkDataFileId")

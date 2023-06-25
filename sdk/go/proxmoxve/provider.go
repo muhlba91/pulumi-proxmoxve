@@ -17,15 +17,17 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
-	// The API token for the Proxmox Virtual Environment API
+	// The API token for the Proxmox VE API.
 	ApiToken pulumi.StringPtrOutput `pulumi:"apiToken"`
-	// The endpoint for the Proxmox Virtual Environment API
+	// The endpoint for the Proxmox VE API.
 	Endpoint pulumi.StringPtrOutput `pulumi:"endpoint"`
-	// The one-time password for the Proxmox Virtual Environment API
+	// The one-time password for the Proxmox VE API.
+	//
+	// Deprecated: The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.
 	Otp pulumi.StringPtrOutput `pulumi:"otp"`
-	// The password for the Proxmox Virtual Environment API
+	// The password for the Proxmox VE API.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
-	// The username for the Proxmox Virtual Environment API
+	// The username for the Proxmox VE API.
 	Username pulumi.StringPtrOutput `pulumi:"username"`
 }
 
@@ -57,42 +59,42 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	// The API token for the Proxmox Virtual Environment API
+	// The API token for the Proxmox VE API.
 	ApiToken *string `pulumi:"apiToken"`
-	// The endpoint for the Proxmox Virtual Environment API
+	// The endpoint for the Proxmox VE API.
 	Endpoint *string `pulumi:"endpoint"`
-	// Whether to skip the TLS verification step
+	// Whether to skip the TLS verification step.
 	Insecure *bool `pulumi:"insecure"`
-	// The one-time password for the Proxmox Virtual Environment API
+	// The one-time password for the Proxmox VE API.
+	//
+	// Deprecated: The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.
 	Otp *string `pulumi:"otp"`
-	// The password for the Proxmox Virtual Environment API
+	// The password for the Proxmox VE API.
 	Password *string `pulumi:"password"`
-	// The SSH connection configuration to a Proxmox node
+	// The SSH configuration for the Proxmox nodes.
 	Ssh *ProviderSsh `pulumi:"ssh"`
-	// The username for the Proxmox Virtual Environment API
+	// The username for the Proxmox VE API.
 	Username *string `pulumi:"username"`
-	// Deprecated: Move attributes out of virtual_environment block
-	VirtualEnvironment *ProviderVirtualEnvironment `pulumi:"virtualEnvironment"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	// The API token for the Proxmox Virtual Environment API
+	// The API token for the Proxmox VE API.
 	ApiToken pulumi.StringPtrInput
-	// The endpoint for the Proxmox Virtual Environment API
+	// The endpoint for the Proxmox VE API.
 	Endpoint pulumi.StringPtrInput
-	// Whether to skip the TLS verification step
+	// Whether to skip the TLS verification step.
 	Insecure pulumi.BoolPtrInput
-	// The one-time password for the Proxmox Virtual Environment API
+	// The one-time password for the Proxmox VE API.
+	//
+	// Deprecated: The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.
 	Otp pulumi.StringPtrInput
-	// The password for the Proxmox Virtual Environment API
+	// The password for the Proxmox VE API.
 	Password pulumi.StringPtrInput
-	// The SSH connection configuration to a Proxmox node
+	// The SSH configuration for the Proxmox nodes.
 	Ssh ProviderSshPtrInput
-	// The username for the Proxmox Virtual Environment API
+	// The username for the Proxmox VE API.
 	Username pulumi.StringPtrInput
-	// Deprecated: Move attributes out of virtual_environment block
-	VirtualEnvironment ProviderVirtualEnvironmentPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {
@@ -132,27 +134,29 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
-// The API token for the Proxmox Virtual Environment API
+// The API token for the Proxmox VE API.
 func (o ProviderOutput) ApiToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApiToken }).(pulumi.StringPtrOutput)
 }
 
-// The endpoint for the Proxmox Virtual Environment API
+// The endpoint for the Proxmox VE API.
 func (o ProviderOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Endpoint }).(pulumi.StringPtrOutput)
 }
 
-// The one-time password for the Proxmox Virtual Environment API
+// The one-time password for the Proxmox VE API.
+//
+// Deprecated: The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.
 func (o ProviderOutput) Otp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Otp }).(pulumi.StringPtrOutput)
 }
 
-// The password for the Proxmox Virtual Environment API
+// The password for the Proxmox VE API.
 func (o ProviderOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// The username for the Proxmox Virtual Environment API
+// The username for the Proxmox VE API.
 func (o ProviderOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Username }).(pulumi.StringPtrOutput)
 }

@@ -10,7 +10,7 @@ declare var exports: any;
 const __config = new pulumi.Config("proxmoxve");
 
 /**
- * The API token for the Proxmox Virtual Environment API
+ * The API token for the Proxmox VE API.
  */
 export declare const apiToken: string | undefined;
 Object.defineProperty(exports, "apiToken", {
@@ -21,7 +21,7 @@ Object.defineProperty(exports, "apiToken", {
 });
 
 /**
- * The endpoint for the Proxmox Virtual Environment API
+ * The endpoint for the Proxmox VE API.
  */
 export declare const endpoint: string | undefined;
 Object.defineProperty(exports, "endpoint", {
@@ -32,7 +32,7 @@ Object.defineProperty(exports, "endpoint", {
 });
 
 /**
- * Whether to skip the TLS verification step
+ * Whether to skip the TLS verification step.
  */
 export declare const insecure: boolean | undefined;
 Object.defineProperty(exports, "insecure", {
@@ -43,7 +43,7 @@ Object.defineProperty(exports, "insecure", {
 });
 
 /**
- * The one-time password for the Proxmox Virtual Environment API
+ * The one-time password for the Proxmox VE API.
  */
 export declare const otp: string | undefined;
 Object.defineProperty(exports, "otp", {
@@ -54,7 +54,7 @@ Object.defineProperty(exports, "otp", {
 });
 
 /**
- * The password for the Proxmox Virtual Environment API
+ * The password for the Proxmox VE API.
  */
 export declare const password: string | undefined;
 Object.defineProperty(exports, "password", {
@@ -65,7 +65,7 @@ Object.defineProperty(exports, "password", {
 });
 
 /**
- * The SSH connection configuration to a Proxmox node
+ * The SSH configuration for the Proxmox nodes.
  */
 export declare const ssh: outputs.config.Ssh | undefined;
 Object.defineProperty(exports, "ssh", {
@@ -76,20 +76,12 @@ Object.defineProperty(exports, "ssh", {
 });
 
 /**
- * The username for the Proxmox Virtual Environment API
+ * The username for the Proxmox VE API.
  */
 export declare const username: string | undefined;
 Object.defineProperty(exports, "username", {
     get() {
         return __config.get("username");
-    },
-    enumerable: true,
-});
-
-export declare const virtualEnvironment: outputs.config.VirtualEnvironment | undefined;
-Object.defineProperty(exports, "virtualEnvironment", {
-    get() {
-        return __config.getObject<outputs.config.VirtualEnvironment>("virtualEnvironment");
     },
     enumerable: true,
 });

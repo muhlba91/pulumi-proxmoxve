@@ -93,11 +93,11 @@ def get_virtual_machine(node_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('proxmoxve:VM/getVirtualMachine:getVirtualMachine', __args__, opts=opts, typ=GetVirtualMachineResult).value
 
     return AwaitableGetVirtualMachineResult(
-        id=__ret__.id,
-        name=__ret__.name,
-        node_name=__ret__.node_name,
-        tags=__ret__.tags,
-        vm_id=__ret__.vm_id)
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        node_name=pulumi.get(__ret__, 'node_name'),
+        tags=pulumi.get(__ret__, 'tags'),
+        vm_id=pulumi.get(__ret__, 'vm_id'))
 
 
 @_utilities.lift_output_func(get_virtual_machine)

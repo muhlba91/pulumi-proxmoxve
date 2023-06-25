@@ -26,6 +26,9 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
             set => _ipConfigs = value;
         }
 
+        [Input("metaDataFileId")]
+        public Input<string>? MetaDataFileId { get; set; }
+
         [Input("networkDataFileId")]
         public Input<string>? NetworkDataFileId { get; set; }
 

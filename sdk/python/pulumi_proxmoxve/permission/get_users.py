@@ -133,13 +133,13 @@ def get_users(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUsersR
     __ret__ = pulumi.runtime.invoke('proxmoxve:Permission/getUsers:getUsers', __args__, opts=opts, typ=GetUsersResult).value
 
     return AwaitableGetUsersResult(
-        comments=__ret__.comments,
-        emails=__ret__.emails,
-        enableds=__ret__.enableds,
-        expiration_dates=__ret__.expiration_dates,
-        first_names=__ret__.first_names,
-        groups=__ret__.groups,
-        id=__ret__.id,
-        keys=__ret__.keys,
-        last_names=__ret__.last_names,
-        user_ids=__ret__.user_ids)
+        comments=pulumi.get(__ret__, 'comments'),
+        emails=pulumi.get(__ret__, 'emails'),
+        enableds=pulumi.get(__ret__, 'enableds'),
+        expiration_dates=pulumi.get(__ret__, 'expiration_dates'),
+        first_names=pulumi.get(__ret__, 'first_names'),
+        groups=pulumi.get(__ret__, 'groups'),
+        id=pulumi.get(__ret__, 'id'),
+        keys=pulumi.get(__ret__, 'keys'),
+        last_names=pulumi.get(__ret__, 'last_names'),
+        user_ids=pulumi.get(__ret__, 'user_ids'))

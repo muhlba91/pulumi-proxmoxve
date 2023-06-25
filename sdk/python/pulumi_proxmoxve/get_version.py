@@ -88,8 +88,8 @@ def get_version(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVers
     __ret__ = pulumi.runtime.invoke('proxmoxve:index/getVersion:getVersion', __args__, opts=opts, typ=GetVersionResult).value
 
     return AwaitableGetVersionResult(
-        id=__ret__.id,
-        keyboard_layout=__ret__.keyboard_layout,
-        release=__ret__.release,
-        repository_id=__ret__.repository_id,
-        version=__ret__.version)
+        id=pulumi.get(__ret__, 'id'),
+        keyboard_layout=pulumi.get(__ret__, 'keyboard_layout'),
+        release=pulumi.get(__ret__, 'release'),
+        repository_id=pulumi.get(__ret__, 'repository_id'),
+        version=pulumi.get(__ret__, 'version'))

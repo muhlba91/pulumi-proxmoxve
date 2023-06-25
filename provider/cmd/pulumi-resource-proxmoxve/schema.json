@@ -64,37 +64,34 @@
         "variables": {
             "apiToken": {
                 "type": "string",
-                "description": "The API token for the Proxmox Virtual Environment API\n",
+                "description": "The API token for the Proxmox VE API.\n",
                 "secret": true
             },
             "endpoint": {
                 "type": "string",
-                "description": "The endpoint for the Proxmox Virtual Environment API\n"
+                "description": "The endpoint for the Proxmox VE API.\n"
             },
             "insecure": {
                 "type": "boolean",
-                "description": "Whether to skip the TLS verification step\n"
+                "description": "Whether to skip the TLS verification step.\n"
             },
             "otp": {
                 "type": "string",
-                "description": "The one-time password for the Proxmox Virtual Environment API\n"
+                "description": "The one-time password for the Proxmox VE API.\n",
+                "deprecationMessage": "The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead."
             },
             "password": {
                 "type": "string",
-                "description": "The password for the Proxmox Virtual Environment API\n",
+                "description": "The password for the Proxmox VE API.\n",
                 "secret": true
             },
             "ssh": {
                 "$ref": "#/types/proxmoxve:config/ssh:ssh",
-                "description": "The SSH connection configuration to a Proxmox node\n"
+                "description": "The SSH configuration for the Proxmox nodes.\n"
             },
             "username": {
                 "type": "string",
-                "description": "The username for the Proxmox Virtual Environment API\n"
-            },
-            "virtualEnvironment": {
-                "$ref": "#/types/proxmoxve:config/virtualEnvironment:virtualEnvironment",
-                "deprecationMessage": "Move attributes out of virtual_environment block"
+                "description": "The username for the Proxmox VE API.\n"
             }
         }
     },
@@ -855,6 +852,10 @@
                         "$ref": "#/types/proxmoxve:VM/VirtualMachineInitializationIpConfig:VirtualMachineInitializationIpConfig"
                     }
                 },
+                "metaDataFileId": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
                 "networkDataFileId": {
                     "type": "string",
                     "willReplaceOnChanges": true
@@ -1098,78 +1099,6 @@
                 }
             }
         },
-        "proxmoxve:config/virtualEnvironment:virtualEnvironment": {
-            "properties": {
-                "apiToken": {
-                    "type": "string",
-                    "secret": true
-                },
-                "endpoint": {
-                    "type": "string"
-                },
-                "insecure": {
-                    "type": "boolean"
-                },
-                "otp": {
-                    "type": "string"
-                },
-                "password": {
-                    "type": "string",
-                    "secret": true
-                },
-                "ssh": {
-                    "$ref": "#/types/proxmoxve:config/virtualEnvironmentSsh:virtualEnvironmentSsh"
-                },
-                "username": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "proxmoxve:config/virtualEnvironmentSsh:virtualEnvironmentSsh": {
-            "properties": {
-                "agent": {
-                    "type": "boolean"
-                },
-                "agentSocket": {
-                    "type": "string"
-                },
-                "nodes": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/proxmoxve:config/virtualEnvironmentSshNode:virtualEnvironmentSshNode"
-                    }
-                },
-                "password": {
-                    "type": "string",
-                    "secret": true
-                },
-                "username": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "proxmoxve:config/virtualEnvironmentSshNode:virtualEnvironmentSshNode": {
-            "properties": {
-                "address": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                }
-            },
-            "type": "object",
-            "required": [
-                "address",
-                "name"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
-        },
         "proxmoxve:index/HostsEntry:HostsEntry": {
             "properties": {
                 "address": {
@@ -1232,78 +1161,6 @@
                 }
             }
         },
-        "proxmoxve:index/ProviderVirtualEnvironment:ProviderVirtualEnvironment": {
-            "properties": {
-                "apiToken": {
-                    "type": "string",
-                    "secret": true
-                },
-                "endpoint": {
-                    "type": "string"
-                },
-                "insecure": {
-                    "type": "boolean"
-                },
-                "otp": {
-                    "type": "string"
-                },
-                "password": {
-                    "type": "string",
-                    "secret": true
-                },
-                "ssh": {
-                    "$ref": "#/types/proxmoxve:index/ProviderVirtualEnvironmentSsh:ProviderVirtualEnvironmentSsh"
-                },
-                "username": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "proxmoxve:index/ProviderVirtualEnvironmentSsh:ProviderVirtualEnvironmentSsh": {
-            "properties": {
-                "agent": {
-                    "type": "boolean"
-                },
-                "agentSocket": {
-                    "type": "string"
-                },
-                "nodes": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/proxmoxve:index/ProviderVirtualEnvironmentSshNode:ProviderVirtualEnvironmentSshNode"
-                    }
-                },
-                "password": {
-                    "type": "string",
-                    "secret": true
-                },
-                "username": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "proxmoxve:index/ProviderVirtualEnvironmentSshNode:ProviderVirtualEnvironmentSshNode": {
-            "properties": {
-                "address": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                }
-            },
-            "type": "object",
-            "required": [
-                "address",
-                "name"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": []
-                }
-            }
-        },
         "proxmoxve:index/getHostsEntry:getHostsEntry": {
             "properties": {
                 "address": {
@@ -1333,73 +1190,67 @@
         "properties": {
             "apiToken": {
                 "type": "string",
-                "description": "The API token for the Proxmox Virtual Environment API\n",
+                "description": "The API token for the Proxmox VE API.\n",
                 "secret": true
             },
             "endpoint": {
                 "type": "string",
-                "description": "The endpoint for the Proxmox Virtual Environment API\n"
+                "description": "The endpoint for the Proxmox VE API.\n"
             },
             "insecure": {
                 "type": "boolean",
-                "description": "Whether to skip the TLS verification step\n"
+                "description": "Whether to skip the TLS verification step.\n"
             },
             "otp": {
                 "type": "string",
-                "description": "The one-time password for the Proxmox Virtual Environment API\n"
+                "description": "The one-time password for the Proxmox VE API.\n",
+                "deprecationMessage": "The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead."
             },
             "password": {
                 "type": "string",
-                "description": "The password for the Proxmox Virtual Environment API\n",
+                "description": "The password for the Proxmox VE API.\n",
                 "secret": true
             },
             "ssh": {
                 "$ref": "#/types/proxmoxve:index/ProviderSsh:ProviderSsh",
-                "description": "The SSH connection configuration to a Proxmox node\n"
+                "description": "The SSH configuration for the Proxmox nodes.\n"
             },
             "username": {
                 "type": "string",
-                "description": "The username for the Proxmox Virtual Environment API\n"
-            },
-            "virtualEnvironment": {
-                "$ref": "#/types/proxmoxve:index/ProviderVirtualEnvironment:ProviderVirtualEnvironment",
-                "deprecationMessage": "Move attributes out of virtual_environment block"
+                "description": "The username for the Proxmox VE API.\n"
             }
         },
         "inputProperties": {
             "apiToken": {
                 "type": "string",
-                "description": "The API token for the Proxmox Virtual Environment API\n",
+                "description": "The API token for the Proxmox VE API.\n",
                 "secret": true
             },
             "endpoint": {
                 "type": "string",
-                "description": "The endpoint for the Proxmox Virtual Environment API\n"
+                "description": "The endpoint for the Proxmox VE API.\n"
             },
             "insecure": {
                 "type": "boolean",
-                "description": "Whether to skip the TLS verification step\n"
+                "description": "Whether to skip the TLS verification step.\n"
             },
             "otp": {
                 "type": "string",
-                "description": "The one-time password for the Proxmox Virtual Environment API\n"
+                "description": "The one-time password for the Proxmox VE API.\n",
+                "deprecationMessage": "The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead."
             },
             "password": {
                 "type": "string",
-                "description": "The password for the Proxmox Virtual Environment API\n",
+                "description": "The password for the Proxmox VE API.\n",
                 "secret": true
             },
             "ssh": {
                 "$ref": "#/types/proxmoxve:index/ProviderSsh:ProviderSsh",
-                "description": "The SSH connection configuration to a Proxmox node\n"
+                "description": "The SSH configuration for the Proxmox nodes.\n"
             },
             "username": {
                 "type": "string",
-                "description": "The username for the Proxmox Virtual Environment API\n"
-            },
-            "virtualEnvironment": {
-                "$ref": "#/types/proxmoxve:index/ProviderVirtualEnvironment:ProviderVirtualEnvironment",
-                "deprecationMessage": "Move attributes out of virtual_environment block"
+                "description": "The username for the Proxmox VE API.\n"
             }
         }
     },

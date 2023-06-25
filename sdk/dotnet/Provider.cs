@@ -19,31 +19,31 @@ namespace Pulumi.ProxmoxVE
     public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
-        /// The API token for the Proxmox Virtual Environment API
+        /// The API token for the Proxmox VE API.
         /// </summary>
         [Output("apiToken")]
         public Output<string?> ApiToken { get; private set; } = null!;
 
         /// <summary>
-        /// The endpoint for the Proxmox Virtual Environment API
+        /// The endpoint for the Proxmox VE API.
         /// </summary>
         [Output("endpoint")]
         public Output<string?> Endpoint { get; private set; } = null!;
 
         /// <summary>
-        /// The one-time password for the Proxmox Virtual Environment API
+        /// The one-time password for the Proxmox VE API.
         /// </summary>
         [Output("otp")]
         public Output<string?> Otp { get; private set; } = null!;
 
         /// <summary>
-        /// The password for the Proxmox Virtual Environment API
+        /// The password for the Proxmox VE API.
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// The username for the Proxmox Virtual Environment API
+        /// The username for the Proxmox VE API.
         /// </summary>
         [Output("username")]
         public Output<string?> Username { get; private set; } = null!;
@@ -86,7 +86,7 @@ namespace Pulumi.ProxmoxVE
         private Input<string>? _apiToken;
 
         /// <summary>
-        /// The API token for the Proxmox Virtual Environment API
+        /// The API token for the Proxmox VE API.
         /// </summary>
         public Input<string>? ApiToken
         {
@@ -99,19 +99,19 @@ namespace Pulumi.ProxmoxVE
         }
 
         /// <summary>
-        /// The endpoint for the Proxmox Virtual Environment API
+        /// The endpoint for the Proxmox VE API.
         /// </summary>
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }
 
         /// <summary>
-        /// Whether to skip the TLS verification step
+        /// Whether to skip the TLS verification step.
         /// </summary>
         [Input("insecure", json: true)]
         public Input<bool>? Insecure { get; set; }
 
         /// <summary>
-        /// The one-time password for the Proxmox Virtual Environment API
+        /// The one-time password for the Proxmox VE API.
         /// </summary>
         [Input("otp")]
         public Input<string>? Otp { get; set; }
@@ -120,7 +120,7 @@ namespace Pulumi.ProxmoxVE
         private Input<string>? _password;
 
         /// <summary>
-        /// The password for the Proxmox Virtual Environment API
+        /// The password for the Proxmox VE API.
         /// </summary>
         public Input<string>? Password
         {
@@ -133,19 +133,16 @@ namespace Pulumi.ProxmoxVE
         }
 
         /// <summary>
-        /// The SSH connection configuration to a Proxmox node
+        /// The SSH configuration for the Proxmox nodes.
         /// </summary>
         [Input("ssh", json: true)]
         public Input<Inputs.ProviderSshArgs>? Ssh { get; set; }
 
         /// <summary>
-        /// The username for the Proxmox Virtual Environment API
+        /// The username for the Proxmox VE API.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
-
-        [Input("virtualEnvironment", json: true)]
-        public Input<Inputs.ProviderVirtualEnvironmentArgs>? VirtualEnvironment { get; set; }
 
         public ProviderArgs()
         {

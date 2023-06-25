@@ -101,12 +101,12 @@ def get_hosts(node_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('proxmoxve:index/getHosts:getHosts', __args__, opts=opts, typ=GetHostsResult).value
 
     return AwaitableGetHostsResult(
-        addresses=__ret__.addresses,
-        digest=__ret__.digest,
-        entries=__ret__.entries,
-        hostnames=__ret__.hostnames,
-        id=__ret__.id,
-        node_name=__ret__.node_name)
+        addresses=pulumi.get(__ret__, 'addresses'),
+        digest=pulumi.get(__ret__, 'digest'),
+        entries=pulumi.get(__ret__, 'entries'),
+        hostnames=pulumi.get(__ret__, 'hostnames'),
+        id=pulumi.get(__ret__, 'id'),
+        node_name=pulumi.get(__ret__, 'node_name'))
 
 
 @_utilities.lift_output_func(get_hosts)

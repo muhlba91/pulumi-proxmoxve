@@ -73,9 +73,9 @@ def get_role(role_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('proxmoxve:Permission/getRole:getRole', __args__, opts=opts, typ=GetRoleResult).value
 
     return AwaitableGetRoleResult(
-        id=__ret__.id,
-        privileges=__ret__.privileges,
-        role_id=__ret__.role_id)
+        id=pulumi.get(__ret__, 'id'),
+        privileges=pulumi.get(__ret__, 'privileges'),
+        role_id=pulumi.get(__ret__, 'role_id'))
 
 
 @_utilities.lift_output_func(get_role)

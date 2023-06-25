@@ -28,23 +28,25 @@ export class Provider extends pulumi.ProviderResource {
     }
 
     /**
-     * The API token for the Proxmox Virtual Environment API
+     * The API token for the Proxmox VE API.
      */
     public readonly apiToken!: pulumi.Output<string | undefined>;
     /**
-     * The endpoint for the Proxmox Virtual Environment API
+     * The endpoint for the Proxmox VE API.
      */
     public readonly endpoint!: pulumi.Output<string | undefined>;
     /**
-     * The one-time password for the Proxmox Virtual Environment API
+     * The one-time password for the Proxmox VE API.
+     *
+     * @deprecated The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.
      */
     public readonly otp!: pulumi.Output<string | undefined>;
     /**
-     * The password for the Proxmox Virtual Environment API
+     * The password for the Proxmox VE API.
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
-     * The username for the Proxmox Virtual Environment API
+     * The username for the Proxmox VE API.
      */
     public readonly username!: pulumi.Output<string | undefined>;
 
@@ -66,7 +68,6 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["ssh"] = pulumi.output(args ? args.ssh : undefined).apply(JSON.stringify);
             resourceInputs["username"] = args ? args.username : undefined;
-            resourceInputs["virtualEnvironment"] = pulumi.output(args ? args.virtualEnvironment : undefined).apply(JSON.stringify);
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["apiToken", "password"] };
@@ -80,35 +81,33 @@ export class Provider extends pulumi.ProviderResource {
  */
 export interface ProviderArgs {
     /**
-     * The API token for the Proxmox Virtual Environment API
+     * The API token for the Proxmox VE API.
      */
     apiToken?: pulumi.Input<string>;
     /**
-     * The endpoint for the Proxmox Virtual Environment API
+     * The endpoint for the Proxmox VE API.
      */
     endpoint?: pulumi.Input<string>;
     /**
-     * Whether to skip the TLS verification step
+     * Whether to skip the TLS verification step.
      */
     insecure?: pulumi.Input<boolean>;
     /**
-     * The one-time password for the Proxmox Virtual Environment API
+     * The one-time password for the Proxmox VE API.
+     *
+     * @deprecated The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.
      */
     otp?: pulumi.Input<string>;
     /**
-     * The password for the Proxmox Virtual Environment API
+     * The password for the Proxmox VE API.
      */
     password?: pulumi.Input<string>;
     /**
-     * The SSH connection configuration to a Proxmox node
+     * The SSH configuration for the Proxmox nodes.
      */
     ssh?: pulumi.Input<inputs.ProviderSsh>;
     /**
-     * The username for the Proxmox Virtual Environment API
+     * The username for the Proxmox VE API.
      */
     username?: pulumi.Input<string>;
-    /**
-     * @deprecated Move attributes out of virtual_environment block
-     */
-    virtualEnvironment?: pulumi.Input<inputs.ProviderVirtualEnvironment>;
 }

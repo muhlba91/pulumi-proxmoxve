@@ -34,7 +34,7 @@ namespace Pulumi.ProxmoxVE
 
         private static readonly __Value<string?> _apiToken = new __Value<string?>(() => __config.Get("apiToken"));
         /// <summary>
-        /// The API token for the Proxmox Virtual Environment API
+        /// The API token for the Proxmox VE API.
         /// </summary>
         public static string? ApiToken
         {
@@ -44,7 +44,7 @@ namespace Pulumi.ProxmoxVE
 
         private static readonly __Value<string?> _endpoint = new __Value<string?>(() => __config.Get("endpoint"));
         /// <summary>
-        /// The endpoint for the Proxmox Virtual Environment API
+        /// The endpoint for the Proxmox VE API.
         /// </summary>
         public static string? Endpoint
         {
@@ -54,7 +54,7 @@ namespace Pulumi.ProxmoxVE
 
         private static readonly __Value<bool?> _insecure = new __Value<bool?>(() => __config.GetBoolean("insecure"));
         /// <summary>
-        /// Whether to skip the TLS verification step
+        /// Whether to skip the TLS verification step.
         /// </summary>
         public static bool? Insecure
         {
@@ -64,7 +64,7 @@ namespace Pulumi.ProxmoxVE
 
         private static readonly __Value<string?> _otp = new __Value<string?>(() => __config.Get("otp"));
         /// <summary>
-        /// The one-time password for the Proxmox Virtual Environment API
+        /// The one-time password for the Proxmox VE API.
         /// </summary>
         public static string? Otp
         {
@@ -74,7 +74,7 @@ namespace Pulumi.ProxmoxVE
 
         private static readonly __Value<string?> _password = new __Value<string?>(() => __config.Get("password"));
         /// <summary>
-        /// The password for the Proxmox Virtual Environment API
+        /// The password for the Proxmox VE API.
         /// </summary>
         public static string? Password
         {
@@ -84,7 +84,7 @@ namespace Pulumi.ProxmoxVE
 
         private static readonly __Value<Pulumi.ProxmoxVE.Config.Types.Ssh?> _ssh = new __Value<Pulumi.ProxmoxVE.Config.Types.Ssh?>(() => __config.GetObject<Pulumi.ProxmoxVE.Config.Types.Ssh>("ssh"));
         /// <summary>
-        /// The SSH connection configuration to a Proxmox node
+        /// The SSH configuration for the Proxmox nodes.
         /// </summary>
         public static Pulumi.ProxmoxVE.Config.Types.Ssh? Ssh
         {
@@ -94,19 +94,12 @@ namespace Pulumi.ProxmoxVE
 
         private static readonly __Value<string?> _username = new __Value<string?>(() => __config.Get("username"));
         /// <summary>
-        /// The username for the Proxmox Virtual Environment API
+        /// The username for the Proxmox VE API.
         /// </summary>
         public static string? Username
         {
             get => _username.Get();
             set => _username.Set(value);
-        }
-
-        private static readonly __Value<Pulumi.ProxmoxVE.Config.Types.VirtualEnvironment?> _virtualEnvironment = new __Value<Pulumi.ProxmoxVE.Config.Types.VirtualEnvironment?>(() => __config.GetObject<Pulumi.ProxmoxVE.Config.Types.VirtualEnvironment>("virtualEnvironment"));
-        public static Pulumi.ProxmoxVE.Config.Types.VirtualEnvironment? VirtualEnvironment
-        {
-            get => _virtualEnvironment.Get();
-            set => _virtualEnvironment.Set(value);
         }
 
         public static class Types
@@ -122,32 +115,6 @@ namespace Pulumi.ProxmoxVE
             }
 
              public class SshNode
-             {
-                public string Address { get; set; }
-                public string Name { get; set; }
-            }
-
-             public class VirtualEnvironment
-             {
-                public string? ApiToken { get; set; } = null!;
-                public string? Endpoint { get; set; } = null!;
-                public bool? Insecure { get; set; }
-                public string? Otp { get; set; } = null!;
-                public string? Password { get; set; } = null!;
-                public Pulumi.ProxmoxVE.Config.Types.VirtualEnvironmentSsh? Ssh { get; set; } = null!;
-                public string? Username { get; set; } = null!;
-            }
-
-             public class VirtualEnvironmentSsh
-             {
-                public bool? Agent { get; set; }
-                public string? AgentSocket { get; set; } = null!;
-                public ImmutableArray<Pulumi.ProxmoxVE.Config.Types.VirtualEnvironmentSshNode> Nodes { get; set; }
-                public string? Password { get; set; } = null!;
-                public string? Username { get; set; } = null!;
-            }
-
-             public class VirtualEnvironmentSshNode
              {
                 public string Address { get; set; }
                 public string Name { get; set; }
