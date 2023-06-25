@@ -10,9 +10,6 @@
     "baseBranches": [
         "main"
     ],
-    "allowedPostUpgradeCommands": [
-        ".*"
-    ],
     "ignorePaths": [
         "**/node_modules/**",
         "**/bower_components/**",
@@ -36,15 +33,7 @@
     "gomod": {
         "fileMatch": [
             "(^|/)go\\.mod$"
-        ],
-        "postUpgradeTasks": {
-            "commands": [
-                "make tfgen",
-                "make build_sdks"
-            ],
-            "fileFilters": [],
-            "executionMode": "update"
-        }
+        ]
     },
     "npm": {
         "fileMatch": [
