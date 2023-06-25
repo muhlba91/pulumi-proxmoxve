@@ -1,6 +1,33 @@
 # Changelog
 
 
+## [5.7.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.6.0...v5.7.0) (2023-06-25)
+
+
+### Features
+
+* **deps:** update to upstream 0.22.0 ([221dc8d](https://github.com/muhlba91/pulumi-proxmoxve/commit/221dc8d0a3c3312fe127d505d9fec23107e258c1))
+
+
+### Bug Fixes
+
+* **ci:** add renovate post upgrade commands to allow list ([a932823](https://github.com/muhlba91/pulumi-proxmoxve/commit/a9328238eafc7d53c7f98c97e8a847f7acb95021))
+* **ci:** add renovate post upgrade commands to allow list ([b4274f9](https://github.com/muhlba91/pulumi-proxmoxve/commit/b4274f94d2589dd7d18f8a17b90add29595b47ac))
+* **ci:** cleanup renovate config ([a206ee9](https://github.com/muhlba91/pulumi-proxmoxve/commit/a206ee98edd32a72c9f087d9422803bf10182154))
+
+
+### Miscellaneous Chores
+
+* **ci:** add post upgrade tasks to renovate ([aa55717](https://github.com/muhlba91/pulumi-proxmoxve/commit/aa5571787562c7c69d8b86f1a6779c606085704c))
+* **ci:** do not update release changelog with goreleaser ([da675a2](https://github.com/muhlba91/pulumi-proxmoxve/commit/da675a2f2b06483adb5fd92010cf3bff0cb229d4))
+* **ci:** leverage pypi trusted publishers ([6c42869](https://github.com/muhlba91/pulumi-proxmoxve/commit/6c42869ef70966c35e202d918c420c31bc2b5302))
+* **deps:** update anchore/sbom-action action to v0.14.3 ([25a060a](https://github.com/muhlba91/pulumi-proxmoxve/commit/25a060af47f74d92415a49df4f01d8f5144abbf2))
+* **deps:** update dependencies ([1c97ee5](https://github.com/muhlba91/pulumi-proxmoxve/commit/1c97ee5b27ec16e07bf46a96bae91bb3bf91eb1c))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.72.1 ([ec588a1](https://github.com/muhlba91/pulumi-proxmoxve/commit/ec588a167ec7071311cba66e3f21f2d82da2aaab))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.72.2 ([af79b9b](https://github.com/muhlba91/pulumi-proxmoxve/commit/af79b9b08fd9076fc9c4d3cf9e3dd4a1da7455dc))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.73.0 ([cdf7592](https://github.com/muhlba91/pulumi-proxmoxve/commit/cdf7592524105e05d0ad10e9712544185fad9db6))
+* **deps:** update sigstore/cosign-installer action to v3.1.0 ([fc47a9b](https://github.com/muhlba91/pulumi-proxmoxve/commit/fc47a9b1d73cf4716d0f54c087cd2c9f3b7c077c))
+
 ## [5.6.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.5.0...v5.6.0) (2023-06-15)
 
 
