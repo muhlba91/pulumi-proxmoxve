@@ -11,8 +11,7 @@
         "main"
     ],
     "allowedPostUpgradeCommands": [
-        "make tfgen",
-        "make build_sdks"
+        ".*"
     ],
     "ignorePaths": [
         "**/node_modules/**",
