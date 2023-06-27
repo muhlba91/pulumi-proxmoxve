@@ -9,7 +9,7 @@ replace (
 
 require (
 	github.com/bpg/terraform-provider-proxmox v0.22.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.50.1
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.51.0
 	github.com/pulumi/pulumi/sdk/v3 v3.73.0
 )
 
@@ -170,7 +170,7 @@ require (
 	github.com/pulumi/pulumi-yaml v1.1.1 // indirect
 	github.com/pulumi/pulumi/pkg/v3 v3.73.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
-	github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e // indirect
+	github.com/pulumi/terraform-diff-reader v0.0.1 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
 	github.com/rogpeppe/go-internal v1.10.0 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
