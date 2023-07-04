@@ -29,6 +29,9 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         [Input("hotplugged")]
         public Input<int>? Hotplugged { get; set; }
 
+        [Input("numa")]
+        public Input<bool>? Numa { get; set; }
+
         [Input("sockets")]
         public Input<int>? Sockets { get; set; }
 

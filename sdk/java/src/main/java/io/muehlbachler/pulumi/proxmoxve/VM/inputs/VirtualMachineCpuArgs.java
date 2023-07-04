@@ -5,6 +5,7 @@ package io.muehlbachler.pulumi.proxmoxve.VM.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -45,6 +46,13 @@ public final class VirtualMachineCpuArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.hotplugged);
     }
 
+    @Import(name="numa")
+    private @Nullable Output<Boolean> numa;
+
+    public Optional<Output<Boolean>> numa() {
+        return Optional.ofNullable(this.numa);
+    }
+
     @Import(name="sockets")
     private @Nullable Output<Integer> sockets;
 
@@ -73,6 +81,7 @@ public final class VirtualMachineCpuArgs extends com.pulumi.resources.ResourceAr
         this.cores = $.cores;
         this.flags = $.flags;
         this.hotplugged = $.hotplugged;
+        this.numa = $.numa;
         this.sockets = $.sockets;
         this.type = $.type;
         this.units = $.units;
@@ -134,6 +143,15 @@ public final class VirtualMachineCpuArgs extends com.pulumi.resources.ResourceAr
 
         public Builder hotplugged(Integer hotplugged) {
             return hotplugged(Output.of(hotplugged));
+        }
+
+        public Builder numa(@Nullable Output<Boolean> numa) {
+            $.numa = numa;
+            return this;
+        }
+
+        public Builder numa(Boolean numa) {
+            return numa(Output.of(numa));
         }
 
         public Builder sockets(@Nullable Output<Integer> sockets) {

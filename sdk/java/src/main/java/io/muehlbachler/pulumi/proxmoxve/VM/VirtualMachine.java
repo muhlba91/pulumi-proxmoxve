@@ -16,6 +16,7 @@ import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineCdrom;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineClone;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineCpu;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineDisk;
+import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineEfiDisk;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineHostpci;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineInitialization;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineMemory;
@@ -171,6 +172,20 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<VirtualMachineDisk>>> disks() {
         return Codegen.optional(this.disks);
+    }
+    /**
+     * The efidisk device
+     * 
+     */
+    @Export(name="efiDisk", refs={VirtualMachineEfiDisk.class}, tree="[0]")
+    private Output</* @Nullable */ VirtualMachineEfiDisk> efiDisk;
+
+    /**
+     * @return The efidisk device
+     * 
+     */
+    public Output<Optional<VirtualMachineEfiDisk>> efiDisk() {
+        return Codegen.optional(this.efiDisk);
     }
     /**
      * The Host PCI devices mapped to the VM

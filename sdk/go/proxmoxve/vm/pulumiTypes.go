@@ -697,6 +697,7 @@ type VirtualMachineCpu struct {
 	Cores        *int     `pulumi:"cores"`
 	Flags        []string `pulumi:"flags"`
 	Hotplugged   *int     `pulumi:"hotplugged"`
+	Numa         *bool    `pulumi:"numa"`
 	Sockets      *int     `pulumi:"sockets"`
 	Type         *string  `pulumi:"type"`
 	Units        *int     `pulumi:"units"`
@@ -718,6 +719,7 @@ type VirtualMachineCpuArgs struct {
 	Cores        pulumi.IntPtrInput      `pulumi:"cores"`
 	Flags        pulumi.StringArrayInput `pulumi:"flags"`
 	Hotplugged   pulumi.IntPtrInput      `pulumi:"hotplugged"`
+	Numa         pulumi.BoolPtrInput     `pulumi:"numa"`
 	Sockets      pulumi.IntPtrInput      `pulumi:"sockets"`
 	Type         pulumi.StringPtrInput   `pulumi:"type"`
 	Units        pulumi.IntPtrInput      `pulumi:"units"`
@@ -816,6 +818,10 @@ func (o VirtualMachineCpuOutput) Hotplugged() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCpu) *int { return v.Hotplugged }).(pulumi.IntPtrOutput)
 }
 
+func (o VirtualMachineCpuOutput) Numa() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineCpu) *bool { return v.Numa }).(pulumi.BoolPtrOutput)
+}
+
 func (o VirtualMachineCpuOutput) Sockets() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCpu) *int { return v.Sockets }).(pulumi.IntPtrOutput)
 }
@@ -886,6 +892,15 @@ func (o VirtualMachineCpuPtrOutput) Hotplugged() pulumi.IntPtrOutput {
 		}
 		return v.Hotplugged
 	}).(pulumi.IntPtrOutput)
+}
+
+func (o VirtualMachineCpuPtrOutput) Numa() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineCpu) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Numa
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o VirtualMachineCpuPtrOutput) Sockets() pulumi.IntPtrOutput {
@@ -1233,6 +1248,184 @@ func (o VirtualMachineDiskSpeedPtrOutput) WriteBurstable() pulumi.IntPtrOutput {
 		}
 		return v.WriteBurstable
 	}).(pulumi.IntPtrOutput)
+}
+
+type VirtualMachineEfiDisk struct {
+	DatastoreId     *string `pulumi:"datastoreId"`
+	FileFormat      *string `pulumi:"fileFormat"`
+	PreEnrolledKeys *bool   `pulumi:"preEnrolledKeys"`
+	Type            *string `pulumi:"type"`
+}
+
+// VirtualMachineEfiDiskInput is an input type that accepts VirtualMachineEfiDiskArgs and VirtualMachineEfiDiskOutput values.
+// You can construct a concrete instance of `VirtualMachineEfiDiskInput` via:
+//
+//	VirtualMachineEfiDiskArgs{...}
+type VirtualMachineEfiDiskInput interface {
+	pulumi.Input
+
+	ToVirtualMachineEfiDiskOutput() VirtualMachineEfiDiskOutput
+	ToVirtualMachineEfiDiskOutputWithContext(context.Context) VirtualMachineEfiDiskOutput
+}
+
+type VirtualMachineEfiDiskArgs struct {
+	DatastoreId     pulumi.StringPtrInput `pulumi:"datastoreId"`
+	FileFormat      pulumi.StringPtrInput `pulumi:"fileFormat"`
+	PreEnrolledKeys pulumi.BoolPtrInput   `pulumi:"preEnrolledKeys"`
+	Type            pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (VirtualMachineEfiDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineEfiDisk)(nil)).Elem()
+}
+
+func (i VirtualMachineEfiDiskArgs) ToVirtualMachineEfiDiskOutput() VirtualMachineEfiDiskOutput {
+	return i.ToVirtualMachineEfiDiskOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineEfiDiskArgs) ToVirtualMachineEfiDiskOutputWithContext(ctx context.Context) VirtualMachineEfiDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineEfiDiskOutput)
+}
+
+func (i VirtualMachineEfiDiskArgs) ToVirtualMachineEfiDiskPtrOutput() VirtualMachineEfiDiskPtrOutput {
+	return i.ToVirtualMachineEfiDiskPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineEfiDiskArgs) ToVirtualMachineEfiDiskPtrOutputWithContext(ctx context.Context) VirtualMachineEfiDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineEfiDiskOutput).ToVirtualMachineEfiDiskPtrOutputWithContext(ctx)
+}
+
+// VirtualMachineEfiDiskPtrInput is an input type that accepts VirtualMachineEfiDiskArgs, VirtualMachineEfiDiskPtr and VirtualMachineEfiDiskPtrOutput values.
+// You can construct a concrete instance of `VirtualMachineEfiDiskPtrInput` via:
+//
+//	        VirtualMachineEfiDiskArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachineEfiDiskPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineEfiDiskPtrOutput() VirtualMachineEfiDiskPtrOutput
+	ToVirtualMachineEfiDiskPtrOutputWithContext(context.Context) VirtualMachineEfiDiskPtrOutput
+}
+
+type virtualMachineEfiDiskPtrType VirtualMachineEfiDiskArgs
+
+func VirtualMachineEfiDiskPtr(v *VirtualMachineEfiDiskArgs) VirtualMachineEfiDiskPtrInput {
+	return (*virtualMachineEfiDiskPtrType)(v)
+}
+
+func (*virtualMachineEfiDiskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineEfiDisk)(nil)).Elem()
+}
+
+func (i *virtualMachineEfiDiskPtrType) ToVirtualMachineEfiDiskPtrOutput() VirtualMachineEfiDiskPtrOutput {
+	return i.ToVirtualMachineEfiDiskPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachineEfiDiskPtrType) ToVirtualMachineEfiDiskPtrOutputWithContext(ctx context.Context) VirtualMachineEfiDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineEfiDiskPtrOutput)
+}
+
+type VirtualMachineEfiDiskOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineEfiDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineEfiDisk)(nil)).Elem()
+}
+
+func (o VirtualMachineEfiDiskOutput) ToVirtualMachineEfiDiskOutput() VirtualMachineEfiDiskOutput {
+	return o
+}
+
+func (o VirtualMachineEfiDiskOutput) ToVirtualMachineEfiDiskOutputWithContext(ctx context.Context) VirtualMachineEfiDiskOutput {
+	return o
+}
+
+func (o VirtualMachineEfiDiskOutput) ToVirtualMachineEfiDiskPtrOutput() VirtualMachineEfiDiskPtrOutput {
+	return o.ToVirtualMachineEfiDiskPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineEfiDiskOutput) ToVirtualMachineEfiDiskPtrOutputWithContext(ctx context.Context) VirtualMachineEfiDiskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineEfiDisk) *VirtualMachineEfiDisk {
+		return &v
+	}).(VirtualMachineEfiDiskPtrOutput)
+}
+
+func (o VirtualMachineEfiDiskOutput) DatastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineEfiDisk) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineEfiDiskOutput) FileFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineEfiDisk) *string { return v.FileFormat }).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineEfiDiskOutput) PreEnrolledKeys() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineEfiDisk) *bool { return v.PreEnrolledKeys }).(pulumi.BoolPtrOutput)
+}
+
+func (o VirtualMachineEfiDiskOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineEfiDisk) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineEfiDiskPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineEfiDiskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineEfiDisk)(nil)).Elem()
+}
+
+func (o VirtualMachineEfiDiskPtrOutput) ToVirtualMachineEfiDiskPtrOutput() VirtualMachineEfiDiskPtrOutput {
+	return o
+}
+
+func (o VirtualMachineEfiDiskPtrOutput) ToVirtualMachineEfiDiskPtrOutputWithContext(ctx context.Context) VirtualMachineEfiDiskPtrOutput {
+	return o
+}
+
+func (o VirtualMachineEfiDiskPtrOutput) Elem() VirtualMachineEfiDiskOutput {
+	return o.ApplyT(func(v *VirtualMachineEfiDisk) VirtualMachineEfiDisk {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineEfiDisk
+		return ret
+	}).(VirtualMachineEfiDiskOutput)
+}
+
+func (o VirtualMachineEfiDiskPtrOutput) DatastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineEfiDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DatastoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineEfiDiskPtrOutput) FileFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineEfiDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FileFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineEfiDiskPtrOutput) PreEnrolledKeys() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineEfiDisk) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PreEnrolledKeys
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o VirtualMachineEfiDiskPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineEfiDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type VirtualMachineHostpci struct {
@@ -3141,6 +3334,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineDiskArrayInput)(nil)).Elem(), VirtualMachineDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineDiskSpeedInput)(nil)).Elem(), VirtualMachineDiskSpeedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineDiskSpeedPtrInput)(nil)).Elem(), VirtualMachineDiskSpeedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineEfiDiskInput)(nil)).Elem(), VirtualMachineEfiDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineEfiDiskPtrInput)(nil)).Elem(), VirtualMachineEfiDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineHostpciInput)(nil)).Elem(), VirtualMachineHostpciArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineHostpciArrayInput)(nil)).Elem(), VirtualMachineHostpciArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineInitializationInput)(nil)).Elem(), VirtualMachineInitializationArgs{})
@@ -3181,6 +3376,8 @@ func init() {
 	pulumi.RegisterOutputType(VirtualMachineDiskArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachineDiskSpeedOutput{})
 	pulumi.RegisterOutputType(VirtualMachineDiskSpeedPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineEfiDiskOutput{})
+	pulumi.RegisterOutputType(VirtualMachineEfiDiskPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineHostpciOutput{})
 	pulumi.RegisterOutputType(VirtualMachineHostpciArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachineInitializationOutput{})

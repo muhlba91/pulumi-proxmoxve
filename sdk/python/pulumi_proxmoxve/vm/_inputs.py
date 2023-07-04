@@ -17,6 +17,7 @@ __all__ = [
     'VirtualMachineCpuArgs',
     'VirtualMachineDiskArgs',
     'VirtualMachineDiskSpeedArgs',
+    'VirtualMachineEfiDiskArgs',
     'VirtualMachineHostpciArgs',
     'VirtualMachineInitializationArgs',
     'VirtualMachineInitializationDnsArgs',
@@ -225,6 +226,7 @@ class VirtualMachineCpuArgs:
                  cores: Optional[pulumi.Input[int]] = None,
                  flags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  hotplugged: Optional[pulumi.Input[int]] = None,
+                 numa: Optional[pulumi.Input[bool]] = None,
                  sockets: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  units: Optional[pulumi.Input[int]] = None):
@@ -236,6 +238,8 @@ class VirtualMachineCpuArgs:
             pulumi.set(__self__, "flags", flags)
         if hotplugged is not None:
             pulumi.set(__self__, "hotplugged", hotplugged)
+        if numa is not None:
+            pulumi.set(__self__, "numa", numa)
         if sockets is not None:
             pulumi.set(__self__, "sockets", sockets)
         if type is not None:
@@ -278,6 +282,15 @@ class VirtualMachineCpuArgs:
     @hotplugged.setter
     def hotplugged(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "hotplugged", value)
+
+    @property
+    @pulumi.getter
+    def numa(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "numa")
+
+    @numa.setter
+    def numa(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "numa", value)
 
     @property
     @pulumi.getter
@@ -470,6 +483,59 @@ class VirtualMachineDiskSpeedArgs:
     @write_burstable.setter
     def write_burstable(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "write_burstable", value)
+
+
+@pulumi.input_type
+class VirtualMachineEfiDiskArgs:
+    def __init__(__self__, *,
+                 datastore_id: Optional[pulumi.Input[str]] = None,
+                 file_format: Optional[pulumi.Input[str]] = None,
+                 pre_enrolled_keys: Optional[pulumi.Input[bool]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        if datastore_id is not None:
+            pulumi.set(__self__, "datastore_id", datastore_id)
+        if file_format is not None:
+            pulumi.set(__self__, "file_format", file_format)
+        if pre_enrolled_keys is not None:
+            pulumi.set(__self__, "pre_enrolled_keys", pre_enrolled_keys)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="datastoreId")
+    def datastore_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "datastore_id")
+
+    @datastore_id.setter
+    def datastore_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "datastore_id", value)
+
+    @property
+    @pulumi.getter(name="fileFormat")
+    def file_format(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "file_format")
+
+    @file_format.setter
+    def file_format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_format", value)
+
+    @property
+    @pulumi.getter(name="preEnrolledKeys")
+    def pre_enrolled_keys(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "pre_enrolled_keys")
+
+    @pre_enrolled_keys.setter
+    def pre_enrolled_keys(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "pre_enrolled_keys", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type

@@ -75,6 +75,10 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly disks!: pulumi.Output<outputs.VM.VirtualMachineDisk[] | undefined>;
     /**
+     * The efidisk device
+     */
+    public readonly efiDisk!: pulumi.Output<outputs.VM.VirtualMachineEfiDisk | undefined>;
+    /**
      * The Host PCI devices mapped to the VM
      */
     public readonly hostpcis!: pulumi.Output<outputs.VM.VirtualMachineHostpci[] | undefined>;
@@ -222,6 +226,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["cpu"] = state ? state.cpu : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["disks"] = state ? state.disks : undefined;
+            resourceInputs["efiDisk"] = state ? state.efiDisk : undefined;
             resourceInputs["hostpcis"] = state ? state.hostpcis : undefined;
             resourceInputs["initialization"] = state ? state.initialization : undefined;
             resourceInputs["ipv4Addresses"] = state ? state.ipv4Addresses : undefined;
@@ -268,6 +273,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["cpu"] = args ? args.cpu : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["disks"] = args ? args.disks : undefined;
+            resourceInputs["efiDisk"] = args ? args.efiDisk : undefined;
             resourceInputs["hostpcis"] = args ? args.hostpcis : undefined;
             resourceInputs["initialization"] = args ? args.initialization : undefined;
             resourceInputs["keyboardLayout"] = args ? args.keyboardLayout : undefined;
@@ -349,6 +355,10 @@ export interface VirtualMachineState {
      * The disk devices
      */
     disks?: pulumi.Input<pulumi.Input<inputs.VM.VirtualMachineDisk>[]>;
+    /**
+     * The efidisk device
+     */
+    efiDisk?: pulumi.Input<inputs.VM.VirtualMachineEfiDisk>;
     /**
      * The Host PCI devices mapped to the VM
      */
@@ -519,6 +529,10 @@ export interface VirtualMachineArgs {
      * The disk devices
      */
     disks?: pulumi.Input<pulumi.Input<inputs.VM.VirtualMachineDisk>[]>;
+    /**
+     * The efidisk device
+     */
+    efiDisk?: pulumi.Input<inputs.VM.VirtualMachineEfiDisk>;
     /**
      * The Host PCI devices mapped to the VM
      */

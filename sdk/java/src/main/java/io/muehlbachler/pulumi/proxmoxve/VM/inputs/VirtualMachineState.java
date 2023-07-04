@@ -11,6 +11,7 @@ import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineCdromArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineCloneArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineCpuArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineDiskArgs;
+import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineEfiDiskArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineHostpciArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineInitializationArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineMemoryArgs;
@@ -179,6 +180,21 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<List<VirtualMachineDiskArgs>>> disks() {
         return Optional.ofNullable(this.disks);
+    }
+
+    /**
+     * The efidisk device
+     * 
+     */
+    @Import(name="efiDisk")
+    private @Nullable Output<VirtualMachineEfiDiskArgs> efiDisk;
+
+    /**
+     * @return The efidisk device
+     * 
+     */
+    public Optional<Output<VirtualMachineEfiDiskArgs>> efiDisk() {
+        return Optional.ofNullable(this.efiDisk);
     }
 
     /**
@@ -659,6 +675,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         this.cpu = $.cpu;
         this.description = $.description;
         this.disks = $.disks;
+        this.efiDisk = $.efiDisk;
         this.hostpcis = $.hostpcis;
         this.initialization = $.initialization;
         this.ipv4Addresses = $.ipv4Addresses;
@@ -938,6 +955,27 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
          */
         public Builder disks(VirtualMachineDiskArgs... disks) {
             return disks(List.of(disks));
+        }
+
+        /**
+         * @param efiDisk The efidisk device
+         * 
+         * @return builder
+         * 
+         */
+        public Builder efiDisk(@Nullable Output<VirtualMachineEfiDiskArgs> efiDisk) {
+            $.efiDisk = efiDisk;
+            return this;
+        }
+
+        /**
+         * @param efiDisk The efidisk device
+         * 
+         * @return builder
+         * 
+         */
+        public Builder efiDisk(VirtualMachineEfiDiskArgs efiDisk) {
+            return efiDisk(Output.of(efiDisk));
         }
 
         /**
