@@ -34,6 +34,8 @@ type VirtualMachine struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The disk devices
 	Disks VirtualMachineDiskArrayOutput `pulumi:"disks"`
+	// The efidisk device
+	EfiDisk VirtualMachineEfiDiskPtrOutput `pulumi:"efiDisk"`
 	// The Host PCI devices mapped to the VM
 	Hostpcis VirtualMachineHostpciArrayOutput `pulumi:"hostpcis"`
 	// The cloud-init configuration
@@ -151,6 +153,8 @@ type virtualMachineState struct {
 	Description *string `pulumi:"description"`
 	// The disk devices
 	Disks []VirtualMachineDisk `pulumi:"disks"`
+	// The efidisk device
+	EfiDisk *VirtualMachineEfiDisk `pulumi:"efiDisk"`
 	// The Host PCI devices mapped to the VM
 	Hostpcis []VirtualMachineHostpci `pulumi:"hostpcis"`
 	// The cloud-init configuration
@@ -236,6 +240,8 @@ type VirtualMachineState struct {
 	Description pulumi.StringPtrInput
 	// The disk devices
 	Disks VirtualMachineDiskArrayInput
+	// The efidisk device
+	EfiDisk VirtualMachineEfiDiskPtrInput
 	// The Host PCI devices mapped to the VM
 	Hostpcis VirtualMachineHostpciArrayInput
 	// The cloud-init configuration
@@ -325,6 +331,8 @@ type virtualMachineArgs struct {
 	Description *string `pulumi:"description"`
 	// The disk devices
 	Disks []VirtualMachineDisk `pulumi:"disks"`
+	// The efidisk device
+	EfiDisk *VirtualMachineEfiDisk `pulumi:"efiDisk"`
 	// The Host PCI devices mapped to the VM
 	Hostpcis []VirtualMachineHostpci `pulumi:"hostpcis"`
 	// The cloud-init configuration
@@ -403,6 +411,8 @@ type VirtualMachineArgs struct {
 	Description pulumi.StringPtrInput
 	// The disk devices
 	Disks VirtualMachineDiskArrayInput
+	// The efidisk device
+	EfiDisk VirtualMachineEfiDiskPtrInput
 	// The Host PCI devices mapped to the VM
 	Hostpcis VirtualMachineHostpciArrayInput
 	// The cloud-init configuration
@@ -594,6 +604,11 @@ func (o VirtualMachineOutput) Description() pulumi.StringPtrOutput {
 // The disk devices
 func (o VirtualMachineOutput) Disks() VirtualMachineDiskArrayOutput {
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineDiskArrayOutput { return v.Disks }).(VirtualMachineDiskArrayOutput)
+}
+
+// The efidisk device
+func (o VirtualMachineOutput) EfiDisk() VirtualMachineEfiDiskPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) VirtualMachineEfiDiskPtrOutput { return v.EfiDisk }).(VirtualMachineEfiDiskPtrOutput)
 }
 
 // The Host PCI devices mapped to the VM

@@ -27,6 +27,7 @@ class VirtualMachineArgs:
                  cpu: Optional[pulumi.Input['VirtualMachineCpuArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]] = None,
+                 efi_disk: Optional[pulumi.Input['VirtualMachineEfiDiskArgs']] = None,
                  hostpcis: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]]] = None,
                  initialization: Optional[pulumi.Input['VirtualMachineInitializationArgs']] = None,
                  keyboard_layout: Optional[pulumi.Input[str]] = None,
@@ -66,6 +67,7 @@ class VirtualMachineArgs:
         :param pulumi.Input['VirtualMachineCpuArgs'] cpu: The CPU allocation
         :param pulumi.Input[str] description: The description
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]] disks: The disk devices
+        :param pulumi.Input['VirtualMachineEfiDiskArgs'] efi_disk: The efidisk device
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]] hostpcis: The Host PCI devices mapped to the VM
         :param pulumi.Input['VirtualMachineInitializationArgs'] initialization: The cloud-init configuration
         :param pulumi.Input[str] keyboard_layout: The keyboard layout
@@ -114,6 +116,8 @@ class VirtualMachineArgs:
             pulumi.set(__self__, "description", description)
         if disks is not None:
             pulumi.set(__self__, "disks", disks)
+        if efi_disk is not None:
+            pulumi.set(__self__, "efi_disk", efi_disk)
         if hostpcis is not None:
             pulumi.set(__self__, "hostpcis", hostpcis)
         if initialization is not None:
@@ -298,6 +302,18 @@ class VirtualMachineArgs:
     @disks.setter
     def disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]]):
         pulumi.set(self, "disks", value)
+
+    @property
+    @pulumi.getter(name="efiDisk")
+    def efi_disk(self) -> Optional[pulumi.Input['VirtualMachineEfiDiskArgs']]:
+        """
+        The efidisk device
+        """
+        return pulumi.get(self, "efi_disk")
+
+    @efi_disk.setter
+    def efi_disk(self, value: Optional[pulumi.Input['VirtualMachineEfiDiskArgs']]):
+        pulumi.set(self, "efi_disk", value)
 
     @property
     @pulumi.getter
@@ -625,6 +641,7 @@ class _VirtualMachineState:
                  cpu: Optional[pulumi.Input['VirtualMachineCpuArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]] = None,
+                 efi_disk: Optional[pulumi.Input['VirtualMachineEfiDiskArgs']] = None,
                  hostpcis: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]]] = None,
                  initialization: Optional[pulumi.Input['VirtualMachineInitializationArgs']] = None,
                  ipv4_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]]] = None,
@@ -668,6 +685,7 @@ class _VirtualMachineState:
         :param pulumi.Input['VirtualMachineCpuArgs'] cpu: The CPU allocation
         :param pulumi.Input[str] description: The description
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]] disks: The disk devices
+        :param pulumi.Input['VirtualMachineEfiDiskArgs'] efi_disk: The efidisk device
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]] hostpcis: The Host PCI devices mapped to the VM
         :param pulumi.Input['VirtualMachineInitializationArgs'] initialization: The cloud-init configuration
         :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]] ipv4_addresses: The IPv4 addresses published by the QEMU agent
@@ -720,6 +738,8 @@ class _VirtualMachineState:
             pulumi.set(__self__, "description", description)
         if disks is not None:
             pulumi.set(__self__, "disks", disks)
+        if efi_disk is not None:
+            pulumi.set(__self__, "efi_disk", efi_disk)
         if hostpcis is not None:
             pulumi.set(__self__, "hostpcis", hostpcis)
         if initialization is not None:
@@ -902,6 +922,18 @@ class _VirtualMachineState:
     @disks.setter
     def disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]]):
         pulumi.set(self, "disks", value)
+
+    @property
+    @pulumi.getter(name="efiDisk")
+    def efi_disk(self) -> Optional[pulumi.Input['VirtualMachineEfiDiskArgs']]:
+        """
+        The efidisk device
+        """
+        return pulumi.get(self, "efi_disk")
+
+    @efi_disk.setter
+    def efi_disk(self, value: Optional[pulumi.Input['VirtualMachineEfiDiskArgs']]):
+        pulumi.set(self, "efi_disk", value)
 
     @property
     @pulumi.getter
@@ -1291,6 +1323,7 @@ class VirtualMachine(pulumi.CustomResource):
                  cpu: Optional[pulumi.Input[pulumi.InputType['VirtualMachineCpuArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]]] = None,
+                 efi_disk: Optional[pulumi.Input[pulumi.InputType['VirtualMachineEfiDiskArgs']]] = None,
                  hostpcis: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineHostpciArgs']]]]] = None,
                  initialization: Optional[pulumi.Input[pulumi.InputType['VirtualMachineInitializationArgs']]] = None,
                  keyboard_layout: Optional[pulumi.Input[str]] = None,
@@ -1333,6 +1366,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['VirtualMachineCpuArgs']] cpu: The CPU allocation
         :param pulumi.Input[str] description: The description
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]] disks: The disk devices
+        :param pulumi.Input[pulumi.InputType['VirtualMachineEfiDiskArgs']] efi_disk: The efidisk device
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineHostpciArgs']]]] hostpcis: The Host PCI devices mapped to the VM
         :param pulumi.Input[pulumi.InputType['VirtualMachineInitializationArgs']] initialization: The cloud-init configuration
         :param pulumi.Input[str] keyboard_layout: The keyboard layout
@@ -1394,6 +1428,7 @@ class VirtualMachine(pulumi.CustomResource):
                  cpu: Optional[pulumi.Input[pulumi.InputType['VirtualMachineCpuArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]]] = None,
+                 efi_disk: Optional[pulumi.Input[pulumi.InputType['VirtualMachineEfiDiskArgs']]] = None,
                  hostpcis: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineHostpciArgs']]]]] = None,
                  initialization: Optional[pulumi.Input[pulumi.InputType['VirtualMachineInitializationArgs']]] = None,
                  keyboard_layout: Optional[pulumi.Input[str]] = None,
@@ -1440,6 +1475,7 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["cpu"] = cpu
             __props__.__dict__["description"] = description
             __props__.__dict__["disks"] = disks
+            __props__.__dict__["efi_disk"] = efi_disk
             __props__.__dict__["hostpcis"] = hostpcis
             __props__.__dict__["initialization"] = initialization
             __props__.__dict__["keyboard_layout"] = keyboard_layout
@@ -1493,6 +1529,7 @@ class VirtualMachine(pulumi.CustomResource):
             cpu: Optional[pulumi.Input[pulumi.InputType['VirtualMachineCpuArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]]] = None,
+            efi_disk: Optional[pulumi.Input[pulumi.InputType['VirtualMachineEfiDiskArgs']]] = None,
             hostpcis: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineHostpciArgs']]]]] = None,
             initialization: Optional[pulumi.Input[pulumi.InputType['VirtualMachineInitializationArgs']]] = None,
             ipv4_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]]] = None,
@@ -1541,6 +1578,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['VirtualMachineCpuArgs']] cpu: The CPU allocation
         :param pulumi.Input[str] description: The description
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]] disks: The disk devices
+        :param pulumi.Input[pulumi.InputType['VirtualMachineEfiDiskArgs']] efi_disk: The efidisk device
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineHostpciArgs']]]] hostpcis: The Host PCI devices mapped to the VM
         :param pulumi.Input[pulumi.InputType['VirtualMachineInitializationArgs']] initialization: The cloud-init configuration
         :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]] ipv4_addresses: The IPv4 addresses published by the QEMU agent
@@ -1587,6 +1625,7 @@ class VirtualMachine(pulumi.CustomResource):
         __props__.__dict__["cpu"] = cpu
         __props__.__dict__["description"] = description
         __props__.__dict__["disks"] = disks
+        __props__.__dict__["efi_disk"] = efi_disk
         __props__.__dict__["hostpcis"] = hostpcis
         __props__.__dict__["initialization"] = initialization
         __props__.__dict__["ipv4_addresses"] = ipv4_addresses
@@ -1699,6 +1738,14 @@ class VirtualMachine(pulumi.CustomResource):
         The disk devices
         """
         return pulumi.get(self, "disks")
+
+    @property
+    @pulumi.getter(name="efiDisk")
+    def efi_disk(self) -> pulumi.Output[Optional['outputs.VirtualMachineEfiDisk']]:
+        """
+        The efidisk device
+        """
+        return pulumi.get(self, "efi_disk")
 
     @property
     @pulumi.getter

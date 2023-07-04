@@ -18,6 +18,7 @@ __all__ = [
     'VirtualMachineCpu',
     'VirtualMachineDisk',
     'VirtualMachineDiskSpeed',
+    'VirtualMachineEfiDisk',
     'VirtualMachineHostpci',
     'VirtualMachineInitialization',
     'VirtualMachineInitializationDns',
@@ -209,6 +210,7 @@ class VirtualMachineCpu(dict):
                  cores: Optional[int] = None,
                  flags: Optional[Sequence[str]] = None,
                  hotplugged: Optional[int] = None,
+                 numa: Optional[bool] = None,
                  sockets: Optional[int] = None,
                  type: Optional[str] = None,
                  units: Optional[int] = None):
@@ -220,6 +222,8 @@ class VirtualMachineCpu(dict):
             pulumi.set(__self__, "flags", flags)
         if hotplugged is not None:
             pulumi.set(__self__, "hotplugged", hotplugged)
+        if numa is not None:
+            pulumi.set(__self__, "numa", numa)
         if sockets is not None:
             pulumi.set(__self__, "sockets", sockets)
         if type is not None:
@@ -246,6 +250,11 @@ class VirtualMachineCpu(dict):
     @pulumi.getter
     def hotplugged(self) -> Optional[int]:
         return pulumi.get(self, "hotplugged")
+
+    @property
+    @pulumi.getter
+    def numa(self) -> Optional[bool]:
+        return pulumi.get(self, "numa")
 
     @property
     @pulumi.getter
@@ -414,6 +423,64 @@ class VirtualMachineDiskSpeed(dict):
     @pulumi.getter(name="writeBurstable")
     def write_burstable(self) -> Optional[int]:
         return pulumi.get(self, "write_burstable")
+
+
+@pulumi.output_type
+class VirtualMachineEfiDisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datastoreId":
+            suggest = "datastore_id"
+        elif key == "fileFormat":
+            suggest = "file_format"
+        elif key == "preEnrolledKeys":
+            suggest = "pre_enrolled_keys"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineEfiDisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VirtualMachineEfiDisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VirtualMachineEfiDisk.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 datastore_id: Optional[str] = None,
+                 file_format: Optional[str] = None,
+                 pre_enrolled_keys: Optional[bool] = None,
+                 type: Optional[str] = None):
+        if datastore_id is not None:
+            pulumi.set(__self__, "datastore_id", datastore_id)
+        if file_format is not None:
+            pulumi.set(__self__, "file_format", file_format)
+        if pre_enrolled_keys is not None:
+            pulumi.set(__self__, "pre_enrolled_keys", pre_enrolled_keys)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="datastoreId")
+    def datastore_id(self) -> Optional[str]:
+        return pulumi.get(self, "datastore_id")
+
+    @property
+    @pulumi.getter(name="fileFormat")
+    def file_format(self) -> Optional[str]:
+        return pulumi.get(self, "file_format")
+
+    @property
+    @pulumi.getter(name="preEnrolledKeys")
+    def pre_enrolled_keys(self) -> Optional[bool]:
+        return pulumi.get(self, "pre_enrolled_keys")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

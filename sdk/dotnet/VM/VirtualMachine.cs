@@ -73,6 +73,12 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<ImmutableArray<Outputs.VirtualMachineDisk>> Disks { get; private set; } = null!;
 
         /// <summary>
+        /// The efidisk device
+        /// </summary>
+        [Output("efiDisk")]
+        public Output<Outputs.VirtualMachineEfiDisk?> EfiDisk { get; private set; } = null!;
+
+        /// <summary>
         /// The Host PCI devices mapped to the VM
         /// </summary>
         [Output("hostpcis")]
@@ -377,6 +383,12 @@ namespace Pulumi.ProxmoxVE.VM
             set => _disks = value;
         }
 
+        /// <summary>
+        /// The efidisk device
+        /// </summary>
+        [Input("efiDisk")]
+        public Input<Inputs.VirtualMachineEfiDiskArgs>? EfiDisk { get; set; }
+
         [Input("hostpcis")]
         private InputList<Inputs.VirtualMachineHostpciArgs>? _hostpcis;
 
@@ -642,6 +654,12 @@ namespace Pulumi.ProxmoxVE.VM
             get => _disks ?? (_disks = new InputList<Inputs.VirtualMachineDiskGetArgs>());
             set => _disks = value;
         }
+
+        /// <summary>
+        /// The efidisk device
+        /// </summary>
+        [Input("efiDisk")]
+        public Input<Inputs.VirtualMachineEfiDiskGetArgs>? EfiDisk { get; set; }
 
         [Input("hostpcis")]
         private InputList<Inputs.VirtualMachineHostpciGetArgs>? _hostpcis;

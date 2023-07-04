@@ -222,6 +222,7 @@ export namespace VM {
         cores?: pulumi.Input<number>;
         flags?: pulumi.Input<pulumi.Input<string>[]>;
         hotplugged?: pulumi.Input<number>;
+        numa?: pulumi.Input<boolean>;
         sockets?: pulumi.Input<number>;
         type?: pulumi.Input<string>;
         units?: pulumi.Input<number>;
@@ -244,6 +245,13 @@ export namespace VM {
         readBurstable?: pulumi.Input<number>;
         write?: pulumi.Input<number>;
         writeBurstable?: pulumi.Input<number>;
+    }
+
+    export interface VirtualMachineEfiDisk {
+        datastoreId?: pulumi.Input<string>;
+        fileFormat?: pulumi.Input<string>;
+        preEnrolledKeys?: pulumi.Input<boolean>;
+        type?: pulumi.Input<string>;
     }
 
     export interface VirtualMachineHostpci {

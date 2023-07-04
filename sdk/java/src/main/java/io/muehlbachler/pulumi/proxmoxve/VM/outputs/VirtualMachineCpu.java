@@ -4,6 +4,7 @@
 package io.muehlbachler.pulumi.proxmoxve.VM.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -17,6 +18,7 @@ public final class VirtualMachineCpu {
     private @Nullable Integer cores;
     private @Nullable List<String> flags;
     private @Nullable Integer hotplugged;
+    private @Nullable Boolean numa;
     private @Nullable Integer sockets;
     private @Nullable String type;
     private @Nullable Integer units;
@@ -33,6 +35,9 @@ public final class VirtualMachineCpu {
     }
     public Optional<Integer> hotplugged() {
         return Optional.ofNullable(this.hotplugged);
+    }
+    public Optional<Boolean> numa() {
+        return Optional.ofNullable(this.numa);
     }
     public Optional<Integer> sockets() {
         return Optional.ofNullable(this.sockets);
@@ -57,6 +62,7 @@ public final class VirtualMachineCpu {
         private @Nullable Integer cores;
         private @Nullable List<String> flags;
         private @Nullable Integer hotplugged;
+        private @Nullable Boolean numa;
         private @Nullable Integer sockets;
         private @Nullable String type;
         private @Nullable Integer units;
@@ -67,6 +73,7 @@ public final class VirtualMachineCpu {
     	      this.cores = defaults.cores;
     	      this.flags = defaults.flags;
     	      this.hotplugged = defaults.hotplugged;
+    	      this.numa = defaults.numa;
     	      this.sockets = defaults.sockets;
     	      this.type = defaults.type;
     	      this.units = defaults.units;
@@ -96,6 +103,11 @@ public final class VirtualMachineCpu {
             return this;
         }
         @CustomType.Setter
+        public Builder numa(@Nullable Boolean numa) {
+            this.numa = numa;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sockets(@Nullable Integer sockets) {
             this.sockets = sockets;
             return this;
@@ -116,6 +128,7 @@ public final class VirtualMachineCpu {
             o.cores = cores;
             o.flags = flags;
             o.hotplugged = hotplugged;
+            o.numa = numa;
             o.sockets = sockets;
             o.type = type;
             o.units = units;

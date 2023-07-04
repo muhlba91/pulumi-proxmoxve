@@ -17,6 +17,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         public readonly int? Cores;
         public readonly ImmutableArray<string> Flags;
         public readonly int? Hotplugged;
+        public readonly bool? Numa;
         public readonly int? Sockets;
         public readonly string? Type;
         public readonly int? Units;
@@ -31,6 +32,8 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
 
             int? hotplugged,
 
+            bool? numa,
+
             int? sockets,
 
             string? type,
@@ -41,6 +44,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
             Cores = cores;
             Flags = flags;
             Hotplugged = hotplugged;
+            Numa = numa;
             Sockets = sockets;
             Type = type;
             Units = units;

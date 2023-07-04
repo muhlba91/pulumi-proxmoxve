@@ -246,6 +246,7 @@ export namespace VM {
         cores?: number;
         flags?: string[];
         hotplugged?: number;
+        numa?: boolean;
         sockets?: number;
         type?: string;
         units?: number;
@@ -268,6 +269,13 @@ export namespace VM {
         readBurstable?: number;
         write?: number;
         writeBurstable?: number;
+    }
+
+    export interface VirtualMachineEfiDisk {
+        datastoreId?: string;
+        fileFormat: string;
+        preEnrolledKeys?: boolean;
+        type?: string;
     }
 
     export interface VirtualMachineHostpci {
