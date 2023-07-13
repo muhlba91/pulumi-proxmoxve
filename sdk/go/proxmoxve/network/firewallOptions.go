@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -54,7 +55,7 @@ func NewFirewallOptions(ctx *pulumi.Context,
 	if args.NodeName == nil {
 		return nil, errors.New("invalid value for required argument 'NodeName'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FirewallOptions
 	err := ctx.RegisterResource("proxmoxve:Network/firewallOptions:FirewallOptions", name, args, &resource, opts...)
 	if err != nil {

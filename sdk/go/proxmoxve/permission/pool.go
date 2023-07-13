@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -32,7 +33,7 @@ func NewPool(ctx *pulumi.Context,
 	if args.PoolId == nil {
 		return nil, errors.New("invalid value for required argument 'PoolId'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Pool
 	err := ctx.RegisterResource("proxmoxve:Permission/pool:Pool", name, args, &resource, opts...)
 	if err != nil {

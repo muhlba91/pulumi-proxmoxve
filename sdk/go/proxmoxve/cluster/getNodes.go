@@ -4,11 +4,12 @@
 package cluster
 
 import (
+	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func GetNodes(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetNodesResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNodesResult
 	err := ctx.Invoke("proxmoxve:Cluster/getNodes:getNodes", nil, &rv, opts...)
 	if err != nil {
