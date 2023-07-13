@@ -7,11 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func LookupVirtualMachine(ctx *pulumi.Context, args *LookupVirtualMachineArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualMachineResult
 	err := ctx.Invoke("proxmoxve:VM/getVirtualMachine:getVirtualMachine", args, &rv, opts...)
 	if err != nil {

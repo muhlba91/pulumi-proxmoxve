@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,7 +68,7 @@ func NewCertifi(ctx *pulumi.Context,
 		"privateKey",
 	})
 	opts = append(opts, secrets)
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Certifi
 	err := ctx.RegisterResource("proxmoxve:index/certifi:Certifi", name, args, &resource, opts...)
 	if err != nil {

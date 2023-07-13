@@ -7,11 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func LookupTime(ctx *pulumi.Context, args *LookupTimeArgs, opts ...pulumi.InvokeOption) (*LookupTimeResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTimeResult
 	err := ctx.Invoke("proxmoxve:index/getTime:getTime", args, &rv, opts...)
 	if err != nil {

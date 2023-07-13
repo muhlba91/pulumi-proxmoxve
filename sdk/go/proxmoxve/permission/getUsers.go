@@ -4,11 +4,12 @@
 package permission
 
 import (
+	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func GetUsers(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetUsersResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetUsersResult
 	err := ctx.Invoke("proxmoxve:Permission/getUsers:getUsers", nil, &rv, opts...)
 	if err != nil {

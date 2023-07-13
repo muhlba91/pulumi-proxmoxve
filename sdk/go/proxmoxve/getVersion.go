@@ -4,11 +4,12 @@
 package proxmoxve
 
 import (
+	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func GetVersion(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetVersionResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVersionResult
 	err := ctx.Invoke("proxmoxve:index/getVersion:getVersion", nil, &rv, opts...)
 	if err != nil {

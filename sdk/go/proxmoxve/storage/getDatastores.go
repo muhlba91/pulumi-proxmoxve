@@ -7,11 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func GetDatastores(ctx *pulumi.Context, args *GetDatastoresArgs, opts ...pulumi.InvokeOption) (*GetDatastoresResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatastoresResult
 	err := ctx.Invoke("proxmoxve:Storage/getDatastores:getDatastores", args, &rv, opts...)
 	if err != nil {

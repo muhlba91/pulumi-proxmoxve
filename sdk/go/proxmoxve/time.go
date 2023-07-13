@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,7 +38,7 @@ func NewTime(ctx *pulumi.Context,
 	if args.TimeZone == nil {
 		return nil, errors.New("invalid value for required argument 'TimeZone'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Time
 	err := ctx.RegisterResource("proxmoxve:index/time:Time", name, args, &resource, opts...)
 	if err != nil {

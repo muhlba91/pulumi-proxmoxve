@@ -7,11 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func LookupGroup(ctx *pulumi.Context, args *LookupGroupArgs, opts ...pulumi.InvokeOption) (*LookupGroupResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGroupResult
 	err := ctx.Invoke("proxmoxve:Permission/getGroup:getGroup", args, &rv, opts...)
 	if err != nil {

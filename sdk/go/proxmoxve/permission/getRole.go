@@ -7,11 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func LookupRole(ctx *pulumi.Context, args *LookupRoleArgs, opts ...pulumi.InvokeOption) (*LookupRoleResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRoleResult
 	err := ctx.Invoke("proxmoxve:Permission/getRole:getRole", args, &rv, opts...)
 	if err != nil {

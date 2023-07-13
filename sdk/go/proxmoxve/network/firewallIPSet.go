@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,7 +35,7 @@ func NewFirewallIPSet(ctx *pulumi.Context,
 		args = &FirewallIPSetArgs{}
 	}
 
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FirewallIPSet
 	err := ctx.RegisterResource("proxmoxve:Network/firewallIPSet:FirewallIPSet", name, args, &resource, opts...)
 	if err != nil {
