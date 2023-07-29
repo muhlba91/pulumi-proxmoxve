@@ -8,7 +8,7 @@ replace (
 )
 
 require (
-	github.com/bpg/terraform-provider-proxmox v0.25.0
+	github.com/bpg/terraform-provider-proxmox v0.26.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.53.0
 	github.com/pulumi/pulumi/sdk/v3 v3.76.1
 )
@@ -119,7 +119,7 @@ require (
 	github.com/hashicorp/hcl/v2 v2.17.0 // indirect
 	github.com/hashicorp/hil v0.0.0-20230614213501-4d65b419f8b0 // indirect
 	github.com/hashicorp/logutils v1.0.0 // indirect
-	github.com/hashicorp/terraform-plugin-framework v1.3.2 // indirect
+	github.com/hashicorp/terraform-plugin-framework v1.3.3 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.18.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2 // indirect
