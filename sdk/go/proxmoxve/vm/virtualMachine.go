@@ -77,6 +77,8 @@ type VirtualMachine struct {
 	SerialDevices VirtualMachineSerialDeviceArrayOutput `pulumi:"serialDevices"`
 	// Whether to start the virtual machine
 	Started pulumi.BoolPtrOutput `pulumi:"started"`
+	// Defines startup and shutdown behavior of the VM
+	Startup VirtualMachineStartupPtrOutput `pulumi:"startup"`
 	// Whether to enable the USB tablet device
 	TabletDevice pulumi.BoolPtrOutput `pulumi:"tabletDevice"`
 	// Tags of the virtual machine. This is only meta information.
@@ -196,6 +198,8 @@ type virtualMachineState struct {
 	SerialDevices []VirtualMachineSerialDevice `pulumi:"serialDevices"`
 	// Whether to start the virtual machine
 	Started *bool `pulumi:"started"`
+	// Defines startup and shutdown behavior of the VM
+	Startup *VirtualMachineStartup `pulumi:"startup"`
 	// Whether to enable the USB tablet device
 	TabletDevice *bool `pulumi:"tabletDevice"`
 	// Tags of the virtual machine. This is only meta information.
@@ -283,6 +287,8 @@ type VirtualMachineState struct {
 	SerialDevices VirtualMachineSerialDeviceArrayInput
 	// Whether to start the virtual machine
 	Started pulumi.BoolPtrInput
+	// Defines startup and shutdown behavior of the VM
+	Startup VirtualMachineStartupPtrInput
 	// Whether to enable the USB tablet device
 	TabletDevice pulumi.BoolPtrInput
 	// Tags of the virtual machine. This is only meta information.
@@ -366,6 +372,8 @@ type virtualMachineArgs struct {
 	SerialDevices []VirtualMachineSerialDevice `pulumi:"serialDevices"`
 	// Whether to start the virtual machine
 	Started *bool `pulumi:"started"`
+	// Defines startup and shutdown behavior of the VM
+	Startup *VirtualMachineStartup `pulumi:"startup"`
 	// Whether to enable the USB tablet device
 	TabletDevice *bool `pulumi:"tabletDevice"`
 	// Tags of the virtual machine. This is only meta information.
@@ -446,6 +454,8 @@ type VirtualMachineArgs struct {
 	SerialDevices VirtualMachineSerialDeviceArrayInput
 	// Whether to start the virtual machine
 	Started pulumi.BoolPtrInput
+	// Defines startup and shutdown behavior of the VM
+	Startup VirtualMachineStartupPtrInput
 	// Whether to enable the USB tablet device
 	TabletDevice pulumi.BoolPtrInput
 	// Tags of the virtual machine. This is only meta information.
@@ -710,6 +720,11 @@ func (o VirtualMachineOutput) SerialDevices() VirtualMachineSerialDeviceArrayOut
 // Whether to start the virtual machine
 func (o VirtualMachineOutput) Started() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.Started }).(pulumi.BoolPtrOutput)
+}
+
+// Defines startup and shutdown behavior of the VM
+func (o VirtualMachineOutput) Startup() VirtualMachineStartupPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) VirtualMachineStartupPtrOutput { return v.Startup }).(VirtualMachineStartupPtrOutput)
 }
 
 // Whether to enable the USB tablet device

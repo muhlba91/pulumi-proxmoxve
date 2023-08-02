@@ -31,6 +31,8 @@ type Container struct {
 	Initialization ContainerInitializationPtrOutput `pulumi:"initialization"`
 	// The memory allocation
 	Memory ContainerMemoryPtrOutput `pulumi:"memory"`
+	// A mount point
+	MountPoints ContainerMountPointArrayOutput `pulumi:"mountPoints"`
 	// The network interfaces
 	NetworkInterfaces ContainerNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
 	// The node name
@@ -100,6 +102,8 @@ type containerState struct {
 	Initialization *ContainerInitialization `pulumi:"initialization"`
 	// The memory allocation
 	Memory *ContainerMemory `pulumi:"memory"`
+	// A mount point
+	MountPoints []ContainerMountPoint `pulumi:"mountPoints"`
 	// The network interfaces
 	NetworkInterfaces []ContainerNetworkInterface `pulumi:"networkInterfaces"`
 	// The node name
@@ -137,6 +141,8 @@ type ContainerState struct {
 	Initialization ContainerInitializationPtrInput
 	// The memory allocation
 	Memory ContainerMemoryPtrInput
+	// A mount point
+	MountPoints ContainerMountPointArrayInput
 	// The network interfaces
 	NetworkInterfaces ContainerNetworkInterfaceArrayInput
 	// The node name
@@ -178,6 +184,8 @@ type containerArgs struct {
 	Initialization *ContainerInitialization `pulumi:"initialization"`
 	// The memory allocation
 	Memory *ContainerMemory `pulumi:"memory"`
+	// A mount point
+	MountPoints []ContainerMountPoint `pulumi:"mountPoints"`
 	// The network interfaces
 	NetworkInterfaces []ContainerNetworkInterface `pulumi:"networkInterfaces"`
 	// The node name
@@ -216,6 +224,8 @@ type ContainerArgs struct {
 	Initialization ContainerInitializationPtrInput
 	// The memory allocation
 	Memory ContainerMemoryPtrInput
+	// A mount point
+	MountPoints ContainerMountPointArrayInput
 	// The network interfaces
 	NetworkInterfaces ContainerNetworkInterfaceArrayInput
 	// The node name
@@ -361,6 +371,11 @@ func (o ContainerOutput) Initialization() ContainerInitializationPtrOutput {
 // The memory allocation
 func (o ContainerOutput) Memory() ContainerMemoryPtrOutput {
 	return o.ApplyT(func(v *Container) ContainerMemoryPtrOutput { return v.Memory }).(ContainerMemoryPtrOutput)
+}
+
+// A mount point
+func (o ContainerOutput) MountPoints() ContainerMountPointArrayOutput {
+	return o.ApplyT(func(v *Container) ContainerMountPointArrayOutput { return v.MountPoints }).(ContainerMountPointArrayOutput)
 }
 
 // The network interfaces

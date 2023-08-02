@@ -30,11 +30,19 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.fileId);
     }
 
+    @Import(name="interface")
+    private @Nullable Output<String> interface_;
+
+    public Optional<Output<String>> interface_() {
+        return Optional.ofNullable(this.interface_);
+    }
+
     private VirtualMachineCdromArgs() {}
 
     private VirtualMachineCdromArgs(VirtualMachineCdromArgs $) {
         this.enabled = $.enabled;
         this.fileId = $.fileId;
+        this.interface_ = $.interface_;
     }
 
     public static Builder builder() {
@@ -71,6 +79,15 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
 
         public Builder fileId(String fileId) {
             return fileId(Output.of(fileId));
+        }
+
+        public Builder interface_(@Nullable Output<String> interface_) {
+            $.interface_ = interface_;
+            return this;
+        }
+
+        public Builder interface_(String interface_) {
+            return interface_(Output.of(interface_));
         }
 
         public VirtualMachineCdromArgs build() {

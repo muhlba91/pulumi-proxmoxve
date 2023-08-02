@@ -13,6 +13,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     [OutputType]
     public sealed class VirtualMachineDisk
     {
+        public readonly string? Cache;
         public readonly string? DatastoreId;
         public readonly string? Discard;
         public readonly string? FileFormat;
@@ -25,6 +26,8 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
 
         [OutputConstructor]
         private VirtualMachineDisk(
+            string? cache,
+
             string? datastoreId,
 
             string? discard,
@@ -43,6 +46,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
 
             bool? ssd)
         {
+            Cache = cache;
             DatastoreId = datastoreId;
             Discard = discard;
             FileFormat = fileFormat;

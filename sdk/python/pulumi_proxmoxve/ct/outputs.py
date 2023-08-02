@@ -23,6 +23,7 @@ __all__ = [
     'ContainerInitializationIpConfigIpv6',
     'ContainerInitializationUserAccount',
     'ContainerMemory',
+    'ContainerMountPoint',
     'ContainerNetworkInterface',
     'ContainerOperatingSystem',
 ]
@@ -382,6 +383,108 @@ class ContainerMemory(dict):
     @pulumi.getter
     def swap(self) -> Optional[int]:
         return pulumi.get(self, "swap")
+
+
+@pulumi.output_type
+class ContainerMountPoint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mountOptions":
+            suggest = "mount_options"
+        elif key == "readOnly":
+            suggest = "read_only"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerMountPoint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerMountPoint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerMountPoint.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 path: str,
+                 volume: str,
+                 acl: Optional[bool] = None,
+                 backup: Optional[bool] = None,
+                 mount_options: Optional[Sequence[str]] = None,
+                 quota: Optional[bool] = None,
+                 read_only: Optional[bool] = None,
+                 replicate: Optional[bool] = None,
+                 shared: Optional[bool] = None,
+                 size: Optional[str] = None):
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "volume", volume)
+        if acl is not None:
+            pulumi.set(__self__, "acl", acl)
+        if backup is not None:
+            pulumi.set(__self__, "backup", backup)
+        if mount_options is not None:
+            pulumi.set(__self__, "mount_options", mount_options)
+        if quota is not None:
+            pulumi.set(__self__, "quota", quota)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if replicate is not None:
+            pulumi.set(__self__, "replicate", replicate)
+        if shared is not None:
+            pulumi.set(__self__, "shared", shared)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def volume(self) -> str:
+        return pulumi.get(self, "volume")
+
+    @property
+    @pulumi.getter
+    def acl(self) -> Optional[bool]:
+        return pulumi.get(self, "acl")
+
+    @property
+    @pulumi.getter
+    def backup(self) -> Optional[bool]:
+        return pulumi.get(self, "backup")
+
+    @property
+    @pulumi.getter(name="mountOptions")
+    def mount_options(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "mount_options")
+
+    @property
+    @pulumi.getter
+    def quota(self) -> Optional[bool]:
+        return pulumi.get(self, "quota")
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[bool]:
+        return pulumi.get(self, "read_only")
+
+    @property
+    @pulumi.getter
+    def replicate(self) -> Optional[bool]:
+        return pulumi.get(self, "replicate")
+
+    @property
+    @pulumi.getter
+    def shared(self) -> Optional[bool]:
+        return pulumi.get(self, "shared")
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[str]:
+        return pulumi.get(self, "size")
 
 
 @pulumi.output_type

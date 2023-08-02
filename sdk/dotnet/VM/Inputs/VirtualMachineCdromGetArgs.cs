@@ -18,6 +18,9 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         [Input("fileId")]
         public Input<string>? FileId { get; set; }
 
+        [Input("interface")]
+        public Input<string>? Interface { get; set; }
+
         public VirtualMachineCdromGetArgs()
         {
         }

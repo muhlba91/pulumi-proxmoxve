@@ -80,6 +80,19 @@ export namespace CT {
         swap?: number;
     }
 
+    export interface ContainerMountPoint {
+        acl?: boolean;
+        backup?: boolean;
+        mountOptions?: string[];
+        path: string;
+        quota?: boolean;
+        readOnly?: boolean;
+        replicate?: boolean;
+        shared?: boolean;
+        size?: string;
+        volume: string;
+    }
+
     export interface ContainerNetworkInterface {
         bridge?: string;
         enabled?: boolean;
@@ -231,6 +244,7 @@ export namespace VM {
     export interface VirtualMachineCdrom {
         enabled?: boolean;
         fileId?: string;
+        interface?: string;
     }
 
     export interface VirtualMachineClone {
@@ -253,6 +267,7 @@ export namespace VM {
     }
 
     export interface VirtualMachineDisk {
+        cache?: string;
         datastoreId?: string;
         discard?: string;
         fileFormat: string;
@@ -349,6 +364,12 @@ export namespace VM {
 
     export interface VirtualMachineSerialDevice {
         device?: string;
+    }
+
+    export interface VirtualMachineStartup {
+        downDelay?: number;
+        order?: number;
+        upDelay?: number;
     }
 
     export interface VirtualMachineVga {

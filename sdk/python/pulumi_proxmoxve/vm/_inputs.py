@@ -29,6 +29,7 @@ __all__ = [
     'VirtualMachineNetworkDeviceArgs',
     'VirtualMachineOperatingSystemArgs',
     'VirtualMachineSerialDeviceArgs',
+    'VirtualMachineStartupArgs',
     'VirtualMachineVgaArgs',
 ]
 
@@ -130,11 +131,14 @@ class VirtualMachineAudioDeviceArgs:
 class VirtualMachineCdromArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 file_id: Optional[pulumi.Input[str]] = None):
+                 file_id: Optional[pulumi.Input[str]] = None,
+                 interface: Optional[pulumi.Input[str]] = None):
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if file_id is not None:
             pulumi.set(__self__, "file_id", file_id)
+        if interface is not None:
+            pulumi.set(__self__, "interface", interface)
 
     @property
     @pulumi.getter
@@ -153,6 +157,15 @@ class VirtualMachineCdromArgs:
     @file_id.setter
     def file_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "file_id", value)
+
+    @property
+    @pulumi.getter
+    def interface(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "interface")
+
+    @interface.setter
+    def interface(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "interface", value)
 
 
 @pulumi.input_type
@@ -324,6 +337,7 @@ class VirtualMachineCpuArgs:
 class VirtualMachineDiskArgs:
     def __init__(__self__, *,
                  interface: pulumi.Input[str],
+                 cache: Optional[pulumi.Input[str]] = None,
                  datastore_id: Optional[pulumi.Input[str]] = None,
                  discard: Optional[pulumi.Input[str]] = None,
                  file_format: Optional[pulumi.Input[str]] = None,
@@ -333,6 +347,8 @@ class VirtualMachineDiskArgs:
                  speed: Optional[pulumi.Input['VirtualMachineDiskSpeedArgs']] = None,
                  ssd: Optional[pulumi.Input[bool]] = None):
         pulumi.set(__self__, "interface", interface)
+        if cache is not None:
+            pulumi.set(__self__, "cache", cache)
         if datastore_id is not None:
             pulumi.set(__self__, "datastore_id", datastore_id)
         if discard is not None:
@@ -358,6 +374,15 @@ class VirtualMachineDiskArgs:
     @interface.setter
     def interface(self, value: pulumi.Input[str]):
         pulumi.set(self, "interface", value)
+
+    @property
+    @pulumi.getter
+    def cache(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cache")
+
+    @cache.setter
+    def cache(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cache", value)
 
     @property
     @pulumi.getter(name="datastoreId")
@@ -1069,6 +1094,47 @@ class VirtualMachineSerialDeviceArgs:
     @device.setter
     def device(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "device", value)
+
+
+@pulumi.input_type
+class VirtualMachineStartupArgs:
+    def __init__(__self__, *,
+                 down_delay: Optional[pulumi.Input[int]] = None,
+                 order: Optional[pulumi.Input[int]] = None,
+                 up_delay: Optional[pulumi.Input[int]] = None):
+        if down_delay is not None:
+            pulumi.set(__self__, "down_delay", down_delay)
+        if order is not None:
+            pulumi.set(__self__, "order", order)
+        if up_delay is not None:
+            pulumi.set(__self__, "up_delay", up_delay)
+
+    @property
+    @pulumi.getter(name="downDelay")
+    def down_delay(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "down_delay")
+
+    @down_delay.setter
+    def down_delay(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "down_delay", value)
+
+    @property
+    @pulumi.getter
+    def order(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "order")
+
+    @order.setter
+    def order(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "order", value)
+
+    @property
+    @pulumi.getter(name="upDelay")
+    def up_delay(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "up_delay")
+
+    @up_delay.setter
+    def up_delay(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "up_delay", value)
 
 
 @pulumi.input_type

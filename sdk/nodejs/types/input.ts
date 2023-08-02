@@ -87,6 +87,19 @@ export namespace CT {
         swap?: pulumi.Input<number>;
     }
 
+    export interface ContainerMountPoint {
+        acl?: pulumi.Input<boolean>;
+        backup?: pulumi.Input<boolean>;
+        mountOptions?: pulumi.Input<pulumi.Input<string>[]>;
+        path: pulumi.Input<string>;
+        quota?: pulumi.Input<boolean>;
+        readOnly?: pulumi.Input<boolean>;
+        replicate?: pulumi.Input<boolean>;
+        shared?: pulumi.Input<boolean>;
+        size?: pulumi.Input<string>;
+        volume: pulumi.Input<string>;
+    }
+
     export interface ContainerNetworkInterface {
         bridge?: pulumi.Input<string>;
         enabled?: pulumi.Input<boolean>;
@@ -207,6 +220,7 @@ export namespace VM {
     export interface VirtualMachineCdrom {
         enabled?: pulumi.Input<boolean>;
         fileId?: pulumi.Input<string>;
+        interface?: pulumi.Input<string>;
     }
 
     export interface VirtualMachineClone {
@@ -229,6 +243,7 @@ export namespace VM {
     }
 
     export interface VirtualMachineDisk {
+        cache?: pulumi.Input<string>;
         datastoreId?: pulumi.Input<string>;
         discard?: pulumi.Input<string>;
         fileFormat?: pulumi.Input<string>;
@@ -325,6 +340,12 @@ export namespace VM {
 
     export interface VirtualMachineSerialDevice {
         device?: pulumi.Input<string>;
+    }
+
+    export interface VirtualMachineStartup {
+        downDelay?: pulumi.Input<number>;
+        order?: pulumi.Input<number>;
+        upDelay?: pulumi.Input<number>;
     }
 
     export interface VirtualMachineVga {

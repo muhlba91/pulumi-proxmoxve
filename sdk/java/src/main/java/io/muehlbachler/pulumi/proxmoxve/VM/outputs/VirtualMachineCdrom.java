@@ -14,6 +14,7 @@ import javax.annotation.Nullable;
 public final class VirtualMachineCdrom {
     private @Nullable Boolean enabled;
     private @Nullable String fileId;
+    private @Nullable String interface_;
 
     private VirtualMachineCdrom() {}
     public Optional<Boolean> enabled() {
@@ -21,6 +22,9 @@ public final class VirtualMachineCdrom {
     }
     public Optional<String> fileId() {
         return Optional.ofNullable(this.fileId);
+    }
+    public Optional<String> interface_() {
+        return Optional.ofNullable(this.interface_);
     }
 
     public static Builder builder() {
@@ -34,11 +38,13 @@ public final class VirtualMachineCdrom {
     public static final class Builder {
         private @Nullable Boolean enabled;
         private @Nullable String fileId;
+        private @Nullable String interface_;
         public Builder() {}
         public Builder(VirtualMachineCdrom defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.fileId = defaults.fileId;
+    	      this.interface_ = defaults.interface_;
         }
 
         @CustomType.Setter
@@ -51,10 +57,16 @@ public final class VirtualMachineCdrom {
             this.fileId = fileId;
             return this;
         }
+        @CustomType.Setter("interface")
+        public Builder interface_(@Nullable String interface_) {
+            this.interface_ = interface_;
+            return this;
+        }
         public VirtualMachineCdrom build() {
             final var o = new VirtualMachineCdrom();
             o.enabled = enabled;
             o.fileId = fileId;
+            o.interface_ = interface_;
             return o;
         }
     }

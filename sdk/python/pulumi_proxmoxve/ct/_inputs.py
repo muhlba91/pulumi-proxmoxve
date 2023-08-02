@@ -22,6 +22,7 @@ __all__ = [
     'ContainerInitializationIpConfigIpv6Args',
     'ContainerInitializationUserAccountArgs',
     'ContainerMemoryArgs',
+    'ContainerMountPointArgs',
     'ContainerNetworkInterfaceArgs',
     'ContainerOperatingSystemArgs',
 ]
@@ -419,6 +420,129 @@ class ContainerMemoryArgs:
     @swap.setter
     def swap(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "swap", value)
+
+
+@pulumi.input_type
+class ContainerMountPointArgs:
+    def __init__(__self__, *,
+                 path: pulumi.Input[str],
+                 volume: pulumi.Input[str],
+                 acl: Optional[pulumi.Input[bool]] = None,
+                 backup: Optional[pulumi.Input[bool]] = None,
+                 mount_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 quota: Optional[pulumi.Input[bool]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None,
+                 replicate: Optional[pulumi.Input[bool]] = None,
+                 shared: Optional[pulumi.Input[bool]] = None,
+                 size: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "volume", volume)
+        if acl is not None:
+            pulumi.set(__self__, "acl", acl)
+        if backup is not None:
+            pulumi.set(__self__, "backup", backup)
+        if mount_options is not None:
+            pulumi.set(__self__, "mount_options", mount_options)
+        if quota is not None:
+            pulumi.set(__self__, "quota", quota)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if replicate is not None:
+            pulumi.set(__self__, "replicate", replicate)
+        if shared is not None:
+            pulumi.set(__self__, "shared", shared)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def volume(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "volume")
+
+    @volume.setter
+    def volume(self, value: pulumi.Input[str]):
+        pulumi.set(self, "volume", value)
+
+    @property
+    @pulumi.getter
+    def acl(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "acl")
+
+    @acl.setter
+    def acl(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "acl", value)
+
+    @property
+    @pulumi.getter
+    def backup(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "backup")
+
+    @backup.setter
+    def backup(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "backup", value)
+
+    @property
+    @pulumi.getter(name="mountOptions")
+    def mount_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "mount_options")
+
+    @mount_options.setter
+    def mount_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "mount_options", value)
+
+    @property
+    @pulumi.getter
+    def quota(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "quota")
+
+    @quota.setter
+    def quota(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "quota", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+    @property
+    @pulumi.getter
+    def replicate(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "replicate")
+
+    @replicate.setter
+    def replicate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "replicate", value)
+
+    @property
+    @pulumi.getter
+    def shared(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "shared")
+
+    @shared.setter
+    def shared(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "shared", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "size", value)
 
 
 @pulumi.input_type

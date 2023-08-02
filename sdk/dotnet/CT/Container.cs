@@ -61,6 +61,12 @@ namespace Pulumi.ProxmoxVE.CT
         public Output<Outputs.ContainerMemory?> Memory { get; private set; } = null!;
 
         /// <summary>
+        /// A mount point
+        /// </summary>
+        [Output("mountPoints")]
+        public Output<ImmutableArray<Outputs.ContainerMountPoint>> MountPoints { get; private set; } = null!;
+
+        /// <summary>
         /// The network interfaces
         /// </summary>
         [Output("networkInterfaces")]
@@ -209,6 +215,18 @@ namespace Pulumi.ProxmoxVE.CT
         [Input("memory")]
         public Input<Inputs.ContainerMemoryArgs>? Memory { get; set; }
 
+        [Input("mountPoints")]
+        private InputList<Inputs.ContainerMountPointArgs>? _mountPoints;
+
+        /// <summary>
+        /// A mount point
+        /// </summary>
+        public InputList<Inputs.ContainerMountPointArgs> MountPoints
+        {
+            get => _mountPoints ?? (_mountPoints = new InputList<Inputs.ContainerMountPointArgs>());
+            set => _mountPoints = value;
+        }
+
         [Input("networkInterfaces")]
         private InputList<Inputs.ContainerNetworkInterfaceArgs>? _networkInterfaces;
 
@@ -330,6 +348,18 @@ namespace Pulumi.ProxmoxVE.CT
         /// </summary>
         [Input("memory")]
         public Input<Inputs.ContainerMemoryGetArgs>? Memory { get; set; }
+
+        [Input("mountPoints")]
+        private InputList<Inputs.ContainerMountPointGetArgs>? _mountPoints;
+
+        /// <summary>
+        /// A mount point
+        /// </summary>
+        public InputList<Inputs.ContainerMountPointGetArgs> MountPoints
+        {
+            get => _mountPoints ?? (_mountPoints = new InputList<Inputs.ContainerMountPointGetArgs>());
+            set => _mountPoints = value;
+        }
 
         [Input("networkInterfaces")]
         private InputList<Inputs.ContainerNetworkInterfaceGetArgs>? _networkInterfaces;

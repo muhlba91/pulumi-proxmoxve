@@ -24,7 +24,6 @@
         "getDNS.ts",
         "getHosts.ts",
         "getTime.ts",
-        "getVersion.ts",
         "hosts.ts",
         "index.ts",
         "network/firewall.ts",

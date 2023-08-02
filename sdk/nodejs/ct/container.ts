@@ -67,6 +67,10 @@ export class Container extends pulumi.CustomResource {
      */
     public readonly memory!: pulumi.Output<outputs.CT.ContainerMemory | undefined>;
     /**
+     * A mount point
+     */
+    public readonly mountPoints!: pulumi.Output<outputs.CT.ContainerMountPoint[] | undefined>;
+    /**
      * The network interfaces
      */
     public readonly networkInterfaces!: pulumi.Output<outputs.CT.ContainerNetworkInterface[] | undefined>;
@@ -124,6 +128,7 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["features"] = state ? state.features : undefined;
             resourceInputs["initialization"] = state ? state.initialization : undefined;
             resourceInputs["memory"] = state ? state.memory : undefined;
+            resourceInputs["mountPoints"] = state ? state.mountPoints : undefined;
             resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
             resourceInputs["nodeName"] = state ? state.nodeName : undefined;
             resourceInputs["operatingSystem"] = state ? state.operatingSystem : undefined;
@@ -146,6 +151,7 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["features"] = args ? args.features : undefined;
             resourceInputs["initialization"] = args ? args.initialization : undefined;
             resourceInputs["memory"] = args ? args.memory : undefined;
+            resourceInputs["mountPoints"] = args ? args.mountPoints : undefined;
             resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
             resourceInputs["nodeName"] = args ? args.nodeName : undefined;
             resourceInputs["operatingSystem"] = args ? args.operatingSystem : undefined;
@@ -197,6 +203,10 @@ export interface ContainerState {
      * The memory allocation
      */
     memory?: pulumi.Input<inputs.CT.ContainerMemory>;
+    /**
+     * A mount point
+     */
+    mountPoints?: pulumi.Input<pulumi.Input<inputs.CT.ContainerMountPoint>[]>;
     /**
      * The network interfaces
      */
@@ -271,6 +281,10 @@ export interface ContainerArgs {
      * The memory allocation
      */
     memory?: pulumi.Input<inputs.CT.ContainerMemory>;
+    /**
+     * A mount point
+     */
+    mountPoints?: pulumi.Input<pulumi.Input<inputs.CT.ContainerMountPoint>[]>;
     /**
      * The network interfaces
      */

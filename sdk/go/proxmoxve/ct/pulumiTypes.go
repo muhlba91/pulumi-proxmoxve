@@ -1801,6 +1801,154 @@ func (o ContainerMemoryPtrOutput) Swap() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type ContainerMountPoint struct {
+	Acl          *bool    `pulumi:"acl"`
+	Backup       *bool    `pulumi:"backup"`
+	MountOptions []string `pulumi:"mountOptions"`
+	Path         string   `pulumi:"path"`
+	Quota        *bool    `pulumi:"quota"`
+	ReadOnly     *bool    `pulumi:"readOnly"`
+	Replicate    *bool    `pulumi:"replicate"`
+	Shared       *bool    `pulumi:"shared"`
+	Size         *string  `pulumi:"size"`
+	Volume       string   `pulumi:"volume"`
+}
+
+// ContainerMountPointInput is an input type that accepts ContainerMountPointArgs and ContainerMountPointOutput values.
+// You can construct a concrete instance of `ContainerMountPointInput` via:
+//
+//	ContainerMountPointArgs{...}
+type ContainerMountPointInput interface {
+	pulumi.Input
+
+	ToContainerMountPointOutput() ContainerMountPointOutput
+	ToContainerMountPointOutputWithContext(context.Context) ContainerMountPointOutput
+}
+
+type ContainerMountPointArgs struct {
+	Acl          pulumi.BoolPtrInput     `pulumi:"acl"`
+	Backup       pulumi.BoolPtrInput     `pulumi:"backup"`
+	MountOptions pulumi.StringArrayInput `pulumi:"mountOptions"`
+	Path         pulumi.StringInput      `pulumi:"path"`
+	Quota        pulumi.BoolPtrInput     `pulumi:"quota"`
+	ReadOnly     pulumi.BoolPtrInput     `pulumi:"readOnly"`
+	Replicate    pulumi.BoolPtrInput     `pulumi:"replicate"`
+	Shared       pulumi.BoolPtrInput     `pulumi:"shared"`
+	Size         pulumi.StringPtrInput   `pulumi:"size"`
+	Volume       pulumi.StringInput      `pulumi:"volume"`
+}
+
+func (ContainerMountPointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerMountPoint)(nil)).Elem()
+}
+
+func (i ContainerMountPointArgs) ToContainerMountPointOutput() ContainerMountPointOutput {
+	return i.ToContainerMountPointOutputWithContext(context.Background())
+}
+
+func (i ContainerMountPointArgs) ToContainerMountPointOutputWithContext(ctx context.Context) ContainerMountPointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerMountPointOutput)
+}
+
+// ContainerMountPointArrayInput is an input type that accepts ContainerMountPointArray and ContainerMountPointArrayOutput values.
+// You can construct a concrete instance of `ContainerMountPointArrayInput` via:
+//
+//	ContainerMountPointArray{ ContainerMountPointArgs{...} }
+type ContainerMountPointArrayInput interface {
+	pulumi.Input
+
+	ToContainerMountPointArrayOutput() ContainerMountPointArrayOutput
+	ToContainerMountPointArrayOutputWithContext(context.Context) ContainerMountPointArrayOutput
+}
+
+type ContainerMountPointArray []ContainerMountPointInput
+
+func (ContainerMountPointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerMountPoint)(nil)).Elem()
+}
+
+func (i ContainerMountPointArray) ToContainerMountPointArrayOutput() ContainerMountPointArrayOutput {
+	return i.ToContainerMountPointArrayOutputWithContext(context.Background())
+}
+
+func (i ContainerMountPointArray) ToContainerMountPointArrayOutputWithContext(ctx context.Context) ContainerMountPointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerMountPointArrayOutput)
+}
+
+type ContainerMountPointOutput struct{ *pulumi.OutputState }
+
+func (ContainerMountPointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerMountPoint)(nil)).Elem()
+}
+
+func (o ContainerMountPointOutput) ToContainerMountPointOutput() ContainerMountPointOutput {
+	return o
+}
+
+func (o ContainerMountPointOutput) ToContainerMountPointOutputWithContext(ctx context.Context) ContainerMountPointOutput {
+	return o
+}
+
+func (o ContainerMountPointOutput) Acl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerMountPoint) *bool { return v.Acl }).(pulumi.BoolPtrOutput)
+}
+
+func (o ContainerMountPointOutput) Backup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerMountPoint) *bool { return v.Backup }).(pulumi.BoolPtrOutput)
+}
+
+func (o ContainerMountPointOutput) MountOptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ContainerMountPoint) []string { return v.MountOptions }).(pulumi.StringArrayOutput)
+}
+
+func (o ContainerMountPointOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerMountPoint) string { return v.Path }).(pulumi.StringOutput)
+}
+
+func (o ContainerMountPointOutput) Quota() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerMountPoint) *bool { return v.Quota }).(pulumi.BoolPtrOutput)
+}
+
+func (o ContainerMountPointOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerMountPoint) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+func (o ContainerMountPointOutput) Replicate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerMountPoint) *bool { return v.Replicate }).(pulumi.BoolPtrOutput)
+}
+
+func (o ContainerMountPointOutput) Shared() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerMountPoint) *bool { return v.Shared }).(pulumi.BoolPtrOutput)
+}
+
+func (o ContainerMountPointOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerMountPoint) *string { return v.Size }).(pulumi.StringPtrOutput)
+}
+
+func (o ContainerMountPointOutput) Volume() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerMountPoint) string { return v.Volume }).(pulumi.StringOutput)
+}
+
+type ContainerMountPointArrayOutput struct{ *pulumi.OutputState }
+
+func (ContainerMountPointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerMountPoint)(nil)).Elem()
+}
+
+func (o ContainerMountPointArrayOutput) ToContainerMountPointArrayOutput() ContainerMountPointArrayOutput {
+	return o
+}
+
+func (o ContainerMountPointArrayOutput) ToContainerMountPointArrayOutputWithContext(ctx context.Context) ContainerMountPointArrayOutput {
+	return o
+}
+
+func (o ContainerMountPointArrayOutput) Index(i pulumi.IntInput) ContainerMountPointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerMountPoint {
+		return vs[0].([]ContainerMountPoint)[vs[1].(int)]
+	}).(ContainerMountPointOutput)
+}
+
 type ContainerNetworkInterface struct {
 	Bridge     *string  `pulumi:"bridge"`
 	Enabled    *bool    `pulumi:"enabled"`
@@ -2110,6 +2258,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerInitializationUserAccountPtrInput)(nil)).Elem(), ContainerInitializationUserAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerMemoryInput)(nil)).Elem(), ContainerMemoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerMemoryPtrInput)(nil)).Elem(), ContainerMemoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerMountPointInput)(nil)).Elem(), ContainerMountPointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerMountPointArrayInput)(nil)).Elem(), ContainerMountPointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerNetworkInterfaceInput)(nil)).Elem(), ContainerNetworkInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerNetworkInterfaceArrayInput)(nil)).Elem(), ContainerNetworkInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerOperatingSystemInput)(nil)).Elem(), ContainerOperatingSystemArgs{})
@@ -2138,6 +2288,8 @@ func init() {
 	pulumi.RegisterOutputType(ContainerInitializationUserAccountPtrOutput{})
 	pulumi.RegisterOutputType(ContainerMemoryOutput{})
 	pulumi.RegisterOutputType(ContainerMemoryPtrOutput{})
+	pulumi.RegisterOutputType(ContainerMountPointOutput{})
+	pulumi.RegisterOutputType(ContainerMountPointArrayOutput{})
 	pulumi.RegisterOutputType(ContainerNetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(ContainerNetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(ContainerOperatingSystemOutput{})

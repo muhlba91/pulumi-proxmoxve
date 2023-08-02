@@ -30,10 +30,6 @@ export const getTime: typeof import("./getTime").getTime = null as any;
 export const getTimeOutput: typeof import("./getTime").getTimeOutput = null as any;
 utilities.lazyLoad(exports, ["getTime","getTimeOutput"], () => require("./getTime"));
 
-export { GetVersionResult } from "./getVersion";
-export const getVersion: typeof import("./getVersion").getVersion = null as any;
-utilities.lazyLoad(exports, ["getVersion"], () => require("./getVersion"));
-
 export { HostsArgs, HostsState } from "./hosts";
 export type Hosts = import("./hosts").Hosts;
 export const Hosts: typeof import("./hosts").Hosts = null as any;

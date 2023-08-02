@@ -19,26 +19,29 @@
     },
     "language": {
         "csharp": {
-            "compatibility": "tfbridge20",
+            "packageReferences": {
+                "Pulumi": "3.*"
+            },
             "namespaces": {
                 "proxmoxve": "ProxmoxVE"
             },
-            "packageReferences": {
-                "Pulumi": "3.*"
-            }
+            "compatibility": "tfbridge20"
         },
         "go": {
-            "generateExtraInputTypes": true,
+            "importBasePath": "github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve",
             "generateResourceContainerTypes": true,
-            "importBasePath": "github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve"
+            "generateExtraInputTypes": true
         },
         "java": {
             "basePackage": "io.muehlbachler.pulumi",
             "buildFiles": "",
-            "gradleNexusPublishPluginVersion": ""
+            "gradleNexusPublishPluginVersion": "",
+            "gradleTest": ""
         },
         "nodejs": {
-            "compatibility": "tfbridge20",
+            "packageName": "@muhlba91/pulumi-proxmoxve",
+            "packageDescription": "A Pulumi package for creating and managing Proxmox Virtual Environment cloud resources.",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/bpg/terraform-provider-proxmoxve)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-proxmoxve` repo](https://github.com/muhlba91/pulumi-proxmoxve/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-proxmoxve` repo](https://github.com/bpg/terraform-provider-proxmoxve/issues).",
             "dependencies": {
                 "@pulumi/pulumi": "^3.0.0"
             },
@@ -46,20 +49,16 @@
                 "@types/mime": "^2.0.0",
                 "@types/node": "^10.0.0"
             },
-            "disableUnionOutputTypes": true,
-            "packageDescription": "A Pulumi package for creating and managing Proxmox Virtual Environment cloud resources.",
-            "packageName": "@muhlba91/pulumi-proxmoxve",
-            "pluginName": "",
-            "pluginVersion": "",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/bpg/terraform-provider-proxmoxve)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-proxmoxve` repo](https://github.com/muhlba91/pulumi-proxmoxve/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-proxmoxve` repo](https://github.com/bpg/terraform-provider-proxmoxve/issues).",
-            "typescriptVersion": ""
+            "compatibility": "tfbridge20",
+            "disableUnionOutputTypes": true
         },
         "python": {
-            "compatibility": "tfbridge20",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/bpg/terraform-provider-proxmoxve)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-proxmoxve` repo](https://github.com/muhlba91/pulumi-proxmoxve/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-proxmoxve` repo](https://github.com/bpg/terraform-provider-proxmoxve/issues).",
             "requires": {
                 "pulumi": "\u003e=3.0.0,\u003c4.0.0"
-            }
+            },
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/bpg/terraform-provider-proxmoxve)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-proxmoxve` repo](https://github.com/muhlba91/pulumi-proxmoxve/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-proxmoxve` repo](https://github.com/bpg/terraform-provider-proxmoxve/issues).",
+            "compatibility": "tfbridge20",
+            "pyproject": {}
         }
     },
     "config": {
@@ -260,6 +259,48 @@
                 }
             },
             "type": "object"
+        },
+        "proxmoxve:CT/ContainerMountPoint:ContainerMountPoint": {
+            "properties": {
+                "acl": {
+                    "type": "boolean"
+                },
+                "backup": {
+                    "type": "boolean"
+                },
+                "mountOptions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "path": {
+                    "type": "string"
+                },
+                "quota": {
+                    "type": "boolean"
+                },
+                "readOnly": {
+                    "type": "boolean"
+                },
+                "replicate": {
+                    "type": "boolean"
+                },
+                "shared": {
+                    "type": "boolean"
+                },
+                "size": {
+                    "type": "string"
+                },
+                "volume": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "path",
+                "volume"
+            ]
         },
         "proxmoxve:CT/ContainerNetworkInterface:ContainerNetworkInterface": {
             "properties": {
@@ -686,6 +727,9 @@
                 },
                 "fileId": {
                     "type": "string"
+                },
+                "interface": {
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -752,6 +796,9 @@
         },
         "proxmoxve:VM/VirtualMachineDisk:VirtualMachineDisk": {
             "properties": {
+                "cache": {
+                    "type": "string"
+                },
                 "datastoreId": {
                     "type": "string"
                 },
@@ -1042,6 +1089,20 @@
             },
             "type": "object"
         },
+        "proxmoxve:VM/VirtualMachineStartup:VirtualMachineStartup": {
+            "properties": {
+                "downDelay": {
+                    "type": "integer"
+                },
+                "order": {
+                    "type": "integer"
+                },
+                "upDelay": {
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
         "proxmoxve:VM/VirtualMachineVga:VirtualMachineVga": {
             "properties": {
                 "enabled": {
@@ -1321,6 +1382,13 @@
                     "$ref": "#/types/proxmoxve:CT/ContainerMemory:ContainerMemory",
                     "description": "The memory allocation\n"
                 },
+                "mountPoints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/proxmoxve:CT/ContainerMountPoint:ContainerMountPoint"
+                    },
+                    "description": "A mount point\n"
+                },
                 "networkInterfaces": {
                     "type": "array",
                     "items": {
@@ -1401,6 +1469,13 @@
                 "memory": {
                     "$ref": "#/types/proxmoxve:CT/ContainerMemory:ContainerMemory",
                     "description": "The memory allocation\n"
+                },
+                "mountPoints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/proxmoxve:CT/ContainerMountPoint:ContainerMountPoint"
+                    },
+                    "description": "A mount point\n"
                 },
                 "networkInterfaces": {
                     "type": "array",
@@ -1490,6 +1565,13 @@
                     "memory": {
                         "$ref": "#/types/proxmoxve:CT/ContainerMemory:ContainerMemory",
                         "description": "The memory allocation\n"
+                    },
+                    "mountPoints": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/proxmoxve:CT/ContainerMountPoint:ContainerMountPoint"
+                        },
+                        "description": "A mount point\n"
                     },
                     "networkInterfaces": {
                         "type": "array",
@@ -2811,6 +2893,10 @@
                     "type": "boolean",
                     "description": "Whether to start the virtual machine\n"
                 },
+                "startup": {
+                    "$ref": "#/types/proxmoxve:VM/VirtualMachineStartup:VirtualMachineStartup",
+                    "description": "Defines startup and shutdown behavior of the VM\n"
+                },
                 "tabletDevice": {
                     "type": "boolean",
                     "description": "Whether to enable the USB tablet device\n"
@@ -2996,6 +3082,10 @@
                 "started": {
                     "type": "boolean",
                     "description": "Whether to start the virtual machine\n"
+                },
+                "startup": {
+                    "$ref": "#/types/proxmoxve:VM/VirtualMachineStartup:VirtualMachineStartup",
+                    "description": "Defines startup and shutdown behavior of the VM\n"
                 },
                 "tabletDevice": {
                     "type": "boolean",
@@ -3213,6 +3303,10 @@
                     "started": {
                         "type": "boolean",
                         "description": "Whether to start the virtual machine\n"
+                    },
+                    "startup": {
+                        "$ref": "#/types/proxmoxve:VM/VirtualMachineStartup:VirtualMachineStartup",
+                        "description": "Defines startup and shutdown behavior of the VM\n"
                     },
                     "tabletDevice": {
                         "type": "boolean",
@@ -4468,37 +4562,6 @@
                     "nodeName",
                     "timeZone",
                     "utcTime",
-                    "id"
-                ]
-            }
-        },
-        "proxmoxve:index/getVersion:getVersion": {
-            "outputs": {
-                "description": "A collection of values returned by getVersion.\n",
-                "properties": {
-                    "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
-                    },
-                    "keyboardLayout": {
-                        "type": "string"
-                    },
-                    "release": {
-                        "type": "string"
-                    },
-                    "repositoryId": {
-                        "type": "string"
-                    },
-                    "version": {
-                        "type": "string"
-                    }
-                },
-                "type": "object",
-                "required": [
-                    "keyboardLayout",
-                    "release",
-                    "repositoryId",
-                    "version",
                     "id"
                 ]
             }

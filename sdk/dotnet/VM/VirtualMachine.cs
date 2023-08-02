@@ -199,6 +199,12 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<bool?> Started { get; private set; } = null!;
 
         /// <summary>
+        /// Defines startup and shutdown behavior of the VM
+        /// </summary>
+        [Output("startup")]
+        public Output<Outputs.VirtualMachineStartup?> Startup { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to enable the USB tablet device
         /// </summary>
         [Output("tabletDevice")]
@@ -502,6 +508,12 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Input("started")]
         public Input<bool>? Started { get; set; }
+
+        /// <summary>
+        /// Defines startup and shutdown behavior of the VM
+        /// </summary>
+        [Input("startup")]
+        public Input<Inputs.VirtualMachineStartupArgs>? Startup { get; set; }
 
         /// <summary>
         /// Whether to enable the USB tablet device
@@ -822,6 +834,12 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Input("started")]
         public Input<bool>? Started { get; set; }
+
+        /// <summary>
+        /// Defines startup and shutdown behavior of the VM
+        /// </summary>
+        [Input("startup")]
+        public Input<Inputs.VirtualMachineStartupGetArgs>? Startup { get; set; }
 
         /// <summary>
         /// Whether to enable the USB tablet device
