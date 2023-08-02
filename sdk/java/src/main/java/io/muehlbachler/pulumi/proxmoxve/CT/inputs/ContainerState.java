@@ -12,6 +12,7 @@ import io.muehlbachler.pulumi.proxmoxve.CT.inputs.ContainerDiskArgs;
 import io.muehlbachler.pulumi.proxmoxve.CT.inputs.ContainerFeaturesArgs;
 import io.muehlbachler.pulumi.proxmoxve.CT.inputs.ContainerInitializationArgs;
 import io.muehlbachler.pulumi.proxmoxve.CT.inputs.ContainerMemoryArgs;
+import io.muehlbachler.pulumi.proxmoxve.CT.inputs.ContainerMountPointArgs;
 import io.muehlbachler.pulumi.proxmoxve.CT.inputs.ContainerNetworkInterfaceArgs;
 import io.muehlbachler.pulumi.proxmoxve.CT.inputs.ContainerOperatingSystemArgs;
 import java.lang.Boolean;
@@ -145,6 +146,21 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<ContainerMemoryArgs>> memory() {
         return Optional.ofNullable(this.memory);
+    }
+
+    /**
+     * A mount point
+     * 
+     */
+    @Import(name="mountPoints")
+    private @Nullable Output<List<ContainerMountPointArgs>> mountPoints;
+
+    /**
+     * @return A mount point
+     * 
+     */
+    public Optional<Output<List<ContainerMountPointArgs>>> mountPoints() {
+        return Optional.ofNullable(this.mountPoints);
     }
 
     /**
@@ -293,6 +309,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         this.features = $.features;
         this.initialization = $.initialization;
         this.memory = $.memory;
+        this.mountPoints = $.mountPoints;
         this.networkInterfaces = $.networkInterfaces;
         this.nodeName = $.nodeName;
         this.operatingSystem = $.operatingSystem;
@@ -488,6 +505,37 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder memory(ContainerMemoryArgs memory) {
             return memory(Output.of(memory));
+        }
+
+        /**
+         * @param mountPoints A mount point
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mountPoints(@Nullable Output<List<ContainerMountPointArgs>> mountPoints) {
+            $.mountPoints = mountPoints;
+            return this;
+        }
+
+        /**
+         * @param mountPoints A mount point
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mountPoints(List<ContainerMountPointArgs> mountPoints) {
+            return mountPoints(Output.of(mountPoints));
+        }
+
+        /**
+         * @param mountPoints A mount point
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mountPoints(ContainerMountPointArgs... mountPoints) {
+            return mountPoints(List.of(mountPoints));
         }
 
         /**

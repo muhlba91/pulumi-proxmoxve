@@ -10,7 +10,6 @@ from .dns import *
 from .get_dns import *
 from .get_hosts import *
 from .get_time import *
-from .get_version import *
 from .hosts import *
 from .provider import *
 from .time import *

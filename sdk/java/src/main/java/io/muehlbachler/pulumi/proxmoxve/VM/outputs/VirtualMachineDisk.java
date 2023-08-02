@@ -14,6 +14,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VirtualMachineDisk {
+    private @Nullable String cache;
     private @Nullable String datastoreId;
     private @Nullable String discard;
     private @Nullable String fileFormat;
@@ -25,6 +26,9 @@ public final class VirtualMachineDisk {
     private @Nullable Boolean ssd;
 
     private VirtualMachineDisk() {}
+    public Optional<String> cache() {
+        return Optional.ofNullable(this.cache);
+    }
     public Optional<String> datastoreId() {
         return Optional.ofNullable(this.datastoreId);
     }
@@ -62,6 +66,7 @@ public final class VirtualMachineDisk {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String cache;
         private @Nullable String datastoreId;
         private @Nullable String discard;
         private @Nullable String fileFormat;
@@ -74,6 +79,7 @@ public final class VirtualMachineDisk {
         public Builder() {}
         public Builder(VirtualMachineDisk defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.cache = defaults.cache;
     	      this.datastoreId = defaults.datastoreId;
     	      this.discard = defaults.discard;
     	      this.fileFormat = defaults.fileFormat;
@@ -85,6 +91,11 @@ public final class VirtualMachineDisk {
     	      this.ssd = defaults.ssd;
         }
 
+        @CustomType.Setter
+        public Builder cache(@Nullable String cache) {
+            this.cache = cache;
+            return this;
+        }
         @CustomType.Setter
         public Builder datastoreId(@Nullable String datastoreId) {
             this.datastoreId = datastoreId;
@@ -132,6 +143,7 @@ public final class VirtualMachineDisk {
         }
         public VirtualMachineDisk build() {
             final var o = new VirtualMachineDisk();
+            o.cache = cache;
             o.datastoreId = datastoreId;
             o.discard = discard;
             o.fileFormat = fileFormat;

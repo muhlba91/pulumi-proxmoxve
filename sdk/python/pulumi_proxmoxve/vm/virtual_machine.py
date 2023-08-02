@@ -43,6 +43,7 @@ class VirtualMachineArgs:
                  scsi_hardware: Optional[pulumi.Input[str]] = None,
                  serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
+                 startup: Optional[pulumi.Input['VirtualMachineStartupArgs']] = None,
                  tablet_device: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
@@ -83,6 +84,7 @@ class VirtualMachineArgs:
         :param pulumi.Input[str] scsi_hardware: The SCSI hardware type
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]] serial_devices: The serial devices
         :param pulumi.Input[bool] started: Whether to start the virtual machine
+        :param pulumi.Input['VirtualMachineStartupArgs'] startup: Defines startup and shutdown behavior of the VM
         :param pulumi.Input[bool] tablet_device: Whether to enable the USB tablet device
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the virtual machine. This is only meta information.
         :param pulumi.Input[bool] template: Whether to create a template
@@ -148,6 +150,8 @@ class VirtualMachineArgs:
             pulumi.set(__self__, "serial_devices", serial_devices)
         if started is not None:
             pulumi.set(__self__, "started", started)
+        if startup is not None:
+            pulumi.set(__self__, "startup", startup)
         if tablet_device is not None:
             pulumi.set(__self__, "tablet_device", tablet_device)
         if tags is not None:
@@ -496,6 +500,18 @@ class VirtualMachineArgs:
         pulumi.set(self, "started", value)
 
     @property
+    @pulumi.getter
+    def startup(self) -> Optional[pulumi.Input['VirtualMachineStartupArgs']]:
+        """
+        Defines startup and shutdown behavior of the VM
+        """
+        return pulumi.get(self, "startup")
+
+    @startup.setter
+    def startup(self, value: Optional[pulumi.Input['VirtualMachineStartupArgs']]):
+        pulumi.set(self, "startup", value)
+
+    @property
     @pulumi.getter(name="tabletDevice")
     def tablet_device(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -662,6 +678,7 @@ class _VirtualMachineState:
                  scsi_hardware: Optional[pulumi.Input[str]] = None,
                  serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
+                 startup: Optional[pulumi.Input['VirtualMachineStartupArgs']] = None,
                  tablet_device: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
@@ -706,6 +723,7 @@ class _VirtualMachineState:
         :param pulumi.Input[str] scsi_hardware: The SCSI hardware type
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]] serial_devices: The serial devices
         :param pulumi.Input[bool] started: Whether to start the virtual machine
+        :param pulumi.Input['VirtualMachineStartupArgs'] startup: Defines startup and shutdown behavior of the VM
         :param pulumi.Input[bool] tablet_device: Whether to enable the USB tablet device
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the virtual machine. This is only meta information.
         :param pulumi.Input[bool] template: Whether to create a template
@@ -780,6 +798,8 @@ class _VirtualMachineState:
             pulumi.set(__self__, "serial_devices", serial_devices)
         if started is not None:
             pulumi.set(__self__, "started", started)
+        if startup is not None:
+            pulumi.set(__self__, "startup", startup)
         if tablet_device is not None:
             pulumi.set(__self__, "tablet_device", tablet_device)
         if tags is not None:
@@ -1176,6 +1196,18 @@ class _VirtualMachineState:
         pulumi.set(self, "started", value)
 
     @property
+    @pulumi.getter
+    def startup(self) -> Optional[pulumi.Input['VirtualMachineStartupArgs']]:
+        """
+        Defines startup and shutdown behavior of the VM
+        """
+        return pulumi.get(self, "startup")
+
+    @startup.setter
+    def startup(self, value: Optional[pulumi.Input['VirtualMachineStartupArgs']]):
+        pulumi.set(self, "startup", value)
+
+    @property
     @pulumi.getter(name="tabletDevice")
     def tablet_device(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1340,6 +1372,7 @@ class VirtualMachine(pulumi.CustomResource):
                  scsi_hardware: Optional[pulumi.Input[str]] = None,
                  serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
+                 startup: Optional[pulumi.Input[pulumi.InputType['VirtualMachineStartupArgs']]] = None,
                  tablet_device: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
@@ -1383,6 +1416,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[str] scsi_hardware: The SCSI hardware type
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]] serial_devices: The serial devices
         :param pulumi.Input[bool] started: Whether to start the virtual machine
+        :param pulumi.Input[pulumi.InputType['VirtualMachineStartupArgs']] startup: Defines startup and shutdown behavior of the VM
         :param pulumi.Input[bool] tablet_device: Whether to enable the USB tablet device
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the virtual machine. This is only meta information.
         :param pulumi.Input[bool] template: Whether to create a template
@@ -1445,6 +1479,7 @@ class VirtualMachine(pulumi.CustomResource):
                  scsi_hardware: Optional[pulumi.Input[str]] = None,
                  serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
+                 startup: Optional[pulumi.Input[pulumi.InputType['VirtualMachineStartupArgs']]] = None,
                  tablet_device: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
@@ -1494,6 +1529,7 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["scsi_hardware"] = scsi_hardware
             __props__.__dict__["serial_devices"] = serial_devices
             __props__.__dict__["started"] = started
+            __props__.__dict__["startup"] = startup
             __props__.__dict__["tablet_device"] = tablet_device
             __props__.__dict__["tags"] = tags
             __props__.__dict__["template"] = template
@@ -1550,6 +1586,7 @@ class VirtualMachine(pulumi.CustomResource):
             scsi_hardware: Optional[pulumi.Input[str]] = None,
             serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]]] = None,
             started: Optional[pulumi.Input[bool]] = None,
+            startup: Optional[pulumi.Input[pulumi.InputType['VirtualMachineStartupArgs']]] = None,
             tablet_device: Optional[pulumi.Input[bool]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             template: Optional[pulumi.Input[bool]] = None,
@@ -1599,6 +1636,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[str] scsi_hardware: The SCSI hardware type
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]] serial_devices: The serial devices
         :param pulumi.Input[bool] started: Whether to start the virtual machine
+        :param pulumi.Input[pulumi.InputType['VirtualMachineStartupArgs']] startup: Defines startup and shutdown behavior of the VM
         :param pulumi.Input[bool] tablet_device: Whether to enable the USB tablet device
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the virtual machine. This is only meta information.
         :param pulumi.Input[bool] template: Whether to create a template
@@ -1646,6 +1684,7 @@ class VirtualMachine(pulumi.CustomResource):
         __props__.__dict__["scsi_hardware"] = scsi_hardware
         __props__.__dict__["serial_devices"] = serial_devices
         __props__.__dict__["started"] = started
+        __props__.__dict__["startup"] = startup
         __props__.__dict__["tablet_device"] = tablet_device
         __props__.__dict__["tags"] = tags
         __props__.__dict__["template"] = template
@@ -1906,6 +1945,14 @@ class VirtualMachine(pulumi.CustomResource):
         Whether to start the virtual machine
         """
         return pulumi.get(self, "started")
+
+    @property
+    @pulumi.getter
+    def startup(self) -> pulumi.Output[Optional['outputs.VirtualMachineStartup']]:
+        """
+        Defines startup and shutdown behavior of the VM
+        """
+        return pulumi.get(self, "startup")
 
     @property
     @pulumi.getter(name="tabletDevice")

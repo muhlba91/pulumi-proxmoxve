@@ -23,6 +23,7 @@ import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineMemory;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineNetworkDevice;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineOperatingSystem;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineSerialDevice;
+import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineStartup;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineVga;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -466,6 +467,20 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> started() {
         return Codegen.optional(this.started);
+    }
+    /**
+     * Defines startup and shutdown behavior of the VM
+     * 
+     */
+    @Export(name="startup", refs={VirtualMachineStartup.class}, tree="[0]")
+    private Output</* @Nullable */ VirtualMachineStartup> startup;
+
+    /**
+     * @return Defines startup and shutdown behavior of the VM
+     * 
+     */
+    public Output<Optional<VirtualMachineStartup>> startup() {
+        return Codegen.optional(this.startup);
     }
     /**
      * Whether to enable the USB tablet device

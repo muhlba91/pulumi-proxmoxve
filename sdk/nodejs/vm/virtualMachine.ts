@@ -159,6 +159,10 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly started!: pulumi.Output<boolean | undefined>;
     /**
+     * Defines startup and shutdown behavior of the VM
+     */
+    public readonly startup!: pulumi.Output<outputs.VM.VirtualMachineStartup | undefined>;
+    /**
      * Whether to enable the USB tablet device
      */
     public readonly tabletDevice!: pulumi.Output<boolean | undefined>;
@@ -247,6 +251,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["scsiHardware"] = state ? state.scsiHardware : undefined;
             resourceInputs["serialDevices"] = state ? state.serialDevices : undefined;
             resourceInputs["started"] = state ? state.started : undefined;
+            resourceInputs["startup"] = state ? state.startup : undefined;
             resourceInputs["tabletDevice"] = state ? state.tabletDevice : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["template"] = state ? state.template : undefined;
@@ -290,6 +295,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["scsiHardware"] = args ? args.scsiHardware : undefined;
             resourceInputs["serialDevices"] = args ? args.serialDevices : undefined;
             resourceInputs["started"] = args ? args.started : undefined;
+            resourceInputs["startup"] = args ? args.startup : undefined;
             resourceInputs["tabletDevice"] = args ? args.tabletDevice : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["template"] = args ? args.template : undefined;
@@ -439,6 +445,10 @@ export interface VirtualMachineState {
      * Whether to start the virtual machine
      */
     started?: pulumi.Input<boolean>;
+    /**
+     * Defines startup and shutdown behavior of the VM
+     */
+    startup?: pulumi.Input<inputs.VM.VirtualMachineStartup>;
     /**
      * Whether to enable the USB tablet device
      */
@@ -597,6 +607,10 @@ export interface VirtualMachineArgs {
      * Whether to start the virtual machine
      */
     started?: pulumi.Input<boolean>;
+    /**
+     * Defines startup and shutdown behavior of the VM
+     */
+    startup?: pulumi.Input<inputs.VM.VirtualMachineStartup>;
     /**
      * Whether to enable the USB tablet device
      */

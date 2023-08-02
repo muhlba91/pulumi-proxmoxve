@@ -18,6 +18,13 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
 
     public static final VirtualMachineDiskArgs Empty = new VirtualMachineDiskArgs();
 
+    @Import(name="cache")
+    private @Nullable Output<String> cache;
+
+    public Optional<Output<String>> cache() {
+        return Optional.ofNullable(this.cache);
+    }
+
     @Import(name="datastoreId")
     private @Nullable Output<String> datastoreId;
 
@@ -84,6 +91,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     private VirtualMachineDiskArgs() {}
 
     private VirtualMachineDiskArgs(VirtualMachineDiskArgs $) {
+        this.cache = $.cache;
         this.datastoreId = $.datastoreId;
         this.discard = $.discard;
         this.fileFormat = $.fileFormat;
@@ -111,6 +119,15 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
 
         public Builder(VirtualMachineDiskArgs defaults) {
             $ = new VirtualMachineDiskArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder cache(@Nullable Output<String> cache) {
+            $.cache = cache;
+            return this;
+        }
+
+        public Builder cache(String cache) {
+            return cache(Output.of(cache));
         }
 
         public Builder datastoreId(@Nullable Output<String> datastoreId) {

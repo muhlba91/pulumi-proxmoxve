@@ -18,6 +18,7 @@ import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineMemoryArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineNetworkDeviceArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineOperatingSystemArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineSerialDeviceArgs;
+import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineStartupArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineVgaArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -438,6 +439,21 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Defines startup and shutdown behavior of the VM
+     * 
+     */
+    @Import(name="startup")
+    private @Nullable Output<VirtualMachineStartupArgs> startup;
+
+    /**
+     * @return Defines startup and shutdown behavior of the VM
+     * 
+     */
+    public Optional<Output<VirtualMachineStartupArgs>> startup() {
+        return Optional.ofNullable(this.startup);
+    }
+
+    /**
      * Whether to enable the USB tablet device
      * 
      */
@@ -632,6 +648,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         this.scsiHardware = $.scsiHardware;
         this.serialDevices = $.serialDevices;
         this.started = $.started;
+        this.startup = $.startup;
         this.tabletDevice = $.tabletDevice;
         this.tags = $.tags;
         this.template = $.template;
@@ -1278,6 +1295,27 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder started(Boolean started) {
             return started(Output.of(started));
+        }
+
+        /**
+         * @param startup Defines startup and shutdown behavior of the VM
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startup(@Nullable Output<VirtualMachineStartupArgs> startup) {
+            $.startup = startup;
+            return this;
+        }
+
+        /**
+         * @param startup Defines startup and shutdown behavior of the VM
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startup(VirtualMachineStartupArgs startup) {
+            return startup(Output.of(startup));
         }
 
         /**

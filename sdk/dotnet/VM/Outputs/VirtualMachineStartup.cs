@@ -11,23 +11,23 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
 {
 
     [OutputType]
-    public sealed class VirtualMachineCdrom
+    public sealed class VirtualMachineStartup
     {
-        public readonly bool? Enabled;
-        public readonly string? FileId;
-        public readonly string? Interface;
+        public readonly int? DownDelay;
+        public readonly int? Order;
+        public readonly int? UpDelay;
 
         [OutputConstructor]
-        private VirtualMachineCdrom(
-            bool? enabled,
+        private VirtualMachineStartup(
+            int? downDelay,
 
-            string? fileId,
+            int? order,
 
-            string? @interface)
+            int? upDelay)
         {
-            Enabled = enabled;
-            FileId = fileId;
-            Interface = @interface;
+            DownDelay = downDelay;
+            Order = order;
+            UpDelay = upDelay;
         }
     }
 }

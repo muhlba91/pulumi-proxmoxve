@@ -12,6 +12,9 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
 
     public sealed class VirtualMachineDiskGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("cache")]
+        public Input<string>? Cache { get; set; }
+
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
 

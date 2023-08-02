@@ -355,8 +355,9 @@ func (o VirtualMachineAudioDevicePtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type VirtualMachineCdrom struct {
-	Enabled *bool   `pulumi:"enabled"`
-	FileId  *string `pulumi:"fileId"`
+	Enabled   *bool   `pulumi:"enabled"`
+	FileId    *string `pulumi:"fileId"`
+	Interface *string `pulumi:"interface"`
 }
 
 // VirtualMachineCdromInput is an input type that accepts VirtualMachineCdromArgs and VirtualMachineCdromOutput values.
@@ -371,8 +372,9 @@ type VirtualMachineCdromInput interface {
 }
 
 type VirtualMachineCdromArgs struct {
-	Enabled pulumi.BoolPtrInput   `pulumi:"enabled"`
-	FileId  pulumi.StringPtrInput `pulumi:"fileId"`
+	Enabled   pulumi.BoolPtrInput   `pulumi:"enabled"`
+	FileId    pulumi.StringPtrInput `pulumi:"fileId"`
+	Interface pulumi.StringPtrInput `pulumi:"interface"`
 }
 
 func (VirtualMachineCdromArgs) ElementType() reflect.Type {
@@ -460,6 +462,10 @@ func (o VirtualMachineCdromOutput) FileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCdrom) *string { return v.FileId }).(pulumi.StringPtrOutput)
 }
 
+func (o VirtualMachineCdromOutput) Interface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineCdrom) *string { return v.Interface }).(pulumi.StringPtrOutput)
+}
+
 type VirtualMachineCdromPtrOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineCdromPtrOutput) ElementType() reflect.Type {
@@ -499,6 +505,15 @@ func (o VirtualMachineCdromPtrOutput) FileId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.FileId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineCdromPtrOutput) Interface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineCdrom) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Interface
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -934,6 +949,7 @@ func (o VirtualMachineCpuPtrOutput) Units() pulumi.IntPtrOutput {
 }
 
 type VirtualMachineDisk struct {
+	Cache       *string                  `pulumi:"cache"`
 	DatastoreId *string                  `pulumi:"datastoreId"`
 	Discard     *string                  `pulumi:"discard"`
 	FileFormat  *string                  `pulumi:"fileFormat"`
@@ -957,6 +973,7 @@ type VirtualMachineDiskInput interface {
 }
 
 type VirtualMachineDiskArgs struct {
+	Cache       pulumi.StringPtrInput           `pulumi:"cache"`
 	DatastoreId pulumi.StringPtrInput           `pulumi:"datastoreId"`
 	Discard     pulumi.StringPtrInput           `pulumi:"discard"`
 	FileFormat  pulumi.StringPtrInput           `pulumi:"fileFormat"`
@@ -1017,6 +1034,10 @@ func (o VirtualMachineDiskOutput) ToVirtualMachineDiskOutput() VirtualMachineDis
 
 func (o VirtualMachineDiskOutput) ToVirtualMachineDiskOutputWithContext(ctx context.Context) VirtualMachineDiskOutput {
 	return o
+}
+
+func (o VirtualMachineDiskOutput) Cache() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.Cache }).(pulumi.StringPtrOutput)
 }
 
 func (o VirtualMachineDiskOutput) DatastoreId() pulumi.StringPtrOutput {
@@ -3047,6 +3068,169 @@ func (o VirtualMachineSerialDeviceArrayOutput) Index(i pulumi.IntInput) VirtualM
 	}).(VirtualMachineSerialDeviceOutput)
 }
 
+type VirtualMachineStartup struct {
+	DownDelay *int `pulumi:"downDelay"`
+	Order     *int `pulumi:"order"`
+	UpDelay   *int `pulumi:"upDelay"`
+}
+
+// VirtualMachineStartupInput is an input type that accepts VirtualMachineStartupArgs and VirtualMachineStartupOutput values.
+// You can construct a concrete instance of `VirtualMachineStartupInput` via:
+//
+//	VirtualMachineStartupArgs{...}
+type VirtualMachineStartupInput interface {
+	pulumi.Input
+
+	ToVirtualMachineStartupOutput() VirtualMachineStartupOutput
+	ToVirtualMachineStartupOutputWithContext(context.Context) VirtualMachineStartupOutput
+}
+
+type VirtualMachineStartupArgs struct {
+	DownDelay pulumi.IntPtrInput `pulumi:"downDelay"`
+	Order     pulumi.IntPtrInput `pulumi:"order"`
+	UpDelay   pulumi.IntPtrInput `pulumi:"upDelay"`
+}
+
+func (VirtualMachineStartupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineStartup)(nil)).Elem()
+}
+
+func (i VirtualMachineStartupArgs) ToVirtualMachineStartupOutput() VirtualMachineStartupOutput {
+	return i.ToVirtualMachineStartupOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineStartupArgs) ToVirtualMachineStartupOutputWithContext(ctx context.Context) VirtualMachineStartupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineStartupOutput)
+}
+
+func (i VirtualMachineStartupArgs) ToVirtualMachineStartupPtrOutput() VirtualMachineStartupPtrOutput {
+	return i.ToVirtualMachineStartupPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineStartupArgs) ToVirtualMachineStartupPtrOutputWithContext(ctx context.Context) VirtualMachineStartupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineStartupOutput).ToVirtualMachineStartupPtrOutputWithContext(ctx)
+}
+
+// VirtualMachineStartupPtrInput is an input type that accepts VirtualMachineStartupArgs, VirtualMachineStartupPtr and VirtualMachineStartupPtrOutput values.
+// You can construct a concrete instance of `VirtualMachineStartupPtrInput` via:
+//
+//	        VirtualMachineStartupArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachineStartupPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineStartupPtrOutput() VirtualMachineStartupPtrOutput
+	ToVirtualMachineStartupPtrOutputWithContext(context.Context) VirtualMachineStartupPtrOutput
+}
+
+type virtualMachineStartupPtrType VirtualMachineStartupArgs
+
+func VirtualMachineStartupPtr(v *VirtualMachineStartupArgs) VirtualMachineStartupPtrInput {
+	return (*virtualMachineStartupPtrType)(v)
+}
+
+func (*virtualMachineStartupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineStartup)(nil)).Elem()
+}
+
+func (i *virtualMachineStartupPtrType) ToVirtualMachineStartupPtrOutput() VirtualMachineStartupPtrOutput {
+	return i.ToVirtualMachineStartupPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachineStartupPtrType) ToVirtualMachineStartupPtrOutputWithContext(ctx context.Context) VirtualMachineStartupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineStartupPtrOutput)
+}
+
+type VirtualMachineStartupOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineStartupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineStartup)(nil)).Elem()
+}
+
+func (o VirtualMachineStartupOutput) ToVirtualMachineStartupOutput() VirtualMachineStartupOutput {
+	return o
+}
+
+func (o VirtualMachineStartupOutput) ToVirtualMachineStartupOutputWithContext(ctx context.Context) VirtualMachineStartupOutput {
+	return o
+}
+
+func (o VirtualMachineStartupOutput) ToVirtualMachineStartupPtrOutput() VirtualMachineStartupPtrOutput {
+	return o.ToVirtualMachineStartupPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineStartupOutput) ToVirtualMachineStartupPtrOutputWithContext(ctx context.Context) VirtualMachineStartupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineStartup) *VirtualMachineStartup {
+		return &v
+	}).(VirtualMachineStartupPtrOutput)
+}
+
+func (o VirtualMachineStartupOutput) DownDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachineStartup) *int { return v.DownDelay }).(pulumi.IntPtrOutput)
+}
+
+func (o VirtualMachineStartupOutput) Order() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachineStartup) *int { return v.Order }).(pulumi.IntPtrOutput)
+}
+
+func (o VirtualMachineStartupOutput) UpDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachineStartup) *int { return v.UpDelay }).(pulumi.IntPtrOutput)
+}
+
+type VirtualMachineStartupPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineStartupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineStartup)(nil)).Elem()
+}
+
+func (o VirtualMachineStartupPtrOutput) ToVirtualMachineStartupPtrOutput() VirtualMachineStartupPtrOutput {
+	return o
+}
+
+func (o VirtualMachineStartupPtrOutput) ToVirtualMachineStartupPtrOutputWithContext(ctx context.Context) VirtualMachineStartupPtrOutput {
+	return o
+}
+
+func (o VirtualMachineStartupPtrOutput) Elem() VirtualMachineStartupOutput {
+	return o.ApplyT(func(v *VirtualMachineStartup) VirtualMachineStartup {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineStartup
+		return ret
+	}).(VirtualMachineStartupOutput)
+}
+
+func (o VirtualMachineStartupPtrOutput) DownDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineStartup) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DownDelay
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o VirtualMachineStartupPtrOutput) Order() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineStartup) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Order
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o VirtualMachineStartupPtrOutput) UpDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineStartup) *int {
+		if v == nil {
+			return nil
+		}
+		return v.UpDelay
+	}).(pulumi.IntPtrOutput)
+}
+
 type VirtualMachineVga struct {
 	Enabled *bool   `pulumi:"enabled"`
 	Memory  *int    `pulumi:"memory"`
@@ -3361,6 +3545,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineOperatingSystemPtrInput)(nil)).Elem(), VirtualMachineOperatingSystemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineSerialDeviceInput)(nil)).Elem(), VirtualMachineSerialDeviceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineSerialDeviceArrayInput)(nil)).Elem(), VirtualMachineSerialDeviceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineStartupInput)(nil)).Elem(), VirtualMachineStartupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineStartupPtrInput)(nil)).Elem(), VirtualMachineStartupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineVgaInput)(nil)).Elem(), VirtualMachineVgaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineVgaPtrInput)(nil)).Elem(), VirtualMachineVgaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachinesVmInput)(nil)).Elem(), GetVirtualMachinesVmArgs{})
@@ -3403,6 +3589,8 @@ func init() {
 	pulumi.RegisterOutputType(VirtualMachineOperatingSystemPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineSerialDeviceOutput{})
 	pulumi.RegisterOutputType(VirtualMachineSerialDeviceArrayOutput{})
+	pulumi.RegisterOutputType(VirtualMachineStartupOutput{})
+	pulumi.RegisterOutputType(VirtualMachineStartupPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineVgaOutput{})
 	pulumi.RegisterOutputType(VirtualMachineVgaPtrOutput{})
 	pulumi.RegisterOutputType(GetVirtualMachinesVmOutput{})

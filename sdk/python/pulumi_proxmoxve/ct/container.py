@@ -25,6 +25,7 @@ class ContainerArgs:
                  features: Optional[pulumi.Input['ContainerFeaturesArgs']] = None,
                  initialization: Optional[pulumi.Input['ContainerInitializationArgs']] = None,
                  memory: Optional[pulumi.Input['ContainerMemoryArgs']] = None,
+                 mount_points: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerMountPointArgs']]]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerNetworkInterfaceArgs']]]] = None,
                  operating_system: Optional[pulumi.Input['ContainerOperatingSystemArgs']] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
@@ -44,6 +45,7 @@ class ContainerArgs:
         :param pulumi.Input['ContainerFeaturesArgs'] features: Features
         :param pulumi.Input['ContainerInitializationArgs'] initialization: The initialization configuration
         :param pulumi.Input['ContainerMemoryArgs'] memory: The memory allocation
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerMountPointArgs']]] mount_points: A mount point
         :param pulumi.Input[Sequence[pulumi.Input['ContainerNetworkInterfaceArgs']]] network_interfaces: The network interfaces
         :param pulumi.Input['ContainerOperatingSystemArgs'] operating_system: The operating system configuration
         :param pulumi.Input[str] pool_id: The ID of the pool to assign the container to
@@ -70,6 +72,8 @@ class ContainerArgs:
             pulumi.set(__self__, "initialization", initialization)
         if memory is not None:
             pulumi.set(__self__, "memory", memory)
+        if mount_points is not None:
+            pulumi.set(__self__, "mount_points", mount_points)
         if network_interfaces is not None:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
         if operating_system is not None:
@@ -196,6 +200,18 @@ class ContainerArgs:
         pulumi.set(self, "memory", value)
 
     @property
+    @pulumi.getter(name="mountPoints")
+    def mount_points(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerMountPointArgs']]]]:
+        """
+        A mount point
+        """
+        return pulumi.get(self, "mount_points")
+
+    @mount_points.setter
+    def mount_points(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerMountPointArgs']]]]):
+        pulumi.set(self, "mount_points", value)
+
+    @property
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerNetworkInterfaceArgs']]]]:
         """
@@ -303,6 +319,7 @@ class _ContainerState:
                  features: Optional[pulumi.Input['ContainerFeaturesArgs']] = None,
                  initialization: Optional[pulumi.Input['ContainerInitializationArgs']] = None,
                  memory: Optional[pulumi.Input['ContainerMemoryArgs']] = None,
+                 mount_points: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerMountPointArgs']]]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerNetworkInterfaceArgs']]]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
                  operating_system: Optional[pulumi.Input['ContainerOperatingSystemArgs']] = None,
@@ -322,6 +339,7 @@ class _ContainerState:
         :param pulumi.Input['ContainerFeaturesArgs'] features: Features
         :param pulumi.Input['ContainerInitializationArgs'] initialization: The initialization configuration
         :param pulumi.Input['ContainerMemoryArgs'] memory: The memory allocation
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerMountPointArgs']]] mount_points: A mount point
         :param pulumi.Input[Sequence[pulumi.Input['ContainerNetworkInterfaceArgs']]] network_interfaces: The network interfaces
         :param pulumi.Input[str] node_name: The node name
         :param pulumi.Input['ContainerOperatingSystemArgs'] operating_system: The operating system configuration
@@ -348,6 +366,8 @@ class _ContainerState:
             pulumi.set(__self__, "initialization", initialization)
         if memory is not None:
             pulumi.set(__self__, "memory", memory)
+        if mount_points is not None:
+            pulumi.set(__self__, "mount_points", mount_points)
         if network_interfaces is not None:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
         if node_name is not None:
@@ -462,6 +482,18 @@ class _ContainerState:
     @memory.setter
     def memory(self, value: Optional[pulumi.Input['ContainerMemoryArgs']]):
         pulumi.set(self, "memory", value)
+
+    @property
+    @pulumi.getter(name="mountPoints")
+    def mount_points(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerMountPointArgs']]]]:
+        """
+        A mount point
+        """
+        return pulumi.get(self, "mount_points")
+
+    @mount_points.setter
+    def mount_points(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerMountPointArgs']]]]):
+        pulumi.set(self, "mount_points", value)
 
     @property
     @pulumi.getter(name="networkInterfaces")
@@ -585,6 +617,7 @@ class Container(pulumi.CustomResource):
                  features: Optional[pulumi.Input[pulumi.InputType['ContainerFeaturesArgs']]] = None,
                  initialization: Optional[pulumi.Input[pulumi.InputType['ContainerInitializationArgs']]] = None,
                  memory: Optional[pulumi.Input[pulumi.InputType['ContainerMemoryArgs']]] = None,
+                 mount_points: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerMountPointArgs']]]]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerNetworkInterfaceArgs']]]]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
                  operating_system: Optional[pulumi.Input[pulumi.InputType['ContainerOperatingSystemArgs']]] = None,
@@ -607,6 +640,7 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ContainerFeaturesArgs']] features: Features
         :param pulumi.Input[pulumi.InputType['ContainerInitializationArgs']] initialization: The initialization configuration
         :param pulumi.Input[pulumi.InputType['ContainerMemoryArgs']] memory: The memory allocation
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerMountPointArgs']]]] mount_points: A mount point
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerNetworkInterfaceArgs']]]] network_interfaces: The network interfaces
         :param pulumi.Input[str] node_name: The node name
         :param pulumi.Input[pulumi.InputType['ContainerOperatingSystemArgs']] operating_system: The operating system configuration
@@ -648,6 +682,7 @@ class Container(pulumi.CustomResource):
                  features: Optional[pulumi.Input[pulumi.InputType['ContainerFeaturesArgs']]] = None,
                  initialization: Optional[pulumi.Input[pulumi.InputType['ContainerInitializationArgs']]] = None,
                  memory: Optional[pulumi.Input[pulumi.InputType['ContainerMemoryArgs']]] = None,
+                 mount_points: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerMountPointArgs']]]]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerNetworkInterfaceArgs']]]]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
                  operating_system: Optional[pulumi.Input[pulumi.InputType['ContainerOperatingSystemArgs']]] = None,
@@ -674,6 +709,7 @@ class Container(pulumi.CustomResource):
             __props__.__dict__["features"] = features
             __props__.__dict__["initialization"] = initialization
             __props__.__dict__["memory"] = memory
+            __props__.__dict__["mount_points"] = mount_points
             __props__.__dict__["network_interfaces"] = network_interfaces
             if node_name is None and not opts.urn:
                 raise TypeError("Missing required property 'node_name'")
@@ -703,6 +739,7 @@ class Container(pulumi.CustomResource):
             features: Optional[pulumi.Input[pulumi.InputType['ContainerFeaturesArgs']]] = None,
             initialization: Optional[pulumi.Input[pulumi.InputType['ContainerInitializationArgs']]] = None,
             memory: Optional[pulumi.Input[pulumi.InputType['ContainerMemoryArgs']]] = None,
+            mount_points: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerMountPointArgs']]]]] = None,
             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerNetworkInterfaceArgs']]]]] = None,
             node_name: Optional[pulumi.Input[str]] = None,
             operating_system: Optional[pulumi.Input[pulumi.InputType['ContainerOperatingSystemArgs']]] = None,
@@ -727,6 +764,7 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ContainerFeaturesArgs']] features: Features
         :param pulumi.Input[pulumi.InputType['ContainerInitializationArgs']] initialization: The initialization configuration
         :param pulumi.Input[pulumi.InputType['ContainerMemoryArgs']] memory: The memory allocation
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerMountPointArgs']]]] mount_points: A mount point
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerNetworkInterfaceArgs']]]] network_interfaces: The network interfaces
         :param pulumi.Input[str] node_name: The node name
         :param pulumi.Input[pulumi.InputType['ContainerOperatingSystemArgs']] operating_system: The operating system configuration
@@ -749,6 +787,7 @@ class Container(pulumi.CustomResource):
         __props__.__dict__["features"] = features
         __props__.__dict__["initialization"] = initialization
         __props__.__dict__["memory"] = memory
+        __props__.__dict__["mount_points"] = mount_points
         __props__.__dict__["network_interfaces"] = network_interfaces
         __props__.__dict__["node_name"] = node_name
         __props__.__dict__["operating_system"] = operating_system
@@ -823,6 +862,14 @@ class Container(pulumi.CustomResource):
         The memory allocation
         """
         return pulumi.get(self, "memory")
+
+    @property
+    @pulumi.getter(name="mountPoints")
+    def mount_points(self) -> pulumi.Output[Optional[Sequence['outputs.ContainerMountPoint']]]:
+        """
+        A mount point
+        """
+        return pulumi.get(self, "mount_points")
 
     @property
     @pulumi.getter(name="networkInterfaces")

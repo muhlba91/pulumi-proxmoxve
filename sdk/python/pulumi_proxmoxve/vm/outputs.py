@@ -30,6 +30,7 @@ __all__ = [
     'VirtualMachineNetworkDevice',
     'VirtualMachineOperatingSystem',
     'VirtualMachineSerialDevice',
+    'VirtualMachineStartup',
     'VirtualMachineVga',
     'GetVirtualMachinesVmResult',
 ]
@@ -121,11 +122,14 @@ class VirtualMachineCdrom(dict):
 
     def __init__(__self__, *,
                  enabled: Optional[bool] = None,
-                 file_id: Optional[str] = None):
+                 file_id: Optional[str] = None,
+                 interface: Optional[str] = None):
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if file_id is not None:
             pulumi.set(__self__, "file_id", file_id)
+        if interface is not None:
+            pulumi.set(__self__, "interface", interface)
 
     @property
     @pulumi.getter
@@ -136,6 +140,11 @@ class VirtualMachineCdrom(dict):
     @pulumi.getter(name="fileId")
     def file_id(self) -> Optional[str]:
         return pulumi.get(self, "file_id")
+
+    @property
+    @pulumi.getter
+    def interface(self) -> Optional[str]:
+        return pulumi.get(self, "interface")
 
 
 @pulumi.output_type
@@ -297,6 +306,7 @@ class VirtualMachineDisk(dict):
 
     def __init__(__self__, *,
                  interface: str,
+                 cache: Optional[str] = None,
                  datastore_id: Optional[str] = None,
                  discard: Optional[str] = None,
                  file_format: Optional[str] = None,
@@ -306,6 +316,8 @@ class VirtualMachineDisk(dict):
                  speed: Optional['outputs.VirtualMachineDiskSpeed'] = None,
                  ssd: Optional[bool] = None):
         pulumi.set(__self__, "interface", interface)
+        if cache is not None:
+            pulumi.set(__self__, "cache", cache)
         if datastore_id is not None:
             pulumi.set(__self__, "datastore_id", datastore_id)
         if discard is not None:
@@ -327,6 +339,11 @@ class VirtualMachineDisk(dict):
     @pulumi.getter
     def interface(self) -> str:
         return pulumi.get(self, "interface")
+
+    @property
+    @pulumi.getter
+    def cache(self) -> Optional[str]:
+        return pulumi.get(self, "cache")
 
     @property
     @pulumi.getter(name="datastoreId")
@@ -921,6 +938,54 @@ class VirtualMachineSerialDevice(dict):
     @pulumi.getter
     def device(self) -> Optional[str]:
         return pulumi.get(self, "device")
+
+
+@pulumi.output_type
+class VirtualMachineStartup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "downDelay":
+            suggest = "down_delay"
+        elif key == "upDelay":
+            suggest = "up_delay"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineStartup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VirtualMachineStartup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VirtualMachineStartup.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 down_delay: Optional[int] = None,
+                 order: Optional[int] = None,
+                 up_delay: Optional[int] = None):
+        if down_delay is not None:
+            pulumi.set(__self__, "down_delay", down_delay)
+        if order is not None:
+            pulumi.set(__self__, "order", order)
+        if up_delay is not None:
+            pulumi.set(__self__, "up_delay", up_delay)
+
+    @property
+    @pulumi.getter(name="downDelay")
+    def down_delay(self) -> Optional[int]:
+        return pulumi.get(self, "down_delay")
+
+    @property
+    @pulumi.getter
+    def order(self) -> Optional[int]:
+        return pulumi.get(self, "order")
+
+    @property
+    @pulumi.getter(name="upDelay")
+    def up_delay(self) -> Optional[int]:
+        return pulumi.get(self, "up_delay")
 
 
 @pulumi.output_type

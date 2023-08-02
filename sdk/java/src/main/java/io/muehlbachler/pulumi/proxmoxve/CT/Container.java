@@ -16,6 +16,7 @@ import io.muehlbachler.pulumi.proxmoxve.CT.outputs.ContainerDisk;
 import io.muehlbachler.pulumi.proxmoxve.CT.outputs.ContainerFeatures;
 import io.muehlbachler.pulumi.proxmoxve.CT.outputs.ContainerInitialization;
 import io.muehlbachler.pulumi.proxmoxve.CT.outputs.ContainerMemory;
+import io.muehlbachler.pulumi.proxmoxve.CT.outputs.ContainerMountPoint;
 import io.muehlbachler.pulumi.proxmoxve.CT.outputs.ContainerNetworkInterface;
 import io.muehlbachler.pulumi.proxmoxve.CT.outputs.ContainerOperatingSystem;
 import io.muehlbachler.pulumi.proxmoxve.Utilities;
@@ -139,6 +140,20 @@ public class Container extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ContainerMemory>> memory() {
         return Codegen.optional(this.memory);
+    }
+    /**
+     * A mount point
+     * 
+     */
+    @Export(name="mountPoints", refs={List.class,ContainerMountPoint.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ContainerMountPoint>> mountPoints;
+
+    /**
+     * @return A mount point
+     * 
+     */
+    public Output<Optional<List<ContainerMountPoint>>> mountPoints() {
+        return Codegen.optional(this.mountPoints);
     }
     /**
      * The network interfaces
