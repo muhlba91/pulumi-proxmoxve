@@ -777,6 +777,8 @@ github.com/bpg/terraform-provider-proxmox v0.28.0 h1:i3mmSpwVwmC+fLeyVnEsehHkctO
 github.com/bpg/terraform-provider-proxmox v0.28.0/go.mod h1:hu7aDNXGJcfWGeoe6iUNBEBgrmuPzLj0T4sUWlNYKVw=
 github.com/bpg/terraform-provider-proxmox v0.29.0 h1:FGnSlJWN2snIE+hmB8LQVXCY85NkD+WS4slCL46qsvs=
 github.com/bpg/terraform-provider-proxmox v0.29.0/go.mod h1:y9CSnksNAOb9L+ILx9BMqNtQxiDUQI1mhv/aVYMwidM=
+github.com/bpg/terraform-provider-proxmox v0.30.0 h1:iQ0rvmpWzIM9swqOtPwlEtmv7F1aRBEi27dYUySvcxo=
+github.com/bpg/terraform-provider-proxmox v0.30.0/go.mod h1:H426FtBGk51yqomILw3F8TDdkOYA4mphYq/eP62jbVM=
 github.com/bwesterb/go-ristretto v1.2.0/go.mod h1:fUIoIZaG73pV5biE2Blr2xEzDoMj7NFEuV9ekS419A0=
 github.com/bwesterb/go-ristretto v1.2.3/go.mod h1:fUIoIZaG73pV5biE2Blr2xEzDoMj7NFEuV9ekS419A0=
 github.com/cenkalti/backoff/v3 v3.2.2 h1:cfUAAO3yvKMYKPrvhDuHSwQnhZNk/RMHKdZqKTxfm6M=
@@ -1117,6 +1119,10 @@ github.com/hashicorp/terraform-plugin-framework v1.3.3 h1:D18BlA8gdV4+W8WKhUqxud
 github.com/hashicorp/terraform-plugin-framework v1.3.3/go.mod h1:2gGDpWiTI0irr9NSTLFAKlTi6KwGti3AoU19rFqU30o=
 github.com/hashicorp/terraform-plugin-framework v1.3.4 h1:dOTLsALgmQu+PawAvhfGQ04H0MeIz3EZmBw7OFvj7qs=
 github.com/hashicorp/terraform-plugin-framework v1.3.4/go.mod h1:2gGDpWiTI0irr9NSTLFAKlTi6KwGti3AoU19rFqU30o=
+github.com/hashicorp/terraform-plugin-framework v1.3.5 h1:FJ6s3CVWVAxlhiF/jhy6hzs4AnPHiflsp9KgzTGl1wo=
+github.com/hashicorp/terraform-plugin-framework v1.3.5/go.mod h1:2gGDpWiTI0irr9NSTLFAKlTi6KwGti3AoU19rFqU30o=
+github.com/hashicorp/terraform-plugin-framework-validators v0.11.0 h1:DKb1bX7/EPZUTW6F5zdwJzS/EZ/ycVD6JAW5RYOj4f8=
+github.com/hashicorp/terraform-plugin-framework-validators v0.11.0/go.mod h1:dzxOiHh7O9CAwc6p8N4mR1H++LtRkl+u+21YNiBVNno=
 github.com/hashicorp/terraform-plugin-go v0.16.0/go.mod h1:4sn8bFuDbt+2+Yztt35IbOrvZc0zyEi87gJzsTgCES8=
 github.com/hashicorp/terraform-plugin-go v0.18.0 h1:IwTkOS9cOW1ehLd/rG0y+u/TGLK9y6fGoBjXVUquzpE=
 github.com/hashicorp/terraform-plugin-go v0.18.0/go.mod h1:l7VK+2u5Kf2y+A+742GX0ouLut3gttudmvMgN0PA74Y=
@@ -1314,6 +1320,8 @@ github.com/pkg/sftp v1.10.1/go.mod h1:lYOWFsE0bwd1+KfKJaKeuokY15vzFx25BLbzYYoAxZ
 github.com/pkg/sftp v1.13.1/go.mod h1:3HaPG6Dq1ILlpPZRO0HVMrsydcdLt6HRDccSgb87qRg=
 github.com/pkg/sftp v1.13.5 h1:a3RLUqkyjYRtBTZJZ1VRrKbN3zhuPLlUc3sphVz81go=
 github.com/pkg/sftp v1.13.5/go.mod h1:wHDZ0IZX6JcBYRK1TH9bcVq8G7TLpVHYIGJRFnmPfxg=
+github.com/pkg/sftp v1.13.6 h1:JFZT4XbOU7l77xGSpOdW+pwIMqP044IyjXX6FGyEKFo=
+github.com/pkg/sftp v1.13.6/go.mod h1:tz1ryNURKu77RL+GuCzmoJYxQczL3wLNNpPWagdg4Qk=
 github.com/pkg/term v1.1.0 h1:xIAAdCMh3QIAy+5FrE8Ad8XoDhEU4ufwbaSozViP9kk=
 github.com/pkg/term v1.1.0/go.mod h1:E25nymQcrSllhX42Ok8MRm1+hyBdHY0dCeiKZ9jpNGw=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
