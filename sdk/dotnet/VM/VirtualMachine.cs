@@ -133,6 +133,12 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<Outputs.VirtualMachineMemory?> Memory { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to migrate the VM on node change instead of re-creating it
+        /// </summary>
+        [Output("migrate")]
+        public Output<bool?> Migrate { get; private set; } = null!;
+
+        /// <summary>
         /// The name
         /// </summary>
         [Output("name")]
@@ -193,6 +199,12 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<ImmutableArray<Outputs.VirtualMachineSerialDevice>> SerialDevices { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies SMBIOS (type1) settings for the VM
+        /// </summary>
+        [Output("smbios")]
+        public Output<Outputs.VirtualMachineSmbios?> Smbios { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to start the virtual machine
         /// </summary>
         [Output("started")]
@@ -227,6 +239,12 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Output("timeoutClone")]
         public Output<int?> TimeoutClone { get; private set; } = null!;
+
+        /// <summary>
+        /// Migrate VM timeout
+        /// </summary>
+        [Output("timeoutMigrate")]
+        public Output<int?> TimeoutMigrate { get; private set; } = null!;
 
         /// <summary>
         /// MoveDisk timeout
@@ -438,6 +456,12 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<Inputs.VirtualMachineMemoryArgs>? Memory { get; set; }
 
         /// <summary>
+        /// Whether to migrate the VM on node change instead of re-creating it
+        /// </summary>
+        [Input("migrate")]
+        public Input<bool>? Migrate { get; set; }
+
+        /// <summary>
         /// The name
         /// </summary>
         [Input("name")]
@@ -504,6 +528,12 @@ namespace Pulumi.ProxmoxVE.VM
         }
 
         /// <summary>
+        /// Specifies SMBIOS (type1) settings for the VM
+        /// </summary>
+        [Input("smbios")]
+        public Input<Inputs.VirtualMachineSmbiosArgs>? Smbios { get; set; }
+
+        /// <summary>
         /// Whether to start the virtual machine
         /// </summary>
         [Input("started")]
@@ -544,6 +574,12 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Input("timeoutClone")]
         public Input<int>? TimeoutClone { get; set; }
+
+        /// <summary>
+        /// Migrate VM timeout
+        /// </summary>
+        [Input("timeoutMigrate")]
+        public Input<int>? TimeoutMigrate { get; set; }
 
         /// <summary>
         /// MoveDisk timeout
@@ -752,6 +788,12 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<Inputs.VirtualMachineMemoryGetArgs>? Memory { get; set; }
 
         /// <summary>
+        /// Whether to migrate the VM on node change instead of re-creating it
+        /// </summary>
+        [Input("migrate")]
+        public Input<bool>? Migrate { get; set; }
+
+        /// <summary>
         /// The name
         /// </summary>
         [Input("name")]
@@ -830,6 +872,12 @@ namespace Pulumi.ProxmoxVE.VM
         }
 
         /// <summary>
+        /// Specifies SMBIOS (type1) settings for the VM
+        /// </summary>
+        [Input("smbios")]
+        public Input<Inputs.VirtualMachineSmbiosGetArgs>? Smbios { get; set; }
+
+        /// <summary>
         /// Whether to start the virtual machine
         /// </summary>
         [Input("started")]
@@ -870,6 +918,12 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Input("timeoutClone")]
         public Input<int>? TimeoutClone { get; set; }
+
+        /// <summary>
+        /// Migrate VM timeout
+        /// </summary>
+        [Input("timeoutMigrate")]
+        public Input<int>? TimeoutMigrate { get; set; }
 
         /// <summary>
         /// MoveDisk timeout

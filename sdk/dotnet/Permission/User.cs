@@ -70,7 +70,7 @@ namespace Pulumi.ProxmoxVE.Permission
         /// The user's password
         /// </summary>
         [Output("password")]
-        public Output<string> Password { get; private set; } = null!;
+        public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
         /// The user id
@@ -194,8 +194,8 @@ namespace Pulumi.ProxmoxVE.Permission
         /// <summary>
         /// The user's password
         /// </summary>
-        [Input("password", required: true)]
-        public Input<string> Password { get; set; } = null!;
+        [Input("password")]
+        public Input<string>? Password { get; set; }
 
         /// <summary>
         /// The user id

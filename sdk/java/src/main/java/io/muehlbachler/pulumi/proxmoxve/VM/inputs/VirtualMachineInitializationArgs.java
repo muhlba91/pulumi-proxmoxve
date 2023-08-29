@@ -33,6 +33,13 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
         return Optional.ofNullable(this.dns);
     }
 
+    @Import(name="interface")
+    private @Nullable Output<String> interface_;
+
+    public Optional<Output<String>> interface_() {
+        return Optional.ofNullable(this.interface_);
+    }
+
     @Import(name="ipConfigs")
     private @Nullable Output<List<VirtualMachineInitializationIpConfigArgs>> ipConfigs;
 
@@ -87,6 +94,7 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
     private VirtualMachineInitializationArgs(VirtualMachineInitializationArgs $) {
         this.datastoreId = $.datastoreId;
         this.dns = $.dns;
+        this.interface_ = $.interface_;
         this.ipConfigs = $.ipConfigs;
         this.metaDataFileId = $.metaDataFileId;
         this.networkDataFileId = $.networkDataFileId;
@@ -130,6 +138,15 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
 
         public Builder dns(VirtualMachineInitializationDnsArgs dns) {
             return dns(Output.of(dns));
+        }
+
+        public Builder interface_(@Nullable Output<String> interface_) {
+            $.interface_ = interface_;
+            return this;
+        }
+
+        public Builder interface_(String interface_) {
+            return interface_(Output.of(interface_));
         }
 
         public Builder ipConfigs(@Nullable Output<List<VirtualMachineInitializationIpConfigArgs>> ipConfigs) {

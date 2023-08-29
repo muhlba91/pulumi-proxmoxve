@@ -150,14 +150,14 @@ public class User extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
-    private Output<String> password;
+    private Output</* @Nullable */ String> password;
 
     /**
      * @return The user&#39;s password
      * 
      */
-    public Output<String> password() {
-        return this.password;
+    public Output<Optional<String>> password() {
+        return Codegen.optional(this.password);
     }
     /**
      * The user id

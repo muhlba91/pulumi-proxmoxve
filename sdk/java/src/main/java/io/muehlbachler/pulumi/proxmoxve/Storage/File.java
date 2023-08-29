@@ -145,6 +145,20 @@ public class File extends com.pulumi.resources.CustomResource {
     public Output<Optional<FileSourceRaw>> sourceRaw() {
         return Codegen.optional(this.sourceRaw);
     }
+    /**
+     * Timeout for uploading ISO/VSTMPL files in seconds
+     * 
+     */
+    @Export(name="timeoutUpload", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> timeoutUpload;
+
+    /**
+     * @return Timeout for uploading ISO/VSTMPL files in seconds
+     * 
+     */
+    public Output<Optional<Integer>> timeoutUpload() {
+        return Codegen.optional(this.timeoutUpload);
+    }
 
     /**
      *

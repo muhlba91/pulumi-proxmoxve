@@ -23,11 +23,18 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
         return this.device;
     }
 
-    @Import(name="id", required=true)
-    private Output<String> id;
+    @Import(name="id")
+    private @Nullable Output<String> id;
 
-    public Output<String> id() {
-        return this.id;
+    public Optional<Output<String>> id() {
+        return Optional.ofNullable(this.id);
+    }
+
+    @Import(name="mapping")
+    private @Nullable Output<String> mapping;
+
+    public Optional<Output<String>> mapping() {
+        return Optional.ofNullable(this.mapping);
     }
 
     @Import(name="mdev")
@@ -70,6 +77,7 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
     private VirtualMachineHostpciArgs(VirtualMachineHostpciArgs $) {
         this.device = $.device;
         this.id = $.id;
+        this.mapping = $.mapping;
         this.mdev = $.mdev;
         this.pcie = $.pcie;
         this.romFile = $.romFile;
@@ -104,13 +112,22 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
             return device(Output.of(device));
         }
 
-        public Builder id(Output<String> id) {
+        public Builder id(@Nullable Output<String> id) {
             $.id = id;
             return this;
         }
 
         public Builder id(String id) {
             return id(Output.of(id));
+        }
+
+        public Builder mapping(@Nullable Output<String> mapping) {
+            $.mapping = mapping;
+            return this;
+        }
+
+        public Builder mapping(String mapping) {
+            return mapping(Output.of(mapping));
         }
 
         public Builder mdev(@Nullable Output<String> mdev) {
@@ -160,7 +177,6 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
 
         public VirtualMachineHostpciArgs build() {
             $.device = Objects.requireNonNull($.device, "expected parameter 'device' to be non-null");
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
             return $;
         }
     }

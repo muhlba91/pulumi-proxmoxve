@@ -15,8 +15,11 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         [Input("device", required: true)]
         public Input<string> Device { get; set; } = null!;
 
-        [Input("id", required: true)]
-        public Input<string> Id { get; set; } = null!;
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        [Input("mapping")]
+        public Input<string>? Mapping { get; set; }
 
         [Input("mdev")]
         public Input<string>? Mdev { get; set; }

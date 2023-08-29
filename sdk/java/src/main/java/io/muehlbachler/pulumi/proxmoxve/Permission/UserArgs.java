@@ -157,15 +157,15 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
      * The user&#39;s password
      * 
      */
-    @Import(name="password", required=true)
-    private Output<String> password;
+    @Import(name="password")
+    private @Nullable Output<String> password;
 
     /**
      * @return The user&#39;s password
      * 
      */
-    public Output<String> password() {
-        return this.password;
+    public Optional<Output<String>> password() {
+        return Optional.ofNullable(this.password);
     }
 
     /**
@@ -432,7 +432,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder password(Output<String> password) {
+        public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
@@ -469,7 +469,6 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public UserArgs build() {
-            $.password = Objects.requireNonNull($.password, "expected parameter 'password' to be non-null");
             $.userId = Objects.requireNonNull($.userId, "expected parameter 'userId' to be non-null");
             return $;
         }

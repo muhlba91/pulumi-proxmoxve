@@ -16,7 +16,6 @@ __all__ = ['UserArgs', 'User']
 @pulumi.input_type
 class UserArgs:
     def __init__(__self__, *,
-                 password: pulumi.Input[str],
                  user_id: pulumi.Input[str],
                  acls: Optional[pulumi.Input[Sequence[pulumi.Input['UserAclArgs']]]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
@@ -26,10 +25,10 @@ class UserArgs:
                  first_name: Optional[pulumi.Input[str]] = None,
                  groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  keys: Optional[pulumi.Input[str]] = None,
-                 last_name: Optional[pulumi.Input[str]] = None):
+                 last_name: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a User resource.
-        :param pulumi.Input[str] password: The user's password
         :param pulumi.Input[str] user_id: The user id
         :param pulumi.Input[Sequence[pulumi.Input['UserAclArgs']]] acls: The access control list
         :param pulumi.Input[str] comment: The user comment
@@ -40,8 +39,8 @@ class UserArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] groups: The user's groups
         :param pulumi.Input[str] keys: The user's keys
         :param pulumi.Input[str] last_name: The user's last name
+        :param pulumi.Input[str] password: The user's password
         """
-        pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "user_id", user_id)
         if acls is not None:
             pulumi.set(__self__, "acls", acls)
@@ -61,18 +60,8 @@ class UserArgs:
             pulumi.set(__self__, "keys", keys)
         if last_name is not None:
             pulumi.set(__self__, "last_name", last_name)
-
-    @property
-    @pulumi.getter
-    def password(self) -> pulumi.Input[str]:
-        """
-        The user's password
-        """
-        return pulumi.get(self, "password")
-
-    @password.setter
-    def password(self, value: pulumi.Input[str]):
-        pulumi.set(self, "password", value)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
 
     @property
     @pulumi.getter(name="userId")
@@ -193,6 +182,18 @@ class UserArgs:
     @last_name.setter
     def last_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "last_name", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user's password
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
 
 
 @pulumi.input_type
@@ -464,8 +465,6 @@ class User(pulumi.CustomResource):
             __props__.__dict__["groups"] = groups
             __props__.__dict__["keys"] = keys
             __props__.__dict__["last_name"] = last_name
-            if password is None and not opts.urn:
-                raise TypeError("Missing required property 'password'")
             __props__.__dict__["password"] = password
             if user_id is None and not opts.urn:
                 raise TypeError("Missing required property 'user_id'")
@@ -601,7 +600,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def password(self) -> pulumi.Output[str]:
+    def password(self) -> pulumi.Output[Optional[str]]:
         """
         The user's password
         """

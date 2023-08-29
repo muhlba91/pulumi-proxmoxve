@@ -17,6 +17,7 @@ import javax.annotation.Nullable;
 public final class VirtualMachineInitialization {
     private @Nullable String datastoreId;
     private @Nullable VirtualMachineInitializationDns dns;
+    private @Nullable String interface_;
     private @Nullable List<VirtualMachineInitializationIpConfig> ipConfigs;
     private @Nullable String metaDataFileId;
     private @Nullable String networkDataFileId;
@@ -31,6 +32,9 @@ public final class VirtualMachineInitialization {
     }
     public Optional<VirtualMachineInitializationDns> dns() {
         return Optional.ofNullable(this.dns);
+    }
+    public Optional<String> interface_() {
+        return Optional.ofNullable(this.interface_);
     }
     public List<VirtualMachineInitializationIpConfig> ipConfigs() {
         return this.ipConfigs == null ? List.of() : this.ipConfigs;
@@ -65,6 +69,7 @@ public final class VirtualMachineInitialization {
     public static final class Builder {
         private @Nullable String datastoreId;
         private @Nullable VirtualMachineInitializationDns dns;
+        private @Nullable String interface_;
         private @Nullable List<VirtualMachineInitializationIpConfig> ipConfigs;
         private @Nullable String metaDataFileId;
         private @Nullable String networkDataFileId;
@@ -77,6 +82,7 @@ public final class VirtualMachineInitialization {
     	      Objects.requireNonNull(defaults);
     	      this.datastoreId = defaults.datastoreId;
     	      this.dns = defaults.dns;
+    	      this.interface_ = defaults.interface_;
     	      this.ipConfigs = defaults.ipConfigs;
     	      this.metaDataFileId = defaults.metaDataFileId;
     	      this.networkDataFileId = defaults.networkDataFileId;
@@ -94,6 +100,11 @@ public final class VirtualMachineInitialization {
         @CustomType.Setter
         public Builder dns(@Nullable VirtualMachineInitializationDns dns) {
             this.dns = dns;
+            return this;
+        }
+        @CustomType.Setter("interface")
+        public Builder interface_(@Nullable String interface_) {
+            this.interface_ = interface_;
             return this;
         }
         @CustomType.Setter
@@ -138,6 +149,7 @@ public final class VirtualMachineInitialization {
             final var o = new VirtualMachineInitialization();
             o.datastoreId = datastoreId;
             o.dns = dns;
+            o.interface_ = interface_;
             o.ipConfigs = ipConfigs;
             o.metaDataFileId = metaDataFileId;
             o.networkDataFileId = networkDataFileId;

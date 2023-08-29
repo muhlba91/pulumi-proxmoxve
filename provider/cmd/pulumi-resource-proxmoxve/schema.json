@@ -894,6 +894,9 @@
                 "id": {
                     "type": "string"
                 },
+                "mapping": {
+                    "type": "string"
+                },
                 "mdev": {
                     "type": "string"
                 },
@@ -912,18 +915,19 @@
             },
             "type": "object",
             "required": [
-                "device",
-                "id"
+                "device"
             ]
         },
         "proxmoxve:VM/VirtualMachineInitialization:VirtualMachineInitialization": {
             "properties": {
                 "datastoreId": {
-                    "type": "string",
-                    "willReplaceOnChanges": true
+                    "type": "string"
                 },
                 "dns": {
                     "$ref": "#/types/proxmoxve:VM/VirtualMachineInitializationDns:VirtualMachineInitializationDns"
+                },
+                "interface": {
+                    "type": "string"
                 },
                 "ipConfigs": {
                     "type": "array",
@@ -1088,6 +1092,39 @@
                 }
             },
             "type": "object"
+        },
+        "proxmoxve:VM/VirtualMachineSmbios:VirtualMachineSmbios": {
+            "properties": {
+                "family": {
+                    "type": "string"
+                },
+                "manufacturer": {
+                    "type": "string"
+                },
+                "product": {
+                    "type": "string"
+                },
+                "serial": {
+                    "type": "string"
+                },
+                "sku": {
+                    "type": "string"
+                },
+                "uuid": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "uuid"
+                    ]
+                }
+            }
         },
         "proxmoxve:VM/VirtualMachineStartup:VirtualMachineStartup": {
             "properties": {
@@ -2487,7 +2524,6 @@
                 }
             },
             "required": [
-                "password",
                 "userId"
             ],
             "inputProperties": {
@@ -2544,7 +2580,6 @@
                 }
             },
             "requiredInputs": [
-                "password",
                 "userId"
             ],
             "stateInputs": {
@@ -2642,6 +2677,10 @@
                 "sourceRaw": {
                     "$ref": "#/types/proxmoxve:Storage/FileSourceRaw:FileSourceRaw",
                     "description": "The raw source\n"
+                },
+                "timeoutUpload": {
+                    "type": "integer",
+                    "description": "Timeout for uploading ISO/VSTMPL files in seconds\n"
                 }
             },
             "required": [
@@ -2676,6 +2715,11 @@
                 "sourceRaw": {
                     "$ref": "#/types/proxmoxve:Storage/FileSourceRaw:FileSourceRaw",
                     "description": "The raw source\n",
+                    "willReplaceOnChanges": true
+                },
+                "timeoutUpload": {
+                    "type": "integer",
+                    "description": "Timeout for uploading ISO/VSTMPL files in seconds\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -2728,6 +2772,11 @@
                     "sourceRaw": {
                         "$ref": "#/types/proxmoxve:Storage/FileSourceRaw:FileSourceRaw",
                         "description": "The raw source\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "timeoutUpload": {
+                        "type": "integer",
+                        "description": "Timeout for uploading ISO/VSTMPL files in seconds\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -2840,6 +2889,10 @@
                     "$ref": "#/types/proxmoxve:VM/VirtualMachineMemory:VirtualMachineMemory",
                     "description": "The memory allocation\n"
                 },
+                "migrate": {
+                    "type": "boolean",
+                    "description": "Whether to migrate the VM on node change instead of re-creating it\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name\n"
@@ -2889,6 +2942,10 @@
                     },
                     "description": "The serial devices\n"
                 },
+                "smbios": {
+                    "$ref": "#/types/proxmoxve:VM/VirtualMachineSmbios:VirtualMachineSmbios",
+                    "description": "Specifies SMBIOS (type1) settings for the VM\n"
+                },
                 "started": {
                     "type": "boolean",
                     "description": "Whether to start the virtual machine\n"
@@ -2915,6 +2972,10 @@
                 "timeoutClone": {
                     "type": "integer",
                     "description": "Clone VM timeout\n"
+                },
+                "timeoutMigrate": {
+                    "type": "integer",
+                    "description": "Migrate VM timeout\n"
                 },
                 "timeoutMoveDisk": {
                     "type": "integer",
@@ -3012,8 +3073,7 @@
                     "items": {
                         "$ref": "#/types/proxmoxve:VM/VirtualMachineHostpci:VirtualMachineHostpci"
                     },
-                    "description": "The Host PCI devices mapped to the VM\n",
-                    "willReplaceOnChanges": true
+                    "description": "The Host PCI devices mapped to the VM\n"
                 },
                 "initialization": {
                     "$ref": "#/types/proxmoxve:VM/VirtualMachineInitialization:VirtualMachineInitialization",
@@ -3035,6 +3095,10 @@
                     "$ref": "#/types/proxmoxve:VM/VirtualMachineMemory:VirtualMachineMemory",
                     "description": "The memory allocation\n"
                 },
+                "migrate": {
+                    "type": "boolean",
+                    "description": "Whether to migrate the VM on node change instead of re-creating it\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name\n"
@@ -3048,8 +3112,7 @@
                 },
                 "nodeName": {
                     "type": "string",
-                    "description": "The node name\n",
-                    "willReplaceOnChanges": true
+                    "description": "The node name\n"
                 },
                 "onBoot": {
                     "type": "boolean",
@@ -3061,8 +3124,7 @@
                 },
                 "poolId": {
                     "type": "string",
-                    "description": "The ID of the pool to assign the virtual machine to\n",
-                    "willReplaceOnChanges": true
+                    "description": "The ID of the pool to assign the virtual machine to\n"
                 },
                 "reboot": {
                     "type": "boolean",
@@ -3078,6 +3140,10 @@
                         "$ref": "#/types/proxmoxve:VM/VirtualMachineSerialDevice:VirtualMachineSerialDevice"
                     },
                     "description": "The serial devices\n"
+                },
+                "smbios": {
+                    "$ref": "#/types/proxmoxve:VM/VirtualMachineSmbios:VirtualMachineSmbios",
+                    "description": "Specifies SMBIOS (type1) settings for the VM\n"
                 },
                 "started": {
                     "type": "boolean",
@@ -3106,6 +3172,10 @@
                 "timeoutClone": {
                     "type": "integer",
                     "description": "Clone VM timeout\n"
+                },
+                "timeoutMigrate": {
+                    "type": "integer",
+                    "description": "Migrate VM timeout\n"
                 },
                 "timeoutMoveDisk": {
                     "type": "integer",
@@ -3199,8 +3269,7 @@
                         "items": {
                             "$ref": "#/types/proxmoxve:VM/VirtualMachineHostpci:VirtualMachineHostpci"
                         },
-                        "description": "The Host PCI devices mapped to the VM\n",
-                        "willReplaceOnChanges": true
+                        "description": "The Host PCI devices mapped to the VM\n"
                     },
                     "initialization": {
                         "$ref": "#/types/proxmoxve:VM/VirtualMachineInitialization:VirtualMachineInitialization",
@@ -3249,6 +3318,10 @@
                         "$ref": "#/types/proxmoxve:VM/VirtualMachineMemory:VirtualMachineMemory",
                         "description": "The memory allocation\n"
                     },
+                    "migrate": {
+                        "type": "boolean",
+                        "description": "Whether to migrate the VM on node change instead of re-creating it\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "The name\n"
@@ -3269,8 +3342,7 @@
                     },
                     "nodeName": {
                         "type": "string",
-                        "description": "The node name\n",
-                        "willReplaceOnChanges": true
+                        "description": "The node name\n"
                     },
                     "onBoot": {
                         "type": "boolean",
@@ -3282,8 +3354,7 @@
                     },
                     "poolId": {
                         "type": "string",
-                        "description": "The ID of the pool to assign the virtual machine to\n",
-                        "willReplaceOnChanges": true
+                        "description": "The ID of the pool to assign the virtual machine to\n"
                     },
                     "reboot": {
                         "type": "boolean",
@@ -3299,6 +3370,10 @@
                             "$ref": "#/types/proxmoxve:VM/VirtualMachineSerialDevice:VirtualMachineSerialDevice"
                         },
                         "description": "The serial devices\n"
+                    },
+                    "smbios": {
+                        "$ref": "#/types/proxmoxve:VM/VirtualMachineSmbios:VirtualMachineSmbios",
+                        "description": "Specifies SMBIOS (type1) settings for the VM\n"
                     },
                     "started": {
                         "type": "boolean",
@@ -3327,6 +3402,10 @@
                     "timeoutClone": {
                         "type": "integer",
                         "description": "Clone VM timeout\n"
+                    },
+                    "timeoutMigrate": {
+                        "type": "integer",
+                        "description": "Migrate VM timeout\n"
                     },
                     "timeoutMoveDisk": {
                         "type": "integer",

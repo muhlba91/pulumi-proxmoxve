@@ -34,6 +34,7 @@ class VirtualMachineArgs:
                  kvm_arguments: Optional[pulumi.Input[str]] = None,
                  machine: Optional[pulumi.Input[str]] = None,
                  memory: Optional[pulumi.Input['VirtualMachineMemoryArgs']] = None,
+                 migrate: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_devices: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkDeviceArgs']]]] = None,
                  on_boot: Optional[pulumi.Input[bool]] = None,
@@ -42,12 +43,14 @@ class VirtualMachineArgs:
                  reboot: Optional[pulumi.Input[bool]] = None,
                  scsi_hardware: Optional[pulumi.Input[str]] = None,
                  serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]]] = None,
+                 smbios: Optional[pulumi.Input['VirtualMachineSmbiosArgs']] = None,
                  started: Optional[pulumi.Input[bool]] = None,
                  startup: Optional[pulumi.Input['VirtualMachineStartupArgs']] = None,
                  tablet_device: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
                  timeout_clone: Optional[pulumi.Input[int]] = None,
+                 timeout_migrate: Optional[pulumi.Input[int]] = None,
                  timeout_move_disk: Optional[pulumi.Input[int]] = None,
                  timeout_reboot: Optional[pulumi.Input[int]] = None,
                  timeout_shutdown_vm: Optional[pulumi.Input[int]] = None,
@@ -75,6 +78,7 @@ class VirtualMachineArgs:
         :param pulumi.Input[str] kvm_arguments: The args implementation
         :param pulumi.Input[str] machine: The VM machine type, either default i440fx or q35
         :param pulumi.Input['VirtualMachineMemoryArgs'] memory: The memory allocation
+        :param pulumi.Input[bool] migrate: Whether to migrate the VM on node change instead of re-creating it
         :param pulumi.Input[str] name: The name
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkDeviceArgs']]] network_devices: The network devices
         :param pulumi.Input[bool] on_boot: Start VM on Node boot
@@ -83,12 +87,14 @@ class VirtualMachineArgs:
         :param pulumi.Input[bool] reboot: Whether to reboot vm after creation
         :param pulumi.Input[str] scsi_hardware: The SCSI hardware type
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]] serial_devices: The serial devices
+        :param pulumi.Input['VirtualMachineSmbiosArgs'] smbios: Specifies SMBIOS (type1) settings for the VM
         :param pulumi.Input[bool] started: Whether to start the virtual machine
         :param pulumi.Input['VirtualMachineStartupArgs'] startup: Defines startup and shutdown behavior of the VM
         :param pulumi.Input[bool] tablet_device: Whether to enable the USB tablet device
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the virtual machine. This is only meta information.
         :param pulumi.Input[bool] template: Whether to create a template
         :param pulumi.Input[int] timeout_clone: Clone VM timeout
+        :param pulumi.Input[int] timeout_migrate: Migrate VM timeout
         :param pulumi.Input[int] timeout_move_disk: MoveDisk timeout
         :param pulumi.Input[int] timeout_reboot: Reboot timeout
         :param pulumi.Input[int] timeout_shutdown_vm: Shutdown timeout
@@ -132,6 +138,8 @@ class VirtualMachineArgs:
             pulumi.set(__self__, "machine", machine)
         if memory is not None:
             pulumi.set(__self__, "memory", memory)
+        if migrate is not None:
+            pulumi.set(__self__, "migrate", migrate)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network_devices is not None:
@@ -148,6 +156,8 @@ class VirtualMachineArgs:
             pulumi.set(__self__, "scsi_hardware", scsi_hardware)
         if serial_devices is not None:
             pulumi.set(__self__, "serial_devices", serial_devices)
+        if smbios is not None:
+            pulumi.set(__self__, "smbios", smbios)
         if started is not None:
             pulumi.set(__self__, "started", started)
         if startup is not None:
@@ -160,6 +170,8 @@ class VirtualMachineArgs:
             pulumi.set(__self__, "template", template)
         if timeout_clone is not None:
             pulumi.set(__self__, "timeout_clone", timeout_clone)
+        if timeout_migrate is not None:
+            pulumi.set(__self__, "timeout_migrate", timeout_migrate)
         if timeout_move_disk is not None:
             pulumi.set(__self__, "timeout_move_disk", timeout_move_disk)
         if timeout_reboot is not None:
@@ -393,6 +405,18 @@ class VirtualMachineArgs:
 
     @property
     @pulumi.getter
+    def migrate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to migrate the VM on node change instead of re-creating it
+        """
+        return pulumi.get(self, "migrate")
+
+    @migrate.setter
+    def migrate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "migrate", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name
@@ -489,6 +513,18 @@ class VirtualMachineArgs:
 
     @property
     @pulumi.getter
+    def smbios(self) -> Optional[pulumi.Input['VirtualMachineSmbiosArgs']]:
+        """
+        Specifies SMBIOS (type1) settings for the VM
+        """
+        return pulumi.get(self, "smbios")
+
+    @smbios.setter
+    def smbios(self, value: Optional[pulumi.Input['VirtualMachineSmbiosArgs']]):
+        pulumi.set(self, "smbios", value)
+
+    @property
+    @pulumi.getter
     def started(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to start the virtual machine
@@ -558,6 +594,18 @@ class VirtualMachineArgs:
     @timeout_clone.setter
     def timeout_clone(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "timeout_clone", value)
+
+    @property
+    @pulumi.getter(name="timeoutMigrate")
+    def timeout_migrate(self) -> Optional[pulumi.Input[int]]:
+        """
+        Migrate VM timeout
+        """
+        return pulumi.get(self, "timeout_migrate")
+
+    @timeout_migrate.setter
+    def timeout_migrate(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout_migrate", value)
 
     @property
     @pulumi.getter(name="timeoutMoveDisk")
@@ -667,6 +715,7 @@ class _VirtualMachineState:
                  mac_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  machine: Optional[pulumi.Input[str]] = None,
                  memory: Optional[pulumi.Input['VirtualMachineMemoryArgs']] = None,
+                 migrate: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_devices: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkDeviceArgs']]]] = None,
                  network_interface_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -677,12 +726,14 @@ class _VirtualMachineState:
                  reboot: Optional[pulumi.Input[bool]] = None,
                  scsi_hardware: Optional[pulumi.Input[str]] = None,
                  serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]]] = None,
+                 smbios: Optional[pulumi.Input['VirtualMachineSmbiosArgs']] = None,
                  started: Optional[pulumi.Input[bool]] = None,
                  startup: Optional[pulumi.Input['VirtualMachineStartupArgs']] = None,
                  tablet_device: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
                  timeout_clone: Optional[pulumi.Input[int]] = None,
+                 timeout_migrate: Optional[pulumi.Input[int]] = None,
                  timeout_move_disk: Optional[pulumi.Input[int]] = None,
                  timeout_reboot: Optional[pulumi.Input[int]] = None,
                  timeout_shutdown_vm: Optional[pulumi.Input[int]] = None,
@@ -712,6 +763,7 @@ class _VirtualMachineState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] mac_addresses: The MAC addresses for the network interfaces
         :param pulumi.Input[str] machine: The VM machine type, either default i440fx or q35
         :param pulumi.Input['VirtualMachineMemoryArgs'] memory: The memory allocation
+        :param pulumi.Input[bool] migrate: Whether to migrate the VM on node change instead of re-creating it
         :param pulumi.Input[str] name: The name
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkDeviceArgs']]] network_devices: The network devices
         :param pulumi.Input[Sequence[pulumi.Input[str]]] network_interface_names: The network interface names published by the QEMU agent
@@ -722,12 +774,14 @@ class _VirtualMachineState:
         :param pulumi.Input[bool] reboot: Whether to reboot vm after creation
         :param pulumi.Input[str] scsi_hardware: The SCSI hardware type
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]] serial_devices: The serial devices
+        :param pulumi.Input['VirtualMachineSmbiosArgs'] smbios: Specifies SMBIOS (type1) settings for the VM
         :param pulumi.Input[bool] started: Whether to start the virtual machine
         :param pulumi.Input['VirtualMachineStartupArgs'] startup: Defines startup and shutdown behavior of the VM
         :param pulumi.Input[bool] tablet_device: Whether to enable the USB tablet device
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the virtual machine. This is only meta information.
         :param pulumi.Input[bool] template: Whether to create a template
         :param pulumi.Input[int] timeout_clone: Clone VM timeout
+        :param pulumi.Input[int] timeout_migrate: Migrate VM timeout
         :param pulumi.Input[int] timeout_move_disk: MoveDisk timeout
         :param pulumi.Input[int] timeout_reboot: Reboot timeout
         :param pulumi.Input[int] timeout_shutdown_vm: Shutdown timeout
@@ -776,6 +830,8 @@ class _VirtualMachineState:
             pulumi.set(__self__, "machine", machine)
         if memory is not None:
             pulumi.set(__self__, "memory", memory)
+        if migrate is not None:
+            pulumi.set(__self__, "migrate", migrate)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network_devices is not None:
@@ -796,6 +852,8 @@ class _VirtualMachineState:
             pulumi.set(__self__, "scsi_hardware", scsi_hardware)
         if serial_devices is not None:
             pulumi.set(__self__, "serial_devices", serial_devices)
+        if smbios is not None:
+            pulumi.set(__self__, "smbios", smbios)
         if started is not None:
             pulumi.set(__self__, "started", started)
         if startup is not None:
@@ -808,6 +866,8 @@ class _VirtualMachineState:
             pulumi.set(__self__, "template", template)
         if timeout_clone is not None:
             pulumi.set(__self__, "timeout_clone", timeout_clone)
+        if timeout_migrate is not None:
+            pulumi.set(__self__, "timeout_migrate", timeout_migrate)
         if timeout_move_disk is not None:
             pulumi.set(__self__, "timeout_move_disk", timeout_move_disk)
         if timeout_reboot is not None:
@@ -1065,6 +1125,18 @@ class _VirtualMachineState:
 
     @property
     @pulumi.getter
+    def migrate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to migrate the VM on node change instead of re-creating it
+        """
+        return pulumi.get(self, "migrate")
+
+    @migrate.setter
+    def migrate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "migrate", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name
@@ -1185,6 +1257,18 @@ class _VirtualMachineState:
 
     @property
     @pulumi.getter
+    def smbios(self) -> Optional[pulumi.Input['VirtualMachineSmbiosArgs']]:
+        """
+        Specifies SMBIOS (type1) settings for the VM
+        """
+        return pulumi.get(self, "smbios")
+
+    @smbios.setter
+    def smbios(self, value: Optional[pulumi.Input['VirtualMachineSmbiosArgs']]):
+        pulumi.set(self, "smbios", value)
+
+    @property
+    @pulumi.getter
     def started(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to start the virtual machine
@@ -1254,6 +1338,18 @@ class _VirtualMachineState:
     @timeout_clone.setter
     def timeout_clone(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "timeout_clone", value)
+
+    @property
+    @pulumi.getter(name="timeoutMigrate")
+    def timeout_migrate(self) -> Optional[pulumi.Input[int]]:
+        """
+        Migrate VM timeout
+        """
+        return pulumi.get(self, "timeout_migrate")
+
+    @timeout_migrate.setter
+    def timeout_migrate(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout_migrate", value)
 
     @property
     @pulumi.getter(name="timeoutMoveDisk")
@@ -1362,6 +1458,7 @@ class VirtualMachine(pulumi.CustomResource):
                  kvm_arguments: Optional[pulumi.Input[str]] = None,
                  machine: Optional[pulumi.Input[str]] = None,
                  memory: Optional[pulumi.Input[pulumi.InputType['VirtualMachineMemoryArgs']]] = None,
+                 migrate: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNetworkDeviceArgs']]]]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
@@ -1371,12 +1468,14 @@ class VirtualMachine(pulumi.CustomResource):
                  reboot: Optional[pulumi.Input[bool]] = None,
                  scsi_hardware: Optional[pulumi.Input[str]] = None,
                  serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]]] = None,
+                 smbios: Optional[pulumi.Input[pulumi.InputType['VirtualMachineSmbiosArgs']]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
                  startup: Optional[pulumi.Input[pulumi.InputType['VirtualMachineStartupArgs']]] = None,
                  tablet_device: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
                  timeout_clone: Optional[pulumi.Input[int]] = None,
+                 timeout_migrate: Optional[pulumi.Input[int]] = None,
                  timeout_move_disk: Optional[pulumi.Input[int]] = None,
                  timeout_reboot: Optional[pulumi.Input[int]] = None,
                  timeout_shutdown_vm: Optional[pulumi.Input[int]] = None,
@@ -1406,6 +1505,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[str] kvm_arguments: The args implementation
         :param pulumi.Input[str] machine: The VM machine type, either default i440fx or q35
         :param pulumi.Input[pulumi.InputType['VirtualMachineMemoryArgs']] memory: The memory allocation
+        :param pulumi.Input[bool] migrate: Whether to migrate the VM on node change instead of re-creating it
         :param pulumi.Input[str] name: The name
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNetworkDeviceArgs']]]] network_devices: The network devices
         :param pulumi.Input[str] node_name: The node name
@@ -1415,12 +1515,14 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[bool] reboot: Whether to reboot vm after creation
         :param pulumi.Input[str] scsi_hardware: The SCSI hardware type
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]] serial_devices: The serial devices
+        :param pulumi.Input[pulumi.InputType['VirtualMachineSmbiosArgs']] smbios: Specifies SMBIOS (type1) settings for the VM
         :param pulumi.Input[bool] started: Whether to start the virtual machine
         :param pulumi.Input[pulumi.InputType['VirtualMachineStartupArgs']] startup: Defines startup and shutdown behavior of the VM
         :param pulumi.Input[bool] tablet_device: Whether to enable the USB tablet device
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the virtual machine. This is only meta information.
         :param pulumi.Input[bool] template: Whether to create a template
         :param pulumi.Input[int] timeout_clone: Clone VM timeout
+        :param pulumi.Input[int] timeout_migrate: Migrate VM timeout
         :param pulumi.Input[int] timeout_move_disk: MoveDisk timeout
         :param pulumi.Input[int] timeout_reboot: Reboot timeout
         :param pulumi.Input[int] timeout_shutdown_vm: Shutdown timeout
@@ -1469,6 +1571,7 @@ class VirtualMachine(pulumi.CustomResource):
                  kvm_arguments: Optional[pulumi.Input[str]] = None,
                  machine: Optional[pulumi.Input[str]] = None,
                  memory: Optional[pulumi.Input[pulumi.InputType['VirtualMachineMemoryArgs']]] = None,
+                 migrate: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNetworkDeviceArgs']]]]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
@@ -1478,12 +1581,14 @@ class VirtualMachine(pulumi.CustomResource):
                  reboot: Optional[pulumi.Input[bool]] = None,
                  scsi_hardware: Optional[pulumi.Input[str]] = None,
                  serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]]] = None,
+                 smbios: Optional[pulumi.Input[pulumi.InputType['VirtualMachineSmbiosArgs']]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
                  startup: Optional[pulumi.Input[pulumi.InputType['VirtualMachineStartupArgs']]] = None,
                  tablet_device: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
                  timeout_clone: Optional[pulumi.Input[int]] = None,
+                 timeout_migrate: Optional[pulumi.Input[int]] = None,
                  timeout_move_disk: Optional[pulumi.Input[int]] = None,
                  timeout_reboot: Optional[pulumi.Input[int]] = None,
                  timeout_shutdown_vm: Optional[pulumi.Input[int]] = None,
@@ -1517,6 +1622,7 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["kvm_arguments"] = kvm_arguments
             __props__.__dict__["machine"] = machine
             __props__.__dict__["memory"] = memory
+            __props__.__dict__["migrate"] = migrate
             __props__.__dict__["name"] = name
             __props__.__dict__["network_devices"] = network_devices
             if node_name is None and not opts.urn:
@@ -1528,12 +1634,14 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["reboot"] = reboot
             __props__.__dict__["scsi_hardware"] = scsi_hardware
             __props__.__dict__["serial_devices"] = serial_devices
+            __props__.__dict__["smbios"] = smbios
             __props__.__dict__["started"] = started
             __props__.__dict__["startup"] = startup
             __props__.__dict__["tablet_device"] = tablet_device
             __props__.__dict__["tags"] = tags
             __props__.__dict__["template"] = template
             __props__.__dict__["timeout_clone"] = timeout_clone
+            __props__.__dict__["timeout_migrate"] = timeout_migrate
             __props__.__dict__["timeout_move_disk"] = timeout_move_disk
             __props__.__dict__["timeout_reboot"] = timeout_reboot
             __props__.__dict__["timeout_shutdown_vm"] = timeout_shutdown_vm
@@ -1575,6 +1683,7 @@ class VirtualMachine(pulumi.CustomResource):
             mac_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             machine: Optional[pulumi.Input[str]] = None,
             memory: Optional[pulumi.Input[pulumi.InputType['VirtualMachineMemoryArgs']]] = None,
+            migrate: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNetworkDeviceArgs']]]]] = None,
             network_interface_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1585,12 +1694,14 @@ class VirtualMachine(pulumi.CustomResource):
             reboot: Optional[pulumi.Input[bool]] = None,
             scsi_hardware: Optional[pulumi.Input[str]] = None,
             serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]]] = None,
+            smbios: Optional[pulumi.Input[pulumi.InputType['VirtualMachineSmbiosArgs']]] = None,
             started: Optional[pulumi.Input[bool]] = None,
             startup: Optional[pulumi.Input[pulumi.InputType['VirtualMachineStartupArgs']]] = None,
             tablet_device: Optional[pulumi.Input[bool]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             template: Optional[pulumi.Input[bool]] = None,
             timeout_clone: Optional[pulumi.Input[int]] = None,
+            timeout_migrate: Optional[pulumi.Input[int]] = None,
             timeout_move_disk: Optional[pulumi.Input[int]] = None,
             timeout_reboot: Optional[pulumi.Input[int]] = None,
             timeout_shutdown_vm: Optional[pulumi.Input[int]] = None,
@@ -1625,6 +1736,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] mac_addresses: The MAC addresses for the network interfaces
         :param pulumi.Input[str] machine: The VM machine type, either default i440fx or q35
         :param pulumi.Input[pulumi.InputType['VirtualMachineMemoryArgs']] memory: The memory allocation
+        :param pulumi.Input[bool] migrate: Whether to migrate the VM on node change instead of re-creating it
         :param pulumi.Input[str] name: The name
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNetworkDeviceArgs']]]] network_devices: The network devices
         :param pulumi.Input[Sequence[pulumi.Input[str]]] network_interface_names: The network interface names published by the QEMU agent
@@ -1635,12 +1747,14 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[bool] reboot: Whether to reboot vm after creation
         :param pulumi.Input[str] scsi_hardware: The SCSI hardware type
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]] serial_devices: The serial devices
+        :param pulumi.Input[pulumi.InputType['VirtualMachineSmbiosArgs']] smbios: Specifies SMBIOS (type1) settings for the VM
         :param pulumi.Input[bool] started: Whether to start the virtual machine
         :param pulumi.Input[pulumi.InputType['VirtualMachineStartupArgs']] startup: Defines startup and shutdown behavior of the VM
         :param pulumi.Input[bool] tablet_device: Whether to enable the USB tablet device
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the virtual machine. This is only meta information.
         :param pulumi.Input[bool] template: Whether to create a template
         :param pulumi.Input[int] timeout_clone: Clone VM timeout
+        :param pulumi.Input[int] timeout_migrate: Migrate VM timeout
         :param pulumi.Input[int] timeout_move_disk: MoveDisk timeout
         :param pulumi.Input[int] timeout_reboot: Reboot timeout
         :param pulumi.Input[int] timeout_shutdown_vm: Shutdown timeout
@@ -1673,6 +1787,7 @@ class VirtualMachine(pulumi.CustomResource):
         __props__.__dict__["mac_addresses"] = mac_addresses
         __props__.__dict__["machine"] = machine
         __props__.__dict__["memory"] = memory
+        __props__.__dict__["migrate"] = migrate
         __props__.__dict__["name"] = name
         __props__.__dict__["network_devices"] = network_devices
         __props__.__dict__["network_interface_names"] = network_interface_names
@@ -1683,12 +1798,14 @@ class VirtualMachine(pulumi.CustomResource):
         __props__.__dict__["reboot"] = reboot
         __props__.__dict__["scsi_hardware"] = scsi_hardware
         __props__.__dict__["serial_devices"] = serial_devices
+        __props__.__dict__["smbios"] = smbios
         __props__.__dict__["started"] = started
         __props__.__dict__["startup"] = startup
         __props__.__dict__["tablet_device"] = tablet_device
         __props__.__dict__["tags"] = tags
         __props__.__dict__["template"] = template
         __props__.__dict__["timeout_clone"] = timeout_clone
+        __props__.__dict__["timeout_migrate"] = timeout_migrate
         __props__.__dict__["timeout_move_disk"] = timeout_move_disk
         __props__.__dict__["timeout_reboot"] = timeout_reboot
         __props__.__dict__["timeout_shutdown_vm"] = timeout_shutdown_vm
@@ -1860,6 +1977,14 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def migrate(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to migrate the VM on node change instead of re-creating it
+        """
+        return pulumi.get(self, "migrate")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The name
@@ -1940,6 +2065,14 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def smbios(self) -> pulumi.Output[Optional['outputs.VirtualMachineSmbios']]:
+        """
+        Specifies SMBIOS (type1) settings for the VM
+        """
+        return pulumi.get(self, "smbios")
+
+    @property
+    @pulumi.getter
     def started(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to start the virtual machine
@@ -1985,6 +2118,14 @@ class VirtualMachine(pulumi.CustomResource):
         Clone VM timeout
         """
         return pulumi.get(self, "timeout_clone")
+
+    @property
+    @pulumi.getter(name="timeoutMigrate")
+    def timeout_migrate(self) -> pulumi.Output[Optional[int]]:
+        """
+        Migrate VM timeout
+        """
+        return pulumi.get(self, "timeout_migrate")
 
     @property
     @pulumi.getter(name="timeoutMoveDisk")

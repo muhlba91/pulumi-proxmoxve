@@ -70,6 +70,10 @@ export class File extends pulumi.CustomResource {
      * The raw source
      */
     public readonly sourceRaw!: pulumi.Output<outputs.Storage.FileSourceRaw | undefined>;
+    /**
+     * Timeout for uploading ISO/VSTMPL files in seconds
+     */
+    public readonly timeoutUpload!: pulumi.Output<number | undefined>;
 
     /**
      * Create a File resource with the given unique name, arguments, and options.
@@ -93,6 +97,7 @@ export class File extends pulumi.CustomResource {
             resourceInputs["nodeName"] = state ? state.nodeName : undefined;
             resourceInputs["sourceFile"] = state ? state.sourceFile : undefined;
             resourceInputs["sourceRaw"] = state ? state.sourceRaw : undefined;
+            resourceInputs["timeoutUpload"] = state ? state.timeoutUpload : undefined;
         } else {
             const args = argsOrState as FileArgs | undefined;
             if ((!args || args.datastoreId === undefined) && !opts.urn) {
@@ -106,6 +111,7 @@ export class File extends pulumi.CustomResource {
             resourceInputs["nodeName"] = args ? args.nodeName : undefined;
             resourceInputs["sourceFile"] = args ? args.sourceFile : undefined;
             resourceInputs["sourceRaw"] = args ? args.sourceRaw : undefined;
+            resourceInputs["timeoutUpload"] = args ? args.timeoutUpload : undefined;
             resourceInputs["fileModificationDate"] = undefined /*out*/;
             resourceInputs["fileName"] = undefined /*out*/;
             resourceInputs["fileSize"] = undefined /*out*/;
@@ -156,6 +162,10 @@ export interface FileState {
      * The raw source
      */
     sourceRaw?: pulumi.Input<inputs.Storage.FileSourceRaw>;
+    /**
+     * Timeout for uploading ISO/VSTMPL files in seconds
+     */
+    timeoutUpload?: pulumi.Input<number>;
 }
 
 /**
@@ -182,4 +192,8 @@ export interface FileArgs {
      * The raw source
      */
     sourceRaw?: pulumi.Input<inputs.Storage.FileSourceRaw>;
+    /**
+     * Timeout for uploading ISO/VSTMPL files in seconds
+     */
+    timeoutUpload?: pulumi.Input<number>;
 }

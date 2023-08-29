@@ -1454,7 +1454,8 @@ func (o VirtualMachineEfiDiskPtrOutput) Type() pulumi.StringPtrOutput {
 
 type VirtualMachineHostpci struct {
 	Device  string  `pulumi:"device"`
-	Id      string  `pulumi:"id"`
+	Id      *string `pulumi:"id"`
+	Mapping *string `pulumi:"mapping"`
 	Mdev    *string `pulumi:"mdev"`
 	Pcie    *bool   `pulumi:"pcie"`
 	RomFile *string `pulumi:"romFile"`
@@ -1475,7 +1476,8 @@ type VirtualMachineHostpciInput interface {
 
 type VirtualMachineHostpciArgs struct {
 	Device  pulumi.StringInput    `pulumi:"device"`
-	Id      pulumi.StringInput    `pulumi:"id"`
+	Id      pulumi.StringPtrInput `pulumi:"id"`
+	Mapping pulumi.StringPtrInput `pulumi:"mapping"`
 	Mdev    pulumi.StringPtrInput `pulumi:"mdev"`
 	Pcie    pulumi.BoolPtrInput   `pulumi:"pcie"`
 	RomFile pulumi.StringPtrInput `pulumi:"romFile"`
@@ -1538,8 +1540,12 @@ func (o VirtualMachineHostpciOutput) Device() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineHostpci) string { return v.Device }).(pulumi.StringOutput)
 }
 
-func (o VirtualMachineHostpciOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v VirtualMachineHostpci) string { return v.Id }).(pulumi.StringOutput)
+func (o VirtualMachineHostpciOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineHostpci) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineHostpciOutput) Mapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineHostpci) *string { return v.Mapping }).(pulumi.StringPtrOutput)
 }
 
 func (o VirtualMachineHostpciOutput) Mdev() pulumi.StringPtrOutput {
@@ -1585,6 +1591,7 @@ func (o VirtualMachineHostpciArrayOutput) Index(i pulumi.IntInput) VirtualMachin
 type VirtualMachineInitialization struct {
 	DatastoreId       *string                                  `pulumi:"datastoreId"`
 	Dns               *VirtualMachineInitializationDns         `pulumi:"dns"`
+	Interface         *string                                  `pulumi:"interface"`
 	IpConfigs         []VirtualMachineInitializationIpConfig   `pulumi:"ipConfigs"`
 	MetaDataFileId    *string                                  `pulumi:"metaDataFileId"`
 	NetworkDataFileId *string                                  `pulumi:"networkDataFileId"`
@@ -1608,6 +1615,7 @@ type VirtualMachineInitializationInput interface {
 type VirtualMachineInitializationArgs struct {
 	DatastoreId       pulumi.StringPtrInput                           `pulumi:"datastoreId"`
 	Dns               VirtualMachineInitializationDnsPtrInput         `pulumi:"dns"`
+	Interface         pulumi.StringPtrInput                           `pulumi:"interface"`
 	IpConfigs         VirtualMachineInitializationIpConfigArrayInput  `pulumi:"ipConfigs"`
 	MetaDataFileId    pulumi.StringPtrInput                           `pulumi:"metaDataFileId"`
 	NetworkDataFileId pulumi.StringPtrInput                           `pulumi:"networkDataFileId"`
@@ -1702,6 +1710,10 @@ func (o VirtualMachineInitializationOutput) Dns() VirtualMachineInitializationDn
 	return o.ApplyT(func(v VirtualMachineInitialization) *VirtualMachineInitializationDns { return v.Dns }).(VirtualMachineInitializationDnsPtrOutput)
 }
 
+func (o VirtualMachineInitializationOutput) Interface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInitialization) *string { return v.Interface }).(pulumi.StringPtrOutput)
+}
+
 func (o VirtualMachineInitializationOutput) IpConfigs() VirtualMachineInitializationIpConfigArrayOutput {
 	return o.ApplyT(func(v VirtualMachineInitialization) []VirtualMachineInitializationIpConfig { return v.IpConfigs }).(VirtualMachineInitializationIpConfigArrayOutput)
 }
@@ -1770,6 +1782,15 @@ func (o VirtualMachineInitializationPtrOutput) Dns() VirtualMachineInitializatio
 		}
 		return v.Dns
 	}).(VirtualMachineInitializationDnsPtrOutput)
+}
+
+func (o VirtualMachineInitializationPtrOutput) Interface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInitialization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Interface
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o VirtualMachineInitializationPtrOutput) IpConfigs() VirtualMachineInitializationIpConfigArrayOutput {
@@ -3068,6 +3089,229 @@ func (o VirtualMachineSerialDeviceArrayOutput) Index(i pulumi.IntInput) VirtualM
 	}).(VirtualMachineSerialDeviceOutput)
 }
 
+type VirtualMachineSmbios struct {
+	Family       *string `pulumi:"family"`
+	Manufacturer *string `pulumi:"manufacturer"`
+	Product      *string `pulumi:"product"`
+	Serial       *string `pulumi:"serial"`
+	Sku          *string `pulumi:"sku"`
+	Uuid         *string `pulumi:"uuid"`
+	Version      *string `pulumi:"version"`
+}
+
+// VirtualMachineSmbiosInput is an input type that accepts VirtualMachineSmbiosArgs and VirtualMachineSmbiosOutput values.
+// You can construct a concrete instance of `VirtualMachineSmbiosInput` via:
+//
+//	VirtualMachineSmbiosArgs{...}
+type VirtualMachineSmbiosInput interface {
+	pulumi.Input
+
+	ToVirtualMachineSmbiosOutput() VirtualMachineSmbiosOutput
+	ToVirtualMachineSmbiosOutputWithContext(context.Context) VirtualMachineSmbiosOutput
+}
+
+type VirtualMachineSmbiosArgs struct {
+	Family       pulumi.StringPtrInput `pulumi:"family"`
+	Manufacturer pulumi.StringPtrInput `pulumi:"manufacturer"`
+	Product      pulumi.StringPtrInput `pulumi:"product"`
+	Serial       pulumi.StringPtrInput `pulumi:"serial"`
+	Sku          pulumi.StringPtrInput `pulumi:"sku"`
+	Uuid         pulumi.StringPtrInput `pulumi:"uuid"`
+	Version      pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (VirtualMachineSmbiosArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineSmbios)(nil)).Elem()
+}
+
+func (i VirtualMachineSmbiosArgs) ToVirtualMachineSmbiosOutput() VirtualMachineSmbiosOutput {
+	return i.ToVirtualMachineSmbiosOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineSmbiosArgs) ToVirtualMachineSmbiosOutputWithContext(ctx context.Context) VirtualMachineSmbiosOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineSmbiosOutput)
+}
+
+func (i VirtualMachineSmbiosArgs) ToVirtualMachineSmbiosPtrOutput() VirtualMachineSmbiosPtrOutput {
+	return i.ToVirtualMachineSmbiosPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineSmbiosArgs) ToVirtualMachineSmbiosPtrOutputWithContext(ctx context.Context) VirtualMachineSmbiosPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineSmbiosOutput).ToVirtualMachineSmbiosPtrOutputWithContext(ctx)
+}
+
+// VirtualMachineSmbiosPtrInput is an input type that accepts VirtualMachineSmbiosArgs, VirtualMachineSmbiosPtr and VirtualMachineSmbiosPtrOutput values.
+// You can construct a concrete instance of `VirtualMachineSmbiosPtrInput` via:
+//
+//	        VirtualMachineSmbiosArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachineSmbiosPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineSmbiosPtrOutput() VirtualMachineSmbiosPtrOutput
+	ToVirtualMachineSmbiosPtrOutputWithContext(context.Context) VirtualMachineSmbiosPtrOutput
+}
+
+type virtualMachineSmbiosPtrType VirtualMachineSmbiosArgs
+
+func VirtualMachineSmbiosPtr(v *VirtualMachineSmbiosArgs) VirtualMachineSmbiosPtrInput {
+	return (*virtualMachineSmbiosPtrType)(v)
+}
+
+func (*virtualMachineSmbiosPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineSmbios)(nil)).Elem()
+}
+
+func (i *virtualMachineSmbiosPtrType) ToVirtualMachineSmbiosPtrOutput() VirtualMachineSmbiosPtrOutput {
+	return i.ToVirtualMachineSmbiosPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachineSmbiosPtrType) ToVirtualMachineSmbiosPtrOutputWithContext(ctx context.Context) VirtualMachineSmbiosPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineSmbiosPtrOutput)
+}
+
+type VirtualMachineSmbiosOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineSmbiosOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineSmbios)(nil)).Elem()
+}
+
+func (o VirtualMachineSmbiosOutput) ToVirtualMachineSmbiosOutput() VirtualMachineSmbiosOutput {
+	return o
+}
+
+func (o VirtualMachineSmbiosOutput) ToVirtualMachineSmbiosOutputWithContext(ctx context.Context) VirtualMachineSmbiosOutput {
+	return o
+}
+
+func (o VirtualMachineSmbiosOutput) ToVirtualMachineSmbiosPtrOutput() VirtualMachineSmbiosPtrOutput {
+	return o.ToVirtualMachineSmbiosPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineSmbiosOutput) ToVirtualMachineSmbiosPtrOutputWithContext(ctx context.Context) VirtualMachineSmbiosPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineSmbios) *VirtualMachineSmbios {
+		return &v
+	}).(VirtualMachineSmbiosPtrOutput)
+}
+
+func (o VirtualMachineSmbiosOutput) Family() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSmbios) *string { return v.Family }).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineSmbiosOutput) Manufacturer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSmbios) *string { return v.Manufacturer }).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineSmbiosOutput) Product() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSmbios) *string { return v.Product }).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineSmbiosOutput) Serial() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSmbios) *string { return v.Serial }).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineSmbiosOutput) Sku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSmbios) *string { return v.Sku }).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineSmbiosOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSmbios) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineSmbiosOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSmbios) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineSmbiosPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineSmbiosPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineSmbios)(nil)).Elem()
+}
+
+func (o VirtualMachineSmbiosPtrOutput) ToVirtualMachineSmbiosPtrOutput() VirtualMachineSmbiosPtrOutput {
+	return o
+}
+
+func (o VirtualMachineSmbiosPtrOutput) ToVirtualMachineSmbiosPtrOutputWithContext(ctx context.Context) VirtualMachineSmbiosPtrOutput {
+	return o
+}
+
+func (o VirtualMachineSmbiosPtrOutput) Elem() VirtualMachineSmbiosOutput {
+	return o.ApplyT(func(v *VirtualMachineSmbios) VirtualMachineSmbios {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineSmbios
+		return ret
+	}).(VirtualMachineSmbiosOutput)
+}
+
+func (o VirtualMachineSmbiosPtrOutput) Family() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSmbios) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Family
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineSmbiosPtrOutput) Manufacturer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSmbios) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Manufacturer
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineSmbiosPtrOutput) Product() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSmbios) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Product
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineSmbiosPtrOutput) Serial() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSmbios) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Serial
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineSmbiosPtrOutput) Sku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSmbios) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sku
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineSmbiosPtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSmbios) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineSmbiosPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSmbios) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
 type VirtualMachineStartup struct {
 	DownDelay *int `pulumi:"downDelay"`
 	Order     *int `pulumi:"order"`
@@ -3545,6 +3789,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineOperatingSystemPtrInput)(nil)).Elem(), VirtualMachineOperatingSystemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineSerialDeviceInput)(nil)).Elem(), VirtualMachineSerialDeviceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineSerialDeviceArrayInput)(nil)).Elem(), VirtualMachineSerialDeviceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineSmbiosInput)(nil)).Elem(), VirtualMachineSmbiosArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineSmbiosPtrInput)(nil)).Elem(), VirtualMachineSmbiosArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineStartupInput)(nil)).Elem(), VirtualMachineStartupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineStartupPtrInput)(nil)).Elem(), VirtualMachineStartupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineVgaInput)(nil)).Elem(), VirtualMachineVgaArgs{})
@@ -3589,6 +3835,8 @@ func init() {
 	pulumi.RegisterOutputType(VirtualMachineOperatingSystemPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineSerialDeviceOutput{})
 	pulumi.RegisterOutputType(VirtualMachineSerialDeviceArrayOutput{})
+	pulumi.RegisterOutputType(VirtualMachineSmbiosOutput{})
+	pulumi.RegisterOutputType(VirtualMachineSmbiosPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineStartupOutput{})
 	pulumi.RegisterOutputType(VirtualMachineStartupPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineVgaOutput{})

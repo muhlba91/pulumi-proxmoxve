@@ -20,7 +20,8 @@ class FileArgs:
                  node_name: pulumi.Input[str],
                  content_type: Optional[pulumi.Input[str]] = None,
                  source_file: Optional[pulumi.Input['FileSourceFileArgs']] = None,
-                 source_raw: Optional[pulumi.Input['FileSourceRawArgs']] = None):
+                 source_raw: Optional[pulumi.Input['FileSourceRawArgs']] = None,
+                 timeout_upload: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a File resource.
         :param pulumi.Input[str] datastore_id: The datastore id
@@ -28,6 +29,7 @@ class FileArgs:
         :param pulumi.Input[str] content_type: The content type
         :param pulumi.Input['FileSourceFileArgs'] source_file: The source file
         :param pulumi.Input['FileSourceRawArgs'] source_raw: The raw source
+        :param pulumi.Input[int] timeout_upload: Timeout for uploading ISO/VSTMPL files in seconds
         """
         pulumi.set(__self__, "datastore_id", datastore_id)
         pulumi.set(__self__, "node_name", node_name)
@@ -37,6 +39,8 @@ class FileArgs:
             pulumi.set(__self__, "source_file", source_file)
         if source_raw is not None:
             pulumi.set(__self__, "source_raw", source_raw)
+        if timeout_upload is not None:
+            pulumi.set(__self__, "timeout_upload", timeout_upload)
 
     @property
     @pulumi.getter(name="datastoreId")
@@ -98,6 +102,18 @@ class FileArgs:
     def source_raw(self, value: Optional[pulumi.Input['FileSourceRawArgs']]):
         pulumi.set(self, "source_raw", value)
 
+    @property
+    @pulumi.getter(name="timeoutUpload")
+    def timeout_upload(self) -> Optional[pulumi.Input[int]]:
+        """
+        Timeout for uploading ISO/VSTMPL files in seconds
+        """
+        return pulumi.get(self, "timeout_upload")
+
+    @timeout_upload.setter
+    def timeout_upload(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout_upload", value)
+
 
 @pulumi.input_type
 class _FileState:
@@ -110,7 +126,8 @@ class _FileState:
                  file_tag: Optional[pulumi.Input[str]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
                  source_file: Optional[pulumi.Input['FileSourceFileArgs']] = None,
-                 source_raw: Optional[pulumi.Input['FileSourceRawArgs']] = None):
+                 source_raw: Optional[pulumi.Input['FileSourceRawArgs']] = None,
+                 timeout_upload: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering File resources.
         :param pulumi.Input[str] content_type: The content type
@@ -122,6 +139,7 @@ class _FileState:
         :param pulumi.Input[str] node_name: The node name
         :param pulumi.Input['FileSourceFileArgs'] source_file: The source file
         :param pulumi.Input['FileSourceRawArgs'] source_raw: The raw source
+        :param pulumi.Input[int] timeout_upload: Timeout for uploading ISO/VSTMPL files in seconds
         """
         if content_type is not None:
             pulumi.set(__self__, "content_type", content_type)
@@ -141,6 +159,8 @@ class _FileState:
             pulumi.set(__self__, "source_file", source_file)
         if source_raw is not None:
             pulumi.set(__self__, "source_raw", source_raw)
+        if timeout_upload is not None:
+            pulumi.set(__self__, "timeout_upload", timeout_upload)
 
     @property
     @pulumi.getter(name="contentType")
@@ -250,6 +270,18 @@ class _FileState:
     def source_raw(self, value: Optional[pulumi.Input['FileSourceRawArgs']]):
         pulumi.set(self, "source_raw", value)
 
+    @property
+    @pulumi.getter(name="timeoutUpload")
+    def timeout_upload(self) -> Optional[pulumi.Input[int]]:
+        """
+        Timeout for uploading ISO/VSTMPL files in seconds
+        """
+        return pulumi.get(self, "timeout_upload")
+
+    @timeout_upload.setter
+    def timeout_upload(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout_upload", value)
+
 
 class File(pulumi.CustomResource):
     @overload
@@ -261,6 +293,7 @@ class File(pulumi.CustomResource):
                  node_name: Optional[pulumi.Input[str]] = None,
                  source_file: Optional[pulumi.Input[pulumi.InputType['FileSourceFileArgs']]] = None,
                  source_raw: Optional[pulumi.Input[pulumi.InputType['FileSourceRawArgs']]] = None,
+                 timeout_upload: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
         Create a File resource with the given unique name, props, and options.
@@ -271,6 +304,7 @@ class File(pulumi.CustomResource):
         :param pulumi.Input[str] node_name: The node name
         :param pulumi.Input[pulumi.InputType['FileSourceFileArgs']] source_file: The source file
         :param pulumi.Input[pulumi.InputType['FileSourceRawArgs']] source_raw: The raw source
+        :param pulumi.Input[int] timeout_upload: Timeout for uploading ISO/VSTMPL files in seconds
         """
         ...
     @overload
@@ -300,6 +334,7 @@ class File(pulumi.CustomResource):
                  node_name: Optional[pulumi.Input[str]] = None,
                  source_file: Optional[pulumi.Input[pulumi.InputType['FileSourceFileArgs']]] = None,
                  source_raw: Optional[pulumi.Input[pulumi.InputType['FileSourceRawArgs']]] = None,
+                 timeout_upload: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -318,6 +353,7 @@ class File(pulumi.CustomResource):
             __props__.__dict__["node_name"] = node_name
             __props__.__dict__["source_file"] = source_file
             __props__.__dict__["source_raw"] = source_raw
+            __props__.__dict__["timeout_upload"] = timeout_upload
             __props__.__dict__["file_modification_date"] = None
             __props__.__dict__["file_name"] = None
             __props__.__dict__["file_size"] = None
@@ -340,7 +376,8 @@ class File(pulumi.CustomResource):
             file_tag: Optional[pulumi.Input[str]] = None,
             node_name: Optional[pulumi.Input[str]] = None,
             source_file: Optional[pulumi.Input[pulumi.InputType['FileSourceFileArgs']]] = None,
-            source_raw: Optional[pulumi.Input[pulumi.InputType['FileSourceRawArgs']]] = None) -> 'File':
+            source_raw: Optional[pulumi.Input[pulumi.InputType['FileSourceRawArgs']]] = None,
+            timeout_upload: Optional[pulumi.Input[int]] = None) -> 'File':
         """
         Get an existing File resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -357,6 +394,7 @@ class File(pulumi.CustomResource):
         :param pulumi.Input[str] node_name: The node name
         :param pulumi.Input[pulumi.InputType['FileSourceFileArgs']] source_file: The source file
         :param pulumi.Input[pulumi.InputType['FileSourceRawArgs']] source_raw: The raw source
+        :param pulumi.Input[int] timeout_upload: Timeout for uploading ISO/VSTMPL files in seconds
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -371,6 +409,7 @@ class File(pulumi.CustomResource):
         __props__.__dict__["node_name"] = node_name
         __props__.__dict__["source_file"] = source_file
         __props__.__dict__["source_raw"] = source_raw
+        __props__.__dict__["timeout_upload"] = timeout_upload
         return File(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -444,4 +483,12 @@ class File(pulumi.CustomResource):
         The raw source
         """
         return pulumi.get(self, "source_raw")
+
+    @property
+    @pulumi.getter(name="timeoutUpload")
+    def timeout_upload(self) -> pulumi.Output[Optional[int]]:
+        """
+        Timeout for uploading ISO/VSTMPL files in seconds
+        """
+        return pulumi.get(self, "timeout_upload")
 

@@ -271,7 +271,8 @@ export namespace VM {
 
     export interface VirtualMachineHostpci {
         device: pulumi.Input<string>;
-        id: pulumi.Input<string>;
+        id?: pulumi.Input<string>;
+        mapping?: pulumi.Input<string>;
         mdev?: pulumi.Input<string>;
         pcie?: pulumi.Input<boolean>;
         romFile?: pulumi.Input<string>;
@@ -282,6 +283,7 @@ export namespace VM {
     export interface VirtualMachineInitialization {
         datastoreId?: pulumi.Input<string>;
         dns?: pulumi.Input<inputs.VM.VirtualMachineInitializationDns>;
+        interface?: pulumi.Input<string>;
         ipConfigs?: pulumi.Input<pulumi.Input<inputs.VM.VirtualMachineInitializationIpConfig>[]>;
         metaDataFileId?: pulumi.Input<string>;
         networkDataFileId?: pulumi.Input<string>;
@@ -340,6 +342,16 @@ export namespace VM {
 
     export interface VirtualMachineSerialDevice {
         device?: pulumi.Input<string>;
+    }
+
+    export interface VirtualMachineSmbios {
+        family?: pulumi.Input<string>;
+        manufacturer?: pulumi.Input<string>;
+        product?: pulumi.Input<string>;
+        serial?: pulumi.Input<string>;
+        sku?: pulumi.Input<string>;
+        uuid?: pulumi.Input<string>;
+        version?: pulumi.Input<string>;
     }
 
     export interface VirtualMachineStartup {

@@ -34,7 +34,7 @@ type User struct {
 	// The user's last name
 	LastName pulumi.StringPtrOutput `pulumi:"lastName"`
 	// The user's password
-	Password pulumi.StringOutput `pulumi:"password"`
+	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// The user id
 	UserId pulumi.StringOutput `pulumi:"userId"`
 }
@@ -46,9 +46,6 @@ func NewUser(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Password == nil {
-		return nil, errors.New("invalid value for required argument 'Password'")
-	}
 	if args.UserId == nil {
 		return nil, errors.New("invalid value for required argument 'UserId'")
 	}
@@ -148,7 +145,7 @@ type userArgs struct {
 	// The user's last name
 	LastName *string `pulumi:"lastName"`
 	// The user's password
-	Password string `pulumi:"password"`
+	Password *string `pulumi:"password"`
 	// The user id
 	UserId string `pulumi:"userId"`
 }
@@ -174,7 +171,7 @@ type UserArgs struct {
 	// The user's last name
 	LastName pulumi.StringPtrInput
 	// The user's password
-	Password pulumi.StringInput
+	Password pulumi.StringPtrInput
 	// The user id
 	UserId pulumi.StringInput
 }
@@ -312,8 +309,8 @@ func (o UserOutput) LastName() pulumi.StringPtrOutput {
 }
 
 // The user's password
-func (o UserOutput) Password() pulumi.StringOutput {
-	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
+func (o UserOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
 // The user id

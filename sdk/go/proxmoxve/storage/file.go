@@ -33,6 +33,8 @@ type File struct {
 	SourceFile FileSourceFilePtrOutput `pulumi:"sourceFile"`
 	// The raw source
 	SourceRaw FileSourceRawPtrOutput `pulumi:"sourceRaw"`
+	// Timeout for uploading ISO/VSTMPL files in seconds
+	TimeoutUpload pulumi.IntPtrOutput `pulumi:"timeoutUpload"`
 }
 
 // NewFile registers a new resource with the given unique name, arguments, and options.
@@ -89,6 +91,8 @@ type fileState struct {
 	SourceFile *FileSourceFile `pulumi:"sourceFile"`
 	// The raw source
 	SourceRaw *FileSourceRaw `pulumi:"sourceRaw"`
+	// Timeout for uploading ISO/VSTMPL files in seconds
+	TimeoutUpload *int `pulumi:"timeoutUpload"`
 }
 
 type FileState struct {
@@ -110,6 +114,8 @@ type FileState struct {
 	SourceFile FileSourceFilePtrInput
 	// The raw source
 	SourceRaw FileSourceRawPtrInput
+	// Timeout for uploading ISO/VSTMPL files in seconds
+	TimeoutUpload pulumi.IntPtrInput
 }
 
 func (FileState) ElementType() reflect.Type {
@@ -127,6 +133,8 @@ type fileArgs struct {
 	SourceFile *FileSourceFile `pulumi:"sourceFile"`
 	// The raw source
 	SourceRaw *FileSourceRaw `pulumi:"sourceRaw"`
+	// Timeout for uploading ISO/VSTMPL files in seconds
+	TimeoutUpload *int `pulumi:"timeoutUpload"`
 }
 
 // The set of arguments for constructing a File resource.
@@ -141,6 +149,8 @@ type FileArgs struct {
 	SourceFile FileSourceFilePtrInput
 	// The raw source
 	SourceRaw FileSourceRawPtrInput
+	// Timeout for uploading ISO/VSTMPL files in seconds
+	TimeoutUpload pulumi.IntPtrInput
 }
 
 func (FileArgs) ElementType() reflect.Type {
@@ -273,6 +283,11 @@ func (o FileOutput) SourceFile() FileSourceFilePtrOutput {
 // The raw source
 func (o FileOutput) SourceRaw() FileSourceRawPtrOutput {
 	return o.ApplyT(func(v *File) FileSourceRawPtrOutput { return v.SourceRaw }).(FileSourceRawPtrOutput)
+}
+
+// Timeout for uploading ISO/VSTMPL files in seconds
+func (o FileOutput) TimeoutUpload() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *File) pulumi.IntPtrOutput { return v.TimeoutUpload }).(pulumi.IntPtrOutput)
 }
 
 type FileArrayOutput struct{ *pulumi.OutputState }

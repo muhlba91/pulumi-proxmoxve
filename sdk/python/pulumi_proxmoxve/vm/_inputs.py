@@ -29,6 +29,7 @@ __all__ = [
     'VirtualMachineNetworkDeviceArgs',
     'VirtualMachineOperatingSystemArgs',
     'VirtualMachineSerialDeviceArgs',
+    'VirtualMachineSmbiosArgs',
     'VirtualMachineStartupArgs',
     'VirtualMachineVgaArgs',
 ]
@@ -567,14 +568,18 @@ class VirtualMachineEfiDiskArgs:
 class VirtualMachineHostpciArgs:
     def __init__(__self__, *,
                  device: pulumi.Input[str],
-                 id: pulumi.Input[str],
+                 id: Optional[pulumi.Input[str]] = None,
+                 mapping: Optional[pulumi.Input[str]] = None,
                  mdev: Optional[pulumi.Input[str]] = None,
                  pcie: Optional[pulumi.Input[bool]] = None,
                  rom_file: Optional[pulumi.Input[str]] = None,
                  rombar: Optional[pulumi.Input[bool]] = None,
                  xvga: Optional[pulumi.Input[bool]] = None):
         pulumi.set(__self__, "device", device)
-        pulumi.set(__self__, "id", id)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if mapping is not None:
+            pulumi.set(__self__, "mapping", mapping)
         if mdev is not None:
             pulumi.set(__self__, "mdev", mdev)
         if pcie is not None:
@@ -597,12 +602,21 @@ class VirtualMachineHostpciArgs:
 
     @property
     @pulumi.getter
-    def id(self) -> pulumi.Input[str]:
+    def id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: pulumi.Input[str]):
+    def id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def mapping(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "mapping")
+
+    @mapping.setter
+    def mapping(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mapping", value)
 
     @property
     @pulumi.getter
@@ -655,6 +669,7 @@ class VirtualMachineInitializationArgs:
     def __init__(__self__, *,
                  datastore_id: Optional[pulumi.Input[str]] = None,
                  dns: Optional[pulumi.Input['VirtualMachineInitializationDnsArgs']] = None,
+                 interface: Optional[pulumi.Input[str]] = None,
                  ip_configs: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineInitializationIpConfigArgs']]]] = None,
                  meta_data_file_id: Optional[pulumi.Input[str]] = None,
                  network_data_file_id: Optional[pulumi.Input[str]] = None,
@@ -666,6 +681,8 @@ class VirtualMachineInitializationArgs:
             pulumi.set(__self__, "datastore_id", datastore_id)
         if dns is not None:
             pulumi.set(__self__, "dns", dns)
+        if interface is not None:
+            pulumi.set(__self__, "interface", interface)
         if ip_configs is not None:
             pulumi.set(__self__, "ip_configs", ip_configs)
         if meta_data_file_id is not None:
@@ -698,6 +715,15 @@ class VirtualMachineInitializationArgs:
     @dns.setter
     def dns(self, value: Optional[pulumi.Input['VirtualMachineInitializationDnsArgs']]):
         pulumi.set(self, "dns", value)
+
+    @property
+    @pulumi.getter
+    def interface(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "interface")
+
+    @interface.setter
+    def interface(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "interface", value)
 
     @property
     @pulumi.getter(name="ipConfigs")
@@ -1094,6 +1120,95 @@ class VirtualMachineSerialDeviceArgs:
     @device.setter
     def device(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "device", value)
+
+
+@pulumi.input_type
+class VirtualMachineSmbiosArgs:
+    def __init__(__self__, *,
+                 family: Optional[pulumi.Input[str]] = None,
+                 manufacturer: Optional[pulumi.Input[str]] = None,
+                 product: Optional[pulumi.Input[str]] = None,
+                 serial: Optional[pulumi.Input[str]] = None,
+                 sku: Optional[pulumi.Input[str]] = None,
+                 uuid: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        if family is not None:
+            pulumi.set(__self__, "family", family)
+        if manufacturer is not None:
+            pulumi.set(__self__, "manufacturer", manufacturer)
+        if product is not None:
+            pulumi.set(__self__, "product", product)
+        if serial is not None:
+            pulumi.set(__self__, "serial", serial)
+        if sku is not None:
+            pulumi.set(__self__, "sku", sku)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def family(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "family")
+
+    @family.setter
+    def family(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "family", value)
+
+    @property
+    @pulumi.getter
+    def manufacturer(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "manufacturer")
+
+    @manufacturer.setter
+    def manufacturer(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "manufacturer", value)
+
+    @property
+    @pulumi.getter
+    def product(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "product")
+
+    @product.setter
+    def product(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "product", value)
+
+    @property
+    @pulumi.getter
+    def serial(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "serial")
+
+    @serial.setter
+    def serial(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "serial", value)
+
+    @property
+    @pulumi.getter
+    def sku(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "sku")
+
+    @sku.setter
+    def sku(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sku", value)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uuid", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
 
 
 @pulumi.input_type

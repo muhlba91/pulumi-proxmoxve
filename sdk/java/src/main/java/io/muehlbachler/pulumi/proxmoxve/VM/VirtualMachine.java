@@ -23,6 +23,7 @@ import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineMemory;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineNetworkDevice;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineOperatingSystem;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineSerialDevice;
+import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineSmbios;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineStartup;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineVga;
 import java.lang.Boolean;
@@ -315,6 +316,20 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.memory);
     }
     /**
+     * Whether to migrate the VM on node change instead of re-creating it
+     * 
+     */
+    @Export(name="migrate", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> migrate;
+
+    /**
+     * @return Whether to migrate the VM on node change instead of re-creating it
+     * 
+     */
+    public Output<Optional<Boolean>> migrate() {
+        return Codegen.optional(this.migrate);
+    }
+    /**
      * The name
      * 
      */
@@ -455,6 +470,20 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.serialDevices);
     }
     /**
+     * Specifies SMBIOS (type1) settings for the VM
+     * 
+     */
+    @Export(name="smbios", refs={VirtualMachineSmbios.class}, tree="[0]")
+    private Output</* @Nullable */ VirtualMachineSmbios> smbios;
+
+    /**
+     * @return Specifies SMBIOS (type1) settings for the VM
+     * 
+     */
+    public Output<Optional<VirtualMachineSmbios>> smbios() {
+        return Codegen.optional(this.smbios);
+    }
+    /**
      * Whether to start the virtual machine
      * 
      */
@@ -537,6 +566,20 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> timeoutClone() {
         return Codegen.optional(this.timeoutClone);
+    }
+    /**
+     * Migrate VM timeout
+     * 
+     */
+    @Export(name="timeoutMigrate", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> timeoutMigrate;
+
+    /**
+     * @return Migrate VM timeout
+     * 
+     */
+    public Output<Optional<Integer>> timeoutMigrate() {
+        return Codegen.optional(this.timeoutMigrate);
     }
     /**
      * MoveDisk timeout

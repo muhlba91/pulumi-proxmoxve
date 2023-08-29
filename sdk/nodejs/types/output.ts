@@ -295,7 +295,8 @@ export namespace VM {
 
     export interface VirtualMachineHostpci {
         device: string;
-        id: string;
+        id?: string;
+        mapping?: string;
         mdev?: string;
         pcie?: boolean;
         romFile?: string;
@@ -306,6 +307,7 @@ export namespace VM {
     export interface VirtualMachineInitialization {
         datastoreId?: string;
         dns?: outputs.VM.VirtualMachineInitializationDns;
+        interface?: string;
         ipConfigs?: outputs.VM.VirtualMachineInitializationIpConfig[];
         metaDataFileId?: string;
         networkDataFileId?: string;
@@ -364,6 +366,16 @@ export namespace VM {
 
     export interface VirtualMachineSerialDevice {
         device?: string;
+    }
+
+    export interface VirtualMachineSmbios {
+        family?: string;
+        manufacturer?: string;
+        product?: string;
+        serial?: string;
+        sku?: string;
+        uuid: string;
+        version?: string;
     }
 
     export interface VirtualMachineStartup {

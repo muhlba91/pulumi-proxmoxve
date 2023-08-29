@@ -14,7 +14,8 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     public sealed class VirtualMachineHostpci
     {
         public readonly string Device;
-        public readonly string Id;
+        public readonly string? Id;
+        public readonly string? Mapping;
         public readonly string? Mdev;
         public readonly bool? Pcie;
         public readonly string? RomFile;
@@ -25,7 +26,9 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         private VirtualMachineHostpci(
             string device,
 
-            string id,
+            string? id,
+
+            string? mapping,
 
             string? mdev,
 
@@ -39,6 +42,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         {
             Device = device;
             Id = id;
+            Mapping = mapping;
             Mdev = mdev;
             Pcie = pcie;
             RomFile = romFile;

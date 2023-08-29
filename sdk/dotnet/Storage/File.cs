@@ -66,6 +66,12 @@ namespace Pulumi.ProxmoxVE.Storage
         [Output("sourceRaw")]
         public Output<Outputs.FileSourceRaw?> SourceRaw { get; private set; } = null!;
 
+        /// <summary>
+        /// Timeout for uploading ISO/VSTMPL files in seconds
+        /// </summary>
+        [Output("timeoutUpload")]
+        public Output<int?> TimeoutUpload { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a File resource with the given unique name, arguments, and options.
@@ -143,6 +149,12 @@ namespace Pulumi.ProxmoxVE.Storage
         [Input("sourceRaw")]
         public Input<Inputs.FileSourceRawArgs>? SourceRaw { get; set; }
 
+        /// <summary>
+        /// Timeout for uploading ISO/VSTMPL files in seconds
+        /// </summary>
+        [Input("timeoutUpload")]
+        public Input<int>? TimeoutUpload { get; set; }
+
         public FileArgs()
         {
         }
@@ -204,6 +216,12 @@ namespace Pulumi.ProxmoxVE.Storage
         /// </summary>
         [Input("sourceRaw")]
         public Input<Inputs.FileSourceRawGetArgs>? SourceRaw { get; set; }
+
+        /// <summary>
+        /// Timeout for uploading ISO/VSTMPL files in seconds
+        /// </summary>
+        [Input("timeoutUpload")]
+        public Input<int>? TimeoutUpload { get; set; }
 
         public FileState()
         {

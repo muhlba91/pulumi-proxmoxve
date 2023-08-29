@@ -18,6 +18,9 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         [Input("dns")]
         public Input<Inputs.VirtualMachineInitializationDnsArgs>? Dns { get; set; }
 
+        [Input("interface")]
+        public Input<string>? Interface { get; set; }
+
         [Input("ipConfigs")]
         private InputList<Inputs.VirtualMachineInitializationIpConfigArgs>? _ipConfigs;
         public InputList<Inputs.VirtualMachineInitializationIpConfigArgs> IpConfigs

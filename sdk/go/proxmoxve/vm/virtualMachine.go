@@ -55,6 +55,8 @@ type VirtualMachine struct {
 	Machine pulumi.StringPtrOutput `pulumi:"machine"`
 	// The memory allocation
 	Memory VirtualMachineMemoryPtrOutput `pulumi:"memory"`
+	// Whether to migrate the VM on node change instead of re-creating it
+	Migrate pulumi.BoolPtrOutput `pulumi:"migrate"`
 	// The name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The network devices
@@ -75,6 +77,8 @@ type VirtualMachine struct {
 	ScsiHardware pulumi.StringPtrOutput `pulumi:"scsiHardware"`
 	// The serial devices
 	SerialDevices VirtualMachineSerialDeviceArrayOutput `pulumi:"serialDevices"`
+	// Specifies SMBIOS (type1) settings for the VM
+	Smbios VirtualMachineSmbiosPtrOutput `pulumi:"smbios"`
 	// Whether to start the virtual machine
 	Started pulumi.BoolPtrOutput `pulumi:"started"`
 	// Defines startup and shutdown behavior of the VM
@@ -87,6 +91,8 @@ type VirtualMachine struct {
 	Template pulumi.BoolPtrOutput `pulumi:"template"`
 	// Clone VM timeout
 	TimeoutClone pulumi.IntPtrOutput `pulumi:"timeoutClone"`
+	// Migrate VM timeout
+	TimeoutMigrate pulumi.IntPtrOutput `pulumi:"timeoutMigrate"`
 	// MoveDisk timeout
 	TimeoutMoveDisk pulumi.IntPtrOutput `pulumi:"timeoutMoveDisk"`
 	// Reboot timeout
@@ -176,6 +182,8 @@ type virtualMachineState struct {
 	Machine *string `pulumi:"machine"`
 	// The memory allocation
 	Memory *VirtualMachineMemory `pulumi:"memory"`
+	// Whether to migrate the VM on node change instead of re-creating it
+	Migrate *bool `pulumi:"migrate"`
 	// The name
 	Name *string `pulumi:"name"`
 	// The network devices
@@ -196,6 +204,8 @@ type virtualMachineState struct {
 	ScsiHardware *string `pulumi:"scsiHardware"`
 	// The serial devices
 	SerialDevices []VirtualMachineSerialDevice `pulumi:"serialDevices"`
+	// Specifies SMBIOS (type1) settings for the VM
+	Smbios *VirtualMachineSmbios `pulumi:"smbios"`
 	// Whether to start the virtual machine
 	Started *bool `pulumi:"started"`
 	// Defines startup and shutdown behavior of the VM
@@ -208,6 +218,8 @@ type virtualMachineState struct {
 	Template *bool `pulumi:"template"`
 	// Clone VM timeout
 	TimeoutClone *int `pulumi:"timeoutClone"`
+	// Migrate VM timeout
+	TimeoutMigrate *int `pulumi:"timeoutMigrate"`
 	// MoveDisk timeout
 	TimeoutMoveDisk *int `pulumi:"timeoutMoveDisk"`
 	// Reboot timeout
@@ -265,6 +277,8 @@ type VirtualMachineState struct {
 	Machine pulumi.StringPtrInput
 	// The memory allocation
 	Memory VirtualMachineMemoryPtrInput
+	// Whether to migrate the VM on node change instead of re-creating it
+	Migrate pulumi.BoolPtrInput
 	// The name
 	Name pulumi.StringPtrInput
 	// The network devices
@@ -285,6 +299,8 @@ type VirtualMachineState struct {
 	ScsiHardware pulumi.StringPtrInput
 	// The serial devices
 	SerialDevices VirtualMachineSerialDeviceArrayInput
+	// Specifies SMBIOS (type1) settings for the VM
+	Smbios VirtualMachineSmbiosPtrInput
 	// Whether to start the virtual machine
 	Started pulumi.BoolPtrInput
 	// Defines startup and shutdown behavior of the VM
@@ -297,6 +313,8 @@ type VirtualMachineState struct {
 	Template pulumi.BoolPtrInput
 	// Clone VM timeout
 	TimeoutClone pulumi.IntPtrInput
+	// Migrate VM timeout
+	TimeoutMigrate pulumi.IntPtrInput
 	// MoveDisk timeout
 	TimeoutMoveDisk pulumi.IntPtrInput
 	// Reboot timeout
@@ -352,6 +370,8 @@ type virtualMachineArgs struct {
 	Machine *string `pulumi:"machine"`
 	// The memory allocation
 	Memory *VirtualMachineMemory `pulumi:"memory"`
+	// Whether to migrate the VM on node change instead of re-creating it
+	Migrate *bool `pulumi:"migrate"`
 	// The name
 	Name *string `pulumi:"name"`
 	// The network devices
@@ -370,6 +390,8 @@ type virtualMachineArgs struct {
 	ScsiHardware *string `pulumi:"scsiHardware"`
 	// The serial devices
 	SerialDevices []VirtualMachineSerialDevice `pulumi:"serialDevices"`
+	// Specifies SMBIOS (type1) settings for the VM
+	Smbios *VirtualMachineSmbios `pulumi:"smbios"`
 	// Whether to start the virtual machine
 	Started *bool `pulumi:"started"`
 	// Defines startup and shutdown behavior of the VM
@@ -382,6 +404,8 @@ type virtualMachineArgs struct {
 	Template *bool `pulumi:"template"`
 	// Clone VM timeout
 	TimeoutClone *int `pulumi:"timeoutClone"`
+	// Migrate VM timeout
+	TimeoutMigrate *int `pulumi:"timeoutMigrate"`
 	// MoveDisk timeout
 	TimeoutMoveDisk *int `pulumi:"timeoutMoveDisk"`
 	// Reboot timeout
@@ -434,6 +458,8 @@ type VirtualMachineArgs struct {
 	Machine pulumi.StringPtrInput
 	// The memory allocation
 	Memory VirtualMachineMemoryPtrInput
+	// Whether to migrate the VM on node change instead of re-creating it
+	Migrate pulumi.BoolPtrInput
 	// The name
 	Name pulumi.StringPtrInput
 	// The network devices
@@ -452,6 +478,8 @@ type VirtualMachineArgs struct {
 	ScsiHardware pulumi.StringPtrInput
 	// The serial devices
 	SerialDevices VirtualMachineSerialDeviceArrayInput
+	// Specifies SMBIOS (type1) settings for the VM
+	Smbios VirtualMachineSmbiosPtrInput
 	// Whether to start the virtual machine
 	Started pulumi.BoolPtrInput
 	// Defines startup and shutdown behavior of the VM
@@ -464,6 +492,8 @@ type VirtualMachineArgs struct {
 	Template pulumi.BoolPtrInput
 	// Clone VM timeout
 	TimeoutClone pulumi.IntPtrInput
+	// Migrate VM timeout
+	TimeoutMigrate pulumi.IntPtrInput
 	// MoveDisk timeout
 	TimeoutMoveDisk pulumi.IntPtrInput
 	// Reboot timeout
@@ -667,6 +697,11 @@ func (o VirtualMachineOutput) Memory() VirtualMachineMemoryPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineMemoryPtrOutput { return v.Memory }).(VirtualMachineMemoryPtrOutput)
 }
 
+// Whether to migrate the VM on node change instead of re-creating it
+func (o VirtualMachineOutput) Migrate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.Migrate }).(pulumi.BoolPtrOutput)
+}
+
 // The name
 func (o VirtualMachineOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -717,6 +752,11 @@ func (o VirtualMachineOutput) SerialDevices() VirtualMachineSerialDeviceArrayOut
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineSerialDeviceArrayOutput { return v.SerialDevices }).(VirtualMachineSerialDeviceArrayOutput)
 }
 
+// Specifies SMBIOS (type1) settings for the VM
+func (o VirtualMachineOutput) Smbios() VirtualMachineSmbiosPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) VirtualMachineSmbiosPtrOutput { return v.Smbios }).(VirtualMachineSmbiosPtrOutput)
+}
+
 // Whether to start the virtual machine
 func (o VirtualMachineOutput) Started() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.Started }).(pulumi.BoolPtrOutput)
@@ -745,6 +785,11 @@ func (o VirtualMachineOutput) Template() pulumi.BoolPtrOutput {
 // Clone VM timeout
 func (o VirtualMachineOutput) TimeoutClone() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.TimeoutClone }).(pulumi.IntPtrOutput)
+}
+
+// Migrate VM timeout
+func (o VirtualMachineOutput) TimeoutMigrate() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.TimeoutMigrate }).(pulumi.IntPtrOutput)
 }
 
 // MoveDisk timeout

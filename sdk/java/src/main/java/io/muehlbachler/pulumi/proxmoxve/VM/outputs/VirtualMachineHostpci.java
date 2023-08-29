@@ -13,7 +13,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VirtualMachineHostpci {
     private String device;
-    private String id;
+    private @Nullable String id;
+    private @Nullable String mapping;
     private @Nullable String mdev;
     private @Nullable Boolean pcie;
     private @Nullable String romFile;
@@ -24,8 +25,11 @@ public final class VirtualMachineHostpci {
     public String device() {
         return this.device;
     }
-    public String id() {
-        return this.id;
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
+    }
+    public Optional<String> mapping() {
+        return Optional.ofNullable(this.mapping);
     }
     public Optional<String> mdev() {
         return Optional.ofNullable(this.mdev);
@@ -53,7 +57,8 @@ public final class VirtualMachineHostpci {
     @CustomType.Builder
     public static final class Builder {
         private String device;
-        private String id;
+        private @Nullable String id;
+        private @Nullable String mapping;
         private @Nullable String mdev;
         private @Nullable Boolean pcie;
         private @Nullable String romFile;
@@ -64,6 +69,7 @@ public final class VirtualMachineHostpci {
     	      Objects.requireNonNull(defaults);
     	      this.device = defaults.device;
     	      this.id = defaults.id;
+    	      this.mapping = defaults.mapping;
     	      this.mdev = defaults.mdev;
     	      this.pcie = defaults.pcie;
     	      this.romFile = defaults.romFile;
@@ -77,8 +83,13 @@ public final class VirtualMachineHostpci {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+        public Builder id(@Nullable String id) {
+            this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mapping(@Nullable String mapping) {
+            this.mapping = mapping;
             return this;
         }
         @CustomType.Setter
@@ -110,6 +121,7 @@ public final class VirtualMachineHostpci {
             final var o = new VirtualMachineHostpci();
             o.device = device;
             o.id = id;
+            o.mapping = mapping;
             o.mdev = mdev;
             o.pcie = pcie;
             o.romFile = romFile;

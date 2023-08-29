@@ -153,6 +153,21 @@ public final class FileState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.sourceRaw);
     }
 
+    /**
+     * Timeout for uploading ISO/VSTMPL files in seconds
+     * 
+     */
+    @Import(name="timeoutUpload")
+    private @Nullable Output<Integer> timeoutUpload;
+
+    /**
+     * @return Timeout for uploading ISO/VSTMPL files in seconds
+     * 
+     */
+    public Optional<Output<Integer>> timeoutUpload() {
+        return Optional.ofNullable(this.timeoutUpload);
+    }
+
     private FileState() {}
 
     private FileState(FileState $) {
@@ -165,6 +180,7 @@ public final class FileState extends com.pulumi.resources.ResourceArgs {
         this.nodeName = $.nodeName;
         this.sourceFile = $.sourceFile;
         this.sourceRaw = $.sourceRaw;
+        this.timeoutUpload = $.timeoutUpload;
     }
 
     public static Builder builder() {
@@ -372,6 +388,27 @@ public final class FileState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sourceRaw(FileSourceRawArgs sourceRaw) {
             return sourceRaw(Output.of(sourceRaw));
+        }
+
+        /**
+         * @param timeoutUpload Timeout for uploading ISO/VSTMPL files in seconds
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeoutUpload(@Nullable Output<Integer> timeoutUpload) {
+            $.timeoutUpload = timeoutUpload;
+            return this;
+        }
+
+        /**
+         * @param timeoutUpload Timeout for uploading ISO/VSTMPL files in seconds
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeoutUpload(Integer timeoutUpload) {
+            return timeoutUpload(Output.of(timeoutUpload));
         }
 
         public FileState build() {

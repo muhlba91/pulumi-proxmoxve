@@ -18,6 +18,7 @@ import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineMemoryArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineNetworkDeviceArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineOperatingSystemArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineSerialDeviceArgs;
+import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineSmbiosArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineStartupArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineVgaArgs;
 import java.lang.Boolean;
@@ -334,6 +335,21 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Whether to migrate the VM on node change instead of re-creating it
+     * 
+     */
+    @Import(name="migrate")
+    private @Nullable Output<Boolean> migrate;
+
+    /**
+     * @return Whether to migrate the VM on node change instead of re-creating it
+     * 
+     */
+    public Optional<Output<Boolean>> migrate() {
+        return Optional.ofNullable(this.migrate);
+    }
+
+    /**
      * The name
      * 
      */
@@ -484,6 +500,21 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Specifies SMBIOS (type1) settings for the VM
+     * 
+     */
+    @Import(name="smbios")
+    private @Nullable Output<VirtualMachineSmbiosArgs> smbios;
+
+    /**
+     * @return Specifies SMBIOS (type1) settings for the VM
+     * 
+     */
+    public Optional<Output<VirtualMachineSmbiosArgs>> smbios() {
+        return Optional.ofNullable(this.smbios);
+    }
+
+    /**
      * Whether to start the virtual machine
      * 
      */
@@ -571,6 +602,21 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<Integer>> timeoutClone() {
         return Optional.ofNullable(this.timeoutClone);
+    }
+
+    /**
+     * Migrate VM timeout
+     * 
+     */
+    @Import(name="timeoutMigrate")
+    private @Nullable Output<Integer> timeoutMigrate;
+
+    /**
+     * @return Migrate VM timeout
+     * 
+     */
+    public Optional<Output<Integer>> timeoutMigrate() {
+        return Optional.ofNullable(this.timeoutMigrate);
     }
 
     /**
@@ -701,6 +747,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         this.macAddresses = $.macAddresses;
         this.machine = $.machine;
         this.memory = $.memory;
+        this.migrate = $.migrate;
         this.name = $.name;
         this.networkDevices = $.networkDevices;
         this.networkInterfaceNames = $.networkInterfaceNames;
@@ -711,12 +758,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         this.reboot = $.reboot;
         this.scsiHardware = $.scsiHardware;
         this.serialDevices = $.serialDevices;
+        this.smbios = $.smbios;
         this.started = $.started;
         this.startup = $.startup;
         this.tabletDevice = $.tabletDevice;
         this.tags = $.tags;
         this.template = $.template;
         this.timeoutClone = $.timeoutClone;
+        this.timeoutMigrate = $.timeoutMigrate;
         this.timeoutMoveDisk = $.timeoutMoveDisk;
         this.timeoutReboot = $.timeoutReboot;
         this.timeoutShutdownVm = $.timeoutShutdownVm;
@@ -1225,6 +1274,27 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param migrate Whether to migrate the VM on node change instead of re-creating it
+         * 
+         * @return builder
+         * 
+         */
+        public Builder migrate(@Nullable Output<Boolean> migrate) {
+            $.migrate = migrate;
+            return this;
+        }
+
+        /**
+         * @param migrate Whether to migrate the VM on node change instead of re-creating it
+         * 
+         * @return builder
+         * 
+         */
+        public Builder migrate(Boolean migrate) {
+            return migrate(Output.of(migrate));
+        }
+
+        /**
          * @param name The name
          * 
          * @return builder
@@ -1465,6 +1535,27 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param smbios Specifies SMBIOS (type1) settings for the VM
+         * 
+         * @return builder
+         * 
+         */
+        public Builder smbios(@Nullable Output<VirtualMachineSmbiosArgs> smbios) {
+            $.smbios = smbios;
+            return this;
+        }
+
+        /**
+         * @param smbios Specifies SMBIOS (type1) settings for the VM
+         * 
+         * @return builder
+         * 
+         */
+        public Builder smbios(VirtualMachineSmbiosArgs smbios) {
+            return smbios(Output.of(smbios));
+        }
+
+        /**
          * @param started Whether to start the virtual machine
          * 
          * @return builder
@@ -1598,6 +1689,27 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
          */
         public Builder timeoutClone(Integer timeoutClone) {
             return timeoutClone(Output.of(timeoutClone));
+        }
+
+        /**
+         * @param timeoutMigrate Migrate VM timeout
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeoutMigrate(@Nullable Output<Integer> timeoutMigrate) {
+            $.timeoutMigrate = timeoutMigrate;
+            return this;
+        }
+
+        /**
+         * @param timeoutMigrate Migrate VM timeout
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeoutMigrate(Integer timeoutMigrate) {
+            return timeoutMigrate(Output.of(timeoutMigrate));
         }
 
         /**

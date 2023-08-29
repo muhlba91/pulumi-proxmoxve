@@ -115,6 +115,10 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly memory!: pulumi.Output<outputs.VM.VirtualMachineMemory | undefined>;
     /**
+     * Whether to migrate the VM on node change instead of re-creating it
+     */
+    public readonly migrate!: pulumi.Output<boolean | undefined>;
+    /**
      * The name
      */
     public readonly name!: pulumi.Output<string>;
@@ -155,6 +159,10 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly serialDevices!: pulumi.Output<outputs.VM.VirtualMachineSerialDevice[] | undefined>;
     /**
+     * Specifies SMBIOS (type1) settings for the VM
+     */
+    public readonly smbios!: pulumi.Output<outputs.VM.VirtualMachineSmbios | undefined>;
+    /**
      * Whether to start the virtual machine
      */
     public readonly started!: pulumi.Output<boolean | undefined>;
@@ -178,6 +186,10 @@ export class VirtualMachine extends pulumi.CustomResource {
      * Clone VM timeout
      */
     public readonly timeoutClone!: pulumi.Output<number | undefined>;
+    /**
+     * Migrate VM timeout
+     */
+    public readonly timeoutMigrate!: pulumi.Output<number | undefined>;
     /**
      * MoveDisk timeout
      */
@@ -240,6 +252,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["macAddresses"] = state ? state.macAddresses : undefined;
             resourceInputs["machine"] = state ? state.machine : undefined;
             resourceInputs["memory"] = state ? state.memory : undefined;
+            resourceInputs["migrate"] = state ? state.migrate : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkDevices"] = state ? state.networkDevices : undefined;
             resourceInputs["networkInterfaceNames"] = state ? state.networkInterfaceNames : undefined;
@@ -250,12 +263,14 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["reboot"] = state ? state.reboot : undefined;
             resourceInputs["scsiHardware"] = state ? state.scsiHardware : undefined;
             resourceInputs["serialDevices"] = state ? state.serialDevices : undefined;
+            resourceInputs["smbios"] = state ? state.smbios : undefined;
             resourceInputs["started"] = state ? state.started : undefined;
             resourceInputs["startup"] = state ? state.startup : undefined;
             resourceInputs["tabletDevice"] = state ? state.tabletDevice : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["template"] = state ? state.template : undefined;
             resourceInputs["timeoutClone"] = state ? state.timeoutClone : undefined;
+            resourceInputs["timeoutMigrate"] = state ? state.timeoutMigrate : undefined;
             resourceInputs["timeoutMoveDisk"] = state ? state.timeoutMoveDisk : undefined;
             resourceInputs["timeoutReboot"] = state ? state.timeoutReboot : undefined;
             resourceInputs["timeoutShutdownVm"] = state ? state.timeoutShutdownVm : undefined;
@@ -285,6 +300,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["kvmArguments"] = args ? args.kvmArguments : undefined;
             resourceInputs["machine"] = args ? args.machine : undefined;
             resourceInputs["memory"] = args ? args.memory : undefined;
+            resourceInputs["migrate"] = args ? args.migrate : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkDevices"] = args ? args.networkDevices : undefined;
             resourceInputs["nodeName"] = args ? args.nodeName : undefined;
@@ -294,12 +310,14 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["reboot"] = args ? args.reboot : undefined;
             resourceInputs["scsiHardware"] = args ? args.scsiHardware : undefined;
             resourceInputs["serialDevices"] = args ? args.serialDevices : undefined;
+            resourceInputs["smbios"] = args ? args.smbios : undefined;
             resourceInputs["started"] = args ? args.started : undefined;
             resourceInputs["startup"] = args ? args.startup : undefined;
             resourceInputs["tabletDevice"] = args ? args.tabletDevice : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["template"] = args ? args.template : undefined;
             resourceInputs["timeoutClone"] = args ? args.timeoutClone : undefined;
+            resourceInputs["timeoutMigrate"] = args ? args.timeoutMigrate : undefined;
             resourceInputs["timeoutMoveDisk"] = args ? args.timeoutMoveDisk : undefined;
             resourceInputs["timeoutReboot"] = args ? args.timeoutReboot : undefined;
             resourceInputs["timeoutShutdownVm"] = args ? args.timeoutShutdownVm : undefined;
@@ -402,6 +420,10 @@ export interface VirtualMachineState {
      */
     memory?: pulumi.Input<inputs.VM.VirtualMachineMemory>;
     /**
+     * Whether to migrate the VM on node change instead of re-creating it
+     */
+    migrate?: pulumi.Input<boolean>;
+    /**
      * The name
      */
     name?: pulumi.Input<string>;
@@ -442,6 +464,10 @@ export interface VirtualMachineState {
      */
     serialDevices?: pulumi.Input<pulumi.Input<inputs.VM.VirtualMachineSerialDevice>[]>;
     /**
+     * Specifies SMBIOS (type1) settings for the VM
+     */
+    smbios?: pulumi.Input<inputs.VM.VirtualMachineSmbios>;
+    /**
      * Whether to start the virtual machine
      */
     started?: pulumi.Input<boolean>;
@@ -465,6 +491,10 @@ export interface VirtualMachineState {
      * Clone VM timeout
      */
     timeoutClone?: pulumi.Input<number>;
+    /**
+     * Migrate VM timeout
+     */
+    timeoutMigrate?: pulumi.Input<number>;
     /**
      * MoveDisk timeout
      */
@@ -568,6 +598,10 @@ export interface VirtualMachineArgs {
      */
     memory?: pulumi.Input<inputs.VM.VirtualMachineMemory>;
     /**
+     * Whether to migrate the VM on node change instead of re-creating it
+     */
+    migrate?: pulumi.Input<boolean>;
+    /**
      * The name
      */
     name?: pulumi.Input<string>;
@@ -604,6 +638,10 @@ export interface VirtualMachineArgs {
      */
     serialDevices?: pulumi.Input<pulumi.Input<inputs.VM.VirtualMachineSerialDevice>[]>;
     /**
+     * Specifies SMBIOS (type1) settings for the VM
+     */
+    smbios?: pulumi.Input<inputs.VM.VirtualMachineSmbios>;
+    /**
      * Whether to start the virtual machine
      */
     started?: pulumi.Input<boolean>;
@@ -627,6 +665,10 @@ export interface VirtualMachineArgs {
      * Clone VM timeout
      */
     timeoutClone?: pulumi.Input<number>;
+    /**
+     * Migrate VM timeout
+     */
+    timeoutMigrate?: pulumi.Input<number>;
     /**
      * MoveDisk timeout
      */
