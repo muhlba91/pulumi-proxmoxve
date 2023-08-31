@@ -781,6 +781,8 @@ github.com/bpg/terraform-provider-proxmox v0.30.0 h1:iQ0rvmpWzIM9swqOtPwlEtmv7F1
 github.com/bpg/terraform-provider-proxmox v0.30.0/go.mod h1:H426FtBGk51yqomILw3F8TDdkOYA4mphYq/eP62jbVM=
 github.com/bpg/terraform-provider-proxmox v0.30.1 h1:hTpl789Twdz0S4YFKrmnwv+SxXIDfcXKseQp5xtVhWU=
 github.com/bpg/terraform-provider-proxmox v0.30.1/go.mod h1:7r0J4UAZRkkjb+lXnVQC3vVZUlBoV4PWbMyDkRCXZrQ=
+github.com/bpg/terraform-provider-proxmox v0.30.2 h1:m8au941Gldp67ukwqb8jbAxNUhf4Wcl/+Sml1TFPjpk=
+github.com/bpg/terraform-provider-proxmox v0.30.2/go.mod h1:xUk/sp2Bvkyflma1ySXWaO9+MaU2ZK7z8/azmZt4Rsk=
 github.com/bwesterb/go-ristretto v1.2.0/go.mod h1:fUIoIZaG73pV5biE2Blr2xEzDoMj7NFEuV9ekS419A0=
 github.com/bwesterb/go-ristretto v1.2.3/go.mod h1:fUIoIZaG73pV5biE2Blr2xEzDoMj7NFEuV9ekS419A0=
 github.com/cenkalti/backoff/v3 v3.2.2 h1:cfUAAO3yvKMYKPrvhDuHSwQnhZNk/RMHKdZqKTxfm6M=
@@ -1127,6 +1129,8 @@ github.com/hashicorp/terraform-plugin-framework v1.3.5 h1:FJ6s3CVWVAxlhiF/jhy6hz
 github.com/hashicorp/terraform-plugin-framework v1.3.5/go.mod h1:2gGDpWiTI0irr9NSTLFAKlTi6KwGti3AoU19rFqU30o=
 github.com/hashicorp/terraform-plugin-framework-validators v0.11.0 h1:DKb1bX7/EPZUTW6F5zdwJzS/EZ/ycVD6JAW5RYOj4f8=
 github.com/hashicorp/terraform-plugin-framework-validators v0.11.0/go.mod h1:dzxOiHh7O9CAwc6p8N4mR1H++LtRkl+u+21YNiBVNno=
+github.com/hashicorp/terraform-plugin-framework-validators v0.12.0 h1:HOjBuMbOEzl7snOdOoUfE2Jgeto6JOjLVQ39Ls2nksc=
+github.com/hashicorp/terraform-plugin-framework-validators v0.12.0/go.mod h1:jfHGE/gzjxYz6XoUwi/aYiiKrJDeutQNUtGQXkaHklg=
 github.com/hashicorp/terraform-plugin-go v0.16.0/go.mod h1:4sn8bFuDbt+2+Yztt35IbOrvZc0zyEi87gJzsTgCES8=
 github.com/hashicorp/terraform-plugin-go v0.18.0 h1:IwTkOS9cOW1ehLd/rG0y+u/TGLK9y6fGoBjXVUquzpE=
 github.com/hashicorp/terraform-plugin-go v0.18.0/go.mod h1:l7VK+2u5Kf2y+A+742GX0ouLut3gttudmvMgN0PA74Y=
