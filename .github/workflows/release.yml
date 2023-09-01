@@ -64,7 +64,7 @@ jobs:
         uses: pulumi/actions@v4
 
       - name: Install cosign
-        uses: sigstore/cosign-installer@v3.1.1
+        uses: sigstore/cosign-installer@v3.1.2
       - name: Download Syft
         uses: anchore/sbom-action/download-syft@v0.14.3
 
