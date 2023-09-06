@@ -309,6 +309,7 @@ func (o ProviderSshPtrOutput) Username() pulumi.StringPtrOutput {
 type ProviderSshNode struct {
 	Address string `pulumi:"address"`
 	Name    string `pulumi:"name"`
+	Port    *int   `pulumi:"port"`
 }
 
 // ProviderSshNodeInput is an input type that accepts ProviderSshNodeArgs and ProviderSshNodeOutput values.
@@ -325,6 +326,7 @@ type ProviderSshNodeInput interface {
 type ProviderSshNodeArgs struct {
 	Address pulumi.StringInput `pulumi:"address"`
 	Name    pulumi.StringInput `pulumi:"name"`
+	Port    pulumi.IntPtrInput `pulumi:"port"`
 }
 
 func (ProviderSshNodeArgs) ElementType() reflect.Type {
@@ -384,6 +386,10 @@ func (o ProviderSshNodeOutput) Address() pulumi.StringOutput {
 
 func (o ProviderSshNodeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ProviderSshNode) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ProviderSshNodeOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ProviderSshNode) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
 type ProviderSshNodeArrayOutput struct{ *pulumi.OutputState }

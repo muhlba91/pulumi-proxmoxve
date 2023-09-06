@@ -160,6 +160,14 @@
         },
         "proxmoxve:CT/ContainerFeatures:ContainerFeatures": {
             "properties": {
+                "fuse": {
+                    "type": "boolean",
+                    "willReplaceOnChanges": true
+                },
+                "keyctl": {
+                    "type": "boolean",
+                    "willReplaceOnChanges": true
+                },
                 "nesting": {
                     "type": "boolean",
                     "willReplaceOnChanges": true
@@ -1216,6 +1224,9 @@
                 },
                 "name": {
                     "type": "string"
+                },
+                "port": {
+                    "type": "integer"
                 }
             },
             "type": "object",
@@ -1278,6 +1289,9 @@
                 },
                 "name": {
                     "type": "string"
+                },
+                "port": {
+                    "type": "integer"
                 }
             },
             "type": "object",
@@ -2719,8 +2733,7 @@
                 },
                 "timeoutUpload": {
                     "type": "integer",
-                    "description": "Timeout for uploading ISO/VSTMPL files in seconds\n",
-                    "willReplaceOnChanges": true
+                    "description": "Timeout for uploading ISO/VSTMPL files in seconds\n"
                 }
             },
             "requiredInputs": [
@@ -2776,8 +2789,7 @@
                     },
                     "timeoutUpload": {
                         "type": "integer",
-                        "description": "Timeout for uploading ISO/VSTMPL files in seconds\n",
-                        "willReplaceOnChanges": true
+                        "description": "Timeout for uploading ISO/VSTMPL files in seconds\n"
                     }
                 },
                 "type": "object"

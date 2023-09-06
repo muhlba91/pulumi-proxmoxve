@@ -5,8 +5,11 @@ package io.muehlbachler.pulumi.proxmoxve.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ProviderSshNodeArgs extends com.pulumi.resources.ResourceArgs {
@@ -27,11 +30,19 @@ public final class ProviderSshNodeArgs extends com.pulumi.resources.ResourceArgs
         return this.name;
     }
 
+    @Import(name="port")
+    private @Nullable Output<Integer> port;
+
+    public Optional<Output<Integer>> port() {
+        return Optional.ofNullable(this.port);
+    }
+
     private ProviderSshNodeArgs() {}
 
     private ProviderSshNodeArgs(ProviderSshNodeArgs $) {
         this.address = $.address;
         this.name = $.name;
+        this.port = $.port;
     }
 
     public static Builder builder() {
@@ -68,6 +79,15 @@ public final class ProviderSshNodeArgs extends com.pulumi.resources.ResourceArgs
 
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        public Builder port(@Nullable Output<Integer> port) {
+            $.port = port;
+            return this;
+        }
+
+        public Builder port(Integer port) {
+            return port(Output.of(port));
         }
 
         public ProviderSshNodeArgs build() {

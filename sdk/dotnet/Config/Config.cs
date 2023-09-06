@@ -118,6 +118,7 @@ namespace Pulumi.ProxmoxVE
              {
                 public string Address { get; set; }
                 public string Name { get; set; }
+                public int? Port { get; set; }
             }
         }
     }

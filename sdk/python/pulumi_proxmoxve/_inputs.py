@@ -111,9 +111,12 @@ class ProviderSshArgs:
 class ProviderSshNodeArgs:
     def __init__(__self__, *,
                  address: pulumi.Input[str],
-                 name: pulumi.Input[str]):
+                 name: pulumi.Input[str],
+                 port: Optional[pulumi.Input[int]] = None):
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "name", name)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter
@@ -132,5 +135,14 @@ class ProviderSshNodeArgs:
     @name.setter
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
 
 

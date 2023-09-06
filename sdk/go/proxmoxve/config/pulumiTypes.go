@@ -89,6 +89,7 @@ func (o SshOutput) Username() pulumi.StringPtrOutput {
 type SshNode struct {
 	Address string `pulumi:"address"`
 	Name    string `pulumi:"name"`
+	Port    *int   `pulumi:"port"`
 }
 
 // SshNodeInput is an input type that accepts SshNodeArgs and SshNodeOutput values.
@@ -105,6 +106,7 @@ type SshNodeInput interface {
 type SshNodeArgs struct {
 	Address pulumi.StringInput `pulumi:"address"`
 	Name    pulumi.StringInput `pulumi:"name"`
+	Port    pulumi.IntPtrInput `pulumi:"port"`
 }
 
 func (SshNodeArgs) ElementType() reflect.Type {
@@ -164,6 +166,10 @@ func (o SshNodeOutput) Address() pulumi.StringOutput {
 
 func (o SshNodeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SshNode) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o SshNodeOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SshNode) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
 type SshNodeArrayOutput struct{ *pulumi.OutputState }

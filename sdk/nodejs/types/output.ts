@@ -40,6 +40,8 @@ export namespace CT {
     }
 
     export interface ContainerFeatures {
+        fuse?: boolean;
+        keyctl?: boolean;
         nesting?: boolean;
     }
 
@@ -404,6 +406,7 @@ export namespace config {
     export interface SshNode {
         address: string;
         name: string;
+        port?: number;
     }
 
 }

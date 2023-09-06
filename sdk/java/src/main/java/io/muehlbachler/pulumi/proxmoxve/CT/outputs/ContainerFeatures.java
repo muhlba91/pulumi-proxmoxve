@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContainerFeatures {
+    private @Nullable Boolean fuse;
+    private @Nullable Boolean keyctl;
     private @Nullable Boolean nesting;
 
     private ContainerFeatures() {}
+    public Optional<Boolean> fuse() {
+        return Optional.ofNullable(this.fuse);
+    }
+    public Optional<Boolean> keyctl() {
+        return Optional.ofNullable(this.keyctl);
+    }
     public Optional<Boolean> nesting() {
         return Optional.ofNullable(this.nesting);
     }
@@ -27,13 +35,27 @@ public final class ContainerFeatures {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean fuse;
+        private @Nullable Boolean keyctl;
         private @Nullable Boolean nesting;
         public Builder() {}
         public Builder(ContainerFeatures defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.fuse = defaults.fuse;
+    	      this.keyctl = defaults.keyctl;
     	      this.nesting = defaults.nesting;
         }
 
+        @CustomType.Setter
+        public Builder fuse(@Nullable Boolean fuse) {
+            this.fuse = fuse;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder keyctl(@Nullable Boolean keyctl) {
+            this.keyctl = keyctl;
+            return this;
+        }
         @CustomType.Setter
         public Builder nesting(@Nullable Boolean nesting) {
             this.nesting = nesting;
@@ -41,6 +63,8 @@ public final class ContainerFeatures {
         }
         public ContainerFeatures build() {
             final var o = new ContainerFeatures();
+            o.fuse = fuse;
+            o.keyctl = keyctl;
             o.nesting = nesting;
             return o;
         }

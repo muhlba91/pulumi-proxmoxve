@@ -181,9 +181,33 @@ class ContainerDiskArgs:
 @pulumi.input_type
 class ContainerFeaturesArgs:
     def __init__(__self__, *,
+                 fuse: Optional[pulumi.Input[bool]] = None,
+                 keyctl: Optional[pulumi.Input[bool]] = None,
                  nesting: Optional[pulumi.Input[bool]] = None):
+        if fuse is not None:
+            pulumi.set(__self__, "fuse", fuse)
+        if keyctl is not None:
+            pulumi.set(__self__, "keyctl", keyctl)
         if nesting is not None:
             pulumi.set(__self__, "nesting", nesting)
+
+    @property
+    @pulumi.getter
+    def fuse(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "fuse")
+
+    @fuse.setter
+    def fuse(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "fuse", value)
+
+    @property
+    @pulumi.getter
+    def keyctl(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "keyctl")
+
+    @keyctl.setter
+    def keyctl(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "keyctl", value)
 
     @property
     @pulumi.getter

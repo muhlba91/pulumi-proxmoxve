@@ -12,6 +12,12 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
 
     public sealed class ContainerFeaturesArgs : global::Pulumi.ResourceArgs
     {
+        [Input("fuse")]
+        public Input<bool>? Fuse { get; set; }
+
+        [Input("keyctl")]
+        public Input<bool>? Keyctl { get; set; }
+
         [Input("nesting")]
         public Input<bool>? Nesting { get; set; }
 

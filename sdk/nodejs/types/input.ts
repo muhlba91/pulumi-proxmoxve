@@ -21,6 +21,7 @@ export interface ProviderSsh {
 export interface ProviderSshNode {
     address: pulumi.Input<string>;
     name: pulumi.Input<string>;
+    port?: pulumi.Input<number>;
 }
 export namespace CT {
     export interface ContainerClone {
@@ -47,6 +48,8 @@ export namespace CT {
     }
 
     export interface ContainerFeatures {
+        fuse?: pulumi.Input<boolean>;
+        keyctl?: pulumi.Input<boolean>;
         nesting?: pulumi.Input<boolean>;
     }
 

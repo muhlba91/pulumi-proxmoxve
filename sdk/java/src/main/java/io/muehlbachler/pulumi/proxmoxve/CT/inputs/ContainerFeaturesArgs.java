@@ -15,6 +15,20 @@ public final class ContainerFeaturesArgs extends com.pulumi.resources.ResourceAr
 
     public static final ContainerFeaturesArgs Empty = new ContainerFeaturesArgs();
 
+    @Import(name="fuse")
+    private @Nullable Output<Boolean> fuse;
+
+    public Optional<Output<Boolean>> fuse() {
+        return Optional.ofNullable(this.fuse);
+    }
+
+    @Import(name="keyctl")
+    private @Nullable Output<Boolean> keyctl;
+
+    public Optional<Output<Boolean>> keyctl() {
+        return Optional.ofNullable(this.keyctl);
+    }
+
     @Import(name="nesting")
     private @Nullable Output<Boolean> nesting;
 
@@ -25,6 +39,8 @@ public final class ContainerFeaturesArgs extends com.pulumi.resources.ResourceAr
     private ContainerFeaturesArgs() {}
 
     private ContainerFeaturesArgs(ContainerFeaturesArgs $) {
+        this.fuse = $.fuse;
+        this.keyctl = $.keyctl;
         this.nesting = $.nesting;
     }
 
@@ -44,6 +60,24 @@ public final class ContainerFeaturesArgs extends com.pulumi.resources.ResourceAr
 
         public Builder(ContainerFeaturesArgs defaults) {
             $ = new ContainerFeaturesArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder fuse(@Nullable Output<Boolean> fuse) {
+            $.fuse = fuse;
+            return this;
+        }
+
+        public Builder fuse(Boolean fuse) {
+            return fuse(Output.of(fuse));
+        }
+
+        public Builder keyctl(@Nullable Output<Boolean> keyctl) {
+            $.keyctl = keyctl;
+            return this;
+        }
+
+        public Builder keyctl(Boolean keyctl) {
+            return keyctl(Output.of(keyctl));
         }
 
         public Builder nesting(@Nullable Output<Boolean> nesting) {

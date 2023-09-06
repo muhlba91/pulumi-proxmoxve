@@ -4,13 +4,17 @@
 package io.muehlbachler.pulumi.proxmoxve.config.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class SshNode {
     private String address;
     private String name;
+    private @Nullable Integer port;
 
     private SshNode() {}
     public String address() {
@@ -18,6 +22,9 @@ public final class SshNode {
     }
     public String name() {
         return this.name;
+    }
+    public Optional<Integer> port() {
+        return Optional.ofNullable(this.port);
     }
 
     public static Builder builder() {
@@ -31,11 +38,13 @@ public final class SshNode {
     public static final class Builder {
         private String address;
         private String name;
+        private @Nullable Integer port;
         public Builder() {}
         public Builder(SshNode defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.address = defaults.address;
     	      this.name = defaults.name;
+    	      this.port = defaults.port;
         }
 
         @CustomType.Setter
@@ -48,10 +57,16 @@ public final class SshNode {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
+        public Builder port(@Nullable Integer port) {
+            this.port = port;
+            return this;
+        }
         public SshNode build() {
             final var o = new SshNode();
             o.address = address;
             o.name = name;
+            o.port = port;
             return o;
         }
     }

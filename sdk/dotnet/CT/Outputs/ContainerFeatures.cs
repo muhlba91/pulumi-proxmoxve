@@ -13,11 +13,20 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
     [OutputType]
     public sealed class ContainerFeatures
     {
+        public readonly bool? Fuse;
+        public readonly bool? Keyctl;
         public readonly bool? Nesting;
 
         [OutputConstructor]
-        private ContainerFeatures(bool? nesting)
+        private ContainerFeatures(
+            bool? fuse,
+
+            bool? keyctl,
+
+            bool? nesting)
         {
+            Fuse = fuse;
+            Keyctl = keyctl;
             Nesting = nesting;
         }
     }

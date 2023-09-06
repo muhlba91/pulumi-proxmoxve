@@ -651,6 +651,8 @@ func (o ContainerDiskPtrOutput) Size() pulumi.IntPtrOutput {
 }
 
 type ContainerFeatures struct {
+	Fuse    *bool `pulumi:"fuse"`
+	Keyctl  *bool `pulumi:"keyctl"`
 	Nesting *bool `pulumi:"nesting"`
 }
 
@@ -666,6 +668,8 @@ type ContainerFeaturesInput interface {
 }
 
 type ContainerFeaturesArgs struct {
+	Fuse    pulumi.BoolPtrInput `pulumi:"fuse"`
+	Keyctl  pulumi.BoolPtrInput `pulumi:"keyctl"`
 	Nesting pulumi.BoolPtrInput `pulumi:"nesting"`
 }
 
@@ -746,6 +750,14 @@ func (o ContainerFeaturesOutput) ToContainerFeaturesPtrOutputWithContext(ctx con
 	}).(ContainerFeaturesPtrOutput)
 }
 
+func (o ContainerFeaturesOutput) Fuse() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerFeatures) *bool { return v.Fuse }).(pulumi.BoolPtrOutput)
+}
+
+func (o ContainerFeaturesOutput) Keyctl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerFeatures) *bool { return v.Keyctl }).(pulumi.BoolPtrOutput)
+}
+
 func (o ContainerFeaturesOutput) Nesting() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContainerFeatures) *bool { return v.Nesting }).(pulumi.BoolPtrOutput)
 }
@@ -772,6 +784,24 @@ func (o ContainerFeaturesPtrOutput) Elem() ContainerFeaturesOutput {
 		var ret ContainerFeatures
 		return ret
 	}).(ContainerFeaturesOutput)
+}
+
+func (o ContainerFeaturesPtrOutput) Fuse() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ContainerFeatures) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Fuse
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ContainerFeaturesPtrOutput) Keyctl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ContainerFeatures) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Keyctl
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ContainerFeaturesPtrOutput) Nesting() pulumi.BoolPtrOutput {

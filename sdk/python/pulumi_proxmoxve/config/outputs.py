@@ -64,9 +64,12 @@ class Ssh(dict):
 class SshNode(dict):
     def __init__(__self__, *,
                  address: str,
-                 name: str):
+                 name: str,
+                 port: Optional[int] = None):
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "name", name)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter
@@ -77,5 +80,10 @@ class SshNode(dict):
     @pulumi.getter
     def name(self) -> str:
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        return pulumi.get(self, "port")
 
 
