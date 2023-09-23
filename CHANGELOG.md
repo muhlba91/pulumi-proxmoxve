@@ -1,6 +1,25 @@
 # Changelog
 
 
+## [5.12.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.11.1...v5.12.0) (2023-09-23)
+
+
+### Features
+
+* update upstream to 0.32.0 ([45198a3](https://github.com/muhlba91/pulumi-proxmoxve/commit/45198a362dcfccbb69729103858be648e3aee155))
+
+
+### Miscellaneous Chores
+
+* **deps:** update goreleaser/goreleaser-action action to v5 ([8fb8a00](https://github.com/muhlba91/pulumi-proxmoxve/commit/8fb8a0086aa756e483ceebbaa849b1a40843ad6a))
+* **deps:** update module github.com/pulumi/pulumi-terraform-bridge/v3 to v3.59.0 ([a783b0a](https://github.com/muhlba91/pulumi-proxmoxve/commit/a783b0a5d8a54c91edff2a13f79967ebf3911f0b))
+* **deps:** update module github.com/pulumi/pulumi-terraform-bridge/v3 to v3.60.0 ([9b0f8f5](https://github.com/muhlba91/pulumi-proxmoxve/commit/9b0f8f5f8f803fe4f1f3d67600c12c33c9390149))
+* **deps:** update module github.com/pulumi/pulumi-terraform-bridge/v3 to v3.60.1 ([c863401](https://github.com/muhlba91/pulumi-proxmoxve/commit/c863401e49b8a5c83d529c333689fdb40f5ba69b))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.81.0 ([0c5506e](https://github.com/muhlba91/pulumi-proxmoxve/commit/0c5506e2ea8ef90da7342cf762f824869ebc2a5c))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.82.0 ([bf49d3b](https://github.com/muhlba91/pulumi-proxmoxve/commit/bf49d3becb009b85bad182e9ea367d2d6664cb92))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.82.1 ([c59fb0b](https://github.com/muhlba91/pulumi-proxmoxve/commit/c59fb0b917685f18c9b9c43cc32cba44cc3dedaa))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.83.0 ([5c2b2ae](https://github.com/muhlba91/pulumi-proxmoxve/commit/5c2b2ae5617ff74d71c8f8630124c45d0beb1ce4))
+
 ## [5.11.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.11.0...v5.11.1) (2023-09-06)
 
 
