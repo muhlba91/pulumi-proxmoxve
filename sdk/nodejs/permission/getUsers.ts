@@ -29,3 +29,6 @@ export interface GetUsersResult {
     readonly lastNames: string[];
     readonly userIds: string[];
 }
+export function getUsersOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
+    return pulumi.output(getUsers(opts))
+}

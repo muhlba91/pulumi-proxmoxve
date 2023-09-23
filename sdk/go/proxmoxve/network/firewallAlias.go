@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type FirewallAlias struct {
@@ -149,6 +150,12 @@ func (i *FirewallAlias) ToFirewallAliasOutputWithContext(ctx context.Context) Fi
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallAliasOutput)
 }
 
+func (i *FirewallAlias) ToOutput(ctx context.Context) pulumix.Output[*FirewallAlias] {
+	return pulumix.Output[*FirewallAlias]{
+		OutputState: i.ToFirewallAliasOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FirewallAliasArrayInput is an input type that accepts FirewallAliasArray and FirewallAliasArrayOutput values.
 // You can construct a concrete instance of `FirewallAliasArrayInput` via:
 //
@@ -172,6 +179,12 @@ func (i FirewallAliasArray) ToFirewallAliasArrayOutput() FirewallAliasArrayOutpu
 
 func (i FirewallAliasArray) ToFirewallAliasArrayOutputWithContext(ctx context.Context) FirewallAliasArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallAliasArrayOutput)
+}
+
+func (i FirewallAliasArray) ToOutput(ctx context.Context) pulumix.Output[[]*FirewallAlias] {
+	return pulumix.Output[[]*FirewallAlias]{
+		OutputState: i.ToFirewallAliasArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // FirewallAliasMapInput is an input type that accepts FirewallAliasMap and FirewallAliasMapOutput values.
@@ -199,6 +212,12 @@ func (i FirewallAliasMap) ToFirewallAliasMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallAliasMapOutput)
 }
 
+func (i FirewallAliasMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FirewallAlias] {
+	return pulumix.Output[map[string]*FirewallAlias]{
+		OutputState: i.ToFirewallAliasMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FirewallAliasOutput struct{ *pulumi.OutputState }
 
 func (FirewallAliasOutput) ElementType() reflect.Type {
@@ -211,6 +230,12 @@ func (o FirewallAliasOutput) ToFirewallAliasOutput() FirewallAliasOutput {
 
 func (o FirewallAliasOutput) ToFirewallAliasOutputWithContext(ctx context.Context) FirewallAliasOutput {
 	return o
+}
+
+func (o FirewallAliasOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallAlias] {
+	return pulumix.Output[*FirewallAlias]{
+		OutputState: o.OutputState,
+	}
 }
 
 // IP/CIDR block
@@ -257,6 +282,12 @@ func (o FirewallAliasArrayOutput) ToFirewallAliasArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o FirewallAliasArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FirewallAlias] {
+	return pulumix.Output[[]*FirewallAlias]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FirewallAliasArrayOutput) Index(i pulumi.IntInput) FirewallAliasOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FirewallAlias {
 		return vs[0].([]*FirewallAlias)[vs[1].(int)]
@@ -275,6 +306,12 @@ func (o FirewallAliasMapOutput) ToFirewallAliasMapOutput() FirewallAliasMapOutpu
 
 func (o FirewallAliasMapOutput) ToFirewallAliasMapOutputWithContext(ctx context.Context) FirewallAliasMapOutput {
 	return o
+}
+
+func (o FirewallAliasMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FirewallAlias] {
+	return pulumix.Output[map[string]*FirewallAlias]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FirewallAliasMapOutput) MapIndex(k pulumi.StringInput) FirewallAliasOutput {

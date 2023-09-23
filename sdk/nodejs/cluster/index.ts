@@ -6,5 +6,6 @@ import * as utilities from "../utilities";
 // Export members:
 export { GetNodesResult } from "./getNodes";
 export const getNodes: typeof import("./getNodes").getNodes = null as any;
-utilities.lazyLoad(exports, ["getNodes"], () => require("./getNodes"));
+export const getNodesOutput: typeof import("./getNodes").getNodesOutput = null as any;
+utilities.lazyLoad(exports, ["getNodes","getNodesOutput"], () => require("./getNodes"));
 

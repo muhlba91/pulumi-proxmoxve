@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type Hosts struct {
@@ -136,6 +137,12 @@ func (i *Hosts) ToHostsOutputWithContext(ctx context.Context) HostsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostsOutput)
 }
 
+func (i *Hosts) ToOutput(ctx context.Context) pulumix.Output[*Hosts] {
+	return pulumix.Output[*Hosts]{
+		OutputState: i.ToHostsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HostsArrayInput is an input type that accepts HostsArray and HostsArrayOutput values.
 // You can construct a concrete instance of `HostsArrayInput` via:
 //
@@ -159,6 +166,12 @@ func (i HostsArray) ToHostsArrayOutput() HostsArrayOutput {
 
 func (i HostsArray) ToHostsArrayOutputWithContext(ctx context.Context) HostsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostsArrayOutput)
+}
+
+func (i HostsArray) ToOutput(ctx context.Context) pulumix.Output[[]*Hosts] {
+	return pulumix.Output[[]*Hosts]{
+		OutputState: i.ToHostsArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // HostsMapInput is an input type that accepts HostsMap and HostsMapOutput values.
@@ -186,6 +199,12 @@ func (i HostsMap) ToHostsMapOutputWithContext(ctx context.Context) HostsMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(HostsMapOutput)
 }
 
+func (i HostsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Hosts] {
+	return pulumix.Output[map[string]*Hosts]{
+		OutputState: i.ToHostsMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HostsOutput struct{ *pulumi.OutputState }
 
 func (HostsOutput) ElementType() reflect.Type {
@@ -198,6 +217,12 @@ func (o HostsOutput) ToHostsOutput() HostsOutput {
 
 func (o HostsOutput) ToHostsOutputWithContext(ctx context.Context) HostsOutput {
 	return o
+}
+
+func (o HostsOutput) ToOutput(ctx context.Context) pulumix.Output[*Hosts] {
+	return pulumix.Output[*Hosts]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The addresses
@@ -244,6 +269,12 @@ func (o HostsArrayOutput) ToHostsArrayOutputWithContext(ctx context.Context) Hos
 	return o
 }
 
+func (o HostsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Hosts] {
+	return pulumix.Output[[]*Hosts]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HostsArrayOutput) Index(i pulumi.IntInput) HostsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Hosts {
 		return vs[0].([]*Hosts)[vs[1].(int)]
@@ -262,6 +293,12 @@ func (o HostsMapOutput) ToHostsMapOutput() HostsMapOutput {
 
 func (o HostsMapOutput) ToHostsMapOutputWithContext(ctx context.Context) HostsMapOutput {
 	return o
+}
+
+func (o HostsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Hosts] {
+	return pulumix.Output[map[string]*Hosts]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HostsMapOutput) MapIndex(k pulumi.StringInput) HostsOutput {

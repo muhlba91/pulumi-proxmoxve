@@ -22,3 +22,6 @@ export interface GetGroupsResult {
      */
     readonly id: string;
 }
+export function getGroupsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsResult> {
+    return pulumi.output(getGroups(opts))
+}

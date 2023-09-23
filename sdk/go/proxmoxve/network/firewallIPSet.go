@@ -9,6 +9,7 @@ import (
 
 	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type FirewallIPSet struct {
@@ -145,6 +146,12 @@ func (i *FirewallIPSet) ToFirewallIPSetOutputWithContext(ctx context.Context) Fi
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallIPSetOutput)
 }
 
+func (i *FirewallIPSet) ToOutput(ctx context.Context) pulumix.Output[*FirewallIPSet] {
+	return pulumix.Output[*FirewallIPSet]{
+		OutputState: i.ToFirewallIPSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FirewallIPSetArrayInput is an input type that accepts FirewallIPSetArray and FirewallIPSetArrayOutput values.
 // You can construct a concrete instance of `FirewallIPSetArrayInput` via:
 //
@@ -168,6 +175,12 @@ func (i FirewallIPSetArray) ToFirewallIPSetArrayOutput() FirewallIPSetArrayOutpu
 
 func (i FirewallIPSetArray) ToFirewallIPSetArrayOutputWithContext(ctx context.Context) FirewallIPSetArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallIPSetArrayOutput)
+}
+
+func (i FirewallIPSetArray) ToOutput(ctx context.Context) pulumix.Output[[]*FirewallIPSet] {
+	return pulumix.Output[[]*FirewallIPSet]{
+		OutputState: i.ToFirewallIPSetArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // FirewallIPSetMapInput is an input type that accepts FirewallIPSetMap and FirewallIPSetMapOutput values.
@@ -195,6 +208,12 @@ func (i FirewallIPSetMap) ToFirewallIPSetMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallIPSetMapOutput)
 }
 
+func (i FirewallIPSetMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FirewallIPSet] {
+	return pulumix.Output[map[string]*FirewallIPSet]{
+		OutputState: i.ToFirewallIPSetMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FirewallIPSetOutput struct{ *pulumi.OutputState }
 
 func (FirewallIPSetOutput) ElementType() reflect.Type {
@@ -207,6 +226,12 @@ func (o FirewallIPSetOutput) ToFirewallIPSetOutput() FirewallIPSetOutput {
 
 func (o FirewallIPSetOutput) ToFirewallIPSetOutputWithContext(ctx context.Context) FirewallIPSetOutput {
 	return o
+}
+
+func (o FirewallIPSetOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallIPSet] {
+	return pulumix.Output[*FirewallIPSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of IP or Networks
@@ -253,6 +278,12 @@ func (o FirewallIPSetArrayOutput) ToFirewallIPSetArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o FirewallIPSetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FirewallIPSet] {
+	return pulumix.Output[[]*FirewallIPSet]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FirewallIPSetArrayOutput) Index(i pulumi.IntInput) FirewallIPSetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FirewallIPSet {
 		return vs[0].([]*FirewallIPSet)[vs[1].(int)]
@@ -271,6 +302,12 @@ func (o FirewallIPSetMapOutput) ToFirewallIPSetMapOutput() FirewallIPSetMapOutpu
 
 func (o FirewallIPSetMapOutput) ToFirewallIPSetMapOutputWithContext(ctx context.Context) FirewallIPSetMapOutput {
 	return o
+}
+
+func (o FirewallIPSetMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FirewallIPSet] {
+	return pulumix.Output[map[string]*FirewallIPSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FirewallIPSetMapOutput) MapIndex(k pulumi.StringInput) FirewallIPSetOutput {

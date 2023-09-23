@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type FirewallOptions struct {
@@ -229,6 +230,12 @@ func (i *FirewallOptions) ToFirewallOptionsOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallOptionsOutput)
 }
 
+func (i *FirewallOptions) ToOutput(ctx context.Context) pulumix.Output[*FirewallOptions] {
+	return pulumix.Output[*FirewallOptions]{
+		OutputState: i.ToFirewallOptionsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FirewallOptionsArrayInput is an input type that accepts FirewallOptionsArray and FirewallOptionsArrayOutput values.
 // You can construct a concrete instance of `FirewallOptionsArrayInput` via:
 //
@@ -252,6 +259,12 @@ func (i FirewallOptionsArray) ToFirewallOptionsArrayOutput() FirewallOptionsArra
 
 func (i FirewallOptionsArray) ToFirewallOptionsArrayOutputWithContext(ctx context.Context) FirewallOptionsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallOptionsArrayOutput)
+}
+
+func (i FirewallOptionsArray) ToOutput(ctx context.Context) pulumix.Output[[]*FirewallOptions] {
+	return pulumix.Output[[]*FirewallOptions]{
+		OutputState: i.ToFirewallOptionsArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // FirewallOptionsMapInput is an input type that accepts FirewallOptionsMap and FirewallOptionsMapOutput values.
@@ -279,6 +292,12 @@ func (i FirewallOptionsMap) ToFirewallOptionsMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallOptionsMapOutput)
 }
 
+func (i FirewallOptionsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FirewallOptions] {
+	return pulumix.Output[map[string]*FirewallOptions]{
+		OutputState: i.ToFirewallOptionsMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FirewallOptionsOutput struct{ *pulumi.OutputState }
 
 func (FirewallOptionsOutput) ElementType() reflect.Type {
@@ -291,6 +310,12 @@ func (o FirewallOptionsOutput) ToFirewallOptionsOutput() FirewallOptionsOutput {
 
 func (o FirewallOptionsOutput) ToFirewallOptionsOutputWithContext(ctx context.Context) FirewallOptionsOutput {
 	return o
+}
+
+func (o FirewallOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallOptions] {
+	return pulumix.Output[*FirewallOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the container to manage the firewall for.
@@ -374,6 +399,12 @@ func (o FirewallOptionsArrayOutput) ToFirewallOptionsArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o FirewallOptionsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FirewallOptions] {
+	return pulumix.Output[[]*FirewallOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FirewallOptionsArrayOutput) Index(i pulumi.IntInput) FirewallOptionsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FirewallOptions {
 		return vs[0].([]*FirewallOptions)[vs[1].(int)]
@@ -392,6 +423,12 @@ func (o FirewallOptionsMapOutput) ToFirewallOptionsMapOutput() FirewallOptionsMa
 
 func (o FirewallOptionsMapOutput) ToFirewallOptionsMapOutputWithContext(ctx context.Context) FirewallOptionsMapOutput {
 	return o
+}
+
+func (o FirewallOptionsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FirewallOptions] {
+	return pulumix.Output[map[string]*FirewallOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FirewallOptionsMapOutput) MapIndex(k pulumi.StringInput) FirewallOptionsOutput {
