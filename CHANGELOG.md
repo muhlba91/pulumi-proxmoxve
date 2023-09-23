@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [5.12.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.12.0...v5.12.1) (2023-09-23)
+
+
+### Bug Fixes
+
+* fix pipeline for releasing sdks ([67e16cf](https://github.com/muhlba91/pulumi-proxmoxve/commit/67e16cfed902fe070a262b514a3ca1fd6f2e3c5b))
+
 ## [5.12.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.11.1...v5.12.0) (2023-09-23)
 
 
