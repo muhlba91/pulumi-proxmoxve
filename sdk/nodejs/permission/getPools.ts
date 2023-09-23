@@ -21,3 +21,6 @@ export interface GetPoolsResult {
     readonly id: string;
     readonly poolIds: string[];
 }
+export function getPoolsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetPoolsResult> {
+    return pulumi.output(getPools(opts))
+}

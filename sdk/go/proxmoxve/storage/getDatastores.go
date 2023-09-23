@@ -9,6 +9,7 @@ import (
 
 	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetDatastores(ctx *pulumi.Context, args *GetDatastoresArgs, opts ...pulumi.InvokeOption) (*GetDatastoresResult, error) {
@@ -77,6 +78,12 @@ func (o GetDatastoresResultOutput) ToGetDatastoresResultOutput() GetDatastoresRe
 
 func (o GetDatastoresResultOutput) ToGetDatastoresResultOutputWithContext(ctx context.Context) GetDatastoresResultOutput {
 	return o
+}
+
+func (o GetDatastoresResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatastoresResult] {
+	return pulumix.Output[GetDatastoresResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDatastoresResultOutput) Actives() pulumi.BoolArrayOutput {

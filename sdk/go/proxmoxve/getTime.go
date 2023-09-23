@@ -9,6 +9,7 @@ import (
 
 	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func LookupTime(ctx *pulumi.Context, args *LookupTimeArgs, opts ...pulumi.InvokeOption) (*LookupTimeResult, error) {
@@ -71,6 +72,12 @@ func (o LookupTimeResultOutput) ToLookupTimeResultOutput() LookupTimeResultOutpu
 
 func (o LookupTimeResultOutput) ToLookupTimeResultOutputWithContext(ctx context.Context) LookupTimeResultOutput {
 	return o
+}
+
+func (o LookupTimeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTimeResult] {
+	return pulumix.Output[LookupTimeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

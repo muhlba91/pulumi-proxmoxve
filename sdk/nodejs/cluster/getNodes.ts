@@ -29,3 +29,6 @@ export interface GetNodesResult {
     readonly supportLevels: string[];
     readonly uptimes: number[];
 }
+export function getNodesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetNodesResult> {
+    return pulumi.output(getNodes(opts))
+}

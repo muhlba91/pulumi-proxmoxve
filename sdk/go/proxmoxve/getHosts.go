@@ -9,6 +9,7 @@ import (
 
 	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func LookupHosts(ctx *pulumi.Context, args *LookupHostsArgs, opts ...pulumi.InvokeOption) (*LookupHostsResult, error) {
@@ -72,6 +73,12 @@ func (o LookupHostsResultOutput) ToLookupHostsResultOutput() LookupHostsResultOu
 
 func (o LookupHostsResultOutput) ToLookupHostsResultOutputWithContext(ctx context.Context) LookupHostsResultOutput {
 	return o
+}
+
+func (o LookupHostsResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHostsResult] {
+	return pulumix.Output[LookupHostsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupHostsResultOutput) Addresses() pulumi.StringArrayOutput {

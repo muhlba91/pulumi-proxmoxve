@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type DNS struct {
@@ -122,6 +123,12 @@ func (i *DNS) ToDNSOutputWithContext(ctx context.Context) DNSOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DNSOutput)
 }
 
+func (i *DNS) ToOutput(ctx context.Context) pulumix.Output[*DNS] {
+	return pulumix.Output[*DNS]{
+		OutputState: i.ToDNSOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DNSArrayInput is an input type that accepts DNSArray and DNSArrayOutput values.
 // You can construct a concrete instance of `DNSArrayInput` via:
 //
@@ -145,6 +152,12 @@ func (i DNSArray) ToDNSArrayOutput() DNSArrayOutput {
 
 func (i DNSArray) ToDNSArrayOutputWithContext(ctx context.Context) DNSArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DNSArrayOutput)
+}
+
+func (i DNSArray) ToOutput(ctx context.Context) pulumix.Output[[]*DNS] {
+	return pulumix.Output[[]*DNS]{
+		OutputState: i.ToDNSArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DNSMapInput is an input type that accepts DNSMap and DNSMapOutput values.
@@ -172,6 +185,12 @@ func (i DNSMap) ToDNSMapOutputWithContext(ctx context.Context) DNSMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DNSMapOutput)
 }
 
+func (i DNSMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DNS] {
+	return pulumix.Output[map[string]*DNS]{
+		OutputState: i.ToDNSMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DNSOutput struct{ *pulumi.OutputState }
 
 func (DNSOutput) ElementType() reflect.Type {
@@ -184,6 +203,12 @@ func (o DNSOutput) ToDNSOutput() DNSOutput {
 
 func (o DNSOutput) ToDNSOutputWithContext(ctx context.Context) DNSOutput {
 	return o
+}
+
+func (o DNSOutput) ToOutput(ctx context.Context) pulumix.Output[*DNS] {
+	return pulumix.Output[*DNS]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The DNS search domain
@@ -215,6 +240,12 @@ func (o DNSArrayOutput) ToDNSArrayOutputWithContext(ctx context.Context) DNSArra
 	return o
 }
 
+func (o DNSArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DNS] {
+	return pulumix.Output[[]*DNS]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DNSArrayOutput) Index(i pulumi.IntInput) DNSOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DNS {
 		return vs[0].([]*DNS)[vs[1].(int)]
@@ -233,6 +264,12 @@ func (o DNSMapOutput) ToDNSMapOutput() DNSMapOutput {
 
 func (o DNSMapOutput) ToDNSMapOutputWithContext(ctx context.Context) DNSMapOutput {
 	return o
+}
+
+func (o DNSMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DNS] {
+	return pulumix.Output[map[string]*DNS]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DNSMapOutput) MapIndex(k pulumi.StringInput) DNSOutput {
