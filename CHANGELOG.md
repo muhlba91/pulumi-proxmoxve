@@ -1,6 +1,19 @@
 # Changelog
 
 
+## [5.12.2](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.12.1...v5.12.2) (2023-09-25)
+
+
+### Bug Fixes
+
+* update upstream to 0.32.1 ([2d23e10](https://github.com/muhlba91/pulumi-proxmoxve/commit/2d23e1077055e4a77fc5688a8b7685b13e65ee0a))
+
+
+### Miscellaneous Chores
+
+* **deps:** update sdk dependencies ([62b5bd9](https://github.com/muhlba91/pulumi-proxmoxve/commit/62b5bd9a68ef7e10186484886137a96cce49c7f9))
+* **deps:** update sdk toolchain to go 1.21 ([e2bb11a](https://github.com/muhlba91/pulumi-proxmoxve/commit/e2bb11a2b34502c3c9e90c580d83844dff4b5384))
+
 ## [5.12.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.12.0...v5.12.1) (2023-09-23)
 
 
