@@ -36,8 +36,8 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        go-version: [1.20.x]
-        golangci-lint-version: [v1.52.1]
+        go-version: [1.21.x]
+        golangci-lint-version: [v1.54.2]
 
     steps:
       - name: Checkout repository
@@ -74,7 +74,7 @@ jobs:
     strategy:
       max-parallel: 10
       matrix:
-        go-version: [1.20.x]
+        go-version: [1.21.x]
         node-version: [18.x]
         dotnet-version: [3.1.301]
         python-version: [3.9]
