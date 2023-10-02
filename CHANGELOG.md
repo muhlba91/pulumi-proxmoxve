@@ -1,6 +1,15 @@
 # Changelog
 
 
+## [5.12.3](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.12.2...v5.12.3) (2023-10-02)
+
+
+### Miscellaneous Chores
+
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.32.2 ([572b39f](https://github.com/muhlba91/pulumi-proxmoxve/commit/572b39fa63b5d8800064f8a95ee206e0e197c470))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.33.0 ([39d5247](https://github.com/muhlba91/pulumi-proxmoxve/commit/39d5247aa19e0fac2e598d541ca7d9dce8c0d661))
+* prepare for next release ([2bf5c20](https://github.com/muhlba91/pulumi-proxmoxve/commit/2bf5c2041dd0e98fc5f4423855a31a59a064ea47))
+
 ## [5.12.2](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.12.1...v5.12.2) (2023-09-25)
 
 
