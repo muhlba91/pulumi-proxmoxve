@@ -2684,6 +2684,10 @@
                     "type": "string",
                     "description": "The node name\n"
                 },
+                "overwrite": {
+                    "type": "boolean",
+                    "description": "Whether to overwrite the file if it already exists\n"
+                },
                 "sourceFile": {
                     "$ref": "#/types/proxmoxve:Storage/FileSourceFile:FileSourceFile",
                     "description": "The source file\n"
@@ -2698,6 +2702,7 @@
                 }
             },
             "required": [
+                "contentType",
                 "datastoreId",
                 "fileModificationDate",
                 "fileName",
@@ -2720,6 +2725,10 @@
                     "type": "string",
                     "description": "The node name\n",
                     "willReplaceOnChanges": true
+                },
+                "overwrite": {
+                    "type": "boolean",
+                    "description": "Whether to overwrite the file if it already exists\n"
                 },
                 "sourceFile": {
                     "$ref": "#/types/proxmoxve:Storage/FileSourceFile:FileSourceFile",
@@ -2776,6 +2785,10 @@
                         "type": "string",
                         "description": "The node name\n",
                         "willReplaceOnChanges": true
+                    },
+                    "overwrite": {
+                        "type": "boolean",
+                        "description": "Whether to overwrite the file if it already exists\n"
                     },
                     "sourceFile": {
                         "$ref": "#/types/proxmoxve:Storage/FileSourceFile:FileSourceFile",

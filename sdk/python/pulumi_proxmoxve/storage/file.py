@@ -19,6 +19,7 @@ class FileArgs:
                  datastore_id: pulumi.Input[str],
                  node_name: pulumi.Input[str],
                  content_type: Optional[pulumi.Input[str]] = None,
+                 overwrite: Optional[pulumi.Input[bool]] = None,
                  source_file: Optional[pulumi.Input['FileSourceFileArgs']] = None,
                  source_raw: Optional[pulumi.Input['FileSourceRawArgs']] = None,
                  timeout_upload: Optional[pulumi.Input[int]] = None):
@@ -27,6 +28,7 @@ class FileArgs:
         :param pulumi.Input[str] datastore_id: The datastore id
         :param pulumi.Input[str] node_name: The node name
         :param pulumi.Input[str] content_type: The content type
+        :param pulumi.Input[bool] overwrite: Whether to overwrite the file if it already exists
         :param pulumi.Input['FileSourceFileArgs'] source_file: The source file
         :param pulumi.Input['FileSourceRawArgs'] source_raw: The raw source
         :param pulumi.Input[int] timeout_upload: Timeout for uploading ISO/VSTMPL files in seconds
@@ -35,6 +37,8 @@ class FileArgs:
         pulumi.set(__self__, "node_name", node_name)
         if content_type is not None:
             pulumi.set(__self__, "content_type", content_type)
+        if overwrite is not None:
+            pulumi.set(__self__, "overwrite", overwrite)
         if source_file is not None:
             pulumi.set(__self__, "source_file", source_file)
         if source_raw is not None:
@@ -77,6 +81,18 @@ class FileArgs:
     @content_type.setter
     def content_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "content_type", value)
+
+    @property
+    @pulumi.getter
+    def overwrite(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to overwrite the file if it already exists
+        """
+        return pulumi.get(self, "overwrite")
+
+    @overwrite.setter
+    def overwrite(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "overwrite", value)
 
     @property
     @pulumi.getter(name="sourceFile")
@@ -125,6 +141,7 @@ class _FileState:
                  file_size: Optional[pulumi.Input[int]] = None,
                  file_tag: Optional[pulumi.Input[str]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
+                 overwrite: Optional[pulumi.Input[bool]] = None,
                  source_file: Optional[pulumi.Input['FileSourceFileArgs']] = None,
                  source_raw: Optional[pulumi.Input['FileSourceRawArgs']] = None,
                  timeout_upload: Optional[pulumi.Input[int]] = None):
@@ -137,6 +154,7 @@ class _FileState:
         :param pulumi.Input[int] file_size: The file size in bytes
         :param pulumi.Input[str] file_tag: The file tag
         :param pulumi.Input[str] node_name: The node name
+        :param pulumi.Input[bool] overwrite: Whether to overwrite the file if it already exists
         :param pulumi.Input['FileSourceFileArgs'] source_file: The source file
         :param pulumi.Input['FileSourceRawArgs'] source_raw: The raw source
         :param pulumi.Input[int] timeout_upload: Timeout for uploading ISO/VSTMPL files in seconds
@@ -155,6 +173,8 @@ class _FileState:
             pulumi.set(__self__, "file_tag", file_tag)
         if node_name is not None:
             pulumi.set(__self__, "node_name", node_name)
+        if overwrite is not None:
+            pulumi.set(__self__, "overwrite", overwrite)
         if source_file is not None:
             pulumi.set(__self__, "source_file", source_file)
         if source_raw is not None:
@@ -247,6 +267,18 @@ class _FileState:
         pulumi.set(self, "node_name", value)
 
     @property
+    @pulumi.getter
+    def overwrite(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to overwrite the file if it already exists
+        """
+        return pulumi.get(self, "overwrite")
+
+    @overwrite.setter
+    def overwrite(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "overwrite", value)
+
+    @property
     @pulumi.getter(name="sourceFile")
     def source_file(self) -> Optional[pulumi.Input['FileSourceFileArgs']]:
         """
@@ -291,6 +323,7 @@ class File(pulumi.CustomResource):
                  content_type: Optional[pulumi.Input[str]] = None,
                  datastore_id: Optional[pulumi.Input[str]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
+                 overwrite: Optional[pulumi.Input[bool]] = None,
                  source_file: Optional[pulumi.Input[pulumi.InputType['FileSourceFileArgs']]] = None,
                  source_raw: Optional[pulumi.Input[pulumi.InputType['FileSourceRawArgs']]] = None,
                  timeout_upload: Optional[pulumi.Input[int]] = None,
@@ -302,6 +335,7 @@ class File(pulumi.CustomResource):
         :param pulumi.Input[str] content_type: The content type
         :param pulumi.Input[str] datastore_id: The datastore id
         :param pulumi.Input[str] node_name: The node name
+        :param pulumi.Input[bool] overwrite: Whether to overwrite the file if it already exists
         :param pulumi.Input[pulumi.InputType['FileSourceFileArgs']] source_file: The source file
         :param pulumi.Input[pulumi.InputType['FileSourceRawArgs']] source_raw: The raw source
         :param pulumi.Input[int] timeout_upload: Timeout for uploading ISO/VSTMPL files in seconds
@@ -332,6 +366,7 @@ class File(pulumi.CustomResource):
                  content_type: Optional[pulumi.Input[str]] = None,
                  datastore_id: Optional[pulumi.Input[str]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
+                 overwrite: Optional[pulumi.Input[bool]] = None,
                  source_file: Optional[pulumi.Input[pulumi.InputType['FileSourceFileArgs']]] = None,
                  source_raw: Optional[pulumi.Input[pulumi.InputType['FileSourceRawArgs']]] = None,
                  timeout_upload: Optional[pulumi.Input[int]] = None,
@@ -351,6 +386,7 @@ class File(pulumi.CustomResource):
             if node_name is None and not opts.urn:
                 raise TypeError("Missing required property 'node_name'")
             __props__.__dict__["node_name"] = node_name
+            __props__.__dict__["overwrite"] = overwrite
             __props__.__dict__["source_file"] = source_file
             __props__.__dict__["source_raw"] = source_raw
             __props__.__dict__["timeout_upload"] = timeout_upload
@@ -375,6 +411,7 @@ class File(pulumi.CustomResource):
             file_size: Optional[pulumi.Input[int]] = None,
             file_tag: Optional[pulumi.Input[str]] = None,
             node_name: Optional[pulumi.Input[str]] = None,
+            overwrite: Optional[pulumi.Input[bool]] = None,
             source_file: Optional[pulumi.Input[pulumi.InputType['FileSourceFileArgs']]] = None,
             source_raw: Optional[pulumi.Input[pulumi.InputType['FileSourceRawArgs']]] = None,
             timeout_upload: Optional[pulumi.Input[int]] = None) -> 'File':
@@ -392,6 +429,7 @@ class File(pulumi.CustomResource):
         :param pulumi.Input[int] file_size: The file size in bytes
         :param pulumi.Input[str] file_tag: The file tag
         :param pulumi.Input[str] node_name: The node name
+        :param pulumi.Input[bool] overwrite: Whether to overwrite the file if it already exists
         :param pulumi.Input[pulumi.InputType['FileSourceFileArgs']] source_file: The source file
         :param pulumi.Input[pulumi.InputType['FileSourceRawArgs']] source_raw: The raw source
         :param pulumi.Input[int] timeout_upload: Timeout for uploading ISO/VSTMPL files in seconds
@@ -407,6 +445,7 @@ class File(pulumi.CustomResource):
         __props__.__dict__["file_size"] = file_size
         __props__.__dict__["file_tag"] = file_tag
         __props__.__dict__["node_name"] = node_name
+        __props__.__dict__["overwrite"] = overwrite
         __props__.__dict__["source_file"] = source_file
         __props__.__dict__["source_raw"] = source_raw
         __props__.__dict__["timeout_upload"] = timeout_upload
@@ -414,7 +453,7 @@ class File(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="contentType")
-    def content_type(self) -> pulumi.Output[Optional[str]]:
+    def content_type(self) -> pulumi.Output[str]:
         """
         The content type
         """
@@ -467,6 +506,14 @@ class File(pulumi.CustomResource):
         The node name
         """
         return pulumi.get(self, "node_name")
+
+    @property
+    @pulumi.getter
+    def overwrite(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to overwrite the file if it already exists
+        """
+        return pulumi.get(self, "overwrite")
 
     @property
     @pulumi.getter(name="sourceFile")

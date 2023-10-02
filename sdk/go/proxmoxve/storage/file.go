@@ -17,7 +17,7 @@ type File struct {
 	pulumi.CustomResourceState
 
 	// The content type
-	ContentType pulumi.StringPtrOutput `pulumi:"contentType"`
+	ContentType pulumi.StringOutput `pulumi:"contentType"`
 	// The datastore id
 	DatastoreId pulumi.StringOutput `pulumi:"datastoreId"`
 	// The file modification date
@@ -30,6 +30,8 @@ type File struct {
 	FileTag pulumi.StringOutput `pulumi:"fileTag"`
 	// The node name
 	NodeName pulumi.StringOutput `pulumi:"nodeName"`
+	// Whether to overwrite the file if it already exists
+	Overwrite pulumi.BoolPtrOutput `pulumi:"overwrite"`
 	// The source file
 	SourceFile FileSourceFilePtrOutput `pulumi:"sourceFile"`
 	// The raw source
@@ -88,6 +90,8 @@ type fileState struct {
 	FileTag *string `pulumi:"fileTag"`
 	// The node name
 	NodeName *string `pulumi:"nodeName"`
+	// Whether to overwrite the file if it already exists
+	Overwrite *bool `pulumi:"overwrite"`
 	// The source file
 	SourceFile *FileSourceFile `pulumi:"sourceFile"`
 	// The raw source
@@ -111,6 +115,8 @@ type FileState struct {
 	FileTag pulumi.StringPtrInput
 	// The node name
 	NodeName pulumi.StringPtrInput
+	// Whether to overwrite the file if it already exists
+	Overwrite pulumi.BoolPtrInput
 	// The source file
 	SourceFile FileSourceFilePtrInput
 	// The raw source
@@ -130,6 +136,8 @@ type fileArgs struct {
 	DatastoreId string `pulumi:"datastoreId"`
 	// The node name
 	NodeName string `pulumi:"nodeName"`
+	// Whether to overwrite the file if it already exists
+	Overwrite *bool `pulumi:"overwrite"`
 	// The source file
 	SourceFile *FileSourceFile `pulumi:"sourceFile"`
 	// The raw source
@@ -146,6 +154,8 @@ type FileArgs struct {
 	DatastoreId pulumi.StringInput
 	// The node name
 	NodeName pulumi.StringInput
+	// Whether to overwrite the file if it already exists
+	Overwrite pulumi.BoolPtrInput
 	// The source file
 	SourceFile FileSourceFilePtrInput
 	// The raw source
@@ -266,8 +276,8 @@ func (o FileOutput) ToOutput(ctx context.Context) pulumix.Output[*File] {
 }
 
 // The content type
-func (o FileOutput) ContentType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *File) pulumi.StringPtrOutput { return v.ContentType }).(pulumi.StringPtrOutput)
+func (o FileOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *File) pulumi.StringOutput { return v.ContentType }).(pulumi.StringOutput)
 }
 
 // The datastore id
@@ -298,6 +308,11 @@ func (o FileOutput) FileTag() pulumi.StringOutput {
 // The node name
 func (o FileOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v *File) pulumi.StringOutput { return v.NodeName }).(pulumi.StringOutput)
+}
+
+// Whether to overwrite the file if it already exists
+func (o FileOutput) Overwrite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *File) pulumi.BoolPtrOutput { return v.Overwrite }).(pulumi.BoolPtrOutput)
 }
 
 // The source file

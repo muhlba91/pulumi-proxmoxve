@@ -12,6 +12,7 @@ import io.muehlbachler.pulumi.proxmoxve.Storage.inputs.FileState;
 import io.muehlbachler.pulumi.proxmoxve.Storage.outputs.FileSourceFile;
 import io.muehlbachler.pulumi.proxmoxve.Storage.outputs.FileSourceRaw;
 import io.muehlbachler.pulumi.proxmoxve.Utilities;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
@@ -24,14 +25,14 @@ public class File extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="contentType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> contentType;
+    private Output<String> contentType;
 
     /**
      * @return The content type
      * 
      */
-    public Output<Optional<String>> contentType() {
-        return Codegen.optional(this.contentType);
+    public Output<String> contentType() {
+        return this.contentType;
     }
     /**
      * The datastore id
@@ -116,6 +117,20 @@ public class File extends com.pulumi.resources.CustomResource {
      */
     public Output<String> nodeName() {
         return this.nodeName;
+    }
+    /**
+     * Whether to overwrite the file if it already exists
+     * 
+     */
+    @Export(name="overwrite", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> overwrite;
+
+    /**
+     * @return Whether to overwrite the file if it already exists
+     * 
+     */
+    public Output<Optional<Boolean>> overwrite() {
+        return Codegen.optional(this.overwrite);
     }
     /**
      * The source file

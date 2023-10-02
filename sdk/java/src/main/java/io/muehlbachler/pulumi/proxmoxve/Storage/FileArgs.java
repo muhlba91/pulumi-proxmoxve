@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import io.muehlbachler.pulumi.proxmoxve.Storage.inputs.FileSourceFileArgs;
 import io.muehlbachler.pulumi.proxmoxve.Storage.inputs.FileSourceRawArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -64,6 +65,21 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether to overwrite the file if it already exists
+     * 
+     */
+    @Import(name="overwrite")
+    private @Nullable Output<Boolean> overwrite;
+
+    /**
+     * @return Whether to overwrite the file if it already exists
+     * 
+     */
+    public Optional<Output<Boolean>> overwrite() {
+        return Optional.ofNullable(this.overwrite);
+    }
+
+    /**
      * The source file
      * 
      */
@@ -114,6 +130,7 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
         this.contentType = $.contentType;
         this.datastoreId = $.datastoreId;
         this.nodeName = $.nodeName;
+        this.overwrite = $.overwrite;
         this.sourceFile = $.sourceFile;
         this.sourceRaw = $.sourceRaw;
         this.timeoutUpload = $.timeoutUpload;
@@ -198,6 +215,27 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder nodeName(String nodeName) {
             return nodeName(Output.of(nodeName));
+        }
+
+        /**
+         * @param overwrite Whether to overwrite the file if it already exists
+         * 
+         * @return builder
+         * 
+         */
+        public Builder overwrite(@Nullable Output<Boolean> overwrite) {
+            $.overwrite = overwrite;
+            return this;
+        }
+
+        /**
+         * @param overwrite Whether to overwrite the file if it already exists
+         * 
+         * @return builder
+         * 
+         */
+        public Builder overwrite(Boolean overwrite) {
+            return overwrite(Output.of(overwrite));
         }
 
         /**

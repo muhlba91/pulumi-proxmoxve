@@ -16,7 +16,7 @@ namespace Pulumi.ProxmoxVE.Storage
         /// The content type
         /// </summary>
         [Output("contentType")]
-        public Output<string?> ContentType { get; private set; } = null!;
+        public Output<string> ContentType { get; private set; } = null!;
 
         /// <summary>
         /// The datastore id
@@ -53,6 +53,12 @@ namespace Pulumi.ProxmoxVE.Storage
         /// </summary>
         [Output("nodeName")]
         public Output<string> NodeName { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to overwrite the file if it already exists
+        /// </summary>
+        [Output("overwrite")]
+        public Output<bool?> Overwrite { get; private set; } = null!;
 
         /// <summary>
         /// The source file
@@ -138,6 +144,12 @@ namespace Pulumi.ProxmoxVE.Storage
         public Input<string> NodeName { get; set; } = null!;
 
         /// <summary>
+        /// Whether to overwrite the file if it already exists
+        /// </summary>
+        [Input("overwrite")]
+        public Input<bool>? Overwrite { get; set; }
+
+        /// <summary>
         /// The source file
         /// </summary>
         [Input("sourceFile")]
@@ -204,6 +216,12 @@ namespace Pulumi.ProxmoxVE.Storage
         /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
+
+        /// <summary>
+        /// Whether to overwrite the file if it already exists
+        /// </summary>
+        [Input("overwrite")]
+        public Input<bool>? Overwrite { get; set; }
 
         /// <summary>
         /// The source file

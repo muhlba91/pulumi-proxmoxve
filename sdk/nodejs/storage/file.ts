@@ -37,7 +37,7 @@ export class File extends pulumi.CustomResource {
     /**
      * The content type
      */
-    public readonly contentType!: pulumi.Output<string | undefined>;
+    public readonly contentType!: pulumi.Output<string>;
     /**
      * The datastore id
      */
@@ -62,6 +62,10 @@ export class File extends pulumi.CustomResource {
      * The node name
      */
     public readonly nodeName!: pulumi.Output<string>;
+    /**
+     * Whether to overwrite the file if it already exists
+     */
+    public readonly overwrite!: pulumi.Output<boolean | undefined>;
     /**
      * The source file
      */
@@ -95,6 +99,7 @@ export class File extends pulumi.CustomResource {
             resourceInputs["fileSize"] = state ? state.fileSize : undefined;
             resourceInputs["fileTag"] = state ? state.fileTag : undefined;
             resourceInputs["nodeName"] = state ? state.nodeName : undefined;
+            resourceInputs["overwrite"] = state ? state.overwrite : undefined;
             resourceInputs["sourceFile"] = state ? state.sourceFile : undefined;
             resourceInputs["sourceRaw"] = state ? state.sourceRaw : undefined;
             resourceInputs["timeoutUpload"] = state ? state.timeoutUpload : undefined;
@@ -109,6 +114,7 @@ export class File extends pulumi.CustomResource {
             resourceInputs["contentType"] = args ? args.contentType : undefined;
             resourceInputs["datastoreId"] = args ? args.datastoreId : undefined;
             resourceInputs["nodeName"] = args ? args.nodeName : undefined;
+            resourceInputs["overwrite"] = args ? args.overwrite : undefined;
             resourceInputs["sourceFile"] = args ? args.sourceFile : undefined;
             resourceInputs["sourceRaw"] = args ? args.sourceRaw : undefined;
             resourceInputs["timeoutUpload"] = args ? args.timeoutUpload : undefined;
@@ -155,6 +161,10 @@ export interface FileState {
      */
     nodeName?: pulumi.Input<string>;
     /**
+     * Whether to overwrite the file if it already exists
+     */
+    overwrite?: pulumi.Input<boolean>;
+    /**
      * The source file
      */
     sourceFile?: pulumi.Input<inputs.Storage.FileSourceFile>;
@@ -184,6 +194,10 @@ export interface FileArgs {
      * The node name
      */
     nodeName: pulumi.Input<string>;
+    /**
+     * Whether to overwrite the file if it already exists
+     */
+    overwrite?: pulumi.Input<boolean>;
     /**
      * The source file
      */
