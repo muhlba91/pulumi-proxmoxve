@@ -1,0 +1,28 @@
+// Format details: https://aka.ms/devcontainer.json
+// Feature list: https://containers.dev/features
+{
+	"name": "Go",
+	"image": "mcr.microsoft.com/devcontainers/go:1-1.21-bookworm",
+	"features": {
+		"ghcr.io/devcontainers-contrib/features/cz-cli:1": {
+			"version": "latest"
+		},
+		"ghcr.io/devcontainers-contrib/features/pulumi:1": {
+			"bashCompletion": true,
+			"version": "latest"
+		},
+		"ghcr.io/guiyomh/features/golangci-lint:0": {
+			"version": "latest"
+		},
+		"ghcr.io/devcontainers-contrib/features/gh-release:1": {
+			"repo": "pulumi/pulumictl",
+			"binaryNames": "pulumictl"
+		}
+	},
+	"hostRequirements": {
+		"cpus": 2,
+		"memory": "8gb"
+	}
+	// "postCreateCommand": "go version",
+	// "customizations": {}
+}
