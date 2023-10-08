@@ -12,7 +12,7 @@
 [![](https://img.shields.io/github/all-contributors/muhlba91/pulumi-proxmoxve?color=ee8449&style=for-the-badge)](#contributors)
 <a href="https://www.buymeacoffee.com/muhlba91" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="28" width="150"></a>
 
-The Proxmox VE Resource Provider lets you manage [Proxmox VE](http://proxmox.com) resources.
+The Proxmox VE Resource Provider for [Pulumi](https://www.pulumi.com) lets you manage [Proxmox VE](http://proxmox.com) resources.
 
 The provider is built on https://github.com/bpg/terraform-provider-proxmox.
 
