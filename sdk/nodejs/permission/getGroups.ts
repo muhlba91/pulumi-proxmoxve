@@ -4,6 +4,18 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Retrieves basic information about all available user groups.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@pulumi/proxmoxve";
+ *
+ * const availableGroups = proxmoxve.Permission.getGroups({});
+ * ```
+ */
 export function getGroups(opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -15,13 +27,31 @@ export function getGroups(opts?: pulumi.InvokeOptions): Promise<GetGroupsResult>
  * A collection of values returned by getGroups.
  */
 export interface GetGroupsResult {
+    /**
+     * The group comments.
+     */
     readonly comments: string[];
+    /**
+     * The group identifiers.
+     */
     readonly groupIds: string[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }
+/**
+ * Retrieves basic information about all available user groups.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@pulumi/proxmoxve";
+ *
+ * const availableGroups = proxmoxve.Permission.getGroups({});
+ * ```
+ */
 export function getGroupsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsResult> {
     return pulumi.output(getGroups(opts))
 }

@@ -12,6 +12,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Retrieves the current time for a specific node.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := proxmoxve.LookupTime(ctx, &proxmoxve.LookupTimeArgs{
+//				NodeName: "first-node",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupTime(ctx *pulumi.Context, args *LookupTimeArgs, opts ...pulumi.InvokeOption) (*LookupTimeResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTimeResult
@@ -24,17 +51,21 @@ func LookupTime(ctx *pulumi.Context, args *LookupTimeArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getTime.
 type LookupTimeArgs struct {
+	// A node name.
 	NodeName string `pulumi:"nodeName"`
 }
 
 // A collection of values returned by getTime.
 type LookupTimeResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id        string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The node's local time.
 	LocalTime string `pulumi:"localTime"`
 	NodeName  string `pulumi:"nodeName"`
-	TimeZone  string `pulumi:"timeZone"`
-	UtcTime   string `pulumi:"utcTime"`
+	// The node's time zone.
+	TimeZone string `pulumi:"timeZone"`
+	// The node's local time formatted as UTC.
+	UtcTime string `pulumi:"utcTime"`
 }
 
 func LookupTimeOutput(ctx *pulumi.Context, args LookupTimeOutputArgs, opts ...pulumi.InvokeOption) LookupTimeResultOutput {
@@ -52,6 +83,7 @@ func LookupTimeOutput(ctx *pulumi.Context, args LookupTimeOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getTime.
 type LookupTimeOutputArgs struct {
+	// A node name.
 	NodeName pulumi.StringInput `pulumi:"nodeName"`
 }
 
@@ -85,6 +117,7 @@ func (o LookupTimeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTimeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The node's local time.
 func (o LookupTimeResultOutput) LocalTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTimeResult) string { return v.LocalTime }).(pulumi.StringOutput)
 }
@@ -93,10 +126,12 @@ func (o LookupTimeResultOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTimeResult) string { return v.NodeName }).(pulumi.StringOutput)
 }
 
+// The node's time zone.
 func (o LookupTimeResultOutput) TimeZone() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTimeResult) string { return v.TimeZone }).(pulumi.StringOutput)
 }
 
+// The node's local time formatted as UTC.
 func (o LookupTimeResultOutput) UtcTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTimeResult) string { return v.UtcTime }).(pulumi.StringOutput)
 }

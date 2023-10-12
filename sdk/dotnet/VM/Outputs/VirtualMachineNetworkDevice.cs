@@ -13,13 +13,45 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     [OutputType]
     public sealed class VirtualMachineNetworkDevice
     {
+        /// <summary>
+        /// The name of the network bridge (defaults
+        /// to `vmbr0`).
+        /// </summary>
         public readonly string? Bridge;
+        /// <summary>
+        /// Whether to enable the VGA device (defaults
+        /// to `true`).
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// Whether this interface's firewall rules should be
+        /// used (defaults to `false`).
+        /// </summary>
         public readonly bool? Firewall;
+        /// <summary>
+        /// The MAC address.
+        /// </summary>
         public readonly string? MacAddress;
+        /// <summary>
+        /// The network device model (defaults to `virtio`).
+        /// </summary>
         public readonly string? Model;
+        /// <summary>
+        /// Force MTU, for VirtIO only. Set to 1 to use the bridge
+        /// MTU. Cannot be larger than the bridge MTU.
+        /// </summary>
         public readonly int? Mtu;
+        /// <summary>
+        /// The number of queues for VirtIO (1..64).
+        /// </summary>
+        public readonly int? Queues;
+        /// <summary>
+        /// The rate limit in megabytes per second.
+        /// </summary>
         public readonly double? RateLimit;
+        /// <summary>
+        /// The VLAN identifier.
+        /// </summary>
         public readonly int? VlanId;
 
         [OutputConstructor]
@@ -36,6 +68,8 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
 
             int? mtu,
 
+            int? queues,
+
             double? rateLimit,
 
             int? vlanId)
@@ -46,6 +80,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
             MacAddress = macAddress;
             Model = model;
             Mtu = mtu;
+            Queues = queues;
             RateLimit = rateLimit;
             VlanId = vlanId;
         }

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['CertifiArgs', 'Certifi']
@@ -21,25 +21,42 @@ class CertifiArgs:
                  overwrite: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Certifi resource.
-        :param pulumi.Input[str] certificate: The PEM encoded certificate
-        :param pulumi.Input[str] node_name: The node name
-        :param pulumi.Input[str] private_key: The PEM encoded private key
-        :param pulumi.Input[str] certificate_chain: The PEM encoded certificate chain
+        :param pulumi.Input[str] certificate: The PEM encoded certificate.
+        :param pulumi.Input[str] node_name: A node name.
+        :param pulumi.Input[str] private_key: The PEM encoded private key.
+        :param pulumi.Input[str] certificate_chain: The PEM encoded certificate chain.
         :param pulumi.Input[bool] overwrite: Whether to overwrite an existing certificate
         """
-        pulumi.set(__self__, "certificate", certificate)
-        pulumi.set(__self__, "node_name", node_name)
-        pulumi.set(__self__, "private_key", private_key)
+        CertifiArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            certificate=certificate,
+            node_name=node_name,
+            private_key=private_key,
+            certificate_chain=certificate_chain,
+            overwrite=overwrite,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             certificate: pulumi.Input[str],
+             node_name: pulumi.Input[str],
+             private_key: pulumi.Input[str],
+             certificate_chain: Optional[pulumi.Input[str]] = None,
+             overwrite: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("certificate", certificate)
+        _setter("node_name", node_name)
+        _setter("private_key", private_key)
         if certificate_chain is not None:
-            pulumi.set(__self__, "certificate_chain", certificate_chain)
+            _setter("certificate_chain", certificate_chain)
         if overwrite is not None:
-            pulumi.set(__self__, "overwrite", overwrite)
+            _setter("overwrite", overwrite)
 
     @property
     @pulumi.getter
     def certificate(self) -> pulumi.Input[str]:
         """
-        The PEM encoded certificate
+        The PEM encoded certificate.
         """
         return pulumi.get(self, "certificate")
 
@@ -51,7 +68,7 @@ class CertifiArgs:
     @pulumi.getter(name="nodeName")
     def node_name(self) -> pulumi.Input[str]:
         """
-        The node name
+        A node name.
         """
         return pulumi.get(self, "node_name")
 
@@ -63,7 +80,7 @@ class CertifiArgs:
     @pulumi.getter(name="privateKey")
     def private_key(self) -> pulumi.Input[str]:
         """
-        The PEM encoded private key
+        The PEM encoded private key.
         """
         return pulumi.get(self, "private_key")
 
@@ -75,7 +92,7 @@ class CertifiArgs:
     @pulumi.getter(name="certificateChain")
     def certificate_chain(self) -> Optional[pulumi.Input[str]]:
         """
-        The PEM encoded certificate chain
+        The PEM encoded certificate chain.
         """
         return pulumi.get(self, "certificate_chain")
 
@@ -115,55 +132,90 @@ class _CertifiState:
                  subject_alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Certifi resources.
-        :param pulumi.Input[str] certificate: The PEM encoded certificate
-        :param pulumi.Input[str] certificate_chain: The PEM encoded certificate chain
-        :param pulumi.Input[str] expiration_date: The expiration date
-        :param pulumi.Input[str] file_name: The file name
-        :param pulumi.Input[str] issuer: The issuer
-        :param pulumi.Input[str] node_name: The node name
+        :param pulumi.Input[str] certificate: The PEM encoded certificate.
+        :param pulumi.Input[str] certificate_chain: The PEM encoded certificate chain.
+        :param pulumi.Input[str] expiration_date: The expiration date (RFC 3339).
+        :param pulumi.Input[str] file_name: The file name.
+        :param pulumi.Input[str] issuer: The issuer.
+        :param pulumi.Input[str] node_name: A node name.
         :param pulumi.Input[bool] overwrite: Whether to overwrite an existing certificate
-        :param pulumi.Input[str] private_key: The PEM encoded private key
-        :param pulumi.Input[int] public_key_size: The public key size
-        :param pulumi.Input[str] public_key_type: The public key type
-        :param pulumi.Input[str] ssl_fingerprint: The SSL fingerprint
-        :param pulumi.Input[str] start_date: The start date
-        :param pulumi.Input[str] subject: The subject
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] subject_alternative_names: The subject alternative names
+        :param pulumi.Input[str] private_key: The PEM encoded private key.
+        :param pulumi.Input[int] public_key_size: The public key size.
+        :param pulumi.Input[str] public_key_type: The public key type.
+        :param pulumi.Input[str] ssl_fingerprint: The SSL fingerprint.
+        :param pulumi.Input[str] start_date: The start date (RFC 3339).
+        :param pulumi.Input[str] subject: The subject.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subject_alternative_names: The subject alternative names.
         """
+        _CertifiState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            certificate=certificate,
+            certificate_chain=certificate_chain,
+            expiration_date=expiration_date,
+            file_name=file_name,
+            issuer=issuer,
+            node_name=node_name,
+            overwrite=overwrite,
+            private_key=private_key,
+            public_key_size=public_key_size,
+            public_key_type=public_key_type,
+            ssl_fingerprint=ssl_fingerprint,
+            start_date=start_date,
+            subject=subject,
+            subject_alternative_names=subject_alternative_names,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             certificate: Optional[pulumi.Input[str]] = None,
+             certificate_chain: Optional[pulumi.Input[str]] = None,
+             expiration_date: Optional[pulumi.Input[str]] = None,
+             file_name: Optional[pulumi.Input[str]] = None,
+             issuer: Optional[pulumi.Input[str]] = None,
+             node_name: Optional[pulumi.Input[str]] = None,
+             overwrite: Optional[pulumi.Input[bool]] = None,
+             private_key: Optional[pulumi.Input[str]] = None,
+             public_key_size: Optional[pulumi.Input[int]] = None,
+             public_key_type: Optional[pulumi.Input[str]] = None,
+             ssl_fingerprint: Optional[pulumi.Input[str]] = None,
+             start_date: Optional[pulumi.Input[str]] = None,
+             subject: Optional[pulumi.Input[str]] = None,
+             subject_alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
+            _setter("certificate", certificate)
         if certificate_chain is not None:
-            pulumi.set(__self__, "certificate_chain", certificate_chain)
+            _setter("certificate_chain", certificate_chain)
         if expiration_date is not None:
-            pulumi.set(__self__, "expiration_date", expiration_date)
+            _setter("expiration_date", expiration_date)
         if file_name is not None:
-            pulumi.set(__self__, "file_name", file_name)
+            _setter("file_name", file_name)
         if issuer is not None:
-            pulumi.set(__self__, "issuer", issuer)
+            _setter("issuer", issuer)
         if node_name is not None:
-            pulumi.set(__self__, "node_name", node_name)
+            _setter("node_name", node_name)
         if overwrite is not None:
-            pulumi.set(__self__, "overwrite", overwrite)
+            _setter("overwrite", overwrite)
         if private_key is not None:
-            pulumi.set(__self__, "private_key", private_key)
+            _setter("private_key", private_key)
         if public_key_size is not None:
-            pulumi.set(__self__, "public_key_size", public_key_size)
+            _setter("public_key_size", public_key_size)
         if public_key_type is not None:
-            pulumi.set(__self__, "public_key_type", public_key_type)
+            _setter("public_key_type", public_key_type)
         if ssl_fingerprint is not None:
-            pulumi.set(__self__, "ssl_fingerprint", ssl_fingerprint)
+            _setter("ssl_fingerprint", ssl_fingerprint)
         if start_date is not None:
-            pulumi.set(__self__, "start_date", start_date)
+            _setter("start_date", start_date)
         if subject is not None:
-            pulumi.set(__self__, "subject", subject)
+            _setter("subject", subject)
         if subject_alternative_names is not None:
-            pulumi.set(__self__, "subject_alternative_names", subject_alternative_names)
+            _setter("subject_alternative_names", subject_alternative_names)
 
     @property
     @pulumi.getter
     def certificate(self) -> Optional[pulumi.Input[str]]:
         """
-        The PEM encoded certificate
+        The PEM encoded certificate.
         """
         return pulumi.get(self, "certificate")
 
@@ -175,7 +227,7 @@ class _CertifiState:
     @pulumi.getter(name="certificateChain")
     def certificate_chain(self) -> Optional[pulumi.Input[str]]:
         """
-        The PEM encoded certificate chain
+        The PEM encoded certificate chain.
         """
         return pulumi.get(self, "certificate_chain")
 
@@ -187,7 +239,7 @@ class _CertifiState:
     @pulumi.getter(name="expirationDate")
     def expiration_date(self) -> Optional[pulumi.Input[str]]:
         """
-        The expiration date
+        The expiration date (RFC 3339).
         """
         return pulumi.get(self, "expiration_date")
 
@@ -199,7 +251,7 @@ class _CertifiState:
     @pulumi.getter(name="fileName")
     def file_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The file name
+        The file name.
         """
         return pulumi.get(self, "file_name")
 
@@ -211,7 +263,7 @@ class _CertifiState:
     @pulumi.getter
     def issuer(self) -> Optional[pulumi.Input[str]]:
         """
-        The issuer
+        The issuer.
         """
         return pulumi.get(self, "issuer")
 
@@ -223,7 +275,7 @@ class _CertifiState:
     @pulumi.getter(name="nodeName")
     def node_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The node name
+        A node name.
         """
         return pulumi.get(self, "node_name")
 
@@ -247,7 +299,7 @@ class _CertifiState:
     @pulumi.getter(name="privateKey")
     def private_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The PEM encoded private key
+        The PEM encoded private key.
         """
         return pulumi.get(self, "private_key")
 
@@ -259,7 +311,7 @@ class _CertifiState:
     @pulumi.getter(name="publicKeySize")
     def public_key_size(self) -> Optional[pulumi.Input[int]]:
         """
-        The public key size
+        The public key size.
         """
         return pulumi.get(self, "public_key_size")
 
@@ -271,7 +323,7 @@ class _CertifiState:
     @pulumi.getter(name="publicKeyType")
     def public_key_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The public key type
+        The public key type.
         """
         return pulumi.get(self, "public_key_type")
 
@@ -283,7 +335,7 @@ class _CertifiState:
     @pulumi.getter(name="sslFingerprint")
     def ssl_fingerprint(self) -> Optional[pulumi.Input[str]]:
         """
-        The SSL fingerprint
+        The SSL fingerprint.
         """
         return pulumi.get(self, "ssl_fingerprint")
 
@@ -295,7 +347,7 @@ class _CertifiState:
     @pulumi.getter(name="startDate")
     def start_date(self) -> Optional[pulumi.Input[str]]:
         """
-        The start date
+        The start date (RFC 3339).
         """
         return pulumi.get(self, "start_date")
 
@@ -307,7 +359,7 @@ class _CertifiState:
     @pulumi.getter
     def subject(self) -> Optional[pulumi.Input[str]]:
         """
-        The subject
+        The subject.
         """
         return pulumi.get(self, "subject")
 
@@ -319,7 +371,7 @@ class _CertifiState:
     @pulumi.getter(name="subjectAlternativeNames")
     def subject_alternative_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The subject alternative names
+        The subject alternative names.
         """
         return pulumi.get(self, "subject_alternative_names")
 
@@ -340,14 +392,44 @@ class Certifi(pulumi.CustomResource):
                  private_key: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Certifi resource with the given unique name, props, and options.
+        Manages the custom SSL/TLS certificate for a specific node.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+        import pulumi_tls as tls
+
+        proxmox_virtual_environment_certificate_private_key = tls.PrivateKey("proxmoxVirtualEnvironmentCertificatePrivateKey",
+            algorithm="RSA",
+            rsa_bits=2048)
+        proxmox_virtual_environment_certificate_self_signed_cert = tls.SelfSignedCert("proxmoxVirtualEnvironmentCertificateSelfSignedCert",
+            key_algorithm=proxmox_virtual_environment_certificate_private_key.algorithm,
+            private_key_pem=proxmox_virtual_environment_certificate_private_key.private_key_pem,
+            subject=tls.SelfSignedCertSubjectArgs(
+                common_name="example.com",
+                organization="Terraform Provider for Proxmox",
+            ),
+            validity_period_hours=8760,
+            allowed_uses=[
+                "key_encipherment",
+                "digital_signature",
+                "server_auth",
+            ])
+        example = proxmoxve.Certifi("example",
+            certificate=proxmox_virtual_environment_certificate_self_signed_cert.cert_pem,
+            node_name="first-node",
+            private_key=proxmox_virtual_environment_certificate_private_key.private_key_pem)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] certificate: The PEM encoded certificate
-        :param pulumi.Input[str] certificate_chain: The PEM encoded certificate chain
-        :param pulumi.Input[str] node_name: The node name
+        :param pulumi.Input[str] certificate: The PEM encoded certificate.
+        :param pulumi.Input[str] certificate_chain: The PEM encoded certificate chain.
+        :param pulumi.Input[str] node_name: A node name.
         :param pulumi.Input[bool] overwrite: Whether to overwrite an existing certificate
-        :param pulumi.Input[str] private_key: The PEM encoded private key
+        :param pulumi.Input[str] private_key: The PEM encoded private key.
         """
         ...
     @overload
@@ -356,7 +438,37 @@ class Certifi(pulumi.CustomResource):
                  args: CertifiArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Certifi resource with the given unique name, props, and options.
+        Manages the custom SSL/TLS certificate for a specific node.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+        import pulumi_tls as tls
+
+        proxmox_virtual_environment_certificate_private_key = tls.PrivateKey("proxmoxVirtualEnvironmentCertificatePrivateKey",
+            algorithm="RSA",
+            rsa_bits=2048)
+        proxmox_virtual_environment_certificate_self_signed_cert = tls.SelfSignedCert("proxmoxVirtualEnvironmentCertificateSelfSignedCert",
+            key_algorithm=proxmox_virtual_environment_certificate_private_key.algorithm,
+            private_key_pem=proxmox_virtual_environment_certificate_private_key.private_key_pem,
+            subject=tls.SelfSignedCertSubjectArgs(
+                common_name="example.com",
+                organization="Terraform Provider for Proxmox",
+            ),
+            validity_period_hours=8760,
+            allowed_uses=[
+                "key_encipherment",
+                "digital_signature",
+                "server_auth",
+            ])
+        example = proxmoxve.Certifi("example",
+            certificate=proxmox_virtual_environment_certificate_self_signed_cert.cert_pem,
+            node_name="first-node",
+            private_key=proxmox_virtual_environment_certificate_private_key.private_key_pem)
+        ```
+
         :param str resource_name: The name of the resource.
         :param CertifiArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -367,6 +479,10 @@ class Certifi(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CertifiArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -439,20 +555,20 @@ class Certifi(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] certificate: The PEM encoded certificate
-        :param pulumi.Input[str] certificate_chain: The PEM encoded certificate chain
-        :param pulumi.Input[str] expiration_date: The expiration date
-        :param pulumi.Input[str] file_name: The file name
-        :param pulumi.Input[str] issuer: The issuer
-        :param pulumi.Input[str] node_name: The node name
+        :param pulumi.Input[str] certificate: The PEM encoded certificate.
+        :param pulumi.Input[str] certificate_chain: The PEM encoded certificate chain.
+        :param pulumi.Input[str] expiration_date: The expiration date (RFC 3339).
+        :param pulumi.Input[str] file_name: The file name.
+        :param pulumi.Input[str] issuer: The issuer.
+        :param pulumi.Input[str] node_name: A node name.
         :param pulumi.Input[bool] overwrite: Whether to overwrite an existing certificate
-        :param pulumi.Input[str] private_key: The PEM encoded private key
-        :param pulumi.Input[int] public_key_size: The public key size
-        :param pulumi.Input[str] public_key_type: The public key type
-        :param pulumi.Input[str] ssl_fingerprint: The SSL fingerprint
-        :param pulumi.Input[str] start_date: The start date
-        :param pulumi.Input[str] subject: The subject
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] subject_alternative_names: The subject alternative names
+        :param pulumi.Input[str] private_key: The PEM encoded private key.
+        :param pulumi.Input[int] public_key_size: The public key size.
+        :param pulumi.Input[str] public_key_type: The public key type.
+        :param pulumi.Input[str] ssl_fingerprint: The SSL fingerprint.
+        :param pulumi.Input[str] start_date: The start date (RFC 3339).
+        :param pulumi.Input[str] subject: The subject.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subject_alternative_names: The subject alternative names.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -478,7 +594,7 @@ class Certifi(pulumi.CustomResource):
     @pulumi.getter
     def certificate(self) -> pulumi.Output[str]:
         """
-        The PEM encoded certificate
+        The PEM encoded certificate.
         """
         return pulumi.get(self, "certificate")
 
@@ -486,7 +602,7 @@ class Certifi(pulumi.CustomResource):
     @pulumi.getter(name="certificateChain")
     def certificate_chain(self) -> pulumi.Output[Optional[str]]:
         """
-        The PEM encoded certificate chain
+        The PEM encoded certificate chain.
         """
         return pulumi.get(self, "certificate_chain")
 
@@ -494,7 +610,7 @@ class Certifi(pulumi.CustomResource):
     @pulumi.getter(name="expirationDate")
     def expiration_date(self) -> pulumi.Output[str]:
         """
-        The expiration date
+        The expiration date (RFC 3339).
         """
         return pulumi.get(self, "expiration_date")
 
@@ -502,7 +618,7 @@ class Certifi(pulumi.CustomResource):
     @pulumi.getter(name="fileName")
     def file_name(self) -> pulumi.Output[str]:
         """
-        The file name
+        The file name.
         """
         return pulumi.get(self, "file_name")
 
@@ -510,7 +626,7 @@ class Certifi(pulumi.CustomResource):
     @pulumi.getter
     def issuer(self) -> pulumi.Output[str]:
         """
-        The issuer
+        The issuer.
         """
         return pulumi.get(self, "issuer")
 
@@ -518,7 +634,7 @@ class Certifi(pulumi.CustomResource):
     @pulumi.getter(name="nodeName")
     def node_name(self) -> pulumi.Output[str]:
         """
-        The node name
+        A node name.
         """
         return pulumi.get(self, "node_name")
 
@@ -534,7 +650,7 @@ class Certifi(pulumi.CustomResource):
     @pulumi.getter(name="privateKey")
     def private_key(self) -> pulumi.Output[str]:
         """
-        The PEM encoded private key
+        The PEM encoded private key.
         """
         return pulumi.get(self, "private_key")
 
@@ -542,7 +658,7 @@ class Certifi(pulumi.CustomResource):
     @pulumi.getter(name="publicKeySize")
     def public_key_size(self) -> pulumi.Output[int]:
         """
-        The public key size
+        The public key size.
         """
         return pulumi.get(self, "public_key_size")
 
@@ -550,7 +666,7 @@ class Certifi(pulumi.CustomResource):
     @pulumi.getter(name="publicKeyType")
     def public_key_type(self) -> pulumi.Output[str]:
         """
-        The public key type
+        The public key type.
         """
         return pulumi.get(self, "public_key_type")
 
@@ -558,7 +674,7 @@ class Certifi(pulumi.CustomResource):
     @pulumi.getter(name="sslFingerprint")
     def ssl_fingerprint(self) -> pulumi.Output[str]:
         """
-        The SSL fingerprint
+        The SSL fingerprint.
         """
         return pulumi.get(self, "ssl_fingerprint")
 
@@ -566,7 +682,7 @@ class Certifi(pulumi.CustomResource):
     @pulumi.getter(name="startDate")
     def start_date(self) -> pulumi.Output[str]:
         """
-        The start date
+        The start date (RFC 3339).
         """
         return pulumi.get(self, "start_date")
 
@@ -574,7 +690,7 @@ class Certifi(pulumi.CustomResource):
     @pulumi.getter
     def subject(self) -> pulumi.Output[str]:
         """
-        The subject
+        The subject.
         """
         return pulumi.get(self, "subject")
 
@@ -582,7 +698,7 @@ class Certifi(pulumi.CustomResource):
     @pulumi.getter(name="subjectAlternativeNames")
     def subject_alternative_names(self) -> pulumi.Output[Sequence[str]]:
         """
-        The subject alternative names
+        The subject alternative names.
         """
         return pulumi.get(self, "subject_alternative_names")
 

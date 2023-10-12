@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
@@ -19,17 +19,38 @@ class HostsEntry(dict):
     def __init__(__self__, *,
                  address: str,
                  hostnames: Sequence[str]):
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "hostnames", hostnames)
+        """
+        :param str address: The IP address.
+        :param Sequence[str] hostnames: The hostnames.
+        """
+        HostsEntry._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            hostnames=hostnames,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: str,
+             hostnames: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address", address)
+        _setter("hostnames", hostnames)
 
     @property
     @pulumi.getter
     def address(self) -> str:
+        """
+        The IP address.
+        """
         return pulumi.get(self, "address")
 
     @property
     @pulumi.getter
     def hostnames(self) -> Sequence[str]:
+        """
+        The hostnames.
+        """
         return pulumi.get(self, "hostnames")
 
 
@@ -38,8 +59,22 @@ class GetHostsEntryResult(dict):
     def __init__(__self__, *,
                  address: str,
                  hostnames: Sequence[str]):
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "hostnames", hostnames)
+        """
+        :param Sequence[str] hostnames: The hostnames associated with each of the IP addresses.
+        """
+        GetHostsEntryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            hostnames=hostnames,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: str,
+             hostnames: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address", address)
+        _setter("hostnames", hostnames)
 
     @property
     @pulumi.getter
@@ -49,6 +84,9 @@ class GetHostsEntryResult(dict):
     @property
     @pulumi.getter
     def hostnames(self) -> Sequence[str]:
+        """
+        The hostnames associated with each of the IP addresses.
+        """
         return pulumi.get(self, "hostnames")
 
 

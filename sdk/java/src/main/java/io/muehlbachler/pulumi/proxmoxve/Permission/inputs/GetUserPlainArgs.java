@@ -12,9 +12,17 @@ public final class GetUserPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetUserPlainArgs Empty = new GetUserPlainArgs();
 
+    /**
+     * The user identifier.
+     * 
+     */
     @Import(name="userId", required=true)
     private String userId;
 
+    /**
+     * @return The user identifier.
+     * 
+     */
     public String userId() {
         return this.userId;
     }
@@ -43,6 +51,12 @@ public final class GetUserPlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetUserPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param userId The user identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userId(String userId) {
             $.userId = userId;
             return this;

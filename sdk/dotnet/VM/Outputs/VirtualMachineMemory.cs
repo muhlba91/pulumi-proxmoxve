@@ -13,8 +13,19 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     [OutputType]
     public sealed class VirtualMachineMemory
     {
+        /// <summary>
+        /// The dedicated memory in megabytes (defaults
+        /// to `512`).
+        /// </summary>
         public readonly int? Dedicated;
+        /// <summary>
+        /// The floating memory in megabytes (defaults
+        /// to `0`).
+        /// </summary>
         public readonly int? Floating;
+        /// <summary>
+        /// The shared memory in megabytes (defaults to `0`).
+        /// </summary>
         public readonly int? Shared;
 
         [OutputConstructor]

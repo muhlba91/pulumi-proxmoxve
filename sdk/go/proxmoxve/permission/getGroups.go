@@ -8,6 +8,31 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Retrieves basic information about all available user groups.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/Permission"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Permission.GetGroups(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetGroups(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGroupsResult
@@ -20,7 +45,9 @@ func GetGroups(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetGroupsResu
 
 // A collection of values returned by getGroups.
 type GetGroupsResult struct {
+	// The group comments.
 	Comments []string `pulumi:"comments"`
+	// The group identifiers.
 	GroupIds []string `pulumi:"groupIds"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`

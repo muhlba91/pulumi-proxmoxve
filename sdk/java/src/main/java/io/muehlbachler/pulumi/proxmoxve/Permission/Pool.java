@@ -16,45 +16,88 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Manages a resource pool.
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.proxmoxve.Permission.Pool;
+ * import com.pulumi.proxmoxve.Permission.PoolArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var operationsPool = new Pool(&#34;operationsPool&#34;, PoolArgs.builder()        
+ *             .comment(&#34;Managed by Terraform&#34;)
+ *             .poolId(&#34;operations-pool&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * Instances can be imported using the `pool_id`, e.g., bash
+ * 
+ * ```sh
+ *  $ pulumi import proxmoxve:Permission/pool:Pool operations_pool operations-pool
+ * ```
+ * 
+ */
 @ResourceType(type="proxmoxve:Permission/pool:Pool")
 public class Pool extends com.pulumi.resources.CustomResource {
     /**
-     * The pool comment
+     * The pool comment.
      * 
      */
     @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
-     * @return The pool comment
+     * @return The pool comment.
      * 
      */
     public Output<Optional<String>> comment() {
         return Codegen.optional(this.comment);
     }
     /**
-     * The pool members
+     * The pool members.
      * 
      */
     @Export(name="members", refs={List.class,PoolMember.class}, tree="[0,1]")
     private Output<List<PoolMember>> members;
 
     /**
-     * @return The pool members
+     * @return The pool members.
      * 
      */
     public Output<List<PoolMember>> members() {
         return this.members;
     }
     /**
-     * The pool id
+     * The pool identifier.
      * 
      */
     @Export(name="poolId", refs={String.class}, tree="[0]")
     private Output<String> poolId;
 
     /**
-     * @return The pool id
+     * @return The pool identifier.
      * 
      */
     public Output<String> poolId() {

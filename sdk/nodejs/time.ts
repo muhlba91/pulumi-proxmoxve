@@ -4,6 +4,29 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Manages the time for a specific node.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const firstNodeTime = new proxmoxve.Time("firstNodeTime", {
+ *     nodeName: "first-node",
+ *     timeZone: "UTC",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Instances can be imported using the `node_name`, e.g., bash
+ *
+ * ```sh
+ *  $ pulumi import proxmoxve:index/time:Time first_node first-node
+ * ```
+ */
 export class Time extends pulumi.CustomResource {
     /**
      * Get an existing Time resource's state with the given name, ID, and optional extra
@@ -33,19 +56,19 @@ export class Time extends pulumi.CustomResource {
     }
 
     /**
-     * The local timestamp
+     * The node's local time.
      */
     public /*out*/ readonly localTime!: pulumi.Output<string>;
     /**
-     * The node name
+     * A node name.
      */
     public readonly nodeName!: pulumi.Output<string>;
     /**
-     * The time zone
+     * The node's time zone.
      */
     public readonly timeZone!: pulumi.Output<string>;
     /**
-     * The UTC timestamp
+     * The node's local time formatted as UTC.
      */
     public /*out*/ readonly utcTime!: pulumi.Output<string>;
 
@@ -89,19 +112,19 @@ export class Time extends pulumi.CustomResource {
  */
 export interface TimeState {
     /**
-     * The local timestamp
+     * The node's local time.
      */
     localTime?: pulumi.Input<string>;
     /**
-     * The node name
+     * A node name.
      */
     nodeName?: pulumi.Input<string>;
     /**
-     * The time zone
+     * The node's time zone.
      */
     timeZone?: pulumi.Input<string>;
     /**
-     * The UTC timestamp
+     * The node's local time formatted as UTC.
      */
     utcTime?: pulumi.Input<string>;
 }
@@ -111,11 +134,11 @@ export interface TimeState {
  */
 export interface TimeArgs {
     /**
-     * The node name
+     * A node name.
      */
     nodeName: pulumi.Input<string>;
     /**
-     * The time zone
+     * The node's time zone.
      */
     timeZone: pulumi.Input<string>;
 }

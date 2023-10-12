@@ -17,87 +17,147 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Manages the custom SSL/TLS certificate for a specific node.
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.tls.PrivateKey;
+ * import com.pulumi.tls.PrivateKeyArgs;
+ * import com.pulumi.tls.SelfSignedCert;
+ * import com.pulumi.tls.SelfSignedCertArgs;
+ * import com.pulumi.tls.inputs.SelfSignedCertSubjectArgs;
+ * import com.pulumi.proxmoxve.Certifi;
+ * import com.pulumi.proxmoxve.CertifiArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var proxmoxVirtualEnvironmentCertificatePrivateKey = new PrivateKey(&#34;proxmoxVirtualEnvironmentCertificatePrivateKey&#34;, PrivateKeyArgs.builder()        
+ *             .algorithm(&#34;RSA&#34;)
+ *             .rsaBits(2048)
+ *             .build());
+ * 
+ *         var proxmoxVirtualEnvironmentCertificateSelfSignedCert = new SelfSignedCert(&#34;proxmoxVirtualEnvironmentCertificateSelfSignedCert&#34;, SelfSignedCertArgs.builder()        
+ *             .keyAlgorithm(proxmoxVirtualEnvironmentCertificatePrivateKey.algorithm())
+ *             .privateKeyPem(proxmoxVirtualEnvironmentCertificatePrivateKey.privateKeyPem())
+ *             .subject(SelfSignedCertSubjectArgs.builder()
+ *                 .commonName(&#34;example.com&#34;)
+ *                 .organization(&#34;Terraform Provider for Proxmox&#34;)
+ *                 .build())
+ *             .validityPeriodHours(8760)
+ *             .allowedUses(            
+ *                 &#34;key_encipherment&#34;,
+ *                 &#34;digital_signature&#34;,
+ *                 &#34;server_auth&#34;)
+ *             .build());
+ * 
+ *         var example = new Certifi(&#34;example&#34;, CertifiArgs.builder()        
+ *             .certificate(proxmoxVirtualEnvironmentCertificateSelfSignedCert.certPem())
+ *             .nodeName(&#34;first-node&#34;)
+ *             .privateKey(proxmoxVirtualEnvironmentCertificatePrivateKey.privateKeyPem())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ */
 @ResourceType(type="proxmoxve:index/certifi:Certifi")
 public class Certifi extends com.pulumi.resources.CustomResource {
     /**
-     * The PEM encoded certificate
+     * The PEM encoded certificate.
      * 
      */
     @Export(name="certificate", refs={String.class}, tree="[0]")
     private Output<String> certificate;
 
     /**
-     * @return The PEM encoded certificate
+     * @return The PEM encoded certificate.
      * 
      */
     public Output<String> certificate() {
         return this.certificate;
     }
     /**
-     * The PEM encoded certificate chain
+     * The PEM encoded certificate chain.
      * 
      */
     @Export(name="certificateChain", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> certificateChain;
 
     /**
-     * @return The PEM encoded certificate chain
+     * @return The PEM encoded certificate chain.
      * 
      */
     public Output<Optional<String>> certificateChain() {
         return Codegen.optional(this.certificateChain);
     }
     /**
-     * The expiration date
+     * The expiration date (RFC 3339).
      * 
      */
     @Export(name="expirationDate", refs={String.class}, tree="[0]")
     private Output<String> expirationDate;
 
     /**
-     * @return The expiration date
+     * @return The expiration date (RFC 3339).
      * 
      */
     public Output<String> expirationDate() {
         return this.expirationDate;
     }
     /**
-     * The file name
+     * The file name.
      * 
      */
     @Export(name="fileName", refs={String.class}, tree="[0]")
     private Output<String> fileName;
 
     /**
-     * @return The file name
+     * @return The file name.
      * 
      */
     public Output<String> fileName() {
         return this.fileName;
     }
     /**
-     * The issuer
+     * The issuer.
      * 
      */
     @Export(name="issuer", refs={String.class}, tree="[0]")
     private Output<String> issuer;
 
     /**
-     * @return The issuer
+     * @return The issuer.
      * 
      */
     public Output<String> issuer() {
         return this.issuer;
     }
     /**
-     * The node name
+     * A node name.
      * 
      */
     @Export(name="nodeName", refs={String.class}, tree="[0]")
     private Output<String> nodeName;
 
     /**
-     * @return The node name
+     * @return A node name.
      * 
      */
     public Output<String> nodeName() {
@@ -118,98 +178,98 @@ public class Certifi extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.overwrite);
     }
     /**
-     * The PEM encoded private key
+     * The PEM encoded private key.
      * 
      */
     @Export(name="privateKey", refs={String.class}, tree="[0]")
     private Output<String> privateKey;
 
     /**
-     * @return The PEM encoded private key
+     * @return The PEM encoded private key.
      * 
      */
     public Output<String> privateKey() {
         return this.privateKey;
     }
     /**
-     * The public key size
+     * The public key size.
      * 
      */
     @Export(name="publicKeySize", refs={Integer.class}, tree="[0]")
     private Output<Integer> publicKeySize;
 
     /**
-     * @return The public key size
+     * @return The public key size.
      * 
      */
     public Output<Integer> publicKeySize() {
         return this.publicKeySize;
     }
     /**
-     * The public key type
+     * The public key type.
      * 
      */
     @Export(name="publicKeyType", refs={String.class}, tree="[0]")
     private Output<String> publicKeyType;
 
     /**
-     * @return The public key type
+     * @return The public key type.
      * 
      */
     public Output<String> publicKeyType() {
         return this.publicKeyType;
     }
     /**
-     * The SSL fingerprint
+     * The SSL fingerprint.
      * 
      */
     @Export(name="sslFingerprint", refs={String.class}, tree="[0]")
     private Output<String> sslFingerprint;
 
     /**
-     * @return The SSL fingerprint
+     * @return The SSL fingerprint.
      * 
      */
     public Output<String> sslFingerprint() {
         return this.sslFingerprint;
     }
     /**
-     * The start date
+     * The start date (RFC 3339).
      * 
      */
     @Export(name="startDate", refs={String.class}, tree="[0]")
     private Output<String> startDate;
 
     /**
-     * @return The start date
+     * @return The start date (RFC 3339).
      * 
      */
     public Output<String> startDate() {
         return this.startDate;
     }
     /**
-     * The subject
+     * The subject.
      * 
      */
     @Export(name="subject", refs={String.class}, tree="[0]")
     private Output<String> subject;
 
     /**
-     * @return The subject
+     * @return The subject.
      * 
      */
     public Output<String> subject() {
         return this.subject;
     }
     /**
-     * The subject alternative names
+     * The subject alternative names.
      * 
      */
     @Export(name="subjectAlternativeNames", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> subjectAlternativeNames;
 
     /**
-     * @return The subject alternative names
+     * @return The subject alternative names.
      * 
      */
     public Output<List<String>> subjectAlternativeNames() {

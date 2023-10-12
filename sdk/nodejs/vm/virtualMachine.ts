@@ -6,6 +6,39 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Manages a virtual machine.
+ *
+ * ## Important Notes
+ *
+ * When cloning an existing virtual machine, whether it's a template or not, the
+ * resource will only detect changes to the arguments which are not set to their
+ * default values.
+ *
+ * Furthermore, when cloning from one node to a different one, the behavior changes
+ * depening on the datastores of the source VM. If at least one non-shared
+ * datastore is used, the VM is first cloned to the source node before being
+ * migrated to the target node. This circumvents a limitation in the Proxmox clone
+ * API.
+ *
+ * **Note:** Because the migration step after the clone tries to preserve the used
+ * datastores by their name, it may fail if a datastore used in the source VM is
+ * not available on the target node (e.g. `local-lvm` is used on the source node in
+ * the VM but no `local-lvm` datastore is available on the target node). In this
+ * case, it is recommended to set the `datastoreId` argument in the `clone` block
+ * to force the migration step to migrate all disks to a specific datastore on the
+ * target node. If you need certain disks to be on specific datastores, set
+ * the `datastoreId` argument of the disks in the `disks` block to move the disks
+ * to the correct datastore after the cloning and migrating succeeded.
+ *
+ * ## Import
+ *
+ * Instances can be imported using the `node_name` and the `vm_id`, e.g., bash
+ *
+ * ```sh
+ *  $ pulumi import proxmoxve:VM/virtualMachine:VirtualMachine ubuntu_vm first-node/4321
+ * ```
+ */
 export class VirtualMachine extends pulumi.CustomResource {
     /**
      * Get an existing VirtualMachine resource's state with the given name, ID, and optional extra
@@ -35,187 +68,212 @@ export class VirtualMachine extends pulumi.CustomResource {
     }
 
     /**
-     * Whether to enable ACPI
+     * Whether to enable ACPI (defaults to `true`).
      */
     public readonly acpi!: pulumi.Output<boolean | undefined>;
     /**
-     * The QEMU agent configuration
+     * The QEMU agent configuration.
      */
     public readonly agent!: pulumi.Output<outputs.VM.VirtualMachineAgent | undefined>;
     /**
-     * The audio devices
+     * An audio device.
      */
     public readonly audioDevice!: pulumi.Output<outputs.VM.VirtualMachineAudioDevice | undefined>;
     /**
-     * The BIOS implementation
+     * The BIOS implementation (defaults to `seabios`).
      */
     public readonly bios!: pulumi.Output<string | undefined>;
     /**
-     * The guest will attempt to boot from devices in the order they appear here
+     * Specify a list of devices to boot from in the order
+     * they appear in the list (defaults to `[]`).
      */
     public readonly bootOrders!: pulumi.Output<string[] | undefined>;
     /**
-     * The CDROM drive
+     * The CDROM configuration.
      */
     public readonly cdrom!: pulumi.Output<outputs.VM.VirtualMachineCdrom | undefined>;
     /**
-     * The cloning configuration
+     * The cloning configuration.
      */
     public readonly clone!: pulumi.Output<outputs.VM.VirtualMachineClone | undefined>;
     /**
-     * The CPU allocation
+     * The CPU configuration.
      */
     public readonly cpu!: pulumi.Output<outputs.VM.VirtualMachineCpu | undefined>;
     /**
-     * The description
+     * The description.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The disk devices
+     * A disk (multiple blocks supported).
      */
     public readonly disks!: pulumi.Output<outputs.VM.VirtualMachineDisk[] | undefined>;
     /**
-     * The efidisk device
+     * The efi disk device (required if `bios` is set
+     * to `ovmf`)
      */
     public readonly efiDisk!: pulumi.Output<outputs.VM.VirtualMachineEfiDisk | undefined>;
     /**
-     * The Host PCI devices mapped to the VM
+     * A host PCI device mapping (multiple blocks supported).
      */
     public readonly hostpcis!: pulumi.Output<outputs.VM.VirtualMachineHostpci[] | undefined>;
     /**
-     * The cloud-init configuration
+     * The cloud-init configuration.
      */
     public readonly initialization!: pulumi.Output<outputs.VM.VirtualMachineInitialization | undefined>;
     /**
-     * The IPv4 addresses published by the QEMU agent
+     * The IPv4 addresses per network interface published by the
+     * QEMU agent (empty list when `agent.enabled` is `false`)
      */
     public /*out*/ readonly ipv4Addresses!: pulumi.Output<string[][]>;
     /**
-     * The IPv6 addresses published by the QEMU agent
+     * The IPv6 addresses per network interface published by the
+     * QEMU agent (empty list when `agent.enabled` is `false`)
      */
     public /*out*/ readonly ipv6Addresses!: pulumi.Output<string[][]>;
     /**
-     * The keyboard layout
+     * The keyboard layout (defaults to `en-us`).
      */
     public readonly keyboardLayout!: pulumi.Output<string | undefined>;
     /**
-     * The args implementation
+     * Arbitrary arguments passed to kvm.
      */
     public readonly kvmArguments!: pulumi.Output<string | undefined>;
     /**
-     * The MAC addresses for the network interfaces
+     * The MAC addresses published by the QEMU agent with fallback
+     * to the network device configuration, if the agent is disabled
      */
     public /*out*/ readonly macAddresses!: pulumi.Output<string[]>;
     /**
-     * The VM machine type, either default i440fx or q35
+     * The VM machine type (defaults to `i440fx`).
      */
     public readonly machine!: pulumi.Output<string | undefined>;
     /**
-     * The memory allocation
+     * The VGA memory in megabytes (defaults to `16`).
      */
     public readonly memory!: pulumi.Output<outputs.VM.VirtualMachineMemory | undefined>;
     /**
-     * Whether to migrate the VM on node change instead of re-creating it
+     * Migrate the VM on node change instead of re-creating
+     * it (defaults to `false`).
      */
     public readonly migrate!: pulumi.Output<boolean | undefined>;
     /**
-     * The name
+     * The virtual machine name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The network devices
+     * A network device (multiple blocks supported).
      */
     public readonly networkDevices!: pulumi.Output<outputs.VM.VirtualMachineNetworkDevice[] | undefined>;
     /**
-     * The network interface names published by the QEMU agent
+     * The network interface names published by the QEMU
+     * agent (empty list when `agent.enabled` is `false`)
      */
     public /*out*/ readonly networkInterfaceNames!: pulumi.Output<string[]>;
     /**
-     * The node name
+     * The name of the node to assign the virtual machine
+     * to.
      */
     public readonly nodeName!: pulumi.Output<string>;
     /**
-     * Start VM on Node boot
+     * Specifies whether a VM will be started during system
+     * boot. (defaults to `true`)
      */
     public readonly onBoot!: pulumi.Output<boolean | undefined>;
     /**
-     * The operating system configuration
+     * The Operating System configuration.
      */
     public readonly operatingSystem!: pulumi.Output<outputs.VM.VirtualMachineOperatingSystem | undefined>;
     /**
-     * The ID of the pool to assign the virtual machine to
+     * The identifier for a pool to assign the virtual machine
+     * to.
      */
     public readonly poolId!: pulumi.Output<string | undefined>;
     /**
-     * Whether to reboot vm after creation
+     * Reboot the VM after initial creation. (defaults
+     * to `false`)
      */
     public readonly reboot!: pulumi.Output<boolean | undefined>;
     /**
-     * The SCSI hardware type
+     * The SCSI hardware type (defaults
+     * to `virtio-scsi-pci`).
      */
     public readonly scsiHardware!: pulumi.Output<string | undefined>;
     /**
-     * The serial devices
+     * A serial device (multiple blocks supported).
      */
     public readonly serialDevices!: pulumi.Output<outputs.VM.VirtualMachineSerialDevice[] | undefined>;
     /**
-     * Specifies SMBIOS (type1) settings for the VM
+     * The SMBIOS (type1) settings for the VM.
      */
     public readonly smbios!: pulumi.Output<outputs.VM.VirtualMachineSmbios | undefined>;
     /**
-     * Whether to start the virtual machine
+     * Whether to start the virtual machine (defaults
+     * to `true`).
      */
     public readonly started!: pulumi.Output<boolean | undefined>;
     /**
-     * Defines startup and shutdown behavior of the VM
+     * Defines startup and shutdown behavior of the VM.
      */
     public readonly startup!: pulumi.Output<outputs.VM.VirtualMachineStartup | undefined>;
     /**
-     * Whether to enable the USB tablet device
+     * Whether to enable the USB tablet device (defaults
+     * to `true`).
      */
     public readonly tabletDevice!: pulumi.Output<boolean | undefined>;
     /**
-     * Tags of the virtual machine. This is only meta information.
+     * A list of tags of the VM. This is only meta information (
+     * defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
+     * template is not sorted, then Proxmox will always report a difference on the
+     * resource. You may use the `ignoreChanges` lifecycle meta-argument to ignore
+     * changes to this attribute.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * Whether to create a template
+     * Whether to create a template (defaults to `false`).
      */
     public readonly template!: pulumi.Output<boolean | undefined>;
     /**
-     * Clone VM timeout
+     * Timeout for cloning a VM in seconds (defaults to
+     * 1800).
      */
     public readonly timeoutClone!: pulumi.Output<number | undefined>;
     /**
-     * Migrate VM timeout
+     * Timeout for migrating the VM (defaults to
+     * 1800).
      */
     public readonly timeoutMigrate!: pulumi.Output<number | undefined>;
     /**
-     * MoveDisk timeout
+     * Timeout for moving the disk of a VM in
+     * seconds (defaults to 1800).
      */
     public readonly timeoutMoveDisk!: pulumi.Output<number | undefined>;
     /**
-     * Reboot timeout
+     * Timeout for rebooting a VM in seconds (defaults
+     * to 1800).
      */
     public readonly timeoutReboot!: pulumi.Output<number | undefined>;
     /**
-     * Shutdown timeout
+     * Timeout for shutting down a VM in seconds (
+     * defaults to 1800).
      */
     public readonly timeoutShutdownVm!: pulumi.Output<number | undefined>;
     /**
-     * Start VM timeout
+     * Timeout for starting a VM in seconds (defaults
+     * to 1800).
      */
     public readonly timeoutStartVm!: pulumi.Output<number | undefined>;
     /**
-     * Stop VM timeout
+     * Timeout for stopping a VM in seconds (defaults
+     * to 300).
      */
     public readonly timeoutStopVm!: pulumi.Output<number | undefined>;
     /**
-     * The VGA configuration
+     * The VGA configuration.
      */
     public readonly vga!: pulumi.Output<outputs.VM.VirtualMachineVga | undefined>;
     /**
-     * The VM identifier
+     * The VM identifier.
      */
     public readonly vmId!: pulumi.Output<number>;
 
@@ -340,187 +398,212 @@ export class VirtualMachine extends pulumi.CustomResource {
  */
 export interface VirtualMachineState {
     /**
-     * Whether to enable ACPI
+     * Whether to enable ACPI (defaults to `true`).
      */
     acpi?: pulumi.Input<boolean>;
     /**
-     * The QEMU agent configuration
+     * The QEMU agent configuration.
      */
     agent?: pulumi.Input<inputs.VM.VirtualMachineAgent>;
     /**
-     * The audio devices
+     * An audio device.
      */
     audioDevice?: pulumi.Input<inputs.VM.VirtualMachineAudioDevice>;
     /**
-     * The BIOS implementation
+     * The BIOS implementation (defaults to `seabios`).
      */
     bios?: pulumi.Input<string>;
     /**
-     * The guest will attempt to boot from devices in the order they appear here
+     * Specify a list of devices to boot from in the order
+     * they appear in the list (defaults to `[]`).
      */
     bootOrders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The CDROM drive
+     * The CDROM configuration.
      */
     cdrom?: pulumi.Input<inputs.VM.VirtualMachineCdrom>;
     /**
-     * The cloning configuration
+     * The cloning configuration.
      */
     clone?: pulumi.Input<inputs.VM.VirtualMachineClone>;
     /**
-     * The CPU allocation
+     * The CPU configuration.
      */
     cpu?: pulumi.Input<inputs.VM.VirtualMachineCpu>;
     /**
-     * The description
+     * The description.
      */
     description?: pulumi.Input<string>;
     /**
-     * The disk devices
+     * A disk (multiple blocks supported).
      */
     disks?: pulumi.Input<pulumi.Input<inputs.VM.VirtualMachineDisk>[]>;
     /**
-     * The efidisk device
+     * The efi disk device (required if `bios` is set
+     * to `ovmf`)
      */
     efiDisk?: pulumi.Input<inputs.VM.VirtualMachineEfiDisk>;
     /**
-     * The Host PCI devices mapped to the VM
+     * A host PCI device mapping (multiple blocks supported).
      */
     hostpcis?: pulumi.Input<pulumi.Input<inputs.VM.VirtualMachineHostpci>[]>;
     /**
-     * The cloud-init configuration
+     * The cloud-init configuration.
      */
     initialization?: pulumi.Input<inputs.VM.VirtualMachineInitialization>;
     /**
-     * The IPv4 addresses published by the QEMU agent
+     * The IPv4 addresses per network interface published by the
+     * QEMU agent (empty list when `agent.enabled` is `false`)
      */
     ipv4Addresses?: pulumi.Input<pulumi.Input<pulumi.Input<string>[]>[]>;
     /**
-     * The IPv6 addresses published by the QEMU agent
+     * The IPv6 addresses per network interface published by the
+     * QEMU agent (empty list when `agent.enabled` is `false`)
      */
     ipv6Addresses?: pulumi.Input<pulumi.Input<pulumi.Input<string>[]>[]>;
     /**
-     * The keyboard layout
+     * The keyboard layout (defaults to `en-us`).
      */
     keyboardLayout?: pulumi.Input<string>;
     /**
-     * The args implementation
+     * Arbitrary arguments passed to kvm.
      */
     kvmArguments?: pulumi.Input<string>;
     /**
-     * The MAC addresses for the network interfaces
+     * The MAC addresses published by the QEMU agent with fallback
+     * to the network device configuration, if the agent is disabled
      */
     macAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The VM machine type, either default i440fx or q35
+     * The VM machine type (defaults to `i440fx`).
      */
     machine?: pulumi.Input<string>;
     /**
-     * The memory allocation
+     * The VGA memory in megabytes (defaults to `16`).
      */
     memory?: pulumi.Input<inputs.VM.VirtualMachineMemory>;
     /**
-     * Whether to migrate the VM on node change instead of re-creating it
+     * Migrate the VM on node change instead of re-creating
+     * it (defaults to `false`).
      */
     migrate?: pulumi.Input<boolean>;
     /**
-     * The name
+     * The virtual machine name.
      */
     name?: pulumi.Input<string>;
     /**
-     * The network devices
+     * A network device (multiple blocks supported).
      */
     networkDevices?: pulumi.Input<pulumi.Input<inputs.VM.VirtualMachineNetworkDevice>[]>;
     /**
-     * The network interface names published by the QEMU agent
+     * The network interface names published by the QEMU
+     * agent (empty list when `agent.enabled` is `false`)
      */
     networkInterfaceNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The node name
+     * The name of the node to assign the virtual machine
+     * to.
      */
     nodeName?: pulumi.Input<string>;
     /**
-     * Start VM on Node boot
+     * Specifies whether a VM will be started during system
+     * boot. (defaults to `true`)
      */
     onBoot?: pulumi.Input<boolean>;
     /**
-     * The operating system configuration
+     * The Operating System configuration.
      */
     operatingSystem?: pulumi.Input<inputs.VM.VirtualMachineOperatingSystem>;
     /**
-     * The ID of the pool to assign the virtual machine to
+     * The identifier for a pool to assign the virtual machine
+     * to.
      */
     poolId?: pulumi.Input<string>;
     /**
-     * Whether to reboot vm after creation
+     * Reboot the VM after initial creation. (defaults
+     * to `false`)
      */
     reboot?: pulumi.Input<boolean>;
     /**
-     * The SCSI hardware type
+     * The SCSI hardware type (defaults
+     * to `virtio-scsi-pci`).
      */
     scsiHardware?: pulumi.Input<string>;
     /**
-     * The serial devices
+     * A serial device (multiple blocks supported).
      */
     serialDevices?: pulumi.Input<pulumi.Input<inputs.VM.VirtualMachineSerialDevice>[]>;
     /**
-     * Specifies SMBIOS (type1) settings for the VM
+     * The SMBIOS (type1) settings for the VM.
      */
     smbios?: pulumi.Input<inputs.VM.VirtualMachineSmbios>;
     /**
-     * Whether to start the virtual machine
+     * Whether to start the virtual machine (defaults
+     * to `true`).
      */
     started?: pulumi.Input<boolean>;
     /**
-     * Defines startup and shutdown behavior of the VM
+     * Defines startup and shutdown behavior of the VM.
      */
     startup?: pulumi.Input<inputs.VM.VirtualMachineStartup>;
     /**
-     * Whether to enable the USB tablet device
+     * Whether to enable the USB tablet device (defaults
+     * to `true`).
      */
     tabletDevice?: pulumi.Input<boolean>;
     /**
-     * Tags of the virtual machine. This is only meta information.
+     * A list of tags of the VM. This is only meta information (
+     * defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
+     * template is not sorted, then Proxmox will always report a difference on the
+     * resource. You may use the `ignoreChanges` lifecycle meta-argument to ignore
+     * changes to this attribute.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Whether to create a template
+     * Whether to create a template (defaults to `false`).
      */
     template?: pulumi.Input<boolean>;
     /**
-     * Clone VM timeout
+     * Timeout for cloning a VM in seconds (defaults to
+     * 1800).
      */
     timeoutClone?: pulumi.Input<number>;
     /**
-     * Migrate VM timeout
+     * Timeout for migrating the VM (defaults to
+     * 1800).
      */
     timeoutMigrate?: pulumi.Input<number>;
     /**
-     * MoveDisk timeout
+     * Timeout for moving the disk of a VM in
+     * seconds (defaults to 1800).
      */
     timeoutMoveDisk?: pulumi.Input<number>;
     /**
-     * Reboot timeout
+     * Timeout for rebooting a VM in seconds (defaults
+     * to 1800).
      */
     timeoutReboot?: pulumi.Input<number>;
     /**
-     * Shutdown timeout
+     * Timeout for shutting down a VM in seconds (
+     * defaults to 1800).
      */
     timeoutShutdownVm?: pulumi.Input<number>;
     /**
-     * Start VM timeout
+     * Timeout for starting a VM in seconds (defaults
+     * to 1800).
      */
     timeoutStartVm?: pulumi.Input<number>;
     /**
-     * Stop VM timeout
+     * Timeout for stopping a VM in seconds (defaults
+     * to 300).
      */
     timeoutStopVm?: pulumi.Input<number>;
     /**
-     * The VGA configuration
+     * The VGA configuration.
      */
     vga?: pulumi.Input<inputs.VM.VirtualMachineVga>;
     /**
-     * The VM identifier
+     * The VM identifier.
      */
     vmId?: pulumi.Input<number>;
 }
@@ -530,171 +613,192 @@ export interface VirtualMachineState {
  */
 export interface VirtualMachineArgs {
     /**
-     * Whether to enable ACPI
+     * Whether to enable ACPI (defaults to `true`).
      */
     acpi?: pulumi.Input<boolean>;
     /**
-     * The QEMU agent configuration
+     * The QEMU agent configuration.
      */
     agent?: pulumi.Input<inputs.VM.VirtualMachineAgent>;
     /**
-     * The audio devices
+     * An audio device.
      */
     audioDevice?: pulumi.Input<inputs.VM.VirtualMachineAudioDevice>;
     /**
-     * The BIOS implementation
+     * The BIOS implementation (defaults to `seabios`).
      */
     bios?: pulumi.Input<string>;
     /**
-     * The guest will attempt to boot from devices in the order they appear here
+     * Specify a list of devices to boot from in the order
+     * they appear in the list (defaults to `[]`).
      */
     bootOrders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The CDROM drive
+     * The CDROM configuration.
      */
     cdrom?: pulumi.Input<inputs.VM.VirtualMachineCdrom>;
     /**
-     * The cloning configuration
+     * The cloning configuration.
      */
     clone?: pulumi.Input<inputs.VM.VirtualMachineClone>;
     /**
-     * The CPU allocation
+     * The CPU configuration.
      */
     cpu?: pulumi.Input<inputs.VM.VirtualMachineCpu>;
     /**
-     * The description
+     * The description.
      */
     description?: pulumi.Input<string>;
     /**
-     * The disk devices
+     * A disk (multiple blocks supported).
      */
     disks?: pulumi.Input<pulumi.Input<inputs.VM.VirtualMachineDisk>[]>;
     /**
-     * The efidisk device
+     * The efi disk device (required if `bios` is set
+     * to `ovmf`)
      */
     efiDisk?: pulumi.Input<inputs.VM.VirtualMachineEfiDisk>;
     /**
-     * The Host PCI devices mapped to the VM
+     * A host PCI device mapping (multiple blocks supported).
      */
     hostpcis?: pulumi.Input<pulumi.Input<inputs.VM.VirtualMachineHostpci>[]>;
     /**
-     * The cloud-init configuration
+     * The cloud-init configuration.
      */
     initialization?: pulumi.Input<inputs.VM.VirtualMachineInitialization>;
     /**
-     * The keyboard layout
+     * The keyboard layout (defaults to `en-us`).
      */
     keyboardLayout?: pulumi.Input<string>;
     /**
-     * The args implementation
+     * Arbitrary arguments passed to kvm.
      */
     kvmArguments?: pulumi.Input<string>;
     /**
-     * The VM machine type, either default i440fx or q35
+     * The VM machine type (defaults to `i440fx`).
      */
     machine?: pulumi.Input<string>;
     /**
-     * The memory allocation
+     * The VGA memory in megabytes (defaults to `16`).
      */
     memory?: pulumi.Input<inputs.VM.VirtualMachineMemory>;
     /**
-     * Whether to migrate the VM on node change instead of re-creating it
+     * Migrate the VM on node change instead of re-creating
+     * it (defaults to `false`).
      */
     migrate?: pulumi.Input<boolean>;
     /**
-     * The name
+     * The virtual machine name.
      */
     name?: pulumi.Input<string>;
     /**
-     * The network devices
+     * A network device (multiple blocks supported).
      */
     networkDevices?: pulumi.Input<pulumi.Input<inputs.VM.VirtualMachineNetworkDevice>[]>;
     /**
-     * The node name
+     * The name of the node to assign the virtual machine
+     * to.
      */
     nodeName: pulumi.Input<string>;
     /**
-     * Start VM on Node boot
+     * Specifies whether a VM will be started during system
+     * boot. (defaults to `true`)
      */
     onBoot?: pulumi.Input<boolean>;
     /**
-     * The operating system configuration
+     * The Operating System configuration.
      */
     operatingSystem?: pulumi.Input<inputs.VM.VirtualMachineOperatingSystem>;
     /**
-     * The ID of the pool to assign the virtual machine to
+     * The identifier for a pool to assign the virtual machine
+     * to.
      */
     poolId?: pulumi.Input<string>;
     /**
-     * Whether to reboot vm after creation
+     * Reboot the VM after initial creation. (defaults
+     * to `false`)
      */
     reboot?: pulumi.Input<boolean>;
     /**
-     * The SCSI hardware type
+     * The SCSI hardware type (defaults
+     * to `virtio-scsi-pci`).
      */
     scsiHardware?: pulumi.Input<string>;
     /**
-     * The serial devices
+     * A serial device (multiple blocks supported).
      */
     serialDevices?: pulumi.Input<pulumi.Input<inputs.VM.VirtualMachineSerialDevice>[]>;
     /**
-     * Specifies SMBIOS (type1) settings for the VM
+     * The SMBIOS (type1) settings for the VM.
      */
     smbios?: pulumi.Input<inputs.VM.VirtualMachineSmbios>;
     /**
-     * Whether to start the virtual machine
+     * Whether to start the virtual machine (defaults
+     * to `true`).
      */
     started?: pulumi.Input<boolean>;
     /**
-     * Defines startup and shutdown behavior of the VM
+     * Defines startup and shutdown behavior of the VM.
      */
     startup?: pulumi.Input<inputs.VM.VirtualMachineStartup>;
     /**
-     * Whether to enable the USB tablet device
+     * Whether to enable the USB tablet device (defaults
+     * to `true`).
      */
     tabletDevice?: pulumi.Input<boolean>;
     /**
-     * Tags of the virtual machine. This is only meta information.
+     * A list of tags of the VM. This is only meta information (
+     * defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
+     * template is not sorted, then Proxmox will always report a difference on the
+     * resource. You may use the `ignoreChanges` lifecycle meta-argument to ignore
+     * changes to this attribute.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Whether to create a template
+     * Whether to create a template (defaults to `false`).
      */
     template?: pulumi.Input<boolean>;
     /**
-     * Clone VM timeout
+     * Timeout for cloning a VM in seconds (defaults to
+     * 1800).
      */
     timeoutClone?: pulumi.Input<number>;
     /**
-     * Migrate VM timeout
+     * Timeout for migrating the VM (defaults to
+     * 1800).
      */
     timeoutMigrate?: pulumi.Input<number>;
     /**
-     * MoveDisk timeout
+     * Timeout for moving the disk of a VM in
+     * seconds (defaults to 1800).
      */
     timeoutMoveDisk?: pulumi.Input<number>;
     /**
-     * Reboot timeout
+     * Timeout for rebooting a VM in seconds (defaults
+     * to 1800).
      */
     timeoutReboot?: pulumi.Input<number>;
     /**
-     * Shutdown timeout
+     * Timeout for shutting down a VM in seconds (
+     * defaults to 1800).
      */
     timeoutShutdownVm?: pulumi.Input<number>;
     /**
-     * Start VM timeout
+     * Timeout for starting a VM in seconds (defaults
+     * to 1800).
      */
     timeoutStartVm?: pulumi.Input<number>;
     /**
-     * Stop VM timeout
+     * Timeout for stopping a VM in seconds (defaults
+     * to 300).
      */
     timeoutStopVm?: pulumi.Input<number>;
     /**
-     * The VGA configuration
+     * The VGA configuration.
      */
     vga?: pulumi.Input<inputs.VM.VirtualMachineVga>;
     /**
-     * The VM identifier
+     * The VM identifier.
      */
     vmId?: pulumi.Input<number>;
 }

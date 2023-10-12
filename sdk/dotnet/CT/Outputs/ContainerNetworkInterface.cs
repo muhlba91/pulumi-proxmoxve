@@ -13,13 +13,41 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
     [OutputType]
     public sealed class ContainerNetworkInterface
     {
+        /// <summary>
+        /// The name of the network bridge (defaults
+        /// to `vmbr0`).
+        /// </summary>
         public readonly string? Bridge;
+        /// <summary>
+        /// Whether to enable the network device (defaults
+        /// to `true`).
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// Whether this interface's firewall rules should be
+        /// used (defaults to `false`).
+        /// </summary>
         public readonly bool? Firewall;
+        /// <summary>
+        /// The MAC address.
+        /// </summary>
         public readonly string? MacAddress;
+        /// <summary>
+        /// Maximum transfer unit of the interface. Cannot be
+        /// larger than the bridge's MTU.
+        /// </summary>
         public readonly int? Mtu;
+        /// <summary>
+        /// The network interface name.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The rate limit in megabytes per second.
+        /// </summary>
         public readonly double? RateLimit;
+        /// <summary>
+        /// The VLAN identifier.
+        /// </summary>
         public readonly int? VlanId;
 
         [OutputConstructor]

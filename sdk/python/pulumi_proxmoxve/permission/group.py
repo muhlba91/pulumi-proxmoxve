@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -21,21 +21,34 @@ class GroupArgs:
                  comment: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Group resource.
-        :param pulumi.Input[str] group_id: The group id
-        :param pulumi.Input[Sequence[pulumi.Input['GroupAclArgs']]] acls: The access control list
-        :param pulumi.Input[str] comment: The group comment
+        :param pulumi.Input[str] group_id: The group identifier.
+        :param pulumi.Input[Sequence[pulumi.Input['GroupAclArgs']]] acls: The access control list (multiple blocks supported).
+        :param pulumi.Input[str] comment: The group comment.
         """
-        pulumi.set(__self__, "group_id", group_id)
+        GroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_id=group_id,
+            acls=acls,
+            comment=comment,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_id: pulumi.Input[str],
+             acls: Optional[pulumi.Input[Sequence[pulumi.Input['GroupAclArgs']]]] = None,
+             comment: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("group_id", group_id)
         if acls is not None:
-            pulumi.set(__self__, "acls", acls)
+            _setter("acls", acls)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
 
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> pulumi.Input[str]:
         """
-        The group id
+        The group identifier.
         """
         return pulumi.get(self, "group_id")
 
@@ -47,7 +60,7 @@ class GroupArgs:
     @pulumi.getter
     def acls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GroupAclArgs']]]]:
         """
-        The access control list
+        The access control list (multiple blocks supported).
         """
         return pulumi.get(self, "acls")
 
@@ -59,7 +72,7 @@ class GroupArgs:
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
         """
-        The group comment
+        The group comment.
         """
         return pulumi.get(self, "comment")
 
@@ -77,25 +90,40 @@ class _GroupState:
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Group resources.
-        :param pulumi.Input[Sequence[pulumi.Input['GroupAclArgs']]] acls: The access control list
-        :param pulumi.Input[str] comment: The group comment
-        :param pulumi.Input[str] group_id: The group id
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: The group members
+        :param pulumi.Input[Sequence[pulumi.Input['GroupAclArgs']]] acls: The access control list (multiple blocks supported).
+        :param pulumi.Input[str] comment: The group comment.
+        :param pulumi.Input[str] group_id: The group identifier.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: The group members as a list of `username@realm` entries
         """
+        _GroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acls=acls,
+            comment=comment,
+            group_id=group_id,
+            members=members,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acls: Optional[pulumi.Input[Sequence[pulumi.Input['GroupAclArgs']]]] = None,
+             comment: Optional[pulumi.Input[str]] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if acls is not None:
-            pulumi.set(__self__, "acls", acls)
+            _setter("acls", acls)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if members is not None:
-            pulumi.set(__self__, "members", members)
+            _setter("members", members)
 
     @property
     @pulumi.getter
     def acls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GroupAclArgs']]]]:
         """
-        The access control list
+        The access control list (multiple blocks supported).
         """
         return pulumi.get(self, "acls")
 
@@ -107,7 +135,7 @@ class _GroupState:
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
         """
-        The group comment
+        The group comment.
         """
         return pulumi.get(self, "comment")
 
@@ -119,7 +147,7 @@ class _GroupState:
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The group id
+        The group identifier.
         """
         return pulumi.get(self, "group_id")
 
@@ -131,7 +159,7 @@ class _GroupState:
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The group members
+        The group members as a list of `username@realm` entries
         """
         return pulumi.get(self, "members")
 
@@ -150,12 +178,32 @@ class Group(pulumi.CustomResource):
                  group_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Group resource with the given unique name, props, and options.
+        Manages a user group.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        operations_team = proxmoxve.permission.Group("operationsTeam",
+            comment="Managed by Terraform",
+            group_id="operations-team")
+        ```
+
+        ## Import
+
+        Instances can be imported using the `group_id`, e.g., bash
+
+        ```sh
+         $ pulumi import proxmoxve:Permission/group:Group operations_team operations-team
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupAclArgs']]]] acls: The access control list
-        :param pulumi.Input[str] comment: The group comment
-        :param pulumi.Input[str] group_id: The group id
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupAclArgs']]]] acls: The access control list (multiple blocks supported).
+        :param pulumi.Input[str] comment: The group comment.
+        :param pulumi.Input[str] group_id: The group identifier.
         """
         ...
     @overload
@@ -164,7 +212,27 @@ class Group(pulumi.CustomResource):
                  args: GroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Group resource with the given unique name, props, and options.
+        Manages a user group.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        operations_team = proxmoxve.permission.Group("operationsTeam",
+            comment="Managed by Terraform",
+            group_id="operations-team")
+        ```
+
+        ## Import
+
+        Instances can be imported using the `group_id`, e.g., bash
+
+        ```sh
+         $ pulumi import proxmoxve:Permission/group:Group operations_team operations-team
+        ```
+
         :param str resource_name: The name of the resource.
         :param GroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -175,6 +243,10 @@ class Group(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -219,10 +291,10 @@ class Group(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupAclArgs']]]] acls: The access control list
-        :param pulumi.Input[str] comment: The group comment
-        :param pulumi.Input[str] group_id: The group id
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: The group members
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupAclArgs']]]] acls: The access control list (multiple blocks supported).
+        :param pulumi.Input[str] comment: The group comment.
+        :param pulumi.Input[str] group_id: The group identifier.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: The group members as a list of `username@realm` entries
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -238,7 +310,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter
     def acls(self) -> pulumi.Output[Optional[Sequence['outputs.GroupAcl']]]:
         """
-        The access control list
+        The access control list (multiple blocks supported).
         """
         return pulumi.get(self, "acls")
 
@@ -246,7 +318,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[str]]:
         """
-        The group comment
+        The group comment.
         """
         return pulumi.get(self, "comment")
 
@@ -254,7 +326,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="groupId")
     def group_id(self) -> pulumi.Output[str]:
         """
-        The group id
+        The group identifier.
         """
         return pulumi.get(self, "group_id")
 
@@ -262,7 +334,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter
     def members(self) -> pulumi.Output[Sequence[str]]:
         """
-        The group members
+        The group members as a list of `username@realm` entries
         """
         return pulumi.get(self, "members")
 

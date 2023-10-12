@@ -12,18 +12,66 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Manages firewall options on the cluster level.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/Network"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Network.NewFirewall(ctx, "example", &Network.FirewallArgs{
+//				Ebtables:    pulumi.Bool(false),
+//				Enabled:     pulumi.Bool(false),
+//				InputPolicy: pulumi.String("DROP"),
+//				LogRatelimit: &network.FirewallLogRatelimitArgs{
+//					Burst:   pulumi.Int(10),
+//					Enabled: pulumi.Bool(false),
+//					Rate:    pulumi.String("5/second"),
+//				},
+//				OutputPolicy: pulumi.String("ACCEPT"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## Important Notes
+//
+// Be careful not to use this resource multiple times for the same node.
+//
+// ## Import
+//
+// # Instances can be imported without an ID, but you still need to pass one, e.g., bash
+//
+// ```sh
+//
+//	$ pulumi import proxmoxve:Network/firewall:Firewall example example
+//
+// ```
 type Firewall struct {
 	pulumi.CustomResourceState
 
-	// Enable ebtables cluster-wide
+	// Enable ebtables rules cluster wide.
 	Ebtables pulumi.BoolPtrOutput `pulumi:"ebtables"`
-	// Enable or disable the firewall cluster-wide
+	// Enable or disable the log rate limit.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// Default policy for incoming traffic
+	// The default input policy (`ACCEPT`, `DROP`, `REJECT`).
 	InputPolicy pulumi.StringPtrOutput `pulumi:"inputPolicy"`
-	// Log ratelimiting settings
+	// The log rate limit.
 	LogRatelimit FirewallLogRatelimitPtrOutput `pulumi:"logRatelimit"`
-	// Default policy for outgoing traffic
+	// The default output policy (`ACCEPT`, `DROP`, `REJECT`).
 	OutputPolicy pulumi.StringPtrOutput `pulumi:"outputPolicy"`
 }
 
@@ -57,28 +105,28 @@ func GetFirewall(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Firewall resources.
 type firewallState struct {
-	// Enable ebtables cluster-wide
+	// Enable ebtables rules cluster wide.
 	Ebtables *bool `pulumi:"ebtables"`
-	// Enable or disable the firewall cluster-wide
+	// Enable or disable the log rate limit.
 	Enabled *bool `pulumi:"enabled"`
-	// Default policy for incoming traffic
+	// The default input policy (`ACCEPT`, `DROP`, `REJECT`).
 	InputPolicy *string `pulumi:"inputPolicy"`
-	// Log ratelimiting settings
+	// The log rate limit.
 	LogRatelimit *FirewallLogRatelimit `pulumi:"logRatelimit"`
-	// Default policy for outgoing traffic
+	// The default output policy (`ACCEPT`, `DROP`, `REJECT`).
 	OutputPolicy *string `pulumi:"outputPolicy"`
 }
 
 type FirewallState struct {
-	// Enable ebtables cluster-wide
+	// Enable ebtables rules cluster wide.
 	Ebtables pulumi.BoolPtrInput
-	// Enable or disable the firewall cluster-wide
+	// Enable or disable the log rate limit.
 	Enabled pulumi.BoolPtrInput
-	// Default policy for incoming traffic
+	// The default input policy (`ACCEPT`, `DROP`, `REJECT`).
 	InputPolicy pulumi.StringPtrInput
-	// Log ratelimiting settings
+	// The log rate limit.
 	LogRatelimit FirewallLogRatelimitPtrInput
-	// Default policy for outgoing traffic
+	// The default output policy (`ACCEPT`, `DROP`, `REJECT`).
 	OutputPolicy pulumi.StringPtrInput
 }
 
@@ -87,29 +135,29 @@ func (FirewallState) ElementType() reflect.Type {
 }
 
 type firewallArgs struct {
-	// Enable ebtables cluster-wide
+	// Enable ebtables rules cluster wide.
 	Ebtables *bool `pulumi:"ebtables"`
-	// Enable or disable the firewall cluster-wide
+	// Enable or disable the log rate limit.
 	Enabled *bool `pulumi:"enabled"`
-	// Default policy for incoming traffic
+	// The default input policy (`ACCEPT`, `DROP`, `REJECT`).
 	InputPolicy *string `pulumi:"inputPolicy"`
-	// Log ratelimiting settings
+	// The log rate limit.
 	LogRatelimit *FirewallLogRatelimit `pulumi:"logRatelimit"`
-	// Default policy for outgoing traffic
+	// The default output policy (`ACCEPT`, `DROP`, `REJECT`).
 	OutputPolicy *string `pulumi:"outputPolicy"`
 }
 
 // The set of arguments for constructing a Firewall resource.
 type FirewallArgs struct {
-	// Enable ebtables cluster-wide
+	// Enable ebtables rules cluster wide.
 	Ebtables pulumi.BoolPtrInput
-	// Enable or disable the firewall cluster-wide
+	// Enable or disable the log rate limit.
 	Enabled pulumi.BoolPtrInput
-	// Default policy for incoming traffic
+	// The default input policy (`ACCEPT`, `DROP`, `REJECT`).
 	InputPolicy pulumi.StringPtrInput
-	// Log ratelimiting settings
+	// The log rate limit.
 	LogRatelimit FirewallLogRatelimitPtrInput
-	// Default policy for outgoing traffic
+	// The default output policy (`ACCEPT`, `DROP`, `REJECT`).
 	OutputPolicy pulumi.StringPtrInput
 }
 
@@ -224,27 +272,27 @@ func (o FirewallOutput) ToOutput(ctx context.Context) pulumix.Output[*Firewall] 
 	}
 }
 
-// Enable ebtables cluster-wide
+// Enable ebtables rules cluster wide.
 func (o FirewallOutput) Ebtables() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.BoolPtrOutput { return v.Ebtables }).(pulumi.BoolPtrOutput)
 }
 
-// Enable or disable the firewall cluster-wide
+// Enable or disable the log rate limit.
 func (o FirewallOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Default policy for incoming traffic
+// The default input policy (`ACCEPT`, `DROP`, `REJECT`).
 func (o FirewallOutput) InputPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.StringPtrOutput { return v.InputPolicy }).(pulumi.StringPtrOutput)
 }
 
-// Log ratelimiting settings
+// The log rate limit.
 func (o FirewallOutput) LogRatelimit() FirewallLogRatelimitPtrOutput {
 	return o.ApplyT(func(v *Firewall) FirewallLogRatelimitPtrOutput { return v.LogRatelimit }).(FirewallLogRatelimitPtrOutput)
 }
 
-// Default policy for outgoing traffic
+// The default output policy (`ACCEPT`, `DROP`, `REJECT`).
 func (o FirewallOutput) OutputPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.StringPtrOutput { return v.OutputPolicy }).(pulumi.StringPtrOutput)
 }

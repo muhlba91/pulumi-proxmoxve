@@ -11,9 +11,53 @@ namespace Pulumi.ProxmoxVE.Permission
 {
     public static class GetRoles
     {
+        /// <summary>
+        /// Retrieves information about all the available roles.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var availableRoles = ProxmoxVE.Permission.GetRoles.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetRolesResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRolesResult>("proxmoxve:Permission/getRoles:getRoles", InvokeArgs.Empty, options.WithDefaults());
 
+        /// <summary>
+        /// Retrieves information about all the available roles.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var availableRoles = ProxmoxVE.Permission.GetRoles.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetRolesResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRolesResult>("proxmoxve:Permission/getRoles:getRoles", InvokeArgs.Empty, options.WithDefaults());
     }
@@ -26,8 +70,17 @@ namespace Pulumi.ProxmoxVE.Permission
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The role privileges.
+        /// </summary>
         public readonly ImmutableArray<ImmutableArray<string>> Privileges;
+        /// <summary>
+        /// The role identifiers.
+        /// </summary>
         public readonly ImmutableArray<string> RoleIds;
+        /// <summary>
+        /// Whether the role is special (built-in).
+        /// </summary>
         public readonly ImmutableArray<bool> Specials;
 
         [OutputConstructor]

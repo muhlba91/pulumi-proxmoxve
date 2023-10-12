@@ -15,6 +15,10 @@ public final class GetPoolsResult {
      * 
      */
     private String id;
+    /**
+     * @return The pool identifiers.
+     * 
+     */
     private List<String> poolIds;
 
     private GetPoolsResult() {}
@@ -25,6 +29,10 @@ public final class GetPoolsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The pool identifiers.
+     * 
+     */
     public List<String> poolIds() {
         return this.poolIds;
     }

@@ -16,16 +16,36 @@ public final class ContainerDiskArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ContainerDiskArgs Empty = new ContainerDiskArgs();
 
+    /**
+     * The identifier for the datastore to create the
+     * disk in (defaults to `local`).
+     * 
+     */
     @Import(name="datastoreId")
     private @Nullable Output<String> datastoreId;
 
+    /**
+     * @return The identifier for the datastore to create the
+     * disk in (defaults to `local`).
+     * 
+     */
     public Optional<Output<String>> datastoreId() {
         return Optional.ofNullable(this.datastoreId);
     }
 
+    /**
+     * Volume size (only for ZFS storage backed mount points).
+     * Can be specified with a unit suffix (e.g. `10G`).
+     * 
+     */
     @Import(name="size")
     private @Nullable Output<Integer> size;
 
+    /**
+     * @return Volume size (only for ZFS storage backed mount points).
+     * Can be specified with a unit suffix (e.g. `10G`).
+     * 
+     */
     public Optional<Output<Integer>> size() {
         return Optional.ofNullable(this.size);
     }
@@ -55,20 +75,48 @@ public final class ContainerDiskArgs extends com.pulumi.resources.ResourceArgs {
             $ = new ContainerDiskArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param datastoreId The identifier for the datastore to create the
+         * disk in (defaults to `local`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder datastoreId(@Nullable Output<String> datastoreId) {
             $.datastoreId = datastoreId;
             return this;
         }
 
+        /**
+         * @param datastoreId The identifier for the datastore to create the
+         * disk in (defaults to `local`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder datastoreId(String datastoreId) {
             return datastoreId(Output.of(datastoreId));
         }
 
+        /**
+         * @param size Volume size (only for ZFS storage backed mount points).
+         * Can be specified with a unit suffix (e.g. `10G`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder size(@Nullable Output<Integer> size) {
             $.size = size;
             return this;
         }
 
+        /**
+         * @param size Volume size (only for ZFS storage backed mount points).
+         * Can be specified with a unit suffix (e.g. `10G`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder size(Integer size) {
             return size(Output.of(size));
         }

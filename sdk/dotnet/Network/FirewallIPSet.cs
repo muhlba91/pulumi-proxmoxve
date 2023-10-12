@@ -9,41 +9,90 @@ using Pulumi.Serialization;
 
 namespace Pulumi.ProxmoxVE.Network
 {
+    /// <summary>
+    /// An IPSet allows us to group multiple IP addresses, IP subnets and aliases. Aliases can be
+    /// created on the cluster level, on VM / Container level.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var ipset = new ProxmoxVE.Network.FirewallIPSet("ipset", new()
+    ///     {
+    ///         NodeName = proxmox_virtual_environment_vm.Example.Node_name,
+    ///         VmId = proxmox_virtual_environment_vm.Example.Vm_id,
+    ///         Comment = "Managed by Terraform",
+    ///         Cidrs = new[]
+    ///         {
+    ///             new ProxmoxVE.Network.Inputs.FirewallIPSetCidrArgs
+    ///             {
+    ///                 Name = "192.168.0.0/23",
+    ///                 Comment = "Local network 1",
+    ///             },
+    ///             new ProxmoxVE.Network.Inputs.FirewallIPSetCidrArgs
+    ///             {
+    ///                 Name = "192.168.0.1",
+    ///                 Comment = "Server 1",
+    ///                 Nomatch = true,
+    ///             },
+    ///             new ProxmoxVE.Network.Inputs.FirewallIPSetCidrArgs
+    ///             {
+    ///                 Name = "192.168.2.1",
+    ///                 Comment = "Server 1",
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             proxmox_virtual_environment_vm.Example,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [ProxmoxVEResourceType("proxmoxve:Network/firewallIPSet:FirewallIPSet")]
     public partial class FirewallIPSet : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List of IP or Networks
+        /// IP/CIDR block (multiple blocks supported).
         /// </summary>
         [Output("cidrs")]
         public Output<ImmutableArray<Outputs.FirewallIPSetCidr>> Cidrs { get; private set; } = null!;
 
         /// <summary>
-        /// IPSet comment
+        /// Arbitrary string annotation.
         /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the container to manage the firewall for.
+        /// Container ID. Leave empty for cluster level aliases.
         /// </summary>
         [Output("containerId")]
         public Output<int?> ContainerId { get; private set; } = null!;
 
         /// <summary>
-        /// IPSet name
+        /// Network/IP specification in CIDR format.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the node.
+        /// Node name. Leave empty for cluster level aliases.
         /// </summary>
         [Output("nodeName")]
         public Output<string?> NodeName { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the VM to manage the firewall for.
+        /// VM ID. Leave empty for cluster level aliases.
         /// </summary>
         [Output("vmId")]
         public Output<int?> VmId { get; private set; } = null!;
@@ -99,7 +148,7 @@ namespace Pulumi.ProxmoxVE.Network
         private InputList<Inputs.FirewallIPSetCidrArgs>? _cidrs;
 
         /// <summary>
-        /// List of IP or Networks
+        /// IP/CIDR block (multiple blocks supported).
         /// </summary>
         public InputList<Inputs.FirewallIPSetCidrArgs> Cidrs
         {
@@ -108,31 +157,31 @@ namespace Pulumi.ProxmoxVE.Network
         }
 
         /// <summary>
-        /// IPSet comment
+        /// Arbitrary string annotation.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// The ID of the container to manage the firewall for.
+        /// Container ID. Leave empty for cluster level aliases.
         /// </summary>
         [Input("containerId")]
         public Input<int>? ContainerId { get; set; }
 
         /// <summary>
-        /// IPSet name
+        /// Network/IP specification in CIDR format.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The name of the node.
+        /// Node name. Leave empty for cluster level aliases.
         /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
 
         /// <summary>
-        /// The ID of the VM to manage the firewall for.
+        /// VM ID. Leave empty for cluster level aliases.
         /// </summary>
         [Input("vmId")]
         public Input<int>? VmId { get; set; }
@@ -149,7 +198,7 @@ namespace Pulumi.ProxmoxVE.Network
         private InputList<Inputs.FirewallIPSetCidrGetArgs>? _cidrs;
 
         /// <summary>
-        /// List of IP or Networks
+        /// IP/CIDR block (multiple blocks supported).
         /// </summary>
         public InputList<Inputs.FirewallIPSetCidrGetArgs> Cidrs
         {
@@ -158,31 +207,31 @@ namespace Pulumi.ProxmoxVE.Network
         }
 
         /// <summary>
-        /// IPSet comment
+        /// Arbitrary string annotation.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// The ID of the container to manage the firewall for.
+        /// Container ID. Leave empty for cluster level aliases.
         /// </summary>
         [Input("containerId")]
         public Input<int>? ContainerId { get; set; }
 
         /// <summary>
-        /// IPSet name
+        /// Network/IP specification in CIDR format.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The name of the node.
+        /// Node name. Leave empty for cluster level aliases.
         /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
 
         /// <summary>
-        /// The ID of the VM to manage the firewall for.
+        /// VM ID. Leave empty for cluster level aliases.
         /// </summary>
         [Input("vmId")]
         public Input<int>? VmId { get; set; }

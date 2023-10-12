@@ -15,7 +15,9 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type HostsEntry struct {
-	Address   string   `pulumi:"address"`
+	// The IP address.
+	Address string `pulumi:"address"`
+	// The hostnames.
 	Hostnames []string `pulumi:"hostnames"`
 }
 
@@ -31,7 +33,9 @@ type HostsEntryInput interface {
 }
 
 type HostsEntryArgs struct {
-	Address   pulumi.StringInput      `pulumi:"address"`
+	// The IP address.
+	Address pulumi.StringInput `pulumi:"address"`
+	// The hostnames.
 	Hostnames pulumi.StringArrayInput `pulumi:"hostnames"`
 }
 
@@ -104,10 +108,12 @@ func (o HostsEntryOutput) ToOutput(ctx context.Context) pulumix.Output[HostsEntr
 	}
 }
 
+// The IP address.
 func (o HostsEntryOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v HostsEntry) string { return v.Address }).(pulumi.StringOutput)
 }
 
+// The hostnames.
 func (o HostsEntryOutput) Hostnames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v HostsEntry) []string { return v.Hostnames }).(pulumi.StringArrayOutput)
 }
@@ -486,7 +492,8 @@ func (o ProviderSshNodeArrayOutput) Index(i pulumi.IntInput) ProviderSshNodeOutp
 }
 
 type GetHostsEntry struct {
-	Address   string   `pulumi:"address"`
+	Address string `pulumi:"address"`
+	// The hostnames associated with each of the IP addresses.
 	Hostnames []string `pulumi:"hostnames"`
 }
 
@@ -502,7 +509,8 @@ type GetHostsEntryInput interface {
 }
 
 type GetHostsEntryArgs struct {
-	Address   pulumi.StringInput      `pulumi:"address"`
+	Address pulumi.StringInput `pulumi:"address"`
+	// The hostnames associated with each of the IP addresses.
 	Hostnames pulumi.StringArrayInput `pulumi:"hostnames"`
 }
 
@@ -579,6 +587,7 @@ func (o GetHostsEntryOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHostsEntry) string { return v.Address }).(pulumi.StringOutput)
 }
 
+// The hostnames associated with each of the IP addresses.
 func (o GetHostsEntryOutput) Hostnames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetHostsEntry) []string { return v.Hostnames }).(pulumi.StringArrayOutput)
 }

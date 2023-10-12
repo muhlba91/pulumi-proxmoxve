@@ -12,6 +12,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Retrieves the DNS configuration for a specific node.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := proxmoxve.LookupDNS(ctx, &proxmoxve.LookupDNSArgs{
+//				NodeName: "first-node",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupDNS(ctx *pulumi.Context, args *LookupDNSArgs, opts ...pulumi.InvokeOption) (*LookupDNSResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDNSResult
@@ -24,16 +51,19 @@ func LookupDNS(ctx *pulumi.Context, args *LookupDNSArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getDNS.
 type LookupDNSArgs struct {
+	// A node name.
 	NodeName string `pulumi:"nodeName"`
 }
 
 // A collection of values returned by getDNS.
 type LookupDNSResult struct {
+	// The DNS search domain.
 	Domain string `pulumi:"domain"`
 	// The provider-assigned unique ID for this managed resource.
-	Id       string   `pulumi:"id"`
-	NodeName string   `pulumi:"nodeName"`
-	Servers  []string `pulumi:"servers"`
+	Id       string `pulumi:"id"`
+	NodeName string `pulumi:"nodeName"`
+	// The DNS servers.
+	Servers []string `pulumi:"servers"`
 }
 
 func LookupDNSOutput(ctx *pulumi.Context, args LookupDNSOutputArgs, opts ...pulumi.InvokeOption) LookupDNSResultOutput {
@@ -51,6 +81,7 @@ func LookupDNSOutput(ctx *pulumi.Context, args LookupDNSOutputArgs, opts ...pulu
 
 // A collection of arguments for invoking getDNS.
 type LookupDNSOutputArgs struct {
+	// A node name.
 	NodeName pulumi.StringInput `pulumi:"nodeName"`
 }
 
@@ -79,6 +110,7 @@ func (o LookupDNSResultOutput) ToOutput(ctx context.Context) pulumix.Output[Look
 	}
 }
 
+// The DNS search domain.
 func (o LookupDNSResultOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDNSResult) string { return v.Domain }).(pulumi.StringOutput)
 }
@@ -92,6 +124,7 @@ func (o LookupDNSResultOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDNSResult) string { return v.NodeName }).(pulumi.StringOutput)
 }
 
+// The DNS servers.
 func (o LookupDNSResultOutput) Servers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDNSResult) []string { return v.Servers }).(pulumi.StringArrayOutput)
 }

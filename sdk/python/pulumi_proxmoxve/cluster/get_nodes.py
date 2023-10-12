@@ -6,13 +6,14 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
     'GetNodesResult',
     'AwaitableGetNodesResult',
     'get_nodes',
+    'get_nodes_output',
 ]
 
 @pulumi.output_type
@@ -55,11 +56,17 @@ class GetNodesResult:
     @property
     @pulumi.getter(name="cpuCounts")
     def cpu_counts(self) -> Sequence[int]:
+        """
+        The CPU count for each node.
+        """
         return pulumi.get(self, "cpu_counts")
 
     @property
     @pulumi.getter(name="cpuUtilizations")
     def cpu_utilizations(self) -> Sequence[float]:
+        """
+        The CPU utilization on each node.
+        """
         return pulumi.get(self, "cpu_utilizations")
 
     @property
@@ -73,36 +80,57 @@ class GetNodesResult:
     @property
     @pulumi.getter(name="memoryAvailables")
     def memory_availables(self) -> Sequence[int]:
+        """
+        The memory available on each node.
+        """
         return pulumi.get(self, "memory_availables")
 
     @property
     @pulumi.getter(name="memoryUseds")
     def memory_useds(self) -> Sequence[int]:
+        """
+        The memory used on each node.
+        """
         return pulumi.get(self, "memory_useds")
 
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        The node names.
+        """
         return pulumi.get(self, "names")
 
     @property
     @pulumi.getter
     def onlines(self) -> Sequence[bool]:
+        """
+        Whether a node is online.
+        """
         return pulumi.get(self, "onlines")
 
     @property
     @pulumi.getter(name="sslFingerprints")
     def ssl_fingerprints(self) -> Sequence[str]:
+        """
+        The SSL fingerprint for each node.
+        """
         return pulumi.get(self, "ssl_fingerprints")
 
     @property
     @pulumi.getter(name="supportLevels")
     def support_levels(self) -> Sequence[str]:
+        """
+        The support level for each node.
+        """
         return pulumi.get(self, "support_levels")
 
     @property
     @pulumi.getter
     def uptimes(self) -> Sequence[int]:
+        """
+        The uptime in seconds for each node.
+        """
         return pulumi.get(self, "uptimes")
 
 
@@ -126,7 +154,16 @@ class AwaitableGetNodesResult(GetNodesResult):
 
 def get_nodes(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodesResult:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves information about all available nodes.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    available_nodes = proxmoxve.Cluster.get_nodes()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -143,3 +180,20 @@ def get_nodes(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodesR
         ssl_fingerprints=pulumi.get(__ret__, 'ssl_fingerprints'),
         support_levels=pulumi.get(__ret__, 'support_levels'),
         uptimes=pulumi.get(__ret__, 'uptimes'))
+
+
+@_utilities.lift_output_func(get_nodes)
+def get_nodes_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodesResult]:
+    """
+    Retrieves information about all available nodes.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    available_nodes = proxmoxve.Cluster.get_nodes()
+    ```
+    """
+    ...

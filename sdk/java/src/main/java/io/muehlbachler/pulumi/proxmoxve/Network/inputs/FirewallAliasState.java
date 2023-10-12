@@ -17,14 +17,14 @@ public final class FirewallAliasState extends com.pulumi.resources.ResourceArgs 
     public static final FirewallAliasState Empty = new FirewallAliasState();
 
     /**
-     * IP/CIDR block
+     * Network/IP specification in CIDR format.
      * 
      */
     @Import(name="cidr")
     private @Nullable Output<String> cidr;
 
     /**
-     * @return IP/CIDR block
+     * @return Network/IP specification in CIDR format.
      * 
      */
     public Optional<Output<String>> cidr() {
@@ -32,14 +32,14 @@ public final class FirewallAliasState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Alias comment
+     * Alias comment.
      * 
      */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
     /**
-     * @return Alias comment
+     * @return Alias comment.
      * 
      */
     public Optional<Output<String>> comment() {
@@ -47,14 +47,14 @@ public final class FirewallAliasState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The ID of the container to manage the firewall for.
+     * Container ID. Leave empty for cluster level aliases.
      * 
      */
     @Import(name="containerId")
     private @Nullable Output<Integer> containerId;
 
     /**
-     * @return The ID of the container to manage the firewall for.
+     * @return Container ID. Leave empty for cluster level aliases.
      * 
      */
     public Optional<Output<Integer>> containerId() {
@@ -62,14 +62,14 @@ public final class FirewallAliasState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Alias name
+     * Alias name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Alias name
+     * @return Alias name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -77,14 +77,14 @@ public final class FirewallAliasState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name of the node.
+     * Node name. Leave empty for cluster level aliases.
      * 
      */
     @Import(name="nodeName")
     private @Nullable Output<String> nodeName;
 
     /**
-     * @return The name of the node.
+     * @return Node name. Leave empty for cluster level aliases.
      * 
      */
     public Optional<Output<String>> nodeName() {
@@ -92,14 +92,14 @@ public final class FirewallAliasState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The ID of the VM to manage the firewall for.
+     * VM ID. Leave empty for cluster level aliases.
      * 
      */
     @Import(name="vmId")
     private @Nullable Output<Integer> vmId;
 
     /**
-     * @return The ID of the VM to manage the firewall for.
+     * @return VM ID. Leave empty for cluster level aliases.
      * 
      */
     public Optional<Output<Integer>> vmId() {
@@ -136,7 +136,7 @@ public final class FirewallAliasState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param cidr IP/CIDR block
+         * @param cidr Network/IP specification in CIDR format.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class FirewallAliasState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param cidr IP/CIDR block
+         * @param cidr Network/IP specification in CIDR format.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class FirewallAliasState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param comment Alias comment
+         * @param comment Alias comment.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class FirewallAliasState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param comment Alias comment
+         * @param comment Alias comment.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class FirewallAliasState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param containerId The ID of the container to manage the firewall for.
+         * @param containerId Container ID. Leave empty for cluster level aliases.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class FirewallAliasState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param containerId The ID of the container to manage the firewall for.
+         * @param containerId Container ID. Leave empty for cluster level aliases.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class FirewallAliasState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name Alias name
+         * @param name Alias name.
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class FirewallAliasState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name Alias name
+         * @param name Alias name.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class FirewallAliasState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param nodeName The name of the node.
+         * @param nodeName Node name. Leave empty for cluster level aliases.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class FirewallAliasState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param nodeName The name of the node.
+         * @param nodeName Node name. Leave empty for cluster level aliases.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class FirewallAliasState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vmId The ID of the VM to manage the firewall for.
+         * @param vmId VM ID. Leave empty for cluster level aliases.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class FirewallAliasState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vmId The ID of the VM to manage the firewall for.
+         * @param vmId VM ID. Leave empty for cluster level aliases.
          * 
          * @return builder
          * 

@@ -12,27 +12,55 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
 
     public sealed class ContainerNetworkInterfaceGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the network bridge (defaults
+        /// to `vmbr0`).
+        /// </summary>
         [Input("bridge")]
         public Input<string>? Bridge { get; set; }
 
+        /// <summary>
+        /// Whether to enable the network device (defaults
+        /// to `true`).
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// Whether this interface's firewall rules should be
+        /// used (defaults to `false`).
+        /// </summary>
         [Input("firewall")]
         public Input<bool>? Firewall { get; set; }
 
+        /// <summary>
+        /// The MAC address.
+        /// </summary>
         [Input("macAddress")]
         public Input<string>? MacAddress { get; set; }
 
+        /// <summary>
+        /// Maximum transfer unit of the interface. Cannot be
+        /// larger than the bridge's MTU.
+        /// </summary>
         [Input("mtu")]
         public Input<int>? Mtu { get; set; }
 
+        /// <summary>
+        /// The network interface name.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The rate limit in megabytes per second.
+        /// </summary>
         [Input("rateLimit")]
         public Input<double>? RateLimit { get; set; }
 
+        /// <summary>
+        /// The VLAN identifier.
+        /// </summary>
         [Input("vlanId")]
         public Input<int>? VlanId { get; set; }
 

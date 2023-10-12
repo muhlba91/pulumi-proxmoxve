@@ -10,7 +10,15 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGroupsResult {
+    /**
+     * @return The group comments.
+     * 
+     */
     private List<String> comments;
+    /**
+     * @return The group identifiers.
+     * 
+     */
     private List<String> groupIds;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -19,9 +27,17 @@ public final class GetGroupsResult {
     private String id;
 
     private GetGroupsResult() {}
+    /**
+     * @return The group comments.
+     * 
+     */
     public List<String> comments() {
         return this.comments;
     }
+    /**
+     * @return The group identifiers.
+     * 
+     */
     public List<String> groupIds() {
         return this.groupIds;
     }

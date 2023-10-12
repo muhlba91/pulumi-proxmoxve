@@ -16,23 +16,47 @@ public final class GroupAclArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GroupAclArgs Empty = new GroupAclArgs();
 
+    /**
+     * The path.
+     * 
+     */
     @Import(name="path", required=true)
     private Output<String> path;
 
+    /**
+     * @return The path.
+     * 
+     */
     public Output<String> path() {
         return this.path;
     }
 
+    /**
+     * Whether to propagate to child paths.
+     * 
+     */
     @Import(name="propagate")
     private @Nullable Output<Boolean> propagate;
 
+    /**
+     * @return Whether to propagate to child paths.
+     * 
+     */
     public Optional<Output<Boolean>> propagate() {
         return Optional.ofNullable(this.propagate);
     }
 
+    /**
+     * The role identifier.
+     * 
+     */
     @Import(name="roleId", required=true)
     private Output<String> roleId;
 
+    /**
+     * @return The role identifier.
+     * 
+     */
     public Output<String> roleId() {
         return this.roleId;
     }
@@ -63,29 +87,65 @@ public final class GroupAclArgs extends com.pulumi.resources.ResourceArgs {
             $ = new GroupAclArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param path The path.
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(Output<String> path) {
             $.path = path;
             return this;
         }
 
+        /**
+         * @param path The path.
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(String path) {
             return path(Output.of(path));
         }
 
+        /**
+         * @param propagate Whether to propagate to child paths.
+         * 
+         * @return builder
+         * 
+         */
         public Builder propagate(@Nullable Output<Boolean> propagate) {
             $.propagate = propagate;
             return this;
         }
 
+        /**
+         * @param propagate Whether to propagate to child paths.
+         * 
+         * @return builder
+         * 
+         */
         public Builder propagate(Boolean propagate) {
             return propagate(Output.of(propagate));
         }
 
+        /**
+         * @param roleId The role identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder roleId(Output<String> roleId) {
             $.roleId = roleId;
             return this;
         }
 
+        /**
+         * @param roleId The role identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder roleId(String roleId) {
             return roleId(Output.of(roleId));
         }

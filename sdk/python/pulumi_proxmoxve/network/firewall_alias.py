@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['FirewallAliasArgs', 'FirewallAlias']
@@ -22,30 +22,49 @@ class FirewallAliasArgs:
                  vm_id: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a FirewallAlias resource.
-        :param pulumi.Input[str] cidr: IP/CIDR block
-        :param pulumi.Input[str] comment: Alias comment
-        :param pulumi.Input[int] container_id: The ID of the container to manage the firewall for.
-        :param pulumi.Input[str] name: Alias name
-        :param pulumi.Input[str] node_name: The name of the node.
-        :param pulumi.Input[int] vm_id: The ID of the VM to manage the firewall for.
+        :param pulumi.Input[str] cidr: Network/IP specification in CIDR format.
+        :param pulumi.Input[str] comment: Alias comment.
+        :param pulumi.Input[int] container_id: Container ID. Leave empty for cluster level aliases.
+        :param pulumi.Input[str] name: Alias name.
+        :param pulumi.Input[str] node_name: Node name. Leave empty for cluster level aliases.
+        :param pulumi.Input[int] vm_id: VM ID. Leave empty for cluster level aliases.
         """
-        pulumi.set(__self__, "cidr", cidr)
+        FirewallAliasArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr=cidr,
+            comment=comment,
+            container_id=container_id,
+            name=name,
+            node_name=node_name,
+            vm_id=vm_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr: pulumi.Input[str],
+             comment: Optional[pulumi.Input[str]] = None,
+             container_id: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             node_name: Optional[pulumi.Input[str]] = None,
+             vm_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cidr", cidr)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if container_id is not None:
-            pulumi.set(__self__, "container_id", container_id)
+            _setter("container_id", container_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if node_name is not None:
-            pulumi.set(__self__, "node_name", node_name)
+            _setter("node_name", node_name)
         if vm_id is not None:
-            pulumi.set(__self__, "vm_id", vm_id)
+            _setter("vm_id", vm_id)
 
     @property
     @pulumi.getter
     def cidr(self) -> pulumi.Input[str]:
         """
-        IP/CIDR block
+        Network/IP specification in CIDR format.
         """
         return pulumi.get(self, "cidr")
 
@@ -57,7 +76,7 @@ class FirewallAliasArgs:
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
         """
-        Alias comment
+        Alias comment.
         """
         return pulumi.get(self, "comment")
 
@@ -69,7 +88,7 @@ class FirewallAliasArgs:
     @pulumi.getter(name="containerId")
     def container_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the container to manage the firewall for.
+        Container ID. Leave empty for cluster level aliases.
         """
         return pulumi.get(self, "container_id")
 
@@ -81,7 +100,7 @@ class FirewallAliasArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Alias name
+        Alias name.
         """
         return pulumi.get(self, "name")
 
@@ -93,7 +112,7 @@ class FirewallAliasArgs:
     @pulumi.getter(name="nodeName")
     def node_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the node.
+        Node name. Leave empty for cluster level aliases.
         """
         return pulumi.get(self, "node_name")
 
@@ -105,7 +124,7 @@ class FirewallAliasArgs:
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the VM to manage the firewall for.
+        VM ID. Leave empty for cluster level aliases.
         """
         return pulumi.get(self, "vm_id")
 
@@ -125,31 +144,50 @@ class _FirewallAliasState:
                  vm_id: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering FirewallAlias resources.
-        :param pulumi.Input[str] cidr: IP/CIDR block
-        :param pulumi.Input[str] comment: Alias comment
-        :param pulumi.Input[int] container_id: The ID of the container to manage the firewall for.
-        :param pulumi.Input[str] name: Alias name
-        :param pulumi.Input[str] node_name: The name of the node.
-        :param pulumi.Input[int] vm_id: The ID of the VM to manage the firewall for.
+        :param pulumi.Input[str] cidr: Network/IP specification in CIDR format.
+        :param pulumi.Input[str] comment: Alias comment.
+        :param pulumi.Input[int] container_id: Container ID. Leave empty for cluster level aliases.
+        :param pulumi.Input[str] name: Alias name.
+        :param pulumi.Input[str] node_name: Node name. Leave empty for cluster level aliases.
+        :param pulumi.Input[int] vm_id: VM ID. Leave empty for cluster level aliases.
         """
+        _FirewallAliasState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr=cidr,
+            comment=comment,
+            container_id=container_id,
+            name=name,
+            node_name=node_name,
+            vm_id=vm_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr: Optional[pulumi.Input[str]] = None,
+             comment: Optional[pulumi.Input[str]] = None,
+             container_id: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             node_name: Optional[pulumi.Input[str]] = None,
+             vm_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cidr is not None:
-            pulumi.set(__self__, "cidr", cidr)
+            _setter("cidr", cidr)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if container_id is not None:
-            pulumi.set(__self__, "container_id", container_id)
+            _setter("container_id", container_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if node_name is not None:
-            pulumi.set(__self__, "node_name", node_name)
+            _setter("node_name", node_name)
         if vm_id is not None:
-            pulumi.set(__self__, "vm_id", vm_id)
+            _setter("vm_id", vm_id)
 
     @property
     @pulumi.getter
     def cidr(self) -> Optional[pulumi.Input[str]]:
         """
-        IP/CIDR block
+        Network/IP specification in CIDR format.
         """
         return pulumi.get(self, "cidr")
 
@@ -161,7 +199,7 @@ class _FirewallAliasState:
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
         """
-        Alias comment
+        Alias comment.
         """
         return pulumi.get(self, "comment")
 
@@ -173,7 +211,7 @@ class _FirewallAliasState:
     @pulumi.getter(name="containerId")
     def container_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the container to manage the firewall for.
+        Container ID. Leave empty for cluster level aliases.
         """
         return pulumi.get(self, "container_id")
 
@@ -185,7 +223,7 @@ class _FirewallAliasState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Alias name
+        Alias name.
         """
         return pulumi.get(self, "name")
 
@@ -197,7 +235,7 @@ class _FirewallAliasState:
     @pulumi.getter(name="nodeName")
     def node_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the node.
+        Node name. Leave empty for cluster level aliases.
         """
         return pulumi.get(self, "node_name")
 
@@ -209,7 +247,7 @@ class _FirewallAliasState:
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the VM to manage the firewall for.
+        VM ID. Leave empty for cluster level aliases.
         """
         return pulumi.get(self, "vm_id")
 
@@ -231,15 +269,35 @@ class FirewallAlias(pulumi.CustomResource):
                  vm_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Create a FirewallAlias resource with the given unique name, props, and options.
+        Aliases are used to see what devices or group of devices are affected by a rule.
+        We can create aliases to identify an IP address or a network. Aliases can be
+        created on the cluster level, on VM / Container level.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        local_network = proxmoxve.network.FirewallAlias("localNetwork",
+            node_name=proxmox_virtual_environment_vm["example"]["node_name"],
+            vm_id=proxmox_virtual_environment_vm["example"]["vm_id"],
+            cidr="192.168.0.0/23",
+            comment="Managed by Terraform",
+            opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_vm["example"]]))
+        ubuntu_vm = proxmoxve.network.FirewallAlias("ubuntuVm",
+            cidr="192.168.0.1",
+            comment="Managed by Terraform")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cidr: IP/CIDR block
-        :param pulumi.Input[str] comment: Alias comment
-        :param pulumi.Input[int] container_id: The ID of the container to manage the firewall for.
-        :param pulumi.Input[str] name: Alias name
-        :param pulumi.Input[str] node_name: The name of the node.
-        :param pulumi.Input[int] vm_id: The ID of the VM to manage the firewall for.
+        :param pulumi.Input[str] cidr: Network/IP specification in CIDR format.
+        :param pulumi.Input[str] comment: Alias comment.
+        :param pulumi.Input[int] container_id: Container ID. Leave empty for cluster level aliases.
+        :param pulumi.Input[str] name: Alias name.
+        :param pulumi.Input[str] node_name: Node name. Leave empty for cluster level aliases.
+        :param pulumi.Input[int] vm_id: VM ID. Leave empty for cluster level aliases.
         """
         ...
     @overload
@@ -248,7 +306,27 @@ class FirewallAlias(pulumi.CustomResource):
                  args: FirewallAliasArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a FirewallAlias resource with the given unique name, props, and options.
+        Aliases are used to see what devices or group of devices are affected by a rule.
+        We can create aliases to identify an IP address or a network. Aliases can be
+        created on the cluster level, on VM / Container level.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        local_network = proxmoxve.network.FirewallAlias("localNetwork",
+            node_name=proxmox_virtual_environment_vm["example"]["node_name"],
+            vm_id=proxmox_virtual_environment_vm["example"]["vm_id"],
+            cidr="192.168.0.0/23",
+            comment="Managed by Terraform",
+            opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_vm["example"]]))
+        ubuntu_vm = proxmoxve.network.FirewallAlias("ubuntuVm",
+            cidr="192.168.0.1",
+            comment="Managed by Terraform")
+        ```
+
         :param str resource_name: The name of the resource.
         :param FirewallAliasArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -259,6 +337,10 @@ class FirewallAlias(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FirewallAliasArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -310,12 +392,12 @@ class FirewallAlias(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cidr: IP/CIDR block
-        :param pulumi.Input[str] comment: Alias comment
-        :param pulumi.Input[int] container_id: The ID of the container to manage the firewall for.
-        :param pulumi.Input[str] name: Alias name
-        :param pulumi.Input[str] node_name: The name of the node.
-        :param pulumi.Input[int] vm_id: The ID of the VM to manage the firewall for.
+        :param pulumi.Input[str] cidr: Network/IP specification in CIDR format.
+        :param pulumi.Input[str] comment: Alias comment.
+        :param pulumi.Input[int] container_id: Container ID. Leave empty for cluster level aliases.
+        :param pulumi.Input[str] name: Alias name.
+        :param pulumi.Input[str] node_name: Node name. Leave empty for cluster level aliases.
+        :param pulumi.Input[int] vm_id: VM ID. Leave empty for cluster level aliases.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -333,7 +415,7 @@ class FirewallAlias(pulumi.CustomResource):
     @pulumi.getter
     def cidr(self) -> pulumi.Output[str]:
         """
-        IP/CIDR block
+        Network/IP specification in CIDR format.
         """
         return pulumi.get(self, "cidr")
 
@@ -341,7 +423,7 @@ class FirewallAlias(pulumi.CustomResource):
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[str]]:
         """
-        Alias comment
+        Alias comment.
         """
         return pulumi.get(self, "comment")
 
@@ -349,7 +431,7 @@ class FirewallAlias(pulumi.CustomResource):
     @pulumi.getter(name="containerId")
     def container_id(self) -> pulumi.Output[Optional[int]]:
         """
-        The ID of the container to manage the firewall for.
+        Container ID. Leave empty for cluster level aliases.
         """
         return pulumi.get(self, "container_id")
 
@@ -357,7 +439,7 @@ class FirewallAlias(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Alias name
+        Alias name.
         """
         return pulumi.get(self, "name")
 
@@ -365,7 +447,7 @@ class FirewallAlias(pulumi.CustomResource):
     @pulumi.getter(name="nodeName")
     def node_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of the node.
+        Node name. Leave empty for cluster level aliases.
         """
         return pulumi.get(self, "node_name")
 
@@ -373,7 +455,7 @@ class FirewallAlias(pulumi.CustomResource):
     @pulumi.getter(name="vmId")
     def vm_id(self) -> pulumi.Output[Optional[int]]:
         """
-        The ID of the VM to manage the firewall for.
+        VM ID. Leave empty for cluster level aliases.
         """
         return pulumi.get(self, "vm_id")
 

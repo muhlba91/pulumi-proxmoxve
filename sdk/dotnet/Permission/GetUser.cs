@@ -11,9 +11,59 @@ namespace Pulumi.ProxmoxVE.Permission
 {
     public static class GetUser
     {
+        /// <summary>
+        /// Retrieves information about a specific user.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var operationsUser = ProxmoxVE.Permission.GetUser.Invoke(new()
+        ///     {
+        ///         UserId = "operation@pam",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetUserResult> InvokeAsync(GetUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("proxmoxve:Permission/getUser:getUser", args ?? new GetUserArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Retrieves information about a specific user.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var operationsUser = ProxmoxVE.Permission.GetUser.Invoke(new()
+        ///     {
+        ///         UserId = "operation@pam",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetUserResult> Invoke(GetUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUserResult>("proxmoxve:Permission/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
     }
@@ -21,6 +71,9 @@ namespace Pulumi.ProxmoxVE.Permission
 
     public sealed class GetUserArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The user identifier.
+        /// </summary>
         [Input("userId", required: true)]
         public string UserId { get; set; } = null!;
 
@@ -32,6 +85,9 @@ namespace Pulumi.ProxmoxVE.Permission
 
     public sealed class GetUserInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The user identifier.
+        /// </summary>
         [Input("userId", required: true)]
         public Input<string> UserId { get; set; } = null!;
 
@@ -45,18 +101,45 @@ namespace Pulumi.ProxmoxVE.Permission
     [OutputType]
     public sealed class GetUserResult
     {
+        /// <summary>
+        /// The access control list.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetUserAclResult> Acls;
+        /// <summary>
+        /// The user comment.
+        /// </summary>
         public readonly string Comment;
+        /// <summary>
+        /// The user's email address.
+        /// </summary>
         public readonly string Email;
+        /// <summary>
+        /// Whether the user account is enabled.
+        /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// The user account's expiration date (RFC 3339).
+        /// </summary>
         public readonly string ExpirationDate;
+        /// <summary>
+        /// The user's first name.
+        /// </summary>
         public readonly string FirstName;
+        /// <summary>
+        /// The user's groups.
+        /// </summary>
         public readonly ImmutableArray<string> Groups;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The user's keys.
+        /// </summary>
         public readonly string Keys;
+        /// <summary>
+        /// The user's last name.
+        /// </summary>
         public readonly string LastName;
         public readonly string UserId;
 

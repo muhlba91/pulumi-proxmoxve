@@ -11,9 +11,61 @@ namespace Pulumi.ProxmoxVE.VM
 {
     public static class GetVirtualMachine
     {
+        /// <summary>
+        /// Retrieves information about a specific VM.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var testVm = ProxmoxVE.VM.GetVirtualMachine.Invoke(new()
+        ///     {
+        ///         NodeName = "test",
+        ///         VmId = 100,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetVirtualMachineResult> InvokeAsync(GetVirtualMachineArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVirtualMachineResult>("proxmoxve:VM/getVirtualMachine:getVirtualMachine", args ?? new GetVirtualMachineArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Retrieves information about a specific VM.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var testVm = ProxmoxVE.VM.GetVirtualMachine.Invoke(new()
+        ///     {
+        ///         NodeName = "test",
+        ///         VmId = 100,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetVirtualMachineResult> Invoke(GetVirtualMachineInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVirtualMachineResult>("proxmoxve:VM/getVirtualMachine:getVirtualMachine", args ?? new GetVirtualMachineInvokeArgs(), options.WithDefaults());
     }
@@ -21,9 +73,15 @@ namespace Pulumi.ProxmoxVE.VM
 
     public sealed class GetVirtualMachineArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The node name.
+        /// </summary>
         [Input("nodeName", required: true)]
         public string NodeName { get; set; } = null!;
 
+        /// <summary>
+        /// The VM identifier.
+        /// </summary>
         [Input("vmId", required: true)]
         public int VmId { get; set; }
 
@@ -35,9 +93,15 @@ namespace Pulumi.ProxmoxVE.VM
 
     public sealed class GetVirtualMachineInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The node name.
+        /// </summary>
         [Input("nodeName", required: true)]
         public Input<string> NodeName { get; set; } = null!;
 
+        /// <summary>
+        /// The VM identifier.
+        /// </summary>
         [Input("vmId", required: true)]
         public Input<int> VmId { get; set; } = null!;
 
@@ -55,8 +119,14 @@ namespace Pulumi.ProxmoxVE.VM
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The virtual machine name.
+        /// </summary>
         public readonly string Name;
         public readonly string NodeName;
+        /// <summary>
+        /// A list of tags of the VM.
+        /// </summary>
         public readonly ImmutableArray<string> Tags;
         public readonly int VmId;
 

@@ -19,14 +19,16 @@ public final class FirewallRulesArgs extends com.pulumi.resources.ResourceArgs {
     public static final FirewallRulesArgs Empty = new FirewallRulesArgs();
 
     /**
-     * The ID of the container to manage the firewall for.
+     * Container ID. Leave empty for cluster level
+     * rules.
      * 
      */
     @Import(name="containerId")
     private @Nullable Output<Integer> containerId;
 
     /**
-     * @return The ID of the container to manage the firewall for.
+     * @return Container ID. Leave empty for cluster level
+     * rules.
      * 
      */
     public Optional<Output<Integer>> containerId() {
@@ -34,14 +36,14 @@ public final class FirewallRulesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the node.
+     * Node name. Leave empty for cluster level rules.
      * 
      */
     @Import(name="nodeName")
     private @Nullable Output<String> nodeName;
 
     /**
-     * @return The name of the node.
+     * @return Node name. Leave empty for cluster level rules.
      * 
      */
     public Optional<Output<String>> nodeName() {
@@ -49,14 +51,18 @@ public final class FirewallRulesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of rules
+     * Firewall rule block (multiple blocks supported).
+     * The provider supports two types of the `rule` blocks:
+     * - a rule definition block, which includes the following arguments:
      * 
      */
     @Import(name="rules", required=true)
     private Output<List<FirewallRulesRuleArgs>> rules;
 
     /**
-     * @return List of rules
+     * @return Firewall rule block (multiple blocks supported).
+     * The provider supports two types of the `rule` blocks:
+     * - a rule definition block, which includes the following arguments:
      * 
      */
     public Output<List<FirewallRulesRuleArgs>> rules() {
@@ -64,14 +70,14 @@ public final class FirewallRulesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the VM to manage the firewall for.
+     * VM ID. Leave empty for cluster level rules.
      * 
      */
     @Import(name="vmId")
     private @Nullable Output<Integer> vmId;
 
     /**
-     * @return The ID of the VM to manage the firewall for.
+     * @return VM ID. Leave empty for cluster level rules.
      * 
      */
     public Optional<Output<Integer>> vmId() {
@@ -106,7 +112,8 @@ public final class FirewallRulesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param containerId The ID of the container to manage the firewall for.
+         * @param containerId Container ID. Leave empty for cluster level
+         * rules.
          * 
          * @return builder
          * 
@@ -117,7 +124,8 @@ public final class FirewallRulesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param containerId The ID of the container to manage the firewall for.
+         * @param containerId Container ID. Leave empty for cluster level
+         * rules.
          * 
          * @return builder
          * 
@@ -127,7 +135,7 @@ public final class FirewallRulesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeName The name of the node.
+         * @param nodeName Node name. Leave empty for cluster level rules.
          * 
          * @return builder
          * 
@@ -138,7 +146,7 @@ public final class FirewallRulesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeName The name of the node.
+         * @param nodeName Node name. Leave empty for cluster level rules.
          * 
          * @return builder
          * 
@@ -148,7 +156,9 @@ public final class FirewallRulesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules List of rules
+         * @param rules Firewall rule block (multiple blocks supported).
+         * The provider supports two types of the `rule` blocks:
+         * - a rule definition block, which includes the following arguments:
          * 
          * @return builder
          * 
@@ -159,7 +169,9 @@ public final class FirewallRulesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules List of rules
+         * @param rules Firewall rule block (multiple blocks supported).
+         * The provider supports two types of the `rule` blocks:
+         * - a rule definition block, which includes the following arguments:
          * 
          * @return builder
          * 
@@ -169,7 +181,9 @@ public final class FirewallRulesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules List of rules
+         * @param rules Firewall rule block (multiple blocks supported).
+         * The provider supports two types of the `rule` blocks:
+         * - a rule definition block, which includes the following arguments:
          * 
          * @return builder
          * 
@@ -179,7 +193,7 @@ public final class FirewallRulesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vmId The ID of the VM to manage the firewall for.
+         * @param vmId VM ID. Leave empty for cluster level rules.
          * 
          * @return builder
          * 
@@ -190,7 +204,7 @@ public final class FirewallRulesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vmId The ID of the VM to manage the firewall for.
+         * @param vmId VM ID. Leave empty for cluster level rules.
          * 
          * @return builder
          * 

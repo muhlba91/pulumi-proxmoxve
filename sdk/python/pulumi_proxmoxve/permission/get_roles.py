@@ -6,13 +6,14 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
     'GetRolesResult',
     'AwaitableGetRolesResult',
     'get_roles',
+    'get_roles_output',
 ]
 
 @pulumi.output_type
@@ -45,16 +46,25 @@ class GetRolesResult:
     @property
     @pulumi.getter
     def privileges(self) -> Sequence[Sequence[str]]:
+        """
+        The role privileges.
+        """
         return pulumi.get(self, "privileges")
 
     @property
     @pulumi.getter(name="roleIds")
     def role_ids(self) -> Sequence[str]:
+        """
+        The role identifiers.
+        """
         return pulumi.get(self, "role_ids")
 
     @property
     @pulumi.getter
     def specials(self) -> Sequence[bool]:
+        """
+        Whether the role is special (built-in).
+        """
         return pulumi.get(self, "specials")
 
 
@@ -72,7 +82,16 @@ class AwaitableGetRolesResult(GetRolesResult):
 
 def get_roles(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRolesResult:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves information about all the available roles.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    available_roles = proxmoxve.Permission.get_roles()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -83,3 +102,20 @@ def get_roles(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRolesR
         privileges=pulumi.get(__ret__, 'privileges'),
         role_ids=pulumi.get(__ret__, 'role_ids'),
         specials=pulumi.get(__ret__, 'specials'))
+
+
+@_utilities.lift_output_func(get_roles)
+def get_roles_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRolesResult]:
+    """
+    Retrieves information about all the available roles.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    available_roles = proxmoxve.Permission.get_roles()
+    ```
+    """
+    ...

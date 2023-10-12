@@ -11,13 +11,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContainerInitializationIpConfigIpv4 {
+    /**
+     * @return The IPv6 address (use `dhcp` for
+     * autodiscovery).
+     * 
+     */
     private @Nullable String address;
+    /**
+     * @return The IPv6 gateway (must be omitted
+     * when `dhcp` is used as the address).
+     * 
+     */
     private @Nullable String gateway;
 
     private ContainerInitializationIpConfigIpv4() {}
+    /**
+     * @return The IPv6 address (use `dhcp` for
+     * autodiscovery).
+     * 
+     */
     public Optional<String> address() {
         return Optional.ofNullable(this.address);
     }
+    /**
+     * @return The IPv6 gateway (must be omitted
+     * when `dhcp` is used as the address).
+     * 
+     */
     public Optional<String> gateway() {
         return Optional.ofNullable(this.gateway);
     }

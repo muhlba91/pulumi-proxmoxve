@@ -11,9 +11,59 @@ namespace Pulumi.ProxmoxVE.Storage
 {
     public static class GetDatastores
     {
+        /// <summary>
+        /// Retrieves information about all the datastores available to a specific node.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var firstNode = ProxmoxVE.Storage.GetDatastores.Invoke(new()
+        ///     {
+        ///         NodeName = "first-node",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetDatastoresResult> InvokeAsync(GetDatastoresArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatastoresResult>("proxmoxve:Storage/getDatastores:getDatastores", args ?? new GetDatastoresArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Retrieves information about all the datastores available to a specific node.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var firstNode = ProxmoxVE.Storage.GetDatastores.Invoke(new()
+        ///     {
+        ///         NodeName = "first-node",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetDatastoresResult> Invoke(GetDatastoresInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatastoresResult>("proxmoxve:Storage/getDatastores:getDatastores", args ?? new GetDatastoresInvokeArgs(), options.WithDefaults());
     }
@@ -21,6 +71,9 @@ namespace Pulumi.ProxmoxVE.Storage
 
     public sealed class GetDatastoresArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// A node name.
+        /// </summary>
         [Input("nodeName", required: true)]
         public string NodeName { get; set; } = null!;
 
@@ -32,6 +85,9 @@ namespace Pulumi.ProxmoxVE.Storage
 
     public sealed class GetDatastoresInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// A node name.
+        /// </summary>
         [Input("nodeName", required: true)]
         public Input<string> NodeName { get; set; } = null!;
 
@@ -45,19 +101,46 @@ namespace Pulumi.ProxmoxVE.Storage
     [OutputType]
     public sealed class GetDatastoresResult
     {
+        /// <summary>
+        /// Whether the datastore is active.
+        /// </summary>
         public readonly ImmutableArray<bool> Actives;
+        /// <summary>
+        /// The allowed content types.
+        /// </summary>
         public readonly ImmutableArray<ImmutableArray<string>> ContentTypes;
+        /// <summary>
+        /// The datastore identifiers.
+        /// </summary>
         public readonly ImmutableArray<string> DatastoreIds;
+        /// <summary>
+        /// Whether the datastore is enabled.
+        /// </summary>
         public readonly ImmutableArray<bool> Enableds;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string NodeName;
+        /// <summary>
+        /// Whether the datastore is shared.
+        /// </summary>
         public readonly ImmutableArray<bool> Shareds;
+        /// <summary>
+        /// The available space in bytes.
+        /// </summary>
         public readonly ImmutableArray<int> SpaceAvailables;
+        /// <summary>
+        /// The total space in bytes.
+        /// </summary>
         public readonly ImmutableArray<int> SpaceTotals;
+        /// <summary>
+        /// The used space in bytes.
+        /// </summary>
         public readonly ImmutableArray<int> SpaceUseds;
+        /// <summary>
+        /// The storage types.
+        /// </summary>
         public readonly ImmutableArray<string> Types;
 
         [OutputConstructor]

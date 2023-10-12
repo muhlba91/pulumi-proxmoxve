@@ -11,9 +11,59 @@ namespace Pulumi.ProxmoxVE.Permission
 {
     public static class GetPool
     {
+        /// <summary>
+        /// Retrieves information about a specific resource pool.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var operationsPool = ProxmoxVE.Permission.GetPool.Invoke(new()
+        ///     {
+        ///         PoolId = "operations",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetPoolResult> InvokeAsync(GetPoolArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPoolResult>("proxmoxve:Permission/getPool:getPool", args ?? new GetPoolArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Retrieves information about a specific resource pool.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var operationsPool = ProxmoxVE.Permission.GetPool.Invoke(new()
+        ///     {
+        ///         PoolId = "operations",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetPoolResult> Invoke(GetPoolInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPoolResult>("proxmoxve:Permission/getPool:getPool", args ?? new GetPoolInvokeArgs(), options.WithDefaults());
     }
@@ -21,6 +71,9 @@ namespace Pulumi.ProxmoxVE.Permission
 
     public sealed class GetPoolArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The pool identifier.
+        /// </summary>
         [Input("poolId", required: true)]
         public string PoolId { get; set; } = null!;
 
@@ -32,6 +85,9 @@ namespace Pulumi.ProxmoxVE.Permission
 
     public sealed class GetPoolInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The pool identifier.
+        /// </summary>
         [Input("poolId", required: true)]
         public Input<string> PoolId { get; set; } = null!;
 
@@ -45,11 +101,17 @@ namespace Pulumi.ProxmoxVE.Permission
     [OutputType]
     public sealed class GetPoolResult
     {
+        /// <summary>
+        /// The pool comment.
+        /// </summary>
         public readonly string Comment;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The pool members.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetPoolMemberResult> Members;
         public readonly string PoolId;
 

@@ -12,9 +12,15 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
 
     public sealed class VirtualMachineInitializationDnsArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The DNS search domain.
+        /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
+        /// <summary>
+        /// The DNS server.
+        /// </summary>
         [Input("server")]
         public Input<string>? Server { get; set; }
 

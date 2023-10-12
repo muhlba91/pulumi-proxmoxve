@@ -14,9 +14,22 @@ namespace Pulumi.ProxmoxVE.Storage.Outputs
     public sealed class FileSourceFile
     {
         public readonly bool? Changed;
+        /// <summary>
+        /// The SHA256 checksum of the source file.
+        /// </summary>
         public readonly string? Checksum;
+        /// <summary>
+        /// The file name.
+        /// </summary>
         public readonly string? FileName;
+        /// <summary>
+        /// Whether to skip the TLS verification step for
+        /// HTTPS sources (defaults to `false`).
+        /// </summary>
         public readonly bool? Insecure;
+        /// <summary>
+        /// A path to a local file or a URL.
+        /// </summary>
         public readonly string Path;
 
         [OutputConstructor]

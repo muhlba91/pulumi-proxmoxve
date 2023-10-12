@@ -13,18 +13,77 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// A security group is a collection of rules, defined at cluster level, which can
+// be used in all VMs' rules. For example, you can define a group named “webserver”
+// with rules to open the http and https ports.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/Network"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Network.NewFirewallSecurityGroup(ctx, "webserver", &Network.FirewallSecurityGroupArgs{
+//				Comment: pulumi.String("Managed by Terraform"),
+//				Rules: network.FirewallSecurityGroupRuleArray{
+//					&network.FirewallSecurityGroupRuleArgs{
+//						Action:  pulumi.String("ACCEPT"),
+//						Comment: pulumi.String("Allow HTTP"),
+//						Dest:    pulumi.String("192.168.1.5"),
+//						Dport:   pulumi.String("80"),
+//						Log:     pulumi.String("info"),
+//						Proto:   pulumi.String("tcp"),
+//						Type:    pulumi.String("in"),
+//					},
+//					&network.FirewallSecurityGroupRuleArgs{
+//						Action:  pulumi.String("ACCEPT"),
+//						Comment: pulumi.String("Allow HTTPS"),
+//						Dest:    pulumi.String("192.168.1.5"),
+//						Dport:   pulumi.String("443"),
+//						Log:     pulumi.String("info"),
+//						Proto:   pulumi.String("tcp"),
+//						Type:    pulumi.String("in"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// # Instances can be imported using the `name`, e.g., bash
+//
+// ```sh
+//
+//	$ pulumi import proxmoxve:Network/firewallSecurityGroup:FirewallSecurityGroup webserver webserver
+//
+// ```
 type FirewallSecurityGroup struct {
 	pulumi.CustomResourceState
 
-	// Security group comment
+	// Rule comment.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
 	// The ID of the container to manage the firewall for.
 	ContainerId pulumi.IntPtrOutput `pulumi:"containerId"`
-	// Security group name
+	// Security group name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the node.
 	NodeName pulumi.StringPtrOutput `pulumi:"nodeName"`
-	// List of rules
+	// Firewall rule block (multiple blocks supported).
 	Rules FirewallSecurityGroupRuleArrayOutput `pulumi:"rules"`
 	// The ID of the VM to manage the firewall for.
 	VmId pulumi.IntPtrOutput `pulumi:"vmId"`
@@ -63,30 +122,30 @@ func GetFirewallSecurityGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FirewallSecurityGroup resources.
 type firewallSecurityGroupState struct {
-	// Security group comment
+	// Rule comment.
 	Comment *string `pulumi:"comment"`
 	// The ID of the container to manage the firewall for.
 	ContainerId *int `pulumi:"containerId"`
-	// Security group name
+	// Security group name.
 	Name *string `pulumi:"name"`
 	// The name of the node.
 	NodeName *string `pulumi:"nodeName"`
-	// List of rules
+	// Firewall rule block (multiple blocks supported).
 	Rules []FirewallSecurityGroupRule `pulumi:"rules"`
 	// The ID of the VM to manage the firewall for.
 	VmId *int `pulumi:"vmId"`
 }
 
 type FirewallSecurityGroupState struct {
-	// Security group comment
+	// Rule comment.
 	Comment pulumi.StringPtrInput
 	// The ID of the container to manage the firewall for.
 	ContainerId pulumi.IntPtrInput
-	// Security group name
+	// Security group name.
 	Name pulumi.StringPtrInput
 	// The name of the node.
 	NodeName pulumi.StringPtrInput
-	// List of rules
+	// Firewall rule block (multiple blocks supported).
 	Rules FirewallSecurityGroupRuleArrayInput
 	// The ID of the VM to manage the firewall for.
 	VmId pulumi.IntPtrInput
@@ -97,15 +156,15 @@ func (FirewallSecurityGroupState) ElementType() reflect.Type {
 }
 
 type firewallSecurityGroupArgs struct {
-	// Security group comment
+	// Rule comment.
 	Comment *string `pulumi:"comment"`
 	// The ID of the container to manage the firewall for.
 	ContainerId *int `pulumi:"containerId"`
-	// Security group name
+	// Security group name.
 	Name *string `pulumi:"name"`
 	// The name of the node.
 	NodeName *string `pulumi:"nodeName"`
-	// List of rules
+	// Firewall rule block (multiple blocks supported).
 	Rules []FirewallSecurityGroupRule `pulumi:"rules"`
 	// The ID of the VM to manage the firewall for.
 	VmId *int `pulumi:"vmId"`
@@ -113,15 +172,15 @@ type firewallSecurityGroupArgs struct {
 
 // The set of arguments for constructing a FirewallSecurityGroup resource.
 type FirewallSecurityGroupArgs struct {
-	// Security group comment
+	// Rule comment.
 	Comment pulumi.StringPtrInput
 	// The ID of the container to manage the firewall for.
 	ContainerId pulumi.IntPtrInput
-	// Security group name
+	// Security group name.
 	Name pulumi.StringPtrInput
 	// The name of the node.
 	NodeName pulumi.StringPtrInput
-	// List of rules
+	// Firewall rule block (multiple blocks supported).
 	Rules FirewallSecurityGroupRuleArrayInput
 	// The ID of the VM to manage the firewall for.
 	VmId pulumi.IntPtrInput
@@ -238,7 +297,7 @@ func (o FirewallSecurityGroupOutput) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
-// Security group comment
+// Rule comment.
 func (o FirewallSecurityGroupOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallSecurityGroup) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
@@ -248,7 +307,7 @@ func (o FirewallSecurityGroupOutput) ContainerId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FirewallSecurityGroup) pulumi.IntPtrOutput { return v.ContainerId }).(pulumi.IntPtrOutput)
 }
 
-// Security group name
+// Security group name.
 func (o FirewallSecurityGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallSecurityGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -258,7 +317,7 @@ func (o FirewallSecurityGroupOutput) NodeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallSecurityGroup) pulumi.StringPtrOutput { return v.NodeName }).(pulumi.StringPtrOutput)
 }
 
-// List of rules
+// Firewall rule block (multiple blocks supported).
 func (o FirewallSecurityGroupOutput) Rules() FirewallSecurityGroupRuleArrayOutput {
 	return o.ApplyT(func(v *FirewallSecurityGroup) FirewallSecurityGroupRuleArrayOutput { return v.Rules }).(FirewallSecurityGroupRuleArrayOutput)
 }

@@ -9,41 +9,79 @@ using Pulumi.Serialization;
 
 namespace Pulumi.ProxmoxVE.Network
 {
+    /// <summary>
+    /// Aliases are used to see what devices or group of devices are affected by a rule.
+    /// We can create aliases to identify an IP address or a network. Aliases can be
+    /// created on the cluster level, on VM / Container level.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var localNetwork = new ProxmoxVE.Network.FirewallAlias("localNetwork", new()
+    ///     {
+    ///         NodeName = proxmox_virtual_environment_vm.Example.Node_name,
+    ///         VmId = proxmox_virtual_environment_vm.Example.Vm_id,
+    ///         Cidr = "192.168.0.0/23",
+    ///         Comment = "Managed by Terraform",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             proxmox_virtual_environment_vm.Example,
+    ///         },
+    ///     });
+    /// 
+    ///     var ubuntuVm = new ProxmoxVE.Network.FirewallAlias("ubuntuVm", new()
+    ///     {
+    ///         Cidr = "192.168.0.1",
+    ///         Comment = "Managed by Terraform",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [ProxmoxVEResourceType("proxmoxve:Network/firewallAlias:FirewallAlias")]
     public partial class FirewallAlias : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// IP/CIDR block
+        /// Network/IP specification in CIDR format.
         /// </summary>
         [Output("cidr")]
         public Output<string> Cidr { get; private set; } = null!;
 
         /// <summary>
-        /// Alias comment
+        /// Alias comment.
         /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the container to manage the firewall for.
+        /// Container ID. Leave empty for cluster level aliases.
         /// </summary>
         [Output("containerId")]
         public Output<int?> ContainerId { get; private set; } = null!;
 
         /// <summary>
-        /// Alias name
+        /// Alias name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the node.
+        /// Node name. Leave empty for cluster level aliases.
         /// </summary>
         [Output("nodeName")]
         public Output<string?> NodeName { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the VM to manage the firewall for.
+        /// VM ID. Leave empty for cluster level aliases.
         /// </summary>
         [Output("vmId")]
         public Output<int?> VmId { get; private set; } = null!;
@@ -96,37 +134,37 @@ namespace Pulumi.ProxmoxVE.Network
     public sealed class FirewallAliasArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// IP/CIDR block
+        /// Network/IP specification in CIDR format.
         /// </summary>
         [Input("cidr", required: true)]
         public Input<string> Cidr { get; set; } = null!;
 
         /// <summary>
-        /// Alias comment
+        /// Alias comment.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// The ID of the container to manage the firewall for.
+        /// Container ID. Leave empty for cluster level aliases.
         /// </summary>
         [Input("containerId")]
         public Input<int>? ContainerId { get; set; }
 
         /// <summary>
-        /// Alias name
+        /// Alias name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The name of the node.
+        /// Node name. Leave empty for cluster level aliases.
         /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
 
         /// <summary>
-        /// The ID of the VM to manage the firewall for.
+        /// VM ID. Leave empty for cluster level aliases.
         /// </summary>
         [Input("vmId")]
         public Input<int>? VmId { get; set; }
@@ -140,37 +178,37 @@ namespace Pulumi.ProxmoxVE.Network
     public sealed class FirewallAliasState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// IP/CIDR block
+        /// Network/IP specification in CIDR format.
         /// </summary>
         [Input("cidr")]
         public Input<string>? Cidr { get; set; }
 
         /// <summary>
-        /// Alias comment
+        /// Alias comment.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// The ID of the container to manage the firewall for.
+        /// Container ID. Leave empty for cluster level aliases.
         /// </summary>
         [Input("containerId")]
         public Input<int>? ContainerId { get; set; }
 
         /// <summary>
-        /// Alias name
+        /// Alias name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The name of the node.
+        /// Node name. Leave empty for cluster level aliases.
         /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
 
         /// <summary>
-        /// The ID of the VM to manage the firewall for.
+        /// VM ID. Leave empty for cluster level aliases.
         /// </summary>
         [Input("vmId")]
         public Input<int>? VmId { get; set; }

@@ -12,12 +12,22 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
 
     public sealed class VirtualMachineVgaGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to enable the VGA device (defaults
+        /// to `true`).
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// The VGA memory in megabytes (defaults to `16`).
+        /// </summary>
         [Input("memory")]
         public Input<int>? Memory { get; set; }
 
+        /// <summary>
+        /// The VGA type (defaults to `std`).
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

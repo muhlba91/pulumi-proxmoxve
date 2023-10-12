@@ -6,6 +6,29 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Manages a user group.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const operationsTeam = new proxmoxve.permission.Group("operationsTeam", {
+ *     comment: "Managed by Terraform",
+ *     groupId: "operations-team",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Instances can be imported using the `group_id`, e.g., bash
+ *
+ * ```sh
+ *  $ pulumi import proxmoxve:Permission/group:Group operations_team operations-team
+ * ```
+ */
 export class Group extends pulumi.CustomResource {
     /**
      * Get an existing Group resource's state with the given name, ID, and optional extra
@@ -35,19 +58,19 @@ export class Group extends pulumi.CustomResource {
     }
 
     /**
-     * The access control list
+     * The access control list (multiple blocks supported).
      */
     public readonly acls!: pulumi.Output<outputs.Permission.GroupAcl[] | undefined>;
     /**
-     * The group comment
+     * The group comment.
      */
     public readonly comment!: pulumi.Output<string | undefined>;
     /**
-     * The group id
+     * The group identifier.
      */
     public readonly groupId!: pulumi.Output<string>;
     /**
-     * The group members
+     * The group members as a list of `username@realm` entries
      */
     public /*out*/ readonly members!: pulumi.Output<string[]>;
 
@@ -88,19 +111,19 @@ export class Group extends pulumi.CustomResource {
  */
 export interface GroupState {
     /**
-     * The access control list
+     * The access control list (multiple blocks supported).
      */
     acls?: pulumi.Input<pulumi.Input<inputs.Permission.GroupAcl>[]>;
     /**
-     * The group comment
+     * The group comment.
      */
     comment?: pulumi.Input<string>;
     /**
-     * The group id
+     * The group identifier.
      */
     groupId?: pulumi.Input<string>;
     /**
-     * The group members
+     * The group members as a list of `username@realm` entries
      */
     members?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -110,15 +133,15 @@ export interface GroupState {
  */
 export interface GroupArgs {
     /**
-     * The access control list
+     * The access control list (multiple blocks supported).
      */
     acls?: pulumi.Input<pulumi.Input<inputs.Permission.GroupAcl>[]>;
     /**
-     * The group comment
+     * The group comment.
      */
     comment?: pulumi.Input<string>;
     /**
-     * The group id
+     * The group identifier.
      */
     groupId: pulumi.Input<string>;
 }

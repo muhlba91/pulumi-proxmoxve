@@ -13,100 +13,158 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Manages a virtual machine.
+//
+// ## Important Notes
+//
+// When cloning an existing virtual machine, whether it's a template or not, the
+// resource will only detect changes to the arguments which are not set to their
+// default values.
+//
+// Furthermore, when cloning from one node to a different one, the behavior changes
+// depening on the datastores of the source VM. If at least one non-shared
+// datastore is used, the VM is first cloned to the source node before being
+// migrated to the target node. This circumvents a limitation in the Proxmox clone
+// API.
+//
+// **Note:** Because the migration step after the clone tries to preserve the used
+// datastores by their name, it may fail if a datastore used in the source VM is
+// not available on the target node (e.g. `local-lvm` is used on the source node in
+// the VM but no `local-lvm` datastore is available on the target node). In this
+// case, it is recommended to set the `datastoreId` argument in the `clone` block
+// to force the migration step to migrate all disks to a specific datastore on the
+// target node. If you need certain disks to be on specific datastores, set
+// the `datastoreId` argument of the disks in the `disks` block to move the disks
+// to the correct datastore after the cloning and migrating succeeded.
+//
+// ## Import
+//
+// Instances can be imported using the `node_name` and the `vm_id`, e.g., bash
+//
+// ```sh
+//
+//	$ pulumi import proxmoxve:VM/virtualMachine:VirtualMachine ubuntu_vm first-node/4321
+//
+// ```
 type VirtualMachine struct {
 	pulumi.CustomResourceState
 
-	// Whether to enable ACPI
+	// Whether to enable ACPI (defaults to `true`).
 	Acpi pulumi.BoolPtrOutput `pulumi:"acpi"`
-	// The QEMU agent configuration
+	// The QEMU agent configuration.
 	Agent VirtualMachineAgentPtrOutput `pulumi:"agent"`
-	// The audio devices
+	// An audio device.
 	AudioDevice VirtualMachineAudioDevicePtrOutput `pulumi:"audioDevice"`
-	// The BIOS implementation
+	// The BIOS implementation (defaults to `seabios`).
 	Bios pulumi.StringPtrOutput `pulumi:"bios"`
-	// The guest will attempt to boot from devices in the order they appear here
+	// Specify a list of devices to boot from in the order
+	// they appear in the list (defaults to `[]`).
 	BootOrders pulumi.StringArrayOutput `pulumi:"bootOrders"`
-	// The CDROM drive
+	// The CDROM configuration.
 	Cdrom VirtualMachineCdromPtrOutput `pulumi:"cdrom"`
-	// The cloning configuration
+	// The cloning configuration.
 	Clone VirtualMachineClonePtrOutput `pulumi:"clone"`
-	// The CPU allocation
+	// The CPU configuration.
 	Cpu VirtualMachineCpuPtrOutput `pulumi:"cpu"`
-	// The description
+	// The description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The disk devices
+	// A disk (multiple blocks supported).
 	Disks VirtualMachineDiskArrayOutput `pulumi:"disks"`
-	// The efidisk device
+	// The efi disk device (required if `bios` is set
+	// to `ovmf`)
 	EfiDisk VirtualMachineEfiDiskPtrOutput `pulumi:"efiDisk"`
-	// The Host PCI devices mapped to the VM
+	// A host PCI device mapping (multiple blocks supported).
 	Hostpcis VirtualMachineHostpciArrayOutput `pulumi:"hostpcis"`
-	// The cloud-init configuration
+	// The cloud-init configuration.
 	Initialization VirtualMachineInitializationPtrOutput `pulumi:"initialization"`
-	// The IPv4 addresses published by the QEMU agent
+	// The IPv4 addresses per network interface published by the
+	// QEMU agent (empty list when `agent.enabled` is `false`)
 	Ipv4Addresses pulumi.StringArrayArrayOutput `pulumi:"ipv4Addresses"`
-	// The IPv6 addresses published by the QEMU agent
+	// The IPv6 addresses per network interface published by the
+	// QEMU agent (empty list when `agent.enabled` is `false`)
 	Ipv6Addresses pulumi.StringArrayArrayOutput `pulumi:"ipv6Addresses"`
-	// The keyboard layout
+	// The keyboard layout (defaults to `en-us`).
 	KeyboardLayout pulumi.StringPtrOutput `pulumi:"keyboardLayout"`
-	// The args implementation
+	// Arbitrary arguments passed to kvm.
 	KvmArguments pulumi.StringPtrOutput `pulumi:"kvmArguments"`
-	// The MAC addresses for the network interfaces
+	// The MAC addresses published by the QEMU agent with fallback
+	// to the network device configuration, if the agent is disabled
 	MacAddresses pulumi.StringArrayOutput `pulumi:"macAddresses"`
-	// The VM machine type, either default i440fx or q35
+	// The VM machine type (defaults to `i440fx`).
 	Machine pulumi.StringPtrOutput `pulumi:"machine"`
-	// The memory allocation
+	// The VGA memory in megabytes (defaults to `16`).
 	Memory VirtualMachineMemoryPtrOutput `pulumi:"memory"`
-	// Whether to migrate the VM on node change instead of re-creating it
+	// Migrate the VM on node change instead of re-creating
+	// it (defaults to `false`).
 	Migrate pulumi.BoolPtrOutput `pulumi:"migrate"`
-	// The name
+	// The virtual machine name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The network devices
+	// A network device (multiple blocks supported).
 	NetworkDevices VirtualMachineNetworkDeviceArrayOutput `pulumi:"networkDevices"`
-	// The network interface names published by the QEMU agent
+	// The network interface names published by the QEMU
+	// agent (empty list when `agent.enabled` is `false`)
 	NetworkInterfaceNames pulumi.StringArrayOutput `pulumi:"networkInterfaceNames"`
-	// The node name
+	// The name of the node to assign the virtual machine
+	// to.
 	NodeName pulumi.StringOutput `pulumi:"nodeName"`
-	// Start VM on Node boot
+	// Specifies whether a VM will be started during system
+	// boot. (defaults to `true`)
 	OnBoot pulumi.BoolPtrOutput `pulumi:"onBoot"`
-	// The operating system configuration
+	// The Operating System configuration.
 	OperatingSystem VirtualMachineOperatingSystemPtrOutput `pulumi:"operatingSystem"`
-	// The ID of the pool to assign the virtual machine to
+	// The identifier for a pool to assign the virtual machine
+	// to.
 	PoolId pulumi.StringPtrOutput `pulumi:"poolId"`
-	// Whether to reboot vm after creation
+	// Reboot the VM after initial creation. (defaults
+	// to `false`)
 	Reboot pulumi.BoolPtrOutput `pulumi:"reboot"`
-	// The SCSI hardware type
+	// The SCSI hardware type (defaults
+	// to `virtio-scsi-pci`).
 	ScsiHardware pulumi.StringPtrOutput `pulumi:"scsiHardware"`
-	// The serial devices
+	// A serial device (multiple blocks supported).
 	SerialDevices VirtualMachineSerialDeviceArrayOutput `pulumi:"serialDevices"`
-	// Specifies SMBIOS (type1) settings for the VM
+	// The SMBIOS (type1) settings for the VM.
 	Smbios VirtualMachineSmbiosPtrOutput `pulumi:"smbios"`
-	// Whether to start the virtual machine
+	// Whether to start the virtual machine (defaults
+	// to `true`).
 	Started pulumi.BoolPtrOutput `pulumi:"started"`
-	// Defines startup and shutdown behavior of the VM
+	// Defines startup and shutdown behavior of the VM.
 	Startup VirtualMachineStartupPtrOutput `pulumi:"startup"`
-	// Whether to enable the USB tablet device
+	// Whether to enable the USB tablet device (defaults
+	// to `true`).
 	TabletDevice pulumi.BoolPtrOutput `pulumi:"tabletDevice"`
-	// Tags of the virtual machine. This is only meta information.
+	// A list of tags of the VM. This is only meta information (
+	// defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
+	// template is not sorted, then Proxmox will always report a difference on the
+	// resource. You may use the `ignoreChanges` lifecycle meta-argument to ignore
+	// changes to this attribute.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// Whether to create a template
+	// Whether to create a template (defaults to `false`).
 	Template pulumi.BoolPtrOutput `pulumi:"template"`
-	// Clone VM timeout
+	// Timeout for cloning a VM in seconds (defaults to
+	// 1800).
 	TimeoutClone pulumi.IntPtrOutput `pulumi:"timeoutClone"`
-	// Migrate VM timeout
+	// Timeout for migrating the VM (defaults to
+	// 1800).
 	TimeoutMigrate pulumi.IntPtrOutput `pulumi:"timeoutMigrate"`
-	// MoveDisk timeout
+	// Timeout for moving the disk of a VM in
+	// seconds (defaults to 1800).
 	TimeoutMoveDisk pulumi.IntPtrOutput `pulumi:"timeoutMoveDisk"`
-	// Reboot timeout
+	// Timeout for rebooting a VM in seconds (defaults
+	// to 1800).
 	TimeoutReboot pulumi.IntPtrOutput `pulumi:"timeoutReboot"`
-	// Shutdown timeout
+	// Timeout for shutting down a VM in seconds (
+	// defaults to 1800).
 	TimeoutShutdownVm pulumi.IntPtrOutput `pulumi:"timeoutShutdownVm"`
-	// Start VM timeout
+	// Timeout for starting a VM in seconds (defaults
+	// to 1800).
 	TimeoutStartVm pulumi.IntPtrOutput `pulumi:"timeoutStartVm"`
-	// Stop VM timeout
+	// Timeout for stopping a VM in seconds (defaults
+	// to 300).
 	TimeoutStopVm pulumi.IntPtrOutput `pulumi:"timeoutStopVm"`
-	// The VGA configuration
+	// The VGA configuration.
 	Vga VirtualMachineVgaPtrOutput `pulumi:"vga"`
-	// The VM identifier
+	// The VM identifier.
 	VmId pulumi.IntOutput `pulumi:"vmId"`
 }
 
@@ -143,192 +201,242 @@ func GetVirtualMachine(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering VirtualMachine resources.
 type virtualMachineState struct {
-	// Whether to enable ACPI
+	// Whether to enable ACPI (defaults to `true`).
 	Acpi *bool `pulumi:"acpi"`
-	// The QEMU agent configuration
+	// The QEMU agent configuration.
 	Agent *VirtualMachineAgent `pulumi:"agent"`
-	// The audio devices
+	// An audio device.
 	AudioDevice *VirtualMachineAudioDevice `pulumi:"audioDevice"`
-	// The BIOS implementation
+	// The BIOS implementation (defaults to `seabios`).
 	Bios *string `pulumi:"bios"`
-	// The guest will attempt to boot from devices in the order they appear here
+	// Specify a list of devices to boot from in the order
+	// they appear in the list (defaults to `[]`).
 	BootOrders []string `pulumi:"bootOrders"`
-	// The CDROM drive
+	// The CDROM configuration.
 	Cdrom *VirtualMachineCdrom `pulumi:"cdrom"`
-	// The cloning configuration
+	// The cloning configuration.
 	Clone *VirtualMachineClone `pulumi:"clone"`
-	// The CPU allocation
+	// The CPU configuration.
 	Cpu *VirtualMachineCpu `pulumi:"cpu"`
-	// The description
+	// The description.
 	Description *string `pulumi:"description"`
-	// The disk devices
+	// A disk (multiple blocks supported).
 	Disks []VirtualMachineDisk `pulumi:"disks"`
-	// The efidisk device
+	// The efi disk device (required if `bios` is set
+	// to `ovmf`)
 	EfiDisk *VirtualMachineEfiDisk `pulumi:"efiDisk"`
-	// The Host PCI devices mapped to the VM
+	// A host PCI device mapping (multiple blocks supported).
 	Hostpcis []VirtualMachineHostpci `pulumi:"hostpcis"`
-	// The cloud-init configuration
+	// The cloud-init configuration.
 	Initialization *VirtualMachineInitialization `pulumi:"initialization"`
-	// The IPv4 addresses published by the QEMU agent
+	// The IPv4 addresses per network interface published by the
+	// QEMU agent (empty list when `agent.enabled` is `false`)
 	Ipv4Addresses [][]string `pulumi:"ipv4Addresses"`
-	// The IPv6 addresses published by the QEMU agent
+	// The IPv6 addresses per network interface published by the
+	// QEMU agent (empty list when `agent.enabled` is `false`)
 	Ipv6Addresses [][]string `pulumi:"ipv6Addresses"`
-	// The keyboard layout
+	// The keyboard layout (defaults to `en-us`).
 	KeyboardLayout *string `pulumi:"keyboardLayout"`
-	// The args implementation
+	// Arbitrary arguments passed to kvm.
 	KvmArguments *string `pulumi:"kvmArguments"`
-	// The MAC addresses for the network interfaces
+	// The MAC addresses published by the QEMU agent with fallback
+	// to the network device configuration, if the agent is disabled
 	MacAddresses []string `pulumi:"macAddresses"`
-	// The VM machine type, either default i440fx or q35
+	// The VM machine type (defaults to `i440fx`).
 	Machine *string `pulumi:"machine"`
-	// The memory allocation
+	// The VGA memory in megabytes (defaults to `16`).
 	Memory *VirtualMachineMemory `pulumi:"memory"`
-	// Whether to migrate the VM on node change instead of re-creating it
+	// Migrate the VM on node change instead of re-creating
+	// it (defaults to `false`).
 	Migrate *bool `pulumi:"migrate"`
-	// The name
+	// The virtual machine name.
 	Name *string `pulumi:"name"`
-	// The network devices
+	// A network device (multiple blocks supported).
 	NetworkDevices []VirtualMachineNetworkDevice `pulumi:"networkDevices"`
-	// The network interface names published by the QEMU agent
+	// The network interface names published by the QEMU
+	// agent (empty list when `agent.enabled` is `false`)
 	NetworkInterfaceNames []string `pulumi:"networkInterfaceNames"`
-	// The node name
+	// The name of the node to assign the virtual machine
+	// to.
 	NodeName *string `pulumi:"nodeName"`
-	// Start VM on Node boot
+	// Specifies whether a VM will be started during system
+	// boot. (defaults to `true`)
 	OnBoot *bool `pulumi:"onBoot"`
-	// The operating system configuration
+	// The Operating System configuration.
 	OperatingSystem *VirtualMachineOperatingSystem `pulumi:"operatingSystem"`
-	// The ID of the pool to assign the virtual machine to
+	// The identifier for a pool to assign the virtual machine
+	// to.
 	PoolId *string `pulumi:"poolId"`
-	// Whether to reboot vm after creation
+	// Reboot the VM after initial creation. (defaults
+	// to `false`)
 	Reboot *bool `pulumi:"reboot"`
-	// The SCSI hardware type
+	// The SCSI hardware type (defaults
+	// to `virtio-scsi-pci`).
 	ScsiHardware *string `pulumi:"scsiHardware"`
-	// The serial devices
+	// A serial device (multiple blocks supported).
 	SerialDevices []VirtualMachineSerialDevice `pulumi:"serialDevices"`
-	// Specifies SMBIOS (type1) settings for the VM
+	// The SMBIOS (type1) settings for the VM.
 	Smbios *VirtualMachineSmbios `pulumi:"smbios"`
-	// Whether to start the virtual machine
+	// Whether to start the virtual machine (defaults
+	// to `true`).
 	Started *bool `pulumi:"started"`
-	// Defines startup and shutdown behavior of the VM
+	// Defines startup and shutdown behavior of the VM.
 	Startup *VirtualMachineStartup `pulumi:"startup"`
-	// Whether to enable the USB tablet device
+	// Whether to enable the USB tablet device (defaults
+	// to `true`).
 	TabletDevice *bool `pulumi:"tabletDevice"`
-	// Tags of the virtual machine. This is only meta information.
+	// A list of tags of the VM. This is only meta information (
+	// defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
+	// template is not sorted, then Proxmox will always report a difference on the
+	// resource. You may use the `ignoreChanges` lifecycle meta-argument to ignore
+	// changes to this attribute.
 	Tags []string `pulumi:"tags"`
-	// Whether to create a template
+	// Whether to create a template (defaults to `false`).
 	Template *bool `pulumi:"template"`
-	// Clone VM timeout
+	// Timeout for cloning a VM in seconds (defaults to
+	// 1800).
 	TimeoutClone *int `pulumi:"timeoutClone"`
-	// Migrate VM timeout
+	// Timeout for migrating the VM (defaults to
+	// 1800).
 	TimeoutMigrate *int `pulumi:"timeoutMigrate"`
-	// MoveDisk timeout
+	// Timeout for moving the disk of a VM in
+	// seconds (defaults to 1800).
 	TimeoutMoveDisk *int `pulumi:"timeoutMoveDisk"`
-	// Reboot timeout
+	// Timeout for rebooting a VM in seconds (defaults
+	// to 1800).
 	TimeoutReboot *int `pulumi:"timeoutReboot"`
-	// Shutdown timeout
+	// Timeout for shutting down a VM in seconds (
+	// defaults to 1800).
 	TimeoutShutdownVm *int `pulumi:"timeoutShutdownVm"`
-	// Start VM timeout
+	// Timeout for starting a VM in seconds (defaults
+	// to 1800).
 	TimeoutStartVm *int `pulumi:"timeoutStartVm"`
-	// Stop VM timeout
+	// Timeout for stopping a VM in seconds (defaults
+	// to 300).
 	TimeoutStopVm *int `pulumi:"timeoutStopVm"`
-	// The VGA configuration
+	// The VGA configuration.
 	Vga *VirtualMachineVga `pulumi:"vga"`
-	// The VM identifier
+	// The VM identifier.
 	VmId *int `pulumi:"vmId"`
 }
 
 type VirtualMachineState struct {
-	// Whether to enable ACPI
+	// Whether to enable ACPI (defaults to `true`).
 	Acpi pulumi.BoolPtrInput
-	// The QEMU agent configuration
+	// The QEMU agent configuration.
 	Agent VirtualMachineAgentPtrInput
-	// The audio devices
+	// An audio device.
 	AudioDevice VirtualMachineAudioDevicePtrInput
-	// The BIOS implementation
+	// The BIOS implementation (defaults to `seabios`).
 	Bios pulumi.StringPtrInput
-	// The guest will attempt to boot from devices in the order they appear here
+	// Specify a list of devices to boot from in the order
+	// they appear in the list (defaults to `[]`).
 	BootOrders pulumi.StringArrayInput
-	// The CDROM drive
+	// The CDROM configuration.
 	Cdrom VirtualMachineCdromPtrInput
-	// The cloning configuration
+	// The cloning configuration.
 	Clone VirtualMachineClonePtrInput
-	// The CPU allocation
+	// The CPU configuration.
 	Cpu VirtualMachineCpuPtrInput
-	// The description
+	// The description.
 	Description pulumi.StringPtrInput
-	// The disk devices
+	// A disk (multiple blocks supported).
 	Disks VirtualMachineDiskArrayInput
-	// The efidisk device
+	// The efi disk device (required if `bios` is set
+	// to `ovmf`)
 	EfiDisk VirtualMachineEfiDiskPtrInput
-	// The Host PCI devices mapped to the VM
+	// A host PCI device mapping (multiple blocks supported).
 	Hostpcis VirtualMachineHostpciArrayInput
-	// The cloud-init configuration
+	// The cloud-init configuration.
 	Initialization VirtualMachineInitializationPtrInput
-	// The IPv4 addresses published by the QEMU agent
+	// The IPv4 addresses per network interface published by the
+	// QEMU agent (empty list when `agent.enabled` is `false`)
 	Ipv4Addresses pulumi.StringArrayArrayInput
-	// The IPv6 addresses published by the QEMU agent
+	// The IPv6 addresses per network interface published by the
+	// QEMU agent (empty list when `agent.enabled` is `false`)
 	Ipv6Addresses pulumi.StringArrayArrayInput
-	// The keyboard layout
+	// The keyboard layout (defaults to `en-us`).
 	KeyboardLayout pulumi.StringPtrInput
-	// The args implementation
+	// Arbitrary arguments passed to kvm.
 	KvmArguments pulumi.StringPtrInput
-	// The MAC addresses for the network interfaces
+	// The MAC addresses published by the QEMU agent with fallback
+	// to the network device configuration, if the agent is disabled
 	MacAddresses pulumi.StringArrayInput
-	// The VM machine type, either default i440fx or q35
+	// The VM machine type (defaults to `i440fx`).
 	Machine pulumi.StringPtrInput
-	// The memory allocation
+	// The VGA memory in megabytes (defaults to `16`).
 	Memory VirtualMachineMemoryPtrInput
-	// Whether to migrate the VM on node change instead of re-creating it
+	// Migrate the VM on node change instead of re-creating
+	// it (defaults to `false`).
 	Migrate pulumi.BoolPtrInput
-	// The name
+	// The virtual machine name.
 	Name pulumi.StringPtrInput
-	// The network devices
+	// A network device (multiple blocks supported).
 	NetworkDevices VirtualMachineNetworkDeviceArrayInput
-	// The network interface names published by the QEMU agent
+	// The network interface names published by the QEMU
+	// agent (empty list when `agent.enabled` is `false`)
 	NetworkInterfaceNames pulumi.StringArrayInput
-	// The node name
+	// The name of the node to assign the virtual machine
+	// to.
 	NodeName pulumi.StringPtrInput
-	// Start VM on Node boot
+	// Specifies whether a VM will be started during system
+	// boot. (defaults to `true`)
 	OnBoot pulumi.BoolPtrInput
-	// The operating system configuration
+	// The Operating System configuration.
 	OperatingSystem VirtualMachineOperatingSystemPtrInput
-	// The ID of the pool to assign the virtual machine to
+	// The identifier for a pool to assign the virtual machine
+	// to.
 	PoolId pulumi.StringPtrInput
-	// Whether to reboot vm after creation
+	// Reboot the VM after initial creation. (defaults
+	// to `false`)
 	Reboot pulumi.BoolPtrInput
-	// The SCSI hardware type
+	// The SCSI hardware type (defaults
+	// to `virtio-scsi-pci`).
 	ScsiHardware pulumi.StringPtrInput
-	// The serial devices
+	// A serial device (multiple blocks supported).
 	SerialDevices VirtualMachineSerialDeviceArrayInput
-	// Specifies SMBIOS (type1) settings for the VM
+	// The SMBIOS (type1) settings for the VM.
 	Smbios VirtualMachineSmbiosPtrInput
-	// Whether to start the virtual machine
+	// Whether to start the virtual machine (defaults
+	// to `true`).
 	Started pulumi.BoolPtrInput
-	// Defines startup and shutdown behavior of the VM
+	// Defines startup and shutdown behavior of the VM.
 	Startup VirtualMachineStartupPtrInput
-	// Whether to enable the USB tablet device
+	// Whether to enable the USB tablet device (defaults
+	// to `true`).
 	TabletDevice pulumi.BoolPtrInput
-	// Tags of the virtual machine. This is only meta information.
+	// A list of tags of the VM. This is only meta information (
+	// defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
+	// template is not sorted, then Proxmox will always report a difference on the
+	// resource. You may use the `ignoreChanges` lifecycle meta-argument to ignore
+	// changes to this attribute.
 	Tags pulumi.StringArrayInput
-	// Whether to create a template
+	// Whether to create a template (defaults to `false`).
 	Template pulumi.BoolPtrInput
-	// Clone VM timeout
+	// Timeout for cloning a VM in seconds (defaults to
+	// 1800).
 	TimeoutClone pulumi.IntPtrInput
-	// Migrate VM timeout
+	// Timeout for migrating the VM (defaults to
+	// 1800).
 	TimeoutMigrate pulumi.IntPtrInput
-	// MoveDisk timeout
+	// Timeout for moving the disk of a VM in
+	// seconds (defaults to 1800).
 	TimeoutMoveDisk pulumi.IntPtrInput
-	// Reboot timeout
+	// Timeout for rebooting a VM in seconds (defaults
+	// to 1800).
 	TimeoutReboot pulumi.IntPtrInput
-	// Shutdown timeout
+	// Timeout for shutting down a VM in seconds (
+	// defaults to 1800).
 	TimeoutShutdownVm pulumi.IntPtrInput
-	// Start VM timeout
+	// Timeout for starting a VM in seconds (defaults
+	// to 1800).
 	TimeoutStartVm pulumi.IntPtrInput
-	// Stop VM timeout
+	// Timeout for stopping a VM in seconds (defaults
+	// to 300).
 	TimeoutStopVm pulumi.IntPtrInput
-	// The VGA configuration
+	// The VGA configuration.
 	Vga VirtualMachineVgaPtrInput
-	// The VM identifier
+	// The VM identifier.
 	VmId pulumi.IntPtrInput
 }
 
@@ -337,177 +445,219 @@ func (VirtualMachineState) ElementType() reflect.Type {
 }
 
 type virtualMachineArgs struct {
-	// Whether to enable ACPI
+	// Whether to enable ACPI (defaults to `true`).
 	Acpi *bool `pulumi:"acpi"`
-	// The QEMU agent configuration
+	// The QEMU agent configuration.
 	Agent *VirtualMachineAgent `pulumi:"agent"`
-	// The audio devices
+	// An audio device.
 	AudioDevice *VirtualMachineAudioDevice `pulumi:"audioDevice"`
-	// The BIOS implementation
+	// The BIOS implementation (defaults to `seabios`).
 	Bios *string `pulumi:"bios"`
-	// The guest will attempt to boot from devices in the order they appear here
+	// Specify a list of devices to boot from in the order
+	// they appear in the list (defaults to `[]`).
 	BootOrders []string `pulumi:"bootOrders"`
-	// The CDROM drive
+	// The CDROM configuration.
 	Cdrom *VirtualMachineCdrom `pulumi:"cdrom"`
-	// The cloning configuration
+	// The cloning configuration.
 	Clone *VirtualMachineClone `pulumi:"clone"`
-	// The CPU allocation
+	// The CPU configuration.
 	Cpu *VirtualMachineCpu `pulumi:"cpu"`
-	// The description
+	// The description.
 	Description *string `pulumi:"description"`
-	// The disk devices
+	// A disk (multiple blocks supported).
 	Disks []VirtualMachineDisk `pulumi:"disks"`
-	// The efidisk device
+	// The efi disk device (required if `bios` is set
+	// to `ovmf`)
 	EfiDisk *VirtualMachineEfiDisk `pulumi:"efiDisk"`
-	// The Host PCI devices mapped to the VM
+	// A host PCI device mapping (multiple blocks supported).
 	Hostpcis []VirtualMachineHostpci `pulumi:"hostpcis"`
-	// The cloud-init configuration
+	// The cloud-init configuration.
 	Initialization *VirtualMachineInitialization `pulumi:"initialization"`
-	// The keyboard layout
+	// The keyboard layout (defaults to `en-us`).
 	KeyboardLayout *string `pulumi:"keyboardLayout"`
-	// The args implementation
+	// Arbitrary arguments passed to kvm.
 	KvmArguments *string `pulumi:"kvmArguments"`
-	// The VM machine type, either default i440fx or q35
+	// The VM machine type (defaults to `i440fx`).
 	Machine *string `pulumi:"machine"`
-	// The memory allocation
+	// The VGA memory in megabytes (defaults to `16`).
 	Memory *VirtualMachineMemory `pulumi:"memory"`
-	// Whether to migrate the VM on node change instead of re-creating it
+	// Migrate the VM on node change instead of re-creating
+	// it (defaults to `false`).
 	Migrate *bool `pulumi:"migrate"`
-	// The name
+	// The virtual machine name.
 	Name *string `pulumi:"name"`
-	// The network devices
+	// A network device (multiple blocks supported).
 	NetworkDevices []VirtualMachineNetworkDevice `pulumi:"networkDevices"`
-	// The node name
+	// The name of the node to assign the virtual machine
+	// to.
 	NodeName string `pulumi:"nodeName"`
-	// Start VM on Node boot
+	// Specifies whether a VM will be started during system
+	// boot. (defaults to `true`)
 	OnBoot *bool `pulumi:"onBoot"`
-	// The operating system configuration
+	// The Operating System configuration.
 	OperatingSystem *VirtualMachineOperatingSystem `pulumi:"operatingSystem"`
-	// The ID of the pool to assign the virtual machine to
+	// The identifier for a pool to assign the virtual machine
+	// to.
 	PoolId *string `pulumi:"poolId"`
-	// Whether to reboot vm after creation
+	// Reboot the VM after initial creation. (defaults
+	// to `false`)
 	Reboot *bool `pulumi:"reboot"`
-	// The SCSI hardware type
+	// The SCSI hardware type (defaults
+	// to `virtio-scsi-pci`).
 	ScsiHardware *string `pulumi:"scsiHardware"`
-	// The serial devices
+	// A serial device (multiple blocks supported).
 	SerialDevices []VirtualMachineSerialDevice `pulumi:"serialDevices"`
-	// Specifies SMBIOS (type1) settings for the VM
+	// The SMBIOS (type1) settings for the VM.
 	Smbios *VirtualMachineSmbios `pulumi:"smbios"`
-	// Whether to start the virtual machine
+	// Whether to start the virtual machine (defaults
+	// to `true`).
 	Started *bool `pulumi:"started"`
-	// Defines startup and shutdown behavior of the VM
+	// Defines startup and shutdown behavior of the VM.
 	Startup *VirtualMachineStartup `pulumi:"startup"`
-	// Whether to enable the USB tablet device
+	// Whether to enable the USB tablet device (defaults
+	// to `true`).
 	TabletDevice *bool `pulumi:"tabletDevice"`
-	// Tags of the virtual machine. This is only meta information.
+	// A list of tags of the VM. This is only meta information (
+	// defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
+	// template is not sorted, then Proxmox will always report a difference on the
+	// resource. You may use the `ignoreChanges` lifecycle meta-argument to ignore
+	// changes to this attribute.
 	Tags []string `pulumi:"tags"`
-	// Whether to create a template
+	// Whether to create a template (defaults to `false`).
 	Template *bool `pulumi:"template"`
-	// Clone VM timeout
+	// Timeout for cloning a VM in seconds (defaults to
+	// 1800).
 	TimeoutClone *int `pulumi:"timeoutClone"`
-	// Migrate VM timeout
+	// Timeout for migrating the VM (defaults to
+	// 1800).
 	TimeoutMigrate *int `pulumi:"timeoutMigrate"`
-	// MoveDisk timeout
+	// Timeout for moving the disk of a VM in
+	// seconds (defaults to 1800).
 	TimeoutMoveDisk *int `pulumi:"timeoutMoveDisk"`
-	// Reboot timeout
+	// Timeout for rebooting a VM in seconds (defaults
+	// to 1800).
 	TimeoutReboot *int `pulumi:"timeoutReboot"`
-	// Shutdown timeout
+	// Timeout for shutting down a VM in seconds (
+	// defaults to 1800).
 	TimeoutShutdownVm *int `pulumi:"timeoutShutdownVm"`
-	// Start VM timeout
+	// Timeout for starting a VM in seconds (defaults
+	// to 1800).
 	TimeoutStartVm *int `pulumi:"timeoutStartVm"`
-	// Stop VM timeout
+	// Timeout for stopping a VM in seconds (defaults
+	// to 300).
 	TimeoutStopVm *int `pulumi:"timeoutStopVm"`
-	// The VGA configuration
+	// The VGA configuration.
 	Vga *VirtualMachineVga `pulumi:"vga"`
-	// The VM identifier
+	// The VM identifier.
 	VmId *int `pulumi:"vmId"`
 }
 
 // The set of arguments for constructing a VirtualMachine resource.
 type VirtualMachineArgs struct {
-	// Whether to enable ACPI
+	// Whether to enable ACPI (defaults to `true`).
 	Acpi pulumi.BoolPtrInput
-	// The QEMU agent configuration
+	// The QEMU agent configuration.
 	Agent VirtualMachineAgentPtrInput
-	// The audio devices
+	// An audio device.
 	AudioDevice VirtualMachineAudioDevicePtrInput
-	// The BIOS implementation
+	// The BIOS implementation (defaults to `seabios`).
 	Bios pulumi.StringPtrInput
-	// The guest will attempt to boot from devices in the order they appear here
+	// Specify a list of devices to boot from in the order
+	// they appear in the list (defaults to `[]`).
 	BootOrders pulumi.StringArrayInput
-	// The CDROM drive
+	// The CDROM configuration.
 	Cdrom VirtualMachineCdromPtrInput
-	// The cloning configuration
+	// The cloning configuration.
 	Clone VirtualMachineClonePtrInput
-	// The CPU allocation
+	// The CPU configuration.
 	Cpu VirtualMachineCpuPtrInput
-	// The description
+	// The description.
 	Description pulumi.StringPtrInput
-	// The disk devices
+	// A disk (multiple blocks supported).
 	Disks VirtualMachineDiskArrayInput
-	// The efidisk device
+	// The efi disk device (required if `bios` is set
+	// to `ovmf`)
 	EfiDisk VirtualMachineEfiDiskPtrInput
-	// The Host PCI devices mapped to the VM
+	// A host PCI device mapping (multiple blocks supported).
 	Hostpcis VirtualMachineHostpciArrayInput
-	// The cloud-init configuration
+	// The cloud-init configuration.
 	Initialization VirtualMachineInitializationPtrInput
-	// The keyboard layout
+	// The keyboard layout (defaults to `en-us`).
 	KeyboardLayout pulumi.StringPtrInput
-	// The args implementation
+	// Arbitrary arguments passed to kvm.
 	KvmArguments pulumi.StringPtrInput
-	// The VM machine type, either default i440fx or q35
+	// The VM machine type (defaults to `i440fx`).
 	Machine pulumi.StringPtrInput
-	// The memory allocation
+	// The VGA memory in megabytes (defaults to `16`).
 	Memory VirtualMachineMemoryPtrInput
-	// Whether to migrate the VM on node change instead of re-creating it
+	// Migrate the VM on node change instead of re-creating
+	// it (defaults to `false`).
 	Migrate pulumi.BoolPtrInput
-	// The name
+	// The virtual machine name.
 	Name pulumi.StringPtrInput
-	// The network devices
+	// A network device (multiple blocks supported).
 	NetworkDevices VirtualMachineNetworkDeviceArrayInput
-	// The node name
+	// The name of the node to assign the virtual machine
+	// to.
 	NodeName pulumi.StringInput
-	// Start VM on Node boot
+	// Specifies whether a VM will be started during system
+	// boot. (defaults to `true`)
 	OnBoot pulumi.BoolPtrInput
-	// The operating system configuration
+	// The Operating System configuration.
 	OperatingSystem VirtualMachineOperatingSystemPtrInput
-	// The ID of the pool to assign the virtual machine to
+	// The identifier for a pool to assign the virtual machine
+	// to.
 	PoolId pulumi.StringPtrInput
-	// Whether to reboot vm after creation
+	// Reboot the VM after initial creation. (defaults
+	// to `false`)
 	Reboot pulumi.BoolPtrInput
-	// The SCSI hardware type
+	// The SCSI hardware type (defaults
+	// to `virtio-scsi-pci`).
 	ScsiHardware pulumi.StringPtrInput
-	// The serial devices
+	// A serial device (multiple blocks supported).
 	SerialDevices VirtualMachineSerialDeviceArrayInput
-	// Specifies SMBIOS (type1) settings for the VM
+	// The SMBIOS (type1) settings for the VM.
 	Smbios VirtualMachineSmbiosPtrInput
-	// Whether to start the virtual machine
+	// Whether to start the virtual machine (defaults
+	// to `true`).
 	Started pulumi.BoolPtrInput
-	// Defines startup and shutdown behavior of the VM
+	// Defines startup and shutdown behavior of the VM.
 	Startup VirtualMachineStartupPtrInput
-	// Whether to enable the USB tablet device
+	// Whether to enable the USB tablet device (defaults
+	// to `true`).
 	TabletDevice pulumi.BoolPtrInput
-	// Tags of the virtual machine. This is only meta information.
+	// A list of tags of the VM. This is only meta information (
+	// defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
+	// template is not sorted, then Proxmox will always report a difference on the
+	// resource. You may use the `ignoreChanges` lifecycle meta-argument to ignore
+	// changes to this attribute.
 	Tags pulumi.StringArrayInput
-	// Whether to create a template
+	// Whether to create a template (defaults to `false`).
 	Template pulumi.BoolPtrInput
-	// Clone VM timeout
+	// Timeout for cloning a VM in seconds (defaults to
+	// 1800).
 	TimeoutClone pulumi.IntPtrInput
-	// Migrate VM timeout
+	// Timeout for migrating the VM (defaults to
+	// 1800).
 	TimeoutMigrate pulumi.IntPtrInput
-	// MoveDisk timeout
+	// Timeout for moving the disk of a VM in
+	// seconds (defaults to 1800).
 	TimeoutMoveDisk pulumi.IntPtrInput
-	// Reboot timeout
+	// Timeout for rebooting a VM in seconds (defaults
+	// to 1800).
 	TimeoutReboot pulumi.IntPtrInput
-	// Shutdown timeout
+	// Timeout for shutting down a VM in seconds (
+	// defaults to 1800).
 	TimeoutShutdownVm pulumi.IntPtrInput
-	// Start VM timeout
+	// Timeout for starting a VM in seconds (defaults
+	// to 1800).
 	TimeoutStartVm pulumi.IntPtrInput
-	// Stop VM timeout
+	// Timeout for stopping a VM in seconds (defaults
+	// to 300).
 	TimeoutStopVm pulumi.IntPtrInput
-	// The VGA configuration
+	// The VGA configuration.
 	Vga VirtualMachineVgaPtrInput
-	// The VM identifier
+	// The VM identifier.
 	VmId pulumi.IntPtrInput
 }
 
@@ -622,232 +772,257 @@ func (o VirtualMachineOutput) ToOutput(ctx context.Context) pulumix.Output[*Virt
 	}
 }
 
-// Whether to enable ACPI
+// Whether to enable ACPI (defaults to `true`).
 func (o VirtualMachineOutput) Acpi() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.Acpi }).(pulumi.BoolPtrOutput)
 }
 
-// The QEMU agent configuration
+// The QEMU agent configuration.
 func (o VirtualMachineOutput) Agent() VirtualMachineAgentPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineAgentPtrOutput { return v.Agent }).(VirtualMachineAgentPtrOutput)
 }
 
-// The audio devices
+// An audio device.
 func (o VirtualMachineOutput) AudioDevice() VirtualMachineAudioDevicePtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineAudioDevicePtrOutput { return v.AudioDevice }).(VirtualMachineAudioDevicePtrOutput)
 }
 
-// The BIOS implementation
+// The BIOS implementation (defaults to `seabios`).
 func (o VirtualMachineOutput) Bios() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.Bios }).(pulumi.StringPtrOutput)
 }
 
-// The guest will attempt to boot from devices in the order they appear here
+// Specify a list of devices to boot from in the order
+// they appear in the list (defaults to `[]`).
 func (o VirtualMachineOutput) BootOrders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringArrayOutput { return v.BootOrders }).(pulumi.StringArrayOutput)
 }
 
-// The CDROM drive
+// The CDROM configuration.
 func (o VirtualMachineOutput) Cdrom() VirtualMachineCdromPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineCdromPtrOutput { return v.Cdrom }).(VirtualMachineCdromPtrOutput)
 }
 
-// The cloning configuration
+// The cloning configuration.
 func (o VirtualMachineOutput) Clone() VirtualMachineClonePtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineClonePtrOutput { return v.Clone }).(VirtualMachineClonePtrOutput)
 }
 
-// The CPU allocation
+// The CPU configuration.
 func (o VirtualMachineOutput) Cpu() VirtualMachineCpuPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineCpuPtrOutput { return v.Cpu }).(VirtualMachineCpuPtrOutput)
 }
 
-// The description
+// The description.
 func (o VirtualMachineOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The disk devices
+// A disk (multiple blocks supported).
 func (o VirtualMachineOutput) Disks() VirtualMachineDiskArrayOutput {
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineDiskArrayOutput { return v.Disks }).(VirtualMachineDiskArrayOutput)
 }
 
-// The efidisk device
+// The efi disk device (required if `bios` is set
+// to `ovmf`)
 func (o VirtualMachineOutput) EfiDisk() VirtualMachineEfiDiskPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineEfiDiskPtrOutput { return v.EfiDisk }).(VirtualMachineEfiDiskPtrOutput)
 }
 
-// The Host PCI devices mapped to the VM
+// A host PCI device mapping (multiple blocks supported).
 func (o VirtualMachineOutput) Hostpcis() VirtualMachineHostpciArrayOutput {
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineHostpciArrayOutput { return v.Hostpcis }).(VirtualMachineHostpciArrayOutput)
 }
 
-// The cloud-init configuration
+// The cloud-init configuration.
 func (o VirtualMachineOutput) Initialization() VirtualMachineInitializationPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineInitializationPtrOutput { return v.Initialization }).(VirtualMachineInitializationPtrOutput)
 }
 
-// The IPv4 addresses published by the QEMU agent
+// The IPv4 addresses per network interface published by the
+// QEMU agent (empty list when `agent.enabled` is `false`)
 func (o VirtualMachineOutput) Ipv4Addresses() pulumi.StringArrayArrayOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringArrayArrayOutput { return v.Ipv4Addresses }).(pulumi.StringArrayArrayOutput)
 }
 
-// The IPv6 addresses published by the QEMU agent
+// The IPv6 addresses per network interface published by the
+// QEMU agent (empty list when `agent.enabled` is `false`)
 func (o VirtualMachineOutput) Ipv6Addresses() pulumi.StringArrayArrayOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringArrayArrayOutput { return v.Ipv6Addresses }).(pulumi.StringArrayArrayOutput)
 }
 
-// The keyboard layout
+// The keyboard layout (defaults to `en-us`).
 func (o VirtualMachineOutput) KeyboardLayout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.KeyboardLayout }).(pulumi.StringPtrOutput)
 }
 
-// The args implementation
+// Arbitrary arguments passed to kvm.
 func (o VirtualMachineOutput) KvmArguments() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.KvmArguments }).(pulumi.StringPtrOutput)
 }
 
-// The MAC addresses for the network interfaces
+// The MAC addresses published by the QEMU agent with fallback
+// to the network device configuration, if the agent is disabled
 func (o VirtualMachineOutput) MacAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringArrayOutput { return v.MacAddresses }).(pulumi.StringArrayOutput)
 }
 
-// The VM machine type, either default i440fx or q35
+// The VM machine type (defaults to `i440fx`).
 func (o VirtualMachineOutput) Machine() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.Machine }).(pulumi.StringPtrOutput)
 }
 
-// The memory allocation
+// The VGA memory in megabytes (defaults to `16`).
 func (o VirtualMachineOutput) Memory() VirtualMachineMemoryPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineMemoryPtrOutput { return v.Memory }).(VirtualMachineMemoryPtrOutput)
 }
 
-// Whether to migrate the VM on node change instead of re-creating it
+// Migrate the VM on node change instead of re-creating
+// it (defaults to `false`).
 func (o VirtualMachineOutput) Migrate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.Migrate }).(pulumi.BoolPtrOutput)
 }
 
-// The name
+// The virtual machine name.
 func (o VirtualMachineOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The network devices
+// A network device (multiple blocks supported).
 func (o VirtualMachineOutput) NetworkDevices() VirtualMachineNetworkDeviceArrayOutput {
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineNetworkDeviceArrayOutput { return v.NetworkDevices }).(VirtualMachineNetworkDeviceArrayOutput)
 }
 
-// The network interface names published by the QEMU agent
+// The network interface names published by the QEMU
+// agent (empty list when `agent.enabled` is `false`)
 func (o VirtualMachineOutput) NetworkInterfaceNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringArrayOutput { return v.NetworkInterfaceNames }).(pulumi.StringArrayOutput)
 }
 
-// The node name
+// The name of the node to assign the virtual machine
+// to.
 func (o VirtualMachineOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.NodeName }).(pulumi.StringOutput)
 }
 
-// Start VM on Node boot
+// Specifies whether a VM will be started during system
+// boot. (defaults to `true`)
 func (o VirtualMachineOutput) OnBoot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.OnBoot }).(pulumi.BoolPtrOutput)
 }
 
-// The operating system configuration
+// The Operating System configuration.
 func (o VirtualMachineOutput) OperatingSystem() VirtualMachineOperatingSystemPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineOperatingSystemPtrOutput { return v.OperatingSystem }).(VirtualMachineOperatingSystemPtrOutput)
 }
 
-// The ID of the pool to assign the virtual machine to
+// The identifier for a pool to assign the virtual machine
+// to.
 func (o VirtualMachineOutput) PoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.PoolId }).(pulumi.StringPtrOutput)
 }
 
-// Whether to reboot vm after creation
+// Reboot the VM after initial creation. (defaults
+// to `false`)
 func (o VirtualMachineOutput) Reboot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.Reboot }).(pulumi.BoolPtrOutput)
 }
 
-// The SCSI hardware type
+// The SCSI hardware type (defaults
+// to `virtio-scsi-pci`).
 func (o VirtualMachineOutput) ScsiHardware() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.ScsiHardware }).(pulumi.StringPtrOutput)
 }
 
-// The serial devices
+// A serial device (multiple blocks supported).
 func (o VirtualMachineOutput) SerialDevices() VirtualMachineSerialDeviceArrayOutput {
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineSerialDeviceArrayOutput { return v.SerialDevices }).(VirtualMachineSerialDeviceArrayOutput)
 }
 
-// Specifies SMBIOS (type1) settings for the VM
+// The SMBIOS (type1) settings for the VM.
 func (o VirtualMachineOutput) Smbios() VirtualMachineSmbiosPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineSmbiosPtrOutput { return v.Smbios }).(VirtualMachineSmbiosPtrOutput)
 }
 
-// Whether to start the virtual machine
+// Whether to start the virtual machine (defaults
+// to `true`).
 func (o VirtualMachineOutput) Started() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.Started }).(pulumi.BoolPtrOutput)
 }
 
-// Defines startup and shutdown behavior of the VM
+// Defines startup and shutdown behavior of the VM.
 func (o VirtualMachineOutput) Startup() VirtualMachineStartupPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineStartupPtrOutput { return v.Startup }).(VirtualMachineStartupPtrOutput)
 }
 
-// Whether to enable the USB tablet device
+// Whether to enable the USB tablet device (defaults
+// to `true`).
 func (o VirtualMachineOutput) TabletDevice() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.TabletDevice }).(pulumi.BoolPtrOutput)
 }
 
-// Tags of the virtual machine. This is only meta information.
+// A list of tags of the VM. This is only meta information (
+// defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
+// template is not sorted, then Proxmox will always report a difference on the
+// resource. You may use the `ignoreChanges` lifecycle meta-argument to ignore
+// changes to this attribute.
 func (o VirtualMachineOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Whether to create a template
+// Whether to create a template (defaults to `false`).
 func (o VirtualMachineOutput) Template() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.Template }).(pulumi.BoolPtrOutput)
 }
 
-// Clone VM timeout
+// Timeout for cloning a VM in seconds (defaults to
+// 1800).
 func (o VirtualMachineOutput) TimeoutClone() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.TimeoutClone }).(pulumi.IntPtrOutput)
 }
 
-// Migrate VM timeout
+// Timeout for migrating the VM (defaults to
+// 1800).
 func (o VirtualMachineOutput) TimeoutMigrate() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.TimeoutMigrate }).(pulumi.IntPtrOutput)
 }
 
-// MoveDisk timeout
+// Timeout for moving the disk of a VM in
+// seconds (defaults to 1800).
 func (o VirtualMachineOutput) TimeoutMoveDisk() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.TimeoutMoveDisk }).(pulumi.IntPtrOutput)
 }
 
-// Reboot timeout
+// Timeout for rebooting a VM in seconds (defaults
+// to 1800).
 func (o VirtualMachineOutput) TimeoutReboot() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.TimeoutReboot }).(pulumi.IntPtrOutput)
 }
 
-// Shutdown timeout
+// Timeout for shutting down a VM in seconds (
+// defaults to 1800).
 func (o VirtualMachineOutput) TimeoutShutdownVm() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.TimeoutShutdownVm }).(pulumi.IntPtrOutput)
 }
 
-// Start VM timeout
+// Timeout for starting a VM in seconds (defaults
+// to 1800).
 func (o VirtualMachineOutput) TimeoutStartVm() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.TimeoutStartVm }).(pulumi.IntPtrOutput)
 }
 
-// Stop VM timeout
+// Timeout for stopping a VM in seconds (defaults
+// to 300).
 func (o VirtualMachineOutput) TimeoutStopVm() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.TimeoutStopVm }).(pulumi.IntPtrOutput)
 }
 
-// The VGA configuration
+// The VGA configuration.
 func (o VirtualMachineOutput) Vga() VirtualMachineVgaPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineVgaPtrOutput { return v.Vga }).(VirtualMachineVgaPtrOutput)
 }
 
-// The VM identifier
+// The VM identifier.
 func (o VirtualMachineOutput) VmId() pulumi.IntOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntOutput { return v.VmId }).(pulumi.IntOutput)
 }

@@ -13,12 +13,52 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Manages a role.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/Permission"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Permission.NewRole(ctx, "operationsMonitoring", &Permission.RoleArgs{
+//				Privileges: pulumi.StringArray{
+//					pulumi.String("VM.Monitor"),
+//				},
+//				RoleId: pulumi.String("operations-monitoring"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// Instances can be imported using the `role_id`, e.g., bash
+//
+// ```sh
+//
+//	$ pulumi import proxmoxve:Permission/role:Role operations_monitoring operations-monitoring
+//
+// ```
 type Role struct {
 	pulumi.CustomResourceState
 
-	// The role privileges
+	// The role privileges.
 	Privileges pulumi.StringArrayOutput `pulumi:"privileges"`
-	// The role id
+	// The role identifier.
 	RoleId pulumi.StringOutput `pulumi:"roleId"`
 }
 
@@ -58,16 +98,16 @@ func GetRole(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Role resources.
 type roleState struct {
-	// The role privileges
+	// The role privileges.
 	Privileges []string `pulumi:"privileges"`
-	// The role id
+	// The role identifier.
 	RoleId *string `pulumi:"roleId"`
 }
 
 type RoleState struct {
-	// The role privileges
+	// The role privileges.
 	Privileges pulumi.StringArrayInput
-	// The role id
+	// The role identifier.
 	RoleId pulumi.StringPtrInput
 }
 
@@ -76,17 +116,17 @@ func (RoleState) ElementType() reflect.Type {
 }
 
 type roleArgs struct {
-	// The role privileges
+	// The role privileges.
 	Privileges []string `pulumi:"privileges"`
-	// The role id
+	// The role identifier.
 	RoleId string `pulumi:"roleId"`
 }
 
 // The set of arguments for constructing a Role resource.
 type RoleArgs struct {
-	// The role privileges
+	// The role privileges.
 	Privileges pulumi.StringArrayInput
-	// The role id
+	// The role identifier.
 	RoleId pulumi.StringInput
 }
 
@@ -201,12 +241,12 @@ func (o RoleOutput) ToOutput(ctx context.Context) pulumix.Output[*Role] {
 	}
 }
 
-// The role privileges
+// The role privileges.
 func (o RoleOutput) Privileges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringArrayOutput { return v.Privileges }).(pulumi.StringArrayOutput)
 }
 
-// The role id
+// The role identifier.
 func (o RoleOutput) RoleId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.RoleId }).(pulumi.StringOutput)
 }

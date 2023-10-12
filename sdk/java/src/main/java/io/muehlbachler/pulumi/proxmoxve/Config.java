@@ -55,6 +55,13 @@ public final class Config {
         return Codegen.objectProp("ssh", Ssh.class).config(config).get();
     }
 /**
+ * The alternative temporary directory.
+ * 
+ */
+    public Optional<String> tmpDir() {
+        return Codegen.stringProp("tmpDir").config(config).get();
+    }
+/**
  * The username for the Proxmox VE API.
  * 
  */

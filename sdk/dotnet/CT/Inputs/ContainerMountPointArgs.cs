@@ -12,38 +12,75 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
 
     public sealed class ContainerMountPointArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Explicitly enable or disable ACL support.
+        /// </summary>
         [Input("acl")]
         public Input<bool>? Acl { get; set; }
 
+        /// <summary>
+        /// Whether to include the mount point in backups (only
+        /// used for volume mount points).
+        /// </summary>
         [Input("backup")]
         public Input<bool>? Backup { get; set; }
 
         [Input("mountOptions")]
         private InputList<string>? _mountOptions;
+
+        /// <summary>
+        /// List of extra mount options.
+        /// </summary>
         public InputList<string> MountOptions
         {
             get => _mountOptions ?? (_mountOptions = new InputList<string>());
             set => _mountOptions = value;
         }
 
+        /// <summary>
+        /// Path to the mount point as seen from inside the
+        /// container.
+        /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
 
+        /// <summary>
+        /// Enable user quotas inside the container (not supported
+        /// with ZFS subvolumes).
+        /// </summary>
         [Input("quota")]
         public Input<bool>? Quota { get; set; }
 
+        /// <summary>
+        /// Read-only mount point.
+        /// </summary>
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
+        /// <summary>
+        /// Will include this volume to a storage replica job.
+        /// </summary>
         [Input("replicate")]
         public Input<bool>? Replicate { get; set; }
 
+        /// <summary>
+        /// Mark this non-volume mount point as available on all
+        /// nodes.
+        /// </summary>
         [Input("shared")]
         public Input<bool>? Shared { get; set; }
 
+        /// <summary>
+        /// Volume size (only for ZFS storage backed mount points).
+        /// Can be specified with a unit suffix (e.g. `10G`).
+        /// </summary>
         [Input("size")]
         public Input<string>? Size { get; set; }
 
+        /// <summary>
+        /// Volume, device or directory to mount into the
+        /// container.
+        /// </summary>
         [Input("volume", required: true)]
         public Input<string> Volume { get; set; } = null!;
 

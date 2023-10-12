@@ -9,23 +9,53 @@ using Pulumi.Serialization;
 
 namespace Pulumi.ProxmoxVE.Permission
 {
+    /// <summary>
+    /// Manages a resource pool.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var operationsPool = new ProxmoxVE.Permission.Pool("operationsPool", new()
+    ///     {
+    ///         Comment = "Managed by Terraform",
+    ///         PoolId = "operations-pool",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Instances can be imported using the `pool_id`, e.g., bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import proxmoxve:Permission/pool:Pool operations_pool operations-pool
+    /// ```
+    /// </summary>
     [ProxmoxVEResourceType("proxmoxve:Permission/pool:Pool")]
     public partial class Pool : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The pool comment
+        /// The pool comment.
         /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
 
         /// <summary>
-        /// The pool members
+        /// The pool members.
         /// </summary>
         [Output("members")]
         public Output<ImmutableArray<Outputs.PoolMember>> Members { get; private set; } = null!;
 
         /// <summary>
-        /// The pool id
+        /// The pool identifier.
         /// </summary>
         [Output("poolId")]
         public Output<string> PoolId { get; private set; } = null!;
@@ -78,13 +108,13 @@ namespace Pulumi.ProxmoxVE.Permission
     public sealed class PoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The pool comment
+        /// The pool comment.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// The pool id
+        /// The pool identifier.
         /// </summary>
         [Input("poolId", required: true)]
         public Input<string> PoolId { get; set; } = null!;
@@ -98,7 +128,7 @@ namespace Pulumi.ProxmoxVE.Permission
     public sealed class PoolState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The pool comment
+        /// The pool comment.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
@@ -107,7 +137,7 @@ namespace Pulumi.ProxmoxVE.Permission
         private InputList<Inputs.PoolMemberGetArgs>? _members;
 
         /// <summary>
-        /// The pool members
+        /// The pool members.
         /// </summary>
         public InputList<Inputs.PoolMemberGetArgs> Members
         {
@@ -116,7 +146,7 @@ namespace Pulumi.ProxmoxVE.Permission
         }
 
         /// <summary>
-        /// The pool id
+        /// The pool identifier.
         /// </summary>
         [Input("poolId")]
         public Input<string>? PoolId { get; set; }

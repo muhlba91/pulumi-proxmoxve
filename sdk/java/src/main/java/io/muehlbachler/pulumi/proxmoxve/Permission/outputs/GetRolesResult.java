@@ -16,8 +16,20 @@ public final class GetRolesResult {
      * 
      */
     private String id;
+    /**
+     * @return The role privileges.
+     * 
+     */
     private List<List<String>> privileges;
+    /**
+     * @return The role identifiers.
+     * 
+     */
     private List<String> roleIds;
+    /**
+     * @return Whether the role is special (built-in).
+     * 
+     */
     private List<Boolean> specials;
 
     private GetRolesResult() {}
@@ -28,12 +40,24 @@ public final class GetRolesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The role privileges.
+     * 
+     */
     public List<List<String>> privileges() {
         return this.privileges;
     }
+    /**
+     * @return The role identifiers.
+     * 
+     */
     public List<String> roleIds() {
         return this.roleIds;
     }
+    /**
+     * @return Whether the role is special (built-in).
+     * 
+     */
     public List<Boolean> specials() {
         return this.specials;
     }

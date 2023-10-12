@@ -8,6 +8,31 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Retrieves information about all available nodes.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/Cluster"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Cluster.GetNodes(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetNodes(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetNodesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNodesResult
@@ -20,15 +45,24 @@ func GetNodes(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetNodesResult
 
 // A collection of values returned by getNodes.
 type GetNodesResult struct {
-	CpuCounts       []int     `pulumi:"cpuCounts"`
+	// The CPU count for each node.
+	CpuCounts []int `pulumi:"cpuCounts"`
+	// The CPU utilization on each node.
 	CpuUtilizations []float64 `pulumi:"cpuUtilizations"`
 	// The provider-assigned unique ID for this managed resource.
-	Id               string   `pulumi:"id"`
-	MemoryAvailables []int    `pulumi:"memoryAvailables"`
-	MemoryUseds      []int    `pulumi:"memoryUseds"`
-	Names            []string `pulumi:"names"`
-	Onlines          []bool   `pulumi:"onlines"`
-	SslFingerprints  []string `pulumi:"sslFingerprints"`
-	SupportLevels    []string `pulumi:"supportLevels"`
-	Uptimes          []int    `pulumi:"uptimes"`
+	Id string `pulumi:"id"`
+	// The memory available on each node.
+	MemoryAvailables []int `pulumi:"memoryAvailables"`
+	// The memory used on each node.
+	MemoryUseds []int `pulumi:"memoryUseds"`
+	// The node names.
+	Names []string `pulumi:"names"`
+	// Whether a node is online.
+	Onlines []bool `pulumi:"onlines"`
+	// The SSL fingerprint for each node.
+	SslFingerprints []string `pulumi:"sslFingerprints"`
+	// The support level for each node.
+	SupportLevels []string `pulumi:"supportLevels"`
+	// The uptime in seconds for each node.
+	Uptimes []int `pulumi:"uptimes"`
 }

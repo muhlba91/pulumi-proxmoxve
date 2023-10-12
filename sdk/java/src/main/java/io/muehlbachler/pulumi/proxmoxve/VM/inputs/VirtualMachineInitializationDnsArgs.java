@@ -15,16 +15,32 @@ public final class VirtualMachineInitializationDnsArgs extends com.pulumi.resour
 
     public static final VirtualMachineInitializationDnsArgs Empty = new VirtualMachineInitializationDnsArgs();
 
+    /**
+     * The DNS search domain.
+     * 
+     */
     @Import(name="domain")
     private @Nullable Output<String> domain;
 
+    /**
+     * @return The DNS search domain.
+     * 
+     */
     public Optional<Output<String>> domain() {
         return Optional.ofNullable(this.domain);
     }
 
+    /**
+     * The DNS server.
+     * 
+     */
     @Import(name="server")
     private @Nullable Output<String> server;
 
+    /**
+     * @return The DNS server.
+     * 
+     */
     public Optional<Output<String>> server() {
         return Optional.ofNullable(this.server);
     }
@@ -54,20 +70,44 @@ public final class VirtualMachineInitializationDnsArgs extends com.pulumi.resour
             $ = new VirtualMachineInitializationDnsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param domain The DNS search domain.
+         * 
+         * @return builder
+         * 
+         */
         public Builder domain(@Nullable Output<String> domain) {
             $.domain = domain;
             return this;
         }
 
+        /**
+         * @param domain The DNS search domain.
+         * 
+         * @return builder
+         * 
+         */
         public Builder domain(String domain) {
             return domain(Output.of(domain));
         }
 
+        /**
+         * @param server The DNS server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder server(@Nullable Output<String> server) {
             $.server = server;
             return this;
         }
 
+        /**
+         * @param server The DNS server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder server(String server) {
             return server(Output.of(server));
         }

@@ -13,16 +13,78 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// A security group is a collection of rules, defined at cluster level, which can
+// be used in all VMs' rules. For example, you can define a group named “webserver”
+// with rules to open the http and https ports. Rules can be created on the cluster
+// level, on VM / Container level.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/Network"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Network.NewFirewallRules(ctx, "inbound", &Network.FirewallRulesArgs{
+//				NodeName: pulumi.Any(proxmox_virtual_environment_vm.Example.Node_name),
+//				VmId:     pulumi.Any(proxmox_virtual_environment_vm.Example.Vm_id),
+//				Rules: network.FirewallRulesRuleArray{
+//					&network.FirewallRulesRuleArgs{
+//						Type:    pulumi.String("in"),
+//						Action:  pulumi.String("ACCEPT"),
+//						Comment: pulumi.String("Allow HTTP"),
+//						Dest:    pulumi.String("192.168.1.5"),
+//						Dport:   pulumi.String("80"),
+//						Proto:   pulumi.String("tcp"),
+//						Log:     pulumi.String("info"),
+//					},
+//					&network.FirewallRulesRuleArgs{
+//						Type:    pulumi.String("in"),
+//						Action:  pulumi.String("ACCEPT"),
+//						Comment: pulumi.String("Allow HTTPS"),
+//						Dest:    pulumi.String("192.168.1.5"),
+//						Dport:   pulumi.String("443"),
+//						Proto:   pulumi.String("tcp"),
+//						Log:     pulumi.String("info"),
+//					},
+//					&network.FirewallRulesRuleArgs{
+//						SecurityGroup: pulumi.Any(proxmox_virtual_environment_cluster_firewall_security_group.Example.Name),
+//						Comment:       pulumi.String("From security group"),
+//						Iface:         pulumi.String("net0"),
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				proxmox_virtual_environment_vm.Example,
+//				proxmox_virtual_environment_cluster_firewall_security_group.Example,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type FirewallRules struct {
 	pulumi.CustomResourceState
 
-	// The ID of the container to manage the firewall for.
+	// Container ID. Leave empty for cluster level
+	// rules.
 	ContainerId pulumi.IntPtrOutput `pulumi:"containerId"`
-	// The name of the node.
+	// Node name. Leave empty for cluster level rules.
 	NodeName pulumi.StringPtrOutput `pulumi:"nodeName"`
-	// List of rules
+	// Firewall rule block (multiple blocks supported).
+	// The provider supports two types of the `rule` blocks:
+	// - a rule definition block, which includes the following arguments:
 	Rules FirewallRulesRuleArrayOutput `pulumi:"rules"`
-	// The ID of the VM to manage the firewall for.
+	// VM ID. Leave empty for cluster level rules.
 	VmId pulumi.IntPtrOutput `pulumi:"vmId"`
 }
 
@@ -59,24 +121,30 @@ func GetFirewallRules(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FirewallRules resources.
 type firewallRulesState struct {
-	// The ID of the container to manage the firewall for.
+	// Container ID. Leave empty for cluster level
+	// rules.
 	ContainerId *int `pulumi:"containerId"`
-	// The name of the node.
+	// Node name. Leave empty for cluster level rules.
 	NodeName *string `pulumi:"nodeName"`
-	// List of rules
+	// Firewall rule block (multiple blocks supported).
+	// The provider supports two types of the `rule` blocks:
+	// - a rule definition block, which includes the following arguments:
 	Rules []FirewallRulesRule `pulumi:"rules"`
-	// The ID of the VM to manage the firewall for.
+	// VM ID. Leave empty for cluster level rules.
 	VmId *int `pulumi:"vmId"`
 }
 
 type FirewallRulesState struct {
-	// The ID of the container to manage the firewall for.
+	// Container ID. Leave empty for cluster level
+	// rules.
 	ContainerId pulumi.IntPtrInput
-	// The name of the node.
+	// Node name. Leave empty for cluster level rules.
 	NodeName pulumi.StringPtrInput
-	// List of rules
+	// Firewall rule block (multiple blocks supported).
+	// The provider supports two types of the `rule` blocks:
+	// - a rule definition block, which includes the following arguments:
 	Rules FirewallRulesRuleArrayInput
-	// The ID of the VM to manage the firewall for.
+	// VM ID. Leave empty for cluster level rules.
 	VmId pulumi.IntPtrInput
 }
 
@@ -85,25 +153,31 @@ func (FirewallRulesState) ElementType() reflect.Type {
 }
 
 type firewallRulesArgs struct {
-	// The ID of the container to manage the firewall for.
+	// Container ID. Leave empty for cluster level
+	// rules.
 	ContainerId *int `pulumi:"containerId"`
-	// The name of the node.
+	// Node name. Leave empty for cluster level rules.
 	NodeName *string `pulumi:"nodeName"`
-	// List of rules
+	// Firewall rule block (multiple blocks supported).
+	// The provider supports two types of the `rule` blocks:
+	// - a rule definition block, which includes the following arguments:
 	Rules []FirewallRulesRule `pulumi:"rules"`
-	// The ID of the VM to manage the firewall for.
+	// VM ID. Leave empty for cluster level rules.
 	VmId *int `pulumi:"vmId"`
 }
 
 // The set of arguments for constructing a FirewallRules resource.
 type FirewallRulesArgs struct {
-	// The ID of the container to manage the firewall for.
+	// Container ID. Leave empty for cluster level
+	// rules.
 	ContainerId pulumi.IntPtrInput
-	// The name of the node.
+	// Node name. Leave empty for cluster level rules.
 	NodeName pulumi.StringPtrInput
-	// List of rules
+	// Firewall rule block (multiple blocks supported).
+	// The provider supports two types of the `rule` blocks:
+	// - a rule definition block, which includes the following arguments:
 	Rules FirewallRulesRuleArrayInput
-	// The ID of the VM to manage the firewall for.
+	// VM ID. Leave empty for cluster level rules.
 	VmId pulumi.IntPtrInput
 }
 
@@ -218,22 +292,25 @@ func (o FirewallRulesOutput) ToOutput(ctx context.Context) pulumix.Output[*Firew
 	}
 }
 
-// The ID of the container to manage the firewall for.
+// Container ID. Leave empty for cluster level
+// rules.
 func (o FirewallRulesOutput) ContainerId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FirewallRules) pulumi.IntPtrOutput { return v.ContainerId }).(pulumi.IntPtrOutput)
 }
 
-// The name of the node.
+// Node name. Leave empty for cluster level rules.
 func (o FirewallRulesOutput) NodeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallRules) pulumi.StringPtrOutput { return v.NodeName }).(pulumi.StringPtrOutput)
 }
 
-// List of rules
+// Firewall rule block (multiple blocks supported).
+// The provider supports two types of the `rule` blocks:
+// - a rule definition block, which includes the following arguments:
 func (o FirewallRulesOutput) Rules() FirewallRulesRuleArrayOutput {
 	return o.ApplyT(func(v *FirewallRules) FirewallRulesRuleArrayOutput { return v.Rules }).(FirewallRulesRuleArrayOutput)
 }
 
-// The ID of the VM to manage the firewall for.
+// VM ID. Leave empty for cluster level rules.
 func (o FirewallRulesOutput) VmId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FirewallRules) pulumi.IntPtrOutput { return v.VmId }).(pulumi.IntPtrOutput)
 }

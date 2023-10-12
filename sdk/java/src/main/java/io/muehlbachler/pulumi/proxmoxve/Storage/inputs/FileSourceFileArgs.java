@@ -23,30 +23,64 @@ public final class FileSourceFileArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.changed);
     }
 
+    /**
+     * The SHA256 checksum of the source file.
+     * 
+     */
     @Import(name="checksum")
     private @Nullable Output<String> checksum;
 
+    /**
+     * @return The SHA256 checksum of the source file.
+     * 
+     */
     public Optional<Output<String>> checksum() {
         return Optional.ofNullable(this.checksum);
     }
 
+    /**
+     * The file name.
+     * 
+     */
     @Import(name="fileName")
     private @Nullable Output<String> fileName;
 
+    /**
+     * @return The file name.
+     * 
+     */
     public Optional<Output<String>> fileName() {
         return Optional.ofNullable(this.fileName);
     }
 
+    /**
+     * Whether to skip the TLS verification step for
+     * HTTPS sources (defaults to `false`).
+     * 
+     */
     @Import(name="insecure")
     private @Nullable Output<Boolean> insecure;
 
+    /**
+     * @return Whether to skip the TLS verification step for
+     * HTTPS sources (defaults to `false`).
+     * 
+     */
     public Optional<Output<Boolean>> insecure() {
         return Optional.ofNullable(this.insecure);
     }
 
+    /**
+     * A path to a local file or a URL.
+     * 
+     */
     @Import(name="path", required=true)
     private Output<String> path;
 
+    /**
+     * @return A path to a local file or a URL.
+     * 
+     */
     public Output<String> path() {
         return this.path;
     }
@@ -88,38 +122,88 @@ public final class FileSourceFileArgs extends com.pulumi.resources.ResourceArgs 
             return changed(Output.of(changed));
         }
 
+        /**
+         * @param checksum The SHA256 checksum of the source file.
+         * 
+         * @return builder
+         * 
+         */
         public Builder checksum(@Nullable Output<String> checksum) {
             $.checksum = checksum;
             return this;
         }
 
+        /**
+         * @param checksum The SHA256 checksum of the source file.
+         * 
+         * @return builder
+         * 
+         */
         public Builder checksum(String checksum) {
             return checksum(Output.of(checksum));
         }
 
+        /**
+         * @param fileName The file name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fileName(@Nullable Output<String> fileName) {
             $.fileName = fileName;
             return this;
         }
 
+        /**
+         * @param fileName The file name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fileName(String fileName) {
             return fileName(Output.of(fileName));
         }
 
+        /**
+         * @param insecure Whether to skip the TLS verification step for
+         * HTTPS sources (defaults to `false`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder insecure(@Nullable Output<Boolean> insecure) {
             $.insecure = insecure;
             return this;
         }
 
+        /**
+         * @param insecure Whether to skip the TLS verification step for
+         * HTTPS sources (defaults to `false`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder insecure(Boolean insecure) {
             return insecure(Output.of(insecure));
         }
 
+        /**
+         * @param path A path to a local file or a URL.
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(Output<String> path) {
             $.path = path;
             return this;
         }
 
+        /**
+         * @param path A path to a local file or a URL.
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(String path) {
             return path(Output.of(path));
         }

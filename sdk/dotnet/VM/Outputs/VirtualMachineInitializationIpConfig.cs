@@ -13,7 +13,13 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     [OutputType]
     public sealed class VirtualMachineInitializationIpConfig
     {
+        /// <summary>
+        /// The IPv4 configuration.
+        /// </summary>
         public readonly Outputs.VirtualMachineInitializationIpConfigIpv4? Ipv4;
+        /// <summary>
+        /// The IPv4 configuration.
+        /// </summary>
         public readonly Outputs.VirtualMachineInitializationIpConfigIpv6? Ipv6;
 
         [OutputConstructor]

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -41,24 +41,51 @@ class GroupAcl(dict):
                  path: str,
                  role_id: str,
                  propagate: Optional[bool] = None):
-        pulumi.set(__self__, "path", path)
-        pulumi.set(__self__, "role_id", role_id)
+        """
+        :param str path: The path.
+        :param str role_id: The role identifier.
+        :param bool propagate: Whether to propagate to child paths.
+        """
+        GroupAcl._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            path=path,
+            role_id=role_id,
+            propagate=propagate,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             path: str,
+             role_id: str,
+             propagate: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("path", path)
+        _setter("role_id", role_id)
         if propagate is not None:
-            pulumi.set(__self__, "propagate", propagate)
+            _setter("propagate", propagate)
 
     @property
     @pulumi.getter
     def path(self) -> str:
+        """
+        The path.
+        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter(name="roleId")
     def role_id(self) -> str:
+        """
+        The role identifier.
+        """
         return pulumi.get(self, "role_id")
 
     @property
     @pulumi.getter
     def propagate(self) -> Optional[bool]:
+        """
+        Whether to propagate to child paths.
+        """
         return pulumi.get(self, "propagate")
 
 
@@ -91,40 +118,79 @@ class PoolMember(dict):
                  node_name: Optional[str] = None,
                  type: Optional[str] = None,
                  vm_id: Optional[int] = None):
+        """
+        :param str datastore_id: The datastore identifier.
+        :param str id: The member identifier.
+        :param str node_name: The node name.
+        :param str type: The member type.
+        :param int vm_id: The virtual machine identifier.
+        """
+        PoolMember._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            datastore_id=datastore_id,
+            id=id,
+            node_name=node_name,
+            type=type,
+            vm_id=vm_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             datastore_id: Optional[str] = None,
+             id: Optional[str] = None,
+             node_name: Optional[str] = None,
+             type: Optional[str] = None,
+             vm_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if datastore_id is not None:
-            pulumi.set(__self__, "datastore_id", datastore_id)
+            _setter("datastore_id", datastore_id)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if node_name is not None:
-            pulumi.set(__self__, "node_name", node_name)
+            _setter("node_name", node_name)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if vm_id is not None:
-            pulumi.set(__self__, "vm_id", vm_id)
+            _setter("vm_id", vm_id)
 
     @property
     @pulumi.getter(name="datastoreId")
     def datastore_id(self) -> Optional[str]:
+        """
+        The datastore identifier.
+        """
         return pulumi.get(self, "datastore_id")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
+        """
+        The member identifier.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="nodeName")
     def node_name(self) -> Optional[str]:
+        """
+        The node name.
+        """
         return pulumi.get(self, "node_name")
 
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
+        """
+        The member type.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[int]:
+        """
+        The virtual machine identifier.
+        """
         return pulumi.get(self, "vm_id")
 
 
@@ -151,24 +217,51 @@ class UserAcl(dict):
                  path: str,
                  role_id: str,
                  propagate: Optional[bool] = None):
-        pulumi.set(__self__, "path", path)
-        pulumi.set(__self__, "role_id", role_id)
+        """
+        :param str path: The path.
+        :param str role_id: The role identifier.
+        :param bool propagate: Whether to propagate to child paths.
+        """
+        UserAcl._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            path=path,
+            role_id=role_id,
+            propagate=propagate,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             path: str,
+             role_id: str,
+             propagate: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("path", path)
+        _setter("role_id", role_id)
         if propagate is not None:
-            pulumi.set(__self__, "propagate", propagate)
+            _setter("propagate", propagate)
 
     @property
     @pulumi.getter
     def path(self) -> str:
+        """
+        The path.
+        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter(name="roleId")
     def role_id(self) -> str:
+        """
+        The role identifier.
+        """
         return pulumi.get(self, "role_id")
 
     @property
     @pulumi.getter
     def propagate(self) -> Optional[bool]:
+        """
+        Whether to propagate to child paths.
+        """
         return pulumi.get(self, "propagate")
 
 
@@ -178,23 +271,50 @@ class GetGroupAclResult(dict):
                  path: str,
                  propagate: bool,
                  role_id: str):
-        pulumi.set(__self__, "path", path)
-        pulumi.set(__self__, "propagate", propagate)
-        pulumi.set(__self__, "role_id", role_id)
+        """
+        :param str path: The path.
+        :param bool propagate: Whether to propagate to child paths.
+        :param str role_id: The role identifier.
+        """
+        GetGroupAclResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            path=path,
+            propagate=propagate,
+            role_id=role_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             path: str,
+             propagate: bool,
+             role_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("path", path)
+        _setter("propagate", propagate)
+        _setter("role_id", role_id)
 
     @property
     @pulumi.getter
     def path(self) -> str:
+        """
+        The path.
+        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter
     def propagate(self) -> bool:
+        """
+        Whether to propagate to child paths.
+        """
         return pulumi.get(self, "propagate")
 
     @property
     @pulumi.getter(name="roleId")
     def role_id(self) -> str:
+        """
+        The role identifier.
+        """
         return pulumi.get(self, "role_id")
 
 
@@ -206,35 +326,74 @@ class GetPoolMemberResult(dict):
                  node_name: str,
                  type: str,
                  vm_id: int):
-        pulumi.set(__self__, "datastore_id", datastore_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "node_name", node_name)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "vm_id", vm_id)
+        """
+        :param str datastore_id: The datastore identifier.
+        :param str id: The member identifier.
+        :param str node_name: The node name.
+        :param str type: The member type.
+        :param int vm_id: The virtual machine identifier.
+        """
+        GetPoolMemberResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            datastore_id=datastore_id,
+            id=id,
+            node_name=node_name,
+            type=type,
+            vm_id=vm_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             datastore_id: str,
+             id: str,
+             node_name: str,
+             type: str,
+             vm_id: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("datastore_id", datastore_id)
+        _setter("id", id)
+        _setter("node_name", node_name)
+        _setter("type", type)
+        _setter("vm_id", vm_id)
 
     @property
     @pulumi.getter(name="datastoreId")
     def datastore_id(self) -> str:
+        """
+        The datastore identifier.
+        """
         return pulumi.get(self, "datastore_id")
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The member identifier.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="nodeName")
     def node_name(self) -> str:
+        """
+        The node name.
+        """
         return pulumi.get(self, "node_name")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        The member type.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> int:
+        """
+        The virtual machine identifier.
+        """
         return pulumi.get(self, "vm_id")
 
 
@@ -244,23 +403,50 @@ class GetUserAclResult(dict):
                  path: str,
                  propagate: bool,
                  role_id: str):
-        pulumi.set(__self__, "path", path)
-        pulumi.set(__self__, "propagate", propagate)
-        pulumi.set(__self__, "role_id", role_id)
+        """
+        :param str path: The path.
+        :param bool propagate: Whether to propagate to child paths.
+        :param str role_id: The role identifier.
+        """
+        GetUserAclResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            path=path,
+            propagate=propagate,
+            role_id=role_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             path: str,
+             propagate: bool,
+             role_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("path", path)
+        _setter("propagate", propagate)
+        _setter("role_id", role_id)
 
     @property
     @pulumi.getter
     def path(self) -> str:
+        """
+        The path.
+        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter
     def propagate(self) -> bool:
+        """
+        Whether to propagate to child paths.
+        """
         return pulumi.get(self, "propagate")
 
     @property
     @pulumi.getter(name="roleId")
     def role_id(self) -> str:
+        """
+        The role identifier.
+        """
         return pulumi.get(self, "role_id")
 
 

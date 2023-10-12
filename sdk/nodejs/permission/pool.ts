@@ -6,6 +6,29 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Manages a resource pool.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const operationsPool = new proxmoxve.permission.Pool("operationsPool", {
+ *     comment: "Managed by Terraform",
+ *     poolId: "operations-pool",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Instances can be imported using the `pool_id`, e.g., bash
+ *
+ * ```sh
+ *  $ pulumi import proxmoxve:Permission/pool:Pool operations_pool operations-pool
+ * ```
+ */
 export class Pool extends pulumi.CustomResource {
     /**
      * Get an existing Pool resource's state with the given name, ID, and optional extra
@@ -35,15 +58,15 @@ export class Pool extends pulumi.CustomResource {
     }
 
     /**
-     * The pool comment
+     * The pool comment.
      */
     public readonly comment!: pulumi.Output<string | undefined>;
     /**
-     * The pool members
+     * The pool members.
      */
     public /*out*/ readonly members!: pulumi.Output<outputs.Permission.PoolMember[]>;
     /**
-     * The pool id
+     * The pool identifier.
      */
     public readonly poolId!: pulumi.Output<string>;
 
@@ -82,15 +105,15 @@ export class Pool extends pulumi.CustomResource {
  */
 export interface PoolState {
     /**
-     * The pool comment
+     * The pool comment.
      */
     comment?: pulumi.Input<string>;
     /**
-     * The pool members
+     * The pool members.
      */
     members?: pulumi.Input<pulumi.Input<inputs.Permission.PoolMember>[]>;
     /**
-     * The pool id
+     * The pool identifier.
      */
     poolId?: pulumi.Input<string>;
 }
@@ -100,11 +123,11 @@ export interface PoolState {
  */
 export interface PoolArgs {
     /**
-     * The pool comment
+     * The pool comment.
      */
     comment?: pulumi.Input<string>;
     /**
-     * The pool id
+     * The pool identifier.
      */
     poolId: pulumi.Input<string>;
 }

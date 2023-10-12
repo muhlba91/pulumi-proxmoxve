@@ -6,6 +6,17 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Manages a container.
+ *
+ * ## Import
+ *
+ * Instances can be imported using the `node_name` and the `vm_id`, e.g., bash
+ *
+ * ```sh
+ *  $ pulumi import proxmoxve:CT/container:Container ubuntu_container first-node/1234
+ * ```
+ */
 export class Container extends pulumi.CustomResource {
     /**
      * Get an existing Container resource's state with the given name, ID, and optional extra
@@ -35,35 +46,35 @@ export class Container extends pulumi.CustomResource {
     }
 
     /**
-     * The cloning configuration
+     * The cloning configuration.
      */
     public readonly clone!: pulumi.Output<outputs.CT.ContainerClone | undefined>;
     /**
-     * The console configuration
+     * Console.
      */
     public readonly console!: pulumi.Output<outputs.CT.ContainerConsole | undefined>;
     /**
-     * The CPU allocation
+     * The CPU configuration.
      */
     public readonly cpu!: pulumi.Output<outputs.CT.ContainerCpu | undefined>;
     /**
-     * The description
+     * The description.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The disks
+     * The disk configuration.
      */
     public readonly disk!: pulumi.Output<outputs.CT.ContainerDisk | undefined>;
     /**
-     * Features
+     * The container features
      */
     public readonly features!: pulumi.Output<outputs.CT.ContainerFeatures | undefined>;
     /**
-     * The initialization configuration
+     * The initialization configuration.
      */
     public readonly initialization!: pulumi.Output<outputs.CT.ContainerInitialization | undefined>;
     /**
-     * The memory allocation
+     * The memory configuration.
      */
     public readonly memory!: pulumi.Output<outputs.CT.ContainerMemory | undefined>;
     /**
@@ -71,39 +82,49 @@ export class Container extends pulumi.CustomResource {
      */
     public readonly mountPoints!: pulumi.Output<outputs.CT.ContainerMountPoint[] | undefined>;
     /**
-     * The network interfaces
+     * A network interface (multiple blocks
+     * supported).
      */
     public readonly networkInterfaces!: pulumi.Output<outputs.CT.ContainerNetworkInterface[] | undefined>;
     /**
-     * The node name
+     * The name of the node to assign the container to.
      */
     public readonly nodeName!: pulumi.Output<string>;
     /**
-     * The operating system configuration
+     * The Operating System configuration.
      */
     public readonly operatingSystem!: pulumi.Output<outputs.CT.ContainerOperatingSystem | undefined>;
     /**
-     * The ID of the pool to assign the container to
+     * The identifier for a pool to assign the container to.
      */
     public readonly poolId!: pulumi.Output<string | undefined>;
     /**
-     * Whether to start the container
+     * Automatically start container when the host system boots (defaults to `true`).
+     */
+    public readonly startOnBoot!: pulumi.Output<boolean | undefined>;
+    /**
+     * Whether to start the container (defaults to `true`).
      */
     public readonly started!: pulumi.Output<boolean | undefined>;
     /**
-     * Tags of the container. This is only meta information.
+     * A list of tags the container tags. This is only meta
+     * information (defaults to `[]`). Note: Proxmox always sorts the container tags.
+     * If the list in template is not sorted, then Proxmox will always report a
+     * difference on the resource. You may use the `ignoreChanges` lifecycle
+     * meta-argument to ignore changes to this attribute.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * Whether to create a template
+     * Whether to create a template (defaults to `false`).
      */
     public readonly template!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether the container runs as unprivileged on the host
+     * Whether the container runs as unprivileged on
+     * the host (defaults to `false`).
      */
     public readonly unprivileged!: pulumi.Output<boolean | undefined>;
     /**
-     * The VM identifier
+     * The container identifier
      */
     public readonly vmId!: pulumi.Output<number | undefined>;
 
@@ -133,6 +154,7 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["nodeName"] = state ? state.nodeName : undefined;
             resourceInputs["operatingSystem"] = state ? state.operatingSystem : undefined;
             resourceInputs["poolId"] = state ? state.poolId : undefined;
+            resourceInputs["startOnBoot"] = state ? state.startOnBoot : undefined;
             resourceInputs["started"] = state ? state.started : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["template"] = state ? state.template : undefined;
@@ -156,6 +178,7 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["nodeName"] = args ? args.nodeName : undefined;
             resourceInputs["operatingSystem"] = args ? args.operatingSystem : undefined;
             resourceInputs["poolId"] = args ? args.poolId : undefined;
+            resourceInputs["startOnBoot"] = args ? args.startOnBoot : undefined;
             resourceInputs["started"] = args ? args.started : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["template"] = args ? args.template : undefined;
@@ -172,35 +195,35 @@ export class Container extends pulumi.CustomResource {
  */
 export interface ContainerState {
     /**
-     * The cloning configuration
+     * The cloning configuration.
      */
     clone?: pulumi.Input<inputs.CT.ContainerClone>;
     /**
-     * The console configuration
+     * Console.
      */
     console?: pulumi.Input<inputs.CT.ContainerConsole>;
     /**
-     * The CPU allocation
+     * The CPU configuration.
      */
     cpu?: pulumi.Input<inputs.CT.ContainerCpu>;
     /**
-     * The description
+     * The description.
      */
     description?: pulumi.Input<string>;
     /**
-     * The disks
+     * The disk configuration.
      */
     disk?: pulumi.Input<inputs.CT.ContainerDisk>;
     /**
-     * Features
+     * The container features
      */
     features?: pulumi.Input<inputs.CT.ContainerFeatures>;
     /**
-     * The initialization configuration
+     * The initialization configuration.
      */
     initialization?: pulumi.Input<inputs.CT.ContainerInitialization>;
     /**
-     * The memory allocation
+     * The memory configuration.
      */
     memory?: pulumi.Input<inputs.CT.ContainerMemory>;
     /**
@@ -208,39 +231,49 @@ export interface ContainerState {
      */
     mountPoints?: pulumi.Input<pulumi.Input<inputs.CT.ContainerMountPoint>[]>;
     /**
-     * The network interfaces
+     * A network interface (multiple blocks
+     * supported).
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.CT.ContainerNetworkInterface>[]>;
     /**
-     * The node name
+     * The name of the node to assign the container to.
      */
     nodeName?: pulumi.Input<string>;
     /**
-     * The operating system configuration
+     * The Operating System configuration.
      */
     operatingSystem?: pulumi.Input<inputs.CT.ContainerOperatingSystem>;
     /**
-     * The ID of the pool to assign the container to
+     * The identifier for a pool to assign the container to.
      */
     poolId?: pulumi.Input<string>;
     /**
-     * Whether to start the container
+     * Automatically start container when the host system boots (defaults to `true`).
+     */
+    startOnBoot?: pulumi.Input<boolean>;
+    /**
+     * Whether to start the container (defaults to `true`).
      */
     started?: pulumi.Input<boolean>;
     /**
-     * Tags of the container. This is only meta information.
+     * A list of tags the container tags. This is only meta
+     * information (defaults to `[]`). Note: Proxmox always sorts the container tags.
+     * If the list in template is not sorted, then Proxmox will always report a
+     * difference on the resource. You may use the `ignoreChanges` lifecycle
+     * meta-argument to ignore changes to this attribute.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Whether to create a template
+     * Whether to create a template (defaults to `false`).
      */
     template?: pulumi.Input<boolean>;
     /**
-     * Whether the container runs as unprivileged on the host
+     * Whether the container runs as unprivileged on
+     * the host (defaults to `false`).
      */
     unprivileged?: pulumi.Input<boolean>;
     /**
-     * The VM identifier
+     * The container identifier
      */
     vmId?: pulumi.Input<number>;
 }
@@ -250,35 +283,35 @@ export interface ContainerState {
  */
 export interface ContainerArgs {
     /**
-     * The cloning configuration
+     * The cloning configuration.
      */
     clone?: pulumi.Input<inputs.CT.ContainerClone>;
     /**
-     * The console configuration
+     * Console.
      */
     console?: pulumi.Input<inputs.CT.ContainerConsole>;
     /**
-     * The CPU allocation
+     * The CPU configuration.
      */
     cpu?: pulumi.Input<inputs.CT.ContainerCpu>;
     /**
-     * The description
+     * The description.
      */
     description?: pulumi.Input<string>;
     /**
-     * The disks
+     * The disk configuration.
      */
     disk?: pulumi.Input<inputs.CT.ContainerDisk>;
     /**
-     * Features
+     * The container features
      */
     features?: pulumi.Input<inputs.CT.ContainerFeatures>;
     /**
-     * The initialization configuration
+     * The initialization configuration.
      */
     initialization?: pulumi.Input<inputs.CT.ContainerInitialization>;
     /**
-     * The memory allocation
+     * The memory configuration.
      */
     memory?: pulumi.Input<inputs.CT.ContainerMemory>;
     /**
@@ -286,39 +319,49 @@ export interface ContainerArgs {
      */
     mountPoints?: pulumi.Input<pulumi.Input<inputs.CT.ContainerMountPoint>[]>;
     /**
-     * The network interfaces
+     * A network interface (multiple blocks
+     * supported).
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.CT.ContainerNetworkInterface>[]>;
     /**
-     * The node name
+     * The name of the node to assign the container to.
      */
     nodeName: pulumi.Input<string>;
     /**
-     * The operating system configuration
+     * The Operating System configuration.
      */
     operatingSystem?: pulumi.Input<inputs.CT.ContainerOperatingSystem>;
     /**
-     * The ID of the pool to assign the container to
+     * The identifier for a pool to assign the container to.
      */
     poolId?: pulumi.Input<string>;
     /**
-     * Whether to start the container
+     * Automatically start container when the host system boots (defaults to `true`).
+     */
+    startOnBoot?: pulumi.Input<boolean>;
+    /**
+     * Whether to start the container (defaults to `true`).
      */
     started?: pulumi.Input<boolean>;
     /**
-     * Tags of the container. This is only meta information.
+     * A list of tags the container tags. This is only meta
+     * information (defaults to `[]`). Note: Proxmox always sorts the container tags.
+     * If the list in template is not sorted, then Proxmox will always report a
+     * difference on the resource. You may use the `ignoreChanges` lifecycle
+     * meta-argument to ignore changes to this attribute.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Whether to create a template
+     * Whether to create a template (defaults to `false`).
      */
     template?: pulumi.Input<boolean>;
     /**
-     * Whether the container runs as unprivileged on the host
+     * Whether the container runs as unprivileged on
+     * the host (defaults to `false`).
      */
     unprivileged?: pulumi.Input<boolean>;
     /**
-     * The VM identifier
+     * The container identifier
      */
     vmId?: pulumi.Input<number>;
 }

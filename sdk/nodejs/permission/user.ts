@@ -6,6 +6,39 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Manages a user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const operationsMonitoring = new proxmoxve.permission.Role("operationsMonitoring", {
+ *     roleId: "operations-monitoring",
+ *     privileges: ["VM.Monitor"],
+ * });
+ * const operationsAutomation = new proxmoxve.permission.User("operationsAutomation", {
+ *     acls: [{
+ *         path: "/vms/1234",
+ *         propagate: true,
+ *         roleId: operationsMonitoring.roleId,
+ *     }],
+ *     comment: "Managed by Terraform",
+ *     password: "a-strong-password",
+ *     userId: "operations-automation@pve",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Instances can be imported using the `user_id`, e.g., bash
+ *
+ * ```sh
+ *  $ pulumi import proxmoxve:Permission/user:User operations_automation operations-automation@pve
+ * ```
+ */
 export class User extends pulumi.CustomResource {
     /**
      * Get an existing User resource's state with the given name, ID, and optional extra
@@ -35,47 +68,47 @@ export class User extends pulumi.CustomResource {
     }
 
     /**
-     * The access control list
+     * The access control list (multiple blocks supported).
      */
     public readonly acls!: pulumi.Output<outputs.Permission.UserAcl[] | undefined>;
     /**
-     * The user comment
+     * The user comment.
      */
     public readonly comment!: pulumi.Output<string | undefined>;
     /**
-     * The user's email address
+     * The user's email address.
      */
     public readonly email!: pulumi.Output<string | undefined>;
     /**
-     * Whether the user account is enabled
+     * Whether the user account is enabled.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
-     * The user account's expiration date
+     * The user account's expiration date (RFC 3339).
      */
     public readonly expirationDate!: pulumi.Output<string | undefined>;
     /**
-     * The user's first name
+     * The user's first name.
      */
     public readonly firstName!: pulumi.Output<string | undefined>;
     /**
-     * The user's groups
+     * The user's groups.
      */
     public readonly groups!: pulumi.Output<string[] | undefined>;
     /**
-     * The user's keys
+     * The user's keys.
      */
     public readonly keys!: pulumi.Output<string | undefined>;
     /**
-     * The user's last name
+     * The user's last name.
      */
     public readonly lastName!: pulumi.Output<string | undefined>;
     /**
-     * The user's password
+     * The user's password. Required for PVE or PAM realms.
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
-     * The user id
+     * The user identifier.
      */
     public readonly userId!: pulumi.Output<string>;
 
@@ -130,47 +163,47 @@ export class User extends pulumi.CustomResource {
  */
 export interface UserState {
     /**
-     * The access control list
+     * The access control list (multiple blocks supported).
      */
     acls?: pulumi.Input<pulumi.Input<inputs.Permission.UserAcl>[]>;
     /**
-     * The user comment
+     * The user comment.
      */
     comment?: pulumi.Input<string>;
     /**
-     * The user's email address
+     * The user's email address.
      */
     email?: pulumi.Input<string>;
     /**
-     * Whether the user account is enabled
+     * Whether the user account is enabled.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * The user account's expiration date
+     * The user account's expiration date (RFC 3339).
      */
     expirationDate?: pulumi.Input<string>;
     /**
-     * The user's first name
+     * The user's first name.
      */
     firstName?: pulumi.Input<string>;
     /**
-     * The user's groups
+     * The user's groups.
      */
     groups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The user's keys
+     * The user's keys.
      */
     keys?: pulumi.Input<string>;
     /**
-     * The user's last name
+     * The user's last name.
      */
     lastName?: pulumi.Input<string>;
     /**
-     * The user's password
+     * The user's password. Required for PVE or PAM realms.
      */
     password?: pulumi.Input<string>;
     /**
-     * The user id
+     * The user identifier.
      */
     userId?: pulumi.Input<string>;
 }
@@ -180,47 +213,47 @@ export interface UserState {
  */
 export interface UserArgs {
     /**
-     * The access control list
+     * The access control list (multiple blocks supported).
      */
     acls?: pulumi.Input<pulumi.Input<inputs.Permission.UserAcl>[]>;
     /**
-     * The user comment
+     * The user comment.
      */
     comment?: pulumi.Input<string>;
     /**
-     * The user's email address
+     * The user's email address.
      */
     email?: pulumi.Input<string>;
     /**
-     * Whether the user account is enabled
+     * Whether the user account is enabled.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * The user account's expiration date
+     * The user account's expiration date (RFC 3339).
      */
     expirationDate?: pulumi.Input<string>;
     /**
-     * The user's first name
+     * The user's first name.
      */
     firstName?: pulumi.Input<string>;
     /**
-     * The user's groups
+     * The user's groups.
      */
     groups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The user's keys
+     * The user's keys.
      */
     keys?: pulumi.Input<string>;
     /**
-     * The user's last name
+     * The user's last name.
      */
     lastName?: pulumi.Input<string>;
     /**
-     * The user's password
+     * The user's password. Required for PVE or PAM realms.
      */
     password?: pulumi.Input<string>;
     /**
-     * The user id
+     * The user identifier.
      */
     userId: pulumi.Input<string>;
 }

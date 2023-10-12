@@ -15,9 +15,19 @@ public final class VirtualMachineSerialDeviceArgs extends com.pulumi.resources.R
 
     public static final VirtualMachineSerialDeviceArgs Empty = new VirtualMachineSerialDeviceArgs();
 
+    /**
+     * The device (defaults to `socket`).
+     * - `/dev/*` - A host serial device.
+     * 
+     */
     @Import(name="device")
     private @Nullable Output<String> device;
 
+    /**
+     * @return The device (defaults to `socket`).
+     * - `/dev/*` - A host serial device.
+     * 
+     */
     public Optional<Output<String>> device() {
         return Optional.ofNullable(this.device);
     }
@@ -46,11 +56,25 @@ public final class VirtualMachineSerialDeviceArgs extends com.pulumi.resources.R
             $ = new VirtualMachineSerialDeviceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param device The device (defaults to `socket`).
+         * - `/dev/*` - A host serial device.
+         * 
+         * @return builder
+         * 
+         */
         public Builder device(@Nullable Output<String> device) {
             $.device = device;
             return this;
         }
 
+        /**
+         * @param device The device (defaults to `socket`).
+         * - `/dev/*` - A host serial device.
+         * 
+         * @return builder
+         * 
+         */
         public Builder device(String device) {
             return device(Output.of(device));
         }

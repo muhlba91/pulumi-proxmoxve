@@ -18,157 +18,188 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Manages a file.
+ * 
+ * ## Important Notes
+ * 
+ * The Proxmox VE API endpoint for file uploads does not support chunked transfer
+ * encoding, which means that we must first store the source file as a temporary
+ * file locally before uploading it.
+ * 
+ * You must ensure that you have at least `Size-in-MB * 2 + 1` MB of storage space
+ * available (twice the size plus overhead because a multipart payload needs to be
+ * created as another temporary file).
+ * 
+ * By default, if the specified file already exists, the resource will
+ * unconditionally replace it and take ownership of the resource. On destruction,
+ * the file will be deleted as if it did not exist before. If you want to prevent
+ * the resource from replacing the file, set `overwrite` to `false`.
+ * 
+ * ## Import
+ * 
+ * Instances can be imported using the `node_name`, `datastore_id`, `content_type` and the `file_name` in the following format&lt;node_name&gt;:&lt;datastore_id&gt;/&lt;content_type&gt;/&lt;file_name&gt; Examplebash
+ * 
+ * ```sh
+ *  $ pulumi import proxmoxve:Storage/file:File cloud_config pve/local:snippets/example.cloud-config.yaml
+ * ```
+ * 
+ */
 @ResourceType(type="proxmoxve:Storage/file:File")
 public class File extends com.pulumi.resources.CustomResource {
     /**
-     * The content type
+     * The content type.
      * 
      */
     @Export(name="contentType", refs={String.class}, tree="[0]")
     private Output<String> contentType;
 
     /**
-     * @return The content type
+     * @return The content type.
      * 
      */
     public Output<String> contentType() {
         return this.contentType;
     }
     /**
-     * The datastore id
+     * The datastore id.
      * 
      */
     @Export(name="datastoreId", refs={String.class}, tree="[0]")
     private Output<String> datastoreId;
 
     /**
-     * @return The datastore id
+     * @return The datastore id.
      * 
      */
     public Output<String> datastoreId() {
         return this.datastoreId;
     }
     /**
-     * The file modification date
+     * The file modification date (RFC 3339).
      * 
      */
     @Export(name="fileModificationDate", refs={String.class}, tree="[0]")
     private Output<String> fileModificationDate;
 
     /**
-     * @return The file modification date
+     * @return The file modification date (RFC 3339).
      * 
      */
     public Output<String> fileModificationDate() {
         return this.fileModificationDate;
     }
     /**
-     * The file name
+     * The file name.
      * 
      */
     @Export(name="fileName", refs={String.class}, tree="[0]")
     private Output<String> fileName;
 
     /**
-     * @return The file name
+     * @return The file name.
      * 
      */
     public Output<String> fileName() {
         return this.fileName;
     }
     /**
-     * The file size in bytes
+     * The file size in bytes.
      * 
      */
     @Export(name="fileSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> fileSize;
 
     /**
-     * @return The file size in bytes
+     * @return The file size in bytes.
      * 
      */
     public Output<Integer> fileSize() {
         return this.fileSize;
     }
     /**
-     * The file tag
+     * The file tag.
      * 
      */
     @Export(name="fileTag", refs={String.class}, tree="[0]")
     private Output<String> fileTag;
 
     /**
-     * @return The file tag
+     * @return The file tag.
      * 
      */
     public Output<String> fileTag() {
         return this.fileTag;
     }
     /**
-     * The node name
+     * The node name.
      * 
      */
     @Export(name="nodeName", refs={String.class}, tree="[0]")
     private Output<String> nodeName;
 
     /**
-     * @return The node name
+     * @return The node name.
      * 
      */
     public Output<String> nodeName() {
         return this.nodeName;
     }
     /**
-     * Whether to overwrite the file if it already exists
+     * Whether to overwrite an existing file (defaults to
+     * `true`).
      * 
      */
     @Export(name="overwrite", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> overwrite;
 
     /**
-     * @return Whether to overwrite the file if it already exists
+     * @return Whether to overwrite an existing file (defaults to
+     * `true`).
      * 
      */
     public Output<Optional<Boolean>> overwrite() {
         return Codegen.optional(this.overwrite);
     }
     /**
-     * The source file
+     * The source file (conflicts with `source_raw`).
      * 
      */
     @Export(name="sourceFile", refs={FileSourceFile.class}, tree="[0]")
     private Output</* @Nullable */ FileSourceFile> sourceFile;
 
     /**
-     * @return The source file
+     * @return The source file (conflicts with `source_raw`).
      * 
      */
     public Output<Optional<FileSourceFile>> sourceFile() {
         return Codegen.optional(this.sourceFile);
     }
     /**
-     * The raw source
+     * The raw source (conflicts with `source_file`).
      * 
      */
     @Export(name="sourceRaw", refs={FileSourceRaw.class}, tree="[0]")
     private Output</* @Nullable */ FileSourceRaw> sourceRaw;
 
     /**
-     * @return The raw source
+     * @return The raw source (conflicts with `source_file`).
      * 
      */
     public Output<Optional<FileSourceRaw>> sourceRaw() {
         return Codegen.optional(this.sourceRaw);
     }
     /**
-     * Timeout for uploading ISO/VSTMPL files in seconds
+     * Timeout for uploading ISO/VSTMPL files in
+     * seconds (defaults to 1800).
      * 
      */
     @Export(name="timeoutUpload", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeoutUpload;
 
     /**
-     * @return Timeout for uploading ISO/VSTMPL files in seconds
+     * @return Timeout for uploading ISO/VSTMPL files in
+     * seconds (defaults to 1800).
      * 
      */
     public Output<Optional<Integer>> timeoutUpload() {

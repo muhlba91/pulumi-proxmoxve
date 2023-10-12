@@ -15,16 +15,32 @@ public final class ContainerOperatingSystemArgs extends com.pulumi.resources.Res
 
     public static final ContainerOperatingSystemArgs Empty = new ContainerOperatingSystemArgs();
 
+    /**
+     * The identifier for an OS template file.
+     * 
+     */
     @Import(name="templateFileId", required=true)
     private Output<String> templateFileId;
 
+    /**
+     * @return The identifier for an OS template file.
+     * 
+     */
     public Output<String> templateFileId() {
         return this.templateFileId;
     }
 
+    /**
+     * The type (defaults to `unmanaged`).
+     * 
+     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
+    /**
+     * @return The type (defaults to `unmanaged`).
+     * 
+     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -54,20 +70,44 @@ public final class ContainerOperatingSystemArgs extends com.pulumi.resources.Res
             $ = new ContainerOperatingSystemArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param templateFileId The identifier for an OS template file.
+         * 
+         * @return builder
+         * 
+         */
         public Builder templateFileId(Output<String> templateFileId) {
             $.templateFileId = templateFileId;
             return this;
         }
 
+        /**
+         * @param templateFileId The identifier for an OS template file.
+         * 
+         * @return builder
+         * 
+         */
         public Builder templateFileId(String templateFileId) {
             return templateFileId(Output.of(templateFileId));
         }
 
+        /**
+         * @param type The type (defaults to `unmanaged`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type The type (defaults to `unmanaged`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

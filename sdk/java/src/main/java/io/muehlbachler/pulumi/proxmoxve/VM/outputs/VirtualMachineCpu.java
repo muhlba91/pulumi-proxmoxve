@@ -14,37 +14,147 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VirtualMachineCpu {
+    /**
+     * @return The CPU architecture (defaults to `x86_64`).
+     * 
+     */
     private @Nullable String architecture;
+    /**
+     * @return The number of CPU cores (defaults to `1`).
+     * 
+     */
     private @Nullable Integer cores;
+    /**
+     * @return The CPU flags.
+     * - `+aes`/`-aes` - Activate AES instruction set for HW acceleration.
+     * - `+amd-no-ssb`/`-amd-no-ssb` - Notifies guest OS that host is not
+     *   vulnerable for Spectre on AMD CPUs.
+     * - `+amd-ssbd`/`-amd-ssbd` - Improves Spectre mitigation performance with
+     *   AMD CPUs, best used with &#34;virt-ssbd&#34;.
+     * - `+hv-evmcs`/`-hv-evmcs` - Improve performance for nested
+     *   virtualization (only supported on Intel CPUs).
+     * - `+hv-tlbflush`/`-hv-tlbflush` - Improve performance in overcommitted
+     *   Windows guests (may lead to guest BSOD on old CPUs).
+     * - `+ibpb`/`-ibpb` - Allows improved Spectre mitigation on AMD CPUs.
+     * - `+md-clear`/`-md-clear` - Required to let the guest OS know if MDS is
+     *   mitigated correctly.
+     * - `+pcid`/`-pcid` - Meltdown fix cost reduction on Westmere, Sandy- and
+     *   Ivy Bridge Intel CPUs.
+     * - `+pdpe1gb`/`-pdpe1gb` - Allows guest OS to use 1 GB size pages, if
+     *   host HW supports it.
+     * - `+spec-ctrl`/`-spec-ctrl` - Allows improved Spectre mitigation with
+     *   Intel CPUs.
+     * - `+ssbd`/`-ssbd` - Protection for &#34;Speculative Store Bypass&#34; for Intel
+     *   models.
+     * - `+virt-ssbd`/`-virt-ssbd` - Basis for &#34;Speculative Store Bypass&#34;
+     *   protection for AMD models.
+     * 
+     */
     private @Nullable List<String> flags;
+    /**
+     * @return The number of hotplugged vCPUs (defaults
+     * to `0`).
+     * 
+     */
     private @Nullable Integer hotplugged;
+    /**
+     * @return Enable/disable NUMA. (default to `false`)
+     * 
+     */
     private @Nullable Boolean numa;
+    /**
+     * @return The number of CPU sockets (defaults to `1`).
+     * 
+     */
     private @Nullable Integer sockets;
+    /**
+     * @return The VGA type (defaults to `std`).
+     * 
+     */
     private @Nullable String type;
+    /**
+     * @return The CPU units (defaults to `1024`).
+     * 
+     */
     private @Nullable Integer units;
 
     private VirtualMachineCpu() {}
+    /**
+     * @return The CPU architecture (defaults to `x86_64`).
+     * 
+     */
     public Optional<String> architecture() {
         return Optional.ofNullable(this.architecture);
     }
+    /**
+     * @return The number of CPU cores (defaults to `1`).
+     * 
+     */
     public Optional<Integer> cores() {
         return Optional.ofNullable(this.cores);
     }
+    /**
+     * @return The CPU flags.
+     * - `+aes`/`-aes` - Activate AES instruction set for HW acceleration.
+     * - `+amd-no-ssb`/`-amd-no-ssb` - Notifies guest OS that host is not
+     *   vulnerable for Spectre on AMD CPUs.
+     * - `+amd-ssbd`/`-amd-ssbd` - Improves Spectre mitigation performance with
+     *   AMD CPUs, best used with &#34;virt-ssbd&#34;.
+     * - `+hv-evmcs`/`-hv-evmcs` - Improve performance for nested
+     *   virtualization (only supported on Intel CPUs).
+     * - `+hv-tlbflush`/`-hv-tlbflush` - Improve performance in overcommitted
+     *   Windows guests (may lead to guest BSOD on old CPUs).
+     * - `+ibpb`/`-ibpb` - Allows improved Spectre mitigation on AMD CPUs.
+     * - `+md-clear`/`-md-clear` - Required to let the guest OS know if MDS is
+     *   mitigated correctly.
+     * - `+pcid`/`-pcid` - Meltdown fix cost reduction on Westmere, Sandy- and
+     *   Ivy Bridge Intel CPUs.
+     * - `+pdpe1gb`/`-pdpe1gb` - Allows guest OS to use 1 GB size pages, if
+     *   host HW supports it.
+     * - `+spec-ctrl`/`-spec-ctrl` - Allows improved Spectre mitigation with
+     *   Intel CPUs.
+     * - `+ssbd`/`-ssbd` - Protection for &#34;Speculative Store Bypass&#34; for Intel
+     *   models.
+     * - `+virt-ssbd`/`-virt-ssbd` - Basis for &#34;Speculative Store Bypass&#34;
+     *   protection for AMD models.
+     * 
+     */
     public List<String> flags() {
         return this.flags == null ? List.of() : this.flags;
     }
+    /**
+     * @return The number of hotplugged vCPUs (defaults
+     * to `0`).
+     * 
+     */
     public Optional<Integer> hotplugged() {
         return Optional.ofNullable(this.hotplugged);
     }
+    /**
+     * @return Enable/disable NUMA. (default to `false`)
+     * 
+     */
     public Optional<Boolean> numa() {
         return Optional.ofNullable(this.numa);
     }
+    /**
+     * @return The number of CPU sockets (defaults to `1`).
+     * 
+     */
     public Optional<Integer> sockets() {
         return Optional.ofNullable(this.sockets);
     }
+    /**
+     * @return The VGA type (defaults to `std`).
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
+    /**
+     * @return The CPU units (defaults to `1024`).
+     * 
+     */
     public Optional<Integer> units() {
         return Optional.ofNullable(this.units);
     }

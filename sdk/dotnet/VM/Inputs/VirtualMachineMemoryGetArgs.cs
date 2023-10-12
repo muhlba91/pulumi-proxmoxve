@@ -12,12 +12,23 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
 
     public sealed class VirtualMachineMemoryGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The dedicated memory in megabytes (defaults
+        /// to `512`).
+        /// </summary>
         [Input("dedicated")]
         public Input<int>? Dedicated { get; set; }
 
+        /// <summary>
+        /// The floating memory in megabytes (defaults
+        /// to `0`).
+        /// </summary>
         [Input("floating")]
         public Input<int>? Floating { get; set; }
 
+        /// <summary>
+        /// The shared memory in megabytes (defaults to `0`).
+        /// </summary>
         [Input("shared")]
         public Input<int>? Shared { get; set; }
 

@@ -6,6 +6,21 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Manages the host entries on a specific node.
+ *
+ * ## Important Notes
+ *
+ * Be careful not to use this resource multiple times for the same node.
+ *
+ * ## Import
+ *
+ * Instances can be imported using the `node_name`, e.g., bash
+ *
+ * ```sh
+ *  $ pulumi import proxmoxve:index/hosts:Hosts first_node_host_entries first-node
+ * ```
+ */
 export class Hosts extends pulumi.CustomResource {
     /**
      * Get an existing Hosts resource's state with the given name, ID, and optional extra
@@ -35,27 +50,28 @@ export class Hosts extends pulumi.CustomResource {
     }
 
     /**
-     * The addresses
+     * The IP addresses.
      */
     public /*out*/ readonly addresses!: pulumi.Output<string[]>;
     /**
-     * The SHA1 digest
+     * The SHA1 digest.
      */
     public /*out*/ readonly digest!: pulumi.Output<string>;
     /**
-     * The host entries
+     * The host entries (conversion of `addresses` and `hostnames` into
+     * objects).
      */
     public /*out*/ readonly entries!: pulumi.Output<outputs.HostsEntry[]>;
     /**
-     * The host entries
+     * A host entry (multiple blocks supported).
      */
     public readonly entry!: pulumi.Output<outputs.HostsEntry[]>;
     /**
-     * The hostnames
+     * The hostnames.
      */
     public /*out*/ readonly hostnames!: pulumi.Output<string[][]>;
     /**
-     * The node name
+     * A node name.
      */
     public readonly nodeName!: pulumi.Output<string>;
 
@@ -103,27 +119,28 @@ export class Hosts extends pulumi.CustomResource {
  */
 export interface HostsState {
     /**
-     * The addresses
+     * The IP addresses.
      */
     addresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The SHA1 digest
+     * The SHA1 digest.
      */
     digest?: pulumi.Input<string>;
     /**
-     * The host entries
+     * The host entries (conversion of `addresses` and `hostnames` into
+     * objects).
      */
     entries?: pulumi.Input<pulumi.Input<inputs.HostsEntry>[]>;
     /**
-     * The host entries
+     * A host entry (multiple blocks supported).
      */
     entry?: pulumi.Input<pulumi.Input<inputs.HostsEntry>[]>;
     /**
-     * The hostnames
+     * The hostnames.
      */
     hostnames?: pulumi.Input<pulumi.Input<pulumi.Input<string>[]>[]>;
     /**
-     * The node name
+     * A node name.
      */
     nodeName?: pulumi.Input<string>;
 }
@@ -133,11 +150,11 @@ export interface HostsState {
  */
 export interface HostsArgs {
     /**
-     * The host entries
+     * A host entry (multiple blocks supported).
      */
     entry: pulumi.Input<pulumi.Input<inputs.HostsEntry>[]>;
     /**
-     * The node name
+     * A node name.
      */
     nodeName: pulumi.Input<string>;
 }

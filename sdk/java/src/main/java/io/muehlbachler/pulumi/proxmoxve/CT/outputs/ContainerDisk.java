@@ -12,13 +12,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContainerDisk {
+    /**
+     * @return The identifier for the datastore to create the
+     * disk in (defaults to `local`).
+     * 
+     */
     private @Nullable String datastoreId;
+    /**
+     * @return Volume size (only for ZFS storage backed mount points).
+     * Can be specified with a unit suffix (e.g. `10G`).
+     * 
+     */
     private @Nullable Integer size;
 
     private ContainerDisk() {}
+    /**
+     * @return The identifier for the datastore to create the
+     * disk in (defaults to `local`).
+     * 
+     */
     public Optional<String> datastoreId() {
         return Optional.ofNullable(this.datastoreId);
     }
+    /**
+     * @return Volume size (only for ZFS storage backed mount points).
+     * Can be specified with a unit suffix (e.g. `10G`).
+     * 
+     */
     public Optional<Integer> size() {
         return Optional.ofNullable(this.size);
     }

@@ -13,16 +13,54 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Manages the time for a specific node.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := proxmoxve.NewTime(ctx, "firstNodeTime", &proxmoxve.TimeArgs{
+//				NodeName: pulumi.String("first-node"),
+//				TimeZone: pulumi.String("UTC"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// Instances can be imported using the `node_name`, e.g., bash
+//
+// ```sh
+//
+//	$ pulumi import proxmoxve:index/time:Time first_node first-node
+//
+// ```
 type Time struct {
 	pulumi.CustomResourceState
 
-	// The local timestamp
+	// The node's local time.
 	LocalTime pulumi.StringOutput `pulumi:"localTime"`
-	// The node name
+	// A node name.
 	NodeName pulumi.StringOutput `pulumi:"nodeName"`
-	// The time zone
+	// The node's time zone.
 	TimeZone pulumi.StringOutput `pulumi:"timeZone"`
-	// The UTC timestamp
+	// The node's local time formatted as UTC.
 	UtcTime pulumi.StringOutput `pulumi:"utcTime"`
 }
 
@@ -62,24 +100,24 @@ func GetTime(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Time resources.
 type timeState struct {
-	// The local timestamp
+	// The node's local time.
 	LocalTime *string `pulumi:"localTime"`
-	// The node name
+	// A node name.
 	NodeName *string `pulumi:"nodeName"`
-	// The time zone
+	// The node's time zone.
 	TimeZone *string `pulumi:"timeZone"`
-	// The UTC timestamp
+	// The node's local time formatted as UTC.
 	UtcTime *string `pulumi:"utcTime"`
 }
 
 type TimeState struct {
-	// The local timestamp
+	// The node's local time.
 	LocalTime pulumi.StringPtrInput
-	// The node name
+	// A node name.
 	NodeName pulumi.StringPtrInput
-	// The time zone
+	// The node's time zone.
 	TimeZone pulumi.StringPtrInput
-	// The UTC timestamp
+	// The node's local time formatted as UTC.
 	UtcTime pulumi.StringPtrInput
 }
 
@@ -88,17 +126,17 @@ func (TimeState) ElementType() reflect.Type {
 }
 
 type timeArgs struct {
-	// The node name
+	// A node name.
 	NodeName string `pulumi:"nodeName"`
-	// The time zone
+	// The node's time zone.
 	TimeZone string `pulumi:"timeZone"`
 }
 
 // The set of arguments for constructing a Time resource.
 type TimeArgs struct {
-	// The node name
+	// A node name.
 	NodeName pulumi.StringInput
-	// The time zone
+	// The node's time zone.
 	TimeZone pulumi.StringInput
 }
 
@@ -213,22 +251,22 @@ func (o TimeOutput) ToOutput(ctx context.Context) pulumix.Output[*Time] {
 	}
 }
 
-// The local timestamp
+// The node's local time.
 func (o TimeOutput) LocalTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Time) pulumi.StringOutput { return v.LocalTime }).(pulumi.StringOutput)
 }
 
-// The node name
+// A node name.
 func (o TimeOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Time) pulumi.StringOutput { return v.NodeName }).(pulumi.StringOutput)
 }
 
-// The time zone
+// The node's time zone.
 func (o TimeOutput) TimeZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Time) pulumi.StringOutput { return v.TimeZone }).(pulumi.StringOutput)
 }
 
-// The UTC timestamp
+// The node's local time formatted as UTC.
 func (o TimeOutput) UtcTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Time) pulumi.StringOutput { return v.UtcTime }).(pulumi.StringOutput)
 }

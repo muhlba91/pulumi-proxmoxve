@@ -11,16 +11,28 @@ import java.util.Objects;
 
 @CustomType
 public final class GetPoolResult {
+    /**
+     * @return The pool comment.
+     * 
+     */
     private String comment;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return The pool members.
+     * 
+     */
     private List<GetPoolMember> members;
     private String poolId;
 
     private GetPoolResult() {}
+    /**
+     * @return The pool comment.
+     * 
+     */
     public String comment() {
         return this.comment;
     }
@@ -31,6 +43,10 @@ public final class GetPoolResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The pool members.
+     * 
+     */
     public List<GetPoolMember> members() {
         return this.members;
     }

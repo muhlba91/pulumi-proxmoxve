@@ -20,14 +20,14 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
     public static final FileArgs Empty = new FileArgs();
 
     /**
-     * The content type
+     * The content type.
      * 
      */
     @Import(name="contentType")
     private @Nullable Output<String> contentType;
 
     /**
-     * @return The content type
+     * @return The content type.
      * 
      */
     public Optional<Output<String>> contentType() {
@@ -35,14 +35,14 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The datastore id
+     * The datastore id.
      * 
      */
     @Import(name="datastoreId", required=true)
     private Output<String> datastoreId;
 
     /**
-     * @return The datastore id
+     * @return The datastore id.
      * 
      */
     public Output<String> datastoreId() {
@@ -50,14 +50,14 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The node name
+     * The node name.
      * 
      */
     @Import(name="nodeName", required=true)
     private Output<String> nodeName;
 
     /**
-     * @return The node name
+     * @return The node name.
      * 
      */
     public Output<String> nodeName() {
@@ -65,14 +65,16 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to overwrite the file if it already exists
+     * Whether to overwrite an existing file (defaults to
+     * `true`).
      * 
      */
     @Import(name="overwrite")
     private @Nullable Output<Boolean> overwrite;
 
     /**
-     * @return Whether to overwrite the file if it already exists
+     * @return Whether to overwrite an existing file (defaults to
+     * `true`).
      * 
      */
     public Optional<Output<Boolean>> overwrite() {
@@ -80,14 +82,14 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The source file
+     * The source file (conflicts with `source_raw`).
      * 
      */
     @Import(name="sourceFile")
     private @Nullable Output<FileSourceFileArgs> sourceFile;
 
     /**
-     * @return The source file
+     * @return The source file (conflicts with `source_raw`).
      * 
      */
     public Optional<Output<FileSourceFileArgs>> sourceFile() {
@@ -95,14 +97,14 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The raw source
+     * The raw source (conflicts with `source_file`).
      * 
      */
     @Import(name="sourceRaw")
     private @Nullable Output<FileSourceRawArgs> sourceRaw;
 
     /**
-     * @return The raw source
+     * @return The raw source (conflicts with `source_file`).
      * 
      */
     public Optional<Output<FileSourceRawArgs>> sourceRaw() {
@@ -110,14 +112,16 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Timeout for uploading ISO/VSTMPL files in seconds
+     * Timeout for uploading ISO/VSTMPL files in
+     * seconds (defaults to 1800).
      * 
      */
     @Import(name="timeoutUpload")
     private @Nullable Output<Integer> timeoutUpload;
 
     /**
-     * @return Timeout for uploading ISO/VSTMPL files in seconds
+     * @return Timeout for uploading ISO/VSTMPL files in
+     * seconds (defaults to 1800).
      * 
      */
     public Optional<Output<Integer>> timeoutUpload() {
@@ -155,7 +159,7 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param contentType The content type
+         * @param contentType The content type.
          * 
          * @return builder
          * 
@@ -166,7 +170,7 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param contentType The content type
+         * @param contentType The content type.
          * 
          * @return builder
          * 
@@ -176,7 +180,7 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param datastoreId The datastore id
+         * @param datastoreId The datastore id.
          * 
          * @return builder
          * 
@@ -187,7 +191,7 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param datastoreId The datastore id
+         * @param datastoreId The datastore id.
          * 
          * @return builder
          * 
@@ -197,7 +201,7 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeName The node name
+         * @param nodeName The node name.
          * 
          * @return builder
          * 
@@ -208,7 +212,7 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeName The node name
+         * @param nodeName The node name.
          * 
          * @return builder
          * 
@@ -218,7 +222,8 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param overwrite Whether to overwrite the file if it already exists
+         * @param overwrite Whether to overwrite an existing file (defaults to
+         * `true`).
          * 
          * @return builder
          * 
@@ -229,7 +234,8 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param overwrite Whether to overwrite the file if it already exists
+         * @param overwrite Whether to overwrite an existing file (defaults to
+         * `true`).
          * 
          * @return builder
          * 
@@ -239,7 +245,7 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceFile The source file
+         * @param sourceFile The source file (conflicts with `source_raw`).
          * 
          * @return builder
          * 
@@ -250,7 +256,7 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceFile The source file
+         * @param sourceFile The source file (conflicts with `source_raw`).
          * 
          * @return builder
          * 
@@ -260,7 +266,7 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceRaw The raw source
+         * @param sourceRaw The raw source (conflicts with `source_file`).
          * 
          * @return builder
          * 
@@ -271,7 +277,7 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceRaw The raw source
+         * @param sourceRaw The raw source (conflicts with `source_file`).
          * 
          * @return builder
          * 
@@ -281,7 +287,8 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeoutUpload Timeout for uploading ISO/VSTMPL files in seconds
+         * @param timeoutUpload Timeout for uploading ISO/VSTMPL files in
+         * seconds (defaults to 1800).
          * 
          * @return builder
          * 
@@ -292,7 +299,8 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeoutUpload Timeout for uploading ISO/VSTMPL files in seconds
+         * @param timeoutUpload Timeout for uploading ISO/VSTMPL files in
+         * seconds (defaults to 1800).
          * 
          * @return builder
          * 

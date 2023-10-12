@@ -4,6 +4,41 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Manages the custom SSL/TLS certificate for a specific node.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ * import * as tls from "@pulumi/tls";
+ *
+ * const proxmoxVirtualEnvironmentCertificatePrivateKey = new tls.PrivateKey("proxmoxVirtualEnvironmentCertificatePrivateKey", {
+ *     algorithm: "RSA",
+ *     rsaBits: 2048,
+ * });
+ * const proxmoxVirtualEnvironmentCertificateSelfSignedCert = new tls.SelfSignedCert("proxmoxVirtualEnvironmentCertificateSelfSignedCert", {
+ *     keyAlgorithm: proxmoxVirtualEnvironmentCertificatePrivateKey.algorithm,
+ *     privateKeyPem: proxmoxVirtualEnvironmentCertificatePrivateKey.privateKeyPem,
+ *     subject: {
+ *         commonName: "example.com",
+ *         organization: "Terraform Provider for Proxmox",
+ *     },
+ *     validityPeriodHours: 8760,
+ *     allowedUses: [
+ *         "key_encipherment",
+ *         "digital_signature",
+ *         "server_auth",
+ *     ],
+ * });
+ * const example = new proxmoxve.Certifi("example", {
+ *     certificate: proxmoxVirtualEnvironmentCertificateSelfSignedCert.certPem,
+ *     nodeName: "first-node",
+ *     privateKey: proxmoxVirtualEnvironmentCertificatePrivateKey.privateKeyPem,
+ * });
+ * ```
+ */
 export class Certifi extends pulumi.CustomResource {
     /**
      * Get an existing Certifi resource's state with the given name, ID, and optional extra
@@ -33,27 +68,27 @@ export class Certifi extends pulumi.CustomResource {
     }
 
     /**
-     * The PEM encoded certificate
+     * The PEM encoded certificate.
      */
     public readonly certificate!: pulumi.Output<string>;
     /**
-     * The PEM encoded certificate chain
+     * The PEM encoded certificate chain.
      */
     public readonly certificateChain!: pulumi.Output<string | undefined>;
     /**
-     * The expiration date
+     * The expiration date (RFC 3339).
      */
     public /*out*/ readonly expirationDate!: pulumi.Output<string>;
     /**
-     * The file name
+     * The file name.
      */
     public /*out*/ readonly fileName!: pulumi.Output<string>;
     /**
-     * The issuer
+     * The issuer.
      */
     public /*out*/ readonly issuer!: pulumi.Output<string>;
     /**
-     * The node name
+     * A node name.
      */
     public readonly nodeName!: pulumi.Output<string>;
     /**
@@ -61,31 +96,31 @@ export class Certifi extends pulumi.CustomResource {
      */
     public readonly overwrite!: pulumi.Output<boolean | undefined>;
     /**
-     * The PEM encoded private key
+     * The PEM encoded private key.
      */
     public readonly privateKey!: pulumi.Output<string>;
     /**
-     * The public key size
+     * The public key size.
      */
     public /*out*/ readonly publicKeySize!: pulumi.Output<number>;
     /**
-     * The public key type
+     * The public key type.
      */
     public /*out*/ readonly publicKeyType!: pulumi.Output<string>;
     /**
-     * The SSL fingerprint
+     * The SSL fingerprint.
      */
     public /*out*/ readonly sslFingerprint!: pulumi.Output<string>;
     /**
-     * The start date
+     * The start date (RFC 3339).
      */
     public /*out*/ readonly startDate!: pulumi.Output<string>;
     /**
-     * The subject
+     * The subject.
      */
     public /*out*/ readonly subject!: pulumi.Output<string>;
     /**
-     * The subject alternative names
+     * The subject alternative names.
      */
     public /*out*/ readonly subjectAlternativeNames!: pulumi.Output<string[]>;
 
@@ -154,27 +189,27 @@ export class Certifi extends pulumi.CustomResource {
  */
 export interface CertifiState {
     /**
-     * The PEM encoded certificate
+     * The PEM encoded certificate.
      */
     certificate?: pulumi.Input<string>;
     /**
-     * The PEM encoded certificate chain
+     * The PEM encoded certificate chain.
      */
     certificateChain?: pulumi.Input<string>;
     /**
-     * The expiration date
+     * The expiration date (RFC 3339).
      */
     expirationDate?: pulumi.Input<string>;
     /**
-     * The file name
+     * The file name.
      */
     fileName?: pulumi.Input<string>;
     /**
-     * The issuer
+     * The issuer.
      */
     issuer?: pulumi.Input<string>;
     /**
-     * The node name
+     * A node name.
      */
     nodeName?: pulumi.Input<string>;
     /**
@@ -182,31 +217,31 @@ export interface CertifiState {
      */
     overwrite?: pulumi.Input<boolean>;
     /**
-     * The PEM encoded private key
+     * The PEM encoded private key.
      */
     privateKey?: pulumi.Input<string>;
     /**
-     * The public key size
+     * The public key size.
      */
     publicKeySize?: pulumi.Input<number>;
     /**
-     * The public key type
+     * The public key type.
      */
     publicKeyType?: pulumi.Input<string>;
     /**
-     * The SSL fingerprint
+     * The SSL fingerprint.
      */
     sslFingerprint?: pulumi.Input<string>;
     /**
-     * The start date
+     * The start date (RFC 3339).
      */
     startDate?: pulumi.Input<string>;
     /**
-     * The subject
+     * The subject.
      */
     subject?: pulumi.Input<string>;
     /**
-     * The subject alternative names
+     * The subject alternative names.
      */
     subjectAlternativeNames?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -216,15 +251,15 @@ export interface CertifiState {
  */
 export interface CertifiArgs {
     /**
-     * The PEM encoded certificate
+     * The PEM encoded certificate.
      */
     certificate: pulumi.Input<string>;
     /**
-     * The PEM encoded certificate chain
+     * The PEM encoded certificate chain.
      */
     certificateChain?: pulumi.Input<string>;
     /**
-     * The node name
+     * A node name.
      */
     nodeName: pulumi.Input<string>;
     /**
@@ -232,7 +267,7 @@ export interface CertifiArgs {
      */
     overwrite?: pulumi.Input<boolean>;
     /**
-     * The PEM encoded private key
+     * The PEM encoded private key.
      */
     privateKey: pulumi.Input<string>;
 }

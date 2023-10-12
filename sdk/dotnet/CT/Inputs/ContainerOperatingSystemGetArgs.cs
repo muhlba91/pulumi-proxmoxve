@@ -12,9 +12,15 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
 
     public sealed class ContainerOperatingSystemGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The identifier for an OS template file.
+        /// </summary>
         [Input("templateFileId", required: true)]
         public Input<string> TemplateFileId { get; set; } = null!;
 
+        /// <summary>
+        /// The type (defaults to `unmanaged`).
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

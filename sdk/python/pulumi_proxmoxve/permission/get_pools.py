@@ -6,13 +6,14 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
     'GetPoolsResult',
     'AwaitableGetPoolsResult',
     'get_pools',
+    'get_pools_output',
 ]
 
 @pulumi.output_type
@@ -39,6 +40,9 @@ class GetPoolsResult:
     @property
     @pulumi.getter(name="poolIds")
     def pool_ids(self) -> Sequence[str]:
+        """
+        The pool identifiers.
+        """
         return pulumi.get(self, "pool_ids")
 
 
@@ -54,7 +58,16 @@ class AwaitableGetPoolsResult(GetPoolsResult):
 
 def get_pools(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPoolsResult:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves the identifiers for all the available resource pools.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    available_pools = proxmoxve.Permission.get_pools()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -63,3 +76,20 @@ def get_pools(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPoolsR
     return AwaitableGetPoolsResult(
         id=pulumi.get(__ret__, 'id'),
         pool_ids=pulumi.get(__ret__, 'pool_ids'))
+
+
+@_utilities.lift_output_func(get_pools)
+def get_pools_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPoolsResult]:
+    """
+    Retrieves the identifiers for all the available resource pools.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    available_pools = proxmoxve.Permission.get_pools()
+    ```
+    """
+    ...

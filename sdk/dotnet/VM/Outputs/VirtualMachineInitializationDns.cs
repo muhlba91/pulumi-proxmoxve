@@ -13,7 +13,13 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     [OutputType]
     public sealed class VirtualMachineInitializationDns
     {
+        /// <summary>
+        /// The DNS search domain.
+        /// </summary>
         public readonly string? Domain;
+        /// <summary>
+        /// The DNS server.
+        /// </summary>
         public readonly string? Server;
 
         [OutputConstructor]

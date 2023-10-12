@@ -12,17 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VirtualMachineInitializationUserAccount {
+    /**
+     * @return The SSH keys.
+     * 
+     */
     private @Nullable List<String> keys;
+    /**
+     * @return The SSH password.
+     * 
+     */
     private @Nullable String password;
+    /**
+     * @return The SSH username.
+     * 
+     */
     private @Nullable String username;
 
     private VirtualMachineInitializationUserAccount() {}
+    /**
+     * @return The SSH keys.
+     * 
+     */
     public List<String> keys() {
         return this.keys == null ? List.of() : this.keys;
     }
+    /**
+     * @return The SSH password.
+     * 
+     */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
+    /**
+     * @return The SSH username.
+     * 
+     */
     public Optional<String> username() {
         return Optional.ofNullable(this.username);
     }

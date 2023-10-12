@@ -13,8 +13,18 @@ namespace Pulumi.ProxmoxVE.Network.Outputs
     [OutputType]
     public sealed class FirewallIPSetCidr
     {
+        /// <summary>
+        /// Arbitrary string annotation.
+        /// </summary>
         public readonly string? Comment;
+        /// <summary>
+        /// Network/IP specification in CIDR format.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Entries marked as `nomatch` are skipped as if those
+        /// were not added to the set.
+        /// </summary>
         public readonly bool? Nomatch;
 
         [OutputConstructor]

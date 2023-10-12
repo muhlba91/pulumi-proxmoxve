@@ -4,6 +4,18 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Retrieves information about all available nodes.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@pulumi/proxmoxve";
+ *
+ * const availableNodes = proxmoxve.Cluster.getNodes({});
+ * ```
+ */
 export function getNodes(opts?: pulumi.InvokeOptions): Promise<GetNodesResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -15,20 +27,59 @@ export function getNodes(opts?: pulumi.InvokeOptions): Promise<GetNodesResult> {
  * A collection of values returned by getNodes.
  */
 export interface GetNodesResult {
+    /**
+     * The CPU count for each node.
+     */
     readonly cpuCounts: number[];
+    /**
+     * The CPU utilization on each node.
+     */
     readonly cpuUtilizations: number[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The memory available on each node.
+     */
     readonly memoryAvailables: number[];
+    /**
+     * The memory used on each node.
+     */
     readonly memoryUseds: number[];
+    /**
+     * The node names.
+     */
     readonly names: string[];
+    /**
+     * Whether a node is online.
+     */
     readonly onlines: boolean[];
+    /**
+     * The SSL fingerprint for each node.
+     */
     readonly sslFingerprints: string[];
+    /**
+     * The support level for each node.
+     */
     readonly supportLevels: string[];
+    /**
+     * The uptime in seconds for each node.
+     */
     readonly uptimes: number[];
 }
+/**
+ * Retrieves information about all available nodes.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@pulumi/proxmoxve";
+ *
+ * const availableNodes = proxmoxve.Cluster.getNodes({});
+ * ```
+ */
 export function getNodesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetNodesResult> {
     return pulumi.output(getNodes(opts))
 }

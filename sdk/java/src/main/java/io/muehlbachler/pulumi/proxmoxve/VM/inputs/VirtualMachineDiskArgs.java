@@ -18,72 +18,174 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
 
     public static final VirtualMachineDiskArgs Empty = new VirtualMachineDiskArgs();
 
+    /**
+     * The cache type (defaults to `none`).
+     * 
+     */
     @Import(name="cache")
     private @Nullable Output<String> cache;
 
+    /**
+     * @return The cache type (defaults to `none`).
+     * 
+     */
     public Optional<Output<String>> cache() {
         return Optional.ofNullable(this.cache);
     }
 
+    /**
+     * The identifier for the datastore to create the
+     * cloud-init disk in (defaults to `local-lvm`).
+     * 
+     */
     @Import(name="datastoreId")
     private @Nullable Output<String> datastoreId;
 
+    /**
+     * @return The identifier for the datastore to create the
+     * cloud-init disk in (defaults to `local-lvm`).
+     * 
+     */
     public Optional<Output<String>> datastoreId() {
         return Optional.ofNullable(this.datastoreId);
     }
 
+    /**
+     * Whether to pass discard/trim requests to the
+     * underlying storage. Supported values are `on`/`ignore` (defaults
+     * to `ignore`).
+     * 
+     */
     @Import(name="discard")
     private @Nullable Output<String> discard;
 
+    /**
+     * @return Whether to pass discard/trim requests to the
+     * underlying storage. Supported values are `on`/`ignore` (defaults
+     * to `ignore`).
+     * 
+     */
     public Optional<Output<String>> discard() {
         return Optional.ofNullable(this.discard);
     }
 
+    /**
+     * The file format.
+     * 
+     */
     @Import(name="fileFormat")
     private @Nullable Output<String> fileFormat;
 
+    /**
+     * @return The file format.
+     * 
+     */
     public Optional<Output<String>> fileFormat() {
         return Optional.ofNullable(this.fileFormat);
     }
 
+    /**
+     * The file ID for a disk image (experimental -
+     * might cause high CPU utilization during import, especially with large
+     * disk images).
+     * 
+     */
     @Import(name="fileId")
     private @Nullable Output<String> fileId;
 
+    /**
+     * @return The file ID for a disk image (experimental -
+     * might cause high CPU utilization during import, especially with large
+     * disk images).
+     * 
+     */
     public Optional<Output<String>> fileId() {
         return Optional.ofNullable(this.fileId);
     }
 
+    /**
+     * The hardware interface to connect the cloud-init
+     * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+     * detected if the setting is missing but a cloud-init image is present,
+     * otherwise defaults to `ide2`.
+     * 
+     */
     @Import(name="interface", required=true)
     private Output<String> interface_;
 
+    /**
+     * @return The hardware interface to connect the cloud-init
+     * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+     * detected if the setting is missing but a cloud-init image is present,
+     * otherwise defaults to `ide2`.
+     * 
+     */
     public Output<String> interface_() {
         return this.interface_;
     }
 
+    /**
+     * Whether to use iothreads for this disk (defaults
+     * to `false`).
+     * 
+     */
     @Import(name="iothread")
     private @Nullable Output<Boolean> iothread;
 
+    /**
+     * @return Whether to use iothreads for this disk (defaults
+     * to `false`).
+     * 
+     */
     public Optional<Output<Boolean>> iothread() {
         return Optional.ofNullable(this.iothread);
     }
 
+    /**
+     * The disk size in gigabytes (defaults to `8`).
+     * 
+     */
     @Import(name="size")
     private @Nullable Output<Integer> size;
 
+    /**
+     * @return The disk size in gigabytes (defaults to `8`).
+     * 
+     */
     public Optional<Output<Integer>> size() {
         return Optional.ofNullable(this.size);
     }
 
+    /**
+     * The speed limits.
+     * 
+     */
     @Import(name="speed")
     private @Nullable Output<VirtualMachineDiskSpeedArgs> speed;
 
+    /**
+     * @return The speed limits.
+     * 
+     */
     public Optional<Output<VirtualMachineDiskSpeedArgs>> speed() {
         return Optional.ofNullable(this.speed);
     }
 
+    /**
+     * Whether to use an SSD emulation option for this disk (
+     * defaults to `false`). Note that SSD emulation is not supported on VirtIO
+     * Block drives.
+     * 
+     */
     @Import(name="ssd")
     private @Nullable Output<Boolean> ssd;
 
+    /**
+     * @return Whether to use an SSD emulation option for this disk (
+     * defaults to `false`). Note that SSD emulation is not supported on VirtIO
+     * Block drives.
+     * 
+     */
     public Optional<Output<Boolean>> ssd() {
         return Optional.ofNullable(this.ssd);
     }
@@ -121,92 +223,234 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
             $ = new VirtualMachineDiskArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cache The cache type (defaults to `none`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder cache(@Nullable Output<String> cache) {
             $.cache = cache;
             return this;
         }
 
+        /**
+         * @param cache The cache type (defaults to `none`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder cache(String cache) {
             return cache(Output.of(cache));
         }
 
+        /**
+         * @param datastoreId The identifier for the datastore to create the
+         * cloud-init disk in (defaults to `local-lvm`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder datastoreId(@Nullable Output<String> datastoreId) {
             $.datastoreId = datastoreId;
             return this;
         }
 
+        /**
+         * @param datastoreId The identifier for the datastore to create the
+         * cloud-init disk in (defaults to `local-lvm`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder datastoreId(String datastoreId) {
             return datastoreId(Output.of(datastoreId));
         }
 
+        /**
+         * @param discard Whether to pass discard/trim requests to the
+         * underlying storage. Supported values are `on`/`ignore` (defaults
+         * to `ignore`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder discard(@Nullable Output<String> discard) {
             $.discard = discard;
             return this;
         }
 
+        /**
+         * @param discard Whether to pass discard/trim requests to the
+         * underlying storage. Supported values are `on`/`ignore` (defaults
+         * to `ignore`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder discard(String discard) {
             return discard(Output.of(discard));
         }
 
+        /**
+         * @param fileFormat The file format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fileFormat(@Nullable Output<String> fileFormat) {
             $.fileFormat = fileFormat;
             return this;
         }
 
+        /**
+         * @param fileFormat The file format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fileFormat(String fileFormat) {
             return fileFormat(Output.of(fileFormat));
         }
 
+        /**
+         * @param fileId The file ID for a disk image (experimental -
+         * might cause high CPU utilization during import, especially with large
+         * disk images).
+         * 
+         * @return builder
+         * 
+         */
         public Builder fileId(@Nullable Output<String> fileId) {
             $.fileId = fileId;
             return this;
         }
 
+        /**
+         * @param fileId The file ID for a disk image (experimental -
+         * might cause high CPU utilization during import, especially with large
+         * disk images).
+         * 
+         * @return builder
+         * 
+         */
         public Builder fileId(String fileId) {
             return fileId(Output.of(fileId));
         }
 
+        /**
+         * @param interface_ The hardware interface to connect the cloud-init
+         * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+         * detected if the setting is missing but a cloud-init image is present,
+         * otherwise defaults to `ide2`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder interface_(Output<String> interface_) {
             $.interface_ = interface_;
             return this;
         }
 
+        /**
+         * @param interface_ The hardware interface to connect the cloud-init
+         * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+         * detected if the setting is missing but a cloud-init image is present,
+         * otherwise defaults to `ide2`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder interface_(String interface_) {
             return interface_(Output.of(interface_));
         }
 
+        /**
+         * @param iothread Whether to use iothreads for this disk (defaults
+         * to `false`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder iothread(@Nullable Output<Boolean> iothread) {
             $.iothread = iothread;
             return this;
         }
 
+        /**
+         * @param iothread Whether to use iothreads for this disk (defaults
+         * to `false`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder iothread(Boolean iothread) {
             return iothread(Output.of(iothread));
         }
 
+        /**
+         * @param size The disk size in gigabytes (defaults to `8`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder size(@Nullable Output<Integer> size) {
             $.size = size;
             return this;
         }
 
+        /**
+         * @param size The disk size in gigabytes (defaults to `8`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder size(Integer size) {
             return size(Output.of(size));
         }
 
+        /**
+         * @param speed The speed limits.
+         * 
+         * @return builder
+         * 
+         */
         public Builder speed(@Nullable Output<VirtualMachineDiskSpeedArgs> speed) {
             $.speed = speed;
             return this;
         }
 
+        /**
+         * @param speed The speed limits.
+         * 
+         * @return builder
+         * 
+         */
         public Builder speed(VirtualMachineDiskSpeedArgs speed) {
             return speed(Output.of(speed));
         }
 
+        /**
+         * @param ssd Whether to use an SSD emulation option for this disk (
+         * defaults to `false`). Note that SSD emulation is not supported on VirtIO
+         * Block drives.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ssd(@Nullable Output<Boolean> ssd) {
             $.ssd = ssd;
             return this;
         }
 
+        /**
+         * @param ssd Whether to use an SSD emulation option for this disk (
+         * defaults to `false`). Note that SSD emulation is not supported on VirtIO
+         * Block drives.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ssd(Boolean ssd) {
             return ssd(Output.of(ssd));
         }

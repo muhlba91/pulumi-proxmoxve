@@ -12,17 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class UserAcl {
+    /**
+     * @return The path.
+     * 
+     */
     private String path;
+    /**
+     * @return Whether to propagate to child paths.
+     * 
+     */
     private @Nullable Boolean propagate;
+    /**
+     * @return The role identifier.
+     * 
+     */
     private String roleId;
 
     private UserAcl() {}
+    /**
+     * @return The path.
+     * 
+     */
     public String path() {
         return this.path;
     }
+    /**
+     * @return Whether to propagate to child paths.
+     * 
+     */
     public Optional<Boolean> propagate() {
         return Optional.ofNullable(this.propagate);
     }
+    /**
+     * @return The role identifier.
+     * 
+     */
     public String roleId() {
         return this.roleId;
     }

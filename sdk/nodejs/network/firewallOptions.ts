@@ -4,6 +4,33 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Manages firewall options on VM / Container level.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = new proxmoxve.network.FirewallOptions("example", {
+ *     nodeName: proxmox_virtual_environment_vm.example.node_name,
+ *     vmId: proxmox_virtual_environment_vm.example.vm_id,
+ *     dhcp: true,
+ *     enabled: false,
+ *     ipfilter: true,
+ *     logLevelIn: "info",
+ *     logLevelOut: "info",
+ *     macfilter: false,
+ *     ndp: true,
+ *     inputPolicy: "ACCEPT",
+ *     outputPolicy: "ACCEPT",
+ *     radv: true,
+ * }, {
+ *     dependsOn: [proxmox_virtual_environment_vm.example],
+ * });
+ * ```
+ */
 export class FirewallOptions extends pulumi.CustomResource {
     /**
      * Get an existing FirewallOptions resource's state with the given name, ID, and optional extra
@@ -33,57 +60,63 @@ export class FirewallOptions extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the container to manage the firewall for.
+     * Container ID. Leave empty for cluster level aliases.
      */
     public readonly containerId!: pulumi.Output<number | undefined>;
     /**
-     * Enable DHCP
+     * Enable DHCP.
      */
     public readonly dhcp!: pulumi.Output<boolean | undefined>;
     /**
-     * Enable or disable the firewall
+     * Enable or disable the firewall.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Default policy for incoming traffic
+     * The default input
+     * policy (`ACCEPT`, `DROP`, `REJECT`).
      */
     public readonly inputPolicy!: pulumi.Output<string | undefined>;
     /**
-     * Enable default IP filters. This is equivalent to adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
-     * implicitly contain sane default restrictions such as restricting IPv6 link local addresses to the one derived from the
-     * interface's MAC address. For containers the configured IP addresses will be implicitly added.
+     * Enable default IP filters. This is equivalent to
+     * adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
+     * implicitly contain sane default restrictions such as restricting IPv6 link
+     * local addresses to the one derived from the interface's MAC address. For
+     * containers the configured IP addresses will be implicitly added.
      */
     public readonly ipfilter!: pulumi.Output<boolean | undefined>;
     /**
-     * Log level for incoming traffic.
+     * Log level for incoming
+     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
      */
     public readonly logLevelIn!: pulumi.Output<string | undefined>;
     /**
-     * Log level for outgoing traffic.
+     * Log level for outgoing
+     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
      */
     public readonly logLevelOut!: pulumi.Output<string | undefined>;
     /**
-     * Enable MAC address filtering
+     * Enable/disable MAC address filter.
      */
     public readonly macfilter!: pulumi.Output<boolean | undefined>;
     /**
-     * Enable NDP (Neighbor Discovery Protocol)
+     * Enable NDP (Neighbor Discovery Protocol).
      */
     public readonly ndp!: pulumi.Output<boolean | undefined>;
     /**
-     * The name of the node.
+     * Node name.
      */
     public readonly nodeName!: pulumi.Output<string>;
     /**
-     * Default policy for outgoing traffic
+     * The default output
+     * policy (`ACCEPT`, `DROP`, `REJECT`).
      */
     public readonly outputPolicy!: pulumi.Output<string | undefined>;
     /**
-     * Allow sending Router Advertisement
+     * Enable Router Advertisement.
      */
     public readonly radv!: pulumi.Output<boolean | undefined>;
     /**
-     * The ID of the VM to manage the firewall for.
+     * VM ID. Leave empty for cluster level aliases.
      */
     public readonly vmId!: pulumi.Output<number | undefined>;
 
@@ -142,57 +175,63 @@ export class FirewallOptions extends pulumi.CustomResource {
  */
 export interface FirewallOptionsState {
     /**
-     * The ID of the container to manage the firewall for.
+     * Container ID. Leave empty for cluster level aliases.
      */
     containerId?: pulumi.Input<number>;
     /**
-     * Enable DHCP
+     * Enable DHCP.
      */
     dhcp?: pulumi.Input<boolean>;
     /**
-     * Enable or disable the firewall
+     * Enable or disable the firewall.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Default policy for incoming traffic
+     * The default input
+     * policy (`ACCEPT`, `DROP`, `REJECT`).
      */
     inputPolicy?: pulumi.Input<string>;
     /**
-     * Enable default IP filters. This is equivalent to adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
-     * implicitly contain sane default restrictions such as restricting IPv6 link local addresses to the one derived from the
-     * interface's MAC address. For containers the configured IP addresses will be implicitly added.
+     * Enable default IP filters. This is equivalent to
+     * adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
+     * implicitly contain sane default restrictions such as restricting IPv6 link
+     * local addresses to the one derived from the interface's MAC address. For
+     * containers the configured IP addresses will be implicitly added.
      */
     ipfilter?: pulumi.Input<boolean>;
     /**
-     * Log level for incoming traffic.
+     * Log level for incoming
+     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
      */
     logLevelIn?: pulumi.Input<string>;
     /**
-     * Log level for outgoing traffic.
+     * Log level for outgoing
+     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
      */
     logLevelOut?: pulumi.Input<string>;
     /**
-     * Enable MAC address filtering
+     * Enable/disable MAC address filter.
      */
     macfilter?: pulumi.Input<boolean>;
     /**
-     * Enable NDP (Neighbor Discovery Protocol)
+     * Enable NDP (Neighbor Discovery Protocol).
      */
     ndp?: pulumi.Input<boolean>;
     /**
-     * The name of the node.
+     * Node name.
      */
     nodeName?: pulumi.Input<string>;
     /**
-     * Default policy for outgoing traffic
+     * The default output
+     * policy (`ACCEPT`, `DROP`, `REJECT`).
      */
     outputPolicy?: pulumi.Input<string>;
     /**
-     * Allow sending Router Advertisement
+     * Enable Router Advertisement.
      */
     radv?: pulumi.Input<boolean>;
     /**
-     * The ID of the VM to manage the firewall for.
+     * VM ID. Leave empty for cluster level aliases.
      */
     vmId?: pulumi.Input<number>;
 }
@@ -202,57 +241,63 @@ export interface FirewallOptionsState {
  */
 export interface FirewallOptionsArgs {
     /**
-     * The ID of the container to manage the firewall for.
+     * Container ID. Leave empty for cluster level aliases.
      */
     containerId?: pulumi.Input<number>;
     /**
-     * Enable DHCP
+     * Enable DHCP.
      */
     dhcp?: pulumi.Input<boolean>;
     /**
-     * Enable or disable the firewall
+     * Enable or disable the firewall.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Default policy for incoming traffic
+     * The default input
+     * policy (`ACCEPT`, `DROP`, `REJECT`).
      */
     inputPolicy?: pulumi.Input<string>;
     /**
-     * Enable default IP filters. This is equivalent to adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
-     * implicitly contain sane default restrictions such as restricting IPv6 link local addresses to the one derived from the
-     * interface's MAC address. For containers the configured IP addresses will be implicitly added.
+     * Enable default IP filters. This is equivalent to
+     * adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
+     * implicitly contain sane default restrictions such as restricting IPv6 link
+     * local addresses to the one derived from the interface's MAC address. For
+     * containers the configured IP addresses will be implicitly added.
      */
     ipfilter?: pulumi.Input<boolean>;
     /**
-     * Log level for incoming traffic.
+     * Log level for incoming
+     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
      */
     logLevelIn?: pulumi.Input<string>;
     /**
-     * Log level for outgoing traffic.
+     * Log level for outgoing
+     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
      */
     logLevelOut?: pulumi.Input<string>;
     /**
-     * Enable MAC address filtering
+     * Enable/disable MAC address filter.
      */
     macfilter?: pulumi.Input<boolean>;
     /**
-     * Enable NDP (Neighbor Discovery Protocol)
+     * Enable NDP (Neighbor Discovery Protocol).
      */
     ndp?: pulumi.Input<boolean>;
     /**
-     * The name of the node.
+     * Node name.
      */
     nodeName: pulumi.Input<string>;
     /**
-     * Default policy for outgoing traffic
+     * The default output
+     * policy (`ACCEPT`, `DROP`, `REJECT`).
      */
     outputPolicy?: pulumi.Input<string>;
     /**
-     * Allow sending Router Advertisement
+     * Enable Router Advertisement.
      */
     radv?: pulumi.Input<boolean>;
     /**
-     * The ID of the VM to manage the firewall for.
+     * VM ID. Leave empty for cluster level aliases.
      */
     vmId?: pulumi.Input<number>;
 }

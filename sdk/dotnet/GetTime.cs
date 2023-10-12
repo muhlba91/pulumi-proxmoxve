@@ -11,9 +11,59 @@ namespace Pulumi.ProxmoxVE
 {
     public static class GetTime
     {
+        /// <summary>
+        /// Retrieves the current time for a specific node.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var firstNodeTime = ProxmoxVE.GetTime.Invoke(new()
+        ///     {
+        ///         NodeName = "first-node",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetTimeResult> InvokeAsync(GetTimeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTimeResult>("proxmoxve:index/getTime:getTime", args ?? new GetTimeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Retrieves the current time for a specific node.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var firstNodeTime = ProxmoxVE.GetTime.Invoke(new()
+        ///     {
+        ///         NodeName = "first-node",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetTimeResult> Invoke(GetTimeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTimeResult>("proxmoxve:index/getTime:getTime", args ?? new GetTimeInvokeArgs(), options.WithDefaults());
     }
@@ -21,6 +71,9 @@ namespace Pulumi.ProxmoxVE
 
     public sealed class GetTimeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// A node name.
+        /// </summary>
         [Input("nodeName", required: true)]
         public string NodeName { get; set; } = null!;
 
@@ -32,6 +85,9 @@ namespace Pulumi.ProxmoxVE
 
     public sealed class GetTimeInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// A node name.
+        /// </summary>
         [Input("nodeName", required: true)]
         public Input<string> NodeName { get; set; } = null!;
 
@@ -49,9 +105,18 @@ namespace Pulumi.ProxmoxVE
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The node's local time.
+        /// </summary>
         public readonly string LocalTime;
         public readonly string NodeName;
+        /// <summary>
+        /// The node's time zone.
+        /// </summary>
         public readonly string TimeZone;
+        /// <summary>
+        /// The node's local time formatted as UTC.
+        /// </summary>
         public readonly string UtcTime;
 
         [OutputConstructor]

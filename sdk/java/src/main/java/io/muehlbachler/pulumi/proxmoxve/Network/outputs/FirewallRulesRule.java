@@ -13,61 +13,221 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FirewallRulesRule {
+    /**
+     * @return Rule action (`ACCEPT`, `DROP`, `REJECT`).
+     * 
+     */
     private @Nullable String action;
+    /**
+     * @return Rule comment.
+     * 
+     */
     private @Nullable String comment;
+    /**
+     * @return Restrict packet destination address. This can
+     * refer to a single IP address, an IP set (&#39;+ipsetname&#39;) or an IP alias
+     * definition. You can also specify an address range
+     * like `20.34.101.207-201.3.9.99`, or a list of IP addresses and
+     * networks (entries are separated by comma). Please do not mix IPv4 and
+     * IPv6 addresses inside such lists.
+     * 
+     */
     private @Nullable String dest;
+    /**
+     * @return Restrict TCP/UDP destination port. You can use
+     * service names or simple numbers (0-65535), as defined
+     * in `/etc/services`. Port ranges can be specified with &#39;\d+:\d+&#39;, for
+     * example `80:85`, and you can use comma separated list to match several
+     * ports or ranges.
+     * 
+     */
     private @Nullable String dport;
+    /**
+     * @return Enable this rule. Defaults to `true`.
+     * 
+     */
     private @Nullable Boolean enabled;
+    /**
+     * @return Network interface name. You have to use network
+     * configuration key names for VMs and containers (&#39;net\d+&#39;). Host
+     * related rules can use arbitrary strings.
+     * 
+     */
     private @Nullable String iface;
+    /**
+     * @return Log level for this rule (`emerg`, `alert`, `crit`,
+     * `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+     * 
+     */
     private @Nullable String log;
+    /**
+     * @return Macro name. Use predefined standard macro
+     * from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+     * 
+     */
     private @Nullable String macro;
+    /**
+     * @return Position of the rule in the list.
+     * 
+     */
     private @Nullable Integer pos;
+    /**
+     * @return Restrict packet protocol. You can use protocol
+     * names as defined in &#39;/etc/protocols&#39;.
+     * 
+     */
     private @Nullable String proto;
+    /**
+     * @return Security group name.
+     * 
+     */
     private @Nullable String securityGroup;
+    /**
+     * @return Restrict packet source address. This can refer
+     * to a single IP address, an IP set (&#39;+ipsetname&#39;) or an IP alias
+     * definition. You can also specify an address range
+     * like `20.34.101.207-201.3.9.99`, or a list of IP addresses and
+     * networks (entries are separated by comma). Please do not mix IPv4 and
+     * IPv6 addresses inside such lists.
+     * 
+     */
     private @Nullable String source;
+    /**
+     * @return Restrict TCP/UDP source port. You can use
+     * service names or simple numbers (0-65535), as defined
+     * in `/etc/services`. Port ranges can be specified with &#39;\d+:\d+&#39;, for
+     * example `80:85`, and you can use comma separated list to match several
+     * ports or ranges.
+     * - a security group insertion block, which includes the following arguments:
+     * 
+     */
     private @Nullable String sport;
+    /**
+     * @return Rule type (`in`, `out`).
+     * 
+     */
     private @Nullable String type;
 
     private FirewallRulesRule() {}
+    /**
+     * @return Rule action (`ACCEPT`, `DROP`, `REJECT`).
+     * 
+     */
     public Optional<String> action() {
         return Optional.ofNullable(this.action);
     }
+    /**
+     * @return Rule comment.
+     * 
+     */
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
     }
+    /**
+     * @return Restrict packet destination address. This can
+     * refer to a single IP address, an IP set (&#39;+ipsetname&#39;) or an IP alias
+     * definition. You can also specify an address range
+     * like `20.34.101.207-201.3.9.99`, or a list of IP addresses and
+     * networks (entries are separated by comma). Please do not mix IPv4 and
+     * IPv6 addresses inside such lists.
+     * 
+     */
     public Optional<String> dest() {
         return Optional.ofNullable(this.dest);
     }
+    /**
+     * @return Restrict TCP/UDP destination port. You can use
+     * service names or simple numbers (0-65535), as defined
+     * in `/etc/services`. Port ranges can be specified with &#39;\d+:\d+&#39;, for
+     * example `80:85`, and you can use comma separated list to match several
+     * ports or ranges.
+     * 
+     */
     public Optional<String> dport() {
         return Optional.ofNullable(this.dport);
     }
+    /**
+     * @return Enable this rule. Defaults to `true`.
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return Network interface name. You have to use network
+     * configuration key names for VMs and containers (&#39;net\d+&#39;). Host
+     * related rules can use arbitrary strings.
+     * 
+     */
     public Optional<String> iface() {
         return Optional.ofNullable(this.iface);
     }
+    /**
+     * @return Log level for this rule (`emerg`, `alert`, `crit`,
+     * `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+     * 
+     */
     public Optional<String> log() {
         return Optional.ofNullable(this.log);
     }
+    /**
+     * @return Macro name. Use predefined standard macro
+     * from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+     * 
+     */
     public Optional<String> macro() {
         return Optional.ofNullable(this.macro);
     }
+    /**
+     * @return Position of the rule in the list.
+     * 
+     */
     public Optional<Integer> pos() {
         return Optional.ofNullable(this.pos);
     }
+    /**
+     * @return Restrict packet protocol. You can use protocol
+     * names as defined in &#39;/etc/protocols&#39;.
+     * 
+     */
     public Optional<String> proto() {
         return Optional.ofNullable(this.proto);
     }
+    /**
+     * @return Security group name.
+     * 
+     */
     public Optional<String> securityGroup() {
         return Optional.ofNullable(this.securityGroup);
     }
+    /**
+     * @return Restrict packet source address. This can refer
+     * to a single IP address, an IP set (&#39;+ipsetname&#39;) or an IP alias
+     * definition. You can also specify an address range
+     * like `20.34.101.207-201.3.9.99`, or a list of IP addresses and
+     * networks (entries are separated by comma). Please do not mix IPv4 and
+     * IPv6 addresses inside such lists.
+     * 
+     */
     public Optional<String> source() {
         return Optional.ofNullable(this.source);
     }
+    /**
+     * @return Restrict TCP/UDP source port. You can use
+     * service names or simple numbers (0-65535), as defined
+     * in `/etc/services`. Port ranges can be specified with &#39;\d+:\d+&#39;, for
+     * example `80:85`, and you can use comma separated list to match several
+     * ports or ranges.
+     * - a security group insertion block, which includes the following arguments:
+     * 
+     */
     public Optional<String> sport() {
         return Optional.ofNullable(this.sport);
     }
+    /**
+     * @return Rule type (`in`, `out`).
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

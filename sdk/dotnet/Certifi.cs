@@ -9,41 +9,89 @@ using Pulumi.Serialization;
 
 namespace Pulumi.ProxmoxVE
 {
+    /// <summary>
+    /// Manages the custom SSL/TLS certificate for a specific node.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// using Tls = Pulumi.Tls;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var proxmoxVirtualEnvironmentCertificatePrivateKey = new Tls.PrivateKey("proxmoxVirtualEnvironmentCertificatePrivateKey", new()
+    ///     {
+    ///         Algorithm = "RSA",
+    ///         RsaBits = 2048,
+    ///     });
+    /// 
+    ///     var proxmoxVirtualEnvironmentCertificateSelfSignedCert = new Tls.SelfSignedCert("proxmoxVirtualEnvironmentCertificateSelfSignedCert", new()
+    ///     {
+    ///         KeyAlgorithm = proxmoxVirtualEnvironmentCertificatePrivateKey.Algorithm,
+    ///         PrivateKeyPem = proxmoxVirtualEnvironmentCertificatePrivateKey.PrivateKeyPem,
+    ///         Subject = new Tls.Inputs.SelfSignedCertSubjectArgs
+    ///         {
+    ///             CommonName = "example.com",
+    ///             Organization = "Terraform Provider for Proxmox",
+    ///         },
+    ///         ValidityPeriodHours = 8760,
+    ///         AllowedUses = new[]
+    ///         {
+    ///             "key_encipherment",
+    ///             "digital_signature",
+    ///             "server_auth",
+    ///         },
+    ///     });
+    /// 
+    ///     var example = new ProxmoxVE.Certifi("example", new()
+    ///     {
+    ///         Certificate = proxmoxVirtualEnvironmentCertificateSelfSignedCert.CertPem,
+    ///         NodeName = "first-node",
+    ///         PrivateKey = proxmoxVirtualEnvironmentCertificatePrivateKey.PrivateKeyPem,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [ProxmoxVEResourceType("proxmoxve:index/certifi:Certifi")]
     public partial class Certifi : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The PEM encoded certificate
+        /// The PEM encoded certificate.
         /// </summary>
         [Output("certificate")]
         public Output<string> Certificate { get; private set; } = null!;
 
         /// <summary>
-        /// The PEM encoded certificate chain
+        /// The PEM encoded certificate chain.
         /// </summary>
         [Output("certificateChain")]
         public Output<string?> CertificateChain { get; private set; } = null!;
 
         /// <summary>
-        /// The expiration date
+        /// The expiration date (RFC 3339).
         /// </summary>
         [Output("expirationDate")]
         public Output<string> ExpirationDate { get; private set; } = null!;
 
         /// <summary>
-        /// The file name
+        /// The file name.
         /// </summary>
         [Output("fileName")]
         public Output<string> FileName { get; private set; } = null!;
 
         /// <summary>
-        /// The issuer
+        /// The issuer.
         /// </summary>
         [Output("issuer")]
         public Output<string> Issuer { get; private set; } = null!;
 
         /// <summary>
-        /// The node name
+        /// A node name.
         /// </summary>
         [Output("nodeName")]
         public Output<string> NodeName { get; private set; } = null!;
@@ -55,43 +103,43 @@ namespace Pulumi.ProxmoxVE
         public Output<bool?> Overwrite { get; private set; } = null!;
 
         /// <summary>
-        /// The PEM encoded private key
+        /// The PEM encoded private key.
         /// </summary>
         [Output("privateKey")]
         public Output<string> PrivateKey { get; private set; } = null!;
 
         /// <summary>
-        /// The public key size
+        /// The public key size.
         /// </summary>
         [Output("publicKeySize")]
         public Output<int> PublicKeySize { get; private set; } = null!;
 
         /// <summary>
-        /// The public key type
+        /// The public key type.
         /// </summary>
         [Output("publicKeyType")]
         public Output<string> PublicKeyType { get; private set; } = null!;
 
         /// <summary>
-        /// The SSL fingerprint
+        /// The SSL fingerprint.
         /// </summary>
         [Output("sslFingerprint")]
         public Output<string> SslFingerprint { get; private set; } = null!;
 
         /// <summary>
-        /// The start date
+        /// The start date (RFC 3339).
         /// </summary>
         [Output("startDate")]
         public Output<string> StartDate { get; private set; } = null!;
 
         /// <summary>
-        /// The subject
+        /// The subject.
         /// </summary>
         [Output("subject")]
         public Output<string> Subject { get; private set; } = null!;
 
         /// <summary>
-        /// The subject alternative names
+        /// The subject alternative names.
         /// </summary>
         [Output("subjectAlternativeNames")]
         public Output<ImmutableArray<string>> SubjectAlternativeNames { get; private set; } = null!;
@@ -148,19 +196,19 @@ namespace Pulumi.ProxmoxVE
     public sealed class CertifiArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The PEM encoded certificate
+        /// The PEM encoded certificate.
         /// </summary>
         [Input("certificate", required: true)]
         public Input<string> Certificate { get; set; } = null!;
 
         /// <summary>
-        /// The PEM encoded certificate chain
+        /// The PEM encoded certificate chain.
         /// </summary>
         [Input("certificateChain")]
         public Input<string>? CertificateChain { get; set; }
 
         /// <summary>
-        /// The node name
+        /// A node name.
         /// </summary>
         [Input("nodeName", required: true)]
         public Input<string> NodeName { get; set; } = null!;
@@ -175,7 +223,7 @@ namespace Pulumi.ProxmoxVE
         private Input<string>? _privateKey;
 
         /// <summary>
-        /// The PEM encoded private key
+        /// The PEM encoded private key.
         /// </summary>
         public Input<string>? PrivateKey
         {
@@ -196,37 +244,37 @@ namespace Pulumi.ProxmoxVE
     public sealed class CertifiState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The PEM encoded certificate
+        /// The PEM encoded certificate.
         /// </summary>
         [Input("certificate")]
         public Input<string>? Certificate { get; set; }
 
         /// <summary>
-        /// The PEM encoded certificate chain
+        /// The PEM encoded certificate chain.
         /// </summary>
         [Input("certificateChain")]
         public Input<string>? CertificateChain { get; set; }
 
         /// <summary>
-        /// The expiration date
+        /// The expiration date (RFC 3339).
         /// </summary>
         [Input("expirationDate")]
         public Input<string>? ExpirationDate { get; set; }
 
         /// <summary>
-        /// The file name
+        /// The file name.
         /// </summary>
         [Input("fileName")]
         public Input<string>? FileName { get; set; }
 
         /// <summary>
-        /// The issuer
+        /// The issuer.
         /// </summary>
         [Input("issuer")]
         public Input<string>? Issuer { get; set; }
 
         /// <summary>
-        /// The node name
+        /// A node name.
         /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
@@ -241,7 +289,7 @@ namespace Pulumi.ProxmoxVE
         private Input<string>? _privateKey;
 
         /// <summary>
-        /// The PEM encoded private key
+        /// The PEM encoded private key.
         /// </summary>
         public Input<string>? PrivateKey
         {
@@ -254,31 +302,31 @@ namespace Pulumi.ProxmoxVE
         }
 
         /// <summary>
-        /// The public key size
+        /// The public key size.
         /// </summary>
         [Input("publicKeySize")]
         public Input<int>? PublicKeySize { get; set; }
 
         /// <summary>
-        /// The public key type
+        /// The public key type.
         /// </summary>
         [Input("publicKeyType")]
         public Input<string>? PublicKeyType { get; set; }
 
         /// <summary>
-        /// The SSL fingerprint
+        /// The SSL fingerprint.
         /// </summary>
         [Input("sslFingerprint")]
         public Input<string>? SslFingerprint { get; set; }
 
         /// <summary>
-        /// The start date
+        /// The start date (RFC 3339).
         /// </summary>
         [Input("startDate")]
         public Input<string>? StartDate { get; set; }
 
         /// <summary>
-        /// The subject
+        /// The subject.
         /// </summary>
         [Input("subject")]
         public Input<string>? Subject { get; set; }
@@ -287,7 +335,7 @@ namespace Pulumi.ProxmoxVE
         private InputList<string>? _subjectAlternativeNames;
 
         /// <summary>
-        /// The subject alternative names
+        /// The subject alternative names.
         /// </summary>
         public InputList<string> SubjectAlternativeNames
         {

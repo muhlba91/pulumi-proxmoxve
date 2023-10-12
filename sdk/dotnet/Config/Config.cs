@@ -8,7 +8,7 @@ namespace Pulumi.ProxmoxVE
 {
     public static class Config
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "IDE1006", Justification = 
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "IDE1006", Justification = 
         "Double underscore prefix used to avoid conflicts with variable names.")]
         private sealed class __Value<T>
         {
@@ -90,6 +90,16 @@ namespace Pulumi.ProxmoxVE
         {
             get => _ssh.Get();
             set => _ssh.Set(value);
+        }
+
+        private static readonly __Value<string?> _tmpDir = new __Value<string?>(() => __config.Get("tmpDir"));
+        /// <summary>
+        /// The alternative temporary directory.
+        /// </summary>
+        public static string? TmpDir
+        {
+            get => _tmpDir.Get();
+            set => _tmpDir.Set(value);
         }
 
         private static readonly __Value<string?> _username = new __Value<string?>(() => __config.Get("username"));

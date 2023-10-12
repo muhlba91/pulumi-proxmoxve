@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -39,19 +39,46 @@ class FileSourceFile(dict):
                  checksum: Optional[str] = None,
                  file_name: Optional[str] = None,
                  insecure: Optional[bool] = None):
-        pulumi.set(__self__, "path", path)
+        """
+        :param str path: A path to a local file or a URL.
+        :param str checksum: The SHA256 checksum of the source file.
+        :param str file_name: The file name.
+        :param bool insecure: Whether to skip the TLS verification step for
+               HTTPS sources (defaults to `false`).
+        """
+        FileSourceFile._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            path=path,
+            changed=changed,
+            checksum=checksum,
+            file_name=file_name,
+            insecure=insecure,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             path: str,
+             changed: Optional[bool] = None,
+             checksum: Optional[str] = None,
+             file_name: Optional[str] = None,
+             insecure: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("path", path)
         if changed is not None:
-            pulumi.set(__self__, "changed", changed)
+            _setter("changed", changed)
         if checksum is not None:
-            pulumi.set(__self__, "checksum", checksum)
+            _setter("checksum", checksum)
         if file_name is not None:
-            pulumi.set(__self__, "file_name", file_name)
+            _setter("file_name", file_name)
         if insecure is not None:
-            pulumi.set(__self__, "insecure", insecure)
+            _setter("insecure", insecure)
 
     @property
     @pulumi.getter
     def path(self) -> str:
+        """
+        A path to a local file or a URL.
+        """
         return pulumi.get(self, "path")
 
     @property
@@ -62,16 +89,26 @@ class FileSourceFile(dict):
     @property
     @pulumi.getter
     def checksum(self) -> Optional[str]:
+        """
+        The SHA256 checksum of the source file.
+        """
         return pulumi.get(self, "checksum")
 
     @property
     @pulumi.getter(name="fileName")
     def file_name(self) -> Optional[str]:
+        """
+        The file name.
+        """
         return pulumi.get(self, "file_name")
 
     @property
     @pulumi.getter
     def insecure(self) -> Optional[bool]:
+        """
+        Whether to skip the TLS verification step for
+        HTTPS sources (defaults to `false`).
+        """
         return pulumi.get(self, "insecure")
 
 
@@ -98,24 +135,51 @@ class FileSourceRaw(dict):
                  data: str,
                  file_name: str,
                  resize: Optional[int] = None):
-        pulumi.set(__self__, "data", data)
-        pulumi.set(__self__, "file_name", file_name)
+        """
+        :param str data: The raw data.
+        :param str file_name: The file name.
+        :param int resize: The number of bytes to resize the file to.
+        """
+        FileSourceRaw._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            data=data,
+            file_name=file_name,
+            resize=resize,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             data: str,
+             file_name: str,
+             resize: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("data", data)
+        _setter("file_name", file_name)
         if resize is not None:
-            pulumi.set(__self__, "resize", resize)
+            _setter("resize", resize)
 
     @property
     @pulumi.getter
     def data(self) -> str:
+        """
+        The raw data.
+        """
         return pulumi.get(self, "data")
 
     @property
     @pulumi.getter(name="fileName")
     def file_name(self) -> str:
+        """
+        The file name.
+        """
         return pulumi.get(self, "file_name")
 
     @property
     @pulumi.getter
     def resize(self) -> Optional[int]:
+        """
+        The number of bytes to resize the file to.
+        """
         return pulumi.get(self, "resize")
 
 

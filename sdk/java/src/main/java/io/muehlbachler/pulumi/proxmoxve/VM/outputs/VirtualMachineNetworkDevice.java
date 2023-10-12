@@ -14,37 +14,121 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VirtualMachineNetworkDevice {
+    /**
+     * @return The name of the network bridge (defaults
+     * to `vmbr0`).
+     * 
+     */
     private @Nullable String bridge;
+    /**
+     * @return Whether to enable the VGA device (defaults
+     * to `true`).
+     * 
+     */
     private @Nullable Boolean enabled;
+    /**
+     * @return Whether this interface&#39;s firewall rules should be
+     * used (defaults to `false`).
+     * 
+     */
     private @Nullable Boolean firewall;
+    /**
+     * @return The MAC address.
+     * 
+     */
     private @Nullable String macAddress;
+    /**
+     * @return The network device model (defaults to `virtio`).
+     * 
+     */
     private @Nullable String model;
+    /**
+     * @return Force MTU, for VirtIO only. Set to 1 to use the bridge
+     * MTU. Cannot be larger than the bridge MTU.
+     * 
+     */
     private @Nullable Integer mtu;
+    /**
+     * @return The number of queues for VirtIO (1..64).
+     * 
+     */
+    private @Nullable Integer queues;
+    /**
+     * @return The rate limit in megabytes per second.
+     * 
+     */
     private @Nullable Double rateLimit;
+    /**
+     * @return The VLAN identifier.
+     * 
+     */
     private @Nullable Integer vlanId;
 
     private VirtualMachineNetworkDevice() {}
+    /**
+     * @return The name of the network bridge (defaults
+     * to `vmbr0`).
+     * 
+     */
     public Optional<String> bridge() {
         return Optional.ofNullable(this.bridge);
     }
+    /**
+     * @return Whether to enable the VGA device (defaults
+     * to `true`).
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return Whether this interface&#39;s firewall rules should be
+     * used (defaults to `false`).
+     * 
+     */
     public Optional<Boolean> firewall() {
         return Optional.ofNullable(this.firewall);
     }
+    /**
+     * @return The MAC address.
+     * 
+     */
     public Optional<String> macAddress() {
         return Optional.ofNullable(this.macAddress);
     }
+    /**
+     * @return The network device model (defaults to `virtio`).
+     * 
+     */
     public Optional<String> model() {
         return Optional.ofNullable(this.model);
     }
+    /**
+     * @return Force MTU, for VirtIO only. Set to 1 to use the bridge
+     * MTU. Cannot be larger than the bridge MTU.
+     * 
+     */
     public Optional<Integer> mtu() {
         return Optional.ofNullable(this.mtu);
     }
+    /**
+     * @return The number of queues for VirtIO (1..64).
+     * 
+     */
+    public Optional<Integer> queues() {
+        return Optional.ofNullable(this.queues);
+    }
+    /**
+     * @return The rate limit in megabytes per second.
+     * 
+     */
     public Optional<Double> rateLimit() {
         return Optional.ofNullable(this.rateLimit);
     }
+    /**
+     * @return The VLAN identifier.
+     * 
+     */
     public Optional<Integer> vlanId() {
         return Optional.ofNullable(this.vlanId);
     }
@@ -64,6 +148,7 @@ public final class VirtualMachineNetworkDevice {
         private @Nullable String macAddress;
         private @Nullable String model;
         private @Nullable Integer mtu;
+        private @Nullable Integer queues;
         private @Nullable Double rateLimit;
         private @Nullable Integer vlanId;
         public Builder() {}
@@ -75,6 +160,7 @@ public final class VirtualMachineNetworkDevice {
     	      this.macAddress = defaults.macAddress;
     	      this.model = defaults.model;
     	      this.mtu = defaults.mtu;
+    	      this.queues = defaults.queues;
     	      this.rateLimit = defaults.rateLimit;
     	      this.vlanId = defaults.vlanId;
         }
@@ -110,6 +196,11 @@ public final class VirtualMachineNetworkDevice {
             return this;
         }
         @CustomType.Setter
+        public Builder queues(@Nullable Integer queues) {
+            this.queues = queues;
+            return this;
+        }
+        @CustomType.Setter
         public Builder rateLimit(@Nullable Double rateLimit) {
             this.rateLimit = rateLimit;
             return this;
@@ -127,6 +218,7 @@ public final class VirtualMachineNetworkDevice {
             o.macAddress = macAddress;
             o.model = model;
             o.mtu = mtu;
+            o.queues = queues;
             o.rateLimit = rateLimit;
             o.vlanId = vlanId;
             return o;

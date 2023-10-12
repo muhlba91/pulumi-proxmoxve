@@ -22,9 +22,19 @@ public final class VirtualMachineStartupArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.downDelay);
     }
 
+    /**
+     * A non-negative number defining the general startup
+     * order.
+     * 
+     */
     @Import(name="order")
     private @Nullable Output<Integer> order;
 
+    /**
+     * @return A non-negative number defining the general startup
+     * order.
+     * 
+     */
     public Optional<Output<Integer>> order() {
         return Optional.ofNullable(this.order);
     }
@@ -71,11 +81,25 @@ public final class VirtualMachineStartupArgs extends com.pulumi.resources.Resour
             return downDelay(Output.of(downDelay));
         }
 
+        /**
+         * @param order A non-negative number defining the general startup
+         * order.
+         * 
+         * @return builder
+         * 
+         */
         public Builder order(@Nullable Output<Integer> order) {
             $.order = order;
             return this;
         }
 
+        /**
+         * @param order A non-negative number defining the general startup
+         * order.
+         * 
+         * @return builder
+         * 
+         */
         public Builder order(Integer order) {
             return order(Output.of(order));
         }

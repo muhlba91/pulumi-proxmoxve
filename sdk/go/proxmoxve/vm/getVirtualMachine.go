@@ -12,6 +12,34 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Retrieves information about a specific VM.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/VM"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := VM.GetVirtualMachine(ctx, &vm.GetVirtualMachineArgs{
+//				NodeName: "test",
+//				VmId:     100,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupVirtualMachine(ctx *pulumi.Context, args *LookupVirtualMachineArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualMachineResult
@@ -24,18 +52,22 @@ func LookupVirtualMachine(ctx *pulumi.Context, args *LookupVirtualMachineArgs, o
 
 // A collection of arguments for invoking getVirtualMachine.
 type LookupVirtualMachineArgs struct {
+	// The node name.
 	NodeName string `pulumi:"nodeName"`
-	VmId     int    `pulumi:"vmId"`
+	// The VM identifier.
+	VmId int `pulumi:"vmId"`
 }
 
 // A collection of values returned by getVirtualMachine.
 type LookupVirtualMachineResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id       string   `pulumi:"id"`
-	Name     string   `pulumi:"name"`
-	NodeName string   `pulumi:"nodeName"`
-	Tags     []string `pulumi:"tags"`
-	VmId     int      `pulumi:"vmId"`
+	Id string `pulumi:"id"`
+	// The virtual machine name.
+	Name     string `pulumi:"name"`
+	NodeName string `pulumi:"nodeName"`
+	// A list of tags of the VM.
+	Tags []string `pulumi:"tags"`
+	VmId int      `pulumi:"vmId"`
 }
 
 func LookupVirtualMachineOutput(ctx *pulumi.Context, args LookupVirtualMachineOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualMachineResultOutput {
@@ -53,8 +85,10 @@ func LookupVirtualMachineOutput(ctx *pulumi.Context, args LookupVirtualMachineOu
 
 // A collection of arguments for invoking getVirtualMachine.
 type LookupVirtualMachineOutputArgs struct {
+	// The node name.
 	NodeName pulumi.StringInput `pulumi:"nodeName"`
-	VmId     pulumi.IntInput    `pulumi:"vmId"`
+	// The VM identifier.
+	VmId pulumi.IntInput `pulumi:"vmId"`
 }
 
 func (LookupVirtualMachineOutputArgs) ElementType() reflect.Type {
@@ -87,6 +121,7 @@ func (o LookupVirtualMachineResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The virtual machine name.
 func (o LookupVirtualMachineResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -95,6 +130,7 @@ func (o LookupVirtualMachineResultOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.NodeName }).(pulumi.StringOutput)
 }
 
+// A list of tags of the VM.
 func (o LookupVirtualMachineResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

@@ -11,9 +11,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VirtualMachineSerialDevice {
+    /**
+     * @return The device (defaults to `socket`).
+     * - `/dev/*` - A host serial device.
+     * 
+     */
     private @Nullable String device;
 
     private VirtualMachineSerialDevice() {}
+    /**
+     * @return The device (defaults to `socket`).
+     * - `/dev/*` - A host serial device.
+     * 
+     */
     public Optional<String> device() {
         return Optional.ofNullable(this.device);
     }

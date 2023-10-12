@@ -11,9 +11,53 @@ namespace Pulumi.ProxmoxVE.Permission
 {
     public static class GetGroups
     {
+        /// <summary>
+        /// Retrieves basic information about all available user groups.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var availableGroups = ProxmoxVE.Permission.GetGroups.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetGroupsResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("proxmoxve:Permission/getGroups:getGroups", InvokeArgs.Empty, options.WithDefaults());
 
+        /// <summary>
+        /// Retrieves basic information about all available user groups.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var availableGroups = ProxmoxVE.Permission.GetGroups.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetGroupsResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupsResult>("proxmoxve:Permission/getGroups:getGroups", InvokeArgs.Empty, options.WithDefaults());
     }
@@ -22,7 +66,13 @@ namespace Pulumi.ProxmoxVE.Permission
     [OutputType]
     public sealed class GetGroupsResult
     {
+        /// <summary>
+        /// The group comments.
+        /// </summary>
         public readonly ImmutableArray<string> Comments;
+        /// <summary>
+        /// The group identifiers.
+        /// </summary>
         public readonly ImmutableArray<string> GroupIds;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

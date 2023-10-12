@@ -15,21 +15,55 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContainerInitialization {
+    /**
+     * @return The DNS configuration.
+     * 
+     */
     private @Nullable ContainerInitializationDns dns;
+    /**
+     * @return The hostname.
+     * 
+     */
     private @Nullable String hostname;
+    /**
+     * @return The IP configuration (one block per network
+     * device).
+     * 
+     */
     private @Nullable List<ContainerInitializationIpConfig> ipConfigs;
+    /**
+     * @return The user account configuration.
+     * 
+     */
     private @Nullable ContainerInitializationUserAccount userAccount;
 
     private ContainerInitialization() {}
+    /**
+     * @return The DNS configuration.
+     * 
+     */
     public Optional<ContainerInitializationDns> dns() {
         return Optional.ofNullable(this.dns);
     }
+    /**
+     * @return The hostname.
+     * 
+     */
     public Optional<String> hostname() {
         return Optional.ofNullable(this.hostname);
     }
+    /**
+     * @return The IP configuration (one block per network
+     * device).
+     * 
+     */
     public List<ContainerInitializationIpConfig> ipConfigs() {
         return this.ipConfigs == null ? List.of() : this.ipConfigs;
     }
+    /**
+     * @return The user account configuration.
+     * 
+     */
     public Optional<ContainerInitializationUserAccount> userAccount() {
         return Optional.ofNullable(this.userAccount);
     }

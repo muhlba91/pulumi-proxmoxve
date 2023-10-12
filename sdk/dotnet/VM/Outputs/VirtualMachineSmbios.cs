@@ -13,12 +13,33 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     [OutputType]
     public sealed class VirtualMachineSmbios
     {
+        /// <summary>
+        /// The family string.
+        /// </summary>
         public readonly string? Family;
+        /// <summary>
+        /// The manufacturer.
+        /// </summary>
         public readonly string? Manufacturer;
+        /// <summary>
+        /// The product ID.
+        /// </summary>
         public readonly string? Product;
+        /// <summary>
+        /// The serial number.
+        /// </summary>
         public readonly string? Serial;
+        /// <summary>
+        /// The SKU number.
+        /// </summary>
         public readonly string? Sku;
+        /// <summary>
+        /// The UUID (defaults to randomly generated UUID).
+        /// </summary>
         public readonly string? Uuid;
+        /// <summary>
+        /// The version.
+        /// </summary>
         public readonly string? Version;
 
         [OutputConstructor]

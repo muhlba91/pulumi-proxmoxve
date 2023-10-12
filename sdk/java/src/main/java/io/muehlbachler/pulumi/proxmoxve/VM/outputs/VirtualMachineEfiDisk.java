@@ -12,21 +12,61 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VirtualMachineEfiDisk {
+    /**
+     * @return The identifier for the datastore to create the
+     * cloud-init disk in (defaults to `local-lvm`).
+     * 
+     */
     private @Nullable String datastoreId;
+    /**
+     * @return The file format.
+     * 
+     */
     private @Nullable String fileFormat;
+    /**
+     * @return Use am EFI vars template with
+     * distribution-specific and Microsoft Standard keys enrolled, if used with
+     * EFI type=`4m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
+     * to `false`).
+     * 
+     */
     private @Nullable Boolean preEnrolledKeys;
+    /**
+     * @return The VGA type (defaults to `std`).
+     * 
+     */
     private @Nullable String type;
 
     private VirtualMachineEfiDisk() {}
+    /**
+     * @return The identifier for the datastore to create the
+     * cloud-init disk in (defaults to `local-lvm`).
+     * 
+     */
     public Optional<String> datastoreId() {
         return Optional.ofNullable(this.datastoreId);
     }
+    /**
+     * @return The file format.
+     * 
+     */
     public Optional<String> fileFormat() {
         return Optional.ofNullable(this.fileFormat);
     }
+    /**
+     * @return Use am EFI vars template with
+     * distribution-specific and Microsoft Standard keys enrolled, if used with
+     * EFI type=`4m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
+     * to `false`).
+     * 
+     */
     public Optional<Boolean> preEnrolledKeys() {
         return Optional.ofNullable(this.preEnrolledKeys);
     }
+    /**
+     * @return The VGA type (defaults to `std`).
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

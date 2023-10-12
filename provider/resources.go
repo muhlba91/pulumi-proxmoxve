@@ -56,7 +56,7 @@ func Provider() tfbridge.ProviderInfo {
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
 		P:                    p,
-		Name:                 "proxmoxve",
+		Name:                 "proxmox",
 		DisplayName:          "Proxmox Virtual Environment (Proxmox VE)",
 		Description:          "A Pulumi package for creating and managing Proxmox Virtual Environment cloud resources.",
 		Publisher:            "Daniel Muehlbachler-Pietrzykowski",

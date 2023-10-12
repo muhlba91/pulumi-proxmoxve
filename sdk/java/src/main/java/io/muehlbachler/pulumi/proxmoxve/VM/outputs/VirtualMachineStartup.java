@@ -12,6 +12,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VirtualMachineStartup {
     private @Nullable Integer downDelay;
+    /**
+     * @return A non-negative number defining the general startup
+     * order.
+     * 
+     */
     private @Nullable Integer order;
     private @Nullable Integer upDelay;
 
@@ -19,6 +24,11 @@ public final class VirtualMachineStartup {
     public Optional<Integer> downDelay() {
         return Optional.ofNullable(this.downDelay);
     }
+    /**
+     * @return A non-negative number defining the general startup
+     * order.
+     * 
+     */
     public Optional<Integer> order() {
         return Optional.ofNullable(this.order);
     }

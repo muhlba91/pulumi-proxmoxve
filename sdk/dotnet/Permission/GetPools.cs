@@ -11,9 +11,53 @@ namespace Pulumi.ProxmoxVE.Permission
 {
     public static class GetPools
     {
+        /// <summary>
+        /// Retrieves the identifiers for all the available resource pools.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var availablePools = ProxmoxVE.Permission.GetPools.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetPoolsResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPoolsResult>("proxmoxve:Permission/getPools:getPools", InvokeArgs.Empty, options.WithDefaults());
 
+        /// <summary>
+        /// Retrieves the identifiers for all the available resource pools.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var availablePools = ProxmoxVE.Permission.GetPools.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetPoolsResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPoolsResult>("proxmoxve:Permission/getPools:getPools", InvokeArgs.Empty, options.WithDefaults());
     }
@@ -26,6 +70,9 @@ namespace Pulumi.ProxmoxVE.Permission
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The pool identifiers.
+        /// </summary>
         public readonly ImmutableArray<string> PoolIds;
 
         [OutputConstructor]

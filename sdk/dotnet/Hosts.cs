@@ -9,41 +9,57 @@ using Pulumi.Serialization;
 
 namespace Pulumi.ProxmoxVE
 {
+    /// <summary>
+    /// Manages the host entries on a specific node.
+    /// 
+    /// ## Important Notes
+    /// 
+    /// Be careful not to use this resource multiple times for the same node.
+    /// 
+    /// ## Import
+    /// 
+    /// Instances can be imported using the `node_name`, e.g., bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import proxmoxve:index/hosts:Hosts first_node_host_entries first-node
+    /// ```
+    /// </summary>
     [ProxmoxVEResourceType("proxmoxve:index/hosts:Hosts")]
     public partial class Hosts : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The addresses
+        /// The IP addresses.
         /// </summary>
         [Output("addresses")]
         public Output<ImmutableArray<string>> Addresses { get; private set; } = null!;
 
         /// <summary>
-        /// The SHA1 digest
+        /// The SHA1 digest.
         /// </summary>
         [Output("digest")]
         public Output<string> Digest { get; private set; } = null!;
 
         /// <summary>
-        /// The host entries
+        /// The host entries (conversion of `addresses` and `hostnames` into
+        /// objects).
         /// </summary>
         [Output("entries")]
         public Output<ImmutableArray<Outputs.HostsEntry>> Entries { get; private set; } = null!;
 
         /// <summary>
-        /// The host entries
+        /// A host entry (multiple blocks supported).
         /// </summary>
         [Output("entry")]
         public Output<ImmutableArray<Outputs.HostsEntry>> Entry { get; private set; } = null!;
 
         /// <summary>
-        /// The hostnames
+        /// The hostnames.
         /// </summary>
         [Output("hostnames")]
         public Output<ImmutableArray<ImmutableArray<string>>> Hostnames { get; private set; } = null!;
 
         /// <summary>
-        /// The node name
+        /// A node name.
         /// </summary>
         [Output("nodeName")]
         public Output<string> NodeName { get; private set; } = null!;
@@ -99,7 +115,7 @@ namespace Pulumi.ProxmoxVE
         private InputList<Inputs.HostsEntryArgs>? _entry;
 
         /// <summary>
-        /// The host entries
+        /// A host entry (multiple blocks supported).
         /// </summary>
         public InputList<Inputs.HostsEntryArgs> Entry
         {
@@ -108,7 +124,7 @@ namespace Pulumi.ProxmoxVE
         }
 
         /// <summary>
-        /// The node name
+        /// A node name.
         /// </summary>
         [Input("nodeName", required: true)]
         public Input<string> NodeName { get; set; } = null!;
@@ -125,7 +141,7 @@ namespace Pulumi.ProxmoxVE
         private InputList<string>? _addresses;
 
         /// <summary>
-        /// The addresses
+        /// The IP addresses.
         /// </summary>
         public InputList<string> Addresses
         {
@@ -134,7 +150,7 @@ namespace Pulumi.ProxmoxVE
         }
 
         /// <summary>
-        /// The SHA1 digest
+        /// The SHA1 digest.
         /// </summary>
         [Input("digest")]
         public Input<string>? Digest { get; set; }
@@ -143,7 +159,8 @@ namespace Pulumi.ProxmoxVE
         private InputList<Inputs.HostsEntryGetArgs>? _entries;
 
         /// <summary>
-        /// The host entries
+        /// The host entries (conversion of `addresses` and `hostnames` into
+        /// objects).
         /// </summary>
         public InputList<Inputs.HostsEntryGetArgs> Entries
         {
@@ -155,7 +172,7 @@ namespace Pulumi.ProxmoxVE
         private InputList<Inputs.HostsEntryGetArgs>? _entry;
 
         /// <summary>
-        /// The host entries
+        /// A host entry (multiple blocks supported).
         /// </summary>
         public InputList<Inputs.HostsEntryGetArgs> Entry
         {
@@ -167,7 +184,7 @@ namespace Pulumi.ProxmoxVE
         private InputList<ImmutableArray<string>>? _hostnames;
 
         /// <summary>
-        /// The hostnames
+        /// The hostnames.
         /// </summary>
         public InputList<ImmutableArray<string>> Hostnames
         {
@@ -176,7 +193,7 @@ namespace Pulumi.ProxmoxVE
         }
 
         /// <summary>
-        /// The node name
+        /// A node name.
         /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }

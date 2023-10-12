@@ -17,9 +17,19 @@ public final class VirtualMachineCloneArgs extends com.pulumi.resources.Resource
 
     public static final VirtualMachineCloneArgs Empty = new VirtualMachineCloneArgs();
 
+    /**
+     * The identifier for the datastore to create the
+     * cloud-init disk in (defaults to `local-lvm`).
+     * 
+     */
     @Import(name="datastoreId")
     private @Nullable Output<String> datastoreId;
 
+    /**
+     * @return The identifier for the datastore to create the
+     * cloud-init disk in (defaults to `local-lvm`).
+     * 
+     */
     public Optional<Output<String>> datastoreId() {
         return Optional.ofNullable(this.datastoreId);
     }
@@ -31,23 +41,53 @@ public final class VirtualMachineCloneArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.full);
     }
 
+    /**
+     * The name of the node to assign the virtual machine
+     * to.
+     * 
+     */
     @Import(name="nodeName")
     private @Nullable Output<String> nodeName;
 
+    /**
+     * @return The name of the node to assign the virtual machine
+     * to.
+     * 
+     */
     public Optional<Output<String>> nodeName() {
         return Optional.ofNullable(this.nodeName);
     }
 
+    /**
+     * Number of retries in Proxmox for clone vm.
+     * Sometimes Proxmox errors with timeout when creating multiple clones at
+     * once.
+     * 
+     */
     @Import(name="retries")
     private @Nullable Output<Integer> retries;
 
+    /**
+     * @return Number of retries in Proxmox for clone vm.
+     * Sometimes Proxmox errors with timeout when creating multiple clones at
+     * once.
+     * 
+     */
     public Optional<Output<Integer>> retries() {
         return Optional.ofNullable(this.retries);
     }
 
+    /**
+     * The VM identifier.
+     * 
+     */
     @Import(name="vmId", required=true)
     private Output<Integer> vmId;
 
+    /**
+     * @return The VM identifier.
+     * 
+     */
     public Output<Integer> vmId() {
         return this.vmId;
     }
@@ -80,11 +120,25 @@ public final class VirtualMachineCloneArgs extends com.pulumi.resources.Resource
             $ = new VirtualMachineCloneArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param datastoreId The identifier for the datastore to create the
+         * cloud-init disk in (defaults to `local-lvm`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder datastoreId(@Nullable Output<String> datastoreId) {
             $.datastoreId = datastoreId;
             return this;
         }
 
+        /**
+         * @param datastoreId The identifier for the datastore to create the
+         * cloud-init disk in (defaults to `local-lvm`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder datastoreId(String datastoreId) {
             return datastoreId(Output.of(datastoreId));
         }
@@ -98,29 +152,71 @@ public final class VirtualMachineCloneArgs extends com.pulumi.resources.Resource
             return full(Output.of(full));
         }
 
+        /**
+         * @param nodeName The name of the node to assign the virtual machine
+         * to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeName(@Nullable Output<String> nodeName) {
             $.nodeName = nodeName;
             return this;
         }
 
+        /**
+         * @param nodeName The name of the node to assign the virtual machine
+         * to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeName(String nodeName) {
             return nodeName(Output.of(nodeName));
         }
 
+        /**
+         * @param retries Number of retries in Proxmox for clone vm.
+         * Sometimes Proxmox errors with timeout when creating multiple clones at
+         * once.
+         * 
+         * @return builder
+         * 
+         */
         public Builder retries(@Nullable Output<Integer> retries) {
             $.retries = retries;
             return this;
         }
 
+        /**
+         * @param retries Number of retries in Proxmox for clone vm.
+         * Sometimes Proxmox errors with timeout when creating multiple clones at
+         * once.
+         * 
+         * @return builder
+         * 
+         */
         public Builder retries(Integer retries) {
             return retries(Output.of(retries));
         }
 
+        /**
+         * @param vmId The VM identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vmId(Output<Integer> vmId) {
             $.vmId = vmId;
             return this;
         }
 
+        /**
+         * @param vmId The VM identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vmId(Integer vmId) {
             return vmId(Output.of(vmId));
         }

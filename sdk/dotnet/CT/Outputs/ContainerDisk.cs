@@ -13,7 +13,15 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
     [OutputType]
     public sealed class ContainerDisk
     {
+        /// <summary>
+        /// The identifier for the datastore to create the
+        /// disk in (defaults to `local`).
+        /// </summary>
         public readonly string? DatastoreId;
+        /// <summary>
+        /// Volume size (only for ZFS storage backed mount points).
+        /// Can be specified with a unit suffix (e.g. `10G`).
+        /// </summary>
         public readonly int? Size;
 
         [OutputConstructor]

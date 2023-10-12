@@ -13,7 +13,13 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
     [OutputType]
     public sealed class ContainerOperatingSystem
     {
+        /// <summary>
+        /// The identifier for an OS template file.
+        /// </summary>
         public readonly string TemplateFileId;
+        /// <summary>
+        /// The type (defaults to `unmanaged`).
+        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]

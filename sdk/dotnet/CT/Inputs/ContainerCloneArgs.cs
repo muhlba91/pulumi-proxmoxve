@@ -12,12 +12,22 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
 
     public sealed class ContainerCloneArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The identifier for the datastore to create the
+        /// disk in (defaults to `local`).
+        /// </summary>
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
 
+        /// <summary>
+        /// The name of the node to assign the container to.
+        /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
 
+        /// <summary>
+        /// The container identifier
+        /// </summary>
         [Input("vmId", required: true)]
         public Input<int> VmId { get; set; } = null!;
 

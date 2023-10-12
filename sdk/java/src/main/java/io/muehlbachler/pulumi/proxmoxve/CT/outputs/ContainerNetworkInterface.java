@@ -14,37 +14,109 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContainerNetworkInterface {
+    /**
+     * @return The name of the network bridge (defaults
+     * to `vmbr0`).
+     * 
+     */
     private @Nullable String bridge;
+    /**
+     * @return Whether to enable the network device (defaults
+     * to `true`).
+     * 
+     */
     private @Nullable Boolean enabled;
+    /**
+     * @return Whether this interface&#39;s firewall rules should be
+     * used (defaults to `false`).
+     * 
+     */
     private @Nullable Boolean firewall;
+    /**
+     * @return The MAC address.
+     * 
+     */
     private @Nullable String macAddress;
+    /**
+     * @return Maximum transfer unit of the interface. Cannot be
+     * larger than the bridge&#39;s MTU.
+     * 
+     */
     private @Nullable Integer mtu;
+    /**
+     * @return The network interface name.
+     * 
+     */
     private String name;
+    /**
+     * @return The rate limit in megabytes per second.
+     * 
+     */
     private @Nullable Double rateLimit;
+    /**
+     * @return The VLAN identifier.
+     * 
+     */
     private @Nullable Integer vlanId;
 
     private ContainerNetworkInterface() {}
+    /**
+     * @return The name of the network bridge (defaults
+     * to `vmbr0`).
+     * 
+     */
     public Optional<String> bridge() {
         return Optional.ofNullable(this.bridge);
     }
+    /**
+     * @return Whether to enable the network device (defaults
+     * to `true`).
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return Whether this interface&#39;s firewall rules should be
+     * used (defaults to `false`).
+     * 
+     */
     public Optional<Boolean> firewall() {
         return Optional.ofNullable(this.firewall);
     }
+    /**
+     * @return The MAC address.
+     * 
+     */
     public Optional<String> macAddress() {
         return Optional.ofNullable(this.macAddress);
     }
+    /**
+     * @return Maximum transfer unit of the interface. Cannot be
+     * larger than the bridge&#39;s MTU.
+     * 
+     */
     public Optional<Integer> mtu() {
         return Optional.ofNullable(this.mtu);
     }
+    /**
+     * @return The network interface name.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The rate limit in megabytes per second.
+     * 
+     */
     public Optional<Double> rateLimit() {
         return Optional.ofNullable(this.rateLimit);
     }
+    /**
+     * @return The VLAN identifier.
+     * 
+     */
     public Optional<Integer> vlanId() {
         return Optional.ofNullable(this.vlanId);
     }

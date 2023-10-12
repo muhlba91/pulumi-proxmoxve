@@ -13,7 +13,14 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
     [OutputType]
     public sealed class ContainerMemory
     {
+        /// <summary>
+        /// The dedicated memory in megabytes (defaults
+        /// to `512`).
+        /// </summary>
         public readonly int? Dedicated;
+        /// <summary>
+        /// The swap size in megabytes (defaults to `0`).
+        /// </summary>
         public readonly int? Swap;
 
         [OutputConstructor]

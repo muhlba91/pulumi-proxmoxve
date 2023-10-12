@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -20,18 +20,29 @@ class PoolArgs:
                  comment: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Pool resource.
-        :param pulumi.Input[str] pool_id: The pool id
-        :param pulumi.Input[str] comment: The pool comment
+        :param pulumi.Input[str] pool_id: The pool identifier.
+        :param pulumi.Input[str] comment: The pool comment.
         """
-        pulumi.set(__self__, "pool_id", pool_id)
+        PoolArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pool_id=pool_id,
+            comment=comment,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pool_id: pulumi.Input[str],
+             comment: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("pool_id", pool_id)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
 
     @property
     @pulumi.getter(name="poolId")
     def pool_id(self) -> pulumi.Input[str]:
         """
-        The pool id
+        The pool identifier.
         """
         return pulumi.get(self, "pool_id")
 
@@ -43,7 +54,7 @@ class PoolArgs:
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
         """
-        The pool comment
+        The pool comment.
         """
         return pulumi.get(self, "comment")
 
@@ -60,22 +71,35 @@ class _PoolState:
                  pool_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Pool resources.
-        :param pulumi.Input[str] comment: The pool comment
-        :param pulumi.Input[Sequence[pulumi.Input['PoolMemberArgs']]] members: The pool members
-        :param pulumi.Input[str] pool_id: The pool id
+        :param pulumi.Input[str] comment: The pool comment.
+        :param pulumi.Input[Sequence[pulumi.Input['PoolMemberArgs']]] members: The pool members.
+        :param pulumi.Input[str] pool_id: The pool identifier.
         """
+        _PoolState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comment=comment,
+            members=members,
+            pool_id=pool_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comment: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input['PoolMemberArgs']]]] = None,
+             pool_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if members is not None:
-            pulumi.set(__self__, "members", members)
+            _setter("members", members)
         if pool_id is not None:
-            pulumi.set(__self__, "pool_id", pool_id)
+            _setter("pool_id", pool_id)
 
     @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
         """
-        The pool comment
+        The pool comment.
         """
         return pulumi.get(self, "comment")
 
@@ -87,7 +111,7 @@ class _PoolState:
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PoolMemberArgs']]]]:
         """
-        The pool members
+        The pool members.
         """
         return pulumi.get(self, "members")
 
@@ -99,7 +123,7 @@ class _PoolState:
     @pulumi.getter(name="poolId")
     def pool_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The pool id
+        The pool identifier.
         """
         return pulumi.get(self, "pool_id")
 
@@ -117,11 +141,31 @@ class Pool(pulumi.CustomResource):
                  pool_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Pool resource with the given unique name, props, and options.
+        Manages a resource pool.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        operations_pool = proxmoxve.permission.Pool("operationsPool",
+            comment="Managed by Terraform",
+            pool_id="operations-pool")
+        ```
+
+        ## Import
+
+        Instances can be imported using the `pool_id`, e.g., bash
+
+        ```sh
+         $ pulumi import proxmoxve:Permission/pool:Pool operations_pool operations-pool
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] comment: The pool comment
-        :param pulumi.Input[str] pool_id: The pool id
+        :param pulumi.Input[str] comment: The pool comment.
+        :param pulumi.Input[str] pool_id: The pool identifier.
         """
         ...
     @overload
@@ -130,7 +174,27 @@ class Pool(pulumi.CustomResource):
                  args: PoolArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Pool resource with the given unique name, props, and options.
+        Manages a resource pool.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        operations_pool = proxmoxve.permission.Pool("operationsPool",
+            comment="Managed by Terraform",
+            pool_id="operations-pool")
+        ```
+
+        ## Import
+
+        Instances can be imported using the `pool_id`, e.g., bash
+
+        ```sh
+         $ pulumi import proxmoxve:Permission/pool:Pool operations_pool operations-pool
+        ```
+
         :param str resource_name: The name of the resource.
         :param PoolArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -141,6 +205,10 @@ class Pool(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PoolArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -182,9 +250,9 @@ class Pool(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] comment: The pool comment
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PoolMemberArgs']]]] members: The pool members
-        :param pulumi.Input[str] pool_id: The pool id
+        :param pulumi.Input[str] comment: The pool comment.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PoolMemberArgs']]]] members: The pool members.
+        :param pulumi.Input[str] pool_id: The pool identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -199,7 +267,7 @@ class Pool(pulumi.CustomResource):
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[str]]:
         """
-        The pool comment
+        The pool comment.
         """
         return pulumi.get(self, "comment")
 
@@ -207,7 +275,7 @@ class Pool(pulumi.CustomResource):
     @pulumi.getter
     def members(self) -> pulumi.Output[Sequence['outputs.PoolMember']]:
         """
-        The pool members
+        The pool members.
         """
         return pulumi.get(self, "members")
 
@@ -215,7 +283,7 @@ class Pool(pulumi.CustomResource):
     @pulumi.getter(name="poolId")
     def pool_id(self) -> pulumi.Output[str]:
         """
-        The pool id
+        The pool identifier.
         """
         return pulumi.get(self, "pool_id")
 

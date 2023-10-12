@@ -18,14 +18,14 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
     public static final GroupArgs Empty = new GroupArgs();
 
     /**
-     * The access control list
+     * The access control list (multiple blocks supported).
      * 
      */
     @Import(name="acls")
     private @Nullable Output<List<GroupAclArgs>> acls;
 
     /**
-     * @return The access control list
+     * @return The access control list (multiple blocks supported).
      * 
      */
     public Optional<Output<List<GroupAclArgs>>> acls() {
@@ -33,14 +33,14 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The group comment
+     * The group comment.
      * 
      */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
     /**
-     * @return The group comment
+     * @return The group comment.
      * 
      */
     public Optional<Output<String>> comment() {
@@ -48,14 +48,14 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The group id
+     * The group identifier.
      * 
      */
     @Import(name="groupId", required=true)
     private Output<String> groupId;
 
     /**
-     * @return The group id
+     * @return The group identifier.
      * 
      */
     public Output<String> groupId() {
@@ -89,7 +89,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param acls The access control list
+         * @param acls The access control list (multiple blocks supported).
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param acls The access control list
+         * @param acls The access control list (multiple blocks supported).
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param acls The access control list
+         * @param acls The access control list (multiple blocks supported).
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comment The group comment
+         * @param comment The group comment.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comment The group comment
+         * @param comment The group comment.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupId The group id
+         * @param groupId The group identifier.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupId The group id
+         * @param groupId The group identifier.
          * 
          * @return builder
          * 

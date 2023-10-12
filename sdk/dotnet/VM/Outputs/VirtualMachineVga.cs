@@ -13,8 +13,18 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     [OutputType]
     public sealed class VirtualMachineVga
     {
+        /// <summary>
+        /// Whether to enable the VGA device (defaults
+        /// to `true`).
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// The VGA memory in megabytes (defaults to `16`).
+        /// </summary>
         public readonly int? Memory;
+        /// <summary>
+        /// The VGA type (defaults to `std`).
+        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]

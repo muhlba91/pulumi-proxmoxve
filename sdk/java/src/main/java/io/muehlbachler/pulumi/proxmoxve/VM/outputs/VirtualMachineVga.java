@@ -13,17 +13,43 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VirtualMachineVga {
+    /**
+     * @return Whether to enable the VGA device (defaults
+     * to `true`).
+     * 
+     */
     private @Nullable Boolean enabled;
+    /**
+     * @return The VGA memory in megabytes (defaults to `16`).
+     * 
+     */
     private @Nullable Integer memory;
+    /**
+     * @return The VGA type (defaults to `std`).
+     * 
+     */
     private @Nullable String type;
 
     private VirtualMachineVga() {}
+    /**
+     * @return Whether to enable the VGA device (defaults
+     * to `true`).
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return The VGA memory in megabytes (defaults to `16`).
+     * 
+     */
     public Optional<Integer> memory() {
         return Optional.ofNullable(this.memory);
     }
+    /**
+     * @return The VGA type (defaults to `std`).
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

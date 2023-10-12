@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContainerOperatingSystem {
+    /**
+     * @return The identifier for an OS template file.
+     * 
+     */
     private String templateFileId;
+    /**
+     * @return The type (defaults to `unmanaged`).
+     * 
+     */
     private @Nullable String type;
 
     private ContainerOperatingSystem() {}
+    /**
+     * @return The identifier for an OS template file.
+     * 
+     */
     public String templateFileId() {
         return this.templateFileId;
     }
+    /**
+     * @return The type (defaults to `unmanaged`).
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

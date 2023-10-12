@@ -14,45 +14,147 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VirtualMachineDisk {
+    /**
+     * @return The cache type (defaults to `none`).
+     * 
+     */
     private @Nullable String cache;
+    /**
+     * @return The identifier for the datastore to create the
+     * cloud-init disk in (defaults to `local-lvm`).
+     * 
+     */
     private @Nullable String datastoreId;
+    /**
+     * @return Whether to pass discard/trim requests to the
+     * underlying storage. Supported values are `on`/`ignore` (defaults
+     * to `ignore`).
+     * 
+     */
     private @Nullable String discard;
+    /**
+     * @return The file format.
+     * 
+     */
     private @Nullable String fileFormat;
+    /**
+     * @return The file ID for a disk image (experimental -
+     * might cause high CPU utilization during import, especially with large
+     * disk images).
+     * 
+     */
     private @Nullable String fileId;
+    /**
+     * @return The hardware interface to connect the cloud-init
+     * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+     * detected if the setting is missing but a cloud-init image is present,
+     * otherwise defaults to `ide2`.
+     * 
+     */
     private String interface_;
+    /**
+     * @return Whether to use iothreads for this disk (defaults
+     * to `false`).
+     * 
+     */
     private @Nullable Boolean iothread;
+    /**
+     * @return The disk size in gigabytes (defaults to `8`).
+     * 
+     */
     private @Nullable Integer size;
+    /**
+     * @return The speed limits.
+     * 
+     */
     private @Nullable VirtualMachineDiskSpeed speed;
+    /**
+     * @return Whether to use an SSD emulation option for this disk (
+     * defaults to `false`). Note that SSD emulation is not supported on VirtIO
+     * Block drives.
+     * 
+     */
     private @Nullable Boolean ssd;
 
     private VirtualMachineDisk() {}
+    /**
+     * @return The cache type (defaults to `none`).
+     * 
+     */
     public Optional<String> cache() {
         return Optional.ofNullable(this.cache);
     }
+    /**
+     * @return The identifier for the datastore to create the
+     * cloud-init disk in (defaults to `local-lvm`).
+     * 
+     */
     public Optional<String> datastoreId() {
         return Optional.ofNullable(this.datastoreId);
     }
+    /**
+     * @return Whether to pass discard/trim requests to the
+     * underlying storage. Supported values are `on`/`ignore` (defaults
+     * to `ignore`).
+     * 
+     */
     public Optional<String> discard() {
         return Optional.ofNullable(this.discard);
     }
+    /**
+     * @return The file format.
+     * 
+     */
     public Optional<String> fileFormat() {
         return Optional.ofNullable(this.fileFormat);
     }
+    /**
+     * @return The file ID for a disk image (experimental -
+     * might cause high CPU utilization during import, especially with large
+     * disk images).
+     * 
+     */
     public Optional<String> fileId() {
         return Optional.ofNullable(this.fileId);
     }
+    /**
+     * @return The hardware interface to connect the cloud-init
+     * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+     * detected if the setting is missing but a cloud-init image is present,
+     * otherwise defaults to `ide2`.
+     * 
+     */
     public String interface_() {
         return this.interface_;
     }
+    /**
+     * @return Whether to use iothreads for this disk (defaults
+     * to `false`).
+     * 
+     */
     public Optional<Boolean> iothread() {
         return Optional.ofNullable(this.iothread);
     }
+    /**
+     * @return The disk size in gigabytes (defaults to `8`).
+     * 
+     */
     public Optional<Integer> size() {
         return Optional.ofNullable(this.size);
     }
+    /**
+     * @return The speed limits.
+     * 
+     */
     public Optional<VirtualMachineDiskSpeed> speed() {
         return Optional.ofNullable(this.speed);
     }
+    /**
+     * @return Whether to use an SSD emulation option for this disk (
+     * defaults to `false`). Note that SSD emulation is not supported on VirtIO
+     * Block drives.
+     * 
+     */
     public Optional<Boolean> ssd() {
         return Optional.ofNullable(this.ssd);
     }

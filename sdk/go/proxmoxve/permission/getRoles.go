@@ -8,6 +8,31 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Retrieves information about all the available roles.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/Permission"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Permission.GetRoles(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetRoles(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetRolesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRolesResult
@@ -21,8 +46,11 @@ func GetRoles(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetRolesResult
 // A collection of values returned by getRoles.
 type GetRolesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string     `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The role privileges.
 	Privileges [][]string `pulumi:"privileges"`
-	RoleIds    []string   `pulumi:"roleIds"`
-	Specials   []bool     `pulumi:"specials"`
+	// The role identifiers.
+	RoleIds []string `pulumi:"roleIds"`
+	// Whether the role is special (built-in).
+	Specials []bool `pulumi:"specials"`
 }

@@ -19,14 +19,14 @@ public final class FirewallSecurityGroupState extends com.pulumi.resources.Resou
     public static final FirewallSecurityGroupState Empty = new FirewallSecurityGroupState();
 
     /**
-     * Security group comment
+     * Rule comment.
      * 
      */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
     /**
-     * @return Security group comment
+     * @return Rule comment.
      * 
      */
     public Optional<Output<String>> comment() {
@@ -49,14 +49,14 @@ public final class FirewallSecurityGroupState extends com.pulumi.resources.Resou
     }
 
     /**
-     * Security group name
+     * Security group name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Security group name
+     * @return Security group name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -79,14 +79,14 @@ public final class FirewallSecurityGroupState extends com.pulumi.resources.Resou
     }
 
     /**
-     * List of rules
+     * Firewall rule block (multiple blocks supported).
      * 
      */
     @Import(name="rules")
     private @Nullable Output<List<FirewallSecurityGroupRuleArgs>> rules;
 
     /**
-     * @return List of rules
+     * @return Firewall rule block (multiple blocks supported).
      * 
      */
     public Optional<Output<List<FirewallSecurityGroupRuleArgs>>> rules() {
@@ -138,7 +138,7 @@ public final class FirewallSecurityGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param comment Security group comment
+         * @param comment Rule comment.
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class FirewallSecurityGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param comment Security group comment
+         * @param comment Rule comment.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class FirewallSecurityGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param name Security group name
+         * @param name Security group name.
          * 
          * @return builder
          * 
@@ -191,7 +191,7 @@ public final class FirewallSecurityGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param name Security group name
+         * @param name Security group name.
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class FirewallSecurityGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param rules List of rules
+         * @param rules Firewall rule block (multiple blocks supported).
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class FirewallSecurityGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param rules List of rules
+         * @param rules Firewall rule block (multiple blocks supported).
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class FirewallSecurityGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param rules List of rules
+         * @param rules Firewall rule block (multiple blocks supported).
          * 
          * @return builder
          * 

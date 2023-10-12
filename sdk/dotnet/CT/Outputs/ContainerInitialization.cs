@@ -13,9 +13,22 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
     [OutputType]
     public sealed class ContainerInitialization
     {
+        /// <summary>
+        /// The DNS configuration.
+        /// </summary>
         public readonly Outputs.ContainerInitializationDns? Dns;
+        /// <summary>
+        /// The hostname.
+        /// </summary>
         public readonly string? Hostname;
+        /// <summary>
+        /// The IP configuration (one block per network
+        /// device).
+        /// </summary>
         public readonly ImmutableArray<Outputs.ContainerInitializationIpConfig> IpConfigs;
+        /// <summary>
+        /// The user account configuration.
+        /// </summary>
         public readonly Outputs.ContainerInitializationUserAccount? UserAccount;
 
         [OutputConstructor]

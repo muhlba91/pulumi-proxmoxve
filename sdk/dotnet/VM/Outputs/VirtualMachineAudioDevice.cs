@@ -13,8 +13,19 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     [OutputType]
     public sealed class VirtualMachineAudioDevice
     {
+        /// <summary>
+        /// The device (defaults to `socket`).
+        /// - `/dev/*` - A host serial device.
+        /// </summary>
         public readonly string? Device;
+        /// <summary>
+        /// The driver (defaults to `spice`).
+        /// </summary>
         public readonly string? Driver;
+        /// <summary>
+        /// Whether to enable the VGA device (defaults
+        /// to `true`).
+        /// </summary>
         public readonly bool? Enabled;
 
         [OutputConstructor]

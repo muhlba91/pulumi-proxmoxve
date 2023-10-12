@@ -4,6 +4,20 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Retrieves the DNS configuration for a specific node.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@pulumi/proxmoxve";
+ *
+ * const firstNode = proxmoxve.getDNS({
+ *     nodeName: "first-node",
+ * });
+ * ```
+ */
 export function getDNS(args: GetDNSArgs, opts?: pulumi.InvokeOptions): Promise<GetDNSResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -16,6 +30,9 @@ export function getDNS(args: GetDNSArgs, opts?: pulumi.InvokeOptions): Promise<G
  * A collection of arguments for invoking getDNS.
  */
 export interface GetDNSArgs {
+    /**
+     * A node name.
+     */
     nodeName: string;
 }
 
@@ -23,14 +40,34 @@ export interface GetDNSArgs {
  * A collection of values returned by getDNS.
  */
 export interface GetDNSResult {
+    /**
+     * The DNS search domain.
+     */
     readonly domain: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly nodeName: string;
+    /**
+     * The DNS servers.
+     */
     readonly servers: string[];
 }
+/**
+ * Retrieves the DNS configuration for a specific node.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@pulumi/proxmoxve";
+ *
+ * const firstNode = proxmoxve.getDNS({
+ *     nodeName: "first-node",
+ * });
+ * ```
+ */
 export function getDNSOutput(args: GetDNSOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDNSResult> {
     return pulumi.output(args).apply((a: any) => getDNS(a, opts))
 }
@@ -39,5 +76,8 @@ export function getDNSOutput(args: GetDNSOutputArgs, opts?: pulumi.InvokeOptions
  * A collection of arguments for invoking getDNS.
  */
 export interface GetDNSOutputArgs {
+    /**
+     * A node name.
+     */
     nodeName: pulumi.Input<string>;
 }

@@ -8,6 +8,31 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Retrieves information about all the available users.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/Permission"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Permission.GetUsers(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetUsers(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetUsersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetUsersResult
@@ -20,15 +45,24 @@ func GetUsers(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetUsersResult
 
 // A collection of values returned by getUsers.
 type GetUsersResult struct {
-	Comments        []string   `pulumi:"comments"`
-	Emails          []string   `pulumi:"emails"`
-	Enableds        []bool     `pulumi:"enableds"`
-	ExpirationDates []string   `pulumi:"expirationDates"`
-	FirstNames      []string   `pulumi:"firstNames"`
-	Groups          [][]string `pulumi:"groups"`
+	// The user comments.
+	Comments []string `pulumi:"comments"`
+	// The users' email addresses.
+	Emails []string `pulumi:"emails"`
+	// Whether a user account is enabled.
+	Enableds []bool `pulumi:"enableds"`
+	// The user accounts' expiration dates (RFC 3339).
+	ExpirationDates []string `pulumi:"expirationDates"`
+	// The users' first names.
+	FirstNames []string `pulumi:"firstNames"`
+	// The users' groups.
+	Groups [][]string `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
-	Id        string   `pulumi:"id"`
-	Keys      []string `pulumi:"keys"`
+	Id string `pulumi:"id"`
+	// The users' keys.
+	Keys []string `pulumi:"keys"`
+	// The users' last names.
 	LastNames []string `pulumi:"lastNames"`
-	UserIds   []string `pulumi:"userIds"`
+	// The user identifiers.
+	UserIds []string `pulumi:"userIds"`
 }

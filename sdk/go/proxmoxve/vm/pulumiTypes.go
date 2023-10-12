@@ -15,10 +15,17 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type VirtualMachineAgent struct {
-	Enabled *bool   `pulumi:"enabled"`
+	// Whether to enable the VGA device (defaults
+	// to `true`).
+	Enabled *bool `pulumi:"enabled"`
+	// The maximum amount of time to wait for data from
+	// the QEMU agent to become available ( defaults to `15m`).
 	Timeout *string `pulumi:"timeout"`
-	Trim    *bool   `pulumi:"trim"`
-	Type    *string `pulumi:"type"`
+	// Whether to enable the FSTRIM feature in the QEMU agent
+	// (defaults to `false`).
+	Trim *bool `pulumi:"trim"`
+	// The VGA type (defaults to `std`).
+	Type *string `pulumi:"type"`
 }
 
 // VirtualMachineAgentInput is an input type that accepts VirtualMachineAgentArgs and VirtualMachineAgentOutput values.
@@ -33,10 +40,17 @@ type VirtualMachineAgentInput interface {
 }
 
 type VirtualMachineAgentArgs struct {
-	Enabled pulumi.BoolPtrInput   `pulumi:"enabled"`
+	// Whether to enable the VGA device (defaults
+	// to `true`).
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The maximum amount of time to wait for data from
+	// the QEMU agent to become available ( defaults to `15m`).
 	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
-	Trim    pulumi.BoolPtrInput   `pulumi:"trim"`
-	Type    pulumi.StringPtrInput `pulumi:"type"`
+	// Whether to enable the FSTRIM feature in the QEMU agent
+	// (defaults to `false`).
+	Trim pulumi.BoolPtrInput `pulumi:"trim"`
+	// The VGA type (defaults to `std`).
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (VirtualMachineAgentArgs) ElementType() reflect.Type {
@@ -134,18 +148,25 @@ func (o VirtualMachineAgentOutput) ToOutput(ctx context.Context) pulumix.Output[
 	}
 }
 
+// Whether to enable the VGA device (defaults
+// to `true`).
 func (o VirtualMachineAgentOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineAgent) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// The maximum amount of time to wait for data from
+// the QEMU agent to become available ( defaults to `15m`).
 func (o VirtualMachineAgentOutput) Timeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineAgent) *string { return v.Timeout }).(pulumi.StringPtrOutput)
 }
 
+// Whether to enable the FSTRIM feature in the QEMU agent
+// (defaults to `false`).
 func (o VirtualMachineAgentOutput) Trim() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineAgent) *bool { return v.Trim }).(pulumi.BoolPtrOutput)
 }
 
+// The VGA type (defaults to `std`).
 func (o VirtualMachineAgentOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineAgent) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -180,6 +201,8 @@ func (o VirtualMachineAgentPtrOutput) Elem() VirtualMachineAgentOutput {
 	}).(VirtualMachineAgentOutput)
 }
 
+// Whether to enable the VGA device (defaults
+// to `true`).
 func (o VirtualMachineAgentPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineAgent) *bool {
 		if v == nil {
@@ -189,6 +212,8 @@ func (o VirtualMachineAgentPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The maximum amount of time to wait for data from
+// the QEMU agent to become available ( defaults to `15m`).
 func (o VirtualMachineAgentPtrOutput) Timeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineAgent) *string {
 		if v == nil {
@@ -198,6 +223,8 @@ func (o VirtualMachineAgentPtrOutput) Timeout() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether to enable the FSTRIM feature in the QEMU agent
+// (defaults to `false`).
 func (o VirtualMachineAgentPtrOutput) Trim() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineAgent) *bool {
 		if v == nil {
@@ -207,6 +234,7 @@ func (o VirtualMachineAgentPtrOutput) Trim() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The VGA type (defaults to `std`).
 func (o VirtualMachineAgentPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineAgent) *string {
 		if v == nil {
@@ -217,9 +245,14 @@ func (o VirtualMachineAgentPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type VirtualMachineAudioDevice struct {
-	Device  *string `pulumi:"device"`
-	Driver  *string `pulumi:"driver"`
-	Enabled *bool   `pulumi:"enabled"`
+	// The device (defaults to `socket`).
+	// - `/dev/*` - A host serial device.
+	Device *string `pulumi:"device"`
+	// The driver (defaults to `spice`).
+	Driver *string `pulumi:"driver"`
+	// Whether to enable the VGA device (defaults
+	// to `true`).
+	Enabled *bool `pulumi:"enabled"`
 }
 
 // VirtualMachineAudioDeviceInput is an input type that accepts VirtualMachineAudioDeviceArgs and VirtualMachineAudioDeviceOutput values.
@@ -234,9 +267,14 @@ type VirtualMachineAudioDeviceInput interface {
 }
 
 type VirtualMachineAudioDeviceArgs struct {
-	Device  pulumi.StringPtrInput `pulumi:"device"`
-	Driver  pulumi.StringPtrInput `pulumi:"driver"`
-	Enabled pulumi.BoolPtrInput   `pulumi:"enabled"`
+	// The device (defaults to `socket`).
+	// - `/dev/*` - A host serial device.
+	Device pulumi.StringPtrInput `pulumi:"device"`
+	// The driver (defaults to `spice`).
+	Driver pulumi.StringPtrInput `pulumi:"driver"`
+	// Whether to enable the VGA device (defaults
+	// to `true`).
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
 func (VirtualMachineAudioDeviceArgs) ElementType() reflect.Type {
@@ -334,14 +372,19 @@ func (o VirtualMachineAudioDeviceOutput) ToOutput(ctx context.Context) pulumix.O
 	}
 }
 
+// The device (defaults to `socket`).
+// - `/dev/*` - A host serial device.
 func (o VirtualMachineAudioDeviceOutput) Device() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineAudioDevice) *string { return v.Device }).(pulumi.StringPtrOutput)
 }
 
+// The driver (defaults to `spice`).
 func (o VirtualMachineAudioDeviceOutput) Driver() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineAudioDevice) *string { return v.Driver }).(pulumi.StringPtrOutput)
 }
 
+// Whether to enable the VGA device (defaults
+// to `true`).
 func (o VirtualMachineAudioDeviceOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineAudioDevice) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -376,6 +419,8 @@ func (o VirtualMachineAudioDevicePtrOutput) Elem() VirtualMachineAudioDeviceOutp
 	}).(VirtualMachineAudioDeviceOutput)
 }
 
+// The device (defaults to `socket`).
+// - `/dev/*` - A host serial device.
 func (o VirtualMachineAudioDevicePtrOutput) Device() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineAudioDevice) *string {
 		if v == nil {
@@ -385,6 +430,7 @@ func (o VirtualMachineAudioDevicePtrOutput) Device() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The driver (defaults to `spice`).
 func (o VirtualMachineAudioDevicePtrOutput) Driver() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineAudioDevice) *string {
 		if v == nil {
@@ -394,6 +440,8 @@ func (o VirtualMachineAudioDevicePtrOutput) Driver() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether to enable the VGA device (defaults
+// to `true`).
 func (o VirtualMachineAudioDevicePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineAudioDevice) *bool {
 		if v == nil {
@@ -404,8 +452,17 @@ func (o VirtualMachineAudioDevicePtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type VirtualMachineCdrom struct {
-	Enabled   *bool   `pulumi:"enabled"`
-	FileId    *string `pulumi:"fileId"`
+	// Whether to enable the VGA device (defaults
+	// to `true`).
+	Enabled *bool `pulumi:"enabled"`
+	// The file ID for a disk image (experimental -
+	// might cause high CPU utilization during import, especially with large
+	// disk images).
+	FileId *string `pulumi:"fileId"`
+	// The hardware interface to connect the cloud-init
+	// image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+	// detected if the setting is missing but a cloud-init image is present,
+	// otherwise defaults to `ide2`.
 	Interface *string `pulumi:"interface"`
 }
 
@@ -421,8 +478,17 @@ type VirtualMachineCdromInput interface {
 }
 
 type VirtualMachineCdromArgs struct {
-	Enabled   pulumi.BoolPtrInput   `pulumi:"enabled"`
-	FileId    pulumi.StringPtrInput `pulumi:"fileId"`
+	// Whether to enable the VGA device (defaults
+	// to `true`).
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The file ID for a disk image (experimental -
+	// might cause high CPU utilization during import, especially with large
+	// disk images).
+	FileId pulumi.StringPtrInput `pulumi:"fileId"`
+	// The hardware interface to connect the cloud-init
+	// image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+	// detected if the setting is missing but a cloud-init image is present,
+	// otherwise defaults to `ide2`.
 	Interface pulumi.StringPtrInput `pulumi:"interface"`
 }
 
@@ -521,14 +587,23 @@ func (o VirtualMachineCdromOutput) ToOutput(ctx context.Context) pulumix.Output[
 	}
 }
 
+// Whether to enable the VGA device (defaults
+// to `true`).
 func (o VirtualMachineCdromOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCdrom) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// The file ID for a disk image (experimental -
+// might cause high CPU utilization during import, especially with large
+// disk images).
 func (o VirtualMachineCdromOutput) FileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCdrom) *string { return v.FileId }).(pulumi.StringPtrOutput)
 }
 
+// The hardware interface to connect the cloud-init
+// image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+// detected if the setting is missing but a cloud-init image is present,
+// otherwise defaults to `ide2`.
 func (o VirtualMachineCdromOutput) Interface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCdrom) *string { return v.Interface }).(pulumi.StringPtrOutput)
 }
@@ -563,6 +638,8 @@ func (o VirtualMachineCdromPtrOutput) Elem() VirtualMachineCdromOutput {
 	}).(VirtualMachineCdromOutput)
 }
 
+// Whether to enable the VGA device (defaults
+// to `true`).
 func (o VirtualMachineCdromPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCdrom) *bool {
 		if v == nil {
@@ -572,6 +649,9 @@ func (o VirtualMachineCdromPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The file ID for a disk image (experimental -
+// might cause high CPU utilization during import, especially with large
+// disk images).
 func (o VirtualMachineCdromPtrOutput) FileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCdrom) *string {
 		if v == nil {
@@ -581,6 +661,10 @@ func (o VirtualMachineCdromPtrOutput) FileId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The hardware interface to connect the cloud-init
+// image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+// detected if the setting is missing but a cloud-init image is present,
+// otherwise defaults to `ide2`.
 func (o VirtualMachineCdromPtrOutput) Interface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCdrom) *string {
 		if v == nil {
@@ -591,11 +675,19 @@ func (o VirtualMachineCdromPtrOutput) Interface() pulumi.StringPtrOutput {
 }
 
 type VirtualMachineClone struct {
+	// The identifier for the datastore to create the
+	// cloud-init disk in (defaults to `local-lvm`).
 	DatastoreId *string `pulumi:"datastoreId"`
 	Full        *bool   `pulumi:"full"`
-	NodeName    *string `pulumi:"nodeName"`
-	Retries     *int    `pulumi:"retries"`
-	VmId        int     `pulumi:"vmId"`
+	// The name of the node to assign the virtual machine
+	// to.
+	NodeName *string `pulumi:"nodeName"`
+	// Number of retries in Proxmox for clone vm.
+	// Sometimes Proxmox errors with timeout when creating multiple clones at
+	// once.
+	Retries *int `pulumi:"retries"`
+	// The VM identifier.
+	VmId int `pulumi:"vmId"`
 }
 
 // VirtualMachineCloneInput is an input type that accepts VirtualMachineCloneArgs and VirtualMachineCloneOutput values.
@@ -610,11 +702,19 @@ type VirtualMachineCloneInput interface {
 }
 
 type VirtualMachineCloneArgs struct {
+	// The identifier for the datastore to create the
+	// cloud-init disk in (defaults to `local-lvm`).
 	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
 	Full        pulumi.BoolPtrInput   `pulumi:"full"`
-	NodeName    pulumi.StringPtrInput `pulumi:"nodeName"`
-	Retries     pulumi.IntPtrInput    `pulumi:"retries"`
-	VmId        pulumi.IntInput       `pulumi:"vmId"`
+	// The name of the node to assign the virtual machine
+	// to.
+	NodeName pulumi.StringPtrInput `pulumi:"nodeName"`
+	// Number of retries in Proxmox for clone vm.
+	// Sometimes Proxmox errors with timeout when creating multiple clones at
+	// once.
+	Retries pulumi.IntPtrInput `pulumi:"retries"`
+	// The VM identifier.
+	VmId pulumi.IntInput `pulumi:"vmId"`
 }
 
 func (VirtualMachineCloneArgs) ElementType() reflect.Type {
@@ -712,6 +812,8 @@ func (o VirtualMachineCloneOutput) ToOutput(ctx context.Context) pulumix.Output[
 	}
 }
 
+// The identifier for the datastore to create the
+// cloud-init disk in (defaults to `local-lvm`).
 func (o VirtualMachineCloneOutput) DatastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineClone) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
 }
@@ -720,14 +822,20 @@ func (o VirtualMachineCloneOutput) Full() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineClone) *bool { return v.Full }).(pulumi.BoolPtrOutput)
 }
 
+// The name of the node to assign the virtual machine
+// to.
 func (o VirtualMachineCloneOutput) NodeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineClone) *string { return v.NodeName }).(pulumi.StringPtrOutput)
 }
 
+// Number of retries in Proxmox for clone vm.
+// Sometimes Proxmox errors with timeout when creating multiple clones at
+// once.
 func (o VirtualMachineCloneOutput) Retries() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineClone) *int { return v.Retries }).(pulumi.IntPtrOutput)
 }
 
+// The VM identifier.
 func (o VirtualMachineCloneOutput) VmId() pulumi.IntOutput {
 	return o.ApplyT(func(v VirtualMachineClone) int { return v.VmId }).(pulumi.IntOutput)
 }
@@ -762,6 +870,8 @@ func (o VirtualMachineClonePtrOutput) Elem() VirtualMachineCloneOutput {
 	}).(VirtualMachineCloneOutput)
 }
 
+// The identifier for the datastore to create the
+// cloud-init disk in (defaults to `local-lvm`).
 func (o VirtualMachineClonePtrOutput) DatastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineClone) *string {
 		if v == nil {
@@ -780,6 +890,8 @@ func (o VirtualMachineClonePtrOutput) Full() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The name of the node to assign the virtual machine
+// to.
 func (o VirtualMachineClonePtrOutput) NodeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineClone) *string {
 		if v == nil {
@@ -789,6 +901,9 @@ func (o VirtualMachineClonePtrOutput) NodeName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Number of retries in Proxmox for clone vm.
+// Sometimes Proxmox errors with timeout when creating multiple clones at
+// once.
 func (o VirtualMachineClonePtrOutput) Retries() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineClone) *int {
 		if v == nil {
@@ -798,6 +913,7 @@ func (o VirtualMachineClonePtrOutput) Retries() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The VM identifier.
 func (o VirtualMachineClonePtrOutput) VmId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineClone) *int {
 		if v == nil {
@@ -808,14 +924,45 @@ func (o VirtualMachineClonePtrOutput) VmId() pulumi.IntPtrOutput {
 }
 
 type VirtualMachineCpu struct {
-	Architecture *string  `pulumi:"architecture"`
-	Cores        *int     `pulumi:"cores"`
-	Flags        []string `pulumi:"flags"`
-	Hotplugged   *int     `pulumi:"hotplugged"`
-	Numa         *bool    `pulumi:"numa"`
-	Sockets      *int     `pulumi:"sockets"`
-	Type         *string  `pulumi:"type"`
-	Units        *int     `pulumi:"units"`
+	// The CPU architecture (defaults to `x8664`).
+	Architecture *string `pulumi:"architecture"`
+	// The number of CPU cores (defaults to `1`).
+	Cores *int `pulumi:"cores"`
+	// The CPU flags.
+	// - `+aes`/`-aes` - Activate AES instruction set for HW acceleration.
+	// - `+amd-no-ssb`/`-amd-no-ssb` - Notifies guest OS that host is not
+	//   vulnerable for Spectre on AMD CPUs.
+	// - `+amd-ssbd`/`-amd-ssbd` - Improves Spectre mitigation performance with
+	//   AMD CPUs, best used with "virt-ssbd".
+	// - `+hv-evmcs`/`-hv-evmcs` - Improve performance for nested
+	//   virtualization (only supported on Intel CPUs).
+	// - `+hv-tlbflush`/`-hv-tlbflush` - Improve performance in overcommitted
+	//   Windows guests (may lead to guest BSOD on old CPUs).
+	// - `+ibpb`/`-ibpb` - Allows improved Spectre mitigation on AMD CPUs.
+	// - `+md-clear`/`-md-clear` - Required to let the guest OS know if MDS is
+	//   mitigated correctly.
+	// - `+pcid`/`-pcid` - Meltdown fix cost reduction on Westmere, Sandy- and
+	//   Ivy Bridge Intel CPUs.
+	// - `+pdpe1gb`/`-pdpe1gb` - Allows guest OS to use 1 GB size pages, if
+	//   host HW supports it.
+	// - `+spec-ctrl`/`-spec-ctrl` - Allows improved Spectre mitigation with
+	//   Intel CPUs.
+	// - `+ssbd`/`-ssbd` - Protection for "Speculative Store Bypass" for Intel
+	//   models.
+	// - `+virt-ssbd`/`-virt-ssbd` - Basis for "Speculative Store Bypass"
+	//   protection for AMD models.
+	Flags []string `pulumi:"flags"`
+	// The number of hotplugged vCPUs (defaults
+	// to `0`).
+	Hotplugged *int `pulumi:"hotplugged"`
+	// Enable/disable NUMA. (default to `false`)
+	Numa *bool `pulumi:"numa"`
+	// The number of CPU sockets (defaults to `1`).
+	Sockets *int `pulumi:"sockets"`
+	// The VGA type (defaults to `std`).
+	Type *string `pulumi:"type"`
+	// The CPU units (defaults to `1024`).
+	Units *int `pulumi:"units"`
 }
 
 // VirtualMachineCpuInput is an input type that accepts VirtualMachineCpuArgs and VirtualMachineCpuOutput values.
@@ -830,14 +977,45 @@ type VirtualMachineCpuInput interface {
 }
 
 type VirtualMachineCpuArgs struct {
-	Architecture pulumi.StringPtrInput   `pulumi:"architecture"`
-	Cores        pulumi.IntPtrInput      `pulumi:"cores"`
-	Flags        pulumi.StringArrayInput `pulumi:"flags"`
-	Hotplugged   pulumi.IntPtrInput      `pulumi:"hotplugged"`
-	Numa         pulumi.BoolPtrInput     `pulumi:"numa"`
-	Sockets      pulumi.IntPtrInput      `pulumi:"sockets"`
-	Type         pulumi.StringPtrInput   `pulumi:"type"`
-	Units        pulumi.IntPtrInput      `pulumi:"units"`
+	// The CPU architecture (defaults to `x8664`).
+	Architecture pulumi.StringPtrInput `pulumi:"architecture"`
+	// The number of CPU cores (defaults to `1`).
+	Cores pulumi.IntPtrInput `pulumi:"cores"`
+	// The CPU flags.
+	// - `+aes`/`-aes` - Activate AES instruction set for HW acceleration.
+	// - `+amd-no-ssb`/`-amd-no-ssb` - Notifies guest OS that host is not
+	//   vulnerable for Spectre on AMD CPUs.
+	// - `+amd-ssbd`/`-amd-ssbd` - Improves Spectre mitigation performance with
+	//   AMD CPUs, best used with "virt-ssbd".
+	// - `+hv-evmcs`/`-hv-evmcs` - Improve performance for nested
+	//   virtualization (only supported on Intel CPUs).
+	// - `+hv-tlbflush`/`-hv-tlbflush` - Improve performance in overcommitted
+	//   Windows guests (may lead to guest BSOD on old CPUs).
+	// - `+ibpb`/`-ibpb` - Allows improved Spectre mitigation on AMD CPUs.
+	// - `+md-clear`/`-md-clear` - Required to let the guest OS know if MDS is
+	//   mitigated correctly.
+	// - `+pcid`/`-pcid` - Meltdown fix cost reduction on Westmere, Sandy- and
+	//   Ivy Bridge Intel CPUs.
+	// - `+pdpe1gb`/`-pdpe1gb` - Allows guest OS to use 1 GB size pages, if
+	//   host HW supports it.
+	// - `+spec-ctrl`/`-spec-ctrl` - Allows improved Spectre mitigation with
+	//   Intel CPUs.
+	// - `+ssbd`/`-ssbd` - Protection for "Speculative Store Bypass" for Intel
+	//   models.
+	// - `+virt-ssbd`/`-virt-ssbd` - Basis for "Speculative Store Bypass"
+	//   protection for AMD models.
+	Flags pulumi.StringArrayInput `pulumi:"flags"`
+	// The number of hotplugged vCPUs (defaults
+	// to `0`).
+	Hotplugged pulumi.IntPtrInput `pulumi:"hotplugged"`
+	// Enable/disable NUMA. (default to `false`)
+	Numa pulumi.BoolPtrInput `pulumi:"numa"`
+	// The number of CPU sockets (defaults to `1`).
+	Sockets pulumi.IntPtrInput `pulumi:"sockets"`
+	// The VGA type (defaults to `std`).
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The CPU units (defaults to `1024`).
+	Units pulumi.IntPtrInput `pulumi:"units"`
 }
 
 func (VirtualMachineCpuArgs) ElementType() reflect.Type {
@@ -935,34 +1113,65 @@ func (o VirtualMachineCpuOutput) ToOutput(ctx context.Context) pulumix.Output[Vi
 	}
 }
 
+// The CPU architecture (defaults to `x8664`).
 func (o VirtualMachineCpuOutput) Architecture() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCpu) *string { return v.Architecture }).(pulumi.StringPtrOutput)
 }
 
+// The number of CPU cores (defaults to `1`).
 func (o VirtualMachineCpuOutput) Cores() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCpu) *int { return v.Cores }).(pulumi.IntPtrOutput)
 }
 
+// The CPU flags.
+//   - `+aes`/`-aes` - Activate AES instruction set for HW acceleration.
+//   - `+amd-no-ssb`/`-amd-no-ssb` - Notifies guest OS that host is not
+//     vulnerable for Spectre on AMD CPUs.
+//   - `+amd-ssbd`/`-amd-ssbd` - Improves Spectre mitigation performance with
+//     AMD CPUs, best used with "virt-ssbd".
+//   - `+hv-evmcs`/`-hv-evmcs` - Improve performance for nested
+//     virtualization (only supported on Intel CPUs).
+//   - `+hv-tlbflush`/`-hv-tlbflush` - Improve performance in overcommitted
+//     Windows guests (may lead to guest BSOD on old CPUs).
+//   - `+ibpb`/`-ibpb` - Allows improved Spectre mitigation on AMD CPUs.
+//   - `+md-clear`/`-md-clear` - Required to let the guest OS know if MDS is
+//     mitigated correctly.
+//   - `+pcid`/`-pcid` - Meltdown fix cost reduction on Westmere, Sandy- and
+//     Ivy Bridge Intel CPUs.
+//   - `+pdpe1gb`/`-pdpe1gb` - Allows guest OS to use 1 GB size pages, if
+//     host HW supports it.
+//   - `+spec-ctrl`/`-spec-ctrl` - Allows improved Spectre mitigation with
+//     Intel CPUs.
+//   - `+ssbd`/`-ssbd` - Protection for "Speculative Store Bypass" for Intel
+//     models.
+//   - `+virt-ssbd`/`-virt-ssbd` - Basis for "Speculative Store Bypass"
+//     protection for AMD models.
 func (o VirtualMachineCpuOutput) Flags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VirtualMachineCpu) []string { return v.Flags }).(pulumi.StringArrayOutput)
 }
 
+// The number of hotplugged vCPUs (defaults
+// to `0`).
 func (o VirtualMachineCpuOutput) Hotplugged() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCpu) *int { return v.Hotplugged }).(pulumi.IntPtrOutput)
 }
 
+// Enable/disable NUMA. (default to `false`)
 func (o VirtualMachineCpuOutput) Numa() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCpu) *bool { return v.Numa }).(pulumi.BoolPtrOutput)
 }
 
+// The number of CPU sockets (defaults to `1`).
 func (o VirtualMachineCpuOutput) Sockets() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCpu) *int { return v.Sockets }).(pulumi.IntPtrOutput)
 }
 
+// The VGA type (defaults to `std`).
 func (o VirtualMachineCpuOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCpu) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// The CPU units (defaults to `1024`).
 func (o VirtualMachineCpuOutput) Units() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCpu) *int { return v.Units }).(pulumi.IntPtrOutput)
 }
@@ -997,6 +1206,7 @@ func (o VirtualMachineCpuPtrOutput) Elem() VirtualMachineCpuOutput {
 	}).(VirtualMachineCpuOutput)
 }
 
+// The CPU architecture (defaults to `x8664`).
 func (o VirtualMachineCpuPtrOutput) Architecture() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCpu) *string {
 		if v == nil {
@@ -1006,6 +1216,7 @@ func (o VirtualMachineCpuPtrOutput) Architecture() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The number of CPU cores (defaults to `1`).
 func (o VirtualMachineCpuPtrOutput) Cores() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCpu) *int {
 		if v == nil {
@@ -1015,6 +1226,29 @@ func (o VirtualMachineCpuPtrOutput) Cores() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The CPU flags.
+//   - `+aes`/`-aes` - Activate AES instruction set for HW acceleration.
+//   - `+amd-no-ssb`/`-amd-no-ssb` - Notifies guest OS that host is not
+//     vulnerable for Spectre on AMD CPUs.
+//   - `+amd-ssbd`/`-amd-ssbd` - Improves Spectre mitigation performance with
+//     AMD CPUs, best used with "virt-ssbd".
+//   - `+hv-evmcs`/`-hv-evmcs` - Improve performance for nested
+//     virtualization (only supported on Intel CPUs).
+//   - `+hv-tlbflush`/`-hv-tlbflush` - Improve performance in overcommitted
+//     Windows guests (may lead to guest BSOD on old CPUs).
+//   - `+ibpb`/`-ibpb` - Allows improved Spectre mitigation on AMD CPUs.
+//   - `+md-clear`/`-md-clear` - Required to let the guest OS know if MDS is
+//     mitigated correctly.
+//   - `+pcid`/`-pcid` - Meltdown fix cost reduction on Westmere, Sandy- and
+//     Ivy Bridge Intel CPUs.
+//   - `+pdpe1gb`/`-pdpe1gb` - Allows guest OS to use 1 GB size pages, if
+//     host HW supports it.
+//   - `+spec-ctrl`/`-spec-ctrl` - Allows improved Spectre mitigation with
+//     Intel CPUs.
+//   - `+ssbd`/`-ssbd` - Protection for "Speculative Store Bypass" for Intel
+//     models.
+//   - `+virt-ssbd`/`-virt-ssbd` - Basis for "Speculative Store Bypass"
+//     protection for AMD models.
 func (o VirtualMachineCpuPtrOutput) Flags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VirtualMachineCpu) []string {
 		if v == nil {
@@ -1024,6 +1258,8 @@ func (o VirtualMachineCpuPtrOutput) Flags() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// The number of hotplugged vCPUs (defaults
+// to `0`).
 func (o VirtualMachineCpuPtrOutput) Hotplugged() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCpu) *int {
 		if v == nil {
@@ -1033,6 +1269,7 @@ func (o VirtualMachineCpuPtrOutput) Hotplugged() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Enable/disable NUMA. (default to `false`)
 func (o VirtualMachineCpuPtrOutput) Numa() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCpu) *bool {
 		if v == nil {
@@ -1042,6 +1279,7 @@ func (o VirtualMachineCpuPtrOutput) Numa() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The number of CPU sockets (defaults to `1`).
 func (o VirtualMachineCpuPtrOutput) Sockets() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCpu) *int {
 		if v == nil {
@@ -1051,6 +1289,7 @@ func (o VirtualMachineCpuPtrOutput) Sockets() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The VGA type (defaults to `std`).
 func (o VirtualMachineCpuPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCpu) *string {
 		if v == nil {
@@ -1060,6 +1299,7 @@ func (o VirtualMachineCpuPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The CPU units (defaults to `1024`).
 func (o VirtualMachineCpuPtrOutput) Units() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCpu) *int {
 		if v == nil {
@@ -1070,16 +1310,37 @@ func (o VirtualMachineCpuPtrOutput) Units() pulumi.IntPtrOutput {
 }
 
 type VirtualMachineDisk struct {
-	Cache       *string                  `pulumi:"cache"`
-	DatastoreId *string                  `pulumi:"datastoreId"`
-	Discard     *string                  `pulumi:"discard"`
-	FileFormat  *string                  `pulumi:"fileFormat"`
-	FileId      *string                  `pulumi:"fileId"`
-	Interface   string                   `pulumi:"interface"`
-	Iothread    *bool                    `pulumi:"iothread"`
-	Size        *int                     `pulumi:"size"`
-	Speed       *VirtualMachineDiskSpeed `pulumi:"speed"`
-	Ssd         *bool                    `pulumi:"ssd"`
+	// The cache type (defaults to `none`).
+	Cache *string `pulumi:"cache"`
+	// The identifier for the datastore to create the
+	// cloud-init disk in (defaults to `local-lvm`).
+	DatastoreId *string `pulumi:"datastoreId"`
+	// Whether to pass discard/trim requests to the
+	// underlying storage. Supported values are `on`/`ignore` (defaults
+	// to `ignore`).
+	Discard *string `pulumi:"discard"`
+	// The file format.
+	FileFormat *string `pulumi:"fileFormat"`
+	// The file ID for a disk image (experimental -
+	// might cause high CPU utilization during import, especially with large
+	// disk images).
+	FileId *string `pulumi:"fileId"`
+	// The hardware interface to connect the cloud-init
+	// image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+	// detected if the setting is missing but a cloud-init image is present,
+	// otherwise defaults to `ide2`.
+	Interface string `pulumi:"interface"`
+	// Whether to use iothreads for this disk (defaults
+	// to `false`).
+	Iothread *bool `pulumi:"iothread"`
+	// The disk size in gigabytes (defaults to `8`).
+	Size *int `pulumi:"size"`
+	// The speed limits.
+	Speed *VirtualMachineDiskSpeed `pulumi:"speed"`
+	// Whether to use an SSD emulation option for this disk (
+	// defaults to `false`). Note that SSD emulation is not supported on VirtIO
+	// Block drives.
+	Ssd *bool `pulumi:"ssd"`
 }
 
 // VirtualMachineDiskInput is an input type that accepts VirtualMachineDiskArgs and VirtualMachineDiskOutput values.
@@ -1094,16 +1355,37 @@ type VirtualMachineDiskInput interface {
 }
 
 type VirtualMachineDiskArgs struct {
-	Cache       pulumi.StringPtrInput           `pulumi:"cache"`
-	DatastoreId pulumi.StringPtrInput           `pulumi:"datastoreId"`
-	Discard     pulumi.StringPtrInput           `pulumi:"discard"`
-	FileFormat  pulumi.StringPtrInput           `pulumi:"fileFormat"`
-	FileId      pulumi.StringPtrInput           `pulumi:"fileId"`
-	Interface   pulumi.StringInput              `pulumi:"interface"`
-	Iothread    pulumi.BoolPtrInput             `pulumi:"iothread"`
-	Size        pulumi.IntPtrInput              `pulumi:"size"`
-	Speed       VirtualMachineDiskSpeedPtrInput `pulumi:"speed"`
-	Ssd         pulumi.BoolPtrInput             `pulumi:"ssd"`
+	// The cache type (defaults to `none`).
+	Cache pulumi.StringPtrInput `pulumi:"cache"`
+	// The identifier for the datastore to create the
+	// cloud-init disk in (defaults to `local-lvm`).
+	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
+	// Whether to pass discard/trim requests to the
+	// underlying storage. Supported values are `on`/`ignore` (defaults
+	// to `ignore`).
+	Discard pulumi.StringPtrInput `pulumi:"discard"`
+	// The file format.
+	FileFormat pulumi.StringPtrInput `pulumi:"fileFormat"`
+	// The file ID for a disk image (experimental -
+	// might cause high CPU utilization during import, especially with large
+	// disk images).
+	FileId pulumi.StringPtrInput `pulumi:"fileId"`
+	// The hardware interface to connect the cloud-init
+	// image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+	// detected if the setting is missing but a cloud-init image is present,
+	// otherwise defaults to `ide2`.
+	Interface pulumi.StringInput `pulumi:"interface"`
+	// Whether to use iothreads for this disk (defaults
+	// to `false`).
+	Iothread pulumi.BoolPtrInput `pulumi:"iothread"`
+	// The disk size in gigabytes (defaults to `8`).
+	Size pulumi.IntPtrInput `pulumi:"size"`
+	// The speed limits.
+	Speed VirtualMachineDiskSpeedPtrInput `pulumi:"speed"`
+	// Whether to use an SSD emulation option for this disk (
+	// defaults to `false`). Note that SSD emulation is not supported on VirtIO
+	// Block drives.
+	Ssd pulumi.BoolPtrInput `pulumi:"ssd"`
 }
 
 func (VirtualMachineDiskArgs) ElementType() reflect.Type {
@@ -1175,42 +1457,63 @@ func (o VirtualMachineDiskOutput) ToOutput(ctx context.Context) pulumix.Output[V
 	}
 }
 
+// The cache type (defaults to `none`).
 func (o VirtualMachineDiskOutput) Cache() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.Cache }).(pulumi.StringPtrOutput)
 }
 
+// The identifier for the datastore to create the
+// cloud-init disk in (defaults to `local-lvm`).
 func (o VirtualMachineDiskOutput) DatastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
 }
 
+// Whether to pass discard/trim requests to the
+// underlying storage. Supported values are `on`/`ignore` (defaults
+// to `ignore`).
 func (o VirtualMachineDiskOutput) Discard() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.Discard }).(pulumi.StringPtrOutput)
 }
 
+// The file format.
 func (o VirtualMachineDiskOutput) FileFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.FileFormat }).(pulumi.StringPtrOutput)
 }
 
+// The file ID for a disk image (experimental -
+// might cause high CPU utilization during import, especially with large
+// disk images).
 func (o VirtualMachineDiskOutput) FileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.FileId }).(pulumi.StringPtrOutput)
 }
 
+// The hardware interface to connect the cloud-init
+// image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+// detected if the setting is missing but a cloud-init image is present,
+// otherwise defaults to `ide2`.
 func (o VirtualMachineDiskOutput) Interface() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) string { return v.Interface }).(pulumi.StringOutput)
 }
 
+// Whether to use iothreads for this disk (defaults
+// to `false`).
 func (o VirtualMachineDiskOutput) Iothread() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *bool { return v.Iothread }).(pulumi.BoolPtrOutput)
 }
 
+// The disk size in gigabytes (defaults to `8`).
 func (o VirtualMachineDiskOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
 
+// The speed limits.
 func (o VirtualMachineDiskOutput) Speed() VirtualMachineDiskSpeedPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *VirtualMachineDiskSpeed { return v.Speed }).(VirtualMachineDiskSpeedPtrOutput)
 }
 
+// Whether to use an SSD emulation option for this disk (
+// defaults to `false`). Note that SSD emulation is not supported on VirtIO
+// Block drives.
 func (o VirtualMachineDiskOutput) Ssd() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *bool { return v.Ssd }).(pulumi.BoolPtrOutput)
 }
@@ -1242,9 +1545,15 @@ func (o VirtualMachineDiskArrayOutput) Index(i pulumi.IntInput) VirtualMachineDi
 }
 
 type VirtualMachineDiskSpeed struct {
-	Read           *int `pulumi:"read"`
-	ReadBurstable  *int `pulumi:"readBurstable"`
-	Write          *int `pulumi:"write"`
+	// The maximum read speed in megabytes per second.
+	Read *int `pulumi:"read"`
+	// The maximum burstable read speed in
+	// megabytes per second.
+	ReadBurstable *int `pulumi:"readBurstable"`
+	// The maximum write speed in megabytes per second.
+	Write *int `pulumi:"write"`
+	// The maximum burstable write speed in
+	// megabytes per second.
 	WriteBurstable *int `pulumi:"writeBurstable"`
 }
 
@@ -1260,9 +1569,15 @@ type VirtualMachineDiskSpeedInput interface {
 }
 
 type VirtualMachineDiskSpeedArgs struct {
-	Read           pulumi.IntPtrInput `pulumi:"read"`
-	ReadBurstable  pulumi.IntPtrInput `pulumi:"readBurstable"`
-	Write          pulumi.IntPtrInput `pulumi:"write"`
+	// The maximum read speed in megabytes per second.
+	Read pulumi.IntPtrInput `pulumi:"read"`
+	// The maximum burstable read speed in
+	// megabytes per second.
+	ReadBurstable pulumi.IntPtrInput `pulumi:"readBurstable"`
+	// The maximum write speed in megabytes per second.
+	Write pulumi.IntPtrInput `pulumi:"write"`
+	// The maximum burstable write speed in
+	// megabytes per second.
 	WriteBurstable pulumi.IntPtrInput `pulumi:"writeBurstable"`
 }
 
@@ -1361,18 +1676,24 @@ func (o VirtualMachineDiskSpeedOutput) ToOutput(ctx context.Context) pulumix.Out
 	}
 }
 
+// The maximum read speed in megabytes per second.
 func (o VirtualMachineDiskSpeedOutput) Read() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDiskSpeed) *int { return v.Read }).(pulumi.IntPtrOutput)
 }
 
+// The maximum burstable read speed in
+// megabytes per second.
 func (o VirtualMachineDiskSpeedOutput) ReadBurstable() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDiskSpeed) *int { return v.ReadBurstable }).(pulumi.IntPtrOutput)
 }
 
+// The maximum write speed in megabytes per second.
 func (o VirtualMachineDiskSpeedOutput) Write() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDiskSpeed) *int { return v.Write }).(pulumi.IntPtrOutput)
 }
 
+// The maximum burstable write speed in
+// megabytes per second.
 func (o VirtualMachineDiskSpeedOutput) WriteBurstable() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDiskSpeed) *int { return v.WriteBurstable }).(pulumi.IntPtrOutput)
 }
@@ -1407,6 +1728,7 @@ func (o VirtualMachineDiskSpeedPtrOutput) Elem() VirtualMachineDiskSpeedOutput {
 	}).(VirtualMachineDiskSpeedOutput)
 }
 
+// The maximum read speed in megabytes per second.
 func (o VirtualMachineDiskSpeedPtrOutput) Read() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineDiskSpeed) *int {
 		if v == nil {
@@ -1416,6 +1738,8 @@ func (o VirtualMachineDiskSpeedPtrOutput) Read() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The maximum burstable read speed in
+// megabytes per second.
 func (o VirtualMachineDiskSpeedPtrOutput) ReadBurstable() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineDiskSpeed) *int {
 		if v == nil {
@@ -1425,6 +1749,7 @@ func (o VirtualMachineDiskSpeedPtrOutput) ReadBurstable() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The maximum write speed in megabytes per second.
 func (o VirtualMachineDiskSpeedPtrOutput) Write() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineDiskSpeed) *int {
 		if v == nil {
@@ -1434,6 +1759,8 @@ func (o VirtualMachineDiskSpeedPtrOutput) Write() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The maximum burstable write speed in
+// megabytes per second.
 func (o VirtualMachineDiskSpeedPtrOutput) WriteBurstable() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineDiskSpeed) *int {
 		if v == nil {
@@ -1444,10 +1771,18 @@ func (o VirtualMachineDiskSpeedPtrOutput) WriteBurstable() pulumi.IntPtrOutput {
 }
 
 type VirtualMachineEfiDisk struct {
-	DatastoreId     *string `pulumi:"datastoreId"`
-	FileFormat      *string `pulumi:"fileFormat"`
-	PreEnrolledKeys *bool   `pulumi:"preEnrolledKeys"`
-	Type            *string `pulumi:"type"`
+	// The identifier for the datastore to create the
+	// cloud-init disk in (defaults to `local-lvm`).
+	DatastoreId *string `pulumi:"datastoreId"`
+	// The file format.
+	FileFormat *string `pulumi:"fileFormat"`
+	// Use am EFI vars template with
+	// distribution-specific and Microsoft Standard keys enrolled, if used with
+	// EFI type=`4m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
+	// to `false`).
+	PreEnrolledKeys *bool `pulumi:"preEnrolledKeys"`
+	// The VGA type (defaults to `std`).
+	Type *string `pulumi:"type"`
 }
 
 // VirtualMachineEfiDiskInput is an input type that accepts VirtualMachineEfiDiskArgs and VirtualMachineEfiDiskOutput values.
@@ -1462,10 +1797,18 @@ type VirtualMachineEfiDiskInput interface {
 }
 
 type VirtualMachineEfiDiskArgs struct {
-	DatastoreId     pulumi.StringPtrInput `pulumi:"datastoreId"`
-	FileFormat      pulumi.StringPtrInput `pulumi:"fileFormat"`
-	PreEnrolledKeys pulumi.BoolPtrInput   `pulumi:"preEnrolledKeys"`
-	Type            pulumi.StringPtrInput `pulumi:"type"`
+	// The identifier for the datastore to create the
+	// cloud-init disk in (defaults to `local-lvm`).
+	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
+	// The file format.
+	FileFormat pulumi.StringPtrInput `pulumi:"fileFormat"`
+	// Use am EFI vars template with
+	// distribution-specific and Microsoft Standard keys enrolled, if used with
+	// EFI type=`4m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
+	// to `false`).
+	PreEnrolledKeys pulumi.BoolPtrInput `pulumi:"preEnrolledKeys"`
+	// The VGA type (defaults to `std`).
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (VirtualMachineEfiDiskArgs) ElementType() reflect.Type {
@@ -1563,18 +1906,26 @@ func (o VirtualMachineEfiDiskOutput) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
+// The identifier for the datastore to create the
+// cloud-init disk in (defaults to `local-lvm`).
 func (o VirtualMachineEfiDiskOutput) DatastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineEfiDisk) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
 }
 
+// The file format.
 func (o VirtualMachineEfiDiskOutput) FileFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineEfiDisk) *string { return v.FileFormat }).(pulumi.StringPtrOutput)
 }
 
+// Use am EFI vars template with
+// distribution-specific and Microsoft Standard keys enrolled, if used with
+// EFI type=`4m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
+// to `false`).
 func (o VirtualMachineEfiDiskOutput) PreEnrolledKeys() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineEfiDisk) *bool { return v.PreEnrolledKeys }).(pulumi.BoolPtrOutput)
 }
 
+// The VGA type (defaults to `std`).
 func (o VirtualMachineEfiDiskOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineEfiDisk) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -1609,6 +1960,8 @@ func (o VirtualMachineEfiDiskPtrOutput) Elem() VirtualMachineEfiDiskOutput {
 	}).(VirtualMachineEfiDiskOutput)
 }
 
+// The identifier for the datastore to create the
+// cloud-init disk in (defaults to `local-lvm`).
 func (o VirtualMachineEfiDiskPtrOutput) DatastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineEfiDisk) *string {
 		if v == nil {
@@ -1618,6 +1971,7 @@ func (o VirtualMachineEfiDiskPtrOutput) DatastoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The file format.
 func (o VirtualMachineEfiDiskPtrOutput) FileFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineEfiDisk) *string {
 		if v == nil {
@@ -1627,6 +1981,10 @@ func (o VirtualMachineEfiDiskPtrOutput) FileFormat() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Use am EFI vars template with
+// distribution-specific and Microsoft Standard keys enrolled, if used with
+// EFI type=`4m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
+// to `false`).
 func (o VirtualMachineEfiDiskPtrOutput) PreEnrolledKeys() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineEfiDisk) *bool {
 		if v == nil {
@@ -1636,6 +1994,7 @@ func (o VirtualMachineEfiDiskPtrOutput) PreEnrolledKeys() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The VGA type (defaults to `std`).
 func (o VirtualMachineEfiDiskPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineEfiDisk) *string {
 		if v == nil {
@@ -1646,14 +2005,29 @@ func (o VirtualMachineEfiDiskPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type VirtualMachineHostpci struct {
-	Device  string  `pulumi:"device"`
-	Id      *string `pulumi:"id"`
+	// The device (defaults to `socket`).
+	// - `/dev/*` - A host serial device.
+	Device string `pulumi:"device"`
+	// The PCI device ID. Use either this or `mapping`.
+	Id *string `pulumi:"id"`
+	// The resource mapping name of the device, for
+	// example gpu. Use either this or `id`.
 	Mapping *string `pulumi:"mapping"`
-	Mdev    *string `pulumi:"mdev"`
-	Pcie    *bool   `pulumi:"pcie"`
+	// The mediated device ID to use.
+	Mdev *string `pulumi:"mdev"`
+	// Tells Proxmox to use a PCIe or PCI port. Some
+	// guests/device combination require PCIe rather than PCI. PCIe is only
+	// available for q35 machine types.
+	Pcie *bool `pulumi:"pcie"`
+	// A path to a ROM file for the device to use. This
+	// is a relative path under `/usr/share/kvm/`.
 	RomFile *string `pulumi:"romFile"`
-	Rombar  *bool   `pulumi:"rombar"`
-	Xvga    *bool   `pulumi:"xvga"`
+	// Makes the firmware ROM visible for the VM (defaults
+	// to `true`).
+	Rombar *bool `pulumi:"rombar"`
+	// Marks the PCI(e) device as the primary GPU of the VM.
+	// With this enabled the `vga` configuration argument will be ignored.
+	Xvga *bool `pulumi:"xvga"`
 }
 
 // VirtualMachineHostpciInput is an input type that accepts VirtualMachineHostpciArgs and VirtualMachineHostpciOutput values.
@@ -1668,14 +2042,29 @@ type VirtualMachineHostpciInput interface {
 }
 
 type VirtualMachineHostpciArgs struct {
-	Device  pulumi.StringInput    `pulumi:"device"`
-	Id      pulumi.StringPtrInput `pulumi:"id"`
+	// The device (defaults to `socket`).
+	// - `/dev/*` - A host serial device.
+	Device pulumi.StringInput `pulumi:"device"`
+	// The PCI device ID. Use either this or `mapping`.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The resource mapping name of the device, for
+	// example gpu. Use either this or `id`.
 	Mapping pulumi.StringPtrInput `pulumi:"mapping"`
-	Mdev    pulumi.StringPtrInput `pulumi:"mdev"`
-	Pcie    pulumi.BoolPtrInput   `pulumi:"pcie"`
+	// The mediated device ID to use.
+	Mdev pulumi.StringPtrInput `pulumi:"mdev"`
+	// Tells Proxmox to use a PCIe or PCI port. Some
+	// guests/device combination require PCIe rather than PCI. PCIe is only
+	// available for q35 machine types.
+	Pcie pulumi.BoolPtrInput `pulumi:"pcie"`
+	// A path to a ROM file for the device to use. This
+	// is a relative path under `/usr/share/kvm/`.
 	RomFile pulumi.StringPtrInput `pulumi:"romFile"`
-	Rombar  pulumi.BoolPtrInput   `pulumi:"rombar"`
-	Xvga    pulumi.BoolPtrInput   `pulumi:"xvga"`
+	// Makes the firmware ROM visible for the VM (defaults
+	// to `true`).
+	Rombar pulumi.BoolPtrInput `pulumi:"rombar"`
+	// Marks the PCI(e) device as the primary GPU of the VM.
+	// With this enabled the `vga` configuration argument will be ignored.
+	Xvga pulumi.BoolPtrInput `pulumi:"xvga"`
 }
 
 func (VirtualMachineHostpciArgs) ElementType() reflect.Type {
@@ -1747,34 +2136,49 @@ func (o VirtualMachineHostpciOutput) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
+// The device (defaults to `socket`).
+// - `/dev/*` - A host serial device.
 func (o VirtualMachineHostpciOutput) Device() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineHostpci) string { return v.Device }).(pulumi.StringOutput)
 }
 
+// The PCI device ID. Use either this or `mapping`.
 func (o VirtualMachineHostpciOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineHostpci) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The resource mapping name of the device, for
+// example gpu. Use either this or `id`.
 func (o VirtualMachineHostpciOutput) Mapping() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineHostpci) *string { return v.Mapping }).(pulumi.StringPtrOutput)
 }
 
+// The mediated device ID to use.
 func (o VirtualMachineHostpciOutput) Mdev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineHostpci) *string { return v.Mdev }).(pulumi.StringPtrOutput)
 }
 
+// Tells Proxmox to use a PCIe or PCI port. Some
+// guests/device combination require PCIe rather than PCI. PCIe is only
+// available for q35 machine types.
 func (o VirtualMachineHostpciOutput) Pcie() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineHostpci) *bool { return v.Pcie }).(pulumi.BoolPtrOutput)
 }
 
+// A path to a ROM file for the device to use. This
+// is a relative path under `/usr/share/kvm/`.
 func (o VirtualMachineHostpciOutput) RomFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineHostpci) *string { return v.RomFile }).(pulumi.StringPtrOutput)
 }
 
+// Makes the firmware ROM visible for the VM (defaults
+// to `true`).
 func (o VirtualMachineHostpciOutput) Rombar() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineHostpci) *bool { return v.Rombar }).(pulumi.BoolPtrOutput)
 }
 
+// Marks the PCI(e) device as the primary GPU of the VM.
+// With this enabled the `vga` configuration argument will be ignored.
 func (o VirtualMachineHostpciOutput) Xvga() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineHostpci) *bool { return v.Xvga }).(pulumi.BoolPtrOutput)
 }
@@ -1806,16 +2210,37 @@ func (o VirtualMachineHostpciArrayOutput) Index(i pulumi.IntInput) VirtualMachin
 }
 
 type VirtualMachineInitialization struct {
-	DatastoreId       *string                                  `pulumi:"datastoreId"`
-	Dns               *VirtualMachineInitializationDns         `pulumi:"dns"`
-	Interface         *string                                  `pulumi:"interface"`
-	IpConfigs         []VirtualMachineInitializationIpConfig   `pulumi:"ipConfigs"`
-	MetaDataFileId    *string                                  `pulumi:"metaDataFileId"`
-	NetworkDataFileId *string                                  `pulumi:"networkDataFileId"`
-	Type              *string                                  `pulumi:"type"`
-	UserAccount       *VirtualMachineInitializationUserAccount `pulumi:"userAccount"`
-	UserDataFileId    *string                                  `pulumi:"userDataFileId"`
-	VendorDataFileId  *string                                  `pulumi:"vendorDataFileId"`
+	// The identifier for the datastore to create the
+	// cloud-init disk in (defaults to `local-lvm`).
+	DatastoreId *string `pulumi:"datastoreId"`
+	// The DNS configuration.
+	Dns *VirtualMachineInitializationDns `pulumi:"dns"`
+	// The hardware interface to connect the cloud-init
+	// image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+	// detected if the setting is missing but a cloud-init image is present,
+	// otherwise defaults to `ide2`.
+	Interface *string `pulumi:"interface"`
+	// The IP configuration (one block per network
+	// device).
+	IpConfigs []VirtualMachineInitializationIpConfig `pulumi:"ipConfigs"`
+	// The identifier for a file containing
+	// all meta data passed to the VM via cloud-init.
+	MetaDataFileId *string `pulumi:"metaDataFileId"`
+	// The identifier for a file containing
+	// network configuration data passed to the VM via cloud-init (conflicts
+	// with `ipConfig`).
+	NetworkDataFileId *string `pulumi:"networkDataFileId"`
+	// The VGA type (defaults to `std`).
+	Type *string `pulumi:"type"`
+	// The user account configuration (conflicts
+	// with `userDataFileId`).
+	UserAccount *VirtualMachineInitializationUserAccount `pulumi:"userAccount"`
+	// The identifier for a file containing
+	// custom user data (conflicts with `userAccount`).
+	UserDataFileId *string `pulumi:"userDataFileId"`
+	// The identifier for a file containing
+	// all vendor data passed to the VM via cloud-init.
+	VendorDataFileId *string `pulumi:"vendorDataFileId"`
 }
 
 // VirtualMachineInitializationInput is an input type that accepts VirtualMachineInitializationArgs and VirtualMachineInitializationOutput values.
@@ -1830,16 +2255,37 @@ type VirtualMachineInitializationInput interface {
 }
 
 type VirtualMachineInitializationArgs struct {
-	DatastoreId       pulumi.StringPtrInput                           `pulumi:"datastoreId"`
-	Dns               VirtualMachineInitializationDnsPtrInput         `pulumi:"dns"`
-	Interface         pulumi.StringPtrInput                           `pulumi:"interface"`
-	IpConfigs         VirtualMachineInitializationIpConfigArrayInput  `pulumi:"ipConfigs"`
-	MetaDataFileId    pulumi.StringPtrInput                           `pulumi:"metaDataFileId"`
-	NetworkDataFileId pulumi.StringPtrInput                           `pulumi:"networkDataFileId"`
-	Type              pulumi.StringPtrInput                           `pulumi:"type"`
-	UserAccount       VirtualMachineInitializationUserAccountPtrInput `pulumi:"userAccount"`
-	UserDataFileId    pulumi.StringPtrInput                           `pulumi:"userDataFileId"`
-	VendorDataFileId  pulumi.StringPtrInput                           `pulumi:"vendorDataFileId"`
+	// The identifier for the datastore to create the
+	// cloud-init disk in (defaults to `local-lvm`).
+	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
+	// The DNS configuration.
+	Dns VirtualMachineInitializationDnsPtrInput `pulumi:"dns"`
+	// The hardware interface to connect the cloud-init
+	// image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+	// detected if the setting is missing but a cloud-init image is present,
+	// otherwise defaults to `ide2`.
+	Interface pulumi.StringPtrInput `pulumi:"interface"`
+	// The IP configuration (one block per network
+	// device).
+	IpConfigs VirtualMachineInitializationIpConfigArrayInput `pulumi:"ipConfigs"`
+	// The identifier for a file containing
+	// all meta data passed to the VM via cloud-init.
+	MetaDataFileId pulumi.StringPtrInput `pulumi:"metaDataFileId"`
+	// The identifier for a file containing
+	// network configuration data passed to the VM via cloud-init (conflicts
+	// with `ipConfig`).
+	NetworkDataFileId pulumi.StringPtrInput `pulumi:"networkDataFileId"`
+	// The VGA type (defaults to `std`).
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The user account configuration (conflicts
+	// with `userDataFileId`).
+	UserAccount VirtualMachineInitializationUserAccountPtrInput `pulumi:"userAccount"`
+	// The identifier for a file containing
+	// custom user data (conflicts with `userAccount`).
+	UserDataFileId pulumi.StringPtrInput `pulumi:"userDataFileId"`
+	// The identifier for a file containing
+	// all vendor data passed to the VM via cloud-init.
+	VendorDataFileId pulumi.StringPtrInput `pulumi:"vendorDataFileId"`
 }
 
 func (VirtualMachineInitializationArgs) ElementType() reflect.Type {
@@ -1937,42 +2383,63 @@ func (o VirtualMachineInitializationOutput) ToOutput(ctx context.Context) pulumi
 	}
 }
 
+// The identifier for the datastore to create the
+// cloud-init disk in (defaults to `local-lvm`).
 func (o VirtualMachineInitializationOutput) DatastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitialization) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
 }
 
+// The DNS configuration.
 func (o VirtualMachineInitializationOutput) Dns() VirtualMachineInitializationDnsPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitialization) *VirtualMachineInitializationDns { return v.Dns }).(VirtualMachineInitializationDnsPtrOutput)
 }
 
+// The hardware interface to connect the cloud-init
+// image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+// detected if the setting is missing but a cloud-init image is present,
+// otherwise defaults to `ide2`.
 func (o VirtualMachineInitializationOutput) Interface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitialization) *string { return v.Interface }).(pulumi.StringPtrOutput)
 }
 
+// The IP configuration (one block per network
+// device).
 func (o VirtualMachineInitializationOutput) IpConfigs() VirtualMachineInitializationIpConfigArrayOutput {
 	return o.ApplyT(func(v VirtualMachineInitialization) []VirtualMachineInitializationIpConfig { return v.IpConfigs }).(VirtualMachineInitializationIpConfigArrayOutput)
 }
 
+// The identifier for a file containing
+// all meta data passed to the VM via cloud-init.
 func (o VirtualMachineInitializationOutput) MetaDataFileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitialization) *string { return v.MetaDataFileId }).(pulumi.StringPtrOutput)
 }
 
+// The identifier for a file containing
+// network configuration data passed to the VM via cloud-init (conflicts
+// with `ipConfig`).
 func (o VirtualMachineInitializationOutput) NetworkDataFileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitialization) *string { return v.NetworkDataFileId }).(pulumi.StringPtrOutput)
 }
 
+// The VGA type (defaults to `std`).
 func (o VirtualMachineInitializationOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitialization) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// The user account configuration (conflicts
+// with `userDataFileId`).
 func (o VirtualMachineInitializationOutput) UserAccount() VirtualMachineInitializationUserAccountPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitialization) *VirtualMachineInitializationUserAccount { return v.UserAccount }).(VirtualMachineInitializationUserAccountPtrOutput)
 }
 
+// The identifier for a file containing
+// custom user data (conflicts with `userAccount`).
 func (o VirtualMachineInitializationOutput) UserDataFileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitialization) *string { return v.UserDataFileId }).(pulumi.StringPtrOutput)
 }
 
+// The identifier for a file containing
+// all vendor data passed to the VM via cloud-init.
 func (o VirtualMachineInitializationOutput) VendorDataFileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitialization) *string { return v.VendorDataFileId }).(pulumi.StringPtrOutput)
 }
@@ -2007,6 +2474,8 @@ func (o VirtualMachineInitializationPtrOutput) Elem() VirtualMachineInitializati
 	}).(VirtualMachineInitializationOutput)
 }
 
+// The identifier for the datastore to create the
+// cloud-init disk in (defaults to `local-lvm`).
 func (o VirtualMachineInitializationPtrOutput) DatastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineInitialization) *string {
 		if v == nil {
@@ -2016,6 +2485,7 @@ func (o VirtualMachineInitializationPtrOutput) DatastoreId() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// The DNS configuration.
 func (o VirtualMachineInitializationPtrOutput) Dns() VirtualMachineInitializationDnsPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineInitialization) *VirtualMachineInitializationDns {
 		if v == nil {
@@ -2025,6 +2495,10 @@ func (o VirtualMachineInitializationPtrOutput) Dns() VirtualMachineInitializatio
 	}).(VirtualMachineInitializationDnsPtrOutput)
 }
 
+// The hardware interface to connect the cloud-init
+// image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+// detected if the setting is missing but a cloud-init image is present,
+// otherwise defaults to `ide2`.
 func (o VirtualMachineInitializationPtrOutput) Interface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineInitialization) *string {
 		if v == nil {
@@ -2034,6 +2508,8 @@ func (o VirtualMachineInitializationPtrOutput) Interface() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The IP configuration (one block per network
+// device).
 func (o VirtualMachineInitializationPtrOutput) IpConfigs() VirtualMachineInitializationIpConfigArrayOutput {
 	return o.ApplyT(func(v *VirtualMachineInitialization) []VirtualMachineInitializationIpConfig {
 		if v == nil {
@@ -2043,6 +2519,8 @@ func (o VirtualMachineInitializationPtrOutput) IpConfigs() VirtualMachineInitial
 	}).(VirtualMachineInitializationIpConfigArrayOutput)
 }
 
+// The identifier for a file containing
+// all meta data passed to the VM via cloud-init.
 func (o VirtualMachineInitializationPtrOutput) MetaDataFileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineInitialization) *string {
 		if v == nil {
@@ -2052,6 +2530,9 @@ func (o VirtualMachineInitializationPtrOutput) MetaDataFileId() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// The identifier for a file containing
+// network configuration data passed to the VM via cloud-init (conflicts
+// with `ipConfig`).
 func (o VirtualMachineInitializationPtrOutput) NetworkDataFileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineInitialization) *string {
 		if v == nil {
@@ -2061,6 +2542,7 @@ func (o VirtualMachineInitializationPtrOutput) NetworkDataFileId() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// The VGA type (defaults to `std`).
 func (o VirtualMachineInitializationPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineInitialization) *string {
 		if v == nil {
@@ -2070,6 +2552,8 @@ func (o VirtualMachineInitializationPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The user account configuration (conflicts
+// with `userDataFileId`).
 func (o VirtualMachineInitializationPtrOutput) UserAccount() VirtualMachineInitializationUserAccountPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineInitialization) *VirtualMachineInitializationUserAccount {
 		if v == nil {
@@ -2079,6 +2563,8 @@ func (o VirtualMachineInitializationPtrOutput) UserAccount() VirtualMachineIniti
 	}).(VirtualMachineInitializationUserAccountPtrOutput)
 }
 
+// The identifier for a file containing
+// custom user data (conflicts with `userAccount`).
 func (o VirtualMachineInitializationPtrOutput) UserDataFileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineInitialization) *string {
 		if v == nil {
@@ -2088,6 +2574,8 @@ func (o VirtualMachineInitializationPtrOutput) UserDataFileId() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// The identifier for a file containing
+// all vendor data passed to the VM via cloud-init.
 func (o VirtualMachineInitializationPtrOutput) VendorDataFileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineInitialization) *string {
 		if v == nil {
@@ -2098,7 +2586,9 @@ func (o VirtualMachineInitializationPtrOutput) VendorDataFileId() pulumi.StringP
 }
 
 type VirtualMachineInitializationDns struct {
+	// The DNS search domain.
 	Domain *string `pulumi:"domain"`
+	// The DNS server.
 	Server *string `pulumi:"server"`
 }
 
@@ -2114,7 +2604,9 @@ type VirtualMachineInitializationDnsInput interface {
 }
 
 type VirtualMachineInitializationDnsArgs struct {
+	// The DNS search domain.
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
+	// The DNS server.
 	Server pulumi.StringPtrInput `pulumi:"server"`
 }
 
@@ -2213,10 +2705,12 @@ func (o VirtualMachineInitializationDnsOutput) ToOutput(ctx context.Context) pul
 	}
 }
 
+// The DNS search domain.
 func (o VirtualMachineInitializationDnsOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationDns) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
+// The DNS server.
 func (o VirtualMachineInitializationDnsOutput) Server() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationDns) *string { return v.Server }).(pulumi.StringPtrOutput)
 }
@@ -2251,6 +2745,7 @@ func (o VirtualMachineInitializationDnsPtrOutput) Elem() VirtualMachineInitializ
 	}).(VirtualMachineInitializationDnsOutput)
 }
 
+// The DNS search domain.
 func (o VirtualMachineInitializationDnsPtrOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineInitializationDns) *string {
 		if v == nil {
@@ -2260,6 +2755,7 @@ func (o VirtualMachineInitializationDnsPtrOutput) Domain() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The DNS server.
 func (o VirtualMachineInitializationDnsPtrOutput) Server() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineInitializationDns) *string {
 		if v == nil {
@@ -2270,7 +2766,9 @@ func (o VirtualMachineInitializationDnsPtrOutput) Server() pulumi.StringPtrOutpu
 }
 
 type VirtualMachineInitializationIpConfig struct {
+	// The IPv4 configuration.
 	Ipv4 *VirtualMachineInitializationIpConfigIpv4 `pulumi:"ipv4"`
+	// The IPv4 configuration.
 	Ipv6 *VirtualMachineInitializationIpConfigIpv6 `pulumi:"ipv6"`
 }
 
@@ -2286,7 +2784,9 @@ type VirtualMachineInitializationIpConfigInput interface {
 }
 
 type VirtualMachineInitializationIpConfigArgs struct {
+	// The IPv4 configuration.
 	Ipv4 VirtualMachineInitializationIpConfigIpv4PtrInput `pulumi:"ipv4"`
+	// The IPv4 configuration.
 	Ipv6 VirtualMachineInitializationIpConfigIpv6PtrInput `pulumi:"ipv6"`
 }
 
@@ -2359,10 +2859,12 @@ func (o VirtualMachineInitializationIpConfigOutput) ToOutput(ctx context.Context
 	}
 }
 
+// The IPv4 configuration.
 func (o VirtualMachineInitializationIpConfigOutput) Ipv4() VirtualMachineInitializationIpConfigIpv4PtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationIpConfig) *VirtualMachineInitializationIpConfigIpv4 { return v.Ipv4 }).(VirtualMachineInitializationIpConfigIpv4PtrOutput)
 }
 
+// The IPv4 configuration.
 func (o VirtualMachineInitializationIpConfigOutput) Ipv6() VirtualMachineInitializationIpConfigIpv6PtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationIpConfig) *VirtualMachineInitializationIpConfigIpv6 { return v.Ipv6 }).(VirtualMachineInitializationIpConfigIpv6PtrOutput)
 }
@@ -2394,7 +2896,11 @@ func (o VirtualMachineInitializationIpConfigArrayOutput) Index(i pulumi.IntInput
 }
 
 type VirtualMachineInitializationIpConfigIpv4 struct {
+	// The IPv6 address (use `dhcp` for
+	// autodiscovery).
 	Address *string `pulumi:"address"`
+	// The IPv6 gateway (must be omitted
+	// when `dhcp` is used as the address).
 	Gateway *string `pulumi:"gateway"`
 }
 
@@ -2410,7 +2916,11 @@ type VirtualMachineInitializationIpConfigIpv4Input interface {
 }
 
 type VirtualMachineInitializationIpConfigIpv4Args struct {
+	// The IPv6 address (use `dhcp` for
+	// autodiscovery).
 	Address pulumi.StringPtrInput `pulumi:"address"`
+	// The IPv6 gateway (must be omitted
+	// when `dhcp` is used as the address).
 	Gateway pulumi.StringPtrInput `pulumi:"gateway"`
 }
 
@@ -2509,10 +3019,14 @@ func (o VirtualMachineInitializationIpConfigIpv4Output) ToOutput(ctx context.Con
 	}
 }
 
+// The IPv6 address (use `dhcp` for
+// autodiscovery).
 func (o VirtualMachineInitializationIpConfigIpv4Output) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationIpConfigIpv4) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
 
+// The IPv6 gateway (must be omitted
+// when `dhcp` is used as the address).
 func (o VirtualMachineInitializationIpConfigIpv4Output) Gateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationIpConfigIpv4) *string { return v.Gateway }).(pulumi.StringPtrOutput)
 }
@@ -2547,6 +3061,8 @@ func (o VirtualMachineInitializationIpConfigIpv4PtrOutput) Elem() VirtualMachine
 	}).(VirtualMachineInitializationIpConfigIpv4Output)
 }
 
+// The IPv6 address (use `dhcp` for
+// autodiscovery).
 func (o VirtualMachineInitializationIpConfigIpv4PtrOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineInitializationIpConfigIpv4) *string {
 		if v == nil {
@@ -2556,6 +3072,8 @@ func (o VirtualMachineInitializationIpConfigIpv4PtrOutput) Address() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// The IPv6 gateway (must be omitted
+// when `dhcp` is used as the address).
 func (o VirtualMachineInitializationIpConfigIpv4PtrOutput) Gateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineInitializationIpConfigIpv4) *string {
 		if v == nil {
@@ -2566,7 +3084,11 @@ func (o VirtualMachineInitializationIpConfigIpv4PtrOutput) Gateway() pulumi.Stri
 }
 
 type VirtualMachineInitializationIpConfigIpv6 struct {
+	// The IPv6 address (use `dhcp` for
+	// autodiscovery).
 	Address *string `pulumi:"address"`
+	// The IPv6 gateway (must be omitted
+	// when `dhcp` is used as the address).
 	Gateway *string `pulumi:"gateway"`
 }
 
@@ -2582,7 +3104,11 @@ type VirtualMachineInitializationIpConfigIpv6Input interface {
 }
 
 type VirtualMachineInitializationIpConfigIpv6Args struct {
+	// The IPv6 address (use `dhcp` for
+	// autodiscovery).
 	Address pulumi.StringPtrInput `pulumi:"address"`
+	// The IPv6 gateway (must be omitted
+	// when `dhcp` is used as the address).
 	Gateway pulumi.StringPtrInput `pulumi:"gateway"`
 }
 
@@ -2681,10 +3207,14 @@ func (o VirtualMachineInitializationIpConfigIpv6Output) ToOutput(ctx context.Con
 	}
 }
 
+// The IPv6 address (use `dhcp` for
+// autodiscovery).
 func (o VirtualMachineInitializationIpConfigIpv6Output) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationIpConfigIpv6) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
 
+// The IPv6 gateway (must be omitted
+// when `dhcp` is used as the address).
 func (o VirtualMachineInitializationIpConfigIpv6Output) Gateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationIpConfigIpv6) *string { return v.Gateway }).(pulumi.StringPtrOutput)
 }
@@ -2719,6 +3249,8 @@ func (o VirtualMachineInitializationIpConfigIpv6PtrOutput) Elem() VirtualMachine
 	}).(VirtualMachineInitializationIpConfigIpv6Output)
 }
 
+// The IPv6 address (use `dhcp` for
+// autodiscovery).
 func (o VirtualMachineInitializationIpConfigIpv6PtrOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineInitializationIpConfigIpv6) *string {
 		if v == nil {
@@ -2728,6 +3260,8 @@ func (o VirtualMachineInitializationIpConfigIpv6PtrOutput) Address() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// The IPv6 gateway (must be omitted
+// when `dhcp` is used as the address).
 func (o VirtualMachineInitializationIpConfigIpv6PtrOutput) Gateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineInitializationIpConfigIpv6) *string {
 		if v == nil {
@@ -2738,9 +3272,12 @@ func (o VirtualMachineInitializationIpConfigIpv6PtrOutput) Gateway() pulumi.Stri
 }
 
 type VirtualMachineInitializationUserAccount struct {
-	Keys     []string `pulumi:"keys"`
-	Password *string  `pulumi:"password"`
-	Username *string  `pulumi:"username"`
+	// The SSH keys.
+	Keys []string `pulumi:"keys"`
+	// The SSH password.
+	Password *string `pulumi:"password"`
+	// The SSH username.
+	Username *string `pulumi:"username"`
 }
 
 // VirtualMachineInitializationUserAccountInput is an input type that accepts VirtualMachineInitializationUserAccountArgs and VirtualMachineInitializationUserAccountOutput values.
@@ -2755,9 +3292,12 @@ type VirtualMachineInitializationUserAccountInput interface {
 }
 
 type VirtualMachineInitializationUserAccountArgs struct {
-	Keys     pulumi.StringArrayInput `pulumi:"keys"`
-	Password pulumi.StringPtrInput   `pulumi:"password"`
-	Username pulumi.StringPtrInput   `pulumi:"username"`
+	// The SSH keys.
+	Keys pulumi.StringArrayInput `pulumi:"keys"`
+	// The SSH password.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The SSH username.
+	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (VirtualMachineInitializationUserAccountArgs) ElementType() reflect.Type {
@@ -2855,14 +3395,17 @@ func (o VirtualMachineInitializationUserAccountOutput) ToOutput(ctx context.Cont
 	}
 }
 
+// The SSH keys.
 func (o VirtualMachineInitializationUserAccountOutput) Keys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationUserAccount) []string { return v.Keys }).(pulumi.StringArrayOutput)
 }
 
+// The SSH password.
 func (o VirtualMachineInitializationUserAccountOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationUserAccount) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+// The SSH username.
 func (o VirtualMachineInitializationUserAccountOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationUserAccount) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -2897,6 +3440,7 @@ func (o VirtualMachineInitializationUserAccountPtrOutput) Elem() VirtualMachineI
 	}).(VirtualMachineInitializationUserAccountOutput)
 }
 
+// The SSH keys.
 func (o VirtualMachineInitializationUserAccountPtrOutput) Keys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VirtualMachineInitializationUserAccount) []string {
 		if v == nil {
@@ -2906,6 +3450,7 @@ func (o VirtualMachineInitializationUserAccountPtrOutput) Keys() pulumi.StringAr
 	}).(pulumi.StringArrayOutput)
 }
 
+// The SSH password.
 func (o VirtualMachineInitializationUserAccountPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineInitializationUserAccount) *string {
 		if v == nil {
@@ -2915,6 +3460,7 @@ func (o VirtualMachineInitializationUserAccountPtrOutput) Password() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// The SSH username.
 func (o VirtualMachineInitializationUserAccountPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineInitializationUserAccount) *string {
 		if v == nil {
@@ -2925,9 +3471,14 @@ func (o VirtualMachineInitializationUserAccountPtrOutput) Username() pulumi.Stri
 }
 
 type VirtualMachineMemory struct {
+	// The dedicated memory in megabytes (defaults
+	// to `512`).
 	Dedicated *int `pulumi:"dedicated"`
-	Floating  *int `pulumi:"floating"`
-	Shared    *int `pulumi:"shared"`
+	// The floating memory in megabytes (defaults
+	// to `0`).
+	Floating *int `pulumi:"floating"`
+	// The shared memory in megabytes (defaults to `0`).
+	Shared *int `pulumi:"shared"`
 }
 
 // VirtualMachineMemoryInput is an input type that accepts VirtualMachineMemoryArgs and VirtualMachineMemoryOutput values.
@@ -2942,9 +3493,14 @@ type VirtualMachineMemoryInput interface {
 }
 
 type VirtualMachineMemoryArgs struct {
+	// The dedicated memory in megabytes (defaults
+	// to `512`).
 	Dedicated pulumi.IntPtrInput `pulumi:"dedicated"`
-	Floating  pulumi.IntPtrInput `pulumi:"floating"`
-	Shared    pulumi.IntPtrInput `pulumi:"shared"`
+	// The floating memory in megabytes (defaults
+	// to `0`).
+	Floating pulumi.IntPtrInput `pulumi:"floating"`
+	// The shared memory in megabytes (defaults to `0`).
+	Shared pulumi.IntPtrInput `pulumi:"shared"`
 }
 
 func (VirtualMachineMemoryArgs) ElementType() reflect.Type {
@@ -3042,14 +3598,19 @@ func (o VirtualMachineMemoryOutput) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
+// The dedicated memory in megabytes (defaults
+// to `512`).
 func (o VirtualMachineMemoryOutput) Dedicated() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineMemory) *int { return v.Dedicated }).(pulumi.IntPtrOutput)
 }
 
+// The floating memory in megabytes (defaults
+// to `0`).
 func (o VirtualMachineMemoryOutput) Floating() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineMemory) *int { return v.Floating }).(pulumi.IntPtrOutput)
 }
 
+// The shared memory in megabytes (defaults to `0`).
 func (o VirtualMachineMemoryOutput) Shared() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineMemory) *int { return v.Shared }).(pulumi.IntPtrOutput)
 }
@@ -3084,6 +3645,8 @@ func (o VirtualMachineMemoryPtrOutput) Elem() VirtualMachineMemoryOutput {
 	}).(VirtualMachineMemoryOutput)
 }
 
+// The dedicated memory in megabytes (defaults
+// to `512`).
 func (o VirtualMachineMemoryPtrOutput) Dedicated() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineMemory) *int {
 		if v == nil {
@@ -3093,6 +3656,8 @@ func (o VirtualMachineMemoryPtrOutput) Dedicated() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The floating memory in megabytes (defaults
+// to `0`).
 func (o VirtualMachineMemoryPtrOutput) Floating() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineMemory) *int {
 		if v == nil {
@@ -3102,6 +3667,7 @@ func (o VirtualMachineMemoryPtrOutput) Floating() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The shared memory in megabytes (defaults to `0`).
 func (o VirtualMachineMemoryPtrOutput) Shared() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineMemory) *int {
 		if v == nil {
@@ -3112,14 +3678,28 @@ func (o VirtualMachineMemoryPtrOutput) Shared() pulumi.IntPtrOutput {
 }
 
 type VirtualMachineNetworkDevice struct {
-	Bridge     *string  `pulumi:"bridge"`
-	Enabled    *bool    `pulumi:"enabled"`
-	Firewall   *bool    `pulumi:"firewall"`
-	MacAddress *string  `pulumi:"macAddress"`
-	Model      *string  `pulumi:"model"`
-	Mtu        *int     `pulumi:"mtu"`
-	RateLimit  *float64 `pulumi:"rateLimit"`
-	VlanId     *int     `pulumi:"vlanId"`
+	// The name of the network bridge (defaults
+	// to `vmbr0`).
+	Bridge *string `pulumi:"bridge"`
+	// Whether to enable the VGA device (defaults
+	// to `true`).
+	Enabled *bool `pulumi:"enabled"`
+	// Whether this interface's firewall rules should be
+	// used (defaults to `false`).
+	Firewall *bool `pulumi:"firewall"`
+	// The MAC address.
+	MacAddress *string `pulumi:"macAddress"`
+	// The network device model (defaults to `virtio`).
+	Model *string `pulumi:"model"`
+	// Force MTU, for VirtIO only. Set to 1 to use the bridge
+	// MTU. Cannot be larger than the bridge MTU.
+	Mtu *int `pulumi:"mtu"`
+	// The number of queues for VirtIO (1..64).
+	Queues *int `pulumi:"queues"`
+	// The rate limit in megabytes per second.
+	RateLimit *float64 `pulumi:"rateLimit"`
+	// The VLAN identifier.
+	VlanId *int `pulumi:"vlanId"`
 }
 
 // VirtualMachineNetworkDeviceInput is an input type that accepts VirtualMachineNetworkDeviceArgs and VirtualMachineNetworkDeviceOutput values.
@@ -3134,14 +3714,28 @@ type VirtualMachineNetworkDeviceInput interface {
 }
 
 type VirtualMachineNetworkDeviceArgs struct {
-	Bridge     pulumi.StringPtrInput  `pulumi:"bridge"`
-	Enabled    pulumi.BoolPtrInput    `pulumi:"enabled"`
-	Firewall   pulumi.BoolPtrInput    `pulumi:"firewall"`
-	MacAddress pulumi.StringPtrInput  `pulumi:"macAddress"`
-	Model      pulumi.StringPtrInput  `pulumi:"model"`
-	Mtu        pulumi.IntPtrInput     `pulumi:"mtu"`
-	RateLimit  pulumi.Float64PtrInput `pulumi:"rateLimit"`
-	VlanId     pulumi.IntPtrInput     `pulumi:"vlanId"`
+	// The name of the network bridge (defaults
+	// to `vmbr0`).
+	Bridge pulumi.StringPtrInput `pulumi:"bridge"`
+	// Whether to enable the VGA device (defaults
+	// to `true`).
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Whether this interface's firewall rules should be
+	// used (defaults to `false`).
+	Firewall pulumi.BoolPtrInput `pulumi:"firewall"`
+	// The MAC address.
+	MacAddress pulumi.StringPtrInput `pulumi:"macAddress"`
+	// The network device model (defaults to `virtio`).
+	Model pulumi.StringPtrInput `pulumi:"model"`
+	// Force MTU, for VirtIO only. Set to 1 to use the bridge
+	// MTU. Cannot be larger than the bridge MTU.
+	Mtu pulumi.IntPtrInput `pulumi:"mtu"`
+	// The number of queues for VirtIO (1..64).
+	Queues pulumi.IntPtrInput `pulumi:"queues"`
+	// The rate limit in megabytes per second.
+	RateLimit pulumi.Float64PtrInput `pulumi:"rateLimit"`
+	// The VLAN identifier.
+	VlanId pulumi.IntPtrInput `pulumi:"vlanId"`
 }
 
 func (VirtualMachineNetworkDeviceArgs) ElementType() reflect.Type {
@@ -3213,34 +3807,51 @@ func (o VirtualMachineNetworkDeviceOutput) ToOutput(ctx context.Context) pulumix
 	}
 }
 
+// The name of the network bridge (defaults
+// to `vmbr0`).
 func (o VirtualMachineNetworkDeviceOutput) Bridge() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkDevice) *string { return v.Bridge }).(pulumi.StringPtrOutput)
 }
 
+// Whether to enable the VGA device (defaults
+// to `true`).
 func (o VirtualMachineNetworkDeviceOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkDevice) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Whether this interface's firewall rules should be
+// used (defaults to `false`).
 func (o VirtualMachineNetworkDeviceOutput) Firewall() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkDevice) *bool { return v.Firewall }).(pulumi.BoolPtrOutput)
 }
 
+// The MAC address.
 func (o VirtualMachineNetworkDeviceOutput) MacAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkDevice) *string { return v.MacAddress }).(pulumi.StringPtrOutput)
 }
 
+// The network device model (defaults to `virtio`).
 func (o VirtualMachineNetworkDeviceOutput) Model() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkDevice) *string { return v.Model }).(pulumi.StringPtrOutput)
 }
 
+// Force MTU, for VirtIO only. Set to 1 to use the bridge
+// MTU. Cannot be larger than the bridge MTU.
 func (o VirtualMachineNetworkDeviceOutput) Mtu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkDevice) *int { return v.Mtu }).(pulumi.IntPtrOutput)
 }
 
+// The number of queues for VirtIO (1..64).
+func (o VirtualMachineNetworkDeviceOutput) Queues() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachineNetworkDevice) *int { return v.Queues }).(pulumi.IntPtrOutput)
+}
+
+// The rate limit in megabytes per second.
 func (o VirtualMachineNetworkDeviceOutput) RateLimit() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkDevice) *float64 { return v.RateLimit }).(pulumi.Float64PtrOutput)
 }
 
+// The VLAN identifier.
 func (o VirtualMachineNetworkDeviceOutput) VlanId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkDevice) *int { return v.VlanId }).(pulumi.IntPtrOutput)
 }
@@ -3272,6 +3883,7 @@ func (o VirtualMachineNetworkDeviceArrayOutput) Index(i pulumi.IntInput) Virtual
 }
 
 type VirtualMachineOperatingSystem struct {
+	// The VGA type (defaults to `std`).
 	Type *string `pulumi:"type"`
 }
 
@@ -3287,6 +3899,7 @@ type VirtualMachineOperatingSystemInput interface {
 }
 
 type VirtualMachineOperatingSystemArgs struct {
+	// The VGA type (defaults to `std`).
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -3385,6 +3998,7 @@ func (o VirtualMachineOperatingSystemOutput) ToOutput(ctx context.Context) pulum
 	}
 }
 
+// The VGA type (defaults to `std`).
 func (o VirtualMachineOperatingSystemOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineOperatingSystem) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -3419,6 +4033,7 @@ func (o VirtualMachineOperatingSystemPtrOutput) Elem() VirtualMachineOperatingSy
 	}).(VirtualMachineOperatingSystemOutput)
 }
 
+// The VGA type (defaults to `std`).
 func (o VirtualMachineOperatingSystemPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineOperatingSystem) *string {
 		if v == nil {
@@ -3429,6 +4044,8 @@ func (o VirtualMachineOperatingSystemPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type VirtualMachineSerialDevice struct {
+	// The device (defaults to `socket`).
+	// - `/dev/*` - A host serial device.
 	Device *string `pulumi:"device"`
 }
 
@@ -3444,6 +4061,8 @@ type VirtualMachineSerialDeviceInput interface {
 }
 
 type VirtualMachineSerialDeviceArgs struct {
+	// The device (defaults to `socket`).
+	// - `/dev/*` - A host serial device.
 	Device pulumi.StringPtrInput `pulumi:"device"`
 }
 
@@ -3516,6 +4135,8 @@ func (o VirtualMachineSerialDeviceOutput) ToOutput(ctx context.Context) pulumix.
 	}
 }
 
+// The device (defaults to `socket`).
+// - `/dev/*` - A host serial device.
 func (o VirtualMachineSerialDeviceOutput) Device() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineSerialDevice) *string { return v.Device }).(pulumi.StringPtrOutput)
 }
@@ -3547,13 +4168,20 @@ func (o VirtualMachineSerialDeviceArrayOutput) Index(i pulumi.IntInput) VirtualM
 }
 
 type VirtualMachineSmbios struct {
-	Family       *string `pulumi:"family"`
+	// The family string.
+	Family *string `pulumi:"family"`
+	// The manufacturer.
 	Manufacturer *string `pulumi:"manufacturer"`
-	Product      *string `pulumi:"product"`
-	Serial       *string `pulumi:"serial"`
-	Sku          *string `pulumi:"sku"`
-	Uuid         *string `pulumi:"uuid"`
-	Version      *string `pulumi:"version"`
+	// The product ID.
+	Product *string `pulumi:"product"`
+	// The serial number.
+	Serial *string `pulumi:"serial"`
+	// The SKU number.
+	Sku *string `pulumi:"sku"`
+	// The UUID (defaults to randomly generated UUID).
+	Uuid *string `pulumi:"uuid"`
+	// The version.
+	Version *string `pulumi:"version"`
 }
 
 // VirtualMachineSmbiosInput is an input type that accepts VirtualMachineSmbiosArgs and VirtualMachineSmbiosOutput values.
@@ -3568,13 +4196,20 @@ type VirtualMachineSmbiosInput interface {
 }
 
 type VirtualMachineSmbiosArgs struct {
-	Family       pulumi.StringPtrInput `pulumi:"family"`
+	// The family string.
+	Family pulumi.StringPtrInput `pulumi:"family"`
+	// The manufacturer.
 	Manufacturer pulumi.StringPtrInput `pulumi:"manufacturer"`
-	Product      pulumi.StringPtrInput `pulumi:"product"`
-	Serial       pulumi.StringPtrInput `pulumi:"serial"`
-	Sku          pulumi.StringPtrInput `pulumi:"sku"`
-	Uuid         pulumi.StringPtrInput `pulumi:"uuid"`
-	Version      pulumi.StringPtrInput `pulumi:"version"`
+	// The product ID.
+	Product pulumi.StringPtrInput `pulumi:"product"`
+	// The serial number.
+	Serial pulumi.StringPtrInput `pulumi:"serial"`
+	// The SKU number.
+	Sku pulumi.StringPtrInput `pulumi:"sku"`
+	// The UUID (defaults to randomly generated UUID).
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+	// The version.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (VirtualMachineSmbiosArgs) ElementType() reflect.Type {
@@ -3672,30 +4307,37 @@ func (o VirtualMachineSmbiosOutput) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
+// The family string.
 func (o VirtualMachineSmbiosOutput) Family() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineSmbios) *string { return v.Family }).(pulumi.StringPtrOutput)
 }
 
+// The manufacturer.
 func (o VirtualMachineSmbiosOutput) Manufacturer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineSmbios) *string { return v.Manufacturer }).(pulumi.StringPtrOutput)
 }
 
+// The product ID.
 func (o VirtualMachineSmbiosOutput) Product() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineSmbios) *string { return v.Product }).(pulumi.StringPtrOutput)
 }
 
+// The serial number.
 func (o VirtualMachineSmbiosOutput) Serial() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineSmbios) *string { return v.Serial }).(pulumi.StringPtrOutput)
 }
 
+// The SKU number.
 func (o VirtualMachineSmbiosOutput) Sku() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineSmbios) *string { return v.Sku }).(pulumi.StringPtrOutput)
 }
 
+// The UUID (defaults to randomly generated UUID).
 func (o VirtualMachineSmbiosOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineSmbios) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
+// The version.
 func (o VirtualMachineSmbiosOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineSmbios) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -3730,6 +4372,7 @@ func (o VirtualMachineSmbiosPtrOutput) Elem() VirtualMachineSmbiosOutput {
 	}).(VirtualMachineSmbiosOutput)
 }
 
+// The family string.
 func (o VirtualMachineSmbiosPtrOutput) Family() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineSmbios) *string {
 		if v == nil {
@@ -3739,6 +4382,7 @@ func (o VirtualMachineSmbiosPtrOutput) Family() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The manufacturer.
 func (o VirtualMachineSmbiosPtrOutput) Manufacturer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineSmbios) *string {
 		if v == nil {
@@ -3748,6 +4392,7 @@ func (o VirtualMachineSmbiosPtrOutput) Manufacturer() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The product ID.
 func (o VirtualMachineSmbiosPtrOutput) Product() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineSmbios) *string {
 		if v == nil {
@@ -3757,6 +4402,7 @@ func (o VirtualMachineSmbiosPtrOutput) Product() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The serial number.
 func (o VirtualMachineSmbiosPtrOutput) Serial() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineSmbios) *string {
 		if v == nil {
@@ -3766,6 +4412,7 @@ func (o VirtualMachineSmbiosPtrOutput) Serial() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The SKU number.
 func (o VirtualMachineSmbiosPtrOutput) Sku() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineSmbios) *string {
 		if v == nil {
@@ -3775,6 +4422,7 @@ func (o VirtualMachineSmbiosPtrOutput) Sku() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The UUID (defaults to randomly generated UUID).
 func (o VirtualMachineSmbiosPtrOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineSmbios) *string {
 		if v == nil {
@@ -3784,6 +4432,7 @@ func (o VirtualMachineSmbiosPtrOutput) Uuid() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The version.
 func (o VirtualMachineSmbiosPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineSmbios) *string {
 		if v == nil {
@@ -3795,8 +4444,10 @@ func (o VirtualMachineSmbiosPtrOutput) Version() pulumi.StringPtrOutput {
 
 type VirtualMachineStartup struct {
 	DownDelay *int `pulumi:"downDelay"`
-	Order     *int `pulumi:"order"`
-	UpDelay   *int `pulumi:"upDelay"`
+	// A non-negative number defining the general startup
+	// order.
+	Order   *int `pulumi:"order"`
+	UpDelay *int `pulumi:"upDelay"`
 }
 
 // VirtualMachineStartupInput is an input type that accepts VirtualMachineStartupArgs and VirtualMachineStartupOutput values.
@@ -3812,8 +4463,10 @@ type VirtualMachineStartupInput interface {
 
 type VirtualMachineStartupArgs struct {
 	DownDelay pulumi.IntPtrInput `pulumi:"downDelay"`
-	Order     pulumi.IntPtrInput `pulumi:"order"`
-	UpDelay   pulumi.IntPtrInput `pulumi:"upDelay"`
+	// A non-negative number defining the general startup
+	// order.
+	Order   pulumi.IntPtrInput `pulumi:"order"`
+	UpDelay pulumi.IntPtrInput `pulumi:"upDelay"`
 }
 
 func (VirtualMachineStartupArgs) ElementType() reflect.Type {
@@ -3915,6 +4568,8 @@ func (o VirtualMachineStartupOutput) DownDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineStartup) *int { return v.DownDelay }).(pulumi.IntPtrOutput)
 }
 
+// A non-negative number defining the general startup
+// order.
 func (o VirtualMachineStartupOutput) Order() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineStartup) *int { return v.Order }).(pulumi.IntPtrOutput)
 }
@@ -3962,6 +4617,8 @@ func (o VirtualMachineStartupPtrOutput) DownDelay() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// A non-negative number defining the general startup
+// order.
 func (o VirtualMachineStartupPtrOutput) Order() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineStartup) *int {
 		if v == nil {
@@ -3981,9 +4638,13 @@ func (o VirtualMachineStartupPtrOutput) UpDelay() pulumi.IntPtrOutput {
 }
 
 type VirtualMachineVga struct {
-	Enabled *bool   `pulumi:"enabled"`
-	Memory  *int    `pulumi:"memory"`
-	Type    *string `pulumi:"type"`
+	// Whether to enable the VGA device (defaults
+	// to `true`).
+	Enabled *bool `pulumi:"enabled"`
+	// The VGA memory in megabytes (defaults to `16`).
+	Memory *int `pulumi:"memory"`
+	// The VGA type (defaults to `std`).
+	Type *string `pulumi:"type"`
 }
 
 // VirtualMachineVgaInput is an input type that accepts VirtualMachineVgaArgs and VirtualMachineVgaOutput values.
@@ -3998,9 +4659,13 @@ type VirtualMachineVgaInput interface {
 }
 
 type VirtualMachineVgaArgs struct {
-	Enabled pulumi.BoolPtrInput   `pulumi:"enabled"`
-	Memory  pulumi.IntPtrInput    `pulumi:"memory"`
-	Type    pulumi.StringPtrInput `pulumi:"type"`
+	// Whether to enable the VGA device (defaults
+	// to `true`).
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The VGA memory in megabytes (defaults to `16`).
+	Memory pulumi.IntPtrInput `pulumi:"memory"`
+	// The VGA type (defaults to `std`).
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (VirtualMachineVgaArgs) ElementType() reflect.Type {
@@ -4098,14 +4763,18 @@ func (o VirtualMachineVgaOutput) ToOutput(ctx context.Context) pulumix.Output[Vi
 	}
 }
 
+// Whether to enable the VGA device (defaults
+// to `true`).
 func (o VirtualMachineVgaOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineVga) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// The VGA memory in megabytes (defaults to `16`).
 func (o VirtualMachineVgaOutput) Memory() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineVga) *int { return v.Memory }).(pulumi.IntPtrOutput)
 }
 
+// The VGA type (defaults to `std`).
 func (o VirtualMachineVgaOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineVga) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -4140,6 +4809,8 @@ func (o VirtualMachineVgaPtrOutput) Elem() VirtualMachineVgaOutput {
 	}).(VirtualMachineVgaOutput)
 }
 
+// Whether to enable the VGA device (defaults
+// to `true`).
 func (o VirtualMachineVgaPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineVga) *bool {
 		if v == nil {
@@ -4149,6 +4820,7 @@ func (o VirtualMachineVgaPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The VGA memory in megabytes (defaults to `16`).
 func (o VirtualMachineVgaPtrOutput) Memory() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineVga) *int {
 		if v == nil {
@@ -4158,6 +4830,7 @@ func (o VirtualMachineVgaPtrOutput) Memory() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The VGA type (defaults to `std`).
 func (o VirtualMachineVgaPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineVga) *string {
 		if v == nil {
@@ -4168,10 +4841,15 @@ func (o VirtualMachineVgaPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type GetVirtualMachinesVm struct {
-	Name     string   `pulumi:"name"`
-	NodeName string   `pulumi:"nodeName"`
-	Tags     []string `pulumi:"tags"`
-	VmId     int      `pulumi:"vmId"`
+	// The virtual machine name.
+	Name string `pulumi:"name"`
+	// The node name.
+	NodeName string `pulumi:"nodeName"`
+	// A list of tags to filter the VMs. The VM must have all
+	// the tags to be included in the result.
+	Tags []string `pulumi:"tags"`
+	// The VM identifier.
+	VmId int `pulumi:"vmId"`
 }
 
 // GetVirtualMachinesVmInput is an input type that accepts GetVirtualMachinesVmArgs and GetVirtualMachinesVmOutput values.
@@ -4186,10 +4864,15 @@ type GetVirtualMachinesVmInput interface {
 }
 
 type GetVirtualMachinesVmArgs struct {
-	Name     pulumi.StringInput      `pulumi:"name"`
-	NodeName pulumi.StringInput      `pulumi:"nodeName"`
-	Tags     pulumi.StringArrayInput `pulumi:"tags"`
-	VmId     pulumi.IntInput         `pulumi:"vmId"`
+	// The virtual machine name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The node name.
+	NodeName pulumi.StringInput `pulumi:"nodeName"`
+	// A list of tags to filter the VMs. The VM must have all
+	// the tags to be included in the result.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// The VM identifier.
+	VmId pulumi.IntInput `pulumi:"vmId"`
 }
 
 func (GetVirtualMachinesVmArgs) ElementType() reflect.Type {
@@ -4261,18 +4944,23 @@ func (o GetVirtualMachinesVmOutput) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
+// The virtual machine name.
 func (o GetVirtualMachinesVmOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVirtualMachinesVm) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The node name.
 func (o GetVirtualMachinesVmOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVirtualMachinesVm) string { return v.NodeName }).(pulumi.StringOutput)
 }
 
+// A list of tags to filter the VMs. The VM must have all
+// the tags to be included in the result.
 func (o GetVirtualMachinesVmOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetVirtualMachinesVm) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// The VM identifier.
 func (o GetVirtualMachinesVmOutput) VmId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetVirtualMachinesVm) int { return v.VmId }).(pulumi.IntOutput)
 }

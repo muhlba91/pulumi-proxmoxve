@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -42,11 +42,17 @@ class GetGroupResult:
     @property
     @pulumi.getter
     def acls(self) -> Sequence['outputs.GetGroupAclResult']:
+        """
+        The access control list.
+        """
         return pulumi.get(self, "acls")
 
     @property
     @pulumi.getter
     def comment(self) -> str:
+        """
+        The group comment.
+        """
         return pulumi.get(self, "comment")
 
     @property
@@ -65,6 +71,9 @@ class GetGroupResult:
     @property
     @pulumi.getter
     def members(self) -> Sequence[str]:
+        """
+        The group members as a list with `username@realm` entries.
+        """
         return pulumi.get(self, "members")
 
 
@@ -84,7 +93,19 @@ class AwaitableGetGroupResult(GetGroupResult):
 def get_group(group_id: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupResult:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves information about a specific user group.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    operations_team = proxmoxve.Permission.get_group(group_id="operations-team")
+    ```
+
+
+    :param str group_id: The group identifier.
     """
     __args__ = dict()
     __args__['groupId'] = group_id
@@ -103,6 +124,18 @@ def get_group(group_id: Optional[str] = None,
 def get_group_output(group_id: Optional[pulumi.Input[str]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupResult]:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves information about a specific user group.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    operations_team = proxmoxve.Permission.get_group(group_id="operations-team")
+    ```
+
+
+    :param str group_id: The group identifier.
     """
     ...

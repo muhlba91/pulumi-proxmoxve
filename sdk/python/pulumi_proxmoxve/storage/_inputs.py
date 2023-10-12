@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -22,19 +22,46 @@ class FileSourceFileArgs:
                  checksum: Optional[pulumi.Input[str]] = None,
                  file_name: Optional[pulumi.Input[str]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None):
-        pulumi.set(__self__, "path", path)
+        """
+        :param pulumi.Input[str] path: A path to a local file or a URL.
+        :param pulumi.Input[str] checksum: The SHA256 checksum of the source file.
+        :param pulumi.Input[str] file_name: The file name.
+        :param pulumi.Input[bool] insecure: Whether to skip the TLS verification step for
+               HTTPS sources (defaults to `false`).
+        """
+        FileSourceFileArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            path=path,
+            changed=changed,
+            checksum=checksum,
+            file_name=file_name,
+            insecure=insecure,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             path: pulumi.Input[str],
+             changed: Optional[pulumi.Input[bool]] = None,
+             checksum: Optional[pulumi.Input[str]] = None,
+             file_name: Optional[pulumi.Input[str]] = None,
+             insecure: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("path", path)
         if changed is not None:
-            pulumi.set(__self__, "changed", changed)
+            _setter("changed", changed)
         if checksum is not None:
-            pulumi.set(__self__, "checksum", checksum)
+            _setter("checksum", checksum)
         if file_name is not None:
-            pulumi.set(__self__, "file_name", file_name)
+            _setter("file_name", file_name)
         if insecure is not None:
-            pulumi.set(__self__, "insecure", insecure)
+            _setter("insecure", insecure)
 
     @property
     @pulumi.getter
     def path(self) -> pulumi.Input[str]:
+        """
+        A path to a local file or a URL.
+        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -53,6 +80,9 @@ class FileSourceFileArgs:
     @property
     @pulumi.getter
     def checksum(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SHA256 checksum of the source file.
+        """
         return pulumi.get(self, "checksum")
 
     @checksum.setter
@@ -62,6 +92,9 @@ class FileSourceFileArgs:
     @property
     @pulumi.getter(name="fileName")
     def file_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The file name.
+        """
         return pulumi.get(self, "file_name")
 
     @file_name.setter
@@ -71,6 +104,10 @@ class FileSourceFileArgs:
     @property
     @pulumi.getter
     def insecure(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to skip the TLS verification step for
+        HTTPS sources (defaults to `false`).
+        """
         return pulumi.get(self, "insecure")
 
     @insecure.setter
@@ -84,14 +121,35 @@ class FileSourceRawArgs:
                  data: pulumi.Input[str],
                  file_name: pulumi.Input[str],
                  resize: Optional[pulumi.Input[int]] = None):
-        pulumi.set(__self__, "data", data)
-        pulumi.set(__self__, "file_name", file_name)
+        """
+        :param pulumi.Input[str] data: The raw data.
+        :param pulumi.Input[str] file_name: The file name.
+        :param pulumi.Input[int] resize: The number of bytes to resize the file to.
+        """
+        FileSourceRawArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            data=data,
+            file_name=file_name,
+            resize=resize,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             data: pulumi.Input[str],
+             file_name: pulumi.Input[str],
+             resize: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("data", data)
+        _setter("file_name", file_name)
         if resize is not None:
-            pulumi.set(__self__, "resize", resize)
+            _setter("resize", resize)
 
     @property
     @pulumi.getter
     def data(self) -> pulumi.Input[str]:
+        """
+        The raw data.
+        """
         return pulumi.get(self, "data")
 
     @data.setter
@@ -101,6 +159,9 @@ class FileSourceRawArgs:
     @property
     @pulumi.getter(name="fileName")
     def file_name(self) -> pulumi.Input[str]:
+        """
+        The file name.
+        """
         return pulumi.get(self, "file_name")
 
     @file_name.setter
@@ -110,6 +171,9 @@ class FileSourceRawArgs:
     @property
     @pulumi.getter
     def resize(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of bytes to resize the file to.
+        """
         return pulumi.get(self, "resize")
 
     @resize.setter

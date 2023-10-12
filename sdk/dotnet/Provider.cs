@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE
 {
     /// <summary>
-    /// The provider type for the proxmoxve package. By default, resources use package-wide configuration
+    /// The provider type for the proxmox package. By default, resources use package-wide configuration
     /// settings, however an explicit `Provider` instance may be created and passed during resource
     /// construction to achieve fine-grained programmatic control over provider settings. See the
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
@@ -41,6 +41,12 @@ namespace Pulumi.ProxmoxVE
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
+
+        /// <summary>
+        /// The alternative temporary directory.
+        /// </summary>
+        [Output("tmpDir")]
+        public Output<string?> TmpDir { get; private set; } = null!;
 
         /// <summary>
         /// The username for the Proxmox VE API.
@@ -137,6 +143,12 @@ namespace Pulumi.ProxmoxVE
         /// </summary>
         [Input("ssh", json: true)]
         public Input<Inputs.ProviderSshArgs>? Ssh { get; set; }
+
+        /// <summary>
+        /// The alternative temporary directory.
+        /// </summary>
+        [Input("tmpDir")]
+        public Input<string>? TmpDir { get; set; }
 
         /// <summary>
         /// The username for the Proxmox VE API.

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -43,6 +43,9 @@ class GetRoleResult:
     @property
     @pulumi.getter
     def privileges(self) -> Sequence[str]:
+        """
+        The role privileges
+        """
         return pulumi.get(self, "privileges")
 
     @property
@@ -65,7 +68,19 @@ class AwaitableGetRoleResult(GetRoleResult):
 def get_role(role_id: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRoleResult:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves information about a specific role.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    operations_role = proxmoxve.Permission.get_role(role_id="operations")
+    ```
+
+
+    :param str role_id: The role identifier.
     """
     __args__ = dict()
     __args__['roleId'] = role_id
@@ -82,6 +97,18 @@ def get_role(role_id: Optional[str] = None,
 def get_role_output(role_id: Optional[pulumi.Input[str]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRoleResult]:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves information about a specific role.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    operations_role = proxmoxve.Permission.get_role(role_id="operations")
+    ```
+
+
+    :param str role_id: The role identifier.
     """
     ...

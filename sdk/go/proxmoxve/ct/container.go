@@ -13,44 +13,63 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Manages a container.
+//
+// ## Import
+//
+// Instances can be imported using the `node_name` and the `vm_id`, e.g., bash
+//
+// ```sh
+//
+//	$ pulumi import proxmoxve:CT/container:Container ubuntu_container first-node/1234
+//
+// ```
 type Container struct {
 	pulumi.CustomResourceState
 
-	// The cloning configuration
+	// The cloning configuration.
 	Clone ContainerClonePtrOutput `pulumi:"clone"`
-	// The console configuration
+	// Console.
 	Console ContainerConsolePtrOutput `pulumi:"console"`
-	// The CPU allocation
+	// The CPU configuration.
 	Cpu ContainerCpuPtrOutput `pulumi:"cpu"`
-	// The description
+	// The description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The disks
+	// The disk configuration.
 	Disk ContainerDiskPtrOutput `pulumi:"disk"`
-	// Features
+	// The container features
 	Features ContainerFeaturesPtrOutput `pulumi:"features"`
-	// The initialization configuration
+	// The initialization configuration.
 	Initialization ContainerInitializationPtrOutput `pulumi:"initialization"`
-	// The memory allocation
+	// The memory configuration.
 	Memory ContainerMemoryPtrOutput `pulumi:"memory"`
 	// A mount point
 	MountPoints ContainerMountPointArrayOutput `pulumi:"mountPoints"`
-	// The network interfaces
+	// A network interface (multiple blocks
+	// supported).
 	NetworkInterfaces ContainerNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
-	// The node name
+	// The name of the node to assign the container to.
 	NodeName pulumi.StringOutput `pulumi:"nodeName"`
-	// The operating system configuration
+	// The Operating System configuration.
 	OperatingSystem ContainerOperatingSystemPtrOutput `pulumi:"operatingSystem"`
-	// The ID of the pool to assign the container to
+	// The identifier for a pool to assign the container to.
 	PoolId pulumi.StringPtrOutput `pulumi:"poolId"`
-	// Whether to start the container
+	// Automatically start container when the host system boots (defaults to `true`).
+	StartOnBoot pulumi.BoolPtrOutput `pulumi:"startOnBoot"`
+	// Whether to start the container (defaults to `true`).
 	Started pulumi.BoolPtrOutput `pulumi:"started"`
-	// Tags of the container. This is only meta information.
+	// A list of tags the container tags. This is only meta
+	// information (defaults to `[]`). Note: Proxmox always sorts the container tags.
+	// If the list in template is not sorted, then Proxmox will always report a
+	// difference on the resource. You may use the `ignoreChanges` lifecycle
+	// meta-argument to ignore changes to this attribute.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// Whether to create a template
+	// Whether to create a template (defaults to `false`).
 	Template pulumi.BoolPtrOutput `pulumi:"template"`
-	// Whether the container runs as unprivileged on the host
+	// Whether the container runs as unprivileged on
+	// the host (defaults to `false`).
 	Unprivileged pulumi.BoolPtrOutput `pulumi:"unprivileged"`
-	// The VM identifier
+	// The container identifier
 	VmId pulumi.IntPtrOutput `pulumi:"vmId"`
 }
 
@@ -87,80 +106,96 @@ func GetContainer(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Container resources.
 type containerState struct {
-	// The cloning configuration
+	// The cloning configuration.
 	Clone *ContainerClone `pulumi:"clone"`
-	// The console configuration
+	// Console.
 	Console *ContainerConsole `pulumi:"console"`
-	// The CPU allocation
+	// The CPU configuration.
 	Cpu *ContainerCpu `pulumi:"cpu"`
-	// The description
+	// The description.
 	Description *string `pulumi:"description"`
-	// The disks
+	// The disk configuration.
 	Disk *ContainerDisk `pulumi:"disk"`
-	// Features
+	// The container features
 	Features *ContainerFeatures `pulumi:"features"`
-	// The initialization configuration
+	// The initialization configuration.
 	Initialization *ContainerInitialization `pulumi:"initialization"`
-	// The memory allocation
+	// The memory configuration.
 	Memory *ContainerMemory `pulumi:"memory"`
 	// A mount point
 	MountPoints []ContainerMountPoint `pulumi:"mountPoints"`
-	// The network interfaces
+	// A network interface (multiple blocks
+	// supported).
 	NetworkInterfaces []ContainerNetworkInterface `pulumi:"networkInterfaces"`
-	// The node name
+	// The name of the node to assign the container to.
 	NodeName *string `pulumi:"nodeName"`
-	// The operating system configuration
+	// The Operating System configuration.
 	OperatingSystem *ContainerOperatingSystem `pulumi:"operatingSystem"`
-	// The ID of the pool to assign the container to
+	// The identifier for a pool to assign the container to.
 	PoolId *string `pulumi:"poolId"`
-	// Whether to start the container
+	// Automatically start container when the host system boots (defaults to `true`).
+	StartOnBoot *bool `pulumi:"startOnBoot"`
+	// Whether to start the container (defaults to `true`).
 	Started *bool `pulumi:"started"`
-	// Tags of the container. This is only meta information.
+	// A list of tags the container tags. This is only meta
+	// information (defaults to `[]`). Note: Proxmox always sorts the container tags.
+	// If the list in template is not sorted, then Proxmox will always report a
+	// difference on the resource. You may use the `ignoreChanges` lifecycle
+	// meta-argument to ignore changes to this attribute.
 	Tags []string `pulumi:"tags"`
-	// Whether to create a template
+	// Whether to create a template (defaults to `false`).
 	Template *bool `pulumi:"template"`
-	// Whether the container runs as unprivileged on the host
+	// Whether the container runs as unprivileged on
+	// the host (defaults to `false`).
 	Unprivileged *bool `pulumi:"unprivileged"`
-	// The VM identifier
+	// The container identifier
 	VmId *int `pulumi:"vmId"`
 }
 
 type ContainerState struct {
-	// The cloning configuration
+	// The cloning configuration.
 	Clone ContainerClonePtrInput
-	// The console configuration
+	// Console.
 	Console ContainerConsolePtrInput
-	// The CPU allocation
+	// The CPU configuration.
 	Cpu ContainerCpuPtrInput
-	// The description
+	// The description.
 	Description pulumi.StringPtrInput
-	// The disks
+	// The disk configuration.
 	Disk ContainerDiskPtrInput
-	// Features
+	// The container features
 	Features ContainerFeaturesPtrInput
-	// The initialization configuration
+	// The initialization configuration.
 	Initialization ContainerInitializationPtrInput
-	// The memory allocation
+	// The memory configuration.
 	Memory ContainerMemoryPtrInput
 	// A mount point
 	MountPoints ContainerMountPointArrayInput
-	// The network interfaces
+	// A network interface (multiple blocks
+	// supported).
 	NetworkInterfaces ContainerNetworkInterfaceArrayInput
-	// The node name
+	// The name of the node to assign the container to.
 	NodeName pulumi.StringPtrInput
-	// The operating system configuration
+	// The Operating System configuration.
 	OperatingSystem ContainerOperatingSystemPtrInput
-	// The ID of the pool to assign the container to
+	// The identifier for a pool to assign the container to.
 	PoolId pulumi.StringPtrInput
-	// Whether to start the container
+	// Automatically start container when the host system boots (defaults to `true`).
+	StartOnBoot pulumi.BoolPtrInput
+	// Whether to start the container (defaults to `true`).
 	Started pulumi.BoolPtrInput
-	// Tags of the container. This is only meta information.
+	// A list of tags the container tags. This is only meta
+	// information (defaults to `[]`). Note: Proxmox always sorts the container tags.
+	// If the list in template is not sorted, then Proxmox will always report a
+	// difference on the resource. You may use the `ignoreChanges` lifecycle
+	// meta-argument to ignore changes to this attribute.
 	Tags pulumi.StringArrayInput
-	// Whether to create a template
+	// Whether to create a template (defaults to `false`).
 	Template pulumi.BoolPtrInput
-	// Whether the container runs as unprivileged on the host
+	// Whether the container runs as unprivileged on
+	// the host (defaults to `false`).
 	Unprivileged pulumi.BoolPtrInput
-	// The VM identifier
+	// The container identifier
 	VmId pulumi.IntPtrInput
 }
 
@@ -169,81 +204,97 @@ func (ContainerState) ElementType() reflect.Type {
 }
 
 type containerArgs struct {
-	// The cloning configuration
+	// The cloning configuration.
 	Clone *ContainerClone `pulumi:"clone"`
-	// The console configuration
+	// Console.
 	Console *ContainerConsole `pulumi:"console"`
-	// The CPU allocation
+	// The CPU configuration.
 	Cpu *ContainerCpu `pulumi:"cpu"`
-	// The description
+	// The description.
 	Description *string `pulumi:"description"`
-	// The disks
+	// The disk configuration.
 	Disk *ContainerDisk `pulumi:"disk"`
-	// Features
+	// The container features
 	Features *ContainerFeatures `pulumi:"features"`
-	// The initialization configuration
+	// The initialization configuration.
 	Initialization *ContainerInitialization `pulumi:"initialization"`
-	// The memory allocation
+	// The memory configuration.
 	Memory *ContainerMemory `pulumi:"memory"`
 	// A mount point
 	MountPoints []ContainerMountPoint `pulumi:"mountPoints"`
-	// The network interfaces
+	// A network interface (multiple blocks
+	// supported).
 	NetworkInterfaces []ContainerNetworkInterface `pulumi:"networkInterfaces"`
-	// The node name
+	// The name of the node to assign the container to.
 	NodeName string `pulumi:"nodeName"`
-	// The operating system configuration
+	// The Operating System configuration.
 	OperatingSystem *ContainerOperatingSystem `pulumi:"operatingSystem"`
-	// The ID of the pool to assign the container to
+	// The identifier for a pool to assign the container to.
 	PoolId *string `pulumi:"poolId"`
-	// Whether to start the container
+	// Automatically start container when the host system boots (defaults to `true`).
+	StartOnBoot *bool `pulumi:"startOnBoot"`
+	// Whether to start the container (defaults to `true`).
 	Started *bool `pulumi:"started"`
-	// Tags of the container. This is only meta information.
+	// A list of tags the container tags. This is only meta
+	// information (defaults to `[]`). Note: Proxmox always sorts the container tags.
+	// If the list in template is not sorted, then Proxmox will always report a
+	// difference on the resource. You may use the `ignoreChanges` lifecycle
+	// meta-argument to ignore changes to this attribute.
 	Tags []string `pulumi:"tags"`
-	// Whether to create a template
+	// Whether to create a template (defaults to `false`).
 	Template *bool `pulumi:"template"`
-	// Whether the container runs as unprivileged on the host
+	// Whether the container runs as unprivileged on
+	// the host (defaults to `false`).
 	Unprivileged *bool `pulumi:"unprivileged"`
-	// The VM identifier
+	// The container identifier
 	VmId *int `pulumi:"vmId"`
 }
 
 // The set of arguments for constructing a Container resource.
 type ContainerArgs struct {
-	// The cloning configuration
+	// The cloning configuration.
 	Clone ContainerClonePtrInput
-	// The console configuration
+	// Console.
 	Console ContainerConsolePtrInput
-	// The CPU allocation
+	// The CPU configuration.
 	Cpu ContainerCpuPtrInput
-	// The description
+	// The description.
 	Description pulumi.StringPtrInput
-	// The disks
+	// The disk configuration.
 	Disk ContainerDiskPtrInput
-	// Features
+	// The container features
 	Features ContainerFeaturesPtrInput
-	// The initialization configuration
+	// The initialization configuration.
 	Initialization ContainerInitializationPtrInput
-	// The memory allocation
+	// The memory configuration.
 	Memory ContainerMemoryPtrInput
 	// A mount point
 	MountPoints ContainerMountPointArrayInput
-	// The network interfaces
+	// A network interface (multiple blocks
+	// supported).
 	NetworkInterfaces ContainerNetworkInterfaceArrayInput
-	// The node name
+	// The name of the node to assign the container to.
 	NodeName pulumi.StringInput
-	// The operating system configuration
+	// The Operating System configuration.
 	OperatingSystem ContainerOperatingSystemPtrInput
-	// The ID of the pool to assign the container to
+	// The identifier for a pool to assign the container to.
 	PoolId pulumi.StringPtrInput
-	// Whether to start the container
+	// Automatically start container when the host system boots (defaults to `true`).
+	StartOnBoot pulumi.BoolPtrInput
+	// Whether to start the container (defaults to `true`).
 	Started pulumi.BoolPtrInput
-	// Tags of the container. This is only meta information.
+	// A list of tags the container tags. This is only meta
+	// information (defaults to `[]`). Note: Proxmox always sorts the container tags.
+	// If the list in template is not sorted, then Proxmox will always report a
+	// difference on the resource. You may use the `ignoreChanges` lifecycle
+	// meta-argument to ignore changes to this attribute.
 	Tags pulumi.StringArrayInput
-	// Whether to create a template
+	// Whether to create a template (defaults to `false`).
 	Template pulumi.BoolPtrInput
-	// Whether the container runs as unprivileged on the host
+	// Whether the container runs as unprivileged on
+	// the host (defaults to `false`).
 	Unprivileged pulumi.BoolPtrInput
-	// The VM identifier
+	// The container identifier
 	VmId pulumi.IntPtrInput
 }
 
@@ -358,42 +409,42 @@ func (o ContainerOutput) ToOutput(ctx context.Context) pulumix.Output[*Container
 	}
 }
 
-// The cloning configuration
+// The cloning configuration.
 func (o ContainerOutput) Clone() ContainerClonePtrOutput {
 	return o.ApplyT(func(v *Container) ContainerClonePtrOutput { return v.Clone }).(ContainerClonePtrOutput)
 }
 
-// The console configuration
+// Console.
 func (o ContainerOutput) Console() ContainerConsolePtrOutput {
 	return o.ApplyT(func(v *Container) ContainerConsolePtrOutput { return v.Console }).(ContainerConsolePtrOutput)
 }
 
-// The CPU allocation
+// The CPU configuration.
 func (o ContainerOutput) Cpu() ContainerCpuPtrOutput {
 	return o.ApplyT(func(v *Container) ContainerCpuPtrOutput { return v.Cpu }).(ContainerCpuPtrOutput)
 }
 
-// The description
+// The description.
 func (o ContainerOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Container) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The disks
+// The disk configuration.
 func (o ContainerOutput) Disk() ContainerDiskPtrOutput {
 	return o.ApplyT(func(v *Container) ContainerDiskPtrOutput { return v.Disk }).(ContainerDiskPtrOutput)
 }
 
-// Features
+// The container features
 func (o ContainerOutput) Features() ContainerFeaturesPtrOutput {
 	return o.ApplyT(func(v *Container) ContainerFeaturesPtrOutput { return v.Features }).(ContainerFeaturesPtrOutput)
 }
 
-// The initialization configuration
+// The initialization configuration.
 func (o ContainerOutput) Initialization() ContainerInitializationPtrOutput {
 	return o.ApplyT(func(v *Container) ContainerInitializationPtrOutput { return v.Initialization }).(ContainerInitializationPtrOutput)
 }
 
-// The memory allocation
+// The memory configuration.
 func (o ContainerOutput) Memory() ContainerMemoryPtrOutput {
 	return o.ApplyT(func(v *Container) ContainerMemoryPtrOutput { return v.Memory }).(ContainerMemoryPtrOutput)
 }
@@ -403,47 +454,58 @@ func (o ContainerOutput) MountPoints() ContainerMountPointArrayOutput {
 	return o.ApplyT(func(v *Container) ContainerMountPointArrayOutput { return v.MountPoints }).(ContainerMountPointArrayOutput)
 }
 
-// The network interfaces
+// A network interface (multiple blocks
+// supported).
 func (o ContainerOutput) NetworkInterfaces() ContainerNetworkInterfaceArrayOutput {
 	return o.ApplyT(func(v *Container) ContainerNetworkInterfaceArrayOutput { return v.NetworkInterfaces }).(ContainerNetworkInterfaceArrayOutput)
 }
 
-// The node name
+// The name of the node to assign the container to.
 func (o ContainerOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Container) pulumi.StringOutput { return v.NodeName }).(pulumi.StringOutput)
 }
 
-// The operating system configuration
+// The Operating System configuration.
 func (o ContainerOutput) OperatingSystem() ContainerOperatingSystemPtrOutput {
 	return o.ApplyT(func(v *Container) ContainerOperatingSystemPtrOutput { return v.OperatingSystem }).(ContainerOperatingSystemPtrOutput)
 }
 
-// The ID of the pool to assign the container to
+// The identifier for a pool to assign the container to.
 func (o ContainerOutput) PoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Container) pulumi.StringPtrOutput { return v.PoolId }).(pulumi.StringPtrOutput)
 }
 
-// Whether to start the container
+// Automatically start container when the host system boots (defaults to `true`).
+func (o ContainerOutput) StartOnBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Container) pulumi.BoolPtrOutput { return v.StartOnBoot }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to start the container (defaults to `true`).
 func (o ContainerOutput) Started() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Container) pulumi.BoolPtrOutput { return v.Started }).(pulumi.BoolPtrOutput)
 }
 
-// Tags of the container. This is only meta information.
+// A list of tags the container tags. This is only meta
+// information (defaults to `[]`). Note: Proxmox always sorts the container tags.
+// If the list in template is not sorted, then Proxmox will always report a
+// difference on the resource. You may use the `ignoreChanges` lifecycle
+// meta-argument to ignore changes to this attribute.
 func (o ContainerOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Container) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Whether to create a template
+// Whether to create a template (defaults to `false`).
 func (o ContainerOutput) Template() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Container) pulumi.BoolPtrOutput { return v.Template }).(pulumi.BoolPtrOutput)
 }
 
-// Whether the container runs as unprivileged on the host
+// Whether the container runs as unprivileged on
+// the host (defaults to `false`).
 func (o ContainerOutput) Unprivileged() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Container) pulumi.BoolPtrOutput { return v.Unprivileged }).(pulumi.BoolPtrOutput)
 }
 
-// The VM identifier
+// The container identifier
 func (o ContainerOutput) VmId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Container) pulumi.IntPtrOutput { return v.VmId }).(pulumi.IntPtrOutput)
 }

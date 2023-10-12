@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// The provider type for the proxmoxve package. By default, resources use package-wide configuration
+// The provider type for the proxmox package. By default, resources use package-wide configuration
 // settings, however an explicit `Provider` instance may be created and passed during resource
 // construction to achieve fine-grained programmatic control over provider settings. See the
 // [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
@@ -29,6 +29,8 @@ type Provider struct {
 	Otp pulumi.StringPtrOutput `pulumi:"otp"`
 	// The password for the Proxmox VE API.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
+	// The alternative temporary directory.
+	TmpDir pulumi.StringPtrOutput `pulumi:"tmpDir"`
 	// The username for the Proxmox VE API.
 	Username pulumi.StringPtrOutput `pulumi:"username"`
 }
@@ -75,6 +77,8 @@ type providerArgs struct {
 	Password *string `pulumi:"password"`
 	// The SSH configuration for the Proxmox nodes.
 	Ssh *ProviderSsh `pulumi:"ssh"`
+	// The alternative temporary directory.
+	TmpDir *string `pulumi:"tmpDir"`
 	// The username for the Proxmox VE API.
 	Username *string `pulumi:"username"`
 }
@@ -95,6 +99,8 @@ type ProviderArgs struct {
 	Password pulumi.StringPtrInput
 	// The SSH configuration for the Proxmox nodes.
 	Ssh ProviderSshPtrInput
+	// The alternative temporary directory.
+	TmpDir pulumi.StringPtrInput
 	// The username for the Proxmox VE API.
 	Username pulumi.StringPtrInput
 }
@@ -168,6 +174,11 @@ func (o ProviderOutput) Otp() pulumi.StringPtrOutput {
 // The password for the Proxmox VE API.
 func (o ProviderOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The alternative temporary directory.
+func (o ProviderOutput) TmpDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.TmpDir }).(pulumi.StringPtrOutput)
 }
 
 // The username for the Proxmox VE API.

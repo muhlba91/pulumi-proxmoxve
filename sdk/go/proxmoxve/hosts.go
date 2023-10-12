@@ -13,20 +13,36 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Manages the host entries on a specific node.
+//
+// ## Important Notes
+//
+// Be careful not to use this resource multiple times for the same node.
+//
+// ## Import
+//
+// Instances can be imported using the `node_name`, e.g., bash
+//
+// ```sh
+//
+//	$ pulumi import proxmoxve:index/hosts:Hosts first_node_host_entries first-node
+//
+// ```
 type Hosts struct {
 	pulumi.CustomResourceState
 
-	// The addresses
+	// The IP addresses.
 	Addresses pulumi.StringArrayOutput `pulumi:"addresses"`
-	// The SHA1 digest
+	// The SHA1 digest.
 	Digest pulumi.StringOutput `pulumi:"digest"`
-	// The host entries
+	// The host entries (conversion of `addresses` and `hostnames` into
+	// objects).
 	Entries HostsEntryArrayOutput `pulumi:"entries"`
-	// The host entries
+	// A host entry (multiple blocks supported).
 	Entry HostsEntryArrayOutput `pulumi:"entry"`
-	// The hostnames
+	// The hostnames.
 	Hostnames pulumi.StringArrayArrayOutput `pulumi:"hostnames"`
-	// The node name
+	// A node name.
 	NodeName pulumi.StringOutput `pulumi:"nodeName"`
 }
 
@@ -66,32 +82,34 @@ func GetHosts(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Hosts resources.
 type hostsState struct {
-	// The addresses
+	// The IP addresses.
 	Addresses []string `pulumi:"addresses"`
-	// The SHA1 digest
+	// The SHA1 digest.
 	Digest *string `pulumi:"digest"`
-	// The host entries
+	// The host entries (conversion of `addresses` and `hostnames` into
+	// objects).
 	Entries []HostsEntry `pulumi:"entries"`
-	// The host entries
+	// A host entry (multiple blocks supported).
 	Entry []HostsEntry `pulumi:"entry"`
-	// The hostnames
+	// The hostnames.
 	Hostnames [][]string `pulumi:"hostnames"`
-	// The node name
+	// A node name.
 	NodeName *string `pulumi:"nodeName"`
 }
 
 type HostsState struct {
-	// The addresses
+	// The IP addresses.
 	Addresses pulumi.StringArrayInput
-	// The SHA1 digest
+	// The SHA1 digest.
 	Digest pulumi.StringPtrInput
-	// The host entries
+	// The host entries (conversion of `addresses` and `hostnames` into
+	// objects).
 	Entries HostsEntryArrayInput
-	// The host entries
+	// A host entry (multiple blocks supported).
 	Entry HostsEntryArrayInput
-	// The hostnames
+	// The hostnames.
 	Hostnames pulumi.StringArrayArrayInput
-	// The node name
+	// A node name.
 	NodeName pulumi.StringPtrInput
 }
 
@@ -100,17 +118,17 @@ func (HostsState) ElementType() reflect.Type {
 }
 
 type hostsArgs struct {
-	// The host entries
+	// A host entry (multiple blocks supported).
 	Entry []HostsEntry `pulumi:"entry"`
-	// The node name
+	// A node name.
 	NodeName string `pulumi:"nodeName"`
 }
 
 // The set of arguments for constructing a Hosts resource.
 type HostsArgs struct {
-	// The host entries
+	// A host entry (multiple blocks supported).
 	Entry HostsEntryArrayInput
-	// The node name
+	// A node name.
 	NodeName pulumi.StringInput
 }
 
@@ -225,32 +243,33 @@ func (o HostsOutput) ToOutput(ctx context.Context) pulumix.Output[*Hosts] {
 	}
 }
 
-// The addresses
+// The IP addresses.
 func (o HostsOutput) Addresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Hosts) pulumi.StringArrayOutput { return v.Addresses }).(pulumi.StringArrayOutput)
 }
 
-// The SHA1 digest
+// The SHA1 digest.
 func (o HostsOutput) Digest() pulumi.StringOutput {
 	return o.ApplyT(func(v *Hosts) pulumi.StringOutput { return v.Digest }).(pulumi.StringOutput)
 }
 
-// The host entries
+// The host entries (conversion of `addresses` and `hostnames` into
+// objects).
 func (o HostsOutput) Entries() HostsEntryArrayOutput {
 	return o.ApplyT(func(v *Hosts) HostsEntryArrayOutput { return v.Entries }).(HostsEntryArrayOutput)
 }
 
-// The host entries
+// A host entry (multiple blocks supported).
 func (o HostsOutput) Entry() HostsEntryArrayOutput {
 	return o.ApplyT(func(v *Hosts) HostsEntryArrayOutput { return v.Entry }).(HostsEntryArrayOutput)
 }
 
-// The hostnames
+// The hostnames.
 func (o HostsOutput) Hostnames() pulumi.StringArrayArrayOutput {
 	return o.ApplyT(func(v *Hosts) pulumi.StringArrayArrayOutput { return v.Hostnames }).(pulumi.StringArrayArrayOutput)
 }
 
-// The node name
+// A node name.
 func (o HostsOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Hosts) pulumi.StringOutput { return v.NodeName }).(pulumi.StringOutput)
 }

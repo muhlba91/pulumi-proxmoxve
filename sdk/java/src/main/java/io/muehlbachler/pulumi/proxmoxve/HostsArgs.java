@@ -16,14 +16,14 @@ public final class HostsArgs extends com.pulumi.resources.ResourceArgs {
     public static final HostsArgs Empty = new HostsArgs();
 
     /**
-     * The host entries
+     * A host entry (multiple blocks supported).
      * 
      */
     @Import(name="entry", required=true)
     private Output<List<HostsEntryArgs>> entry;
 
     /**
-     * @return The host entries
+     * @return A host entry (multiple blocks supported).
      * 
      */
     public Output<List<HostsEntryArgs>> entry() {
@@ -31,14 +31,14 @@ public final class HostsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The node name
+     * A node name.
      * 
      */
     @Import(name="nodeName", required=true)
     private Output<String> nodeName;
 
     /**
-     * @return The node name
+     * @return A node name.
      * 
      */
     public Output<String> nodeName() {
@@ -71,7 +71,7 @@ public final class HostsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entry The host entries
+         * @param entry A host entry (multiple blocks supported).
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class HostsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entry The host entries
+         * @param entry A host entry (multiple blocks supported).
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class HostsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entry The host entries
+         * @param entry A host entry (multiple blocks supported).
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class HostsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeName The node name
+         * @param nodeName A node name.
          * 
          * @return builder
          * 
@@ -113,7 +113,7 @@ public final class HostsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeName The node name
+         * @param nodeName A node name.
          * 
          * @return builder
          * 

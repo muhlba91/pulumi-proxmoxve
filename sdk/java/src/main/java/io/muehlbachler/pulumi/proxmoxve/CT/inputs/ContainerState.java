@@ -29,14 +29,14 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
     public static final ContainerState Empty = new ContainerState();
 
     /**
-     * The cloning configuration
+     * The cloning configuration.
      * 
      */
     @Import(name="clone")
     private @Nullable Output<ContainerCloneArgs> clone;
 
     /**
-     * @return The cloning configuration
+     * @return The cloning configuration.
      * 
      */
     public Optional<Output<ContainerCloneArgs>> clone_() {
@@ -44,14 +44,14 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The console configuration
+     * Console.
      * 
      */
     @Import(name="console")
     private @Nullable Output<ContainerConsoleArgs> console;
 
     /**
-     * @return The console configuration
+     * @return Console.
      * 
      */
     public Optional<Output<ContainerConsoleArgs>> console() {
@@ -59,14 +59,14 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The CPU allocation
+     * The CPU configuration.
      * 
      */
     @Import(name="cpu")
     private @Nullable Output<ContainerCpuArgs> cpu;
 
     /**
-     * @return The CPU allocation
+     * @return The CPU configuration.
      * 
      */
     public Optional<Output<ContainerCpuArgs>> cpu() {
@@ -74,14 +74,14 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description
+     * The description.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description
+     * @return The description.
      * 
      */
     public Optional<Output<String>> description() {
@@ -89,14 +89,14 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The disks
+     * The disk configuration.
      * 
      */
     @Import(name="disk")
     private @Nullable Output<ContainerDiskArgs> disk;
 
     /**
-     * @return The disks
+     * @return The disk configuration.
      * 
      */
     public Optional<Output<ContainerDiskArgs>> disk() {
@@ -104,14 +104,14 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Features
+     * The container features
      * 
      */
     @Import(name="features")
     private @Nullable Output<ContainerFeaturesArgs> features;
 
     /**
-     * @return Features
+     * @return The container features
      * 
      */
     public Optional<Output<ContainerFeaturesArgs>> features() {
@@ -119,14 +119,14 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The initialization configuration
+     * The initialization configuration.
      * 
      */
     @Import(name="initialization")
     private @Nullable Output<ContainerInitializationArgs> initialization;
 
     /**
-     * @return The initialization configuration
+     * @return The initialization configuration.
      * 
      */
     public Optional<Output<ContainerInitializationArgs>> initialization() {
@@ -134,14 +134,14 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The memory allocation
+     * The memory configuration.
      * 
      */
     @Import(name="memory")
     private @Nullable Output<ContainerMemoryArgs> memory;
 
     /**
-     * @return The memory allocation
+     * @return The memory configuration.
      * 
      */
     public Optional<Output<ContainerMemoryArgs>> memory() {
@@ -164,14 +164,16 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The network interfaces
+     * A network interface (multiple blocks
+     * supported).
      * 
      */
     @Import(name="networkInterfaces")
     private @Nullable Output<List<ContainerNetworkInterfaceArgs>> networkInterfaces;
 
     /**
-     * @return The network interfaces
+     * @return A network interface (multiple blocks
+     * supported).
      * 
      */
     public Optional<Output<List<ContainerNetworkInterfaceArgs>>> networkInterfaces() {
@@ -179,14 +181,14 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The node name
+     * The name of the node to assign the container to.
      * 
      */
     @Import(name="nodeName")
     private @Nullable Output<String> nodeName;
 
     /**
-     * @return The node name
+     * @return The name of the node to assign the container to.
      * 
      */
     public Optional<Output<String>> nodeName() {
@@ -194,14 +196,14 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The operating system configuration
+     * The Operating System configuration.
      * 
      */
     @Import(name="operatingSystem")
     private @Nullable Output<ContainerOperatingSystemArgs> operatingSystem;
 
     /**
-     * @return The operating system configuration
+     * @return The Operating System configuration.
      * 
      */
     public Optional<Output<ContainerOperatingSystemArgs>> operatingSystem() {
@@ -209,14 +211,14 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the pool to assign the container to
+     * The identifier for a pool to assign the container to.
      * 
      */
     @Import(name="poolId")
     private @Nullable Output<String> poolId;
 
     /**
-     * @return The ID of the pool to assign the container to
+     * @return The identifier for a pool to assign the container to.
      * 
      */
     public Optional<Output<String>> poolId() {
@@ -224,14 +226,29 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to start the container
+     * Automatically start container when the host system boots (defaults to `true`).
+     * 
+     */
+    @Import(name="startOnBoot")
+    private @Nullable Output<Boolean> startOnBoot;
+
+    /**
+     * @return Automatically start container when the host system boots (defaults to `true`).
+     * 
+     */
+    public Optional<Output<Boolean>> startOnBoot() {
+        return Optional.ofNullable(this.startOnBoot);
+    }
+
+    /**
+     * Whether to start the container (defaults to `true`).
      * 
      */
     @Import(name="started")
     private @Nullable Output<Boolean> started;
 
     /**
-     * @return Whether to start the container
+     * @return Whether to start the container (defaults to `true`).
      * 
      */
     public Optional<Output<Boolean>> started() {
@@ -239,14 +256,22 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Tags of the container. This is only meta information.
+     * A list of tags the container tags. This is only meta
+     * information (defaults to `[]`). Note: Proxmox always sorts the container tags.
+     * If the list in template is not sorted, then Proxmox will always report a
+     * difference on the resource. You may use the `ignore_changes` lifecycle
+     * meta-argument to ignore changes to this attribute.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return Tags of the container. This is only meta information.
+     * @return A list of tags the container tags. This is only meta
+     * information (defaults to `[]`). Note: Proxmox always sorts the container tags.
+     * If the list in template is not sorted, then Proxmox will always report a
+     * difference on the resource. You may use the `ignore_changes` lifecycle
+     * meta-argument to ignore changes to this attribute.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -254,14 +279,14 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to create a template
+     * Whether to create a template (defaults to `false`).
      * 
      */
     @Import(name="template")
     private @Nullable Output<Boolean> template;
 
     /**
-     * @return Whether to create a template
+     * @return Whether to create a template (defaults to `false`).
      * 
      */
     public Optional<Output<Boolean>> template() {
@@ -269,14 +294,16 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether the container runs as unprivileged on the host
+     * Whether the container runs as unprivileged on
+     * the host (defaults to `false`).
      * 
      */
     @Import(name="unprivileged")
     private @Nullable Output<Boolean> unprivileged;
 
     /**
-     * @return Whether the container runs as unprivileged on the host
+     * @return Whether the container runs as unprivileged on
+     * the host (defaults to `false`).
      * 
      */
     public Optional<Output<Boolean>> unprivileged() {
@@ -284,14 +311,14 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The VM identifier
+     * The container identifier
      * 
      */
     @Import(name="vmId")
     private @Nullable Output<Integer> vmId;
 
     /**
-     * @return The VM identifier
+     * @return The container identifier
      * 
      */
     public Optional<Output<Integer>> vmId() {
@@ -314,6 +341,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         this.nodeName = $.nodeName;
         this.operatingSystem = $.operatingSystem;
         this.poolId = $.poolId;
+        this.startOnBoot = $.startOnBoot;
         this.started = $.started;
         this.tags = $.tags;
         this.template = $.template;
@@ -340,7 +368,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clone The cloning configuration
+         * @param clone The cloning configuration.
          * 
          * @return builder
          * 
@@ -351,7 +379,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clone The cloning configuration
+         * @param clone The cloning configuration.
          * 
          * @return builder
          * 
@@ -361,7 +389,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param console The console configuration
+         * @param console Console.
          * 
          * @return builder
          * 
@@ -372,7 +400,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param console The console configuration
+         * @param console Console.
          * 
          * @return builder
          * 
@@ -382,7 +410,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cpu The CPU allocation
+         * @param cpu The CPU configuration.
          * 
          * @return builder
          * 
@@ -393,7 +421,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cpu The CPU allocation
+         * @param cpu The CPU configuration.
          * 
          * @return builder
          * 
@@ -403,7 +431,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description
+         * @param description The description.
          * 
          * @return builder
          * 
@@ -414,7 +442,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description
+         * @param description The description.
          * 
          * @return builder
          * 
@@ -424,7 +452,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disk The disks
+         * @param disk The disk configuration.
          * 
          * @return builder
          * 
@@ -435,7 +463,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disk The disks
+         * @param disk The disk configuration.
          * 
          * @return builder
          * 
@@ -445,7 +473,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param features Features
+         * @param features The container features
          * 
          * @return builder
          * 
@@ -456,7 +484,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param features Features
+         * @param features The container features
          * 
          * @return builder
          * 
@@ -466,7 +494,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param initialization The initialization configuration
+         * @param initialization The initialization configuration.
          * 
          * @return builder
          * 
@@ -477,7 +505,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param initialization The initialization configuration
+         * @param initialization The initialization configuration.
          * 
          * @return builder
          * 
@@ -487,7 +515,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memory The memory allocation
+         * @param memory The memory configuration.
          * 
          * @return builder
          * 
@@ -498,7 +526,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memory The memory allocation
+         * @param memory The memory configuration.
          * 
          * @return builder
          * 
@@ -539,7 +567,8 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkInterfaces The network interfaces
+         * @param networkInterfaces A network interface (multiple blocks
+         * supported).
          * 
          * @return builder
          * 
@@ -550,7 +579,8 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkInterfaces The network interfaces
+         * @param networkInterfaces A network interface (multiple blocks
+         * supported).
          * 
          * @return builder
          * 
@@ -560,7 +590,8 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkInterfaces The network interfaces
+         * @param networkInterfaces A network interface (multiple blocks
+         * supported).
          * 
          * @return builder
          * 
@@ -570,7 +601,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeName The node name
+         * @param nodeName The name of the node to assign the container to.
          * 
          * @return builder
          * 
@@ -581,7 +612,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeName The node name
+         * @param nodeName The name of the node to assign the container to.
          * 
          * @return builder
          * 
@@ -591,7 +622,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param operatingSystem The operating system configuration
+         * @param operatingSystem The Operating System configuration.
          * 
          * @return builder
          * 
@@ -602,7 +633,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param operatingSystem The operating system configuration
+         * @param operatingSystem The Operating System configuration.
          * 
          * @return builder
          * 
@@ -612,7 +643,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param poolId The ID of the pool to assign the container to
+         * @param poolId The identifier for a pool to assign the container to.
          * 
          * @return builder
          * 
@@ -623,7 +654,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param poolId The ID of the pool to assign the container to
+         * @param poolId The identifier for a pool to assign the container to.
          * 
          * @return builder
          * 
@@ -633,7 +664,28 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param started Whether to start the container
+         * @param startOnBoot Automatically start container when the host system boots (defaults to `true`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startOnBoot(@Nullable Output<Boolean> startOnBoot) {
+            $.startOnBoot = startOnBoot;
+            return this;
+        }
+
+        /**
+         * @param startOnBoot Automatically start container when the host system boots (defaults to `true`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startOnBoot(Boolean startOnBoot) {
+            return startOnBoot(Output.of(startOnBoot));
+        }
+
+        /**
+         * @param started Whether to start the container (defaults to `true`).
          * 
          * @return builder
          * 
@@ -644,7 +696,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param started Whether to start the container
+         * @param started Whether to start the container (defaults to `true`).
          * 
          * @return builder
          * 
@@ -654,7 +706,11 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags of the container. This is only meta information.
+         * @param tags A list of tags the container tags. This is only meta
+         * information (defaults to `[]`). Note: Proxmox always sorts the container tags.
+         * If the list in template is not sorted, then Proxmox will always report a
+         * difference on the resource. You may use the `ignore_changes` lifecycle
+         * meta-argument to ignore changes to this attribute.
          * 
          * @return builder
          * 
@@ -665,7 +721,11 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags of the container. This is only meta information.
+         * @param tags A list of tags the container tags. This is only meta
+         * information (defaults to `[]`). Note: Proxmox always sorts the container tags.
+         * If the list in template is not sorted, then Proxmox will always report a
+         * difference on the resource. You may use the `ignore_changes` lifecycle
+         * meta-argument to ignore changes to this attribute.
          * 
          * @return builder
          * 
@@ -675,7 +735,11 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags of the container. This is only meta information.
+         * @param tags A list of tags the container tags. This is only meta
+         * information (defaults to `[]`). Note: Proxmox always sorts the container tags.
+         * If the list in template is not sorted, then Proxmox will always report a
+         * difference on the resource. You may use the `ignore_changes` lifecycle
+         * meta-argument to ignore changes to this attribute.
          * 
          * @return builder
          * 
@@ -685,7 +749,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param template Whether to create a template
+         * @param template Whether to create a template (defaults to `false`).
          * 
          * @return builder
          * 
@@ -696,7 +760,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param template Whether to create a template
+         * @param template Whether to create a template (defaults to `false`).
          * 
          * @return builder
          * 
@@ -706,7 +770,8 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param unprivileged Whether the container runs as unprivileged on the host
+         * @param unprivileged Whether the container runs as unprivileged on
+         * the host (defaults to `false`).
          * 
          * @return builder
          * 
@@ -717,7 +782,8 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param unprivileged Whether the container runs as unprivileged on the host
+         * @param unprivileged Whether the container runs as unprivileged on
+         * the host (defaults to `false`).
          * 
          * @return builder
          * 
@@ -727,7 +793,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vmId The VM identifier
+         * @param vmId The container identifier
          * 
          * @return builder
          * 
@@ -738,7 +804,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vmId The VM identifier
+         * @param vmId The container identifier
          * 
          * @return builder
          * 

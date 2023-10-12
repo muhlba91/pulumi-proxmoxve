@@ -9,85 +9,129 @@ using Pulumi.Serialization;
 
 namespace Pulumi.ProxmoxVE.Network
 {
+    /// <summary>
+    /// Manages firewall options on VM / Container level.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new ProxmoxVE.Network.FirewallOptions("example", new()
+    ///     {
+    ///         NodeName = proxmox_virtual_environment_vm.Example.Node_name,
+    ///         VmId = proxmox_virtual_environment_vm.Example.Vm_id,
+    ///         Dhcp = true,
+    ///         Enabled = false,
+    ///         Ipfilter = true,
+    ///         LogLevelIn = "info",
+    ///         LogLevelOut = "info",
+    ///         Macfilter = false,
+    ///         Ndp = true,
+    ///         InputPolicy = "ACCEPT",
+    ///         OutputPolicy = "ACCEPT",
+    ///         Radv = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             proxmox_virtual_environment_vm.Example,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [ProxmoxVEResourceType("proxmoxve:Network/firewallOptions:FirewallOptions")]
     public partial class FirewallOptions : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the container to manage the firewall for.
+        /// Container ID. Leave empty for cluster level aliases.
         /// </summary>
         [Output("containerId")]
         public Output<int?> ContainerId { get; private set; } = null!;
 
         /// <summary>
-        /// Enable DHCP
+        /// Enable DHCP.
         /// </summary>
         [Output("dhcp")]
         public Output<bool?> Dhcp { get; private set; } = null!;
 
         /// <summary>
-        /// Enable or disable the firewall
+        /// Enable or disable the firewall.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Default policy for incoming traffic
+        /// The default input
+        /// policy (`ACCEPT`, `DROP`, `REJECT`).
         /// </summary>
         [Output("inputPolicy")]
         public Output<string?> InputPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Enable default IP filters. This is equivalent to adding an empty ipfilter-net&lt;id&gt; ipset for every interface. Such ipsets
-        /// implicitly contain sane default restrictions such as restricting IPv6 link local addresses to the one derived from the
-        /// interface's MAC address. For containers the configured IP addresses will be implicitly added.
+        /// Enable default IP filters. This is equivalent to
+        /// adding an empty ipfilter-net&lt;id&gt; ipset for every interface. Such ipsets
+        /// implicitly contain sane default restrictions such as restricting IPv6 link
+        /// local addresses to the one derived from the interface's MAC address. For
+        /// containers the configured IP addresses will be implicitly added.
         /// </summary>
         [Output("ipfilter")]
         public Output<bool?> Ipfilter { get; private set; } = null!;
 
         /// <summary>
-        /// Log level for incoming traffic.
+        /// Log level for incoming
+        /// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
         /// </summary>
         [Output("logLevelIn")]
         public Output<string?> LogLevelIn { get; private set; } = null!;
 
         /// <summary>
-        /// Log level for outgoing traffic.
+        /// Log level for outgoing
+        /// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
         /// </summary>
         [Output("logLevelOut")]
         public Output<string?> LogLevelOut { get; private set; } = null!;
 
         /// <summary>
-        /// Enable MAC address filtering
+        /// Enable/disable MAC address filter.
         /// </summary>
         [Output("macfilter")]
         public Output<bool?> Macfilter { get; private set; } = null!;
 
         /// <summary>
-        /// Enable NDP (Neighbor Discovery Protocol)
+        /// Enable NDP (Neighbor Discovery Protocol).
         /// </summary>
         [Output("ndp")]
         public Output<bool?> Ndp { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the node.
+        /// Node name.
         /// </summary>
         [Output("nodeName")]
         public Output<string> NodeName { get; private set; } = null!;
 
         /// <summary>
-        /// Default policy for outgoing traffic
+        /// The default output
+        /// policy (`ACCEPT`, `DROP`, `REJECT`).
         /// </summary>
         [Output("outputPolicy")]
         public Output<string?> OutputPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Allow sending Router Advertisement
+        /// Enable Router Advertisement.
         /// </summary>
         [Output("radv")]
         public Output<bool?> Radv { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the VM to manage the firewall for.
+        /// VM ID. Leave empty for cluster level aliases.
         /// </summary>
         [Output("vmId")]
         public Output<int?> VmId { get; private set; } = null!;
@@ -140,81 +184,87 @@ namespace Pulumi.ProxmoxVE.Network
     public sealed class FirewallOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the container to manage the firewall for.
+        /// Container ID. Leave empty for cluster level aliases.
         /// </summary>
         [Input("containerId")]
         public Input<int>? ContainerId { get; set; }
 
         /// <summary>
-        /// Enable DHCP
+        /// Enable DHCP.
         /// </summary>
         [Input("dhcp")]
         public Input<bool>? Dhcp { get; set; }
 
         /// <summary>
-        /// Enable or disable the firewall
+        /// Enable or disable the firewall.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Default policy for incoming traffic
+        /// The default input
+        /// policy (`ACCEPT`, `DROP`, `REJECT`).
         /// </summary>
         [Input("inputPolicy")]
         public Input<string>? InputPolicy { get; set; }
 
         /// <summary>
-        /// Enable default IP filters. This is equivalent to adding an empty ipfilter-net&lt;id&gt; ipset for every interface. Such ipsets
-        /// implicitly contain sane default restrictions such as restricting IPv6 link local addresses to the one derived from the
-        /// interface's MAC address. For containers the configured IP addresses will be implicitly added.
+        /// Enable default IP filters. This is equivalent to
+        /// adding an empty ipfilter-net&lt;id&gt; ipset for every interface. Such ipsets
+        /// implicitly contain sane default restrictions such as restricting IPv6 link
+        /// local addresses to the one derived from the interface's MAC address. For
+        /// containers the configured IP addresses will be implicitly added.
         /// </summary>
         [Input("ipfilter")]
         public Input<bool>? Ipfilter { get; set; }
 
         /// <summary>
-        /// Log level for incoming traffic.
+        /// Log level for incoming
+        /// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
         /// </summary>
         [Input("logLevelIn")]
         public Input<string>? LogLevelIn { get; set; }
 
         /// <summary>
-        /// Log level for outgoing traffic.
+        /// Log level for outgoing
+        /// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
         /// </summary>
         [Input("logLevelOut")]
         public Input<string>? LogLevelOut { get; set; }
 
         /// <summary>
-        /// Enable MAC address filtering
+        /// Enable/disable MAC address filter.
         /// </summary>
         [Input("macfilter")]
         public Input<bool>? Macfilter { get; set; }
 
         /// <summary>
-        /// Enable NDP (Neighbor Discovery Protocol)
+        /// Enable NDP (Neighbor Discovery Protocol).
         /// </summary>
         [Input("ndp")]
         public Input<bool>? Ndp { get; set; }
 
         /// <summary>
-        /// The name of the node.
+        /// Node name.
         /// </summary>
         [Input("nodeName", required: true)]
         public Input<string> NodeName { get; set; } = null!;
 
         /// <summary>
-        /// Default policy for outgoing traffic
+        /// The default output
+        /// policy (`ACCEPT`, `DROP`, `REJECT`).
         /// </summary>
         [Input("outputPolicy")]
         public Input<string>? OutputPolicy { get; set; }
 
         /// <summary>
-        /// Allow sending Router Advertisement
+        /// Enable Router Advertisement.
         /// </summary>
         [Input("radv")]
         public Input<bool>? Radv { get; set; }
 
         /// <summary>
-        /// The ID of the VM to manage the firewall for.
+        /// VM ID. Leave empty for cluster level aliases.
         /// </summary>
         [Input("vmId")]
         public Input<int>? VmId { get; set; }
@@ -228,81 +278,87 @@ namespace Pulumi.ProxmoxVE.Network
     public sealed class FirewallOptionsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the container to manage the firewall for.
+        /// Container ID. Leave empty for cluster level aliases.
         /// </summary>
         [Input("containerId")]
         public Input<int>? ContainerId { get; set; }
 
         /// <summary>
-        /// Enable DHCP
+        /// Enable DHCP.
         /// </summary>
         [Input("dhcp")]
         public Input<bool>? Dhcp { get; set; }
 
         /// <summary>
-        /// Enable or disable the firewall
+        /// Enable or disable the firewall.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Default policy for incoming traffic
+        /// The default input
+        /// policy (`ACCEPT`, `DROP`, `REJECT`).
         /// </summary>
         [Input("inputPolicy")]
         public Input<string>? InputPolicy { get; set; }
 
         /// <summary>
-        /// Enable default IP filters. This is equivalent to adding an empty ipfilter-net&lt;id&gt; ipset for every interface. Such ipsets
-        /// implicitly contain sane default restrictions such as restricting IPv6 link local addresses to the one derived from the
-        /// interface's MAC address. For containers the configured IP addresses will be implicitly added.
+        /// Enable default IP filters. This is equivalent to
+        /// adding an empty ipfilter-net&lt;id&gt; ipset for every interface. Such ipsets
+        /// implicitly contain sane default restrictions such as restricting IPv6 link
+        /// local addresses to the one derived from the interface's MAC address. For
+        /// containers the configured IP addresses will be implicitly added.
         /// </summary>
         [Input("ipfilter")]
         public Input<bool>? Ipfilter { get; set; }
 
         /// <summary>
-        /// Log level for incoming traffic.
+        /// Log level for incoming
+        /// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
         /// </summary>
         [Input("logLevelIn")]
         public Input<string>? LogLevelIn { get; set; }
 
         /// <summary>
-        /// Log level for outgoing traffic.
+        /// Log level for outgoing
+        /// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
         /// </summary>
         [Input("logLevelOut")]
         public Input<string>? LogLevelOut { get; set; }
 
         /// <summary>
-        /// Enable MAC address filtering
+        /// Enable/disable MAC address filter.
         /// </summary>
         [Input("macfilter")]
         public Input<bool>? Macfilter { get; set; }
 
         /// <summary>
-        /// Enable NDP (Neighbor Discovery Protocol)
+        /// Enable NDP (Neighbor Discovery Protocol).
         /// </summary>
         [Input("ndp")]
         public Input<bool>? Ndp { get; set; }
 
         /// <summary>
-        /// The name of the node.
+        /// Node name.
         /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
 
         /// <summary>
-        /// Default policy for outgoing traffic
+        /// The default output
+        /// policy (`ACCEPT`, `DROP`, `REJECT`).
         /// </summary>
         [Input("outputPolicy")]
         public Input<string>? OutputPolicy { get; set; }
 
         /// <summary>
-        /// Allow sending Router Advertisement
+        /// Enable Router Advertisement.
         /// </summary>
         [Input("radv")]
         public Input<bool>? Radv { get; set; }
 
         /// <summary>
-        /// The ID of the VM to manage the firewall for.
+        /// VM ID. Leave empty for cluster level aliases.
         /// </summary>
         [Input("vmId")]
         public Input<int>? VmId { get; set; }

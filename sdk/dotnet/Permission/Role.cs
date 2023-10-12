@@ -9,17 +9,50 @@ using Pulumi.Serialization;
 
 namespace Pulumi.ProxmoxVE.Permission
 {
+    /// <summary>
+    /// Manages a role.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var operationsMonitoring = new ProxmoxVE.Permission.Role("operationsMonitoring", new()
+    ///     {
+    ///         Privileges = new[]
+    ///         {
+    ///             "VM.Monitor",
+    ///         },
+    ///         RoleId = "operations-monitoring",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Instances can be imported using the `role_id`, e.g., bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import proxmoxve:Permission/role:Role operations_monitoring operations-monitoring
+    /// ```
+    /// </summary>
     [ProxmoxVEResourceType("proxmoxve:Permission/role:Role")]
     public partial class Role : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The role privileges
+        /// The role privileges.
         /// </summary>
         [Output("privileges")]
         public Output<ImmutableArray<string>> Privileges { get; private set; } = null!;
 
         /// <summary>
-        /// The role id
+        /// The role identifier.
         /// </summary>
         [Output("roleId")]
         public Output<string> RoleId { get; private set; } = null!;
@@ -75,7 +108,7 @@ namespace Pulumi.ProxmoxVE.Permission
         private InputList<string>? _privileges;
 
         /// <summary>
-        /// The role privileges
+        /// The role privileges.
         /// </summary>
         public InputList<string> Privileges
         {
@@ -84,7 +117,7 @@ namespace Pulumi.ProxmoxVE.Permission
         }
 
         /// <summary>
-        /// The role id
+        /// The role identifier.
         /// </summary>
         [Input("roleId", required: true)]
         public Input<string> RoleId { get; set; } = null!;
@@ -101,7 +134,7 @@ namespace Pulumi.ProxmoxVE.Permission
         private InputList<string>? _privileges;
 
         /// <summary>
-        /// The role privileges
+        /// The role privileges.
         /// </summary>
         public InputList<string> Privileges
         {
@@ -110,7 +143,7 @@ namespace Pulumi.ProxmoxVE.Permission
         }
 
         /// <summary>
-        /// The role id
+        /// The role identifier.
         /// </summary>
         [Input("roleId")]
         public Input<string>? RoleId { get; set; }

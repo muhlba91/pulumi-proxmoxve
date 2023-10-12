@@ -6,6 +6,20 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Retrieves information about a specific resource pool.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@pulumi/proxmoxve";
+ *
+ * const operationsPool = proxmoxve.Permission.getPool({
+ *     poolId: "operations",
+ * });
+ * ```
+ */
 export function getPool(args: GetPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetPoolResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -18,6 +32,9 @@ export function getPool(args: GetPoolArgs, opts?: pulumi.InvokeOptions): Promise
  * A collection of arguments for invoking getPool.
  */
 export interface GetPoolArgs {
+    /**
+     * The pool identifier.
+     */
     poolId: string;
 }
 
@@ -25,14 +42,34 @@ export interface GetPoolArgs {
  * A collection of values returned by getPool.
  */
 export interface GetPoolResult {
+    /**
+     * The pool comment.
+     */
     readonly comment: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The pool members.
+     */
     readonly members: outputs.Permission.GetPoolMember[];
     readonly poolId: string;
 }
+/**
+ * Retrieves information about a specific resource pool.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@pulumi/proxmoxve";
+ *
+ * const operationsPool = proxmoxve.Permission.getPool({
+ *     poolId: "operations",
+ * });
+ * ```
+ */
 export function getPoolOutput(args: GetPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPoolResult> {
     return pulumi.output(args).apply((a: any) => getPool(a, opts))
 }
@@ -41,5 +78,8 @@ export function getPoolOutput(args: GetPoolOutputArgs, opts?: pulumi.InvokeOptio
  * A collection of arguments for invoking getPool.
  */
 export interface GetPoolOutputArgs {
+    /**
+     * The pool identifier.
+     */
     poolId: pulumi.Input<string>;
 }

@@ -17,14 +17,14 @@ public final class DNSState extends com.pulumi.resources.ResourceArgs {
     public static final DNSState Empty = new DNSState();
 
     /**
-     * The DNS search domain
+     * The DNS search domain.
      * 
      */
     @Import(name="domain")
     private @Nullable Output<String> domain;
 
     /**
-     * @return The DNS search domain
+     * @return The DNS search domain.
      * 
      */
     public Optional<Output<String>> domain() {
@@ -32,14 +32,14 @@ public final class DNSState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The node name
+     * A node name.
      * 
      */
     @Import(name="nodeName")
     private @Nullable Output<String> nodeName;
 
     /**
-     * @return The node name
+     * @return A node name.
      * 
      */
     public Optional<Output<String>> nodeName() {
@@ -47,14 +47,14 @@ public final class DNSState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The DNS servers
+     * The DNS servers.
      * 
      */
     @Import(name="servers")
     private @Nullable Output<List<String>> servers;
 
     /**
-     * @return The DNS servers
+     * @return The DNS servers.
      * 
      */
     public Optional<Output<List<String>>> servers() {
@@ -88,7 +88,7 @@ public final class DNSState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domain The DNS search domain
+         * @param domain The DNS search domain.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class DNSState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domain The DNS search domain
+         * @param domain The DNS search domain.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class DNSState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeName The node name
+         * @param nodeName A node name.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class DNSState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeName The node name
+         * @param nodeName A node name.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class DNSState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param servers The DNS servers
+         * @param servers The DNS servers.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class DNSState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param servers The DNS servers
+         * @param servers The DNS servers.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class DNSState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param servers The DNS servers
+         * @param servers The DNS servers.
          * 
          * @return builder
          * 

@@ -12,37 +12,115 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VirtualMachineHostpci {
+    /**
+     * @return The device (defaults to `socket`).
+     * - `/dev/*` - A host serial device.
+     * 
+     */
     private String device;
+    /**
+     * @return The PCI device ID. Use either this or `mapping`.
+     * 
+     */
     private @Nullable String id;
+    /**
+     * @return The resource mapping name of the device, for
+     * example gpu. Use either this or `id`.
+     * 
+     */
     private @Nullable String mapping;
+    /**
+     * @return The mediated device ID to use.
+     * 
+     */
     private @Nullable String mdev;
+    /**
+     * @return Tells Proxmox to use a PCIe or PCI port. Some
+     * guests/device combination require PCIe rather than PCI. PCIe is only
+     * available for q35 machine types.
+     * 
+     */
     private @Nullable Boolean pcie;
+    /**
+     * @return A path to a ROM file for the device to use. This
+     * is a relative path under `/usr/share/kvm/`.
+     * 
+     */
     private @Nullable String romFile;
+    /**
+     * @return Makes the firmware ROM visible for the VM (defaults
+     * to `true`).
+     * 
+     */
     private @Nullable Boolean rombar;
+    /**
+     * @return Marks the PCI(e) device as the primary GPU of the VM.
+     * With this enabled the `vga` configuration argument will be ignored.
+     * 
+     */
     private @Nullable Boolean xvga;
 
     private VirtualMachineHostpci() {}
+    /**
+     * @return The device (defaults to `socket`).
+     * - `/dev/*` - A host serial device.
+     * 
+     */
     public String device() {
         return this.device;
     }
+    /**
+     * @return The PCI device ID. Use either this or `mapping`.
+     * 
+     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
+    /**
+     * @return The resource mapping name of the device, for
+     * example gpu. Use either this or `id`.
+     * 
+     */
     public Optional<String> mapping() {
         return Optional.ofNullable(this.mapping);
     }
+    /**
+     * @return The mediated device ID to use.
+     * 
+     */
     public Optional<String> mdev() {
         return Optional.ofNullable(this.mdev);
     }
+    /**
+     * @return Tells Proxmox to use a PCIe or PCI port. Some
+     * guests/device combination require PCIe rather than PCI. PCIe is only
+     * available for q35 machine types.
+     * 
+     */
     public Optional<Boolean> pcie() {
         return Optional.ofNullable(this.pcie);
     }
+    /**
+     * @return A path to a ROM file for the device to use. This
+     * is a relative path under `/usr/share/kvm/`.
+     * 
+     */
     public Optional<String> romFile() {
         return Optional.ofNullable(this.romFile);
     }
+    /**
+     * @return Makes the firmware ROM visible for the VM (defaults
+     * to `true`).
+     * 
+     */
     public Optional<Boolean> rombar() {
         return Optional.ofNullable(this.rombar);
     }
+    /**
+     * @return Marks the PCI(e) device as the primary GPU of the VM.
+     * With this enabled the `vga` configuration argument will be ignored.
+     * 
+     */
     public Optional<Boolean> xvga() {
         return Optional.ofNullable(this.xvga);
     }

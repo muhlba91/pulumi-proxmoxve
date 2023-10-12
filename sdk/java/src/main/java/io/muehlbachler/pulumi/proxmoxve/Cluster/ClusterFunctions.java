@@ -13,21 +13,207 @@ import io.muehlbachler.pulumi.proxmoxve.Utilities;
 import java.util.concurrent.CompletableFuture;
 
 public final class ClusterFunctions {
+    /**
+     * Retrieves information about all available nodes.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.Cluster.ClusterFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availableNodes = ClusterFunctions.getNodes();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetNodesResult> getNodes() {
         return getNodes(InvokeArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * Retrieves information about all available nodes.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.Cluster.ClusterFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availableNodes = ClusterFunctions.getNodes();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetNodesResult> getNodesPlain() {
         return getNodesPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * Retrieves information about all available nodes.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.Cluster.ClusterFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availableNodes = ClusterFunctions.getNodes();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetNodesResult> getNodes(InvokeArgs args) {
         return getNodes(args, InvokeOptions.Empty);
     }
+    /**
+     * Retrieves information about all available nodes.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.Cluster.ClusterFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availableNodes = ClusterFunctions.getNodes();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetNodesResult> getNodesPlain(InvokeArgs args) {
         return getNodesPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Retrieves information about all available nodes.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.Cluster.ClusterFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availableNodes = ClusterFunctions.getNodes();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetNodesResult> getNodes(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:Cluster/getNodes:getNodes", TypeShape.of(GetNodesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Retrieves information about all available nodes.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.Cluster.ClusterFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availableNodes = ClusterFunctions.getNodes();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetNodesResult> getNodesPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("proxmoxve:Cluster/getNodes:getNodes", TypeShape.of(GetNodesResult.class), args, Utilities.withVersion(options));
     }

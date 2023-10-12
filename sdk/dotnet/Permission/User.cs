@@ -9,71 +9,120 @@ using Pulumi.Serialization;
 
 namespace Pulumi.ProxmoxVE.Permission
 {
+    /// <summary>
+    /// Manages a user.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var operationsMonitoring = new ProxmoxVE.Permission.Role("operationsMonitoring", new()
+    ///     {
+    ///         RoleId = "operations-monitoring",
+    ///         Privileges = new[]
+    ///         {
+    ///             "VM.Monitor",
+    ///         },
+    ///     });
+    /// 
+    ///     var operationsAutomation = new ProxmoxVE.Permission.User("operationsAutomation", new()
+    ///     {
+    ///         Acls = new[]
+    ///         {
+    ///             new ProxmoxVE.Permission.Inputs.UserAclArgs
+    ///             {
+    ///                 Path = "/vms/1234",
+    ///                 Propagate = true,
+    ///                 RoleId = operationsMonitoring.RoleId,
+    ///             },
+    ///         },
+    ///         Comment = "Managed by Terraform",
+    ///         Password = "a-strong-password",
+    ///         UserId = "operations-automation@pve",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Instances can be imported using the `user_id`, e.g., bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import proxmoxve:Permission/user:User operations_automation operations-automation@pve
+    /// ```
+    /// </summary>
     [ProxmoxVEResourceType("proxmoxve:Permission/user:User")]
     public partial class User : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The access control list
+        /// The access control list (multiple blocks supported).
         /// </summary>
         [Output("acls")]
         public Output<ImmutableArray<Outputs.UserAcl>> Acls { get; private set; } = null!;
 
         /// <summary>
-        /// The user comment
+        /// The user comment.
         /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
 
         /// <summary>
-        /// The user's email address
+        /// The user's email address.
         /// </summary>
         [Output("email")]
         public Output<string?> Email { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the user account is enabled
+        /// Whether the user account is enabled.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// The user account's expiration date
+        /// The user account's expiration date (RFC 3339).
         /// </summary>
         [Output("expirationDate")]
         public Output<string?> ExpirationDate { get; private set; } = null!;
 
         /// <summary>
-        /// The user's first name
+        /// The user's first name.
         /// </summary>
         [Output("firstName")]
         public Output<string?> FirstName { get; private set; } = null!;
 
         /// <summary>
-        /// The user's groups
+        /// The user's groups.
         /// </summary>
         [Output("groups")]
         public Output<ImmutableArray<string>> Groups { get; private set; } = null!;
 
         /// <summary>
-        /// The user's keys
+        /// The user's keys.
         /// </summary>
         [Output("keys")]
         public Output<string?> Keys { get; private set; } = null!;
 
         /// <summary>
-        /// The user's last name
+        /// The user's last name.
         /// </summary>
         [Output("lastName")]
         public Output<string?> LastName { get; private set; } = null!;
 
         /// <summary>
-        /// The user's password
+        /// The user's password. Required for PVE or PAM realms.
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// The user id
+        /// The user identifier.
         /// </summary>
         [Output("userId")]
         public Output<string> UserId { get; private set; } = null!;
@@ -129,7 +178,7 @@ namespace Pulumi.ProxmoxVE.Permission
         private InputList<Inputs.UserAclArgs>? _acls;
 
         /// <summary>
-        /// The access control list
+        /// The access control list (multiple blocks supported).
         /// </summary>
         public InputList<Inputs.UserAclArgs> Acls
         {
@@ -138,31 +187,31 @@ namespace Pulumi.ProxmoxVE.Permission
         }
 
         /// <summary>
-        /// The user comment
+        /// The user comment.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// The user's email address
+        /// The user's email address.
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// Whether the user account is enabled
+        /// Whether the user account is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The user account's expiration date
+        /// The user account's expiration date (RFC 3339).
         /// </summary>
         [Input("expirationDate")]
         public Input<string>? ExpirationDate { get; set; }
 
         /// <summary>
-        /// The user's first name
+        /// The user's first name.
         /// </summary>
         [Input("firstName")]
         public Input<string>? FirstName { get; set; }
@@ -171,7 +220,7 @@ namespace Pulumi.ProxmoxVE.Permission
         private InputList<string>? _groups;
 
         /// <summary>
-        /// The user's groups
+        /// The user's groups.
         /// </summary>
         public InputList<string> Groups
         {
@@ -180,25 +229,25 @@ namespace Pulumi.ProxmoxVE.Permission
         }
 
         /// <summary>
-        /// The user's keys
+        /// The user's keys.
         /// </summary>
         [Input("keys")]
         public Input<string>? Keys { get; set; }
 
         /// <summary>
-        /// The user's last name
+        /// The user's last name.
         /// </summary>
         [Input("lastName")]
         public Input<string>? LastName { get; set; }
 
         /// <summary>
-        /// The user's password
+        /// The user's password. Required for PVE or PAM realms.
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// The user id
+        /// The user identifier.
         /// </summary>
         [Input("userId", required: true)]
         public Input<string> UserId { get; set; } = null!;
@@ -215,7 +264,7 @@ namespace Pulumi.ProxmoxVE.Permission
         private InputList<Inputs.UserAclGetArgs>? _acls;
 
         /// <summary>
-        /// The access control list
+        /// The access control list (multiple blocks supported).
         /// </summary>
         public InputList<Inputs.UserAclGetArgs> Acls
         {
@@ -224,31 +273,31 @@ namespace Pulumi.ProxmoxVE.Permission
         }
 
         /// <summary>
-        /// The user comment
+        /// The user comment.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// The user's email address
+        /// The user's email address.
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// Whether the user account is enabled
+        /// Whether the user account is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The user account's expiration date
+        /// The user account's expiration date (RFC 3339).
         /// </summary>
         [Input("expirationDate")]
         public Input<string>? ExpirationDate { get; set; }
 
         /// <summary>
-        /// The user's first name
+        /// The user's first name.
         /// </summary>
         [Input("firstName")]
         public Input<string>? FirstName { get; set; }
@@ -257,7 +306,7 @@ namespace Pulumi.ProxmoxVE.Permission
         private InputList<string>? _groups;
 
         /// <summary>
-        /// The user's groups
+        /// The user's groups.
         /// </summary>
         public InputList<string> Groups
         {
@@ -266,25 +315,25 @@ namespace Pulumi.ProxmoxVE.Permission
         }
 
         /// <summary>
-        /// The user's keys
+        /// The user's keys.
         /// </summary>
         [Input("keys")]
         public Input<string>? Keys { get; set; }
 
         /// <summary>
-        /// The user's last name
+        /// The user's last name.
         /// </summary>
         [Input("lastName")]
         public Input<string>? LastName { get; set; }
 
         /// <summary>
-        /// The user's password
+        /// The user's password. Required for PVE or PAM realms.
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// The user id
+        /// The user identifier.
         /// </summary>
         [Input("userId")]
         public Input<string>? UserId { get; set; }

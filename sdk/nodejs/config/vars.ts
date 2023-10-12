@@ -76,6 +76,17 @@ Object.defineProperty(exports, "ssh", {
 });
 
 /**
+ * The alternative temporary directory.
+ */
+export declare const tmpDir: string | undefined;
+Object.defineProperty(exports, "tmpDir", {
+    get() {
+        return __config.get("tmpDir");
+    },
+    enumerable: true,
+});
+
+/**
  * The username for the Proxmox VE API.
  */
 export declare const username: string | undefined;

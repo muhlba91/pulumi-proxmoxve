@@ -13,16 +13,32 @@ public final class GetVirtualMachinePlainArgs extends com.pulumi.resources.Invok
 
     public static final GetVirtualMachinePlainArgs Empty = new GetVirtualMachinePlainArgs();
 
+    /**
+     * The node name.
+     * 
+     */
     @Import(name="nodeName", required=true)
     private String nodeName;
 
+    /**
+     * @return The node name.
+     * 
+     */
     public String nodeName() {
         return this.nodeName;
     }
 
+    /**
+     * The VM identifier.
+     * 
+     */
     @Import(name="vmId", required=true)
     private Integer vmId;
 
+    /**
+     * @return The VM identifier.
+     * 
+     */
     public Integer vmId() {
         return this.vmId;
     }
@@ -52,11 +68,23 @@ public final class GetVirtualMachinePlainArgs extends com.pulumi.resources.Invok
             $ = new GetVirtualMachinePlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param nodeName The node name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeName(String nodeName) {
             $.nodeName = nodeName;
             return this;
         }
 
+        /**
+         * @param vmId The VM identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vmId(Integer vmId) {
             $.vmId = vmId;
             return this;

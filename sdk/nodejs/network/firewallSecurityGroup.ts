@@ -6,6 +6,50 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * A security group is a collection of rules, defined at cluster level, which can
+ * be used in all VMs' rules. For example, you can define a group named “webserver”
+ * with rules to open the http and https ports.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const webserver = new proxmoxve.network.FirewallSecurityGroup("webserver", {
+ *     comment: "Managed by Terraform",
+ *     rules: [
+ *         {
+ *             action: "ACCEPT",
+ *             comment: "Allow HTTP",
+ *             dest: "192.168.1.5",
+ *             dport: "80",
+ *             log: "info",
+ *             proto: "tcp",
+ *             type: "in",
+ *         },
+ *         {
+ *             action: "ACCEPT",
+ *             comment: "Allow HTTPS",
+ *             dest: "192.168.1.5",
+ *             dport: "443",
+ *             log: "info",
+ *             proto: "tcp",
+ *             type: "in",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Instances can be imported using the `name`, e.g., bash
+ *
+ * ```sh
+ *  $ pulumi import proxmoxve:Network/firewallSecurityGroup:FirewallSecurityGroup webserver webserver
+ * ```
+ */
 export class FirewallSecurityGroup extends pulumi.CustomResource {
     /**
      * Get an existing FirewallSecurityGroup resource's state with the given name, ID, and optional extra
@@ -35,7 +79,7 @@ export class FirewallSecurityGroup extends pulumi.CustomResource {
     }
 
     /**
-     * Security group comment
+     * Rule comment.
      */
     public readonly comment!: pulumi.Output<string | undefined>;
     /**
@@ -43,7 +87,7 @@ export class FirewallSecurityGroup extends pulumi.CustomResource {
      */
     public readonly containerId!: pulumi.Output<number | undefined>;
     /**
-     * Security group name
+     * Security group name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -51,7 +95,7 @@ export class FirewallSecurityGroup extends pulumi.CustomResource {
      */
     public readonly nodeName!: pulumi.Output<string | undefined>;
     /**
-     * List of rules
+     * Firewall rule block (multiple blocks supported).
      */
     public readonly rules!: pulumi.Output<outputs.Network.FirewallSecurityGroupRule[]>;
     /**
@@ -100,7 +144,7 @@ export class FirewallSecurityGroup extends pulumi.CustomResource {
  */
 export interface FirewallSecurityGroupState {
     /**
-     * Security group comment
+     * Rule comment.
      */
     comment?: pulumi.Input<string>;
     /**
@@ -108,7 +152,7 @@ export interface FirewallSecurityGroupState {
      */
     containerId?: pulumi.Input<number>;
     /**
-     * Security group name
+     * Security group name.
      */
     name?: pulumi.Input<string>;
     /**
@@ -116,7 +160,7 @@ export interface FirewallSecurityGroupState {
      */
     nodeName?: pulumi.Input<string>;
     /**
-     * List of rules
+     * Firewall rule block (multiple blocks supported).
      */
     rules?: pulumi.Input<pulumi.Input<inputs.Network.FirewallSecurityGroupRule>[]>;
     /**
@@ -130,7 +174,7 @@ export interface FirewallSecurityGroupState {
  */
 export interface FirewallSecurityGroupArgs {
     /**
-     * Security group comment
+     * Rule comment.
      */
     comment?: pulumi.Input<string>;
     /**
@@ -138,7 +182,7 @@ export interface FirewallSecurityGroupArgs {
      */
     containerId?: pulumi.Input<number>;
     /**
-     * Security group name
+     * Security group name.
      */
     name?: pulumi.Input<string>;
     /**
@@ -146,7 +190,7 @@ export interface FirewallSecurityGroupArgs {
      */
     nodeName?: pulumi.Input<string>;
     /**
-     * List of rules
+     * Firewall rule block (multiple blocks supported).
      */
     rules: pulumi.Input<pulumi.Input<inputs.Network.FirewallSecurityGroupRule>[]>;
     /**

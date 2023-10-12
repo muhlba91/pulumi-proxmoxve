@@ -16,16 +16,32 @@ public final class ContainerInitializationUserAccountArgs extends com.pulumi.res
 
     public static final ContainerInitializationUserAccountArgs Empty = new ContainerInitializationUserAccountArgs();
 
+    /**
+     * The SSH keys for the root account.
+     * 
+     */
     @Import(name="keys")
     private @Nullable Output<List<String>> keys;
 
+    /**
+     * @return The SSH keys for the root account.
+     * 
+     */
     public Optional<Output<List<String>>> keys() {
         return Optional.ofNullable(this.keys);
     }
 
+    /**
+     * The password for the root account.
+     * 
+     */
     @Import(name="password")
     private @Nullable Output<String> password;
 
+    /**
+     * @return The password for the root account.
+     * 
+     */
     public Optional<Output<String>> password() {
         return Optional.ofNullable(this.password);
     }
@@ -55,24 +71,54 @@ public final class ContainerInitializationUserAccountArgs extends com.pulumi.res
             $ = new ContainerInitializationUserAccountArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param keys The SSH keys for the root account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keys(@Nullable Output<List<String>> keys) {
             $.keys = keys;
             return this;
         }
 
+        /**
+         * @param keys The SSH keys for the root account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keys(List<String> keys) {
             return keys(Output.of(keys));
         }
 
+        /**
+         * @param keys The SSH keys for the root account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keys(String... keys) {
             return keys(List.of(keys));
         }
 
+        /**
+         * @param password The password for the root account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
 
+        /**
+         * @param password The password for the root account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(String password) {
             return password(Output.of(password));
         }

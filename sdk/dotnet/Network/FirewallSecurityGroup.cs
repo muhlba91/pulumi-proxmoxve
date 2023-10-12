@@ -9,11 +9,65 @@ using Pulumi.Serialization;
 
 namespace Pulumi.ProxmoxVE.Network
 {
+    /// <summary>
+    /// A security group is a collection of rules, defined at cluster level, which can
+    /// be used in all VMs' rules. For example, you can define a group named “webserver”
+    /// with rules to open the http and https ports.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var webserver = new ProxmoxVE.Network.FirewallSecurityGroup("webserver", new()
+    ///     {
+    ///         Comment = "Managed by Terraform",
+    ///         Rules = new[]
+    ///         {
+    ///             new ProxmoxVE.Network.Inputs.FirewallSecurityGroupRuleArgs
+    ///             {
+    ///                 Action = "ACCEPT",
+    ///                 Comment = "Allow HTTP",
+    ///                 Dest = "192.168.1.5",
+    ///                 Dport = "80",
+    ///                 Log = "info",
+    ///                 Proto = "tcp",
+    ///                 Type = "in",
+    ///             },
+    ///             new ProxmoxVE.Network.Inputs.FirewallSecurityGroupRuleArgs
+    ///             {
+    ///                 Action = "ACCEPT",
+    ///                 Comment = "Allow HTTPS",
+    ///                 Dest = "192.168.1.5",
+    ///                 Dport = "443",
+    ///                 Log = "info",
+    ///                 Proto = "tcp",
+    ///                 Type = "in",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Instances can be imported using the `name`, e.g., bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import proxmoxve:Network/firewallSecurityGroup:FirewallSecurityGroup webserver webserver
+    /// ```
+    /// </summary>
     [ProxmoxVEResourceType("proxmoxve:Network/firewallSecurityGroup:FirewallSecurityGroup")]
     public partial class FirewallSecurityGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Security group comment
+        /// Rule comment.
         /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
@@ -25,7 +79,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Output<int?> ContainerId { get; private set; } = null!;
 
         /// <summary>
-        /// Security group name
+        /// Security group name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -37,7 +91,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Output<string?> NodeName { get; private set; } = null!;
 
         /// <summary>
-        /// List of rules
+        /// Firewall rule block (multiple blocks supported).
         /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.FirewallSecurityGroupRule>> Rules { get; private set; } = null!;
@@ -96,7 +150,7 @@ namespace Pulumi.ProxmoxVE.Network
     public sealed class FirewallSecurityGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Security group comment
+        /// Rule comment.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
@@ -108,7 +162,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Input<int>? ContainerId { get; set; }
 
         /// <summary>
-        /// Security group name
+        /// Security group name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -123,7 +177,7 @@ namespace Pulumi.ProxmoxVE.Network
         private InputList<Inputs.FirewallSecurityGroupRuleArgs>? _rules;
 
         /// <summary>
-        /// List of rules
+        /// Firewall rule block (multiple blocks supported).
         /// </summary>
         public InputList<Inputs.FirewallSecurityGroupRuleArgs> Rules
         {
@@ -146,7 +200,7 @@ namespace Pulumi.ProxmoxVE.Network
     public sealed class FirewallSecurityGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Security group comment
+        /// Rule comment.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
@@ -158,7 +212,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Input<int>? ContainerId { get; set; }
 
         /// <summary>
-        /// Security group name
+        /// Security group name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -173,7 +227,7 @@ namespace Pulumi.ProxmoxVE.Network
         private InputList<Inputs.FirewallSecurityGroupRuleGetArgs>? _rules;
 
         /// <summary>
-        /// List of rules
+        /// Firewall rule block (multiple blocks supported).
         /// </summary>
         public InputList<Inputs.FirewallSecurityGroupRuleGetArgs> Rules
         {

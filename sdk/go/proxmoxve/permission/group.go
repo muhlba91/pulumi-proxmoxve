@@ -13,16 +13,54 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Manages a user group.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/Permission"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Permission.NewGroup(ctx, "operationsTeam", &Permission.GroupArgs{
+//				Comment: pulumi.String("Managed by Terraform"),
+//				GroupId: pulumi.String("operations-team"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// Instances can be imported using the `group_id`, e.g., bash
+//
+// ```sh
+//
+//	$ pulumi import proxmoxve:Permission/group:Group operations_team operations-team
+//
+// ```
 type Group struct {
 	pulumi.CustomResourceState
 
-	// The access control list
+	// The access control list (multiple blocks supported).
 	Acls GroupAclArrayOutput `pulumi:"acls"`
-	// The group comment
+	// The group comment.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
-	// The group id
+	// The group identifier.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
-	// The group members
+	// The group members as a list of `username@realm` entries
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 }
 
@@ -59,24 +97,24 @@ func GetGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Group resources.
 type groupState struct {
-	// The access control list
+	// The access control list (multiple blocks supported).
 	Acls []GroupAcl `pulumi:"acls"`
-	// The group comment
+	// The group comment.
 	Comment *string `pulumi:"comment"`
-	// The group id
+	// The group identifier.
 	GroupId *string `pulumi:"groupId"`
-	// The group members
+	// The group members as a list of `username@realm` entries
 	Members []string `pulumi:"members"`
 }
 
 type GroupState struct {
-	// The access control list
+	// The access control list (multiple blocks supported).
 	Acls GroupAclArrayInput
-	// The group comment
+	// The group comment.
 	Comment pulumi.StringPtrInput
-	// The group id
+	// The group identifier.
 	GroupId pulumi.StringPtrInput
-	// The group members
+	// The group members as a list of `username@realm` entries
 	Members pulumi.StringArrayInput
 }
 
@@ -85,21 +123,21 @@ func (GroupState) ElementType() reflect.Type {
 }
 
 type groupArgs struct {
-	// The access control list
+	// The access control list (multiple blocks supported).
 	Acls []GroupAcl `pulumi:"acls"`
-	// The group comment
+	// The group comment.
 	Comment *string `pulumi:"comment"`
-	// The group id
+	// The group identifier.
 	GroupId string `pulumi:"groupId"`
 }
 
 // The set of arguments for constructing a Group resource.
 type GroupArgs struct {
-	// The access control list
+	// The access control list (multiple blocks supported).
 	Acls GroupAclArrayInput
-	// The group comment
+	// The group comment.
 	Comment pulumi.StringPtrInput
-	// The group id
+	// The group identifier.
 	GroupId pulumi.StringInput
 }
 
@@ -214,22 +252,22 @@ func (o GroupOutput) ToOutput(ctx context.Context) pulumix.Output[*Group] {
 	}
 }
 
-// The access control list
+// The access control list (multiple blocks supported).
 func (o GroupOutput) Acls() GroupAclArrayOutput {
 	return o.ApplyT(func(v *Group) GroupAclArrayOutput { return v.Acls }).(GroupAclArrayOutput)
 }
 
-// The group comment
+// The group comment.
 func (o GroupOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-// The group id
+// The group identifier.
 func (o GroupOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
 }
 
-// The group members
+// The group members as a list of `username@realm` entries
 func (o GroupOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }

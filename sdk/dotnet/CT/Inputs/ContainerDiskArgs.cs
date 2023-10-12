@@ -12,9 +12,17 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
 
     public sealed class ContainerDiskArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The identifier for the datastore to create the
+        /// disk in (defaults to `local`).
+        /// </summary>
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
 
+        /// <summary>
+        /// Volume size (only for ZFS storage backed mount points).
+        /// Can be specified with a unit suffix (e.g. `10G`).
+        /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
 

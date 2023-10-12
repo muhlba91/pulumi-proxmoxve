@@ -12,17 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContainerCpu {
+    /**
+     * @return The CPU architecture (defaults to `amd64`).
+     * 
+     */
     private @Nullable String architecture;
+    /**
+     * @return The number of CPU cores (defaults to `1`).
+     * 
+     */
     private @Nullable Integer cores;
+    /**
+     * @return The CPU units (defaults to `1024`).
+     * 
+     */
     private @Nullable Integer units;
 
     private ContainerCpu() {}
+    /**
+     * @return The CPU architecture (defaults to `amd64`).
+     * 
+     */
     public Optional<String> architecture() {
         return Optional.ofNullable(this.architecture);
     }
+    /**
+     * @return The number of CPU cores (defaults to `1`).
+     * 
+     */
     public Optional<Integer> cores() {
         return Optional.ofNullable(this.cores);
     }
+    /**
+     * @return The CPU units (defaults to `1024`).
+     * 
+     */
     public Optional<Integer> units() {
         return Optional.ofNullable(this.units);
     }

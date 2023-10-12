@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -22,15 +22,37 @@ class FirewallIPSetCidrArgs:
                  name: pulumi.Input[str],
                  comment: Optional[pulumi.Input[str]] = None,
                  nomatch: Optional[pulumi.Input[bool]] = None):
-        pulumi.set(__self__, "name", name)
+        """
+        :param pulumi.Input[str] name: Network/IP specification in CIDR format.
+        :param pulumi.Input[str] comment: Arbitrary string annotation.
+        :param pulumi.Input[bool] nomatch: Entries marked as `nomatch` are skipped as if those
+               were not added to the set.
+        """
+        FirewallIPSetCidrArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            comment=comment,
+            nomatch=nomatch,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             comment: Optional[pulumi.Input[str]] = None,
+             nomatch: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if nomatch is not None:
-            pulumi.set(__self__, "nomatch", nomatch)
+            _setter("nomatch", nomatch)
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
+        """
+        Network/IP specification in CIDR format.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -40,6 +62,9 @@ class FirewallIPSetCidrArgs:
     @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        Arbitrary string annotation.
+        """
         return pulumi.get(self, "comment")
 
     @comment.setter
@@ -49,6 +74,10 @@ class FirewallIPSetCidrArgs:
     @property
     @pulumi.getter
     def nomatch(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Entries marked as `nomatch` are skipped as if those
+        were not added to the set.
+        """
         return pulumi.get(self, "nomatch")
 
     @nomatch.setter
@@ -62,16 +91,39 @@ class FirewallLogRatelimitArgs:
                  burst: Optional[pulumi.Input[int]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  rate: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] burst: Initial burst of packages which will always get
+               logged before the rate is applied (defaults to `5`).
+        :param pulumi.Input[bool] enabled: Enable or disable the log rate limit.
+        :param pulumi.Input[str] rate: Frequency with which the burst bucket gets refilled (defaults to `1/second`).
+        """
+        FirewallLogRatelimitArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            burst=burst,
+            enabled=enabled,
+            rate=rate,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             burst: Optional[pulumi.Input[int]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             rate: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if burst is not None:
-            pulumi.set(__self__, "burst", burst)
+            _setter("burst", burst)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if rate is not None:
-            pulumi.set(__self__, "rate", rate)
+            _setter("rate", rate)
 
     @property
     @pulumi.getter
     def burst(self) -> Optional[pulumi.Input[int]]:
+        """
+        Initial burst of packages which will always get
+        logged before the rate is applied (defaults to `5`).
+        """
         return pulumi.get(self, "burst")
 
     @burst.setter
@@ -81,6 +133,9 @@ class FirewallLogRatelimitArgs:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable or disable the log rate limit.
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -90,6 +145,9 @@ class FirewallLogRatelimitArgs:
     @property
     @pulumi.getter
     def rate(self) -> Optional[pulumi.Input[str]]:
+        """
+        Frequency with which the burst bucket gets refilled (defaults to `1/second`).
+        """
         return pulumi.get(self, "rate")
 
     @rate.setter
@@ -114,38 +172,116 @@ class FirewallRulesRuleArgs:
                  source: Optional[pulumi.Input[str]] = None,
                  sport: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] action: Rule action (`ACCEPT`, `DROP`, `REJECT`).
+        :param pulumi.Input[str] comment: Rule comment.
+        :param pulumi.Input[str] dest: Restrict packet destination address. This can
+               refer to a single IP address, an IP set ('+ipsetname') or an IP alias
+               definition. You can also specify an address range
+               like `20.34.101.207-201.3.9.99`, or a list of IP addresses and
+               networks (entries are separated by comma). Please do not mix IPv4 and
+               IPv6 addresses inside such lists.
+        :param pulumi.Input[str] dport: Restrict TCP/UDP destination port. You can use
+               service names or simple numbers (0-65535), as defined
+               in `/etc/services`. Port ranges can be specified with '\\d+:\\d+', for
+               example `80:85`, and you can use comma separated list to match several
+               ports or ranges.
+        :param pulumi.Input[bool] enabled: Enable this rule. Defaults to `true`.
+        :param pulumi.Input[str] iface: Network interface name. You have to use network
+               configuration key names for VMs and containers ('net\\d+'). Host
+               related rules can use arbitrary strings.
+        :param pulumi.Input[str] log: Log level for this rule (`emerg`, `alert`, `crit`,
+               `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+        :param pulumi.Input[str] macro: Macro name. Use predefined standard macro
+               from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+        :param pulumi.Input[int] pos: Position of the rule in the list.
+        :param pulumi.Input[str] proto: Restrict packet protocol. You can use protocol
+               names as defined in '/etc/protocols'.
+        :param pulumi.Input[str] security_group: Security group name.
+        :param pulumi.Input[str] source: Restrict packet source address. This can refer
+               to a single IP address, an IP set ('+ipsetname') or an IP alias
+               definition. You can also specify an address range
+               like `20.34.101.207-201.3.9.99`, or a list of IP addresses and
+               networks (entries are separated by comma). Please do not mix IPv4 and
+               IPv6 addresses inside such lists.
+        :param pulumi.Input[str] sport: Restrict TCP/UDP source port. You can use
+               service names or simple numbers (0-65535), as defined
+               in `/etc/services`. Port ranges can be specified with '\\d+:\\d+', for
+               example `80:85`, and you can use comma separated list to match several
+               ports or ranges.
+               - a security group insertion block, which includes the following arguments:
+        :param pulumi.Input[str] type: Rule type (`in`, `out`).
+        """
+        FirewallRulesRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            comment=comment,
+            dest=dest,
+            dport=dport,
+            enabled=enabled,
+            iface=iface,
+            log=log,
+            macro=macro,
+            pos=pos,
+            proto=proto,
+            security_group=security_group,
+            source=source,
+            sport=sport,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: Optional[pulumi.Input[str]] = None,
+             comment: Optional[pulumi.Input[str]] = None,
+             dest: Optional[pulumi.Input[str]] = None,
+             dport: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             iface: Optional[pulumi.Input[str]] = None,
+             log: Optional[pulumi.Input[str]] = None,
+             macro: Optional[pulumi.Input[str]] = None,
+             pos: Optional[pulumi.Input[int]] = None,
+             proto: Optional[pulumi.Input[str]] = None,
+             security_group: Optional[pulumi.Input[str]] = None,
+             source: Optional[pulumi.Input[str]] = None,
+             sport: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if action is not None:
-            pulumi.set(__self__, "action", action)
+            _setter("action", action)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if dest is not None:
-            pulumi.set(__self__, "dest", dest)
+            _setter("dest", dest)
         if dport is not None:
-            pulumi.set(__self__, "dport", dport)
+            _setter("dport", dport)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if iface is not None:
-            pulumi.set(__self__, "iface", iface)
+            _setter("iface", iface)
         if log is not None:
-            pulumi.set(__self__, "log", log)
+            _setter("log", log)
         if macro is not None:
-            pulumi.set(__self__, "macro", macro)
+            _setter("macro", macro)
         if pos is not None:
-            pulumi.set(__self__, "pos", pos)
+            _setter("pos", pos)
         if proto is not None:
-            pulumi.set(__self__, "proto", proto)
+            _setter("proto", proto)
         if security_group is not None:
-            pulumi.set(__self__, "security_group", security_group)
+            _setter("security_group", security_group)
         if source is not None:
-            pulumi.set(__self__, "source", source)
+            _setter("source", source)
         if sport is not None:
-            pulumi.set(__self__, "sport", sport)
+            _setter("sport", sport)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[str]]:
+        """
+        Rule action (`ACCEPT`, `DROP`, `REJECT`).
+        """
         return pulumi.get(self, "action")
 
     @action.setter
@@ -155,6 +291,9 @@ class FirewallRulesRuleArgs:
     @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        Rule comment.
+        """
         return pulumi.get(self, "comment")
 
     @comment.setter
@@ -164,6 +303,14 @@ class FirewallRulesRuleArgs:
     @property
     @pulumi.getter
     def dest(self) -> Optional[pulumi.Input[str]]:
+        """
+        Restrict packet destination address. This can
+        refer to a single IP address, an IP set ('+ipsetname') or an IP alias
+        definition. You can also specify an address range
+        like `20.34.101.207-201.3.9.99`, or a list of IP addresses and
+        networks (entries are separated by comma). Please do not mix IPv4 and
+        IPv6 addresses inside such lists.
+        """
         return pulumi.get(self, "dest")
 
     @dest.setter
@@ -173,6 +320,13 @@ class FirewallRulesRuleArgs:
     @property
     @pulumi.getter
     def dport(self) -> Optional[pulumi.Input[str]]:
+        """
+        Restrict TCP/UDP destination port. You can use
+        service names or simple numbers (0-65535), as defined
+        in `/etc/services`. Port ranges can be specified with '\\d+:\\d+', for
+        example `80:85`, and you can use comma separated list to match several
+        ports or ranges.
+        """
         return pulumi.get(self, "dport")
 
     @dport.setter
@@ -182,6 +336,9 @@ class FirewallRulesRuleArgs:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable this rule. Defaults to `true`.
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -191,6 +348,11 @@ class FirewallRulesRuleArgs:
     @property
     @pulumi.getter
     def iface(self) -> Optional[pulumi.Input[str]]:
+        """
+        Network interface name. You have to use network
+        configuration key names for VMs and containers ('net\\d+'). Host
+        related rules can use arbitrary strings.
+        """
         return pulumi.get(self, "iface")
 
     @iface.setter
@@ -200,6 +362,10 @@ class FirewallRulesRuleArgs:
     @property
     @pulumi.getter
     def log(self) -> Optional[pulumi.Input[str]]:
+        """
+        Log level for this rule (`emerg`, `alert`, `crit`,
+        `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+        """
         return pulumi.get(self, "log")
 
     @log.setter
@@ -209,6 +375,10 @@ class FirewallRulesRuleArgs:
     @property
     @pulumi.getter
     def macro(self) -> Optional[pulumi.Input[str]]:
+        """
+        Macro name. Use predefined standard macro
+        from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+        """
         return pulumi.get(self, "macro")
 
     @macro.setter
@@ -218,6 +388,9 @@ class FirewallRulesRuleArgs:
     @property
     @pulumi.getter
     def pos(self) -> Optional[pulumi.Input[int]]:
+        """
+        Position of the rule in the list.
+        """
         return pulumi.get(self, "pos")
 
     @pos.setter
@@ -227,6 +400,10 @@ class FirewallRulesRuleArgs:
     @property
     @pulumi.getter
     def proto(self) -> Optional[pulumi.Input[str]]:
+        """
+        Restrict packet protocol. You can use protocol
+        names as defined in '/etc/protocols'.
+        """
         return pulumi.get(self, "proto")
 
     @proto.setter
@@ -236,6 +413,9 @@ class FirewallRulesRuleArgs:
     @property
     @pulumi.getter(name="securityGroup")
     def security_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        Security group name.
+        """
         return pulumi.get(self, "security_group")
 
     @security_group.setter
@@ -245,6 +425,14 @@ class FirewallRulesRuleArgs:
     @property
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input[str]]:
+        """
+        Restrict packet source address. This can refer
+        to a single IP address, an IP set ('+ipsetname') or an IP alias
+        definition. You can also specify an address range
+        like `20.34.101.207-201.3.9.99`, or a list of IP addresses and
+        networks (entries are separated by comma). Please do not mix IPv4 and
+        IPv6 addresses inside such lists.
+        """
         return pulumi.get(self, "source")
 
     @source.setter
@@ -254,6 +442,14 @@ class FirewallRulesRuleArgs:
     @property
     @pulumi.getter
     def sport(self) -> Optional[pulumi.Input[str]]:
+        """
+        Restrict TCP/UDP source port. You can use
+        service names or simple numbers (0-65535), as defined
+        in `/etc/services`. Port ranges can be specified with '\\d+:\\d+', for
+        example `80:85`, and you can use comma separated list to match several
+        ports or ranges.
+        - a security group insertion block, which includes the following arguments:
+        """
         return pulumi.get(self, "sport")
 
     @sport.setter
@@ -263,6 +459,9 @@ class FirewallRulesRuleArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Rule type (`in`, `out`).
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -287,38 +486,110 @@ class FirewallSecurityGroupRuleArgs:
                  source: Optional[pulumi.Input[str]] = None,
                  sport: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] action: Rule action (`ACCEPT`, `DROP`, `REJECT`).
+        :param pulumi.Input[str] comment: Rule comment.
+        :param pulumi.Input[str] dest: Restrict packet destination address. This can refer to
+               a single IP address, an IP set ('+ipsetname') or an IP alias definition.
+               You can also specify an address range like `20.34.101.207-201.3.9.99`, or
+               a list of IP addresses and networks (entries are separated by comma).
+               Please do not mix IPv4 and IPv6 addresses inside such lists.
+        :param pulumi.Input[str] dport: Restrict TCP/UDP destination port. You can use
+               service names or simple numbers (0-65535), as defined in '/etc/services'.
+               Port ranges can be specified with '\\d+:\\d+', for example `80:85`, and
+               you can use comma separated list to match several ports or ranges.
+        :param pulumi.Input[str] iface: Network interface name. You have to use network
+               configuration key names for VMs and containers ('net\\d+'). Host related
+               rules can use arbitrary strings.
+        :param pulumi.Input[str] log: Log level for this rule (`emerg`, `alert`, `crit`,
+               `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+        :param pulumi.Input[str] macro: Macro name. Use predefined standard macro
+               from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+        :param pulumi.Input[int] pos: Position of the rule in the list.
+        :param pulumi.Input[str] proto: Restrict packet protocol. You can use protocol names
+               as defined in '/etc/protocols'.
+        :param pulumi.Input[str] source: Restrict packet source address. This can refer
+               to a single IP address, an IP set ('+ipsetname') or an IP alias
+               definition. You can also specify an address range like
+               `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks (
+               entries are separated by comma). Please do not mix IPv4 and IPv6 addresses
+               inside such lists.
+        :param pulumi.Input[str] sport: Restrict TCP/UDP source port. You can use
+               service names or simple numbers (0-65535), as defined in '/etc/services'.
+               Port ranges can be specified with '\\d+:\\d+', for example `80:85`, and
+               you can use comma separated list to match several ports or ranges.
+        :param pulumi.Input[str] type: Rule type (`in`, `out`).
+        """
+        FirewallSecurityGroupRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            comment=comment,
+            dest=dest,
+            dport=dport,
+            enabled=enabled,
+            iface=iface,
+            log=log,
+            macro=macro,
+            pos=pos,
+            proto=proto,
+            security_group=security_group,
+            source=source,
+            sport=sport,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: Optional[pulumi.Input[str]] = None,
+             comment: Optional[pulumi.Input[str]] = None,
+             dest: Optional[pulumi.Input[str]] = None,
+             dport: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             iface: Optional[pulumi.Input[str]] = None,
+             log: Optional[pulumi.Input[str]] = None,
+             macro: Optional[pulumi.Input[str]] = None,
+             pos: Optional[pulumi.Input[int]] = None,
+             proto: Optional[pulumi.Input[str]] = None,
+             security_group: Optional[pulumi.Input[str]] = None,
+             source: Optional[pulumi.Input[str]] = None,
+             sport: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if action is not None:
-            pulumi.set(__self__, "action", action)
+            _setter("action", action)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if dest is not None:
-            pulumi.set(__self__, "dest", dest)
+            _setter("dest", dest)
         if dport is not None:
-            pulumi.set(__self__, "dport", dport)
+            _setter("dport", dport)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if iface is not None:
-            pulumi.set(__self__, "iface", iface)
+            _setter("iface", iface)
         if log is not None:
-            pulumi.set(__self__, "log", log)
+            _setter("log", log)
         if macro is not None:
-            pulumi.set(__self__, "macro", macro)
+            _setter("macro", macro)
         if pos is not None:
-            pulumi.set(__self__, "pos", pos)
+            _setter("pos", pos)
         if proto is not None:
-            pulumi.set(__self__, "proto", proto)
+            _setter("proto", proto)
         if security_group is not None:
-            pulumi.set(__self__, "security_group", security_group)
+            _setter("security_group", security_group)
         if source is not None:
-            pulumi.set(__self__, "source", source)
+            _setter("source", source)
         if sport is not None:
-            pulumi.set(__self__, "sport", sport)
+            _setter("sport", sport)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[str]]:
+        """
+        Rule action (`ACCEPT`, `DROP`, `REJECT`).
+        """
         return pulumi.get(self, "action")
 
     @action.setter
@@ -328,6 +599,9 @@ class FirewallSecurityGroupRuleArgs:
     @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        Rule comment.
+        """
         return pulumi.get(self, "comment")
 
     @comment.setter
@@ -337,6 +611,13 @@ class FirewallSecurityGroupRuleArgs:
     @property
     @pulumi.getter
     def dest(self) -> Optional[pulumi.Input[str]]:
+        """
+        Restrict packet destination address. This can refer to
+        a single IP address, an IP set ('+ipsetname') or an IP alias definition.
+        You can also specify an address range like `20.34.101.207-201.3.9.99`, or
+        a list of IP addresses and networks (entries are separated by comma).
+        Please do not mix IPv4 and IPv6 addresses inside such lists.
+        """
         return pulumi.get(self, "dest")
 
     @dest.setter
@@ -346,6 +627,12 @@ class FirewallSecurityGroupRuleArgs:
     @property
     @pulumi.getter
     def dport(self) -> Optional[pulumi.Input[str]]:
+        """
+        Restrict TCP/UDP destination port. You can use
+        service names or simple numbers (0-65535), as defined in '/etc/services'.
+        Port ranges can be specified with '\\d+:\\d+', for example `80:85`, and
+        you can use comma separated list to match several ports or ranges.
+        """
         return pulumi.get(self, "dport")
 
     @dport.setter
@@ -364,6 +651,11 @@ class FirewallSecurityGroupRuleArgs:
     @property
     @pulumi.getter
     def iface(self) -> Optional[pulumi.Input[str]]:
+        """
+        Network interface name. You have to use network
+        configuration key names for VMs and containers ('net\\d+'). Host related
+        rules can use arbitrary strings.
+        """
         return pulumi.get(self, "iface")
 
     @iface.setter
@@ -373,6 +665,10 @@ class FirewallSecurityGroupRuleArgs:
     @property
     @pulumi.getter
     def log(self) -> Optional[pulumi.Input[str]]:
+        """
+        Log level for this rule (`emerg`, `alert`, `crit`,
+        `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+        """
         return pulumi.get(self, "log")
 
     @log.setter
@@ -382,6 +678,10 @@ class FirewallSecurityGroupRuleArgs:
     @property
     @pulumi.getter
     def macro(self) -> Optional[pulumi.Input[str]]:
+        """
+        Macro name. Use predefined standard macro
+        from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+        """
         return pulumi.get(self, "macro")
 
     @macro.setter
@@ -391,6 +691,9 @@ class FirewallSecurityGroupRuleArgs:
     @property
     @pulumi.getter
     def pos(self) -> Optional[pulumi.Input[int]]:
+        """
+        Position of the rule in the list.
+        """
         return pulumi.get(self, "pos")
 
     @pos.setter
@@ -400,6 +703,10 @@ class FirewallSecurityGroupRuleArgs:
     @property
     @pulumi.getter
     def proto(self) -> Optional[pulumi.Input[str]]:
+        """
+        Restrict packet protocol. You can use protocol names
+        as defined in '/etc/protocols'.
+        """
         return pulumi.get(self, "proto")
 
     @proto.setter
@@ -418,6 +725,14 @@ class FirewallSecurityGroupRuleArgs:
     @property
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input[str]]:
+        """
+        Restrict packet source address. This can refer
+        to a single IP address, an IP set ('+ipsetname') or an IP alias
+        definition. You can also specify an address range like
+        `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks (
+        entries are separated by comma). Please do not mix IPv4 and IPv6 addresses
+        inside such lists.
+        """
         return pulumi.get(self, "source")
 
     @source.setter
@@ -427,6 +742,12 @@ class FirewallSecurityGroupRuleArgs:
     @property
     @pulumi.getter
     def sport(self) -> Optional[pulumi.Input[str]]:
+        """
+        Restrict TCP/UDP source port. You can use
+        service names or simple numbers (0-65535), as defined in '/etc/services'.
+        Port ranges can be specified with '\\d+:\\d+', for example `80:85`, and
+        you can use comma separated list to match several ports or ranges.
+        """
         return pulumi.get(self, "sport")
 
     @sport.setter
@@ -436,6 +757,9 @@ class FirewallSecurityGroupRuleArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Rule type (`in`, `out`).
+        """
         return pulumi.get(self, "type")
 
     @type.setter

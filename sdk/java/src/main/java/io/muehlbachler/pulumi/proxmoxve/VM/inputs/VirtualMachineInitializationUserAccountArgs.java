@@ -16,23 +16,47 @@ public final class VirtualMachineInitializationUserAccountArgs extends com.pulum
 
     public static final VirtualMachineInitializationUserAccountArgs Empty = new VirtualMachineInitializationUserAccountArgs();
 
+    /**
+     * The SSH keys.
+     * 
+     */
     @Import(name="keys")
     private @Nullable Output<List<String>> keys;
 
+    /**
+     * @return The SSH keys.
+     * 
+     */
     public Optional<Output<List<String>>> keys() {
         return Optional.ofNullable(this.keys);
     }
 
+    /**
+     * The SSH password.
+     * 
+     */
     @Import(name="password")
     private @Nullable Output<String> password;
 
+    /**
+     * @return The SSH password.
+     * 
+     */
     public Optional<Output<String>> password() {
         return Optional.ofNullable(this.password);
     }
 
+    /**
+     * The SSH username.
+     * 
+     */
     @Import(name="username")
     private @Nullable Output<String> username;
 
+    /**
+     * @return The SSH username.
+     * 
+     */
     public Optional<Output<String>> username() {
         return Optional.ofNullable(this.username);
     }
@@ -63,33 +87,75 @@ public final class VirtualMachineInitializationUserAccountArgs extends com.pulum
             $ = new VirtualMachineInitializationUserAccountArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param keys The SSH keys.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keys(@Nullable Output<List<String>> keys) {
             $.keys = keys;
             return this;
         }
 
+        /**
+         * @param keys The SSH keys.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keys(List<String> keys) {
             return keys(Output.of(keys));
         }
 
+        /**
+         * @param keys The SSH keys.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keys(String... keys) {
             return keys(List.of(keys));
         }
 
+        /**
+         * @param password The SSH password.
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
 
+        /**
+         * @param password The SSH password.
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(String password) {
             return password(Output.of(password));
         }
 
+        /**
+         * @param username The SSH username.
+         * 
+         * @return builder
+         * 
+         */
         public Builder username(@Nullable Output<String> username) {
             $.username = username;
             return this;
         }
 
+        /**
+         * @param username The SSH username.
+         * 
+         * @return builder
+         * 
+         */
         public Builder username(String username) {
             return username(Output.of(username));
         }

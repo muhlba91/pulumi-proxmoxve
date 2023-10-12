@@ -13,8 +13,20 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
     [OutputType]
     public sealed class ContainerFeatures
     {
+        /// <summary>
+        /// Whether the container supports FUSE mounts (defaults
+        /// to `false`)
+        /// </summary>
         public readonly bool? Fuse;
+        /// <summary>
+        /// Whether the container supports `keyctl()` system
+        /// call (defaults to `false`)
+        /// </summary>
         public readonly bool? Keyctl;
+        /// <summary>
+        /// Whether the container is nested (defaults
+        /// to `false`)
+        /// </summary>
         public readonly bool? Nesting;
 
         [OutputConstructor]

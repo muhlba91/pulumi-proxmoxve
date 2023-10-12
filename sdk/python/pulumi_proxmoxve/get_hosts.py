@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -45,21 +45,34 @@ class GetHostsResult:
     @property
     @pulumi.getter
     def addresses(self) -> Sequence[str]:
+        """
+        The IP addresses.
+        """
         return pulumi.get(self, "addresses")
 
     @property
     @pulumi.getter
     def digest(self) -> str:
+        """
+        The SHA1 digest.
+        """
         return pulumi.get(self, "digest")
 
     @property
     @pulumi.getter
     def entries(self) -> Sequence['outputs.GetHostsEntryResult']:
+        """
+        The host entries (conversion of `addresses` and `hostnames` into
+        objects).
+        """
         return pulumi.get(self, "entries")
 
     @property
     @pulumi.getter
     def hostnames(self) -> Sequence[Sequence[str]]:
+        """
+        The hostnames associated with each of the IP addresses.
+        """
         return pulumi.get(self, "hostnames")
 
     @property
@@ -93,7 +106,19 @@ class AwaitableGetHostsResult(GetHostsResult):
 def get_hosts(node_name: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHostsResult:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves all the host entries from a specific node.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    first_node_host_entries = proxmoxve.get_hosts(node_name="first-node")
+    ```
+
+
+    :param str node_name: A node name.
     """
     __args__ = dict()
     __args__['nodeName'] = node_name
@@ -113,6 +138,18 @@ def get_hosts(node_name: Optional[str] = None,
 def get_hosts_output(node_name: Optional[pulumi.Input[str]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHostsResult]:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves all the host entries from a specific node.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    first_node_host_entries = proxmoxve.get_hosts(node_name="first-node")
+    ```
+
+
+    :param str node_name: A node name.
     """
     ...

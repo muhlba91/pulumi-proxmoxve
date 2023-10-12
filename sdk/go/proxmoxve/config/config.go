@@ -43,6 +43,11 @@ func GetSsh(ctx *pulumi.Context) string {
 	return config.Get(ctx, "proxmoxve:ssh")
 }
 
+// The alternative temporary directory.
+func GetTmpDir(ctx *pulumi.Context) string {
+	return config.Get(ctx, "proxmoxve:tmpDir")
+}
+
 // The username for the Proxmox VE API.
 func GetUsername(ctx *pulumi.Context) string {
 	return config.Get(ctx, "proxmoxve:username")

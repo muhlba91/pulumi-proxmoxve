@@ -13,9 +13,22 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     [OutputType]
     public sealed class GetVirtualMachinesVmResult
     {
+        /// <summary>
+        /// The virtual machine name.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The node name.
+        /// </summary>
         public readonly string NodeName;
+        /// <summary>
+        /// A list of tags to filter the VMs. The VM must have all
+        /// the tags to be included in the result.
+        /// </summary>
         public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// The VM identifier.
+        /// </summary>
         public readonly int VmId;
 
         [OutputConstructor]

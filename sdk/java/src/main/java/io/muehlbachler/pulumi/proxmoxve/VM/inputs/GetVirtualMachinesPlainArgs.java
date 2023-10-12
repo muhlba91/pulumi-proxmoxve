@@ -15,16 +15,34 @@ public final class GetVirtualMachinesPlainArgs extends com.pulumi.resources.Invo
 
     public static final GetVirtualMachinesPlainArgs Empty = new GetVirtualMachinesPlainArgs();
 
+    /**
+     * The node name.
+     * 
+     */
     @Import(name="nodeName")
     private @Nullable String nodeName;
 
+    /**
+     * @return The node name.
+     * 
+     */
     public Optional<String> nodeName() {
         return Optional.ofNullable(this.nodeName);
     }
 
+    /**
+     * A list of tags to filter the VMs. The VM must have all
+     * the tags to be included in the result.
+     * 
+     */
     @Import(name="tags")
     private @Nullable List<String> tags;
 
+    /**
+     * @return A list of tags to filter the VMs. The VM must have all
+     * the tags to be included in the result.
+     * 
+     */
     public Optional<List<String>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -54,16 +72,36 @@ public final class GetVirtualMachinesPlainArgs extends com.pulumi.resources.Invo
             $ = new GetVirtualMachinesPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param nodeName The node name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeName(@Nullable String nodeName) {
             $.nodeName = nodeName;
             return this;
         }
 
+        /**
+         * @param tags A list of tags to filter the VMs. The VM must have all
+         * the tags to be included in the result.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable List<String> tags) {
             $.tags = tags;
             return this;
         }
 
+        /**
+         * @param tags A list of tags to filter the VMs. The VM must have all
+         * the tags to be included in the result.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }

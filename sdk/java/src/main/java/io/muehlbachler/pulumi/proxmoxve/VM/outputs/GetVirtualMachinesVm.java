@@ -11,21 +11,55 @@ import java.util.Objects;
 
 @CustomType
 public final class GetVirtualMachinesVm {
+    /**
+     * @return The virtual machine name.
+     * 
+     */
     private String name;
+    /**
+     * @return The node name.
+     * 
+     */
     private String nodeName;
+    /**
+     * @return A list of tags to filter the VMs. The VM must have all
+     * the tags to be included in the result.
+     * 
+     */
     private List<String> tags;
+    /**
+     * @return The VM identifier.
+     * 
+     */
     private Integer vmId;
 
     private GetVirtualMachinesVm() {}
+    /**
+     * @return The virtual machine name.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The node name.
+     * 
+     */
     public String nodeName() {
         return this.nodeName;
     }
+    /**
+     * @return A list of tags to filter the VMs. The VM must have all
+     * the tags to be included in the result.
+     * 
+     */
     public List<String> tags() {
         return this.tags;
     }
+    /**
+     * @return The VM identifier.
+     * 
+     */
     public Integer vmId() {
         return this.vmId;
     }

@@ -15,87 +15,134 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Aliases are used to see what devices or group of devices are affected by a rule.
+ * We can create aliases to identify an IP address or a network. Aliases can be
+ * created on the cluster level, on VM / Container level.
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.proxmoxve.Network.FirewallAlias;
+ * import com.pulumi.proxmoxve.Network.FirewallAliasArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var localNetwork = new FirewallAlias(&#34;localNetwork&#34;, FirewallAliasArgs.builder()        
+ *             .nodeName(proxmox_virtual_environment_vm.example().node_name())
+ *             .vmId(proxmox_virtual_environment_vm.example().vm_id())
+ *             .cidr(&#34;192.168.0.0/23&#34;)
+ *             .comment(&#34;Managed by Terraform&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(proxmox_virtual_environment_vm.example())
+ *                 .build());
+ * 
+ *         var ubuntuVm = new FirewallAlias(&#34;ubuntuVm&#34;, FirewallAliasArgs.builder()        
+ *             .cidr(&#34;192.168.0.1&#34;)
+ *             .comment(&#34;Managed by Terraform&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ */
 @ResourceType(type="proxmoxve:Network/firewallAlias:FirewallAlias")
 public class FirewallAlias extends com.pulumi.resources.CustomResource {
     /**
-     * IP/CIDR block
+     * Network/IP specification in CIDR format.
      * 
      */
     @Export(name="cidr", refs={String.class}, tree="[0]")
     private Output<String> cidr;
 
     /**
-     * @return IP/CIDR block
+     * @return Network/IP specification in CIDR format.
      * 
      */
     public Output<String> cidr() {
         return this.cidr;
     }
     /**
-     * Alias comment
+     * Alias comment.
      * 
      */
     @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
-     * @return Alias comment
+     * @return Alias comment.
      * 
      */
     public Output<Optional<String>> comment() {
         return Codegen.optional(this.comment);
     }
     /**
-     * The ID of the container to manage the firewall for.
+     * Container ID. Leave empty for cluster level aliases.
      * 
      */
     @Export(name="containerId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> containerId;
 
     /**
-     * @return The ID of the container to manage the firewall for.
+     * @return Container ID. Leave empty for cluster level aliases.
      * 
      */
     public Output<Optional<Integer>> containerId() {
         return Codegen.optional(this.containerId);
     }
     /**
-     * Alias name
+     * Alias name.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Alias name
+     * @return Alias name.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The name of the node.
+     * Node name. Leave empty for cluster level aliases.
      * 
      */
     @Export(name="nodeName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> nodeName;
 
     /**
-     * @return The name of the node.
+     * @return Node name. Leave empty for cluster level aliases.
      * 
      */
     public Output<Optional<String>> nodeName() {
         return Codegen.optional(this.nodeName);
     }
     /**
-     * The ID of the VM to manage the firewall for.
+     * VM ID. Leave empty for cluster level aliases.
      * 
      */
     @Export(name="vmId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> vmId;
 
     /**
-     * @return The ID of the VM to manage the firewall for.
+     * @return VM ID. Leave empty for cluster level aliases.
      * 
      */
     public Output<Optional<Integer>> vmId() {

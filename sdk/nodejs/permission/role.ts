@@ -4,6 +4,29 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Manages a role.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const operationsMonitoring = new proxmoxve.permission.Role("operationsMonitoring", {
+ *     privileges: ["VM.Monitor"],
+ *     roleId: "operations-monitoring",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Instances can be imported using the `role_id`, e.g., bash
+ *
+ * ```sh
+ *  $ pulumi import proxmoxve:Permission/role:Role operations_monitoring operations-monitoring
+ * ```
+ */
 export class Role extends pulumi.CustomResource {
     /**
      * Get an existing Role resource's state with the given name, ID, and optional extra
@@ -33,11 +56,11 @@ export class Role extends pulumi.CustomResource {
     }
 
     /**
-     * The role privileges
+     * The role privileges.
      */
     public readonly privileges!: pulumi.Output<string[]>;
     /**
-     * The role id
+     * The role identifier.
      */
     public readonly roleId!: pulumi.Output<string>;
 
@@ -77,11 +100,11 @@ export class Role extends pulumi.CustomResource {
  */
 export interface RoleState {
     /**
-     * The role privileges
+     * The role privileges.
      */
     privileges?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The role id
+     * The role identifier.
      */
     roleId?: pulumi.Input<string>;
 }
@@ -91,11 +114,11 @@ export interface RoleState {
  */
 export interface RoleArgs {
     /**
-     * The role privileges
+     * The role privileges.
      */
     privileges: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The role id
+     * The role identifier.
      */
     roleId: pulumi.Input<string>;
 }

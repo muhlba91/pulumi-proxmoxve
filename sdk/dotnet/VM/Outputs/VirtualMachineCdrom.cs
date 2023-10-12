@@ -13,8 +13,23 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     [OutputType]
     public sealed class VirtualMachineCdrom
     {
+        /// <summary>
+        /// Whether to enable the VGA device (defaults
+        /// to `true`).
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// The file ID for a disk image (experimental -
+        /// might cause high CPU utilization during import, especially with large
+        /// disk images).
+        /// </summary>
         public readonly string? FileId;
+        /// <summary>
+        /// The hardware interface to connect the cloud-init
+        /// image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+        /// detected if the setting is missing but a cloud-init image is present,
+        /// otherwise defaults to `ide2`.
+        /// </summary>
         public readonly string? Interface;
 
         [OutputConstructor]

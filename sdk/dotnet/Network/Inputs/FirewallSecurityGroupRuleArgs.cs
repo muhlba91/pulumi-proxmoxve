@@ -12,45 +12,101 @@ namespace Pulumi.ProxmoxVE.Network.Inputs
 
     public sealed class FirewallSecurityGroupRuleArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Rule action (`ACCEPT`, `DROP`, `REJECT`).
+        /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
 
+        /// <summary>
+        /// Rule comment.
+        /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
+        /// <summary>
+        /// Restrict packet destination address. This can refer to
+        /// a single IP address, an IP set ('+ipsetname') or an IP alias definition.
+        /// You can also specify an address range like `20.34.101.207-201.3.9.99`, or
+        /// a list of IP addresses and networks (entries are separated by comma).
+        /// Please do not mix IPv4 and IPv6 addresses inside such lists.
+        /// </summary>
         [Input("dest")]
         public Input<string>? Dest { get; set; }
 
+        /// <summary>
+        /// Restrict TCP/UDP destination port. You can use
+        /// service names or simple numbers (0-65535), as defined in '/etc/services'.
+        /// Port ranges can be specified with '\d+:\d+', for example `80:85`, and
+        /// you can use comma separated list to match several ports or ranges.
+        /// </summary>
         [Input("dport")]
         public Input<string>? Dport { get; set; }
 
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// Network interface name. You have to use network
+        /// configuration key names for VMs and containers ('net\d+'). Host related
+        /// rules can use arbitrary strings.
+        /// </summary>
         [Input("iface")]
         public Input<string>? Iface { get; set; }
 
+        /// <summary>
+        /// Log level for this rule (`emerg`, `alert`, `crit`,
+        /// `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+        /// </summary>
         [Input("log")]
         public Input<string>? Log { get; set; }
 
+        /// <summary>
+        /// Macro name. Use predefined standard macro
+        /// from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+        /// </summary>
         [Input("macro")]
         public Input<string>? Macro { get; set; }
 
+        /// <summary>
+        /// Position of the rule in the list.
+        /// </summary>
         [Input("pos")]
         public Input<int>? Pos { get; set; }
 
+        /// <summary>
+        /// Restrict packet protocol. You can use protocol names
+        /// as defined in '/etc/protocols'.
+        /// </summary>
         [Input("proto")]
         public Input<string>? Proto { get; set; }
 
         [Input("securityGroup")]
         public Input<string>? SecurityGroup { get; set; }
 
+        /// <summary>
+        /// Restrict packet source address. This can refer
+        /// to a single IP address, an IP set ('+ipsetname') or an IP alias
+        /// definition. You can also specify an address range like
+        /// `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks (
+        /// entries are separated by comma). Please do not mix IPv4 and IPv6 addresses
+        /// inside such lists.
+        /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }
 
+        /// <summary>
+        /// Restrict TCP/UDP source port. You can use
+        /// service names or simple numbers (0-65535), as defined in '/etc/services'.
+        /// Port ranges can be specified with '\d+:\d+', for example `80:85`, and
+        /// you can use comma separated list to match several ports or ranges.
+        /// </summary>
         [Input("sport")]
         public Input<string>? Sport { get; set; }
 
+        /// <summary>
+        /// Rule type (`in`, `out`).
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

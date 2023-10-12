@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VirtualMachineOperatingSystem {
+    /**
+     * @return The VGA type (defaults to `std`).
+     * 
+     */
     private @Nullable String type;
 
     private VirtualMachineOperatingSystem() {}
+    /**
+     * @return The VGA type (defaults to `std`).
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

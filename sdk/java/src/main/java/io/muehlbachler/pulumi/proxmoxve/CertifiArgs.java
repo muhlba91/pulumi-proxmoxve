@@ -17,14 +17,14 @@ public final class CertifiArgs extends com.pulumi.resources.ResourceArgs {
     public static final CertifiArgs Empty = new CertifiArgs();
 
     /**
-     * The PEM encoded certificate
+     * The PEM encoded certificate.
      * 
      */
     @Import(name="certificate", required=true)
     private Output<String> certificate;
 
     /**
-     * @return The PEM encoded certificate
+     * @return The PEM encoded certificate.
      * 
      */
     public Output<String> certificate() {
@@ -32,14 +32,14 @@ public final class CertifiArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The PEM encoded certificate chain
+     * The PEM encoded certificate chain.
      * 
      */
     @Import(name="certificateChain")
     private @Nullable Output<String> certificateChain;
 
     /**
-     * @return The PEM encoded certificate chain
+     * @return The PEM encoded certificate chain.
      * 
      */
     public Optional<Output<String>> certificateChain() {
@@ -47,14 +47,14 @@ public final class CertifiArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The node name
+     * A node name.
      * 
      */
     @Import(name="nodeName", required=true)
     private Output<String> nodeName;
 
     /**
-     * @return The node name
+     * @return A node name.
      * 
      */
     public Output<String> nodeName() {
@@ -77,14 +77,14 @@ public final class CertifiArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The PEM encoded private key
+     * The PEM encoded private key.
      * 
      */
     @Import(name="privateKey", required=true)
     private Output<String> privateKey;
 
     /**
-     * @return The PEM encoded private key
+     * @return The PEM encoded private key.
      * 
      */
     public Output<String> privateKey() {
@@ -120,7 +120,7 @@ public final class CertifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificate The PEM encoded certificate
+         * @param certificate The PEM encoded certificate.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class CertifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificate The PEM encoded certificate
+         * @param certificate The PEM encoded certificate.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class CertifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateChain The PEM encoded certificate chain
+         * @param certificateChain The PEM encoded certificate chain.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class CertifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateChain The PEM encoded certificate chain
+         * @param certificateChain The PEM encoded certificate chain.
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class CertifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeName The node name
+         * @param nodeName A node name.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class CertifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeName The node name
+         * @param nodeName A node name.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class CertifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateKey The PEM encoded private key
+         * @param privateKey The PEM encoded private key.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class CertifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateKey The PEM encoded private key
+         * @param privateKey The PEM encoded private key.
          * 
          * @return builder
          * 

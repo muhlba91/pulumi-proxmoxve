@@ -12,9 +12,17 @@ public final class GetGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetGroupPlainArgs Empty = new GetGroupPlainArgs();
 
+    /**
+     * The group identifier.
+     * 
+     */
     @Import(name="groupId", required=true)
     private String groupId;
 
+    /**
+     * @return The group identifier.
+     * 
+     */
     public String groupId() {
         return this.groupId;
     }
@@ -43,6 +51,12 @@ public final class GetGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetGroupPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param groupId The group identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupId(String groupId) {
             $.groupId = groupId;
             return this;

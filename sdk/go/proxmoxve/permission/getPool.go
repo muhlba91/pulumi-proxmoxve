@@ -12,6 +12,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Retrieves information about a specific resource pool.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/Permission"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Permission.GetPool(ctx, &permission.GetPoolArgs{
+//				PoolId: "operations",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupPool(ctx *pulumi.Context, args *LookupPoolArgs, opts ...pulumi.InvokeOption) (*LookupPoolResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPoolResult
@@ -24,14 +51,17 @@ func LookupPool(ctx *pulumi.Context, args *LookupPoolArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getPool.
 type LookupPoolArgs struct {
+	// The pool identifier.
 	PoolId string `pulumi:"poolId"`
 }
 
 // A collection of values returned by getPool.
 type LookupPoolResult struct {
+	// The pool comment.
 	Comment string `pulumi:"comment"`
 	// The provider-assigned unique ID for this managed resource.
-	Id      string          `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The pool members.
 	Members []GetPoolMember `pulumi:"members"`
 	PoolId  string          `pulumi:"poolId"`
 }
@@ -51,6 +81,7 @@ func LookupPoolOutput(ctx *pulumi.Context, args LookupPoolOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getPool.
 type LookupPoolOutputArgs struct {
+	// The pool identifier.
 	PoolId pulumi.StringInput `pulumi:"poolId"`
 }
 
@@ -79,6 +110,7 @@ func (o LookupPoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[Loo
 	}
 }
 
+// The pool comment.
 func (o LookupPoolResultOutput) Comment() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.Comment }).(pulumi.StringOutput)
 }
@@ -88,6 +120,7 @@ func (o LookupPoolResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The pool members.
 func (o LookupPoolResultOutput) Members() GetPoolMemberArrayOutput {
 	return o.ApplyT(func(v LookupPoolResult) []GetPoolMember { return v.Members }).(GetPoolMemberArrayOutput)
 }

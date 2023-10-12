@@ -17,157 +17,214 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Manages a user.
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.proxmoxve.Permission.Role;
+ * import com.pulumi.proxmoxve.Permission.RoleArgs;
+ * import com.pulumi.proxmoxve.Permission.User;
+ * import com.pulumi.proxmoxve.Permission.UserArgs;
+ * import com.pulumi.proxmoxve.Permission.inputs.UserAclArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var operationsMonitoring = new Role(&#34;operationsMonitoring&#34;, RoleArgs.builder()        
+ *             .roleId(&#34;operations-monitoring&#34;)
+ *             .privileges(&#34;VM.Monitor&#34;)
+ *             .build());
+ * 
+ *         var operationsAutomation = new User(&#34;operationsAutomation&#34;, UserArgs.builder()        
+ *             .acls(UserAclArgs.builder()
+ *                 .path(&#34;/vms/1234&#34;)
+ *                 .propagate(true)
+ *                 .roleId(operationsMonitoring.roleId())
+ *                 .build())
+ *             .comment(&#34;Managed by Terraform&#34;)
+ *             .password(&#34;a-strong-password&#34;)
+ *             .userId(&#34;operations-automation@pve&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * Instances can be imported using the `user_id`, e.g., bash
+ * 
+ * ```sh
+ *  $ pulumi import proxmoxve:Permission/user:User operations_automation operations-automation@pve
+ * ```
+ * 
+ */
 @ResourceType(type="proxmoxve:Permission/user:User")
 public class User extends com.pulumi.resources.CustomResource {
     /**
-     * The access control list
+     * The access control list (multiple blocks supported).
      * 
      */
     @Export(name="acls", refs={List.class,UserAcl.class}, tree="[0,1]")
     private Output</* @Nullable */ List<UserAcl>> acls;
 
     /**
-     * @return The access control list
+     * @return The access control list (multiple blocks supported).
      * 
      */
     public Output<Optional<List<UserAcl>>> acls() {
         return Codegen.optional(this.acls);
     }
     /**
-     * The user comment
+     * The user comment.
      * 
      */
     @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
-     * @return The user comment
+     * @return The user comment.
      * 
      */
     public Output<Optional<String>> comment() {
         return Codegen.optional(this.comment);
     }
     /**
-     * The user&#39;s email address
+     * The user&#39;s email address.
      * 
      */
     @Export(name="email", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> email;
 
     /**
-     * @return The user&#39;s email address
+     * @return The user&#39;s email address.
      * 
      */
     public Output<Optional<String>> email() {
         return Codegen.optional(this.email);
     }
     /**
-     * Whether the user account is enabled
+     * Whether the user account is enabled.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
-     * @return Whether the user account is enabled
+     * @return Whether the user account is enabled.
      * 
      */
     public Output<Optional<Boolean>> enabled() {
         return Codegen.optional(this.enabled);
     }
     /**
-     * The user account&#39;s expiration date
+     * The user account&#39;s expiration date (RFC 3339).
      * 
      */
     @Export(name="expirationDate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> expirationDate;
 
     /**
-     * @return The user account&#39;s expiration date
+     * @return The user account&#39;s expiration date (RFC 3339).
      * 
      */
     public Output<Optional<String>> expirationDate() {
         return Codegen.optional(this.expirationDate);
     }
     /**
-     * The user&#39;s first name
+     * The user&#39;s first name.
      * 
      */
     @Export(name="firstName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> firstName;
 
     /**
-     * @return The user&#39;s first name
+     * @return The user&#39;s first name.
      * 
      */
     public Output<Optional<String>> firstName() {
         return Codegen.optional(this.firstName);
     }
     /**
-     * The user&#39;s groups
+     * The user&#39;s groups.
      * 
      */
     @Export(name="groups", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> groups;
 
     /**
-     * @return The user&#39;s groups
+     * @return The user&#39;s groups.
      * 
      */
     public Output<Optional<List<String>>> groups() {
         return Codegen.optional(this.groups);
     }
     /**
-     * The user&#39;s keys
+     * The user&#39;s keys.
      * 
      */
     @Export(name="keys", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keys;
 
     /**
-     * @return The user&#39;s keys
+     * @return The user&#39;s keys.
      * 
      */
     public Output<Optional<String>> keys() {
         return Codegen.optional(this.keys);
     }
     /**
-     * The user&#39;s last name
+     * The user&#39;s last name.
      * 
      */
     @Export(name="lastName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lastName;
 
     /**
-     * @return The user&#39;s last name
+     * @return The user&#39;s last name.
      * 
      */
     public Output<Optional<String>> lastName() {
         return Codegen.optional(this.lastName);
     }
     /**
-     * The user&#39;s password
+     * The user&#39;s password. Required for PVE or PAM realms.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
-     * @return The user&#39;s password
+     * @return The user&#39;s password. Required for PVE or PAM realms.
      * 
      */
     public Output<Optional<String>> password() {
         return Codegen.optional(this.password);
     }
     /**
-     * The user id
+     * The user identifier.
      * 
      */
     @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
     /**
-     * @return The user id
+     * @return The user identifier.
      * 
      */
     public Output<String> userId() {

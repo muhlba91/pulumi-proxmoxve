@@ -18,58 +18,145 @@ public final class VirtualMachineNetworkDeviceArgs extends com.pulumi.resources.
 
     public static final VirtualMachineNetworkDeviceArgs Empty = new VirtualMachineNetworkDeviceArgs();
 
+    /**
+     * The name of the network bridge (defaults
+     * to `vmbr0`).
+     * 
+     */
     @Import(name="bridge")
     private @Nullable Output<String> bridge;
 
+    /**
+     * @return The name of the network bridge (defaults
+     * to `vmbr0`).
+     * 
+     */
     public Optional<Output<String>> bridge() {
         return Optional.ofNullable(this.bridge);
     }
 
+    /**
+     * Whether to enable the VGA device (defaults
+     * to `true`).
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether to enable the VGA device (defaults
+     * to `true`).
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * Whether this interface&#39;s firewall rules should be
+     * used (defaults to `false`).
+     * 
+     */
     @Import(name="firewall")
     private @Nullable Output<Boolean> firewall;
 
+    /**
+     * @return Whether this interface&#39;s firewall rules should be
+     * used (defaults to `false`).
+     * 
+     */
     public Optional<Output<Boolean>> firewall() {
         return Optional.ofNullable(this.firewall);
     }
 
+    /**
+     * The MAC address.
+     * 
+     */
     @Import(name="macAddress")
     private @Nullable Output<String> macAddress;
 
+    /**
+     * @return The MAC address.
+     * 
+     */
     public Optional<Output<String>> macAddress() {
         return Optional.ofNullable(this.macAddress);
     }
 
+    /**
+     * The network device model (defaults to `virtio`).
+     * 
+     */
     @Import(name="model")
     private @Nullable Output<String> model;
 
+    /**
+     * @return The network device model (defaults to `virtio`).
+     * 
+     */
     public Optional<Output<String>> model() {
         return Optional.ofNullable(this.model);
     }
 
+    /**
+     * Force MTU, for VirtIO only. Set to 1 to use the bridge
+     * MTU. Cannot be larger than the bridge MTU.
+     * 
+     */
     @Import(name="mtu")
     private @Nullable Output<Integer> mtu;
 
+    /**
+     * @return Force MTU, for VirtIO only. Set to 1 to use the bridge
+     * MTU. Cannot be larger than the bridge MTU.
+     * 
+     */
     public Optional<Output<Integer>> mtu() {
         return Optional.ofNullable(this.mtu);
     }
 
+    /**
+     * The number of queues for VirtIO (1..64).
+     * 
+     */
+    @Import(name="queues")
+    private @Nullable Output<Integer> queues;
+
+    /**
+     * @return The number of queues for VirtIO (1..64).
+     * 
+     */
+    public Optional<Output<Integer>> queues() {
+        return Optional.ofNullable(this.queues);
+    }
+
+    /**
+     * The rate limit in megabytes per second.
+     * 
+     */
     @Import(name="rateLimit")
     private @Nullable Output<Double> rateLimit;
 
+    /**
+     * @return The rate limit in megabytes per second.
+     * 
+     */
     public Optional<Output<Double>> rateLimit() {
         return Optional.ofNullable(this.rateLimit);
     }
 
+    /**
+     * The VLAN identifier.
+     * 
+     */
     @Import(name="vlanId")
     private @Nullable Output<Integer> vlanId;
 
+    /**
+     * @return The VLAN identifier.
+     * 
+     */
     public Optional<Output<Integer>> vlanId() {
         return Optional.ofNullable(this.vlanId);
     }
@@ -83,6 +170,7 @@ public final class VirtualMachineNetworkDeviceArgs extends com.pulumi.resources.
         this.macAddress = $.macAddress;
         this.model = $.model;
         this.mtu = $.mtu;
+        this.queues = $.queues;
         this.rateLimit = $.rateLimit;
         this.vlanId = $.vlanId;
     }
@@ -105,74 +193,199 @@ public final class VirtualMachineNetworkDeviceArgs extends com.pulumi.resources.
             $ = new VirtualMachineNetworkDeviceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param bridge The name of the network bridge (defaults
+         * to `vmbr0`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder bridge(@Nullable Output<String> bridge) {
             $.bridge = bridge;
             return this;
         }
 
+        /**
+         * @param bridge The name of the network bridge (defaults
+         * to `vmbr0`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder bridge(String bridge) {
             return bridge(Output.of(bridge));
         }
 
+        /**
+         * @param enabled Whether to enable the VGA device (defaults
+         * to `true`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether to enable the VGA device (defaults
+         * to `true`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param firewall Whether this interface&#39;s firewall rules should be
+         * used (defaults to `false`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder firewall(@Nullable Output<Boolean> firewall) {
             $.firewall = firewall;
             return this;
         }
 
+        /**
+         * @param firewall Whether this interface&#39;s firewall rules should be
+         * used (defaults to `false`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder firewall(Boolean firewall) {
             return firewall(Output.of(firewall));
         }
 
+        /**
+         * @param macAddress The MAC address.
+         * 
+         * @return builder
+         * 
+         */
         public Builder macAddress(@Nullable Output<String> macAddress) {
             $.macAddress = macAddress;
             return this;
         }
 
+        /**
+         * @param macAddress The MAC address.
+         * 
+         * @return builder
+         * 
+         */
         public Builder macAddress(String macAddress) {
             return macAddress(Output.of(macAddress));
         }
 
+        /**
+         * @param model The network device model (defaults to `virtio`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder model(@Nullable Output<String> model) {
             $.model = model;
             return this;
         }
 
+        /**
+         * @param model The network device model (defaults to `virtio`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder model(String model) {
             return model(Output.of(model));
         }
 
+        /**
+         * @param mtu Force MTU, for VirtIO only. Set to 1 to use the bridge
+         * MTU. Cannot be larger than the bridge MTU.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mtu(@Nullable Output<Integer> mtu) {
             $.mtu = mtu;
             return this;
         }
 
+        /**
+         * @param mtu Force MTU, for VirtIO only. Set to 1 to use the bridge
+         * MTU. Cannot be larger than the bridge MTU.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mtu(Integer mtu) {
             return mtu(Output.of(mtu));
         }
 
+        /**
+         * @param queues The number of queues for VirtIO (1..64).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder queues(@Nullable Output<Integer> queues) {
+            $.queues = queues;
+            return this;
+        }
+
+        /**
+         * @param queues The number of queues for VirtIO (1..64).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder queues(Integer queues) {
+            return queues(Output.of(queues));
+        }
+
+        /**
+         * @param rateLimit The rate limit in megabytes per second.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rateLimit(@Nullable Output<Double> rateLimit) {
             $.rateLimit = rateLimit;
             return this;
         }
 
+        /**
+         * @param rateLimit The rate limit in megabytes per second.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rateLimit(Double rateLimit) {
             return rateLimit(Output.of(rateLimit));
         }
 
+        /**
+         * @param vlanId The VLAN identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanId(@Nullable Output<Integer> vlanId) {
             $.vlanId = vlanId;
             return this;
         }
 
+        /**
+         * @param vlanId The VLAN identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanId(Integer vlanId) {
             return vlanId(Output.of(vlanId));
         }

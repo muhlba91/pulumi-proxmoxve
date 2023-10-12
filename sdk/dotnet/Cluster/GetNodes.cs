@@ -11,9 +11,53 @@ namespace Pulumi.ProxmoxVE.Cluster
 {
     public static class GetNodes
     {
+        /// <summary>
+        /// Retrieves information about all available nodes.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var availableNodes = ProxmoxVE.Cluster.GetNodes.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetNodesResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNodesResult>("proxmoxve:Cluster/getNodes:getNodes", InvokeArgs.Empty, options.WithDefaults());
 
+        /// <summary>
+        /// Retrieves information about all available nodes.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var availableNodes = ProxmoxVE.Cluster.GetNodes.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetNodesResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNodesResult>("proxmoxve:Cluster/getNodes:getNodes", InvokeArgs.Empty, options.WithDefaults());
     }
@@ -22,18 +66,45 @@ namespace Pulumi.ProxmoxVE.Cluster
     [OutputType]
     public sealed class GetNodesResult
     {
+        /// <summary>
+        /// The CPU count for each node.
+        /// </summary>
         public readonly ImmutableArray<int> CpuCounts;
+        /// <summary>
+        /// The CPU utilization on each node.
+        /// </summary>
         public readonly ImmutableArray<double> CpuUtilizations;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The memory available on each node.
+        /// </summary>
         public readonly ImmutableArray<int> MemoryAvailables;
+        /// <summary>
+        /// The memory used on each node.
+        /// </summary>
         public readonly ImmutableArray<int> MemoryUseds;
+        /// <summary>
+        /// The node names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
+        /// <summary>
+        /// Whether a node is online.
+        /// </summary>
         public readonly ImmutableArray<bool> Onlines;
+        /// <summary>
+        /// The SSL fingerprint for each node.
+        /// </summary>
         public readonly ImmutableArray<string> SslFingerprints;
+        /// <summary>
+        /// The support level for each node.
+        /// </summary>
         public readonly ImmutableArray<string> SupportLevels;
+        /// <summary>
+        /// The uptime in seconds for each node.
+        /// </summary>
         public readonly ImmutableArray<int> Uptimes;
 
         [OutputConstructor]

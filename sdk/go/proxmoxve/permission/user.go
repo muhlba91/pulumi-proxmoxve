@@ -13,30 +13,85 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Manages a user.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/Permission"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			operationsMonitoring, err := Permission.NewRole(ctx, "operationsMonitoring", &Permission.RoleArgs{
+//				RoleId: pulumi.String("operations-monitoring"),
+//				Privileges: pulumi.StringArray{
+//					pulumi.String("VM.Monitor"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = Permission.NewUser(ctx, "operationsAutomation", &Permission.UserArgs{
+//				Acls: permission.UserAclArray{
+//					&permission.UserAclArgs{
+//						Path:      pulumi.String("/vms/1234"),
+//						Propagate: pulumi.Bool(true),
+//						RoleId:    operationsMonitoring.RoleId,
+//					},
+//				},
+//				Comment:  pulumi.String("Managed by Terraform"),
+//				Password: pulumi.String("a-strong-password"),
+//				UserId:   pulumi.String("operations-automation@pve"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// Instances can be imported using the `user_id`, e.g., bash
+//
+// ```sh
+//
+//	$ pulumi import proxmoxve:Permission/user:User operations_automation operations-automation@pve
+//
+// ```
 type User struct {
 	pulumi.CustomResourceState
 
-	// The access control list
+	// The access control list (multiple blocks supported).
 	Acls UserAclArrayOutput `pulumi:"acls"`
-	// The user comment
+	// The user comment.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
-	// The user's email address
+	// The user's email address.
 	Email pulumi.StringPtrOutput `pulumi:"email"`
-	// Whether the user account is enabled
+	// Whether the user account is enabled.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// The user account's expiration date
+	// The user account's expiration date (RFC 3339).
 	ExpirationDate pulumi.StringPtrOutput `pulumi:"expirationDate"`
-	// The user's first name
+	// The user's first name.
 	FirstName pulumi.StringPtrOutput `pulumi:"firstName"`
-	// The user's groups
+	// The user's groups.
 	Groups pulumi.StringArrayOutput `pulumi:"groups"`
-	// The user's keys
+	// The user's keys.
 	Keys pulumi.StringPtrOutput `pulumi:"keys"`
-	// The user's last name
+	// The user's last name.
 	LastName pulumi.StringPtrOutput `pulumi:"lastName"`
-	// The user's password
+	// The user's password. Required for PVE or PAM realms.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
-	// The user id
+	// The user identifier.
 	UserId pulumi.StringOutput `pulumi:"userId"`
 }
 
@@ -73,52 +128,52 @@ func GetUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering User resources.
 type userState struct {
-	// The access control list
+	// The access control list (multiple blocks supported).
 	Acls []UserAcl `pulumi:"acls"`
-	// The user comment
+	// The user comment.
 	Comment *string `pulumi:"comment"`
-	// The user's email address
+	// The user's email address.
 	Email *string `pulumi:"email"`
-	// Whether the user account is enabled
+	// Whether the user account is enabled.
 	Enabled *bool `pulumi:"enabled"`
-	// The user account's expiration date
+	// The user account's expiration date (RFC 3339).
 	ExpirationDate *string `pulumi:"expirationDate"`
-	// The user's first name
+	// The user's first name.
 	FirstName *string `pulumi:"firstName"`
-	// The user's groups
+	// The user's groups.
 	Groups []string `pulumi:"groups"`
-	// The user's keys
+	// The user's keys.
 	Keys *string `pulumi:"keys"`
-	// The user's last name
+	// The user's last name.
 	LastName *string `pulumi:"lastName"`
-	// The user's password
+	// The user's password. Required for PVE or PAM realms.
 	Password *string `pulumi:"password"`
-	// The user id
+	// The user identifier.
 	UserId *string `pulumi:"userId"`
 }
 
 type UserState struct {
-	// The access control list
+	// The access control list (multiple blocks supported).
 	Acls UserAclArrayInput
-	// The user comment
+	// The user comment.
 	Comment pulumi.StringPtrInput
-	// The user's email address
+	// The user's email address.
 	Email pulumi.StringPtrInput
-	// Whether the user account is enabled
+	// Whether the user account is enabled.
 	Enabled pulumi.BoolPtrInput
-	// The user account's expiration date
+	// The user account's expiration date (RFC 3339).
 	ExpirationDate pulumi.StringPtrInput
-	// The user's first name
+	// The user's first name.
 	FirstName pulumi.StringPtrInput
-	// The user's groups
+	// The user's groups.
 	Groups pulumi.StringArrayInput
-	// The user's keys
+	// The user's keys.
 	Keys pulumi.StringPtrInput
-	// The user's last name
+	// The user's last name.
 	LastName pulumi.StringPtrInput
-	// The user's password
+	// The user's password. Required for PVE or PAM realms.
 	Password pulumi.StringPtrInput
-	// The user id
+	// The user identifier.
 	UserId pulumi.StringPtrInput
 }
 
@@ -127,53 +182,53 @@ func (UserState) ElementType() reflect.Type {
 }
 
 type userArgs struct {
-	// The access control list
+	// The access control list (multiple blocks supported).
 	Acls []UserAcl `pulumi:"acls"`
-	// The user comment
+	// The user comment.
 	Comment *string `pulumi:"comment"`
-	// The user's email address
+	// The user's email address.
 	Email *string `pulumi:"email"`
-	// Whether the user account is enabled
+	// Whether the user account is enabled.
 	Enabled *bool `pulumi:"enabled"`
-	// The user account's expiration date
+	// The user account's expiration date (RFC 3339).
 	ExpirationDate *string `pulumi:"expirationDate"`
-	// The user's first name
+	// The user's first name.
 	FirstName *string `pulumi:"firstName"`
-	// The user's groups
+	// The user's groups.
 	Groups []string `pulumi:"groups"`
-	// The user's keys
+	// The user's keys.
 	Keys *string `pulumi:"keys"`
-	// The user's last name
+	// The user's last name.
 	LastName *string `pulumi:"lastName"`
-	// The user's password
+	// The user's password. Required for PVE or PAM realms.
 	Password *string `pulumi:"password"`
-	// The user id
+	// The user identifier.
 	UserId string `pulumi:"userId"`
 }
 
 // The set of arguments for constructing a User resource.
 type UserArgs struct {
-	// The access control list
+	// The access control list (multiple blocks supported).
 	Acls UserAclArrayInput
-	// The user comment
+	// The user comment.
 	Comment pulumi.StringPtrInput
-	// The user's email address
+	// The user's email address.
 	Email pulumi.StringPtrInput
-	// Whether the user account is enabled
+	// Whether the user account is enabled.
 	Enabled pulumi.BoolPtrInput
-	// The user account's expiration date
+	// The user account's expiration date (RFC 3339).
 	ExpirationDate pulumi.StringPtrInput
-	// The user's first name
+	// The user's first name.
 	FirstName pulumi.StringPtrInput
-	// The user's groups
+	// The user's groups.
 	Groups pulumi.StringArrayInput
-	// The user's keys
+	// The user's keys.
 	Keys pulumi.StringPtrInput
-	// The user's last name
+	// The user's last name.
 	LastName pulumi.StringPtrInput
-	// The user's password
+	// The user's password. Required for PVE or PAM realms.
 	Password pulumi.StringPtrInput
-	// The user id
+	// The user identifier.
 	UserId pulumi.StringInput
 }
 
@@ -288,57 +343,57 @@ func (o UserOutput) ToOutput(ctx context.Context) pulumix.Output[*User] {
 	}
 }
 
-// The access control list
+// The access control list (multiple blocks supported).
 func (o UserOutput) Acls() UserAclArrayOutput {
 	return o.ApplyT(func(v *User) UserAclArrayOutput { return v.Acls }).(UserAclArrayOutput)
 }
 
-// The user comment
+// The user comment.
 func (o UserOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-// The user's email address
+// The user's email address.
 func (o UserOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Email }).(pulumi.StringPtrOutput)
 }
 
-// Whether the user account is enabled
+// Whether the user account is enabled.
 func (o UserOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The user account's expiration date
+// The user account's expiration date (RFC 3339).
 func (o UserOutput) ExpirationDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.ExpirationDate }).(pulumi.StringPtrOutput)
 }
 
-// The user's first name
+// The user's first name.
 func (o UserOutput) FirstName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.FirstName }).(pulumi.StringPtrOutput)
 }
 
-// The user's groups
+// The user's groups.
 func (o UserOutput) Groups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *User) pulumi.StringArrayOutput { return v.Groups }).(pulumi.StringArrayOutput)
 }
 
-// The user's keys
+// The user's keys.
 func (o UserOutput) Keys() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Keys }).(pulumi.StringPtrOutput)
 }
 
-// The user's last name
+// The user's last name.
 func (o UserOutput) LastName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.LastName }).(pulumi.StringPtrOutput)
 }
 
-// The user's password
+// The user's password. Required for PVE or PAM realms.
 func (o UserOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// The user id
+// The user identifier.
 func (o UserOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
 }

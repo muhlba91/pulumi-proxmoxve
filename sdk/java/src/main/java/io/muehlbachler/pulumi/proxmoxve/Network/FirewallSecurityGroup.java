@@ -17,17 +17,81 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * A security group is a collection of rules, defined at cluster level, which can
+ * be used in all VMs&#39; rules. For example, you can define a group named “webserver”
+ * with rules to open the http and https ports.
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.proxmoxve.Network.FirewallSecurityGroup;
+ * import com.pulumi.proxmoxve.Network.FirewallSecurityGroupArgs;
+ * import com.pulumi.proxmoxve.Network.inputs.FirewallSecurityGroupRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var webserver = new FirewallSecurityGroup(&#34;webserver&#34;, FirewallSecurityGroupArgs.builder()        
+ *             .comment(&#34;Managed by Terraform&#34;)
+ *             .rules(            
+ *                 FirewallSecurityGroupRuleArgs.builder()
+ *                     .action(&#34;ACCEPT&#34;)
+ *                     .comment(&#34;Allow HTTP&#34;)
+ *                     .dest(&#34;192.168.1.5&#34;)
+ *                     .dport(&#34;80&#34;)
+ *                     .log(&#34;info&#34;)
+ *                     .proto(&#34;tcp&#34;)
+ *                     .type(&#34;in&#34;)
+ *                     .build(),
+ *                 FirewallSecurityGroupRuleArgs.builder()
+ *                     .action(&#34;ACCEPT&#34;)
+ *                     .comment(&#34;Allow HTTPS&#34;)
+ *                     .dest(&#34;192.168.1.5&#34;)
+ *                     .dport(&#34;443&#34;)
+ *                     .log(&#34;info&#34;)
+ *                     .proto(&#34;tcp&#34;)
+ *                     .type(&#34;in&#34;)
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * Instances can be imported using the `name`, e.g., bash
+ * 
+ * ```sh
+ *  $ pulumi import proxmoxve:Network/firewallSecurityGroup:FirewallSecurityGroup webserver webserver
+ * ```
+ * 
+ */
 @ResourceType(type="proxmoxve:Network/firewallSecurityGroup:FirewallSecurityGroup")
 public class FirewallSecurityGroup extends com.pulumi.resources.CustomResource {
     /**
-     * Security group comment
+     * Rule comment.
      * 
      */
     @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
-     * @return Security group comment
+     * @return Rule comment.
      * 
      */
     public Output<Optional<String>> comment() {
@@ -48,14 +112,14 @@ public class FirewallSecurityGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.containerId);
     }
     /**
-     * Security group name
+     * Security group name.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Security group name
+     * @return Security group name.
      * 
      */
     public Output<String> name() {
@@ -76,14 +140,14 @@ public class FirewallSecurityGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.nodeName);
     }
     /**
-     * List of rules
+     * Firewall rule block (multiple blocks supported).
      * 
      */
     @Export(name="rules", refs={List.class,FirewallSecurityGroupRule.class}, tree="[0,1]")
     private Output<List<FirewallSecurityGroupRule>> rules;
 
     /**
-     * @return List of rules
+     * @return Firewall rule block (multiple blocks supported).
      * 
      */
     public Output<List<FirewallSecurityGroupRule>> rules() {

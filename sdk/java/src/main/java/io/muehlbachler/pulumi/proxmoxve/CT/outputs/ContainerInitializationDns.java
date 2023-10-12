@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContainerInitializationDns {
+    /**
+     * @return The DNS search domain.
+     * 
+     */
     private @Nullable String domain;
+    /**
+     * @return The DNS server.
+     * 
+     */
     private @Nullable String server;
 
     private ContainerInitializationDns() {}
+    /**
+     * @return The DNS search domain.
+     * 
+     */
     public Optional<String> domain() {
         return Optional.ofNullable(this.domain);
     }
+    /**
+     * @return The DNS server.
+     * 
+     */
     public Optional<String> server() {
         return Optional.ofNullable(this.server);
     }

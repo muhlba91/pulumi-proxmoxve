@@ -6,6 +6,40 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * An IPSet allows us to group multiple IP addresses, IP subnets and aliases. Aliases can be
+ * created on the cluster level, on VM / Container level.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const ipset = new proxmoxve.network.FirewallIPSet("ipset", {
+ *     nodeName: proxmox_virtual_environment_vm.example.node_name,
+ *     vmId: proxmox_virtual_environment_vm.example.vm_id,
+ *     comment: "Managed by Terraform",
+ *     cidrs: [
+ *         {
+ *             name: "192.168.0.0/23",
+ *             comment: "Local network 1",
+ *         },
+ *         {
+ *             name: "192.168.0.1",
+ *             comment: "Server 1",
+ *             nomatch: true,
+ *         },
+ *         {
+ *             name: "192.168.2.1",
+ *             comment: "Server 1",
+ *         },
+ *     ],
+ * }, {
+ *     dependsOn: [proxmox_virtual_environment_vm.example],
+ * });
+ * ```
+ */
 export class FirewallIPSet extends pulumi.CustomResource {
     /**
      * Get an existing FirewallIPSet resource's state with the given name, ID, and optional extra
@@ -35,27 +69,27 @@ export class FirewallIPSet extends pulumi.CustomResource {
     }
 
     /**
-     * List of IP or Networks
+     * IP/CIDR block (multiple blocks supported).
      */
     public readonly cidrs!: pulumi.Output<outputs.Network.FirewallIPSetCidr[] | undefined>;
     /**
-     * IPSet comment
+     * Arbitrary string annotation.
      */
     public readonly comment!: pulumi.Output<string | undefined>;
     /**
-     * The ID of the container to manage the firewall for.
+     * Container ID. Leave empty for cluster level aliases.
      */
     public readonly containerId!: pulumi.Output<number | undefined>;
     /**
-     * IPSet name
+     * Network/IP specification in CIDR format.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The name of the node.
+     * Node name. Leave empty for cluster level aliases.
      */
     public readonly nodeName!: pulumi.Output<string | undefined>;
     /**
-     * The ID of the VM to manage the firewall for.
+     * VM ID. Leave empty for cluster level aliases.
      */
     public readonly vmId!: pulumi.Output<number | undefined>;
 
@@ -97,27 +131,27 @@ export class FirewallIPSet extends pulumi.CustomResource {
  */
 export interface FirewallIPSetState {
     /**
-     * List of IP or Networks
+     * IP/CIDR block (multiple blocks supported).
      */
     cidrs?: pulumi.Input<pulumi.Input<inputs.Network.FirewallIPSetCidr>[]>;
     /**
-     * IPSet comment
+     * Arbitrary string annotation.
      */
     comment?: pulumi.Input<string>;
     /**
-     * The ID of the container to manage the firewall for.
+     * Container ID. Leave empty for cluster level aliases.
      */
     containerId?: pulumi.Input<number>;
     /**
-     * IPSet name
+     * Network/IP specification in CIDR format.
      */
     name?: pulumi.Input<string>;
     /**
-     * The name of the node.
+     * Node name. Leave empty for cluster level aliases.
      */
     nodeName?: pulumi.Input<string>;
     /**
-     * The ID of the VM to manage the firewall for.
+     * VM ID. Leave empty for cluster level aliases.
      */
     vmId?: pulumi.Input<number>;
 }
@@ -127,27 +161,27 @@ export interface FirewallIPSetState {
  */
 export interface FirewallIPSetArgs {
     /**
-     * List of IP or Networks
+     * IP/CIDR block (multiple blocks supported).
      */
     cidrs?: pulumi.Input<pulumi.Input<inputs.Network.FirewallIPSetCidr>[]>;
     /**
-     * IPSet comment
+     * Arbitrary string annotation.
      */
     comment?: pulumi.Input<string>;
     /**
-     * The ID of the container to manage the firewall for.
+     * Container ID. Leave empty for cluster level aliases.
      */
     containerId?: pulumi.Input<number>;
     /**
-     * IPSet name
+     * Network/IP specification in CIDR format.
      */
     name?: pulumi.Input<string>;
     /**
-     * The name of the node.
+     * Node name. Leave empty for cluster level aliases.
      */
     nodeName?: pulumi.Input<string>;
     /**
-     * The ID of the VM to manage the firewall for.
+     * VM ID. Leave empty for cluster level aliases.
      */
     vmId?: pulumi.Input<number>;
 }

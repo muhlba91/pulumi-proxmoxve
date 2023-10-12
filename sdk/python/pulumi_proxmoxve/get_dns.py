@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
@@ -38,6 +38,9 @@ class GetDNSResult:
     @property
     @pulumi.getter
     def domain(self) -> str:
+        """
+        The DNS search domain.
+        """
         return pulumi.get(self, "domain")
 
     @property
@@ -56,6 +59,9 @@ class GetDNSResult:
     @property
     @pulumi.getter
     def servers(self) -> Sequence[str]:
+        """
+        The DNS servers.
+        """
         return pulumi.get(self, "servers")
 
 
@@ -74,7 +80,19 @@ class AwaitableGetDNSResult(GetDNSResult):
 def get_dns(node_name: Optional[str] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDNSResult:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves the DNS configuration for a specific node.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    first_node = proxmoxve.get_dns(node_name="first-node")
+    ```
+
+
+    :param str node_name: A node name.
     """
     __args__ = dict()
     __args__['nodeName'] = node_name
@@ -92,6 +110,18 @@ def get_dns(node_name: Optional[str] = None,
 def get_dns_output(node_name: Optional[pulumi.Input[str]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDNSResult]:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves the DNS configuration for a specific node.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    first_node = proxmoxve.get_dns(node_name="first-node")
+    ```
+
+
+    :param str node_name: A node name.
     """
     ...

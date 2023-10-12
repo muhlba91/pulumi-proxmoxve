@@ -19,14 +19,14 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     public static final UserArgs Empty = new UserArgs();
 
     /**
-     * The access control list
+     * The access control list (multiple blocks supported).
      * 
      */
     @Import(name="acls")
     private @Nullable Output<List<UserAclArgs>> acls;
 
     /**
-     * @return The access control list
+     * @return The access control list (multiple blocks supported).
      * 
      */
     public Optional<Output<List<UserAclArgs>>> acls() {
@@ -34,14 +34,14 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The user comment
+     * The user comment.
      * 
      */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
     /**
-     * @return The user comment
+     * @return The user comment.
      * 
      */
     public Optional<Output<String>> comment() {
@@ -49,14 +49,14 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The user&#39;s email address
+     * The user&#39;s email address.
      * 
      */
     @Import(name="email")
     private @Nullable Output<String> email;
 
     /**
-     * @return The user&#39;s email address
+     * @return The user&#39;s email address.
      * 
      */
     public Optional<Output<String>> email() {
@@ -64,14 +64,14 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether the user account is enabled
+     * Whether the user account is enabled.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether the user account is enabled
+     * @return Whether the user account is enabled.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -79,14 +79,14 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The user account&#39;s expiration date
+     * The user account&#39;s expiration date (RFC 3339).
      * 
      */
     @Import(name="expirationDate")
     private @Nullable Output<String> expirationDate;
 
     /**
-     * @return The user account&#39;s expiration date
+     * @return The user account&#39;s expiration date (RFC 3339).
      * 
      */
     public Optional<Output<String>> expirationDate() {
@@ -94,14 +94,14 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The user&#39;s first name
+     * The user&#39;s first name.
      * 
      */
     @Import(name="firstName")
     private @Nullable Output<String> firstName;
 
     /**
-     * @return The user&#39;s first name
+     * @return The user&#39;s first name.
      * 
      */
     public Optional<Output<String>> firstName() {
@@ -109,14 +109,14 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The user&#39;s groups
+     * The user&#39;s groups.
      * 
      */
     @Import(name="groups")
     private @Nullable Output<List<String>> groups;
 
     /**
-     * @return The user&#39;s groups
+     * @return The user&#39;s groups.
      * 
      */
     public Optional<Output<List<String>>> groups() {
@@ -124,14 +124,14 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The user&#39;s keys
+     * The user&#39;s keys.
      * 
      */
     @Import(name="keys")
     private @Nullable Output<String> keys;
 
     /**
-     * @return The user&#39;s keys
+     * @return The user&#39;s keys.
      * 
      */
     public Optional<Output<String>> keys() {
@@ -139,14 +139,14 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The user&#39;s last name
+     * The user&#39;s last name.
      * 
      */
     @Import(name="lastName")
     private @Nullable Output<String> lastName;
 
     /**
-     * @return The user&#39;s last name
+     * @return The user&#39;s last name.
      * 
      */
     public Optional<Output<String>> lastName() {
@@ -154,14 +154,14 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The user&#39;s password
+     * The user&#39;s password. Required for PVE or PAM realms.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The user&#39;s password
+     * @return The user&#39;s password. Required for PVE or PAM realms.
      * 
      */
     public Optional<Output<String>> password() {
@@ -169,14 +169,14 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The user id
+     * The user identifier.
      * 
      */
     @Import(name="userId", required=true)
     private Output<String> userId;
 
     /**
-     * @return The user id
+     * @return The user identifier.
      * 
      */
     public Output<String> userId() {
@@ -218,7 +218,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param acls The access control list
+         * @param acls The access control list (multiple blocks supported).
          * 
          * @return builder
          * 
@@ -229,7 +229,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param acls The access control list
+         * @param acls The access control list (multiple blocks supported).
          * 
          * @return builder
          * 
@@ -239,7 +239,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param acls The access control list
+         * @param acls The access control list (multiple blocks supported).
          * 
          * @return builder
          * 
@@ -249,7 +249,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comment The user comment
+         * @param comment The user comment.
          * 
          * @return builder
          * 
@@ -260,7 +260,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comment The user comment
+         * @param comment The user comment.
          * 
          * @return builder
          * 
@@ -270,7 +270,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param email The user&#39;s email address
+         * @param email The user&#39;s email address.
          * 
          * @return builder
          * 
@@ -281,7 +281,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param email The user&#39;s email address
+         * @param email The user&#39;s email address.
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Whether the user account is enabled
+         * @param enabled Whether the user account is enabled.
          * 
          * @return builder
          * 
@@ -302,7 +302,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Whether the user account is enabled
+         * @param enabled Whether the user account is enabled.
          * 
          * @return builder
          * 
@@ -312,7 +312,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param expirationDate The user account&#39;s expiration date
+         * @param expirationDate The user account&#39;s expiration date (RFC 3339).
          * 
          * @return builder
          * 
@@ -323,7 +323,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param expirationDate The user account&#39;s expiration date
+         * @param expirationDate The user account&#39;s expiration date (RFC 3339).
          * 
          * @return builder
          * 
@@ -333,7 +333,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param firstName The user&#39;s first name
+         * @param firstName The user&#39;s first name.
          * 
          * @return builder
          * 
@@ -344,7 +344,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param firstName The user&#39;s first name
+         * @param firstName The user&#39;s first name.
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groups The user&#39;s groups
+         * @param groups The user&#39;s groups.
          * 
          * @return builder
          * 
@@ -365,7 +365,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groups The user&#39;s groups
+         * @param groups The user&#39;s groups.
          * 
          * @return builder
          * 
@@ -375,7 +375,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groups The user&#39;s groups
+         * @param groups The user&#39;s groups.
          * 
          * @return builder
          * 
@@ -385,7 +385,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keys The user&#39;s keys
+         * @param keys The user&#39;s keys.
          * 
          * @return builder
          * 
@@ -396,7 +396,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keys The user&#39;s keys
+         * @param keys The user&#39;s keys.
          * 
          * @return builder
          * 
@@ -406,7 +406,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lastName The user&#39;s last name
+         * @param lastName The user&#39;s last name.
          * 
          * @return builder
          * 
@@ -417,7 +417,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lastName The user&#39;s last name
+         * @param lastName The user&#39;s last name.
          * 
          * @return builder
          * 
@@ -427,7 +427,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The user&#39;s password
+         * @param password The user&#39;s password. Required for PVE or PAM realms.
          * 
          * @return builder
          * 
@@ -438,7 +438,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The user&#39;s password
+         * @param password The user&#39;s password. Required for PVE or PAM realms.
          * 
          * @return builder
          * 
@@ -448,7 +448,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userId The user id
+         * @param userId The user identifier.
          * 
          * @return builder
          * 
@@ -459,7 +459,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userId The user id
+         * @param userId The user identifier.
          * 
          * @return builder
          * 

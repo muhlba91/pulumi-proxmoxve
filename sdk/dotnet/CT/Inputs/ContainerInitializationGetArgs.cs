@@ -12,20 +12,34 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
 
     public sealed class ContainerInitializationGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The DNS configuration.
+        /// </summary>
         [Input("dns")]
         public Input<Inputs.ContainerInitializationDnsGetArgs>? Dns { get; set; }
 
+        /// <summary>
+        /// The hostname.
+        /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
 
         [Input("ipConfigs")]
         private InputList<Inputs.ContainerInitializationIpConfigGetArgs>? _ipConfigs;
+
+        /// <summary>
+        /// The IP configuration (one block per network
+        /// device).
+        /// </summary>
         public InputList<Inputs.ContainerInitializationIpConfigGetArgs> IpConfigs
         {
             get => _ipConfigs ?? (_ipConfigs = new InputList<Inputs.ContainerInitializationIpConfigGetArgs>());
             set => _ipConfigs = value;
         }
 
+        /// <summary>
+        /// The user account configuration.
+        /// </summary>
         [Input("userAccount")]
         public Input<Inputs.ContainerInitializationUserAccountGetArgs>? UserAccount { get; set; }
 

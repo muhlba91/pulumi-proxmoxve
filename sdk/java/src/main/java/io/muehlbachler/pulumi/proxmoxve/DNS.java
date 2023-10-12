@@ -15,45 +15,61 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Manages the DNS configuration for a specific node.
+ * 
+ * ## Important Notes
+ * 
+ * Be careful not to use this resource multiple times for the same node.
+ * 
+ * ## Import
+ * 
+ * Instances can be imported using the `node_name`, e.g., bash
+ * 
+ * ```sh
+ *  $ pulumi import proxmoxve:index/dNS:DNS first_node first-node
+ * ```
+ * 
+ */
 @ResourceType(type="proxmoxve:index/dNS:DNS")
 public class DNS extends com.pulumi.resources.CustomResource {
     /**
-     * The DNS search domain
+     * The DNS search domain.
      * 
      */
     @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
 
     /**
-     * @return The DNS search domain
+     * @return The DNS search domain.
      * 
      */
     public Output<String> domain() {
         return this.domain;
     }
     /**
-     * The node name
+     * A node name.
      * 
      */
     @Export(name="nodeName", refs={String.class}, tree="[0]")
     private Output<String> nodeName;
 
     /**
-     * @return The node name
+     * @return A node name.
      * 
      */
     public Output<String> nodeName() {
         return this.nodeName;
     }
     /**
-     * The DNS servers
+     * The DNS servers.
      * 
      */
     @Export(name="servers", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> servers;
 
     /**
-     * @return The DNS servers
+     * @return The DNS servers.
      * 
      */
     public Output<Optional<List<String>>> servers() {

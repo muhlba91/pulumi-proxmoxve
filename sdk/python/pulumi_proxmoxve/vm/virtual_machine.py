@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -60,138 +60,251 @@ class VirtualMachineArgs:
                  vm_id: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a VirtualMachine resource.
-        :param pulumi.Input[str] node_name: The node name
-        :param pulumi.Input[bool] acpi: Whether to enable ACPI
-        :param pulumi.Input['VirtualMachineAgentArgs'] agent: The QEMU agent configuration
-        :param pulumi.Input['VirtualMachineAudioDeviceArgs'] audio_device: The audio devices
-        :param pulumi.Input[str] bios: The BIOS implementation
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] boot_orders: The guest will attempt to boot from devices in the order they appear here
-        :param pulumi.Input['VirtualMachineCdromArgs'] cdrom: The CDROM drive
-        :param pulumi.Input['VirtualMachineCloneArgs'] clone: The cloning configuration
-        :param pulumi.Input['VirtualMachineCpuArgs'] cpu: The CPU allocation
-        :param pulumi.Input[str] description: The description
-        :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]] disks: The disk devices
-        :param pulumi.Input['VirtualMachineEfiDiskArgs'] efi_disk: The efidisk device
-        :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]] hostpcis: The Host PCI devices mapped to the VM
-        :param pulumi.Input['VirtualMachineInitializationArgs'] initialization: The cloud-init configuration
-        :param pulumi.Input[str] keyboard_layout: The keyboard layout
-        :param pulumi.Input[str] kvm_arguments: The args implementation
-        :param pulumi.Input[str] machine: The VM machine type, either default i440fx or q35
-        :param pulumi.Input['VirtualMachineMemoryArgs'] memory: The memory allocation
-        :param pulumi.Input[bool] migrate: Whether to migrate the VM on node change instead of re-creating it
-        :param pulumi.Input[str] name: The name
-        :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkDeviceArgs']]] network_devices: The network devices
-        :param pulumi.Input[bool] on_boot: Start VM on Node boot
-        :param pulumi.Input['VirtualMachineOperatingSystemArgs'] operating_system: The operating system configuration
-        :param pulumi.Input[str] pool_id: The ID of the pool to assign the virtual machine to
-        :param pulumi.Input[bool] reboot: Whether to reboot vm after creation
-        :param pulumi.Input[str] scsi_hardware: The SCSI hardware type
-        :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]] serial_devices: The serial devices
-        :param pulumi.Input['VirtualMachineSmbiosArgs'] smbios: Specifies SMBIOS (type1) settings for the VM
-        :param pulumi.Input[bool] started: Whether to start the virtual machine
-        :param pulumi.Input['VirtualMachineStartupArgs'] startup: Defines startup and shutdown behavior of the VM
-        :param pulumi.Input[bool] tablet_device: Whether to enable the USB tablet device
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the virtual machine. This is only meta information.
-        :param pulumi.Input[bool] template: Whether to create a template
-        :param pulumi.Input[int] timeout_clone: Clone VM timeout
-        :param pulumi.Input[int] timeout_migrate: Migrate VM timeout
-        :param pulumi.Input[int] timeout_move_disk: MoveDisk timeout
-        :param pulumi.Input[int] timeout_reboot: Reboot timeout
-        :param pulumi.Input[int] timeout_shutdown_vm: Shutdown timeout
-        :param pulumi.Input[int] timeout_start_vm: Start VM timeout
-        :param pulumi.Input[int] timeout_stop_vm: Stop VM timeout
-        :param pulumi.Input['VirtualMachineVgaArgs'] vga: The VGA configuration
-        :param pulumi.Input[int] vm_id: The VM identifier
+        :param pulumi.Input[str] node_name: The name of the node to assign the virtual machine
+               to.
+        :param pulumi.Input[bool] acpi: Whether to enable ACPI (defaults to `true`).
+        :param pulumi.Input['VirtualMachineAgentArgs'] agent: The QEMU agent configuration.
+        :param pulumi.Input['VirtualMachineAudioDeviceArgs'] audio_device: An audio device.
+        :param pulumi.Input[str] bios: The BIOS implementation (defaults to `seabios`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] boot_orders: Specify a list of devices to boot from in the order
+               they appear in the list (defaults to `[]`).
+        :param pulumi.Input['VirtualMachineCdromArgs'] cdrom: The CDROM configuration.
+        :param pulumi.Input['VirtualMachineCloneArgs'] clone: The cloning configuration.
+        :param pulumi.Input['VirtualMachineCpuArgs'] cpu: The CPU configuration.
+        :param pulumi.Input[str] description: The description.
+        :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]] disks: A disk (multiple blocks supported).
+        :param pulumi.Input['VirtualMachineEfiDiskArgs'] efi_disk: The efi disk device (required if `bios` is set
+               to `ovmf`)
+        :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]] hostpcis: A host PCI device mapping (multiple blocks supported).
+        :param pulumi.Input['VirtualMachineInitializationArgs'] initialization: The cloud-init configuration.
+        :param pulumi.Input[str] keyboard_layout: The keyboard layout (defaults to `en-us`).
+        :param pulumi.Input[str] kvm_arguments: Arbitrary arguments passed to kvm.
+        :param pulumi.Input[str] machine: The VM machine type (defaults to `i440fx`).
+        :param pulumi.Input['VirtualMachineMemoryArgs'] memory: The VGA memory in megabytes (defaults to `16`).
+        :param pulumi.Input[bool] migrate: Migrate the VM on node change instead of re-creating
+               it (defaults to `false`).
+        :param pulumi.Input[str] name: The virtual machine name.
+        :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkDeviceArgs']]] network_devices: A network device (multiple blocks supported).
+        :param pulumi.Input[bool] on_boot: Specifies whether a VM will be started during system
+               boot. (defaults to `true`)
+        :param pulumi.Input['VirtualMachineOperatingSystemArgs'] operating_system: The Operating System configuration.
+        :param pulumi.Input[str] pool_id: The identifier for a pool to assign the virtual machine
+               to.
+        :param pulumi.Input[bool] reboot: Reboot the VM after initial creation. (defaults
+               to `false`)
+        :param pulumi.Input[str] scsi_hardware: The SCSI hardware type (defaults
+               to `virtio-scsi-pci`).
+        :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]] serial_devices: A serial device (multiple blocks supported).
+        :param pulumi.Input['VirtualMachineSmbiosArgs'] smbios: The SMBIOS (type1) settings for the VM.
+        :param pulumi.Input[bool] started: Whether to start the virtual machine (defaults
+               to `true`).
+        :param pulumi.Input['VirtualMachineStartupArgs'] startup: Defines startup and shutdown behavior of the VM.
+        :param pulumi.Input[bool] tablet_device: Whether to enable the USB tablet device (defaults
+               to `true`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags of the VM. This is only meta information (
+               defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
+               template is not sorted, then Proxmox will always report a difference on the
+               resource. You may use the `ignore_changes` lifecycle meta-argument to ignore
+               changes to this attribute.
+        :param pulumi.Input[bool] template: Whether to create a template (defaults to `false`).
+        :param pulumi.Input[int] timeout_clone: Timeout for cloning a VM in seconds (defaults to
+               1800).
+        :param pulumi.Input[int] timeout_migrate: Timeout for migrating the VM (defaults to
+               1800).
+        :param pulumi.Input[int] timeout_move_disk: Timeout for moving the disk of a VM in
+               seconds (defaults to 1800).
+        :param pulumi.Input[int] timeout_reboot: Timeout for rebooting a VM in seconds (defaults
+               to 1800).
+        :param pulumi.Input[int] timeout_shutdown_vm: Timeout for shutting down a VM in seconds (
+               defaults to 1800).
+        :param pulumi.Input[int] timeout_start_vm: Timeout for starting a VM in seconds (defaults
+               to 1800).
+        :param pulumi.Input[int] timeout_stop_vm: Timeout for stopping a VM in seconds (defaults
+               to 300).
+        :param pulumi.Input['VirtualMachineVgaArgs'] vga: The VGA configuration.
+        :param pulumi.Input[int] vm_id: The VM identifier.
         """
-        pulumi.set(__self__, "node_name", node_name)
+        VirtualMachineArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            node_name=node_name,
+            acpi=acpi,
+            agent=agent,
+            audio_device=audio_device,
+            bios=bios,
+            boot_orders=boot_orders,
+            cdrom=cdrom,
+            clone=clone,
+            cpu=cpu,
+            description=description,
+            disks=disks,
+            efi_disk=efi_disk,
+            hostpcis=hostpcis,
+            initialization=initialization,
+            keyboard_layout=keyboard_layout,
+            kvm_arguments=kvm_arguments,
+            machine=machine,
+            memory=memory,
+            migrate=migrate,
+            name=name,
+            network_devices=network_devices,
+            on_boot=on_boot,
+            operating_system=operating_system,
+            pool_id=pool_id,
+            reboot=reboot,
+            scsi_hardware=scsi_hardware,
+            serial_devices=serial_devices,
+            smbios=smbios,
+            started=started,
+            startup=startup,
+            tablet_device=tablet_device,
+            tags=tags,
+            template=template,
+            timeout_clone=timeout_clone,
+            timeout_migrate=timeout_migrate,
+            timeout_move_disk=timeout_move_disk,
+            timeout_reboot=timeout_reboot,
+            timeout_shutdown_vm=timeout_shutdown_vm,
+            timeout_start_vm=timeout_start_vm,
+            timeout_stop_vm=timeout_stop_vm,
+            vga=vga,
+            vm_id=vm_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             node_name: pulumi.Input[str],
+             acpi: Optional[pulumi.Input[bool]] = None,
+             agent: Optional[pulumi.Input['VirtualMachineAgentArgs']] = None,
+             audio_device: Optional[pulumi.Input['VirtualMachineAudioDeviceArgs']] = None,
+             bios: Optional[pulumi.Input[str]] = None,
+             boot_orders: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             cdrom: Optional[pulumi.Input['VirtualMachineCdromArgs']] = None,
+             clone: Optional[pulumi.Input['VirtualMachineCloneArgs']] = None,
+             cpu: Optional[pulumi.Input['VirtualMachineCpuArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disks: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]] = None,
+             efi_disk: Optional[pulumi.Input['VirtualMachineEfiDiskArgs']] = None,
+             hostpcis: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]]] = None,
+             initialization: Optional[pulumi.Input['VirtualMachineInitializationArgs']] = None,
+             keyboard_layout: Optional[pulumi.Input[str]] = None,
+             kvm_arguments: Optional[pulumi.Input[str]] = None,
+             machine: Optional[pulumi.Input[str]] = None,
+             memory: Optional[pulumi.Input['VirtualMachineMemoryArgs']] = None,
+             migrate: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network_devices: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkDeviceArgs']]]] = None,
+             on_boot: Optional[pulumi.Input[bool]] = None,
+             operating_system: Optional[pulumi.Input['VirtualMachineOperatingSystemArgs']] = None,
+             pool_id: Optional[pulumi.Input[str]] = None,
+             reboot: Optional[pulumi.Input[bool]] = None,
+             scsi_hardware: Optional[pulumi.Input[str]] = None,
+             serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]]] = None,
+             smbios: Optional[pulumi.Input['VirtualMachineSmbiosArgs']] = None,
+             started: Optional[pulumi.Input[bool]] = None,
+             startup: Optional[pulumi.Input['VirtualMachineStartupArgs']] = None,
+             tablet_device: Optional[pulumi.Input[bool]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             template: Optional[pulumi.Input[bool]] = None,
+             timeout_clone: Optional[pulumi.Input[int]] = None,
+             timeout_migrate: Optional[pulumi.Input[int]] = None,
+             timeout_move_disk: Optional[pulumi.Input[int]] = None,
+             timeout_reboot: Optional[pulumi.Input[int]] = None,
+             timeout_shutdown_vm: Optional[pulumi.Input[int]] = None,
+             timeout_start_vm: Optional[pulumi.Input[int]] = None,
+             timeout_stop_vm: Optional[pulumi.Input[int]] = None,
+             vga: Optional[pulumi.Input['VirtualMachineVgaArgs']] = None,
+             vm_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("node_name", node_name)
         if acpi is not None:
-            pulumi.set(__self__, "acpi", acpi)
+            _setter("acpi", acpi)
         if agent is not None:
-            pulumi.set(__self__, "agent", agent)
+            _setter("agent", agent)
         if audio_device is not None:
-            pulumi.set(__self__, "audio_device", audio_device)
+            _setter("audio_device", audio_device)
         if bios is not None:
-            pulumi.set(__self__, "bios", bios)
+            _setter("bios", bios)
         if boot_orders is not None:
-            pulumi.set(__self__, "boot_orders", boot_orders)
+            _setter("boot_orders", boot_orders)
         if cdrom is not None:
-            pulumi.set(__self__, "cdrom", cdrom)
+            _setter("cdrom", cdrom)
         if clone is not None:
-            pulumi.set(__self__, "clone", clone)
+            _setter("clone", clone)
         if cpu is not None:
-            pulumi.set(__self__, "cpu", cpu)
+            _setter("cpu", cpu)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disks is not None:
-            pulumi.set(__self__, "disks", disks)
+            _setter("disks", disks)
         if efi_disk is not None:
-            pulumi.set(__self__, "efi_disk", efi_disk)
+            _setter("efi_disk", efi_disk)
         if hostpcis is not None:
-            pulumi.set(__self__, "hostpcis", hostpcis)
+            _setter("hostpcis", hostpcis)
         if initialization is not None:
-            pulumi.set(__self__, "initialization", initialization)
+            _setter("initialization", initialization)
         if keyboard_layout is not None:
-            pulumi.set(__self__, "keyboard_layout", keyboard_layout)
+            _setter("keyboard_layout", keyboard_layout)
         if kvm_arguments is not None:
-            pulumi.set(__self__, "kvm_arguments", kvm_arguments)
+            _setter("kvm_arguments", kvm_arguments)
         if machine is not None:
-            pulumi.set(__self__, "machine", machine)
+            _setter("machine", machine)
         if memory is not None:
-            pulumi.set(__self__, "memory", memory)
+            _setter("memory", memory)
         if migrate is not None:
-            pulumi.set(__self__, "migrate", migrate)
+            _setter("migrate", migrate)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network_devices is not None:
-            pulumi.set(__self__, "network_devices", network_devices)
+            _setter("network_devices", network_devices)
         if on_boot is not None:
-            pulumi.set(__self__, "on_boot", on_boot)
+            _setter("on_boot", on_boot)
         if operating_system is not None:
-            pulumi.set(__self__, "operating_system", operating_system)
+            _setter("operating_system", operating_system)
         if pool_id is not None:
-            pulumi.set(__self__, "pool_id", pool_id)
+            _setter("pool_id", pool_id)
         if reboot is not None:
-            pulumi.set(__self__, "reboot", reboot)
+            _setter("reboot", reboot)
         if scsi_hardware is not None:
-            pulumi.set(__self__, "scsi_hardware", scsi_hardware)
+            _setter("scsi_hardware", scsi_hardware)
         if serial_devices is not None:
-            pulumi.set(__self__, "serial_devices", serial_devices)
+            _setter("serial_devices", serial_devices)
         if smbios is not None:
-            pulumi.set(__self__, "smbios", smbios)
+            _setter("smbios", smbios)
         if started is not None:
-            pulumi.set(__self__, "started", started)
+            _setter("started", started)
         if startup is not None:
-            pulumi.set(__self__, "startup", startup)
+            _setter("startup", startup)
         if tablet_device is not None:
-            pulumi.set(__self__, "tablet_device", tablet_device)
+            _setter("tablet_device", tablet_device)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if template is not None:
-            pulumi.set(__self__, "template", template)
+            _setter("template", template)
         if timeout_clone is not None:
-            pulumi.set(__self__, "timeout_clone", timeout_clone)
+            _setter("timeout_clone", timeout_clone)
         if timeout_migrate is not None:
-            pulumi.set(__self__, "timeout_migrate", timeout_migrate)
+            _setter("timeout_migrate", timeout_migrate)
         if timeout_move_disk is not None:
-            pulumi.set(__self__, "timeout_move_disk", timeout_move_disk)
+            _setter("timeout_move_disk", timeout_move_disk)
         if timeout_reboot is not None:
-            pulumi.set(__self__, "timeout_reboot", timeout_reboot)
+            _setter("timeout_reboot", timeout_reboot)
         if timeout_shutdown_vm is not None:
-            pulumi.set(__self__, "timeout_shutdown_vm", timeout_shutdown_vm)
+            _setter("timeout_shutdown_vm", timeout_shutdown_vm)
         if timeout_start_vm is not None:
-            pulumi.set(__self__, "timeout_start_vm", timeout_start_vm)
+            _setter("timeout_start_vm", timeout_start_vm)
         if timeout_stop_vm is not None:
-            pulumi.set(__self__, "timeout_stop_vm", timeout_stop_vm)
+            _setter("timeout_stop_vm", timeout_stop_vm)
         if vga is not None:
-            pulumi.set(__self__, "vga", vga)
+            _setter("vga", vga)
         if vm_id is not None:
-            pulumi.set(__self__, "vm_id", vm_id)
+            _setter("vm_id", vm_id)
 
     @property
     @pulumi.getter(name="nodeName")
     def node_name(self) -> pulumi.Input[str]:
         """
-        The node name
+        The name of the node to assign the virtual machine
+        to.
         """
         return pulumi.get(self, "node_name")
 
@@ -203,7 +316,7 @@ class VirtualMachineArgs:
     @pulumi.getter
     def acpi(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable ACPI
+        Whether to enable ACPI (defaults to `true`).
         """
         return pulumi.get(self, "acpi")
 
@@ -215,7 +328,7 @@ class VirtualMachineArgs:
     @pulumi.getter
     def agent(self) -> Optional[pulumi.Input['VirtualMachineAgentArgs']]:
         """
-        The QEMU agent configuration
+        The QEMU agent configuration.
         """
         return pulumi.get(self, "agent")
 
@@ -227,7 +340,7 @@ class VirtualMachineArgs:
     @pulumi.getter(name="audioDevice")
     def audio_device(self) -> Optional[pulumi.Input['VirtualMachineAudioDeviceArgs']]:
         """
-        The audio devices
+        An audio device.
         """
         return pulumi.get(self, "audio_device")
 
@@ -239,7 +352,7 @@ class VirtualMachineArgs:
     @pulumi.getter
     def bios(self) -> Optional[pulumi.Input[str]]:
         """
-        The BIOS implementation
+        The BIOS implementation (defaults to `seabios`).
         """
         return pulumi.get(self, "bios")
 
@@ -251,7 +364,8 @@ class VirtualMachineArgs:
     @pulumi.getter(name="bootOrders")
     def boot_orders(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The guest will attempt to boot from devices in the order they appear here
+        Specify a list of devices to boot from in the order
+        they appear in the list (defaults to `[]`).
         """
         return pulumi.get(self, "boot_orders")
 
@@ -263,7 +377,7 @@ class VirtualMachineArgs:
     @pulumi.getter
     def cdrom(self) -> Optional[pulumi.Input['VirtualMachineCdromArgs']]:
         """
-        The CDROM drive
+        The CDROM configuration.
         """
         return pulumi.get(self, "cdrom")
 
@@ -275,7 +389,7 @@ class VirtualMachineArgs:
     @pulumi.getter
     def clone(self) -> Optional[pulumi.Input['VirtualMachineCloneArgs']]:
         """
-        The cloning configuration
+        The cloning configuration.
         """
         return pulumi.get(self, "clone")
 
@@ -287,7 +401,7 @@ class VirtualMachineArgs:
     @pulumi.getter
     def cpu(self) -> Optional[pulumi.Input['VirtualMachineCpuArgs']]:
         """
-        The CPU allocation
+        The CPU configuration.
         """
         return pulumi.get(self, "cpu")
 
@@ -299,7 +413,7 @@ class VirtualMachineArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description
+        The description.
         """
         return pulumi.get(self, "description")
 
@@ -311,7 +425,7 @@ class VirtualMachineArgs:
     @pulumi.getter
     def disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]]:
         """
-        The disk devices
+        A disk (multiple blocks supported).
         """
         return pulumi.get(self, "disks")
 
@@ -323,7 +437,8 @@ class VirtualMachineArgs:
     @pulumi.getter(name="efiDisk")
     def efi_disk(self) -> Optional[pulumi.Input['VirtualMachineEfiDiskArgs']]:
         """
-        The efidisk device
+        The efi disk device (required if `bios` is set
+        to `ovmf`)
         """
         return pulumi.get(self, "efi_disk")
 
@@ -335,7 +450,7 @@ class VirtualMachineArgs:
     @pulumi.getter
     def hostpcis(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]]]:
         """
-        The Host PCI devices mapped to the VM
+        A host PCI device mapping (multiple blocks supported).
         """
         return pulumi.get(self, "hostpcis")
 
@@ -347,7 +462,7 @@ class VirtualMachineArgs:
     @pulumi.getter
     def initialization(self) -> Optional[pulumi.Input['VirtualMachineInitializationArgs']]:
         """
-        The cloud-init configuration
+        The cloud-init configuration.
         """
         return pulumi.get(self, "initialization")
 
@@ -359,7 +474,7 @@ class VirtualMachineArgs:
     @pulumi.getter(name="keyboardLayout")
     def keyboard_layout(self) -> Optional[pulumi.Input[str]]:
         """
-        The keyboard layout
+        The keyboard layout (defaults to `en-us`).
         """
         return pulumi.get(self, "keyboard_layout")
 
@@ -371,7 +486,7 @@ class VirtualMachineArgs:
     @pulumi.getter(name="kvmArguments")
     def kvm_arguments(self) -> Optional[pulumi.Input[str]]:
         """
-        The args implementation
+        Arbitrary arguments passed to kvm.
         """
         return pulumi.get(self, "kvm_arguments")
 
@@ -383,7 +498,7 @@ class VirtualMachineArgs:
     @pulumi.getter
     def machine(self) -> Optional[pulumi.Input[str]]:
         """
-        The VM machine type, either default i440fx or q35
+        The VM machine type (defaults to `i440fx`).
         """
         return pulumi.get(self, "machine")
 
@@ -395,7 +510,7 @@ class VirtualMachineArgs:
     @pulumi.getter
     def memory(self) -> Optional[pulumi.Input['VirtualMachineMemoryArgs']]:
         """
-        The memory allocation
+        The VGA memory in megabytes (defaults to `16`).
         """
         return pulumi.get(self, "memory")
 
@@ -407,7 +522,8 @@ class VirtualMachineArgs:
     @pulumi.getter
     def migrate(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to migrate the VM on node change instead of re-creating it
+        Migrate the VM on node change instead of re-creating
+        it (defaults to `false`).
         """
         return pulumi.get(self, "migrate")
 
@@ -419,7 +535,7 @@ class VirtualMachineArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name
+        The virtual machine name.
         """
         return pulumi.get(self, "name")
 
@@ -431,7 +547,7 @@ class VirtualMachineArgs:
     @pulumi.getter(name="networkDevices")
     def network_devices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkDeviceArgs']]]]:
         """
-        The network devices
+        A network device (multiple blocks supported).
         """
         return pulumi.get(self, "network_devices")
 
@@ -443,7 +559,8 @@ class VirtualMachineArgs:
     @pulumi.getter(name="onBoot")
     def on_boot(self) -> Optional[pulumi.Input[bool]]:
         """
-        Start VM on Node boot
+        Specifies whether a VM will be started during system
+        boot. (defaults to `true`)
         """
         return pulumi.get(self, "on_boot")
 
@@ -455,7 +572,7 @@ class VirtualMachineArgs:
     @pulumi.getter(name="operatingSystem")
     def operating_system(self) -> Optional[pulumi.Input['VirtualMachineOperatingSystemArgs']]:
         """
-        The operating system configuration
+        The Operating System configuration.
         """
         return pulumi.get(self, "operating_system")
 
@@ -467,7 +584,8 @@ class VirtualMachineArgs:
     @pulumi.getter(name="poolId")
     def pool_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the pool to assign the virtual machine to
+        The identifier for a pool to assign the virtual machine
+        to.
         """
         return pulumi.get(self, "pool_id")
 
@@ -479,7 +597,8 @@ class VirtualMachineArgs:
     @pulumi.getter
     def reboot(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to reboot vm after creation
+        Reboot the VM after initial creation. (defaults
+        to `false`)
         """
         return pulumi.get(self, "reboot")
 
@@ -491,7 +610,8 @@ class VirtualMachineArgs:
     @pulumi.getter(name="scsiHardware")
     def scsi_hardware(self) -> Optional[pulumi.Input[str]]:
         """
-        The SCSI hardware type
+        The SCSI hardware type (defaults
+        to `virtio-scsi-pci`).
         """
         return pulumi.get(self, "scsi_hardware")
 
@@ -503,7 +623,7 @@ class VirtualMachineArgs:
     @pulumi.getter(name="serialDevices")
     def serial_devices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]]]:
         """
-        The serial devices
+        A serial device (multiple blocks supported).
         """
         return pulumi.get(self, "serial_devices")
 
@@ -515,7 +635,7 @@ class VirtualMachineArgs:
     @pulumi.getter
     def smbios(self) -> Optional[pulumi.Input['VirtualMachineSmbiosArgs']]:
         """
-        Specifies SMBIOS (type1) settings for the VM
+        The SMBIOS (type1) settings for the VM.
         """
         return pulumi.get(self, "smbios")
 
@@ -527,7 +647,8 @@ class VirtualMachineArgs:
     @pulumi.getter
     def started(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to start the virtual machine
+        Whether to start the virtual machine (defaults
+        to `true`).
         """
         return pulumi.get(self, "started")
 
@@ -539,7 +660,7 @@ class VirtualMachineArgs:
     @pulumi.getter
     def startup(self) -> Optional[pulumi.Input['VirtualMachineStartupArgs']]:
         """
-        Defines startup and shutdown behavior of the VM
+        Defines startup and shutdown behavior of the VM.
         """
         return pulumi.get(self, "startup")
 
@@ -551,7 +672,8 @@ class VirtualMachineArgs:
     @pulumi.getter(name="tabletDevice")
     def tablet_device(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable the USB tablet device
+        Whether to enable the USB tablet device (defaults
+        to `true`).
         """
         return pulumi.get(self, "tablet_device")
 
@@ -563,7 +685,11 @@ class VirtualMachineArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags of the virtual machine. This is only meta information.
+        A list of tags of the VM. This is only meta information (
+        defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
+        template is not sorted, then Proxmox will always report a difference on the
+        resource. You may use the `ignore_changes` lifecycle meta-argument to ignore
+        changes to this attribute.
         """
         return pulumi.get(self, "tags")
 
@@ -575,7 +701,7 @@ class VirtualMachineArgs:
     @pulumi.getter
     def template(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to create a template
+        Whether to create a template (defaults to `false`).
         """
         return pulumi.get(self, "template")
 
@@ -587,7 +713,8 @@ class VirtualMachineArgs:
     @pulumi.getter(name="timeoutClone")
     def timeout_clone(self) -> Optional[pulumi.Input[int]]:
         """
-        Clone VM timeout
+        Timeout for cloning a VM in seconds (defaults to
+        1800).
         """
         return pulumi.get(self, "timeout_clone")
 
@@ -599,7 +726,8 @@ class VirtualMachineArgs:
     @pulumi.getter(name="timeoutMigrate")
     def timeout_migrate(self) -> Optional[pulumi.Input[int]]:
         """
-        Migrate VM timeout
+        Timeout for migrating the VM (defaults to
+        1800).
         """
         return pulumi.get(self, "timeout_migrate")
 
@@ -611,7 +739,8 @@ class VirtualMachineArgs:
     @pulumi.getter(name="timeoutMoveDisk")
     def timeout_move_disk(self) -> Optional[pulumi.Input[int]]:
         """
-        MoveDisk timeout
+        Timeout for moving the disk of a VM in
+        seconds (defaults to 1800).
         """
         return pulumi.get(self, "timeout_move_disk")
 
@@ -623,7 +752,8 @@ class VirtualMachineArgs:
     @pulumi.getter(name="timeoutReboot")
     def timeout_reboot(self) -> Optional[pulumi.Input[int]]:
         """
-        Reboot timeout
+        Timeout for rebooting a VM in seconds (defaults
+        to 1800).
         """
         return pulumi.get(self, "timeout_reboot")
 
@@ -635,7 +765,8 @@ class VirtualMachineArgs:
     @pulumi.getter(name="timeoutShutdownVm")
     def timeout_shutdown_vm(self) -> Optional[pulumi.Input[int]]:
         """
-        Shutdown timeout
+        Timeout for shutting down a VM in seconds (
+        defaults to 1800).
         """
         return pulumi.get(self, "timeout_shutdown_vm")
 
@@ -647,7 +778,8 @@ class VirtualMachineArgs:
     @pulumi.getter(name="timeoutStartVm")
     def timeout_start_vm(self) -> Optional[pulumi.Input[int]]:
         """
-        Start VM timeout
+        Timeout for starting a VM in seconds (defaults
+        to 1800).
         """
         return pulumi.get(self, "timeout_start_vm")
 
@@ -659,7 +791,8 @@ class VirtualMachineArgs:
     @pulumi.getter(name="timeoutStopVm")
     def timeout_stop_vm(self) -> Optional[pulumi.Input[int]]:
         """
-        Stop VM timeout
+        Timeout for stopping a VM in seconds (defaults
+        to 300).
         """
         return pulumi.get(self, "timeout_stop_vm")
 
@@ -671,7 +804,7 @@ class VirtualMachineArgs:
     @pulumi.getter
     def vga(self) -> Optional[pulumi.Input['VirtualMachineVgaArgs']]:
         """
-        The VGA configuration
+        The VGA configuration.
         """
         return pulumi.get(self, "vga")
 
@@ -683,7 +816,7 @@ class VirtualMachineArgs:
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The VM identifier
+        The VM identifier.
         """
         return pulumi.get(self, "vm_id")
 
@@ -743,151 +876,275 @@ class _VirtualMachineState:
                  vm_id: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering VirtualMachine resources.
-        :param pulumi.Input[bool] acpi: Whether to enable ACPI
-        :param pulumi.Input['VirtualMachineAgentArgs'] agent: The QEMU agent configuration
-        :param pulumi.Input['VirtualMachineAudioDeviceArgs'] audio_device: The audio devices
-        :param pulumi.Input[str] bios: The BIOS implementation
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] boot_orders: The guest will attempt to boot from devices in the order they appear here
-        :param pulumi.Input['VirtualMachineCdromArgs'] cdrom: The CDROM drive
-        :param pulumi.Input['VirtualMachineCloneArgs'] clone: The cloning configuration
-        :param pulumi.Input['VirtualMachineCpuArgs'] cpu: The CPU allocation
-        :param pulumi.Input[str] description: The description
-        :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]] disks: The disk devices
-        :param pulumi.Input['VirtualMachineEfiDiskArgs'] efi_disk: The efidisk device
-        :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]] hostpcis: The Host PCI devices mapped to the VM
-        :param pulumi.Input['VirtualMachineInitializationArgs'] initialization: The cloud-init configuration
-        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]] ipv4_addresses: The IPv4 addresses published by the QEMU agent
-        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]] ipv6_addresses: The IPv6 addresses published by the QEMU agent
-        :param pulumi.Input[str] keyboard_layout: The keyboard layout
-        :param pulumi.Input[str] kvm_arguments: The args implementation
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] mac_addresses: The MAC addresses for the network interfaces
-        :param pulumi.Input[str] machine: The VM machine type, either default i440fx or q35
-        :param pulumi.Input['VirtualMachineMemoryArgs'] memory: The memory allocation
-        :param pulumi.Input[bool] migrate: Whether to migrate the VM on node change instead of re-creating it
-        :param pulumi.Input[str] name: The name
-        :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkDeviceArgs']]] network_devices: The network devices
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] network_interface_names: The network interface names published by the QEMU agent
-        :param pulumi.Input[str] node_name: The node name
-        :param pulumi.Input[bool] on_boot: Start VM on Node boot
-        :param pulumi.Input['VirtualMachineOperatingSystemArgs'] operating_system: The operating system configuration
-        :param pulumi.Input[str] pool_id: The ID of the pool to assign the virtual machine to
-        :param pulumi.Input[bool] reboot: Whether to reboot vm after creation
-        :param pulumi.Input[str] scsi_hardware: The SCSI hardware type
-        :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]] serial_devices: The serial devices
-        :param pulumi.Input['VirtualMachineSmbiosArgs'] smbios: Specifies SMBIOS (type1) settings for the VM
-        :param pulumi.Input[bool] started: Whether to start the virtual machine
-        :param pulumi.Input['VirtualMachineStartupArgs'] startup: Defines startup and shutdown behavior of the VM
-        :param pulumi.Input[bool] tablet_device: Whether to enable the USB tablet device
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the virtual machine. This is only meta information.
-        :param pulumi.Input[bool] template: Whether to create a template
-        :param pulumi.Input[int] timeout_clone: Clone VM timeout
-        :param pulumi.Input[int] timeout_migrate: Migrate VM timeout
-        :param pulumi.Input[int] timeout_move_disk: MoveDisk timeout
-        :param pulumi.Input[int] timeout_reboot: Reboot timeout
-        :param pulumi.Input[int] timeout_shutdown_vm: Shutdown timeout
-        :param pulumi.Input[int] timeout_start_vm: Start VM timeout
-        :param pulumi.Input[int] timeout_stop_vm: Stop VM timeout
-        :param pulumi.Input['VirtualMachineVgaArgs'] vga: The VGA configuration
-        :param pulumi.Input[int] vm_id: The VM identifier
+        :param pulumi.Input[bool] acpi: Whether to enable ACPI (defaults to `true`).
+        :param pulumi.Input['VirtualMachineAgentArgs'] agent: The QEMU agent configuration.
+        :param pulumi.Input['VirtualMachineAudioDeviceArgs'] audio_device: An audio device.
+        :param pulumi.Input[str] bios: The BIOS implementation (defaults to `seabios`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] boot_orders: Specify a list of devices to boot from in the order
+               they appear in the list (defaults to `[]`).
+        :param pulumi.Input['VirtualMachineCdromArgs'] cdrom: The CDROM configuration.
+        :param pulumi.Input['VirtualMachineCloneArgs'] clone: The cloning configuration.
+        :param pulumi.Input['VirtualMachineCpuArgs'] cpu: The CPU configuration.
+        :param pulumi.Input[str] description: The description.
+        :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]] disks: A disk (multiple blocks supported).
+        :param pulumi.Input['VirtualMachineEfiDiskArgs'] efi_disk: The efi disk device (required if `bios` is set
+               to `ovmf`)
+        :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]] hostpcis: A host PCI device mapping (multiple blocks supported).
+        :param pulumi.Input['VirtualMachineInitializationArgs'] initialization: The cloud-init configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]] ipv4_addresses: The IPv4 addresses per network interface published by the
+               QEMU agent (empty list when `agent.enabled` is `false`)
+        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]] ipv6_addresses: The IPv6 addresses per network interface published by the
+               QEMU agent (empty list when `agent.enabled` is `false`)
+        :param pulumi.Input[str] keyboard_layout: The keyboard layout (defaults to `en-us`).
+        :param pulumi.Input[str] kvm_arguments: Arbitrary arguments passed to kvm.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] mac_addresses: The MAC addresses published by the QEMU agent with fallback
+               to the network device configuration, if the agent is disabled
+        :param pulumi.Input[str] machine: The VM machine type (defaults to `i440fx`).
+        :param pulumi.Input['VirtualMachineMemoryArgs'] memory: The VGA memory in megabytes (defaults to `16`).
+        :param pulumi.Input[bool] migrate: Migrate the VM on node change instead of re-creating
+               it (defaults to `false`).
+        :param pulumi.Input[str] name: The virtual machine name.
+        :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkDeviceArgs']]] network_devices: A network device (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] network_interface_names: The network interface names published by the QEMU
+               agent (empty list when `agent.enabled` is `false`)
+        :param pulumi.Input[str] node_name: The name of the node to assign the virtual machine
+               to.
+        :param pulumi.Input[bool] on_boot: Specifies whether a VM will be started during system
+               boot. (defaults to `true`)
+        :param pulumi.Input['VirtualMachineOperatingSystemArgs'] operating_system: The Operating System configuration.
+        :param pulumi.Input[str] pool_id: The identifier for a pool to assign the virtual machine
+               to.
+        :param pulumi.Input[bool] reboot: Reboot the VM after initial creation. (defaults
+               to `false`)
+        :param pulumi.Input[str] scsi_hardware: The SCSI hardware type (defaults
+               to `virtio-scsi-pci`).
+        :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]] serial_devices: A serial device (multiple blocks supported).
+        :param pulumi.Input['VirtualMachineSmbiosArgs'] smbios: The SMBIOS (type1) settings for the VM.
+        :param pulumi.Input[bool] started: Whether to start the virtual machine (defaults
+               to `true`).
+        :param pulumi.Input['VirtualMachineStartupArgs'] startup: Defines startup and shutdown behavior of the VM.
+        :param pulumi.Input[bool] tablet_device: Whether to enable the USB tablet device (defaults
+               to `true`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags of the VM. This is only meta information (
+               defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
+               template is not sorted, then Proxmox will always report a difference on the
+               resource. You may use the `ignore_changes` lifecycle meta-argument to ignore
+               changes to this attribute.
+        :param pulumi.Input[bool] template: Whether to create a template (defaults to `false`).
+        :param pulumi.Input[int] timeout_clone: Timeout for cloning a VM in seconds (defaults to
+               1800).
+        :param pulumi.Input[int] timeout_migrate: Timeout for migrating the VM (defaults to
+               1800).
+        :param pulumi.Input[int] timeout_move_disk: Timeout for moving the disk of a VM in
+               seconds (defaults to 1800).
+        :param pulumi.Input[int] timeout_reboot: Timeout for rebooting a VM in seconds (defaults
+               to 1800).
+        :param pulumi.Input[int] timeout_shutdown_vm: Timeout for shutting down a VM in seconds (
+               defaults to 1800).
+        :param pulumi.Input[int] timeout_start_vm: Timeout for starting a VM in seconds (defaults
+               to 1800).
+        :param pulumi.Input[int] timeout_stop_vm: Timeout for stopping a VM in seconds (defaults
+               to 300).
+        :param pulumi.Input['VirtualMachineVgaArgs'] vga: The VGA configuration.
+        :param pulumi.Input[int] vm_id: The VM identifier.
         """
+        _VirtualMachineState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acpi=acpi,
+            agent=agent,
+            audio_device=audio_device,
+            bios=bios,
+            boot_orders=boot_orders,
+            cdrom=cdrom,
+            clone=clone,
+            cpu=cpu,
+            description=description,
+            disks=disks,
+            efi_disk=efi_disk,
+            hostpcis=hostpcis,
+            initialization=initialization,
+            ipv4_addresses=ipv4_addresses,
+            ipv6_addresses=ipv6_addresses,
+            keyboard_layout=keyboard_layout,
+            kvm_arguments=kvm_arguments,
+            mac_addresses=mac_addresses,
+            machine=machine,
+            memory=memory,
+            migrate=migrate,
+            name=name,
+            network_devices=network_devices,
+            network_interface_names=network_interface_names,
+            node_name=node_name,
+            on_boot=on_boot,
+            operating_system=operating_system,
+            pool_id=pool_id,
+            reboot=reboot,
+            scsi_hardware=scsi_hardware,
+            serial_devices=serial_devices,
+            smbios=smbios,
+            started=started,
+            startup=startup,
+            tablet_device=tablet_device,
+            tags=tags,
+            template=template,
+            timeout_clone=timeout_clone,
+            timeout_migrate=timeout_migrate,
+            timeout_move_disk=timeout_move_disk,
+            timeout_reboot=timeout_reboot,
+            timeout_shutdown_vm=timeout_shutdown_vm,
+            timeout_start_vm=timeout_start_vm,
+            timeout_stop_vm=timeout_stop_vm,
+            vga=vga,
+            vm_id=vm_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acpi: Optional[pulumi.Input[bool]] = None,
+             agent: Optional[pulumi.Input['VirtualMachineAgentArgs']] = None,
+             audio_device: Optional[pulumi.Input['VirtualMachineAudioDeviceArgs']] = None,
+             bios: Optional[pulumi.Input[str]] = None,
+             boot_orders: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             cdrom: Optional[pulumi.Input['VirtualMachineCdromArgs']] = None,
+             clone: Optional[pulumi.Input['VirtualMachineCloneArgs']] = None,
+             cpu: Optional[pulumi.Input['VirtualMachineCpuArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disks: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]] = None,
+             efi_disk: Optional[pulumi.Input['VirtualMachineEfiDiskArgs']] = None,
+             hostpcis: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]]] = None,
+             initialization: Optional[pulumi.Input['VirtualMachineInitializationArgs']] = None,
+             ipv4_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]]] = None,
+             ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]]] = None,
+             keyboard_layout: Optional[pulumi.Input[str]] = None,
+             kvm_arguments: Optional[pulumi.Input[str]] = None,
+             mac_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             machine: Optional[pulumi.Input[str]] = None,
+             memory: Optional[pulumi.Input['VirtualMachineMemoryArgs']] = None,
+             migrate: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network_devices: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkDeviceArgs']]]] = None,
+             network_interface_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             node_name: Optional[pulumi.Input[str]] = None,
+             on_boot: Optional[pulumi.Input[bool]] = None,
+             operating_system: Optional[pulumi.Input['VirtualMachineOperatingSystemArgs']] = None,
+             pool_id: Optional[pulumi.Input[str]] = None,
+             reboot: Optional[pulumi.Input[bool]] = None,
+             scsi_hardware: Optional[pulumi.Input[str]] = None,
+             serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]]] = None,
+             smbios: Optional[pulumi.Input['VirtualMachineSmbiosArgs']] = None,
+             started: Optional[pulumi.Input[bool]] = None,
+             startup: Optional[pulumi.Input['VirtualMachineStartupArgs']] = None,
+             tablet_device: Optional[pulumi.Input[bool]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             template: Optional[pulumi.Input[bool]] = None,
+             timeout_clone: Optional[pulumi.Input[int]] = None,
+             timeout_migrate: Optional[pulumi.Input[int]] = None,
+             timeout_move_disk: Optional[pulumi.Input[int]] = None,
+             timeout_reboot: Optional[pulumi.Input[int]] = None,
+             timeout_shutdown_vm: Optional[pulumi.Input[int]] = None,
+             timeout_start_vm: Optional[pulumi.Input[int]] = None,
+             timeout_stop_vm: Optional[pulumi.Input[int]] = None,
+             vga: Optional[pulumi.Input['VirtualMachineVgaArgs']] = None,
+             vm_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if acpi is not None:
-            pulumi.set(__self__, "acpi", acpi)
+            _setter("acpi", acpi)
         if agent is not None:
-            pulumi.set(__self__, "agent", agent)
+            _setter("agent", agent)
         if audio_device is not None:
-            pulumi.set(__self__, "audio_device", audio_device)
+            _setter("audio_device", audio_device)
         if bios is not None:
-            pulumi.set(__self__, "bios", bios)
+            _setter("bios", bios)
         if boot_orders is not None:
-            pulumi.set(__self__, "boot_orders", boot_orders)
+            _setter("boot_orders", boot_orders)
         if cdrom is not None:
-            pulumi.set(__self__, "cdrom", cdrom)
+            _setter("cdrom", cdrom)
         if clone is not None:
-            pulumi.set(__self__, "clone", clone)
+            _setter("clone", clone)
         if cpu is not None:
-            pulumi.set(__self__, "cpu", cpu)
+            _setter("cpu", cpu)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disks is not None:
-            pulumi.set(__self__, "disks", disks)
+            _setter("disks", disks)
         if efi_disk is not None:
-            pulumi.set(__self__, "efi_disk", efi_disk)
+            _setter("efi_disk", efi_disk)
         if hostpcis is not None:
-            pulumi.set(__self__, "hostpcis", hostpcis)
+            _setter("hostpcis", hostpcis)
         if initialization is not None:
-            pulumi.set(__self__, "initialization", initialization)
+            _setter("initialization", initialization)
         if ipv4_addresses is not None:
-            pulumi.set(__self__, "ipv4_addresses", ipv4_addresses)
+            _setter("ipv4_addresses", ipv4_addresses)
         if ipv6_addresses is not None:
-            pulumi.set(__self__, "ipv6_addresses", ipv6_addresses)
+            _setter("ipv6_addresses", ipv6_addresses)
         if keyboard_layout is not None:
-            pulumi.set(__self__, "keyboard_layout", keyboard_layout)
+            _setter("keyboard_layout", keyboard_layout)
         if kvm_arguments is not None:
-            pulumi.set(__self__, "kvm_arguments", kvm_arguments)
+            _setter("kvm_arguments", kvm_arguments)
         if mac_addresses is not None:
-            pulumi.set(__self__, "mac_addresses", mac_addresses)
+            _setter("mac_addresses", mac_addresses)
         if machine is not None:
-            pulumi.set(__self__, "machine", machine)
+            _setter("machine", machine)
         if memory is not None:
-            pulumi.set(__self__, "memory", memory)
+            _setter("memory", memory)
         if migrate is not None:
-            pulumi.set(__self__, "migrate", migrate)
+            _setter("migrate", migrate)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network_devices is not None:
-            pulumi.set(__self__, "network_devices", network_devices)
+            _setter("network_devices", network_devices)
         if network_interface_names is not None:
-            pulumi.set(__self__, "network_interface_names", network_interface_names)
+            _setter("network_interface_names", network_interface_names)
         if node_name is not None:
-            pulumi.set(__self__, "node_name", node_name)
+            _setter("node_name", node_name)
         if on_boot is not None:
-            pulumi.set(__self__, "on_boot", on_boot)
+            _setter("on_boot", on_boot)
         if operating_system is not None:
-            pulumi.set(__self__, "operating_system", operating_system)
+            _setter("operating_system", operating_system)
         if pool_id is not None:
-            pulumi.set(__self__, "pool_id", pool_id)
+            _setter("pool_id", pool_id)
         if reboot is not None:
-            pulumi.set(__self__, "reboot", reboot)
+            _setter("reboot", reboot)
         if scsi_hardware is not None:
-            pulumi.set(__self__, "scsi_hardware", scsi_hardware)
+            _setter("scsi_hardware", scsi_hardware)
         if serial_devices is not None:
-            pulumi.set(__self__, "serial_devices", serial_devices)
+            _setter("serial_devices", serial_devices)
         if smbios is not None:
-            pulumi.set(__self__, "smbios", smbios)
+            _setter("smbios", smbios)
         if started is not None:
-            pulumi.set(__self__, "started", started)
+            _setter("started", started)
         if startup is not None:
-            pulumi.set(__self__, "startup", startup)
+            _setter("startup", startup)
         if tablet_device is not None:
-            pulumi.set(__self__, "tablet_device", tablet_device)
+            _setter("tablet_device", tablet_device)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if template is not None:
-            pulumi.set(__self__, "template", template)
+            _setter("template", template)
         if timeout_clone is not None:
-            pulumi.set(__self__, "timeout_clone", timeout_clone)
+            _setter("timeout_clone", timeout_clone)
         if timeout_migrate is not None:
-            pulumi.set(__self__, "timeout_migrate", timeout_migrate)
+            _setter("timeout_migrate", timeout_migrate)
         if timeout_move_disk is not None:
-            pulumi.set(__self__, "timeout_move_disk", timeout_move_disk)
+            _setter("timeout_move_disk", timeout_move_disk)
         if timeout_reboot is not None:
-            pulumi.set(__self__, "timeout_reboot", timeout_reboot)
+            _setter("timeout_reboot", timeout_reboot)
         if timeout_shutdown_vm is not None:
-            pulumi.set(__self__, "timeout_shutdown_vm", timeout_shutdown_vm)
+            _setter("timeout_shutdown_vm", timeout_shutdown_vm)
         if timeout_start_vm is not None:
-            pulumi.set(__self__, "timeout_start_vm", timeout_start_vm)
+            _setter("timeout_start_vm", timeout_start_vm)
         if timeout_stop_vm is not None:
-            pulumi.set(__self__, "timeout_stop_vm", timeout_stop_vm)
+            _setter("timeout_stop_vm", timeout_stop_vm)
         if vga is not None:
-            pulumi.set(__self__, "vga", vga)
+            _setter("vga", vga)
         if vm_id is not None:
-            pulumi.set(__self__, "vm_id", vm_id)
+            _setter("vm_id", vm_id)
 
     @property
     @pulumi.getter
     def acpi(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable ACPI
+        Whether to enable ACPI (defaults to `true`).
         """
         return pulumi.get(self, "acpi")
 
@@ -899,7 +1156,7 @@ class _VirtualMachineState:
     @pulumi.getter
     def agent(self) -> Optional[pulumi.Input['VirtualMachineAgentArgs']]:
         """
-        The QEMU agent configuration
+        The QEMU agent configuration.
         """
         return pulumi.get(self, "agent")
 
@@ -911,7 +1168,7 @@ class _VirtualMachineState:
     @pulumi.getter(name="audioDevice")
     def audio_device(self) -> Optional[pulumi.Input['VirtualMachineAudioDeviceArgs']]:
         """
-        The audio devices
+        An audio device.
         """
         return pulumi.get(self, "audio_device")
 
@@ -923,7 +1180,7 @@ class _VirtualMachineState:
     @pulumi.getter
     def bios(self) -> Optional[pulumi.Input[str]]:
         """
-        The BIOS implementation
+        The BIOS implementation (defaults to `seabios`).
         """
         return pulumi.get(self, "bios")
 
@@ -935,7 +1192,8 @@ class _VirtualMachineState:
     @pulumi.getter(name="bootOrders")
     def boot_orders(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The guest will attempt to boot from devices in the order they appear here
+        Specify a list of devices to boot from in the order
+        they appear in the list (defaults to `[]`).
         """
         return pulumi.get(self, "boot_orders")
 
@@ -947,7 +1205,7 @@ class _VirtualMachineState:
     @pulumi.getter
     def cdrom(self) -> Optional[pulumi.Input['VirtualMachineCdromArgs']]:
         """
-        The CDROM drive
+        The CDROM configuration.
         """
         return pulumi.get(self, "cdrom")
 
@@ -959,7 +1217,7 @@ class _VirtualMachineState:
     @pulumi.getter
     def clone(self) -> Optional[pulumi.Input['VirtualMachineCloneArgs']]:
         """
-        The cloning configuration
+        The cloning configuration.
         """
         return pulumi.get(self, "clone")
 
@@ -971,7 +1229,7 @@ class _VirtualMachineState:
     @pulumi.getter
     def cpu(self) -> Optional[pulumi.Input['VirtualMachineCpuArgs']]:
         """
-        The CPU allocation
+        The CPU configuration.
         """
         return pulumi.get(self, "cpu")
 
@@ -983,7 +1241,7 @@ class _VirtualMachineState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description
+        The description.
         """
         return pulumi.get(self, "description")
 
@@ -995,7 +1253,7 @@ class _VirtualMachineState:
     @pulumi.getter
     def disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]]:
         """
-        The disk devices
+        A disk (multiple blocks supported).
         """
         return pulumi.get(self, "disks")
 
@@ -1007,7 +1265,8 @@ class _VirtualMachineState:
     @pulumi.getter(name="efiDisk")
     def efi_disk(self) -> Optional[pulumi.Input['VirtualMachineEfiDiskArgs']]:
         """
-        The efidisk device
+        The efi disk device (required if `bios` is set
+        to `ovmf`)
         """
         return pulumi.get(self, "efi_disk")
 
@@ -1019,7 +1278,7 @@ class _VirtualMachineState:
     @pulumi.getter
     def hostpcis(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]]]:
         """
-        The Host PCI devices mapped to the VM
+        A host PCI device mapping (multiple blocks supported).
         """
         return pulumi.get(self, "hostpcis")
 
@@ -1031,7 +1290,7 @@ class _VirtualMachineState:
     @pulumi.getter
     def initialization(self) -> Optional[pulumi.Input['VirtualMachineInitializationArgs']]:
         """
-        The cloud-init configuration
+        The cloud-init configuration.
         """
         return pulumi.get(self, "initialization")
 
@@ -1043,7 +1302,8 @@ class _VirtualMachineState:
     @pulumi.getter(name="ipv4Addresses")
     def ipv4_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]]]:
         """
-        The IPv4 addresses published by the QEMU agent
+        The IPv4 addresses per network interface published by the
+        QEMU agent (empty list when `agent.enabled` is `false`)
         """
         return pulumi.get(self, "ipv4_addresses")
 
@@ -1055,7 +1315,8 @@ class _VirtualMachineState:
     @pulumi.getter(name="ipv6Addresses")
     def ipv6_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]]]:
         """
-        The IPv6 addresses published by the QEMU agent
+        The IPv6 addresses per network interface published by the
+        QEMU agent (empty list when `agent.enabled` is `false`)
         """
         return pulumi.get(self, "ipv6_addresses")
 
@@ -1067,7 +1328,7 @@ class _VirtualMachineState:
     @pulumi.getter(name="keyboardLayout")
     def keyboard_layout(self) -> Optional[pulumi.Input[str]]:
         """
-        The keyboard layout
+        The keyboard layout (defaults to `en-us`).
         """
         return pulumi.get(self, "keyboard_layout")
 
@@ -1079,7 +1340,7 @@ class _VirtualMachineState:
     @pulumi.getter(name="kvmArguments")
     def kvm_arguments(self) -> Optional[pulumi.Input[str]]:
         """
-        The args implementation
+        Arbitrary arguments passed to kvm.
         """
         return pulumi.get(self, "kvm_arguments")
 
@@ -1091,7 +1352,8 @@ class _VirtualMachineState:
     @pulumi.getter(name="macAddresses")
     def mac_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The MAC addresses for the network interfaces
+        The MAC addresses published by the QEMU agent with fallback
+        to the network device configuration, if the agent is disabled
         """
         return pulumi.get(self, "mac_addresses")
 
@@ -1103,7 +1365,7 @@ class _VirtualMachineState:
     @pulumi.getter
     def machine(self) -> Optional[pulumi.Input[str]]:
         """
-        The VM machine type, either default i440fx or q35
+        The VM machine type (defaults to `i440fx`).
         """
         return pulumi.get(self, "machine")
 
@@ -1115,7 +1377,7 @@ class _VirtualMachineState:
     @pulumi.getter
     def memory(self) -> Optional[pulumi.Input['VirtualMachineMemoryArgs']]:
         """
-        The memory allocation
+        The VGA memory in megabytes (defaults to `16`).
         """
         return pulumi.get(self, "memory")
 
@@ -1127,7 +1389,8 @@ class _VirtualMachineState:
     @pulumi.getter
     def migrate(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to migrate the VM on node change instead of re-creating it
+        Migrate the VM on node change instead of re-creating
+        it (defaults to `false`).
         """
         return pulumi.get(self, "migrate")
 
@@ -1139,7 +1402,7 @@ class _VirtualMachineState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name
+        The virtual machine name.
         """
         return pulumi.get(self, "name")
 
@@ -1151,7 +1414,7 @@ class _VirtualMachineState:
     @pulumi.getter(name="networkDevices")
     def network_devices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkDeviceArgs']]]]:
         """
-        The network devices
+        A network device (multiple blocks supported).
         """
         return pulumi.get(self, "network_devices")
 
@@ -1163,7 +1426,8 @@ class _VirtualMachineState:
     @pulumi.getter(name="networkInterfaceNames")
     def network_interface_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The network interface names published by the QEMU agent
+        The network interface names published by the QEMU
+        agent (empty list when `agent.enabled` is `false`)
         """
         return pulumi.get(self, "network_interface_names")
 
@@ -1175,7 +1439,8 @@ class _VirtualMachineState:
     @pulumi.getter(name="nodeName")
     def node_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The node name
+        The name of the node to assign the virtual machine
+        to.
         """
         return pulumi.get(self, "node_name")
 
@@ -1187,7 +1452,8 @@ class _VirtualMachineState:
     @pulumi.getter(name="onBoot")
     def on_boot(self) -> Optional[pulumi.Input[bool]]:
         """
-        Start VM on Node boot
+        Specifies whether a VM will be started during system
+        boot. (defaults to `true`)
         """
         return pulumi.get(self, "on_boot")
 
@@ -1199,7 +1465,7 @@ class _VirtualMachineState:
     @pulumi.getter(name="operatingSystem")
     def operating_system(self) -> Optional[pulumi.Input['VirtualMachineOperatingSystemArgs']]:
         """
-        The operating system configuration
+        The Operating System configuration.
         """
         return pulumi.get(self, "operating_system")
 
@@ -1211,7 +1477,8 @@ class _VirtualMachineState:
     @pulumi.getter(name="poolId")
     def pool_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the pool to assign the virtual machine to
+        The identifier for a pool to assign the virtual machine
+        to.
         """
         return pulumi.get(self, "pool_id")
 
@@ -1223,7 +1490,8 @@ class _VirtualMachineState:
     @pulumi.getter
     def reboot(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to reboot vm after creation
+        Reboot the VM after initial creation. (defaults
+        to `false`)
         """
         return pulumi.get(self, "reboot")
 
@@ -1235,7 +1503,8 @@ class _VirtualMachineState:
     @pulumi.getter(name="scsiHardware")
     def scsi_hardware(self) -> Optional[pulumi.Input[str]]:
         """
-        The SCSI hardware type
+        The SCSI hardware type (defaults
+        to `virtio-scsi-pci`).
         """
         return pulumi.get(self, "scsi_hardware")
 
@@ -1247,7 +1516,7 @@ class _VirtualMachineState:
     @pulumi.getter(name="serialDevices")
     def serial_devices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]]]:
         """
-        The serial devices
+        A serial device (multiple blocks supported).
         """
         return pulumi.get(self, "serial_devices")
 
@@ -1259,7 +1528,7 @@ class _VirtualMachineState:
     @pulumi.getter
     def smbios(self) -> Optional[pulumi.Input['VirtualMachineSmbiosArgs']]:
         """
-        Specifies SMBIOS (type1) settings for the VM
+        The SMBIOS (type1) settings for the VM.
         """
         return pulumi.get(self, "smbios")
 
@@ -1271,7 +1540,8 @@ class _VirtualMachineState:
     @pulumi.getter
     def started(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to start the virtual machine
+        Whether to start the virtual machine (defaults
+        to `true`).
         """
         return pulumi.get(self, "started")
 
@@ -1283,7 +1553,7 @@ class _VirtualMachineState:
     @pulumi.getter
     def startup(self) -> Optional[pulumi.Input['VirtualMachineStartupArgs']]:
         """
-        Defines startup and shutdown behavior of the VM
+        Defines startup and shutdown behavior of the VM.
         """
         return pulumi.get(self, "startup")
 
@@ -1295,7 +1565,8 @@ class _VirtualMachineState:
     @pulumi.getter(name="tabletDevice")
     def tablet_device(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable the USB tablet device
+        Whether to enable the USB tablet device (defaults
+        to `true`).
         """
         return pulumi.get(self, "tablet_device")
 
@@ -1307,7 +1578,11 @@ class _VirtualMachineState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags of the virtual machine. This is only meta information.
+        A list of tags of the VM. This is only meta information (
+        defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
+        template is not sorted, then Proxmox will always report a difference on the
+        resource. You may use the `ignore_changes` lifecycle meta-argument to ignore
+        changes to this attribute.
         """
         return pulumi.get(self, "tags")
 
@@ -1319,7 +1594,7 @@ class _VirtualMachineState:
     @pulumi.getter
     def template(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to create a template
+        Whether to create a template (defaults to `false`).
         """
         return pulumi.get(self, "template")
 
@@ -1331,7 +1606,8 @@ class _VirtualMachineState:
     @pulumi.getter(name="timeoutClone")
     def timeout_clone(self) -> Optional[pulumi.Input[int]]:
         """
-        Clone VM timeout
+        Timeout for cloning a VM in seconds (defaults to
+        1800).
         """
         return pulumi.get(self, "timeout_clone")
 
@@ -1343,7 +1619,8 @@ class _VirtualMachineState:
     @pulumi.getter(name="timeoutMigrate")
     def timeout_migrate(self) -> Optional[pulumi.Input[int]]:
         """
-        Migrate VM timeout
+        Timeout for migrating the VM (defaults to
+        1800).
         """
         return pulumi.get(self, "timeout_migrate")
 
@@ -1355,7 +1632,8 @@ class _VirtualMachineState:
     @pulumi.getter(name="timeoutMoveDisk")
     def timeout_move_disk(self) -> Optional[pulumi.Input[int]]:
         """
-        MoveDisk timeout
+        Timeout for moving the disk of a VM in
+        seconds (defaults to 1800).
         """
         return pulumi.get(self, "timeout_move_disk")
 
@@ -1367,7 +1645,8 @@ class _VirtualMachineState:
     @pulumi.getter(name="timeoutReboot")
     def timeout_reboot(self) -> Optional[pulumi.Input[int]]:
         """
-        Reboot timeout
+        Timeout for rebooting a VM in seconds (defaults
+        to 1800).
         """
         return pulumi.get(self, "timeout_reboot")
 
@@ -1379,7 +1658,8 @@ class _VirtualMachineState:
     @pulumi.getter(name="timeoutShutdownVm")
     def timeout_shutdown_vm(self) -> Optional[pulumi.Input[int]]:
         """
-        Shutdown timeout
+        Timeout for shutting down a VM in seconds (
+        defaults to 1800).
         """
         return pulumi.get(self, "timeout_shutdown_vm")
 
@@ -1391,7 +1671,8 @@ class _VirtualMachineState:
     @pulumi.getter(name="timeoutStartVm")
     def timeout_start_vm(self) -> Optional[pulumi.Input[int]]:
         """
-        Start VM timeout
+        Timeout for starting a VM in seconds (defaults
+        to 1800).
         """
         return pulumi.get(self, "timeout_start_vm")
 
@@ -1403,7 +1684,8 @@ class _VirtualMachineState:
     @pulumi.getter(name="timeoutStopVm")
     def timeout_stop_vm(self) -> Optional[pulumi.Input[int]]:
         """
-        Stop VM timeout
+        Timeout for stopping a VM in seconds (defaults
+        to 300).
         """
         return pulumi.get(self, "timeout_stop_vm")
 
@@ -1415,7 +1697,7 @@ class _VirtualMachineState:
     @pulumi.getter
     def vga(self) -> Optional[pulumi.Input['VirtualMachineVgaArgs']]:
         """
-        The VGA configuration
+        The VGA configuration.
         """
         return pulumi.get(self, "vga")
 
@@ -1427,7 +1709,7 @@ class _VirtualMachineState:
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The VM identifier
+        The VM identifier.
         """
         return pulumi.get(self, "vm_id")
 
@@ -1485,51 +1767,103 @@ class VirtualMachine(pulumi.CustomResource):
                  vm_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Create a VirtualMachine resource with the given unique name, props, and options.
+        Manages a virtual machine.
+
+        ## Important Notes
+
+        When cloning an existing virtual machine, whether it's a template or not, the
+        resource will only detect changes to the arguments which are not set to their
+        default values.
+
+        Furthermore, when cloning from one node to a different one, the behavior changes
+        depening on the datastores of the source VM. If at least one non-shared
+        datastore is used, the VM is first cloned to the source node before being
+        migrated to the target node. This circumvents a limitation in the Proxmox clone
+        API.
+
+        **Note:** Because the migration step after the clone tries to preserve the used
+        datastores by their name, it may fail if a datastore used in the source VM is
+        not available on the target node (e.g. `local-lvm` is used on the source node in
+        the VM but no `local-lvm` datastore is available on the target node). In this
+        case, it is recommended to set the `datastore_id` argument in the `clone` block
+        to force the migration step to migrate all disks to a specific datastore on the
+        target node. If you need certain disks to be on specific datastores, set
+        the `datastore_id` argument of the disks in the `disks` block to move the disks
+        to the correct datastore after the cloning and migrating succeeded.
+
+        ## Import
+
+        Instances can be imported using the `node_name` and the `vm_id`, e.g., bash
+
+        ```sh
+         $ pulumi import proxmoxve:VM/virtualMachine:VirtualMachine ubuntu_vm first-node/4321
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] acpi: Whether to enable ACPI
-        :param pulumi.Input[pulumi.InputType['VirtualMachineAgentArgs']] agent: The QEMU agent configuration
-        :param pulumi.Input[pulumi.InputType['VirtualMachineAudioDeviceArgs']] audio_device: The audio devices
-        :param pulumi.Input[str] bios: The BIOS implementation
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] boot_orders: The guest will attempt to boot from devices in the order they appear here
-        :param pulumi.Input[pulumi.InputType['VirtualMachineCdromArgs']] cdrom: The CDROM drive
-        :param pulumi.Input[pulumi.InputType['VirtualMachineCloneArgs']] clone: The cloning configuration
-        :param pulumi.Input[pulumi.InputType['VirtualMachineCpuArgs']] cpu: The CPU allocation
-        :param pulumi.Input[str] description: The description
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]] disks: The disk devices
-        :param pulumi.Input[pulumi.InputType['VirtualMachineEfiDiskArgs']] efi_disk: The efidisk device
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineHostpciArgs']]]] hostpcis: The Host PCI devices mapped to the VM
-        :param pulumi.Input[pulumi.InputType['VirtualMachineInitializationArgs']] initialization: The cloud-init configuration
-        :param pulumi.Input[str] keyboard_layout: The keyboard layout
-        :param pulumi.Input[str] kvm_arguments: The args implementation
-        :param pulumi.Input[str] machine: The VM machine type, either default i440fx or q35
-        :param pulumi.Input[pulumi.InputType['VirtualMachineMemoryArgs']] memory: The memory allocation
-        :param pulumi.Input[bool] migrate: Whether to migrate the VM on node change instead of re-creating it
-        :param pulumi.Input[str] name: The name
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNetworkDeviceArgs']]]] network_devices: The network devices
-        :param pulumi.Input[str] node_name: The node name
-        :param pulumi.Input[bool] on_boot: Start VM on Node boot
-        :param pulumi.Input[pulumi.InputType['VirtualMachineOperatingSystemArgs']] operating_system: The operating system configuration
-        :param pulumi.Input[str] pool_id: The ID of the pool to assign the virtual machine to
-        :param pulumi.Input[bool] reboot: Whether to reboot vm after creation
-        :param pulumi.Input[str] scsi_hardware: The SCSI hardware type
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]] serial_devices: The serial devices
-        :param pulumi.Input[pulumi.InputType['VirtualMachineSmbiosArgs']] smbios: Specifies SMBIOS (type1) settings for the VM
-        :param pulumi.Input[bool] started: Whether to start the virtual machine
-        :param pulumi.Input[pulumi.InputType['VirtualMachineStartupArgs']] startup: Defines startup and shutdown behavior of the VM
-        :param pulumi.Input[bool] tablet_device: Whether to enable the USB tablet device
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the virtual machine. This is only meta information.
-        :param pulumi.Input[bool] template: Whether to create a template
-        :param pulumi.Input[int] timeout_clone: Clone VM timeout
-        :param pulumi.Input[int] timeout_migrate: Migrate VM timeout
-        :param pulumi.Input[int] timeout_move_disk: MoveDisk timeout
-        :param pulumi.Input[int] timeout_reboot: Reboot timeout
-        :param pulumi.Input[int] timeout_shutdown_vm: Shutdown timeout
-        :param pulumi.Input[int] timeout_start_vm: Start VM timeout
-        :param pulumi.Input[int] timeout_stop_vm: Stop VM timeout
-        :param pulumi.Input[pulumi.InputType['VirtualMachineVgaArgs']] vga: The VGA configuration
-        :param pulumi.Input[int] vm_id: The VM identifier
+        :param pulumi.Input[bool] acpi: Whether to enable ACPI (defaults to `true`).
+        :param pulumi.Input[pulumi.InputType['VirtualMachineAgentArgs']] agent: The QEMU agent configuration.
+        :param pulumi.Input[pulumi.InputType['VirtualMachineAudioDeviceArgs']] audio_device: An audio device.
+        :param pulumi.Input[str] bios: The BIOS implementation (defaults to `seabios`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] boot_orders: Specify a list of devices to boot from in the order
+               they appear in the list (defaults to `[]`).
+        :param pulumi.Input[pulumi.InputType['VirtualMachineCdromArgs']] cdrom: The CDROM configuration.
+        :param pulumi.Input[pulumi.InputType['VirtualMachineCloneArgs']] clone: The cloning configuration.
+        :param pulumi.Input[pulumi.InputType['VirtualMachineCpuArgs']] cpu: The CPU configuration.
+        :param pulumi.Input[str] description: The description.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]] disks: A disk (multiple blocks supported).
+        :param pulumi.Input[pulumi.InputType['VirtualMachineEfiDiskArgs']] efi_disk: The efi disk device (required if `bios` is set
+               to `ovmf`)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineHostpciArgs']]]] hostpcis: A host PCI device mapping (multiple blocks supported).
+        :param pulumi.Input[pulumi.InputType['VirtualMachineInitializationArgs']] initialization: The cloud-init configuration.
+        :param pulumi.Input[str] keyboard_layout: The keyboard layout (defaults to `en-us`).
+        :param pulumi.Input[str] kvm_arguments: Arbitrary arguments passed to kvm.
+        :param pulumi.Input[str] machine: The VM machine type (defaults to `i440fx`).
+        :param pulumi.Input[pulumi.InputType['VirtualMachineMemoryArgs']] memory: The VGA memory in megabytes (defaults to `16`).
+        :param pulumi.Input[bool] migrate: Migrate the VM on node change instead of re-creating
+               it (defaults to `false`).
+        :param pulumi.Input[str] name: The virtual machine name.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNetworkDeviceArgs']]]] network_devices: A network device (multiple blocks supported).
+        :param pulumi.Input[str] node_name: The name of the node to assign the virtual machine
+               to.
+        :param pulumi.Input[bool] on_boot: Specifies whether a VM will be started during system
+               boot. (defaults to `true`)
+        :param pulumi.Input[pulumi.InputType['VirtualMachineOperatingSystemArgs']] operating_system: The Operating System configuration.
+        :param pulumi.Input[str] pool_id: The identifier for a pool to assign the virtual machine
+               to.
+        :param pulumi.Input[bool] reboot: Reboot the VM after initial creation. (defaults
+               to `false`)
+        :param pulumi.Input[str] scsi_hardware: The SCSI hardware type (defaults
+               to `virtio-scsi-pci`).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]] serial_devices: A serial device (multiple blocks supported).
+        :param pulumi.Input[pulumi.InputType['VirtualMachineSmbiosArgs']] smbios: The SMBIOS (type1) settings for the VM.
+        :param pulumi.Input[bool] started: Whether to start the virtual machine (defaults
+               to `true`).
+        :param pulumi.Input[pulumi.InputType['VirtualMachineStartupArgs']] startup: Defines startup and shutdown behavior of the VM.
+        :param pulumi.Input[bool] tablet_device: Whether to enable the USB tablet device (defaults
+               to `true`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags of the VM. This is only meta information (
+               defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
+               template is not sorted, then Proxmox will always report a difference on the
+               resource. You may use the `ignore_changes` lifecycle meta-argument to ignore
+               changes to this attribute.
+        :param pulumi.Input[bool] template: Whether to create a template (defaults to `false`).
+        :param pulumi.Input[int] timeout_clone: Timeout for cloning a VM in seconds (defaults to
+               1800).
+        :param pulumi.Input[int] timeout_migrate: Timeout for migrating the VM (defaults to
+               1800).
+        :param pulumi.Input[int] timeout_move_disk: Timeout for moving the disk of a VM in
+               seconds (defaults to 1800).
+        :param pulumi.Input[int] timeout_reboot: Timeout for rebooting a VM in seconds (defaults
+               to 1800).
+        :param pulumi.Input[int] timeout_shutdown_vm: Timeout for shutting down a VM in seconds (
+               defaults to 1800).
+        :param pulumi.Input[int] timeout_start_vm: Timeout for starting a VM in seconds (defaults
+               to 1800).
+        :param pulumi.Input[int] timeout_stop_vm: Timeout for stopping a VM in seconds (defaults
+               to 300).
+        :param pulumi.Input[pulumi.InputType['VirtualMachineVgaArgs']] vga: The VGA configuration.
+        :param pulumi.Input[int] vm_id: The VM identifier.
         """
         ...
     @overload
@@ -1538,7 +1872,38 @@ class VirtualMachine(pulumi.CustomResource):
                  args: VirtualMachineArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a VirtualMachine resource with the given unique name, props, and options.
+        Manages a virtual machine.
+
+        ## Important Notes
+
+        When cloning an existing virtual machine, whether it's a template or not, the
+        resource will only detect changes to the arguments which are not set to their
+        default values.
+
+        Furthermore, when cloning from one node to a different one, the behavior changes
+        depening on the datastores of the source VM. If at least one non-shared
+        datastore is used, the VM is first cloned to the source node before being
+        migrated to the target node. This circumvents a limitation in the Proxmox clone
+        API.
+
+        **Note:** Because the migration step after the clone tries to preserve the used
+        datastores by their name, it may fail if a datastore used in the source VM is
+        not available on the target node (e.g. `local-lvm` is used on the source node in
+        the VM but no `local-lvm` datastore is available on the target node). In this
+        case, it is recommended to set the `datastore_id` argument in the `clone` block
+        to force the migration step to migrate all disks to a specific datastore on the
+        target node. If you need certain disks to be on specific datastores, set
+        the `datastore_id` argument of the disks in the `disks` block to move the disks
+        to the correct datastore after the cloning and migrating succeeded.
+
+        ## Import
+
+        Instances can be imported using the `node_name` and the `vm_id`, e.g., bash
+
+        ```sh
+         $ pulumi import proxmoxve:VM/virtualMachine:VirtualMachine ubuntu_vm first-node/4321
+        ```
+
         :param str resource_name: The name of the resource.
         :param VirtualMachineArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1549,6 +1914,10 @@ class VirtualMachine(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            VirtualMachineArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1606,21 +1975,61 @@ class VirtualMachine(pulumi.CustomResource):
             __props__ = VirtualMachineArgs.__new__(VirtualMachineArgs)
 
             __props__.__dict__["acpi"] = acpi
+            if agent is not None and not isinstance(agent, VirtualMachineAgentArgs):
+                agent = agent or {}
+                def _setter(key, value):
+                    agent[key] = value
+                VirtualMachineAgentArgs._configure(_setter, **agent)
             __props__.__dict__["agent"] = agent
+            if audio_device is not None and not isinstance(audio_device, VirtualMachineAudioDeviceArgs):
+                audio_device = audio_device or {}
+                def _setter(key, value):
+                    audio_device[key] = value
+                VirtualMachineAudioDeviceArgs._configure(_setter, **audio_device)
             __props__.__dict__["audio_device"] = audio_device
             __props__.__dict__["bios"] = bios
             __props__.__dict__["boot_orders"] = boot_orders
+            if cdrom is not None and not isinstance(cdrom, VirtualMachineCdromArgs):
+                cdrom = cdrom or {}
+                def _setter(key, value):
+                    cdrom[key] = value
+                VirtualMachineCdromArgs._configure(_setter, **cdrom)
             __props__.__dict__["cdrom"] = cdrom
+            if clone is not None and not isinstance(clone, VirtualMachineCloneArgs):
+                clone = clone or {}
+                def _setter(key, value):
+                    clone[key] = value
+                VirtualMachineCloneArgs._configure(_setter, **clone)
             __props__.__dict__["clone"] = clone
+            if cpu is not None and not isinstance(cpu, VirtualMachineCpuArgs):
+                cpu = cpu or {}
+                def _setter(key, value):
+                    cpu[key] = value
+                VirtualMachineCpuArgs._configure(_setter, **cpu)
             __props__.__dict__["cpu"] = cpu
             __props__.__dict__["description"] = description
             __props__.__dict__["disks"] = disks
+            if efi_disk is not None and not isinstance(efi_disk, VirtualMachineEfiDiskArgs):
+                efi_disk = efi_disk or {}
+                def _setter(key, value):
+                    efi_disk[key] = value
+                VirtualMachineEfiDiskArgs._configure(_setter, **efi_disk)
             __props__.__dict__["efi_disk"] = efi_disk
             __props__.__dict__["hostpcis"] = hostpcis
+            if initialization is not None and not isinstance(initialization, VirtualMachineInitializationArgs):
+                initialization = initialization or {}
+                def _setter(key, value):
+                    initialization[key] = value
+                VirtualMachineInitializationArgs._configure(_setter, **initialization)
             __props__.__dict__["initialization"] = initialization
             __props__.__dict__["keyboard_layout"] = keyboard_layout
             __props__.__dict__["kvm_arguments"] = kvm_arguments
             __props__.__dict__["machine"] = machine
+            if memory is not None and not isinstance(memory, VirtualMachineMemoryArgs):
+                memory = memory or {}
+                def _setter(key, value):
+                    memory[key] = value
+                VirtualMachineMemoryArgs._configure(_setter, **memory)
             __props__.__dict__["memory"] = memory
             __props__.__dict__["migrate"] = migrate
             __props__.__dict__["name"] = name
@@ -1629,13 +2038,28 @@ class VirtualMachine(pulumi.CustomResource):
                 raise TypeError("Missing required property 'node_name'")
             __props__.__dict__["node_name"] = node_name
             __props__.__dict__["on_boot"] = on_boot
+            if operating_system is not None and not isinstance(operating_system, VirtualMachineOperatingSystemArgs):
+                operating_system = operating_system or {}
+                def _setter(key, value):
+                    operating_system[key] = value
+                VirtualMachineOperatingSystemArgs._configure(_setter, **operating_system)
             __props__.__dict__["operating_system"] = operating_system
             __props__.__dict__["pool_id"] = pool_id
             __props__.__dict__["reboot"] = reboot
             __props__.__dict__["scsi_hardware"] = scsi_hardware
             __props__.__dict__["serial_devices"] = serial_devices
+            if smbios is not None and not isinstance(smbios, VirtualMachineSmbiosArgs):
+                smbios = smbios or {}
+                def _setter(key, value):
+                    smbios[key] = value
+                VirtualMachineSmbiosArgs._configure(_setter, **smbios)
             __props__.__dict__["smbios"] = smbios
             __props__.__dict__["started"] = started
+            if startup is not None and not isinstance(startup, VirtualMachineStartupArgs):
+                startup = startup or {}
+                def _setter(key, value):
+                    startup[key] = value
+                VirtualMachineStartupArgs._configure(_setter, **startup)
             __props__.__dict__["startup"] = startup
             __props__.__dict__["tablet_device"] = tablet_device
             __props__.__dict__["tags"] = tags
@@ -1647,6 +2071,11 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["timeout_shutdown_vm"] = timeout_shutdown_vm
             __props__.__dict__["timeout_start_vm"] = timeout_start_vm
             __props__.__dict__["timeout_stop_vm"] = timeout_stop_vm
+            if vga is not None and not isinstance(vga, VirtualMachineVgaArgs):
+                vga = vga or {}
+                def _setter(key, value):
+                    vga[key] = value
+                VirtualMachineVgaArgs._configure(_setter, **vga)
             __props__.__dict__["vga"] = vga
             __props__.__dict__["vm_id"] = vm_id
             __props__.__dict__["ipv4_addresses"] = None
@@ -1716,52 +2145,77 @@ class VirtualMachine(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] acpi: Whether to enable ACPI
-        :param pulumi.Input[pulumi.InputType['VirtualMachineAgentArgs']] agent: The QEMU agent configuration
-        :param pulumi.Input[pulumi.InputType['VirtualMachineAudioDeviceArgs']] audio_device: The audio devices
-        :param pulumi.Input[str] bios: The BIOS implementation
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] boot_orders: The guest will attempt to boot from devices in the order they appear here
-        :param pulumi.Input[pulumi.InputType['VirtualMachineCdromArgs']] cdrom: The CDROM drive
-        :param pulumi.Input[pulumi.InputType['VirtualMachineCloneArgs']] clone: The cloning configuration
-        :param pulumi.Input[pulumi.InputType['VirtualMachineCpuArgs']] cpu: The CPU allocation
-        :param pulumi.Input[str] description: The description
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]] disks: The disk devices
-        :param pulumi.Input[pulumi.InputType['VirtualMachineEfiDiskArgs']] efi_disk: The efidisk device
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineHostpciArgs']]]] hostpcis: The Host PCI devices mapped to the VM
-        :param pulumi.Input[pulumi.InputType['VirtualMachineInitializationArgs']] initialization: The cloud-init configuration
-        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]] ipv4_addresses: The IPv4 addresses published by the QEMU agent
-        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]] ipv6_addresses: The IPv6 addresses published by the QEMU agent
-        :param pulumi.Input[str] keyboard_layout: The keyboard layout
-        :param pulumi.Input[str] kvm_arguments: The args implementation
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] mac_addresses: The MAC addresses for the network interfaces
-        :param pulumi.Input[str] machine: The VM machine type, either default i440fx or q35
-        :param pulumi.Input[pulumi.InputType['VirtualMachineMemoryArgs']] memory: The memory allocation
-        :param pulumi.Input[bool] migrate: Whether to migrate the VM on node change instead of re-creating it
-        :param pulumi.Input[str] name: The name
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNetworkDeviceArgs']]]] network_devices: The network devices
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] network_interface_names: The network interface names published by the QEMU agent
-        :param pulumi.Input[str] node_name: The node name
-        :param pulumi.Input[bool] on_boot: Start VM on Node boot
-        :param pulumi.Input[pulumi.InputType['VirtualMachineOperatingSystemArgs']] operating_system: The operating system configuration
-        :param pulumi.Input[str] pool_id: The ID of the pool to assign the virtual machine to
-        :param pulumi.Input[bool] reboot: Whether to reboot vm after creation
-        :param pulumi.Input[str] scsi_hardware: The SCSI hardware type
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]] serial_devices: The serial devices
-        :param pulumi.Input[pulumi.InputType['VirtualMachineSmbiosArgs']] smbios: Specifies SMBIOS (type1) settings for the VM
-        :param pulumi.Input[bool] started: Whether to start the virtual machine
-        :param pulumi.Input[pulumi.InputType['VirtualMachineStartupArgs']] startup: Defines startup and shutdown behavior of the VM
-        :param pulumi.Input[bool] tablet_device: Whether to enable the USB tablet device
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the virtual machine. This is only meta information.
-        :param pulumi.Input[bool] template: Whether to create a template
-        :param pulumi.Input[int] timeout_clone: Clone VM timeout
-        :param pulumi.Input[int] timeout_migrate: Migrate VM timeout
-        :param pulumi.Input[int] timeout_move_disk: MoveDisk timeout
-        :param pulumi.Input[int] timeout_reboot: Reboot timeout
-        :param pulumi.Input[int] timeout_shutdown_vm: Shutdown timeout
-        :param pulumi.Input[int] timeout_start_vm: Start VM timeout
-        :param pulumi.Input[int] timeout_stop_vm: Stop VM timeout
-        :param pulumi.Input[pulumi.InputType['VirtualMachineVgaArgs']] vga: The VGA configuration
-        :param pulumi.Input[int] vm_id: The VM identifier
+        :param pulumi.Input[bool] acpi: Whether to enable ACPI (defaults to `true`).
+        :param pulumi.Input[pulumi.InputType['VirtualMachineAgentArgs']] agent: The QEMU agent configuration.
+        :param pulumi.Input[pulumi.InputType['VirtualMachineAudioDeviceArgs']] audio_device: An audio device.
+        :param pulumi.Input[str] bios: The BIOS implementation (defaults to `seabios`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] boot_orders: Specify a list of devices to boot from in the order
+               they appear in the list (defaults to `[]`).
+        :param pulumi.Input[pulumi.InputType['VirtualMachineCdromArgs']] cdrom: The CDROM configuration.
+        :param pulumi.Input[pulumi.InputType['VirtualMachineCloneArgs']] clone: The cloning configuration.
+        :param pulumi.Input[pulumi.InputType['VirtualMachineCpuArgs']] cpu: The CPU configuration.
+        :param pulumi.Input[str] description: The description.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]] disks: A disk (multiple blocks supported).
+        :param pulumi.Input[pulumi.InputType['VirtualMachineEfiDiskArgs']] efi_disk: The efi disk device (required if `bios` is set
+               to `ovmf`)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineHostpciArgs']]]] hostpcis: A host PCI device mapping (multiple blocks supported).
+        :param pulumi.Input[pulumi.InputType['VirtualMachineInitializationArgs']] initialization: The cloud-init configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]] ipv4_addresses: The IPv4 addresses per network interface published by the
+               QEMU agent (empty list when `agent.enabled` is `false`)
+        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]] ipv6_addresses: The IPv6 addresses per network interface published by the
+               QEMU agent (empty list when `agent.enabled` is `false`)
+        :param pulumi.Input[str] keyboard_layout: The keyboard layout (defaults to `en-us`).
+        :param pulumi.Input[str] kvm_arguments: Arbitrary arguments passed to kvm.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] mac_addresses: The MAC addresses published by the QEMU agent with fallback
+               to the network device configuration, if the agent is disabled
+        :param pulumi.Input[str] machine: The VM machine type (defaults to `i440fx`).
+        :param pulumi.Input[pulumi.InputType['VirtualMachineMemoryArgs']] memory: The VGA memory in megabytes (defaults to `16`).
+        :param pulumi.Input[bool] migrate: Migrate the VM on node change instead of re-creating
+               it (defaults to `false`).
+        :param pulumi.Input[str] name: The virtual machine name.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNetworkDeviceArgs']]]] network_devices: A network device (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] network_interface_names: The network interface names published by the QEMU
+               agent (empty list when `agent.enabled` is `false`)
+        :param pulumi.Input[str] node_name: The name of the node to assign the virtual machine
+               to.
+        :param pulumi.Input[bool] on_boot: Specifies whether a VM will be started during system
+               boot. (defaults to `true`)
+        :param pulumi.Input[pulumi.InputType['VirtualMachineOperatingSystemArgs']] operating_system: The Operating System configuration.
+        :param pulumi.Input[str] pool_id: The identifier for a pool to assign the virtual machine
+               to.
+        :param pulumi.Input[bool] reboot: Reboot the VM after initial creation. (defaults
+               to `false`)
+        :param pulumi.Input[str] scsi_hardware: The SCSI hardware type (defaults
+               to `virtio-scsi-pci`).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]] serial_devices: A serial device (multiple blocks supported).
+        :param pulumi.Input[pulumi.InputType['VirtualMachineSmbiosArgs']] smbios: The SMBIOS (type1) settings for the VM.
+        :param pulumi.Input[bool] started: Whether to start the virtual machine (defaults
+               to `true`).
+        :param pulumi.Input[pulumi.InputType['VirtualMachineStartupArgs']] startup: Defines startup and shutdown behavior of the VM.
+        :param pulumi.Input[bool] tablet_device: Whether to enable the USB tablet device (defaults
+               to `true`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags of the VM. This is only meta information (
+               defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
+               template is not sorted, then Proxmox will always report a difference on the
+               resource. You may use the `ignore_changes` lifecycle meta-argument to ignore
+               changes to this attribute.
+        :param pulumi.Input[bool] template: Whether to create a template (defaults to `false`).
+        :param pulumi.Input[int] timeout_clone: Timeout for cloning a VM in seconds (defaults to
+               1800).
+        :param pulumi.Input[int] timeout_migrate: Timeout for migrating the VM (defaults to
+               1800).
+        :param pulumi.Input[int] timeout_move_disk: Timeout for moving the disk of a VM in
+               seconds (defaults to 1800).
+        :param pulumi.Input[int] timeout_reboot: Timeout for rebooting a VM in seconds (defaults
+               to 1800).
+        :param pulumi.Input[int] timeout_shutdown_vm: Timeout for shutting down a VM in seconds (
+               defaults to 1800).
+        :param pulumi.Input[int] timeout_start_vm: Timeout for starting a VM in seconds (defaults
+               to 1800).
+        :param pulumi.Input[int] timeout_stop_vm: Timeout for stopping a VM in seconds (defaults
+               to 300).
+        :param pulumi.Input[pulumi.InputType['VirtualMachineVgaArgs']] vga: The VGA configuration.
+        :param pulumi.Input[int] vm_id: The VM identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1819,7 +2273,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter
     def acpi(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to enable ACPI
+        Whether to enable ACPI (defaults to `true`).
         """
         return pulumi.get(self, "acpi")
 
@@ -1827,7 +2281,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter
     def agent(self) -> pulumi.Output[Optional['outputs.VirtualMachineAgent']]:
         """
-        The QEMU agent configuration
+        The QEMU agent configuration.
         """
         return pulumi.get(self, "agent")
 
@@ -1835,7 +2289,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="audioDevice")
     def audio_device(self) -> pulumi.Output[Optional['outputs.VirtualMachineAudioDevice']]:
         """
-        The audio devices
+        An audio device.
         """
         return pulumi.get(self, "audio_device")
 
@@ -1843,7 +2297,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter
     def bios(self) -> pulumi.Output[Optional[str]]:
         """
-        The BIOS implementation
+        The BIOS implementation (defaults to `seabios`).
         """
         return pulumi.get(self, "bios")
 
@@ -1851,7 +2305,8 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="bootOrders")
     def boot_orders(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The guest will attempt to boot from devices in the order they appear here
+        Specify a list of devices to boot from in the order
+        they appear in the list (defaults to `[]`).
         """
         return pulumi.get(self, "boot_orders")
 
@@ -1859,7 +2314,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter
     def cdrom(self) -> pulumi.Output[Optional['outputs.VirtualMachineCdrom']]:
         """
-        The CDROM drive
+        The CDROM configuration.
         """
         return pulumi.get(self, "cdrom")
 
@@ -1867,7 +2322,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter
     def clone(self) -> pulumi.Output[Optional['outputs.VirtualMachineClone']]:
         """
-        The cloning configuration
+        The cloning configuration.
         """
         return pulumi.get(self, "clone")
 
@@ -1875,7 +2330,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter
     def cpu(self) -> pulumi.Output[Optional['outputs.VirtualMachineCpu']]:
         """
-        The CPU allocation
+        The CPU configuration.
         """
         return pulumi.get(self, "cpu")
 
@@ -1883,7 +2338,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description
+        The description.
         """
         return pulumi.get(self, "description")
 
@@ -1891,7 +2346,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter
     def disks(self) -> pulumi.Output[Optional[Sequence['outputs.VirtualMachineDisk']]]:
         """
-        The disk devices
+        A disk (multiple blocks supported).
         """
         return pulumi.get(self, "disks")
 
@@ -1899,7 +2354,8 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="efiDisk")
     def efi_disk(self) -> pulumi.Output[Optional['outputs.VirtualMachineEfiDisk']]:
         """
-        The efidisk device
+        The efi disk device (required if `bios` is set
+        to `ovmf`)
         """
         return pulumi.get(self, "efi_disk")
 
@@ -1907,7 +2363,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter
     def hostpcis(self) -> pulumi.Output[Optional[Sequence['outputs.VirtualMachineHostpci']]]:
         """
-        The Host PCI devices mapped to the VM
+        A host PCI device mapping (multiple blocks supported).
         """
         return pulumi.get(self, "hostpcis")
 
@@ -1915,7 +2371,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter
     def initialization(self) -> pulumi.Output[Optional['outputs.VirtualMachineInitialization']]:
         """
-        The cloud-init configuration
+        The cloud-init configuration.
         """
         return pulumi.get(self, "initialization")
 
@@ -1923,7 +2379,8 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="ipv4Addresses")
     def ipv4_addresses(self) -> pulumi.Output[Sequence[Sequence[str]]]:
         """
-        The IPv4 addresses published by the QEMU agent
+        The IPv4 addresses per network interface published by the
+        QEMU agent (empty list when `agent.enabled` is `false`)
         """
         return pulumi.get(self, "ipv4_addresses")
 
@@ -1931,7 +2388,8 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="ipv6Addresses")
     def ipv6_addresses(self) -> pulumi.Output[Sequence[Sequence[str]]]:
         """
-        The IPv6 addresses published by the QEMU agent
+        The IPv6 addresses per network interface published by the
+        QEMU agent (empty list when `agent.enabled` is `false`)
         """
         return pulumi.get(self, "ipv6_addresses")
 
@@ -1939,7 +2397,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="keyboardLayout")
     def keyboard_layout(self) -> pulumi.Output[Optional[str]]:
         """
-        The keyboard layout
+        The keyboard layout (defaults to `en-us`).
         """
         return pulumi.get(self, "keyboard_layout")
 
@@ -1947,7 +2405,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="kvmArguments")
     def kvm_arguments(self) -> pulumi.Output[Optional[str]]:
         """
-        The args implementation
+        Arbitrary arguments passed to kvm.
         """
         return pulumi.get(self, "kvm_arguments")
 
@@ -1955,7 +2413,8 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="macAddresses")
     def mac_addresses(self) -> pulumi.Output[Sequence[str]]:
         """
-        The MAC addresses for the network interfaces
+        The MAC addresses published by the QEMU agent with fallback
+        to the network device configuration, if the agent is disabled
         """
         return pulumi.get(self, "mac_addresses")
 
@@ -1963,7 +2422,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter
     def machine(self) -> pulumi.Output[Optional[str]]:
         """
-        The VM machine type, either default i440fx or q35
+        The VM machine type (defaults to `i440fx`).
         """
         return pulumi.get(self, "machine")
 
@@ -1971,7 +2430,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter
     def memory(self) -> pulumi.Output[Optional['outputs.VirtualMachineMemory']]:
         """
-        The memory allocation
+        The VGA memory in megabytes (defaults to `16`).
         """
         return pulumi.get(self, "memory")
 
@@ -1979,7 +2438,8 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter
     def migrate(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to migrate the VM on node change instead of re-creating it
+        Migrate the VM on node change instead of re-creating
+        it (defaults to `false`).
         """
         return pulumi.get(self, "migrate")
 
@@ -1987,7 +2447,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name
+        The virtual machine name.
         """
         return pulumi.get(self, "name")
 
@@ -1995,7 +2455,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="networkDevices")
     def network_devices(self) -> pulumi.Output[Optional[Sequence['outputs.VirtualMachineNetworkDevice']]]:
         """
-        The network devices
+        A network device (multiple blocks supported).
         """
         return pulumi.get(self, "network_devices")
 
@@ -2003,7 +2463,8 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="networkInterfaceNames")
     def network_interface_names(self) -> pulumi.Output[Sequence[str]]:
         """
-        The network interface names published by the QEMU agent
+        The network interface names published by the QEMU
+        agent (empty list when `agent.enabled` is `false`)
         """
         return pulumi.get(self, "network_interface_names")
 
@@ -2011,7 +2472,8 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="nodeName")
     def node_name(self) -> pulumi.Output[str]:
         """
-        The node name
+        The name of the node to assign the virtual machine
+        to.
         """
         return pulumi.get(self, "node_name")
 
@@ -2019,7 +2481,8 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="onBoot")
     def on_boot(self) -> pulumi.Output[Optional[bool]]:
         """
-        Start VM on Node boot
+        Specifies whether a VM will be started during system
+        boot. (defaults to `true`)
         """
         return pulumi.get(self, "on_boot")
 
@@ -2027,7 +2490,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="operatingSystem")
     def operating_system(self) -> pulumi.Output[Optional['outputs.VirtualMachineOperatingSystem']]:
         """
-        The operating system configuration
+        The Operating System configuration.
         """
         return pulumi.get(self, "operating_system")
 
@@ -2035,7 +2498,8 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="poolId")
     def pool_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The ID of the pool to assign the virtual machine to
+        The identifier for a pool to assign the virtual machine
+        to.
         """
         return pulumi.get(self, "pool_id")
 
@@ -2043,7 +2507,8 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter
     def reboot(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to reboot vm after creation
+        Reboot the VM after initial creation. (defaults
+        to `false`)
         """
         return pulumi.get(self, "reboot")
 
@@ -2051,7 +2516,8 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="scsiHardware")
     def scsi_hardware(self) -> pulumi.Output[Optional[str]]:
         """
-        The SCSI hardware type
+        The SCSI hardware type (defaults
+        to `virtio-scsi-pci`).
         """
         return pulumi.get(self, "scsi_hardware")
 
@@ -2059,7 +2525,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="serialDevices")
     def serial_devices(self) -> pulumi.Output[Optional[Sequence['outputs.VirtualMachineSerialDevice']]]:
         """
-        The serial devices
+        A serial device (multiple blocks supported).
         """
         return pulumi.get(self, "serial_devices")
 
@@ -2067,7 +2533,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter
     def smbios(self) -> pulumi.Output[Optional['outputs.VirtualMachineSmbios']]:
         """
-        Specifies SMBIOS (type1) settings for the VM
+        The SMBIOS (type1) settings for the VM.
         """
         return pulumi.get(self, "smbios")
 
@@ -2075,7 +2541,8 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter
     def started(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to start the virtual machine
+        Whether to start the virtual machine (defaults
+        to `true`).
         """
         return pulumi.get(self, "started")
 
@@ -2083,7 +2550,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter
     def startup(self) -> pulumi.Output[Optional['outputs.VirtualMachineStartup']]:
         """
-        Defines startup and shutdown behavior of the VM
+        Defines startup and shutdown behavior of the VM.
         """
         return pulumi.get(self, "startup")
 
@@ -2091,7 +2558,8 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="tabletDevice")
     def tablet_device(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to enable the USB tablet device
+        Whether to enable the USB tablet device (defaults
+        to `true`).
         """
         return pulumi.get(self, "tablet_device")
 
@@ -2099,7 +2567,11 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Tags of the virtual machine. This is only meta information.
+        A list of tags of the VM. This is only meta information (
+        defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
+        template is not sorted, then Proxmox will always report a difference on the
+        resource. You may use the `ignore_changes` lifecycle meta-argument to ignore
+        changes to this attribute.
         """
         return pulumi.get(self, "tags")
 
@@ -2107,7 +2579,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter
     def template(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to create a template
+        Whether to create a template (defaults to `false`).
         """
         return pulumi.get(self, "template")
 
@@ -2115,7 +2587,8 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="timeoutClone")
     def timeout_clone(self) -> pulumi.Output[Optional[int]]:
         """
-        Clone VM timeout
+        Timeout for cloning a VM in seconds (defaults to
+        1800).
         """
         return pulumi.get(self, "timeout_clone")
 
@@ -2123,7 +2596,8 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="timeoutMigrate")
     def timeout_migrate(self) -> pulumi.Output[Optional[int]]:
         """
-        Migrate VM timeout
+        Timeout for migrating the VM (defaults to
+        1800).
         """
         return pulumi.get(self, "timeout_migrate")
 
@@ -2131,7 +2605,8 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="timeoutMoveDisk")
     def timeout_move_disk(self) -> pulumi.Output[Optional[int]]:
         """
-        MoveDisk timeout
+        Timeout for moving the disk of a VM in
+        seconds (defaults to 1800).
         """
         return pulumi.get(self, "timeout_move_disk")
 
@@ -2139,7 +2614,8 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="timeoutReboot")
     def timeout_reboot(self) -> pulumi.Output[Optional[int]]:
         """
-        Reboot timeout
+        Timeout for rebooting a VM in seconds (defaults
+        to 1800).
         """
         return pulumi.get(self, "timeout_reboot")
 
@@ -2147,7 +2623,8 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="timeoutShutdownVm")
     def timeout_shutdown_vm(self) -> pulumi.Output[Optional[int]]:
         """
-        Shutdown timeout
+        Timeout for shutting down a VM in seconds (
+        defaults to 1800).
         """
         return pulumi.get(self, "timeout_shutdown_vm")
 
@@ -2155,7 +2632,8 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="timeoutStartVm")
     def timeout_start_vm(self) -> pulumi.Output[Optional[int]]:
         """
-        Start VM timeout
+        Timeout for starting a VM in seconds (defaults
+        to 1800).
         """
         return pulumi.get(self, "timeout_start_vm")
 
@@ -2163,7 +2641,8 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="timeoutStopVm")
     def timeout_stop_vm(self) -> pulumi.Output[Optional[int]]:
         """
-        Stop VM timeout
+        Timeout for stopping a VM in seconds (defaults
+        to 300).
         """
         return pulumi.get(self, "timeout_stop_vm")
 
@@ -2171,7 +2650,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter
     def vga(self) -> pulumi.Output[Optional['outputs.VirtualMachineVga']]:
         """
-        The VGA configuration
+        The VGA configuration.
         """
         return pulumi.get(self, "vga")
 
@@ -2179,7 +2658,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="vmId")
     def vm_id(self) -> pulumi.Output[int]:
         """
-        The VM identifier
+        The VM identifier.
         """
         return pulumi.get(self, "vm_id")
 

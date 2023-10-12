@@ -4,6 +4,20 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Retrieves information about a specific role.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@pulumi/proxmoxve";
+ *
+ * const operationsRole = proxmoxve.Permission.getRole({
+ *     roleId: "operations",
+ * });
+ * ```
+ */
 export function getRole(args: GetRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -16,6 +30,9 @@ export function getRole(args: GetRoleArgs, opts?: pulumi.InvokeOptions): Promise
  * A collection of arguments for invoking getRole.
  */
 export interface GetRoleArgs {
+    /**
+     * The role identifier.
+     */
     roleId: string;
 }
 
@@ -27,9 +44,26 @@ export interface GetRoleResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The role privileges
+     */
     readonly privileges: string[];
     readonly roleId: string;
 }
+/**
+ * Retrieves information about a specific role.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@pulumi/proxmoxve";
+ *
+ * const operationsRole = proxmoxve.Permission.getRole({
+ *     roleId: "operations",
+ * });
+ * ```
+ */
 export function getRoleOutput(args: GetRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleResult> {
     return pulumi.output(args).apply((a: any) => getRole(a, opts))
 }
@@ -38,5 +72,8 @@ export function getRoleOutput(args: GetRoleOutputArgs, opts?: pulumi.InvokeOptio
  * A collection of arguments for invoking getRole.
  */
 export interface GetRoleOutputArgs {
+    /**
+     * The role identifier.
+     */
     roleId: pulumi.Input<string>;
 }

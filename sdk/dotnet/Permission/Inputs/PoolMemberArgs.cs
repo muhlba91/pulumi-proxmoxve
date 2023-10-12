@@ -12,18 +12,33 @@ namespace Pulumi.ProxmoxVE.Permission.Inputs
 
     public sealed class PoolMemberArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The datastore identifier.
+        /// </summary>
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
 
+        /// <summary>
+        /// The member identifier.
+        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
+        /// <summary>
+        /// The node name.
+        /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
 
+        /// <summary>
+        /// The member type.
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        /// <summary>
+        /// The virtual machine identifier.
+        /// </summary>
         [Input("vmId")]
         public Input<int>? VmId { get; set; }
 

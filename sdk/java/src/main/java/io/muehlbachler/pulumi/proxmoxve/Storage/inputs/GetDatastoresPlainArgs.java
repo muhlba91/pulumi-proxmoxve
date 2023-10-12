@@ -12,9 +12,17 @@ public final class GetDatastoresPlainArgs extends com.pulumi.resources.InvokeArg
 
     public static final GetDatastoresPlainArgs Empty = new GetDatastoresPlainArgs();
 
+    /**
+     * A node name.
+     * 
+     */
     @Import(name="nodeName", required=true)
     private String nodeName;
 
+    /**
+     * @return A node name.
+     * 
+     */
     public String nodeName() {
         return this.nodeName;
     }
@@ -43,6 +51,12 @@ public final class GetDatastoresPlainArgs extends com.pulumi.resources.InvokeArg
             $ = new GetDatastoresPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param nodeName A node name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeName(String nodeName) {
             $.nodeName = nodeName;
             return this;

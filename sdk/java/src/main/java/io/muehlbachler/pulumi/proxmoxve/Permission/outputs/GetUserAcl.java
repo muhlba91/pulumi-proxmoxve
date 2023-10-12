@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetUserAcl {
+    /**
+     * @return The path.
+     * 
+     */
     private String path;
+    /**
+     * @return Whether to propagate to child paths.
+     * 
+     */
     private Boolean propagate;
+    /**
+     * @return The role identifier.
+     * 
+     */
     private String roleId;
 
     private GetUserAcl() {}
+    /**
+     * @return The path.
+     * 
+     */
     public String path() {
         return this.path;
     }
+    /**
+     * @return Whether to propagate to child paths.
+     * 
+     */
     public Boolean propagate() {
         return this.propagate;
     }
+    /**
+     * @return The role identifier.
+     * 
+     */
     public String roleId() {
         return this.roleId;
     }

@@ -17,23 +17,49 @@ public final class ContainerConsoleArgs extends com.pulumi.resources.ResourceArg
 
     public static final ContainerConsoleArgs Empty = new ContainerConsoleArgs();
 
+    /**
+     * Whether to enable the network device (defaults
+     * to `true`).
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether to enable the network device (defaults
+     * to `true`).
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * The number of available TTY (defaults to `2`).
+     * 
+     */
     @Import(name="ttyCount")
     private @Nullable Output<Integer> ttyCount;
 
+    /**
+     * @return The number of available TTY (defaults to `2`).
+     * 
+     */
     public Optional<Output<Integer>> ttyCount() {
         return Optional.ofNullable(this.ttyCount);
     }
 
+    /**
+     * The type (defaults to `unmanaged`).
+     * 
+     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
+    /**
+     * @return The type (defaults to `unmanaged`).
+     * 
+     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -64,29 +90,67 @@ public final class ContainerConsoleArgs extends com.pulumi.resources.ResourceArg
             $ = new ContainerConsoleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether to enable the network device (defaults
+         * to `true`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether to enable the network device (defaults
+         * to `true`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param ttyCount The number of available TTY (defaults to `2`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder ttyCount(@Nullable Output<Integer> ttyCount) {
             $.ttyCount = ttyCount;
             return this;
         }
 
+        /**
+         * @param ttyCount The number of available TTY (defaults to `2`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder ttyCount(Integer ttyCount) {
             return ttyCount(Output.of(ttyCount));
         }
 
+        /**
+         * @param type The type (defaults to `unmanaged`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type The type (defaults to `unmanaged`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

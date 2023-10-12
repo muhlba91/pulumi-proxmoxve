@@ -9,29 +9,59 @@ using Pulumi.Serialization;
 
 namespace Pulumi.ProxmoxVE.Permission
 {
+    /// <summary>
+    /// Manages a user group.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var operationsTeam = new ProxmoxVE.Permission.Group("operationsTeam", new()
+    ///     {
+    ///         Comment = "Managed by Terraform",
+    ///         GroupId = "operations-team",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Instances can be imported using the `group_id`, e.g., bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import proxmoxve:Permission/group:Group operations_team operations-team
+    /// ```
+    /// </summary>
     [ProxmoxVEResourceType("proxmoxve:Permission/group:Group")]
     public partial class Group : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The access control list
+        /// The access control list (multiple blocks supported).
         /// </summary>
         [Output("acls")]
         public Output<ImmutableArray<Outputs.GroupAcl>> Acls { get; private set; } = null!;
 
         /// <summary>
-        /// The group comment
+        /// The group comment.
         /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
 
         /// <summary>
-        /// The group id
+        /// The group identifier.
         /// </summary>
         [Output("groupId")]
         public Output<string> GroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The group members
+        /// The group members as a list of `username@realm` entries
         /// </summary>
         [Output("members")]
         public Output<ImmutableArray<string>> Members { get; private set; } = null!;
@@ -87,7 +117,7 @@ namespace Pulumi.ProxmoxVE.Permission
         private InputList<Inputs.GroupAclArgs>? _acls;
 
         /// <summary>
-        /// The access control list
+        /// The access control list (multiple blocks supported).
         /// </summary>
         public InputList<Inputs.GroupAclArgs> Acls
         {
@@ -96,13 +126,13 @@ namespace Pulumi.ProxmoxVE.Permission
         }
 
         /// <summary>
-        /// The group comment
+        /// The group comment.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// The group id
+        /// The group identifier.
         /// </summary>
         [Input("groupId", required: true)]
         public Input<string> GroupId { get; set; } = null!;
@@ -119,7 +149,7 @@ namespace Pulumi.ProxmoxVE.Permission
         private InputList<Inputs.GroupAclGetArgs>? _acls;
 
         /// <summary>
-        /// The access control list
+        /// The access control list (multiple blocks supported).
         /// </summary>
         public InputList<Inputs.GroupAclGetArgs> Acls
         {
@@ -128,13 +158,13 @@ namespace Pulumi.ProxmoxVE.Permission
         }
 
         /// <summary>
-        /// The group comment
+        /// The group comment.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// The group id
+        /// The group identifier.
         /// </summary>
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
@@ -143,7 +173,7 @@ namespace Pulumi.ProxmoxVE.Permission
         private InputList<string>? _members;
 
         /// <summary>
-        /// The group members
+        /// The group members as a list of `username@realm` entries
         /// </summary>
         public InputList<string> Members
         {

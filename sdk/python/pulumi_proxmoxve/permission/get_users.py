@@ -6,13 +6,14 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
     'GetUsersResult',
     'AwaitableGetUsersResult',
     'get_users',
+    'get_users_output',
 ]
 
 @pulumi.output_type
@@ -55,31 +56,49 @@ class GetUsersResult:
     @property
     @pulumi.getter
     def comments(self) -> Sequence[str]:
+        """
+        The user comments.
+        """
         return pulumi.get(self, "comments")
 
     @property
     @pulumi.getter
     def emails(self) -> Sequence[str]:
+        """
+        The users' email addresses.
+        """
         return pulumi.get(self, "emails")
 
     @property
     @pulumi.getter
     def enableds(self) -> Sequence[bool]:
+        """
+        Whether a user account is enabled.
+        """
         return pulumi.get(self, "enableds")
 
     @property
     @pulumi.getter(name="expirationDates")
     def expiration_dates(self) -> Sequence[str]:
+        """
+        The user accounts' expiration dates (RFC 3339).
+        """
         return pulumi.get(self, "expiration_dates")
 
     @property
     @pulumi.getter(name="firstNames")
     def first_names(self) -> Sequence[str]:
+        """
+        The users' first names.
+        """
         return pulumi.get(self, "first_names")
 
     @property
     @pulumi.getter
     def groups(self) -> Sequence[Sequence[str]]:
+        """
+        The users' groups.
+        """
         return pulumi.get(self, "groups")
 
     @property
@@ -93,16 +112,25 @@ class GetUsersResult:
     @property
     @pulumi.getter
     def keys(self) -> Sequence[str]:
+        """
+        The users' keys.
+        """
         return pulumi.get(self, "keys")
 
     @property
     @pulumi.getter(name="lastNames")
     def last_names(self) -> Sequence[str]:
+        """
+        The users' last names.
+        """
         return pulumi.get(self, "last_names")
 
     @property
     @pulumi.getter(name="userIds")
     def user_ids(self) -> Sequence[str]:
+        """
+        The user identifiers.
+        """
         return pulumi.get(self, "user_ids")
 
 
@@ -126,7 +154,16 @@ class AwaitableGetUsersResult(GetUsersResult):
 
 def get_users(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUsersResult:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves information about all the available users.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    available_users = proxmoxve.Permission.get_users()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -143,3 +180,20 @@ def get_users(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUsersR
         keys=pulumi.get(__ret__, 'keys'),
         last_names=pulumi.get(__ret__, 'last_names'),
         user_ids=pulumi.get(__ret__, 'user_ids'))
+
+
+@_utilities.lift_output_func(get_users)
+def get_users_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUsersResult]:
+    """
+    Retrieves information about all the available users.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    available_users = proxmoxve.Permission.get_users()
+    ```
+    """
+    ...

@@ -9,281 +9,339 @@ using Pulumi.Serialization;
 
 namespace Pulumi.ProxmoxVE.VM
 {
+    /// <summary>
+    /// Manages a virtual machine.
+    /// 
+    /// ## Important Notes
+    /// 
+    /// When cloning an existing virtual machine, whether it's a template or not, the
+    /// resource will only detect changes to the arguments which are not set to their
+    /// default values.
+    /// 
+    /// Furthermore, when cloning from one node to a different one, the behavior changes
+    /// depening on the datastores of the source VM. If at least one non-shared
+    /// datastore is used, the VM is first cloned to the source node before being
+    /// migrated to the target node. This circumvents a limitation in the Proxmox clone
+    /// API.
+    /// 
+    /// **Note:** Because the migration step after the clone tries to preserve the used
+    /// datastores by their name, it may fail if a datastore used in the source VM is
+    /// not available on the target node (e.g. `local-lvm` is used on the source node in
+    /// the VM but no `local-lvm` datastore is available on the target node). In this
+    /// case, it is recommended to set the `datastore_id` argument in the `clone` block
+    /// to force the migration step to migrate all disks to a specific datastore on the
+    /// target node. If you need certain disks to be on specific datastores, set
+    /// the `datastore_id` argument of the disks in the `disks` block to move the disks
+    /// to the correct datastore after the cloning and migrating succeeded.
+    /// 
+    /// ## Import
+    /// 
+    /// Instances can be imported using the `node_name` and the `vm_id`, e.g., bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import proxmoxve:VM/virtualMachine:VirtualMachine ubuntu_vm first-node/4321
+    /// ```
+    /// </summary>
     [ProxmoxVEResourceType("proxmoxve:VM/virtualMachine:VirtualMachine")]
     public partial class VirtualMachine : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether to enable ACPI
+        /// Whether to enable ACPI (defaults to `true`).
         /// </summary>
         [Output("acpi")]
         public Output<bool?> Acpi { get; private set; } = null!;
 
         /// <summary>
-        /// The QEMU agent configuration
+        /// The QEMU agent configuration.
         /// </summary>
         [Output("agent")]
         public Output<Outputs.VirtualMachineAgent?> Agent { get; private set; } = null!;
 
         /// <summary>
-        /// The audio devices
+        /// An audio device.
         /// </summary>
         [Output("audioDevice")]
         public Output<Outputs.VirtualMachineAudioDevice?> AudioDevice { get; private set; } = null!;
 
         /// <summary>
-        /// The BIOS implementation
+        /// The BIOS implementation (defaults to `seabios`).
         /// </summary>
         [Output("bios")]
         public Output<string?> Bios { get; private set; } = null!;
 
         /// <summary>
-        /// The guest will attempt to boot from devices in the order they appear here
+        /// Specify a list of devices to boot from in the order
+        /// they appear in the list (defaults to `[]`).
         /// </summary>
         [Output("bootOrders")]
         public Output<ImmutableArray<string>> BootOrders { get; private set; } = null!;
 
         /// <summary>
-        /// The CDROM drive
+        /// The CDROM configuration.
         /// </summary>
         [Output("cdrom")]
         public Output<Outputs.VirtualMachineCdrom?> Cdrom { get; private set; } = null!;
 
         /// <summary>
-        /// The cloning configuration
+        /// The cloning configuration.
         /// </summary>
         [Output("clone")]
         public Output<Outputs.VirtualMachineClone?> Clone { get; private set; } = null!;
 
         /// <summary>
-        /// The CPU allocation
+        /// The CPU configuration.
         /// </summary>
         [Output("cpu")]
         public Output<Outputs.VirtualMachineCpu?> Cpu { get; private set; } = null!;
 
         /// <summary>
-        /// The description
+        /// The description.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The disk devices
+        /// A disk (multiple blocks supported).
         /// </summary>
         [Output("disks")]
         public Output<ImmutableArray<Outputs.VirtualMachineDisk>> Disks { get; private set; } = null!;
 
         /// <summary>
-        /// The efidisk device
+        /// The efi disk device (required if `bios` is set
+        /// to `ovmf`)
         /// </summary>
         [Output("efiDisk")]
         public Output<Outputs.VirtualMachineEfiDisk?> EfiDisk { get; private set; } = null!;
 
         /// <summary>
-        /// The Host PCI devices mapped to the VM
+        /// A host PCI device mapping (multiple blocks supported).
         /// </summary>
         [Output("hostpcis")]
         public Output<ImmutableArray<Outputs.VirtualMachineHostpci>> Hostpcis { get; private set; } = null!;
 
         /// <summary>
-        /// The cloud-init configuration
+        /// The cloud-init configuration.
         /// </summary>
         [Output("initialization")]
         public Output<Outputs.VirtualMachineInitialization?> Initialization { get; private set; } = null!;
 
         /// <summary>
-        /// The IPv4 addresses published by the QEMU agent
+        /// The IPv4 addresses per network interface published by the
+        /// QEMU agent (empty list when `agent.enabled` is `false`)
         /// </summary>
         [Output("ipv4Addresses")]
         public Output<ImmutableArray<ImmutableArray<string>>> Ipv4Addresses { get; private set; } = null!;
 
         /// <summary>
-        /// The IPv6 addresses published by the QEMU agent
+        /// The IPv6 addresses per network interface published by the
+        /// QEMU agent (empty list when `agent.enabled` is `false`)
         /// </summary>
         [Output("ipv6Addresses")]
         public Output<ImmutableArray<ImmutableArray<string>>> Ipv6Addresses { get; private set; } = null!;
 
         /// <summary>
-        /// The keyboard layout
+        /// The keyboard layout (defaults to `en-us`).
         /// </summary>
         [Output("keyboardLayout")]
         public Output<string?> KeyboardLayout { get; private set; } = null!;
 
         /// <summary>
-        /// The args implementation
+        /// Arbitrary arguments passed to kvm.
         /// </summary>
         [Output("kvmArguments")]
         public Output<string?> KvmArguments { get; private set; } = null!;
 
         /// <summary>
-        /// The MAC addresses for the network interfaces
+        /// The MAC addresses published by the QEMU agent with fallback
+        /// to the network device configuration, if the agent is disabled
         /// </summary>
         [Output("macAddresses")]
         public Output<ImmutableArray<string>> MacAddresses { get; private set; } = null!;
 
         /// <summary>
-        /// The VM machine type, either default i440fx or q35
+        /// The VM machine type (defaults to `i440fx`).
         /// </summary>
         [Output("machine")]
         public Output<string?> Machine { get; private set; } = null!;
 
         /// <summary>
-        /// The memory allocation
+        /// The VGA memory in megabytes (defaults to `16`).
         /// </summary>
         [Output("memory")]
         public Output<Outputs.VirtualMachineMemory?> Memory { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to migrate the VM on node change instead of re-creating it
+        /// Migrate the VM on node change instead of re-creating
+        /// it (defaults to `false`).
         /// </summary>
         [Output("migrate")]
         public Output<bool?> Migrate { get; private set; } = null!;
 
         /// <summary>
-        /// The name
+        /// The virtual machine name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The network devices
+        /// A network device (multiple blocks supported).
         /// </summary>
         [Output("networkDevices")]
         public Output<ImmutableArray<Outputs.VirtualMachineNetworkDevice>> NetworkDevices { get; private set; } = null!;
 
         /// <summary>
-        /// The network interface names published by the QEMU agent
+        /// The network interface names published by the QEMU
+        /// agent (empty list when `agent.enabled` is `false`)
         /// </summary>
         [Output("networkInterfaceNames")]
         public Output<ImmutableArray<string>> NetworkInterfaceNames { get; private set; } = null!;
 
         /// <summary>
-        /// The node name
+        /// The name of the node to assign the virtual machine
+        /// to.
         /// </summary>
         [Output("nodeName")]
         public Output<string> NodeName { get; private set; } = null!;
 
         /// <summary>
-        /// Start VM on Node boot
+        /// Specifies whether a VM will be started during system
+        /// boot. (defaults to `true`)
         /// </summary>
         [Output("onBoot")]
         public Output<bool?> OnBoot { get; private set; } = null!;
 
         /// <summary>
-        /// The operating system configuration
+        /// The Operating System configuration.
         /// </summary>
         [Output("operatingSystem")]
         public Output<Outputs.VirtualMachineOperatingSystem?> OperatingSystem { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the pool to assign the virtual machine to
+        /// The identifier for a pool to assign the virtual machine
+        /// to.
         /// </summary>
         [Output("poolId")]
         public Output<string?> PoolId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to reboot vm after creation
+        /// Reboot the VM after initial creation. (defaults
+        /// to `false`)
         /// </summary>
         [Output("reboot")]
         public Output<bool?> Reboot { get; private set; } = null!;
 
         /// <summary>
-        /// The SCSI hardware type
+        /// The SCSI hardware type (defaults
+        /// to `virtio-scsi-pci`).
         /// </summary>
         [Output("scsiHardware")]
         public Output<string?> ScsiHardware { get; private set; } = null!;
 
         /// <summary>
-        /// The serial devices
+        /// A serial device (multiple blocks supported).
         /// </summary>
         [Output("serialDevices")]
         public Output<ImmutableArray<Outputs.VirtualMachineSerialDevice>> SerialDevices { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies SMBIOS (type1) settings for the VM
+        /// The SMBIOS (type1) settings for the VM.
         /// </summary>
         [Output("smbios")]
         public Output<Outputs.VirtualMachineSmbios?> Smbios { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to start the virtual machine
+        /// Whether to start the virtual machine (defaults
+        /// to `true`).
         /// </summary>
         [Output("started")]
         public Output<bool?> Started { get; private set; } = null!;
 
         /// <summary>
-        /// Defines startup and shutdown behavior of the VM
+        /// Defines startup and shutdown behavior of the VM.
         /// </summary>
         [Output("startup")]
         public Output<Outputs.VirtualMachineStartup?> Startup { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable the USB tablet device
+        /// Whether to enable the USB tablet device (defaults
+        /// to `true`).
         /// </summary>
         [Output("tabletDevice")]
         public Output<bool?> TabletDevice { get; private set; } = null!;
 
         /// <summary>
-        /// Tags of the virtual machine. This is only meta information.
+        /// A list of tags of the VM. This is only meta information (
+        /// defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
+        /// template is not sorted, then Proxmox will always report a difference on the
+        /// resource. You may use the `ignore_changes` lifecycle meta-argument to ignore
+        /// changes to this attribute.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to create a template
+        /// Whether to create a template (defaults to `false`).
         /// </summary>
         [Output("template")]
         public Output<bool?> Template { get; private set; } = null!;
 
         /// <summary>
-        /// Clone VM timeout
+        /// Timeout for cloning a VM in seconds (defaults to
+        /// 1800).
         /// </summary>
         [Output("timeoutClone")]
         public Output<int?> TimeoutClone { get; private set; } = null!;
 
         /// <summary>
-        /// Migrate VM timeout
+        /// Timeout for migrating the VM (defaults to
+        /// 1800).
         /// </summary>
         [Output("timeoutMigrate")]
         public Output<int?> TimeoutMigrate { get; private set; } = null!;
 
         /// <summary>
-        /// MoveDisk timeout
+        /// Timeout for moving the disk of a VM in
+        /// seconds (defaults to 1800).
         /// </summary>
         [Output("timeoutMoveDisk")]
         public Output<int?> TimeoutMoveDisk { get; private set; } = null!;
 
         /// <summary>
-        /// Reboot timeout
+        /// Timeout for rebooting a VM in seconds (defaults
+        /// to 1800).
         /// </summary>
         [Output("timeoutReboot")]
         public Output<int?> TimeoutReboot { get; private set; } = null!;
 
         /// <summary>
-        /// Shutdown timeout
+        /// Timeout for shutting down a VM in seconds (
+        /// defaults to 1800).
         /// </summary>
         [Output("timeoutShutdownVm")]
         public Output<int?> TimeoutShutdownVm { get; private set; } = null!;
 
         /// <summary>
-        /// Start VM timeout
+        /// Timeout for starting a VM in seconds (defaults
+        /// to 1800).
         /// </summary>
         [Output("timeoutStartVm")]
         public Output<int?> TimeoutStartVm { get; private set; } = null!;
 
         /// <summary>
-        /// Stop VM timeout
+        /// Timeout for stopping a VM in seconds (defaults
+        /// to 300).
         /// </summary>
         [Output("timeoutStopVm")]
         public Output<int?> TimeoutStopVm { get; private set; } = null!;
 
         /// <summary>
-        /// The VGA configuration
+        /// The VGA configuration.
         /// </summary>
         [Output("vga")]
         public Output<Outputs.VirtualMachineVga?> Vga { get; private set; } = null!;
 
         /// <summary>
-        /// The VM identifier
+        /// The VM identifier.
         /// </summary>
         [Output("vmId")]
         public Output<int> VmId { get; private set; } = null!;
@@ -336,25 +394,25 @@ namespace Pulumi.ProxmoxVE.VM
     public sealed class VirtualMachineArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to enable ACPI
+        /// Whether to enable ACPI (defaults to `true`).
         /// </summary>
         [Input("acpi")]
         public Input<bool>? Acpi { get; set; }
 
         /// <summary>
-        /// The QEMU agent configuration
+        /// The QEMU agent configuration.
         /// </summary>
         [Input("agent")]
         public Input<Inputs.VirtualMachineAgentArgs>? Agent { get; set; }
 
         /// <summary>
-        /// The audio devices
+        /// An audio device.
         /// </summary>
         [Input("audioDevice")]
         public Input<Inputs.VirtualMachineAudioDeviceArgs>? AudioDevice { get; set; }
 
         /// <summary>
-        /// The BIOS implementation
+        /// The BIOS implementation (defaults to `seabios`).
         /// </summary>
         [Input("bios")]
         public Input<string>? Bios { get; set; }
@@ -363,7 +421,8 @@ namespace Pulumi.ProxmoxVE.VM
         private InputList<string>? _bootOrders;
 
         /// <summary>
-        /// The guest will attempt to boot from devices in the order they appear here
+        /// Specify a list of devices to boot from in the order
+        /// they appear in the list (defaults to `[]`).
         /// </summary>
         public InputList<string> BootOrders
         {
@@ -372,25 +431,25 @@ namespace Pulumi.ProxmoxVE.VM
         }
 
         /// <summary>
-        /// The CDROM drive
+        /// The CDROM configuration.
         /// </summary>
         [Input("cdrom")]
         public Input<Inputs.VirtualMachineCdromArgs>? Cdrom { get; set; }
 
         /// <summary>
-        /// The cloning configuration
+        /// The cloning configuration.
         /// </summary>
         [Input("clone")]
         public Input<Inputs.VirtualMachineCloneArgs>? Clone { get; set; }
 
         /// <summary>
-        /// The CPU allocation
+        /// The CPU configuration.
         /// </summary>
         [Input("cpu")]
         public Input<Inputs.VirtualMachineCpuArgs>? Cpu { get; set; }
 
         /// <summary>
-        /// The description
+        /// The description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -399,7 +458,7 @@ namespace Pulumi.ProxmoxVE.VM
         private InputList<Inputs.VirtualMachineDiskArgs>? _disks;
 
         /// <summary>
-        /// The disk devices
+        /// A disk (multiple blocks supported).
         /// </summary>
         public InputList<Inputs.VirtualMachineDiskArgs> Disks
         {
@@ -408,7 +467,8 @@ namespace Pulumi.ProxmoxVE.VM
         }
 
         /// <summary>
-        /// The efidisk device
+        /// The efi disk device (required if `bios` is set
+        /// to `ovmf`)
         /// </summary>
         [Input("efiDisk")]
         public Input<Inputs.VirtualMachineEfiDiskArgs>? EfiDisk { get; set; }
@@ -417,7 +477,7 @@ namespace Pulumi.ProxmoxVE.VM
         private InputList<Inputs.VirtualMachineHostpciArgs>? _hostpcis;
 
         /// <summary>
-        /// The Host PCI devices mapped to the VM
+        /// A host PCI device mapping (multiple blocks supported).
         /// </summary>
         public InputList<Inputs.VirtualMachineHostpciArgs> Hostpcis
         {
@@ -426,43 +486,44 @@ namespace Pulumi.ProxmoxVE.VM
         }
 
         /// <summary>
-        /// The cloud-init configuration
+        /// The cloud-init configuration.
         /// </summary>
         [Input("initialization")]
         public Input<Inputs.VirtualMachineInitializationArgs>? Initialization { get; set; }
 
         /// <summary>
-        /// The keyboard layout
+        /// The keyboard layout (defaults to `en-us`).
         /// </summary>
         [Input("keyboardLayout")]
         public Input<string>? KeyboardLayout { get; set; }
 
         /// <summary>
-        /// The args implementation
+        /// Arbitrary arguments passed to kvm.
         /// </summary>
         [Input("kvmArguments")]
         public Input<string>? KvmArguments { get; set; }
 
         /// <summary>
-        /// The VM machine type, either default i440fx or q35
+        /// The VM machine type (defaults to `i440fx`).
         /// </summary>
         [Input("machine")]
         public Input<string>? Machine { get; set; }
 
         /// <summary>
-        /// The memory allocation
+        /// The VGA memory in megabytes (defaults to `16`).
         /// </summary>
         [Input("memory")]
         public Input<Inputs.VirtualMachineMemoryArgs>? Memory { get; set; }
 
         /// <summary>
-        /// Whether to migrate the VM on node change instead of re-creating it
+        /// Migrate the VM on node change instead of re-creating
+        /// it (defaults to `false`).
         /// </summary>
         [Input("migrate")]
         public Input<bool>? Migrate { get; set; }
 
         /// <summary>
-        /// The name
+        /// The virtual machine name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -471,7 +532,7 @@ namespace Pulumi.ProxmoxVE.VM
         private InputList<Inputs.VirtualMachineNetworkDeviceArgs>? _networkDevices;
 
         /// <summary>
-        /// The network devices
+        /// A network device (multiple blocks supported).
         /// </summary>
         public InputList<Inputs.VirtualMachineNetworkDeviceArgs> NetworkDevices
         {
@@ -480,37 +541,42 @@ namespace Pulumi.ProxmoxVE.VM
         }
 
         /// <summary>
-        /// The node name
+        /// The name of the node to assign the virtual machine
+        /// to.
         /// </summary>
         [Input("nodeName", required: true)]
         public Input<string> NodeName { get; set; } = null!;
 
         /// <summary>
-        /// Start VM on Node boot
+        /// Specifies whether a VM will be started during system
+        /// boot. (defaults to `true`)
         /// </summary>
         [Input("onBoot")]
         public Input<bool>? OnBoot { get; set; }
 
         /// <summary>
-        /// The operating system configuration
+        /// The Operating System configuration.
         /// </summary>
         [Input("operatingSystem")]
         public Input<Inputs.VirtualMachineOperatingSystemArgs>? OperatingSystem { get; set; }
 
         /// <summary>
-        /// The ID of the pool to assign the virtual machine to
+        /// The identifier for a pool to assign the virtual machine
+        /// to.
         /// </summary>
         [Input("poolId")]
         public Input<string>? PoolId { get; set; }
 
         /// <summary>
-        /// Whether to reboot vm after creation
+        /// Reboot the VM after initial creation. (defaults
+        /// to `false`)
         /// </summary>
         [Input("reboot")]
         public Input<bool>? Reboot { get; set; }
 
         /// <summary>
-        /// The SCSI hardware type
+        /// The SCSI hardware type (defaults
+        /// to `virtio-scsi-pci`).
         /// </summary>
         [Input("scsiHardware")]
         public Input<string>? ScsiHardware { get; set; }
@@ -519,7 +585,7 @@ namespace Pulumi.ProxmoxVE.VM
         private InputList<Inputs.VirtualMachineSerialDeviceArgs>? _serialDevices;
 
         /// <summary>
-        /// The serial devices
+        /// A serial device (multiple blocks supported).
         /// </summary>
         public InputList<Inputs.VirtualMachineSerialDeviceArgs> SerialDevices
         {
@@ -528,25 +594,27 @@ namespace Pulumi.ProxmoxVE.VM
         }
 
         /// <summary>
-        /// Specifies SMBIOS (type1) settings for the VM
+        /// The SMBIOS (type1) settings for the VM.
         /// </summary>
         [Input("smbios")]
         public Input<Inputs.VirtualMachineSmbiosArgs>? Smbios { get; set; }
 
         /// <summary>
-        /// Whether to start the virtual machine
+        /// Whether to start the virtual machine (defaults
+        /// to `true`).
         /// </summary>
         [Input("started")]
         public Input<bool>? Started { get; set; }
 
         /// <summary>
-        /// Defines startup and shutdown behavior of the VM
+        /// Defines startup and shutdown behavior of the VM.
         /// </summary>
         [Input("startup")]
         public Input<Inputs.VirtualMachineStartupArgs>? Startup { get; set; }
 
         /// <summary>
-        /// Whether to enable the USB tablet device
+        /// Whether to enable the USB tablet device (defaults
+        /// to `true`).
         /// </summary>
         [Input("tabletDevice")]
         public Input<bool>? TabletDevice { get; set; }
@@ -555,7 +623,11 @@ namespace Pulumi.ProxmoxVE.VM
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags of the virtual machine. This is only meta information.
+        /// A list of tags of the VM. This is only meta information (
+        /// defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
+        /// template is not sorted, then Proxmox will always report a difference on the
+        /// resource. You may use the `ignore_changes` lifecycle meta-argument to ignore
+        /// changes to this attribute.
         /// </summary>
         public InputList<string> Tags
         {
@@ -564,61 +636,68 @@ namespace Pulumi.ProxmoxVE.VM
         }
 
         /// <summary>
-        /// Whether to create a template
+        /// Whether to create a template (defaults to `false`).
         /// </summary>
         [Input("template")]
         public Input<bool>? Template { get; set; }
 
         /// <summary>
-        /// Clone VM timeout
+        /// Timeout for cloning a VM in seconds (defaults to
+        /// 1800).
         /// </summary>
         [Input("timeoutClone")]
         public Input<int>? TimeoutClone { get; set; }
 
         /// <summary>
-        /// Migrate VM timeout
+        /// Timeout for migrating the VM (defaults to
+        /// 1800).
         /// </summary>
         [Input("timeoutMigrate")]
         public Input<int>? TimeoutMigrate { get; set; }
 
         /// <summary>
-        /// MoveDisk timeout
+        /// Timeout for moving the disk of a VM in
+        /// seconds (defaults to 1800).
         /// </summary>
         [Input("timeoutMoveDisk")]
         public Input<int>? TimeoutMoveDisk { get; set; }
 
         /// <summary>
-        /// Reboot timeout
+        /// Timeout for rebooting a VM in seconds (defaults
+        /// to 1800).
         /// </summary>
         [Input("timeoutReboot")]
         public Input<int>? TimeoutReboot { get; set; }
 
         /// <summary>
-        /// Shutdown timeout
+        /// Timeout for shutting down a VM in seconds (
+        /// defaults to 1800).
         /// </summary>
         [Input("timeoutShutdownVm")]
         public Input<int>? TimeoutShutdownVm { get; set; }
 
         /// <summary>
-        /// Start VM timeout
+        /// Timeout for starting a VM in seconds (defaults
+        /// to 1800).
         /// </summary>
         [Input("timeoutStartVm")]
         public Input<int>? TimeoutStartVm { get; set; }
 
         /// <summary>
-        /// Stop VM timeout
+        /// Timeout for stopping a VM in seconds (defaults
+        /// to 300).
         /// </summary>
         [Input("timeoutStopVm")]
         public Input<int>? TimeoutStopVm { get; set; }
 
         /// <summary>
-        /// The VGA configuration
+        /// The VGA configuration.
         /// </summary>
         [Input("vga")]
         public Input<Inputs.VirtualMachineVgaArgs>? Vga { get; set; }
 
         /// <summary>
-        /// The VM identifier
+        /// The VM identifier.
         /// </summary>
         [Input("vmId")]
         public Input<int>? VmId { get; set; }
@@ -632,25 +711,25 @@ namespace Pulumi.ProxmoxVE.VM
     public sealed class VirtualMachineState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to enable ACPI
+        /// Whether to enable ACPI (defaults to `true`).
         /// </summary>
         [Input("acpi")]
         public Input<bool>? Acpi { get; set; }
 
         /// <summary>
-        /// The QEMU agent configuration
+        /// The QEMU agent configuration.
         /// </summary>
         [Input("agent")]
         public Input<Inputs.VirtualMachineAgentGetArgs>? Agent { get; set; }
 
         /// <summary>
-        /// The audio devices
+        /// An audio device.
         /// </summary>
         [Input("audioDevice")]
         public Input<Inputs.VirtualMachineAudioDeviceGetArgs>? AudioDevice { get; set; }
 
         /// <summary>
-        /// The BIOS implementation
+        /// The BIOS implementation (defaults to `seabios`).
         /// </summary>
         [Input("bios")]
         public Input<string>? Bios { get; set; }
@@ -659,7 +738,8 @@ namespace Pulumi.ProxmoxVE.VM
         private InputList<string>? _bootOrders;
 
         /// <summary>
-        /// The guest will attempt to boot from devices in the order they appear here
+        /// Specify a list of devices to boot from in the order
+        /// they appear in the list (defaults to `[]`).
         /// </summary>
         public InputList<string> BootOrders
         {
@@ -668,25 +748,25 @@ namespace Pulumi.ProxmoxVE.VM
         }
 
         /// <summary>
-        /// The CDROM drive
+        /// The CDROM configuration.
         /// </summary>
         [Input("cdrom")]
         public Input<Inputs.VirtualMachineCdromGetArgs>? Cdrom { get; set; }
 
         /// <summary>
-        /// The cloning configuration
+        /// The cloning configuration.
         /// </summary>
         [Input("clone")]
         public Input<Inputs.VirtualMachineCloneGetArgs>? Clone { get; set; }
 
         /// <summary>
-        /// The CPU allocation
+        /// The CPU configuration.
         /// </summary>
         [Input("cpu")]
         public Input<Inputs.VirtualMachineCpuGetArgs>? Cpu { get; set; }
 
         /// <summary>
-        /// The description
+        /// The description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -695,7 +775,7 @@ namespace Pulumi.ProxmoxVE.VM
         private InputList<Inputs.VirtualMachineDiskGetArgs>? _disks;
 
         /// <summary>
-        /// The disk devices
+        /// A disk (multiple blocks supported).
         /// </summary>
         public InputList<Inputs.VirtualMachineDiskGetArgs> Disks
         {
@@ -704,7 +784,8 @@ namespace Pulumi.ProxmoxVE.VM
         }
 
         /// <summary>
-        /// The efidisk device
+        /// The efi disk device (required if `bios` is set
+        /// to `ovmf`)
         /// </summary>
         [Input("efiDisk")]
         public Input<Inputs.VirtualMachineEfiDiskGetArgs>? EfiDisk { get; set; }
@@ -713,7 +794,7 @@ namespace Pulumi.ProxmoxVE.VM
         private InputList<Inputs.VirtualMachineHostpciGetArgs>? _hostpcis;
 
         /// <summary>
-        /// The Host PCI devices mapped to the VM
+        /// A host PCI device mapping (multiple blocks supported).
         /// </summary>
         public InputList<Inputs.VirtualMachineHostpciGetArgs> Hostpcis
         {
@@ -722,7 +803,7 @@ namespace Pulumi.ProxmoxVE.VM
         }
 
         /// <summary>
-        /// The cloud-init configuration
+        /// The cloud-init configuration.
         /// </summary>
         [Input("initialization")]
         public Input<Inputs.VirtualMachineInitializationGetArgs>? Initialization { get; set; }
@@ -731,7 +812,8 @@ namespace Pulumi.ProxmoxVE.VM
         private InputList<ImmutableArray<string>>? _ipv4Addresses;
 
         /// <summary>
-        /// The IPv4 addresses published by the QEMU agent
+        /// The IPv4 addresses per network interface published by the
+        /// QEMU agent (empty list when `agent.enabled` is `false`)
         /// </summary>
         public InputList<ImmutableArray<string>> Ipv4Addresses
         {
@@ -743,7 +825,8 @@ namespace Pulumi.ProxmoxVE.VM
         private InputList<ImmutableArray<string>>? _ipv6Addresses;
 
         /// <summary>
-        /// The IPv6 addresses published by the QEMU agent
+        /// The IPv6 addresses per network interface published by the
+        /// QEMU agent (empty list when `agent.enabled` is `false`)
         /// </summary>
         public InputList<ImmutableArray<string>> Ipv6Addresses
         {
@@ -752,13 +835,13 @@ namespace Pulumi.ProxmoxVE.VM
         }
 
         /// <summary>
-        /// The keyboard layout
+        /// The keyboard layout (defaults to `en-us`).
         /// </summary>
         [Input("keyboardLayout")]
         public Input<string>? KeyboardLayout { get; set; }
 
         /// <summary>
-        /// The args implementation
+        /// Arbitrary arguments passed to kvm.
         /// </summary>
         [Input("kvmArguments")]
         public Input<string>? KvmArguments { get; set; }
@@ -767,7 +850,8 @@ namespace Pulumi.ProxmoxVE.VM
         private InputList<string>? _macAddresses;
 
         /// <summary>
-        /// The MAC addresses for the network interfaces
+        /// The MAC addresses published by the QEMU agent with fallback
+        /// to the network device configuration, if the agent is disabled
         /// </summary>
         public InputList<string> MacAddresses
         {
@@ -776,25 +860,26 @@ namespace Pulumi.ProxmoxVE.VM
         }
 
         /// <summary>
-        /// The VM machine type, either default i440fx or q35
+        /// The VM machine type (defaults to `i440fx`).
         /// </summary>
         [Input("machine")]
         public Input<string>? Machine { get; set; }
 
         /// <summary>
-        /// The memory allocation
+        /// The VGA memory in megabytes (defaults to `16`).
         /// </summary>
         [Input("memory")]
         public Input<Inputs.VirtualMachineMemoryGetArgs>? Memory { get; set; }
 
         /// <summary>
-        /// Whether to migrate the VM on node change instead of re-creating it
+        /// Migrate the VM on node change instead of re-creating
+        /// it (defaults to `false`).
         /// </summary>
         [Input("migrate")]
         public Input<bool>? Migrate { get; set; }
 
         /// <summary>
-        /// The name
+        /// The virtual machine name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -803,7 +888,7 @@ namespace Pulumi.ProxmoxVE.VM
         private InputList<Inputs.VirtualMachineNetworkDeviceGetArgs>? _networkDevices;
 
         /// <summary>
-        /// The network devices
+        /// A network device (multiple blocks supported).
         /// </summary>
         public InputList<Inputs.VirtualMachineNetworkDeviceGetArgs> NetworkDevices
         {
@@ -815,7 +900,8 @@ namespace Pulumi.ProxmoxVE.VM
         private InputList<string>? _networkInterfaceNames;
 
         /// <summary>
-        /// The network interface names published by the QEMU agent
+        /// The network interface names published by the QEMU
+        /// agent (empty list when `agent.enabled` is `false`)
         /// </summary>
         public InputList<string> NetworkInterfaceNames
         {
@@ -824,37 +910,42 @@ namespace Pulumi.ProxmoxVE.VM
         }
 
         /// <summary>
-        /// The node name
+        /// The name of the node to assign the virtual machine
+        /// to.
         /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
 
         /// <summary>
-        /// Start VM on Node boot
+        /// Specifies whether a VM will be started during system
+        /// boot. (defaults to `true`)
         /// </summary>
         [Input("onBoot")]
         public Input<bool>? OnBoot { get; set; }
 
         /// <summary>
-        /// The operating system configuration
+        /// The Operating System configuration.
         /// </summary>
         [Input("operatingSystem")]
         public Input<Inputs.VirtualMachineOperatingSystemGetArgs>? OperatingSystem { get; set; }
 
         /// <summary>
-        /// The ID of the pool to assign the virtual machine to
+        /// The identifier for a pool to assign the virtual machine
+        /// to.
         /// </summary>
         [Input("poolId")]
         public Input<string>? PoolId { get; set; }
 
         /// <summary>
-        /// Whether to reboot vm after creation
+        /// Reboot the VM after initial creation. (defaults
+        /// to `false`)
         /// </summary>
         [Input("reboot")]
         public Input<bool>? Reboot { get; set; }
 
         /// <summary>
-        /// The SCSI hardware type
+        /// The SCSI hardware type (defaults
+        /// to `virtio-scsi-pci`).
         /// </summary>
         [Input("scsiHardware")]
         public Input<string>? ScsiHardware { get; set; }
@@ -863,7 +954,7 @@ namespace Pulumi.ProxmoxVE.VM
         private InputList<Inputs.VirtualMachineSerialDeviceGetArgs>? _serialDevices;
 
         /// <summary>
-        /// The serial devices
+        /// A serial device (multiple blocks supported).
         /// </summary>
         public InputList<Inputs.VirtualMachineSerialDeviceGetArgs> SerialDevices
         {
@@ -872,25 +963,27 @@ namespace Pulumi.ProxmoxVE.VM
         }
 
         /// <summary>
-        /// Specifies SMBIOS (type1) settings for the VM
+        /// The SMBIOS (type1) settings for the VM.
         /// </summary>
         [Input("smbios")]
         public Input<Inputs.VirtualMachineSmbiosGetArgs>? Smbios { get; set; }
 
         /// <summary>
-        /// Whether to start the virtual machine
+        /// Whether to start the virtual machine (defaults
+        /// to `true`).
         /// </summary>
         [Input("started")]
         public Input<bool>? Started { get; set; }
 
         /// <summary>
-        /// Defines startup and shutdown behavior of the VM
+        /// Defines startup and shutdown behavior of the VM.
         /// </summary>
         [Input("startup")]
         public Input<Inputs.VirtualMachineStartupGetArgs>? Startup { get; set; }
 
         /// <summary>
-        /// Whether to enable the USB tablet device
+        /// Whether to enable the USB tablet device (defaults
+        /// to `true`).
         /// </summary>
         [Input("tabletDevice")]
         public Input<bool>? TabletDevice { get; set; }
@@ -899,7 +992,11 @@ namespace Pulumi.ProxmoxVE.VM
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags of the virtual machine. This is only meta information.
+        /// A list of tags of the VM. This is only meta information (
+        /// defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
+        /// template is not sorted, then Proxmox will always report a difference on the
+        /// resource. You may use the `ignore_changes` lifecycle meta-argument to ignore
+        /// changes to this attribute.
         /// </summary>
         public InputList<string> Tags
         {
@@ -908,61 +1005,68 @@ namespace Pulumi.ProxmoxVE.VM
         }
 
         /// <summary>
-        /// Whether to create a template
+        /// Whether to create a template (defaults to `false`).
         /// </summary>
         [Input("template")]
         public Input<bool>? Template { get; set; }
 
         /// <summary>
-        /// Clone VM timeout
+        /// Timeout for cloning a VM in seconds (defaults to
+        /// 1800).
         /// </summary>
         [Input("timeoutClone")]
         public Input<int>? TimeoutClone { get; set; }
 
         /// <summary>
-        /// Migrate VM timeout
+        /// Timeout for migrating the VM (defaults to
+        /// 1800).
         /// </summary>
         [Input("timeoutMigrate")]
         public Input<int>? TimeoutMigrate { get; set; }
 
         /// <summary>
-        /// MoveDisk timeout
+        /// Timeout for moving the disk of a VM in
+        /// seconds (defaults to 1800).
         /// </summary>
         [Input("timeoutMoveDisk")]
         public Input<int>? TimeoutMoveDisk { get; set; }
 
         /// <summary>
-        /// Reboot timeout
+        /// Timeout for rebooting a VM in seconds (defaults
+        /// to 1800).
         /// </summary>
         [Input("timeoutReboot")]
         public Input<int>? TimeoutReboot { get; set; }
 
         /// <summary>
-        /// Shutdown timeout
+        /// Timeout for shutting down a VM in seconds (
+        /// defaults to 1800).
         /// </summary>
         [Input("timeoutShutdownVm")]
         public Input<int>? TimeoutShutdownVm { get; set; }
 
         /// <summary>
-        /// Start VM timeout
+        /// Timeout for starting a VM in seconds (defaults
+        /// to 1800).
         /// </summary>
         [Input("timeoutStartVm")]
         public Input<int>? TimeoutStartVm { get; set; }
 
         /// <summary>
-        /// Stop VM timeout
+        /// Timeout for stopping a VM in seconds (defaults
+        /// to 300).
         /// </summary>
         [Input("timeoutStopVm")]
         public Input<int>? TimeoutStopVm { get; set; }
 
         /// <summary>
-        /// The VGA configuration
+        /// The VGA configuration.
         /// </summary>
         [Input("vga")]
         public Input<Inputs.VirtualMachineVgaGetArgs>? Vga { get; set; }
 
         /// <summary>
-        /// The VM identifier
+        /// The VM identifier.
         /// </summary>
         [Input("vmId")]
         public Input<int>? VmId { get; set; }

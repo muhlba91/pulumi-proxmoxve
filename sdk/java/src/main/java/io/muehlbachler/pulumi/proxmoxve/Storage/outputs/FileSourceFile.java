@@ -13,24 +13,58 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FileSourceFile {
     private @Nullable Boolean changed;
+    /**
+     * @return The SHA256 checksum of the source file.
+     * 
+     */
     private @Nullable String checksum;
+    /**
+     * @return The file name.
+     * 
+     */
     private @Nullable String fileName;
+    /**
+     * @return Whether to skip the TLS verification step for
+     * HTTPS sources (defaults to `false`).
+     * 
+     */
     private @Nullable Boolean insecure;
+    /**
+     * @return A path to a local file or a URL.
+     * 
+     */
     private String path;
 
     private FileSourceFile() {}
     public Optional<Boolean> changed() {
         return Optional.ofNullable(this.changed);
     }
+    /**
+     * @return The SHA256 checksum of the source file.
+     * 
+     */
     public Optional<String> checksum() {
         return Optional.ofNullable(this.checksum);
     }
+    /**
+     * @return The file name.
+     * 
+     */
     public Optional<String> fileName() {
         return Optional.ofNullable(this.fileName);
     }
+    /**
+     * @return Whether to skip the TLS verification step for
+     * HTTPS sources (defaults to `false`).
+     * 
+     */
     public Optional<Boolean> insecure() {
         return Optional.ofNullable(this.insecure);
     }
+    /**
+     * @return A path to a local file or a URL.
+     * 
+     */
     public String path() {
         return this.path;
     }

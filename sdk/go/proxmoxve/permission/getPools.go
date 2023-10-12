@@ -8,6 +8,31 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Retrieves the identifiers for all the available resource pools.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/Permission"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Permission.GetPools(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetPools(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetPoolsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPoolsResult
@@ -21,6 +46,7 @@ func GetPools(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetPoolsResult
 // A collection of values returned by getPools.
 type GetPoolsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id      string   `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The pool identifiers.
 	PoolIds []string `pulumi:"poolIds"`
 }

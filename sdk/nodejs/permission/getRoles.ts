@@ -4,6 +4,18 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Retrieves information about all the available roles.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@pulumi/proxmoxve";
+ *
+ * const availableRoles = proxmoxve.Permission.getRoles({});
+ * ```
+ */
 export function getRoles(opts?: pulumi.InvokeOptions): Promise<GetRolesResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -19,10 +31,31 @@ export interface GetRolesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The role privileges.
+     */
     readonly privileges: string[][];
+    /**
+     * The role identifiers.
+     */
     readonly roleIds: string[];
+    /**
+     * Whether the role is special (built-in).
+     */
     readonly specials: boolean[];
 }
+/**
+ * Retrieves information about all the available roles.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@pulumi/proxmoxve";
+ *
+ * const availableRoles = proxmoxve.Permission.getRoles({});
+ * ```
+ */
 export function getRolesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetRolesResult> {
     return pulumi.output(getRoles(opts))
 }
