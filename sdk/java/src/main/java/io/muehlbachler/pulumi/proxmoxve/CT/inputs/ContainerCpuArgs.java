@@ -16,23 +16,47 @@ public final class ContainerCpuArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ContainerCpuArgs Empty = new ContainerCpuArgs();
 
+    /**
+     * The CPU architecture (defaults to `amd64`).
+     * 
+     */
     @Import(name="architecture")
     private @Nullable Output<String> architecture;
 
+    /**
+     * @return The CPU architecture (defaults to `amd64`).
+     * 
+     */
     public Optional<Output<String>> architecture() {
         return Optional.ofNullable(this.architecture);
     }
 
+    /**
+     * The number of CPU cores (defaults to `1`).
+     * 
+     */
     @Import(name="cores")
     private @Nullable Output<Integer> cores;
 
+    /**
+     * @return The number of CPU cores (defaults to `1`).
+     * 
+     */
     public Optional<Output<Integer>> cores() {
         return Optional.ofNullable(this.cores);
     }
 
+    /**
+     * The CPU units (defaults to `1024`).
+     * 
+     */
     @Import(name="units")
     private @Nullable Output<Integer> units;
 
+    /**
+     * @return The CPU units (defaults to `1024`).
+     * 
+     */
     public Optional<Output<Integer>> units() {
         return Optional.ofNullable(this.units);
     }
@@ -63,29 +87,65 @@ public final class ContainerCpuArgs extends com.pulumi.resources.ResourceArgs {
             $ = new ContainerCpuArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param architecture The CPU architecture (defaults to `amd64`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder architecture(@Nullable Output<String> architecture) {
             $.architecture = architecture;
             return this;
         }
 
+        /**
+         * @param architecture The CPU architecture (defaults to `amd64`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder architecture(String architecture) {
             return architecture(Output.of(architecture));
         }
 
+        /**
+         * @param cores The number of CPU cores (defaults to `1`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder cores(@Nullable Output<Integer> cores) {
             $.cores = cores;
             return this;
         }
 
+        /**
+         * @param cores The number of CPU cores (defaults to `1`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder cores(Integer cores) {
             return cores(Output.of(cores));
         }
 
+        /**
+         * @param units The CPU units (defaults to `1024`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder units(@Nullable Output<Integer> units) {
             $.units = units;
             return this;
         }
 
+        /**
+         * @param units The CPU units (defaults to `1024`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder units(Integer units) {
             return units(Output.of(units));
         }

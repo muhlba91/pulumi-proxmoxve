@@ -27,115 +27,127 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Manages a container.
+ * 
+ * ## Import
+ * 
+ * Instances can be imported using the `node_name` and the `vm_id`, e.g., bash
+ * 
+ * ```sh
+ *  $ pulumi import proxmoxve:CT/container:Container ubuntu_container first-node/1234
+ * ```
+ * 
+ */
 @ResourceType(type="proxmoxve:CT/container:Container")
 public class Container extends com.pulumi.resources.CustomResource {
     /**
-     * The cloning configuration
+     * The cloning configuration.
      * 
      */
     @Export(name="clone", refs={ContainerClone.class}, tree="[0]")
     private Output</* @Nullable */ ContainerClone> clone;
 
     /**
-     * @return The cloning configuration
+     * @return The cloning configuration.
      * 
      */
     public Output<Optional<ContainerClone>> clone_() {
         return Codegen.optional(this.clone);
     }
     /**
-     * The console configuration
+     * Console.
      * 
      */
     @Export(name="console", refs={ContainerConsole.class}, tree="[0]")
     private Output</* @Nullable */ ContainerConsole> console;
 
     /**
-     * @return The console configuration
+     * @return Console.
      * 
      */
     public Output<Optional<ContainerConsole>> console() {
         return Codegen.optional(this.console);
     }
     /**
-     * The CPU allocation
+     * The CPU configuration.
      * 
      */
     @Export(name="cpu", refs={ContainerCpu.class}, tree="[0]")
     private Output</* @Nullable */ ContainerCpu> cpu;
 
     /**
-     * @return The CPU allocation
+     * @return The CPU configuration.
      * 
      */
     public Output<Optional<ContainerCpu>> cpu() {
         return Codegen.optional(this.cpu);
     }
     /**
-     * The description
+     * The description.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description
+     * @return The description.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The disks
+     * The disk configuration.
      * 
      */
     @Export(name="disk", refs={ContainerDisk.class}, tree="[0]")
     private Output</* @Nullable */ ContainerDisk> disk;
 
     /**
-     * @return The disks
+     * @return The disk configuration.
      * 
      */
     public Output<Optional<ContainerDisk>> disk() {
         return Codegen.optional(this.disk);
     }
     /**
-     * Features
+     * The container features
      * 
      */
     @Export(name="features", refs={ContainerFeatures.class}, tree="[0]")
     private Output</* @Nullable */ ContainerFeatures> features;
 
     /**
-     * @return Features
+     * @return The container features
      * 
      */
     public Output<Optional<ContainerFeatures>> features() {
         return Codegen.optional(this.features);
     }
     /**
-     * The initialization configuration
+     * The initialization configuration.
      * 
      */
     @Export(name="initialization", refs={ContainerInitialization.class}, tree="[0]")
     private Output</* @Nullable */ ContainerInitialization> initialization;
 
     /**
-     * @return The initialization configuration
+     * @return The initialization configuration.
      * 
      */
     public Output<Optional<ContainerInitialization>> initialization() {
         return Codegen.optional(this.initialization);
     }
     /**
-     * The memory allocation
+     * The memory configuration.
      * 
      */
     @Export(name="memory", refs={ContainerMemory.class}, tree="[0]")
     private Output</* @Nullable */ ContainerMemory> memory;
 
     /**
-     * @return The memory allocation
+     * @return The memory configuration.
      * 
      */
     public Output<Optional<ContainerMemory>> memory() {
@@ -156,126 +168,152 @@ public class Container extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.mountPoints);
     }
     /**
-     * The network interfaces
+     * A network interface (multiple blocks
+     * supported).
      * 
      */
     @Export(name="networkInterfaces", refs={List.class,ContainerNetworkInterface.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ContainerNetworkInterface>> networkInterfaces;
 
     /**
-     * @return The network interfaces
+     * @return A network interface (multiple blocks
+     * supported).
      * 
      */
     public Output<Optional<List<ContainerNetworkInterface>>> networkInterfaces() {
         return Codegen.optional(this.networkInterfaces);
     }
     /**
-     * The node name
+     * The name of the node to assign the container to.
      * 
      */
     @Export(name="nodeName", refs={String.class}, tree="[0]")
     private Output<String> nodeName;
 
     /**
-     * @return The node name
+     * @return The name of the node to assign the container to.
      * 
      */
     public Output<String> nodeName() {
         return this.nodeName;
     }
     /**
-     * The operating system configuration
+     * The Operating System configuration.
      * 
      */
     @Export(name="operatingSystem", refs={ContainerOperatingSystem.class}, tree="[0]")
     private Output</* @Nullable */ ContainerOperatingSystem> operatingSystem;
 
     /**
-     * @return The operating system configuration
+     * @return The Operating System configuration.
      * 
      */
     public Output<Optional<ContainerOperatingSystem>> operatingSystem() {
         return Codegen.optional(this.operatingSystem);
     }
     /**
-     * The ID of the pool to assign the container to
+     * The identifier for a pool to assign the container to.
      * 
      */
     @Export(name="poolId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> poolId;
 
     /**
-     * @return The ID of the pool to assign the container to
+     * @return The identifier for a pool to assign the container to.
      * 
      */
     public Output<Optional<String>> poolId() {
         return Codegen.optional(this.poolId);
     }
     /**
-     * Whether to start the container
+     * Automatically start container when the host system boots (defaults to `true`).
+     * 
+     */
+    @Export(name="startOnBoot", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> startOnBoot;
+
+    /**
+     * @return Automatically start container when the host system boots (defaults to `true`).
+     * 
+     */
+    public Output<Optional<Boolean>> startOnBoot() {
+        return Codegen.optional(this.startOnBoot);
+    }
+    /**
+     * Whether to start the container (defaults to `true`).
      * 
      */
     @Export(name="started", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> started;
 
     /**
-     * @return Whether to start the container
+     * @return Whether to start the container (defaults to `true`).
      * 
      */
     public Output<Optional<Boolean>> started() {
         return Codegen.optional(this.started);
     }
     /**
-     * Tags of the container. This is only meta information.
+     * A list of tags the container tags. This is only meta
+     * information (defaults to `[]`). Note: Proxmox always sorts the container tags.
+     * If the list in template is not sorted, then Proxmox will always report a
+     * difference on the resource. You may use the `ignore_changes` lifecycle
+     * meta-argument to ignore changes to this attribute.
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return Tags of the container. This is only meta information.
+     * @return A list of tags the container tags. This is only meta
+     * information (defaults to `[]`). Note: Proxmox always sorts the container tags.
+     * If the list in template is not sorted, then Proxmox will always report a
+     * difference on the resource. You may use the `ignore_changes` lifecycle
+     * meta-argument to ignore changes to this attribute.
      * 
      */
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * Whether to create a template
+     * Whether to create a template (defaults to `false`).
      * 
      */
     @Export(name="template", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> template;
 
     /**
-     * @return Whether to create a template
+     * @return Whether to create a template (defaults to `false`).
      * 
      */
     public Output<Optional<Boolean>> template() {
         return Codegen.optional(this.template);
     }
     /**
-     * Whether the container runs as unprivileged on the host
+     * Whether the container runs as unprivileged on
+     * the host (defaults to `false`).
      * 
      */
     @Export(name="unprivileged", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> unprivileged;
 
     /**
-     * @return Whether the container runs as unprivileged on the host
+     * @return Whether the container runs as unprivileged on
+     * the host (defaults to `false`).
      * 
      */
     public Output<Optional<Boolean>> unprivileged() {
         return Codegen.optional(this.unprivileged);
     }
     /**
-     * The VM identifier
+     * The container identifier
      * 
      */
     @Export(name="vmId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> vmId;
 
     /**
-     * @return The VM identifier
+     * @return The container identifier
      * 
      */
     public Output<Optional<Integer>> vmId() {

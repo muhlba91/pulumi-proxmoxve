@@ -12,12 +12,21 @@ namespace Pulumi.ProxmoxVE.Permission.Inputs
 
     public sealed class GroupAclArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The path.
+        /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
 
+        /// <summary>
+        /// Whether to propagate to child paths.
+        /// </summary>
         [Input("propagate")]
         public Input<bool>? Propagate { get; set; }
 
+        /// <summary>
+        /// The role identifier.
+        /// </summary>
         [Input("roleId", required: true)]
         public Input<string> RoleId { get; set; } = null!;
 

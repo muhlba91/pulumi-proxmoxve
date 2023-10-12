@@ -13,36 +13,90 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Manages the custom SSL/TLS certificate for a specific node.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve"
+//	"github.com/pulumi/pulumi-tls/sdk/v4/go/tls"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			proxmoxVirtualEnvironmentCertificatePrivateKey, err := tls.NewPrivateKey(ctx, "proxmoxVirtualEnvironmentCertificatePrivateKey", &tls.PrivateKeyArgs{
+//				Algorithm: pulumi.String("RSA"),
+//				RsaBits:   pulumi.Int(2048),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			proxmoxVirtualEnvironmentCertificateSelfSignedCert, err := tls.NewSelfSignedCert(ctx, "proxmoxVirtualEnvironmentCertificateSelfSignedCert", &tls.SelfSignedCertArgs{
+//				KeyAlgorithm:  proxmoxVirtualEnvironmentCertificatePrivateKey.Algorithm,
+//				PrivateKeyPem: proxmoxVirtualEnvironmentCertificatePrivateKey.PrivateKeyPem,
+//				Subject: &tls.SelfSignedCertSubjectArgs{
+//					CommonName:   pulumi.String("example.com"),
+//					Organization: pulumi.String("Terraform Provider for Proxmox"),
+//				},
+//				ValidityPeriodHours: pulumi.Int(8760),
+//				AllowedUses: pulumi.StringArray{
+//					pulumi.String("key_encipherment"),
+//					pulumi.String("digital_signature"),
+//					pulumi.String("server_auth"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = proxmoxve.NewCertifi(ctx, "example", &proxmoxve.CertifiArgs{
+//				Certificate: proxmoxVirtualEnvironmentCertificateSelfSignedCert.CertPem,
+//				NodeName:    pulumi.String("first-node"),
+//				PrivateKey:  proxmoxVirtualEnvironmentCertificatePrivateKey.PrivateKeyPem,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Certifi struct {
 	pulumi.CustomResourceState
 
-	// The PEM encoded certificate
+	// The PEM encoded certificate.
 	Certificate pulumi.StringOutput `pulumi:"certificate"`
-	// The PEM encoded certificate chain
+	// The PEM encoded certificate chain.
 	CertificateChain pulumi.StringPtrOutput `pulumi:"certificateChain"`
-	// The expiration date
+	// The expiration date (RFC 3339).
 	ExpirationDate pulumi.StringOutput `pulumi:"expirationDate"`
-	// The file name
+	// The file name.
 	FileName pulumi.StringOutput `pulumi:"fileName"`
-	// The issuer
+	// The issuer.
 	Issuer pulumi.StringOutput `pulumi:"issuer"`
-	// The node name
+	// A node name.
 	NodeName pulumi.StringOutput `pulumi:"nodeName"`
 	// Whether to overwrite an existing certificate
 	Overwrite pulumi.BoolPtrOutput `pulumi:"overwrite"`
-	// The PEM encoded private key
+	// The PEM encoded private key.
 	PrivateKey pulumi.StringOutput `pulumi:"privateKey"`
-	// The public key size
+	// The public key size.
 	PublicKeySize pulumi.IntOutput `pulumi:"publicKeySize"`
-	// The public key type
+	// The public key type.
 	PublicKeyType pulumi.StringOutput `pulumi:"publicKeyType"`
-	// The SSL fingerprint
+	// The SSL fingerprint.
 	SslFingerprint pulumi.StringOutput `pulumi:"sslFingerprint"`
-	// The start date
+	// The start date (RFC 3339).
 	StartDate pulumi.StringOutput `pulumi:"startDate"`
-	// The subject
+	// The subject.
 	Subject pulumi.StringOutput `pulumi:"subject"`
-	// The subject alternative names
+	// The subject alternative names.
 	SubjectAlternativeNames pulumi.StringArrayOutput `pulumi:"subjectAlternativeNames"`
 }
 
@@ -92,64 +146,64 @@ func GetCertifi(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Certifi resources.
 type certifiState struct {
-	// The PEM encoded certificate
+	// The PEM encoded certificate.
 	Certificate *string `pulumi:"certificate"`
-	// The PEM encoded certificate chain
+	// The PEM encoded certificate chain.
 	CertificateChain *string `pulumi:"certificateChain"`
-	// The expiration date
+	// The expiration date (RFC 3339).
 	ExpirationDate *string `pulumi:"expirationDate"`
-	// The file name
+	// The file name.
 	FileName *string `pulumi:"fileName"`
-	// The issuer
+	// The issuer.
 	Issuer *string `pulumi:"issuer"`
-	// The node name
+	// A node name.
 	NodeName *string `pulumi:"nodeName"`
 	// Whether to overwrite an existing certificate
 	Overwrite *bool `pulumi:"overwrite"`
-	// The PEM encoded private key
+	// The PEM encoded private key.
 	PrivateKey *string `pulumi:"privateKey"`
-	// The public key size
+	// The public key size.
 	PublicKeySize *int `pulumi:"publicKeySize"`
-	// The public key type
+	// The public key type.
 	PublicKeyType *string `pulumi:"publicKeyType"`
-	// The SSL fingerprint
+	// The SSL fingerprint.
 	SslFingerprint *string `pulumi:"sslFingerprint"`
-	// The start date
+	// The start date (RFC 3339).
 	StartDate *string `pulumi:"startDate"`
-	// The subject
+	// The subject.
 	Subject *string `pulumi:"subject"`
-	// The subject alternative names
+	// The subject alternative names.
 	SubjectAlternativeNames []string `pulumi:"subjectAlternativeNames"`
 }
 
 type CertifiState struct {
-	// The PEM encoded certificate
+	// The PEM encoded certificate.
 	Certificate pulumi.StringPtrInput
-	// The PEM encoded certificate chain
+	// The PEM encoded certificate chain.
 	CertificateChain pulumi.StringPtrInput
-	// The expiration date
+	// The expiration date (RFC 3339).
 	ExpirationDate pulumi.StringPtrInput
-	// The file name
+	// The file name.
 	FileName pulumi.StringPtrInput
-	// The issuer
+	// The issuer.
 	Issuer pulumi.StringPtrInput
-	// The node name
+	// A node name.
 	NodeName pulumi.StringPtrInput
 	// Whether to overwrite an existing certificate
 	Overwrite pulumi.BoolPtrInput
-	// The PEM encoded private key
+	// The PEM encoded private key.
 	PrivateKey pulumi.StringPtrInput
-	// The public key size
+	// The public key size.
 	PublicKeySize pulumi.IntPtrInput
-	// The public key type
+	// The public key type.
 	PublicKeyType pulumi.StringPtrInput
-	// The SSL fingerprint
+	// The SSL fingerprint.
 	SslFingerprint pulumi.StringPtrInput
-	// The start date
+	// The start date (RFC 3339).
 	StartDate pulumi.StringPtrInput
-	// The subject
+	// The subject.
 	Subject pulumi.StringPtrInput
-	// The subject alternative names
+	// The subject alternative names.
 	SubjectAlternativeNames pulumi.StringArrayInput
 }
 
@@ -158,29 +212,29 @@ func (CertifiState) ElementType() reflect.Type {
 }
 
 type certifiArgs struct {
-	// The PEM encoded certificate
+	// The PEM encoded certificate.
 	Certificate string `pulumi:"certificate"`
-	// The PEM encoded certificate chain
+	// The PEM encoded certificate chain.
 	CertificateChain *string `pulumi:"certificateChain"`
-	// The node name
+	// A node name.
 	NodeName string `pulumi:"nodeName"`
 	// Whether to overwrite an existing certificate
 	Overwrite *bool `pulumi:"overwrite"`
-	// The PEM encoded private key
+	// The PEM encoded private key.
 	PrivateKey string `pulumi:"privateKey"`
 }
 
 // The set of arguments for constructing a Certifi resource.
 type CertifiArgs struct {
-	// The PEM encoded certificate
+	// The PEM encoded certificate.
 	Certificate pulumi.StringInput
-	// The PEM encoded certificate chain
+	// The PEM encoded certificate chain.
 	CertificateChain pulumi.StringPtrInput
-	// The node name
+	// A node name.
 	NodeName pulumi.StringInput
 	// Whether to overwrite an existing certificate
 	Overwrite pulumi.BoolPtrInput
-	// The PEM encoded private key
+	// The PEM encoded private key.
 	PrivateKey pulumi.StringInput
 }
 
@@ -295,32 +349,32 @@ func (o CertifiOutput) ToOutput(ctx context.Context) pulumix.Output[*Certifi] {
 	}
 }
 
-// The PEM encoded certificate
+// The PEM encoded certificate.
 func (o CertifiOutput) Certificate() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certifi) pulumi.StringOutput { return v.Certificate }).(pulumi.StringOutput)
 }
 
-// The PEM encoded certificate chain
+// The PEM encoded certificate chain.
 func (o CertifiOutput) CertificateChain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Certifi) pulumi.StringPtrOutput { return v.CertificateChain }).(pulumi.StringPtrOutput)
 }
 
-// The expiration date
+// The expiration date (RFC 3339).
 func (o CertifiOutput) ExpirationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certifi) pulumi.StringOutput { return v.ExpirationDate }).(pulumi.StringOutput)
 }
 
-// The file name
+// The file name.
 func (o CertifiOutput) FileName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certifi) pulumi.StringOutput { return v.FileName }).(pulumi.StringOutput)
 }
 
-// The issuer
+// The issuer.
 func (o CertifiOutput) Issuer() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certifi) pulumi.StringOutput { return v.Issuer }).(pulumi.StringOutput)
 }
 
-// The node name
+// A node name.
 func (o CertifiOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certifi) pulumi.StringOutput { return v.NodeName }).(pulumi.StringOutput)
 }
@@ -330,37 +384,37 @@ func (o CertifiOutput) Overwrite() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Certifi) pulumi.BoolPtrOutput { return v.Overwrite }).(pulumi.BoolPtrOutput)
 }
 
-// The PEM encoded private key
+// The PEM encoded private key.
 func (o CertifiOutput) PrivateKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certifi) pulumi.StringOutput { return v.PrivateKey }).(pulumi.StringOutput)
 }
 
-// The public key size
+// The public key size.
 func (o CertifiOutput) PublicKeySize() pulumi.IntOutput {
 	return o.ApplyT(func(v *Certifi) pulumi.IntOutput { return v.PublicKeySize }).(pulumi.IntOutput)
 }
 
-// The public key type
+// The public key type.
 func (o CertifiOutput) PublicKeyType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certifi) pulumi.StringOutput { return v.PublicKeyType }).(pulumi.StringOutput)
 }
 
-// The SSL fingerprint
+// The SSL fingerprint.
 func (o CertifiOutput) SslFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certifi) pulumi.StringOutput { return v.SslFingerprint }).(pulumi.StringOutput)
 }
 
-// The start date
+// The start date (RFC 3339).
 func (o CertifiOutput) StartDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certifi) pulumi.StringOutput { return v.StartDate }).(pulumi.StringOutput)
 }
 
-// The subject
+// The subject.
 func (o CertifiOutput) Subject() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certifi) pulumi.StringOutput { return v.Subject }).(pulumi.StringOutput)
 }
 
-// The subject alternative names
+// The subject alternative names.
 func (o CertifiOutput) SubjectAlternativeNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Certifi) pulumi.StringArrayOutput { return v.SubjectAlternativeNames }).(pulumi.StringArrayOutput)
 }

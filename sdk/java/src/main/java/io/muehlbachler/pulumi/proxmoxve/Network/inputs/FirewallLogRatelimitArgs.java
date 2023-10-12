@@ -17,23 +17,49 @@ public final class FirewallLogRatelimitArgs extends com.pulumi.resources.Resourc
 
     public static final FirewallLogRatelimitArgs Empty = new FirewallLogRatelimitArgs();
 
+    /**
+     * Initial burst of packages which will always get
+     * logged before the rate is applied (defaults to `5`).
+     * 
+     */
     @Import(name="burst")
     private @Nullable Output<Integer> burst;
 
+    /**
+     * @return Initial burst of packages which will always get
+     * logged before the rate is applied (defaults to `5`).
+     * 
+     */
     public Optional<Output<Integer>> burst() {
         return Optional.ofNullable(this.burst);
     }
 
+    /**
+     * Enable or disable the log rate limit.
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Enable or disable the log rate limit.
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * Frequency with which the burst bucket gets refilled (defaults to `1/second`).
+     * 
+     */
     @Import(name="rate")
     private @Nullable Output<String> rate;
 
+    /**
+     * @return Frequency with which the burst bucket gets refilled (defaults to `1/second`).
+     * 
+     */
     public Optional<Output<String>> rate() {
         return Optional.ofNullable(this.rate);
     }
@@ -64,29 +90,67 @@ public final class FirewallLogRatelimitArgs extends com.pulumi.resources.Resourc
             $ = new FirewallLogRatelimitArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param burst Initial burst of packages which will always get
+         * logged before the rate is applied (defaults to `5`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder burst(@Nullable Output<Integer> burst) {
             $.burst = burst;
             return this;
         }
 
+        /**
+         * @param burst Initial burst of packages which will always get
+         * logged before the rate is applied (defaults to `5`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder burst(Integer burst) {
             return burst(Output.of(burst));
         }
 
+        /**
+         * @param enabled Enable or disable the log rate limit.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Enable or disable the log rate limit.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param rate Frequency with which the burst bucket gets refilled (defaults to `1/second`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder rate(@Nullable Output<String> rate) {
             $.rate = rate;
             return this;
         }
 
+        /**
+         * @param rate Frequency with which the burst bucket gets refilled (defaults to `1/second`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder rate(String rate) {
             return rate(Output.of(rate));
         }

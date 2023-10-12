@@ -13,8 +13,17 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
     [OutputType]
     public sealed class ContainerCpu
     {
+        /// <summary>
+        /// The CPU architecture (defaults to `amd64`).
+        /// </summary>
         public readonly string? Architecture;
+        /// <summary>
+        /// The number of CPU cores (defaults to `1`).
+        /// </summary>
         public readonly int? Cores;
+        /// <summary>
+        /// The CPU units (defaults to `1024`).
+        /// </summary>
         public readonly int? Units;
 
         [OutputConstructor]

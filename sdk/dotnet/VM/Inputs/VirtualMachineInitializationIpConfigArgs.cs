@@ -12,9 +12,15 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
 
     public sealed class VirtualMachineInitializationIpConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The IPv4 configuration.
+        /// </summary>
         [Input("ipv4")]
         public Input<Inputs.VirtualMachineInitializationIpConfigIpv4Args>? Ipv4 { get; set; }
 
+        /// <summary>
+        /// The IPv4 configuration.
+        /// </summary>
         [Input("ipv6")]
         public Input<Inputs.VirtualMachineInitializationIpConfigIpv6Args>? Ipv6 { get; set; }
 

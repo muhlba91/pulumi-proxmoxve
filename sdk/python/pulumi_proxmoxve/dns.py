@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['DNSArgs', 'DNS']
@@ -19,20 +19,33 @@ class DNSArgs:
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a DNS resource.
-        :param pulumi.Input[str] domain: The DNS search domain
-        :param pulumi.Input[str] node_name: The node name
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] servers: The DNS servers
+        :param pulumi.Input[str] domain: The DNS search domain.
+        :param pulumi.Input[str] node_name: A node name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] servers: The DNS servers.
         """
-        pulumi.set(__self__, "domain", domain)
-        pulumi.set(__self__, "node_name", node_name)
+        DNSArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain=domain,
+            node_name=node_name,
+            servers=servers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain: pulumi.Input[str],
+             node_name: pulumi.Input[str],
+             servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("domain", domain)
+        _setter("node_name", node_name)
         if servers is not None:
-            pulumi.set(__self__, "servers", servers)
+            _setter("servers", servers)
 
     @property
     @pulumi.getter
     def domain(self) -> pulumi.Input[str]:
         """
-        The DNS search domain
+        The DNS search domain.
         """
         return pulumi.get(self, "domain")
 
@@ -44,7 +57,7 @@ class DNSArgs:
     @pulumi.getter(name="nodeName")
     def node_name(self) -> pulumi.Input[str]:
         """
-        The node name
+        A node name.
         """
         return pulumi.get(self, "node_name")
 
@@ -56,7 +69,7 @@ class DNSArgs:
     @pulumi.getter
     def servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The DNS servers
+        The DNS servers.
         """
         return pulumi.get(self, "servers")
 
@@ -73,22 +86,35 @@ class _DNSState:
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering DNS resources.
-        :param pulumi.Input[str] domain: The DNS search domain
-        :param pulumi.Input[str] node_name: The node name
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] servers: The DNS servers
+        :param pulumi.Input[str] domain: The DNS search domain.
+        :param pulumi.Input[str] node_name: A node name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] servers: The DNS servers.
         """
+        _DNSState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain=domain,
+            node_name=node_name,
+            servers=servers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain: Optional[pulumi.Input[str]] = None,
+             node_name: Optional[pulumi.Input[str]] = None,
+             servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if domain is not None:
-            pulumi.set(__self__, "domain", domain)
+            _setter("domain", domain)
         if node_name is not None:
-            pulumi.set(__self__, "node_name", node_name)
+            _setter("node_name", node_name)
         if servers is not None:
-            pulumi.set(__self__, "servers", servers)
+            _setter("servers", servers)
 
     @property
     @pulumi.getter
     def domain(self) -> Optional[pulumi.Input[str]]:
         """
-        The DNS search domain
+        The DNS search domain.
         """
         return pulumi.get(self, "domain")
 
@@ -100,7 +126,7 @@ class _DNSState:
     @pulumi.getter(name="nodeName")
     def node_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The node name
+        A node name.
         """
         return pulumi.get(self, "node_name")
 
@@ -112,7 +138,7 @@ class _DNSState:
     @pulumi.getter
     def servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The DNS servers
+        The DNS servers.
         """
         return pulumi.get(self, "servers")
 
@@ -131,12 +157,25 @@ class DNS(pulumi.CustomResource):
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Create a DNS resource with the given unique name, props, and options.
+        Manages the DNS configuration for a specific node.
+
+        ## Important Notes
+
+        Be careful not to use this resource multiple times for the same node.
+
+        ## Import
+
+        Instances can be imported using the `node_name`, e.g., bash
+
+        ```sh
+         $ pulumi import proxmoxve:index/dNS:DNS first_node first-node
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] domain: The DNS search domain
-        :param pulumi.Input[str] node_name: The node name
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] servers: The DNS servers
+        :param pulumi.Input[str] domain: The DNS search domain.
+        :param pulumi.Input[str] node_name: A node name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] servers: The DNS servers.
         """
         ...
     @overload
@@ -145,7 +184,20 @@ class DNS(pulumi.CustomResource):
                  args: DNSArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a DNS resource with the given unique name, props, and options.
+        Manages the DNS configuration for a specific node.
+
+        ## Important Notes
+
+        Be careful not to use this resource multiple times for the same node.
+
+        ## Import
+
+        Instances can be imported using the `node_name`, e.g., bash
+
+        ```sh
+         $ pulumi import proxmoxve:index/dNS:DNS first_node first-node
+        ```
+
         :param str resource_name: The name of the resource.
         :param DNSArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -156,6 +208,10 @@ class DNS(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DNSArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -200,9 +256,9 @@ class DNS(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] domain: The DNS search domain
-        :param pulumi.Input[str] node_name: The node name
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] servers: The DNS servers
+        :param pulumi.Input[str] domain: The DNS search domain.
+        :param pulumi.Input[str] node_name: A node name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] servers: The DNS servers.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -217,7 +273,7 @@ class DNS(pulumi.CustomResource):
     @pulumi.getter
     def domain(self) -> pulumi.Output[str]:
         """
-        The DNS search domain
+        The DNS search domain.
         """
         return pulumi.get(self, "domain")
 
@@ -225,7 +281,7 @@ class DNS(pulumi.CustomResource):
     @pulumi.getter(name="nodeName")
     def node_name(self) -> pulumi.Output[str]:
         """
-        The node name
+        A node name.
         """
         return pulumi.get(self, "node_name")
 
@@ -233,7 +289,7 @@ class DNS(pulumi.CustomResource):
     @pulumi.getter
     def servers(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The DNS servers
+        The DNS servers.
         """
         return pulumi.get(self, "servers")
 

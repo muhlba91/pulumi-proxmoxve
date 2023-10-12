@@ -6,6 +6,20 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Retrieves information about a specific user group.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@pulumi/proxmoxve";
+ *
+ * const operationsTeam = proxmoxve.Permission.getGroup({
+ *     groupId: "operations-team",
+ * });
+ * ```
+ */
 export function getGroup(args: GetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -18,6 +32,9 @@ export function getGroup(args: GetGroupArgs, opts?: pulumi.InvokeOptions): Promi
  * A collection of arguments for invoking getGroup.
  */
 export interface GetGroupArgs {
+    /**
+     * The group identifier.
+     */
     groupId: string;
 }
 
@@ -25,15 +42,38 @@ export interface GetGroupArgs {
  * A collection of values returned by getGroup.
  */
 export interface GetGroupResult {
+    /**
+     * The access control list.
+     */
     readonly acls: outputs.Permission.GetGroupAcl[];
+    /**
+     * The group comment.
+     */
     readonly comment: string;
     readonly groupId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The group members as a list with `username@realm` entries.
+     */
     readonly members: string[];
 }
+/**
+ * Retrieves information about a specific user group.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@pulumi/proxmoxve";
+ *
+ * const operationsTeam = proxmoxve.Permission.getGroup({
+ *     groupId: "operations-team",
+ * });
+ * ```
+ */
 export function getGroupOutput(args: GetGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupResult> {
     return pulumi.output(args).apply((a: any) => getGroup(a, opts))
 }
@@ -42,5 +82,8 @@ export function getGroupOutput(args: GetGroupOutputArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getGroup.
  */
 export interface GetGroupOutputArgs {
+    /**
+     * The group identifier.
+     */
     groupId: pulumi.Input<string>;
 }

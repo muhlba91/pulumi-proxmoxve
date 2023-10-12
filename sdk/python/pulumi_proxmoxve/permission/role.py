@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RoleArgs', 'Role']
@@ -18,17 +18,28 @@ class RoleArgs:
                  role_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a Role resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: The role privileges
-        :param pulumi.Input[str] role_id: The role id
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: The role privileges.
+        :param pulumi.Input[str] role_id: The role identifier.
         """
-        pulumi.set(__self__, "privileges", privileges)
-        pulumi.set(__self__, "role_id", role_id)
+        RoleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            privileges=privileges,
+            role_id=role_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             privileges: pulumi.Input[Sequence[pulumi.Input[str]]],
+             role_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("privileges", privileges)
+        _setter("role_id", role_id)
 
     @property
     @pulumi.getter
     def privileges(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        The role privileges
+        The role privileges.
         """
         return pulumi.get(self, "privileges")
 
@@ -40,7 +51,7 @@ class RoleArgs:
     @pulumi.getter(name="roleId")
     def role_id(self) -> pulumi.Input[str]:
         """
-        The role id
+        The role identifier.
         """
         return pulumi.get(self, "role_id")
 
@@ -56,19 +67,30 @@ class _RoleState:
                  role_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Role resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: The role privileges
-        :param pulumi.Input[str] role_id: The role id
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: The role privileges.
+        :param pulumi.Input[str] role_id: The role identifier.
         """
+        _RoleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            privileges=privileges,
+            role_id=role_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             privileges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if privileges is not None:
-            pulumi.set(__self__, "privileges", privileges)
+            _setter("privileges", privileges)
         if role_id is not None:
-            pulumi.set(__self__, "role_id", role_id)
+            _setter("role_id", role_id)
 
     @property
     @pulumi.getter
     def privileges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The role privileges
+        The role privileges.
         """
         return pulumi.get(self, "privileges")
 
@@ -80,7 +102,7 @@ class _RoleState:
     @pulumi.getter(name="roleId")
     def role_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The role id
+        The role identifier.
         """
         return pulumi.get(self, "role_id")
 
@@ -98,11 +120,31 @@ class Role(pulumi.CustomResource):
                  role_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Role resource with the given unique name, props, and options.
+        Manages a role.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        operations_monitoring = proxmoxve.permission.Role("operationsMonitoring",
+            privileges=["VM.Monitor"],
+            role_id="operations-monitoring")
+        ```
+
+        ## Import
+
+        Instances can be imported using the `role_id`, e.g., bash
+
+        ```sh
+         $ pulumi import proxmoxve:Permission/role:Role operations_monitoring operations-monitoring
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: The role privileges
-        :param pulumi.Input[str] role_id: The role id
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: The role privileges.
+        :param pulumi.Input[str] role_id: The role identifier.
         """
         ...
     @overload
@@ -111,7 +153,27 @@ class Role(pulumi.CustomResource):
                  args: RoleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Role resource with the given unique name, props, and options.
+        Manages a role.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        operations_monitoring = proxmoxve.permission.Role("operationsMonitoring",
+            privileges=["VM.Monitor"],
+            role_id="operations-monitoring")
+        ```
+
+        ## Import
+
+        Instances can be imported using the `role_id`, e.g., bash
+
+        ```sh
+         $ pulumi import proxmoxve:Permission/role:Role operations_monitoring operations-monitoring
+        ```
+
         :param str resource_name: The name of the resource.
         :param RoleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -122,6 +184,10 @@ class Role(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RoleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -163,8 +229,8 @@ class Role(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: The role privileges
-        :param pulumi.Input[str] role_id: The role id
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: The role privileges.
+        :param pulumi.Input[str] role_id: The role identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -178,7 +244,7 @@ class Role(pulumi.CustomResource):
     @pulumi.getter
     def privileges(self) -> pulumi.Output[Sequence[str]]:
         """
-        The role privileges
+        The role privileges.
         """
         return pulumi.get(self, "privileges")
 
@@ -186,7 +252,7 @@ class Role(pulumi.CustomResource):
     @pulumi.getter(name="roleId")
     def role_id(self) -> pulumi.Output[str]:
         """
-        The role id
+        The role identifier.
         """
         return pulumi.get(self, "role_id")
 

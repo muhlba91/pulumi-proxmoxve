@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
@@ -49,6 +49,9 @@ class GetTimeResult:
     @property
     @pulumi.getter(name="localTime")
     def local_time(self) -> str:
+        """
+        The node's local time.
+        """
         return pulumi.get(self, "local_time")
 
     @property
@@ -59,11 +62,17 @@ class GetTimeResult:
     @property
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> str:
+        """
+        The node's time zone.
+        """
         return pulumi.get(self, "time_zone")
 
     @property
     @pulumi.getter(name="utcTime")
     def utc_time(self) -> str:
+        """
+        The node's local time formatted as UTC.
+        """
         return pulumi.get(self, "utc_time")
 
 
@@ -83,7 +92,19 @@ class AwaitableGetTimeResult(GetTimeResult):
 def get_time(node_name: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTimeResult:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves the current time for a specific node.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    first_node_time = proxmoxve.get_time(node_name="first-node")
+    ```
+
+
+    :param str node_name: A node name.
     """
     __args__ = dict()
     __args__['nodeName'] = node_name
@@ -102,6 +123,18 @@ def get_time(node_name: Optional[str] = None,
 def get_time_output(node_name: Optional[pulumi.Input[str]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTimeResult]:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves the current time for a specific node.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    first_node_time = proxmoxve.get_time(node_name="first-node")
+    ```
+
+
+    :param str node_name: A node name.
     """
     ...

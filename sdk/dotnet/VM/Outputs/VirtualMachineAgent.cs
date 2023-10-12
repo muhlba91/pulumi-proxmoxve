@@ -13,9 +13,24 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     [OutputType]
     public sealed class VirtualMachineAgent
     {
+        /// <summary>
+        /// Whether to enable the VGA device (defaults
+        /// to `true`).
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// The maximum amount of time to wait for data from
+        /// the QEMU agent to become available ( defaults to `15m`).
+        /// </summary>
         public readonly string? Timeout;
+        /// <summary>
+        /// Whether to enable the FSTRIM feature in the QEMU agent
+        /// (defaults to `false`).
+        /// </summary>
         public readonly bool? Trim;
+        /// <summary>
+        /// The VGA type (defaults to `std`).
+        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]

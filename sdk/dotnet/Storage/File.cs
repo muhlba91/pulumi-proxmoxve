@@ -9,71 +9,99 @@ using Pulumi.Serialization;
 
 namespace Pulumi.ProxmoxVE.Storage
 {
+    /// <summary>
+    /// Manages a file.
+    /// 
+    /// ## Important Notes
+    /// 
+    /// The Proxmox VE API endpoint for file uploads does not support chunked transfer
+    /// encoding, which means that we must first store the source file as a temporary
+    /// file locally before uploading it.
+    /// 
+    /// You must ensure that you have at least `Size-in-MB * 2 + 1` MB of storage space
+    /// available (twice the size plus overhead because a multipart payload needs to be
+    /// created as another temporary file).
+    /// 
+    /// By default, if the specified file already exists, the resource will
+    /// unconditionally replace it and take ownership of the resource. On destruction,
+    /// the file will be deleted as if it did not exist before. If you want to prevent
+    /// the resource from replacing the file, set `overwrite` to `false`.
+    /// 
+    /// ## Import
+    /// 
+    /// Instances can be imported using the `node_name`, `datastore_id`, `content_type` and the `file_name` in the following format&lt;node_name&gt;:&lt;datastore_id&gt;/&lt;content_type&gt;/&lt;file_name&gt; Examplebash
+    /// 
+    /// ```sh
+    ///  $ pulumi import proxmoxve:Storage/file:File cloud_config pve/local:snippets/example.cloud-config.yaml
+    /// ```
+    /// </summary>
     [ProxmoxVEResourceType("proxmoxve:Storage/file:File")]
     public partial class File : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The content type
+        /// The content type.
         /// </summary>
         [Output("contentType")]
         public Output<string> ContentType { get; private set; } = null!;
 
         /// <summary>
-        /// The datastore id
+        /// The datastore id.
         /// </summary>
         [Output("datastoreId")]
         public Output<string> DatastoreId { get; private set; } = null!;
 
         /// <summary>
-        /// The file modification date
+        /// The file modification date (RFC 3339).
         /// </summary>
         [Output("fileModificationDate")]
         public Output<string> FileModificationDate { get; private set; } = null!;
 
         /// <summary>
-        /// The file name
+        /// The file name.
         /// </summary>
         [Output("fileName")]
         public Output<string> FileName { get; private set; } = null!;
 
         /// <summary>
-        /// The file size in bytes
+        /// The file size in bytes.
         /// </summary>
         [Output("fileSize")]
         public Output<int> FileSize { get; private set; } = null!;
 
         /// <summary>
-        /// The file tag
+        /// The file tag.
         /// </summary>
         [Output("fileTag")]
         public Output<string> FileTag { get; private set; } = null!;
 
         /// <summary>
-        /// The node name
+        /// The node name.
         /// </summary>
         [Output("nodeName")]
         public Output<string> NodeName { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to overwrite the file if it already exists
+        /// Whether to overwrite an existing file (defaults to
+        /// `true`).
         /// </summary>
         [Output("overwrite")]
         public Output<bool?> Overwrite { get; private set; } = null!;
 
         /// <summary>
-        /// The source file
+        /// The source file (conflicts with `source_raw`).
         /// </summary>
         [Output("sourceFile")]
         public Output<Outputs.FileSourceFile?> SourceFile { get; private set; } = null!;
 
         /// <summary>
-        /// The raw source
+        /// The raw source (conflicts with `source_file`).
         /// </summary>
         [Output("sourceRaw")]
         public Output<Outputs.FileSourceRaw?> SourceRaw { get; private set; } = null!;
 
         /// <summary>
-        /// Timeout for uploading ISO/VSTMPL files in seconds
+        /// Timeout for uploading ISO/VSTMPL files in
+        /// seconds (defaults to 1800).
         /// </summary>
         [Output("timeoutUpload")]
         public Output<int?> TimeoutUpload { get; private set; } = null!;
@@ -126,43 +154,45 @@ namespace Pulumi.ProxmoxVE.Storage
     public sealed class FileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The content type
+        /// The content type.
         /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
 
         /// <summary>
-        /// The datastore id
+        /// The datastore id.
         /// </summary>
         [Input("datastoreId", required: true)]
         public Input<string> DatastoreId { get; set; } = null!;
 
         /// <summary>
-        /// The node name
+        /// The node name.
         /// </summary>
         [Input("nodeName", required: true)]
         public Input<string> NodeName { get; set; } = null!;
 
         /// <summary>
-        /// Whether to overwrite the file if it already exists
+        /// Whether to overwrite an existing file (defaults to
+        /// `true`).
         /// </summary>
         [Input("overwrite")]
         public Input<bool>? Overwrite { get; set; }
 
         /// <summary>
-        /// The source file
+        /// The source file (conflicts with `source_raw`).
         /// </summary>
         [Input("sourceFile")]
         public Input<Inputs.FileSourceFileArgs>? SourceFile { get; set; }
 
         /// <summary>
-        /// The raw source
+        /// The raw source (conflicts with `source_file`).
         /// </summary>
         [Input("sourceRaw")]
         public Input<Inputs.FileSourceRawArgs>? SourceRaw { get; set; }
 
         /// <summary>
-        /// Timeout for uploading ISO/VSTMPL files in seconds
+        /// Timeout for uploading ISO/VSTMPL files in
+        /// seconds (defaults to 1800).
         /// </summary>
         [Input("timeoutUpload")]
         public Input<int>? TimeoutUpload { get; set; }
@@ -176,67 +206,69 @@ namespace Pulumi.ProxmoxVE.Storage
     public sealed class FileState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The content type
+        /// The content type.
         /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
 
         /// <summary>
-        /// The datastore id
+        /// The datastore id.
         /// </summary>
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
 
         /// <summary>
-        /// The file modification date
+        /// The file modification date (RFC 3339).
         /// </summary>
         [Input("fileModificationDate")]
         public Input<string>? FileModificationDate { get; set; }
 
         /// <summary>
-        /// The file name
+        /// The file name.
         /// </summary>
         [Input("fileName")]
         public Input<string>? FileName { get; set; }
 
         /// <summary>
-        /// The file size in bytes
+        /// The file size in bytes.
         /// </summary>
         [Input("fileSize")]
         public Input<int>? FileSize { get; set; }
 
         /// <summary>
-        /// The file tag
+        /// The file tag.
         /// </summary>
         [Input("fileTag")]
         public Input<string>? FileTag { get; set; }
 
         /// <summary>
-        /// The node name
+        /// The node name.
         /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
 
         /// <summary>
-        /// Whether to overwrite the file if it already exists
+        /// Whether to overwrite an existing file (defaults to
+        /// `true`).
         /// </summary>
         [Input("overwrite")]
         public Input<bool>? Overwrite { get; set; }
 
         /// <summary>
-        /// The source file
+        /// The source file (conflicts with `source_raw`).
         /// </summary>
         [Input("sourceFile")]
         public Input<Inputs.FileSourceFileGetArgs>? SourceFile { get; set; }
 
         /// <summary>
-        /// The raw source
+        /// The raw source (conflicts with `source_file`).
         /// </summary>
         [Input("sourceRaw")]
         public Input<Inputs.FileSourceRawGetArgs>? SourceRaw { get; set; }
 
         /// <summary>
-        /// Timeout for uploading ISO/VSTMPL files in seconds
+        /// Timeout for uploading ISO/VSTMPL files in
+        /// seconds (defaults to 1800).
         /// </summary>
         [Input("timeoutUpload")]
         public Input<int>? TimeoutUpload { get; set; }

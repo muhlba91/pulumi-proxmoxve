@@ -11,21 +11,57 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VirtualMachineDiskSpeed {
+    /**
+     * @return The maximum read speed in megabytes per second.
+     * 
+     */
     private @Nullable Integer read;
+    /**
+     * @return The maximum burstable read speed in
+     * megabytes per second.
+     * 
+     */
     private @Nullable Integer readBurstable;
+    /**
+     * @return The maximum write speed in megabytes per second.
+     * 
+     */
     private @Nullable Integer write;
+    /**
+     * @return The maximum burstable write speed in
+     * megabytes per second.
+     * 
+     */
     private @Nullable Integer writeBurstable;
 
     private VirtualMachineDiskSpeed() {}
+    /**
+     * @return The maximum read speed in megabytes per second.
+     * 
+     */
     public Optional<Integer> read() {
         return Optional.ofNullable(this.read);
     }
+    /**
+     * @return The maximum burstable read speed in
+     * megabytes per second.
+     * 
+     */
     public Optional<Integer> readBurstable() {
         return Optional.ofNullable(this.readBurstable);
     }
+    /**
+     * @return The maximum write speed in megabytes per second.
+     * 
+     */
     public Optional<Integer> write() {
         return Optional.ofNullable(this.write);
     }
+    /**
+     * @return The maximum burstable write speed in
+     * megabytes per second.
+     * 
+     */
     public Optional<Integer> writeBurstable() {
         return Optional.ofNullable(this.writeBurstable);
     }

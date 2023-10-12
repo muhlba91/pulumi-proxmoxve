@@ -12,6 +12,9 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
 
     public sealed class VirtualMachineOperatingSystemArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The VGA type (defaults to `std`).
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

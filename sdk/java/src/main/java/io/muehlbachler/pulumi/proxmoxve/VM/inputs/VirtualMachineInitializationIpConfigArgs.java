@@ -16,16 +16,32 @@ public final class VirtualMachineInitializationIpConfigArgs extends com.pulumi.r
 
     public static final VirtualMachineInitializationIpConfigArgs Empty = new VirtualMachineInitializationIpConfigArgs();
 
+    /**
+     * The IPv4 configuration.
+     * 
+     */
     @Import(name="ipv4")
     private @Nullable Output<VirtualMachineInitializationIpConfigIpv4Args> ipv4;
 
+    /**
+     * @return The IPv4 configuration.
+     * 
+     */
     public Optional<Output<VirtualMachineInitializationIpConfigIpv4Args>> ipv4() {
         return Optional.ofNullable(this.ipv4);
     }
 
+    /**
+     * The IPv4 configuration.
+     * 
+     */
     @Import(name="ipv6")
     private @Nullable Output<VirtualMachineInitializationIpConfigIpv6Args> ipv6;
 
+    /**
+     * @return The IPv4 configuration.
+     * 
+     */
     public Optional<Output<VirtualMachineInitializationIpConfigIpv6Args>> ipv6() {
         return Optional.ofNullable(this.ipv6);
     }
@@ -55,20 +71,44 @@ public final class VirtualMachineInitializationIpConfigArgs extends com.pulumi.r
             $ = new VirtualMachineInitializationIpConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ipv4 The IPv4 configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv4(@Nullable Output<VirtualMachineInitializationIpConfigIpv4Args> ipv4) {
             $.ipv4 = ipv4;
             return this;
         }
 
+        /**
+         * @param ipv4 The IPv4 configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv4(VirtualMachineInitializationIpConfigIpv4Args ipv4) {
             return ipv4(Output.of(ipv4));
         }
 
+        /**
+         * @param ipv6 The IPv4 configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv6(@Nullable Output<VirtualMachineInitializationIpConfigIpv6Args> ipv6) {
             $.ipv6 = ipv6;
             return this;
         }
 
+        /**
+         * @param ipv6 The IPv4 configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv6(VirtualMachineInitializationIpConfigIpv6Args ipv6) {
             return ipv6(Output.of(ipv6));
         }

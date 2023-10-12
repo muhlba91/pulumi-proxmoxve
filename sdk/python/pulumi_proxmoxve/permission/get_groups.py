@@ -6,13 +6,14 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
     'GetGroupsResult',
     'AwaitableGetGroupsResult',
     'get_groups',
+    'get_groups_output',
 ]
 
 @pulumi.output_type
@@ -34,11 +35,17 @@ class GetGroupsResult:
     @property
     @pulumi.getter
     def comments(self) -> Sequence[str]:
+        """
+        The group comments.
+        """
         return pulumi.get(self, "comments")
 
     @property
     @pulumi.getter(name="groupIds")
     def group_ids(self) -> Sequence[str]:
+        """
+        The group identifiers.
+        """
         return pulumi.get(self, "group_ids")
 
     @property
@@ -63,7 +70,16 @@ class AwaitableGetGroupsResult(GetGroupsResult):
 
 def get_groups(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupsResult:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves basic information about all available user groups.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    available_groups = proxmoxve.Permission.get_groups()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -73,3 +89,20 @@ def get_groups(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroup
         comments=pulumi.get(__ret__, 'comments'),
         group_ids=pulumi.get(__ret__, 'group_ids'),
         id=pulumi.get(__ret__, 'id'))
+
+
+@_utilities.lift_output_func(get_groups)
+def get_groups_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupsResult]:
+    """
+    Retrieves basic information about all available user groups.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    available_groups = proxmoxve.Permission.get_groups()
+    ```
+    """
+    ...

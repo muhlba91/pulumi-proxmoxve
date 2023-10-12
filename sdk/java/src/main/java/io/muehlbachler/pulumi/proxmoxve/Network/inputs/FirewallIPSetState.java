@@ -19,14 +19,14 @@ public final class FirewallIPSetState extends com.pulumi.resources.ResourceArgs 
     public static final FirewallIPSetState Empty = new FirewallIPSetState();
 
     /**
-     * List of IP or Networks
+     * IP/CIDR block (multiple blocks supported).
      * 
      */
     @Import(name="cidrs")
     private @Nullable Output<List<FirewallIPSetCidrArgs>> cidrs;
 
     /**
-     * @return List of IP or Networks
+     * @return IP/CIDR block (multiple blocks supported).
      * 
      */
     public Optional<Output<List<FirewallIPSetCidrArgs>>> cidrs() {
@@ -34,14 +34,14 @@ public final class FirewallIPSetState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * IPSet comment
+     * Arbitrary string annotation.
      * 
      */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
     /**
-     * @return IPSet comment
+     * @return Arbitrary string annotation.
      * 
      */
     public Optional<Output<String>> comment() {
@@ -49,14 +49,14 @@ public final class FirewallIPSetState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The ID of the container to manage the firewall for.
+     * Container ID. Leave empty for cluster level aliases.
      * 
      */
     @Import(name="containerId")
     private @Nullable Output<Integer> containerId;
 
     /**
-     * @return The ID of the container to manage the firewall for.
+     * @return Container ID. Leave empty for cluster level aliases.
      * 
      */
     public Optional<Output<Integer>> containerId() {
@@ -64,14 +64,14 @@ public final class FirewallIPSetState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * IPSet name
+     * Network/IP specification in CIDR format.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return IPSet name
+     * @return Network/IP specification in CIDR format.
      * 
      */
     public Optional<Output<String>> name() {
@@ -79,14 +79,14 @@ public final class FirewallIPSetState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name of the node.
+     * Node name. Leave empty for cluster level aliases.
      * 
      */
     @Import(name="nodeName")
     private @Nullable Output<String> nodeName;
 
     /**
-     * @return The name of the node.
+     * @return Node name. Leave empty for cluster level aliases.
      * 
      */
     public Optional<Output<String>> nodeName() {
@@ -94,14 +94,14 @@ public final class FirewallIPSetState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The ID of the VM to manage the firewall for.
+     * VM ID. Leave empty for cluster level aliases.
      * 
      */
     @Import(name="vmId")
     private @Nullable Output<Integer> vmId;
 
     /**
-     * @return The ID of the VM to manage the firewall for.
+     * @return VM ID. Leave empty for cluster level aliases.
      * 
      */
     public Optional<Output<Integer>> vmId() {
@@ -138,7 +138,7 @@ public final class FirewallIPSetState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param cidrs List of IP or Networks
+         * @param cidrs IP/CIDR block (multiple blocks supported).
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class FirewallIPSetState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param cidrs List of IP or Networks
+         * @param cidrs IP/CIDR block (multiple blocks supported).
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class FirewallIPSetState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param cidrs List of IP or Networks
+         * @param cidrs IP/CIDR block (multiple blocks supported).
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class FirewallIPSetState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param comment IPSet comment
+         * @param comment Arbitrary string annotation.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class FirewallIPSetState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param comment IPSet comment
+         * @param comment Arbitrary string annotation.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class FirewallIPSetState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param containerId The ID of the container to manage the firewall for.
+         * @param containerId Container ID. Leave empty for cluster level aliases.
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class FirewallIPSetState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param containerId The ID of the container to manage the firewall for.
+         * @param containerId Container ID. Leave empty for cluster level aliases.
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class FirewallIPSetState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name IPSet name
+         * @param name Network/IP specification in CIDR format.
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class FirewallIPSetState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name IPSet name
+         * @param name Network/IP specification in CIDR format.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class FirewallIPSetState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param nodeName The name of the node.
+         * @param nodeName Node name. Leave empty for cluster level aliases.
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class FirewallIPSetState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param nodeName The name of the node.
+         * @param nodeName Node name. Leave empty for cluster level aliases.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class FirewallIPSetState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vmId The ID of the VM to manage the firewall for.
+         * @param vmId VM ID. Leave empty for cluster level aliases.
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class FirewallIPSetState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vmId The ID of the VM to manage the firewall for.
+         * @param vmId VM ID. Leave empty for cluster level aliases.
          * 
          * @return builder
          * 

@@ -13,8 +13,17 @@ namespace Pulumi.ProxmoxVE.Permission.Outputs
     [OutputType]
     public sealed class GetGroupAclResult
     {
+        /// <summary>
+        /// The path.
+        /// </summary>
         public readonly string Path;
+        /// <summary>
+        /// Whether to propagate to child paths.
+        /// </summary>
         public readonly bool Propagate;
+        /// <summary>
+        /// The role identifier.
+        /// </summary>
         public readonly string RoleId;
 
         [OutputConstructor]

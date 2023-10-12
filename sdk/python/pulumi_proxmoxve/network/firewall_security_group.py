@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -24,30 +24,49 @@ class FirewallSecurityGroupArgs:
                  vm_id: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a FirewallSecurityGroup resource.
-        :param pulumi.Input[Sequence[pulumi.Input['FirewallSecurityGroupRuleArgs']]] rules: List of rules
-        :param pulumi.Input[str] comment: Security group comment
+        :param pulumi.Input[Sequence[pulumi.Input['FirewallSecurityGroupRuleArgs']]] rules: Firewall rule block (multiple blocks supported).
+        :param pulumi.Input[str] comment: Rule comment.
         :param pulumi.Input[int] container_id: The ID of the container to manage the firewall for.
-        :param pulumi.Input[str] name: Security group name
+        :param pulumi.Input[str] name: Security group name.
         :param pulumi.Input[str] node_name: The name of the node.
         :param pulumi.Input[int] vm_id: The ID of the VM to manage the firewall for.
         """
-        pulumi.set(__self__, "rules", rules)
+        FirewallSecurityGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            rules=rules,
+            comment=comment,
+            container_id=container_id,
+            name=name,
+            node_name=node_name,
+            vm_id=vm_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             rules: pulumi.Input[Sequence[pulumi.Input['FirewallSecurityGroupRuleArgs']]],
+             comment: Optional[pulumi.Input[str]] = None,
+             container_id: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             node_name: Optional[pulumi.Input[str]] = None,
+             vm_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("rules", rules)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if container_id is not None:
-            pulumi.set(__self__, "container_id", container_id)
+            _setter("container_id", container_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if node_name is not None:
-            pulumi.set(__self__, "node_name", node_name)
+            _setter("node_name", node_name)
         if vm_id is not None:
-            pulumi.set(__self__, "vm_id", vm_id)
+            _setter("vm_id", vm_id)
 
     @property
     @pulumi.getter
     def rules(self) -> pulumi.Input[Sequence[pulumi.Input['FirewallSecurityGroupRuleArgs']]]:
         """
-        List of rules
+        Firewall rule block (multiple blocks supported).
         """
         return pulumi.get(self, "rules")
 
@@ -59,7 +78,7 @@ class FirewallSecurityGroupArgs:
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
         """
-        Security group comment
+        Rule comment.
         """
         return pulumi.get(self, "comment")
 
@@ -83,7 +102,7 @@ class FirewallSecurityGroupArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Security group name
+        Security group name.
         """
         return pulumi.get(self, "name")
 
@@ -127,31 +146,50 @@ class _FirewallSecurityGroupState:
                  vm_id: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering FirewallSecurityGroup resources.
-        :param pulumi.Input[str] comment: Security group comment
+        :param pulumi.Input[str] comment: Rule comment.
         :param pulumi.Input[int] container_id: The ID of the container to manage the firewall for.
-        :param pulumi.Input[str] name: Security group name
+        :param pulumi.Input[str] name: Security group name.
         :param pulumi.Input[str] node_name: The name of the node.
-        :param pulumi.Input[Sequence[pulumi.Input['FirewallSecurityGroupRuleArgs']]] rules: List of rules
+        :param pulumi.Input[Sequence[pulumi.Input['FirewallSecurityGroupRuleArgs']]] rules: Firewall rule block (multiple blocks supported).
         :param pulumi.Input[int] vm_id: The ID of the VM to manage the firewall for.
         """
+        _FirewallSecurityGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comment=comment,
+            container_id=container_id,
+            name=name,
+            node_name=node_name,
+            rules=rules,
+            vm_id=vm_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comment: Optional[pulumi.Input[str]] = None,
+             container_id: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             node_name: Optional[pulumi.Input[str]] = None,
+             rules: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallSecurityGroupRuleArgs']]]] = None,
+             vm_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if container_id is not None:
-            pulumi.set(__self__, "container_id", container_id)
+            _setter("container_id", container_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if node_name is not None:
-            pulumi.set(__self__, "node_name", node_name)
+            _setter("node_name", node_name)
         if rules is not None:
-            pulumi.set(__self__, "rules", rules)
+            _setter("rules", rules)
         if vm_id is not None:
-            pulumi.set(__self__, "vm_id", vm_id)
+            _setter("vm_id", vm_id)
 
     @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
         """
-        Security group comment
+        Rule comment.
         """
         return pulumi.get(self, "comment")
 
@@ -175,7 +213,7 @@ class _FirewallSecurityGroupState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Security group name
+        Security group name.
         """
         return pulumi.get(self, "name")
 
@@ -199,7 +237,7 @@ class _FirewallSecurityGroupState:
     @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallSecurityGroupRuleArgs']]]]:
         """
-        List of rules
+        Firewall rule block (multiple blocks supported).
         """
         return pulumi.get(self, "rules")
 
@@ -233,14 +271,55 @@ class FirewallSecurityGroup(pulumi.CustomResource):
                  vm_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Create a FirewallSecurityGroup resource with the given unique name, props, and options.
+        A security group is a collection of rules, defined at cluster level, which can
+        be used in all VMs' rules. For example, you can define a group named “webserver”
+        with rules to open the http and https ports.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        webserver = proxmoxve.network.FirewallSecurityGroup("webserver",
+            comment="Managed by Terraform",
+            rules=[
+                proxmoxve.network.FirewallSecurityGroupRuleArgs(
+                    action="ACCEPT",
+                    comment="Allow HTTP",
+                    dest="192.168.1.5",
+                    dport="80",
+                    log="info",
+                    proto="tcp",
+                    type="in",
+                ),
+                proxmoxve.network.FirewallSecurityGroupRuleArgs(
+                    action="ACCEPT",
+                    comment="Allow HTTPS",
+                    dest="192.168.1.5",
+                    dport="443",
+                    log="info",
+                    proto="tcp",
+                    type="in",
+                ),
+            ])
+        ```
+
+        ## Import
+
+        Instances can be imported using the `name`, e.g., bash
+
+        ```sh
+         $ pulumi import proxmoxve:Network/firewallSecurityGroup:FirewallSecurityGroup webserver webserver
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] comment: Security group comment
+        :param pulumi.Input[str] comment: Rule comment.
         :param pulumi.Input[int] container_id: The ID of the container to manage the firewall for.
-        :param pulumi.Input[str] name: Security group name
+        :param pulumi.Input[str] name: Security group name.
         :param pulumi.Input[str] node_name: The name of the node.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallSecurityGroupRuleArgs']]]] rules: List of rules
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallSecurityGroupRuleArgs']]]] rules: Firewall rule block (multiple blocks supported).
         :param pulumi.Input[int] vm_id: The ID of the VM to manage the firewall for.
         """
         ...
@@ -250,7 +329,48 @@ class FirewallSecurityGroup(pulumi.CustomResource):
                  args: FirewallSecurityGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a FirewallSecurityGroup resource with the given unique name, props, and options.
+        A security group is a collection of rules, defined at cluster level, which can
+        be used in all VMs' rules. For example, you can define a group named “webserver”
+        with rules to open the http and https ports.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        webserver = proxmoxve.network.FirewallSecurityGroup("webserver",
+            comment="Managed by Terraform",
+            rules=[
+                proxmoxve.network.FirewallSecurityGroupRuleArgs(
+                    action="ACCEPT",
+                    comment="Allow HTTP",
+                    dest="192.168.1.5",
+                    dport="80",
+                    log="info",
+                    proto="tcp",
+                    type="in",
+                ),
+                proxmoxve.network.FirewallSecurityGroupRuleArgs(
+                    action="ACCEPT",
+                    comment="Allow HTTPS",
+                    dest="192.168.1.5",
+                    dport="443",
+                    log="info",
+                    proto="tcp",
+                    type="in",
+                ),
+            ])
+        ```
+
+        ## Import
+
+        Instances can be imported using the `name`, e.g., bash
+
+        ```sh
+         $ pulumi import proxmoxve:Network/firewallSecurityGroup:FirewallSecurityGroup webserver webserver
+        ```
+
         :param str resource_name: The name of the resource.
         :param FirewallSecurityGroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -261,6 +381,10 @@ class FirewallSecurityGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FirewallSecurityGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -312,11 +436,11 @@ class FirewallSecurityGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] comment: Security group comment
+        :param pulumi.Input[str] comment: Rule comment.
         :param pulumi.Input[int] container_id: The ID of the container to manage the firewall for.
-        :param pulumi.Input[str] name: Security group name
+        :param pulumi.Input[str] name: Security group name.
         :param pulumi.Input[str] node_name: The name of the node.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallSecurityGroupRuleArgs']]]] rules: List of rules
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallSecurityGroupRuleArgs']]]] rules: Firewall rule block (multiple blocks supported).
         :param pulumi.Input[int] vm_id: The ID of the VM to manage the firewall for.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -335,7 +459,7 @@ class FirewallSecurityGroup(pulumi.CustomResource):
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[str]]:
         """
-        Security group comment
+        Rule comment.
         """
         return pulumi.get(self, "comment")
 
@@ -351,7 +475,7 @@ class FirewallSecurityGroup(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Security group name
+        Security group name.
         """
         return pulumi.get(self, "name")
 
@@ -367,7 +491,7 @@ class FirewallSecurityGroup(pulumi.CustomResource):
     @pulumi.getter
     def rules(self) -> pulumi.Output[Sequence['outputs.FirewallSecurityGroupRule']]:
         """
-        List of rules
+        Firewall rule block (multiple blocks supported).
         """
         return pulumi.get(self, "rules")
 

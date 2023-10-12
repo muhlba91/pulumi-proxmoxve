@@ -12,9 +12,17 @@ public final class GetRolePlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetRolePlainArgs Empty = new GetRolePlainArgs();
 
+    /**
+     * The role identifier.
+     * 
+     */
     @Import(name="roleId", required=true)
     private String roleId;
 
+    /**
+     * @return The role identifier.
+     * 
+     */
     public String roleId() {
         return this.roleId;
     }
@@ -43,6 +51,12 @@ public final class GetRolePlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetRolePlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param roleId The role identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder roleId(String roleId) {
             $.roleId = roleId;
             return this;

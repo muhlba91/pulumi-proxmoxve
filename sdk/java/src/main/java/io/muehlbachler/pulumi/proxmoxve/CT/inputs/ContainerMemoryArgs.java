@@ -15,16 +15,34 @@ public final class ContainerMemoryArgs extends com.pulumi.resources.ResourceArgs
 
     public static final ContainerMemoryArgs Empty = new ContainerMemoryArgs();
 
+    /**
+     * The dedicated memory in megabytes (defaults
+     * to `512`).
+     * 
+     */
     @Import(name="dedicated")
     private @Nullable Output<Integer> dedicated;
 
+    /**
+     * @return The dedicated memory in megabytes (defaults
+     * to `512`).
+     * 
+     */
     public Optional<Output<Integer>> dedicated() {
         return Optional.ofNullable(this.dedicated);
     }
 
+    /**
+     * The swap size in megabytes (defaults to `0`).
+     * 
+     */
     @Import(name="swap")
     private @Nullable Output<Integer> swap;
 
+    /**
+     * @return The swap size in megabytes (defaults to `0`).
+     * 
+     */
     public Optional<Output<Integer>> swap() {
         return Optional.ofNullable(this.swap);
     }
@@ -54,20 +72,46 @@ public final class ContainerMemoryArgs extends com.pulumi.resources.ResourceArgs
             $ = new ContainerMemoryArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param dedicated The dedicated memory in megabytes (defaults
+         * to `512`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder dedicated(@Nullable Output<Integer> dedicated) {
             $.dedicated = dedicated;
             return this;
         }
 
+        /**
+         * @param dedicated The dedicated memory in megabytes (defaults
+         * to `512`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder dedicated(Integer dedicated) {
             return dedicated(Output.of(dedicated));
         }
 
+        /**
+         * @param swap The swap size in megabytes (defaults to `0`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder swap(@Nullable Output<Integer> swap) {
             $.swap = swap;
             return this;
         }
 
+        /**
+         * @param swap The swap size in megabytes (defaults to `0`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder swap(Integer swap) {
             return swap(Output.of(swap));
         }

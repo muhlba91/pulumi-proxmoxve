@@ -15,87 +15,136 @@ import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
 
+/**
+ * Manages the host entries on a specific node.
+ * 
+ * ## Example Usage
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.proxmoxve.Hosts;
+ * import com.pulumi.proxmoxve.HostsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var firstNodeHostEntries = new Hosts(&#34;firstNodeHostEntries&#34;, HostsArgs.builder()        
+ *             .entries(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .nodeName(&#34;first-node&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ## Important Notes
+ * 
+ * Be careful not to use this resource multiple times for the same node.
+ * 
+ * ## Import
+ * 
+ * Instances can be imported using the `node_name`, e.g., bash
+ * 
+ * ```sh
+ *  $ pulumi import proxmoxve:index/hosts:Hosts first_node_host_entries first-node
+ * ```
+ * 
+ */
 @ResourceType(type="proxmoxve:index/hosts:Hosts")
 public class Hosts extends com.pulumi.resources.CustomResource {
     /**
-     * The addresses
+     * The IP addresses.
      * 
      */
     @Export(name="addresses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> addresses;
 
     /**
-     * @return The addresses
+     * @return The IP addresses.
      * 
      */
     public Output<List<String>> addresses() {
         return this.addresses;
     }
     /**
-     * The SHA1 digest
+     * The SHA1 digest.
      * 
      */
     @Export(name="digest", refs={String.class}, tree="[0]")
     private Output<String> digest;
 
     /**
-     * @return The SHA1 digest
+     * @return The SHA1 digest.
      * 
      */
     public Output<String> digest() {
         return this.digest;
     }
     /**
-     * The host entries
+     * The host entries (conversion of `addresses` and `hostnames` into
+     * objects).
      * 
      */
     @Export(name="entries", refs={List.class,HostsEntry.class}, tree="[0,1]")
     private Output<List<HostsEntry>> entries;
 
     /**
-     * @return The host entries
+     * @return The host entries (conversion of `addresses` and `hostnames` into
+     * objects).
      * 
      */
     public Output<List<HostsEntry>> entries() {
         return this.entries;
     }
     /**
-     * The host entries
+     * A host entry (multiple blocks supported).
      * 
      */
     @Export(name="entry", refs={List.class,HostsEntry.class}, tree="[0,1]")
     private Output<List<HostsEntry>> entry;
 
     /**
-     * @return The host entries
+     * @return A host entry (multiple blocks supported).
      * 
      */
     public Output<List<HostsEntry>> entry() {
         return this.entry;
     }
     /**
-     * The hostnames
+     * The hostnames.
      * 
      */
     @Export(name="hostnames", refs={List.class,String.class}, tree="[0,[0,1]]")
     private Output<List<List<String>>> hostnames;
 
     /**
-     * @return The hostnames
+     * @return The hostnames.
      * 
      */
     public Output<List<List<String>>> hostnames() {
         return this.hostnames;
     }
     /**
-     * The node name
+     * A node name.
      * 
      */
     @Export(name="nodeName", refs={String.class}, tree="[0]")
     private Output<String> nodeName;
 
     /**
-     * @return The node name
+     * @return A node name.
      * 
      */
     public Output<String> nodeName() {

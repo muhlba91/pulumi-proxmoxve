@@ -16,189 +16,249 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Manages firewall options on VM / Container level.
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.proxmoxve.Network.FirewallOptions;
+ * import com.pulumi.proxmoxve.Network.FirewallOptionsArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new FirewallOptions(&#34;example&#34;, FirewallOptionsArgs.builder()        
+ *             .nodeName(proxmox_virtual_environment_vm.example().node_name())
+ *             .vmId(proxmox_virtual_environment_vm.example().vm_id())
+ *             .dhcp(true)
+ *             .enabled(false)
+ *             .ipfilter(true)
+ *             .logLevelIn(&#34;info&#34;)
+ *             .logLevelOut(&#34;info&#34;)
+ *             .macfilter(false)
+ *             .ndp(true)
+ *             .inputPolicy(&#34;ACCEPT&#34;)
+ *             .outputPolicy(&#34;ACCEPT&#34;)
+ *             .radv(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(proxmox_virtual_environment_vm.example())
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ */
 @ResourceType(type="proxmoxve:Network/firewallOptions:FirewallOptions")
 public class FirewallOptions extends com.pulumi.resources.CustomResource {
     /**
-     * The ID of the container to manage the firewall for.
+     * Container ID. Leave empty for cluster level aliases.
      * 
      */
     @Export(name="containerId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> containerId;
 
     /**
-     * @return The ID of the container to manage the firewall for.
+     * @return Container ID. Leave empty for cluster level aliases.
      * 
      */
     public Output<Optional<Integer>> containerId() {
         return Codegen.optional(this.containerId);
     }
     /**
-     * Enable DHCP
+     * Enable DHCP.
      * 
      */
     @Export(name="dhcp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dhcp;
 
     /**
-     * @return Enable DHCP
+     * @return Enable DHCP.
      * 
      */
     public Output<Optional<Boolean>> dhcp() {
         return Codegen.optional(this.dhcp);
     }
     /**
-     * Enable or disable the firewall
+     * Enable or disable the firewall.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
-     * @return Enable or disable the firewall
+     * @return Enable or disable the firewall.
      * 
      */
     public Output<Optional<Boolean>> enabled() {
         return Codegen.optional(this.enabled);
     }
     /**
-     * Default policy for incoming traffic
+     * The default input
+     * policy (`ACCEPT`, `DROP`, `REJECT`).
      * 
      */
     @Export(name="inputPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> inputPolicy;
 
     /**
-     * @return Default policy for incoming traffic
+     * @return The default input
+     * policy (`ACCEPT`, `DROP`, `REJECT`).
      * 
      */
     public Output<Optional<String>> inputPolicy() {
         return Codegen.optional(this.inputPolicy);
     }
     /**
-     * Enable default IP filters. This is equivalent to adding an empty ipfilter-net&lt;id&gt; ipset for every interface. Such ipsets
-     * implicitly contain sane default restrictions such as restricting IPv6 link local addresses to the one derived from the
-     * interface&#39;s MAC address. For containers the configured IP addresses will be implicitly added.
+     * Enable default IP filters. This is equivalent to
+     * adding an empty ipfilter-net&lt;id&gt; ipset for every interface. Such ipsets
+     * implicitly contain sane default restrictions such as restricting IPv6 link
+     * local addresses to the one derived from the interface&#39;s MAC address. For
+     * containers the configured IP addresses will be implicitly added.
      * 
      */
     @Export(name="ipfilter", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> ipfilter;
 
     /**
-     * @return Enable default IP filters. This is equivalent to adding an empty ipfilter-net&lt;id&gt; ipset for every interface. Such ipsets
-     * implicitly contain sane default restrictions such as restricting IPv6 link local addresses to the one derived from the
-     * interface&#39;s MAC address. For containers the configured IP addresses will be implicitly added.
+     * @return Enable default IP filters. This is equivalent to
+     * adding an empty ipfilter-net&lt;id&gt; ipset for every interface. Such ipsets
+     * implicitly contain sane default restrictions such as restricting IPv6 link
+     * local addresses to the one derived from the interface&#39;s MAC address. For
+     * containers the configured IP addresses will be implicitly added.
      * 
      */
     public Output<Optional<Boolean>> ipfilter() {
         return Codegen.optional(this.ipfilter);
     }
     /**
-     * Log level for incoming traffic.
+     * Log level for incoming
+     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
      * 
      */
     @Export(name="logLevelIn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logLevelIn;
 
     /**
-     * @return Log level for incoming traffic.
+     * @return Log level for incoming
+     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
      * 
      */
     public Output<Optional<String>> logLevelIn() {
         return Codegen.optional(this.logLevelIn);
     }
     /**
-     * Log level for outgoing traffic.
+     * Log level for outgoing
+     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
      * 
      */
     @Export(name="logLevelOut", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logLevelOut;
 
     /**
-     * @return Log level for outgoing traffic.
+     * @return Log level for outgoing
+     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
      * 
      */
     public Output<Optional<String>> logLevelOut() {
         return Codegen.optional(this.logLevelOut);
     }
     /**
-     * Enable MAC address filtering
+     * Enable/disable MAC address filter.
      * 
      */
     @Export(name="macfilter", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> macfilter;
 
     /**
-     * @return Enable MAC address filtering
+     * @return Enable/disable MAC address filter.
      * 
      */
     public Output<Optional<Boolean>> macfilter() {
         return Codegen.optional(this.macfilter);
     }
     /**
-     * Enable NDP (Neighbor Discovery Protocol)
+     * Enable NDP (Neighbor Discovery Protocol).
      * 
      */
     @Export(name="ndp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> ndp;
 
     /**
-     * @return Enable NDP (Neighbor Discovery Protocol)
+     * @return Enable NDP (Neighbor Discovery Protocol).
      * 
      */
     public Output<Optional<Boolean>> ndp() {
         return Codegen.optional(this.ndp);
     }
     /**
-     * The name of the node.
+     * Node name.
      * 
      */
     @Export(name="nodeName", refs={String.class}, tree="[0]")
     private Output<String> nodeName;
 
     /**
-     * @return The name of the node.
+     * @return Node name.
      * 
      */
     public Output<String> nodeName() {
         return this.nodeName;
     }
     /**
-     * Default policy for outgoing traffic
+     * The default output
+     * policy (`ACCEPT`, `DROP`, `REJECT`).
      * 
      */
     @Export(name="outputPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> outputPolicy;
 
     /**
-     * @return Default policy for outgoing traffic
+     * @return The default output
+     * policy (`ACCEPT`, `DROP`, `REJECT`).
      * 
      */
     public Output<Optional<String>> outputPolicy() {
         return Codegen.optional(this.outputPolicy);
     }
     /**
-     * Allow sending Router Advertisement
+     * Enable Router Advertisement.
      * 
      */
     @Export(name="radv", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> radv;
 
     /**
-     * @return Allow sending Router Advertisement
+     * @return Enable Router Advertisement.
      * 
      */
     public Output<Optional<Boolean>> radv() {
         return Codegen.optional(this.radv);
     }
     /**
-     * The ID of the VM to manage the firewall for.
+     * VM ID. Leave empty for cluster level aliases.
      * 
      */
     @Export(name="vmId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> vmId;
 
     /**
-     * @return The ID of the VM to manage the firewall for.
+     * @return VM ID. Leave empty for cluster level aliases.
      * 
      */
     public Output<Optional<Integer>> vmId() {

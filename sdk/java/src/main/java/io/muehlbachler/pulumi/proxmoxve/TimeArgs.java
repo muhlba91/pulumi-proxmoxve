@@ -14,14 +14,14 @@ public final class TimeArgs extends com.pulumi.resources.ResourceArgs {
     public static final TimeArgs Empty = new TimeArgs();
 
     /**
-     * The node name
+     * A node name.
      * 
      */
     @Import(name="nodeName", required=true)
     private Output<String> nodeName;
 
     /**
-     * @return The node name
+     * @return A node name.
      * 
      */
     public Output<String> nodeName() {
@@ -29,14 +29,14 @@ public final class TimeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The time zone
+     * The node&#39;s time zone.
      * 
      */
     @Import(name="timeZone", required=true)
     private Output<String> timeZone;
 
     /**
-     * @return The time zone
+     * @return The node&#39;s time zone.
      * 
      */
     public Output<String> timeZone() {
@@ -69,7 +69,7 @@ public final class TimeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeName The node name
+         * @param nodeName A node name.
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class TimeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeName The node name
+         * @param nodeName A node name.
          * 
          * @return builder
          * 
@@ -90,7 +90,7 @@ public final class TimeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeZone The time zone
+         * @param timeZone The node&#39;s time zone.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class TimeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeZone The time zone
+         * @param timeZone The node&#39;s time zone.
          * 
          * @return builder
          * 

@@ -12,17 +12,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VirtualMachineCdrom {
+    /**
+     * @return Whether to enable the VGA device (defaults
+     * to `true`).
+     * 
+     */
     private @Nullable Boolean enabled;
+    /**
+     * @return The file ID for a disk image (experimental -
+     * might cause high CPU utilization during import, especially with large
+     * disk images).
+     * 
+     */
     private @Nullable String fileId;
+    /**
+     * @return The hardware interface to connect the cloud-init
+     * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+     * detected if the setting is missing but a cloud-init image is present,
+     * otherwise defaults to `ide2`.
+     * 
+     */
     private @Nullable String interface_;
 
     private VirtualMachineCdrom() {}
+    /**
+     * @return Whether to enable the VGA device (defaults
+     * to `true`).
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return The file ID for a disk image (experimental -
+     * might cause high CPU utilization during import, especially with large
+     * disk images).
+     * 
+     */
     public Optional<String> fileId() {
         return Optional.ofNullable(this.fileId);
     }
+    /**
+     * @return The hardware interface to connect the cloud-init
+     * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+     * detected if the setting is missing but a cloud-init image is present,
+     * otherwise defaults to `ide2`.
+     * 
+     */
     public Optional<String> interface_() {
         return Optional.ofNullable(this.interface_);
     }

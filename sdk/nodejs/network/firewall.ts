@@ -6,6 +6,39 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Manages firewall options on the cluster level.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = new proxmoxve.network.Firewall("example", {
+ *     ebtables: false,
+ *     enabled: false,
+ *     inputPolicy: "DROP",
+ *     logRatelimit: {
+ *         burst: 10,
+ *         enabled: false,
+ *         rate: "5/second",
+ *     },
+ *     outputPolicy: "ACCEPT",
+ * });
+ * ```
+ * ## Important Notes
+ *
+ * Be careful not to use this resource multiple times for the same node.
+ *
+ * ## Import
+ *
+ * Instances can be imported without an ID, but you still need to pass one, e.g., bash
+ *
+ * ```sh
+ *  $ pulumi import proxmoxve:Network/firewall:Firewall example example
+ * ```
+ */
 export class Firewall extends pulumi.CustomResource {
     /**
      * Get an existing Firewall resource's state with the given name, ID, and optional extra
@@ -35,23 +68,23 @@ export class Firewall extends pulumi.CustomResource {
     }
 
     /**
-     * Enable ebtables cluster-wide
+     * Enable ebtables rules cluster wide.
      */
     public readonly ebtables!: pulumi.Output<boolean | undefined>;
     /**
-     * Enable or disable the firewall cluster-wide
+     * Enable or disable the log rate limit.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Default policy for incoming traffic
+     * The default input policy (`ACCEPT`, `DROP`, `REJECT`).
      */
     public readonly inputPolicy!: pulumi.Output<string | undefined>;
     /**
-     * Log ratelimiting settings
+     * The log rate limit.
      */
     public readonly logRatelimit!: pulumi.Output<outputs.Network.FirewallLogRatelimit | undefined>;
     /**
-     * Default policy for outgoing traffic
+     * The default output policy (`ACCEPT`, `DROP`, `REJECT`).
      */
     public readonly outputPolicy!: pulumi.Output<string | undefined>;
 
@@ -91,23 +124,23 @@ export class Firewall extends pulumi.CustomResource {
  */
 export interface FirewallState {
     /**
-     * Enable ebtables cluster-wide
+     * Enable ebtables rules cluster wide.
      */
     ebtables?: pulumi.Input<boolean>;
     /**
-     * Enable or disable the firewall cluster-wide
+     * Enable or disable the log rate limit.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Default policy for incoming traffic
+     * The default input policy (`ACCEPT`, `DROP`, `REJECT`).
      */
     inputPolicy?: pulumi.Input<string>;
     /**
-     * Log ratelimiting settings
+     * The log rate limit.
      */
     logRatelimit?: pulumi.Input<inputs.Network.FirewallLogRatelimit>;
     /**
-     * Default policy for outgoing traffic
+     * The default output policy (`ACCEPT`, `DROP`, `REJECT`).
      */
     outputPolicy?: pulumi.Input<string>;
 }
@@ -117,23 +150,23 @@ export interface FirewallState {
  */
 export interface FirewallArgs {
     /**
-     * Enable ebtables cluster-wide
+     * Enable ebtables rules cluster wide.
      */
     ebtables?: pulumi.Input<boolean>;
     /**
-     * Enable or disable the firewall cluster-wide
+     * Enable or disable the log rate limit.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Default policy for incoming traffic
+     * The default input policy (`ACCEPT`, `DROP`, `REJECT`).
      */
     inputPolicy?: pulumi.Input<string>;
     /**
-     * Log ratelimiting settings
+     * The log rate limit.
      */
     logRatelimit?: pulumi.Input<inputs.Network.FirewallLogRatelimit>;
     /**
-     * Default policy for outgoing traffic
+     * The default output policy (`ACCEPT`, `DROP`, `REJECT`).
      */
     outputPolicy?: pulumi.Input<string>;
 }

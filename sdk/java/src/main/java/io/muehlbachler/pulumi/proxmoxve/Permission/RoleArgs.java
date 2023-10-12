@@ -15,14 +15,14 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
     public static final RoleArgs Empty = new RoleArgs();
 
     /**
-     * The role privileges
+     * The role privileges.
      * 
      */
     @Import(name="privileges", required=true)
     private Output<List<String>> privileges;
 
     /**
-     * @return The role privileges
+     * @return The role privileges.
      * 
      */
     public Output<List<String>> privileges() {
@@ -30,14 +30,14 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The role id
+     * The role identifier.
      * 
      */
     @Import(name="roleId", required=true)
     private Output<String> roleId;
 
     /**
-     * @return The role id
+     * @return The role identifier.
      * 
      */
     public Output<String> roleId() {
@@ -70,7 +70,7 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privileges The role privileges
+         * @param privileges The role privileges.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privileges The role privileges
+         * @param privileges The role privileges.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privileges The role privileges
+         * @param privileges The role privileges.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roleId The role id
+         * @param roleId The role identifier.
          * 
          * @return builder
          * 
@@ -112,7 +112,7 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roleId The role id
+         * @param roleId The role identifier.
          * 
          * @return builder
          * 

@@ -13,10 +13,25 @@ namespace Pulumi.ProxmoxVE.Permission.Outputs
     [OutputType]
     public sealed class GetPoolMemberResult
     {
+        /// <summary>
+        /// The datastore identifier.
+        /// </summary>
         public readonly string DatastoreId;
+        /// <summary>
+        /// The member identifier.
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The node name.
+        /// </summary>
         public readonly string NodeName;
+        /// <summary>
+        /// The member type.
+        /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// The virtual machine identifier.
+        /// </summary>
         public readonly int VmId;
 
         [OutputConstructor]

@@ -11,9 +11,53 @@ namespace Pulumi.ProxmoxVE.Permission
 {
     public static class GetUsers
     {
+        /// <summary>
+        /// Retrieves information about all the available users.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var availableUsers = ProxmoxVE.Permission.GetUsers.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetUsersResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUsersResult>("proxmoxve:Permission/getUsers:getUsers", InvokeArgs.Empty, options.WithDefaults());
 
+        /// <summary>
+        /// Retrieves information about all the available users.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var availableUsers = ProxmoxVE.Permission.GetUsers.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetUsersResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUsersResult>("proxmoxve:Permission/getUsers:getUsers", InvokeArgs.Empty, options.WithDefaults());
     }
@@ -22,18 +66,45 @@ namespace Pulumi.ProxmoxVE.Permission
     [OutputType]
     public sealed class GetUsersResult
     {
+        /// <summary>
+        /// The user comments.
+        /// </summary>
         public readonly ImmutableArray<string> Comments;
+        /// <summary>
+        /// The users' email addresses.
+        /// </summary>
         public readonly ImmutableArray<string> Emails;
+        /// <summary>
+        /// Whether a user account is enabled.
+        /// </summary>
         public readonly ImmutableArray<bool> Enableds;
+        /// <summary>
+        /// The user accounts' expiration dates (RFC 3339).
+        /// </summary>
         public readonly ImmutableArray<string> ExpirationDates;
+        /// <summary>
+        /// The users' first names.
+        /// </summary>
         public readonly ImmutableArray<string> FirstNames;
+        /// <summary>
+        /// The users' groups.
+        /// </summary>
         public readonly ImmutableArray<ImmutableArray<string>> Groups;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The users' keys.
+        /// </summary>
         public readonly ImmutableArray<string> Keys;
+        /// <summary>
+        /// The users' last names.
+        /// </summary>
         public readonly ImmutableArray<string> LastNames;
+        /// <summary>
+        /// The user identifiers.
+        /// </summary>
         public readonly ImmutableArray<string> UserIds;
 
         [OutputConstructor]

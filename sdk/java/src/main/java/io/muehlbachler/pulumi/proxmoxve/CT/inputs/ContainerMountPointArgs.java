@@ -17,72 +17,164 @@ public final class ContainerMountPointArgs extends com.pulumi.resources.Resource
 
     public static final ContainerMountPointArgs Empty = new ContainerMountPointArgs();
 
+    /**
+     * Explicitly enable or disable ACL support.
+     * 
+     */
     @Import(name="acl")
     private @Nullable Output<Boolean> acl;
 
+    /**
+     * @return Explicitly enable or disable ACL support.
+     * 
+     */
     public Optional<Output<Boolean>> acl() {
         return Optional.ofNullable(this.acl);
     }
 
+    /**
+     * Whether to include the mount point in backups (only
+     * used for volume mount points).
+     * 
+     */
     @Import(name="backup")
     private @Nullable Output<Boolean> backup;
 
+    /**
+     * @return Whether to include the mount point in backups (only
+     * used for volume mount points).
+     * 
+     */
     public Optional<Output<Boolean>> backup() {
         return Optional.ofNullable(this.backup);
     }
 
+    /**
+     * List of extra mount options.
+     * 
+     */
     @Import(name="mountOptions")
     private @Nullable Output<List<String>> mountOptions;
 
+    /**
+     * @return List of extra mount options.
+     * 
+     */
     public Optional<Output<List<String>>> mountOptions() {
         return Optional.ofNullable(this.mountOptions);
     }
 
+    /**
+     * Path to the mount point as seen from inside the
+     * container.
+     * 
+     */
     @Import(name="path", required=true)
     private Output<String> path;
 
+    /**
+     * @return Path to the mount point as seen from inside the
+     * container.
+     * 
+     */
     public Output<String> path() {
         return this.path;
     }
 
+    /**
+     * Enable user quotas inside the container (not supported
+     * with ZFS subvolumes).
+     * 
+     */
     @Import(name="quota")
     private @Nullable Output<Boolean> quota;
 
+    /**
+     * @return Enable user quotas inside the container (not supported
+     * with ZFS subvolumes).
+     * 
+     */
     public Optional<Output<Boolean>> quota() {
         return Optional.ofNullable(this.quota);
     }
 
+    /**
+     * Read-only mount point.
+     * 
+     */
     @Import(name="readOnly")
     private @Nullable Output<Boolean> readOnly;
 
+    /**
+     * @return Read-only mount point.
+     * 
+     */
     public Optional<Output<Boolean>> readOnly() {
         return Optional.ofNullable(this.readOnly);
     }
 
+    /**
+     * Will include this volume to a storage replica job.
+     * 
+     */
     @Import(name="replicate")
     private @Nullable Output<Boolean> replicate;
 
+    /**
+     * @return Will include this volume to a storage replica job.
+     * 
+     */
     public Optional<Output<Boolean>> replicate() {
         return Optional.ofNullable(this.replicate);
     }
 
+    /**
+     * Mark this non-volume mount point as available on all
+     * nodes.
+     * 
+     */
     @Import(name="shared")
     private @Nullable Output<Boolean> shared;
 
+    /**
+     * @return Mark this non-volume mount point as available on all
+     * nodes.
+     * 
+     */
     public Optional<Output<Boolean>> shared() {
         return Optional.ofNullable(this.shared);
     }
 
+    /**
+     * Volume size (only for ZFS storage backed mount points).
+     * Can be specified with a unit suffix (e.g. `10G`).
+     * 
+     */
     @Import(name="size")
     private @Nullable Output<String> size;
 
+    /**
+     * @return Volume size (only for ZFS storage backed mount points).
+     * Can be specified with a unit suffix (e.g. `10G`).
+     * 
+     */
     public Optional<Output<String>> size() {
         return Optional.ofNullable(this.size);
     }
 
+    /**
+     * Volume, device or directory to mount into the
+     * container.
+     * 
+     */
     @Import(name="volume", required=true)
     private Output<String> volume;
 
+    /**
+     * @return Volume, device or directory to mount into the
+     * container.
+     * 
+     */
     public Output<String> volume() {
         return this.volume;
     }
@@ -120,96 +212,234 @@ public final class ContainerMountPointArgs extends com.pulumi.resources.Resource
             $ = new ContainerMountPointArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param acl Explicitly enable or disable ACL support.
+         * 
+         * @return builder
+         * 
+         */
         public Builder acl(@Nullable Output<Boolean> acl) {
             $.acl = acl;
             return this;
         }
 
+        /**
+         * @param acl Explicitly enable or disable ACL support.
+         * 
+         * @return builder
+         * 
+         */
         public Builder acl(Boolean acl) {
             return acl(Output.of(acl));
         }
 
+        /**
+         * @param backup Whether to include the mount point in backups (only
+         * used for volume mount points).
+         * 
+         * @return builder
+         * 
+         */
         public Builder backup(@Nullable Output<Boolean> backup) {
             $.backup = backup;
             return this;
         }
 
+        /**
+         * @param backup Whether to include the mount point in backups (only
+         * used for volume mount points).
+         * 
+         * @return builder
+         * 
+         */
         public Builder backup(Boolean backup) {
             return backup(Output.of(backup));
         }
 
+        /**
+         * @param mountOptions List of extra mount options.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mountOptions(@Nullable Output<List<String>> mountOptions) {
             $.mountOptions = mountOptions;
             return this;
         }
 
+        /**
+         * @param mountOptions List of extra mount options.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mountOptions(List<String> mountOptions) {
             return mountOptions(Output.of(mountOptions));
         }
 
+        /**
+         * @param mountOptions List of extra mount options.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mountOptions(String... mountOptions) {
             return mountOptions(List.of(mountOptions));
         }
 
+        /**
+         * @param path Path to the mount point as seen from inside the
+         * container.
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(Output<String> path) {
             $.path = path;
             return this;
         }
 
+        /**
+         * @param path Path to the mount point as seen from inside the
+         * container.
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(String path) {
             return path(Output.of(path));
         }
 
+        /**
+         * @param quota Enable user quotas inside the container (not supported
+         * with ZFS subvolumes).
+         * 
+         * @return builder
+         * 
+         */
         public Builder quota(@Nullable Output<Boolean> quota) {
             $.quota = quota;
             return this;
         }
 
+        /**
+         * @param quota Enable user quotas inside the container (not supported
+         * with ZFS subvolumes).
+         * 
+         * @return builder
+         * 
+         */
         public Builder quota(Boolean quota) {
             return quota(Output.of(quota));
         }
 
+        /**
+         * @param readOnly Read-only mount point.
+         * 
+         * @return builder
+         * 
+         */
         public Builder readOnly(@Nullable Output<Boolean> readOnly) {
             $.readOnly = readOnly;
             return this;
         }
 
+        /**
+         * @param readOnly Read-only mount point.
+         * 
+         * @return builder
+         * 
+         */
         public Builder readOnly(Boolean readOnly) {
             return readOnly(Output.of(readOnly));
         }
 
+        /**
+         * @param replicate Will include this volume to a storage replica job.
+         * 
+         * @return builder
+         * 
+         */
         public Builder replicate(@Nullable Output<Boolean> replicate) {
             $.replicate = replicate;
             return this;
         }
 
+        /**
+         * @param replicate Will include this volume to a storage replica job.
+         * 
+         * @return builder
+         * 
+         */
         public Builder replicate(Boolean replicate) {
             return replicate(Output.of(replicate));
         }
 
+        /**
+         * @param shared Mark this non-volume mount point as available on all
+         * nodes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder shared(@Nullable Output<Boolean> shared) {
             $.shared = shared;
             return this;
         }
 
+        /**
+         * @param shared Mark this non-volume mount point as available on all
+         * nodes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder shared(Boolean shared) {
             return shared(Output.of(shared));
         }
 
+        /**
+         * @param size Volume size (only for ZFS storage backed mount points).
+         * Can be specified with a unit suffix (e.g. `10G`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder size(@Nullable Output<String> size) {
             $.size = size;
             return this;
         }
 
+        /**
+         * @param size Volume size (only for ZFS storage backed mount points).
+         * Can be specified with a unit suffix (e.g. `10G`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder size(String size) {
             return size(Output.of(size));
         }
 
+        /**
+         * @param volume Volume, device or directory to mount into the
+         * container.
+         * 
+         * @return builder
+         * 
+         */
         public Builder volume(Output<String> volume) {
             $.volume = volume;
             return this;
         }
 
+        /**
+         * @param volume Volume, device or directory to mount into the
+         * container.
+         * 
+         * @return builder
+         * 
+         */
         public Builder volume(String volume) {
             return volume(Output.of(volume));
         }

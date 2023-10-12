@@ -18,14 +18,14 @@ public final class HostsState extends com.pulumi.resources.ResourceArgs {
     public static final HostsState Empty = new HostsState();
 
     /**
-     * The addresses
+     * The IP addresses.
      * 
      */
     @Import(name="addresses")
     private @Nullable Output<List<String>> addresses;
 
     /**
-     * @return The addresses
+     * @return The IP addresses.
      * 
      */
     public Optional<Output<List<String>>> addresses() {
@@ -33,14 +33,14 @@ public final class HostsState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The SHA1 digest
+     * The SHA1 digest.
      * 
      */
     @Import(name="digest")
     private @Nullable Output<String> digest;
 
     /**
-     * @return The SHA1 digest
+     * @return The SHA1 digest.
      * 
      */
     public Optional<Output<String>> digest() {
@@ -48,14 +48,16 @@ public final class HostsState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The host entries
+     * The host entries (conversion of `addresses` and `hostnames` into
+     * objects).
      * 
      */
     @Import(name="entries")
     private @Nullable Output<List<HostsEntryArgs>> entries;
 
     /**
-     * @return The host entries
+     * @return The host entries (conversion of `addresses` and `hostnames` into
+     * objects).
      * 
      */
     public Optional<Output<List<HostsEntryArgs>>> entries() {
@@ -63,14 +65,14 @@ public final class HostsState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The host entries
+     * A host entry (multiple blocks supported).
      * 
      */
     @Import(name="entry")
     private @Nullable Output<List<HostsEntryArgs>> entry;
 
     /**
-     * @return The host entries
+     * @return A host entry (multiple blocks supported).
      * 
      */
     public Optional<Output<List<HostsEntryArgs>>> entry() {
@@ -78,14 +80,14 @@ public final class HostsState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The hostnames
+     * The hostnames.
      * 
      */
     @Import(name="hostnames")
     private @Nullable Output<List<List<String>>> hostnames;
 
     /**
-     * @return The hostnames
+     * @return The hostnames.
      * 
      */
     public Optional<Output<List<List<String>>>> hostnames() {
@@ -93,14 +95,14 @@ public final class HostsState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The node name
+     * A node name.
      * 
      */
     @Import(name="nodeName")
     private @Nullable Output<String> nodeName;
 
     /**
-     * @return The node name
+     * @return A node name.
      * 
      */
     public Optional<Output<String>> nodeName() {
@@ -137,7 +139,7 @@ public final class HostsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addresses The addresses
+         * @param addresses The IP addresses.
          * 
          * @return builder
          * 
@@ -148,7 +150,7 @@ public final class HostsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addresses The addresses
+         * @param addresses The IP addresses.
          * 
          * @return builder
          * 
@@ -158,7 +160,7 @@ public final class HostsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addresses The addresses
+         * @param addresses The IP addresses.
          * 
          * @return builder
          * 
@@ -168,7 +170,7 @@ public final class HostsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param digest The SHA1 digest
+         * @param digest The SHA1 digest.
          * 
          * @return builder
          * 
@@ -179,7 +181,7 @@ public final class HostsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param digest The SHA1 digest
+         * @param digest The SHA1 digest.
          * 
          * @return builder
          * 
@@ -189,7 +191,8 @@ public final class HostsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entries The host entries
+         * @param entries The host entries (conversion of `addresses` and `hostnames` into
+         * objects).
          * 
          * @return builder
          * 
@@ -200,7 +203,8 @@ public final class HostsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entries The host entries
+         * @param entries The host entries (conversion of `addresses` and `hostnames` into
+         * objects).
          * 
          * @return builder
          * 
@@ -210,7 +214,8 @@ public final class HostsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entries The host entries
+         * @param entries The host entries (conversion of `addresses` and `hostnames` into
+         * objects).
          * 
          * @return builder
          * 
@@ -220,7 +225,7 @@ public final class HostsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entry The host entries
+         * @param entry A host entry (multiple blocks supported).
          * 
          * @return builder
          * 
@@ -231,7 +236,7 @@ public final class HostsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entry The host entries
+         * @param entry A host entry (multiple blocks supported).
          * 
          * @return builder
          * 
@@ -241,7 +246,7 @@ public final class HostsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entry The host entries
+         * @param entry A host entry (multiple blocks supported).
          * 
          * @return builder
          * 
@@ -251,7 +256,7 @@ public final class HostsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostnames The hostnames
+         * @param hostnames The hostnames.
          * 
          * @return builder
          * 
@@ -262,7 +267,7 @@ public final class HostsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostnames The hostnames
+         * @param hostnames The hostnames.
          * 
          * @return builder
          * 
@@ -272,7 +277,7 @@ public final class HostsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostnames The hostnames
+         * @param hostnames The hostnames.
          * 
          * @return builder
          * 
@@ -282,7 +287,7 @@ public final class HostsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeName The node name
+         * @param nodeName A node name.
          * 
          * @return builder
          * 
@@ -293,7 +298,7 @@ public final class HostsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeName The node name
+         * @param nodeName A node name.
          * 
          * @return builder
          * 

@@ -13,6 +13,10 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     [OutputType]
     public sealed class VirtualMachineSerialDevice
     {
+        /// <summary>
+        /// The device (defaults to `socket`).
+        /// - `/dev/*` - A host serial device.
+        /// </summary>
         public readonly string? Device;
 
         [OutputConstructor]

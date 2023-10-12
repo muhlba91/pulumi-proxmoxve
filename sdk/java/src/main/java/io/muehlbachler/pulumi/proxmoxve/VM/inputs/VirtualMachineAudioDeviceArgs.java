@@ -16,23 +16,51 @@ public final class VirtualMachineAudioDeviceArgs extends com.pulumi.resources.Re
 
     public static final VirtualMachineAudioDeviceArgs Empty = new VirtualMachineAudioDeviceArgs();
 
+    /**
+     * The device (defaults to `socket`).
+     * - `/dev/*` - A host serial device.
+     * 
+     */
     @Import(name="device")
     private @Nullable Output<String> device;
 
+    /**
+     * @return The device (defaults to `socket`).
+     * - `/dev/*` - A host serial device.
+     * 
+     */
     public Optional<Output<String>> device() {
         return Optional.ofNullable(this.device);
     }
 
+    /**
+     * The driver (defaults to `spice`).
+     * 
+     */
     @Import(name="driver")
     private @Nullable Output<String> driver;
 
+    /**
+     * @return The driver (defaults to `spice`).
+     * 
+     */
     public Optional<Output<String>> driver() {
         return Optional.ofNullable(this.driver);
     }
 
+    /**
+     * Whether to enable the VGA device (defaults
+     * to `true`).
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether to enable the VGA device (defaults
+     * to `true`).
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -63,29 +91,69 @@ public final class VirtualMachineAudioDeviceArgs extends com.pulumi.resources.Re
             $ = new VirtualMachineAudioDeviceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param device The device (defaults to `socket`).
+         * - `/dev/*` - A host serial device.
+         * 
+         * @return builder
+         * 
+         */
         public Builder device(@Nullable Output<String> device) {
             $.device = device;
             return this;
         }
 
+        /**
+         * @param device The device (defaults to `socket`).
+         * - `/dev/*` - A host serial device.
+         * 
+         * @return builder
+         * 
+         */
         public Builder device(String device) {
             return device(Output.of(device));
         }
 
+        /**
+         * @param driver The driver (defaults to `spice`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder driver(@Nullable Output<String> driver) {
             $.driver = driver;
             return this;
         }
 
+        /**
+         * @param driver The driver (defaults to `spice`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder driver(String driver) {
             return driver(Output.of(driver));
         }
 
+        /**
+         * @param enabled Whether to enable the VGA device (defaults
+         * to `true`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether to enable the VGA device (defaults
+         * to `true`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

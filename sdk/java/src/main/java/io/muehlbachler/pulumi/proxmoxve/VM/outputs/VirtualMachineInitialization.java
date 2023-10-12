@@ -15,45 +15,147 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VirtualMachineInitialization {
+    /**
+     * @return The identifier for the datastore to create the
+     * cloud-init disk in (defaults to `local-lvm`).
+     * 
+     */
     private @Nullable String datastoreId;
+    /**
+     * @return The DNS configuration.
+     * 
+     */
     private @Nullable VirtualMachineInitializationDns dns;
+    /**
+     * @return The hardware interface to connect the cloud-init
+     * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+     * detected if the setting is missing but a cloud-init image is present,
+     * otherwise defaults to `ide2`.
+     * 
+     */
     private @Nullable String interface_;
+    /**
+     * @return The IP configuration (one block per network
+     * device).
+     * 
+     */
     private @Nullable List<VirtualMachineInitializationIpConfig> ipConfigs;
+    /**
+     * @return The identifier for a file containing
+     * all meta data passed to the VM via cloud-init.
+     * 
+     */
     private @Nullable String metaDataFileId;
+    /**
+     * @return The identifier for a file containing
+     * network configuration data passed to the VM via cloud-init (conflicts
+     * with `ip_config`).
+     * 
+     */
     private @Nullable String networkDataFileId;
+    /**
+     * @return The VGA type (defaults to `std`).
+     * 
+     */
     private @Nullable String type;
+    /**
+     * @return The user account configuration (conflicts
+     * with `user_data_file_id`).
+     * 
+     */
     private @Nullable VirtualMachineInitializationUserAccount userAccount;
+    /**
+     * @return The identifier for a file containing
+     * custom user data (conflicts with `user_account`).
+     * 
+     */
     private @Nullable String userDataFileId;
+    /**
+     * @return The identifier for a file containing
+     * all vendor data passed to the VM via cloud-init.
+     * 
+     */
     private @Nullable String vendorDataFileId;
 
     private VirtualMachineInitialization() {}
+    /**
+     * @return The identifier for the datastore to create the
+     * cloud-init disk in (defaults to `local-lvm`).
+     * 
+     */
     public Optional<String> datastoreId() {
         return Optional.ofNullable(this.datastoreId);
     }
+    /**
+     * @return The DNS configuration.
+     * 
+     */
     public Optional<VirtualMachineInitializationDns> dns() {
         return Optional.ofNullable(this.dns);
     }
+    /**
+     * @return The hardware interface to connect the cloud-init
+     * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+     * detected if the setting is missing but a cloud-init image is present,
+     * otherwise defaults to `ide2`.
+     * 
+     */
     public Optional<String> interface_() {
         return Optional.ofNullable(this.interface_);
     }
+    /**
+     * @return The IP configuration (one block per network
+     * device).
+     * 
+     */
     public List<VirtualMachineInitializationIpConfig> ipConfigs() {
         return this.ipConfigs == null ? List.of() : this.ipConfigs;
     }
+    /**
+     * @return The identifier for a file containing
+     * all meta data passed to the VM via cloud-init.
+     * 
+     */
     public Optional<String> metaDataFileId() {
         return Optional.ofNullable(this.metaDataFileId);
     }
+    /**
+     * @return The identifier for a file containing
+     * network configuration data passed to the VM via cloud-init (conflicts
+     * with `ip_config`).
+     * 
+     */
     public Optional<String> networkDataFileId() {
         return Optional.ofNullable(this.networkDataFileId);
     }
+    /**
+     * @return The VGA type (defaults to `std`).
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
+    /**
+     * @return The user account configuration (conflicts
+     * with `user_data_file_id`).
+     * 
+     */
     public Optional<VirtualMachineInitializationUserAccount> userAccount() {
         return Optional.ofNullable(this.userAccount);
     }
+    /**
+     * @return The identifier for a file containing
+     * custom user data (conflicts with `user_account`).
+     * 
+     */
     public Optional<String> userDataFileId() {
         return Optional.ofNullable(this.userDataFileId);
     }
+    /**
+     * @return The identifier for a file containing
+     * all vendor data passed to the VM via cloud-init.
+     * 
+     */
     public Optional<String> vendorDataFileId() {
         return Optional.ofNullable(this.vendorDataFileId);
     }

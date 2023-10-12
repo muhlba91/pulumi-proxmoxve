@@ -13,59 +13,102 @@ import io.muehlbachler.pulumi.proxmoxve.inputs.TimeState;
 import java.lang.String;
 import javax.annotation.Nullable;
 
+/**
+ * Manages the time for a specific node.
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.proxmoxve.Time;
+ * import com.pulumi.proxmoxve.TimeArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var firstNodeTime = new Time(&#34;firstNodeTime&#34;, TimeArgs.builder()        
+ *             .nodeName(&#34;first-node&#34;)
+ *             .timeZone(&#34;UTC&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * Instances can be imported using the `node_name`, e.g., bash
+ * 
+ * ```sh
+ *  $ pulumi import proxmoxve:index/time:Time first_node first-node
+ * ```
+ * 
+ */
 @ResourceType(type="proxmoxve:index/time:Time")
 public class Time extends com.pulumi.resources.CustomResource {
     /**
-     * The local timestamp
+     * The node&#39;s local time.
      * 
      */
     @Export(name="localTime", refs={String.class}, tree="[0]")
     private Output<String> localTime;
 
     /**
-     * @return The local timestamp
+     * @return The node&#39;s local time.
      * 
      */
     public Output<String> localTime() {
         return this.localTime;
     }
     /**
-     * The node name
+     * A node name.
      * 
      */
     @Export(name="nodeName", refs={String.class}, tree="[0]")
     private Output<String> nodeName;
 
     /**
-     * @return The node name
+     * @return A node name.
      * 
      */
     public Output<String> nodeName() {
         return this.nodeName;
     }
     /**
-     * The time zone
+     * The node&#39;s time zone.
      * 
      */
     @Export(name="timeZone", refs={String.class}, tree="[0]")
     private Output<String> timeZone;
 
     /**
-     * @return The time zone
+     * @return The node&#39;s time zone.
      * 
      */
     public Output<String> timeZone() {
         return this.timeZone;
     }
     /**
-     * The UTC timestamp
+     * The node&#39;s local time formatted as UTC.
      * 
      */
     @Export(name="utcTime", refs={String.class}, tree="[0]")
     private Output<String> utcTime;
 
     /**
-     * @return The UTC timestamp
+     * @return The node&#39;s local time formatted as UTC.
      * 
      */
     public Output<String> utcTime() {

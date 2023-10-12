@@ -12,17 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FileSourceRaw {
+    /**
+     * @return The raw data.
+     * 
+     */
     private String data;
+    /**
+     * @return The file name.
+     * 
+     */
     private String fileName;
+    /**
+     * @return The number of bytes to resize the file to.
+     * 
+     */
     private @Nullable Integer resize;
 
     private FileSourceRaw() {}
+    /**
+     * @return The raw data.
+     * 
+     */
     public String data() {
         return this.data;
     }
+    /**
+     * @return The file name.
+     * 
+     */
     public String fileName() {
         return this.fileName;
     }
+    /**
+     * @return The number of bytes to resize the file to.
+     * 
+     */
     public Optional<Integer> resize() {
         return Optional.ofNullable(this.resize);
     }

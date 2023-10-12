@@ -11,17 +11,45 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VirtualMachineMemory {
+    /**
+     * @return The dedicated memory in megabytes (defaults
+     * to `512`).
+     * 
+     */
     private @Nullable Integer dedicated;
+    /**
+     * @return The floating memory in megabytes (defaults
+     * to `0`).
+     * 
+     */
     private @Nullable Integer floating;
+    /**
+     * @return The shared memory in megabytes (defaults to `0`).
+     * 
+     */
     private @Nullable Integer shared;
 
     private VirtualMachineMemory() {}
+    /**
+     * @return The dedicated memory in megabytes (defaults
+     * to `512`).
+     * 
+     */
     public Optional<Integer> dedicated() {
         return Optional.ofNullable(this.dedicated);
     }
+    /**
+     * @return The floating memory in megabytes (defaults
+     * to `0`).
+     * 
+     */
     public Optional<Integer> floating() {
         return Optional.ofNullable(this.floating);
     }
+    /**
+     * @return The shared memory in megabytes (defaults to `0`).
+     * 
+     */
     public Optional<Integer> shared() {
         return Optional.ofNullable(this.shared);
     }

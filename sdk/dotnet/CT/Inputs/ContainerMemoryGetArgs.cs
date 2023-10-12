@@ -12,9 +12,16 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
 
     public sealed class ContainerMemoryGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The dedicated memory in megabytes (defaults
+        /// to `512`).
+        /// </summary>
         [Input("dedicated")]
         public Input<int>? Dedicated { get; set; }
 
+        /// <summary>
+        /// The swap size in megabytes (defaults to `0`).
+        /// </summary>
         [Input("swap")]
         public Input<int>? Swap { get; set; }
 

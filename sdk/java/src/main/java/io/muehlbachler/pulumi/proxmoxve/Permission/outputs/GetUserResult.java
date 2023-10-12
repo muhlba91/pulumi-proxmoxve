@@ -12,41 +12,105 @@ import java.util.Objects;
 
 @CustomType
 public final class GetUserResult {
+    /**
+     * @return The access control list.
+     * 
+     */
     private List<GetUserAcl> acls;
+    /**
+     * @return The user comment.
+     * 
+     */
     private String comment;
+    /**
+     * @return The user&#39;s email address.
+     * 
+     */
     private String email;
+    /**
+     * @return Whether the user account is enabled.
+     * 
+     */
     private Boolean enabled;
+    /**
+     * @return The user account&#39;s expiration date (RFC 3339).
+     * 
+     */
     private String expirationDate;
+    /**
+     * @return The user&#39;s first name.
+     * 
+     */
     private String firstName;
+    /**
+     * @return The user&#39;s groups.
+     * 
+     */
     private List<String> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return The user&#39;s keys.
+     * 
+     */
     private String keys;
+    /**
+     * @return The user&#39;s last name.
+     * 
+     */
     private String lastName;
     private String userId;
 
     private GetUserResult() {}
+    /**
+     * @return The access control list.
+     * 
+     */
     public List<GetUserAcl> acls() {
         return this.acls;
     }
+    /**
+     * @return The user comment.
+     * 
+     */
     public String comment() {
         return this.comment;
     }
+    /**
+     * @return The user&#39;s email address.
+     * 
+     */
     public String email() {
         return this.email;
     }
+    /**
+     * @return Whether the user account is enabled.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }
+    /**
+     * @return The user account&#39;s expiration date (RFC 3339).
+     * 
+     */
     public String expirationDate() {
         return this.expirationDate;
     }
+    /**
+     * @return The user&#39;s first name.
+     * 
+     */
     public String firstName() {
         return this.firstName;
     }
+    /**
+     * @return The user&#39;s groups.
+     * 
+     */
     public List<String> groups() {
         return this.groups;
     }
@@ -57,9 +121,17 @@ public final class GetUserResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The user&#39;s keys.
+     * 
+     */
     public String keys() {
         return this.keys;
     }
+    /**
+     * @return The user&#39;s last name.
+     * 
+     */
     public String lastName() {
         return this.lastName;
     }

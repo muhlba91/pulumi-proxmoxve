@@ -13,7 +13,13 @@ namespace Pulumi.ProxmoxVE.Outputs
     [OutputType]
     public sealed class HostsEntry
     {
+        /// <summary>
+        /// The IP address.
+        /// </summary>
         public readonly string Address;
+        /// <summary>
+        /// The hostnames.
+        /// </summary>
         public readonly ImmutableArray<string> Hostnames;
 
         [OutputConstructor]

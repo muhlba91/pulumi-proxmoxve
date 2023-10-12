@@ -13,15 +13,51 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
     [OutputType]
     public sealed class ContainerMountPoint
     {
+        /// <summary>
+        /// Explicitly enable or disable ACL support.
+        /// </summary>
         public readonly bool? Acl;
+        /// <summary>
+        /// Whether to include the mount point in backups (only
+        /// used for volume mount points).
+        /// </summary>
         public readonly bool? Backup;
+        /// <summary>
+        /// List of extra mount options.
+        /// </summary>
         public readonly ImmutableArray<string> MountOptions;
+        /// <summary>
+        /// Path to the mount point as seen from inside the
+        /// container.
+        /// </summary>
         public readonly string Path;
+        /// <summary>
+        /// Enable user quotas inside the container (not supported
+        /// with ZFS subvolumes).
+        /// </summary>
         public readonly bool? Quota;
+        /// <summary>
+        /// Read-only mount point.
+        /// </summary>
         public readonly bool? ReadOnly;
+        /// <summary>
+        /// Will include this volume to a storage replica job.
+        /// </summary>
         public readonly bool? Replicate;
+        /// <summary>
+        /// Mark this non-volume mount point as available on all
+        /// nodes.
+        /// </summary>
         public readonly bool? Shared;
+        /// <summary>
+        /// Volume size (only for ZFS storage backed mount points).
+        /// Can be specified with a unit suffix (e.g. `10G`).
+        /// </summary>
         public readonly string? Size;
+        /// <summary>
+        /// Volume, device or directory to mount into the
+        /// container.
+        /// </summary>
         public readonly string Volume;
 
         [OutputConstructor]

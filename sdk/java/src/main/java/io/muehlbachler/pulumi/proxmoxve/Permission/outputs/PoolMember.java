@@ -12,25 +12,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PoolMember {
+    /**
+     * @return The datastore identifier.
+     * 
+     */
     private @Nullable String datastoreId;
+    /**
+     * @return The member identifier.
+     * 
+     */
     private @Nullable String id;
+    /**
+     * @return The node name.
+     * 
+     */
     private @Nullable String nodeName;
+    /**
+     * @return The member type.
+     * 
+     */
     private @Nullable String type;
+    /**
+     * @return The virtual machine identifier.
+     * 
+     */
     private @Nullable Integer vmId;
 
     private PoolMember() {}
+    /**
+     * @return The datastore identifier.
+     * 
+     */
     public Optional<String> datastoreId() {
         return Optional.ofNullable(this.datastoreId);
     }
+    /**
+     * @return The member identifier.
+     * 
+     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
+    /**
+     * @return The node name.
+     * 
+     */
     public Optional<String> nodeName() {
         return Optional.ofNullable(this.nodeName);
     }
+    /**
+     * @return The member type.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
+    /**
+     * @return The virtual machine identifier.
+     * 
+     */
     public Optional<Integer> vmId() {
         return Optional.ofNullable(this.vmId);
     }

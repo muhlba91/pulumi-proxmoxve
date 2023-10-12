@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -38,6 +38,11 @@ The password for the Proxmox VE API.
 ssh: Optional[str]
 """
 The SSH configuration for the Proxmox nodes.
+"""
+
+tmpDir: Optional[str]
+"""
+The alternative temporary directory.
 """
 
 username: Optional[str]

@@ -116,6 +116,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The alternative temporary directory.
+     * 
+     */
+    @Import(name="tmpDir")
+    private @Nullable Output<String> tmpDir;
+
+    /**
+     * @return The alternative temporary directory.
+     * 
+     */
+    public Optional<Output<String>> tmpDir() {
+        return Optional.ofNullable(this.tmpDir);
+    }
+
+    /**
      * The username for the Proxmox VE API.
      * 
      */
@@ -139,6 +154,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.otp = $.otp;
         this.password = $.password;
         this.ssh = $.ssh;
+        this.tmpDir = $.tmpDir;
         this.username = $.username;
     }
 
@@ -292,6 +308,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ssh(ProviderSshArgs ssh) {
             return ssh(Output.of(ssh));
+        }
+
+        /**
+         * @param tmpDir The alternative temporary directory.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tmpDir(@Nullable Output<String> tmpDir) {
+            $.tmpDir = tmpDir;
+            return this;
+        }
+
+        /**
+         * @param tmpDir The alternative temporary directory.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tmpDir(String tmpDir) {
+            return tmpDir(Output.of(tmpDir));
         }
 
         /**

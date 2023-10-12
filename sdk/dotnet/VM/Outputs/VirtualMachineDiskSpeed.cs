@@ -13,9 +13,23 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     [OutputType]
     public sealed class VirtualMachineDiskSpeed
     {
+        /// <summary>
+        /// The maximum read speed in megabytes per second.
+        /// </summary>
         public readonly int? Read;
+        /// <summary>
+        /// The maximum burstable read speed in
+        /// megabytes per second.
+        /// </summary>
         public readonly int? ReadBurstable;
+        /// <summary>
+        /// The maximum write speed in megabytes per second.
+        /// </summary>
         public readonly int? Write;
+        /// <summary>
+        /// The maximum burstable write speed in
+        /// megabytes per second.
+        /// </summary>
         public readonly int? WriteBurstable;
 
         [OutputConstructor]

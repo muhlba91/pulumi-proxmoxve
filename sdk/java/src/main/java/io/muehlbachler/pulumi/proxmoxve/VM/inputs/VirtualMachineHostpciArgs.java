@@ -16,58 +16,136 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
 
     public static final VirtualMachineHostpciArgs Empty = new VirtualMachineHostpciArgs();
 
+    /**
+     * The device (defaults to `socket`).
+     * - `/dev/*` - A host serial device.
+     * 
+     */
     @Import(name="device", required=true)
     private Output<String> device;
 
+    /**
+     * @return The device (defaults to `socket`).
+     * - `/dev/*` - A host serial device.
+     * 
+     */
     public Output<String> device() {
         return this.device;
     }
 
+    /**
+     * The PCI device ID. Use either this or `mapping`.
+     * 
+     */
     @Import(name="id")
     private @Nullable Output<String> id;
 
+    /**
+     * @return The PCI device ID. Use either this or `mapping`.
+     * 
+     */
     public Optional<Output<String>> id() {
         return Optional.ofNullable(this.id);
     }
 
+    /**
+     * The resource mapping name of the device, for
+     * example gpu. Use either this or `id`.
+     * 
+     */
     @Import(name="mapping")
     private @Nullable Output<String> mapping;
 
+    /**
+     * @return The resource mapping name of the device, for
+     * example gpu. Use either this or `id`.
+     * 
+     */
     public Optional<Output<String>> mapping() {
         return Optional.ofNullable(this.mapping);
     }
 
+    /**
+     * The mediated device ID to use.
+     * 
+     */
     @Import(name="mdev")
     private @Nullable Output<String> mdev;
 
+    /**
+     * @return The mediated device ID to use.
+     * 
+     */
     public Optional<Output<String>> mdev() {
         return Optional.ofNullable(this.mdev);
     }
 
+    /**
+     * Tells Proxmox to use a PCIe or PCI port. Some
+     * guests/device combination require PCIe rather than PCI. PCIe is only
+     * available for q35 machine types.
+     * 
+     */
     @Import(name="pcie")
     private @Nullable Output<Boolean> pcie;
 
+    /**
+     * @return Tells Proxmox to use a PCIe or PCI port. Some
+     * guests/device combination require PCIe rather than PCI. PCIe is only
+     * available for q35 machine types.
+     * 
+     */
     public Optional<Output<Boolean>> pcie() {
         return Optional.ofNullable(this.pcie);
     }
 
+    /**
+     * A path to a ROM file for the device to use. This
+     * is a relative path under `/usr/share/kvm/`.
+     * 
+     */
     @Import(name="romFile")
     private @Nullable Output<String> romFile;
 
+    /**
+     * @return A path to a ROM file for the device to use. This
+     * is a relative path under `/usr/share/kvm/`.
+     * 
+     */
     public Optional<Output<String>> romFile() {
         return Optional.ofNullable(this.romFile);
     }
 
+    /**
+     * Makes the firmware ROM visible for the VM (defaults
+     * to `true`).
+     * 
+     */
     @Import(name="rombar")
     private @Nullable Output<Boolean> rombar;
 
+    /**
+     * @return Makes the firmware ROM visible for the VM (defaults
+     * to `true`).
+     * 
+     */
     public Optional<Output<Boolean>> rombar() {
         return Optional.ofNullable(this.rombar);
     }
 
+    /**
+     * Marks the PCI(e) device as the primary GPU of the VM.
+     * With this enabled the `vga` configuration argument will be ignored.
+     * 
+     */
     @Import(name="xvga")
     private @Nullable Output<Boolean> xvga;
 
+    /**
+     * @return Marks the PCI(e) device as the primary GPU of the VM.
+     * With this enabled the `vga` configuration argument will be ignored.
+     * 
+     */
     public Optional<Output<Boolean>> xvga() {
         return Optional.ofNullable(this.xvga);
     }
@@ -103,74 +181,184 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
             $ = new VirtualMachineHostpciArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param device The device (defaults to `socket`).
+         * - `/dev/*` - A host serial device.
+         * 
+         * @return builder
+         * 
+         */
         public Builder device(Output<String> device) {
             $.device = device;
             return this;
         }
 
+        /**
+         * @param device The device (defaults to `socket`).
+         * - `/dev/*` - A host serial device.
+         * 
+         * @return builder
+         * 
+         */
         public Builder device(String device) {
             return device(Output.of(device));
         }
 
+        /**
+         * @param id The PCI device ID. Use either this or `mapping`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(@Nullable Output<String> id) {
             $.id = id;
             return this;
         }
 
+        /**
+         * @param id The PCI device ID. Use either this or `mapping`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             return id(Output.of(id));
         }
 
+        /**
+         * @param mapping The resource mapping name of the device, for
+         * example gpu. Use either this or `id`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mapping(@Nullable Output<String> mapping) {
             $.mapping = mapping;
             return this;
         }
 
+        /**
+         * @param mapping The resource mapping name of the device, for
+         * example gpu. Use either this or `id`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mapping(String mapping) {
             return mapping(Output.of(mapping));
         }
 
+        /**
+         * @param mdev The mediated device ID to use.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mdev(@Nullable Output<String> mdev) {
             $.mdev = mdev;
             return this;
         }
 
+        /**
+         * @param mdev The mediated device ID to use.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mdev(String mdev) {
             return mdev(Output.of(mdev));
         }
 
+        /**
+         * @param pcie Tells Proxmox to use a PCIe or PCI port. Some
+         * guests/device combination require PCIe rather than PCI. PCIe is only
+         * available for q35 machine types.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pcie(@Nullable Output<Boolean> pcie) {
             $.pcie = pcie;
             return this;
         }
 
+        /**
+         * @param pcie Tells Proxmox to use a PCIe or PCI port. Some
+         * guests/device combination require PCIe rather than PCI. PCIe is only
+         * available for q35 machine types.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pcie(Boolean pcie) {
             return pcie(Output.of(pcie));
         }
 
+        /**
+         * @param romFile A path to a ROM file for the device to use. This
+         * is a relative path under `/usr/share/kvm/`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder romFile(@Nullable Output<String> romFile) {
             $.romFile = romFile;
             return this;
         }
 
+        /**
+         * @param romFile A path to a ROM file for the device to use. This
+         * is a relative path under `/usr/share/kvm/`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder romFile(String romFile) {
             return romFile(Output.of(romFile));
         }
 
+        /**
+         * @param rombar Makes the firmware ROM visible for the VM (defaults
+         * to `true`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder rombar(@Nullable Output<Boolean> rombar) {
             $.rombar = rombar;
             return this;
         }
 
+        /**
+         * @param rombar Makes the firmware ROM visible for the VM (defaults
+         * to `true`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder rombar(Boolean rombar) {
             return rombar(Output.of(rombar));
         }
 
+        /**
+         * @param xvga Marks the PCI(e) device as the primary GPU of the VM.
+         * With this enabled the `vga` configuration argument will be ignored.
+         * 
+         * @return builder
+         * 
+         */
         public Builder xvga(@Nullable Output<Boolean> xvga) {
             $.xvga = xvga;
             return this;
         }
 
+        /**
+         * @param xvga Marks the PCI(e) device as the primary GPU of the VM.
+         * With this enabled the `vga` configuration argument will be ignored.
+         * 
+         * @return builder
+         * 
+         */
         public Builder xvga(Boolean xvga) {
             return xvga(Output.of(xvga));
         }

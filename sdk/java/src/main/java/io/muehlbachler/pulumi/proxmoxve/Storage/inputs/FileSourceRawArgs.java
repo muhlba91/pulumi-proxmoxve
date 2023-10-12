@@ -16,23 +16,47 @@ public final class FileSourceRawArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final FileSourceRawArgs Empty = new FileSourceRawArgs();
 
+    /**
+     * The raw data.
+     * 
+     */
     @Import(name="data", required=true)
     private Output<String> data;
 
+    /**
+     * @return The raw data.
+     * 
+     */
     public Output<String> data() {
         return this.data;
     }
 
+    /**
+     * The file name.
+     * 
+     */
     @Import(name="fileName", required=true)
     private Output<String> fileName;
 
+    /**
+     * @return The file name.
+     * 
+     */
     public Output<String> fileName() {
         return this.fileName;
     }
 
+    /**
+     * The number of bytes to resize the file to.
+     * 
+     */
     @Import(name="resize")
     private @Nullable Output<Integer> resize;
 
+    /**
+     * @return The number of bytes to resize the file to.
+     * 
+     */
     public Optional<Output<Integer>> resize() {
         return Optional.ofNullable(this.resize);
     }
@@ -63,29 +87,65 @@ public final class FileSourceRawArgs extends com.pulumi.resources.ResourceArgs {
             $ = new FileSourceRawArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param data The raw data.
+         * 
+         * @return builder
+         * 
+         */
         public Builder data(Output<String> data) {
             $.data = data;
             return this;
         }
 
+        /**
+         * @param data The raw data.
+         * 
+         * @return builder
+         * 
+         */
         public Builder data(String data) {
             return data(Output.of(data));
         }
 
+        /**
+         * @param fileName The file name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fileName(Output<String> fileName) {
             $.fileName = fileName;
             return this;
         }
 
+        /**
+         * @param fileName The file name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fileName(String fileName) {
             return fileName(Output.of(fileName));
         }
 
+        /**
+         * @param resize The number of bytes to resize the file to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resize(@Nullable Output<Integer> resize) {
             $.resize = resize;
             return this;
         }
 
+        /**
+         * @param resize The number of bytes to resize the file to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resize(Integer resize) {
             return resize(Output.of(resize));
         }

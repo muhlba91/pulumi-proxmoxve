@@ -15,30 +15,66 @@ public final class VirtualMachineDiskSpeedArgs extends com.pulumi.resources.Reso
 
     public static final VirtualMachineDiskSpeedArgs Empty = new VirtualMachineDiskSpeedArgs();
 
+    /**
+     * The maximum read speed in megabytes per second.
+     * 
+     */
     @Import(name="read")
     private @Nullable Output<Integer> read;
 
+    /**
+     * @return The maximum read speed in megabytes per second.
+     * 
+     */
     public Optional<Output<Integer>> read() {
         return Optional.ofNullable(this.read);
     }
 
+    /**
+     * The maximum burstable read speed in
+     * megabytes per second.
+     * 
+     */
     @Import(name="readBurstable")
     private @Nullable Output<Integer> readBurstable;
 
+    /**
+     * @return The maximum burstable read speed in
+     * megabytes per second.
+     * 
+     */
     public Optional<Output<Integer>> readBurstable() {
         return Optional.ofNullable(this.readBurstable);
     }
 
+    /**
+     * The maximum write speed in megabytes per second.
+     * 
+     */
     @Import(name="write")
     private @Nullable Output<Integer> write;
 
+    /**
+     * @return The maximum write speed in megabytes per second.
+     * 
+     */
     public Optional<Output<Integer>> write() {
         return Optional.ofNullable(this.write);
     }
 
+    /**
+     * The maximum burstable write speed in
+     * megabytes per second.
+     * 
+     */
     @Import(name="writeBurstable")
     private @Nullable Output<Integer> writeBurstable;
 
+    /**
+     * @return The maximum burstable write speed in
+     * megabytes per second.
+     * 
+     */
     public Optional<Output<Integer>> writeBurstable() {
         return Optional.ofNullable(this.writeBurstable);
     }
@@ -70,38 +106,90 @@ public final class VirtualMachineDiskSpeedArgs extends com.pulumi.resources.Reso
             $ = new VirtualMachineDiskSpeedArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param read The maximum read speed in megabytes per second.
+         * 
+         * @return builder
+         * 
+         */
         public Builder read(@Nullable Output<Integer> read) {
             $.read = read;
             return this;
         }
 
+        /**
+         * @param read The maximum read speed in megabytes per second.
+         * 
+         * @return builder
+         * 
+         */
         public Builder read(Integer read) {
             return read(Output.of(read));
         }
 
+        /**
+         * @param readBurstable The maximum burstable read speed in
+         * megabytes per second.
+         * 
+         * @return builder
+         * 
+         */
         public Builder readBurstable(@Nullable Output<Integer> readBurstable) {
             $.readBurstable = readBurstable;
             return this;
         }
 
+        /**
+         * @param readBurstable The maximum burstable read speed in
+         * megabytes per second.
+         * 
+         * @return builder
+         * 
+         */
         public Builder readBurstable(Integer readBurstable) {
             return readBurstable(Output.of(readBurstable));
         }
 
+        /**
+         * @param write The maximum write speed in megabytes per second.
+         * 
+         * @return builder
+         * 
+         */
         public Builder write(@Nullable Output<Integer> write) {
             $.write = write;
             return this;
         }
 
+        /**
+         * @param write The maximum write speed in megabytes per second.
+         * 
+         * @return builder
+         * 
+         */
         public Builder write(Integer write) {
             return write(Output.of(write));
         }
 
+        /**
+         * @param writeBurstable The maximum burstable write speed in
+         * megabytes per second.
+         * 
+         * @return builder
+         * 
+         */
         public Builder writeBurstable(@Nullable Output<Integer> writeBurstable) {
             $.writeBurstable = writeBurstable;
             return this;
         }
 
+        /**
+         * @param writeBurstable The maximum burstable write speed in
+         * megabytes per second.
+         * 
+         * @return builder
+         * 
+         */
         public Builder writeBurstable(Integer writeBurstable) {
             return writeBurstable(Output.of(writeBurstable));
         }

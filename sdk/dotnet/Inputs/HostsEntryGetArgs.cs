@@ -12,11 +12,18 @@ namespace Pulumi.ProxmoxVE.Inputs
 
     public sealed class HostsEntryGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The IP address.
+        /// </summary>
         [Input("address", required: true)]
         public Input<string> Address { get; set; } = null!;
 
         [Input("hostnames", required: true)]
         private InputList<string>? _hostnames;
+
+        /// <summary>
+        /// The hostnames.
+        /// </summary>
         public InputList<string> Hostnames
         {
             get => _hostnames ?? (_hostnames = new InputList<string>());

@@ -13,9 +13,17 @@ public final class GetPoolArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetPoolArgs Empty = new GetPoolArgs();
 
+    /**
+     * The pool identifier.
+     * 
+     */
     @Import(name="poolId", required=true)
     private Output<String> poolId;
 
+    /**
+     * @return The pool identifier.
+     * 
+     */
     public Output<String> poolId() {
         return this.poolId;
     }
@@ -44,11 +52,23 @@ public final class GetPoolArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetPoolArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param poolId The pool identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder poolId(Output<String> poolId) {
             $.poolId = poolId;
             return this;
         }
 
+        /**
+         * @param poolId The pool identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder poolId(String poolId) {
             return poolId(Output.of(poolId));
         }

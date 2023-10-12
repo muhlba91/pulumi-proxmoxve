@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class HostsEntry {
+    /**
+     * @return The IP address.
+     * 
+     */
     private String address;
+    /**
+     * @return The hostnames.
+     * 
+     */
     private List<String> hostnames;
 
     private HostsEntry() {}
+    /**
+     * @return The IP address.
+     * 
+     */
     public String address() {
         return this.address;
     }
+    /**
+     * @return The hostnames.
+     * 
+     */
     public List<String> hostnames() {
         return this.hostnames;
     }

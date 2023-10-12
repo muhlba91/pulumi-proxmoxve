@@ -12,27 +12,61 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
 
     public sealed class VirtualMachineNetworkDeviceGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the network bridge (defaults
+        /// to `vmbr0`).
+        /// </summary>
         [Input("bridge")]
         public Input<string>? Bridge { get; set; }
 
+        /// <summary>
+        /// Whether to enable the VGA device (defaults
+        /// to `true`).
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// Whether this interface's firewall rules should be
+        /// used (defaults to `false`).
+        /// </summary>
         [Input("firewall")]
         public Input<bool>? Firewall { get; set; }
 
+        /// <summary>
+        /// The MAC address.
+        /// </summary>
         [Input("macAddress")]
         public Input<string>? MacAddress { get; set; }
 
+        /// <summary>
+        /// The network device model (defaults to `virtio`).
+        /// </summary>
         [Input("model")]
         public Input<string>? Model { get; set; }
 
+        /// <summary>
+        /// Force MTU, for VirtIO only. Set to 1 to use the bridge
+        /// MTU. Cannot be larger than the bridge MTU.
+        /// </summary>
         [Input("mtu")]
         public Input<int>? Mtu { get; set; }
 
+        /// <summary>
+        /// The number of queues for VirtIO (1..64).
+        /// </summary>
+        [Input("queues")]
+        public Input<int>? Queues { get; set; }
+
+        /// <summary>
+        /// The rate limit in megabytes per second.
+        /// </summary>
         [Input("rateLimit")]
         public Input<double>? RateLimit { get; set; }
 
+        /// <summary>
+        /// The VLAN identifier.
+        /// </summary>
         [Input("vlanId")]
         public Input<int>? VlanId { get; set; }
 

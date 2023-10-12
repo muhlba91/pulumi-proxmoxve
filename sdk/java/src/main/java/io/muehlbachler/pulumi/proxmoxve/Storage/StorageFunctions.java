@@ -14,15 +14,151 @@ import io.muehlbachler.pulumi.proxmoxve.Utilities;
 import java.util.concurrent.CompletableFuture;
 
 public final class StorageFunctions {
+    /**
+     * Retrieves information about all the datastores available to a specific node.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.Storage.StorageFunctions;
+     * import com.pulumi.proxmoxve.Storage.inputs.GetDatastoresArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var firstNode = StorageFunctions.getDatastores(GetDatastoresArgs.builder()
+     *             .nodeName(&#34;first-node&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetDatastoresResult> getDatastores(GetDatastoresArgs args) {
         return getDatastores(args, InvokeOptions.Empty);
     }
+    /**
+     * Retrieves information about all the datastores available to a specific node.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.Storage.StorageFunctions;
+     * import com.pulumi.proxmoxve.Storage.inputs.GetDatastoresArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var firstNode = StorageFunctions.getDatastores(GetDatastoresArgs.builder()
+     *             .nodeName(&#34;first-node&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetDatastoresResult> getDatastoresPlain(GetDatastoresPlainArgs args) {
         return getDatastoresPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Retrieves information about all the datastores available to a specific node.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.Storage.StorageFunctions;
+     * import com.pulumi.proxmoxve.Storage.inputs.GetDatastoresArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var firstNode = StorageFunctions.getDatastores(GetDatastoresArgs.builder()
+     *             .nodeName(&#34;first-node&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetDatastoresResult> getDatastores(GetDatastoresArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:Storage/getDatastores:getDatastores", TypeShape.of(GetDatastoresResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Retrieves information about all the datastores available to a specific node.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.Storage.StorageFunctions;
+     * import com.pulumi.proxmoxve.Storage.inputs.GetDatastoresArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var firstNode = StorageFunctions.getDatastores(GetDatastoresArgs.builder()
+     *             .nodeName(&#34;first-node&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetDatastoresResult> getDatastoresPlain(GetDatastoresPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("proxmoxve:Storage/getDatastores:getDatastores", TypeShape.of(GetDatastoresResult.class), args, Utilities.withVersion(options));
     }

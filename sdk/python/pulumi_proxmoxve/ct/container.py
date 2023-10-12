@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,6 +29,7 @@ class ContainerArgs:
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerNetworkInterfaceArgs']]]] = None,
                  operating_system: Optional[pulumi.Input['ContainerOperatingSystemArgs']] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
+                 start_on_boot: Optional[pulumi.Input[bool]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
@@ -36,66 +37,120 @@ class ContainerArgs:
                  vm_id: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Container resource.
-        :param pulumi.Input[str] node_name: The node name
-        :param pulumi.Input['ContainerCloneArgs'] clone: The cloning configuration
-        :param pulumi.Input['ContainerConsoleArgs'] console: The console configuration
-        :param pulumi.Input['ContainerCpuArgs'] cpu: The CPU allocation
-        :param pulumi.Input[str] description: The description
-        :param pulumi.Input['ContainerDiskArgs'] disk: The disks
-        :param pulumi.Input['ContainerFeaturesArgs'] features: Features
-        :param pulumi.Input['ContainerInitializationArgs'] initialization: The initialization configuration
-        :param pulumi.Input['ContainerMemoryArgs'] memory: The memory allocation
+        :param pulumi.Input[str] node_name: The name of the node to assign the container to.
+        :param pulumi.Input['ContainerCloneArgs'] clone: The cloning configuration.
+        :param pulumi.Input['ContainerConsoleArgs'] console: Console.
+        :param pulumi.Input['ContainerCpuArgs'] cpu: The CPU configuration.
+        :param pulumi.Input[str] description: The description.
+        :param pulumi.Input['ContainerDiskArgs'] disk: The disk configuration.
+        :param pulumi.Input['ContainerFeaturesArgs'] features: The container features
+        :param pulumi.Input['ContainerInitializationArgs'] initialization: The initialization configuration.
+        :param pulumi.Input['ContainerMemoryArgs'] memory: The memory configuration.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerMountPointArgs']]] mount_points: A mount point
-        :param pulumi.Input[Sequence[pulumi.Input['ContainerNetworkInterfaceArgs']]] network_interfaces: The network interfaces
-        :param pulumi.Input['ContainerOperatingSystemArgs'] operating_system: The operating system configuration
-        :param pulumi.Input[str] pool_id: The ID of the pool to assign the container to
-        :param pulumi.Input[bool] started: Whether to start the container
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the container. This is only meta information.
-        :param pulumi.Input[bool] template: Whether to create a template
-        :param pulumi.Input[bool] unprivileged: Whether the container runs as unprivileged on the host
-        :param pulumi.Input[int] vm_id: The VM identifier
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerNetworkInterfaceArgs']]] network_interfaces: A network interface (multiple blocks
+               supported).
+        :param pulumi.Input['ContainerOperatingSystemArgs'] operating_system: The Operating System configuration.
+        :param pulumi.Input[str] pool_id: The identifier for a pool to assign the container to.
+        :param pulumi.Input[bool] start_on_boot: Automatically start container when the host system boots (defaults to `true`).
+        :param pulumi.Input[bool] started: Whether to start the container (defaults to `true`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags the container tags. This is only meta
+               information (defaults to `[]`). Note: Proxmox always sorts the container tags.
+               If the list in template is not sorted, then Proxmox will always report a
+               difference on the resource. You may use the `ignore_changes` lifecycle
+               meta-argument to ignore changes to this attribute.
+        :param pulumi.Input[bool] template: Whether to create a template (defaults to `false`).
+        :param pulumi.Input[bool] unprivileged: Whether the container runs as unprivileged on
+               the host (defaults to `false`).
+        :param pulumi.Input[int] vm_id: The container identifier
         """
-        pulumi.set(__self__, "node_name", node_name)
+        ContainerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            node_name=node_name,
+            clone=clone,
+            console=console,
+            cpu=cpu,
+            description=description,
+            disk=disk,
+            features=features,
+            initialization=initialization,
+            memory=memory,
+            mount_points=mount_points,
+            network_interfaces=network_interfaces,
+            operating_system=operating_system,
+            pool_id=pool_id,
+            start_on_boot=start_on_boot,
+            started=started,
+            tags=tags,
+            template=template,
+            unprivileged=unprivileged,
+            vm_id=vm_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             node_name: pulumi.Input[str],
+             clone: Optional[pulumi.Input['ContainerCloneArgs']] = None,
+             console: Optional[pulumi.Input['ContainerConsoleArgs']] = None,
+             cpu: Optional[pulumi.Input['ContainerCpuArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disk: Optional[pulumi.Input['ContainerDiskArgs']] = None,
+             features: Optional[pulumi.Input['ContainerFeaturesArgs']] = None,
+             initialization: Optional[pulumi.Input['ContainerInitializationArgs']] = None,
+             memory: Optional[pulumi.Input['ContainerMemoryArgs']] = None,
+             mount_points: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerMountPointArgs']]]] = None,
+             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerNetworkInterfaceArgs']]]] = None,
+             operating_system: Optional[pulumi.Input['ContainerOperatingSystemArgs']] = None,
+             pool_id: Optional[pulumi.Input[str]] = None,
+             start_on_boot: Optional[pulumi.Input[bool]] = None,
+             started: Optional[pulumi.Input[bool]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             template: Optional[pulumi.Input[bool]] = None,
+             unprivileged: Optional[pulumi.Input[bool]] = None,
+             vm_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("node_name", node_name)
         if clone is not None:
-            pulumi.set(__self__, "clone", clone)
+            _setter("clone", clone)
         if console is not None:
-            pulumi.set(__self__, "console", console)
+            _setter("console", console)
         if cpu is not None:
-            pulumi.set(__self__, "cpu", cpu)
+            _setter("cpu", cpu)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disk is not None:
-            pulumi.set(__self__, "disk", disk)
+            _setter("disk", disk)
         if features is not None:
-            pulumi.set(__self__, "features", features)
+            _setter("features", features)
         if initialization is not None:
-            pulumi.set(__self__, "initialization", initialization)
+            _setter("initialization", initialization)
         if memory is not None:
-            pulumi.set(__self__, "memory", memory)
+            _setter("memory", memory)
         if mount_points is not None:
-            pulumi.set(__self__, "mount_points", mount_points)
+            _setter("mount_points", mount_points)
         if network_interfaces is not None:
-            pulumi.set(__self__, "network_interfaces", network_interfaces)
+            _setter("network_interfaces", network_interfaces)
         if operating_system is not None:
-            pulumi.set(__self__, "operating_system", operating_system)
+            _setter("operating_system", operating_system)
         if pool_id is not None:
-            pulumi.set(__self__, "pool_id", pool_id)
+            _setter("pool_id", pool_id)
+        if start_on_boot is not None:
+            _setter("start_on_boot", start_on_boot)
         if started is not None:
-            pulumi.set(__self__, "started", started)
+            _setter("started", started)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if template is not None:
-            pulumi.set(__self__, "template", template)
+            _setter("template", template)
         if unprivileged is not None:
-            pulumi.set(__self__, "unprivileged", unprivileged)
+            _setter("unprivileged", unprivileged)
         if vm_id is not None:
-            pulumi.set(__self__, "vm_id", vm_id)
+            _setter("vm_id", vm_id)
 
     @property
     @pulumi.getter(name="nodeName")
     def node_name(self) -> pulumi.Input[str]:
         """
-        The node name
+        The name of the node to assign the container to.
         """
         return pulumi.get(self, "node_name")
 
@@ -107,7 +162,7 @@ class ContainerArgs:
     @pulumi.getter
     def clone(self) -> Optional[pulumi.Input['ContainerCloneArgs']]:
         """
-        The cloning configuration
+        The cloning configuration.
         """
         return pulumi.get(self, "clone")
 
@@ -119,7 +174,7 @@ class ContainerArgs:
     @pulumi.getter
     def console(self) -> Optional[pulumi.Input['ContainerConsoleArgs']]:
         """
-        The console configuration
+        Console.
         """
         return pulumi.get(self, "console")
 
@@ -131,7 +186,7 @@ class ContainerArgs:
     @pulumi.getter
     def cpu(self) -> Optional[pulumi.Input['ContainerCpuArgs']]:
         """
-        The CPU allocation
+        The CPU configuration.
         """
         return pulumi.get(self, "cpu")
 
@@ -143,7 +198,7 @@ class ContainerArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description
+        The description.
         """
         return pulumi.get(self, "description")
 
@@ -155,7 +210,7 @@ class ContainerArgs:
     @pulumi.getter
     def disk(self) -> Optional[pulumi.Input['ContainerDiskArgs']]:
         """
-        The disks
+        The disk configuration.
         """
         return pulumi.get(self, "disk")
 
@@ -167,7 +222,7 @@ class ContainerArgs:
     @pulumi.getter
     def features(self) -> Optional[pulumi.Input['ContainerFeaturesArgs']]:
         """
-        Features
+        The container features
         """
         return pulumi.get(self, "features")
 
@@ -179,7 +234,7 @@ class ContainerArgs:
     @pulumi.getter
     def initialization(self) -> Optional[pulumi.Input['ContainerInitializationArgs']]:
         """
-        The initialization configuration
+        The initialization configuration.
         """
         return pulumi.get(self, "initialization")
 
@@ -191,7 +246,7 @@ class ContainerArgs:
     @pulumi.getter
     def memory(self) -> Optional[pulumi.Input['ContainerMemoryArgs']]:
         """
-        The memory allocation
+        The memory configuration.
         """
         return pulumi.get(self, "memory")
 
@@ -215,7 +270,8 @@ class ContainerArgs:
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerNetworkInterfaceArgs']]]]:
         """
-        The network interfaces
+        A network interface (multiple blocks
+        supported).
         """
         return pulumi.get(self, "network_interfaces")
 
@@ -227,7 +283,7 @@ class ContainerArgs:
     @pulumi.getter(name="operatingSystem")
     def operating_system(self) -> Optional[pulumi.Input['ContainerOperatingSystemArgs']]:
         """
-        The operating system configuration
+        The Operating System configuration.
         """
         return pulumi.get(self, "operating_system")
 
@@ -239,7 +295,7 @@ class ContainerArgs:
     @pulumi.getter(name="poolId")
     def pool_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the pool to assign the container to
+        The identifier for a pool to assign the container to.
         """
         return pulumi.get(self, "pool_id")
 
@@ -248,10 +304,22 @@ class ContainerArgs:
         pulumi.set(self, "pool_id", value)
 
     @property
+    @pulumi.getter(name="startOnBoot")
+    def start_on_boot(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Automatically start container when the host system boots (defaults to `true`).
+        """
+        return pulumi.get(self, "start_on_boot")
+
+    @start_on_boot.setter
+    def start_on_boot(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "start_on_boot", value)
+
+    @property
     @pulumi.getter
     def started(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to start the container
+        Whether to start the container (defaults to `true`).
         """
         return pulumi.get(self, "started")
 
@@ -263,7 +331,11 @@ class ContainerArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags of the container. This is only meta information.
+        A list of tags the container tags. This is only meta
+        information (defaults to `[]`). Note: Proxmox always sorts the container tags.
+        If the list in template is not sorted, then Proxmox will always report a
+        difference on the resource. You may use the `ignore_changes` lifecycle
+        meta-argument to ignore changes to this attribute.
         """
         return pulumi.get(self, "tags")
 
@@ -275,7 +347,7 @@ class ContainerArgs:
     @pulumi.getter
     def template(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to create a template
+        Whether to create a template (defaults to `false`).
         """
         return pulumi.get(self, "template")
 
@@ -287,7 +359,8 @@ class ContainerArgs:
     @pulumi.getter
     def unprivileged(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the container runs as unprivileged on the host
+        Whether the container runs as unprivileged on
+        the host (defaults to `false`).
         """
         return pulumi.get(self, "unprivileged")
 
@@ -299,7 +372,7 @@ class ContainerArgs:
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The VM identifier
+        The container identifier
         """
         return pulumi.get(self, "vm_id")
 
@@ -324,6 +397,7 @@ class _ContainerState:
                  node_name: Optional[pulumi.Input[str]] = None,
                  operating_system: Optional[pulumi.Input['ContainerOperatingSystemArgs']] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
+                 start_on_boot: Optional[pulumi.Input[bool]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
@@ -331,67 +405,121 @@ class _ContainerState:
                  vm_id: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering Container resources.
-        :param pulumi.Input['ContainerCloneArgs'] clone: The cloning configuration
-        :param pulumi.Input['ContainerConsoleArgs'] console: The console configuration
-        :param pulumi.Input['ContainerCpuArgs'] cpu: The CPU allocation
-        :param pulumi.Input[str] description: The description
-        :param pulumi.Input['ContainerDiskArgs'] disk: The disks
-        :param pulumi.Input['ContainerFeaturesArgs'] features: Features
-        :param pulumi.Input['ContainerInitializationArgs'] initialization: The initialization configuration
-        :param pulumi.Input['ContainerMemoryArgs'] memory: The memory allocation
+        :param pulumi.Input['ContainerCloneArgs'] clone: The cloning configuration.
+        :param pulumi.Input['ContainerConsoleArgs'] console: Console.
+        :param pulumi.Input['ContainerCpuArgs'] cpu: The CPU configuration.
+        :param pulumi.Input[str] description: The description.
+        :param pulumi.Input['ContainerDiskArgs'] disk: The disk configuration.
+        :param pulumi.Input['ContainerFeaturesArgs'] features: The container features
+        :param pulumi.Input['ContainerInitializationArgs'] initialization: The initialization configuration.
+        :param pulumi.Input['ContainerMemoryArgs'] memory: The memory configuration.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerMountPointArgs']]] mount_points: A mount point
-        :param pulumi.Input[Sequence[pulumi.Input['ContainerNetworkInterfaceArgs']]] network_interfaces: The network interfaces
-        :param pulumi.Input[str] node_name: The node name
-        :param pulumi.Input['ContainerOperatingSystemArgs'] operating_system: The operating system configuration
-        :param pulumi.Input[str] pool_id: The ID of the pool to assign the container to
-        :param pulumi.Input[bool] started: Whether to start the container
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the container. This is only meta information.
-        :param pulumi.Input[bool] template: Whether to create a template
-        :param pulumi.Input[bool] unprivileged: Whether the container runs as unprivileged on the host
-        :param pulumi.Input[int] vm_id: The VM identifier
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerNetworkInterfaceArgs']]] network_interfaces: A network interface (multiple blocks
+               supported).
+        :param pulumi.Input[str] node_name: The name of the node to assign the container to.
+        :param pulumi.Input['ContainerOperatingSystemArgs'] operating_system: The Operating System configuration.
+        :param pulumi.Input[str] pool_id: The identifier for a pool to assign the container to.
+        :param pulumi.Input[bool] start_on_boot: Automatically start container when the host system boots (defaults to `true`).
+        :param pulumi.Input[bool] started: Whether to start the container (defaults to `true`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags the container tags. This is only meta
+               information (defaults to `[]`). Note: Proxmox always sorts the container tags.
+               If the list in template is not sorted, then Proxmox will always report a
+               difference on the resource. You may use the `ignore_changes` lifecycle
+               meta-argument to ignore changes to this attribute.
+        :param pulumi.Input[bool] template: Whether to create a template (defaults to `false`).
+        :param pulumi.Input[bool] unprivileged: Whether the container runs as unprivileged on
+               the host (defaults to `false`).
+        :param pulumi.Input[int] vm_id: The container identifier
         """
+        _ContainerState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            clone=clone,
+            console=console,
+            cpu=cpu,
+            description=description,
+            disk=disk,
+            features=features,
+            initialization=initialization,
+            memory=memory,
+            mount_points=mount_points,
+            network_interfaces=network_interfaces,
+            node_name=node_name,
+            operating_system=operating_system,
+            pool_id=pool_id,
+            start_on_boot=start_on_boot,
+            started=started,
+            tags=tags,
+            template=template,
+            unprivileged=unprivileged,
+            vm_id=vm_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             clone: Optional[pulumi.Input['ContainerCloneArgs']] = None,
+             console: Optional[pulumi.Input['ContainerConsoleArgs']] = None,
+             cpu: Optional[pulumi.Input['ContainerCpuArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disk: Optional[pulumi.Input['ContainerDiskArgs']] = None,
+             features: Optional[pulumi.Input['ContainerFeaturesArgs']] = None,
+             initialization: Optional[pulumi.Input['ContainerInitializationArgs']] = None,
+             memory: Optional[pulumi.Input['ContainerMemoryArgs']] = None,
+             mount_points: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerMountPointArgs']]]] = None,
+             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerNetworkInterfaceArgs']]]] = None,
+             node_name: Optional[pulumi.Input[str]] = None,
+             operating_system: Optional[pulumi.Input['ContainerOperatingSystemArgs']] = None,
+             pool_id: Optional[pulumi.Input[str]] = None,
+             start_on_boot: Optional[pulumi.Input[bool]] = None,
+             started: Optional[pulumi.Input[bool]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             template: Optional[pulumi.Input[bool]] = None,
+             unprivileged: Optional[pulumi.Input[bool]] = None,
+             vm_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if clone is not None:
-            pulumi.set(__self__, "clone", clone)
+            _setter("clone", clone)
         if console is not None:
-            pulumi.set(__self__, "console", console)
+            _setter("console", console)
         if cpu is not None:
-            pulumi.set(__self__, "cpu", cpu)
+            _setter("cpu", cpu)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disk is not None:
-            pulumi.set(__self__, "disk", disk)
+            _setter("disk", disk)
         if features is not None:
-            pulumi.set(__self__, "features", features)
+            _setter("features", features)
         if initialization is not None:
-            pulumi.set(__self__, "initialization", initialization)
+            _setter("initialization", initialization)
         if memory is not None:
-            pulumi.set(__self__, "memory", memory)
+            _setter("memory", memory)
         if mount_points is not None:
-            pulumi.set(__self__, "mount_points", mount_points)
+            _setter("mount_points", mount_points)
         if network_interfaces is not None:
-            pulumi.set(__self__, "network_interfaces", network_interfaces)
+            _setter("network_interfaces", network_interfaces)
         if node_name is not None:
-            pulumi.set(__self__, "node_name", node_name)
+            _setter("node_name", node_name)
         if operating_system is not None:
-            pulumi.set(__self__, "operating_system", operating_system)
+            _setter("operating_system", operating_system)
         if pool_id is not None:
-            pulumi.set(__self__, "pool_id", pool_id)
+            _setter("pool_id", pool_id)
+        if start_on_boot is not None:
+            _setter("start_on_boot", start_on_boot)
         if started is not None:
-            pulumi.set(__self__, "started", started)
+            _setter("started", started)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if template is not None:
-            pulumi.set(__self__, "template", template)
+            _setter("template", template)
         if unprivileged is not None:
-            pulumi.set(__self__, "unprivileged", unprivileged)
+            _setter("unprivileged", unprivileged)
         if vm_id is not None:
-            pulumi.set(__self__, "vm_id", vm_id)
+            _setter("vm_id", vm_id)
 
     @property
     @pulumi.getter
     def clone(self) -> Optional[pulumi.Input['ContainerCloneArgs']]:
         """
-        The cloning configuration
+        The cloning configuration.
         """
         return pulumi.get(self, "clone")
 
@@ -403,7 +531,7 @@ class _ContainerState:
     @pulumi.getter
     def console(self) -> Optional[pulumi.Input['ContainerConsoleArgs']]:
         """
-        The console configuration
+        Console.
         """
         return pulumi.get(self, "console")
 
@@ -415,7 +543,7 @@ class _ContainerState:
     @pulumi.getter
     def cpu(self) -> Optional[pulumi.Input['ContainerCpuArgs']]:
         """
-        The CPU allocation
+        The CPU configuration.
         """
         return pulumi.get(self, "cpu")
 
@@ -427,7 +555,7 @@ class _ContainerState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description
+        The description.
         """
         return pulumi.get(self, "description")
 
@@ -439,7 +567,7 @@ class _ContainerState:
     @pulumi.getter
     def disk(self) -> Optional[pulumi.Input['ContainerDiskArgs']]:
         """
-        The disks
+        The disk configuration.
         """
         return pulumi.get(self, "disk")
 
@@ -451,7 +579,7 @@ class _ContainerState:
     @pulumi.getter
     def features(self) -> Optional[pulumi.Input['ContainerFeaturesArgs']]:
         """
-        Features
+        The container features
         """
         return pulumi.get(self, "features")
 
@@ -463,7 +591,7 @@ class _ContainerState:
     @pulumi.getter
     def initialization(self) -> Optional[pulumi.Input['ContainerInitializationArgs']]:
         """
-        The initialization configuration
+        The initialization configuration.
         """
         return pulumi.get(self, "initialization")
 
@@ -475,7 +603,7 @@ class _ContainerState:
     @pulumi.getter
     def memory(self) -> Optional[pulumi.Input['ContainerMemoryArgs']]:
         """
-        The memory allocation
+        The memory configuration.
         """
         return pulumi.get(self, "memory")
 
@@ -499,7 +627,8 @@ class _ContainerState:
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerNetworkInterfaceArgs']]]]:
         """
-        The network interfaces
+        A network interface (multiple blocks
+        supported).
         """
         return pulumi.get(self, "network_interfaces")
 
@@ -511,7 +640,7 @@ class _ContainerState:
     @pulumi.getter(name="nodeName")
     def node_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The node name
+        The name of the node to assign the container to.
         """
         return pulumi.get(self, "node_name")
 
@@ -523,7 +652,7 @@ class _ContainerState:
     @pulumi.getter(name="operatingSystem")
     def operating_system(self) -> Optional[pulumi.Input['ContainerOperatingSystemArgs']]:
         """
-        The operating system configuration
+        The Operating System configuration.
         """
         return pulumi.get(self, "operating_system")
 
@@ -535,7 +664,7 @@ class _ContainerState:
     @pulumi.getter(name="poolId")
     def pool_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the pool to assign the container to
+        The identifier for a pool to assign the container to.
         """
         return pulumi.get(self, "pool_id")
 
@@ -544,10 +673,22 @@ class _ContainerState:
         pulumi.set(self, "pool_id", value)
 
     @property
+    @pulumi.getter(name="startOnBoot")
+    def start_on_boot(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Automatically start container when the host system boots (defaults to `true`).
+        """
+        return pulumi.get(self, "start_on_boot")
+
+    @start_on_boot.setter
+    def start_on_boot(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "start_on_boot", value)
+
+    @property
     @pulumi.getter
     def started(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to start the container
+        Whether to start the container (defaults to `true`).
         """
         return pulumi.get(self, "started")
 
@@ -559,7 +700,11 @@ class _ContainerState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags of the container. This is only meta information.
+        A list of tags the container tags. This is only meta
+        information (defaults to `[]`). Note: Proxmox always sorts the container tags.
+        If the list in template is not sorted, then Proxmox will always report a
+        difference on the resource. You may use the `ignore_changes` lifecycle
+        meta-argument to ignore changes to this attribute.
         """
         return pulumi.get(self, "tags")
 
@@ -571,7 +716,7 @@ class _ContainerState:
     @pulumi.getter
     def template(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to create a template
+        Whether to create a template (defaults to `false`).
         """
         return pulumi.get(self, "template")
 
@@ -583,7 +728,8 @@ class _ContainerState:
     @pulumi.getter
     def unprivileged(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the container runs as unprivileged on the host
+        Whether the container runs as unprivileged on
+        the host (defaults to `false`).
         """
         return pulumi.get(self, "unprivileged")
 
@@ -595,7 +741,7 @@ class _ContainerState:
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The VM identifier
+        The container identifier
         """
         return pulumi.get(self, "vm_id")
 
@@ -622,6 +768,7 @@ class Container(pulumi.CustomResource):
                  node_name: Optional[pulumi.Input[str]] = None,
                  operating_system: Optional[pulumi.Input[pulumi.InputType['ContainerOperatingSystemArgs']]] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
+                 start_on_boot: Optional[pulumi.Input[bool]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
@@ -629,27 +776,43 @@ class Container(pulumi.CustomResource):
                  vm_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Create a Container resource with the given unique name, props, and options.
+        Manages a container.
+
+        ## Import
+
+        Instances can be imported using the `node_name` and the `vm_id`, e.g., bash
+
+        ```sh
+         $ pulumi import proxmoxve:CT/container:Container ubuntu_container first-node/1234
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ContainerCloneArgs']] clone: The cloning configuration
-        :param pulumi.Input[pulumi.InputType['ContainerConsoleArgs']] console: The console configuration
-        :param pulumi.Input[pulumi.InputType['ContainerCpuArgs']] cpu: The CPU allocation
-        :param pulumi.Input[str] description: The description
-        :param pulumi.Input[pulumi.InputType['ContainerDiskArgs']] disk: The disks
-        :param pulumi.Input[pulumi.InputType['ContainerFeaturesArgs']] features: Features
-        :param pulumi.Input[pulumi.InputType['ContainerInitializationArgs']] initialization: The initialization configuration
-        :param pulumi.Input[pulumi.InputType['ContainerMemoryArgs']] memory: The memory allocation
+        :param pulumi.Input[pulumi.InputType['ContainerCloneArgs']] clone: The cloning configuration.
+        :param pulumi.Input[pulumi.InputType['ContainerConsoleArgs']] console: Console.
+        :param pulumi.Input[pulumi.InputType['ContainerCpuArgs']] cpu: The CPU configuration.
+        :param pulumi.Input[str] description: The description.
+        :param pulumi.Input[pulumi.InputType['ContainerDiskArgs']] disk: The disk configuration.
+        :param pulumi.Input[pulumi.InputType['ContainerFeaturesArgs']] features: The container features
+        :param pulumi.Input[pulumi.InputType['ContainerInitializationArgs']] initialization: The initialization configuration.
+        :param pulumi.Input[pulumi.InputType['ContainerMemoryArgs']] memory: The memory configuration.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerMountPointArgs']]]] mount_points: A mount point
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerNetworkInterfaceArgs']]]] network_interfaces: The network interfaces
-        :param pulumi.Input[str] node_name: The node name
-        :param pulumi.Input[pulumi.InputType['ContainerOperatingSystemArgs']] operating_system: The operating system configuration
-        :param pulumi.Input[str] pool_id: The ID of the pool to assign the container to
-        :param pulumi.Input[bool] started: Whether to start the container
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the container. This is only meta information.
-        :param pulumi.Input[bool] template: Whether to create a template
-        :param pulumi.Input[bool] unprivileged: Whether the container runs as unprivileged on the host
-        :param pulumi.Input[int] vm_id: The VM identifier
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerNetworkInterfaceArgs']]]] network_interfaces: A network interface (multiple blocks
+               supported).
+        :param pulumi.Input[str] node_name: The name of the node to assign the container to.
+        :param pulumi.Input[pulumi.InputType['ContainerOperatingSystemArgs']] operating_system: The Operating System configuration.
+        :param pulumi.Input[str] pool_id: The identifier for a pool to assign the container to.
+        :param pulumi.Input[bool] start_on_boot: Automatically start container when the host system boots (defaults to `true`).
+        :param pulumi.Input[bool] started: Whether to start the container (defaults to `true`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags the container tags. This is only meta
+               information (defaults to `[]`). Note: Proxmox always sorts the container tags.
+               If the list in template is not sorted, then Proxmox will always report a
+               difference on the resource. You may use the `ignore_changes` lifecycle
+               meta-argument to ignore changes to this attribute.
+        :param pulumi.Input[bool] template: Whether to create a template (defaults to `false`).
+        :param pulumi.Input[bool] unprivileged: Whether the container runs as unprivileged on
+               the host (defaults to `false`).
+        :param pulumi.Input[int] vm_id: The container identifier
         """
         ...
     @overload
@@ -658,7 +821,16 @@ class Container(pulumi.CustomResource):
                  args: ContainerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Container resource with the given unique name, props, and options.
+        Manages a container.
+
+        ## Import
+
+        Instances can be imported using the `node_name` and the `vm_id`, e.g., bash
+
+        ```sh
+         $ pulumi import proxmoxve:CT/container:Container ubuntu_container first-node/1234
+        ```
+
         :param str resource_name: The name of the resource.
         :param ContainerArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -669,6 +841,10 @@ class Container(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ContainerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -687,6 +863,7 @@ class Container(pulumi.CustomResource):
                  node_name: Optional[pulumi.Input[str]] = None,
                  operating_system: Optional[pulumi.Input[pulumi.InputType['ContainerOperatingSystemArgs']]] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
+                 start_on_boot: Optional[pulumi.Input[bool]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
@@ -701,21 +878,62 @@ class Container(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ContainerArgs.__new__(ContainerArgs)
 
+            if clone is not None and not isinstance(clone, ContainerCloneArgs):
+                clone = clone or {}
+                def _setter(key, value):
+                    clone[key] = value
+                ContainerCloneArgs._configure(_setter, **clone)
             __props__.__dict__["clone"] = clone
+            if console is not None and not isinstance(console, ContainerConsoleArgs):
+                console = console or {}
+                def _setter(key, value):
+                    console[key] = value
+                ContainerConsoleArgs._configure(_setter, **console)
             __props__.__dict__["console"] = console
+            if cpu is not None and not isinstance(cpu, ContainerCpuArgs):
+                cpu = cpu or {}
+                def _setter(key, value):
+                    cpu[key] = value
+                ContainerCpuArgs._configure(_setter, **cpu)
             __props__.__dict__["cpu"] = cpu
             __props__.__dict__["description"] = description
+            if disk is not None and not isinstance(disk, ContainerDiskArgs):
+                disk = disk or {}
+                def _setter(key, value):
+                    disk[key] = value
+                ContainerDiskArgs._configure(_setter, **disk)
             __props__.__dict__["disk"] = disk
+            if features is not None and not isinstance(features, ContainerFeaturesArgs):
+                features = features or {}
+                def _setter(key, value):
+                    features[key] = value
+                ContainerFeaturesArgs._configure(_setter, **features)
             __props__.__dict__["features"] = features
+            if initialization is not None and not isinstance(initialization, ContainerInitializationArgs):
+                initialization = initialization or {}
+                def _setter(key, value):
+                    initialization[key] = value
+                ContainerInitializationArgs._configure(_setter, **initialization)
             __props__.__dict__["initialization"] = initialization
+            if memory is not None and not isinstance(memory, ContainerMemoryArgs):
+                memory = memory or {}
+                def _setter(key, value):
+                    memory[key] = value
+                ContainerMemoryArgs._configure(_setter, **memory)
             __props__.__dict__["memory"] = memory
             __props__.__dict__["mount_points"] = mount_points
             __props__.__dict__["network_interfaces"] = network_interfaces
             if node_name is None and not opts.urn:
                 raise TypeError("Missing required property 'node_name'")
             __props__.__dict__["node_name"] = node_name
+            if operating_system is not None and not isinstance(operating_system, ContainerOperatingSystemArgs):
+                operating_system = operating_system or {}
+                def _setter(key, value):
+                    operating_system[key] = value
+                ContainerOperatingSystemArgs._configure(_setter, **operating_system)
             __props__.__dict__["operating_system"] = operating_system
             __props__.__dict__["pool_id"] = pool_id
+            __props__.__dict__["start_on_boot"] = start_on_boot
             __props__.__dict__["started"] = started
             __props__.__dict__["tags"] = tags
             __props__.__dict__["template"] = template
@@ -744,6 +962,7 @@ class Container(pulumi.CustomResource):
             node_name: Optional[pulumi.Input[str]] = None,
             operating_system: Optional[pulumi.Input[pulumi.InputType['ContainerOperatingSystemArgs']]] = None,
             pool_id: Optional[pulumi.Input[str]] = None,
+            start_on_boot: Optional[pulumi.Input[bool]] = None,
             started: Optional[pulumi.Input[bool]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             template: Optional[pulumi.Input[bool]] = None,
@@ -756,24 +975,31 @@ class Container(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ContainerCloneArgs']] clone: The cloning configuration
-        :param pulumi.Input[pulumi.InputType['ContainerConsoleArgs']] console: The console configuration
-        :param pulumi.Input[pulumi.InputType['ContainerCpuArgs']] cpu: The CPU allocation
-        :param pulumi.Input[str] description: The description
-        :param pulumi.Input[pulumi.InputType['ContainerDiskArgs']] disk: The disks
-        :param pulumi.Input[pulumi.InputType['ContainerFeaturesArgs']] features: Features
-        :param pulumi.Input[pulumi.InputType['ContainerInitializationArgs']] initialization: The initialization configuration
-        :param pulumi.Input[pulumi.InputType['ContainerMemoryArgs']] memory: The memory allocation
+        :param pulumi.Input[pulumi.InputType['ContainerCloneArgs']] clone: The cloning configuration.
+        :param pulumi.Input[pulumi.InputType['ContainerConsoleArgs']] console: Console.
+        :param pulumi.Input[pulumi.InputType['ContainerCpuArgs']] cpu: The CPU configuration.
+        :param pulumi.Input[str] description: The description.
+        :param pulumi.Input[pulumi.InputType['ContainerDiskArgs']] disk: The disk configuration.
+        :param pulumi.Input[pulumi.InputType['ContainerFeaturesArgs']] features: The container features
+        :param pulumi.Input[pulumi.InputType['ContainerInitializationArgs']] initialization: The initialization configuration.
+        :param pulumi.Input[pulumi.InputType['ContainerMemoryArgs']] memory: The memory configuration.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerMountPointArgs']]]] mount_points: A mount point
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerNetworkInterfaceArgs']]]] network_interfaces: The network interfaces
-        :param pulumi.Input[str] node_name: The node name
-        :param pulumi.Input[pulumi.InputType['ContainerOperatingSystemArgs']] operating_system: The operating system configuration
-        :param pulumi.Input[str] pool_id: The ID of the pool to assign the container to
-        :param pulumi.Input[bool] started: Whether to start the container
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the container. This is only meta information.
-        :param pulumi.Input[bool] template: Whether to create a template
-        :param pulumi.Input[bool] unprivileged: Whether the container runs as unprivileged on the host
-        :param pulumi.Input[int] vm_id: The VM identifier
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerNetworkInterfaceArgs']]]] network_interfaces: A network interface (multiple blocks
+               supported).
+        :param pulumi.Input[str] node_name: The name of the node to assign the container to.
+        :param pulumi.Input[pulumi.InputType['ContainerOperatingSystemArgs']] operating_system: The Operating System configuration.
+        :param pulumi.Input[str] pool_id: The identifier for a pool to assign the container to.
+        :param pulumi.Input[bool] start_on_boot: Automatically start container when the host system boots (defaults to `true`).
+        :param pulumi.Input[bool] started: Whether to start the container (defaults to `true`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags the container tags. This is only meta
+               information (defaults to `[]`). Note: Proxmox always sorts the container tags.
+               If the list in template is not sorted, then Proxmox will always report a
+               difference on the resource. You may use the `ignore_changes` lifecycle
+               meta-argument to ignore changes to this attribute.
+        :param pulumi.Input[bool] template: Whether to create a template (defaults to `false`).
+        :param pulumi.Input[bool] unprivileged: Whether the container runs as unprivileged on
+               the host (defaults to `false`).
+        :param pulumi.Input[int] vm_id: The container identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -792,6 +1018,7 @@ class Container(pulumi.CustomResource):
         __props__.__dict__["node_name"] = node_name
         __props__.__dict__["operating_system"] = operating_system
         __props__.__dict__["pool_id"] = pool_id
+        __props__.__dict__["start_on_boot"] = start_on_boot
         __props__.__dict__["started"] = started
         __props__.__dict__["tags"] = tags
         __props__.__dict__["template"] = template
@@ -803,7 +1030,7 @@ class Container(pulumi.CustomResource):
     @pulumi.getter
     def clone(self) -> pulumi.Output[Optional['outputs.ContainerClone']]:
         """
-        The cloning configuration
+        The cloning configuration.
         """
         return pulumi.get(self, "clone")
 
@@ -811,7 +1038,7 @@ class Container(pulumi.CustomResource):
     @pulumi.getter
     def console(self) -> pulumi.Output[Optional['outputs.ContainerConsole']]:
         """
-        The console configuration
+        Console.
         """
         return pulumi.get(self, "console")
 
@@ -819,7 +1046,7 @@ class Container(pulumi.CustomResource):
     @pulumi.getter
     def cpu(self) -> pulumi.Output[Optional['outputs.ContainerCpu']]:
         """
-        The CPU allocation
+        The CPU configuration.
         """
         return pulumi.get(self, "cpu")
 
@@ -827,7 +1054,7 @@ class Container(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description
+        The description.
         """
         return pulumi.get(self, "description")
 
@@ -835,7 +1062,7 @@ class Container(pulumi.CustomResource):
     @pulumi.getter
     def disk(self) -> pulumi.Output[Optional['outputs.ContainerDisk']]:
         """
-        The disks
+        The disk configuration.
         """
         return pulumi.get(self, "disk")
 
@@ -843,7 +1070,7 @@ class Container(pulumi.CustomResource):
     @pulumi.getter
     def features(self) -> pulumi.Output[Optional['outputs.ContainerFeatures']]:
         """
-        Features
+        The container features
         """
         return pulumi.get(self, "features")
 
@@ -851,7 +1078,7 @@ class Container(pulumi.CustomResource):
     @pulumi.getter
     def initialization(self) -> pulumi.Output[Optional['outputs.ContainerInitialization']]:
         """
-        The initialization configuration
+        The initialization configuration.
         """
         return pulumi.get(self, "initialization")
 
@@ -859,7 +1086,7 @@ class Container(pulumi.CustomResource):
     @pulumi.getter
     def memory(self) -> pulumi.Output[Optional['outputs.ContainerMemory']]:
         """
-        The memory allocation
+        The memory configuration.
         """
         return pulumi.get(self, "memory")
 
@@ -875,7 +1102,8 @@ class Container(pulumi.CustomResource):
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> pulumi.Output[Optional[Sequence['outputs.ContainerNetworkInterface']]]:
         """
-        The network interfaces
+        A network interface (multiple blocks
+        supported).
         """
         return pulumi.get(self, "network_interfaces")
 
@@ -883,7 +1111,7 @@ class Container(pulumi.CustomResource):
     @pulumi.getter(name="nodeName")
     def node_name(self) -> pulumi.Output[str]:
         """
-        The node name
+        The name of the node to assign the container to.
         """
         return pulumi.get(self, "node_name")
 
@@ -891,7 +1119,7 @@ class Container(pulumi.CustomResource):
     @pulumi.getter(name="operatingSystem")
     def operating_system(self) -> pulumi.Output[Optional['outputs.ContainerOperatingSystem']]:
         """
-        The operating system configuration
+        The Operating System configuration.
         """
         return pulumi.get(self, "operating_system")
 
@@ -899,15 +1127,23 @@ class Container(pulumi.CustomResource):
     @pulumi.getter(name="poolId")
     def pool_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The ID of the pool to assign the container to
+        The identifier for a pool to assign the container to.
         """
         return pulumi.get(self, "pool_id")
+
+    @property
+    @pulumi.getter(name="startOnBoot")
+    def start_on_boot(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Automatically start container when the host system boots (defaults to `true`).
+        """
+        return pulumi.get(self, "start_on_boot")
 
     @property
     @pulumi.getter
     def started(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to start the container
+        Whether to start the container (defaults to `true`).
         """
         return pulumi.get(self, "started")
 
@@ -915,7 +1151,11 @@ class Container(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Tags of the container. This is only meta information.
+        A list of tags the container tags. This is only meta
+        information (defaults to `[]`). Note: Proxmox always sorts the container tags.
+        If the list in template is not sorted, then Proxmox will always report a
+        difference on the resource. You may use the `ignore_changes` lifecycle
+        meta-argument to ignore changes to this attribute.
         """
         return pulumi.get(self, "tags")
 
@@ -923,7 +1163,7 @@ class Container(pulumi.CustomResource):
     @pulumi.getter
     def template(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to create a template
+        Whether to create a template (defaults to `false`).
         """
         return pulumi.get(self, "template")
 
@@ -931,7 +1171,8 @@ class Container(pulumi.CustomResource):
     @pulumi.getter
     def unprivileged(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether the container runs as unprivileged on the host
+        Whether the container runs as unprivileged on
+        the host (defaults to `false`).
         """
         return pulumi.get(self, "unprivileged")
 
@@ -939,7 +1180,7 @@ class Container(pulumi.CustomResource):
     @pulumi.getter(name="vmId")
     def vm_id(self) -> pulumi.Output[Optional[int]]:
         """
-        The VM identifier
+        The container identifier
         """
         return pulumi.get(self, "vm_id")
 

@@ -12,12 +12,22 @@ namespace Pulumi.ProxmoxVE.Network.Inputs
 
     public sealed class FirewallLogRatelimitArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Initial burst of packages which will always get
+        /// logged before the rate is applied (defaults to `5`).
+        /// </summary>
         [Input("burst")]
         public Input<int>? Burst { get; set; }
 
+        /// <summary>
+        /// Enable or disable the log rate limit.
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// Frequency with which the burst bucket gets refilled (defaults to `1/second`).
+        /// </summary>
         [Input("rate")]
         public Input<string>? Rate { get; set; }
 

@@ -6,6 +6,54 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * A security group is a collection of rules, defined at cluster level, which can
+ * be used in all VMs' rules. For example, you can define a group named “webserver”
+ * with rules to open the http and https ports. Rules can be created on the cluster
+ * level, on VM / Container level.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const inbound = new proxmoxve.network.FirewallRules("inbound", {
+ *     nodeName: proxmox_virtual_environment_vm.example.node_name,
+ *     vmId: proxmox_virtual_environment_vm.example.vm_id,
+ *     rules: [
+ *         {
+ *             type: "in",
+ *             action: "ACCEPT",
+ *             comment: "Allow HTTP",
+ *             dest: "192.168.1.5",
+ *             dport: "80",
+ *             proto: "tcp",
+ *             log: "info",
+ *         },
+ *         {
+ *             type: "in",
+ *             action: "ACCEPT",
+ *             comment: "Allow HTTPS",
+ *             dest: "192.168.1.5",
+ *             dport: "443",
+ *             proto: "tcp",
+ *             log: "info",
+ *         },
+ *         {
+ *             securityGroup: proxmox_virtual_environment_cluster_firewall_security_group.example.name,
+ *             comment: "From security group",
+ *             iface: "net0",
+ *         },
+ *     ],
+ * }, {
+ *     dependsOn: [
+ *         proxmox_virtual_environment_vm.example,
+ *         proxmox_virtual_environment_cluster_firewall_security_group.example,
+ *     ],
+ * });
+ * ```
+ */
 export class FirewallRules extends pulumi.CustomResource {
     /**
      * Get an existing FirewallRules resource's state with the given name, ID, and optional extra
@@ -35,19 +83,22 @@ export class FirewallRules extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the container to manage the firewall for.
+     * Container ID. Leave empty for cluster level
+     * rules.
      */
     public readonly containerId!: pulumi.Output<number | undefined>;
     /**
-     * The name of the node.
+     * Node name. Leave empty for cluster level rules.
      */
     public readonly nodeName!: pulumi.Output<string | undefined>;
     /**
-     * List of rules
+     * Firewall rule block (multiple blocks supported).
+     * The provider supports two types of the `rule` blocks:
+     * - a rule definition block, which includes the following arguments:
      */
     public readonly rules!: pulumi.Output<outputs.Network.FirewallRulesRule[]>;
     /**
-     * The ID of the VM to manage the firewall for.
+     * VM ID. Leave empty for cluster level rules.
      */
     public readonly vmId!: pulumi.Output<number | undefined>;
 
@@ -88,19 +139,22 @@ export class FirewallRules extends pulumi.CustomResource {
  */
 export interface FirewallRulesState {
     /**
-     * The ID of the container to manage the firewall for.
+     * Container ID. Leave empty for cluster level
+     * rules.
      */
     containerId?: pulumi.Input<number>;
     /**
-     * The name of the node.
+     * Node name. Leave empty for cluster level rules.
      */
     nodeName?: pulumi.Input<string>;
     /**
-     * List of rules
+     * Firewall rule block (multiple blocks supported).
+     * The provider supports two types of the `rule` blocks:
+     * - a rule definition block, which includes the following arguments:
      */
     rules?: pulumi.Input<pulumi.Input<inputs.Network.FirewallRulesRule>[]>;
     /**
-     * The ID of the VM to manage the firewall for.
+     * VM ID. Leave empty for cluster level rules.
      */
     vmId?: pulumi.Input<number>;
 }
@@ -110,19 +164,22 @@ export interface FirewallRulesState {
  */
 export interface FirewallRulesArgs {
     /**
-     * The ID of the container to manage the firewall for.
+     * Container ID. Leave empty for cluster level
+     * rules.
      */
     containerId?: pulumi.Input<number>;
     /**
-     * The name of the node.
+     * Node name. Leave empty for cluster level rules.
      */
     nodeName?: pulumi.Input<string>;
     /**
-     * List of rules
+     * Firewall rule block (multiple blocks supported).
+     * The provider supports two types of the `rule` blocks:
+     * - a rule definition block, which includes the following arguments:
      */
     rules: pulumi.Input<pulumi.Input<inputs.Network.FirewallRulesRule>[]>;
     /**
-     * The ID of the VM to manage the firewall for.
+     * VM ID. Leave empty for cluster level rules.
      */
     vmId?: pulumi.Input<number>;
 }

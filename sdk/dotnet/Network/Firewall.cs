@@ -9,35 +9,76 @@ using Pulumi.Serialization;
 
 namespace Pulumi.ProxmoxVE.Network
 {
+    /// <summary>
+    /// Manages firewall options on the cluster level.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new ProxmoxVE.Network.Firewall("example", new()
+    ///     {
+    ///         Ebtables = false,
+    ///         Enabled = false,
+    ///         InputPolicy = "DROP",
+    ///         LogRatelimit = new ProxmoxVE.Network.Inputs.FirewallLogRatelimitArgs
+    ///         {
+    ///             Burst = 10,
+    ///             Enabled = false,
+    ///             Rate = "5/second",
+    ///         },
+    ///         OutputPolicy = "ACCEPT",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ## Important Notes
+    /// 
+    /// Be careful not to use this resource multiple times for the same node.
+    /// 
+    /// ## Import
+    /// 
+    /// Instances can be imported without an ID, but you still need to pass one, e.g., bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import proxmoxve:Network/firewall:Firewall example example
+    /// ```
+    /// </summary>
     [ProxmoxVEResourceType("proxmoxve:Network/firewall:Firewall")]
     public partial class Firewall : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Enable ebtables cluster-wide
+        /// Enable ebtables rules cluster wide.
         /// </summary>
         [Output("ebtables")]
         public Output<bool?> Ebtables { get; private set; } = null!;
 
         /// <summary>
-        /// Enable or disable the firewall cluster-wide
+        /// Enable or disable the log rate limit.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Default policy for incoming traffic
+        /// The default input policy (`ACCEPT`, `DROP`, `REJECT`).
         /// </summary>
         [Output("inputPolicy")]
         public Output<string?> InputPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Log ratelimiting settings
+        /// The log rate limit.
         /// </summary>
         [Output("logRatelimit")]
         public Output<Outputs.FirewallLogRatelimit?> LogRatelimit { get; private set; } = null!;
 
         /// <summary>
-        /// Default policy for outgoing traffic
+        /// The default output policy (`ACCEPT`, `DROP`, `REJECT`).
         /// </summary>
         [Output("outputPolicy")]
         public Output<string?> OutputPolicy { get; private set; } = null!;
@@ -90,31 +131,31 @@ namespace Pulumi.ProxmoxVE.Network
     public sealed class FirewallArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable ebtables cluster-wide
+        /// Enable ebtables rules cluster wide.
         /// </summary>
         [Input("ebtables")]
         public Input<bool>? Ebtables { get; set; }
 
         /// <summary>
-        /// Enable or disable the firewall cluster-wide
+        /// Enable or disable the log rate limit.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Default policy for incoming traffic
+        /// The default input policy (`ACCEPT`, `DROP`, `REJECT`).
         /// </summary>
         [Input("inputPolicy")]
         public Input<string>? InputPolicy { get; set; }
 
         /// <summary>
-        /// Log ratelimiting settings
+        /// The log rate limit.
         /// </summary>
         [Input("logRatelimit")]
         public Input<Inputs.FirewallLogRatelimitArgs>? LogRatelimit { get; set; }
 
         /// <summary>
-        /// Default policy for outgoing traffic
+        /// The default output policy (`ACCEPT`, `DROP`, `REJECT`).
         /// </summary>
         [Input("outputPolicy")]
         public Input<string>? OutputPolicy { get; set; }
@@ -128,31 +169,31 @@ namespace Pulumi.ProxmoxVE.Network
     public sealed class FirewallState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable ebtables cluster-wide
+        /// Enable ebtables rules cluster wide.
         /// </summary>
         [Input("ebtables")]
         public Input<bool>? Ebtables { get; set; }
 
         /// <summary>
-        /// Enable or disable the firewall cluster-wide
+        /// Enable or disable the log rate limit.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Default policy for incoming traffic
+        /// The default input policy (`ACCEPT`, `DROP`, `REJECT`).
         /// </summary>
         [Input("inputPolicy")]
         public Input<string>? InputPolicy { get; set; }
 
         /// <summary>
-        /// Log ratelimiting settings
+        /// The log rate limit.
         /// </summary>
         [Input("logRatelimit")]
         public Input<Inputs.FirewallLogRatelimitGetArgs>? LogRatelimit { get; set; }
 
         /// <summary>
-        /// Default policy for outgoing traffic
+        /// The default output policy (`ACCEPT`, `DROP`, `REJECT`).
         /// </summary>
         [Input("outputPolicy")]
         public Input<string>? OutputPolicy { get; set; }

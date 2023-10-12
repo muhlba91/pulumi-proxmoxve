@@ -13,7 +13,13 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
     [OutputType]
     public sealed class ContainerInitializationUserAccount
     {
+        /// <summary>
+        /// The SSH keys for the root account.
+        /// </summary>
         public readonly ImmutableArray<string> Keys;
+        /// <summary>
+        /// The password for the root account.
+        /// </summary>
         public readonly string? Password;
 
         [OutputConstructor]

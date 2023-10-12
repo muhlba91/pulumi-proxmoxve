@@ -14,6 +14,10 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
     {
         [Input("keys")]
         private InputList<string>? _keys;
+
+        /// <summary>
+        /// The SSH keys for the root account.
+        /// </summary>
         public InputList<string> Keys
         {
             get => _keys ?? (_keys = new InputList<string>());
@@ -22,6 +26,10 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
 
         [Input("password")]
         private Input<string>? _password;
+
+        /// <summary>
+        /// The password for the root account.
+        /// </summary>
         public Input<string>? Password
         {
             get => _password;

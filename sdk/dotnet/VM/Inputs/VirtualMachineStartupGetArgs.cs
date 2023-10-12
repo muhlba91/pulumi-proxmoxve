@@ -15,6 +15,10 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         [Input("downDelay")]
         public Input<int>? DownDelay { get; set; }
 
+        /// <summary>
+        /// A non-negative number defining the general startup
+        /// order.
+        /// </summary>
         [Input("order")]
         public Input<int>? Order { get; set; }
 

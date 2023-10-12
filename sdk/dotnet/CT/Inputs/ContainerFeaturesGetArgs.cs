@@ -12,12 +12,24 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
 
     public sealed class ContainerFeaturesGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether the container supports FUSE mounts (defaults
+        /// to `false`)
+        /// </summary>
         [Input("fuse")]
         public Input<bool>? Fuse { get; set; }
 
+        /// <summary>
+        /// Whether the container supports `keyctl()` system
+        /// call (defaults to `false`)
+        /// </summary>
         [Input("keyctl")]
         public Input<bool>? Keyctl { get; set; }
 
+        /// <summary>
+        /// Whether the container is nested (defaults
+        /// to `false`)
+        /// </summary>
         [Input("nesting")]
         public Input<bool>? Nesting { get; set; }
 

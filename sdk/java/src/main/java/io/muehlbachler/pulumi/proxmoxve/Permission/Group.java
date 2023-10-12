@@ -16,59 +16,102 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Manages a user group.
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.proxmoxve.Permission.Group;
+ * import com.pulumi.proxmoxve.Permission.GroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var operationsTeam = new Group(&#34;operationsTeam&#34;, GroupArgs.builder()        
+ *             .comment(&#34;Managed by Terraform&#34;)
+ *             .groupId(&#34;operations-team&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * Instances can be imported using the `group_id`, e.g., bash
+ * 
+ * ```sh
+ *  $ pulumi import proxmoxve:Permission/group:Group operations_team operations-team
+ * ```
+ * 
+ */
 @ResourceType(type="proxmoxve:Permission/group:Group")
 public class Group extends com.pulumi.resources.CustomResource {
     /**
-     * The access control list
+     * The access control list (multiple blocks supported).
      * 
      */
     @Export(name="acls", refs={List.class,GroupAcl.class}, tree="[0,1]")
     private Output</* @Nullable */ List<GroupAcl>> acls;
 
     /**
-     * @return The access control list
+     * @return The access control list (multiple blocks supported).
      * 
      */
     public Output<Optional<List<GroupAcl>>> acls() {
         return Codegen.optional(this.acls);
     }
     /**
-     * The group comment
+     * The group comment.
      * 
      */
     @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
-     * @return The group comment
+     * @return The group comment.
      * 
      */
     public Output<Optional<String>> comment() {
         return Codegen.optional(this.comment);
     }
     /**
-     * The group id
+     * The group identifier.
      * 
      */
     @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output<String> groupId;
 
     /**
-     * @return The group id
+     * @return The group identifier.
      * 
      */
     public Output<String> groupId() {
         return this.groupId;
     }
     /**
-     * The group members
+     * The group members as a list of `username@realm` entries
      * 
      */
     @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> members;
 
     /**
-     * @return The group members
+     * @return The group members as a list of `username@realm` entries
      * 
      */
     public Output<List<String>> members() {

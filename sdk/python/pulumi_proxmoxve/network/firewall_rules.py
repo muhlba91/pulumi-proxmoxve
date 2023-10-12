@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -22,24 +22,44 @@ class FirewallRulesArgs:
                  vm_id: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a FirewallRules resource.
-        :param pulumi.Input[Sequence[pulumi.Input['FirewallRulesRuleArgs']]] rules: List of rules
-        :param pulumi.Input[int] container_id: The ID of the container to manage the firewall for.
-        :param pulumi.Input[str] node_name: The name of the node.
-        :param pulumi.Input[int] vm_id: The ID of the VM to manage the firewall for.
+        :param pulumi.Input[Sequence[pulumi.Input['FirewallRulesRuleArgs']]] rules: Firewall rule block (multiple blocks supported).
+               The provider supports two types of the `rule` blocks:
+               - a rule definition block, which includes the following arguments:
+        :param pulumi.Input[int] container_id: Container ID. Leave empty for cluster level
+               rules.
+        :param pulumi.Input[str] node_name: Node name. Leave empty for cluster level rules.
+        :param pulumi.Input[int] vm_id: VM ID. Leave empty for cluster level rules.
         """
-        pulumi.set(__self__, "rules", rules)
+        FirewallRulesArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            rules=rules,
+            container_id=container_id,
+            node_name=node_name,
+            vm_id=vm_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             rules: pulumi.Input[Sequence[pulumi.Input['FirewallRulesRuleArgs']]],
+             container_id: Optional[pulumi.Input[int]] = None,
+             node_name: Optional[pulumi.Input[str]] = None,
+             vm_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("rules", rules)
         if container_id is not None:
-            pulumi.set(__self__, "container_id", container_id)
+            _setter("container_id", container_id)
         if node_name is not None:
-            pulumi.set(__self__, "node_name", node_name)
+            _setter("node_name", node_name)
         if vm_id is not None:
-            pulumi.set(__self__, "vm_id", vm_id)
+            _setter("vm_id", vm_id)
 
     @property
     @pulumi.getter
     def rules(self) -> pulumi.Input[Sequence[pulumi.Input['FirewallRulesRuleArgs']]]:
         """
-        List of rules
+        Firewall rule block (multiple blocks supported).
+        The provider supports two types of the `rule` blocks:
+        - a rule definition block, which includes the following arguments:
         """
         return pulumi.get(self, "rules")
 
@@ -51,7 +71,8 @@ class FirewallRulesArgs:
     @pulumi.getter(name="containerId")
     def container_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the container to manage the firewall for.
+        Container ID. Leave empty for cluster level
+        rules.
         """
         return pulumi.get(self, "container_id")
 
@@ -63,7 +84,7 @@ class FirewallRulesArgs:
     @pulumi.getter(name="nodeName")
     def node_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the node.
+        Node name. Leave empty for cluster level rules.
         """
         return pulumi.get(self, "node_name")
 
@@ -75,7 +96,7 @@ class FirewallRulesArgs:
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the VM to manage the firewall for.
+        VM ID. Leave empty for cluster level rules.
         """
         return pulumi.get(self, "vm_id")
 
@@ -93,25 +114,44 @@ class _FirewallRulesState:
                  vm_id: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering FirewallRules resources.
-        :param pulumi.Input[int] container_id: The ID of the container to manage the firewall for.
-        :param pulumi.Input[str] node_name: The name of the node.
-        :param pulumi.Input[Sequence[pulumi.Input['FirewallRulesRuleArgs']]] rules: List of rules
-        :param pulumi.Input[int] vm_id: The ID of the VM to manage the firewall for.
+        :param pulumi.Input[int] container_id: Container ID. Leave empty for cluster level
+               rules.
+        :param pulumi.Input[str] node_name: Node name. Leave empty for cluster level rules.
+        :param pulumi.Input[Sequence[pulumi.Input['FirewallRulesRuleArgs']]] rules: Firewall rule block (multiple blocks supported).
+               The provider supports two types of the `rule` blocks:
+               - a rule definition block, which includes the following arguments:
+        :param pulumi.Input[int] vm_id: VM ID. Leave empty for cluster level rules.
         """
+        _FirewallRulesState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            container_id=container_id,
+            node_name=node_name,
+            rules=rules,
+            vm_id=vm_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             container_id: Optional[pulumi.Input[int]] = None,
+             node_name: Optional[pulumi.Input[str]] = None,
+             rules: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallRulesRuleArgs']]]] = None,
+             vm_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if container_id is not None:
-            pulumi.set(__self__, "container_id", container_id)
+            _setter("container_id", container_id)
         if node_name is not None:
-            pulumi.set(__self__, "node_name", node_name)
+            _setter("node_name", node_name)
         if rules is not None:
-            pulumi.set(__self__, "rules", rules)
+            _setter("rules", rules)
         if vm_id is not None:
-            pulumi.set(__self__, "vm_id", vm_id)
+            _setter("vm_id", vm_id)
 
     @property
     @pulumi.getter(name="containerId")
     def container_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the container to manage the firewall for.
+        Container ID. Leave empty for cluster level
+        rules.
         """
         return pulumi.get(self, "container_id")
 
@@ -123,7 +163,7 @@ class _FirewallRulesState:
     @pulumi.getter(name="nodeName")
     def node_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the node.
+        Node name. Leave empty for cluster level rules.
         """
         return pulumi.get(self, "node_name")
 
@@ -135,7 +175,9 @@ class _FirewallRulesState:
     @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallRulesRuleArgs']]]]:
         """
-        List of rules
+        Firewall rule block (multiple blocks supported).
+        The provider supports two types of the `rule` blocks:
+        - a rule definition block, which includes the following arguments:
         """
         return pulumi.get(self, "rules")
 
@@ -147,7 +189,7 @@ class _FirewallRulesState:
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the VM to manage the firewall for.
+        VM ID. Leave empty for cluster level rules.
         """
         return pulumi.get(self, "vm_id")
 
@@ -167,13 +209,60 @@ class FirewallRules(pulumi.CustomResource):
                  vm_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Create a FirewallRules resource with the given unique name, props, and options.
+        A security group is a collection of rules, defined at cluster level, which can
+        be used in all VMs' rules. For example, you can define a group named “webserver”
+        with rules to open the http and https ports. Rules can be created on the cluster
+        level, on VM / Container level.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        inbound = proxmoxve.network.FirewallRules("inbound",
+            node_name=proxmox_virtual_environment_vm["example"]["node_name"],
+            vm_id=proxmox_virtual_environment_vm["example"]["vm_id"],
+            rules=[
+                proxmoxve.network.FirewallRulesRuleArgs(
+                    type="in",
+                    action="ACCEPT",
+                    comment="Allow HTTP",
+                    dest="192.168.1.5",
+                    dport="80",
+                    proto="tcp",
+                    log="info",
+                ),
+                proxmoxve.network.FirewallRulesRuleArgs(
+                    type="in",
+                    action="ACCEPT",
+                    comment="Allow HTTPS",
+                    dest="192.168.1.5",
+                    dport="443",
+                    proto="tcp",
+                    log="info",
+                ),
+                proxmoxve.network.FirewallRulesRuleArgs(
+                    security_group=proxmox_virtual_environment_cluster_firewall_security_group["example"]["name"],
+                    comment="From security group",
+                    iface="net0",
+                ),
+            ],
+            opts=pulumi.ResourceOptions(depends_on=[
+                    proxmox_virtual_environment_vm["example"],
+                    proxmox_virtual_environment_cluster_firewall_security_group["example"],
+                ]))
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] container_id: The ID of the container to manage the firewall for.
-        :param pulumi.Input[str] node_name: The name of the node.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallRulesRuleArgs']]]] rules: List of rules
-        :param pulumi.Input[int] vm_id: The ID of the VM to manage the firewall for.
+        :param pulumi.Input[int] container_id: Container ID. Leave empty for cluster level
+               rules.
+        :param pulumi.Input[str] node_name: Node name. Leave empty for cluster level rules.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallRulesRuleArgs']]]] rules: Firewall rule block (multiple blocks supported).
+               The provider supports two types of the `rule` blocks:
+               - a rule definition block, which includes the following arguments:
+        :param pulumi.Input[int] vm_id: VM ID. Leave empty for cluster level rules.
         """
         ...
     @overload
@@ -182,7 +271,51 @@ class FirewallRules(pulumi.CustomResource):
                  args: FirewallRulesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a FirewallRules resource with the given unique name, props, and options.
+        A security group is a collection of rules, defined at cluster level, which can
+        be used in all VMs' rules. For example, you can define a group named “webserver”
+        with rules to open the http and https ports. Rules can be created on the cluster
+        level, on VM / Container level.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        inbound = proxmoxve.network.FirewallRules("inbound",
+            node_name=proxmox_virtual_environment_vm["example"]["node_name"],
+            vm_id=proxmox_virtual_environment_vm["example"]["vm_id"],
+            rules=[
+                proxmoxve.network.FirewallRulesRuleArgs(
+                    type="in",
+                    action="ACCEPT",
+                    comment="Allow HTTP",
+                    dest="192.168.1.5",
+                    dport="80",
+                    proto="tcp",
+                    log="info",
+                ),
+                proxmoxve.network.FirewallRulesRuleArgs(
+                    type="in",
+                    action="ACCEPT",
+                    comment="Allow HTTPS",
+                    dest="192.168.1.5",
+                    dport="443",
+                    proto="tcp",
+                    log="info",
+                ),
+                proxmoxve.network.FirewallRulesRuleArgs(
+                    security_group=proxmox_virtual_environment_cluster_firewall_security_group["example"]["name"],
+                    comment="From security group",
+                    iface="net0",
+                ),
+            ],
+            opts=pulumi.ResourceOptions(depends_on=[
+                    proxmox_virtual_environment_vm["example"],
+                    proxmox_virtual_environment_cluster_firewall_security_group["example"],
+                ]))
+        ```
+
         :param str resource_name: The name of the resource.
         :param FirewallRulesArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -193,6 +326,10 @@ class FirewallRules(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FirewallRulesArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -238,10 +375,13 @@ class FirewallRules(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] container_id: The ID of the container to manage the firewall for.
-        :param pulumi.Input[str] node_name: The name of the node.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallRulesRuleArgs']]]] rules: List of rules
-        :param pulumi.Input[int] vm_id: The ID of the VM to manage the firewall for.
+        :param pulumi.Input[int] container_id: Container ID. Leave empty for cluster level
+               rules.
+        :param pulumi.Input[str] node_name: Node name. Leave empty for cluster level rules.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallRulesRuleArgs']]]] rules: Firewall rule block (multiple blocks supported).
+               The provider supports two types of the `rule` blocks:
+               - a rule definition block, which includes the following arguments:
+        :param pulumi.Input[int] vm_id: VM ID. Leave empty for cluster level rules.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -257,7 +397,8 @@ class FirewallRules(pulumi.CustomResource):
     @pulumi.getter(name="containerId")
     def container_id(self) -> pulumi.Output[Optional[int]]:
         """
-        The ID of the container to manage the firewall for.
+        Container ID. Leave empty for cluster level
+        rules.
         """
         return pulumi.get(self, "container_id")
 
@@ -265,7 +406,7 @@ class FirewallRules(pulumi.CustomResource):
     @pulumi.getter(name="nodeName")
     def node_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of the node.
+        Node name. Leave empty for cluster level rules.
         """
         return pulumi.get(self, "node_name")
 
@@ -273,7 +414,9 @@ class FirewallRules(pulumi.CustomResource):
     @pulumi.getter
     def rules(self) -> pulumi.Output[Sequence['outputs.FirewallRulesRule']]:
         """
-        List of rules
+        Firewall rule block (multiple blocks supported).
+        The provider supports two types of the `rule` blocks:
+        - a rule definition block, which includes the following arguments:
         """
         return pulumi.get(self, "rules")
 
@@ -281,7 +424,7 @@ class FirewallRules(pulumi.CustomResource):
     @pulumi.getter(name="vmId")
     def vm_id(self) -> pulumi.Output[Optional[int]]:
         """
-        The ID of the VM to manage the firewall for.
+        VM ID. Leave empty for cluster level rules.
         """
         return pulumi.get(self, "vm_id")
 

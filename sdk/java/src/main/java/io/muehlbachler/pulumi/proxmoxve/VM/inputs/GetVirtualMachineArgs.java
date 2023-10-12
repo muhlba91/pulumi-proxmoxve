@@ -14,16 +14,32 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
 
     public static final GetVirtualMachineArgs Empty = new GetVirtualMachineArgs();
 
+    /**
+     * The node name.
+     * 
+     */
     @Import(name="nodeName", required=true)
     private Output<String> nodeName;
 
+    /**
+     * @return The node name.
+     * 
+     */
     public Output<String> nodeName() {
         return this.nodeName;
     }
 
+    /**
+     * The VM identifier.
+     * 
+     */
     @Import(name="vmId", required=true)
     private Output<Integer> vmId;
 
+    /**
+     * @return The VM identifier.
+     * 
+     */
     public Output<Integer> vmId() {
         return this.vmId;
     }
@@ -53,20 +69,44 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
             $ = new GetVirtualMachineArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param nodeName The node name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeName(Output<String> nodeName) {
             $.nodeName = nodeName;
             return this;
         }
 
+        /**
+         * @param nodeName The node name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeName(String nodeName) {
             return nodeName(Output.of(nodeName));
         }
 
+        /**
+         * @param vmId The VM identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vmId(Output<Integer> vmId) {
             $.vmId = vmId;
             return this;
         }
 
+        /**
+         * @param vmId The VM identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vmId(Integer vmId) {
             return vmId(Output.of(vmId));
         }

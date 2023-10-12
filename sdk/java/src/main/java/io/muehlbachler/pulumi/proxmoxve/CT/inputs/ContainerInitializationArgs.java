@@ -19,30 +19,64 @@ public final class ContainerInitializationArgs extends com.pulumi.resources.Reso
 
     public static final ContainerInitializationArgs Empty = new ContainerInitializationArgs();
 
+    /**
+     * The DNS configuration.
+     * 
+     */
     @Import(name="dns")
     private @Nullable Output<ContainerInitializationDnsArgs> dns;
 
+    /**
+     * @return The DNS configuration.
+     * 
+     */
     public Optional<Output<ContainerInitializationDnsArgs>> dns() {
         return Optional.ofNullable(this.dns);
     }
 
+    /**
+     * The hostname.
+     * 
+     */
     @Import(name="hostname")
     private @Nullable Output<String> hostname;
 
+    /**
+     * @return The hostname.
+     * 
+     */
     public Optional<Output<String>> hostname() {
         return Optional.ofNullable(this.hostname);
     }
 
+    /**
+     * The IP configuration (one block per network
+     * device).
+     * 
+     */
     @Import(name="ipConfigs")
     private @Nullable Output<List<ContainerInitializationIpConfigArgs>> ipConfigs;
 
+    /**
+     * @return The IP configuration (one block per network
+     * device).
+     * 
+     */
     public Optional<Output<List<ContainerInitializationIpConfigArgs>>> ipConfigs() {
         return Optional.ofNullable(this.ipConfigs);
     }
 
+    /**
+     * The user account configuration.
+     * 
+     */
     @Import(name="userAccount")
     private @Nullable Output<ContainerInitializationUserAccountArgs> userAccount;
 
+    /**
+     * @return The user account configuration.
+     * 
+     */
     public Optional<Output<ContainerInitializationUserAccountArgs>> userAccount() {
         return Optional.ofNullable(this.userAccount);
     }
@@ -74,42 +108,99 @@ public final class ContainerInitializationArgs extends com.pulumi.resources.Reso
             $ = new ContainerInitializationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param dns The DNS configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dns(@Nullable Output<ContainerInitializationDnsArgs> dns) {
             $.dns = dns;
             return this;
         }
 
+        /**
+         * @param dns The DNS configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dns(ContainerInitializationDnsArgs dns) {
             return dns(Output.of(dns));
         }
 
+        /**
+         * @param hostname The hostname.
+         * 
+         * @return builder
+         * 
+         */
         public Builder hostname(@Nullable Output<String> hostname) {
             $.hostname = hostname;
             return this;
         }
 
+        /**
+         * @param hostname The hostname.
+         * 
+         * @return builder
+         * 
+         */
         public Builder hostname(String hostname) {
             return hostname(Output.of(hostname));
         }
 
+        /**
+         * @param ipConfigs The IP configuration (one block per network
+         * device).
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipConfigs(@Nullable Output<List<ContainerInitializationIpConfigArgs>> ipConfigs) {
             $.ipConfigs = ipConfigs;
             return this;
         }
 
+        /**
+         * @param ipConfigs The IP configuration (one block per network
+         * device).
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipConfigs(List<ContainerInitializationIpConfigArgs> ipConfigs) {
             return ipConfigs(Output.of(ipConfigs));
         }
 
+        /**
+         * @param ipConfigs The IP configuration (one block per network
+         * device).
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipConfigs(ContainerInitializationIpConfigArgs... ipConfigs) {
             return ipConfigs(List.of(ipConfigs));
         }
 
+        /**
+         * @param userAccount The user account configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userAccount(@Nullable Output<ContainerInitializationUserAccountArgs> userAccount) {
             $.userAccount = userAccount;
             return this;
         }
 
+        /**
+         * @param userAccount The user account configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userAccount(ContainerInitializationUserAccountArgs userAccount) {
             return userAccount(Output.of(userAccount));
         }

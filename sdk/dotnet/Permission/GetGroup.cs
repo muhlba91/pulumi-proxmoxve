@@ -11,9 +11,59 @@ namespace Pulumi.ProxmoxVE.Permission
 {
     public static class GetGroup
     {
+        /// <summary>
+        /// Retrieves information about a specific user group.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var operationsTeam = ProxmoxVE.Permission.GetGroup.Invoke(new()
+        ///     {
+        ///         GroupId = "operations-team",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetGroupResult> InvokeAsync(GetGroupArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("proxmoxve:Permission/getGroup:getGroup", args ?? new GetGroupArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Retrieves information about a specific user group.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var operationsTeam = ProxmoxVE.Permission.GetGroup.Invoke(new()
+        ///     {
+        ///         GroupId = "operations-team",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetGroupResult> Invoke(GetGroupInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupResult>("proxmoxve:Permission/getGroup:getGroup", args ?? new GetGroupInvokeArgs(), options.WithDefaults());
     }
@@ -21,6 +71,9 @@ namespace Pulumi.ProxmoxVE.Permission
 
     public sealed class GetGroupArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The group identifier.
+        /// </summary>
         [Input("groupId", required: true)]
         public string GroupId { get; set; } = null!;
 
@@ -32,6 +85,9 @@ namespace Pulumi.ProxmoxVE.Permission
 
     public sealed class GetGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The group identifier.
+        /// </summary>
         [Input("groupId", required: true)]
         public Input<string> GroupId { get; set; } = null!;
 
@@ -45,13 +101,22 @@ namespace Pulumi.ProxmoxVE.Permission
     [OutputType]
     public sealed class GetGroupResult
     {
+        /// <summary>
+        /// The access control list.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGroupAclResult> Acls;
+        /// <summary>
+        /// The group comment.
+        /// </summary>
         public readonly string Comment;
         public readonly string GroupId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The group members as a list with `username@realm` entries.
+        /// </summary>
         public readonly ImmutableArray<string> Members;
 
         [OutputConstructor]

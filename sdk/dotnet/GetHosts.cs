@@ -11,9 +11,59 @@ namespace Pulumi.ProxmoxVE
 {
     public static class GetHosts
     {
+        /// <summary>
+        /// Retrieves all the host entries from a specific node.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var firstNodeHostEntries = ProxmoxVE.GetHosts.Invoke(new()
+        ///     {
+        ///         NodeName = "first-node",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetHostsResult> InvokeAsync(GetHostsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHostsResult>("proxmoxve:index/getHosts:getHosts", args ?? new GetHostsArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Retrieves all the host entries from a specific node.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var firstNodeHostEntries = ProxmoxVE.GetHosts.Invoke(new()
+        ///     {
+        ///         NodeName = "first-node",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetHostsResult> Invoke(GetHostsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHostsResult>("proxmoxve:index/getHosts:getHosts", args ?? new GetHostsInvokeArgs(), options.WithDefaults());
     }
@@ -21,6 +71,9 @@ namespace Pulumi.ProxmoxVE
 
     public sealed class GetHostsArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// A node name.
+        /// </summary>
         [Input("nodeName", required: true)]
         public string NodeName { get; set; } = null!;
 
@@ -32,6 +85,9 @@ namespace Pulumi.ProxmoxVE
 
     public sealed class GetHostsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// A node name.
+        /// </summary>
         [Input("nodeName", required: true)]
         public Input<string> NodeName { get; set; } = null!;
 
@@ -45,9 +101,22 @@ namespace Pulumi.ProxmoxVE
     [OutputType]
     public sealed class GetHostsResult
     {
+        /// <summary>
+        /// The IP addresses.
+        /// </summary>
         public readonly ImmutableArray<string> Addresses;
+        /// <summary>
+        /// The SHA1 digest.
+        /// </summary>
         public readonly string Digest;
+        /// <summary>
+        /// The host entries (conversion of `addresses` and `hostnames` into
+        /// objects).
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetHostsEntryResult> Entries;
+        /// <summary>
+        /// The hostnames associated with each of the IP addresses.
+        /// </summary>
         public readonly ImmutableArray<ImmutableArray<string>> Hostnames;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

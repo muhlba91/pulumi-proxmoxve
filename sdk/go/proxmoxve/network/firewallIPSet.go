@@ -12,20 +12,67 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// An IPSet allows us to group multiple IP addresses, IP subnets and aliases. Aliases can be
+// created on the cluster level, on VM / Container level.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/Network"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Network.NewFirewallIPSet(ctx, "ipset", &Network.FirewallIPSetArgs{
+//				NodeName: pulumi.Any(proxmox_virtual_environment_vm.Example.Node_name),
+//				VmId:     pulumi.Any(proxmox_virtual_environment_vm.Example.Vm_id),
+//				Comment:  pulumi.String("Managed by Terraform"),
+//				Cidrs: network.FirewallIPSetCidrArray{
+//					&network.FirewallIPSetCidrArgs{
+//						Name:    pulumi.String("192.168.0.0/23"),
+//						Comment: pulumi.String("Local network 1"),
+//					},
+//					&network.FirewallIPSetCidrArgs{
+//						Name:    pulumi.String("192.168.0.1"),
+//						Comment: pulumi.String("Server 1"),
+//						Nomatch: pulumi.Bool(true),
+//					},
+//					&network.FirewallIPSetCidrArgs{
+//						Name:    pulumi.String("192.168.2.1"),
+//						Comment: pulumi.String("Server 1"),
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				proxmox_virtual_environment_vm.Example,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type FirewallIPSet struct {
 	pulumi.CustomResourceState
 
-	// List of IP or Networks
+	// IP/CIDR block (multiple blocks supported).
 	Cidrs FirewallIPSetCidrArrayOutput `pulumi:"cidrs"`
-	// IPSet comment
+	// Arbitrary string annotation.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
-	// The ID of the container to manage the firewall for.
+	// Container ID. Leave empty for cluster level aliases.
 	ContainerId pulumi.IntPtrOutput `pulumi:"containerId"`
-	// IPSet name
+	// Network/IP specification in CIDR format.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The name of the node.
+	// Node name. Leave empty for cluster level aliases.
 	NodeName pulumi.StringPtrOutput `pulumi:"nodeName"`
-	// The ID of the VM to manage the firewall for.
+	// VM ID. Leave empty for cluster level aliases.
 	VmId pulumi.IntPtrOutput `pulumi:"vmId"`
 }
 
@@ -59,32 +106,32 @@ func GetFirewallIPSet(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FirewallIPSet resources.
 type firewallIPSetState struct {
-	// List of IP or Networks
+	// IP/CIDR block (multiple blocks supported).
 	Cidrs []FirewallIPSetCidr `pulumi:"cidrs"`
-	// IPSet comment
+	// Arbitrary string annotation.
 	Comment *string `pulumi:"comment"`
-	// The ID of the container to manage the firewall for.
+	// Container ID. Leave empty for cluster level aliases.
 	ContainerId *int `pulumi:"containerId"`
-	// IPSet name
+	// Network/IP specification in CIDR format.
 	Name *string `pulumi:"name"`
-	// The name of the node.
+	// Node name. Leave empty for cluster level aliases.
 	NodeName *string `pulumi:"nodeName"`
-	// The ID of the VM to manage the firewall for.
+	// VM ID. Leave empty for cluster level aliases.
 	VmId *int `pulumi:"vmId"`
 }
 
 type FirewallIPSetState struct {
-	// List of IP or Networks
+	// IP/CIDR block (multiple blocks supported).
 	Cidrs FirewallIPSetCidrArrayInput
-	// IPSet comment
+	// Arbitrary string annotation.
 	Comment pulumi.StringPtrInput
-	// The ID of the container to manage the firewall for.
+	// Container ID. Leave empty for cluster level aliases.
 	ContainerId pulumi.IntPtrInput
-	// IPSet name
+	// Network/IP specification in CIDR format.
 	Name pulumi.StringPtrInput
-	// The name of the node.
+	// Node name. Leave empty for cluster level aliases.
 	NodeName pulumi.StringPtrInput
-	// The ID of the VM to manage the firewall for.
+	// VM ID. Leave empty for cluster level aliases.
 	VmId pulumi.IntPtrInput
 }
 
@@ -93,33 +140,33 @@ func (FirewallIPSetState) ElementType() reflect.Type {
 }
 
 type firewallIPSetArgs struct {
-	// List of IP or Networks
+	// IP/CIDR block (multiple blocks supported).
 	Cidrs []FirewallIPSetCidr `pulumi:"cidrs"`
-	// IPSet comment
+	// Arbitrary string annotation.
 	Comment *string `pulumi:"comment"`
-	// The ID of the container to manage the firewall for.
+	// Container ID. Leave empty for cluster level aliases.
 	ContainerId *int `pulumi:"containerId"`
-	// IPSet name
+	// Network/IP specification in CIDR format.
 	Name *string `pulumi:"name"`
-	// The name of the node.
+	// Node name. Leave empty for cluster level aliases.
 	NodeName *string `pulumi:"nodeName"`
-	// The ID of the VM to manage the firewall for.
+	// VM ID. Leave empty for cluster level aliases.
 	VmId *int `pulumi:"vmId"`
 }
 
 // The set of arguments for constructing a FirewallIPSet resource.
 type FirewallIPSetArgs struct {
-	// List of IP or Networks
+	// IP/CIDR block (multiple blocks supported).
 	Cidrs FirewallIPSetCidrArrayInput
-	// IPSet comment
+	// Arbitrary string annotation.
 	Comment pulumi.StringPtrInput
-	// The ID of the container to manage the firewall for.
+	// Container ID. Leave empty for cluster level aliases.
 	ContainerId pulumi.IntPtrInput
-	// IPSet name
+	// Network/IP specification in CIDR format.
 	Name pulumi.StringPtrInput
-	// The name of the node.
+	// Node name. Leave empty for cluster level aliases.
 	NodeName pulumi.StringPtrInput
-	// The ID of the VM to manage the firewall for.
+	// VM ID. Leave empty for cluster level aliases.
 	VmId pulumi.IntPtrInput
 }
 
@@ -234,32 +281,32 @@ func (o FirewallIPSetOutput) ToOutput(ctx context.Context) pulumix.Output[*Firew
 	}
 }
 
-// List of IP or Networks
+// IP/CIDR block (multiple blocks supported).
 func (o FirewallIPSetOutput) Cidrs() FirewallIPSetCidrArrayOutput {
 	return o.ApplyT(func(v *FirewallIPSet) FirewallIPSetCidrArrayOutput { return v.Cidrs }).(FirewallIPSetCidrArrayOutput)
 }
 
-// IPSet comment
+// Arbitrary string annotation.
 func (o FirewallIPSetOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallIPSet) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the container to manage the firewall for.
+// Container ID. Leave empty for cluster level aliases.
 func (o FirewallIPSetOutput) ContainerId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FirewallIPSet) pulumi.IntPtrOutput { return v.ContainerId }).(pulumi.IntPtrOutput)
 }
 
-// IPSet name
+// Network/IP specification in CIDR format.
 func (o FirewallIPSetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallIPSet) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The name of the node.
+// Node name. Leave empty for cluster level aliases.
 func (o FirewallIPSetOutput) NodeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallIPSet) pulumi.StringPtrOutput { return v.NodeName }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the VM to manage the firewall for.
+// VM ID. Leave empty for cluster level aliases.
 func (o FirewallIPSetOutput) VmId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FirewallIPSet) pulumi.IntPtrOutput { return v.VmId }).(pulumi.IntPtrOutput)
 }

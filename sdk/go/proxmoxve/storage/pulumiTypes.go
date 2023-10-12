@@ -15,11 +15,16 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type FileSourceFile struct {
-	Changed  *bool   `pulumi:"changed"`
+	Changed *bool `pulumi:"changed"`
+	// The SHA256 checksum of the source file.
 	Checksum *string `pulumi:"checksum"`
+	// The file name.
 	FileName *string `pulumi:"fileName"`
-	Insecure *bool   `pulumi:"insecure"`
-	Path     string  `pulumi:"path"`
+	// Whether to skip the TLS verification step for
+	// HTTPS sources (defaults to `false`).
+	Insecure *bool `pulumi:"insecure"`
+	// A path to a local file or a URL.
+	Path string `pulumi:"path"`
 }
 
 // FileSourceFileInput is an input type that accepts FileSourceFileArgs and FileSourceFileOutput values.
@@ -34,11 +39,16 @@ type FileSourceFileInput interface {
 }
 
 type FileSourceFileArgs struct {
-	Changed  pulumi.BoolPtrInput   `pulumi:"changed"`
+	Changed pulumi.BoolPtrInput `pulumi:"changed"`
+	// The SHA256 checksum of the source file.
 	Checksum pulumi.StringPtrInput `pulumi:"checksum"`
+	// The file name.
 	FileName pulumi.StringPtrInput `pulumi:"fileName"`
-	Insecure pulumi.BoolPtrInput   `pulumi:"insecure"`
-	Path     pulumi.StringInput    `pulumi:"path"`
+	// Whether to skip the TLS verification step for
+	// HTTPS sources (defaults to `false`).
+	Insecure pulumi.BoolPtrInput `pulumi:"insecure"`
+	// A path to a local file or a URL.
+	Path pulumi.StringInput `pulumi:"path"`
 }
 
 func (FileSourceFileArgs) ElementType() reflect.Type {
@@ -140,18 +150,23 @@ func (o FileSourceFileOutput) Changed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FileSourceFile) *bool { return v.Changed }).(pulumi.BoolPtrOutput)
 }
 
+// The SHA256 checksum of the source file.
 func (o FileSourceFileOutput) Checksum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FileSourceFile) *string { return v.Checksum }).(pulumi.StringPtrOutput)
 }
 
+// The file name.
 func (o FileSourceFileOutput) FileName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FileSourceFile) *string { return v.FileName }).(pulumi.StringPtrOutput)
 }
 
+// Whether to skip the TLS verification step for
+// HTTPS sources (defaults to `false`).
 func (o FileSourceFileOutput) Insecure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FileSourceFile) *bool { return v.Insecure }).(pulumi.BoolPtrOutput)
 }
 
+// A path to a local file or a URL.
 func (o FileSourceFileOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v FileSourceFile) string { return v.Path }).(pulumi.StringOutput)
 }
@@ -195,6 +210,7 @@ func (o FileSourceFilePtrOutput) Changed() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The SHA256 checksum of the source file.
 func (o FileSourceFilePtrOutput) Checksum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FileSourceFile) *string {
 		if v == nil {
@@ -204,6 +220,7 @@ func (o FileSourceFilePtrOutput) Checksum() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The file name.
 func (o FileSourceFilePtrOutput) FileName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FileSourceFile) *string {
 		if v == nil {
@@ -213,6 +230,8 @@ func (o FileSourceFilePtrOutput) FileName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether to skip the TLS verification step for
+// HTTPS sources (defaults to `false`).
 func (o FileSourceFilePtrOutput) Insecure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FileSourceFile) *bool {
 		if v == nil {
@@ -222,6 +241,7 @@ func (o FileSourceFilePtrOutput) Insecure() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// A path to a local file or a URL.
 func (o FileSourceFilePtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FileSourceFile) *string {
 		if v == nil {
@@ -232,9 +252,12 @@ func (o FileSourceFilePtrOutput) Path() pulumi.StringPtrOutput {
 }
 
 type FileSourceRaw struct {
-	Data     string `pulumi:"data"`
+	// The raw data.
+	Data string `pulumi:"data"`
+	// The file name.
 	FileName string `pulumi:"fileName"`
-	Resize   *int   `pulumi:"resize"`
+	// The number of bytes to resize the file to.
+	Resize *int `pulumi:"resize"`
 }
 
 // FileSourceRawInput is an input type that accepts FileSourceRawArgs and FileSourceRawOutput values.
@@ -249,9 +272,12 @@ type FileSourceRawInput interface {
 }
 
 type FileSourceRawArgs struct {
-	Data     pulumi.StringInput `pulumi:"data"`
+	// The raw data.
+	Data pulumi.StringInput `pulumi:"data"`
+	// The file name.
 	FileName pulumi.StringInput `pulumi:"fileName"`
-	Resize   pulumi.IntPtrInput `pulumi:"resize"`
+	// The number of bytes to resize the file to.
+	Resize pulumi.IntPtrInput `pulumi:"resize"`
 }
 
 func (FileSourceRawArgs) ElementType() reflect.Type {
@@ -349,14 +375,17 @@ func (o FileSourceRawOutput) ToOutput(ctx context.Context) pulumix.Output[FileSo
 	}
 }
 
+// The raw data.
 func (o FileSourceRawOutput) Data() pulumi.StringOutput {
 	return o.ApplyT(func(v FileSourceRaw) string { return v.Data }).(pulumi.StringOutput)
 }
 
+// The file name.
 func (o FileSourceRawOutput) FileName() pulumi.StringOutput {
 	return o.ApplyT(func(v FileSourceRaw) string { return v.FileName }).(pulumi.StringOutput)
 }
 
+// The number of bytes to resize the file to.
 func (o FileSourceRawOutput) Resize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FileSourceRaw) *int { return v.Resize }).(pulumi.IntPtrOutput)
 }
@@ -391,6 +420,7 @@ func (o FileSourceRawPtrOutput) Elem() FileSourceRawOutput {
 	}).(FileSourceRawOutput)
 }
 
+// The raw data.
 func (o FileSourceRawPtrOutput) Data() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FileSourceRaw) *string {
 		if v == nil {
@@ -400,6 +430,7 @@ func (o FileSourceRawPtrOutput) Data() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The file name.
 func (o FileSourceRawPtrOutput) FileName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FileSourceRaw) *string {
 		if v == nil {
@@ -409,6 +440,7 @@ func (o FileSourceRawPtrOutput) FileName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The number of bytes to resize the file to.
 func (o FileSourceRawPtrOutput) Resize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FileSourceRaw) *int {
 		if v == nil {

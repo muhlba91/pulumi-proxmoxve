@@ -19,14 +19,14 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
     public static final CertifiState Empty = new CertifiState();
 
     /**
-     * The PEM encoded certificate
+     * The PEM encoded certificate.
      * 
      */
     @Import(name="certificate")
     private @Nullable Output<String> certificate;
 
     /**
-     * @return The PEM encoded certificate
+     * @return The PEM encoded certificate.
      * 
      */
     public Optional<Output<String>> certificate() {
@@ -34,14 +34,14 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The PEM encoded certificate chain
+     * The PEM encoded certificate chain.
      * 
      */
     @Import(name="certificateChain")
     private @Nullable Output<String> certificateChain;
 
     /**
-     * @return The PEM encoded certificate chain
+     * @return The PEM encoded certificate chain.
      * 
      */
     public Optional<Output<String>> certificateChain() {
@@ -49,14 +49,14 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The expiration date
+     * The expiration date (RFC 3339).
      * 
      */
     @Import(name="expirationDate")
     private @Nullable Output<String> expirationDate;
 
     /**
-     * @return The expiration date
+     * @return The expiration date (RFC 3339).
      * 
      */
     public Optional<Output<String>> expirationDate() {
@@ -64,14 +64,14 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The file name
+     * The file name.
      * 
      */
     @Import(name="fileName")
     private @Nullable Output<String> fileName;
 
     /**
-     * @return The file name
+     * @return The file name.
      * 
      */
     public Optional<Output<String>> fileName() {
@@ -79,14 +79,14 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The issuer
+     * The issuer.
      * 
      */
     @Import(name="issuer")
     private @Nullable Output<String> issuer;
 
     /**
-     * @return The issuer
+     * @return The issuer.
      * 
      */
     public Optional<Output<String>> issuer() {
@@ -94,14 +94,14 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The node name
+     * A node name.
      * 
      */
     @Import(name="nodeName")
     private @Nullable Output<String> nodeName;
 
     /**
-     * @return The node name
+     * @return A node name.
      * 
      */
     public Optional<Output<String>> nodeName() {
@@ -124,14 +124,14 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The PEM encoded private key
+     * The PEM encoded private key.
      * 
      */
     @Import(name="privateKey")
     private @Nullable Output<String> privateKey;
 
     /**
-     * @return The PEM encoded private key
+     * @return The PEM encoded private key.
      * 
      */
     public Optional<Output<String>> privateKey() {
@@ -139,14 +139,14 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The public key size
+     * The public key size.
      * 
      */
     @Import(name="publicKeySize")
     private @Nullable Output<Integer> publicKeySize;
 
     /**
-     * @return The public key size
+     * @return The public key size.
      * 
      */
     public Optional<Output<Integer>> publicKeySize() {
@@ -154,14 +154,14 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The public key type
+     * The public key type.
      * 
      */
     @Import(name="publicKeyType")
     private @Nullable Output<String> publicKeyType;
 
     /**
-     * @return The public key type
+     * @return The public key type.
      * 
      */
     public Optional<Output<String>> publicKeyType() {
@@ -169,14 +169,14 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The SSL fingerprint
+     * The SSL fingerprint.
      * 
      */
     @Import(name="sslFingerprint")
     private @Nullable Output<String> sslFingerprint;
 
     /**
-     * @return The SSL fingerprint
+     * @return The SSL fingerprint.
      * 
      */
     public Optional<Output<String>> sslFingerprint() {
@@ -184,14 +184,14 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The start date
+     * The start date (RFC 3339).
      * 
      */
     @Import(name="startDate")
     private @Nullable Output<String> startDate;
 
     /**
-     * @return The start date
+     * @return The start date (RFC 3339).
      * 
      */
     public Optional<Output<String>> startDate() {
@@ -199,14 +199,14 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The subject
+     * The subject.
      * 
      */
     @Import(name="subject")
     private @Nullable Output<String> subject;
 
     /**
-     * @return The subject
+     * @return The subject.
      * 
      */
     public Optional<Output<String>> subject() {
@@ -214,14 +214,14 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The subject alternative names
+     * The subject alternative names.
      * 
      */
     @Import(name="subjectAlternativeNames")
     private @Nullable Output<List<String>> subjectAlternativeNames;
 
     /**
-     * @return The subject alternative names
+     * @return The subject alternative names.
      * 
      */
     public Optional<Output<List<String>>> subjectAlternativeNames() {
@@ -266,7 +266,7 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificate The PEM encoded certificate
+         * @param certificate The PEM encoded certificate.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificate The PEM encoded certificate
+         * @param certificate The PEM encoded certificate.
          * 
          * @return builder
          * 
@@ -287,7 +287,7 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateChain The PEM encoded certificate chain
+         * @param certificateChain The PEM encoded certificate chain.
          * 
          * @return builder
          * 
@@ -298,7 +298,7 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateChain The PEM encoded certificate chain
+         * @param certificateChain The PEM encoded certificate chain.
          * 
          * @return builder
          * 
@@ -308,7 +308,7 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param expirationDate The expiration date
+         * @param expirationDate The expiration date (RFC 3339).
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param expirationDate The expiration date
+         * @param expirationDate The expiration date (RFC 3339).
          * 
          * @return builder
          * 
@@ -329,7 +329,7 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fileName The file name
+         * @param fileName The file name.
          * 
          * @return builder
          * 
@@ -340,7 +340,7 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fileName The file name
+         * @param fileName The file name.
          * 
          * @return builder
          * 
@@ -350,7 +350,7 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param issuer The issuer
+         * @param issuer The issuer.
          * 
          * @return builder
          * 
@@ -361,7 +361,7 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param issuer The issuer
+         * @param issuer The issuer.
          * 
          * @return builder
          * 
@@ -371,7 +371,7 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeName The node name
+         * @param nodeName A node name.
          * 
          * @return builder
          * 
@@ -382,7 +382,7 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeName The node name
+         * @param nodeName A node name.
          * 
          * @return builder
          * 
@@ -413,7 +413,7 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateKey The PEM encoded private key
+         * @param privateKey The PEM encoded private key.
          * 
          * @return builder
          * 
@@ -424,7 +424,7 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateKey The PEM encoded private key
+         * @param privateKey The PEM encoded private key.
          * 
          * @return builder
          * 
@@ -434,7 +434,7 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicKeySize The public key size
+         * @param publicKeySize The public key size.
          * 
          * @return builder
          * 
@@ -445,7 +445,7 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicKeySize The public key size
+         * @param publicKeySize The public key size.
          * 
          * @return builder
          * 
@@ -455,7 +455,7 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicKeyType The public key type
+         * @param publicKeyType The public key type.
          * 
          * @return builder
          * 
@@ -466,7 +466,7 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicKeyType The public key type
+         * @param publicKeyType The public key type.
          * 
          * @return builder
          * 
@@ -476,7 +476,7 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslFingerprint The SSL fingerprint
+         * @param sslFingerprint The SSL fingerprint.
          * 
          * @return builder
          * 
@@ -487,7 +487,7 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslFingerprint The SSL fingerprint
+         * @param sslFingerprint The SSL fingerprint.
          * 
          * @return builder
          * 
@@ -497,7 +497,7 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param startDate The start date
+         * @param startDate The start date (RFC 3339).
          * 
          * @return builder
          * 
@@ -508,7 +508,7 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param startDate The start date
+         * @param startDate The start date (RFC 3339).
          * 
          * @return builder
          * 
@@ -518,7 +518,7 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subject The subject
+         * @param subject The subject.
          * 
          * @return builder
          * 
@@ -529,7 +529,7 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subject The subject
+         * @param subject The subject.
          * 
          * @return builder
          * 
@@ -539,7 +539,7 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subjectAlternativeNames The subject alternative names
+         * @param subjectAlternativeNames The subject alternative names.
          * 
          * @return builder
          * 
@@ -550,7 +550,7 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subjectAlternativeNames The subject alternative names
+         * @param subjectAlternativeNames The subject alternative names.
          * 
          * @return builder
          * 
@@ -560,7 +560,7 @@ public final class CertifiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subjectAlternativeNames The subject alternative names
+         * @param subjectAlternativeNames The subject alternative names.
          * 
          * @return builder
          * 

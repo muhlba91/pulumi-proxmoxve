@@ -13,8 +13,17 @@ namespace Pulumi.ProxmoxVE.Storage.Outputs
     [OutputType]
     public sealed class FileSourceRaw
     {
+        /// <summary>
+        /// The raw data.
+        /// </summary>
         public readonly string Data;
+        /// <summary>
+        /// The file name.
+        /// </summary>
         public readonly string FileName;
+        /// <summary>
+        /// The number of bytes to resize the file to.
+        /// </summary>
         public readonly int? Resize;
 
         [OutputConstructor]

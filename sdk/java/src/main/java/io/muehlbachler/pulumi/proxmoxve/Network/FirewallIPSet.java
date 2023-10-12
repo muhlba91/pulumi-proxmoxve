@@ -17,87 +17,142 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * An IPSet allows us to group multiple IP addresses, IP subnets and aliases. Aliases can be
+ * created on the cluster level, on VM / Container level.
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.proxmoxve.Network.FirewallIPSet;
+ * import com.pulumi.proxmoxve.Network.FirewallIPSetArgs;
+ * import com.pulumi.proxmoxve.Network.inputs.FirewallIPSetCidrArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var ipset = new FirewallIPSet(&#34;ipset&#34;, FirewallIPSetArgs.builder()        
+ *             .nodeName(proxmox_virtual_environment_vm.example().node_name())
+ *             .vmId(proxmox_virtual_environment_vm.example().vm_id())
+ *             .comment(&#34;Managed by Terraform&#34;)
+ *             .cidrs(            
+ *                 FirewallIPSetCidrArgs.builder()
+ *                     .name(&#34;192.168.0.0/23&#34;)
+ *                     .comment(&#34;Local network 1&#34;)
+ *                     .build(),
+ *                 FirewallIPSetCidrArgs.builder()
+ *                     .name(&#34;192.168.0.1&#34;)
+ *                     .comment(&#34;Server 1&#34;)
+ *                     .nomatch(true)
+ *                     .build(),
+ *                 FirewallIPSetCidrArgs.builder()
+ *                     .name(&#34;192.168.2.1&#34;)
+ *                     .comment(&#34;Server 1&#34;)
+ *                     .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(proxmox_virtual_environment_vm.example())
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ */
 @ResourceType(type="proxmoxve:Network/firewallIPSet:FirewallIPSet")
 public class FirewallIPSet extends com.pulumi.resources.CustomResource {
     /**
-     * List of IP or Networks
+     * IP/CIDR block (multiple blocks supported).
      * 
      */
     @Export(name="cidrs", refs={List.class,FirewallIPSetCidr.class}, tree="[0,1]")
     private Output</* @Nullable */ List<FirewallIPSetCidr>> cidrs;
 
     /**
-     * @return List of IP or Networks
+     * @return IP/CIDR block (multiple blocks supported).
      * 
      */
     public Output<Optional<List<FirewallIPSetCidr>>> cidrs() {
         return Codegen.optional(this.cidrs);
     }
     /**
-     * IPSet comment
+     * Arbitrary string annotation.
      * 
      */
     @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
-     * @return IPSet comment
+     * @return Arbitrary string annotation.
      * 
      */
     public Output<Optional<String>> comment() {
         return Codegen.optional(this.comment);
     }
     /**
-     * The ID of the container to manage the firewall for.
+     * Container ID. Leave empty for cluster level aliases.
      * 
      */
     @Export(name="containerId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> containerId;
 
     /**
-     * @return The ID of the container to manage the firewall for.
+     * @return Container ID. Leave empty for cluster level aliases.
      * 
      */
     public Output<Optional<Integer>> containerId() {
         return Codegen.optional(this.containerId);
     }
     /**
-     * IPSet name
+     * Network/IP specification in CIDR format.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return IPSet name
+     * @return Network/IP specification in CIDR format.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The name of the node.
+     * Node name. Leave empty for cluster level aliases.
      * 
      */
     @Export(name="nodeName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> nodeName;
 
     /**
-     * @return The name of the node.
+     * @return Node name. Leave empty for cluster level aliases.
      * 
      */
     public Output<Optional<String>> nodeName() {
         return Codegen.optional(this.nodeName);
     }
     /**
-     * The ID of the VM to manage the firewall for.
+     * VM ID. Leave empty for cluster level aliases.
      * 
      */
     @Export(name="vmId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> vmId;
 
     /**
-     * @return The ID of the VM to manage the firewall for.
+     * @return VM ID. Leave empty for cluster level aliases.
      * 
      */
     public Output<Optional<Integer>> vmId() {

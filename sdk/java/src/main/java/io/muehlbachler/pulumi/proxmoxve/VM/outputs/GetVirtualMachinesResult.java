@@ -18,8 +18,20 @@ public final class GetVirtualMachinesResult {
      * 
      */
     private String id;
+    /**
+     * @return The node name.
+     * 
+     */
     private @Nullable String nodeName;
+    /**
+     * @return A list of tags of the VM.
+     * 
+     */
     private @Nullable List<String> tags;
+    /**
+     * @return The VMs list.
+     * 
+     */
     private List<GetVirtualMachinesVm> vms;
 
     private GetVirtualMachinesResult() {}
@@ -30,12 +42,24 @@ public final class GetVirtualMachinesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The node name.
+     * 
+     */
     public Optional<String> nodeName() {
         return Optional.ofNullable(this.nodeName);
     }
+    /**
+     * @return A list of tags of the VM.
+     * 
+     */
     public List<String> tags() {
         return this.tags == null ? List.of() : this.tags;
     }
+    /**
+     * @return The VMs list.
+     * 
+     */
     public List<GetVirtualMachinesVm> vms() {
         return this.vms;
     }

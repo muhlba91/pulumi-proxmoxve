@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -49,6 +49,9 @@ class GetVirtualMachineResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The virtual machine name.
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -59,6 +62,9 @@ class GetVirtualMachineResult:
     @property
     @pulumi.getter
     def tags(self) -> Sequence[str]:
+        """
+        A list of tags of the VM.
+        """
         return pulumi.get(self, "tags")
 
     @property
@@ -84,7 +90,21 @@ def get_virtual_machine(node_name: Optional[str] = None,
                         vm_id: Optional[int] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVirtualMachineResult:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves information about a specific VM.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    test_vm = proxmoxve.VM.get_virtual_machine(node_name="test",
+        vm_id=100)
+    ```
+
+
+    :param str node_name: The node name.
+    :param int vm_id: The VM identifier.
     """
     __args__ = dict()
     __args__['nodeName'] = node_name
@@ -105,6 +125,20 @@ def get_virtual_machine_output(node_name: Optional[pulumi.Input[str]] = None,
                                vm_id: Optional[pulumi.Input[int]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVirtualMachineResult]:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves information about a specific VM.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    test_vm = proxmoxve.VM.get_virtual_machine(node_name="test",
+        vm_id=100)
+    ```
+
+
+    :param str node_name: The node name.
+    :param int vm_id: The VM identifier.
     """
     ...

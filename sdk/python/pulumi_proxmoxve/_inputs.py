@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
@@ -20,12 +20,30 @@ class HostsEntryArgs:
     def __init__(__self__, *,
                  address: pulumi.Input[str],
                  hostnames: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "hostnames", hostnames)
+        """
+        :param pulumi.Input[str] address: The IP address.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: The hostnames.
+        """
+        HostsEntryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            hostnames=hostnames,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: pulumi.Input[str],
+             hostnames: pulumi.Input[Sequence[pulumi.Input[str]]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address", address)
+        _setter("hostnames", hostnames)
 
     @property
     @pulumi.getter
     def address(self) -> pulumi.Input[str]:
+        """
+        The IP address.
+        """
         return pulumi.get(self, "address")
 
     @address.setter
@@ -35,6 +53,9 @@ class HostsEntryArgs:
     @property
     @pulumi.getter
     def hostnames(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The hostnames.
+        """
         return pulumi.get(self, "hostnames")
 
     @hostnames.setter
@@ -50,16 +71,33 @@ class ProviderSshArgs:
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input['ProviderSshNodeArgs']]]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None):
+        ProviderSshArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            agent=agent,
+            agent_socket=agent_socket,
+            nodes=nodes,
+            password=password,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             agent: Optional[pulumi.Input[bool]] = None,
+             agent_socket: Optional[pulumi.Input[str]] = None,
+             nodes: Optional[pulumi.Input[Sequence[pulumi.Input['ProviderSshNodeArgs']]]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if agent is not None:
-            pulumi.set(__self__, "agent", agent)
+            _setter("agent", agent)
         if agent_socket is not None:
-            pulumi.set(__self__, "agent_socket", agent_socket)
+            _setter("agent_socket", agent_socket)
         if nodes is not None:
-            pulumi.set(__self__, "nodes", nodes)
+            _setter("nodes", nodes)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if username is not None:
-            pulumi.set(__self__, "username", username)
+            _setter("username", username)
 
     @property
     @pulumi.getter
@@ -113,10 +151,23 @@ class ProviderSshNodeArgs:
                  address: pulumi.Input[str],
                  name: pulumi.Input[str],
                  port: Optional[pulumi.Input[int]] = None):
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "name", name)
+        ProviderSshNodeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            name=name,
+            port=port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: pulumi.Input[str],
+             name: pulumi.Input[str],
+             port: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address", address)
+        _setter("name", name)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
 
     @property
     @pulumi.getter

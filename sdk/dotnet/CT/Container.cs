@@ -9,53 +9,64 @@ using Pulumi.Serialization;
 
 namespace Pulumi.ProxmoxVE.CT
 {
+    /// <summary>
+    /// Manages a container.
+    /// 
+    /// ## Import
+    /// 
+    /// Instances can be imported using the `node_name` and the `vm_id`, e.g., bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import proxmoxve:CT/container:Container ubuntu_container first-node/1234
+    /// ```
+    /// </summary>
     [ProxmoxVEResourceType("proxmoxve:CT/container:Container")]
     public partial class Container : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The cloning configuration
+        /// The cloning configuration.
         /// </summary>
         [Output("clone")]
         public Output<Outputs.ContainerClone?> Clone { get; private set; } = null!;
 
         /// <summary>
-        /// The console configuration
+        /// Console.
         /// </summary>
         [Output("console")]
         public Output<Outputs.ContainerConsole?> Console { get; private set; } = null!;
 
         /// <summary>
-        /// The CPU allocation
+        /// The CPU configuration.
         /// </summary>
         [Output("cpu")]
         public Output<Outputs.ContainerCpu?> Cpu { get; private set; } = null!;
 
         /// <summary>
-        /// The description
+        /// The description.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The disks
+        /// The disk configuration.
         /// </summary>
         [Output("disk")]
         public Output<Outputs.ContainerDisk?> Disk { get; private set; } = null!;
 
         /// <summary>
-        /// Features
+        /// The container features
         /// </summary>
         [Output("features")]
         public Output<Outputs.ContainerFeatures?> Features { get; private set; } = null!;
 
         /// <summary>
-        /// The initialization configuration
+        /// The initialization configuration.
         /// </summary>
         [Output("initialization")]
         public Output<Outputs.ContainerInitialization?> Initialization { get; private set; } = null!;
 
         /// <summary>
-        /// The memory allocation
+        /// The memory configuration.
         /// </summary>
         [Output("memory")]
         public Output<Outputs.ContainerMemory?> Memory { get; private set; } = null!;
@@ -67,55 +78,67 @@ namespace Pulumi.ProxmoxVE.CT
         public Output<ImmutableArray<Outputs.ContainerMountPoint>> MountPoints { get; private set; } = null!;
 
         /// <summary>
-        /// The network interfaces
+        /// A network interface (multiple blocks
+        /// supported).
         /// </summary>
         [Output("networkInterfaces")]
         public Output<ImmutableArray<Outputs.ContainerNetworkInterface>> NetworkInterfaces { get; private set; } = null!;
 
         /// <summary>
-        /// The node name
+        /// The name of the node to assign the container to.
         /// </summary>
         [Output("nodeName")]
         public Output<string> NodeName { get; private set; } = null!;
 
         /// <summary>
-        /// The operating system configuration
+        /// The Operating System configuration.
         /// </summary>
         [Output("operatingSystem")]
         public Output<Outputs.ContainerOperatingSystem?> OperatingSystem { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the pool to assign the container to
+        /// The identifier for a pool to assign the container to.
         /// </summary>
         [Output("poolId")]
         public Output<string?> PoolId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to start the container
+        /// Automatically start container when the host system boots (defaults to `true`).
+        /// </summary>
+        [Output("startOnBoot")]
+        public Output<bool?> StartOnBoot { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to start the container (defaults to `true`).
         /// </summary>
         [Output("started")]
         public Output<bool?> Started { get; private set; } = null!;
 
         /// <summary>
-        /// Tags of the container. This is only meta information.
+        /// A list of tags the container tags. This is only meta
+        /// information (defaults to `[]`). Note: Proxmox always sorts the container tags.
+        /// If the list in template is not sorted, then Proxmox will always report a
+        /// difference on the resource. You may use the `ignore_changes` lifecycle
+        /// meta-argument to ignore changes to this attribute.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to create a template
+        /// Whether to create a template (defaults to `false`).
         /// </summary>
         [Output("template")]
         public Output<bool?> Template { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the container runs as unprivileged on the host
+        /// Whether the container runs as unprivileged on
+        /// the host (defaults to `false`).
         /// </summary>
         [Output("unprivileged")]
         public Output<bool?> Unprivileged { get; private set; } = null!;
 
         /// <summary>
-        /// The VM identifier
+        /// The container identifier
         /// </summary>
         [Output("vmId")]
         public Output<int?> VmId { get; private set; } = null!;
@@ -168,49 +191,49 @@ namespace Pulumi.ProxmoxVE.CT
     public sealed class ContainerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The cloning configuration
+        /// The cloning configuration.
         /// </summary>
         [Input("clone")]
         public Input<Inputs.ContainerCloneArgs>? Clone { get; set; }
 
         /// <summary>
-        /// The console configuration
+        /// Console.
         /// </summary>
         [Input("console")]
         public Input<Inputs.ContainerConsoleArgs>? Console { get; set; }
 
         /// <summary>
-        /// The CPU allocation
+        /// The CPU configuration.
         /// </summary>
         [Input("cpu")]
         public Input<Inputs.ContainerCpuArgs>? Cpu { get; set; }
 
         /// <summary>
-        /// The description
+        /// The description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The disks
+        /// The disk configuration.
         /// </summary>
         [Input("disk")]
         public Input<Inputs.ContainerDiskArgs>? Disk { get; set; }
 
         /// <summary>
-        /// Features
+        /// The container features
         /// </summary>
         [Input("features")]
         public Input<Inputs.ContainerFeaturesArgs>? Features { get; set; }
 
         /// <summary>
-        /// The initialization configuration
+        /// The initialization configuration.
         /// </summary>
         [Input("initialization")]
         public Input<Inputs.ContainerInitializationArgs>? Initialization { get; set; }
 
         /// <summary>
-        /// The memory allocation
+        /// The memory configuration.
         /// </summary>
         [Input("memory")]
         public Input<Inputs.ContainerMemoryArgs>? Memory { get; set; }
@@ -231,7 +254,8 @@ namespace Pulumi.ProxmoxVE.CT
         private InputList<Inputs.ContainerNetworkInterfaceArgs>? _networkInterfaces;
 
         /// <summary>
-        /// The network interfaces
+        /// A network interface (multiple blocks
+        /// supported).
         /// </summary>
         public InputList<Inputs.ContainerNetworkInterfaceArgs> NetworkInterfaces
         {
@@ -240,25 +264,31 @@ namespace Pulumi.ProxmoxVE.CT
         }
 
         /// <summary>
-        /// The node name
+        /// The name of the node to assign the container to.
         /// </summary>
         [Input("nodeName", required: true)]
         public Input<string> NodeName { get; set; } = null!;
 
         /// <summary>
-        /// The operating system configuration
+        /// The Operating System configuration.
         /// </summary>
         [Input("operatingSystem")]
         public Input<Inputs.ContainerOperatingSystemArgs>? OperatingSystem { get; set; }
 
         /// <summary>
-        /// The ID of the pool to assign the container to
+        /// The identifier for a pool to assign the container to.
         /// </summary>
         [Input("poolId")]
         public Input<string>? PoolId { get; set; }
 
         /// <summary>
-        /// Whether to start the container
+        /// Automatically start container when the host system boots (defaults to `true`).
+        /// </summary>
+        [Input("startOnBoot")]
+        public Input<bool>? StartOnBoot { get; set; }
+
+        /// <summary>
+        /// Whether to start the container (defaults to `true`).
         /// </summary>
         [Input("started")]
         public Input<bool>? Started { get; set; }
@@ -267,7 +297,11 @@ namespace Pulumi.ProxmoxVE.CT
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags of the container. This is only meta information.
+        /// A list of tags the container tags. This is only meta
+        /// information (defaults to `[]`). Note: Proxmox always sorts the container tags.
+        /// If the list in template is not sorted, then Proxmox will always report a
+        /// difference on the resource. You may use the `ignore_changes` lifecycle
+        /// meta-argument to ignore changes to this attribute.
         /// </summary>
         public InputList<string> Tags
         {
@@ -276,19 +310,20 @@ namespace Pulumi.ProxmoxVE.CT
         }
 
         /// <summary>
-        /// Whether to create a template
+        /// Whether to create a template (defaults to `false`).
         /// </summary>
         [Input("template")]
         public Input<bool>? Template { get; set; }
 
         /// <summary>
-        /// Whether the container runs as unprivileged on the host
+        /// Whether the container runs as unprivileged on
+        /// the host (defaults to `false`).
         /// </summary>
         [Input("unprivileged")]
         public Input<bool>? Unprivileged { get; set; }
 
         /// <summary>
-        /// The VM identifier
+        /// The container identifier
         /// </summary>
         [Input("vmId")]
         public Input<int>? VmId { get; set; }
@@ -302,49 +337,49 @@ namespace Pulumi.ProxmoxVE.CT
     public sealed class ContainerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The cloning configuration
+        /// The cloning configuration.
         /// </summary>
         [Input("clone")]
         public Input<Inputs.ContainerCloneGetArgs>? Clone { get; set; }
 
         /// <summary>
-        /// The console configuration
+        /// Console.
         /// </summary>
         [Input("console")]
         public Input<Inputs.ContainerConsoleGetArgs>? Console { get; set; }
 
         /// <summary>
-        /// The CPU allocation
+        /// The CPU configuration.
         /// </summary>
         [Input("cpu")]
         public Input<Inputs.ContainerCpuGetArgs>? Cpu { get; set; }
 
         /// <summary>
-        /// The description
+        /// The description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The disks
+        /// The disk configuration.
         /// </summary>
         [Input("disk")]
         public Input<Inputs.ContainerDiskGetArgs>? Disk { get; set; }
 
         /// <summary>
-        /// Features
+        /// The container features
         /// </summary>
         [Input("features")]
         public Input<Inputs.ContainerFeaturesGetArgs>? Features { get; set; }
 
         /// <summary>
-        /// The initialization configuration
+        /// The initialization configuration.
         /// </summary>
         [Input("initialization")]
         public Input<Inputs.ContainerInitializationGetArgs>? Initialization { get; set; }
 
         /// <summary>
-        /// The memory allocation
+        /// The memory configuration.
         /// </summary>
         [Input("memory")]
         public Input<Inputs.ContainerMemoryGetArgs>? Memory { get; set; }
@@ -365,7 +400,8 @@ namespace Pulumi.ProxmoxVE.CT
         private InputList<Inputs.ContainerNetworkInterfaceGetArgs>? _networkInterfaces;
 
         /// <summary>
-        /// The network interfaces
+        /// A network interface (multiple blocks
+        /// supported).
         /// </summary>
         public InputList<Inputs.ContainerNetworkInterfaceGetArgs> NetworkInterfaces
         {
@@ -374,25 +410,31 @@ namespace Pulumi.ProxmoxVE.CT
         }
 
         /// <summary>
-        /// The node name
+        /// The name of the node to assign the container to.
         /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
 
         /// <summary>
-        /// The operating system configuration
+        /// The Operating System configuration.
         /// </summary>
         [Input("operatingSystem")]
         public Input<Inputs.ContainerOperatingSystemGetArgs>? OperatingSystem { get; set; }
 
         /// <summary>
-        /// The ID of the pool to assign the container to
+        /// The identifier for a pool to assign the container to.
         /// </summary>
         [Input("poolId")]
         public Input<string>? PoolId { get; set; }
 
         /// <summary>
-        /// Whether to start the container
+        /// Automatically start container when the host system boots (defaults to `true`).
+        /// </summary>
+        [Input("startOnBoot")]
+        public Input<bool>? StartOnBoot { get; set; }
+
+        /// <summary>
+        /// Whether to start the container (defaults to `true`).
         /// </summary>
         [Input("started")]
         public Input<bool>? Started { get; set; }
@@ -401,7 +443,11 @@ namespace Pulumi.ProxmoxVE.CT
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags of the container. This is only meta information.
+        /// A list of tags the container tags. This is only meta
+        /// information (defaults to `[]`). Note: Proxmox always sorts the container tags.
+        /// If the list in template is not sorted, then Proxmox will always report a
+        /// difference on the resource. You may use the `ignore_changes` lifecycle
+        /// meta-argument to ignore changes to this attribute.
         /// </summary>
         public InputList<string> Tags
         {
@@ -410,19 +456,20 @@ namespace Pulumi.ProxmoxVE.CT
         }
 
         /// <summary>
-        /// Whether to create a template
+        /// Whether to create a template (defaults to `false`).
         /// </summary>
         [Input("template")]
         public Input<bool>? Template { get; set; }
 
         /// <summary>
-        /// Whether the container runs as unprivileged on the host
+        /// Whether the container runs as unprivileged on
+        /// the host (defaults to `false`).
         /// </summary>
         [Input("unprivileged")]
         public Input<bool>? Unprivileged { get; set; }
 
         /// <summary>
-        /// The VM identifier
+        /// The container identifier
         /// </summary>
         [Input("vmId")]
         public Input<int>? VmId { get; set; }

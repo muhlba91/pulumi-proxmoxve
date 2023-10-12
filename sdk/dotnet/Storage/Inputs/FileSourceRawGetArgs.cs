@@ -12,12 +12,21 @@ namespace Pulumi.ProxmoxVE.Storage.Inputs
 
     public sealed class FileSourceRawGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The raw data.
+        /// </summary>
         [Input("data", required: true)]
         public Input<string> Data { get; set; } = null!;
 
+        /// <summary>
+        /// The file name.
+        /// </summary>
         [Input("fileName", required: true)]
         public Input<string> FileName { get; set; } = null!;
 
+        /// <summary>
+        /// The number of bytes to resize the file to.
+        /// </summary>
         [Input("resize")]
         public Input<int>? Resize { get; set; }
 

@@ -12,6 +12,35 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Retrieves information about all VMs in the Proxmox cluster.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/VM"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := VM.GetVirtualMachines(ctx, &vm.GetVirtualMachinesArgs{
+//				Tags: []string{
+//					"ubuntu",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetVirtualMachines(ctx *pulumi.Context, args *GetVirtualMachinesArgs, opts ...pulumi.InvokeOption) (*GetVirtualMachinesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVirtualMachinesResult
@@ -24,17 +53,23 @@ func GetVirtualMachines(ctx *pulumi.Context, args *GetVirtualMachinesArgs, opts 
 
 // A collection of arguments for invoking getVirtualMachines.
 type GetVirtualMachinesArgs struct {
-	NodeName *string  `pulumi:"nodeName"`
-	Tags     []string `pulumi:"tags"`
+	// The node name.
+	NodeName *string `pulumi:"nodeName"`
+	// A list of tags to filter the VMs. The VM must have all
+	// the tags to be included in the result.
+	Tags []string `pulumi:"tags"`
 }
 
 // A collection of values returned by getVirtualMachines.
 type GetVirtualMachinesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id       string                 `pulumi:"id"`
-	NodeName *string                `pulumi:"nodeName"`
-	Tags     []string               `pulumi:"tags"`
-	Vms      []GetVirtualMachinesVm `pulumi:"vms"`
+	Id string `pulumi:"id"`
+	// The node name.
+	NodeName *string `pulumi:"nodeName"`
+	// A list of tags of the VM.
+	Tags []string `pulumi:"tags"`
+	// The VMs list.
+	Vms []GetVirtualMachinesVm `pulumi:"vms"`
 }
 
 func GetVirtualMachinesOutput(ctx *pulumi.Context, args GetVirtualMachinesOutputArgs, opts ...pulumi.InvokeOption) GetVirtualMachinesResultOutput {
@@ -52,8 +87,11 @@ func GetVirtualMachinesOutput(ctx *pulumi.Context, args GetVirtualMachinesOutput
 
 // A collection of arguments for invoking getVirtualMachines.
 type GetVirtualMachinesOutputArgs struct {
-	NodeName pulumi.StringPtrInput   `pulumi:"nodeName"`
-	Tags     pulumi.StringArrayInput `pulumi:"tags"`
+	// The node name.
+	NodeName pulumi.StringPtrInput `pulumi:"nodeName"`
+	// A list of tags to filter the VMs. The VM must have all
+	// the tags to be included in the result.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
 }
 
 func (GetVirtualMachinesOutputArgs) ElementType() reflect.Type {
@@ -86,14 +124,17 @@ func (o GetVirtualMachinesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVirtualMachinesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The node name.
 func (o GetVirtualMachinesResultOutput) NodeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVirtualMachinesResult) *string { return v.NodeName }).(pulumi.StringPtrOutput)
 }
 
+// A list of tags of the VM.
 func (o GetVirtualMachinesResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetVirtualMachinesResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// The VMs list.
 func (o GetVirtualMachinesResultOutput) Vms() GetVirtualMachinesVmArrayOutput {
 	return o.ApplyT(func(v GetVirtualMachinesResult) []GetVirtualMachinesVm { return v.Vms }).(GetVirtualMachinesVmArrayOutput)
 }

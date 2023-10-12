@@ -17,33 +17,377 @@ import io.muehlbachler.pulumi.proxmoxve.VM.outputs.GetVirtualMachinesResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class VMFunctions {
+    /**
+     * Retrieves information about a specific VM.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.VM.VMFunctions;
+     * import com.pulumi.proxmoxve.VM.inputs.GetVirtualMachineArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testVm = VMFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
+     *             .nodeName(&#34;test&#34;)
+     *             .vmId(100)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetVirtualMachineResult> getVirtualMachine(GetVirtualMachineArgs args) {
         return getVirtualMachine(args, InvokeOptions.Empty);
     }
+    /**
+     * Retrieves information about a specific VM.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.VM.VMFunctions;
+     * import com.pulumi.proxmoxve.VM.inputs.GetVirtualMachineArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testVm = VMFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
+     *             .nodeName(&#34;test&#34;)
+     *             .vmId(100)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetVirtualMachineResult> getVirtualMachinePlain(GetVirtualMachinePlainArgs args) {
         return getVirtualMachinePlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Retrieves information about a specific VM.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.VM.VMFunctions;
+     * import com.pulumi.proxmoxve.VM.inputs.GetVirtualMachineArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testVm = VMFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
+     *             .nodeName(&#34;test&#34;)
+     *             .vmId(100)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetVirtualMachineResult> getVirtualMachine(GetVirtualMachineArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:VM/getVirtualMachine:getVirtualMachine", TypeShape.of(GetVirtualMachineResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Retrieves information about a specific VM.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.VM.VMFunctions;
+     * import com.pulumi.proxmoxve.VM.inputs.GetVirtualMachineArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testVm = VMFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
+     *             .nodeName(&#34;test&#34;)
+     *             .vmId(100)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetVirtualMachineResult> getVirtualMachinePlain(GetVirtualMachinePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("proxmoxve:VM/getVirtualMachine:getVirtualMachine", TypeShape.of(GetVirtualMachineResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Retrieves information about all VMs in the Proxmox cluster.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.VM.VMFunctions;
+     * import com.pulumi.proxmoxve.VM.inputs.GetVirtualMachinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuVms = VMFunctions.getVirtualMachines(GetVirtualMachinesArgs.builder()
+     *             .tags(&#34;ubuntu&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetVirtualMachinesResult> getVirtualMachines() {
         return getVirtualMachines(GetVirtualMachinesArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * Retrieves information about all VMs in the Proxmox cluster.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.VM.VMFunctions;
+     * import com.pulumi.proxmoxve.VM.inputs.GetVirtualMachinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuVms = VMFunctions.getVirtualMachines(GetVirtualMachinesArgs.builder()
+     *             .tags(&#34;ubuntu&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetVirtualMachinesResult> getVirtualMachinesPlain() {
         return getVirtualMachinesPlain(GetVirtualMachinesPlainArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * Retrieves information about all VMs in the Proxmox cluster.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.VM.VMFunctions;
+     * import com.pulumi.proxmoxve.VM.inputs.GetVirtualMachinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuVms = VMFunctions.getVirtualMachines(GetVirtualMachinesArgs.builder()
+     *             .tags(&#34;ubuntu&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetVirtualMachinesResult> getVirtualMachines(GetVirtualMachinesArgs args) {
         return getVirtualMachines(args, InvokeOptions.Empty);
     }
+    /**
+     * Retrieves information about all VMs in the Proxmox cluster.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.VM.VMFunctions;
+     * import com.pulumi.proxmoxve.VM.inputs.GetVirtualMachinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuVms = VMFunctions.getVirtualMachines(GetVirtualMachinesArgs.builder()
+     *             .tags(&#34;ubuntu&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetVirtualMachinesResult> getVirtualMachinesPlain(GetVirtualMachinesPlainArgs args) {
         return getVirtualMachinesPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Retrieves information about all VMs in the Proxmox cluster.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.VM.VMFunctions;
+     * import com.pulumi.proxmoxve.VM.inputs.GetVirtualMachinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuVms = VMFunctions.getVirtualMachines(GetVirtualMachinesArgs.builder()
+     *             .tags(&#34;ubuntu&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetVirtualMachinesResult> getVirtualMachines(GetVirtualMachinesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:VM/getVirtualMachines:getVirtualMachines", TypeShape.of(GetVirtualMachinesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Retrieves information about all VMs in the Proxmox cluster.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.VM.VMFunctions;
+     * import com.pulumi.proxmoxve.VM.inputs.GetVirtualMachinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuVms = VMFunctions.getVirtualMachines(GetVirtualMachinesArgs.builder()
+     *             .tags(&#34;ubuntu&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetVirtualMachinesResult> getVirtualMachinesPlain(GetVirtualMachinesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("proxmoxve:VM/getVirtualMachines:getVirtualMachines", TypeShape.of(GetVirtualMachinesResult.class), args, Utilities.withVersion(options));
     }

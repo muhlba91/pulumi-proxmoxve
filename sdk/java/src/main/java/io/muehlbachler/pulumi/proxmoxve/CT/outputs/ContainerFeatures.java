@@ -11,17 +11,47 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContainerFeatures {
+    /**
+     * @return Whether the container supports FUSE mounts (defaults
+     * to `false`)
+     * 
+     */
     private @Nullable Boolean fuse;
+    /**
+     * @return Whether the container supports `keyctl()` system
+     * call (defaults to `false`)
+     * 
+     */
     private @Nullable Boolean keyctl;
+    /**
+     * @return Whether the container is nested (defaults
+     * to `false`)
+     * 
+     */
     private @Nullable Boolean nesting;
 
     private ContainerFeatures() {}
+    /**
+     * @return Whether the container supports FUSE mounts (defaults
+     * to `false`)
+     * 
+     */
     public Optional<Boolean> fuse() {
         return Optional.ofNullable(this.fuse);
     }
+    /**
+     * @return Whether the container supports `keyctl()` system
+     * call (defaults to `false`)
+     * 
+     */
     public Optional<Boolean> keyctl() {
         return Optional.ofNullable(this.keyctl);
     }
+    /**
+     * @return Whether the container is nested (defaults
+     * to `false`)
+     * 
+     */
     public Optional<Boolean> nesting() {
         return Optional.ofNullable(this.nesting);
     }

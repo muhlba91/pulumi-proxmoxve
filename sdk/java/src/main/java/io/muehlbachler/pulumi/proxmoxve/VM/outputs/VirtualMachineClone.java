@@ -13,25 +13,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VirtualMachineClone {
+    /**
+     * @return The identifier for the datastore to create the
+     * cloud-init disk in (defaults to `local-lvm`).
+     * 
+     */
     private @Nullable String datastoreId;
     private @Nullable Boolean full;
+    /**
+     * @return The name of the node to assign the virtual machine
+     * to.
+     * 
+     */
     private @Nullable String nodeName;
+    /**
+     * @return Number of retries in Proxmox for clone vm.
+     * Sometimes Proxmox errors with timeout when creating multiple clones at
+     * once.
+     * 
+     */
     private @Nullable Integer retries;
+    /**
+     * @return The VM identifier.
+     * 
+     */
     private Integer vmId;
 
     private VirtualMachineClone() {}
+    /**
+     * @return The identifier for the datastore to create the
+     * cloud-init disk in (defaults to `local-lvm`).
+     * 
+     */
     public Optional<String> datastoreId() {
         return Optional.ofNullable(this.datastoreId);
     }
     public Optional<Boolean> full() {
         return Optional.ofNullable(this.full);
     }
+    /**
+     * @return The name of the node to assign the virtual machine
+     * to.
+     * 
+     */
     public Optional<String> nodeName() {
         return Optional.ofNullable(this.nodeName);
     }
+    /**
+     * @return Number of retries in Proxmox for clone vm.
+     * Sometimes Proxmox errors with timeout when creating multiple clones at
+     * once.
+     * 
+     */
     public Optional<Integer> retries() {
         return Optional.ofNullable(this.retries);
     }
+    /**
+     * @return The VM identifier.
+     * 
+     */
     public Integer vmId() {
         return this.vmId;
     }

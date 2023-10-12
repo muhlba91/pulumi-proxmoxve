@@ -15,9 +15,12 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type GroupAcl struct {
-	Path      string `pulumi:"path"`
-	Propagate *bool  `pulumi:"propagate"`
-	RoleId    string `pulumi:"roleId"`
+	// The path.
+	Path string `pulumi:"path"`
+	// Whether to propagate to child paths.
+	Propagate *bool `pulumi:"propagate"`
+	// The role identifier.
+	RoleId string `pulumi:"roleId"`
 }
 
 // GroupAclInput is an input type that accepts GroupAclArgs and GroupAclOutput values.
@@ -32,9 +35,12 @@ type GroupAclInput interface {
 }
 
 type GroupAclArgs struct {
-	Path      pulumi.StringInput  `pulumi:"path"`
+	// The path.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Whether to propagate to child paths.
 	Propagate pulumi.BoolPtrInput `pulumi:"propagate"`
-	RoleId    pulumi.StringInput  `pulumi:"roleId"`
+	// The role identifier.
+	RoleId pulumi.StringInput `pulumi:"roleId"`
 }
 
 func (GroupAclArgs) ElementType() reflect.Type {
@@ -106,14 +112,17 @@ func (o GroupAclOutput) ToOutput(ctx context.Context) pulumix.Output[GroupAcl] {
 	}
 }
 
+// The path.
 func (o GroupAclOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GroupAcl) string { return v.Path }).(pulumi.StringOutput)
 }
 
+// Whether to propagate to child paths.
 func (o GroupAclOutput) Propagate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GroupAcl) *bool { return v.Propagate }).(pulumi.BoolPtrOutput)
 }
 
+// The role identifier.
 func (o GroupAclOutput) RoleId() pulumi.StringOutput {
 	return o.ApplyT(func(v GroupAcl) string { return v.RoleId }).(pulumi.StringOutput)
 }
@@ -145,11 +154,16 @@ func (o GroupAclArrayOutput) Index(i pulumi.IntInput) GroupAclOutput {
 }
 
 type PoolMember struct {
+	// The datastore identifier.
 	DatastoreId *string `pulumi:"datastoreId"`
-	Id          *string `pulumi:"id"`
-	NodeName    *string `pulumi:"nodeName"`
-	Type        *string `pulumi:"type"`
-	VmId        *int    `pulumi:"vmId"`
+	// The member identifier.
+	Id *string `pulumi:"id"`
+	// The node name.
+	NodeName *string `pulumi:"nodeName"`
+	// The member type.
+	Type *string `pulumi:"type"`
+	// The virtual machine identifier.
+	VmId *int `pulumi:"vmId"`
 }
 
 // PoolMemberInput is an input type that accepts PoolMemberArgs and PoolMemberOutput values.
@@ -164,11 +178,16 @@ type PoolMemberInput interface {
 }
 
 type PoolMemberArgs struct {
+	// The datastore identifier.
 	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
-	Id          pulumi.StringPtrInput `pulumi:"id"`
-	NodeName    pulumi.StringPtrInput `pulumi:"nodeName"`
-	Type        pulumi.StringPtrInput `pulumi:"type"`
-	VmId        pulumi.IntPtrInput    `pulumi:"vmId"`
+	// The member identifier.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The node name.
+	NodeName pulumi.StringPtrInput `pulumi:"nodeName"`
+	// The member type.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The virtual machine identifier.
+	VmId pulumi.IntPtrInput `pulumi:"vmId"`
 }
 
 func (PoolMemberArgs) ElementType() reflect.Type {
@@ -240,22 +259,27 @@ func (o PoolMemberOutput) ToOutput(ctx context.Context) pulumix.Output[PoolMembe
 	}
 }
 
+// The datastore identifier.
 func (o PoolMemberOutput) DatastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PoolMember) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
 }
 
+// The member identifier.
 func (o PoolMemberOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PoolMember) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The node name.
 func (o PoolMemberOutput) NodeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PoolMember) *string { return v.NodeName }).(pulumi.StringPtrOutput)
 }
 
+// The member type.
 func (o PoolMemberOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PoolMember) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// The virtual machine identifier.
 func (o PoolMemberOutput) VmId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PoolMember) *int { return v.VmId }).(pulumi.IntPtrOutput)
 }
@@ -287,9 +311,12 @@ func (o PoolMemberArrayOutput) Index(i pulumi.IntInput) PoolMemberOutput {
 }
 
 type UserAcl struct {
-	Path      string `pulumi:"path"`
-	Propagate *bool  `pulumi:"propagate"`
-	RoleId    string `pulumi:"roleId"`
+	// The path.
+	Path string `pulumi:"path"`
+	// Whether to propagate to child paths.
+	Propagate *bool `pulumi:"propagate"`
+	// The role identifier.
+	RoleId string `pulumi:"roleId"`
 }
 
 // UserAclInput is an input type that accepts UserAclArgs and UserAclOutput values.
@@ -304,9 +331,12 @@ type UserAclInput interface {
 }
 
 type UserAclArgs struct {
-	Path      pulumi.StringInput  `pulumi:"path"`
+	// The path.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Whether to propagate to child paths.
 	Propagate pulumi.BoolPtrInput `pulumi:"propagate"`
-	RoleId    pulumi.StringInput  `pulumi:"roleId"`
+	// The role identifier.
+	RoleId pulumi.StringInput `pulumi:"roleId"`
 }
 
 func (UserAclArgs) ElementType() reflect.Type {
@@ -378,14 +408,17 @@ func (o UserAclOutput) ToOutput(ctx context.Context) pulumix.Output[UserAcl] {
 	}
 }
 
+// The path.
 func (o UserAclOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAcl) string { return v.Path }).(pulumi.StringOutput)
 }
 
+// Whether to propagate to child paths.
 func (o UserAclOutput) Propagate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UserAcl) *bool { return v.Propagate }).(pulumi.BoolPtrOutput)
 }
 
+// The role identifier.
 func (o UserAclOutput) RoleId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAcl) string { return v.RoleId }).(pulumi.StringOutput)
 }
@@ -417,9 +450,12 @@ func (o UserAclArrayOutput) Index(i pulumi.IntInput) UserAclOutput {
 }
 
 type GetGroupAcl struct {
-	Path      string `pulumi:"path"`
-	Propagate bool   `pulumi:"propagate"`
-	RoleId    string `pulumi:"roleId"`
+	// The path.
+	Path string `pulumi:"path"`
+	// Whether to propagate to child paths.
+	Propagate bool `pulumi:"propagate"`
+	// The role identifier.
+	RoleId string `pulumi:"roleId"`
 }
 
 // GetGroupAclInput is an input type that accepts GetGroupAclArgs and GetGroupAclOutput values.
@@ -434,9 +470,12 @@ type GetGroupAclInput interface {
 }
 
 type GetGroupAclArgs struct {
-	Path      pulumi.StringInput `pulumi:"path"`
-	Propagate pulumi.BoolInput   `pulumi:"propagate"`
-	RoleId    pulumi.StringInput `pulumi:"roleId"`
+	// The path.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Whether to propagate to child paths.
+	Propagate pulumi.BoolInput `pulumi:"propagate"`
+	// The role identifier.
+	RoleId pulumi.StringInput `pulumi:"roleId"`
 }
 
 func (GetGroupAclArgs) ElementType() reflect.Type {
@@ -508,14 +547,17 @@ func (o GetGroupAclOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroup
 	}
 }
 
+// The path.
 func (o GetGroupAclOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupAcl) string { return v.Path }).(pulumi.StringOutput)
 }
 
+// Whether to propagate to child paths.
 func (o GetGroupAclOutput) Propagate() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGroupAcl) bool { return v.Propagate }).(pulumi.BoolOutput)
 }
 
+// The role identifier.
 func (o GetGroupAclOutput) RoleId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupAcl) string { return v.RoleId }).(pulumi.StringOutput)
 }
@@ -547,11 +589,16 @@ func (o GetGroupAclArrayOutput) Index(i pulumi.IntInput) GetGroupAclOutput {
 }
 
 type GetPoolMember struct {
+	// The datastore identifier.
 	DatastoreId string `pulumi:"datastoreId"`
-	Id          string `pulumi:"id"`
-	NodeName    string `pulumi:"nodeName"`
-	Type        string `pulumi:"type"`
-	VmId        int    `pulumi:"vmId"`
+	// The member identifier.
+	Id string `pulumi:"id"`
+	// The node name.
+	NodeName string `pulumi:"nodeName"`
+	// The member type.
+	Type string `pulumi:"type"`
+	// The virtual machine identifier.
+	VmId int `pulumi:"vmId"`
 }
 
 // GetPoolMemberInput is an input type that accepts GetPoolMemberArgs and GetPoolMemberOutput values.
@@ -566,11 +613,16 @@ type GetPoolMemberInput interface {
 }
 
 type GetPoolMemberArgs struct {
+	// The datastore identifier.
 	DatastoreId pulumi.StringInput `pulumi:"datastoreId"`
-	Id          pulumi.StringInput `pulumi:"id"`
-	NodeName    pulumi.StringInput `pulumi:"nodeName"`
-	Type        pulumi.StringInput `pulumi:"type"`
-	VmId        pulumi.IntInput    `pulumi:"vmId"`
+	// The member identifier.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The node name.
+	NodeName pulumi.StringInput `pulumi:"nodeName"`
+	// The member type.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The virtual machine identifier.
+	VmId pulumi.IntInput `pulumi:"vmId"`
 }
 
 func (GetPoolMemberArgs) ElementType() reflect.Type {
@@ -642,22 +694,27 @@ func (o GetPoolMemberOutput) ToOutput(ctx context.Context) pulumix.Output[GetPoo
 	}
 }
 
+// The datastore identifier.
 func (o GetPoolMemberOutput) DatastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoolMember) string { return v.DatastoreId }).(pulumi.StringOutput)
 }
 
+// The member identifier.
 func (o GetPoolMemberOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoolMember) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The node name.
 func (o GetPoolMemberOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoolMember) string { return v.NodeName }).(pulumi.StringOutput)
 }
 
+// The member type.
 func (o GetPoolMemberOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoolMember) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The virtual machine identifier.
 func (o GetPoolMemberOutput) VmId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetPoolMember) int { return v.VmId }).(pulumi.IntOutput)
 }
@@ -689,9 +746,12 @@ func (o GetPoolMemberArrayOutput) Index(i pulumi.IntInput) GetPoolMemberOutput {
 }
 
 type GetUserAcl struct {
-	Path      string `pulumi:"path"`
-	Propagate bool   `pulumi:"propagate"`
-	RoleId    string `pulumi:"roleId"`
+	// The path.
+	Path string `pulumi:"path"`
+	// Whether to propagate to child paths.
+	Propagate bool `pulumi:"propagate"`
+	// The role identifier.
+	RoleId string `pulumi:"roleId"`
 }
 
 // GetUserAclInput is an input type that accepts GetUserAclArgs and GetUserAclOutput values.
@@ -706,9 +766,12 @@ type GetUserAclInput interface {
 }
 
 type GetUserAclArgs struct {
-	Path      pulumi.StringInput `pulumi:"path"`
-	Propagate pulumi.BoolInput   `pulumi:"propagate"`
-	RoleId    pulumi.StringInput `pulumi:"roleId"`
+	// The path.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Whether to propagate to child paths.
+	Propagate pulumi.BoolInput `pulumi:"propagate"`
+	// The role identifier.
+	RoleId pulumi.StringInput `pulumi:"roleId"`
 }
 
 func (GetUserAclArgs) ElementType() reflect.Type {
@@ -780,14 +843,17 @@ func (o GetUserAclOutput) ToOutput(ctx context.Context) pulumix.Output[GetUserAc
 	}
 }
 
+// The path.
 func (o GetUserAclOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUserAcl) string { return v.Path }).(pulumi.StringOutput)
 }
 
+// Whether to propagate to child paths.
 func (o GetUserAclOutput) Propagate() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetUserAcl) bool { return v.Propagate }).(pulumi.BoolOutput)
 }
 
+// The role identifier.
 func (o GetUserAclOutput) RoleId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUserAcl) string { return v.RoleId }).(pulumi.StringOutput)
 }

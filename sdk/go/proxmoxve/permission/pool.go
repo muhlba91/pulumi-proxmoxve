@@ -13,14 +13,52 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Manages a resource pool.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/Permission"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Permission.NewPool(ctx, "operationsPool", &Permission.PoolArgs{
+//				Comment: pulumi.String("Managed by Terraform"),
+//				PoolId:  pulumi.String("operations-pool"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// Instances can be imported using the `pool_id`, e.g., bash
+//
+// ```sh
+//
+//	$ pulumi import proxmoxve:Permission/pool:Pool operations_pool operations-pool
+//
+// ```
 type Pool struct {
 	pulumi.CustomResourceState
 
-	// The pool comment
+	// The pool comment.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
-	// The pool members
+	// The pool members.
 	Members PoolMemberArrayOutput `pulumi:"members"`
-	// The pool id
+	// The pool identifier.
 	PoolId pulumi.StringOutput `pulumi:"poolId"`
 }
 
@@ -57,20 +95,20 @@ func GetPool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Pool resources.
 type poolState struct {
-	// The pool comment
+	// The pool comment.
 	Comment *string `pulumi:"comment"`
-	// The pool members
+	// The pool members.
 	Members []PoolMember `pulumi:"members"`
-	// The pool id
+	// The pool identifier.
 	PoolId *string `pulumi:"poolId"`
 }
 
 type PoolState struct {
-	// The pool comment
+	// The pool comment.
 	Comment pulumi.StringPtrInput
-	// The pool members
+	// The pool members.
 	Members PoolMemberArrayInput
-	// The pool id
+	// The pool identifier.
 	PoolId pulumi.StringPtrInput
 }
 
@@ -79,17 +117,17 @@ func (PoolState) ElementType() reflect.Type {
 }
 
 type poolArgs struct {
-	// The pool comment
+	// The pool comment.
 	Comment *string `pulumi:"comment"`
-	// The pool id
+	// The pool identifier.
 	PoolId string `pulumi:"poolId"`
 }
 
 // The set of arguments for constructing a Pool resource.
 type PoolArgs struct {
-	// The pool comment
+	// The pool comment.
 	Comment pulumi.StringPtrInput
-	// The pool id
+	// The pool identifier.
 	PoolId pulumi.StringInput
 }
 
@@ -204,17 +242,17 @@ func (o PoolOutput) ToOutput(ctx context.Context) pulumix.Output[*Pool] {
 	}
 }
 
-// The pool comment
+// The pool comment.
 func (o PoolOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-// The pool members
+// The pool members.
 func (o PoolOutput) Members() PoolMemberArrayOutput {
 	return o.ApplyT(func(v *Pool) PoolMemberArrayOutput { return v.Members }).(PoolMemberArrayOutput)
 }
 
-// The pool id
+// The pool identifier.
 func (o PoolOutput) PoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.PoolId }).(pulumi.StringOutput)
 }

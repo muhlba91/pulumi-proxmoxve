@@ -12,17 +12,43 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FirewallIPSetCidr {
+    /**
+     * @return Arbitrary string annotation.
+     * 
+     */
     private @Nullable String comment;
+    /**
+     * @return Network/IP specification in CIDR format.
+     * 
+     */
     private String name;
+    /**
+     * @return Entries marked as `nomatch` are skipped as if those
+     * were not added to the set.
+     * 
+     */
     private @Nullable Boolean nomatch;
 
     private FirewallIPSetCidr() {}
+    /**
+     * @return Arbitrary string annotation.
+     * 
+     */
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
     }
+    /**
+     * @return Network/IP specification in CIDR format.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Entries marked as `nomatch` are skipped as if those
+     * were not added to the set.
+     * 
+     */
     public Optional<Boolean> nomatch() {
         return Optional.ofNullable(this.nomatch);
     }

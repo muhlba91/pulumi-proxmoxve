@@ -13,9 +13,17 @@ public final class GetHostsArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetHostsArgs Empty = new GetHostsArgs();
 
+    /**
+     * A node name.
+     * 
+     */
     @Import(name="nodeName", required=true)
     private Output<String> nodeName;
 
+    /**
+     * @return A node name.
+     * 
+     */
     public Output<String> nodeName() {
         return this.nodeName;
     }
@@ -44,11 +52,23 @@ public final class GetHostsArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetHostsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param nodeName A node name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeName(Output<String> nodeName) {
             $.nodeName = nodeName;
             return this;
         }
 
+        /**
+         * @param nodeName A node name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeName(String nodeName) {
             return nodeName(Output.of(nodeName));
         }

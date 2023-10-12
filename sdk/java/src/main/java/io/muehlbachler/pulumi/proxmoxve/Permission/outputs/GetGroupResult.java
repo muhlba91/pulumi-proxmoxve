@@ -11,7 +11,15 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGroupResult {
+    /**
+     * @return The access control list.
+     * 
+     */
     private List<GetGroupAcl> acls;
+    /**
+     * @return The group comment.
+     * 
+     */
     private String comment;
     private String groupId;
     /**
@@ -19,12 +27,24 @@ public final class GetGroupResult {
      * 
      */
     private String id;
+    /**
+     * @return The group members as a list with `username@realm` entries.
+     * 
+     */
     private List<String> members;
 
     private GetGroupResult() {}
+    /**
+     * @return The access control list.
+     * 
+     */
     public List<GetGroupAcl> acls() {
         return this.acls;
     }
+    /**
+     * @return The group comment.
+     * 
+     */
     public String comment() {
         return this.comment;
     }
@@ -38,6 +58,10 @@ public final class GetGroupResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The group members as a list with `username@realm` entries.
+     * 
+     */
     public List<String> members() {
         return this.members;
     }

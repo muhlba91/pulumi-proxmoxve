@@ -4,6 +4,21 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Manages the DNS configuration for a specific node.
+ *
+ * ## Important Notes
+ *
+ * Be careful not to use this resource multiple times for the same node.
+ *
+ * ## Import
+ *
+ * Instances can be imported using the `node_name`, e.g., bash
+ *
+ * ```sh
+ *  $ pulumi import proxmoxve:index/dNS:DNS first_node first-node
+ * ```
+ */
 export class DNS extends pulumi.CustomResource {
     /**
      * Get an existing DNS resource's state with the given name, ID, and optional extra
@@ -33,15 +48,15 @@ export class DNS extends pulumi.CustomResource {
     }
 
     /**
-     * The DNS search domain
+     * The DNS search domain.
      */
     public readonly domain!: pulumi.Output<string>;
     /**
-     * The node name
+     * A node name.
      */
     public readonly nodeName!: pulumi.Output<string>;
     /**
-     * The DNS servers
+     * The DNS servers.
      */
     public readonly servers!: pulumi.Output<string[] | undefined>;
 
@@ -83,15 +98,15 @@ export class DNS extends pulumi.CustomResource {
  */
 export interface DNSState {
     /**
-     * The DNS search domain
+     * The DNS search domain.
      */
     domain?: pulumi.Input<string>;
     /**
-     * The node name
+     * A node name.
      */
     nodeName?: pulumi.Input<string>;
     /**
-     * The DNS servers
+     * The DNS servers.
      */
     servers?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -101,15 +116,15 @@ export interface DNSState {
  */
 export interface DNSArgs {
     /**
-     * The DNS search domain
+     * The DNS search domain.
      */
     domain: pulumi.Input<string>;
     /**
-     * The node name
+     * A node name.
      */
     nodeName: pulumi.Input<string>;
     /**
-     * The DNS servers
+     * The DNS servers.
      */
     servers?: pulumi.Input<pulumi.Input<string>[]>;
 }

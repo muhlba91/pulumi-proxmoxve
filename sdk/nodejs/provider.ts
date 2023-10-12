@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The provider type for the proxmoxve package. By default, resources use package-wide configuration
+ * The provider type for the proxmox package. By default, resources use package-wide configuration
  * settings, however an explicit `Provider` instance may be created and passed during resource
  * construction to achieve fine-grained programmatic control over provider settings. See the
  * [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
@@ -46,6 +46,10 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
+     * The alternative temporary directory.
+     */
+    public readonly tmpDir!: pulumi.Output<string | undefined>;
+    /**
      * The username for the Proxmox VE API.
      */
     public readonly username!: pulumi.Output<string | undefined>;
@@ -67,6 +71,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["otp"] = args ? args.otp : undefined;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["ssh"] = pulumi.output(args ? args.ssh : undefined).apply(JSON.stringify);
+            resourceInputs["tmpDir"] = args ? args.tmpDir : undefined;
             resourceInputs["username"] = args ? args.username : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -106,6 +111,10 @@ export interface ProviderArgs {
      * The SSH configuration for the Proxmox nodes.
      */
     ssh?: pulumi.Input<inputs.ProviderSsh>;
+    /**
+     * The alternative temporary directory.
+     */
+    tmpDir?: pulumi.Input<string>;
     /**
      * The username for the Proxmox VE API.
      */

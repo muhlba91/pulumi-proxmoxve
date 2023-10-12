@@ -6,6 +6,32 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Manages a file.
+ *
+ * ## Important Notes
+ *
+ * The Proxmox VE API endpoint for file uploads does not support chunked transfer
+ * encoding, which means that we must first store the source file as a temporary
+ * file locally before uploading it.
+ *
+ * You must ensure that you have at least `Size-in-MB * 2 + 1` MB of storage space
+ * available (twice the size plus overhead because a multipart payload needs to be
+ * created as another temporary file).
+ *
+ * By default, if the specified file already exists, the resource will
+ * unconditionally replace it and take ownership of the resource. On destruction,
+ * the file will be deleted as if it did not exist before. If you want to prevent
+ * the resource from replacing the file, set `overwrite` to `false`.
+ *
+ * ## Import
+ *
+ * Instances can be imported using the `node_name`, `datastore_id`, `content_type` and the `file_name` in the following format<node_name>:<datastore_id>/<content_type>/<file_name> Examplebash
+ *
+ * ```sh
+ *  $ pulumi import proxmoxve:Storage/file:File cloud_config pve/local:snippets/example.cloud-config.yaml
+ * ```
+ */
 export class File extends pulumi.CustomResource {
     /**
      * Get an existing File resource's state with the given name, ID, and optional extra
@@ -35,47 +61,49 @@ export class File extends pulumi.CustomResource {
     }
 
     /**
-     * The content type
+     * The content type.
      */
     public readonly contentType!: pulumi.Output<string>;
     /**
-     * The datastore id
+     * The datastore id.
      */
     public readonly datastoreId!: pulumi.Output<string>;
     /**
-     * The file modification date
+     * The file modification date (RFC 3339).
      */
     public /*out*/ readonly fileModificationDate!: pulumi.Output<string>;
     /**
-     * The file name
+     * The file name.
      */
     public /*out*/ readonly fileName!: pulumi.Output<string>;
     /**
-     * The file size in bytes
+     * The file size in bytes.
      */
     public /*out*/ readonly fileSize!: pulumi.Output<number>;
     /**
-     * The file tag
+     * The file tag.
      */
     public /*out*/ readonly fileTag!: pulumi.Output<string>;
     /**
-     * The node name
+     * The node name.
      */
     public readonly nodeName!: pulumi.Output<string>;
     /**
-     * Whether to overwrite the file if it already exists
+     * Whether to overwrite an existing file (defaults to
+     * `true`).
      */
     public readonly overwrite!: pulumi.Output<boolean | undefined>;
     /**
-     * The source file
+     * The source file (conflicts with `sourceRaw`).
      */
     public readonly sourceFile!: pulumi.Output<outputs.Storage.FileSourceFile | undefined>;
     /**
-     * The raw source
+     * The raw source (conflicts with `sourceFile`).
      */
     public readonly sourceRaw!: pulumi.Output<outputs.Storage.FileSourceRaw | undefined>;
     /**
-     * Timeout for uploading ISO/VSTMPL files in seconds
+     * Timeout for uploading ISO/VSTMPL files in
+     * seconds (defaults to 1800).
      */
     public readonly timeoutUpload!: pulumi.Output<number | undefined>;
 
@@ -133,47 +161,49 @@ export class File extends pulumi.CustomResource {
  */
 export interface FileState {
     /**
-     * The content type
+     * The content type.
      */
     contentType?: pulumi.Input<string>;
     /**
-     * The datastore id
+     * The datastore id.
      */
     datastoreId?: pulumi.Input<string>;
     /**
-     * The file modification date
+     * The file modification date (RFC 3339).
      */
     fileModificationDate?: pulumi.Input<string>;
     /**
-     * The file name
+     * The file name.
      */
     fileName?: pulumi.Input<string>;
     /**
-     * The file size in bytes
+     * The file size in bytes.
      */
     fileSize?: pulumi.Input<number>;
     /**
-     * The file tag
+     * The file tag.
      */
     fileTag?: pulumi.Input<string>;
     /**
-     * The node name
+     * The node name.
      */
     nodeName?: pulumi.Input<string>;
     /**
-     * Whether to overwrite the file if it already exists
+     * Whether to overwrite an existing file (defaults to
+     * `true`).
      */
     overwrite?: pulumi.Input<boolean>;
     /**
-     * The source file
+     * The source file (conflicts with `sourceRaw`).
      */
     sourceFile?: pulumi.Input<inputs.Storage.FileSourceFile>;
     /**
-     * The raw source
+     * The raw source (conflicts with `sourceFile`).
      */
     sourceRaw?: pulumi.Input<inputs.Storage.FileSourceRaw>;
     /**
-     * Timeout for uploading ISO/VSTMPL files in seconds
+     * Timeout for uploading ISO/VSTMPL files in
+     * seconds (defaults to 1800).
      */
     timeoutUpload?: pulumi.Input<number>;
 }
@@ -183,31 +213,33 @@ export interface FileState {
  */
 export interface FileArgs {
     /**
-     * The content type
+     * The content type.
      */
     contentType?: pulumi.Input<string>;
     /**
-     * The datastore id
+     * The datastore id.
      */
     datastoreId: pulumi.Input<string>;
     /**
-     * The node name
+     * The node name.
      */
     nodeName: pulumi.Input<string>;
     /**
-     * Whether to overwrite the file if it already exists
+     * Whether to overwrite an existing file (defaults to
+     * `true`).
      */
     overwrite?: pulumi.Input<boolean>;
     /**
-     * The source file
+     * The source file (conflicts with `sourceRaw`).
      */
     sourceFile?: pulumi.Input<inputs.Storage.FileSourceFile>;
     /**
-     * The raw source
+     * The raw source (conflicts with `sourceFile`).
      */
     sourceRaw?: pulumi.Input<inputs.Storage.FileSourceRaw>;
     /**
-     * Timeout for uploading ISO/VSTMPL files in seconds
+     * Timeout for uploading ISO/VSTMPL files in
+     * seconds (defaults to 1800).
      */
     timeoutUpload?: pulumi.Input<number>;
 }

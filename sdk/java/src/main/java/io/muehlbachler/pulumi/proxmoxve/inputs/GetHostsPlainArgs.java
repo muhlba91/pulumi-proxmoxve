@@ -12,9 +12,17 @@ public final class GetHostsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetHostsPlainArgs Empty = new GetHostsPlainArgs();
 
+    /**
+     * A node name.
+     * 
+     */
     @Import(name="nodeName", required=true)
     private String nodeName;
 
+    /**
+     * @return A node name.
+     * 
+     */
     public String nodeName() {
         return this.nodeName;
     }
@@ -43,6 +51,12 @@ public final class GetHostsPlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetHostsPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param nodeName A node name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeName(String nodeName) {
             $.nodeName = nodeName;
             return this;

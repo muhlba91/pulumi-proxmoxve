@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['TimeArgs', 'Time']
@@ -18,17 +18,28 @@ class TimeArgs:
                  time_zone: pulumi.Input[str]):
         """
         The set of arguments for constructing a Time resource.
-        :param pulumi.Input[str] node_name: The node name
-        :param pulumi.Input[str] time_zone: The time zone
+        :param pulumi.Input[str] node_name: A node name.
+        :param pulumi.Input[str] time_zone: The node's time zone.
         """
-        pulumi.set(__self__, "node_name", node_name)
-        pulumi.set(__self__, "time_zone", time_zone)
+        TimeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            node_name=node_name,
+            time_zone=time_zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             node_name: pulumi.Input[str],
+             time_zone: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("node_name", node_name)
+        _setter("time_zone", time_zone)
 
     @property
     @pulumi.getter(name="nodeName")
     def node_name(self) -> pulumi.Input[str]:
         """
-        The node name
+        A node name.
         """
         return pulumi.get(self, "node_name")
 
@@ -40,7 +51,7 @@ class TimeArgs:
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> pulumi.Input[str]:
         """
-        The time zone
+        The node's time zone.
         """
         return pulumi.get(self, "time_zone")
 
@@ -58,25 +69,40 @@ class _TimeState:
                  utc_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Time resources.
-        :param pulumi.Input[str] local_time: The local timestamp
-        :param pulumi.Input[str] node_name: The node name
-        :param pulumi.Input[str] time_zone: The time zone
-        :param pulumi.Input[str] utc_time: The UTC timestamp
+        :param pulumi.Input[str] local_time: The node's local time.
+        :param pulumi.Input[str] node_name: A node name.
+        :param pulumi.Input[str] time_zone: The node's time zone.
+        :param pulumi.Input[str] utc_time: The node's local time formatted as UTC.
         """
+        _TimeState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            local_time=local_time,
+            node_name=node_name,
+            time_zone=time_zone,
+            utc_time=utc_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             local_time: Optional[pulumi.Input[str]] = None,
+             node_name: Optional[pulumi.Input[str]] = None,
+             time_zone: Optional[pulumi.Input[str]] = None,
+             utc_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if local_time is not None:
-            pulumi.set(__self__, "local_time", local_time)
+            _setter("local_time", local_time)
         if node_name is not None:
-            pulumi.set(__self__, "node_name", node_name)
+            _setter("node_name", node_name)
         if time_zone is not None:
-            pulumi.set(__self__, "time_zone", time_zone)
+            _setter("time_zone", time_zone)
         if utc_time is not None:
-            pulumi.set(__self__, "utc_time", utc_time)
+            _setter("utc_time", utc_time)
 
     @property
     @pulumi.getter(name="localTime")
     def local_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The local timestamp
+        The node's local time.
         """
         return pulumi.get(self, "local_time")
 
@@ -88,7 +114,7 @@ class _TimeState:
     @pulumi.getter(name="nodeName")
     def node_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The node name
+        A node name.
         """
         return pulumi.get(self, "node_name")
 
@@ -100,7 +126,7 @@ class _TimeState:
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> Optional[pulumi.Input[str]]:
         """
-        The time zone
+        The node's time zone.
         """
         return pulumi.get(self, "time_zone")
 
@@ -112,7 +138,7 @@ class _TimeState:
     @pulumi.getter(name="utcTime")
     def utc_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The UTC timestamp
+        The node's local time formatted as UTC.
         """
         return pulumi.get(self, "utc_time")
 
@@ -130,11 +156,31 @@ class Time(pulumi.CustomResource):
                  time_zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Time resource with the given unique name, props, and options.
+        Manages the time for a specific node.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        first_node_time = proxmoxve.Time("firstNodeTime",
+            node_name="first-node",
+            time_zone="UTC")
+        ```
+
+        ## Import
+
+        Instances can be imported using the `node_name`, e.g., bash
+
+        ```sh
+         $ pulumi import proxmoxve:index/time:Time first_node first-node
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] node_name: The node name
-        :param pulumi.Input[str] time_zone: The time zone
+        :param pulumi.Input[str] node_name: A node name.
+        :param pulumi.Input[str] time_zone: The node's time zone.
         """
         ...
     @overload
@@ -143,7 +189,27 @@ class Time(pulumi.CustomResource):
                  args: TimeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Time resource with the given unique name, props, and options.
+        Manages the time for a specific node.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        first_node_time = proxmoxve.Time("firstNodeTime",
+            node_name="first-node",
+            time_zone="UTC")
+        ```
+
+        ## Import
+
+        Instances can be imported using the `node_name`, e.g., bash
+
+        ```sh
+         $ pulumi import proxmoxve:index/time:Time first_node first-node
+        ```
+
         :param str resource_name: The name of the resource.
         :param TimeArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -154,6 +220,10 @@ class Time(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TimeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -199,10 +269,10 @@ class Time(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] local_time: The local timestamp
-        :param pulumi.Input[str] node_name: The node name
-        :param pulumi.Input[str] time_zone: The time zone
-        :param pulumi.Input[str] utc_time: The UTC timestamp
+        :param pulumi.Input[str] local_time: The node's local time.
+        :param pulumi.Input[str] node_name: A node name.
+        :param pulumi.Input[str] time_zone: The node's time zone.
+        :param pulumi.Input[str] utc_time: The node's local time formatted as UTC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -218,7 +288,7 @@ class Time(pulumi.CustomResource):
     @pulumi.getter(name="localTime")
     def local_time(self) -> pulumi.Output[str]:
         """
-        The local timestamp
+        The node's local time.
         """
         return pulumi.get(self, "local_time")
 
@@ -226,7 +296,7 @@ class Time(pulumi.CustomResource):
     @pulumi.getter(name="nodeName")
     def node_name(self) -> pulumi.Output[str]:
         """
-        The node name
+        A node name.
         """
         return pulumi.get(self, "node_name")
 
@@ -234,7 +304,7 @@ class Time(pulumi.CustomResource):
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> pulumi.Output[str]:
         """
-        The time zone
+        The node's time zone.
         """
         return pulumi.get(self, "time_zone")
 
@@ -242,7 +312,7 @@ class Time(pulumi.CustomResource):
     @pulumi.getter(name="utcTime")
     def utc_time(self) -> pulumi.Output[str]:
         """
-        The UTC timestamp
+        The node's local time formatted as UTC.
         """
         return pulumi.get(self, "utc_time")
 

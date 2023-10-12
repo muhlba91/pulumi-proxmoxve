@@ -18,14 +18,14 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
     public static final FirewallOptionsState Empty = new FirewallOptionsState();
 
     /**
-     * The ID of the container to manage the firewall for.
+     * Container ID. Leave empty for cluster level aliases.
      * 
      */
     @Import(name="containerId")
     private @Nullable Output<Integer> containerId;
 
     /**
-     * @return The ID of the container to manage the firewall for.
+     * @return Container ID. Leave empty for cluster level aliases.
      * 
      */
     public Optional<Output<Integer>> containerId() {
@@ -33,14 +33,14 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Enable DHCP
+     * Enable DHCP.
      * 
      */
     @Import(name="dhcp")
     private @Nullable Output<Boolean> dhcp;
 
     /**
-     * @return Enable DHCP
+     * @return Enable DHCP.
      * 
      */
     public Optional<Output<Boolean>> dhcp() {
@@ -48,14 +48,14 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Enable or disable the firewall
+     * Enable or disable the firewall.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable or disable the firewall
+     * @return Enable or disable the firewall.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -63,14 +63,16 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Default policy for incoming traffic
+     * The default input
+     * policy (`ACCEPT`, `DROP`, `REJECT`).
      * 
      */
     @Import(name="inputPolicy")
     private @Nullable Output<String> inputPolicy;
 
     /**
-     * @return Default policy for incoming traffic
+     * @return The default input
+     * policy (`ACCEPT`, `DROP`, `REJECT`).
      * 
      */
     public Optional<Output<String>> inputPolicy() {
@@ -78,18 +80,22 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Enable default IP filters. This is equivalent to adding an empty ipfilter-net&lt;id&gt; ipset for every interface. Such ipsets
-     * implicitly contain sane default restrictions such as restricting IPv6 link local addresses to the one derived from the
-     * interface&#39;s MAC address. For containers the configured IP addresses will be implicitly added.
+     * Enable default IP filters. This is equivalent to
+     * adding an empty ipfilter-net&lt;id&gt; ipset for every interface. Such ipsets
+     * implicitly contain sane default restrictions such as restricting IPv6 link
+     * local addresses to the one derived from the interface&#39;s MAC address. For
+     * containers the configured IP addresses will be implicitly added.
      * 
      */
     @Import(name="ipfilter")
     private @Nullable Output<Boolean> ipfilter;
 
     /**
-     * @return Enable default IP filters. This is equivalent to adding an empty ipfilter-net&lt;id&gt; ipset for every interface. Such ipsets
-     * implicitly contain sane default restrictions such as restricting IPv6 link local addresses to the one derived from the
-     * interface&#39;s MAC address. For containers the configured IP addresses will be implicitly added.
+     * @return Enable default IP filters. This is equivalent to
+     * adding an empty ipfilter-net&lt;id&gt; ipset for every interface. Such ipsets
+     * implicitly contain sane default restrictions such as restricting IPv6 link
+     * local addresses to the one derived from the interface&#39;s MAC address. For
+     * containers the configured IP addresses will be implicitly added.
      * 
      */
     public Optional<Output<Boolean>> ipfilter() {
@@ -97,14 +103,16 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Log level for incoming traffic.
+     * Log level for incoming
+     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
      * 
      */
     @Import(name="logLevelIn")
     private @Nullable Output<String> logLevelIn;
 
     /**
-     * @return Log level for incoming traffic.
+     * @return Log level for incoming
+     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
      * 
      */
     public Optional<Output<String>> logLevelIn() {
@@ -112,14 +120,16 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Log level for outgoing traffic.
+     * Log level for outgoing
+     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
      * 
      */
     @Import(name="logLevelOut")
     private @Nullable Output<String> logLevelOut;
 
     /**
-     * @return Log level for outgoing traffic.
+     * @return Log level for outgoing
+     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
      * 
      */
     public Optional<Output<String>> logLevelOut() {
@@ -127,14 +137,14 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Enable MAC address filtering
+     * Enable/disable MAC address filter.
      * 
      */
     @Import(name="macfilter")
     private @Nullable Output<Boolean> macfilter;
 
     /**
-     * @return Enable MAC address filtering
+     * @return Enable/disable MAC address filter.
      * 
      */
     public Optional<Output<Boolean>> macfilter() {
@@ -142,14 +152,14 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Enable NDP (Neighbor Discovery Protocol)
+     * Enable NDP (Neighbor Discovery Protocol).
      * 
      */
     @Import(name="ndp")
     private @Nullable Output<Boolean> ndp;
 
     /**
-     * @return Enable NDP (Neighbor Discovery Protocol)
+     * @return Enable NDP (Neighbor Discovery Protocol).
      * 
      */
     public Optional<Output<Boolean>> ndp() {
@@ -157,14 +167,14 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The name of the node.
+     * Node name.
      * 
      */
     @Import(name="nodeName")
     private @Nullable Output<String> nodeName;
 
     /**
-     * @return The name of the node.
+     * @return Node name.
      * 
      */
     public Optional<Output<String>> nodeName() {
@@ -172,14 +182,16 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Default policy for outgoing traffic
+     * The default output
+     * policy (`ACCEPT`, `DROP`, `REJECT`).
      * 
      */
     @Import(name="outputPolicy")
     private @Nullable Output<String> outputPolicy;
 
     /**
-     * @return Default policy for outgoing traffic
+     * @return The default output
+     * policy (`ACCEPT`, `DROP`, `REJECT`).
      * 
      */
     public Optional<Output<String>> outputPolicy() {
@@ -187,14 +199,14 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Allow sending Router Advertisement
+     * Enable Router Advertisement.
      * 
      */
     @Import(name="radv")
     private @Nullable Output<Boolean> radv;
 
     /**
-     * @return Allow sending Router Advertisement
+     * @return Enable Router Advertisement.
      * 
      */
     public Optional<Output<Boolean>> radv() {
@@ -202,14 +214,14 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The ID of the VM to manage the firewall for.
+     * VM ID. Leave empty for cluster level aliases.
      * 
      */
     @Import(name="vmId")
     private @Nullable Output<Integer> vmId;
 
     /**
-     * @return The ID of the VM to manage the firewall for.
+     * @return VM ID. Leave empty for cluster level aliases.
      * 
      */
     public Optional<Output<Integer>> vmId() {
@@ -253,7 +265,7 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param containerId The ID of the container to manage the firewall for.
+         * @param containerId Container ID. Leave empty for cluster level aliases.
          * 
          * @return builder
          * 
@@ -264,7 +276,7 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param containerId The ID of the container to manage the firewall for.
+         * @param containerId Container ID. Leave empty for cluster level aliases.
          * 
          * @return builder
          * 
@@ -274,7 +286,7 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dhcp Enable DHCP
+         * @param dhcp Enable DHCP.
          * 
          * @return builder
          * 
@@ -285,7 +297,7 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dhcp Enable DHCP
+         * @param dhcp Enable DHCP.
          * 
          * @return builder
          * 
@@ -295,7 +307,7 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enabled Enable or disable the firewall
+         * @param enabled Enable or disable the firewall.
          * 
          * @return builder
          * 
@@ -306,7 +318,7 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enabled Enable or disable the firewall
+         * @param enabled Enable or disable the firewall.
          * 
          * @return builder
          * 
@@ -316,7 +328,8 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param inputPolicy Default policy for incoming traffic
+         * @param inputPolicy The default input
+         * policy (`ACCEPT`, `DROP`, `REJECT`).
          * 
          * @return builder
          * 
@@ -327,7 +340,8 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param inputPolicy Default policy for incoming traffic
+         * @param inputPolicy The default input
+         * policy (`ACCEPT`, `DROP`, `REJECT`).
          * 
          * @return builder
          * 
@@ -337,9 +351,11 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ipfilter Enable default IP filters. This is equivalent to adding an empty ipfilter-net&lt;id&gt; ipset for every interface. Such ipsets
-         * implicitly contain sane default restrictions such as restricting IPv6 link local addresses to the one derived from the
-         * interface&#39;s MAC address. For containers the configured IP addresses will be implicitly added.
+         * @param ipfilter Enable default IP filters. This is equivalent to
+         * adding an empty ipfilter-net&lt;id&gt; ipset for every interface. Such ipsets
+         * implicitly contain sane default restrictions such as restricting IPv6 link
+         * local addresses to the one derived from the interface&#39;s MAC address. For
+         * containers the configured IP addresses will be implicitly added.
          * 
          * @return builder
          * 
@@ -350,9 +366,11 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ipfilter Enable default IP filters. This is equivalent to adding an empty ipfilter-net&lt;id&gt; ipset for every interface. Such ipsets
-         * implicitly contain sane default restrictions such as restricting IPv6 link local addresses to the one derived from the
-         * interface&#39;s MAC address. For containers the configured IP addresses will be implicitly added.
+         * @param ipfilter Enable default IP filters. This is equivalent to
+         * adding an empty ipfilter-net&lt;id&gt; ipset for every interface. Such ipsets
+         * implicitly contain sane default restrictions such as restricting IPv6 link
+         * local addresses to the one derived from the interface&#39;s MAC address. For
+         * containers the configured IP addresses will be implicitly added.
          * 
          * @return builder
          * 
@@ -362,7 +380,8 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param logLevelIn Log level for incoming traffic.
+         * @param logLevelIn Log level for incoming
+         * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
          * 
          * @return builder
          * 
@@ -373,7 +392,8 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param logLevelIn Log level for incoming traffic.
+         * @param logLevelIn Log level for incoming
+         * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
          * 
          * @return builder
          * 
@@ -383,7 +403,8 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param logLevelOut Log level for outgoing traffic.
+         * @param logLevelOut Log level for outgoing
+         * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
          * 
          * @return builder
          * 
@@ -394,7 +415,8 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param logLevelOut Log level for outgoing traffic.
+         * @param logLevelOut Log level for outgoing
+         * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
          * 
          * @return builder
          * 
@@ -404,7 +426,7 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param macfilter Enable MAC address filtering
+         * @param macfilter Enable/disable MAC address filter.
          * 
          * @return builder
          * 
@@ -415,7 +437,7 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param macfilter Enable MAC address filtering
+         * @param macfilter Enable/disable MAC address filter.
          * 
          * @return builder
          * 
@@ -425,7 +447,7 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ndp Enable NDP (Neighbor Discovery Protocol)
+         * @param ndp Enable NDP (Neighbor Discovery Protocol).
          * 
          * @return builder
          * 
@@ -436,7 +458,7 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ndp Enable NDP (Neighbor Discovery Protocol)
+         * @param ndp Enable NDP (Neighbor Discovery Protocol).
          * 
          * @return builder
          * 
@@ -446,7 +468,7 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param nodeName The name of the node.
+         * @param nodeName Node name.
          * 
          * @return builder
          * 
@@ -457,7 +479,7 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param nodeName The name of the node.
+         * @param nodeName Node name.
          * 
          * @return builder
          * 
@@ -467,7 +489,8 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param outputPolicy Default policy for outgoing traffic
+         * @param outputPolicy The default output
+         * policy (`ACCEPT`, `DROP`, `REJECT`).
          * 
          * @return builder
          * 
@@ -478,7 +501,8 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param outputPolicy Default policy for outgoing traffic
+         * @param outputPolicy The default output
+         * policy (`ACCEPT`, `DROP`, `REJECT`).
          * 
          * @return builder
          * 
@@ -488,7 +512,7 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param radv Allow sending Router Advertisement
+         * @param radv Enable Router Advertisement.
          * 
          * @return builder
          * 
@@ -499,7 +523,7 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param radv Allow sending Router Advertisement
+         * @param radv Enable Router Advertisement.
          * 
          * @return builder
          * 
@@ -509,7 +533,7 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param vmId The ID of the VM to manage the firewall for.
+         * @param vmId VM ID. Leave empty for cluster level aliases.
          * 
          * @return builder
          * 
@@ -520,7 +544,7 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param vmId The ID of the VM to manage the firewall for.
+         * @param vmId VM ID. Leave empty for cluster level aliases.
          * 
          * @return builder
          * 

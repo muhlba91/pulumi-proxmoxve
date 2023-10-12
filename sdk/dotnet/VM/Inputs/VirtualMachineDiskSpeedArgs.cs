@@ -12,15 +12,29 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
 
     public sealed class VirtualMachineDiskSpeedArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The maximum read speed in megabytes per second.
+        /// </summary>
         [Input("read")]
         public Input<int>? Read { get; set; }
 
+        /// <summary>
+        /// The maximum burstable read speed in
+        /// megabytes per second.
+        /// </summary>
         [Input("readBurstable")]
         public Input<int>? ReadBurstable { get; set; }
 
+        /// <summary>
+        /// The maximum write speed in megabytes per second.
+        /// </summary>
         [Input("write")]
         public Input<int>? Write { get; set; }
 
+        /// <summary>
+        /// The maximum burstable write speed in
+        /// megabytes per second.
+        /// </summary>
         [Input("writeBurstable")]
         public Input<int>? WriteBurstable { get; set; }
 

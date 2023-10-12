@@ -11,13 +11,31 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContainerMemory {
+    /**
+     * @return The dedicated memory in megabytes (defaults
+     * to `512`).
+     * 
+     */
     private @Nullable Integer dedicated;
+    /**
+     * @return The swap size in megabytes (defaults to `0`).
+     * 
+     */
     private @Nullable Integer swap;
 
     private ContainerMemory() {}
+    /**
+     * @return The dedicated memory in megabytes (defaults
+     * to `512`).
+     * 
+     */
     public Optional<Integer> dedicated() {
         return Optional.ofNullable(this.dedicated);
     }
+    /**
+     * @return The swap size in megabytes (defaults to `0`).
+     * 
+     */
     public Optional<Integer> swap() {
         return Optional.ofNullable(this.swap);
     }

@@ -13,6 +13,9 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     [OutputType]
     public sealed class VirtualMachineOperatingSystem
     {
+        /// <summary>
+        /// The VGA type (defaults to `std`).
+        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]

@@ -13,9 +13,25 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     [OutputType]
     public sealed class VirtualMachineEfiDisk
     {
+        /// <summary>
+        /// The identifier for the datastore to create the
+        /// cloud-init disk in (defaults to `local-lvm`).
+        /// </summary>
         public readonly string? DatastoreId;
+        /// <summary>
+        /// The file format.
+        /// </summary>
         public readonly string? FileFormat;
+        /// <summary>
+        /// Use am EFI vars template with
+        /// distribution-specific and Microsoft Standard keys enrolled, if used with
+        /// EFI type=`4m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
+        /// to `false`).
+        /// </summary>
         public readonly bool? PreEnrolledKeys;
+        /// <summary>
+        /// The VGA type (defaults to `std`).
+        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]

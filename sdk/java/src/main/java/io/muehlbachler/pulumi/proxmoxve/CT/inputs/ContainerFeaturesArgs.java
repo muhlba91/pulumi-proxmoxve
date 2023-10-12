@@ -15,23 +15,53 @@ public final class ContainerFeaturesArgs extends com.pulumi.resources.ResourceAr
 
     public static final ContainerFeaturesArgs Empty = new ContainerFeaturesArgs();
 
+    /**
+     * Whether the container supports FUSE mounts (defaults
+     * to `false`)
+     * 
+     */
     @Import(name="fuse")
     private @Nullable Output<Boolean> fuse;
 
+    /**
+     * @return Whether the container supports FUSE mounts (defaults
+     * to `false`)
+     * 
+     */
     public Optional<Output<Boolean>> fuse() {
         return Optional.ofNullable(this.fuse);
     }
 
+    /**
+     * Whether the container supports `keyctl()` system
+     * call (defaults to `false`)
+     * 
+     */
     @Import(name="keyctl")
     private @Nullable Output<Boolean> keyctl;
 
+    /**
+     * @return Whether the container supports `keyctl()` system
+     * call (defaults to `false`)
+     * 
+     */
     public Optional<Output<Boolean>> keyctl() {
         return Optional.ofNullable(this.keyctl);
     }
 
+    /**
+     * Whether the container is nested (defaults
+     * to `false`)
+     * 
+     */
     @Import(name="nesting")
     private @Nullable Output<Boolean> nesting;
 
+    /**
+     * @return Whether the container is nested (defaults
+     * to `false`)
+     * 
+     */
     public Optional<Output<Boolean>> nesting() {
         return Optional.ofNullable(this.nesting);
     }
@@ -62,29 +92,71 @@ public final class ContainerFeaturesArgs extends com.pulumi.resources.ResourceAr
             $ = new ContainerFeaturesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param fuse Whether the container supports FUSE mounts (defaults
+         * to `false`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder fuse(@Nullable Output<Boolean> fuse) {
             $.fuse = fuse;
             return this;
         }
 
+        /**
+         * @param fuse Whether the container supports FUSE mounts (defaults
+         * to `false`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder fuse(Boolean fuse) {
             return fuse(Output.of(fuse));
         }
 
+        /**
+         * @param keyctl Whether the container supports `keyctl()` system
+         * call (defaults to `false`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyctl(@Nullable Output<Boolean> keyctl) {
             $.keyctl = keyctl;
             return this;
         }
 
+        /**
+         * @param keyctl Whether the container supports `keyctl()` system
+         * call (defaults to `false`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyctl(Boolean keyctl) {
             return keyctl(Output.of(keyctl));
         }
 
+        /**
+         * @param nesting Whether the container is nested (defaults
+         * to `false`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder nesting(@Nullable Output<Boolean> nesting) {
             $.nesting = nesting;
             return this;
         }
 
+        /**
+         * @param nesting Whether the container is nested (defaults
+         * to `false`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder nesting(Boolean nesting) {
             return nesting(Output.of(nesting));
         }

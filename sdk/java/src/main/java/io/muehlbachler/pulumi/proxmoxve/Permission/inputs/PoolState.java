@@ -18,14 +18,14 @@ public final class PoolState extends com.pulumi.resources.ResourceArgs {
     public static final PoolState Empty = new PoolState();
 
     /**
-     * The pool comment
+     * The pool comment.
      * 
      */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
     /**
-     * @return The pool comment
+     * @return The pool comment.
      * 
      */
     public Optional<Output<String>> comment() {
@@ -33,14 +33,14 @@ public final class PoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The pool members
+     * The pool members.
      * 
      */
     @Import(name="members")
     private @Nullable Output<List<PoolMemberArgs>> members;
 
     /**
-     * @return The pool members
+     * @return The pool members.
      * 
      */
     public Optional<Output<List<PoolMemberArgs>>> members() {
@@ -48,14 +48,14 @@ public final class PoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The pool id
+     * The pool identifier.
      * 
      */
     @Import(name="poolId")
     private @Nullable Output<String> poolId;
 
     /**
-     * @return The pool id
+     * @return The pool identifier.
      * 
      */
     public Optional<Output<String>> poolId() {
@@ -89,7 +89,7 @@ public final class PoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comment The pool comment
+         * @param comment The pool comment.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class PoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comment The pool comment
+         * @param comment The pool comment.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class PoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param members The pool members
+         * @param members The pool members.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class PoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param members The pool members
+         * @param members The pool members.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class PoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param members The pool members
+         * @param members The pool members.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class PoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param poolId The pool id
+         * @param poolId The pool identifier.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class PoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param poolId The pool id
+         * @param poolId The pool identifier.
          * 
          * @return builder
          * 

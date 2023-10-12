@@ -13,13 +13,44 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     [OutputType]
     public sealed class VirtualMachineHostpci
     {
+        /// <summary>
+        /// The device (defaults to `socket`).
+        /// - `/dev/*` - A host serial device.
+        /// </summary>
         public readonly string Device;
+        /// <summary>
+        /// The PCI device ID. Use either this or `mapping`.
+        /// </summary>
         public readonly string? Id;
+        /// <summary>
+        /// The resource mapping name of the device, for
+        /// example gpu. Use either this or `id`.
+        /// </summary>
         public readonly string? Mapping;
+        /// <summary>
+        /// The mediated device ID to use.
+        /// </summary>
         public readonly string? Mdev;
+        /// <summary>
+        /// Tells Proxmox to use a PCIe or PCI port. Some
+        /// guests/device combination require PCIe rather than PCI. PCIe is only
+        /// available for q35 machine types.
+        /// </summary>
         public readonly bool? Pcie;
+        /// <summary>
+        /// A path to a ROM file for the device to use. This
+        /// is a relative path under `/usr/share/kvm/`.
+        /// </summary>
         public readonly string? RomFile;
+        /// <summary>
+        /// Makes the firmware ROM visible for the VM (defaults
+        /// to `true`).
+        /// </summary>
         public readonly bool? Rombar;
+        /// <summary>
+        /// Marks the PCI(e) device as the primary GPU of the VM.
+        /// With this enabled the `vga` configuration argument will be ignored.
+        /// </summary>
         public readonly bool? Xvga;
 
         [OutputConstructor]

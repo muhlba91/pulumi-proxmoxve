@@ -12,18 +12,34 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
 
     public sealed class VirtualMachineCloneGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The identifier for the datastore to create the
+        /// cloud-init disk in (defaults to `local-lvm`).
+        /// </summary>
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
 
         [Input("full")]
         public Input<bool>? Full { get; set; }
 
+        /// <summary>
+        /// The name of the node to assign the virtual machine
+        /// to.
+        /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
 
+        /// <summary>
+        /// Number of retries in Proxmox for clone vm.
+        /// Sometimes Proxmox errors with timeout when creating multiple clones at
+        /// once.
+        /// </summary>
         [Input("retries")]
         public Input<int>? Retries { get; set; }
 
+        /// <summary>
+        /// The VM identifier.
+        /// </summary>
         [Input("vmId", required: true)]
         public Input<int> VmId { get; set; } = null!;
 

@@ -15,23 +15,51 @@ public final class VirtualMachineMemoryArgs extends com.pulumi.resources.Resourc
 
     public static final VirtualMachineMemoryArgs Empty = new VirtualMachineMemoryArgs();
 
+    /**
+     * The dedicated memory in megabytes (defaults
+     * to `512`).
+     * 
+     */
     @Import(name="dedicated")
     private @Nullable Output<Integer> dedicated;
 
+    /**
+     * @return The dedicated memory in megabytes (defaults
+     * to `512`).
+     * 
+     */
     public Optional<Output<Integer>> dedicated() {
         return Optional.ofNullable(this.dedicated);
     }
 
+    /**
+     * The floating memory in megabytes (defaults
+     * to `0`).
+     * 
+     */
     @Import(name="floating")
     private @Nullable Output<Integer> floating;
 
+    /**
+     * @return The floating memory in megabytes (defaults
+     * to `0`).
+     * 
+     */
     public Optional<Output<Integer>> floating() {
         return Optional.ofNullable(this.floating);
     }
 
+    /**
+     * The shared memory in megabytes (defaults to `0`).
+     * 
+     */
     @Import(name="shared")
     private @Nullable Output<Integer> shared;
 
+    /**
+     * @return The shared memory in megabytes (defaults to `0`).
+     * 
+     */
     public Optional<Output<Integer>> shared() {
         return Optional.ofNullable(this.shared);
     }
@@ -62,29 +90,69 @@ public final class VirtualMachineMemoryArgs extends com.pulumi.resources.Resourc
             $ = new VirtualMachineMemoryArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param dedicated The dedicated memory in megabytes (defaults
+         * to `512`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder dedicated(@Nullable Output<Integer> dedicated) {
             $.dedicated = dedicated;
             return this;
         }
 
+        /**
+         * @param dedicated The dedicated memory in megabytes (defaults
+         * to `512`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder dedicated(Integer dedicated) {
             return dedicated(Output.of(dedicated));
         }
 
+        /**
+         * @param floating The floating memory in megabytes (defaults
+         * to `0`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder floating(@Nullable Output<Integer> floating) {
             $.floating = floating;
             return this;
         }
 
+        /**
+         * @param floating The floating memory in megabytes (defaults
+         * to `0`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder floating(Integer floating) {
             return floating(Output.of(floating));
         }
 
+        /**
+         * @param shared The shared memory in megabytes (defaults to `0`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder shared(@Nullable Output<Integer> shared) {
             $.shared = shared;
             return this;
         }
 
+        /**
+         * @param shared The shared memory in megabytes (defaults to `0`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder shared(Integer shared) {
             return shared(Output.of(shared));
         }

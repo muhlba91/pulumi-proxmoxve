@@ -12,6 +12,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Retrieves information about a specific role.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/Permission"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Permission.GetRole(ctx, &permission.GetRoleArgs{
+//				RoleId: "operations",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupRole(ctx *pulumi.Context, args *LookupRoleArgs, opts ...pulumi.InvokeOption) (*LookupRoleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRoleResult
@@ -24,13 +51,15 @@ func LookupRole(ctx *pulumi.Context, args *LookupRoleArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getRole.
 type LookupRoleArgs struct {
+	// The role identifier.
 	RoleId string `pulumi:"roleId"`
 }
 
 // A collection of values returned by getRole.
 type LookupRoleResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The role privileges
 	Privileges []string `pulumi:"privileges"`
 	RoleId     string   `pulumi:"roleId"`
 }
@@ -50,6 +79,7 @@ func LookupRoleOutput(ctx *pulumi.Context, args LookupRoleOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getRole.
 type LookupRoleOutputArgs struct {
+	// The role identifier.
 	RoleId pulumi.StringInput `pulumi:"roleId"`
 }
 
@@ -83,6 +113,7 @@ func (o LookupRoleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The role privileges
 func (o LookupRoleResultOutput) Privileges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupRoleResult) []string { return v.Privileges }).(pulumi.StringArrayOutput)
 }

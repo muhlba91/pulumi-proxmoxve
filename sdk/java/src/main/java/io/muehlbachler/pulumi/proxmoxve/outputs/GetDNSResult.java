@@ -10,6 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDNSResult {
+    /**
+     * @return The DNS search domain.
+     * 
+     */
     private String domain;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -17,9 +21,17 @@ public final class GetDNSResult {
      */
     private String id;
     private String nodeName;
+    /**
+     * @return The DNS servers.
+     * 
+     */
     private List<String> servers;
 
     private GetDNSResult() {}
+    /**
+     * @return The DNS search domain.
+     * 
+     */
     public String domain() {
         return this.domain;
     }
@@ -33,6 +45,10 @@ public final class GetDNSResult {
     public String nodeName() {
         return this.nodeName;
     }
+    /**
+     * @return The DNS servers.
+     * 
+     */
     public List<String> servers() {
         return this.servers;
     }

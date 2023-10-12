@@ -16,8 +16,16 @@ public final class GetVirtualMachineResult {
      * 
      */
     private String id;
+    /**
+     * @return The virtual machine name.
+     * 
+     */
     private String name;
     private String nodeName;
+    /**
+     * @return A list of tags of the VM.
+     * 
+     */
     private List<String> tags;
     private Integer vmId;
 
@@ -29,12 +37,20 @@ public final class GetVirtualMachineResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The virtual machine name.
+     * 
+     */
     public String name() {
         return this.name;
     }
     public String nodeName() {
         return this.nodeName;
     }
+    /**
+     * @return A list of tags of the VM.
+     * 
+     */
     public List<String> tags() {
         return this.tags;
     }

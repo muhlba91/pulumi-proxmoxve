@@ -16,23 +16,59 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
 
     public static final VirtualMachineCdromArgs Empty = new VirtualMachineCdromArgs();
 
+    /**
+     * Whether to enable the VGA device (defaults
+     * to `true`).
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether to enable the VGA device (defaults
+     * to `true`).
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * The file ID for a disk image (experimental -
+     * might cause high CPU utilization during import, especially with large
+     * disk images).
+     * 
+     */
     @Import(name="fileId")
     private @Nullable Output<String> fileId;
 
+    /**
+     * @return The file ID for a disk image (experimental -
+     * might cause high CPU utilization during import, especially with large
+     * disk images).
+     * 
+     */
     public Optional<Output<String>> fileId() {
         return Optional.ofNullable(this.fileId);
     }
 
+    /**
+     * The hardware interface to connect the cloud-init
+     * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+     * detected if the setting is missing but a cloud-init image is present,
+     * otherwise defaults to `ide2`.
+     * 
+     */
     @Import(name="interface")
     private @Nullable Output<String> interface_;
 
+    /**
+     * @return The hardware interface to connect the cloud-init
+     * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+     * detected if the setting is missing but a cloud-init image is present,
+     * otherwise defaults to `ide2`.
+     * 
+     */
     public Optional<Output<String>> interface_() {
         return Optional.ofNullable(this.interface_);
     }
@@ -63,29 +99,77 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
             $ = new VirtualMachineCdromArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether to enable the VGA device (defaults
+         * to `true`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether to enable the VGA device (defaults
+         * to `true`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param fileId The file ID for a disk image (experimental -
+         * might cause high CPU utilization during import, especially with large
+         * disk images).
+         * 
+         * @return builder
+         * 
+         */
         public Builder fileId(@Nullable Output<String> fileId) {
             $.fileId = fileId;
             return this;
         }
 
+        /**
+         * @param fileId The file ID for a disk image (experimental -
+         * might cause high CPU utilization during import, especially with large
+         * disk images).
+         * 
+         * @return builder
+         * 
+         */
         public Builder fileId(String fileId) {
             return fileId(Output.of(fileId));
         }
 
+        /**
+         * @param interface_ The hardware interface to connect the cloud-init
+         * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+         * detected if the setting is missing but a cloud-init image is present,
+         * otherwise defaults to `ide2`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder interface_(@Nullable Output<String> interface_) {
             $.interface_ = interface_;
             return this;
         }
 
+        /**
+         * @param interface_ The hardware interface to connect the cloud-init
+         * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+         * detected if the setting is missing but a cloud-init image is present,
+         * otherwise defaults to `ide2`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder interface_(String interface_) {
             return interface_(Output.of(interface_));
         }

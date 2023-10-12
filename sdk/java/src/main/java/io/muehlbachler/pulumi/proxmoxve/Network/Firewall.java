@@ -16,73 +16,127 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Manages firewall options on the cluster level.
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.proxmoxve.Network.Firewall;
+ * import com.pulumi.proxmoxve.Network.FirewallArgs;
+ * import com.pulumi.proxmoxve.Network.inputs.FirewallLogRatelimitArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Firewall(&#34;example&#34;, FirewallArgs.builder()        
+ *             .ebtables(false)
+ *             .enabled(false)
+ *             .inputPolicy(&#34;DROP&#34;)
+ *             .logRatelimit(FirewallLogRatelimitArgs.builder()
+ *                 .burst(10)
+ *                 .enabled(false)
+ *                 .rate(&#34;5/second&#34;)
+ *                 .build())
+ *             .outputPolicy(&#34;ACCEPT&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ## Important Notes
+ * 
+ * Be careful not to use this resource multiple times for the same node.
+ * 
+ * ## Import
+ * 
+ * Instances can be imported without an ID, but you still need to pass one, e.g., bash
+ * 
+ * ```sh
+ *  $ pulumi import proxmoxve:Network/firewall:Firewall example example
+ * ```
+ * 
+ */
 @ResourceType(type="proxmoxve:Network/firewall:Firewall")
 public class Firewall extends com.pulumi.resources.CustomResource {
     /**
-     * Enable ebtables cluster-wide
+     * Enable ebtables rules cluster wide.
      * 
      */
     @Export(name="ebtables", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> ebtables;
 
     /**
-     * @return Enable ebtables cluster-wide
+     * @return Enable ebtables rules cluster wide.
      * 
      */
     public Output<Optional<Boolean>> ebtables() {
         return Codegen.optional(this.ebtables);
     }
     /**
-     * Enable or disable the firewall cluster-wide
+     * Enable or disable the log rate limit.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
-     * @return Enable or disable the firewall cluster-wide
+     * @return Enable or disable the log rate limit.
      * 
      */
     public Output<Optional<Boolean>> enabled() {
         return Codegen.optional(this.enabled);
     }
     /**
-     * Default policy for incoming traffic
+     * The default input policy (`ACCEPT`, `DROP`, `REJECT`).
      * 
      */
     @Export(name="inputPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> inputPolicy;
 
     /**
-     * @return Default policy for incoming traffic
+     * @return The default input policy (`ACCEPT`, `DROP`, `REJECT`).
      * 
      */
     public Output<Optional<String>> inputPolicy() {
         return Codegen.optional(this.inputPolicy);
     }
     /**
-     * Log ratelimiting settings
+     * The log rate limit.
      * 
      */
     @Export(name="logRatelimit", refs={FirewallLogRatelimit.class}, tree="[0]")
     private Output</* @Nullable */ FirewallLogRatelimit> logRatelimit;
 
     /**
-     * @return Log ratelimiting settings
+     * @return The log rate limit.
      * 
      */
     public Output<Optional<FirewallLogRatelimit>> logRatelimit() {
         return Codegen.optional(this.logRatelimit);
     }
     /**
-     * Default policy for outgoing traffic
+     * The default output policy (`ACCEPT`, `DROP`, `REJECT`).
      * 
      */
     @Export(name="outputPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> outputPolicy;
 
     /**
-     * @return Default policy for outgoing traffic
+     * @return The default output policy (`ACCEPT`, `DROP`, `REJECT`).
      * 
      */
     public Output<Optional<String>> outputPolicy() {

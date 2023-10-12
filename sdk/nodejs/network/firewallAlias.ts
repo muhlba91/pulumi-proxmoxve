@@ -4,6 +4,31 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Aliases are used to see what devices or group of devices are affected by a rule.
+ * We can create aliases to identify an IP address or a network. Aliases can be
+ * created on the cluster level, on VM / Container level.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const localNetwork = new proxmoxve.network.FirewallAlias("localNetwork", {
+ *     nodeName: proxmox_virtual_environment_vm.example.node_name,
+ *     vmId: proxmox_virtual_environment_vm.example.vm_id,
+ *     cidr: "192.168.0.0/23",
+ *     comment: "Managed by Terraform",
+ * }, {
+ *     dependsOn: [proxmox_virtual_environment_vm.example],
+ * });
+ * const ubuntuVm = new proxmoxve.network.FirewallAlias("ubuntuVm", {
+ *     cidr: "192.168.0.1",
+ *     comment: "Managed by Terraform",
+ * });
+ * ```
+ */
 export class FirewallAlias extends pulumi.CustomResource {
     /**
      * Get an existing FirewallAlias resource's state with the given name, ID, and optional extra
@@ -33,27 +58,27 @@ export class FirewallAlias extends pulumi.CustomResource {
     }
 
     /**
-     * IP/CIDR block
+     * Network/IP specification in CIDR format.
      */
     public readonly cidr!: pulumi.Output<string>;
     /**
-     * Alias comment
+     * Alias comment.
      */
     public readonly comment!: pulumi.Output<string | undefined>;
     /**
-     * The ID of the container to manage the firewall for.
+     * Container ID. Leave empty for cluster level aliases.
      */
     public readonly containerId!: pulumi.Output<number | undefined>;
     /**
-     * Alias name
+     * Alias name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The name of the node.
+     * Node name. Leave empty for cluster level aliases.
      */
     public readonly nodeName!: pulumi.Output<string | undefined>;
     /**
-     * The ID of the VM to manage the firewall for.
+     * VM ID. Leave empty for cluster level aliases.
      */
     public readonly vmId!: pulumi.Output<number | undefined>;
 
@@ -98,27 +123,27 @@ export class FirewallAlias extends pulumi.CustomResource {
  */
 export interface FirewallAliasState {
     /**
-     * IP/CIDR block
+     * Network/IP specification in CIDR format.
      */
     cidr?: pulumi.Input<string>;
     /**
-     * Alias comment
+     * Alias comment.
      */
     comment?: pulumi.Input<string>;
     /**
-     * The ID of the container to manage the firewall for.
+     * Container ID. Leave empty for cluster level aliases.
      */
     containerId?: pulumi.Input<number>;
     /**
-     * Alias name
+     * Alias name.
      */
     name?: pulumi.Input<string>;
     /**
-     * The name of the node.
+     * Node name. Leave empty for cluster level aliases.
      */
     nodeName?: pulumi.Input<string>;
     /**
-     * The ID of the VM to manage the firewall for.
+     * VM ID. Leave empty for cluster level aliases.
      */
     vmId?: pulumi.Input<number>;
 }
@@ -128,27 +153,27 @@ export interface FirewallAliasState {
  */
 export interface FirewallAliasArgs {
     /**
-     * IP/CIDR block
+     * Network/IP specification in CIDR format.
      */
     cidr: pulumi.Input<string>;
     /**
-     * Alias comment
+     * Alias comment.
      */
     comment?: pulumi.Input<string>;
     /**
-     * The ID of the container to manage the firewall for.
+     * Container ID. Leave empty for cluster level aliases.
      */
     containerId?: pulumi.Input<number>;
     /**
-     * Alias name
+     * Alias name.
      */
     name?: pulumi.Input<string>;
     /**
-     * The name of the node.
+     * Node name. Leave empty for cluster level aliases.
      */
     nodeName?: pulumi.Input<string>;
     /**
-     * The ID of the VM to manage the firewall for.
+     * VM ID. Leave empty for cluster level aliases.
      */
     vmId?: pulumi.Input<number>;
 }

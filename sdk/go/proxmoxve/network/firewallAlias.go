@@ -13,20 +13,61 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Aliases are used to see what devices or group of devices are affected by a rule.
+// We can create aliases to identify an IP address or a network. Aliases can be
+// created on the cluster level, on VM / Container level.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/Network"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Network.NewFirewallAlias(ctx, "localNetwork", &Network.FirewallAliasArgs{
+//				NodeName: pulumi.Any(proxmox_virtual_environment_vm.Example.Node_name),
+//				VmId:     pulumi.Any(proxmox_virtual_environment_vm.Example.Vm_id),
+//				Cidr:     pulumi.String("192.168.0.0/23"),
+//				Comment:  pulumi.String("Managed by Terraform"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				proxmox_virtual_environment_vm.Example,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = Network.NewFirewallAlias(ctx, "ubuntuVm", &Network.FirewallAliasArgs{
+//				Cidr:    pulumi.String("192.168.0.1"),
+//				Comment: pulumi.String("Managed by Terraform"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type FirewallAlias struct {
 	pulumi.CustomResourceState
 
-	// IP/CIDR block
+	// Network/IP specification in CIDR format.
 	Cidr pulumi.StringOutput `pulumi:"cidr"`
-	// Alias comment
+	// Alias comment.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
-	// The ID of the container to manage the firewall for.
+	// Container ID. Leave empty for cluster level aliases.
 	ContainerId pulumi.IntPtrOutput `pulumi:"containerId"`
-	// Alias name
+	// Alias name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The name of the node.
+	// Node name. Leave empty for cluster level aliases.
 	NodeName pulumi.StringPtrOutput `pulumi:"nodeName"`
-	// The ID of the VM to manage the firewall for.
+	// VM ID. Leave empty for cluster level aliases.
 	VmId pulumi.IntPtrOutput `pulumi:"vmId"`
 }
 
@@ -63,32 +104,32 @@ func GetFirewallAlias(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FirewallAlias resources.
 type firewallAliasState struct {
-	// IP/CIDR block
+	// Network/IP specification in CIDR format.
 	Cidr *string `pulumi:"cidr"`
-	// Alias comment
+	// Alias comment.
 	Comment *string `pulumi:"comment"`
-	// The ID of the container to manage the firewall for.
+	// Container ID. Leave empty for cluster level aliases.
 	ContainerId *int `pulumi:"containerId"`
-	// Alias name
+	// Alias name.
 	Name *string `pulumi:"name"`
-	// The name of the node.
+	// Node name. Leave empty for cluster level aliases.
 	NodeName *string `pulumi:"nodeName"`
-	// The ID of the VM to manage the firewall for.
+	// VM ID. Leave empty for cluster level aliases.
 	VmId *int `pulumi:"vmId"`
 }
 
 type FirewallAliasState struct {
-	// IP/CIDR block
+	// Network/IP specification in CIDR format.
 	Cidr pulumi.StringPtrInput
-	// Alias comment
+	// Alias comment.
 	Comment pulumi.StringPtrInput
-	// The ID of the container to manage the firewall for.
+	// Container ID. Leave empty for cluster level aliases.
 	ContainerId pulumi.IntPtrInput
-	// Alias name
+	// Alias name.
 	Name pulumi.StringPtrInput
-	// The name of the node.
+	// Node name. Leave empty for cluster level aliases.
 	NodeName pulumi.StringPtrInput
-	// The ID of the VM to manage the firewall for.
+	// VM ID. Leave empty for cluster level aliases.
 	VmId pulumi.IntPtrInput
 }
 
@@ -97,33 +138,33 @@ func (FirewallAliasState) ElementType() reflect.Type {
 }
 
 type firewallAliasArgs struct {
-	// IP/CIDR block
+	// Network/IP specification in CIDR format.
 	Cidr string `pulumi:"cidr"`
-	// Alias comment
+	// Alias comment.
 	Comment *string `pulumi:"comment"`
-	// The ID of the container to manage the firewall for.
+	// Container ID. Leave empty for cluster level aliases.
 	ContainerId *int `pulumi:"containerId"`
-	// Alias name
+	// Alias name.
 	Name *string `pulumi:"name"`
-	// The name of the node.
+	// Node name. Leave empty for cluster level aliases.
 	NodeName *string `pulumi:"nodeName"`
-	// The ID of the VM to manage the firewall for.
+	// VM ID. Leave empty for cluster level aliases.
 	VmId *int `pulumi:"vmId"`
 }
 
 // The set of arguments for constructing a FirewallAlias resource.
 type FirewallAliasArgs struct {
-	// IP/CIDR block
+	// Network/IP specification in CIDR format.
 	Cidr pulumi.StringInput
-	// Alias comment
+	// Alias comment.
 	Comment pulumi.StringPtrInput
-	// The ID of the container to manage the firewall for.
+	// Container ID. Leave empty for cluster level aliases.
 	ContainerId pulumi.IntPtrInput
-	// Alias name
+	// Alias name.
 	Name pulumi.StringPtrInput
-	// The name of the node.
+	// Node name. Leave empty for cluster level aliases.
 	NodeName pulumi.StringPtrInput
-	// The ID of the VM to manage the firewall for.
+	// VM ID. Leave empty for cluster level aliases.
 	VmId pulumi.IntPtrInput
 }
 
@@ -238,32 +279,32 @@ func (o FirewallAliasOutput) ToOutput(ctx context.Context) pulumix.Output[*Firew
 	}
 }
 
-// IP/CIDR block
+// Network/IP specification in CIDR format.
 func (o FirewallAliasOutput) Cidr() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallAlias) pulumi.StringOutput { return v.Cidr }).(pulumi.StringOutput)
 }
 
-// Alias comment
+// Alias comment.
 func (o FirewallAliasOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallAlias) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the container to manage the firewall for.
+// Container ID. Leave empty for cluster level aliases.
 func (o FirewallAliasOutput) ContainerId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FirewallAlias) pulumi.IntPtrOutput { return v.ContainerId }).(pulumi.IntPtrOutput)
 }
 
-// Alias name
+// Alias name.
 func (o FirewallAliasOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallAlias) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The name of the node.
+// Node name. Leave empty for cluster level aliases.
 func (o FirewallAliasOutput) NodeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallAlias) pulumi.StringPtrOutput { return v.NodeName }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the VM to manage the firewall for.
+// VM ID. Leave empty for cluster level aliases.
 func (o FirewallAliasOutput) VmId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FirewallAlias) pulumi.IntPtrOutput { return v.VmId }).(pulumi.IntPtrOutput)
 }

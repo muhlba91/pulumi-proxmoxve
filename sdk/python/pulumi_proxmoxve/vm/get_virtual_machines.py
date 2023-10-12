@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -47,16 +47,25 @@ class GetVirtualMachinesResult:
     @property
     @pulumi.getter(name="nodeName")
     def node_name(self) -> Optional[str]:
+        """
+        The node name.
+        """
         return pulumi.get(self, "node_name")
 
     @property
     @pulumi.getter
     def tags(self) -> Optional[Sequence[str]]:
+        """
+        A list of tags of the VM.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def vms(self) -> Sequence['outputs.GetVirtualMachinesVmResult']:
+        """
+        The VMs list.
+        """
         return pulumi.get(self, "vms")
 
 
@@ -76,7 +85,21 @@ def get_virtual_machines(node_name: Optional[str] = None,
                          tags: Optional[Sequence[str]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVirtualMachinesResult:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves information about all VMs in the Proxmox cluster.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    ubuntu_vms = proxmoxve.VM.get_virtual_machines(tags=["ubuntu"])
+    ```
+
+
+    :param str node_name: The node name.
+    :param Sequence[str] tags: A list of tags to filter the VMs. The VM must have all
+           the tags to be included in the result.
     """
     __args__ = dict()
     __args__['nodeName'] = node_name
@@ -96,6 +119,20 @@ def get_virtual_machines_output(node_name: Optional[pulumi.Input[Optional[str]]]
                                 tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVirtualMachinesResult]:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves information about all VMs in the Proxmox cluster.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    ubuntu_vms = proxmoxve.VM.get_virtual_machines(tags=["ubuntu"])
+    ```
+
+
+    :param str node_name: The node name.
+    :param Sequence[str] tags: A list of tags to filter the VMs. The VM must have all
+           the tags to be included in the result.
     """
     ...

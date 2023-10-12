@@ -12,9 +12,25 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatastoresResult {
+    /**
+     * @return Whether the datastore is active.
+     * 
+     */
     private List<Boolean> actives;
+    /**
+     * @return The allowed content types.
+     * 
+     */
     private List<List<String>> contentTypes;
+    /**
+     * @return The datastore identifiers.
+     * 
+     */
     private List<String> datastoreIds;
+    /**
+     * @return Whether the datastore is enabled.
+     * 
+     */
     private List<Boolean> enableds;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,22 +38,58 @@ public final class GetDatastoresResult {
      */
     private String id;
     private String nodeName;
+    /**
+     * @return Whether the datastore is shared.
+     * 
+     */
     private List<Boolean> shareds;
+    /**
+     * @return The available space in bytes.
+     * 
+     */
     private List<Integer> spaceAvailables;
+    /**
+     * @return The total space in bytes.
+     * 
+     */
     private List<Integer> spaceTotals;
+    /**
+     * @return The used space in bytes.
+     * 
+     */
     private List<Integer> spaceUseds;
+    /**
+     * @return The storage types.
+     * 
+     */
     private List<String> types;
 
     private GetDatastoresResult() {}
+    /**
+     * @return Whether the datastore is active.
+     * 
+     */
     public List<Boolean> actives() {
         return this.actives;
     }
+    /**
+     * @return The allowed content types.
+     * 
+     */
     public List<List<String>> contentTypes() {
         return this.contentTypes;
     }
+    /**
+     * @return The datastore identifiers.
+     * 
+     */
     public List<String> datastoreIds() {
         return this.datastoreIds;
     }
+    /**
+     * @return Whether the datastore is enabled.
+     * 
+     */
     public List<Boolean> enableds() {
         return this.enableds;
     }
@@ -51,18 +103,38 @@ public final class GetDatastoresResult {
     public String nodeName() {
         return this.nodeName;
     }
+    /**
+     * @return Whether the datastore is shared.
+     * 
+     */
     public List<Boolean> shareds() {
         return this.shareds;
     }
+    /**
+     * @return The available space in bytes.
+     * 
+     */
     public List<Integer> spaceAvailables() {
         return this.spaceAvailables;
     }
+    /**
+     * @return The total space in bytes.
+     * 
+     */
     public List<Integer> spaceTotals() {
         return this.spaceTotals;
     }
+    /**
+     * @return The used space in bytes.
+     * 
+     */
     public List<Integer> spaceUseds() {
         return this.spaceUseds;
     }
+    /**
+     * @return The storage types.
+     * 
+     */
     public List<String> types() {
         return this.types;
     }

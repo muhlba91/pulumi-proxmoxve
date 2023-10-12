@@ -20,39 +20,447 @@ import io.muehlbachler.pulumi.proxmoxve.outputs.GetTimeResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class ProxmoxveFunctions {
+    /**
+     * Retrieves the DNS configuration for a specific node.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetDNSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var firstNode = ProxmoxveFunctions.getDNS(GetDNSArgs.builder()
+     *             .nodeName(&#34;first-node&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetDNSResult> getDNS(GetDNSArgs args) {
         return getDNS(args, InvokeOptions.Empty);
     }
+    /**
+     * Retrieves the DNS configuration for a specific node.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetDNSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var firstNode = ProxmoxveFunctions.getDNS(GetDNSArgs.builder()
+     *             .nodeName(&#34;first-node&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetDNSResult> getDNSPlain(GetDNSPlainArgs args) {
         return getDNSPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Retrieves the DNS configuration for a specific node.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetDNSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var firstNode = ProxmoxveFunctions.getDNS(GetDNSArgs.builder()
+     *             .nodeName(&#34;first-node&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetDNSResult> getDNS(GetDNSArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:index/getDNS:getDNS", TypeShape.of(GetDNSResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Retrieves the DNS configuration for a specific node.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetDNSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var firstNode = ProxmoxveFunctions.getDNS(GetDNSArgs.builder()
+     *             .nodeName(&#34;first-node&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetDNSResult> getDNSPlain(GetDNSPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("proxmoxve:index/getDNS:getDNS", TypeShape.of(GetDNSResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Retrieves all the host entries from a specific node.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetHostsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var firstNodeHostEntries = ProxmoxveFunctions.getHosts(GetHostsArgs.builder()
+     *             .nodeName(&#34;first-node&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetHostsResult> getHosts(GetHostsArgs args) {
         return getHosts(args, InvokeOptions.Empty);
     }
+    /**
+     * Retrieves all the host entries from a specific node.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetHostsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var firstNodeHostEntries = ProxmoxveFunctions.getHosts(GetHostsArgs.builder()
+     *             .nodeName(&#34;first-node&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetHostsResult> getHostsPlain(GetHostsPlainArgs args) {
         return getHostsPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Retrieves all the host entries from a specific node.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetHostsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var firstNodeHostEntries = ProxmoxveFunctions.getHosts(GetHostsArgs.builder()
+     *             .nodeName(&#34;first-node&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetHostsResult> getHosts(GetHostsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:index/getHosts:getHosts", TypeShape.of(GetHostsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Retrieves all the host entries from a specific node.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetHostsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var firstNodeHostEntries = ProxmoxveFunctions.getHosts(GetHostsArgs.builder()
+     *             .nodeName(&#34;first-node&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetHostsResult> getHostsPlain(GetHostsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("proxmoxve:index/getHosts:getHosts", TypeShape.of(GetHostsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Retrieves the current time for a specific node.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetTimeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var firstNodeTime = ProxmoxveFunctions.getTime(GetTimeArgs.builder()
+     *             .nodeName(&#34;first-node&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetTimeResult> getTime(GetTimeArgs args) {
         return getTime(args, InvokeOptions.Empty);
     }
+    /**
+     * Retrieves the current time for a specific node.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetTimeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var firstNodeTime = ProxmoxveFunctions.getTime(GetTimeArgs.builder()
+     *             .nodeName(&#34;first-node&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetTimeResult> getTimePlain(GetTimePlainArgs args) {
         return getTimePlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Retrieves the current time for a specific node.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetTimeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var firstNodeTime = ProxmoxveFunctions.getTime(GetTimeArgs.builder()
+     *             .nodeName(&#34;first-node&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetTimeResult> getTime(GetTimeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:index/getTime:getTime", TypeShape.of(GetTimeResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Retrieves the current time for a specific node.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetTimeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var firstNodeTime = ProxmoxveFunctions.getTime(GetTimeArgs.builder()
+     *             .nodeName(&#34;first-node&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetTimeResult> getTimePlain(GetTimePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("proxmoxve:index/getTime:getTime", TypeShape.of(GetTimeResult.class), args, Utilities.withVersion(options));
     }

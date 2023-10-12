@@ -15,7 +15,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The provider type for the proxmoxve package. By default, resources use package-wide configuration
+ * The provider type for the proxmox package. By default, resources use package-wide configuration
  * settings, however an explicit `Provider` instance may be created and passed during resource
  * construction to achieve fine-grained programmatic control over provider settings. See the
  * [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
@@ -82,6 +82,20 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      */
     public Output<Optional<String>> password() {
         return Codegen.optional(this.password);
+    }
+    /**
+     * The alternative temporary directory.
+     * 
+     */
+    @Export(name="tmpDir", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> tmpDir;
+
+    /**
+     * @return The alternative temporary directory.
+     * 
+     */
+    public Output<Optional<String>> tmpDir() {
+        return Codegen.optional(this.tmpDir);
     }
     /**
      * The username for the Proxmox VE API.

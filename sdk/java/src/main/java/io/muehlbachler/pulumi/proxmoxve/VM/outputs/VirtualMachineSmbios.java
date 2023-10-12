@@ -11,33 +11,89 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VirtualMachineSmbios {
+    /**
+     * @return The family string.
+     * 
+     */
     private @Nullable String family;
+    /**
+     * @return The manufacturer.
+     * 
+     */
     private @Nullable String manufacturer;
+    /**
+     * @return The product ID.
+     * 
+     */
     private @Nullable String product;
+    /**
+     * @return The serial number.
+     * 
+     */
     private @Nullable String serial;
+    /**
+     * @return The SKU number.
+     * 
+     */
     private @Nullable String sku;
+    /**
+     * @return The UUID (defaults to randomly generated UUID).
+     * 
+     */
     private @Nullable String uuid;
+    /**
+     * @return The version.
+     * 
+     */
     private @Nullable String version;
 
     private VirtualMachineSmbios() {}
+    /**
+     * @return The family string.
+     * 
+     */
     public Optional<String> family() {
         return Optional.ofNullable(this.family);
     }
+    /**
+     * @return The manufacturer.
+     * 
+     */
     public Optional<String> manufacturer() {
         return Optional.ofNullable(this.manufacturer);
     }
+    /**
+     * @return The product ID.
+     * 
+     */
     public Optional<String> product() {
         return Optional.ofNullable(this.product);
     }
+    /**
+     * @return The serial number.
+     * 
+     */
     public Optional<String> serial() {
         return Optional.ofNullable(this.serial);
     }
+    /**
+     * @return The SKU number.
+     * 
+     */
     public Optional<String> sku() {
         return Optional.ofNullable(this.sku);
     }
+    /**
+     * @return The UUID (defaults to randomly generated UUID).
+     * 
+     */
     public Optional<String> uuid() {
         return Optional.ofNullable(this.uuid);
     }
+    /**
+     * @return The version.
+     * 
+     */
     public Optional<String> version() {
         return Optional.ofNullable(this.version);
     }

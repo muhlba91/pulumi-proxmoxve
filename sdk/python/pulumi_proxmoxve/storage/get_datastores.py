@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -59,21 +59,33 @@ class GetDatastoresResult:
     @property
     @pulumi.getter
     def actives(self) -> Sequence[bool]:
+        """
+        Whether the datastore is active.
+        """
         return pulumi.get(self, "actives")
 
     @property
     @pulumi.getter(name="contentTypes")
     def content_types(self) -> Sequence[Sequence[str]]:
+        """
+        The allowed content types.
+        """
         return pulumi.get(self, "content_types")
 
     @property
     @pulumi.getter(name="datastoreIds")
     def datastore_ids(self) -> Sequence[str]:
+        """
+        The datastore identifiers.
+        """
         return pulumi.get(self, "datastore_ids")
 
     @property
     @pulumi.getter
     def enableds(self) -> Sequence[bool]:
+        """
+        Whether the datastore is enabled.
+        """
         return pulumi.get(self, "enableds")
 
     @property
@@ -92,26 +104,41 @@ class GetDatastoresResult:
     @property
     @pulumi.getter
     def shareds(self) -> Sequence[bool]:
+        """
+        Whether the datastore is shared.
+        """
         return pulumi.get(self, "shareds")
 
     @property
     @pulumi.getter(name="spaceAvailables")
     def space_availables(self) -> Sequence[int]:
+        """
+        The available space in bytes.
+        """
         return pulumi.get(self, "space_availables")
 
     @property
     @pulumi.getter(name="spaceTotals")
     def space_totals(self) -> Sequence[int]:
+        """
+        The total space in bytes.
+        """
         return pulumi.get(self, "space_totals")
 
     @property
     @pulumi.getter(name="spaceUseds")
     def space_useds(self) -> Sequence[int]:
+        """
+        The used space in bytes.
+        """
         return pulumi.get(self, "space_useds")
 
     @property
     @pulumi.getter
     def types(self) -> Sequence[str]:
+        """
+        The storage types.
+        """
         return pulumi.get(self, "types")
 
 
@@ -137,7 +164,19 @@ class AwaitableGetDatastoresResult(GetDatastoresResult):
 def get_datastores(node_name: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatastoresResult:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves information about all the datastores available to a specific node.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    first_node = proxmoxve.Storage.get_datastores(node_name="first-node")
+    ```
+
+
+    :param str node_name: A node name.
     """
     __args__ = dict()
     __args__['nodeName'] = node_name
@@ -162,6 +201,18 @@ def get_datastores(node_name: Optional[str] = None,
 def get_datastores_output(node_name: Optional[pulumi.Input[str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatastoresResult]:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves information about all the datastores available to a specific node.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    first_node = proxmoxve.Storage.get_datastores(node_name="first-node")
+    ```
+
+
+    :param str node_name: A node name.
     """
     ...

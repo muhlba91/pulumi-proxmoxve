@@ -15,6 +15,10 @@ public final class GetRoleResult {
      * 
      */
     private String id;
+    /**
+     * @return The role privileges
+     * 
+     */
     private List<String> privileges;
     private String roleId;
 
@@ -26,6 +30,10 @@ public final class GetRoleResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The role privileges
+     * 
+     */
     public List<String> privileges() {
         return this.privileges;
     }

@@ -18,58 +18,130 @@ public final class ContainerNetworkInterfaceArgs extends com.pulumi.resources.Re
 
     public static final ContainerNetworkInterfaceArgs Empty = new ContainerNetworkInterfaceArgs();
 
+    /**
+     * The name of the network bridge (defaults
+     * to `vmbr0`).
+     * 
+     */
     @Import(name="bridge")
     private @Nullable Output<String> bridge;
 
+    /**
+     * @return The name of the network bridge (defaults
+     * to `vmbr0`).
+     * 
+     */
     public Optional<Output<String>> bridge() {
         return Optional.ofNullable(this.bridge);
     }
 
+    /**
+     * Whether to enable the network device (defaults
+     * to `true`).
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether to enable the network device (defaults
+     * to `true`).
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * Whether this interface&#39;s firewall rules should be
+     * used (defaults to `false`).
+     * 
+     */
     @Import(name="firewall")
     private @Nullable Output<Boolean> firewall;
 
+    /**
+     * @return Whether this interface&#39;s firewall rules should be
+     * used (defaults to `false`).
+     * 
+     */
     public Optional<Output<Boolean>> firewall() {
         return Optional.ofNullable(this.firewall);
     }
 
+    /**
+     * The MAC address.
+     * 
+     */
     @Import(name="macAddress")
     private @Nullable Output<String> macAddress;
 
+    /**
+     * @return The MAC address.
+     * 
+     */
     public Optional<Output<String>> macAddress() {
         return Optional.ofNullable(this.macAddress);
     }
 
+    /**
+     * Maximum transfer unit of the interface. Cannot be
+     * larger than the bridge&#39;s MTU.
+     * 
+     */
     @Import(name="mtu")
     private @Nullable Output<Integer> mtu;
 
+    /**
+     * @return Maximum transfer unit of the interface. Cannot be
+     * larger than the bridge&#39;s MTU.
+     * 
+     */
     public Optional<Output<Integer>> mtu() {
         return Optional.ofNullable(this.mtu);
     }
 
+    /**
+     * The network interface name.
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return The network interface name.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
 
+    /**
+     * The rate limit in megabytes per second.
+     * 
+     */
     @Import(name="rateLimit")
     private @Nullable Output<Double> rateLimit;
 
+    /**
+     * @return The rate limit in megabytes per second.
+     * 
+     */
     public Optional<Output<Double>> rateLimit() {
         return Optional.ofNullable(this.rateLimit);
     }
 
+    /**
+     * The VLAN identifier.
+     * 
+     */
     @Import(name="vlanId")
     private @Nullable Output<Integer> vlanId;
 
+    /**
+     * @return The VLAN identifier.
+     * 
+     */
     public Optional<Output<Integer>> vlanId() {
         return Optional.ofNullable(this.vlanId);
     }
@@ -105,74 +177,178 @@ public final class ContainerNetworkInterfaceArgs extends com.pulumi.resources.Re
             $ = new ContainerNetworkInterfaceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param bridge The name of the network bridge (defaults
+         * to `vmbr0`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder bridge(@Nullable Output<String> bridge) {
             $.bridge = bridge;
             return this;
         }
 
+        /**
+         * @param bridge The name of the network bridge (defaults
+         * to `vmbr0`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder bridge(String bridge) {
             return bridge(Output.of(bridge));
         }
 
+        /**
+         * @param enabled Whether to enable the network device (defaults
+         * to `true`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether to enable the network device (defaults
+         * to `true`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param firewall Whether this interface&#39;s firewall rules should be
+         * used (defaults to `false`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder firewall(@Nullable Output<Boolean> firewall) {
             $.firewall = firewall;
             return this;
         }
 
+        /**
+         * @param firewall Whether this interface&#39;s firewall rules should be
+         * used (defaults to `false`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder firewall(Boolean firewall) {
             return firewall(Output.of(firewall));
         }
 
+        /**
+         * @param macAddress The MAC address.
+         * 
+         * @return builder
+         * 
+         */
         public Builder macAddress(@Nullable Output<String> macAddress) {
             $.macAddress = macAddress;
             return this;
         }
 
+        /**
+         * @param macAddress The MAC address.
+         * 
+         * @return builder
+         * 
+         */
         public Builder macAddress(String macAddress) {
             return macAddress(Output.of(macAddress));
         }
 
+        /**
+         * @param mtu Maximum transfer unit of the interface. Cannot be
+         * larger than the bridge&#39;s MTU.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mtu(@Nullable Output<Integer> mtu) {
             $.mtu = mtu;
             return this;
         }
 
+        /**
+         * @param mtu Maximum transfer unit of the interface. Cannot be
+         * larger than the bridge&#39;s MTU.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mtu(Integer mtu) {
             return mtu(Output.of(mtu));
         }
 
+        /**
+         * @param name The network interface name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The network interface name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param rateLimit The rate limit in megabytes per second.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rateLimit(@Nullable Output<Double> rateLimit) {
             $.rateLimit = rateLimit;
             return this;
         }
 
+        /**
+         * @param rateLimit The rate limit in megabytes per second.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rateLimit(Double rateLimit) {
             return rateLimit(Output.of(rateLimit));
         }
 
+        /**
+         * @param vlanId The VLAN identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanId(@Nullable Output<Integer> vlanId) {
             $.vlanId = vlanId;
             return this;
         }
 
+        /**
+         * @param vlanId The VLAN identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanId(Integer vlanId) {
             return vlanId(Output.of(vlanId));
         }

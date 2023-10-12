@@ -12,6 +12,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Retrieves information about a specific user group.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/Permission"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Permission.GetGroup(ctx, &permission.GetGroupArgs{
+//				GroupId: "operations-team",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupGroup(ctx *pulumi.Context, args *LookupGroupArgs, opts ...pulumi.InvokeOption) (*LookupGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGroupResult
@@ -24,16 +51,20 @@ func LookupGroup(ctx *pulumi.Context, args *LookupGroupArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getGroup.
 type LookupGroupArgs struct {
+	// The group identifier.
 	GroupId string `pulumi:"groupId"`
 }
 
 // A collection of values returned by getGroup.
 type LookupGroupResult struct {
-	Acls    []GetGroupAcl `pulumi:"acls"`
-	Comment string        `pulumi:"comment"`
-	GroupId string        `pulumi:"groupId"`
+	// The access control list.
+	Acls []GetGroupAcl `pulumi:"acls"`
+	// The group comment.
+	Comment string `pulumi:"comment"`
+	GroupId string `pulumi:"groupId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id      string   `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The group members as a list with `username@realm` entries.
 	Members []string `pulumi:"members"`
 }
 
@@ -52,6 +83,7 @@ func LookupGroupOutput(ctx *pulumi.Context, args LookupGroupOutputArgs, opts ...
 
 // A collection of arguments for invoking getGroup.
 type LookupGroupOutputArgs struct {
+	// The group identifier.
 	GroupId pulumi.StringInput `pulumi:"groupId"`
 }
 
@@ -80,10 +112,12 @@ func (o LookupGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[Lo
 	}
 }
 
+// The access control list.
 func (o LookupGroupResultOutput) Acls() GetGroupAclArrayOutput {
 	return o.ApplyT(func(v LookupGroupResult) []GetGroupAcl { return v.Acls }).(GetGroupAclArrayOutput)
 }
 
+// The group comment.
 func (o LookupGroupResultOutput) Comment() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.Comment }).(pulumi.StringOutput)
 }
@@ -97,6 +131,7 @@ func (o LookupGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The group members as a list with `username@realm` entries.
 func (o LookupGroupResultOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupGroupResult) []string { return v.Members }).(pulumi.StringArrayOutput)
 }

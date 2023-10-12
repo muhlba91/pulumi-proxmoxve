@@ -15,9 +15,13 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type FirewallIPSetCidr struct {
+	// Arbitrary string annotation.
 	Comment *string `pulumi:"comment"`
-	Name    string  `pulumi:"name"`
-	Nomatch *bool   `pulumi:"nomatch"`
+	// Network/IP specification in CIDR format.
+	Name string `pulumi:"name"`
+	// Entries marked as `nomatch` are skipped as if those
+	// were not added to the set.
+	Nomatch *bool `pulumi:"nomatch"`
 }
 
 // FirewallIPSetCidrInput is an input type that accepts FirewallIPSetCidrArgs and FirewallIPSetCidrOutput values.
@@ -32,9 +36,13 @@ type FirewallIPSetCidrInput interface {
 }
 
 type FirewallIPSetCidrArgs struct {
+	// Arbitrary string annotation.
 	Comment pulumi.StringPtrInput `pulumi:"comment"`
-	Name    pulumi.StringInput    `pulumi:"name"`
-	Nomatch pulumi.BoolPtrInput   `pulumi:"nomatch"`
+	// Network/IP specification in CIDR format.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Entries marked as `nomatch` are skipped as if those
+	// were not added to the set.
+	Nomatch pulumi.BoolPtrInput `pulumi:"nomatch"`
 }
 
 func (FirewallIPSetCidrArgs) ElementType() reflect.Type {
@@ -106,14 +114,18 @@ func (o FirewallIPSetCidrOutput) ToOutput(ctx context.Context) pulumix.Output[Fi
 	}
 }
 
+// Arbitrary string annotation.
 func (o FirewallIPSetCidrOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallIPSetCidr) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
+// Network/IP specification in CIDR format.
 func (o FirewallIPSetCidrOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v FirewallIPSetCidr) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Entries marked as `nomatch` are skipped as if those
+// were not added to the set.
 func (o FirewallIPSetCidrOutput) Nomatch() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FirewallIPSetCidr) *bool { return v.Nomatch }).(pulumi.BoolPtrOutput)
 }
@@ -145,9 +157,13 @@ func (o FirewallIPSetCidrArrayOutput) Index(i pulumi.IntInput) FirewallIPSetCidr
 }
 
 type FirewallLogRatelimit struct {
-	Burst   *int    `pulumi:"burst"`
-	Enabled *bool   `pulumi:"enabled"`
-	Rate    *string `pulumi:"rate"`
+	// Initial burst of packages which will always get
+	// logged before the rate is applied (defaults to `5`).
+	Burst *int `pulumi:"burst"`
+	// Enable or disable the log rate limit.
+	Enabled *bool `pulumi:"enabled"`
+	// Frequency with which the burst bucket gets refilled (defaults to `1/second`).
+	Rate *string `pulumi:"rate"`
 }
 
 // FirewallLogRatelimitInput is an input type that accepts FirewallLogRatelimitArgs and FirewallLogRatelimitOutput values.
@@ -162,9 +178,13 @@ type FirewallLogRatelimitInput interface {
 }
 
 type FirewallLogRatelimitArgs struct {
-	Burst   pulumi.IntPtrInput    `pulumi:"burst"`
-	Enabled pulumi.BoolPtrInput   `pulumi:"enabled"`
-	Rate    pulumi.StringPtrInput `pulumi:"rate"`
+	// Initial burst of packages which will always get
+	// logged before the rate is applied (defaults to `5`).
+	Burst pulumi.IntPtrInput `pulumi:"burst"`
+	// Enable or disable the log rate limit.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Frequency with which the burst bucket gets refilled (defaults to `1/second`).
+	Rate pulumi.StringPtrInput `pulumi:"rate"`
 }
 
 func (FirewallLogRatelimitArgs) ElementType() reflect.Type {
@@ -262,14 +282,18 @@ func (o FirewallLogRatelimitOutput) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
+// Initial burst of packages which will always get
+// logged before the rate is applied (defaults to `5`).
 func (o FirewallLogRatelimitOutput) Burst() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FirewallLogRatelimit) *int { return v.Burst }).(pulumi.IntPtrOutput)
 }
 
+// Enable or disable the log rate limit.
 func (o FirewallLogRatelimitOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FirewallLogRatelimit) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Frequency with which the burst bucket gets refilled (defaults to `1/second`).
 func (o FirewallLogRatelimitOutput) Rate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallLogRatelimit) *string { return v.Rate }).(pulumi.StringPtrOutput)
 }
@@ -304,6 +328,8 @@ func (o FirewallLogRatelimitPtrOutput) Elem() FirewallLogRatelimitOutput {
 	}).(FirewallLogRatelimitOutput)
 }
 
+// Initial burst of packages which will always get
+// logged before the rate is applied (defaults to `5`).
 func (o FirewallLogRatelimitPtrOutput) Burst() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FirewallLogRatelimit) *int {
 		if v == nil {
@@ -313,6 +339,7 @@ func (o FirewallLogRatelimitPtrOutput) Burst() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Enable or disable the log rate limit.
 func (o FirewallLogRatelimitPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FirewallLogRatelimit) *bool {
 		if v == nil {
@@ -322,6 +349,7 @@ func (o FirewallLogRatelimitPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Frequency with which the burst bucket gets refilled (defaults to `1/second`).
 func (o FirewallLogRatelimitPtrOutput) Rate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallLogRatelimit) *string {
 		if v == nil {
@@ -332,20 +360,58 @@ func (o FirewallLogRatelimitPtrOutput) Rate() pulumi.StringPtrOutput {
 }
 
 type FirewallRulesRule struct {
-	Action        *string `pulumi:"action"`
-	Comment       *string `pulumi:"comment"`
-	Dest          *string `pulumi:"dest"`
-	Dport         *string `pulumi:"dport"`
-	Enabled       *bool   `pulumi:"enabled"`
-	Iface         *string `pulumi:"iface"`
-	Log           *string `pulumi:"log"`
-	Macro         *string `pulumi:"macro"`
-	Pos           *int    `pulumi:"pos"`
-	Proto         *string `pulumi:"proto"`
+	// Rule action (`ACCEPT`, `DROP`, `REJECT`).
+	Action *string `pulumi:"action"`
+	// Rule comment.
+	Comment *string `pulumi:"comment"`
+	// Restrict packet destination address. This can
+	// refer to a single IP address, an IP set ('+ipsetname') or an IP alias
+	// definition. You can also specify an address range
+	// like `20.34.101.207-201.3.9.99`, or a list of IP addresses and
+	// networks (entries are separated by comma). Please do not mix IPv4 and
+	// IPv6 addresses inside such lists.
+	Dest *string `pulumi:"dest"`
+	// Restrict TCP/UDP destination port. You can use
+	// service names or simple numbers (0-65535), as defined
+	// in `/etc/services`. Port ranges can be specified with '\d+:\d+', for
+	// example `80:85`, and you can use comma separated list to match several
+	// ports or ranges.
+	Dport *string `pulumi:"dport"`
+	// Enable this rule. Defaults to `true`.
+	Enabled *bool `pulumi:"enabled"`
+	// Network interface name. You have to use network
+	// configuration key names for VMs and containers ('net\d+'). Host
+	// related rules can use arbitrary strings.
+	Iface *string `pulumi:"iface"`
+	// Log level for this rule (`emerg`, `alert`, `crit`,
+	// `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+	Log *string `pulumi:"log"`
+	// Macro name. Use predefined standard macro
+	// from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+	Macro *string `pulumi:"macro"`
+	// Position of the rule in the list.
+	Pos *int `pulumi:"pos"`
+	// Restrict packet protocol. You can use protocol
+	// names as defined in '/etc/protocols'.
+	Proto *string `pulumi:"proto"`
+	// Security group name.
 	SecurityGroup *string `pulumi:"securityGroup"`
-	Source        *string `pulumi:"source"`
-	Sport         *string `pulumi:"sport"`
-	Type          *string `pulumi:"type"`
+	// Restrict packet source address. This can refer
+	// to a single IP address, an IP set ('+ipsetname') or an IP alias
+	// definition. You can also specify an address range
+	// like `20.34.101.207-201.3.9.99`, or a list of IP addresses and
+	// networks (entries are separated by comma). Please do not mix IPv4 and
+	// IPv6 addresses inside such lists.
+	Source *string `pulumi:"source"`
+	// Restrict TCP/UDP source port. You can use
+	// service names or simple numbers (0-65535), as defined
+	// in `/etc/services`. Port ranges can be specified with '\d+:\d+', for
+	// example `80:85`, and you can use comma separated list to match several
+	// ports or ranges.
+	// - a security group insertion block, which includes the following arguments:
+	Sport *string `pulumi:"sport"`
+	// Rule type (`in`, `out`).
+	Type *string `pulumi:"type"`
 }
 
 // FirewallRulesRuleInput is an input type that accepts FirewallRulesRuleArgs and FirewallRulesRuleOutput values.
@@ -360,20 +426,58 @@ type FirewallRulesRuleInput interface {
 }
 
 type FirewallRulesRuleArgs struct {
-	Action        pulumi.StringPtrInput `pulumi:"action"`
-	Comment       pulumi.StringPtrInput `pulumi:"comment"`
-	Dest          pulumi.StringPtrInput `pulumi:"dest"`
-	Dport         pulumi.StringPtrInput `pulumi:"dport"`
-	Enabled       pulumi.BoolPtrInput   `pulumi:"enabled"`
-	Iface         pulumi.StringPtrInput `pulumi:"iface"`
-	Log           pulumi.StringPtrInput `pulumi:"log"`
-	Macro         pulumi.StringPtrInput `pulumi:"macro"`
-	Pos           pulumi.IntPtrInput    `pulumi:"pos"`
-	Proto         pulumi.StringPtrInput `pulumi:"proto"`
+	// Rule action (`ACCEPT`, `DROP`, `REJECT`).
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// Rule comment.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// Restrict packet destination address. This can
+	// refer to a single IP address, an IP set ('+ipsetname') or an IP alias
+	// definition. You can also specify an address range
+	// like `20.34.101.207-201.3.9.99`, or a list of IP addresses and
+	// networks (entries are separated by comma). Please do not mix IPv4 and
+	// IPv6 addresses inside such lists.
+	Dest pulumi.StringPtrInput `pulumi:"dest"`
+	// Restrict TCP/UDP destination port. You can use
+	// service names or simple numbers (0-65535), as defined
+	// in `/etc/services`. Port ranges can be specified with '\d+:\d+', for
+	// example `80:85`, and you can use comma separated list to match several
+	// ports or ranges.
+	Dport pulumi.StringPtrInput `pulumi:"dport"`
+	// Enable this rule. Defaults to `true`.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Network interface name. You have to use network
+	// configuration key names for VMs and containers ('net\d+'). Host
+	// related rules can use arbitrary strings.
+	Iface pulumi.StringPtrInput `pulumi:"iface"`
+	// Log level for this rule (`emerg`, `alert`, `crit`,
+	// `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+	Log pulumi.StringPtrInput `pulumi:"log"`
+	// Macro name. Use predefined standard macro
+	// from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+	Macro pulumi.StringPtrInput `pulumi:"macro"`
+	// Position of the rule in the list.
+	Pos pulumi.IntPtrInput `pulumi:"pos"`
+	// Restrict packet protocol. You can use protocol
+	// names as defined in '/etc/protocols'.
+	Proto pulumi.StringPtrInput `pulumi:"proto"`
+	// Security group name.
 	SecurityGroup pulumi.StringPtrInput `pulumi:"securityGroup"`
-	Source        pulumi.StringPtrInput `pulumi:"source"`
-	Sport         pulumi.StringPtrInput `pulumi:"sport"`
-	Type          pulumi.StringPtrInput `pulumi:"type"`
+	// Restrict packet source address. This can refer
+	// to a single IP address, an IP set ('+ipsetname') or an IP alias
+	// definition. You can also specify an address range
+	// like `20.34.101.207-201.3.9.99`, or a list of IP addresses and
+	// networks (entries are separated by comma). Please do not mix IPv4 and
+	// IPv6 addresses inside such lists.
+	Source pulumi.StringPtrInput `pulumi:"source"`
+	// Restrict TCP/UDP source port. You can use
+	// service names or simple numbers (0-65535), as defined
+	// in `/etc/services`. Port ranges can be specified with '\d+:\d+', for
+	// example `80:85`, and you can use comma separated list to match several
+	// ports or ranges.
+	// - a security group insertion block, which includes the following arguments:
+	Sport pulumi.StringPtrInput `pulumi:"sport"`
+	// Rule type (`in`, `out`).
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (FirewallRulesRuleArgs) ElementType() reflect.Type {
@@ -445,58 +549,96 @@ func (o FirewallRulesRuleOutput) ToOutput(ctx context.Context) pulumix.Output[Fi
 	}
 }
 
+// Rule action (`ACCEPT`, `DROP`, `REJECT`).
 func (o FirewallRulesRuleOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallRulesRule) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
 
+// Rule comment.
 func (o FirewallRulesRuleOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallRulesRule) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
+// Restrict packet destination address. This can
+// refer to a single IP address, an IP set ('+ipsetname') or an IP alias
+// definition. You can also specify an address range
+// like `20.34.101.207-201.3.9.99`, or a list of IP addresses and
+// networks (entries are separated by comma). Please do not mix IPv4 and
+// IPv6 addresses inside such lists.
 func (o FirewallRulesRuleOutput) Dest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallRulesRule) *string { return v.Dest }).(pulumi.StringPtrOutput)
 }
 
+// Restrict TCP/UDP destination port. You can use
+// service names or simple numbers (0-65535), as defined
+// in `/etc/services`. Port ranges can be specified with '\d+:\d+', for
+// example `80:85`, and you can use comma separated list to match several
+// ports or ranges.
 func (o FirewallRulesRuleOutput) Dport() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallRulesRule) *string { return v.Dport }).(pulumi.StringPtrOutput)
 }
 
+// Enable this rule. Defaults to `true`.
 func (o FirewallRulesRuleOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FirewallRulesRule) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Network interface name. You have to use network
+// configuration key names for VMs and containers ('net\d+'). Host
+// related rules can use arbitrary strings.
 func (o FirewallRulesRuleOutput) Iface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallRulesRule) *string { return v.Iface }).(pulumi.StringPtrOutput)
 }
 
+// Log level for this rule (`emerg`, `alert`, `crit`,
+// `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
 func (o FirewallRulesRuleOutput) Log() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallRulesRule) *string { return v.Log }).(pulumi.StringPtrOutput)
 }
 
+// Macro name. Use predefined standard macro
+// from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
 func (o FirewallRulesRuleOutput) Macro() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallRulesRule) *string { return v.Macro }).(pulumi.StringPtrOutput)
 }
 
+// Position of the rule in the list.
 func (o FirewallRulesRuleOutput) Pos() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FirewallRulesRule) *int { return v.Pos }).(pulumi.IntPtrOutput)
 }
 
+// Restrict packet protocol. You can use protocol
+// names as defined in '/etc/protocols'.
 func (o FirewallRulesRuleOutput) Proto() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallRulesRule) *string { return v.Proto }).(pulumi.StringPtrOutput)
 }
 
+// Security group name.
 func (o FirewallRulesRuleOutput) SecurityGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallRulesRule) *string { return v.SecurityGroup }).(pulumi.StringPtrOutput)
 }
 
+// Restrict packet source address. This can refer
+// to a single IP address, an IP set ('+ipsetname') or an IP alias
+// definition. You can also specify an address range
+// like `20.34.101.207-201.3.9.99`, or a list of IP addresses and
+// networks (entries are separated by comma). Please do not mix IPv4 and
+// IPv6 addresses inside such lists.
 func (o FirewallRulesRuleOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallRulesRule) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
+// Restrict TCP/UDP source port. You can use
+// service names or simple numbers (0-65535), as defined
+// in `/etc/services`. Port ranges can be specified with '\d+:\d+', for
+// example `80:85`, and you can use comma separated list to match several
+// ports or ranges.
+// - a security group insertion block, which includes the following arguments:
 func (o FirewallRulesRuleOutput) Sport() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallRulesRule) *string { return v.Sport }).(pulumi.StringPtrOutput)
 }
 
+// Rule type (`in`, `out`).
 func (o FirewallRulesRuleOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallRulesRule) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -528,20 +670,52 @@ func (o FirewallRulesRuleArrayOutput) Index(i pulumi.IntInput) FirewallRulesRule
 }
 
 type FirewallSecurityGroupRule struct {
-	Action        *string `pulumi:"action"`
-	Comment       *string `pulumi:"comment"`
-	Dest          *string `pulumi:"dest"`
-	Dport         *string `pulumi:"dport"`
-	Enabled       *bool   `pulumi:"enabled"`
-	Iface         *string `pulumi:"iface"`
-	Log           *string `pulumi:"log"`
-	Macro         *string `pulumi:"macro"`
-	Pos           *int    `pulumi:"pos"`
+	// Rule action (`ACCEPT`, `DROP`, `REJECT`).
+	Action *string `pulumi:"action"`
+	// Rule comment.
+	Comment *string `pulumi:"comment"`
+	// Restrict packet destination address. This can refer to
+	// a single IP address, an IP set ('+ipsetname') or an IP alias definition.
+	// You can also specify an address range like `20.34.101.207-201.3.9.99`, or
+	// a list of IP addresses and networks (entries are separated by comma).
+	// Please do not mix IPv4 and IPv6 addresses inside such lists.
+	Dest *string `pulumi:"dest"`
+	// Restrict TCP/UDP destination port. You can use
+	// service names or simple numbers (0-65535), as defined in '/etc/services'.
+	// Port ranges can be specified with '\d+:\d+', for example `80:85`, and
+	// you can use comma separated list to match several ports or ranges.
+	Dport   *string `pulumi:"dport"`
+	Enabled *bool   `pulumi:"enabled"`
+	// Network interface name. You have to use network
+	// configuration key names for VMs and containers ('net\d+'). Host related
+	// rules can use arbitrary strings.
+	Iface *string `pulumi:"iface"`
+	// Log level for this rule (`emerg`, `alert`, `crit`,
+	// `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+	Log *string `pulumi:"log"`
+	// Macro name. Use predefined standard macro
+	// from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+	Macro *string `pulumi:"macro"`
+	// Position of the rule in the list.
+	Pos *int `pulumi:"pos"`
+	// Restrict packet protocol. You can use protocol names
+	// as defined in '/etc/protocols'.
 	Proto         *string `pulumi:"proto"`
 	SecurityGroup *string `pulumi:"securityGroup"`
-	Source        *string `pulumi:"source"`
-	Sport         *string `pulumi:"sport"`
-	Type          *string `pulumi:"type"`
+	// Restrict packet source address. This can refer
+	// to a single IP address, an IP set ('+ipsetname') or an IP alias
+	// definition. You can also specify an address range like
+	// `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks (
+	// entries are separated by comma). Please do not mix IPv4 and IPv6 addresses
+	// inside such lists.
+	Source *string `pulumi:"source"`
+	// Restrict TCP/UDP source port. You can use
+	// service names or simple numbers (0-65535), as defined in '/etc/services'.
+	// Port ranges can be specified with '\d+:\d+', for example `80:85`, and
+	// you can use comma separated list to match several ports or ranges.
+	Sport *string `pulumi:"sport"`
+	// Rule type (`in`, `out`).
+	Type *string `pulumi:"type"`
 }
 
 // FirewallSecurityGroupRuleInput is an input type that accepts FirewallSecurityGroupRuleArgs and FirewallSecurityGroupRuleOutput values.
@@ -556,20 +730,52 @@ type FirewallSecurityGroupRuleInput interface {
 }
 
 type FirewallSecurityGroupRuleArgs struct {
-	Action        pulumi.StringPtrInput `pulumi:"action"`
-	Comment       pulumi.StringPtrInput `pulumi:"comment"`
-	Dest          pulumi.StringPtrInput `pulumi:"dest"`
-	Dport         pulumi.StringPtrInput `pulumi:"dport"`
-	Enabled       pulumi.BoolPtrInput   `pulumi:"enabled"`
-	Iface         pulumi.StringPtrInput `pulumi:"iface"`
-	Log           pulumi.StringPtrInput `pulumi:"log"`
-	Macro         pulumi.StringPtrInput `pulumi:"macro"`
-	Pos           pulumi.IntPtrInput    `pulumi:"pos"`
+	// Rule action (`ACCEPT`, `DROP`, `REJECT`).
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// Rule comment.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// Restrict packet destination address. This can refer to
+	// a single IP address, an IP set ('+ipsetname') or an IP alias definition.
+	// You can also specify an address range like `20.34.101.207-201.3.9.99`, or
+	// a list of IP addresses and networks (entries are separated by comma).
+	// Please do not mix IPv4 and IPv6 addresses inside such lists.
+	Dest pulumi.StringPtrInput `pulumi:"dest"`
+	// Restrict TCP/UDP destination port. You can use
+	// service names or simple numbers (0-65535), as defined in '/etc/services'.
+	// Port ranges can be specified with '\d+:\d+', for example `80:85`, and
+	// you can use comma separated list to match several ports or ranges.
+	Dport   pulumi.StringPtrInput `pulumi:"dport"`
+	Enabled pulumi.BoolPtrInput   `pulumi:"enabled"`
+	// Network interface name. You have to use network
+	// configuration key names for VMs and containers ('net\d+'). Host related
+	// rules can use arbitrary strings.
+	Iface pulumi.StringPtrInput `pulumi:"iface"`
+	// Log level for this rule (`emerg`, `alert`, `crit`,
+	// `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+	Log pulumi.StringPtrInput `pulumi:"log"`
+	// Macro name. Use predefined standard macro
+	// from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+	Macro pulumi.StringPtrInput `pulumi:"macro"`
+	// Position of the rule in the list.
+	Pos pulumi.IntPtrInput `pulumi:"pos"`
+	// Restrict packet protocol. You can use protocol names
+	// as defined in '/etc/protocols'.
 	Proto         pulumi.StringPtrInput `pulumi:"proto"`
 	SecurityGroup pulumi.StringPtrInput `pulumi:"securityGroup"`
-	Source        pulumi.StringPtrInput `pulumi:"source"`
-	Sport         pulumi.StringPtrInput `pulumi:"sport"`
-	Type          pulumi.StringPtrInput `pulumi:"type"`
+	// Restrict packet source address. This can refer
+	// to a single IP address, an IP set ('+ipsetname') or an IP alias
+	// definition. You can also specify an address range like
+	// `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks (
+	// entries are separated by comma). Please do not mix IPv4 and IPv6 addresses
+	// inside such lists.
+	Source pulumi.StringPtrInput `pulumi:"source"`
+	// Restrict TCP/UDP source port. You can use
+	// service names or simple numbers (0-65535), as defined in '/etc/services'.
+	// Port ranges can be specified with '\d+:\d+', for example `80:85`, and
+	// you can use comma separated list to match several ports or ranges.
+	Sport pulumi.StringPtrInput `pulumi:"sport"`
+	// Rule type (`in`, `out`).
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (FirewallSecurityGroupRuleArgs) ElementType() reflect.Type {
@@ -641,18 +847,29 @@ func (o FirewallSecurityGroupRuleOutput) ToOutput(ctx context.Context) pulumix.O
 	}
 }
 
+// Rule action (`ACCEPT`, `DROP`, `REJECT`).
 func (o FirewallSecurityGroupRuleOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallSecurityGroupRule) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
 
+// Rule comment.
 func (o FirewallSecurityGroupRuleOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallSecurityGroupRule) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
+// Restrict packet destination address. This can refer to
+// a single IP address, an IP set ('+ipsetname') or an IP alias definition.
+// You can also specify an address range like `20.34.101.207-201.3.9.99`, or
+// a list of IP addresses and networks (entries are separated by comma).
+// Please do not mix IPv4 and IPv6 addresses inside such lists.
 func (o FirewallSecurityGroupRuleOutput) Dest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallSecurityGroupRule) *string { return v.Dest }).(pulumi.StringPtrOutput)
 }
 
+// Restrict TCP/UDP destination port. You can use
+// service names or simple numbers (0-65535), as defined in '/etc/services'.
+// Port ranges can be specified with '\d+:\d+', for example `80:85`, and
+// you can use comma separated list to match several ports or ranges.
 func (o FirewallSecurityGroupRuleOutput) Dport() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallSecurityGroupRule) *string { return v.Dport }).(pulumi.StringPtrOutput)
 }
@@ -661,22 +878,32 @@ func (o FirewallSecurityGroupRuleOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FirewallSecurityGroupRule) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Network interface name. You have to use network
+// configuration key names for VMs and containers ('net\d+'). Host related
+// rules can use arbitrary strings.
 func (o FirewallSecurityGroupRuleOutput) Iface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallSecurityGroupRule) *string { return v.Iface }).(pulumi.StringPtrOutput)
 }
 
+// Log level for this rule (`emerg`, `alert`, `crit`,
+// `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
 func (o FirewallSecurityGroupRuleOutput) Log() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallSecurityGroupRule) *string { return v.Log }).(pulumi.StringPtrOutput)
 }
 
+// Macro name. Use predefined standard macro
+// from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
 func (o FirewallSecurityGroupRuleOutput) Macro() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallSecurityGroupRule) *string { return v.Macro }).(pulumi.StringPtrOutput)
 }
 
+// Position of the rule in the list.
 func (o FirewallSecurityGroupRuleOutput) Pos() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FirewallSecurityGroupRule) *int { return v.Pos }).(pulumi.IntPtrOutput)
 }
 
+// Restrict packet protocol. You can use protocol names
+// as defined in '/etc/protocols'.
 func (o FirewallSecurityGroupRuleOutput) Proto() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallSecurityGroupRule) *string { return v.Proto }).(pulumi.StringPtrOutput)
 }
@@ -685,14 +912,25 @@ func (o FirewallSecurityGroupRuleOutput) SecurityGroup() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v FirewallSecurityGroupRule) *string { return v.SecurityGroup }).(pulumi.StringPtrOutput)
 }
 
+// Restrict packet source address. This can refer
+// to a single IP address, an IP set ('+ipsetname') or an IP alias
+// definition. You can also specify an address range like
+// `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks (
+// entries are separated by comma). Please do not mix IPv4 and IPv6 addresses
+// inside such lists.
 func (o FirewallSecurityGroupRuleOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallSecurityGroupRule) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
+// Restrict TCP/UDP source port. You can use
+// service names or simple numbers (0-65535), as defined in '/etc/services'.
+// Port ranges can be specified with '\d+:\d+', for example `80:85`, and
+// you can use comma separated list to match several ports or ranges.
 func (o FirewallSecurityGroupRuleOutput) Sport() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallSecurityGroupRule) *string { return v.Sport }).(pulumi.StringPtrOutput)
 }
 
+// Rule type (`in`, `out`).
 func (o FirewallSecurityGroupRuleOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallSecurityGroupRule) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

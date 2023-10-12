@@ -17,59 +17,133 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * A security group is a collection of rules, defined at cluster level, which can
+ * be used in all VMs&#39; rules. For example, you can define a group named “webserver”
+ * with rules to open the http and https ports. Rules can be created on the cluster
+ * level, on VM / Container level.
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.proxmoxve.Network.FirewallRules;
+ * import com.pulumi.proxmoxve.Network.FirewallRulesArgs;
+ * import com.pulumi.proxmoxve.Network.inputs.FirewallRulesRuleArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var inbound = new FirewallRules(&#34;inbound&#34;, FirewallRulesArgs.builder()        
+ *             .nodeName(proxmox_virtual_environment_vm.example().node_name())
+ *             .vmId(proxmox_virtual_environment_vm.example().vm_id())
+ *             .rules(            
+ *                 FirewallRulesRuleArgs.builder()
+ *                     .type(&#34;in&#34;)
+ *                     .action(&#34;ACCEPT&#34;)
+ *                     .comment(&#34;Allow HTTP&#34;)
+ *                     .dest(&#34;192.168.1.5&#34;)
+ *                     .dport(&#34;80&#34;)
+ *                     .proto(&#34;tcp&#34;)
+ *                     .log(&#34;info&#34;)
+ *                     .build(),
+ *                 FirewallRulesRuleArgs.builder()
+ *                     .type(&#34;in&#34;)
+ *                     .action(&#34;ACCEPT&#34;)
+ *                     .comment(&#34;Allow HTTPS&#34;)
+ *                     .dest(&#34;192.168.1.5&#34;)
+ *                     .dport(&#34;443&#34;)
+ *                     .proto(&#34;tcp&#34;)
+ *                     .log(&#34;info&#34;)
+ *                     .build(),
+ *                 FirewallRulesRuleArgs.builder()
+ *                     .securityGroup(proxmox_virtual_environment_cluster_firewall_security_group.example().name())
+ *                     .comment(&#34;From security group&#34;)
+ *                     .iface(&#34;net0&#34;)
+ *                     .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     proxmox_virtual_environment_vm.example(),
+ *                     proxmox_virtual_environment_cluster_firewall_security_group.example())
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ */
 @ResourceType(type="proxmoxve:Network/firewallRules:FirewallRules")
 public class FirewallRules extends com.pulumi.resources.CustomResource {
     /**
-     * The ID of the container to manage the firewall for.
+     * Container ID. Leave empty for cluster level
+     * rules.
      * 
      */
     @Export(name="containerId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> containerId;
 
     /**
-     * @return The ID of the container to manage the firewall for.
+     * @return Container ID. Leave empty for cluster level
+     * rules.
      * 
      */
     public Output<Optional<Integer>> containerId() {
         return Codegen.optional(this.containerId);
     }
     /**
-     * The name of the node.
+     * Node name. Leave empty for cluster level rules.
      * 
      */
     @Export(name="nodeName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> nodeName;
 
     /**
-     * @return The name of the node.
+     * @return Node name. Leave empty for cluster level rules.
      * 
      */
     public Output<Optional<String>> nodeName() {
         return Codegen.optional(this.nodeName);
     }
     /**
-     * List of rules
+     * Firewall rule block (multiple blocks supported).
+     * The provider supports two types of the `rule` blocks:
+     * - a rule definition block, which includes the following arguments:
      * 
      */
     @Export(name="rules", refs={List.class,FirewallRulesRule.class}, tree="[0,1]")
     private Output<List<FirewallRulesRule>> rules;
 
     /**
-     * @return List of rules
+     * @return Firewall rule block (multiple blocks supported).
+     * The provider supports two types of the `rule` blocks:
+     * - a rule definition block, which includes the following arguments:
      * 
      */
     public Output<List<FirewallRulesRule>> rules() {
         return this.rules;
     }
     /**
-     * The ID of the VM to manage the firewall for.
+     * VM ID. Leave empty for cluster level rules.
      * 
      */
     @Export(name="vmId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> vmId;
 
     /**
-     * @return The ID of the VM to manage the firewall for.
+     * @return VM ID. Leave empty for cluster level rules.
      * 
      */
     public Output<Optional<Integer>> vmId() {

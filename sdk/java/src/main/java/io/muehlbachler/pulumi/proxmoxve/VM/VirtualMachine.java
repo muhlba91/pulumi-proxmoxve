@@ -33,647 +33,731 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Manages a virtual machine.
+ * 
+ * ## Important Notes
+ * 
+ * When cloning an existing virtual machine, whether it&#39;s a template or not, the
+ * resource will only detect changes to the arguments which are not set to their
+ * default values.
+ * 
+ * Furthermore, when cloning from one node to a different one, the behavior changes
+ * depening on the datastores of the source VM. If at least one non-shared
+ * datastore is used, the VM is first cloned to the source node before being
+ * migrated to the target node. This circumvents a limitation in the Proxmox clone
+ * API.
+ * 
+ * **Note:** Because the migration step after the clone tries to preserve the used
+ * datastores by their name, it may fail if a datastore used in the source VM is
+ * not available on the target node (e.g. `local-lvm` is used on the source node in
+ * the VM but no `local-lvm` datastore is available on the target node). In this
+ * case, it is recommended to set the `datastore_id` argument in the `clone` block
+ * to force the migration step to migrate all disks to a specific datastore on the
+ * target node. If you need certain disks to be on specific datastores, set
+ * the `datastore_id` argument of the disks in the `disks` block to move the disks
+ * to the correct datastore after the cloning and migrating succeeded.
+ * 
+ * ## Import
+ * 
+ * Instances can be imported using the `node_name` and the `vm_id`, e.g., bash
+ * 
+ * ```sh
+ *  $ pulumi import proxmoxve:VM/virtualMachine:VirtualMachine ubuntu_vm first-node/4321
+ * ```
+ * 
+ */
 @ResourceType(type="proxmoxve:VM/virtualMachine:VirtualMachine")
 public class VirtualMachine extends com.pulumi.resources.CustomResource {
     /**
-     * Whether to enable ACPI
+     * Whether to enable ACPI (defaults to `true`).
      * 
      */
     @Export(name="acpi", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> acpi;
 
     /**
-     * @return Whether to enable ACPI
+     * @return Whether to enable ACPI (defaults to `true`).
      * 
      */
     public Output<Optional<Boolean>> acpi() {
         return Codegen.optional(this.acpi);
     }
     /**
-     * The QEMU agent configuration
+     * The QEMU agent configuration.
      * 
      */
     @Export(name="agent", refs={VirtualMachineAgent.class}, tree="[0]")
     private Output</* @Nullable */ VirtualMachineAgent> agent;
 
     /**
-     * @return The QEMU agent configuration
+     * @return The QEMU agent configuration.
      * 
      */
     public Output<Optional<VirtualMachineAgent>> agent() {
         return Codegen.optional(this.agent);
     }
     /**
-     * The audio devices
+     * An audio device.
      * 
      */
     @Export(name="audioDevice", refs={VirtualMachineAudioDevice.class}, tree="[0]")
     private Output</* @Nullable */ VirtualMachineAudioDevice> audioDevice;
 
     /**
-     * @return The audio devices
+     * @return An audio device.
      * 
      */
     public Output<Optional<VirtualMachineAudioDevice>> audioDevice() {
         return Codegen.optional(this.audioDevice);
     }
     /**
-     * The BIOS implementation
+     * The BIOS implementation (defaults to `seabios`).
      * 
      */
     @Export(name="bios", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> bios;
 
     /**
-     * @return The BIOS implementation
+     * @return The BIOS implementation (defaults to `seabios`).
      * 
      */
     public Output<Optional<String>> bios() {
         return Codegen.optional(this.bios);
     }
     /**
-     * The guest will attempt to boot from devices in the order they appear here
+     * Specify a list of devices to boot from in the order
+     * they appear in the list (defaults to `[]`).
      * 
      */
     @Export(name="bootOrders", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> bootOrders;
 
     /**
-     * @return The guest will attempt to boot from devices in the order they appear here
+     * @return Specify a list of devices to boot from in the order
+     * they appear in the list (defaults to `[]`).
      * 
      */
     public Output<Optional<List<String>>> bootOrders() {
         return Codegen.optional(this.bootOrders);
     }
     /**
-     * The CDROM drive
+     * The CDROM configuration.
      * 
      */
     @Export(name="cdrom", refs={VirtualMachineCdrom.class}, tree="[0]")
     private Output</* @Nullable */ VirtualMachineCdrom> cdrom;
 
     /**
-     * @return The CDROM drive
+     * @return The CDROM configuration.
      * 
      */
     public Output<Optional<VirtualMachineCdrom>> cdrom() {
         return Codegen.optional(this.cdrom);
     }
     /**
-     * The cloning configuration
+     * The cloning configuration.
      * 
      */
     @Export(name="clone", refs={VirtualMachineClone.class}, tree="[0]")
     private Output</* @Nullable */ VirtualMachineClone> clone;
 
     /**
-     * @return The cloning configuration
+     * @return The cloning configuration.
      * 
      */
     public Output<Optional<VirtualMachineClone>> clone_() {
         return Codegen.optional(this.clone);
     }
     /**
-     * The CPU allocation
+     * The CPU configuration.
      * 
      */
     @Export(name="cpu", refs={VirtualMachineCpu.class}, tree="[0]")
     private Output</* @Nullable */ VirtualMachineCpu> cpu;
 
     /**
-     * @return The CPU allocation
+     * @return The CPU configuration.
      * 
      */
     public Output<Optional<VirtualMachineCpu>> cpu() {
         return Codegen.optional(this.cpu);
     }
     /**
-     * The description
+     * The description.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description
+     * @return The description.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The disk devices
+     * A disk (multiple blocks supported).
      * 
      */
     @Export(name="disks", refs={List.class,VirtualMachineDisk.class}, tree="[0,1]")
     private Output</* @Nullable */ List<VirtualMachineDisk>> disks;
 
     /**
-     * @return The disk devices
+     * @return A disk (multiple blocks supported).
      * 
      */
     public Output<Optional<List<VirtualMachineDisk>>> disks() {
         return Codegen.optional(this.disks);
     }
     /**
-     * The efidisk device
+     * The efi disk device (required if `bios` is set
+     * to `ovmf`)
      * 
      */
     @Export(name="efiDisk", refs={VirtualMachineEfiDisk.class}, tree="[0]")
     private Output</* @Nullable */ VirtualMachineEfiDisk> efiDisk;
 
     /**
-     * @return The efidisk device
+     * @return The efi disk device (required if `bios` is set
+     * to `ovmf`)
      * 
      */
     public Output<Optional<VirtualMachineEfiDisk>> efiDisk() {
         return Codegen.optional(this.efiDisk);
     }
     /**
-     * The Host PCI devices mapped to the VM
+     * A host PCI device mapping (multiple blocks supported).
      * 
      */
     @Export(name="hostpcis", refs={List.class,VirtualMachineHostpci.class}, tree="[0,1]")
     private Output</* @Nullable */ List<VirtualMachineHostpci>> hostpcis;
 
     /**
-     * @return The Host PCI devices mapped to the VM
+     * @return A host PCI device mapping (multiple blocks supported).
      * 
      */
     public Output<Optional<List<VirtualMachineHostpci>>> hostpcis() {
         return Codegen.optional(this.hostpcis);
     }
     /**
-     * The cloud-init configuration
+     * The cloud-init configuration.
      * 
      */
     @Export(name="initialization", refs={VirtualMachineInitialization.class}, tree="[0]")
     private Output</* @Nullable */ VirtualMachineInitialization> initialization;
 
     /**
-     * @return The cloud-init configuration
+     * @return The cloud-init configuration.
      * 
      */
     public Output<Optional<VirtualMachineInitialization>> initialization() {
         return Codegen.optional(this.initialization);
     }
     /**
-     * The IPv4 addresses published by the QEMU agent
+     * The IPv4 addresses per network interface published by the
+     * QEMU agent (empty list when `agent.enabled` is `false`)
      * 
      */
     @Export(name="ipv4Addresses", refs={List.class,String.class}, tree="[0,[0,1]]")
     private Output<List<List<String>>> ipv4Addresses;
 
     /**
-     * @return The IPv4 addresses published by the QEMU agent
+     * @return The IPv4 addresses per network interface published by the
+     * QEMU agent (empty list when `agent.enabled` is `false`)
      * 
      */
     public Output<List<List<String>>> ipv4Addresses() {
         return this.ipv4Addresses;
     }
     /**
-     * The IPv6 addresses published by the QEMU agent
+     * The IPv6 addresses per network interface published by the
+     * QEMU agent (empty list when `agent.enabled` is `false`)
      * 
      */
     @Export(name="ipv6Addresses", refs={List.class,String.class}, tree="[0,[0,1]]")
     private Output<List<List<String>>> ipv6Addresses;
 
     /**
-     * @return The IPv6 addresses published by the QEMU agent
+     * @return The IPv6 addresses per network interface published by the
+     * QEMU agent (empty list when `agent.enabled` is `false`)
      * 
      */
     public Output<List<List<String>>> ipv6Addresses() {
         return this.ipv6Addresses;
     }
     /**
-     * The keyboard layout
+     * The keyboard layout (defaults to `en-us`).
      * 
      */
     @Export(name="keyboardLayout", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keyboardLayout;
 
     /**
-     * @return The keyboard layout
+     * @return The keyboard layout (defaults to `en-us`).
      * 
      */
     public Output<Optional<String>> keyboardLayout() {
         return Codegen.optional(this.keyboardLayout);
     }
     /**
-     * The args implementation
+     * Arbitrary arguments passed to kvm.
      * 
      */
     @Export(name="kvmArguments", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kvmArguments;
 
     /**
-     * @return The args implementation
+     * @return Arbitrary arguments passed to kvm.
      * 
      */
     public Output<Optional<String>> kvmArguments() {
         return Codegen.optional(this.kvmArguments);
     }
     /**
-     * The MAC addresses for the network interfaces
+     * The MAC addresses published by the QEMU agent with fallback
+     * to the network device configuration, if the agent is disabled
      * 
      */
     @Export(name="macAddresses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> macAddresses;
 
     /**
-     * @return The MAC addresses for the network interfaces
+     * @return The MAC addresses published by the QEMU agent with fallback
+     * to the network device configuration, if the agent is disabled
      * 
      */
     public Output<List<String>> macAddresses() {
         return this.macAddresses;
     }
     /**
-     * The VM machine type, either default i440fx or q35
+     * The VM machine type (defaults to `i440fx`).
      * 
      */
     @Export(name="machine", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> machine;
 
     /**
-     * @return The VM machine type, either default i440fx or q35
+     * @return The VM machine type (defaults to `i440fx`).
      * 
      */
     public Output<Optional<String>> machine() {
         return Codegen.optional(this.machine);
     }
     /**
-     * The memory allocation
+     * The VGA memory in megabytes (defaults to `16`).
      * 
      */
     @Export(name="memory", refs={VirtualMachineMemory.class}, tree="[0]")
     private Output</* @Nullable */ VirtualMachineMemory> memory;
 
     /**
-     * @return The memory allocation
+     * @return The VGA memory in megabytes (defaults to `16`).
      * 
      */
     public Output<Optional<VirtualMachineMemory>> memory() {
         return Codegen.optional(this.memory);
     }
     /**
-     * Whether to migrate the VM on node change instead of re-creating it
+     * Migrate the VM on node change instead of re-creating
+     * it (defaults to `false`).
      * 
      */
     @Export(name="migrate", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> migrate;
 
     /**
-     * @return Whether to migrate the VM on node change instead of re-creating it
+     * @return Migrate the VM on node change instead of re-creating
+     * it (defaults to `false`).
      * 
      */
     public Output<Optional<Boolean>> migrate() {
         return Codegen.optional(this.migrate);
     }
     /**
-     * The name
+     * The virtual machine name.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name
+     * @return The virtual machine name.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The network devices
+     * A network device (multiple blocks supported).
      * 
      */
     @Export(name="networkDevices", refs={List.class,VirtualMachineNetworkDevice.class}, tree="[0,1]")
     private Output</* @Nullable */ List<VirtualMachineNetworkDevice>> networkDevices;
 
     /**
-     * @return The network devices
+     * @return A network device (multiple blocks supported).
      * 
      */
     public Output<Optional<List<VirtualMachineNetworkDevice>>> networkDevices() {
         return Codegen.optional(this.networkDevices);
     }
     /**
-     * The network interface names published by the QEMU agent
+     * The network interface names published by the QEMU
+     * agent (empty list when `agent.enabled` is `false`)
      * 
      */
     @Export(name="networkInterfaceNames", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> networkInterfaceNames;
 
     /**
-     * @return The network interface names published by the QEMU agent
+     * @return The network interface names published by the QEMU
+     * agent (empty list when `agent.enabled` is `false`)
      * 
      */
     public Output<List<String>> networkInterfaceNames() {
         return this.networkInterfaceNames;
     }
     /**
-     * The node name
+     * The name of the node to assign the virtual machine
+     * to.
      * 
      */
     @Export(name="nodeName", refs={String.class}, tree="[0]")
     private Output<String> nodeName;
 
     /**
-     * @return The node name
+     * @return The name of the node to assign the virtual machine
+     * to.
      * 
      */
     public Output<String> nodeName() {
         return this.nodeName;
     }
     /**
-     * Start VM on Node boot
+     * Specifies whether a VM will be started during system
+     * boot. (defaults to `true`)
      * 
      */
     @Export(name="onBoot", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> onBoot;
 
     /**
-     * @return Start VM on Node boot
+     * @return Specifies whether a VM will be started during system
+     * boot. (defaults to `true`)
      * 
      */
     public Output<Optional<Boolean>> onBoot() {
         return Codegen.optional(this.onBoot);
     }
     /**
-     * The operating system configuration
+     * The Operating System configuration.
      * 
      */
     @Export(name="operatingSystem", refs={VirtualMachineOperatingSystem.class}, tree="[0]")
     private Output</* @Nullable */ VirtualMachineOperatingSystem> operatingSystem;
 
     /**
-     * @return The operating system configuration
+     * @return The Operating System configuration.
      * 
      */
     public Output<Optional<VirtualMachineOperatingSystem>> operatingSystem() {
         return Codegen.optional(this.operatingSystem);
     }
     /**
-     * The ID of the pool to assign the virtual machine to
+     * The identifier for a pool to assign the virtual machine
+     * to.
      * 
      */
     @Export(name="poolId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> poolId;
 
     /**
-     * @return The ID of the pool to assign the virtual machine to
+     * @return The identifier for a pool to assign the virtual machine
+     * to.
      * 
      */
     public Output<Optional<String>> poolId() {
         return Codegen.optional(this.poolId);
     }
     /**
-     * Whether to reboot vm after creation
+     * Reboot the VM after initial creation. (defaults
+     * to `false`)
      * 
      */
     @Export(name="reboot", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> reboot;
 
     /**
-     * @return Whether to reboot vm after creation
+     * @return Reboot the VM after initial creation. (defaults
+     * to `false`)
      * 
      */
     public Output<Optional<Boolean>> reboot() {
         return Codegen.optional(this.reboot);
     }
     /**
-     * The SCSI hardware type
+     * The SCSI hardware type (defaults
+     * to `virtio-scsi-pci`).
      * 
      */
     @Export(name="scsiHardware", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> scsiHardware;
 
     /**
-     * @return The SCSI hardware type
+     * @return The SCSI hardware type (defaults
+     * to `virtio-scsi-pci`).
      * 
      */
     public Output<Optional<String>> scsiHardware() {
         return Codegen.optional(this.scsiHardware);
     }
     /**
-     * The serial devices
+     * A serial device (multiple blocks supported).
      * 
      */
     @Export(name="serialDevices", refs={List.class,VirtualMachineSerialDevice.class}, tree="[0,1]")
     private Output</* @Nullable */ List<VirtualMachineSerialDevice>> serialDevices;
 
     /**
-     * @return The serial devices
+     * @return A serial device (multiple blocks supported).
      * 
      */
     public Output<Optional<List<VirtualMachineSerialDevice>>> serialDevices() {
         return Codegen.optional(this.serialDevices);
     }
     /**
-     * Specifies SMBIOS (type1) settings for the VM
+     * The SMBIOS (type1) settings for the VM.
      * 
      */
     @Export(name="smbios", refs={VirtualMachineSmbios.class}, tree="[0]")
     private Output</* @Nullable */ VirtualMachineSmbios> smbios;
 
     /**
-     * @return Specifies SMBIOS (type1) settings for the VM
+     * @return The SMBIOS (type1) settings for the VM.
      * 
      */
     public Output<Optional<VirtualMachineSmbios>> smbios() {
         return Codegen.optional(this.smbios);
     }
     /**
-     * Whether to start the virtual machine
+     * Whether to start the virtual machine (defaults
+     * to `true`).
      * 
      */
     @Export(name="started", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> started;
 
     /**
-     * @return Whether to start the virtual machine
+     * @return Whether to start the virtual machine (defaults
+     * to `true`).
      * 
      */
     public Output<Optional<Boolean>> started() {
         return Codegen.optional(this.started);
     }
     /**
-     * Defines startup and shutdown behavior of the VM
+     * Defines startup and shutdown behavior of the VM.
      * 
      */
     @Export(name="startup", refs={VirtualMachineStartup.class}, tree="[0]")
     private Output</* @Nullable */ VirtualMachineStartup> startup;
 
     /**
-     * @return Defines startup and shutdown behavior of the VM
+     * @return Defines startup and shutdown behavior of the VM.
      * 
      */
     public Output<Optional<VirtualMachineStartup>> startup() {
         return Codegen.optional(this.startup);
     }
     /**
-     * Whether to enable the USB tablet device
+     * Whether to enable the USB tablet device (defaults
+     * to `true`).
      * 
      */
     @Export(name="tabletDevice", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> tabletDevice;
 
     /**
-     * @return Whether to enable the USB tablet device
+     * @return Whether to enable the USB tablet device (defaults
+     * to `true`).
      * 
      */
     public Output<Optional<Boolean>> tabletDevice() {
         return Codegen.optional(this.tabletDevice);
     }
     /**
-     * Tags of the virtual machine. This is only meta information.
+     * A list of tags of the VM. This is only meta information (
+     * defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
+     * template is not sorted, then Proxmox will always report a difference on the
+     * resource. You may use the `ignore_changes` lifecycle meta-argument to ignore
+     * changes to this attribute.
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return Tags of the virtual machine. This is only meta information.
+     * @return A list of tags of the VM. This is only meta information (
+     * defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
+     * template is not sorted, then Proxmox will always report a difference on the
+     * resource. You may use the `ignore_changes` lifecycle meta-argument to ignore
+     * changes to this attribute.
      * 
      */
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * Whether to create a template
+     * Whether to create a template (defaults to `false`).
      * 
      */
     @Export(name="template", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> template;
 
     /**
-     * @return Whether to create a template
+     * @return Whether to create a template (defaults to `false`).
      * 
      */
     public Output<Optional<Boolean>> template() {
         return Codegen.optional(this.template);
     }
     /**
-     * Clone VM timeout
+     * Timeout for cloning a VM in seconds (defaults to
+     * 1800).
      * 
      */
     @Export(name="timeoutClone", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeoutClone;
 
     /**
-     * @return Clone VM timeout
+     * @return Timeout for cloning a VM in seconds (defaults to
+     * 1800).
      * 
      */
     public Output<Optional<Integer>> timeoutClone() {
         return Codegen.optional(this.timeoutClone);
     }
     /**
-     * Migrate VM timeout
+     * Timeout for migrating the VM (defaults to
+     * 1800).
      * 
      */
     @Export(name="timeoutMigrate", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeoutMigrate;
 
     /**
-     * @return Migrate VM timeout
+     * @return Timeout for migrating the VM (defaults to
+     * 1800).
      * 
      */
     public Output<Optional<Integer>> timeoutMigrate() {
         return Codegen.optional(this.timeoutMigrate);
     }
     /**
-     * MoveDisk timeout
+     * Timeout for moving the disk of a VM in
+     * seconds (defaults to 1800).
      * 
      */
     @Export(name="timeoutMoveDisk", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeoutMoveDisk;
 
     /**
-     * @return MoveDisk timeout
+     * @return Timeout for moving the disk of a VM in
+     * seconds (defaults to 1800).
      * 
      */
     public Output<Optional<Integer>> timeoutMoveDisk() {
         return Codegen.optional(this.timeoutMoveDisk);
     }
     /**
-     * Reboot timeout
+     * Timeout for rebooting a VM in seconds (defaults
+     * to 1800).
      * 
      */
     @Export(name="timeoutReboot", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeoutReboot;
 
     /**
-     * @return Reboot timeout
+     * @return Timeout for rebooting a VM in seconds (defaults
+     * to 1800).
      * 
      */
     public Output<Optional<Integer>> timeoutReboot() {
         return Codegen.optional(this.timeoutReboot);
     }
     /**
-     * Shutdown timeout
+     * Timeout for shutting down a VM in seconds (
+     * defaults to 1800).
      * 
      */
     @Export(name="timeoutShutdownVm", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeoutShutdownVm;
 
     /**
-     * @return Shutdown timeout
+     * @return Timeout for shutting down a VM in seconds (
+     * defaults to 1800).
      * 
      */
     public Output<Optional<Integer>> timeoutShutdownVm() {
         return Codegen.optional(this.timeoutShutdownVm);
     }
     /**
-     * Start VM timeout
+     * Timeout for starting a VM in seconds (defaults
+     * to 1800).
      * 
      */
     @Export(name="timeoutStartVm", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeoutStartVm;
 
     /**
-     * @return Start VM timeout
+     * @return Timeout for starting a VM in seconds (defaults
+     * to 1800).
      * 
      */
     public Output<Optional<Integer>> timeoutStartVm() {
         return Codegen.optional(this.timeoutStartVm);
     }
     /**
-     * Stop VM timeout
+     * Timeout for stopping a VM in seconds (defaults
+     * to 300).
      * 
      */
     @Export(name="timeoutStopVm", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeoutStopVm;
 
     /**
-     * @return Stop VM timeout
+     * @return Timeout for stopping a VM in seconds (defaults
+     * to 300).
      * 
      */
     public Output<Optional<Integer>> timeoutStopVm() {
         return Codegen.optional(this.timeoutStopVm);
     }
     /**
-     * The VGA configuration
+     * The VGA configuration.
      * 
      */
     @Export(name="vga", refs={VirtualMachineVga.class}, tree="[0]")
     private Output</* @Nullable */ VirtualMachineVga> vga;
 
     /**
-     * @return The VGA configuration
+     * @return The VGA configuration.
      * 
      */
     public Output<Optional<VirtualMachineVga>> vga() {
         return Codegen.optional(this.vga);
     }
     /**
-     * The VM identifier
+     * The VM identifier.
      * 
      */
     @Export(name="vmId", refs={Integer.class}, tree="[0]")
     private Output<Integer> vmId;
 
     /**
-     * @return The VM identifier
+     * @return The VM identifier.
      * 
      */
     public Output<Integer> vmId() {

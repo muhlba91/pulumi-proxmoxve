@@ -19,72 +19,174 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
 
     public static final VirtualMachineInitializationArgs Empty = new VirtualMachineInitializationArgs();
 
+    /**
+     * The identifier for the datastore to create the
+     * cloud-init disk in (defaults to `local-lvm`).
+     * 
+     */
     @Import(name="datastoreId")
     private @Nullable Output<String> datastoreId;
 
+    /**
+     * @return The identifier for the datastore to create the
+     * cloud-init disk in (defaults to `local-lvm`).
+     * 
+     */
     public Optional<Output<String>> datastoreId() {
         return Optional.ofNullable(this.datastoreId);
     }
 
+    /**
+     * The DNS configuration.
+     * 
+     */
     @Import(name="dns")
     private @Nullable Output<VirtualMachineInitializationDnsArgs> dns;
 
+    /**
+     * @return The DNS configuration.
+     * 
+     */
     public Optional<Output<VirtualMachineInitializationDnsArgs>> dns() {
         return Optional.ofNullable(this.dns);
     }
 
+    /**
+     * The hardware interface to connect the cloud-init
+     * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+     * detected if the setting is missing but a cloud-init image is present,
+     * otherwise defaults to `ide2`.
+     * 
+     */
     @Import(name="interface")
     private @Nullable Output<String> interface_;
 
+    /**
+     * @return The hardware interface to connect the cloud-init
+     * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+     * detected if the setting is missing but a cloud-init image is present,
+     * otherwise defaults to `ide2`.
+     * 
+     */
     public Optional<Output<String>> interface_() {
         return Optional.ofNullable(this.interface_);
     }
 
+    /**
+     * The IP configuration (one block per network
+     * device).
+     * 
+     */
     @Import(name="ipConfigs")
     private @Nullable Output<List<VirtualMachineInitializationIpConfigArgs>> ipConfigs;
 
+    /**
+     * @return The IP configuration (one block per network
+     * device).
+     * 
+     */
     public Optional<Output<List<VirtualMachineInitializationIpConfigArgs>>> ipConfigs() {
         return Optional.ofNullable(this.ipConfigs);
     }
 
+    /**
+     * The identifier for a file containing
+     * all meta data passed to the VM via cloud-init.
+     * 
+     */
     @Import(name="metaDataFileId")
     private @Nullable Output<String> metaDataFileId;
 
+    /**
+     * @return The identifier for a file containing
+     * all meta data passed to the VM via cloud-init.
+     * 
+     */
     public Optional<Output<String>> metaDataFileId() {
         return Optional.ofNullable(this.metaDataFileId);
     }
 
+    /**
+     * The identifier for a file containing
+     * network configuration data passed to the VM via cloud-init (conflicts
+     * with `ip_config`).
+     * 
+     */
     @Import(name="networkDataFileId")
     private @Nullable Output<String> networkDataFileId;
 
+    /**
+     * @return The identifier for a file containing
+     * network configuration data passed to the VM via cloud-init (conflicts
+     * with `ip_config`).
+     * 
+     */
     public Optional<Output<String>> networkDataFileId() {
         return Optional.ofNullable(this.networkDataFileId);
     }
 
+    /**
+     * The VGA type (defaults to `std`).
+     * 
+     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
+    /**
+     * @return The VGA type (defaults to `std`).
+     * 
+     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * The user account configuration (conflicts
+     * with `user_data_file_id`).
+     * 
+     */
     @Import(name="userAccount")
     private @Nullable Output<VirtualMachineInitializationUserAccountArgs> userAccount;
 
+    /**
+     * @return The user account configuration (conflicts
+     * with `user_data_file_id`).
+     * 
+     */
     public Optional<Output<VirtualMachineInitializationUserAccountArgs>> userAccount() {
         return Optional.ofNullable(this.userAccount);
     }
 
+    /**
+     * The identifier for a file containing
+     * custom user data (conflicts with `user_account`).
+     * 
+     */
     @Import(name="userDataFileId")
     private @Nullable Output<String> userDataFileId;
 
+    /**
+     * @return The identifier for a file containing
+     * custom user data (conflicts with `user_account`).
+     * 
+     */
     public Optional<Output<String>> userDataFileId() {
         return Optional.ofNullable(this.userDataFileId);
     }
 
+    /**
+     * The identifier for a file containing
+     * all vendor data passed to the VM via cloud-init.
+     * 
+     */
     @Import(name="vendorDataFileId")
     private @Nullable Output<String> vendorDataFileId;
 
+    /**
+     * @return The identifier for a file containing
+     * all vendor data passed to the VM via cloud-init.
+     * 
+     */
     public Optional<Output<String>> vendorDataFileId() {
         return Optional.ofNullable(this.vendorDataFileId);
     }
@@ -122,96 +224,245 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
             $ = new VirtualMachineInitializationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param datastoreId The identifier for the datastore to create the
+         * cloud-init disk in (defaults to `local-lvm`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder datastoreId(@Nullable Output<String> datastoreId) {
             $.datastoreId = datastoreId;
             return this;
         }
 
+        /**
+         * @param datastoreId The identifier for the datastore to create the
+         * cloud-init disk in (defaults to `local-lvm`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder datastoreId(String datastoreId) {
             return datastoreId(Output.of(datastoreId));
         }
 
+        /**
+         * @param dns The DNS configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dns(@Nullable Output<VirtualMachineInitializationDnsArgs> dns) {
             $.dns = dns;
             return this;
         }
 
+        /**
+         * @param dns The DNS configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dns(VirtualMachineInitializationDnsArgs dns) {
             return dns(Output.of(dns));
         }
 
+        /**
+         * @param interface_ The hardware interface to connect the cloud-init
+         * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+         * detected if the setting is missing but a cloud-init image is present,
+         * otherwise defaults to `ide2`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder interface_(@Nullable Output<String> interface_) {
             $.interface_ = interface_;
             return this;
         }
 
+        /**
+         * @param interface_ The hardware interface to connect the cloud-init
+         * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+         * detected if the setting is missing but a cloud-init image is present,
+         * otherwise defaults to `ide2`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder interface_(String interface_) {
             return interface_(Output.of(interface_));
         }
 
+        /**
+         * @param ipConfigs The IP configuration (one block per network
+         * device).
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipConfigs(@Nullable Output<List<VirtualMachineInitializationIpConfigArgs>> ipConfigs) {
             $.ipConfigs = ipConfigs;
             return this;
         }
 
+        /**
+         * @param ipConfigs The IP configuration (one block per network
+         * device).
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipConfigs(List<VirtualMachineInitializationIpConfigArgs> ipConfigs) {
             return ipConfigs(Output.of(ipConfigs));
         }
 
+        /**
+         * @param ipConfigs The IP configuration (one block per network
+         * device).
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipConfigs(VirtualMachineInitializationIpConfigArgs... ipConfigs) {
             return ipConfigs(List.of(ipConfigs));
         }
 
+        /**
+         * @param metaDataFileId The identifier for a file containing
+         * all meta data passed to the VM via cloud-init.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metaDataFileId(@Nullable Output<String> metaDataFileId) {
             $.metaDataFileId = metaDataFileId;
             return this;
         }
 
+        /**
+         * @param metaDataFileId The identifier for a file containing
+         * all meta data passed to the VM via cloud-init.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metaDataFileId(String metaDataFileId) {
             return metaDataFileId(Output.of(metaDataFileId));
         }
 
+        /**
+         * @param networkDataFileId The identifier for a file containing
+         * network configuration data passed to the VM via cloud-init (conflicts
+         * with `ip_config`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkDataFileId(@Nullable Output<String> networkDataFileId) {
             $.networkDataFileId = networkDataFileId;
             return this;
         }
 
+        /**
+         * @param networkDataFileId The identifier for a file containing
+         * network configuration data passed to the VM via cloud-init (conflicts
+         * with `ip_config`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkDataFileId(String networkDataFileId) {
             return networkDataFileId(Output.of(networkDataFileId));
         }
 
+        /**
+         * @param type The VGA type (defaults to `std`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type The VGA type (defaults to `std`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }
 
+        /**
+         * @param userAccount The user account configuration (conflicts
+         * with `user_data_file_id`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder userAccount(@Nullable Output<VirtualMachineInitializationUserAccountArgs> userAccount) {
             $.userAccount = userAccount;
             return this;
         }
 
+        /**
+         * @param userAccount The user account configuration (conflicts
+         * with `user_data_file_id`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder userAccount(VirtualMachineInitializationUserAccountArgs userAccount) {
             return userAccount(Output.of(userAccount));
         }
 
+        /**
+         * @param userDataFileId The identifier for a file containing
+         * custom user data (conflicts with `user_account`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder userDataFileId(@Nullable Output<String> userDataFileId) {
             $.userDataFileId = userDataFileId;
             return this;
         }
 
+        /**
+         * @param userDataFileId The identifier for a file containing
+         * custom user data (conflicts with `user_account`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder userDataFileId(String userDataFileId) {
             return userDataFileId(Output.of(userDataFileId));
         }
 
+        /**
+         * @param vendorDataFileId The identifier for a file containing
+         * all vendor data passed to the VM via cloud-init.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vendorDataFileId(@Nullable Output<String> vendorDataFileId) {
             $.vendorDataFileId = vendorDataFileId;
             return this;
         }
 
+        /**
+         * @param vendorDataFileId The identifier for a file containing
+         * all vendor data passed to the VM via cloud-init.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vendorDataFileId(String vendorDataFileId) {
             return vendorDataFileId(Output.of(vendorDataFileId));
         }

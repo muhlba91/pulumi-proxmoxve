@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['FirewallOptionsArgs', 'FirewallOptions']
@@ -29,53 +29,92 @@ class FirewallOptionsArgs:
                  vm_id: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a FirewallOptions resource.
-        :param pulumi.Input[str] node_name: The name of the node.
-        :param pulumi.Input[int] container_id: The ID of the container to manage the firewall for.
-        :param pulumi.Input[bool] dhcp: Enable DHCP
-        :param pulumi.Input[bool] enabled: Enable or disable the firewall
-        :param pulumi.Input[str] input_policy: Default policy for incoming traffic
-        :param pulumi.Input[bool] ipfilter: Enable default IP filters. This is equivalent to adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
-               implicitly contain sane default restrictions such as restricting IPv6 link local addresses to the one derived from the
-               interface's MAC address. For containers the configured IP addresses will be implicitly added.
-        :param pulumi.Input[str] log_level_in: Log level for incoming traffic.
-        :param pulumi.Input[str] log_level_out: Log level for outgoing traffic.
-        :param pulumi.Input[bool] macfilter: Enable MAC address filtering
-        :param pulumi.Input[bool] ndp: Enable NDP (Neighbor Discovery Protocol)
-        :param pulumi.Input[str] output_policy: Default policy for outgoing traffic
-        :param pulumi.Input[bool] radv: Allow sending Router Advertisement
-        :param pulumi.Input[int] vm_id: The ID of the VM to manage the firewall for.
+        :param pulumi.Input[str] node_name: Node name.
+        :param pulumi.Input[int] container_id: Container ID. Leave empty for cluster level aliases.
+        :param pulumi.Input[bool] dhcp: Enable DHCP.
+        :param pulumi.Input[bool] enabled: Enable or disable the firewall.
+        :param pulumi.Input[str] input_policy: The default input
+               policy (`ACCEPT`, `DROP`, `REJECT`).
+        :param pulumi.Input[bool] ipfilter: Enable default IP filters. This is equivalent to
+               adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
+               implicitly contain sane default restrictions such as restricting IPv6 link
+               local addresses to the one derived from the interface's MAC address. For
+               containers the configured IP addresses will be implicitly added.
+        :param pulumi.Input[str] log_level_in: Log level for incoming
+               packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+        :param pulumi.Input[str] log_level_out: Log level for outgoing
+               packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+        :param pulumi.Input[bool] macfilter: Enable/disable MAC address filter.
+        :param pulumi.Input[bool] ndp: Enable NDP (Neighbor Discovery Protocol).
+        :param pulumi.Input[str] output_policy: The default output
+               policy (`ACCEPT`, `DROP`, `REJECT`).
+        :param pulumi.Input[bool] radv: Enable Router Advertisement.
+        :param pulumi.Input[int] vm_id: VM ID. Leave empty for cluster level aliases.
         """
-        pulumi.set(__self__, "node_name", node_name)
+        FirewallOptionsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            node_name=node_name,
+            container_id=container_id,
+            dhcp=dhcp,
+            enabled=enabled,
+            input_policy=input_policy,
+            ipfilter=ipfilter,
+            log_level_in=log_level_in,
+            log_level_out=log_level_out,
+            macfilter=macfilter,
+            ndp=ndp,
+            output_policy=output_policy,
+            radv=radv,
+            vm_id=vm_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             node_name: pulumi.Input[str],
+             container_id: Optional[pulumi.Input[int]] = None,
+             dhcp: Optional[pulumi.Input[bool]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             input_policy: Optional[pulumi.Input[str]] = None,
+             ipfilter: Optional[pulumi.Input[bool]] = None,
+             log_level_in: Optional[pulumi.Input[str]] = None,
+             log_level_out: Optional[pulumi.Input[str]] = None,
+             macfilter: Optional[pulumi.Input[bool]] = None,
+             ndp: Optional[pulumi.Input[bool]] = None,
+             output_policy: Optional[pulumi.Input[str]] = None,
+             radv: Optional[pulumi.Input[bool]] = None,
+             vm_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("node_name", node_name)
         if container_id is not None:
-            pulumi.set(__self__, "container_id", container_id)
+            _setter("container_id", container_id)
         if dhcp is not None:
-            pulumi.set(__self__, "dhcp", dhcp)
+            _setter("dhcp", dhcp)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if input_policy is not None:
-            pulumi.set(__self__, "input_policy", input_policy)
+            _setter("input_policy", input_policy)
         if ipfilter is not None:
-            pulumi.set(__self__, "ipfilter", ipfilter)
+            _setter("ipfilter", ipfilter)
         if log_level_in is not None:
-            pulumi.set(__self__, "log_level_in", log_level_in)
+            _setter("log_level_in", log_level_in)
         if log_level_out is not None:
-            pulumi.set(__self__, "log_level_out", log_level_out)
+            _setter("log_level_out", log_level_out)
         if macfilter is not None:
-            pulumi.set(__self__, "macfilter", macfilter)
+            _setter("macfilter", macfilter)
         if ndp is not None:
-            pulumi.set(__self__, "ndp", ndp)
+            _setter("ndp", ndp)
         if output_policy is not None:
-            pulumi.set(__self__, "output_policy", output_policy)
+            _setter("output_policy", output_policy)
         if radv is not None:
-            pulumi.set(__self__, "radv", radv)
+            _setter("radv", radv)
         if vm_id is not None:
-            pulumi.set(__self__, "vm_id", vm_id)
+            _setter("vm_id", vm_id)
 
     @property
     @pulumi.getter(name="nodeName")
     def node_name(self) -> pulumi.Input[str]:
         """
-        The name of the node.
+        Node name.
         """
         return pulumi.get(self, "node_name")
 
@@ -87,7 +126,7 @@ class FirewallOptionsArgs:
     @pulumi.getter(name="containerId")
     def container_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the container to manage the firewall for.
+        Container ID. Leave empty for cluster level aliases.
         """
         return pulumi.get(self, "container_id")
 
@@ -99,7 +138,7 @@ class FirewallOptionsArgs:
     @pulumi.getter
     def dhcp(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable DHCP
+        Enable DHCP.
         """
         return pulumi.get(self, "dhcp")
 
@@ -111,7 +150,7 @@ class FirewallOptionsArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable or disable the firewall
+        Enable or disable the firewall.
         """
         return pulumi.get(self, "enabled")
 
@@ -123,7 +162,8 @@ class FirewallOptionsArgs:
     @pulumi.getter(name="inputPolicy")
     def input_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Default policy for incoming traffic
+        The default input
+        policy (`ACCEPT`, `DROP`, `REJECT`).
         """
         return pulumi.get(self, "input_policy")
 
@@ -135,9 +175,11 @@ class FirewallOptionsArgs:
     @pulumi.getter
     def ipfilter(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable default IP filters. This is equivalent to adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
-        implicitly contain sane default restrictions such as restricting IPv6 link local addresses to the one derived from the
-        interface's MAC address. For containers the configured IP addresses will be implicitly added.
+        Enable default IP filters. This is equivalent to
+        adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
+        implicitly contain sane default restrictions such as restricting IPv6 link
+        local addresses to the one derived from the interface's MAC address. For
+        containers the configured IP addresses will be implicitly added.
         """
         return pulumi.get(self, "ipfilter")
 
@@ -149,7 +191,8 @@ class FirewallOptionsArgs:
     @pulumi.getter(name="logLevelIn")
     def log_level_in(self) -> Optional[pulumi.Input[str]]:
         """
-        Log level for incoming traffic.
+        Log level for incoming
+        packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
         """
         return pulumi.get(self, "log_level_in")
 
@@ -161,7 +204,8 @@ class FirewallOptionsArgs:
     @pulumi.getter(name="logLevelOut")
     def log_level_out(self) -> Optional[pulumi.Input[str]]:
         """
-        Log level for outgoing traffic.
+        Log level for outgoing
+        packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
         """
         return pulumi.get(self, "log_level_out")
 
@@ -173,7 +217,7 @@ class FirewallOptionsArgs:
     @pulumi.getter
     def macfilter(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable MAC address filtering
+        Enable/disable MAC address filter.
         """
         return pulumi.get(self, "macfilter")
 
@@ -185,7 +229,7 @@ class FirewallOptionsArgs:
     @pulumi.getter
     def ndp(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable NDP (Neighbor Discovery Protocol)
+        Enable NDP (Neighbor Discovery Protocol).
         """
         return pulumi.get(self, "ndp")
 
@@ -197,7 +241,8 @@ class FirewallOptionsArgs:
     @pulumi.getter(name="outputPolicy")
     def output_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Default policy for outgoing traffic
+        The default output
+        policy (`ACCEPT`, `DROP`, `REJECT`).
         """
         return pulumi.get(self, "output_policy")
 
@@ -209,7 +254,7 @@ class FirewallOptionsArgs:
     @pulumi.getter
     def radv(self) -> Optional[pulumi.Input[bool]]:
         """
-        Allow sending Router Advertisement
+        Enable Router Advertisement.
         """
         return pulumi.get(self, "radv")
 
@@ -221,7 +266,7 @@ class FirewallOptionsArgs:
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the VM to manage the firewall for.
+        VM ID. Leave empty for cluster level aliases.
         """
         return pulumi.get(self, "vm_id")
 
@@ -248,54 +293,93 @@ class _FirewallOptionsState:
                  vm_id: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering FirewallOptions resources.
-        :param pulumi.Input[int] container_id: The ID of the container to manage the firewall for.
-        :param pulumi.Input[bool] dhcp: Enable DHCP
-        :param pulumi.Input[bool] enabled: Enable or disable the firewall
-        :param pulumi.Input[str] input_policy: Default policy for incoming traffic
-        :param pulumi.Input[bool] ipfilter: Enable default IP filters. This is equivalent to adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
-               implicitly contain sane default restrictions such as restricting IPv6 link local addresses to the one derived from the
-               interface's MAC address. For containers the configured IP addresses will be implicitly added.
-        :param pulumi.Input[str] log_level_in: Log level for incoming traffic.
-        :param pulumi.Input[str] log_level_out: Log level for outgoing traffic.
-        :param pulumi.Input[bool] macfilter: Enable MAC address filtering
-        :param pulumi.Input[bool] ndp: Enable NDP (Neighbor Discovery Protocol)
-        :param pulumi.Input[str] node_name: The name of the node.
-        :param pulumi.Input[str] output_policy: Default policy for outgoing traffic
-        :param pulumi.Input[bool] radv: Allow sending Router Advertisement
-        :param pulumi.Input[int] vm_id: The ID of the VM to manage the firewall for.
+        :param pulumi.Input[int] container_id: Container ID. Leave empty for cluster level aliases.
+        :param pulumi.Input[bool] dhcp: Enable DHCP.
+        :param pulumi.Input[bool] enabled: Enable or disable the firewall.
+        :param pulumi.Input[str] input_policy: The default input
+               policy (`ACCEPT`, `DROP`, `REJECT`).
+        :param pulumi.Input[bool] ipfilter: Enable default IP filters. This is equivalent to
+               adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
+               implicitly contain sane default restrictions such as restricting IPv6 link
+               local addresses to the one derived from the interface's MAC address. For
+               containers the configured IP addresses will be implicitly added.
+        :param pulumi.Input[str] log_level_in: Log level for incoming
+               packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+        :param pulumi.Input[str] log_level_out: Log level for outgoing
+               packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+        :param pulumi.Input[bool] macfilter: Enable/disable MAC address filter.
+        :param pulumi.Input[bool] ndp: Enable NDP (Neighbor Discovery Protocol).
+        :param pulumi.Input[str] node_name: Node name.
+        :param pulumi.Input[str] output_policy: The default output
+               policy (`ACCEPT`, `DROP`, `REJECT`).
+        :param pulumi.Input[bool] radv: Enable Router Advertisement.
+        :param pulumi.Input[int] vm_id: VM ID. Leave empty for cluster level aliases.
         """
+        _FirewallOptionsState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            container_id=container_id,
+            dhcp=dhcp,
+            enabled=enabled,
+            input_policy=input_policy,
+            ipfilter=ipfilter,
+            log_level_in=log_level_in,
+            log_level_out=log_level_out,
+            macfilter=macfilter,
+            ndp=ndp,
+            node_name=node_name,
+            output_policy=output_policy,
+            radv=radv,
+            vm_id=vm_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             container_id: Optional[pulumi.Input[int]] = None,
+             dhcp: Optional[pulumi.Input[bool]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             input_policy: Optional[pulumi.Input[str]] = None,
+             ipfilter: Optional[pulumi.Input[bool]] = None,
+             log_level_in: Optional[pulumi.Input[str]] = None,
+             log_level_out: Optional[pulumi.Input[str]] = None,
+             macfilter: Optional[pulumi.Input[bool]] = None,
+             ndp: Optional[pulumi.Input[bool]] = None,
+             node_name: Optional[pulumi.Input[str]] = None,
+             output_policy: Optional[pulumi.Input[str]] = None,
+             radv: Optional[pulumi.Input[bool]] = None,
+             vm_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if container_id is not None:
-            pulumi.set(__self__, "container_id", container_id)
+            _setter("container_id", container_id)
         if dhcp is not None:
-            pulumi.set(__self__, "dhcp", dhcp)
+            _setter("dhcp", dhcp)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if input_policy is not None:
-            pulumi.set(__self__, "input_policy", input_policy)
+            _setter("input_policy", input_policy)
         if ipfilter is not None:
-            pulumi.set(__self__, "ipfilter", ipfilter)
+            _setter("ipfilter", ipfilter)
         if log_level_in is not None:
-            pulumi.set(__self__, "log_level_in", log_level_in)
+            _setter("log_level_in", log_level_in)
         if log_level_out is not None:
-            pulumi.set(__self__, "log_level_out", log_level_out)
+            _setter("log_level_out", log_level_out)
         if macfilter is not None:
-            pulumi.set(__self__, "macfilter", macfilter)
+            _setter("macfilter", macfilter)
         if ndp is not None:
-            pulumi.set(__self__, "ndp", ndp)
+            _setter("ndp", ndp)
         if node_name is not None:
-            pulumi.set(__self__, "node_name", node_name)
+            _setter("node_name", node_name)
         if output_policy is not None:
-            pulumi.set(__self__, "output_policy", output_policy)
+            _setter("output_policy", output_policy)
         if radv is not None:
-            pulumi.set(__self__, "radv", radv)
+            _setter("radv", radv)
         if vm_id is not None:
-            pulumi.set(__self__, "vm_id", vm_id)
+            _setter("vm_id", vm_id)
 
     @property
     @pulumi.getter(name="containerId")
     def container_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the container to manage the firewall for.
+        Container ID. Leave empty for cluster level aliases.
         """
         return pulumi.get(self, "container_id")
 
@@ -307,7 +391,7 @@ class _FirewallOptionsState:
     @pulumi.getter
     def dhcp(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable DHCP
+        Enable DHCP.
         """
         return pulumi.get(self, "dhcp")
 
@@ -319,7 +403,7 @@ class _FirewallOptionsState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable or disable the firewall
+        Enable or disable the firewall.
         """
         return pulumi.get(self, "enabled")
 
@@ -331,7 +415,8 @@ class _FirewallOptionsState:
     @pulumi.getter(name="inputPolicy")
     def input_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Default policy for incoming traffic
+        The default input
+        policy (`ACCEPT`, `DROP`, `REJECT`).
         """
         return pulumi.get(self, "input_policy")
 
@@ -343,9 +428,11 @@ class _FirewallOptionsState:
     @pulumi.getter
     def ipfilter(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable default IP filters. This is equivalent to adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
-        implicitly contain sane default restrictions such as restricting IPv6 link local addresses to the one derived from the
-        interface's MAC address. For containers the configured IP addresses will be implicitly added.
+        Enable default IP filters. This is equivalent to
+        adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
+        implicitly contain sane default restrictions such as restricting IPv6 link
+        local addresses to the one derived from the interface's MAC address. For
+        containers the configured IP addresses will be implicitly added.
         """
         return pulumi.get(self, "ipfilter")
 
@@ -357,7 +444,8 @@ class _FirewallOptionsState:
     @pulumi.getter(name="logLevelIn")
     def log_level_in(self) -> Optional[pulumi.Input[str]]:
         """
-        Log level for incoming traffic.
+        Log level for incoming
+        packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
         """
         return pulumi.get(self, "log_level_in")
 
@@ -369,7 +457,8 @@ class _FirewallOptionsState:
     @pulumi.getter(name="logLevelOut")
     def log_level_out(self) -> Optional[pulumi.Input[str]]:
         """
-        Log level for outgoing traffic.
+        Log level for outgoing
+        packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
         """
         return pulumi.get(self, "log_level_out")
 
@@ -381,7 +470,7 @@ class _FirewallOptionsState:
     @pulumi.getter
     def macfilter(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable MAC address filtering
+        Enable/disable MAC address filter.
         """
         return pulumi.get(self, "macfilter")
 
@@ -393,7 +482,7 @@ class _FirewallOptionsState:
     @pulumi.getter
     def ndp(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable NDP (Neighbor Discovery Protocol)
+        Enable NDP (Neighbor Discovery Protocol).
         """
         return pulumi.get(self, "ndp")
 
@@ -405,7 +494,7 @@ class _FirewallOptionsState:
     @pulumi.getter(name="nodeName")
     def node_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the node.
+        Node name.
         """
         return pulumi.get(self, "node_name")
 
@@ -417,7 +506,8 @@ class _FirewallOptionsState:
     @pulumi.getter(name="outputPolicy")
     def output_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Default policy for outgoing traffic
+        The default output
+        policy (`ACCEPT`, `DROP`, `REJECT`).
         """
         return pulumi.get(self, "output_policy")
 
@@ -429,7 +519,7 @@ class _FirewallOptionsState:
     @pulumi.getter
     def radv(self) -> Optional[pulumi.Input[bool]]:
         """
-        Allow sending Router Advertisement
+        Enable Router Advertisement.
         """
         return pulumi.get(self, "radv")
 
@@ -441,7 +531,7 @@ class _FirewallOptionsState:
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the VM to manage the firewall for.
+        VM ID. Leave empty for cluster level aliases.
         """
         return pulumi.get(self, "vm_id")
 
@@ -470,24 +560,53 @@ class FirewallOptions(pulumi.CustomResource):
                  vm_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Create a FirewallOptions resource with the given unique name, props, and options.
+        Manages firewall options on VM / Container level.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.network.FirewallOptions("example",
+            node_name=proxmox_virtual_environment_vm["example"]["node_name"],
+            vm_id=proxmox_virtual_environment_vm["example"]["vm_id"],
+            dhcp=True,
+            enabled=False,
+            ipfilter=True,
+            log_level_in="info",
+            log_level_out="info",
+            macfilter=False,
+            ndp=True,
+            input_policy="ACCEPT",
+            output_policy="ACCEPT",
+            radv=True,
+            opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_vm["example"]]))
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] container_id: The ID of the container to manage the firewall for.
-        :param pulumi.Input[bool] dhcp: Enable DHCP
-        :param pulumi.Input[bool] enabled: Enable or disable the firewall
-        :param pulumi.Input[str] input_policy: Default policy for incoming traffic
-        :param pulumi.Input[bool] ipfilter: Enable default IP filters. This is equivalent to adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
-               implicitly contain sane default restrictions such as restricting IPv6 link local addresses to the one derived from the
-               interface's MAC address. For containers the configured IP addresses will be implicitly added.
-        :param pulumi.Input[str] log_level_in: Log level for incoming traffic.
-        :param pulumi.Input[str] log_level_out: Log level for outgoing traffic.
-        :param pulumi.Input[bool] macfilter: Enable MAC address filtering
-        :param pulumi.Input[bool] ndp: Enable NDP (Neighbor Discovery Protocol)
-        :param pulumi.Input[str] node_name: The name of the node.
-        :param pulumi.Input[str] output_policy: Default policy for outgoing traffic
-        :param pulumi.Input[bool] radv: Allow sending Router Advertisement
-        :param pulumi.Input[int] vm_id: The ID of the VM to manage the firewall for.
+        :param pulumi.Input[int] container_id: Container ID. Leave empty for cluster level aliases.
+        :param pulumi.Input[bool] dhcp: Enable DHCP.
+        :param pulumi.Input[bool] enabled: Enable or disable the firewall.
+        :param pulumi.Input[str] input_policy: The default input
+               policy (`ACCEPT`, `DROP`, `REJECT`).
+        :param pulumi.Input[bool] ipfilter: Enable default IP filters. This is equivalent to
+               adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
+               implicitly contain sane default restrictions such as restricting IPv6 link
+               local addresses to the one derived from the interface's MAC address. For
+               containers the configured IP addresses will be implicitly added.
+        :param pulumi.Input[str] log_level_in: Log level for incoming
+               packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+        :param pulumi.Input[str] log_level_out: Log level for outgoing
+               packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+        :param pulumi.Input[bool] macfilter: Enable/disable MAC address filter.
+        :param pulumi.Input[bool] ndp: Enable NDP (Neighbor Discovery Protocol).
+        :param pulumi.Input[str] node_name: Node name.
+        :param pulumi.Input[str] output_policy: The default output
+               policy (`ACCEPT`, `DROP`, `REJECT`).
+        :param pulumi.Input[bool] radv: Enable Router Advertisement.
+        :param pulumi.Input[int] vm_id: VM ID. Leave empty for cluster level aliases.
         """
         ...
     @overload
@@ -496,7 +615,30 @@ class FirewallOptions(pulumi.CustomResource):
                  args: FirewallOptionsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a FirewallOptions resource with the given unique name, props, and options.
+        Manages firewall options on VM / Container level.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.network.FirewallOptions("example",
+            node_name=proxmox_virtual_environment_vm["example"]["node_name"],
+            vm_id=proxmox_virtual_environment_vm["example"]["vm_id"],
+            dhcp=True,
+            enabled=False,
+            ipfilter=True,
+            log_level_in="info",
+            log_level_out="info",
+            macfilter=False,
+            ndp=True,
+            input_policy="ACCEPT",
+            output_policy="ACCEPT",
+            radv=True,
+            opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_vm["example"]]))
+        ```
+
         :param str resource_name: The name of the resource.
         :param FirewallOptionsArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -507,6 +649,10 @@ class FirewallOptions(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FirewallOptionsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -579,21 +725,27 @@ class FirewallOptions(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] container_id: The ID of the container to manage the firewall for.
-        :param pulumi.Input[bool] dhcp: Enable DHCP
-        :param pulumi.Input[bool] enabled: Enable or disable the firewall
-        :param pulumi.Input[str] input_policy: Default policy for incoming traffic
-        :param pulumi.Input[bool] ipfilter: Enable default IP filters. This is equivalent to adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
-               implicitly contain sane default restrictions such as restricting IPv6 link local addresses to the one derived from the
-               interface's MAC address. For containers the configured IP addresses will be implicitly added.
-        :param pulumi.Input[str] log_level_in: Log level for incoming traffic.
-        :param pulumi.Input[str] log_level_out: Log level for outgoing traffic.
-        :param pulumi.Input[bool] macfilter: Enable MAC address filtering
-        :param pulumi.Input[bool] ndp: Enable NDP (Neighbor Discovery Protocol)
-        :param pulumi.Input[str] node_name: The name of the node.
-        :param pulumi.Input[str] output_policy: Default policy for outgoing traffic
-        :param pulumi.Input[bool] radv: Allow sending Router Advertisement
-        :param pulumi.Input[int] vm_id: The ID of the VM to manage the firewall for.
+        :param pulumi.Input[int] container_id: Container ID. Leave empty for cluster level aliases.
+        :param pulumi.Input[bool] dhcp: Enable DHCP.
+        :param pulumi.Input[bool] enabled: Enable or disable the firewall.
+        :param pulumi.Input[str] input_policy: The default input
+               policy (`ACCEPT`, `DROP`, `REJECT`).
+        :param pulumi.Input[bool] ipfilter: Enable default IP filters. This is equivalent to
+               adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
+               implicitly contain sane default restrictions such as restricting IPv6 link
+               local addresses to the one derived from the interface's MAC address. For
+               containers the configured IP addresses will be implicitly added.
+        :param pulumi.Input[str] log_level_in: Log level for incoming
+               packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+        :param pulumi.Input[str] log_level_out: Log level for outgoing
+               packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+        :param pulumi.Input[bool] macfilter: Enable/disable MAC address filter.
+        :param pulumi.Input[bool] ndp: Enable NDP (Neighbor Discovery Protocol).
+        :param pulumi.Input[str] node_name: Node name.
+        :param pulumi.Input[str] output_policy: The default output
+               policy (`ACCEPT`, `DROP`, `REJECT`).
+        :param pulumi.Input[bool] radv: Enable Router Advertisement.
+        :param pulumi.Input[int] vm_id: VM ID. Leave empty for cluster level aliases.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -618,7 +770,7 @@ class FirewallOptions(pulumi.CustomResource):
     @pulumi.getter(name="containerId")
     def container_id(self) -> pulumi.Output[Optional[int]]:
         """
-        The ID of the container to manage the firewall for.
+        Container ID. Leave empty for cluster level aliases.
         """
         return pulumi.get(self, "container_id")
 
@@ -626,7 +778,7 @@ class FirewallOptions(pulumi.CustomResource):
     @pulumi.getter
     def dhcp(self) -> pulumi.Output[Optional[bool]]:
         """
-        Enable DHCP
+        Enable DHCP.
         """
         return pulumi.get(self, "dhcp")
 
@@ -634,7 +786,7 @@ class FirewallOptions(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Enable or disable the firewall
+        Enable or disable the firewall.
         """
         return pulumi.get(self, "enabled")
 
@@ -642,7 +794,8 @@ class FirewallOptions(pulumi.CustomResource):
     @pulumi.getter(name="inputPolicy")
     def input_policy(self) -> pulumi.Output[Optional[str]]:
         """
-        Default policy for incoming traffic
+        The default input
+        policy (`ACCEPT`, `DROP`, `REJECT`).
         """
         return pulumi.get(self, "input_policy")
 
@@ -650,9 +803,11 @@ class FirewallOptions(pulumi.CustomResource):
     @pulumi.getter
     def ipfilter(self) -> pulumi.Output[Optional[bool]]:
         """
-        Enable default IP filters. This is equivalent to adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
-        implicitly contain sane default restrictions such as restricting IPv6 link local addresses to the one derived from the
-        interface's MAC address. For containers the configured IP addresses will be implicitly added.
+        Enable default IP filters. This is equivalent to
+        adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
+        implicitly contain sane default restrictions such as restricting IPv6 link
+        local addresses to the one derived from the interface's MAC address. For
+        containers the configured IP addresses will be implicitly added.
         """
         return pulumi.get(self, "ipfilter")
 
@@ -660,7 +815,8 @@ class FirewallOptions(pulumi.CustomResource):
     @pulumi.getter(name="logLevelIn")
     def log_level_in(self) -> pulumi.Output[Optional[str]]:
         """
-        Log level for incoming traffic.
+        Log level for incoming
+        packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
         """
         return pulumi.get(self, "log_level_in")
 
@@ -668,7 +824,8 @@ class FirewallOptions(pulumi.CustomResource):
     @pulumi.getter(name="logLevelOut")
     def log_level_out(self) -> pulumi.Output[Optional[str]]:
         """
-        Log level for outgoing traffic.
+        Log level for outgoing
+        packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
         """
         return pulumi.get(self, "log_level_out")
 
@@ -676,7 +833,7 @@ class FirewallOptions(pulumi.CustomResource):
     @pulumi.getter
     def macfilter(self) -> pulumi.Output[Optional[bool]]:
         """
-        Enable MAC address filtering
+        Enable/disable MAC address filter.
         """
         return pulumi.get(self, "macfilter")
 
@@ -684,7 +841,7 @@ class FirewallOptions(pulumi.CustomResource):
     @pulumi.getter
     def ndp(self) -> pulumi.Output[Optional[bool]]:
         """
-        Enable NDP (Neighbor Discovery Protocol)
+        Enable NDP (Neighbor Discovery Protocol).
         """
         return pulumi.get(self, "ndp")
 
@@ -692,7 +849,7 @@ class FirewallOptions(pulumi.CustomResource):
     @pulumi.getter(name="nodeName")
     def node_name(self) -> pulumi.Output[str]:
         """
-        The name of the node.
+        Node name.
         """
         return pulumi.get(self, "node_name")
 
@@ -700,7 +857,8 @@ class FirewallOptions(pulumi.CustomResource):
     @pulumi.getter(name="outputPolicy")
     def output_policy(self) -> pulumi.Output[Optional[str]]:
         """
-        Default policy for outgoing traffic
+        The default output
+        policy (`ACCEPT`, `DROP`, `REJECT`).
         """
         return pulumi.get(self, "output_policy")
 
@@ -708,7 +866,7 @@ class FirewallOptions(pulumi.CustomResource):
     @pulumi.getter
     def radv(self) -> pulumi.Output[Optional[bool]]:
         """
-        Allow sending Router Advertisement
+        Enable Router Advertisement.
         """
         return pulumi.get(self, "radv")
 
@@ -716,7 +874,7 @@ class FirewallOptions(pulumi.CustomResource):
     @pulumi.getter(name="vmId")
     def vm_id(self) -> pulumi.Output[Optional[int]]:
         """
-        The ID of the VM to manage the firewall for.
+        VM ID. Leave empty for cluster level aliases.
         """
         return pulumi.get(self, "vm_id")
 

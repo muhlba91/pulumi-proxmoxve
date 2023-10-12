@@ -9,23 +9,38 @@ using Pulumi.Serialization;
 
 namespace Pulumi.ProxmoxVE
 {
+    /// <summary>
+    /// Manages the DNS configuration for a specific node.
+    /// 
+    /// ## Important Notes
+    /// 
+    /// Be careful not to use this resource multiple times for the same node.
+    /// 
+    /// ## Import
+    /// 
+    /// Instances can be imported using the `node_name`, e.g., bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import proxmoxve:index/dNS:DNS first_node first-node
+    /// ```
+    /// </summary>
     [ProxmoxVEResourceType("proxmoxve:index/dNS:DNS")]
     public partial class DNS : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The DNS search domain
+        /// The DNS search domain.
         /// </summary>
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
 
         /// <summary>
-        /// The node name
+        /// A node name.
         /// </summary>
         [Output("nodeName")]
         public Output<string> NodeName { get; private set; } = null!;
 
         /// <summary>
-        /// The DNS servers
+        /// The DNS servers.
         /// </summary>
         [Output("servers")]
         public Output<ImmutableArray<string>> Servers { get; private set; } = null!;
@@ -78,13 +93,13 @@ namespace Pulumi.ProxmoxVE
     public sealed class DNSArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The DNS search domain
+        /// The DNS search domain.
         /// </summary>
         [Input("domain", required: true)]
         public Input<string> Domain { get; set; } = null!;
 
         /// <summary>
-        /// The node name
+        /// A node name.
         /// </summary>
         [Input("nodeName", required: true)]
         public Input<string> NodeName { get; set; } = null!;
@@ -93,7 +108,7 @@ namespace Pulumi.ProxmoxVE
         private InputList<string>? _servers;
 
         /// <summary>
-        /// The DNS servers
+        /// The DNS servers.
         /// </summary>
         public InputList<string> Servers
         {
@@ -110,13 +125,13 @@ namespace Pulumi.ProxmoxVE
     public sealed class DNSState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The DNS search domain
+        /// The DNS search domain.
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// The node name
+        /// A node name.
         /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
@@ -125,7 +140,7 @@ namespace Pulumi.ProxmoxVE
         private InputList<string>? _servers;
 
         /// <summary>
-        /// The DNS servers
+        /// The DNS servers.
         /// </summary>
         public InputList<string> Servers
         {

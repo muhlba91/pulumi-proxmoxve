@@ -13,17 +13,43 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FirewallLogRatelimit {
+    /**
+     * @return Initial burst of packages which will always get
+     * logged before the rate is applied (defaults to `5`).
+     * 
+     */
     private @Nullable Integer burst;
+    /**
+     * @return Enable or disable the log rate limit.
+     * 
+     */
     private @Nullable Boolean enabled;
+    /**
+     * @return Frequency with which the burst bucket gets refilled (defaults to `1/second`).
+     * 
+     */
     private @Nullable String rate;
 
     private FirewallLogRatelimit() {}
+    /**
+     * @return Initial burst of packages which will always get
+     * logged before the rate is applied (defaults to `5`).
+     * 
+     */
     public Optional<Integer> burst() {
         return Optional.ofNullable(this.burst);
     }
+    /**
+     * @return Enable or disable the log rate limit.
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return Frequency with which the burst bucket gets refilled (defaults to `1/second`).
+     * 
+     */
     public Optional<String> rate() {
         return Optional.ofNullable(this.rate);
     }

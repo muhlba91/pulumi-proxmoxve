@@ -13,10 +13,26 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     [OutputType]
     public sealed class VirtualMachineClone
     {
+        /// <summary>
+        /// The identifier for the datastore to create the
+        /// cloud-init disk in (defaults to `local-lvm`).
+        /// </summary>
         public readonly string? DatastoreId;
         public readonly bool? Full;
+        /// <summary>
+        /// The name of the node to assign the virtual machine
+        /// to.
+        /// </summary>
         public readonly string? NodeName;
+        /// <summary>
+        /// Number of retries in Proxmox for clone vm.
+        /// Sometimes Proxmox errors with timeout when creating multiple clones at
+        /// once.
+        /// </summary>
         public readonly int? Retries;
+        /// <summary>
+        /// The VM identifier.
+        /// </summary>
         public readonly int VmId;
 
         [OutputConstructor]

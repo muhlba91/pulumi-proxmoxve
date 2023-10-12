@@ -14,9 +14,21 @@ public final class GetTimeResult {
      * 
      */
     private String id;
+    /**
+     * @return The node&#39;s local time.
+     * 
+     */
     private String localTime;
     private String nodeName;
+    /**
+     * @return The node&#39;s time zone.
+     * 
+     */
     private String timeZone;
+    /**
+     * @return The node&#39;s local time formatted as UTC.
+     * 
+     */
     private String utcTime;
 
     private GetTimeResult() {}
@@ -27,15 +39,27 @@ public final class GetTimeResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The node&#39;s local time.
+     * 
+     */
     public String localTime() {
         return this.localTime;
     }
     public String nodeName() {
         return this.nodeName;
     }
+    /**
+     * @return The node&#39;s time zone.
+     * 
+     */
     public String timeZone() {
         return this.timeZone;
     }
+    /**
+     * @return The node&#39;s local time formatted as UTC.
+     * 
+     */
     public String utcTime() {
         return this.utcTime;
     }

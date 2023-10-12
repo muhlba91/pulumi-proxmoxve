@@ -6,6 +6,20 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Retrieves all the host entries from a specific node.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@pulumi/proxmoxve";
+ *
+ * const firstNodeHostEntries = proxmoxve.getHosts({
+ *     nodeName: "first-node",
+ * });
+ * ```
+ */
 export function getHosts(args: GetHostsArgs, opts?: pulumi.InvokeOptions): Promise<GetHostsResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -18,6 +32,9 @@ export function getHosts(args: GetHostsArgs, opts?: pulumi.InvokeOptions): Promi
  * A collection of arguments for invoking getHosts.
  */
 export interface GetHostsArgs {
+    /**
+     * A node name.
+     */
     nodeName: string;
 }
 
@@ -25,9 +42,22 @@ export interface GetHostsArgs {
  * A collection of values returned by getHosts.
  */
 export interface GetHostsResult {
+    /**
+     * The IP addresses.
+     */
     readonly addresses: string[];
+    /**
+     * The SHA1 digest.
+     */
     readonly digest: string;
+    /**
+     * The host entries (conversion of `addresses` and `hostnames` into
+     * objects).
+     */
     readonly entries: outputs.GetHostsEntry[];
+    /**
+     * The hostnames associated with each of the IP addresses.
+     */
     readonly hostnames: string[][];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -35,6 +65,20 @@ export interface GetHostsResult {
     readonly id: string;
     readonly nodeName: string;
 }
+/**
+ * Retrieves all the host entries from a specific node.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@pulumi/proxmoxve";
+ *
+ * const firstNodeHostEntries = proxmoxve.getHosts({
+ *     nodeName: "first-node",
+ * });
+ * ```
+ */
 export function getHostsOutput(args: GetHostsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostsResult> {
     return pulumi.output(args).apply((a: any) => getHosts(a, opts))
 }
@@ -43,5 +87,8 @@ export function getHostsOutput(args: GetHostsOutputArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getHosts.
  */
 export interface GetHostsOutputArgs {
+    /**
+     * A node name.
+     */
     nodeName: pulumi.Input<string>;
 }

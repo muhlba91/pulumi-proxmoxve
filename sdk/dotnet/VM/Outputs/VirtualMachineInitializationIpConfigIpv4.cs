@@ -13,7 +13,15 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     [OutputType]
     public sealed class VirtualMachineInitializationIpConfigIpv4
     {
+        /// <summary>
+        /// The IPv6 address (use `dhcp` for
+        /// autodiscovery).
+        /// </summary>
         public readonly string? Address;
+        /// <summary>
+        /// The IPv6 gateway (must be omitted
+        /// when `dhcp` is used as the address).
+        /// </summary>
         public readonly string? Gateway;
 
         [OutputConstructor]

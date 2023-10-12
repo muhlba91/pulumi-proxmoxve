@@ -13,45 +13,137 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContainerMountPoint {
+    /**
+     * @return Explicitly enable or disable ACL support.
+     * 
+     */
     private @Nullable Boolean acl;
+    /**
+     * @return Whether to include the mount point in backups (only
+     * used for volume mount points).
+     * 
+     */
     private @Nullable Boolean backup;
+    /**
+     * @return List of extra mount options.
+     * 
+     */
     private @Nullable List<String> mountOptions;
+    /**
+     * @return Path to the mount point as seen from inside the
+     * container.
+     * 
+     */
     private String path;
+    /**
+     * @return Enable user quotas inside the container (not supported
+     * with ZFS subvolumes).
+     * 
+     */
     private @Nullable Boolean quota;
+    /**
+     * @return Read-only mount point.
+     * 
+     */
     private @Nullable Boolean readOnly;
+    /**
+     * @return Will include this volume to a storage replica job.
+     * 
+     */
     private @Nullable Boolean replicate;
+    /**
+     * @return Mark this non-volume mount point as available on all
+     * nodes.
+     * 
+     */
     private @Nullable Boolean shared;
+    /**
+     * @return Volume size (only for ZFS storage backed mount points).
+     * Can be specified with a unit suffix (e.g. `10G`).
+     * 
+     */
     private @Nullable String size;
+    /**
+     * @return Volume, device or directory to mount into the
+     * container.
+     * 
+     */
     private String volume;
 
     private ContainerMountPoint() {}
+    /**
+     * @return Explicitly enable or disable ACL support.
+     * 
+     */
     public Optional<Boolean> acl() {
         return Optional.ofNullable(this.acl);
     }
+    /**
+     * @return Whether to include the mount point in backups (only
+     * used for volume mount points).
+     * 
+     */
     public Optional<Boolean> backup() {
         return Optional.ofNullable(this.backup);
     }
+    /**
+     * @return List of extra mount options.
+     * 
+     */
     public List<String> mountOptions() {
         return this.mountOptions == null ? List.of() : this.mountOptions;
     }
+    /**
+     * @return Path to the mount point as seen from inside the
+     * container.
+     * 
+     */
     public String path() {
         return this.path;
     }
+    /**
+     * @return Enable user quotas inside the container (not supported
+     * with ZFS subvolumes).
+     * 
+     */
     public Optional<Boolean> quota() {
         return Optional.ofNullable(this.quota);
     }
+    /**
+     * @return Read-only mount point.
+     * 
+     */
     public Optional<Boolean> readOnly() {
         return Optional.ofNullable(this.readOnly);
     }
+    /**
+     * @return Will include this volume to a storage replica job.
+     * 
+     */
     public Optional<Boolean> replicate() {
         return Optional.ofNullable(this.replicate);
     }
+    /**
+     * @return Mark this non-volume mount point as available on all
+     * nodes.
+     * 
+     */
     public Optional<Boolean> shared() {
         return Optional.ofNullable(this.shared);
     }
+    /**
+     * @return Volume size (only for ZFS storage backed mount points).
+     * Can be specified with a unit suffix (e.g. `10G`).
+     * 
+     */
     public Optional<String> size() {
         return Optional.ofNullable(this.size);
     }
+    /**
+     * @return Volume, device or directory to mount into the
+     * container.
+     * 
+     */
     public String volume() {
         return this.volume;
     }

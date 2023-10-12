@@ -16,14 +16,14 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
     public static final PoolArgs Empty = new PoolArgs();
 
     /**
-     * The pool comment
+     * The pool comment.
      * 
      */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
     /**
-     * @return The pool comment
+     * @return The pool comment.
      * 
      */
     public Optional<Output<String>> comment() {
@@ -31,14 +31,14 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The pool id
+     * The pool identifier.
      * 
      */
     @Import(name="poolId", required=true)
     private Output<String> poolId;
 
     /**
-     * @return The pool id
+     * @return The pool identifier.
      * 
      */
     public Output<String> poolId() {
@@ -71,7 +71,7 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comment The pool comment
+         * @param comment The pool comment.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comment The pool comment
+         * @param comment The pool comment.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param poolId The pool id
+         * @param poolId The pool identifier.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param poolId The pool id
+         * @param poolId The pool identifier.
          * 
          * @return builder
          * 

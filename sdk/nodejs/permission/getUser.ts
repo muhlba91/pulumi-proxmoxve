@@ -6,6 +6,20 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Retrieves information about a specific user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@pulumi/proxmoxve";
+ *
+ * const operationsUser = proxmoxve.Permission.getUser({
+ *     userId: "operation@pam",
+ * });
+ * ```
+ */
 export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -18,6 +32,9 @@ export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise
  * A collection of arguments for invoking getUser.
  */
 export interface GetUserArgs {
+    /**
+     * The user identifier.
+     */
     userId: string;
 }
 
@@ -25,21 +42,62 @@ export interface GetUserArgs {
  * A collection of values returned by getUser.
  */
 export interface GetUserResult {
+    /**
+     * The access control list.
+     */
     readonly acls: outputs.Permission.GetUserAcl[];
+    /**
+     * The user comment.
+     */
     readonly comment: string;
+    /**
+     * The user's email address.
+     */
     readonly email: string;
+    /**
+     * Whether the user account is enabled.
+     */
     readonly enabled: boolean;
+    /**
+     * The user account's expiration date (RFC 3339).
+     */
     readonly expirationDate: string;
+    /**
+     * The user's first name.
+     */
     readonly firstName: string;
+    /**
+     * The user's groups.
+     */
     readonly groups: string[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The user's keys.
+     */
     readonly keys: string;
+    /**
+     * The user's last name.
+     */
     readonly lastName: string;
     readonly userId: string;
 }
+/**
+ * Retrieves information about a specific user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@pulumi/proxmoxve";
+ *
+ * const operationsUser = proxmoxve.Permission.getUser({
+ *     userId: "operation@pam",
+ * });
+ * ```
+ */
 export function getUserOutput(args: GetUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserResult> {
     return pulumi.output(args).apply((a: any) => getUser(a, opts))
 }
@@ -48,5 +106,8 @@ export function getUserOutput(args: GetUserOutputArgs, opts?: pulumi.InvokeOptio
  * A collection of arguments for invoking getUser.
  */
 export interface GetUserOutputArgs {
+    /**
+     * The user identifier.
+     */
     userId: pulumi.Input<string>;
 }

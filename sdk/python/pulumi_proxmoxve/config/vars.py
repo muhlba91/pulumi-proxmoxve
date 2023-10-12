@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -57,6 +57,13 @@ class _ExportableConfig(types.ModuleType):
         The SSH configuration for the Proxmox nodes.
         """
         return __config__.get('ssh')
+
+    @property
+    def tmp_dir(self) -> Optional[str]:
+        """
+        The alternative temporary directory.
+        """
+        return __config__.get('tmpDir')
 
     @property
     def username(self) -> Optional[str]:

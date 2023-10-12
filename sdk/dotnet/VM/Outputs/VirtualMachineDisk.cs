@@ -13,15 +13,56 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     [OutputType]
     public sealed class VirtualMachineDisk
     {
+        /// <summary>
+        /// The cache type (defaults to `none`).
+        /// </summary>
         public readonly string? Cache;
+        /// <summary>
+        /// The identifier for the datastore to create the
+        /// cloud-init disk in (defaults to `local-lvm`).
+        /// </summary>
         public readonly string? DatastoreId;
+        /// <summary>
+        /// Whether to pass discard/trim requests to the
+        /// underlying storage. Supported values are `on`/`ignore` (defaults
+        /// to `ignore`).
+        /// </summary>
         public readonly string? Discard;
+        /// <summary>
+        /// The file format.
+        /// </summary>
         public readonly string? FileFormat;
+        /// <summary>
+        /// The file ID for a disk image (experimental -
+        /// might cause high CPU utilization during import, especially with large
+        /// disk images).
+        /// </summary>
         public readonly string? FileId;
+        /// <summary>
+        /// The hardware interface to connect the cloud-init
+        /// image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+        /// detected if the setting is missing but a cloud-init image is present,
+        /// otherwise defaults to `ide2`.
+        /// </summary>
         public readonly string Interface;
+        /// <summary>
+        /// Whether to use iothreads for this disk (defaults
+        /// to `false`).
+        /// </summary>
         public readonly bool? Iothread;
+        /// <summary>
+        /// The disk size in gigabytes (defaults to `8`).
+        /// </summary>
         public readonly int? Size;
+        /// <summary>
+        /// The speed limits.
+        /// </summary>
         public readonly Outputs.VirtualMachineDiskSpeed? Speed;
+        /// <summary>
+        /// Whether to use an SSD emulation option for this disk (
+        /// defaults to `false`). Note that SSD emulation is not supported on VirtIO
+        /// Block drives.
+        /// </summary>
         public readonly bool? Ssd;
 
         [OutputConstructor]

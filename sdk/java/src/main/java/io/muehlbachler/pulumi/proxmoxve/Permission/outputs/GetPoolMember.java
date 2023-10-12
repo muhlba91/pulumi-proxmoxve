@@ -10,25 +10,65 @@ import java.util.Objects;
 
 @CustomType
 public final class GetPoolMember {
+    /**
+     * @return The datastore identifier.
+     * 
+     */
     private String datastoreId;
+    /**
+     * @return The member identifier.
+     * 
+     */
     private String id;
+    /**
+     * @return The node name.
+     * 
+     */
     private String nodeName;
+    /**
+     * @return The member type.
+     * 
+     */
     private String type;
+    /**
+     * @return The virtual machine identifier.
+     * 
+     */
     private Integer vmId;
 
     private GetPoolMember() {}
+    /**
+     * @return The datastore identifier.
+     * 
+     */
     public String datastoreId() {
         return this.datastoreId;
     }
+    /**
+     * @return The member identifier.
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return The node name.
+     * 
+     */
     public String nodeName() {
         return this.nodeName;
     }
+    /**
+     * @return The member type.
+     * 
+     */
     public String type() {
         return this.type;
     }
+    /**
+     * @return The virtual machine identifier.
+     * 
+     */
     public Integer vmId() {
         return this.vmId;
     }

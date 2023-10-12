@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -60,36 +60,57 @@ class GetUserResult:
     @property
     @pulumi.getter
     def acls(self) -> Sequence['outputs.GetUserAclResult']:
+        """
+        The access control list.
+        """
         return pulumi.get(self, "acls")
 
     @property
     @pulumi.getter
     def comment(self) -> str:
+        """
+        The user comment.
+        """
         return pulumi.get(self, "comment")
 
     @property
     @pulumi.getter
     def email(self) -> str:
+        """
+        The user's email address.
+        """
         return pulumi.get(self, "email")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
+        """
+        Whether the user account is enabled.
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="expirationDate")
     def expiration_date(self) -> str:
+        """
+        The user account's expiration date (RFC 3339).
+        """
         return pulumi.get(self, "expiration_date")
 
     @property
     @pulumi.getter(name="firstName")
     def first_name(self) -> str:
+        """
+        The user's first name.
+        """
         return pulumi.get(self, "first_name")
 
     @property
     @pulumi.getter
     def groups(self) -> Sequence[str]:
+        """
+        The user's groups.
+        """
         return pulumi.get(self, "groups")
 
     @property
@@ -103,11 +124,17 @@ class GetUserResult:
     @property
     @pulumi.getter
     def keys(self) -> str:
+        """
+        The user's keys.
+        """
         return pulumi.get(self, "keys")
 
     @property
     @pulumi.getter(name="lastName")
     def last_name(self) -> str:
+        """
+        The user's last name.
+        """
         return pulumi.get(self, "last_name")
 
     @property
@@ -138,7 +165,19 @@ class AwaitableGetUserResult(GetUserResult):
 def get_user(user_id: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves information about a specific user.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    operations_user = proxmoxve.Permission.get_user(user_id="operation@pam")
+    ```
+
+
+    :param str user_id: The user identifier.
     """
     __args__ = dict()
     __args__['userId'] = user_id
@@ -163,6 +202,18 @@ def get_user(user_id: Optional[str] = None,
 def get_user_output(user_id: Optional[pulumi.Input[str]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves information about a specific user.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    operations_user = proxmoxve.Permission.get_user(user_id="operation@pam")
+    ```
+
+
+    :param str user_id: The user identifier.
     """
     ...

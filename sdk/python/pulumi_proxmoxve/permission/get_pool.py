@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -39,6 +39,9 @@ class GetPoolResult:
     @property
     @pulumi.getter
     def comment(self) -> str:
+        """
+        The pool comment.
+        """
         return pulumi.get(self, "comment")
 
     @property
@@ -52,6 +55,9 @@ class GetPoolResult:
     @property
     @pulumi.getter
     def members(self) -> Sequence['outputs.GetPoolMemberResult']:
+        """
+        The pool members.
+        """
         return pulumi.get(self, "members")
 
     @property
@@ -75,7 +81,19 @@ class AwaitableGetPoolResult(GetPoolResult):
 def get_pool(pool_id: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPoolResult:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves information about a specific resource pool.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    operations_pool = proxmoxve.Permission.get_pool(pool_id="operations")
+    ```
+
+
+    :param str pool_id: The pool identifier.
     """
     __args__ = dict()
     __args__['poolId'] = pool_id
@@ -93,6 +111,18 @@ def get_pool(pool_id: Optional[str] = None,
 def get_pool_output(pool_id: Optional[pulumi.Input[str]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPoolResult]:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves information about a specific resource pool.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    operations_pool = proxmoxve.Permission.get_pool(pool_id="operations")
+    ```
+
+
+    :param str pool_id: The pool identifier.
     """
     ...

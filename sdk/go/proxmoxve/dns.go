@@ -13,14 +13,29 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Manages the DNS configuration for a specific node.
+//
+// ## Important Notes
+//
+// Be careful not to use this resource multiple times for the same node.
+//
+// ## Import
+//
+// Instances can be imported using the `node_name`, e.g., bash
+//
+// ```sh
+//
+//	$ pulumi import proxmoxve:index/dNS:DNS first_node first-node
+//
+// ```
 type DNS struct {
 	pulumi.CustomResourceState
 
-	// The DNS search domain
+	// The DNS search domain.
 	Domain pulumi.StringOutput `pulumi:"domain"`
-	// The node name
+	// A node name.
 	NodeName pulumi.StringOutput `pulumi:"nodeName"`
-	// The DNS servers
+	// The DNS servers.
 	Servers pulumi.StringArrayOutput `pulumi:"servers"`
 }
 
@@ -60,20 +75,20 @@ func GetDNS(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DNS resources.
 type dnsState struct {
-	// The DNS search domain
+	// The DNS search domain.
 	Domain *string `pulumi:"domain"`
-	// The node name
+	// A node name.
 	NodeName *string `pulumi:"nodeName"`
-	// The DNS servers
+	// The DNS servers.
 	Servers []string `pulumi:"servers"`
 }
 
 type DNSState struct {
-	// The DNS search domain
+	// The DNS search domain.
 	Domain pulumi.StringPtrInput
-	// The node name
+	// A node name.
 	NodeName pulumi.StringPtrInput
-	// The DNS servers
+	// The DNS servers.
 	Servers pulumi.StringArrayInput
 }
 
@@ -82,21 +97,21 @@ func (DNSState) ElementType() reflect.Type {
 }
 
 type dnsArgs struct {
-	// The DNS search domain
+	// The DNS search domain.
 	Domain string `pulumi:"domain"`
-	// The node name
+	// A node name.
 	NodeName string `pulumi:"nodeName"`
-	// The DNS servers
+	// The DNS servers.
 	Servers []string `pulumi:"servers"`
 }
 
 // The set of arguments for constructing a DNS resource.
 type DNSArgs struct {
-	// The DNS search domain
+	// The DNS search domain.
 	Domain pulumi.StringInput
-	// The node name
+	// A node name.
 	NodeName pulumi.StringInput
-	// The DNS servers
+	// The DNS servers.
 	Servers pulumi.StringArrayInput
 }
 
@@ -211,17 +226,17 @@ func (o DNSOutput) ToOutput(ctx context.Context) pulumix.Output[*DNS] {
 	}
 }
 
-// The DNS search domain
+// The DNS search domain.
 func (o DNSOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v *DNS) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
 }
 
-// The node name
+// A node name.
 func (o DNSOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DNS) pulumi.StringOutput { return v.NodeName }).(pulumi.StringOutput)
 }
 
-// The DNS servers
+// The DNS servers.
 func (o DNSOutput) Servers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DNS) pulumi.StringArrayOutput { return v.Servers }).(pulumi.StringArrayOutput)
 }

@@ -15,15 +15,28 @@ namespace Pulumi.ProxmoxVE.Storage.Inputs
         [Input("changed")]
         public Input<bool>? Changed { get; set; }
 
+        /// <summary>
+        /// The SHA256 checksum of the source file.
+        /// </summary>
         [Input("checksum")]
         public Input<string>? Checksum { get; set; }
 
+        /// <summary>
+        /// The file name.
+        /// </summary>
         [Input("fileName")]
         public Input<string>? FileName { get; set; }
 
+        /// <summary>
+        /// Whether to skip the TLS verification step for
+        /// HTTPS sources (defaults to `false`).
+        /// </summary>
         [Input("insecure")]
         public Input<bool>? Insecure { get; set; }
 
+        /// <summary>
+        /// A path to a local file or a URL.
+        /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
 

@@ -16,14 +16,14 @@ public final class TimeState extends com.pulumi.resources.ResourceArgs {
     public static final TimeState Empty = new TimeState();
 
     /**
-     * The local timestamp
+     * The node&#39;s local time.
      * 
      */
     @Import(name="localTime")
     private @Nullable Output<String> localTime;
 
     /**
-     * @return The local timestamp
+     * @return The node&#39;s local time.
      * 
      */
     public Optional<Output<String>> localTime() {
@@ -31,14 +31,14 @@ public final class TimeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The node name
+     * A node name.
      * 
      */
     @Import(name="nodeName")
     private @Nullable Output<String> nodeName;
 
     /**
-     * @return The node name
+     * @return A node name.
      * 
      */
     public Optional<Output<String>> nodeName() {
@@ -46,14 +46,14 @@ public final class TimeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The time zone
+     * The node&#39;s time zone.
      * 
      */
     @Import(name="timeZone")
     private @Nullable Output<String> timeZone;
 
     /**
-     * @return The time zone
+     * @return The node&#39;s time zone.
      * 
      */
     public Optional<Output<String>> timeZone() {
@@ -61,14 +61,14 @@ public final class TimeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The UTC timestamp
+     * The node&#39;s local time formatted as UTC.
      * 
      */
     @Import(name="utcTime")
     private @Nullable Output<String> utcTime;
 
     /**
-     * @return The UTC timestamp
+     * @return The node&#39;s local time formatted as UTC.
      * 
      */
     public Optional<Output<String>> utcTime() {
@@ -103,7 +103,7 @@ public final class TimeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param localTime The local timestamp
+         * @param localTime The node&#39;s local time.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class TimeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param localTime The local timestamp
+         * @param localTime The node&#39;s local time.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class TimeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeName The node name
+         * @param nodeName A node name.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class TimeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeName The node name
+         * @param nodeName A node name.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class TimeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeZone The time zone
+         * @param timeZone The node&#39;s time zone.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class TimeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeZone The time zone
+         * @param timeZone The node&#39;s time zone.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class TimeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param utcTime The UTC timestamp
+         * @param utcTime The node&#39;s local time formatted as UTC.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class TimeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param utcTime The UTC timestamp
+         * @param utcTime The node&#39;s local time formatted as UTC.
          * 
          * @return builder
          * 

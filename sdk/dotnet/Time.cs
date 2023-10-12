@@ -9,29 +9,59 @@ using Pulumi.Serialization;
 
 namespace Pulumi.ProxmoxVE
 {
+    /// <summary>
+    /// Manages the time for a specific node.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var firstNodeTime = new ProxmoxVE.Time("firstNodeTime", new()
+    ///     {
+    ///         NodeName = "first-node",
+    ///         TimeZone = "UTC",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Instances can be imported using the `node_name`, e.g., bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import proxmoxve:index/time:Time first_node first-node
+    /// ```
+    /// </summary>
     [ProxmoxVEResourceType("proxmoxve:index/time:Time")]
     public partial class Time : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The local timestamp
+        /// The node's local time.
         /// </summary>
         [Output("localTime")]
         public Output<string> LocalTime { get; private set; } = null!;
 
         /// <summary>
-        /// The node name
+        /// A node name.
         /// </summary>
         [Output("nodeName")]
         public Output<string> NodeName { get; private set; } = null!;
 
         /// <summary>
-        /// The time zone
+        /// The node's time zone.
         /// </summary>
         [Output("timeZone")]
         public Output<string> TimeZone { get; private set; } = null!;
 
         /// <summary>
-        /// The UTC timestamp
+        /// The node's local time formatted as UTC.
         /// </summary>
         [Output("utcTime")]
         public Output<string> UtcTime { get; private set; } = null!;
@@ -84,13 +114,13 @@ namespace Pulumi.ProxmoxVE
     public sealed class TimeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The node name
+        /// A node name.
         /// </summary>
         [Input("nodeName", required: true)]
         public Input<string> NodeName { get; set; } = null!;
 
         /// <summary>
-        /// The time zone
+        /// The node's time zone.
         /// </summary>
         [Input("timeZone", required: true)]
         public Input<string> TimeZone { get; set; } = null!;
@@ -104,25 +134,25 @@ namespace Pulumi.ProxmoxVE
     public sealed class TimeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The local timestamp
+        /// The node's local time.
         /// </summary>
         [Input("localTime")]
         public Input<string>? LocalTime { get; set; }
 
         /// <summary>
-        /// The node name
+        /// A node name.
         /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
 
         /// <summary>
-        /// The time zone
+        /// The node's time zone.
         /// </summary>
         [Input("timeZone")]
         public Input<string>? TimeZone { get; set; }
 
         /// <summary>
-        /// The UTC timestamp
+        /// The node's local time formatted as UTC.
         /// </summary>
         [Input("utcTime")]
         public Input<string>? UtcTime { get; set; }

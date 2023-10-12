@@ -12,6 +12,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Retrieves all the host entries from a specific node.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := proxmoxve.LookupHosts(ctx, &proxmoxve.LookupHostsArgs{
+//				NodeName: "first-node",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupHosts(ctx *pulumi.Context, args *LookupHostsArgs, opts ...pulumi.InvokeOption) (*LookupHostsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupHostsResult
@@ -24,15 +51,21 @@ func LookupHosts(ctx *pulumi.Context, args *LookupHostsArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getHosts.
 type LookupHostsArgs struct {
+	// A node name.
 	NodeName string `pulumi:"nodeName"`
 }
 
 // A collection of values returned by getHosts.
 type LookupHostsResult struct {
-	Addresses []string        `pulumi:"addresses"`
-	Digest    string          `pulumi:"digest"`
-	Entries   []GetHostsEntry `pulumi:"entries"`
-	Hostnames [][]string      `pulumi:"hostnames"`
+	// The IP addresses.
+	Addresses []string `pulumi:"addresses"`
+	// The SHA1 digest.
+	Digest string `pulumi:"digest"`
+	// The host entries (conversion of `addresses` and `hostnames` into
+	// objects).
+	Entries []GetHostsEntry `pulumi:"entries"`
+	// The hostnames associated with each of the IP addresses.
+	Hostnames [][]string `pulumi:"hostnames"`
 	// The provider-assigned unique ID for this managed resource.
 	Id       string `pulumi:"id"`
 	NodeName string `pulumi:"nodeName"`
@@ -53,6 +86,7 @@ func LookupHostsOutput(ctx *pulumi.Context, args LookupHostsOutputArgs, opts ...
 
 // A collection of arguments for invoking getHosts.
 type LookupHostsOutputArgs struct {
+	// A node name.
 	NodeName pulumi.StringInput `pulumi:"nodeName"`
 }
 
@@ -81,18 +115,23 @@ func (o LookupHostsResultOutput) ToOutput(ctx context.Context) pulumix.Output[Lo
 	}
 }
 
+// The IP addresses.
 func (o LookupHostsResultOutput) Addresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupHostsResult) []string { return v.Addresses }).(pulumi.StringArrayOutput)
 }
 
+// The SHA1 digest.
 func (o LookupHostsResultOutput) Digest() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHostsResult) string { return v.Digest }).(pulumi.StringOutput)
 }
 
+// The host entries (conversion of `addresses` and `hostnames` into
+// objects).
 func (o LookupHostsResultOutput) Entries() GetHostsEntryArrayOutput {
 	return o.ApplyT(func(v LookupHostsResult) []GetHostsEntry { return v.Entries }).(GetHostsEntryArrayOutput)
 }
 
+// The hostnames associated with each of the IP addresses.
 func (o LookupHostsResultOutput) Hostnames() pulumi.StringArrayArrayOutput {
 	return o.ApplyT(func(v LookupHostsResult) [][]string { return v.Hostnames }).(pulumi.StringArrayArrayOutput)
 }

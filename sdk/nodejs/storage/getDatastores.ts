@@ -4,6 +4,20 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Retrieves information about all the datastores available to a specific node.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@pulumi/proxmoxve";
+ *
+ * const firstNode = proxmoxve.Storage.getDatastores({
+ *     nodeName: "first-node",
+ * });
+ * ```
+ */
 export function getDatastores(args: GetDatastoresArgs, opts?: pulumi.InvokeOptions): Promise<GetDatastoresResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -16,6 +30,9 @@ export function getDatastores(args: GetDatastoresArgs, opts?: pulumi.InvokeOptio
  * A collection of arguments for invoking getDatastores.
  */
 export interface GetDatastoresArgs {
+    /**
+     * A node name.
+     */
     nodeName: string;
 }
 
@@ -23,21 +40,62 @@ export interface GetDatastoresArgs {
  * A collection of values returned by getDatastores.
  */
 export interface GetDatastoresResult {
+    /**
+     * Whether the datastore is active.
+     */
     readonly actives: boolean[];
+    /**
+     * The allowed content types.
+     */
     readonly contentTypes: string[][];
+    /**
+     * The datastore identifiers.
+     */
     readonly datastoreIds: string[];
+    /**
+     * Whether the datastore is enabled.
+     */
     readonly enableds: boolean[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly nodeName: string;
+    /**
+     * Whether the datastore is shared.
+     */
     readonly shareds: boolean[];
+    /**
+     * The available space in bytes.
+     */
     readonly spaceAvailables: number[];
+    /**
+     * The total space in bytes.
+     */
     readonly spaceTotals: number[];
+    /**
+     * The used space in bytes.
+     */
     readonly spaceUseds: number[];
+    /**
+     * The storage types.
+     */
     readonly types: string[];
 }
+/**
+ * Retrieves information about all the datastores available to a specific node.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@pulumi/proxmoxve";
+ *
+ * const firstNode = proxmoxve.Storage.getDatastores({
+ *     nodeName: "first-node",
+ * });
+ * ```
+ */
 export function getDatastoresOutput(args: GetDatastoresOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatastoresResult> {
     return pulumi.output(args).apply((a: any) => getDatastores(a, opts))
 }
@@ -46,5 +104,8 @@ export function getDatastoresOutput(args: GetDatastoresOutputArgs, opts?: pulumi
  * A collection of arguments for invoking getDatastores.
  */
 export interface GetDatastoresOutputArgs {
+    /**
+     * A node name.
+     */
     nodeName: pulumi.Input<string>;
 }

@@ -14,6 +14,10 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     public sealed class VirtualMachineStartup
     {
         public readonly int? DownDelay;
+        /// <summary>
+        /// A non-negative number defining the general startup
+        /// order.
+        /// </summary>
         public readonly int? Order;
         public readonly int? UpDelay;
 

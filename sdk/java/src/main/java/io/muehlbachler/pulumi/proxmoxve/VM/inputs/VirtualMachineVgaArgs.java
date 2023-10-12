@@ -17,23 +17,49 @@ public final class VirtualMachineVgaArgs extends com.pulumi.resources.ResourceAr
 
     public static final VirtualMachineVgaArgs Empty = new VirtualMachineVgaArgs();
 
+    /**
+     * Whether to enable the VGA device (defaults
+     * to `true`).
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether to enable the VGA device (defaults
+     * to `true`).
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * The VGA memory in megabytes (defaults to `16`).
+     * 
+     */
     @Import(name="memory")
     private @Nullable Output<Integer> memory;
 
+    /**
+     * @return The VGA memory in megabytes (defaults to `16`).
+     * 
+     */
     public Optional<Output<Integer>> memory() {
         return Optional.ofNullable(this.memory);
     }
 
+    /**
+     * The VGA type (defaults to `std`).
+     * 
+     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
+    /**
+     * @return The VGA type (defaults to `std`).
+     * 
+     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -64,29 +90,67 @@ public final class VirtualMachineVgaArgs extends com.pulumi.resources.ResourceAr
             $ = new VirtualMachineVgaArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether to enable the VGA device (defaults
+         * to `true`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether to enable the VGA device (defaults
+         * to `true`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param memory The VGA memory in megabytes (defaults to `16`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder memory(@Nullable Output<Integer> memory) {
             $.memory = memory;
             return this;
         }
 
+        /**
+         * @param memory The VGA memory in megabytes (defaults to `16`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder memory(Integer memory) {
             return memory(Output.of(memory));
         }
 
+        /**
+         * @param type The VGA type (defaults to `std`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type The VGA type (defaults to `std`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

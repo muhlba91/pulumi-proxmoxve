@@ -35,14 +35,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     public static final VirtualMachineArgs Empty = new VirtualMachineArgs();
 
     /**
-     * Whether to enable ACPI
+     * Whether to enable ACPI (defaults to `true`).
      * 
      */
     @Import(name="acpi")
     private @Nullable Output<Boolean> acpi;
 
     /**
-     * @return Whether to enable ACPI
+     * @return Whether to enable ACPI (defaults to `true`).
      * 
      */
     public Optional<Output<Boolean>> acpi() {
@@ -50,14 +50,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The QEMU agent configuration
+     * The QEMU agent configuration.
      * 
      */
     @Import(name="agent")
     private @Nullable Output<VirtualMachineAgentArgs> agent;
 
     /**
-     * @return The QEMU agent configuration
+     * @return The QEMU agent configuration.
      * 
      */
     public Optional<Output<VirtualMachineAgentArgs>> agent() {
@@ -65,14 +65,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The audio devices
+     * An audio device.
      * 
      */
     @Import(name="audioDevice")
     private @Nullable Output<VirtualMachineAudioDeviceArgs> audioDevice;
 
     /**
-     * @return The audio devices
+     * @return An audio device.
      * 
      */
     public Optional<Output<VirtualMachineAudioDeviceArgs>> audioDevice() {
@@ -80,14 +80,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The BIOS implementation
+     * The BIOS implementation (defaults to `seabios`).
      * 
      */
     @Import(name="bios")
     private @Nullable Output<String> bios;
 
     /**
-     * @return The BIOS implementation
+     * @return The BIOS implementation (defaults to `seabios`).
      * 
      */
     public Optional<Output<String>> bios() {
@@ -95,14 +95,16 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The guest will attempt to boot from devices in the order they appear here
+     * Specify a list of devices to boot from in the order
+     * they appear in the list (defaults to `[]`).
      * 
      */
     @Import(name="bootOrders")
     private @Nullable Output<List<String>> bootOrders;
 
     /**
-     * @return The guest will attempt to boot from devices in the order they appear here
+     * @return Specify a list of devices to boot from in the order
+     * they appear in the list (defaults to `[]`).
      * 
      */
     public Optional<Output<List<String>>> bootOrders() {
@@ -110,14 +112,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The CDROM drive
+     * The CDROM configuration.
      * 
      */
     @Import(name="cdrom")
     private @Nullable Output<VirtualMachineCdromArgs> cdrom;
 
     /**
-     * @return The CDROM drive
+     * @return The CDROM configuration.
      * 
      */
     public Optional<Output<VirtualMachineCdromArgs>> cdrom() {
@@ -125,14 +127,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The cloning configuration
+     * The cloning configuration.
      * 
      */
     @Import(name="clone")
     private @Nullable Output<VirtualMachineCloneArgs> clone;
 
     /**
-     * @return The cloning configuration
+     * @return The cloning configuration.
      * 
      */
     public Optional<Output<VirtualMachineCloneArgs>> clone_() {
@@ -140,14 +142,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The CPU allocation
+     * The CPU configuration.
      * 
      */
     @Import(name="cpu")
     private @Nullable Output<VirtualMachineCpuArgs> cpu;
 
     /**
-     * @return The CPU allocation
+     * @return The CPU configuration.
      * 
      */
     public Optional<Output<VirtualMachineCpuArgs>> cpu() {
@@ -155,14 +157,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The description
+     * The description.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description
+     * @return The description.
      * 
      */
     public Optional<Output<String>> description() {
@@ -170,14 +172,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The disk devices
+     * A disk (multiple blocks supported).
      * 
      */
     @Import(name="disks")
     private @Nullable Output<List<VirtualMachineDiskArgs>> disks;
 
     /**
-     * @return The disk devices
+     * @return A disk (multiple blocks supported).
      * 
      */
     public Optional<Output<List<VirtualMachineDiskArgs>>> disks() {
@@ -185,14 +187,16 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The efidisk device
+     * The efi disk device (required if `bios` is set
+     * to `ovmf`)
      * 
      */
     @Import(name="efiDisk")
     private @Nullable Output<VirtualMachineEfiDiskArgs> efiDisk;
 
     /**
-     * @return The efidisk device
+     * @return The efi disk device (required if `bios` is set
+     * to `ovmf`)
      * 
      */
     public Optional<Output<VirtualMachineEfiDiskArgs>> efiDisk() {
@@ -200,14 +204,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The Host PCI devices mapped to the VM
+     * A host PCI device mapping (multiple blocks supported).
      * 
      */
     @Import(name="hostpcis")
     private @Nullable Output<List<VirtualMachineHostpciArgs>> hostpcis;
 
     /**
-     * @return The Host PCI devices mapped to the VM
+     * @return A host PCI device mapping (multiple blocks supported).
      * 
      */
     public Optional<Output<List<VirtualMachineHostpciArgs>>> hostpcis() {
@@ -215,14 +219,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The cloud-init configuration
+     * The cloud-init configuration.
      * 
      */
     @Import(name="initialization")
     private @Nullable Output<VirtualMachineInitializationArgs> initialization;
 
     /**
-     * @return The cloud-init configuration
+     * @return The cloud-init configuration.
      * 
      */
     public Optional<Output<VirtualMachineInitializationArgs>> initialization() {
@@ -230,14 +234,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The keyboard layout
+     * The keyboard layout (defaults to `en-us`).
      * 
      */
     @Import(name="keyboardLayout")
     private @Nullable Output<String> keyboardLayout;
 
     /**
-     * @return The keyboard layout
+     * @return The keyboard layout (defaults to `en-us`).
      * 
      */
     public Optional<Output<String>> keyboardLayout() {
@@ -245,14 +249,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The args implementation
+     * Arbitrary arguments passed to kvm.
      * 
      */
     @Import(name="kvmArguments")
     private @Nullable Output<String> kvmArguments;
 
     /**
-     * @return The args implementation
+     * @return Arbitrary arguments passed to kvm.
      * 
      */
     public Optional<Output<String>> kvmArguments() {
@@ -260,14 +264,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The VM machine type, either default i440fx or q35
+     * The VM machine type (defaults to `i440fx`).
      * 
      */
     @Import(name="machine")
     private @Nullable Output<String> machine;
 
     /**
-     * @return The VM machine type, either default i440fx or q35
+     * @return The VM machine type (defaults to `i440fx`).
      * 
      */
     public Optional<Output<String>> machine() {
@@ -275,14 +279,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The memory allocation
+     * The VGA memory in megabytes (defaults to `16`).
      * 
      */
     @Import(name="memory")
     private @Nullable Output<VirtualMachineMemoryArgs> memory;
 
     /**
-     * @return The memory allocation
+     * @return The VGA memory in megabytes (defaults to `16`).
      * 
      */
     public Optional<Output<VirtualMachineMemoryArgs>> memory() {
@@ -290,14 +294,16 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Whether to migrate the VM on node change instead of re-creating it
+     * Migrate the VM on node change instead of re-creating
+     * it (defaults to `false`).
      * 
      */
     @Import(name="migrate")
     private @Nullable Output<Boolean> migrate;
 
     /**
-     * @return Whether to migrate the VM on node change instead of re-creating it
+     * @return Migrate the VM on node change instead of re-creating
+     * it (defaults to `false`).
      * 
      */
     public Optional<Output<Boolean>> migrate() {
@@ -305,14 +311,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name
+     * The virtual machine name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name
+     * @return The virtual machine name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -320,14 +326,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The network devices
+     * A network device (multiple blocks supported).
      * 
      */
     @Import(name="networkDevices")
     private @Nullable Output<List<VirtualMachineNetworkDeviceArgs>> networkDevices;
 
     /**
-     * @return The network devices
+     * @return A network device (multiple blocks supported).
      * 
      */
     public Optional<Output<List<VirtualMachineNetworkDeviceArgs>>> networkDevices() {
@@ -335,14 +341,16 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The node name
+     * The name of the node to assign the virtual machine
+     * to.
      * 
      */
     @Import(name="nodeName", required=true)
     private Output<String> nodeName;
 
     /**
-     * @return The node name
+     * @return The name of the node to assign the virtual machine
+     * to.
      * 
      */
     public Output<String> nodeName() {
@@ -350,14 +358,16 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Start VM on Node boot
+     * Specifies whether a VM will be started during system
+     * boot. (defaults to `true`)
      * 
      */
     @Import(name="onBoot")
     private @Nullable Output<Boolean> onBoot;
 
     /**
-     * @return Start VM on Node boot
+     * @return Specifies whether a VM will be started during system
+     * boot. (defaults to `true`)
      * 
      */
     public Optional<Output<Boolean>> onBoot() {
@@ -365,14 +375,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The operating system configuration
+     * The Operating System configuration.
      * 
      */
     @Import(name="operatingSystem")
     private @Nullable Output<VirtualMachineOperatingSystemArgs> operatingSystem;
 
     /**
-     * @return The operating system configuration
+     * @return The Operating System configuration.
      * 
      */
     public Optional<Output<VirtualMachineOperatingSystemArgs>> operatingSystem() {
@@ -380,14 +390,16 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The ID of the pool to assign the virtual machine to
+     * The identifier for a pool to assign the virtual machine
+     * to.
      * 
      */
     @Import(name="poolId")
     private @Nullable Output<String> poolId;
 
     /**
-     * @return The ID of the pool to assign the virtual machine to
+     * @return The identifier for a pool to assign the virtual machine
+     * to.
      * 
      */
     public Optional<Output<String>> poolId() {
@@ -395,14 +407,16 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Whether to reboot vm after creation
+     * Reboot the VM after initial creation. (defaults
+     * to `false`)
      * 
      */
     @Import(name="reboot")
     private @Nullable Output<Boolean> reboot;
 
     /**
-     * @return Whether to reboot vm after creation
+     * @return Reboot the VM after initial creation. (defaults
+     * to `false`)
      * 
      */
     public Optional<Output<Boolean>> reboot() {
@@ -410,14 +424,16 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The SCSI hardware type
+     * The SCSI hardware type (defaults
+     * to `virtio-scsi-pci`).
      * 
      */
     @Import(name="scsiHardware")
     private @Nullable Output<String> scsiHardware;
 
     /**
-     * @return The SCSI hardware type
+     * @return The SCSI hardware type (defaults
+     * to `virtio-scsi-pci`).
      * 
      */
     public Optional<Output<String>> scsiHardware() {
@@ -425,14 +441,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The serial devices
+     * A serial device (multiple blocks supported).
      * 
      */
     @Import(name="serialDevices")
     private @Nullable Output<List<VirtualMachineSerialDeviceArgs>> serialDevices;
 
     /**
-     * @return The serial devices
+     * @return A serial device (multiple blocks supported).
      * 
      */
     public Optional<Output<List<VirtualMachineSerialDeviceArgs>>> serialDevices() {
@@ -440,14 +456,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Specifies SMBIOS (type1) settings for the VM
+     * The SMBIOS (type1) settings for the VM.
      * 
      */
     @Import(name="smbios")
     private @Nullable Output<VirtualMachineSmbiosArgs> smbios;
 
     /**
-     * @return Specifies SMBIOS (type1) settings for the VM
+     * @return The SMBIOS (type1) settings for the VM.
      * 
      */
     public Optional<Output<VirtualMachineSmbiosArgs>> smbios() {
@@ -455,14 +471,16 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Whether to start the virtual machine
+     * Whether to start the virtual machine (defaults
+     * to `true`).
      * 
      */
     @Import(name="started")
     private @Nullable Output<Boolean> started;
 
     /**
-     * @return Whether to start the virtual machine
+     * @return Whether to start the virtual machine (defaults
+     * to `true`).
      * 
      */
     public Optional<Output<Boolean>> started() {
@@ -470,14 +488,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Defines startup and shutdown behavior of the VM
+     * Defines startup and shutdown behavior of the VM.
      * 
      */
     @Import(name="startup")
     private @Nullable Output<VirtualMachineStartupArgs> startup;
 
     /**
-     * @return Defines startup and shutdown behavior of the VM
+     * @return Defines startup and shutdown behavior of the VM.
      * 
      */
     public Optional<Output<VirtualMachineStartupArgs>> startup() {
@@ -485,14 +503,16 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Whether to enable the USB tablet device
+     * Whether to enable the USB tablet device (defaults
+     * to `true`).
      * 
      */
     @Import(name="tabletDevice")
     private @Nullable Output<Boolean> tabletDevice;
 
     /**
-     * @return Whether to enable the USB tablet device
+     * @return Whether to enable the USB tablet device (defaults
+     * to `true`).
      * 
      */
     public Optional<Output<Boolean>> tabletDevice() {
@@ -500,14 +520,22 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Tags of the virtual machine. This is only meta information.
+     * A list of tags of the VM. This is only meta information (
+     * defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
+     * template is not sorted, then Proxmox will always report a difference on the
+     * resource. You may use the `ignore_changes` lifecycle meta-argument to ignore
+     * changes to this attribute.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return Tags of the virtual machine. This is only meta information.
+     * @return A list of tags of the VM. This is only meta information (
+     * defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
+     * template is not sorted, then Proxmox will always report a difference on the
+     * resource. You may use the `ignore_changes` lifecycle meta-argument to ignore
+     * changes to this attribute.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -515,14 +543,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Whether to create a template
+     * Whether to create a template (defaults to `false`).
      * 
      */
     @Import(name="template")
     private @Nullable Output<Boolean> template;
 
     /**
-     * @return Whether to create a template
+     * @return Whether to create a template (defaults to `false`).
      * 
      */
     public Optional<Output<Boolean>> template() {
@@ -530,14 +558,16 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Clone VM timeout
+     * Timeout for cloning a VM in seconds (defaults to
+     * 1800).
      * 
      */
     @Import(name="timeoutClone")
     private @Nullable Output<Integer> timeoutClone;
 
     /**
-     * @return Clone VM timeout
+     * @return Timeout for cloning a VM in seconds (defaults to
+     * 1800).
      * 
      */
     public Optional<Output<Integer>> timeoutClone() {
@@ -545,14 +575,16 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Migrate VM timeout
+     * Timeout for migrating the VM (defaults to
+     * 1800).
      * 
      */
     @Import(name="timeoutMigrate")
     private @Nullable Output<Integer> timeoutMigrate;
 
     /**
-     * @return Migrate VM timeout
+     * @return Timeout for migrating the VM (defaults to
+     * 1800).
      * 
      */
     public Optional<Output<Integer>> timeoutMigrate() {
@@ -560,14 +592,16 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * MoveDisk timeout
+     * Timeout for moving the disk of a VM in
+     * seconds (defaults to 1800).
      * 
      */
     @Import(name="timeoutMoveDisk")
     private @Nullable Output<Integer> timeoutMoveDisk;
 
     /**
-     * @return MoveDisk timeout
+     * @return Timeout for moving the disk of a VM in
+     * seconds (defaults to 1800).
      * 
      */
     public Optional<Output<Integer>> timeoutMoveDisk() {
@@ -575,14 +609,16 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Reboot timeout
+     * Timeout for rebooting a VM in seconds (defaults
+     * to 1800).
      * 
      */
     @Import(name="timeoutReboot")
     private @Nullable Output<Integer> timeoutReboot;
 
     /**
-     * @return Reboot timeout
+     * @return Timeout for rebooting a VM in seconds (defaults
+     * to 1800).
      * 
      */
     public Optional<Output<Integer>> timeoutReboot() {
@@ -590,14 +626,16 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Shutdown timeout
+     * Timeout for shutting down a VM in seconds (
+     * defaults to 1800).
      * 
      */
     @Import(name="timeoutShutdownVm")
     private @Nullable Output<Integer> timeoutShutdownVm;
 
     /**
-     * @return Shutdown timeout
+     * @return Timeout for shutting down a VM in seconds (
+     * defaults to 1800).
      * 
      */
     public Optional<Output<Integer>> timeoutShutdownVm() {
@@ -605,14 +643,16 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Start VM timeout
+     * Timeout for starting a VM in seconds (defaults
+     * to 1800).
      * 
      */
     @Import(name="timeoutStartVm")
     private @Nullable Output<Integer> timeoutStartVm;
 
     /**
-     * @return Start VM timeout
+     * @return Timeout for starting a VM in seconds (defaults
+     * to 1800).
      * 
      */
     public Optional<Output<Integer>> timeoutStartVm() {
@@ -620,14 +660,16 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Stop VM timeout
+     * Timeout for stopping a VM in seconds (defaults
+     * to 300).
      * 
      */
     @Import(name="timeoutStopVm")
     private @Nullable Output<Integer> timeoutStopVm;
 
     /**
-     * @return Stop VM timeout
+     * @return Timeout for stopping a VM in seconds (defaults
+     * to 300).
      * 
      */
     public Optional<Output<Integer>> timeoutStopVm() {
@@ -635,14 +677,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The VGA configuration
+     * The VGA configuration.
      * 
      */
     @Import(name="vga")
     private @Nullable Output<VirtualMachineVgaArgs> vga;
 
     /**
-     * @return The VGA configuration
+     * @return The VGA configuration.
      * 
      */
     public Optional<Output<VirtualMachineVgaArgs>> vga() {
@@ -650,14 +692,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The VM identifier
+     * The VM identifier.
      * 
      */
     @Import(name="vmId")
     private @Nullable Output<Integer> vmId;
 
     /**
-     * @return The VM identifier
+     * @return The VM identifier.
      * 
      */
     public Optional<Output<Integer>> vmId() {
@@ -730,7 +772,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param acpi Whether to enable ACPI
+         * @param acpi Whether to enable ACPI (defaults to `true`).
          * 
          * @return builder
          * 
@@ -741,7 +783,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param acpi Whether to enable ACPI
+         * @param acpi Whether to enable ACPI (defaults to `true`).
          * 
          * @return builder
          * 
@@ -751,7 +793,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param agent The QEMU agent configuration
+         * @param agent The QEMU agent configuration.
          * 
          * @return builder
          * 
@@ -762,7 +804,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param agent The QEMU agent configuration
+         * @param agent The QEMU agent configuration.
          * 
          * @return builder
          * 
@@ -772,7 +814,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param audioDevice The audio devices
+         * @param audioDevice An audio device.
          * 
          * @return builder
          * 
@@ -783,7 +825,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param audioDevice The audio devices
+         * @param audioDevice An audio device.
          * 
          * @return builder
          * 
@@ -793,7 +835,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param bios The BIOS implementation
+         * @param bios The BIOS implementation (defaults to `seabios`).
          * 
          * @return builder
          * 
@@ -804,7 +846,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param bios The BIOS implementation
+         * @param bios The BIOS implementation (defaults to `seabios`).
          * 
          * @return builder
          * 
@@ -814,7 +856,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param bootOrders The guest will attempt to boot from devices in the order they appear here
+         * @param bootOrders Specify a list of devices to boot from in the order
+         * they appear in the list (defaults to `[]`).
          * 
          * @return builder
          * 
@@ -825,7 +868,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param bootOrders The guest will attempt to boot from devices in the order they appear here
+         * @param bootOrders Specify a list of devices to boot from in the order
+         * they appear in the list (defaults to `[]`).
          * 
          * @return builder
          * 
@@ -835,7 +879,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param bootOrders The guest will attempt to boot from devices in the order they appear here
+         * @param bootOrders Specify a list of devices to boot from in the order
+         * they appear in the list (defaults to `[]`).
          * 
          * @return builder
          * 
@@ -845,7 +890,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param cdrom The CDROM drive
+         * @param cdrom The CDROM configuration.
          * 
          * @return builder
          * 
@@ -856,7 +901,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param cdrom The CDROM drive
+         * @param cdrom The CDROM configuration.
          * 
          * @return builder
          * 
@@ -866,7 +911,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param clone The cloning configuration
+         * @param clone The cloning configuration.
          * 
          * @return builder
          * 
@@ -877,7 +922,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param clone The cloning configuration
+         * @param clone The cloning configuration.
          * 
          * @return builder
          * 
@@ -887,7 +932,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param cpu The CPU allocation
+         * @param cpu The CPU configuration.
          * 
          * @return builder
          * 
@@ -898,7 +943,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param cpu The CPU allocation
+         * @param cpu The CPU configuration.
          * 
          * @return builder
          * 
@@ -908,7 +953,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description The description
+         * @param description The description.
          * 
          * @return builder
          * 
@@ -919,7 +964,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description The description
+         * @param description The description.
          * 
          * @return builder
          * 
@@ -929,7 +974,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param disks The disk devices
+         * @param disks A disk (multiple blocks supported).
          * 
          * @return builder
          * 
@@ -940,7 +985,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param disks The disk devices
+         * @param disks A disk (multiple blocks supported).
          * 
          * @return builder
          * 
@@ -950,7 +995,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param disks The disk devices
+         * @param disks A disk (multiple blocks supported).
          * 
          * @return builder
          * 
@@ -960,7 +1005,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param efiDisk The efidisk device
+         * @param efiDisk The efi disk device (required if `bios` is set
+         * to `ovmf`)
          * 
          * @return builder
          * 
@@ -971,7 +1017,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param efiDisk The efidisk device
+         * @param efiDisk The efi disk device (required if `bios` is set
+         * to `ovmf`)
          * 
          * @return builder
          * 
@@ -981,7 +1028,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param hostpcis The Host PCI devices mapped to the VM
+         * @param hostpcis A host PCI device mapping (multiple blocks supported).
          * 
          * @return builder
          * 
@@ -992,7 +1039,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param hostpcis The Host PCI devices mapped to the VM
+         * @param hostpcis A host PCI device mapping (multiple blocks supported).
          * 
          * @return builder
          * 
@@ -1002,7 +1049,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param hostpcis The Host PCI devices mapped to the VM
+         * @param hostpcis A host PCI device mapping (multiple blocks supported).
          * 
          * @return builder
          * 
@@ -1012,7 +1059,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param initialization The cloud-init configuration
+         * @param initialization The cloud-init configuration.
          * 
          * @return builder
          * 
@@ -1023,7 +1070,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param initialization The cloud-init configuration
+         * @param initialization The cloud-init configuration.
          * 
          * @return builder
          * 
@@ -1033,7 +1080,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param keyboardLayout The keyboard layout
+         * @param keyboardLayout The keyboard layout (defaults to `en-us`).
          * 
          * @return builder
          * 
@@ -1044,7 +1091,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param keyboardLayout The keyboard layout
+         * @param keyboardLayout The keyboard layout (defaults to `en-us`).
          * 
          * @return builder
          * 
@@ -1054,7 +1101,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param kvmArguments The args implementation
+         * @param kvmArguments Arbitrary arguments passed to kvm.
          * 
          * @return builder
          * 
@@ -1065,7 +1112,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param kvmArguments The args implementation
+         * @param kvmArguments Arbitrary arguments passed to kvm.
          * 
          * @return builder
          * 
@@ -1075,7 +1122,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param machine The VM machine type, either default i440fx or q35
+         * @param machine The VM machine type (defaults to `i440fx`).
          * 
          * @return builder
          * 
@@ -1086,7 +1133,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param machine The VM machine type, either default i440fx or q35
+         * @param machine The VM machine type (defaults to `i440fx`).
          * 
          * @return builder
          * 
@@ -1096,7 +1143,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param memory The memory allocation
+         * @param memory The VGA memory in megabytes (defaults to `16`).
          * 
          * @return builder
          * 
@@ -1107,7 +1154,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param memory The memory allocation
+         * @param memory The VGA memory in megabytes (defaults to `16`).
          * 
          * @return builder
          * 
@@ -1117,7 +1164,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param migrate Whether to migrate the VM on node change instead of re-creating it
+         * @param migrate Migrate the VM on node change instead of re-creating
+         * it (defaults to `false`).
          * 
          * @return builder
          * 
@@ -1128,7 +1176,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param migrate Whether to migrate the VM on node change instead of re-creating it
+         * @param migrate Migrate the VM on node change instead of re-creating
+         * it (defaults to `false`).
          * 
          * @return builder
          * 
@@ -1138,7 +1187,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name The name
+         * @param name The virtual machine name.
          * 
          * @return builder
          * 
@@ -1149,7 +1198,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name The name
+         * @param name The virtual machine name.
          * 
          * @return builder
          * 
@@ -1159,7 +1208,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param networkDevices The network devices
+         * @param networkDevices A network device (multiple blocks supported).
          * 
          * @return builder
          * 
@@ -1170,7 +1219,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param networkDevices The network devices
+         * @param networkDevices A network device (multiple blocks supported).
          * 
          * @return builder
          * 
@@ -1180,7 +1229,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param networkDevices The network devices
+         * @param networkDevices A network device (multiple blocks supported).
          * 
          * @return builder
          * 
@@ -1190,7 +1239,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param nodeName The node name
+         * @param nodeName The name of the node to assign the virtual machine
+         * to.
          * 
          * @return builder
          * 
@@ -1201,7 +1251,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param nodeName The node name
+         * @param nodeName The name of the node to assign the virtual machine
+         * to.
          * 
          * @return builder
          * 
@@ -1211,7 +1262,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param onBoot Start VM on Node boot
+         * @param onBoot Specifies whether a VM will be started during system
+         * boot. (defaults to `true`)
          * 
          * @return builder
          * 
@@ -1222,7 +1274,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param onBoot Start VM on Node boot
+         * @param onBoot Specifies whether a VM will be started during system
+         * boot. (defaults to `true`)
          * 
          * @return builder
          * 
@@ -1232,7 +1285,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param operatingSystem The operating system configuration
+         * @param operatingSystem The Operating System configuration.
          * 
          * @return builder
          * 
@@ -1243,7 +1296,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param operatingSystem The operating system configuration
+         * @param operatingSystem The Operating System configuration.
          * 
          * @return builder
          * 
@@ -1253,7 +1306,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param poolId The ID of the pool to assign the virtual machine to
+         * @param poolId The identifier for a pool to assign the virtual machine
+         * to.
          * 
          * @return builder
          * 
@@ -1264,7 +1318,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param poolId The ID of the pool to assign the virtual machine to
+         * @param poolId The identifier for a pool to assign the virtual machine
+         * to.
          * 
          * @return builder
          * 
@@ -1274,7 +1329,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param reboot Whether to reboot vm after creation
+         * @param reboot Reboot the VM after initial creation. (defaults
+         * to `false`)
          * 
          * @return builder
          * 
@@ -1285,7 +1341,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param reboot Whether to reboot vm after creation
+         * @param reboot Reboot the VM after initial creation. (defaults
+         * to `false`)
          * 
          * @return builder
          * 
@@ -1295,7 +1352,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param scsiHardware The SCSI hardware type
+         * @param scsiHardware The SCSI hardware type (defaults
+         * to `virtio-scsi-pci`).
          * 
          * @return builder
          * 
@@ -1306,7 +1364,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param scsiHardware The SCSI hardware type
+         * @param scsiHardware The SCSI hardware type (defaults
+         * to `virtio-scsi-pci`).
          * 
          * @return builder
          * 
@@ -1316,7 +1375,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param serialDevices The serial devices
+         * @param serialDevices A serial device (multiple blocks supported).
          * 
          * @return builder
          * 
@@ -1327,7 +1386,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param serialDevices The serial devices
+         * @param serialDevices A serial device (multiple blocks supported).
          * 
          * @return builder
          * 
@@ -1337,7 +1396,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param serialDevices The serial devices
+         * @param serialDevices A serial device (multiple blocks supported).
          * 
          * @return builder
          * 
@@ -1347,7 +1406,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param smbios Specifies SMBIOS (type1) settings for the VM
+         * @param smbios The SMBIOS (type1) settings for the VM.
          * 
          * @return builder
          * 
@@ -1358,7 +1417,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param smbios Specifies SMBIOS (type1) settings for the VM
+         * @param smbios The SMBIOS (type1) settings for the VM.
          * 
          * @return builder
          * 
@@ -1368,7 +1427,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param started Whether to start the virtual machine
+         * @param started Whether to start the virtual machine (defaults
+         * to `true`).
          * 
          * @return builder
          * 
@@ -1379,7 +1439,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param started Whether to start the virtual machine
+         * @param started Whether to start the virtual machine (defaults
+         * to `true`).
          * 
          * @return builder
          * 
@@ -1389,7 +1450,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param startup Defines startup and shutdown behavior of the VM
+         * @param startup Defines startup and shutdown behavior of the VM.
          * 
          * @return builder
          * 
@@ -1400,7 +1461,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param startup Defines startup and shutdown behavior of the VM
+         * @param startup Defines startup and shutdown behavior of the VM.
          * 
          * @return builder
          * 
@@ -1410,7 +1471,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param tabletDevice Whether to enable the USB tablet device
+         * @param tabletDevice Whether to enable the USB tablet device (defaults
+         * to `true`).
          * 
          * @return builder
          * 
@@ -1421,7 +1483,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param tabletDevice Whether to enable the USB tablet device
+         * @param tabletDevice Whether to enable the USB tablet device (defaults
+         * to `true`).
          * 
          * @return builder
          * 
@@ -1431,7 +1494,11 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param tags Tags of the virtual machine. This is only meta information.
+         * @param tags A list of tags of the VM. This is only meta information (
+         * defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
+         * template is not sorted, then Proxmox will always report a difference on the
+         * resource. You may use the `ignore_changes` lifecycle meta-argument to ignore
+         * changes to this attribute.
          * 
          * @return builder
          * 
@@ -1442,7 +1509,11 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param tags Tags of the virtual machine. This is only meta information.
+         * @param tags A list of tags of the VM. This is only meta information (
+         * defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
+         * template is not sorted, then Proxmox will always report a difference on the
+         * resource. You may use the `ignore_changes` lifecycle meta-argument to ignore
+         * changes to this attribute.
          * 
          * @return builder
          * 
@@ -1452,7 +1523,11 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param tags Tags of the virtual machine. This is only meta information.
+         * @param tags A list of tags of the VM. This is only meta information (
+         * defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
+         * template is not sorted, then Proxmox will always report a difference on the
+         * resource. You may use the `ignore_changes` lifecycle meta-argument to ignore
+         * changes to this attribute.
          * 
          * @return builder
          * 
@@ -1462,7 +1537,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param template Whether to create a template
+         * @param template Whether to create a template (defaults to `false`).
          * 
          * @return builder
          * 
@@ -1473,7 +1548,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param template Whether to create a template
+         * @param template Whether to create a template (defaults to `false`).
          * 
          * @return builder
          * 
@@ -1483,7 +1558,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param timeoutClone Clone VM timeout
+         * @param timeoutClone Timeout for cloning a VM in seconds (defaults to
+         * 1800).
          * 
          * @return builder
          * 
@@ -1494,7 +1570,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param timeoutClone Clone VM timeout
+         * @param timeoutClone Timeout for cloning a VM in seconds (defaults to
+         * 1800).
          * 
          * @return builder
          * 
@@ -1504,7 +1581,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param timeoutMigrate Migrate VM timeout
+         * @param timeoutMigrate Timeout for migrating the VM (defaults to
+         * 1800).
          * 
          * @return builder
          * 
@@ -1515,7 +1593,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param timeoutMigrate Migrate VM timeout
+         * @param timeoutMigrate Timeout for migrating the VM (defaults to
+         * 1800).
          * 
          * @return builder
          * 
@@ -1525,7 +1604,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param timeoutMoveDisk MoveDisk timeout
+         * @param timeoutMoveDisk Timeout for moving the disk of a VM in
+         * seconds (defaults to 1800).
          * 
          * @return builder
          * 
@@ -1536,7 +1616,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param timeoutMoveDisk MoveDisk timeout
+         * @param timeoutMoveDisk Timeout for moving the disk of a VM in
+         * seconds (defaults to 1800).
          * 
          * @return builder
          * 
@@ -1546,7 +1627,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param timeoutReboot Reboot timeout
+         * @param timeoutReboot Timeout for rebooting a VM in seconds (defaults
+         * to 1800).
          * 
          * @return builder
          * 
@@ -1557,7 +1639,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param timeoutReboot Reboot timeout
+         * @param timeoutReboot Timeout for rebooting a VM in seconds (defaults
+         * to 1800).
          * 
          * @return builder
          * 
@@ -1567,7 +1650,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param timeoutShutdownVm Shutdown timeout
+         * @param timeoutShutdownVm Timeout for shutting down a VM in seconds (
+         * defaults to 1800).
          * 
          * @return builder
          * 
@@ -1578,7 +1662,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param timeoutShutdownVm Shutdown timeout
+         * @param timeoutShutdownVm Timeout for shutting down a VM in seconds (
+         * defaults to 1800).
          * 
          * @return builder
          * 
@@ -1588,7 +1673,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param timeoutStartVm Start VM timeout
+         * @param timeoutStartVm Timeout for starting a VM in seconds (defaults
+         * to 1800).
          * 
          * @return builder
          * 
@@ -1599,7 +1685,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param timeoutStartVm Start VM timeout
+         * @param timeoutStartVm Timeout for starting a VM in seconds (defaults
+         * to 1800).
          * 
          * @return builder
          * 
@@ -1609,7 +1696,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param timeoutStopVm Stop VM timeout
+         * @param timeoutStopVm Timeout for stopping a VM in seconds (defaults
+         * to 300).
          * 
          * @return builder
          * 
@@ -1620,7 +1708,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param timeoutStopVm Stop VM timeout
+         * @param timeoutStopVm Timeout for stopping a VM in seconds (defaults
+         * to 300).
          * 
          * @return builder
          * 
@@ -1630,7 +1719,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vga The VGA configuration
+         * @param vga The VGA configuration.
          * 
          * @return builder
          * 
@@ -1641,7 +1730,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vga The VGA configuration
+         * @param vga The VGA configuration.
          * 
          * @return builder
          * 
@@ -1651,7 +1740,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vmId The VM identifier
+         * @param vmId The VM identifier.
          * 
          * @return builder
          * 
@@ -1662,7 +1751,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vmId The VM identifier
+         * @param vmId The VM identifier.
          * 
          * @return builder
          * 

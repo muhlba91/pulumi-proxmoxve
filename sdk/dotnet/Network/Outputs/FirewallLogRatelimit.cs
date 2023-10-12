@@ -13,8 +13,18 @@ namespace Pulumi.ProxmoxVE.Network.Outputs
     [OutputType]
     public sealed class FirewallLogRatelimit
     {
+        /// <summary>
+        /// Initial burst of packages which will always get
+        /// logged before the rate is applied (defaults to `5`).
+        /// </summary>
         public readonly int? Burst;
+        /// <summary>
+        /// Enable or disable the log rate limit.
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// Frequency with which the burst bucket gets refilled (defaults to `1/second`).
+        /// </summary>
         public readonly string? Rate;
 
         [OutputConstructor]

@@ -11,9 +11,26 @@ import java.util.Objects;
 
 @CustomType
 public final class GetHostsResult {
+    /**
+     * @return The IP addresses.
+     * 
+     */
     private List<String> addresses;
+    /**
+     * @return The SHA1 digest.
+     * 
+     */
     private String digest;
+    /**
+     * @return The host entries (conversion of `addresses` and `hostnames` into
+     * objects).
+     * 
+     */
     private List<GetHostsEntry> entries;
+    /**
+     * @return The hostnames associated with each of the IP addresses.
+     * 
+     */
     private List<List<String>> hostnames;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -23,15 +40,32 @@ public final class GetHostsResult {
     private String nodeName;
 
     private GetHostsResult() {}
+    /**
+     * @return The IP addresses.
+     * 
+     */
     public List<String> addresses() {
         return this.addresses;
     }
+    /**
+     * @return The SHA1 digest.
+     * 
+     */
     public String digest() {
         return this.digest;
     }
+    /**
+     * @return The host entries (conversion of `addresses` and `hostnames` into
+     * objects).
+     * 
+     */
     public List<GetHostsEntry> entries() {
         return this.entries;
     }
+    /**
+     * @return The hostnames associated with each of the IP addresses.
+     * 
+     */
     public List<List<String>> hostnames() {
         return this.hostnames;
     }

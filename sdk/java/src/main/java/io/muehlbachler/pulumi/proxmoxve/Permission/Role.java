@@ -14,31 +14,74 @@ import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
 
+/**
+ * Manages a role.
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.proxmoxve.Permission.Role;
+ * import com.pulumi.proxmoxve.Permission.RoleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var operationsMonitoring = new Role(&#34;operationsMonitoring&#34;, RoleArgs.builder()        
+ *             .privileges(&#34;VM.Monitor&#34;)
+ *             .roleId(&#34;operations-monitoring&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * Instances can be imported using the `role_id`, e.g., bash
+ * 
+ * ```sh
+ *  $ pulumi import proxmoxve:Permission/role:Role operations_monitoring operations-monitoring
+ * ```
+ * 
+ */
 @ResourceType(type="proxmoxve:Permission/role:Role")
 public class Role extends com.pulumi.resources.CustomResource {
     /**
-     * The role privileges
+     * The role privileges.
      * 
      */
     @Export(name="privileges", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> privileges;
 
     /**
-     * @return The role privileges
+     * @return The role privileges.
      * 
      */
     public Output<List<String>> privileges() {
         return this.privileges;
     }
     /**
-     * The role id
+     * The role identifier.
      * 
      */
     @Export(name="roleId", refs={String.class}, tree="[0]")
     private Output<String> roleId;
 
     /**
-     * @return The role id
+     * @return The role identifier.
      * 
      */
     public Output<String> roleId() {

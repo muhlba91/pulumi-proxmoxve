@@ -18,14 +18,14 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
     public static final FirewallState Empty = new FirewallState();
 
     /**
-     * Enable ebtables cluster-wide
+     * Enable ebtables rules cluster wide.
      * 
      */
     @Import(name="ebtables")
     private @Nullable Output<Boolean> ebtables;
 
     /**
-     * @return Enable ebtables cluster-wide
+     * @return Enable ebtables rules cluster wide.
      * 
      */
     public Optional<Output<Boolean>> ebtables() {
@@ -33,14 +33,14 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable or disable the firewall cluster-wide
+     * Enable or disable the log rate limit.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable or disable the firewall cluster-wide
+     * @return Enable or disable the log rate limit.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -48,14 +48,14 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Default policy for incoming traffic
+     * The default input policy (`ACCEPT`, `DROP`, `REJECT`).
      * 
      */
     @Import(name="inputPolicy")
     private @Nullable Output<String> inputPolicy;
 
     /**
-     * @return Default policy for incoming traffic
+     * @return The default input policy (`ACCEPT`, `DROP`, `REJECT`).
      * 
      */
     public Optional<Output<String>> inputPolicy() {
@@ -63,14 +63,14 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Log ratelimiting settings
+     * The log rate limit.
      * 
      */
     @Import(name="logRatelimit")
     private @Nullable Output<FirewallLogRatelimitArgs> logRatelimit;
 
     /**
-     * @return Log ratelimiting settings
+     * @return The log rate limit.
      * 
      */
     public Optional<Output<FirewallLogRatelimitArgs>> logRatelimit() {
@@ -78,14 +78,14 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Default policy for outgoing traffic
+     * The default output policy (`ACCEPT`, `DROP`, `REJECT`).
      * 
      */
     @Import(name="outputPolicy")
     private @Nullable Output<String> outputPolicy;
 
     /**
-     * @return Default policy for outgoing traffic
+     * @return The default output policy (`ACCEPT`, `DROP`, `REJECT`).
      * 
      */
     public Optional<Output<String>> outputPolicy() {
@@ -121,7 +121,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ebtables Enable ebtables cluster-wide
+         * @param ebtables Enable ebtables rules cluster wide.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ebtables Enable ebtables cluster-wide
+         * @param ebtables Enable ebtables rules cluster wide.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Enable or disable the firewall cluster-wide
+         * @param enabled Enable or disable the log rate limit.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Enable or disable the firewall cluster-wide
+         * @param enabled Enable or disable the log rate limit.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param inputPolicy Default policy for incoming traffic
+         * @param inputPolicy The default input policy (`ACCEPT`, `DROP`, `REJECT`).
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param inputPolicy Default policy for incoming traffic
+         * @param inputPolicy The default input policy (`ACCEPT`, `DROP`, `REJECT`).
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logRatelimit Log ratelimiting settings
+         * @param logRatelimit The log rate limit.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logRatelimit Log ratelimiting settings
+         * @param logRatelimit The log rate limit.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param outputPolicy Default policy for outgoing traffic
+         * @param outputPolicy The default output policy (`ACCEPT`, `DROP`, `REJECT`).
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param outputPolicy Default policy for outgoing traffic
+         * @param outputPolicy The default output policy (`ACCEPT`, `DROP`, `REJECT`).
          * 
          * @return builder
          * 

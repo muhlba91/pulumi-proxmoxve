@@ -13,30 +13,58 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Manages a file.
+//
+// ## Important Notes
+//
+// The Proxmox VE API endpoint for file uploads does not support chunked transfer
+// encoding, which means that we must first store the source file as a temporary
+// file locally before uploading it.
+//
+// You must ensure that you have at least `Size-in-MB * 2 + 1` MB of storage space
+// available (twice the size plus overhead because a multipart payload needs to be
+// created as another temporary file).
+//
+// By default, if the specified file already exists, the resource will
+// unconditionally replace it and take ownership of the resource. On destruction,
+// the file will be deleted as if it did not exist before. If you want to prevent
+// the resource from replacing the file, set `overwrite` to `false`.
+//
+// ## Import
+//
+// Instances can be imported using the `node_name`, `datastore_id`, `content_type` and the `file_name` in the following format<node_name>:<datastore_id>/<content_type>/<file_name> Examplebash
+//
+// ```sh
+//
+//	$ pulumi import proxmoxve:Storage/file:File cloud_config pve/local:snippets/example.cloud-config.yaml
+//
+// ```
 type File struct {
 	pulumi.CustomResourceState
 
-	// The content type
+	// The content type.
 	ContentType pulumi.StringOutput `pulumi:"contentType"`
-	// The datastore id
+	// The datastore id.
 	DatastoreId pulumi.StringOutput `pulumi:"datastoreId"`
-	// The file modification date
+	// The file modification date (RFC 3339).
 	FileModificationDate pulumi.StringOutput `pulumi:"fileModificationDate"`
-	// The file name
+	// The file name.
 	FileName pulumi.StringOutput `pulumi:"fileName"`
-	// The file size in bytes
+	// The file size in bytes.
 	FileSize pulumi.IntOutput `pulumi:"fileSize"`
-	// The file tag
+	// The file tag.
 	FileTag pulumi.StringOutput `pulumi:"fileTag"`
-	// The node name
+	// The node name.
 	NodeName pulumi.StringOutput `pulumi:"nodeName"`
-	// Whether to overwrite the file if it already exists
+	// Whether to overwrite an existing file (defaults to
+	// `true`).
 	Overwrite pulumi.BoolPtrOutput `pulumi:"overwrite"`
-	// The source file
+	// The source file (conflicts with `sourceRaw`).
 	SourceFile FileSourceFilePtrOutput `pulumi:"sourceFile"`
-	// The raw source
+	// The raw source (conflicts with `sourceFile`).
 	SourceRaw FileSourceRawPtrOutput `pulumi:"sourceRaw"`
-	// Timeout for uploading ISO/VSTMPL files in seconds
+	// Timeout for uploading ISO/VSTMPL files in
+	// seconds (defaults to 1800).
 	TimeoutUpload pulumi.IntPtrOutput `pulumi:"timeoutUpload"`
 }
 
@@ -76,52 +104,56 @@ func GetFile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering File resources.
 type fileState struct {
-	// The content type
+	// The content type.
 	ContentType *string `pulumi:"contentType"`
-	// The datastore id
+	// The datastore id.
 	DatastoreId *string `pulumi:"datastoreId"`
-	// The file modification date
+	// The file modification date (RFC 3339).
 	FileModificationDate *string `pulumi:"fileModificationDate"`
-	// The file name
+	// The file name.
 	FileName *string `pulumi:"fileName"`
-	// The file size in bytes
+	// The file size in bytes.
 	FileSize *int `pulumi:"fileSize"`
-	// The file tag
+	// The file tag.
 	FileTag *string `pulumi:"fileTag"`
-	// The node name
+	// The node name.
 	NodeName *string `pulumi:"nodeName"`
-	// Whether to overwrite the file if it already exists
+	// Whether to overwrite an existing file (defaults to
+	// `true`).
 	Overwrite *bool `pulumi:"overwrite"`
-	// The source file
+	// The source file (conflicts with `sourceRaw`).
 	SourceFile *FileSourceFile `pulumi:"sourceFile"`
-	// The raw source
+	// The raw source (conflicts with `sourceFile`).
 	SourceRaw *FileSourceRaw `pulumi:"sourceRaw"`
-	// Timeout for uploading ISO/VSTMPL files in seconds
+	// Timeout for uploading ISO/VSTMPL files in
+	// seconds (defaults to 1800).
 	TimeoutUpload *int `pulumi:"timeoutUpload"`
 }
 
 type FileState struct {
-	// The content type
+	// The content type.
 	ContentType pulumi.StringPtrInput
-	// The datastore id
+	// The datastore id.
 	DatastoreId pulumi.StringPtrInput
-	// The file modification date
+	// The file modification date (RFC 3339).
 	FileModificationDate pulumi.StringPtrInput
-	// The file name
+	// The file name.
 	FileName pulumi.StringPtrInput
-	// The file size in bytes
+	// The file size in bytes.
 	FileSize pulumi.IntPtrInput
-	// The file tag
+	// The file tag.
 	FileTag pulumi.StringPtrInput
-	// The node name
+	// The node name.
 	NodeName pulumi.StringPtrInput
-	// Whether to overwrite the file if it already exists
+	// Whether to overwrite an existing file (defaults to
+	// `true`).
 	Overwrite pulumi.BoolPtrInput
-	// The source file
+	// The source file (conflicts with `sourceRaw`).
 	SourceFile FileSourceFilePtrInput
-	// The raw source
+	// The raw source (conflicts with `sourceFile`).
 	SourceRaw FileSourceRawPtrInput
-	// Timeout for uploading ISO/VSTMPL files in seconds
+	// Timeout for uploading ISO/VSTMPL files in
+	// seconds (defaults to 1800).
 	TimeoutUpload pulumi.IntPtrInput
 }
 
@@ -130,37 +162,41 @@ func (FileState) ElementType() reflect.Type {
 }
 
 type fileArgs struct {
-	// The content type
+	// The content type.
 	ContentType *string `pulumi:"contentType"`
-	// The datastore id
+	// The datastore id.
 	DatastoreId string `pulumi:"datastoreId"`
-	// The node name
+	// The node name.
 	NodeName string `pulumi:"nodeName"`
-	// Whether to overwrite the file if it already exists
+	// Whether to overwrite an existing file (defaults to
+	// `true`).
 	Overwrite *bool `pulumi:"overwrite"`
-	// The source file
+	// The source file (conflicts with `sourceRaw`).
 	SourceFile *FileSourceFile `pulumi:"sourceFile"`
-	// The raw source
+	// The raw source (conflicts with `sourceFile`).
 	SourceRaw *FileSourceRaw `pulumi:"sourceRaw"`
-	// Timeout for uploading ISO/VSTMPL files in seconds
+	// Timeout for uploading ISO/VSTMPL files in
+	// seconds (defaults to 1800).
 	TimeoutUpload *int `pulumi:"timeoutUpload"`
 }
 
 // The set of arguments for constructing a File resource.
 type FileArgs struct {
-	// The content type
+	// The content type.
 	ContentType pulumi.StringPtrInput
-	// The datastore id
+	// The datastore id.
 	DatastoreId pulumi.StringInput
-	// The node name
+	// The node name.
 	NodeName pulumi.StringInput
-	// Whether to overwrite the file if it already exists
+	// Whether to overwrite an existing file (defaults to
+	// `true`).
 	Overwrite pulumi.BoolPtrInput
-	// The source file
+	// The source file (conflicts with `sourceRaw`).
 	SourceFile FileSourceFilePtrInput
-	// The raw source
+	// The raw source (conflicts with `sourceFile`).
 	SourceRaw FileSourceRawPtrInput
-	// Timeout for uploading ISO/VSTMPL files in seconds
+	// Timeout for uploading ISO/VSTMPL files in
+	// seconds (defaults to 1800).
 	TimeoutUpload pulumi.IntPtrInput
 }
 
@@ -275,57 +311,59 @@ func (o FileOutput) ToOutput(ctx context.Context) pulumix.Output[*File] {
 	}
 }
 
-// The content type
+// The content type.
 func (o FileOutput) ContentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *File) pulumi.StringOutput { return v.ContentType }).(pulumi.StringOutput)
 }
 
-// The datastore id
+// The datastore id.
 func (o FileOutput) DatastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *File) pulumi.StringOutput { return v.DatastoreId }).(pulumi.StringOutput)
 }
 
-// The file modification date
+// The file modification date (RFC 3339).
 func (o FileOutput) FileModificationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *File) pulumi.StringOutput { return v.FileModificationDate }).(pulumi.StringOutput)
 }
 
-// The file name
+// The file name.
 func (o FileOutput) FileName() pulumi.StringOutput {
 	return o.ApplyT(func(v *File) pulumi.StringOutput { return v.FileName }).(pulumi.StringOutput)
 }
 
-// The file size in bytes
+// The file size in bytes.
 func (o FileOutput) FileSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *File) pulumi.IntOutput { return v.FileSize }).(pulumi.IntOutput)
 }
 
-// The file tag
+// The file tag.
 func (o FileOutput) FileTag() pulumi.StringOutput {
 	return o.ApplyT(func(v *File) pulumi.StringOutput { return v.FileTag }).(pulumi.StringOutput)
 }
 
-// The node name
+// The node name.
 func (o FileOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v *File) pulumi.StringOutput { return v.NodeName }).(pulumi.StringOutput)
 }
 
-// Whether to overwrite the file if it already exists
+// Whether to overwrite an existing file (defaults to
+// `true`).
 func (o FileOutput) Overwrite() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *File) pulumi.BoolPtrOutput { return v.Overwrite }).(pulumi.BoolPtrOutput)
 }
 
-// The source file
+// The source file (conflicts with `sourceRaw`).
 func (o FileOutput) SourceFile() FileSourceFilePtrOutput {
 	return o.ApplyT(func(v *File) FileSourceFilePtrOutput { return v.SourceFile }).(FileSourceFilePtrOutput)
 }
 
-// The raw source
+// The raw source (conflicts with `sourceFile`).
 func (o FileOutput) SourceRaw() FileSourceRawPtrOutput {
 	return o.ApplyT(func(v *File) FileSourceRawPtrOutput { return v.SourceRaw }).(FileSourceRawPtrOutput)
 }
 
-// Timeout for uploading ISO/VSTMPL files in seconds
+// Timeout for uploading ISO/VSTMPL files in
+// seconds (defaults to 1800).
 func (o FileOutput) TimeoutUpload() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *File) pulumi.IntPtrOutput { return v.TimeoutUpload }).(pulumi.IntPtrOutput)
 }

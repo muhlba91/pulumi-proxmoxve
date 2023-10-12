@@ -13,25 +13,69 @@ import java.util.Objects;
 
 @CustomType
 public final class GetNodesResult {
+    /**
+     * @return The CPU count for each node.
+     * 
+     */
     private List<Integer> cpuCounts;
+    /**
+     * @return The CPU utilization on each node.
+     * 
+     */
     private List<Double> cpuUtilizations;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return The memory available on each node.
+     * 
+     */
     private List<Integer> memoryAvailables;
+    /**
+     * @return The memory used on each node.
+     * 
+     */
     private List<Integer> memoryUseds;
+    /**
+     * @return The node names.
+     * 
+     */
     private List<String> names;
+    /**
+     * @return Whether a node is online.
+     * 
+     */
     private List<Boolean> onlines;
+    /**
+     * @return The SSL fingerprint for each node.
+     * 
+     */
     private List<String> sslFingerprints;
+    /**
+     * @return The support level for each node.
+     * 
+     */
     private List<String> supportLevels;
+    /**
+     * @return The uptime in seconds for each node.
+     * 
+     */
     private List<Integer> uptimes;
 
     private GetNodesResult() {}
+    /**
+     * @return The CPU count for each node.
+     * 
+     */
     public List<Integer> cpuCounts() {
         return this.cpuCounts;
     }
+    /**
+     * @return The CPU utilization on each node.
+     * 
+     */
     public List<Double> cpuUtilizations() {
         return this.cpuUtilizations;
     }
@@ -42,24 +86,52 @@ public final class GetNodesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The memory available on each node.
+     * 
+     */
     public List<Integer> memoryAvailables() {
         return this.memoryAvailables;
     }
+    /**
+     * @return The memory used on each node.
+     * 
+     */
     public List<Integer> memoryUseds() {
         return this.memoryUseds;
     }
+    /**
+     * @return The node names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
+    /**
+     * @return Whether a node is online.
+     * 
+     */
     public List<Boolean> onlines() {
         return this.onlines;
     }
+    /**
+     * @return The SSL fingerprint for each node.
+     * 
+     */
     public List<String> sslFingerprints() {
         return this.sslFingerprints;
     }
+    /**
+     * @return The support level for each node.
+     * 
+     */
     public List<String> supportLevels() {
         return this.supportLevels;
     }
+    /**
+     * @return The uptime in seconds for each node.
+     * 
+     */
     public List<Integer> uptimes() {
         return this.uptimes;
     }

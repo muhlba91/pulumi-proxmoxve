@@ -16,16 +16,34 @@ public final class GetVirtualMachinesArgs extends com.pulumi.resources.InvokeArg
 
     public static final GetVirtualMachinesArgs Empty = new GetVirtualMachinesArgs();
 
+    /**
+     * The node name.
+     * 
+     */
     @Import(name="nodeName")
     private @Nullable Output<String> nodeName;
 
+    /**
+     * @return The node name.
+     * 
+     */
     public Optional<Output<String>> nodeName() {
         return Optional.ofNullable(this.nodeName);
     }
 
+    /**
+     * A list of tags to filter the VMs. The VM must have all
+     * the tags to be included in the result.
+     * 
+     */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
+    /**
+     * @return A list of tags to filter the VMs. The VM must have all
+     * the tags to be included in the result.
+     * 
+     */
     public Optional<Output<List<String>>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -55,24 +73,57 @@ public final class GetVirtualMachinesArgs extends com.pulumi.resources.InvokeArg
             $ = new GetVirtualMachinesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param nodeName The node name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeName(@Nullable Output<String> nodeName) {
             $.nodeName = nodeName;
             return this;
         }
 
+        /**
+         * @param nodeName The node name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeName(String nodeName) {
             return nodeName(Output.of(nodeName));
         }
 
+        /**
+         * @param tags A list of tags to filter the VMs. The VM must have all
+         * the tags to be included in the result.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable Output<List<String>> tags) {
             $.tags = tags;
             return this;
         }
 
+        /**
+         * @param tags A list of tags to filter the VMs. The VM must have all
+         * the tags to be included in the result.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(List<String> tags) {
             return tags(Output.of(tags));
         }
 
+        /**
+         * @param tags A list of tags to filter the VMs. The VM must have all
+         * the tags to be included in the result.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }

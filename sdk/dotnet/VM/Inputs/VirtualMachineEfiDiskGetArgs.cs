@@ -12,15 +12,31 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
 
     public sealed class VirtualMachineEfiDiskGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The identifier for the datastore to create the
+        /// cloud-init disk in (defaults to `local-lvm`).
+        /// </summary>
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
 
+        /// <summary>
+        /// The file format.
+        /// </summary>
         [Input("fileFormat")]
         public Input<string>? FileFormat { get; set; }
 
+        /// <summary>
+        /// Use am EFI vars template with
+        /// distribution-specific and Microsoft Standard keys enrolled, if used with
+        /// EFI type=`4m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
+        /// to `false`).
+        /// </summary>
         [Input("preEnrolledKeys")]
         public Input<bool>? PreEnrolledKeys { get; set; }
 
+        /// <summary>
+        /// The VGA type (defaults to `std`).
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
