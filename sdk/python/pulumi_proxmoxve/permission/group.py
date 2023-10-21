@@ -37,7 +37,11 @@ class GroupArgs:
              group_id: pulumi.Input[str],
              acls: Optional[pulumi.Input[Sequence[pulumi.Input['GroupAclArgs']]]] = None,
              comment: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+
         _setter("group_id", group_id)
         if acls is not None:
             _setter("acls", acls)
@@ -109,7 +113,11 @@ class _GroupState:
              comment: Optional[pulumi.Input[str]] = None,
              group_id: Optional[pulumi.Input[str]] = None,
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+
         if acls is not None:
             _setter("acls", acls)
         if comment is not None:

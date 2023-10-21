@@ -51,7 +51,15 @@ class ContainerCloneArgs:
              vm_id: pulumi.Input[int],
              datastore_id: Optional[pulumi.Input[str]] = None,
              node_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'vmId' in kwargs:
+            vm_id = kwargs['vmId']
+        if 'datastoreId' in kwargs:
+            datastore_id = kwargs['datastoreId']
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+
         _setter("vm_id", vm_id)
         if datastore_id is not None:
             _setter("datastore_id", datastore_id)
@@ -120,7 +128,11 @@ class ContainerConsoleArgs:
              enabled: Optional[pulumi.Input[bool]] = None,
              tty_count: Optional[pulumi.Input[int]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ttyCount' in kwargs:
+            tty_count = kwargs['ttyCount']
+
         if enabled is not None:
             _setter("enabled", enabled)
         if tty_count is not None:
@@ -189,7 +201,9 @@ class ContainerCpuArgs:
              architecture: Optional[pulumi.Input[str]] = None,
              cores: Optional[pulumi.Input[int]] = None,
              units: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if architecture is not None:
             _setter("architecture", architecture)
         if cores is not None:
@@ -255,7 +269,11 @@ class ContainerDiskArgs:
              _setter: Callable[[Any, Any], None],
              datastore_id: Optional[pulumi.Input[str]] = None,
              size: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'datastoreId' in kwargs:
+            datastore_id = kwargs['datastoreId']
+
         if datastore_id is not None:
             _setter("datastore_id", datastore_id)
         if size is not None:
@@ -314,7 +332,9 @@ class ContainerFeaturesArgs:
              fuse: Optional[pulumi.Input[bool]] = None,
              keyctl: Optional[pulumi.Input[bool]] = None,
              nesting: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if fuse is not None:
             _setter("fuse", fuse)
         if keyctl is not None:
@@ -390,7 +410,13 @@ class ContainerInitializationArgs:
              hostname: Optional[pulumi.Input[str]] = None,
              ip_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerInitializationIpConfigArgs']]]] = None,
              user_account: Optional[pulumi.Input['ContainerInitializationUserAccountArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ipConfigs' in kwargs:
+            ip_configs = kwargs['ipConfigs']
+        if 'userAccount' in kwargs:
+            user_account = kwargs['userAccount']
+
         if dns is not None:
             _setter("dns", dns)
         if hostname is not None:
@@ -469,7 +495,9 @@ class ContainerInitializationDnsArgs:
              _setter: Callable[[Any, Any], None],
              domain: Optional[pulumi.Input[str]] = None,
              server: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if domain is not None:
             _setter("domain", domain)
         if server is not None:
@@ -519,7 +547,9 @@ class ContainerInitializationIpConfigArgs:
              _setter: Callable[[Any, Any], None],
              ipv4: Optional[pulumi.Input['ContainerInitializationIpConfigIpv4Args']] = None,
              ipv6: Optional[pulumi.Input['ContainerInitializationIpConfigIpv6Args']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if ipv4 is not None:
             _setter("ipv4", ipv4)
         if ipv6 is not None:
@@ -571,7 +601,9 @@ class ContainerInitializationIpConfigIpv4Args:
              _setter: Callable[[Any, Any], None],
              address: Optional[pulumi.Input[str]] = None,
              gateway: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if address is not None:
             _setter("address", address)
         if gateway is not None:
@@ -625,7 +657,9 @@ class ContainerInitializationIpConfigIpv6Args:
              _setter: Callable[[Any, Any], None],
              address: Optional[pulumi.Input[str]] = None,
              gateway: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if address is not None:
             _setter("address", address)
         if gateway is not None:
@@ -677,7 +711,9 @@ class ContainerInitializationUserAccountArgs:
              _setter: Callable[[Any, Any], None],
              keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              password: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if keys is not None:
             _setter("keys", keys)
         if password is not None:
@@ -728,7 +764,9 @@ class ContainerMemoryArgs:
              _setter: Callable[[Any, Any], None],
              dedicated: Optional[pulumi.Input[int]] = None,
              swap: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if dedicated is not None:
             _setter("dedicated", dedicated)
         if swap is not None:
@@ -817,7 +855,13 @@ class ContainerMountPointArgs:
              replicate: Optional[pulumi.Input[bool]] = None,
              shared: Optional[pulumi.Input[bool]] = None,
              size: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'mountOptions' in kwargs:
+            mount_options = kwargs['mountOptions']
+        if 'readOnly' in kwargs:
+            read_only = kwargs['readOnly']
+
         _setter("path", path)
         _setter("volume", volume)
         if acl is not None:
@@ -1011,7 +1055,15 @@ class ContainerNetworkInterfaceArgs:
              mtu: Optional[pulumi.Input[int]] = None,
              rate_limit: Optional[pulumi.Input[float]] = None,
              vlan_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'macAddress' in kwargs:
+            mac_address = kwargs['macAddress']
+        if 'rateLimit' in kwargs:
+            rate_limit = kwargs['rateLimit']
+        if 'vlanId' in kwargs:
+            vlan_id = kwargs['vlanId']
+
         _setter("name", name)
         if bridge is not None:
             _setter("bridge", bridge)
@@ -1148,7 +1200,11 @@ class ContainerOperatingSystemArgs:
              _setter: Callable[[Any, Any], None],
              template_file_id: pulumi.Input[str],
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'templateFileId' in kwargs:
+            template_file_id = kwargs['templateFileId']
+
         _setter("template_file_id", template_file_id)
         if type is not None:
             _setter("type", type)

@@ -56,7 +56,13 @@ class ProviderArgs:
              ssh: Optional[pulumi.Input['ProviderSshArgs']] = None,
              tmp_dir: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apiToken' in kwargs:
+            api_token = kwargs['apiToken']
+        if 'tmpDir' in kwargs:
+            tmp_dir = kwargs['tmpDir']
+
         if api_token is not None:
             _setter("api_token", api_token)
         if endpoint is not None:

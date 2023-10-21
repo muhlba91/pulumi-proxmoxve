@@ -59,6 +59,14 @@ public final class VirtualMachineDisk {
      */
     private @Nullable Boolean iothread;
     /**
+     * @return The in-datastore path to the disk image.
+     * ***Experimental.***Use to attach another VM&#39;s disks,
+     * or (as root only) host&#39;s filesystem paths (`datastore_id` empty string).
+     * See &#34;*Example: Attached disks*&#34;.
+     * 
+     */
+    private @Nullable String pathInDatastore;
+    /**
      * @return The disk size in gigabytes (defaults to `8`).
      * 
      */
@@ -136,6 +144,16 @@ public final class VirtualMachineDisk {
         return Optional.ofNullable(this.iothread);
     }
     /**
+     * @return The in-datastore path to the disk image.
+     * ***Experimental.***Use to attach another VM&#39;s disks,
+     * or (as root only) host&#39;s filesystem paths (`datastore_id` empty string).
+     * See &#34;*Example: Attached disks*&#34;.
+     * 
+     */
+    public Optional<String> pathInDatastore() {
+        return Optional.ofNullable(this.pathInDatastore);
+    }
+    /**
      * @return The disk size in gigabytes (defaults to `8`).
      * 
      */
@@ -175,6 +193,7 @@ public final class VirtualMachineDisk {
         private @Nullable String fileId;
         private String interface_;
         private @Nullable Boolean iothread;
+        private @Nullable String pathInDatastore;
         private @Nullable Integer size;
         private @Nullable VirtualMachineDiskSpeed speed;
         private @Nullable Boolean ssd;
@@ -188,6 +207,7 @@ public final class VirtualMachineDisk {
     	      this.fileId = defaults.fileId;
     	      this.interface_ = defaults.interface_;
     	      this.iothread = defaults.iothread;
+    	      this.pathInDatastore = defaults.pathInDatastore;
     	      this.size = defaults.size;
     	      this.speed = defaults.speed;
     	      this.ssd = defaults.ssd;
@@ -229,6 +249,11 @@ public final class VirtualMachineDisk {
             return this;
         }
         @CustomType.Setter
+        public Builder pathInDatastore(@Nullable String pathInDatastore) {
+            this.pathInDatastore = pathInDatastore;
+            return this;
+        }
+        @CustomType.Setter
         public Builder size(@Nullable Integer size) {
             this.size = size;
             return this;
@@ -252,6 +277,7 @@ public final class VirtualMachineDisk {
             o.fileId = fileId;
             o.interface_ = interface_;
             o.iothread = iothread;
+            o.pathInDatastore = pathInDatastore;
             o.size = size;
             o.speed = speed;
             o.ssd = ssd;

@@ -45,7 +45,15 @@ class FirewallArgs:
              input_policy: Optional[pulumi.Input[str]] = None,
              log_ratelimit: Optional[pulumi.Input['FirewallLogRatelimitArgs']] = None,
              output_policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'inputPolicy' in kwargs:
+            input_policy = kwargs['inputPolicy']
+        if 'logRatelimit' in kwargs:
+            log_ratelimit = kwargs['logRatelimit']
+        if 'outputPolicy' in kwargs:
+            output_policy = kwargs['outputPolicy']
+
         if ebtables is not None:
             _setter("ebtables", ebtables)
         if enabled is not None:
@@ -150,7 +158,15 @@ class _FirewallState:
              input_policy: Optional[pulumi.Input[str]] = None,
              log_ratelimit: Optional[pulumi.Input['FirewallLogRatelimitArgs']] = None,
              output_policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'inputPolicy' in kwargs:
+            input_policy = kwargs['inputPolicy']
+        if 'logRatelimit' in kwargs:
+            log_ratelimit = kwargs['logRatelimit']
+        if 'outputPolicy' in kwargs:
+            output_policy = kwargs['outputPolicy']
+
         if ebtables is not None:
             _setter("ebtables", ebtables)
         if enabled is not None:

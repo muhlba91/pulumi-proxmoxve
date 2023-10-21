@@ -33,7 +33,9 @@ class HostsEntry(dict):
              _setter: Callable[[Any, Any], None],
              address: str,
              hostnames: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("address", address)
         _setter("hostnames", hostnames)
 
@@ -72,7 +74,9 @@ class GetHostsEntryResult(dict):
              _setter: Callable[[Any, Any], None],
              address: str,
              hostnames: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("address", address)
         _setter("hostnames", hostnames)
 

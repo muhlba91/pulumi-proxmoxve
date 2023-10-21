@@ -44,7 +44,15 @@ class FirewallRulesArgs:
              container_id: Optional[pulumi.Input[int]] = None,
              node_name: Optional[pulumi.Input[str]] = None,
              vm_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'containerId' in kwargs:
+            container_id = kwargs['containerId']
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+        if 'vmId' in kwargs:
+            vm_id = kwargs['vmId']
+
         _setter("rules", rules)
         if container_id is not None:
             _setter("container_id", container_id)
@@ -136,7 +144,15 @@ class _FirewallRulesState:
              node_name: Optional[pulumi.Input[str]] = None,
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallRulesRuleArgs']]]] = None,
              vm_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'containerId' in kwargs:
+            container_id = kwargs['containerId']
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+        if 'vmId' in kwargs:
+            vm_id = kwargs['vmId']
+
         if container_id is not None:
             _setter("container_id", container_id)
         if node_name is not None:

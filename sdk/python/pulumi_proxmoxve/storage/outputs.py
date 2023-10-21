@@ -62,7 +62,11 @@ class FileSourceFile(dict):
              checksum: Optional[str] = None,
              file_name: Optional[str] = None,
              insecure: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fileName' in kwargs:
+            file_name = kwargs['fileName']
+
         _setter("path", path)
         if changed is not None:
             _setter("changed", changed)
@@ -152,7 +156,11 @@ class FileSourceRaw(dict):
              data: str,
              file_name: str,
              resize: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fileName' in kwargs:
+            file_name = kwargs['fileName']
+
         _setter("data", data)
         _setter("file_name", file_name)
         if resize is not None:

@@ -51,6 +51,13 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly bool? Iothread;
         /// <summary>
+        /// The in-datastore path to the disk image.
+        /// ***Experimental.***Use to attach another VM's disks,
+        /// or (as root only) host's filesystem paths (`datastore_id` empty string).
+        /// See "*Example: Attached disks*".
+        /// </summary>
+        public readonly string? PathInDatastore;
+        /// <summary>
         /// The disk size in gigabytes (defaults to `8`).
         /// </summary>
         public readonly int? Size;
@@ -81,6 +88,8 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
 
             bool? iothread,
 
+            string? pathInDatastore,
+
             int? size,
 
             Outputs.VirtualMachineDiskSpeed? speed,
@@ -94,6 +103,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
             FileId = fileId;
             Interface = @interface;
             Iothread = iothread;
+            PathInDatastore = pathInDatastore;
             Size = size;
             Speed = speed;
             Ssd = ssd;

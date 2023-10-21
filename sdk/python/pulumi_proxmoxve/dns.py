@@ -35,7 +35,11 @@ class DNSArgs:
              domain: pulumi.Input[str],
              node_name: pulumi.Input[str],
              servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+
         _setter("domain", domain)
         _setter("node_name", node_name)
         if servers is not None:
@@ -102,7 +106,11 @@ class _DNSState:
              domain: Optional[pulumi.Input[str]] = None,
              node_name: Optional[pulumi.Input[str]] = None,
              servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+
         if domain is not None:
             _setter("domain", domain)
         if node_name is not None:

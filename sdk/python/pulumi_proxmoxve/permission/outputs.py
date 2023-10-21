@@ -58,7 +58,11 @@ class GroupAcl(dict):
              path: str,
              role_id: str,
              propagate: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'roleId' in kwargs:
+            role_id = kwargs['roleId']
+
         _setter("path", path)
         _setter("role_id", role_id)
         if propagate is not None:
@@ -141,7 +145,15 @@ class PoolMember(dict):
              node_name: Optional[str] = None,
              type: Optional[str] = None,
              vm_id: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'datastoreId' in kwargs:
+            datastore_id = kwargs['datastoreId']
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+        if 'vmId' in kwargs:
+            vm_id = kwargs['vmId']
+
         if datastore_id is not None:
             _setter("datastore_id", datastore_id)
         if id is not None:
@@ -234,7 +246,11 @@ class UserAcl(dict):
              path: str,
              role_id: str,
              propagate: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'roleId' in kwargs:
+            role_id = kwargs['roleId']
+
         _setter("path", path)
         _setter("role_id", role_id)
         if propagate is not None:
@@ -288,7 +304,11 @@ class GetGroupAclResult(dict):
              path: str,
              propagate: bool,
              role_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'roleId' in kwargs:
+            role_id = kwargs['roleId']
+
         _setter("path", path)
         _setter("propagate", propagate)
         _setter("role_id", role_id)
@@ -349,7 +369,15 @@ class GetPoolMemberResult(dict):
              node_name: str,
              type: str,
              vm_id: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'datastoreId' in kwargs:
+            datastore_id = kwargs['datastoreId']
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+        if 'vmId' in kwargs:
+            vm_id = kwargs['vmId']
+
         _setter("datastore_id", datastore_id)
         _setter("id", id)
         _setter("node_name", node_name)
@@ -420,7 +448,11 @@ class GetUserAclResult(dict):
              path: str,
              propagate: bool,
              role_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'roleId' in kwargs:
+            role_id = kwargs['roleId']
+
         _setter("path", path)
         _setter("propagate", propagate)
         _setter("role_id", role_id)

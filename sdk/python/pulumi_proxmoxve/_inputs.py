@@ -34,7 +34,9 @@ class HostsEntryArgs:
              _setter: Callable[[Any, Any], None],
              address: pulumi.Input[str],
              hostnames: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("address", address)
         _setter("hostnames", hostnames)
 
@@ -87,7 +89,11 @@ class ProviderSshArgs:
              nodes: Optional[pulumi.Input[Sequence[pulumi.Input['ProviderSshNodeArgs']]]] = None,
              password: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'agentSocket' in kwargs:
+            agent_socket = kwargs['agentSocket']
+
         if agent is not None:
             _setter("agent", agent)
         if agent_socket is not None:
@@ -163,7 +169,9 @@ class ProviderSshNodeArgs:
              address: pulumi.Input[str],
              name: pulumi.Input[str],
              port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("address", address)
         _setter("name", name)
         if port is not None:

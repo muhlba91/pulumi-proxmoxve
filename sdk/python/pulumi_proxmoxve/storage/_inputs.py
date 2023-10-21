@@ -45,7 +45,11 @@ class FileSourceFileArgs:
              checksum: Optional[pulumi.Input[str]] = None,
              file_name: Optional[pulumi.Input[str]] = None,
              insecure: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fileName' in kwargs:
+            file_name = kwargs['fileName']
+
         _setter("path", path)
         if changed is not None:
             _setter("changed", changed)
@@ -138,7 +142,11 @@ class FileSourceRawArgs:
              data: pulumi.Input[str],
              file_name: pulumi.Input[str],
              resize: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fileName' in kwargs:
+            file_name = kwargs['fileName']
+
         _setter("data", data)
         _setter("file_name", file_name)
         if resize is not None:

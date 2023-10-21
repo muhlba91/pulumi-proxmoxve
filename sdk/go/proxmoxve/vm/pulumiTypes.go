@@ -1333,6 +1333,11 @@ type VirtualMachineDisk struct {
 	// Whether to use iothreads for this disk (defaults
 	// to `false`).
 	Iothread *bool `pulumi:"iothread"`
+	// The in-datastore path to the disk image.
+	// ***Experimental.***Use to attach another VM's disks,
+	// or (as root only) host's filesystem paths (`datastoreId` empty string).
+	// See "*Example: Attached disks*".
+	PathInDatastore *string `pulumi:"pathInDatastore"`
 	// The disk size in gigabytes (defaults to `8`).
 	Size *int `pulumi:"size"`
 	// The speed limits.
@@ -1378,6 +1383,11 @@ type VirtualMachineDiskArgs struct {
 	// Whether to use iothreads for this disk (defaults
 	// to `false`).
 	Iothread pulumi.BoolPtrInput `pulumi:"iothread"`
+	// The in-datastore path to the disk image.
+	// ***Experimental.***Use to attach another VM's disks,
+	// or (as root only) host's filesystem paths (`datastoreId` empty string).
+	// See "*Example: Attached disks*".
+	PathInDatastore pulumi.StringPtrInput `pulumi:"pathInDatastore"`
 	// The disk size in gigabytes (defaults to `8`).
 	Size pulumi.IntPtrInput `pulumi:"size"`
 	// The speed limits.
@@ -1499,6 +1509,14 @@ func (o VirtualMachineDiskOutput) Interface() pulumi.StringOutput {
 // to `false`).
 func (o VirtualMachineDiskOutput) Iothread() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *bool { return v.Iothread }).(pulumi.BoolPtrOutput)
+}
+
+// The in-datastore path to the disk image.
+// ***Experimental.***Use to attach another VM's disks,
+// or (as root only) host's filesystem paths (`datastoreId` empty string).
+// See "*Example: Attached disks*".
+func (o VirtualMachineDiskOutput) PathInDatastore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.PathInDatastore }).(pulumi.StringPtrOutput)
 }
 
 // The disk size in gigabytes (defaults to `8`).

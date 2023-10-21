@@ -64,6 +64,15 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<bool>? Iothread { get; set; }
 
         /// <summary>
+        /// The in-datastore path to the disk image.
+        /// ***Experimental.***Use to attach another VM's disks,
+        /// or (as root only) host's filesystem paths (`datastore_id` empty string).
+        /// See "*Example: Attached disks*".
+        /// </summary>
+        [Input("pathInDatastore")]
+        public Input<string>? PathInDatastore { get; set; }
+
+        /// <summary>
         /// The disk size in gigabytes (defaults to `8`).
         /// </summary>
         [Input("size")]

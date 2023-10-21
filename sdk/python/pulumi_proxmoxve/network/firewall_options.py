@@ -83,7 +83,23 @@ class FirewallOptionsArgs:
              output_policy: Optional[pulumi.Input[str]] = None,
              radv: Optional[pulumi.Input[bool]] = None,
              vm_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+        if 'containerId' in kwargs:
+            container_id = kwargs['containerId']
+        if 'inputPolicy' in kwargs:
+            input_policy = kwargs['inputPolicy']
+        if 'logLevelIn' in kwargs:
+            log_level_in = kwargs['logLevelIn']
+        if 'logLevelOut' in kwargs:
+            log_level_out = kwargs['logLevelOut']
+        if 'outputPolicy' in kwargs:
+            output_policy = kwargs['outputPolicy']
+        if 'vmId' in kwargs:
+            vm_id = kwargs['vmId']
+
         _setter("node_name", node_name)
         if container_id is not None:
             _setter("container_id", container_id)
@@ -347,7 +363,23 @@ class _FirewallOptionsState:
              output_policy: Optional[pulumi.Input[str]] = None,
              radv: Optional[pulumi.Input[bool]] = None,
              vm_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'containerId' in kwargs:
+            container_id = kwargs['containerId']
+        if 'inputPolicy' in kwargs:
+            input_policy = kwargs['inputPolicy']
+        if 'logLevelIn' in kwargs:
+            log_level_in = kwargs['logLevelIn']
+        if 'logLevelOut' in kwargs:
+            log_level_out = kwargs['logLevelOut']
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+        if 'outputPolicy' in kwargs:
+            output_policy = kwargs['outputPolicy']
+        if 'vmId' in kwargs:
+            vm_id = kwargs['vmId']
+
         if container_id is not None:
             _setter("container_id", container_id)
         if dhcp is not None:
