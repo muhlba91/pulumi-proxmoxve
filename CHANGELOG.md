@@ -1,6 +1,17 @@
 # Changelog
 
 
+## [5.13.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.13.0...v5.13.1) (2023-10-21)
+
+
+### Miscellaneous Chores
+
+* **deps:** update js-devtools/npm-publish action to v3 ([46dd139](https://github.com/muhlba91/pulumi-proxmoxve/commit/46dd139954addcbf2cd07cc2da353e3cbd1106b4))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.35.0 ([79514f0](https://github.com/muhlba91/pulumi-proxmoxve/commit/79514f0540c4894dc0fd6e706d9408a4af5a456c))
+* **deps:** update module github.com/pulumi/pulumi-terraform-bridge/v3 to v3.62.0 ([71d2572](https://github.com/muhlba91/pulumi-proxmoxve/commit/71d25721f9786eb282686a787e76140e6d3174f2))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.89.0 ([871cb65](https://github.com/muhlba91/pulumi-proxmoxve/commit/871cb65d416d20f001937d1366a491054b89f617))
+* **release:** prepare for upstream 0.35.0 ([60678e6](https://github.com/muhlba91/pulumi-proxmoxve/commit/60678e6dd2c398ffac095eef25d2b14c636a695e))
+
 ## [5.13.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.12.3...v5.13.0) (2023-10-12)
 
 
