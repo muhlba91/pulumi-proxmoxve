@@ -40,7 +40,9 @@ class FirewallIPSetCidr(dict):
              name: str,
              comment: Optional[str] = None,
              nomatch: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         if comment is not None:
             _setter("comment", comment)
@@ -97,7 +99,9 @@ class FirewallLogRatelimit(dict):
              burst: Optional[int] = None,
              enabled: Optional[bool] = None,
              rate: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if burst is not None:
             _setter("burst", burst)
         if enabled is not None:
@@ -239,7 +243,11 @@ class FirewallRulesRule(dict):
              source: Optional[str] = None,
              sport: Optional[str] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'securityGroup' in kwargs:
+            security_group = kwargs['securityGroup']
+
         if action is not None:
             _setter("action", action)
         if comment is not None:
@@ -508,7 +516,11 @@ class FirewallSecurityGroupRule(dict):
              source: Optional[str] = None,
              sport: Optional[str] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'securityGroup' in kwargs:
+            security_group = kwargs['securityGroup']
+
         if action is not None:
             _setter("action", action)
         if comment is not None:

@@ -39,7 +39,11 @@ class Ssh(dict):
              nodes: Optional[Sequence['outputs.SshNode']] = None,
              password: Optional[str] = None,
              username: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'agentSocket' in kwargs:
+            agent_socket = kwargs['agentSocket']
+
         if agent is not None:
             _setter("agent", agent)
         if agent_socket is not None:
@@ -95,7 +99,9 @@ class SshNode(dict):
              address: str,
              name: str,
              port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("address", address)
         _setter("name", name)
         if port is not None:

@@ -49,7 +49,15 @@ class FirewallSecurityGroupArgs:
              name: Optional[pulumi.Input[str]] = None,
              node_name: Optional[pulumi.Input[str]] = None,
              vm_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'containerId' in kwargs:
+            container_id = kwargs['containerId']
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+        if 'vmId' in kwargs:
+            vm_id = kwargs['vmId']
+
         _setter("rules", rules)
         if comment is not None:
             _setter("comment", comment)
@@ -171,7 +179,15 @@ class _FirewallSecurityGroupState:
              node_name: Optional[pulumi.Input[str]] = None,
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallSecurityGroupRuleArgs']]]] = None,
              vm_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'containerId' in kwargs:
+            container_id = kwargs['containerId']
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+        if 'vmId' in kwargs:
+            vm_id = kwargs['vmId']
+
         if comment is not None:
             _setter("comment", comment)
         if container_id is not None:

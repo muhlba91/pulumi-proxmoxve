@@ -764,6 +764,13 @@ export namespace VM {
          */
         iothread?: pulumi.Input<boolean>;
         /**
+         * The in-datastore path to the disk image.
+         * ***Experimental.***Use to attach another VM's disks,
+         * or (as root only) host's filesystem paths (`datastoreId` empty string).
+         * See "*Example: Attached disks*".
+         */
+        pathInDatastore?: pulumi.Input<string>;
+        /**
          * The disk size in gigabytes (defaults to `8`).
          */
         size?: pulumi.Input<number>;

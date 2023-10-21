@@ -142,6 +142,27 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The in-datastore path to the disk image.
+     * ***Experimental.***Use to attach another VM&#39;s disks,
+     * or (as root only) host&#39;s filesystem paths (`datastore_id` empty string).
+     * See &#34;*Example: Attached disks*&#34;.
+     * 
+     */
+    @Import(name="pathInDatastore")
+    private @Nullable Output<String> pathInDatastore;
+
+    /**
+     * @return The in-datastore path to the disk image.
+     * ***Experimental.***Use to attach another VM&#39;s disks,
+     * or (as root only) host&#39;s filesystem paths (`datastore_id` empty string).
+     * See &#34;*Example: Attached disks*&#34;.
+     * 
+     */
+    public Optional<Output<String>> pathInDatastore() {
+        return Optional.ofNullable(this.pathInDatastore);
+    }
+
+    /**
      * The disk size in gigabytes (defaults to `8`).
      * 
      */
@@ -200,6 +221,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         this.fileId = $.fileId;
         this.interface_ = $.interface_;
         this.iothread = $.iothread;
+        this.pathInDatastore = $.pathInDatastore;
         this.size = $.size;
         this.speed = $.speed;
         this.ssd = $.ssd;
@@ -386,6 +408,33 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
          */
         public Builder iothread(Boolean iothread) {
             return iothread(Output.of(iothread));
+        }
+
+        /**
+         * @param pathInDatastore The in-datastore path to the disk image.
+         * ***Experimental.***Use to attach another VM&#39;s disks,
+         * or (as root only) host&#39;s filesystem paths (`datastore_id` empty string).
+         * See &#34;*Example: Attached disks*&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pathInDatastore(@Nullable Output<String> pathInDatastore) {
+            $.pathInDatastore = pathInDatastore;
+            return this;
+        }
+
+        /**
+         * @param pathInDatastore The in-datastore path to the disk image.
+         * ***Experimental.***Use to attach another VM&#39;s disks,
+         * or (as root only) host&#39;s filesystem paths (`datastore_id` empty string).
+         * See &#34;*Example: Attached disks*&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pathInDatastore(String pathInDatastore) {
+            return pathInDatastore(Output.of(pathInDatastore));
         }
 
         /**

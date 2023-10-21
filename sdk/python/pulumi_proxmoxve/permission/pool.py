@@ -33,7 +33,11 @@ class PoolArgs:
              _setter: Callable[[Any, Any], None],
              pool_id: pulumi.Input[str],
              comment: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'poolId' in kwargs:
+            pool_id = kwargs['poolId']
+
         _setter("pool_id", pool_id)
         if comment is not None:
             _setter("comment", comment)
@@ -87,7 +91,11 @@ class _PoolState:
              comment: Optional[pulumi.Input[str]] = None,
              members: Optional[pulumi.Input[Sequence[pulumi.Input['PoolMemberArgs']]]] = None,
              pool_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'poolId' in kwargs:
+            pool_id = kwargs['poolId']
+
         if comment is not None:
             _setter("comment", comment)
         if members is not None:

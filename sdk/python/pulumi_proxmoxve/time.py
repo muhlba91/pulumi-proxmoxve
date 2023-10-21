@@ -31,7 +31,13 @@ class TimeArgs:
              _setter: Callable[[Any, Any], None],
              node_name: pulumi.Input[str],
              time_zone: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+        if 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
         _setter("node_name", node_name)
         _setter("time_zone", time_zone)
 
@@ -88,7 +94,17 @@ class _TimeState:
              node_name: Optional[pulumi.Input[str]] = None,
              time_zone: Optional[pulumi.Input[str]] = None,
              utc_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'localTime' in kwargs:
+            local_time = kwargs['localTime']
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+        if 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+        if 'utcTime' in kwargs:
+            utc_time = kwargs['utcTime']
+
         if local_time is not None:
             _setter("local_time", local_time)
         if node_name is not None:

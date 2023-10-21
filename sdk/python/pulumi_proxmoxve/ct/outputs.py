@@ -73,7 +73,15 @@ class ContainerClone(dict):
              vm_id: int,
              datastore_id: Optional[str] = None,
              node_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'vmId' in kwargs:
+            vm_id = kwargs['vmId']
+        if 'datastoreId' in kwargs:
+            datastore_id = kwargs['datastoreId']
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+
         _setter("vm_id", vm_id)
         if datastore_id is not None:
             _setter("datastore_id", datastore_id)
@@ -147,7 +155,11 @@ class ContainerConsole(dict):
              enabled: Optional[bool] = None,
              tty_count: Optional[int] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ttyCount' in kwargs:
+            tty_count = kwargs['ttyCount']
+
         if enabled is not None:
             _setter("enabled", enabled)
         if tty_count is not None:
@@ -204,7 +216,9 @@ class ContainerCpu(dict):
              architecture: Optional[str] = None,
              cores: Optional[int] = None,
              units: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if architecture is not None:
             _setter("architecture", architecture)
         if cores is not None:
@@ -275,7 +289,11 @@ class ContainerDisk(dict):
              _setter: Callable[[Any, Any], None],
              datastore_id: Optional[str] = None,
              size: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'datastoreId' in kwargs:
+            datastore_id = kwargs['datastoreId']
+
         if datastore_id is not None:
             _setter("datastore_id", datastore_id)
         if size is not None:
@@ -326,7 +344,9 @@ class ContainerFeatures(dict):
              fuse: Optional[bool] = None,
              keyctl: Optional[bool] = None,
              nesting: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if fuse is not None:
             _setter("fuse", fuse)
         if keyctl is not None:
@@ -409,7 +429,13 @@ class ContainerInitialization(dict):
              hostname: Optional[str] = None,
              ip_configs: Optional[Sequence['outputs.ContainerInitializationIpConfig']] = None,
              user_account: Optional['outputs.ContainerInitializationUserAccount'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ipConfigs' in kwargs:
+            ip_configs = kwargs['ipConfigs']
+        if 'userAccount' in kwargs:
+            user_account = kwargs['userAccount']
+
         if dns is not None:
             _setter("dns", dns)
         if hostname is not None:
@@ -472,7 +498,9 @@ class ContainerInitializationDns(dict):
              _setter: Callable[[Any, Any], None],
              domain: Optional[str] = None,
              server: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if domain is not None:
             _setter("domain", domain)
         if server is not None:
@@ -514,7 +542,9 @@ class ContainerInitializationIpConfig(dict):
              _setter: Callable[[Any, Any], None],
              ipv4: Optional['outputs.ContainerInitializationIpConfigIpv4'] = None,
              ipv6: Optional['outputs.ContainerInitializationIpConfigIpv6'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if ipv4 is not None:
             _setter("ipv4", ipv4)
         if ipv6 is not None:
@@ -558,7 +588,9 @@ class ContainerInitializationIpConfigIpv4(dict):
              _setter: Callable[[Any, Any], None],
              address: Optional[str] = None,
              gateway: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if address is not None:
             _setter("address", address)
         if gateway is not None:
@@ -604,7 +636,9 @@ class ContainerInitializationIpConfigIpv6(dict):
              _setter: Callable[[Any, Any], None],
              address: Optional[str] = None,
              gateway: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if address is not None:
             _setter("address", address)
         if gateway is not None:
@@ -648,7 +682,9 @@ class ContainerInitializationUserAccount(dict):
              _setter: Callable[[Any, Any], None],
              keys: Optional[Sequence[str]] = None,
              password: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if keys is not None:
             _setter("keys", keys)
         if password is not None:
@@ -691,7 +727,9 @@ class ContainerMemory(dict):
              _setter: Callable[[Any, Any], None],
              dedicated: Optional[int] = None,
              swap: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if dedicated is not None:
             _setter("dedicated", dedicated)
         if swap is not None:
@@ -791,7 +829,13 @@ class ContainerMountPoint(dict):
              replicate: Optional[bool] = None,
              shared: Optional[bool] = None,
              size: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'mountOptions' in kwargs:
+            mount_options = kwargs['mountOptions']
+        if 'readOnly' in kwargs:
+            read_only = kwargs['readOnly']
+
         _setter("path", path)
         _setter("volume", volume)
         if acl is not None:
@@ -966,7 +1010,15 @@ class ContainerNetworkInterface(dict):
              mtu: Optional[int] = None,
              rate_limit: Optional[float] = None,
              vlan_id: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'macAddress' in kwargs:
+            mac_address = kwargs['macAddress']
+        if 'rateLimit' in kwargs:
+            rate_limit = kwargs['rateLimit']
+        if 'vlanId' in kwargs:
+            vlan_id = kwargs['vlanId']
+
         _setter("name", name)
         if bridge is not None:
             _setter("bridge", bridge)
@@ -1088,7 +1140,11 @@ class ContainerOperatingSystem(dict):
              _setter: Callable[[Any, Any], None],
              template_file_id: str,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'templateFileId' in kwargs:
+            template_file_id = kwargs['templateFileId']
+
         _setter("template_file_id", template_file_id)
         if type is not None:
             _setter("type", type)

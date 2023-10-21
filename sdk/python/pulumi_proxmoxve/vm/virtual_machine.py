@@ -214,7 +214,51 @@ class VirtualMachineArgs:
              timeout_stop_vm: Optional[pulumi.Input[int]] = None,
              vga: Optional[pulumi.Input['VirtualMachineVgaArgs']] = None,
              vm_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+        if 'audioDevice' in kwargs:
+            audio_device = kwargs['audioDevice']
+        if 'bootOrders' in kwargs:
+            boot_orders = kwargs['bootOrders']
+        if 'efiDisk' in kwargs:
+            efi_disk = kwargs['efiDisk']
+        if 'keyboardLayout' in kwargs:
+            keyboard_layout = kwargs['keyboardLayout']
+        if 'kvmArguments' in kwargs:
+            kvm_arguments = kwargs['kvmArguments']
+        if 'networkDevices' in kwargs:
+            network_devices = kwargs['networkDevices']
+        if 'onBoot' in kwargs:
+            on_boot = kwargs['onBoot']
+        if 'operatingSystem' in kwargs:
+            operating_system = kwargs['operatingSystem']
+        if 'poolId' in kwargs:
+            pool_id = kwargs['poolId']
+        if 'scsiHardware' in kwargs:
+            scsi_hardware = kwargs['scsiHardware']
+        if 'serialDevices' in kwargs:
+            serial_devices = kwargs['serialDevices']
+        if 'tabletDevice' in kwargs:
+            tablet_device = kwargs['tabletDevice']
+        if 'timeoutClone' in kwargs:
+            timeout_clone = kwargs['timeoutClone']
+        if 'timeoutMigrate' in kwargs:
+            timeout_migrate = kwargs['timeoutMigrate']
+        if 'timeoutMoveDisk' in kwargs:
+            timeout_move_disk = kwargs['timeoutMoveDisk']
+        if 'timeoutReboot' in kwargs:
+            timeout_reboot = kwargs['timeoutReboot']
+        if 'timeoutShutdownVm' in kwargs:
+            timeout_shutdown_vm = kwargs['timeoutShutdownVm']
+        if 'timeoutStartVm' in kwargs:
+            timeout_start_vm = kwargs['timeoutStartVm']
+        if 'timeoutStopVm' in kwargs:
+            timeout_stop_vm = kwargs['timeoutStopVm']
+        if 'vmId' in kwargs:
+            vm_id = kwargs['vmId']
+
         _setter("node_name", node_name)
         if acpi is not None:
             _setter("acpi", acpi)
@@ -1046,7 +1090,59 @@ class _VirtualMachineState:
              timeout_stop_vm: Optional[pulumi.Input[int]] = None,
              vga: Optional[pulumi.Input['VirtualMachineVgaArgs']] = None,
              vm_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'audioDevice' in kwargs:
+            audio_device = kwargs['audioDevice']
+        if 'bootOrders' in kwargs:
+            boot_orders = kwargs['bootOrders']
+        if 'efiDisk' in kwargs:
+            efi_disk = kwargs['efiDisk']
+        if 'ipv4Addresses' in kwargs:
+            ipv4_addresses = kwargs['ipv4Addresses']
+        if 'ipv6Addresses' in kwargs:
+            ipv6_addresses = kwargs['ipv6Addresses']
+        if 'keyboardLayout' in kwargs:
+            keyboard_layout = kwargs['keyboardLayout']
+        if 'kvmArguments' in kwargs:
+            kvm_arguments = kwargs['kvmArguments']
+        if 'macAddresses' in kwargs:
+            mac_addresses = kwargs['macAddresses']
+        if 'networkDevices' in kwargs:
+            network_devices = kwargs['networkDevices']
+        if 'networkInterfaceNames' in kwargs:
+            network_interface_names = kwargs['networkInterfaceNames']
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+        if 'onBoot' in kwargs:
+            on_boot = kwargs['onBoot']
+        if 'operatingSystem' in kwargs:
+            operating_system = kwargs['operatingSystem']
+        if 'poolId' in kwargs:
+            pool_id = kwargs['poolId']
+        if 'scsiHardware' in kwargs:
+            scsi_hardware = kwargs['scsiHardware']
+        if 'serialDevices' in kwargs:
+            serial_devices = kwargs['serialDevices']
+        if 'tabletDevice' in kwargs:
+            tablet_device = kwargs['tabletDevice']
+        if 'timeoutClone' in kwargs:
+            timeout_clone = kwargs['timeoutClone']
+        if 'timeoutMigrate' in kwargs:
+            timeout_migrate = kwargs['timeoutMigrate']
+        if 'timeoutMoveDisk' in kwargs:
+            timeout_move_disk = kwargs['timeoutMoveDisk']
+        if 'timeoutReboot' in kwargs:
+            timeout_reboot = kwargs['timeoutReboot']
+        if 'timeoutShutdownVm' in kwargs:
+            timeout_shutdown_vm = kwargs['timeoutShutdownVm']
+        if 'timeoutStartVm' in kwargs:
+            timeout_start_vm = kwargs['timeoutStartVm']
+        if 'timeoutStopVm' in kwargs:
+            timeout_stop_vm = kwargs['timeoutStopVm']
+        if 'vmId' in kwargs:
+            vm_id = kwargs['vmId']
+
         if acpi is not None:
             _setter("acpi", acpi)
         if agent is not None:

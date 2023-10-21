@@ -43,7 +43,15 @@ class CertifiArgs:
              private_key: pulumi.Input[str],
              certificate_chain: Optional[pulumi.Input[str]] = None,
              overwrite: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+        if 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if 'certificateChain' in kwargs:
+            certificate_chain = kwargs['certificateChain']
+
         _setter("certificate", certificate)
         _setter("node_name", node_name)
         _setter("private_key", private_key)
@@ -181,7 +189,29 @@ class _CertifiState:
              start_date: Optional[pulumi.Input[str]] = None,
              subject: Optional[pulumi.Input[str]] = None,
              subject_alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'certificateChain' in kwargs:
+            certificate_chain = kwargs['certificateChain']
+        if 'expirationDate' in kwargs:
+            expiration_date = kwargs['expirationDate']
+        if 'fileName' in kwargs:
+            file_name = kwargs['fileName']
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+        if 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if 'publicKeySize' in kwargs:
+            public_key_size = kwargs['publicKeySize']
+        if 'publicKeyType' in kwargs:
+            public_key_type = kwargs['publicKeyType']
+        if 'sslFingerprint' in kwargs:
+            ssl_fingerprint = kwargs['sslFingerprint']
+        if 'startDate' in kwargs:
+            start_date = kwargs['startDate']
+        if 'subjectAlternativeNames' in kwargs:
+            subject_alternative_names = kwargs['subjectAlternativeNames']
+
         if certificate is not None:
             _setter("certificate", certificate)
         if certificate_chain is not None:

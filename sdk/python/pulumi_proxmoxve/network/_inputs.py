@@ -40,7 +40,9 @@ class FirewallIPSetCidrArgs:
              name: pulumi.Input[str],
              comment: Optional[pulumi.Input[str]] = None,
              nomatch: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         if comment is not None:
             _setter("comment", comment)
@@ -109,7 +111,9 @@ class FirewallLogRatelimitArgs:
              burst: Optional[pulumi.Input[int]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              rate: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if burst is not None:
             _setter("burst", burst)
         if enabled is not None:
@@ -246,7 +250,11 @@ class FirewallRulesRuleArgs:
              source: Optional[pulumi.Input[str]] = None,
              sport: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'securityGroup' in kwargs:
+            security_group = kwargs['securityGroup']
+
         if action is not None:
             _setter("action", action)
         if comment is not None:
@@ -554,7 +562,11 @@ class FirewallSecurityGroupRuleArgs:
              source: Optional[pulumi.Input[str]] = None,
              sport: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'securityGroup' in kwargs:
+            security_group = kwargs['securityGroup']
+
         if action is not None:
             _setter("action", action)
         if comment is not None:

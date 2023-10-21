@@ -4,8 +4,12 @@
 package permission
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves information about all the available roles.
@@ -53,4 +57,60 @@ type GetRolesResult struct {
 	RoleIds []string `pulumi:"roleIds"`
 	// Whether the role is special (built-in).
 	Specials []bool `pulumi:"specials"`
+}
+
+func GetRolesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetRolesResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetRolesResult, error) {
+		r, err := GetRoles(ctx, opts...)
+		var s GetRolesResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetRolesResultOutput)
+}
+
+// A collection of values returned by getRoles.
+type GetRolesResultOutput struct{ *pulumi.OutputState }
+
+func (GetRolesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRolesResult)(nil)).Elem()
+}
+
+func (o GetRolesResultOutput) ToGetRolesResultOutput() GetRolesResultOutput {
+	return o
+}
+
+func (o GetRolesResultOutput) ToGetRolesResultOutputWithContext(ctx context.Context) GetRolesResultOutput {
+	return o
+}
+
+func (o GetRolesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRolesResult] {
+	return pulumix.Output[GetRolesResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetRolesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRolesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The role privileges.
+func (o GetRolesResultOutput) Privileges() pulumi.StringArrayArrayOutput {
+	return o.ApplyT(func(v GetRolesResult) [][]string { return v.Privileges }).(pulumi.StringArrayArrayOutput)
+}
+
+// The role identifiers.
+func (o GetRolesResultOutput) RoleIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRolesResult) []string { return v.RoleIds }).(pulumi.StringArrayOutput)
+}
+
+// Whether the role is special (built-in).
+func (o GetRolesResultOutput) Specials() pulumi.BoolArrayOutput {
+	return o.ApplyT(func(v GetRolesResult) []bool { return v.Specials }).(pulumi.BoolArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetRolesResultOutput{})
 }

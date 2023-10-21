@@ -38,7 +38,11 @@ class GroupAclArgs:
              path: pulumi.Input[str],
              role_id: pulumi.Input[str],
              propagate: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'roleId' in kwargs:
+            role_id = kwargs['roleId']
+
         _setter("path", path)
         _setter("role_id", role_id)
         if propagate is not None:
@@ -112,7 +116,15 @@ class PoolMemberArgs:
              node_name: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              vm_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'datastoreId' in kwargs:
+            datastore_id = kwargs['datastoreId']
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+        if 'vmId' in kwargs:
+            vm_id = kwargs['vmId']
+
         if datastore_id is not None:
             _setter("datastore_id", datastore_id)
         if id is not None:
@@ -208,7 +220,11 @@ class UserAclArgs:
              path: pulumi.Input[str],
              role_id: pulumi.Input[str],
              propagate: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'roleId' in kwargs:
+            role_id = kwargs['roleId']
+
         _setter("path", path)
         _setter("role_id", role_id)
         if propagate is not None:

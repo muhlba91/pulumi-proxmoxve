@@ -4,8 +4,12 @@
 package permission
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the identifiers for all the available resource pools.
@@ -49,4 +53,50 @@ type GetPoolsResult struct {
 	Id string `pulumi:"id"`
 	// The pool identifiers.
 	PoolIds []string `pulumi:"poolIds"`
+}
+
+func GetPoolsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetPoolsResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetPoolsResult, error) {
+		r, err := GetPools(ctx, opts...)
+		var s GetPoolsResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetPoolsResultOutput)
+}
+
+// A collection of values returned by getPools.
+type GetPoolsResultOutput struct{ *pulumi.OutputState }
+
+func (GetPoolsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPoolsResult)(nil)).Elem()
+}
+
+func (o GetPoolsResultOutput) ToGetPoolsResultOutput() GetPoolsResultOutput {
+	return o
+}
+
+func (o GetPoolsResultOutput) ToGetPoolsResultOutputWithContext(ctx context.Context) GetPoolsResultOutput {
+	return o
+}
+
+func (o GetPoolsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPoolsResult] {
+	return pulumix.Output[GetPoolsResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetPoolsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoolsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The pool identifiers.
+func (o GetPoolsResultOutput) PoolIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPoolsResult) []string { return v.PoolIds }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetPoolsResultOutput{})
 }

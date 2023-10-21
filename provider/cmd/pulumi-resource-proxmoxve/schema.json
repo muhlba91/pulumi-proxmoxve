@@ -971,6 +971,10 @@
                     "type": "boolean",
                     "description": "Whether to use iothreads for this disk (defaults\nto `false`).\n"
                 },
+                "pathInDatastore": {
+                    "type": "string",
+                    "description": "The in-datastore path to the disk image.\n***Experimental.***Use to attach another VM's disks,\nor (as root only) host's filesystem paths (`datastore_id` empty string).\nSee \"*Example: Attached disks*\".\n"
+                },
                 "size": {
                     "type": "integer",
                     "description": "The disk size in gigabytes (defaults to `8`).\n"
@@ -992,7 +996,8 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "fileFormat",
-                        "interface"
+                        "interface",
+                        "pathInDatastore"
                     ]
                 }
             }

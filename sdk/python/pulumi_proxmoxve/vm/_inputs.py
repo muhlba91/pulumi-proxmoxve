@@ -64,7 +64,9 @@ class VirtualMachineAgentArgs:
              timeout: Optional[pulumi.Input[str]] = None,
              trim: Optional[pulumi.Input[bool]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if enabled is not None:
             _setter("enabled", enabled)
         if timeout is not None:
@@ -151,7 +153,9 @@ class VirtualMachineAudioDeviceArgs:
              device: Optional[pulumi.Input[str]] = None,
              driver: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if device is not None:
             _setter("device", device)
         if driver is not None:
@@ -227,7 +231,11 @@ class VirtualMachineCdromArgs:
              enabled: Optional[pulumi.Input[bool]] = None,
              file_id: Optional[pulumi.Input[str]] = None,
              interface: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fileId' in kwargs:
+            file_id = kwargs['fileId']
+
         if enabled is not None:
             _setter("enabled", enabled)
         if file_id is not None:
@@ -312,7 +320,15 @@ class VirtualMachineCloneArgs:
              full: Optional[pulumi.Input[bool]] = None,
              node_name: Optional[pulumi.Input[str]] = None,
              retries: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'vmId' in kwargs:
+            vm_id = kwargs['vmId']
+        if 'datastoreId' in kwargs:
+            datastore_id = kwargs['datastoreId']
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+
         _setter("vm_id", vm_id)
         if datastore_id is not None:
             _setter("datastore_id", datastore_id)
@@ -451,7 +467,9 @@ class VirtualMachineCpuArgs:
              sockets: Optional[pulumi.Input[int]] = None,
              type: Optional[pulumi.Input[str]] = None,
              units: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if architecture is not None:
             _setter("architecture", architecture)
         if cores is not None:
@@ -599,6 +617,7 @@ class VirtualMachineDiskArgs:
                  file_format: Optional[pulumi.Input[str]] = None,
                  file_id: Optional[pulumi.Input[str]] = None,
                  iothread: Optional[pulumi.Input[bool]] = None,
+                 path_in_datastore: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  speed: Optional[pulumi.Input['VirtualMachineDiskSpeedArgs']] = None,
                  ssd: Optional[pulumi.Input[bool]] = None):
@@ -619,6 +638,10 @@ class VirtualMachineDiskArgs:
                disk images).
         :param pulumi.Input[bool] iothread: Whether to use iothreads for this disk (defaults
                to `false`).
+        :param pulumi.Input[str] path_in_datastore: The in-datastore path to the disk image.
+               ***Experimental.***Use to attach another VM's disks,
+               or (as root only) host's filesystem paths (`datastore_id` empty string).
+               See "*Example: Attached disks*".
         :param pulumi.Input[int] size: The disk size in gigabytes (defaults to `8`).
         :param pulumi.Input['VirtualMachineDiskSpeedArgs'] speed: The speed limits.
         :param pulumi.Input[bool] ssd: Whether to use an SSD emulation option for this disk (
@@ -634,6 +657,7 @@ class VirtualMachineDiskArgs:
             file_format=file_format,
             file_id=file_id,
             iothread=iothread,
+            path_in_datastore=path_in_datastore,
             size=size,
             speed=speed,
             ssd=ssd,
@@ -648,10 +672,21 @@ class VirtualMachineDiskArgs:
              file_format: Optional[pulumi.Input[str]] = None,
              file_id: Optional[pulumi.Input[str]] = None,
              iothread: Optional[pulumi.Input[bool]] = None,
+             path_in_datastore: Optional[pulumi.Input[str]] = None,
              size: Optional[pulumi.Input[int]] = None,
              speed: Optional[pulumi.Input['VirtualMachineDiskSpeedArgs']] = None,
              ssd: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'datastoreId' in kwargs:
+            datastore_id = kwargs['datastoreId']
+        if 'fileFormat' in kwargs:
+            file_format = kwargs['fileFormat']
+        if 'fileId' in kwargs:
+            file_id = kwargs['fileId']
+        if 'pathInDatastore' in kwargs:
+            path_in_datastore = kwargs['pathInDatastore']
+
         _setter("interface", interface)
         if cache is not None:
             _setter("cache", cache)
@@ -665,6 +700,8 @@ class VirtualMachineDiskArgs:
             _setter("file_id", file_id)
         if iothread is not None:
             _setter("iothread", iothread)
+        if path_in_datastore is not None:
+            _setter("path_in_datastore", path_in_datastore)
         if size is not None:
             _setter("size", size)
         if speed is not None:
@@ -766,6 +803,21 @@ class VirtualMachineDiskArgs:
         pulumi.set(self, "iothread", value)
 
     @property
+    @pulumi.getter(name="pathInDatastore")
+    def path_in_datastore(self) -> Optional[pulumi.Input[str]]:
+        """
+        The in-datastore path to the disk image.
+        ***Experimental.***Use to attach another VM's disks,
+        or (as root only) host's filesystem paths (`datastore_id` empty string).
+        See "*Example: Attached disks*".
+        """
+        return pulumi.get(self, "path_in_datastore")
+
+    @path_in_datastore.setter
+    def path_in_datastore(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path_in_datastore", value)
+
+    @property
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[int]]:
         """
@@ -833,7 +885,13 @@ class VirtualMachineDiskSpeedArgs:
              read_burstable: Optional[pulumi.Input[int]] = None,
              write: Optional[pulumi.Input[int]] = None,
              write_burstable: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'readBurstable' in kwargs:
+            read_burstable = kwargs['readBurstable']
+        if 'writeBurstable' in kwargs:
+            write_burstable = kwargs['writeBurstable']
+
         if read is not None:
             _setter("read", read)
         if read_burstable is not None:
@@ -925,7 +983,15 @@ class VirtualMachineEfiDiskArgs:
              file_format: Optional[pulumi.Input[str]] = None,
              pre_enrolled_keys: Optional[pulumi.Input[bool]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'datastoreId' in kwargs:
+            datastore_id = kwargs['datastoreId']
+        if 'fileFormat' in kwargs:
+            file_format = kwargs['fileFormat']
+        if 'preEnrolledKeys' in kwargs:
+            pre_enrolled_keys = kwargs['preEnrolledKeys']
+
         if datastore_id is not None:
             _setter("datastore_id", datastore_id)
         if file_format is not None:
@@ -1038,7 +1104,11 @@ class VirtualMachineHostpciArgs:
              rom_file: Optional[pulumi.Input[str]] = None,
              rombar: Optional[pulumi.Input[bool]] = None,
              xvga: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'romFile' in kwargs:
+            rom_file = kwargs['romFile']
+
         _setter("device", device)
         if id is not None:
             _setter("id", id)
@@ -1221,7 +1291,23 @@ class VirtualMachineInitializationArgs:
              user_account: Optional[pulumi.Input['VirtualMachineInitializationUserAccountArgs']] = None,
              user_data_file_id: Optional[pulumi.Input[str]] = None,
              vendor_data_file_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'datastoreId' in kwargs:
+            datastore_id = kwargs['datastoreId']
+        if 'ipConfigs' in kwargs:
+            ip_configs = kwargs['ipConfigs']
+        if 'metaDataFileId' in kwargs:
+            meta_data_file_id = kwargs['metaDataFileId']
+        if 'networkDataFileId' in kwargs:
+            network_data_file_id = kwargs['networkDataFileId']
+        if 'userAccount' in kwargs:
+            user_account = kwargs['userAccount']
+        if 'userDataFileId' in kwargs:
+            user_data_file_id = kwargs['userDataFileId']
+        if 'vendorDataFileId' in kwargs:
+            vendor_data_file_id = kwargs['vendorDataFileId']
+
         if datastore_id is not None:
             _setter("datastore_id", datastore_id)
         if dns is not None:
@@ -1394,7 +1480,9 @@ class VirtualMachineInitializationDnsArgs:
              _setter: Callable[[Any, Any], None],
              domain: Optional[pulumi.Input[str]] = None,
              server: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if domain is not None:
             _setter("domain", domain)
         if server is not None:
@@ -1444,7 +1532,9 @@ class VirtualMachineInitializationIpConfigArgs:
              _setter: Callable[[Any, Any], None],
              ipv4: Optional[pulumi.Input['VirtualMachineInitializationIpConfigIpv4Args']] = None,
              ipv6: Optional[pulumi.Input['VirtualMachineInitializationIpConfigIpv6Args']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if ipv4 is not None:
             _setter("ipv4", ipv4)
         if ipv6 is not None:
@@ -1496,7 +1586,9 @@ class VirtualMachineInitializationIpConfigIpv4Args:
              _setter: Callable[[Any, Any], None],
              address: Optional[pulumi.Input[str]] = None,
              gateway: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if address is not None:
             _setter("address", address)
         if gateway is not None:
@@ -1550,7 +1642,9 @@ class VirtualMachineInitializationIpConfigIpv6Args:
              _setter: Callable[[Any, Any], None],
              address: Optional[pulumi.Input[str]] = None,
              gateway: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if address is not None:
             _setter("address", address)
         if gateway is not None:
@@ -1606,7 +1700,9 @@ class VirtualMachineInitializationUserAccountArgs:
              keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              password: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if keys is not None:
             _setter("keys", keys)
         if password is not None:
@@ -1676,7 +1772,9 @@ class VirtualMachineMemoryArgs:
              dedicated: Optional[pulumi.Input[int]] = None,
              floating: Optional[pulumi.Input[int]] = None,
              shared: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if dedicated is not None:
             _setter("dedicated", dedicated)
         if floating is not None:
@@ -1774,7 +1872,15 @@ class VirtualMachineNetworkDeviceArgs:
              queues: Optional[pulumi.Input[int]] = None,
              rate_limit: Optional[pulumi.Input[float]] = None,
              vlan_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'macAddress' in kwargs:
+            mac_address = kwargs['macAddress']
+        if 'rateLimit' in kwargs:
+            rate_limit = kwargs['rateLimit']
+        if 'vlanId' in kwargs:
+            vlan_id = kwargs['vlanId']
+
         if bridge is not None:
             _setter("bridge", bridge)
         if enabled is not None:
@@ -1922,7 +2028,9 @@ class VirtualMachineOperatingSystemArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if type is not None:
             _setter("type", type)
 
@@ -1955,7 +2063,9 @@ class VirtualMachineSerialDeviceArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              device: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if device is not None:
             _setter("device", device)
 
@@ -2012,7 +2122,9 @@ class VirtualMachineSmbiosArgs:
              sku: Optional[pulumi.Input[str]] = None,
              uuid: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if family is not None:
             _setter("family", family)
         if manufacturer is not None:
@@ -2135,7 +2247,13 @@ class VirtualMachineStartupArgs:
              down_delay: Optional[pulumi.Input[int]] = None,
              order: Optional[pulumi.Input[int]] = None,
              up_delay: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'downDelay' in kwargs:
+            down_delay = kwargs['downDelay']
+        if 'upDelay' in kwargs:
+            up_delay = kwargs['upDelay']
+
         if down_delay is not None:
             _setter("down_delay", down_delay)
         if order is not None:
@@ -2199,7 +2317,9 @@ class VirtualMachineVgaArgs:
              enabled: Optional[pulumi.Input[bool]] = None,
              memory: Optional[pulumi.Input[int]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if enabled is not None:
             _setter("enabled", enabled)
         if memory is not None:

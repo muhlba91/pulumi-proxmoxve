@@ -55,7 +55,21 @@ class FileArgs:
              source_file: Optional[pulumi.Input['FileSourceFileArgs']] = None,
              source_raw: Optional[pulumi.Input['FileSourceRawArgs']] = None,
              timeout_upload: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'datastoreId' in kwargs:
+            datastore_id = kwargs['datastoreId']
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+        if 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if 'sourceFile' in kwargs:
+            source_file = kwargs['sourceFile']
+        if 'sourceRaw' in kwargs:
+            source_raw = kwargs['sourceRaw']
+        if 'timeoutUpload' in kwargs:
+            timeout_upload = kwargs['timeoutUpload']
+
         _setter("datastore_id", datastore_id)
         _setter("node_name", node_name)
         if content_type is not None:
@@ -214,7 +228,29 @@ class _FileState:
              source_file: Optional[pulumi.Input['FileSourceFileArgs']] = None,
              source_raw: Optional[pulumi.Input['FileSourceRawArgs']] = None,
              timeout_upload: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if 'datastoreId' in kwargs:
+            datastore_id = kwargs['datastoreId']
+        if 'fileModificationDate' in kwargs:
+            file_modification_date = kwargs['fileModificationDate']
+        if 'fileName' in kwargs:
+            file_name = kwargs['fileName']
+        if 'fileSize' in kwargs:
+            file_size = kwargs['fileSize']
+        if 'fileTag' in kwargs:
+            file_tag = kwargs['fileTag']
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+        if 'sourceFile' in kwargs:
+            source_file = kwargs['sourceFile']
+        if 'sourceRaw' in kwargs:
+            source_raw = kwargs['sourceRaw']
+        if 'timeoutUpload' in kwargs:
+            timeout_upload = kwargs['timeoutUpload']
+
         if content_type is not None:
             _setter("content_type", content_type)
         if datastore_id is not None:

@@ -4,8 +4,12 @@
 package permission
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves information about all the available users.
@@ -65,4 +69,90 @@ type GetUsersResult struct {
 	LastNames []string `pulumi:"lastNames"`
 	// The user identifiers.
 	UserIds []string `pulumi:"userIds"`
+}
+
+func GetUsersOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetUsersResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetUsersResult, error) {
+		r, err := GetUsers(ctx, opts...)
+		var s GetUsersResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetUsersResultOutput)
+}
+
+// A collection of values returned by getUsers.
+type GetUsersResultOutput struct{ *pulumi.OutputState }
+
+func (GetUsersResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersResult)(nil)).Elem()
+}
+
+func (o GetUsersResultOutput) ToGetUsersResultOutput() GetUsersResultOutput {
+	return o
+}
+
+func (o GetUsersResultOutput) ToGetUsersResultOutputWithContext(ctx context.Context) GetUsersResultOutput {
+	return o
+}
+
+func (o GetUsersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetUsersResult] {
+	return pulumix.Output[GetUsersResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The user comments.
+func (o GetUsersResultOutput) Comments() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetUsersResult) []string { return v.Comments }).(pulumi.StringArrayOutput)
+}
+
+// The users' email addresses.
+func (o GetUsersResultOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetUsersResult) []string { return v.Emails }).(pulumi.StringArrayOutput)
+}
+
+// Whether a user account is enabled.
+func (o GetUsersResultOutput) Enableds() pulumi.BoolArrayOutput {
+	return o.ApplyT(func(v GetUsersResult) []bool { return v.Enableds }).(pulumi.BoolArrayOutput)
+}
+
+// The user accounts' expiration dates (RFC 3339).
+func (o GetUsersResultOutput) ExpirationDates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetUsersResult) []string { return v.ExpirationDates }).(pulumi.StringArrayOutput)
+}
+
+// The users' first names.
+func (o GetUsersResultOutput) FirstNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetUsersResult) []string { return v.FirstNames }).(pulumi.StringArrayOutput)
+}
+
+// The users' groups.
+func (o GetUsersResultOutput) Groups() pulumi.StringArrayArrayOutput {
+	return o.ApplyT(func(v GetUsersResult) [][]string { return v.Groups }).(pulumi.StringArrayArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetUsersResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The users' keys.
+func (o GetUsersResultOutput) Keys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetUsersResult) []string { return v.Keys }).(pulumi.StringArrayOutput)
+}
+
+// The users' last names.
+func (o GetUsersResultOutput) LastNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetUsersResult) []string { return v.LastNames }).(pulumi.StringArrayOutput)
+}
+
+// The user identifiers.
+func (o GetUsersResultOutput) UserIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetUsersResult) []string { return v.UserIds }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetUsersResultOutput{})
 }

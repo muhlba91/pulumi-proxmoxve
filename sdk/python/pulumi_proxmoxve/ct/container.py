@@ -107,7 +107,23 @@ class ContainerArgs:
              template: Optional[pulumi.Input[bool]] = None,
              unprivileged: Optional[pulumi.Input[bool]] = None,
              vm_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+        if 'mountPoints' in kwargs:
+            mount_points = kwargs['mountPoints']
+        if 'networkInterfaces' in kwargs:
+            network_interfaces = kwargs['networkInterfaces']
+        if 'operatingSystem' in kwargs:
+            operating_system = kwargs['operatingSystem']
+        if 'poolId' in kwargs:
+            pool_id = kwargs['poolId']
+        if 'startOnBoot' in kwargs:
+            start_on_boot = kwargs['startOnBoot']
+        if 'vmId' in kwargs:
+            vm_id = kwargs['vmId']
+
         _setter("node_name", node_name)
         if clone is not None:
             _setter("clone", clone)
@@ -475,7 +491,23 @@ class _ContainerState:
              template: Optional[pulumi.Input[bool]] = None,
              unprivileged: Optional[pulumi.Input[bool]] = None,
              vm_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'mountPoints' in kwargs:
+            mount_points = kwargs['mountPoints']
+        if 'networkInterfaces' in kwargs:
+            network_interfaces = kwargs['networkInterfaces']
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+        if 'operatingSystem' in kwargs:
+            operating_system = kwargs['operatingSystem']
+        if 'poolId' in kwargs:
+            pool_id = kwargs['poolId']
+        if 'startOnBoot' in kwargs:
+            start_on_boot = kwargs['startOnBoot']
+        if 'vmId' in kwargs:
+            vm_id = kwargs['vmId']
+
         if clone is not None:
             _setter("clone", clone)
         if console is not None:
