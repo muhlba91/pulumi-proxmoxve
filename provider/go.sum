@@ -775,6 +775,8 @@ github.com/bpg/terraform-provider-proxmox v0.34.0 h1:UNpN0eWxH4C/2egDO/kAJOdesU1
 github.com/bpg/terraform-provider-proxmox v0.34.0/go.mod h1:N4t1rtHdsDm2DJHo0Tkc1hAVk1ZntBzjKOVJkGZhzNQ=
 github.com/bpg/terraform-provider-proxmox v0.35.0 h1:mOlUh9uZ6WAJgvistDZfcVa4MysmiDIGscVkucUYxbA=
 github.com/bpg/terraform-provider-proxmox v0.35.0/go.mod h1:yOKOa3e0S47g+DPvW0Vj8LoIO3IEx/ylTNSk/YkarPQ=
+github.com/bpg/terraform-provider-proxmox v0.35.1 h1:SuZyFzV00lgIQFB/Cvz3Q8/DZeP2I2S+C/5fQ10vjTw=
+github.com/bpg/terraform-provider-proxmox v0.35.1/go.mod h1:yOKOa3e0S47g+DPvW0Vj8LoIO3IEx/ylTNSk/YkarPQ=
 github.com/bufbuild/protocompile v0.4.0/go.mod h1:3v93+mbWn/v3xzN+31nwkJfrEpAUwp+BagBSZWx+TP8=
 github.com/bwesterb/go-ristretto v1.2.3/go.mod h1:fUIoIZaG73pV5biE2Blr2xEzDoMj7NFEuV9ekS419A0=
 github.com/cenkalti/backoff/v3 v3.2.2 h1:cfUAAO3yvKMYKPrvhDuHSwQnhZNk/RMHKdZqKTxfm6M=
