@@ -31,12 +31,14 @@ class PoolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pool_id: pulumi.Input[str],
+             pool_id: Optional[pulumi.Input[str]] = None,
              comment: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'poolId' in kwargs:
+        if pool_id is None and 'poolId' in kwargs:
             pool_id = kwargs['poolId']
+        if pool_id is None:
+            raise TypeError("Missing 'pool_id' argument")
 
         _setter("pool_id", pool_id)
         if comment is not None:
@@ -91,9 +93,9 @@ class _PoolState:
              comment: Optional[pulumi.Input[str]] = None,
              members: Optional[pulumi.Input[Sequence[pulumi.Input['PoolMemberArgs']]]] = None,
              pool_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'poolId' in kwargs:
+        if pool_id is None and 'poolId' in kwargs:
             pool_id = kwargs['poolId']
 
         if comment is not None:

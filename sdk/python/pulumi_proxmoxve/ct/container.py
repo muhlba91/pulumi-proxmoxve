@@ -88,7 +88,7 @@ class ContainerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             node_name: pulumi.Input[str],
+             node_name: Optional[pulumi.Input[str]] = None,
              clone: Optional[pulumi.Input['ContainerCloneArgs']] = None,
              console: Optional[pulumi.Input['ContainerConsoleArgs']] = None,
              cpu: Optional[pulumi.Input['ContainerCpuArgs']] = None,
@@ -107,21 +107,23 @@ class ContainerArgs:
              template: Optional[pulumi.Input[bool]] = None,
              unprivileged: Optional[pulumi.Input[bool]] = None,
              vm_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nodeName' in kwargs:
+        if node_name is None and 'nodeName' in kwargs:
             node_name = kwargs['nodeName']
-        if 'mountPoints' in kwargs:
+        if node_name is None:
+            raise TypeError("Missing 'node_name' argument")
+        if mount_points is None and 'mountPoints' in kwargs:
             mount_points = kwargs['mountPoints']
-        if 'networkInterfaces' in kwargs:
+        if network_interfaces is None and 'networkInterfaces' in kwargs:
             network_interfaces = kwargs['networkInterfaces']
-        if 'operatingSystem' in kwargs:
+        if operating_system is None and 'operatingSystem' in kwargs:
             operating_system = kwargs['operatingSystem']
-        if 'poolId' in kwargs:
+        if pool_id is None and 'poolId' in kwargs:
             pool_id = kwargs['poolId']
-        if 'startOnBoot' in kwargs:
+        if start_on_boot is None and 'startOnBoot' in kwargs:
             start_on_boot = kwargs['startOnBoot']
-        if 'vmId' in kwargs:
+        if vm_id is None and 'vmId' in kwargs:
             vm_id = kwargs['vmId']
 
         _setter("node_name", node_name)
@@ -491,21 +493,21 @@ class _ContainerState:
              template: Optional[pulumi.Input[bool]] = None,
              unprivileged: Optional[pulumi.Input[bool]] = None,
              vm_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'mountPoints' in kwargs:
+        if mount_points is None and 'mountPoints' in kwargs:
             mount_points = kwargs['mountPoints']
-        if 'networkInterfaces' in kwargs:
+        if network_interfaces is None and 'networkInterfaces' in kwargs:
             network_interfaces = kwargs['networkInterfaces']
-        if 'nodeName' in kwargs:
+        if node_name is None and 'nodeName' in kwargs:
             node_name = kwargs['nodeName']
-        if 'operatingSystem' in kwargs:
+        if operating_system is None and 'operatingSystem' in kwargs:
             operating_system = kwargs['operatingSystem']
-        if 'poolId' in kwargs:
+        if pool_id is None and 'poolId' in kwargs:
             pool_id = kwargs['poolId']
-        if 'startOnBoot' in kwargs:
+        if start_on_boot is None and 'startOnBoot' in kwargs:
             start_on_boot = kwargs['startOnBoot']
-        if 'vmId' in kwargs:
+        if vm_id is None and 'vmId' in kwargs:
             vm_id = kwargs['vmId']
 
         if clone is not None:
@@ -910,59 +912,27 @@ class Container(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ContainerArgs.__new__(ContainerArgs)
 
-            if clone is not None and not isinstance(clone, ContainerCloneArgs):
-                clone = clone or {}
-                def _setter(key, value):
-                    clone[key] = value
-                ContainerCloneArgs._configure(_setter, **clone)
+            clone = _utilities.configure(clone, ContainerCloneArgs, True)
             __props__.__dict__["clone"] = clone
-            if console is not None and not isinstance(console, ContainerConsoleArgs):
-                console = console or {}
-                def _setter(key, value):
-                    console[key] = value
-                ContainerConsoleArgs._configure(_setter, **console)
+            console = _utilities.configure(console, ContainerConsoleArgs, True)
             __props__.__dict__["console"] = console
-            if cpu is not None and not isinstance(cpu, ContainerCpuArgs):
-                cpu = cpu or {}
-                def _setter(key, value):
-                    cpu[key] = value
-                ContainerCpuArgs._configure(_setter, **cpu)
+            cpu = _utilities.configure(cpu, ContainerCpuArgs, True)
             __props__.__dict__["cpu"] = cpu
             __props__.__dict__["description"] = description
-            if disk is not None and not isinstance(disk, ContainerDiskArgs):
-                disk = disk or {}
-                def _setter(key, value):
-                    disk[key] = value
-                ContainerDiskArgs._configure(_setter, **disk)
+            disk = _utilities.configure(disk, ContainerDiskArgs, True)
             __props__.__dict__["disk"] = disk
-            if features is not None and not isinstance(features, ContainerFeaturesArgs):
-                features = features or {}
-                def _setter(key, value):
-                    features[key] = value
-                ContainerFeaturesArgs._configure(_setter, **features)
+            features = _utilities.configure(features, ContainerFeaturesArgs, True)
             __props__.__dict__["features"] = features
-            if initialization is not None and not isinstance(initialization, ContainerInitializationArgs):
-                initialization = initialization or {}
-                def _setter(key, value):
-                    initialization[key] = value
-                ContainerInitializationArgs._configure(_setter, **initialization)
+            initialization = _utilities.configure(initialization, ContainerInitializationArgs, True)
             __props__.__dict__["initialization"] = initialization
-            if memory is not None and not isinstance(memory, ContainerMemoryArgs):
-                memory = memory or {}
-                def _setter(key, value):
-                    memory[key] = value
-                ContainerMemoryArgs._configure(_setter, **memory)
+            memory = _utilities.configure(memory, ContainerMemoryArgs, True)
             __props__.__dict__["memory"] = memory
             __props__.__dict__["mount_points"] = mount_points
             __props__.__dict__["network_interfaces"] = network_interfaces
             if node_name is None and not opts.urn:
                 raise TypeError("Missing required property 'node_name'")
             __props__.__dict__["node_name"] = node_name
-            if operating_system is not None and not isinstance(operating_system, ContainerOperatingSystemArgs):
-                operating_system = operating_system or {}
-                def _setter(key, value):
-                    operating_system[key] = value
-                ContainerOperatingSystemArgs._configure(_setter, **operating_system)
+            operating_system = _utilities.configure(operating_system, ContainerOperatingSystemArgs, True)
             __props__.__dict__["operating_system"] = operating_system
             __props__.__dict__["pool_id"] = pool_id
             __props__.__dict__["start_on_boot"] = start_on_boot

@@ -57,14 +57,16 @@ class FileSourceFile(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path: str,
+             path: Optional[str] = None,
              changed: Optional[bool] = None,
              checksum: Optional[str] = None,
              file_name: Optional[str] = None,
              insecure: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fileName' in kwargs:
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if file_name is None and 'fileName' in kwargs:
             file_name = kwargs['fileName']
 
         _setter("path", path)
@@ -153,13 +155,17 @@ class FileSourceRaw(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             data: str,
-             file_name: str,
+             data: Optional[str] = None,
+             file_name: Optional[str] = None,
              resize: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fileName' in kwargs:
+        if data is None:
+            raise TypeError("Missing 'data' argument")
+        if file_name is None and 'fileName' in kwargs:
             file_name = kwargs['fileName']
+        if file_name is None:
+            raise TypeError("Missing 'file_name' argument")
 
         _setter("data", data)
         _setter("file_name", file_name)

@@ -55,13 +55,17 @@ class GroupAcl(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path: str,
-             role_id: str,
+             path: Optional[str] = None,
+             role_id: Optional[str] = None,
              propagate: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'roleId' in kwargs:
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if role_id is None and 'roleId' in kwargs:
             role_id = kwargs['roleId']
+        if role_id is None:
+            raise TypeError("Missing 'role_id' argument")
 
         _setter("path", path)
         _setter("role_id", role_id)
@@ -145,13 +149,13 @@ class PoolMember(dict):
              node_name: Optional[str] = None,
              type: Optional[str] = None,
              vm_id: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'datastoreId' in kwargs:
+        if datastore_id is None and 'datastoreId' in kwargs:
             datastore_id = kwargs['datastoreId']
-        if 'nodeName' in kwargs:
+        if node_name is None and 'nodeName' in kwargs:
             node_name = kwargs['nodeName']
-        if 'vmId' in kwargs:
+        if vm_id is None and 'vmId' in kwargs:
             vm_id = kwargs['vmId']
 
         if datastore_id is not None:
@@ -243,13 +247,17 @@ class UserAcl(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path: str,
-             role_id: str,
+             path: Optional[str] = None,
+             role_id: Optional[str] = None,
              propagate: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'roleId' in kwargs:
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if role_id is None and 'roleId' in kwargs:
             role_id = kwargs['roleId']
+        if role_id is None:
+            raise TypeError("Missing 'role_id' argument")
 
         _setter("path", path)
         _setter("role_id", role_id)
@@ -301,13 +309,19 @@ class GetGroupAclResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path: str,
-             propagate: bool,
-             role_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             path: Optional[str] = None,
+             propagate: Optional[bool] = None,
+             role_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'roleId' in kwargs:
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if propagate is None:
+            raise TypeError("Missing 'propagate' argument")
+        if role_id is None and 'roleId' in kwargs:
             role_id = kwargs['roleId']
+        if role_id is None:
+            raise TypeError("Missing 'role_id' argument")
 
         _setter("path", path)
         _setter("propagate", propagate)
@@ -364,19 +378,29 @@ class GetPoolMemberResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             datastore_id: str,
-             id: str,
-             node_name: str,
-             type: str,
-             vm_id: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             datastore_id: Optional[str] = None,
+             id: Optional[str] = None,
+             node_name: Optional[str] = None,
+             type: Optional[str] = None,
+             vm_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'datastoreId' in kwargs:
+        if datastore_id is None and 'datastoreId' in kwargs:
             datastore_id = kwargs['datastoreId']
-        if 'nodeName' in kwargs:
+        if datastore_id is None:
+            raise TypeError("Missing 'datastore_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if node_name is None and 'nodeName' in kwargs:
             node_name = kwargs['nodeName']
-        if 'vmId' in kwargs:
+        if node_name is None:
+            raise TypeError("Missing 'node_name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if vm_id is None and 'vmId' in kwargs:
             vm_id = kwargs['vmId']
+        if vm_id is None:
+            raise TypeError("Missing 'vm_id' argument")
 
         _setter("datastore_id", datastore_id)
         _setter("id", id)
@@ -445,13 +469,19 @@ class GetUserAclResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path: str,
-             propagate: bool,
-             role_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             path: Optional[str] = None,
+             propagate: Optional[bool] = None,
+             role_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'roleId' in kwargs:
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if propagate is None:
+            raise TypeError("Missing 'propagate' argument")
+        if role_id is None and 'roleId' in kwargs:
             role_id = kwargs['roleId']
+        if role_id is None:
+            raise TypeError("Missing 'role_id' argument")
 
         _setter("path", path)
         _setter("propagate", propagate)

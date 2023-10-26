@@ -640,6 +640,22 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.timeoutClone);
     }
     /**
+     * Timeout for creating a VM in seconds (defaults to
+     * 1800).
+     * 
+     */
+    @Export(name="timeoutCreate", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> timeoutCreate;
+
+    /**
+     * @return Timeout for creating a VM in seconds (defaults to
+     * 1800).
+     * 
+     */
+    public Output<Optional<Integer>> timeoutCreate() {
+        return Codegen.optional(this.timeoutCreate);
+    }
+    /**
      * Timeout for migrating the VM (defaults to
      * 1800).
      * 

@@ -3255,6 +3255,10 @@
                     "type": "integer",
                     "description": "Timeout for cloning a VM in seconds (defaults to\n1800).\n"
                 },
+                "timeoutCreate": {
+                    "type": "integer",
+                    "description": "Timeout for creating a VM in seconds (defaults to\n1800).\n"
+                },
                 "timeoutMigrate": {
                     "type": "integer",
                     "description": "Timeout for migrating the VM (defaults to\n1800).\n"
@@ -3454,6 +3458,10 @@
                 "timeoutClone": {
                     "type": "integer",
                     "description": "Timeout for cloning a VM in seconds (defaults to\n1800).\n"
+                },
+                "timeoutCreate": {
+                    "type": "integer",
+                    "description": "Timeout for creating a VM in seconds (defaults to\n1800).\n"
                 },
                 "timeoutMigrate": {
                     "type": "integer",
@@ -3684,6 +3692,10 @@
                     "timeoutClone": {
                         "type": "integer",
                         "description": "Timeout for cloning a VM in seconds (defaults to\n1800).\n"
+                    },
+                    "timeoutCreate": {
+                        "type": "integer",
+                        "description": "Timeout for creating a VM in seconds (defaults to\n1800).\n"
                     },
                     "timeoutMigrate": {
                         "type": "integer",

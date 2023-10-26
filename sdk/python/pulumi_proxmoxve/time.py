@@ -29,14 +29,18 @@ class TimeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             node_name: pulumi.Input[str],
-             time_zone: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             node_name: Optional[pulumi.Input[str]] = None,
+             time_zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nodeName' in kwargs:
+        if node_name is None and 'nodeName' in kwargs:
             node_name = kwargs['nodeName']
-        if 'timeZone' in kwargs:
+        if node_name is None:
+            raise TypeError("Missing 'node_name' argument")
+        if time_zone is None and 'timeZone' in kwargs:
             time_zone = kwargs['timeZone']
+        if time_zone is None:
+            raise TypeError("Missing 'time_zone' argument")
 
         _setter("node_name", node_name)
         _setter("time_zone", time_zone)
@@ -94,15 +98,15 @@ class _TimeState:
              node_name: Optional[pulumi.Input[str]] = None,
              time_zone: Optional[pulumi.Input[str]] = None,
              utc_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'localTime' in kwargs:
+        if local_time is None and 'localTime' in kwargs:
             local_time = kwargs['localTime']
-        if 'nodeName' in kwargs:
+        if node_name is None and 'nodeName' in kwargs:
             node_name = kwargs['nodeName']
-        if 'timeZone' in kwargs:
+        if time_zone is None and 'timeZone' in kwargs:
             time_zone = kwargs['timeZone']
-        if 'utcTime' in kwargs:
+        if utc_time is None and 'utcTime' in kwargs:
             utc_time = kwargs['utcTime']
 
         if local_time is not None:

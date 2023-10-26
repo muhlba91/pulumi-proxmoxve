@@ -643,6 +643,23 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Timeout for creating a VM in seconds (defaults to
+     * 1800).
+     * 
+     */
+    @Import(name="timeoutCreate")
+    private @Nullable Output<Integer> timeoutCreate;
+
+    /**
+     * @return Timeout for creating a VM in seconds (defaults to
+     * 1800).
+     * 
+     */
+    public Optional<Output<Integer>> timeoutCreate() {
+        return Optional.ofNullable(this.timeoutCreate);
+    }
+
+    /**
      * Timeout for migrating the VM (defaults to
      * 1800).
      * 
@@ -815,6 +832,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         this.tags = $.tags;
         this.template = $.template;
         this.timeoutClone = $.timeoutClone;
+        this.timeoutCreate = $.timeoutCreate;
         this.timeoutMigrate = $.timeoutMigrate;
         this.timeoutMoveDisk = $.timeoutMoveDisk;
         this.timeoutReboot = $.timeoutReboot;
@@ -1786,6 +1804,29 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
          */
         public Builder timeoutClone(Integer timeoutClone) {
             return timeoutClone(Output.of(timeoutClone));
+        }
+
+        /**
+         * @param timeoutCreate Timeout for creating a VM in seconds (defaults to
+         * 1800).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeoutCreate(@Nullable Output<Integer> timeoutCreate) {
+            $.timeoutCreate = timeoutCreate;
+            return this;
+        }
+
+        /**
+         * @param timeoutCreate Timeout for creating a VM in seconds (defaults to
+         * 1800).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeoutCreate(Integer timeoutCreate) {
+            return timeoutCreate(Output.of(timeoutCreate));
         }
 
         /**

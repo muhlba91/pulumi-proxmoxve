@@ -35,13 +35,17 @@ class GroupAclArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path: pulumi.Input[str],
-             role_id: pulumi.Input[str],
+             path: Optional[pulumi.Input[str]] = None,
+             role_id: Optional[pulumi.Input[str]] = None,
              propagate: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'roleId' in kwargs:
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if role_id is None and 'roleId' in kwargs:
             role_id = kwargs['roleId']
+        if role_id is None:
+            raise TypeError("Missing 'role_id' argument")
 
         _setter("path", path)
         _setter("role_id", role_id)
@@ -116,13 +120,13 @@ class PoolMemberArgs:
              node_name: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              vm_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'datastoreId' in kwargs:
+        if datastore_id is None and 'datastoreId' in kwargs:
             datastore_id = kwargs['datastoreId']
-        if 'nodeName' in kwargs:
+        if node_name is None and 'nodeName' in kwargs:
             node_name = kwargs['nodeName']
-        if 'vmId' in kwargs:
+        if vm_id is None and 'vmId' in kwargs:
             vm_id = kwargs['vmId']
 
         if datastore_id is not None:
@@ -217,13 +221,17 @@ class UserAclArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path: pulumi.Input[str],
-             role_id: pulumi.Input[str],
+             path: Optional[pulumi.Input[str]] = None,
+             role_id: Optional[pulumi.Input[str]] = None,
              propagate: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'roleId' in kwargs:
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if role_id is None and 'roleId' in kwargs:
             role_id = kwargs['roleId']
+        if role_id is None:
+            raise TypeError("Missing 'role_id' argument")
 
         _setter("path", path)
         _setter("role_id", role_id)

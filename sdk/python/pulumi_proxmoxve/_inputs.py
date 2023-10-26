@@ -32,10 +32,14 @@ class HostsEntryArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: pulumi.Input[str],
-             hostnames: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             address: Optional[pulumi.Input[str]] = None,
+             hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if hostnames is None:
+            raise TypeError("Missing 'hostnames' argument")
 
         _setter("address", address)
         _setter("hostnames", hostnames)
@@ -89,9 +93,9 @@ class ProviderSshArgs:
              nodes: Optional[pulumi.Input[Sequence[pulumi.Input['ProviderSshNodeArgs']]]] = None,
              password: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'agentSocket' in kwargs:
+        if agent_socket is None and 'agentSocket' in kwargs:
             agent_socket = kwargs['agentSocket']
 
         if agent is not None:
@@ -166,11 +170,15 @@ class ProviderSshNodeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: pulumi.Input[str],
-             name: pulumi.Input[str],
+             address: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("address", address)
         _setter("name", name)

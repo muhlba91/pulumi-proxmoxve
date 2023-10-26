@@ -38,18 +38,24 @@ class CertifiArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             certificate: pulumi.Input[str],
-             node_name: pulumi.Input[str],
-             private_key: pulumi.Input[str],
+             certificate: Optional[pulumi.Input[str]] = None,
+             node_name: Optional[pulumi.Input[str]] = None,
+             private_key: Optional[pulumi.Input[str]] = None,
              certificate_chain: Optional[pulumi.Input[str]] = None,
              overwrite: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nodeName' in kwargs:
+        if certificate is None:
+            raise TypeError("Missing 'certificate' argument")
+        if node_name is None and 'nodeName' in kwargs:
             node_name = kwargs['nodeName']
-        if 'privateKey' in kwargs:
+        if node_name is None:
+            raise TypeError("Missing 'node_name' argument")
+        if private_key is None and 'privateKey' in kwargs:
             private_key = kwargs['privateKey']
-        if 'certificateChain' in kwargs:
+        if private_key is None:
+            raise TypeError("Missing 'private_key' argument")
+        if certificate_chain is None and 'certificateChain' in kwargs:
             certificate_chain = kwargs['certificateChain']
 
         _setter("certificate", certificate)
@@ -189,27 +195,27 @@ class _CertifiState:
              start_date: Optional[pulumi.Input[str]] = None,
              subject: Optional[pulumi.Input[str]] = None,
              subject_alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'certificateChain' in kwargs:
+        if certificate_chain is None and 'certificateChain' in kwargs:
             certificate_chain = kwargs['certificateChain']
-        if 'expirationDate' in kwargs:
+        if expiration_date is None and 'expirationDate' in kwargs:
             expiration_date = kwargs['expirationDate']
-        if 'fileName' in kwargs:
+        if file_name is None and 'fileName' in kwargs:
             file_name = kwargs['fileName']
-        if 'nodeName' in kwargs:
+        if node_name is None and 'nodeName' in kwargs:
             node_name = kwargs['nodeName']
-        if 'privateKey' in kwargs:
+        if private_key is None and 'privateKey' in kwargs:
             private_key = kwargs['privateKey']
-        if 'publicKeySize' in kwargs:
+        if public_key_size is None and 'publicKeySize' in kwargs:
             public_key_size = kwargs['publicKeySize']
-        if 'publicKeyType' in kwargs:
+        if public_key_type is None and 'publicKeyType' in kwargs:
             public_key_type = kwargs['publicKeyType']
-        if 'sslFingerprint' in kwargs:
+        if ssl_fingerprint is None and 'sslFingerprint' in kwargs:
             ssl_fingerprint = kwargs['sslFingerprint']
-        if 'startDate' in kwargs:
+        if start_date is None and 'startDate' in kwargs:
             start_date = kwargs['startDate']
-        if 'subjectAlternativeNames' in kwargs:
+        if subject_alternative_names is None and 'subjectAlternativeNames' in kwargs:
             subject_alternative_names = kwargs['subjectAlternativeNames']
 
         if certificate is not None:

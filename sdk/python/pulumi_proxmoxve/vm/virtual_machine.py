@@ -50,6 +50,7 @@ class VirtualMachineArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
                  timeout_clone: Optional[pulumi.Input[int]] = None,
+                 timeout_create: Optional[pulumi.Input[int]] = None,
                  timeout_migrate: Optional[pulumi.Input[int]] = None,
                  timeout_move_disk: Optional[pulumi.Input[int]] = None,
                  timeout_reboot: Optional[pulumi.Input[int]] = None,
@@ -109,6 +110,8 @@ class VirtualMachineArgs:
         :param pulumi.Input[bool] template: Whether to create a template (defaults to `false`).
         :param pulumi.Input[int] timeout_clone: Timeout for cloning a VM in seconds (defaults to
                1800).
+        :param pulumi.Input[int] timeout_create: Timeout for creating a VM in seconds (defaults to
+               1800).
         :param pulumi.Input[int] timeout_migrate: Timeout for migrating the VM (defaults to
                1800).
         :param pulumi.Input[int] timeout_move_disk: Timeout for moving the disk of a VM in
@@ -160,6 +163,7 @@ class VirtualMachineArgs:
             tags=tags,
             template=template,
             timeout_clone=timeout_clone,
+            timeout_create=timeout_create,
             timeout_migrate=timeout_migrate,
             timeout_move_disk=timeout_move_disk,
             timeout_reboot=timeout_reboot,
@@ -172,7 +176,7 @@ class VirtualMachineArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             node_name: pulumi.Input[str],
+             node_name: Optional[pulumi.Input[str]] = None,
              acpi: Optional[pulumi.Input[bool]] = None,
              agent: Optional[pulumi.Input['VirtualMachineAgentArgs']] = None,
              audio_device: Optional[pulumi.Input['VirtualMachineAudioDeviceArgs']] = None,
@@ -206,6 +210,7 @@ class VirtualMachineArgs:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              template: Optional[pulumi.Input[bool]] = None,
              timeout_clone: Optional[pulumi.Input[int]] = None,
+             timeout_create: Optional[pulumi.Input[int]] = None,
              timeout_migrate: Optional[pulumi.Input[int]] = None,
              timeout_move_disk: Optional[pulumi.Input[int]] = None,
              timeout_reboot: Optional[pulumi.Input[int]] = None,
@@ -214,49 +219,53 @@ class VirtualMachineArgs:
              timeout_stop_vm: Optional[pulumi.Input[int]] = None,
              vga: Optional[pulumi.Input['VirtualMachineVgaArgs']] = None,
              vm_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nodeName' in kwargs:
+        if node_name is None and 'nodeName' in kwargs:
             node_name = kwargs['nodeName']
-        if 'audioDevice' in kwargs:
+        if node_name is None:
+            raise TypeError("Missing 'node_name' argument")
+        if audio_device is None and 'audioDevice' in kwargs:
             audio_device = kwargs['audioDevice']
-        if 'bootOrders' in kwargs:
+        if boot_orders is None and 'bootOrders' in kwargs:
             boot_orders = kwargs['bootOrders']
-        if 'efiDisk' in kwargs:
+        if efi_disk is None and 'efiDisk' in kwargs:
             efi_disk = kwargs['efiDisk']
-        if 'keyboardLayout' in kwargs:
+        if keyboard_layout is None and 'keyboardLayout' in kwargs:
             keyboard_layout = kwargs['keyboardLayout']
-        if 'kvmArguments' in kwargs:
+        if kvm_arguments is None and 'kvmArguments' in kwargs:
             kvm_arguments = kwargs['kvmArguments']
-        if 'networkDevices' in kwargs:
+        if network_devices is None and 'networkDevices' in kwargs:
             network_devices = kwargs['networkDevices']
-        if 'onBoot' in kwargs:
+        if on_boot is None and 'onBoot' in kwargs:
             on_boot = kwargs['onBoot']
-        if 'operatingSystem' in kwargs:
+        if operating_system is None and 'operatingSystem' in kwargs:
             operating_system = kwargs['operatingSystem']
-        if 'poolId' in kwargs:
+        if pool_id is None and 'poolId' in kwargs:
             pool_id = kwargs['poolId']
-        if 'scsiHardware' in kwargs:
+        if scsi_hardware is None and 'scsiHardware' in kwargs:
             scsi_hardware = kwargs['scsiHardware']
-        if 'serialDevices' in kwargs:
+        if serial_devices is None and 'serialDevices' in kwargs:
             serial_devices = kwargs['serialDevices']
-        if 'tabletDevice' in kwargs:
+        if tablet_device is None and 'tabletDevice' in kwargs:
             tablet_device = kwargs['tabletDevice']
-        if 'timeoutClone' in kwargs:
+        if timeout_clone is None and 'timeoutClone' in kwargs:
             timeout_clone = kwargs['timeoutClone']
-        if 'timeoutMigrate' in kwargs:
+        if timeout_create is None and 'timeoutCreate' in kwargs:
+            timeout_create = kwargs['timeoutCreate']
+        if timeout_migrate is None and 'timeoutMigrate' in kwargs:
             timeout_migrate = kwargs['timeoutMigrate']
-        if 'timeoutMoveDisk' in kwargs:
+        if timeout_move_disk is None and 'timeoutMoveDisk' in kwargs:
             timeout_move_disk = kwargs['timeoutMoveDisk']
-        if 'timeoutReboot' in kwargs:
+        if timeout_reboot is None and 'timeoutReboot' in kwargs:
             timeout_reboot = kwargs['timeoutReboot']
-        if 'timeoutShutdownVm' in kwargs:
+        if timeout_shutdown_vm is None and 'timeoutShutdownVm' in kwargs:
             timeout_shutdown_vm = kwargs['timeoutShutdownVm']
-        if 'timeoutStartVm' in kwargs:
+        if timeout_start_vm is None and 'timeoutStartVm' in kwargs:
             timeout_start_vm = kwargs['timeoutStartVm']
-        if 'timeoutStopVm' in kwargs:
+        if timeout_stop_vm is None and 'timeoutStopVm' in kwargs:
             timeout_stop_vm = kwargs['timeoutStopVm']
-        if 'vmId' in kwargs:
+        if vm_id is None and 'vmId' in kwargs:
             vm_id = kwargs['vmId']
 
         _setter("node_name", node_name)
@@ -326,6 +335,8 @@ class VirtualMachineArgs:
             _setter("template", template)
         if timeout_clone is not None:
             _setter("timeout_clone", timeout_clone)
+        if timeout_create is not None:
+            _setter("timeout_create", timeout_create)
         if timeout_migrate is not None:
             _setter("timeout_migrate", timeout_migrate)
         if timeout_move_disk is not None:
@@ -767,6 +778,19 @@ class VirtualMachineArgs:
         pulumi.set(self, "timeout_clone", value)
 
     @property
+    @pulumi.getter(name="timeoutCreate")
+    def timeout_create(self) -> Optional[pulumi.Input[int]]:
+        """
+        Timeout for creating a VM in seconds (defaults to
+        1800).
+        """
+        return pulumi.get(self, "timeout_create")
+
+    @timeout_create.setter
+    def timeout_create(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout_create", value)
+
+    @property
     @pulumi.getter(name="timeoutMigrate")
     def timeout_migrate(self) -> Optional[pulumi.Input[int]]:
         """
@@ -910,6 +934,7 @@ class _VirtualMachineState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
                  timeout_clone: Optional[pulumi.Input[int]] = None,
+                 timeout_create: Optional[pulumi.Input[int]] = None,
                  timeout_migrate: Optional[pulumi.Input[int]] = None,
                  timeout_move_disk: Optional[pulumi.Input[int]] = None,
                  timeout_reboot: Optional[pulumi.Input[int]] = None,
@@ -977,6 +1002,8 @@ class _VirtualMachineState:
         :param pulumi.Input[bool] template: Whether to create a template (defaults to `false`).
         :param pulumi.Input[int] timeout_clone: Timeout for cloning a VM in seconds (defaults to
                1800).
+        :param pulumi.Input[int] timeout_create: Timeout for creating a VM in seconds (defaults to
+               1800).
         :param pulumi.Input[int] timeout_migrate: Timeout for migrating the VM (defaults to
                1800).
         :param pulumi.Input[int] timeout_move_disk: Timeout for moving the disk of a VM in
@@ -1032,6 +1059,7 @@ class _VirtualMachineState:
             tags=tags,
             template=template,
             timeout_clone=timeout_clone,
+            timeout_create=timeout_create,
             timeout_migrate=timeout_migrate,
             timeout_move_disk=timeout_move_disk,
             timeout_reboot=timeout_reboot,
@@ -1082,6 +1110,7 @@ class _VirtualMachineState:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              template: Optional[pulumi.Input[bool]] = None,
              timeout_clone: Optional[pulumi.Input[int]] = None,
+             timeout_create: Optional[pulumi.Input[int]] = None,
              timeout_migrate: Optional[pulumi.Input[int]] = None,
              timeout_move_disk: Optional[pulumi.Input[int]] = None,
              timeout_reboot: Optional[pulumi.Input[int]] = None,
@@ -1090,57 +1119,59 @@ class _VirtualMachineState:
              timeout_stop_vm: Optional[pulumi.Input[int]] = None,
              vga: Optional[pulumi.Input['VirtualMachineVgaArgs']] = None,
              vm_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'audioDevice' in kwargs:
+        if audio_device is None and 'audioDevice' in kwargs:
             audio_device = kwargs['audioDevice']
-        if 'bootOrders' in kwargs:
+        if boot_orders is None and 'bootOrders' in kwargs:
             boot_orders = kwargs['bootOrders']
-        if 'efiDisk' in kwargs:
+        if efi_disk is None and 'efiDisk' in kwargs:
             efi_disk = kwargs['efiDisk']
-        if 'ipv4Addresses' in kwargs:
+        if ipv4_addresses is None and 'ipv4Addresses' in kwargs:
             ipv4_addresses = kwargs['ipv4Addresses']
-        if 'ipv6Addresses' in kwargs:
+        if ipv6_addresses is None and 'ipv6Addresses' in kwargs:
             ipv6_addresses = kwargs['ipv6Addresses']
-        if 'keyboardLayout' in kwargs:
+        if keyboard_layout is None and 'keyboardLayout' in kwargs:
             keyboard_layout = kwargs['keyboardLayout']
-        if 'kvmArguments' in kwargs:
+        if kvm_arguments is None and 'kvmArguments' in kwargs:
             kvm_arguments = kwargs['kvmArguments']
-        if 'macAddresses' in kwargs:
+        if mac_addresses is None and 'macAddresses' in kwargs:
             mac_addresses = kwargs['macAddresses']
-        if 'networkDevices' in kwargs:
+        if network_devices is None and 'networkDevices' in kwargs:
             network_devices = kwargs['networkDevices']
-        if 'networkInterfaceNames' in kwargs:
+        if network_interface_names is None and 'networkInterfaceNames' in kwargs:
             network_interface_names = kwargs['networkInterfaceNames']
-        if 'nodeName' in kwargs:
+        if node_name is None and 'nodeName' in kwargs:
             node_name = kwargs['nodeName']
-        if 'onBoot' in kwargs:
+        if on_boot is None and 'onBoot' in kwargs:
             on_boot = kwargs['onBoot']
-        if 'operatingSystem' in kwargs:
+        if operating_system is None and 'operatingSystem' in kwargs:
             operating_system = kwargs['operatingSystem']
-        if 'poolId' in kwargs:
+        if pool_id is None and 'poolId' in kwargs:
             pool_id = kwargs['poolId']
-        if 'scsiHardware' in kwargs:
+        if scsi_hardware is None and 'scsiHardware' in kwargs:
             scsi_hardware = kwargs['scsiHardware']
-        if 'serialDevices' in kwargs:
+        if serial_devices is None and 'serialDevices' in kwargs:
             serial_devices = kwargs['serialDevices']
-        if 'tabletDevice' in kwargs:
+        if tablet_device is None and 'tabletDevice' in kwargs:
             tablet_device = kwargs['tabletDevice']
-        if 'timeoutClone' in kwargs:
+        if timeout_clone is None and 'timeoutClone' in kwargs:
             timeout_clone = kwargs['timeoutClone']
-        if 'timeoutMigrate' in kwargs:
+        if timeout_create is None and 'timeoutCreate' in kwargs:
+            timeout_create = kwargs['timeoutCreate']
+        if timeout_migrate is None and 'timeoutMigrate' in kwargs:
             timeout_migrate = kwargs['timeoutMigrate']
-        if 'timeoutMoveDisk' in kwargs:
+        if timeout_move_disk is None and 'timeoutMoveDisk' in kwargs:
             timeout_move_disk = kwargs['timeoutMoveDisk']
-        if 'timeoutReboot' in kwargs:
+        if timeout_reboot is None and 'timeoutReboot' in kwargs:
             timeout_reboot = kwargs['timeoutReboot']
-        if 'timeoutShutdownVm' in kwargs:
+        if timeout_shutdown_vm is None and 'timeoutShutdownVm' in kwargs:
             timeout_shutdown_vm = kwargs['timeoutShutdownVm']
-        if 'timeoutStartVm' in kwargs:
+        if timeout_start_vm is None and 'timeoutStartVm' in kwargs:
             timeout_start_vm = kwargs['timeoutStartVm']
-        if 'timeoutStopVm' in kwargs:
+        if timeout_stop_vm is None and 'timeoutStopVm' in kwargs:
             timeout_stop_vm = kwargs['timeoutStopVm']
-        if 'vmId' in kwargs:
+        if vm_id is None and 'vmId' in kwargs:
             vm_id = kwargs['vmId']
 
         if acpi is not None:
@@ -1219,6 +1250,8 @@ class _VirtualMachineState:
             _setter("template", template)
         if timeout_clone is not None:
             _setter("timeout_clone", timeout_clone)
+        if timeout_create is not None:
+            _setter("timeout_create", timeout_create)
         if timeout_migrate is not None:
             _setter("timeout_migrate", timeout_migrate)
         if timeout_move_disk is not None:
@@ -1712,6 +1745,19 @@ class _VirtualMachineState:
         pulumi.set(self, "timeout_clone", value)
 
     @property
+    @pulumi.getter(name="timeoutCreate")
+    def timeout_create(self) -> Optional[pulumi.Input[int]]:
+        """
+        Timeout for creating a VM in seconds (defaults to
+        1800).
+        """
+        return pulumi.get(self, "timeout_create")
+
+    @timeout_create.setter
+    def timeout_create(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout_create", value)
+
+    @property
     @pulumi.getter(name="timeoutMigrate")
     def timeout_migrate(self) -> Optional[pulumi.Input[int]]:
         """
@@ -1853,6 +1899,7 @@ class VirtualMachine(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
                  timeout_clone: Optional[pulumi.Input[int]] = None,
+                 timeout_create: Optional[pulumi.Input[int]] = None,
                  timeout_migrate: Optional[pulumi.Input[int]] = None,
                  timeout_move_disk: Optional[pulumi.Input[int]] = None,
                  timeout_reboot: Optional[pulumi.Input[int]] = None,
@@ -1945,6 +1992,8 @@ class VirtualMachine(pulumi.CustomResource):
                changes to this attribute.
         :param pulumi.Input[bool] template: Whether to create a template (defaults to `false`).
         :param pulumi.Input[int] timeout_clone: Timeout for cloning a VM in seconds (defaults to
+               1800).
+        :param pulumi.Input[int] timeout_create: Timeout for creating a VM in seconds (defaults to
                1800).
         :param pulumi.Input[int] timeout_migrate: Timeout for migrating the VM (defaults to
                1800).
@@ -2053,6 +2102,7 @@ class VirtualMachine(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
                  timeout_clone: Optional[pulumi.Input[int]] = None,
+                 timeout_create: Optional[pulumi.Input[int]] = None,
                  timeout_migrate: Optional[pulumi.Input[int]] = None,
                  timeout_move_disk: Optional[pulumi.Input[int]] = None,
                  timeout_reboot: Optional[pulumi.Input[int]] = None,
@@ -2071,61 +2121,29 @@ class VirtualMachine(pulumi.CustomResource):
             __props__ = VirtualMachineArgs.__new__(VirtualMachineArgs)
 
             __props__.__dict__["acpi"] = acpi
-            if agent is not None and not isinstance(agent, VirtualMachineAgentArgs):
-                agent = agent or {}
-                def _setter(key, value):
-                    agent[key] = value
-                VirtualMachineAgentArgs._configure(_setter, **agent)
+            agent = _utilities.configure(agent, VirtualMachineAgentArgs, True)
             __props__.__dict__["agent"] = agent
-            if audio_device is not None and not isinstance(audio_device, VirtualMachineAudioDeviceArgs):
-                audio_device = audio_device or {}
-                def _setter(key, value):
-                    audio_device[key] = value
-                VirtualMachineAudioDeviceArgs._configure(_setter, **audio_device)
+            audio_device = _utilities.configure(audio_device, VirtualMachineAudioDeviceArgs, True)
             __props__.__dict__["audio_device"] = audio_device
             __props__.__dict__["bios"] = bios
             __props__.__dict__["boot_orders"] = boot_orders
-            if cdrom is not None and not isinstance(cdrom, VirtualMachineCdromArgs):
-                cdrom = cdrom or {}
-                def _setter(key, value):
-                    cdrom[key] = value
-                VirtualMachineCdromArgs._configure(_setter, **cdrom)
+            cdrom = _utilities.configure(cdrom, VirtualMachineCdromArgs, True)
             __props__.__dict__["cdrom"] = cdrom
-            if clone is not None and not isinstance(clone, VirtualMachineCloneArgs):
-                clone = clone or {}
-                def _setter(key, value):
-                    clone[key] = value
-                VirtualMachineCloneArgs._configure(_setter, **clone)
+            clone = _utilities.configure(clone, VirtualMachineCloneArgs, True)
             __props__.__dict__["clone"] = clone
-            if cpu is not None and not isinstance(cpu, VirtualMachineCpuArgs):
-                cpu = cpu or {}
-                def _setter(key, value):
-                    cpu[key] = value
-                VirtualMachineCpuArgs._configure(_setter, **cpu)
+            cpu = _utilities.configure(cpu, VirtualMachineCpuArgs, True)
             __props__.__dict__["cpu"] = cpu
             __props__.__dict__["description"] = description
             __props__.__dict__["disks"] = disks
-            if efi_disk is not None and not isinstance(efi_disk, VirtualMachineEfiDiskArgs):
-                efi_disk = efi_disk or {}
-                def _setter(key, value):
-                    efi_disk[key] = value
-                VirtualMachineEfiDiskArgs._configure(_setter, **efi_disk)
+            efi_disk = _utilities.configure(efi_disk, VirtualMachineEfiDiskArgs, True)
             __props__.__dict__["efi_disk"] = efi_disk
             __props__.__dict__["hostpcis"] = hostpcis
-            if initialization is not None and not isinstance(initialization, VirtualMachineInitializationArgs):
-                initialization = initialization or {}
-                def _setter(key, value):
-                    initialization[key] = value
-                VirtualMachineInitializationArgs._configure(_setter, **initialization)
+            initialization = _utilities.configure(initialization, VirtualMachineInitializationArgs, True)
             __props__.__dict__["initialization"] = initialization
             __props__.__dict__["keyboard_layout"] = keyboard_layout
             __props__.__dict__["kvm_arguments"] = kvm_arguments
             __props__.__dict__["machine"] = machine
-            if memory is not None and not isinstance(memory, VirtualMachineMemoryArgs):
-                memory = memory or {}
-                def _setter(key, value):
-                    memory[key] = value
-                VirtualMachineMemoryArgs._configure(_setter, **memory)
+            memory = _utilities.configure(memory, VirtualMachineMemoryArgs, True)
             __props__.__dict__["memory"] = memory
             __props__.__dict__["migrate"] = migrate
             __props__.__dict__["name"] = name
@@ -2134,44 +2152,29 @@ class VirtualMachine(pulumi.CustomResource):
                 raise TypeError("Missing required property 'node_name'")
             __props__.__dict__["node_name"] = node_name
             __props__.__dict__["on_boot"] = on_boot
-            if operating_system is not None and not isinstance(operating_system, VirtualMachineOperatingSystemArgs):
-                operating_system = operating_system or {}
-                def _setter(key, value):
-                    operating_system[key] = value
-                VirtualMachineOperatingSystemArgs._configure(_setter, **operating_system)
+            operating_system = _utilities.configure(operating_system, VirtualMachineOperatingSystemArgs, True)
             __props__.__dict__["operating_system"] = operating_system
             __props__.__dict__["pool_id"] = pool_id
             __props__.__dict__["reboot"] = reboot
             __props__.__dict__["scsi_hardware"] = scsi_hardware
             __props__.__dict__["serial_devices"] = serial_devices
-            if smbios is not None and not isinstance(smbios, VirtualMachineSmbiosArgs):
-                smbios = smbios or {}
-                def _setter(key, value):
-                    smbios[key] = value
-                VirtualMachineSmbiosArgs._configure(_setter, **smbios)
+            smbios = _utilities.configure(smbios, VirtualMachineSmbiosArgs, True)
             __props__.__dict__["smbios"] = smbios
             __props__.__dict__["started"] = started
-            if startup is not None and not isinstance(startup, VirtualMachineStartupArgs):
-                startup = startup or {}
-                def _setter(key, value):
-                    startup[key] = value
-                VirtualMachineStartupArgs._configure(_setter, **startup)
+            startup = _utilities.configure(startup, VirtualMachineStartupArgs, True)
             __props__.__dict__["startup"] = startup
             __props__.__dict__["tablet_device"] = tablet_device
             __props__.__dict__["tags"] = tags
             __props__.__dict__["template"] = template
             __props__.__dict__["timeout_clone"] = timeout_clone
+            __props__.__dict__["timeout_create"] = timeout_create
             __props__.__dict__["timeout_migrate"] = timeout_migrate
             __props__.__dict__["timeout_move_disk"] = timeout_move_disk
             __props__.__dict__["timeout_reboot"] = timeout_reboot
             __props__.__dict__["timeout_shutdown_vm"] = timeout_shutdown_vm
             __props__.__dict__["timeout_start_vm"] = timeout_start_vm
             __props__.__dict__["timeout_stop_vm"] = timeout_stop_vm
-            if vga is not None and not isinstance(vga, VirtualMachineVgaArgs):
-                vga = vga or {}
-                def _setter(key, value):
-                    vga[key] = value
-                VirtualMachineVgaArgs._configure(_setter, **vga)
+            vga = _utilities.configure(vga, VirtualMachineVgaArgs, True)
             __props__.__dict__["vga"] = vga
             __props__.__dict__["vm_id"] = vm_id
             __props__.__dict__["ipv4_addresses"] = None
@@ -2226,6 +2229,7 @@ class VirtualMachine(pulumi.CustomResource):
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             template: Optional[pulumi.Input[bool]] = None,
             timeout_clone: Optional[pulumi.Input[int]] = None,
+            timeout_create: Optional[pulumi.Input[int]] = None,
             timeout_migrate: Optional[pulumi.Input[int]] = None,
             timeout_move_disk: Optional[pulumi.Input[int]] = None,
             timeout_reboot: Optional[pulumi.Input[int]] = None,
@@ -2298,6 +2302,8 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[bool] template: Whether to create a template (defaults to `false`).
         :param pulumi.Input[int] timeout_clone: Timeout for cloning a VM in seconds (defaults to
                1800).
+        :param pulumi.Input[int] timeout_create: Timeout for creating a VM in seconds (defaults to
+               1800).
         :param pulumi.Input[int] timeout_migrate: Timeout for migrating the VM (defaults to
                1800).
         :param pulumi.Input[int] timeout_move_disk: Timeout for moving the disk of a VM in
@@ -2355,6 +2361,7 @@ class VirtualMachine(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["template"] = template
         __props__.__dict__["timeout_clone"] = timeout_clone
+        __props__.__dict__["timeout_create"] = timeout_create
         __props__.__dict__["timeout_migrate"] = timeout_migrate
         __props__.__dict__["timeout_move_disk"] = timeout_move_disk
         __props__.__dict__["timeout_reboot"] = timeout_reboot
@@ -2687,6 +2694,15 @@ class VirtualMachine(pulumi.CustomResource):
         1800).
         """
         return pulumi.get(self, "timeout_clone")
+
+    @property
+    @pulumi.getter(name="timeoutCreate")
+    def timeout_create(self) -> pulumi.Output[Optional[int]]:
+        """
+        Timeout for creating a VM in seconds (defaults to
+        1800).
+        """
+        return pulumi.get(self, "timeout_create")
 
     @property
     @pulumi.getter(name="timeoutMigrate")

@@ -239,6 +239,11 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly timeoutClone!: pulumi.Output<number | undefined>;
     /**
+     * Timeout for creating a VM in seconds (defaults to
+     * 1800).
+     */
+    public readonly timeoutCreate!: pulumi.Output<number | undefined>;
+    /**
      * Timeout for migrating the VM (defaults to
      * 1800).
      */
@@ -328,6 +333,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["template"] = state ? state.template : undefined;
             resourceInputs["timeoutClone"] = state ? state.timeoutClone : undefined;
+            resourceInputs["timeoutCreate"] = state ? state.timeoutCreate : undefined;
             resourceInputs["timeoutMigrate"] = state ? state.timeoutMigrate : undefined;
             resourceInputs["timeoutMoveDisk"] = state ? state.timeoutMoveDisk : undefined;
             resourceInputs["timeoutReboot"] = state ? state.timeoutReboot : undefined;
@@ -375,6 +381,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["template"] = args ? args.template : undefined;
             resourceInputs["timeoutClone"] = args ? args.timeoutClone : undefined;
+            resourceInputs["timeoutCreate"] = args ? args.timeoutCreate : undefined;
             resourceInputs["timeoutMigrate"] = args ? args.timeoutMigrate : undefined;
             resourceInputs["timeoutMoveDisk"] = args ? args.timeoutMoveDisk : undefined;
             resourceInputs["timeoutReboot"] = args ? args.timeoutReboot : undefined;
@@ -568,6 +575,11 @@ export interface VirtualMachineState {
      * 1800).
      */
     timeoutClone?: pulumi.Input<number>;
+    /**
+     * Timeout for creating a VM in seconds (defaults to
+     * 1800).
+     */
+    timeoutCreate?: pulumi.Input<number>;
     /**
      * Timeout for migrating the VM (defaults to
      * 1800).
@@ -763,6 +775,11 @@ export interface VirtualMachineArgs {
      * 1800).
      */
     timeoutClone?: pulumi.Input<number>;
+    /**
+     * Timeout for creating a VM in seconds (defaults to
+     * 1800).
+     */
+    timeoutCreate?: pulumi.Input<number>;
     /**
      * Timeout for migrating the VM (defaults to
      * 1800).

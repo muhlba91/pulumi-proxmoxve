@@ -37,11 +37,13 @@ class FirewallIPSetCidr(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              comment: Optional[str] = None,
              nomatch: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("name", name)
         if comment is not None:
@@ -99,7 +101,7 @@ class FirewallLogRatelimit(dict):
              burst: Optional[int] = None,
              enabled: Optional[bool] = None,
              rate: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if burst is not None:
@@ -243,9 +245,9 @@ class FirewallRulesRule(dict):
              source: Optional[str] = None,
              sport: Optional[str] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'securityGroup' in kwargs:
+        if security_group is None and 'securityGroup' in kwargs:
             security_group = kwargs['securityGroup']
 
         if action is not None:
@@ -516,9 +518,9 @@ class FirewallSecurityGroupRule(dict):
              source: Optional[str] = None,
              sport: Optional[str] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'securityGroup' in kwargs:
+        if security_group is None and 'securityGroup' in kwargs:
             security_group = kwargs['securityGroup']
 
         if action is not None:

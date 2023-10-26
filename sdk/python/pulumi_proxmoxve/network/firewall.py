@@ -45,13 +45,13 @@ class FirewallArgs:
              input_policy: Optional[pulumi.Input[str]] = None,
              log_ratelimit: Optional[pulumi.Input['FirewallLogRatelimitArgs']] = None,
              output_policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'inputPolicy' in kwargs:
+        if input_policy is None and 'inputPolicy' in kwargs:
             input_policy = kwargs['inputPolicy']
-        if 'logRatelimit' in kwargs:
+        if log_ratelimit is None and 'logRatelimit' in kwargs:
             log_ratelimit = kwargs['logRatelimit']
-        if 'outputPolicy' in kwargs:
+        if output_policy is None and 'outputPolicy' in kwargs:
             output_policy = kwargs['outputPolicy']
 
         if ebtables is not None:
@@ -158,13 +158,13 @@ class _FirewallState:
              input_policy: Optional[pulumi.Input[str]] = None,
              log_ratelimit: Optional[pulumi.Input['FirewallLogRatelimitArgs']] = None,
              output_policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'inputPolicy' in kwargs:
+        if input_policy is None and 'inputPolicy' in kwargs:
             input_policy = kwargs['inputPolicy']
-        if 'logRatelimit' in kwargs:
+        if log_ratelimit is None and 'logRatelimit' in kwargs:
             log_ratelimit = kwargs['logRatelimit']
-        if 'outputPolicy' in kwargs:
+        if output_policy is None and 'outputPolicy' in kwargs:
             output_policy = kwargs['outputPolicy']
 
         if ebtables is not None:
@@ -364,11 +364,7 @@ class Firewall(pulumi.CustomResource):
             __props__.__dict__["ebtables"] = ebtables
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["input_policy"] = input_policy
-            if log_ratelimit is not None and not isinstance(log_ratelimit, FirewallLogRatelimitArgs):
-                log_ratelimit = log_ratelimit or {}
-                def _setter(key, value):
-                    log_ratelimit[key] = value
-                FirewallLogRatelimitArgs._configure(_setter, **log_ratelimit)
+            log_ratelimit = _utilities.configure(log_ratelimit, FirewallLogRatelimitArgs, True)
             __props__.__dict__["log_ratelimit"] = log_ratelimit
             __props__.__dict__["output_policy"] = output_policy
         super(Firewall, __self__).__init__(

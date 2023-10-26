@@ -31,12 +31,16 @@ class HostsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entry: pulumi.Input[Sequence[pulumi.Input['HostsEntryArgs']]],
-             node_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             entry: Optional[pulumi.Input[Sequence[pulumi.Input['HostsEntryArgs']]]] = None,
+             node_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nodeName' in kwargs:
+        if entry is None:
+            raise TypeError("Missing 'entry' argument")
+        if node_name is None and 'nodeName' in kwargs:
             node_name = kwargs['nodeName']
+        if node_name is None:
+            raise TypeError("Missing 'node_name' argument")
 
         _setter("entry", entry)
         _setter("node_name", node_name)
@@ -103,9 +107,9 @@ class _HostsState:
              entry: Optional[pulumi.Input[Sequence[pulumi.Input['HostsEntryArgs']]]] = None,
              hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]]] = None,
              node_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nodeName' in kwargs:
+        if node_name is None and 'nodeName' in kwargs:
             node_name = kwargs['nodeName']
 
         if addresses is not None:

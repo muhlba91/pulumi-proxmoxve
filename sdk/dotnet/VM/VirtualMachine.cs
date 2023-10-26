@@ -293,6 +293,13 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<int?> TimeoutClone { get; private set; } = null!;
 
         /// <summary>
+        /// Timeout for creating a VM in seconds (defaults to
+        /// 1800).
+        /// </summary>
+        [Output("timeoutCreate")]
+        public Output<int?> TimeoutCreate { get; private set; } = null!;
+
+        /// <summary>
         /// Timeout for migrating the VM (defaults to
         /// 1800).
         /// </summary>
@@ -647,6 +654,13 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Input("timeoutClone")]
         public Input<int>? TimeoutClone { get; set; }
+
+        /// <summary>
+        /// Timeout for creating a VM in seconds (defaults to
+        /// 1800).
+        /// </summary>
+        [Input("timeoutCreate")]
+        public Input<int>? TimeoutCreate { get; set; }
 
         /// <summary>
         /// Timeout for migrating the VM (defaults to
@@ -1016,6 +1030,13 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Input("timeoutClone")]
         public Input<int>? TimeoutClone { get; set; }
+
+        /// <summary>
+        /// Timeout for creating a VM in seconds (defaults to
+        /// 1800).
+        /// </summary>
+        [Input("timeoutCreate")]
+        public Input<int>? TimeoutCreate { get; set; }
 
         /// <summary>
         /// Timeout for migrating the VM (defaults to

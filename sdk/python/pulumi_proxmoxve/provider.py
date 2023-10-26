@@ -56,11 +56,11 @@ class ProviderArgs:
              ssh: Optional[pulumi.Input['ProviderSshArgs']] = None,
              tmp_dir: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apiToken' in kwargs:
+        if api_token is None and 'apiToken' in kwargs:
             api_token = kwargs['apiToken']
-        if 'tmpDir' in kwargs:
+        if tmp_dir is None and 'tmpDir' in kwargs:
             tmp_dir = kwargs['tmpDir']
 
         if api_token is not None:
@@ -267,11 +267,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["insecure"] = pulumi.Output.from_input(insecure).apply(pulumi.runtime.to_json) if insecure is not None else None
             __props__.__dict__["otp"] = otp
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
-            if ssh is not None and not isinstance(ssh, ProviderSshArgs):
-                ssh = ssh or {}
-                def _setter(key, value):
-                    ssh[key] = value
-                ProviderSshArgs._configure(_setter, **ssh)
+            ssh = _utilities.configure(ssh, ProviderSshArgs, True)
             __props__.__dict__["ssh"] = pulumi.Output.from_input(ssh).apply(pulumi.runtime.to_json) if ssh is not None else None
             __props__.__dict__["tmp_dir"] = tmp_dir
             __props__.__dict__["username"] = username

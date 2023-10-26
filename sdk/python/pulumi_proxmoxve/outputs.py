@@ -31,10 +31,14 @@ class HostsEntry(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: str,
-             hostnames: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             address: Optional[str] = None,
+             hostnames: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if hostnames is None:
+            raise TypeError("Missing 'hostnames' argument")
 
         _setter("address", address)
         _setter("hostnames", hostnames)
@@ -72,10 +76,14 @@ class GetHostsEntryResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: str,
-             hostnames: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             address: Optional[str] = None,
+             hostnames: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if hostnames is None:
+            raise TypeError("Missing 'hostnames' argument")
 
         _setter("address", address)
         _setter("hostnames", hostnames)

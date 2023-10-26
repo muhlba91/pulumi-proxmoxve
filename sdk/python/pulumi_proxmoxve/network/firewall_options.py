@@ -70,7 +70,7 @@ class FirewallOptionsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             node_name: pulumi.Input[str],
+             node_name: Optional[pulumi.Input[str]] = None,
              container_id: Optional[pulumi.Input[int]] = None,
              dhcp: Optional[pulumi.Input[bool]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
@@ -83,21 +83,23 @@ class FirewallOptionsArgs:
              output_policy: Optional[pulumi.Input[str]] = None,
              radv: Optional[pulumi.Input[bool]] = None,
              vm_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nodeName' in kwargs:
+        if node_name is None and 'nodeName' in kwargs:
             node_name = kwargs['nodeName']
-        if 'containerId' in kwargs:
+        if node_name is None:
+            raise TypeError("Missing 'node_name' argument")
+        if container_id is None and 'containerId' in kwargs:
             container_id = kwargs['containerId']
-        if 'inputPolicy' in kwargs:
+        if input_policy is None and 'inputPolicy' in kwargs:
             input_policy = kwargs['inputPolicy']
-        if 'logLevelIn' in kwargs:
+        if log_level_in is None and 'logLevelIn' in kwargs:
             log_level_in = kwargs['logLevelIn']
-        if 'logLevelOut' in kwargs:
+        if log_level_out is None and 'logLevelOut' in kwargs:
             log_level_out = kwargs['logLevelOut']
-        if 'outputPolicy' in kwargs:
+        if output_policy is None and 'outputPolicy' in kwargs:
             output_policy = kwargs['outputPolicy']
-        if 'vmId' in kwargs:
+        if vm_id is None and 'vmId' in kwargs:
             vm_id = kwargs['vmId']
 
         _setter("node_name", node_name)
@@ -363,21 +365,21 @@ class _FirewallOptionsState:
              output_policy: Optional[pulumi.Input[str]] = None,
              radv: Optional[pulumi.Input[bool]] = None,
              vm_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'containerId' in kwargs:
+        if container_id is None and 'containerId' in kwargs:
             container_id = kwargs['containerId']
-        if 'inputPolicy' in kwargs:
+        if input_policy is None and 'inputPolicy' in kwargs:
             input_policy = kwargs['inputPolicy']
-        if 'logLevelIn' in kwargs:
+        if log_level_in is None and 'logLevelIn' in kwargs:
             log_level_in = kwargs['logLevelIn']
-        if 'logLevelOut' in kwargs:
+        if log_level_out is None and 'logLevelOut' in kwargs:
             log_level_out = kwargs['logLevelOut']
-        if 'nodeName' in kwargs:
+        if node_name is None and 'nodeName' in kwargs:
             node_name = kwargs['nodeName']
-        if 'outputPolicy' in kwargs:
+        if output_policy is None and 'outputPolicy' in kwargs:
             output_policy = kwargs['outputPolicy']
-        if 'vmId' in kwargs:
+        if vm_id is None and 'vmId' in kwargs:
             vm_id = kwargs['vmId']
 
         if container_id is not None:

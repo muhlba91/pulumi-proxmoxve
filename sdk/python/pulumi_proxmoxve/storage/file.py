@@ -48,26 +48,30 @@ class FileArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             datastore_id: pulumi.Input[str],
-             node_name: pulumi.Input[str],
+             datastore_id: Optional[pulumi.Input[str]] = None,
+             node_name: Optional[pulumi.Input[str]] = None,
              content_type: Optional[pulumi.Input[str]] = None,
              overwrite: Optional[pulumi.Input[bool]] = None,
              source_file: Optional[pulumi.Input['FileSourceFileArgs']] = None,
              source_raw: Optional[pulumi.Input['FileSourceRawArgs']] = None,
              timeout_upload: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'datastoreId' in kwargs:
+        if datastore_id is None and 'datastoreId' in kwargs:
             datastore_id = kwargs['datastoreId']
-        if 'nodeName' in kwargs:
+        if datastore_id is None:
+            raise TypeError("Missing 'datastore_id' argument")
+        if node_name is None and 'nodeName' in kwargs:
             node_name = kwargs['nodeName']
-        if 'contentType' in kwargs:
+        if node_name is None:
+            raise TypeError("Missing 'node_name' argument")
+        if content_type is None and 'contentType' in kwargs:
             content_type = kwargs['contentType']
-        if 'sourceFile' in kwargs:
+        if source_file is None and 'sourceFile' in kwargs:
             source_file = kwargs['sourceFile']
-        if 'sourceRaw' in kwargs:
+        if source_raw is None and 'sourceRaw' in kwargs:
             source_raw = kwargs['sourceRaw']
-        if 'timeoutUpload' in kwargs:
+        if timeout_upload is None and 'timeoutUpload' in kwargs:
             timeout_upload = kwargs['timeoutUpload']
 
         _setter("datastore_id", datastore_id)
@@ -228,27 +232,27 @@ class _FileState:
              source_file: Optional[pulumi.Input['FileSourceFileArgs']] = None,
              source_raw: Optional[pulumi.Input['FileSourceRawArgs']] = None,
              timeout_upload: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'contentType' in kwargs:
+        if content_type is None and 'contentType' in kwargs:
             content_type = kwargs['contentType']
-        if 'datastoreId' in kwargs:
+        if datastore_id is None and 'datastoreId' in kwargs:
             datastore_id = kwargs['datastoreId']
-        if 'fileModificationDate' in kwargs:
+        if file_modification_date is None and 'fileModificationDate' in kwargs:
             file_modification_date = kwargs['fileModificationDate']
-        if 'fileName' in kwargs:
+        if file_name is None and 'fileName' in kwargs:
             file_name = kwargs['fileName']
-        if 'fileSize' in kwargs:
+        if file_size is None and 'fileSize' in kwargs:
             file_size = kwargs['fileSize']
-        if 'fileTag' in kwargs:
+        if file_tag is None and 'fileTag' in kwargs:
             file_tag = kwargs['fileTag']
-        if 'nodeName' in kwargs:
+        if node_name is None and 'nodeName' in kwargs:
             node_name = kwargs['nodeName']
-        if 'sourceFile' in kwargs:
+        if source_file is None and 'sourceFile' in kwargs:
             source_file = kwargs['sourceFile']
-        if 'sourceRaw' in kwargs:
+        if source_raw is None and 'sourceRaw' in kwargs:
             source_raw = kwargs['sourceRaw']
-        if 'timeoutUpload' in kwargs:
+        if timeout_upload is None and 'timeoutUpload' in kwargs:
             timeout_upload = kwargs['timeoutUpload']
 
         if content_type is not None:
@@ -535,17 +539,9 @@ class File(pulumi.CustomResource):
                 raise TypeError("Missing required property 'node_name'")
             __props__.__dict__["node_name"] = node_name
             __props__.__dict__["overwrite"] = overwrite
-            if source_file is not None and not isinstance(source_file, FileSourceFileArgs):
-                source_file = source_file or {}
-                def _setter(key, value):
-                    source_file[key] = value
-                FileSourceFileArgs._configure(_setter, **source_file)
+            source_file = _utilities.configure(source_file, FileSourceFileArgs, True)
             __props__.__dict__["source_file"] = source_file
-            if source_raw is not None and not isinstance(source_raw, FileSourceRawArgs):
-                source_raw = source_raw or {}
-                def _setter(key, value):
-                    source_raw[key] = value
-                FileSourceRawArgs._configure(_setter, **source_raw)
+            source_raw = _utilities.configure(source_raw, FileSourceRawArgs, True)
             __props__.__dict__["source_raw"] = source_raw
             __props__.__dict__["timeout_upload"] = timeout_upload
             __props__.__dict__["file_modification_date"] = None

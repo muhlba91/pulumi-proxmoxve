@@ -66,7 +66,7 @@ class VirtualMachineAgent(dict):
              timeout: Optional[str] = None,
              trim: Optional[bool] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if enabled is not None:
@@ -139,7 +139,7 @@ class VirtualMachineAudioDevice(dict):
              device: Optional[str] = None,
              driver: Optional[str] = None,
              enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if device is not None:
@@ -222,9 +222,9 @@ class VirtualMachineCdrom(dict):
              enabled: Optional[bool] = None,
              file_id: Optional[str] = None,
              interface: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fileId' in kwargs:
+        if file_id is None and 'fileId' in kwargs:
             file_id = kwargs['fileId']
 
         if enabled is not None:
@@ -315,18 +315,20 @@ class VirtualMachineClone(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             vm_id: int,
+             vm_id: Optional[int] = None,
              datastore_id: Optional[str] = None,
              full: Optional[bool] = None,
              node_name: Optional[str] = None,
              retries: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'vmId' in kwargs:
+        if vm_id is None and 'vmId' in kwargs:
             vm_id = kwargs['vmId']
-        if 'datastoreId' in kwargs:
+        if vm_id is None:
+            raise TypeError("Missing 'vm_id' argument")
+        if datastore_id is None and 'datastoreId' in kwargs:
             datastore_id = kwargs['datastoreId']
-        if 'nodeName' in kwargs:
+        if node_name is None and 'nodeName' in kwargs:
             node_name = kwargs['nodeName']
 
         _setter("vm_id", vm_id)
@@ -447,7 +449,7 @@ class VirtualMachineCpu(dict):
              sockets: Optional[int] = None,
              type: Optional[str] = None,
              units: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if architecture is not None:
@@ -636,7 +638,7 @@ class VirtualMachineDisk(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             interface: str,
+             interface: Optional[str] = None,
              cache: Optional[str] = None,
              datastore_id: Optional[str] = None,
              discard: Optional[str] = None,
@@ -647,15 +649,17 @@ class VirtualMachineDisk(dict):
              size: Optional[int] = None,
              speed: Optional['outputs.VirtualMachineDiskSpeed'] = None,
              ssd: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'datastoreId' in kwargs:
+        if interface is None:
+            raise TypeError("Missing 'interface' argument")
+        if datastore_id is None and 'datastoreId' in kwargs:
             datastore_id = kwargs['datastoreId']
-        if 'fileFormat' in kwargs:
+        if file_format is None and 'fileFormat' in kwargs:
             file_format = kwargs['fileFormat']
-        if 'fileId' in kwargs:
+        if file_id is None and 'fileId' in kwargs:
             file_id = kwargs['fileId']
-        if 'pathInDatastore' in kwargs:
+        if path_in_datastore is None and 'pathInDatastore' in kwargs:
             path_in_datastore = kwargs['pathInDatastore']
 
         _setter("interface", interface)
@@ -831,11 +835,11 @@ class VirtualMachineDiskSpeed(dict):
              read_burstable: Optional[int] = None,
              write: Optional[int] = None,
              write_burstable: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'readBurstable' in kwargs:
+        if read_burstable is None and 'readBurstable' in kwargs:
             read_burstable = kwargs['readBurstable']
-        if 'writeBurstable' in kwargs:
+        if write_burstable is None and 'writeBurstable' in kwargs:
             write_burstable = kwargs['writeBurstable']
 
         if read is not None:
@@ -934,13 +938,13 @@ class VirtualMachineEfiDisk(dict):
              file_format: Optional[str] = None,
              pre_enrolled_keys: Optional[bool] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'datastoreId' in kwargs:
+        if datastore_id is None and 'datastoreId' in kwargs:
             datastore_id = kwargs['datastoreId']
-        if 'fileFormat' in kwargs:
+        if file_format is None and 'fileFormat' in kwargs:
             file_format = kwargs['fileFormat']
-        if 'preEnrolledKeys' in kwargs:
+        if pre_enrolled_keys is None and 'preEnrolledKeys' in kwargs:
             pre_enrolled_keys = kwargs['preEnrolledKeys']
 
         if datastore_id is not None:
@@ -1048,7 +1052,7 @@ class VirtualMachineHostpci(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             device: str,
+             device: Optional[str] = None,
              id: Optional[str] = None,
              mapping: Optional[str] = None,
              mdev: Optional[str] = None,
@@ -1056,9 +1060,11 @@ class VirtualMachineHostpci(dict):
              rom_file: Optional[str] = None,
              rombar: Optional[bool] = None,
              xvga: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'romFile' in kwargs:
+        if device is None:
+            raise TypeError("Missing 'device' argument")
+        if rom_file is None and 'romFile' in kwargs:
             rom_file = kwargs['romFile']
 
         _setter("device", device)
@@ -1240,21 +1246,21 @@ class VirtualMachineInitialization(dict):
              user_account: Optional['outputs.VirtualMachineInitializationUserAccount'] = None,
              user_data_file_id: Optional[str] = None,
              vendor_data_file_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'datastoreId' in kwargs:
+        if datastore_id is None and 'datastoreId' in kwargs:
             datastore_id = kwargs['datastoreId']
-        if 'ipConfigs' in kwargs:
+        if ip_configs is None and 'ipConfigs' in kwargs:
             ip_configs = kwargs['ipConfigs']
-        if 'metaDataFileId' in kwargs:
+        if meta_data_file_id is None and 'metaDataFileId' in kwargs:
             meta_data_file_id = kwargs['metaDataFileId']
-        if 'networkDataFileId' in kwargs:
+        if network_data_file_id is None and 'networkDataFileId' in kwargs:
             network_data_file_id = kwargs['networkDataFileId']
-        if 'userAccount' in kwargs:
+        if user_account is None and 'userAccount' in kwargs:
             user_account = kwargs['userAccount']
-        if 'userDataFileId' in kwargs:
+        if user_data_file_id is None and 'userDataFileId' in kwargs:
             user_data_file_id = kwargs['userDataFileId']
-        if 'vendorDataFileId' in kwargs:
+        if vendor_data_file_id is None and 'vendorDataFileId' in kwargs:
             vendor_data_file_id = kwargs['vendorDataFileId']
 
         if datastore_id is not None:
@@ -1389,7 +1395,7 @@ class VirtualMachineInitializationDns(dict):
              _setter: Callable[[Any, Any], None],
              domain: Optional[str] = None,
              server: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if domain is not None:
@@ -1433,7 +1439,7 @@ class VirtualMachineInitializationIpConfig(dict):
              _setter: Callable[[Any, Any], None],
              ipv4: Optional['outputs.VirtualMachineInitializationIpConfigIpv4'] = None,
              ipv6: Optional['outputs.VirtualMachineInitializationIpConfigIpv6'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if ipv4 is not None:
@@ -1479,7 +1485,7 @@ class VirtualMachineInitializationIpConfigIpv4(dict):
              _setter: Callable[[Any, Any], None],
              address: Optional[str] = None,
              gateway: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if address is not None:
@@ -1527,7 +1533,7 @@ class VirtualMachineInitializationIpConfigIpv6(dict):
              _setter: Callable[[Any, Any], None],
              address: Optional[str] = None,
              gateway: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if address is not None:
@@ -1577,7 +1583,7 @@ class VirtualMachineInitializationUserAccount(dict):
              keys: Optional[Sequence[str]] = None,
              password: Optional[str] = None,
              username: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if keys is not None:
@@ -1637,7 +1643,7 @@ class VirtualMachineMemory(dict):
              dedicated: Optional[int] = None,
              floating: Optional[int] = None,
              shared: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if dedicated is not None:
@@ -1746,13 +1752,13 @@ class VirtualMachineNetworkDevice(dict):
              queues: Optional[int] = None,
              rate_limit: Optional[float] = None,
              vlan_id: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'macAddress' in kwargs:
+        if mac_address is None and 'macAddress' in kwargs:
             mac_address = kwargs['macAddress']
-        if 'rateLimit' in kwargs:
+        if rate_limit is None and 'rateLimit' in kwargs:
             rate_limit = kwargs['rateLimit']
-        if 'vlanId' in kwargs:
+        if vlan_id is None and 'vlanId' in kwargs:
             vlan_id = kwargs['vlanId']
 
         if bridge is not None:
@@ -1866,7 +1872,7 @@ class VirtualMachineOperatingSystem(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if type is not None:
@@ -1897,7 +1903,7 @@ class VirtualMachineSerialDevice(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              device: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if device is not None:
@@ -1952,7 +1958,7 @@ class VirtualMachineSmbios(dict):
              sku: Optional[str] = None,
              uuid: Optional[str] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if family is not None:
@@ -2068,11 +2074,11 @@ class VirtualMachineStartup(dict):
              down_delay: Optional[int] = None,
              order: Optional[int] = None,
              up_delay: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'downDelay' in kwargs:
+        if down_delay is None and 'downDelay' in kwargs:
             down_delay = kwargs['downDelay']
-        if 'upDelay' in kwargs:
+        if up_delay is None and 'upDelay' in kwargs:
             up_delay = kwargs['upDelay']
 
         if down_delay is not None:
@@ -2126,7 +2132,7 @@ class VirtualMachineVga(dict):
              enabled: Optional[bool] = None,
              memory: Optional[int] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if enabled is not None:
@@ -2186,16 +2192,24 @@ class GetVirtualMachinesVmResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             node_name: str,
-             tags: Sequence[str],
-             vm_id: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             name: Optional[str] = None,
+             node_name: Optional[str] = None,
+             tags: Optional[Sequence[str]] = None,
+             vm_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nodeName' in kwargs:
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if node_name is None and 'nodeName' in kwargs:
             node_name = kwargs['nodeName']
-        if 'vmId' in kwargs:
+        if node_name is None:
+            raise TypeError("Missing 'node_name' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if vm_id is None and 'vmId' in kwargs:
             vm_id = kwargs['vmId']
+        if vm_id is None:
+            raise TypeError("Missing 'vm_id' argument")
 
         _setter("name", name)
         _setter("node_name", node_name)

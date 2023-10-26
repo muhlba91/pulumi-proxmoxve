@@ -144,6 +144,9 @@ type VirtualMachine struct {
 	// Timeout for cloning a VM in seconds (defaults to
 	// 1800).
 	TimeoutClone pulumi.IntPtrOutput `pulumi:"timeoutClone"`
+	// Timeout for creating a VM in seconds (defaults to
+	// 1800).
+	TimeoutCreate pulumi.IntPtrOutput `pulumi:"timeoutCreate"`
 	// Timeout for migrating the VM (defaults to
 	// 1800).
 	TimeoutMigrate pulumi.IntPtrOutput `pulumi:"timeoutMigrate"`
@@ -296,6 +299,9 @@ type virtualMachineState struct {
 	// Timeout for cloning a VM in seconds (defaults to
 	// 1800).
 	TimeoutClone *int `pulumi:"timeoutClone"`
+	// Timeout for creating a VM in seconds (defaults to
+	// 1800).
+	TimeoutCreate *int `pulumi:"timeoutCreate"`
 	// Timeout for migrating the VM (defaults to
 	// 1800).
 	TimeoutMigrate *int `pulumi:"timeoutMigrate"`
@@ -416,6 +422,9 @@ type VirtualMachineState struct {
 	// Timeout for cloning a VM in seconds (defaults to
 	// 1800).
 	TimeoutClone pulumi.IntPtrInput
+	// Timeout for creating a VM in seconds (defaults to
+	// 1800).
+	TimeoutCreate pulumi.IntPtrInput
 	// Timeout for migrating the VM (defaults to
 	// 1800).
 	TimeoutMigrate pulumi.IntPtrInput
@@ -528,6 +537,9 @@ type virtualMachineArgs struct {
 	// Timeout for cloning a VM in seconds (defaults to
 	// 1800).
 	TimeoutClone *int `pulumi:"timeoutClone"`
+	// Timeout for creating a VM in seconds (defaults to
+	// 1800).
+	TimeoutCreate *int `pulumi:"timeoutCreate"`
 	// Timeout for migrating the VM (defaults to
 	// 1800).
 	TimeoutMigrate *int `pulumi:"timeoutMigrate"`
@@ -637,6 +649,9 @@ type VirtualMachineArgs struct {
 	// Timeout for cloning a VM in seconds (defaults to
 	// 1800).
 	TimeoutClone pulumi.IntPtrInput
+	// Timeout for creating a VM in seconds (defaults to
+	// 1800).
+	TimeoutCreate pulumi.IntPtrInput
 	// Timeout for migrating the VM (defaults to
 	// 1800).
 	TimeoutMigrate pulumi.IntPtrInput
@@ -979,6 +994,12 @@ func (o VirtualMachineOutput) Template() pulumi.BoolPtrOutput {
 // 1800).
 func (o VirtualMachineOutput) TimeoutClone() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.TimeoutClone }).(pulumi.IntPtrOutput)
+}
+
+// Timeout for creating a VM in seconds (defaults to
+// 1800).
+func (o VirtualMachineOutput) TimeoutCreate() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.TimeoutCreate }).(pulumi.IntPtrOutput)
 }
 
 // Timeout for migrating the VM (defaults to

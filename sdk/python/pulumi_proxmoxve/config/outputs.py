@@ -39,9 +39,9 @@ class Ssh(dict):
              nodes: Optional[Sequence['outputs.SshNode']] = None,
              password: Optional[str] = None,
              username: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'agentSocket' in kwargs:
+        if agent_socket is None and 'agentSocket' in kwargs:
             agent_socket = kwargs['agentSocket']
 
         if agent is not None:
@@ -96,11 +96,15 @@ class SshNode(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: str,
-             name: str,
+             address: Optional[str] = None,
+             name: Optional[str] = None,
              port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("address", address)
         _setter("name", name)
