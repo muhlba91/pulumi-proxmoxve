@@ -777,6 +777,8 @@ github.com/bpg/terraform-provider-proxmox v0.35.0 h1:mOlUh9uZ6WAJgvistDZfcVa4Mys
 github.com/bpg/terraform-provider-proxmox v0.35.0/go.mod h1:yOKOa3e0S47g+DPvW0Vj8LoIO3IEx/ylTNSk/YkarPQ=
 github.com/bpg/terraform-provider-proxmox v0.35.1 h1:SuZyFzV00lgIQFB/Cvz3Q8/DZeP2I2S+C/5fQ10vjTw=
 github.com/bpg/terraform-provider-proxmox v0.35.1/go.mod h1:yOKOa3e0S47g+DPvW0Vj8LoIO3IEx/ylTNSk/YkarPQ=
+github.com/bpg/terraform-provider-proxmox v0.36.0 h1:MluiAAhaeeOwYTpc2yfR1Fo7sUhgxOo10Sf1J3tjs4w=
+github.com/bpg/terraform-provider-proxmox v0.36.0/go.mod h1:R7buoOGqtBTfpHKonIZxyxkKgJyrc6VCJhOCoS0SV+w=
 github.com/bufbuild/protocompile v0.4.0/go.mod h1:3v93+mbWn/v3xzN+31nwkJfrEpAUwp+BagBSZWx+TP8=
 github.com/bwesterb/go-ristretto v1.2.3/go.mod h1:fUIoIZaG73pV5biE2Blr2xEzDoMj7NFEuV9ekS419A0=
 github.com/cenkalti/backoff/v3 v3.2.2 h1:cfUAAO3yvKMYKPrvhDuHSwQnhZNk/RMHKdZqKTxfm6M=
@@ -2258,6 +2260,8 @@ google.golang.org/grpc v1.53.0/go.mod h1:OnIrk0ipVdj4N5d9IUoFUx72/VlD7+jUsHwZgwS
 google.golang.org/grpc v1.54.0/go.mod h1:PUSEXI6iWghWaB6lXM4knEgpJNu2qUcKfDtNci3EC2g=
 google.golang.org/grpc v1.57.0 h1:kfzNeI/klCGD2YPMUlaGNT3pxvYfga7smW3Vth8Zsiw=
 google.golang.org/grpc v1.57.0/go.mod h1:Sd+9RMTACXwmub0zcNY2c4arhtrbBYD1AUHI/dt16Mo=
+google.golang.org/grpc v1.57.1 h1:upNTNqv0ES+2ZOOqACwVtS3Il8M12/+Hz41RCPzAjQg=
+google.golang.org/grpc v1.57.1/go.mod h1:Sd+9RMTACXwmub0zcNY2c4arhtrbBYD1AUHI/dt16Mo=
 google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.1.0/go.mod h1:6Kw0yEErY5E/yWrBtf03jp27GLLJujG4z/JK95pnjjw=
 google.golang.org/protobuf v0.0.0-20200109180630-ec00e32a8dfd/go.mod h1:DFci5gLYBciE7Vtevhsrf46CRTquxDuWsQurQQe4oz8=
 google.golang.org/protobuf v0.0.0-20200221191635-4d8936d0db64/go.mod h1:kwYJMbMJ01Woi6D6+Kah6886xMZcty6N08ah7+eCXa0=
