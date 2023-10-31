@@ -113,6 +113,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/NCMartins"><img src="https://avatars.githubusercontent.com/u/11583533?v=4?s=100" width="100px;" alt="Nelson Costa Martins"/><br /><sub><b>Nelson Costa Martins</b></sub></a><br /><a href="#example-NCMartins" title="Examples">💡</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/guineveresaenger"><img src="https://avatars.githubusercontent.com/u/13116240?v=4?s=100" width="100px;" alt="Guinevere Saenger"/><br /><sub><b>Guinevere Saenger</b></sub></a><br /><a href="https://github.com/muhlba91/pulumi-proxmoxve/commits?author=guineveresaenger" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/susanev"><img src="https://avatars.githubusercontent.com/u/5489125?v=4?s=100" width="100px;" alt="Susan Evans"/><br /><sub><b>Susan Evans</b></sub></a><br /><a href="https://github.com/muhlba91/pulumi-proxmoxve/commits?author=susanev" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/zamrih"><img src="https://avatars.githubusercontent.com/u/1061718?v=4?s=100" width="100px;" alt="zamrih"/><br /><sub><b>zamrih</b></sub></a><br /><a href="https://github.com/muhlba91/pulumi-proxmoxve/commits?author=zamrih" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
