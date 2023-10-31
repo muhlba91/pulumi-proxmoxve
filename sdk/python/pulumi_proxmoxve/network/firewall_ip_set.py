@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,45 +31,18 @@ class FirewallIPSetArgs:
         :param pulumi.Input[str] node_name: Node name. Leave empty for cluster level aliases.
         :param pulumi.Input[int] vm_id: VM ID. Leave empty for cluster level aliases.
         """
-        FirewallIPSetArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cidrs=cidrs,
-            comment=comment,
-            container_id=container_id,
-            name=name,
-            node_name=node_name,
-            vm_id=vm_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cidrs: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallIPSetCidrArgs']]]] = None,
-             comment: Optional[pulumi.Input[str]] = None,
-             container_id: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             node_name: Optional[pulumi.Input[str]] = None,
-             vm_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if container_id is None and 'containerId' in kwargs:
-            container_id = kwargs['containerId']
-        if node_name is None and 'nodeName' in kwargs:
-            node_name = kwargs['nodeName']
-        if vm_id is None and 'vmId' in kwargs:
-            vm_id = kwargs['vmId']
-
         if cidrs is not None:
-            _setter("cidrs", cidrs)
+            pulumi.set(__self__, "cidrs", cidrs)
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
         if container_id is not None:
-            _setter("container_id", container_id)
+            pulumi.set(__self__, "container_id", container_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if node_name is not None:
-            _setter("node_name", node_name)
+            pulumi.set(__self__, "node_name", node_name)
         if vm_id is not None:
-            _setter("vm_id", vm_id)
+            pulumi.set(__self__, "vm_id", vm_id)
 
     @property
     @pulumi.getter
@@ -162,45 +135,18 @@ class _FirewallIPSetState:
         :param pulumi.Input[str] node_name: Node name. Leave empty for cluster level aliases.
         :param pulumi.Input[int] vm_id: VM ID. Leave empty for cluster level aliases.
         """
-        _FirewallIPSetState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cidrs=cidrs,
-            comment=comment,
-            container_id=container_id,
-            name=name,
-            node_name=node_name,
-            vm_id=vm_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cidrs: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallIPSetCidrArgs']]]] = None,
-             comment: Optional[pulumi.Input[str]] = None,
-             container_id: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             node_name: Optional[pulumi.Input[str]] = None,
-             vm_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if container_id is None and 'containerId' in kwargs:
-            container_id = kwargs['containerId']
-        if node_name is None and 'nodeName' in kwargs:
-            node_name = kwargs['nodeName']
-        if vm_id is None and 'vmId' in kwargs:
-            vm_id = kwargs['vmId']
-
         if cidrs is not None:
-            _setter("cidrs", cidrs)
+            pulumi.set(__self__, "cidrs", cidrs)
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
         if container_id is not None:
-            _setter("container_id", container_id)
+            pulumi.set(__self__, "container_id", container_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if node_name is not None:
-            _setter("node_name", node_name)
+            pulumi.set(__self__, "node_name", node_name)
         if vm_id is not None:
-            _setter("vm_id", vm_id)
+            pulumi.set(__self__, "vm_id", vm_id)
 
     @property
     @pulumi.getter
@@ -376,10 +322,6 @@ class FirewallIPSet(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            FirewallIPSetArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

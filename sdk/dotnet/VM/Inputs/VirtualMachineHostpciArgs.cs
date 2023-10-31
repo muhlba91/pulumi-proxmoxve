@@ -27,7 +27,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
 
         /// <summary>
         /// The resource mapping name of the device, for
-        /// example gpu. Use either this or `id`.
+        /// example usbdevice. Use either this or `id`.
         /// </summary>
         [Input("mapping")]
         public Input<string>? Mapping { get; set; }

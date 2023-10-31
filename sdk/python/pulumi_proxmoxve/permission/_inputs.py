@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -26,31 +26,10 @@ class GroupAclArgs:
         :param pulumi.Input[str] role_id: The role identifier.
         :param pulumi.Input[bool] propagate: Whether to propagate to child paths.
         """
-        GroupAclArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            path=path,
-            role_id=role_id,
-            propagate=propagate,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             path: Optional[pulumi.Input[str]] = None,
-             role_id: Optional[pulumi.Input[str]] = None,
-             propagate: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-        if role_id is None and 'roleId' in kwargs:
-            role_id = kwargs['roleId']
-        if role_id is None:
-            raise TypeError("Missing 'role_id' argument")
-
-        _setter("path", path)
-        _setter("role_id", role_id)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "role_id", role_id)
         if propagate is not None:
-            _setter("propagate", propagate)
+            pulumi.set(__self__, "propagate", propagate)
 
     @property
     @pulumi.getter
@@ -104,41 +83,16 @@ class PoolMemberArgs:
         :param pulumi.Input[str] type: The member type.
         :param pulumi.Input[int] vm_id: The virtual machine identifier.
         """
-        PoolMemberArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            datastore_id=datastore_id,
-            id=id,
-            node_name=node_name,
-            type=type,
-            vm_id=vm_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             datastore_id: Optional[pulumi.Input[str]] = None,
-             id: Optional[pulumi.Input[str]] = None,
-             node_name: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             vm_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if datastore_id is None and 'datastoreId' in kwargs:
-            datastore_id = kwargs['datastoreId']
-        if node_name is None and 'nodeName' in kwargs:
-            node_name = kwargs['nodeName']
-        if vm_id is None and 'vmId' in kwargs:
-            vm_id = kwargs['vmId']
-
         if datastore_id is not None:
-            _setter("datastore_id", datastore_id)
+            pulumi.set(__self__, "datastore_id", datastore_id)
         if id is not None:
-            _setter("id", id)
+            pulumi.set(__self__, "id", id)
         if node_name is not None:
-            _setter("node_name", node_name)
+            pulumi.set(__self__, "node_name", node_name)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if vm_id is not None:
-            _setter("vm_id", vm_id)
+            pulumi.set(__self__, "vm_id", vm_id)
 
     @property
     @pulumi.getter(name="datastoreId")
@@ -212,31 +166,10 @@ class UserAclArgs:
         :param pulumi.Input[str] role_id: The role identifier.
         :param pulumi.Input[bool] propagate: Whether to propagate to child paths.
         """
-        UserAclArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            path=path,
-            role_id=role_id,
-            propagate=propagate,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             path: Optional[pulumi.Input[str]] = None,
-             role_id: Optional[pulumi.Input[str]] = None,
-             propagate: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-        if role_id is None and 'roleId' in kwargs:
-            role_id = kwargs['roleId']
-        if role_id is None:
-            raise TypeError("Missing 'role_id' argument")
-
-        _setter("path", path)
-        _setter("role_id", role_id)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "role_id", role_id)
         if propagate is not None:
-            _setter("propagate", propagate)
+            pulumi.set(__self__, "propagate", propagate)
 
     @property
     @pulumi.getter

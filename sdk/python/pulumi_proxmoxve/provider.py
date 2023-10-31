@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from ._inputs import *
 
@@ -34,54 +34,25 @@ class ProviderArgs:
         :param pulumi.Input[str] tmp_dir: The alternative temporary directory.
         :param pulumi.Input[str] username: The username for the Proxmox VE API.
         """
-        ProviderArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            api_token=api_token,
-            endpoint=endpoint,
-            insecure=insecure,
-            otp=otp,
-            password=password,
-            ssh=ssh,
-            tmp_dir=tmp_dir,
-            username=username,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             api_token: Optional[pulumi.Input[str]] = None,
-             endpoint: Optional[pulumi.Input[str]] = None,
-             insecure: Optional[pulumi.Input[bool]] = None,
-             otp: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             ssh: Optional[pulumi.Input['ProviderSshArgs']] = None,
-             tmp_dir: Optional[pulumi.Input[str]] = None,
-             username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if api_token is None and 'apiToken' in kwargs:
-            api_token = kwargs['apiToken']
-        if tmp_dir is None and 'tmpDir' in kwargs:
-            tmp_dir = kwargs['tmpDir']
-
         if api_token is not None:
-            _setter("api_token", api_token)
+            pulumi.set(__self__, "api_token", api_token)
         if endpoint is not None:
-            _setter("endpoint", endpoint)
+            pulumi.set(__self__, "endpoint", endpoint)
         if insecure is not None:
-            _setter("insecure", insecure)
+            pulumi.set(__self__, "insecure", insecure)
         if otp is not None:
             warnings.warn("""The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.""", DeprecationWarning)
             pulumi.log.warn("""otp is deprecated: The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.""")
         if otp is not None:
-            _setter("otp", otp)
+            pulumi.set(__self__, "otp", otp)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if ssh is not None:
-            _setter("ssh", ssh)
+            pulumi.set(__self__, "ssh", ssh)
         if tmp_dir is not None:
-            _setter("tmp_dir", tmp_dir)
+            pulumi.set(__self__, "tmp_dir", tmp_dir)
         if username is not None:
-            _setter("username", username)
+            pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter(name="apiToken")
@@ -236,10 +207,6 @@ class Provider(pulumi.ProviderResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -267,7 +234,6 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["insecure"] = pulumi.Output.from_input(insecure).apply(pulumi.runtime.to_json) if insecure is not None else None
             __props__.__dict__["otp"] = otp
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
-            ssh = _utilities.configure(ssh, ProviderSshArgs, True)
             __props__.__dict__["ssh"] = pulumi.Output.from_input(ssh).apply(pulumi.runtime.to_json) if ssh is not None else None
             __props__.__dict__["tmp_dir"] = tmp_dir
             __props__.__dict__["username"] = username

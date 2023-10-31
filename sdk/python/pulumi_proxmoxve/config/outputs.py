@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -23,37 +23,16 @@ class Ssh(dict):
                  nodes: Optional[Sequence['outputs.SshNode']] = None,
                  password: Optional[str] = None,
                  username: Optional[str] = None):
-        Ssh._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            agent=agent,
-            agent_socket=agent_socket,
-            nodes=nodes,
-            password=password,
-            username=username,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             agent: Optional[bool] = None,
-             agent_socket: Optional[str] = None,
-             nodes: Optional[Sequence['outputs.SshNode']] = None,
-             password: Optional[str] = None,
-             username: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if agent_socket is None and 'agentSocket' in kwargs:
-            agent_socket = kwargs['agentSocket']
-
         if agent is not None:
-            _setter("agent", agent)
+            pulumi.set(__self__, "agent", agent)
         if agent_socket is not None:
-            _setter("agent_socket", agent_socket)
+            pulumi.set(__self__, "agent_socket", agent_socket)
         if nodes is not None:
-            _setter("nodes", nodes)
+            pulumi.set(__self__, "nodes", nodes)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if username is not None:
-            _setter("username", username)
+            pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter
@@ -87,29 +66,10 @@ class SshNode(dict):
                  address: str,
                  name: str,
                  port: Optional[int] = None):
-        SshNode._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            name=name,
-            port=port,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: Optional[str] = None,
-             name: Optional[str] = None,
-             port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if address is None:
-            raise TypeError("Missing 'address' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-
-        _setter("address", address)
-        _setter("name", name)
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "name", name)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter

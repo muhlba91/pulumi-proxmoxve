@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -46,31 +46,10 @@ class GroupAcl(dict):
         :param str role_id: The role identifier.
         :param bool propagate: Whether to propagate to child paths.
         """
-        GroupAcl._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            path=path,
-            role_id=role_id,
-            propagate=propagate,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             path: Optional[str] = None,
-             role_id: Optional[str] = None,
-             propagate: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-        if role_id is None and 'roleId' in kwargs:
-            role_id = kwargs['roleId']
-        if role_id is None:
-            raise TypeError("Missing 'role_id' argument")
-
-        _setter("path", path)
-        _setter("role_id", role_id)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "role_id", role_id)
         if propagate is not None:
-            _setter("propagate", propagate)
+            pulumi.set(__self__, "propagate", propagate)
 
     @property
     @pulumi.getter
@@ -133,41 +112,16 @@ class PoolMember(dict):
         :param str type: The member type.
         :param int vm_id: The virtual machine identifier.
         """
-        PoolMember._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            datastore_id=datastore_id,
-            id=id,
-            node_name=node_name,
-            type=type,
-            vm_id=vm_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             datastore_id: Optional[str] = None,
-             id: Optional[str] = None,
-             node_name: Optional[str] = None,
-             type: Optional[str] = None,
-             vm_id: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if datastore_id is None and 'datastoreId' in kwargs:
-            datastore_id = kwargs['datastoreId']
-        if node_name is None and 'nodeName' in kwargs:
-            node_name = kwargs['nodeName']
-        if vm_id is None and 'vmId' in kwargs:
-            vm_id = kwargs['vmId']
-
         if datastore_id is not None:
-            _setter("datastore_id", datastore_id)
+            pulumi.set(__self__, "datastore_id", datastore_id)
         if id is not None:
-            _setter("id", id)
+            pulumi.set(__self__, "id", id)
         if node_name is not None:
-            _setter("node_name", node_name)
+            pulumi.set(__self__, "node_name", node_name)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if vm_id is not None:
-            _setter("vm_id", vm_id)
+            pulumi.set(__self__, "vm_id", vm_id)
 
     @property
     @pulumi.getter(name="datastoreId")
@@ -238,31 +192,10 @@ class UserAcl(dict):
         :param str role_id: The role identifier.
         :param bool propagate: Whether to propagate to child paths.
         """
-        UserAcl._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            path=path,
-            role_id=role_id,
-            propagate=propagate,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             path: Optional[str] = None,
-             role_id: Optional[str] = None,
-             propagate: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-        if role_id is None and 'roleId' in kwargs:
-            role_id = kwargs['roleId']
-        if role_id is None:
-            raise TypeError("Missing 'role_id' argument")
-
-        _setter("path", path)
-        _setter("role_id", role_id)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "role_id", role_id)
         if propagate is not None:
-            _setter("propagate", propagate)
+            pulumi.set(__self__, "propagate", propagate)
 
     @property
     @pulumi.getter
@@ -300,32 +233,9 @@ class GetGroupAclResult(dict):
         :param bool propagate: Whether to propagate to child paths.
         :param str role_id: The role identifier.
         """
-        GetGroupAclResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            path=path,
-            propagate=propagate,
-            role_id=role_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             path: Optional[str] = None,
-             propagate: Optional[bool] = None,
-             role_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-        if propagate is None:
-            raise TypeError("Missing 'propagate' argument")
-        if role_id is None and 'roleId' in kwargs:
-            role_id = kwargs['roleId']
-        if role_id is None:
-            raise TypeError("Missing 'role_id' argument")
-
-        _setter("path", path)
-        _setter("propagate", propagate)
-        _setter("role_id", role_id)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "propagate", propagate)
+        pulumi.set(__self__, "role_id", role_id)
 
     @property
     @pulumi.getter
@@ -367,46 +277,11 @@ class GetPoolMemberResult(dict):
         :param str type: The member type.
         :param int vm_id: The virtual machine identifier.
         """
-        GetPoolMemberResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            datastore_id=datastore_id,
-            id=id,
-            node_name=node_name,
-            type=type,
-            vm_id=vm_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             datastore_id: Optional[str] = None,
-             id: Optional[str] = None,
-             node_name: Optional[str] = None,
-             type: Optional[str] = None,
-             vm_id: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if datastore_id is None and 'datastoreId' in kwargs:
-            datastore_id = kwargs['datastoreId']
-        if datastore_id is None:
-            raise TypeError("Missing 'datastore_id' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if node_name is None and 'nodeName' in kwargs:
-            node_name = kwargs['nodeName']
-        if node_name is None:
-            raise TypeError("Missing 'node_name' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if vm_id is None and 'vmId' in kwargs:
-            vm_id = kwargs['vmId']
-        if vm_id is None:
-            raise TypeError("Missing 'vm_id' argument")
-
-        _setter("datastore_id", datastore_id)
-        _setter("id", id)
-        _setter("node_name", node_name)
-        _setter("type", type)
-        _setter("vm_id", vm_id)
+        pulumi.set(__self__, "datastore_id", datastore_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "node_name", node_name)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "vm_id", vm_id)
 
     @property
     @pulumi.getter(name="datastoreId")
@@ -460,32 +335,9 @@ class GetUserAclResult(dict):
         :param bool propagate: Whether to propagate to child paths.
         :param str role_id: The role identifier.
         """
-        GetUserAclResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            path=path,
-            propagate=propagate,
-            role_id=role_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             path: Optional[str] = None,
-             propagate: Optional[bool] = None,
-             role_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-        if propagate is None:
-            raise TypeError("Missing 'propagate' argument")
-        if role_id is None and 'roleId' in kwargs:
-            role_id = kwargs['roleId']
-        if role_id is None:
-            raise TypeError("Missing 'role_id' argument")
-
-        _setter("path", path)
-        _setter("propagate", propagate)
-        _setter("role_id", role_id)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "propagate", propagate)
+        pulumi.set(__self__, "role_id", role_id)
 
     @property
     @pulumi.getter

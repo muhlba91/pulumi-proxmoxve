@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -57,6 +57,7 @@ class VirtualMachineArgs:
                  timeout_shutdown_vm: Optional[pulumi.Input[int]] = None,
                  timeout_start_vm: Optional[pulumi.Input[int]] = None,
                  timeout_stop_vm: Optional[pulumi.Input[int]] = None,
+                 usbs: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineUsbArgs']]]] = None,
                  vga: Optional[pulumi.Input['VirtualMachineVgaArgs']] = None,
                  vm_id: Optional[pulumi.Input[int]] = None):
         """
@@ -124,235 +125,97 @@ class VirtualMachineArgs:
                to 1800).
         :param pulumi.Input[int] timeout_stop_vm: Timeout for stopping a VM in seconds (defaults
                to 300).
+        :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineUsbArgs']]] usbs: A host USB device mapping (multiple blocks supported).
         :param pulumi.Input['VirtualMachineVgaArgs'] vga: The VGA configuration.
         :param pulumi.Input[int] vm_id: The VM identifier.
         """
-        VirtualMachineArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            node_name=node_name,
-            acpi=acpi,
-            agent=agent,
-            audio_device=audio_device,
-            bios=bios,
-            boot_orders=boot_orders,
-            cdrom=cdrom,
-            clone=clone,
-            cpu=cpu,
-            description=description,
-            disks=disks,
-            efi_disk=efi_disk,
-            hostpcis=hostpcis,
-            initialization=initialization,
-            keyboard_layout=keyboard_layout,
-            kvm_arguments=kvm_arguments,
-            machine=machine,
-            memory=memory,
-            migrate=migrate,
-            name=name,
-            network_devices=network_devices,
-            on_boot=on_boot,
-            operating_system=operating_system,
-            pool_id=pool_id,
-            reboot=reboot,
-            scsi_hardware=scsi_hardware,
-            serial_devices=serial_devices,
-            smbios=smbios,
-            started=started,
-            startup=startup,
-            tablet_device=tablet_device,
-            tags=tags,
-            template=template,
-            timeout_clone=timeout_clone,
-            timeout_create=timeout_create,
-            timeout_migrate=timeout_migrate,
-            timeout_move_disk=timeout_move_disk,
-            timeout_reboot=timeout_reboot,
-            timeout_shutdown_vm=timeout_shutdown_vm,
-            timeout_start_vm=timeout_start_vm,
-            timeout_stop_vm=timeout_stop_vm,
-            vga=vga,
-            vm_id=vm_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             node_name: Optional[pulumi.Input[str]] = None,
-             acpi: Optional[pulumi.Input[bool]] = None,
-             agent: Optional[pulumi.Input['VirtualMachineAgentArgs']] = None,
-             audio_device: Optional[pulumi.Input['VirtualMachineAudioDeviceArgs']] = None,
-             bios: Optional[pulumi.Input[str]] = None,
-             boot_orders: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             cdrom: Optional[pulumi.Input['VirtualMachineCdromArgs']] = None,
-             clone: Optional[pulumi.Input['VirtualMachineCloneArgs']] = None,
-             cpu: Optional[pulumi.Input['VirtualMachineCpuArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disks: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]] = None,
-             efi_disk: Optional[pulumi.Input['VirtualMachineEfiDiskArgs']] = None,
-             hostpcis: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]]] = None,
-             initialization: Optional[pulumi.Input['VirtualMachineInitializationArgs']] = None,
-             keyboard_layout: Optional[pulumi.Input[str]] = None,
-             kvm_arguments: Optional[pulumi.Input[str]] = None,
-             machine: Optional[pulumi.Input[str]] = None,
-             memory: Optional[pulumi.Input['VirtualMachineMemoryArgs']] = None,
-             migrate: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network_devices: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkDeviceArgs']]]] = None,
-             on_boot: Optional[pulumi.Input[bool]] = None,
-             operating_system: Optional[pulumi.Input['VirtualMachineOperatingSystemArgs']] = None,
-             pool_id: Optional[pulumi.Input[str]] = None,
-             reboot: Optional[pulumi.Input[bool]] = None,
-             scsi_hardware: Optional[pulumi.Input[str]] = None,
-             serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]]] = None,
-             smbios: Optional[pulumi.Input['VirtualMachineSmbiosArgs']] = None,
-             started: Optional[pulumi.Input[bool]] = None,
-             startup: Optional[pulumi.Input['VirtualMachineStartupArgs']] = None,
-             tablet_device: Optional[pulumi.Input[bool]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             template: Optional[pulumi.Input[bool]] = None,
-             timeout_clone: Optional[pulumi.Input[int]] = None,
-             timeout_create: Optional[pulumi.Input[int]] = None,
-             timeout_migrate: Optional[pulumi.Input[int]] = None,
-             timeout_move_disk: Optional[pulumi.Input[int]] = None,
-             timeout_reboot: Optional[pulumi.Input[int]] = None,
-             timeout_shutdown_vm: Optional[pulumi.Input[int]] = None,
-             timeout_start_vm: Optional[pulumi.Input[int]] = None,
-             timeout_stop_vm: Optional[pulumi.Input[int]] = None,
-             vga: Optional[pulumi.Input['VirtualMachineVgaArgs']] = None,
-             vm_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if node_name is None and 'nodeName' in kwargs:
-            node_name = kwargs['nodeName']
-        if node_name is None:
-            raise TypeError("Missing 'node_name' argument")
-        if audio_device is None and 'audioDevice' in kwargs:
-            audio_device = kwargs['audioDevice']
-        if boot_orders is None and 'bootOrders' in kwargs:
-            boot_orders = kwargs['bootOrders']
-        if efi_disk is None and 'efiDisk' in kwargs:
-            efi_disk = kwargs['efiDisk']
-        if keyboard_layout is None and 'keyboardLayout' in kwargs:
-            keyboard_layout = kwargs['keyboardLayout']
-        if kvm_arguments is None and 'kvmArguments' in kwargs:
-            kvm_arguments = kwargs['kvmArguments']
-        if network_devices is None and 'networkDevices' in kwargs:
-            network_devices = kwargs['networkDevices']
-        if on_boot is None and 'onBoot' in kwargs:
-            on_boot = kwargs['onBoot']
-        if operating_system is None and 'operatingSystem' in kwargs:
-            operating_system = kwargs['operatingSystem']
-        if pool_id is None and 'poolId' in kwargs:
-            pool_id = kwargs['poolId']
-        if scsi_hardware is None and 'scsiHardware' in kwargs:
-            scsi_hardware = kwargs['scsiHardware']
-        if serial_devices is None and 'serialDevices' in kwargs:
-            serial_devices = kwargs['serialDevices']
-        if tablet_device is None and 'tabletDevice' in kwargs:
-            tablet_device = kwargs['tabletDevice']
-        if timeout_clone is None and 'timeoutClone' in kwargs:
-            timeout_clone = kwargs['timeoutClone']
-        if timeout_create is None and 'timeoutCreate' in kwargs:
-            timeout_create = kwargs['timeoutCreate']
-        if timeout_migrate is None and 'timeoutMigrate' in kwargs:
-            timeout_migrate = kwargs['timeoutMigrate']
-        if timeout_move_disk is None and 'timeoutMoveDisk' in kwargs:
-            timeout_move_disk = kwargs['timeoutMoveDisk']
-        if timeout_reboot is None and 'timeoutReboot' in kwargs:
-            timeout_reboot = kwargs['timeoutReboot']
-        if timeout_shutdown_vm is None and 'timeoutShutdownVm' in kwargs:
-            timeout_shutdown_vm = kwargs['timeoutShutdownVm']
-        if timeout_start_vm is None and 'timeoutStartVm' in kwargs:
-            timeout_start_vm = kwargs['timeoutStartVm']
-        if timeout_stop_vm is None and 'timeoutStopVm' in kwargs:
-            timeout_stop_vm = kwargs['timeoutStopVm']
-        if vm_id is None and 'vmId' in kwargs:
-            vm_id = kwargs['vmId']
-
-        _setter("node_name", node_name)
+        pulumi.set(__self__, "node_name", node_name)
         if acpi is not None:
-            _setter("acpi", acpi)
+            pulumi.set(__self__, "acpi", acpi)
         if agent is not None:
-            _setter("agent", agent)
+            pulumi.set(__self__, "agent", agent)
         if audio_device is not None:
-            _setter("audio_device", audio_device)
+            pulumi.set(__self__, "audio_device", audio_device)
         if bios is not None:
-            _setter("bios", bios)
+            pulumi.set(__self__, "bios", bios)
         if boot_orders is not None:
-            _setter("boot_orders", boot_orders)
+            pulumi.set(__self__, "boot_orders", boot_orders)
         if cdrom is not None:
-            _setter("cdrom", cdrom)
+            pulumi.set(__self__, "cdrom", cdrom)
         if clone is not None:
-            _setter("clone", clone)
+            pulumi.set(__self__, "clone", clone)
         if cpu is not None:
-            _setter("cpu", cpu)
+            pulumi.set(__self__, "cpu", cpu)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disks is not None:
-            _setter("disks", disks)
+            pulumi.set(__self__, "disks", disks)
         if efi_disk is not None:
-            _setter("efi_disk", efi_disk)
+            pulumi.set(__self__, "efi_disk", efi_disk)
         if hostpcis is not None:
-            _setter("hostpcis", hostpcis)
+            pulumi.set(__self__, "hostpcis", hostpcis)
         if initialization is not None:
-            _setter("initialization", initialization)
+            pulumi.set(__self__, "initialization", initialization)
         if keyboard_layout is not None:
-            _setter("keyboard_layout", keyboard_layout)
+            pulumi.set(__self__, "keyboard_layout", keyboard_layout)
         if kvm_arguments is not None:
-            _setter("kvm_arguments", kvm_arguments)
+            pulumi.set(__self__, "kvm_arguments", kvm_arguments)
         if machine is not None:
-            _setter("machine", machine)
+            pulumi.set(__self__, "machine", machine)
         if memory is not None:
-            _setter("memory", memory)
+            pulumi.set(__self__, "memory", memory)
         if migrate is not None:
-            _setter("migrate", migrate)
+            pulumi.set(__self__, "migrate", migrate)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network_devices is not None:
-            _setter("network_devices", network_devices)
+            pulumi.set(__self__, "network_devices", network_devices)
         if on_boot is not None:
-            _setter("on_boot", on_boot)
+            pulumi.set(__self__, "on_boot", on_boot)
         if operating_system is not None:
-            _setter("operating_system", operating_system)
+            pulumi.set(__self__, "operating_system", operating_system)
         if pool_id is not None:
-            _setter("pool_id", pool_id)
+            pulumi.set(__self__, "pool_id", pool_id)
         if reboot is not None:
-            _setter("reboot", reboot)
+            pulumi.set(__self__, "reboot", reboot)
         if scsi_hardware is not None:
-            _setter("scsi_hardware", scsi_hardware)
+            pulumi.set(__self__, "scsi_hardware", scsi_hardware)
         if serial_devices is not None:
-            _setter("serial_devices", serial_devices)
+            pulumi.set(__self__, "serial_devices", serial_devices)
         if smbios is not None:
-            _setter("smbios", smbios)
+            pulumi.set(__self__, "smbios", smbios)
         if started is not None:
-            _setter("started", started)
+            pulumi.set(__self__, "started", started)
         if startup is not None:
-            _setter("startup", startup)
+            pulumi.set(__self__, "startup", startup)
         if tablet_device is not None:
-            _setter("tablet_device", tablet_device)
+            pulumi.set(__self__, "tablet_device", tablet_device)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if template is not None:
-            _setter("template", template)
+            pulumi.set(__self__, "template", template)
         if timeout_clone is not None:
-            _setter("timeout_clone", timeout_clone)
+            pulumi.set(__self__, "timeout_clone", timeout_clone)
         if timeout_create is not None:
-            _setter("timeout_create", timeout_create)
+            pulumi.set(__self__, "timeout_create", timeout_create)
         if timeout_migrate is not None:
-            _setter("timeout_migrate", timeout_migrate)
+            pulumi.set(__self__, "timeout_migrate", timeout_migrate)
         if timeout_move_disk is not None:
-            _setter("timeout_move_disk", timeout_move_disk)
+            pulumi.set(__self__, "timeout_move_disk", timeout_move_disk)
         if timeout_reboot is not None:
-            _setter("timeout_reboot", timeout_reboot)
+            pulumi.set(__self__, "timeout_reboot", timeout_reboot)
         if timeout_shutdown_vm is not None:
-            _setter("timeout_shutdown_vm", timeout_shutdown_vm)
+            pulumi.set(__self__, "timeout_shutdown_vm", timeout_shutdown_vm)
         if timeout_start_vm is not None:
-            _setter("timeout_start_vm", timeout_start_vm)
+            pulumi.set(__self__, "timeout_start_vm", timeout_start_vm)
         if timeout_stop_vm is not None:
-            _setter("timeout_stop_vm", timeout_stop_vm)
+            pulumi.set(__self__, "timeout_stop_vm", timeout_stop_vm)
+        if usbs is not None:
+            pulumi.set(__self__, "usbs", usbs)
         if vga is not None:
-            _setter("vga", vga)
+            pulumi.set(__self__, "vga", vga)
         if vm_id is not None:
-            _setter("vm_id", vm_id)
+            pulumi.set(__self__, "vm_id", vm_id)
 
     @property
     @pulumi.getter(name="nodeName")
@@ -870,6 +733,18 @@ class VirtualMachineArgs:
 
     @property
     @pulumi.getter
+    def usbs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineUsbArgs']]]]:
+        """
+        A host USB device mapping (multiple blocks supported).
+        """
+        return pulumi.get(self, "usbs")
+
+    @usbs.setter
+    def usbs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineUsbArgs']]]]):
+        pulumi.set(self, "usbs", value)
+
+    @property
+    @pulumi.getter
     def vga(self) -> Optional[pulumi.Input['VirtualMachineVgaArgs']]:
         """
         The VGA configuration.
@@ -941,6 +816,7 @@ class _VirtualMachineState:
                  timeout_shutdown_vm: Optional[pulumi.Input[int]] = None,
                  timeout_start_vm: Optional[pulumi.Input[int]] = None,
                  timeout_stop_vm: Optional[pulumi.Input[int]] = None,
+                 usbs: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineUsbArgs']]]] = None,
                  vga: Optional[pulumi.Input['VirtualMachineVgaArgs']] = None,
                  vm_id: Optional[pulumi.Input[int]] = None):
         """
@@ -1016,258 +892,106 @@ class _VirtualMachineState:
                to 1800).
         :param pulumi.Input[int] timeout_stop_vm: Timeout for stopping a VM in seconds (defaults
                to 300).
+        :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineUsbArgs']]] usbs: A host USB device mapping (multiple blocks supported).
         :param pulumi.Input['VirtualMachineVgaArgs'] vga: The VGA configuration.
         :param pulumi.Input[int] vm_id: The VM identifier.
         """
-        _VirtualMachineState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            acpi=acpi,
-            agent=agent,
-            audio_device=audio_device,
-            bios=bios,
-            boot_orders=boot_orders,
-            cdrom=cdrom,
-            clone=clone,
-            cpu=cpu,
-            description=description,
-            disks=disks,
-            efi_disk=efi_disk,
-            hostpcis=hostpcis,
-            initialization=initialization,
-            ipv4_addresses=ipv4_addresses,
-            ipv6_addresses=ipv6_addresses,
-            keyboard_layout=keyboard_layout,
-            kvm_arguments=kvm_arguments,
-            mac_addresses=mac_addresses,
-            machine=machine,
-            memory=memory,
-            migrate=migrate,
-            name=name,
-            network_devices=network_devices,
-            network_interface_names=network_interface_names,
-            node_name=node_name,
-            on_boot=on_boot,
-            operating_system=operating_system,
-            pool_id=pool_id,
-            reboot=reboot,
-            scsi_hardware=scsi_hardware,
-            serial_devices=serial_devices,
-            smbios=smbios,
-            started=started,
-            startup=startup,
-            tablet_device=tablet_device,
-            tags=tags,
-            template=template,
-            timeout_clone=timeout_clone,
-            timeout_create=timeout_create,
-            timeout_migrate=timeout_migrate,
-            timeout_move_disk=timeout_move_disk,
-            timeout_reboot=timeout_reboot,
-            timeout_shutdown_vm=timeout_shutdown_vm,
-            timeout_start_vm=timeout_start_vm,
-            timeout_stop_vm=timeout_stop_vm,
-            vga=vga,
-            vm_id=vm_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             acpi: Optional[pulumi.Input[bool]] = None,
-             agent: Optional[pulumi.Input['VirtualMachineAgentArgs']] = None,
-             audio_device: Optional[pulumi.Input['VirtualMachineAudioDeviceArgs']] = None,
-             bios: Optional[pulumi.Input[str]] = None,
-             boot_orders: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             cdrom: Optional[pulumi.Input['VirtualMachineCdromArgs']] = None,
-             clone: Optional[pulumi.Input['VirtualMachineCloneArgs']] = None,
-             cpu: Optional[pulumi.Input['VirtualMachineCpuArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disks: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]] = None,
-             efi_disk: Optional[pulumi.Input['VirtualMachineEfiDiskArgs']] = None,
-             hostpcis: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]]] = None,
-             initialization: Optional[pulumi.Input['VirtualMachineInitializationArgs']] = None,
-             ipv4_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]]] = None,
-             ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]]] = None,
-             keyboard_layout: Optional[pulumi.Input[str]] = None,
-             kvm_arguments: Optional[pulumi.Input[str]] = None,
-             mac_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             machine: Optional[pulumi.Input[str]] = None,
-             memory: Optional[pulumi.Input['VirtualMachineMemoryArgs']] = None,
-             migrate: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network_devices: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkDeviceArgs']]]] = None,
-             network_interface_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             node_name: Optional[pulumi.Input[str]] = None,
-             on_boot: Optional[pulumi.Input[bool]] = None,
-             operating_system: Optional[pulumi.Input['VirtualMachineOperatingSystemArgs']] = None,
-             pool_id: Optional[pulumi.Input[str]] = None,
-             reboot: Optional[pulumi.Input[bool]] = None,
-             scsi_hardware: Optional[pulumi.Input[str]] = None,
-             serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]]] = None,
-             smbios: Optional[pulumi.Input['VirtualMachineSmbiosArgs']] = None,
-             started: Optional[pulumi.Input[bool]] = None,
-             startup: Optional[pulumi.Input['VirtualMachineStartupArgs']] = None,
-             tablet_device: Optional[pulumi.Input[bool]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             template: Optional[pulumi.Input[bool]] = None,
-             timeout_clone: Optional[pulumi.Input[int]] = None,
-             timeout_create: Optional[pulumi.Input[int]] = None,
-             timeout_migrate: Optional[pulumi.Input[int]] = None,
-             timeout_move_disk: Optional[pulumi.Input[int]] = None,
-             timeout_reboot: Optional[pulumi.Input[int]] = None,
-             timeout_shutdown_vm: Optional[pulumi.Input[int]] = None,
-             timeout_start_vm: Optional[pulumi.Input[int]] = None,
-             timeout_stop_vm: Optional[pulumi.Input[int]] = None,
-             vga: Optional[pulumi.Input['VirtualMachineVgaArgs']] = None,
-             vm_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if audio_device is None and 'audioDevice' in kwargs:
-            audio_device = kwargs['audioDevice']
-        if boot_orders is None and 'bootOrders' in kwargs:
-            boot_orders = kwargs['bootOrders']
-        if efi_disk is None and 'efiDisk' in kwargs:
-            efi_disk = kwargs['efiDisk']
-        if ipv4_addresses is None and 'ipv4Addresses' in kwargs:
-            ipv4_addresses = kwargs['ipv4Addresses']
-        if ipv6_addresses is None and 'ipv6Addresses' in kwargs:
-            ipv6_addresses = kwargs['ipv6Addresses']
-        if keyboard_layout is None and 'keyboardLayout' in kwargs:
-            keyboard_layout = kwargs['keyboardLayout']
-        if kvm_arguments is None and 'kvmArguments' in kwargs:
-            kvm_arguments = kwargs['kvmArguments']
-        if mac_addresses is None and 'macAddresses' in kwargs:
-            mac_addresses = kwargs['macAddresses']
-        if network_devices is None and 'networkDevices' in kwargs:
-            network_devices = kwargs['networkDevices']
-        if network_interface_names is None and 'networkInterfaceNames' in kwargs:
-            network_interface_names = kwargs['networkInterfaceNames']
-        if node_name is None and 'nodeName' in kwargs:
-            node_name = kwargs['nodeName']
-        if on_boot is None and 'onBoot' in kwargs:
-            on_boot = kwargs['onBoot']
-        if operating_system is None and 'operatingSystem' in kwargs:
-            operating_system = kwargs['operatingSystem']
-        if pool_id is None and 'poolId' in kwargs:
-            pool_id = kwargs['poolId']
-        if scsi_hardware is None and 'scsiHardware' in kwargs:
-            scsi_hardware = kwargs['scsiHardware']
-        if serial_devices is None and 'serialDevices' in kwargs:
-            serial_devices = kwargs['serialDevices']
-        if tablet_device is None and 'tabletDevice' in kwargs:
-            tablet_device = kwargs['tabletDevice']
-        if timeout_clone is None and 'timeoutClone' in kwargs:
-            timeout_clone = kwargs['timeoutClone']
-        if timeout_create is None and 'timeoutCreate' in kwargs:
-            timeout_create = kwargs['timeoutCreate']
-        if timeout_migrate is None and 'timeoutMigrate' in kwargs:
-            timeout_migrate = kwargs['timeoutMigrate']
-        if timeout_move_disk is None and 'timeoutMoveDisk' in kwargs:
-            timeout_move_disk = kwargs['timeoutMoveDisk']
-        if timeout_reboot is None and 'timeoutReboot' in kwargs:
-            timeout_reboot = kwargs['timeoutReboot']
-        if timeout_shutdown_vm is None and 'timeoutShutdownVm' in kwargs:
-            timeout_shutdown_vm = kwargs['timeoutShutdownVm']
-        if timeout_start_vm is None and 'timeoutStartVm' in kwargs:
-            timeout_start_vm = kwargs['timeoutStartVm']
-        if timeout_stop_vm is None and 'timeoutStopVm' in kwargs:
-            timeout_stop_vm = kwargs['timeoutStopVm']
-        if vm_id is None and 'vmId' in kwargs:
-            vm_id = kwargs['vmId']
-
         if acpi is not None:
-            _setter("acpi", acpi)
+            pulumi.set(__self__, "acpi", acpi)
         if agent is not None:
-            _setter("agent", agent)
+            pulumi.set(__self__, "agent", agent)
         if audio_device is not None:
-            _setter("audio_device", audio_device)
+            pulumi.set(__self__, "audio_device", audio_device)
         if bios is not None:
-            _setter("bios", bios)
+            pulumi.set(__self__, "bios", bios)
         if boot_orders is not None:
-            _setter("boot_orders", boot_orders)
+            pulumi.set(__self__, "boot_orders", boot_orders)
         if cdrom is not None:
-            _setter("cdrom", cdrom)
+            pulumi.set(__self__, "cdrom", cdrom)
         if clone is not None:
-            _setter("clone", clone)
+            pulumi.set(__self__, "clone", clone)
         if cpu is not None:
-            _setter("cpu", cpu)
+            pulumi.set(__self__, "cpu", cpu)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disks is not None:
-            _setter("disks", disks)
+            pulumi.set(__self__, "disks", disks)
         if efi_disk is not None:
-            _setter("efi_disk", efi_disk)
+            pulumi.set(__self__, "efi_disk", efi_disk)
         if hostpcis is not None:
-            _setter("hostpcis", hostpcis)
+            pulumi.set(__self__, "hostpcis", hostpcis)
         if initialization is not None:
-            _setter("initialization", initialization)
+            pulumi.set(__self__, "initialization", initialization)
         if ipv4_addresses is not None:
-            _setter("ipv4_addresses", ipv4_addresses)
+            pulumi.set(__self__, "ipv4_addresses", ipv4_addresses)
         if ipv6_addresses is not None:
-            _setter("ipv6_addresses", ipv6_addresses)
+            pulumi.set(__self__, "ipv6_addresses", ipv6_addresses)
         if keyboard_layout is not None:
-            _setter("keyboard_layout", keyboard_layout)
+            pulumi.set(__self__, "keyboard_layout", keyboard_layout)
         if kvm_arguments is not None:
-            _setter("kvm_arguments", kvm_arguments)
+            pulumi.set(__self__, "kvm_arguments", kvm_arguments)
         if mac_addresses is not None:
-            _setter("mac_addresses", mac_addresses)
+            pulumi.set(__self__, "mac_addresses", mac_addresses)
         if machine is not None:
-            _setter("machine", machine)
+            pulumi.set(__self__, "machine", machine)
         if memory is not None:
-            _setter("memory", memory)
+            pulumi.set(__self__, "memory", memory)
         if migrate is not None:
-            _setter("migrate", migrate)
+            pulumi.set(__self__, "migrate", migrate)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network_devices is not None:
-            _setter("network_devices", network_devices)
+            pulumi.set(__self__, "network_devices", network_devices)
         if network_interface_names is not None:
-            _setter("network_interface_names", network_interface_names)
+            pulumi.set(__self__, "network_interface_names", network_interface_names)
         if node_name is not None:
-            _setter("node_name", node_name)
+            pulumi.set(__self__, "node_name", node_name)
         if on_boot is not None:
-            _setter("on_boot", on_boot)
+            pulumi.set(__self__, "on_boot", on_boot)
         if operating_system is not None:
-            _setter("operating_system", operating_system)
+            pulumi.set(__self__, "operating_system", operating_system)
         if pool_id is not None:
-            _setter("pool_id", pool_id)
+            pulumi.set(__self__, "pool_id", pool_id)
         if reboot is not None:
-            _setter("reboot", reboot)
+            pulumi.set(__self__, "reboot", reboot)
         if scsi_hardware is not None:
-            _setter("scsi_hardware", scsi_hardware)
+            pulumi.set(__self__, "scsi_hardware", scsi_hardware)
         if serial_devices is not None:
-            _setter("serial_devices", serial_devices)
+            pulumi.set(__self__, "serial_devices", serial_devices)
         if smbios is not None:
-            _setter("smbios", smbios)
+            pulumi.set(__self__, "smbios", smbios)
         if started is not None:
-            _setter("started", started)
+            pulumi.set(__self__, "started", started)
         if startup is not None:
-            _setter("startup", startup)
+            pulumi.set(__self__, "startup", startup)
         if tablet_device is not None:
-            _setter("tablet_device", tablet_device)
+            pulumi.set(__self__, "tablet_device", tablet_device)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if template is not None:
-            _setter("template", template)
+            pulumi.set(__self__, "template", template)
         if timeout_clone is not None:
-            _setter("timeout_clone", timeout_clone)
+            pulumi.set(__self__, "timeout_clone", timeout_clone)
         if timeout_create is not None:
-            _setter("timeout_create", timeout_create)
+            pulumi.set(__self__, "timeout_create", timeout_create)
         if timeout_migrate is not None:
-            _setter("timeout_migrate", timeout_migrate)
+            pulumi.set(__self__, "timeout_migrate", timeout_migrate)
         if timeout_move_disk is not None:
-            _setter("timeout_move_disk", timeout_move_disk)
+            pulumi.set(__self__, "timeout_move_disk", timeout_move_disk)
         if timeout_reboot is not None:
-            _setter("timeout_reboot", timeout_reboot)
+            pulumi.set(__self__, "timeout_reboot", timeout_reboot)
         if timeout_shutdown_vm is not None:
-            _setter("timeout_shutdown_vm", timeout_shutdown_vm)
+            pulumi.set(__self__, "timeout_shutdown_vm", timeout_shutdown_vm)
         if timeout_start_vm is not None:
-            _setter("timeout_start_vm", timeout_start_vm)
+            pulumi.set(__self__, "timeout_start_vm", timeout_start_vm)
         if timeout_stop_vm is not None:
-            _setter("timeout_stop_vm", timeout_stop_vm)
+            pulumi.set(__self__, "timeout_stop_vm", timeout_stop_vm)
+        if usbs is not None:
+            pulumi.set(__self__, "usbs", usbs)
         if vga is not None:
-            _setter("vga", vga)
+            pulumi.set(__self__, "vga", vga)
         if vm_id is not None:
-            _setter("vm_id", vm_id)
+            pulumi.set(__self__, "vm_id", vm_id)
 
     @property
     @pulumi.getter
@@ -1837,6 +1561,18 @@ class _VirtualMachineState:
 
     @property
     @pulumi.getter
+    def usbs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineUsbArgs']]]]:
+        """
+        A host USB device mapping (multiple blocks supported).
+        """
+        return pulumi.get(self, "usbs")
+
+    @usbs.setter
+    def usbs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineUsbArgs']]]]):
+        pulumi.set(self, "usbs", value)
+
+    @property
+    @pulumi.getter
     def vga(self) -> Optional[pulumi.Input['VirtualMachineVgaArgs']]:
         """
         The VGA configuration.
@@ -1906,11 +1642,50 @@ class VirtualMachine(pulumi.CustomResource):
                  timeout_shutdown_vm: Optional[pulumi.Input[int]] = None,
                  timeout_start_vm: Optional[pulumi.Input[int]] = None,
                  timeout_stop_vm: Optional[pulumi.Input[int]] = None,
+                 usbs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineUsbArgs']]]]] = None,
                  vga: Optional[pulumi.Input[pulumi.InputType['VirtualMachineVgaArgs']]] = None,
                  vm_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
         Manages a virtual machine.
+
+        ## Qemu guest agent
+
+        Qemu-guest-agent is an application which can be installed inside guest VM, see
+        [Proxmox Wiki](https://pve.proxmox.com/wiki/Qemu-guest-agent) and [Proxmox
+        Documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_qemu_agent)
+
+        For VM with `agent.enabled = false`, Proxmox uses ACPI for `Shutdown` and
+        `Reboot`, and `qemu-guest-agent` is not needed inside the VM.
+
+        Setting `agent.enabled = true` informs Proxmox that the guest agent is expected
+        to be *running* inside the VM. Proxmox then uses `qemu-guest-agent` instead of
+        ACPI to control the VM. If the agent is not running, Proxmox operations
+        `Shutdown` and `Reboot` time out and fail. The failing operation gets a lock on
+        the VM, and until the operation times out, other operations like `Stop` and
+        `Reboot` cannot be used.
+
+        Do **not** run VM with `agent.enabled = true`, unless the VM is configured to
+        automatically **start** `qemu-guest-agent` at some point.
+
+        "Monitor" tab in Proxmox GUI can be used to send low-level commands to `qemu`.
+        See the [documentation](https://www.qemu.org/docs/master/system/monitor.html).
+        Commands `system_powerdown` and `quit` have proven useful in shutting down VMs
+        with `agent.enabled = true` and no agent running.
+
+        Cloud images usually do not have `qemu-guest-agent` installed. It is possible to
+        install and *start* it using cloud-init, e.g. using custom `user_data_file_id`
+        file.
+
+        This provider requires `agent.enabled = true` to populate `ipv4_addresses`,
+        `ipv6_addresses` and `network_interface_names` output attributes.
+
+        Setting `agent.enabled = true` without running `qemu-guest-agent` in the VM will
+        also result in long timeouts when using the provider, both when creating VMs,
+        and when refreshing resources.  The provider has no way to distinguish between
+        "qemu-guest-agent not installed" and "very long boot due to a disk check", it
+        trusts the user to set `agent.enabled` correctly and waits for
+        `qemu-guest-agent` to start.
 
         ## Important Notes
 
@@ -2007,6 +1782,7 @@ class VirtualMachine(pulumi.CustomResource):
                to 1800).
         :param pulumi.Input[int] timeout_stop_vm: Timeout for stopping a VM in seconds (defaults
                to 300).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineUsbArgs']]]] usbs: A host USB device mapping (multiple blocks supported).
         :param pulumi.Input[pulumi.InputType['VirtualMachineVgaArgs']] vga: The VGA configuration.
         :param pulumi.Input[int] vm_id: The VM identifier.
         """
@@ -2018,6 +1794,44 @@ class VirtualMachine(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a virtual machine.
+
+        ## Qemu guest agent
+
+        Qemu-guest-agent is an application which can be installed inside guest VM, see
+        [Proxmox Wiki](https://pve.proxmox.com/wiki/Qemu-guest-agent) and [Proxmox
+        Documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_qemu_agent)
+
+        For VM with `agent.enabled = false`, Proxmox uses ACPI for `Shutdown` and
+        `Reboot`, and `qemu-guest-agent` is not needed inside the VM.
+
+        Setting `agent.enabled = true` informs Proxmox that the guest agent is expected
+        to be *running* inside the VM. Proxmox then uses `qemu-guest-agent` instead of
+        ACPI to control the VM. If the agent is not running, Proxmox operations
+        `Shutdown` and `Reboot` time out and fail. The failing operation gets a lock on
+        the VM, and until the operation times out, other operations like `Stop` and
+        `Reboot` cannot be used.
+
+        Do **not** run VM with `agent.enabled = true`, unless the VM is configured to
+        automatically **start** `qemu-guest-agent` at some point.
+
+        "Monitor" tab in Proxmox GUI can be used to send low-level commands to `qemu`.
+        See the [documentation](https://www.qemu.org/docs/master/system/monitor.html).
+        Commands `system_powerdown` and `quit` have proven useful in shutting down VMs
+        with `agent.enabled = true` and no agent running.
+
+        Cloud images usually do not have `qemu-guest-agent` installed. It is possible to
+        install and *start* it using cloud-init, e.g. using custom `user_data_file_id`
+        file.
+
+        This provider requires `agent.enabled = true` to populate `ipv4_addresses`,
+        `ipv6_addresses` and `network_interface_names` output attributes.
+
+        Setting `agent.enabled = true` without running `qemu-guest-agent` in the VM will
+        also result in long timeouts when using the provider, both when creating VMs,
+        and when refreshing resources.  The provider has no way to distinguish between
+        "qemu-guest-agent not installed" and "very long boot due to a disk check", it
+        trusts the user to set `agent.enabled` correctly and waits for
+        `qemu-guest-agent` to start.
 
         ## Important Notes
 
@@ -2059,10 +1873,6 @@ class VirtualMachine(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            VirtualMachineArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -2109,6 +1919,7 @@ class VirtualMachine(pulumi.CustomResource):
                  timeout_shutdown_vm: Optional[pulumi.Input[int]] = None,
                  timeout_start_vm: Optional[pulumi.Input[int]] = None,
                  timeout_stop_vm: Optional[pulumi.Input[int]] = None,
+                 usbs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineUsbArgs']]]]] = None,
                  vga: Optional[pulumi.Input[pulumi.InputType['VirtualMachineVgaArgs']]] = None,
                  vm_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -2121,29 +1932,21 @@ class VirtualMachine(pulumi.CustomResource):
             __props__ = VirtualMachineArgs.__new__(VirtualMachineArgs)
 
             __props__.__dict__["acpi"] = acpi
-            agent = _utilities.configure(agent, VirtualMachineAgentArgs, True)
             __props__.__dict__["agent"] = agent
-            audio_device = _utilities.configure(audio_device, VirtualMachineAudioDeviceArgs, True)
             __props__.__dict__["audio_device"] = audio_device
             __props__.__dict__["bios"] = bios
             __props__.__dict__["boot_orders"] = boot_orders
-            cdrom = _utilities.configure(cdrom, VirtualMachineCdromArgs, True)
             __props__.__dict__["cdrom"] = cdrom
-            clone = _utilities.configure(clone, VirtualMachineCloneArgs, True)
             __props__.__dict__["clone"] = clone
-            cpu = _utilities.configure(cpu, VirtualMachineCpuArgs, True)
             __props__.__dict__["cpu"] = cpu
             __props__.__dict__["description"] = description
             __props__.__dict__["disks"] = disks
-            efi_disk = _utilities.configure(efi_disk, VirtualMachineEfiDiskArgs, True)
             __props__.__dict__["efi_disk"] = efi_disk
             __props__.__dict__["hostpcis"] = hostpcis
-            initialization = _utilities.configure(initialization, VirtualMachineInitializationArgs, True)
             __props__.__dict__["initialization"] = initialization
             __props__.__dict__["keyboard_layout"] = keyboard_layout
             __props__.__dict__["kvm_arguments"] = kvm_arguments
             __props__.__dict__["machine"] = machine
-            memory = _utilities.configure(memory, VirtualMachineMemoryArgs, True)
             __props__.__dict__["memory"] = memory
             __props__.__dict__["migrate"] = migrate
             __props__.__dict__["name"] = name
@@ -2152,16 +1955,13 @@ class VirtualMachine(pulumi.CustomResource):
                 raise TypeError("Missing required property 'node_name'")
             __props__.__dict__["node_name"] = node_name
             __props__.__dict__["on_boot"] = on_boot
-            operating_system = _utilities.configure(operating_system, VirtualMachineOperatingSystemArgs, True)
             __props__.__dict__["operating_system"] = operating_system
             __props__.__dict__["pool_id"] = pool_id
             __props__.__dict__["reboot"] = reboot
             __props__.__dict__["scsi_hardware"] = scsi_hardware
             __props__.__dict__["serial_devices"] = serial_devices
-            smbios = _utilities.configure(smbios, VirtualMachineSmbiosArgs, True)
             __props__.__dict__["smbios"] = smbios
             __props__.__dict__["started"] = started
-            startup = _utilities.configure(startup, VirtualMachineStartupArgs, True)
             __props__.__dict__["startup"] = startup
             __props__.__dict__["tablet_device"] = tablet_device
             __props__.__dict__["tags"] = tags
@@ -2174,7 +1974,7 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["timeout_shutdown_vm"] = timeout_shutdown_vm
             __props__.__dict__["timeout_start_vm"] = timeout_start_vm
             __props__.__dict__["timeout_stop_vm"] = timeout_stop_vm
-            vga = _utilities.configure(vga, VirtualMachineVgaArgs, True)
+            __props__.__dict__["usbs"] = usbs
             __props__.__dict__["vga"] = vga
             __props__.__dict__["vm_id"] = vm_id
             __props__.__dict__["ipv4_addresses"] = None
@@ -2236,6 +2036,7 @@ class VirtualMachine(pulumi.CustomResource):
             timeout_shutdown_vm: Optional[pulumi.Input[int]] = None,
             timeout_start_vm: Optional[pulumi.Input[int]] = None,
             timeout_stop_vm: Optional[pulumi.Input[int]] = None,
+            usbs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineUsbArgs']]]]] = None,
             vga: Optional[pulumi.Input[pulumi.InputType['VirtualMachineVgaArgs']]] = None,
             vm_id: Optional[pulumi.Input[int]] = None) -> 'VirtualMachine':
         """
@@ -2316,6 +2117,7 @@ class VirtualMachine(pulumi.CustomResource):
                to 1800).
         :param pulumi.Input[int] timeout_stop_vm: Timeout for stopping a VM in seconds (defaults
                to 300).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineUsbArgs']]]] usbs: A host USB device mapping (multiple blocks supported).
         :param pulumi.Input[pulumi.InputType['VirtualMachineVgaArgs']] vga: The VGA configuration.
         :param pulumi.Input[int] vm_id: The VM identifier.
         """
@@ -2368,6 +2170,7 @@ class VirtualMachine(pulumi.CustomResource):
         __props__.__dict__["timeout_shutdown_vm"] = timeout_shutdown_vm
         __props__.__dict__["timeout_start_vm"] = timeout_start_vm
         __props__.__dict__["timeout_stop_vm"] = timeout_stop_vm
+        __props__.__dict__["usbs"] = usbs
         __props__.__dict__["vga"] = vga
         __props__.__dict__["vm_id"] = vm_id
         return VirtualMachine(resource_name, opts=opts, __props__=__props__)
@@ -2757,6 +2560,14 @@ class VirtualMachine(pulumi.CustomResource):
         to 300).
         """
         return pulumi.get(self, "timeout_stop_vm")
+
+    @property
+    @pulumi.getter
+    def usbs(self) -> pulumi.Output[Optional[Sequence['outputs.VirtualMachineUsb']]]:
+        """
+        A host USB device mapping (multiple blocks supported).
+        """
+        return pulumi.get(self, "usbs")
 
     @property
     @pulumi.getter

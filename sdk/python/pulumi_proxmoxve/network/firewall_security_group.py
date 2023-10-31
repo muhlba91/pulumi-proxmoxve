@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,46 +31,17 @@ class FirewallSecurityGroupArgs:
         :param pulumi.Input[str] node_name: The name of the node.
         :param pulumi.Input[int] vm_id: The ID of the VM to manage the firewall for.
         """
-        FirewallSecurityGroupArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            rules=rules,
-            comment=comment,
-            container_id=container_id,
-            name=name,
-            node_name=node_name,
-            vm_id=vm_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             rules: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallSecurityGroupRuleArgs']]]] = None,
-             comment: Optional[pulumi.Input[str]] = None,
-             container_id: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             node_name: Optional[pulumi.Input[str]] = None,
-             vm_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if rules is None:
-            raise TypeError("Missing 'rules' argument")
-        if container_id is None and 'containerId' in kwargs:
-            container_id = kwargs['containerId']
-        if node_name is None and 'nodeName' in kwargs:
-            node_name = kwargs['nodeName']
-        if vm_id is None and 'vmId' in kwargs:
-            vm_id = kwargs['vmId']
-
-        _setter("rules", rules)
+        pulumi.set(__self__, "rules", rules)
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
         if container_id is not None:
-            _setter("container_id", container_id)
+            pulumi.set(__self__, "container_id", container_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if node_name is not None:
-            _setter("node_name", node_name)
+            pulumi.set(__self__, "node_name", node_name)
         if vm_id is not None:
-            _setter("vm_id", vm_id)
+            pulumi.set(__self__, "vm_id", vm_id)
 
     @property
     @pulumi.getter
@@ -163,45 +134,18 @@ class _FirewallSecurityGroupState:
         :param pulumi.Input[Sequence[pulumi.Input['FirewallSecurityGroupRuleArgs']]] rules: Firewall rule block (multiple blocks supported).
         :param pulumi.Input[int] vm_id: The ID of the VM to manage the firewall for.
         """
-        _FirewallSecurityGroupState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            comment=comment,
-            container_id=container_id,
-            name=name,
-            node_name=node_name,
-            rules=rules,
-            vm_id=vm_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             comment: Optional[pulumi.Input[str]] = None,
-             container_id: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             node_name: Optional[pulumi.Input[str]] = None,
-             rules: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallSecurityGroupRuleArgs']]]] = None,
-             vm_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if container_id is None and 'containerId' in kwargs:
-            container_id = kwargs['containerId']
-        if node_name is None and 'nodeName' in kwargs:
-            node_name = kwargs['nodeName']
-        if vm_id is None and 'vmId' in kwargs:
-            vm_id = kwargs['vmId']
-
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
         if container_id is not None:
-            _setter("container_id", container_id)
+            pulumi.set(__self__, "container_id", container_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if node_name is not None:
-            _setter("node_name", node_name)
+            pulumi.set(__self__, "node_name", node_name)
         if rules is not None:
-            _setter("rules", rules)
+            pulumi.set(__self__, "rules", rules)
         if vm_id is not None:
-            _setter("vm_id", vm_id)
+            pulumi.set(__self__, "vm_id", vm_id)
 
     @property
     @pulumi.getter
@@ -399,10 +343,6 @@ class FirewallSecurityGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            FirewallSecurityGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

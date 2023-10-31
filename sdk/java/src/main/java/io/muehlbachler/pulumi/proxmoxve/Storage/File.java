@@ -36,9 +36,13 @@ import javax.annotation.Nullable;
  * the file will be deleted as if it did not exist before. If you want to prevent
  * the resource from replacing the file, set `overwrite` to `false`.
  * 
+ * Make sure the target datastore supports the content type you are uploading. For
+ * example, the `snippets` content type can be disabled by default on the `local`
+ * datastore.
+ * 
  * ## Import
  * 
- * Instances can be imported using the `node_name`, `datastore_id`, `content_type` and the `file_name` in the following format&lt;node_name&gt;:&lt;datastore_id&gt;/&lt;content_type&gt;/&lt;file_name&gt; Examplebash
+ * Instances can be imported using the `node_name`, `datastore_id`, `content_type` and the `file_name` in the following formattext node_name:datastore_id/content_type/file_name Examplebash
  * 
  * ```sh
  *  $ pulumi import proxmoxve:Storage/file:File cloud_config pve/local:snippets/example.cloud-config.yaml
@@ -48,14 +52,16 @@ import javax.annotation.Nullable;
 @ResourceType(type="proxmoxve:Storage/file:File")
 public class File extends com.pulumi.resources.CustomResource {
     /**
-     * The content type.
+     * The content type. If not specified, the content type will be inferred from the file
+     * extension. Valid values are:
      * 
      */
     @Export(name="contentType", refs={String.class}, tree="[0]")
     private Output<String> contentType;
 
     /**
-     * @return The content type.
+     * @return The content type. If not specified, the content type will be inferred from the file
+     * extension. Valid values are:
      * 
      */
     public Output<String> contentType() {
@@ -162,14 +168,18 @@ public class File extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.overwrite);
     }
     /**
-     * The source file (conflicts with `source_raw`).
+     * The source file (conflicts with `source_raw`), could be a
+     * local file or a URL. If the source file is a URL, the file will be downloaded
+     * and stored locally before uploading it to Proxmox VE.
      * 
      */
     @Export(name="sourceFile", refs={FileSourceFile.class}, tree="[0]")
     private Output</* @Nullable */ FileSourceFile> sourceFile;
 
     /**
-     * @return The source file (conflicts with `source_raw`).
+     * @return The source file (conflicts with `source_raw`), could be a
+     * local file or a URL. If the source file is a URL, the file will be downloaded
+     * and stored locally before uploading it to Proxmox VE.
      * 
      */
     public Output<Optional<FileSourceFile>> sourceFile() {

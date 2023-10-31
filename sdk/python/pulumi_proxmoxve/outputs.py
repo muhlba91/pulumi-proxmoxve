@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
@@ -23,25 +23,8 @@ class HostsEntry(dict):
         :param str address: The IP address.
         :param Sequence[str] hostnames: The hostnames.
         """
-        HostsEntry._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            hostnames=hostnames,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: Optional[str] = None,
-             hostnames: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if address is None:
-            raise TypeError("Missing 'address' argument")
-        if hostnames is None:
-            raise TypeError("Missing 'hostnames' argument")
-
-        _setter("address", address)
-        _setter("hostnames", hostnames)
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "hostnames", hostnames)
 
     @property
     @pulumi.getter
@@ -68,25 +51,8 @@ class GetHostsEntryResult(dict):
         """
         :param Sequence[str] hostnames: The hostnames associated with each of the IP addresses.
         """
-        GetHostsEntryResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            hostnames=hostnames,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: Optional[str] = None,
-             hostnames: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if address is None:
-            raise TypeError("Missing 'address' argument")
-        if hostnames is None:
-            raise TypeError("Missing 'hostnames' argument")
-
-        _setter("address", address)
-        _setter("hostnames", hostnames)
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "hostnames", hostnames)
 
     @property
     @pulumi.getter

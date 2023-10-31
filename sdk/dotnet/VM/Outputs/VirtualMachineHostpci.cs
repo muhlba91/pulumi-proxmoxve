@@ -24,7 +24,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         public readonly string? Id;
         /// <summary>
         /// The resource mapping name of the device, for
-        /// example gpu. Use either this or `id`.
+        /// example usbdevice. Use either this or `id`.
         /// </summary>
         public readonly string? Mapping;
         /// <summary>

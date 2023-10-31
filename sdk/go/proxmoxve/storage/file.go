@@ -30,9 +30,13 @@ import (
 // the file will be deleted as if it did not exist before. If you want to prevent
 // the resource from replacing the file, set `overwrite` to `false`.
 //
+// Make sure the target datastore supports the content type you are uploading. For
+// example, the `snippets` content type can be disabled by default on the `local`
+// datastore.
+//
 // ## Import
 //
-// Instances can be imported using the `node_name`, `datastore_id`, `content_type` and the `file_name` in the following format<node_name>:<datastore_id>/<content_type>/<file_name> Examplebash
+// Instances can be imported using the `node_name`, `datastore_id`, `content_type` and the `file_name` in the following formattext node_name:datastore_id/content_type/file_name Examplebash
 //
 // ```sh
 //
@@ -42,7 +46,8 @@ import (
 type File struct {
 	pulumi.CustomResourceState
 
-	// The content type.
+	// The content type. If not specified, the content type will be inferred from the file
+	// extension. Valid values are:
 	ContentType pulumi.StringOutput `pulumi:"contentType"`
 	// The datastore id.
 	DatastoreId pulumi.StringOutput `pulumi:"datastoreId"`
@@ -59,7 +64,9 @@ type File struct {
 	// Whether to overwrite an existing file (defaults to
 	// `true`).
 	Overwrite pulumi.BoolPtrOutput `pulumi:"overwrite"`
-	// The source file (conflicts with `sourceRaw`).
+	// The source file (conflicts with `sourceRaw`), could be a
+	// local file or a URL. If the source file is a URL, the file will be downloaded
+	// and stored locally before uploading it to Proxmox VE.
 	SourceFile FileSourceFilePtrOutput `pulumi:"sourceFile"`
 	// The raw source (conflicts with `sourceFile`).
 	SourceRaw FileSourceRawPtrOutput `pulumi:"sourceRaw"`
@@ -104,7 +111,8 @@ func GetFile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering File resources.
 type fileState struct {
-	// The content type.
+	// The content type. If not specified, the content type will be inferred from the file
+	// extension. Valid values are:
 	ContentType *string `pulumi:"contentType"`
 	// The datastore id.
 	DatastoreId *string `pulumi:"datastoreId"`
@@ -121,7 +129,9 @@ type fileState struct {
 	// Whether to overwrite an existing file (defaults to
 	// `true`).
 	Overwrite *bool `pulumi:"overwrite"`
-	// The source file (conflicts with `sourceRaw`).
+	// The source file (conflicts with `sourceRaw`), could be a
+	// local file or a URL. If the source file is a URL, the file will be downloaded
+	// and stored locally before uploading it to Proxmox VE.
 	SourceFile *FileSourceFile `pulumi:"sourceFile"`
 	// The raw source (conflicts with `sourceFile`).
 	SourceRaw *FileSourceRaw `pulumi:"sourceRaw"`
@@ -131,7 +141,8 @@ type fileState struct {
 }
 
 type FileState struct {
-	// The content type.
+	// The content type. If not specified, the content type will be inferred from the file
+	// extension. Valid values are:
 	ContentType pulumi.StringPtrInput
 	// The datastore id.
 	DatastoreId pulumi.StringPtrInput
@@ -148,7 +159,9 @@ type FileState struct {
 	// Whether to overwrite an existing file (defaults to
 	// `true`).
 	Overwrite pulumi.BoolPtrInput
-	// The source file (conflicts with `sourceRaw`).
+	// The source file (conflicts with `sourceRaw`), could be a
+	// local file or a URL. If the source file is a URL, the file will be downloaded
+	// and stored locally before uploading it to Proxmox VE.
 	SourceFile FileSourceFilePtrInput
 	// The raw source (conflicts with `sourceFile`).
 	SourceRaw FileSourceRawPtrInput
@@ -162,7 +175,8 @@ func (FileState) ElementType() reflect.Type {
 }
 
 type fileArgs struct {
-	// The content type.
+	// The content type. If not specified, the content type will be inferred from the file
+	// extension. Valid values are:
 	ContentType *string `pulumi:"contentType"`
 	// The datastore id.
 	DatastoreId string `pulumi:"datastoreId"`
@@ -171,7 +185,9 @@ type fileArgs struct {
 	// Whether to overwrite an existing file (defaults to
 	// `true`).
 	Overwrite *bool `pulumi:"overwrite"`
-	// The source file (conflicts with `sourceRaw`).
+	// The source file (conflicts with `sourceRaw`), could be a
+	// local file or a URL. If the source file is a URL, the file will be downloaded
+	// and stored locally before uploading it to Proxmox VE.
 	SourceFile *FileSourceFile `pulumi:"sourceFile"`
 	// The raw source (conflicts with `sourceFile`).
 	SourceRaw *FileSourceRaw `pulumi:"sourceRaw"`
@@ -182,7 +198,8 @@ type fileArgs struct {
 
 // The set of arguments for constructing a File resource.
 type FileArgs struct {
-	// The content type.
+	// The content type. If not specified, the content type will be inferred from the file
+	// extension. Valid values are:
 	ContentType pulumi.StringPtrInput
 	// The datastore id.
 	DatastoreId pulumi.StringInput
@@ -191,7 +208,9 @@ type FileArgs struct {
 	// Whether to overwrite an existing file (defaults to
 	// `true`).
 	Overwrite pulumi.BoolPtrInput
-	// The source file (conflicts with `sourceRaw`).
+	// The source file (conflicts with `sourceRaw`), could be a
+	// local file or a URL. If the source file is a URL, the file will be downloaded
+	// and stored locally before uploading it to Proxmox VE.
 	SourceFile FileSourceFilePtrInput
 	// The raw source (conflicts with `sourceFile`).
 	SourceRaw FileSourceRawPtrInput
@@ -311,7 +330,8 @@ func (o FileOutput) ToOutput(ctx context.Context) pulumix.Output[*File] {
 	}
 }
 
-// The content type.
+// The content type. If not specified, the content type will be inferred from the file
+// extension. Valid values are:
 func (o FileOutput) ContentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *File) pulumi.StringOutput { return v.ContentType }).(pulumi.StringOutput)
 }
@@ -352,7 +372,9 @@ func (o FileOutput) Overwrite() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *File) pulumi.BoolPtrOutput { return v.Overwrite }).(pulumi.BoolPtrOutput)
 }
 
-// The source file (conflicts with `sourceRaw`).
+// The source file (conflicts with `sourceRaw`), could be a
+// local file or a URL. If the source file is a URL, the file will be downloaded
+// and stored locally before uploading it to Proxmox VE.
 func (o FileOutput) SourceFile() FileSourceFilePtrOutput {
 	return o.ApplyT(func(v *File) FileSourceFilePtrOutput { return v.SourceFile }).(FileSourceFilePtrOutput)
 }

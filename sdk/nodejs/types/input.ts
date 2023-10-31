@@ -842,7 +842,7 @@ export namespace VM {
         id?: pulumi.Input<string>;
         /**
          * The resource mapping name of the device, for
-         * example gpu. Use either this or `id`.
+         * example usbdevice. Use either this or `id`.
          */
         mapping?: pulumi.Input<string>;
         /**
@@ -1103,6 +1103,23 @@ export namespace VM {
          */
         order?: pulumi.Input<number>;
         upDelay?: pulumi.Input<number>;
+    }
+
+    export interface VirtualMachineUsb {
+        /**
+         * The USB device ID. Use either this or `mapping`.
+         */
+        host: pulumi.Input<string>;
+        /**
+         * The resource mapping name of the device, for
+         * example usbdevice. Use either this or `id`.
+         */
+        mapping?: pulumi.Input<string>;
+        /**
+         * Makes the USB device a USB3 device for the VM (defaults
+         * to `false`).
+         */
+        usb3?: pulumi.Input<boolean>;
     }
 
     export interface VirtualMachineVga {

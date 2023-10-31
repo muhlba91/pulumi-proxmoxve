@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,65 +27,29 @@ class FileArgs:
         The set of arguments for constructing a File resource.
         :param pulumi.Input[str] datastore_id: The datastore id.
         :param pulumi.Input[str] node_name: The node name.
-        :param pulumi.Input[str] content_type: The content type.
+        :param pulumi.Input[str] content_type: The content type. If not specified, the content type will be inferred from the file
+               extension. Valid values are:
         :param pulumi.Input[bool] overwrite: Whether to overwrite an existing file (defaults to
                `true`).
-        :param pulumi.Input['FileSourceFileArgs'] source_file: The source file (conflicts with `source_raw`).
+        :param pulumi.Input['FileSourceFileArgs'] source_file: The source file (conflicts with `source_raw`), could be a
+               local file or a URL. If the source file is a URL, the file will be downloaded
+               and stored locally before uploading it to Proxmox VE.
         :param pulumi.Input['FileSourceRawArgs'] source_raw: The raw source (conflicts with `source_file`).
         :param pulumi.Input[int] timeout_upload: Timeout for uploading ISO/VSTMPL files in
                seconds (defaults to 1800).
         """
-        FileArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            datastore_id=datastore_id,
-            node_name=node_name,
-            content_type=content_type,
-            overwrite=overwrite,
-            source_file=source_file,
-            source_raw=source_raw,
-            timeout_upload=timeout_upload,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             datastore_id: Optional[pulumi.Input[str]] = None,
-             node_name: Optional[pulumi.Input[str]] = None,
-             content_type: Optional[pulumi.Input[str]] = None,
-             overwrite: Optional[pulumi.Input[bool]] = None,
-             source_file: Optional[pulumi.Input['FileSourceFileArgs']] = None,
-             source_raw: Optional[pulumi.Input['FileSourceRawArgs']] = None,
-             timeout_upload: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if datastore_id is None and 'datastoreId' in kwargs:
-            datastore_id = kwargs['datastoreId']
-        if datastore_id is None:
-            raise TypeError("Missing 'datastore_id' argument")
-        if node_name is None and 'nodeName' in kwargs:
-            node_name = kwargs['nodeName']
-        if node_name is None:
-            raise TypeError("Missing 'node_name' argument")
-        if content_type is None and 'contentType' in kwargs:
-            content_type = kwargs['contentType']
-        if source_file is None and 'sourceFile' in kwargs:
-            source_file = kwargs['sourceFile']
-        if source_raw is None and 'sourceRaw' in kwargs:
-            source_raw = kwargs['sourceRaw']
-        if timeout_upload is None and 'timeoutUpload' in kwargs:
-            timeout_upload = kwargs['timeoutUpload']
-
-        _setter("datastore_id", datastore_id)
-        _setter("node_name", node_name)
+        pulumi.set(__self__, "datastore_id", datastore_id)
+        pulumi.set(__self__, "node_name", node_name)
         if content_type is not None:
-            _setter("content_type", content_type)
+            pulumi.set(__self__, "content_type", content_type)
         if overwrite is not None:
-            _setter("overwrite", overwrite)
+            pulumi.set(__self__, "overwrite", overwrite)
         if source_file is not None:
-            _setter("source_file", source_file)
+            pulumi.set(__self__, "source_file", source_file)
         if source_raw is not None:
-            _setter("source_raw", source_raw)
+            pulumi.set(__self__, "source_raw", source_raw)
         if timeout_upload is not None:
-            _setter("timeout_upload", timeout_upload)
+            pulumi.set(__self__, "timeout_upload", timeout_upload)
 
     @property
     @pulumi.getter(name="datastoreId")
@@ -115,7 +79,8 @@ class FileArgs:
     @pulumi.getter(name="contentType")
     def content_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The content type.
+        The content type. If not specified, the content type will be inferred from the file
+        extension. Valid values are:
         """
         return pulumi.get(self, "content_type")
 
@@ -140,7 +105,9 @@ class FileArgs:
     @pulumi.getter(name="sourceFile")
     def source_file(self) -> Optional[pulumi.Input['FileSourceFileArgs']]:
         """
-        The source file (conflicts with `source_raw`).
+        The source file (conflicts with `source_raw`), could be a
+        local file or a URL. If the source file is a URL, the file will be downloaded
+        and stored locally before uploading it to Proxmox VE.
         """
         return pulumi.get(self, "source_file")
 
@@ -190,7 +157,8 @@ class _FileState:
                  timeout_upload: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering File resources.
-        :param pulumi.Input[str] content_type: The content type.
+        :param pulumi.Input[str] content_type: The content type. If not specified, the content type will be inferred from the file
+               extension. Valid values are:
         :param pulumi.Input[str] datastore_id: The datastore id.
         :param pulumi.Input[str] file_modification_date: The file modification date (RFC 3339).
         :param pulumi.Input[str] file_name: The file name.
@@ -199,90 +167,42 @@ class _FileState:
         :param pulumi.Input[str] node_name: The node name.
         :param pulumi.Input[bool] overwrite: Whether to overwrite an existing file (defaults to
                `true`).
-        :param pulumi.Input['FileSourceFileArgs'] source_file: The source file (conflicts with `source_raw`).
+        :param pulumi.Input['FileSourceFileArgs'] source_file: The source file (conflicts with `source_raw`), could be a
+               local file or a URL. If the source file is a URL, the file will be downloaded
+               and stored locally before uploading it to Proxmox VE.
         :param pulumi.Input['FileSourceRawArgs'] source_raw: The raw source (conflicts with `source_file`).
         :param pulumi.Input[int] timeout_upload: Timeout for uploading ISO/VSTMPL files in
                seconds (defaults to 1800).
         """
-        _FileState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            content_type=content_type,
-            datastore_id=datastore_id,
-            file_modification_date=file_modification_date,
-            file_name=file_name,
-            file_size=file_size,
-            file_tag=file_tag,
-            node_name=node_name,
-            overwrite=overwrite,
-            source_file=source_file,
-            source_raw=source_raw,
-            timeout_upload=timeout_upload,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             content_type: Optional[pulumi.Input[str]] = None,
-             datastore_id: Optional[pulumi.Input[str]] = None,
-             file_modification_date: Optional[pulumi.Input[str]] = None,
-             file_name: Optional[pulumi.Input[str]] = None,
-             file_size: Optional[pulumi.Input[int]] = None,
-             file_tag: Optional[pulumi.Input[str]] = None,
-             node_name: Optional[pulumi.Input[str]] = None,
-             overwrite: Optional[pulumi.Input[bool]] = None,
-             source_file: Optional[pulumi.Input['FileSourceFileArgs']] = None,
-             source_raw: Optional[pulumi.Input['FileSourceRawArgs']] = None,
-             timeout_upload: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if content_type is None and 'contentType' in kwargs:
-            content_type = kwargs['contentType']
-        if datastore_id is None and 'datastoreId' in kwargs:
-            datastore_id = kwargs['datastoreId']
-        if file_modification_date is None and 'fileModificationDate' in kwargs:
-            file_modification_date = kwargs['fileModificationDate']
-        if file_name is None and 'fileName' in kwargs:
-            file_name = kwargs['fileName']
-        if file_size is None and 'fileSize' in kwargs:
-            file_size = kwargs['fileSize']
-        if file_tag is None and 'fileTag' in kwargs:
-            file_tag = kwargs['fileTag']
-        if node_name is None and 'nodeName' in kwargs:
-            node_name = kwargs['nodeName']
-        if source_file is None and 'sourceFile' in kwargs:
-            source_file = kwargs['sourceFile']
-        if source_raw is None and 'sourceRaw' in kwargs:
-            source_raw = kwargs['sourceRaw']
-        if timeout_upload is None and 'timeoutUpload' in kwargs:
-            timeout_upload = kwargs['timeoutUpload']
-
         if content_type is not None:
-            _setter("content_type", content_type)
+            pulumi.set(__self__, "content_type", content_type)
         if datastore_id is not None:
-            _setter("datastore_id", datastore_id)
+            pulumi.set(__self__, "datastore_id", datastore_id)
         if file_modification_date is not None:
-            _setter("file_modification_date", file_modification_date)
+            pulumi.set(__self__, "file_modification_date", file_modification_date)
         if file_name is not None:
-            _setter("file_name", file_name)
+            pulumi.set(__self__, "file_name", file_name)
         if file_size is not None:
-            _setter("file_size", file_size)
+            pulumi.set(__self__, "file_size", file_size)
         if file_tag is not None:
-            _setter("file_tag", file_tag)
+            pulumi.set(__self__, "file_tag", file_tag)
         if node_name is not None:
-            _setter("node_name", node_name)
+            pulumi.set(__self__, "node_name", node_name)
         if overwrite is not None:
-            _setter("overwrite", overwrite)
+            pulumi.set(__self__, "overwrite", overwrite)
         if source_file is not None:
-            _setter("source_file", source_file)
+            pulumi.set(__self__, "source_file", source_file)
         if source_raw is not None:
-            _setter("source_raw", source_raw)
+            pulumi.set(__self__, "source_raw", source_raw)
         if timeout_upload is not None:
-            _setter("timeout_upload", timeout_upload)
+            pulumi.set(__self__, "timeout_upload", timeout_upload)
 
     @property
     @pulumi.getter(name="contentType")
     def content_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The content type.
+        The content type. If not specified, the content type will be inferred from the file
+        extension. Valid values are:
         """
         return pulumi.get(self, "content_type")
 
@@ -379,7 +299,9 @@ class _FileState:
     @pulumi.getter(name="sourceFile")
     def source_file(self) -> Optional[pulumi.Input['FileSourceFileArgs']]:
         """
-        The source file (conflicts with `source_raw`).
+        The source file (conflicts with `source_raw`), could be a
+        local file or a URL. If the source file is a URL, the file will be downloaded
+        and stored locally before uploading it to Proxmox VE.
         """
         return pulumi.get(self, "source_file")
 
@@ -444,9 +366,13 @@ class File(pulumi.CustomResource):
         the file will be deleted as if it did not exist before. If you want to prevent
         the resource from replacing the file, set `overwrite` to `false`.
 
+        Make sure the target datastore supports the content type you are uploading. For
+        example, the `snippets` content type can be disabled by default on the `local`
+        datastore.
+
         ## Import
 
-        Instances can be imported using the `node_name`, `datastore_id`, `content_type` and the `file_name` in the following format<node_name>:<datastore_id>/<content_type>/<file_name> Examplebash
+        Instances can be imported using the `node_name`, `datastore_id`, `content_type` and the `file_name` in the following formattext node_name:datastore_id/content_type/file_name Examplebash
 
         ```sh
          $ pulumi import proxmoxve:Storage/file:File cloud_config pve/local:snippets/example.cloud-config.yaml
@@ -454,12 +380,15 @@ class File(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] content_type: The content type.
+        :param pulumi.Input[str] content_type: The content type. If not specified, the content type will be inferred from the file
+               extension. Valid values are:
         :param pulumi.Input[str] datastore_id: The datastore id.
         :param pulumi.Input[str] node_name: The node name.
         :param pulumi.Input[bool] overwrite: Whether to overwrite an existing file (defaults to
                `true`).
-        :param pulumi.Input[pulumi.InputType['FileSourceFileArgs']] source_file: The source file (conflicts with `source_raw`).
+        :param pulumi.Input[pulumi.InputType['FileSourceFileArgs']] source_file: The source file (conflicts with `source_raw`), could be a
+               local file or a URL. If the source file is a URL, the file will be downloaded
+               and stored locally before uploading it to Proxmox VE.
         :param pulumi.Input[pulumi.InputType['FileSourceRawArgs']] source_raw: The raw source (conflicts with `source_file`).
         :param pulumi.Input[int] timeout_upload: Timeout for uploading ISO/VSTMPL files in
                seconds (defaults to 1800).
@@ -488,9 +417,13 @@ class File(pulumi.CustomResource):
         the file will be deleted as if it did not exist before. If you want to prevent
         the resource from replacing the file, set `overwrite` to `false`.
 
+        Make sure the target datastore supports the content type you are uploading. For
+        example, the `snippets` content type can be disabled by default on the `local`
+        datastore.
+
         ## Import
 
-        Instances can be imported using the `node_name`, `datastore_id`, `content_type` and the `file_name` in the following format<node_name>:<datastore_id>/<content_type>/<file_name> Examplebash
+        Instances can be imported using the `node_name`, `datastore_id`, `content_type` and the `file_name` in the following formattext node_name:datastore_id/content_type/file_name Examplebash
 
         ```sh
          $ pulumi import proxmoxve:Storage/file:File cloud_config pve/local:snippets/example.cloud-config.yaml
@@ -506,10 +439,6 @@ class File(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            FileArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -539,9 +468,7 @@ class File(pulumi.CustomResource):
                 raise TypeError("Missing required property 'node_name'")
             __props__.__dict__["node_name"] = node_name
             __props__.__dict__["overwrite"] = overwrite
-            source_file = _utilities.configure(source_file, FileSourceFileArgs, True)
             __props__.__dict__["source_file"] = source_file
-            source_raw = _utilities.configure(source_raw, FileSourceRawArgs, True)
             __props__.__dict__["source_raw"] = source_raw
             __props__.__dict__["timeout_upload"] = timeout_upload
             __props__.__dict__["file_modification_date"] = None
@@ -576,7 +503,8 @@ class File(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] content_type: The content type.
+        :param pulumi.Input[str] content_type: The content type. If not specified, the content type will be inferred from the file
+               extension. Valid values are:
         :param pulumi.Input[str] datastore_id: The datastore id.
         :param pulumi.Input[str] file_modification_date: The file modification date (RFC 3339).
         :param pulumi.Input[str] file_name: The file name.
@@ -585,7 +513,9 @@ class File(pulumi.CustomResource):
         :param pulumi.Input[str] node_name: The node name.
         :param pulumi.Input[bool] overwrite: Whether to overwrite an existing file (defaults to
                `true`).
-        :param pulumi.Input[pulumi.InputType['FileSourceFileArgs']] source_file: The source file (conflicts with `source_raw`).
+        :param pulumi.Input[pulumi.InputType['FileSourceFileArgs']] source_file: The source file (conflicts with `source_raw`), could be a
+               local file or a URL. If the source file is a URL, the file will be downloaded
+               and stored locally before uploading it to Proxmox VE.
         :param pulumi.Input[pulumi.InputType['FileSourceRawArgs']] source_raw: The raw source (conflicts with `source_file`).
         :param pulumi.Input[int] timeout_upload: Timeout for uploading ISO/VSTMPL files in
                seconds (defaults to 1800).
@@ -611,7 +541,8 @@ class File(pulumi.CustomResource):
     @pulumi.getter(name="contentType")
     def content_type(self) -> pulumi.Output[str]:
         """
-        The content type.
+        The content type. If not specified, the content type will be inferred from the file
+        extension. Valid values are:
         """
         return pulumi.get(self, "content_type")
 
@@ -676,7 +607,9 @@ class File(pulumi.CustomResource):
     @pulumi.getter(name="sourceFile")
     def source_file(self) -> pulumi.Output[Optional['outputs.FileSourceFile']]:
         """
-        The source file (conflicts with `source_raw`).
+        The source file (conflicts with `source_raw`), could be a
+        local file or a URL. If the source file is a URL, the file will be downloaded
+        and stored locally before uploading it to Proxmox VE.
         """
         return pulumi.get(self, "source_file")
 

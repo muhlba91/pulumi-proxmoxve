@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -63,106 +63,43 @@ class ContainerArgs:
                the host (defaults to `false`).
         :param pulumi.Input[int] vm_id: The container identifier
         """
-        ContainerArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            node_name=node_name,
-            clone=clone,
-            console=console,
-            cpu=cpu,
-            description=description,
-            disk=disk,
-            features=features,
-            initialization=initialization,
-            memory=memory,
-            mount_points=mount_points,
-            network_interfaces=network_interfaces,
-            operating_system=operating_system,
-            pool_id=pool_id,
-            start_on_boot=start_on_boot,
-            started=started,
-            tags=tags,
-            template=template,
-            unprivileged=unprivileged,
-            vm_id=vm_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             node_name: Optional[pulumi.Input[str]] = None,
-             clone: Optional[pulumi.Input['ContainerCloneArgs']] = None,
-             console: Optional[pulumi.Input['ContainerConsoleArgs']] = None,
-             cpu: Optional[pulumi.Input['ContainerCpuArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disk: Optional[pulumi.Input['ContainerDiskArgs']] = None,
-             features: Optional[pulumi.Input['ContainerFeaturesArgs']] = None,
-             initialization: Optional[pulumi.Input['ContainerInitializationArgs']] = None,
-             memory: Optional[pulumi.Input['ContainerMemoryArgs']] = None,
-             mount_points: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerMountPointArgs']]]] = None,
-             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerNetworkInterfaceArgs']]]] = None,
-             operating_system: Optional[pulumi.Input['ContainerOperatingSystemArgs']] = None,
-             pool_id: Optional[pulumi.Input[str]] = None,
-             start_on_boot: Optional[pulumi.Input[bool]] = None,
-             started: Optional[pulumi.Input[bool]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             template: Optional[pulumi.Input[bool]] = None,
-             unprivileged: Optional[pulumi.Input[bool]] = None,
-             vm_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if node_name is None and 'nodeName' in kwargs:
-            node_name = kwargs['nodeName']
-        if node_name is None:
-            raise TypeError("Missing 'node_name' argument")
-        if mount_points is None and 'mountPoints' in kwargs:
-            mount_points = kwargs['mountPoints']
-        if network_interfaces is None and 'networkInterfaces' in kwargs:
-            network_interfaces = kwargs['networkInterfaces']
-        if operating_system is None and 'operatingSystem' in kwargs:
-            operating_system = kwargs['operatingSystem']
-        if pool_id is None and 'poolId' in kwargs:
-            pool_id = kwargs['poolId']
-        if start_on_boot is None and 'startOnBoot' in kwargs:
-            start_on_boot = kwargs['startOnBoot']
-        if vm_id is None and 'vmId' in kwargs:
-            vm_id = kwargs['vmId']
-
-        _setter("node_name", node_name)
+        pulumi.set(__self__, "node_name", node_name)
         if clone is not None:
-            _setter("clone", clone)
+            pulumi.set(__self__, "clone", clone)
         if console is not None:
-            _setter("console", console)
+            pulumi.set(__self__, "console", console)
         if cpu is not None:
-            _setter("cpu", cpu)
+            pulumi.set(__self__, "cpu", cpu)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disk is not None:
-            _setter("disk", disk)
+            pulumi.set(__self__, "disk", disk)
         if features is not None:
-            _setter("features", features)
+            pulumi.set(__self__, "features", features)
         if initialization is not None:
-            _setter("initialization", initialization)
+            pulumi.set(__self__, "initialization", initialization)
         if memory is not None:
-            _setter("memory", memory)
+            pulumi.set(__self__, "memory", memory)
         if mount_points is not None:
-            _setter("mount_points", mount_points)
+            pulumi.set(__self__, "mount_points", mount_points)
         if network_interfaces is not None:
-            _setter("network_interfaces", network_interfaces)
+            pulumi.set(__self__, "network_interfaces", network_interfaces)
         if operating_system is not None:
-            _setter("operating_system", operating_system)
+            pulumi.set(__self__, "operating_system", operating_system)
         if pool_id is not None:
-            _setter("pool_id", pool_id)
+            pulumi.set(__self__, "pool_id", pool_id)
         if start_on_boot is not None:
-            _setter("start_on_boot", start_on_boot)
+            pulumi.set(__self__, "start_on_boot", start_on_boot)
         if started is not None:
-            _setter("started", started)
+            pulumi.set(__self__, "started", started)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if template is not None:
-            _setter("template", template)
+            pulumi.set(__self__, "template", template)
         if unprivileged is not None:
-            _setter("unprivileged", unprivileged)
+            pulumi.set(__self__, "unprivileged", unprivileged)
         if vm_id is not None:
-            _setter("vm_id", vm_id)
+            pulumi.set(__self__, "vm_id", vm_id)
 
     @property
     @pulumi.getter(name="nodeName")
@@ -449,105 +386,44 @@ class _ContainerState:
                the host (defaults to `false`).
         :param pulumi.Input[int] vm_id: The container identifier
         """
-        _ContainerState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            clone=clone,
-            console=console,
-            cpu=cpu,
-            description=description,
-            disk=disk,
-            features=features,
-            initialization=initialization,
-            memory=memory,
-            mount_points=mount_points,
-            network_interfaces=network_interfaces,
-            node_name=node_name,
-            operating_system=operating_system,
-            pool_id=pool_id,
-            start_on_boot=start_on_boot,
-            started=started,
-            tags=tags,
-            template=template,
-            unprivileged=unprivileged,
-            vm_id=vm_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             clone: Optional[pulumi.Input['ContainerCloneArgs']] = None,
-             console: Optional[pulumi.Input['ContainerConsoleArgs']] = None,
-             cpu: Optional[pulumi.Input['ContainerCpuArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disk: Optional[pulumi.Input['ContainerDiskArgs']] = None,
-             features: Optional[pulumi.Input['ContainerFeaturesArgs']] = None,
-             initialization: Optional[pulumi.Input['ContainerInitializationArgs']] = None,
-             memory: Optional[pulumi.Input['ContainerMemoryArgs']] = None,
-             mount_points: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerMountPointArgs']]]] = None,
-             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerNetworkInterfaceArgs']]]] = None,
-             node_name: Optional[pulumi.Input[str]] = None,
-             operating_system: Optional[pulumi.Input['ContainerOperatingSystemArgs']] = None,
-             pool_id: Optional[pulumi.Input[str]] = None,
-             start_on_boot: Optional[pulumi.Input[bool]] = None,
-             started: Optional[pulumi.Input[bool]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             template: Optional[pulumi.Input[bool]] = None,
-             unprivileged: Optional[pulumi.Input[bool]] = None,
-             vm_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if mount_points is None and 'mountPoints' in kwargs:
-            mount_points = kwargs['mountPoints']
-        if network_interfaces is None and 'networkInterfaces' in kwargs:
-            network_interfaces = kwargs['networkInterfaces']
-        if node_name is None and 'nodeName' in kwargs:
-            node_name = kwargs['nodeName']
-        if operating_system is None and 'operatingSystem' in kwargs:
-            operating_system = kwargs['operatingSystem']
-        if pool_id is None and 'poolId' in kwargs:
-            pool_id = kwargs['poolId']
-        if start_on_boot is None and 'startOnBoot' in kwargs:
-            start_on_boot = kwargs['startOnBoot']
-        if vm_id is None and 'vmId' in kwargs:
-            vm_id = kwargs['vmId']
-
         if clone is not None:
-            _setter("clone", clone)
+            pulumi.set(__self__, "clone", clone)
         if console is not None:
-            _setter("console", console)
+            pulumi.set(__self__, "console", console)
         if cpu is not None:
-            _setter("cpu", cpu)
+            pulumi.set(__self__, "cpu", cpu)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disk is not None:
-            _setter("disk", disk)
+            pulumi.set(__self__, "disk", disk)
         if features is not None:
-            _setter("features", features)
+            pulumi.set(__self__, "features", features)
         if initialization is not None:
-            _setter("initialization", initialization)
+            pulumi.set(__self__, "initialization", initialization)
         if memory is not None:
-            _setter("memory", memory)
+            pulumi.set(__self__, "memory", memory)
         if mount_points is not None:
-            _setter("mount_points", mount_points)
+            pulumi.set(__self__, "mount_points", mount_points)
         if network_interfaces is not None:
-            _setter("network_interfaces", network_interfaces)
+            pulumi.set(__self__, "network_interfaces", network_interfaces)
         if node_name is not None:
-            _setter("node_name", node_name)
+            pulumi.set(__self__, "node_name", node_name)
         if operating_system is not None:
-            _setter("operating_system", operating_system)
+            pulumi.set(__self__, "operating_system", operating_system)
         if pool_id is not None:
-            _setter("pool_id", pool_id)
+            pulumi.set(__self__, "pool_id", pool_id)
         if start_on_boot is not None:
-            _setter("start_on_boot", start_on_boot)
+            pulumi.set(__self__, "start_on_boot", start_on_boot)
         if started is not None:
-            _setter("started", started)
+            pulumi.set(__self__, "started", started)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if template is not None:
-            _setter("template", template)
+            pulumi.set(__self__, "template", template)
         if unprivileged is not None:
-            _setter("unprivileged", unprivileged)
+            pulumi.set(__self__, "unprivileged", unprivileged)
         if vm_id is not None:
-            _setter("vm_id", vm_id)
+            pulumi.set(__self__, "vm_id", vm_id)
 
     @property
     @pulumi.getter
@@ -875,10 +751,6 @@ class Container(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ContainerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -912,27 +784,19 @@ class Container(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ContainerArgs.__new__(ContainerArgs)
 
-            clone = _utilities.configure(clone, ContainerCloneArgs, True)
             __props__.__dict__["clone"] = clone
-            console = _utilities.configure(console, ContainerConsoleArgs, True)
             __props__.__dict__["console"] = console
-            cpu = _utilities.configure(cpu, ContainerCpuArgs, True)
             __props__.__dict__["cpu"] = cpu
             __props__.__dict__["description"] = description
-            disk = _utilities.configure(disk, ContainerDiskArgs, True)
             __props__.__dict__["disk"] = disk
-            features = _utilities.configure(features, ContainerFeaturesArgs, True)
             __props__.__dict__["features"] = features
-            initialization = _utilities.configure(initialization, ContainerInitializationArgs, True)
             __props__.__dict__["initialization"] = initialization
-            memory = _utilities.configure(memory, ContainerMemoryArgs, True)
             __props__.__dict__["memory"] = memory
             __props__.__dict__["mount_points"] = mount_points
             __props__.__dict__["network_interfaces"] = network_interfaces
             if node_name is None and not opts.urn:
                 raise TypeError("Missing required property 'node_name'")
             __props__.__dict__["node_name"] = node_name
-            operating_system = _utilities.configure(operating_system, ContainerOperatingSystemArgs, True)
             __props__.__dict__["operating_system"] = operating_system
             __props__.__dict__["pool_id"] = pool_id
             __props__.__dict__["start_on_boot"] = start_on_boot

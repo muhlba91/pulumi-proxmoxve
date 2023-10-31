@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['CertifiArgs', 'Certifi']
@@ -27,44 +27,13 @@ class CertifiArgs:
         :param pulumi.Input[str] certificate_chain: The PEM encoded certificate chain.
         :param pulumi.Input[bool] overwrite: Whether to overwrite an existing certificate
         """
-        CertifiArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            certificate=certificate,
-            node_name=node_name,
-            private_key=private_key,
-            certificate_chain=certificate_chain,
-            overwrite=overwrite,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             certificate: Optional[pulumi.Input[str]] = None,
-             node_name: Optional[pulumi.Input[str]] = None,
-             private_key: Optional[pulumi.Input[str]] = None,
-             certificate_chain: Optional[pulumi.Input[str]] = None,
-             overwrite: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if certificate is None:
-            raise TypeError("Missing 'certificate' argument")
-        if node_name is None and 'nodeName' in kwargs:
-            node_name = kwargs['nodeName']
-        if node_name is None:
-            raise TypeError("Missing 'node_name' argument")
-        if private_key is None and 'privateKey' in kwargs:
-            private_key = kwargs['privateKey']
-        if private_key is None:
-            raise TypeError("Missing 'private_key' argument")
-        if certificate_chain is None and 'certificateChain' in kwargs:
-            certificate_chain = kwargs['certificateChain']
-
-        _setter("certificate", certificate)
-        _setter("node_name", node_name)
-        _setter("private_key", private_key)
+        pulumi.set(__self__, "certificate", certificate)
+        pulumi.set(__self__, "node_name", node_name)
+        pulumi.set(__self__, "private_key", private_key)
         if certificate_chain is not None:
-            _setter("certificate_chain", certificate_chain)
+            pulumi.set(__self__, "certificate_chain", certificate_chain)
         if overwrite is not None:
-            _setter("overwrite", overwrite)
+            pulumi.set(__self__, "overwrite", overwrite)
 
     @property
     @pulumi.getter
@@ -161,91 +130,34 @@ class _CertifiState:
         :param pulumi.Input[str] subject: The subject.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subject_alternative_names: The subject alternative names.
         """
-        _CertifiState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            certificate=certificate,
-            certificate_chain=certificate_chain,
-            expiration_date=expiration_date,
-            file_name=file_name,
-            issuer=issuer,
-            node_name=node_name,
-            overwrite=overwrite,
-            private_key=private_key,
-            public_key_size=public_key_size,
-            public_key_type=public_key_type,
-            ssl_fingerprint=ssl_fingerprint,
-            start_date=start_date,
-            subject=subject,
-            subject_alternative_names=subject_alternative_names,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             certificate: Optional[pulumi.Input[str]] = None,
-             certificate_chain: Optional[pulumi.Input[str]] = None,
-             expiration_date: Optional[pulumi.Input[str]] = None,
-             file_name: Optional[pulumi.Input[str]] = None,
-             issuer: Optional[pulumi.Input[str]] = None,
-             node_name: Optional[pulumi.Input[str]] = None,
-             overwrite: Optional[pulumi.Input[bool]] = None,
-             private_key: Optional[pulumi.Input[str]] = None,
-             public_key_size: Optional[pulumi.Input[int]] = None,
-             public_key_type: Optional[pulumi.Input[str]] = None,
-             ssl_fingerprint: Optional[pulumi.Input[str]] = None,
-             start_date: Optional[pulumi.Input[str]] = None,
-             subject: Optional[pulumi.Input[str]] = None,
-             subject_alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if certificate_chain is None and 'certificateChain' in kwargs:
-            certificate_chain = kwargs['certificateChain']
-        if expiration_date is None and 'expirationDate' in kwargs:
-            expiration_date = kwargs['expirationDate']
-        if file_name is None and 'fileName' in kwargs:
-            file_name = kwargs['fileName']
-        if node_name is None and 'nodeName' in kwargs:
-            node_name = kwargs['nodeName']
-        if private_key is None and 'privateKey' in kwargs:
-            private_key = kwargs['privateKey']
-        if public_key_size is None and 'publicKeySize' in kwargs:
-            public_key_size = kwargs['publicKeySize']
-        if public_key_type is None and 'publicKeyType' in kwargs:
-            public_key_type = kwargs['publicKeyType']
-        if ssl_fingerprint is None and 'sslFingerprint' in kwargs:
-            ssl_fingerprint = kwargs['sslFingerprint']
-        if start_date is None and 'startDate' in kwargs:
-            start_date = kwargs['startDate']
-        if subject_alternative_names is None and 'subjectAlternativeNames' in kwargs:
-            subject_alternative_names = kwargs['subjectAlternativeNames']
-
         if certificate is not None:
-            _setter("certificate", certificate)
+            pulumi.set(__self__, "certificate", certificate)
         if certificate_chain is not None:
-            _setter("certificate_chain", certificate_chain)
+            pulumi.set(__self__, "certificate_chain", certificate_chain)
         if expiration_date is not None:
-            _setter("expiration_date", expiration_date)
+            pulumi.set(__self__, "expiration_date", expiration_date)
         if file_name is not None:
-            _setter("file_name", file_name)
+            pulumi.set(__self__, "file_name", file_name)
         if issuer is not None:
-            _setter("issuer", issuer)
+            pulumi.set(__self__, "issuer", issuer)
         if node_name is not None:
-            _setter("node_name", node_name)
+            pulumi.set(__self__, "node_name", node_name)
         if overwrite is not None:
-            _setter("overwrite", overwrite)
+            pulumi.set(__self__, "overwrite", overwrite)
         if private_key is not None:
-            _setter("private_key", private_key)
+            pulumi.set(__self__, "private_key", private_key)
         if public_key_size is not None:
-            _setter("public_key_size", public_key_size)
+            pulumi.set(__self__, "public_key_size", public_key_size)
         if public_key_type is not None:
-            _setter("public_key_type", public_key_type)
+            pulumi.set(__self__, "public_key_type", public_key_type)
         if ssl_fingerprint is not None:
-            _setter("ssl_fingerprint", ssl_fingerprint)
+            pulumi.set(__self__, "ssl_fingerprint", ssl_fingerprint)
         if start_date is not None:
-            _setter("start_date", start_date)
+            pulumi.set(__self__, "start_date", start_date)
         if subject is not None:
-            _setter("subject", subject)
+            pulumi.set(__self__, "subject", subject)
         if subject_alternative_names is not None:
-            _setter("subject_alternative_names", subject_alternative_names)
+            pulumi.set(__self__, "subject_alternative_names", subject_alternative_names)
 
     @property
     @pulumi.getter
@@ -515,10 +427,6 @@ class Certifi(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CertifiArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

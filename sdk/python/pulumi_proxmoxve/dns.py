@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['DNSArgs', 'DNS']
@@ -23,31 +23,10 @@ class DNSArgs:
         :param pulumi.Input[str] node_name: A node name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] servers: The DNS servers.
         """
-        DNSArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            domain=domain,
-            node_name=node_name,
-            servers=servers,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             domain: Optional[pulumi.Input[str]] = None,
-             node_name: Optional[pulumi.Input[str]] = None,
-             servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if domain is None:
-            raise TypeError("Missing 'domain' argument")
-        if node_name is None and 'nodeName' in kwargs:
-            node_name = kwargs['nodeName']
-        if node_name is None:
-            raise TypeError("Missing 'node_name' argument")
-
-        _setter("domain", domain)
-        _setter("node_name", node_name)
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "node_name", node_name)
         if servers is not None:
-            _setter("servers", servers)
+            pulumi.set(__self__, "servers", servers)
 
     @property
     @pulumi.getter
@@ -98,29 +77,12 @@ class _DNSState:
         :param pulumi.Input[str] node_name: A node name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] servers: The DNS servers.
         """
-        _DNSState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            domain=domain,
-            node_name=node_name,
-            servers=servers,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             domain: Optional[pulumi.Input[str]] = None,
-             node_name: Optional[pulumi.Input[str]] = None,
-             servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if node_name is None and 'nodeName' in kwargs:
-            node_name = kwargs['nodeName']
-
         if domain is not None:
-            _setter("domain", domain)
+            pulumi.set(__self__, "domain", domain)
         if node_name is not None:
-            _setter("node_name", node_name)
+            pulumi.set(__self__, "node_name", node_name)
         if servers is not None:
-            _setter("servers", servers)
+            pulumi.set(__self__, "servers", servers)
 
     @property
     @pulumi.getter
@@ -220,10 +182,6 @@ class DNS(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DNSArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

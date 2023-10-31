@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -23,26 +23,9 @@ class PoolArgs:
         :param pulumi.Input[str] pool_id: The pool identifier.
         :param pulumi.Input[str] comment: The pool comment.
         """
-        PoolArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            pool_id=pool_id,
-            comment=comment,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             pool_id: Optional[pulumi.Input[str]] = None,
-             comment: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if pool_id is None and 'poolId' in kwargs:
-            pool_id = kwargs['poolId']
-        if pool_id is None:
-            raise TypeError("Missing 'pool_id' argument")
-
-        _setter("pool_id", pool_id)
+        pulumi.set(__self__, "pool_id", pool_id)
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
 
     @property
     @pulumi.getter(name="poolId")
@@ -81,29 +64,12 @@ class _PoolState:
         :param pulumi.Input[Sequence[pulumi.Input['PoolMemberArgs']]] members: The pool members.
         :param pulumi.Input[str] pool_id: The pool identifier.
         """
-        _PoolState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            comment=comment,
-            members=members,
-            pool_id=pool_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             comment: Optional[pulumi.Input[str]] = None,
-             members: Optional[pulumi.Input[Sequence[pulumi.Input['PoolMemberArgs']]]] = None,
-             pool_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if pool_id is None and 'poolId' in kwargs:
-            pool_id = kwargs['poolId']
-
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
         if members is not None:
-            _setter("members", members)
+            pulumi.set(__self__, "members", members)
         if pool_id is not None:
-            _setter("pool_id", pool_id)
+            pulumi.set(__self__, "pool_id", pool_id)
 
     @property
     @pulumi.getter
@@ -215,10 +181,6 @@ class Pool(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            PoolArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

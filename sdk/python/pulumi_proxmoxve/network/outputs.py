@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -28,28 +28,11 @@ class FirewallIPSetCidr(dict):
         :param bool nomatch: Entries marked as `nomatch` are skipped as if those
                were not added to the set.
         """
-        FirewallIPSetCidr._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            comment=comment,
-            nomatch=nomatch,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             comment: Optional[str] = None,
-             nomatch: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
         if nomatch is not None:
-            _setter("nomatch", nomatch)
+            pulumi.set(__self__, "nomatch", nomatch)
 
     @property
     @pulumi.getter
@@ -89,27 +72,12 @@ class FirewallLogRatelimit(dict):
         :param bool enabled: Enable or disable the log rate limit.
         :param str rate: Frequency with which the burst bucket gets refilled (defaults to `1/second`).
         """
-        FirewallLogRatelimit._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            burst=burst,
-            enabled=enabled,
-            rate=rate,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             burst: Optional[int] = None,
-             enabled: Optional[bool] = None,
-             rate: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if burst is not None:
-            _setter("burst", burst)
+            pulumi.set(__self__, "burst", burst)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if rate is not None:
-            _setter("rate", rate)
+            pulumi.set(__self__, "rate", rate)
 
     @property
     @pulumi.getter
@@ -211,73 +179,34 @@ class FirewallRulesRule(dict):
                - a security group insertion block, which includes the following arguments:
         :param str type: Rule type (`in`, `out`).
         """
-        FirewallRulesRule._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            action=action,
-            comment=comment,
-            dest=dest,
-            dport=dport,
-            enabled=enabled,
-            iface=iface,
-            log=log,
-            macro=macro,
-            pos=pos,
-            proto=proto,
-            security_group=security_group,
-            source=source,
-            sport=sport,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             action: Optional[str] = None,
-             comment: Optional[str] = None,
-             dest: Optional[str] = None,
-             dport: Optional[str] = None,
-             enabled: Optional[bool] = None,
-             iface: Optional[str] = None,
-             log: Optional[str] = None,
-             macro: Optional[str] = None,
-             pos: Optional[int] = None,
-             proto: Optional[str] = None,
-             security_group: Optional[str] = None,
-             source: Optional[str] = None,
-             sport: Optional[str] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if security_group is None and 'securityGroup' in kwargs:
-            security_group = kwargs['securityGroup']
-
         if action is not None:
-            _setter("action", action)
+            pulumi.set(__self__, "action", action)
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
         if dest is not None:
-            _setter("dest", dest)
+            pulumi.set(__self__, "dest", dest)
         if dport is not None:
-            _setter("dport", dport)
+            pulumi.set(__self__, "dport", dport)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if iface is not None:
-            _setter("iface", iface)
+            pulumi.set(__self__, "iface", iface)
         if log is not None:
-            _setter("log", log)
+            pulumi.set(__self__, "log", log)
         if macro is not None:
-            _setter("macro", macro)
+            pulumi.set(__self__, "macro", macro)
         if pos is not None:
-            _setter("pos", pos)
+            pulumi.set(__self__, "pos", pos)
         if proto is not None:
-            _setter("proto", proto)
+            pulumi.set(__self__, "proto", proto)
         if security_group is not None:
-            _setter("security_group", security_group)
+            pulumi.set(__self__, "security_group", security_group)
         if source is not None:
-            _setter("source", source)
+            pulumi.set(__self__, "source", source)
         if sport is not None:
-            _setter("sport", sport)
+            pulumi.set(__self__, "sport", sport)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -484,73 +413,34 @@ class FirewallSecurityGroupRule(dict):
                you can use comma separated list to match several ports or ranges.
         :param str type: Rule type (`in`, `out`).
         """
-        FirewallSecurityGroupRule._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            action=action,
-            comment=comment,
-            dest=dest,
-            dport=dport,
-            enabled=enabled,
-            iface=iface,
-            log=log,
-            macro=macro,
-            pos=pos,
-            proto=proto,
-            security_group=security_group,
-            source=source,
-            sport=sport,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             action: Optional[str] = None,
-             comment: Optional[str] = None,
-             dest: Optional[str] = None,
-             dport: Optional[str] = None,
-             enabled: Optional[bool] = None,
-             iface: Optional[str] = None,
-             log: Optional[str] = None,
-             macro: Optional[str] = None,
-             pos: Optional[int] = None,
-             proto: Optional[str] = None,
-             security_group: Optional[str] = None,
-             source: Optional[str] = None,
-             sport: Optional[str] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if security_group is None and 'securityGroup' in kwargs:
-            security_group = kwargs['securityGroup']
-
         if action is not None:
-            _setter("action", action)
+            pulumi.set(__self__, "action", action)
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
         if dest is not None:
-            _setter("dest", dest)
+            pulumi.set(__self__, "dest", dest)
         if dport is not None:
-            _setter("dport", dport)
+            pulumi.set(__self__, "dport", dport)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if iface is not None:
-            _setter("iface", iface)
+            pulumi.set(__self__, "iface", iface)
         if log is not None:
-            _setter("log", log)
+            pulumi.set(__self__, "log", log)
         if macro is not None:
-            _setter("macro", macro)
+            pulumi.set(__self__, "macro", macro)
         if pos is not None:
-            _setter("pos", pos)
+            pulumi.set(__self__, "pos", pos)
         if proto is not None:
-            _setter("proto", proto)
+            pulumi.set(__self__, "proto", proto)
         if security_group is not None:
-            _setter("security_group", security_group)
+            pulumi.set(__self__, "security_group", security_group)
         if source is not None:
-            _setter("source", source)
+            pulumi.set(__self__, "source", source)
         if sport is not None:
-            _setter("sport", sport)
+            pulumi.set(__self__, "sport", sport)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter

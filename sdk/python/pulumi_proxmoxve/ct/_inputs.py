@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -39,34 +39,11 @@ class ContainerCloneArgs:
                disk in (defaults to `local`).
         :param pulumi.Input[str] node_name: The name of the node to assign the container to.
         """
-        ContainerCloneArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            vm_id=vm_id,
-            datastore_id=datastore_id,
-            node_name=node_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             vm_id: Optional[pulumi.Input[int]] = None,
-             datastore_id: Optional[pulumi.Input[str]] = None,
-             node_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if vm_id is None and 'vmId' in kwargs:
-            vm_id = kwargs['vmId']
-        if vm_id is None:
-            raise TypeError("Missing 'vm_id' argument")
-        if datastore_id is None and 'datastoreId' in kwargs:
-            datastore_id = kwargs['datastoreId']
-        if node_name is None and 'nodeName' in kwargs:
-            node_name = kwargs['nodeName']
-
-        _setter("vm_id", vm_id)
+        pulumi.set(__self__, "vm_id", vm_id)
         if datastore_id is not None:
-            _setter("datastore_id", datastore_id)
+            pulumi.set(__self__, "datastore_id", datastore_id)
         if node_name is not None:
-            _setter("node_name", node_name)
+            pulumi.set(__self__, "node_name", node_name)
 
     @property
     @pulumi.getter(name="vmId")
@@ -118,29 +95,12 @@ class ContainerConsoleArgs:
         :param pulumi.Input[int] tty_count: The number of available TTY (defaults to `2`).
         :param pulumi.Input[str] type: The type (defaults to `unmanaged`).
         """
-        ContainerConsoleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enabled=enabled,
-            tty_count=tty_count,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enabled: Optional[pulumi.Input[bool]] = None,
-             tty_count: Optional[pulumi.Input[int]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if tty_count is None and 'ttyCount' in kwargs:
-            tty_count = kwargs['ttyCount']
-
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if tty_count is not None:
-            _setter("tty_count", tty_count)
+            pulumi.set(__self__, "tty_count", tty_count)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -191,27 +151,12 @@ class ContainerCpuArgs:
         :param pulumi.Input[int] cores: The number of CPU cores (defaults to `1`).
         :param pulumi.Input[int] units: The CPU units (defaults to `1024`).
         """
-        ContainerCpuArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            architecture=architecture,
-            cores=cores,
-            units=units,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             architecture: Optional[pulumi.Input[str]] = None,
-             cores: Optional[pulumi.Input[int]] = None,
-             units: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if architecture is not None:
-            _setter("architecture", architecture)
+            pulumi.set(__self__, "architecture", architecture)
         if cores is not None:
-            _setter("cores", cores)
+            pulumi.set(__self__, "cores", cores)
         if units is not None:
-            _setter("units", units)
+            pulumi.set(__self__, "units", units)
 
     @property
     @pulumi.getter
@@ -261,25 +206,10 @@ class ContainerDiskArgs:
         :param pulumi.Input[int] size: Volume size (only for ZFS storage backed mount points).
                Can be specified with a unit suffix (e.g. `10G`).
         """
-        ContainerDiskArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            datastore_id=datastore_id,
-            size=size,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             datastore_id: Optional[pulumi.Input[str]] = None,
-             size: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if datastore_id is None and 'datastoreId' in kwargs:
-            datastore_id = kwargs['datastoreId']
-
         if datastore_id is not None:
-            _setter("datastore_id", datastore_id)
+            pulumi.set(__self__, "datastore_id", datastore_id)
         if size is not None:
-            _setter("size", size)
+            pulumi.set(__self__, "size", size)
 
     @property
     @pulumi.getter(name="datastoreId")
@@ -322,27 +252,12 @@ class ContainerFeaturesArgs:
         :param pulumi.Input[bool] nesting: Whether the container is nested (defaults
                to `false`)
         """
-        ContainerFeaturesArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            fuse=fuse,
-            keyctl=keyctl,
-            nesting=nesting,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             fuse: Optional[pulumi.Input[bool]] = None,
-             keyctl: Optional[pulumi.Input[bool]] = None,
-             nesting: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if fuse is not None:
-            _setter("fuse", fuse)
+            pulumi.set(__self__, "fuse", fuse)
         if keyctl is not None:
-            _setter("keyctl", keyctl)
+            pulumi.set(__self__, "keyctl", keyctl)
         if nesting is not None:
-            _setter("nesting", nesting)
+            pulumi.set(__self__, "nesting", nesting)
 
     @property
     @pulumi.getter
@@ -398,35 +313,14 @@ class ContainerInitializationArgs:
                device).
         :param pulumi.Input['ContainerInitializationUserAccountArgs'] user_account: The user account configuration.
         """
-        ContainerInitializationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dns=dns,
-            hostname=hostname,
-            ip_configs=ip_configs,
-            user_account=user_account,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dns: Optional[pulumi.Input['ContainerInitializationDnsArgs']] = None,
-             hostname: Optional[pulumi.Input[str]] = None,
-             ip_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerInitializationIpConfigArgs']]]] = None,
-             user_account: Optional[pulumi.Input['ContainerInitializationUserAccountArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ip_configs is None and 'ipConfigs' in kwargs:
-            ip_configs = kwargs['ipConfigs']
-        if user_account is None and 'userAccount' in kwargs:
-            user_account = kwargs['userAccount']
-
         if dns is not None:
-            _setter("dns", dns)
+            pulumi.set(__self__, "dns", dns)
         if hostname is not None:
-            _setter("hostname", hostname)
+            pulumi.set(__self__, "hostname", hostname)
         if ip_configs is not None:
-            _setter("ip_configs", ip_configs)
+            pulumi.set(__self__, "ip_configs", ip_configs)
         if user_account is not None:
-            _setter("user_account", user_account)
+            pulumi.set(__self__, "user_account", user_account)
 
     @property
     @pulumi.getter
@@ -487,23 +381,10 @@ class ContainerInitializationDnsArgs:
         :param pulumi.Input[str] domain: The DNS search domain.
         :param pulumi.Input[str] server: The DNS server.
         """
-        ContainerInitializationDnsArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            domain=domain,
-            server=server,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             domain: Optional[pulumi.Input[str]] = None,
-             server: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if domain is not None:
-            _setter("domain", domain)
+            pulumi.set(__self__, "domain", domain)
         if server is not None:
-            _setter("server", server)
+            pulumi.set(__self__, "server", server)
 
     @property
     @pulumi.getter
@@ -539,23 +420,10 @@ class ContainerInitializationIpConfigArgs:
         :param pulumi.Input['ContainerInitializationIpConfigIpv4Args'] ipv4: The IPv4 configuration.
         :param pulumi.Input['ContainerInitializationIpConfigIpv6Args'] ipv6: The IPv4 configuration.
         """
-        ContainerInitializationIpConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ipv4=ipv4,
-            ipv6=ipv6,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ipv4: Optional[pulumi.Input['ContainerInitializationIpConfigIpv4Args']] = None,
-             ipv6: Optional[pulumi.Input['ContainerInitializationIpConfigIpv6Args']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if ipv4 is not None:
-            _setter("ipv4", ipv4)
+            pulumi.set(__self__, "ipv4", ipv4)
         if ipv6 is not None:
-            _setter("ipv6", ipv6)
+            pulumi.set(__self__, "ipv6", ipv6)
 
     @property
     @pulumi.getter
@@ -593,23 +461,10 @@ class ContainerInitializationIpConfigIpv4Args:
         :param pulumi.Input[str] gateway: The IPv6 gateway (must be omitted
                when `dhcp` is used as the address).
         """
-        ContainerInitializationIpConfigIpv4Args._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            gateway=gateway,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: Optional[pulumi.Input[str]] = None,
-             gateway: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if address is not None:
-            _setter("address", address)
+            pulumi.set(__self__, "address", address)
         if gateway is not None:
-            _setter("gateway", gateway)
+            pulumi.set(__self__, "gateway", gateway)
 
     @property
     @pulumi.getter
@@ -649,23 +504,10 @@ class ContainerInitializationIpConfigIpv6Args:
         :param pulumi.Input[str] gateway: The IPv6 gateway (must be omitted
                when `dhcp` is used as the address).
         """
-        ContainerInitializationIpConfigIpv6Args._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            gateway=gateway,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: Optional[pulumi.Input[str]] = None,
-             gateway: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if address is not None:
-            _setter("address", address)
+            pulumi.set(__self__, "address", address)
         if gateway is not None:
-            _setter("gateway", gateway)
+            pulumi.set(__self__, "gateway", gateway)
 
     @property
     @pulumi.getter
@@ -703,23 +545,10 @@ class ContainerInitializationUserAccountArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] keys: The SSH keys for the root account.
         :param pulumi.Input[str] password: The password for the root account.
         """
-        ContainerInitializationUserAccountArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            keys=keys,
-            password=password,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if keys is not None:
-            _setter("keys", keys)
+            pulumi.set(__self__, "keys", keys)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
 
     @property
     @pulumi.getter
@@ -756,23 +585,10 @@ class ContainerMemoryArgs:
                to `512`).
         :param pulumi.Input[int] swap: The swap size in megabytes (defaults to `0`).
         """
-        ContainerMemoryArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dedicated=dedicated,
-            swap=swap,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dedicated: Optional[pulumi.Input[int]] = None,
-             swap: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if dedicated is not None:
-            _setter("dedicated", dedicated)
+            pulumi.set(__self__, "dedicated", dedicated)
         if swap is not None:
-            _setter("swap", swap)
+            pulumi.set(__self__, "swap", swap)
 
     @property
     @pulumi.getter
@@ -831,61 +647,24 @@ class ContainerMountPointArgs:
         :param pulumi.Input[str] size: Volume size (only for ZFS storage backed mount points).
                Can be specified with a unit suffix (e.g. `10G`).
         """
-        ContainerMountPointArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            path=path,
-            volume=volume,
-            acl=acl,
-            backup=backup,
-            mount_options=mount_options,
-            quota=quota,
-            read_only=read_only,
-            replicate=replicate,
-            shared=shared,
-            size=size,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             path: Optional[pulumi.Input[str]] = None,
-             volume: Optional[pulumi.Input[str]] = None,
-             acl: Optional[pulumi.Input[bool]] = None,
-             backup: Optional[pulumi.Input[bool]] = None,
-             mount_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             quota: Optional[pulumi.Input[bool]] = None,
-             read_only: Optional[pulumi.Input[bool]] = None,
-             replicate: Optional[pulumi.Input[bool]] = None,
-             shared: Optional[pulumi.Input[bool]] = None,
-             size: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-        if volume is None:
-            raise TypeError("Missing 'volume' argument")
-        if mount_options is None and 'mountOptions' in kwargs:
-            mount_options = kwargs['mountOptions']
-        if read_only is None and 'readOnly' in kwargs:
-            read_only = kwargs['readOnly']
-
-        _setter("path", path)
-        _setter("volume", volume)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "volume", volume)
         if acl is not None:
-            _setter("acl", acl)
+            pulumi.set(__self__, "acl", acl)
         if backup is not None:
-            _setter("backup", backup)
+            pulumi.set(__self__, "backup", backup)
         if mount_options is not None:
-            _setter("mount_options", mount_options)
+            pulumi.set(__self__, "mount_options", mount_options)
         if quota is not None:
-            _setter("quota", quota)
+            pulumi.set(__self__, "quota", quota)
         if read_only is not None:
-            _setter("read_only", read_only)
+            pulumi.set(__self__, "read_only", read_only)
         if replicate is not None:
-            _setter("replicate", replicate)
+            pulumi.set(__self__, "replicate", replicate)
         if shared is not None:
-            _setter("shared", shared)
+            pulumi.set(__self__, "shared", shared)
         if size is not None:
-            _setter("size", size)
+            pulumi.set(__self__, "size", size)
 
     @property
     @pulumi.getter
@@ -1039,54 +818,21 @@ class ContainerNetworkInterfaceArgs:
         :param pulumi.Input[float] rate_limit: The rate limit in megabytes per second.
         :param pulumi.Input[int] vlan_id: The VLAN identifier.
         """
-        ContainerNetworkInterfaceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            bridge=bridge,
-            enabled=enabled,
-            firewall=firewall,
-            mac_address=mac_address,
-            mtu=mtu,
-            rate_limit=rate_limit,
-            vlan_id=vlan_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[pulumi.Input[str]] = None,
-             bridge: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             firewall: Optional[pulumi.Input[bool]] = None,
-             mac_address: Optional[pulumi.Input[str]] = None,
-             mtu: Optional[pulumi.Input[int]] = None,
-             rate_limit: Optional[pulumi.Input[float]] = None,
-             vlan_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if mac_address is None and 'macAddress' in kwargs:
-            mac_address = kwargs['macAddress']
-        if rate_limit is None and 'rateLimit' in kwargs:
-            rate_limit = kwargs['rateLimit']
-        if vlan_id is None and 'vlanId' in kwargs:
-            vlan_id = kwargs['vlanId']
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
         if bridge is not None:
-            _setter("bridge", bridge)
+            pulumi.set(__self__, "bridge", bridge)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if firewall is not None:
-            _setter("firewall", firewall)
+            pulumi.set(__self__, "firewall", firewall)
         if mac_address is not None:
-            _setter("mac_address", mac_address)
+            pulumi.set(__self__, "mac_address", mac_address)
         if mtu is not None:
-            _setter("mtu", mtu)
+            pulumi.set(__self__, "mtu", mtu)
         if rate_limit is not None:
-            _setter("rate_limit", rate_limit)
+            pulumi.set(__self__, "rate_limit", rate_limit)
         if vlan_id is not None:
-            _setter("vlan_id", vlan_id)
+            pulumi.set(__self__, "vlan_id", vlan_id)
 
     @property
     @pulumi.getter
@@ -1198,26 +944,9 @@ class ContainerOperatingSystemArgs:
         :param pulumi.Input[str] template_file_id: The identifier for an OS template file.
         :param pulumi.Input[str] type: The type (defaults to `unmanaged`).
         """
-        ContainerOperatingSystemArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            template_file_id=template_file_id,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             template_file_id: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if template_file_id is None and 'templateFileId' in kwargs:
-            template_file_id = kwargs['templateFileId']
-        if template_file_id is None:
-            raise TypeError("Missing 'template_file_id' argument")
-
-        _setter("template_file_id", template_file_id)
+        pulumi.set(__self__, "template_file_id", template_file_id)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="templateFileId")

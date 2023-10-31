@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
@@ -24,25 +24,8 @@ class HostsEntryArgs:
         :param pulumi.Input[str] address: The IP address.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: The hostnames.
         """
-        HostsEntryArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            hostnames=hostnames,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: Optional[pulumi.Input[str]] = None,
-             hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if address is None:
-            raise TypeError("Missing 'address' argument")
-        if hostnames is None:
-            raise TypeError("Missing 'hostnames' argument")
-
-        _setter("address", address)
-        _setter("hostnames", hostnames)
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "hostnames", hostnames)
 
     @property
     @pulumi.getter
@@ -77,37 +60,16 @@ class ProviderSshArgs:
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input['ProviderSshNodeArgs']]]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None):
-        ProviderSshArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            agent=agent,
-            agent_socket=agent_socket,
-            nodes=nodes,
-            password=password,
-            username=username,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             agent: Optional[pulumi.Input[bool]] = None,
-             agent_socket: Optional[pulumi.Input[str]] = None,
-             nodes: Optional[pulumi.Input[Sequence[pulumi.Input['ProviderSshNodeArgs']]]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if agent_socket is None and 'agentSocket' in kwargs:
-            agent_socket = kwargs['agentSocket']
-
         if agent is not None:
-            _setter("agent", agent)
+            pulumi.set(__self__, "agent", agent)
         if agent_socket is not None:
-            _setter("agent_socket", agent_socket)
+            pulumi.set(__self__, "agent_socket", agent_socket)
         if nodes is not None:
-            _setter("nodes", nodes)
+            pulumi.set(__self__, "nodes", nodes)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if username is not None:
-            _setter("username", username)
+            pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter
@@ -161,29 +123,10 @@ class ProviderSshNodeArgs:
                  address: pulumi.Input[str],
                  name: pulumi.Input[str],
                  port: Optional[pulumi.Input[int]] = None):
-        ProviderSshNodeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            name=name,
-            port=port,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if address is None:
-            raise TypeError("Missing 'address' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-
-        _setter("address", address)
-        _setter("name", name)
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "name", name)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter

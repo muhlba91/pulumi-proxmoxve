@@ -15,6 +15,44 @@ import (
 
 // Manages a virtual machine.
 //
+// ## Qemu guest agent
+//
+// Qemu-guest-agent is an application which can be installed inside guest VM, see
+// [Proxmox Wiki](https://pve.proxmox.com/wiki/Qemu-guest-agent) and [Proxmox
+// Documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_qemu_agent)
+//
+// For VM with `agent.enabled = false`, Proxmox uses ACPI for `Shutdown` and
+// `Reboot`, and `qemu-guest-agent` is not needed inside the VM.
+//
+// Setting `agent.enabled = true` informs Proxmox that the guest agent is expected
+// to be *running* inside the VM. Proxmox then uses `qemu-guest-agent` instead of
+// ACPI to control the VM. If the agent is not running, Proxmox operations
+// `Shutdown` and `Reboot` time out and fail. The failing operation gets a lock on
+// the VM, and until the operation times out, other operations like `Stop` and
+// `Reboot` cannot be used.
+//
+// Do **not** run VM with `agent.enabled = true`, unless the VM is configured to
+// automatically **start** `qemu-guest-agent` at some point.
+//
+// "Monitor" tab in Proxmox GUI can be used to send low-level commands to `qemu`.
+// See the [documentation](https://www.qemu.org/docs/master/system/monitor.html).
+// Commands `systemPowerdown` and `quit` have proven useful in shutting down VMs
+// with `agent.enabled = true` and no agent running.
+//
+// Cloud images usually do not have `qemu-guest-agent` installed. It is possible to
+// install and *start* it using cloud-init, e.g. using custom `userDataFileId`
+// file.
+//
+// This provider requires `agent.enabled = true` to populate `ipv4Addresses`,
+// `ipv6Addresses` and `networkInterfaceNames` output attributes.
+//
+// Setting `agent.enabled = true` without running `qemu-guest-agent` in the VM will
+// also result in long timeouts when using the provider, both when creating VMs,
+// and when refreshing resources.  The provider has no way to distinguish between
+// "qemu-guest-agent not installed" and "very long boot due to a disk check", it
+// trusts the user to set `agent.enabled` correctly and waits for
+// `qemu-guest-agent` to start.
+//
 // ## Important Notes
 //
 // When cloning an existing virtual machine, whether it's a template or not, the
@@ -165,6 +203,8 @@ type VirtualMachine struct {
 	// Timeout for stopping a VM in seconds (defaults
 	// to 300).
 	TimeoutStopVm pulumi.IntPtrOutput `pulumi:"timeoutStopVm"`
+	// A host USB device mapping (multiple blocks supported).
+	Usbs VirtualMachineUsbArrayOutput `pulumi:"usbs"`
 	// The VGA configuration.
 	Vga VirtualMachineVgaPtrOutput `pulumi:"vga"`
 	// The VM identifier.
@@ -320,6 +360,8 @@ type virtualMachineState struct {
 	// Timeout for stopping a VM in seconds (defaults
 	// to 300).
 	TimeoutStopVm *int `pulumi:"timeoutStopVm"`
+	// A host USB device mapping (multiple blocks supported).
+	Usbs []VirtualMachineUsb `pulumi:"usbs"`
 	// The VGA configuration.
 	Vga *VirtualMachineVga `pulumi:"vga"`
 	// The VM identifier.
@@ -443,6 +485,8 @@ type VirtualMachineState struct {
 	// Timeout for stopping a VM in seconds (defaults
 	// to 300).
 	TimeoutStopVm pulumi.IntPtrInput
+	// A host USB device mapping (multiple blocks supported).
+	Usbs VirtualMachineUsbArrayInput
 	// The VGA configuration.
 	Vga VirtualMachineVgaPtrInput
 	// The VM identifier.
@@ -558,6 +602,8 @@ type virtualMachineArgs struct {
 	// Timeout for stopping a VM in seconds (defaults
 	// to 300).
 	TimeoutStopVm *int `pulumi:"timeoutStopVm"`
+	// A host USB device mapping (multiple blocks supported).
+	Usbs []VirtualMachineUsb `pulumi:"usbs"`
 	// The VGA configuration.
 	Vga *VirtualMachineVga `pulumi:"vga"`
 	// The VM identifier.
@@ -670,6 +716,8 @@ type VirtualMachineArgs struct {
 	// Timeout for stopping a VM in seconds (defaults
 	// to 300).
 	TimeoutStopVm pulumi.IntPtrInput
+	// A host USB device mapping (multiple blocks supported).
+	Usbs VirtualMachineUsbArrayInput
 	// The VGA configuration.
 	Vga VirtualMachineVgaPtrInput
 	// The VM identifier.
@@ -1036,6 +1084,11 @@ func (o VirtualMachineOutput) TimeoutStartVm() pulumi.IntPtrOutput {
 // to 300).
 func (o VirtualMachineOutput) TimeoutStopVm() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.TimeoutStopVm }).(pulumi.IntPtrOutput)
+}
+
+// A host USB device mapping (multiple blocks supported).
+func (o VirtualMachineOutput) Usbs() VirtualMachineUsbArrayOutput {
+	return o.ApplyT(func(v *VirtualMachine) VirtualMachineUsbArrayOutput { return v.Usbs }).(VirtualMachineUsbArrayOutput)
 }
 
 // The VGA configuration.

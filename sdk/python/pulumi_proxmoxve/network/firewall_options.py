@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['FirewallOptionsArgs', 'FirewallOptions']
@@ -51,82 +51,31 @@ class FirewallOptionsArgs:
         :param pulumi.Input[bool] radv: Enable Router Advertisement.
         :param pulumi.Input[int] vm_id: VM ID. Leave empty for cluster level aliases.
         """
-        FirewallOptionsArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            node_name=node_name,
-            container_id=container_id,
-            dhcp=dhcp,
-            enabled=enabled,
-            input_policy=input_policy,
-            ipfilter=ipfilter,
-            log_level_in=log_level_in,
-            log_level_out=log_level_out,
-            macfilter=macfilter,
-            ndp=ndp,
-            output_policy=output_policy,
-            radv=radv,
-            vm_id=vm_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             node_name: Optional[pulumi.Input[str]] = None,
-             container_id: Optional[pulumi.Input[int]] = None,
-             dhcp: Optional[pulumi.Input[bool]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             input_policy: Optional[pulumi.Input[str]] = None,
-             ipfilter: Optional[pulumi.Input[bool]] = None,
-             log_level_in: Optional[pulumi.Input[str]] = None,
-             log_level_out: Optional[pulumi.Input[str]] = None,
-             macfilter: Optional[pulumi.Input[bool]] = None,
-             ndp: Optional[pulumi.Input[bool]] = None,
-             output_policy: Optional[pulumi.Input[str]] = None,
-             radv: Optional[pulumi.Input[bool]] = None,
-             vm_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if node_name is None and 'nodeName' in kwargs:
-            node_name = kwargs['nodeName']
-        if node_name is None:
-            raise TypeError("Missing 'node_name' argument")
-        if container_id is None and 'containerId' in kwargs:
-            container_id = kwargs['containerId']
-        if input_policy is None and 'inputPolicy' in kwargs:
-            input_policy = kwargs['inputPolicy']
-        if log_level_in is None and 'logLevelIn' in kwargs:
-            log_level_in = kwargs['logLevelIn']
-        if log_level_out is None and 'logLevelOut' in kwargs:
-            log_level_out = kwargs['logLevelOut']
-        if output_policy is None and 'outputPolicy' in kwargs:
-            output_policy = kwargs['outputPolicy']
-        if vm_id is None and 'vmId' in kwargs:
-            vm_id = kwargs['vmId']
-
-        _setter("node_name", node_name)
+        pulumi.set(__self__, "node_name", node_name)
         if container_id is not None:
-            _setter("container_id", container_id)
+            pulumi.set(__self__, "container_id", container_id)
         if dhcp is not None:
-            _setter("dhcp", dhcp)
+            pulumi.set(__self__, "dhcp", dhcp)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if input_policy is not None:
-            _setter("input_policy", input_policy)
+            pulumi.set(__self__, "input_policy", input_policy)
         if ipfilter is not None:
-            _setter("ipfilter", ipfilter)
+            pulumi.set(__self__, "ipfilter", ipfilter)
         if log_level_in is not None:
-            _setter("log_level_in", log_level_in)
+            pulumi.set(__self__, "log_level_in", log_level_in)
         if log_level_out is not None:
-            _setter("log_level_out", log_level_out)
+            pulumi.set(__self__, "log_level_out", log_level_out)
         if macfilter is not None:
-            _setter("macfilter", macfilter)
+            pulumi.set(__self__, "macfilter", macfilter)
         if ndp is not None:
-            _setter("ndp", ndp)
+            pulumi.set(__self__, "ndp", ndp)
         if output_policy is not None:
-            _setter("output_policy", output_policy)
+            pulumi.set(__self__, "output_policy", output_policy)
         if radv is not None:
-            _setter("radv", radv)
+            pulumi.set(__self__, "radv", radv)
         if vm_id is not None:
-            _setter("vm_id", vm_id)
+            pulumi.set(__self__, "vm_id", vm_id)
 
     @property
     @pulumi.getter(name="nodeName")
@@ -333,81 +282,32 @@ class _FirewallOptionsState:
         :param pulumi.Input[bool] radv: Enable Router Advertisement.
         :param pulumi.Input[int] vm_id: VM ID. Leave empty for cluster level aliases.
         """
-        _FirewallOptionsState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            container_id=container_id,
-            dhcp=dhcp,
-            enabled=enabled,
-            input_policy=input_policy,
-            ipfilter=ipfilter,
-            log_level_in=log_level_in,
-            log_level_out=log_level_out,
-            macfilter=macfilter,
-            ndp=ndp,
-            node_name=node_name,
-            output_policy=output_policy,
-            radv=radv,
-            vm_id=vm_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             container_id: Optional[pulumi.Input[int]] = None,
-             dhcp: Optional[pulumi.Input[bool]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             input_policy: Optional[pulumi.Input[str]] = None,
-             ipfilter: Optional[pulumi.Input[bool]] = None,
-             log_level_in: Optional[pulumi.Input[str]] = None,
-             log_level_out: Optional[pulumi.Input[str]] = None,
-             macfilter: Optional[pulumi.Input[bool]] = None,
-             ndp: Optional[pulumi.Input[bool]] = None,
-             node_name: Optional[pulumi.Input[str]] = None,
-             output_policy: Optional[pulumi.Input[str]] = None,
-             radv: Optional[pulumi.Input[bool]] = None,
-             vm_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if container_id is None and 'containerId' in kwargs:
-            container_id = kwargs['containerId']
-        if input_policy is None and 'inputPolicy' in kwargs:
-            input_policy = kwargs['inputPolicy']
-        if log_level_in is None and 'logLevelIn' in kwargs:
-            log_level_in = kwargs['logLevelIn']
-        if log_level_out is None and 'logLevelOut' in kwargs:
-            log_level_out = kwargs['logLevelOut']
-        if node_name is None and 'nodeName' in kwargs:
-            node_name = kwargs['nodeName']
-        if output_policy is None and 'outputPolicy' in kwargs:
-            output_policy = kwargs['outputPolicy']
-        if vm_id is None and 'vmId' in kwargs:
-            vm_id = kwargs['vmId']
-
         if container_id is not None:
-            _setter("container_id", container_id)
+            pulumi.set(__self__, "container_id", container_id)
         if dhcp is not None:
-            _setter("dhcp", dhcp)
+            pulumi.set(__self__, "dhcp", dhcp)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if input_policy is not None:
-            _setter("input_policy", input_policy)
+            pulumi.set(__self__, "input_policy", input_policy)
         if ipfilter is not None:
-            _setter("ipfilter", ipfilter)
+            pulumi.set(__self__, "ipfilter", ipfilter)
         if log_level_in is not None:
-            _setter("log_level_in", log_level_in)
+            pulumi.set(__self__, "log_level_in", log_level_in)
         if log_level_out is not None:
-            _setter("log_level_out", log_level_out)
+            pulumi.set(__self__, "log_level_out", log_level_out)
         if macfilter is not None:
-            _setter("macfilter", macfilter)
+            pulumi.set(__self__, "macfilter", macfilter)
         if ndp is not None:
-            _setter("ndp", ndp)
+            pulumi.set(__self__, "ndp", ndp)
         if node_name is not None:
-            _setter("node_name", node_name)
+            pulumi.set(__self__, "node_name", node_name)
         if output_policy is not None:
-            _setter("output_policy", output_policy)
+            pulumi.set(__self__, "output_policy", output_policy)
         if radv is not None:
-            _setter("radv", radv)
+            pulumi.set(__self__, "radv", radv)
         if vm_id is not None:
-            _setter("vm_id", vm_id)
+            pulumi.set(__self__, "vm_id", vm_id)
 
     @property
     @pulumi.getter(name="containerId")
@@ -683,10 +583,6 @@ class FirewallOptions(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            FirewallOptionsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

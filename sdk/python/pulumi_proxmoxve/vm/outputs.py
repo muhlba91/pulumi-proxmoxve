@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -32,6 +32,7 @@ __all__ = [
     'VirtualMachineSerialDevice',
     'VirtualMachineSmbios',
     'VirtualMachineStartup',
+    'VirtualMachineUsb',
     'VirtualMachineVga',
     'GetVirtualMachinesVmResult',
 ]
@@ -52,31 +53,14 @@ class VirtualMachineAgent(dict):
                (defaults to `false`).
         :param str type: The VGA type (defaults to `std`).
         """
-        VirtualMachineAgent._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enabled=enabled,
-            timeout=timeout,
-            trim=trim,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enabled: Optional[bool] = None,
-             timeout: Optional[str] = None,
-             trim: Optional[bool] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if timeout is not None:
-            _setter("timeout", timeout)
+            pulumi.set(__self__, "timeout", timeout)
         if trim is not None:
-            _setter("trim", trim)
+            pulumi.set(__self__, "trim", trim)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -127,27 +111,12 @@ class VirtualMachineAudioDevice(dict):
         :param bool enabled: Whether to enable the VGA device (defaults
                to `true`).
         """
-        VirtualMachineAudioDevice._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            device=device,
-            driver=driver,
-            enabled=enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             device: Optional[str] = None,
-             driver: Optional[str] = None,
-             enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if device is not None:
-            _setter("device", device)
+            pulumi.set(__self__, "device", device)
         if driver is not None:
-            _setter("driver", driver)
+            pulumi.set(__self__, "driver", driver)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter
@@ -210,29 +179,12 @@ class VirtualMachineCdrom(dict):
                detected if the setting is missing but a cloud-init image is present,
                otherwise defaults to `ide2`.
         """
-        VirtualMachineCdrom._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enabled=enabled,
-            file_id=file_id,
-            interface=interface,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enabled: Optional[bool] = None,
-             file_id: Optional[str] = None,
-             interface: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if file_id is None and 'fileId' in kwargs:
-            file_id = kwargs['fileId']
-
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if file_id is not None:
-            _setter("file_id", file_id)
+            pulumi.set(__self__, "file_id", file_id)
         if interface is not None:
-            _setter("interface", interface)
+            pulumi.set(__self__, "interface", interface)
 
     @property
     @pulumi.getter
@@ -304,42 +256,15 @@ class VirtualMachineClone(dict):
                Sometimes Proxmox errors with timeout when creating multiple clones at
                once.
         """
-        VirtualMachineClone._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            vm_id=vm_id,
-            datastore_id=datastore_id,
-            full=full,
-            node_name=node_name,
-            retries=retries,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             vm_id: Optional[int] = None,
-             datastore_id: Optional[str] = None,
-             full: Optional[bool] = None,
-             node_name: Optional[str] = None,
-             retries: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if vm_id is None and 'vmId' in kwargs:
-            vm_id = kwargs['vmId']
-        if vm_id is None:
-            raise TypeError("Missing 'vm_id' argument")
-        if datastore_id is None and 'datastoreId' in kwargs:
-            datastore_id = kwargs['datastoreId']
-        if node_name is None and 'nodeName' in kwargs:
-            node_name = kwargs['nodeName']
-
-        _setter("vm_id", vm_id)
+        pulumi.set(__self__, "vm_id", vm_id)
         if datastore_id is not None:
-            _setter("datastore_id", datastore_id)
+            pulumi.set(__self__, "datastore_id", datastore_id)
         if full is not None:
-            _setter("full", full)
+            pulumi.set(__self__, "full", full)
         if node_name is not None:
-            _setter("node_name", node_name)
+            pulumi.set(__self__, "node_name", node_name)
         if retries is not None:
-            _setter("retries", retries)
+            pulumi.set(__self__, "retries", retries)
 
     @property
     @pulumi.getter(name="vmId")
@@ -427,47 +352,22 @@ class VirtualMachineCpu(dict):
         :param str type: The VGA type (defaults to `std`).
         :param int units: The CPU units (defaults to `1024`).
         """
-        VirtualMachineCpu._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            architecture=architecture,
-            cores=cores,
-            flags=flags,
-            hotplugged=hotplugged,
-            numa=numa,
-            sockets=sockets,
-            type=type,
-            units=units,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             architecture: Optional[str] = None,
-             cores: Optional[int] = None,
-             flags: Optional[Sequence[str]] = None,
-             hotplugged: Optional[int] = None,
-             numa: Optional[bool] = None,
-             sockets: Optional[int] = None,
-             type: Optional[str] = None,
-             units: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if architecture is not None:
-            _setter("architecture", architecture)
+            pulumi.set(__self__, "architecture", architecture)
         if cores is not None:
-            _setter("cores", cores)
+            pulumi.set(__self__, "cores", cores)
         if flags is not None:
-            _setter("flags", flags)
+            pulumi.set(__self__, "flags", flags)
         if hotplugged is not None:
-            _setter("hotplugged", hotplugged)
+            pulumi.set(__self__, "hotplugged", hotplugged)
         if numa is not None:
-            _setter("numa", numa)
+            pulumi.set(__self__, "numa", numa)
         if sockets is not None:
-            _setter("sockets", sockets)
+            pulumi.set(__self__, "sockets", sockets)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if units is not None:
-            _setter("units", units)
+            pulumi.set(__self__, "units", units)
 
     @property
     @pulumi.getter
@@ -621,68 +521,27 @@ class VirtualMachineDisk(dict):
                defaults to `false`). Note that SSD emulation is not supported on VirtIO
                Block drives.
         """
-        VirtualMachineDisk._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            interface=interface,
-            cache=cache,
-            datastore_id=datastore_id,
-            discard=discard,
-            file_format=file_format,
-            file_id=file_id,
-            iothread=iothread,
-            path_in_datastore=path_in_datastore,
-            size=size,
-            speed=speed,
-            ssd=ssd,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             interface: Optional[str] = None,
-             cache: Optional[str] = None,
-             datastore_id: Optional[str] = None,
-             discard: Optional[str] = None,
-             file_format: Optional[str] = None,
-             file_id: Optional[str] = None,
-             iothread: Optional[bool] = None,
-             path_in_datastore: Optional[str] = None,
-             size: Optional[int] = None,
-             speed: Optional['outputs.VirtualMachineDiskSpeed'] = None,
-             ssd: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if interface is None:
-            raise TypeError("Missing 'interface' argument")
-        if datastore_id is None and 'datastoreId' in kwargs:
-            datastore_id = kwargs['datastoreId']
-        if file_format is None and 'fileFormat' in kwargs:
-            file_format = kwargs['fileFormat']
-        if file_id is None and 'fileId' in kwargs:
-            file_id = kwargs['fileId']
-        if path_in_datastore is None and 'pathInDatastore' in kwargs:
-            path_in_datastore = kwargs['pathInDatastore']
-
-        _setter("interface", interface)
+        pulumi.set(__self__, "interface", interface)
         if cache is not None:
-            _setter("cache", cache)
+            pulumi.set(__self__, "cache", cache)
         if datastore_id is not None:
-            _setter("datastore_id", datastore_id)
+            pulumi.set(__self__, "datastore_id", datastore_id)
         if discard is not None:
-            _setter("discard", discard)
+            pulumi.set(__self__, "discard", discard)
         if file_format is not None:
-            _setter("file_format", file_format)
+            pulumi.set(__self__, "file_format", file_format)
         if file_id is not None:
-            _setter("file_id", file_id)
+            pulumi.set(__self__, "file_id", file_id)
         if iothread is not None:
-            _setter("iothread", iothread)
+            pulumi.set(__self__, "iothread", iothread)
         if path_in_datastore is not None:
-            _setter("path_in_datastore", path_in_datastore)
+            pulumi.set(__self__, "path_in_datastore", path_in_datastore)
         if size is not None:
-            _setter("size", size)
+            pulumi.set(__self__, "size", size)
         if speed is not None:
-            _setter("speed", speed)
+            pulumi.set(__self__, "speed", speed)
         if ssd is not None:
-            _setter("ssd", ssd)
+            pulumi.set(__self__, "ssd", ssd)
 
     @property
     @pulumi.getter
@@ -821,35 +680,14 @@ class VirtualMachineDiskSpeed(dict):
         :param int write_burstable: The maximum burstable write speed in
                megabytes per second.
         """
-        VirtualMachineDiskSpeed._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            read=read,
-            read_burstable=read_burstable,
-            write=write,
-            write_burstable=write_burstable,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             read: Optional[int] = None,
-             read_burstable: Optional[int] = None,
-             write: Optional[int] = None,
-             write_burstable: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if read_burstable is None and 'readBurstable' in kwargs:
-            read_burstable = kwargs['readBurstable']
-        if write_burstable is None and 'writeBurstable' in kwargs:
-            write_burstable = kwargs['writeBurstable']
-
         if read is not None:
-            _setter("read", read)
+            pulumi.set(__self__, "read", read)
         if read_burstable is not None:
-            _setter("read_burstable", read_burstable)
+            pulumi.set(__self__, "read_burstable", read_burstable)
         if write is not None:
-            _setter("write", write)
+            pulumi.set(__self__, "write", write)
         if write_burstable is not None:
-            _setter("write_burstable", write_burstable)
+            pulumi.set(__self__, "write_burstable", write_burstable)
 
     @property
     @pulumi.getter
@@ -924,37 +762,14 @@ class VirtualMachineEfiDisk(dict):
                to `false`).
         :param str type: The VGA type (defaults to `std`).
         """
-        VirtualMachineEfiDisk._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            datastore_id=datastore_id,
-            file_format=file_format,
-            pre_enrolled_keys=pre_enrolled_keys,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             datastore_id: Optional[str] = None,
-             file_format: Optional[str] = None,
-             pre_enrolled_keys: Optional[bool] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if datastore_id is None and 'datastoreId' in kwargs:
-            datastore_id = kwargs['datastoreId']
-        if file_format is None and 'fileFormat' in kwargs:
-            file_format = kwargs['fileFormat']
-        if pre_enrolled_keys is None and 'preEnrolledKeys' in kwargs:
-            pre_enrolled_keys = kwargs['preEnrolledKeys']
-
         if datastore_id is not None:
-            _setter("datastore_id", datastore_id)
+            pulumi.set(__self__, "datastore_id", datastore_id)
         if file_format is not None:
-            _setter("file_format", file_format)
+            pulumi.set(__self__, "file_format", file_format)
         if pre_enrolled_keys is not None:
-            _setter("pre_enrolled_keys", pre_enrolled_keys)
+            pulumi.set(__self__, "pre_enrolled_keys", pre_enrolled_keys)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="datastoreId")
@@ -1026,7 +841,7 @@ class VirtualMachineHostpci(dict):
                - `/dev/*` - A host serial device.
         :param str id: The PCI device ID. Use either this or `mapping`.
         :param str mapping: The resource mapping name of the device, for
-               example gpu. Use either this or `id`.
+               example usbdevice. Use either this or `id`.
         :param str mdev: The mediated device ID to use.
         :param bool pcie: Tells Proxmox to use a PCIe or PCI port. Some
                guests/device combination require PCIe rather than PCI. PCIe is only
@@ -1038,50 +853,21 @@ class VirtualMachineHostpci(dict):
         :param bool xvga: Marks the PCI(e) device as the primary GPU of the VM.
                With this enabled the `vga` configuration argument will be ignored.
         """
-        VirtualMachineHostpci._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            device=device,
-            id=id,
-            mapping=mapping,
-            mdev=mdev,
-            pcie=pcie,
-            rom_file=rom_file,
-            rombar=rombar,
-            xvga=xvga,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             device: Optional[str] = None,
-             id: Optional[str] = None,
-             mapping: Optional[str] = None,
-             mdev: Optional[str] = None,
-             pcie: Optional[bool] = None,
-             rom_file: Optional[str] = None,
-             rombar: Optional[bool] = None,
-             xvga: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if device is None:
-            raise TypeError("Missing 'device' argument")
-        if rom_file is None and 'romFile' in kwargs:
-            rom_file = kwargs['romFile']
-
-        _setter("device", device)
+        pulumi.set(__self__, "device", device)
         if id is not None:
-            _setter("id", id)
+            pulumi.set(__self__, "id", id)
         if mapping is not None:
-            _setter("mapping", mapping)
+            pulumi.set(__self__, "mapping", mapping)
         if mdev is not None:
-            _setter("mdev", mdev)
+            pulumi.set(__self__, "mdev", mdev)
         if pcie is not None:
-            _setter("pcie", pcie)
+            pulumi.set(__self__, "pcie", pcie)
         if rom_file is not None:
-            _setter("rom_file", rom_file)
+            pulumi.set(__self__, "rom_file", rom_file)
         if rombar is not None:
-            _setter("rombar", rombar)
+            pulumi.set(__self__, "rombar", rombar)
         if xvga is not None:
-            _setter("xvga", xvga)
+            pulumi.set(__self__, "xvga", xvga)
 
     @property
     @pulumi.getter
@@ -1105,7 +891,7 @@ class VirtualMachineHostpci(dict):
     def mapping(self) -> Optional[str]:
         """
         The resource mapping name of the device, for
-        example gpu. Use either this or `id`.
+        example usbdevice. Use either this or `id`.
         """
         return pulumi.get(self, "mapping")
 
@@ -1220,69 +1006,26 @@ class VirtualMachineInitialization(dict):
         :param str vendor_data_file_id: The identifier for a file containing
                all vendor data passed to the VM via cloud-init.
         """
-        VirtualMachineInitialization._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            datastore_id=datastore_id,
-            dns=dns,
-            interface=interface,
-            ip_configs=ip_configs,
-            meta_data_file_id=meta_data_file_id,
-            network_data_file_id=network_data_file_id,
-            type=type,
-            user_account=user_account,
-            user_data_file_id=user_data_file_id,
-            vendor_data_file_id=vendor_data_file_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             datastore_id: Optional[str] = None,
-             dns: Optional['outputs.VirtualMachineInitializationDns'] = None,
-             interface: Optional[str] = None,
-             ip_configs: Optional[Sequence['outputs.VirtualMachineInitializationIpConfig']] = None,
-             meta_data_file_id: Optional[str] = None,
-             network_data_file_id: Optional[str] = None,
-             type: Optional[str] = None,
-             user_account: Optional['outputs.VirtualMachineInitializationUserAccount'] = None,
-             user_data_file_id: Optional[str] = None,
-             vendor_data_file_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if datastore_id is None and 'datastoreId' in kwargs:
-            datastore_id = kwargs['datastoreId']
-        if ip_configs is None and 'ipConfigs' in kwargs:
-            ip_configs = kwargs['ipConfigs']
-        if meta_data_file_id is None and 'metaDataFileId' in kwargs:
-            meta_data_file_id = kwargs['metaDataFileId']
-        if network_data_file_id is None and 'networkDataFileId' in kwargs:
-            network_data_file_id = kwargs['networkDataFileId']
-        if user_account is None and 'userAccount' in kwargs:
-            user_account = kwargs['userAccount']
-        if user_data_file_id is None and 'userDataFileId' in kwargs:
-            user_data_file_id = kwargs['userDataFileId']
-        if vendor_data_file_id is None and 'vendorDataFileId' in kwargs:
-            vendor_data_file_id = kwargs['vendorDataFileId']
-
         if datastore_id is not None:
-            _setter("datastore_id", datastore_id)
+            pulumi.set(__self__, "datastore_id", datastore_id)
         if dns is not None:
-            _setter("dns", dns)
+            pulumi.set(__self__, "dns", dns)
         if interface is not None:
-            _setter("interface", interface)
+            pulumi.set(__self__, "interface", interface)
         if ip_configs is not None:
-            _setter("ip_configs", ip_configs)
+            pulumi.set(__self__, "ip_configs", ip_configs)
         if meta_data_file_id is not None:
-            _setter("meta_data_file_id", meta_data_file_id)
+            pulumi.set(__self__, "meta_data_file_id", meta_data_file_id)
         if network_data_file_id is not None:
-            _setter("network_data_file_id", network_data_file_id)
+            pulumi.set(__self__, "network_data_file_id", network_data_file_id)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if user_account is not None:
-            _setter("user_account", user_account)
+            pulumi.set(__self__, "user_account", user_account)
         if user_data_file_id is not None:
-            _setter("user_data_file_id", user_data_file_id)
+            pulumi.set(__self__, "user_data_file_id", user_data_file_id)
         if vendor_data_file_id is not None:
-            _setter("vendor_data_file_id", vendor_data_file_id)
+            pulumi.set(__self__, "vendor_data_file_id", vendor_data_file_id)
 
     @property
     @pulumi.getter(name="datastoreId")
@@ -1385,23 +1128,10 @@ class VirtualMachineInitializationDns(dict):
         :param str domain: The DNS search domain.
         :param str server: The DNS server.
         """
-        VirtualMachineInitializationDns._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            domain=domain,
-            server=server,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             domain: Optional[str] = None,
-             server: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if domain is not None:
-            _setter("domain", domain)
+            pulumi.set(__self__, "domain", domain)
         if server is not None:
-            _setter("server", server)
+            pulumi.set(__self__, "server", server)
 
     @property
     @pulumi.getter
@@ -1429,23 +1159,10 @@ class VirtualMachineInitializationIpConfig(dict):
         :param 'VirtualMachineInitializationIpConfigIpv4Args' ipv4: The IPv4 configuration.
         :param 'VirtualMachineInitializationIpConfigIpv6Args' ipv6: The IPv4 configuration.
         """
-        VirtualMachineInitializationIpConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ipv4=ipv4,
-            ipv6=ipv6,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ipv4: Optional['outputs.VirtualMachineInitializationIpConfigIpv4'] = None,
-             ipv6: Optional['outputs.VirtualMachineInitializationIpConfigIpv6'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if ipv4 is not None:
-            _setter("ipv4", ipv4)
+            pulumi.set(__self__, "ipv4", ipv4)
         if ipv6 is not None:
-            _setter("ipv6", ipv6)
+            pulumi.set(__self__, "ipv6", ipv6)
 
     @property
     @pulumi.getter
@@ -1475,23 +1192,10 @@ class VirtualMachineInitializationIpConfigIpv4(dict):
         :param str gateway: The IPv6 gateway (must be omitted
                when `dhcp` is used as the address).
         """
-        VirtualMachineInitializationIpConfigIpv4._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            gateway=gateway,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: Optional[str] = None,
-             gateway: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if address is not None:
-            _setter("address", address)
+            pulumi.set(__self__, "address", address)
         if gateway is not None:
-            _setter("gateway", gateway)
+            pulumi.set(__self__, "gateway", gateway)
 
     @property
     @pulumi.getter
@@ -1523,23 +1227,10 @@ class VirtualMachineInitializationIpConfigIpv6(dict):
         :param str gateway: The IPv6 gateway (must be omitted
                when `dhcp` is used as the address).
         """
-        VirtualMachineInitializationIpConfigIpv6._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            gateway=gateway,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: Optional[str] = None,
-             gateway: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if address is not None:
-            _setter("address", address)
+            pulumi.set(__self__, "address", address)
         if gateway is not None:
-            _setter("gateway", gateway)
+            pulumi.set(__self__, "gateway", gateway)
 
     @property
     @pulumi.getter
@@ -1571,27 +1262,12 @@ class VirtualMachineInitializationUserAccount(dict):
         :param str password: The SSH password.
         :param str username: The SSH username.
         """
-        VirtualMachineInitializationUserAccount._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            keys=keys,
-            password=password,
-            username=username,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             keys: Optional[Sequence[str]] = None,
-             password: Optional[str] = None,
-             username: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if keys is not None:
-            _setter("keys", keys)
+            pulumi.set(__self__, "keys", keys)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if username is not None:
-            _setter("username", username)
+            pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter
@@ -1631,27 +1307,12 @@ class VirtualMachineMemory(dict):
                to `0`).
         :param int shared: The shared memory in megabytes (defaults to `0`).
         """
-        VirtualMachineMemory._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dedicated=dedicated,
-            floating=floating,
-            shared=shared,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dedicated: Optional[int] = None,
-             floating: Optional[int] = None,
-             shared: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if dedicated is not None:
-            _setter("dedicated", dedicated)
+            pulumi.set(__self__, "dedicated", dedicated)
         if floating is not None:
-            _setter("floating", floating)
+            pulumi.set(__self__, "floating", floating)
         if shared is not None:
-            _setter("shared", shared)
+            pulumi.set(__self__, "shared", shared)
 
     @property
     @pulumi.getter
@@ -1728,57 +1389,24 @@ class VirtualMachineNetworkDevice(dict):
         :param float rate_limit: The rate limit in megabytes per second.
         :param int vlan_id: The VLAN identifier.
         """
-        VirtualMachineNetworkDevice._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bridge=bridge,
-            enabled=enabled,
-            firewall=firewall,
-            mac_address=mac_address,
-            model=model,
-            mtu=mtu,
-            queues=queues,
-            rate_limit=rate_limit,
-            vlan_id=vlan_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bridge: Optional[str] = None,
-             enabled: Optional[bool] = None,
-             firewall: Optional[bool] = None,
-             mac_address: Optional[str] = None,
-             model: Optional[str] = None,
-             mtu: Optional[int] = None,
-             queues: Optional[int] = None,
-             rate_limit: Optional[float] = None,
-             vlan_id: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if mac_address is None and 'macAddress' in kwargs:
-            mac_address = kwargs['macAddress']
-        if rate_limit is None and 'rateLimit' in kwargs:
-            rate_limit = kwargs['rateLimit']
-        if vlan_id is None and 'vlanId' in kwargs:
-            vlan_id = kwargs['vlanId']
-
         if bridge is not None:
-            _setter("bridge", bridge)
+            pulumi.set(__self__, "bridge", bridge)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if firewall is not None:
-            _setter("firewall", firewall)
+            pulumi.set(__self__, "firewall", firewall)
         if mac_address is not None:
-            _setter("mac_address", mac_address)
+            pulumi.set(__self__, "mac_address", mac_address)
         if model is not None:
-            _setter("model", model)
+            pulumi.set(__self__, "model", model)
         if mtu is not None:
-            _setter("mtu", mtu)
+            pulumi.set(__self__, "mtu", mtu)
         if queues is not None:
-            _setter("queues", queues)
+            pulumi.set(__self__, "queues", queues)
         if rate_limit is not None:
-            _setter("rate_limit", rate_limit)
+            pulumi.set(__self__, "rate_limit", rate_limit)
         if vlan_id is not None:
-            _setter("vlan_id", vlan_id)
+            pulumi.set(__self__, "vlan_id", vlan_id)
 
     @property
     @pulumi.getter
@@ -1864,19 +1492,8 @@ class VirtualMachineOperatingSystem(dict):
         """
         :param str type: The VGA type (defaults to `std`).
         """
-        VirtualMachineOperatingSystem._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -1895,19 +1512,8 @@ class VirtualMachineSerialDevice(dict):
         :param str device: The device (defaults to `socket`).
                - `/dev/*` - A host serial device.
         """
-        VirtualMachineSerialDevice._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            device=device,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             device: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if device is not None:
-            _setter("device", device)
+            pulumi.set(__self__, "device", device)
 
     @property
     @pulumi.getter
@@ -1938,43 +1544,20 @@ class VirtualMachineSmbios(dict):
         :param str uuid: The UUID (defaults to randomly generated UUID).
         :param str version: The version.
         """
-        VirtualMachineSmbios._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            family=family,
-            manufacturer=manufacturer,
-            product=product,
-            serial=serial,
-            sku=sku,
-            uuid=uuid,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             family: Optional[str] = None,
-             manufacturer: Optional[str] = None,
-             product: Optional[str] = None,
-             serial: Optional[str] = None,
-             sku: Optional[str] = None,
-             uuid: Optional[str] = None,
-             version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if family is not None:
-            _setter("family", family)
+            pulumi.set(__self__, "family", family)
         if manufacturer is not None:
-            _setter("manufacturer", manufacturer)
+            pulumi.set(__self__, "manufacturer", manufacturer)
         if product is not None:
-            _setter("product", product)
+            pulumi.set(__self__, "product", product)
         if serial is not None:
-            _setter("serial", serial)
+            pulumi.set(__self__, "serial", serial)
         if sku is not None:
-            _setter("sku", sku)
+            pulumi.set(__self__, "sku", sku)
         if uuid is not None:
-            _setter("uuid", uuid)
+            pulumi.set(__self__, "uuid", uuid)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -2062,31 +1645,12 @@ class VirtualMachineStartup(dict):
         :param int order: A non-negative number defining the general startup
                order.
         """
-        VirtualMachineStartup._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            down_delay=down_delay,
-            order=order,
-            up_delay=up_delay,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             down_delay: Optional[int] = None,
-             order: Optional[int] = None,
-             up_delay: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if down_delay is None and 'downDelay' in kwargs:
-            down_delay = kwargs['downDelay']
-        if up_delay is None and 'upDelay' in kwargs:
-            up_delay = kwargs['upDelay']
-
         if down_delay is not None:
-            _setter("down_delay", down_delay)
+            pulumi.set(__self__, "down_delay", down_delay)
         if order is not None:
-            _setter("order", order)
+            pulumi.set(__self__, "order", order)
         if up_delay is not None:
-            _setter("up_delay", up_delay)
+            pulumi.set(__self__, "up_delay", up_delay)
 
     @property
     @pulumi.getter(name="downDelay")
@@ -2109,6 +1673,52 @@ class VirtualMachineStartup(dict):
 
 
 @pulumi.output_type
+class VirtualMachineUsb(dict):
+    def __init__(__self__, *,
+                 host: str,
+                 mapping: Optional[str] = None,
+                 usb3: Optional[bool] = None):
+        """
+        :param str host: The USB device ID. Use either this or `mapping`.
+        :param str mapping: The resource mapping name of the device, for
+               example usbdevice. Use either this or `id`.
+        :param bool usb3: Makes the USB device a USB3 device for the VM (defaults
+               to `false`).
+        """
+        pulumi.set(__self__, "host", host)
+        if mapping is not None:
+            pulumi.set(__self__, "mapping", mapping)
+        if usb3 is not None:
+            pulumi.set(__self__, "usb3", usb3)
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        """
+        The USB device ID. Use either this or `mapping`.
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def mapping(self) -> Optional[str]:
+        """
+        The resource mapping name of the device, for
+        example usbdevice. Use either this or `id`.
+        """
+        return pulumi.get(self, "mapping")
+
+    @property
+    @pulumi.getter
+    def usb3(self) -> Optional[bool]:
+        """
+        Makes the USB device a USB3 device for the VM (defaults
+        to `false`).
+        """
+        return pulumi.get(self, "usb3")
+
+
+@pulumi.output_type
 class VirtualMachineVga(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None,
@@ -2120,27 +1730,12 @@ class VirtualMachineVga(dict):
         :param int memory: The VGA memory in megabytes (defaults to `16`).
         :param str type: The VGA type (defaults to `std`).
         """
-        VirtualMachineVga._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enabled=enabled,
-            memory=memory,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enabled: Optional[bool] = None,
-             memory: Optional[int] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if memory is not None:
-            _setter("memory", memory)
+            pulumi.set(__self__, "memory", memory)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -2182,39 +1777,10 @@ class GetVirtualMachinesVmResult(dict):
                the tags to be included in the result.
         :param int vm_id: The VM identifier.
         """
-        GetVirtualMachinesVmResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            node_name=node_name,
-            tags=tags,
-            vm_id=vm_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             node_name: Optional[str] = None,
-             tags: Optional[Sequence[str]] = None,
-             vm_id: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if node_name is None and 'nodeName' in kwargs:
-            node_name = kwargs['nodeName']
-        if node_name is None:
-            raise TypeError("Missing 'node_name' argument")
-        if tags is None:
-            raise TypeError("Missing 'tags' argument")
-        if vm_id is None and 'vmId' in kwargs:
-            vm_id = kwargs['vmId']
-        if vm_id is None:
-            raise TypeError("Missing 'vm_id' argument")
-
-        _setter("name", name)
-        _setter("node_name", node_name)
-        _setter("tags", tags)
-        _setter("vm_id", vm_id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "node_name", node_name)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "vm_id", vm_id)
 
     @property
     @pulumi.getter

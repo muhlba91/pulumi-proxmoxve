@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -23,27 +23,8 @@ class HostsArgs:
         :param pulumi.Input[Sequence[pulumi.Input['HostsEntryArgs']]] entry: A host entry (multiple blocks supported).
         :param pulumi.Input[str] node_name: A node name.
         """
-        HostsArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            entry=entry,
-            node_name=node_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             entry: Optional[pulumi.Input[Sequence[pulumi.Input['HostsEntryArgs']]]] = None,
-             node_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if entry is None:
-            raise TypeError("Missing 'entry' argument")
-        if node_name is None and 'nodeName' in kwargs:
-            node_name = kwargs['nodeName']
-        if node_name is None:
-            raise TypeError("Missing 'node_name' argument")
-
-        _setter("entry", entry)
-        _setter("node_name", node_name)
+        pulumi.set(__self__, "entry", entry)
+        pulumi.set(__self__, "node_name", node_name)
 
     @property
     @pulumi.getter
@@ -89,41 +70,18 @@ class _HostsState:
         :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]] hostnames: The hostnames.
         :param pulumi.Input[str] node_name: A node name.
         """
-        _HostsState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            addresses=addresses,
-            digest=digest,
-            entries=entries,
-            entry=entry,
-            hostnames=hostnames,
-            node_name=node_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             digest: Optional[pulumi.Input[str]] = None,
-             entries: Optional[pulumi.Input[Sequence[pulumi.Input['HostsEntryArgs']]]] = None,
-             entry: Optional[pulumi.Input[Sequence[pulumi.Input['HostsEntryArgs']]]] = None,
-             hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]]] = None,
-             node_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if node_name is None and 'nodeName' in kwargs:
-            node_name = kwargs['nodeName']
-
         if addresses is not None:
-            _setter("addresses", addresses)
+            pulumi.set(__self__, "addresses", addresses)
         if digest is not None:
-            _setter("digest", digest)
+            pulumi.set(__self__, "digest", digest)
         if entries is not None:
-            _setter("entries", entries)
+            pulumi.set(__self__, "entries", entries)
         if entry is not None:
-            _setter("entry", entry)
+            pulumi.set(__self__, "entry", entry)
         if hostnames is not None:
-            _setter("hostnames", hostnames)
+            pulumi.set(__self__, "hostnames", hostnames)
         if node_name is not None:
-            _setter("node_name", node_name)
+            pulumi.set(__self__, "node_name", node_name)
 
     @property
     @pulumi.getter
@@ -258,10 +216,6 @@ class Hosts(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            HostsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

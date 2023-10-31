@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,41 +29,16 @@ class FirewallArgs:
         :param pulumi.Input['FirewallLogRatelimitArgs'] log_ratelimit: The log rate limit.
         :param pulumi.Input[str] output_policy: The default output policy (`ACCEPT`, `DROP`, `REJECT`).
         """
-        FirewallArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ebtables=ebtables,
-            enabled=enabled,
-            input_policy=input_policy,
-            log_ratelimit=log_ratelimit,
-            output_policy=output_policy,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ebtables: Optional[pulumi.Input[bool]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             input_policy: Optional[pulumi.Input[str]] = None,
-             log_ratelimit: Optional[pulumi.Input['FirewallLogRatelimitArgs']] = None,
-             output_policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if input_policy is None and 'inputPolicy' in kwargs:
-            input_policy = kwargs['inputPolicy']
-        if log_ratelimit is None and 'logRatelimit' in kwargs:
-            log_ratelimit = kwargs['logRatelimit']
-        if output_policy is None and 'outputPolicy' in kwargs:
-            output_policy = kwargs['outputPolicy']
-
         if ebtables is not None:
-            _setter("ebtables", ebtables)
+            pulumi.set(__self__, "ebtables", ebtables)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if input_policy is not None:
-            _setter("input_policy", input_policy)
+            pulumi.set(__self__, "input_policy", input_policy)
         if log_ratelimit is not None:
-            _setter("log_ratelimit", log_ratelimit)
+            pulumi.set(__self__, "log_ratelimit", log_ratelimit)
         if output_policy is not None:
-            _setter("output_policy", output_policy)
+            pulumi.set(__self__, "output_policy", output_policy)
 
     @property
     @pulumi.getter
@@ -142,41 +117,16 @@ class _FirewallState:
         :param pulumi.Input['FirewallLogRatelimitArgs'] log_ratelimit: The log rate limit.
         :param pulumi.Input[str] output_policy: The default output policy (`ACCEPT`, `DROP`, `REJECT`).
         """
-        _FirewallState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ebtables=ebtables,
-            enabled=enabled,
-            input_policy=input_policy,
-            log_ratelimit=log_ratelimit,
-            output_policy=output_policy,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ebtables: Optional[pulumi.Input[bool]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             input_policy: Optional[pulumi.Input[str]] = None,
-             log_ratelimit: Optional[pulumi.Input['FirewallLogRatelimitArgs']] = None,
-             output_policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if input_policy is None and 'inputPolicy' in kwargs:
-            input_policy = kwargs['inputPolicy']
-        if log_ratelimit is None and 'logRatelimit' in kwargs:
-            log_ratelimit = kwargs['logRatelimit']
-        if output_policy is None and 'outputPolicy' in kwargs:
-            output_policy = kwargs['outputPolicy']
-
         if ebtables is not None:
-            _setter("ebtables", ebtables)
+            pulumi.set(__self__, "ebtables", ebtables)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if input_policy is not None:
-            _setter("input_policy", input_policy)
+            pulumi.set(__self__, "input_policy", input_policy)
         if log_ratelimit is not None:
-            _setter("log_ratelimit", log_ratelimit)
+            pulumi.set(__self__, "log_ratelimit", log_ratelimit)
         if output_policy is not None:
-            _setter("output_policy", output_policy)
+            pulumi.set(__self__, "output_policy", output_policy)
 
     @property
     @pulumi.getter
@@ -338,10 +288,6 @@ class Firewall(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            FirewallArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -364,7 +310,6 @@ class Firewall(pulumi.CustomResource):
             __props__.__dict__["ebtables"] = ebtables
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["input_policy"] = input_policy
-            log_ratelimit = _utilities.configure(log_ratelimit, FirewallLogRatelimitArgs, True)
             __props__.__dict__["log_ratelimit"] = log_ratelimit
             __props__.__dict__["output_policy"] = output_policy
         super(Firewall, __self__).__init__(

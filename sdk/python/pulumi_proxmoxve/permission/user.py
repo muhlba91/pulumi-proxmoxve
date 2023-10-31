@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -41,68 +41,27 @@ class UserArgs:
         :param pulumi.Input[str] last_name: The user's last name.
         :param pulumi.Input[str] password: The user's password. Required for PVE or PAM realms.
         """
-        UserArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            user_id=user_id,
-            acls=acls,
-            comment=comment,
-            email=email,
-            enabled=enabled,
-            expiration_date=expiration_date,
-            first_name=first_name,
-            groups=groups,
-            keys=keys,
-            last_name=last_name,
-            password=password,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             user_id: Optional[pulumi.Input[str]] = None,
-             acls: Optional[pulumi.Input[Sequence[pulumi.Input['UserAclArgs']]]] = None,
-             comment: Optional[pulumi.Input[str]] = None,
-             email: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             expiration_date: Optional[pulumi.Input[str]] = None,
-             first_name: Optional[pulumi.Input[str]] = None,
-             groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             keys: Optional[pulumi.Input[str]] = None,
-             last_name: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if user_id is None and 'userId' in kwargs:
-            user_id = kwargs['userId']
-        if user_id is None:
-            raise TypeError("Missing 'user_id' argument")
-        if expiration_date is None and 'expirationDate' in kwargs:
-            expiration_date = kwargs['expirationDate']
-        if first_name is None and 'firstName' in kwargs:
-            first_name = kwargs['firstName']
-        if last_name is None and 'lastName' in kwargs:
-            last_name = kwargs['lastName']
-
-        _setter("user_id", user_id)
+        pulumi.set(__self__, "user_id", user_id)
         if acls is not None:
-            _setter("acls", acls)
+            pulumi.set(__self__, "acls", acls)
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
         if email is not None:
-            _setter("email", email)
+            pulumi.set(__self__, "email", email)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if expiration_date is not None:
-            _setter("expiration_date", expiration_date)
+            pulumi.set(__self__, "expiration_date", expiration_date)
         if first_name is not None:
-            _setter("first_name", first_name)
+            pulumi.set(__self__, "first_name", first_name)
         if groups is not None:
-            _setter("groups", groups)
+            pulumi.set(__self__, "groups", groups)
         if keys is not None:
-            _setter("keys", keys)
+            pulumi.set(__self__, "keys", keys)
         if last_name is not None:
-            _setter("last_name", last_name)
+            pulumi.set(__self__, "last_name", last_name)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
 
     @property
     @pulumi.getter(name="userId")
@@ -265,67 +224,28 @@ class _UserState:
         :param pulumi.Input[str] password: The user's password. Required for PVE or PAM realms.
         :param pulumi.Input[str] user_id: The user identifier.
         """
-        _UserState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            acls=acls,
-            comment=comment,
-            email=email,
-            enabled=enabled,
-            expiration_date=expiration_date,
-            first_name=first_name,
-            groups=groups,
-            keys=keys,
-            last_name=last_name,
-            password=password,
-            user_id=user_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             acls: Optional[pulumi.Input[Sequence[pulumi.Input['UserAclArgs']]]] = None,
-             comment: Optional[pulumi.Input[str]] = None,
-             email: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             expiration_date: Optional[pulumi.Input[str]] = None,
-             first_name: Optional[pulumi.Input[str]] = None,
-             groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             keys: Optional[pulumi.Input[str]] = None,
-             last_name: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expiration_date is None and 'expirationDate' in kwargs:
-            expiration_date = kwargs['expirationDate']
-        if first_name is None and 'firstName' in kwargs:
-            first_name = kwargs['firstName']
-        if last_name is None and 'lastName' in kwargs:
-            last_name = kwargs['lastName']
-        if user_id is None and 'userId' in kwargs:
-            user_id = kwargs['userId']
-
         if acls is not None:
-            _setter("acls", acls)
+            pulumi.set(__self__, "acls", acls)
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
         if email is not None:
-            _setter("email", email)
+            pulumi.set(__self__, "email", email)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if expiration_date is not None:
-            _setter("expiration_date", expiration_date)
+            pulumi.set(__self__, "expiration_date", expiration_date)
         if first_name is not None:
-            _setter("first_name", first_name)
+            pulumi.set(__self__, "first_name", first_name)
         if groups is not None:
-            _setter("groups", groups)
+            pulumi.set(__self__, "groups", groups)
         if keys is not None:
-            _setter("keys", keys)
+            pulumi.set(__self__, "keys", keys)
         if last_name is not None:
-            _setter("last_name", last_name)
+            pulumi.set(__self__, "last_name", last_name)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if user_id is not None:
-            _setter("user_id", user_id)
+            pulumi.set(__self__, "user_id", user_id)
 
     @property
     @pulumi.getter
@@ -569,10 +489,6 @@ class User(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            UserArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

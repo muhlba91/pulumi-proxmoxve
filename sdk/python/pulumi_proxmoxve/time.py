@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['TimeArgs', 'Time']
@@ -21,29 +21,8 @@ class TimeArgs:
         :param pulumi.Input[str] node_name: A node name.
         :param pulumi.Input[str] time_zone: The node's time zone.
         """
-        TimeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            node_name=node_name,
-            time_zone=time_zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             node_name: Optional[pulumi.Input[str]] = None,
-             time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if node_name is None and 'nodeName' in kwargs:
-            node_name = kwargs['nodeName']
-        if node_name is None:
-            raise TypeError("Missing 'node_name' argument")
-        if time_zone is None and 'timeZone' in kwargs:
-            time_zone = kwargs['timeZone']
-        if time_zone is None:
-            raise TypeError("Missing 'time_zone' argument")
-
-        _setter("node_name", node_name)
-        _setter("time_zone", time_zone)
+        pulumi.set(__self__, "node_name", node_name)
+        pulumi.set(__self__, "time_zone", time_zone)
 
     @property
     @pulumi.getter(name="nodeName")
@@ -84,39 +63,14 @@ class _TimeState:
         :param pulumi.Input[str] time_zone: The node's time zone.
         :param pulumi.Input[str] utc_time: The node's local time formatted as UTC.
         """
-        _TimeState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            local_time=local_time,
-            node_name=node_name,
-            time_zone=time_zone,
-            utc_time=utc_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             local_time: Optional[pulumi.Input[str]] = None,
-             node_name: Optional[pulumi.Input[str]] = None,
-             time_zone: Optional[pulumi.Input[str]] = None,
-             utc_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if local_time is None and 'localTime' in kwargs:
-            local_time = kwargs['localTime']
-        if node_name is None and 'nodeName' in kwargs:
-            node_name = kwargs['nodeName']
-        if time_zone is None and 'timeZone' in kwargs:
-            time_zone = kwargs['timeZone']
-        if utc_time is None and 'utcTime' in kwargs:
-            utc_time = kwargs['utcTime']
-
         if local_time is not None:
-            _setter("local_time", local_time)
+            pulumi.set(__self__, "local_time", local_time)
         if node_name is not None:
-            _setter("node_name", node_name)
+            pulumi.set(__self__, "node_name", node_name)
         if time_zone is not None:
-            _setter("time_zone", time_zone)
+            pulumi.set(__self__, "time_zone", time_zone)
         if utc_time is not None:
-            _setter("utc_time", utc_time)
+            pulumi.set(__self__, "utc_time", utc_time)
 
     @property
     @pulumi.getter(name="localTime")
@@ -240,10 +194,6 @@ class Time(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TimeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

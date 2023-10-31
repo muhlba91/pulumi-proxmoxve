@@ -50,7 +50,7 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
 
     /**
      * The resource mapping name of the device, for
-     * example gpu. Use either this or `id`.
+     * example usbdevice. Use either this or `id`.
      * 
      */
     @Import(name="mapping")
@@ -58,7 +58,7 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
 
     /**
      * @return The resource mapping name of the device, for
-     * example gpu. Use either this or `id`.
+     * example usbdevice. Use either this or `id`.
      * 
      */
     public Optional<Output<String>> mapping() {
@@ -227,7 +227,7 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
 
         /**
          * @param mapping The resource mapping name of the device, for
-         * example gpu. Use either this or `id`.
+         * example usbdevice. Use either this or `id`.
          * 
          * @return builder
          * 
@@ -239,7 +239,7 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
 
         /**
          * @param mapping The resource mapping name of the device, for
-         * example gpu. Use either this or `id`.
+         * example usbdevice. Use either this or `id`.
          * 
          * @return builder
          * 

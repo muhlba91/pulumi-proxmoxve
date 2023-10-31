@@ -2029,7 +2029,7 @@ type VirtualMachineHostpci struct {
 	// The PCI device ID. Use either this or `mapping`.
 	Id *string `pulumi:"id"`
 	// The resource mapping name of the device, for
-	// example gpu. Use either this or `id`.
+	// example usbdevice. Use either this or `id`.
 	Mapping *string `pulumi:"mapping"`
 	// The mediated device ID to use.
 	Mdev *string `pulumi:"mdev"`
@@ -2066,7 +2066,7 @@ type VirtualMachineHostpciArgs struct {
 	// The PCI device ID. Use either this or `mapping`.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The resource mapping name of the device, for
-	// example gpu. Use either this or `id`.
+	// example usbdevice. Use either this or `id`.
 	Mapping pulumi.StringPtrInput `pulumi:"mapping"`
 	// The mediated device ID to use.
 	Mdev pulumi.StringPtrInput `pulumi:"mdev"`
@@ -2166,7 +2166,7 @@ func (o VirtualMachineHostpciOutput) Id() pulumi.StringPtrOutput {
 }
 
 // The resource mapping name of the device, for
-// example gpu. Use either this or `id`.
+// example usbdevice. Use either this or `id`.
 func (o VirtualMachineHostpciOutput) Mapping() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineHostpci) *string { return v.Mapping }).(pulumi.StringPtrOutput)
 }
@@ -4655,6 +4655,151 @@ func (o VirtualMachineStartupPtrOutput) UpDelay() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type VirtualMachineUsb struct {
+	// The USB device ID. Use either this or `mapping`.
+	Host string `pulumi:"host"`
+	// The resource mapping name of the device, for
+	// example usbdevice. Use either this or `id`.
+	Mapping *string `pulumi:"mapping"`
+	// Makes the USB device a USB3 device for the VM (defaults
+	// to `false`).
+	Usb3 *bool `pulumi:"usb3"`
+}
+
+// VirtualMachineUsbInput is an input type that accepts VirtualMachineUsbArgs and VirtualMachineUsbOutput values.
+// You can construct a concrete instance of `VirtualMachineUsbInput` via:
+//
+//	VirtualMachineUsbArgs{...}
+type VirtualMachineUsbInput interface {
+	pulumi.Input
+
+	ToVirtualMachineUsbOutput() VirtualMachineUsbOutput
+	ToVirtualMachineUsbOutputWithContext(context.Context) VirtualMachineUsbOutput
+}
+
+type VirtualMachineUsbArgs struct {
+	// The USB device ID. Use either this or `mapping`.
+	Host pulumi.StringInput `pulumi:"host"`
+	// The resource mapping name of the device, for
+	// example usbdevice. Use either this or `id`.
+	Mapping pulumi.StringPtrInput `pulumi:"mapping"`
+	// Makes the USB device a USB3 device for the VM (defaults
+	// to `false`).
+	Usb3 pulumi.BoolPtrInput `pulumi:"usb3"`
+}
+
+func (VirtualMachineUsbArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineUsb)(nil)).Elem()
+}
+
+func (i VirtualMachineUsbArgs) ToVirtualMachineUsbOutput() VirtualMachineUsbOutput {
+	return i.ToVirtualMachineUsbOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineUsbArgs) ToVirtualMachineUsbOutputWithContext(ctx context.Context) VirtualMachineUsbOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineUsbOutput)
+}
+
+func (i VirtualMachineUsbArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineUsb] {
+	return pulumix.Output[VirtualMachineUsb]{
+		OutputState: i.ToVirtualMachineUsbOutputWithContext(ctx).OutputState,
+	}
+}
+
+// VirtualMachineUsbArrayInput is an input type that accepts VirtualMachineUsbArray and VirtualMachineUsbArrayOutput values.
+// You can construct a concrete instance of `VirtualMachineUsbArrayInput` via:
+//
+//	VirtualMachineUsbArray{ VirtualMachineUsbArgs{...} }
+type VirtualMachineUsbArrayInput interface {
+	pulumi.Input
+
+	ToVirtualMachineUsbArrayOutput() VirtualMachineUsbArrayOutput
+	ToVirtualMachineUsbArrayOutputWithContext(context.Context) VirtualMachineUsbArrayOutput
+}
+
+type VirtualMachineUsbArray []VirtualMachineUsbInput
+
+func (VirtualMachineUsbArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualMachineUsb)(nil)).Elem()
+}
+
+func (i VirtualMachineUsbArray) ToVirtualMachineUsbArrayOutput() VirtualMachineUsbArrayOutput {
+	return i.ToVirtualMachineUsbArrayOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineUsbArray) ToVirtualMachineUsbArrayOutputWithContext(ctx context.Context) VirtualMachineUsbArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineUsbArrayOutput)
+}
+
+func (i VirtualMachineUsbArray) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachineUsb] {
+	return pulumix.Output[[]VirtualMachineUsb]{
+		OutputState: i.ToVirtualMachineUsbArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type VirtualMachineUsbOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineUsbOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineUsb)(nil)).Elem()
+}
+
+func (o VirtualMachineUsbOutput) ToVirtualMachineUsbOutput() VirtualMachineUsbOutput {
+	return o
+}
+
+func (o VirtualMachineUsbOutput) ToVirtualMachineUsbOutputWithContext(ctx context.Context) VirtualMachineUsbOutput {
+	return o
+}
+
+func (o VirtualMachineUsbOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineUsb] {
+	return pulumix.Output[VirtualMachineUsb]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The USB device ID. Use either this or `mapping`.
+func (o VirtualMachineUsbOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualMachineUsb) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The resource mapping name of the device, for
+// example usbdevice. Use either this or `id`.
+func (o VirtualMachineUsbOutput) Mapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineUsb) *string { return v.Mapping }).(pulumi.StringPtrOutput)
+}
+
+// Makes the USB device a USB3 device for the VM (defaults
+// to `false`).
+func (o VirtualMachineUsbOutput) Usb3() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineUsb) *bool { return v.Usb3 }).(pulumi.BoolPtrOutput)
+}
+
+type VirtualMachineUsbArrayOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineUsbArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualMachineUsb)(nil)).Elem()
+}
+
+func (o VirtualMachineUsbArrayOutput) ToVirtualMachineUsbArrayOutput() VirtualMachineUsbArrayOutput {
+	return o
+}
+
+func (o VirtualMachineUsbArrayOutput) ToVirtualMachineUsbArrayOutputWithContext(ctx context.Context) VirtualMachineUsbArrayOutput {
+	return o
+}
+
+func (o VirtualMachineUsbArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachineUsb] {
+	return pulumix.Output[[]VirtualMachineUsb]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o VirtualMachineUsbArrayOutput) Index(i pulumi.IntInput) VirtualMachineUsbOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualMachineUsb {
+		return vs[0].([]VirtualMachineUsb)[vs[1].(int)]
+	}).(VirtualMachineUsbOutput)
+}
+
 type VirtualMachineVga struct {
 	// Whether to enable the VGA device (defaults
 	// to `true`).
@@ -5052,6 +5197,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineSmbiosPtrInput)(nil)).Elem(), VirtualMachineSmbiosArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineStartupInput)(nil)).Elem(), VirtualMachineStartupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineStartupPtrInput)(nil)).Elem(), VirtualMachineStartupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineUsbInput)(nil)).Elem(), VirtualMachineUsbArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineUsbArrayInput)(nil)).Elem(), VirtualMachineUsbArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineVgaInput)(nil)).Elem(), VirtualMachineVgaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineVgaPtrInput)(nil)).Elem(), VirtualMachineVgaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachinesVmInput)(nil)).Elem(), GetVirtualMachinesVmArgs{})
@@ -5098,6 +5245,8 @@ func init() {
 	pulumi.RegisterOutputType(VirtualMachineSmbiosPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineStartupOutput{})
 	pulumi.RegisterOutputType(VirtualMachineStartupPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineUsbOutput{})
+	pulumi.RegisterOutputType(VirtualMachineUsbArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachineVgaOutput{})
 	pulumi.RegisterOutputType(VirtualMachineVgaPtrOutput{})
 	pulumi.RegisterOutputType(GetVirtualMachinesVmOutput{})

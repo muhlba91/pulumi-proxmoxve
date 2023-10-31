@@ -20,6 +20,7 @@ import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineOperatingSystemA
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineSerialDeviceArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineSmbiosArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineStartupArgs;
+import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineUsbArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineVgaArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -694,6 +695,21 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * A host USB device mapping (multiple blocks supported).
+     * 
+     */
+    @Import(name="usbs")
+    private @Nullable Output<List<VirtualMachineUsbArgs>> usbs;
+
+    /**
+     * @return A host USB device mapping (multiple blocks supported).
+     * 
+     */
+    public Optional<Output<List<VirtualMachineUsbArgs>>> usbs() {
+        return Optional.ofNullable(this.usbs);
+    }
+
+    /**
      * The VGA configuration.
      * 
      */
@@ -767,6 +783,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         this.timeoutShutdownVm = $.timeoutShutdownVm;
         this.timeoutStartVm = $.timeoutStartVm;
         this.timeoutStopVm = $.timeoutStopVm;
+        this.usbs = $.usbs;
         this.vga = $.vga;
         this.vmId = $.vmId;
     }
@@ -1757,6 +1774,37 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder timeoutStopVm(Integer timeoutStopVm) {
             return timeoutStopVm(Output.of(timeoutStopVm));
+        }
+
+        /**
+         * @param usbs A host USB device mapping (multiple blocks supported).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usbs(@Nullable Output<List<VirtualMachineUsbArgs>> usbs) {
+            $.usbs = usbs;
+            return this;
+        }
+
+        /**
+         * @param usbs A host USB device mapping (multiple blocks supported).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usbs(List<VirtualMachineUsbArgs> usbs) {
+            return usbs(Output.of(usbs));
+        }
+
+        /**
+         * @param usbs A host USB device mapping (multiple blocks supported).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usbs(VirtualMachineUsbArgs... usbs) {
+            return usbs(List.of(usbs));
         }
 
         /**

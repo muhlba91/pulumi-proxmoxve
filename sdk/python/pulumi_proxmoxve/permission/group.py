@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -25,30 +25,11 @@ class GroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GroupAclArgs']]] acls: The access control list (multiple blocks supported).
         :param pulumi.Input[str] comment: The group comment.
         """
-        GroupArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            group_id=group_id,
-            acls=acls,
-            comment=comment,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             group_id: Optional[pulumi.Input[str]] = None,
-             acls: Optional[pulumi.Input[Sequence[pulumi.Input['GroupAclArgs']]]] = None,
-             comment: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if group_id is None and 'groupId' in kwargs:
-            group_id = kwargs['groupId']
-        if group_id is None:
-            raise TypeError("Missing 'group_id' argument")
-
-        _setter("group_id", group_id)
+        pulumi.set(__self__, "group_id", group_id)
         if acls is not None:
-            _setter("acls", acls)
+            pulumi.set(__self__, "acls", acls)
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
 
     @property
     @pulumi.getter(name="groupId")
@@ -101,33 +82,14 @@ class _GroupState:
         :param pulumi.Input[str] group_id: The group identifier.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: The group members as a list of `username@realm` entries
         """
-        _GroupState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            acls=acls,
-            comment=comment,
-            group_id=group_id,
-            members=members,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             acls: Optional[pulumi.Input[Sequence[pulumi.Input['GroupAclArgs']]]] = None,
-             comment: Optional[pulumi.Input[str]] = None,
-             group_id: Optional[pulumi.Input[str]] = None,
-             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if group_id is None and 'groupId' in kwargs:
-            group_id = kwargs['groupId']
-
         if acls is not None:
-            _setter("acls", acls)
+            pulumi.set(__self__, "acls", acls)
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
         if group_id is not None:
-            _setter("group_id", group_id)
+            pulumi.set(__self__, "group_id", group_id)
         if members is not None:
-            _setter("members", members)
+            pulumi.set(__self__, "members", members)
 
     @property
     @pulumi.getter
@@ -253,10 +215,6 @@ class Group(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            GroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

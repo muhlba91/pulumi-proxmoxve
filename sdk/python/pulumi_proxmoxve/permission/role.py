@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RoleArgs', 'Role']
@@ -21,27 +21,8 @@ class RoleArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: The role privileges.
         :param pulumi.Input[str] role_id: The role identifier.
         """
-        RoleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            privileges=privileges,
-            role_id=role_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             privileges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             role_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if privileges is None:
-            raise TypeError("Missing 'privileges' argument")
-        if role_id is None and 'roleId' in kwargs:
-            role_id = kwargs['roleId']
-        if role_id is None:
-            raise TypeError("Missing 'role_id' argument")
-
-        _setter("privileges", privileges)
-        _setter("role_id", role_id)
+        pulumi.set(__self__, "privileges", privileges)
+        pulumi.set(__self__, "role_id", role_id)
 
     @property
     @pulumi.getter
@@ -78,25 +59,10 @@ class _RoleState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: The role privileges.
         :param pulumi.Input[str] role_id: The role identifier.
         """
-        _RoleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            privileges=privileges,
-            role_id=role_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             privileges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             role_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if role_id is None and 'roleId' in kwargs:
-            role_id = kwargs['roleId']
-
         if privileges is not None:
-            _setter("privileges", privileges)
+            pulumi.set(__self__, "privileges", privileges)
         if role_id is not None:
-            _setter("role_id", role_id)
+            pulumi.set(__self__, "role_id", role_id)
 
     @property
     @pulumi.getter
@@ -196,10 +162,6 @@ class Role(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RoleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

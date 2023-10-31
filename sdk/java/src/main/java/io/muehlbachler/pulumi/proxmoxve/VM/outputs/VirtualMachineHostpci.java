@@ -25,7 +25,7 @@ public final class VirtualMachineHostpci {
     private @Nullable String id;
     /**
      * @return The resource mapping name of the device, for
-     * example gpu. Use either this or `id`.
+     * example usbdevice. Use either this or `id`.
      * 
      */
     private @Nullable String mapping;
@@ -78,7 +78,7 @@ public final class VirtualMachineHostpci {
     }
     /**
      * @return The resource mapping name of the device, for
-     * example gpu. Use either this or `id`.
+     * example usbdevice. Use either this or `id`.
      * 
      */
     public Optional<String> mapping() {

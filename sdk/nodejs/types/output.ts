@@ -914,7 +914,7 @@ export namespace VM {
         id?: string;
         /**
          * The resource mapping name of the device, for
-         * example gpu. Use either this or `id`.
+         * example usbdevice. Use either this or `id`.
          */
         mapping?: string;
         /**
@@ -1175,6 +1175,23 @@ export namespace VM {
          */
         order?: number;
         upDelay?: number;
+    }
+
+    export interface VirtualMachineUsb {
+        /**
+         * The USB device ID. Use either this or `mapping`.
+         */
+        host: string;
+        /**
+         * The resource mapping name of the device, for
+         * example usbdevice. Use either this or `id`.
+         */
+        mapping?: string;
+        /**
+         * Makes the USB device a USB3 device for the VM (defaults
+         * to `false`).
+         */
+        usb3?: boolean;
     }
 
     export interface VirtualMachineVga {

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -46,38 +46,15 @@ class FileSourceFile(dict):
         :param bool insecure: Whether to skip the TLS verification step for
                HTTPS sources (defaults to `false`).
         """
-        FileSourceFile._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            path=path,
-            changed=changed,
-            checksum=checksum,
-            file_name=file_name,
-            insecure=insecure,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             path: Optional[str] = None,
-             changed: Optional[bool] = None,
-             checksum: Optional[str] = None,
-             file_name: Optional[str] = None,
-             insecure: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-        if file_name is None and 'fileName' in kwargs:
-            file_name = kwargs['fileName']
-
-        _setter("path", path)
+        pulumi.set(__self__, "path", path)
         if changed is not None:
-            _setter("changed", changed)
+            pulumi.set(__self__, "changed", changed)
         if checksum is not None:
-            _setter("checksum", checksum)
+            pulumi.set(__self__, "checksum", checksum)
         if file_name is not None:
-            _setter("file_name", file_name)
+            pulumi.set(__self__, "file_name", file_name)
         if insecure is not None:
-            _setter("insecure", insecure)
+            pulumi.set(__self__, "insecure", insecure)
 
     @property
     @pulumi.getter
@@ -146,31 +123,10 @@ class FileSourceRaw(dict):
         :param str file_name: The file name.
         :param int resize: The number of bytes to resize the file to.
         """
-        FileSourceRaw._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            data=data,
-            file_name=file_name,
-            resize=resize,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             data: Optional[str] = None,
-             file_name: Optional[str] = None,
-             resize: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if data is None:
-            raise TypeError("Missing 'data' argument")
-        if file_name is None and 'fileName' in kwargs:
-            file_name = kwargs['fileName']
-        if file_name is None:
-            raise TypeError("Missing 'file_name' argument")
-
-        _setter("data", data)
-        _setter("file_name", file_name)
+        pulumi.set(__self__, "data", data)
+        pulumi.set(__self__, "file_name", file_name)
         if resize is not None:
-            _setter("resize", resize)
+            pulumi.set(__self__, "resize", resize)
 
     @property
     @pulumi.getter
