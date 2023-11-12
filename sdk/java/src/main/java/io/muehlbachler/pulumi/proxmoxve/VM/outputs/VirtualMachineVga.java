@@ -90,11 +90,11 @@ public final class VirtualMachineVga {
             return this;
         }
         public VirtualMachineVga build() {
-            final var o = new VirtualMachineVga();
-            o.enabled = enabled;
-            o.memory = memory;
-            o.type = type;
-            return o;
+            final var _resultValue = new VirtualMachineVga();
+            _resultValue.enabled = enabled;
+            _resultValue.memory = memory;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

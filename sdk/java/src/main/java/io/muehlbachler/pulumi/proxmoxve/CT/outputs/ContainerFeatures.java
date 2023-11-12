@@ -92,11 +92,11 @@ public final class ContainerFeatures {
             return this;
         }
         public ContainerFeatures build() {
-            final var o = new ContainerFeatures();
-            o.fuse = fuse;
-            o.keyctl = keyctl;
-            o.nesting = nesting;
-            return o;
+            final var _resultValue = new ContainerFeatures();
+            _resultValue.fuse = fuse;
+            _resultValue.keyctl = keyctl;
+            _resultValue.nesting = nesting;
+            return _resultValue;
         }
     }
 }

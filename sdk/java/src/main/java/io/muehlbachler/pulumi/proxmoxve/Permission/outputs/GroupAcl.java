@@ -87,11 +87,11 @@ public final class GroupAcl {
             return this;
         }
         public GroupAcl build() {
-            final var o = new GroupAcl();
-            o.path = path;
-            o.propagate = propagate;
-            o.roleId = roleId;
-            return o;
+            final var _resultValue = new GroupAcl();
+            _resultValue.path = path;
+            _resultValue.propagate = propagate;
+            _resultValue.roleId = roleId;
+            return _resultValue;
         }
     }
 }

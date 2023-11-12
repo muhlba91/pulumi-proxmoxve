@@ -67,10 +67,10 @@ public final class ContainerInitializationDns {
             return this;
         }
         public ContainerInitializationDns build() {
-            final var o = new ContainerInitializationDns();
-            o.domain = domain;
-            o.server = server;
-            return o;
+            final var _resultValue = new ContainerInitializationDns();
+            _resultValue.domain = domain;
+            _resultValue.server = server;
+            return _resultValue;
         }
     }
 }

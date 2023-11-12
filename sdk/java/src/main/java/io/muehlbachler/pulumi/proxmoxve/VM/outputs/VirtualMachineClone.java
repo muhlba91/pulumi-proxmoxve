@@ -126,13 +126,13 @@ public final class VirtualMachineClone {
             return this;
         }
         public VirtualMachineClone build() {
-            final var o = new VirtualMachineClone();
-            o.datastoreId = datastoreId;
-            o.full = full;
-            o.nodeName = nodeName;
-            o.retries = retries;
-            o.vmId = vmId;
-            return o;
+            final var _resultValue = new VirtualMachineClone();
+            _resultValue.datastoreId = datastoreId;
+            _resultValue.full = full;
+            _resultValue.nodeName = nodeName;
+            _resultValue.retries = retries;
+            _resultValue.vmId = vmId;
+            return _resultValue;
         }
     }
 }

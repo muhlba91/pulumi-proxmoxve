@@ -2026,7 +2026,9 @@ type VirtualMachineHostpci struct {
 	// The device (defaults to `socket`).
 	// - `/dev/*` - A host serial device.
 	Device string `pulumi:"device"`
-	// The PCI device ID. Use either this or `mapping`.
+	// The PCI device ID. This parameter is not compatible
+	// with `apiToken` and requires the root `username` and `password`
+	// configured in the proxmox provider. Use either this or `mapping`.
 	Id *string `pulumi:"id"`
 	// The resource mapping name of the device, for
 	// example usbdevice. Use either this or `id`.
@@ -2063,7 +2065,9 @@ type VirtualMachineHostpciArgs struct {
 	// The device (defaults to `socket`).
 	// - `/dev/*` - A host serial device.
 	Device pulumi.StringInput `pulumi:"device"`
-	// The PCI device ID. Use either this or `mapping`.
+	// The PCI device ID. This parameter is not compatible
+	// with `apiToken` and requires the root `username` and `password`
+	// configured in the proxmox provider. Use either this or `mapping`.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The resource mapping name of the device, for
 	// example usbdevice. Use either this or `id`.
@@ -2160,7 +2164,9 @@ func (o VirtualMachineHostpciOutput) Device() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineHostpci) string { return v.Device }).(pulumi.StringOutput)
 }
 
-// The PCI device ID. Use either this or `mapping`.
+// The PCI device ID. This parameter is not compatible
+// with `apiToken` and requires the root `username` and `password`
+// configured in the proxmox provider. Use either this or `mapping`.
 func (o VirtualMachineHostpciOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineHostpci) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -2914,8 +2920,9 @@ func (o VirtualMachineInitializationIpConfigArrayOutput) Index(i pulumi.IntInput
 }
 
 type VirtualMachineInitializationIpConfigIpv4 struct {
-	// The IPv6 address (use `dhcp` for
-	// autodiscovery).
+	// The IPv6 address in CIDR notation
+	// (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+	// to `dhcp` for autodiscovery.
 	Address *string `pulumi:"address"`
 	// The IPv6 gateway (must be omitted
 	// when `dhcp` is used as the address).
@@ -2934,8 +2941,9 @@ type VirtualMachineInitializationIpConfigIpv4Input interface {
 }
 
 type VirtualMachineInitializationIpConfigIpv4Args struct {
-	// The IPv6 address (use `dhcp` for
-	// autodiscovery).
+	// The IPv6 address in CIDR notation
+	// (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+	// to `dhcp` for autodiscovery.
 	Address pulumi.StringPtrInput `pulumi:"address"`
 	// The IPv6 gateway (must be omitted
 	// when `dhcp` is used as the address).
@@ -3037,8 +3045,9 @@ func (o VirtualMachineInitializationIpConfigIpv4Output) ToOutput(ctx context.Con
 	}
 }
 
-// The IPv6 address (use `dhcp` for
-// autodiscovery).
+// The IPv6 address in CIDR notation
+// (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+// to `dhcp` for autodiscovery.
 func (o VirtualMachineInitializationIpConfigIpv4Output) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationIpConfigIpv4) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
@@ -3079,8 +3088,9 @@ func (o VirtualMachineInitializationIpConfigIpv4PtrOutput) Elem() VirtualMachine
 	}).(VirtualMachineInitializationIpConfigIpv4Output)
 }
 
-// The IPv6 address (use `dhcp` for
-// autodiscovery).
+// The IPv6 address in CIDR notation
+// (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+// to `dhcp` for autodiscovery.
 func (o VirtualMachineInitializationIpConfigIpv4PtrOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineInitializationIpConfigIpv4) *string {
 		if v == nil {
@@ -3102,8 +3112,9 @@ func (o VirtualMachineInitializationIpConfigIpv4PtrOutput) Gateway() pulumi.Stri
 }
 
 type VirtualMachineInitializationIpConfigIpv6 struct {
-	// The IPv6 address (use `dhcp` for
-	// autodiscovery).
+	// The IPv6 address in CIDR notation
+	// (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+	// to `dhcp` for autodiscovery.
 	Address *string `pulumi:"address"`
 	// The IPv6 gateway (must be omitted
 	// when `dhcp` is used as the address).
@@ -3122,8 +3133,9 @@ type VirtualMachineInitializationIpConfigIpv6Input interface {
 }
 
 type VirtualMachineInitializationIpConfigIpv6Args struct {
-	// The IPv6 address (use `dhcp` for
-	// autodiscovery).
+	// The IPv6 address in CIDR notation
+	// (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+	// to `dhcp` for autodiscovery.
 	Address pulumi.StringPtrInput `pulumi:"address"`
 	// The IPv6 gateway (must be omitted
 	// when `dhcp` is used as the address).
@@ -3225,8 +3237,9 @@ func (o VirtualMachineInitializationIpConfigIpv6Output) ToOutput(ctx context.Con
 	}
 }
 
-// The IPv6 address (use `dhcp` for
-// autodiscovery).
+// The IPv6 address in CIDR notation
+// (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+// to `dhcp` for autodiscovery.
 func (o VirtualMachineInitializationIpConfigIpv6Output) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationIpConfigIpv6) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
@@ -3267,8 +3280,9 @@ func (o VirtualMachineInitializationIpConfigIpv6PtrOutput) Elem() VirtualMachine
 	}).(VirtualMachineInitializationIpConfigIpv6Output)
 }
 
-// The IPv6 address (use `dhcp` for
-// autodiscovery).
+// The IPv6 address in CIDR notation
+// (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+// to `dhcp` for autodiscovery.
 func (o VirtualMachineInitializationIpConfigIpv6PtrOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineInitializationIpConfigIpv6) *string {
 		if v == nil {

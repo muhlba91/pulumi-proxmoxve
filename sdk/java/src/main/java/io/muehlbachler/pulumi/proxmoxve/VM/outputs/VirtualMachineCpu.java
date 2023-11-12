@@ -233,16 +233,16 @@ public final class VirtualMachineCpu {
             return this;
         }
         public VirtualMachineCpu build() {
-            final var o = new VirtualMachineCpu();
-            o.architecture = architecture;
-            o.cores = cores;
-            o.flags = flags;
-            o.hotplugged = hotplugged;
-            o.numa = numa;
-            o.sockets = sockets;
-            o.type = type;
-            o.units = units;
-            return o;
+            final var _resultValue = new VirtualMachineCpu();
+            _resultValue.architecture = architecture;
+            _resultValue.cores = cores;
+            _resultValue.flags = flags;
+            _resultValue.hotplugged = hotplugged;
+            _resultValue.numa = numa;
+            _resultValue.sockets = sockets;
+            _resultValue.type = type;
+            _resultValue.units = units;
+            return _resultValue;
         }
     }
 }

@@ -90,11 +90,11 @@ public final class FirewallLogRatelimit {
             return this;
         }
         public FirewallLogRatelimit build() {
-            final var o = new FirewallLogRatelimit();
-            o.burst = burst;
-            o.enabled = enabled;
-            o.rate = rate;
-            return o;
+            final var _resultValue = new FirewallLogRatelimit();
+            _resultValue.burst = burst;
+            _resultValue.enabled = enabled;
+            _resultValue.rate = rate;
+            return _resultValue;
         }
     }
 }

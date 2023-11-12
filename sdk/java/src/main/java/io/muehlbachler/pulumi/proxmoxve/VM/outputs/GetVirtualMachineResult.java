@@ -111,13 +111,13 @@ public final class GetVirtualMachineResult {
             return this;
         }
         public GetVirtualMachineResult build() {
-            final var o = new GetVirtualMachineResult();
-            o.id = id;
-            o.name = name;
-            o.nodeName = nodeName;
-            o.tags = tags;
-            o.vmId = vmId;
-            return o;
+            final var _resultValue = new GetVirtualMachineResult();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.nodeName = nodeName;
+            _resultValue.tags = tags;
+            _resultValue.vmId = vmId;
+            return _resultValue;
         }
     }
 }

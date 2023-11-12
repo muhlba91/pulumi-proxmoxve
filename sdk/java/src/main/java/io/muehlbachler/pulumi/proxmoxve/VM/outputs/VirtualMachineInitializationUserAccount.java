@@ -90,11 +90,11 @@ public final class VirtualMachineInitializationUserAccount {
             return this;
         }
         public VirtualMachineInitializationUserAccount build() {
-            final var o = new VirtualMachineInitializationUserAccount();
-            o.keys = keys;
-            o.password = password;
-            o.username = username;
-            return o;
+            final var _resultValue = new VirtualMachineInitializationUserAccount();
+            _resultValue.keys = keys;
+            _resultValue.password = password;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

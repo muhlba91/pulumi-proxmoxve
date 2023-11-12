@@ -243,18 +243,18 @@ public final class GetUsersResult {
             return userIds(List.of(userIds));
         }
         public GetUsersResult build() {
-            final var o = new GetUsersResult();
-            o.comments = comments;
-            o.emails = emails;
-            o.enableds = enableds;
-            o.expirationDates = expirationDates;
-            o.firstNames = firstNames;
-            o.groups = groups;
-            o.id = id;
-            o.keys = keys;
-            o.lastNames = lastNames;
-            o.userIds = userIds;
-            return o;
+            final var _resultValue = new GetUsersResult();
+            _resultValue.comments = comments;
+            _resultValue.emails = emails;
+            _resultValue.enableds = enableds;
+            _resultValue.expirationDates = expirationDates;
+            _resultValue.firstNames = firstNames;
+            _resultValue.groups = groups;
+            _resultValue.id = id;
+            _resultValue.keys = keys;
+            _resultValue.lastNames = lastNames;
+            _resultValue.userIds = userIds;
+            return _resultValue;
         }
     }
 }

@@ -19,7 +19,9 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly string Device;
         /// <summary>
-        /// The PCI device ID. Use either this or `mapping`.
+        /// The PCI device ID. This parameter is not compatible
+        /// with `api_token` and requires the root `username` and `password`
+        /// configured in the proxmox provider. Use either this or `mapping`.
         /// </summary>
         public readonly string? Id;
         /// <summary>

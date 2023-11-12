@@ -211,17 +211,17 @@ public final class VirtualMachineNetworkDevice {
             return this;
         }
         public VirtualMachineNetworkDevice build() {
-            final var o = new VirtualMachineNetworkDevice();
-            o.bridge = bridge;
-            o.enabled = enabled;
-            o.firewall = firewall;
-            o.macAddress = macAddress;
-            o.model = model;
-            o.mtu = mtu;
-            o.queues = queues;
-            o.rateLimit = rateLimit;
-            o.vlanId = vlanId;
-            return o;
+            final var _resultValue = new VirtualMachineNetworkDevice();
+            _resultValue.bridge = bridge;
+            _resultValue.enabled = enabled;
+            _resultValue.firewall = firewall;
+            _resultValue.macAddress = macAddress;
+            _resultValue.model = model;
+            _resultValue.mtu = mtu;
+            _resultValue.queues = queues;
+            _resultValue.rateLimit = rateLimit;
+            _resultValue.vlanId = vlanId;
+            return _resultValue;
         }
     }
 }

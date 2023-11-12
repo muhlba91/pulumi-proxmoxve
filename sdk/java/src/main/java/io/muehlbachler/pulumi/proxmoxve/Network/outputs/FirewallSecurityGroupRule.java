@@ -321,22 +321,22 @@ public final class FirewallSecurityGroupRule {
             return this;
         }
         public FirewallSecurityGroupRule build() {
-            final var o = new FirewallSecurityGroupRule();
-            o.action = action;
-            o.comment = comment;
-            o.dest = dest;
-            o.dport = dport;
-            o.enabled = enabled;
-            o.iface = iface;
-            o.log = log;
-            o.macro = macro;
-            o.pos = pos;
-            o.proto = proto;
-            o.securityGroup = securityGroup;
-            o.source = source;
-            o.sport = sport;
-            o.type = type;
-            return o;
+            final var _resultValue = new FirewallSecurityGroupRule();
+            _resultValue.action = action;
+            _resultValue.comment = comment;
+            _resultValue.dest = dest;
+            _resultValue.dport = dport;
+            _resultValue.enabled = enabled;
+            _resultValue.iface = iface;
+            _resultValue.log = log;
+            _resultValue.macro = macro;
+            _resultValue.pos = pos;
+            _resultValue.proto = proto;
+            _resultValue.securityGroup = securityGroup;
+            _resultValue.source = source;
+            _resultValue.sport = sport;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

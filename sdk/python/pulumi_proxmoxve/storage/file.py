@@ -351,6 +351,51 @@ class File(pulumi.CustomResource):
         """
         Manages a file.
 
+        ## Example Usage
+        ### Backups
+
+        > **Note:** The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        backup = proxmoxve.storage.File("backup",
+            content_type="backup",
+            datastore_id="local",
+            node_name="pve",
+            source_file=proxmoxve.storage.FileSourceFileArgs(
+                path="vzdump-lxc-100-2023_11_08-23_10_05.tar",
+            ))
+        ```
+        ### Images
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        ubuntu_container_template = proxmoxve.storage.File("ubuntuContainerTemplate",
+            content_type="iso",
+            datastore_id="local",
+            node_name="pve",
+            source_file=proxmoxve.storage.FileSourceFileArgs(
+                path="https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img",
+            ))
+        ```
+        ### Container Template (`vztmpl`)
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        ubuntu_container_template = proxmoxve.storage.File("ubuntuContainerTemplate",
+            content_type="vztmpl",
+            datastore_id="local",
+            node_name="first-node",
+            source_file=proxmoxve.storage.FileSourceFileArgs(
+                path="https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz",
+            ))
+        ```
         ## Important Notes
 
         The Proxmox VE API endpoint for file uploads does not support chunked transfer
@@ -365,10 +410,6 @@ class File(pulumi.CustomResource):
         unconditionally replace it and take ownership of the resource. On destruction,
         the file will be deleted as if it did not exist before. If you want to prevent
         the resource from replacing the file, set `overwrite` to `false`.
-
-        Make sure the target datastore supports the content type you are uploading. For
-        example, the `snippets` content type can be disabled by default on the `local`
-        datastore.
 
         ## Import
 
@@ -402,6 +443,51 @@ class File(pulumi.CustomResource):
         """
         Manages a file.
 
+        ## Example Usage
+        ### Backups
+
+        > **Note:** The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        backup = proxmoxve.storage.File("backup",
+            content_type="backup",
+            datastore_id="local",
+            node_name="pve",
+            source_file=proxmoxve.storage.FileSourceFileArgs(
+                path="vzdump-lxc-100-2023_11_08-23_10_05.tar",
+            ))
+        ```
+        ### Images
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        ubuntu_container_template = proxmoxve.storage.File("ubuntuContainerTemplate",
+            content_type="iso",
+            datastore_id="local",
+            node_name="pve",
+            source_file=proxmoxve.storage.FileSourceFileArgs(
+                path="https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img",
+            ))
+        ```
+        ### Container Template (`vztmpl`)
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        ubuntu_container_template = proxmoxve.storage.File("ubuntuContainerTemplate",
+            content_type="vztmpl",
+            datastore_id="local",
+            node_name="first-node",
+            source_file=proxmoxve.storage.FileSourceFileArgs(
+                path="https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz",
+            ))
+        ```
         ## Important Notes
 
         The Proxmox VE API endpoint for file uploads does not support chunked transfer
@@ -416,10 +502,6 @@ class File(pulumi.CustomResource):
         unconditionally replace it and take ownership of the resource. On destruction,
         the file will be deleted as if it did not exist before. If you want to prevent
         the resource from replacing the file, set `overwrite` to `false`.
-
-        Make sure the target datastore supports the content type you are uploading. For
-        example, the `snippets` content type can be disabled by default on the `local`
-        datastore.
 
         ## Import
 

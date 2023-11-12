@@ -122,13 +122,13 @@ public final class GetGroupResult {
             return members(List.of(members));
         }
         public GetGroupResult build() {
-            final var o = new GetGroupResult();
-            o.acls = acls;
-            o.comment = comment;
-            o.groupId = groupId;
-            o.id = id;
-            o.members = members;
-            return o;
+            final var _resultValue = new GetGroupResult();
+            _resultValue.acls = acls;
+            _resultValue.comment = comment;
+            _resultValue.groupId = groupId;
+            _resultValue.id = id;
+            _resultValue.members = members;
+            return _resultValue;
         }
     }
 }

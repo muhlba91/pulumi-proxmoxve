@@ -99,11 +99,11 @@ public final class VirtualMachineCdrom {
             return this;
         }
         public VirtualMachineCdrom build() {
-            final var o = new VirtualMachineCdrom();
-            o.enabled = enabled;
-            o.fileId = fileId;
-            o.interface_ = interface_;
-            return o;
+            final var _resultValue = new VirtualMachineCdrom();
+            _resultValue.enabled = enabled;
+            _resultValue.fileId = fileId;
+            _resultValue.interface_ = interface_;
+            return _resultValue;
         }
     }
 }

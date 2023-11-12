@@ -20,7 +20,9 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<string> Device { get; set; } = null!;
 
         /// <summary>
-        /// The PCI device ID. Use either this or `mapping`.
+        /// The PCI device ID. This parameter is not compatible
+        /// with `api_token` and requires the root `username` and `password`
+        /// configured in the proxmox provider. Use either this or `mapping`.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }

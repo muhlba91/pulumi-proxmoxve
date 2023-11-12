@@ -71,10 +71,10 @@ public final class ContainerInitializationUserAccount {
             return this;
         }
         public ContainerInitializationUserAccount build() {
-            final var o = new ContainerInitializationUserAccount();
-            o.keys = keys;
-            o.password = password;
-            return o;
+            final var _resultValue = new ContainerInitializationUserAccount();
+            _resultValue.keys = keys;
+            _resultValue.password = password;
+            return _resultValue;
         }
     }
 }

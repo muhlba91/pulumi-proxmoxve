@@ -63,11 +63,11 @@ public final class SshNode {
             return this;
         }
         public SshNode build() {
-            final var o = new SshNode();
-            o.address = address;
-            o.name = name;
-            o.port = port;
-            return o;
+            final var _resultValue = new SshNode();
+            _resultValue.address = address;
+            _resultValue.name = name;
+            _resultValue.port = port;
+            return _resultValue;
         }
     }
 }

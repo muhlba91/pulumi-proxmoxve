@@ -68,10 +68,10 @@ public final class ContainerInitializationIpConfig {
             return this;
         }
         public ContainerInitializationIpConfig build() {
-            final var o = new ContainerInitializationIpConfig();
-            o.ipv4 = ipv4;
-            o.ipv6 = ipv6;
-            return o;
+            final var _resultValue = new ContainerInitializationIpConfig();
+            _resultValue.ipv4 = ipv4;
+            _resultValue.ipv6 = ipv6;
+            return _resultValue;
         }
     }
 }

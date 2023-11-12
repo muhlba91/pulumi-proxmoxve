@@ -50,9 +50,9 @@ public final class VirtualMachineSerialDevice {
             return this;
         }
         public VirtualMachineSerialDevice build() {
-            final var o = new VirtualMachineSerialDevice();
-            o.device = device;
-            return o;
+            final var _resultValue = new VirtualMachineSerialDevice();
+            _resultValue.device = device;
+            return _resultValue;
         }
     }
 }

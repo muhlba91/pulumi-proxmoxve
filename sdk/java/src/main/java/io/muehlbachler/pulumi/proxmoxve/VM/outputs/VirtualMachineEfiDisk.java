@@ -114,12 +114,12 @@ public final class VirtualMachineEfiDisk {
             return this;
         }
         public VirtualMachineEfiDisk build() {
-            final var o = new VirtualMachineEfiDisk();
-            o.datastoreId = datastoreId;
-            o.fileFormat = fileFormat;
-            o.preEnrolledKeys = preEnrolledKeys;
-            o.type = type;
-            return o;
+            final var _resultValue = new VirtualMachineEfiDisk();
+            _resultValue.datastoreId = datastoreId;
+            _resultValue.fileFormat = fileFormat;
+            _resultValue.preEnrolledKeys = preEnrolledKeys;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

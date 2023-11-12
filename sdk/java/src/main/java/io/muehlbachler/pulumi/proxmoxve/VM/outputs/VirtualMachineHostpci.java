@@ -19,7 +19,9 @@ public final class VirtualMachineHostpci {
      */
     private String device;
     /**
-     * @return The PCI device ID. Use either this or `mapping`.
+     * @return The PCI device ID. This parameter is not compatible
+     * with `api_token` and requires the root `username` and `password`
+     * configured in the proxmox provider. Use either this or `mapping`.
      * 
      */
     private @Nullable String id;
@@ -70,7 +72,9 @@ public final class VirtualMachineHostpci {
         return this.device;
     }
     /**
-     * @return The PCI device ID. Use either this or `mapping`.
+     * @return The PCI device ID. This parameter is not compatible
+     * with `api_token` and requires the root `username` and `password`
+     * configured in the proxmox provider. Use either this or `mapping`.
      * 
      */
     public Optional<String> id() {
@@ -196,16 +200,16 @@ public final class VirtualMachineHostpci {
             return this;
         }
         public VirtualMachineHostpci build() {
-            final var o = new VirtualMachineHostpci();
-            o.device = device;
-            o.id = id;
-            o.mapping = mapping;
-            o.mdev = mdev;
-            o.pcie = pcie;
-            o.romFile = romFile;
-            o.rombar = rombar;
-            o.xvga = xvga;
-            return o;
+            final var _resultValue = new VirtualMachineHostpci();
+            _resultValue.device = device;
+            _resultValue.id = id;
+            _resultValue.mapping = mapping;
+            _resultValue.mdev = mdev;
+            _resultValue.pcie = pcie;
+            _resultValue.romFile = romFile;
+            _resultValue.rombar = rombar;
+            _resultValue.xvga = xvga;
+            return _resultValue;
         }
     }
 }

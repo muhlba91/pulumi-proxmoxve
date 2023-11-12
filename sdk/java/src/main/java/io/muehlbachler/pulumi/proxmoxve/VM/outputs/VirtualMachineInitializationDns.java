@@ -67,10 +67,10 @@ public final class VirtualMachineInitializationDns {
             return this;
         }
         public VirtualMachineInitializationDns build() {
-            final var o = new VirtualMachineInitializationDns();
-            o.domain = domain;
-            o.server = server;
-            return o;
+            final var _resultValue = new VirtualMachineInitializationDns();
+            _resultValue.domain = domain;
+            _resultValue.server = server;
+            return _resultValue;
         }
     }
 }

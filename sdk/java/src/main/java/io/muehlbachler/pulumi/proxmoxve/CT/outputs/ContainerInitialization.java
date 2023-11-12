@@ -114,12 +114,12 @@ public final class ContainerInitialization {
             return this;
         }
         public ContainerInitialization build() {
-            final var o = new ContainerInitialization();
-            o.dns = dns;
-            o.hostname = hostname;
-            o.ipConfigs = ipConfigs;
-            o.userAccount = userAccount;
-            return o;
+            final var _resultValue = new ContainerInitialization();
+            _resultValue.dns = dns;
+            _resultValue.hostname = hostname;
+            _resultValue.ipConfigs = ipConfigs;
+            _resultValue.userAccount = userAccount;
+            return _resultValue;
         }
     }
 }

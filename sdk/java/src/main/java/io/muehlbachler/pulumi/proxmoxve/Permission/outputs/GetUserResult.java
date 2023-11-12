@@ -237,19 +237,19 @@ public final class GetUserResult {
             return this;
         }
         public GetUserResult build() {
-            final var o = new GetUserResult();
-            o.acls = acls;
-            o.comment = comment;
-            o.email = email;
-            o.enabled = enabled;
-            o.expirationDate = expirationDate;
-            o.firstName = firstName;
-            o.groups = groups;
-            o.id = id;
-            o.keys = keys;
-            o.lastName = lastName;
-            o.userId = userId;
-            return o;
+            final var _resultValue = new GetUserResult();
+            _resultValue.acls = acls;
+            _resultValue.comment = comment;
+            _resultValue.email = email;
+            _resultValue.enabled = enabled;
+            _resultValue.expirationDate = expirationDate;
+            _resultValue.firstName = firstName;
+            _resultValue.groups = groups;
+            _resultValue.id = id;
+            _resultValue.keys = keys;
+            _resultValue.lastName = lastName;
+            _resultValue.userId = userId;
+            return _resultValue;
         }
     }
 }

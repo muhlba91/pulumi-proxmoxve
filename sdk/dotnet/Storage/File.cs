@@ -12,6 +12,78 @@ namespace Pulumi.ProxmoxVE.Storage
     /// <summary>
     /// Manages a file.
     /// 
+    /// ## Example Usage
+    /// ### Backups
+    /// 
+    /// &gt; **Note:** The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var backup = new ProxmoxVE.Storage.File("backup", new()
+    ///     {
+    ///         ContentType = "backup",
+    ///         DatastoreId = "local",
+    ///         NodeName = "pve",
+    ///         SourceFile = new ProxmoxVE.Storage.Inputs.FileSourceFileArgs
+    ///         {
+    ///             Path = "vzdump-lxc-100-2023_11_08-23_10_05.tar",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Images
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var ubuntuContainerTemplate = new ProxmoxVE.Storage.File("ubuntuContainerTemplate", new()
+    ///     {
+    ///         ContentType = "iso",
+    ///         DatastoreId = "local",
+    ///         NodeName = "pve",
+    ///         SourceFile = new ProxmoxVE.Storage.Inputs.FileSourceFileArgs
+    ///         {
+    ///             Path = "https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Container Template (`vztmpl`)
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var ubuntuContainerTemplate = new ProxmoxVE.Storage.File("ubuntuContainerTemplate", new()
+    ///     {
+    ///         ContentType = "vztmpl",
+    ///         DatastoreId = "local",
+    ///         NodeName = "first-node",
+    ///         SourceFile = new ProxmoxVE.Storage.Inputs.FileSourceFileArgs
+    ///         {
+    ///             Path = "https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ## Important Notes
     /// 
     /// The Proxmox VE API endpoint for file uploads does not support chunked transfer
@@ -26,10 +98,6 @@ namespace Pulumi.ProxmoxVE.Storage
     /// unconditionally replace it and take ownership of the resource. On destruction,
     /// the file will be deleted as if it did not exist before. If you want to prevent
     /// the resource from replacing the file, set `overwrite` to `false`.
-    /// 
-    /// Make sure the target datastore supports the content type you are uploading. For
-    /// example, the `snippets` content type can be disabled by default on the `local`
-    /// datastore.
     /// 
     /// ## Import
     /// 

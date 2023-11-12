@@ -91,11 +91,11 @@ public final class VirtualMachineUsb {
             return this;
         }
         public VirtualMachineUsb build() {
-            final var o = new VirtualMachineUsb();
-            o.host = host;
-            o.mapping = mapping;
-            o.usb3 = usb3;
-            return o;
+            final var _resultValue = new VirtualMachineUsb();
+            _resultValue.host = host;
+            _resultValue.mapping = mapping;
+            _resultValue.usb3 = usb3;
+            return _resultValue;
         }
     }
 }

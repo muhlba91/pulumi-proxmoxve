@@ -15,6 +15,8 @@ import (
 
 // Manages a virtual machine.
 //
+// > This resource uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
+//
 // ## Qemu guest agent
 //
 // Qemu-guest-agent is an application which can be installed inside guest VM, see
@@ -128,7 +130,7 @@ type VirtualMachine struct {
 	// The MAC addresses published by the QEMU agent with fallback
 	// to the network device configuration, if the agent is disabled
 	MacAddresses pulumi.StringArrayOutput `pulumi:"macAddresses"`
-	// The VM machine type (defaults to `i440fx`).
+	// The VM machine type (defaults to `pc`).
 	Machine pulumi.StringPtrOutput `pulumi:"machine"`
 	// The VGA memory in megabytes (defaults to `16`).
 	Memory VirtualMachineMemoryPtrOutput `pulumi:"memory"`
@@ -285,7 +287,7 @@ type virtualMachineState struct {
 	// The MAC addresses published by the QEMU agent with fallback
 	// to the network device configuration, if the agent is disabled
 	MacAddresses []string `pulumi:"macAddresses"`
-	// The VM machine type (defaults to `i440fx`).
+	// The VM machine type (defaults to `pc`).
 	Machine *string `pulumi:"machine"`
 	// The VGA memory in megabytes (defaults to `16`).
 	Memory *VirtualMachineMemory `pulumi:"memory"`
@@ -410,7 +412,7 @@ type VirtualMachineState struct {
 	// The MAC addresses published by the QEMU agent with fallback
 	// to the network device configuration, if the agent is disabled
 	MacAddresses pulumi.StringArrayInput
-	// The VM machine type (defaults to `i440fx`).
+	// The VM machine type (defaults to `pc`).
 	Machine pulumi.StringPtrInput
 	// The VGA memory in megabytes (defaults to `16`).
 	Memory VirtualMachineMemoryPtrInput
@@ -530,7 +532,7 @@ type virtualMachineArgs struct {
 	KeyboardLayout *string `pulumi:"keyboardLayout"`
 	// Arbitrary arguments passed to kvm.
 	KvmArguments *string `pulumi:"kvmArguments"`
-	// The VM machine type (defaults to `i440fx`).
+	// The VM machine type (defaults to `pc`).
 	Machine *string `pulumi:"machine"`
 	// The VGA memory in megabytes (defaults to `16`).
 	Memory *VirtualMachineMemory `pulumi:"memory"`
@@ -644,7 +646,7 @@ type VirtualMachineArgs struct {
 	KeyboardLayout pulumi.StringPtrInput
 	// Arbitrary arguments passed to kvm.
 	KvmArguments pulumi.StringPtrInput
-	// The VM machine type (defaults to `i440fx`).
+	// The VM machine type (defaults to `pc`).
 	Machine pulumi.StringPtrInput
 	// The VGA memory in megabytes (defaults to `16`).
 	Memory VirtualMachineMemoryPtrInput
@@ -930,7 +932,7 @@ func (o VirtualMachineOutput) MacAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringArrayOutput { return v.MacAddresses }).(pulumi.StringArrayOutput)
 }
 
-// The VM machine type (defaults to `i440fx`).
+// The VM machine type (defaults to `pc`).
 func (o VirtualMachineOutput) Machine() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.Machine }).(pulumi.StringPtrOutput)
 }

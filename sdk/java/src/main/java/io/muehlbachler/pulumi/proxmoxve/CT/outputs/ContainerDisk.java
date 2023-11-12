@@ -72,10 +72,10 @@ public final class ContainerDisk {
             return this;
         }
         public ContainerDisk build() {
-            final var o = new ContainerDisk();
-            o.datastoreId = datastoreId;
-            o.size = size;
-            return o;
+            final var _resultValue = new ContainerDisk();
+            _resultValue.datastoreId = datastoreId;
+            _resultValue.size = size;
+            return _resultValue;
         }
     }
 }

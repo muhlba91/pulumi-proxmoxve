@@ -119,13 +119,13 @@ public final class FileSourceFile {
             return this;
         }
         public FileSourceFile build() {
-            final var o = new FileSourceFile();
-            o.changed = changed;
-            o.checksum = checksum;
-            o.fileName = fileName;
-            o.insecure = insecure;
-            o.path = path;
-            return o;
+            final var _resultValue = new FileSourceFile();
+            _resultValue.changed = changed;
+            _resultValue.checksum = checksum;
+            _resultValue.fileName = fileName;
+            _resultValue.insecure = insecure;
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

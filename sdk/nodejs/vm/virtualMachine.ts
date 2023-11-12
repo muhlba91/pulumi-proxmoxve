@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
 /**
  * Manages a virtual machine.
  *
+ * > This resource uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
+ *
  * ## Qemu guest agent
  *
  * Qemu-guest-agent is an application which can be installed inside guest VM, see
@@ -183,7 +185,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public /*out*/ readonly macAddresses!: pulumi.Output<string[]>;
     /**
-     * The VM machine type (defaults to `i440fx`).
+     * The VM machine type (defaults to `pc`).
      */
     public readonly machine!: pulumi.Output<string | undefined>;
     /**
@@ -526,7 +528,7 @@ export interface VirtualMachineState {
      */
     macAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The VM machine type (defaults to `i440fx`).
+     * The VM machine type (defaults to `pc`).
      */
     machine?: pulumi.Input<string>;
     /**
@@ -735,7 +737,7 @@ export interface VirtualMachineArgs {
      */
     kvmArguments?: pulumi.Input<string>;
     /**
-     * The VM machine type (defaults to `i440fx`).
+     * The VM machine type (defaults to `pc`).
      */
     machine?: pulumi.Input<string>;
     /**

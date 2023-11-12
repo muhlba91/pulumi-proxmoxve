@@ -90,13 +90,13 @@ public final class Ssh {
             return this;
         }
         public Ssh build() {
-            final var o = new Ssh();
-            o.agent = agent;
-            o.agentSocket = agentSocket;
-            o.nodes = nodes;
-            o.password = password;
-            o.username = username;
-            return o;
+            final var _resultValue = new Ssh();
+            _resultValue.agent = agent;
+            _resultValue.agentSocket = agentSocket;
+            _resultValue.nodes = nodes;
+            _resultValue.password = password;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

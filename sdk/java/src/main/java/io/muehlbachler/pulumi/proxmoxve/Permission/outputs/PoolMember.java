@@ -125,13 +125,13 @@ public final class PoolMember {
             return this;
         }
         public PoolMember build() {
-            final var o = new PoolMember();
-            o.datastoreId = datastoreId;
-            o.id = id;
-            o.nodeName = nodeName;
-            o.type = type;
-            o.vmId = vmId;
-            return o;
+            final var _resultValue = new PoolMember();
+            _resultValue.datastoreId = datastoreId;
+            _resultValue.id = id;
+            _resultValue.nodeName = nodeName;
+            _resultValue.type = type;
+            _resultValue.vmId = vmId;
+            return _resultValue;
         }
     }
 }

@@ -114,13 +114,13 @@ public final class GetTimeResult {
             return this;
         }
         public GetTimeResult build() {
-            final var o = new GetTimeResult();
-            o.id = id;
-            o.localTime = localTime;
-            o.nodeName = nodeName;
-            o.timeZone = timeZone;
-            o.utcTime = utcTime;
-            return o;
+            final var _resultValue = new GetTimeResult();
+            _resultValue.id = id;
+            _resultValue.localTime = localTime;
+            _resultValue.nodeName = nodeName;
+            _resultValue.timeZone = timeZone;
+            _resultValue.utcTime = utcTime;
+            return _resultValue;
         }
     }
 }

@@ -90,11 +90,11 @@ public final class ContainerConsole {
             return this;
         }
         public ContainerConsole build() {
-            final var o = new ContainerConsole();
-            o.enabled = enabled;
-            o.ttyCount = ttyCount;
-            o.type = type;
-            return o;
+            final var _resultValue = new ContainerConsole();
+            _resultValue.enabled = enabled;
+            _resultValue.ttyCount = ttyCount;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -69,10 +69,10 @@ public final class HostsEntry {
             return hostnames(List.of(hostnames));
         }
         public HostsEntry build() {
-            final var o = new HostsEntry();
-            o.address = address;
-            o.hostnames = hostnames;
-            return o;
+            final var _resultValue = new HostsEntry();
+            _resultValue.address = address;
+            _resultValue.hostnames = hostnames;
+            return _resultValue;
         }
     }
 }

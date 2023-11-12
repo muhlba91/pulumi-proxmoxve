@@ -69,10 +69,10 @@ public final class GetPoolsResult {
             return poolIds(List.of(poolIds));
         }
         public GetPoolsResult build() {
-            final var o = new GetPoolsResult();
-            o.id = id;
-            o.poolIds = poolIds;
-            return o;
+            final var _resultValue = new GetPoolsResult();
+            _resultValue.id = id;
+            _resultValue.poolIds = poolIds;
+            return _resultValue;
         }
     }
 }

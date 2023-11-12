@@ -109,12 +109,12 @@ public final class VirtualMachineDiskSpeed {
             return this;
         }
         public VirtualMachineDiskSpeed build() {
-            final var o = new VirtualMachineDiskSpeed();
-            o.read = read;
-            o.readBurstable = readBurstable;
-            o.write = write;
-            o.writeBurstable = writeBurstable;
-            return o;
+            final var _resultValue = new VirtualMachineDiskSpeed();
+            _resultValue.read = read;
+            _resultValue.readBurstable = readBurstable;
+            _resultValue.write = write;
+            _resultValue.writeBurstable = writeBurstable;
+            return _resultValue;
         }
     }
 }

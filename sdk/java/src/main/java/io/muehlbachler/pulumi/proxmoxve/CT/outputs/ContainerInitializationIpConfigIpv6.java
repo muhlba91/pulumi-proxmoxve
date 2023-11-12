@@ -71,10 +71,10 @@ public final class ContainerInitializationIpConfigIpv6 {
             return this;
         }
         public ContainerInitializationIpConfigIpv6 build() {
-            final var o = new ContainerInitializationIpConfigIpv6();
-            o.address = address;
-            o.gateway = gateway;
-            return o;
+            final var _resultValue = new ContainerInitializationIpConfigIpv6();
+            _resultValue.address = address;
+            _resultValue.gateway = gateway;
+            return _resultValue;
         }
     }
 }

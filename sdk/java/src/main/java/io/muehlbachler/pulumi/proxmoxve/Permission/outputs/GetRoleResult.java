@@ -80,11 +80,11 @@ public final class GetRoleResult {
             return this;
         }
         public GetRoleResult build() {
-            final var o = new GetRoleResult();
-            o.id = id;
-            o.privileges = privileges;
-            o.roleId = roleId;
-            return o;
+            final var _resultValue = new GetRoleResult();
+            _resultValue.id = id;
+            _resultValue.privileges = privileges;
+            _resultValue.roleId = roleId;
+            return _resultValue;
         }
     }
 }

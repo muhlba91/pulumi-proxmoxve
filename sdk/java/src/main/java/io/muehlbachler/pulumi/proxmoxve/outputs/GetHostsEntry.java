@@ -61,10 +61,10 @@ public final class GetHostsEntry {
             return hostnames(List.of(hostnames));
         }
         public GetHostsEntry build() {
-            final var o = new GetHostsEntry();
-            o.address = address;
-            o.hostnames = hostnames;
-            return o;
+            final var _resultValue = new GetHostsEntry();
+            _resultValue.address = address;
+            _resultValue.hostnames = hostnames;
+            return _resultValue;
         }
     }
 }

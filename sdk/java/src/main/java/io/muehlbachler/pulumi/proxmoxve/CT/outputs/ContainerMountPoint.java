@@ -236,18 +236,18 @@ public final class ContainerMountPoint {
             return this;
         }
         public ContainerMountPoint build() {
-            final var o = new ContainerMountPoint();
-            o.acl = acl;
-            o.backup = backup;
-            o.mountOptions = mountOptions;
-            o.path = path;
-            o.quota = quota;
-            o.readOnly = readOnly;
-            o.replicate = replicate;
-            o.shared = shared;
-            o.size = size;
-            o.volume = volume;
-            return o;
+            final var _resultValue = new ContainerMountPoint();
+            _resultValue.acl = acl;
+            _resultValue.backup = backup;
+            _resultValue.mountOptions = mountOptions;
+            _resultValue.path = path;
+            _resultValue.quota = quota;
+            _resultValue.readOnly = readOnly;
+            _resultValue.replicate = replicate;
+            _resultValue.shared = shared;
+            _resultValue.size = size;
+            _resultValue.volume = volume;
+            return _resultValue;
         }
     }
 }

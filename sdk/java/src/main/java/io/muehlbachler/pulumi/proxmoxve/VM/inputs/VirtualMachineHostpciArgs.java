@@ -34,14 +34,18 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The PCI device ID. Use either this or `mapping`.
+     * The PCI device ID. This parameter is not compatible
+     * with `api_token` and requires the root `username` and `password`
+     * configured in the proxmox provider. Use either this or `mapping`.
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return The PCI device ID. Use either this or `mapping`.
+     * @return The PCI device ID. This parameter is not compatible
+     * with `api_token` and requires the root `username` and `password`
+     * configured in the proxmox provider. Use either this or `mapping`.
      * 
      */
     public Optional<Output<String>> id() {
@@ -205,7 +209,9 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param id The PCI device ID. Use either this or `mapping`.
+         * @param id The PCI device ID. This parameter is not compatible
+         * with `api_token` and requires the root `username` and `password`
+         * configured in the proxmox provider. Use either this or `mapping`.
          * 
          * @return builder
          * 
@@ -216,7 +222,9 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param id The PCI device ID. Use either this or `mapping`.
+         * @param id The PCI device ID. This parameter is not compatible
+         * with `api_token` and requires the root `username` and `password`
+         * configured in the proxmox provider. Use either this or `mapping`.
          * 
          * @return builder
          * 

@@ -85,11 +85,11 @@ public final class GetGroupAcl {
             return this;
         }
         public GetGroupAcl build() {
-            final var o = new GetGroupAcl();
-            o.path = path;
-            o.propagate = propagate;
-            o.roleId = roleId;
-            return o;
+            final var _resultValue = new GetGroupAcl();
+            _resultValue.path = path;
+            _resultValue.propagate = propagate;
+            _resultValue.roleId = roleId;
+            return _resultValue;
         }
     }
 }

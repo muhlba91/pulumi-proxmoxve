@@ -37,6 +37,8 @@ import javax.annotation.Nullable;
 /**
  * Manages a virtual machine.
  * 
+ * &gt; This resource uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
+ * 
  * ## Qemu guest agent
  * 
  * Qemu-guest-agent is an application which can be installed inside guest VM, see
@@ -371,14 +373,14 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return this.macAddresses;
     }
     /**
-     * The VM machine type (defaults to `i440fx`).
+     * The VM machine type (defaults to `pc`).
      * 
      */
     @Export(name="machine", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> machine;
 
     /**
-     * @return The VM machine type (defaults to `i440fx`).
+     * @return The VM machine type (defaults to `pc`).
      * 
      */
     public Output<Optional<String>> machine() {

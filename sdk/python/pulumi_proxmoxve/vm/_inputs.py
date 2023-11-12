@@ -887,7 +887,9 @@ class VirtualMachineHostpciArgs:
         """
         :param pulumi.Input[str] device: The device (defaults to `socket`).
                - `/dev/*` - A host serial device.
-        :param pulumi.Input[str] id: The PCI device ID. Use either this or `mapping`.
+        :param pulumi.Input[str] id: The PCI device ID. This parameter is not compatible
+               with `api_token` and requires the root `username` and `password`
+               configured in the proxmox provider. Use either this or `mapping`.
         :param pulumi.Input[str] mapping: The resource mapping name of the device, for
                example usbdevice. Use either this or `id`.
         :param pulumi.Input[str] mdev: The mediated device ID to use.
@@ -934,7 +936,9 @@ class VirtualMachineHostpciArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
         """
-        The PCI device ID. Use either this or `mapping`.
+        The PCI device ID. This parameter is not compatible
+        with `api_token` and requires the root `username` and `password`
+        configured in the proxmox provider. Use either this or `mapping`.
         """
         return pulumi.get(self, "id")
 
@@ -1294,8 +1298,9 @@ class VirtualMachineInitializationIpConfigIpv4Args:
                  address: Optional[pulumi.Input[str]] = None,
                  gateway: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] address: The IPv6 address (use `dhcp` for
-               autodiscovery).
+        :param pulumi.Input[str] address: The IPv6 address in CIDR notation
+               (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+               to `dhcp` for autodiscovery.
         :param pulumi.Input[str] gateway: The IPv6 gateway (must be omitted
                when `dhcp` is used as the address).
         """
@@ -1308,8 +1313,9 @@ class VirtualMachineInitializationIpConfigIpv4Args:
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input[str]]:
         """
-        The IPv6 address (use `dhcp` for
-        autodiscovery).
+        The IPv6 address in CIDR notation
+        (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+        to `dhcp` for autodiscovery.
         """
         return pulumi.get(self, "address")
 
@@ -1337,8 +1343,9 @@ class VirtualMachineInitializationIpConfigIpv6Args:
                  address: Optional[pulumi.Input[str]] = None,
                  gateway: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] address: The IPv6 address (use `dhcp` for
-               autodiscovery).
+        :param pulumi.Input[str] address: The IPv6 address in CIDR notation
+               (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+               to `dhcp` for autodiscovery.
         :param pulumi.Input[str] gateway: The IPv6 gateway (must be omitted
                when `dhcp` is used as the address).
         """
@@ -1351,8 +1358,9 @@ class VirtualMachineInitializationIpConfigIpv6Args:
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input[str]]:
         """
-        The IPv6 address (use `dhcp` for
-        autodiscovery).
+        The IPv6 address in CIDR notation
+        (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+        to `dhcp` for autodiscovery.
         """
         return pulumi.get(self, "address")
 

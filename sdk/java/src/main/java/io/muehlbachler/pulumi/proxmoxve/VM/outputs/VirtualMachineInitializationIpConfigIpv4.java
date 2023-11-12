@@ -12,8 +12,9 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VirtualMachineInitializationIpConfigIpv4 {
     /**
-     * @return The IPv6 address (use `dhcp` for
-     * autodiscovery).
+     * @return The IPv6 address in CIDR notation
+     * (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+     * to `dhcp` for autodiscovery.
      * 
      */
     private @Nullable String address;
@@ -26,8 +27,9 @@ public final class VirtualMachineInitializationIpConfigIpv4 {
 
     private VirtualMachineInitializationIpConfigIpv4() {}
     /**
-     * @return The IPv6 address (use `dhcp` for
-     * autodiscovery).
+     * @return The IPv6 address in CIDR notation
+     * (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+     * to `dhcp` for autodiscovery.
      * 
      */
     public Optional<String> address() {
@@ -71,10 +73,10 @@ public final class VirtualMachineInitializationIpConfigIpv4 {
             return this;
         }
         public VirtualMachineInitializationIpConfigIpv4 build() {
-            final var o = new VirtualMachineInitializationIpConfigIpv4();
-            o.address = address;
-            o.gateway = gateway;
-            return o;
+            final var _resultValue = new VirtualMachineInitializationIpConfigIpv4();
+            _resultValue.address = address;
+            _resultValue.gateway = gateway;
+            return _resultValue;
         }
     }
 }

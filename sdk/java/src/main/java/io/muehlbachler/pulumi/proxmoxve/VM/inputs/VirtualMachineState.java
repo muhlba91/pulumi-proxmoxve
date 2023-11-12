@@ -316,14 +316,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The VM machine type (defaults to `i440fx`).
+     * The VM machine type (defaults to `pc`).
      * 
      */
     @Import(name="machine")
     private @Nullable Output<String> machine;
 
     /**
-     * @return The VM machine type (defaults to `i440fx`).
+     * @return The VM machine type (defaults to `pc`).
      * 
      */
     public Optional<Output<String>> machine() {
@@ -1331,7 +1331,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param machine The VM machine type (defaults to `i440fx`).
+         * @param machine The VM machine type (defaults to `pc`).
          * 
          * @return builder
          * 
@@ -1342,7 +1342,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param machine The VM machine type (defaults to `i440fx`).
+         * @param machine The VM machine type (defaults to `pc`).
          * 
          * @return builder
          * 

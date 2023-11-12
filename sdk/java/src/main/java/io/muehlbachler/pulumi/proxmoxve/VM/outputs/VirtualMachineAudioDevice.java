@@ -91,11 +91,11 @@ public final class VirtualMachineAudioDevice {
             return this;
         }
         public VirtualMachineAudioDevice build() {
-            final var o = new VirtualMachineAudioDevice();
-            o.device = device;
-            o.driver = driver;
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new VirtualMachineAudioDevice();
+            _resultValue.device = device;
+            _resultValue.driver = driver;
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

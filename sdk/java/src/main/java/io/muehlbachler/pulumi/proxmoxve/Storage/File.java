@@ -21,6 +21,114 @@ import javax.annotation.Nullable;
 /**
  * Manages a file.
  * 
+ * ## Example Usage
+ * ### Backups
+ * 
+ * &gt; **Note:** The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.proxmoxve.Storage.File;
+ * import com.pulumi.proxmoxve.Storage.FileArgs;
+ * import com.pulumi.proxmoxve.Storage.inputs.FileSourceFileArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var backup = new File(&#34;backup&#34;, FileArgs.builder()        
+ *             .contentType(&#34;backup&#34;)
+ *             .datastoreId(&#34;local&#34;)
+ *             .nodeName(&#34;pve&#34;)
+ *             .sourceFile(FileSourceFileArgs.builder()
+ *                 .path(&#34;vzdump-lxc-100-2023_11_08-23_10_05.tar&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Images
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.proxmoxve.Storage.File;
+ * import com.pulumi.proxmoxve.Storage.FileArgs;
+ * import com.pulumi.proxmoxve.Storage.inputs.FileSourceFileArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var ubuntuContainerTemplate = new File(&#34;ubuntuContainerTemplate&#34;, FileArgs.builder()        
+ *             .contentType(&#34;iso&#34;)
+ *             .datastoreId(&#34;local&#34;)
+ *             .nodeName(&#34;pve&#34;)
+ *             .sourceFile(FileSourceFileArgs.builder()
+ *                 .path(&#34;https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Container Template (`vztmpl`)
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.proxmoxve.Storage.File;
+ * import com.pulumi.proxmoxve.Storage.FileArgs;
+ * import com.pulumi.proxmoxve.Storage.inputs.FileSourceFileArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var ubuntuContainerTemplate = new File(&#34;ubuntuContainerTemplate&#34;, FileArgs.builder()        
+ *             .contentType(&#34;vztmpl&#34;)
+ *             .datastoreId(&#34;local&#34;)
+ *             .nodeName(&#34;first-node&#34;)
+ *             .sourceFile(FileSourceFileArgs.builder()
+ *                 .path(&#34;https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ## Important Notes
  * 
  * The Proxmox VE API endpoint for file uploads does not support chunked transfer
@@ -35,10 +143,6 @@ import javax.annotation.Nullable;
  * unconditionally replace it and take ownership of the resource. On destruction,
  * the file will be deleted as if it did not exist before. If you want to prevent
  * the resource from replacing the file, set `overwrite` to `false`.
- * 
- * Make sure the target datastore supports the content type you are uploading. For
- * example, the `snippets` content type can be disabled by default on the `local`
- * datastore.
  * 
  * ## Import
  * 

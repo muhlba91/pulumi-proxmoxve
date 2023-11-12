@@ -192,16 +192,16 @@ public final class ContainerNetworkInterface {
             return this;
         }
         public ContainerNetworkInterface build() {
-            final var o = new ContainerNetworkInterface();
-            o.bridge = bridge;
-            o.enabled = enabled;
-            o.firewall = firewall;
-            o.macAddress = macAddress;
-            o.mtu = mtu;
-            o.name = name;
-            o.rateLimit = rateLimit;
-            o.vlanId = vlanId;
-            return o;
+            final var _resultValue = new ContainerNetworkInterface();
+            _resultValue.bridge = bridge;
+            _resultValue.enabled = enabled;
+            _resultValue.firewall = firewall;
+            _resultValue.macAddress = macAddress;
+            _resultValue.mtu = mtu;
+            _resultValue.name = name;
+            _resultValue.rateLimit = rateLimit;
+            _resultValue.vlanId = vlanId;
+            return _resultValue;
         }
     }
 }

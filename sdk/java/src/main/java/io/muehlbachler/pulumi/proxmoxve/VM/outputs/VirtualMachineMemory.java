@@ -90,11 +90,11 @@ public final class VirtualMachineMemory {
             return this;
         }
         public VirtualMachineMemory build() {
-            final var o = new VirtualMachineMemory();
-            o.dedicated = dedicated;
-            o.floating = floating;
-            o.shared = shared;
-            return o;
+            final var _resultValue = new VirtualMachineMemory();
+            _resultValue.dedicated = dedicated;
+            _resultValue.floating = floating;
+            _resultValue.shared = shared;
+            return _resultValue;
         }
     }
 }

@@ -85,11 +85,11 @@ public final class GetUserAcl {
             return this;
         }
         public GetUserAcl build() {
-            final var o = new GetUserAcl();
-            o.path = path;
-            o.propagate = propagate;
-            o.roleId = roleId;
-            return o;
+            final var _resultValue = new GetUserAcl();
+            _resultValue.path = path;
+            _resultValue.propagate = propagate;
+            _resultValue.roleId = roleId;
+            return _resultValue;
         }
     }
 }

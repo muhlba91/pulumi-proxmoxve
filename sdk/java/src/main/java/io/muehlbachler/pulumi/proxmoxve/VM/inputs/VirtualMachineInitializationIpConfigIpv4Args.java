@@ -16,16 +16,18 @@ public final class VirtualMachineInitializationIpConfigIpv4Args extends com.pulu
     public static final VirtualMachineInitializationIpConfigIpv4Args Empty = new VirtualMachineInitializationIpConfigIpv4Args();
 
     /**
-     * The IPv6 address (use `dhcp` for
-     * autodiscovery).
+     * The IPv6 address in CIDR notation
+     * (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+     * to `dhcp` for autodiscovery.
      * 
      */
     @Import(name="address")
     private @Nullable Output<String> address;
 
     /**
-     * @return The IPv6 address (use `dhcp` for
-     * autodiscovery).
+     * @return The IPv6 address in CIDR notation
+     * (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+     * to `dhcp` for autodiscovery.
      * 
      */
     public Optional<Output<String>> address() {
@@ -75,8 +77,9 @@ public final class VirtualMachineInitializationIpConfigIpv4Args extends com.pulu
         }
 
         /**
-         * @param address The IPv6 address (use `dhcp` for
-         * autodiscovery).
+         * @param address The IPv6 address in CIDR notation
+         * (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+         * to `dhcp` for autodiscovery.
          * 
          * @return builder
          * 
@@ -87,8 +90,9 @@ public final class VirtualMachineInitializationIpConfigIpv4Args extends com.pulu
         }
 
         /**
-         * @param address The IPv6 address (use `dhcp` for
-         * autodiscovery).
+         * @param address The IPv6 address in CIDR notation
+         * (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+         * to `dhcp` for autodiscovery.
          * 
          * @return builder
          * 

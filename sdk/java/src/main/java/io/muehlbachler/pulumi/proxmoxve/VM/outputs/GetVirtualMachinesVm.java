@@ -110,12 +110,12 @@ public final class GetVirtualMachinesVm {
             return this;
         }
         public GetVirtualMachinesVm build() {
-            final var o = new GetVirtualMachinesVm();
-            o.name = name;
-            o.nodeName = nodeName;
-            o.tags = tags;
-            o.vmId = vmId;
-            return o;
+            final var _resultValue = new GetVirtualMachinesVm();
+            _resultValue.name = name;
+            _resultValue.nodeName = nodeName;
+            _resultValue.tags = tags;
+            _resultValue.vmId = vmId;
+            return _resultValue;
         }
     }
 }

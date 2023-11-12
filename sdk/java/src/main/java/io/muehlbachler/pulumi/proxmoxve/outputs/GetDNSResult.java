@@ -99,12 +99,12 @@ public final class GetDNSResult {
             return servers(List.of(servers));
         }
         public GetDNSResult build() {
-            final var o = new GetDNSResult();
-            o.domain = domain;
-            o.id = id;
-            o.nodeName = nodeName;
-            o.servers = servers;
-            return o;
+            final var _resultValue = new GetDNSResult();
+            _resultValue.domain = domain;
+            _resultValue.id = id;
+            _resultValue.nodeName = nodeName;
+            _resultValue.servers = servers;
+            return _resultValue;
         }
     }
 }

@@ -69,10 +69,10 @@ public final class ContainerMemory {
             return this;
         }
         public ContainerMemory build() {
-            final var o = new ContainerMemory();
-            o.dedicated = dedicated;
-            o.swap = swap;
-            return o;
+            final var _resultValue = new ContainerMemory();
+            _resultValue.dedicated = dedicated;
+            _resultValue.swap = swap;
+            return _resultValue;
         }
     }
 }

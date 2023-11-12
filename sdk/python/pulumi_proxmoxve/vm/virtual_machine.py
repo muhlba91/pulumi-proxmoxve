@@ -81,7 +81,7 @@ class VirtualMachineArgs:
         :param pulumi.Input['VirtualMachineInitializationArgs'] initialization: The cloud-init configuration.
         :param pulumi.Input[str] keyboard_layout: The keyboard layout (defaults to `en-us`).
         :param pulumi.Input[str] kvm_arguments: Arbitrary arguments passed to kvm.
-        :param pulumi.Input[str] machine: The VM machine type (defaults to `i440fx`).
+        :param pulumi.Input[str] machine: The VM machine type (defaults to `pc`).
         :param pulumi.Input['VirtualMachineMemoryArgs'] memory: The VGA memory in megabytes (defaults to `16`).
         :param pulumi.Input[bool] migrate: Migrate the VM on node change instead of re-creating
                it (defaults to `false`).
@@ -416,7 +416,7 @@ class VirtualMachineArgs:
     @pulumi.getter
     def machine(self) -> Optional[pulumi.Input[str]]:
         """
-        The VM machine type (defaults to `i440fx`).
+        The VM machine type (defaults to `pc`).
         """
         return pulumi.get(self, "machine")
 
@@ -844,7 +844,7 @@ class _VirtualMachineState:
         :param pulumi.Input[str] kvm_arguments: Arbitrary arguments passed to kvm.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] mac_addresses: The MAC addresses published by the QEMU agent with fallback
                to the network device configuration, if the agent is disabled
-        :param pulumi.Input[str] machine: The VM machine type (defaults to `i440fx`).
+        :param pulumi.Input[str] machine: The VM machine type (defaults to `pc`).
         :param pulumi.Input['VirtualMachineMemoryArgs'] memory: The VGA memory in megabytes (defaults to `16`).
         :param pulumi.Input[bool] migrate: Migrate the VM on node change instead of re-creating
                it (defaults to `false`).
@@ -1218,7 +1218,7 @@ class _VirtualMachineState:
     @pulumi.getter
     def machine(self) -> Optional[pulumi.Input[str]]:
         """
-        The VM machine type (defaults to `i440fx`).
+        The VM machine type (defaults to `pc`).
         """
         return pulumi.get(self, "machine")
 
@@ -1649,6 +1649,8 @@ class VirtualMachine(pulumi.CustomResource):
         """
         Manages a virtual machine.
 
+        > This resource uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
+
         ## Qemu guest agent
 
         Qemu-guest-agent is an application which can be installed inside guest VM, see
@@ -1736,7 +1738,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['VirtualMachineInitializationArgs']] initialization: The cloud-init configuration.
         :param pulumi.Input[str] keyboard_layout: The keyboard layout (defaults to `en-us`).
         :param pulumi.Input[str] kvm_arguments: Arbitrary arguments passed to kvm.
-        :param pulumi.Input[str] machine: The VM machine type (defaults to `i440fx`).
+        :param pulumi.Input[str] machine: The VM machine type (defaults to `pc`).
         :param pulumi.Input[pulumi.InputType['VirtualMachineMemoryArgs']] memory: The VGA memory in megabytes (defaults to `16`).
         :param pulumi.Input[bool] migrate: Migrate the VM on node change instead of re-creating
                it (defaults to `false`).
@@ -1794,6 +1796,8 @@ class VirtualMachine(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a virtual machine.
+
+        > This resource uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
 
         ## Qemu guest agent
 
@@ -2069,7 +2073,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[str] kvm_arguments: Arbitrary arguments passed to kvm.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] mac_addresses: The MAC addresses published by the QEMU agent with fallback
                to the network device configuration, if the agent is disabled
-        :param pulumi.Input[str] machine: The VM machine type (defaults to `i440fx`).
+        :param pulumi.Input[str] machine: The VM machine type (defaults to `pc`).
         :param pulumi.Input[pulumi.InputType['VirtualMachineMemoryArgs']] memory: The VGA memory in megabytes (defaults to `16`).
         :param pulumi.Input[bool] migrate: Migrate the VM on node change instead of re-creating
                it (defaults to `false`).
@@ -2328,7 +2332,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter
     def machine(self) -> pulumi.Output[Optional[str]]:
         """
-        The VM machine type (defaults to `i440fx`).
+        The VM machine type (defaults to `pc`).
         """
         return pulumi.get(self, "machine")
 

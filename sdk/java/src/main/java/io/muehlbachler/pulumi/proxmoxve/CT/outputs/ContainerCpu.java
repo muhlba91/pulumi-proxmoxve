@@ -87,11 +87,11 @@ public final class ContainerCpu {
             return this;
         }
         public ContainerCpu build() {
-            final var o = new ContainerCpu();
-            o.architecture = architecture;
-            o.cores = cores;
-            o.units = units;
-            return o;
+            final var _resultValue = new ContainerCpu();
+            _resultValue.architecture = architecture;
+            _resultValue.cores = cores;
+            _resultValue.units = units;
+            return _resultValue;
         }
     }
 }

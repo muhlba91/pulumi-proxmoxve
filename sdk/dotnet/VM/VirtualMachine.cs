@@ -12,6 +12,8 @@ namespace Pulumi.ProxmoxVE.VM
     /// <summary>
     /// Manages a virtual machine.
     /// 
+    /// &gt; This resource uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
+    /// 
     /// ## Qemu guest agent
     /// 
     /// Qemu-guest-agent is an application which can be installed inside guest VM, see
@@ -197,7 +199,7 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<ImmutableArray<string>> MacAddresses { get; private set; } = null!;
 
         /// <summary>
-        /// The VM machine type (defaults to `i440fx`).
+        /// The VM machine type (defaults to `pc`).
         /// </summary>
         [Output("machine")]
         public Output<string?> Machine { get; private set; } = null!;
@@ -555,7 +557,7 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<string>? KvmArguments { get; set; }
 
         /// <summary>
-        /// The VM machine type (defaults to `i440fx`).
+        /// The VM machine type (defaults to `pc`).
         /// </summary>
         [Input("machine")]
         public Input<string>? Machine { get; set; }
@@ -930,7 +932,7 @@ namespace Pulumi.ProxmoxVE.VM
         }
 
         /// <summary>
-        /// The VM machine type (defaults to `i440fx`).
+        /// The VM machine type (defaults to `pc`).
         /// </summary>
         [Input("machine")]
         public Input<string>? Machine { get; set; }

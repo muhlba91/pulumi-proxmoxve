@@ -91,11 +91,11 @@ public final class GetGroupsResult {
             return this;
         }
         public GetGroupsResult build() {
-            final var o = new GetGroupsResult();
-            o.comments = comments;
-            o.groupIds = groupIds;
-            o.id = id;
-            return o;
+            final var _resultValue = new GetGroupsResult();
+            _resultValue.comments = comments;
+            _resultValue.groupIds = groupIds;
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

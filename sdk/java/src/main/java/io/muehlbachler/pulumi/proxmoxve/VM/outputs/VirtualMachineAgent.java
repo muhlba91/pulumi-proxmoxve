@@ -112,12 +112,12 @@ public final class VirtualMachineAgent {
             return this;
         }
         public VirtualMachineAgent build() {
-            final var o = new VirtualMachineAgent();
-            o.enabled = enabled;
-            o.timeout = timeout;
-            o.trim = trim;
-            o.type = type;
-            return o;
+            final var _resultValue = new VirtualMachineAgent();
+            _resultValue.enabled = enabled;
+            _resultValue.timeout = timeout;
+            _resultValue.trim = trim;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

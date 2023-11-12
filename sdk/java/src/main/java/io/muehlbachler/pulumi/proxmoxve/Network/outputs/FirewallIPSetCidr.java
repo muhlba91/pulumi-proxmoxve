@@ -89,11 +89,11 @@ public final class FirewallIPSetCidr {
             return this;
         }
         public FirewallIPSetCidr build() {
-            final var o = new FirewallIPSetCidr();
-            o.comment = comment;
-            o.name = name;
-            o.nomatch = nomatch;
-            return o;
+            final var _resultValue = new FirewallIPSetCidr();
+            _resultValue.comment = comment;
+            _resultValue.name = name;
+            _resultValue.nomatch = nomatch;
+            return _resultValue;
         }
     }
 }

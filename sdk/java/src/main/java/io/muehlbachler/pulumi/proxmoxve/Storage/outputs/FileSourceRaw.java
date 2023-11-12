@@ -87,11 +87,11 @@ public final class FileSourceRaw {
             return this;
         }
         public FileSourceRaw build() {
-            final var o = new FileSourceRaw();
-            o.data = data;
-            o.fileName = fileName;
-            o.resize = resize;
-            return o;
+            final var _resultValue = new FileSourceRaw();
+            _resultValue.data = data;
+            _resultValue.fileName = fileName;
+            _resultValue.resize = resize;
+            return _resultValue;
         }
     }
 }

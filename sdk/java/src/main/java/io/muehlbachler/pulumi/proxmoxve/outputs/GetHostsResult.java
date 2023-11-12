@@ -143,14 +143,14 @@ public final class GetHostsResult {
             return this;
         }
         public GetHostsResult build() {
-            final var o = new GetHostsResult();
-            o.addresses = addresses;
-            o.digest = digest;
-            o.entries = entries;
-            o.hostnames = hostnames;
-            o.id = id;
-            o.nodeName = nodeName;
-            return o;
+            final var _resultValue = new GetHostsResult();
+            _resultValue.addresses = addresses;
+            _resultValue.digest = digest;
+            _resultValue.entries = entries;
+            _resultValue.hostnames = hostnames;
+            _resultValue.id = id;
+            _resultValue.nodeName = nodeName;
+            return _resultValue;
         }
     }
 }

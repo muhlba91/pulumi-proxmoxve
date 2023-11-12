@@ -248,18 +248,18 @@ public final class VirtualMachineInitialization {
             return this;
         }
         public VirtualMachineInitialization build() {
-            final var o = new VirtualMachineInitialization();
-            o.datastoreId = datastoreId;
-            o.dns = dns;
-            o.interface_ = interface_;
-            o.ipConfigs = ipConfigs;
-            o.metaDataFileId = metaDataFileId;
-            o.networkDataFileId = networkDataFileId;
-            o.type = type;
-            o.userAccount = userAccount;
-            o.userDataFileId = userDataFileId;
-            o.vendorDataFileId = vendorDataFileId;
-            return o;
+            final var _resultValue = new VirtualMachineInitialization();
+            _resultValue.datastoreId = datastoreId;
+            _resultValue.dns = dns;
+            _resultValue.interface_ = interface_;
+            _resultValue.ipConfigs = ipConfigs;
+            _resultValue.metaDataFileId = metaDataFileId;
+            _resultValue.networkDataFileId = networkDataFileId;
+            _resultValue.type = type;
+            _resultValue.userAccount = userAccount;
+            _resultValue.userDataFileId = userDataFileId;
+            _resultValue.vendorDataFileId = vendorDataFileId;
+            return _resultValue;
         }
     }
 }

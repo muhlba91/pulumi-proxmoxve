@@ -248,18 +248,18 @@ public final class GetNodesResult {
             return uptimes(List.of(uptimes));
         }
         public GetNodesResult build() {
-            final var o = new GetNodesResult();
-            o.cpuCounts = cpuCounts;
-            o.cpuUtilizations = cpuUtilizations;
-            o.id = id;
-            o.memoryAvailables = memoryAvailables;
-            o.memoryUseds = memoryUseds;
-            o.names = names;
-            o.onlines = onlines;
-            o.sslFingerprints = sslFingerprints;
-            o.supportLevels = supportLevels;
-            o.uptimes = uptimes;
-            return o;
+            final var _resultValue = new GetNodesResult();
+            _resultValue.cpuCounts = cpuCounts;
+            _resultValue.cpuUtilizations = cpuUtilizations;
+            _resultValue.id = id;
+            _resultValue.memoryAvailables = memoryAvailables;
+            _resultValue.memoryUseds = memoryUseds;
+            _resultValue.names = names;
+            _resultValue.onlines = onlines;
+            _resultValue.sslFingerprints = sslFingerprints;
+            _resultValue.supportLevels = supportLevels;
+            _resultValue.uptimes = uptimes;
+            return _resultValue;
         }
     }
 }

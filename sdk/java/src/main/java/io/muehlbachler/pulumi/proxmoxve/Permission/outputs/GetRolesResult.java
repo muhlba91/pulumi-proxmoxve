@@ -111,12 +111,12 @@ public final class GetRolesResult {
             return specials(List.of(specials));
         }
         public GetRolesResult build() {
-            final var o = new GetRolesResult();
-            o.id = id;
-            o.privileges = privileges;
-            o.roleIds = roleIds;
-            o.specials = specials;
-            return o;
+            final var _resultValue = new GetRolesResult();
+            _resultValue.id = id;
+            _resultValue.privileges = privileges;
+            _resultValue.roleIds = roleIds;
+            _resultValue.specials = specials;
+            return _resultValue;
         }
     }
 }

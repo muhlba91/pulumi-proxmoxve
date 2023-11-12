@@ -15,6 +15,99 @@ import (
 
 // Manages a file.
 //
+// ## Example Usage
+// ### Backups
+//
+// > **Note:** The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/Storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Storage.NewFile(ctx, "backup", &Storage.FileArgs{
+//				ContentType: pulumi.String("backup"),
+//				DatastoreId: pulumi.String("local"),
+//				NodeName:    pulumi.String("pve"),
+//				SourceFile: &storage.FileSourceFileArgs{
+//					Path: pulumi.String("vzdump-lxc-100-2023_11_08-23_10_05.tar"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Images
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/Storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Storage.NewFile(ctx, "ubuntuContainerTemplate", &Storage.FileArgs{
+//				ContentType: pulumi.String("iso"),
+//				DatastoreId: pulumi.String("local"),
+//				NodeName:    pulumi.String("pve"),
+//				SourceFile: &storage.FileSourceFileArgs{
+//					Path: pulumi.String("https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Container Template (`vztmpl`)
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/Storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Storage.NewFile(ctx, "ubuntuContainerTemplate", &Storage.FileArgs{
+//				ContentType: pulumi.String("vztmpl"),
+//				DatastoreId: pulumi.String("local"),
+//				NodeName:    pulumi.String("first-node"),
+//				SourceFile: &storage.FileSourceFileArgs{
+//					Path: pulumi.String("https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Important Notes
 //
 // The Proxmox VE API endpoint for file uploads does not support chunked transfer
@@ -29,10 +122,6 @@ import (
 // unconditionally replace it and take ownership of the resource. On destruction,
 // the file will be deleted as if it did not exist before. If you want to prevent
 // the resource from replacing the file, set `overwrite` to `false`.
-//
-// Make sure the target datastore supports the content type you are uploading. For
-// example, the `snippets` content type can be disabled by default on the `local`
-// datastore.
 //
 // ## Import
 //

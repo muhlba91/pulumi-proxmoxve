@@ -123,13 +123,13 @@ public final class GetPoolMember {
             return this;
         }
         public GetPoolMember build() {
-            final var o = new GetPoolMember();
-            o.datastoreId = datastoreId;
-            o.id = id;
-            o.nodeName = nodeName;
-            o.type = type;
-            o.vmId = vmId;
-            return o;
+            final var _resultValue = new GetPoolMember();
+            _resultValue.datastoreId = datastoreId;
+            _resultValue.id = id;
+            _resultValue.nodeName = nodeName;
+            _resultValue.type = type;
+            _resultValue.vmId = vmId;
+            return _resultValue;
         }
     }
 }

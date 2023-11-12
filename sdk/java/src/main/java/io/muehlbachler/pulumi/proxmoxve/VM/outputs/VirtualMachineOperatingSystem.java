@@ -48,9 +48,9 @@ public final class VirtualMachineOperatingSystem {
             return this;
         }
         public VirtualMachineOperatingSystem build() {
-            final var o = new VirtualMachineOperatingSystem();
-            o.type = type;
-            return o;
+            final var _resultValue = new VirtualMachineOperatingSystem();
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -113,12 +113,12 @@ public final class GetVirtualMachinesResult {
             return vms(List.of(vms));
         }
         public GetVirtualMachinesResult build() {
-            final var o = new GetVirtualMachinesResult();
-            o.id = id;
-            o.nodeName = nodeName;
-            o.tags = tags;
-            o.vms = vms;
-            return o;
+            final var _resultValue = new GetVirtualMachinesResult();
+            _resultValue.id = id;
+            _resultValue.nodeName = nodeName;
+            _resultValue.tags = tags;
+            _resultValue.vms = vms;
+            return _resultValue;
         }
     }
 }

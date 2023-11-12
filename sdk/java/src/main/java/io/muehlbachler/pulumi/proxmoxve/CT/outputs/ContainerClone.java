@@ -89,11 +89,11 @@ public final class ContainerClone {
             return this;
         }
         public ContainerClone build() {
-            final var o = new ContainerClone();
-            o.datastoreId = datastoreId;
-            o.nodeName = nodeName;
-            o.vmId = vmId;
-            return o;
+            final var _resultValue = new ContainerClone();
+            _resultValue.datastoreId = datastoreId;
+            _resultValue.nodeName = nodeName;
+            _resultValue.vmId = vmId;
+            return _resultValue;
         }
     }
 }

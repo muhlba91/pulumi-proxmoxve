@@ -67,10 +67,10 @@ public final class ContainerOperatingSystem {
             return this;
         }
         public ContainerOperatingSystem build() {
-            final var o = new ContainerOperatingSystem();
-            o.templateFileId = templateFileId;
-            o.type = type;
-            return o;
+            final var _resultValue = new ContainerOperatingSystem();
+            _resultValue.templateFileId = templateFileId;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -269,19 +269,19 @@ public final class VirtualMachineDisk {
             return this;
         }
         public VirtualMachineDisk build() {
-            final var o = new VirtualMachineDisk();
-            o.cache = cache;
-            o.datastoreId = datastoreId;
-            o.discard = discard;
-            o.fileFormat = fileFormat;
-            o.fileId = fileId;
-            o.interface_ = interface_;
-            o.iothread = iothread;
-            o.pathInDatastore = pathInDatastore;
-            o.size = size;
-            o.speed = speed;
-            o.ssd = ssd;
-            return o;
+            final var _resultValue = new VirtualMachineDisk();
+            _resultValue.cache = cache;
+            _resultValue.datastoreId = datastoreId;
+            _resultValue.discard = discard;
+            _resultValue.fileFormat = fileFormat;
+            _resultValue.fileId = fileId;
+            _resultValue.interface_ = interface_;
+            _resultValue.iothread = iothread;
+            _resultValue.pathInDatastore = pathInDatastore;
+            _resultValue.size = size;
+            _resultValue.speed = speed;
+            _resultValue.ssd = ssd;
+            return _resultValue;
         }
     }
 }

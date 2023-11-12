@@ -162,15 +162,15 @@ public final class VirtualMachineSmbios {
             return this;
         }
         public VirtualMachineSmbios build() {
-            final var o = new VirtualMachineSmbios();
-            o.family = family;
-            o.manufacturer = manufacturer;
-            o.product = product;
-            o.serial = serial;
-            o.sku = sku;
-            o.uuid = uuid;
-            o.version = version;
-            return o;
+            final var _resultValue = new VirtualMachineSmbios();
+            _resultValue.family = family;
+            _resultValue.manufacturer = manufacturer;
+            _resultValue.product = product;
+            _resultValue.serial = serial;
+            _resultValue.sku = sku;
+            _resultValue.uuid = uuid;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

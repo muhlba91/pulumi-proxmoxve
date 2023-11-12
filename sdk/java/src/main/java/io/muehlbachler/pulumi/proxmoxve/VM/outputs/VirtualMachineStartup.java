@@ -72,11 +72,11 @@ public final class VirtualMachineStartup {
             return this;
         }
         public VirtualMachineStartup build() {
-            final var o = new VirtualMachineStartup();
-            o.downDelay = downDelay;
-            o.order = order;
-            o.upDelay = upDelay;
-            return o;
+            final var _resultValue = new VirtualMachineStartup();
+            _resultValue.downDelay = downDelay;
+            _resultValue.order = order;
+            _resultValue.upDelay = upDelay;
+            return _resultValue;
         }
     }
 }

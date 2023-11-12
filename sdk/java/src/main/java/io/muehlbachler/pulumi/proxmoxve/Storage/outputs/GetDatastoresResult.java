@@ -255,19 +255,19 @@ public final class GetDatastoresResult {
             return types(List.of(types));
         }
         public GetDatastoresResult build() {
-            final var o = new GetDatastoresResult();
-            o.actives = actives;
-            o.contentTypes = contentTypes;
-            o.datastoreIds = datastoreIds;
-            o.enableds = enableds;
-            o.id = id;
-            o.nodeName = nodeName;
-            o.shareds = shareds;
-            o.spaceAvailables = spaceAvailables;
-            o.spaceTotals = spaceTotals;
-            o.spaceUseds = spaceUseds;
-            o.types = types;
-            return o;
+            final var _resultValue = new GetDatastoresResult();
+            _resultValue.actives = actives;
+            _resultValue.contentTypes = contentTypes;
+            _resultValue.datastoreIds = datastoreIds;
+            _resultValue.enableds = enableds;
+            _resultValue.id = id;
+            _resultValue.nodeName = nodeName;
+            _resultValue.shareds = shareds;
+            _resultValue.spaceAvailables = spaceAvailables;
+            _resultValue.spaceTotals = spaceTotals;
+            _resultValue.spaceUseds = spaceUseds;
+            _resultValue.types = types;
+            return _resultValue;
         }
     }
 }

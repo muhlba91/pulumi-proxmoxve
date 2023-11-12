@@ -909,7 +909,9 @@ export namespace VM {
          */
         device: string;
         /**
-         * The PCI device ID. Use either this or `mapping`.
+         * The PCI device ID. This parameter is not compatible
+         * with `apiToken` and requires the root `username` and `password`
+         * configured in the proxmox provider. Use either this or `mapping`.
          */
         id?: string;
         /**
@@ -1022,8 +1024,9 @@ export namespace VM {
 
     export interface VirtualMachineInitializationIpConfigIpv4 {
         /**
-         * The IPv6 address (use `dhcp` for
-         * autodiscovery).
+         * The IPv6 address in CIDR notation
+         * (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+         * to `dhcp` for autodiscovery.
          */
         address?: string;
         /**
@@ -1035,8 +1038,9 @@ export namespace VM {
 
     export interface VirtualMachineInitializationIpConfigIpv6 {
         /**
-         * The IPv6 address (use `dhcp` for
-         * autodiscovery).
+         * The IPv6 address in CIDR notation
+         * (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+         * to `dhcp` for autodiscovery.
          */
         address?: string;
         /**

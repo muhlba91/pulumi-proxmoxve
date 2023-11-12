@@ -100,12 +100,12 @@ public final class GetPoolResult {
             return this;
         }
         public GetPoolResult build() {
-            final var o = new GetPoolResult();
-            o.comment = comment;
-            o.id = id;
-            o.members = members;
-            o.poolId = poolId;
-            return o;
+            final var _resultValue = new GetPoolResult();
+            _resultValue.comment = comment;
+            _resultValue.id = id;
+            _resultValue.members = members;
+            _resultValue.poolId = poolId;
+            return _resultValue;
         }
     }
 }
