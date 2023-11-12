@@ -1,6 +1,21 @@
 # Changelog
 
 
+## [5.15.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.15.0...v5.15.1) (2023-11-12)
+
+
+### Bug Fixes
+
+* update upstream to v0.37.1 ([d533d88](https://github.com/muhlba91/pulumi-proxmoxve/commit/d533d88d4d5e43da49b6c7fc255623328df9b3e8))
+
+
+### Miscellaneous Chores
+
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.37.1 ([e566bf3](https://github.com/muhlba91/pulumi-proxmoxve/commit/e566bf38ab0a5302e535a7737e2f28607b53da3e))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.92.0 ([20768b0](https://github.com/muhlba91/pulumi-proxmoxve/commit/20768b0520105a9b7a306cb878b87d74085cd32c))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.93.0 ([89c665b](https://github.com/muhlba91/pulumi-proxmoxve/commit/89c665b5aaf423fe81891773b7fb2ef717be770c))
+* **deps:** update sigstore/cosign-installer action to v3.2.0 ([ad2ab34](https://github.com/muhlba91/pulumi-proxmoxve/commit/ad2ab3481b88e90de1a80cd6e98cc4c1a84459aa))
+
 ## [5.15.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.14.0...v5.15.0) (2023-10-31)
 
 
