@@ -1,6 +1,26 @@
 # Changelog
 
 
+## [5.16.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.15.1...v5.16.0) (2023-11-22)
+
+
+### Features
+
+* **release:** prepare for upstream release 0.38.1 ([adf4e3f](https://github.com/muhlba91/pulumi-proxmoxve/commit/adf4e3fe644c390160d7d39ad0315fa2ab93f149))
+
+
+### Miscellaneous Chores
+
+* **deps:** update anchore/sbom-action action to v0.15.0 ([bf3de07](https://github.com/muhlba91/pulumi-proxmoxve/commit/bf3de070c33a83e17ea1494cc46db9bfb67c7483))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.38.0 ([9f93585](https://github.com/muhlba91/pulumi-proxmoxve/commit/9f93585a6136f3c5ff78e210d7366e6aa56eccf7))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.38.1 ([8694e15](https://github.com/muhlba91/pulumi-proxmoxve/commit/8694e15d92bd1822e43c998aeb2ed43748a7b0f8))
+* **deps:** update module github.com/pulumi/pulumi-terraform-bridge/v3 to v3.64.0 ([50450c3](https://github.com/muhlba91/pulumi-proxmoxve/commit/50450c320180bd000144807d7e3167fe27c97a53))
+* **deps:** update module github.com/pulumi/pulumi-terraform-bridge/v3 to v3.65.0 ([09f9597](https://github.com/muhlba91/pulumi-proxmoxve/commit/09f959734d7978804fba53c593d446851126dc6d))
+* **deps:** update module github.com/pulumi/pulumi-terraform-bridge/v3 to v3.66.0 ([adb0a5e](https://github.com/muhlba91/pulumi-proxmoxve/commit/adb0a5e13f9c0ce648e6c1642e20cba50ee0b093))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.94.0 ([3c3c751](https://github.com/muhlba91/pulumi-proxmoxve/commit/3c3c75150423d640a8fe2efd15769fd0eecda62b))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.94.1 ([6cde60e](https://github.com/muhlba91/pulumi-proxmoxve/commit/6cde60e72624b19f69fd0fe1c9d544f302726bca))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.94.2 ([b105eb1](https://github.com/muhlba91/pulumi-proxmoxve/commit/b105eb1edac9ada195c466d5a9d3e924fe6e1052))
+
 ## [5.15.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.15.0...v5.15.1) (2023-11-12)
 
 
