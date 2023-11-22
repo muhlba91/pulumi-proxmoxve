@@ -9,7 +9,6 @@ import (
 
 	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves information about all the available roles.
@@ -83,12 +82,6 @@ func (o GetRolesResultOutput) ToGetRolesResultOutput() GetRolesResultOutput {
 
 func (o GetRolesResultOutput) ToGetRolesResultOutputWithContext(ctx context.Context) GetRolesResultOutput {
 	return o
-}
-
-func (o GetRolesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRolesResult] {
-	return pulumix.Output[GetRolesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

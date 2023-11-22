@@ -9,7 +9,6 @@ import (
 
 	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves information about all available nodes.
@@ -95,12 +94,6 @@ func (o GetNodesResultOutput) ToGetNodesResultOutput() GetNodesResultOutput {
 
 func (o GetNodesResultOutput) ToGetNodesResultOutputWithContext(ctx context.Context) GetNodesResultOutput {
 	return o
-}
-
-func (o GetNodesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetNodesResult] {
-	return pulumix.Output[GetNodesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The CPU count for each node.

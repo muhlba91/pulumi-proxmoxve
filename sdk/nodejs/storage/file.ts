@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * Manages a file.
  *
  * ## Example Usage
- * ### Backups
+ * ### Backups (`dump`)
  *
  * > **Note:** The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
  *
@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
  * const backup = new proxmoxve.storage.File("backup", {
- *     contentType: "backup",
+ *     contentType: "dump",
  *     datastoreId: "local",
  *     nodeName: "pve",
  *     sourceFile: {

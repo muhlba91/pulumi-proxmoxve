@@ -9,7 +9,6 @@ import (
 
 	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -51,12 +50,6 @@ func (i HostsEntryArgs) ToHostsEntryOutputWithContext(ctx context.Context) Hosts
 	return pulumi.ToOutputWithContext(ctx, i).(HostsEntryOutput)
 }
 
-func (i HostsEntryArgs) ToOutput(ctx context.Context) pulumix.Output[HostsEntry] {
-	return pulumix.Output[HostsEntry]{
-		OutputState: i.ToHostsEntryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HostsEntryArrayInput is an input type that accepts HostsEntryArray and HostsEntryArrayOutput values.
 // You can construct a concrete instance of `HostsEntryArrayInput` via:
 //
@@ -82,12 +75,6 @@ func (i HostsEntryArray) ToHostsEntryArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(HostsEntryArrayOutput)
 }
 
-func (i HostsEntryArray) ToOutput(ctx context.Context) pulumix.Output[[]HostsEntry] {
-	return pulumix.Output[[]HostsEntry]{
-		OutputState: i.ToHostsEntryArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HostsEntryOutput struct{ *pulumi.OutputState }
 
 func (HostsEntryOutput) ElementType() reflect.Type {
@@ -100,12 +87,6 @@ func (o HostsEntryOutput) ToHostsEntryOutput() HostsEntryOutput {
 
 func (o HostsEntryOutput) ToHostsEntryOutputWithContext(ctx context.Context) HostsEntryOutput {
 	return o
-}
-
-func (o HostsEntryOutput) ToOutput(ctx context.Context) pulumix.Output[HostsEntry] {
-	return pulumix.Output[HostsEntry]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The IP address.
@@ -130,12 +111,6 @@ func (o HostsEntryArrayOutput) ToHostsEntryArrayOutput() HostsEntryArrayOutput {
 
 func (o HostsEntryArrayOutput) ToHostsEntryArrayOutputWithContext(ctx context.Context) HostsEntryArrayOutput {
 	return o
-}
-
-func (o HostsEntryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HostsEntry] {
-	return pulumix.Output[[]HostsEntry]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HostsEntryArrayOutput) Index(i pulumi.IntInput) HostsEntryOutput {
@@ -183,12 +158,6 @@ func (i ProviderSshArgs) ToProviderSshOutputWithContext(ctx context.Context) Pro
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderSshOutput)
 }
 
-func (i ProviderSshArgs) ToOutput(ctx context.Context) pulumix.Output[ProviderSsh] {
-	return pulumix.Output[ProviderSsh]{
-		OutputState: i.ToProviderSshOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ProviderSshArgs) ToProviderSshPtrOutput() ProviderSshPtrOutput {
 	return i.ToProviderSshPtrOutputWithContext(context.Background())
 }
@@ -230,12 +199,6 @@ func (i *providerSshPtrType) ToProviderSshPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderSshPtrOutput)
 }
 
-func (i *providerSshPtrType) ToOutput(ctx context.Context) pulumix.Output[*ProviderSsh] {
-	return pulumix.Output[*ProviderSsh]{
-		OutputState: i.ToProviderSshPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProviderSshOutput struct{ *pulumi.OutputState }
 
 func (ProviderSshOutput) ElementType() reflect.Type {
@@ -258,12 +221,6 @@ func (o ProviderSshOutput) ToProviderSshPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProviderSsh) *ProviderSsh {
 		return &v
 	}).(ProviderSshPtrOutput)
-}
-
-func (o ProviderSshOutput) ToOutput(ctx context.Context) pulumix.Output[ProviderSsh] {
-	return pulumix.Output[ProviderSsh]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProviderSshOutput) Agent() pulumi.BoolPtrOutput {
@@ -298,12 +255,6 @@ func (o ProviderSshPtrOutput) ToProviderSshPtrOutput() ProviderSshPtrOutput {
 
 func (o ProviderSshPtrOutput) ToProviderSshPtrOutputWithContext(ctx context.Context) ProviderSshPtrOutput {
 	return o
-}
-
-func (o ProviderSshPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProviderSsh] {
-	return pulumix.Output[*ProviderSsh]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProviderSshPtrOutput) Elem() ProviderSshOutput {
@@ -396,12 +347,6 @@ func (i ProviderSshNodeArgs) ToProviderSshNodeOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderSshNodeOutput)
 }
 
-func (i ProviderSshNodeArgs) ToOutput(ctx context.Context) pulumix.Output[ProviderSshNode] {
-	return pulumix.Output[ProviderSshNode]{
-		OutputState: i.ToProviderSshNodeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ProviderSshNodeArrayInput is an input type that accepts ProviderSshNodeArray and ProviderSshNodeArrayOutput values.
 // You can construct a concrete instance of `ProviderSshNodeArrayInput` via:
 //
@@ -427,12 +372,6 @@ func (i ProviderSshNodeArray) ToProviderSshNodeArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderSshNodeArrayOutput)
 }
 
-func (i ProviderSshNodeArray) ToOutput(ctx context.Context) pulumix.Output[[]ProviderSshNode] {
-	return pulumix.Output[[]ProviderSshNode]{
-		OutputState: i.ToProviderSshNodeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProviderSshNodeOutput struct{ *pulumi.OutputState }
 
 func (ProviderSshNodeOutput) ElementType() reflect.Type {
@@ -445,12 +384,6 @@ func (o ProviderSshNodeOutput) ToProviderSshNodeOutput() ProviderSshNodeOutput {
 
 func (o ProviderSshNodeOutput) ToProviderSshNodeOutputWithContext(ctx context.Context) ProviderSshNodeOutput {
 	return o
-}
-
-func (o ProviderSshNodeOutput) ToOutput(ctx context.Context) pulumix.Output[ProviderSshNode] {
-	return pulumix.Output[ProviderSshNode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProviderSshNodeOutput) Address() pulumi.StringOutput {
@@ -477,12 +410,6 @@ func (o ProviderSshNodeArrayOutput) ToProviderSshNodeArrayOutput() ProviderSshNo
 
 func (o ProviderSshNodeArrayOutput) ToProviderSshNodeArrayOutputWithContext(ctx context.Context) ProviderSshNodeArrayOutput {
 	return o
-}
-
-func (o ProviderSshNodeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ProviderSshNode] {
-	return pulumix.Output[[]ProviderSshNode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProviderSshNodeArrayOutput) Index(i pulumi.IntInput) ProviderSshNodeOutput {
@@ -526,12 +453,6 @@ func (i GetHostsEntryArgs) ToGetHostsEntryOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GetHostsEntryOutput)
 }
 
-func (i GetHostsEntryArgs) ToOutput(ctx context.Context) pulumix.Output[GetHostsEntry] {
-	return pulumix.Output[GetHostsEntry]{
-		OutputState: i.ToGetHostsEntryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetHostsEntryArrayInput is an input type that accepts GetHostsEntryArray and GetHostsEntryArrayOutput values.
 // You can construct a concrete instance of `GetHostsEntryArrayInput` via:
 //
@@ -557,12 +478,6 @@ func (i GetHostsEntryArray) ToGetHostsEntryArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetHostsEntryArrayOutput)
 }
 
-func (i GetHostsEntryArray) ToOutput(ctx context.Context) pulumix.Output[[]GetHostsEntry] {
-	return pulumix.Output[[]GetHostsEntry]{
-		OutputState: i.ToGetHostsEntryArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetHostsEntryOutput struct{ *pulumi.OutputState }
 
 func (GetHostsEntryOutput) ElementType() reflect.Type {
@@ -575,12 +490,6 @@ func (o GetHostsEntryOutput) ToGetHostsEntryOutput() GetHostsEntryOutput {
 
 func (o GetHostsEntryOutput) ToGetHostsEntryOutputWithContext(ctx context.Context) GetHostsEntryOutput {
 	return o
-}
-
-func (o GetHostsEntryOutput) ToOutput(ctx context.Context) pulumix.Output[GetHostsEntry] {
-	return pulumix.Output[GetHostsEntry]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetHostsEntryOutput) Address() pulumi.StringOutput {
@@ -604,12 +513,6 @@ func (o GetHostsEntryArrayOutput) ToGetHostsEntryArrayOutput() GetHostsEntryArra
 
 func (o GetHostsEntryArrayOutput) ToGetHostsEntryArrayOutputWithContext(ctx context.Context) GetHostsEntryArrayOutput {
 	return o
-}
-
-func (o GetHostsEntryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetHostsEntry] {
-	return pulumix.Output[[]GetHostsEntry]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetHostsEntryArrayOutput) Index(i pulumi.IntInput) GetHostsEntryOutput {

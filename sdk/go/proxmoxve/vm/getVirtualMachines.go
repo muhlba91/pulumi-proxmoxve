@@ -9,7 +9,6 @@ import (
 
 	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves information about all VMs in the Proxmox cluster.
@@ -111,12 +110,6 @@ func (o GetVirtualMachinesResultOutput) ToGetVirtualMachinesResultOutput() GetVi
 
 func (o GetVirtualMachinesResultOutput) ToGetVirtualMachinesResultOutputWithContext(ctx context.Context) GetVirtualMachinesResultOutput {
 	return o
-}
-
-func (o GetVirtualMachinesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetVirtualMachinesResult] {
-	return pulumix.Output[GetVirtualMachinesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

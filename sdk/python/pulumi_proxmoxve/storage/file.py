@@ -352,7 +352,7 @@ class File(pulumi.CustomResource):
         Manages a file.
 
         ## Example Usage
-        ### Backups
+        ### Backups (`dump`)
 
         > **Note:** The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
 
@@ -361,7 +361,7 @@ class File(pulumi.CustomResource):
         import pulumi_proxmoxve as proxmoxve
 
         backup = proxmoxve.storage.File("backup",
-            content_type="backup",
+            content_type="dump",
             datastore_id="local",
             node_name="pve",
             source_file=proxmoxve.storage.FileSourceFileArgs(
@@ -444,7 +444,7 @@ class File(pulumi.CustomResource):
         Manages a file.
 
         ## Example Usage
-        ### Backups
+        ### Backups (`dump`)
 
         > **Note:** The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
 
@@ -453,7 +453,7 @@ class File(pulumi.CustomResource):
         import pulumi_proxmoxve as proxmoxve
 
         backup = proxmoxve.storage.File("backup",
-            content_type="backup",
+            content_type="dump",
             datastore_id="local",
             node_name="pve",
             source_file=proxmoxve.storage.FileSourceFileArgs(

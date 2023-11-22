@@ -9,7 +9,6 @@ import (
 
 	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -63,12 +62,6 @@ func (i FileSourceFileArgs) ToFileSourceFileOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(FileSourceFileOutput)
 }
 
-func (i FileSourceFileArgs) ToOutput(ctx context.Context) pulumix.Output[FileSourceFile] {
-	return pulumix.Output[FileSourceFile]{
-		OutputState: i.ToFileSourceFileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FileSourceFileArgs) ToFileSourceFilePtrOutput() FileSourceFilePtrOutput {
 	return i.ToFileSourceFilePtrOutputWithContext(context.Background())
 }
@@ -110,12 +103,6 @@ func (i *fileSourceFilePtrType) ToFileSourceFilePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(FileSourceFilePtrOutput)
 }
 
-func (i *fileSourceFilePtrType) ToOutput(ctx context.Context) pulumix.Output[*FileSourceFile] {
-	return pulumix.Output[*FileSourceFile]{
-		OutputState: i.ToFileSourceFilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FileSourceFileOutput struct{ *pulumi.OutputState }
 
 func (FileSourceFileOutput) ElementType() reflect.Type {
@@ -138,12 +125,6 @@ func (o FileSourceFileOutput) ToFileSourceFilePtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileSourceFile) *FileSourceFile {
 		return &v
 	}).(FileSourceFilePtrOutput)
-}
-
-func (o FileSourceFileOutput) ToOutput(ctx context.Context) pulumix.Output[FileSourceFile] {
-	return pulumix.Output[FileSourceFile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FileSourceFileOutput) Changed() pulumi.BoolPtrOutput {
@@ -183,12 +164,6 @@ func (o FileSourceFilePtrOutput) ToFileSourceFilePtrOutput() FileSourceFilePtrOu
 
 func (o FileSourceFilePtrOutput) ToFileSourceFilePtrOutputWithContext(ctx context.Context) FileSourceFilePtrOutput {
 	return o
-}
-
-func (o FileSourceFilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FileSourceFile] {
-	return pulumix.Output[*FileSourceFile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FileSourceFilePtrOutput) Elem() FileSourceFileOutput {
@@ -292,12 +267,6 @@ func (i FileSourceRawArgs) ToFileSourceRawOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(FileSourceRawOutput)
 }
 
-func (i FileSourceRawArgs) ToOutput(ctx context.Context) pulumix.Output[FileSourceRaw] {
-	return pulumix.Output[FileSourceRaw]{
-		OutputState: i.ToFileSourceRawOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FileSourceRawArgs) ToFileSourceRawPtrOutput() FileSourceRawPtrOutput {
 	return i.ToFileSourceRawPtrOutputWithContext(context.Background())
 }
@@ -339,12 +308,6 @@ func (i *fileSourceRawPtrType) ToFileSourceRawPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(FileSourceRawPtrOutput)
 }
 
-func (i *fileSourceRawPtrType) ToOutput(ctx context.Context) pulumix.Output[*FileSourceRaw] {
-	return pulumix.Output[*FileSourceRaw]{
-		OutputState: i.ToFileSourceRawPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FileSourceRawOutput struct{ *pulumi.OutputState }
 
 func (FileSourceRawOutput) ElementType() reflect.Type {
@@ -367,12 +330,6 @@ func (o FileSourceRawOutput) ToFileSourceRawPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileSourceRaw) *FileSourceRaw {
 		return &v
 	}).(FileSourceRawPtrOutput)
-}
-
-func (o FileSourceRawOutput) ToOutput(ctx context.Context) pulumix.Output[FileSourceRaw] {
-	return pulumix.Output[FileSourceRaw]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The raw data.
@@ -402,12 +359,6 @@ func (o FileSourceRawPtrOutput) ToFileSourceRawPtrOutput() FileSourceRawPtrOutpu
 
 func (o FileSourceRawPtrOutput) ToFileSourceRawPtrOutputWithContext(ctx context.Context) FileSourceRawPtrOutput {
 	return o
-}
-
-func (o FileSourceRawPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FileSourceRaw] {
-	return pulumix.Output[*FileSourceRaw]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FileSourceRawPtrOutput) Elem() FileSourceRawOutput {

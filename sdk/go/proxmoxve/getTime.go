@@ -9,7 +9,6 @@ import (
 
 	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current time for a specific node.
@@ -104,12 +103,6 @@ func (o LookupTimeResultOutput) ToLookupTimeResultOutput() LookupTimeResultOutpu
 
 func (o LookupTimeResultOutput) ToLookupTimeResultOutputWithContext(ctx context.Context) LookupTimeResultOutput {
 	return o
-}
-
-func (o LookupTimeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTimeResult] {
-	return pulumix.Output[LookupTimeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

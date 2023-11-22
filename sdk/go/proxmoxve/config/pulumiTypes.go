@@ -9,7 +9,6 @@ import (
 
 	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i SshArgs) ToSshOutputWithContext(ctx context.Context) SshOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SshOutput)
 }
 
-func (i SshArgs) ToOutput(ctx context.Context) pulumix.Output[Ssh] {
-	return pulumix.Output[Ssh]{
-		OutputState: i.ToSshOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SshOutput struct{ *pulumi.OutputState }
 
 func (SshOutput) ElementType() reflect.Type {
@@ -71,12 +64,6 @@ func (o SshOutput) ToSshOutput() SshOutput {
 
 func (o SshOutput) ToSshOutputWithContext(ctx context.Context) SshOutput {
 	return o
-}
-
-func (o SshOutput) ToOutput(ctx context.Context) pulumix.Output[Ssh] {
-	return pulumix.Output[Ssh]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SshOutput) Agent() pulumi.BoolPtrOutput {
@@ -134,12 +121,6 @@ func (i SshNodeArgs) ToSshNodeOutputWithContext(ctx context.Context) SshNodeOutp
 	return pulumi.ToOutputWithContext(ctx, i).(SshNodeOutput)
 }
 
-func (i SshNodeArgs) ToOutput(ctx context.Context) pulumix.Output[SshNode] {
-	return pulumix.Output[SshNode]{
-		OutputState: i.ToSshNodeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SshNodeArrayInput is an input type that accepts SshNodeArray and SshNodeArrayOutput values.
 // You can construct a concrete instance of `SshNodeArrayInput` via:
 //
@@ -165,12 +146,6 @@ func (i SshNodeArray) ToSshNodeArrayOutputWithContext(ctx context.Context) SshNo
 	return pulumi.ToOutputWithContext(ctx, i).(SshNodeArrayOutput)
 }
 
-func (i SshNodeArray) ToOutput(ctx context.Context) pulumix.Output[[]SshNode] {
-	return pulumix.Output[[]SshNode]{
-		OutputState: i.ToSshNodeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SshNodeOutput struct{ *pulumi.OutputState }
 
 func (SshNodeOutput) ElementType() reflect.Type {
@@ -183,12 +158,6 @@ func (o SshNodeOutput) ToSshNodeOutput() SshNodeOutput {
 
 func (o SshNodeOutput) ToSshNodeOutputWithContext(ctx context.Context) SshNodeOutput {
 	return o
-}
-
-func (o SshNodeOutput) ToOutput(ctx context.Context) pulumix.Output[SshNode] {
-	return pulumix.Output[SshNode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SshNodeOutput) Address() pulumi.StringOutput {
@@ -215,12 +184,6 @@ func (o SshNodeArrayOutput) ToSshNodeArrayOutput() SshNodeArrayOutput {
 
 func (o SshNodeArrayOutput) ToSshNodeArrayOutputWithContext(ctx context.Context) SshNodeArrayOutput {
 	return o
-}
-
-func (o SshNodeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SshNode] {
-	return pulumix.Output[[]SshNode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SshNodeArrayOutput) Index(i pulumi.IntInput) SshNodeOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -57,12 +56,6 @@ func (i FirewallIPSetCidrArgs) ToFirewallIPSetCidrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallIPSetCidrOutput)
 }
 
-func (i FirewallIPSetCidrArgs) ToOutput(ctx context.Context) pulumix.Output[FirewallIPSetCidr] {
-	return pulumix.Output[FirewallIPSetCidr]{
-		OutputState: i.ToFirewallIPSetCidrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FirewallIPSetCidrArrayInput is an input type that accepts FirewallIPSetCidrArray and FirewallIPSetCidrArrayOutput values.
 // You can construct a concrete instance of `FirewallIPSetCidrArrayInput` via:
 //
@@ -88,12 +81,6 @@ func (i FirewallIPSetCidrArray) ToFirewallIPSetCidrArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallIPSetCidrArrayOutput)
 }
 
-func (i FirewallIPSetCidrArray) ToOutput(ctx context.Context) pulumix.Output[[]FirewallIPSetCidr] {
-	return pulumix.Output[[]FirewallIPSetCidr]{
-		OutputState: i.ToFirewallIPSetCidrArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FirewallIPSetCidrOutput struct{ *pulumi.OutputState }
 
 func (FirewallIPSetCidrOutput) ElementType() reflect.Type {
@@ -106,12 +93,6 @@ func (o FirewallIPSetCidrOutput) ToFirewallIPSetCidrOutput() FirewallIPSetCidrOu
 
 func (o FirewallIPSetCidrOutput) ToFirewallIPSetCidrOutputWithContext(ctx context.Context) FirewallIPSetCidrOutput {
 	return o
-}
-
-func (o FirewallIPSetCidrOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallIPSetCidr] {
-	return pulumix.Output[FirewallIPSetCidr]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Arbitrary string annotation.
@@ -142,12 +123,6 @@ func (o FirewallIPSetCidrArrayOutput) ToFirewallIPSetCidrArrayOutput() FirewallI
 
 func (o FirewallIPSetCidrArrayOutput) ToFirewallIPSetCidrArrayOutputWithContext(ctx context.Context) FirewallIPSetCidrArrayOutput {
 	return o
-}
-
-func (o FirewallIPSetCidrArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FirewallIPSetCidr] {
-	return pulumix.Output[[]FirewallIPSetCidr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallIPSetCidrArrayOutput) Index(i pulumi.IntInput) FirewallIPSetCidrOutput {
@@ -199,12 +174,6 @@ func (i FirewallLogRatelimitArgs) ToFirewallLogRatelimitOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallLogRatelimitOutput)
 }
 
-func (i FirewallLogRatelimitArgs) ToOutput(ctx context.Context) pulumix.Output[FirewallLogRatelimit] {
-	return pulumix.Output[FirewallLogRatelimit]{
-		OutputState: i.ToFirewallLogRatelimitOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FirewallLogRatelimitArgs) ToFirewallLogRatelimitPtrOutput() FirewallLogRatelimitPtrOutput {
 	return i.ToFirewallLogRatelimitPtrOutputWithContext(context.Background())
 }
@@ -246,12 +215,6 @@ func (i *firewallLogRatelimitPtrType) ToFirewallLogRatelimitPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallLogRatelimitPtrOutput)
 }
 
-func (i *firewallLogRatelimitPtrType) ToOutput(ctx context.Context) pulumix.Output[*FirewallLogRatelimit] {
-	return pulumix.Output[*FirewallLogRatelimit]{
-		OutputState: i.ToFirewallLogRatelimitPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FirewallLogRatelimitOutput struct{ *pulumi.OutputState }
 
 func (FirewallLogRatelimitOutput) ElementType() reflect.Type {
@@ -274,12 +237,6 @@ func (o FirewallLogRatelimitOutput) ToFirewallLogRatelimitPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FirewallLogRatelimit) *FirewallLogRatelimit {
 		return &v
 	}).(FirewallLogRatelimitPtrOutput)
-}
-
-func (o FirewallLogRatelimitOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallLogRatelimit] {
-	return pulumix.Output[FirewallLogRatelimit]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Initial burst of packages which will always get
@@ -310,12 +267,6 @@ func (o FirewallLogRatelimitPtrOutput) ToFirewallLogRatelimitPtrOutput() Firewal
 
 func (o FirewallLogRatelimitPtrOutput) ToFirewallLogRatelimitPtrOutputWithContext(ctx context.Context) FirewallLogRatelimitPtrOutput {
 	return o
-}
-
-func (o FirewallLogRatelimitPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallLogRatelimit] {
-	return pulumix.Output[*FirewallLogRatelimit]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallLogRatelimitPtrOutput) Elem() FirewallLogRatelimitOutput {
@@ -492,12 +443,6 @@ func (i FirewallRulesRuleArgs) ToFirewallRulesRuleOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallRulesRuleOutput)
 }
 
-func (i FirewallRulesRuleArgs) ToOutput(ctx context.Context) pulumix.Output[FirewallRulesRule] {
-	return pulumix.Output[FirewallRulesRule]{
-		OutputState: i.ToFirewallRulesRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FirewallRulesRuleArrayInput is an input type that accepts FirewallRulesRuleArray and FirewallRulesRuleArrayOutput values.
 // You can construct a concrete instance of `FirewallRulesRuleArrayInput` via:
 //
@@ -523,12 +468,6 @@ func (i FirewallRulesRuleArray) ToFirewallRulesRuleArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallRulesRuleArrayOutput)
 }
 
-func (i FirewallRulesRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]FirewallRulesRule] {
-	return pulumix.Output[[]FirewallRulesRule]{
-		OutputState: i.ToFirewallRulesRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FirewallRulesRuleOutput struct{ *pulumi.OutputState }
 
 func (FirewallRulesRuleOutput) ElementType() reflect.Type {
@@ -541,12 +480,6 @@ func (o FirewallRulesRuleOutput) ToFirewallRulesRuleOutput() FirewallRulesRuleOu
 
 func (o FirewallRulesRuleOutput) ToFirewallRulesRuleOutputWithContext(ctx context.Context) FirewallRulesRuleOutput {
 	return o
-}
-
-func (o FirewallRulesRuleOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallRulesRule] {
-	return pulumix.Output[FirewallRulesRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Rule action (`ACCEPT`, `DROP`, `REJECT`).
@@ -655,12 +588,6 @@ func (o FirewallRulesRuleArrayOutput) ToFirewallRulesRuleArrayOutput() FirewallR
 
 func (o FirewallRulesRuleArrayOutput) ToFirewallRulesRuleArrayOutputWithContext(ctx context.Context) FirewallRulesRuleArrayOutput {
 	return o
-}
-
-func (o FirewallRulesRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FirewallRulesRule] {
-	return pulumix.Output[[]FirewallRulesRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallRulesRuleArrayOutput) Index(i pulumi.IntInput) FirewallRulesRuleOutput {
@@ -790,12 +717,6 @@ func (i FirewallSecurityGroupRuleArgs) ToFirewallSecurityGroupRuleOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallSecurityGroupRuleOutput)
 }
 
-func (i FirewallSecurityGroupRuleArgs) ToOutput(ctx context.Context) pulumix.Output[FirewallSecurityGroupRule] {
-	return pulumix.Output[FirewallSecurityGroupRule]{
-		OutputState: i.ToFirewallSecurityGroupRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FirewallSecurityGroupRuleArrayInput is an input type that accepts FirewallSecurityGroupRuleArray and FirewallSecurityGroupRuleArrayOutput values.
 // You can construct a concrete instance of `FirewallSecurityGroupRuleArrayInput` via:
 //
@@ -821,12 +742,6 @@ func (i FirewallSecurityGroupRuleArray) ToFirewallSecurityGroupRuleArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallSecurityGroupRuleArrayOutput)
 }
 
-func (i FirewallSecurityGroupRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]FirewallSecurityGroupRule] {
-	return pulumix.Output[[]FirewallSecurityGroupRule]{
-		OutputState: i.ToFirewallSecurityGroupRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FirewallSecurityGroupRuleOutput struct{ *pulumi.OutputState }
 
 func (FirewallSecurityGroupRuleOutput) ElementType() reflect.Type {
@@ -839,12 +754,6 @@ func (o FirewallSecurityGroupRuleOutput) ToFirewallSecurityGroupRuleOutput() Fir
 
 func (o FirewallSecurityGroupRuleOutput) ToFirewallSecurityGroupRuleOutputWithContext(ctx context.Context) FirewallSecurityGroupRuleOutput {
 	return o
-}
-
-func (o FirewallSecurityGroupRuleOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallSecurityGroupRule] {
-	return pulumix.Output[FirewallSecurityGroupRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Rule action (`ACCEPT`, `DROP`, `REJECT`).
@@ -947,12 +856,6 @@ func (o FirewallSecurityGroupRuleArrayOutput) ToFirewallSecurityGroupRuleArrayOu
 
 func (o FirewallSecurityGroupRuleArrayOutput) ToFirewallSecurityGroupRuleArrayOutputWithContext(ctx context.Context) FirewallSecurityGroupRuleArrayOutput {
 	return o
-}
-
-func (o FirewallSecurityGroupRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FirewallSecurityGroupRule] {
-	return pulumix.Output[[]FirewallSecurityGroupRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallSecurityGroupRuleArrayOutput) Index(i pulumi.IntInput) FirewallSecurityGroupRuleOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves information about all the datastores available to a specific node.
@@ -116,12 +115,6 @@ func (o GetDatastoresResultOutput) ToGetDatastoresResultOutput() GetDatastoresRe
 
 func (o GetDatastoresResultOutput) ToGetDatastoresResultOutputWithContext(ctx context.Context) GetDatastoresResultOutput {
 	return o
-}
-
-func (o GetDatastoresResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatastoresResult] {
-	return pulumix.Output[GetDatastoresResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether the datastore is active.

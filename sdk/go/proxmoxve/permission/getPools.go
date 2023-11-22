@@ -9,7 +9,6 @@ import (
 
 	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the identifiers for all the available resource pools.
@@ -79,12 +78,6 @@ func (o GetPoolsResultOutput) ToGetPoolsResultOutput() GetPoolsResultOutput {
 
 func (o GetPoolsResultOutput) ToGetPoolsResultOutputWithContext(ctx context.Context) GetPoolsResultOutput {
 	return o
-}
-
-func (o GetPoolsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPoolsResult] {
-	return pulumix.Output[GetPoolsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages the custom SSL/TLS certificate for a specific node.
@@ -261,12 +260,6 @@ func (i *Certifi) ToCertifiOutputWithContext(ctx context.Context) CertifiOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(CertifiOutput)
 }
 
-func (i *Certifi) ToOutput(ctx context.Context) pulumix.Output[*Certifi] {
-	return pulumix.Output[*Certifi]{
-		OutputState: i.ToCertifiOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CertifiArrayInput is an input type that accepts CertifiArray and CertifiArrayOutput values.
 // You can construct a concrete instance of `CertifiArrayInput` via:
 //
@@ -290,12 +283,6 @@ func (i CertifiArray) ToCertifiArrayOutput() CertifiArrayOutput {
 
 func (i CertifiArray) ToCertifiArrayOutputWithContext(ctx context.Context) CertifiArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CertifiArrayOutput)
-}
-
-func (i CertifiArray) ToOutput(ctx context.Context) pulumix.Output[[]*Certifi] {
-	return pulumix.Output[[]*Certifi]{
-		OutputState: i.ToCertifiArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CertifiMapInput is an input type that accepts CertifiMap and CertifiMapOutput values.
@@ -323,12 +310,6 @@ func (i CertifiMap) ToCertifiMapOutputWithContext(ctx context.Context) CertifiMa
 	return pulumi.ToOutputWithContext(ctx, i).(CertifiMapOutput)
 }
 
-func (i CertifiMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Certifi] {
-	return pulumix.Output[map[string]*Certifi]{
-		OutputState: i.ToCertifiMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CertifiOutput struct{ *pulumi.OutputState }
 
 func (CertifiOutput) ElementType() reflect.Type {
@@ -341,12 +322,6 @@ func (o CertifiOutput) ToCertifiOutput() CertifiOutput {
 
 func (o CertifiOutput) ToCertifiOutputWithContext(ctx context.Context) CertifiOutput {
 	return o
-}
-
-func (o CertifiOutput) ToOutput(ctx context.Context) pulumix.Output[*Certifi] {
-	return pulumix.Output[*Certifi]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The PEM encoded certificate.
@@ -433,12 +408,6 @@ func (o CertifiArrayOutput) ToCertifiArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o CertifiArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Certifi] {
-	return pulumix.Output[[]*Certifi]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CertifiArrayOutput) Index(i pulumi.IntInput) CertifiOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Certifi {
 		return vs[0].([]*Certifi)[vs[1].(int)]
@@ -457,12 +426,6 @@ func (o CertifiMapOutput) ToCertifiMapOutput() CertifiMapOutput {
 
 func (o CertifiMapOutput) ToCertifiMapOutputWithContext(ctx context.Context) CertifiMapOutput {
 	return o
-}
-
-func (o CertifiMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Certifi] {
-	return pulumix.Output[map[string]*Certifi]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CertifiMapOutput) MapIndex(k pulumi.StringInput) CertifiOutput {

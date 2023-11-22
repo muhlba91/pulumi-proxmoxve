@@ -9,7 +9,6 @@ import (
 
 	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves information about a specific resource pool.
@@ -102,12 +101,6 @@ func (o LookupPoolResultOutput) ToLookupPoolResultOutput() LookupPoolResultOutpu
 
 func (o LookupPoolResultOutput) ToLookupPoolResultOutputWithContext(ctx context.Context) LookupPoolResultOutput {
 	return o
-}
-
-func (o LookupPoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPoolResult] {
-	return pulumix.Output[LookupPoolResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The pool comment.

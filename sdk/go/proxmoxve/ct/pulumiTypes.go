@@ -9,7 +9,6 @@ import (
 
 	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -57,12 +56,6 @@ func (i ContainerCloneArgs) ToContainerCloneOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerCloneOutput)
 }
 
-func (i ContainerCloneArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerClone] {
-	return pulumix.Output[ContainerClone]{
-		OutputState: i.ToContainerCloneOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ContainerCloneArgs) ToContainerClonePtrOutput() ContainerClonePtrOutput {
 	return i.ToContainerClonePtrOutputWithContext(context.Background())
 }
@@ -104,12 +97,6 @@ func (i *containerClonePtrType) ToContainerClonePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerClonePtrOutput)
 }
 
-func (i *containerClonePtrType) ToOutput(ctx context.Context) pulumix.Output[*ContainerClone] {
-	return pulumix.Output[*ContainerClone]{
-		OutputState: i.ToContainerClonePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ContainerCloneOutput struct{ *pulumi.OutputState }
 
 func (ContainerCloneOutput) ElementType() reflect.Type {
@@ -132,12 +119,6 @@ func (o ContainerCloneOutput) ToContainerClonePtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerClone) *ContainerClone {
 		return &v
 	}).(ContainerClonePtrOutput)
-}
-
-func (o ContainerCloneOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerClone] {
-	return pulumix.Output[ContainerClone]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The identifier for the datastore to create the
@@ -168,12 +149,6 @@ func (o ContainerClonePtrOutput) ToContainerClonePtrOutput() ContainerClonePtrOu
 
 func (o ContainerClonePtrOutput) ToContainerClonePtrOutputWithContext(ctx context.Context) ContainerClonePtrOutput {
 	return o
-}
-
-func (o ContainerClonePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerClone] {
-	return pulumix.Output[*ContainerClone]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerClonePtrOutput) Elem() ContainerCloneOutput {
@@ -260,12 +235,6 @@ func (i ContainerConsoleArgs) ToContainerConsoleOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerConsoleOutput)
 }
 
-func (i ContainerConsoleArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerConsole] {
-	return pulumix.Output[ContainerConsole]{
-		OutputState: i.ToContainerConsoleOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ContainerConsoleArgs) ToContainerConsolePtrOutput() ContainerConsolePtrOutput {
 	return i.ToContainerConsolePtrOutputWithContext(context.Background())
 }
@@ -307,12 +276,6 @@ func (i *containerConsolePtrType) ToContainerConsolePtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerConsolePtrOutput)
 }
 
-func (i *containerConsolePtrType) ToOutput(ctx context.Context) pulumix.Output[*ContainerConsole] {
-	return pulumix.Output[*ContainerConsole]{
-		OutputState: i.ToContainerConsolePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ContainerConsoleOutput struct{ *pulumi.OutputState }
 
 func (ContainerConsoleOutput) ElementType() reflect.Type {
@@ -335,12 +298,6 @@ func (o ContainerConsoleOutput) ToContainerConsolePtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerConsole) *ContainerConsole {
 		return &v
 	}).(ContainerConsolePtrOutput)
-}
-
-func (o ContainerConsoleOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerConsole] {
-	return pulumix.Output[ContainerConsole]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to enable the network device (defaults
@@ -371,12 +328,6 @@ func (o ContainerConsolePtrOutput) ToContainerConsolePtrOutput() ContainerConsol
 
 func (o ContainerConsolePtrOutput) ToContainerConsolePtrOutputWithContext(ctx context.Context) ContainerConsolePtrOutput {
 	return o
-}
-
-func (o ContainerConsolePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerConsole] {
-	return pulumix.Output[*ContainerConsole]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerConsolePtrOutput) Elem() ContainerConsoleOutput {
@@ -461,12 +412,6 @@ func (i ContainerCpuArgs) ToContainerCpuOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerCpuOutput)
 }
 
-func (i ContainerCpuArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerCpu] {
-	return pulumix.Output[ContainerCpu]{
-		OutputState: i.ToContainerCpuOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ContainerCpuArgs) ToContainerCpuPtrOutput() ContainerCpuPtrOutput {
 	return i.ToContainerCpuPtrOutputWithContext(context.Background())
 }
@@ -508,12 +453,6 @@ func (i *containerCpuPtrType) ToContainerCpuPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerCpuPtrOutput)
 }
 
-func (i *containerCpuPtrType) ToOutput(ctx context.Context) pulumix.Output[*ContainerCpu] {
-	return pulumix.Output[*ContainerCpu]{
-		OutputState: i.ToContainerCpuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ContainerCpuOutput struct{ *pulumi.OutputState }
 
 func (ContainerCpuOutput) ElementType() reflect.Type {
@@ -536,12 +475,6 @@ func (o ContainerCpuOutput) ToContainerCpuPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerCpu) *ContainerCpu {
 		return &v
 	}).(ContainerCpuPtrOutput)
-}
-
-func (o ContainerCpuOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerCpu] {
-	return pulumix.Output[ContainerCpu]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The CPU architecture (defaults to `amd64`).
@@ -571,12 +504,6 @@ func (o ContainerCpuPtrOutput) ToContainerCpuPtrOutput() ContainerCpuPtrOutput {
 
 func (o ContainerCpuPtrOutput) ToContainerCpuPtrOutputWithContext(ctx context.Context) ContainerCpuPtrOutput {
 	return o
-}
-
-func (o ContainerCpuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerCpu] {
-	return pulumix.Output[*ContainerCpu]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerCpuPtrOutput) Elem() ContainerCpuOutput {
@@ -660,12 +587,6 @@ func (i ContainerDiskArgs) ToContainerDiskOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerDiskOutput)
 }
 
-func (i ContainerDiskArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerDisk] {
-	return pulumix.Output[ContainerDisk]{
-		OutputState: i.ToContainerDiskOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ContainerDiskArgs) ToContainerDiskPtrOutput() ContainerDiskPtrOutput {
 	return i.ToContainerDiskPtrOutputWithContext(context.Background())
 }
@@ -707,12 +628,6 @@ func (i *containerDiskPtrType) ToContainerDiskPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerDiskPtrOutput)
 }
 
-func (i *containerDiskPtrType) ToOutput(ctx context.Context) pulumix.Output[*ContainerDisk] {
-	return pulumix.Output[*ContainerDisk]{
-		OutputState: i.ToContainerDiskPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ContainerDiskOutput struct{ *pulumi.OutputState }
 
 func (ContainerDiskOutput) ElementType() reflect.Type {
@@ -735,12 +650,6 @@ func (o ContainerDiskOutput) ToContainerDiskPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerDisk) *ContainerDisk {
 		return &v
 	}).(ContainerDiskPtrOutput)
-}
-
-func (o ContainerDiskOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerDisk] {
-	return pulumix.Output[ContainerDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The identifier for the datastore to create the
@@ -767,12 +676,6 @@ func (o ContainerDiskPtrOutput) ToContainerDiskPtrOutput() ContainerDiskPtrOutpu
 
 func (o ContainerDiskPtrOutput) ToContainerDiskPtrOutputWithContext(ctx context.Context) ContainerDiskPtrOutput {
 	return o
-}
-
-func (o ContainerDiskPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerDisk] {
-	return pulumix.Output[*ContainerDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerDiskPtrOutput) Elem() ContainerDiskOutput {
@@ -854,12 +757,6 @@ func (i ContainerFeaturesArgs) ToContainerFeaturesOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerFeaturesOutput)
 }
 
-func (i ContainerFeaturesArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerFeatures] {
-	return pulumix.Output[ContainerFeatures]{
-		OutputState: i.ToContainerFeaturesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ContainerFeaturesArgs) ToContainerFeaturesPtrOutput() ContainerFeaturesPtrOutput {
 	return i.ToContainerFeaturesPtrOutputWithContext(context.Background())
 }
@@ -901,12 +798,6 @@ func (i *containerFeaturesPtrType) ToContainerFeaturesPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerFeaturesPtrOutput)
 }
 
-func (i *containerFeaturesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ContainerFeatures] {
-	return pulumix.Output[*ContainerFeatures]{
-		OutputState: i.ToContainerFeaturesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ContainerFeaturesOutput struct{ *pulumi.OutputState }
 
 func (ContainerFeaturesOutput) ElementType() reflect.Type {
@@ -929,12 +820,6 @@ func (o ContainerFeaturesOutput) ToContainerFeaturesPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerFeatures) *ContainerFeatures {
 		return &v
 	}).(ContainerFeaturesPtrOutput)
-}
-
-func (o ContainerFeaturesOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerFeatures] {
-	return pulumix.Output[ContainerFeatures]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether the container supports FUSE mounts (defaults
@@ -967,12 +852,6 @@ func (o ContainerFeaturesPtrOutput) ToContainerFeaturesPtrOutput() ContainerFeat
 
 func (o ContainerFeaturesPtrOutput) ToContainerFeaturesPtrOutputWithContext(ctx context.Context) ContainerFeaturesPtrOutput {
 	return o
-}
-
-func (o ContainerFeaturesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerFeatures] {
-	return pulumix.Output[*ContainerFeatures]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerFeaturesPtrOutput) Elem() ContainerFeaturesOutput {
@@ -1065,12 +944,6 @@ func (i ContainerInitializationArgs) ToContainerInitializationOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerInitializationOutput)
 }
 
-func (i ContainerInitializationArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerInitialization] {
-	return pulumix.Output[ContainerInitialization]{
-		OutputState: i.ToContainerInitializationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ContainerInitializationArgs) ToContainerInitializationPtrOutput() ContainerInitializationPtrOutput {
 	return i.ToContainerInitializationPtrOutputWithContext(context.Background())
 }
@@ -1112,12 +985,6 @@ func (i *containerInitializationPtrType) ToContainerInitializationPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerInitializationPtrOutput)
 }
 
-func (i *containerInitializationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ContainerInitialization] {
-	return pulumix.Output[*ContainerInitialization]{
-		OutputState: i.ToContainerInitializationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ContainerInitializationOutput struct{ *pulumi.OutputState }
 
 func (ContainerInitializationOutput) ElementType() reflect.Type {
@@ -1140,12 +1007,6 @@ func (o ContainerInitializationOutput) ToContainerInitializationPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerInitialization) *ContainerInitialization {
 		return &v
 	}).(ContainerInitializationPtrOutput)
-}
-
-func (o ContainerInitializationOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerInitialization] {
-	return pulumix.Output[ContainerInitialization]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The DNS configuration.
@@ -1181,12 +1042,6 @@ func (o ContainerInitializationPtrOutput) ToContainerInitializationPtrOutput() C
 
 func (o ContainerInitializationPtrOutput) ToContainerInitializationPtrOutputWithContext(ctx context.Context) ContainerInitializationPtrOutput {
 	return o
-}
-
-func (o ContainerInitializationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerInitialization] {
-	return pulumix.Output[*ContainerInitialization]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerInitializationPtrOutput) Elem() ContainerInitializationOutput {
@@ -1277,12 +1132,6 @@ func (i ContainerInitializationDnsArgs) ToContainerInitializationDnsOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerInitializationDnsOutput)
 }
 
-func (i ContainerInitializationDnsArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerInitializationDns] {
-	return pulumix.Output[ContainerInitializationDns]{
-		OutputState: i.ToContainerInitializationDnsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ContainerInitializationDnsArgs) ToContainerInitializationDnsPtrOutput() ContainerInitializationDnsPtrOutput {
 	return i.ToContainerInitializationDnsPtrOutputWithContext(context.Background())
 }
@@ -1324,12 +1173,6 @@ func (i *containerInitializationDnsPtrType) ToContainerInitializationDnsPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerInitializationDnsPtrOutput)
 }
 
-func (i *containerInitializationDnsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ContainerInitializationDns] {
-	return pulumix.Output[*ContainerInitializationDns]{
-		OutputState: i.ToContainerInitializationDnsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ContainerInitializationDnsOutput struct{ *pulumi.OutputState }
 
 func (ContainerInitializationDnsOutput) ElementType() reflect.Type {
@@ -1354,12 +1197,6 @@ func (o ContainerInitializationDnsOutput) ToContainerInitializationDnsPtrOutputW
 	}).(ContainerInitializationDnsPtrOutput)
 }
 
-func (o ContainerInitializationDnsOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerInitializationDns] {
-	return pulumix.Output[ContainerInitializationDns]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The DNS search domain.
 func (o ContainerInitializationDnsOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerInitializationDns) *string { return v.Domain }).(pulumi.StringPtrOutput)
@@ -1382,12 +1219,6 @@ func (o ContainerInitializationDnsPtrOutput) ToContainerInitializationDnsPtrOutp
 
 func (o ContainerInitializationDnsPtrOutput) ToContainerInitializationDnsPtrOutputWithContext(ctx context.Context) ContainerInitializationDnsPtrOutput {
 	return o
-}
-
-func (o ContainerInitializationDnsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerInitializationDns] {
-	return pulumix.Output[*ContainerInitializationDns]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerInitializationDnsPtrOutput) Elem() ContainerInitializationDnsOutput {
@@ -1457,12 +1288,6 @@ func (i ContainerInitializationIpConfigArgs) ToContainerInitializationIpConfigOu
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerInitializationIpConfigOutput)
 }
 
-func (i ContainerInitializationIpConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerInitializationIpConfig] {
-	return pulumix.Output[ContainerInitializationIpConfig]{
-		OutputState: i.ToContainerInitializationIpConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ContainerInitializationIpConfigArrayInput is an input type that accepts ContainerInitializationIpConfigArray and ContainerInitializationIpConfigArrayOutput values.
 // You can construct a concrete instance of `ContainerInitializationIpConfigArrayInput` via:
 //
@@ -1488,12 +1313,6 @@ func (i ContainerInitializationIpConfigArray) ToContainerInitializationIpConfigA
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerInitializationIpConfigArrayOutput)
 }
 
-func (i ContainerInitializationIpConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]ContainerInitializationIpConfig] {
-	return pulumix.Output[[]ContainerInitializationIpConfig]{
-		OutputState: i.ToContainerInitializationIpConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ContainerInitializationIpConfigOutput struct{ *pulumi.OutputState }
 
 func (ContainerInitializationIpConfigOutput) ElementType() reflect.Type {
@@ -1506,12 +1325,6 @@ func (o ContainerInitializationIpConfigOutput) ToContainerInitializationIpConfig
 
 func (o ContainerInitializationIpConfigOutput) ToContainerInitializationIpConfigOutputWithContext(ctx context.Context) ContainerInitializationIpConfigOutput {
 	return o
-}
-
-func (o ContainerInitializationIpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerInitializationIpConfig] {
-	return pulumix.Output[ContainerInitializationIpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The IPv4 configuration.
@@ -1536,12 +1349,6 @@ func (o ContainerInitializationIpConfigArrayOutput) ToContainerInitializationIpC
 
 func (o ContainerInitializationIpConfigArrayOutput) ToContainerInitializationIpConfigArrayOutputWithContext(ctx context.Context) ContainerInitializationIpConfigArrayOutput {
 	return o
-}
-
-func (o ContainerInitializationIpConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerInitializationIpConfig] {
-	return pulumix.Output[[]ContainerInitializationIpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerInitializationIpConfigArrayOutput) Index(i pulumi.IntInput) ContainerInitializationIpConfigOutput {
@@ -1591,12 +1398,6 @@ func (i ContainerInitializationIpConfigIpv4Args) ToContainerInitializationIpConf
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerInitializationIpConfigIpv4Output)
 }
 
-func (i ContainerInitializationIpConfigIpv4Args) ToOutput(ctx context.Context) pulumix.Output[ContainerInitializationIpConfigIpv4] {
-	return pulumix.Output[ContainerInitializationIpConfigIpv4]{
-		OutputState: i.ToContainerInitializationIpConfigIpv4OutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ContainerInitializationIpConfigIpv4Args) ToContainerInitializationIpConfigIpv4PtrOutput() ContainerInitializationIpConfigIpv4PtrOutput {
 	return i.ToContainerInitializationIpConfigIpv4PtrOutputWithContext(context.Background())
 }
@@ -1638,12 +1439,6 @@ func (i *containerInitializationIpConfigIpv4PtrType) ToContainerInitializationIp
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerInitializationIpConfigIpv4PtrOutput)
 }
 
-func (i *containerInitializationIpConfigIpv4PtrType) ToOutput(ctx context.Context) pulumix.Output[*ContainerInitializationIpConfigIpv4] {
-	return pulumix.Output[*ContainerInitializationIpConfigIpv4]{
-		OutputState: i.ToContainerInitializationIpConfigIpv4PtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ContainerInitializationIpConfigIpv4Output struct{ *pulumi.OutputState }
 
 func (ContainerInitializationIpConfigIpv4Output) ElementType() reflect.Type {
@@ -1666,12 +1461,6 @@ func (o ContainerInitializationIpConfigIpv4Output) ToContainerInitializationIpCo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerInitializationIpConfigIpv4) *ContainerInitializationIpConfigIpv4 {
 		return &v
 	}).(ContainerInitializationIpConfigIpv4PtrOutput)
-}
-
-func (o ContainerInitializationIpConfigIpv4Output) ToOutput(ctx context.Context) pulumix.Output[ContainerInitializationIpConfigIpv4] {
-	return pulumix.Output[ContainerInitializationIpConfigIpv4]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The IPv6 address (use `dhcp` for
@@ -1698,12 +1487,6 @@ func (o ContainerInitializationIpConfigIpv4PtrOutput) ToContainerInitializationI
 
 func (o ContainerInitializationIpConfigIpv4PtrOutput) ToContainerInitializationIpConfigIpv4PtrOutputWithContext(ctx context.Context) ContainerInitializationIpConfigIpv4PtrOutput {
 	return o
-}
-
-func (o ContainerInitializationIpConfigIpv4PtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerInitializationIpConfigIpv4] {
-	return pulumix.Output[*ContainerInitializationIpConfigIpv4]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerInitializationIpConfigIpv4PtrOutput) Elem() ContainerInitializationIpConfigIpv4Output {
@@ -1779,12 +1562,6 @@ func (i ContainerInitializationIpConfigIpv6Args) ToContainerInitializationIpConf
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerInitializationIpConfigIpv6Output)
 }
 
-func (i ContainerInitializationIpConfigIpv6Args) ToOutput(ctx context.Context) pulumix.Output[ContainerInitializationIpConfigIpv6] {
-	return pulumix.Output[ContainerInitializationIpConfigIpv6]{
-		OutputState: i.ToContainerInitializationIpConfigIpv6OutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ContainerInitializationIpConfigIpv6Args) ToContainerInitializationIpConfigIpv6PtrOutput() ContainerInitializationIpConfigIpv6PtrOutput {
 	return i.ToContainerInitializationIpConfigIpv6PtrOutputWithContext(context.Background())
 }
@@ -1826,12 +1603,6 @@ func (i *containerInitializationIpConfigIpv6PtrType) ToContainerInitializationIp
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerInitializationIpConfigIpv6PtrOutput)
 }
 
-func (i *containerInitializationIpConfigIpv6PtrType) ToOutput(ctx context.Context) pulumix.Output[*ContainerInitializationIpConfigIpv6] {
-	return pulumix.Output[*ContainerInitializationIpConfigIpv6]{
-		OutputState: i.ToContainerInitializationIpConfigIpv6PtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ContainerInitializationIpConfigIpv6Output struct{ *pulumi.OutputState }
 
 func (ContainerInitializationIpConfigIpv6Output) ElementType() reflect.Type {
@@ -1854,12 +1625,6 @@ func (o ContainerInitializationIpConfigIpv6Output) ToContainerInitializationIpCo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerInitializationIpConfigIpv6) *ContainerInitializationIpConfigIpv6 {
 		return &v
 	}).(ContainerInitializationIpConfigIpv6PtrOutput)
-}
-
-func (o ContainerInitializationIpConfigIpv6Output) ToOutput(ctx context.Context) pulumix.Output[ContainerInitializationIpConfigIpv6] {
-	return pulumix.Output[ContainerInitializationIpConfigIpv6]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The IPv6 address (use `dhcp` for
@@ -1886,12 +1651,6 @@ func (o ContainerInitializationIpConfigIpv6PtrOutput) ToContainerInitializationI
 
 func (o ContainerInitializationIpConfigIpv6PtrOutput) ToContainerInitializationIpConfigIpv6PtrOutputWithContext(ctx context.Context) ContainerInitializationIpConfigIpv6PtrOutput {
 	return o
-}
-
-func (o ContainerInitializationIpConfigIpv6PtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerInitializationIpConfigIpv6] {
-	return pulumix.Output[*ContainerInitializationIpConfigIpv6]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerInitializationIpConfigIpv6PtrOutput) Elem() ContainerInitializationIpConfigIpv6Output {
@@ -1963,12 +1722,6 @@ func (i ContainerInitializationUserAccountArgs) ToContainerInitializationUserAcc
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerInitializationUserAccountOutput)
 }
 
-func (i ContainerInitializationUserAccountArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerInitializationUserAccount] {
-	return pulumix.Output[ContainerInitializationUserAccount]{
-		OutputState: i.ToContainerInitializationUserAccountOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ContainerInitializationUserAccountArgs) ToContainerInitializationUserAccountPtrOutput() ContainerInitializationUserAccountPtrOutput {
 	return i.ToContainerInitializationUserAccountPtrOutputWithContext(context.Background())
 }
@@ -2010,12 +1763,6 @@ func (i *containerInitializationUserAccountPtrType) ToContainerInitializationUse
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerInitializationUserAccountPtrOutput)
 }
 
-func (i *containerInitializationUserAccountPtrType) ToOutput(ctx context.Context) pulumix.Output[*ContainerInitializationUserAccount] {
-	return pulumix.Output[*ContainerInitializationUserAccount]{
-		OutputState: i.ToContainerInitializationUserAccountPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ContainerInitializationUserAccountOutput struct{ *pulumi.OutputState }
 
 func (ContainerInitializationUserAccountOutput) ElementType() reflect.Type {
@@ -2040,12 +1787,6 @@ func (o ContainerInitializationUserAccountOutput) ToContainerInitializationUserA
 	}).(ContainerInitializationUserAccountPtrOutput)
 }
 
-func (o ContainerInitializationUserAccountOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerInitializationUserAccount] {
-	return pulumix.Output[ContainerInitializationUserAccount]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The SSH keys for the root account.
 func (o ContainerInitializationUserAccountOutput) Keys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ContainerInitializationUserAccount) []string { return v.Keys }).(pulumi.StringArrayOutput)
@@ -2068,12 +1809,6 @@ func (o ContainerInitializationUserAccountPtrOutput) ToContainerInitializationUs
 
 func (o ContainerInitializationUserAccountPtrOutput) ToContainerInitializationUserAccountPtrOutputWithContext(ctx context.Context) ContainerInitializationUserAccountPtrOutput {
 	return o
-}
-
-func (o ContainerInitializationUserAccountPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerInitializationUserAccount] {
-	return pulumix.Output[*ContainerInitializationUserAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerInitializationUserAccountPtrOutput) Elem() ContainerInitializationUserAccountOutput {
@@ -2145,12 +1880,6 @@ func (i ContainerMemoryArgs) ToContainerMemoryOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerMemoryOutput)
 }
 
-func (i ContainerMemoryArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerMemory] {
-	return pulumix.Output[ContainerMemory]{
-		OutputState: i.ToContainerMemoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ContainerMemoryArgs) ToContainerMemoryPtrOutput() ContainerMemoryPtrOutput {
 	return i.ToContainerMemoryPtrOutputWithContext(context.Background())
 }
@@ -2192,12 +1921,6 @@ func (i *containerMemoryPtrType) ToContainerMemoryPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerMemoryPtrOutput)
 }
 
-func (i *containerMemoryPtrType) ToOutput(ctx context.Context) pulumix.Output[*ContainerMemory] {
-	return pulumix.Output[*ContainerMemory]{
-		OutputState: i.ToContainerMemoryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ContainerMemoryOutput struct{ *pulumi.OutputState }
 
 func (ContainerMemoryOutput) ElementType() reflect.Type {
@@ -2220,12 +1943,6 @@ func (o ContainerMemoryOutput) ToContainerMemoryPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerMemory) *ContainerMemory {
 		return &v
 	}).(ContainerMemoryPtrOutput)
-}
-
-func (o ContainerMemoryOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerMemory] {
-	return pulumix.Output[ContainerMemory]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The dedicated memory in megabytes (defaults
@@ -2251,12 +1968,6 @@ func (o ContainerMemoryPtrOutput) ToContainerMemoryPtrOutput() ContainerMemoryPt
 
 func (o ContainerMemoryPtrOutput) ToContainerMemoryPtrOutputWithContext(ctx context.Context) ContainerMemoryPtrOutput {
 	return o
-}
-
-func (o ContainerMemoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerMemory] {
-	return pulumix.Output[*ContainerMemory]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerMemoryPtrOutput) Elem() ContainerMemoryOutput {
@@ -2371,12 +2082,6 @@ func (i ContainerMountPointArgs) ToContainerMountPointOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerMountPointOutput)
 }
 
-func (i ContainerMountPointArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerMountPoint] {
-	return pulumix.Output[ContainerMountPoint]{
-		OutputState: i.ToContainerMountPointOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ContainerMountPointArrayInput is an input type that accepts ContainerMountPointArray and ContainerMountPointArrayOutput values.
 // You can construct a concrete instance of `ContainerMountPointArrayInput` via:
 //
@@ -2402,12 +2107,6 @@ func (i ContainerMountPointArray) ToContainerMountPointArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerMountPointArrayOutput)
 }
 
-func (i ContainerMountPointArray) ToOutput(ctx context.Context) pulumix.Output[[]ContainerMountPoint] {
-	return pulumix.Output[[]ContainerMountPoint]{
-		OutputState: i.ToContainerMountPointArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ContainerMountPointOutput struct{ *pulumi.OutputState }
 
 func (ContainerMountPointOutput) ElementType() reflect.Type {
@@ -2420,12 +2119,6 @@ func (o ContainerMountPointOutput) ToContainerMountPointOutput() ContainerMountP
 
 func (o ContainerMountPointOutput) ToContainerMountPointOutputWithContext(ctx context.Context) ContainerMountPointOutput {
 	return o
-}
-
-func (o ContainerMountPointOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerMountPoint] {
-	return pulumix.Output[ContainerMountPoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Explicitly enable or disable ACL support.
@@ -2496,12 +2189,6 @@ func (o ContainerMountPointArrayOutput) ToContainerMountPointArrayOutput() Conta
 
 func (o ContainerMountPointArrayOutput) ToContainerMountPointArrayOutputWithContext(ctx context.Context) ContainerMountPointArrayOutput {
 	return o
-}
-
-func (o ContainerMountPointArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerMountPoint] {
-	return pulumix.Output[[]ContainerMountPoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerMountPointArrayOutput) Index(i pulumi.IntInput) ContainerMountPointOutput {
@@ -2579,12 +2266,6 @@ func (i ContainerNetworkInterfaceArgs) ToContainerNetworkInterfaceOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerNetworkInterfaceOutput)
 }
 
-func (i ContainerNetworkInterfaceArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerNetworkInterface] {
-	return pulumix.Output[ContainerNetworkInterface]{
-		OutputState: i.ToContainerNetworkInterfaceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ContainerNetworkInterfaceArrayInput is an input type that accepts ContainerNetworkInterfaceArray and ContainerNetworkInterfaceArrayOutput values.
 // You can construct a concrete instance of `ContainerNetworkInterfaceArrayInput` via:
 //
@@ -2610,12 +2291,6 @@ func (i ContainerNetworkInterfaceArray) ToContainerNetworkInterfaceArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerNetworkInterfaceArrayOutput)
 }
 
-func (i ContainerNetworkInterfaceArray) ToOutput(ctx context.Context) pulumix.Output[[]ContainerNetworkInterface] {
-	return pulumix.Output[[]ContainerNetworkInterface]{
-		OutputState: i.ToContainerNetworkInterfaceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ContainerNetworkInterfaceOutput struct{ *pulumi.OutputState }
 
 func (ContainerNetworkInterfaceOutput) ElementType() reflect.Type {
@@ -2628,12 +2303,6 @@ func (o ContainerNetworkInterfaceOutput) ToContainerNetworkInterfaceOutput() Con
 
 func (o ContainerNetworkInterfaceOutput) ToContainerNetworkInterfaceOutputWithContext(ctx context.Context) ContainerNetworkInterfaceOutput {
 	return o
-}
-
-func (o ContainerNetworkInterfaceOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerNetworkInterface] {
-	return pulumix.Output[ContainerNetworkInterface]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the network bridge (defaults
@@ -2694,12 +2363,6 @@ func (o ContainerNetworkInterfaceArrayOutput) ToContainerNetworkInterfaceArrayOu
 	return o
 }
 
-func (o ContainerNetworkInterfaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerNetworkInterface] {
-	return pulumix.Output[[]ContainerNetworkInterface]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ContainerNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) ContainerNetworkInterfaceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerNetworkInterface {
 		return vs[0].([]ContainerNetworkInterface)[vs[1].(int)]
@@ -2743,12 +2406,6 @@ func (i ContainerOperatingSystemArgs) ToContainerOperatingSystemOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerOperatingSystemOutput)
 }
 
-func (i ContainerOperatingSystemArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerOperatingSystem] {
-	return pulumix.Output[ContainerOperatingSystem]{
-		OutputState: i.ToContainerOperatingSystemOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ContainerOperatingSystemArgs) ToContainerOperatingSystemPtrOutput() ContainerOperatingSystemPtrOutput {
 	return i.ToContainerOperatingSystemPtrOutputWithContext(context.Background())
 }
@@ -2790,12 +2447,6 @@ func (i *containerOperatingSystemPtrType) ToContainerOperatingSystemPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerOperatingSystemPtrOutput)
 }
 
-func (i *containerOperatingSystemPtrType) ToOutput(ctx context.Context) pulumix.Output[*ContainerOperatingSystem] {
-	return pulumix.Output[*ContainerOperatingSystem]{
-		OutputState: i.ToContainerOperatingSystemPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ContainerOperatingSystemOutput struct{ *pulumi.OutputState }
 
 func (ContainerOperatingSystemOutput) ElementType() reflect.Type {
@@ -2820,12 +2471,6 @@ func (o ContainerOperatingSystemOutput) ToContainerOperatingSystemPtrOutputWithC
 	}).(ContainerOperatingSystemPtrOutput)
 }
 
-func (o ContainerOperatingSystemOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerOperatingSystem] {
-	return pulumix.Output[ContainerOperatingSystem]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The identifier for an OS template file.
 func (o ContainerOperatingSystemOutput) TemplateFileId() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerOperatingSystem) string { return v.TemplateFileId }).(pulumi.StringOutput)
@@ -2848,12 +2493,6 @@ func (o ContainerOperatingSystemPtrOutput) ToContainerOperatingSystemPtrOutput()
 
 func (o ContainerOperatingSystemPtrOutput) ToContainerOperatingSystemPtrOutputWithContext(ctx context.Context) ContainerOperatingSystemPtrOutput {
 	return o
-}
-
-func (o ContainerOperatingSystemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerOperatingSystem] {
-	return pulumix.Output[*ContainerOperatingSystem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerOperatingSystemPtrOutput) Elem() ContainerOperatingSystemOutput {

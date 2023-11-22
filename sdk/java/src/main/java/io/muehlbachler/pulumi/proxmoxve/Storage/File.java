@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * Manages a file.
  * 
  * ## Example Usage
- * ### Backups
+ * ### Backups (`dump`)
  * 
  * &gt; **Note:** The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
  * ```java
@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var backup = new File(&#34;backup&#34;, FileArgs.builder()        
- *             .contentType(&#34;backup&#34;)
+ *             .contentType(&#34;dump&#34;)
  *             .datastoreId(&#34;local&#34;)
  *             .nodeName(&#34;pve&#34;)
  *             .sourceFile(FileSourceFileArgs.builder()

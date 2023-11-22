@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A security group is a collection of rules, defined at cluster level, which can
@@ -204,12 +203,6 @@ func (i *FirewallRules) ToFirewallRulesOutputWithContext(ctx context.Context) Fi
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallRulesOutput)
 }
 
-func (i *FirewallRules) ToOutput(ctx context.Context) pulumix.Output[*FirewallRules] {
-	return pulumix.Output[*FirewallRules]{
-		OutputState: i.ToFirewallRulesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FirewallRulesArrayInput is an input type that accepts FirewallRulesArray and FirewallRulesArrayOutput values.
 // You can construct a concrete instance of `FirewallRulesArrayInput` via:
 //
@@ -233,12 +226,6 @@ func (i FirewallRulesArray) ToFirewallRulesArrayOutput() FirewallRulesArrayOutpu
 
 func (i FirewallRulesArray) ToFirewallRulesArrayOutputWithContext(ctx context.Context) FirewallRulesArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallRulesArrayOutput)
-}
-
-func (i FirewallRulesArray) ToOutput(ctx context.Context) pulumix.Output[[]*FirewallRules] {
-	return pulumix.Output[[]*FirewallRules]{
-		OutputState: i.ToFirewallRulesArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FirewallRulesMapInput is an input type that accepts FirewallRulesMap and FirewallRulesMapOutput values.
@@ -266,12 +253,6 @@ func (i FirewallRulesMap) ToFirewallRulesMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallRulesMapOutput)
 }
 
-func (i FirewallRulesMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FirewallRules] {
-	return pulumix.Output[map[string]*FirewallRules]{
-		OutputState: i.ToFirewallRulesMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FirewallRulesOutput struct{ *pulumi.OutputState }
 
 func (FirewallRulesOutput) ElementType() reflect.Type {
@@ -284,12 +265,6 @@ func (o FirewallRulesOutput) ToFirewallRulesOutput() FirewallRulesOutput {
 
 func (o FirewallRulesOutput) ToFirewallRulesOutputWithContext(ctx context.Context) FirewallRulesOutput {
 	return o
-}
-
-func (o FirewallRulesOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallRules] {
-	return pulumix.Output[*FirewallRules]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Container ID. Leave empty for cluster level
@@ -329,12 +304,6 @@ func (o FirewallRulesArrayOutput) ToFirewallRulesArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o FirewallRulesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FirewallRules] {
-	return pulumix.Output[[]*FirewallRules]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FirewallRulesArrayOutput) Index(i pulumi.IntInput) FirewallRulesOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FirewallRules {
 		return vs[0].([]*FirewallRules)[vs[1].(int)]
@@ -353,12 +322,6 @@ func (o FirewallRulesMapOutput) ToFirewallRulesMapOutput() FirewallRulesMapOutpu
 
 func (o FirewallRulesMapOutput) ToFirewallRulesMapOutputWithContext(ctx context.Context) FirewallRulesMapOutput {
 	return o
-}
-
-func (o FirewallRulesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FirewallRules] {
-	return pulumix.Output[map[string]*FirewallRules]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallRulesMapOutput) MapIndex(k pulumi.StringInput) FirewallRulesOutput {

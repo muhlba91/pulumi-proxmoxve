@@ -9,7 +9,6 @@ import (
 
 	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -65,12 +64,6 @@ func (i VirtualMachineAgentArgs) ToVirtualMachineAgentOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineAgentOutput)
 }
 
-func (i VirtualMachineAgentArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineAgent] {
-	return pulumix.Output[VirtualMachineAgent]{
-		OutputState: i.ToVirtualMachineAgentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VirtualMachineAgentArgs) ToVirtualMachineAgentPtrOutput() VirtualMachineAgentPtrOutput {
 	return i.ToVirtualMachineAgentPtrOutputWithContext(context.Background())
 }
@@ -112,12 +105,6 @@ func (i *virtualMachineAgentPtrType) ToVirtualMachineAgentPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineAgentPtrOutput)
 }
 
-func (i *virtualMachineAgentPtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineAgent] {
-	return pulumix.Output[*VirtualMachineAgent]{
-		OutputState: i.ToVirtualMachineAgentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VirtualMachineAgentOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineAgentOutput) ElementType() reflect.Type {
@@ -140,12 +127,6 @@ func (o VirtualMachineAgentOutput) ToVirtualMachineAgentPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineAgent) *VirtualMachineAgent {
 		return &v
 	}).(VirtualMachineAgentPtrOutput)
-}
-
-func (o VirtualMachineAgentOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineAgent] {
-	return pulumix.Output[VirtualMachineAgent]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to enable the VGA device (defaults
@@ -183,12 +164,6 @@ func (o VirtualMachineAgentPtrOutput) ToVirtualMachineAgentPtrOutput() VirtualMa
 
 func (o VirtualMachineAgentPtrOutput) ToVirtualMachineAgentPtrOutputWithContext(ctx context.Context) VirtualMachineAgentPtrOutput {
 	return o
-}
-
-func (o VirtualMachineAgentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineAgent] {
-	return pulumix.Output[*VirtualMachineAgent]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualMachineAgentPtrOutput) Elem() VirtualMachineAgentOutput {
@@ -289,12 +264,6 @@ func (i VirtualMachineAudioDeviceArgs) ToVirtualMachineAudioDeviceOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineAudioDeviceOutput)
 }
 
-func (i VirtualMachineAudioDeviceArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineAudioDevice] {
-	return pulumix.Output[VirtualMachineAudioDevice]{
-		OutputState: i.ToVirtualMachineAudioDeviceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VirtualMachineAudioDeviceArgs) ToVirtualMachineAudioDevicePtrOutput() VirtualMachineAudioDevicePtrOutput {
 	return i.ToVirtualMachineAudioDevicePtrOutputWithContext(context.Background())
 }
@@ -336,12 +305,6 @@ func (i *virtualMachineAudioDevicePtrType) ToVirtualMachineAudioDevicePtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineAudioDevicePtrOutput)
 }
 
-func (i *virtualMachineAudioDevicePtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineAudioDevice] {
-	return pulumix.Output[*VirtualMachineAudioDevice]{
-		OutputState: i.ToVirtualMachineAudioDevicePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VirtualMachineAudioDeviceOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineAudioDeviceOutput) ElementType() reflect.Type {
@@ -364,12 +327,6 @@ func (o VirtualMachineAudioDeviceOutput) ToVirtualMachineAudioDevicePtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineAudioDevice) *VirtualMachineAudioDevice {
 		return &v
 	}).(VirtualMachineAudioDevicePtrOutput)
-}
-
-func (o VirtualMachineAudioDeviceOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineAudioDevice] {
-	return pulumix.Output[VirtualMachineAudioDevice]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The device (defaults to `socket`).
@@ -401,12 +358,6 @@ func (o VirtualMachineAudioDevicePtrOutput) ToVirtualMachineAudioDevicePtrOutput
 
 func (o VirtualMachineAudioDevicePtrOutput) ToVirtualMachineAudioDevicePtrOutputWithContext(ctx context.Context) VirtualMachineAudioDevicePtrOutput {
 	return o
-}
-
-func (o VirtualMachineAudioDevicePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineAudioDevice] {
-	return pulumix.Output[*VirtualMachineAudioDevice]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualMachineAudioDevicePtrOutput) Elem() VirtualMachineAudioDeviceOutput {
@@ -504,12 +455,6 @@ func (i VirtualMachineCdromArgs) ToVirtualMachineCdromOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineCdromOutput)
 }
 
-func (i VirtualMachineCdromArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineCdrom] {
-	return pulumix.Output[VirtualMachineCdrom]{
-		OutputState: i.ToVirtualMachineCdromOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VirtualMachineCdromArgs) ToVirtualMachineCdromPtrOutput() VirtualMachineCdromPtrOutput {
 	return i.ToVirtualMachineCdromPtrOutputWithContext(context.Background())
 }
@@ -551,12 +496,6 @@ func (i *virtualMachineCdromPtrType) ToVirtualMachineCdromPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineCdromPtrOutput)
 }
 
-func (i *virtualMachineCdromPtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineCdrom] {
-	return pulumix.Output[*VirtualMachineCdrom]{
-		OutputState: i.ToVirtualMachineCdromPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VirtualMachineCdromOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineCdromOutput) ElementType() reflect.Type {
@@ -579,12 +518,6 @@ func (o VirtualMachineCdromOutput) ToVirtualMachineCdromPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineCdrom) *VirtualMachineCdrom {
 		return &v
 	}).(VirtualMachineCdromPtrOutput)
-}
-
-func (o VirtualMachineCdromOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineCdrom] {
-	return pulumix.Output[VirtualMachineCdrom]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to enable the VGA device (defaults
@@ -620,12 +553,6 @@ func (o VirtualMachineCdromPtrOutput) ToVirtualMachineCdromPtrOutput() VirtualMa
 
 func (o VirtualMachineCdromPtrOutput) ToVirtualMachineCdromPtrOutputWithContext(ctx context.Context) VirtualMachineCdromPtrOutput {
 	return o
-}
-
-func (o VirtualMachineCdromPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineCdrom] {
-	return pulumix.Output[*VirtualMachineCdrom]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualMachineCdromPtrOutput) Elem() VirtualMachineCdromOutput {
@@ -729,12 +656,6 @@ func (i VirtualMachineCloneArgs) ToVirtualMachineCloneOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineCloneOutput)
 }
 
-func (i VirtualMachineCloneArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineClone] {
-	return pulumix.Output[VirtualMachineClone]{
-		OutputState: i.ToVirtualMachineCloneOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VirtualMachineCloneArgs) ToVirtualMachineClonePtrOutput() VirtualMachineClonePtrOutput {
 	return i.ToVirtualMachineClonePtrOutputWithContext(context.Background())
 }
@@ -776,12 +697,6 @@ func (i *virtualMachineClonePtrType) ToVirtualMachineClonePtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineClonePtrOutput)
 }
 
-func (i *virtualMachineClonePtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineClone] {
-	return pulumix.Output[*VirtualMachineClone]{
-		OutputState: i.ToVirtualMachineClonePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VirtualMachineCloneOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineCloneOutput) ElementType() reflect.Type {
@@ -804,12 +719,6 @@ func (o VirtualMachineCloneOutput) ToVirtualMachineClonePtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineClone) *VirtualMachineClone {
 		return &v
 	}).(VirtualMachineClonePtrOutput)
-}
-
-func (o VirtualMachineCloneOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineClone] {
-	return pulumix.Output[VirtualMachineClone]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The identifier for the datastore to create the
@@ -852,12 +761,6 @@ func (o VirtualMachineClonePtrOutput) ToVirtualMachineClonePtrOutput() VirtualMa
 
 func (o VirtualMachineClonePtrOutput) ToVirtualMachineClonePtrOutputWithContext(ctx context.Context) VirtualMachineClonePtrOutput {
 	return o
-}
-
-func (o VirtualMachineClonePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineClone] {
-	return pulumix.Output[*VirtualMachineClone]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualMachineClonePtrOutput) Elem() VirtualMachineCloneOutput {
@@ -1030,12 +933,6 @@ func (i VirtualMachineCpuArgs) ToVirtualMachineCpuOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineCpuOutput)
 }
 
-func (i VirtualMachineCpuArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineCpu] {
-	return pulumix.Output[VirtualMachineCpu]{
-		OutputState: i.ToVirtualMachineCpuOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VirtualMachineCpuArgs) ToVirtualMachineCpuPtrOutput() VirtualMachineCpuPtrOutput {
 	return i.ToVirtualMachineCpuPtrOutputWithContext(context.Background())
 }
@@ -1077,12 +974,6 @@ func (i *virtualMachineCpuPtrType) ToVirtualMachineCpuPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineCpuPtrOutput)
 }
 
-func (i *virtualMachineCpuPtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineCpu] {
-	return pulumix.Output[*VirtualMachineCpu]{
-		OutputState: i.ToVirtualMachineCpuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VirtualMachineCpuOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineCpuOutput) ElementType() reflect.Type {
@@ -1105,12 +996,6 @@ func (o VirtualMachineCpuOutput) ToVirtualMachineCpuPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineCpu) *VirtualMachineCpu {
 		return &v
 	}).(VirtualMachineCpuPtrOutput)
-}
-
-func (o VirtualMachineCpuOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineCpu] {
-	return pulumix.Output[VirtualMachineCpu]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The CPU architecture (defaults to `x8664`).
@@ -1188,12 +1073,6 @@ func (o VirtualMachineCpuPtrOutput) ToVirtualMachineCpuPtrOutput() VirtualMachin
 
 func (o VirtualMachineCpuPtrOutput) ToVirtualMachineCpuPtrOutputWithContext(ctx context.Context) VirtualMachineCpuPtrOutput {
 	return o
-}
-
-func (o VirtualMachineCpuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineCpu] {
-	return pulumix.Output[*VirtualMachineCpu]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualMachineCpuPtrOutput) Elem() VirtualMachineCpuOutput {
@@ -1410,12 +1289,6 @@ func (i VirtualMachineDiskArgs) ToVirtualMachineDiskOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineDiskOutput)
 }
 
-func (i VirtualMachineDiskArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineDisk] {
-	return pulumix.Output[VirtualMachineDisk]{
-		OutputState: i.ToVirtualMachineDiskOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VirtualMachineDiskArrayInput is an input type that accepts VirtualMachineDiskArray and VirtualMachineDiskArrayOutput values.
 // You can construct a concrete instance of `VirtualMachineDiskArrayInput` via:
 //
@@ -1441,12 +1314,6 @@ func (i VirtualMachineDiskArray) ToVirtualMachineDiskArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineDiskArrayOutput)
 }
 
-func (i VirtualMachineDiskArray) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachineDisk] {
-	return pulumix.Output[[]VirtualMachineDisk]{
-		OutputState: i.ToVirtualMachineDiskArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VirtualMachineDiskOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineDiskOutput) ElementType() reflect.Type {
@@ -1459,12 +1326,6 @@ func (o VirtualMachineDiskOutput) ToVirtualMachineDiskOutput() VirtualMachineDis
 
 func (o VirtualMachineDiskOutput) ToVirtualMachineDiskOutputWithContext(ctx context.Context) VirtualMachineDiskOutput {
 	return o
-}
-
-func (o VirtualMachineDiskOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineDisk] {
-	return pulumix.Output[VirtualMachineDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The cache type (defaults to `none`).
@@ -1550,12 +1411,6 @@ func (o VirtualMachineDiskArrayOutput) ToVirtualMachineDiskArrayOutputWithContex
 	return o
 }
 
-func (o VirtualMachineDiskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachineDisk] {
-	return pulumix.Output[[]VirtualMachineDisk]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VirtualMachineDiskArrayOutput) Index(i pulumi.IntInput) VirtualMachineDiskOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualMachineDisk {
 		return vs[0].([]VirtualMachineDisk)[vs[1].(int)]
@@ -1611,12 +1466,6 @@ func (i VirtualMachineDiskSpeedArgs) ToVirtualMachineDiskSpeedOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineDiskSpeedOutput)
 }
 
-func (i VirtualMachineDiskSpeedArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineDiskSpeed] {
-	return pulumix.Output[VirtualMachineDiskSpeed]{
-		OutputState: i.ToVirtualMachineDiskSpeedOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VirtualMachineDiskSpeedArgs) ToVirtualMachineDiskSpeedPtrOutput() VirtualMachineDiskSpeedPtrOutput {
 	return i.ToVirtualMachineDiskSpeedPtrOutputWithContext(context.Background())
 }
@@ -1658,12 +1507,6 @@ func (i *virtualMachineDiskSpeedPtrType) ToVirtualMachineDiskSpeedPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineDiskSpeedPtrOutput)
 }
 
-func (i *virtualMachineDiskSpeedPtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineDiskSpeed] {
-	return pulumix.Output[*VirtualMachineDiskSpeed]{
-		OutputState: i.ToVirtualMachineDiskSpeedPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VirtualMachineDiskSpeedOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineDiskSpeedOutput) ElementType() reflect.Type {
@@ -1686,12 +1529,6 @@ func (o VirtualMachineDiskSpeedOutput) ToVirtualMachineDiskSpeedPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineDiskSpeed) *VirtualMachineDiskSpeed {
 		return &v
 	}).(VirtualMachineDiskSpeedPtrOutput)
-}
-
-func (o VirtualMachineDiskSpeedOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineDiskSpeed] {
-	return pulumix.Output[VirtualMachineDiskSpeed]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The maximum read speed in megabytes per second.
@@ -1728,12 +1565,6 @@ func (o VirtualMachineDiskSpeedPtrOutput) ToVirtualMachineDiskSpeedPtrOutput() V
 
 func (o VirtualMachineDiskSpeedPtrOutput) ToVirtualMachineDiskSpeedPtrOutputWithContext(ctx context.Context) VirtualMachineDiskSpeedPtrOutput {
 	return o
-}
-
-func (o VirtualMachineDiskSpeedPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineDiskSpeed] {
-	return pulumix.Output[*VirtualMachineDiskSpeed]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualMachineDiskSpeedPtrOutput) Elem() VirtualMachineDiskSpeedOutput {
@@ -1841,12 +1672,6 @@ func (i VirtualMachineEfiDiskArgs) ToVirtualMachineEfiDiskOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineEfiDiskOutput)
 }
 
-func (i VirtualMachineEfiDiskArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineEfiDisk] {
-	return pulumix.Output[VirtualMachineEfiDisk]{
-		OutputState: i.ToVirtualMachineEfiDiskOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VirtualMachineEfiDiskArgs) ToVirtualMachineEfiDiskPtrOutput() VirtualMachineEfiDiskPtrOutput {
 	return i.ToVirtualMachineEfiDiskPtrOutputWithContext(context.Background())
 }
@@ -1888,12 +1713,6 @@ func (i *virtualMachineEfiDiskPtrType) ToVirtualMachineEfiDiskPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineEfiDiskPtrOutput)
 }
 
-func (i *virtualMachineEfiDiskPtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineEfiDisk] {
-	return pulumix.Output[*VirtualMachineEfiDisk]{
-		OutputState: i.ToVirtualMachineEfiDiskPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VirtualMachineEfiDiskOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineEfiDiskOutput) ElementType() reflect.Type {
@@ -1916,12 +1735,6 @@ func (o VirtualMachineEfiDiskOutput) ToVirtualMachineEfiDiskPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineEfiDisk) *VirtualMachineEfiDisk {
 		return &v
 	}).(VirtualMachineEfiDiskPtrOutput)
-}
-
-func (o VirtualMachineEfiDiskOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineEfiDisk] {
-	return pulumix.Output[VirtualMachineEfiDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The identifier for the datastore to create the
@@ -1960,12 +1773,6 @@ func (o VirtualMachineEfiDiskPtrOutput) ToVirtualMachineEfiDiskPtrOutput() Virtu
 
 func (o VirtualMachineEfiDiskPtrOutput) ToVirtualMachineEfiDiskPtrOutputWithContext(ctx context.Context) VirtualMachineEfiDiskPtrOutput {
 	return o
-}
-
-func (o VirtualMachineEfiDiskPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineEfiDisk] {
-	return pulumix.Output[*VirtualMachineEfiDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualMachineEfiDiskPtrOutput) Elem() VirtualMachineEfiDiskOutput {
@@ -2101,12 +1908,6 @@ func (i VirtualMachineHostpciArgs) ToVirtualMachineHostpciOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineHostpciOutput)
 }
 
-func (i VirtualMachineHostpciArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineHostpci] {
-	return pulumix.Output[VirtualMachineHostpci]{
-		OutputState: i.ToVirtualMachineHostpciOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VirtualMachineHostpciArrayInput is an input type that accepts VirtualMachineHostpciArray and VirtualMachineHostpciArrayOutput values.
 // You can construct a concrete instance of `VirtualMachineHostpciArrayInput` via:
 //
@@ -2132,12 +1933,6 @@ func (i VirtualMachineHostpciArray) ToVirtualMachineHostpciArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineHostpciArrayOutput)
 }
 
-func (i VirtualMachineHostpciArray) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachineHostpci] {
-	return pulumix.Output[[]VirtualMachineHostpci]{
-		OutputState: i.ToVirtualMachineHostpciArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VirtualMachineHostpciOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineHostpciOutput) ElementType() reflect.Type {
@@ -2150,12 +1945,6 @@ func (o VirtualMachineHostpciOutput) ToVirtualMachineHostpciOutput() VirtualMach
 
 func (o VirtualMachineHostpciOutput) ToVirtualMachineHostpciOutputWithContext(ctx context.Context) VirtualMachineHostpciOutput {
 	return o
-}
-
-func (o VirtualMachineHostpciOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineHostpci] {
-	return pulumix.Output[VirtualMachineHostpci]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The device (defaults to `socket`).
@@ -2219,12 +2008,6 @@ func (o VirtualMachineHostpciArrayOutput) ToVirtualMachineHostpciArrayOutput() V
 
 func (o VirtualMachineHostpciArrayOutput) ToVirtualMachineHostpciArrayOutputWithContext(ctx context.Context) VirtualMachineHostpciArrayOutput {
 	return o
-}
-
-func (o VirtualMachineHostpciArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachineHostpci] {
-	return pulumix.Output[[]VirtualMachineHostpci]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualMachineHostpciArrayOutput) Index(i pulumi.IntInput) VirtualMachineHostpciOutput {
@@ -2324,12 +2107,6 @@ func (i VirtualMachineInitializationArgs) ToVirtualMachineInitializationOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInitializationOutput)
 }
 
-func (i VirtualMachineInitializationArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInitialization] {
-	return pulumix.Output[VirtualMachineInitialization]{
-		OutputState: i.ToVirtualMachineInitializationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VirtualMachineInitializationArgs) ToVirtualMachineInitializationPtrOutput() VirtualMachineInitializationPtrOutput {
 	return i.ToVirtualMachineInitializationPtrOutputWithContext(context.Background())
 }
@@ -2371,12 +2148,6 @@ func (i *virtualMachineInitializationPtrType) ToVirtualMachineInitializationPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInitializationPtrOutput)
 }
 
-func (i *virtualMachineInitializationPtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInitialization] {
-	return pulumix.Output[*VirtualMachineInitialization]{
-		OutputState: i.ToVirtualMachineInitializationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VirtualMachineInitializationOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineInitializationOutput) ElementType() reflect.Type {
@@ -2399,12 +2170,6 @@ func (o VirtualMachineInitializationOutput) ToVirtualMachineInitializationPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineInitialization) *VirtualMachineInitialization {
 		return &v
 	}).(VirtualMachineInitializationPtrOutput)
-}
-
-func (o VirtualMachineInitializationOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInitialization] {
-	return pulumix.Output[VirtualMachineInitialization]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The identifier for the datastore to create the
@@ -2480,12 +2245,6 @@ func (o VirtualMachineInitializationPtrOutput) ToVirtualMachineInitializationPtr
 
 func (o VirtualMachineInitializationPtrOutput) ToVirtualMachineInitializationPtrOutputWithContext(ctx context.Context) VirtualMachineInitializationPtrOutput {
 	return o
-}
-
-func (o VirtualMachineInitializationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInitialization] {
-	return pulumix.Output[*VirtualMachineInitialization]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualMachineInitializationPtrOutput) Elem() VirtualMachineInitializationOutput {
@@ -2646,12 +2405,6 @@ func (i VirtualMachineInitializationDnsArgs) ToVirtualMachineInitializationDnsOu
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInitializationDnsOutput)
 }
 
-func (i VirtualMachineInitializationDnsArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInitializationDns] {
-	return pulumix.Output[VirtualMachineInitializationDns]{
-		OutputState: i.ToVirtualMachineInitializationDnsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VirtualMachineInitializationDnsArgs) ToVirtualMachineInitializationDnsPtrOutput() VirtualMachineInitializationDnsPtrOutput {
 	return i.ToVirtualMachineInitializationDnsPtrOutputWithContext(context.Background())
 }
@@ -2693,12 +2446,6 @@ func (i *virtualMachineInitializationDnsPtrType) ToVirtualMachineInitializationD
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInitializationDnsPtrOutput)
 }
 
-func (i *virtualMachineInitializationDnsPtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInitializationDns] {
-	return pulumix.Output[*VirtualMachineInitializationDns]{
-		OutputState: i.ToVirtualMachineInitializationDnsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VirtualMachineInitializationDnsOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineInitializationDnsOutput) ElementType() reflect.Type {
@@ -2723,12 +2470,6 @@ func (o VirtualMachineInitializationDnsOutput) ToVirtualMachineInitializationDns
 	}).(VirtualMachineInitializationDnsPtrOutput)
 }
 
-func (o VirtualMachineInitializationDnsOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInitializationDns] {
-	return pulumix.Output[VirtualMachineInitializationDns]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The DNS search domain.
 func (o VirtualMachineInitializationDnsOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationDns) *string { return v.Domain }).(pulumi.StringPtrOutput)
@@ -2751,12 +2492,6 @@ func (o VirtualMachineInitializationDnsPtrOutput) ToVirtualMachineInitialization
 
 func (o VirtualMachineInitializationDnsPtrOutput) ToVirtualMachineInitializationDnsPtrOutputWithContext(ctx context.Context) VirtualMachineInitializationDnsPtrOutput {
 	return o
-}
-
-func (o VirtualMachineInitializationDnsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInitializationDns] {
-	return pulumix.Output[*VirtualMachineInitializationDns]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualMachineInitializationDnsPtrOutput) Elem() VirtualMachineInitializationDnsOutput {
@@ -2826,12 +2561,6 @@ func (i VirtualMachineInitializationIpConfigArgs) ToVirtualMachineInitialization
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInitializationIpConfigOutput)
 }
 
-func (i VirtualMachineInitializationIpConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInitializationIpConfig] {
-	return pulumix.Output[VirtualMachineInitializationIpConfig]{
-		OutputState: i.ToVirtualMachineInitializationIpConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VirtualMachineInitializationIpConfigArrayInput is an input type that accepts VirtualMachineInitializationIpConfigArray and VirtualMachineInitializationIpConfigArrayOutput values.
 // You can construct a concrete instance of `VirtualMachineInitializationIpConfigArrayInput` via:
 //
@@ -2857,12 +2586,6 @@ func (i VirtualMachineInitializationIpConfigArray) ToVirtualMachineInitializatio
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInitializationIpConfigArrayOutput)
 }
 
-func (i VirtualMachineInitializationIpConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachineInitializationIpConfig] {
-	return pulumix.Output[[]VirtualMachineInitializationIpConfig]{
-		OutputState: i.ToVirtualMachineInitializationIpConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VirtualMachineInitializationIpConfigOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineInitializationIpConfigOutput) ElementType() reflect.Type {
@@ -2875,12 +2598,6 @@ func (o VirtualMachineInitializationIpConfigOutput) ToVirtualMachineInitializati
 
 func (o VirtualMachineInitializationIpConfigOutput) ToVirtualMachineInitializationIpConfigOutputWithContext(ctx context.Context) VirtualMachineInitializationIpConfigOutput {
 	return o
-}
-
-func (o VirtualMachineInitializationIpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInitializationIpConfig] {
-	return pulumix.Output[VirtualMachineInitializationIpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The IPv4 configuration.
@@ -2905,12 +2622,6 @@ func (o VirtualMachineInitializationIpConfigArrayOutput) ToVirtualMachineInitial
 
 func (o VirtualMachineInitializationIpConfigArrayOutput) ToVirtualMachineInitializationIpConfigArrayOutputWithContext(ctx context.Context) VirtualMachineInitializationIpConfigArrayOutput {
 	return o
-}
-
-func (o VirtualMachineInitializationIpConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachineInitializationIpConfig] {
-	return pulumix.Output[[]VirtualMachineInitializationIpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualMachineInitializationIpConfigArrayOutput) Index(i pulumi.IntInput) VirtualMachineInitializationIpConfigOutput {
@@ -2962,12 +2673,6 @@ func (i VirtualMachineInitializationIpConfigIpv4Args) ToVirtualMachineInitializa
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInitializationIpConfigIpv4Output)
 }
 
-func (i VirtualMachineInitializationIpConfigIpv4Args) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInitializationIpConfigIpv4] {
-	return pulumix.Output[VirtualMachineInitializationIpConfigIpv4]{
-		OutputState: i.ToVirtualMachineInitializationIpConfigIpv4OutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VirtualMachineInitializationIpConfigIpv4Args) ToVirtualMachineInitializationIpConfigIpv4PtrOutput() VirtualMachineInitializationIpConfigIpv4PtrOutput {
 	return i.ToVirtualMachineInitializationIpConfigIpv4PtrOutputWithContext(context.Background())
 }
@@ -3009,12 +2714,6 @@ func (i *virtualMachineInitializationIpConfigIpv4PtrType) ToVirtualMachineInitia
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInitializationIpConfigIpv4PtrOutput)
 }
 
-func (i *virtualMachineInitializationIpConfigIpv4PtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInitializationIpConfigIpv4] {
-	return pulumix.Output[*VirtualMachineInitializationIpConfigIpv4]{
-		OutputState: i.ToVirtualMachineInitializationIpConfigIpv4PtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VirtualMachineInitializationIpConfigIpv4Output struct{ *pulumi.OutputState }
 
 func (VirtualMachineInitializationIpConfigIpv4Output) ElementType() reflect.Type {
@@ -3037,12 +2736,6 @@ func (o VirtualMachineInitializationIpConfigIpv4Output) ToVirtualMachineInitiali
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineInitializationIpConfigIpv4) *VirtualMachineInitializationIpConfigIpv4 {
 		return &v
 	}).(VirtualMachineInitializationIpConfigIpv4PtrOutput)
-}
-
-func (o VirtualMachineInitializationIpConfigIpv4Output) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInitializationIpConfigIpv4] {
-	return pulumix.Output[VirtualMachineInitializationIpConfigIpv4]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The IPv6 address in CIDR notation
@@ -3070,12 +2763,6 @@ func (o VirtualMachineInitializationIpConfigIpv4PtrOutput) ToVirtualMachineIniti
 
 func (o VirtualMachineInitializationIpConfigIpv4PtrOutput) ToVirtualMachineInitializationIpConfigIpv4PtrOutputWithContext(ctx context.Context) VirtualMachineInitializationIpConfigIpv4PtrOutput {
 	return o
-}
-
-func (o VirtualMachineInitializationIpConfigIpv4PtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInitializationIpConfigIpv4] {
-	return pulumix.Output[*VirtualMachineInitializationIpConfigIpv4]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualMachineInitializationIpConfigIpv4PtrOutput) Elem() VirtualMachineInitializationIpConfigIpv4Output {
@@ -3154,12 +2841,6 @@ func (i VirtualMachineInitializationIpConfigIpv6Args) ToVirtualMachineInitializa
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInitializationIpConfigIpv6Output)
 }
 
-func (i VirtualMachineInitializationIpConfigIpv6Args) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInitializationIpConfigIpv6] {
-	return pulumix.Output[VirtualMachineInitializationIpConfigIpv6]{
-		OutputState: i.ToVirtualMachineInitializationIpConfigIpv6OutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VirtualMachineInitializationIpConfigIpv6Args) ToVirtualMachineInitializationIpConfigIpv6PtrOutput() VirtualMachineInitializationIpConfigIpv6PtrOutput {
 	return i.ToVirtualMachineInitializationIpConfigIpv6PtrOutputWithContext(context.Background())
 }
@@ -3201,12 +2882,6 @@ func (i *virtualMachineInitializationIpConfigIpv6PtrType) ToVirtualMachineInitia
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInitializationIpConfigIpv6PtrOutput)
 }
 
-func (i *virtualMachineInitializationIpConfigIpv6PtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInitializationIpConfigIpv6] {
-	return pulumix.Output[*VirtualMachineInitializationIpConfigIpv6]{
-		OutputState: i.ToVirtualMachineInitializationIpConfigIpv6PtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VirtualMachineInitializationIpConfigIpv6Output struct{ *pulumi.OutputState }
 
 func (VirtualMachineInitializationIpConfigIpv6Output) ElementType() reflect.Type {
@@ -3229,12 +2904,6 @@ func (o VirtualMachineInitializationIpConfigIpv6Output) ToVirtualMachineInitiali
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineInitializationIpConfigIpv6) *VirtualMachineInitializationIpConfigIpv6 {
 		return &v
 	}).(VirtualMachineInitializationIpConfigIpv6PtrOutput)
-}
-
-func (o VirtualMachineInitializationIpConfigIpv6Output) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInitializationIpConfigIpv6] {
-	return pulumix.Output[VirtualMachineInitializationIpConfigIpv6]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The IPv6 address in CIDR notation
@@ -3262,12 +2931,6 @@ func (o VirtualMachineInitializationIpConfigIpv6PtrOutput) ToVirtualMachineIniti
 
 func (o VirtualMachineInitializationIpConfigIpv6PtrOutput) ToVirtualMachineInitializationIpConfigIpv6PtrOutputWithContext(ctx context.Context) VirtualMachineInitializationIpConfigIpv6PtrOutput {
 	return o
-}
-
-func (o VirtualMachineInitializationIpConfigIpv6PtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInitializationIpConfigIpv6] {
-	return pulumix.Output[*VirtualMachineInitializationIpConfigIpv6]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualMachineInitializationIpConfigIpv6PtrOutput) Elem() VirtualMachineInitializationIpConfigIpv6Output {
@@ -3344,12 +3007,6 @@ func (i VirtualMachineInitializationUserAccountArgs) ToVirtualMachineInitializat
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInitializationUserAccountOutput)
 }
 
-func (i VirtualMachineInitializationUserAccountArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInitializationUserAccount] {
-	return pulumix.Output[VirtualMachineInitializationUserAccount]{
-		OutputState: i.ToVirtualMachineInitializationUserAccountOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VirtualMachineInitializationUserAccountArgs) ToVirtualMachineInitializationUserAccountPtrOutput() VirtualMachineInitializationUserAccountPtrOutput {
 	return i.ToVirtualMachineInitializationUserAccountPtrOutputWithContext(context.Background())
 }
@@ -3391,12 +3048,6 @@ func (i *virtualMachineInitializationUserAccountPtrType) ToVirtualMachineInitial
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInitializationUserAccountPtrOutput)
 }
 
-func (i *virtualMachineInitializationUserAccountPtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInitializationUserAccount] {
-	return pulumix.Output[*VirtualMachineInitializationUserAccount]{
-		OutputState: i.ToVirtualMachineInitializationUserAccountPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VirtualMachineInitializationUserAccountOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineInitializationUserAccountOutput) ElementType() reflect.Type {
@@ -3419,12 +3070,6 @@ func (o VirtualMachineInitializationUserAccountOutput) ToVirtualMachineInitializ
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineInitializationUserAccount) *VirtualMachineInitializationUserAccount {
 		return &v
 	}).(VirtualMachineInitializationUserAccountPtrOutput)
-}
-
-func (o VirtualMachineInitializationUserAccountOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInitializationUserAccount] {
-	return pulumix.Output[VirtualMachineInitializationUserAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The SSH keys.
@@ -3454,12 +3099,6 @@ func (o VirtualMachineInitializationUserAccountPtrOutput) ToVirtualMachineInitia
 
 func (o VirtualMachineInitializationUserAccountPtrOutput) ToVirtualMachineInitializationUserAccountPtrOutputWithContext(ctx context.Context) VirtualMachineInitializationUserAccountPtrOutput {
 	return o
-}
-
-func (o VirtualMachineInitializationUserAccountPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInitializationUserAccount] {
-	return pulumix.Output[*VirtualMachineInitializationUserAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualMachineInitializationUserAccountPtrOutput) Elem() VirtualMachineInitializationUserAccountOutput {
@@ -3547,12 +3186,6 @@ func (i VirtualMachineMemoryArgs) ToVirtualMachineMemoryOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineMemoryOutput)
 }
 
-func (i VirtualMachineMemoryArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineMemory] {
-	return pulumix.Output[VirtualMachineMemory]{
-		OutputState: i.ToVirtualMachineMemoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VirtualMachineMemoryArgs) ToVirtualMachineMemoryPtrOutput() VirtualMachineMemoryPtrOutput {
 	return i.ToVirtualMachineMemoryPtrOutputWithContext(context.Background())
 }
@@ -3594,12 +3227,6 @@ func (i *virtualMachineMemoryPtrType) ToVirtualMachineMemoryPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineMemoryPtrOutput)
 }
 
-func (i *virtualMachineMemoryPtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineMemory] {
-	return pulumix.Output[*VirtualMachineMemory]{
-		OutputState: i.ToVirtualMachineMemoryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VirtualMachineMemoryOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineMemoryOutput) ElementType() reflect.Type {
@@ -3622,12 +3249,6 @@ func (o VirtualMachineMemoryOutput) ToVirtualMachineMemoryPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineMemory) *VirtualMachineMemory {
 		return &v
 	}).(VirtualMachineMemoryPtrOutput)
-}
-
-func (o VirtualMachineMemoryOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineMemory] {
-	return pulumix.Output[VirtualMachineMemory]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The dedicated memory in megabytes (defaults
@@ -3659,12 +3280,6 @@ func (o VirtualMachineMemoryPtrOutput) ToVirtualMachineMemoryPtrOutput() Virtual
 
 func (o VirtualMachineMemoryPtrOutput) ToVirtualMachineMemoryPtrOutputWithContext(ctx context.Context) VirtualMachineMemoryPtrOutput {
 	return o
-}
-
-func (o VirtualMachineMemoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineMemory] {
-	return pulumix.Output[*VirtualMachineMemory]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualMachineMemoryPtrOutput) Elem() VirtualMachineMemoryOutput {
@@ -3782,12 +3397,6 @@ func (i VirtualMachineNetworkDeviceArgs) ToVirtualMachineNetworkDeviceOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineNetworkDeviceOutput)
 }
 
-func (i VirtualMachineNetworkDeviceArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineNetworkDevice] {
-	return pulumix.Output[VirtualMachineNetworkDevice]{
-		OutputState: i.ToVirtualMachineNetworkDeviceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VirtualMachineNetworkDeviceArrayInput is an input type that accepts VirtualMachineNetworkDeviceArray and VirtualMachineNetworkDeviceArrayOutput values.
 // You can construct a concrete instance of `VirtualMachineNetworkDeviceArrayInput` via:
 //
@@ -3813,12 +3422,6 @@ func (i VirtualMachineNetworkDeviceArray) ToVirtualMachineNetworkDeviceArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineNetworkDeviceArrayOutput)
 }
 
-func (i VirtualMachineNetworkDeviceArray) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachineNetworkDevice] {
-	return pulumix.Output[[]VirtualMachineNetworkDevice]{
-		OutputState: i.ToVirtualMachineNetworkDeviceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VirtualMachineNetworkDeviceOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineNetworkDeviceOutput) ElementType() reflect.Type {
@@ -3831,12 +3434,6 @@ func (o VirtualMachineNetworkDeviceOutput) ToVirtualMachineNetworkDeviceOutput()
 
 func (o VirtualMachineNetworkDeviceOutput) ToVirtualMachineNetworkDeviceOutputWithContext(ctx context.Context) VirtualMachineNetworkDeviceOutput {
 	return o
-}
-
-func (o VirtualMachineNetworkDeviceOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineNetworkDevice] {
-	return pulumix.Output[VirtualMachineNetworkDevice]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the network bridge (defaults
@@ -3902,12 +3499,6 @@ func (o VirtualMachineNetworkDeviceArrayOutput) ToVirtualMachineNetworkDeviceArr
 	return o
 }
 
-func (o VirtualMachineNetworkDeviceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachineNetworkDevice] {
-	return pulumix.Output[[]VirtualMachineNetworkDevice]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VirtualMachineNetworkDeviceArrayOutput) Index(i pulumi.IntInput) VirtualMachineNetworkDeviceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualMachineNetworkDevice {
 		return vs[0].([]VirtualMachineNetworkDevice)[vs[1].(int)]
@@ -3945,12 +3536,6 @@ func (i VirtualMachineOperatingSystemArgs) ToVirtualMachineOperatingSystemOutput
 
 func (i VirtualMachineOperatingSystemArgs) ToVirtualMachineOperatingSystemOutputWithContext(ctx context.Context) VirtualMachineOperatingSystemOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineOperatingSystemOutput)
-}
-
-func (i VirtualMachineOperatingSystemArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineOperatingSystem] {
-	return pulumix.Output[VirtualMachineOperatingSystem]{
-		OutputState: i.ToVirtualMachineOperatingSystemOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i VirtualMachineOperatingSystemArgs) ToVirtualMachineOperatingSystemPtrOutput() VirtualMachineOperatingSystemPtrOutput {
@@ -3994,12 +3579,6 @@ func (i *virtualMachineOperatingSystemPtrType) ToVirtualMachineOperatingSystemPt
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineOperatingSystemPtrOutput)
 }
 
-func (i *virtualMachineOperatingSystemPtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineOperatingSystem] {
-	return pulumix.Output[*VirtualMachineOperatingSystem]{
-		OutputState: i.ToVirtualMachineOperatingSystemPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VirtualMachineOperatingSystemOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineOperatingSystemOutput) ElementType() reflect.Type {
@@ -4024,12 +3603,6 @@ func (o VirtualMachineOperatingSystemOutput) ToVirtualMachineOperatingSystemPtrO
 	}).(VirtualMachineOperatingSystemPtrOutput)
 }
 
-func (o VirtualMachineOperatingSystemOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineOperatingSystem] {
-	return pulumix.Output[VirtualMachineOperatingSystem]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The VGA type (defaults to `std`).
 func (o VirtualMachineOperatingSystemOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineOperatingSystem) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -4047,12 +3620,6 @@ func (o VirtualMachineOperatingSystemPtrOutput) ToVirtualMachineOperatingSystemP
 
 func (o VirtualMachineOperatingSystemPtrOutput) ToVirtualMachineOperatingSystemPtrOutputWithContext(ctx context.Context) VirtualMachineOperatingSystemPtrOutput {
 	return o
-}
-
-func (o VirtualMachineOperatingSystemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineOperatingSystem] {
-	return pulumix.Output[*VirtualMachineOperatingSystem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualMachineOperatingSystemPtrOutput) Elem() VirtualMachineOperatingSystemOutput {
@@ -4110,12 +3677,6 @@ func (i VirtualMachineSerialDeviceArgs) ToVirtualMachineSerialDeviceOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineSerialDeviceOutput)
 }
 
-func (i VirtualMachineSerialDeviceArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineSerialDevice] {
-	return pulumix.Output[VirtualMachineSerialDevice]{
-		OutputState: i.ToVirtualMachineSerialDeviceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VirtualMachineSerialDeviceArrayInput is an input type that accepts VirtualMachineSerialDeviceArray and VirtualMachineSerialDeviceArrayOutput values.
 // You can construct a concrete instance of `VirtualMachineSerialDeviceArrayInput` via:
 //
@@ -4141,12 +3702,6 @@ func (i VirtualMachineSerialDeviceArray) ToVirtualMachineSerialDeviceArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineSerialDeviceArrayOutput)
 }
 
-func (i VirtualMachineSerialDeviceArray) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachineSerialDevice] {
-	return pulumix.Output[[]VirtualMachineSerialDevice]{
-		OutputState: i.ToVirtualMachineSerialDeviceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VirtualMachineSerialDeviceOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineSerialDeviceOutput) ElementType() reflect.Type {
@@ -4159,12 +3714,6 @@ func (o VirtualMachineSerialDeviceOutput) ToVirtualMachineSerialDeviceOutput() V
 
 func (o VirtualMachineSerialDeviceOutput) ToVirtualMachineSerialDeviceOutputWithContext(ctx context.Context) VirtualMachineSerialDeviceOutput {
 	return o
-}
-
-func (o VirtualMachineSerialDeviceOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineSerialDevice] {
-	return pulumix.Output[VirtualMachineSerialDevice]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The device (defaults to `socket`).
@@ -4185,12 +3734,6 @@ func (o VirtualMachineSerialDeviceArrayOutput) ToVirtualMachineSerialDeviceArray
 
 func (o VirtualMachineSerialDeviceArrayOutput) ToVirtualMachineSerialDeviceArrayOutputWithContext(ctx context.Context) VirtualMachineSerialDeviceArrayOutput {
 	return o
-}
-
-func (o VirtualMachineSerialDeviceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachineSerialDevice] {
-	return pulumix.Output[[]VirtualMachineSerialDevice]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualMachineSerialDeviceArrayOutput) Index(i pulumi.IntInput) VirtualMachineSerialDeviceOutput {
@@ -4256,12 +3799,6 @@ func (i VirtualMachineSmbiosArgs) ToVirtualMachineSmbiosOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineSmbiosOutput)
 }
 
-func (i VirtualMachineSmbiosArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineSmbios] {
-	return pulumix.Output[VirtualMachineSmbios]{
-		OutputState: i.ToVirtualMachineSmbiosOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VirtualMachineSmbiosArgs) ToVirtualMachineSmbiosPtrOutput() VirtualMachineSmbiosPtrOutput {
 	return i.ToVirtualMachineSmbiosPtrOutputWithContext(context.Background())
 }
@@ -4303,12 +3840,6 @@ func (i *virtualMachineSmbiosPtrType) ToVirtualMachineSmbiosPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineSmbiosPtrOutput)
 }
 
-func (i *virtualMachineSmbiosPtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineSmbios] {
-	return pulumix.Output[*VirtualMachineSmbios]{
-		OutputState: i.ToVirtualMachineSmbiosPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VirtualMachineSmbiosOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineSmbiosOutput) ElementType() reflect.Type {
@@ -4331,12 +3862,6 @@ func (o VirtualMachineSmbiosOutput) ToVirtualMachineSmbiosPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineSmbios) *VirtualMachineSmbios {
 		return &v
 	}).(VirtualMachineSmbiosPtrOutput)
-}
-
-func (o VirtualMachineSmbiosOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineSmbios] {
-	return pulumix.Output[VirtualMachineSmbios]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The family string.
@@ -4386,12 +3911,6 @@ func (o VirtualMachineSmbiosPtrOutput) ToVirtualMachineSmbiosPtrOutput() Virtual
 
 func (o VirtualMachineSmbiosPtrOutput) ToVirtualMachineSmbiosPtrOutputWithContext(ctx context.Context) VirtualMachineSmbiosPtrOutput {
 	return o
-}
-
-func (o VirtualMachineSmbiosPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineSmbios] {
-	return pulumix.Output[*VirtualMachineSmbios]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualMachineSmbiosPtrOutput) Elem() VirtualMachineSmbiosOutput {
@@ -4513,12 +4032,6 @@ func (i VirtualMachineStartupArgs) ToVirtualMachineStartupOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineStartupOutput)
 }
 
-func (i VirtualMachineStartupArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineStartup] {
-	return pulumix.Output[VirtualMachineStartup]{
-		OutputState: i.ToVirtualMachineStartupOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VirtualMachineStartupArgs) ToVirtualMachineStartupPtrOutput() VirtualMachineStartupPtrOutput {
 	return i.ToVirtualMachineStartupPtrOutputWithContext(context.Background())
 }
@@ -4560,12 +4073,6 @@ func (i *virtualMachineStartupPtrType) ToVirtualMachineStartupPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineStartupPtrOutput)
 }
 
-func (i *virtualMachineStartupPtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineStartup] {
-	return pulumix.Output[*VirtualMachineStartup]{
-		OutputState: i.ToVirtualMachineStartupPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VirtualMachineStartupOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineStartupOutput) ElementType() reflect.Type {
@@ -4588,12 +4095,6 @@ func (o VirtualMachineStartupOutput) ToVirtualMachineStartupPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineStartup) *VirtualMachineStartup {
 		return &v
 	}).(VirtualMachineStartupPtrOutput)
-}
-
-func (o VirtualMachineStartupOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineStartup] {
-	return pulumix.Output[VirtualMachineStartup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualMachineStartupOutput) DownDelay() pulumi.IntPtrOutput {
@@ -4622,12 +4123,6 @@ func (o VirtualMachineStartupPtrOutput) ToVirtualMachineStartupPtrOutput() Virtu
 
 func (o VirtualMachineStartupPtrOutput) ToVirtualMachineStartupPtrOutputWithContext(ctx context.Context) VirtualMachineStartupPtrOutput {
 	return o
-}
-
-func (o VirtualMachineStartupPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineStartup] {
-	return pulumix.Output[*VirtualMachineStartup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualMachineStartupPtrOutput) Elem() VirtualMachineStartupOutput {
@@ -4714,12 +4209,6 @@ func (i VirtualMachineUsbArgs) ToVirtualMachineUsbOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineUsbOutput)
 }
 
-func (i VirtualMachineUsbArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineUsb] {
-	return pulumix.Output[VirtualMachineUsb]{
-		OutputState: i.ToVirtualMachineUsbOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VirtualMachineUsbArrayInput is an input type that accepts VirtualMachineUsbArray and VirtualMachineUsbArrayOutput values.
 // You can construct a concrete instance of `VirtualMachineUsbArrayInput` via:
 //
@@ -4745,12 +4234,6 @@ func (i VirtualMachineUsbArray) ToVirtualMachineUsbArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineUsbArrayOutput)
 }
 
-func (i VirtualMachineUsbArray) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachineUsb] {
-	return pulumix.Output[[]VirtualMachineUsb]{
-		OutputState: i.ToVirtualMachineUsbArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VirtualMachineUsbOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineUsbOutput) ElementType() reflect.Type {
@@ -4763,12 +4246,6 @@ func (o VirtualMachineUsbOutput) ToVirtualMachineUsbOutput() VirtualMachineUsbOu
 
 func (o VirtualMachineUsbOutput) ToVirtualMachineUsbOutputWithContext(ctx context.Context) VirtualMachineUsbOutput {
 	return o
-}
-
-func (o VirtualMachineUsbOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineUsb] {
-	return pulumix.Output[VirtualMachineUsb]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The USB device ID. Use either this or `mapping`.
@@ -4800,12 +4277,6 @@ func (o VirtualMachineUsbArrayOutput) ToVirtualMachineUsbArrayOutput() VirtualMa
 
 func (o VirtualMachineUsbArrayOutput) ToVirtualMachineUsbArrayOutputWithContext(ctx context.Context) VirtualMachineUsbArrayOutput {
 	return o
-}
-
-func (o VirtualMachineUsbArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachineUsb] {
-	return pulumix.Output[[]VirtualMachineUsb]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualMachineUsbArrayOutput) Index(i pulumi.IntInput) VirtualMachineUsbOutput {
@@ -4857,12 +4328,6 @@ func (i VirtualMachineVgaArgs) ToVirtualMachineVgaOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineVgaOutput)
 }
 
-func (i VirtualMachineVgaArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineVga] {
-	return pulumix.Output[VirtualMachineVga]{
-		OutputState: i.ToVirtualMachineVgaOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VirtualMachineVgaArgs) ToVirtualMachineVgaPtrOutput() VirtualMachineVgaPtrOutput {
 	return i.ToVirtualMachineVgaPtrOutputWithContext(context.Background())
 }
@@ -4904,12 +4369,6 @@ func (i *virtualMachineVgaPtrType) ToVirtualMachineVgaPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineVgaPtrOutput)
 }
 
-func (i *virtualMachineVgaPtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineVga] {
-	return pulumix.Output[*VirtualMachineVga]{
-		OutputState: i.ToVirtualMachineVgaPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VirtualMachineVgaOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineVgaOutput) ElementType() reflect.Type {
@@ -4932,12 +4391,6 @@ func (o VirtualMachineVgaOutput) ToVirtualMachineVgaPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineVga) *VirtualMachineVga {
 		return &v
 	}).(VirtualMachineVgaPtrOutput)
-}
-
-func (o VirtualMachineVgaOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineVga] {
-	return pulumix.Output[VirtualMachineVga]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to enable the VGA device (defaults
@@ -4968,12 +4421,6 @@ func (o VirtualMachineVgaPtrOutput) ToVirtualMachineVgaPtrOutput() VirtualMachin
 
 func (o VirtualMachineVgaPtrOutput) ToVirtualMachineVgaPtrOutputWithContext(ctx context.Context) VirtualMachineVgaPtrOutput {
 	return o
-}
-
-func (o VirtualMachineVgaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineVga] {
-	return pulumix.Output[*VirtualMachineVga]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualMachineVgaPtrOutput) Elem() VirtualMachineVgaOutput {
@@ -5064,12 +4511,6 @@ func (i GetVirtualMachinesVmArgs) ToGetVirtualMachinesVmOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualMachinesVmOutput)
 }
 
-func (i GetVirtualMachinesVmArgs) ToOutput(ctx context.Context) pulumix.Output[GetVirtualMachinesVm] {
-	return pulumix.Output[GetVirtualMachinesVm]{
-		OutputState: i.ToGetVirtualMachinesVmOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetVirtualMachinesVmArrayInput is an input type that accepts GetVirtualMachinesVmArray and GetVirtualMachinesVmArrayOutput values.
 // You can construct a concrete instance of `GetVirtualMachinesVmArrayInput` via:
 //
@@ -5095,12 +4536,6 @@ func (i GetVirtualMachinesVmArray) ToGetVirtualMachinesVmArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualMachinesVmArrayOutput)
 }
 
-func (i GetVirtualMachinesVmArray) ToOutput(ctx context.Context) pulumix.Output[[]GetVirtualMachinesVm] {
-	return pulumix.Output[[]GetVirtualMachinesVm]{
-		OutputState: i.ToGetVirtualMachinesVmArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetVirtualMachinesVmOutput struct{ *pulumi.OutputState }
 
 func (GetVirtualMachinesVmOutput) ElementType() reflect.Type {
@@ -5113,12 +4548,6 @@ func (o GetVirtualMachinesVmOutput) ToGetVirtualMachinesVmOutput() GetVirtualMac
 
 func (o GetVirtualMachinesVmOutput) ToGetVirtualMachinesVmOutputWithContext(ctx context.Context) GetVirtualMachinesVmOutput {
 	return o
-}
-
-func (o GetVirtualMachinesVmOutput) ToOutput(ctx context.Context) pulumix.Output[GetVirtualMachinesVm] {
-	return pulumix.Output[GetVirtualMachinesVm]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The virtual machine name.
@@ -5154,12 +4583,6 @@ func (o GetVirtualMachinesVmArrayOutput) ToGetVirtualMachinesVmArrayOutput() Get
 
 func (o GetVirtualMachinesVmArrayOutput) ToGetVirtualMachinesVmArrayOutputWithContext(ctx context.Context) GetVirtualMachinesVmArrayOutput {
 	return o
-}
-
-func (o GetVirtualMachinesVmArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetVirtualMachinesVm] {
-	return pulumix.Output[[]GetVirtualMachinesVm]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetVirtualMachinesVmArrayOutput) Index(i pulumi.IntInput) GetVirtualMachinesVmOutput {

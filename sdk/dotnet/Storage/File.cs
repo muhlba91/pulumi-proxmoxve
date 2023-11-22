@@ -13,7 +13,7 @@ namespace Pulumi.ProxmoxVE.Storage
     /// Manages a file.
     /// 
     /// ## Example Usage
-    /// ### Backups
+    /// ### Backups (`dump`)
     /// 
     /// &gt; **Note:** The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
     /// 
@@ -27,7 +27,7 @@ namespace Pulumi.ProxmoxVE.Storage
     /// {
     ///     var backup = new ProxmoxVE.Storage.File("backup", new()
     ///     {
-    ///         ContentType = "backup",
+    ///         ContentType = "dump",
     ///         DatastoreId = "local",
     ///         NodeName = "pve",
     ///         SourceFile = new ProxmoxVE.Storage.Inputs.FileSourceFileArgs

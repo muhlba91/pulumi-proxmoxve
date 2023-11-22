@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages the time for a specific node.
@@ -163,12 +162,6 @@ func (i *Time) ToTimeOutputWithContext(ctx context.Context) TimeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TimeOutput)
 }
 
-func (i *Time) ToOutput(ctx context.Context) pulumix.Output[*Time] {
-	return pulumix.Output[*Time]{
-		OutputState: i.ToTimeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TimeArrayInput is an input type that accepts TimeArray and TimeArrayOutput values.
 // You can construct a concrete instance of `TimeArrayInput` via:
 //
@@ -192,12 +185,6 @@ func (i TimeArray) ToTimeArrayOutput() TimeArrayOutput {
 
 func (i TimeArray) ToTimeArrayOutputWithContext(ctx context.Context) TimeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TimeArrayOutput)
-}
-
-func (i TimeArray) ToOutput(ctx context.Context) pulumix.Output[[]*Time] {
-	return pulumix.Output[[]*Time]{
-		OutputState: i.ToTimeArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TimeMapInput is an input type that accepts TimeMap and TimeMapOutput values.
@@ -225,12 +212,6 @@ func (i TimeMap) ToTimeMapOutputWithContext(ctx context.Context) TimeMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TimeMapOutput)
 }
 
-func (i TimeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Time] {
-	return pulumix.Output[map[string]*Time]{
-		OutputState: i.ToTimeMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TimeOutput struct{ *pulumi.OutputState }
 
 func (TimeOutput) ElementType() reflect.Type {
@@ -243,12 +224,6 @@ func (o TimeOutput) ToTimeOutput() TimeOutput {
 
 func (o TimeOutput) ToTimeOutputWithContext(ctx context.Context) TimeOutput {
 	return o
-}
-
-func (o TimeOutput) ToOutput(ctx context.Context) pulumix.Output[*Time] {
-	return pulumix.Output[*Time]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The node's local time.
@@ -285,12 +260,6 @@ func (o TimeArrayOutput) ToTimeArrayOutputWithContext(ctx context.Context) TimeA
 	return o
 }
 
-func (o TimeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Time] {
-	return pulumix.Output[[]*Time]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TimeArrayOutput) Index(i pulumi.IntInput) TimeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Time {
 		return vs[0].([]*Time)[vs[1].(int)]
@@ -309,12 +278,6 @@ func (o TimeMapOutput) ToTimeMapOutput() TimeMapOutput {
 
 func (o TimeMapOutput) ToTimeMapOutputWithContext(ctx context.Context) TimeMapOutput {
 	return o
-}
-
-func (o TimeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Time] {
-	return pulumix.Output[map[string]*Time]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TimeMapOutput) MapIndex(k pulumi.StringInput) TimeOutput {

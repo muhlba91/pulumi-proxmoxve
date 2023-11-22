@@ -9,7 +9,6 @@ import (
 
 	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves basic information about all available user groups.
@@ -81,12 +80,6 @@ func (o GetGroupsResultOutput) ToGetGroupsResultOutput() GetGroupsResultOutput {
 
 func (o GetGroupsResultOutput) ToGetGroupsResultOutputWithContext(ctx context.Context) GetGroupsResultOutput {
 	return o
-}
-
-func (o GetGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupsResult] {
-	return pulumix.Output[GetGroupsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The group comments.

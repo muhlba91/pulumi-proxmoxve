@@ -9,7 +9,6 @@ import (
 
 	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -55,12 +54,6 @@ func (i GroupAclArgs) ToGroupAclOutputWithContext(ctx context.Context) GroupAclO
 	return pulumi.ToOutputWithContext(ctx, i).(GroupAclOutput)
 }
 
-func (i GroupAclArgs) ToOutput(ctx context.Context) pulumix.Output[GroupAcl] {
-	return pulumix.Output[GroupAcl]{
-		OutputState: i.ToGroupAclOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GroupAclArrayInput is an input type that accepts GroupAclArray and GroupAclArrayOutput values.
 // You can construct a concrete instance of `GroupAclArrayInput` via:
 //
@@ -86,12 +79,6 @@ func (i GroupAclArray) ToGroupAclArrayOutputWithContext(ctx context.Context) Gro
 	return pulumi.ToOutputWithContext(ctx, i).(GroupAclArrayOutput)
 }
 
-func (i GroupAclArray) ToOutput(ctx context.Context) pulumix.Output[[]GroupAcl] {
-	return pulumix.Output[[]GroupAcl]{
-		OutputState: i.ToGroupAclArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GroupAclOutput struct{ *pulumi.OutputState }
 
 func (GroupAclOutput) ElementType() reflect.Type {
@@ -104,12 +91,6 @@ func (o GroupAclOutput) ToGroupAclOutput() GroupAclOutput {
 
 func (o GroupAclOutput) ToGroupAclOutputWithContext(ctx context.Context) GroupAclOutput {
 	return o
-}
-
-func (o GroupAclOutput) ToOutput(ctx context.Context) pulumix.Output[GroupAcl] {
-	return pulumix.Output[GroupAcl]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The path.
@@ -139,12 +120,6 @@ func (o GroupAclArrayOutput) ToGroupAclArrayOutput() GroupAclArrayOutput {
 
 func (o GroupAclArrayOutput) ToGroupAclArrayOutputWithContext(ctx context.Context) GroupAclArrayOutput {
 	return o
-}
-
-func (o GroupAclArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GroupAcl] {
-	return pulumix.Output[[]GroupAcl]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GroupAclArrayOutput) Index(i pulumi.IntInput) GroupAclOutput {
@@ -202,12 +177,6 @@ func (i PoolMemberArgs) ToPoolMemberOutputWithContext(ctx context.Context) PoolM
 	return pulumi.ToOutputWithContext(ctx, i).(PoolMemberOutput)
 }
 
-func (i PoolMemberArgs) ToOutput(ctx context.Context) pulumix.Output[PoolMember] {
-	return pulumix.Output[PoolMember]{
-		OutputState: i.ToPoolMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PoolMemberArrayInput is an input type that accepts PoolMemberArray and PoolMemberArrayOutput values.
 // You can construct a concrete instance of `PoolMemberArrayInput` via:
 //
@@ -233,12 +202,6 @@ func (i PoolMemberArray) ToPoolMemberArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(PoolMemberArrayOutput)
 }
 
-func (i PoolMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]PoolMember] {
-	return pulumix.Output[[]PoolMember]{
-		OutputState: i.ToPoolMemberArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PoolMemberOutput struct{ *pulumi.OutputState }
 
 func (PoolMemberOutput) ElementType() reflect.Type {
@@ -251,12 +214,6 @@ func (o PoolMemberOutput) ToPoolMemberOutput() PoolMemberOutput {
 
 func (o PoolMemberOutput) ToPoolMemberOutputWithContext(ctx context.Context) PoolMemberOutput {
 	return o
-}
-
-func (o PoolMemberOutput) ToOutput(ctx context.Context) pulumix.Output[PoolMember] {
-	return pulumix.Output[PoolMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The datastore identifier.
@@ -296,12 +253,6 @@ func (o PoolMemberArrayOutput) ToPoolMemberArrayOutput() PoolMemberArrayOutput {
 
 func (o PoolMemberArrayOutput) ToPoolMemberArrayOutputWithContext(ctx context.Context) PoolMemberArrayOutput {
 	return o
-}
-
-func (o PoolMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PoolMember] {
-	return pulumix.Output[[]PoolMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PoolMemberArrayOutput) Index(i pulumi.IntInput) PoolMemberOutput {
@@ -351,12 +302,6 @@ func (i UserAclArgs) ToUserAclOutputWithContext(ctx context.Context) UserAclOutp
 	return pulumi.ToOutputWithContext(ctx, i).(UserAclOutput)
 }
 
-func (i UserAclArgs) ToOutput(ctx context.Context) pulumix.Output[UserAcl] {
-	return pulumix.Output[UserAcl]{
-		OutputState: i.ToUserAclOutputWithContext(ctx).OutputState,
-	}
-}
-
 // UserAclArrayInput is an input type that accepts UserAclArray and UserAclArrayOutput values.
 // You can construct a concrete instance of `UserAclArrayInput` via:
 //
@@ -382,12 +327,6 @@ func (i UserAclArray) ToUserAclArrayOutputWithContext(ctx context.Context) UserA
 	return pulumi.ToOutputWithContext(ctx, i).(UserAclArrayOutput)
 }
 
-func (i UserAclArray) ToOutput(ctx context.Context) pulumix.Output[[]UserAcl] {
-	return pulumix.Output[[]UserAcl]{
-		OutputState: i.ToUserAclArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type UserAclOutput struct{ *pulumi.OutputState }
 
 func (UserAclOutput) ElementType() reflect.Type {
@@ -400,12 +339,6 @@ func (o UserAclOutput) ToUserAclOutput() UserAclOutput {
 
 func (o UserAclOutput) ToUserAclOutputWithContext(ctx context.Context) UserAclOutput {
 	return o
-}
-
-func (o UserAclOutput) ToOutput(ctx context.Context) pulumix.Output[UserAcl] {
-	return pulumix.Output[UserAcl]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The path.
@@ -435,12 +368,6 @@ func (o UserAclArrayOutput) ToUserAclArrayOutput() UserAclArrayOutput {
 
 func (o UserAclArrayOutput) ToUserAclArrayOutputWithContext(ctx context.Context) UserAclArrayOutput {
 	return o
-}
-
-func (o UserAclArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]UserAcl] {
-	return pulumix.Output[[]UserAcl]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserAclArrayOutput) Index(i pulumi.IntInput) UserAclOutput {
@@ -490,12 +417,6 @@ func (i GetGroupAclArgs) ToGetGroupAclOutputWithContext(ctx context.Context) Get
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupAclOutput)
 }
 
-func (i GetGroupAclArgs) ToOutput(ctx context.Context) pulumix.Output[GetGroupAcl] {
-	return pulumix.Output[GetGroupAcl]{
-		OutputState: i.ToGetGroupAclOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetGroupAclArrayInput is an input type that accepts GetGroupAclArray and GetGroupAclArrayOutput values.
 // You can construct a concrete instance of `GetGroupAclArrayInput` via:
 //
@@ -521,12 +442,6 @@ func (i GetGroupAclArray) ToGetGroupAclArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupAclArrayOutput)
 }
 
-func (i GetGroupAclArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupAcl] {
-	return pulumix.Output[[]GetGroupAcl]{
-		OutputState: i.ToGetGroupAclArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetGroupAclOutput struct{ *pulumi.OutputState }
 
 func (GetGroupAclOutput) ElementType() reflect.Type {
@@ -539,12 +454,6 @@ func (o GetGroupAclOutput) ToGetGroupAclOutput() GetGroupAclOutput {
 
 func (o GetGroupAclOutput) ToGetGroupAclOutputWithContext(ctx context.Context) GetGroupAclOutput {
 	return o
-}
-
-func (o GetGroupAclOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupAcl] {
-	return pulumix.Output[GetGroupAcl]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The path.
@@ -574,12 +483,6 @@ func (o GetGroupAclArrayOutput) ToGetGroupAclArrayOutput() GetGroupAclArrayOutpu
 
 func (o GetGroupAclArrayOutput) ToGetGroupAclArrayOutputWithContext(ctx context.Context) GetGroupAclArrayOutput {
 	return o
-}
-
-func (o GetGroupAclArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupAcl] {
-	return pulumix.Output[[]GetGroupAcl]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetGroupAclArrayOutput) Index(i pulumi.IntInput) GetGroupAclOutput {
@@ -637,12 +540,6 @@ func (i GetPoolMemberArgs) ToGetPoolMemberOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GetPoolMemberOutput)
 }
 
-func (i GetPoolMemberArgs) ToOutput(ctx context.Context) pulumix.Output[GetPoolMember] {
-	return pulumix.Output[GetPoolMember]{
-		OutputState: i.ToGetPoolMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetPoolMemberArrayInput is an input type that accepts GetPoolMemberArray and GetPoolMemberArrayOutput values.
 // You can construct a concrete instance of `GetPoolMemberArrayInput` via:
 //
@@ -668,12 +565,6 @@ func (i GetPoolMemberArray) ToGetPoolMemberArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetPoolMemberArrayOutput)
 }
 
-func (i GetPoolMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPoolMember] {
-	return pulumix.Output[[]GetPoolMember]{
-		OutputState: i.ToGetPoolMemberArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetPoolMemberOutput struct{ *pulumi.OutputState }
 
 func (GetPoolMemberOutput) ElementType() reflect.Type {
@@ -686,12 +577,6 @@ func (o GetPoolMemberOutput) ToGetPoolMemberOutput() GetPoolMemberOutput {
 
 func (o GetPoolMemberOutput) ToGetPoolMemberOutputWithContext(ctx context.Context) GetPoolMemberOutput {
 	return o
-}
-
-func (o GetPoolMemberOutput) ToOutput(ctx context.Context) pulumix.Output[GetPoolMember] {
-	return pulumix.Output[GetPoolMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The datastore identifier.
@@ -731,12 +616,6 @@ func (o GetPoolMemberArrayOutput) ToGetPoolMemberArrayOutput() GetPoolMemberArra
 
 func (o GetPoolMemberArrayOutput) ToGetPoolMemberArrayOutputWithContext(ctx context.Context) GetPoolMemberArrayOutput {
 	return o
-}
-
-func (o GetPoolMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPoolMember] {
-	return pulumix.Output[[]GetPoolMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetPoolMemberArrayOutput) Index(i pulumi.IntInput) GetPoolMemberOutput {
@@ -786,12 +665,6 @@ func (i GetUserAclArgs) ToGetUserAclOutputWithContext(ctx context.Context) GetUs
 	return pulumi.ToOutputWithContext(ctx, i).(GetUserAclOutput)
 }
 
-func (i GetUserAclArgs) ToOutput(ctx context.Context) pulumix.Output[GetUserAcl] {
-	return pulumix.Output[GetUserAcl]{
-		OutputState: i.ToGetUserAclOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetUserAclArrayInput is an input type that accepts GetUserAclArray and GetUserAclArrayOutput values.
 // You can construct a concrete instance of `GetUserAclArrayInput` via:
 //
@@ -817,12 +690,6 @@ func (i GetUserAclArray) ToGetUserAclArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GetUserAclArrayOutput)
 }
 
-func (i GetUserAclArray) ToOutput(ctx context.Context) pulumix.Output[[]GetUserAcl] {
-	return pulumix.Output[[]GetUserAcl]{
-		OutputState: i.ToGetUserAclArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetUserAclOutput struct{ *pulumi.OutputState }
 
 func (GetUserAclOutput) ElementType() reflect.Type {
@@ -835,12 +702,6 @@ func (o GetUserAclOutput) ToGetUserAclOutput() GetUserAclOutput {
 
 func (o GetUserAclOutput) ToGetUserAclOutputWithContext(ctx context.Context) GetUserAclOutput {
 	return o
-}
-
-func (o GetUserAclOutput) ToOutput(ctx context.Context) pulumix.Output[GetUserAcl] {
-	return pulumix.Output[GetUserAcl]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The path.
@@ -870,12 +731,6 @@ func (o GetUserAclArrayOutput) ToGetUserAclArrayOutput() GetUserAclArrayOutput {
 
 func (o GetUserAclArrayOutput) ToGetUserAclArrayOutputWithContext(ctx context.Context) GetUserAclArrayOutput {
 	return o
-}
-
-func (o GetUserAclArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetUserAcl] {
-	return pulumix.Output[[]GetUserAcl]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetUserAclArrayOutput) Index(i pulumi.IntInput) GetUserAclOutput {

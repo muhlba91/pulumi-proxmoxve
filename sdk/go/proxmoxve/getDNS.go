@@ -9,7 +9,6 @@ import (
 
 	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the DNS configuration for a specific node.
@@ -102,12 +101,6 @@ func (o LookupDNSResultOutput) ToLookupDNSResultOutput() LookupDNSResultOutput {
 
 func (o LookupDNSResultOutput) ToLookupDNSResultOutputWithContext(ctx context.Context) LookupDNSResultOutput {
 	return o
-}
-
-func (o LookupDNSResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDNSResult] {
-	return pulumix.Output[LookupDNSResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The DNS search domain.
