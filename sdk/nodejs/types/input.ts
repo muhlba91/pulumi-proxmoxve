@@ -375,7 +375,7 @@ export namespace Network {
         log?: pulumi.Input<string>;
         /**
          * Macro name. Use predefined standard macro
-         * from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+         * from <https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions>
          */
         macro?: pulumi.Input<string>;
         /**
@@ -453,7 +453,7 @@ export namespace Network {
         log?: pulumi.Input<string>;
         /**
          * Macro name. Use predefined standard macro
-         * from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+         * from <https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions>
          */
         macro?: pulumi.Input<string>;
         /**

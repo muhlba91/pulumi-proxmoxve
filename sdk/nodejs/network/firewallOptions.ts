@@ -78,7 +78,7 @@ export class FirewallOptions extends pulumi.CustomResource {
     public readonly inputPolicy!: pulumi.Output<string | undefined>;
     /**
      * Enable default IP filters. This is equivalent to
-     * adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
+     * adding an empty `ipfilter-net<id>` ipset for every interface. Such ipsets
      * implicitly contain sane default restrictions such as restricting IPv6 link
      * local addresses to the one derived from the interface's MAC address. For
      * containers the configured IP addresses will be implicitly added.
@@ -193,7 +193,7 @@ export interface FirewallOptionsState {
     inputPolicy?: pulumi.Input<string>;
     /**
      * Enable default IP filters. This is equivalent to
-     * adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
+     * adding an empty `ipfilter-net<id>` ipset for every interface. Such ipsets
      * implicitly contain sane default restrictions such as restricting IPv6 link
      * local addresses to the one derived from the interface's MAC address. For
      * containers the configured IP addresses will be implicitly added.
@@ -259,7 +259,7 @@ export interface FirewallOptionsArgs {
     inputPolicy?: pulumi.Input<string>;
     /**
      * Enable default IP filters. This is equivalent to
-     * adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
+     * adding an empty `ipfilter-net<id>` ipset for every interface. Such ipsets
      * implicitly contain sane default restrictions such as restricting IPv6 link
      * local addresses to the one derived from the interface's MAC address. For
      * containers the configured IP addresses will be implicitly added.

@@ -63,7 +63,7 @@ namespace Pulumi.ProxmoxVE.Network.Inputs
 
         /// <summary>
         /// Macro name. Use predefined standard macro
-        /// from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+        /// from &lt;https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions&gt;
         /// </summary>
         [Input("macro")]
         public Input<string>? Macro { get; set; }

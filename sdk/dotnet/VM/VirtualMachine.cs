@@ -154,6 +154,12 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<Outputs.VirtualMachineEfiDisk?> EfiDisk { get; private set; } = null!;
 
         /// <summary>
+        /// The identifier for a file containing a hook script (needs to be executable).
+        /// </summary>
+        [Output("hookScriptFileId")]
+        public Output<string?> HookScriptFileId { get; private set; } = null!;
+
+        /// <summary>
         /// A host PCI device mapping (multiple blocks supported).
         /// </summary>
         [Output("hostpcis")]
@@ -526,6 +532,12 @@ namespace Pulumi.ProxmoxVE.VM
         [Input("efiDisk")]
         public Input<Inputs.VirtualMachineEfiDiskArgs>? EfiDisk { get; set; }
 
+        /// <summary>
+        /// The identifier for a file containing a hook script (needs to be executable).
+        /// </summary>
+        [Input("hookScriptFileId")]
+        public Input<string>? HookScriptFileId { get; set; }
+
         [Input("hostpcis")]
         private InputList<Inputs.VirtualMachineHostpciArgs>? _hostpcis;
 
@@ -861,6 +873,12 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Input("efiDisk")]
         public Input<Inputs.VirtualMachineEfiDiskGetArgs>? EfiDisk { get; set; }
+
+        /// <summary>
+        /// The identifier for a file containing a hook script (needs to be executable).
+        /// </summary>
+        [Input("hookScriptFileId")]
+        public Input<string>? HookScriptFileId { get; set; }
 
         [Input("hostpcis")]
         private InputList<Inputs.VirtualMachineHostpciGetArgs>? _hostpcis;

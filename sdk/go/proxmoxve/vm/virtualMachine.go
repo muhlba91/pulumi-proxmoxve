@@ -112,6 +112,8 @@ type VirtualMachine struct {
 	// The efi disk device (required if `bios` is set
 	// to `ovmf`)
 	EfiDisk VirtualMachineEfiDiskPtrOutput `pulumi:"efiDisk"`
+	// The identifier for a file containing a hook script (needs to be executable).
+	HookScriptFileId pulumi.StringPtrOutput `pulumi:"hookScriptFileId"`
 	// A host PCI device mapping (multiple blocks supported).
 	Hostpcis VirtualMachineHostpciArrayOutput `pulumi:"hostpcis"`
 	// The cloud-init configuration.
@@ -269,6 +271,8 @@ type virtualMachineState struct {
 	// The efi disk device (required if `bios` is set
 	// to `ovmf`)
 	EfiDisk *VirtualMachineEfiDisk `pulumi:"efiDisk"`
+	// The identifier for a file containing a hook script (needs to be executable).
+	HookScriptFileId *string `pulumi:"hookScriptFileId"`
 	// A host PCI device mapping (multiple blocks supported).
 	Hostpcis []VirtualMachineHostpci `pulumi:"hostpcis"`
 	// The cloud-init configuration.
@@ -394,6 +398,8 @@ type VirtualMachineState struct {
 	// The efi disk device (required if `bios` is set
 	// to `ovmf`)
 	EfiDisk VirtualMachineEfiDiskPtrInput
+	// The identifier for a file containing a hook script (needs to be executable).
+	HookScriptFileId pulumi.StringPtrInput
 	// A host PCI device mapping (multiple blocks supported).
 	Hostpcis VirtualMachineHostpciArrayInput
 	// The cloud-init configuration.
@@ -523,6 +529,8 @@ type virtualMachineArgs struct {
 	// The efi disk device (required if `bios` is set
 	// to `ovmf`)
 	EfiDisk *VirtualMachineEfiDisk `pulumi:"efiDisk"`
+	// The identifier for a file containing a hook script (needs to be executable).
+	HookScriptFileId *string `pulumi:"hookScriptFileId"`
 	// A host PCI device mapping (multiple blocks supported).
 	Hostpcis []VirtualMachineHostpci `pulumi:"hostpcis"`
 	// The cloud-init configuration.
@@ -637,6 +645,8 @@ type VirtualMachineArgs struct {
 	// The efi disk device (required if `bios` is set
 	// to `ovmf`)
 	EfiDisk VirtualMachineEfiDiskPtrInput
+	// The identifier for a file containing a hook script (needs to be executable).
+	HookScriptFileId pulumi.StringPtrInput
 	// A host PCI device mapping (multiple blocks supported).
 	Hostpcis VirtualMachineHostpciArrayInput
 	// The cloud-init configuration.
@@ -867,6 +877,11 @@ func (o VirtualMachineOutput) Disks() VirtualMachineDiskArrayOutput {
 // to `ovmf`)
 func (o VirtualMachineOutput) EfiDisk() VirtualMachineEfiDiskPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineEfiDiskPtrOutput { return v.EfiDisk }).(VirtualMachineEfiDiskPtrOutput)
+}
+
+// The identifier for a file containing a hook script (needs to be executable).
+func (o VirtualMachineOutput) HookScriptFileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.HookScriptFileId }).(pulumi.StringPtrOutput)
 }
 
 // A host PCI device mapping (multiple blocks supported).

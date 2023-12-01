@@ -36,7 +36,7 @@ type Container struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The disk configuration.
 	Disk ContainerDiskPtrOutput `pulumi:"disk"`
-	// The container features
+	// The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
 	Features ContainerFeaturesPtrOutput `pulumi:"features"`
 	// The initialization configuration.
 	Initialization ContainerInitializationPtrOutput `pulumi:"initialization"`
@@ -115,7 +115,7 @@ type containerState struct {
 	Description *string `pulumi:"description"`
 	// The disk configuration.
 	Disk *ContainerDisk `pulumi:"disk"`
-	// The container features
+	// The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
 	Features *ContainerFeatures `pulumi:"features"`
 	// The initialization configuration.
 	Initialization *ContainerInitialization `pulumi:"initialization"`
@@ -162,7 +162,7 @@ type ContainerState struct {
 	Description pulumi.StringPtrInput
 	// The disk configuration.
 	Disk ContainerDiskPtrInput
-	// The container features
+	// The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
 	Features ContainerFeaturesPtrInput
 	// The initialization configuration.
 	Initialization ContainerInitializationPtrInput
@@ -213,7 +213,7 @@ type containerArgs struct {
 	Description *string `pulumi:"description"`
 	// The disk configuration.
 	Disk *ContainerDisk `pulumi:"disk"`
-	// The container features
+	// The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
 	Features *ContainerFeatures `pulumi:"features"`
 	// The initialization configuration.
 	Initialization *ContainerInitialization `pulumi:"initialization"`
@@ -261,7 +261,7 @@ type ContainerArgs struct {
 	Description pulumi.StringPtrInput
 	// The disk configuration.
 	Disk ContainerDiskPtrInput
-	// The container features
+	// The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
 	Features ContainerFeaturesPtrInput
 	// The initialization configuration.
 	Initialization ContainerInitializationPtrInput
@@ -409,7 +409,7 @@ func (o ContainerOutput) Disk() ContainerDiskPtrOutput {
 	return o.ApplyT(func(v *Container) ContainerDiskPtrOutput { return v.Disk }).(ContainerDiskPtrOutput)
 }
 
-// The container features
+// The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
 func (o ContainerOutput) Features() ContainerFeaturesPtrOutput {
 	return o.ApplyT(func(v *Container) ContainerFeaturesPtrOutput { return v.Features }).(ContainerFeaturesPtrOutput)
 }

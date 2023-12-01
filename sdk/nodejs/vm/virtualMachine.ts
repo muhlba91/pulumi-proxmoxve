@@ -154,6 +154,10 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly efiDisk!: pulumi.Output<outputs.VM.VirtualMachineEfiDisk | undefined>;
     /**
+     * The identifier for a file containing a hook script (needs to be executable).
+     */
+    public readonly hookScriptFileId!: pulumi.Output<string | undefined>;
+    /**
      * A host PCI device mapping (multiple blocks supported).
      */
     public readonly hostpcis!: pulumi.Output<outputs.VM.VirtualMachineHostpci[] | undefined>;
@@ -350,6 +354,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["disks"] = state ? state.disks : undefined;
             resourceInputs["efiDisk"] = state ? state.efiDisk : undefined;
+            resourceInputs["hookScriptFileId"] = state ? state.hookScriptFileId : undefined;
             resourceInputs["hostpcis"] = state ? state.hostpcis : undefined;
             resourceInputs["initialization"] = state ? state.initialization : undefined;
             resourceInputs["ipv4Addresses"] = state ? state.ipv4Addresses : undefined;
@@ -403,6 +408,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["disks"] = args ? args.disks : undefined;
             resourceInputs["efiDisk"] = args ? args.efiDisk : undefined;
+            resourceInputs["hookScriptFileId"] = args ? args.hookScriptFileId : undefined;
             resourceInputs["hostpcis"] = args ? args.hostpcis : undefined;
             resourceInputs["initialization"] = args ? args.initialization : undefined;
             resourceInputs["keyboardLayout"] = args ? args.keyboardLayout : undefined;
@@ -496,6 +502,10 @@ export interface VirtualMachineState {
      * to `ovmf`)
      */
     efiDisk?: pulumi.Input<inputs.VM.VirtualMachineEfiDisk>;
+    /**
+     * The identifier for a file containing a hook script (needs to be executable).
+     */
+    hookScriptFileId?: pulumi.Input<string>;
     /**
      * A host PCI device mapping (multiple blocks supported).
      */
@@ -720,6 +730,10 @@ export interface VirtualMachineArgs {
      * to `ovmf`)
      */
     efiDisk?: pulumi.Input<inputs.VM.VirtualMachineEfiDisk>;
+    /**
+     * The identifier for a file containing a hook script (needs to be executable).
+     */
+    hookScriptFileId?: pulumi.Input<string>;
     /**
      * A host PCI device mapping (multiple blocks supported).
      */

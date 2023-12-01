@@ -62,7 +62,7 @@ public final class FirewallRulesRule {
     private @Nullable String log;
     /**
      * @return Macro name. Use predefined standard macro
-     * from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+     * from &lt;https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions&gt;
      * 
      */
     private @Nullable String macro;
@@ -172,7 +172,7 @@ public final class FirewallRulesRule {
     }
     /**
      * @return Macro name. Use predefined standard macro
-     * from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+     * from &lt;https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions&gt;
      * 
      */
     public Optional<String> macro() {

@@ -65,7 +65,7 @@ type FirewallOptions struct {
 	// policy (`ACCEPT`, `DROP`, `REJECT`).
 	InputPolicy pulumi.StringPtrOutput `pulumi:"inputPolicy"`
 	// Enable default IP filters. This is equivalent to
-	// adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
+	// adding an empty `ipfilter-net<id>` ipset for every interface. Such ipsets
 	// implicitly contain sane default restrictions such as restricting IPv6 link
 	// local addresses to the one derived from the interface's MAC address. For
 	// containers the configured IP addresses will be implicitly added.
@@ -134,7 +134,7 @@ type firewallOptionsState struct {
 	// policy (`ACCEPT`, `DROP`, `REJECT`).
 	InputPolicy *string `pulumi:"inputPolicy"`
 	// Enable default IP filters. This is equivalent to
-	// adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
+	// adding an empty `ipfilter-net<id>` ipset for every interface. Such ipsets
 	// implicitly contain sane default restrictions such as restricting IPv6 link
 	// local addresses to the one derived from the interface's MAC address. For
 	// containers the configured IP addresses will be implicitly added.
@@ -171,7 +171,7 @@ type FirewallOptionsState struct {
 	// policy (`ACCEPT`, `DROP`, `REJECT`).
 	InputPolicy pulumi.StringPtrInput
 	// Enable default IP filters. This is equivalent to
-	// adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
+	// adding an empty `ipfilter-net<id>` ipset for every interface. Such ipsets
 	// implicitly contain sane default restrictions such as restricting IPv6 link
 	// local addresses to the one derived from the interface's MAC address. For
 	// containers the configured IP addresses will be implicitly added.
@@ -212,7 +212,7 @@ type firewallOptionsArgs struct {
 	// policy (`ACCEPT`, `DROP`, `REJECT`).
 	InputPolicy *string `pulumi:"inputPolicy"`
 	// Enable default IP filters. This is equivalent to
-	// adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
+	// adding an empty `ipfilter-net<id>` ipset for every interface. Such ipsets
 	// implicitly contain sane default restrictions such as restricting IPv6 link
 	// local addresses to the one derived from the interface's MAC address. For
 	// containers the configured IP addresses will be implicitly added.
@@ -250,7 +250,7 @@ type FirewallOptionsArgs struct {
 	// policy (`ACCEPT`, `DROP`, `REJECT`).
 	InputPolicy pulumi.StringPtrInput
 	// Enable default IP filters. This is equivalent to
-	// adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
+	// adding an empty `ipfilter-net<id>` ipset for every interface. Such ipsets
 	// implicitly contain sane default restrictions such as restricting IPv6 link
 	// local addresses to the one derived from the interface's MAC address. For
 	// containers the configured IP addresses will be implicitly added.
@@ -385,7 +385,7 @@ func (o FirewallOptionsOutput) InputPolicy() pulumi.StringPtrOutput {
 }
 
 // Enable default IP filters. This is equivalent to
-// adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
+// adding an empty `ipfilter-net<id>` ipset for every interface. Such ipsets
 // implicitly contain sane default restrictions such as restricting IPv6 link
 // local addresses to the one derived from the interface's MAC address. For
 // containers the configured IP addresses will be implicitly added.

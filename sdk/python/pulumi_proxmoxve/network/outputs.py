@@ -160,7 +160,7 @@ class FirewallRulesRule(dict):
         :param str log: Log level for this rule (`emerg`, `alert`, `crit`,
                `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
         :param str macro: Macro name. Use predefined standard macro
-               from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+               from <https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions>
         :param int pos: Position of the rule in the list.
         :param str proto: Restrict packet protocol. You can use protocol
                names as defined in '/etc/protocols'.
@@ -281,7 +281,7 @@ class FirewallRulesRule(dict):
     def macro(self) -> Optional[str]:
         """
         Macro name. Use predefined standard macro
-        from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+        from <https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions>
         """
         return pulumi.get(self, "macro")
 
@@ -397,7 +397,7 @@ class FirewallSecurityGroupRule(dict):
         :param str log: Log level for this rule (`emerg`, `alert`, `crit`,
                `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
         :param str macro: Macro name. Use predefined standard macro
-               from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+               from <https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions>
         :param int pos: Position of the rule in the list.
         :param str proto: Restrict packet protocol. You can use protocol names
                as defined in '/etc/protocols'.
@@ -510,7 +510,7 @@ class FirewallSecurityGroupRule(dict):
     def macro(self) -> Optional[str]:
         """
         Macro name. Use predefined standard macro
-        from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+        from <https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions>
         """
         return pulumi.get(self, "macro")
 

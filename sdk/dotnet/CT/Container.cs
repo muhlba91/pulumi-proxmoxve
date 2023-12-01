@@ -54,7 +54,7 @@ namespace Pulumi.ProxmoxVE.CT
         public Output<Outputs.ContainerDisk?> Disk { get; private set; } = null!;
 
         /// <summary>
-        /// The container features
+        /// The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
         /// </summary>
         [Output("features")]
         public Output<Outputs.ContainerFeatures?> Features { get; private set; } = null!;
@@ -221,7 +221,7 @@ namespace Pulumi.ProxmoxVE.CT
         public Input<Inputs.ContainerDiskArgs>? Disk { get; set; }
 
         /// <summary>
-        /// The container features
+        /// The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
         /// </summary>
         [Input("features")]
         public Input<Inputs.ContainerFeaturesArgs>? Features { get; set; }
@@ -367,7 +367,7 @@ namespace Pulumi.ProxmoxVE.CT
         public Input<Inputs.ContainerDiskGetArgs>? Disk { get; set; }
 
         /// <summary>
-        /// The container features
+        /// The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
         /// </summary>
         [Input("features")]
         public Input<Inputs.ContainerFeaturesGetArgs>? Features { get; set; }

@@ -36,7 +36,7 @@ class FirewallOptionsArgs:
         :param pulumi.Input[str] input_policy: The default input
                policy (`ACCEPT`, `DROP`, `REJECT`).
         :param pulumi.Input[bool] ipfilter: Enable default IP filters. This is equivalent to
-               adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
+               adding an empty `ipfilter-net<id>` ipset for every interface. Such ipsets
                implicitly contain sane default restrictions such as restricting IPv6 link
                local addresses to the one derived from the interface's MAC address. For
                containers the configured IP addresses will be implicitly added.
@@ -143,7 +143,7 @@ class FirewallOptionsArgs:
     def ipfilter(self) -> Optional[pulumi.Input[bool]]:
         """
         Enable default IP filters. This is equivalent to
-        adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
+        adding an empty `ipfilter-net<id>` ipset for every interface. Such ipsets
         implicitly contain sane default restrictions such as restricting IPv6 link
         local addresses to the one derived from the interface's MAC address. For
         containers the configured IP addresses will be implicitly added.
@@ -266,7 +266,7 @@ class _FirewallOptionsState:
         :param pulumi.Input[str] input_policy: The default input
                policy (`ACCEPT`, `DROP`, `REJECT`).
         :param pulumi.Input[bool] ipfilter: Enable default IP filters. This is equivalent to
-               adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
+               adding an empty `ipfilter-net<id>` ipset for every interface. Such ipsets
                implicitly contain sane default restrictions such as restricting IPv6 link
                local addresses to the one derived from the interface's MAC address. For
                containers the configured IP addresses will be implicitly added.
@@ -363,7 +363,7 @@ class _FirewallOptionsState:
     def ipfilter(self) -> Optional[pulumi.Input[bool]]:
         """
         Enable default IP filters. This is equivalent to
-        adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
+        adding an empty `ipfilter-net<id>` ipset for every interface. Such ipsets
         implicitly contain sane default restrictions such as restricting IPv6 link
         local addresses to the one derived from the interface's MAC address. For
         containers the configured IP addresses will be implicitly added.
@@ -526,7 +526,7 @@ class FirewallOptions(pulumi.CustomResource):
         :param pulumi.Input[str] input_policy: The default input
                policy (`ACCEPT`, `DROP`, `REJECT`).
         :param pulumi.Input[bool] ipfilter: Enable default IP filters. This is equivalent to
-               adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
+               adding an empty `ipfilter-net<id>` ipset for every interface. Such ipsets
                implicitly contain sane default restrictions such as restricting IPv6 link
                local addresses to the one derived from the interface's MAC address. For
                containers the configured IP addresses will be implicitly added.
@@ -661,7 +661,7 @@ class FirewallOptions(pulumi.CustomResource):
         :param pulumi.Input[str] input_policy: The default input
                policy (`ACCEPT`, `DROP`, `REJECT`).
         :param pulumi.Input[bool] ipfilter: Enable default IP filters. This is equivalent to
-               adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
+               adding an empty `ipfilter-net<id>` ipset for every interface. Such ipsets
                implicitly contain sane default restrictions such as restricting IPv6 link
                local addresses to the one derived from the interface's MAC address. For
                containers the configured IP addresses will be implicitly added.
@@ -734,7 +734,7 @@ class FirewallOptions(pulumi.CustomResource):
     def ipfilter(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable default IP filters. This is equivalent to
-        adding an empty ipfilter-net<id> ipset for every interface. Such ipsets
+        adding an empty `ipfilter-net<id>` ipset for every interface. Such ipsets
         implicitly contain sane default restrictions such as restricting IPv6 link
         local addresses to the one derived from the interface's MAC address. For
         containers the configured IP addresses will be implicitly added.

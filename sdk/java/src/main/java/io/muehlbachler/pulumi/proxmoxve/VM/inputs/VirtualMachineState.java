@@ -205,6 +205,21 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The identifier for a file containing a hook script (needs to be executable).
+     * 
+     */
+    @Import(name="hookScriptFileId")
+    private @Nullable Output<String> hookScriptFileId;
+
+    /**
+     * @return The identifier for a file containing a hook script (needs to be executable).
+     * 
+     */
+    public Optional<Output<String>> hookScriptFileId() {
+        return Optional.ofNullable(this.hookScriptFileId);
+    }
+
+    /**
      * A host PCI device mapping (multiple blocks supported).
      * 
      */
@@ -821,6 +836,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         this.description = $.description;
         this.disks = $.disks;
         this.efiDisk = $.efiDisk;
+        this.hookScriptFileId = $.hookScriptFileId;
         this.hostpcis = $.hostpcis;
         this.initialization = $.initialization;
         this.ipv4Addresses = $.ipv4Addresses;
@@ -1132,6 +1148,27 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
          */
         public Builder efiDisk(VirtualMachineEfiDiskArgs efiDisk) {
             return efiDisk(Output.of(efiDisk));
+        }
+
+        /**
+         * @param hookScriptFileId The identifier for a file containing a hook script (needs to be executable).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hookScriptFileId(@Nullable Output<String> hookScriptFileId) {
+            $.hookScriptFileId = hookScriptFileId;
+            return this;
+        }
+
+        /**
+         * @param hookScriptFileId The identifier for a file containing a hook script (needs to be executable).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hookScriptFileId(String hookScriptFileId) {
+            return hookScriptFileId(Output.of(hookScriptFileId));
         }
 
         /**

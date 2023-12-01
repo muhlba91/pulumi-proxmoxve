@@ -66,7 +66,7 @@ export class Container extends pulumi.CustomResource {
      */
     public readonly disk!: pulumi.Output<outputs.CT.ContainerDisk | undefined>;
     /**
-     * The container features
+     * The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
      */
     public readonly features!: pulumi.Output<outputs.CT.ContainerFeatures | undefined>;
     /**
@@ -215,7 +215,7 @@ export interface ContainerState {
      */
     disk?: pulumi.Input<inputs.CT.ContainerDisk>;
     /**
-     * The container features
+     * The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
      */
     features?: pulumi.Input<inputs.CT.ContainerFeatures>;
     /**
@@ -303,7 +303,7 @@ export interface ContainerArgs {
      */
     disk?: pulumi.Input<inputs.CT.ContainerDisk>;
     /**
-     * The container features
+     * The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
      */
     features?: pulumi.Input<inputs.CT.ContainerFeatures>;
     /**

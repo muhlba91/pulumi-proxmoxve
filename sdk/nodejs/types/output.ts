@@ -371,7 +371,7 @@ export namespace Network {
         log?: string;
         /**
          * Macro name. Use predefined standard macro
-         * from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+         * from <https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions>
          */
         macro?: string;
         /**
@@ -449,7 +449,7 @@ export namespace Network {
         log?: string;
         /**
          * Macro name. Use predefined standard macro
-         * from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+         * from <https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions>
          */
         macro?: string;
         /**

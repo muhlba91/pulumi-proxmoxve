@@ -269,6 +269,20 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.efiDisk);
     }
     /**
+     * The identifier for a file containing a hook script (needs to be executable).
+     * 
+     */
+    @Export(name="hookScriptFileId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> hookScriptFileId;
+
+    /**
+     * @return The identifier for a file containing a hook script (needs to be executable).
+     * 
+     */
+    public Output<Optional<String>> hookScriptFileId() {
+        return Codegen.optional(this.hookScriptFileId);
+    }
+    /**
      * A host PCI device mapping (multiple blocks supported).
      * 
      */

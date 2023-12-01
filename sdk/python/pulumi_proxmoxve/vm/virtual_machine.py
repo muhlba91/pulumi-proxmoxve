@@ -28,6 +28,7 @@ class VirtualMachineArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]] = None,
                  efi_disk: Optional[pulumi.Input['VirtualMachineEfiDiskArgs']] = None,
+                 hook_script_file_id: Optional[pulumi.Input[str]] = None,
                  hostpcis: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]]] = None,
                  initialization: Optional[pulumi.Input['VirtualMachineInitializationArgs']] = None,
                  keyboard_layout: Optional[pulumi.Input[str]] = None,
@@ -77,6 +78,7 @@ class VirtualMachineArgs:
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]] disks: A disk (multiple blocks supported).
         :param pulumi.Input['VirtualMachineEfiDiskArgs'] efi_disk: The efi disk device (required if `bios` is set
                to `ovmf`)
+        :param pulumi.Input[str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable).
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]] hostpcis: A host PCI device mapping (multiple blocks supported).
         :param pulumi.Input['VirtualMachineInitializationArgs'] initialization: The cloud-init configuration.
         :param pulumi.Input[str] keyboard_layout: The keyboard layout (defaults to `en-us`).
@@ -152,6 +154,8 @@ class VirtualMachineArgs:
             pulumi.set(__self__, "disks", disks)
         if efi_disk is not None:
             pulumi.set(__self__, "efi_disk", efi_disk)
+        if hook_script_file_id is not None:
+            pulumi.set(__self__, "hook_script_file_id", hook_script_file_id)
         if hostpcis is not None:
             pulumi.set(__self__, "hostpcis", hostpcis)
         if initialization is not None:
@@ -363,6 +367,18 @@ class VirtualMachineArgs:
     @efi_disk.setter
     def efi_disk(self, value: Optional[pulumi.Input['VirtualMachineEfiDiskArgs']]):
         pulumi.set(self, "efi_disk", value)
+
+    @property
+    @pulumi.getter(name="hookScriptFileId")
+    def hook_script_file_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identifier for a file containing a hook script (needs to be executable).
+        """
+        return pulumi.get(self, "hook_script_file_id")
+
+    @hook_script_file_id.setter
+    def hook_script_file_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hook_script_file_id", value)
 
     @property
     @pulumi.getter
@@ -782,6 +798,7 @@ class _VirtualMachineState:
                  description: Optional[pulumi.Input[str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]] = None,
                  efi_disk: Optional[pulumi.Input['VirtualMachineEfiDiskArgs']] = None,
+                 hook_script_file_id: Optional[pulumi.Input[str]] = None,
                  hostpcis: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]]] = None,
                  initialization: Optional[pulumi.Input['VirtualMachineInitializationArgs']] = None,
                  ipv4_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]]] = None,
@@ -834,6 +851,7 @@ class _VirtualMachineState:
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]] disks: A disk (multiple blocks supported).
         :param pulumi.Input['VirtualMachineEfiDiskArgs'] efi_disk: The efi disk device (required if `bios` is set
                to `ovmf`)
+        :param pulumi.Input[str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable).
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]] hostpcis: A host PCI device mapping (multiple blocks supported).
         :param pulumi.Input['VirtualMachineInitializationArgs'] initialization: The cloud-init configuration.
         :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]] ipv4_addresses: The IPv4 addresses per network interface published by the
@@ -918,6 +936,8 @@ class _VirtualMachineState:
             pulumi.set(__self__, "disks", disks)
         if efi_disk is not None:
             pulumi.set(__self__, "efi_disk", efi_disk)
+        if hook_script_file_id is not None:
+            pulumi.set(__self__, "hook_script_file_id", hook_script_file_id)
         if hostpcis is not None:
             pulumi.set(__self__, "hostpcis", hostpcis)
         if initialization is not None:
@@ -1126,6 +1146,18 @@ class _VirtualMachineState:
     @efi_disk.setter
     def efi_disk(self, value: Optional[pulumi.Input['VirtualMachineEfiDiskArgs']]):
         pulumi.set(self, "efi_disk", value)
+
+    @property
+    @pulumi.getter(name="hookScriptFileId")
+    def hook_script_file_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identifier for a file containing a hook script (needs to be executable).
+        """
+        return pulumi.get(self, "hook_script_file_id")
+
+    @hook_script_file_id.setter
+    def hook_script_file_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hook_script_file_id", value)
 
     @property
     @pulumi.getter
@@ -1612,6 +1644,7 @@ class VirtualMachine(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]]] = None,
                  efi_disk: Optional[pulumi.Input[pulumi.InputType['VirtualMachineEfiDiskArgs']]] = None,
+                 hook_script_file_id: Optional[pulumi.Input[str]] = None,
                  hostpcis: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineHostpciArgs']]]]] = None,
                  initialization: Optional[pulumi.Input[pulumi.InputType['VirtualMachineInitializationArgs']]] = None,
                  keyboard_layout: Optional[pulumi.Input[str]] = None,
@@ -1734,6 +1767,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]] disks: A disk (multiple blocks supported).
         :param pulumi.Input[pulumi.InputType['VirtualMachineEfiDiskArgs']] efi_disk: The efi disk device (required if `bios` is set
                to `ovmf`)
+        :param pulumi.Input[str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineHostpciArgs']]]] hostpcis: A host PCI device mapping (multiple blocks supported).
         :param pulumi.Input[pulumi.InputType['VirtualMachineInitializationArgs']] initialization: The cloud-init configuration.
         :param pulumi.Input[str] keyboard_layout: The keyboard layout (defaults to `en-us`).
@@ -1893,6 +1927,7 @@ class VirtualMachine(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]]] = None,
                  efi_disk: Optional[pulumi.Input[pulumi.InputType['VirtualMachineEfiDiskArgs']]] = None,
+                 hook_script_file_id: Optional[pulumi.Input[str]] = None,
                  hostpcis: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineHostpciArgs']]]]] = None,
                  initialization: Optional[pulumi.Input[pulumi.InputType['VirtualMachineInitializationArgs']]] = None,
                  keyboard_layout: Optional[pulumi.Input[str]] = None,
@@ -1946,6 +1981,7 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["disks"] = disks
             __props__.__dict__["efi_disk"] = efi_disk
+            __props__.__dict__["hook_script_file_id"] = hook_script_file_id
             __props__.__dict__["hostpcis"] = hostpcis
             __props__.__dict__["initialization"] = initialization
             __props__.__dict__["keyboard_layout"] = keyboard_layout
@@ -2006,6 +2042,7 @@ class VirtualMachine(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]]] = None,
             efi_disk: Optional[pulumi.Input[pulumi.InputType['VirtualMachineEfiDiskArgs']]] = None,
+            hook_script_file_id: Optional[pulumi.Input[str]] = None,
             hostpcis: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineHostpciArgs']]]]] = None,
             initialization: Optional[pulumi.Input[pulumi.InputType['VirtualMachineInitializationArgs']]] = None,
             ipv4_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]]] = None,
@@ -2063,6 +2100,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]] disks: A disk (multiple blocks supported).
         :param pulumi.Input[pulumi.InputType['VirtualMachineEfiDiskArgs']] efi_disk: The efi disk device (required if `bios` is set
                to `ovmf`)
+        :param pulumi.Input[str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineHostpciArgs']]]] hostpcis: A host PCI device mapping (multiple blocks supported).
         :param pulumi.Input[pulumi.InputType['VirtualMachineInitializationArgs']] initialization: The cloud-init configuration.
         :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]] ipv4_addresses: The IPv4 addresses per network interface published by the
@@ -2140,6 +2178,7 @@ class VirtualMachine(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["disks"] = disks
         __props__.__dict__["efi_disk"] = efi_disk
+        __props__.__dict__["hook_script_file_id"] = hook_script_file_id
         __props__.__dict__["hostpcis"] = hostpcis
         __props__.__dict__["initialization"] = initialization
         __props__.__dict__["ipv4_addresses"] = ipv4_addresses
@@ -2268,6 +2307,14 @@ class VirtualMachine(pulumi.CustomResource):
         to `ovmf`)
         """
         return pulumi.get(self, "efi_disk")
+
+    @property
+    @pulumi.getter(name="hookScriptFileId")
+    def hook_script_file_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The identifier for a file containing a hook script (needs to be executable).
+        """
+        return pulumi.get(self, "hook_script_file_id")
 
     @property
     @pulumi.getter

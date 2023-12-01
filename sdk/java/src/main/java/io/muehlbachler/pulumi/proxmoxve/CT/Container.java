@@ -112,14 +112,14 @@ public class Container extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.disk);
     }
     /**
-     * The container features
+     * The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
      * 
      */
     @Export(name="features", refs={ContainerFeatures.class}, tree="[0]")
     private Output</* @Nullable */ ContainerFeatures> features;
 
     /**
-     * @return The container features
+     * @return The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
      * 
      */
     public Output<Optional<ContainerFeatures>> features() {

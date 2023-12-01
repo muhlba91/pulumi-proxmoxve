@@ -167,7 +167,7 @@ class FirewallRulesRuleArgs:
         :param pulumi.Input[str] log: Log level for this rule (`emerg`, `alert`, `crit`,
                `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
         :param pulumi.Input[str] macro: Macro name. Use predefined standard macro
-               from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+               from <https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions>
         :param pulumi.Input[int] pos: Position of the rule in the list.
         :param pulumi.Input[str] proto: Restrict packet protocol. You can use protocol
                names as defined in '/etc/protocols'.
@@ -316,7 +316,7 @@ class FirewallRulesRuleArgs:
     def macro(self) -> Optional[pulumi.Input[str]]:
         """
         Macro name. Use predefined standard macro
-        from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+        from <https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions>
         """
         return pulumi.get(self, "macro")
 
@@ -443,7 +443,7 @@ class FirewallSecurityGroupRuleArgs:
         :param pulumi.Input[str] log: Log level for this rule (`emerg`, `alert`, `crit`,
                `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
         :param pulumi.Input[str] macro: Macro name. Use predefined standard macro
-               from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+               from <https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions>
         :param pulumi.Input[int] pos: Position of the rule in the list.
         :param pulumi.Input[str] proto: Restrict packet protocol. You can use protocol names
                as defined in '/etc/protocols'.
@@ -584,7 +584,7 @@ class FirewallSecurityGroupRuleArgs:
     def macro(self) -> Optional[pulumi.Input[str]]:
         """
         Macro name. Use predefined standard macro
-        from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+        from <https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions>
         """
         return pulumi.get(self, "macro")
 

@@ -136,7 +136,7 @@ public final class FirewallSecurityGroupRuleArgs extends com.pulumi.resources.Re
 
     /**
      * Macro name. Use predefined standard macro
-     * from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+     * from &lt;https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions&gt;
      * 
      */
     @Import(name="macro")
@@ -144,7 +144,7 @@ public final class FirewallSecurityGroupRuleArgs extends com.pulumi.resources.Re
 
     /**
      * @return Macro name. Use predefined standard macro
-     * from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+     * from &lt;https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions&gt;
      * 
      */
     public Optional<Output<String>> macro() {
@@ -445,7 +445,7 @@ public final class FirewallSecurityGroupRuleArgs extends com.pulumi.resources.Re
 
         /**
          * @param macro Macro name. Use predefined standard macro
-         * from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+         * from &lt;https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions&gt;
          * 
          * @return builder
          * 
@@ -457,7 +457,7 @@ public final class FirewallSecurityGroupRuleArgs extends com.pulumi.resources.Re
 
         /**
          * @param macro Macro name. Use predefined standard macro
-         * from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+         * from &lt;https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions&gt;
          * 
          * @return builder
          * 

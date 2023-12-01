@@ -104,14 +104,14 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The container features
+     * The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
      * 
      */
     @Import(name="features")
     private @Nullable Output<ContainerFeaturesArgs> features;
 
     /**
-     * @return The container features
+     * @return The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
      * 
      */
     public Optional<Output<ContainerFeaturesArgs>> features() {
@@ -473,7 +473,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param features The container features
+         * @param features The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
          * 
          * @return builder
          * 
@@ -484,7 +484,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param features The container features
+         * @param features The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
          * 
          * @return builder
          * 

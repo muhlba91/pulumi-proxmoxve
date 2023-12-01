@@ -126,7 +126,7 @@ public class FirewallOptions extends com.pulumi.resources.CustomResource {
     }
     /**
      * Enable default IP filters. This is equivalent to
-     * adding an empty ipfilter-net&lt;id&gt; ipset for every interface. Such ipsets
+     * adding an empty `ipfilter-net&lt;id&gt;` ipset for every interface. Such ipsets
      * implicitly contain sane default restrictions such as restricting IPv6 link
      * local addresses to the one derived from the interface&#39;s MAC address. For
      * containers the configured IP addresses will be implicitly added.
@@ -137,7 +137,7 @@ public class FirewallOptions extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Enable default IP filters. This is equivalent to
-     * adding an empty ipfilter-net&lt;id&gt; ipset for every interface. Such ipsets
+     * adding an empty `ipfilter-net&lt;id&gt;` ipset for every interface. Such ipsets
      * implicitly contain sane default restrictions such as restricting IPv6 link
      * local addresses to the one derived from the interface&#39;s MAC address. For
      * containers the configured IP addresses will be implicitly added.

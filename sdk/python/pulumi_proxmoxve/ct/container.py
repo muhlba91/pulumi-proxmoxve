@@ -43,7 +43,7 @@ class ContainerArgs:
         :param pulumi.Input['ContainerCpuArgs'] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description.
         :param pulumi.Input['ContainerDiskArgs'] disk: The disk configuration.
-        :param pulumi.Input['ContainerFeaturesArgs'] features: The container features
+        :param pulumi.Input['ContainerFeaturesArgs'] features: The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
         :param pulumi.Input['ContainerInitializationArgs'] initialization: The initialization configuration.
         :param pulumi.Input['ContainerMemoryArgs'] memory: The memory configuration.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerMountPointArgs']]] mount_points: A mount point
@@ -177,7 +177,7 @@ class ContainerArgs:
     @pulumi.getter
     def features(self) -> Optional[pulumi.Input['ContainerFeaturesArgs']]:
         """
-        The container features
+        The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
         """
         return pulumi.get(self, "features")
 
@@ -365,7 +365,7 @@ class _ContainerState:
         :param pulumi.Input['ContainerCpuArgs'] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description.
         :param pulumi.Input['ContainerDiskArgs'] disk: The disk configuration.
-        :param pulumi.Input['ContainerFeaturesArgs'] features: The container features
+        :param pulumi.Input['ContainerFeaturesArgs'] features: The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
         :param pulumi.Input['ContainerInitializationArgs'] initialization: The initialization configuration.
         :param pulumi.Input['ContainerMemoryArgs'] memory: The memory configuration.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerMountPointArgs']]] mount_points: A mount point
@@ -489,7 +489,7 @@ class _ContainerState:
     @pulumi.getter
     def features(self) -> Optional[pulumi.Input['ContainerFeaturesArgs']]:
         """
-        The container features
+        The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
         """
         return pulumi.get(self, "features")
 
@@ -703,7 +703,7 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ContainerCpuArgs']] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description.
         :param pulumi.Input[pulumi.InputType['ContainerDiskArgs']] disk: The disk configuration.
-        :param pulumi.Input[pulumi.InputType['ContainerFeaturesArgs']] features: The container features
+        :param pulumi.Input[pulumi.InputType['ContainerFeaturesArgs']] features: The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
         :param pulumi.Input[pulumi.InputType['ContainerInitializationArgs']] initialization: The initialization configuration.
         :param pulumi.Input[pulumi.InputType['ContainerMemoryArgs']] memory: The memory configuration.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerMountPointArgs']]]] mount_points: A mount point
@@ -846,7 +846,7 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ContainerCpuArgs']] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description.
         :param pulumi.Input[pulumi.InputType['ContainerDiskArgs']] disk: The disk configuration.
-        :param pulumi.Input[pulumi.InputType['ContainerFeaturesArgs']] features: The container features
+        :param pulumi.Input[pulumi.InputType['ContainerFeaturesArgs']] features: The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
         :param pulumi.Input[pulumi.InputType['ContainerInitializationArgs']] initialization: The initialization configuration.
         :param pulumi.Input[pulumi.InputType['ContainerMemoryArgs']] memory: The memory configuration.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerMountPointArgs']]]] mount_points: A mount point
@@ -936,7 +936,7 @@ class Container(pulumi.CustomResource):
     @pulumi.getter
     def features(self) -> pulumi.Output[Optional['outputs.ContainerFeatures']]:
         """
-        The container features
+        The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
         """
         return pulumi.get(self, "features")
 

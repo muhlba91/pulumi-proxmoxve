@@ -338,7 +338,7 @@ type FirewallRulesRule struct {
 	// `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
 	Log *string `pulumi:"log"`
 	// Macro name. Use predefined standard macro
-	// from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+	// from <https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions>
 	Macro *string `pulumi:"macro"`
 	// Position of the rule in the list.
 	Pos *int `pulumi:"pos"`
@@ -404,7 +404,7 @@ type FirewallRulesRuleArgs struct {
 	// `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
 	Log pulumi.StringPtrInput `pulumi:"log"`
 	// Macro name. Use predefined standard macro
-	// from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+	// from <https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions>
 	Macro pulumi.StringPtrInput `pulumi:"macro"`
 	// Position of the rule in the list.
 	Pos pulumi.IntPtrInput `pulumi:"pos"`
@@ -530,7 +530,7 @@ func (o FirewallRulesRuleOutput) Log() pulumi.StringPtrOutput {
 }
 
 // Macro name. Use predefined standard macro
-// from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+// from <https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions>
 func (o FirewallRulesRuleOutput) Macro() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallRulesRule) *string { return v.Macro }).(pulumi.StringPtrOutput)
 }
@@ -621,7 +621,7 @@ type FirewallSecurityGroupRule struct {
 	// `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
 	Log *string `pulumi:"log"`
 	// Macro name. Use predefined standard macro
-	// from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+	// from <https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions>
 	Macro *string `pulumi:"macro"`
 	// Position of the rule in the list.
 	Pos *int `pulumi:"pos"`
@@ -681,7 +681,7 @@ type FirewallSecurityGroupRuleArgs struct {
 	// `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
 	Log pulumi.StringPtrInput `pulumi:"log"`
 	// Macro name. Use predefined standard macro
-	// from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+	// from <https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions>
 	Macro pulumi.StringPtrInput `pulumi:"macro"`
 	// Position of the rule in the list.
 	Pos pulumi.IntPtrInput `pulumi:"pos"`
@@ -801,7 +801,7 @@ func (o FirewallSecurityGroupRuleOutput) Log() pulumi.StringPtrOutput {
 }
 
 // Macro name. Use predefined standard macro
-// from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+// from <https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions>
 func (o FirewallSecurityGroupRuleOutput) Macro() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallSecurityGroupRule) *string { return v.Macro }).(pulumi.StringPtrOutput)
 }

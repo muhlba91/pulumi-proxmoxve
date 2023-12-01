@@ -50,7 +50,7 @@ namespace Pulumi.ProxmoxVE.Network.Outputs
         public readonly string? Log;
         /// <summary>
         /// Macro name. Use predefined standard macro
-        /// from https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions
+        /// from &lt;https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions&gt;
         /// </summary>
         public readonly string? Macro;
         /// <summary>
