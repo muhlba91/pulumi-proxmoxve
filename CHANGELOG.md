@@ -1,6 +1,19 @@
 # Changelog
 
 
+## [5.17.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.16.0...v5.17.0) (2023-12-01)
+
+
+### Features
+
+* prepare for upstream 0.39.0 ([dadc856](https://github.com/muhlba91/pulumi-proxmoxve/commit/dadc8560ba85f758b4979c5e19d9e8b865a73fe3))
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/setup-java action to v4 ([8b08064](https://github.com/muhlba91/pulumi-proxmoxve/commit/8b0806487e9bca0c4bccfcb79ed4441a6a1371ef))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.39.0 ([d8b8b0e](https://github.com/muhlba91/pulumi-proxmoxve/commit/d8b8b0eebeecb646b1ec014c8a9c4ab9f3004798))
+
 ## [5.16.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.15.1...v5.16.0) (2023-11-22)
 
 
