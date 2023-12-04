@@ -105,7 +105,7 @@ jobs:
         uses: pulumi/actions@v4
 
       - name: Setup DotNet
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: "${{ matrix.dotnet-version }}"
         if: matrix.language == 'dotnet'
