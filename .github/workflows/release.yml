@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Release
     outputs:
-      release_created: ${{ steps.release.outputs.releases_created }}
+      release_created: ${{ steps.release.outputs.release_created }}
     permissions:
       contents: write
       pull-requests: write
@@ -28,8 +28,6 @@ jobs:
     steps:
       - uses: google-github-actions/release-please-action@v4
         id: release
-        with:
-          command: manifest
 
   publish_provider:
     if: needs.release.outputs.release_created
