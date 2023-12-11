@@ -71,7 +71,7 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
         public Input<bool>? Shared { get; set; }
 
         /// <summary>
-        /// Volume size (only for ZFS storage backed mount points).
+        /// Volume size (only for volume mount points).
         /// Can be specified with a unit suffix (e.g. `10G`).
         /// </summary>
         [Input("size")]

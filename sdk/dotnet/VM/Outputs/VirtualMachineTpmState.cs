@@ -7,31 +7,30 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.ProxmoxVE.CT.Outputs
+namespace Pulumi.ProxmoxVE.VM.Outputs
 {
 
     [OutputType]
-    public sealed class ContainerDisk
+    public sealed class VirtualMachineTpmState
     {
         /// <summary>
         /// The identifier for the datastore to create the
-        /// disk in (defaults to `local`).
+        /// cloud-init disk in (defaults to `local-lvm`).
         /// </summary>
         public readonly string? DatastoreId;
         /// <summary>
-        /// Volume size (only for volume mount points).
-        /// Can be specified with a unit suffix (e.g. `10G`).
+        /// The version.
         /// </summary>
-        public readonly int? Size;
+        public readonly string? Version;
 
         [OutputConstructor]
-        private ContainerDisk(
+        private VirtualMachineTpmState(
             string? datastoreId,
 
-            int? size)
+            string? version)
         {
             DatastoreId = datastoreId;
-            Size = size;
+            Version = version;
         }
     }
 }

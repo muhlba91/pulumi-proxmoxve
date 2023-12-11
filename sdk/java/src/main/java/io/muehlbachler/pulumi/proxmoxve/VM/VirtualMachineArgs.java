@@ -20,6 +20,7 @@ import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineOperatingSystemA
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineSerialDeviceArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineSmbiosArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineStartupArgs;
+import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineTpmStateArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineUsbArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineVgaArgs;
 import java.lang.Boolean;
@@ -710,6 +711,21 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * The TPM state device.
+     * 
+     */
+    @Import(name="tpmState")
+    private @Nullable Output<VirtualMachineTpmStateArgs> tpmState;
+
+    /**
+     * @return The TPM state device.
+     * 
+     */
+    public Optional<Output<VirtualMachineTpmStateArgs>> tpmState() {
+        return Optional.ofNullable(this.tpmState);
+    }
+
+    /**
      * A host USB device mapping (multiple blocks supported).
      * 
      */
@@ -799,6 +815,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         this.timeoutShutdownVm = $.timeoutShutdownVm;
         this.timeoutStartVm = $.timeoutStartVm;
         this.timeoutStopVm = $.timeoutStopVm;
+        this.tpmState = $.tpmState;
         this.usbs = $.usbs;
         this.vga = $.vga;
         this.vmId = $.vmId;
@@ -1811,6 +1828,27 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder timeoutStopVm(Integer timeoutStopVm) {
             return timeoutStopVm(Output.of(timeoutStopVm));
+        }
+
+        /**
+         * @param tpmState The TPM state device.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tpmState(@Nullable Output<VirtualMachineTpmStateArgs> tpmState) {
+            $.tpmState = tpmState;
+            return this;
+        }
+
+        /**
+         * @param tpmState The TPM state device.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tpmState(VirtualMachineTpmStateArgs tpmState) {
+            return tpmState(Output.of(tpmState));
         }
 
         /**

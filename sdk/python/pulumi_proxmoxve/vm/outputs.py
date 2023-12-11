@@ -32,6 +32,7 @@ __all__ = [
     'VirtualMachineSerialDevice',
     'VirtualMachineSmbios',
     'VirtualMachineStartup',
+    'VirtualMachineTpmState',
     'VirtualMachineUsb',
     'VirtualMachineVga',
     'GetVirtualMachinesVmResult',
@@ -1678,6 +1679,56 @@ class VirtualMachineStartup(dict):
     @pulumi.getter(name="upDelay")
     def up_delay(self) -> Optional[int]:
         return pulumi.get(self, "up_delay")
+
+
+@pulumi.output_type
+class VirtualMachineTpmState(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datastoreId":
+            suggest = "datastore_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineTpmState. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VirtualMachineTpmState.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VirtualMachineTpmState.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 datastore_id: Optional[str] = None,
+                 version: Optional[str] = None):
+        """
+        :param str datastore_id: The identifier for the datastore to create the
+               cloud-init disk in (defaults to `local-lvm`).
+        :param str version: The version.
+        """
+        if datastore_id is not None:
+            pulumi.set(__self__, "datastore_id", datastore_id)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="datastoreId")
+    def datastore_id(self) -> Optional[str]:
+        """
+        The identifier for the datastore to create the
+        cloud-init disk in (defaults to `local-lvm`).
+        """
+        return pulumi.get(self, "datastore_id")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        """
+        The version.
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type

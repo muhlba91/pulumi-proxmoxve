@@ -50,7 +50,7 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
         /// </summary>
         public readonly bool? Shared;
         /// <summary>
-        /// Volume size (only for ZFS storage backed mount points).
+        /// Volume size (only for volume mount points).
         /// Can be specified with a unit suffix (e.g. `10G`).
         /// </summary>
         public readonly string? Size;

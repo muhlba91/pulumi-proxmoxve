@@ -388,6 +388,12 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<int?> TimeoutStopVm { get; private set; } = null!;
 
         /// <summary>
+        /// The TPM state device.
+        /// </summary>
+        [Output("tpmState")]
+        public Output<Outputs.VirtualMachineTpmState?> TpmState { get; private set; } = null!;
+
+        /// <summary>
         /// A host USB device mapping (multiple blocks supported).
         /// </summary>
         [Output("usbs")]
@@ -761,6 +767,12 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Input("timeoutStopVm")]
         public Input<int>? TimeoutStopVm { get; set; }
+
+        /// <summary>
+        /// The TPM state device.
+        /// </summary>
+        [Input("tpmState")]
+        public Input<Inputs.VirtualMachineTpmStateArgs>? TpmState { get; set; }
 
         [Input("usbs")]
         private InputList<Inputs.VirtualMachineUsbArgs>? _usbs;
@@ -1155,6 +1167,12 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Input("timeoutStopVm")]
         public Input<int>? TimeoutStopVm { get; set; }
+
+        /// <summary>
+        /// The TPM state device.
+        /// </summary>
+        [Input("tpmState")]
+        public Input<Inputs.VirtualMachineTpmStateGetArgs>? TpmState { get; set; }
 
         [Input("usbs")]
         private InputList<Inputs.VirtualMachineUsbGetArgs>? _usbs;

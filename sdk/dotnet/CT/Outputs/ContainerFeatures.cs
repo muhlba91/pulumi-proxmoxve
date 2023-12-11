@@ -24,6 +24,10 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
         /// </summary>
         public readonly bool? Keyctl;
         /// <summary>
+        /// List of allowed mount types (`cifs` or `nfs`)
+        /// </summary>
+        public readonly ImmutableArray<string> Mounts;
+        /// <summary>
         /// Whether the container is nested (defaults
         /// to `false`)
         /// </summary>
@@ -35,10 +39,13 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
 
             bool? keyctl,
 
+            ImmutableArray<string> mounts,
+
             bool? nesting)
         {
             Fuse = fuse;
             Keyctl = keyctl;
+            Mounts = mounts;
             Nesting = nesting;
         }
     }

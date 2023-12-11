@@ -6,6 +6,8 @@ package io.muehlbachler.pulumi.proxmoxve.CT.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -50,6 +52,21 @@ public final class ContainerFeaturesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * List of allowed mount types (`cifs` or `nfs`)
+     * 
+     */
+    @Import(name="mounts")
+    private @Nullable Output<List<String>> mounts;
+
+    /**
+     * @return List of allowed mount types (`cifs` or `nfs`)
+     * 
+     */
+    public Optional<Output<List<String>>> mounts() {
+        return Optional.ofNullable(this.mounts);
+    }
+
+    /**
      * Whether the container is nested (defaults
      * to `false`)
      * 
@@ -71,6 +88,7 @@ public final class ContainerFeaturesArgs extends com.pulumi.resources.ResourceAr
     private ContainerFeaturesArgs(ContainerFeaturesArgs $) {
         this.fuse = $.fuse;
         this.keyctl = $.keyctl;
+        this.mounts = $.mounts;
         this.nesting = $.nesting;
     }
 
@@ -136,6 +154,37 @@ public final class ContainerFeaturesArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder keyctl(Boolean keyctl) {
             return keyctl(Output.of(keyctl));
+        }
+
+        /**
+         * @param mounts List of allowed mount types (`cifs` or `nfs`)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mounts(@Nullable Output<List<String>> mounts) {
+            $.mounts = mounts;
+            return this;
+        }
+
+        /**
+         * @param mounts List of allowed mount types (`cifs` or `nfs`)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mounts(List<String> mounts) {
+            return mounts(Output.of(mounts));
+        }
+
+        /**
+         * @param mounts List of allowed mount types (`cifs` or `nfs`)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mounts(String... mounts) {
+            return mounts(List.of(mounts));
         }
 
         /**

@@ -206,6 +206,8 @@ type VirtualMachine struct {
 	// Timeout for stopping a VM in seconds (defaults
 	// to 300).
 	TimeoutStopVm pulumi.IntPtrOutput `pulumi:"timeoutStopVm"`
+	// The TPM state device.
+	TpmState VirtualMachineTpmStatePtrOutput `pulumi:"tpmState"`
 	// A host USB device mapping (multiple blocks supported).
 	Usbs VirtualMachineUsbArrayOutput `pulumi:"usbs"`
 	// The VGA configuration.
@@ -365,6 +367,8 @@ type virtualMachineState struct {
 	// Timeout for stopping a VM in seconds (defaults
 	// to 300).
 	TimeoutStopVm *int `pulumi:"timeoutStopVm"`
+	// The TPM state device.
+	TpmState *VirtualMachineTpmState `pulumi:"tpmState"`
 	// A host USB device mapping (multiple blocks supported).
 	Usbs []VirtualMachineUsb `pulumi:"usbs"`
 	// The VGA configuration.
@@ -492,6 +496,8 @@ type VirtualMachineState struct {
 	// Timeout for stopping a VM in seconds (defaults
 	// to 300).
 	TimeoutStopVm pulumi.IntPtrInput
+	// The TPM state device.
+	TpmState VirtualMachineTpmStatePtrInput
 	// A host USB device mapping (multiple blocks supported).
 	Usbs VirtualMachineUsbArrayInput
 	// The VGA configuration.
@@ -611,6 +617,8 @@ type virtualMachineArgs struct {
 	// Timeout for stopping a VM in seconds (defaults
 	// to 300).
 	TimeoutStopVm *int `pulumi:"timeoutStopVm"`
+	// The TPM state device.
+	TpmState *VirtualMachineTpmState `pulumi:"tpmState"`
 	// A host USB device mapping (multiple blocks supported).
 	Usbs []VirtualMachineUsb `pulumi:"usbs"`
 	// The VGA configuration.
@@ -727,6 +735,8 @@ type VirtualMachineArgs struct {
 	// Timeout for stopping a VM in seconds (defaults
 	// to 300).
 	TimeoutStopVm pulumi.IntPtrInput
+	// The TPM state device.
+	TpmState VirtualMachineTpmStatePtrInput
 	// A host USB device mapping (multiple blocks supported).
 	Usbs VirtualMachineUsbArrayInput
 	// The VGA configuration.
@@ -1076,6 +1086,11 @@ func (o VirtualMachineOutput) TimeoutStartVm() pulumi.IntPtrOutput {
 // to 300).
 func (o VirtualMachineOutput) TimeoutStopVm() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.TimeoutStopVm }).(pulumi.IntPtrOutput)
+}
+
+// The TPM state device.
+func (o VirtualMachineOutput) TpmState() VirtualMachineTpmStatePtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) VirtualMachineTpmStatePtrOutput { return v.TpmState }).(VirtualMachineTpmStatePtrOutput)
 }
 
 // A host USB device mapping (multiple blocks supported).

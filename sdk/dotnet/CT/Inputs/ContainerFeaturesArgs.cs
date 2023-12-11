@@ -26,6 +26,18 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
         [Input("keyctl")]
         public Input<bool>? Keyctl { get; set; }
 
+        [Input("mounts")]
+        private InputList<string>? _mounts;
+
+        /// <summary>
+        /// List of allowed mount types (`cifs` or `nfs`)
+        /// </summary>
+        public InputList<string> Mounts
+        {
+            get => _mounts ?? (_mounts = new InputList<string>());
+            set => _mounts = value;
+        }
+
         /// <summary>
         /// Whether the container is nested (defaults
         /// to `false`)

@@ -167,7 +167,7 @@
                 },
                 "size": {
                     "type": "integer",
-                    "description": "Volume size (only for ZFS storage backed mount points).\nCan be specified with a unit suffix (e.g. `10G`).\n",
+                    "description": "Volume size (only for volume mount points).\nCan be specified with a unit suffix (e.g. `10G`).\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -177,18 +177,22 @@
             "properties": {
                 "fuse": {
                     "type": "boolean",
-                    "description": "Whether the container supports FUSE mounts (defaults\nto `false`)\n",
-                    "willReplaceOnChanges": true
+                    "description": "Whether the container supports FUSE mounts (defaults\nto `false`)\n"
                 },
                 "keyctl": {
                     "type": "boolean",
-                    "description": "Whether the container supports `keyctl()` system\ncall (defaults to `false`)\n",
-                    "willReplaceOnChanges": true
+                    "description": "Whether the container supports `keyctl()` system\ncall (defaults to `false`)\n"
+                },
+                "mounts": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of allowed mount types (`cifs` or `nfs`)\n"
                 },
                 "nesting": {
                     "type": "boolean",
-                    "description": "Whether the container is nested (defaults\nto `false`)\n",
-                    "willReplaceOnChanges": true
+                    "description": "Whether the container is nested (defaults\nto `false`)\n"
                 }
             },
             "type": "object"
@@ -341,7 +345,7 @@
                 },
                 "size": {
                     "type": "string",
-                    "description": "Volume size (only for ZFS storage backed mount points).\nCan be specified with a unit suffix (e.g. `10G`).\n"
+                    "description": "Volume size (only for volume mount points).\nCan be specified with a unit suffix (e.g. `10G`).\n"
                 },
                 "volume": {
                     "type": "string",
@@ -1362,6 +1366,20 @@
             },
             "type": "object"
         },
+        "proxmoxve:VM/VirtualMachineTpmState:VirtualMachineTpmState": {
+            "properties": {
+                "datastoreId": {
+                    "type": "string",
+                    "description": "The identifier for the datastore to create the\ncloud-init disk in (defaults to `local-lvm`).\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "The version.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object"
+        },
         "proxmoxve:VM/VirtualMachineUsb:VirtualMachineUsb": {
             "properties": {
                 "host": {
@@ -1767,8 +1785,7 @@
                 },
                 "features": {
                     "$ref": "#/types/proxmoxve:CT/ContainerFeatures:ContainerFeatures",
-                    "description": "The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.\n"
                 },
                 "initialization": {
                     "$ref": "#/types/proxmoxve:CT/ContainerInitialization:ContainerInitialization",
@@ -1867,8 +1884,7 @@
                     },
                     "features": {
                         "$ref": "#/types/proxmoxve:CT/ContainerFeatures:ContainerFeatures",
-                        "description": "The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.\n"
                     },
                     "initialization": {
                         "$ref": "#/types/proxmoxve:CT/ContainerInitialization:ContainerInitialization",
@@ -3307,6 +3323,10 @@
                     "type": "integer",
                     "description": "Timeout for stopping a VM in seconds (defaults\nto 300).\n"
                 },
+                "tpmState": {
+                    "$ref": "#/types/proxmoxve:VM/VirtualMachineTpmState:VirtualMachineTpmState",
+                    "description": "The TPM state device.\n"
+                },
                 "usbs": {
                     "type": "array",
                     "items": {
@@ -3521,6 +3541,11 @@
                 "timeoutStopVm": {
                     "type": "integer",
                     "description": "Timeout for stopping a VM in seconds (defaults\nto 300).\n"
+                },
+                "tpmState": {
+                    "$ref": "#/types/proxmoxve:VM/VirtualMachineTpmState:VirtualMachineTpmState",
+                    "description": "The TPM state device.\n",
+                    "willReplaceOnChanges": true
                 },
                 "usbs": {
                     "type": "array",
@@ -3766,6 +3791,11 @@
                     "timeoutStopVm": {
                         "type": "integer",
                         "description": "Timeout for stopping a VM in seconds (defaults\nto 300).\n"
+                    },
+                    "tpmState": {
+                        "$ref": "#/types/proxmoxve:VM/VirtualMachineTpmState:VirtualMachineTpmState",
+                        "description": "The TPM state device.\n",
+                        "willReplaceOnChanges": true
                     },
                     "usbs": {
                         "type": "array",

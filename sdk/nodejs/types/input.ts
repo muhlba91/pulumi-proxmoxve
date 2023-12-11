@@ -84,7 +84,7 @@ export namespace CT {
          */
         datastoreId?: pulumi.Input<string>;
         /**
-         * Volume size (only for ZFS storage backed mount points).
+         * Volume size (only for volume mount points).
          * Can be specified with a unit suffix (e.g. `10G`).
          */
         size?: pulumi.Input<number>;
@@ -101,6 +101,10 @@ export namespace CT {
          * call (defaults to `false`)
          */
         keyctl?: pulumi.Input<boolean>;
+        /**
+         * List of allowed mount types (`cifs` or `nfs`)
+         */
+        mounts?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Whether the container is nested (defaults
          * to `false`)
@@ -237,7 +241,7 @@ export namespace CT {
          */
         shared?: pulumi.Input<boolean>;
         /**
-         * Volume size (only for ZFS storage backed mount points).
+         * Volume size (only for volume mount points).
          * Can be specified with a unit suffix (e.g. `10G`).
          */
         size?: pulumi.Input<string>;
@@ -1107,6 +1111,18 @@ export namespace VM {
          */
         order?: pulumi.Input<number>;
         upDelay?: pulumi.Input<number>;
+    }
+
+    export interface VirtualMachineTpmState {
+        /**
+         * The identifier for the datastore to create the
+         * cloud-init disk in (defaults to `local-lvm`).
+         */
+        datastoreId?: pulumi.Input<string>;
+        /**
+         * The version.
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface VirtualMachineUsb {

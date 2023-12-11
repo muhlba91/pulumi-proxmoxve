@@ -58,7 +58,7 @@ public final class ContainerMountPoint {
      */
     private @Nullable Boolean shared;
     /**
-     * @return Volume size (only for ZFS storage backed mount points).
+     * @return Volume size (only for volume mount points).
      * Can be specified with a unit suffix (e.g. `10G`).
      * 
      */
@@ -132,7 +132,7 @@ public final class ContainerMountPoint {
         return Optional.ofNullable(this.shared);
     }
     /**
-     * @return Volume size (only for ZFS storage backed mount points).
+     * @return Volume size (only for volume mount points).
      * Can be specified with a unit suffix (e.g. `10G`).
      * 
      */

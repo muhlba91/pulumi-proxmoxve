@@ -146,7 +146,7 @@ public final class ContainerMountPointArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Volume size (only for ZFS storage backed mount points).
+     * Volume size (only for volume mount points).
      * Can be specified with a unit suffix (e.g. `10G`).
      * 
      */
@@ -154,7 +154,7 @@ public final class ContainerMountPointArgs extends com.pulumi.resources.Resource
     private @Nullable Output<String> size;
 
     /**
-     * @return Volume size (only for ZFS storage backed mount points).
+     * @return Volume size (only for volume mount points).
      * Can be specified with a unit suffix (e.g. `10G`).
      * 
      */
@@ -399,7 +399,7 @@ public final class ContainerMountPointArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param size Volume size (only for ZFS storage backed mount points).
+         * @param size Volume size (only for volume mount points).
          * Can be specified with a unit suffix (e.g. `10G`).
          * 
          * @return builder
@@ -411,7 +411,7 @@ public final class ContainerMountPointArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param size Volume size (only for ZFS storage backed mount points).
+         * @param size Volume size (only for volume mount points).
          * Can be specified with a unit suffix (e.g. `10G`).
          * 
          * @return builder

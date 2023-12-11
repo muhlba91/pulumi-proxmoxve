@@ -550,7 +550,7 @@ type ContainerDisk struct {
 	// The identifier for the datastore to create the
 	// disk in (defaults to `local`).
 	DatastoreId *string `pulumi:"datastoreId"`
-	// Volume size (only for ZFS storage backed mount points).
+	// Volume size (only for volume mount points).
 	// Can be specified with a unit suffix (e.g. `10G`).
 	Size *int `pulumi:"size"`
 }
@@ -570,7 +570,7 @@ type ContainerDiskArgs struct {
 	// The identifier for the datastore to create the
 	// disk in (defaults to `local`).
 	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
-	// Volume size (only for ZFS storage backed mount points).
+	// Volume size (only for volume mount points).
 	// Can be specified with a unit suffix (e.g. `10G`).
 	Size pulumi.IntPtrInput `pulumi:"size"`
 }
@@ -658,7 +658,7 @@ func (o ContainerDiskOutput) DatastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerDisk) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
 }
 
-// Volume size (only for ZFS storage backed mount points).
+// Volume size (only for volume mount points).
 // Can be specified with a unit suffix (e.g. `10G`).
 func (o ContainerDiskOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
@@ -699,7 +699,7 @@ func (o ContainerDiskPtrOutput) DatastoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Volume size (only for ZFS storage backed mount points).
+// Volume size (only for volume mount points).
 // Can be specified with a unit suffix (e.g. `10G`).
 func (o ContainerDiskPtrOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ContainerDisk) *int {
@@ -717,6 +717,8 @@ type ContainerFeatures struct {
 	// Whether the container supports `keyctl()` system
 	// call (defaults to `false`)
 	Keyctl *bool `pulumi:"keyctl"`
+	// List of allowed mount types (`cifs` or `nfs`)
+	Mounts []string `pulumi:"mounts"`
 	// Whether the container is nested (defaults
 	// to `false`)
 	Nesting *bool `pulumi:"nesting"`
@@ -740,6 +742,8 @@ type ContainerFeaturesArgs struct {
 	// Whether the container supports `keyctl()` system
 	// call (defaults to `false`)
 	Keyctl pulumi.BoolPtrInput `pulumi:"keyctl"`
+	// List of allowed mount types (`cifs` or `nfs`)
+	Mounts pulumi.StringArrayInput `pulumi:"mounts"`
 	// Whether the container is nested (defaults
 	// to `false`)
 	Nesting pulumi.BoolPtrInput `pulumi:"nesting"`
@@ -834,6 +838,11 @@ func (o ContainerFeaturesOutput) Keyctl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContainerFeatures) *bool { return v.Keyctl }).(pulumi.BoolPtrOutput)
 }
 
+// List of allowed mount types (`cifs` or `nfs`)
+func (o ContainerFeaturesOutput) Mounts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ContainerFeatures) []string { return v.Mounts }).(pulumi.StringArrayOutput)
+}
+
 // Whether the container is nested (defaults
 // to `false`)
 func (o ContainerFeaturesOutput) Nesting() pulumi.BoolPtrOutput {
@@ -884,6 +893,16 @@ func (o ContainerFeaturesPtrOutput) Keyctl() pulumi.BoolPtrOutput {
 		}
 		return v.Keyctl
 	}).(pulumi.BoolPtrOutput)
+}
+
+// List of allowed mount types (`cifs` or `nfs`)
+func (o ContainerFeaturesPtrOutput) Mounts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ContainerFeatures) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Mounts
+	}).(pulumi.StringArrayOutput)
 }
 
 // Whether the container is nested (defaults
@@ -2022,7 +2041,7 @@ type ContainerMountPoint struct {
 	// Mark this non-volume mount point as available on all
 	// nodes.
 	Shared *bool `pulumi:"shared"`
-	// Volume size (only for ZFS storage backed mount points).
+	// Volume size (only for volume mount points).
 	// Can be specified with a unit suffix (e.g. `10G`).
 	Size *string `pulumi:"size"`
 	// Volume, device or directory to mount into the
@@ -2062,7 +2081,7 @@ type ContainerMountPointArgs struct {
 	// Mark this non-volume mount point as available on all
 	// nodes.
 	Shared pulumi.BoolPtrInput `pulumi:"shared"`
-	// Volume size (only for ZFS storage backed mount points).
+	// Volume size (only for volume mount points).
 	// Can be specified with a unit suffix (e.g. `10G`).
 	Size pulumi.StringPtrInput `pulumi:"size"`
 	// Volume, device or directory to mount into the
@@ -2165,7 +2184,7 @@ func (o ContainerMountPointOutput) Shared() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContainerMountPoint) *bool { return v.Shared }).(pulumi.BoolPtrOutput)
 }
 
-// Volume size (only for ZFS storage backed mount points).
+// Volume size (only for volume mount points).
 // Can be specified with a unit suffix (e.g. `10G`).
 func (o ContainerMountPointOutput) Size() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerMountPoint) *string { return v.Size }).(pulumi.StringPtrOutput)

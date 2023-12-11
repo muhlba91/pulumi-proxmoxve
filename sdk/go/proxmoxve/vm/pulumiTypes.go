@@ -4164,6 +4164,166 @@ func (o VirtualMachineStartupPtrOutput) UpDelay() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type VirtualMachineTpmState struct {
+	// The identifier for the datastore to create the
+	// cloud-init disk in (defaults to `local-lvm`).
+	DatastoreId *string `pulumi:"datastoreId"`
+	// The version.
+	Version *string `pulumi:"version"`
+}
+
+// VirtualMachineTpmStateInput is an input type that accepts VirtualMachineTpmStateArgs and VirtualMachineTpmStateOutput values.
+// You can construct a concrete instance of `VirtualMachineTpmStateInput` via:
+//
+//	VirtualMachineTpmStateArgs{...}
+type VirtualMachineTpmStateInput interface {
+	pulumi.Input
+
+	ToVirtualMachineTpmStateOutput() VirtualMachineTpmStateOutput
+	ToVirtualMachineTpmStateOutputWithContext(context.Context) VirtualMachineTpmStateOutput
+}
+
+type VirtualMachineTpmStateArgs struct {
+	// The identifier for the datastore to create the
+	// cloud-init disk in (defaults to `local-lvm`).
+	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
+	// The version.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (VirtualMachineTpmStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineTpmState)(nil)).Elem()
+}
+
+func (i VirtualMachineTpmStateArgs) ToVirtualMachineTpmStateOutput() VirtualMachineTpmStateOutput {
+	return i.ToVirtualMachineTpmStateOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineTpmStateArgs) ToVirtualMachineTpmStateOutputWithContext(ctx context.Context) VirtualMachineTpmStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineTpmStateOutput)
+}
+
+func (i VirtualMachineTpmStateArgs) ToVirtualMachineTpmStatePtrOutput() VirtualMachineTpmStatePtrOutput {
+	return i.ToVirtualMachineTpmStatePtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineTpmStateArgs) ToVirtualMachineTpmStatePtrOutputWithContext(ctx context.Context) VirtualMachineTpmStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineTpmStateOutput).ToVirtualMachineTpmStatePtrOutputWithContext(ctx)
+}
+
+// VirtualMachineTpmStatePtrInput is an input type that accepts VirtualMachineTpmStateArgs, VirtualMachineTpmStatePtr and VirtualMachineTpmStatePtrOutput values.
+// You can construct a concrete instance of `VirtualMachineTpmStatePtrInput` via:
+//
+//	        VirtualMachineTpmStateArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachineTpmStatePtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineTpmStatePtrOutput() VirtualMachineTpmStatePtrOutput
+	ToVirtualMachineTpmStatePtrOutputWithContext(context.Context) VirtualMachineTpmStatePtrOutput
+}
+
+type virtualMachineTpmStatePtrType VirtualMachineTpmStateArgs
+
+func VirtualMachineTpmStatePtr(v *VirtualMachineTpmStateArgs) VirtualMachineTpmStatePtrInput {
+	return (*virtualMachineTpmStatePtrType)(v)
+}
+
+func (*virtualMachineTpmStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineTpmState)(nil)).Elem()
+}
+
+func (i *virtualMachineTpmStatePtrType) ToVirtualMachineTpmStatePtrOutput() VirtualMachineTpmStatePtrOutput {
+	return i.ToVirtualMachineTpmStatePtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachineTpmStatePtrType) ToVirtualMachineTpmStatePtrOutputWithContext(ctx context.Context) VirtualMachineTpmStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineTpmStatePtrOutput)
+}
+
+type VirtualMachineTpmStateOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineTpmStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineTpmState)(nil)).Elem()
+}
+
+func (o VirtualMachineTpmStateOutput) ToVirtualMachineTpmStateOutput() VirtualMachineTpmStateOutput {
+	return o
+}
+
+func (o VirtualMachineTpmStateOutput) ToVirtualMachineTpmStateOutputWithContext(ctx context.Context) VirtualMachineTpmStateOutput {
+	return o
+}
+
+func (o VirtualMachineTpmStateOutput) ToVirtualMachineTpmStatePtrOutput() VirtualMachineTpmStatePtrOutput {
+	return o.ToVirtualMachineTpmStatePtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineTpmStateOutput) ToVirtualMachineTpmStatePtrOutputWithContext(ctx context.Context) VirtualMachineTpmStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineTpmState) *VirtualMachineTpmState {
+		return &v
+	}).(VirtualMachineTpmStatePtrOutput)
+}
+
+// The identifier for the datastore to create the
+// cloud-init disk in (defaults to `local-lvm`).
+func (o VirtualMachineTpmStateOutput) DatastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineTpmState) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
+}
+
+// The version.
+func (o VirtualMachineTpmStateOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineTpmState) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineTpmStatePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineTpmStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineTpmState)(nil)).Elem()
+}
+
+func (o VirtualMachineTpmStatePtrOutput) ToVirtualMachineTpmStatePtrOutput() VirtualMachineTpmStatePtrOutput {
+	return o
+}
+
+func (o VirtualMachineTpmStatePtrOutput) ToVirtualMachineTpmStatePtrOutputWithContext(ctx context.Context) VirtualMachineTpmStatePtrOutput {
+	return o
+}
+
+func (o VirtualMachineTpmStatePtrOutput) Elem() VirtualMachineTpmStateOutput {
+	return o.ApplyT(func(v *VirtualMachineTpmState) VirtualMachineTpmState {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineTpmState
+		return ret
+	}).(VirtualMachineTpmStateOutput)
+}
+
+// The identifier for the datastore to create the
+// cloud-init disk in (defaults to `local-lvm`).
+func (o VirtualMachineTpmStatePtrOutput) DatastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineTpmState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DatastoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The version.
+func (o VirtualMachineTpmStatePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineTpmState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
 type VirtualMachineUsb struct {
 	// The USB device ID. Use either this or `mapping`.
 	Host string `pulumi:"host"`
@@ -4634,6 +4794,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineSmbiosPtrInput)(nil)).Elem(), VirtualMachineSmbiosArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineStartupInput)(nil)).Elem(), VirtualMachineStartupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineStartupPtrInput)(nil)).Elem(), VirtualMachineStartupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineTpmStateInput)(nil)).Elem(), VirtualMachineTpmStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineTpmStatePtrInput)(nil)).Elem(), VirtualMachineTpmStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineUsbInput)(nil)).Elem(), VirtualMachineUsbArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineUsbArrayInput)(nil)).Elem(), VirtualMachineUsbArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineVgaInput)(nil)).Elem(), VirtualMachineVgaArgs{})
@@ -4682,6 +4844,8 @@ func init() {
 	pulumi.RegisterOutputType(VirtualMachineSmbiosPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineStartupOutput{})
 	pulumi.RegisterOutputType(VirtualMachineStartupPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineTpmStateOutput{})
+	pulumi.RegisterOutputType(VirtualMachineTpmStatePtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineUsbOutput{})
 	pulumi.RegisterOutputType(VirtualMachineUsbArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachineVgaOutput{})

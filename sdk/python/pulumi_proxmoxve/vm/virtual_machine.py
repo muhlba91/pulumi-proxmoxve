@@ -58,6 +58,7 @@ class VirtualMachineArgs:
                  timeout_shutdown_vm: Optional[pulumi.Input[int]] = None,
                  timeout_start_vm: Optional[pulumi.Input[int]] = None,
                  timeout_stop_vm: Optional[pulumi.Input[int]] = None,
+                 tpm_state: Optional[pulumi.Input['VirtualMachineTpmStateArgs']] = None,
                  usbs: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineUsbArgs']]]] = None,
                  vga: Optional[pulumi.Input['VirtualMachineVgaArgs']] = None,
                  vm_id: Optional[pulumi.Input[int]] = None):
@@ -127,6 +128,7 @@ class VirtualMachineArgs:
                to 1800).
         :param pulumi.Input[int] timeout_stop_vm: Timeout for stopping a VM in seconds (defaults
                to 300).
+        :param pulumi.Input['VirtualMachineTpmStateArgs'] tpm_state: The TPM state device.
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineUsbArgs']]] usbs: A host USB device mapping (multiple blocks supported).
         :param pulumi.Input['VirtualMachineVgaArgs'] vga: The VGA configuration.
         :param pulumi.Input[int] vm_id: The VM identifier.
@@ -214,6 +216,8 @@ class VirtualMachineArgs:
             pulumi.set(__self__, "timeout_start_vm", timeout_start_vm)
         if timeout_stop_vm is not None:
             pulumi.set(__self__, "timeout_stop_vm", timeout_stop_vm)
+        if tpm_state is not None:
+            pulumi.set(__self__, "tpm_state", tpm_state)
         if usbs is not None:
             pulumi.set(__self__, "usbs", usbs)
         if vga is not None:
@@ -748,6 +752,18 @@ class VirtualMachineArgs:
         pulumi.set(self, "timeout_stop_vm", value)
 
     @property
+    @pulumi.getter(name="tpmState")
+    def tpm_state(self) -> Optional[pulumi.Input['VirtualMachineTpmStateArgs']]:
+        """
+        The TPM state device.
+        """
+        return pulumi.get(self, "tpm_state")
+
+    @tpm_state.setter
+    def tpm_state(self, value: Optional[pulumi.Input['VirtualMachineTpmStateArgs']]):
+        pulumi.set(self, "tpm_state", value)
+
+    @property
     @pulumi.getter
     def usbs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineUsbArgs']]]]:
         """
@@ -833,6 +849,7 @@ class _VirtualMachineState:
                  timeout_shutdown_vm: Optional[pulumi.Input[int]] = None,
                  timeout_start_vm: Optional[pulumi.Input[int]] = None,
                  timeout_stop_vm: Optional[pulumi.Input[int]] = None,
+                 tpm_state: Optional[pulumi.Input['VirtualMachineTpmStateArgs']] = None,
                  usbs: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineUsbArgs']]]] = None,
                  vga: Optional[pulumi.Input['VirtualMachineVgaArgs']] = None,
                  vm_id: Optional[pulumi.Input[int]] = None):
@@ -910,6 +927,7 @@ class _VirtualMachineState:
                to 1800).
         :param pulumi.Input[int] timeout_stop_vm: Timeout for stopping a VM in seconds (defaults
                to 300).
+        :param pulumi.Input['VirtualMachineTpmStateArgs'] tpm_state: The TPM state device.
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineUsbArgs']]] usbs: A host USB device mapping (multiple blocks supported).
         :param pulumi.Input['VirtualMachineVgaArgs'] vga: The VGA configuration.
         :param pulumi.Input[int] vm_id: The VM identifier.
@@ -1006,6 +1024,8 @@ class _VirtualMachineState:
             pulumi.set(__self__, "timeout_start_vm", timeout_start_vm)
         if timeout_stop_vm is not None:
             pulumi.set(__self__, "timeout_stop_vm", timeout_stop_vm)
+        if tpm_state is not None:
+            pulumi.set(__self__, "tpm_state", tpm_state)
         if usbs is not None:
             pulumi.set(__self__, "usbs", usbs)
         if vga is not None:
@@ -1592,6 +1612,18 @@ class _VirtualMachineState:
         pulumi.set(self, "timeout_stop_vm", value)
 
     @property
+    @pulumi.getter(name="tpmState")
+    def tpm_state(self) -> Optional[pulumi.Input['VirtualMachineTpmStateArgs']]:
+        """
+        The TPM state device.
+        """
+        return pulumi.get(self, "tpm_state")
+
+    @tpm_state.setter
+    def tpm_state(self, value: Optional[pulumi.Input['VirtualMachineTpmStateArgs']]):
+        pulumi.set(self, "tpm_state", value)
+
+    @property
     @pulumi.getter
     def usbs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineUsbArgs']]]]:
         """
@@ -1675,6 +1707,7 @@ class VirtualMachine(pulumi.CustomResource):
                  timeout_shutdown_vm: Optional[pulumi.Input[int]] = None,
                  timeout_start_vm: Optional[pulumi.Input[int]] = None,
                  timeout_stop_vm: Optional[pulumi.Input[int]] = None,
+                 tpm_state: Optional[pulumi.Input[pulumi.InputType['VirtualMachineTpmStateArgs']]] = None,
                  usbs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineUsbArgs']]]]] = None,
                  vga: Optional[pulumi.Input[pulumi.InputType['VirtualMachineVgaArgs']]] = None,
                  vm_id: Optional[pulumi.Input[int]] = None,
@@ -1818,6 +1851,7 @@ class VirtualMachine(pulumi.CustomResource):
                to 1800).
         :param pulumi.Input[int] timeout_stop_vm: Timeout for stopping a VM in seconds (defaults
                to 300).
+        :param pulumi.Input[pulumi.InputType['VirtualMachineTpmStateArgs']] tpm_state: The TPM state device.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineUsbArgs']]]] usbs: A host USB device mapping (multiple blocks supported).
         :param pulumi.Input[pulumi.InputType['VirtualMachineVgaArgs']] vga: The VGA configuration.
         :param pulumi.Input[int] vm_id: The VM identifier.
@@ -1958,6 +1992,7 @@ class VirtualMachine(pulumi.CustomResource):
                  timeout_shutdown_vm: Optional[pulumi.Input[int]] = None,
                  timeout_start_vm: Optional[pulumi.Input[int]] = None,
                  timeout_stop_vm: Optional[pulumi.Input[int]] = None,
+                 tpm_state: Optional[pulumi.Input[pulumi.InputType['VirtualMachineTpmStateArgs']]] = None,
                  usbs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineUsbArgs']]]]] = None,
                  vga: Optional[pulumi.Input[pulumi.InputType['VirtualMachineVgaArgs']]] = None,
                  vm_id: Optional[pulumi.Input[int]] = None,
@@ -2014,6 +2049,7 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["timeout_shutdown_vm"] = timeout_shutdown_vm
             __props__.__dict__["timeout_start_vm"] = timeout_start_vm
             __props__.__dict__["timeout_stop_vm"] = timeout_stop_vm
+            __props__.__dict__["tpm_state"] = tpm_state
             __props__.__dict__["usbs"] = usbs
             __props__.__dict__["vga"] = vga
             __props__.__dict__["vm_id"] = vm_id
@@ -2077,6 +2113,7 @@ class VirtualMachine(pulumi.CustomResource):
             timeout_shutdown_vm: Optional[pulumi.Input[int]] = None,
             timeout_start_vm: Optional[pulumi.Input[int]] = None,
             timeout_stop_vm: Optional[pulumi.Input[int]] = None,
+            tpm_state: Optional[pulumi.Input[pulumi.InputType['VirtualMachineTpmStateArgs']]] = None,
             usbs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineUsbArgs']]]]] = None,
             vga: Optional[pulumi.Input[pulumi.InputType['VirtualMachineVgaArgs']]] = None,
             vm_id: Optional[pulumi.Input[int]] = None) -> 'VirtualMachine':
@@ -2159,6 +2196,7 @@ class VirtualMachine(pulumi.CustomResource):
                to 1800).
         :param pulumi.Input[int] timeout_stop_vm: Timeout for stopping a VM in seconds (defaults
                to 300).
+        :param pulumi.Input[pulumi.InputType['VirtualMachineTpmStateArgs']] tpm_state: The TPM state device.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineUsbArgs']]]] usbs: A host USB device mapping (multiple blocks supported).
         :param pulumi.Input[pulumi.InputType['VirtualMachineVgaArgs']] vga: The VGA configuration.
         :param pulumi.Input[int] vm_id: The VM identifier.
@@ -2213,6 +2251,7 @@ class VirtualMachine(pulumi.CustomResource):
         __props__.__dict__["timeout_shutdown_vm"] = timeout_shutdown_vm
         __props__.__dict__["timeout_start_vm"] = timeout_start_vm
         __props__.__dict__["timeout_stop_vm"] = timeout_stop_vm
+        __props__.__dict__["tpm_state"] = tpm_state
         __props__.__dict__["usbs"] = usbs
         __props__.__dict__["vga"] = vga
         __props__.__dict__["vm_id"] = vm_id
@@ -2611,6 +2650,14 @@ class VirtualMachine(pulumi.CustomResource):
         to 300).
         """
         return pulumi.get(self, "timeout_stop_vm")
+
+    @property
+    @pulumi.getter(name="tpmState")
+    def tpm_state(self) -> pulumi.Output[Optional['outputs.VirtualMachineTpmState']]:
+        """
+        The TPM state device.
+        """
+        return pulumi.get(self, "tpm_state")
 
     @property
     @pulumi.getter

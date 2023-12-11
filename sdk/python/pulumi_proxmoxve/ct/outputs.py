@@ -223,7 +223,7 @@ class ContainerDisk(dict):
         """
         :param str datastore_id: The identifier for the datastore to create the
                disk in (defaults to `local`).
-        :param int size: Volume size (only for ZFS storage backed mount points).
+        :param int size: Volume size (only for volume mount points).
                Can be specified with a unit suffix (e.g. `10G`).
         """
         if datastore_id is not None:
@@ -244,7 +244,7 @@ class ContainerDisk(dict):
     @pulumi.getter
     def size(self) -> Optional[int]:
         """
-        Volume size (only for ZFS storage backed mount points).
+        Volume size (only for volume mount points).
         Can be specified with a unit suffix (e.g. `10G`).
         """
         return pulumi.get(self, "size")
@@ -255,12 +255,14 @@ class ContainerFeatures(dict):
     def __init__(__self__, *,
                  fuse: Optional[bool] = None,
                  keyctl: Optional[bool] = None,
+                 mounts: Optional[Sequence[str]] = None,
                  nesting: Optional[bool] = None):
         """
         :param bool fuse: Whether the container supports FUSE mounts (defaults
                to `false`)
         :param bool keyctl: Whether the container supports `keyctl()` system
                call (defaults to `false`)
+        :param Sequence[str] mounts: List of allowed mount types (`cifs` or `nfs`)
         :param bool nesting: Whether the container is nested (defaults
                to `false`)
         """
@@ -268,6 +270,8 @@ class ContainerFeatures(dict):
             pulumi.set(__self__, "fuse", fuse)
         if keyctl is not None:
             pulumi.set(__self__, "keyctl", keyctl)
+        if mounts is not None:
+            pulumi.set(__self__, "mounts", mounts)
         if nesting is not None:
             pulumi.set(__self__, "nesting", nesting)
 
@@ -288,6 +292,14 @@ class ContainerFeatures(dict):
         call (defaults to `false`)
         """
         return pulumi.get(self, "keyctl")
+
+    @property
+    @pulumi.getter
+    def mounts(self) -> Optional[Sequence[str]]:
+        """
+        List of allowed mount types (`cifs` or `nfs`)
+        """
+        return pulumi.get(self, "mounts")
 
     @property
     @pulumi.getter
@@ -618,7 +630,7 @@ class ContainerMountPoint(dict):
         :param bool replicate: Will include this volume to a storage replica job.
         :param bool shared: Mark this non-volume mount point as available on all
                nodes.
-        :param str size: Volume size (only for ZFS storage backed mount points).
+        :param str size: Volume size (only for volume mount points).
                Can be specified with a unit suffix (e.g. `10G`).
         """
         pulumi.set(__self__, "path", path)
@@ -721,7 +733,7 @@ class ContainerMountPoint(dict):
     @pulumi.getter
     def size(self) -> Optional[str]:
         """
-        Volume size (only for ZFS storage backed mount points).
+        Volume size (only for volume mount points).
         Can be specified with a unit suffix (e.g. `10G`).
         """
         return pulumi.get(self, "size")

@@ -5,6 +5,8 @@ package io.muehlbachler.pulumi.proxmoxve.CT.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -23,6 +25,11 @@ public final class ContainerFeatures {
      * 
      */
     private @Nullable Boolean keyctl;
+    /**
+     * @return List of allowed mount types (`cifs` or `nfs`)
+     * 
+     */
+    private @Nullable List<String> mounts;
     /**
      * @return Whether the container is nested (defaults
      * to `false`)
@@ -48,6 +55,13 @@ public final class ContainerFeatures {
         return Optional.ofNullable(this.keyctl);
     }
     /**
+     * @return List of allowed mount types (`cifs` or `nfs`)
+     * 
+     */
+    public List<String> mounts() {
+        return this.mounts == null ? List.of() : this.mounts;
+    }
+    /**
      * @return Whether the container is nested (defaults
      * to `false`)
      * 
@@ -67,12 +81,14 @@ public final class ContainerFeatures {
     public static final class Builder {
         private @Nullable Boolean fuse;
         private @Nullable Boolean keyctl;
+        private @Nullable List<String> mounts;
         private @Nullable Boolean nesting;
         public Builder() {}
         public Builder(ContainerFeatures defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fuse = defaults.fuse;
     	      this.keyctl = defaults.keyctl;
+    	      this.mounts = defaults.mounts;
     	      this.nesting = defaults.nesting;
         }
 
@@ -87,6 +103,14 @@ public final class ContainerFeatures {
             return this;
         }
         @CustomType.Setter
+        public Builder mounts(@Nullable List<String> mounts) {
+            this.mounts = mounts;
+            return this;
+        }
+        public Builder mounts(String... mounts) {
+            return mounts(List.of(mounts));
+        }
+        @CustomType.Setter
         public Builder nesting(@Nullable Boolean nesting) {
             this.nesting = nesting;
             return this;
@@ -95,6 +119,7 @@ public final class ContainerFeatures {
             final var _resultValue = new ContainerFeatures();
             _resultValue.fuse = fuse;
             _resultValue.keyctl = keyctl;
+            _resultValue.mounts = mounts;
             _resultValue.nesting = nesting;
             return _resultValue;
         }

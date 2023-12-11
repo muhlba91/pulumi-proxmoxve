@@ -31,6 +31,7 @@ __all__ = [
     'VirtualMachineSerialDeviceArgs',
     'VirtualMachineSmbiosArgs',
     'VirtualMachineStartupArgs',
+    'VirtualMachineTpmStateArgs',
     'VirtualMachineUsbArgs',
     'VirtualMachineVgaArgs',
 ]
@@ -1869,6 +1870,47 @@ class VirtualMachineStartupArgs:
     @up_delay.setter
     def up_delay(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "up_delay", value)
+
+
+@pulumi.input_type
+class VirtualMachineTpmStateArgs:
+    def __init__(__self__, *,
+                 datastore_id: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] datastore_id: The identifier for the datastore to create the
+               cloud-init disk in (defaults to `local-lvm`).
+        :param pulumi.Input[str] version: The version.
+        """
+        if datastore_id is not None:
+            pulumi.set(__self__, "datastore_id", datastore_id)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="datastoreId")
+    def datastore_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identifier for the datastore to create the
+        cloud-init disk in (defaults to `local-lvm`).
+        """
+        return pulumi.get(self, "datastore_id")
+
+    @datastore_id.setter
+    def datastore_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "datastore_id", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
 
 
 @pulumi.input_type

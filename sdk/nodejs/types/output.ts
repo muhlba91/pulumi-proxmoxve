@@ -79,7 +79,7 @@ export namespace CT {
          */
         datastoreId?: string;
         /**
-         * Volume size (only for ZFS storage backed mount points).
+         * Volume size (only for volume mount points).
          * Can be specified with a unit suffix (e.g. `10G`).
          */
         size?: number;
@@ -96,6 +96,10 @@ export namespace CT {
          * call (defaults to `false`)
          */
         keyctl?: boolean;
+        /**
+         * List of allowed mount types (`cifs` or `nfs`)
+         */
+        mounts?: string[];
         /**
          * Whether the container is nested (defaults
          * to `false`)
@@ -232,7 +236,7 @@ export namespace CT {
          */
         shared?: boolean;
         /**
-         * Volume size (only for ZFS storage backed mount points).
+         * Volume size (only for volume mount points).
          * Can be specified with a unit suffix (e.g. `10G`).
          */
         size?: string;
@@ -1179,6 +1183,18 @@ export namespace VM {
          */
         order?: number;
         upDelay?: number;
+    }
+
+    export interface VirtualMachineTpmState {
+        /**
+         * The identifier for the datastore to create the
+         * cloud-init disk in (defaults to `local-lvm`).
+         */
+        datastoreId?: string;
+        /**
+         * The version.
+         */
+        version?: string;
     }
 
     export interface VirtualMachineUsb {

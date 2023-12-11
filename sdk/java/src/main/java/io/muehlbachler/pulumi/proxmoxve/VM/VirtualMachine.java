@@ -25,6 +25,7 @@ import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineOperatingSystem
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineSerialDevice;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineSmbios;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineStartup;
+import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineTpmState;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineUsb;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineVga;
 import java.lang.Boolean;
@@ -805,6 +806,20 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> timeoutStopVm() {
         return Codegen.optional(this.timeoutStopVm);
+    }
+    /**
+     * The TPM state device.
+     * 
+     */
+    @Export(name="tpmState", refs={VirtualMachineTpmState.class}, tree="[0]")
+    private Output</* @Nullable */ VirtualMachineTpmState> tpmState;
+
+    /**
+     * @return The TPM state device.
+     * 
+     */
+    public Output<Optional<VirtualMachineTpmState>> tpmState() {
+        return Codegen.optional(this.tpmState);
     }
     /**
      * A host USB device mapping (multiple blocks supported).

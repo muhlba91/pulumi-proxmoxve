@@ -318,6 +318,10 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly timeoutStopVm!: pulumi.Output<number | undefined>;
     /**
+     * The TPM state device.
+     */
+    public readonly tpmState!: pulumi.Output<outputs.VM.VirtualMachineTpmState | undefined>;
+    /**
      * A host USB device mapping (multiple blocks supported).
      */
     public readonly usbs!: pulumi.Output<outputs.VM.VirtualMachineUsb[] | undefined>;
@@ -389,6 +393,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["timeoutShutdownVm"] = state ? state.timeoutShutdownVm : undefined;
             resourceInputs["timeoutStartVm"] = state ? state.timeoutStartVm : undefined;
             resourceInputs["timeoutStopVm"] = state ? state.timeoutStopVm : undefined;
+            resourceInputs["tpmState"] = state ? state.tpmState : undefined;
             resourceInputs["usbs"] = state ? state.usbs : undefined;
             resourceInputs["vga"] = state ? state.vga : undefined;
             resourceInputs["vmId"] = state ? state.vmId : undefined;
@@ -439,6 +444,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["timeoutShutdownVm"] = args ? args.timeoutShutdownVm : undefined;
             resourceInputs["timeoutStartVm"] = args ? args.timeoutStartVm : undefined;
             resourceInputs["timeoutStopVm"] = args ? args.timeoutStopVm : undefined;
+            resourceInputs["tpmState"] = args ? args.tpmState : undefined;
             resourceInputs["usbs"] = args ? args.usbs : undefined;
             resourceInputs["vga"] = args ? args.vga : undefined;
             resourceInputs["vmId"] = args ? args.vmId : undefined;
@@ -667,6 +673,10 @@ export interface VirtualMachineState {
      */
     timeoutStopVm?: pulumi.Input<number>;
     /**
+     * The TPM state device.
+     */
+    tpmState?: pulumi.Input<inputs.VM.VirtualMachineTpmState>;
+    /**
      * A host USB device mapping (multiple blocks supported).
      */
     usbs?: pulumi.Input<pulumi.Input<inputs.VM.VirtualMachineUsb>[]>;
@@ -874,6 +884,10 @@ export interface VirtualMachineArgs {
      * to 300).
      */
     timeoutStopVm?: pulumi.Input<number>;
+    /**
+     * The TPM state device.
+     */
+    tpmState?: pulumi.Input<inputs.VM.VirtualMachineTpmState>;
     /**
      * A host USB device mapping (multiple blocks supported).
      */
