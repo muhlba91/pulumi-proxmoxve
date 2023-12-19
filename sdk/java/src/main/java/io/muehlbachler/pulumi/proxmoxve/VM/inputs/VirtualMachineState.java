@@ -588,6 +588,21 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Whether to stop rather than shutdown on VM destroy (defaults to `false`)
+     * 
+     */
+    @Import(name="stopOnDestroy")
+    private @Nullable Output<Boolean> stopOnDestroy;
+
+    /**
+     * @return Whether to stop rather than shutdown on VM destroy (defaults to `false`)
+     * 
+     */
+    public Optional<Output<Boolean>> stopOnDestroy() {
+        return Optional.ofNullable(this.stopOnDestroy);
+    }
+
+    /**
      * Whether to enable the USB tablet device (defaults
      * to `true`).
      * 
@@ -876,6 +891,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         this.smbios = $.smbios;
         this.started = $.started;
         this.startup = $.startup;
+        this.stopOnDestroy = $.stopOnDestroy;
         this.tabletDevice = $.tabletDevice;
         this.tags = $.tags;
         this.template = $.template;
@@ -1765,6 +1781,27 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
          */
         public Builder startup(VirtualMachineStartupArgs startup) {
             return startup(Output.of(startup));
+        }
+
+        /**
+         * @param stopOnDestroy Whether to stop rather than shutdown on VM destroy (defaults to `false`)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stopOnDestroy(@Nullable Output<Boolean> stopOnDestroy) {
+            $.stopOnDestroy = stopOnDestroy;
+            return this;
+        }
+
+        /**
+         * @param stopOnDestroy Whether to stop rather than shutdown on VM destroy (defaults to `false`)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stopOnDestroy(Boolean stopOnDestroy) {
+            return stopOnDestroy(Output.of(stopOnDestroy));
         }
 
         /**

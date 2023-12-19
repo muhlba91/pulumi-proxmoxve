@@ -171,6 +171,8 @@ type VirtualMachine struct {
 	Started pulumi.BoolPtrOutput `pulumi:"started"`
 	// Defines startup and shutdown behavior of the VM.
 	Startup VirtualMachineStartupPtrOutput `pulumi:"startup"`
+	// Whether to stop rather than shutdown on VM destroy (defaults to `false`)
+	StopOnDestroy pulumi.BoolPtrOutput `pulumi:"stopOnDestroy"`
 	// Whether to enable the USB tablet device (defaults
 	// to `true`).
 	TabletDevice pulumi.BoolPtrOutput `pulumi:"tabletDevice"`
@@ -332,6 +334,8 @@ type virtualMachineState struct {
 	Started *bool `pulumi:"started"`
 	// Defines startup and shutdown behavior of the VM.
 	Startup *VirtualMachineStartup `pulumi:"startup"`
+	// Whether to stop rather than shutdown on VM destroy (defaults to `false`)
+	StopOnDestroy *bool `pulumi:"stopOnDestroy"`
 	// Whether to enable the USB tablet device (defaults
 	// to `true`).
 	TabletDevice *bool `pulumi:"tabletDevice"`
@@ -461,6 +465,8 @@ type VirtualMachineState struct {
 	Started pulumi.BoolPtrInput
 	// Defines startup and shutdown behavior of the VM.
 	Startup VirtualMachineStartupPtrInput
+	// Whether to stop rather than shutdown on VM destroy (defaults to `false`)
+	StopOnDestroy pulumi.BoolPtrInput
 	// Whether to enable the USB tablet device (defaults
 	// to `true`).
 	TabletDevice pulumi.BoolPtrInput
@@ -582,6 +588,8 @@ type virtualMachineArgs struct {
 	Started *bool `pulumi:"started"`
 	// Defines startup and shutdown behavior of the VM.
 	Startup *VirtualMachineStartup `pulumi:"startup"`
+	// Whether to stop rather than shutdown on VM destroy (defaults to `false`)
+	StopOnDestroy *bool `pulumi:"stopOnDestroy"`
 	// Whether to enable the USB tablet device (defaults
 	// to `true`).
 	TabletDevice *bool `pulumi:"tabletDevice"`
@@ -700,6 +708,8 @@ type VirtualMachineArgs struct {
 	Started pulumi.BoolPtrInput
 	// Defines startup and shutdown behavior of the VM.
 	Startup VirtualMachineStartupPtrInput
+	// Whether to stop rather than shutdown on VM destroy (defaults to `false`)
+	StopOnDestroy pulumi.BoolPtrInput
 	// Whether to enable the USB tablet device (defaults
 	// to `true`).
 	TabletDevice pulumi.BoolPtrInput
@@ -1018,6 +1028,11 @@ func (o VirtualMachineOutput) Started() pulumi.BoolPtrOutput {
 // Defines startup and shutdown behavior of the VM.
 func (o VirtualMachineOutput) Startup() VirtualMachineStartupPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineStartupPtrOutput { return v.Startup }).(VirtualMachineStartupPtrOutput)
+}
+
+// Whether to stop rather than shutdown on VM destroy (defaults to `false`)
+func (o VirtualMachineOutput) StopOnDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.StopOnDestroy }).(pulumi.BoolPtrOutput)
 }
 
 // Whether to enable the USB tablet device (defaults

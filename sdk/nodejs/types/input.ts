@@ -653,6 +653,9 @@ export namespace VM {
          * cloud-init disk in (defaults to `local-lvm`).
          */
         datastoreId?: pulumi.Input<string>;
+        /**
+         * Full or linked clone (defaults to `true`).
+         */
         full?: pulumi.Input<boolean>;
         /**
          * The name of the node to assign the virtual machine
@@ -711,6 +714,10 @@ export namespace VM {
          * to `0`).
          */
         hotplugged?: pulumi.Input<number>;
+        /**
+         * Limit of CPU usage, `0...128`. (defaults to `0` -- no limit).
+         */
+        limit?: pulumi.Input<number>;
         /**
          * Enable/disable NUMA. (default to `false`)
          */

@@ -605,7 +605,8 @@ type VirtualMachineClone struct {
 	// The identifier for the datastore to create the
 	// cloud-init disk in (defaults to `local-lvm`).
 	DatastoreId *string `pulumi:"datastoreId"`
-	Full        *bool   `pulumi:"full"`
+	// Full or linked clone (defaults to `true`).
+	Full *bool `pulumi:"full"`
 	// The name of the node to assign the virtual machine
 	// to.
 	NodeName *string `pulumi:"nodeName"`
@@ -632,7 +633,8 @@ type VirtualMachineCloneArgs struct {
 	// The identifier for the datastore to create the
 	// cloud-init disk in (defaults to `local-lvm`).
 	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
-	Full        pulumi.BoolPtrInput   `pulumi:"full"`
+	// Full or linked clone (defaults to `true`).
+	Full pulumi.BoolPtrInput `pulumi:"full"`
 	// The name of the node to assign the virtual machine
 	// to.
 	NodeName pulumi.StringPtrInput `pulumi:"nodeName"`
@@ -727,6 +729,7 @@ func (o VirtualMachineCloneOutput) DatastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineClone) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
 }
 
+// Full or linked clone (defaults to `true`).
 func (o VirtualMachineCloneOutput) Full() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineClone) *bool { return v.Full }).(pulumi.BoolPtrOutput)
 }
@@ -784,6 +787,7 @@ func (o VirtualMachineClonePtrOutput) DatastoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Full or linked clone (defaults to `true`).
 func (o VirtualMachineClonePtrOutput) Full() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineClone) *bool {
 		if v == nil {
@@ -858,6 +862,8 @@ type VirtualMachineCpu struct {
 	// The number of hotplugged vCPUs (defaults
 	// to `0`).
 	Hotplugged *int `pulumi:"hotplugged"`
+	// Limit of CPU usage, `0...128`. (defaults to `0` -- no limit).
+	Limit *int `pulumi:"limit"`
 	// Enable/disable NUMA. (default to `false`)
 	Numa *bool `pulumi:"numa"`
 	// The number of CPU sockets (defaults to `1`).
@@ -911,6 +917,8 @@ type VirtualMachineCpuArgs struct {
 	// The number of hotplugged vCPUs (defaults
 	// to `0`).
 	Hotplugged pulumi.IntPtrInput `pulumi:"hotplugged"`
+	// Limit of CPU usage, `0...128`. (defaults to `0` -- no limit).
+	Limit pulumi.IntPtrInput `pulumi:"limit"`
 	// Enable/disable NUMA. (default to `false`)
 	Numa pulumi.BoolPtrInput `pulumi:"numa"`
 	// The number of CPU sockets (defaults to `1`).
@@ -1041,6 +1049,11 @@ func (o VirtualMachineCpuOutput) Hotplugged() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCpu) *int { return v.Hotplugged }).(pulumi.IntPtrOutput)
 }
 
+// Limit of CPU usage, `0...128`. (defaults to `0` -- no limit).
+func (o VirtualMachineCpuOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachineCpu) *int { return v.Limit }).(pulumi.IntPtrOutput)
+}
+
 // Enable/disable NUMA. (default to `false`)
 func (o VirtualMachineCpuOutput) Numa() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCpu) *bool { return v.Numa }).(pulumi.BoolPtrOutput)
@@ -1145,6 +1158,16 @@ func (o VirtualMachineCpuPtrOutput) Hotplugged() pulumi.IntPtrOutput {
 			return nil
 		}
 		return v.Hotplugged
+	}).(pulumi.IntPtrOutput)
+}
+
+// Limit of CPU usage, `0...128`. (defaults to `0` -- no limit).
+func (o VirtualMachineCpuPtrOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineCpu) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Limit
 	}).(pulumi.IntPtrOutput)
 }
 

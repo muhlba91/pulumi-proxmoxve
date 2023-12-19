@@ -125,6 +125,21 @@ public final class VirtualMachineCpuArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Limit of CPU usage, `0...128`. (defaults to `0` -- no limit).
+     * 
+     */
+    @Import(name="limit")
+    private @Nullable Output<Integer> limit;
+
+    /**
+     * @return Limit of CPU usage, `0...128`. (defaults to `0` -- no limit).
+     * 
+     */
+    public Optional<Output<Integer>> limit() {
+        return Optional.ofNullable(this.limit);
+    }
+
+    /**
      * Enable/disable NUMA. (default to `false`)
      * 
      */
@@ -191,6 +206,7 @@ public final class VirtualMachineCpuArgs extends com.pulumi.resources.ResourceAr
         this.cores = $.cores;
         this.flags = $.flags;
         this.hotplugged = $.hotplugged;
+        this.limit = $.limit;
         this.numa = $.numa;
         this.sockets = $.sockets;
         this.type = $.type;
@@ -375,6 +391,27 @@ public final class VirtualMachineCpuArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder hotplugged(Integer hotplugged) {
             return hotplugged(Output.of(hotplugged));
+        }
+
+        /**
+         * @param limit Limit of CPU usage, `0...128`. (defaults to `0` -- no limit).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder limit(@Nullable Output<Integer> limit) {
+            $.limit = limit;
+            return this;
+        }
+
+        /**
+         * @param limit Limit of CPU usage, `0...128`. (defaults to `0` -- no limit).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder limit(Integer limit) {
+            return limit(Output.of(limit));
         }
 
         /**

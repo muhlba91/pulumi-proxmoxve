@@ -19,6 +19,10 @@ public final class VirtualMachineClone {
      * 
      */
     private @Nullable String datastoreId;
+    /**
+     * @return Full or linked clone (defaults to `true`).
+     * 
+     */
     private @Nullable Boolean full;
     /**
      * @return The name of the node to assign the virtual machine
@@ -48,6 +52,10 @@ public final class VirtualMachineClone {
     public Optional<String> datastoreId() {
         return Optional.ofNullable(this.datastoreId);
     }
+    /**
+     * @return Full or linked clone (defaults to `true`).
+     * 
+     */
     public Optional<Boolean> full() {
         return Optional.ofNullable(this.full);
     }

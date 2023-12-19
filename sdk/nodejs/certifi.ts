@@ -6,38 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * Manages the custom SSL/TLS certificate for a specific node.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- * import * as tls from "@pulumi/tls";
- *
- * const proxmoxVirtualEnvironmentCertificatePrivateKey = new tls.PrivateKey("proxmoxVirtualEnvironmentCertificatePrivateKey", {
- *     algorithm: "RSA",
- *     rsaBits: 2048,
- * });
- * const proxmoxVirtualEnvironmentCertificateSelfSignedCert = new tls.SelfSignedCert("proxmoxVirtualEnvironmentCertificateSelfSignedCert", {
- *     keyAlgorithm: proxmoxVirtualEnvironmentCertificatePrivateKey.algorithm,
- *     privateKeyPem: proxmoxVirtualEnvironmentCertificatePrivateKey.privateKeyPem,
- *     subject: {
- *         commonName: "example.com",
- *         organization: "Terraform Provider for Proxmox",
- *     },
- *     validityPeriodHours: 8760,
- *     allowedUses: [
- *         "key_encipherment",
- *         "digital_signature",
- *         "server_auth",
- *     ],
- * });
- * const example = new proxmoxve.Certifi("example", {
- *     certificate: proxmoxVirtualEnvironmentCertificateSelfSignedCert.certPem,
- *     nodeName: "first-node",
- *     privateKey: proxmoxVirtualEnvironmentCertificatePrivateKey.privateKeyPem,
- * });
- * ```
  */
 export class Certifi extends pulumi.CustomResource {
     /**

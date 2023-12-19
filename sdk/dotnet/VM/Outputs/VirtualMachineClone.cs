@@ -18,6 +18,9 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// cloud-init disk in (defaults to `local-lvm`).
         /// </summary>
         public readonly string? DatastoreId;
+        /// <summary>
+        /// Full or linked clone (defaults to `true`).
+        /// </summary>
         public readonly bool? Full;
         /// <summary>
         /// The name of the node to assign the virtual machine

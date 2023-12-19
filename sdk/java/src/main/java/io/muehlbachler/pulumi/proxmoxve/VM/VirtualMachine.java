@@ -628,6 +628,20 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.startup);
     }
     /**
+     * Whether to stop rather than shutdown on VM destroy (defaults to `false`)
+     * 
+     */
+    @Export(name="stopOnDestroy", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> stopOnDestroy;
+
+    /**
+     * @return Whether to stop rather than shutdown on VM destroy (defaults to `false`)
+     * 
+     */
+    public Output<Optional<Boolean>> stopOnDestroy() {
+        return Codegen.optional(this.stopOnDestroy);
+    }
+    /**
      * Whether to enable the USB tablet device (defaults
      * to `true`).
      * 

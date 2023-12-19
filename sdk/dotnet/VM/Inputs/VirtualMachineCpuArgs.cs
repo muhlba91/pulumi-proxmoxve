@@ -66,6 +66,12 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<int>? Hotplugged { get; set; }
 
         /// <summary>
+        /// Limit of CPU usage, `0...128`. (defaults to `0` -- no limit).
+        /// </summary>
+        [Input("limit")]
+        public Input<int>? Limit { get; set; }
+
+        /// <summary>
         /// Enable/disable NUMA. (default to `false`)
         /// </summary>
         [Input("numa")]

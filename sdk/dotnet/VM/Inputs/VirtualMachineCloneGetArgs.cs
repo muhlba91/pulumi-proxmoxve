@@ -19,6 +19,9 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
 
+        /// <summary>
+        /// Full or linked clone (defaults to `true`).
+        /// </summary>
         [Input("full")]
         public Input<bool>? Full { get; set; }
 

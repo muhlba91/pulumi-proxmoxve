@@ -309,6 +309,12 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<Outputs.VirtualMachineStartup?> Startup { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to stop rather than shutdown on VM destroy (defaults to `false`)
+        /// </summary>
+        [Output("stopOnDestroy")]
+        public Output<bool?> StopOnDestroy { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to enable the USB tablet device (defaults
         /// to `true`).
         /// </summary>
@@ -682,6 +688,12 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Input("startup")]
         public Input<Inputs.VirtualMachineStartupArgs>? Startup { get; set; }
+
+        /// <summary>
+        /// Whether to stop rather than shutdown on VM destroy (defaults to `false`)
+        /// </summary>
+        [Input("stopOnDestroy")]
+        public Input<bool>? StopOnDestroy { get; set; }
 
         /// <summary>
         /// Whether to enable the USB tablet device (defaults
@@ -1082,6 +1094,12 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Input("startup")]
         public Input<Inputs.VirtualMachineStartupGetArgs>? Startup { get; set; }
+
+        /// <summary>
+        /// Whether to stop rather than shutdown on VM destroy (defaults to `false`)
+        /// </summary>
+        [Input("stopOnDestroy")]
+        public Input<bool>? StopOnDestroy { get; set; }
 
         /// <summary>
         /// Whether to enable the USB tablet device (defaults

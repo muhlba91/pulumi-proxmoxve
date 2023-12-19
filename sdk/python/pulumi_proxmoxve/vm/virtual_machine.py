@@ -47,6 +47,7 @@ class VirtualMachineArgs:
                  smbios: Optional[pulumi.Input['VirtualMachineSmbiosArgs']] = None,
                  started: Optional[pulumi.Input[bool]] = None,
                  startup: Optional[pulumi.Input['VirtualMachineStartupArgs']] = None,
+                 stop_on_destroy: Optional[pulumi.Input[bool]] = None,
                  tablet_device: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
@@ -104,6 +105,7 @@ class VirtualMachineArgs:
         :param pulumi.Input[bool] started: Whether to start the virtual machine (defaults
                to `true`).
         :param pulumi.Input['VirtualMachineStartupArgs'] startup: Defines startup and shutdown behavior of the VM.
+        :param pulumi.Input[bool] stop_on_destroy: Whether to stop rather than shutdown on VM destroy (defaults to `false`)
         :param pulumi.Input[bool] tablet_device: Whether to enable the USB tablet device (defaults
                to `true`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags of the VM. This is only meta information (
@@ -194,6 +196,8 @@ class VirtualMachineArgs:
             pulumi.set(__self__, "started", started)
         if startup is not None:
             pulumi.set(__self__, "startup", startup)
+        if stop_on_destroy is not None:
+            pulumi.set(__self__, "stop_on_destroy", stop_on_destroy)
         if tablet_device is not None:
             pulumi.set(__self__, "tablet_device", tablet_device)
         if tags is not None:
@@ -607,6 +611,18 @@ class VirtualMachineArgs:
         pulumi.set(self, "startup", value)
 
     @property
+    @pulumi.getter(name="stopOnDestroy")
+    def stop_on_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to stop rather than shutdown on VM destroy (defaults to `false`)
+        """
+        return pulumi.get(self, "stop_on_destroy")
+
+    @stop_on_destroy.setter
+    def stop_on_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "stop_on_destroy", value)
+
+    @property
     @pulumi.getter(name="tabletDevice")
     def tablet_device(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -838,6 +854,7 @@ class _VirtualMachineState:
                  smbios: Optional[pulumi.Input['VirtualMachineSmbiosArgs']] = None,
                  started: Optional[pulumi.Input[bool]] = None,
                  startup: Optional[pulumi.Input['VirtualMachineStartupArgs']] = None,
+                 stop_on_destroy: Optional[pulumi.Input[bool]] = None,
                  tablet_device: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
@@ -903,6 +920,7 @@ class _VirtualMachineState:
         :param pulumi.Input[bool] started: Whether to start the virtual machine (defaults
                to `true`).
         :param pulumi.Input['VirtualMachineStartupArgs'] startup: Defines startup and shutdown behavior of the VM.
+        :param pulumi.Input[bool] stop_on_destroy: Whether to stop rather than shutdown on VM destroy (defaults to `false`)
         :param pulumi.Input[bool] tablet_device: Whether to enable the USB tablet device (defaults
                to `true`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags of the VM. This is only meta information (
@@ -1002,6 +1020,8 @@ class _VirtualMachineState:
             pulumi.set(__self__, "started", started)
         if startup is not None:
             pulumi.set(__self__, "startup", startup)
+        if stop_on_destroy is not None:
+            pulumi.set(__self__, "stop_on_destroy", stop_on_destroy)
         if tablet_device is not None:
             pulumi.set(__self__, "tablet_device", tablet_device)
         if tags is not None:
@@ -1467,6 +1487,18 @@ class _VirtualMachineState:
         pulumi.set(self, "startup", value)
 
     @property
+    @pulumi.getter(name="stopOnDestroy")
+    def stop_on_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to stop rather than shutdown on VM destroy (defaults to `false`)
+        """
+        return pulumi.get(self, "stop_on_destroy")
+
+    @stop_on_destroy.setter
+    def stop_on_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "stop_on_destroy", value)
+
+    @property
     @pulumi.getter(name="tabletDevice")
     def tablet_device(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1696,6 +1728,7 @@ class VirtualMachine(pulumi.CustomResource):
                  smbios: Optional[pulumi.Input[pulumi.InputType['VirtualMachineSmbiosArgs']]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
                  startup: Optional[pulumi.Input[pulumi.InputType['VirtualMachineStartupArgs']]] = None,
+                 stop_on_destroy: Optional[pulumi.Input[bool]] = None,
                  tablet_device: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
@@ -1827,6 +1860,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[bool] started: Whether to start the virtual machine (defaults
                to `true`).
         :param pulumi.Input[pulumi.InputType['VirtualMachineStartupArgs']] startup: Defines startup and shutdown behavior of the VM.
+        :param pulumi.Input[bool] stop_on_destroy: Whether to stop rather than shutdown on VM destroy (defaults to `false`)
         :param pulumi.Input[bool] tablet_device: Whether to enable the USB tablet device (defaults
                to `true`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags of the VM. This is only meta information (
@@ -1981,6 +2015,7 @@ class VirtualMachine(pulumi.CustomResource):
                  smbios: Optional[pulumi.Input[pulumi.InputType['VirtualMachineSmbiosArgs']]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
                  startup: Optional[pulumi.Input[pulumi.InputType['VirtualMachineStartupArgs']]] = None,
+                 stop_on_destroy: Optional[pulumi.Input[bool]] = None,
                  tablet_device: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
@@ -2038,6 +2073,7 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["smbios"] = smbios
             __props__.__dict__["started"] = started
             __props__.__dict__["startup"] = startup
+            __props__.__dict__["stop_on_destroy"] = stop_on_destroy
             __props__.__dict__["tablet_device"] = tablet_device
             __props__.__dict__["tags"] = tags
             __props__.__dict__["template"] = template
@@ -2102,6 +2138,7 @@ class VirtualMachine(pulumi.CustomResource):
             smbios: Optional[pulumi.Input[pulumi.InputType['VirtualMachineSmbiosArgs']]] = None,
             started: Optional[pulumi.Input[bool]] = None,
             startup: Optional[pulumi.Input[pulumi.InputType['VirtualMachineStartupArgs']]] = None,
+            stop_on_destroy: Optional[pulumi.Input[bool]] = None,
             tablet_device: Optional[pulumi.Input[bool]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             template: Optional[pulumi.Input[bool]] = None,
@@ -2172,6 +2209,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[bool] started: Whether to start the virtual machine (defaults
                to `true`).
         :param pulumi.Input[pulumi.InputType['VirtualMachineStartupArgs']] startup: Defines startup and shutdown behavior of the VM.
+        :param pulumi.Input[bool] stop_on_destroy: Whether to stop rather than shutdown on VM destroy (defaults to `false`)
         :param pulumi.Input[bool] tablet_device: Whether to enable the USB tablet device (defaults
                to `true`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags of the VM. This is only meta information (
@@ -2240,6 +2278,7 @@ class VirtualMachine(pulumi.CustomResource):
         __props__.__dict__["smbios"] = smbios
         __props__.__dict__["started"] = started
         __props__.__dict__["startup"] = startup
+        __props__.__dict__["stop_on_destroy"] = stop_on_destroy
         __props__.__dict__["tablet_device"] = tablet_device
         __props__.__dict__["tags"] = tags
         __props__.__dict__["template"] = template
@@ -2549,6 +2588,14 @@ class VirtualMachine(pulumi.CustomResource):
         Defines startup and shutdown behavior of the VM.
         """
         return pulumi.get(self, "startup")
+
+    @property
+    @pulumi.getter(name="stopOnDestroy")
+    def stop_on_destroy(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to stop rather than shutdown on VM destroy (defaults to `false`)
+        """
+        return pulumi.get(self, "stop_on_destroy")
 
     @property
     @pulumi.getter(name="tabletDevice")

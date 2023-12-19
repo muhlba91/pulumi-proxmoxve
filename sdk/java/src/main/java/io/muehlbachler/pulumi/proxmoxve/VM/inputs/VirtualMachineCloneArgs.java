@@ -34,9 +34,17 @@ public final class VirtualMachineCloneArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.datastoreId);
     }
 
+    /**
+     * Full or linked clone (defaults to `true`).
+     * 
+     */
     @Import(name="full")
     private @Nullable Output<Boolean> full;
 
+    /**
+     * @return Full or linked clone (defaults to `true`).
+     * 
+     */
     public Optional<Output<Boolean>> full() {
         return Optional.ofNullable(this.full);
     }
@@ -143,11 +151,23 @@ public final class VirtualMachineCloneArgs extends com.pulumi.resources.Resource
             return datastoreId(Output.of(datastoreId));
         }
 
+        /**
+         * @param full Full or linked clone (defaults to `true`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder full(@Nullable Output<Boolean> full) {
             $.full = full;
             return this;
         }
 
+        /**
+         * @param full Full or linked clone (defaults to `true`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder full(Boolean full) {
             return full(Output.of(full));
         }

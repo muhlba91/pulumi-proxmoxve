@@ -251,6 +251,7 @@ class VirtualMachineCloneArgs:
         :param pulumi.Input[int] vm_id: The VM identifier.
         :param pulumi.Input[str] datastore_id: The identifier for the datastore to create the
                cloud-init disk in (defaults to `local-lvm`).
+        :param pulumi.Input[bool] full: Full or linked clone (defaults to `true`).
         :param pulumi.Input[str] node_name: The name of the node to assign the virtual machine
                to.
         :param pulumi.Input[int] retries: Number of retries in Proxmox for clone vm.
@@ -295,6 +296,9 @@ class VirtualMachineCloneArgs:
     @property
     @pulumi.getter
     def full(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Full or linked clone (defaults to `true`).
+        """
         return pulumi.get(self, "full")
 
     @full.setter
@@ -336,6 +340,7 @@ class VirtualMachineCpuArgs:
                  cores: Optional[pulumi.Input[int]] = None,
                  flags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  hotplugged: Optional[pulumi.Input[int]] = None,
+                 limit: Optional[pulumi.Input[int]] = None,
                  numa: Optional[pulumi.Input[bool]] = None,
                  sockets: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -368,6 +373,7 @@ class VirtualMachineCpuArgs:
                protection for AMD models.
         :param pulumi.Input[int] hotplugged: The number of hotplugged vCPUs (defaults
                to `0`).
+        :param pulumi.Input[int] limit: Limit of CPU usage, `0...128`. (defaults to `0` -- no limit).
         :param pulumi.Input[bool] numa: Enable/disable NUMA. (default to `false`)
         :param pulumi.Input[int] sockets: The number of CPU sockets (defaults to `1`).
         :param pulumi.Input[str] type: The VGA type (defaults to `std`).
@@ -381,6 +387,8 @@ class VirtualMachineCpuArgs:
             pulumi.set(__self__, "flags", flags)
         if hotplugged is not None:
             pulumi.set(__self__, "hotplugged", hotplugged)
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
         if numa is not None:
             pulumi.set(__self__, "numa", numa)
         if sockets is not None:
@@ -460,6 +468,18 @@ class VirtualMachineCpuArgs:
     @hotplugged.setter
     def hotplugged(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "hotplugged", value)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Limit of CPU usage, `0...128`. (defaults to `0` -- no limit).
+        """
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "limit", value)
 
     @property
     @pulumi.getter

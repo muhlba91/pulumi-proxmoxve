@@ -261,6 +261,10 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly startup!: pulumi.Output<outputs.VM.VirtualMachineStartup | undefined>;
     /**
+     * Whether to stop rather than shutdown on VM destroy (defaults to `false`)
+     */
+    public readonly stopOnDestroy!: pulumi.Output<boolean | undefined>;
+    /**
      * Whether to enable the USB tablet device (defaults
      * to `true`).
      */
@@ -382,6 +386,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["smbios"] = state ? state.smbios : undefined;
             resourceInputs["started"] = state ? state.started : undefined;
             resourceInputs["startup"] = state ? state.startup : undefined;
+            resourceInputs["stopOnDestroy"] = state ? state.stopOnDestroy : undefined;
             resourceInputs["tabletDevice"] = state ? state.tabletDevice : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["template"] = state ? state.template : undefined;
@@ -433,6 +438,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["smbios"] = args ? args.smbios : undefined;
             resourceInputs["started"] = args ? args.started : undefined;
             resourceInputs["startup"] = args ? args.startup : undefined;
+            resourceInputs["stopOnDestroy"] = args ? args.stopOnDestroy : undefined;
             resourceInputs["tabletDevice"] = args ? args.tabletDevice : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["template"] = args ? args.template : undefined;
@@ -615,6 +621,10 @@ export interface VirtualMachineState {
      * Defines startup and shutdown behavior of the VM.
      */
     startup?: pulumi.Input<inputs.VM.VirtualMachineStartup>;
+    /**
+     * Whether to stop rather than shutdown on VM destroy (defaults to `false`)
+     */
+    stopOnDestroy?: pulumi.Input<boolean>;
     /**
      * Whether to enable the USB tablet device (defaults
      * to `true`).
@@ -827,6 +837,10 @@ export interface VirtualMachineArgs {
      * Defines startup and shutdown behavior of the VM.
      */
     startup?: pulumi.Input<inputs.VM.VirtualMachineStartup>;
+    /**
+     * Whether to stop rather than shutdown on VM destroy (defaults to `false`)
+     */
+    stopOnDestroy?: pulumi.Input<boolean>;
     /**
      * Whether to enable the USB tablet device (defaults
      * to `true`).

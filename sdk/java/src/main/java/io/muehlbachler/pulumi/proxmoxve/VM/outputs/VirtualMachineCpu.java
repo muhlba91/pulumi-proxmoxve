@@ -58,6 +58,11 @@ public final class VirtualMachineCpu {
      */
     private @Nullable Integer hotplugged;
     /**
+     * @return Limit of CPU usage, `0...128`. (defaults to `0` -- no limit).
+     * 
+     */
+    private @Nullable Integer limit;
+    /**
      * @return Enable/disable NUMA. (default to `false`)
      * 
      */
@@ -131,6 +136,13 @@ public final class VirtualMachineCpu {
         return Optional.ofNullable(this.hotplugged);
     }
     /**
+     * @return Limit of CPU usage, `0...128`. (defaults to `0` -- no limit).
+     * 
+     */
+    public Optional<Integer> limit() {
+        return Optional.ofNullable(this.limit);
+    }
+    /**
      * @return Enable/disable NUMA. (default to `false`)
      * 
      */
@@ -172,6 +184,7 @@ public final class VirtualMachineCpu {
         private @Nullable Integer cores;
         private @Nullable List<String> flags;
         private @Nullable Integer hotplugged;
+        private @Nullable Integer limit;
         private @Nullable Boolean numa;
         private @Nullable Integer sockets;
         private @Nullable String type;
@@ -183,6 +196,7 @@ public final class VirtualMachineCpu {
     	      this.cores = defaults.cores;
     	      this.flags = defaults.flags;
     	      this.hotplugged = defaults.hotplugged;
+    	      this.limit = defaults.limit;
     	      this.numa = defaults.numa;
     	      this.sockets = defaults.sockets;
     	      this.type = defaults.type;
@@ -213,6 +227,11 @@ public final class VirtualMachineCpu {
             return this;
         }
         @CustomType.Setter
+        public Builder limit(@Nullable Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+        @CustomType.Setter
         public Builder numa(@Nullable Boolean numa) {
             this.numa = numa;
             return this;
@@ -238,6 +257,7 @@ public final class VirtualMachineCpu {
             _resultValue.cores = cores;
             _resultValue.flags = flags;
             _resultValue.hotplugged = hotplugged;
+            _resultValue.limit = limit;
             _resultValue.numa = numa;
             _resultValue.sockets = sockets;
             _resultValue.type = type;

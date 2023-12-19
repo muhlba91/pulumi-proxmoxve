@@ -725,6 +725,9 @@ export namespace VM {
          * cloud-init disk in (defaults to `local-lvm`).
          */
         datastoreId?: string;
+        /**
+         * Full or linked clone (defaults to `true`).
+         */
         full?: boolean;
         /**
          * The name of the node to assign the virtual machine
@@ -783,6 +786,10 @@ export namespace VM {
          * to `0`).
          */
         hotplugged?: number;
+        /**
+         * Limit of CPU usage, `0...128`. (defaults to `0` -- no limit).
+         */
+        limit?: number;
         /**
          * Enable/disable NUMA. (default to `false`)
          */

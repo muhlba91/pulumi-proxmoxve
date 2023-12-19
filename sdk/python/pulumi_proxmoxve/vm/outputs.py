@@ -251,6 +251,7 @@ class VirtualMachineClone(dict):
         :param int vm_id: The VM identifier.
         :param str datastore_id: The identifier for the datastore to create the
                cloud-init disk in (defaults to `local-lvm`).
+        :param bool full: Full or linked clone (defaults to `true`).
         :param str node_name: The name of the node to assign the virtual machine
                to.
         :param int retries: Number of retries in Proxmox for clone vm.
@@ -287,6 +288,9 @@ class VirtualMachineClone(dict):
     @property
     @pulumi.getter
     def full(self) -> Optional[bool]:
+        """
+        Full or linked clone (defaults to `true`).
+        """
         return pulumi.get(self, "full")
 
     @property
@@ -316,6 +320,7 @@ class VirtualMachineCpu(dict):
                  cores: Optional[int] = None,
                  flags: Optional[Sequence[str]] = None,
                  hotplugged: Optional[int] = None,
+                 limit: Optional[int] = None,
                  numa: Optional[bool] = None,
                  sockets: Optional[int] = None,
                  type: Optional[str] = None,
@@ -348,6 +353,7 @@ class VirtualMachineCpu(dict):
                protection for AMD models.
         :param int hotplugged: The number of hotplugged vCPUs (defaults
                to `0`).
+        :param int limit: Limit of CPU usage, `0...128`. (defaults to `0` -- no limit).
         :param bool numa: Enable/disable NUMA. (default to `false`)
         :param int sockets: The number of CPU sockets (defaults to `1`).
         :param str type: The VGA type (defaults to `std`).
@@ -361,6 +367,8 @@ class VirtualMachineCpu(dict):
             pulumi.set(__self__, "flags", flags)
         if hotplugged is not None:
             pulumi.set(__self__, "hotplugged", hotplugged)
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
         if numa is not None:
             pulumi.set(__self__, "numa", numa)
         if sockets is not None:
@@ -424,6 +432,14 @@ class VirtualMachineCpu(dict):
         to `0`).
         """
         return pulumi.get(self, "hotplugged")
+
+    @property
+    @pulumi.getter
+    def limit(self) -> Optional[int]:
+        """
+        Limit of CPU usage, `0...128`. (defaults to `0` -- no limit).
+        """
+        return pulumi.get(self, "limit")
 
     @property
     @pulumi.getter

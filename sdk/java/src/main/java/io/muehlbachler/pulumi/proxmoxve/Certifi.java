@@ -21,6 +21,7 @@ import javax.annotation.Nullable;
  * Manages the custom SSL/TLS certificate for a specific node.
  * 
  * ## Example Usage
+ * 
  * ```java
  * package generated_program;
  * 

@@ -342,35 +342,6 @@ class Certifi(pulumi.CustomResource):
         """
         Manages the custom SSL/TLS certificate for a specific node.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-        import pulumi_tls as tls
-
-        proxmox_virtual_environment_certificate_private_key = tls.PrivateKey("proxmoxVirtualEnvironmentCertificatePrivateKey",
-            algorithm="RSA",
-            rsa_bits=2048)
-        proxmox_virtual_environment_certificate_self_signed_cert = tls.SelfSignedCert("proxmoxVirtualEnvironmentCertificateSelfSignedCert",
-            key_algorithm=proxmox_virtual_environment_certificate_private_key.algorithm,
-            private_key_pem=proxmox_virtual_environment_certificate_private_key.private_key_pem,
-            subject=tls.SelfSignedCertSubjectArgs(
-                common_name="example.com",
-                organization="Terraform Provider for Proxmox",
-            ),
-            validity_period_hours=8760,
-            allowed_uses=[
-                "key_encipherment",
-                "digital_signature",
-                "server_auth",
-            ])
-        example = proxmoxve.Certifi("example",
-            certificate=proxmox_virtual_environment_certificate_self_signed_cert.cert_pem,
-            node_name="first-node",
-            private_key=proxmox_virtual_environment_certificate_private_key.private_key_pem)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate: The PEM encoded certificate.
@@ -387,35 +358,6 @@ class Certifi(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages the custom SSL/TLS certificate for a specific node.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-        import pulumi_tls as tls
-
-        proxmox_virtual_environment_certificate_private_key = tls.PrivateKey("proxmoxVirtualEnvironmentCertificatePrivateKey",
-            algorithm="RSA",
-            rsa_bits=2048)
-        proxmox_virtual_environment_certificate_self_signed_cert = tls.SelfSignedCert("proxmoxVirtualEnvironmentCertificateSelfSignedCert",
-            key_algorithm=proxmox_virtual_environment_certificate_private_key.algorithm,
-            private_key_pem=proxmox_virtual_environment_certificate_private_key.private_key_pem,
-            subject=tls.SelfSignedCertSubjectArgs(
-                common_name="example.com",
-                organization="Terraform Provider for Proxmox",
-            ),
-            validity_period_hours=8760,
-            allowed_uses=[
-                "key_encipherment",
-                "digital_signature",
-                "server_auth",
-            ])
-        example = proxmoxve.Certifi("example",
-            certificate=proxmox_virtual_environment_certificate_self_signed_cert.cert_pem,
-            node_name="first-node",
-            private_key=proxmox_virtual_environment_certificate_private_key.private_key_pem)
-        ```
 
         :param str resource_name: The name of the resource.
         :param CertifiArgs args: The arguments to use to populate this resource's properties.

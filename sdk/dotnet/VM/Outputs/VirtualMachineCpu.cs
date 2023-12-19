@@ -53,6 +53,10 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly int? Hotplugged;
         /// <summary>
+        /// Limit of CPU usage, `0...128`. (defaults to `0` -- no limit).
+        /// </summary>
+        public readonly int? Limit;
+        /// <summary>
         /// Enable/disable NUMA. (default to `false`)
         /// </summary>
         public readonly bool? Numa;
@@ -79,6 +83,8 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
 
             int? hotplugged,
 
+            int? limit,
+
             bool? numa,
 
             int? sockets,
@@ -91,6 +97,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
             Cores = cores;
             Flags = flags;
             Hotplugged = hotplugged;
+            Limit = limit;
             Numa = numa;
             Sockets = sockets;
             Type = type;
