@@ -11,7 +11,7 @@ replace (
 
 require (
 	github.com/bpg/terraform-provider-proxmox v0.41.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.68.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.69.0
 	github.com/pulumi/pulumi/sdk/v3 v3.98.0
 )
 
@@ -189,7 +189,7 @@ require (
 	github.com/pulumi/pulumi-java/pkg v0.9.8 // indirect
 	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.6 // indirect
 	github.com/pulumi/pulumi-yaml v1.4.3 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.97.0 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.98.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
@@ -225,7 +225,7 @@ require (
 	go.uber.org/atomic v1.11.0 // indirect
 	gocloud.dev v0.33.0 // indirect
 	gocloud.dev/secrets/hashivault v0.33.0 // indirect
-	golang.org/x/crypto v0.16.0 // indirect
+	golang.org/x/crypto v0.17.0 // indirect
 	golang.org/x/exp v0.0.0-20231110203233-9a3e6036ecaa // indirect
 	golang.org/x/mod v0.14.0 // indirect
 	golang.org/x/net v0.18.0 // indirect
