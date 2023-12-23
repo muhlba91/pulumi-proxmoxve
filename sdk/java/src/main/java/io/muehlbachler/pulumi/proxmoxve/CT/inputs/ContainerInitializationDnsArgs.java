@@ -6,6 +6,7 @@ package io.muehlbachler.pulumi.proxmoxve.CT.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -31,18 +32,41 @@ public final class ContainerInitializationDnsArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The DNS server.
+     * The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+     * 
+     * @deprecated
+     * The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
      * 
      */
+    @Deprecated /* The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead. */
     @Import(name="server")
     private @Nullable Output<String> server;
 
     /**
-     * @return The DNS server.
+     * @return The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+     * 
+     * @deprecated
+     * The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
      * 
      */
+    @Deprecated /* The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead. */
     public Optional<Output<String>> server() {
         return Optional.ofNullable(this.server);
+    }
+
+    /**
+     * The list of DNS servers.
+     * 
+     */
+    @Import(name="servers")
+    private @Nullable Output<List<String>> servers;
+
+    /**
+     * @return The list of DNS servers.
+     * 
+     */
+    public Optional<Output<List<String>>> servers() {
+        return Optional.ofNullable(this.servers);
     }
 
     private ContainerInitializationDnsArgs() {}
@@ -50,6 +74,7 @@ public final class ContainerInitializationDnsArgs extends com.pulumi.resources.R
     private ContainerInitializationDnsArgs(ContainerInitializationDnsArgs $) {
         this.domain = $.domain;
         this.server = $.server;
+        this.servers = $.servers;
     }
 
     public static Builder builder() {
@@ -92,24 +117,63 @@ public final class ContainerInitializationDnsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param server The DNS server.
+         * @param server The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+         * 
          */
+        @Deprecated /* The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead. */
         public Builder server(@Nullable Output<String> server) {
             $.server = server;
             return this;
         }
 
         /**
-         * @param server The DNS server.
+         * @param server The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+         * 
+         */
+        @Deprecated /* The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead. */
+        public Builder server(String server) {
+            return server(Output.of(server));
+        }
+
+        /**
+         * @param servers The list of DNS servers.
          * 
          * @return builder
          * 
          */
-        public Builder server(String server) {
-            return server(Output.of(server));
+        public Builder servers(@Nullable Output<List<String>> servers) {
+            $.servers = servers;
+            return this;
+        }
+
+        /**
+         * @param servers The list of DNS servers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder servers(List<String> servers) {
+            return servers(Output.of(servers));
+        }
+
+        /**
+         * @param servers The list of DNS servers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder servers(String... servers) {
+            return servers(List.of(servers));
         }
 
         public ContainerInitializationDnsArgs build() {

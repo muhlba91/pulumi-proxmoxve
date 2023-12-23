@@ -2394,8 +2394,12 @@ func (o VirtualMachineInitializationPtrOutput) VendorDataFileId() pulumi.StringP
 type VirtualMachineInitializationDns struct {
 	// The DNS search domain.
 	Domain *string `pulumi:"domain"`
-	// The DNS server.
+	// The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+	//
+	// Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
 	Server *string `pulumi:"server"`
+	// The list of DNS servers.
+	Servers []string `pulumi:"servers"`
 }
 
 // VirtualMachineInitializationDnsInput is an input type that accepts VirtualMachineInitializationDnsArgs and VirtualMachineInitializationDnsOutput values.
@@ -2412,8 +2416,12 @@ type VirtualMachineInitializationDnsInput interface {
 type VirtualMachineInitializationDnsArgs struct {
 	// The DNS search domain.
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
-	// The DNS server.
+	// The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+	//
+	// Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
 	Server pulumi.StringPtrInput `pulumi:"server"`
+	// The list of DNS servers.
+	Servers pulumi.StringArrayInput `pulumi:"servers"`
 }
 
 func (VirtualMachineInitializationDnsArgs) ElementType() reflect.Type {
@@ -2498,9 +2506,16 @@ func (o VirtualMachineInitializationDnsOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationDns) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
-// The DNS server.
+// The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+//
+// Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
 func (o VirtualMachineInitializationDnsOutput) Server() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationDns) *string { return v.Server }).(pulumi.StringPtrOutput)
+}
+
+// The list of DNS servers.
+func (o VirtualMachineInitializationDnsOutput) Servers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VirtualMachineInitializationDns) []string { return v.Servers }).(pulumi.StringArrayOutput)
 }
 
 type VirtualMachineInitializationDnsPtrOutput struct{ *pulumi.OutputState }
@@ -2537,7 +2552,9 @@ func (o VirtualMachineInitializationDnsPtrOutput) Domain() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The DNS server.
+// The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+//
+// Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
 func (o VirtualMachineInitializationDnsPtrOutput) Server() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineInitializationDns) *string {
 		if v == nil {
@@ -2545,6 +2562,16 @@ func (o VirtualMachineInitializationDnsPtrOutput) Server() pulumi.StringPtrOutpu
 		}
 		return v.Server
 	}).(pulumi.StringPtrOutput)
+}
+
+// The list of DNS servers.
+func (o VirtualMachineInitializationDnsPtrOutput) Servers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VirtualMachineInitializationDns) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Servers
+	}).(pulumi.StringArrayOutput)
 }
 
 type VirtualMachineInitializationIpConfig struct {

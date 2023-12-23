@@ -1144,15 +1144,19 @@ class VirtualMachineInitialization(dict):
 class VirtualMachineInitializationDns(dict):
     def __init__(__self__, *,
                  domain: Optional[str] = None,
-                 server: Optional[str] = None):
+                 server: Optional[str] = None,
+                 servers: Optional[Sequence[str]] = None):
         """
         :param str domain: The DNS search domain.
-        :param str server: The DNS server.
+        :param str server: The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+        :param Sequence[str] servers: The list of DNS servers.
         """
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if server is not None:
             pulumi.set(__self__, "server", server)
+        if servers is not None:
+            pulumi.set(__self__, "servers", servers)
 
     @property
     @pulumi.getter
@@ -1166,9 +1170,20 @@ class VirtualMachineInitializationDns(dict):
     @pulumi.getter
     def server(self) -> Optional[str]:
         """
-        The DNS server.
+        The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
         """
+        warnings.warn("""The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.""", DeprecationWarning)
+        pulumi.log.warn("""server is deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.""")
+
         return pulumi.get(self, "server")
+
+    @property
+    @pulumi.getter
+    def servers(self) -> Optional[Sequence[str]]:
+        """
+        The list of DNS servers.
+        """
+        return pulumi.get(self, "servers")
 
 
 @pulumi.output_type

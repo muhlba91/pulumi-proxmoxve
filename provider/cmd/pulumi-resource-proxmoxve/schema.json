@@ -230,7 +230,15 @@
                 },
                 "server": {
                     "type": "string",
-                    "description": "The DNS server.\n"
+                    "description": "The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.\n",
+                    "deprecationMessage": "The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead."
+                },
+                "servers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of DNS servers.\n"
                 }
             },
             "type": "object"
@@ -1165,7 +1173,15 @@
                 },
                 "server": {
                     "type": "string",
-                    "description": "The DNS server.\n"
+                    "description": "The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.\n",
+                    "deprecationMessage": "The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead."
+                },
+                "servers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of DNS servers.\n"
                 }
             },
             "type": "object"

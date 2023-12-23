@@ -138,9 +138,15 @@ export namespace CT {
          */
         domain?: pulumi.Input<string>;
         /**
-         * The DNS server.
+         * The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+         *
+         * @deprecated The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
          */
         server?: pulumi.Input<string>;
+        /**
+         * The list of DNS servers.
+         */
+        servers?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface ContainerInitializationIpConfig {
@@ -945,9 +951,15 @@ export namespace VM {
          */
         domain?: pulumi.Input<string>;
         /**
-         * The DNS server.
+         * The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+         *
+         * @deprecated The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
          */
         server?: pulumi.Input<string>;
+        /**
+         * The list of DNS servers.
+         */
+        servers?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface VirtualMachineInitializationIpConfig {

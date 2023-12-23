@@ -1239,15 +1239,22 @@ class VirtualMachineInitializationArgs:
 class VirtualMachineInitializationDnsArgs:
     def __init__(__self__, *,
                  domain: Optional[pulumi.Input[str]] = None,
-                 server: Optional[pulumi.Input[str]] = None):
+                 server: Optional[pulumi.Input[str]] = None,
+                 servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] domain: The DNS search domain.
-        :param pulumi.Input[str] server: The DNS server.
+        :param pulumi.Input[str] server: The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] servers: The list of DNS servers.
         """
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if server is not None:
+            warnings.warn("""The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.""", DeprecationWarning)
+            pulumi.log.warn("""server is deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.""")
+        if server is not None:
             pulumi.set(__self__, "server", server)
+        if servers is not None:
+            pulumi.set(__self__, "servers", servers)
 
     @property
     @pulumi.getter
@@ -1265,13 +1272,28 @@ class VirtualMachineInitializationDnsArgs:
     @pulumi.getter
     def server(self) -> Optional[pulumi.Input[str]]:
         """
-        The DNS server.
+        The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
         """
+        warnings.warn("""The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.""", DeprecationWarning)
+        pulumi.log.warn("""server is deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.""")
+
         return pulumi.get(self, "server")
 
     @server.setter
     def server(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "server", value)
+
+    @property
+    @pulumi.getter
+    def servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of DNS servers.
+        """
+        return pulumi.get(self, "servers")
+
+    @servers.setter
+    def servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "servers", value)
 
 
 @pulumi.input_type

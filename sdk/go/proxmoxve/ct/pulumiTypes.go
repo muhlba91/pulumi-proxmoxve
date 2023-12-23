@@ -1117,8 +1117,12 @@ func (o ContainerInitializationPtrOutput) UserAccount() ContainerInitializationU
 type ContainerInitializationDns struct {
 	// The DNS search domain.
 	Domain *string `pulumi:"domain"`
-	// The DNS server.
+	// The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+	//
+	// Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
 	Server *string `pulumi:"server"`
+	// The list of DNS servers.
+	Servers []string `pulumi:"servers"`
 }
 
 // ContainerInitializationDnsInput is an input type that accepts ContainerInitializationDnsArgs and ContainerInitializationDnsOutput values.
@@ -1135,8 +1139,12 @@ type ContainerInitializationDnsInput interface {
 type ContainerInitializationDnsArgs struct {
 	// The DNS search domain.
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
-	// The DNS server.
+	// The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+	//
+	// Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
 	Server pulumi.StringPtrInput `pulumi:"server"`
+	// The list of DNS servers.
+	Servers pulumi.StringArrayInput `pulumi:"servers"`
 }
 
 func (ContainerInitializationDnsArgs) ElementType() reflect.Type {
@@ -1221,9 +1229,16 @@ func (o ContainerInitializationDnsOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerInitializationDns) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
-// The DNS server.
+// The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+//
+// Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
 func (o ContainerInitializationDnsOutput) Server() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerInitializationDns) *string { return v.Server }).(pulumi.StringPtrOutput)
+}
+
+// The list of DNS servers.
+func (o ContainerInitializationDnsOutput) Servers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ContainerInitializationDns) []string { return v.Servers }).(pulumi.StringArrayOutput)
 }
 
 type ContainerInitializationDnsPtrOutput struct{ *pulumi.OutputState }
@@ -1260,7 +1275,9 @@ func (o ContainerInitializationDnsPtrOutput) Domain() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The DNS server.
+// The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+//
+// Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
 func (o ContainerInitializationDnsPtrOutput) Server() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerInitializationDns) *string {
 		if v == nil {
@@ -1268,6 +1285,16 @@ func (o ContainerInitializationDnsPtrOutput) Server() pulumi.StringPtrOutput {
 		}
 		return v.Server
 	}).(pulumi.StringPtrOutput)
+}
+
+// The list of DNS servers.
+func (o ContainerInitializationDnsPtrOutput) Servers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ContainerInitializationDns) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Servers
+	}).(pulumi.StringArrayOutput)
 }
 
 type ContainerInitializationIpConfig struct {

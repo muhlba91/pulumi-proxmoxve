@@ -133,9 +133,15 @@ export namespace CT {
          */
         domain?: string;
         /**
-         * The DNS server.
+         * The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+         *
+         * @deprecated The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
          */
         server?: string;
+        /**
+         * The list of DNS servers.
+         */
+        servers?: string[];
     }
 
     export interface ContainerInitializationIpConfig {
@@ -1017,9 +1023,15 @@ export namespace VM {
          */
         domain?: string;
         /**
-         * The DNS server.
+         * The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+         *
+         * @deprecated The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
          */
         server?: string;
+        /**
+         * The list of DNS servers.
+         */
+        servers?: string[];
     }
 
     export interface VirtualMachineInitializationIpConfig {
