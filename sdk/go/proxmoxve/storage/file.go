@@ -49,6 +49,8 @@ import (
 // ```
 // ### Images
 //
+// **Consider using `proxmoxEnvironmentDownloadFile` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.**
+//
 // ```go
 // package main
 //
@@ -78,6 +80,8 @@ import (
 //
 // ```
 // ### Container Template (`vztmpl`)
+//
+// **Consider using `proxmoxEnvironmentDownloadFile` resource instead. Using this resource for container images is less efficient (requires to transfer uploaded image to node) though still supported.**
 //
 // ```go
 // package main

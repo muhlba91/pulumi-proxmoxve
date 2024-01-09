@@ -370,6 +370,8 @@ class File(pulumi.CustomResource):
         ```
         ### Images
 
+        **Consider using `proxmox_environment_download_file` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.**
+
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -383,6 +385,8 @@ class File(pulumi.CustomResource):
             ))
         ```
         ### Container Template (`vztmpl`)
+
+        **Consider using `proxmox_environment_download_file` resource instead. Using this resource for container images is less efficient (requires to transfer uploaded image to node) though still supported.**
 
         ```python
         import pulumi
@@ -462,6 +466,8 @@ class File(pulumi.CustomResource):
         ```
         ### Images
 
+        **Consider using `proxmox_environment_download_file` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.**
+
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -475,6 +481,8 @@ class File(pulumi.CustomResource):
             ))
         ```
         ### Container Template (`vztmpl`)
+
+        **Consider using `proxmox_environment_download_file` resource instead. Using this resource for container images is less efficient (requires to transfer uploaded image to node) though still supported.**
 
         ```python
         import pulumi
