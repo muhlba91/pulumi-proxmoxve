@@ -817,6 +817,8 @@ github.com/bpg/terraform-provider-proxmox v0.43.2 h1:Wyp4KVjtz1IOG/orFLP+6qC0/LE
 github.com/bpg/terraform-provider-proxmox v0.43.2/go.mod h1:gUUCG+LScKQumLHtMeTnBORa3hCoueTb+5QUaVhITj8=
 github.com/bpg/terraform-provider-proxmox v0.43.3 h1:j6JNvZj5iEWznuD7J24iqycJOc4asXZGIkhfmIQ5Z+Q=
 github.com/bpg/terraform-provider-proxmox v0.43.3/go.mod h1:DO0PM/8BWBE/UU7Rtj8R7i/FMfvM2ykwD8BfpLooKok=
+github.com/bpg/terraform-provider-proxmox v0.44.0 h1:WgGZExOuyxe9HTXyGGrgG/1DfbqKbjKkayxZEK36MTk=
+github.com/bpg/terraform-provider-proxmox v0.44.0/go.mod h1:0T4VNgJvxuOwbO+N2momLkq+hFhYZjRY1uWpy7s9dDM=
 github.com/bufbuild/protocompile v0.4.0/go.mod h1:3v93+mbWn/v3xzN+31nwkJfrEpAUwp+BagBSZWx+TP8=
 github.com/bwesterb/go-ristretto v1.2.3/go.mod h1:fUIoIZaG73pV5biE2Blr2xEzDoMj7NFEuV9ekS419A0=
 github.com/cenkalti/backoff/v3 v3.2.2 h1:cfUAAO3yvKMYKPrvhDuHSwQnhZNk/RMHKdZqKTxfm6M=
@@ -1779,6 +1781,8 @@ golang.org/x/exp v0.0.0-20231110203233-9a3e6036ecaa h1:FRnLl4eNAQl8hwxVVC17teOw8
 golang.org/x/exp v0.0.0-20231110203233-9a3e6036ecaa/go.mod h1:zk2irFbV9DP96SEBUUAy67IdHUaZuSnrz1n472HUCLE=
 golang.org/x/exp v0.0.0-20240112132812-db7319d0e0e3 h1:hNQpMuAJe5CtcUqCXaWga3FHu+kQvCqcsoVaQgSV60o=
 golang.org/x/exp v0.0.0-20240112132812-db7319d0e0e3/go.mod h1:idGWGoKP1toJGkd5/ig9ZLuPcZBC3ewk7SzmH0uou08=
+golang.org/x/exp v0.0.0-20240119083558-1b970713d09a h1:Q8/wZp0KX97QFTc2ywcOE0YRjZPVIx+MXInMzdvQqcA=
+golang.org/x/exp v0.0.0-20240119083558-1b970713d09a/go.mod h1:idGWGoKP1toJGkd5/ig9ZLuPcZBC3ewk7SzmH0uou08=
 golang.org/x/image v0.0.0-20180708004352-c73c2afc3b81/go.mod h1:ux5Hcp/YLpHSI86hEcLt0YII63i6oz57MZXIpbrjZUs=
 golang.org/x/image v0.0.0-20190227222117-0694c2d4d067/go.mod h1:kZ7UVZpmo3dzQBMxlp+ypCbDeSB+sBbTgSJuh5dn5js=
 golang.org/x/image v0.0.0-20190802002840-cff245a6509b/go.mod h1:FeLwcggjj3mMvU+oOTbSwawSJRM1uh48EjtB4UJZlP0=

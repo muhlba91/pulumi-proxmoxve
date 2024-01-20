@@ -10,7 +10,7 @@ replace (
 )
 
 require (
-	github.com/bpg/terraform-provider-proxmox v0.43.3
+	github.com/bpg/terraform-provider-proxmox v0.44.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.71.0
 	github.com/pulumi/pulumi/sdk/v3 v3.101.1
 )
@@ -226,7 +226,7 @@ require (
 	gocloud.dev v0.33.0 // indirect
 	gocloud.dev/secrets/hashivault v0.33.0 // indirect
 	golang.org/x/crypto v0.18.0 // indirect
-	golang.org/x/exp v0.0.0-20240112132812-db7319d0e0e3 // indirect
+	golang.org/x/exp v0.0.0-20240119083558-1b970713d09a // indirect
 	golang.org/x/mod v0.14.0 // indirect
 	golang.org/x/net v0.20.0 // indirect
 	golang.org/x/oauth2 v0.13.0 // indirect
