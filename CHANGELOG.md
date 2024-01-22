@@ -1,6 +1,26 @@
 # Changelog
 
 
+## [5.22.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.21.0...v5.22.0) (2024-01-22)
+
+
+### Features
+
+* **deps:** prepare for upstream release 0.45.0 ([88033e9](https://github.com/muhlba91/pulumi-proxmoxve/commit/88033e942411b17974a7eb85bd569a99c8191da8))
+
+
+### Miscellaneous Chores
+
+* **deps:** update anchore/sbom-action action to v0.15.4 ([fb7aa6e](https://github.com/muhlba91/pulumi-proxmoxve/commit/fb7aa6e13473480fa069f366f28a0c2ac8e33e56))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.43.1 ([17349ab](https://github.com/muhlba91/pulumi-proxmoxve/commit/17349ab803b57ab6af4bfd6edceeb198339f6e0e))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.43.2 ([f1d28e2](https://github.com/muhlba91/pulumi-proxmoxve/commit/f1d28e20ccfa7d7fbec375f30a72a6447fd77a42))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.43.3 ([066f807](https://github.com/muhlba91/pulumi-proxmoxve/commit/066f807d4b926eb13fd8d9a75b6e8488aaf03a70))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.44.0 ([720118e](https://github.com/muhlba91/pulumi-proxmoxve/commit/720118e6fa72cd0a6b0b60d148dbde014d28d36b))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.45.0 ([8a222d8](https://github.com/muhlba91/pulumi-proxmoxve/commit/8a222d8b0c7300199f21613c5a438f8adae122db))
+* **deps:** update module github.com/pulumi/pulumi-terraform-bridge/v3 to v3.71.0 ([122c651](https://github.com/muhlba91/pulumi-proxmoxve/commit/122c65182b931b827a9b912aec08061bf7fec651))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.101.0 ([14d0223](https://github.com/muhlba91/pulumi-proxmoxve/commit/14d02234c9f3e507944e9c1932fb7308ab27a7eb))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.101.1 ([8db81f8](https://github.com/muhlba91/pulumi-proxmoxve/commit/8db81f8cbd83d0cec5ff4fdf3431845213d39c2c))
+
 ## [5.21.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.20.0...v5.21.0) (2024-01-09)
 
 
