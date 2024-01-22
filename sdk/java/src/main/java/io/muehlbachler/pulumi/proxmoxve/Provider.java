@@ -52,6 +52,20 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.endpoint);
     }
     /**
+     * The minimum required TLS version for API calls.Supported values: `1.0|1.1|1.2|1.3`. Defaults to `1.3`.
+     * 
+     */
+    @Export(name="minTls", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> minTls;
+
+    /**
+     * @return The minimum required TLS version for API calls.Supported values: `1.0|1.1|1.2|1.3`. Defaults to `1.3`.
+     * 
+     */
+    public Output<Optional<String>> minTls() {
+        return Codegen.optional(this.minTls);
+    }
+    /**
      * The one-time password for the Proxmox VE API.
      * 
      * @deprecated

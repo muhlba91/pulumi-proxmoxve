@@ -115,6 +115,12 @@ namespace Pulumi.ProxmoxVE.CT
         public Output<bool?> Started { get; private set; } = null!;
 
         /// <summary>
+        /// Defines startup and shutdown behavior of the container.
+        /// </summary>
+        [Output("startup")]
+        public Output<Outputs.ContainerStartup?> Startup { get; private set; } = null!;
+
+        /// <summary>
         /// A list of tags the container tags. This is only meta
         /// information (defaults to `[]`). Note: Proxmox always sorts the container tags.
         /// If the list in template is not sorted, then Proxmox will always report a
@@ -293,6 +299,12 @@ namespace Pulumi.ProxmoxVE.CT
         [Input("started")]
         public Input<bool>? Started { get; set; }
 
+        /// <summary>
+        /// Defines startup and shutdown behavior of the container.
+        /// </summary>
+        [Input("startup")]
+        public Input<Inputs.ContainerStartupArgs>? Startup { get; set; }
+
         [Input("tags")]
         private InputList<string>? _tags;
 
@@ -438,6 +450,12 @@ namespace Pulumi.ProxmoxVE.CT
         /// </summary>
         [Input("started")]
         public Input<bool>? Started { get; set; }
+
+        /// <summary>
+        /// Defines startup and shutdown behavior of the container.
+        /// </summary>
+        [Input("startup")]
+        public Input<Inputs.ContainerStartupGetArgs>? Startup { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;

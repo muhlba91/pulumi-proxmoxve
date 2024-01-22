@@ -31,6 +31,7 @@ class ContainerArgs:
                  pool_id: Optional[pulumi.Input[str]] = None,
                  start_on_boot: Optional[pulumi.Input[bool]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
+                 startup: Optional[pulumi.Input['ContainerStartupArgs']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
                  unprivileged: Optional[pulumi.Input[bool]] = None,
@@ -53,6 +54,7 @@ class ContainerArgs:
         :param pulumi.Input[str] pool_id: The identifier for a pool to assign the container to.
         :param pulumi.Input[bool] start_on_boot: Automatically start container when the host system boots (defaults to `true`).
         :param pulumi.Input[bool] started: Whether to start the container (defaults to `true`).
+        :param pulumi.Input['ContainerStartupArgs'] startup: Defines startup and shutdown behavior of the container.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags the container tags. This is only meta
                information (defaults to `[]`). Note: Proxmox always sorts the container tags.
                If the list in template is not sorted, then Proxmox will always report a
@@ -92,6 +94,8 @@ class ContainerArgs:
             pulumi.set(__self__, "start_on_boot", start_on_boot)
         if started is not None:
             pulumi.set(__self__, "started", started)
+        if startup is not None:
+            pulumi.set(__self__, "startup", startup)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if template is not None:
@@ -284,6 +288,18 @@ class ContainerArgs:
 
     @property
     @pulumi.getter
+    def startup(self) -> Optional[pulumi.Input['ContainerStartupArgs']]:
+        """
+        Defines startup and shutdown behavior of the container.
+        """
+        return pulumi.get(self, "startup")
+
+    @startup.setter
+    def startup(self, value: Optional[pulumi.Input['ContainerStartupArgs']]):
+        pulumi.set(self, "startup", value)
+
+    @property
+    @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of tags the container tags. This is only meta
@@ -354,6 +370,7 @@ class _ContainerState:
                  pool_id: Optional[pulumi.Input[str]] = None,
                  start_on_boot: Optional[pulumi.Input[bool]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
+                 startup: Optional[pulumi.Input['ContainerStartupArgs']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
                  unprivileged: Optional[pulumi.Input[bool]] = None,
@@ -376,6 +393,7 @@ class _ContainerState:
         :param pulumi.Input[str] pool_id: The identifier for a pool to assign the container to.
         :param pulumi.Input[bool] start_on_boot: Automatically start container when the host system boots (defaults to `true`).
         :param pulumi.Input[bool] started: Whether to start the container (defaults to `true`).
+        :param pulumi.Input['ContainerStartupArgs'] startup: Defines startup and shutdown behavior of the container.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags the container tags. This is only meta
                information (defaults to `[]`). Note: Proxmox always sorts the container tags.
                If the list in template is not sorted, then Proxmox will always report a
@@ -416,6 +434,8 @@ class _ContainerState:
             pulumi.set(__self__, "start_on_boot", start_on_boot)
         if started is not None:
             pulumi.set(__self__, "started", started)
+        if startup is not None:
+            pulumi.set(__self__, "startup", startup)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if template is not None:
@@ -608,6 +628,18 @@ class _ContainerState:
 
     @property
     @pulumi.getter
+    def startup(self) -> Optional[pulumi.Input['ContainerStartupArgs']]:
+        """
+        Defines startup and shutdown behavior of the container.
+        """
+        return pulumi.get(self, "startup")
+
+    @startup.setter
+    def startup(self, value: Optional[pulumi.Input['ContainerStartupArgs']]):
+        pulumi.set(self, "startup", value)
+
+    @property
+    @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of tags the container tags. This is only meta
@@ -680,6 +712,7 @@ class Container(pulumi.CustomResource):
                  pool_id: Optional[pulumi.Input[str]] = None,
                  start_on_boot: Optional[pulumi.Input[bool]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
+                 startup: Optional[pulumi.Input[pulumi.InputType['ContainerStartupArgs']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
                  unprivileged: Optional[pulumi.Input[bool]] = None,
@@ -714,6 +747,7 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[str] pool_id: The identifier for a pool to assign the container to.
         :param pulumi.Input[bool] start_on_boot: Automatically start container when the host system boots (defaults to `true`).
         :param pulumi.Input[bool] started: Whether to start the container (defaults to `true`).
+        :param pulumi.Input[pulumi.InputType['ContainerStartupArgs']] startup: Defines startup and shutdown behavior of the container.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags the container tags. This is only meta
                information (defaults to `[]`). Note: Proxmox always sorts the container tags.
                If the list in template is not sorted, then Proxmox will always report a
@@ -771,6 +805,7 @@ class Container(pulumi.CustomResource):
                  pool_id: Optional[pulumi.Input[str]] = None,
                  start_on_boot: Optional[pulumi.Input[bool]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
+                 startup: Optional[pulumi.Input[pulumi.InputType['ContainerStartupArgs']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
                  unprivileged: Optional[pulumi.Input[bool]] = None,
@@ -801,6 +836,7 @@ class Container(pulumi.CustomResource):
             __props__.__dict__["pool_id"] = pool_id
             __props__.__dict__["start_on_boot"] = start_on_boot
             __props__.__dict__["started"] = started
+            __props__.__dict__["startup"] = startup
             __props__.__dict__["tags"] = tags
             __props__.__dict__["template"] = template
             __props__.__dict__["unprivileged"] = unprivileged
@@ -830,6 +866,7 @@ class Container(pulumi.CustomResource):
             pool_id: Optional[pulumi.Input[str]] = None,
             start_on_boot: Optional[pulumi.Input[bool]] = None,
             started: Optional[pulumi.Input[bool]] = None,
+            startup: Optional[pulumi.Input[pulumi.InputType['ContainerStartupArgs']]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             template: Optional[pulumi.Input[bool]] = None,
             unprivileged: Optional[pulumi.Input[bool]] = None,
@@ -857,6 +894,7 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[str] pool_id: The identifier for a pool to assign the container to.
         :param pulumi.Input[bool] start_on_boot: Automatically start container when the host system boots (defaults to `true`).
         :param pulumi.Input[bool] started: Whether to start the container (defaults to `true`).
+        :param pulumi.Input[pulumi.InputType['ContainerStartupArgs']] startup: Defines startup and shutdown behavior of the container.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags the container tags. This is only meta
                information (defaults to `[]`). Note: Proxmox always sorts the container tags.
                If the list in template is not sorted, then Proxmox will always report a
@@ -886,6 +924,7 @@ class Container(pulumi.CustomResource):
         __props__.__dict__["pool_id"] = pool_id
         __props__.__dict__["start_on_boot"] = start_on_boot
         __props__.__dict__["started"] = started
+        __props__.__dict__["startup"] = startup
         __props__.__dict__["tags"] = tags
         __props__.__dict__["template"] = template
         __props__.__dict__["unprivileged"] = unprivileged
@@ -1012,6 +1051,14 @@ class Container(pulumi.CustomResource):
         Whether to start the container (defaults to `true`).
         """
         return pulumi.get(self, "started")
+
+    @property
+    @pulumi.getter
+    def startup(self) -> pulumi.Output[Optional['outputs.ContainerStartup']]:
+        """
+        Defines startup and shutdown behavior of the container.
+        """
+        return pulumi.get(self, "startup")
 
     @property
     @pulumi.getter

@@ -26,6 +26,7 @@ __all__ = [
     'ContainerMountPoint',
     'ContainerNetworkInterface',
     'ContainerOperatingSystem',
+    'ContainerStartup',
 ]
 
 @pulumi.output_type
@@ -930,5 +931,61 @@ class ContainerOperatingSystem(dict):
         The type (defaults to `unmanaged`).
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class ContainerStartup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "downDelay":
+            suggest = "down_delay"
+        elif key == "upDelay":
+            suggest = "up_delay"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerStartup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerStartup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerStartup.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 down_delay: Optional[int] = None,
+                 order: Optional[int] = None,
+                 up_delay: Optional[int] = None):
+        """
+        :param int order: A non-negative number defining the general startup
+               order.
+        """
+        if down_delay is not None:
+            pulumi.set(__self__, "down_delay", down_delay)
+        if order is not None:
+            pulumi.set(__self__, "order", order)
+        if up_delay is not None:
+            pulumi.set(__self__, "up_delay", up_delay)
+
+    @property
+    @pulumi.getter(name="downDelay")
+    def down_delay(self) -> Optional[int]:
+        return pulumi.get(self, "down_delay")
+
+    @property
+    @pulumi.getter
+    def order(self) -> Optional[int]:
+        """
+        A non-negative number defining the general startup
+        order.
+        """
+        return pulumi.get(self, "order")
+
+    @property
+    @pulumi.getter(name="upDelay")
+    def up_delay(self) -> Optional[int]:
+        return pulumi.get(self, "up_delay")
 
 

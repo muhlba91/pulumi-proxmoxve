@@ -2571,6 +2571,177 @@ func (o ContainerOperatingSystemPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ContainerStartup struct {
+	DownDelay *int `pulumi:"downDelay"`
+	// A non-negative number defining the general startup
+	// order.
+	Order   *int `pulumi:"order"`
+	UpDelay *int `pulumi:"upDelay"`
+}
+
+// ContainerStartupInput is an input type that accepts ContainerStartupArgs and ContainerStartupOutput values.
+// You can construct a concrete instance of `ContainerStartupInput` via:
+//
+//	ContainerStartupArgs{...}
+type ContainerStartupInput interface {
+	pulumi.Input
+
+	ToContainerStartupOutput() ContainerStartupOutput
+	ToContainerStartupOutputWithContext(context.Context) ContainerStartupOutput
+}
+
+type ContainerStartupArgs struct {
+	DownDelay pulumi.IntPtrInput `pulumi:"downDelay"`
+	// A non-negative number defining the general startup
+	// order.
+	Order   pulumi.IntPtrInput `pulumi:"order"`
+	UpDelay pulumi.IntPtrInput `pulumi:"upDelay"`
+}
+
+func (ContainerStartupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerStartup)(nil)).Elem()
+}
+
+func (i ContainerStartupArgs) ToContainerStartupOutput() ContainerStartupOutput {
+	return i.ToContainerStartupOutputWithContext(context.Background())
+}
+
+func (i ContainerStartupArgs) ToContainerStartupOutputWithContext(ctx context.Context) ContainerStartupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerStartupOutput)
+}
+
+func (i ContainerStartupArgs) ToContainerStartupPtrOutput() ContainerStartupPtrOutput {
+	return i.ToContainerStartupPtrOutputWithContext(context.Background())
+}
+
+func (i ContainerStartupArgs) ToContainerStartupPtrOutputWithContext(ctx context.Context) ContainerStartupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerStartupOutput).ToContainerStartupPtrOutputWithContext(ctx)
+}
+
+// ContainerStartupPtrInput is an input type that accepts ContainerStartupArgs, ContainerStartupPtr and ContainerStartupPtrOutput values.
+// You can construct a concrete instance of `ContainerStartupPtrInput` via:
+//
+//	        ContainerStartupArgs{...}
+//
+//	or:
+//
+//	        nil
+type ContainerStartupPtrInput interface {
+	pulumi.Input
+
+	ToContainerStartupPtrOutput() ContainerStartupPtrOutput
+	ToContainerStartupPtrOutputWithContext(context.Context) ContainerStartupPtrOutput
+}
+
+type containerStartupPtrType ContainerStartupArgs
+
+func ContainerStartupPtr(v *ContainerStartupArgs) ContainerStartupPtrInput {
+	return (*containerStartupPtrType)(v)
+}
+
+func (*containerStartupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerStartup)(nil)).Elem()
+}
+
+func (i *containerStartupPtrType) ToContainerStartupPtrOutput() ContainerStartupPtrOutput {
+	return i.ToContainerStartupPtrOutputWithContext(context.Background())
+}
+
+func (i *containerStartupPtrType) ToContainerStartupPtrOutputWithContext(ctx context.Context) ContainerStartupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerStartupPtrOutput)
+}
+
+type ContainerStartupOutput struct{ *pulumi.OutputState }
+
+func (ContainerStartupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerStartup)(nil)).Elem()
+}
+
+func (o ContainerStartupOutput) ToContainerStartupOutput() ContainerStartupOutput {
+	return o
+}
+
+func (o ContainerStartupOutput) ToContainerStartupOutputWithContext(ctx context.Context) ContainerStartupOutput {
+	return o
+}
+
+func (o ContainerStartupOutput) ToContainerStartupPtrOutput() ContainerStartupPtrOutput {
+	return o.ToContainerStartupPtrOutputWithContext(context.Background())
+}
+
+func (o ContainerStartupOutput) ToContainerStartupPtrOutputWithContext(ctx context.Context) ContainerStartupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerStartup) *ContainerStartup {
+		return &v
+	}).(ContainerStartupPtrOutput)
+}
+
+func (o ContainerStartupOutput) DownDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ContainerStartup) *int { return v.DownDelay }).(pulumi.IntPtrOutput)
+}
+
+// A non-negative number defining the general startup
+// order.
+func (o ContainerStartupOutput) Order() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ContainerStartup) *int { return v.Order }).(pulumi.IntPtrOutput)
+}
+
+func (o ContainerStartupOutput) UpDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ContainerStartup) *int { return v.UpDelay }).(pulumi.IntPtrOutput)
+}
+
+type ContainerStartupPtrOutput struct{ *pulumi.OutputState }
+
+func (ContainerStartupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerStartup)(nil)).Elem()
+}
+
+func (o ContainerStartupPtrOutput) ToContainerStartupPtrOutput() ContainerStartupPtrOutput {
+	return o
+}
+
+func (o ContainerStartupPtrOutput) ToContainerStartupPtrOutputWithContext(ctx context.Context) ContainerStartupPtrOutput {
+	return o
+}
+
+func (o ContainerStartupPtrOutput) Elem() ContainerStartupOutput {
+	return o.ApplyT(func(v *ContainerStartup) ContainerStartup {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerStartup
+		return ret
+	}).(ContainerStartupOutput)
+}
+
+func (o ContainerStartupPtrOutput) DownDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ContainerStartup) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DownDelay
+	}).(pulumi.IntPtrOutput)
+}
+
+// A non-negative number defining the general startup
+// order.
+func (o ContainerStartupPtrOutput) Order() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ContainerStartup) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Order
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ContainerStartupPtrOutput) UpDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ContainerStartup) *int {
+		if v == nil {
+			return nil
+		}
+		return v.UpDelay
+	}).(pulumi.IntPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerCloneInput)(nil)).Elem(), ContainerCloneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerClonePtrInput)(nil)).Elem(), ContainerCloneArgs{})
@@ -2602,6 +2773,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerNetworkInterfaceArrayInput)(nil)).Elem(), ContainerNetworkInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerOperatingSystemInput)(nil)).Elem(), ContainerOperatingSystemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerOperatingSystemPtrInput)(nil)).Elem(), ContainerOperatingSystemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerStartupInput)(nil)).Elem(), ContainerStartupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerStartupPtrInput)(nil)).Elem(), ContainerStartupArgs{})
 	pulumi.RegisterOutputType(ContainerCloneOutput{})
 	pulumi.RegisterOutputType(ContainerClonePtrOutput{})
 	pulumi.RegisterOutputType(ContainerConsoleOutput{})
@@ -2632,4 +2805,6 @@ func init() {
 	pulumi.RegisterOutputType(ContainerNetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(ContainerOperatingSystemOutput{})
 	pulumi.RegisterOutputType(ContainerOperatingSystemPtrOutput{})
+	pulumi.RegisterOutputType(ContainerStartupOutput{})
+	pulumi.RegisterOutputType(ContainerStartupPtrOutput{})
 }

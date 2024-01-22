@@ -25,6 +25,11 @@ insecure: Optional[bool]
 Whether to skip the TLS verification step.
 """
 
+minTls: Optional[str]
+"""
+The minimum required TLS version for API calls.Supported values: `1.0|1.1|1.2|1.3`. Defaults to `1.3`.
+"""
+
 otp: Optional[str]
 """
 The one-time password for the Proxmox VE API.

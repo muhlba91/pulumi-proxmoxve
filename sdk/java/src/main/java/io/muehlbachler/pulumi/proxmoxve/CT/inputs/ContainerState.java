@@ -15,6 +15,7 @@ import io.muehlbachler.pulumi.proxmoxve.CT.inputs.ContainerMemoryArgs;
 import io.muehlbachler.pulumi.proxmoxve.CT.inputs.ContainerMountPointArgs;
 import io.muehlbachler.pulumi.proxmoxve.CT.inputs.ContainerNetworkInterfaceArgs;
 import io.muehlbachler.pulumi.proxmoxve.CT.inputs.ContainerOperatingSystemArgs;
+import io.muehlbachler.pulumi.proxmoxve.CT.inputs.ContainerStartupArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -256,6 +257,21 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Defines startup and shutdown behavior of the container.
+     * 
+     */
+    @Import(name="startup")
+    private @Nullable Output<ContainerStartupArgs> startup;
+
+    /**
+     * @return Defines startup and shutdown behavior of the container.
+     * 
+     */
+    public Optional<Output<ContainerStartupArgs>> startup() {
+        return Optional.ofNullable(this.startup);
+    }
+
+    /**
      * A list of tags the container tags. This is only meta
      * information (defaults to `[]`). Note: Proxmox always sorts the container tags.
      * If the list in template is not sorted, then Proxmox will always report a
@@ -343,6 +359,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         this.poolId = $.poolId;
         this.startOnBoot = $.startOnBoot;
         this.started = $.started;
+        this.startup = $.startup;
         this.tags = $.tags;
         this.template = $.template;
         this.unprivileged = $.unprivileged;
@@ -703,6 +720,27 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder started(Boolean started) {
             return started(Output.of(started));
+        }
+
+        /**
+         * @param startup Defines startup and shutdown behavior of the container.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startup(@Nullable Output<ContainerStartupArgs> startup) {
+            $.startup = startup;
+            return this;
+        }
+
+        /**
+         * @param startup Defines startup and shutdown behavior of the container.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startup(ContainerStartupArgs startup) {
+            return startup(Output.of(startup));
         }
 
         /**

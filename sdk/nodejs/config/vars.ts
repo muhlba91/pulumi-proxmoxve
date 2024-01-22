@@ -43,6 +43,17 @@ Object.defineProperty(exports, "insecure", {
 });
 
 /**
+ * The minimum required TLS version for API calls.Supported values: `1.0|1.1|1.2|1.3`. Defaults to `1.3`.
+ */
+export declare const minTls: string | undefined;
+Object.defineProperty(exports, "minTls", {
+    get() {
+        return __config.get("minTls");
+    },
+    enumerable: true,
+});
+
+/**
  * The one-time password for the Proxmox VE API.
  */
 export declare const otp: string | undefined;

@@ -28,6 +28,10 @@ namespace Pulumi.ProxmoxVE.Storage.Outputs
         /// </summary>
         public readonly bool? Insecure;
         /// <summary>
+        /// The minimum required TLS version for HTTPS sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
+        /// </summary>
+        public readonly string? MinTls;
+        /// <summary>
         /// A path to a local file or a URL.
         /// </summary>
         public readonly string Path;
@@ -42,12 +46,15 @@ namespace Pulumi.ProxmoxVE.Storage.Outputs
 
             bool? insecure,
 
+            string? minTls,
+
             string path)
         {
             Changed = changed;
             Checksum = checksum;
             FileName = fileName;
             Insecure = insecure;
+            MinTls = minTls;
             Path = path;
         }
     }

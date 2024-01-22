@@ -34,6 +34,13 @@ public final class Config {
         return Codegen.booleanProp("insecure").config(config).get();
     }
 /**
+ * The minimum required TLS version for API calls.Supported values: `1.0|1.1|1.2|1.3`. Defaults to `1.3`.
+ * 
+ */
+    public Optional<String> minTls() {
+        return Codegen.stringProp("minTls").config(config).get();
+    }
+/**
  * The one-time password for the Proxmox VE API.
  * 
  */

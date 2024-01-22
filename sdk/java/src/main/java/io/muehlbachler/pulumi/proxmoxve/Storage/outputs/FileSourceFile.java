@@ -30,6 +30,11 @@ public final class FileSourceFile {
      */
     private @Nullable Boolean insecure;
     /**
+     * @return The minimum required TLS version for HTTPS sources. &#34;Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
+     * 
+     */
+    private @Nullable String minTls;
+    /**
      * @return A path to a local file or a URL.
      * 
      */
@@ -62,6 +67,13 @@ public final class FileSourceFile {
         return Optional.ofNullable(this.insecure);
     }
     /**
+     * @return The minimum required TLS version for HTTPS sources. &#34;Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
+     * 
+     */
+    public Optional<String> minTls() {
+        return Optional.ofNullable(this.minTls);
+    }
+    /**
      * @return A path to a local file or a URL.
      * 
      */
@@ -82,6 +94,7 @@ public final class FileSourceFile {
         private @Nullable String checksum;
         private @Nullable String fileName;
         private @Nullable Boolean insecure;
+        private @Nullable String minTls;
         private String path;
         public Builder() {}
         public Builder(FileSourceFile defaults) {
@@ -90,6 +103,7 @@ public final class FileSourceFile {
     	      this.checksum = defaults.checksum;
     	      this.fileName = defaults.fileName;
     	      this.insecure = defaults.insecure;
+    	      this.minTls = defaults.minTls;
     	      this.path = defaults.path;
         }
 
@@ -114,6 +128,11 @@ public final class FileSourceFile {
             return this;
         }
         @CustomType.Setter
+        public Builder minTls(@Nullable String minTls) {
+            this.minTls = minTls;
+            return this;
+        }
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
@@ -124,6 +143,7 @@ public final class FileSourceFile {
             _resultValue.checksum = checksum;
             _resultValue.fileName = fileName;
             _resultValue.insecure = insecure;
+            _resultValue.minTls = minTls;
             _resultValue.path = path;
             return _resultValue;
         }

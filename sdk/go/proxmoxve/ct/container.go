@@ -57,6 +57,8 @@ type Container struct {
 	StartOnBoot pulumi.BoolPtrOutput `pulumi:"startOnBoot"`
 	// Whether to start the container (defaults to `true`).
 	Started pulumi.BoolPtrOutput `pulumi:"started"`
+	// Defines startup and shutdown behavior of the container.
+	Startup ContainerStartupPtrOutput `pulumi:"startup"`
 	// A list of tags the container tags. This is only meta
 	// information (defaults to `[]`). Note: Proxmox always sorts the container tags.
 	// If the list in template is not sorted, then Proxmox will always report a
@@ -136,6 +138,8 @@ type containerState struct {
 	StartOnBoot *bool `pulumi:"startOnBoot"`
 	// Whether to start the container (defaults to `true`).
 	Started *bool `pulumi:"started"`
+	// Defines startup and shutdown behavior of the container.
+	Startup *ContainerStartup `pulumi:"startup"`
 	// A list of tags the container tags. This is only meta
 	// information (defaults to `[]`). Note: Proxmox always sorts the container tags.
 	// If the list in template is not sorted, then Proxmox will always report a
@@ -183,6 +187,8 @@ type ContainerState struct {
 	StartOnBoot pulumi.BoolPtrInput
 	// Whether to start the container (defaults to `true`).
 	Started pulumi.BoolPtrInput
+	// Defines startup and shutdown behavior of the container.
+	Startup ContainerStartupPtrInput
 	// A list of tags the container tags. This is only meta
 	// information (defaults to `[]`). Note: Proxmox always sorts the container tags.
 	// If the list in template is not sorted, then Proxmox will always report a
@@ -234,6 +240,8 @@ type containerArgs struct {
 	StartOnBoot *bool `pulumi:"startOnBoot"`
 	// Whether to start the container (defaults to `true`).
 	Started *bool `pulumi:"started"`
+	// Defines startup and shutdown behavior of the container.
+	Startup *ContainerStartup `pulumi:"startup"`
 	// A list of tags the container tags. This is only meta
 	// information (defaults to `[]`). Note: Proxmox always sorts the container tags.
 	// If the list in template is not sorted, then Proxmox will always report a
@@ -282,6 +290,8 @@ type ContainerArgs struct {
 	StartOnBoot pulumi.BoolPtrInput
 	// Whether to start the container (defaults to `true`).
 	Started pulumi.BoolPtrInput
+	// Defines startup and shutdown behavior of the container.
+	Startup ContainerStartupPtrInput
 	// A list of tags the container tags. This is only meta
 	// information (defaults to `[]`). Note: Proxmox always sorts the container tags.
 	// If the list in template is not sorted, then Proxmox will always report a
@@ -458,6 +468,11 @@ func (o ContainerOutput) StartOnBoot() pulumi.BoolPtrOutput {
 // Whether to start the container (defaults to `true`).
 func (o ContainerOutput) Started() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Container) pulumi.BoolPtrOutput { return v.Started }).(pulumi.BoolPtrOutput)
+}
+
+// Defines startup and shutdown behavior of the container.
+func (o ContainerOutput) Startup() ContainerStartupPtrOutput {
+	return o.ApplyT(func(v *Container) ContainerStartupPtrOutput { return v.Startup }).(ContainerStartupPtrOutput)
 }
 
 // A list of tags the container tags. This is only meta

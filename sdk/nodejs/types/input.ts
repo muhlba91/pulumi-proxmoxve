@@ -307,6 +307,16 @@ export namespace CT {
          */
         type?: pulumi.Input<string>;
     }
+
+    export interface ContainerStartup {
+        downDelay?: pulumi.Input<number>;
+        /**
+         * A non-negative number defining the general startup
+         * order.
+         */
+        order?: pulumi.Input<number>;
+        upDelay?: pulumi.Input<number>;
+    }
 }
 
 export namespace Network {
@@ -570,6 +580,10 @@ export namespace Storage {
          * HTTPS sources (defaults to `false`).
          */
         insecure?: pulumi.Input<boolean>;
+        /**
+         * The minimum required TLS version for HTTPS sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
+         */
+        minTls?: pulumi.Input<string>;
         /**
          * A path to a local file or a URL.
          */

@@ -56,28 +56,28 @@ func Provider() tfbridge.ProviderInfo {
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
-		P:                 p,
-		Name:              "proxmox",
-		DisplayName:       "Proxmox Virtual Environment (Proxmox VE)",
-		Description:       "A Pulumi package for creating and managing Proxmox Virtual Environment cloud resources.",
-		Publisher:         "Daniel Muehlbachler-Pietrzykowski",
-		Keywords:          []string{"pulumi", "proxmox", "proxmoxve"},
-		License:           "Apache-2.0",
-		Homepage:          "https://github.com/muhlba91/pulumi-proxmoxve",
-		Repository:        "https://github.com/muhlba91/pulumi-proxmoxve",
-		LogoURL:           "https://raw.githubusercontent.com/muhlba91/pulumi-proxmoxve/main/assets/proxmox-logo.png",
-		GitHubOrg:         "bpg",
-		PluginDownloadURL: "github://api.github.com/muhlba91/pulumi-proxmoxve",
+		P:                    p,
+		Name:                 "proxmox",
+		DisplayName:          "Proxmox Virtual Environment (Proxmox VE)",
+		Description:          "A Pulumi package for creating and managing Proxmox Virtual Environment cloud resources.",
+		Publisher:            "Daniel Muehlbachler-Pietrzykowski",
+		Keywords:             []string{"pulumi", "proxmox", "proxmoxve"},
+		License:              "Apache-2.0",
+		Homepage:             "https://github.com/muhlba91/pulumi-proxmoxve",
+		Repository:           "https://github.com/muhlba91/pulumi-proxmoxve",
+		LogoURL:              "https://raw.githubusercontent.com/muhlba91/pulumi-proxmoxve/main/assets/proxmox-logo.png",
+		GitHubOrg:            "bpg",
+		PluginDownloadURL:    "github://api.github.com/muhlba91/pulumi-proxmoxve",
 		Config:               map[string]*tfbridge.SchemaInfo{},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
 			// VM/CT
 			"proxmox_virtual_environment_vm": {Tok: tfbridge.MakeResource(mainPkg, vmMod, "VirtualMachine")},
 			"proxmox_virtual_environment_container": {
-				Tok:    tfbridge.MakeResource(mainPkg, containerMod, "Container"),
+				Tok: tfbridge.MakeResource(mainPkg, containerMod, "Container"),
 				TransformOutputs: func(ctx context.Context, rpm resource.PropertyMap) (resource.PropertyMap, error) {
 					const containerResourceContainerFeaturesPropertyKey = resource.PropertyKey("features")
-					if ! rpm.HasValue(containerResourceContainerFeaturesPropertyKey) {
+					if !rpm.HasValue(containerResourceContainerFeaturesPropertyKey) {
 						rpm[containerResourceContainerFeaturesPropertyKey] = resource.NewPropertyValue(resource.NewPropertyValue(""))
 					}
 					return rpm, nil

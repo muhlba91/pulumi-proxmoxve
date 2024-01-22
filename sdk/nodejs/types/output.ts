@@ -303,6 +303,16 @@ export namespace CT {
         type?: string;
     }
 
+    export interface ContainerStartup {
+        downDelay?: number;
+        /**
+         * A non-negative number defining the general startup
+         * order.
+         */
+        order?: number;
+        upDelay?: number;
+    }
+
 }
 
 export namespace Network {
@@ -621,6 +631,10 @@ export namespace Storage {
          * HTTPS sources (defaults to `false`).
          */
         insecure?: boolean;
+        /**
+         * The minimum required TLS version for HTTPS sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
+         */
+        minTls?: string;
         /**
          * A path to a local file or a URL.
          */

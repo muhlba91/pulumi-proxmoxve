@@ -26,6 +26,11 @@ func GetInsecure(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "proxmoxve:insecure")
 }
 
+// The minimum required TLS version for API calls.Supported values: `1.0|1.1|1.2|1.3`. Defaults to `1.3`.
+func GetMinTls(ctx *pulumi.Context) string {
+	return config.Get(ctx, "proxmoxve:minTls")
+}
+
 // The one-time password for the Proxmox VE API.
 //
 // Deprecated: The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.

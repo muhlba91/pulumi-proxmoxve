@@ -370,7 +370,7 @@ class File(pulumi.CustomResource):
         ```
         ### Images
 
-        **Consider using `proxmox_environment_download_file` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.**
+        **Consider using `proxmox_virtual_environment_download_file` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.**
 
         ```python
         import pulumi
@@ -386,7 +386,7 @@ class File(pulumi.CustomResource):
         ```
         ### Container Template (`vztmpl`)
 
-        **Consider using `proxmox_environment_download_file` resource instead. Using this resource for container images is less efficient (requires to transfer uploaded image to node) though still supported.**
+        **Consider using `proxmox_virtual_environment_download_file` resource instead. Using this resource for container images is less efficient (requires to transfer uploaded image to node) though still supported.**
 
         ```python
         import pulumi
@@ -466,7 +466,7 @@ class File(pulumi.CustomResource):
         ```
         ### Images
 
-        **Consider using `proxmox_environment_download_file` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.**
+        **Consider using `proxmox_virtual_environment_download_file` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.**
 
         ```python
         import pulumi
@@ -482,7 +482,7 @@ class File(pulumi.CustomResource):
         ```
         ### Container Template (`vztmpl`)
 
-        **Consider using `proxmox_environment_download_file` resource instead. Using this resource for container images is less efficient (requires to transfer uploaded image to node) though still supported.**
+        **Consider using `proxmox_virtual_environment_download_file` resource instead. Using this resource for container images is less efficient (requires to transfer uploaded image to node) though still supported.**
 
         ```python
         import pulumi

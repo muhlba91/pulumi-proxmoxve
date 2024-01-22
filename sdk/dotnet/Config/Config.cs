@@ -62,6 +62,16 @@ namespace Pulumi.ProxmoxVE
             set => _insecure.Set(value);
         }
 
+        private static readonly __Value<string?> _minTls = new __Value<string?>(() => __config.Get("minTls"));
+        /// <summary>
+        /// The minimum required TLS version for API calls.Supported values: `1.0|1.1|1.2|1.3`. Defaults to `1.3`.
+        /// </summary>
+        public static string? MinTls
+        {
+            get => _minTls.Get();
+            set => _minTls.Set(value);
+        }
+
         private static readonly __Value<string?> _otp = new __Value<string?>(() => __config.Get("otp"));
         /// <summary>
         /// The one-time password for the Proxmox VE API.

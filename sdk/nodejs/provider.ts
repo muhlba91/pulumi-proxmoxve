@@ -36,6 +36,10 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly endpoint!: pulumi.Output<string | undefined>;
     /**
+     * The minimum required TLS version for API calls.Supported values: `1.0|1.1|1.2|1.3`. Defaults to `1.3`.
+     */
+    public readonly minTls!: pulumi.Output<string | undefined>;
+    /**
      * The one-time password for the Proxmox VE API.
      *
      * @deprecated The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.
@@ -68,6 +72,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["apiToken"] = args?.apiToken ? pulumi.secret(args.apiToken) : undefined;
             resourceInputs["endpoint"] = args ? args.endpoint : undefined;
             resourceInputs["insecure"] = pulumi.output(args ? args.insecure : undefined).apply(JSON.stringify);
+            resourceInputs["minTls"] = args ? args.minTls : undefined;
             resourceInputs["otp"] = args ? args.otp : undefined;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["ssh"] = pulumi.output(args ? args.ssh : undefined).apply(JSON.stringify);
@@ -97,6 +102,10 @@ export interface ProviderArgs {
      * Whether to skip the TLS verification step.
      */
     insecure?: pulumi.Input<boolean>;
+    /**
+     * The minimum required TLS version for API calls.Supported values: `1.0|1.1|1.2|1.3`. Defaults to `1.3`.
+     */
+    minTls?: pulumi.Input<string>;
     /**
      * The one-time password for the Proxmox VE API.
      *

@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  * ```
  * ### Images
  * 
- * **Consider using `proxmox_environment_download_file` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.**
+ * **Consider using `proxmox_virtual_environment_download_file` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.**
  * ```java
  * package generated_program;
  * 
@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  * ```
  * ### Container Template (`vztmpl`)
  * 
- * **Consider using `proxmox_environment_download_file` resource instead. Using this resource for container images is less efficient (requires to transfer uploaded image to node) though still supported.**
+ * **Consider using `proxmox_virtual_environment_download_file` resource instead. Using this resource for container images is less efficient (requires to transfer uploaded image to node) though still supported.**
  * ```java
  * package generated_program;
  * 

@@ -21,13 +21,15 @@ class FileSourceFileArgs:
                  changed: Optional[pulumi.Input[bool]] = None,
                  checksum: Optional[pulumi.Input[str]] = None,
                  file_name: Optional[pulumi.Input[str]] = None,
-                 insecure: Optional[pulumi.Input[bool]] = None):
+                 insecure: Optional[pulumi.Input[bool]] = None,
+                 min_tls: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] path: A path to a local file or a URL.
         :param pulumi.Input[str] checksum: The SHA256 checksum of the source file.
         :param pulumi.Input[str] file_name: The file name.
         :param pulumi.Input[bool] insecure: Whether to skip the TLS verification step for
                HTTPS sources (defaults to `false`).
+        :param pulumi.Input[str] min_tls: The minimum required TLS version for HTTPS sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
         """
         pulumi.set(__self__, "path", path)
         if changed is not None:
@@ -38,6 +40,8 @@ class FileSourceFileArgs:
             pulumi.set(__self__, "file_name", file_name)
         if insecure is not None:
             pulumi.set(__self__, "insecure", insecure)
+        if min_tls is not None:
+            pulumi.set(__self__, "min_tls", min_tls)
 
     @property
     @pulumi.getter
@@ -96,6 +100,18 @@ class FileSourceFileArgs:
     @insecure.setter
     def insecure(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "insecure", value)
+
+    @property
+    @pulumi.getter(name="minTls")
+    def min_tls(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minimum required TLS version for HTTPS sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
+        """
+        return pulumi.get(self, "min_tls")
+
+    @min_tls.setter
+    def min_tls(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_tls", value)
 
 
 @pulumi.input_type

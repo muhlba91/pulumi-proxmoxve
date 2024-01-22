@@ -71,6 +71,21 @@ public final class FileSourceFileArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * The minimum required TLS version for HTTPS sources. &#34;Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
+     * 
+     */
+    @Import(name="minTls")
+    private @Nullable Output<String> minTls;
+
+    /**
+     * @return The minimum required TLS version for HTTPS sources. &#34;Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
+     * 
+     */
+    public Optional<Output<String>> minTls() {
+        return Optional.ofNullable(this.minTls);
+    }
+
+    /**
      * A path to a local file or a URL.
      * 
      */
@@ -92,6 +107,7 @@ public final class FileSourceFileArgs extends com.pulumi.resources.ResourceArgs 
         this.checksum = $.checksum;
         this.fileName = $.fileName;
         this.insecure = $.insecure;
+        this.minTls = $.minTls;
         this.path = $.path;
     }
 
@@ -185,6 +201,27 @@ public final class FileSourceFileArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder insecure(Boolean insecure) {
             return insecure(Output.of(insecure));
+        }
+
+        /**
+         * @param minTls The minimum required TLS version for HTTPS sources. &#34;Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minTls(@Nullable Output<String> minTls) {
+            $.minTls = minTls;
+            return this;
+        }
+
+        /**
+         * @param minTls The minimum required TLS version for HTTPS sources. &#34;Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minTls(String minTls) {
+            return minTls(Output.of(minTls));
         }
 
         /**

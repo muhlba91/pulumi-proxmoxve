@@ -107,6 +107,10 @@ export class Container extends pulumi.CustomResource {
      */
     public readonly started!: pulumi.Output<boolean | undefined>;
     /**
+     * Defines startup and shutdown behavior of the container.
+     */
+    public readonly startup!: pulumi.Output<outputs.CT.ContainerStartup | undefined>;
+    /**
      * A list of tags the container tags. This is only meta
      * information (defaults to `[]`). Note: Proxmox always sorts the container tags.
      * If the list in template is not sorted, then Proxmox will always report a
@@ -156,6 +160,7 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["poolId"] = state ? state.poolId : undefined;
             resourceInputs["startOnBoot"] = state ? state.startOnBoot : undefined;
             resourceInputs["started"] = state ? state.started : undefined;
+            resourceInputs["startup"] = state ? state.startup : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["template"] = state ? state.template : undefined;
             resourceInputs["unprivileged"] = state ? state.unprivileged : undefined;
@@ -180,6 +185,7 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["poolId"] = args ? args.poolId : undefined;
             resourceInputs["startOnBoot"] = args ? args.startOnBoot : undefined;
             resourceInputs["started"] = args ? args.started : undefined;
+            resourceInputs["startup"] = args ? args.startup : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["template"] = args ? args.template : undefined;
             resourceInputs["unprivileged"] = args ? args.unprivileged : undefined;
@@ -255,6 +261,10 @@ export interface ContainerState {
      * Whether to start the container (defaults to `true`).
      */
     started?: pulumi.Input<boolean>;
+    /**
+     * Defines startup and shutdown behavior of the container.
+     */
+    startup?: pulumi.Input<inputs.CT.ContainerStartup>;
     /**
      * A list of tags the container tags. This is only meta
      * information (defaults to `[]`). Note: Proxmox always sorts the container tags.
@@ -343,6 +353,10 @@ export interface ContainerArgs {
      * Whether to start the container (defaults to `true`).
      */
     started?: pulumi.Input<boolean>;
+    /**
+     * Defines startup and shutdown behavior of the container.
+     */
+    startup?: pulumi.Input<inputs.CT.ContainerStartup>;
     /**
      * A list of tags the container tags. This is only meta
      * information (defaults to `[]`). Note: Proxmox always sorts the container tags.

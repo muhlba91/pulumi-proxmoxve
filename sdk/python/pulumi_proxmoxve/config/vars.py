@@ -38,6 +38,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get_bool('insecure')
 
     @property
+    def min_tls(self) -> Optional[str]:
+        """
+        The minimum required TLS version for API calls.Supported values: `1.0|1.1|1.2|1.3`. Defaults to `1.3`.
+        """
+        return __config__.get('minTls')
+
+    @property
     def otp(self) -> Optional[str]:
         """
         The one-time password for the Proxmox VE API.

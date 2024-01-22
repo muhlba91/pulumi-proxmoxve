@@ -18,6 +18,7 @@ class ProviderArgs:
                  api_token: Optional[pulumi.Input[str]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
+                 min_tls: Optional[pulumi.Input[str]] = None,
                  otp: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  ssh: Optional[pulumi.Input['ProviderSshArgs']] = None,
@@ -28,6 +29,7 @@ class ProviderArgs:
         :param pulumi.Input[str] api_token: The API token for the Proxmox VE API.
         :param pulumi.Input[str] endpoint: The endpoint for the Proxmox VE API.
         :param pulumi.Input[bool] insecure: Whether to skip the TLS verification step.
+        :param pulumi.Input[str] min_tls: The minimum required TLS version for API calls.Supported values: `1.0|1.1|1.2|1.3`. Defaults to `1.3`.
         :param pulumi.Input[str] otp: The one-time password for the Proxmox VE API.
         :param pulumi.Input[str] password: The password for the Proxmox VE API.
         :param pulumi.Input['ProviderSshArgs'] ssh: The SSH configuration for the Proxmox nodes.
@@ -40,6 +42,8 @@ class ProviderArgs:
             pulumi.set(__self__, "endpoint", endpoint)
         if insecure is not None:
             pulumi.set(__self__, "insecure", insecure)
+        if min_tls is not None:
+            pulumi.set(__self__, "min_tls", min_tls)
         if otp is not None:
             warnings.warn("""The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.""", DeprecationWarning)
             pulumi.log.warn("""otp is deprecated: The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.""")
@@ -89,6 +93,18 @@ class ProviderArgs:
     @insecure.setter
     def insecure(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "insecure", value)
+
+    @property
+    @pulumi.getter(name="minTls")
+    def min_tls(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minimum required TLS version for API calls.Supported values: `1.0|1.1|1.2|1.3`. Defaults to `1.3`.
+        """
+        return pulumi.get(self, "min_tls")
+
+    @min_tls.setter
+    def min_tls(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_tls", value)
 
     @property
     @pulumi.getter
@@ -162,6 +178,7 @@ class Provider(pulumi.ProviderResource):
                  api_token: Optional[pulumi.Input[str]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
+                 min_tls: Optional[pulumi.Input[str]] = None,
                  otp: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  ssh: Optional[pulumi.Input[pulumi.InputType['ProviderSshArgs']]] = None,
@@ -179,6 +196,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] api_token: The API token for the Proxmox VE API.
         :param pulumi.Input[str] endpoint: The endpoint for the Proxmox VE API.
         :param pulumi.Input[bool] insecure: Whether to skip the TLS verification step.
+        :param pulumi.Input[str] min_tls: The minimum required TLS version for API calls.Supported values: `1.0|1.1|1.2|1.3`. Defaults to `1.3`.
         :param pulumi.Input[str] otp: The one-time password for the Proxmox VE API.
         :param pulumi.Input[str] password: The password for the Proxmox VE API.
         :param pulumi.Input[pulumi.InputType['ProviderSshArgs']] ssh: The SSH configuration for the Proxmox nodes.
@@ -215,6 +233,7 @@ class Provider(pulumi.ProviderResource):
                  api_token: Optional[pulumi.Input[str]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
+                 min_tls: Optional[pulumi.Input[str]] = None,
                  otp: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  ssh: Optional[pulumi.Input[pulumi.InputType['ProviderSshArgs']]] = None,
@@ -232,6 +251,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["api_token"] = None if api_token is None else pulumi.Output.secret(api_token)
             __props__.__dict__["endpoint"] = endpoint
             __props__.__dict__["insecure"] = pulumi.Output.from_input(insecure).apply(pulumi.runtime.to_json) if insecure is not None else None
+            __props__.__dict__["min_tls"] = min_tls
             __props__.__dict__["otp"] = otp
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["ssh"] = pulumi.Output.from_input(ssh).apply(pulumi.runtime.to_json) if ssh is not None else None
@@ -260,6 +280,14 @@ class Provider(pulumi.ProviderResource):
         The endpoint for the Proxmox VE API.
         """
         return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="minTls")
+    def min_tls(self) -> pulumi.Output[Optional[str]]:
+        """
+        The minimum required TLS version for API calls.Supported values: `1.0|1.1|1.2|1.3`. Defaults to `1.3`.
+        """
+        return pulumi.get(self, "min_tls")
 
     @property
     @pulumi.getter

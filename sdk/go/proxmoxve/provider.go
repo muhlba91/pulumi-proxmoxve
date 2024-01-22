@@ -22,6 +22,8 @@ type Provider struct {
 	ApiToken pulumi.StringPtrOutput `pulumi:"apiToken"`
 	// The endpoint for the Proxmox VE API.
 	Endpoint pulumi.StringPtrOutput `pulumi:"endpoint"`
+	// The minimum required TLS version for API calls.Supported values: `1.0|1.1|1.2|1.3`. Defaults to `1.3`.
+	MinTls pulumi.StringPtrOutput `pulumi:"minTls"`
 	// The one-time password for the Proxmox VE API.
 	//
 	// Deprecated: The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.
@@ -68,6 +70,8 @@ type providerArgs struct {
 	Endpoint *string `pulumi:"endpoint"`
 	// Whether to skip the TLS verification step.
 	Insecure *bool `pulumi:"insecure"`
+	// The minimum required TLS version for API calls.Supported values: `1.0|1.1|1.2|1.3`. Defaults to `1.3`.
+	MinTls *string `pulumi:"minTls"`
 	// The one-time password for the Proxmox VE API.
 	//
 	// Deprecated: The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.
@@ -90,6 +94,8 @@ type ProviderArgs struct {
 	Endpoint pulumi.StringPtrInput
 	// Whether to skip the TLS verification step.
 	Insecure pulumi.BoolPtrInput
+	// The minimum required TLS version for API calls.Supported values: `1.0|1.1|1.2|1.3`. Defaults to `1.3`.
+	MinTls pulumi.StringPtrInput
 	// The one-time password for the Proxmox VE API.
 	//
 	// Deprecated: The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.
@@ -149,6 +155,11 @@ func (o ProviderOutput) ApiToken() pulumi.StringPtrOutput {
 // The endpoint for the Proxmox VE API.
 func (o ProviderOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// The minimum required TLS version for API calls.Supported values: `1.0|1.1|1.2|1.3`. Defaults to `1.3`.
+func (o ProviderOutput) MinTls() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.MinTls }).(pulumi.StringPtrOutput)
 }
 
 // The one-time password for the Proxmox VE API.

@@ -35,6 +35,12 @@ namespace Pulumi.ProxmoxVE.Storage.Inputs
         public Input<bool>? Insecure { get; set; }
 
         /// <summary>
+        /// The minimum required TLS version for HTTPS sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
+        /// </summary>
+        [Input("minTls")]
+        public Input<string>? MinTls { get; set; }
+
+        /// <summary>
         /// A path to a local file or a URL.
         /// </summary>
         [Input("path", required: true)]

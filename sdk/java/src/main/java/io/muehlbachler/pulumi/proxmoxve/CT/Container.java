@@ -19,6 +19,7 @@ import io.muehlbachler.pulumi.proxmoxve.CT.outputs.ContainerMemory;
 import io.muehlbachler.pulumi.proxmoxve.CT.outputs.ContainerMountPoint;
 import io.muehlbachler.pulumi.proxmoxve.CT.outputs.ContainerNetworkInterface;
 import io.muehlbachler.pulumi.proxmoxve.CT.outputs.ContainerOperatingSystem;
+import io.muehlbachler.pulumi.proxmoxve.CT.outputs.ContainerStartup;
 import io.muehlbachler.pulumi.proxmoxve.Utilities;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -252,6 +253,20 @@ public class Container extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> started() {
         return Codegen.optional(this.started);
+    }
+    /**
+     * Defines startup and shutdown behavior of the container.
+     * 
+     */
+    @Export(name="startup", refs={ContainerStartup.class}, tree="[0]")
+    private Output</* @Nullable */ ContainerStartup> startup;
+
+    /**
+     * @return Defines startup and shutdown behavior of the container.
+     * 
+     */
+    public Output<Optional<ContainerStartup>> startup() {
+        return Codegen.optional(this.startup);
     }
     /**
      * A list of tags the container tags. This is only meta

@@ -31,6 +31,12 @@ namespace Pulumi.ProxmoxVE
         public Output<string?> Endpoint { get; private set; } = null!;
 
         /// <summary>
+        /// The minimum required TLS version for API calls.Supported values: `1.0|1.1|1.2|1.3`. Defaults to `1.3`.
+        /// </summary>
+        [Output("minTls")]
+        public Output<string?> MinTls { get; private set; } = null!;
+
+        /// <summary>
         /// The one-time password for the Proxmox VE API.
         /// </summary>
         [Output("otp")]
@@ -115,6 +121,12 @@ namespace Pulumi.ProxmoxVE
         /// </summary>
         [Input("insecure", json: true)]
         public Input<bool>? Insecure { get; set; }
+
+        /// <summary>
+        /// The minimum required TLS version for API calls.Supported values: `1.0|1.1|1.2|1.3`. Defaults to `1.3`.
+        /// </summary>
+        [Input("minTls")]
+        public Input<string>? MinTls { get; set; }
 
         /// <summary>
         /// The one-time password for the Proxmox VE API.

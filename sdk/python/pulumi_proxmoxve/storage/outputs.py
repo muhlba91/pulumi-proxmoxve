@@ -21,6 +21,8 @@ class FileSourceFile(dict):
         suggest = None
         if key == "fileName":
             suggest = "file_name"
+        elif key == "minTls":
+            suggest = "min_tls"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in FileSourceFile. Access the value via the '{suggest}' property getter instead.")
@@ -38,13 +40,15 @@ class FileSourceFile(dict):
                  changed: Optional[bool] = None,
                  checksum: Optional[str] = None,
                  file_name: Optional[str] = None,
-                 insecure: Optional[bool] = None):
+                 insecure: Optional[bool] = None,
+                 min_tls: Optional[str] = None):
         """
         :param str path: A path to a local file or a URL.
         :param str checksum: The SHA256 checksum of the source file.
         :param str file_name: The file name.
         :param bool insecure: Whether to skip the TLS verification step for
                HTTPS sources (defaults to `false`).
+        :param str min_tls: The minimum required TLS version for HTTPS sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
         """
         pulumi.set(__self__, "path", path)
         if changed is not None:
@@ -55,6 +59,8 @@ class FileSourceFile(dict):
             pulumi.set(__self__, "file_name", file_name)
         if insecure is not None:
             pulumi.set(__self__, "insecure", insecure)
+        if min_tls is not None:
+            pulumi.set(__self__, "min_tls", min_tls)
 
     @property
     @pulumi.getter
@@ -93,6 +99,14 @@ class FileSourceFile(dict):
         HTTPS sources (defaults to `false`).
         """
         return pulumi.get(self, "insecure")
+
+    @property
+    @pulumi.getter(name="minTls")
+    def min_tls(self) -> Optional[str]:
+        """
+        The minimum required TLS version for HTTPS sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
+        """
+        return pulumi.get(self, "min_tls")
 
 
 @pulumi.output_type
