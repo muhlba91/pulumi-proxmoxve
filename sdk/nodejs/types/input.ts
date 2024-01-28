@@ -21,6 +21,9 @@ export interface ProviderSsh {
     agentSocket?: pulumi.Input<string>;
     nodes?: pulumi.Input<pulumi.Input<inputs.ProviderSshNode>[]>;
     password?: pulumi.Input<string>;
+    socks5Password?: pulumi.Input<string>;
+    socks5Server?: pulumi.Input<string>;
+    socks5Username?: pulumi.Input<string>;
     username?: pulumi.Input<string>;
 }
 
@@ -138,7 +141,9 @@ export namespace CT {
          */
         domain?: pulumi.Input<string>;
         /**
-         * The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+         * The DNS server. The `server` attribute is
+         * deprecated and will be removed in a future release. Please use
+         * the `servers` attribute instead.
          *
          * @deprecated The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
          */
@@ -347,7 +352,8 @@ export namespace Network {
          */
         enabled?: pulumi.Input<boolean>;
         /**
-         * Frequency with which the burst bucket gets refilled (defaults to `1/second`).
+         * Frequency with which the burst bucket gets refilled
+         * (defaults to `1/second`).
          */
         rate?: pulumi.Input<string>;
     }
@@ -363,19 +369,19 @@ export namespace Network {
         comment?: pulumi.Input<string>;
         /**
          * Restrict packet destination address. This can
-         * refer to a single IP address, an IP set ('+ipsetname') or an IP alias
-         * definition. You can also specify an address range
+         * refer to a single IP address, an IP set ('+ipsetname') or an IP
+         * alias definition. You can also specify an address range
          * like `20.34.101.207-201.3.9.99`, or a list of IP addresses and
-         * networks (entries are separated by comma). Please do not mix IPv4 and
-         * IPv6 addresses inside such lists.
+         * networks (entries are separated by comma). Please do not mix IPv4
+         * and IPv6 addresses inside such lists.
          */
         dest?: pulumi.Input<string>;
         /**
          * Restrict TCP/UDP destination port. You can use
          * service names or simple numbers (0-65535), as defined
          * in `/etc/services`. Port ranges can be specified with '\d+:\d+', for
-         * example `80:85`, and you can use comma separated list to match several
-         * ports or ranges.
+         * example `80:85`, and you can use comma separated list to match
+         * several ports or ranges.
          */
         dport?: pulumi.Input<string>;
         /**
@@ -416,16 +422,16 @@ export namespace Network {
          * to a single IP address, an IP set ('+ipsetname') or an IP alias
          * definition. You can also specify an address range
          * like `20.34.101.207-201.3.9.99`, or a list of IP addresses and
-         * networks (entries are separated by comma). Please do not mix IPv4 and
-         * IPv6 addresses inside such lists.
+         * networks (entries are separated by comma). Please do not mix IPv4
+         * and IPv6 addresses inside such lists.
          */
         source?: pulumi.Input<string>;
         /**
          * Restrict TCP/UDP source port. You can use
          * service names or simple numbers (0-65535), as defined
          * in `/etc/services`. Port ranges can be specified with '\d+:\d+', for
-         * example `80:85`, and you can use comma separated list to match several
-         * ports or ranges.
+         * example `80:85`, and you can use comma separated list to match
+         * several ports or ranges.
          * - a security group insertion block, which includes the following arguments:
          */
         sport?: pulumi.Input<string>;
@@ -446,17 +452,19 @@ export namespace Network {
         comment?: pulumi.Input<string>;
         /**
          * Restrict packet destination address. This can refer to
-         * a single IP address, an IP set ('+ipsetname') or an IP alias definition.
-         * You can also specify an address range like `20.34.101.207-201.3.9.99`, or
-         * a list of IP addresses and networks (entries are separated by comma).
-         * Please do not mix IPv4 and IPv6 addresses inside such lists.
+         * a single IP address, an IP set ('+ipsetname') or an IP alias
+         * definition. You can also specify an address range like
+         * `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks
+         * (entries are separated by comma). Please do not mix IPv4 and IPv6
+         * addresses inside such lists.
          */
         dest?: pulumi.Input<string>;
         /**
          * Restrict TCP/UDP destination port. You can use
-         * service names or simple numbers (0-65535), as defined in '/etc/services'.
-         * Port ranges can be specified with '\d+:\d+', for example `80:85`, and
-         * you can use comma separated list to match several ports or ranges.
+         * service names or simple numbers (0-65535), as defined in '/etc/
+         * services'. Port ranges can be specified with '\d+:\d+', for example
+         * `80:85`, and you can use comma separated list to match several ports or
+         * ranges.
          */
         dport?: pulumi.Input<string>;
         enabled?: pulumi.Input<boolean>;
@@ -491,15 +499,16 @@ export namespace Network {
          * to a single IP address, an IP set ('+ipsetname') or an IP alias
          * definition. You can also specify an address range like
          * `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks (
-         * entries are separated by comma). Please do not mix IPv4 and IPv6 addresses
-         * inside such lists.
+         * entries are separated by comma). Please do not mix IPv4 and IPv6
+         * addresses inside such lists.
          */
         source?: pulumi.Input<string>;
         /**
          * Restrict TCP/UDP source port. You can use
-         * service names or simple numbers (0-65535), as defined in '/etc/services'.
-         * Port ranges can be specified with '\d+:\d+', for example `80:85`, and
-         * you can use comma separated list to match several ports or ranges.
+         * service names or simple numbers (0-65535), as defined in '/etc/
+         * services'. Port ranges can be specified with '\d+:\d+', for example
+         * `80:85`, and you can use comma separated list to match several ports or
+         * ranges.
          */
         sport?: pulumi.Input<string>;
         /**
@@ -581,7 +590,8 @@ export namespace Storage {
          */
         insecure?: pulumi.Input<boolean>;
         /**
-         * The minimum required TLS version for HTTPS sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
+         * The minimum required TLS version for HTTPS
+         * sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
          */
         minTls?: pulumi.Input<string>;
         /**
@@ -965,7 +975,9 @@ export namespace VM {
          */
         domain?: pulumi.Input<string>;
         /**
-         * The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+         * The DNS server. The `server` attribute is
+         * deprecated and will be removed in a future release. Please use the
+         * `servers` attribute instead.
          *
          * @deprecated The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
          */
@@ -990,7 +1002,7 @@ export namespace VM {
     export interface VirtualMachineInitializationIpConfigIpv4 {
         /**
          * The IPv6 address in CIDR notation
-         * (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+         * (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
          * to `dhcp` for autodiscovery.
          */
         address?: pulumi.Input<string>;
@@ -1004,7 +1016,7 @@ export namespace VM {
     export interface VirtualMachineInitializationIpConfigIpv6 {
         /**
          * The IPv6 address in CIDR notation
-         * (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+         * (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
          * to `dhcp` for autodiscovery.
          */
         address?: pulumi.Input<string>;
@@ -1169,8 +1181,8 @@ export namespace VM {
          */
         mapping?: pulumi.Input<string>;
         /**
-         * Makes the USB device a USB3 device for the VM (defaults
-         * to `false`).
+         * Makes the USB device a USB3 device for the VM
+         * (defaults to `false`).
          */
         usb3?: pulumi.Input<boolean>;
     }

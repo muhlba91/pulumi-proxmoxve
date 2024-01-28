@@ -14,11 +14,14 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type Ssh struct {
-	Agent       *bool     `pulumi:"agent"`
-	AgentSocket *string   `pulumi:"agentSocket"`
-	Nodes       []SshNode `pulumi:"nodes"`
-	Password    *string   `pulumi:"password"`
-	Username    *string   `pulumi:"username"`
+	Agent          *bool     `pulumi:"agent"`
+	AgentSocket    *string   `pulumi:"agentSocket"`
+	Nodes          []SshNode `pulumi:"nodes"`
+	Password       *string   `pulumi:"password"`
+	Socks5Password *string   `pulumi:"socks5Password"`
+	Socks5Server   *string   `pulumi:"socks5Server"`
+	Socks5Username *string   `pulumi:"socks5Username"`
+	Username       *string   `pulumi:"username"`
 }
 
 // SshInput is an input type that accepts SshArgs and SshOutput values.
@@ -33,11 +36,14 @@ type SshInput interface {
 }
 
 type SshArgs struct {
-	Agent       pulumi.BoolPtrInput   `pulumi:"agent"`
-	AgentSocket pulumi.StringPtrInput `pulumi:"agentSocket"`
-	Nodes       SshNodeArrayInput     `pulumi:"nodes"`
-	Password    pulumi.StringPtrInput `pulumi:"password"`
-	Username    pulumi.StringPtrInput `pulumi:"username"`
+	Agent          pulumi.BoolPtrInput   `pulumi:"agent"`
+	AgentSocket    pulumi.StringPtrInput `pulumi:"agentSocket"`
+	Nodes          SshNodeArrayInput     `pulumi:"nodes"`
+	Password       pulumi.StringPtrInput `pulumi:"password"`
+	Socks5Password pulumi.StringPtrInput `pulumi:"socks5Password"`
+	Socks5Server   pulumi.StringPtrInput `pulumi:"socks5Server"`
+	Socks5Username pulumi.StringPtrInput `pulumi:"socks5Username"`
+	Username       pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (SshArgs) ElementType() reflect.Type {
@@ -80,6 +86,18 @@ func (o SshOutput) Nodes() SshNodeArrayOutput {
 
 func (o SshOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Ssh) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+func (o SshOutput) Socks5Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Ssh) *string { return v.Socks5Password }).(pulumi.StringPtrOutput)
+}
+
+func (o SshOutput) Socks5Server() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Ssh) *string { return v.Socks5Server }).(pulumi.StringPtrOutput)
+}
+
+func (o SshOutput) Socks5Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Ssh) *string { return v.Socks5Username }).(pulumi.StringPtrOutput)
 }
 
 func (o SshOutput) Username() pulumi.StringPtrOutput {

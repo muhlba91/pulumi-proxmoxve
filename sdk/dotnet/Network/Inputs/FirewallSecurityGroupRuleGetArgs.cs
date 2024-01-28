@@ -26,19 +26,21 @@ namespace Pulumi.ProxmoxVE.Network.Inputs
 
         /// <summary>
         /// Restrict packet destination address. This can refer to
-        /// a single IP address, an IP set ('+ipsetname') or an IP alias definition.
-        /// You can also specify an address range like `20.34.101.207-201.3.9.99`, or
-        /// a list of IP addresses and networks (entries are separated by comma).
-        /// Please do not mix IPv4 and IPv6 addresses inside such lists.
+        /// a single IP address, an IP set ('+ipsetname') or an IP alias
+        /// definition. You can also specify an address range like
+        /// `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks
+        /// (entries are separated by comma). Please do not mix IPv4 and IPv6
+        /// addresses inside such lists.
         /// </summary>
         [Input("dest")]
         public Input<string>? Dest { get; set; }
 
         /// <summary>
         /// Restrict TCP/UDP destination port. You can use
-        /// service names or simple numbers (0-65535), as defined in '/etc/services'.
-        /// Port ranges can be specified with '\d+:\d+', for example `80:85`, and
-        /// you can use comma separated list to match several ports or ranges.
+        /// service names or simple numbers (0-65535), as defined in '/etc/
+        /// services'. Port ranges can be specified with '\d+:\d+', for example
+        /// `80:85`, and you can use comma separated list to match several ports or
+        /// ranges.
         /// </summary>
         [Input("dport")]
         public Input<string>? Dport { get; set; }
@@ -89,17 +91,18 @@ namespace Pulumi.ProxmoxVE.Network.Inputs
         /// to a single IP address, an IP set ('+ipsetname') or an IP alias
         /// definition. You can also specify an address range like
         /// `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks (
-        /// entries are separated by comma). Please do not mix IPv4 and IPv6 addresses
-        /// inside such lists.
+        /// entries are separated by comma). Please do not mix IPv4 and IPv6
+        /// addresses inside such lists.
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }
 
         /// <summary>
         /// Restrict TCP/UDP source port. You can use
-        /// service names or simple numbers (0-65535), as defined in '/etc/services'.
-        /// Port ranges can be specified with '\d+:\d+', for example `80:85`, and
-        /// you can use comma separated list to match several ports or ranges.
+        /// service names or simple numbers (0-65535), as defined in '/etc/
+        /// services'. Port ranges can be specified with '\d+:\d+', for example
+        /// `80:85`, and you can use comma separated list to match several ports or
+        /// ranges.
         /// </summary>
         [Input("sport")]
         public Input<string>? Sport { get; set; }

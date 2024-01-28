@@ -160,16 +160,16 @@ import javax.annotation.Nullable;
 @ResourceType(type="proxmoxve:Storage/file:File")
 public class File extends com.pulumi.resources.CustomResource {
     /**
-     * The content type. If not specified, the content type will be inferred from the file
-     * extension. Valid values are:
+     * The content type. If not specified, the content
+     * type will be inferred from the file extension. Valid values are:
      * 
      */
     @Export(name="contentType", refs={String.class}, tree="[0]")
     private Output<String> contentType;
 
     /**
-     * @return The content type. If not specified, the content type will be inferred from the file
-     * extension. Valid values are:
+     * @return The content type. If not specified, the content
+     * type will be inferred from the file extension. Valid values are:
      * 
      */
     public Output<String> contentType() {
@@ -276,18 +276,18 @@ public class File extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.overwrite);
     }
     /**
-     * The source file (conflicts with `source_raw`), could be a
-     * local file or a URL. If the source file is a URL, the file will be downloaded
-     * and stored locally before uploading it to Proxmox VE.
+     * The source file (conflicts with `source_raw`),
+     * could be a local file or a URL. If the source file is a URL, the file will
+     * be downloaded and stored locally before uploading it to Proxmox VE.
      * 
      */
     @Export(name="sourceFile", refs={FileSourceFile.class}, tree="[0]")
     private Output</* @Nullable */ FileSourceFile> sourceFile;
 
     /**
-     * @return The source file (conflicts with `source_raw`), could be a
-     * local file or a URL. If the source file is a URL, the file will be downloaded
-     * and stored locally before uploading it to Proxmox VE.
+     * @return The source file (conflicts with `source_raw`),
+     * could be a local file or a URL. If the source file is a URL, the file will
+     * be downloaded and stored locally before uploading it to Proxmox VE.
      * 
      */
     public Output<Optional<FileSourceFile>> sourceFile() {

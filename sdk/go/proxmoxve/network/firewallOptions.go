@@ -71,10 +71,12 @@ type FirewallOptions struct {
 	// containers the configured IP addresses will be implicitly added.
 	Ipfilter pulumi.BoolPtrOutput `pulumi:"ipfilter"`
 	// Log level for incoming
-	// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+	// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+	// `debug`, `nolog`).
 	LogLevelIn pulumi.StringPtrOutput `pulumi:"logLevelIn"`
 	// Log level for outgoing
-	// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+	// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+	// `debug`, `nolog`).
 	LogLevelOut pulumi.StringPtrOutput `pulumi:"logLevelOut"`
 	// Enable/disable MAC address filter.
 	Macfilter pulumi.BoolPtrOutput `pulumi:"macfilter"`
@@ -140,10 +142,12 @@ type firewallOptionsState struct {
 	// containers the configured IP addresses will be implicitly added.
 	Ipfilter *bool `pulumi:"ipfilter"`
 	// Log level for incoming
-	// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+	// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+	// `debug`, `nolog`).
 	LogLevelIn *string `pulumi:"logLevelIn"`
 	// Log level for outgoing
-	// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+	// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+	// `debug`, `nolog`).
 	LogLevelOut *string `pulumi:"logLevelOut"`
 	// Enable/disable MAC address filter.
 	Macfilter *bool `pulumi:"macfilter"`
@@ -177,10 +181,12 @@ type FirewallOptionsState struct {
 	// containers the configured IP addresses will be implicitly added.
 	Ipfilter pulumi.BoolPtrInput
 	// Log level for incoming
-	// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+	// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+	// `debug`, `nolog`).
 	LogLevelIn pulumi.StringPtrInput
 	// Log level for outgoing
-	// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+	// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+	// `debug`, `nolog`).
 	LogLevelOut pulumi.StringPtrInput
 	// Enable/disable MAC address filter.
 	Macfilter pulumi.BoolPtrInput
@@ -218,10 +224,12 @@ type firewallOptionsArgs struct {
 	// containers the configured IP addresses will be implicitly added.
 	Ipfilter *bool `pulumi:"ipfilter"`
 	// Log level for incoming
-	// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+	// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+	// `debug`, `nolog`).
 	LogLevelIn *string `pulumi:"logLevelIn"`
 	// Log level for outgoing
-	// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+	// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+	// `debug`, `nolog`).
 	LogLevelOut *string `pulumi:"logLevelOut"`
 	// Enable/disable MAC address filter.
 	Macfilter *bool `pulumi:"macfilter"`
@@ -256,10 +264,12 @@ type FirewallOptionsArgs struct {
 	// containers the configured IP addresses will be implicitly added.
 	Ipfilter pulumi.BoolPtrInput
 	// Log level for incoming
-	// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+	// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+	// `debug`, `nolog`).
 	LogLevelIn pulumi.StringPtrInput
 	// Log level for outgoing
-	// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+	// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+	// `debug`, `nolog`).
 	LogLevelOut pulumi.StringPtrInput
 	// Enable/disable MAC address filter.
 	Macfilter pulumi.BoolPtrInput
@@ -394,13 +404,15 @@ func (o FirewallOptionsOutput) Ipfilter() pulumi.BoolPtrOutput {
 }
 
 // Log level for incoming
-// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+// `debug`, `nolog`).
 func (o FirewallOptionsOutput) LogLevelIn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallOptions) pulumi.StringPtrOutput { return v.LogLevelIn }).(pulumi.StringPtrOutput)
 }
 
 // Log level for outgoing
-// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+// `debug`, `nolog`).
 func (o FirewallOptionsOutput) LogLevelOut() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallOptions) pulumi.StringPtrOutput { return v.LogLevelOut }).(pulumi.StringPtrOutput)
 }

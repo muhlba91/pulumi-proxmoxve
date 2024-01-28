@@ -1117,7 +1117,9 @@ func (o ContainerInitializationPtrOutput) UserAccount() ContainerInitializationU
 type ContainerInitializationDns struct {
 	// The DNS search domain.
 	Domain *string `pulumi:"domain"`
-	// The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+	// The DNS server. The `server` attribute is
+	// deprecated and will be removed in a future release. Please use
+	// the `servers` attribute instead.
 	//
 	// Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
 	Server *string `pulumi:"server"`
@@ -1139,7 +1141,9 @@ type ContainerInitializationDnsInput interface {
 type ContainerInitializationDnsArgs struct {
 	// The DNS search domain.
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
-	// The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+	// The DNS server. The `server` attribute is
+	// deprecated and will be removed in a future release. Please use
+	// the `servers` attribute instead.
 	//
 	// Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
 	Server pulumi.StringPtrInput `pulumi:"server"`
@@ -1229,7 +1233,9 @@ func (o ContainerInitializationDnsOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerInitializationDns) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
-// The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+// The DNS server. The `server` attribute is
+// deprecated and will be removed in a future release. Please use
+// the `servers` attribute instead.
 //
 // Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
 func (o ContainerInitializationDnsOutput) Server() pulumi.StringPtrOutput {
@@ -1275,7 +1281,9 @@ func (o ContainerInitializationDnsPtrOutput) Domain() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+// The DNS server. The `server` attribute is
+// deprecated and will be removed in a future release. Please use
+// the `servers` attribute instead.
 //
 // Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
 func (o ContainerInitializationDnsPtrOutput) Server() pulumi.StringPtrOutput {

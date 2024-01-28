@@ -509,16 +509,16 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The SCSI hardware type (defaults
-     * to `virtio-scsi-pci`).
+     * The SCSI hardware type (defaults to
+     * `virtio-scsi-pci`).
      * 
      */
     @Import(name="scsiHardware")
     private @Nullable Output<String> scsiHardware;
 
     /**
-     * @return The SCSI hardware type (defaults
-     * to `virtio-scsi-pci`).
+     * @return The SCSI hardware type (defaults to
+     * `virtio-scsi-pci`).
      * 
      */
     public Optional<Output<String>> scsiHardware() {
@@ -1665,8 +1665,8 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param scsiHardware The SCSI hardware type (defaults
-         * to `virtio-scsi-pci`).
+         * @param scsiHardware The SCSI hardware type (defaults to
+         * `virtio-scsi-pci`).
          * 
          * @return builder
          * 
@@ -1677,8 +1677,8 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param scsiHardware The SCSI hardware type (defaults
-         * to `virtio-scsi-pci`).
+         * @param scsiHardware The SCSI hardware type (defaults to
+         * `virtio-scsi-pci`).
          * 
          * @return builder
          * 

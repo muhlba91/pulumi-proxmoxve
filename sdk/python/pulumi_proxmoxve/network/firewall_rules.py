@@ -24,7 +24,7 @@ class FirewallRulesArgs:
         The set of arguments for constructing a FirewallRules resource.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallRulesRuleArgs']]] rules: Firewall rule block (multiple blocks supported).
                The provider supports two types of the `rule` blocks:
-               - a rule definition block, which includes the following arguments:
+               - A rule definition block, which includes the following arguments:
         :param pulumi.Input[int] container_id: Container ID. Leave empty for cluster level
                rules.
         :param pulumi.Input[str] node_name: Node name. Leave empty for cluster level rules.
@@ -44,7 +44,7 @@ class FirewallRulesArgs:
         """
         Firewall rule block (multiple blocks supported).
         The provider supports two types of the `rule` blocks:
-        - a rule definition block, which includes the following arguments:
+        - A rule definition block, which includes the following arguments:
         """
         return pulumi.get(self, "rules")
 
@@ -104,7 +104,7 @@ class _FirewallRulesState:
         :param pulumi.Input[str] node_name: Node name. Leave empty for cluster level rules.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallRulesRuleArgs']]] rules: Firewall rule block (multiple blocks supported).
                The provider supports two types of the `rule` blocks:
-               - a rule definition block, which includes the following arguments:
+               - A rule definition block, which includes the following arguments:
         :param pulumi.Input[int] vm_id: VM ID. Leave empty for cluster level rules.
         """
         if container_id is not None:
@@ -147,7 +147,7 @@ class _FirewallRulesState:
         """
         Firewall rule block (multiple blocks supported).
         The provider supports two types of the `rule` blocks:
-        - a rule definition block, which includes the following arguments:
+        - A rule definition block, which includes the following arguments:
         """
         return pulumi.get(self, "rules")
 
@@ -231,7 +231,7 @@ class FirewallRules(pulumi.CustomResource):
         :param pulumi.Input[str] node_name: Node name. Leave empty for cluster level rules.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallRulesRuleArgs']]]] rules: Firewall rule block (multiple blocks supported).
                The provider supports two types of the `rule` blocks:
-               - a rule definition block, which includes the following arguments:
+               - A rule definition block, which includes the following arguments:
         :param pulumi.Input[int] vm_id: VM ID. Leave empty for cluster level rules.
         """
         ...
@@ -346,7 +346,7 @@ class FirewallRules(pulumi.CustomResource):
         :param pulumi.Input[str] node_name: Node name. Leave empty for cluster level rules.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallRulesRuleArgs']]]] rules: Firewall rule block (multiple blocks supported).
                The provider supports two types of the `rule` blocks:
-               - a rule definition block, which includes the following arguments:
+               - A rule definition block, which includes the following arguments:
         :param pulumi.Input[int] vm_id: VM ID. Leave empty for cluster level rules.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -382,7 +382,7 @@ class FirewallRules(pulumi.CustomResource):
         """
         Firewall rule block (multiple blocks supported).
         The provider supports two types of the `rule` blocks:
-        - a rule definition block, which includes the following arguments:
+        - A rule definition block, which includes the following arguments:
         """
         return pulumi.get(self, "rules")
 

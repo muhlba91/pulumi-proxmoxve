@@ -239,8 +239,8 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly reboot!: pulumi.Output<boolean | undefined>;
     /**
-     * The SCSI hardware type (defaults
-     * to `virtio-scsi-pci`).
+     * The SCSI hardware type (defaults to
+     * `virtio-scsi-pci`).
      */
     public readonly scsiHardware!: pulumi.Output<string | undefined>;
     /**
@@ -600,8 +600,8 @@ export interface VirtualMachineState {
      */
     reboot?: pulumi.Input<boolean>;
     /**
-     * The SCSI hardware type (defaults
-     * to `virtio-scsi-pci`).
+     * The SCSI hardware type (defaults to
+     * `virtio-scsi-pci`).
      */
     scsiHardware?: pulumi.Input<string>;
     /**
@@ -816,8 +816,8 @@ export interface VirtualMachineArgs {
      */
     reboot?: pulumi.Input<boolean>;
     /**
-     * The SCSI hardware type (defaults
-     * to `virtio-scsi-pci`).
+     * The SCSI hardware type (defaults to
+     * `virtio-scsi-pci`).
      */
     scsiHardware?: pulumi.Input<string>;
     /**

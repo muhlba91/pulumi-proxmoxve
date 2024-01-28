@@ -94,7 +94,7 @@ export class FirewallRules extends pulumi.CustomResource {
     /**
      * Firewall rule block (multiple blocks supported).
      * The provider supports two types of the `rule` blocks:
-     * - a rule definition block, which includes the following arguments:
+     * - A rule definition block, which includes the following arguments:
      */
     public readonly rules!: pulumi.Output<outputs.Network.FirewallRulesRule[]>;
     /**
@@ -150,7 +150,7 @@ export interface FirewallRulesState {
     /**
      * Firewall rule block (multiple blocks supported).
      * The provider supports two types of the `rule` blocks:
-     * - a rule definition block, which includes the following arguments:
+     * - A rule definition block, which includes the following arguments:
      */
     rules?: pulumi.Input<pulumi.Input<inputs.Network.FirewallRulesRule>[]>;
     /**
@@ -175,7 +175,7 @@ export interface FirewallRulesArgs {
     /**
      * Firewall rule block (multiple blocks supported).
      * The provider supports two types of the `rule` blocks:
-     * - a rule definition block, which includes the following arguments:
+     * - A rule definition block, which includes the following arguments:
      */
     rules: pulumi.Input<pulumi.Input<inputs.Network.FirewallRulesRule>[]>;
     /**

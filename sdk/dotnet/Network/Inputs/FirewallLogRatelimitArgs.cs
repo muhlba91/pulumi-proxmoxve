@@ -26,7 +26,8 @@ namespace Pulumi.ProxmoxVE.Network.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Frequency with which the burst bucket gets refilled (defaults to `1/second`).
+        /// Frequency with which the burst bucket gets refilled
+        /// (defaults to `1/second`).
         /// </summary>
         [Input("rate")]
         public Input<string>? Rate { get; set; }

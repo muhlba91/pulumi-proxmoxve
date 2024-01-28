@@ -99,7 +99,8 @@ export class Container extends pulumi.CustomResource {
      */
     public readonly poolId!: pulumi.Output<string | undefined>;
     /**
-     * Automatically start container when the host system boots (defaults to `true`).
+     * Automatically start container when the host
+     * system boots (defaults to `true`).
      */
     public readonly startOnBoot!: pulumi.Output<boolean | undefined>;
     /**
@@ -254,7 +255,8 @@ export interface ContainerState {
      */
     poolId?: pulumi.Input<string>;
     /**
-     * Automatically start container when the host system boots (defaults to `true`).
+     * Automatically start container when the host
+     * system boots (defaults to `true`).
      */
     startOnBoot?: pulumi.Input<boolean>;
     /**
@@ -346,7 +348,8 @@ export interface ContainerArgs {
      */
     poolId?: pulumi.Input<string>;
     /**
-     * Automatically start container when the host system boots (defaults to `true`).
+     * Automatically start container when the host
+     * system boots (defaults to `true`).
      */
     startOnBoot?: pulumi.Input<boolean>;
     /**

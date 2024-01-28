@@ -70,7 +70,8 @@ class FirewallLogRatelimit(dict):
         :param int burst: Initial burst of packages which will always get
                logged before the rate is applied (defaults to `5`).
         :param bool enabled: Enable or disable the log rate limit.
-        :param str rate: Frequency with which the burst bucket gets refilled (defaults to `1/second`).
+        :param str rate: Frequency with which the burst bucket gets refilled
+               (defaults to `1/second`).
         """
         if burst is not None:
             pulumi.set(__self__, "burst", burst)
@@ -100,7 +101,8 @@ class FirewallLogRatelimit(dict):
     @pulumi.getter
     def rate(self) -> Optional[str]:
         """
-        Frequency with which the burst bucket gets refilled (defaults to `1/second`).
+        Frequency with which the burst bucket gets refilled
+        (defaults to `1/second`).
         """
         return pulumi.get(self, "rate")
 
@@ -143,16 +145,16 @@ class FirewallRulesRule(dict):
         :param str action: Rule action (`ACCEPT`, `DROP`, `REJECT`).
         :param str comment: Rule comment.
         :param str dest: Restrict packet destination address. This can
-               refer to a single IP address, an IP set ('+ipsetname') or an IP alias
-               definition. You can also specify an address range
+               refer to a single IP address, an IP set ('+ipsetname') or an IP
+               alias definition. You can also specify an address range
                like `20.34.101.207-201.3.9.99`, or a list of IP addresses and
-               networks (entries are separated by comma). Please do not mix IPv4 and
-               IPv6 addresses inside such lists.
+               networks (entries are separated by comma). Please do not mix IPv4
+               and IPv6 addresses inside such lists.
         :param str dport: Restrict TCP/UDP destination port. You can use
                service names or simple numbers (0-65535), as defined
                in `/etc/services`. Port ranges can be specified with '\\d+:\\d+', for
-               example `80:85`, and you can use comma separated list to match several
-               ports or ranges.
+               example `80:85`, and you can use comma separated list to match
+               several ports or ranges.
         :param bool enabled: Enable this rule. Defaults to `true`.
         :param str iface: Network interface name. You have to use network
                configuration key names for VMs and containers ('net\\d+'). Host
@@ -169,13 +171,13 @@ class FirewallRulesRule(dict):
                to a single IP address, an IP set ('+ipsetname') or an IP alias
                definition. You can also specify an address range
                like `20.34.101.207-201.3.9.99`, or a list of IP addresses and
-               networks (entries are separated by comma). Please do not mix IPv4 and
-               IPv6 addresses inside such lists.
+               networks (entries are separated by comma). Please do not mix IPv4
+               and IPv6 addresses inside such lists.
         :param str sport: Restrict TCP/UDP source port. You can use
                service names or simple numbers (0-65535), as defined
                in `/etc/services`. Port ranges can be specified with '\\d+:\\d+', for
-               example `80:85`, and you can use comma separated list to match several
-               ports or ranges.
+               example `80:85`, and you can use comma separated list to match
+               several ports or ranges.
                - a security group insertion block, which includes the following arguments:
         :param str type: Rule type (`in`, `out`).
         """
@@ -229,11 +231,11 @@ class FirewallRulesRule(dict):
     def dest(self) -> Optional[str]:
         """
         Restrict packet destination address. This can
-        refer to a single IP address, an IP set ('+ipsetname') or an IP alias
-        definition. You can also specify an address range
+        refer to a single IP address, an IP set ('+ipsetname') or an IP
+        alias definition. You can also specify an address range
         like `20.34.101.207-201.3.9.99`, or a list of IP addresses and
-        networks (entries are separated by comma). Please do not mix IPv4 and
-        IPv6 addresses inside such lists.
+        networks (entries are separated by comma). Please do not mix IPv4
+        and IPv6 addresses inside such lists.
         """
         return pulumi.get(self, "dest")
 
@@ -244,8 +246,8 @@ class FirewallRulesRule(dict):
         Restrict TCP/UDP destination port. You can use
         service names or simple numbers (0-65535), as defined
         in `/etc/services`. Port ranges can be specified with '\\d+:\\d+', for
-        example `80:85`, and you can use comma separated list to match several
-        ports or ranges.
+        example `80:85`, and you can use comma separated list to match
+        several ports or ranges.
         """
         return pulumi.get(self, "dport")
 
@@ -318,8 +320,8 @@ class FirewallRulesRule(dict):
         to a single IP address, an IP set ('+ipsetname') or an IP alias
         definition. You can also specify an address range
         like `20.34.101.207-201.3.9.99`, or a list of IP addresses and
-        networks (entries are separated by comma). Please do not mix IPv4 and
-        IPv6 addresses inside such lists.
+        networks (entries are separated by comma). Please do not mix IPv4
+        and IPv6 addresses inside such lists.
         """
         return pulumi.get(self, "source")
 
@@ -330,8 +332,8 @@ class FirewallRulesRule(dict):
         Restrict TCP/UDP source port. You can use
         service names or simple numbers (0-65535), as defined
         in `/etc/services`. Port ranges can be specified with '\\d+:\\d+', for
-        example `80:85`, and you can use comma separated list to match several
-        ports or ranges.
+        example `80:85`, and you can use comma separated list to match
+        several ports or ranges.
         - a security group insertion block, which includes the following arguments:
         """
         return pulumi.get(self, "sport")
@@ -383,14 +385,16 @@ class FirewallSecurityGroupRule(dict):
         :param str action: Rule action (`ACCEPT`, `DROP`, `REJECT`).
         :param str comment: Rule comment.
         :param str dest: Restrict packet destination address. This can refer to
-               a single IP address, an IP set ('+ipsetname') or an IP alias definition.
-               You can also specify an address range like `20.34.101.207-201.3.9.99`, or
-               a list of IP addresses and networks (entries are separated by comma).
-               Please do not mix IPv4 and IPv6 addresses inside such lists.
+               a single IP address, an IP set ('+ipsetname') or an IP alias
+               definition. You can also specify an address range like
+               `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks
+               (entries are separated by comma). Please do not mix IPv4 and IPv6
+               addresses inside such lists.
         :param str dport: Restrict TCP/UDP destination port. You can use
-               service names or simple numbers (0-65535), as defined in '/etc/services'.
-               Port ranges can be specified with '\\d+:\\d+', for example `80:85`, and
-               you can use comma separated list to match several ports or ranges.
+               service names or simple numbers (0-65535), as defined in '/etc/
+               services'. Port ranges can be specified with '\\d+:\\d+', for example
+               `80:85`, and you can use comma separated list to match several ports or
+               ranges.
         :param str iface: Network interface name. You have to use network
                configuration key names for VMs and containers ('net\\d+'). Host related
                rules can use arbitrary strings.
@@ -405,12 +409,13 @@ class FirewallSecurityGroupRule(dict):
                to a single IP address, an IP set ('+ipsetname') or an IP alias
                definition. You can also specify an address range like
                `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks (
-               entries are separated by comma). Please do not mix IPv4 and IPv6 addresses
-               inside such lists.
+               entries are separated by comma). Please do not mix IPv4 and IPv6
+               addresses inside such lists.
         :param str sport: Restrict TCP/UDP source port. You can use
-               service names or simple numbers (0-65535), as defined in '/etc/services'.
-               Port ranges can be specified with '\\d+:\\d+', for example `80:85`, and
-               you can use comma separated list to match several ports or ranges.
+               service names or simple numbers (0-65535), as defined in '/etc/
+               services'. Port ranges can be specified with '\\d+:\\d+', for example
+               `80:85`, and you can use comma separated list to match several ports or
+               ranges.
         :param str type: Rule type (`in`, `out`).
         """
         if action is not None:
@@ -463,10 +468,11 @@ class FirewallSecurityGroupRule(dict):
     def dest(self) -> Optional[str]:
         """
         Restrict packet destination address. This can refer to
-        a single IP address, an IP set ('+ipsetname') or an IP alias definition.
-        You can also specify an address range like `20.34.101.207-201.3.9.99`, or
-        a list of IP addresses and networks (entries are separated by comma).
-        Please do not mix IPv4 and IPv6 addresses inside such lists.
+        a single IP address, an IP set ('+ipsetname') or an IP alias
+        definition. You can also specify an address range like
+        `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks
+        (entries are separated by comma). Please do not mix IPv4 and IPv6
+        addresses inside such lists.
         """
         return pulumi.get(self, "dest")
 
@@ -475,9 +481,10 @@ class FirewallSecurityGroupRule(dict):
     def dport(self) -> Optional[str]:
         """
         Restrict TCP/UDP destination port. You can use
-        service names or simple numbers (0-65535), as defined in '/etc/services'.
-        Port ranges can be specified with '\\d+:\\d+', for example `80:85`, and
-        you can use comma separated list to match several ports or ranges.
+        service names or simple numbers (0-65535), as defined in '/etc/
+        services'. Port ranges can be specified with '\\d+:\\d+', for example
+        `80:85`, and you can use comma separated list to match several ports or
+        ranges.
         """
         return pulumi.get(self, "dport")
 
@@ -544,8 +551,8 @@ class FirewallSecurityGroupRule(dict):
         to a single IP address, an IP set ('+ipsetname') or an IP alias
         definition. You can also specify an address range like
         `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks (
-        entries are separated by comma). Please do not mix IPv4 and IPv6 addresses
-        inside such lists.
+        entries are separated by comma). Please do not mix IPv4 and IPv6
+        addresses inside such lists.
         """
         return pulumi.get(self, "source")
 
@@ -554,9 +561,10 @@ class FirewallSecurityGroupRule(dict):
     def sport(self) -> Optional[str]:
         """
         Restrict TCP/UDP source port. You can use
-        service names or simple numbers (0-65535), as defined in '/etc/services'.
-        Port ranges can be specified with '\\d+:\\d+', for example `80:85`, and
-        you can use comma separated list to match several ports or ranges.
+        service names or simple numbers (0-65535), as defined in '/etc/
+        services'. Port ranges can be specified with '\\d+:\\d+', for example
+        `80:85`, and you can use comma separated list to match several ports or
+        ranges.
         """
         return pulumi.get(self, "sport")
 

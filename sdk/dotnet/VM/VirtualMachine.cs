@@ -277,8 +277,8 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<bool?> Reboot { get; private set; } = null!;
 
         /// <summary>
-        /// The SCSI hardware type (defaults
-        /// to `virtio-scsi-pci`).
+        /// The SCSI hardware type (defaults to
+        /// `virtio-scsi-pci`).
         /// </summary>
         [Output("scsiHardware")]
         public Output<string?> ScsiHardware { get; private set; } = null!;
@@ -652,8 +652,8 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<bool>? Reboot { get; set; }
 
         /// <summary>
-        /// The SCSI hardware type (defaults
-        /// to `virtio-scsi-pci`).
+        /// The SCSI hardware type (defaults to
+        /// `virtio-scsi-pci`).
         /// </summary>
         [Input("scsiHardware")]
         public Input<string>? ScsiHardware { get; set; }
@@ -1058,8 +1058,8 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<bool>? Reboot { get; set; }
 
         /// <summary>
-        /// The SCSI hardware type (defaults
-        /// to `virtio-scsi-pci`).
+        /// The SCSI hardware type (defaults to
+        /// `virtio-scsi-pci`).
         /// </summary>
         [Input("scsiHardware")]
         public Input<string>? ScsiHardware { get; set; }

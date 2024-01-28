@@ -81,7 +81,7 @@ type FirewallRules struct {
 	NodeName pulumi.StringPtrOutput `pulumi:"nodeName"`
 	// Firewall rule block (multiple blocks supported).
 	// The provider supports two types of the `rule` blocks:
-	// - a rule definition block, which includes the following arguments:
+	// - A rule definition block, which includes the following arguments:
 	Rules FirewallRulesRuleArrayOutput `pulumi:"rules"`
 	// VM ID. Leave empty for cluster level rules.
 	VmId pulumi.IntPtrOutput `pulumi:"vmId"`
@@ -127,7 +127,7 @@ type firewallRulesState struct {
 	NodeName *string `pulumi:"nodeName"`
 	// Firewall rule block (multiple blocks supported).
 	// The provider supports two types of the `rule` blocks:
-	// - a rule definition block, which includes the following arguments:
+	// - A rule definition block, which includes the following arguments:
 	Rules []FirewallRulesRule `pulumi:"rules"`
 	// VM ID. Leave empty for cluster level rules.
 	VmId *int `pulumi:"vmId"`
@@ -141,7 +141,7 @@ type FirewallRulesState struct {
 	NodeName pulumi.StringPtrInput
 	// Firewall rule block (multiple blocks supported).
 	// The provider supports two types of the `rule` blocks:
-	// - a rule definition block, which includes the following arguments:
+	// - A rule definition block, which includes the following arguments:
 	Rules FirewallRulesRuleArrayInput
 	// VM ID. Leave empty for cluster level rules.
 	VmId pulumi.IntPtrInput
@@ -159,7 +159,7 @@ type firewallRulesArgs struct {
 	NodeName *string `pulumi:"nodeName"`
 	// Firewall rule block (multiple blocks supported).
 	// The provider supports two types of the `rule` blocks:
-	// - a rule definition block, which includes the following arguments:
+	// - A rule definition block, which includes the following arguments:
 	Rules []FirewallRulesRule `pulumi:"rules"`
 	// VM ID. Leave empty for cluster level rules.
 	VmId *int `pulumi:"vmId"`
@@ -174,7 +174,7 @@ type FirewallRulesArgs struct {
 	NodeName pulumi.StringPtrInput
 	// Firewall rule block (multiple blocks supported).
 	// The provider supports two types of the `rule` blocks:
-	// - a rule definition block, which includes the following arguments:
+	// - A rule definition block, which includes the following arguments:
 	Rules FirewallRulesRuleArrayInput
 	// VM ID. Leave empty for cluster level rules.
 	VmId pulumi.IntPtrInput
@@ -280,7 +280,7 @@ func (o FirewallRulesOutput) NodeName() pulumi.StringPtrOutput {
 
 // Firewall rule block (multiple blocks supported).
 // The provider supports two types of the `rule` blocks:
-// - a rule definition block, which includes the following arguments:
+// - A rule definition block, which includes the following arguments:
 func (o FirewallRulesOutput) Rules() FirewallRulesRuleArrayOutput {
 	return o.ApplyT(func(v *FirewallRules) FirewallRulesRuleArrayOutput { return v.Rules }).(FirewallRulesRuleArrayOutput)
 }

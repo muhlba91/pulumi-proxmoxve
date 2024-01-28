@@ -41,9 +41,11 @@ class FirewallOptionsArgs:
                local addresses to the one derived from the interface's MAC address. For
                containers the configured IP addresses will be implicitly added.
         :param pulumi.Input[str] log_level_in: Log level for incoming
-               packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+               packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+               `debug`, `nolog`).
         :param pulumi.Input[str] log_level_out: Log level for outgoing
-               packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+               packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+               `debug`, `nolog`).
         :param pulumi.Input[bool] macfilter: Enable/disable MAC address filter.
         :param pulumi.Input[bool] ndp: Enable NDP (Neighbor Discovery Protocol).
         :param pulumi.Input[str] output_policy: The default output
@@ -159,7 +161,8 @@ class FirewallOptionsArgs:
     def log_level_in(self) -> Optional[pulumi.Input[str]]:
         """
         Log level for incoming
-        packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+        packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+        `debug`, `nolog`).
         """
         return pulumi.get(self, "log_level_in")
 
@@ -172,7 +175,8 @@ class FirewallOptionsArgs:
     def log_level_out(self) -> Optional[pulumi.Input[str]]:
         """
         Log level for outgoing
-        packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+        packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+        `debug`, `nolog`).
         """
         return pulumi.get(self, "log_level_out")
 
@@ -271,9 +275,11 @@ class _FirewallOptionsState:
                local addresses to the one derived from the interface's MAC address. For
                containers the configured IP addresses will be implicitly added.
         :param pulumi.Input[str] log_level_in: Log level for incoming
-               packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+               packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+               `debug`, `nolog`).
         :param pulumi.Input[str] log_level_out: Log level for outgoing
-               packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+               packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+               `debug`, `nolog`).
         :param pulumi.Input[bool] macfilter: Enable/disable MAC address filter.
         :param pulumi.Input[bool] ndp: Enable NDP (Neighbor Discovery Protocol).
         :param pulumi.Input[str] node_name: Node name.
@@ -379,7 +385,8 @@ class _FirewallOptionsState:
     def log_level_in(self) -> Optional[pulumi.Input[str]]:
         """
         Log level for incoming
-        packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+        packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+        `debug`, `nolog`).
         """
         return pulumi.get(self, "log_level_in")
 
@@ -392,7 +399,8 @@ class _FirewallOptionsState:
     def log_level_out(self) -> Optional[pulumi.Input[str]]:
         """
         Log level for outgoing
-        packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+        packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+        `debug`, `nolog`).
         """
         return pulumi.get(self, "log_level_out")
 
@@ -531,9 +539,11 @@ class FirewallOptions(pulumi.CustomResource):
                local addresses to the one derived from the interface's MAC address. For
                containers the configured IP addresses will be implicitly added.
         :param pulumi.Input[str] log_level_in: Log level for incoming
-               packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+               packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+               `debug`, `nolog`).
         :param pulumi.Input[str] log_level_out: Log level for outgoing
-               packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+               packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+               `debug`, `nolog`).
         :param pulumi.Input[bool] macfilter: Enable/disable MAC address filter.
         :param pulumi.Input[bool] ndp: Enable NDP (Neighbor Discovery Protocol).
         :param pulumi.Input[str] node_name: Node name.
@@ -666,9 +676,11 @@ class FirewallOptions(pulumi.CustomResource):
                local addresses to the one derived from the interface's MAC address. For
                containers the configured IP addresses will be implicitly added.
         :param pulumi.Input[str] log_level_in: Log level for incoming
-               packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+               packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+               `debug`, `nolog`).
         :param pulumi.Input[str] log_level_out: Log level for outgoing
-               packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+               packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+               `debug`, `nolog`).
         :param pulumi.Input[bool] macfilter: Enable/disable MAC address filter.
         :param pulumi.Input[bool] ndp: Enable NDP (Neighbor Discovery Protocol).
         :param pulumi.Input[str] node_name: Node name.
@@ -746,7 +758,8 @@ class FirewallOptions(pulumi.CustomResource):
     def log_level_in(self) -> pulumi.Output[Optional[str]]:
         """
         Log level for incoming
-        packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+        packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+        `debug`, `nolog`).
         """
         return pulumi.get(self, "log_level_in")
 
@@ -755,7 +768,8 @@ class FirewallOptions(pulumi.CustomResource):
     def log_level_out(self) -> pulumi.Output[Optional[str]]:
         """
         Log level for outgoing
-        packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+        packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+        `debug`, `nolog`).
         """
         return pulumi.get(self, "log_level_out")
 

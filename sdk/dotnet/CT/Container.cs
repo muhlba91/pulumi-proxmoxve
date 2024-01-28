@@ -103,7 +103,8 @@ namespace Pulumi.ProxmoxVE.CT
         public Output<string?> PoolId { get; private set; } = null!;
 
         /// <summary>
-        /// Automatically start container when the host system boots (defaults to `true`).
+        /// Automatically start container when the host
+        /// system boots (defaults to `true`).
         /// </summary>
         [Output("startOnBoot")]
         public Output<bool?> StartOnBoot { get; private set; } = null!;
@@ -288,7 +289,8 @@ namespace Pulumi.ProxmoxVE.CT
         public Input<string>? PoolId { get; set; }
 
         /// <summary>
-        /// Automatically start container when the host system boots (defaults to `true`).
+        /// Automatically start container when the host
+        /// system boots (defaults to `true`).
         /// </summary>
         [Input("startOnBoot")]
         public Input<bool>? StartOnBoot { get; set; }
@@ -440,7 +442,8 @@ namespace Pulumi.ProxmoxVE.CT
         public Input<string>? PoolId { get; set; }
 
         /// <summary>
-        /// Automatically start container when the host system boots (defaults to `true`).
+        /// Automatically start container when the host
+        /// system boots (defaults to `true`).
         /// </summary>
         [Input("startOnBoot")]
         public Input<bool>? StartOnBoot { get; set; }

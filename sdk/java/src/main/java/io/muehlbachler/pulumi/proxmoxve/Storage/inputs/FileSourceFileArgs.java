@@ -71,14 +71,16 @@ public final class FileSourceFileArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The minimum required TLS version for HTTPS sources. &#34;Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
+     * The minimum required TLS version for HTTPS
+     * sources. &#34;Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
      * 
      */
     @Import(name="minTls")
     private @Nullable Output<String> minTls;
 
     /**
-     * @return The minimum required TLS version for HTTPS sources. &#34;Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
+     * @return The minimum required TLS version for HTTPS
+     * sources. &#34;Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
      * 
      */
     public Optional<Output<String>> minTls() {
@@ -204,7 +206,8 @@ public final class FileSourceFileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param minTls The minimum required TLS version for HTTPS sources. &#34;Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
+         * @param minTls The minimum required TLS version for HTTPS
+         * sources. &#34;Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
          * 
          * @return builder
          * 
@@ -215,7 +218,8 @@ public final class FileSourceFileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param minTls The minimum required TLS version for HTTPS sources. &#34;Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
+         * @param minTls The minimum required TLS version for HTTPS
+         * sources. &#34;Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
          * 
          * @return builder
          * 

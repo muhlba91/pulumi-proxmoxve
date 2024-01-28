@@ -113,8 +113,8 @@ export class File extends pulumi.CustomResource {
     }
 
     /**
-     * The content type. If not specified, the content type will be inferred from the file
-     * extension. Valid values are:
+     * The content type. If not specified, the content
+     * type will be inferred from the file extension. Valid values are:
      */
     public readonly contentType!: pulumi.Output<string>;
     /**
@@ -147,9 +147,9 @@ export class File extends pulumi.CustomResource {
      */
     public readonly overwrite!: pulumi.Output<boolean | undefined>;
     /**
-     * The source file (conflicts with `sourceRaw`), could be a
-     * local file or a URL. If the source file is a URL, the file will be downloaded
-     * and stored locally before uploading it to Proxmox VE.
+     * The source file (conflicts with `sourceRaw`),
+     * could be a local file or a URL. If the source file is a URL, the file will
+     * be downloaded and stored locally before uploading it to Proxmox VE.
      */
     public readonly sourceFile!: pulumi.Output<outputs.Storage.FileSourceFile | undefined>;
     /**
@@ -216,8 +216,8 @@ export class File extends pulumi.CustomResource {
  */
 export interface FileState {
     /**
-     * The content type. If not specified, the content type will be inferred from the file
-     * extension. Valid values are:
+     * The content type. If not specified, the content
+     * type will be inferred from the file extension. Valid values are:
      */
     contentType?: pulumi.Input<string>;
     /**
@@ -250,9 +250,9 @@ export interface FileState {
      */
     overwrite?: pulumi.Input<boolean>;
     /**
-     * The source file (conflicts with `sourceRaw`), could be a
-     * local file or a URL. If the source file is a URL, the file will be downloaded
-     * and stored locally before uploading it to Proxmox VE.
+     * The source file (conflicts with `sourceRaw`),
+     * could be a local file or a URL. If the source file is a URL, the file will
+     * be downloaded and stored locally before uploading it to Proxmox VE.
      */
     sourceFile?: pulumi.Input<inputs.Storage.FileSourceFile>;
     /**
@@ -271,8 +271,8 @@ export interface FileState {
  */
 export interface FileArgs {
     /**
-     * The content type. If not specified, the content type will be inferred from the file
-     * extension. Valid values are:
+     * The content type. If not specified, the content
+     * type will be inferred from the file extension. Valid values are:
      */
     contentType?: pulumi.Input<string>;
     /**
@@ -289,9 +289,9 @@ export interface FileArgs {
      */
     overwrite?: pulumi.Input<boolean>;
     /**
-     * The source file (conflicts with `sourceRaw`), could be a
-     * local file or a URL. If the source file is a URL, the file will be downloaded
-     * and stored locally before uploading it to Proxmox VE.
+     * The source file (conflicts with `sourceRaw`),
+     * could be a local file or a URL. If the source file is a URL, the file will
+     * be downloaded and stored locally before uploading it to Proxmox VE.
      */
     sourceFile?: pulumi.Input<inputs.Storage.FileSourceFile>;
     /**

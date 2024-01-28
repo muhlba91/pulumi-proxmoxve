@@ -24,8 +24,8 @@ public final class VirtualMachineUsb {
      */
     private @Nullable String mapping;
     /**
-     * @return Makes the USB device a USB3 device for the VM (defaults
-     * to `false`).
+     * @return Makes the USB device a USB3 device for the VM
+     * (defaults to `false`).
      * 
      */
     private @Nullable Boolean usb3;
@@ -47,8 +47,8 @@ public final class VirtualMachineUsb {
         return Optional.ofNullable(this.mapping);
     }
     /**
-     * @return Makes the USB device a USB3 device for the VM (defaults
-     * to `false`).
+     * @return Makes the USB device a USB3 device for the VM
+     * (defaults to `false`).
      * 
      */
     public Optional<Boolean> usb3() {

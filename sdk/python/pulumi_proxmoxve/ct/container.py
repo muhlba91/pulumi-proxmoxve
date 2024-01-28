@@ -52,7 +52,8 @@ class ContainerArgs:
                supported).
         :param pulumi.Input['ContainerOperatingSystemArgs'] operating_system: The Operating System configuration.
         :param pulumi.Input[str] pool_id: The identifier for a pool to assign the container to.
-        :param pulumi.Input[bool] start_on_boot: Automatically start container when the host system boots (defaults to `true`).
+        :param pulumi.Input[bool] start_on_boot: Automatically start container when the host
+               system boots (defaults to `true`).
         :param pulumi.Input[bool] started: Whether to start the container (defaults to `true`).
         :param pulumi.Input['ContainerStartupArgs'] startup: Defines startup and shutdown behavior of the container.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags the container tags. This is only meta
@@ -266,7 +267,8 @@ class ContainerArgs:
     @pulumi.getter(name="startOnBoot")
     def start_on_boot(self) -> Optional[pulumi.Input[bool]]:
         """
-        Automatically start container when the host system boots (defaults to `true`).
+        Automatically start container when the host
+        system boots (defaults to `true`).
         """
         return pulumi.get(self, "start_on_boot")
 
@@ -391,7 +393,8 @@ class _ContainerState:
         :param pulumi.Input[str] node_name: The name of the node to assign the container to.
         :param pulumi.Input['ContainerOperatingSystemArgs'] operating_system: The Operating System configuration.
         :param pulumi.Input[str] pool_id: The identifier for a pool to assign the container to.
-        :param pulumi.Input[bool] start_on_boot: Automatically start container when the host system boots (defaults to `true`).
+        :param pulumi.Input[bool] start_on_boot: Automatically start container when the host
+               system boots (defaults to `true`).
         :param pulumi.Input[bool] started: Whether to start the container (defaults to `true`).
         :param pulumi.Input['ContainerStartupArgs'] startup: Defines startup and shutdown behavior of the container.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags the container tags. This is only meta
@@ -606,7 +609,8 @@ class _ContainerState:
     @pulumi.getter(name="startOnBoot")
     def start_on_boot(self) -> Optional[pulumi.Input[bool]]:
         """
-        Automatically start container when the host system boots (defaults to `true`).
+        Automatically start container when the host
+        system boots (defaults to `true`).
         """
         return pulumi.get(self, "start_on_boot")
 
@@ -745,7 +749,8 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[str] node_name: The name of the node to assign the container to.
         :param pulumi.Input[pulumi.InputType['ContainerOperatingSystemArgs']] operating_system: The Operating System configuration.
         :param pulumi.Input[str] pool_id: The identifier for a pool to assign the container to.
-        :param pulumi.Input[bool] start_on_boot: Automatically start container when the host system boots (defaults to `true`).
+        :param pulumi.Input[bool] start_on_boot: Automatically start container when the host
+               system boots (defaults to `true`).
         :param pulumi.Input[bool] started: Whether to start the container (defaults to `true`).
         :param pulumi.Input[pulumi.InputType['ContainerStartupArgs']] startup: Defines startup and shutdown behavior of the container.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags the container tags. This is only meta
@@ -892,7 +897,8 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[str] node_name: The name of the node to assign the container to.
         :param pulumi.Input[pulumi.InputType['ContainerOperatingSystemArgs']] operating_system: The Operating System configuration.
         :param pulumi.Input[str] pool_id: The identifier for a pool to assign the container to.
-        :param pulumi.Input[bool] start_on_boot: Automatically start container when the host system boots (defaults to `true`).
+        :param pulumi.Input[bool] start_on_boot: Automatically start container when the host
+               system boots (defaults to `true`).
         :param pulumi.Input[bool] started: Whether to start the container (defaults to `true`).
         :param pulumi.Input[pulumi.InputType['ContainerStartupArgs']] startup: Defines startup and shutdown behavior of the container.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags the container tags. This is only meta
@@ -1040,7 +1046,8 @@ class Container(pulumi.CustomResource):
     @pulumi.getter(name="startOnBoot")
     def start_on_boot(self) -> pulumi.Output[Optional[bool]]:
         """
-        Automatically start container when the host system boots (defaults to `true`).
+        Automatically start container when the host
+        system boots (defaults to `true`).
         """
         return pulumi.get(self, "start_on_boot")
 

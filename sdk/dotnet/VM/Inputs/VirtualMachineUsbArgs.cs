@@ -26,8 +26,8 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<string>? Mapping { get; set; }
 
         /// <summary>
-        /// Makes the USB device a USB3 device for the VM (defaults
-        /// to `false`).
+        /// Makes the USB device a USB3 device for the VM
+        /// (defaults to `false`).
         /// </summary>
         [Input("usb3")]
         public Input<bool>? Usb3 { get; set; }

@@ -22,7 +22,8 @@ type FileSourceFile struct {
 	// Whether to skip the TLS verification step for
 	// HTTPS sources (defaults to `false`).
 	Insecure *bool `pulumi:"insecure"`
-	// The minimum required TLS version for HTTPS sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
+	// The minimum required TLS version for HTTPS
+	// sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
 	MinTls *string `pulumi:"minTls"`
 	// A path to a local file or a URL.
 	Path string `pulumi:"path"`
@@ -48,7 +49,8 @@ type FileSourceFileArgs struct {
 	// Whether to skip the TLS verification step for
 	// HTTPS sources (defaults to `false`).
 	Insecure pulumi.BoolPtrInput `pulumi:"insecure"`
-	// The minimum required TLS version for HTTPS sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
+	// The minimum required TLS version for HTTPS
+	// sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
 	MinTls pulumi.StringPtrInput `pulumi:"minTls"`
 	// A path to a local file or a URL.
 	Path pulumi.StringInput `pulumi:"path"`
@@ -151,7 +153,8 @@ func (o FileSourceFileOutput) Insecure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FileSourceFile) *bool { return v.Insecure }).(pulumi.BoolPtrOutput)
 }
 
-// The minimum required TLS version for HTTPS sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
+// The minimum required TLS version for HTTPS
+// sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
 func (o FileSourceFileOutput) MinTls() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FileSourceFile) *string { return v.MinTls }).(pulumi.StringPtrOutput)
 }
@@ -225,7 +228,8 @@ func (o FileSourceFilePtrOutput) Insecure() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The minimum required TLS version for HTTPS sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
+// The minimum required TLS version for HTTPS
+// sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
 func (o FileSourceFilePtrOutput) MinTls() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FileSourceFile) *string {
 		if v == nil {

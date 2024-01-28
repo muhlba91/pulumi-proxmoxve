@@ -159,8 +159,8 @@ type VirtualMachine struct {
 	// Reboot the VM after initial creation. (defaults
 	// to `false`)
 	Reboot pulumi.BoolPtrOutput `pulumi:"reboot"`
-	// The SCSI hardware type (defaults
-	// to `virtio-scsi-pci`).
+	// The SCSI hardware type (defaults to
+	// `virtio-scsi-pci`).
 	ScsiHardware pulumi.StringPtrOutput `pulumi:"scsiHardware"`
 	// A serial device (multiple blocks supported).
 	SerialDevices VirtualMachineSerialDeviceArrayOutput `pulumi:"serialDevices"`
@@ -322,8 +322,8 @@ type virtualMachineState struct {
 	// Reboot the VM after initial creation. (defaults
 	// to `false`)
 	Reboot *bool `pulumi:"reboot"`
-	// The SCSI hardware type (defaults
-	// to `virtio-scsi-pci`).
+	// The SCSI hardware type (defaults to
+	// `virtio-scsi-pci`).
 	ScsiHardware *string `pulumi:"scsiHardware"`
 	// A serial device (multiple blocks supported).
 	SerialDevices []VirtualMachineSerialDevice `pulumi:"serialDevices"`
@@ -453,8 +453,8 @@ type VirtualMachineState struct {
 	// Reboot the VM after initial creation. (defaults
 	// to `false`)
 	Reboot pulumi.BoolPtrInput
-	// The SCSI hardware type (defaults
-	// to `virtio-scsi-pci`).
+	// The SCSI hardware type (defaults to
+	// `virtio-scsi-pci`).
 	ScsiHardware pulumi.StringPtrInput
 	// A serial device (multiple blocks supported).
 	SerialDevices VirtualMachineSerialDeviceArrayInput
@@ -576,8 +576,8 @@ type virtualMachineArgs struct {
 	// Reboot the VM after initial creation. (defaults
 	// to `false`)
 	Reboot *bool `pulumi:"reboot"`
-	// The SCSI hardware type (defaults
-	// to `virtio-scsi-pci`).
+	// The SCSI hardware type (defaults to
+	// `virtio-scsi-pci`).
 	ScsiHardware *string `pulumi:"scsiHardware"`
 	// A serial device (multiple blocks supported).
 	SerialDevices []VirtualMachineSerialDevice `pulumi:"serialDevices"`
@@ -696,8 +696,8 @@ type VirtualMachineArgs struct {
 	// Reboot the VM after initial creation. (defaults
 	// to `false`)
 	Reboot pulumi.BoolPtrInput
-	// The SCSI hardware type (defaults
-	// to `virtio-scsi-pci`).
+	// The SCSI hardware type (defaults to
+	// `virtio-scsi-pci`).
 	ScsiHardware pulumi.StringPtrInput
 	// A serial device (multiple blocks supported).
 	SerialDevices VirtualMachineSerialDeviceArrayInput
@@ -1003,8 +1003,8 @@ func (o VirtualMachineOutput) Reboot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.Reboot }).(pulumi.BoolPtrOutput)
 }
 
-// The SCSI hardware type (defaults
-// to `virtio-scsi-pci`).
+// The SCSI hardware type (defaults to
+// `virtio-scsi-pci`).
 func (o VirtualMachineOutput) ScsiHardware() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.ScsiHardware }).(pulumi.StringPtrOutput)
 }

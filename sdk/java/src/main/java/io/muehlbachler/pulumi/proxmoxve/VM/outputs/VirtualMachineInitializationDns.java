@@ -18,7 +18,9 @@ public final class VirtualMachineInitializationDns {
      */
     private @Nullable String domain;
     /**
-     * @return The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+     * @return The DNS server. The `server` attribute is
+     * deprecated and will be removed in a future release. Please use the
+     * `servers` attribute instead.
      * 
      * @deprecated
      * The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
@@ -41,7 +43,9 @@ public final class VirtualMachineInitializationDns {
         return Optional.ofNullable(this.domain);
     }
     /**
-     * @return The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+     * @return The DNS server. The `server` attribute is
+     * deprecated and will be removed in a future release. Please use the
+     * `servers` attribute instead.
      * 
      * @deprecated
      * The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.

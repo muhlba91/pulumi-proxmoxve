@@ -234,7 +234,7 @@
                 },
                 "server": {
                     "type": "string",
-                    "description": "The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.\n",
+                    "description": "The DNS server. The `server` attribute is\ndeprecated and will be removed in a future release. Please use\nthe `servers` attribute instead.\n",
                     "deprecationMessage": "The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead."
                 },
                 "servers": {
@@ -477,7 +477,7 @@
                 },
                 "rate": {
                     "type": "string",
-                    "description": "Frequency with which the burst bucket gets refilled (defaults to `1/second`).\n"
+                    "description": "Frequency with which the burst bucket gets refilled\n(defaults to `1/second`).\n"
                 }
             },
             "type": "object"
@@ -494,11 +494,11 @@
                 },
                 "dest": {
                     "type": "string",
-                    "description": "Restrict packet destination address. This can\nrefer to a single IP address, an IP set ('+ipsetname') or an IP alias\ndefinition. You can also specify an address range\nlike `20.34.101.207-201.3.9.99`, or a list of IP addresses and\nnetworks (entries are separated by comma). Please do not mix IPv4 and\nIPv6 addresses inside such lists.\n"
+                    "description": "Restrict packet destination address. This can\nrefer to a single IP address, an IP set ('+ipsetname') or an IP\nalias definition. You can also specify an address range\nlike `20.34.101.207-201.3.9.99`, or a list of IP addresses and\nnetworks (entries are separated by comma). Please do not mix IPv4\nand IPv6 addresses inside such lists.\n"
                 },
                 "dport": {
                     "type": "string",
-                    "description": "Restrict TCP/UDP destination port. You can use\nservice names or simple numbers (0-65535), as defined\nin `/etc/services`. Port ranges can be specified with '\\d+:\\d+', for\nexample `80:85`, and you can use comma separated list to match several\nports or ranges.\n"
+                    "description": "Restrict TCP/UDP destination port. You can use\nservice names or simple numbers (0-65535), as defined\nin `/etc/services`. Port ranges can be specified with '\\d+:\\d+', for\nexample `80:85`, and you can use comma separated list to match\nseveral ports or ranges.\n"
                 },
                 "enabled": {
                     "type": "boolean",
@@ -531,11 +531,11 @@
                 },
                 "source": {
                     "type": "string",
-                    "description": "Restrict packet source address. This can refer\nto a single IP address, an IP set ('+ipsetname') or an IP alias\ndefinition. You can also specify an address range\nlike `20.34.101.207-201.3.9.99`, or a list of IP addresses and\nnetworks (entries are separated by comma). Please do not mix IPv4 and\nIPv6 addresses inside such lists.\n"
+                    "description": "Restrict packet source address. This can refer\nto a single IP address, an IP set ('+ipsetname') or an IP alias\ndefinition. You can also specify an address range\nlike `20.34.101.207-201.3.9.99`, or a list of IP addresses and\nnetworks (entries are separated by comma). Please do not mix IPv4\nand IPv6 addresses inside such lists.\n"
                 },
                 "sport": {
                     "type": "string",
-                    "description": "Restrict TCP/UDP source port. You can use\nservice names or simple numbers (0-65535), as defined\nin `/etc/services`. Port ranges can be specified with '\\d+:\\d+', for\nexample `80:85`, and you can use comma separated list to match several\nports or ranges.\n- a security group insertion block, which includes the following arguments:\n"
+                    "description": "Restrict TCP/UDP source port. You can use\nservice names or simple numbers (0-65535), as defined\nin `/etc/services`. Port ranges can be specified with '\\d+:\\d+', for\nexample `80:85`, and you can use comma separated list to match\nseveral ports or ranges.\n- a security group insertion block, which includes the following arguments:\n"
                 },
                 "type": {
                     "type": "string",
@@ -563,11 +563,11 @@
                 },
                 "dest": {
                     "type": "string",
-                    "description": "Restrict packet destination address. This can refer to\na single IP address, an IP set ('+ipsetname') or an IP alias definition.\nYou can also specify an address range like `20.34.101.207-201.3.9.99`, or\na list of IP addresses and networks (entries are separated by comma).\nPlease do not mix IPv4 and IPv6 addresses inside such lists.\n"
+                    "description": "Restrict packet destination address. This can refer to\na single IP address, an IP set ('+ipsetname') or an IP alias\ndefinition. You can also specify an address range like\n`20.34.101.207-201.3.9.99`, or a list of IP addresses and networks\n(entries are separated by comma). Please do not mix IPv4 and IPv6\naddresses inside such lists.\n"
                 },
                 "dport": {
                     "type": "string",
-                    "description": "Restrict TCP/UDP destination port. You can use\nservice names or simple numbers (0-65535), as defined in '/etc/services'.\nPort ranges can be specified with '\\d+:\\d+', for example `80:85`, and\nyou can use comma separated list to match several ports or ranges.\n"
+                    "description": "Restrict TCP/UDP destination port. You can use\nservice names or simple numbers (0-65535), as defined in '/etc/\nservices'. Port ranges can be specified with '\\d+:\\d+', for example\n`80:85`, and you can use comma separated list to match several ports or\nranges.\n"
                 },
                 "enabled": {
                     "type": "boolean"
@@ -598,11 +598,11 @@
                 },
                 "source": {
                     "type": "string",
-                    "description": "Restrict packet source address. This can refer\nto a single IP address, an IP set ('+ipsetname') or an IP alias\ndefinition. You can also specify an address range like\n`20.34.101.207-201.3.9.99`, or a list of IP addresses and networks (\nentries are separated by comma). Please do not mix IPv4 and IPv6 addresses\ninside such lists.\n"
+                    "description": "Restrict packet source address. This can refer\nto a single IP address, an IP set ('+ipsetname') or an IP alias\ndefinition. You can also specify an address range like\n`20.34.101.207-201.3.9.99`, or a list of IP addresses and networks (\nentries are separated by comma). Please do not mix IPv4 and IPv6\naddresses inside such lists.\n"
                 },
                 "sport": {
                     "type": "string",
-                    "description": "Restrict TCP/UDP source port. You can use\nservice names or simple numbers (0-65535), as defined in '/etc/services'.\nPort ranges can be specified with '\\d+:\\d+', for example `80:85`, and\nyou can use comma separated list to match several ports or ranges.\n"
+                    "description": "Restrict TCP/UDP source port. You can use\nservice names or simple numbers (0-65535), as defined in '/etc/\nservices'. Port ranges can be specified with '\\d+:\\d+', for example\n`80:85`, and you can use comma separated list to match several ports or\nranges.\n"
                 },
                 "type": {
                     "type": "string",
@@ -810,7 +810,7 @@
                 },
                 "minTls": {
                     "type": "string",
-                    "description": "The minimum required TLS version for HTTPS sources. \"Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).\n",
+                    "description": "The minimum required TLS version for HTTPS\nsources. \"Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).\n",
                     "willReplaceOnChanges": true
                 },
                 "path": {
@@ -1197,7 +1197,7 @@
                 },
                 "server": {
                     "type": "string",
-                    "description": "The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.\n",
+                    "description": "The DNS server. The `server` attribute is\ndeprecated and will be removed in a future release. Please use the\n`servers` attribute instead.\n",
                     "deprecationMessage": "The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead."
                 },
                 "servers": {
@@ -1227,7 +1227,7 @@
             "properties": {
                 "address": {
                     "type": "string",
-                    "description": "The IPv6 address in CIDR notation\n(e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this\nto `dhcp` for autodiscovery.\n"
+                    "description": "The IPv6 address in CIDR notation\n(e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this\nto `dhcp` for autodiscovery.\n"
                 },
                 "gateway": {
                     "type": "string",
@@ -1240,7 +1240,7 @@
             "properties": {
                 "address": {
                     "type": "string",
-                    "description": "The IPv6 address in CIDR notation\n(e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this\nto `dhcp` for autodiscovery.\n"
+                    "description": "The IPv6 address in CIDR notation\n(e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this\nto `dhcp` for autodiscovery.\n"
                 },
                 "gateway": {
                     "type": "string",
@@ -1437,7 +1437,7 @@
                 },
                 "usb3": {
                     "type": "boolean",
-                    "description": "Makes the USB device a USB3 device for the VM (defaults\nto `false`).\n"
+                    "description": "Makes the USB device a USB3 device for the VM\n(defaults to `false`).\n"
                 }
             },
             "type": "object",
@@ -1515,6 +1515,16 @@
                     "type": "string",
                     "secret": true
                 },
+                "socks5Password": {
+                    "type": "string",
+                    "secret": true
+                },
+                "socks5Server": {
+                    "type": "string"
+                },
+                "socks5Username": {
+                    "type": "string"
+                },
                 "username": {
                     "type": "string"
                 }
@@ -1581,6 +1591,16 @@
                 "password": {
                     "type": "string",
                     "secret": true
+                },
+                "socks5Password": {
+                    "type": "string",
+                    "secret": true
+                },
+                "socks5Server": {
+                    "type": "string"
+                },
+                "socks5Username": {
+                    "type": "string"
                 },
                 "username": {
                     "type": "string"
@@ -1785,7 +1805,7 @@
                 },
                 "startOnBoot": {
                     "type": "boolean",
-                    "description": "Automatically start container when the host system boots (defaults to `true`).\n"
+                    "description": "Automatically start container when the host\nsystem boots (defaults to `true`).\n"
                 },
                 "started": {
                     "type": "boolean",
@@ -1883,7 +1903,7 @@
                 },
                 "startOnBoot": {
                     "type": "boolean",
-                    "description": "Automatically start container when the host system boots (defaults to `true`).\n"
+                    "description": "Automatically start container when the host\nsystem boots (defaults to `true`).\n"
                 },
                 "started": {
                     "type": "boolean",
@@ -1986,7 +2006,7 @@
                     },
                     "startOnBoot": {
                         "type": "boolean",
-                        "description": "Automatically start container when the host system boots (defaults to `true`).\n"
+                        "description": "Automatically start container when the host\nsystem boots (defaults to `true`).\n"
                     },
                     "started": {
                         "type": "boolean",
@@ -2311,11 +2331,11 @@
                 },
                 "logLevelIn": {
                     "type": "string",
-                    "description": "Log level for incoming\npackets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).\n"
+                    "description": "Log level for incoming\npackets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,\n`debug`, `nolog`).\n"
                 },
                 "logLevelOut": {
                     "type": "string",
-                    "description": "Log level for outgoing\npackets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).\n"
+                    "description": "Log level for outgoing\npackets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,\n`debug`, `nolog`).\n"
                 },
                 "macfilter": {
                     "type": "boolean",
@@ -2368,11 +2388,11 @@
                 },
                 "logLevelIn": {
                     "type": "string",
-                    "description": "Log level for incoming\npackets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).\n"
+                    "description": "Log level for incoming\npackets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,\n`debug`, `nolog`).\n"
                 },
                 "logLevelOut": {
                     "type": "string",
-                    "description": "Log level for outgoing\npackets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).\n"
+                    "description": "Log level for outgoing\npackets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,\n`debug`, `nolog`).\n"
                 },
                 "macfilter": {
                     "type": "boolean",
@@ -2427,11 +2447,11 @@
                     },
                     "logLevelIn": {
                         "type": "string",
-                        "description": "Log level for incoming\npackets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).\n"
+                        "description": "Log level for incoming\npackets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,\n`debug`, `nolog`).\n"
                     },
                     "logLevelOut": {
                         "type": "string",
-                        "description": "Log level for outgoing\npackets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).\n"
+                        "description": "Log level for outgoing\npackets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,\n`debug`, `nolog`).\n"
                     },
                     "macfilter": {
                         "type": "boolean",
@@ -2477,7 +2497,7 @@
                     "items": {
                         "$ref": "#/types/proxmoxve:Network/FirewallRulesRule:FirewallRulesRule"
                     },
-                    "description": "Firewall rule block (multiple blocks supported).\nThe provider supports two types of the `rule` blocks:\n- a rule definition block, which includes the following arguments:\n"
+                    "description": "Firewall rule block (multiple blocks supported).\nThe provider supports two types of the `rule` blocks:\n- A rule definition block, which includes the following arguments:\n"
                 },
                 "vmId": {
                     "type": "integer",
@@ -2501,7 +2521,7 @@
                     "items": {
                         "$ref": "#/types/proxmoxve:Network/FirewallRulesRule:FirewallRulesRule"
                     },
-                    "description": "Firewall rule block (multiple blocks supported).\nThe provider supports two types of the `rule` blocks:\n- a rule definition block, which includes the following arguments:\n",
+                    "description": "Firewall rule block (multiple blocks supported).\nThe provider supports two types of the `rule` blocks:\n- A rule definition block, which includes the following arguments:\n",
                     "willReplaceOnChanges": true
                 },
                 "vmId": {
@@ -2528,7 +2548,7 @@
                         "items": {
                             "$ref": "#/types/proxmoxve:Network/FirewallRulesRule:FirewallRulesRule"
                         },
-                        "description": "Firewall rule block (multiple blocks supported).\nThe provider supports two types of the `rule` blocks:\n- a rule definition block, which includes the following arguments:\n",
+                        "description": "Firewall rule block (multiple blocks supported).\nThe provider supports two types of the `rule` blocks:\n- A rule definition block, which includes the following arguments:\n",
                         "willReplaceOnChanges": true
                     },
                     "vmId": {
@@ -3015,7 +3035,7 @@
             "properties": {
                 "contentType": {
                     "type": "string",
-                    "description": "The content type. If not specified, the content type will be inferred from the file\nextension. Valid values are:\n"
+                    "description": "The content type. If not specified, the content\ntype will be inferred from the file extension. Valid values are:\n"
                 },
                 "datastoreId": {
                     "type": "string",
@@ -3047,7 +3067,7 @@
                 },
                 "sourceFile": {
                     "$ref": "#/types/proxmoxve:Storage/FileSourceFile:FileSourceFile",
-                    "description": "The source file (conflicts with `source_raw`), could be a\nlocal file or a URL. If the source file is a URL, the file will be downloaded\nand stored locally before uploading it to Proxmox VE.\n"
+                    "description": "The source file (conflicts with `source_raw`),\ncould be a local file or a URL. If the source file is a URL, the file will\nbe downloaded and stored locally before uploading it to Proxmox VE.\n"
                 },
                 "sourceRaw": {
                     "$ref": "#/types/proxmoxve:Storage/FileSourceRaw:FileSourceRaw",
@@ -3070,7 +3090,7 @@
             "inputProperties": {
                 "contentType": {
                     "type": "string",
-                    "description": "The content type. If not specified, the content type will be inferred from the file\nextension. Valid values are:\n",
+                    "description": "The content type. If not specified, the content\ntype will be inferred from the file extension. Valid values are:\n",
                     "willReplaceOnChanges": true
                 },
                 "datastoreId": {
@@ -3089,7 +3109,7 @@
                 },
                 "sourceFile": {
                     "$ref": "#/types/proxmoxve:Storage/FileSourceFile:FileSourceFile",
-                    "description": "The source file (conflicts with `source_raw`), could be a\nlocal file or a URL. If the source file is a URL, the file will be downloaded\nand stored locally before uploading it to Proxmox VE.\n",
+                    "description": "The source file (conflicts with `source_raw`),\ncould be a local file or a URL. If the source file is a URL, the file will\nbe downloaded and stored locally before uploading it to Proxmox VE.\n",
                     "willReplaceOnChanges": true
                 },
                 "sourceRaw": {
@@ -3111,7 +3131,7 @@
                 "properties": {
                     "contentType": {
                         "type": "string",
-                        "description": "The content type. If not specified, the content type will be inferred from the file\nextension. Valid values are:\n",
+                        "description": "The content type. If not specified, the content\ntype will be inferred from the file extension. Valid values are:\n",
                         "willReplaceOnChanges": true
                     },
                     "datastoreId": {
@@ -3149,7 +3169,7 @@
                     },
                     "sourceFile": {
                         "$ref": "#/types/proxmoxve:Storage/FileSourceFile:FileSourceFile",
-                        "description": "The source file (conflicts with `source_raw`), could be a\nlocal file or a URL. If the source file is a URL, the file will be downloaded\nand stored locally before uploading it to Proxmox VE.\n",
+                        "description": "The source file (conflicts with `source_raw`),\ncould be a local file or a URL. If the source file is a URL, the file will\nbe downloaded and stored locally before uploading it to Proxmox VE.\n",
                         "willReplaceOnChanges": true
                     },
                     "sourceRaw": {
@@ -3320,7 +3340,7 @@
                 },
                 "scsiHardware": {
                     "type": "string",
-                    "description": "The SCSI hardware type (defaults\nto `virtio-scsi-pci`).\n"
+                    "description": "The SCSI hardware type (defaults to\n`virtio-scsi-pci`).\n"
                 },
                 "serialDevices": {
                     "type": "array",
@@ -3542,7 +3562,7 @@
                 },
                 "scsiHardware": {
                     "type": "string",
-                    "description": "The SCSI hardware type (defaults\nto `virtio-scsi-pci`).\n"
+                    "description": "The SCSI hardware type (defaults to\n`virtio-scsi-pci`).\n"
                 },
                 "serialDevices": {
                     "type": "array",
@@ -3796,7 +3816,7 @@
                     },
                     "scsiHardware": {
                         "type": "string",
-                        "description": "The SCSI hardware type (defaults\nto `virtio-scsi-pci`).\n"
+                        "description": "The SCSI hardware type (defaults to\n`virtio-scsi-pci`).\n"
                     },
                     "serialDevices": {
                         "type": "array",

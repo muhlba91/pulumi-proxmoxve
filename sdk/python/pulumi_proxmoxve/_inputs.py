@@ -59,6 +59,9 @@ class ProviderSshArgs:
                  agent_socket: Optional[pulumi.Input[str]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input['ProviderSshNodeArgs']]]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 socks5_password: Optional[pulumi.Input[str]] = None,
+                 socks5_server: Optional[pulumi.Input[str]] = None,
+                 socks5_username: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         if agent is not None:
             pulumi.set(__self__, "agent", agent)
@@ -68,6 +71,12 @@ class ProviderSshArgs:
             pulumi.set(__self__, "nodes", nodes)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if socks5_password is not None:
+            pulumi.set(__self__, "socks5_password", socks5_password)
+        if socks5_server is not None:
+            pulumi.set(__self__, "socks5_server", socks5_server)
+        if socks5_username is not None:
+            pulumi.set(__self__, "socks5_username", socks5_username)
         if username is not None:
             pulumi.set(__self__, "username", username)
 
@@ -106,6 +115,33 @@ class ProviderSshArgs:
     @password.setter
     def password(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter(name="socks5Password")
+    def socks5_password(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "socks5_password")
+
+    @socks5_password.setter
+    def socks5_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "socks5_password", value)
+
+    @property
+    @pulumi.getter(name="socks5Server")
+    def socks5_server(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "socks5_server")
+
+    @socks5_server.setter
+    def socks5_server(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "socks5_server", value)
+
+    @property
+    @pulumi.getter(name="socks5Username")
+    def socks5_username(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "socks5_username")
+
+    @socks5_username.setter
+    def socks5_username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "socks5_username", value)
 
     @property
     @pulumi.getter

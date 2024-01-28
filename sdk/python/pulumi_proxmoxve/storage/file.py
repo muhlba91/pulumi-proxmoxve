@@ -27,13 +27,13 @@ class FileArgs:
         The set of arguments for constructing a File resource.
         :param pulumi.Input[str] datastore_id: The datastore id.
         :param pulumi.Input[str] node_name: The node name.
-        :param pulumi.Input[str] content_type: The content type. If not specified, the content type will be inferred from the file
-               extension. Valid values are:
+        :param pulumi.Input[str] content_type: The content type. If not specified, the content
+               type will be inferred from the file extension. Valid values are:
         :param pulumi.Input[bool] overwrite: Whether to overwrite an existing file (defaults to
                `true`).
-        :param pulumi.Input['FileSourceFileArgs'] source_file: The source file (conflicts with `source_raw`), could be a
-               local file or a URL. If the source file is a URL, the file will be downloaded
-               and stored locally before uploading it to Proxmox VE.
+        :param pulumi.Input['FileSourceFileArgs'] source_file: The source file (conflicts with `source_raw`),
+               could be a local file or a URL. If the source file is a URL, the file will
+               be downloaded and stored locally before uploading it to Proxmox VE.
         :param pulumi.Input['FileSourceRawArgs'] source_raw: The raw source (conflicts with `source_file`).
         :param pulumi.Input[int] timeout_upload: Timeout for uploading ISO/VSTMPL files in
                seconds (defaults to 1800).
@@ -79,8 +79,8 @@ class FileArgs:
     @pulumi.getter(name="contentType")
     def content_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The content type. If not specified, the content type will be inferred from the file
-        extension. Valid values are:
+        The content type. If not specified, the content
+        type will be inferred from the file extension. Valid values are:
         """
         return pulumi.get(self, "content_type")
 
@@ -105,9 +105,9 @@ class FileArgs:
     @pulumi.getter(name="sourceFile")
     def source_file(self) -> Optional[pulumi.Input['FileSourceFileArgs']]:
         """
-        The source file (conflicts with `source_raw`), could be a
-        local file or a URL. If the source file is a URL, the file will be downloaded
-        and stored locally before uploading it to Proxmox VE.
+        The source file (conflicts with `source_raw`),
+        could be a local file or a URL. If the source file is a URL, the file will
+        be downloaded and stored locally before uploading it to Proxmox VE.
         """
         return pulumi.get(self, "source_file")
 
@@ -157,8 +157,8 @@ class _FileState:
                  timeout_upload: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering File resources.
-        :param pulumi.Input[str] content_type: The content type. If not specified, the content type will be inferred from the file
-               extension. Valid values are:
+        :param pulumi.Input[str] content_type: The content type. If not specified, the content
+               type will be inferred from the file extension. Valid values are:
         :param pulumi.Input[str] datastore_id: The datastore id.
         :param pulumi.Input[str] file_modification_date: The file modification date (RFC 3339).
         :param pulumi.Input[str] file_name: The file name.
@@ -167,9 +167,9 @@ class _FileState:
         :param pulumi.Input[str] node_name: The node name.
         :param pulumi.Input[bool] overwrite: Whether to overwrite an existing file (defaults to
                `true`).
-        :param pulumi.Input['FileSourceFileArgs'] source_file: The source file (conflicts with `source_raw`), could be a
-               local file or a URL. If the source file is a URL, the file will be downloaded
-               and stored locally before uploading it to Proxmox VE.
+        :param pulumi.Input['FileSourceFileArgs'] source_file: The source file (conflicts with `source_raw`),
+               could be a local file or a URL. If the source file is a URL, the file will
+               be downloaded and stored locally before uploading it to Proxmox VE.
         :param pulumi.Input['FileSourceRawArgs'] source_raw: The raw source (conflicts with `source_file`).
         :param pulumi.Input[int] timeout_upload: Timeout for uploading ISO/VSTMPL files in
                seconds (defaults to 1800).
@@ -201,8 +201,8 @@ class _FileState:
     @pulumi.getter(name="contentType")
     def content_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The content type. If not specified, the content type will be inferred from the file
-        extension. Valid values are:
+        The content type. If not specified, the content
+        type will be inferred from the file extension. Valid values are:
         """
         return pulumi.get(self, "content_type")
 
@@ -299,9 +299,9 @@ class _FileState:
     @pulumi.getter(name="sourceFile")
     def source_file(self) -> Optional[pulumi.Input['FileSourceFileArgs']]:
         """
-        The source file (conflicts with `source_raw`), could be a
-        local file or a URL. If the source file is a URL, the file will be downloaded
-        and stored locally before uploading it to Proxmox VE.
+        The source file (conflicts with `source_raw`),
+        could be a local file or a URL. If the source file is a URL, the file will
+        be downloaded and stored locally before uploading it to Proxmox VE.
         """
         return pulumi.get(self, "source_file")
 
@@ -425,15 +425,15 @@ class File(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] content_type: The content type. If not specified, the content type will be inferred from the file
-               extension. Valid values are:
+        :param pulumi.Input[str] content_type: The content type. If not specified, the content
+               type will be inferred from the file extension. Valid values are:
         :param pulumi.Input[str] datastore_id: The datastore id.
         :param pulumi.Input[str] node_name: The node name.
         :param pulumi.Input[bool] overwrite: Whether to overwrite an existing file (defaults to
                `true`).
-        :param pulumi.Input[pulumi.InputType['FileSourceFileArgs']] source_file: The source file (conflicts with `source_raw`), could be a
-               local file or a URL. If the source file is a URL, the file will be downloaded
-               and stored locally before uploading it to Proxmox VE.
+        :param pulumi.Input[pulumi.InputType['FileSourceFileArgs']] source_file: The source file (conflicts with `source_raw`),
+               could be a local file or a URL. If the source file is a URL, the file will
+               be downloaded and stored locally before uploading it to Proxmox VE.
         :param pulumi.Input[pulumi.InputType['FileSourceRawArgs']] source_raw: The raw source (conflicts with `source_file`).
         :param pulumi.Input[int] timeout_upload: Timeout for uploading ISO/VSTMPL files in
                seconds (defaults to 1800).
@@ -593,8 +593,8 @@ class File(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] content_type: The content type. If not specified, the content type will be inferred from the file
-               extension. Valid values are:
+        :param pulumi.Input[str] content_type: The content type. If not specified, the content
+               type will be inferred from the file extension. Valid values are:
         :param pulumi.Input[str] datastore_id: The datastore id.
         :param pulumi.Input[str] file_modification_date: The file modification date (RFC 3339).
         :param pulumi.Input[str] file_name: The file name.
@@ -603,9 +603,9 @@ class File(pulumi.CustomResource):
         :param pulumi.Input[str] node_name: The node name.
         :param pulumi.Input[bool] overwrite: Whether to overwrite an existing file (defaults to
                `true`).
-        :param pulumi.Input[pulumi.InputType['FileSourceFileArgs']] source_file: The source file (conflicts with `source_raw`), could be a
-               local file or a URL. If the source file is a URL, the file will be downloaded
-               and stored locally before uploading it to Proxmox VE.
+        :param pulumi.Input[pulumi.InputType['FileSourceFileArgs']] source_file: The source file (conflicts with `source_raw`),
+               could be a local file or a URL. If the source file is a URL, the file will
+               be downloaded and stored locally before uploading it to Proxmox VE.
         :param pulumi.Input[pulumi.InputType['FileSourceRawArgs']] source_raw: The raw source (conflicts with `source_file`).
         :param pulumi.Input[int] timeout_upload: Timeout for uploading ISO/VSTMPL files in
                seconds (defaults to 1800).
@@ -631,8 +631,8 @@ class File(pulumi.CustomResource):
     @pulumi.getter(name="contentType")
     def content_type(self) -> pulumi.Output[str]:
         """
-        The content type. If not specified, the content type will be inferred from the file
-        extension. Valid values are:
+        The content type. If not specified, the content
+        type will be inferred from the file extension. Valid values are:
         """
         return pulumi.get(self, "content_type")
 
@@ -697,9 +697,9 @@ class File(pulumi.CustomResource):
     @pulumi.getter(name="sourceFile")
     def source_file(self) -> pulumi.Output[Optional['outputs.FileSourceFile']]:
         """
-        The source file (conflicts with `source_raw`), could be a
-        local file or a URL. If the source file is a URL, the file will be downloaded
-        and stored locally before uploading it to Proxmox VE.
+        The source file (conflicts with `source_raw`),
+        could be a local file or a URL. If the source file is a URL, the file will
+        be downloaded and stored locally before uploading it to Proxmox VE.
         """
         return pulumi.get(self, "source_file")
 

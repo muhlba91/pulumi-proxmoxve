@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 public final class VirtualMachineInitializationIpConfigIpv4 {
     /**
      * @return The IPv6 address in CIDR notation
-     * (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+     * (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
      * to `dhcp` for autodiscovery.
      * 
      */
@@ -28,7 +28,7 @@ public final class VirtualMachineInitializationIpConfigIpv4 {
     private VirtualMachineInitializationIpConfigIpv4() {}
     /**
      * @return The IPv6 address in CIDR notation
-     * (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+     * (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
      * to `dhcp` for autodiscovery.
      * 
      */

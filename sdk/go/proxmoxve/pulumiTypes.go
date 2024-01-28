@@ -120,11 +120,14 @@ func (o HostsEntryArrayOutput) Index(i pulumi.IntInput) HostsEntryOutput {
 }
 
 type ProviderSsh struct {
-	Agent       *bool             `pulumi:"agent"`
-	AgentSocket *string           `pulumi:"agentSocket"`
-	Nodes       []ProviderSshNode `pulumi:"nodes"`
-	Password    *string           `pulumi:"password"`
-	Username    *string           `pulumi:"username"`
+	Agent          *bool             `pulumi:"agent"`
+	AgentSocket    *string           `pulumi:"agentSocket"`
+	Nodes          []ProviderSshNode `pulumi:"nodes"`
+	Password       *string           `pulumi:"password"`
+	Socks5Password *string           `pulumi:"socks5Password"`
+	Socks5Server   *string           `pulumi:"socks5Server"`
+	Socks5Username *string           `pulumi:"socks5Username"`
+	Username       *string           `pulumi:"username"`
 }
 
 // ProviderSshInput is an input type that accepts ProviderSshArgs and ProviderSshOutput values.
@@ -139,11 +142,14 @@ type ProviderSshInput interface {
 }
 
 type ProviderSshArgs struct {
-	Agent       pulumi.BoolPtrInput       `pulumi:"agent"`
-	AgentSocket pulumi.StringPtrInput     `pulumi:"agentSocket"`
-	Nodes       ProviderSshNodeArrayInput `pulumi:"nodes"`
-	Password    pulumi.StringPtrInput     `pulumi:"password"`
-	Username    pulumi.StringPtrInput     `pulumi:"username"`
+	Agent          pulumi.BoolPtrInput       `pulumi:"agent"`
+	AgentSocket    pulumi.StringPtrInput     `pulumi:"agentSocket"`
+	Nodes          ProviderSshNodeArrayInput `pulumi:"nodes"`
+	Password       pulumi.StringPtrInput     `pulumi:"password"`
+	Socks5Password pulumi.StringPtrInput     `pulumi:"socks5Password"`
+	Socks5Server   pulumi.StringPtrInput     `pulumi:"socks5Server"`
+	Socks5Username pulumi.StringPtrInput     `pulumi:"socks5Username"`
+	Username       pulumi.StringPtrInput     `pulumi:"username"`
 }
 
 func (ProviderSshArgs) ElementType() reflect.Type {
@@ -239,6 +245,18 @@ func (o ProviderSshOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderSsh) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderSshOutput) Socks5Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderSsh) *string { return v.Socks5Password }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderSshOutput) Socks5Server() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderSsh) *string { return v.Socks5Server }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderSshOutput) Socks5Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderSsh) *string { return v.Socks5Username }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderSshOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderSsh) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -300,6 +318,33 @@ func (o ProviderSshPtrOutput) Password() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderSshPtrOutput) Socks5Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderSsh) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Socks5Password
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderSshPtrOutput) Socks5Server() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderSsh) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Socks5Server
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderSshPtrOutput) Socks5Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderSsh) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Socks5Username
 	}).(pulumi.StringPtrOutput)
 }
 

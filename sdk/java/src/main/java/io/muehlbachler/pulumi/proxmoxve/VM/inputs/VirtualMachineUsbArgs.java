@@ -49,16 +49,16 @@ public final class VirtualMachineUsbArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Makes the USB device a USB3 device for the VM (defaults
-     * to `false`).
+     * Makes the USB device a USB3 device for the VM
+     * (defaults to `false`).
      * 
      */
     @Import(name="usb3")
     private @Nullable Output<Boolean> usb3;
 
     /**
-     * @return Makes the USB device a USB3 device for the VM (defaults
-     * to `false`).
+     * @return Makes the USB device a USB3 device for the VM
+     * (defaults to `false`).
      * 
      */
     public Optional<Output<Boolean>> usb3() {
@@ -136,8 +136,8 @@ public final class VirtualMachineUsbArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param usb3 Makes the USB device a USB3 device for the VM (defaults
-         * to `false`).
+         * @param usb3 Makes the USB device a USB3 device for the VM
+         * (defaults to `false`).
          * 
          * @return builder
          * 
@@ -148,8 +148,8 @@ public final class VirtualMachineUsbArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param usb3 Makes the USB device a USB3 device for the VM (defaults
-         * to `false`).
+         * @param usb3 Makes the USB device a USB3 device for the VM
+         * (defaults to `false`).
          * 
          * @return builder
          * 

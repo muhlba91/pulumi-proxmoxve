@@ -396,7 +396,9 @@ class ContainerInitializationDns(dict):
                  servers: Optional[Sequence[str]] = None):
         """
         :param str domain: The DNS search domain.
-        :param str server: The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+        :param str server: The DNS server. The `server` attribute is
+               deprecated and will be removed in a future release. Please use
+               the `servers` attribute instead.
         :param Sequence[str] servers: The list of DNS servers.
         """
         if domain is not None:
@@ -418,7 +420,9 @@ class ContainerInitializationDns(dict):
     @pulumi.getter
     def server(self) -> Optional[str]:
         """
-        The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+        The DNS server. The `server` attribute is
+        deprecated and will be removed in a future release. Please use
+        the `servers` attribute instead.
         """
         warnings.warn("""The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.""", DeprecationWarning)
         pulumi.log.warn("""server is deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.""")

@@ -89,7 +89,7 @@ namespace Pulumi.ProxmoxVE.Network
         /// <summary>
         /// Firewall rule block (multiple blocks supported).
         /// The provider supports two types of the `rule` blocks:
-        /// - a rule definition block, which includes the following arguments:
+        /// - A rule definition block, which includes the following arguments:
         /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.FirewallRulesRule>> Rules { get; private set; } = null!;
@@ -166,7 +166,7 @@ namespace Pulumi.ProxmoxVE.Network
         /// <summary>
         /// Firewall rule block (multiple blocks supported).
         /// The provider supports two types of the `rule` blocks:
-        /// - a rule definition block, which includes the following arguments:
+        /// - A rule definition block, which includes the following arguments:
         /// </summary>
         public InputList<Inputs.FirewallRulesRuleArgs> Rules
         {
@@ -207,7 +207,7 @@ namespace Pulumi.ProxmoxVE.Network
         /// <summary>
         /// Firewall rule block (multiple blocks supported).
         /// The provider supports two types of the `rule` blocks:
-        /// - a rule definition block, which includes the following arguments:
+        /// - A rule definition block, which includes the following arguments:
         /// </summary>
         public InputList<Inputs.FirewallRulesRuleGetArgs> Rules
         {

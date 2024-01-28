@@ -133,7 +133,9 @@ export namespace CT {
          */
         domain?: string;
         /**
-         * The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+         * The DNS server. The `server` attribute is
+         * deprecated and will be removed in a future release. Please use
+         * the `servers` attribute instead.
          *
          * @deprecated The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
          */
@@ -343,7 +345,8 @@ export namespace Network {
          */
         enabled?: boolean;
         /**
-         * Frequency with which the burst bucket gets refilled (defaults to `1/second`).
+         * Frequency with which the burst bucket gets refilled
+         * (defaults to `1/second`).
          */
         rate?: string;
     }
@@ -359,19 +362,19 @@ export namespace Network {
         comment?: string;
         /**
          * Restrict packet destination address. This can
-         * refer to a single IP address, an IP set ('+ipsetname') or an IP alias
-         * definition. You can also specify an address range
+         * refer to a single IP address, an IP set ('+ipsetname') or an IP
+         * alias definition. You can also specify an address range
          * like `20.34.101.207-201.3.9.99`, or a list of IP addresses and
-         * networks (entries are separated by comma). Please do not mix IPv4 and
-         * IPv6 addresses inside such lists.
+         * networks (entries are separated by comma). Please do not mix IPv4
+         * and IPv6 addresses inside such lists.
          */
         dest?: string;
         /**
          * Restrict TCP/UDP destination port. You can use
          * service names or simple numbers (0-65535), as defined
          * in `/etc/services`. Port ranges can be specified with '\d+:\d+', for
-         * example `80:85`, and you can use comma separated list to match several
-         * ports or ranges.
+         * example `80:85`, and you can use comma separated list to match
+         * several ports or ranges.
          */
         dport?: string;
         /**
@@ -412,16 +415,16 @@ export namespace Network {
          * to a single IP address, an IP set ('+ipsetname') or an IP alias
          * definition. You can also specify an address range
          * like `20.34.101.207-201.3.9.99`, or a list of IP addresses and
-         * networks (entries are separated by comma). Please do not mix IPv4 and
-         * IPv6 addresses inside such lists.
+         * networks (entries are separated by comma). Please do not mix IPv4
+         * and IPv6 addresses inside such lists.
          */
         source?: string;
         /**
          * Restrict TCP/UDP source port. You can use
          * service names or simple numbers (0-65535), as defined
          * in `/etc/services`. Port ranges can be specified with '\d+:\d+', for
-         * example `80:85`, and you can use comma separated list to match several
-         * ports or ranges.
+         * example `80:85`, and you can use comma separated list to match
+         * several ports or ranges.
          * - a security group insertion block, which includes the following arguments:
          */
         sport?: string;
@@ -442,17 +445,19 @@ export namespace Network {
         comment?: string;
         /**
          * Restrict packet destination address. This can refer to
-         * a single IP address, an IP set ('+ipsetname') or an IP alias definition.
-         * You can also specify an address range like `20.34.101.207-201.3.9.99`, or
-         * a list of IP addresses and networks (entries are separated by comma).
-         * Please do not mix IPv4 and IPv6 addresses inside such lists.
+         * a single IP address, an IP set ('+ipsetname') or an IP alias
+         * definition. You can also specify an address range like
+         * `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks
+         * (entries are separated by comma). Please do not mix IPv4 and IPv6
+         * addresses inside such lists.
          */
         dest?: string;
         /**
          * Restrict TCP/UDP destination port. You can use
-         * service names or simple numbers (0-65535), as defined in '/etc/services'.
-         * Port ranges can be specified with '\d+:\d+', for example `80:85`, and
-         * you can use comma separated list to match several ports or ranges.
+         * service names or simple numbers (0-65535), as defined in '/etc/
+         * services'. Port ranges can be specified with '\d+:\d+', for example
+         * `80:85`, and you can use comma separated list to match several ports or
+         * ranges.
          */
         dport?: string;
         enabled?: boolean;
@@ -487,15 +492,16 @@ export namespace Network {
          * to a single IP address, an IP set ('+ipsetname') or an IP alias
          * definition. You can also specify an address range like
          * `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks (
-         * entries are separated by comma). Please do not mix IPv4 and IPv6 addresses
-         * inside such lists.
+         * entries are separated by comma). Please do not mix IPv4 and IPv6
+         * addresses inside such lists.
          */
         source?: string;
         /**
          * Restrict TCP/UDP source port. You can use
-         * service names or simple numbers (0-65535), as defined in '/etc/services'.
-         * Port ranges can be specified with '\d+:\d+', for example `80:85`, and
-         * you can use comma separated list to match several ports or ranges.
+         * service names or simple numbers (0-65535), as defined in '/etc/
+         * services'. Port ranges can be specified with '\d+:\d+', for example
+         * `80:85`, and you can use comma separated list to match several ports or
+         * ranges.
          */
         sport?: string;
         /**
@@ -632,7 +638,8 @@ export namespace Storage {
          */
         insecure?: boolean;
         /**
-         * The minimum required TLS version for HTTPS sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
+         * The minimum required TLS version for HTTPS
+         * sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
          */
         minTls?: string;
         /**
@@ -1037,7 +1044,9 @@ export namespace VM {
          */
         domain?: string;
         /**
-         * The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+         * The DNS server. The `server` attribute is
+         * deprecated and will be removed in a future release. Please use the
+         * `servers` attribute instead.
          *
          * @deprecated The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
          */
@@ -1062,7 +1071,7 @@ export namespace VM {
     export interface VirtualMachineInitializationIpConfigIpv4 {
         /**
          * The IPv6 address in CIDR notation
-         * (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+         * (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
          * to `dhcp` for autodiscovery.
          */
         address?: string;
@@ -1076,7 +1085,7 @@ export namespace VM {
     export interface VirtualMachineInitializationIpConfigIpv6 {
         /**
          * The IPv6 address in CIDR notation
-         * (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+         * (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
          * to `dhcp` for autodiscovery.
          */
         address?: string;
@@ -1241,8 +1250,8 @@ export namespace VM {
          */
         mapping?: string;
         /**
-         * Makes the USB device a USB3 device for the VM (defaults
-         * to `false`).
+         * Makes the USB device a USB3 device for the VM
+         * (defaults to `false`).
          */
         usb3?: boolean;
     }
@@ -1271,6 +1280,9 @@ export namespace config {
         agentSocket?: string;
         nodes?: outputs.config.SshNode[];
         password?: string;
+        socks5Password?: string;
+        socks5Server?: string;
+        socks5Username?: string;
         username?: string;
     }
 

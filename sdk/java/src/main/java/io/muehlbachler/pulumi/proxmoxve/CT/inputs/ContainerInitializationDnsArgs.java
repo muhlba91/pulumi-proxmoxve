@@ -32,7 +32,9 @@ public final class ContainerInitializationDnsArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+     * The DNS server. The `server` attribute is
+     * deprecated and will be removed in a future release. Please use
+     * the `servers` attribute instead.
      * 
      * @deprecated
      * The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
@@ -43,7 +45,9 @@ public final class ContainerInitializationDnsArgs extends com.pulumi.resources.R
     private @Nullable Output<String> server;
 
     /**
-     * @return The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+     * @return The DNS server. The `server` attribute is
+     * deprecated and will be removed in a future release. Please use
+     * the `servers` attribute instead.
      * 
      * @deprecated
      * The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
@@ -117,7 +121,9 @@ public final class ContainerInitializationDnsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param server The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+         * @param server The DNS server. The `server` attribute is
+         * deprecated and will be removed in a future release. Please use
+         * the `servers` attribute instead.
          * 
          * @return builder
          * 
@@ -132,7 +138,9 @@ public final class ContainerInitializationDnsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param server The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+         * @param server The DNS server. The `server` attribute is
+         * deprecated and will be removed in a future release. Please use
+         * the `servers` attribute instead.
          * 
          * @return builder
          * 

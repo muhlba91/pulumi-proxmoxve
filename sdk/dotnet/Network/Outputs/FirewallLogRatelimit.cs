@@ -23,7 +23,8 @@ namespace Pulumi.ProxmoxVE.Network.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Frequency with which the burst bucket gets refilled (defaults to `1/second`).
+        /// Frequency with which the burst bucket gets refilled
+        /// (defaults to `1/second`).
         /// </summary>
         public readonly string? Rate;
 

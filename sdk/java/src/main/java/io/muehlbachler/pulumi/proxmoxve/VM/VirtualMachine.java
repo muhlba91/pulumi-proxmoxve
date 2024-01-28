@@ -554,16 +554,16 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.reboot);
     }
     /**
-     * The SCSI hardware type (defaults
-     * to `virtio-scsi-pci`).
+     * The SCSI hardware type (defaults to
+     * `virtio-scsi-pci`).
      * 
      */
     @Export(name="scsiHardware", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> scsiHardware;
 
     /**
-     * @return The SCSI hardware type (defaults
-     * to `virtio-scsi-pci`).
+     * @return The SCSI hardware type (defaults to
+     * `virtio-scsi-pci`).
      * 
      */
     public Output<Optional<String>> scsiHardware() {

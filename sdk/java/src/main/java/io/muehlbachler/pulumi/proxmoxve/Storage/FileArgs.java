@@ -20,16 +20,16 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
     public static final FileArgs Empty = new FileArgs();
 
     /**
-     * The content type. If not specified, the content type will be inferred from the file
-     * extension. Valid values are:
+     * The content type. If not specified, the content
+     * type will be inferred from the file extension. Valid values are:
      * 
      */
     @Import(name="contentType")
     private @Nullable Output<String> contentType;
 
     /**
-     * @return The content type. If not specified, the content type will be inferred from the file
-     * extension. Valid values are:
+     * @return The content type. If not specified, the content
+     * type will be inferred from the file extension. Valid values are:
      * 
      */
     public Optional<Output<String>> contentType() {
@@ -84,18 +84,18 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The source file (conflicts with `source_raw`), could be a
-     * local file or a URL. If the source file is a URL, the file will be downloaded
-     * and stored locally before uploading it to Proxmox VE.
+     * The source file (conflicts with `source_raw`),
+     * could be a local file or a URL. If the source file is a URL, the file will
+     * be downloaded and stored locally before uploading it to Proxmox VE.
      * 
      */
     @Import(name="sourceFile")
     private @Nullable Output<FileSourceFileArgs> sourceFile;
 
     /**
-     * @return The source file (conflicts with `source_raw`), could be a
-     * local file or a URL. If the source file is a URL, the file will be downloaded
-     * and stored locally before uploading it to Proxmox VE.
+     * @return The source file (conflicts with `source_raw`),
+     * could be a local file or a URL. If the source file is a URL, the file will
+     * be downloaded and stored locally before uploading it to Proxmox VE.
      * 
      */
     public Optional<Output<FileSourceFileArgs>> sourceFile() {
@@ -165,8 +165,8 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param contentType The content type. If not specified, the content type will be inferred from the file
-         * extension. Valid values are:
+         * @param contentType The content type. If not specified, the content
+         * type will be inferred from the file extension. Valid values are:
          * 
          * @return builder
          * 
@@ -177,8 +177,8 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param contentType The content type. If not specified, the content type will be inferred from the file
-         * extension. Valid values are:
+         * @param contentType The content type. If not specified, the content
+         * type will be inferred from the file extension. Valid values are:
          * 
          * @return builder
          * 
@@ -253,9 +253,9 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceFile The source file (conflicts with `source_raw`), could be a
-         * local file or a URL. If the source file is a URL, the file will be downloaded
-         * and stored locally before uploading it to Proxmox VE.
+         * @param sourceFile The source file (conflicts with `source_raw`),
+         * could be a local file or a URL. If the source file is a URL, the file will
+         * be downloaded and stored locally before uploading it to Proxmox VE.
          * 
          * @return builder
          * 
@@ -266,9 +266,9 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceFile The source file (conflicts with `source_raw`), could be a
-         * local file or a URL. If the source file is a URL, the file will be downloaded
-         * and stored locally before uploading it to Proxmox VE.
+         * @param sourceFile The source file (conflicts with `source_raw`),
+         * could be a local file or a URL. If the source file is a URL, the file will
+         * be downloaded and stored locally before uploading it to Proxmox VE.
          * 
          * @return builder
          * 

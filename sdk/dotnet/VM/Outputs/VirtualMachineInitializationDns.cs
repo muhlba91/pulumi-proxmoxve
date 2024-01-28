@@ -18,7 +18,9 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly string? Domain;
         /// <summary>
-        /// The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+        /// The DNS server. The `server` attribute is
+        /// deprecated and will be removed in a future release. Please use the
+        /// `servers` attribute instead.
         /// </summary>
         public readonly string? Server;
         /// <summary>

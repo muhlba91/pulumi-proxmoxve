@@ -115,8 +115,8 @@ namespace Pulumi.ProxmoxVE.Storage
     public partial class File : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The content type. If not specified, the content type will be inferred from the file
-        /// extension. Valid values are:
+        /// The content type. If not specified, the content
+        /// type will be inferred from the file extension. Valid values are:
         /// </summary>
         [Output("contentType")]
         public Output<string> ContentType { get; private set; } = null!;
@@ -165,9 +165,9 @@ namespace Pulumi.ProxmoxVE.Storage
         public Output<bool?> Overwrite { get; private set; } = null!;
 
         /// <summary>
-        /// The source file (conflicts with `source_raw`), could be a
-        /// local file or a URL. If the source file is a URL, the file will be downloaded
-        /// and stored locally before uploading it to Proxmox VE.
+        /// The source file (conflicts with `source_raw`),
+        /// could be a local file or a URL. If the source file is a URL, the file will
+        /// be downloaded and stored locally before uploading it to Proxmox VE.
         /// </summary>
         [Output("sourceFile")]
         public Output<Outputs.FileSourceFile?> SourceFile { get; private set; } = null!;
@@ -233,8 +233,8 @@ namespace Pulumi.ProxmoxVE.Storage
     public sealed class FileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The content type. If not specified, the content type will be inferred from the file
-        /// extension. Valid values are:
+        /// The content type. If not specified, the content
+        /// type will be inferred from the file extension. Valid values are:
         /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
@@ -259,9 +259,9 @@ namespace Pulumi.ProxmoxVE.Storage
         public Input<bool>? Overwrite { get; set; }
 
         /// <summary>
-        /// The source file (conflicts with `source_raw`), could be a
-        /// local file or a URL. If the source file is a URL, the file will be downloaded
-        /// and stored locally before uploading it to Proxmox VE.
+        /// The source file (conflicts with `source_raw`),
+        /// could be a local file or a URL. If the source file is a URL, the file will
+        /// be downloaded and stored locally before uploading it to Proxmox VE.
         /// </summary>
         [Input("sourceFile")]
         public Input<Inputs.FileSourceFileArgs>? SourceFile { get; set; }
@@ -288,8 +288,8 @@ namespace Pulumi.ProxmoxVE.Storage
     public sealed class FileState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The content type. If not specified, the content type will be inferred from the file
-        /// extension. Valid values are:
+        /// The content type. If not specified, the content
+        /// type will be inferred from the file extension. Valid values are:
         /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
@@ -338,9 +338,9 @@ namespace Pulumi.ProxmoxVE.Storage
         public Input<bool>? Overwrite { get; set; }
 
         /// <summary>
-        /// The source file (conflicts with `source_raw`), could be a
-        /// local file or a URL. If the source file is a URL, the file will be downloaded
-        /// and stored locally before uploading it to Proxmox VE.
+        /// The source file (conflicts with `source_raw`),
+        /// could be a local file or a URL. If the source file is a URL, the file will
+        /// be downloaded and stored locally before uploading it to Proxmox VE.
         /// </summary>
         [Input("sourceFile")]
         public Input<Inputs.FileSourceFileGetArgs>? SourceFile { get; set; }

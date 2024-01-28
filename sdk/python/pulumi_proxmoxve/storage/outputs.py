@@ -48,7 +48,8 @@ class FileSourceFile(dict):
         :param str file_name: The file name.
         :param bool insecure: Whether to skip the TLS verification step for
                HTTPS sources (defaults to `false`).
-        :param str min_tls: The minimum required TLS version for HTTPS sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
+        :param str min_tls: The minimum required TLS version for HTTPS
+               sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
         """
         pulumi.set(__self__, "path", path)
         if changed is not None:
@@ -104,7 +105,8 @@ class FileSourceFile(dict):
     @pulumi.getter(name="minTls")
     def min_tls(self) -> Optional[str]:
         """
-        The minimum required TLS version for HTTPS sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
+        The minimum required TLS version for HTTPS
+        sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
         """
         return pulumi.get(self, "min_tls")
 

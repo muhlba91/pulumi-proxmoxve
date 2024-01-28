@@ -53,7 +53,7 @@ public final class FirewallRulesState extends com.pulumi.resources.ResourceArgs 
     /**
      * Firewall rule block (multiple blocks supported).
      * The provider supports two types of the `rule` blocks:
-     * - a rule definition block, which includes the following arguments:
+     * - A rule definition block, which includes the following arguments:
      * 
      */
     @Import(name="rules")
@@ -62,7 +62,7 @@ public final class FirewallRulesState extends com.pulumi.resources.ResourceArgs 
     /**
      * @return Firewall rule block (multiple blocks supported).
      * The provider supports two types of the `rule` blocks:
-     * - a rule definition block, which includes the following arguments:
+     * - A rule definition block, which includes the following arguments:
      * 
      */
     public Optional<Output<List<FirewallRulesRuleArgs>>> rules() {
@@ -158,7 +158,7 @@ public final class FirewallRulesState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param rules Firewall rule block (multiple blocks supported).
          * The provider supports two types of the `rule` blocks:
-         * - a rule definition block, which includes the following arguments:
+         * - A rule definition block, which includes the following arguments:
          * 
          * @return builder
          * 
@@ -171,7 +171,7 @@ public final class FirewallRulesState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param rules Firewall rule block (multiple blocks supported).
          * The provider supports two types of the `rule` blocks:
-         * - a rule definition block, which includes the following arguments:
+         * - A rule definition block, which includes the following arguments:
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class FirewallRulesState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param rules Firewall rule block (multiple blocks supported).
          * The provider supports two types of the `rule` blocks:
-         * - a rule definition block, which includes the following arguments:
+         * - A rule definition block, which includes the following arguments:
          * 
          * @return builder
          * 

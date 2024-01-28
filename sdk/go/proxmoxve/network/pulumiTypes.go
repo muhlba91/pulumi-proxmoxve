@@ -137,7 +137,8 @@ type FirewallLogRatelimit struct {
 	Burst *int `pulumi:"burst"`
 	// Enable or disable the log rate limit.
 	Enabled *bool `pulumi:"enabled"`
-	// Frequency with which the burst bucket gets refilled (defaults to `1/second`).
+	// Frequency with which the burst bucket gets refilled
+	// (defaults to `1/second`).
 	Rate *string `pulumi:"rate"`
 }
 
@@ -158,7 +159,8 @@ type FirewallLogRatelimitArgs struct {
 	Burst pulumi.IntPtrInput `pulumi:"burst"`
 	// Enable or disable the log rate limit.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Frequency with which the burst bucket gets refilled (defaults to `1/second`).
+	// Frequency with which the burst bucket gets refilled
+	// (defaults to `1/second`).
 	Rate pulumi.StringPtrInput `pulumi:"rate"`
 }
 
@@ -250,7 +252,8 @@ func (o FirewallLogRatelimitOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FirewallLogRatelimit) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Frequency with which the burst bucket gets refilled (defaults to `1/second`).
+// Frequency with which the burst bucket gets refilled
+// (defaults to `1/second`).
 func (o FirewallLogRatelimitOutput) Rate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallLogRatelimit) *string { return v.Rate }).(pulumi.StringPtrOutput)
 }
@@ -300,7 +303,8 @@ func (o FirewallLogRatelimitPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Frequency with which the burst bucket gets refilled (defaults to `1/second`).
+// Frequency with which the burst bucket gets refilled
+// (defaults to `1/second`).
 func (o FirewallLogRatelimitPtrOutput) Rate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallLogRatelimit) *string {
 		if v == nil {
@@ -316,17 +320,17 @@ type FirewallRulesRule struct {
 	// Rule comment.
 	Comment *string `pulumi:"comment"`
 	// Restrict packet destination address. This can
-	// refer to a single IP address, an IP set ('+ipsetname') or an IP alias
-	// definition. You can also specify an address range
+	// refer to a single IP address, an IP set ('+ipsetname') or an IP
+	// alias definition. You can also specify an address range
 	// like `20.34.101.207-201.3.9.99`, or a list of IP addresses and
-	// networks (entries are separated by comma). Please do not mix IPv4 and
-	// IPv6 addresses inside such lists.
+	// networks (entries are separated by comma). Please do not mix IPv4
+	// and IPv6 addresses inside such lists.
 	Dest *string `pulumi:"dest"`
 	// Restrict TCP/UDP destination port. You can use
 	// service names or simple numbers (0-65535), as defined
 	// in `/etc/services`. Port ranges can be specified with '\d+:\d+', for
-	// example `80:85`, and you can use comma separated list to match several
-	// ports or ranges.
+	// example `80:85`, and you can use comma separated list to match
+	// several ports or ranges.
 	Dport *string `pulumi:"dport"`
 	// Enable this rule. Defaults to `true`.
 	Enabled *bool `pulumi:"enabled"`
@@ -351,14 +355,14 @@ type FirewallRulesRule struct {
 	// to a single IP address, an IP set ('+ipsetname') or an IP alias
 	// definition. You can also specify an address range
 	// like `20.34.101.207-201.3.9.99`, or a list of IP addresses and
-	// networks (entries are separated by comma). Please do not mix IPv4 and
-	// IPv6 addresses inside such lists.
+	// networks (entries are separated by comma). Please do not mix IPv4
+	// and IPv6 addresses inside such lists.
 	Source *string `pulumi:"source"`
 	// Restrict TCP/UDP source port. You can use
 	// service names or simple numbers (0-65535), as defined
 	// in `/etc/services`. Port ranges can be specified with '\d+:\d+', for
-	// example `80:85`, and you can use comma separated list to match several
-	// ports or ranges.
+	// example `80:85`, and you can use comma separated list to match
+	// several ports or ranges.
 	// - a security group insertion block, which includes the following arguments:
 	Sport *string `pulumi:"sport"`
 	// Rule type (`in`, `out`).
@@ -382,17 +386,17 @@ type FirewallRulesRuleArgs struct {
 	// Rule comment.
 	Comment pulumi.StringPtrInput `pulumi:"comment"`
 	// Restrict packet destination address. This can
-	// refer to a single IP address, an IP set ('+ipsetname') or an IP alias
-	// definition. You can also specify an address range
+	// refer to a single IP address, an IP set ('+ipsetname') or an IP
+	// alias definition. You can also specify an address range
 	// like `20.34.101.207-201.3.9.99`, or a list of IP addresses and
-	// networks (entries are separated by comma). Please do not mix IPv4 and
-	// IPv6 addresses inside such lists.
+	// networks (entries are separated by comma). Please do not mix IPv4
+	// and IPv6 addresses inside such lists.
 	Dest pulumi.StringPtrInput `pulumi:"dest"`
 	// Restrict TCP/UDP destination port. You can use
 	// service names or simple numbers (0-65535), as defined
 	// in `/etc/services`. Port ranges can be specified with '\d+:\d+', for
-	// example `80:85`, and you can use comma separated list to match several
-	// ports or ranges.
+	// example `80:85`, and you can use comma separated list to match
+	// several ports or ranges.
 	Dport pulumi.StringPtrInput `pulumi:"dport"`
 	// Enable this rule. Defaults to `true`.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
@@ -417,14 +421,14 @@ type FirewallRulesRuleArgs struct {
 	// to a single IP address, an IP set ('+ipsetname') or an IP alias
 	// definition. You can also specify an address range
 	// like `20.34.101.207-201.3.9.99`, or a list of IP addresses and
-	// networks (entries are separated by comma). Please do not mix IPv4 and
-	// IPv6 addresses inside such lists.
+	// networks (entries are separated by comma). Please do not mix IPv4
+	// and IPv6 addresses inside such lists.
 	Source pulumi.StringPtrInput `pulumi:"source"`
 	// Restrict TCP/UDP source port. You can use
 	// service names or simple numbers (0-65535), as defined
 	// in `/etc/services`. Port ranges can be specified with '\d+:\d+', for
-	// example `80:85`, and you can use comma separated list to match several
-	// ports or ranges.
+	// example `80:85`, and you can use comma separated list to match
+	// several ports or ranges.
 	// - a security group insertion block, which includes the following arguments:
 	Sport pulumi.StringPtrInput `pulumi:"sport"`
 	// Rule type (`in`, `out`).
@@ -493,11 +497,11 @@ func (o FirewallRulesRuleOutput) Comment() pulumi.StringPtrOutput {
 }
 
 // Restrict packet destination address. This can
-// refer to a single IP address, an IP set ('+ipsetname') or an IP alias
-// definition. You can also specify an address range
+// refer to a single IP address, an IP set ('+ipsetname') or an IP
+// alias definition. You can also specify an address range
 // like `20.34.101.207-201.3.9.99`, or a list of IP addresses and
-// networks (entries are separated by comma). Please do not mix IPv4 and
-// IPv6 addresses inside such lists.
+// networks (entries are separated by comma). Please do not mix IPv4
+// and IPv6 addresses inside such lists.
 func (o FirewallRulesRuleOutput) Dest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallRulesRule) *string { return v.Dest }).(pulumi.StringPtrOutput)
 }
@@ -505,8 +509,8 @@ func (o FirewallRulesRuleOutput) Dest() pulumi.StringPtrOutput {
 // Restrict TCP/UDP destination port. You can use
 // service names or simple numbers (0-65535), as defined
 // in `/etc/services`. Port ranges can be specified with '\d+:\d+', for
-// example `80:85`, and you can use comma separated list to match several
-// ports or ranges.
+// example `80:85`, and you can use comma separated list to match
+// several ports or ranges.
 func (o FirewallRulesRuleOutput) Dport() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallRulesRule) *string { return v.Dport }).(pulumi.StringPtrOutput)
 }
@@ -555,8 +559,8 @@ func (o FirewallRulesRuleOutput) SecurityGroup() pulumi.StringPtrOutput {
 // to a single IP address, an IP set ('+ipsetname') or an IP alias
 // definition. You can also specify an address range
 // like `20.34.101.207-201.3.9.99`, or a list of IP addresses and
-// networks (entries are separated by comma). Please do not mix IPv4 and
-// IPv6 addresses inside such lists.
+// networks (entries are separated by comma). Please do not mix IPv4
+// and IPv6 addresses inside such lists.
 func (o FirewallRulesRuleOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallRulesRule) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
@@ -564,8 +568,8 @@ func (o FirewallRulesRuleOutput) Source() pulumi.StringPtrOutput {
 // Restrict TCP/UDP source port. You can use
 // service names or simple numbers (0-65535), as defined
 // in `/etc/services`. Port ranges can be specified with '\d+:\d+', for
-// example `80:85`, and you can use comma separated list to match several
-// ports or ranges.
+// example `80:85`, and you can use comma separated list to match
+// several ports or ranges.
 // - a security group insertion block, which includes the following arguments:
 func (o FirewallRulesRuleOutput) Sport() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallRulesRule) *string { return v.Sport }).(pulumi.StringPtrOutput)
@@ -602,15 +606,17 @@ type FirewallSecurityGroupRule struct {
 	// Rule comment.
 	Comment *string `pulumi:"comment"`
 	// Restrict packet destination address. This can refer to
-	// a single IP address, an IP set ('+ipsetname') or an IP alias definition.
-	// You can also specify an address range like `20.34.101.207-201.3.9.99`, or
-	// a list of IP addresses and networks (entries are separated by comma).
-	// Please do not mix IPv4 and IPv6 addresses inside such lists.
+	// a single IP address, an IP set ('+ipsetname') or an IP alias
+	// definition. You can also specify an address range like
+	// `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks
+	// (entries are separated by comma). Please do not mix IPv4 and IPv6
+	// addresses inside such lists.
 	Dest *string `pulumi:"dest"`
 	// Restrict TCP/UDP destination port. You can use
-	// service names or simple numbers (0-65535), as defined in '/etc/services'.
-	// Port ranges can be specified with '\d+:\d+', for example `80:85`, and
-	// you can use comma separated list to match several ports or ranges.
+	// service names or simple numbers (0-65535), as defined in '/etc/
+	// services'. Port ranges can be specified with '\d+:\d+', for example
+	// `80:85`, and you can use comma separated list to match several ports or
+	// ranges.
 	Dport   *string `pulumi:"dport"`
 	Enabled *bool   `pulumi:"enabled"`
 	// Network interface name. You have to use network
@@ -633,13 +639,14 @@ type FirewallSecurityGroupRule struct {
 	// to a single IP address, an IP set ('+ipsetname') or an IP alias
 	// definition. You can also specify an address range like
 	// `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks (
-	// entries are separated by comma). Please do not mix IPv4 and IPv6 addresses
-	// inside such lists.
+	// entries are separated by comma). Please do not mix IPv4 and IPv6
+	// addresses inside such lists.
 	Source *string `pulumi:"source"`
 	// Restrict TCP/UDP source port. You can use
-	// service names or simple numbers (0-65535), as defined in '/etc/services'.
-	// Port ranges can be specified with '\d+:\d+', for example `80:85`, and
-	// you can use comma separated list to match several ports or ranges.
+	// service names or simple numbers (0-65535), as defined in '/etc/
+	// services'. Port ranges can be specified with '\d+:\d+', for example
+	// `80:85`, and you can use comma separated list to match several ports or
+	// ranges.
 	Sport *string `pulumi:"sport"`
 	// Rule type (`in`, `out`).
 	Type *string `pulumi:"type"`
@@ -662,15 +669,17 @@ type FirewallSecurityGroupRuleArgs struct {
 	// Rule comment.
 	Comment pulumi.StringPtrInput `pulumi:"comment"`
 	// Restrict packet destination address. This can refer to
-	// a single IP address, an IP set ('+ipsetname') or an IP alias definition.
-	// You can also specify an address range like `20.34.101.207-201.3.9.99`, or
-	// a list of IP addresses and networks (entries are separated by comma).
-	// Please do not mix IPv4 and IPv6 addresses inside such lists.
+	// a single IP address, an IP set ('+ipsetname') or an IP alias
+	// definition. You can also specify an address range like
+	// `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks
+	// (entries are separated by comma). Please do not mix IPv4 and IPv6
+	// addresses inside such lists.
 	Dest pulumi.StringPtrInput `pulumi:"dest"`
 	// Restrict TCP/UDP destination port. You can use
-	// service names or simple numbers (0-65535), as defined in '/etc/services'.
-	// Port ranges can be specified with '\d+:\d+', for example `80:85`, and
-	// you can use comma separated list to match several ports or ranges.
+	// service names or simple numbers (0-65535), as defined in '/etc/
+	// services'. Port ranges can be specified with '\d+:\d+', for example
+	// `80:85`, and you can use comma separated list to match several ports or
+	// ranges.
 	Dport   pulumi.StringPtrInput `pulumi:"dport"`
 	Enabled pulumi.BoolPtrInput   `pulumi:"enabled"`
 	// Network interface name. You have to use network
@@ -693,13 +702,14 @@ type FirewallSecurityGroupRuleArgs struct {
 	// to a single IP address, an IP set ('+ipsetname') or an IP alias
 	// definition. You can also specify an address range like
 	// `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks (
-	// entries are separated by comma). Please do not mix IPv4 and IPv6 addresses
-	// inside such lists.
+	// entries are separated by comma). Please do not mix IPv4 and IPv6
+	// addresses inside such lists.
 	Source pulumi.StringPtrInput `pulumi:"source"`
 	// Restrict TCP/UDP source port. You can use
-	// service names or simple numbers (0-65535), as defined in '/etc/services'.
-	// Port ranges can be specified with '\d+:\d+', for example `80:85`, and
-	// you can use comma separated list to match several ports or ranges.
+	// service names or simple numbers (0-65535), as defined in '/etc/
+	// services'. Port ranges can be specified with '\d+:\d+', for example
+	// `80:85`, and you can use comma separated list to match several ports or
+	// ranges.
 	Sport pulumi.StringPtrInput `pulumi:"sport"`
 	// Rule type (`in`, `out`).
 	Type pulumi.StringPtrInput `pulumi:"type"`
@@ -767,18 +777,20 @@ func (o FirewallSecurityGroupRuleOutput) Comment() pulumi.StringPtrOutput {
 }
 
 // Restrict packet destination address. This can refer to
-// a single IP address, an IP set ('+ipsetname') or an IP alias definition.
-// You can also specify an address range like `20.34.101.207-201.3.9.99`, or
-// a list of IP addresses and networks (entries are separated by comma).
-// Please do not mix IPv4 and IPv6 addresses inside such lists.
+// a single IP address, an IP set ('+ipsetname') or an IP alias
+// definition. You can also specify an address range like
+// `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks
+// (entries are separated by comma). Please do not mix IPv4 and IPv6
+// addresses inside such lists.
 func (o FirewallSecurityGroupRuleOutput) Dest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallSecurityGroupRule) *string { return v.Dest }).(pulumi.StringPtrOutput)
 }
 
 // Restrict TCP/UDP destination port. You can use
-// service names or simple numbers (0-65535), as defined in '/etc/services'.
-// Port ranges can be specified with '\d+:\d+', for example `80:85`, and
-// you can use comma separated list to match several ports or ranges.
+// service names or simple numbers (0-65535), as defined in '/etc/
+// services'. Port ranges can be specified with '\d+:\d+', for example
+// `80:85`, and you can use comma separated list to match several ports or
+// ranges.
 func (o FirewallSecurityGroupRuleOutput) Dport() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallSecurityGroupRule) *string { return v.Dport }).(pulumi.StringPtrOutput)
 }
@@ -825,16 +837,17 @@ func (o FirewallSecurityGroupRuleOutput) SecurityGroup() pulumi.StringPtrOutput 
 // to a single IP address, an IP set ('+ipsetname') or an IP alias
 // definition. You can also specify an address range like
 // `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks (
-// entries are separated by comma). Please do not mix IPv4 and IPv6 addresses
-// inside such lists.
+// entries are separated by comma). Please do not mix IPv4 and IPv6
+// addresses inside such lists.
 func (o FirewallSecurityGroupRuleOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallSecurityGroupRule) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
 // Restrict TCP/UDP source port. You can use
-// service names or simple numbers (0-65535), as defined in '/etc/services'.
-// Port ranges can be specified with '\d+:\d+', for example `80:85`, and
-// you can use comma separated list to match several ports or ranges.
+// service names or simple numbers (0-65535), as defined in '/etc/
+// services'. Port ranges can be specified with '\d+:\d+', for example
+// `80:85`, and you can use comma separated list to match several ports or
+// ranges.
 func (o FirewallSecurityGroupRuleOutput) Sport() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallSecurityGroupRule) *string { return v.Sport }).(pulumi.StringPtrOutput)
 }

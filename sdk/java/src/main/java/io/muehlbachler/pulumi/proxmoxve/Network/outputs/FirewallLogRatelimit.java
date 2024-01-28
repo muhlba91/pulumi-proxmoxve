@@ -25,7 +25,8 @@ public final class FirewallLogRatelimit {
      */
     private @Nullable Boolean enabled;
     /**
-     * @return Frequency with which the burst bucket gets refilled (defaults to `1/second`).
+     * @return Frequency with which the burst bucket gets refilled
+     * (defaults to `1/second`).
      * 
      */
     private @Nullable String rate;
@@ -47,7 +48,8 @@ public final class FirewallLogRatelimit {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Frequency with which the burst bucket gets refilled (defaults to `1/second`).
+     * @return Frequency with which the burst bucket gets refilled
+     * (defaults to `1/second`).
      * 
      */
     public Optional<String> rate() {

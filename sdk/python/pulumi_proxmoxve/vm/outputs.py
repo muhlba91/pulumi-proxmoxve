@@ -1148,7 +1148,9 @@ class VirtualMachineInitializationDns(dict):
                  servers: Optional[Sequence[str]] = None):
         """
         :param str domain: The DNS search domain.
-        :param str server: The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+        :param str server: The DNS server. The `server` attribute is
+               deprecated and will be removed in a future release. Please use the
+               `servers` attribute instead.
         :param Sequence[str] servers: The list of DNS servers.
         """
         if domain is not None:
@@ -1170,7 +1172,9 @@ class VirtualMachineInitializationDns(dict):
     @pulumi.getter
     def server(self) -> Optional[str]:
         """
-        The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+        The DNS server. The `server` attribute is
+        deprecated and will be removed in a future release. Please use the
+        `servers` attribute instead.
         """
         warnings.warn("""The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.""", DeprecationWarning)
         pulumi.log.warn("""server is deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.""")
@@ -1224,7 +1228,7 @@ class VirtualMachineInitializationIpConfigIpv4(dict):
                  gateway: Optional[str] = None):
         """
         :param str address: The IPv6 address in CIDR notation
-               (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+               (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
                to `dhcp` for autodiscovery.
         :param str gateway: The IPv6 gateway (must be omitted
                when `dhcp` is used as the address).
@@ -1239,7 +1243,7 @@ class VirtualMachineInitializationIpConfigIpv4(dict):
     def address(self) -> Optional[str]:
         """
         The IPv6 address in CIDR notation
-        (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+        (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
         to `dhcp` for autodiscovery.
         """
         return pulumi.get(self, "address")
@@ -1261,7 +1265,7 @@ class VirtualMachineInitializationIpConfigIpv6(dict):
                  gateway: Optional[str] = None):
         """
         :param str address: The IPv6 address in CIDR notation
-               (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+               (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
                to `dhcp` for autodiscovery.
         :param str gateway: The IPv6 gateway (must be omitted
                when `dhcp` is used as the address).
@@ -1276,7 +1280,7 @@ class VirtualMachineInitializationIpConfigIpv6(dict):
     def address(self) -> Optional[str]:
         """
         The IPv6 address in CIDR notation
-        (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+        (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
         to `dhcp` for autodiscovery.
         """
         return pulumi.get(self, "address")
@@ -1772,8 +1776,8 @@ class VirtualMachineUsb(dict):
         :param str host: The USB device ID. Use either this or `mapping`.
         :param str mapping: The resource mapping name of the device, for
                example usbdevice. Use either this or `id`.
-        :param bool usb3: Makes the USB device a USB3 device for the VM (defaults
-               to `false`).
+        :param bool usb3: Makes the USB device a USB3 device for the VM
+               (defaults to `false`).
         """
         pulumi.set(__self__, "host", host)
         if mapping is not None:
@@ -1802,8 +1806,8 @@ class VirtualMachineUsb(dict):
     @pulumi.getter
     def usb3(self) -> Optional[bool]:
         """
-        Makes the USB device a USB3 device for the VM (defaults
-        to `false`).
+        Makes the USB device a USB3 device for the VM
+        (defaults to `false`).
         """
         return pulumi.get(self, "usb3")
 

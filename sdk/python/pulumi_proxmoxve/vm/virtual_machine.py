@@ -98,8 +98,8 @@ class VirtualMachineArgs:
                to.
         :param pulumi.Input[bool] reboot: Reboot the VM after initial creation. (defaults
                to `false`)
-        :param pulumi.Input[str] scsi_hardware: The SCSI hardware type (defaults
-               to `virtio-scsi-pci`).
+        :param pulumi.Input[str] scsi_hardware: The SCSI hardware type (defaults to
+               `virtio-scsi-pci`).
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]] serial_devices: A serial device (multiple blocks supported).
         :param pulumi.Input['VirtualMachineSmbiosArgs'] smbios: The SMBIOS (type1) settings for the VM.
         :param pulumi.Input[bool] started: Whether to start the virtual machine (defaults
@@ -552,8 +552,8 @@ class VirtualMachineArgs:
     @pulumi.getter(name="scsiHardware")
     def scsi_hardware(self) -> Optional[pulumi.Input[str]]:
         """
-        The SCSI hardware type (defaults
-        to `virtio-scsi-pci`).
+        The SCSI hardware type (defaults to
+        `virtio-scsi-pci`).
         """
         return pulumi.get(self, "scsi_hardware")
 
@@ -913,8 +913,8 @@ class _VirtualMachineState:
                to.
         :param pulumi.Input[bool] reboot: Reboot the VM after initial creation. (defaults
                to `false`)
-        :param pulumi.Input[str] scsi_hardware: The SCSI hardware type (defaults
-               to `virtio-scsi-pci`).
+        :param pulumi.Input[str] scsi_hardware: The SCSI hardware type (defaults to
+               `virtio-scsi-pci`).
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]] serial_devices: A serial device (multiple blocks supported).
         :param pulumi.Input['VirtualMachineSmbiosArgs'] smbios: The SMBIOS (type1) settings for the VM.
         :param pulumi.Input[bool] started: Whether to start the virtual machine (defaults
@@ -1428,8 +1428,8 @@ class _VirtualMachineState:
     @pulumi.getter(name="scsiHardware")
     def scsi_hardware(self) -> Optional[pulumi.Input[str]]:
         """
-        The SCSI hardware type (defaults
-        to `virtio-scsi-pci`).
+        The SCSI hardware type (defaults to
+        `virtio-scsi-pci`).
         """
         return pulumi.get(self, "scsi_hardware")
 
@@ -1853,8 +1853,8 @@ class VirtualMachine(pulumi.CustomResource):
                to.
         :param pulumi.Input[bool] reboot: Reboot the VM after initial creation. (defaults
                to `false`)
-        :param pulumi.Input[str] scsi_hardware: The SCSI hardware type (defaults
-               to `virtio-scsi-pci`).
+        :param pulumi.Input[str] scsi_hardware: The SCSI hardware type (defaults to
+               `virtio-scsi-pci`).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]] serial_devices: A serial device (multiple blocks supported).
         :param pulumi.Input[pulumi.InputType['VirtualMachineSmbiosArgs']] smbios: The SMBIOS (type1) settings for the VM.
         :param pulumi.Input[bool] started: Whether to start the virtual machine (defaults
@@ -2202,8 +2202,8 @@ class VirtualMachine(pulumi.CustomResource):
                to.
         :param pulumi.Input[bool] reboot: Reboot the VM after initial creation. (defaults
                to `false`)
-        :param pulumi.Input[str] scsi_hardware: The SCSI hardware type (defaults
-               to `virtio-scsi-pci`).
+        :param pulumi.Input[str] scsi_hardware: The SCSI hardware type (defaults to
+               `virtio-scsi-pci`).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]] serial_devices: A serial device (multiple blocks supported).
         :param pulumi.Input[pulumi.InputType['VirtualMachineSmbiosArgs']] smbios: The SMBIOS (type1) settings for the VM.
         :param pulumi.Input[bool] started: Whether to start the virtual machine (defaults
@@ -2551,8 +2551,8 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="scsiHardware")
     def scsi_hardware(self) -> pulumi.Output[Optional[str]]:
         """
-        The SCSI hardware type (defaults
-        to `virtio-scsi-pci`).
+        The SCSI hardware type (defaults to
+        `virtio-scsi-pci`).
         """
         return pulumi.get(self, "scsi_hardware")
 

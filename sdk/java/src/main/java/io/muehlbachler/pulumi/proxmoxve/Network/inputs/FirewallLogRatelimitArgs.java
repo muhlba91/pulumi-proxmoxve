@@ -50,14 +50,16 @@ public final class FirewallLogRatelimitArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Frequency with which the burst bucket gets refilled (defaults to `1/second`).
+     * Frequency with which the burst bucket gets refilled
+     * (defaults to `1/second`).
      * 
      */
     @Import(name="rate")
     private @Nullable Output<String> rate;
 
     /**
-     * @return Frequency with which the burst bucket gets refilled (defaults to `1/second`).
+     * @return Frequency with which the burst bucket gets refilled
+     * (defaults to `1/second`).
      * 
      */
     public Optional<Output<String>> rate() {
@@ -135,7 +137,8 @@ public final class FirewallLogRatelimitArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param rate Frequency with which the burst bucket gets refilled (defaults to `1/second`).
+         * @param rate Frequency with which the burst bucket gets refilled
+         * (defaults to `1/second`).
          * 
          * @return builder
          * 
@@ -146,7 +149,8 @@ public final class FirewallLogRatelimitArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param rate Frequency with which the burst bucket gets refilled (defaults to `1/second`).
+         * @param rate Frequency with which the burst bucket gets refilled
+         * (defaults to `1/second`).
          * 
          * @return builder
          * 

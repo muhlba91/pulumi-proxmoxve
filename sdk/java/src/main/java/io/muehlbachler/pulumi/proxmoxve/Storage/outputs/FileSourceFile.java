@@ -30,7 +30,8 @@ public final class FileSourceFile {
      */
     private @Nullable Boolean insecure;
     /**
-     * @return The minimum required TLS version for HTTPS sources. &#34;Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
+     * @return The minimum required TLS version for HTTPS
+     * sources. &#34;Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
      * 
      */
     private @Nullable String minTls;
@@ -67,7 +68,8 @@ public final class FileSourceFile {
         return Optional.ofNullable(this.insecure);
     }
     /**
-     * @return The minimum required TLS version for HTTPS sources. &#34;Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
+     * @return The minimum required TLS version for HTTPS
+     * sources. &#34;Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
      * 
      */
     public Optional<String> minTls() {

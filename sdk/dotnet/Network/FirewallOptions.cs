@@ -87,14 +87,16 @@ namespace Pulumi.ProxmoxVE.Network
 
         /// <summary>
         /// Log level for incoming
-        /// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+        /// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+        /// `debug`, `nolog`).
         /// </summary>
         [Output("logLevelIn")]
         public Output<string?> LogLevelIn { get; private set; } = null!;
 
         /// <summary>
         /// Log level for outgoing
-        /// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+        /// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+        /// `debug`, `nolog`).
         /// </summary>
         [Output("logLevelOut")]
         public Output<string?> LogLevelOut { get; private set; } = null!;
@@ -220,14 +222,16 @@ namespace Pulumi.ProxmoxVE.Network
 
         /// <summary>
         /// Log level for incoming
-        /// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+        /// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+        /// `debug`, `nolog`).
         /// </summary>
         [Input("logLevelIn")]
         public Input<string>? LogLevelIn { get; set; }
 
         /// <summary>
         /// Log level for outgoing
-        /// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+        /// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+        /// `debug`, `nolog`).
         /// </summary>
         [Input("logLevelOut")]
         public Input<string>? LogLevelOut { get; set; }
@@ -314,14 +318,16 @@ namespace Pulumi.ProxmoxVE.Network
 
         /// <summary>
         /// Log level for incoming
-        /// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+        /// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+        /// `debug`, `nolog`).
         /// </summary>
         [Input("logLevelIn")]
         public Input<string>? LogLevelIn { get; set; }
 
         /// <summary>
         /// Log level for outgoing
-        /// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+        /// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+        /// `debug`, `nolog`).
         /// </summary>
         [Input("logLevelOut")]
         public Input<string>? LogLevelOut { get; set; }

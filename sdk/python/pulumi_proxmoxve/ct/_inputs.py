@@ -397,7 +397,9 @@ class ContainerInitializationDnsArgs:
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] domain: The DNS search domain.
-        :param pulumi.Input[str] server: The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+        :param pulumi.Input[str] server: The DNS server. The `server` attribute is
+               deprecated and will be removed in a future release. Please use
+               the `servers` attribute instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] servers: The list of DNS servers.
         """
         if domain is not None:
@@ -426,7 +428,9 @@ class ContainerInitializationDnsArgs:
     @pulumi.getter
     def server(self) -> Optional[pulumi.Input[str]]:
         """
-        The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+        The DNS server. The `server` attribute is
+        deprecated and will be removed in a future release. Please use
+        the `servers` attribute instead.
         """
         warnings.warn("""The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.""", DeprecationWarning)
         pulumi.log.warn("""server is deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.""")

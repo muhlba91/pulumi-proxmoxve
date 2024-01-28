@@ -28,7 +28,8 @@ namespace Pulumi.ProxmoxVE.Storage.Outputs
         /// </summary>
         public readonly bool? Insecure;
         /// <summary>
-        /// The minimum required TLS version for HTTPS sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
+        /// The minimum required TLS version for HTTPS
+        /// sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
         /// </summary>
         public readonly string? MinTls;
         /// <summary>

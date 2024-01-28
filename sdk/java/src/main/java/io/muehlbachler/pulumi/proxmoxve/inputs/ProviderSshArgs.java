@@ -46,6 +46,27 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.password);
     }
 
+    @Import(name="socks5Password")
+    private @Nullable Output<String> socks5Password;
+
+    public Optional<Output<String>> socks5Password() {
+        return Optional.ofNullable(this.socks5Password);
+    }
+
+    @Import(name="socks5Server")
+    private @Nullable Output<String> socks5Server;
+
+    public Optional<Output<String>> socks5Server() {
+        return Optional.ofNullable(this.socks5Server);
+    }
+
+    @Import(name="socks5Username")
+    private @Nullable Output<String> socks5Username;
+
+    public Optional<Output<String>> socks5Username() {
+        return Optional.ofNullable(this.socks5Username);
+    }
+
     @Import(name="username")
     private @Nullable Output<String> username;
 
@@ -60,6 +81,9 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
         this.agentSocket = $.agentSocket;
         this.nodes = $.nodes;
         this.password = $.password;
+        this.socks5Password = $.socks5Password;
+        this.socks5Server = $.socks5Server;
+        this.socks5Username = $.socks5Username;
         this.username = $.username;
     }
 
@@ -119,6 +143,33 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder password(String password) {
             return password(Output.of(password));
+        }
+
+        public Builder socks5Password(@Nullable Output<String> socks5Password) {
+            $.socks5Password = socks5Password;
+            return this;
+        }
+
+        public Builder socks5Password(String socks5Password) {
+            return socks5Password(Output.of(socks5Password));
+        }
+
+        public Builder socks5Server(@Nullable Output<String> socks5Server) {
+            $.socks5Server = socks5Server;
+            return this;
+        }
+
+        public Builder socks5Server(String socks5Server) {
+            return socks5Server(Output.of(socks5Server));
+        }
+
+        public Builder socks5Username(@Nullable Output<String> socks5Username) {
+            $.socks5Username = socks5Username;
+            return this;
+        }
+
+        public Builder socks5Username(String socks5Username) {
+            return socks5Username(Output.of(socks5Username));
         }
 
         public Builder username(@Nullable Output<String> username) {

@@ -131,6 +131,9 @@ namespace Pulumi.ProxmoxVE
                 public string? AgentSocket { get; set; } = null!;
                 public ImmutableArray<Pulumi.ProxmoxVE.Config.Types.SshNode> Nodes { get; set; }
                 public string? Password { get; set; } = null!;
+                public string? Socks5Password { get; set; } = null!;
+                public string? Socks5Server { get; set; } = null!;
+                public string? Socks5Username { get; set; } = null!;
                 public string? Username { get; set; } = null!;
             }
 

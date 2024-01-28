@@ -23,8 +23,8 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly string? Mapping;
         /// <summary>
-        /// Makes the USB device a USB3 device for the VM (defaults
-        /// to `false`).
+        /// Makes the USB device a USB3 device for the VM
+        /// (defaults to `false`).
         /// </summary>
         public readonly bool? Usb3;
 

@@ -22,6 +22,9 @@ class Ssh(dict):
                  agent_socket: Optional[str] = None,
                  nodes: Optional[Sequence['outputs.SshNode']] = None,
                  password: Optional[str] = None,
+                 socks5_password: Optional[str] = None,
+                 socks5_server: Optional[str] = None,
+                 socks5_username: Optional[str] = None,
                  username: Optional[str] = None):
         if agent is not None:
             pulumi.set(__self__, "agent", agent)
@@ -31,6 +34,12 @@ class Ssh(dict):
             pulumi.set(__self__, "nodes", nodes)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if socks5_password is not None:
+            pulumi.set(__self__, "socks5_password", socks5_password)
+        if socks5_server is not None:
+            pulumi.set(__self__, "socks5_server", socks5_server)
+        if socks5_username is not None:
+            pulumi.set(__self__, "socks5_username", socks5_username)
         if username is not None:
             pulumi.set(__self__, "username", username)
 
@@ -53,6 +62,21 @@ class Ssh(dict):
     @pulumi.getter
     def password(self) -> Optional[str]:
         return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="socks5Password")
+    def socks5_password(self) -> Optional[str]:
+        return pulumi.get(self, "socks5_password")
+
+    @property
+    @pulumi.getter(name="socks5Server")
+    def socks5_server(self) -> Optional[str]:
+        return pulumi.get(self, "socks5_server")
+
+    @property
+    @pulumi.getter(name="socks5Username")
+    def socks5_username(self) -> Optional[str]:
+        return pulumi.get(self, "socks5_username")
 
     @property
     @pulumi.getter

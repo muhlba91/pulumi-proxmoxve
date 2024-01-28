@@ -2394,7 +2394,9 @@ func (o VirtualMachineInitializationPtrOutput) VendorDataFileId() pulumi.StringP
 type VirtualMachineInitializationDns struct {
 	// The DNS search domain.
 	Domain *string `pulumi:"domain"`
-	// The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+	// The DNS server. The `server` attribute is
+	// deprecated and will be removed in a future release. Please use the
+	// `servers` attribute instead.
 	//
 	// Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
 	Server *string `pulumi:"server"`
@@ -2416,7 +2418,9 @@ type VirtualMachineInitializationDnsInput interface {
 type VirtualMachineInitializationDnsArgs struct {
 	// The DNS search domain.
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
-	// The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+	// The DNS server. The `server` attribute is
+	// deprecated and will be removed in a future release. Please use the
+	// `servers` attribute instead.
 	//
 	// Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
 	Server pulumi.StringPtrInput `pulumi:"server"`
@@ -2506,7 +2510,9 @@ func (o VirtualMachineInitializationDnsOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationDns) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
-// The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+// The DNS server. The `server` attribute is
+// deprecated and will be removed in a future release. Please use the
+// `servers` attribute instead.
 //
 // Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
 func (o VirtualMachineInitializationDnsOutput) Server() pulumi.StringPtrOutput {
@@ -2552,7 +2558,9 @@ func (o VirtualMachineInitializationDnsPtrOutput) Domain() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The DNS server. The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+// The DNS server. The `server` attribute is
+// deprecated and will be removed in a future release. Please use the
+// `servers` attribute instead.
 //
 // Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
 func (o VirtualMachineInitializationDnsPtrOutput) Server() pulumi.StringPtrOutput {
@@ -2682,7 +2690,7 @@ func (o VirtualMachineInitializationIpConfigArrayOutput) Index(i pulumi.IntInput
 
 type VirtualMachineInitializationIpConfigIpv4 struct {
 	// The IPv6 address in CIDR notation
-	// (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+	// (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
 	// to `dhcp` for autodiscovery.
 	Address *string `pulumi:"address"`
 	// The IPv6 gateway (must be omitted
@@ -2703,7 +2711,7 @@ type VirtualMachineInitializationIpConfigIpv4Input interface {
 
 type VirtualMachineInitializationIpConfigIpv4Args struct {
 	// The IPv6 address in CIDR notation
-	// (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+	// (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
 	// to `dhcp` for autodiscovery.
 	Address pulumi.StringPtrInput `pulumi:"address"`
 	// The IPv6 gateway (must be omitted
@@ -2789,7 +2797,7 @@ func (o VirtualMachineInitializationIpConfigIpv4Output) ToVirtualMachineInitiali
 }
 
 // The IPv6 address in CIDR notation
-// (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+// (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
 // to `dhcp` for autodiscovery.
 func (o VirtualMachineInitializationIpConfigIpv4Output) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationIpConfigIpv4) *string { return v.Address }).(pulumi.StringPtrOutput)
@@ -2826,7 +2834,7 @@ func (o VirtualMachineInitializationIpConfigIpv4PtrOutput) Elem() VirtualMachine
 }
 
 // The IPv6 address in CIDR notation
-// (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+// (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
 // to `dhcp` for autodiscovery.
 func (o VirtualMachineInitializationIpConfigIpv4PtrOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineInitializationIpConfigIpv4) *string {
@@ -2850,7 +2858,7 @@ func (o VirtualMachineInitializationIpConfigIpv4PtrOutput) Gateway() pulumi.Stri
 
 type VirtualMachineInitializationIpConfigIpv6 struct {
 	// The IPv6 address in CIDR notation
-	// (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+	// (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
 	// to `dhcp` for autodiscovery.
 	Address *string `pulumi:"address"`
 	// The IPv6 gateway (must be omitted
@@ -2871,7 +2879,7 @@ type VirtualMachineInitializationIpConfigIpv6Input interface {
 
 type VirtualMachineInitializationIpConfigIpv6Args struct {
 	// The IPv6 address in CIDR notation
-	// (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+	// (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
 	// to `dhcp` for autodiscovery.
 	Address pulumi.StringPtrInput `pulumi:"address"`
 	// The IPv6 gateway (must be omitted
@@ -2957,7 +2965,7 @@ func (o VirtualMachineInitializationIpConfigIpv6Output) ToVirtualMachineInitiali
 }
 
 // The IPv6 address in CIDR notation
-// (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+// (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
 // to `dhcp` for autodiscovery.
 func (o VirtualMachineInitializationIpConfigIpv6Output) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationIpConfigIpv6) *string { return v.Address }).(pulumi.StringPtrOutput)
@@ -2994,7 +3002,7 @@ func (o VirtualMachineInitializationIpConfigIpv6PtrOutput) Elem() VirtualMachine
 }
 
 // The IPv6 address in CIDR notation
-// (e.g. fd1c:000:0000::0000:000:7334/64).  Alternatively, set this
+// (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
 // to `dhcp` for autodiscovery.
 func (o VirtualMachineInitializationIpConfigIpv6PtrOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineInitializationIpConfigIpv6) *string {
@@ -4380,8 +4388,8 @@ type VirtualMachineUsb struct {
 	// The resource mapping name of the device, for
 	// example usbdevice. Use either this or `id`.
 	Mapping *string `pulumi:"mapping"`
-	// Makes the USB device a USB3 device for the VM (defaults
-	// to `false`).
+	// Makes the USB device a USB3 device for the VM
+	// (defaults to `false`).
 	Usb3 *bool `pulumi:"usb3"`
 }
 
@@ -4402,8 +4410,8 @@ type VirtualMachineUsbArgs struct {
 	// The resource mapping name of the device, for
 	// example usbdevice. Use either this or `id`.
 	Mapping pulumi.StringPtrInput `pulumi:"mapping"`
-	// Makes the USB device a USB3 device for the VM (defaults
-	// to `false`).
+	// Makes the USB device a USB3 device for the VM
+	// (defaults to `false`).
 	Usb3 pulumi.BoolPtrInput `pulumi:"usb3"`
 }
 
@@ -4469,8 +4477,8 @@ func (o VirtualMachineUsbOutput) Mapping() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineUsb) *string { return v.Mapping }).(pulumi.StringPtrOutput)
 }
 
-// Makes the USB device a USB3 device for the VM (defaults
-// to `false`).
+// Makes the USB device a USB3 device for the VM
+// (defaults to `false`).
 func (o VirtualMachineUsbOutput) Usb3() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineUsb) *bool { return v.Usb3 }).(pulumi.BoolPtrOutput)
 }

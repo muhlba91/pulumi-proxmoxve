@@ -18,6 +18,9 @@ public final class Ssh {
     private @Nullable String agentSocket;
     private @Nullable List<SshNode> nodes;
     private @Nullable String password;
+    private @Nullable String socks5Password;
+    private @Nullable String socks5Server;
+    private @Nullable String socks5Username;
     private @Nullable String username;
 
     private Ssh() {}
@@ -32,6 +35,15 @@ public final class Ssh {
     }
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
+    }
+    public Optional<String> socks5Password() {
+        return Optional.ofNullable(this.socks5Password);
+    }
+    public Optional<String> socks5Server() {
+        return Optional.ofNullable(this.socks5Server);
+    }
+    public Optional<String> socks5Username() {
+        return Optional.ofNullable(this.socks5Username);
     }
     public Optional<String> username() {
         return Optional.ofNullable(this.username);
@@ -50,6 +62,9 @@ public final class Ssh {
         private @Nullable String agentSocket;
         private @Nullable List<SshNode> nodes;
         private @Nullable String password;
+        private @Nullable String socks5Password;
+        private @Nullable String socks5Server;
+        private @Nullable String socks5Username;
         private @Nullable String username;
         public Builder() {}
         public Builder(Ssh defaults) {
@@ -58,6 +73,9 @@ public final class Ssh {
     	      this.agentSocket = defaults.agentSocket;
     	      this.nodes = defaults.nodes;
     	      this.password = defaults.password;
+    	      this.socks5Password = defaults.socks5Password;
+    	      this.socks5Server = defaults.socks5Server;
+    	      this.socks5Username = defaults.socks5Username;
     	      this.username = defaults.username;
         }
 
@@ -85,6 +103,21 @@ public final class Ssh {
             return this;
         }
         @CustomType.Setter
+        public Builder socks5Password(@Nullable String socks5Password) {
+            this.socks5Password = socks5Password;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder socks5Server(@Nullable String socks5Server) {
+            this.socks5Server = socks5Server;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder socks5Username(@Nullable String socks5Username) {
+            this.socks5Username = socks5Username;
+            return this;
+        }
+        @CustomType.Setter
         public Builder username(@Nullable String username) {
             this.username = username;
             return this;
@@ -95,6 +128,9 @@ public final class Ssh {
             _resultValue.agentSocket = agentSocket;
             _resultValue.nodes = nodes;
             _resultValue.password = password;
+            _resultValue.socks5Password = socks5Password;
+            _resultValue.socks5Server = socks5Server;
+            _resultValue.socks5Username = socks5Username;
             _resultValue.username = username;
             return _resultValue;
         }

@@ -86,12 +86,14 @@ export class FirewallOptions extends pulumi.CustomResource {
     public readonly ipfilter!: pulumi.Output<boolean | undefined>;
     /**
      * Log level for incoming
-     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+     * `debug`, `nolog`).
      */
     public readonly logLevelIn!: pulumi.Output<string | undefined>;
     /**
      * Log level for outgoing
-     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+     * `debug`, `nolog`).
      */
     public readonly logLevelOut!: pulumi.Output<string | undefined>;
     /**
@@ -201,12 +203,14 @@ export interface FirewallOptionsState {
     ipfilter?: pulumi.Input<boolean>;
     /**
      * Log level for incoming
-     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+     * `debug`, `nolog`).
      */
     logLevelIn?: pulumi.Input<string>;
     /**
      * Log level for outgoing
-     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+     * `debug`, `nolog`).
      */
     logLevelOut?: pulumi.Input<string>;
     /**
@@ -267,12 +271,14 @@ export interface FirewallOptionsArgs {
     ipfilter?: pulumi.Input<boolean>;
     /**
      * Log level for incoming
-     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+     * `debug`, `nolog`).
      */
     logLevelIn?: pulumi.Input<string>;
     /**
      * Log level for outgoing
-     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+     * `debug`, `nolog`).
      */
     logLevelOut?: pulumi.Input<string>;
     /**

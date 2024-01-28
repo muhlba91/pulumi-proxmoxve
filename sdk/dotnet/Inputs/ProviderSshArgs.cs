@@ -38,6 +38,24 @@ namespace Pulumi.ProxmoxVE.Inputs
             }
         }
 
+        [Input("socks5Password")]
+        private Input<string>? _socks5Password;
+        public Input<string>? Socks5Password
+        {
+            get => _socks5Password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _socks5Password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("socks5Server")]
+        public Input<string>? Socks5Server { get; set; }
+
+        [Input("socks5Username")]
+        public Input<string>? Socks5Username { get; set; }
+
         [Input("username")]
         public Input<string>? Username { get; set; }
 

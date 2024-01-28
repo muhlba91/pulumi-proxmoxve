@@ -227,14 +227,16 @@ public class Container extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.poolId);
     }
     /**
-     * Automatically start container when the host system boots (defaults to `true`).
+     * Automatically start container when the host
+     * system boots (defaults to `true`).
      * 
      */
     @Export(name="startOnBoot", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> startOnBoot;
 
     /**
-     * @return Automatically start container when the host system boots (defaults to `true`).
+     * @return Automatically start container when the host
+     * system boots (defaults to `true`).
      * 
      */
     public Output<Optional<Boolean>> startOnBoot() {

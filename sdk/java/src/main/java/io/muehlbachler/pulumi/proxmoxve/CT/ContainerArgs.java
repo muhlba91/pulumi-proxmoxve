@@ -227,14 +227,16 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Automatically start container when the host system boots (defaults to `true`).
+     * Automatically start container when the host
+     * system boots (defaults to `true`).
      * 
      */
     @Import(name="startOnBoot")
     private @Nullable Output<Boolean> startOnBoot;
 
     /**
-     * @return Automatically start container when the host system boots (defaults to `true`).
+     * @return Automatically start container when the host
+     * system boots (defaults to `true`).
      * 
      */
     public Optional<Output<Boolean>> startOnBoot() {
@@ -681,7 +683,8 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param startOnBoot Automatically start container when the host system boots (defaults to `true`).
+         * @param startOnBoot Automatically start container when the host
+         * system boots (defaults to `true`).
          * 
          * @return builder
          * 
@@ -692,7 +695,8 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param startOnBoot Automatically start container when the host system boots (defaults to `true`).
+         * @param startOnBoot Automatically start container when the host
+         * system boots (defaults to `true`).
          * 
          * @return builder
          * 

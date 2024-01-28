@@ -104,7 +104,8 @@ public final class FirewallOptionsArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * Log level for incoming
-     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+     * `debug`, `nolog`).
      * 
      */
     @Import(name="logLevelIn")
@@ -112,7 +113,8 @@ public final class FirewallOptionsArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return Log level for incoming
-     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+     * `debug`, `nolog`).
      * 
      */
     public Optional<Output<String>> logLevelIn() {
@@ -121,7 +123,8 @@ public final class FirewallOptionsArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * Log level for outgoing
-     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+     * `debug`, `nolog`).
      * 
      */
     @Import(name="logLevelOut")
@@ -129,7 +132,8 @@ public final class FirewallOptionsArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return Log level for outgoing
-     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+     * `debug`, `nolog`).
      * 
      */
     public Optional<Output<String>> logLevelOut() {
@@ -381,7 +385,8 @@ public final class FirewallOptionsArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param logLevelIn Log level for incoming
-         * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+         * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+         * `debug`, `nolog`).
          * 
          * @return builder
          * 
@@ -393,7 +398,8 @@ public final class FirewallOptionsArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param logLevelIn Log level for incoming
-         * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+         * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+         * `debug`, `nolog`).
          * 
          * @return builder
          * 
@@ -404,7 +410,8 @@ public final class FirewallOptionsArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param logLevelOut Log level for outgoing
-         * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+         * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+         * `debug`, `nolog`).
          * 
          * @return builder
          * 
@@ -416,7 +423,8 @@ public final class FirewallOptionsArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param logLevelOut Log level for outgoing
-         * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+         * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
+         * `debug`, `nolog`).
          * 
          * @return builder
          * 

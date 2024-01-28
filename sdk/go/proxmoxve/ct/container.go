@@ -53,7 +53,8 @@ type Container struct {
 	OperatingSystem ContainerOperatingSystemPtrOutput `pulumi:"operatingSystem"`
 	// The identifier for a pool to assign the container to.
 	PoolId pulumi.StringPtrOutput `pulumi:"poolId"`
-	// Automatically start container when the host system boots (defaults to `true`).
+	// Automatically start container when the host
+	// system boots (defaults to `true`).
 	StartOnBoot pulumi.BoolPtrOutput `pulumi:"startOnBoot"`
 	// Whether to start the container (defaults to `true`).
 	Started pulumi.BoolPtrOutput `pulumi:"started"`
@@ -134,7 +135,8 @@ type containerState struct {
 	OperatingSystem *ContainerOperatingSystem `pulumi:"operatingSystem"`
 	// The identifier for a pool to assign the container to.
 	PoolId *string `pulumi:"poolId"`
-	// Automatically start container when the host system boots (defaults to `true`).
+	// Automatically start container when the host
+	// system boots (defaults to `true`).
 	StartOnBoot *bool `pulumi:"startOnBoot"`
 	// Whether to start the container (defaults to `true`).
 	Started *bool `pulumi:"started"`
@@ -183,7 +185,8 @@ type ContainerState struct {
 	OperatingSystem ContainerOperatingSystemPtrInput
 	// The identifier for a pool to assign the container to.
 	PoolId pulumi.StringPtrInput
-	// Automatically start container when the host system boots (defaults to `true`).
+	// Automatically start container when the host
+	// system boots (defaults to `true`).
 	StartOnBoot pulumi.BoolPtrInput
 	// Whether to start the container (defaults to `true`).
 	Started pulumi.BoolPtrInput
@@ -236,7 +239,8 @@ type containerArgs struct {
 	OperatingSystem *ContainerOperatingSystem `pulumi:"operatingSystem"`
 	// The identifier for a pool to assign the container to.
 	PoolId *string `pulumi:"poolId"`
-	// Automatically start container when the host system boots (defaults to `true`).
+	// Automatically start container when the host
+	// system boots (defaults to `true`).
 	StartOnBoot *bool `pulumi:"startOnBoot"`
 	// Whether to start the container (defaults to `true`).
 	Started *bool `pulumi:"started"`
@@ -286,7 +290,8 @@ type ContainerArgs struct {
 	OperatingSystem ContainerOperatingSystemPtrInput
 	// The identifier for a pool to assign the container to.
 	PoolId pulumi.StringPtrInput
-	// Automatically start container when the host system boots (defaults to `true`).
+	// Automatically start container when the host
+	// system boots (defaults to `true`).
 	StartOnBoot pulumi.BoolPtrInput
 	// Whether to start the container (defaults to `true`).
 	Started pulumi.BoolPtrInput
@@ -460,7 +465,8 @@ func (o ContainerOutput) PoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Container) pulumi.StringPtrOutput { return v.PoolId }).(pulumi.StringPtrOutput)
 }
 
-// Automatically start container when the host system boots (defaults to `true`).
+// Automatically start container when the host
+// system boots (defaults to `true`).
 func (o ContainerOutput) StartOnBoot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Container) pulumi.BoolPtrOutput { return v.StartOnBoot }).(pulumi.BoolPtrOutput)
 }

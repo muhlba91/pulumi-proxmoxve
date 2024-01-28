@@ -49,10 +49,11 @@ public final class FirewallSecurityGroupRuleArgs extends com.pulumi.resources.Re
 
     /**
      * Restrict packet destination address. This can refer to
-     * a single IP address, an IP set (&#39;+ipsetname&#39;) or an IP alias definition.
-     * You can also specify an address range like `20.34.101.207-201.3.9.99`, or
-     * a list of IP addresses and networks (entries are separated by comma).
-     * Please do not mix IPv4 and IPv6 addresses inside such lists.
+     * a single IP address, an IP set (&#39;+ipsetname&#39;) or an IP alias
+     * definition. You can also specify an address range like
+     * `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks
+     * (entries are separated by comma). Please do not mix IPv4 and IPv6
+     * addresses inside such lists.
      * 
      */
     @Import(name="dest")
@@ -60,10 +61,11 @@ public final class FirewallSecurityGroupRuleArgs extends com.pulumi.resources.Re
 
     /**
      * @return Restrict packet destination address. This can refer to
-     * a single IP address, an IP set (&#39;+ipsetname&#39;) or an IP alias definition.
-     * You can also specify an address range like `20.34.101.207-201.3.9.99`, or
-     * a list of IP addresses and networks (entries are separated by comma).
-     * Please do not mix IPv4 and IPv6 addresses inside such lists.
+     * a single IP address, an IP set (&#39;+ipsetname&#39;) or an IP alias
+     * definition. You can also specify an address range like
+     * `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks
+     * (entries are separated by comma). Please do not mix IPv4 and IPv6
+     * addresses inside such lists.
      * 
      */
     public Optional<Output<String>> dest() {
@@ -72,9 +74,10 @@ public final class FirewallSecurityGroupRuleArgs extends com.pulumi.resources.Re
 
     /**
      * Restrict TCP/UDP destination port. You can use
-     * service names or simple numbers (0-65535), as defined in &#39;/etc/services&#39;.
-     * Port ranges can be specified with &#39;\d+:\d+&#39;, for example `80:85`, and
-     * you can use comma separated list to match several ports or ranges.
+     * service names or simple numbers (0-65535), as defined in &#39;/etc/
+     * services&#39;. Port ranges can be specified with &#39;\d+:\d+&#39;, for example
+     * `80:85`, and you can use comma separated list to match several ports or
+     * ranges.
      * 
      */
     @Import(name="dport")
@@ -82,9 +85,10 @@ public final class FirewallSecurityGroupRuleArgs extends com.pulumi.resources.Re
 
     /**
      * @return Restrict TCP/UDP destination port. You can use
-     * service names or simple numbers (0-65535), as defined in &#39;/etc/services&#39;.
-     * Port ranges can be specified with &#39;\d+:\d+&#39;, for example `80:85`, and
-     * you can use comma separated list to match several ports or ranges.
+     * service names or simple numbers (0-65535), as defined in &#39;/etc/
+     * services&#39;. Port ranges can be specified with &#39;\d+:\d+&#39;, for example
+     * `80:85`, and you can use comma separated list to match several ports or
+     * ranges.
      * 
      */
     public Optional<Output<String>> dport() {
@@ -195,8 +199,8 @@ public final class FirewallSecurityGroupRuleArgs extends com.pulumi.resources.Re
      * to a single IP address, an IP set (&#39;+ipsetname&#39;) or an IP alias
      * definition. You can also specify an address range like
      * `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks (
-     * entries are separated by comma). Please do not mix IPv4 and IPv6 addresses
-     * inside such lists.
+     * entries are separated by comma). Please do not mix IPv4 and IPv6
+     * addresses inside such lists.
      * 
      */
     @Import(name="source")
@@ -207,8 +211,8 @@ public final class FirewallSecurityGroupRuleArgs extends com.pulumi.resources.Re
      * to a single IP address, an IP set (&#39;+ipsetname&#39;) or an IP alias
      * definition. You can also specify an address range like
      * `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks (
-     * entries are separated by comma). Please do not mix IPv4 and IPv6 addresses
-     * inside such lists.
+     * entries are separated by comma). Please do not mix IPv4 and IPv6
+     * addresses inside such lists.
      * 
      */
     public Optional<Output<String>> source() {
@@ -217,9 +221,10 @@ public final class FirewallSecurityGroupRuleArgs extends com.pulumi.resources.Re
 
     /**
      * Restrict TCP/UDP source port. You can use
-     * service names or simple numbers (0-65535), as defined in &#39;/etc/services&#39;.
-     * Port ranges can be specified with &#39;\d+:\d+&#39;, for example `80:85`, and
-     * you can use comma separated list to match several ports or ranges.
+     * service names or simple numbers (0-65535), as defined in &#39;/etc/
+     * services&#39;. Port ranges can be specified with &#39;\d+:\d+&#39;, for example
+     * `80:85`, and you can use comma separated list to match several ports or
+     * ranges.
      * 
      */
     @Import(name="sport")
@@ -227,9 +232,10 @@ public final class FirewallSecurityGroupRuleArgs extends com.pulumi.resources.Re
 
     /**
      * @return Restrict TCP/UDP source port. You can use
-     * service names or simple numbers (0-65535), as defined in &#39;/etc/services&#39;.
-     * Port ranges can be specified with &#39;\d+:\d+&#39;, for example `80:85`, and
-     * you can use comma separated list to match several ports or ranges.
+     * service names or simple numbers (0-65535), as defined in &#39;/etc/
+     * services&#39;. Port ranges can be specified with &#39;\d+:\d+&#39;, for example
+     * `80:85`, and you can use comma separated list to match several ports or
+     * ranges.
      * 
      */
     public Optional<Output<String>> sport() {
@@ -332,10 +338,11 @@ public final class FirewallSecurityGroupRuleArgs extends com.pulumi.resources.Re
 
         /**
          * @param dest Restrict packet destination address. This can refer to
-         * a single IP address, an IP set (&#39;+ipsetname&#39;) or an IP alias definition.
-         * You can also specify an address range like `20.34.101.207-201.3.9.99`, or
-         * a list of IP addresses and networks (entries are separated by comma).
-         * Please do not mix IPv4 and IPv6 addresses inside such lists.
+         * a single IP address, an IP set (&#39;+ipsetname&#39;) or an IP alias
+         * definition. You can also specify an address range like
+         * `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks
+         * (entries are separated by comma). Please do not mix IPv4 and IPv6
+         * addresses inside such lists.
          * 
          * @return builder
          * 
@@ -347,10 +354,11 @@ public final class FirewallSecurityGroupRuleArgs extends com.pulumi.resources.Re
 
         /**
          * @param dest Restrict packet destination address. This can refer to
-         * a single IP address, an IP set (&#39;+ipsetname&#39;) or an IP alias definition.
-         * You can also specify an address range like `20.34.101.207-201.3.9.99`, or
-         * a list of IP addresses and networks (entries are separated by comma).
-         * Please do not mix IPv4 and IPv6 addresses inside such lists.
+         * a single IP address, an IP set (&#39;+ipsetname&#39;) or an IP alias
+         * definition. You can also specify an address range like
+         * `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks
+         * (entries are separated by comma). Please do not mix IPv4 and IPv6
+         * addresses inside such lists.
          * 
          * @return builder
          * 
@@ -361,9 +369,10 @@ public final class FirewallSecurityGroupRuleArgs extends com.pulumi.resources.Re
 
         /**
          * @param dport Restrict TCP/UDP destination port. You can use
-         * service names or simple numbers (0-65535), as defined in &#39;/etc/services&#39;.
-         * Port ranges can be specified with &#39;\d+:\d+&#39;, for example `80:85`, and
-         * you can use comma separated list to match several ports or ranges.
+         * service names or simple numbers (0-65535), as defined in &#39;/etc/
+         * services&#39;. Port ranges can be specified with &#39;\d+:\d+&#39;, for example
+         * `80:85`, and you can use comma separated list to match several ports or
+         * ranges.
          * 
          * @return builder
          * 
@@ -375,9 +384,10 @@ public final class FirewallSecurityGroupRuleArgs extends com.pulumi.resources.Re
 
         /**
          * @param dport Restrict TCP/UDP destination port. You can use
-         * service names or simple numbers (0-65535), as defined in &#39;/etc/services&#39;.
-         * Port ranges can be specified with &#39;\d+:\d+&#39;, for example `80:85`, and
-         * you can use comma separated list to match several ports or ranges.
+         * service names or simple numbers (0-65535), as defined in &#39;/etc/
+         * services&#39;. Port ranges can be specified with &#39;\d+:\d+&#39;, for example
+         * `80:85`, and you can use comma separated list to match several ports or
+         * ranges.
          * 
          * @return builder
          * 
@@ -524,8 +534,8 @@ public final class FirewallSecurityGroupRuleArgs extends com.pulumi.resources.Re
          * to a single IP address, an IP set (&#39;+ipsetname&#39;) or an IP alias
          * definition. You can also specify an address range like
          * `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks (
-         * entries are separated by comma). Please do not mix IPv4 and IPv6 addresses
-         * inside such lists.
+         * entries are separated by comma). Please do not mix IPv4 and IPv6
+         * addresses inside such lists.
          * 
          * @return builder
          * 
@@ -540,8 +550,8 @@ public final class FirewallSecurityGroupRuleArgs extends com.pulumi.resources.Re
          * to a single IP address, an IP set (&#39;+ipsetname&#39;) or an IP alias
          * definition. You can also specify an address range like
          * `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks (
-         * entries are separated by comma). Please do not mix IPv4 and IPv6 addresses
-         * inside such lists.
+         * entries are separated by comma). Please do not mix IPv4 and IPv6
+         * addresses inside such lists.
          * 
          * @return builder
          * 
@@ -552,9 +562,10 @@ public final class FirewallSecurityGroupRuleArgs extends com.pulumi.resources.Re
 
         /**
          * @param sport Restrict TCP/UDP source port. You can use
-         * service names or simple numbers (0-65535), as defined in &#39;/etc/services&#39;.
-         * Port ranges can be specified with &#39;\d+:\d+&#39;, for example `80:85`, and
-         * you can use comma separated list to match several ports or ranges.
+         * service names or simple numbers (0-65535), as defined in &#39;/etc/
+         * services&#39;. Port ranges can be specified with &#39;\d+:\d+&#39;, for example
+         * `80:85`, and you can use comma separated list to match several ports or
+         * ranges.
          * 
          * @return builder
          * 
@@ -566,9 +577,10 @@ public final class FirewallSecurityGroupRuleArgs extends com.pulumi.resources.Re
 
         /**
          * @param sport Restrict TCP/UDP source port. You can use
-         * service names or simple numbers (0-65535), as defined in &#39;/etc/services&#39;.
-         * Port ranges can be specified with &#39;\d+:\d+&#39;, for example `80:85`, and
-         * you can use comma separated list to match several ports or ranges.
+         * service names or simple numbers (0-65535), as defined in &#39;/etc/
+         * services&#39;. Port ranges can be specified with &#39;\d+:\d+&#39;, for example
+         * `80:85`, and you can use comma separated list to match several ports or
+         * ranges.
          * 
          * @return builder
          * 

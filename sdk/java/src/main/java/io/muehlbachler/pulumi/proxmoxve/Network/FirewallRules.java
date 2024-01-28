@@ -120,7 +120,7 @@ public class FirewallRules extends com.pulumi.resources.CustomResource {
     /**
      * Firewall rule block (multiple blocks supported).
      * The provider supports two types of the `rule` blocks:
-     * - a rule definition block, which includes the following arguments:
+     * - A rule definition block, which includes the following arguments:
      * 
      */
     @Export(name="rules", refs={List.class,FirewallRulesRule.class}, tree="[0,1]")
@@ -129,7 +129,7 @@ public class FirewallRules extends com.pulumi.resources.CustomResource {
     /**
      * @return Firewall rule block (multiple blocks supported).
      * The provider supports two types of the `rule` blocks:
-     * - a rule definition block, which includes the following arguments:
+     * - A rule definition block, which includes the following arguments:
      * 
      */
     public Output<List<FirewallRulesRule>> rules() {
