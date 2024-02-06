@@ -5,6 +5,7 @@ package io.muehlbachler.pulumi.proxmoxve.VM.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -112,8 +113,12 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         }
 
         public GetVirtualMachineArgs build() {
-            $.nodeName = Objects.requireNonNull($.nodeName, "expected parameter 'nodeName' to be non-null");
-            $.vmId = Objects.requireNonNull($.vmId, "expected parameter 'vmId' to be non-null");
+            if ($.nodeName == null) {
+                throw new MissingRequiredPropertyException("GetVirtualMachineArgs", "nodeName");
+            }
+            if ($.vmId == null) {
+                throw new MissingRequiredPropertyException("GetVirtualMachineArgs", "vmId");
+            }
             return $;
         }
     }

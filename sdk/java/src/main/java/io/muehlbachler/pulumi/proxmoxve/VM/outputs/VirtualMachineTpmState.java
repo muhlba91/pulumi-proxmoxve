@@ -60,11 +60,13 @@ public final class VirtualMachineTpmState {
 
         @CustomType.Setter
         public Builder datastoreId(@Nullable String datastoreId) {
+
             this.datastoreId = datastoreId;
             return this;
         }
         @CustomType.Setter
         public Builder version(@Nullable String version) {
+
             this.version = version;
             return this;
         }

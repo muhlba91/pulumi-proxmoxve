@@ -73,6 +73,7 @@ public final class VirtualMachineInitializationUserAccount {
 
         @CustomType.Setter
         public Builder keys(@Nullable List<String> keys) {
+
             this.keys = keys;
             return this;
         }
@@ -81,11 +82,13 @@ public final class VirtualMachineInitializationUserAccount {
         }
         @CustomType.Setter
         public Builder password(@Nullable String password) {
+
             this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder username(@Nullable String username) {
+
             this.username = username;
             return this;
         }

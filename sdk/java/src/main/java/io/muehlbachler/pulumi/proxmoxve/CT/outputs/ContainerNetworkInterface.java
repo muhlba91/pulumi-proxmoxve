@@ -4,6 +4,7 @@
 package io.muehlbachler.pulumi.proxmoxve.CT.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -153,41 +154,51 @@ public final class ContainerNetworkInterface {
 
         @CustomType.Setter
         public Builder bridge(@Nullable String bridge) {
+
             this.bridge = bridge;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder firewall(@Nullable Boolean firewall) {
+
             this.firewall = firewall;
             return this;
         }
         @CustomType.Setter
         public Builder macAddress(@Nullable String macAddress) {
+
             this.macAddress = macAddress;
             return this;
         }
         @CustomType.Setter
         public Builder mtu(@Nullable Integer mtu) {
+
             this.mtu = mtu;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("ContainerNetworkInterface", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder rateLimit(@Nullable Double rateLimit) {
+
             this.rateLimit = rateLimit;
             return this;
         }
         @CustomType.Setter
         public Builder vlanId(@Nullable Integer vlanId) {
+
             this.vlanId = vlanId;
             return this;
         }

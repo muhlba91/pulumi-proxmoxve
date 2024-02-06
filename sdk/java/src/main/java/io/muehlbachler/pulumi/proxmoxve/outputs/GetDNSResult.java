@@ -4,6 +4,7 @@
 package io.muehlbachler.pulumi.proxmoxve.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -77,22 +78,34 @@ public final class GetDNSResult {
 
         @CustomType.Setter
         public Builder domain(String domain) {
-            this.domain = Objects.requireNonNull(domain);
+            if (domain == null) {
+              throw new MissingRequiredPropertyException("GetDNSResult", "domain");
+            }
+            this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDNSResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder nodeName(String nodeName) {
-            this.nodeName = Objects.requireNonNull(nodeName);
+            if (nodeName == null) {
+              throw new MissingRequiredPropertyException("GetDNSResult", "nodeName");
+            }
+            this.nodeName = nodeName;
             return this;
         }
         @CustomType.Setter
         public Builder servers(List<String> servers) {
-            this.servers = Objects.requireNonNull(servers);
+            if (servers == null) {
+              throw new MissingRequiredPropertyException("GetDNSResult", "servers");
+            }
+            this.servers = servers;
             return this;
         }
         public Builder servers(String... servers) {

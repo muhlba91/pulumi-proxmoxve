@@ -4,6 +4,7 @@
 package io.muehlbachler.pulumi.proxmoxve.Permission.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -71,7 +72,10 @@ public final class GetGroupsResult {
 
         @CustomType.Setter
         public Builder comments(List<String> comments) {
-            this.comments = Objects.requireNonNull(comments);
+            if (comments == null) {
+              throw new MissingRequiredPropertyException("GetGroupsResult", "comments");
+            }
+            this.comments = comments;
             return this;
         }
         public Builder comments(String... comments) {
@@ -79,7 +83,10 @@ public final class GetGroupsResult {
         }
         @CustomType.Setter
         public Builder groupIds(List<String> groupIds) {
-            this.groupIds = Objects.requireNonNull(groupIds);
+            if (groupIds == null) {
+              throw new MissingRequiredPropertyException("GetGroupsResult", "groupIds");
+            }
+            this.groupIds = groupIds;
             return this;
         }
         public Builder groupIds(String... groupIds) {
@@ -87,7 +94,10 @@ public final class GetGroupsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGroupsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         public GetGroupsResult build() {

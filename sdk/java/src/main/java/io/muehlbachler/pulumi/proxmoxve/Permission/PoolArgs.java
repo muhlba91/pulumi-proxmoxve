@@ -5,6 +5,7 @@ package io.muehlbachler.pulumi.proxmoxve.Permission;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public PoolArgs build() {
-            $.poolId = Objects.requireNonNull($.poolId, "expected parameter 'poolId' to be non-null");
+            if ($.poolId == null) {
+                throw new MissingRequiredPropertyException("PoolArgs", "poolId");
+            }
             return $;
         }
     }

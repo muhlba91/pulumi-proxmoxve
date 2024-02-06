@@ -46,6 +46,7 @@ public final class VirtualMachineSerialDevice {
 
         @CustomType.Setter
         public Builder device(@Nullable String device) {
+
             this.device = device;
             return this;
         }

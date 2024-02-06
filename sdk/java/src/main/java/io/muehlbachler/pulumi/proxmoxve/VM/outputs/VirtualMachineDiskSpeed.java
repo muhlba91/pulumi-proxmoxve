@@ -90,21 +90,25 @@ public final class VirtualMachineDiskSpeed {
 
         @CustomType.Setter
         public Builder read(@Nullable Integer read) {
+
             this.read = read;
             return this;
         }
         @CustomType.Setter
         public Builder readBurstable(@Nullable Integer readBurstable) {
+
             this.readBurstable = readBurstable;
             return this;
         }
         @CustomType.Setter
         public Builder write(@Nullable Integer write) {
+
             this.write = write;
             return this;
         }
         @CustomType.Setter
         public Builder writeBurstable(@Nullable Integer writeBurstable) {
+
             this.writeBurstable = writeBurstable;
             return this;
         }

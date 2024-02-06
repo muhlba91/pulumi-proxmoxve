@@ -4,6 +4,7 @@
 package io.muehlbachler.pulumi.proxmoxve.Storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -177,7 +178,10 @@ public final class GetDatastoresResult {
 
         @CustomType.Setter
         public Builder actives(List<Boolean> actives) {
-            this.actives = Objects.requireNonNull(actives);
+            if (actives == null) {
+              throw new MissingRequiredPropertyException("GetDatastoresResult", "actives");
+            }
+            this.actives = actives;
             return this;
         }
         public Builder actives(Boolean... actives) {
@@ -185,12 +189,18 @@ public final class GetDatastoresResult {
         }
         @CustomType.Setter
         public Builder contentTypes(List<List<String>> contentTypes) {
-            this.contentTypes = Objects.requireNonNull(contentTypes);
+            if (contentTypes == null) {
+              throw new MissingRequiredPropertyException("GetDatastoresResult", "contentTypes");
+            }
+            this.contentTypes = contentTypes;
             return this;
         }
         @CustomType.Setter
         public Builder datastoreIds(List<String> datastoreIds) {
-            this.datastoreIds = Objects.requireNonNull(datastoreIds);
+            if (datastoreIds == null) {
+              throw new MissingRequiredPropertyException("GetDatastoresResult", "datastoreIds");
+            }
+            this.datastoreIds = datastoreIds;
             return this;
         }
         public Builder datastoreIds(String... datastoreIds) {
@@ -198,7 +208,10 @@ public final class GetDatastoresResult {
         }
         @CustomType.Setter
         public Builder enableds(List<Boolean> enableds) {
-            this.enableds = Objects.requireNonNull(enableds);
+            if (enableds == null) {
+              throw new MissingRequiredPropertyException("GetDatastoresResult", "enableds");
+            }
+            this.enableds = enableds;
             return this;
         }
         public Builder enableds(Boolean... enableds) {
@@ -206,17 +219,26 @@ public final class GetDatastoresResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDatastoresResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder nodeName(String nodeName) {
-            this.nodeName = Objects.requireNonNull(nodeName);
+            if (nodeName == null) {
+              throw new MissingRequiredPropertyException("GetDatastoresResult", "nodeName");
+            }
+            this.nodeName = nodeName;
             return this;
         }
         @CustomType.Setter
         public Builder shareds(List<Boolean> shareds) {
-            this.shareds = Objects.requireNonNull(shareds);
+            if (shareds == null) {
+              throw new MissingRequiredPropertyException("GetDatastoresResult", "shareds");
+            }
+            this.shareds = shareds;
             return this;
         }
         public Builder shareds(Boolean... shareds) {
@@ -224,7 +246,10 @@ public final class GetDatastoresResult {
         }
         @CustomType.Setter
         public Builder spaceAvailables(List<Integer> spaceAvailables) {
-            this.spaceAvailables = Objects.requireNonNull(spaceAvailables);
+            if (spaceAvailables == null) {
+              throw new MissingRequiredPropertyException("GetDatastoresResult", "spaceAvailables");
+            }
+            this.spaceAvailables = spaceAvailables;
             return this;
         }
         public Builder spaceAvailables(Integer... spaceAvailables) {
@@ -232,7 +257,10 @@ public final class GetDatastoresResult {
         }
         @CustomType.Setter
         public Builder spaceTotals(List<Integer> spaceTotals) {
-            this.spaceTotals = Objects.requireNonNull(spaceTotals);
+            if (spaceTotals == null) {
+              throw new MissingRequiredPropertyException("GetDatastoresResult", "spaceTotals");
+            }
+            this.spaceTotals = spaceTotals;
             return this;
         }
         public Builder spaceTotals(Integer... spaceTotals) {
@@ -240,7 +268,10 @@ public final class GetDatastoresResult {
         }
         @CustomType.Setter
         public Builder spaceUseds(List<Integer> spaceUseds) {
-            this.spaceUseds = Objects.requireNonNull(spaceUseds);
+            if (spaceUseds == null) {
+              throw new MissingRequiredPropertyException("GetDatastoresResult", "spaceUseds");
+            }
+            this.spaceUseds = spaceUseds;
             return this;
         }
         public Builder spaceUseds(Integer... spaceUseds) {
@@ -248,7 +279,10 @@ public final class GetDatastoresResult {
         }
         @CustomType.Setter
         public Builder types(List<String> types) {
-            this.types = Objects.requireNonNull(types);
+            if (types == null) {
+              throw new MissingRequiredPropertyException("GetDatastoresResult", "types");
+            }
+            this.types = types;
             return this;
         }
         public Builder types(String... types) {

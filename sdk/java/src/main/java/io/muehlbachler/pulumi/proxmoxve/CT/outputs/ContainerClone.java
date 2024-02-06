@@ -4,6 +4,7 @@
 package io.muehlbachler.pulumi.proxmoxve.CT.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -75,17 +76,22 @@ public final class ContainerClone {
 
         @CustomType.Setter
         public Builder datastoreId(@Nullable String datastoreId) {
+
             this.datastoreId = datastoreId;
             return this;
         }
         @CustomType.Setter
         public Builder nodeName(@Nullable String nodeName) {
+
             this.nodeName = nodeName;
             return this;
         }
         @CustomType.Setter
         public Builder vmId(Integer vmId) {
-            this.vmId = Objects.requireNonNull(vmId);
+            if (vmId == null) {
+              throw new MissingRequiredPropertyException("ContainerClone", "vmId");
+            }
+            this.vmId = vmId;
             return this;
         }
         public ContainerClone build() {

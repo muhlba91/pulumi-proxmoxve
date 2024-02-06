@@ -4,6 +4,7 @@
 package io.muehlbachler.pulumi.proxmoxve.Permission.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import io.muehlbachler.pulumi.proxmoxve.Permission.outputs.GetGroupAcl;
 import java.lang.String;
 import java.util.List;
@@ -92,7 +93,10 @@ public final class GetGroupResult {
 
         @CustomType.Setter
         public Builder acls(List<GetGroupAcl> acls) {
-            this.acls = Objects.requireNonNull(acls);
+            if (acls == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "acls");
+            }
+            this.acls = acls;
             return this;
         }
         public Builder acls(GetGroupAcl... acls) {
@@ -100,22 +104,34 @@ public final class GetGroupResult {
         }
         @CustomType.Setter
         public Builder comment(String comment) {
-            this.comment = Objects.requireNonNull(comment);
+            if (comment == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "comment");
+            }
+            this.comment = comment;
             return this;
         }
         @CustomType.Setter
         public Builder groupId(String groupId) {
-            this.groupId = Objects.requireNonNull(groupId);
+            if (groupId == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "groupId");
+            }
+            this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder members(List<String> members) {
-            this.members = Objects.requireNonNull(members);
+            if (members == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "members");
+            }
+            this.members = members;
             return this;
         }
         public Builder members(String... members) {

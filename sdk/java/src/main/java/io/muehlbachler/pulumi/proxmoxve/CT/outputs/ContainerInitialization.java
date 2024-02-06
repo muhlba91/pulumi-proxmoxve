@@ -92,16 +92,19 @@ public final class ContainerInitialization {
 
         @CustomType.Setter
         public Builder dns(@Nullable ContainerInitializationDns dns) {
+
             this.dns = dns;
             return this;
         }
         @CustomType.Setter
         public Builder hostname(@Nullable String hostname) {
+
             this.hostname = hostname;
             return this;
         }
         @CustomType.Setter
         public Builder ipConfigs(@Nullable List<ContainerInitializationIpConfig> ipConfigs) {
+
             this.ipConfigs = ipConfigs;
             return this;
         }
@@ -110,6 +113,7 @@ public final class ContainerInitialization {
         }
         @CustomType.Setter
         public Builder userAccount(@Nullable ContainerInitializationUserAccount userAccount) {
+
             this.userAccount = userAccount;
             return this;
         }

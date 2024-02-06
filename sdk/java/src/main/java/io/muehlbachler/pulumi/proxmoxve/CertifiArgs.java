@@ -5,6 +5,7 @@ package io.muehlbachler.pulumi.proxmoxve;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -225,9 +226,15 @@ public final class CertifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CertifiArgs build() {
-            $.certificate = Objects.requireNonNull($.certificate, "expected parameter 'certificate' to be non-null");
-            $.nodeName = Objects.requireNonNull($.nodeName, "expected parameter 'nodeName' to be non-null");
-            $.privateKey = Objects.requireNonNull($.privateKey, "expected parameter 'privateKey' to be non-null");
+            if ($.certificate == null) {
+                throw new MissingRequiredPropertyException("CertifiArgs", "certificate");
+            }
+            if ($.nodeName == null) {
+                throw new MissingRequiredPropertyException("CertifiArgs", "nodeName");
+            }
+            if ($.privateKey == null) {
+                throw new MissingRequiredPropertyException("CertifiArgs", "privateKey");
+            }
             return $;
         }
     }

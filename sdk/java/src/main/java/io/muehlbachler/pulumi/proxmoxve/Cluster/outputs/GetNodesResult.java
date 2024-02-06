@@ -4,6 +4,7 @@
 package io.muehlbachler.pulumi.proxmoxve.Cluster.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -172,7 +173,10 @@ public final class GetNodesResult {
 
         @CustomType.Setter
         public Builder cpuCounts(List<Integer> cpuCounts) {
-            this.cpuCounts = Objects.requireNonNull(cpuCounts);
+            if (cpuCounts == null) {
+              throw new MissingRequiredPropertyException("GetNodesResult", "cpuCounts");
+            }
+            this.cpuCounts = cpuCounts;
             return this;
         }
         public Builder cpuCounts(Integer... cpuCounts) {
@@ -180,7 +184,10 @@ public final class GetNodesResult {
         }
         @CustomType.Setter
         public Builder cpuUtilizations(List<Double> cpuUtilizations) {
-            this.cpuUtilizations = Objects.requireNonNull(cpuUtilizations);
+            if (cpuUtilizations == null) {
+              throw new MissingRequiredPropertyException("GetNodesResult", "cpuUtilizations");
+            }
+            this.cpuUtilizations = cpuUtilizations;
             return this;
         }
         public Builder cpuUtilizations(Double... cpuUtilizations) {
@@ -188,12 +195,18 @@ public final class GetNodesResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNodesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder memoryAvailables(List<Integer> memoryAvailables) {
-            this.memoryAvailables = Objects.requireNonNull(memoryAvailables);
+            if (memoryAvailables == null) {
+              throw new MissingRequiredPropertyException("GetNodesResult", "memoryAvailables");
+            }
+            this.memoryAvailables = memoryAvailables;
             return this;
         }
         public Builder memoryAvailables(Integer... memoryAvailables) {
@@ -201,7 +214,10 @@ public final class GetNodesResult {
         }
         @CustomType.Setter
         public Builder memoryUseds(List<Integer> memoryUseds) {
-            this.memoryUseds = Objects.requireNonNull(memoryUseds);
+            if (memoryUseds == null) {
+              throw new MissingRequiredPropertyException("GetNodesResult", "memoryUseds");
+            }
+            this.memoryUseds = memoryUseds;
             return this;
         }
         public Builder memoryUseds(Integer... memoryUseds) {
@@ -209,7 +225,10 @@ public final class GetNodesResult {
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetNodesResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -217,7 +236,10 @@ public final class GetNodesResult {
         }
         @CustomType.Setter
         public Builder onlines(List<Boolean> onlines) {
-            this.onlines = Objects.requireNonNull(onlines);
+            if (onlines == null) {
+              throw new MissingRequiredPropertyException("GetNodesResult", "onlines");
+            }
+            this.onlines = onlines;
             return this;
         }
         public Builder onlines(Boolean... onlines) {
@@ -225,7 +247,10 @@ public final class GetNodesResult {
         }
         @CustomType.Setter
         public Builder sslFingerprints(List<String> sslFingerprints) {
-            this.sslFingerprints = Objects.requireNonNull(sslFingerprints);
+            if (sslFingerprints == null) {
+              throw new MissingRequiredPropertyException("GetNodesResult", "sslFingerprints");
+            }
+            this.sslFingerprints = sslFingerprints;
             return this;
         }
         public Builder sslFingerprints(String... sslFingerprints) {
@@ -233,7 +258,10 @@ public final class GetNodesResult {
         }
         @CustomType.Setter
         public Builder supportLevels(List<String> supportLevels) {
-            this.supportLevels = Objects.requireNonNull(supportLevels);
+            if (supportLevels == null) {
+              throw new MissingRequiredPropertyException("GetNodesResult", "supportLevels");
+            }
+            this.supportLevels = supportLevels;
             return this;
         }
         public Builder supportLevels(String... supportLevels) {
@@ -241,7 +269,10 @@ public final class GetNodesResult {
         }
         @CustomType.Setter
         public Builder uptimes(List<Integer> uptimes) {
-            this.uptimes = Objects.requireNonNull(uptimes);
+            if (uptimes == null) {
+              throw new MissingRequiredPropertyException("GetNodesResult", "uptimes");
+            }
+            this.uptimes = uptimes;
             return this;
         }
         public Builder uptimes(Integer... uptimes) {

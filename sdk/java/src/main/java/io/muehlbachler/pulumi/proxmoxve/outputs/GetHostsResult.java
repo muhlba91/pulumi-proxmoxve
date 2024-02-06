@@ -4,6 +4,7 @@
 package io.muehlbachler.pulumi.proxmoxve.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetHostsEntry;
 import java.lang.String;
 import java.util.List;
@@ -108,7 +109,10 @@ public final class GetHostsResult {
 
         @CustomType.Setter
         public Builder addresses(List<String> addresses) {
-            this.addresses = Objects.requireNonNull(addresses);
+            if (addresses == null) {
+              throw new MissingRequiredPropertyException("GetHostsResult", "addresses");
+            }
+            this.addresses = addresses;
             return this;
         }
         public Builder addresses(String... addresses) {
@@ -116,12 +120,18 @@ public final class GetHostsResult {
         }
         @CustomType.Setter
         public Builder digest(String digest) {
-            this.digest = Objects.requireNonNull(digest);
+            if (digest == null) {
+              throw new MissingRequiredPropertyException("GetHostsResult", "digest");
+            }
+            this.digest = digest;
             return this;
         }
         @CustomType.Setter
         public Builder entries(List<GetHostsEntry> entries) {
-            this.entries = Objects.requireNonNull(entries);
+            if (entries == null) {
+              throw new MissingRequiredPropertyException("GetHostsResult", "entries");
+            }
+            this.entries = entries;
             return this;
         }
         public Builder entries(GetHostsEntry... entries) {
@@ -129,17 +139,26 @@ public final class GetHostsResult {
         }
         @CustomType.Setter
         public Builder hostnames(List<List<String>> hostnames) {
-            this.hostnames = Objects.requireNonNull(hostnames);
+            if (hostnames == null) {
+              throw new MissingRequiredPropertyException("GetHostsResult", "hostnames");
+            }
+            this.hostnames = hostnames;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetHostsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder nodeName(String nodeName) {
-            this.nodeName = Objects.requireNonNull(nodeName);
+            if (nodeName == null) {
+              throw new MissingRequiredPropertyException("GetHostsResult", "nodeName");
+            }
+            this.nodeName = nodeName;
             return this;
         }
         public GetHostsResult build() {

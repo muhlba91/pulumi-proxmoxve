@@ -85,16 +85,19 @@ public final class VirtualMachineCdrom {
 
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder fileId(@Nullable String fileId) {
+
             this.fileId = fileId;
             return this;
         }
         @CustomType.Setter("interface")
         public Builder interface_(@Nullable String interface_) {
+
             this.interface_ = interface_;
             return this;
         }

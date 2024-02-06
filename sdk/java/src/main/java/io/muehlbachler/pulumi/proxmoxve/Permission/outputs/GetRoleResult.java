@@ -4,6 +4,7 @@
 package io.muehlbachler.pulumi.proxmoxve.Permission.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -63,12 +64,18 @@ public final class GetRoleResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRoleResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder privileges(List<String> privileges) {
-            this.privileges = Objects.requireNonNull(privileges);
+            if (privileges == null) {
+              throw new MissingRequiredPropertyException("GetRoleResult", "privileges");
+            }
+            this.privileges = privileges;
             return this;
         }
         public Builder privileges(String... privileges) {
@@ -76,7 +83,10 @@ public final class GetRoleResult {
         }
         @CustomType.Setter
         public Builder roleId(String roleId) {
-            this.roleId = Objects.requireNonNull(roleId);
+            if (roleId == null) {
+              throw new MissingRequiredPropertyException("GetRoleResult", "roleId");
+            }
+            this.roleId = roleId;
             return this;
         }
         public GetRoleResult build() {

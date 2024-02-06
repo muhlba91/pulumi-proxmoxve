@@ -4,6 +4,7 @@
 package io.muehlbachler.pulumi.proxmoxve.Permission.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -86,17 +87,26 @@ public final class GetRolesResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRolesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder privileges(List<List<String>> privileges) {
-            this.privileges = Objects.requireNonNull(privileges);
+            if (privileges == null) {
+              throw new MissingRequiredPropertyException("GetRolesResult", "privileges");
+            }
+            this.privileges = privileges;
             return this;
         }
         @CustomType.Setter
         public Builder roleIds(List<String> roleIds) {
-            this.roleIds = Objects.requireNonNull(roleIds);
+            if (roleIds == null) {
+              throw new MissingRequiredPropertyException("GetRolesResult", "roleIds");
+            }
+            this.roleIds = roleIds;
             return this;
         }
         public Builder roleIds(String... roleIds) {
@@ -104,7 +114,10 @@ public final class GetRolesResult {
         }
         @CustomType.Setter
         public Builder specials(List<Boolean> specials) {
-            this.specials = Objects.requireNonNull(specials);
+            if (specials == null) {
+              throw new MissingRequiredPropertyException("GetRolesResult", "specials");
+            }
+            this.specials = specials;
             return this;
         }
         public Builder specials(Boolean... specials) {

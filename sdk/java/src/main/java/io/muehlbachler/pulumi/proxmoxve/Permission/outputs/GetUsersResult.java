@@ -4,6 +4,7 @@
 package io.muehlbachler.pulumi.proxmoxve.Permission.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -170,7 +171,10 @@ public final class GetUsersResult {
 
         @CustomType.Setter
         public Builder comments(List<String> comments) {
-            this.comments = Objects.requireNonNull(comments);
+            if (comments == null) {
+              throw new MissingRequiredPropertyException("GetUsersResult", "comments");
+            }
+            this.comments = comments;
             return this;
         }
         public Builder comments(String... comments) {
@@ -178,7 +182,10 @@ public final class GetUsersResult {
         }
         @CustomType.Setter
         public Builder emails(List<String> emails) {
-            this.emails = Objects.requireNonNull(emails);
+            if (emails == null) {
+              throw new MissingRequiredPropertyException("GetUsersResult", "emails");
+            }
+            this.emails = emails;
             return this;
         }
         public Builder emails(String... emails) {
@@ -186,7 +193,10 @@ public final class GetUsersResult {
         }
         @CustomType.Setter
         public Builder enableds(List<Boolean> enableds) {
-            this.enableds = Objects.requireNonNull(enableds);
+            if (enableds == null) {
+              throw new MissingRequiredPropertyException("GetUsersResult", "enableds");
+            }
+            this.enableds = enableds;
             return this;
         }
         public Builder enableds(Boolean... enableds) {
@@ -194,7 +204,10 @@ public final class GetUsersResult {
         }
         @CustomType.Setter
         public Builder expirationDates(List<String> expirationDates) {
-            this.expirationDates = Objects.requireNonNull(expirationDates);
+            if (expirationDates == null) {
+              throw new MissingRequiredPropertyException("GetUsersResult", "expirationDates");
+            }
+            this.expirationDates = expirationDates;
             return this;
         }
         public Builder expirationDates(String... expirationDates) {
@@ -202,7 +215,10 @@ public final class GetUsersResult {
         }
         @CustomType.Setter
         public Builder firstNames(List<String> firstNames) {
-            this.firstNames = Objects.requireNonNull(firstNames);
+            if (firstNames == null) {
+              throw new MissingRequiredPropertyException("GetUsersResult", "firstNames");
+            }
+            this.firstNames = firstNames;
             return this;
         }
         public Builder firstNames(String... firstNames) {
@@ -210,17 +226,26 @@ public final class GetUsersResult {
         }
         @CustomType.Setter
         public Builder groups(List<List<String>> groups) {
-            this.groups = Objects.requireNonNull(groups);
+            if (groups == null) {
+              throw new MissingRequiredPropertyException("GetUsersResult", "groups");
+            }
+            this.groups = groups;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetUsersResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder keys(List<String> keys) {
-            this.keys = Objects.requireNonNull(keys);
+            if (keys == null) {
+              throw new MissingRequiredPropertyException("GetUsersResult", "keys");
+            }
+            this.keys = keys;
             return this;
         }
         public Builder keys(String... keys) {
@@ -228,7 +253,10 @@ public final class GetUsersResult {
         }
         @CustomType.Setter
         public Builder lastNames(List<String> lastNames) {
-            this.lastNames = Objects.requireNonNull(lastNames);
+            if (lastNames == null) {
+              throw new MissingRequiredPropertyException("GetUsersResult", "lastNames");
+            }
+            this.lastNames = lastNames;
             return this;
         }
         public Builder lastNames(String... lastNames) {
@@ -236,7 +264,10 @@ public final class GetUsersResult {
         }
         @CustomType.Setter
         public Builder userIds(List<String> userIds) {
-            this.userIds = Objects.requireNonNull(userIds);
+            if (userIds == null) {
+              throw new MissingRequiredPropertyException("GetUsersResult", "userIds");
+            }
+            this.userIds = userIds;
             return this;
         }
         public Builder userIds(String... userIds) {

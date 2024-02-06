@@ -5,6 +5,7 @@ package io.muehlbachler.pulumi.proxmoxve.Storage.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -151,8 +152,12 @@ public final class FileSourceRawArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FileSourceRawArgs build() {
-            $.data = Objects.requireNonNull($.data, "expected parameter 'data' to be non-null");
-            $.fileName = Objects.requireNonNull($.fileName, "expected parameter 'fileName' to be non-null");
+            if ($.data == null) {
+                throw new MissingRequiredPropertyException("FileSourceRawArgs", "data");
+            }
+            if ($.fileName == null) {
+                throw new MissingRequiredPropertyException("FileSourceRawArgs", "fileName");
+            }
             return $;
         }
     }

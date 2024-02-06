@@ -5,6 +5,7 @@ package io.muehlbachler.pulumi.proxmoxve.CT.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class ContainerOperatingSystemArgs extends com.pulumi.resources.Res
         }
 
         public ContainerOperatingSystemArgs build() {
-            $.templateFileId = Objects.requireNonNull($.templateFileId, "expected parameter 'templateFileId' to be non-null");
+            if ($.templateFileId == null) {
+                throw new MissingRequiredPropertyException("ContainerOperatingSystemArgs", "templateFileId");
+            }
             return $;
         }
     }

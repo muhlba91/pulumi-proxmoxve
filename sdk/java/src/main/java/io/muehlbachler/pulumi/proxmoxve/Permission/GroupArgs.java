@@ -5,6 +5,7 @@ package io.muehlbachler.pulumi.proxmoxve.Permission;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import io.muehlbachler.pulumi.proxmoxve.Permission.inputs.GroupAclArgs;
 import java.lang.String;
 import java.util.List;
@@ -162,7 +163,9 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public GroupArgs build() {
-            $.groupId = Objects.requireNonNull($.groupId, "expected parameter 'groupId' to be non-null");
+            if ($.groupId == null) {
+                throw new MissingRequiredPropertyException("GroupArgs", "groupId");
+            }
             return $;
         }
     }

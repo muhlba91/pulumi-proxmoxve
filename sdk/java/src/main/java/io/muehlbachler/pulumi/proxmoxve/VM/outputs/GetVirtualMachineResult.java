@@ -4,6 +4,7 @@
 package io.muehlbachler.pulumi.proxmoxve.VM.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -84,22 +85,34 @@ public final class GetVirtualMachineResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nodeName(String nodeName) {
-            this.nodeName = Objects.requireNonNull(nodeName);
+            if (nodeName == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineResult", "nodeName");
+            }
+            this.nodeName = nodeName;
             return this;
         }
         @CustomType.Setter
         public Builder tags(List<String> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineResult", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(String... tags) {
@@ -107,7 +120,10 @@ public final class GetVirtualMachineResult {
         }
         @CustomType.Setter
         public Builder vmId(Integer vmId) {
-            this.vmId = Objects.requireNonNull(vmId);
+            if (vmId == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineResult", "vmId");
+            }
+            this.vmId = vmId;
             return this;
         }
         public GetVirtualMachineResult build() {

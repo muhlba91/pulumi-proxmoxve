@@ -5,6 +5,7 @@ package io.muehlbachler.pulumi.proxmoxve.Network;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import io.muehlbachler.pulumi.proxmoxve.Network.inputs.FirewallSecurityGroupRuleArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -274,7 +275,9 @@ public final class FirewallSecurityGroupArgs extends com.pulumi.resources.Resour
         }
 
         public FirewallSecurityGroupArgs build() {
-            $.rules = Objects.requireNonNull($.rules, "expected parameter 'rules' to be non-null");
+            if ($.rules == null) {
+                throw new MissingRequiredPropertyException("FirewallSecurityGroupArgs", "rules");
+            }
             return $;
         }
     }

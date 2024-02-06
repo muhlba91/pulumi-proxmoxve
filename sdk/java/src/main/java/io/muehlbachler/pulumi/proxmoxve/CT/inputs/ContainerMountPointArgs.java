@@ -5,6 +5,7 @@ package io.muehlbachler.pulumi.proxmoxve.CT.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -445,8 +446,12 @@ public final class ContainerMountPointArgs extends com.pulumi.resources.Resource
         }
 
         public ContainerMountPointArgs build() {
-            $.path = Objects.requireNonNull($.path, "expected parameter 'path' to be non-null");
-            $.volume = Objects.requireNonNull($.volume, "expected parameter 'volume' to be non-null");
+            if ($.path == null) {
+                throw new MissingRequiredPropertyException("ContainerMountPointArgs", "path");
+            }
+            if ($.volume == null) {
+                throw new MissingRequiredPropertyException("ContainerMountPointArgs", "volume");
+            }
             return $;
         }
     }

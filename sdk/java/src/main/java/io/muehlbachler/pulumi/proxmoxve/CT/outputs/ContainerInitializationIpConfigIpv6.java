@@ -62,11 +62,13 @@ public final class ContainerInitializationIpConfigIpv6 {
 
         @CustomType.Setter
         public Builder address(@Nullable String address) {
+
             this.address = address;
             return this;
         }
         @CustomType.Setter
         public Builder gateway(@Nullable String gateway) {
+
             this.gateway = gateway;
             return this;
         }

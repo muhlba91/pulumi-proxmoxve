@@ -5,6 +5,7 @@ package io.muehlbachler.pulumi.proxmoxve.Permission;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -122,8 +123,12 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RoleArgs build() {
-            $.privileges = Objects.requireNonNull($.privileges, "expected parameter 'privileges' to be non-null");
-            $.roleId = Objects.requireNonNull($.roleId, "expected parameter 'roleId' to be non-null");
+            if ($.privileges == null) {
+                throw new MissingRequiredPropertyException("RoleArgs", "privileges");
+            }
+            if ($.roleId == null) {
+                throw new MissingRequiredPropertyException("RoleArgs", "roleId");
+            }
             return $;
         }
     }

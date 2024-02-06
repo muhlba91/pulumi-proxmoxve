@@ -4,6 +4,7 @@
 package io.muehlbachler.pulumi.proxmoxve.Permission.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import io.muehlbachler.pulumi.proxmoxve.Permission.outputs.GetUserAcl;
 import java.lang.Boolean;
 import java.lang.String;
@@ -177,7 +178,10 @@ public final class GetUserResult {
 
         @CustomType.Setter
         public Builder acls(List<GetUserAcl> acls) {
-            this.acls = Objects.requireNonNull(acls);
+            if (acls == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "acls");
+            }
+            this.acls = acls;
             return this;
         }
         public Builder acls(GetUserAcl... acls) {
@@ -185,32 +189,50 @@ public final class GetUserResult {
         }
         @CustomType.Setter
         public Builder comment(String comment) {
-            this.comment = Objects.requireNonNull(comment);
+            if (comment == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "comment");
+            }
+            this.comment = comment;
             return this;
         }
         @CustomType.Setter
         public Builder email(String email) {
-            this.email = Objects.requireNonNull(email);
+            if (email == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "email");
+            }
+            this.email = email;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder expirationDate(String expirationDate) {
-            this.expirationDate = Objects.requireNonNull(expirationDate);
+            if (expirationDate == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "expirationDate");
+            }
+            this.expirationDate = expirationDate;
             return this;
         }
         @CustomType.Setter
         public Builder firstName(String firstName) {
-            this.firstName = Objects.requireNonNull(firstName);
+            if (firstName == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "firstName");
+            }
+            this.firstName = firstName;
             return this;
         }
         @CustomType.Setter
         public Builder groups(List<String> groups) {
-            this.groups = Objects.requireNonNull(groups);
+            if (groups == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "groups");
+            }
+            this.groups = groups;
             return this;
         }
         public Builder groups(String... groups) {
@@ -218,22 +240,34 @@ public final class GetUserResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder keys(String keys) {
-            this.keys = Objects.requireNonNull(keys);
+            if (keys == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "keys");
+            }
+            this.keys = keys;
             return this;
         }
         @CustomType.Setter
         public Builder lastName(String lastName) {
-            this.lastName = Objects.requireNonNull(lastName);
+            if (lastName == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "lastName");
+            }
+            this.lastName = lastName;
             return this;
         }
         @CustomType.Setter
         public Builder userId(String userId) {
-            this.userId = Objects.requireNonNull(userId);
+            if (userId == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "userId");
+            }
+            this.userId = userId;
             return this;
         }
         public GetUserResult build() {

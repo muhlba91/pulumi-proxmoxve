@@ -76,16 +76,19 @@ public final class VirtualMachineMemory {
 
         @CustomType.Setter
         public Builder dedicated(@Nullable Integer dedicated) {
+
             this.dedicated = dedicated;
             return this;
         }
         @CustomType.Setter
         public Builder floating(@Nullable Integer floating) {
+
             this.floating = floating;
             return this;
         }
         @CustomType.Setter
         public Builder shared(@Nullable Integer shared) {
+
             this.shared = shared;
             return this;
         }

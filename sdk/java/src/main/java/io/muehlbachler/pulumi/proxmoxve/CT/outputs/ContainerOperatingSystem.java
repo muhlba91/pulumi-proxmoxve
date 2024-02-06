@@ -4,6 +4,7 @@
 package io.muehlbachler.pulumi.proxmoxve.CT.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -58,11 +59,15 @@ public final class ContainerOperatingSystem {
 
         @CustomType.Setter
         public Builder templateFileId(String templateFileId) {
-            this.templateFileId = Objects.requireNonNull(templateFileId);
+            if (templateFileId == null) {
+              throw new MissingRequiredPropertyException("ContainerOperatingSystem", "templateFileId");
+            }
+            this.templateFileId = templateFileId;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

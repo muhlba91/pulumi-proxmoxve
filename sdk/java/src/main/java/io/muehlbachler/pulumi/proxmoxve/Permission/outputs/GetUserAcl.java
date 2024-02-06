@@ -4,6 +4,7 @@
 package io.muehlbachler.pulumi.proxmoxve.Permission.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -71,17 +72,26 @@ public final class GetUserAcl {
 
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("GetUserAcl", "path");
+            }
+            this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder propagate(Boolean propagate) {
-            this.propagate = Objects.requireNonNull(propagate);
+            if (propagate == null) {
+              throw new MissingRequiredPropertyException("GetUserAcl", "propagate");
+            }
+            this.propagate = propagate;
             return this;
         }
         @CustomType.Setter
         public Builder roleId(String roleId) {
-            this.roleId = Objects.requireNonNull(roleId);
+            if (roleId == null) {
+              throw new MissingRequiredPropertyException("GetUserAcl", "roleId");
+            }
+            this.roleId = roleId;
             return this;
         }
         public GetUserAcl build() {

@@ -85,16 +85,19 @@ public final class ContainerInitializationDns {
 
         @CustomType.Setter
         public Builder domain(@Nullable String domain) {
+
             this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder server(@Nullable String server) {
+
             this.server = server;
             return this;
         }
         @CustomType.Setter
         public Builder servers(@Nullable List<String> servers) {
+
             this.servers = servers;
             return this;
         }

@@ -5,6 +5,7 @@ package io.muehlbachler.pulumi.proxmoxve.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class GetTimeArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetTimeArgs build() {
-            $.nodeName = Objects.requireNonNull($.nodeName, "expected parameter 'nodeName' to be non-null");
+            if ($.nodeName == null) {
+                throw new MissingRequiredPropertyException("GetTimeArgs", "nodeName");
+            }
             return $;
         }
     }

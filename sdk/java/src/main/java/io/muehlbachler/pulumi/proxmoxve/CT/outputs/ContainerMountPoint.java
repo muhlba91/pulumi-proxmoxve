@@ -4,6 +4,7 @@
 package io.muehlbachler.pulumi.proxmoxve.CT.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -184,16 +185,19 @@ public final class ContainerMountPoint {
 
         @CustomType.Setter
         public Builder acl(@Nullable Boolean acl) {
+
             this.acl = acl;
             return this;
         }
         @CustomType.Setter
         public Builder backup(@Nullable Boolean backup) {
+
             this.backup = backup;
             return this;
         }
         @CustomType.Setter
         public Builder mountOptions(@Nullable List<String> mountOptions) {
+
             this.mountOptions = mountOptions;
             return this;
         }
@@ -202,37 +206,48 @@ public final class ContainerMountPoint {
         }
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("ContainerMountPoint", "path");
+            }
+            this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder quota(@Nullable Boolean quota) {
+
             this.quota = quota;
             return this;
         }
         @CustomType.Setter
         public Builder readOnly(@Nullable Boolean readOnly) {
+
             this.readOnly = readOnly;
             return this;
         }
         @CustomType.Setter
         public Builder replicate(@Nullable Boolean replicate) {
+
             this.replicate = replicate;
             return this;
         }
         @CustomType.Setter
         public Builder shared(@Nullable Boolean shared) {
+
             this.shared = shared;
             return this;
         }
         @CustomType.Setter
         public Builder size(@Nullable String size) {
+
             this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder volume(String volume) {
-            this.volume = Objects.requireNonNull(volume);
+            if (volume == null) {
+              throw new MissingRequiredPropertyException("ContainerMountPoint", "volume");
+            }
+            this.volume = volume;
             return this;
         }
         public ContainerMountPoint build() {

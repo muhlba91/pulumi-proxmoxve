@@ -73,16 +73,19 @@ public final class ContainerCpu {
 
         @CustomType.Setter
         public Builder architecture(@Nullable String architecture) {
+
             this.architecture = architecture;
             return this;
         }
         @CustomType.Setter
         public Builder cores(@Nullable Integer cores) {
+
             this.cores = cores;
             return this;
         }
         @CustomType.Setter
         public Builder units(@Nullable Integer units) {
+
             this.units = units;
             return this;
         }

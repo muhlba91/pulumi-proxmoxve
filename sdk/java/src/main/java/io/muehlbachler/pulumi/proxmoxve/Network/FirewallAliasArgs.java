@@ -5,6 +5,7 @@ package io.muehlbachler.pulumi.proxmoxve.Network;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -262,7 +263,9 @@ public final class FirewallAliasArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FirewallAliasArgs build() {
-            $.cidr = Objects.requireNonNull($.cidr, "expected parameter 'cidr' to be non-null");
+            if ($.cidr == null) {
+                throw new MissingRequiredPropertyException("FirewallAliasArgs", "cidr");
+            }
             return $;
         }
     }

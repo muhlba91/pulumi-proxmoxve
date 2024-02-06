@@ -78,16 +78,19 @@ public final class FirewallLogRatelimit {
 
         @CustomType.Setter
         public Builder burst(@Nullable Integer burst) {
+
             this.burst = burst;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder rate(@Nullable String rate) {
+
             this.rate = rate;
             return this;
         }

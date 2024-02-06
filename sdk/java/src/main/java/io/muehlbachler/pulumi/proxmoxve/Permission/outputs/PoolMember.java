@@ -101,26 +101,31 @@ public final class PoolMember {
 
         @CustomType.Setter
         public Builder datastoreId(@Nullable String datastoreId) {
+
             this.datastoreId = datastoreId;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder nodeName(@Nullable String nodeName) {
+
             this.nodeName = nodeName;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder vmId(@Nullable Integer vmId) {
+
             this.vmId = vmId;
             return this;
         }

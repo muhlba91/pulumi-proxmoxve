@@ -167,46 +167,55 @@ public final class VirtualMachineNetworkDevice {
 
         @CustomType.Setter
         public Builder bridge(@Nullable String bridge) {
+
             this.bridge = bridge;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder firewall(@Nullable Boolean firewall) {
+
             this.firewall = firewall;
             return this;
         }
         @CustomType.Setter
         public Builder macAddress(@Nullable String macAddress) {
+
             this.macAddress = macAddress;
             return this;
         }
         @CustomType.Setter
         public Builder model(@Nullable String model) {
+
             this.model = model;
             return this;
         }
         @CustomType.Setter
         public Builder mtu(@Nullable Integer mtu) {
+
             this.mtu = mtu;
             return this;
         }
         @CustomType.Setter
         public Builder queues(@Nullable Integer queues) {
+
             this.queues = queues;
             return this;
         }
         @CustomType.Setter
         public Builder rateLimit(@Nullable Double rateLimit) {
+
             this.rateLimit = rateLimit;
             return this;
         }
         @CustomType.Setter
         public Builder vlanId(@Nullable Integer vlanId) {
+
             this.vlanId = vlanId;
             return this;
         }

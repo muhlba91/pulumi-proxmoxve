@@ -4,6 +4,7 @@
 package io.muehlbachler.pulumi.proxmoxve.Permission.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import io.muehlbachler.pulumi.proxmoxve.Permission.outputs.GetPoolMember;
 import java.lang.String;
 import java.util.List;
@@ -78,17 +79,26 @@ public final class GetPoolResult {
 
         @CustomType.Setter
         public Builder comment(String comment) {
-            this.comment = Objects.requireNonNull(comment);
+            if (comment == null) {
+              throw new MissingRequiredPropertyException("GetPoolResult", "comment");
+            }
+            this.comment = comment;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPoolResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder members(List<GetPoolMember> members) {
-            this.members = Objects.requireNonNull(members);
+            if (members == null) {
+              throw new MissingRequiredPropertyException("GetPoolResult", "members");
+            }
+            this.members = members;
             return this;
         }
         public Builder members(GetPoolMember... members) {
@@ -96,7 +106,10 @@ public final class GetPoolResult {
         }
         @CustomType.Setter
         public Builder poolId(String poolId) {
-            this.poolId = Objects.requireNonNull(poolId);
+            if (poolId == null) {
+              throw new MissingRequiredPropertyException("GetPoolResult", "poolId");
+            }
+            this.poolId = poolId;
             return this;
         }
         public GetPoolResult build() {

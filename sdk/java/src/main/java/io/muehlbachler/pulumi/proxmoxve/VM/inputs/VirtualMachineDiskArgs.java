@@ -5,6 +5,7 @@ package io.muehlbachler.pulumi.proxmoxve.VM.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineDiskSpeedArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -505,7 +506,9 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         public VirtualMachineDiskArgs build() {
-            $.interface_ = Objects.requireNonNull($.interface_, "expected parameter 'interface' to be non-null");
+            if ($.interface_ == null) {
+                throw new MissingRequiredPropertyException("VirtualMachineDiskArgs", "interface_");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package io.muehlbachler.pulumi.proxmoxve.VM.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineDiskSpeed;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -215,56 +216,69 @@ public final class VirtualMachineDisk {
 
         @CustomType.Setter
         public Builder cache(@Nullable String cache) {
+
             this.cache = cache;
             return this;
         }
         @CustomType.Setter
         public Builder datastoreId(@Nullable String datastoreId) {
+
             this.datastoreId = datastoreId;
             return this;
         }
         @CustomType.Setter
         public Builder discard(@Nullable String discard) {
+
             this.discard = discard;
             return this;
         }
         @CustomType.Setter
         public Builder fileFormat(@Nullable String fileFormat) {
+
             this.fileFormat = fileFormat;
             return this;
         }
         @CustomType.Setter
         public Builder fileId(@Nullable String fileId) {
+
             this.fileId = fileId;
             return this;
         }
         @CustomType.Setter("interface")
         public Builder interface_(String interface_) {
-            this.interface_ = Objects.requireNonNull(interface_);
+            if (interface_ == null) {
+              throw new MissingRequiredPropertyException("VirtualMachineDisk", "interface_");
+            }
+            this.interface_ = interface_;
             return this;
         }
         @CustomType.Setter
         public Builder iothread(@Nullable Boolean iothread) {
+
             this.iothread = iothread;
             return this;
         }
         @CustomType.Setter
         public Builder pathInDatastore(@Nullable String pathInDatastore) {
+
             this.pathInDatastore = pathInDatastore;
             return this;
         }
         @CustomType.Setter
         public Builder size(@Nullable Integer size) {
+
             this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder speed(@Nullable VirtualMachineDiskSpeed speed) {
+
             this.speed = speed;
             return this;
         }
         @CustomType.Setter
         public Builder ssd(@Nullable Boolean ssd) {
+
             this.ssd = ssd;
             return this;
         }
