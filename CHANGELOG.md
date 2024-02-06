@@ -1,6 +1,28 @@
 # Changelog
 
 
+## [5.24.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.23.0...v5.24.0) (2024-02-06)
+
+
+### Features
+
+* update pulumi dependencies ([2296ee8](https://github.com/muhlba91/pulumi-proxmoxve/commit/2296ee8c001479ea1ceae5e6358102415f929b9e))
+* update pulumi java ([27ec93c](https://github.com/muhlba91/pulumi-proxmoxve/commit/27ec93c7cd3481c2a1bf8ab4b48634a1bc6e4b1c))
+
+
+### Bug Fixes
+
+* **deps:** prepare for upstream release 0.46.2 ([d9fbcdb](https://github.com/muhlba91/pulumi-proxmoxve/commit/d9fbcdbf2e4ab893f6804294f8e8cb6c046a5834))
+
+
+### Miscellaneous Chores
+
+* **deps:** update anchore/sbom-action action to v0.15.6 ([7194d55](https://github.com/muhlba91/pulumi-proxmoxve/commit/7194d559bbe20d61ad615c6c801e5a40dfcdd436))
+* **deps:** update anchore/sbom-action action to v0.15.7 ([5bcd26c](https://github.com/muhlba91/pulumi-proxmoxve/commit/5bcd26c54c8bfad8e075c6d7b04e92b541bcffd3))
+* **deps:** update anchore/sbom-action action to v0.15.8 ([f27b450](https://github.com/muhlba91/pulumi-proxmoxve/commit/f27b4509e79e934203972ac4054045a865940866))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.46.2 ([a552435](https://github.com/muhlba91/pulumi-proxmoxve/commit/a55243592fcf317dbb470a1994e93ba2ada6aaf4))
+* **deps:** update sigstore/cosign-installer action to v3.4.0 ([53e1846](https://github.com/muhlba91/pulumi-proxmoxve/commit/53e184671044d12885bfd8aba39e09f356fef11c))
+
 ## [5.23.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.22.0...v5.23.0) (2024-01-28)
 
 
