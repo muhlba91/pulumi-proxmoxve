@@ -5,6 +5,7 @@ package io.muehlbachler.pulumi.proxmoxve;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import io.muehlbachler.pulumi.proxmoxve.inputs.HostsEntryArgs;
 import java.lang.String;
 import java.util.List;
@@ -123,8 +124,12 @@ public final class HostsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public HostsArgs build() {
-            $.entry = Objects.requireNonNull($.entry, "expected parameter 'entry' to be non-null");
-            $.nodeName = Objects.requireNonNull($.nodeName, "expected parameter 'nodeName' to be non-null");
+            if ($.entry == null) {
+                throw new MissingRequiredPropertyException("HostsArgs", "entry");
+            }
+            if ($.nodeName == null) {
+                throw new MissingRequiredPropertyException("HostsArgs", "nodeName");
+            }
             return $;
         }
     }

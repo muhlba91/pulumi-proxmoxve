@@ -74,16 +74,19 @@ public final class VirtualMachineStartup {
 
         @CustomType.Setter
         public Builder downDelay(@Nullable Integer downDelay) {
+
             this.downDelay = downDelay;
             return this;
         }
         @CustomType.Setter
         public Builder order(@Nullable Integer order) {
+
             this.order = order;
             return this;
         }
         @CustomType.Setter
         public Builder upDelay(@Nullable Integer upDelay) {
+
             this.upDelay = upDelay;
             return this;
         }

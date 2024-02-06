@@ -5,6 +5,7 @@ package io.muehlbachler.pulumi.proxmoxve.CT.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -354,7 +355,9 @@ public final class ContainerNetworkInterfaceArgs extends com.pulumi.resources.Re
         }
 
         public ContainerNetworkInterfaceArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("ContainerNetworkInterfaceArgs", "name");
+            }
             return $;
         }
     }

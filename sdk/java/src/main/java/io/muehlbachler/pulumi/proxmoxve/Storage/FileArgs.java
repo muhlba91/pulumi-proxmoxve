@@ -5,6 +5,7 @@ package io.muehlbachler.pulumi.proxmoxve.Storage;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import io.muehlbachler.pulumi.proxmoxve.Storage.inputs.FileSourceFileArgs;
 import io.muehlbachler.pulumi.proxmoxve.Storage.inputs.FileSourceRawArgs;
 import java.lang.Boolean;
@@ -322,8 +323,12 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FileArgs build() {
-            $.datastoreId = Objects.requireNonNull($.datastoreId, "expected parameter 'datastoreId' to be non-null");
-            $.nodeName = Objects.requireNonNull($.nodeName, "expected parameter 'nodeName' to be non-null");
+            if ($.datastoreId == null) {
+                throw new MissingRequiredPropertyException("FileArgs", "datastoreId");
+            }
+            if ($.nodeName == null) {
+                throw new MissingRequiredPropertyException("FileArgs", "nodeName");
+            }
             return $;
         }
     }

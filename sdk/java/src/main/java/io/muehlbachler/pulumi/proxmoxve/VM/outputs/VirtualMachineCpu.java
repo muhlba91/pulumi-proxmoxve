@@ -205,16 +205,19 @@ public final class VirtualMachineCpu {
 
         @CustomType.Setter
         public Builder architecture(@Nullable String architecture) {
+
             this.architecture = architecture;
             return this;
         }
         @CustomType.Setter
         public Builder cores(@Nullable Integer cores) {
+
             this.cores = cores;
             return this;
         }
         @CustomType.Setter
         public Builder flags(@Nullable List<String> flags) {
+
             this.flags = flags;
             return this;
         }
@@ -223,31 +226,37 @@ public final class VirtualMachineCpu {
         }
         @CustomType.Setter
         public Builder hotplugged(@Nullable Integer hotplugged) {
+
             this.hotplugged = hotplugged;
             return this;
         }
         @CustomType.Setter
         public Builder limit(@Nullable Integer limit) {
+
             this.limit = limit;
             return this;
         }
         @CustomType.Setter
         public Builder numa(@Nullable Boolean numa) {
+
             this.numa = numa;
             return this;
         }
         @CustomType.Setter
         public Builder sockets(@Nullable Integer sockets) {
+
             this.sockets = sockets;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder units(@Nullable Integer units) {
+
             this.units = units;
             return this;
         }

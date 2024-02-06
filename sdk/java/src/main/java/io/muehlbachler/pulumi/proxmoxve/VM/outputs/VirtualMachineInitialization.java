@@ -196,21 +196,25 @@ public final class VirtualMachineInitialization {
 
         @CustomType.Setter
         public Builder datastoreId(@Nullable String datastoreId) {
+
             this.datastoreId = datastoreId;
             return this;
         }
         @CustomType.Setter
         public Builder dns(@Nullable VirtualMachineInitializationDns dns) {
+
             this.dns = dns;
             return this;
         }
         @CustomType.Setter("interface")
         public Builder interface_(@Nullable String interface_) {
+
             this.interface_ = interface_;
             return this;
         }
         @CustomType.Setter
         public Builder ipConfigs(@Nullable List<VirtualMachineInitializationIpConfig> ipConfigs) {
+
             this.ipConfigs = ipConfigs;
             return this;
         }
@@ -219,31 +223,37 @@ public final class VirtualMachineInitialization {
         }
         @CustomType.Setter
         public Builder metaDataFileId(@Nullable String metaDataFileId) {
+
             this.metaDataFileId = metaDataFileId;
             return this;
         }
         @CustomType.Setter
         public Builder networkDataFileId(@Nullable String networkDataFileId) {
+
             this.networkDataFileId = networkDataFileId;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder userAccount(@Nullable VirtualMachineInitializationUserAccount userAccount) {
+
             this.userAccount = userAccount;
             return this;
         }
         @CustomType.Setter
         public Builder userDataFileId(@Nullable String userDataFileId) {
+
             this.userDataFileId = userDataFileId;
             return this;
         }
         @CustomType.Setter
         public Builder vendorDataFileId(@Nullable String vendorDataFileId) {
+
             this.vendorDataFileId = vendorDataFileId;
             return this;
         }

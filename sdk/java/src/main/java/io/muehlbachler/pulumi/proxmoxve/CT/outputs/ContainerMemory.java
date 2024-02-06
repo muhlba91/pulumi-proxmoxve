@@ -60,11 +60,13 @@ public final class ContainerMemory {
 
         @CustomType.Setter
         public Builder dedicated(@Nullable Integer dedicated) {
+
             this.dedicated = dedicated;
             return this;
         }
         @CustomType.Setter
         public Builder swap(@Nullable Integer swap) {
+
             this.swap = swap;
             return this;
         }

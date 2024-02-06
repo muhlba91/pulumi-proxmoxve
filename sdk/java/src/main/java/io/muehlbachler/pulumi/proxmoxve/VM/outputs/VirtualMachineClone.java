@@ -4,6 +4,7 @@
 package io.muehlbachler.pulumi.proxmoxve.VM.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -110,27 +111,34 @@ public final class VirtualMachineClone {
 
         @CustomType.Setter
         public Builder datastoreId(@Nullable String datastoreId) {
+
             this.datastoreId = datastoreId;
             return this;
         }
         @CustomType.Setter
         public Builder full(@Nullable Boolean full) {
+
             this.full = full;
             return this;
         }
         @CustomType.Setter
         public Builder nodeName(@Nullable String nodeName) {
+
             this.nodeName = nodeName;
             return this;
         }
         @CustomType.Setter
         public Builder retries(@Nullable Integer retries) {
+
             this.retries = retries;
             return this;
         }
         @CustomType.Setter
         public Builder vmId(Integer vmId) {
-            this.vmId = Objects.requireNonNull(vmId);
+            if (vmId == null) {
+              throw new MissingRequiredPropertyException("VirtualMachineClone", "vmId");
+            }
+            this.vmId = vmId;
             return this;
         }
         public VirtualMachineClone build() {

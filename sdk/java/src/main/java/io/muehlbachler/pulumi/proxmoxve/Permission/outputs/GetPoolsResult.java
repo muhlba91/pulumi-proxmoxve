@@ -4,6 +4,7 @@
 package io.muehlbachler.pulumi.proxmoxve.Permission.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -57,12 +58,18 @@ public final class GetPoolsResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPoolsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder poolIds(List<String> poolIds) {
-            this.poolIds = Objects.requireNonNull(poolIds);
+            if (poolIds == null) {
+              throw new MissingRequiredPropertyException("GetPoolsResult", "poolIds");
+            }
+            this.poolIds = poolIds;
             return this;
         }
         public Builder poolIds(String... poolIds) {

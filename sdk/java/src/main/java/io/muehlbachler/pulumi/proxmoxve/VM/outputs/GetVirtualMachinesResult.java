@@ -4,6 +4,7 @@
 package io.muehlbachler.pulumi.proxmoxve.VM.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.GetVirtualMachinesVm;
 import java.lang.String;
 import java.util.List;
@@ -88,16 +89,21 @@ public final class GetVirtualMachinesResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachinesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder nodeName(@Nullable String nodeName) {
+
             this.nodeName = nodeName;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
+
             this.tags = tags;
             return this;
         }
@@ -106,7 +112,10 @@ public final class GetVirtualMachinesResult {
         }
         @CustomType.Setter
         public Builder vms(List<GetVirtualMachinesVm> vms) {
-            this.vms = Objects.requireNonNull(vms);
+            if (vms == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachinesResult", "vms");
+            }
+            this.vms = vms;
             return this;
         }
         public Builder vms(GetVirtualMachinesVm... vms) {

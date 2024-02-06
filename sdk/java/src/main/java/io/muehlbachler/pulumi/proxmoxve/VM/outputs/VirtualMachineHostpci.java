@@ -4,6 +4,7 @@
 package io.muehlbachler.pulumi.proxmoxve.VM.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -161,41 +162,51 @@ public final class VirtualMachineHostpci {
 
         @CustomType.Setter
         public Builder device(String device) {
-            this.device = Objects.requireNonNull(device);
+            if (device == null) {
+              throw new MissingRequiredPropertyException("VirtualMachineHostpci", "device");
+            }
+            this.device = device;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder mapping(@Nullable String mapping) {
+
             this.mapping = mapping;
             return this;
         }
         @CustomType.Setter
         public Builder mdev(@Nullable String mdev) {
+
             this.mdev = mdev;
             return this;
         }
         @CustomType.Setter
         public Builder pcie(@Nullable Boolean pcie) {
+
             this.pcie = pcie;
             return this;
         }
         @CustomType.Setter
         public Builder romFile(@Nullable String romFile) {
+
             this.romFile = romFile;
             return this;
         }
         @CustomType.Setter
         public Builder rombar(@Nullable Boolean rombar) {
+
             this.rombar = rombar;
             return this;
         }
         @CustomType.Setter
         public Builder xvga(@Nullable Boolean xvga) {
+
             this.xvga = xvga;
             return this;
         }

@@ -95,21 +95,25 @@ public final class VirtualMachineEfiDisk {
 
         @CustomType.Setter
         public Builder datastoreId(@Nullable String datastoreId) {
+
             this.datastoreId = datastoreId;
             return this;
         }
         @CustomType.Setter
         public Builder fileFormat(@Nullable String fileFormat) {
+
             this.fileFormat = fileFormat;
             return this;
         }
         @CustomType.Setter
         public Builder preEnrolledKeys(@Nullable Boolean preEnrolledKeys) {
+
             this.preEnrolledKeys = preEnrolledKeys;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

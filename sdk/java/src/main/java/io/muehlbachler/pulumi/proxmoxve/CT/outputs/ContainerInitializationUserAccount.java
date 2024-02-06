@@ -59,6 +59,7 @@ public final class ContainerInitializationUserAccount {
 
         @CustomType.Setter
         public Builder keys(@Nullable List<String> keys) {
+
             this.keys = keys;
             return this;
         }
@@ -67,6 +68,7 @@ public final class ContainerInitializationUserAccount {
         }
         @CustomType.Setter
         public Builder password(@Nullable String password) {
+
             this.password = password;
             return this;
         }

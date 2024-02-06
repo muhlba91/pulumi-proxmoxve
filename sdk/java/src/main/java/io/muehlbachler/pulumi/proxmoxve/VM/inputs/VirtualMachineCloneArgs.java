@@ -5,6 +5,7 @@ package io.muehlbachler.pulumi.proxmoxve.VM.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -242,7 +243,9 @@ public final class VirtualMachineCloneArgs extends com.pulumi.resources.Resource
         }
 
         public VirtualMachineCloneArgs build() {
-            $.vmId = Objects.requireNonNull($.vmId, "expected parameter 'vmId' to be non-null");
+            if ($.vmId == null) {
+                throw new MissingRequiredPropertyException("VirtualMachineCloneArgs", "vmId");
+            }
             return $;
         }
     }

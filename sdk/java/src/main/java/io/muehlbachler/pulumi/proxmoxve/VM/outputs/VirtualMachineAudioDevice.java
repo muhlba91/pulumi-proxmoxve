@@ -77,16 +77,19 @@ public final class VirtualMachineAudioDevice {
 
         @CustomType.Setter
         public Builder device(@Nullable String device) {
+
             this.device = device;
             return this;
         }
         @CustomType.Setter
         public Builder driver(@Nullable String driver) {
+
             this.driver = driver;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }

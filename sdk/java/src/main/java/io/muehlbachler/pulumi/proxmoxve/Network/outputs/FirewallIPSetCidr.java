@@ -4,6 +4,7 @@
 package io.muehlbachler.pulumi.proxmoxve.Network.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -75,16 +76,21 @@ public final class FirewallIPSetCidr {
 
         @CustomType.Setter
         public Builder comment(@Nullable String comment) {
+
             this.comment = comment;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("FirewallIPSetCidr", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nomatch(@Nullable Boolean nomatch) {
+
             this.nomatch = nomatch;
             return this;
         }

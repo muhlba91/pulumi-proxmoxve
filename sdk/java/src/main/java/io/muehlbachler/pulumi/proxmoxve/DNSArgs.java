@@ -5,6 +5,7 @@ package io.muehlbachler.pulumi.proxmoxve;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -161,8 +162,12 @@ public final class DNSArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DNSArgs build() {
-            $.domain = Objects.requireNonNull($.domain, "expected parameter 'domain' to be non-null");
-            $.nodeName = Objects.requireNonNull($.nodeName, "expected parameter 'nodeName' to be non-null");
+            if ($.domain == null) {
+                throw new MissingRequiredPropertyException("DNSArgs", "domain");
+            }
+            if ($.nodeName == null) {
+                throw new MissingRequiredPropertyException("DNSArgs", "nodeName");
+            }
             return $;
         }
     }

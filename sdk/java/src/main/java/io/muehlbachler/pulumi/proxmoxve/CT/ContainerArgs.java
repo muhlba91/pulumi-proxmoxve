@@ -5,6 +5,7 @@ package io.muehlbachler.pulumi.proxmoxve.CT;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import io.muehlbachler.pulumi.proxmoxve.CT.inputs.ContainerCloneArgs;
 import io.muehlbachler.pulumi.proxmoxve.CT.inputs.ContainerConsoleArgs;
 import io.muehlbachler.pulumi.proxmoxve.CT.inputs.ContainerCpuArgs;
@@ -856,7 +857,9 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ContainerArgs build() {
-            $.nodeName = Objects.requireNonNull($.nodeName, "expected parameter 'nodeName' to be non-null");
+            if ($.nodeName == null) {
+                throw new MissingRequiredPropertyException("ContainerArgs", "nodeName");
+            }
             return $;
         }
     }

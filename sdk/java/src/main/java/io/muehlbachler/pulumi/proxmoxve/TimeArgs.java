@@ -5,6 +5,7 @@ package io.muehlbachler.pulumi.proxmoxve;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class TimeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TimeArgs build() {
-            $.nodeName = Objects.requireNonNull($.nodeName, "expected parameter 'nodeName' to be non-null");
-            $.timeZone = Objects.requireNonNull($.timeZone, "expected parameter 'timeZone' to be non-null");
+            if ($.nodeName == null) {
+                throw new MissingRequiredPropertyException("TimeArgs", "nodeName");
+            }
+            if ($.timeZone == null) {
+                throw new MissingRequiredPropertyException("TimeArgs", "timeZone");
+            }
             return $;
         }
     }

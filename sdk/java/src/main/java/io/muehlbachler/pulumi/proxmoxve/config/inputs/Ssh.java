@@ -145,16 +145,19 @@ public final class Ssh {
 
         @CustomType.Setter
         public Builder agent(@Nullable Boolean agent) {
+
             this.agent = agent;
             return this;
         }
         @CustomType.Setter
         public Builder agentSocket(@Nullable String agentSocket) {
+
             this.agentSocket = agentSocket;
             return this;
         }
         @CustomType.Setter
         public Builder nodes(@Nullable List<SshNode> nodes) {
+
             this.nodes = nodes;
             return this;
         }
@@ -163,26 +166,31 @@ public final class Ssh {
         }
         @CustomType.Setter
         public Builder password(@Nullable String password) {
+
             this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder socks5Password(@Nullable String socks5Password) {
+
             this.socks5Password = socks5Password;
             return this;
         }
         @CustomType.Setter
         public Builder socks5Server(@Nullable String socks5Server) {
+
             this.socks5Server = socks5Server;
             return this;
         }
         @CustomType.Setter
         public Builder socks5Username(@Nullable String socks5Username) {
+
             this.socks5Username = socks5Username;
             return this;
         }
         @CustomType.Setter
         public Builder username(@Nullable String username) {
+
             this.username = username;
             return this;
         }

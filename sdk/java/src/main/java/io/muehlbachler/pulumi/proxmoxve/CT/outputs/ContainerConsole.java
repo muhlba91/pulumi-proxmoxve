@@ -76,16 +76,19 @@ public final class ContainerConsole {
 
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder ttyCount(@Nullable Integer ttyCount) {
+
             this.ttyCount = ttyCount;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

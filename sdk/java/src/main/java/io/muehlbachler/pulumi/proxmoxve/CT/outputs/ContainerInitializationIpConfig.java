@@ -59,11 +59,13 @@ public final class ContainerInitializationIpConfig {
 
         @CustomType.Setter
         public Builder ipv4(@Nullable ContainerInitializationIpConfigIpv4 ipv4) {
+
             this.ipv4 = ipv4;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6(@Nullable ContainerInitializationIpConfigIpv6 ipv6) {
+
             this.ipv6 = ipv6;
             return this;
         }

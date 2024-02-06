@@ -4,6 +4,7 @@
 package io.muehlbachler.pulumi.proxmoxve.Storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -73,16 +74,23 @@ public final class FileSourceRaw {
 
         @CustomType.Setter
         public Builder data(String data) {
-            this.data = Objects.requireNonNull(data);
+            if (data == null) {
+              throw new MissingRequiredPropertyException("FileSourceRaw", "data");
+            }
+            this.data = data;
             return this;
         }
         @CustomType.Setter
         public Builder fileName(String fileName) {
-            this.fileName = Objects.requireNonNull(fileName);
+            if (fileName == null) {
+              throw new MissingRequiredPropertyException("FileSourceRaw", "fileName");
+            }
+            this.fileName = fileName;
             return this;
         }
         @CustomType.Setter
         public Builder resize(@Nullable Integer resize) {
+
             this.resize = resize;
             return this;
         }

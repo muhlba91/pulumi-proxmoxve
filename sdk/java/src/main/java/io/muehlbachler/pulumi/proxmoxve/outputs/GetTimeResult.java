@@ -4,6 +4,7 @@
 package io.muehlbachler.pulumi.proxmoxve.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -90,27 +91,42 @@ public final class GetTimeResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTimeResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder localTime(String localTime) {
-            this.localTime = Objects.requireNonNull(localTime);
+            if (localTime == null) {
+              throw new MissingRequiredPropertyException("GetTimeResult", "localTime");
+            }
+            this.localTime = localTime;
             return this;
         }
         @CustomType.Setter
         public Builder nodeName(String nodeName) {
-            this.nodeName = Objects.requireNonNull(nodeName);
+            if (nodeName == null) {
+              throw new MissingRequiredPropertyException("GetTimeResult", "nodeName");
+            }
+            this.nodeName = nodeName;
             return this;
         }
         @CustomType.Setter
         public Builder timeZone(String timeZone) {
-            this.timeZone = Objects.requireNonNull(timeZone);
+            if (timeZone == null) {
+              throw new MissingRequiredPropertyException("GetTimeResult", "timeZone");
+            }
+            this.timeZone = timeZone;
             return this;
         }
         @CustomType.Setter
         public Builder utcTime(String utcTime) {
-            this.utcTime = Objects.requireNonNull(utcTime);
+            if (utcTime == null) {
+              throw new MissingRequiredPropertyException("GetTimeResult", "utcTime");
+            }
+            this.utcTime = utcTime;
             return this;
         }
         public GetTimeResult build() {

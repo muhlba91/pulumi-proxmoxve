@@ -5,6 +5,7 @@ package io.muehlbachler.pulumi.proxmoxve.VM.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -159,7 +160,9 @@ public final class VirtualMachineUsbArgs extends com.pulumi.resources.ResourceAr
         }
 
         public VirtualMachineUsbArgs build() {
-            $.host = Objects.requireNonNull($.host, "expected parameter 'host' to be non-null");
+            if ($.host == null) {
+                throw new MissingRequiredPropertyException("VirtualMachineUsbArgs", "host");
+            }
             return $;
         }
     }

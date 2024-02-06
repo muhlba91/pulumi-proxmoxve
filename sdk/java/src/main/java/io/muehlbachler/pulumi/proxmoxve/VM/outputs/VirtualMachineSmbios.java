@@ -128,36 +128,43 @@ public final class VirtualMachineSmbios {
 
         @CustomType.Setter
         public Builder family(@Nullable String family) {
+
             this.family = family;
             return this;
         }
         @CustomType.Setter
         public Builder manufacturer(@Nullable String manufacturer) {
+
             this.manufacturer = manufacturer;
             return this;
         }
         @CustomType.Setter
         public Builder product(@Nullable String product) {
+
             this.product = product;
             return this;
         }
         @CustomType.Setter
         public Builder serial(@Nullable String serial) {
+
             this.serial = serial;
             return this;
         }
         @CustomType.Setter
         public Builder sku(@Nullable String sku) {
+
             this.sku = sku;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(@Nullable String uuid) {
+
             this.uuid = uuid;
             return this;
         }
         @CustomType.Setter
         public Builder version(@Nullable String version) {
+
             this.version = version;
             return this;
         }

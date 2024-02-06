@@ -5,6 +5,7 @@ package io.muehlbachler.pulumi.proxmoxve.CT.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -155,7 +156,9 @@ public final class ContainerCloneArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public ContainerCloneArgs build() {
-            $.vmId = Objects.requireNonNull($.vmId, "expected parameter 'vmId' to be non-null");
+            if ($.vmId == null) {
+                throw new MissingRequiredPropertyException("ContainerCloneArgs", "vmId");
+            }
             return $;
         }
     }

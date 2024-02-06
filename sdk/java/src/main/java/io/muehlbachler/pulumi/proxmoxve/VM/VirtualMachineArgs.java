@@ -5,6 +5,7 @@ package io.muehlbachler.pulumi.proxmoxve.VM;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineAgentArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineAudioDeviceArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineCdromArgs;
@@ -1962,7 +1963,9 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public VirtualMachineArgs build() {
-            $.nodeName = Objects.requireNonNull($.nodeName, "expected parameter 'nodeName' to be non-null");
+            if ($.nodeName == null) {
+                throw new MissingRequiredPropertyException("VirtualMachineArgs", "nodeName");
+            }
             return $;
         }
     }

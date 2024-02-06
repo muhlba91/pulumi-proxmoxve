@@ -94,16 +94,19 @@ public final class ContainerFeatures {
 
         @CustomType.Setter
         public Builder fuse(@Nullable Boolean fuse) {
+
             this.fuse = fuse;
             return this;
         }
         @CustomType.Setter
         public Builder keyctl(@Nullable Boolean keyctl) {
+
             this.keyctl = keyctl;
             return this;
         }
         @CustomType.Setter
         public Builder mounts(@Nullable List<String> mounts) {
+
             this.mounts = mounts;
             return this;
         }
@@ -112,6 +115,7 @@ public final class ContainerFeatures {
         }
         @CustomType.Setter
         public Builder nesting(@Nullable Boolean nesting) {
+
             this.nesting = nesting;
             return this;
         }

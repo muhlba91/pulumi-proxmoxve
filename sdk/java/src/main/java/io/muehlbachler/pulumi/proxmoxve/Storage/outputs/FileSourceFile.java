@@ -4,6 +4,7 @@
 package io.muehlbachler.pulumi.proxmoxve.Storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -119,32 +120,40 @@ public final class FileSourceFile {
 
         @CustomType.Setter
         public Builder changed(@Nullable Boolean changed) {
+
             this.changed = changed;
             return this;
         }
         @CustomType.Setter
         public Builder checksum(@Nullable String checksum) {
+
             this.checksum = checksum;
             return this;
         }
         @CustomType.Setter
         public Builder fileName(@Nullable String fileName) {
+
             this.fileName = fileName;
             return this;
         }
         @CustomType.Setter
         public Builder insecure(@Nullable Boolean insecure) {
+
             this.insecure = insecure;
             return this;
         }
         @CustomType.Setter
         public Builder minTls(@Nullable String minTls) {
+
             this.minTls = minTls;
             return this;
         }
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("FileSourceFile", "path");
+            }
+            this.path = path;
             return this;
         }
         public FileSourceFile build() {

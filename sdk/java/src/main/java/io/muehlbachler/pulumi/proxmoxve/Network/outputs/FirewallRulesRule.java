@@ -276,71 +276,85 @@ public final class FirewallRulesRule {
 
         @CustomType.Setter
         public Builder action(@Nullable String action) {
+
             this.action = action;
             return this;
         }
         @CustomType.Setter
         public Builder comment(@Nullable String comment) {
+
             this.comment = comment;
             return this;
         }
         @CustomType.Setter
         public Builder dest(@Nullable String dest) {
+
             this.dest = dest;
             return this;
         }
         @CustomType.Setter
         public Builder dport(@Nullable String dport) {
+
             this.dport = dport;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder iface(@Nullable String iface) {
+
             this.iface = iface;
             return this;
         }
         @CustomType.Setter
         public Builder log(@Nullable String log) {
+
             this.log = log;
             return this;
         }
         @CustomType.Setter
         public Builder macro(@Nullable String macro) {
+
             this.macro = macro;
             return this;
         }
         @CustomType.Setter
         public Builder pos(@Nullable Integer pos) {
+
             this.pos = pos;
             return this;
         }
         @CustomType.Setter
         public Builder proto(@Nullable String proto) {
+
             this.proto = proto;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroup(@Nullable String securityGroup) {
+
             this.securityGroup = securityGroup;
             return this;
         }
         @CustomType.Setter
         public Builder source(@Nullable String source) {
+
             this.source = source;
             return this;
         }
         @CustomType.Setter
         public Builder sport(@Nullable String sport) {
+
             this.sport = sport;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

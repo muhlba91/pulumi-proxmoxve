@@ -4,6 +4,7 @@
 package io.muehlbachler.pulumi.proxmoxve.VM.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -77,16 +78,21 @@ public final class VirtualMachineUsb {
 
         @CustomType.Setter
         public Builder host(String host) {
-            this.host = Objects.requireNonNull(host);
+            if (host == null) {
+              throw new MissingRequiredPropertyException("VirtualMachineUsb", "host");
+            }
+            this.host = host;
             return this;
         }
         @CustomType.Setter
         public Builder mapping(@Nullable String mapping) {
+
             this.mapping = mapping;
             return this;
         }
         @CustomType.Setter
         public Builder usb3(@Nullable Boolean usb3) {
+
             this.usb3 = usb3;
             return this;
         }

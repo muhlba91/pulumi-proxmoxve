@@ -4,6 +4,7 @@
 package io.muehlbachler.pulumi.proxmoxve.Permission.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -99,27 +100,42 @@ public final class GetPoolMember {
 
         @CustomType.Setter
         public Builder datastoreId(String datastoreId) {
-            this.datastoreId = Objects.requireNonNull(datastoreId);
+            if (datastoreId == null) {
+              throw new MissingRequiredPropertyException("GetPoolMember", "datastoreId");
+            }
+            this.datastoreId = datastoreId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPoolMember", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder nodeName(String nodeName) {
-            this.nodeName = Objects.requireNonNull(nodeName);
+            if (nodeName == null) {
+              throw new MissingRequiredPropertyException("GetPoolMember", "nodeName");
+            }
+            this.nodeName = nodeName;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetPoolMember", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder vmId(Integer vmId) {
-            this.vmId = Objects.requireNonNull(vmId);
+            if (vmId == null) {
+              throw new MissingRequiredPropertyException("GetPoolMember", "vmId");
+            }
+            this.vmId = vmId;
             return this;
         }
         public GetPoolMember build() {
