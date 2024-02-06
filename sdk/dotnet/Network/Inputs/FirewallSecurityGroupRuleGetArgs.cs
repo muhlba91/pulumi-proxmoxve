@@ -45,6 +45,9 @@ namespace Pulumi.ProxmoxVE.Network.Inputs
         [Input("dport")]
         public Input<string>? Dport { get; set; }
 
+        /// <summary>
+        /// Enable rule
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
@@ -83,6 +86,9 @@ namespace Pulumi.ProxmoxVE.Network.Inputs
         [Input("proto")]
         public Input<string>? Proto { get; set; }
 
+        /// <summary>
+        /// Security group name
+        /// </summary>
         [Input("securityGroup")]
         public Input<string>? SecurityGroup { get; set; }
 

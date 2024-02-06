@@ -95,9 +95,17 @@ public final class FirewallSecurityGroupRuleArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.dport);
     }
 
+    /**
+     * Enable rule
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Enable rule
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -187,9 +195,17 @@ public final class FirewallSecurityGroupRuleArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.proto);
     }
 
+    /**
+     * Security group name
+     * 
+     */
     @Import(name="securityGroup")
     private @Nullable Output<String> securityGroup;
 
+    /**
+     * @return Security group name
+     * 
+     */
     public Optional<Output<String>> securityGroup() {
         return Optional.ofNullable(this.securityGroup);
     }
@@ -396,11 +412,23 @@ public final class FirewallSecurityGroupRuleArgs extends com.pulumi.resources.Re
             return dport(Output.of(dport));
         }
 
+        /**
+         * @param enabled Enable rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Enable rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
@@ -520,11 +548,23 @@ public final class FirewallSecurityGroupRuleArgs extends com.pulumi.resources.Re
             return proto(Output.of(proto));
         }
 
+        /**
+         * @param securityGroup Security group name
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityGroup(@Nullable Output<String> securityGroup) {
             $.securityGroup = securityGroup;
             return this;
         }
 
+        /**
+         * @param securityGroup Security group name
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityGroup(String securityGroup) {
             return securityGroup(Output.of(securityGroup));
         }

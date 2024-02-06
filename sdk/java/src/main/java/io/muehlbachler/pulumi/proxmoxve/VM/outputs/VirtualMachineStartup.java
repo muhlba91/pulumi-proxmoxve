@@ -11,6 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VirtualMachineStartup {
+    /**
+     * @return A non-negative number defining the delay in seconds before the next VM is shut down
+     * 
+     */
     private @Nullable Integer downDelay;
     /**
      * @return A non-negative number defining the general startup
@@ -18,9 +22,17 @@ public final class VirtualMachineStartup {
      * 
      */
     private @Nullable Integer order;
+    /**
+     * @return A non-negative number defining the delay in seconds before the next VM is started
+     * 
+     */
     private @Nullable Integer upDelay;
 
     private VirtualMachineStartup() {}
+    /**
+     * @return A non-negative number defining the delay in seconds before the next VM is shut down
+     * 
+     */
     public Optional<Integer> downDelay() {
         return Optional.ofNullable(this.downDelay);
     }
@@ -32,6 +44,10 @@ public final class VirtualMachineStartup {
     public Optional<Integer> order() {
         return Optional.ofNullable(this.order);
     }
+    /**
+     * @return A non-negative number defining the delay in seconds before the next VM is started
+     * 
+     */
     public Optional<Integer> upDelay() {
         return Optional.ofNullable(this.upDelay);
     }

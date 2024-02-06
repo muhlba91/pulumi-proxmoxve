@@ -430,14 +430,16 @@
         "proxmoxve:CT/ContainerStartup:ContainerStartup": {
             "properties": {
                 "downDelay": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "A non-negative number defining the delay in seconds before the next container is shut down\n"
                 },
                 "order": {
                     "type": "integer",
                     "description": "A non-negative number defining the general startup\norder.\n"
                 },
                 "upDelay": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "A non-negative number defining the delay in seconds before the next container is started\n"
                 }
             },
             "type": "object"
@@ -570,7 +572,8 @@
                     "description": "Restrict TCP/UDP destination port. You can use\nservice names or simple numbers (0-65535), as defined in '/etc/\nservices'. Port ranges can be specified with '\\d+:\\d+', for example\n`80:85`, and you can use comma separated list to match several ports or\nranges.\n"
                 },
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable rule\n"
                 },
                 "iface": {
                     "type": "string",
@@ -594,6 +597,7 @@
                 },
                 "securityGroup": {
                     "type": "string",
+                    "description": "Security group name\n",
                     "willReplaceOnChanges": true
                 },
                 "source": {
@@ -791,6 +795,7 @@
             "properties": {
                 "changed": {
                     "type": "boolean",
+                    "description": "Whether the source file has changed since the last run\n",
                     "willReplaceOnChanges": true
                 },
                 "checksum": {
@@ -1399,14 +1404,16 @@
         "proxmoxve:VM/VirtualMachineStartup:VirtualMachineStartup": {
             "properties": {
                 "downDelay": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "A non-negative number defining the delay in seconds before the next VM is shut down\n"
                 },
                 "order": {
                     "type": "integer",
                     "description": "A non-negative number defining the general startup\norder.\n"
                 },
                 "upDelay": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "A non-negative number defining the delay in seconds before the next VM is started\n"
                 }
             },
             "type": "object"
@@ -1500,33 +1507,41 @@
         "proxmoxve:config/ssh:ssh": {
             "properties": {
                 "agent": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether to use the SSH agent for authentication. Defaults to `false`.\n"
                 },
                 "agentSocket": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.\n"
                 },
                 "nodes": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/proxmoxve:config/sshNode:sshNode"
-                    }
+                    },
+                    "description": "Overrides for SSH connection configuration for a Proxmox VE node.\n"
                 },
                 "password": {
                     "type": "string",
+                    "description": "The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.\n",
                     "secret": true
                 },
                 "socks5Password": {
                     "type": "string",
+                    "description": "The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.\n",
                     "secret": true
                 },
                 "socks5Server": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The address:port of the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_SERVER` environment variable.\n"
                 },
                 "socks5Username": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The username for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_USERNAME` environment variable.\n"
                 },
                 "username": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The username used for the SSH connection. Defaults to the value of the `username` field of the `provider` block.\n"
                 }
             },
             "type": "object"
@@ -1534,13 +1549,16 @@
         "proxmoxve:config/sshNode:sshNode": {
             "properties": {
                 "address": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The address of the Proxmox VE node.\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the Proxmox VE node.\n"
                 },
                 "port": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The port of the Proxmox VE node.\n"
                 }
             },
             "type": "object",
@@ -1577,33 +1595,41 @@
         "proxmoxve:index/ProviderSsh:ProviderSsh": {
             "properties": {
                 "agent": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether to use the SSH agent for authentication. Defaults to `false`.\n"
                 },
                 "agentSocket": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.\n"
                 },
                 "nodes": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/proxmoxve:index/ProviderSshNode:ProviderSshNode"
-                    }
+                    },
+                    "description": "Overrides for SSH connection configuration for a Proxmox VE node.\n"
                 },
                 "password": {
                     "type": "string",
+                    "description": "The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.\n",
                     "secret": true
                 },
                 "socks5Password": {
                     "type": "string",
+                    "description": "The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.\n",
                     "secret": true
                 },
                 "socks5Server": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The address:port of the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_SERVER` environment variable.\n"
                 },
                 "socks5Username": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The username for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_USERNAME` environment variable.\n"
                 },
                 "username": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The username used for the SSH connection. Defaults to the value of the `username` field of the `provider` block.\n"
                 }
             },
             "type": "object"
@@ -1611,13 +1637,16 @@
         "proxmoxve:index/ProviderSshNode:ProviderSshNode": {
             "properties": {
                 "address": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The address of the Proxmox VE node.\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the Proxmox VE node.\n"
                 },
                 "port": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The port of the Proxmox VE node.\n"
                 }
             },
             "type": "object",
@@ -1634,7 +1663,8 @@
         "proxmoxve:index/getHostsEntry:getHostsEntry": {
             "properties": {
                 "address": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The address\n"
                 },
                 "hostnames": {
                     "type": "array",

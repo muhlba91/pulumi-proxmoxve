@@ -12,6 +12,9 @@ namespace Pulumi.ProxmoxVE.Storage.Inputs
 
     public sealed class FileSourceFileGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether the source file has changed since the last run
+        /// </summary>
         [Input("changed")]
         public Input<bool>? Changed { get; set; }
 

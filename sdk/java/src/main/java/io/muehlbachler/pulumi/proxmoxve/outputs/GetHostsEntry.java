@@ -10,6 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetHostsEntry {
+    /**
+     * @return The address
+     * 
+     */
     private String address;
     /**
      * @return The hostnames associated with each of the IP addresses.
@@ -18,6 +22,10 @@ public final class GetHostsEntry {
     private List<String> hostnames;
 
     private GetHostsEntry() {}
+    /**
+     * @return The address
+     * 
+     */
     public String address() {
         return this.address;
     }

@@ -13,12 +13,18 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
     [OutputType]
     public sealed class ContainerStartup
     {
+        /// <summary>
+        /// A non-negative number defining the delay in seconds before the next container is shut down
+        /// </summary>
         public readonly int? DownDelay;
         /// <summary>
         /// A non-negative number defining the general startup
         /// order.
         /// </summary>
         public readonly int? Order;
+        /// <summary>
+        /// A non-negative number defining the delay in seconds before the next container is started
+        /// </summary>
         public readonly int? UpDelay;
 
         [OutputConstructor]

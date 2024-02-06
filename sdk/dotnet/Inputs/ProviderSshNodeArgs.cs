@@ -12,12 +12,21 @@ namespace Pulumi.ProxmoxVE.Inputs
 
     public sealed class ProviderSshNodeArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The address of the Proxmox VE node.
+        /// </summary>
         [Input("address", required: true)]
         public Input<string> Address { get; set; } = null!;
 
+        /// <summary>
+        /// The name of the Proxmox VE node.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The port of the Proxmox VE node.
+        /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 

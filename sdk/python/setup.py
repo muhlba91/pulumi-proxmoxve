@@ -3,12 +3,13 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import errno
+import os
 from setuptools import setup, find_packages
 from setuptools.command.install import install
 from subprocess import check_call
 
 
-VERSION = "0.0.0"
+VERSION = os.getenv("PULUMI_PYTHON_VERSION", "0.0.0")
 def readme():
     try:
         with open('README.md', encoding='utf-8') as f:
@@ -37,6 +38,7 @@ setup(name='pulumi_proxmoxve',
           ]
       },
       install_requires=[
+          'importlib-metadata>=6.0.0,<7.0.0; python_version < "3.8"',
           'parver>=0.2.1',
           'pulumi>=3.0.0,<4.0.0',
           'semver>=2.8.1'

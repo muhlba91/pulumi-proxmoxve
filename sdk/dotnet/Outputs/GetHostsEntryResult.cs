@@ -13,6 +13,9 @@ namespace Pulumi.ProxmoxVE.Outputs
     [OutputType]
     public sealed class GetHostsEntryResult
     {
+        /// <summary>
+        /// The address
+        /// </summary>
         public readonly string Address;
         /// <summary>
         /// The hostnames associated with each of the IP addresses.

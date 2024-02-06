@@ -15,9 +15,17 @@ public final class VirtualMachineStartupArgs extends com.pulumi.resources.Resour
 
     public static final VirtualMachineStartupArgs Empty = new VirtualMachineStartupArgs();
 
+    /**
+     * A non-negative number defining the delay in seconds before the next VM is shut down
+     * 
+     */
     @Import(name="downDelay")
     private @Nullable Output<Integer> downDelay;
 
+    /**
+     * @return A non-negative number defining the delay in seconds before the next VM is shut down
+     * 
+     */
     public Optional<Output<Integer>> downDelay() {
         return Optional.ofNullable(this.downDelay);
     }
@@ -39,9 +47,17 @@ public final class VirtualMachineStartupArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.order);
     }
 
+    /**
+     * A non-negative number defining the delay in seconds before the next VM is started
+     * 
+     */
     @Import(name="upDelay")
     private @Nullable Output<Integer> upDelay;
 
+    /**
+     * @return A non-negative number defining the delay in seconds before the next VM is started
+     * 
+     */
     public Optional<Output<Integer>> upDelay() {
         return Optional.ofNullable(this.upDelay);
     }
@@ -72,11 +88,23 @@ public final class VirtualMachineStartupArgs extends com.pulumi.resources.Resour
             $ = new VirtualMachineStartupArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param downDelay A non-negative number defining the delay in seconds before the next VM is shut down
+         * 
+         * @return builder
+         * 
+         */
         public Builder downDelay(@Nullable Output<Integer> downDelay) {
             $.downDelay = downDelay;
             return this;
         }
 
+        /**
+         * @param downDelay A non-negative number defining the delay in seconds before the next VM is shut down
+         * 
+         * @return builder
+         * 
+         */
         public Builder downDelay(Integer downDelay) {
             return downDelay(Output.of(downDelay));
         }
@@ -104,11 +132,23 @@ public final class VirtualMachineStartupArgs extends com.pulumi.resources.Resour
             return order(Output.of(order));
         }
 
+        /**
+         * @param upDelay A non-negative number defining the delay in seconds before the next VM is started
+         * 
+         * @return builder
+         * 
+         */
         public Builder upDelay(@Nullable Output<Integer> upDelay) {
             $.upDelay = upDelay;
             return this;
         }
 
+        /**
+         * @param upDelay A non-negative number defining the delay in seconds before the next VM is started
+         * 
+         * @return builder
+         * 
+         */
         public Builder upDelay(Integer upDelay) {
             return upDelay(Output.of(upDelay));
         }

@@ -12,17 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SshNode {
+    /**
+     * @return The address of the Proxmox VE node.
+     * 
+     */
     private String address;
+    /**
+     * @return The name of the Proxmox VE node.
+     * 
+     */
     private String name;
+    /**
+     * @return The port of the Proxmox VE node.
+     * 
+     */
     private @Nullable Integer port;
 
     private SshNode() {}
+    /**
+     * @return The address of the Proxmox VE node.
+     * 
+     */
     public String address() {
         return this.address;
     }
+    /**
+     * @return The name of the Proxmox VE node.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The port of the Proxmox VE node.
+     * 
+     */
     public Optional<Integer> port() {
         return Optional.ofNullable(this.port);
     }

@@ -14,14 +14,22 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type Ssh struct {
-	Agent          *bool     `pulumi:"agent"`
-	AgentSocket    *string   `pulumi:"agentSocket"`
-	Nodes          []SshNode `pulumi:"nodes"`
-	Password       *string   `pulumi:"password"`
-	Socks5Password *string   `pulumi:"socks5Password"`
-	Socks5Server   *string   `pulumi:"socks5Server"`
-	Socks5Username *string   `pulumi:"socks5Username"`
-	Username       *string   `pulumi:"username"`
+	// Whether to use the SSH agent for authentication. Defaults to `false`.
+	Agent *bool `pulumi:"agent"`
+	// The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
+	AgentSocket *string `pulumi:"agentSocket"`
+	// Overrides for SSH connection configuration for a Proxmox VE node.
+	Nodes []SshNode `pulumi:"nodes"`
+	// The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
+	Password *string `pulumi:"password"`
+	// The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
+	Socks5Password *string `pulumi:"socks5Password"`
+	// The address:port of the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_SERVER` environment variable.
+	Socks5Server *string `pulumi:"socks5Server"`
+	// The username for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_USERNAME` environment variable.
+	Socks5Username *string `pulumi:"socks5Username"`
+	// The username used for the SSH connection. Defaults to the value of the `username` field of the `provider` block.
+	Username *string `pulumi:"username"`
 }
 
 // SshInput is an input type that accepts SshArgs and SshOutput values.
@@ -36,14 +44,22 @@ type SshInput interface {
 }
 
 type SshArgs struct {
-	Agent          pulumi.BoolPtrInput   `pulumi:"agent"`
-	AgentSocket    pulumi.StringPtrInput `pulumi:"agentSocket"`
-	Nodes          SshNodeArrayInput     `pulumi:"nodes"`
-	Password       pulumi.StringPtrInput `pulumi:"password"`
+	// Whether to use the SSH agent for authentication. Defaults to `false`.
+	Agent pulumi.BoolPtrInput `pulumi:"agent"`
+	// The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
+	AgentSocket pulumi.StringPtrInput `pulumi:"agentSocket"`
+	// Overrides for SSH connection configuration for a Proxmox VE node.
+	Nodes SshNodeArrayInput `pulumi:"nodes"`
+	// The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
 	Socks5Password pulumi.StringPtrInput `pulumi:"socks5Password"`
-	Socks5Server   pulumi.StringPtrInput `pulumi:"socks5Server"`
+	// The address:port of the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_SERVER` environment variable.
+	Socks5Server pulumi.StringPtrInput `pulumi:"socks5Server"`
+	// The username for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_USERNAME` environment variable.
 	Socks5Username pulumi.StringPtrInput `pulumi:"socks5Username"`
-	Username       pulumi.StringPtrInput `pulumi:"username"`
+	// The username used for the SSH connection. Defaults to the value of the `username` field of the `provider` block.
+	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (SshArgs) ElementType() reflect.Type {
@@ -72,42 +88,53 @@ func (o SshOutput) ToSshOutputWithContext(ctx context.Context) SshOutput {
 	return o
 }
 
+// Whether to use the SSH agent for authentication. Defaults to `false`.
 func (o SshOutput) Agent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Ssh) *bool { return v.Agent }).(pulumi.BoolPtrOutput)
 }
 
+// The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
 func (o SshOutput) AgentSocket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Ssh) *string { return v.AgentSocket }).(pulumi.StringPtrOutput)
 }
 
+// Overrides for SSH connection configuration for a Proxmox VE node.
 func (o SshOutput) Nodes() SshNodeArrayOutput {
 	return o.ApplyT(func(v Ssh) []SshNode { return v.Nodes }).(SshNodeArrayOutput)
 }
 
+// The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
 func (o SshOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Ssh) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+// The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
 func (o SshOutput) Socks5Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Ssh) *string { return v.Socks5Password }).(pulumi.StringPtrOutput)
 }
 
+// The address:port of the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_SERVER` environment variable.
 func (o SshOutput) Socks5Server() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Ssh) *string { return v.Socks5Server }).(pulumi.StringPtrOutput)
 }
 
+// The username for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_USERNAME` environment variable.
 func (o SshOutput) Socks5Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Ssh) *string { return v.Socks5Username }).(pulumi.StringPtrOutput)
 }
 
+// The username used for the SSH connection. Defaults to the value of the `username` field of the `provider` block.
 func (o SshOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Ssh) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
 
 type SshNode struct {
+	// The address of the Proxmox VE node.
 	Address string `pulumi:"address"`
-	Name    string `pulumi:"name"`
-	Port    *int   `pulumi:"port"`
+	// The name of the Proxmox VE node.
+	Name string `pulumi:"name"`
+	// The port of the Proxmox VE node.
+	Port *int `pulumi:"port"`
 }
 
 // SshNodeInput is an input type that accepts SshNodeArgs and SshNodeOutput values.
@@ -122,9 +149,12 @@ type SshNodeInput interface {
 }
 
 type SshNodeArgs struct {
+	// The address of the Proxmox VE node.
 	Address pulumi.StringInput `pulumi:"address"`
-	Name    pulumi.StringInput `pulumi:"name"`
-	Port    pulumi.IntPtrInput `pulumi:"port"`
+	// The name of the Proxmox VE node.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The port of the Proxmox VE node.
+	Port pulumi.IntPtrInput `pulumi:"port"`
 }
 
 func (SshNodeArgs) ElementType() reflect.Type {
@@ -178,14 +208,17 @@ func (o SshNodeOutput) ToSshNodeOutputWithContext(ctx context.Context) SshNodeOu
 	return o
 }
 
+// The address of the Proxmox VE node.
 func (o SshNodeOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v SshNode) string { return v.Address }).(pulumi.StringOutput)
 }
 
+// The name of the Proxmox VE node.
 func (o SshNodeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SshNode) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The port of the Proxmox VE node.
 func (o SshNodeOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SshNode) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
