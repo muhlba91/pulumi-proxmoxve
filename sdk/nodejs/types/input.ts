@@ -17,19 +17,52 @@ export interface HostsEntry {
 }
 
 export interface ProviderSsh {
+    /**
+     * Whether to use the SSH agent for authentication. Defaults to `false`.
+     */
     agent?: pulumi.Input<boolean>;
+    /**
+     * The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
+     */
     agentSocket?: pulumi.Input<string>;
+    /**
+     * Overrides for SSH connection configuration for a Proxmox VE node.
+     */
     nodes?: pulumi.Input<pulumi.Input<inputs.ProviderSshNode>[]>;
+    /**
+     * The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
+     */
     socks5Password?: pulumi.Input<string>;
+    /**
+     * The address:port of the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_SERVER` environment variable.
+     */
     socks5Server?: pulumi.Input<string>;
+    /**
+     * The username for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_USERNAME` environment variable.
+     */
     socks5Username?: pulumi.Input<string>;
+    /**
+     * The username used for the SSH connection. Defaults to the value of the `username` field of the `provider` block.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ProviderSshNode {
+    /**
+     * The address of the Proxmox VE node.
+     */
     address: pulumi.Input<string>;
+    /**
+     * The name of the Proxmox VE node.
+     */
     name: pulumi.Input<string>;
+    /**
+     * The port of the Proxmox VE node.
+     */
     port?: pulumi.Input<number>;
 }
 export namespace CT {
@@ -314,12 +347,18 @@ export namespace CT {
     }
 
     export interface ContainerStartup {
+        /**
+         * A non-negative number defining the delay in seconds before the next container is shut down
+         */
         downDelay?: pulumi.Input<number>;
         /**
          * A non-negative number defining the general startup
          * order.
          */
         order?: pulumi.Input<number>;
+        /**
+         * A non-negative number defining the delay in seconds before the next container is started
+         */
         upDelay?: pulumi.Input<number>;
     }
 }
@@ -467,6 +506,9 @@ export namespace Network {
          * ranges.
          */
         dport?: pulumi.Input<string>;
+        /**
+         * Enable rule
+         */
         enabled?: pulumi.Input<boolean>;
         /**
          * Network interface name. You have to use network
@@ -493,6 +535,9 @@ export namespace Network {
          * as defined in '/etc/protocols'.
          */
         proto?: pulumi.Input<string>;
+        /**
+         * Security group name
+         */
         securityGroup?: pulumi.Input<string>;
         /**
          * Restrict packet source address. This can refer
@@ -575,6 +620,9 @@ export namespace Permission {
 
 export namespace Storage {
     export interface FileSourceFile {
+        /**
+         * Whether the source file has changed since the last run
+         */
         changed?: pulumi.Input<boolean>;
         /**
          * The SHA256 checksum of the source file.
@@ -1149,12 +1197,18 @@ export namespace VM {
     }
 
     export interface VirtualMachineStartup {
+        /**
+         * A non-negative number defining the delay in seconds before the next VM is shut down
+         */
         downDelay?: pulumi.Input<number>;
         /**
          * A non-negative number defining the general startup
          * order.
          */
         order?: pulumi.Input<number>;
+        /**
+         * A non-negative number defining the delay in seconds before the next VM is started
+         */
         upDelay?: pulumi.Input<number>;
     }
 

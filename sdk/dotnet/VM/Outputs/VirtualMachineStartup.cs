@@ -13,12 +13,18 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     [OutputType]
     public sealed class VirtualMachineStartup
     {
+        /// <summary>
+        /// A non-negative number defining the delay in seconds before the next VM is shut down
+        /// </summary>
         public readonly int? DownDelay;
         /// <summary>
         /// A non-negative number defining the general startup
         /// order.
         /// </summary>
         public readonly int? Order;
+        /// <summary>
+        /// A non-negative number defining the delay in seconds before the next VM is started
+        /// </summary>
         public readonly int? UpDelay;
 
         [OutputConstructor]

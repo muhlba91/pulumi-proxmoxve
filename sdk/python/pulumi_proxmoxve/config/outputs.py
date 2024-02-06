@@ -26,6 +26,16 @@ class Ssh(dict):
                  socks5_server: Optional[str] = None,
                  socks5_username: Optional[str] = None,
                  username: Optional[str] = None):
+        """
+        :param bool agent: Whether to use the SSH agent for authentication. Defaults to `false`.
+        :param str agent_socket: The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
+        :param Sequence['SshNodeArgs'] nodes: Overrides for SSH connection configuration for a Proxmox VE node.
+        :param str password: The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
+        :param str socks5_password: The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
+        :param str socks5_server: The address:port of the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_SERVER` environment variable.
+        :param str socks5_username: The username for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_USERNAME` environment variable.
+        :param str username: The username used for the SSH connection. Defaults to the value of the `username` field of the `provider` block.
+        """
         if agent is not None:
             pulumi.set(__self__, "agent", agent)
         if agent_socket is not None:
@@ -46,41 +56,65 @@ class Ssh(dict):
     @property
     @pulumi.getter
     def agent(self) -> Optional[bool]:
+        """
+        Whether to use the SSH agent for authentication. Defaults to `false`.
+        """
         return pulumi.get(self, "agent")
 
     @property
     @pulumi.getter(name="agentSocket")
     def agent_socket(self) -> Optional[str]:
+        """
+        The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
+        """
         return pulumi.get(self, "agent_socket")
 
     @property
     @pulumi.getter
     def nodes(self) -> Optional[Sequence['outputs.SshNode']]:
+        """
+        Overrides for SSH connection configuration for a Proxmox VE node.
+        """
         return pulumi.get(self, "nodes")
 
     @property
     @pulumi.getter
     def password(self) -> Optional[str]:
+        """
+        The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
+        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter(name="socks5Password")
     def socks5_password(self) -> Optional[str]:
+        """
+        The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
+        """
         return pulumi.get(self, "socks5_password")
 
     @property
     @pulumi.getter(name="socks5Server")
     def socks5_server(self) -> Optional[str]:
+        """
+        The address:port of the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_SERVER` environment variable.
+        """
         return pulumi.get(self, "socks5_server")
 
     @property
     @pulumi.getter(name="socks5Username")
     def socks5_username(self) -> Optional[str]:
+        """
+        The username for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_USERNAME` environment variable.
+        """
         return pulumi.get(self, "socks5_username")
 
     @property
     @pulumi.getter
     def username(self) -> Optional[str]:
+        """
+        The username used for the SSH connection. Defaults to the value of the `username` field of the `provider` block.
+        """
         return pulumi.get(self, "username")
 
 
@@ -90,6 +124,11 @@ class SshNode(dict):
                  address: str,
                  name: str,
                  port: Optional[int] = None):
+        """
+        :param str address: The address of the Proxmox VE node.
+        :param str name: The name of the Proxmox VE node.
+        :param int port: The port of the Proxmox VE node.
+        """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "name", name)
         if port is not None:
@@ -98,16 +137,25 @@ class SshNode(dict):
     @property
     @pulumi.getter
     def address(self) -> str:
+        """
+        The address of the Proxmox VE node.
+        """
         return pulumi.get(self, "address")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the Proxmox VE node.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def port(self) -> Optional[int]:
+        """
+        The port of the Proxmox VE node.
+        """
         return pulumi.get(self, "port")
 
 

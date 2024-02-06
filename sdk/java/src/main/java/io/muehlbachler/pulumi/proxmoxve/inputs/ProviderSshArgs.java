@@ -18,58 +18,122 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ProviderSshArgs Empty = new ProviderSshArgs();
 
+    /**
+     * Whether to use the SSH agent for authentication. Defaults to `false`.
+     * 
+     */
     @Import(name="agent")
     private @Nullable Output<Boolean> agent;
 
+    /**
+     * @return Whether to use the SSH agent for authentication. Defaults to `false`.
+     * 
+     */
     public Optional<Output<Boolean>> agent() {
         return Optional.ofNullable(this.agent);
     }
 
+    /**
+     * The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
+     * 
+     */
     @Import(name="agentSocket")
     private @Nullable Output<String> agentSocket;
 
+    /**
+     * @return The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
+     * 
+     */
     public Optional<Output<String>> agentSocket() {
         return Optional.ofNullable(this.agentSocket);
     }
 
+    /**
+     * Overrides for SSH connection configuration for a Proxmox VE node.
+     * 
+     */
     @Import(name="nodes")
     private @Nullable Output<List<ProviderSshNodeArgs>> nodes;
 
+    /**
+     * @return Overrides for SSH connection configuration for a Proxmox VE node.
+     * 
+     */
     public Optional<Output<List<ProviderSshNodeArgs>>> nodes() {
         return Optional.ofNullable(this.nodes);
     }
 
+    /**
+     * The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
+     * 
+     */
     @Import(name="password")
     private @Nullable Output<String> password;
 
+    /**
+     * @return The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
+     * 
+     */
     public Optional<Output<String>> password() {
         return Optional.ofNullable(this.password);
     }
 
+    /**
+     * The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
+     * 
+     */
     @Import(name="socks5Password")
     private @Nullable Output<String> socks5Password;
 
+    /**
+     * @return The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
+     * 
+     */
     public Optional<Output<String>> socks5Password() {
         return Optional.ofNullable(this.socks5Password);
     }
 
+    /**
+     * The address:port of the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_SERVER` environment variable.
+     * 
+     */
     @Import(name="socks5Server")
     private @Nullable Output<String> socks5Server;
 
+    /**
+     * @return The address:port of the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_SERVER` environment variable.
+     * 
+     */
     public Optional<Output<String>> socks5Server() {
         return Optional.ofNullable(this.socks5Server);
     }
 
+    /**
+     * The username for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_USERNAME` environment variable.
+     * 
+     */
     @Import(name="socks5Username")
     private @Nullable Output<String> socks5Username;
 
+    /**
+     * @return The username for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_USERNAME` environment variable.
+     * 
+     */
     public Optional<Output<String>> socks5Username() {
         return Optional.ofNullable(this.socks5Username);
     }
 
+    /**
+     * The username used for the SSH connection. Defaults to the value of the `username` field of the `provider` block.
+     * 
+     */
     @Import(name="username")
     private @Nullable Output<String> username;
 
+    /**
+     * @return The username used for the SSH connection. Defaults to the value of the `username` field of the `provider` block.
+     * 
+     */
     public Optional<Output<String>> username() {
         return Optional.ofNullable(this.username);
     }
@@ -105,78 +169,180 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
             $ = new ProviderSshArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param agent Whether to use the SSH agent for authentication. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder agent(@Nullable Output<Boolean> agent) {
             $.agent = agent;
             return this;
         }
 
+        /**
+         * @param agent Whether to use the SSH agent for authentication. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder agent(Boolean agent) {
             return agent(Output.of(agent));
         }
 
+        /**
+         * @param agentSocket The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
+         * 
+         * @return builder
+         * 
+         */
         public Builder agentSocket(@Nullable Output<String> agentSocket) {
             $.agentSocket = agentSocket;
             return this;
         }
 
+        /**
+         * @param agentSocket The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
+         * 
+         * @return builder
+         * 
+         */
         public Builder agentSocket(String agentSocket) {
             return agentSocket(Output.of(agentSocket));
         }
 
+        /**
+         * @param nodes Overrides for SSH connection configuration for a Proxmox VE node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodes(@Nullable Output<List<ProviderSshNodeArgs>> nodes) {
             $.nodes = nodes;
             return this;
         }
 
+        /**
+         * @param nodes Overrides for SSH connection configuration for a Proxmox VE node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodes(List<ProviderSshNodeArgs> nodes) {
             return nodes(Output.of(nodes));
         }
 
+        /**
+         * @param nodes Overrides for SSH connection configuration for a Proxmox VE node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodes(ProviderSshNodeArgs... nodes) {
             return nodes(List.of(nodes));
         }
 
+        /**
+         * @param password The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
 
+        /**
+         * @param password The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(String password) {
             return password(Output.of(password));
         }
 
+        /**
+         * @param socks5Password The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
+         * 
+         * @return builder
+         * 
+         */
         public Builder socks5Password(@Nullable Output<String> socks5Password) {
             $.socks5Password = socks5Password;
             return this;
         }
 
+        /**
+         * @param socks5Password The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
+         * 
+         * @return builder
+         * 
+         */
         public Builder socks5Password(String socks5Password) {
             return socks5Password(Output.of(socks5Password));
         }
 
+        /**
+         * @param socks5Server The address:port of the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_SERVER` environment variable.
+         * 
+         * @return builder
+         * 
+         */
         public Builder socks5Server(@Nullable Output<String> socks5Server) {
             $.socks5Server = socks5Server;
             return this;
         }
 
+        /**
+         * @param socks5Server The address:port of the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_SERVER` environment variable.
+         * 
+         * @return builder
+         * 
+         */
         public Builder socks5Server(String socks5Server) {
             return socks5Server(Output.of(socks5Server));
         }
 
+        /**
+         * @param socks5Username The username for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_USERNAME` environment variable.
+         * 
+         * @return builder
+         * 
+         */
         public Builder socks5Username(@Nullable Output<String> socks5Username) {
             $.socks5Username = socks5Username;
             return this;
         }
 
+        /**
+         * @param socks5Username The username for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_USERNAME` environment variable.
+         * 
+         * @return builder
+         * 
+         */
         public Builder socks5Username(String socks5Username) {
             return socks5Username(Output.of(socks5Username));
         }
 
+        /**
+         * @param username The username used for the SSH connection. Defaults to the value of the `username` field of the `provider` block.
+         * 
+         * @return builder
+         * 
+         */
         public Builder username(@Nullable Output<String> username) {
             $.username = username;
             return this;
         }
 
+        /**
+         * @param username The username used for the SSH connection. Defaults to the value of the `username` field of the `provider` block.
+         * 
+         * @return builder
+         * 
+         */
         public Builder username(String username) {
             return username(Output.of(username));
         }

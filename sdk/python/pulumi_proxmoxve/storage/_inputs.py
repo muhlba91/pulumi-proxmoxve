@@ -25,6 +25,7 @@ class FileSourceFileArgs:
                  min_tls: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] path: A path to a local file or a URL.
+        :param pulumi.Input[bool] changed: Whether the source file has changed since the last run
         :param pulumi.Input[str] checksum: The SHA256 checksum of the source file.
         :param pulumi.Input[str] file_name: The file name.
         :param pulumi.Input[bool] insecure: Whether to skip the TLS verification step for
@@ -59,6 +60,9 @@ class FileSourceFileArgs:
     @property
     @pulumi.getter
     def changed(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the source file has changed since the last run
+        """
         return pulumi.get(self, "changed")
 
     @changed.setter

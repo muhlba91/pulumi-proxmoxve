@@ -44,6 +44,7 @@ class FileSourceFile(dict):
                  min_tls: Optional[str] = None):
         """
         :param str path: A path to a local file or a URL.
+        :param bool changed: Whether the source file has changed since the last run
         :param str checksum: The SHA256 checksum of the source file.
         :param str file_name: The file name.
         :param bool insecure: Whether to skip the TLS verification step for
@@ -74,6 +75,9 @@ class FileSourceFile(dict):
     @property
     @pulumi.getter
     def changed(self) -> Optional[bool]:
+        """
+        Whether the source file has changed since the last run
+        """
         return pulumi.get(self, "changed")
 
     @property

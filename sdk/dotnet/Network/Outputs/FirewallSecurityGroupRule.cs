@@ -38,6 +38,9 @@ namespace Pulumi.ProxmoxVE.Network.Outputs
         /// ranges.
         /// </summary>
         public readonly string? Dport;
+        /// <summary>
+        /// Enable rule
+        /// </summary>
         public readonly bool? Enabled;
         /// <summary>
         /// Network interface name. You have to use network
@@ -64,6 +67,9 @@ namespace Pulumi.ProxmoxVE.Network.Outputs
         /// as defined in '/etc/protocols'.
         /// </summary>
         public readonly string? Proto;
+        /// <summary>
+        /// Security group name
+        /// </summary>
         public readonly string? SecurityGroup;
         /// <summary>
         /// Restrict packet source address. This can refer

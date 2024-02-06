@@ -16,23 +16,47 @@ public final class ProviderSshNodeArgs extends com.pulumi.resources.ResourceArgs
 
     public static final ProviderSshNodeArgs Empty = new ProviderSshNodeArgs();
 
+    /**
+     * The address of the Proxmox VE node.
+     * 
+     */
     @Import(name="address", required=true)
     private Output<String> address;
 
+    /**
+     * @return The address of the Proxmox VE node.
+     * 
+     */
     public Output<String> address() {
         return this.address;
     }
 
+    /**
+     * The name of the Proxmox VE node.
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return The name of the Proxmox VE node.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
 
+    /**
+     * The port of the Proxmox VE node.
+     * 
+     */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
+    /**
+     * @return The port of the Proxmox VE node.
+     * 
+     */
     public Optional<Output<Integer>> port() {
         return Optional.ofNullable(this.port);
     }
@@ -63,29 +87,65 @@ public final class ProviderSshNodeArgs extends com.pulumi.resources.ResourceArgs
             $ = new ProviderSshNodeArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param address The address of the Proxmox VE node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder address(Output<String> address) {
             $.address = address;
             return this;
         }
 
+        /**
+         * @param address The address of the Proxmox VE node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder address(String address) {
             return address(Output.of(address));
         }
 
+        /**
+         * @param name The name of the Proxmox VE node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The name of the Proxmox VE node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param port The port of the Proxmox VE node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(@Nullable Output<Integer> port) {
             $.port = port;
             return this;
         }
 
+        /**
+         * @param port The port of the Proxmox VE node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(Integer port) {
             return port(Output.of(port));
         }

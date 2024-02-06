@@ -12,6 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FileSourceFile {
+    /**
+     * @return Whether the source file has changed since the last run
+     * 
+     */
     private @Nullable Boolean changed;
     /**
      * @return The SHA256 checksum of the source file.
@@ -42,6 +46,10 @@ public final class FileSourceFile {
     private String path;
 
     private FileSourceFile() {}
+    /**
+     * @return Whether the source file has changed since the last run
+     * 
+     */
     public Optional<Boolean> changed() {
         return Optional.ofNullable(this.changed);
     }

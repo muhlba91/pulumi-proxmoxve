@@ -12,14 +12,24 @@ namespace Pulumi.ProxmoxVE.Inputs
 
     public sealed class ProviderSshArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to use the SSH agent for authentication. Defaults to `false`.
+        /// </summary>
         [Input("agent")]
         public Input<bool>? Agent { get; set; }
 
+        /// <summary>
+        /// The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
+        /// </summary>
         [Input("agentSocket")]
         public Input<string>? AgentSocket { get; set; }
 
         [Input("nodes")]
         private InputList<Inputs.ProviderSshNodeArgs>? _nodes;
+
+        /// <summary>
+        /// Overrides for SSH connection configuration for a Proxmox VE node.
+        /// </summary>
         public InputList<Inputs.ProviderSshNodeArgs> Nodes
         {
             get => _nodes ?? (_nodes = new InputList<Inputs.ProviderSshNodeArgs>());
@@ -28,6 +38,10 @@ namespace Pulumi.ProxmoxVE.Inputs
 
         [Input("password")]
         private Input<string>? _password;
+
+        /// <summary>
+        /// The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
+        /// </summary>
         public Input<string>? Password
         {
             get => _password;
@@ -40,6 +54,10 @@ namespace Pulumi.ProxmoxVE.Inputs
 
         [Input("socks5Password")]
         private Input<string>? _socks5Password;
+
+        /// <summary>
+        /// The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
+        /// </summary>
         public Input<string>? Socks5Password
         {
             get => _socks5Password;
@@ -50,12 +68,21 @@ namespace Pulumi.ProxmoxVE.Inputs
             }
         }
 
+        /// <summary>
+        /// The address:port of the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_SERVER` environment variable.
+        /// </summary>
         [Input("socks5Server")]
         public Input<string>? Socks5Server { get; set; }
 
+        /// <summary>
+        /// The username for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_USERNAME` environment variable.
+        /// </summary>
         [Input("socks5Username")]
         public Input<string>? Socks5Username { get; set; }
 
+        /// <summary>
+        /// The username used for the SSH connection. Defaults to the value of the `username` field of the `provider` block.
+        /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
 

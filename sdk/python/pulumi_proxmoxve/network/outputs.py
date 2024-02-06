@@ -395,6 +395,7 @@ class FirewallSecurityGroupRule(dict):
                services'. Port ranges can be specified with '\\d+:\\d+', for example
                `80:85`, and you can use comma separated list to match several ports or
                ranges.
+        :param bool enabled: Enable rule
         :param str iface: Network interface name. You have to use network
                configuration key names for VMs and containers ('net\\d+'). Host related
                rules can use arbitrary strings.
@@ -405,6 +406,7 @@ class FirewallSecurityGroupRule(dict):
         :param int pos: Position of the rule in the list.
         :param str proto: Restrict packet protocol. You can use protocol names
                as defined in '/etc/protocols'.
+        :param str security_group: Security group name
         :param str source: Restrict packet source address. This can refer
                to a single IP address, an IP set ('+ipsetname') or an IP alias
                definition. You can also specify an address range like
@@ -491,6 +493,9 @@ class FirewallSecurityGroupRule(dict):
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
+        """
+        Enable rule
+        """
         return pulumi.get(self, "enabled")
 
     @property
@@ -541,6 +546,9 @@ class FirewallSecurityGroupRule(dict):
     @property
     @pulumi.getter(name="securityGroup")
     def security_group(self) -> Optional[str]:
+        """
+        Security group name
+        """
         return pulumi.get(self, "security_group")
 
     @property

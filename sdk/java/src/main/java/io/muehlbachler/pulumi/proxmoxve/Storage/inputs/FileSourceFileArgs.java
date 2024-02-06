@@ -16,9 +16,17 @@ public final class FileSourceFileArgs extends com.pulumi.resources.ResourceArgs 
 
     public static final FileSourceFileArgs Empty = new FileSourceFileArgs();
 
+    /**
+     * Whether the source file has changed since the last run
+     * 
+     */
     @Import(name="changed")
     private @Nullable Output<Boolean> changed;
 
+    /**
+     * @return Whether the source file has changed since the last run
+     * 
+     */
     public Optional<Output<Boolean>> changed() {
         return Optional.ofNullable(this.changed);
     }
@@ -131,11 +139,23 @@ public final class FileSourceFileArgs extends com.pulumi.resources.ResourceArgs 
             $ = new FileSourceFileArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param changed Whether the source file has changed since the last run
+         * 
+         * @return builder
+         * 
+         */
         public Builder changed(@Nullable Output<Boolean> changed) {
             $.changed = changed;
             return this;
         }
 
+        /**
+         * @param changed Whether the source file has changed since the last run
+         * 
+         * @return builder
+         * 
+         */
         public Builder changed(Boolean changed) {
             return changed(Output.of(changed));
         }

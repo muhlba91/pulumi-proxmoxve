@@ -6,6 +6,9 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
 export interface GetHostsEntry {
+    /**
+     * The address
+     */
     address: string;
     /**
      * The hostnames associated with each of the IP addresses.
@@ -306,12 +309,18 @@ export namespace CT {
     }
 
     export interface ContainerStartup {
+        /**
+         * A non-negative number defining the delay in seconds before the next container is shut down
+         */
         downDelay?: number;
         /**
          * A non-negative number defining the general startup
          * order.
          */
         order?: number;
+        /**
+         * A non-negative number defining the delay in seconds before the next container is started
+         */
         upDelay?: number;
     }
 
@@ -460,6 +469,9 @@ export namespace Network {
          * ranges.
          */
         dport?: string;
+        /**
+         * Enable rule
+         */
         enabled?: boolean;
         /**
          * Network interface name. You have to use network
@@ -486,6 +498,9 @@ export namespace Network {
          * as defined in '/etc/protocols'.
          */
         proto?: string;
+        /**
+         * Security group name
+         */
         securityGroup?: string;
         /**
          * Restrict packet source address. This can refer
@@ -623,6 +638,9 @@ export namespace Permission {
 
 export namespace Storage {
     export interface FileSourceFile {
+        /**
+         * Whether the source file has changed since the last run
+         */
         changed?: boolean;
         /**
          * The SHA256 checksum of the source file.
@@ -1218,12 +1236,18 @@ export namespace VM {
     }
 
     export interface VirtualMachineStartup {
+        /**
+         * A non-negative number defining the delay in seconds before the next VM is shut down
+         */
         downDelay?: number;
         /**
          * A non-negative number defining the general startup
          * order.
          */
         order?: number;
+        /**
+         * A non-negative number defining the delay in seconds before the next VM is started
+         */
         upDelay?: number;
     }
 
@@ -1276,19 +1300,52 @@ export namespace VM {
 
 export namespace config {
     export interface Ssh {
+        /**
+         * Whether to use the SSH agent for authentication. Defaults to `false`.
+         */
         agent?: boolean;
+        /**
+         * The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
+         */
         agentSocket?: string;
+        /**
+         * Overrides for SSH connection configuration for a Proxmox VE node.
+         */
         nodes?: outputs.config.SshNode[];
+        /**
+         * The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
+         */
         password?: string;
+        /**
+         * The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
+         */
         socks5Password?: string;
+        /**
+         * The address:port of the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_SERVER` environment variable.
+         */
         socks5Server?: string;
+        /**
+         * The username for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_USERNAME` environment variable.
+         */
         socks5Username?: string;
+        /**
+         * The username used for the SSH connection. Defaults to the value of the `username` field of the `provider` block.
+         */
         username?: string;
     }
 
     export interface SshNode {
+        /**
+         * The address of the Proxmox VE node.
+         */
         address: string;
+        /**
+         * The name of the Proxmox VE node.
+         */
         name: string;
+        /**
+         * The port of the Proxmox VE node.
+         */
         port?: number;
     }
 

@@ -127,20 +127,53 @@ namespace Pulumi.ProxmoxVE
 
              public class Ssh
              {
+            /// <summary>
+            /// Whether to use the SSH agent for authentication. Defaults to `false`.
+            /// </summary>
                 public bool? Agent { get; set; }
+            /// <summary>
+            /// The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
+            /// </summary>
                 public string? AgentSocket { get; set; } = null!;
+            /// <summary>
+            /// Overrides for SSH connection configuration for a Proxmox VE node.
+            /// </summary>
                 public ImmutableArray<Pulumi.ProxmoxVE.Config.Types.SshNode> Nodes { get; set; }
+            /// <summary>
+            /// The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
+            /// </summary>
                 public string? Password { get; set; } = null!;
+            /// <summary>
+            /// The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
+            /// </summary>
                 public string? Socks5Password { get; set; } = null!;
+            /// <summary>
+            /// The address:port of the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_SERVER` environment variable.
+            /// </summary>
                 public string? Socks5Server { get; set; } = null!;
+            /// <summary>
+            /// The username for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_USERNAME` environment variable.
+            /// </summary>
                 public string? Socks5Username { get; set; } = null!;
+            /// <summary>
+            /// The username used for the SSH connection. Defaults to the value of the `username` field of the `provider` block.
+            /// </summary>
                 public string? Username { get; set; } = null!;
             }
 
              public class SshNode
              {
+            /// <summary>
+            /// The address of the Proxmox VE node.
+            /// </summary>
                 public string Address { get; set; }
+            /// <summary>
+            /// The name of the Proxmox VE node.
+            /// </summary>
                 public string Name { get; set; }
+            /// <summary>
+            /// The port of the Proxmox VE node.
+            /// </summary>
                 public int? Port { get; set; }
             }
         }

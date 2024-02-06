@@ -617,8 +617,9 @@ type FirewallSecurityGroupRule struct {
 	// services'. Port ranges can be specified with '\d+:\d+', for example
 	// `80:85`, and you can use comma separated list to match several ports or
 	// ranges.
-	Dport   *string `pulumi:"dport"`
-	Enabled *bool   `pulumi:"enabled"`
+	Dport *string `pulumi:"dport"`
+	// Enable rule
+	Enabled *bool `pulumi:"enabled"`
 	// Network interface name. You have to use network
 	// configuration key names for VMs and containers ('net\d+'). Host related
 	// rules can use arbitrary strings.
@@ -633,7 +634,8 @@ type FirewallSecurityGroupRule struct {
 	Pos *int `pulumi:"pos"`
 	// Restrict packet protocol. You can use protocol names
 	// as defined in '/etc/protocols'.
-	Proto         *string `pulumi:"proto"`
+	Proto *string `pulumi:"proto"`
+	// Security group name
 	SecurityGroup *string `pulumi:"securityGroup"`
 	// Restrict packet source address. This can refer
 	// to a single IP address, an IP set ('+ipsetname') or an IP alias
@@ -680,8 +682,9 @@ type FirewallSecurityGroupRuleArgs struct {
 	// services'. Port ranges can be specified with '\d+:\d+', for example
 	// `80:85`, and you can use comma separated list to match several ports or
 	// ranges.
-	Dport   pulumi.StringPtrInput `pulumi:"dport"`
-	Enabled pulumi.BoolPtrInput   `pulumi:"enabled"`
+	Dport pulumi.StringPtrInput `pulumi:"dport"`
+	// Enable rule
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Network interface name. You have to use network
 	// configuration key names for VMs and containers ('net\d+'). Host related
 	// rules can use arbitrary strings.
@@ -696,7 +699,8 @@ type FirewallSecurityGroupRuleArgs struct {
 	Pos pulumi.IntPtrInput `pulumi:"pos"`
 	// Restrict packet protocol. You can use protocol names
 	// as defined in '/etc/protocols'.
-	Proto         pulumi.StringPtrInput `pulumi:"proto"`
+	Proto pulumi.StringPtrInput `pulumi:"proto"`
+	// Security group name
 	SecurityGroup pulumi.StringPtrInput `pulumi:"securityGroup"`
 	// Restrict packet source address. This can refer
 	// to a single IP address, an IP set ('+ipsetname') or an IP alias
@@ -795,6 +799,7 @@ func (o FirewallSecurityGroupRuleOutput) Dport() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallSecurityGroupRule) *string { return v.Dport }).(pulumi.StringPtrOutput)
 }
 
+// Enable rule
 func (o FirewallSecurityGroupRuleOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FirewallSecurityGroupRule) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -829,6 +834,7 @@ func (o FirewallSecurityGroupRuleOutput) Proto() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallSecurityGroupRule) *string { return v.Proto }).(pulumi.StringPtrOutput)
 }
 
+// Security group name
 func (o FirewallSecurityGroupRuleOutput) SecurityGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallSecurityGroupRule) *string { return v.SecurityGroup }).(pulumi.StringPtrOutput)
 }

@@ -63,6 +63,16 @@ class ProviderSshArgs:
                  socks5_server: Optional[pulumi.Input[str]] = None,
                  socks5_username: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] agent: Whether to use the SSH agent for authentication. Defaults to `false`.
+        :param pulumi.Input[str] agent_socket: The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
+        :param pulumi.Input[Sequence[pulumi.Input['ProviderSshNodeArgs']]] nodes: Overrides for SSH connection configuration for a Proxmox VE node.
+        :param pulumi.Input[str] password: The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
+        :param pulumi.Input[str] socks5_password: The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
+        :param pulumi.Input[str] socks5_server: The address:port of the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_SERVER` environment variable.
+        :param pulumi.Input[str] socks5_username: The username for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_USERNAME` environment variable.
+        :param pulumi.Input[str] username: The username used for the SSH connection. Defaults to the value of the `username` field of the `provider` block.
+        """
         if agent is not None:
             pulumi.set(__self__, "agent", agent)
         if agent_socket is not None:
@@ -83,6 +93,9 @@ class ProviderSshArgs:
     @property
     @pulumi.getter
     def agent(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to use the SSH agent for authentication. Defaults to `false`.
+        """
         return pulumi.get(self, "agent")
 
     @agent.setter
@@ -92,6 +105,9 @@ class ProviderSshArgs:
     @property
     @pulumi.getter(name="agentSocket")
     def agent_socket(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
+        """
         return pulumi.get(self, "agent_socket")
 
     @agent_socket.setter
@@ -101,6 +117,9 @@ class ProviderSshArgs:
     @property
     @pulumi.getter
     def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProviderSshNodeArgs']]]]:
+        """
+        Overrides for SSH connection configuration for a Proxmox VE node.
+        """
         return pulumi.get(self, "nodes")
 
     @nodes.setter
@@ -110,6 +129,9 @@ class ProviderSshArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -119,6 +141,9 @@ class ProviderSshArgs:
     @property
     @pulumi.getter(name="socks5Password")
     def socks5_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
+        """
         return pulumi.get(self, "socks5_password")
 
     @socks5_password.setter
@@ -128,6 +153,9 @@ class ProviderSshArgs:
     @property
     @pulumi.getter(name="socks5Server")
     def socks5_server(self) -> Optional[pulumi.Input[str]]:
+        """
+        The address:port of the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_SERVER` environment variable.
+        """
         return pulumi.get(self, "socks5_server")
 
     @socks5_server.setter
@@ -137,6 +165,9 @@ class ProviderSshArgs:
     @property
     @pulumi.getter(name="socks5Username")
     def socks5_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_USERNAME` environment variable.
+        """
         return pulumi.get(self, "socks5_username")
 
     @socks5_username.setter
@@ -146,6 +177,9 @@ class ProviderSshArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username used for the SSH connection. Defaults to the value of the `username` field of the `provider` block.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -159,6 +193,11 @@ class ProviderSshNodeArgs:
                  address: pulumi.Input[str],
                  name: pulumi.Input[str],
                  port: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] address: The address of the Proxmox VE node.
+        :param pulumi.Input[str] name: The name of the Proxmox VE node.
+        :param pulumi.Input[int] port: The port of the Proxmox VE node.
+        """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "name", name)
         if port is not None:
@@ -167,6 +206,9 @@ class ProviderSshNodeArgs:
     @property
     @pulumi.getter
     def address(self) -> pulumi.Input[str]:
+        """
+        The address of the Proxmox VE node.
+        """
         return pulumi.get(self, "address")
 
     @address.setter
@@ -176,6 +218,9 @@ class ProviderSshNodeArgs:
     @property
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
+        """
+        The name of the Proxmox VE node.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -185,6 +230,9 @@ class ProviderSshNodeArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port of the Proxmox VE node.
+        """
         return pulumi.get(self, "port")
 
     @port.setter

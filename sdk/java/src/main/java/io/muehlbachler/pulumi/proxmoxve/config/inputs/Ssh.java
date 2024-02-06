@@ -14,37 +14,101 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class Ssh {
+    /**
+     * @return Whether to use the SSH agent for authentication. Defaults to `false`.
+     * 
+     */
     private @Nullable Boolean agent;
+    /**
+     * @return The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
+     * 
+     */
     private @Nullable String agentSocket;
+    /**
+     * @return Overrides for SSH connection configuration for a Proxmox VE node.
+     * 
+     */
     private @Nullable List<SshNode> nodes;
+    /**
+     * @return The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
+     * 
+     */
     private @Nullable String password;
+    /**
+     * @return The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
+     * 
+     */
     private @Nullable String socks5Password;
+    /**
+     * @return The address:port of the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_SERVER` environment variable.
+     * 
+     */
     private @Nullable String socks5Server;
+    /**
+     * @return The username for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_USERNAME` environment variable.
+     * 
+     */
     private @Nullable String socks5Username;
+    /**
+     * @return The username used for the SSH connection. Defaults to the value of the `username` field of the `provider` block.
+     * 
+     */
     private @Nullable String username;
 
     private Ssh() {}
+    /**
+     * @return Whether to use the SSH agent for authentication. Defaults to `false`.
+     * 
+     */
     public Optional<Boolean> agent() {
         return Optional.ofNullable(this.agent);
     }
+    /**
+     * @return The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
+     * 
+     */
     public Optional<String> agentSocket() {
         return Optional.ofNullable(this.agentSocket);
     }
+    /**
+     * @return Overrides for SSH connection configuration for a Proxmox VE node.
+     * 
+     */
     public List<SshNode> nodes() {
         return this.nodes == null ? List.of() : this.nodes;
     }
+    /**
+     * @return The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
+     * 
+     */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
+    /**
+     * @return The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
+     * 
+     */
     public Optional<String> socks5Password() {
         return Optional.ofNullable(this.socks5Password);
     }
+    /**
+     * @return The address:port of the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_SERVER` environment variable.
+     * 
+     */
     public Optional<String> socks5Server() {
         return Optional.ofNullable(this.socks5Server);
     }
+    /**
+     * @return The username for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_USERNAME` environment variable.
+     * 
+     */
     public Optional<String> socks5Username() {
         return Optional.ofNullable(this.socks5Username);
     }
+    /**
+     * @return The username used for the SSH connection. Defaults to the value of the `username` field of the `provider` block.
+     * 
+     */
     public Optional<String> username() {
         return Optional.ofNullable(this.username);
     }

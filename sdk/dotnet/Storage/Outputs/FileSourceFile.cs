@@ -13,6 +13,9 @@ namespace Pulumi.ProxmoxVE.Storage.Outputs
     [OutputType]
     public sealed class FileSourceFile
     {
+        /// <summary>
+        /// Whether the source file has changed since the last run
+        /// </summary>
         public readonly bool? Changed;
         /// <summary>
         /// The SHA256 checksum of the source file.

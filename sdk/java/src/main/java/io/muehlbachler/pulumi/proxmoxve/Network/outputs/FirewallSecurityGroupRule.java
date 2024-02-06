@@ -42,6 +42,10 @@ public final class FirewallSecurityGroupRule {
      * 
      */
     private @Nullable String dport;
+    /**
+     * @return Enable rule
+     * 
+     */
     private @Nullable Boolean enabled;
     /**
      * @return Network interface name. You have to use network
@@ -73,6 +77,10 @@ public final class FirewallSecurityGroupRule {
      * 
      */
     private @Nullable String proto;
+    /**
+     * @return Security group name
+     * 
+     */
     private @Nullable String securityGroup;
     /**
      * @return Restrict packet source address. This can refer
@@ -137,6 +145,10 @@ public final class FirewallSecurityGroupRule {
     public Optional<String> dport() {
         return Optional.ofNullable(this.dport);
     }
+    /**
+     * @return Enable rule
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -180,6 +192,10 @@ public final class FirewallSecurityGroupRule {
     public Optional<String> proto() {
         return Optional.ofNullable(this.proto);
     }
+    /**
+     * @return Security group name
+     * 
+     */
     public Optional<String> securityGroup() {
         return Optional.ofNullable(this.securityGroup);
     }

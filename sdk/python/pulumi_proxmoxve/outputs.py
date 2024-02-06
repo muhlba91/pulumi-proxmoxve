@@ -49,6 +49,7 @@ class GetHostsEntryResult(dict):
                  address: str,
                  hostnames: Sequence[str]):
         """
+        :param str address: The address
         :param Sequence[str] hostnames: The hostnames associated with each of the IP addresses.
         """
         pulumi.set(__self__, "address", address)
@@ -57,6 +58,9 @@ class GetHostsEntryResult(dict):
     @property
     @pulumi.getter
     def address(self) -> str:
+        """
+        The address
+        """
         return pulumi.get(self, "address")
 
     @property

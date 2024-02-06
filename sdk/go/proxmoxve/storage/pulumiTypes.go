@@ -14,6 +14,7 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type FileSourceFile struct {
+	// Whether the source file has changed since the last run
 	Changed *bool `pulumi:"changed"`
 	// The SHA256 checksum of the source file.
 	Checksum *string `pulumi:"checksum"`
@@ -41,6 +42,7 @@ type FileSourceFileInput interface {
 }
 
 type FileSourceFileArgs struct {
+	// Whether the source file has changed since the last run
 	Changed pulumi.BoolPtrInput `pulumi:"changed"`
 	// The SHA256 checksum of the source file.
 	Checksum pulumi.StringPtrInput `pulumi:"checksum"`
@@ -133,6 +135,7 @@ func (o FileSourceFileOutput) ToFileSourceFilePtrOutputWithContext(ctx context.C
 	}).(FileSourceFilePtrOutput)
 }
 
+// Whether the source file has changed since the last run
 func (o FileSourceFileOutput) Changed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FileSourceFile) *bool { return v.Changed }).(pulumi.BoolPtrOutput)
 }
@@ -188,6 +191,7 @@ func (o FileSourceFilePtrOutput) Elem() FileSourceFileOutput {
 	}).(FileSourceFileOutput)
 }
 
+// Whether the source file has changed since the last run
 func (o FileSourceFilePtrOutput) Changed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FileSourceFile) *bool {
 		if v == nil {
