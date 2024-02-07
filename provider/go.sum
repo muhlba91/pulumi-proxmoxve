@@ -755,6 +755,8 @@ github.com/boombuler/barcode v1.0.0/go.mod h1:paBWMcWSl3LHKBqUq+rly7CNSldXjb2rDl
 github.com/boombuler/barcode v1.0.1/go.mod h1:paBWMcWSl3LHKBqUq+rly7CNSldXjb2rDl3JlRe0mD8=
 github.com/bpg/terraform-provider-proxmox v0.46.2 h1:Iw1GzNU4E34UVsZCveg+K+fBhbHYcnfF2SYy/2f8Vcs=
 github.com/bpg/terraform-provider-proxmox v0.46.2/go.mod h1:IODkA9N8xLy5bMIX7HGtV2auCSedISrNR1R1DKB8sEM=
+github.com/bpg/terraform-provider-proxmox v0.46.3 h1:rksIQB58Ih3XFhuTJrcTkqC+n69DtKk9CCCFpjqPHyY=
+github.com/bpg/terraform-provider-proxmox v0.46.3/go.mod h1:IODkA9N8xLy5bMIX7HGtV2auCSedISrNR1R1DKB8sEM=
 github.com/bufbuild/protocompile v0.4.0/go.mod h1:3v93+mbWn/v3xzN+31nwkJfrEpAUwp+BagBSZWx+TP8=
 github.com/bwesterb/go-ristretto v1.2.3/go.mod h1:fUIoIZaG73pV5biE2Blr2xEzDoMj7NFEuV9ekS419A0=
 github.com/cenkalti/backoff/v3 v3.2.2 h1:cfUAAO3yvKMYKPrvhDuHSwQnhZNk/RMHKdZqKTxfm6M=
