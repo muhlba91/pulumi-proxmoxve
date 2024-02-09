@@ -60,7 +60,7 @@ jobs:
       - name: Build Provider
         run: make provider
       - name: Lint Provider
-        uses: golangci/golangci-lint-action@v3
+        uses: golangci/golangci-lint-action@v4
         with:
           version: "${{ matrix.golangci-lint-version }}"
           working-directory: provider
