@@ -1,6 +1,18 @@
 # Changelog
 
 
+## [5.24.3](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.24.2...v5.24.3) (2024-02-16)
+
+
+### Bug Fixes
+
+* prepare for upstream release 0.46.4 ([4a90e2d](https://github.com/muhlba91/pulumi-proxmoxve/commit/4a90e2d8dec2b3b472df91a47f40eba1ef5731c6))
+
+
+### Miscellaneous Chores
+
+* **deps:** update gradle/gradle-build-action action to v3 ([52df736](https://github.com/muhlba91/pulumi-proxmoxve/commit/52df7361b4896f1f606bb83fe248c834895a91d2))
+
 ## [5.24.2](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.24.1...v5.24.2) (2024-02-16)
 
 
