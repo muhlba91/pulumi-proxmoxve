@@ -14,10 +14,12 @@ namespace Pulumi.ProxmoxVE.CT
     /// 
     /// ## Import
     /// 
-    /// Instances can be imported using the `node_name` and the `vm_id`, e.g., bash
+    /// Instances can be imported using the `node_name` and the `vm_id`, e.g.,
+    /// 
+    ///  bash
     /// 
     /// ```sh
-    ///  $ pulumi import proxmoxve:CT/container:Container ubuntu_container first-node/1234
+    /// $ pulumi import proxmoxve:CT/container:Container ubuntu_container first-node/1234
     /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:CT/container:Container")]

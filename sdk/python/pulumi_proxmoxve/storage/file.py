@@ -417,10 +417,20 @@ class File(pulumi.CustomResource):
 
         ## Import
 
-        Instances can be imported using the `node_name`, `datastore_id`, `content_type` and the `file_name` in the following formattext node_name:datastore_id/content_type/file_name Examplebash
+        Instances can be imported using the `node_name`, `datastore_id`, `content_type`
+
+         and the `file_name` in the following format:
+
+         text
+
+         node_name:datastore_id/content_type/file_name
+
+         Example:
+
+         bash
 
         ```sh
-         $ pulumi import proxmoxve:Storage/file:File cloud_config pve/local:snippets/example.cloud-config.yaml
+        $ pulumi import proxmoxve:Storage/file:File cloud_config pve/local:snippets/example.cloud-config.yaml
         ```
 
         :param str resource_name: The name of the resource.
@@ -513,10 +523,20 @@ class File(pulumi.CustomResource):
 
         ## Import
 
-        Instances can be imported using the `node_name`, `datastore_id`, `content_type` and the `file_name` in the following formattext node_name:datastore_id/content_type/file_name Examplebash
+        Instances can be imported using the `node_name`, `datastore_id`, `content_type`
+
+         and the `file_name` in the following format:
+
+         text
+
+         node_name:datastore_id/content_type/file_name
+
+         Example:
+
+         bash
 
         ```sh
-         $ pulumi import proxmoxve:Storage/file:File cloud_config pve/local:snippets/example.cloud-config.yaml
+        $ pulumi import proxmoxve:Storage/file:File cloud_config pve/local:snippets/example.cloud-config.yaml
         ```
 
         :param str resource_name: The name of the resource.

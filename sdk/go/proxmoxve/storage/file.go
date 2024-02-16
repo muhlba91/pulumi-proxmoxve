@@ -128,12 +128,20 @@ import (
 //
 // ## Import
 //
-// Instances can be imported using the `node_name`, `datastore_id`, `content_type` and the `file_name` in the following formattext node_name:datastore_id/content_type/file_name Examplebash
+// Instances can be imported using the `node_name`, `datastore_id`, `content_type`
+//
+//	and the `file_name` in the following format:
+//
+//	text
+//
+//	node_name:datastore_id/content_type/file_name
+//
+//	Example:
+//
+//	bash
 //
 // ```sh
-//
-//	$ pulumi import proxmoxve:Storage/file:File cloud_config pve/local:snippets/example.cloud-config.yaml
-//
+// $ pulumi import proxmoxve:Storage/file:File cloud_config pve/local:snippets/example.cloud-config.yaml
 // ```
 type File struct {
 	pulumi.CustomResourceState

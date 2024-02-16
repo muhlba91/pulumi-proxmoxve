@@ -165,10 +165,12 @@ class Group(pulumi.CustomResource):
 
         ## Import
 
-        Instances can be imported using the `group_id`, e.g., bash
+        Instances can be imported using the `group_id`, e.g.,
+
+         bash
 
         ```sh
-         $ pulumi import proxmoxve:Permission/group:Group operations_team operations-team
+        $ pulumi import proxmoxve:Permission/group:Group operations_team operations-team
         ```
 
         :param str resource_name: The name of the resource.
@@ -199,10 +201,12 @@ class Group(pulumi.CustomResource):
 
         ## Import
 
-        Instances can be imported using the `group_id`, e.g., bash
+        Instances can be imported using the `group_id`, e.g.,
+
+         bash
 
         ```sh
-         $ pulumi import proxmoxve:Permission/group:Group operations_team operations-team
+        $ pulumi import proxmoxve:Permission/group:Group operations_team operations-team
         ```
 
         :param str resource_name: The name of the resource.

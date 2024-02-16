@@ -226,10 +226,12 @@ class Firewall(pulumi.CustomResource):
 
         ## Import
 
-        Instances can be imported without an ID, but you still need to pass one, e.g., bash
+        Instances can be imported without an ID, but you still need to pass one, e.g.,
+
+         bash
 
         ```sh
-         $ pulumi import proxmoxve:Network/firewall:Firewall example example
+        $ pulumi import proxmoxve:Network/firewall:Firewall example example
         ```
 
         :param str resource_name: The name of the resource.
@@ -272,10 +274,12 @@ class Firewall(pulumi.CustomResource):
 
         ## Import
 
-        Instances can be imported without an ID, but you still need to pass one, e.g., bash
+        Instances can be imported without an ID, but you still need to pass one, e.g.,
+
+         bash
 
         ```sh
-         $ pulumi import proxmoxve:Network/firewall:Firewall example example
+        $ pulumi import proxmoxve:Network/firewall:Firewall example example
         ```
 
         :param str resource_name: The name of the resource.

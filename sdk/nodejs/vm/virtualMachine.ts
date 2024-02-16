@@ -73,10 +73,12 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Instances can be imported using the `node_name` and the `vm_id`, e.g., bash
+ * Instances can be imported using the `node_name` and the `vm_id`, e.g.,
+ *
+ *  bash
  *
  * ```sh
- *  $ pulumi import proxmoxve:VM/virtualMachine:VirtualMachine ubuntu_vm first-node/4321
+ * $ pulumi import proxmoxve:VM/virtualMachine:VirtualMachine ubuntu_vm first-node/4321
  * ```
  */
 export class VirtualMachine extends pulumi.CustomResource {

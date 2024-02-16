@@ -43,12 +43,12 @@ import (
 //
 // ## Import
 //
-// Instances can be imported using the `pool_id`, e.g., bash
+// Instances can be imported using the `pool_id`, e.g.,
+//
+//	bash
 //
 // ```sh
-//
-//	$ pulumi import proxmoxve:Permission/pool:Pool operations_pool operations-pool
-//
+// $ pulumi import proxmoxve:Permission/pool:Pool operations_pool operations-pool
 // ```
 type Pool struct {
 	pulumi.CustomResourceState

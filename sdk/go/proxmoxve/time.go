@@ -43,12 +43,12 @@ import (
 //
 // ## Import
 //
-// Instances can be imported using the `node_name`, e.g., bash
+// Instances can be imported using the `node_name`, e.g.,
+//
+//	bash
 //
 // ```sh
-//
-//	$ pulumi import proxmoxve:index/time:Time first_node first-node
-//
+// $ pulumi import proxmoxve:index/time:Time first_node first-node
 // ```
 type Time struct {
 	pulumi.CustomResourceState

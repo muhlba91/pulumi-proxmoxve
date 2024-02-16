@@ -23,10 +23,12 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Instances can be imported using the `group_id`, e.g., bash
+ * Instances can be imported using the `group_id`, e.g.,
+ *
+ *  bash
  *
  * ```sh
- *  $ pulumi import proxmoxve:Permission/group:Group operations_team operations-team
+ * $ pulumi import proxmoxve:Permission/group:Group operations_team operations-team
  * ```
  */
 export class Group extends pulumi.CustomResource {
