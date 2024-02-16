@@ -1,6 +1,17 @@
 # Changelog
 
 
+## [5.24.2](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.24.1...v5.24.2) (2024-02-16)
+
+
+### Miscellaneous Chores
+
+* **deps:** update golangci/golangci-lint-action action to v4 ([34dbc51](https://github.com/muhlba91/pulumi-proxmoxve/commit/34dbc51f4a174dbe9f5d4ecc48c24dbbfc080788))
+* **deps:** update jaxxstorm/action-install-gh-release action to v1.11.0 ([328e40e](https://github.com/muhlba91/pulumi-proxmoxve/commit/328e40ed281eff98334b61a901c8d0c91556c07c))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.46.4 ([5e3dbb9](https://github.com/muhlba91/pulumi-proxmoxve/commit/5e3dbb909d46696e045794fd1973d17a20943576))
+* **deps:** update module github.com/pulumi/pulumi-terraform-bridge/v3 to v3.74.0 ([29c7c65](https://github.com/muhlba91/pulumi-proxmoxve/commit/29c7c651eadcc59503a1e7397e18cf288c8d8936))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.105.0 ([d193cb3](https://github.com/muhlba91/pulumi-proxmoxve/commit/d193cb390f3291153ba6284c435963eae37caa67))
+
 ## [5.24.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.24.0...v5.24.1) (2024-02-07)
 
 
