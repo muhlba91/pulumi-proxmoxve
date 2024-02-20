@@ -1,8 +1,8 @@
 module github.com/muhlba91/pulumi-proxmoxve/provider
 
-go 1.21
+go 1.22
 
-toolchain go1.21.1
+toolchain go1.22.0
 
 replace (
 	github.com/hashicorp/go-getter v1.5.0 => github.com/hashicorp/go-getter v1.4.0
@@ -10,7 +10,7 @@ replace (
 )
 
 require (
-	github.com/bpg/terraform-provider-proxmox v0.46.4
+	github.com/bpg/terraform-provider-proxmox v0.46.5
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.74.0
 	github.com/pulumi/pulumi/sdk/v3 v3.105.0
 )
