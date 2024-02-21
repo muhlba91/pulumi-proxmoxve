@@ -582,6 +582,19 @@ namespace Pulumi.ProxmoxVE.VM
         [Input("kvmArguments")]
         public Input<string>? KvmArguments { get; set; }
 
+        [Input("macAddresses")]
+        private InputList<string>? _macAddresses;
+
+        /// <summary>
+        /// The MAC addresses published by the QEMU agent with fallback
+        /// to the network device configuration, if the agent is disabled
+        /// </summary>
+        public InputList<string> MacAddresses
+        {
+            get => _macAddresses ?? (_macAddresses = new InputList<string>());
+            set => _macAddresses = value;
+        }
+
         /// <summary>
         /// The VM machine type (defaults to `pc`).
         /// </summary>

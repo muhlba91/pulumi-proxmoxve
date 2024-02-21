@@ -3547,6 +3547,13 @@
                     "type": "string",
                     "description": "Arbitrary arguments passed to kvm.\n"
                 },
+                "macAddresses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The MAC addresses published by the QEMU agent with fallback\nto the network device configuration, if the agent is disabled\n"
+                },
                 "machine": {
                     "type": "string",
                     "description": "The VM machine type (defaults to `pc`).\n"

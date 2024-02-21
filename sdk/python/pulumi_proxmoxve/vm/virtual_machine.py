@@ -33,6 +33,7 @@ class VirtualMachineArgs:
                  initialization: Optional[pulumi.Input['VirtualMachineInitializationArgs']] = None,
                  keyboard_layout: Optional[pulumi.Input[str]] = None,
                  kvm_arguments: Optional[pulumi.Input[str]] = None,
+                 mac_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  machine: Optional[pulumi.Input[str]] = None,
                  memory: Optional[pulumi.Input['VirtualMachineMemoryArgs']] = None,
                  migrate: Optional[pulumi.Input[bool]] = None,
@@ -85,6 +86,8 @@ class VirtualMachineArgs:
         :param pulumi.Input['VirtualMachineInitializationArgs'] initialization: The cloud-init configuration.
         :param pulumi.Input[str] keyboard_layout: The keyboard layout (defaults to `en-us`).
         :param pulumi.Input[str] kvm_arguments: Arbitrary arguments passed to kvm.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] mac_addresses: The MAC addresses published by the QEMU agent with fallback
+               to the network device configuration, if the agent is disabled
         :param pulumi.Input[str] machine: The VM machine type (defaults to `pc`).
         :param pulumi.Input['VirtualMachineMemoryArgs'] memory: The VGA memory in megabytes (defaults to `16`).
         :param pulumi.Input[bool] migrate: Migrate the VM on node change instead of re-creating
@@ -168,6 +171,8 @@ class VirtualMachineArgs:
             pulumi.set(__self__, "keyboard_layout", keyboard_layout)
         if kvm_arguments is not None:
             pulumi.set(__self__, "kvm_arguments", kvm_arguments)
+        if mac_addresses is not None:
+            pulumi.set(__self__, "mac_addresses", mac_addresses)
         if machine is not None:
             pulumi.set(__self__, "machine", machine)
         if memory is not None:
@@ -435,6 +440,19 @@ class VirtualMachineArgs:
     @kvm_arguments.setter
     def kvm_arguments(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "kvm_arguments", value)
+
+    @property
+    @pulumi.getter(name="macAddresses")
+    def mac_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The MAC addresses published by the QEMU agent with fallback
+        to the network device configuration, if the agent is disabled
+        """
+        return pulumi.get(self, "mac_addresses")
+
+    @mac_addresses.setter
+    def mac_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "mac_addresses", value)
 
     @property
     @pulumi.getter
@@ -1713,6 +1731,7 @@ class VirtualMachine(pulumi.CustomResource):
                  initialization: Optional[pulumi.Input[pulumi.InputType['VirtualMachineInitializationArgs']]] = None,
                  keyboard_layout: Optional[pulumi.Input[str]] = None,
                  kvm_arguments: Optional[pulumi.Input[str]] = None,
+                 mac_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  machine: Optional[pulumi.Input[str]] = None,
                  memory: Optional[pulumi.Input[pulumi.InputType['VirtualMachineMemoryArgs']]] = None,
                  migrate: Optional[pulumi.Input[bool]] = None,
@@ -1840,6 +1859,8 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['VirtualMachineInitializationArgs']] initialization: The cloud-init configuration.
         :param pulumi.Input[str] keyboard_layout: The keyboard layout (defaults to `en-us`).
         :param pulumi.Input[str] kvm_arguments: Arbitrary arguments passed to kvm.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] mac_addresses: The MAC addresses published by the QEMU agent with fallback
+               to the network device configuration, if the agent is disabled
         :param pulumi.Input[str] machine: The VM machine type (defaults to `pc`).
         :param pulumi.Input[pulumi.InputType['VirtualMachineMemoryArgs']] memory: The VGA memory in megabytes (defaults to `16`).
         :param pulumi.Input[bool] migrate: Migrate the VM on node change instead of re-creating
@@ -2004,6 +2025,7 @@ class VirtualMachine(pulumi.CustomResource):
                  initialization: Optional[pulumi.Input[pulumi.InputType['VirtualMachineInitializationArgs']]] = None,
                  keyboard_layout: Optional[pulumi.Input[str]] = None,
                  kvm_arguments: Optional[pulumi.Input[str]] = None,
+                 mac_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  machine: Optional[pulumi.Input[str]] = None,
                  memory: Optional[pulumi.Input[pulumi.InputType['VirtualMachineMemoryArgs']]] = None,
                  migrate: Optional[pulumi.Input[bool]] = None,
@@ -2060,6 +2082,7 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["initialization"] = initialization
             __props__.__dict__["keyboard_layout"] = keyboard_layout
             __props__.__dict__["kvm_arguments"] = kvm_arguments
+            __props__.__dict__["mac_addresses"] = mac_addresses
             __props__.__dict__["machine"] = machine
             __props__.__dict__["memory"] = memory
             __props__.__dict__["migrate"] = migrate
@@ -2095,7 +2118,6 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["vm_id"] = vm_id
             __props__.__dict__["ipv4_addresses"] = None
             __props__.__dict__["ipv6_addresses"] = None
-            __props__.__dict__["mac_addresses"] = None
             __props__.__dict__["network_interface_names"] = None
         super(VirtualMachine, __self__).__init__(
             'proxmoxve:VM/virtualMachine:VirtualMachine',

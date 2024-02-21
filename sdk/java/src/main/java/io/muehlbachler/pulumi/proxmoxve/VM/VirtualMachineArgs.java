@@ -282,6 +282,23 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * The MAC addresses published by the QEMU agent with fallback
+     * to the network device configuration, if the agent is disabled
+     * 
+     */
+    @Import(name="macAddresses")
+    private @Nullable Output<List<String>> macAddresses;
+
+    /**
+     * @return The MAC addresses published by the QEMU agent with fallback
+     * to the network device configuration, if the agent is disabled
+     * 
+     */
+    public Optional<Output<List<String>>> macAddresses() {
+        return Optional.ofNullable(this.macAddresses);
+    }
+
+    /**
      * The VM machine type (defaults to `pc`).
      * 
      */
@@ -805,6 +822,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         this.initialization = $.initialization;
         this.keyboardLayout = $.keyboardLayout;
         this.kvmArguments = $.kvmArguments;
+        this.macAddresses = $.macAddresses;
         this.machine = $.machine;
         this.memory = $.memory;
         this.migrate = $.migrate;
@@ -1225,6 +1243,40 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder kvmArguments(String kvmArguments) {
             return kvmArguments(Output.of(kvmArguments));
+        }
+
+        /**
+         * @param macAddresses The MAC addresses published by the QEMU agent with fallback
+         * to the network device configuration, if the agent is disabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder macAddresses(@Nullable Output<List<String>> macAddresses) {
+            $.macAddresses = macAddresses;
+            return this;
+        }
+
+        /**
+         * @param macAddresses The MAC addresses published by the QEMU agent with fallback
+         * to the network device configuration, if the agent is disabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder macAddresses(List<String> macAddresses) {
+            return macAddresses(Output.of(macAddresses));
+        }
+
+        /**
+         * @param macAddresses The MAC addresses published by the QEMU agent with fallback
+         * to the network device configuration, if the agent is disabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder macAddresses(String... macAddresses) {
+            return macAddresses(List.of(macAddresses));
         }
 
         /**

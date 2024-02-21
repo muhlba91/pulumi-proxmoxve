@@ -189,7 +189,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      * The MAC addresses published by the QEMU agent with fallback
      * to the network device configuration, if the agent is disabled
      */
-    public /*out*/ readonly macAddresses!: pulumi.Output<string[]>;
+    public readonly macAddresses!: pulumi.Output<string[]>;
     /**
      * The VM machine type (defaults to `pc`).
      */
@@ -425,6 +425,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["initialization"] = args ? args.initialization : undefined;
             resourceInputs["keyboardLayout"] = args ? args.keyboardLayout : undefined;
             resourceInputs["kvmArguments"] = args ? args.kvmArguments : undefined;
+            resourceInputs["macAddresses"] = args ? args.macAddresses : undefined;
             resourceInputs["machine"] = args ? args.machine : undefined;
             resourceInputs["memory"] = args ? args.memory : undefined;
             resourceInputs["migrate"] = args ? args.migrate : undefined;
@@ -458,7 +459,6 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["vmId"] = args ? args.vmId : undefined;
             resourceInputs["ipv4Addresses"] = undefined /*out*/;
             resourceInputs["ipv6Addresses"] = undefined /*out*/;
-            resourceInputs["macAddresses"] = undefined /*out*/;
             resourceInputs["networkInterfaceNames"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -772,6 +772,11 @@ export interface VirtualMachineArgs {
      * Arbitrary arguments passed to kvm.
      */
     kvmArguments?: pulumi.Input<string>;
+    /**
+     * The MAC addresses published by the QEMU agent with fallback
+     * to the network device configuration, if the agent is disabled
+     */
+    macAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The VM machine type (defaults to `pc`).
      */

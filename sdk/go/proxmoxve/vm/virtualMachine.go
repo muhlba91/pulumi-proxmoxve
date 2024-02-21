@@ -551,6 +551,9 @@ type virtualMachineArgs struct {
 	KeyboardLayout *string `pulumi:"keyboardLayout"`
 	// Arbitrary arguments passed to kvm.
 	KvmArguments *string `pulumi:"kvmArguments"`
+	// The MAC addresses published by the QEMU agent with fallback
+	// to the network device configuration, if the agent is disabled
+	MacAddresses []string `pulumi:"macAddresses"`
 	// The VM machine type (defaults to `pc`).
 	Machine *string `pulumi:"machine"`
 	// The VGA memory in megabytes (defaults to `16`).
@@ -671,6 +674,9 @@ type VirtualMachineArgs struct {
 	KeyboardLayout pulumi.StringPtrInput
 	// Arbitrary arguments passed to kvm.
 	KvmArguments pulumi.StringPtrInput
+	// The MAC addresses published by the QEMU agent with fallback
+	// to the network device configuration, if the agent is disabled
+	MacAddresses pulumi.StringArrayInput
 	// The VM machine type (defaults to `pc`).
 	Machine pulumi.StringPtrInput
 	// The VGA memory in megabytes (defaults to `16`).
