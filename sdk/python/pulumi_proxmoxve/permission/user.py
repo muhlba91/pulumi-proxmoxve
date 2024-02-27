@@ -527,10 +527,12 @@ class User(pulumi.CustomResource):
             __props__.__dict__["groups"] = groups
             __props__.__dict__["keys"] = keys
             __props__.__dict__["last_name"] = last_name
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             if user_id is None and not opts.urn:
                 raise TypeError("Missing required property 'user_id'")
             __props__.__dict__["user_id"] = user_id
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(User, __self__).__init__(
             'proxmoxve:Permission/user:User',
             resource_name,

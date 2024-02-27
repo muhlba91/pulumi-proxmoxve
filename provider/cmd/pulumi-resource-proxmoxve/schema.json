@@ -2936,7 +2936,8 @@
                 },
                 "password": {
                     "type": "string",
-                    "description": "The user's password. Required for PVE or PAM realms.\n"
+                    "description": "The user's password. Required for PVE or PAM realms.\n",
+                    "secret": true
                 },
                 "userId": {
                     "type": "string",
@@ -2991,7 +2992,8 @@
                 },
                 "password": {
                     "type": "string",
-                    "description": "The user's password. Required for PVE or PAM realms.\n"
+                    "description": "The user's password. Required for PVE or PAM realms.\n",
+                    "secret": true
                 },
                 "userId": {
                     "type": "string",
@@ -3049,7 +3051,8 @@
                     },
                     "password": {
                         "type": "string",
-                        "description": "The user's password. Required for PVE or PAM realms.\n"
+                        "description": "The user's password. Required for PVE or PAM realms.\n",
+                        "secret": true
                     },
                     "userId": {
                         "type": "string",
