@@ -10,6 +10,7 @@ from .dns import *
 from .get_dns import *
 from .get_hosts import *
 from .get_time import *
+from .get_version import *
 from .hosts import *
 from .provider import *
 from .time import *
@@ -24,6 +25,10 @@ if typing.TYPE_CHECKING:
     config = __config
     import pulumi_proxmoxve.ct as __ct
     ct = __ct
+    import pulumi_proxmoxve.download as __download
+    download = __download
+    import pulumi_proxmoxve.ha as __ha
+    ha = __ha
     import pulumi_proxmoxve.network as __network
     network = __network
     import pulumi_proxmoxve.permission as __permission
@@ -36,6 +41,8 @@ else:
     cluster = _utilities.lazy_import('pulumi_proxmoxve.cluster')
     config = _utilities.lazy_import('pulumi_proxmoxve.config')
     ct = _utilities.lazy_import('pulumi_proxmoxve.ct')
+    download = _utilities.lazy_import('pulumi_proxmoxve.download')
+    ha = _utilities.lazy_import('pulumi_proxmoxve.ha')
     network = _utilities.lazy_import('pulumi_proxmoxve.network')
     permission = _utilities.lazy_import('pulumi_proxmoxve.permission')
     storage = _utilities.lazy_import('pulumi_proxmoxve.storage')
@@ -50,6 +57,38 @@ _utilities.register(
   "fqn": "pulumi_proxmoxve.ct",
   "classes": {
    "proxmoxve:CT/container:Container": "Container"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "Cluster/options",
+  "fqn": "pulumi_proxmoxve.cluster",
+  "classes": {
+   "proxmoxve:Cluster/options:Options": "Options"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "Download/file",
+  "fqn": "pulumi_proxmoxve.download",
+  "classes": {
+   "proxmoxve:Download/file:File": "File"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "HA/hAGroup",
+  "fqn": "pulumi_proxmoxve.ha",
+  "classes": {
+   "proxmoxve:HA/hAGroup:HAGroup": "HAGroup"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "HA/hAResource",
+  "fqn": "pulumi_proxmoxve.ha",
+  "classes": {
+   "proxmoxve:HA/hAResource:HAResource": "HAResource"
   }
  },
  {
@@ -98,6 +137,22 @@ _utilities.register(
   "fqn": "pulumi_proxmoxve.network",
   "classes": {
    "proxmoxve:Network/firewallSecurityGroup:FirewallSecurityGroup": "FirewallSecurityGroup"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "Network/networkBridge",
+  "fqn": "pulumi_proxmoxve.network",
+  "classes": {
+   "proxmoxve:Network/networkBridge:NetworkBridge": "NetworkBridge"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "Network/networkVlan",
+  "fqn": "pulumi_proxmoxve.network",
+  "classes": {
+   "proxmoxve:Network/networkVlan:NetworkVlan": "NetworkVlan"
   }
  },
  {

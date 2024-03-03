@@ -35,6 +35,16 @@ export type FirewallSecurityGroup = import("./firewallSecurityGroup").FirewallSe
 export const FirewallSecurityGroup: typeof import("./firewallSecurityGroup").FirewallSecurityGroup = null as any;
 utilities.lazyLoad(exports, ["FirewallSecurityGroup"], () => require("./firewallSecurityGroup"));
 
+export { NetworkBridgeArgs, NetworkBridgeState } from "./networkBridge";
+export type NetworkBridge = import("./networkBridge").NetworkBridge;
+export const NetworkBridge: typeof import("./networkBridge").NetworkBridge = null as any;
+utilities.lazyLoad(exports, ["NetworkBridge"], () => require("./networkBridge"));
+
+export { NetworkVlanArgs, NetworkVlanState } from "./networkVlan";
+export type NetworkVlan = import("./networkVlan").NetworkVlan;
+export const NetworkVlan: typeof import("./networkVlan").NetworkVlan = null as any;
+utilities.lazyLoad(exports, ["NetworkVlan"], () => require("./networkVlan"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -52,6 +62,10 @@ const _module = {
                 return new FirewallRules(name, <any>undefined, { urn })
             case "proxmoxve:Network/firewallSecurityGroup:FirewallSecurityGroup":
                 return new FirewallSecurityGroup(name, <any>undefined, { urn })
+            case "proxmoxve:Network/networkBridge:NetworkBridge":
+                return new NetworkBridge(name, <any>undefined, { urn })
+            case "proxmoxve:Network/networkVlan:NetworkVlan":
+                return new NetworkVlan(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -63,3 +77,5 @@ pulumi.runtime.registerResourceModule("proxmoxve", "Network/firewallIPSet", _mod
 pulumi.runtime.registerResourceModule("proxmoxve", "Network/firewallOptions", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "Network/firewallRules", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "Network/firewallSecurityGroup", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "Network/networkBridge", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "Network/networkVlan", _module)

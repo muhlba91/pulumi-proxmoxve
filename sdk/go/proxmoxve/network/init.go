@@ -33,6 +33,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FirewallRules{}
 	case "proxmoxve:Network/firewallSecurityGroup:FirewallSecurityGroup":
 		r = &FirewallSecurityGroup{}
+	case "proxmoxve:Network/networkBridge:NetworkBridge":
+		r = &NetworkBridge{}
+	case "proxmoxve:Network/networkVlan:NetworkVlan":
+		r = &NetworkVlan{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -74,6 +78,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
 		"Network/firewallSecurityGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"Network/networkBridge",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"Network/networkVlan",
 		&module{version},
 	)
 }

@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * ```
  * ### Images
  *
- * **Consider using `proxmoxVirtualEnvironmentDownloadFile` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.**
+ * **Consider using `proxmoxve.Download.File` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.**
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  * ```
  * ### Container Template (`vztmpl`)
  *
- * **Consider using `proxmoxVirtualEnvironmentDownloadFile` resource instead. Using this resource for container images is less efficient (requires to transfer uploaded image to node) though still supported.**
+ * **Consider using `proxmoxve.Download.File` resource instead. Using this resource for container images is less efficient (requires to transfer uploaded image to node) though still supported.**
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

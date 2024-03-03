@@ -11,5 +11,7 @@ from .firewall_ip_set import *
 from .firewall_options import *
 from .firewall_rules import *
 from .firewall_security_group import *
+from .network_bridge import *
+from .network_vlan import *
 from ._inputs import *
 from . import outputs
