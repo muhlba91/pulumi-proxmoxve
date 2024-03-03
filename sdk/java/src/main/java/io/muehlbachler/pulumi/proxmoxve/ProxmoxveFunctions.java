@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.resources.InvokeArgs;
 import io.muehlbachler.pulumi.proxmoxve.Utilities;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetDNSArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetDNSPlainArgs;
@@ -17,6 +18,7 @@ import io.muehlbachler.pulumi.proxmoxve.inputs.GetTimePlainArgs;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetDNSResult;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetHostsResult;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetTimeResult;
+import io.muehlbachler.pulumi.proxmoxve.outputs.GetVersionResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class ProxmoxveFunctions {
@@ -463,5 +465,215 @@ public final class ProxmoxveFunctions {
      */
     public static CompletableFuture<GetTimeResult> getTimePlain(GetTimePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("proxmoxve:index/getTime:getTime", TypeShape.of(GetTimeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves API version details.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getVersion();
+     * 
+     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentVersion&#34;, %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetVersionResult> getVersion() {
+        return getVersion(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves API version details.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getVersion();
+     * 
+     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentVersion&#34;, %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetVersionResult> getVersionPlain() {
+        return getVersionPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves API version details.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getVersion();
+     * 
+     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentVersion&#34;, %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetVersionResult> getVersion(InvokeArgs args) {
+        return getVersion(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves API version details.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getVersion();
+     * 
+     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentVersion&#34;, %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetVersionResult> getVersionPlain(InvokeArgs args) {
+        return getVersionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves API version details.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getVersion();
+     * 
+     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentVersion&#34;, %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetVersionResult> getVersion(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getVersion:getVersion", TypeShape.of(GetVersionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves API version details.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getVersion();
+     * 
+     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentVersion&#34;, %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetVersionResult> getVersionPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("proxmoxve:index/getVersion:getVersion", TypeShape.of(GetVersionResult.class), args, Utilities.withVersion(options));
     }
 }

@@ -9,7 +9,6 @@ linters:
     - lll
     - megacheck
     - misspell
-    - nakedret
     - unconvert
     - unused
   enable-all: false

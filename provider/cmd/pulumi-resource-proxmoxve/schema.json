@@ -53,6 +53,7 @@
             "disableUnionOutputTypes": true
         },
         "python": {
+            "packageName": "pulumi_proxmoxve",
             "requires": {
                 "pulumi": "\u003e=3.0.0,\u003c4.0.0"
             },
@@ -2072,6 +2073,619 @@
                 "type": "object"
             }
         },
+        "proxmoxve:Cluster/options:Options": {
+            "description": "Manages Proxmox VE Cluster Datacenter options.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst options = new proxmoxve.cluster.Options(\"options\", {\n    bandwidthLimitDefault: 666666,\n    bandwidthLimitMigration: 555555,\n    emailFrom: \"ged@gont.earthsea\",\n    keyboard: \"pl\",\n    language: \"en\",\n    maxWorkers: 5,\n    migrationCidr: \"10.0.0.0/8\",\n    migrationType: \"secure\",\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\noptions = proxmoxve.cluster.Options(\"options\",\n    bandwidth_limit_default=666666,\n    bandwidth_limit_migration=555555,\n    email_from=\"ged@gont.earthsea\",\n    keyboard=\"pl\",\n    language=\"en\",\n    max_workers=5,\n    migration_cidr=\"10.0.0.0/8\",\n    migration_type=\"secure\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var options = new ProxmoxVE.Cluster.Options(\"options\", new()\n    {\n        BandwidthLimitDefault = 666666,\n        BandwidthLimitMigration = 555555,\n        EmailFrom = \"ged@gont.earthsea\",\n        Keyboard = \"pl\",\n        Language = \"en\",\n        MaxWorkers = 5,\n        MigrationCidr = \"10.0.0.0/8\",\n        MigrationType = \"secure\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/Cluster\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Cluster.NewOptions(ctx, \"options\", \u0026Cluster.OptionsArgs{\n\t\t\tBandwidthLimitDefault:   pulumi.Int(666666),\n\t\t\tBandwidthLimitMigration: pulumi.Int(555555),\n\t\t\tEmailFrom:               pulumi.String(\"ged@gont.earthsea\"),\n\t\t\tKeyboard:                pulumi.String(\"pl\"),\n\t\t\tLanguage:                pulumi.String(\"en\"),\n\t\t\tMaxWorkers:              pulumi.Int(5),\n\t\t\tMigrationCidr:           pulumi.String(\"10.0.0.0/8\"),\n\t\t\tMigrationType:           pulumi.String(\"secure\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Cluster.Options;\nimport com.pulumi.proxmoxve.Cluster.OptionsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var options = new Options(\"options\", OptionsArgs.builder()        \n            .bandwidthLimitDefault(666666)\n            .bandwidthLimitMigration(555555)\n            .emailFrom(\"ged@gont.earthsea\")\n            .keyboard(\"pl\")\n            .language(\"en\")\n            .maxWorkers(5)\n            .migrationCidr(\"10.0.0.0/8\")\n            .migrationType(\"secure\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  options:\n    type: proxmoxve:Cluster:Options\n    properties:\n      bandwidthLimitDefault: 666666\n      bandwidthLimitMigration: 555555\n      emailFrom: ged@gont.earthsea\n      keyboard: pl\n      language: en\n      maxWorkers: 5\n      migrationCidr: 10.0.0.0/8\n      migrationType: secure\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n#!/usr/bin/env sh\n\n Cluster options are global and can be imported using e.g.:\n\n ```sh\n $ pulumi import proxmoxve:Cluster/options:Options options cluster\n```\n\n ",
+            "properties": {
+                "bandwidthLimitClone": {
+                    "type": "integer",
+                    "description": "Clone I/O bandwidth limit in KiB/s.\n"
+                },
+                "bandwidthLimitDefault": {
+                    "type": "integer",
+                    "description": "Default I/O bandwidth limit in KiB/s.\n"
+                },
+                "bandwidthLimitMigration": {
+                    "type": "integer",
+                    "description": "Migration I/O bandwidth limit in KiB/s.\n"
+                },
+                "bandwidthLimitMove": {
+                    "type": "integer",
+                    "description": "Move I/O bandwidth limit in KiB/s.\n"
+                },
+                "bandwidthLimitRestore": {
+                    "type": "integer",
+                    "description": "Restore I/O bandwidth limit in KiB/s.\n"
+                },
+                "console": {
+                    "type": "string",
+                    "description": "Select the default Console viewer. Must be `applet` | `vv`| `html5` | `xtermjs`. You can either use the builtin java applet (VNC; deprecated and maps to html5), an external virt-viewer compatible application (SPICE), an HTML5 based vnc viewer (noVNC), or an HTML5 based console client (xtermjs). If the selected viewer is not available (e.g. SPICE not activated for the VM), the fallback is noVNC.\n"
+                },
+                "crsHa": {
+                    "type": "string",
+                    "description": "Cluster resource scheduling setting for HA. Must be `static` | `basic` (default is `basic`).\n"
+                },
+                "crsHaRebalanceOnStart": {
+                    "type": "boolean",
+                    "description": "Cluster resource scheduling setting for HA rebalance on start.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Datacenter description. Shown in the web-interface datacenter notes panel. This is saved as comment inside the configuration file.\n"
+                },
+                "emailFrom": {
+                    "type": "string",
+                    "description": "email address to send notification from (default is root@$hostname).\n"
+                },
+                "haShutdownPolicy": {
+                    "type": "string",
+                    "description": "Cluster wide HA shutdown policy (). Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).\n"
+                },
+                "httpProxy": {
+                    "type": "string",
+                    "description": "Specify external http proxy which is used for downloads (example: `http://username:password@host:port/`).\n"
+                },
+                "keyboard": {
+                    "type": "string",
+                    "description": "Default keyboard layout for vnc server. Must be `de` | `de-ch` | `da` | `en-gb` | `en-us` | `es` | `fi` | `fr` | `fr-be` | `fr-ca` | `fr-ch` | `hu` | `is` | `it` | `ja` | `lt` | `mk` | `nl` | `no` | `pl` | `pt` | `pt-br` | `sv` | `sl` | `tr`.\n"
+                },
+                "language": {
+                    "type": "string",
+                    "description": "Default GUI language. Must be `ca` | `da` | `de` | `en` | `es` | `eu` | `fa` | `fr` | `he` | `it` | `ja` | `nb` | `nn` | `pl` | `pt_BR` | `ru` | `sl` | `sv` | `tr` | `zh_CN` | `zh_TW`.\n"
+                },
+                "macPrefix": {
+                    "type": "string",
+                    "description": "Prefix for autogenerated MAC addresses.\n"
+                },
+                "maxWorkers": {
+                    "type": "integer",
+                    "description": "Defines how many workers (per node) are maximal started on actions like 'stopall VMs' or task from the ha-manager.\n"
+                },
+                "migrationCidr": {
+                    "type": "string",
+                    "description": "Cluster wide migration network CIDR.\n"
+                },
+                "migrationType": {
+                    "type": "string",
+                    "description": "Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).\n"
+                }
+            },
+            "required": [
+                "crsHa",
+                "macPrefix"
+            ],
+            "inputProperties": {
+                "bandwidthLimitClone": {
+                    "type": "integer",
+                    "description": "Clone I/O bandwidth limit in KiB/s.\n"
+                },
+                "bandwidthLimitDefault": {
+                    "type": "integer",
+                    "description": "Default I/O bandwidth limit in KiB/s.\n"
+                },
+                "bandwidthLimitMigration": {
+                    "type": "integer",
+                    "description": "Migration I/O bandwidth limit in KiB/s.\n"
+                },
+                "bandwidthLimitMove": {
+                    "type": "integer",
+                    "description": "Move I/O bandwidth limit in KiB/s.\n"
+                },
+                "bandwidthLimitRestore": {
+                    "type": "integer",
+                    "description": "Restore I/O bandwidth limit in KiB/s.\n"
+                },
+                "console": {
+                    "type": "string",
+                    "description": "Select the default Console viewer. Must be `applet` | `vv`| `html5` | `xtermjs`. You can either use the builtin java applet (VNC; deprecated and maps to html5), an external virt-viewer compatible application (SPICE), an HTML5 based vnc viewer (noVNC), or an HTML5 based console client (xtermjs). If the selected viewer is not available (e.g. SPICE not activated for the VM), the fallback is noVNC.\n"
+                },
+                "crsHa": {
+                    "type": "string",
+                    "description": "Cluster resource scheduling setting for HA. Must be `static` | `basic` (default is `basic`).\n"
+                },
+                "crsHaRebalanceOnStart": {
+                    "type": "boolean",
+                    "description": "Cluster resource scheduling setting for HA rebalance on start.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Datacenter description. Shown in the web-interface datacenter notes panel. This is saved as comment inside the configuration file.\n"
+                },
+                "emailFrom": {
+                    "type": "string",
+                    "description": "email address to send notification from (default is root@$hostname).\n"
+                },
+                "haShutdownPolicy": {
+                    "type": "string",
+                    "description": "Cluster wide HA shutdown policy (). Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).\n"
+                },
+                "httpProxy": {
+                    "type": "string",
+                    "description": "Specify external http proxy which is used for downloads (example: `http://username:password@host:port/`).\n"
+                },
+                "keyboard": {
+                    "type": "string",
+                    "description": "Default keyboard layout for vnc server. Must be `de` | `de-ch` | `da` | `en-gb` | `en-us` | `es` | `fi` | `fr` | `fr-be` | `fr-ca` | `fr-ch` | `hu` | `is` | `it` | `ja` | `lt` | `mk` | `nl` | `no` | `pl` | `pt` | `pt-br` | `sv` | `sl` | `tr`.\n"
+                },
+                "language": {
+                    "type": "string",
+                    "description": "Default GUI language. Must be `ca` | `da` | `de` | `en` | `es` | `eu` | `fa` | `fr` | `he` | `it` | `ja` | `nb` | `nn` | `pl` | `pt_BR` | `ru` | `sl` | `sv` | `tr` | `zh_CN` | `zh_TW`.\n"
+                },
+                "macPrefix": {
+                    "type": "string",
+                    "description": "Prefix for autogenerated MAC addresses.\n"
+                },
+                "maxWorkers": {
+                    "type": "integer",
+                    "description": "Defines how many workers (per node) are maximal started on actions like 'stopall VMs' or task from the ha-manager.\n"
+                },
+                "migrationCidr": {
+                    "type": "string",
+                    "description": "Cluster wide migration network CIDR.\n"
+                },
+                "migrationType": {
+                    "type": "string",
+                    "description": "Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Options resources.\n",
+                "properties": {
+                    "bandwidthLimitClone": {
+                        "type": "integer",
+                        "description": "Clone I/O bandwidth limit in KiB/s.\n"
+                    },
+                    "bandwidthLimitDefault": {
+                        "type": "integer",
+                        "description": "Default I/O bandwidth limit in KiB/s.\n"
+                    },
+                    "bandwidthLimitMigration": {
+                        "type": "integer",
+                        "description": "Migration I/O bandwidth limit in KiB/s.\n"
+                    },
+                    "bandwidthLimitMove": {
+                        "type": "integer",
+                        "description": "Move I/O bandwidth limit in KiB/s.\n"
+                    },
+                    "bandwidthLimitRestore": {
+                        "type": "integer",
+                        "description": "Restore I/O bandwidth limit in KiB/s.\n"
+                    },
+                    "console": {
+                        "type": "string",
+                        "description": "Select the default Console viewer. Must be `applet` | `vv`| `html5` | `xtermjs`. You can either use the builtin java applet (VNC; deprecated and maps to html5), an external virt-viewer compatible application (SPICE), an HTML5 based vnc viewer (noVNC), or an HTML5 based console client (xtermjs). If the selected viewer is not available (e.g. SPICE not activated for the VM), the fallback is noVNC.\n"
+                    },
+                    "crsHa": {
+                        "type": "string",
+                        "description": "Cluster resource scheduling setting for HA. Must be `static` | `basic` (default is `basic`).\n"
+                    },
+                    "crsHaRebalanceOnStart": {
+                        "type": "boolean",
+                        "description": "Cluster resource scheduling setting for HA rebalance on start.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Datacenter description. Shown in the web-interface datacenter notes panel. This is saved as comment inside the configuration file.\n"
+                    },
+                    "emailFrom": {
+                        "type": "string",
+                        "description": "email address to send notification from (default is root@$hostname).\n"
+                    },
+                    "haShutdownPolicy": {
+                        "type": "string",
+                        "description": "Cluster wide HA shutdown policy (). Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).\n"
+                    },
+                    "httpProxy": {
+                        "type": "string",
+                        "description": "Specify external http proxy which is used for downloads (example: `http://username:password@host:port/`).\n"
+                    },
+                    "keyboard": {
+                        "type": "string",
+                        "description": "Default keyboard layout for vnc server. Must be `de` | `de-ch` | `da` | `en-gb` | `en-us` | `es` | `fi` | `fr` | `fr-be` | `fr-ca` | `fr-ch` | `hu` | `is` | `it` | `ja` | `lt` | `mk` | `nl` | `no` | `pl` | `pt` | `pt-br` | `sv` | `sl` | `tr`.\n"
+                    },
+                    "language": {
+                        "type": "string",
+                        "description": "Default GUI language. Must be `ca` | `da` | `de` | `en` | `es` | `eu` | `fa` | `fr` | `he` | `it` | `ja` | `nb` | `nn` | `pl` | `pt_BR` | `ru` | `sl` | `sv` | `tr` | `zh_CN` | `zh_TW`.\n"
+                    },
+                    "macPrefix": {
+                        "type": "string",
+                        "description": "Prefix for autogenerated MAC addresses.\n"
+                    },
+                    "maxWorkers": {
+                        "type": "integer",
+                        "description": "Defines how many workers (per node) are maximal started on actions like 'stopall VMs' or task from the ha-manager.\n"
+                    },
+                    "migrationCidr": {
+                        "type": "string",
+                        "description": "Cluster wide migration network CIDR.\n"
+                    },
+                    "migrationType": {
+                        "type": "string",
+                        "description": "Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "proxmoxve:Download/file:File": {
+            "description": "Manages files upload using PVE download-url API. It can be fully compatible and faster replacement for image files created using `proxmoxve.Storage.File`. Supports images for VMs (ISO images) and LXC (CT Templates).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst release20231228Debian12BookwormQcow2Img = new proxmoxve.download.File(\"release20231228Debian12BookwormQcow2Img\", {\n    checksum: \"d2fbcf11fb28795842e91364d8c7b69f1870db09ff299eb94e4fbbfa510eb78d141e74c1f4bf6dfa0b7e33d0c3b66e6751886feadb4e9916f778bab1776bdf1b\",\n    checksumAlgorithm: \"sha512\",\n    contentType: \"iso\",\n    datastoreId: \"local\",\n    fileName: \"debian-12-generic-amd64-20231228-1609.img\",\n    nodeName: \"pve\",\n    url: \"https://cloud.debian.org/images/cloud/bookworm/20231228-1609/debian-12-generic-amd64-20231228-1609.qcow2\",\n});\nconst latestDebian12BookwormQcow2Img = new proxmoxve.download.File(\"latestDebian12BookwormQcow2Img\", {\n    contentType: \"iso\",\n    datastoreId: \"local\",\n    fileName: \"debian-12-generic-amd64.qcow2.img\",\n    nodeName: \"pve\",\n    url: \"https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2\",\n});\nconst latestUbuntu22JammyQcow2Img = new proxmoxve.download.File(\"latestUbuntu22JammyQcow2Img\", {\n    contentType: \"iso\",\n    datastoreId: \"local\",\n    nodeName: \"pve\",\n    url: \"https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img\",\n});\nconst latestStaticUbuntu24NobleQcow2Img = new proxmoxve.download.File(\"latestStaticUbuntu24NobleQcow2Img\", {\n    contentType: \"iso\",\n    datastoreId: \"local\",\n    nodeName: \"pve\",\n    overwrite: false,\n    url: \"https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img\",\n});\nconst release20231211Ubuntu22JammyLxcImg = new proxmoxve.download.File(\"release20231211Ubuntu22JammyLxcImg\", {\n    checksum: \"c9997dcfea5d826fd04871f960c513665f2e87dd7450bba99f68a97e60e4586e\",\n    checksumAlgorithm: \"sha256\",\n    contentType: \"vztmpl\",\n    datastoreId: \"local\",\n    nodeName: \"pve\",\n    uploadTimeout: 4444,\n    url: \"https://cloud-images.ubuntu.com/releases/22.04/release-20231211/ubuntu-22.04-server-cloudimg-amd64-root.tar.xz\",\n});\nconst latestUbuntu22JammyLxcImg = new proxmoxve.download.File(\"latestUbuntu22JammyLxcImg\", {\n    contentType: \"vztmpl\",\n    datastoreId: \"local\",\n    nodeName: \"pve\",\n    url: \"https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.tar.gz\",\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nrelease20231228_debian12_bookworm_qcow2_img = proxmoxve.download.File(\"release20231228Debian12BookwormQcow2Img\",\n    checksum=\"d2fbcf11fb28795842e91364d8c7b69f1870db09ff299eb94e4fbbfa510eb78d141e74c1f4bf6dfa0b7e33d0c3b66e6751886feadb4e9916f778bab1776bdf1b\",\n    checksum_algorithm=\"sha512\",\n    content_type=\"iso\",\n    datastore_id=\"local\",\n    file_name=\"debian-12-generic-amd64-20231228-1609.img\",\n    node_name=\"pve\",\n    url=\"https://cloud.debian.org/images/cloud/bookworm/20231228-1609/debian-12-generic-amd64-20231228-1609.qcow2\")\nlatest_debian12_bookworm_qcow2_img = proxmoxve.download.File(\"latestDebian12BookwormQcow2Img\",\n    content_type=\"iso\",\n    datastore_id=\"local\",\n    file_name=\"debian-12-generic-amd64.qcow2.img\",\n    node_name=\"pve\",\n    url=\"https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2\")\nlatest_ubuntu22_jammy_qcow2_img = proxmoxve.download.File(\"latestUbuntu22JammyQcow2Img\",\n    content_type=\"iso\",\n    datastore_id=\"local\",\n    node_name=\"pve\",\n    url=\"https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img\")\nlatest_static_ubuntu24_noble_qcow2_img = proxmoxve.download.File(\"latestStaticUbuntu24NobleQcow2Img\",\n    content_type=\"iso\",\n    datastore_id=\"local\",\n    node_name=\"pve\",\n    overwrite=False,\n    url=\"https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img\")\nrelease20231211_ubuntu22_jammy_lxc_img = proxmoxve.download.File(\"release20231211Ubuntu22JammyLxcImg\",\n    checksum=\"c9997dcfea5d826fd04871f960c513665f2e87dd7450bba99f68a97e60e4586e\",\n    checksum_algorithm=\"sha256\",\n    content_type=\"vztmpl\",\n    datastore_id=\"local\",\n    node_name=\"pve\",\n    upload_timeout=4444,\n    url=\"https://cloud-images.ubuntu.com/releases/22.04/release-20231211/ubuntu-22.04-server-cloudimg-amd64-root.tar.xz\")\nlatest_ubuntu22_jammy_lxc_img = proxmoxve.download.File(\"latestUbuntu22JammyLxcImg\",\n    content_type=\"vztmpl\",\n    datastore_id=\"local\",\n    node_name=\"pve\",\n    url=\"https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.tar.gz\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var release20231228Debian12BookwormQcow2Img = new ProxmoxVE.Download.File(\"release20231228Debian12BookwormQcow2Img\", new()\n    {\n        Checksum = \"d2fbcf11fb28795842e91364d8c7b69f1870db09ff299eb94e4fbbfa510eb78d141e74c1f4bf6dfa0b7e33d0c3b66e6751886feadb4e9916f778bab1776bdf1b\",\n        ChecksumAlgorithm = \"sha512\",\n        ContentType = \"iso\",\n        DatastoreId = \"local\",\n        FileName = \"debian-12-generic-amd64-20231228-1609.img\",\n        NodeName = \"pve\",\n        Url = \"https://cloud.debian.org/images/cloud/bookworm/20231228-1609/debian-12-generic-amd64-20231228-1609.qcow2\",\n    });\n\n    var latestDebian12BookwormQcow2Img = new ProxmoxVE.Download.File(\"latestDebian12BookwormQcow2Img\", new()\n    {\n        ContentType = \"iso\",\n        DatastoreId = \"local\",\n        FileName = \"debian-12-generic-amd64.qcow2.img\",\n        NodeName = \"pve\",\n        Url = \"https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2\",\n    });\n\n    var latestUbuntu22JammyQcow2Img = new ProxmoxVE.Download.File(\"latestUbuntu22JammyQcow2Img\", new()\n    {\n        ContentType = \"iso\",\n        DatastoreId = \"local\",\n        NodeName = \"pve\",\n        Url = \"https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img\",\n    });\n\n    var latestStaticUbuntu24NobleQcow2Img = new ProxmoxVE.Download.File(\"latestStaticUbuntu24NobleQcow2Img\", new()\n    {\n        ContentType = \"iso\",\n        DatastoreId = \"local\",\n        NodeName = \"pve\",\n        Overwrite = false,\n        Url = \"https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img\",\n    });\n\n    var release20231211Ubuntu22JammyLxcImg = new ProxmoxVE.Download.File(\"release20231211Ubuntu22JammyLxcImg\", new()\n    {\n        Checksum = \"c9997dcfea5d826fd04871f960c513665f2e87dd7450bba99f68a97e60e4586e\",\n        ChecksumAlgorithm = \"sha256\",\n        ContentType = \"vztmpl\",\n        DatastoreId = \"local\",\n        NodeName = \"pve\",\n        UploadTimeout = 4444,\n        Url = \"https://cloud-images.ubuntu.com/releases/22.04/release-20231211/ubuntu-22.04-server-cloudimg-amd64-root.tar.xz\",\n    });\n\n    var latestUbuntu22JammyLxcImg = new ProxmoxVE.Download.File(\"latestUbuntu22JammyLxcImg\", new()\n    {\n        ContentType = \"vztmpl\",\n        DatastoreId = \"local\",\n        NodeName = \"pve\",\n        Url = \"https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.tar.gz\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/Download\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Download.NewFile(ctx, \"release20231228Debian12BookwormQcow2Img\", \u0026Download.FileArgs{\n\t\t\tChecksum:          pulumi.String(\"d2fbcf11fb28795842e91364d8c7b69f1870db09ff299eb94e4fbbfa510eb78d141e74c1f4bf6dfa0b7e33d0c3b66e6751886feadb4e9916f778bab1776bdf1b\"),\n\t\t\tChecksumAlgorithm: pulumi.String(\"sha512\"),\n\t\t\tContentType:       pulumi.String(\"iso\"),\n\t\t\tDatastoreId:       pulumi.String(\"local\"),\n\t\t\tFileName:          pulumi.String(\"debian-12-generic-amd64-20231228-1609.img\"),\n\t\t\tNodeName:          pulumi.String(\"pve\"),\n\t\t\tUrl:               pulumi.String(\"https://cloud.debian.org/images/cloud/bookworm/20231228-1609/debian-12-generic-amd64-20231228-1609.qcow2\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = Download.NewFile(ctx, \"latestDebian12BookwormQcow2Img\", \u0026Download.FileArgs{\n\t\t\tContentType: pulumi.String(\"iso\"),\n\t\t\tDatastoreId: pulumi.String(\"local\"),\n\t\t\tFileName:    pulumi.String(\"debian-12-generic-amd64.qcow2.img\"),\n\t\t\tNodeName:    pulumi.String(\"pve\"),\n\t\t\tUrl:         pulumi.String(\"https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = Download.NewFile(ctx, \"latestUbuntu22JammyQcow2Img\", \u0026Download.FileArgs{\n\t\t\tContentType: pulumi.String(\"iso\"),\n\t\t\tDatastoreId: pulumi.String(\"local\"),\n\t\t\tNodeName:    pulumi.String(\"pve\"),\n\t\t\tUrl:         pulumi.String(\"https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = Download.NewFile(ctx, \"latestStaticUbuntu24NobleQcow2Img\", \u0026Download.FileArgs{\n\t\t\tContentType: pulumi.String(\"iso\"),\n\t\t\tDatastoreId: pulumi.String(\"local\"),\n\t\t\tNodeName:    pulumi.String(\"pve\"),\n\t\t\tOverwrite:   pulumi.Bool(false),\n\t\t\tUrl:         pulumi.String(\"https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = Download.NewFile(ctx, \"release20231211Ubuntu22JammyLxcImg\", \u0026Download.FileArgs{\n\t\t\tChecksum:          pulumi.String(\"c9997dcfea5d826fd04871f960c513665f2e87dd7450bba99f68a97e60e4586e\"),\n\t\t\tChecksumAlgorithm: pulumi.String(\"sha256\"),\n\t\t\tContentType:       pulumi.String(\"vztmpl\"),\n\t\t\tDatastoreId:       pulumi.String(\"local\"),\n\t\t\tNodeName:          pulumi.String(\"pve\"),\n\t\t\tUploadTimeout:     pulumi.Int(4444),\n\t\t\tUrl:               pulumi.String(\"https://cloud-images.ubuntu.com/releases/22.04/release-20231211/ubuntu-22.04-server-cloudimg-amd64-root.tar.xz\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = Download.NewFile(ctx, \"latestUbuntu22JammyLxcImg\", \u0026Download.FileArgs{\n\t\t\tContentType: pulumi.String(\"vztmpl\"),\n\t\t\tDatastoreId: pulumi.String(\"local\"),\n\t\t\tNodeName:    pulumi.String(\"pve\"),\n\t\t\tUrl:         pulumi.String(\"https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.tar.gz\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Download.File;\nimport com.pulumi.proxmoxve.Download.FileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var release20231228Debian12BookwormQcow2Img = new File(\"release20231228Debian12BookwormQcow2Img\", FileArgs.builder()        \n            .checksum(\"d2fbcf11fb28795842e91364d8c7b69f1870db09ff299eb94e4fbbfa510eb78d141e74c1f4bf6dfa0b7e33d0c3b66e6751886feadb4e9916f778bab1776bdf1b\")\n            .checksumAlgorithm(\"sha512\")\n            .contentType(\"iso\")\n            .datastoreId(\"local\")\n            .fileName(\"debian-12-generic-amd64-20231228-1609.img\")\n            .nodeName(\"pve\")\n            .url(\"https://cloud.debian.org/images/cloud/bookworm/20231228-1609/debian-12-generic-amd64-20231228-1609.qcow2\")\n            .build());\n\n        var latestDebian12BookwormQcow2Img = new File(\"latestDebian12BookwormQcow2Img\", FileArgs.builder()        \n            .contentType(\"iso\")\n            .datastoreId(\"local\")\n            .fileName(\"debian-12-generic-amd64.qcow2.img\")\n            .nodeName(\"pve\")\n            .url(\"https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2\")\n            .build());\n\n        var latestUbuntu22JammyQcow2Img = new File(\"latestUbuntu22JammyQcow2Img\", FileArgs.builder()        \n            .contentType(\"iso\")\n            .datastoreId(\"local\")\n            .nodeName(\"pve\")\n            .url(\"https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img\")\n            .build());\n\n        var latestStaticUbuntu24NobleQcow2Img = new File(\"latestStaticUbuntu24NobleQcow2Img\", FileArgs.builder()        \n            .contentType(\"iso\")\n            .datastoreId(\"local\")\n            .nodeName(\"pve\")\n            .overwrite(false)\n            .url(\"https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img\")\n            .build());\n\n        var release20231211Ubuntu22JammyLxcImg = new File(\"release20231211Ubuntu22JammyLxcImg\", FileArgs.builder()        \n            .checksum(\"c9997dcfea5d826fd04871f960c513665f2e87dd7450bba99f68a97e60e4586e\")\n            .checksumAlgorithm(\"sha256\")\n            .contentType(\"vztmpl\")\n            .datastoreId(\"local\")\n            .nodeName(\"pve\")\n            .uploadTimeout(4444)\n            .url(\"https://cloud-images.ubuntu.com/releases/22.04/release-20231211/ubuntu-22.04-server-cloudimg-amd64-root.tar.xz\")\n            .build());\n\n        var latestUbuntu22JammyLxcImg = new File(\"latestUbuntu22JammyLxcImg\", FileArgs.builder()        \n            .contentType(\"vztmpl\")\n            .datastoreId(\"local\")\n            .nodeName(\"pve\")\n            .url(\"https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.tar.gz\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  release20231228Debian12BookwormQcow2Img:\n    type: proxmoxve:Download:File\n    properties:\n      checksum: d2fbcf11fb28795842e91364d8c7b69f1870db09ff299eb94e4fbbfa510eb78d141e74c1f4bf6dfa0b7e33d0c3b66e6751886feadb4e9916f778bab1776bdf1b\n      checksumAlgorithm: sha512\n      contentType: iso\n      datastoreId: local\n      fileName: debian-12-generic-amd64-20231228-1609.img\n      nodeName: pve\n      url: https://cloud.debian.org/images/cloud/bookworm/20231228-1609/debian-12-generic-amd64-20231228-1609.qcow2\n  latestDebian12BookwormQcow2Img:\n    type: proxmoxve:Download:File\n    properties:\n      contentType: iso\n      datastoreId: local\n      fileName: debian-12-generic-amd64.qcow2.img\n      nodeName: pve\n      url: https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2\n  latestUbuntu22JammyQcow2Img:\n    type: proxmoxve:Download:File\n    properties:\n      contentType: iso\n      datastoreId: local\n      nodeName: pve\n      url: https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img\n  latestStaticUbuntu24NobleQcow2Img:\n    type: proxmoxve:Download:File\n    properties:\n      contentType: iso\n      datastoreId: local\n      nodeName: pve\n      overwrite: false\n      url: https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img\n  release20231211Ubuntu22JammyLxcImg:\n    type: proxmoxve:Download:File\n    properties:\n      checksum: c9997dcfea5d826fd04871f960c513665f2e87dd7450bba99f68a97e60e4586e\n      checksumAlgorithm: sha256\n      contentType: vztmpl\n      datastoreId: local\n      nodeName: pve\n      uploadTimeout: 4444\n      url: https://cloud-images.ubuntu.com/releases/22.04/release-20231211/ubuntu-22.04-server-cloudimg-amd64-root.tar.xz\n  latestUbuntu22JammyLxcImg:\n    type: proxmoxve:Download:File\n    properties:\n      contentType: vztmpl\n      datastoreId: local\n      nodeName: pve\n      url: https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.tar.gz\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "checksum": {
+                    "type": "string",
+                    "description": "The expected checksum of the file.\n"
+                },
+                "checksumAlgorithm": {
+                    "type": "string",
+                    "description": "The algorithm to calculate the checksum of the file. Must be `md5` | `sha1` | `sha224` | `sha256` | `sha384` | `sha512`.\n"
+                },
+                "contentType": {
+                    "type": "string",
+                    "description": "The file content type. Must be `iso` for VM images or `vztmpl` for LXC images.\n"
+                },
+                "datastoreId": {
+                    "type": "string",
+                    "description": "The identifier for the target datastore.\n"
+                },
+                "decompressionAlgorithm": {
+                    "type": "string",
+                    "description": "Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst`.\n"
+                },
+                "fileName": {
+                    "type": "string",
+                    "description": "The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2`. Workaround is to use e.g. `.img` instead.\n"
+                },
+                "nodeName": {
+                    "type": "string",
+                    "description": "The node name.\n"
+                },
+                "overwrite": {
+                    "type": "boolean",
+                    "description": "If `true` and size of uploaded file is different, than size from `url` Content-Length header, file will be downloaded again. If `false`, there will be no checks.\n"
+                },
+                "overwriteUnmanaged": {
+                    "type": "boolean",
+                    "description": "If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.\n"
+                },
+                "size": {
+                    "type": "integer",
+                    "description": "The file size.\n"
+                },
+                "uploadTimeout": {
+                    "type": "integer",
+                    "description": "The file download timeout seconds. Default is 600 (10min).\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The URL to download the file from. Format `https?://.*`.\n"
+                },
+                "verify": {
+                    "type": "boolean",
+                    "description": "By default `true`. If `false`, no SSL/TLS certificates will be verified.\n"
+                }
+            },
+            "required": [
+                "contentType",
+                "datastoreId",
+                "fileName",
+                "nodeName",
+                "overwrite",
+                "overwriteUnmanaged",
+                "size",
+                "uploadTimeout",
+                "url",
+                "verify"
+            ],
+            "inputProperties": {
+                "checksum": {
+                    "type": "string",
+                    "description": "The expected checksum of the file.\n"
+                },
+                "checksumAlgorithm": {
+                    "type": "string",
+                    "description": "The algorithm to calculate the checksum of the file. Must be `md5` | `sha1` | `sha224` | `sha256` | `sha384` | `sha512`.\n"
+                },
+                "contentType": {
+                    "type": "string",
+                    "description": "The file content type. Must be `iso` for VM images or `vztmpl` for LXC images.\n"
+                },
+                "datastoreId": {
+                    "type": "string",
+                    "description": "The identifier for the target datastore.\n"
+                },
+                "decompressionAlgorithm": {
+                    "type": "string",
+                    "description": "Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst`.\n"
+                },
+                "fileName": {
+                    "type": "string",
+                    "description": "The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2`. Workaround is to use e.g. `.img` instead.\n"
+                },
+                "nodeName": {
+                    "type": "string",
+                    "description": "The node name.\n"
+                },
+                "overwrite": {
+                    "type": "boolean",
+                    "description": "If `true` and size of uploaded file is different, than size from `url` Content-Length header, file will be downloaded again. If `false`, there will be no checks.\n"
+                },
+                "overwriteUnmanaged": {
+                    "type": "boolean",
+                    "description": "If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.\n"
+                },
+                "uploadTimeout": {
+                    "type": "integer",
+                    "description": "The file download timeout seconds. Default is 600 (10min).\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The URL to download the file from. Format `https?://.*`.\n"
+                },
+                "verify": {
+                    "type": "boolean",
+                    "description": "By default `true`. If `false`, no SSL/TLS certificates will be verified.\n"
+                }
+            },
+            "requiredInputs": [
+                "contentType",
+                "datastoreId",
+                "nodeName",
+                "url"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering File resources.\n",
+                "properties": {
+                    "checksum": {
+                        "type": "string",
+                        "description": "The expected checksum of the file.\n"
+                    },
+                    "checksumAlgorithm": {
+                        "type": "string",
+                        "description": "The algorithm to calculate the checksum of the file. Must be `md5` | `sha1` | `sha224` | `sha256` | `sha384` | `sha512`.\n"
+                    },
+                    "contentType": {
+                        "type": "string",
+                        "description": "The file content type. Must be `iso` for VM images or `vztmpl` for LXC images.\n"
+                    },
+                    "datastoreId": {
+                        "type": "string",
+                        "description": "The identifier for the target datastore.\n"
+                    },
+                    "decompressionAlgorithm": {
+                        "type": "string",
+                        "description": "Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst`.\n"
+                    },
+                    "fileName": {
+                        "type": "string",
+                        "description": "The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2`. Workaround is to use e.g. `.img` instead.\n"
+                    },
+                    "nodeName": {
+                        "type": "string",
+                        "description": "The node name.\n"
+                    },
+                    "overwrite": {
+                        "type": "boolean",
+                        "description": "If `true` and size of uploaded file is different, than size from `url` Content-Length header, file will be downloaded again. If `false`, there will be no checks.\n"
+                    },
+                    "overwriteUnmanaged": {
+                        "type": "boolean",
+                        "description": "If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.\n"
+                    },
+                    "size": {
+                        "type": "integer",
+                        "description": "The file size.\n"
+                    },
+                    "uploadTimeout": {
+                        "type": "integer",
+                        "description": "The file download timeout seconds. Default is 600 (10min).\n"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "The URL to download the file from. Format `https?://.*`.\n"
+                    },
+                    "verify": {
+                        "type": "boolean",
+                        "description": "By default `true`. If `false`, no SSL/TLS certificates will be verified.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "proxmoxve:HA/hAGroup:HAGroup": {
+            "description": "Manages a High Availability group in a Proxmox VE cluster.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst example = new proxmoxve.ha.HAGroup(\"example\", {\n    group: \"example\",\n    comment: \"This is a comment.\",\n    nodes: {\n        node1: undefined,\n        node2: 2,\n        node3: 1,\n    },\n    restricted: true,\n    noFailback: false,\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample = proxmoxve.ha.HAGroup(\"example\",\n    group=\"example\",\n    comment=\"This is a comment.\",\n    nodes={\n        \"node1\": None,\n        \"node2\": 2,\n        \"node3\": 1,\n    },\n    restricted=True,\n    no_failback=False)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new ProxmoxVE.HA.HAGroup(\"example\", new()\n    {\n        Group = \"example\",\n        Comment = \"This is a comment.\",\n        Nodes = \n        {\n            { \"node1\", null },\n            { \"node2\", 2 },\n            { \"node3\", 1 },\n        },\n        Restricted = true,\n        NoFailback = false,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/HA\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := HA.NewHAGroup(ctx, \"example\", \u0026HA.HAGroupArgs{\n\t\t\tGroup:   pulumi.String(\"example\"),\n\t\t\tComment: pulumi.String(\"This is a comment.\"),\n\t\t\tNodes: pulumi.IntMap{\n\t\t\t\t\"node1\": nil,\n\t\t\t\t\"node2\": pulumi.Int(2),\n\t\t\t\t\"node3\": pulumi.Int(1),\n\t\t\t},\n\t\t\tRestricted: pulumi.Bool(true),\n\t\t\tNoFailback: pulumi.Bool(false),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.HA.HAGroup;\nimport com.pulumi.proxmoxve.HA.HAGroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new HAGroup(\"example\", HAGroupArgs.builder()        \n            .group(\"example\")\n            .comment(\"This is a comment.\")\n            .nodes(Map.ofEntries(\n                Map.entry(\"node1\", null),\n                Map.entry(\"node2\", 2),\n                Map.entry(\"node3\", 1)\n            ))\n            .restricted(true)\n            .noFailback(false)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: proxmoxve:HA:HAGroup\n    properties:\n      group: example\n      comment: This is a comment.\n      # Member nodes, with or without priority.\n      nodes:\n        node1: null\n        node2: 2\n        node3: 1\n      restricted: true\n      noFailback: false\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n#!/usr/bin/env sh\n\n HA groups can be imported using their name, e.g.:\n\n ```sh\n $ pulumi import proxmoxve:HA/hAGroup:HAGroup example example\n```\n\n ",
+            "properties": {
+                "comment": {
+                    "type": "string",
+                    "description": "The comment associated with this group\n"
+                },
+                "group": {
+                    "type": "string",
+                    "description": "The identifier of the High Availability group to manage.\n"
+                },
+                "noFailback": {
+                    "type": "boolean",
+                    "description": "A flag that indicates that failing back to a higher priority node is disabled for this HA group. Defaults to `false`.\n"
+                },
+                "nodes": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "integer"
+                    },
+                    "description": "The member nodes for this group. They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or `null` for unset priorities.\n"
+                },
+                "restricted": {
+                    "type": "boolean",
+                    "description": "A flag that indicates that other nodes may not be used to run resources associated to this HA group. Defaults to `false`.\n"
+                }
+            },
+            "required": [
+                "group",
+                "noFailback",
+                "nodes",
+                "restricted"
+            ],
+            "inputProperties": {
+                "comment": {
+                    "type": "string",
+                    "description": "The comment associated with this group\n"
+                },
+                "group": {
+                    "type": "string",
+                    "description": "The identifier of the High Availability group to manage.\n"
+                },
+                "noFailback": {
+                    "type": "boolean",
+                    "description": "A flag that indicates that failing back to a higher priority node is disabled for this HA group. Defaults to `false`.\n"
+                },
+                "nodes": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "integer"
+                    },
+                    "description": "The member nodes for this group. They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or `null` for unset priorities.\n"
+                },
+                "restricted": {
+                    "type": "boolean",
+                    "description": "A flag that indicates that other nodes may not be used to run resources associated to this HA group. Defaults to `false`.\n"
+                }
+            },
+            "requiredInputs": [
+                "group",
+                "nodes"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering HAGroup resources.\n",
+                "properties": {
+                    "comment": {
+                        "type": "string",
+                        "description": "The comment associated with this group\n"
+                    },
+                    "group": {
+                        "type": "string",
+                        "description": "The identifier of the High Availability group to manage.\n"
+                    },
+                    "noFailback": {
+                        "type": "boolean",
+                        "description": "A flag that indicates that failing back to a higher priority node is disabled for this HA group. Defaults to `false`.\n"
+                    },
+                    "nodes": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "integer"
+                        },
+                        "description": "The member nodes for this group. They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or `null` for unset priorities.\n"
+                    },
+                    "restricted": {
+                        "type": "boolean",
+                        "description": "A flag that indicates that other nodes may not be used to run resources associated to this HA group. Defaults to `false`.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "proxmoxve:HA/hAResource:HAResource": {
+            "description": "Manages Proxmox HA resources.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst example = new proxmoxve.ha.HAResource(\"example\", {\n    resourceId: \"vm:123\",\n    state: \"started\",\n    group: \"example\",\n    comment: \"Managed by Terraform\",\n}, {\n    dependsOn: [proxmox_virtual_environment_hagroup.example],\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample = proxmoxve.ha.HAResource(\"example\",\n    resource_id=\"vm:123\",\n    state=\"started\",\n    group=\"example\",\n    comment=\"Managed by Terraform\",\n    opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_hagroup[\"example\"]]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new ProxmoxVE.HA.HAResource(\"example\", new()\n    {\n        ResourceId = \"vm:123\",\n        State = \"started\",\n        Group = \"example\",\n        Comment = \"Managed by Terraform\",\n    }, new CustomResourceOptions\n    {\n        DependsOn = new[]\n        {\n            proxmox_virtual_environment_hagroup.Example,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/HA\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := HA.NewHAResource(ctx, \"example\", \u0026HA.HAResourceArgs{\n\t\t\tResourceId: pulumi.String(\"vm:123\"),\n\t\t\tState:      pulumi.String(\"started\"),\n\t\t\tGroup:      pulumi.String(\"example\"),\n\t\t\tComment:    pulumi.String(\"Managed by Terraform\"),\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tproxmox_virtual_environment_hagroup.Example,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.HA.HAResource;\nimport com.pulumi.proxmoxve.HA.HAResourceArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new HAResource(\"example\", HAResourceArgs.builder()        \n            .resourceId(\"vm:123\")\n            .state(\"started\")\n            .group(\"example\")\n            .comment(\"Managed by Terraform\")\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(proxmox_virtual_environment_hagroup.example())\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: proxmoxve:HA:HAResource\n    properties:\n      resourceId: vm:123\n      state: started\n      group: example\n      comment: Managed by Terraform\n    options:\n      dependson:\n        - ${proxmox_virtual_environment_hagroup.example}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n#!/usr/bin/env sh\n\n HA resources can be imported using their identifiers, e.g.:\n\n ```sh\n $ pulumi import proxmoxve:HA/hAResource:HAResource example vm:123\n```\n\n ",
+            "properties": {
+                "comment": {
+                    "type": "string",
+                    "description": "The comment associated with this resource.\n"
+                },
+                "group": {
+                    "type": "string",
+                    "description": "The identifier of the High Availability group this resource is a member of.\n"
+                },
+                "maxRelocate": {
+                    "type": "integer",
+                    "description": "The maximal number of relocation attempts.\n"
+                },
+                "maxRestart": {
+                    "type": "integer",
+                    "description": "The maximal number of restart attempts.\n"
+                },
+                "resourceId": {
+                    "type": "string",
+                    "description": "The Proxmox HA resource identifier\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "The desired state of the resource.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of HA resources to create. If unset, it will be deduced from the `resource_id`.\n"
+                }
+            },
+            "required": [
+                "resourceId",
+                "state",
+                "type"
+            ],
+            "inputProperties": {
+                "comment": {
+                    "type": "string",
+                    "description": "The comment associated with this resource.\n"
+                },
+                "group": {
+                    "type": "string",
+                    "description": "The identifier of the High Availability group this resource is a member of.\n"
+                },
+                "maxRelocate": {
+                    "type": "integer",
+                    "description": "The maximal number of relocation attempts.\n"
+                },
+                "maxRestart": {
+                    "type": "integer",
+                    "description": "The maximal number of restart attempts.\n"
+                },
+                "resourceId": {
+                    "type": "string",
+                    "description": "The Proxmox HA resource identifier\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "The desired state of the resource.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of HA resources to create. If unset, it will be deduced from the `resource_id`.\n"
+                }
+            },
+            "requiredInputs": [
+                "resourceId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering HAResource resources.\n",
+                "properties": {
+                    "comment": {
+                        "type": "string",
+                        "description": "The comment associated with this resource.\n"
+                    },
+                    "group": {
+                        "type": "string",
+                        "description": "The identifier of the High Availability group this resource is a member of.\n"
+                    },
+                    "maxRelocate": {
+                        "type": "integer",
+                        "description": "The maximal number of relocation attempts.\n"
+                    },
+                    "maxRestart": {
+                        "type": "integer",
+                        "description": "The maximal number of restart attempts.\n"
+                    },
+                    "resourceId": {
+                        "type": "string",
+                        "description": "The Proxmox HA resource identifier\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "The desired state of the resource.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of HA resources to create. If unset, it will be deduced from the `resource_id`.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "proxmoxve:Network/firewall:Firewall": {
             "description": "Manages firewall options on the cluster level.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst example = new proxmoxve.network.Firewall(\"example\", {\n    ebtables: false,\n    enabled: false,\n    inputPolicy: \"DROP\",\n    logRatelimit: {\n        burst: 10,\n        enabled: false,\n        rate: \"5/second\",\n    },\n    outputPolicy: \"ACCEPT\",\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample = proxmoxve.network.Firewall(\"example\",\n    ebtables=False,\n    enabled=False,\n    input_policy=\"DROP\",\n    log_ratelimit=proxmoxve.network.FirewallLogRatelimitArgs(\n        burst=10,\n        enabled=False,\n        rate=\"5/second\",\n    ),\n    output_policy=\"ACCEPT\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new ProxmoxVE.Network.Firewall(\"example\", new()\n    {\n        Ebtables = false,\n        Enabled = false,\n        InputPolicy = \"DROP\",\n        LogRatelimit = new ProxmoxVE.Network.Inputs.FirewallLogRatelimitArgs\n        {\n            Burst = 10,\n            Enabled = false,\n            Rate = \"5/second\",\n        },\n        OutputPolicy = \"ACCEPT\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/Network\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Network.NewFirewall(ctx, \"example\", \u0026Network.FirewallArgs{\n\t\t\tEbtables:    pulumi.Bool(false),\n\t\t\tEnabled:     pulumi.Bool(false),\n\t\t\tInputPolicy: pulumi.String(\"DROP\"),\n\t\t\tLogRatelimit: \u0026network.FirewallLogRatelimitArgs{\n\t\t\t\tBurst:   pulumi.Int(10),\n\t\t\t\tEnabled: pulumi.Bool(false),\n\t\t\t\tRate:    pulumi.String(\"5/second\"),\n\t\t\t},\n\t\t\tOutputPolicy: pulumi.String(\"ACCEPT\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Network.Firewall;\nimport com.pulumi.proxmoxve.Network.FirewallArgs;\nimport com.pulumi.proxmoxve.Network.inputs.FirewallLogRatelimitArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Firewall(\"example\", FirewallArgs.builder()        \n            .ebtables(false)\n            .enabled(false)\n            .inputPolicy(\"DROP\")\n            .logRatelimit(FirewallLogRatelimitArgs.builder()\n                .burst(10)\n                .enabled(false)\n                .rate(\"5/second\")\n                .build())\n            .outputPolicy(\"ACCEPT\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: proxmoxve:Network:Firewall\n    properties:\n      ebtables: false\n      enabled: false\n      inputPolicy: DROP\n      logRatelimit:\n        burst: 10\n        enabled: false\n        rate: 5/second\n      outputPolicy: ACCEPT\n```\n{{% /example %}}\n{{% /examples %}}\n## Important Notes\n\nBe careful not to use this resource multiple times for the same node.\n\n\n## Import\n\nInstances can be imported without an ID, but you still need to pass one, e.g.,\n\n bash\n\n ```sh\n $ pulumi import proxmoxve:Network/firewall:Firewall example example\n```\n\n ",
             "properties": {
@@ -2692,6 +3306,324 @@
                 "type": "object"
             }
         },
+        "proxmoxve:Network/networkBridge:NetworkBridge": {
+            "description": "Manages a Linux Bridge network interface in a Proxmox VE node.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst vmbr99 = new proxmoxve.network.NetworkBridge(\"vmbr99\", {\n    nodeName: \"pve\",\n    address: \"99.99.99.99/16\",\n    comment: \"vmbr99 comment\",\n    ports: [\"ens18.99\"],\n}, {\n    dependsOn: [proxmox_virtual_environment_network_linux_vlan.vlan99],\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nvmbr99 = proxmoxve.network.NetworkBridge(\"vmbr99\",\n    node_name=\"pve\",\n    address=\"99.99.99.99/16\",\n    comment=\"vmbr99 comment\",\n    ports=[\"ens18.99\"],\n    opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_network_linux_vlan[\"vlan99\"]]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var vmbr99 = new ProxmoxVE.Network.NetworkBridge(\"vmbr99\", new()\n    {\n        NodeName = \"pve\",\n        Address = \"99.99.99.99/16\",\n        Comment = \"vmbr99 comment\",\n        Ports = new[]\n        {\n            \"ens18.99\",\n        },\n    }, new CustomResourceOptions\n    {\n        DependsOn = new[]\n        {\n            proxmox_virtual_environment_network_linux_vlan.Vlan99,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/Network\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Network.NewNetworkBridge(ctx, \"vmbr99\", \u0026Network.NetworkBridgeArgs{\n\t\t\tNodeName: pulumi.String(\"pve\"),\n\t\t\tAddress:  pulumi.String(\"99.99.99.99/16\"),\n\t\t\tComment:  pulumi.String(\"vmbr99 comment\"),\n\t\t\tPorts: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"ens18.99\"),\n\t\t\t},\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tproxmox_virtual_environment_network_linux_vlan.Vlan99,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Network.NetworkBridge;\nimport com.pulumi.proxmoxve.Network.NetworkBridgeArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var vmbr99 = new NetworkBridge(\"vmbr99\", NetworkBridgeArgs.builder()        \n            .nodeName(\"pve\")\n            .address(\"99.99.99.99/16\")\n            .comment(\"vmbr99 comment\")\n            .ports(\"ens18.99\")\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(proxmox_virtual_environment_network_linux_vlan.vlan99())\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  vmbr99:\n    type: proxmoxve:Network:NetworkBridge\n    properties:\n      nodeName: pve\n      address: 99.99.99.99/16\n      comment: vmbr99 comment\n      ports:\n        - ens18.99\n    options:\n      dependson:\n        - ${proxmox_virtual_environment_network_linux_vlan.vlan99}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n#!/usr/bin/env sh\n\n #Interfaces can be imported using the `node_name:iface` format, e.g.\n\n ```sh\n $ pulumi import proxmoxve:Network/networkBridge:NetworkBridge vmbr99 pve:vmbr99\n```\n\n ",
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "description": "The interface IPv4/CIDR address.\n"
+                },
+                "address6": {
+                    "type": "string",
+                    "description": "The interface IPv6/CIDR address.\n"
+                },
+                "autostart": {
+                    "type": "boolean",
+                    "description": "Automatically start interface on boot (defaults to `true`).\n"
+                },
+                "comment": {
+                    "type": "string",
+                    "description": "Comment for the interface.\n"
+                },
+                "gateway": {
+                    "type": "string",
+                    "description": "Default gateway address.\n"
+                },
+                "gateway6": {
+                    "type": "string",
+                    "description": "Default IPv6 gateway address.\n"
+                },
+                "mtu": {
+                    "type": "integer",
+                    "description": "The interface MTU.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The interface name. Must be `vmbrN`, where N is a number between 0 and 9999.\n"
+                },
+                "nodeName": {
+                    "type": "string",
+                    "description": "The name of the node.\n"
+                },
+                "ports": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The interface bridge ports.\n"
+                },
+                "vlanAware": {
+                    "type": "boolean",
+                    "description": "Whether the interface bridge is VLAN aware (defaults to `false`).\n"
+                }
+            },
+            "required": [
+                "autostart",
+                "name",
+                "nodeName",
+                "vlanAware"
+            ],
+            "inputProperties": {
+                "address": {
+                    "type": "string",
+                    "description": "The interface IPv4/CIDR address.\n"
+                },
+                "address6": {
+                    "type": "string",
+                    "description": "The interface IPv6/CIDR address.\n"
+                },
+                "autostart": {
+                    "type": "boolean",
+                    "description": "Automatically start interface on boot (defaults to `true`).\n"
+                },
+                "comment": {
+                    "type": "string",
+                    "description": "Comment for the interface.\n"
+                },
+                "gateway": {
+                    "type": "string",
+                    "description": "Default gateway address.\n"
+                },
+                "gateway6": {
+                    "type": "string",
+                    "description": "Default IPv6 gateway address.\n"
+                },
+                "mtu": {
+                    "type": "integer",
+                    "description": "The interface MTU.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The interface name. Must be `vmbrN`, where N is a number between 0 and 9999.\n"
+                },
+                "nodeName": {
+                    "type": "string",
+                    "description": "The name of the node.\n"
+                },
+                "ports": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The interface bridge ports.\n"
+                },
+                "vlanAware": {
+                    "type": "boolean",
+                    "description": "Whether the interface bridge is VLAN aware (defaults to `false`).\n"
+                }
+            },
+            "requiredInputs": [
+                "nodeName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering NetworkBridge resources.\n",
+                "properties": {
+                    "address": {
+                        "type": "string",
+                        "description": "The interface IPv4/CIDR address.\n"
+                    },
+                    "address6": {
+                        "type": "string",
+                        "description": "The interface IPv6/CIDR address.\n"
+                    },
+                    "autostart": {
+                        "type": "boolean",
+                        "description": "Automatically start interface on boot (defaults to `true`).\n"
+                    },
+                    "comment": {
+                        "type": "string",
+                        "description": "Comment for the interface.\n"
+                    },
+                    "gateway": {
+                        "type": "string",
+                        "description": "Default gateway address.\n"
+                    },
+                    "gateway6": {
+                        "type": "string",
+                        "description": "Default IPv6 gateway address.\n"
+                    },
+                    "mtu": {
+                        "type": "integer",
+                        "description": "The interface MTU.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The interface name. Must be `vmbrN`, where N is a number between 0 and 9999.\n"
+                    },
+                    "nodeName": {
+                        "type": "string",
+                        "description": "The name of the node.\n"
+                    },
+                    "ports": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The interface bridge ports.\n"
+                    },
+                    "vlanAware": {
+                        "type": "boolean",
+                        "description": "Whether the interface bridge is VLAN aware (defaults to `false`).\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "proxmoxve:Network/networkVlan:NetworkVlan": {
+            "description": "Manages a Linux VLAN network interface in a Proxmox VE node.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\n// using VLAN tag\nconst vlan99 = new proxmoxve.network.NetworkVlan(\"vlan99\", {\n    comment: \"VLAN 99\",\n    nodeName: \"pve\",\n});\n// using custom network interface name\nconst vlan98 = new proxmoxve.network.NetworkVlan(\"vlan98\", {\n    comment: \"VLAN 98\",\n    \"interface\": \"eno0\",\n    nodeName: \"pve\",\n    vlan: 98,\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\n# using VLAN tag\nvlan99 = proxmoxve.network.NetworkVlan(\"vlan99\",\n    comment=\"VLAN 99\",\n    node_name=\"pve\")\n# using custom network interface name\nvlan98 = proxmoxve.network.NetworkVlan(\"vlan98\",\n    comment=\"VLAN 98\",\n    interface=\"eno0\",\n    node_name=\"pve\",\n    vlan=98)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // using VLAN tag\n    var vlan99 = new ProxmoxVE.Network.NetworkVlan(\"vlan99\", new()\n    {\n        Comment = \"VLAN 99\",\n        NodeName = \"pve\",\n    });\n\n    // using custom network interface name\n    var vlan98 = new ProxmoxVE.Network.NetworkVlan(\"vlan98\", new()\n    {\n        Comment = \"VLAN 98\",\n        Interface = \"eno0\",\n        NodeName = \"pve\",\n        Vlan = 98,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/Network\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// using VLAN tag\n\t\t_, err := Network.NewNetworkVlan(ctx, \"vlan99\", \u0026Network.NetworkVlanArgs{\n\t\t\tComment:  pulumi.String(\"VLAN 99\"),\n\t\t\tNodeName: pulumi.String(\"pve\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// using custom network interface name\n\t\t_, err = Network.NewNetworkVlan(ctx, \"vlan98\", \u0026Network.NetworkVlanArgs{\n\t\t\tComment:   pulumi.String(\"VLAN 98\"),\n\t\t\tInterface: pulumi.String(\"eno0\"),\n\t\t\tNodeName:  pulumi.String(\"pve\"),\n\t\t\tVlan:      pulumi.Int(98),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Network.NetworkVlan;\nimport com.pulumi.proxmoxve.Network.NetworkVlanArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var vlan99 = new NetworkVlan(\"vlan99\", NetworkVlanArgs.builder()        \n            .comment(\"VLAN 99\")\n            .nodeName(\"pve\")\n            .build());\n\n        var vlan98 = new NetworkVlan(\"vlan98\", NetworkVlanArgs.builder()        \n            .comment(\"VLAN 98\")\n            .interface_(\"eno0\")\n            .nodeName(\"pve\")\n            .vlan(98)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # using VLAN tag\n  vlan99:\n    type: proxmoxve:Network:NetworkVlan\n    properties:\n      comment: VLAN 99\n      nodeName: pve\n  # using custom network interface name\n  vlan98:\n    type: proxmoxve:Network:NetworkVlan\n    properties:\n      comment: VLAN 98\n      interface: eno0\n      nodeName: pve\n      vlan: 98\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n#!/usr/bin/env sh\n\n #Interfaces can be imported using the `node_name:iface` format, e.g.\n\n ```sh\n $ pulumi import proxmoxve:Network/networkVlan:NetworkVlan vlan99 pve:vlan99\n```\n\n ",
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "description": "The interface IPv4/CIDR address.\n"
+                },
+                "address6": {
+                    "type": "string",
+                    "description": "The interface IPv6/CIDR address.\n"
+                },
+                "autostart": {
+                    "type": "boolean",
+                    "description": "Automatically start interface on boot (defaults to `true`).\n"
+                },
+                "comment": {
+                    "type": "string",
+                    "description": "Comment for the interface.\n"
+                },
+                "gateway": {
+                    "type": "string",
+                    "description": "Default gateway address.\n"
+                },
+                "gateway6": {
+                    "type": "string",
+                    "description": "Default IPv6 gateway address.\n"
+                },
+                "interface": {
+                    "type": "string",
+                    "description": "The VLAN raw device. See also `name`.\n"
+                },
+                "mtu": {
+                    "type": "integer",
+                    "description": "The interface MTU.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The interface name. Either add the VLAN tag number to an existing interface name, e.g. `ens18.21` (and do not set `interface` and `vlan`), or use custom name, e.g. `vlan_lab` (`interface` and `vlan` are then required).\n"
+                },
+                "nodeName": {
+                    "type": "string",
+                    "description": "The name of the node.\n"
+                },
+                "vlan": {
+                    "type": "integer",
+                    "description": "The VLAN tag. See also `name`.\n"
+                }
+            },
+            "required": [
+                "autostart",
+                "interface",
+                "name",
+                "nodeName",
+                "vlan"
+            ],
+            "inputProperties": {
+                "address": {
+                    "type": "string",
+                    "description": "The interface IPv4/CIDR address.\n"
+                },
+                "address6": {
+                    "type": "string",
+                    "description": "The interface IPv6/CIDR address.\n"
+                },
+                "autostart": {
+                    "type": "boolean",
+                    "description": "Automatically start interface on boot (defaults to `true`).\n"
+                },
+                "comment": {
+                    "type": "string",
+                    "description": "Comment for the interface.\n"
+                },
+                "gateway": {
+                    "type": "string",
+                    "description": "Default gateway address.\n"
+                },
+                "gateway6": {
+                    "type": "string",
+                    "description": "Default IPv6 gateway address.\n"
+                },
+                "interface": {
+                    "type": "string",
+                    "description": "The VLAN raw device. See also `name`.\n"
+                },
+                "mtu": {
+                    "type": "integer",
+                    "description": "The interface MTU.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The interface name. Either add the VLAN tag number to an existing interface name, e.g. `ens18.21` (and do not set `interface` and `vlan`), or use custom name, e.g. `vlan_lab` (`interface` and `vlan` are then required).\n"
+                },
+                "nodeName": {
+                    "type": "string",
+                    "description": "The name of the node.\n"
+                },
+                "vlan": {
+                    "type": "integer",
+                    "description": "The VLAN tag. See also `name`.\n"
+                }
+            },
+            "requiredInputs": [
+                "nodeName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering NetworkVlan resources.\n",
+                "properties": {
+                    "address": {
+                        "type": "string",
+                        "description": "The interface IPv4/CIDR address.\n"
+                    },
+                    "address6": {
+                        "type": "string",
+                        "description": "The interface IPv6/CIDR address.\n"
+                    },
+                    "autostart": {
+                        "type": "boolean",
+                        "description": "Automatically start interface on boot (defaults to `true`).\n"
+                    },
+                    "comment": {
+                        "type": "string",
+                        "description": "Comment for the interface.\n"
+                    },
+                    "gateway": {
+                        "type": "string",
+                        "description": "Default gateway address.\n"
+                    },
+                    "gateway6": {
+                        "type": "string",
+                        "description": "Default IPv6 gateway address.\n"
+                    },
+                    "interface": {
+                        "type": "string",
+                        "description": "The VLAN raw device. See also `name`.\n"
+                    },
+                    "mtu": {
+                        "type": "integer",
+                        "description": "The interface MTU.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The interface name. Either add the VLAN tag number to an existing interface name, e.g. `ens18.21` (and do not set `interface` and `vlan`), or use custom name, e.g. `vlan_lab` (`interface` and `vlan` are then required).\n"
+                    },
+                    "nodeName": {
+                        "type": "string",
+                        "description": "The name of the node.\n"
+                    },
+                    "vlan": {
+                        "type": "integer",
+                        "description": "The VLAN tag. See also `name`.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "proxmoxve:Permission/group:Group": {
             "description": "Manages a user group.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst operationsTeam = new proxmoxve.permission.Group(\"operationsTeam\", {\n    comment: \"Managed by Terraform\",\n    groupId: \"operations-team\",\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\noperations_team = proxmoxve.permission.Group(\"operationsTeam\",\n    comment=\"Managed by Terraform\",\n    group_id=\"operations-team\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var operationsTeam = new ProxmoxVE.Permission.Group(\"operationsTeam\", new()\n    {\n        Comment = \"Managed by Terraform\",\n        GroupId = \"operations-team\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/Permission\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Permission.NewGroup(ctx, \"operationsTeam\", \u0026Permission.GroupArgs{\n\t\t\tComment: pulumi.String(\"Managed by Terraform\"),\n\t\t\tGroupId: pulumi.String(\"operations-team\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Permission.Group;\nimport com.pulumi.proxmoxve.Permission.GroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var operationsTeam = new Group(\"operationsTeam\", GroupArgs.builder()        \n            .comment(\"Managed by Terraform\")\n            .groupId(\"operations-team\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  operationsTeam:\n    type: proxmoxve:Permission:Group\n    properties:\n      comment: Managed by Terraform\n      groupId: operations-team\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nInstances can be imported using the `group_id`, e.g.,\n\n bash\n\n ```sh\n $ pulumi import proxmoxve:Permission/group:Group operations_team operations-team\n```\n\n ",
             "properties": {
@@ -3064,7 +3996,7 @@
             }
         },
         "proxmoxve:Storage/file:File": {
-            "description": "Manages a file.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Backups (`dump`)\n\n\u003e **Note:** The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst backup = new proxmoxve.storage.File(\"backup\", {\n    contentType: \"dump\",\n    datastoreId: \"local\",\n    nodeName: \"pve\",\n    sourceFile: {\n        path: \"vzdump-lxc-100-2023_11_08-23_10_05.tar\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nbackup = proxmoxve.storage.File(\"backup\",\n    content_type=\"dump\",\n    datastore_id=\"local\",\n    node_name=\"pve\",\n    source_file=proxmoxve.storage.FileSourceFileArgs(\n        path=\"vzdump-lxc-100-2023_11_08-23_10_05.tar\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var backup = new ProxmoxVE.Storage.File(\"backup\", new()\n    {\n        ContentType = \"dump\",\n        DatastoreId = \"local\",\n        NodeName = \"pve\",\n        SourceFile = new ProxmoxVE.Storage.Inputs.FileSourceFileArgs\n        {\n            Path = \"vzdump-lxc-100-2023_11_08-23_10_05.tar\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/Storage\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Storage.NewFile(ctx, \"backup\", \u0026Storage.FileArgs{\n\t\t\tContentType: pulumi.String(\"dump\"),\n\t\t\tDatastoreId: pulumi.String(\"local\"),\n\t\t\tNodeName:    pulumi.String(\"pve\"),\n\t\t\tSourceFile: \u0026storage.FileSourceFileArgs{\n\t\t\t\tPath: pulumi.String(\"vzdump-lxc-100-2023_11_08-23_10_05.tar\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Storage.File;\nimport com.pulumi.proxmoxve.Storage.FileArgs;\nimport com.pulumi.proxmoxve.Storage.inputs.FileSourceFileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var backup = new File(\"backup\", FileArgs.builder()        \n            .contentType(\"dump\")\n            .datastoreId(\"local\")\n            .nodeName(\"pve\")\n            .sourceFile(FileSourceFileArgs.builder()\n                .path(\"vzdump-lxc-100-2023_11_08-23_10_05.tar\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  backup:\n    type: proxmoxve:Storage:File\n    properties:\n      contentType: dump\n      datastoreId: local\n      nodeName: pve\n      sourceFile:\n        path: vzdump-lxc-100-2023_11_08-23_10_05.tar\n```\n{{% /example %}}\n{{% example %}}\n### Images\n\n**Consider using `proxmox_virtual_environment_download_file` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.**\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst ubuntuContainerTemplate = new proxmoxve.storage.File(\"ubuntuContainerTemplate\", {\n    contentType: \"iso\",\n    datastoreId: \"local\",\n    nodeName: \"pve\",\n    sourceFile: {\n        path: \"https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nubuntu_container_template = proxmoxve.storage.File(\"ubuntuContainerTemplate\",\n    content_type=\"iso\",\n    datastore_id=\"local\",\n    node_name=\"pve\",\n    source_file=proxmoxve.storage.FileSourceFileArgs(\n        path=\"https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var ubuntuContainerTemplate = new ProxmoxVE.Storage.File(\"ubuntuContainerTemplate\", new()\n    {\n        ContentType = \"iso\",\n        DatastoreId = \"local\",\n        NodeName = \"pve\",\n        SourceFile = new ProxmoxVE.Storage.Inputs.FileSourceFileArgs\n        {\n            Path = \"https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/Storage\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Storage.NewFile(ctx, \"ubuntuContainerTemplate\", \u0026Storage.FileArgs{\n\t\t\tContentType: pulumi.String(\"iso\"),\n\t\t\tDatastoreId: pulumi.String(\"local\"),\n\t\t\tNodeName:    pulumi.String(\"pve\"),\n\t\t\tSourceFile: \u0026storage.FileSourceFileArgs{\n\t\t\t\tPath: pulumi.String(\"https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Storage.File;\nimport com.pulumi.proxmoxve.Storage.FileArgs;\nimport com.pulumi.proxmoxve.Storage.inputs.FileSourceFileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var ubuntuContainerTemplate = new File(\"ubuntuContainerTemplate\", FileArgs.builder()        \n            .contentType(\"iso\")\n            .datastoreId(\"local\")\n            .nodeName(\"pve\")\n            .sourceFile(FileSourceFileArgs.builder()\n                .path(\"https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  ubuntuContainerTemplate:\n    type: proxmoxve:Storage:File\n    properties:\n      contentType: iso\n      datastoreId: local\n      nodeName: pve\n      sourceFile:\n        path: https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img\n```\n{{% /example %}}\n{{% example %}}\n### Container Template (`vztmpl`)\n\n**Consider using `proxmox_virtual_environment_download_file` resource instead. Using this resource for container images is less efficient (requires to transfer uploaded image to node) though still supported.**\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst ubuntuContainerTemplate = new proxmoxve.storage.File(\"ubuntuContainerTemplate\", {\n    contentType: \"vztmpl\",\n    datastoreId: \"local\",\n    nodeName: \"first-node\",\n    sourceFile: {\n        path: \"https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nubuntu_container_template = proxmoxve.storage.File(\"ubuntuContainerTemplate\",\n    content_type=\"vztmpl\",\n    datastore_id=\"local\",\n    node_name=\"first-node\",\n    source_file=proxmoxve.storage.FileSourceFileArgs(\n        path=\"https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var ubuntuContainerTemplate = new ProxmoxVE.Storage.File(\"ubuntuContainerTemplate\", new()\n    {\n        ContentType = \"vztmpl\",\n        DatastoreId = \"local\",\n        NodeName = \"first-node\",\n        SourceFile = new ProxmoxVE.Storage.Inputs.FileSourceFileArgs\n        {\n            Path = \"https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/Storage\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Storage.NewFile(ctx, \"ubuntuContainerTemplate\", \u0026Storage.FileArgs{\n\t\t\tContentType: pulumi.String(\"vztmpl\"),\n\t\t\tDatastoreId: pulumi.String(\"local\"),\n\t\t\tNodeName:    pulumi.String(\"first-node\"),\n\t\t\tSourceFile: \u0026storage.FileSourceFileArgs{\n\t\t\t\tPath: pulumi.String(\"https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Storage.File;\nimport com.pulumi.proxmoxve.Storage.FileArgs;\nimport com.pulumi.proxmoxve.Storage.inputs.FileSourceFileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var ubuntuContainerTemplate = new File(\"ubuntuContainerTemplate\", FileArgs.builder()        \n            .contentType(\"vztmpl\")\n            .datastoreId(\"local\")\n            .nodeName(\"first-node\")\n            .sourceFile(FileSourceFileArgs.builder()\n                .path(\"https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  ubuntuContainerTemplate:\n    type: proxmoxve:Storage:File\n    properties:\n      contentType: vztmpl\n      datastoreId: local\n      nodeName: first-node\n      sourceFile:\n        path: https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz\n```\n{{% /example %}}\n{{% /examples %}}\n## Important Notes\n\nThe Proxmox VE API endpoint for file uploads does not support chunked transfer\nencoding, which means that we must first store the source file as a temporary\nfile locally before uploading it.\n\nYou must ensure that you have at least `Size-in-MB * 2 + 1` MB of storage space\navailable (twice the size plus overhead because a multipart payload needs to be\ncreated as another temporary file).\n\nBy default, if the specified file already exists, the resource will\nunconditionally replace it and take ownership of the resource. On destruction,\nthe file will be deleted as if it did not exist before. If you want to prevent\nthe resource from replacing the file, set `overwrite` to `false`.\n\n\n## Import\n\nInstances can be imported using the `node_name`, `datastore_id`, `content_type`\n\n and the `file_name` in the following format:\n\n text\n\n node_name:datastore_id/content_type/file_name\n\n Example:\n\n bash\n\n ```sh\n $ pulumi import proxmoxve:Storage/file:File cloud_config pve/local:snippets/example.cloud-config.yaml\n```\n\n ",
+            "description": "Manages a file.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Backups (`dump`)\n\n\u003e **Note:** The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst backup = new proxmoxve.storage.File(\"backup\", {\n    contentType: \"dump\",\n    datastoreId: \"local\",\n    nodeName: \"pve\",\n    sourceFile: {\n        path: \"vzdump-lxc-100-2023_11_08-23_10_05.tar\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nbackup = proxmoxve.storage.File(\"backup\",\n    content_type=\"dump\",\n    datastore_id=\"local\",\n    node_name=\"pve\",\n    source_file=proxmoxve.storage.FileSourceFileArgs(\n        path=\"vzdump-lxc-100-2023_11_08-23_10_05.tar\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var backup = new ProxmoxVE.Storage.File(\"backup\", new()\n    {\n        ContentType = \"dump\",\n        DatastoreId = \"local\",\n        NodeName = \"pve\",\n        SourceFile = new ProxmoxVE.Storage.Inputs.FileSourceFileArgs\n        {\n            Path = \"vzdump-lxc-100-2023_11_08-23_10_05.tar\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/Storage\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Storage.NewFile(ctx, \"backup\", \u0026Storage.FileArgs{\n\t\t\tContentType: pulumi.String(\"dump\"),\n\t\t\tDatastoreId: pulumi.String(\"local\"),\n\t\t\tNodeName:    pulumi.String(\"pve\"),\n\t\t\tSourceFile: \u0026storage.FileSourceFileArgs{\n\t\t\t\tPath: pulumi.String(\"vzdump-lxc-100-2023_11_08-23_10_05.tar\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Storage.File;\nimport com.pulumi.proxmoxve.Storage.FileArgs;\nimport com.pulumi.proxmoxve.Storage.inputs.FileSourceFileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var backup = new File(\"backup\", FileArgs.builder()        \n            .contentType(\"dump\")\n            .datastoreId(\"local\")\n            .nodeName(\"pve\")\n            .sourceFile(FileSourceFileArgs.builder()\n                .path(\"vzdump-lxc-100-2023_11_08-23_10_05.tar\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  backup:\n    type: proxmoxve:Storage:File\n    properties:\n      contentType: dump\n      datastoreId: local\n      nodeName: pve\n      sourceFile:\n        path: vzdump-lxc-100-2023_11_08-23_10_05.tar\n```\n{{% /example %}}\n{{% example %}}\n### Images\n\n**Consider using `proxmoxve.Download.File` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.**\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst ubuntuContainerTemplate = new proxmoxve.storage.File(\"ubuntuContainerTemplate\", {\n    contentType: \"iso\",\n    datastoreId: \"local\",\n    nodeName: \"pve\",\n    sourceFile: {\n        path: \"https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nubuntu_container_template = proxmoxve.storage.File(\"ubuntuContainerTemplate\",\n    content_type=\"iso\",\n    datastore_id=\"local\",\n    node_name=\"pve\",\n    source_file=proxmoxve.storage.FileSourceFileArgs(\n        path=\"https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var ubuntuContainerTemplate = new ProxmoxVE.Storage.File(\"ubuntuContainerTemplate\", new()\n    {\n        ContentType = \"iso\",\n        DatastoreId = \"local\",\n        NodeName = \"pve\",\n        SourceFile = new ProxmoxVE.Storage.Inputs.FileSourceFileArgs\n        {\n            Path = \"https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/Storage\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Storage.NewFile(ctx, \"ubuntuContainerTemplate\", \u0026Storage.FileArgs{\n\t\t\tContentType: pulumi.String(\"iso\"),\n\t\t\tDatastoreId: pulumi.String(\"local\"),\n\t\t\tNodeName:    pulumi.String(\"pve\"),\n\t\t\tSourceFile: \u0026storage.FileSourceFileArgs{\n\t\t\t\tPath: pulumi.String(\"https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Storage.File;\nimport com.pulumi.proxmoxve.Storage.FileArgs;\nimport com.pulumi.proxmoxve.Storage.inputs.FileSourceFileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var ubuntuContainerTemplate = new File(\"ubuntuContainerTemplate\", FileArgs.builder()        \n            .contentType(\"iso\")\n            .datastoreId(\"local\")\n            .nodeName(\"pve\")\n            .sourceFile(FileSourceFileArgs.builder()\n                .path(\"https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  ubuntuContainerTemplate:\n    type: proxmoxve:Storage:File\n    properties:\n      contentType: iso\n      datastoreId: local\n      nodeName: pve\n      sourceFile:\n        path: https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img\n```\n{{% /example %}}\n{{% example %}}\n### Container Template (`vztmpl`)\n\n**Consider using `proxmoxve.Download.File` resource instead. Using this resource for container images is less efficient (requires to transfer uploaded image to node) though still supported.**\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst ubuntuContainerTemplate = new proxmoxve.storage.File(\"ubuntuContainerTemplate\", {\n    contentType: \"vztmpl\",\n    datastoreId: \"local\",\n    nodeName: \"first-node\",\n    sourceFile: {\n        path: \"https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nubuntu_container_template = proxmoxve.storage.File(\"ubuntuContainerTemplate\",\n    content_type=\"vztmpl\",\n    datastore_id=\"local\",\n    node_name=\"first-node\",\n    source_file=proxmoxve.storage.FileSourceFileArgs(\n        path=\"https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var ubuntuContainerTemplate = new ProxmoxVE.Storage.File(\"ubuntuContainerTemplate\", new()\n    {\n        ContentType = \"vztmpl\",\n        DatastoreId = \"local\",\n        NodeName = \"first-node\",\n        SourceFile = new ProxmoxVE.Storage.Inputs.FileSourceFileArgs\n        {\n            Path = \"https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/Storage\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Storage.NewFile(ctx, \"ubuntuContainerTemplate\", \u0026Storage.FileArgs{\n\t\t\tContentType: pulumi.String(\"vztmpl\"),\n\t\t\tDatastoreId: pulumi.String(\"local\"),\n\t\t\tNodeName:    pulumi.String(\"first-node\"),\n\t\t\tSourceFile: \u0026storage.FileSourceFileArgs{\n\t\t\t\tPath: pulumi.String(\"https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Storage.File;\nimport com.pulumi.proxmoxve.Storage.FileArgs;\nimport com.pulumi.proxmoxve.Storage.inputs.FileSourceFileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var ubuntuContainerTemplate = new File(\"ubuntuContainerTemplate\", FileArgs.builder()        \n            .contentType(\"vztmpl\")\n            .datastoreId(\"local\")\n            .nodeName(\"first-node\")\n            .sourceFile(FileSourceFileArgs.builder()\n                .path(\"https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  ubuntuContainerTemplate:\n    type: proxmoxve:Storage:File\n    properties:\n      contentType: vztmpl\n      datastoreId: local\n      nodeName: first-node\n      sourceFile:\n        path: https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz\n```\n{{% /example %}}\n{{% /examples %}}\n## Important Notes\n\nThe Proxmox VE API endpoint for file uploads does not support chunked transfer\nencoding, which means that we must first store the source file as a temporary\nfile locally before uploading it.\n\nYou must ensure that you have at least `Size-in-MB * 2 + 1` MB of storage space\navailable (twice the size plus overhead because a multipart payload needs to be\ncreated as another temporary file).\n\nBy default, if the specified file already exists, the resource will\nunconditionally replace it and take ownership of the resource. On destruction,\nthe file will be deleted as if it did not exist before. If you want to prevent\nthe resource from replacing the file, set `overwrite` to `false`.\n\n\n## Import\n\nInstances can be imported using the `node_name`, `datastore_id`, `content_type`\n\n and the `file_name` in the following format:\n\n text\n\n node_name:datastore_id/content_type/file_name\n\n Example:\n\n bash\n\n ```sh\n $ pulumi import proxmoxve:Storage/file:File cloud_config pve/local:snippets/example.cloud-config.yaml\n```\n\n ",
             "properties": {
                 "contentType": {
                     "type": "string",
@@ -4463,6 +5395,189 @@
                 ]
             }
         },
+        "proxmoxve:HA/getHAGroup:getHAGroup": {
+            "description": "Retrieves information about a specific High Availability group.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@pulumi/proxmoxve\";\n\nconst all = proxmoxve.HA.getHAGroups({});\nconst example = all.then(all =\u003e .map(([, ]) =\u003e (proxmoxve.HA.getHAGroup({\n    group: __value,\n}))));\nexport const proxmoxVirtualEnvironmentHagroupsFull = example;\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nall = proxmoxve.HA.get_ha_groups()\nexample = [proxmoxve.HA.get_ha_group(group=__value) for __key, __value in all.group_ids]\npulumi.export(\"proxmoxVirtualEnvironmentHagroupsFull\", example)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = ProxmoxVE.HA.GetHAGroups.Invoke();\n\n    var example = .Select(__value =\u003e \n    {\n        return ProxmoxVE.HA.GetHAGroup.Invoke(new()\n        {\n            Group = __value,\n        });\n    }).ToList();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"proxmoxVirtualEnvironmentHagroupsFull\"] = example,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/HA\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tall, err := HA.GetHAGroups(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texample := \"TODO: For expression\"\n\t\tctx.Export(\"proxmoxVirtualEnvironmentHagroupsFull\", example)\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getHAGroup.\n",
+                "properties": {
+                    "group": {
+                        "type": "string",
+                        "description": "The identifier of the High Availability group to read.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "group"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getHAGroup.\n",
+                "properties": {
+                    "comment": {
+                        "type": "string",
+                        "description": "The comment associated with this group\n"
+                    },
+                    "group": {
+                        "type": "string",
+                        "description": "The identifier of the High Availability group to read.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of this resource.\n"
+                    },
+                    "noFailback": {
+                        "type": "boolean",
+                        "description": "A flag that indicates that failing back to a higher priority node is disabled for this HA group.\n"
+                    },
+                    "nodes": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "integer"
+                        },
+                        "description": "The member nodes for this group. They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or `null` for unset priorities.\n"
+                    },
+                    "restricted": {
+                        "type": "boolean",
+                        "description": "A flag that indicates that other nodes may not be used to run resources associated to this HA group.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "comment",
+                    "group",
+                    "id",
+                    "noFailback",
+                    "nodes",
+                    "restricted"
+                ]
+            }
+        },
+        "proxmoxve:HA/getHAGroups:getHAGroups": {
+            "description": "Retrieves the list of High Availability groups.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@pulumi/proxmoxve\";\n\nconst example = proxmoxve.HA.getHAGroups({});\nexport const dataProxmoxVirtualEnvironmentHagroups = example.then(example =\u003e example.groupIds);\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample = proxmoxve.HA.get_ha_groups()\npulumi.export(\"dataProxmoxVirtualEnvironmentHagroups\", example.group_ids)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = ProxmoxVE.HA.GetHAGroups.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"dataProxmoxVirtualEnvironmentHagroups\"] = example.Apply(getHAGroupsResult =\u003e getHAGroupsResult.GroupIds),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/HA\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := HA.GetHAGroups(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"dataProxmoxVirtualEnvironmentHagroups\", example.GroupIds)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.HA.HAFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = HAFunctions.getHAGroups();\n\n        ctx.export(\"dataProxmoxVirtualEnvironmentHagroups\", example.applyValue(getHAGroupsResult -\u003e getHAGroupsResult.groupIds()));\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: proxmoxve:HA:getHAGroups\n      Arguments: {}\noutputs:\n  dataProxmoxVirtualEnvironmentHagroups: ${example.groupIds}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "outputs": {
+                "description": "A collection of values returned by getHAGroups.\n",
+                "properties": {
+                    "groupIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The identifiers of the High Availability groups.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of this resource.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "groupIds",
+                    "id"
+                ]
+            }
+        },
+        "proxmoxve:HA/getHAResource:getHAResource": {
+            "description": "Retrieves the list of High Availability resources.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@pulumi/proxmoxve\";\n\nconst all = proxmoxve.HA.getHAResources({});\nconst example = all.then(all =\u003e .map(([, ]) =\u003e (proxmoxve.HA.getHAResource({\n    resourceId: __value,\n}))));\nexport const proxmoxVirtualEnvironmentHaresourcesFull = example;\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nall = proxmoxve.HA.get_ha_resources()\nexample = [proxmoxve.HA.get_ha_resource(resource_id=__value) for __key, __value in all.resource_ids]\npulumi.export(\"proxmoxVirtualEnvironmentHaresourcesFull\", example)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = ProxmoxVE.HA.GetHAResources.Invoke();\n\n    var example = .Select(__value =\u003e \n    {\n        return ProxmoxVE.HA.GetHAResource.Invoke(new()\n        {\n            ResourceId = __value,\n        });\n    }).ToList();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"proxmoxVirtualEnvironmentHaresourcesFull\"] = example,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/HA\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tall, err := HA.GetHAResources(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texample := \"TODO: For expression\"\n\t\tctx.Export(\"proxmoxVirtualEnvironmentHaresourcesFull\", example)\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getHAResource.\n",
+                "properties": {
+                    "resourceId": {
+                        "type": "string",
+                        "description": "The identifier of the Proxmox HA resource to read.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "resourceId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getHAResource.\n",
+                "properties": {
+                    "comment": {
+                        "type": "string",
+                        "description": "The comment associated with this resource.\n"
+                    },
+                    "group": {
+                        "type": "string",
+                        "description": "The identifier of the High Availability group this resource is a member of.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of this resource.\n"
+                    },
+                    "maxRelocate": {
+                        "type": "integer",
+                        "description": "The maximal number of relocation attempts.\n"
+                    },
+                    "maxRestart": {
+                        "type": "integer",
+                        "description": "The maximal number of restart attempts.\n"
+                    },
+                    "resourceId": {
+                        "type": "string",
+                        "description": "The identifier of the Proxmox HA resource to read.\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "The desired state of the resource.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of High Availability resource (`vm` or `ct`).\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "comment",
+                    "group",
+                    "id",
+                    "maxRelocate",
+                    "maxRestart",
+                    "resourceId",
+                    "state",
+                    "type"
+                ]
+            }
+        },
+        "proxmoxve:HA/getHAResources:getHAResources": {
+            "description": "Retrieves the list of High Availability resources.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@pulumi/proxmoxve\";\n\nconst exampleAll = proxmoxve.HA.getHAResources({});\nconst exampleVm = proxmoxve.HA.getHAResources({\n    type: \"vm\",\n});\nexport const dataProxmoxVirtualEnvironmentHaresources = {\n    all: exampleAll.then(exampleAll =\u003e exampleAll.resourceIds),\n    vms: exampleVm.then(exampleVm =\u003e exampleVm.resourceIds),\n};\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample_all = proxmoxve.HA.get_ha_resources()\nexample_vm = proxmoxve.HA.get_ha_resources(type=\"vm\")\npulumi.export(\"dataProxmoxVirtualEnvironmentHaresources\", {\n    \"all\": example_all.resource_ids,\n    \"vms\": example_vm.resource_ids,\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleAll = ProxmoxVE.HA.GetHAResources.Invoke();\n\n    var exampleVm = ProxmoxVE.HA.GetHAResources.Invoke(new()\n    {\n        Type = \"vm\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"dataProxmoxVirtualEnvironmentHaresources\"] = \n        {\n            { \"all\", exampleAll.Apply(getHAResourcesResult =\u003e getHAResourcesResult.ResourceIds) },\n            { \"vms\", exampleVm.Apply(getHAResourcesResult =\u003e getHAResourcesResult.ResourceIds) },\n        },\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/HA\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleAll, err := HA.GetHAResources(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleVm, err := HA.GetHAResources(ctx, \u0026ha.GetHAResourcesArgs{\n\t\t\tType: pulumi.StringRef(\"vm\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"dataProxmoxVirtualEnvironmentHaresources\", map[string]interface{}{\n\t\t\t\"all\": exampleAll.ResourceIds,\n\t\t\t\"vms\": exampleVm.ResourceIds,\n\t\t})\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.HA.HAFunctions;\nimport com.pulumi.proxmoxve.HA.inputs.GetHAResourcesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var exampleAll = HAFunctions.getHAResources();\n\n        final var exampleVm = HAFunctions.getHAResources(GetHAResourcesArgs.builder()\n            .type(\"vm\")\n            .build());\n\n        ctx.export(\"dataProxmoxVirtualEnvironmentHaresources\", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));\n    }\n}\n```\n```yaml\nvariables:\n  exampleAll:\n    fn::invoke:\n      Function: proxmoxve:HA:getHAResources\n      Arguments: {}\n  exampleVm:\n    fn::invoke:\n      Function: proxmoxve:HA:getHAResources\n      Arguments:\n        type: vm\noutputs:\n  dataProxmoxVirtualEnvironmentHaresources:\n    all: ${exampleAll.resourceIds}\n    vms: ${exampleVm.resourceIds}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getHAResources.\n",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "description": "The type of High Availability resources to fetch (`vm` or `ct`). All resources will be fetched if this option is unset.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getHAResources.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of this resource.\n"
+                    },
+                    "resourceIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The identifiers of the High Availability resources.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of High Availability resources to fetch (`vm` or `ct`). All resources will be fetched if this option is unset.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "resourceIds"
+                ]
+            }
+        },
         "proxmoxve:Permission/getGroup:getGroup": {
             "description": "Retrieves information about a specific user group.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@pulumi/proxmoxve\";\n\nconst operationsTeam = proxmoxve.Permission.getGroup({\n    groupId: \"operations-team\",\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\noperations_team = proxmoxve.Permission.get_group(group_id=\"operations-team\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var operationsTeam = ProxmoxVE.Permission.GetGroup.Invoke(new()\n    {\n        GroupId = \"operations-team\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/Permission\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Permission.GetGroup(ctx, \u0026permission.GetGroupArgs{\n\t\t\tGroupId: \"operations-team\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Permission.PermissionFunctions;\nimport com.pulumi.proxmoxve.Permission.inputs.GetGroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var operationsTeam = PermissionFunctions.getGroup(GetGroupArgs.builder()\n            .groupId(\"operations-team\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  operationsTeam:\n    fn::invoke:\n      Function: proxmoxve:Permission:getGroup\n      Arguments:\n        groupId: operations-team\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
@@ -5249,6 +6364,37 @@
                     "timeZone",
                     "utcTime",
                     "id"
+                ]
+            }
+        },
+        "proxmoxve:index/getVersion:getVersion": {
+            "description": "Retrieves API version details.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@pulumi/proxmoxve\";\n\nconst example = proxmoxve.getVersion({});\nexport const dataProxmoxVirtualEnvironmentVersion = {\n    release: example.then(example =\u003e example.release),\n    repository_id: example.then(example =\u003e example.repositoryId),\n    version: example.then(example =\u003e example.version),\n};\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample = proxmoxve.get_version()\npulumi.export(\"dataProxmoxVirtualEnvironmentVersion\", {\n    \"release\": example.release,\n    \"repository_id\": example.repository_id,\n    \"version\": example.version,\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = ProxmoxVE.GetVersion.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"dataProxmoxVirtualEnvironmentVersion\"] = \n        {\n            { \"release\", example.Apply(getVersionResult =\u003e getVersionResult.Release) },\n            { \"repository_id\", example.Apply(getVersionResult =\u003e getVersionResult.RepositoryId) },\n            { \"version\", example.Apply(getVersionResult =\u003e getVersionResult.Version) },\n        },\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := proxmoxve.GetVersion(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"dataProxmoxVirtualEnvironmentVersion\", map[string]interface{}{\n\t\t\t\"release\":       example.Release,\n\t\t\t\"repository_id\": example.RepositoryId,\n\t\t\t\"version\":       example.Version,\n\t\t})\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.ProxmoxveFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = ProxmoxveFunctions.getVersion();\n\n        ctx.export(\"dataProxmoxVirtualEnvironmentVersion\", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: proxmoxve:getVersion\n      Arguments: {}\noutputs:\n  dataProxmoxVirtualEnvironmentVersion:\n    release: ${example.release}\n    repository_id: ${example.repositoryId}\n    version: ${example.version}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "outputs": {
+                "description": "A collection of values returned by getVersion.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Placeholder identifier attribute.\n"
+                    },
+                    "release": {
+                        "type": "string",
+                        "description": "The current Proxmox VE point release in `x.y` format.\n"
+                    },
+                    "repositoryId": {
+                        "type": "string",
+                        "description": "The short git revision from which this version was build.\n"
+                    },
+                    "version": {
+                        "type": "string",
+                        "description": "The full pve-manager package version of this node.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "release",
+                    "repositoryId",
+                    "version"
                 ]
             }
         }

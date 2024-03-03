@@ -30,6 +30,11 @@ export const getTime: typeof import("./getTime").getTime = null as any;
 export const getTimeOutput: typeof import("./getTime").getTimeOutput = null as any;
 utilities.lazyLoad(exports, ["getTime","getTimeOutput"], () => require("./getTime"));
 
+export { GetVersionResult } from "./getVersion";
+export const getVersion: typeof import("./getVersion").getVersion = null as any;
+export const getVersionOutput: typeof import("./getVersion").getVersionOutput = null as any;
+utilities.lazyLoad(exports, ["getVersion","getVersionOutput"], () => require("./getVersion"));
+
 export { HostsArgs, HostsState } from "./hosts";
 export type Hosts = import("./hosts").Hosts;
 export const Hosts: typeof import("./hosts").Hosts = null as any;
@@ -50,6 +55,8 @@ utilities.lazyLoad(exports, ["Time"], () => require("./time"));
 import * as cluster from "./cluster";
 import * as config from "./config";
 import * as ct from "./ct";
+import * as download from "./download";
+import * as ha from "./ha";
 import * as network from "./network";
 import * as permission from "./permission";
 import * as storage from "./storage";
@@ -60,6 +67,8 @@ export {
     cluster,
     config,
     ct,
+    download,
+    ha,
     network,
     permission,
     storage,
