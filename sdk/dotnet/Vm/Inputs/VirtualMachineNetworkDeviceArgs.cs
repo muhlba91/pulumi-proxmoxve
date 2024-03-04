@@ -65,6 +65,14 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<double>? RateLimit { get; set; }
 
         /// <summary>
+        /// String containing a `;` separated list of VLAN trunks 
+        /// ("10;20;30"). Note that the VLAN-aware feature need to be enabled on the PVE
+        /// Linux Bridge to use trunks.
+        /// </summary>
+        [Input("trunks")]
+        public Input<string>? Trunks { get; set; }
+
+        /// <summary>
         /// The VLAN identifier.
         /// </summary>
         [Input("vlanId")]

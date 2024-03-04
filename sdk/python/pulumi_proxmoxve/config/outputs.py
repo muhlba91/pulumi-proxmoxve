@@ -22,15 +22,17 @@ class Ssh(dict):
                  agent_socket: Optional[str] = None,
                  nodes: Optional[Sequence['outputs.SshNode']] = None,
                  password: Optional[str] = None,
+                 private_key: Optional[str] = None,
                  socks5_password: Optional[str] = None,
                  socks5_server: Optional[str] = None,
                  socks5_username: Optional[str] = None,
                  username: Optional[str] = None):
         """
-        :param bool agent: Whether to use the SSH agent for authentication. Defaults to `false`.
+        :param bool agent: Whether to use the SSH agent for authentication. Takes precedence over the `private_key` and `password` fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or `false` if not set.
         :param str agent_socket: The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
         :param Sequence['SshNodeArgs'] nodes: Overrides for SSH connection configuration for a Proxmox VE node.
         :param str password: The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
+        :param str private_key: The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
         :param str socks5_password: The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
         :param str socks5_server: The address:port of the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_SERVER` environment variable.
         :param str socks5_username: The username for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_USERNAME` environment variable.
@@ -44,6 +46,8 @@ class Ssh(dict):
             pulumi.set(__self__, "nodes", nodes)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if private_key is not None:
+            pulumi.set(__self__, "private_key", private_key)
         if socks5_password is not None:
             pulumi.set(__self__, "socks5_password", socks5_password)
         if socks5_server is not None:
@@ -57,7 +61,7 @@ class Ssh(dict):
     @pulumi.getter
     def agent(self) -> Optional[bool]:
         """
-        Whether to use the SSH agent for authentication. Defaults to `false`.
+        Whether to use the SSH agent for authentication. Takes precedence over the `private_key` and `password` fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or `false` if not set.
         """
         return pulumi.get(self, "agent")
 
@@ -84,6 +88,14 @@ class Ssh(dict):
         The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
         """
         return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> Optional[str]:
+        """
+        The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
+        """
+        return pulumi.get(self, "private_key")
 
     @property
     @pulumi.getter(name="socks5Password")

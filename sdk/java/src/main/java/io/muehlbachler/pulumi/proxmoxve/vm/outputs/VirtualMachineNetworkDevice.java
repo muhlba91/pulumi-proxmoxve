@@ -59,6 +59,13 @@ public final class VirtualMachineNetworkDevice {
      */
     private @Nullable Double rateLimit;
     /**
+     * @return String containing a `;` separated list of VLAN trunks
+     * (&#34;10;20;30&#34;). Note that the VLAN-aware feature need to be enabled on the PVE
+     * Linux Bridge to use trunks.
+     * 
+     */
+    private @Nullable String trunks;
+    /**
      * @return The VLAN identifier.
      * 
      */
@@ -126,6 +133,15 @@ public final class VirtualMachineNetworkDevice {
         return Optional.ofNullable(this.rateLimit);
     }
     /**
+     * @return String containing a `;` separated list of VLAN trunks
+     * (&#34;10;20;30&#34;). Note that the VLAN-aware feature need to be enabled on the PVE
+     * Linux Bridge to use trunks.
+     * 
+     */
+    public Optional<String> trunks() {
+        return Optional.ofNullable(this.trunks);
+    }
+    /**
      * @return The VLAN identifier.
      * 
      */
@@ -150,6 +166,7 @@ public final class VirtualMachineNetworkDevice {
         private @Nullable Integer mtu;
         private @Nullable Integer queues;
         private @Nullable Double rateLimit;
+        private @Nullable String trunks;
         private @Nullable Integer vlanId;
         public Builder() {}
         public Builder(VirtualMachineNetworkDevice defaults) {
@@ -162,6 +179,7 @@ public final class VirtualMachineNetworkDevice {
     	      this.mtu = defaults.mtu;
     	      this.queues = defaults.queues;
     	      this.rateLimit = defaults.rateLimit;
+    	      this.trunks = defaults.trunks;
     	      this.vlanId = defaults.vlanId;
         }
 
@@ -214,6 +232,12 @@ public final class VirtualMachineNetworkDevice {
             return this;
         }
         @CustomType.Setter
+        public Builder trunks(@Nullable String trunks) {
+
+            this.trunks = trunks;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vlanId(@Nullable Integer vlanId) {
 
             this.vlanId = vlanId;
@@ -229,6 +253,7 @@ public final class VirtualMachineNetworkDevice {
             _resultValue.mtu = mtu;
             _resultValue.queues = queues;
             _resultValue.rateLimit = rateLimit;
+            _resultValue.trunks = trunks;
             _resultValue.vlanId = vlanId;
             return _resultValue;
         }

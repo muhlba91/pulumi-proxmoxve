@@ -1330,6 +1330,10 @@
                     "type": "number",
                     "description": "The rate limit in megabytes per second.\n"
                 },
+                "trunks": {
+                    "type": "string",
+                    "description": "String containing a `;` separated list of VLAN trunks \n(\"10;20;30\"). Note that the VLAN-aware feature need to be enabled on the PVE\nLinux Bridge to use trunks.\n"
+                },
                 "vlanId": {
                     "type": "integer",
                     "description": "The VLAN identifier.\n"
@@ -1509,7 +1513,7 @@
             "properties": {
                 "agent": {
                     "type": "boolean",
-                    "description": "Whether to use the SSH agent for authentication. Defaults to `false`.\n"
+                    "description": "Whether to use the SSH agent for authentication. Takes precedence over the `private_key` and `password` fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or `false` if not set.\n"
                 },
                 "agentSocket": {
                     "type": "string",
@@ -1525,6 +1529,11 @@
                 "password": {
                     "type": "string",
                     "description": "The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.\n",
+                    "secret": true
+                },
+                "privateKey": {
+                    "type": "string",
+                    "description": "The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.\n",
                     "secret": true
                 },
                 "socks5Password": {
@@ -1597,7 +1606,7 @@
             "properties": {
                 "agent": {
                     "type": "boolean",
-                    "description": "Whether to use the SSH agent for authentication. Defaults to `false`.\n"
+                    "description": "Whether to use the SSH agent for authentication. Takes precedence over the `private_key` and `password` fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or `false` if not set.\n"
                 },
                 "agentSocket": {
                     "type": "string",
@@ -1613,6 +1622,11 @@
                 "password": {
                     "type": "string",
                     "description": "The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.\n",
+                    "secret": true
+                },
+                "privateKey": {
+                    "type": "string",
+                    "description": "The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.\n",
                     "secret": true
                 },
                 "socks5Password": {

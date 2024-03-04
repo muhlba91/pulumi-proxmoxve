@@ -147,6 +147,25 @@ public final class VirtualMachineNetworkDeviceArgs extends com.pulumi.resources.
     }
 
     /**
+     * String containing a `;` separated list of VLAN trunks
+     * (&#34;10;20;30&#34;). Note that the VLAN-aware feature need to be enabled on the PVE
+     * Linux Bridge to use trunks.
+     * 
+     */
+    @Import(name="trunks")
+    private @Nullable Output<String> trunks;
+
+    /**
+     * @return String containing a `;` separated list of VLAN trunks
+     * (&#34;10;20;30&#34;). Note that the VLAN-aware feature need to be enabled on the PVE
+     * Linux Bridge to use trunks.
+     * 
+     */
+    public Optional<Output<String>> trunks() {
+        return Optional.ofNullable(this.trunks);
+    }
+
+    /**
      * The VLAN identifier.
      * 
      */
@@ -172,6 +191,7 @@ public final class VirtualMachineNetworkDeviceArgs extends com.pulumi.resources.
         this.mtu = $.mtu;
         this.queues = $.queues;
         this.rateLimit = $.rateLimit;
+        this.trunks = $.trunks;
         this.vlanId = $.vlanId;
     }
 
@@ -367,6 +387,31 @@ public final class VirtualMachineNetworkDeviceArgs extends com.pulumi.resources.
          */
         public Builder rateLimit(Double rateLimit) {
             return rateLimit(Output.of(rateLimit));
+        }
+
+        /**
+         * @param trunks String containing a `;` separated list of VLAN trunks
+         * (&#34;10;20;30&#34;). Note that the VLAN-aware feature need to be enabled on the PVE
+         * Linux Bridge to use trunks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trunks(@Nullable Output<String> trunks) {
+            $.trunks = trunks;
+            return this;
+        }
+
+        /**
+         * @param trunks String containing a `;` separated list of VLAN trunks
+         * (&#34;10;20;30&#34;). Note that the VLAN-aware feature need to be enabled on the PVE
+         * Linux Bridge to use trunks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trunks(String trunks) {
+            return trunks(Output.of(trunks));
         }
 
         /**

@@ -18,7 +18,7 @@ export interface HostsEntry {
 
 export interface ProviderSsh {
     /**
-     * Whether to use the SSH agent for authentication. Defaults to `false`.
+     * Whether to use the SSH agent for authentication. Takes precedence over the `privateKey` and `password` fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or `false` if not set.
      */
     agent?: pulumi.Input<boolean>;
     /**
@@ -33,6 +33,10 @@ export interface ProviderSsh {
      * The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
      */
     password?: pulumi.Input<string>;
+    /**
+     * The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
+     */
+    privateKey?: pulumi.Input<string>;
     /**
      * The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
      */
@@ -1144,6 +1148,12 @@ export namespace VM {
          * The rate limit in megabytes per second.
          */
         rateLimit?: pulumi.Input<number>;
+        /**
+         * String containing a `;` separated list of VLAN trunks 
+         * ("10;20;30"). Note that the VLAN-aware feature need to be enabled on the PVE
+         * Linux Bridge to use trunks.
+         */
+        trunks?: pulumi.Input<string>;
         /**
          * The VLAN identifier.
          */

@@ -19,14 +19,14 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
     public static final ProviderSshArgs Empty = new ProviderSshArgs();
 
     /**
-     * Whether to use the SSH agent for authentication. Defaults to `false`.
+     * Whether to use the SSH agent for authentication. Takes precedence over the `private_key` and `password` fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or `false` if not set.
      * 
      */
     @Import(name="agent")
     private @Nullable Output<Boolean> agent;
 
     /**
-     * @return Whether to use the SSH agent for authentication. Defaults to `false`.
+     * @return Whether to use the SSH agent for authentication. Takes precedence over the `private_key` and `password` fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or `false` if not set.
      * 
      */
     public Optional<Output<Boolean>> agent() {
@@ -76,6 +76,21 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> password() {
         return Optional.ofNullable(this.password);
+    }
+
+    /**
+     * The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
+     * 
+     */
+    @Import(name="privateKey")
+    private @Nullable Output<String> privateKey;
+
+    /**
+     * @return The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
+     * 
+     */
+    public Optional<Output<String>> privateKey() {
+        return Optional.ofNullable(this.privateKey);
     }
 
     /**
@@ -145,6 +160,7 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
         this.agentSocket = $.agentSocket;
         this.nodes = $.nodes;
         this.password = $.password;
+        this.privateKey = $.privateKey;
         this.socks5Password = $.socks5Password;
         this.socks5Server = $.socks5Server;
         this.socks5Username = $.socks5Username;
@@ -170,7 +186,7 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param agent Whether to use the SSH agent for authentication. Defaults to `false`.
+         * @param agent Whether to use the SSH agent for authentication. Takes precedence over the `private_key` and `password` fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or `false` if not set.
          * 
          * @return builder
          * 
@@ -181,7 +197,7 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param agent Whether to use the SSH agent for authentication. Defaults to `false`.
+         * @param agent Whether to use the SSH agent for authentication. Takes precedence over the `private_key` and `password` fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or `false` if not set.
          * 
          * @return builder
          * 
@@ -261,6 +277,27 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder password(String password) {
             return password(Output.of(password));
+        }
+
+        /**
+         * @param privateKey The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateKey(@Nullable Output<String> privateKey) {
+            $.privateKey = privateKey;
+            return this;
+        }
+
+        /**
+         * @param privateKey The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateKey(String privateKey) {
+            return privateKey(Output.of(privateKey));
         }
 
         /**

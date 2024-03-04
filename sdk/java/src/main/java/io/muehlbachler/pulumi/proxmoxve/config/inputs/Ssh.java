@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class Ssh {
     /**
-     * @return Whether to use the SSH agent for authentication. Defaults to `false`.
+     * @return Whether to use the SSH agent for authentication. Takes precedence over the `private_key` and `password` fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or `false` if not set.
      * 
      */
     private @Nullable Boolean agent;
@@ -34,6 +34,11 @@ public final class Ssh {
      * 
      */
     private @Nullable String password;
+    /**
+     * @return The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
+     * 
+     */
+    private @Nullable String privateKey;
     /**
      * @return The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
      * 
@@ -57,7 +62,7 @@ public final class Ssh {
 
     private Ssh() {}
     /**
-     * @return Whether to use the SSH agent for authentication. Defaults to `false`.
+     * @return Whether to use the SSH agent for authentication. Takes precedence over the `private_key` and `password` fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or `false` if not set.
      * 
      */
     public Optional<Boolean> agent() {
@@ -83,6 +88,13 @@ public final class Ssh {
      */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
+    }
+    /**
+     * @return The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
+     * 
+     */
+    public Optional<String> privateKey() {
+        return Optional.ofNullable(this.privateKey);
     }
     /**
      * @return The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
@@ -126,6 +138,7 @@ public final class Ssh {
         private @Nullable String agentSocket;
         private @Nullable List<SshNode> nodes;
         private @Nullable String password;
+        private @Nullable String privateKey;
         private @Nullable String socks5Password;
         private @Nullable String socks5Server;
         private @Nullable String socks5Username;
@@ -137,6 +150,7 @@ public final class Ssh {
     	      this.agentSocket = defaults.agentSocket;
     	      this.nodes = defaults.nodes;
     	      this.password = defaults.password;
+    	      this.privateKey = defaults.privateKey;
     	      this.socks5Password = defaults.socks5Password;
     	      this.socks5Server = defaults.socks5Server;
     	      this.socks5Username = defaults.socks5Username;
@@ -171,6 +185,12 @@ public final class Ssh {
             return this;
         }
         @CustomType.Setter
+        public Builder privateKey(@Nullable String privateKey) {
+
+            this.privateKey = privateKey;
+            return this;
+        }
+        @CustomType.Setter
         public Builder socks5Password(@Nullable String socks5Password) {
 
             this.socks5Password = socks5Password;
@@ -200,6 +220,7 @@ public final class Ssh {
             _resultValue.agentSocket = agentSocket;
             _resultValue.nodes = nodes;
             _resultValue.password = password;
+            _resultValue.privateKey = privateKey;
             _resultValue.socks5Password = socks5Password;
             _resultValue.socks5Server = socks5Server;
             _resultValue.socks5Username = socks5Username;

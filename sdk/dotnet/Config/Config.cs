@@ -128,7 +128,7 @@ namespace Pulumi.ProxmoxVE
              public class Ssh
              {
             /// <summary>
-            /// Whether to use the SSH agent for authentication. Defaults to `false`.
+            /// Whether to use the SSH agent for authentication. Takes precedence over the `private_key` and `password` fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or `false` if not set.
             /// </summary>
                 public bool? Agent { get; set; }
             /// <summary>
@@ -143,6 +143,10 @@ namespace Pulumi.ProxmoxVE
             /// The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
             /// </summary>
                 public string? Password { get; set; } = null!;
+            /// <summary>
+            /// The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
+            /// </summary>
+                public string? PrivateKey { get; set; } = null!;
             /// <summary>
             /// The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
             /// </summary>

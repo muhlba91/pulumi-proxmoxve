@@ -13,7 +13,7 @@ namespace Pulumi.ProxmoxVE.Inputs
     public sealed class ProviderSshArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to use the SSH agent for authentication. Defaults to `false`.
+        /// Whether to use the SSH agent for authentication. Takes precedence over the `private_key` and `password` fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or `false` if not set.
         /// </summary>
         [Input("agent")]
         public Input<bool>? Agent { get; set; }
@@ -49,6 +49,22 @@ namespace Pulumi.ProxmoxVE.Inputs
             {
                 var emptySecret = Output.CreateSecret(0);
                 _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("privateKey")]
+        private Input<string>? _privateKey;
+
+        /// <summary>
+        /// The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
+        /// </summary>
+        public Input<string>? PrivateKey
+        {
+            get => _privateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
 

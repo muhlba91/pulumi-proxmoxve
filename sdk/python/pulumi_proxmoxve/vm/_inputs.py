@@ -1554,6 +1554,7 @@ class VirtualMachineNetworkDeviceArgs:
                  mtu: Optional[pulumi.Input[int]] = None,
                  queues: Optional[pulumi.Input[int]] = None,
                  rate_limit: Optional[pulumi.Input[float]] = None,
+                 trunks: Optional[pulumi.Input[str]] = None,
                  vlan_id: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] bridge: The name of the network bridge (defaults
@@ -1568,6 +1569,9 @@ class VirtualMachineNetworkDeviceArgs:
                MTU. Cannot be larger than the bridge MTU.
         :param pulumi.Input[int] queues: The number of queues for VirtIO (1..64).
         :param pulumi.Input[float] rate_limit: The rate limit in megabytes per second.
+        :param pulumi.Input[str] trunks: String containing a `;` separated list of VLAN trunks 
+               ("10;20;30"). Note that the VLAN-aware feature need to be enabled on the PVE
+               Linux Bridge to use trunks.
         :param pulumi.Input[int] vlan_id: The VLAN identifier.
         """
         if bridge is not None:
@@ -1586,6 +1590,8 @@ class VirtualMachineNetworkDeviceArgs:
             pulumi.set(__self__, "queues", queues)
         if rate_limit is not None:
             pulumi.set(__self__, "rate_limit", rate_limit)
+        if trunks is not None:
+            pulumi.set(__self__, "trunks", trunks)
         if vlan_id is not None:
             pulumi.set(__self__, "vlan_id", vlan_id)
 
@@ -1688,6 +1694,20 @@ class VirtualMachineNetworkDeviceArgs:
     @rate_limit.setter
     def rate_limit(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "rate_limit", value)
+
+    @property
+    @pulumi.getter
+    def trunks(self) -> Optional[pulumi.Input[str]]:
+        """
+        String containing a `;` separated list of VLAN trunks 
+        ("10;20;30"). Note that the VLAN-aware feature need to be enabled on the PVE
+        Linux Bridge to use trunks.
+        """
+        return pulumi.get(self, "trunks")
+
+    @trunks.setter
+    def trunks(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "trunks", value)
 
     @property
     @pulumi.getter(name="vlanId")

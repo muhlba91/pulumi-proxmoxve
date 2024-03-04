@@ -3403,6 +3403,10 @@ type VirtualMachineNetworkDevice struct {
 	Queues *int `pulumi:"queues"`
 	// The rate limit in megabytes per second.
 	RateLimit *float64 `pulumi:"rateLimit"`
+	// String containing a `;` separated list of VLAN trunks
+	// ("10;20;30"). Note that the VLAN-aware feature need to be enabled on the PVE
+	// Linux Bridge to use trunks.
+	Trunks *string `pulumi:"trunks"`
 	// The VLAN identifier.
 	VlanId *int `pulumi:"vlanId"`
 }
@@ -3439,6 +3443,10 @@ type VirtualMachineNetworkDeviceArgs struct {
 	Queues pulumi.IntPtrInput `pulumi:"queues"`
 	// The rate limit in megabytes per second.
 	RateLimit pulumi.Float64PtrInput `pulumi:"rateLimit"`
+	// String containing a `;` separated list of VLAN trunks
+	// ("10;20;30"). Note that the VLAN-aware feature need to be enabled on the PVE
+	// Linux Bridge to use trunks.
+	Trunks pulumi.StringPtrInput `pulumi:"trunks"`
 	// The VLAN identifier.
 	VlanId pulumi.IntPtrInput `pulumi:"vlanId"`
 }
@@ -3536,6 +3544,13 @@ func (o VirtualMachineNetworkDeviceOutput) Queues() pulumi.IntPtrOutput {
 // The rate limit in megabytes per second.
 func (o VirtualMachineNetworkDeviceOutput) RateLimit() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkDevice) *float64 { return v.RateLimit }).(pulumi.Float64PtrOutput)
+}
+
+// String containing a `;` separated list of VLAN trunks
+// ("10;20;30"). Note that the VLAN-aware feature need to be enabled on the PVE
+// Linux Bridge to use trunks.
+func (o VirtualMachineNetworkDeviceOutput) Trunks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineNetworkDevice) *string { return v.Trunks }).(pulumi.StringPtrOutput)
 }
 
 // The VLAN identifier.

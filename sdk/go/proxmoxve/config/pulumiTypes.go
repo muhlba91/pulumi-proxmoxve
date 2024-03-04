@@ -14,7 +14,7 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type Ssh struct {
-	// Whether to use the SSH agent for authentication. Defaults to `false`.
+	// Whether to use the SSH agent for authentication. Takes precedence over the `privateKey` and `password` fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or `false` if not set.
 	Agent *bool `pulumi:"agent"`
 	// The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
 	AgentSocket *string `pulumi:"agentSocket"`
@@ -22,6 +22,8 @@ type Ssh struct {
 	Nodes []SshNode `pulumi:"nodes"`
 	// The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
 	Password *string `pulumi:"password"`
+	// The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
+	PrivateKey *string `pulumi:"privateKey"`
 	// The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
 	Socks5Password *string `pulumi:"socks5Password"`
 	// The address:port of the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_SERVER` environment variable.
@@ -44,7 +46,7 @@ type SshInput interface {
 }
 
 type SshArgs struct {
-	// Whether to use the SSH agent for authentication. Defaults to `false`.
+	// Whether to use the SSH agent for authentication. Takes precedence over the `privateKey` and `password` fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or `false` if not set.
 	Agent pulumi.BoolPtrInput `pulumi:"agent"`
 	// The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
 	AgentSocket pulumi.StringPtrInput `pulumi:"agentSocket"`
@@ -52,6 +54,8 @@ type SshArgs struct {
 	Nodes SshNodeArrayInput `pulumi:"nodes"`
 	// The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
 	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
+	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
 	// The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
 	Socks5Password pulumi.StringPtrInput `pulumi:"socks5Password"`
 	// The address:port of the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_SERVER` environment variable.
@@ -88,7 +92,7 @@ func (o SshOutput) ToSshOutputWithContext(ctx context.Context) SshOutput {
 	return o
 }
 
-// Whether to use the SSH agent for authentication. Defaults to `false`.
+// Whether to use the SSH agent for authentication. Takes precedence over the `privateKey` and `password` fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or `false` if not set.
 func (o SshOutput) Agent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Ssh) *bool { return v.Agent }).(pulumi.BoolPtrOutput)
 }
@@ -106,6 +110,11 @@ func (o SshOutput) Nodes() SshNodeArrayOutput {
 // The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
 func (o SshOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Ssh) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
+func (o SshOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Ssh) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
 }
 
 // The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
