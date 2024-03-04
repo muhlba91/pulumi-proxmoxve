@@ -113,12 +113,10 @@ class Role(pulumi.CustomResource):
 
         ## Import
 
-        Instances can be imported using the `role_id`, e.g.,
-
-         bash
+        Instances can be imported using the `role_id`, e.g., bash
 
         ```sh
-        $ pulumi import proxmoxve:Permission/role:Role operations_monitoring operations-monitoring
+         $ pulumi import proxmoxve:Permission/role:Role operations_monitoring operations-monitoring
         ```
 
         :param str resource_name: The name of the resource.
@@ -148,12 +146,10 @@ class Role(pulumi.CustomResource):
 
         ## Import
 
-        Instances can be imported using the `role_id`, e.g.,
-
-         bash
+        Instances can be imported using the `role_id`, e.g., bash
 
         ```sh
-        $ pulumi import proxmoxve:Permission/role:Role operations_monitoring operations-monitoring
+         $ pulumi import proxmoxve:Permission/role:Role operations_monitoring operations-monitoring
         ```
 
         :param str resource_name: The name of the resource.

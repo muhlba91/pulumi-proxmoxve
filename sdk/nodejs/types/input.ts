@@ -352,7 +352,8 @@ export namespace CT {
 
     export interface ContainerStartup {
         /**
-         * A non-negative number defining the delay in seconds before the next container is shut down
+         * A non-negative number defining the delay in
+         * seconds before the next container is shut down.
          */
         downDelay?: pulumi.Input<number>;
         /**
@@ -361,7 +362,8 @@ export namespace CT {
          */
         order?: pulumi.Input<number>;
         /**
-         * A non-negative number defining the delay in seconds before the next container is started
+         * A non-negative number defining the delay in
+         * seconds before the next container is started.
          */
         upDelay?: pulumi.Input<number>;
     }
@@ -565,6 +567,7 @@ export namespace Network {
          */
         type?: pulumi.Input<string>;
     }
+
 }
 
 export namespace Permission {
@@ -1208,7 +1211,8 @@ export namespace VM {
 
     export interface VirtualMachineStartup {
         /**
-         * A non-negative number defining the delay in seconds before the next VM is shut down
+         * A non-negative number defining the delay in
+         * seconds before the next VM is shut down.
          */
         downDelay?: pulumi.Input<number>;
         /**
@@ -1217,7 +1221,8 @@ export namespace VM {
          */
         order?: pulumi.Input<number>;
         /**
-         * A non-negative number defining the delay in seconds before the next VM is started
+         * A non-negative number defining the delay in
+         * seconds before the next VM is started.
          */
         upDelay?: pulumi.Input<number>;
     }

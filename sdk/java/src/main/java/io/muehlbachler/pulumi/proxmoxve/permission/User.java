@@ -67,12 +67,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Instances can be imported using the `user_id`, e.g.,
- * 
- *  bash
+ * Instances can be imported using the `user_id`, e.g., bash
  * 
  * ```sh
- * $ pulumi import proxmoxve:Permission/user:User operations_automation operations-automation@pve
+ *  $ pulumi import proxmoxve:Permission/user:User operations_automation operations-automation@pve
  * ```
  * 
  */

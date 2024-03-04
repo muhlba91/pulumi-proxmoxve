@@ -7,7 +7,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -114,7 +114,7 @@ def get_hosts(node_name: Optional[str] = None,
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
-    first_node_host_entries = proxmoxve.get_hosts(node_name="first-node")
+    first_node_host_entries = proxmoxve.Network.get_hosts(node_name="first-node")
     ```
 
 
@@ -123,7 +123,7 @@ def get_hosts(node_name: Optional[str] = None,
     __args__ = dict()
     __args__['nodeName'] = node_name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('proxmoxve:index/getHosts:getHosts', __args__, opts=opts, typ=GetHostsResult).value
+    __ret__ = pulumi.runtime.invoke('proxmoxve:Network/getHosts:getHosts', __args__, opts=opts, typ=GetHostsResult).value
 
     return AwaitableGetHostsResult(
         addresses=pulumi.get(__ret__, 'addresses'),
@@ -146,7 +146,7 @@ def get_hosts_output(node_name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
-    first_node_host_entries = proxmoxve.get_hosts(node_name="first-node")
+    first_node_host_entries = proxmoxve.Network.get_hosts(node_name="first-node")
     ```
 
 

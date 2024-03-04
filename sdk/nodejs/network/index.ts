@@ -35,6 +35,26 @@ export type FirewallSecurityGroup = import("./firewallSecurityGroup").FirewallSe
 export const FirewallSecurityGroup: typeof import("./firewallSecurityGroup").FirewallSecurityGroup = null as any;
 utilities.lazyLoad(exports, ["FirewallSecurityGroup"], () => require("./firewallSecurityGroup"));
 
+export { GetDNSArgs, GetDNSResult, GetDNSOutputArgs } from "./getDNS";
+export const getDNS: typeof import("./getDNS").getDNS = null as any;
+export const getDNSOutput: typeof import("./getDNS").getDNSOutput = null as any;
+utilities.lazyLoad(exports, ["getDNS","getDNSOutput"], () => require("./getDNS"));
+
+export { GetHostsArgs, GetHostsResult, GetHostsOutputArgs } from "./getHosts";
+export const getHosts: typeof import("./getHosts").getHosts = null as any;
+export const getHostsOutput: typeof import("./getHosts").getHostsOutput = null as any;
+utilities.lazyLoad(exports, ["getHosts","getHostsOutput"], () => require("./getHosts"));
+
+export { GetTimeArgs, GetTimeResult, GetTimeOutputArgs } from "./getTime";
+export const getTime: typeof import("./getTime").getTime = null as any;
+export const getTimeOutput: typeof import("./getTime").getTimeOutput = null as any;
+utilities.lazyLoad(exports, ["getTime","getTimeOutput"], () => require("./getTime"));
+
+export { GetVersionResult } from "./getVersion";
+export const getVersion: typeof import("./getVersion").getVersion = null as any;
+export const getVersionOutput: typeof import("./getVersion").getVersionOutput = null as any;
+utilities.lazyLoad(exports, ["getVersion","getVersionOutput"], () => require("./getVersion"));
+
 export { NetworkBridgeArgs, NetworkBridgeState } from "./networkBridge";
 export type NetworkBridge = import("./networkBridge").NetworkBridge;
 export const NetworkBridge: typeof import("./networkBridge").NetworkBridge = null as any;

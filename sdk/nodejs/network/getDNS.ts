@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as utilities from "./utilities";
+import * as utilities from "../utilities";
 
 /**
  * Retrieves the DNS configuration for a specific node.
@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
  *
- * const firstNode = proxmoxve.getDNS({
+ * const firstNode = proxmoxve.Network.getDNS({
  *     nodeName: "first-node",
  * });
  * ```
@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
 export function getDNS(args: GetDNSArgs, opts?: pulumi.InvokeOptions): Promise<GetDNSResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("proxmoxve:index/getDNS:getDNS", {
+    return pulumi.runtime.invoke("proxmoxve:Network/getDNS:getDNS", {
         "nodeName": args.nodeName,
     }, opts);
 }
@@ -63,7 +63,7 @@ export interface GetDNSResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
  *
- * const firstNode = proxmoxve.getDNS({
+ * const firstNode = proxmoxve.Network.getDNS({
  *     nodeName: "first-node",
  * });
  * ```

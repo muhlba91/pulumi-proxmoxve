@@ -16,15 +16,16 @@ package proxmoxve
 
 import (
 	"context"
+	_ "embed"
 	"fmt"
 	"path/filepath"
 	"strings"
 	"unicode"
 
+	"github.com/bpg/terraform-provider-proxmox/fwprovider"
 	"github.com/bpg/terraform-provider-proxmox/proxmoxtf/provider"
 	"github.com/ettle/strcase"
 	"github.com/muhlba91/pulumi-proxmoxve/provider/pkg/version"
-	shimprovider "github.com/muhlba91/pulumi-proxmoxve/provider/shim"
 	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
@@ -35,6 +36,7 @@ import (
 )
 
 const (
+	mainPkg       = "proxmoxve"
 	mainMod       = "index"
 	vmMod         = "vm"
 	containerMod  = "ct"
@@ -46,6 +48,9 @@ const (
 	downloadMod   = "download"
 	haMod         = "ha"
 )
+
+//go:embed cmd/pulumi-resource-proxmoxve/bridge-metadata.json
+var metadata []byte
 
 // needed to keep backwards compatibility of resource module naming
 var moduleOverrides = map[string]string{
@@ -59,50 +64,21 @@ var moduleOverrides = map[string]string{
 
 // needed to keep backwards compatibility of resource module naming
 var moduleNameOverrides = map[string]string{
-	"index/pool":              permissionMod,
-	"index/pools":             permissionMod,
-	"index/role":              permissionMod,
-	"index/roles":             permissionMod,
-	"index/user":              permissionMod,
-	"index/users":             permissionMod,
-	"index/vm":                vmMod,
-	"index/vms":               vmMod,
-	"index/datastores":        storageMod,
-	"index/group":             permissionMod,
-	"index/groups":            permissionMod,
-	"index/nodes":             clusterMod,
-	"index/file":              storageMod,
-	"index/container":         containerMod,
-	"cluster/firewall":        networkMod,
-	"firewall/options":        networkMod,
-	"firewall/rules":          networkMod,
-	"firewall/ipset":          networkMod,
-	"firewall/security/group": networkMod,
-	"firewall/alias":          networkMod,
-	"index/hagroup":           haMod,
-	"index/hagroups":          haMod,
-	"index/haresource":        haMod,
-	"index/haresources":       haMod,
+	"index/hagroup":     haMod,
+	"index/hagroups":    haMod,
+	"index/haresource":  haMod,
+	"index/haresources": haMod,
 }
 
 // needed to keep backwards compatibility of resource naming
 var nameNameOverrides = map[string]string{
-	"index/certificate":               "certifi",
-	"cluster/firewall/security/group": "firewall_security_group",
-	"index/vm":                        "virtual_machine",
-	"index/vms":                       "virtual_machines",
-	"index/dns":                       "d_n_s",
-	"firewall/rules":                  "firewall_rules",
-	"firewall/alias":                  "firewall_alias",
-	"firewall/options":                "firewall_options",
-	"firewall/ipset":                  "firewall_i_p_set",
-	"network/linux/vlan":              "network_vlan",
-	"network/linux/alias":             "network_alias",
-	"network/linux/bridge":            "network_bridge",
-	"index/hagroup":                   "h_a_group",
-	"index/hagroups":                  "h_a_groups",
-	"index/haresource":                "h_a_resource",
-	"index/haresources":               "h_a_resources",
+	"network/linux/vlan":   "network_vlan",
+	"network/linux/alias":  "network_alias",
+	"network/linux/bridge": "network_bridge",
+	"index/hagroup":        "h_a_group",
+	"index/hagroups":       "h_a_groups",
+	"index/haresource":     "h_a_resource",
+	"index/haresources":    "h_a_resources",
 }
 
 func preConfigureCallback(_ resource.PropertyMap, _ shim.ResourceConfig) error {
@@ -110,11 +86,7 @@ func preConfigureCallback(_ resource.PropertyMap, _ shim.ResourceConfig) error {
 }
 
 func convertName(tfname string) (module string, name string) {
-	tfNameItems := strings.Split(tfname, "_")
-	// convert proxmox to proxmoxve to match the namespace
-	tfNameItems[0] = strings.Replace(tfNameItems[0], "proxmox", "proxmoxve", 1)
-	// removes the virtual environment part
-	tfNameItems = append(tfNameItems[:1], tfNameItems[3:]...)
+	tfNameItems := strings.Split(strings.ReplaceAll(tfname, "proxmox_virtual_environment_", "proxmoxve_"), "_")
 
 	contract.Assertf(len(tfNameItems) >= 2, "Invalid snake case name %s", tfname)
 	contract.Assertf(tfNameItems[0] == "proxmoxve", "Invalid snake case name %s. Does not start with proxmoxve", tfname)
@@ -160,18 +132,22 @@ func makeResource(res string) tokens.Type {
 func moduleComputeStrategy() tfbridge.Strategy {
 	return tfbridge.Strategy{
 		Resource: func(tfToken string, elem *tfbridge.ResourceInfo) error {
-			elem.Tok = makeResource(tfToken)
+			if elem.Tok == "" {
+				elem.Tok = makeResource(tfToken)
+			}
 			return nil
 		},
 		DataSource: func(tfToken string, elem *tfbridge.DataSourceInfo) error {
-			elem.Tok = makeDataSource(tfToken)
+			if elem.Tok == "" {
+				elem.Tok = makeDataSource(tfToken)
+			}
 			return nil
 		},
 	}
 }
 
 func Provider() tfbridge.ProviderInfo {
-	p := pf.MuxShimWithPF(context.Background(), shimv2.NewProvider(provider.ProxmoxVirtualEnvironment()), shimprovider.NewProvider())
+	p := pf.MuxShimWithPF(context.Background(), shimv2.NewProvider(provider.ProxmoxVirtualEnvironment()), fwprovider.New(version.Version)())
 
 	prov := tfbridge.ProviderInfo{
 		P:                    p,
@@ -186,11 +162,67 @@ func Provider() tfbridge.ProviderInfo {
 		LogoURL:              "https://raw.githubusercontent.com/muhlba91/pulumi-proxmoxve/main/assets/proxmox-logo.png",
 		GitHubOrg:            "bpg",
 		PluginDownloadURL:    "github://api.github.com/muhlba91/pulumi-proxmoxve",
+		Version:              version.Version,
 		Config:               map[string]*tfbridge.SchemaInfo{},
 		PreConfigureCallback: preConfigureCallback,
 		MuxWith:              []tfbridge.MuxProvider{},
-		Resources:            map[string]*tfbridge.ResourceInfo{},
-		DataSources:          map[string]*tfbridge.DataSourceInfo{},
+		MetadataInfo:         tfbridge.NewProviderMetadata(metadata),
+		Resources: map[string]*tfbridge.ResourceInfo{
+			// VM/CT
+			"proxmox_virtual_environment_vm": {Tok: tfbridge.MakeResource(mainPkg, "VM", "VirtualMachine")},
+			"proxmox_virtual_environment_container": {
+				Tok: tfbridge.MakeResource(mainPkg, "CT", "Container"),
+				TransformOutputs: func(_ context.Context, rpm resource.PropertyMap) (resource.PropertyMap, error) {
+					const containerResourceContainerFeaturesPropertyKey = resource.PropertyKey("features")
+					if !rpm.HasValue(containerResourceContainerFeaturesPropertyKey) {
+						rpm[containerResourceContainerFeaturesPropertyKey] = resource.NewPropertyValue(resource.NewPropertyValue(""))
+					}
+					return rpm, nil
+				},
+			},
+			// Storage
+			"proxmox_virtual_environment_file": {Tok: tfbridge.MakeResource(mainPkg, "Storage", "File")},
+			// Environment
+			"proxmox_virtual_environment_dns":         {Tok: tfbridge.MakeResource(mainPkg, "index", "DNS")},
+			"proxmox_virtual_environment_certificate": {Tok: tfbridge.MakeResource(mainPkg, "index", "Certifi")},
+			"proxmox_virtual_environment_hosts":       {Tok: tfbridge.MakeResource(mainPkg, "index", "Hosts")},
+			"proxmox_virtual_environment_time":        {Tok: tfbridge.MakeResource(mainPkg, "index", "Time")},
+			// Permission
+			"proxmox_virtual_environment_user":  {Tok: tfbridge.MakeResource(mainPkg, "Permission", "User")},
+			"proxmox_virtual_environment_group": {Tok: tfbridge.MakeResource(mainPkg, "Permission", "Group")},
+			"proxmox_virtual_environment_pool":  {Tok: tfbridge.MakeResource(mainPkg, "Permission", "Pool")},
+			"proxmox_virtual_environment_role":  {Tok: tfbridge.MakeResource(mainPkg, "Permission", "Role")},
+			// Network
+			"proxmox_virtual_environment_cluster_firewall":                {Tok: tfbridge.MakeResource(mainPkg, "Network", "Firewall")},
+			"proxmox_virtual_environment_cluster_firewall_security_group": {Tok: tfbridge.MakeResource(mainPkg, "Network", "FirewallSecurityGroup")},
+			"proxmox_virtual_environment_firewall_alias":                  {Tok: tfbridge.MakeResource(mainPkg, "Network", "FirewallAlias")},
+			"proxmox_virtual_environment_firewall_ipset":                  {Tok: tfbridge.MakeResource(mainPkg, "Network", "FirewallIPSet")},
+			"proxmox_virtual_environment_firewall_options":                {Tok: tfbridge.MakeResource(mainPkg, "Network", "FirewallOptions")},
+			"proxmox_virtual_environment_firewall_rules":                  {Tok: tfbridge.MakeResource(mainPkg, "Network", "FirewallRules")},
+		},
+		DataSources: map[string]*tfbridge.DataSourceInfo{
+			// Cluster
+			"proxmox_virtual_environment_nodes": {Tok: tfbridge.MakeDataSource(mainPkg, "Cluster", "getNodes")},
+			// VM/CT
+			"proxmox_virtual_environment_vm":  {Tok: tfbridge.MakeDataSource(mainPkg, "VM", "getVirtualMachine")},
+			"proxmox_virtual_environment_vms": {Tok: tfbridge.MakeDataSource(mainPkg, "VM", "getVirtualMachines")},
+			// Storage
+			"proxmox_virtual_environment_datastores": {Tok: tfbridge.MakeDataSource(mainPkg, "Storage", "getDatastores")},
+			// Environment
+			"proxmox_virtual_environment_dns":     {Tok: tfbridge.MakeDataSource(mainPkg, "Network", "getDNS")},
+			"proxmox_virtual_environment_time":    {Tok: tfbridge.MakeDataSource(mainPkg, "Network", "getTime")},
+			"proxmox_virtual_environment_hosts":   {Tok: tfbridge.MakeDataSource(mainPkg, "Network", "getHosts")},
+			"proxmox_virtual_environment_version": {Tok: tfbridge.MakeDataSource(mainPkg, "Network", "getVersion")},
+			// Permissions
+			"proxmox_virtual_environment_user":   {Tok: tfbridge.MakeDataSource(mainPkg, "Permission", "getUser")},
+			"proxmox_virtual_environment_users":  {Tok: tfbridge.MakeDataSource(mainPkg, "Permission", "getUsers")},
+			"proxmox_virtual_environment_group":  {Tok: tfbridge.MakeDataSource(mainPkg, "Permission", "getGroup")},
+			"proxmox_virtual_environment_groups": {Tok: tfbridge.MakeDataSource(mainPkg, "Permission", "getGroups")},
+			"proxmox_virtual_environment_pool":   {Tok: tfbridge.MakeDataSource(mainPkg, "Permission", "getPool")},
+			"proxmox_virtual_environment_pools":  {Tok: tfbridge.MakeDataSource(mainPkg, "Permission", "getPools")},
+			"proxmox_virtual_environment_role":   {Tok: tfbridge.MakeDataSource(mainPkg, "Permission", "getRole")},
+			"proxmox_virtual_environment_roles":  {Tok: tfbridge.MakeDataSource(mainPkg, "Permission", "getRoles")},
+		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			PackageName: "@muhlba91/pulumi-proxmoxve",
 			Dependencies: map[string]string{
@@ -209,10 +241,10 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Golang: &tfbridge.GolangInfo{
 			ImportBasePath: filepath.Join(
-				fmt.Sprintf("github.com/muhlba91/pulumi-%[1]s/sdk/", "proxmoxve"),
+				fmt.Sprintf("github.com/muhlba91/pulumi-%[1]s/sdk/", mainPkg),
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
-				"proxmoxve",
+				mainPkg,
 			),
 			GenerateResourceContainerTypes: true,
 		},
@@ -221,7 +253,7 @@ func Provider() tfbridge.ProviderInfo {
 				"Pulumi": "3.*",
 			},
 			Namespaces: map[string]string{
-				"proxmoxve": "ProxmoxVE",
+				mainPkg: "ProxmoxVE",
 			},
 		},
 		Java: &tfbridge.JavaInfo{
@@ -230,6 +262,7 @@ func Provider() tfbridge.ProviderInfo {
 	}
 
 	prov.MustComputeTokens(moduleComputeStrategy())
+	prov.MustApplyAutoAliases()
 	prov.SetAutonaming(255, "-")
 
 	return prov

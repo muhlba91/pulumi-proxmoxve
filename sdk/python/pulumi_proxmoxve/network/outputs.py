@@ -14,6 +14,7 @@ __all__ = [
     'FirewallLogRatelimit',
     'FirewallRulesRule',
     'FirewallSecurityGroupRule',
+    'GetHostsEntryResult',
 ]
 
 @pulumi.output_type
@@ -583,5 +584,34 @@ class FirewallSecurityGroupRule(dict):
         Rule type (`in`, `out`).
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetHostsEntryResult(dict):
+    def __init__(__self__, *,
+                 address: str,
+                 hostnames: Sequence[str]):
+        """
+        :param str address: The address
+        :param Sequence[str] hostnames: The hostnames associated with each of the IP addresses.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "hostnames", hostnames)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        The address
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter
+    def hostnames(self) -> Sequence[str]:
+        """
+        The hostnames associated with each of the IP addresses.
+        """
+        return pulumi.get(self, "hostnames")
 
 

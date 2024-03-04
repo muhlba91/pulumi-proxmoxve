@@ -2,9 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
-import * as utilities from "./utilities";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
+import * as utilities from "../utilities";
 
 /**
  * Retrieves all the host entries from a specific node.
@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
  *
- * const firstNodeHostEntries = proxmoxve.getHosts({
+ * const firstNodeHostEntries = proxmoxve.Network.getHosts({
  *     nodeName: "first-node",
  * });
  * ```
@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
 export function getHosts(args: GetHostsArgs, opts?: pulumi.InvokeOptions): Promise<GetHostsResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("proxmoxve:index/getHosts:getHosts", {
+    return pulumi.runtime.invoke("proxmoxve:Network/getHosts:getHosts", {
         "nodeName": args.nodeName,
     }, opts);
 }
@@ -54,7 +54,7 @@ export interface GetHostsResult {
      * The host entries (conversion of `addresses` and `hostnames` into
      * objects).
      */
-    readonly entries: outputs.GetHostsEntry[];
+    readonly entries: outputs.Network.GetHostsEntry[];
     /**
      * The hostnames associated with each of the IP addresses.
      */
@@ -74,7 +74,7 @@ export interface GetHostsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
  *
- * const firstNodeHostEntries = proxmoxve.getHosts({
+ * const firstNodeHostEntries = proxmoxve.Network.getHosts({
  *     nodeName: "first-node",
  * });
  * ```

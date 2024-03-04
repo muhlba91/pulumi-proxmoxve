@@ -7,7 +7,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities
+from .. import _utilities
 
 __all__ = [
     'GetDNSResult',
@@ -88,7 +88,7 @@ def get_dns(node_name: Optional[str] = None,
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
-    first_node = proxmoxve.get_dns(node_name="first-node")
+    first_node = proxmoxve.Network.get_dns(node_name="first-node")
     ```
 
 
@@ -97,7 +97,7 @@ def get_dns(node_name: Optional[str] = None,
     __args__ = dict()
     __args__['nodeName'] = node_name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('proxmoxve:index/getDNS:getDNS', __args__, opts=opts, typ=GetDNSResult).value
+    __ret__ = pulumi.runtime.invoke('proxmoxve:Network/getDNS:getDNS', __args__, opts=opts, typ=GetDNSResult).value
 
     return AwaitableGetDNSResult(
         domain=pulumi.get(__ret__, 'domain'),
@@ -118,7 +118,7 @@ def get_dns_output(node_name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
-    first_node = proxmoxve.get_dns(node_name="first-node")
+    first_node = proxmoxve.Network.get_dns(node_name="first-node")
     ```
 
 

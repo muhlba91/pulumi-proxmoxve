@@ -1702,10 +1702,12 @@ class VirtualMachineStartup(dict):
                  order: Optional[int] = None,
                  up_delay: Optional[int] = None):
         """
-        :param int down_delay: A non-negative number defining the delay in seconds before the next VM is shut down
+        :param int down_delay: A non-negative number defining the delay in
+               seconds before the next VM is shut down.
         :param int order: A non-negative number defining the general startup
                order.
-        :param int up_delay: A non-negative number defining the delay in seconds before the next VM is started
+        :param int up_delay: A non-negative number defining the delay in
+               seconds before the next VM is started.
         """
         if down_delay is not None:
             pulumi.set(__self__, "down_delay", down_delay)
@@ -1718,7 +1720,8 @@ class VirtualMachineStartup(dict):
     @pulumi.getter(name="downDelay")
     def down_delay(self) -> Optional[int]:
         """
-        A non-negative number defining the delay in seconds before the next VM is shut down
+        A non-negative number defining the delay in
+        seconds before the next VM is shut down.
         """
         return pulumi.get(self, "down_delay")
 
@@ -1735,7 +1738,8 @@ class VirtualMachineStartup(dict):
     @pulumi.getter(name="upDelay")
     def up_delay(self) -> Optional[int]:
         """
-        A non-negative number defining the delay in seconds before the next VM is started
+        A non-negative number defining the delay in
+        seconds before the next VM is started.
         """
         return pulumi.get(self, "up_delay")
 

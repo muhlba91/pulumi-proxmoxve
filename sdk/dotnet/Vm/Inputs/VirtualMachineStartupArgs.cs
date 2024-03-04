@@ -13,7 +13,8 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
     public sealed class VirtualMachineStartupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A non-negative number defining the delay in seconds before the next VM is shut down
+        /// A non-negative number defining the delay in
+        /// seconds before the next VM is shut down.
         /// </summary>
         [Input("downDelay")]
         public Input<int>? DownDelay { get; set; }
@@ -26,7 +27,8 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<int>? Order { get; set; }
 
         /// <summary>
-        /// A non-negative number defining the delay in seconds before the next VM is started
+        /// A non-negative number defining the delay in
+        /// seconds before the next VM is started.
         /// </summary>
         [Input("upDelay")]
         public Input<int>? UpDelay { get; set; }

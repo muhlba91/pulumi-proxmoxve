@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.ProxmoxVE.Outputs
+namespace Pulumi.ProxmoxVE.Network.Outputs
 {
 
     [OutputType]

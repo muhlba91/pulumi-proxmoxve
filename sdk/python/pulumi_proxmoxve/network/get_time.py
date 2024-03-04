@@ -7,7 +7,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities
+from .. import _utilities
 
 __all__ = [
     'GetTimeResult',
@@ -100,7 +100,7 @@ def get_time(node_name: Optional[str] = None,
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
-    first_node_time = proxmoxve.get_time(node_name="first-node")
+    first_node_time = proxmoxve.Network.get_time(node_name="first-node")
     ```
 
 
@@ -109,7 +109,7 @@ def get_time(node_name: Optional[str] = None,
     __args__ = dict()
     __args__['nodeName'] = node_name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('proxmoxve:index/getTime:getTime', __args__, opts=opts, typ=GetTimeResult).value
+    __ret__ = pulumi.runtime.invoke('proxmoxve:Network/getTime:getTime', __args__, opts=opts, typ=GetTimeResult).value
 
     return AwaitableGetTimeResult(
         id=pulumi.get(__ret__, 'id'),
@@ -131,7 +131,7 @@ def get_time_output(node_name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
-    first_node_time = proxmoxve.get_time(node_name="first-node")
+    first_node_time = proxmoxve.Network.get_time(node_name="first-node")
     ```
 
 

@@ -1023,10 +1023,12 @@ class ContainerStartupArgs:
                  order: Optional[pulumi.Input[int]] = None,
                  up_delay: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[int] down_delay: A non-negative number defining the delay in seconds before the next container is shut down
+        :param pulumi.Input[int] down_delay: A non-negative number defining the delay in
+               seconds before the next container is shut down.
         :param pulumi.Input[int] order: A non-negative number defining the general startup
                order.
-        :param pulumi.Input[int] up_delay: A non-negative number defining the delay in seconds before the next container is started
+        :param pulumi.Input[int] up_delay: A non-negative number defining the delay in
+               seconds before the next container is started.
         """
         if down_delay is not None:
             pulumi.set(__self__, "down_delay", down_delay)
@@ -1039,7 +1041,8 @@ class ContainerStartupArgs:
     @pulumi.getter(name="downDelay")
     def down_delay(self) -> Optional[pulumi.Input[int]]:
         """
-        A non-negative number defining the delay in seconds before the next container is shut down
+        A non-negative number defining the delay in
+        seconds before the next container is shut down.
         """
         return pulumi.get(self, "down_delay")
 
@@ -1064,7 +1067,8 @@ class ContainerStartupArgs:
     @pulumi.getter(name="upDelay")
     def up_delay(self) -> Optional[pulumi.Input[int]]:
         """
-        A non-negative number defining the delay in seconds before the next container is started
+        A non-negative number defining the delay in
+        seconds before the next container is started.
         """
         return pulumi.get(self, "up_delay")
 

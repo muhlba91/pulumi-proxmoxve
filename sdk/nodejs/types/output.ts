@@ -5,17 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
-export interface GetHostsEntry {
-    /**
-     * The address
-     */
-    address: string;
-    /**
-     * The hostnames associated with each of the IP addresses.
-     */
-    hostnames: string[];
-}
-
 export interface HostsEntry {
     /**
      * The IP address.
@@ -310,7 +299,8 @@ export namespace CT {
 
     export interface ContainerStartup {
         /**
-         * A non-negative number defining the delay in seconds before the next container is shut down
+         * A non-negative number defining the delay in
+         * seconds before the next container is shut down.
          */
         downDelay?: number;
         /**
@@ -319,7 +309,8 @@ export namespace CT {
          */
         order?: number;
         /**
-         * A non-negative number defining the delay in seconds before the next container is started
+         * A non-negative number defining the delay in
+         * seconds before the next container is started.
          */
         upDelay?: number;
     }
@@ -523,6 +514,17 @@ export namespace Network {
          * Rule type (`in`, `out`).
          */
         type?: string;
+    }
+
+    export interface GetHostsEntry {
+        /**
+         * The address
+         */
+        address: string;
+        /**
+         * The hostnames associated with each of the IP addresses.
+         */
+        hostnames: string[];
     }
 
 }
@@ -1243,7 +1245,8 @@ export namespace VM {
 
     export interface VirtualMachineStartup {
         /**
-         * A non-negative number defining the delay in seconds before the next VM is shut down
+         * A non-negative number defining the delay in
+         * seconds before the next VM is shut down.
          */
         downDelay?: number;
         /**
@@ -1252,7 +1255,8 @@ export namespace VM {
          */
         order?: number;
         /**
-         * A non-negative number defining the delay in seconds before the next VM is started
+         * A non-negative number defining the delay in
+         * seconds before the next VM is started.
          */
         upDelay?: number;
     }

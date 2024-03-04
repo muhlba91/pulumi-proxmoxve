@@ -4067,12 +4067,14 @@ func (o VirtualMachineSmbiosPtrOutput) Version() pulumi.StringPtrOutput {
 }
 
 type VirtualMachineStartup struct {
-	// A non-negative number defining the delay in seconds before the next VM is shut down
+	// A non-negative number defining the delay in
+	// seconds before the next VM is shut down.
 	DownDelay *int `pulumi:"downDelay"`
 	// A non-negative number defining the general startup
 	// order.
 	Order *int `pulumi:"order"`
-	// A non-negative number defining the delay in seconds before the next VM is started
+	// A non-negative number defining the delay in
+	// seconds before the next VM is started.
 	UpDelay *int `pulumi:"upDelay"`
 }
 
@@ -4088,12 +4090,14 @@ type VirtualMachineStartupInput interface {
 }
 
 type VirtualMachineStartupArgs struct {
-	// A non-negative number defining the delay in seconds before the next VM is shut down
+	// A non-negative number defining the delay in
+	// seconds before the next VM is shut down.
 	DownDelay pulumi.IntPtrInput `pulumi:"downDelay"`
 	// A non-negative number defining the general startup
 	// order.
 	Order pulumi.IntPtrInput `pulumi:"order"`
-	// A non-negative number defining the delay in seconds before the next VM is started
+	// A non-negative number defining the delay in
+	// seconds before the next VM is started.
 	UpDelay pulumi.IntPtrInput `pulumi:"upDelay"`
 }
 
@@ -4174,7 +4178,8 @@ func (o VirtualMachineStartupOutput) ToVirtualMachineStartupPtrOutputWithContext
 	}).(VirtualMachineStartupPtrOutput)
 }
 
-// A non-negative number defining the delay in seconds before the next VM is shut down
+// A non-negative number defining the delay in
+// seconds before the next VM is shut down.
 func (o VirtualMachineStartupOutput) DownDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineStartup) *int { return v.DownDelay }).(pulumi.IntPtrOutput)
 }
@@ -4185,7 +4190,8 @@ func (o VirtualMachineStartupOutput) Order() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineStartup) *int { return v.Order }).(pulumi.IntPtrOutput)
 }
 
-// A non-negative number defining the delay in seconds before the next VM is started
+// A non-negative number defining the delay in
+// seconds before the next VM is started.
 func (o VirtualMachineStartupOutput) UpDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineStartup) *int { return v.UpDelay }).(pulumi.IntPtrOutput)
 }
@@ -4214,7 +4220,8 @@ func (o VirtualMachineStartupPtrOutput) Elem() VirtualMachineStartupOutput {
 	}).(VirtualMachineStartupOutput)
 }
 
-// A non-negative number defining the delay in seconds before the next VM is shut down
+// A non-negative number defining the delay in
+// seconds before the next VM is shut down.
 func (o VirtualMachineStartupPtrOutput) DownDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineStartup) *int {
 		if v == nil {
@@ -4235,7 +4242,8 @@ func (o VirtualMachineStartupPtrOutput) Order() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// A non-negative number defining the delay in seconds before the next VM is started
+// A non-negative number defining the delay in
+// seconds before the next VM is started.
 func (o VirtualMachineStartupPtrOutput) UpDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineStartup) *int {
 		if v == nil {
