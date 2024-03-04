@@ -11,7 +11,7 @@ replace (
 
 require (
 	github.com/bpg/terraform-provider-proxmox v0.48.0
-	github.com/ettle/strcase v0.1.1
+	github.com/ettle/strcase v0.2.0
 	github.com/hashicorp/terraform-plugin-framework v1.6.0
 	github.com/pulumi/pulumi-go-provider v0.14.0
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.29.0
