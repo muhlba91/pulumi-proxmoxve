@@ -16,7 +16,7 @@ require (
 	github.com/pulumi/pulumi-go-provider v0.14.0
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.29.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.76.0
-	github.com/pulumi/pulumi/pkg/v3 v3.107.0
+	github.com/pulumi/pulumi/pkg/v3 v3.108.1
 	github.com/pulumi/pulumi/sdk/v3 v3.108.1
 )
 
