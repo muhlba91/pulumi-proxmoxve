@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.ProxmoxVE
+namespace Pulumi.ProxmoxVE.Network
 {
-    public static class GetDNS
+    public static class GetTime
     {
         /// <summary>
-        /// Retrieves the DNS configuration for a specific node.
+        /// Retrieves the current time for a specific node.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -26,7 +26,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var firstNode = ProxmoxVE.GetDNS.Invoke(new()
+        ///     var firstNodeTime = ProxmoxVE.Network.GetTime.Invoke(new()
         ///     {
         ///         NodeName = "first-node",
         ///     });
@@ -36,11 +36,11 @@ namespace Pulumi.ProxmoxVE
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
-        public static Task<GetDNSResult> InvokeAsync(GetDNSArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDNSResult>("proxmoxve:index/getDNS:getDNS", args ?? new GetDNSArgs(), options.WithDefaults());
+        public static Task<GetTimeResult> InvokeAsync(GetTimeArgs args, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTimeResult>("proxmoxve:Network/getTime:getTime", args ?? new GetTimeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Retrieves the DNS configuration for a specific node.
+        /// Retrieves the current time for a specific node.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -54,7 +54,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var firstNode = ProxmoxVE.GetDNS.Invoke(new()
+        ///     var firstNodeTime = ProxmoxVE.Network.GetTime.Invoke(new()
         ///     {
         ///         NodeName = "first-node",
         ///     });
@@ -64,12 +64,12 @@ namespace Pulumi.ProxmoxVE
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
-        public static Output<GetDNSResult> Invoke(GetDNSInvokeArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetDNSResult>("proxmoxve:index/getDNS:getDNS", args ?? new GetDNSInvokeArgs(), options.WithDefaults());
+        public static Output<GetTimeResult> Invoke(GetTimeInvokeArgs args, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTimeResult>("proxmoxve:Network/getTime:getTime", args ?? new GetTimeInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDNSArgs : global::Pulumi.InvokeArgs
+    public sealed class GetTimeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// A node name.
@@ -77,13 +77,13 @@ namespace Pulumi.ProxmoxVE
         [Input("nodeName", required: true)]
         public string NodeName { get; set; } = null!;
 
-        public GetDNSArgs()
+        public GetTimeArgs()
         {
         }
-        public static new GetDNSArgs Empty => new GetDNSArgs();
+        public static new GetTimeArgs Empty => new GetTimeArgs();
     }
 
-    public sealed class GetDNSInvokeArgs : global::Pulumi.InvokeArgs
+    public sealed class GetTimeInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// A node name.
@@ -91,44 +91,51 @@ namespace Pulumi.ProxmoxVE
         [Input("nodeName", required: true)]
         public Input<string> NodeName { get; set; } = null!;
 
-        public GetDNSInvokeArgs()
+        public GetTimeInvokeArgs()
         {
         }
-        public static new GetDNSInvokeArgs Empty => new GetDNSInvokeArgs();
+        public static new GetTimeInvokeArgs Empty => new GetTimeInvokeArgs();
     }
 
 
     [OutputType]
-    public sealed class GetDNSResult
+    public sealed class GetTimeResult
     {
-        /// <summary>
-        /// The DNS search domain.
-        /// </summary>
-        public readonly string Domain;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The node's local time.
+        /// </summary>
+        public readonly string LocalTime;
         public readonly string NodeName;
         /// <summary>
-        /// The DNS servers.
+        /// The node's time zone.
         /// </summary>
-        public readonly ImmutableArray<string> Servers;
+        public readonly string TimeZone;
+        /// <summary>
+        /// The node's local time formatted as UTC.
+        /// </summary>
+        public readonly string UtcTime;
 
         [OutputConstructor]
-        private GetDNSResult(
-            string domain,
-
+        private GetTimeResult(
             string id,
+
+            string localTime,
 
             string nodeName,
 
-            ImmutableArray<string> servers)
+            string timeZone,
+
+            string utcTime)
         {
-            Domain = domain;
             Id = id;
+            LocalTime = localTime;
             NodeName = nodeName;
-            Servers = servers;
+            TimeZone = timeZone;
+            UtcTime = utcTime;
         }
     }
 }

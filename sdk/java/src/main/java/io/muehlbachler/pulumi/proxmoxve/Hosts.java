@@ -55,12 +55,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Instances can be imported using the `node_name`, e.g.,
- * 
- *  bash
+ * Instances can be imported using the `node_name`, e.g., bash
  * 
  * ```sh
- * $ pulumi import proxmoxve:index/hosts:Hosts first_node_host_entries first-node
+ *  $ pulumi import proxmoxve:index/hosts:Hosts first_node_host_entries first-node
  * ```
  * 
  */

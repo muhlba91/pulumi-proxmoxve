@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as utilities from "./utilities";
+import * as utilities from "../utilities";
 
 /**
  * Retrieves API version details.
@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
  *
- * const example = proxmoxve.getVersion({});
+ * const example = proxmoxve.Network.getVersion({});
  * export const dataProxmoxVirtualEnvironmentVersion = {
  *     release: example.then(example => example.release),
  *     repository_id: example.then(example => example.repositoryId),
@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
 export function getVersion(opts?: pulumi.InvokeOptions): Promise<GetVersionResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("proxmoxve:index/getVersion:getVersion", {
+    return pulumi.runtime.invoke("proxmoxve:Network/getVersion:getVersion", {
     }, opts);
 }
 
@@ -58,7 +58,7 @@ export interface GetVersionResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
  *
- * const example = proxmoxve.getVersion({});
+ * const example = proxmoxve.Network.getVersion({});
  * export const dataProxmoxVirtualEnvironmentVersion = {
  *     release: example.then(example => example.release),
  *     repository_id: example.then(example => example.repositoryId),

@@ -16,14 +16,16 @@ public final class ContainerStartupArgs extends com.pulumi.resources.ResourceArg
     public static final ContainerStartupArgs Empty = new ContainerStartupArgs();
 
     /**
-     * A non-negative number defining the delay in seconds before the next container is shut down
+     * A non-negative number defining the delay in
+     * seconds before the next container is shut down.
      * 
      */
     @Import(name="downDelay")
     private @Nullable Output<Integer> downDelay;
 
     /**
-     * @return A non-negative number defining the delay in seconds before the next container is shut down
+     * @return A non-negative number defining the delay in
+     * seconds before the next container is shut down.
      * 
      */
     public Optional<Output<Integer>> downDelay() {
@@ -48,14 +50,16 @@ public final class ContainerStartupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * A non-negative number defining the delay in seconds before the next container is started
+     * A non-negative number defining the delay in
+     * seconds before the next container is started.
      * 
      */
     @Import(name="upDelay")
     private @Nullable Output<Integer> upDelay;
 
     /**
-     * @return A non-negative number defining the delay in seconds before the next container is started
+     * @return A non-negative number defining the delay in
+     * seconds before the next container is started.
      * 
      */
     public Optional<Output<Integer>> upDelay() {
@@ -89,7 +93,8 @@ public final class ContainerStartupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param downDelay A non-negative number defining the delay in seconds before the next container is shut down
+         * @param downDelay A non-negative number defining the delay in
+         * seconds before the next container is shut down.
          * 
          * @return builder
          * 
@@ -100,7 +105,8 @@ public final class ContainerStartupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param downDelay A non-negative number defining the delay in seconds before the next container is shut down
+         * @param downDelay A non-negative number defining the delay in
+         * seconds before the next container is shut down.
          * 
          * @return builder
          * 
@@ -133,7 +139,8 @@ public final class ContainerStartupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param upDelay A non-negative number defining the delay in seconds before the next container is started
+         * @param upDelay A non-negative number defining the delay in
+         * seconds before the next container is started.
          * 
          * @return builder
          * 
@@ -144,7 +151,8 @@ public final class ContainerStartupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param upDelay A non-negative number defining the delay in seconds before the next container is started
+         * @param upDelay A non-negative number defining the delay in
+         * seconds before the next container is started.
          * 
          * @return builder
          * 

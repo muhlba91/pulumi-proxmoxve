@@ -12,7 +12,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ContainerStartup {
     /**
-     * @return A non-negative number defining the delay in seconds before the next container is shut down
+     * @return A non-negative number defining the delay in
+     * seconds before the next container is shut down.
      * 
      */
     private @Nullable Integer downDelay;
@@ -23,14 +24,16 @@ public final class ContainerStartup {
      */
     private @Nullable Integer order;
     /**
-     * @return A non-negative number defining the delay in seconds before the next container is started
+     * @return A non-negative number defining the delay in
+     * seconds before the next container is started.
      * 
      */
     private @Nullable Integer upDelay;
 
     private ContainerStartup() {}
     /**
-     * @return A non-negative number defining the delay in seconds before the next container is shut down
+     * @return A non-negative number defining the delay in
+     * seconds before the next container is shut down.
      * 
      */
     public Optional<Integer> downDelay() {
@@ -45,7 +48,8 @@ public final class ContainerStartup {
         return Optional.ofNullable(this.order);
     }
     /**
-     * @return A non-negative number defining the delay in seconds before the next container is started
+     * @return A non-negative number defining the delay in
+     * seconds before the next container is started.
      * 
      */
     public Optional<Integer> upDelay() {

@@ -649,12 +649,10 @@ class Options(pulumi.CustomResource):
 
         ## Import
 
-        #!/usr/bin/env sh
-
-         Cluster options are global and can be imported using e.g.:
+        #!/usr/bin/env sh Cluster options are global and can be imported using e.g.
 
         ```sh
-        $ pulumi import proxmoxve:Cluster/options:Options options cluster
+         $ pulumi import proxmoxve:Cluster/options:Options options cluster
         ```
 
         :param str resource_name: The name of the resource.
@@ -706,12 +704,10 @@ class Options(pulumi.CustomResource):
 
         ## Import
 
-        #!/usr/bin/env sh
-
-         Cluster options are global and can be imported using e.g.:
+        #!/usr/bin/env sh Cluster options are global and can be imported using e.g.
 
         ```sh
-        $ pulumi import proxmoxve:Cluster/options:Options options cluster
+         $ pulumi import proxmoxve:Cluster/options:Options options cluster
         ```
 
         :param str resource_name: The name of the resource.

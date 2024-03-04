@@ -2580,12 +2580,14 @@ func (o ContainerOperatingSystemPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type ContainerStartup struct {
-	// A non-negative number defining the delay in seconds before the next container is shut down
+	// A non-negative number defining the delay in
+	// seconds before the next container is shut down.
 	DownDelay *int `pulumi:"downDelay"`
 	// A non-negative number defining the general startup
 	// order.
 	Order *int `pulumi:"order"`
-	// A non-negative number defining the delay in seconds before the next container is started
+	// A non-negative number defining the delay in
+	// seconds before the next container is started.
 	UpDelay *int `pulumi:"upDelay"`
 }
 
@@ -2601,12 +2603,14 @@ type ContainerStartupInput interface {
 }
 
 type ContainerStartupArgs struct {
-	// A non-negative number defining the delay in seconds before the next container is shut down
+	// A non-negative number defining the delay in
+	// seconds before the next container is shut down.
 	DownDelay pulumi.IntPtrInput `pulumi:"downDelay"`
 	// A non-negative number defining the general startup
 	// order.
 	Order pulumi.IntPtrInput `pulumi:"order"`
-	// A non-negative number defining the delay in seconds before the next container is started
+	// A non-negative number defining the delay in
+	// seconds before the next container is started.
 	UpDelay pulumi.IntPtrInput `pulumi:"upDelay"`
 }
 
@@ -2687,7 +2691,8 @@ func (o ContainerStartupOutput) ToContainerStartupPtrOutputWithContext(ctx conte
 	}).(ContainerStartupPtrOutput)
 }
 
-// A non-negative number defining the delay in seconds before the next container is shut down
+// A non-negative number defining the delay in
+// seconds before the next container is shut down.
 func (o ContainerStartupOutput) DownDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerStartup) *int { return v.DownDelay }).(pulumi.IntPtrOutput)
 }
@@ -2698,7 +2703,8 @@ func (o ContainerStartupOutput) Order() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerStartup) *int { return v.Order }).(pulumi.IntPtrOutput)
 }
 
-// A non-negative number defining the delay in seconds before the next container is started
+// A non-negative number defining the delay in
+// seconds before the next container is started.
 func (o ContainerStartupOutput) UpDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerStartup) *int { return v.UpDelay }).(pulumi.IntPtrOutput)
 }
@@ -2727,7 +2733,8 @@ func (o ContainerStartupPtrOutput) Elem() ContainerStartupOutput {
 	}).(ContainerStartupOutput)
 }
 
-// A non-negative number defining the delay in seconds before the next container is shut down
+// A non-negative number defining the delay in
+// seconds before the next container is shut down.
 func (o ContainerStartupPtrOutput) DownDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ContainerStartup) *int {
 		if v == nil {
@@ -2748,7 +2755,8 @@ func (o ContainerStartupPtrOutput) Order() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// A non-negative number defining the delay in seconds before the next container is started
+// A non-negative number defining the delay in
+// seconds before the next container is started.
 func (o ContainerStartupPtrOutput) UpDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ContainerStartup) *int {
 		if v == nil {

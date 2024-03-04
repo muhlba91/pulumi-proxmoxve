@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as utilities from "./utilities";
+import * as utilities from "../utilities";
 
 /**
  * Retrieves the current time for a specific node.
@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
  *
- * const firstNodeTime = proxmoxve.getTime({
+ * const firstNodeTime = proxmoxve.Network.getTime({
  *     nodeName: "first-node",
  * });
  * ```
@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
 export function getTime(args: GetTimeArgs, opts?: pulumi.InvokeOptions): Promise<GetTimeResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("proxmoxve:index/getTime:getTime", {
+    return pulumi.runtime.invoke("proxmoxve:Network/getTime:getTime", {
         "nodeName": args.nodeName,
     }, opts);
 }
@@ -67,7 +67,7 @@ export interface GetTimeResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
  *
- * const firstNodeTime = proxmoxve.getTime({
+ * const firstNodeTime = proxmoxve.Network.getTime({
  *     nodeName: "first-node",
  * });
  * ```

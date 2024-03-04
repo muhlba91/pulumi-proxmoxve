@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.ProxmoxVE
+namespace Pulumi.ProxmoxVE.Network
 {
     public static class GetHosts
     {
@@ -26,7 +26,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var firstNodeHostEntries = ProxmoxVE.GetHosts.Invoke(new()
+        ///     var firstNodeHostEntries = ProxmoxVE.Network.GetHosts.Invoke(new()
         ///     {
         ///         NodeName = "first-node",
         ///     });
@@ -37,7 +37,7 @@ namespace Pulumi.ProxmoxVE
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetHostsResult> InvokeAsync(GetHostsArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetHostsResult>("proxmoxve:index/getHosts:getHosts", args ?? new GetHostsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetHostsResult>("proxmoxve:Network/getHosts:getHosts", args ?? new GetHostsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves all the host entries from a specific node.
@@ -54,7 +54,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var firstNodeHostEntries = ProxmoxVE.GetHosts.Invoke(new()
+        ///     var firstNodeHostEntries = ProxmoxVE.Network.GetHosts.Invoke(new()
         ///     {
         ///         NodeName = "first-node",
         ///     });
@@ -65,7 +65,7 @@ namespace Pulumi.ProxmoxVE
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetHostsResult> Invoke(GetHostsInvokeArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetHostsResult>("proxmoxve:index/getHosts:getHosts", args ?? new GetHostsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetHostsResult>("proxmoxve:Network/getHosts:getHosts", args ?? new GetHostsInvokeArgs(), options.WithDefaults());
     }
 
 

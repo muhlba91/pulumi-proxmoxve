@@ -33,12 +33,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Instances can be imported without an ID, but you still need to pass one, e.g.,
- *
- *  bash
+ * Instances can be imported without an ID, but you still need to pass one, e.g., bash
  *
  * ```sh
- * $ pulumi import proxmoxve:Network/firewall:Firewall example example
+ *  $ pulumi import proxmoxve:Network/firewall:Firewall example example
  * ```
  */
 export class Firewall extends pulumi.CustomResource {

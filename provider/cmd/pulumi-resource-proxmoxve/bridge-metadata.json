@@ -1,0 +1,1214 @@
+{
+    "auto-aliasing": {
+        "resources": {
+            "proxmox_virtual_environment_certificate": {
+                "current": "proxmoxve:index/certifi:Certifi",
+                "majorVersion": 5,
+                "fields": {
+                    "subject_alternative_names": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_cluster_firewall": {
+                "current": "proxmoxve:Network/firewall:Firewall",
+                "majorVersion": 5,
+                "fields": {
+                    "log_ratelimit": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "proxmox_virtual_environment_cluster_firewall_security_group": {
+                "current": "proxmoxve:Network/firewallSecurityGroup:FirewallSecurityGroup",
+                "majorVersion": 5,
+                "fields": {
+                    "rule": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_cluster_options": {
+                "current": "proxmoxve:Cluster/options:Options",
+                "majorVersion": 5
+            },
+            "proxmox_virtual_environment_container": {
+                "current": "proxmoxve:CT/container:Container",
+                "majorVersion": 5,
+                "fields": {
+                    "clone": {
+                        "maxItemsOne": true
+                    },
+                    "console": {
+                        "maxItemsOne": true
+                    },
+                    "cpu": {
+                        "maxItemsOne": true
+                    },
+                    "disk": {
+                        "maxItemsOne": true
+                    },
+                    "features": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "mount": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "initialization": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "dns": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "servers": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "ip_config": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "ipv4": {
+                                                "maxItemsOne": true
+                                            },
+                                            "ipv6": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "user_account": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "keys": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "memory": {
+                        "maxItemsOne": true
+                    },
+                    "mount_point": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "mount_options": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "network_interface": {
+                        "maxItemsOne": false
+                    },
+                    "operating_system": {
+                        "maxItemsOne": true
+                    },
+                    "startup": {
+                        "maxItemsOne": true
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_dns": {
+                "current": "proxmoxve:index/dNS:DNS",
+                "majorVersion": 5,
+                "fields": {
+                    "servers": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_download_file": {
+                "current": "proxmoxve:Download/file:File",
+                "majorVersion": 5
+            },
+            "proxmox_virtual_environment_file": {
+                "current": "proxmoxve:Storage/file:File",
+                "majorVersion": 5,
+                "fields": {
+                    "source_file": {
+                        "maxItemsOne": true
+                    },
+                    "source_raw": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "proxmox_virtual_environment_firewall_alias": {
+                "current": "proxmoxve:Network/firewallAlias:FirewallAlias",
+                "majorVersion": 5
+            },
+            "proxmox_virtual_environment_firewall_ipset": {
+                "current": "proxmoxve:Network/firewallIPSet:FirewallIPSet",
+                "majorVersion": 5,
+                "fields": {
+                    "cidr": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_firewall_options": {
+                "current": "proxmoxve:Network/firewallOptions:FirewallOptions",
+                "majorVersion": 5
+            },
+            "proxmox_virtual_environment_firewall_rules": {
+                "current": "proxmoxve:Network/firewallRules:FirewallRules",
+                "majorVersion": 5,
+                "fields": {
+                    "rule": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_group": {
+                "current": "proxmoxve:Permission/group:Group",
+                "majorVersion": 5,
+                "fields": {
+                    "acl": {
+                        "maxItemsOne": false
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_hagroup": {
+                "current": "proxmoxve:HA/hAGroup:HAGroup",
+                "majorVersion": 5
+            },
+            "proxmox_virtual_environment_haresource": {
+                "current": "proxmoxve:HA/hAResource:HAResource",
+                "majorVersion": 5
+            },
+            "proxmox_virtual_environment_hosts": {
+                "current": "proxmoxve:index/hosts:Hosts",
+                "majorVersion": 5,
+                "fields": {
+                    "addresses": {
+                        "maxItemsOne": false
+                    },
+                    "entries": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "hostnames": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "entry": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "hostnames": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "hostnames": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "maxItemsOne": false
+                        }
+                    }
+                }
+            },
+            "proxmox_virtual_environment_network_linux_bridge": {
+                "current": "proxmoxve:Network/networkBridge:NetworkBridge",
+                "majorVersion": 5,
+                "fields": {
+                    "ports": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_network_linux_vlan": {
+                "current": "proxmoxve:Network/networkVlan:NetworkVlan",
+                "majorVersion": 5
+            },
+            "proxmox_virtual_environment_pool": {
+                "current": "proxmoxve:Permission/pool:Pool",
+                "majorVersion": 5,
+                "fields": {
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_role": {
+                "current": "proxmoxve:Permission/role:Role",
+                "majorVersion": 5,
+                "fields": {
+                    "privileges": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_time": {
+                "current": "proxmoxve:index/time:Time",
+                "majorVersion": 5
+            },
+            "proxmox_virtual_environment_user": {
+                "current": "proxmoxve:Permission/user:User",
+                "majorVersion": 5,
+                "fields": {
+                    "acl": {
+                        "maxItemsOne": false
+                    },
+                    "groups": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_vm": {
+                "current": "proxmoxve:VM/virtualMachine:VirtualMachine",
+                "majorVersion": 5,
+                "fields": {
+                    "agent": {
+                        "maxItemsOne": true
+                    },
+                    "audio_device": {
+                        "maxItemsOne": true
+                    },
+                    "boot_order": {
+                        "maxItemsOne": false
+                    },
+                    "cdrom": {
+                        "maxItemsOne": true
+                    },
+                    "clone": {
+                        "maxItemsOne": true
+                    },
+                    "cpu": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "flags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "disk": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "speed": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "efi_disk": {
+                        "maxItemsOne": true
+                    },
+                    "hostpci": {
+                        "maxItemsOne": false
+                    },
+                    "initialization": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "dns": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "servers": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "ip_config": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "ipv4": {
+                                                "maxItemsOne": true
+                                            },
+                                            "ipv6": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "user_account": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "keys": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "ipv4_addresses": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "maxItemsOne": false
+                        }
+                    },
+                    "ipv6_addresses": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "maxItemsOne": false
+                        }
+                    },
+                    "mac_addresses": {
+                        "maxItemsOne": false
+                    },
+                    "memory": {
+                        "maxItemsOne": true
+                    },
+                    "network_device": {
+                        "maxItemsOne": false
+                    },
+                    "network_interface_names": {
+                        "maxItemsOne": false
+                    },
+                    "operating_system": {
+                        "maxItemsOne": true
+                    },
+                    "serial_device": {
+                        "maxItemsOne": false
+                    },
+                    "smbios": {
+                        "maxItemsOne": true
+                    },
+                    "startup": {
+                        "maxItemsOne": true
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "tpm_state": {
+                        "maxItemsOne": true
+                    },
+                    "usb": {
+                        "maxItemsOne": false
+                    },
+                    "vga": {
+                        "maxItemsOne": true
+                    }
+                }
+            }
+        },
+        "datasources": {
+            "proxmox_virtual_environment_datastores": {
+                "current": "proxmoxve:Storage/getDatastores:getDatastores",
+                "majorVersion": 5,
+                "fields": {
+                    "active": {
+                        "maxItemsOne": false
+                    },
+                    "content_types": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "maxItemsOne": false
+                        }
+                    },
+                    "datastore_ids": {
+                        "maxItemsOne": false
+                    },
+                    "enabled": {
+                        "maxItemsOne": false
+                    },
+                    "shared": {
+                        "maxItemsOne": false
+                    },
+                    "space_available": {
+                        "maxItemsOne": false
+                    },
+                    "space_total": {
+                        "maxItemsOne": false
+                    },
+                    "space_used": {
+                        "maxItemsOne": false
+                    },
+                    "types": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_dns": {
+                "current": "proxmoxve:Network/getDNS:getDNS",
+                "majorVersion": 5,
+                "fields": {
+                    "servers": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_group": {
+                "current": "proxmoxve:Permission/getGroup:getGroup",
+                "majorVersion": 5,
+                "fields": {
+                    "acl": {
+                        "maxItemsOne": false
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_groups": {
+                "current": "proxmoxve:Permission/getGroups:getGroups",
+                "majorVersion": 5,
+                "fields": {
+                    "comments": {
+                        "maxItemsOne": false
+                    },
+                    "group_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_hagroup": {
+                "current": "proxmoxve:HA/getHAGroup:getHAGroup",
+                "majorVersion": 5
+            },
+            "proxmox_virtual_environment_hagroups": {
+                "current": "proxmoxve:HA/getHAGroups:getHAGroups",
+                "majorVersion": 5,
+                "fields": {
+                    "group_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_haresource": {
+                "current": "proxmoxve:HA/getHAResource:getHAResource",
+                "majorVersion": 5
+            },
+            "proxmox_virtual_environment_haresources": {
+                "current": "proxmoxve:HA/getHAResources:getHAResources",
+                "majorVersion": 5,
+                "fields": {
+                    "resource_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_hosts": {
+                "current": "proxmoxve:Network/getHosts:getHosts",
+                "majorVersion": 5,
+                "fields": {
+                    "addresses": {
+                        "maxItemsOne": false
+                    },
+                    "entries": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "hostnames": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "hostnames": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "maxItemsOne": false
+                        }
+                    }
+                }
+            },
+            "proxmox_virtual_environment_nodes": {
+                "current": "proxmoxve:Cluster/getNodes:getNodes",
+                "majorVersion": 5,
+                "fields": {
+                    "cpu_count": {
+                        "maxItemsOne": false
+                    },
+                    "cpu_utilization": {
+                        "maxItemsOne": false
+                    },
+                    "memory_available": {
+                        "maxItemsOne": false
+                    },
+                    "memory_used": {
+                        "maxItemsOne": false
+                    },
+                    "names": {
+                        "maxItemsOne": false
+                    },
+                    "online": {
+                        "maxItemsOne": false
+                    },
+                    "ssl_fingerprints": {
+                        "maxItemsOne": false
+                    },
+                    "support_levels": {
+                        "maxItemsOne": false
+                    },
+                    "uptime": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_pool": {
+                "current": "proxmoxve:Permission/getPool:getPool",
+                "majorVersion": 5,
+                "fields": {
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_pools": {
+                "current": "proxmoxve:Permission/getPools:getPools",
+                "majorVersion": 5,
+                "fields": {
+                    "pool_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_role": {
+                "current": "proxmoxve:Permission/getRole:getRole",
+                "majorVersion": 5,
+                "fields": {
+                    "privileges": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_roles": {
+                "current": "proxmoxve:Permission/getRoles:getRoles",
+                "majorVersion": 5,
+                "fields": {
+                    "privileges": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "maxItemsOne": false
+                        }
+                    },
+                    "role_ids": {
+                        "maxItemsOne": false
+                    },
+                    "special": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_time": {
+                "current": "proxmoxve:Network/getTime:getTime",
+                "majorVersion": 5
+            },
+            "proxmox_virtual_environment_user": {
+                "current": "proxmoxve:Permission/getUser:getUser",
+                "majorVersion": 5,
+                "fields": {
+                    "acl": {
+                        "maxItemsOne": false
+                    },
+                    "groups": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_users": {
+                "current": "proxmoxve:Permission/getUsers:getUsers",
+                "majorVersion": 5,
+                "fields": {
+                    "comments": {
+                        "maxItemsOne": false
+                    },
+                    "emails": {
+                        "maxItemsOne": false
+                    },
+                    "enabled": {
+                        "maxItemsOne": false
+                    },
+                    "expiration_dates": {
+                        "maxItemsOne": false
+                    },
+                    "first_names": {
+                        "maxItemsOne": false
+                    },
+                    "groups": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "maxItemsOne": false
+                        }
+                    },
+                    "keys": {
+                        "maxItemsOne": false
+                    },
+                    "last_names": {
+                        "maxItemsOne": false
+                    },
+                    "user_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_version": {
+                "current": "proxmoxve:Network/getVersion:getVersion",
+                "majorVersion": 5
+            },
+            "proxmox_virtual_environment_vm": {
+                "current": "proxmoxve:VM/getVirtualMachine:getVirtualMachine",
+                "majorVersion": 5,
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_vms": {
+                "current": "proxmoxve:VM/getVirtualMachines:getVirtualMachines",
+                "majorVersion": 5,
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "vms": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "auto-settings": {},
+    "mux": {
+        "resources": {
+            "proxmoxve:CT/container:Container": 0,
+            "proxmoxve:Cluster/options:Options": 1,
+            "proxmoxve:Download/file:File": 1,
+            "proxmoxve:HA/hAGroup:HAGroup": 1,
+            "proxmoxve:HA/hAResource:HAResource": 1,
+            "proxmoxve:Network/firewall:Firewall": 0,
+            "proxmoxve:Network/firewallAlias:FirewallAlias": 0,
+            "proxmoxve:Network/firewallIPSet:FirewallIPSet": 0,
+            "proxmoxve:Network/firewallOptions:FirewallOptions": 0,
+            "proxmoxve:Network/firewallRules:FirewallRules": 0,
+            "proxmoxve:Network/firewallSecurityGroup:FirewallSecurityGroup": 0,
+            "proxmoxve:Network/networkBridge:NetworkBridge": 1,
+            "proxmoxve:Network/networkVlan:NetworkVlan": 1,
+            "proxmoxve:Permission/group:Group": 0,
+            "proxmoxve:Permission/pool:Pool": 0,
+            "proxmoxve:Permission/role:Role": 0,
+            "proxmoxve:Permission/user:User": 0,
+            "proxmoxve:Storage/file:File": 0,
+            "proxmoxve:VM/virtualMachine:VirtualMachine": 0,
+            "proxmoxve:index/certifi:Certifi": 0,
+            "proxmoxve:index/dNS:DNS": 0,
+            "proxmoxve:index/hosts:Hosts": 0,
+            "proxmoxve:index/time:Time": 0
+        },
+        "functions": {
+            "proxmoxve:Cluster/getNodes:getNodes": 0,
+            "proxmoxve:HA/getHAGroup:getHAGroup": 1,
+            "proxmoxve:HA/getHAGroups:getHAGroups": 1,
+            "proxmoxve:HA/getHAResource:getHAResource": 1,
+            "proxmoxve:HA/getHAResources:getHAResources": 1,
+            "proxmoxve:Network/getDNS:getDNS": 0,
+            "proxmoxve:Network/getHosts:getHosts": 0,
+            "proxmoxve:Network/getTime:getTime": 0,
+            "proxmoxve:Network/getVersion:getVersion": 1,
+            "proxmoxve:Permission/getGroup:getGroup": 0,
+            "proxmoxve:Permission/getGroups:getGroups": 0,
+            "proxmoxve:Permission/getPool:getPool": 0,
+            "proxmoxve:Permission/getPools:getPools": 0,
+            "proxmoxve:Permission/getRole:getRole": 0,
+            "proxmoxve:Permission/getRoles:getRoles": 0,
+            "proxmoxve:Permission/getUser:getUser": 0,
+            "proxmoxve:Permission/getUsers:getUsers": 0,
+            "proxmoxve:Storage/getDatastores:getDatastores": 0,
+            "proxmoxve:VM/getVirtualMachine:getVirtualMachine": 0,
+            "proxmoxve:VM/getVirtualMachines:getVirtualMachines": 0
+        }
+    },
+    "renames": {
+        "resources": {
+            "proxmoxve:CT/container:Container": "proxmox_virtual_environment_container",
+            "proxmoxve:Cluster/options:Options": "proxmox_virtual_environment_cluster_options",
+            "proxmoxve:Download/file:File": "proxmox_virtual_environment_download_file",
+            "proxmoxve:HA/hAGroup:HAGroup": "proxmox_virtual_environment_hagroup",
+            "proxmoxve:HA/hAResource:HAResource": "proxmox_virtual_environment_haresource",
+            "proxmoxve:Network/firewall:Firewall": "proxmox_virtual_environment_cluster_firewall",
+            "proxmoxve:Network/firewallAlias:FirewallAlias": "proxmox_virtual_environment_firewall_alias",
+            "proxmoxve:Network/firewallIPSet:FirewallIPSet": "proxmox_virtual_environment_firewall_ipset",
+            "proxmoxve:Network/firewallOptions:FirewallOptions": "proxmox_virtual_environment_firewall_options",
+            "proxmoxve:Network/firewallRules:FirewallRules": "proxmox_virtual_environment_firewall_rules",
+            "proxmoxve:Network/firewallSecurityGroup:FirewallSecurityGroup": "proxmox_virtual_environment_cluster_firewall_security_group",
+            "proxmoxve:Network/networkBridge:NetworkBridge": "proxmox_virtual_environment_network_linux_bridge",
+            "proxmoxve:Network/networkVlan:NetworkVlan": "proxmox_virtual_environment_network_linux_vlan",
+            "proxmoxve:Permission/group:Group": "proxmox_virtual_environment_group",
+            "proxmoxve:Permission/pool:Pool": "proxmox_virtual_environment_pool",
+            "proxmoxve:Permission/role:Role": "proxmox_virtual_environment_role",
+            "proxmoxve:Permission/user:User": "proxmox_virtual_environment_user",
+            "proxmoxve:Storage/file:File": "proxmox_virtual_environment_file",
+            "proxmoxve:VM/virtualMachine:VirtualMachine": "proxmox_virtual_environment_vm",
+            "proxmoxve:index/certifi:Certifi": "proxmox_virtual_environment_certificate",
+            "proxmoxve:index/dNS:DNS": "proxmox_virtual_environment_dns",
+            "proxmoxve:index/hosts:Hosts": "proxmox_virtual_environment_hosts",
+            "proxmoxve:index/time:Time": "proxmox_virtual_environment_time"
+        },
+        "functions": {
+            "proxmoxve:Cluster/getNodes:getNodes": "proxmox_virtual_environment_nodes",
+            "proxmoxve:HA/getHAGroup:getHAGroup": "proxmox_virtual_environment_hagroup",
+            "proxmoxve:HA/getHAGroups:getHAGroups": "proxmox_virtual_environment_hagroups",
+            "proxmoxve:HA/getHAResource:getHAResource": "proxmox_virtual_environment_haresource",
+            "proxmoxve:HA/getHAResources:getHAResources": "proxmox_virtual_environment_haresources",
+            "proxmoxve:Network/getDNS:getDNS": "proxmox_virtual_environment_dns",
+            "proxmoxve:Network/getHosts:getHosts": "proxmox_virtual_environment_hosts",
+            "proxmoxve:Network/getTime:getTime": "proxmox_virtual_environment_time",
+            "proxmoxve:Network/getVersion:getVersion": "proxmox_virtual_environment_version",
+            "proxmoxve:Permission/getGroup:getGroup": "proxmox_virtual_environment_group",
+            "proxmoxve:Permission/getGroups:getGroups": "proxmox_virtual_environment_groups",
+            "proxmoxve:Permission/getPool:getPool": "proxmox_virtual_environment_pool",
+            "proxmoxve:Permission/getPools:getPools": "proxmox_virtual_environment_pools",
+            "proxmoxve:Permission/getRole:getRole": "proxmox_virtual_environment_role",
+            "proxmoxve:Permission/getRoles:getRoles": "proxmox_virtual_environment_roles",
+            "proxmoxve:Permission/getUser:getUser": "proxmox_virtual_environment_user",
+            "proxmoxve:Permission/getUsers:getUsers": "proxmox_virtual_environment_users",
+            "proxmoxve:Storage/getDatastores:getDatastores": "proxmox_virtual_environment_datastores",
+            "proxmoxve:VM/getVirtualMachine:getVirtualMachine": "proxmox_virtual_environment_vm",
+            "proxmoxve:VM/getVirtualMachines:getVirtualMachines": "proxmox_virtual_environment_vms"
+        },
+        "renamedProperties": {
+            "proxmoxve:CT/ContainerClone:ContainerClone": {
+                "datastoreId": "datastore_id",
+                "nodeName": "node_name",
+                "vmId": "vm_id"
+            },
+            "proxmoxve:CT/ContainerConsole:ContainerConsole": {
+                "ttyCount": "tty_count"
+            },
+            "proxmoxve:CT/ContainerDisk:ContainerDisk": {
+                "datastoreId": "datastore_id"
+            },
+            "proxmoxve:CT/ContainerFeatures:ContainerFeatures": {
+                "mounts": "mount"
+            },
+            "proxmoxve:CT/ContainerInitialization:ContainerInitialization": {
+                "ipConfigs": "ip_config",
+                "userAccount": "user_account"
+            },
+            "proxmoxve:CT/ContainerMountPoint:ContainerMountPoint": {
+                "mountOptions": "mount_options",
+                "readOnly": "read_only"
+            },
+            "proxmoxve:CT/ContainerNetworkInterface:ContainerNetworkInterface": {
+                "macAddress": "mac_address",
+                "rateLimit": "rate_limit",
+                "vlanId": "vlan_id"
+            },
+            "proxmoxve:CT/ContainerOperatingSystem:ContainerOperatingSystem": {
+                "templateFileId": "template_file_id"
+            },
+            "proxmoxve:CT/ContainerStartup:ContainerStartup": {
+                "downDelay": "down_delay",
+                "upDelay": "up_delay"
+            },
+            "proxmoxve:CT/container:Container": {
+                "mountPoints": "mount_point",
+                "networkInterfaces": "network_interface",
+                "nodeName": "node_name",
+                "operatingSystem": "operating_system",
+                "poolId": "pool_id",
+                "startOnBoot": "start_on_boot",
+                "vmId": "vm_id"
+            },
+            "proxmoxve:Cluster/getNodes:getNodes": {
+                "cpuCounts": "cpu_count",
+                "cpuUtilizations": "cpu_utilization",
+                "memoryAvailables": "memory_available",
+                "memoryUseds": "memory_used",
+                "onlines": "online",
+                "sslFingerprints": "ssl_fingerprints",
+                "supportLevels": "support_levels",
+                "uptimes": "uptime"
+            },
+            "proxmoxve:Cluster/options:Options": {
+                "bandwidthLimitClone": "bandwidth_limit_clone",
+                "bandwidthLimitDefault": "bandwidth_limit_default",
+                "bandwidthLimitMigration": "bandwidth_limit_migration",
+                "bandwidthLimitMove": "bandwidth_limit_move",
+                "bandwidthLimitRestore": "bandwidth_limit_restore",
+                "crsHa": "crs_ha",
+                "crsHaRebalanceOnStart": "crs_ha_rebalance_on_start",
+                "emailFrom": "email_from",
+                "haShutdownPolicy": "ha_shutdown_policy",
+                "httpProxy": "http_proxy",
+                "macPrefix": "mac_prefix",
+                "maxWorkers": "max_workers",
+                "migrationCidr": "migration_cidr",
+                "migrationType": "migration_type"
+            },
+            "proxmoxve:Download/file:File": {
+                "checksumAlgorithm": "checksum_algorithm",
+                "contentType": "content_type",
+                "datastoreId": "datastore_id",
+                "decompressionAlgorithm": "decompression_algorithm",
+                "fileName": "file_name",
+                "nodeName": "node_name",
+                "overwriteUnmanaged": "overwrite_unmanaged",
+                "uploadTimeout": "upload_timeout"
+            },
+            "proxmoxve:HA/getHAGroup:getHAGroup": {
+                "noFailback": "no_failback"
+            },
+            "proxmoxve:HA/getHAGroups:getHAGroups": {
+                "groupIds": "group_ids"
+            },
+            "proxmoxve:HA/getHAResource:getHAResource": {
+                "maxRelocate": "max_relocate",
+                "maxRestart": "max_restart",
+                "resourceId": "resource_id"
+            },
+            "proxmoxve:HA/getHAResources:getHAResources": {
+                "resourceIds": "resource_ids"
+            },
+            "proxmoxve:HA/hAGroup:HAGroup": {
+                "noFailback": "no_failback"
+            },
+            "proxmoxve:HA/hAResource:HAResource": {
+                "maxRelocate": "max_relocate",
+                "maxRestart": "max_restart",
+                "resourceId": "resource_id"
+            },
+            "proxmoxve:Network/FirewallRulesRule:FirewallRulesRule": {
+                "securityGroup": "security_group"
+            },
+            "proxmoxve:Network/FirewallSecurityGroupRule:FirewallSecurityGroupRule": {
+                "securityGroup": "security_group"
+            },
+            "proxmoxve:Network/firewall:Firewall": {
+                "inputPolicy": "input_policy",
+                "logRatelimit": "log_ratelimit",
+                "outputPolicy": "output_policy"
+            },
+            "proxmoxve:Network/firewallAlias:FirewallAlias": {
+                "containerId": "container_id",
+                "nodeName": "node_name",
+                "vmId": "vm_id"
+            },
+            "proxmoxve:Network/firewallIPSet:FirewallIPSet": {
+                "cidrs": "cidr",
+                "containerId": "container_id",
+                "nodeName": "node_name",
+                "vmId": "vm_id"
+            },
+            "proxmoxve:Network/firewallOptions:FirewallOptions": {
+                "containerId": "container_id",
+                "inputPolicy": "input_policy",
+                "logLevelIn": "log_level_in",
+                "logLevelOut": "log_level_out",
+                "nodeName": "node_name",
+                "outputPolicy": "output_policy",
+                "vmId": "vm_id"
+            },
+            "proxmoxve:Network/firewallRules:FirewallRules": {
+                "containerId": "container_id",
+                "nodeName": "node_name",
+                "rules": "rule",
+                "vmId": "vm_id"
+            },
+            "proxmoxve:Network/firewallSecurityGroup:FirewallSecurityGroup": {
+                "containerId": "container_id",
+                "nodeName": "node_name",
+                "rules": "rule",
+                "vmId": "vm_id"
+            },
+            "proxmoxve:Network/getDNS:getDNS": {
+                "nodeName": "node_name"
+            },
+            "proxmoxve:Network/getHosts:getHosts": {
+                "nodeName": "node_name"
+            },
+            "proxmoxve:Network/getTime:getTime": {
+                "localTime": "local_time",
+                "nodeName": "node_name",
+                "timeZone": "time_zone",
+                "utcTime": "utc_time"
+            },
+            "proxmoxve:Network/getVersion:getVersion": {
+                "repositoryId": "repository_id"
+            },
+            "proxmoxve:Network/networkBridge:NetworkBridge": {
+                "nodeName": "node_name",
+                "vlanAware": "vlan_aware"
+            },
+            "proxmoxve:Network/networkVlan:NetworkVlan": {
+                "nodeName": "node_name"
+            },
+            "proxmoxve:Permission/GroupAcl:GroupAcl": {
+                "roleId": "role_id"
+            },
+            "proxmoxve:Permission/PoolMember:PoolMember": {
+                "datastoreId": "datastore_id",
+                "nodeName": "node_name",
+                "vmId": "vm_id"
+            },
+            "proxmoxve:Permission/UserAcl:UserAcl": {
+                "roleId": "role_id"
+            },
+            "proxmoxve:Permission/getGroup:getGroup": {
+                "acls": "acl",
+                "groupId": "group_id"
+            },
+            "proxmoxve:Permission/getGroupAcl:getGroupAcl": {
+                "roleId": "role_id"
+            },
+            "proxmoxve:Permission/getGroups:getGroups": {
+                "groupIds": "group_ids"
+            },
+            "proxmoxve:Permission/getPool:getPool": {
+                "poolId": "pool_id"
+            },
+            "proxmoxve:Permission/getPoolMember:getPoolMember": {
+                "datastoreId": "datastore_id",
+                "nodeName": "node_name",
+                "vmId": "vm_id"
+            },
+            "proxmoxve:Permission/getPools:getPools": {
+                "poolIds": "pool_ids"
+            },
+            "proxmoxve:Permission/getRole:getRole": {
+                "roleId": "role_id"
+            },
+            "proxmoxve:Permission/getRoles:getRoles": {
+                "roleIds": "role_ids",
+                "specials": "special"
+            },
+            "proxmoxve:Permission/getUser:getUser": {
+                "acls": "acl",
+                "expirationDate": "expiration_date",
+                "firstName": "first_name",
+                "lastName": "last_name",
+                "userId": "user_id"
+            },
+            "proxmoxve:Permission/getUserAcl:getUserAcl": {
+                "roleId": "role_id"
+            },
+            "proxmoxve:Permission/getUsers:getUsers": {
+                "enableds": "enabled",
+                "expirationDates": "expiration_dates",
+                "firstNames": "first_names",
+                "lastNames": "last_names",
+                "userIds": "user_ids"
+            },
+            "proxmoxve:Permission/group:Group": {
+                "acls": "acl",
+                "groupId": "group_id"
+            },
+            "proxmoxve:Permission/pool:Pool": {
+                "poolId": "pool_id"
+            },
+            "proxmoxve:Permission/role:Role": {
+                "roleId": "role_id"
+            },
+            "proxmoxve:Permission/user:User": {
+                "acls": "acl",
+                "expirationDate": "expiration_date",
+                "firstName": "first_name",
+                "lastName": "last_name",
+                "userId": "user_id"
+            },
+            "proxmoxve:Storage/FileSourceFile:FileSourceFile": {
+                "fileName": "file_name",
+                "minTls": "min_tls"
+            },
+            "proxmoxve:Storage/FileSourceRaw:FileSourceRaw": {
+                "fileName": "file_name"
+            },
+            "proxmoxve:Storage/file:File": {
+                "contentType": "content_type",
+                "datastoreId": "datastore_id",
+                "fileModificationDate": "file_modification_date",
+                "fileName": "file_name",
+                "fileSize": "file_size",
+                "fileTag": "file_tag",
+                "nodeName": "node_name",
+                "sourceFile": "source_file",
+                "sourceRaw": "source_raw",
+                "timeoutUpload": "timeout_upload"
+            },
+            "proxmoxve:Storage/getDatastores:getDatastores": {
+                "actives": "active",
+                "contentTypes": "content_types",
+                "datastoreIds": "datastore_ids",
+                "enableds": "enabled",
+                "nodeName": "node_name",
+                "shareds": "shared",
+                "spaceAvailables": "space_available",
+                "spaceTotals": "space_total",
+                "spaceUseds": "space_used"
+            },
+            "proxmoxve:VM/VirtualMachineCdrom:VirtualMachineCdrom": {
+                "fileId": "file_id"
+            },
+            "proxmoxve:VM/VirtualMachineClone:VirtualMachineClone": {
+                "datastoreId": "datastore_id",
+                "nodeName": "node_name",
+                "vmId": "vm_id"
+            },
+            "proxmoxve:VM/VirtualMachineDisk:VirtualMachineDisk": {
+                "datastoreId": "datastore_id",
+                "fileFormat": "file_format",
+                "fileId": "file_id",
+                "pathInDatastore": "path_in_datastore"
+            },
+            "proxmoxve:VM/VirtualMachineDiskSpeed:VirtualMachineDiskSpeed": {
+                "readBurstable": "read_burstable",
+                "writeBurstable": "write_burstable"
+            },
+            "proxmoxve:VM/VirtualMachineEfiDisk:VirtualMachineEfiDisk": {
+                "datastoreId": "datastore_id",
+                "fileFormat": "file_format",
+                "preEnrolledKeys": "pre_enrolled_keys"
+            },
+            "proxmoxve:VM/VirtualMachineHostpci:VirtualMachineHostpci": {
+                "romFile": "rom_file"
+            },
+            "proxmoxve:VM/VirtualMachineInitialization:VirtualMachineInitialization": {
+                "datastoreId": "datastore_id",
+                "ipConfigs": "ip_config",
+                "metaDataFileId": "meta_data_file_id",
+                "networkDataFileId": "network_data_file_id",
+                "userAccount": "user_account",
+                "userDataFileId": "user_data_file_id",
+                "vendorDataFileId": "vendor_data_file_id"
+            },
+            "proxmoxve:VM/VirtualMachineNetworkDevice:VirtualMachineNetworkDevice": {
+                "macAddress": "mac_address",
+                "rateLimit": "rate_limit",
+                "vlanId": "vlan_id"
+            },
+            "proxmoxve:VM/VirtualMachineStartup:VirtualMachineStartup": {
+                "downDelay": "down_delay",
+                "upDelay": "up_delay"
+            },
+            "proxmoxve:VM/VirtualMachineTpmState:VirtualMachineTpmState": {
+                "datastoreId": "datastore_id"
+            },
+            "proxmoxve:VM/getVirtualMachine:getVirtualMachine": {
+                "nodeName": "node_name",
+                "vmId": "vm_id"
+            },
+            "proxmoxve:VM/getVirtualMachines:getVirtualMachines": {
+                "nodeName": "node_name"
+            },
+            "proxmoxve:VM/getVirtualMachinesVm:getVirtualMachinesVm": {
+                "nodeName": "node_name",
+                "vmId": "vm_id"
+            },
+            "proxmoxve:VM/virtualMachine:VirtualMachine": {
+                "audioDevice": "audio_device",
+                "bootOrders": "boot_order",
+                "disks": "disk",
+                "efiDisk": "efi_disk",
+                "hookScriptFileId": "hook_script_file_id",
+                "hostpcis": "hostpci",
+                "ipv4Addresses": "ipv4_addresses",
+                "ipv6Addresses": "ipv6_addresses",
+                "keyboardLayout": "keyboard_layout",
+                "kvmArguments": "kvm_arguments",
+                "macAddresses": "mac_addresses",
+                "networkDevices": "network_device",
+                "networkInterfaceNames": "network_interface_names",
+                "nodeName": "node_name",
+                "onBoot": "on_boot",
+                "operatingSystem": "operating_system",
+                "poolId": "pool_id",
+                "scsiHardware": "scsi_hardware",
+                "serialDevices": "serial_device",
+                "stopOnDestroy": "stop_on_destroy",
+                "tabletDevice": "tablet_device",
+                "timeoutClone": "timeout_clone",
+                "timeoutCreate": "timeout_create",
+                "timeoutMigrate": "timeout_migrate",
+                "timeoutMoveDisk": "timeout_move_disk",
+                "timeoutReboot": "timeout_reboot",
+                "timeoutShutdownVm": "timeout_shutdown_vm",
+                "timeoutStartVm": "timeout_start_vm",
+                "timeoutStopVm": "timeout_stop_vm",
+                "tpmState": "tpm_state",
+                "usbs": "usb",
+                "vmId": "vm_id"
+            },
+            "proxmoxve:config/ssh:ssh": {
+                "agentSocket": "agent_socket",
+                "nodes": "node",
+                "privateKey": "private_key",
+                "socks5Password": "socks5_password",
+                "socks5Server": "socks5_server",
+                "socks5Username": "socks5_username"
+            },
+            "proxmoxve:index/ProviderSsh:ProviderSsh": {
+                "agentSocket": "agent_socket",
+                "nodes": "node",
+                "privateKey": "private_key",
+                "socks5Password": "socks5_password",
+                "socks5Server": "socks5_server",
+                "socks5Username": "socks5_username"
+            },
+            "proxmoxve:index/certifi:Certifi": {
+                "certificateChain": "certificate_chain",
+                "expirationDate": "expiration_date",
+                "fileName": "file_name",
+                "nodeName": "node_name",
+                "privateKey": "private_key",
+                "publicKeySize": "public_key_size",
+                "publicKeyType": "public_key_type",
+                "sslFingerprint": "ssl_fingerprint",
+                "startDate": "start_date",
+                "subjectAlternativeNames": "subject_alternative_names"
+            },
+            "proxmoxve:index/dNS:DNS": {
+                "nodeName": "node_name"
+            },
+            "proxmoxve:index/hosts:Hosts": {
+                "nodeName": "node_name"
+            },
+            "proxmoxve:index/time:Time": {
+                "localTime": "local_time",
+                "nodeName": "node_name",
+                "timeZone": "time_zone",
+                "utcTime": "utc_time"
+            },
+            "proxmoxve:index:Provider": {
+                "apiToken": "api_token",
+                "minTls": "min_tls",
+                "tmpDir": "tmp_dir"
+            }
+        },
+        "renamedConfigProperties": {
+            "apiToken": "api_token",
+            "minTls": "min_tls",
+            "tmpDir": "tmp_dir"
+        }
+    }
+}

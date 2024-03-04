@@ -44,12 +44,10 @@ namespace Pulumi.ProxmoxVE.Network
     /// 
     /// ## Import
     /// 
-    /// #!/usr/bin/env sh
-    /// 
-    ///  #Interfaces can be imported using the `node_name:iface` format, e.g.
+    /// #!/usr/bin/env sh #Interfaces can be imported using the `node_name:iface` format, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import proxmoxve:Network/networkBridge:NetworkBridge vmbr99 pve:vmbr99
+    ///  $ pulumi import proxmoxve:Network/networkBridge:NetworkBridge vmbr99 pve:vmbr99
     /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:Network/networkBridge:NetworkBridge")]

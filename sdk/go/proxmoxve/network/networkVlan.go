@@ -54,12 +54,12 @@ import (
 //
 // ## Import
 //
-// #!/usr/bin/env sh
-//
-//	#Interfaces can be imported using the `node_name:iface` format, e.g.
+// #!/usr/bin/env sh #Interfaces can be imported using the `node_name:iface` format, e.g.
 //
 // ```sh
-// $ pulumi import proxmoxve:Network/networkVlan:NetworkVlan vlan99 pve:vlan99
+//
+//	$ pulumi import proxmoxve:Network/networkVlan:NetworkVlan vlan99 pve:vlan99
+//
 // ```
 type NetworkVlan struct {
 	pulumi.CustomResourceState

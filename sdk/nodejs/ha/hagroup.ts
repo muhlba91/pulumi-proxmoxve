@@ -28,12 +28,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * #!/usr/bin/env sh
- *
- *  HA groups can be imported using their name, e.g.:
+ * #!/usr/bin/env sh HA groups can be imported using their name, e.g.
  *
  * ```sh
- * $ pulumi import proxmoxve:HA/hAGroup:HAGroup example example
+ *  $ pulumi import proxmoxve:HA/hAGroup:HAGroup example example
  * ```
  */
 export class HAGroup extends pulumi.CustomResource {

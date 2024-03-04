@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.ProxmoxVE
+namespace Pulumi.ProxmoxVE.Network
 {
     public static class GetVersion
     {
@@ -26,7 +26,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = ProxmoxVE.GetVersion.Invoke();
+        ///     var example = ProxmoxVE.Network.GetVersion.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -43,7 +43,7 @@ namespace Pulumi.ProxmoxVE
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetVersionResult> InvokeAsync(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetVersionResult>("proxmoxve:index/getVersion:getVersion", InvokeArgs.Empty, options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetVersionResult>("proxmoxve:Network/getVersion:getVersion", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
         /// Retrieves API version details.
@@ -60,7 +60,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = ProxmoxVE.GetVersion.Invoke();
+        ///     var example = ProxmoxVE.Network.GetVersion.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -77,7 +77,7 @@ namespace Pulumi.ProxmoxVE
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetVersionResult> Invoke(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetVersionResult>("proxmoxve:index/getVersion:getVersion", InvokeArgs.Empty, options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetVersionResult>("proxmoxve:Network/getVersion:getVersion", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

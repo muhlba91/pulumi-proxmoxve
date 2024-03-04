@@ -16,14 +16,16 @@ public final class VirtualMachineStartupArgs extends com.pulumi.resources.Resour
     public static final VirtualMachineStartupArgs Empty = new VirtualMachineStartupArgs();
 
     /**
-     * A non-negative number defining the delay in seconds before the next VM is shut down
+     * A non-negative number defining the delay in
+     * seconds before the next VM is shut down.
      * 
      */
     @Import(name="downDelay")
     private @Nullable Output<Integer> downDelay;
 
     /**
-     * @return A non-negative number defining the delay in seconds before the next VM is shut down
+     * @return A non-negative number defining the delay in
+     * seconds before the next VM is shut down.
      * 
      */
     public Optional<Output<Integer>> downDelay() {
@@ -48,14 +50,16 @@ public final class VirtualMachineStartupArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * A non-negative number defining the delay in seconds before the next VM is started
+     * A non-negative number defining the delay in
+     * seconds before the next VM is started.
      * 
      */
     @Import(name="upDelay")
     private @Nullable Output<Integer> upDelay;
 
     /**
-     * @return A non-negative number defining the delay in seconds before the next VM is started
+     * @return A non-negative number defining the delay in
+     * seconds before the next VM is started.
      * 
      */
     public Optional<Output<Integer>> upDelay() {
@@ -89,7 +93,8 @@ public final class VirtualMachineStartupArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param downDelay A non-negative number defining the delay in seconds before the next VM is shut down
+         * @param downDelay A non-negative number defining the delay in
+         * seconds before the next VM is shut down.
          * 
          * @return builder
          * 
@@ -100,7 +105,8 @@ public final class VirtualMachineStartupArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param downDelay A non-negative number defining the delay in seconds before the next VM is shut down
+         * @param downDelay A non-negative number defining the delay in
+         * seconds before the next VM is shut down.
          * 
          * @return builder
          * 
@@ -133,7 +139,8 @@ public final class VirtualMachineStartupArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param upDelay A non-negative number defining the delay in seconds before the next VM is started
+         * @param upDelay A non-negative number defining the delay in
+         * seconds before the next VM is started.
          * 
          * @return builder
          * 
@@ -144,7 +151,8 @@ public final class VirtualMachineStartupArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param upDelay A non-negative number defining the delay in seconds before the next VM is started
+         * @param upDelay A non-negative number defining the delay in
+         * seconds before the next VM is started.
          * 
          * @return builder
          * 

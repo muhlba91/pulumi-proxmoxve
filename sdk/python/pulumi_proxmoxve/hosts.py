@@ -174,12 +174,10 @@ class Hosts(pulumi.CustomResource):
 
         ## Import
 
-        Instances can be imported using the `node_name`, e.g.,
-
-         bash
+        Instances can be imported using the `node_name`, e.g., bash
 
         ```sh
-        $ pulumi import proxmoxve:index/hosts:Hosts first_node_host_entries first-node
+         $ pulumi import proxmoxve:index/hosts:Hosts first_node_host_entries first-node
         ```
 
         :param str resource_name: The name of the resource.
@@ -202,12 +200,10 @@ class Hosts(pulumi.CustomResource):
 
         ## Import
 
-        Instances can be imported using the `node_name`, e.g.,
-
-         bash
+        Instances can be imported using the `node_name`, e.g., bash
 
         ```sh
-        $ pulumi import proxmoxve:index/hosts:Hosts first_node_host_entries first-node
+         $ pulumi import proxmoxve:index/hosts:Hosts first_node_host_entries first-node
         ```
 
         :param str resource_name: The name of the resource.

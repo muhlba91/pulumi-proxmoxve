@@ -7,7 +7,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities
+from .. import _utilities
 
 __all__ = [
     'GetVersionResult',
@@ -90,7 +90,7 @@ def get_version(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVers
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
-    example = proxmoxve.get_version()
+    example = proxmoxve.Network.get_version()
     pulumi.export("dataProxmoxVirtualEnvironmentVersion", {
         "release": example.release,
         "repository_id": example.repository_id,
@@ -100,7 +100,7 @@ def get_version(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVers
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('proxmoxve:index/getVersion:getVersion', __args__, opts=opts, typ=GetVersionResult).value
+    __ret__ = pulumi.runtime.invoke('proxmoxve:Network/getVersion:getVersion', __args__, opts=opts, typ=GetVersionResult).value
 
     return AwaitableGetVersionResult(
         id=pulumi.get(__ret__, 'id'),
@@ -120,7 +120,7 @@ def get_version_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Ou
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
-    example = proxmoxve.get_version()
+    example = proxmoxve.Network.get_version()
     pulumi.export("dataProxmoxVirtualEnvironmentVersion", {
         "release": example.release,
         "repository_id": example.repository_id,

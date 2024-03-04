@@ -883,6 +883,112 @@ func (o FirewallSecurityGroupRuleArrayOutput) Index(i pulumi.IntInput) FirewallS
 	}).(FirewallSecurityGroupRuleOutput)
 }
 
+type GetHostsEntry struct {
+	// The address
+	Address string `pulumi:"address"`
+	// The hostnames associated with each of the IP addresses.
+	Hostnames []string `pulumi:"hostnames"`
+}
+
+// GetHostsEntryInput is an input type that accepts GetHostsEntryArgs and GetHostsEntryOutput values.
+// You can construct a concrete instance of `GetHostsEntryInput` via:
+//
+//	GetHostsEntryArgs{...}
+type GetHostsEntryInput interface {
+	pulumi.Input
+
+	ToGetHostsEntryOutput() GetHostsEntryOutput
+	ToGetHostsEntryOutputWithContext(context.Context) GetHostsEntryOutput
+}
+
+type GetHostsEntryArgs struct {
+	// The address
+	Address pulumi.StringInput `pulumi:"address"`
+	// The hostnames associated with each of the IP addresses.
+	Hostnames pulumi.StringArrayInput `pulumi:"hostnames"`
+}
+
+func (GetHostsEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostsEntry)(nil)).Elem()
+}
+
+func (i GetHostsEntryArgs) ToGetHostsEntryOutput() GetHostsEntryOutput {
+	return i.ToGetHostsEntryOutputWithContext(context.Background())
+}
+
+func (i GetHostsEntryArgs) ToGetHostsEntryOutputWithContext(ctx context.Context) GetHostsEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostsEntryOutput)
+}
+
+// GetHostsEntryArrayInput is an input type that accepts GetHostsEntryArray and GetHostsEntryArrayOutput values.
+// You can construct a concrete instance of `GetHostsEntryArrayInput` via:
+//
+//	GetHostsEntryArray{ GetHostsEntryArgs{...} }
+type GetHostsEntryArrayInput interface {
+	pulumi.Input
+
+	ToGetHostsEntryArrayOutput() GetHostsEntryArrayOutput
+	ToGetHostsEntryArrayOutputWithContext(context.Context) GetHostsEntryArrayOutput
+}
+
+type GetHostsEntryArray []GetHostsEntryInput
+
+func (GetHostsEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostsEntry)(nil)).Elem()
+}
+
+func (i GetHostsEntryArray) ToGetHostsEntryArrayOutput() GetHostsEntryArrayOutput {
+	return i.ToGetHostsEntryArrayOutputWithContext(context.Background())
+}
+
+func (i GetHostsEntryArray) ToGetHostsEntryArrayOutputWithContext(ctx context.Context) GetHostsEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostsEntryArrayOutput)
+}
+
+type GetHostsEntryOutput struct{ *pulumi.OutputState }
+
+func (GetHostsEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostsEntry)(nil)).Elem()
+}
+
+func (o GetHostsEntryOutput) ToGetHostsEntryOutput() GetHostsEntryOutput {
+	return o
+}
+
+func (o GetHostsEntryOutput) ToGetHostsEntryOutputWithContext(ctx context.Context) GetHostsEntryOutput {
+	return o
+}
+
+// The address
+func (o GetHostsEntryOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostsEntry) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The hostnames associated with each of the IP addresses.
+func (o GetHostsEntryOutput) Hostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHostsEntry) []string { return v.Hostnames }).(pulumi.StringArrayOutput)
+}
+
+type GetHostsEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHostsEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostsEntry)(nil)).Elem()
+}
+
+func (o GetHostsEntryArrayOutput) ToGetHostsEntryArrayOutput() GetHostsEntryArrayOutput {
+	return o
+}
+
+func (o GetHostsEntryArrayOutput) ToGetHostsEntryArrayOutputWithContext(ctx context.Context) GetHostsEntryArrayOutput {
+	return o
+}
+
+func (o GetHostsEntryArrayOutput) Index(i pulumi.IntInput) GetHostsEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHostsEntry {
+		return vs[0].([]GetHostsEntry)[vs[1].(int)]
+	}).(GetHostsEntryOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallIPSetCidrInput)(nil)).Elem(), FirewallIPSetCidrArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallIPSetCidrArrayInput)(nil)).Elem(), FirewallIPSetCidrArray{})
@@ -892,6 +998,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallRulesRuleArrayInput)(nil)).Elem(), FirewallRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallSecurityGroupRuleInput)(nil)).Elem(), FirewallSecurityGroupRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallSecurityGroupRuleArrayInput)(nil)).Elem(), FirewallSecurityGroupRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostsEntryInput)(nil)).Elem(), GetHostsEntryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostsEntryArrayInput)(nil)).Elem(), GetHostsEntryArray{})
 	pulumi.RegisterOutputType(FirewallIPSetCidrOutput{})
 	pulumi.RegisterOutputType(FirewallIPSetCidrArrayOutput{})
 	pulumi.RegisterOutputType(FirewallLogRatelimitOutput{})
@@ -900,4 +1008,6 @@ func init() {
 	pulumi.RegisterOutputType(FirewallRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(FirewallSecurityGroupRuleOutput{})
 	pulumi.RegisterOutputType(FirewallSecurityGroupRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetHostsEntryOutput{})
+	pulumi.RegisterOutputType(GetHostsEntryArrayOutput{})
 }

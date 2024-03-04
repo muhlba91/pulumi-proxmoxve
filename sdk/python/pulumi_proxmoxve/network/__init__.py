@@ -11,6 +11,10 @@ from .firewall_ip_set import *
 from .firewall_options import *
 from .firewall_rules import *
 from .firewall_security_group import *
+from .get_dns import *
+from .get_hosts import *
+from .get_time import *
+from .get_version import *
 from .network_bridge import *
 from .network_vlan import *
 from ._inputs import *

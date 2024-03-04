@@ -56,12 +56,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * #!/usr/bin/env sh
- * 
- *  HA resources can be imported using their identifiers, e.g.:
+ * #!/usr/bin/env sh HA resources can be imported using their identifiers, e.g.
  * 
  * ```sh
- * $ pulumi import proxmoxve:HA/hAResource:HAResource example vm:123
+ *  $ pulumi import proxmoxve:HA/hAResource:HAResource example vm:123
  * ```
  * 
  */

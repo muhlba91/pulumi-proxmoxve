@@ -44,12 +44,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Instances can be imported using the `name`, e.g.,
- *
- *  bash
+ * Instances can be imported using the `name`, e.g., bash
  *
  * ```sh
- * $ pulumi import proxmoxve:Network/firewallSecurityGroup:FirewallSecurityGroup webserver webserver
+ *  $ pulumi import proxmoxve:Network/firewallSecurityGroup:FirewallSecurityGroup webserver webserver
  * ```
  */
 export class FirewallSecurityGroup extends pulumi.CustomResource {

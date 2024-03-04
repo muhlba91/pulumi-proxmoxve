@@ -145,12 +145,10 @@ class Time(pulumi.CustomResource):
 
         ## Import
 
-        Instances can be imported using the `node_name`, e.g.,
-
-         bash
+        Instances can be imported using the `node_name`, e.g., bash
 
         ```sh
-        $ pulumi import proxmoxve:index/time:Time first_node first-node
+         $ pulumi import proxmoxve:index/time:Time first_node first-node
         ```
 
         :param str resource_name: The name of the resource.
@@ -180,12 +178,10 @@ class Time(pulumi.CustomResource):
 
         ## Import
 
-        Instances can be imported using the `node_name`, e.g.,
-
-         bash
+        Instances can be imported using the `node_name`, e.g., bash
 
         ```sh
-        $ pulumi import proxmoxve:index/time:Time first_node first-node
+         $ pulumi import proxmoxve:index/time:Time first_node first-node
         ```
 
         :param str resource_name: The name of the resource.

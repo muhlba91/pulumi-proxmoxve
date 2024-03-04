@@ -16,11 +16,9 @@ package main
 
 import (
 	proxmoxve "github.com/muhlba91/pulumi-proxmoxve/provider"
-	"github.com/muhlba91/pulumi-proxmoxve/provider/pkg/version"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
+	"github.com/pulumi/pulumi-terraform-bridge/pf/tfgen"
 )
 
 func main() {
-	// Modify the path to point to the new provider
-	tfgen.Main("proxmoxve", version.Version, proxmoxve.Provider())
+	tfgen.MainWithMuxer("proxmoxve", proxmoxve.Provider())
 }

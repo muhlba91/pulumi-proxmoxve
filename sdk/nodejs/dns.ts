@@ -13,12 +13,10 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Instances can be imported using the `node_name`, e.g.,
- *
- *  bash
+ * Instances can be imported using the `node_name`, e.g., bash
  *
  * ```sh
- * $ pulumi import proxmoxve:index/dNS:DNS first_node first-node
+ *  $ pulumi import proxmoxve:index/dNS:DNS first_node first-node
  * ```
  */
 export class DNS extends pulumi.CustomResource {

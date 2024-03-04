@@ -14,7 +14,8 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
     public sealed class ContainerStartup
     {
         /// <summary>
-        /// A non-negative number defining the delay in seconds before the next container is shut down
+        /// A non-negative number defining the delay in
+        /// seconds before the next container is shut down.
         /// </summary>
         public readonly int? DownDelay;
         /// <summary>
@@ -23,7 +24,8 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
         /// </summary>
         public readonly int? Order;
         /// <summary>
-        /// A non-negative number defining the delay in seconds before the next container is started
+        /// A non-negative number defining the delay in
+        /// seconds before the next container is started.
         /// </summary>
         public readonly int? UpDelay;
 
