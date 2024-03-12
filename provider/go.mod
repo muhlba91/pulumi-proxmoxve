@@ -4,7 +4,7 @@ go 1.22
 
 toolchain go1.22.0
 
-replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240229143312-4f60ee4e2975
+replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 7ac578ce47fc
 
 require (
 	github.com/bpg/terraform-provider-proxmox v0.48.3
