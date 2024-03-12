@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [6.0.2](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.0.1...v6.0.2) (2024-03-12)
+
+
+### Bug Fixes
+
+* fix go sdk version; fix [#276](https://github.com/muhlba91/pulumi-proxmoxve/issues/276) ([21b5975](https://github.com/muhlba91/pulumi-proxmoxve/commit/21b59755c053d47269c53af5ab95f24e3805ec60))
+
 ## [6.0.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.0.0...v6.0.1) (2024-03-12)
 
 
