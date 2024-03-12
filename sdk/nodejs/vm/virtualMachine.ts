@@ -11,72 +11,14 @@ import * as utilities from "../utilities";
  *
  * > This resource uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
  *
- * ## Qemu guest agent
- *
- * Qemu-guest-agent is an application which can be installed inside guest VM, see
- * [Proxmox Wiki](https://pve.proxmox.com/wiki/Qemu-guest-agent) and [Proxmox
- * Documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_qemu_agent)
- *
- * For VM with `agent.enabled = false`, Proxmox uses ACPI for `Shutdown` and
- * `Reboot`, and `qemu-guest-agent` is not needed inside the VM.
- *
- * Setting `agent.enabled = true` informs Proxmox that the guest agent is expected
- * to be *running* inside the VM. Proxmox then uses `qemu-guest-agent` instead of
- * ACPI to control the VM. If the agent is not running, Proxmox operations
- * `Shutdown` and `Reboot` time out and fail. The failing operation gets a lock on
- * the VM, and until the operation times out, other operations like `Stop` and
- * `Reboot` cannot be used.
- *
- * Do **not** run VM with `agent.enabled = true`, unless the VM is configured to
- * automatically **start** `qemu-guest-agent` at some point.
- *
- * "Monitor" tab in Proxmox GUI can be used to send low-level commands to `qemu`.
- * See the [documentation](https://www.qemu.org/docs/master/system/monitor.html).
- * Commands `systemPowerdown` and `quit` have proven useful in shutting down VMs
- * with `agent.enabled = true` and no agent running.
- *
- * Cloud images usually do not have `qemu-guest-agent` installed. It is possible to
- * install and *start* it using cloud-init, e.g. using custom `userDataFileId`
- * file.
- *
- * This provider requires `agent.enabled = true` to populate `ipv4Addresses`,
- * `ipv6Addresses` and `networkInterfaceNames` output attributes.
- *
- * Setting `agent.enabled = true` without running `qemu-guest-agent` in the VM will
- * also result in long timeouts when using the provider, both when creating VMs,
- * and when refreshing resources.  The provider has no way to distinguish between
- * "qemu-guest-agent not installed" and "very long boot due to a disk check", it
- * trusts the user to set `agent.enabled` correctly and waits for
- * `qemu-guest-agent` to start.
- *
- * ## Important Notes
- *
- * When cloning an existing virtual machine, whether it's a template or not, the
- * resource will only detect changes to the arguments which are not set to their
- * default values.
- *
- * Furthermore, when cloning from one node to a different one, the behavior changes
- * depening on the datastores of the source VM. If at least one non-shared
- * datastore is used, the VM is first cloned to the source node before being
- * migrated to the target node. This circumvents a limitation in the Proxmox clone
- * API.
- *
- * **Note:** Because the migration step after the clone tries to preserve the used
- * datastores by their name, it may fail if a datastore used in the source VM is
- * not available on the target node (e.g. `local-lvm` is used on the source node in
- * the VM but no `local-lvm` datastore is available on the target node). In this
- * case, it is recommended to set the `datastoreId` argument in the `clone` block
- * to force the migration step to migrate all disks to a specific datastore on the
- * target node. If you need certain disks to be on specific datastores, set
- * the `datastoreId` argument of the disks in the `disks` block to move the disks
- * to the correct datastore after the cloning and migrating succeeded.
- *
  * ## Import
  *
- * Instances can be imported using the `node_name` and the `vm_id`, e.g., bash
+ * Instances can be imported using the `node_name` and the `vm_id`, e.g.,
+ *
+ * bash
  *
  * ```sh
- *  $ pulumi import proxmoxve:VM/virtualMachine:VirtualMachine ubuntu_vm first-node/4321
+ * $ pulumi import proxmoxve:VM/virtualMachine:VirtualMachine ubuntu_vm first-node/4321
  * ```
  */
 export class VirtualMachine extends pulumi.CustomResource {

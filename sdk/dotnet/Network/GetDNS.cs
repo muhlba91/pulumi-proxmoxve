@@ -14,10 +14,9 @@ namespace Pulumi.ProxmoxVE.Network
         /// <summary>
         /// Retrieves the DNS configuration for a specific node.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,8 +32,7 @@ namespace Pulumi.ProxmoxVE.Network
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDNSResult> InvokeAsync(GetDNSArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDNSResult>("proxmoxve:Network/getDNS:getDNS", args ?? new GetDNSArgs(), options.WithDefaults());
@@ -42,10 +40,9 @@ namespace Pulumi.ProxmoxVE.Network
         /// <summary>
         /// Retrieves the DNS configuration for a specific node.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,8 +58,7 @@ namespace Pulumi.ProxmoxVE.Network
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDNSResult> Invoke(GetDNSInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDNSResult>("proxmoxve:Network/getDNS:getDNS", args ?? new GetDNSInvokeArgs(), options.WithDefaults());

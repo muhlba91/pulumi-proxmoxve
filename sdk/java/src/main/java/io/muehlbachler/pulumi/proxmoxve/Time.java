@@ -17,6 +17,8 @@ import javax.annotation.Nullable;
  * Manages the time for a specific node.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -46,13 +48,16 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * Instances can be imported using the `node_name`, e.g., bash
+ * Instances can be imported using the `node_name`, e.g.,
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import proxmoxve:index/time:Time first_node first-node
+ * $ pulumi import proxmoxve:index/time:Time first_node first-node
  * ```
  * 
  */

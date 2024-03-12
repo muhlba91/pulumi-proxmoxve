@@ -14,10 +14,9 @@ namespace Pulumi.ProxmoxVE.Storage
         /// <summary>
         /// Retrieves information about all the datastores available to a specific node.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,8 +32,7 @@ namespace Pulumi.ProxmoxVE.Storage
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDatastoresResult> InvokeAsync(GetDatastoresArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatastoresResult>("proxmoxve:Storage/getDatastores:getDatastores", args ?? new GetDatastoresArgs(), options.WithDefaults());
@@ -42,10 +40,9 @@ namespace Pulumi.ProxmoxVE.Storage
         /// <summary>
         /// Retrieves information about all the datastores available to a specific node.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,8 +58,7 @@ namespace Pulumi.ProxmoxVE.Storage
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDatastoresResult> Invoke(GetDatastoresInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatastoresResult>("proxmoxve:Storage/getDatastores:getDatastores", args ?? new GetDatastoresInvokeArgs(), options.WithDefaults());

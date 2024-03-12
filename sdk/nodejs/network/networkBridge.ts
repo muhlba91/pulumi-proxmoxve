@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
@@ -22,13 +23,16 @@ import * as utilities from "../utilities";
  *     dependsOn: [proxmox_virtual_environment_network_linux_vlan.vlan99],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
- * #!/usr/bin/env sh #Interfaces can be imported using the `node_name:iface` format, e.g.
+ * #!/usr/bin/env sh
+ *
+ * #Interfaces can be imported using the `node_name:iface` format, e.g.
  *
  * ```sh
- *  $ pulumi import proxmoxve:Network/networkBridge:NetworkBridge vmbr99 pve:vmbr99
+ * $ pulumi import proxmoxve:Network/networkBridge:NetworkBridge vmbr99 pve:vmbr99
  * ```
  */
 export class NetworkBridge extends pulumi.CustomResource {

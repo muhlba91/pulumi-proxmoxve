@@ -10,10 +10,12 @@ import * as utilities from "../utilities";
  * Manages a file.
  *
  * ## Example Usage
+ *
  * ### Backups (`dump`)
  *
  * > **Note:** The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
@@ -27,10 +29,13 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Images
  *
  * **Consider using `proxmoxve.Download.File` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.**
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
@@ -44,10 +49,13 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Container Template (`vztmpl`)
  *
  * **Consider using `proxmoxve.Download.File` resource instead. Using this resource for container images is less efficient (requires to transfer uploaded image to node) though still supported.**
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
@@ -61,6 +69,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Important Notes
  *
  * The Proxmox VE API endpoint for file uploads does not support chunked transfer
@@ -78,10 +88,20 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Instances can be imported using the `node_name`, `datastore_id`, `content_type` and the `file_name` in the following formattext node_name:datastore_id/content_type/file_name Examplebash
+ * Instances can be imported using the `node_name`, `datastore_id`, `content_type`
+ *
+ * and the `file_name` in the following format:
+ *
+ * text
+ *
+ * node_name:datastore_id/content_type/file_name
+ *
+ * Example:
+ *
+ * bash
  *
  * ```sh
- *  $ pulumi import proxmoxve:Storage/file:File cloud_config pve/local:snippets/example.cloud-config.yaml
+ * $ pulumi import proxmoxve:Storage/file:File cloud_config pve/local:snippets/example.cloud-config.yaml
  * ```
  */
 export class File extends pulumi.CustomResource {

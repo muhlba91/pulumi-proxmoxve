@@ -102,6 +102,7 @@ class Role(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -110,13 +111,16 @@ class Role(pulumi.CustomResource):
             privileges=["VM.Monitor"],
             role_id="operations-monitoring")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        Instances can be imported using the `role_id`, e.g., bash
+        Instances can be imported using the `role_id`, e.g.,
+
+        bash
 
         ```sh
-         $ pulumi import proxmoxve:Permission/role:Role operations_monitoring operations-monitoring
+        $ pulumi import proxmoxve:Permission/role:Role operations_monitoring operations-monitoring
         ```
 
         :param str resource_name: The name of the resource.
@@ -135,6 +139,7 @@ class Role(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -143,13 +148,16 @@ class Role(pulumi.CustomResource):
             privileges=["VM.Monitor"],
             role_id="operations-monitoring")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        Instances can be imported using the `role_id`, e.g., bash
+        Instances can be imported using the `role_id`, e.g.,
+
+        bash
 
         ```sh
-         $ pulumi import proxmoxve:Permission/role:Role operations_monitoring operations-monitoring
+        $ pulumi import proxmoxve:Permission/role:Role operations_monitoring operations-monitoring
         ```
 
         :param str resource_name: The name of the resource.

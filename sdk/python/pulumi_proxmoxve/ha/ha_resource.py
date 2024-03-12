@@ -268,6 +268,7 @@ class HAResource(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -279,13 +280,16 @@ class HAResource(pulumi.CustomResource):
             comment="Managed by Terraform",
             opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_hagroup["example"]]))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        #!/usr/bin/env sh HA resources can be imported using their identifiers, e.g.
+        #!/usr/bin/env sh
+
+        HA resources can be imported using their identifiers, e.g.:
 
         ```sh
-         $ pulumi import proxmoxve:HA/hAResource:HAResource example vm:123
+        $ pulumi import proxmoxve:HA/hAResource:HAResource example vm:123
         ```
 
         :param str resource_name: The name of the resource.
@@ -309,6 +313,7 @@ class HAResource(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -320,13 +325,16 @@ class HAResource(pulumi.CustomResource):
             comment="Managed by Terraform",
             opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_hagroup["example"]]))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        #!/usr/bin/env sh HA resources can be imported using their identifiers, e.g.
+        #!/usr/bin/env sh
+
+        HA resources can be imported using their identifiers, e.g.:
 
         ```sh
-         $ pulumi import proxmoxve:HA/hAResource:HAResource example vm:123
+        $ pulumi import proxmoxve:HA/hAResource:HAResource example vm:123
         ```
 
         :param str resource_name: The name of the resource.

@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
  * Manages a High Availability group in a Proxmox VE cluster.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -57,13 +59,16 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * #!/usr/bin/env sh HA groups can be imported using their name, e.g.
+ * #!/usr/bin/env sh
+ * 
+ * HA groups can be imported using their name, e.g.:
  * 
  * ```sh
- *  $ pulumi import proxmoxve:HA/hAGroup:HAGroup example example
+ * $ pulumi import proxmoxve:HA/hAGroup:HAGroup example example
  * ```
  * 
  */

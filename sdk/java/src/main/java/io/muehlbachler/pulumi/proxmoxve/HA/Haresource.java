@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * Manages Proxmox HA resources.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -53,13 +55,16 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * #!/usr/bin/env sh HA resources can be imported using their identifiers, e.g.
+ * #!/usr/bin/env sh
+ * 
+ * HA resources can be imported using their identifiers, e.g.:
  * 
  * ```sh
- *  $ pulumi import proxmoxve:HA/hAResource:HAResource example vm:123
+ * $ pulumi import proxmoxve:HA/hAResource:HAResource example vm:123
  * ```
  * 
  */

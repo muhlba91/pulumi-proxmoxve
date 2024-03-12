@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
@@ -27,16 +28,20 @@ import * as utilities from "../utilities";
  *     outputPolicy: "ACCEPT",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Important Notes
  *
  * Be careful not to use this resource multiple times for the same node.
  *
  * ## Import
  *
- * Instances can be imported without an ID, but you still need to pass one, e.g., bash
+ * Instances can be imported without an ID, but you still need to pass one, e.g.,
+ *
+ * bash
  *
  * ```sh
- *  $ pulumi import proxmoxve:Network/firewall:Firewall example example
+ * $ pulumi import proxmoxve:Network/firewall:Firewall example example
  * ```
  */
 export class Firewall extends pulumi.CustomResource {

@@ -23,6 +23,8 @@ import javax.annotation.Nullable;
  * with rules to open the http and https ports.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -71,13 +73,16 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * Instances can be imported using the `name`, e.g., bash
+ * Instances can be imported using the `name`, e.g.,
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import proxmoxve:Network/firewallSecurityGroup:FirewallSecurityGroup webserver webserver
+ * $ pulumi import proxmoxve:Network/firewallSecurityGroup:FirewallSecurityGroup webserver webserver
  * ```
  * 
  */

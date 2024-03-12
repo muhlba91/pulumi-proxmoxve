@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
@@ -25,13 +26,16 @@ import * as utilities from "../utilities";
  *     noFailback: false,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
- * #!/usr/bin/env sh HA groups can be imported using their name, e.g.
+ * #!/usr/bin/env sh
+ *
+ * HA groups can be imported using their name, e.g.:
  *
  * ```sh
- *  $ pulumi import proxmoxve:HA/hAGroup:HAGroup example example
+ * $ pulumi import proxmoxve:HA/hAGroup:HAGroup example example
  * ```
  */
 export class HAGroup extends pulumi.CustomResource {

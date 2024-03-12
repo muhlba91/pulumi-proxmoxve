@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * Manages firewall options on the cluster level.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -57,16 +59,20 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Important Notes
  * 
  * Be careful not to use this resource multiple times for the same node.
  * 
  * ## Import
  * 
- * Instances can be imported without an ID, but you still need to pass one, e.g., bash
+ * Instances can be imported without an ID, but you still need to pass one, e.g.,
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import proxmoxve:Network/firewall:Firewall example example
+ * $ pulumi import proxmoxve:Network/firewall:Firewall example example
  * ```
  * 
  */

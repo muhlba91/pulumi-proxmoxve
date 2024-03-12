@@ -4,13 +4,13 @@ go 1.22
 
 toolchain go1.22.0
 
-replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240129205329-74776a5cd5f9
+replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240229143312-4f60ee4e2975
 
 require (
 	github.com/bpg/terraform-provider-proxmox v0.48.3
 	github.com/ettle/strcase v0.2.0
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.26.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.73.0
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.30.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.77.0
 	github.com/pulumi/pulumi/sdk/v3 v3.109.0
 )
 

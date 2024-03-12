@@ -14,6 +14,7 @@ namespace Pulumi.ProxmoxVE.Network
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -46,6 +47,7 @@ namespace Pulumi.ProxmoxVE.Network
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:Network/firewallOptions:FirewallOptions")]
     public partial class FirewallOptions : global::Pulumi.CustomResource

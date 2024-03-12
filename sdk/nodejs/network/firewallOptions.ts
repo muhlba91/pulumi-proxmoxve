@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
@@ -30,6 +31,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [proxmox_virtual_environment_vm.example],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class FirewallOptions extends pulumi.CustomResource {
     /**

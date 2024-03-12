@@ -26,6 +26,8 @@ public final class NetworkFunctions {
      * Retrieves the DNS configuration for a specific node.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -54,6 +56,7 @@ public final class NetworkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDNSResult> getDNS(GetDNSArgs args) {
@@ -63,6 +66,8 @@ public final class NetworkFunctions {
      * Retrieves the DNS configuration for a specific node.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -91,6 +96,7 @@ public final class NetworkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDNSResult> getDNSPlain(GetDNSPlainArgs args) {
@@ -100,6 +106,8 @@ public final class NetworkFunctions {
      * Retrieves the DNS configuration for a specific node.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -128,6 +136,7 @@ public final class NetworkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDNSResult> getDNS(GetDNSArgs args, InvokeOptions options) {
@@ -137,6 +146,8 @@ public final class NetworkFunctions {
      * Retrieves the DNS configuration for a specific node.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -165,6 +176,7 @@ public final class NetworkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDNSResult> getDNSPlain(GetDNSPlainArgs args, InvokeOptions options) {
@@ -174,6 +186,8 @@ public final class NetworkFunctions {
      * Retrieves all the host entries from a specific node.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -202,6 +216,7 @@ public final class NetworkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHostsResult> getHosts(GetHostsArgs args) {
@@ -211,6 +226,8 @@ public final class NetworkFunctions {
      * Retrieves all the host entries from a specific node.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -239,6 +256,7 @@ public final class NetworkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHostsResult> getHostsPlain(GetHostsPlainArgs args) {
@@ -248,6 +266,8 @@ public final class NetworkFunctions {
      * Retrieves all the host entries from a specific node.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -276,6 +296,7 @@ public final class NetworkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHostsResult> getHosts(GetHostsArgs args, InvokeOptions options) {
@@ -285,6 +306,8 @@ public final class NetworkFunctions {
      * Retrieves all the host entries from a specific node.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -313,6 +336,7 @@ public final class NetworkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHostsResult> getHostsPlain(GetHostsPlainArgs args, InvokeOptions options) {
@@ -322,6 +346,8 @@ public final class NetworkFunctions {
      * Retrieves the current time for a specific node.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -350,6 +376,7 @@ public final class NetworkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTimeResult> getTime(GetTimeArgs args) {
@@ -359,6 +386,8 @@ public final class NetworkFunctions {
      * Retrieves the current time for a specific node.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -387,6 +416,7 @@ public final class NetworkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTimeResult> getTimePlain(GetTimePlainArgs args) {
@@ -396,6 +426,8 @@ public final class NetworkFunctions {
      * Retrieves the current time for a specific node.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -424,6 +456,7 @@ public final class NetworkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTimeResult> getTime(GetTimeArgs args, InvokeOptions options) {
@@ -433,6 +466,8 @@ public final class NetworkFunctions {
      * Retrieves the current time for a specific node.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -461,6 +496,7 @@ public final class NetworkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTimeResult> getTimePlain(GetTimePlainArgs args, InvokeOptions options) {
@@ -470,6 +506,8 @@ public final class NetworkFunctions {
      * Retrieves API version details.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -496,6 +534,7 @@ public final class NetworkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVersionResult> getVersion() {
@@ -505,6 +544,8 @@ public final class NetworkFunctions {
      * Retrieves API version details.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -531,6 +572,7 @@ public final class NetworkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVersionResult> getVersionPlain() {
@@ -540,6 +582,8 @@ public final class NetworkFunctions {
      * Retrieves API version details.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -566,6 +610,7 @@ public final class NetworkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVersionResult> getVersion(InvokeArgs args) {
@@ -575,6 +620,8 @@ public final class NetworkFunctions {
      * Retrieves API version details.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -601,6 +648,7 @@ public final class NetworkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVersionResult> getVersionPlain(InvokeArgs args) {
@@ -610,6 +658,8 @@ public final class NetworkFunctions {
      * Retrieves API version details.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -636,6 +686,7 @@ public final class NetworkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVersionResult> getVersion(InvokeArgs args, InvokeOptions options) {
@@ -645,6 +696,8 @@ public final class NetworkFunctions {
      * Retrieves API version details.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -671,6 +724,7 @@ public final class NetworkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVersionResult> getVersionPlain(InvokeArgs args, InvokeOptions options) {

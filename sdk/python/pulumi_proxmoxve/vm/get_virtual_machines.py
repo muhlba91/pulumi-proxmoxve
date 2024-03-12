@@ -89,12 +89,14 @@ def get_virtual_machines(node_name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
     ubuntu_vms = proxmoxve.VM.get_virtual_machines(tags=["ubuntu"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str node_name: The node name.
@@ -123,12 +125,14 @@ def get_virtual_machines_output(node_name: Optional[pulumi.Input[Optional[str]]]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
     ubuntu_vms = proxmoxve.VM.get_virtual_machines(tags=["ubuntu"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str node_name: The node name.

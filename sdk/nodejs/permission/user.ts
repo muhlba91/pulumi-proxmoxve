@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
@@ -30,13 +31,16 @@ import * as utilities from "../utilities";
  *     userId: "operations-automation@pve",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
- * Instances can be imported using the `user_id`, e.g., bash
+ * Instances can be imported using the `user_id`, e.g.,
+ *
+ * bash
  *
  * ```sh
- *  $ pulumi import proxmoxve:Permission/user:User operations_automation operations-automation@pve
+ * $ pulumi import proxmoxve:Permission/user:User operations_automation operations-automation@pve
  * ```
  */
 export class User extends pulumi.CustomResource {

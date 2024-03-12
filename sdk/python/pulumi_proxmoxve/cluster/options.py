@@ -632,6 +632,7 @@ class Options(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -646,13 +647,16 @@ class Options(pulumi.CustomResource):
             migration_cidr="10.0.0.0/8",
             migration_type="secure")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        #!/usr/bin/env sh Cluster options are global and can be imported using e.g.
+        #!/usr/bin/env sh
+
+        Cluster options are global and can be imported using e.g.:
 
         ```sh
-         $ pulumi import proxmoxve:Cluster/options:Options options cluster
+        $ pulumi import proxmoxve:Cluster/options:Options options cluster
         ```
 
         :param str resource_name: The name of the resource.
@@ -687,6 +691,7 @@ class Options(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -701,13 +706,16 @@ class Options(pulumi.CustomResource):
             migration_cidr="10.0.0.0/8",
             migration_type="secure")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        #!/usr/bin/env sh Cluster options are global and can be imported using e.g.
+        #!/usr/bin/env sh
+
+        Cluster options are global and can be imported using e.g.:
 
         ```sh
-         $ pulumi import proxmoxve:Cluster/options:Options options cluster
+        $ pulumi import proxmoxve:Cluster/options:Options options cluster
         ```
 
         :param str resource_name: The name of the resource.

@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
@@ -18,13 +19,16 @@ import * as utilities from "./utilities";
  *     timeZone: "UTC",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
- * Instances can be imported using the `node_name`, e.g., bash
+ * Instances can be imported using the `node_name`, e.g.,
+ *
+ * bash
  *
  * ```sh
- *  $ pulumi import proxmoxve:index/time:Time first_node first-node
+ * $ pulumi import proxmoxve:index/time:Time first_node first-node
  * ```
  */
 export class Time extends pulumi.CustomResource {

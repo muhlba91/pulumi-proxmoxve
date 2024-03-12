@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
@@ -19,6 +20,7 @@ import * as utilities from "../utilities";
  *     tags: ["ubuntu"],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getVirtualMachines(args?: GetVirtualMachinesArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachinesResult> {
     args = args || {};
@@ -71,6 +73,7 @@ export interface GetVirtualMachinesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
@@ -79,6 +82,7 @@ export interface GetVirtualMachinesResult {
  *     tags: ["ubuntu"],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getVirtualMachinesOutput(args?: GetVirtualMachinesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualMachinesResult> {
     return pulumi.output(args).apply((a: any) => getVirtualMachines(a, opts))

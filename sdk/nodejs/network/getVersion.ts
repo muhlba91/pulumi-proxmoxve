@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
@@ -20,6 +21,7 @@ import * as utilities from "../utilities";
  *     version: example.then(example => example.version),
  * };
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getVersion(opts?: pulumi.InvokeOptions): Promise<GetVersionResult> {
 
@@ -54,6 +56,7 @@ export interface GetVersionResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
@@ -65,6 +68,7 @@ export interface GetVersionResult {
  *     version: example.then(example => example.version),
  * };
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getVersionOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetVersionResult> {
     return pulumi.output(getVersion(opts))

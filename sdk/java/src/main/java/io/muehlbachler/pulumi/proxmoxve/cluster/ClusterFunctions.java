@@ -17,6 +17,8 @@ public final class ClusterFunctions {
      * Retrieves information about all available nodes.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -42,6 +44,7 @@ public final class ClusterFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNodesResult> getNodes() {
@@ -51,6 +54,8 @@ public final class ClusterFunctions {
      * Retrieves information about all available nodes.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -76,6 +81,7 @@ public final class ClusterFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNodesResult> getNodesPlain() {
@@ -85,6 +91,8 @@ public final class ClusterFunctions {
      * Retrieves information about all available nodes.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -110,6 +118,7 @@ public final class ClusterFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNodesResult> getNodes(InvokeArgs args) {
@@ -119,6 +128,8 @@ public final class ClusterFunctions {
      * Retrieves information about all available nodes.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -144,6 +155,7 @@ public final class ClusterFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNodesResult> getNodesPlain(InvokeArgs args) {
@@ -153,6 +165,8 @@ public final class ClusterFunctions {
      * Retrieves information about all available nodes.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -178,6 +192,7 @@ public final class ClusterFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNodesResult> getNodes(InvokeArgs args, InvokeOptions options) {
@@ -187,6 +202,8 @@ public final class ClusterFunctions {
      * Retrieves information about all available nodes.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -212,6 +229,7 @@ public final class ClusterFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNodesResult> getNodesPlain(InvokeArgs args, InvokeOptions options) {

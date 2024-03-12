@@ -14,6 +14,7 @@ namespace Pulumi.ProxmoxVE.HA
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -38,13 +39,16 @@ namespace Pulumi.ProxmoxVE.HA
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
-    /// #!/usr/bin/env sh HA resources can be imported using their identifiers, e.g.
+    /// #!/usr/bin/env sh
+    /// 
+    /// HA resources can be imported using their identifiers, e.g.:
     /// 
     /// ```sh
-    ///  $ pulumi import proxmoxve:HA/hAResource:HAResource example vm:123
+    /// $ pulumi import proxmoxve:HA/hAResource:HAResource example vm:123
     /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:HA/hAResource:HAResource")]

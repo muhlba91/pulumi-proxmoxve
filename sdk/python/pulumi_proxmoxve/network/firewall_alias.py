@@ -237,6 +237,7 @@ class FirewallAlias(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -251,6 +252,7 @@ class FirewallAlias(pulumi.CustomResource):
             cidr="192.168.0.1",
             comment="Managed by Terraform")
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -274,6 +276,7 @@ class FirewallAlias(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -288,6 +291,7 @@ class FirewallAlias(pulumi.CustomResource):
             cidr="192.168.0.1",
             comment="Managed by Terraform")
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param FirewallAliasArgs args: The arguments to use to populate this resource's properties.

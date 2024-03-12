@@ -14,6 +14,7 @@ namespace Pulumi.ProxmoxVE.Cluster
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -36,13 +37,16 @@ namespace Pulumi.ProxmoxVE.Cluster
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
-    /// #!/usr/bin/env sh Cluster options are global and can be imported using e.g.
+    /// #!/usr/bin/env sh
+    /// 
+    /// Cluster options are global and can be imported using e.g.:
     /// 
     /// ```sh
-    ///  $ pulumi import proxmoxve:Cluster/options:Options options cluster
+    /// $ pulumi import proxmoxve:Cluster/options:Options options cluster
     /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:Cluster/options:Options")]

@@ -9,12 +9,14 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
  *
  * const availableRoles = proxmoxve.Permission.getRoles({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRoles(opts?: pulumi.InvokeOptions): Promise<GetRolesResult> {
 
@@ -49,12 +51,14 @@ export interface GetRolesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
  *
  * const availableRoles = proxmoxve.Permission.getRoles({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRolesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetRolesResult> {
     return pulumi.output(getRoles(opts))

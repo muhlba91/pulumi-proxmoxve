@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
@@ -19,6 +20,7 @@ import * as utilities from "../utilities";
  * }))));
  * export const proxmoxVirtualEnvironmentHaresourcesFull = example;
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getHAResource(args: GetHAResourceArgs, opts?: pulumi.InvokeOptions): Promise<GetHAResourceResult> {
 
@@ -80,6 +82,7 @@ export interface GetHAResourceResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
@@ -90,6 +93,7 @@ export interface GetHAResourceResult {
  * }))));
  * export const proxmoxVirtualEnvironmentHaresourcesFull = example;
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getHAResourceOutput(args: GetHAResourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHAResourceResult> {
     return pulumi.output(args).apply((a: any) => getHAResource(a, opts))

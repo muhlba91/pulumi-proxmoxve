@@ -32,6 +32,8 @@ public final class PermissionFunctions {
      * Retrieves information about a specific user group.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -60,6 +62,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupResult> getGroup(GetGroupArgs args) {
@@ -69,6 +72,8 @@ public final class PermissionFunctions {
      * Retrieves information about a specific user group.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -97,6 +102,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupResult> getGroupPlain(GetGroupPlainArgs args) {
@@ -106,6 +112,8 @@ public final class PermissionFunctions {
      * Retrieves information about a specific user group.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -134,6 +142,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupResult> getGroup(GetGroupArgs args, InvokeOptions options) {
@@ -143,6 +152,8 @@ public final class PermissionFunctions {
      * Retrieves information about a specific user group.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -171,6 +182,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupResult> getGroupPlain(GetGroupPlainArgs args, InvokeOptions options) {
@@ -180,6 +192,8 @@ public final class PermissionFunctions {
      * Retrieves basic information about all available user groups.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -205,6 +219,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupsResult> getGroups() {
@@ -214,6 +229,8 @@ public final class PermissionFunctions {
      * Retrieves basic information about all available user groups.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -239,6 +256,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain() {
@@ -248,6 +266,8 @@ public final class PermissionFunctions {
      * Retrieves basic information about all available user groups.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -273,6 +293,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupsResult> getGroups(InvokeArgs args) {
@@ -282,6 +303,8 @@ public final class PermissionFunctions {
      * Retrieves basic information about all available user groups.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -307,6 +330,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain(InvokeArgs args) {
@@ -316,6 +340,8 @@ public final class PermissionFunctions {
      * Retrieves basic information about all available user groups.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -341,6 +367,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupsResult> getGroups(InvokeArgs args, InvokeOptions options) {
@@ -350,6 +377,8 @@ public final class PermissionFunctions {
      * Retrieves basic information about all available user groups.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -375,6 +404,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain(InvokeArgs args, InvokeOptions options) {
@@ -384,6 +414,8 @@ public final class PermissionFunctions {
      * Retrieves information about a specific resource pool.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -412,6 +444,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPoolResult> getPool(GetPoolArgs args) {
@@ -421,6 +454,8 @@ public final class PermissionFunctions {
      * Retrieves information about a specific resource pool.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -449,6 +484,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPoolResult> getPoolPlain(GetPoolPlainArgs args) {
@@ -458,6 +494,8 @@ public final class PermissionFunctions {
      * Retrieves information about a specific resource pool.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -486,6 +524,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPoolResult> getPool(GetPoolArgs args, InvokeOptions options) {
@@ -495,6 +534,8 @@ public final class PermissionFunctions {
      * Retrieves information about a specific resource pool.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -523,6 +564,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPoolResult> getPoolPlain(GetPoolPlainArgs args, InvokeOptions options) {
@@ -532,6 +574,8 @@ public final class PermissionFunctions {
      * Retrieves the identifiers for all the available resource pools.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -557,6 +601,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPoolsResult> getPools() {
@@ -566,6 +611,8 @@ public final class PermissionFunctions {
      * Retrieves the identifiers for all the available resource pools.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -591,6 +638,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPoolsResult> getPoolsPlain() {
@@ -600,6 +648,8 @@ public final class PermissionFunctions {
      * Retrieves the identifiers for all the available resource pools.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -625,6 +675,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPoolsResult> getPools(InvokeArgs args) {
@@ -634,6 +685,8 @@ public final class PermissionFunctions {
      * Retrieves the identifiers for all the available resource pools.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -659,6 +712,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPoolsResult> getPoolsPlain(InvokeArgs args) {
@@ -668,6 +722,8 @@ public final class PermissionFunctions {
      * Retrieves the identifiers for all the available resource pools.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -693,6 +749,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPoolsResult> getPools(InvokeArgs args, InvokeOptions options) {
@@ -702,6 +759,8 @@ public final class PermissionFunctions {
      * Retrieves the identifiers for all the available resource pools.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -727,6 +786,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPoolsResult> getPoolsPlain(InvokeArgs args, InvokeOptions options) {
@@ -736,6 +796,8 @@ public final class PermissionFunctions {
      * Retrieves information about a specific role.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -764,6 +826,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRoleResult> getRole(GetRoleArgs args) {
@@ -773,6 +836,8 @@ public final class PermissionFunctions {
      * Retrieves information about a specific role.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -801,6 +866,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRoleResult> getRolePlain(GetRolePlainArgs args) {
@@ -810,6 +876,8 @@ public final class PermissionFunctions {
      * Retrieves information about a specific role.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -838,6 +906,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRoleResult> getRole(GetRoleArgs args, InvokeOptions options) {
@@ -847,6 +916,8 @@ public final class PermissionFunctions {
      * Retrieves information about a specific role.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -875,6 +946,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRoleResult> getRolePlain(GetRolePlainArgs args, InvokeOptions options) {
@@ -884,6 +956,8 @@ public final class PermissionFunctions {
      * Retrieves information about all the available roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -909,6 +983,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRolesResult> getRoles() {
@@ -918,6 +993,8 @@ public final class PermissionFunctions {
      * Retrieves information about all the available roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -943,6 +1020,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRolesResult> getRolesPlain() {
@@ -952,6 +1030,8 @@ public final class PermissionFunctions {
      * Retrieves information about all the available roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -977,6 +1057,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRolesResult> getRoles(InvokeArgs args) {
@@ -986,6 +1067,8 @@ public final class PermissionFunctions {
      * Retrieves information about all the available roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1011,6 +1094,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRolesResult> getRolesPlain(InvokeArgs args) {
@@ -1020,6 +1104,8 @@ public final class PermissionFunctions {
      * Retrieves information about all the available roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1045,6 +1131,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRolesResult> getRoles(InvokeArgs args, InvokeOptions options) {
@@ -1054,6 +1141,8 @@ public final class PermissionFunctions {
      * Retrieves information about all the available roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1079,6 +1168,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRolesResult> getRolesPlain(InvokeArgs args, InvokeOptions options) {
@@ -1088,6 +1178,8 @@ public final class PermissionFunctions {
      * Retrieves information about a specific user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1116,6 +1208,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args) {
@@ -1125,6 +1218,8 @@ public final class PermissionFunctions {
      * Retrieves information about a specific user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1153,6 +1248,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args) {
@@ -1162,6 +1258,8 @@ public final class PermissionFunctions {
      * Retrieves information about a specific user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1190,6 +1288,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args, InvokeOptions options) {
@@ -1199,6 +1298,8 @@ public final class PermissionFunctions {
      * Retrieves information about a specific user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1227,6 +1328,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args, InvokeOptions options) {
@@ -1236,6 +1338,8 @@ public final class PermissionFunctions {
      * Retrieves information about all the available users.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1261,6 +1365,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUsersResult> getUsers() {
@@ -1270,6 +1375,8 @@ public final class PermissionFunctions {
      * Retrieves information about all the available users.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1295,6 +1402,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUsersResult> getUsersPlain() {
@@ -1304,6 +1412,8 @@ public final class PermissionFunctions {
      * Retrieves information about all the available users.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1329,6 +1439,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUsersResult> getUsers(InvokeArgs args) {
@@ -1338,6 +1449,8 @@ public final class PermissionFunctions {
      * Retrieves information about all the available users.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1363,6 +1476,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUsersResult> getUsersPlain(InvokeArgs args) {
@@ -1372,6 +1486,8 @@ public final class PermissionFunctions {
      * Retrieves information about all the available users.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1397,6 +1513,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUsersResult> getUsers(InvokeArgs args, InvokeOptions options) {
@@ -1406,6 +1523,8 @@ public final class PermissionFunctions {
      * Retrieves information about all the available users.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1431,6 +1550,7 @@ public final class PermissionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUsersResult> getUsersPlain(InvokeArgs args, InvokeOptions options) {

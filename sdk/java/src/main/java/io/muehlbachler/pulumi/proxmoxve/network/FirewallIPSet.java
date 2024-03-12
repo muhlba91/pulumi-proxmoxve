@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * created on the cluster level, on VM / Container level.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -70,6 +72,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="proxmoxve:Network/firewallIPSet:FirewallIPSet")

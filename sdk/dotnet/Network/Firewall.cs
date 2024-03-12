@@ -14,6 +14,7 @@ namespace Pulumi.ProxmoxVE.Network
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -38,16 +39,20 @@ namespace Pulumi.ProxmoxVE.Network
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Important Notes
     /// 
     /// Be careful not to use this resource multiple times for the same node.
     /// 
     /// ## Import
     /// 
-    /// Instances can be imported without an ID, but you still need to pass one, e.g., bash
+    /// Instances can be imported without an ID, but you still need to pass one, e.g.,
+    /// 
+    /// bash
     /// 
     /// ```sh
-    ///  $ pulumi import proxmoxve:Network/firewall:Firewall example example
+    /// $ pulumi import proxmoxve:Network/firewall:Firewall example example
     /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:Network/firewall:Firewall")]

@@ -22,9 +22,12 @@ import javax.annotation.Nullable;
  * Manages a file.
  * 
  * ## Example Usage
+ * 
  * ### Backups (`dump`)
  * 
  * &gt; **Note:** The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -59,9 +62,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Images
  * 
  * **Consider using `proxmoxve.Download.File` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.**
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -96,9 +103,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Container Template (`vztmpl`)
  * 
  * **Consider using `proxmoxve.Download.File` resource instead. Using this resource for container images is less efficient (requires to transfer uploaded image to node) though still supported.**
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -133,6 +144,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Important Notes
  * 
  * The Proxmox VE API endpoint for file uploads does not support chunked transfer
@@ -150,10 +163,20 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Instances can be imported using the `node_name`, `datastore_id`, `content_type` and the `file_name` in the following formattext node_name:datastore_id/content_type/file_name Examplebash
+ * Instances can be imported using the `node_name`, `datastore_id`, `content_type`
+ * 
+ * and the `file_name` in the following format:
+ * 
+ * text
+ * 
+ * node_name:datastore_id/content_type/file_name
+ * 
+ * Example:
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import proxmoxve:Storage/file:File cloud_config pve/local:snippets/example.cloud-config.yaml
+ * $ pulumi import proxmoxve:Storage/file:File cloud_config pve/local:snippets/example.cloud-config.yaml
  * ```
  * 
  */

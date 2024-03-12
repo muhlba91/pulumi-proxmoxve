@@ -400,6 +400,7 @@ class NetworkVlan(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -415,13 +416,16 @@ class NetworkVlan(pulumi.CustomResource):
             node_name="pve",
             vlan=98)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        #!/usr/bin/env sh #Interfaces can be imported using the `node_name:iface` format, e.g.
+        #!/usr/bin/env sh
+
+        #Interfaces can be imported using the `node_name:iface` format, e.g.
 
         ```sh
-         $ pulumi import proxmoxve:Network/networkVlan:NetworkVlan vlan99 pve:vlan99
+        $ pulumi import proxmoxve:Network/networkVlan:NetworkVlan vlan99 pve:vlan99
         ```
 
         :param str resource_name: The name of the resource.
@@ -449,6 +453,7 @@ class NetworkVlan(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -464,13 +469,16 @@ class NetworkVlan(pulumi.CustomResource):
             node_name="pve",
             vlan=98)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        #!/usr/bin/env sh #Interfaces can be imported using the `node_name:iface` format, e.g.
+        #!/usr/bin/env sh
+
+        #Interfaces can be imported using the `node_name:iface` format, e.g.
 
         ```sh
-         $ pulumi import proxmoxve:Network/networkVlan:NetworkVlan vlan99 pve:vlan99
+        $ pulumi import proxmoxve:Network/networkVlan:NetworkVlan vlan99 pve:vlan99
         ```
 
         :param str resource_name: The name of the resource.

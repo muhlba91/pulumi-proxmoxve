@@ -86,12 +86,14 @@ def get_roles(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRolesR
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
     available_roles = proxmoxve.Permission.get_roles()
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -111,11 +113,13 @@ def get_roles_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Outp
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
     available_roles = proxmoxve.Permission.get_roles()
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * Manages Proxmox VE Cluster Datacenter options.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -55,13 +57,16 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * #!/usr/bin/env sh Cluster options are global and can be imported using e.g.
+ * #!/usr/bin/env sh
+ * 
+ * Cluster options are global and can be imported using e.g.:
  * 
  * ```sh
- *  $ pulumi import proxmoxve:Cluster/options:Options options cluster
+ * $ pulumi import proxmoxve:Cluster/options:Options options cluster
  * ```
  * 
  */

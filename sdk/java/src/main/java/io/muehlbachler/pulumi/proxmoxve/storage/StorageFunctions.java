@@ -18,6 +18,8 @@ public final class StorageFunctions {
      * Retrieves information about all the datastores available to a specific node.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -46,6 +48,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatastoresResult> getDatastores(GetDatastoresArgs args) {
@@ -55,6 +58,8 @@ public final class StorageFunctions {
      * Retrieves information about all the datastores available to a specific node.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -83,6 +88,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatastoresResult> getDatastoresPlain(GetDatastoresPlainArgs args) {
@@ -92,6 +98,8 @@ public final class StorageFunctions {
      * Retrieves information about all the datastores available to a specific node.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -120,6 +128,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatastoresResult> getDatastores(GetDatastoresArgs args, InvokeOptions options) {
@@ -129,6 +138,8 @@ public final class StorageFunctions {
      * Retrieves information about all the datastores available to a specific node.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -157,6 +168,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatastoresResult> getDatastoresPlain(GetDatastoresPlainArgs args, InvokeOptions options) {

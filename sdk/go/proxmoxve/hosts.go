@@ -8,24 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
+	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Manages the host entries on a specific node.
 //
-// ## Important Notes
-//
-// Be careful not to use this resource multiple times for the same node.
-//
 // ## Import
 //
-// Instances can be imported using the `node_name`, e.g., bash
+// Instances can be imported using the `node_name`, e.g.,
+//
+// bash
 //
 // ```sh
-//
-//	$ pulumi import proxmoxve:index/hosts:Hosts first_node_host_entries first-node
-//
+// $ pulumi import proxmoxve:index/hosts:Hosts first_node_host_entries first-node
 // ```
 type Hosts struct {
 	pulumi.CustomResourceState
