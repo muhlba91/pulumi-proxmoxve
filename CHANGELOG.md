@@ -1,6 +1,35 @@
 # Changelog
 
 
+## [6.0.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.25.0...v6.0.0) (2024-03-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* new way to generate resources and inclusion of fwprovider; some package/class names in .NET, Go, and Java have changed (Pulumi resource names did not)
+
+### Features
+
+* mux fwprovider with tfprovider ([959c891](https://github.com/muhlba91/pulumi-proxmoxve/commit/959c8915d26175c076fc0fe1e45db820db52f3d6))
+* prepare upstream update to v0.48.0 ([8733d55](https://github.com/muhlba91/pulumi-proxmoxve/commit/8733d557d67c0ff69be01ca4ee28eb1ed59ed8c8))
+* prepare upstream update to v0.48.3 ([1b9c032](https://github.com/muhlba91/pulumi-proxmoxve/commit/1b9c03226799aeb3f9899b708a7e133327a39ba4))
+
+
+### Bug Fixes
+
+* fix provider runtime ([5712f63](https://github.com/muhlba91/pulumi-proxmoxve/commit/5712f63f56a08b1364c209821a590138ce8c07d9))
+
+
+### Miscellaneous Chores
+
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.48.0 ([617a14f](https://github.com/muhlba91/pulumi-proxmoxve/commit/617a14fbcd096c9aab4ee93fb07efcbc2933c2ad))
+* **deps:** update module github.com/ettle/strcase to v0.2.0 ([b687223](https://github.com/muhlba91/pulumi-proxmoxve/commit/b6872237ec9df4b7ea05068bb2d56b6df1854144))
+* **deps:** update module github.com/ettle/strcase to v0.2.0 ([4efa0d8](https://github.com/muhlba91/pulumi-proxmoxve/commit/4efa0d85172c887cb0896b39f8532684cd7c4c94))
+* **deps:** update module github.com/pulumi/pulumi-terraform-bridge/v3 to v3.76.0 ([df5887d](https://github.com/muhlba91/pulumi-proxmoxve/commit/df5887d21c23a968709ce38551b010ccbb7ce336))
+* **deps:** update module github.com/pulumi/pulumi/pkg/v3 to v3.108.1 ([a3d7a23](https://github.com/muhlba91/pulumi-proxmoxve/commit/a3d7a2327c8e1d5f7b6f447ef427c82011fa44ae))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.107.0 ([527799f](https://github.com/muhlba91/pulumi-proxmoxve/commit/527799f413049d2053a2685391d7b778760a087d))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.108.1 ([1eb7681](https://github.com/muhlba91/pulumi-proxmoxve/commit/1eb768153e753f9b920e5629d7829217ce7328da))
+
 ## [5.25.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.24.4...v5.25.0) (2024-02-27)
 
 
