@@ -24,6 +24,8 @@ import javax.annotation.Nullable;
  * level, on VM / Container level.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -83,6 +85,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="proxmoxve:Network/firewallRules:FirewallRules")

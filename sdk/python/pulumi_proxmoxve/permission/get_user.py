@@ -169,12 +169,14 @@ def get_user(user_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
     operations_user = proxmoxve.Permission.get_user(user_id="operation@pam")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str user_id: The user identifier.
@@ -206,12 +208,14 @@ def get_user_output(user_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
     operations_user = proxmoxve.Permission.get_user(user_id="operation@pam")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str user_id: The user identifier.

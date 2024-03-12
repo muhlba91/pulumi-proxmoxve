@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * Manages files upload using PVE download-url API. It can be fully compatible and faster replacement for image files created using `proxmoxve.Storage.File`. Supports images for VMs (ISO images) and LXC (CT Templates).
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -94,6 +96,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="proxmoxve:Download/file:File")

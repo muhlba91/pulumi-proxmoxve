@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
+	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,12 +15,13 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
 // import (
 //
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/VM"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/VM"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -40,6 +41,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetVirtualMachines(ctx *pulumi.Context, args *GetVirtualMachinesArgs, opts ...pulumi.InvokeOption) (*GetVirtualMachinesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVirtualMachinesResult

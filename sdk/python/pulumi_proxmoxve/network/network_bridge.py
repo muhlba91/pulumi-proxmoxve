@@ -400,6 +400,7 @@ class NetworkBridge(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -411,13 +412,16 @@ class NetworkBridge(pulumi.CustomResource):
             ports=["ens18.99"],
             opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_network_linux_vlan["vlan99"]]))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        #!/usr/bin/env sh #Interfaces can be imported using the `node_name:iface` format, e.g.
+        #!/usr/bin/env sh
+
+        #Interfaces can be imported using the `node_name:iface` format, e.g.
 
         ```sh
-         $ pulumi import proxmoxve:Network/networkBridge:NetworkBridge vmbr99 pve:vmbr99
+        $ pulumi import proxmoxve:Network/networkBridge:NetworkBridge vmbr99 pve:vmbr99
         ```
 
         :param str resource_name: The name of the resource.
@@ -445,6 +449,7 @@ class NetworkBridge(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -456,13 +461,16 @@ class NetworkBridge(pulumi.CustomResource):
             ports=["ens18.99"],
             opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_network_linux_vlan["vlan99"]]))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        #!/usr/bin/env sh #Interfaces can be imported using the `node_name:iface` format, e.g.
+        #!/usr/bin/env sh
+
+        #Interfaces can be imported using the `node_name:iface` format, e.g.
 
         ```sh
-         $ pulumi import proxmoxve:Network/networkBridge:NetworkBridge vmbr99 pve:vmbr99
+        $ pulumi import proxmoxve:Network/networkBridge:NetworkBridge vmbr99 pve:vmbr99
         ```
 
         :param str resource_name: The name of the resource.

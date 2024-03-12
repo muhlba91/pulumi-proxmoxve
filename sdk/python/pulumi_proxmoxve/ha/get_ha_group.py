@@ -111,6 +111,7 @@ def get_ha_group(group: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_proxmoxve as proxmoxve
@@ -119,6 +120,7 @@ def get_ha_group(group: Optional[str] = None,
     example = [proxmoxve.HA.get_ha_group(group=__value) for __key, __value in all.group_ids]
     pulumi.export("proxmoxVirtualEnvironmentHagroupsFull", example)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str group: The identifier of the High Availability group to read.
@@ -145,6 +147,7 @@ def get_ha_group_output(group: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_proxmoxve as proxmoxve
@@ -153,6 +156,7 @@ def get_ha_group_output(group: Optional[pulumi.Input[str]] = None,
     example = [proxmoxve.HA.get_ha_group(group=__value) for __key, __value in all.group_ids]
     pulumi.export("proxmoxVirtualEnvironmentHagroupsFull", example)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str group: The identifier of the High Availability group to read.

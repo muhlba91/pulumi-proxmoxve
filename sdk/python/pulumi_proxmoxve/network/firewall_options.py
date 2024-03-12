@@ -506,6 +506,7 @@ class FirewallOptions(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -525,6 +526,7 @@ class FirewallOptions(pulumi.CustomResource):
             radv=True,
             opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_vm["example"]]))
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -563,6 +565,7 @@ class FirewallOptions(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -582,6 +585,7 @@ class FirewallOptions(pulumi.CustomResource):
             radv=True,
             opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_vm["example"]]))
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param FirewallOptionsArgs args: The arguments to use to populate this resource's properties.

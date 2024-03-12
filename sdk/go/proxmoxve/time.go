@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
+	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -16,12 +16,13 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
 // import (
 //
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -40,15 +41,16 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
-// Instances can be imported using the `node_name`, e.g., bash
+// Instances can be imported using the `node_name`, e.g.,
+//
+// bash
 //
 // ```sh
-//
-//	$ pulumi import proxmoxve:index/time:Time first_node first-node
-//
+// $ pulumi import proxmoxve:index/time:Time first_node first-node
 // ```
 type Time struct {
 	pulumi.CustomResourceState

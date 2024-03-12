@@ -62,6 +62,7 @@ def get_ha_groups(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHA
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_proxmoxve as proxmoxve
@@ -69,6 +70,7 @@ def get_ha_groups(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHA
     example = proxmoxve.HA.get_ha_groups()
     pulumi.export("dataProxmoxVirtualEnvironmentHagroups", example.group_ids)
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -86,6 +88,7 @@ def get_ha_groups_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_proxmoxve as proxmoxve
@@ -93,5 +96,6 @@ def get_ha_groups_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.
     example = proxmoxve.HA.get_ha_groups()
     pulumi.export("dataProxmoxVirtualEnvironmentHagroups", example.group_ids)
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

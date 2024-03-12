@@ -205,6 +205,7 @@ class Firewall(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -220,16 +221,20 @@ class Firewall(pulumi.CustomResource):
             ),
             output_policy="ACCEPT")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Important Notes
 
         Be careful not to use this resource multiple times for the same node.
 
         ## Import
 
-        Instances can be imported without an ID, but you still need to pass one, e.g., bash
+        Instances can be imported without an ID, but you still need to pass one, e.g.,
+
+        bash
 
         ```sh
-         $ pulumi import proxmoxve:Network/firewall:Firewall example example
+        $ pulumi import proxmoxve:Network/firewall:Firewall example example
         ```
 
         :param str resource_name: The name of the resource.
@@ -251,6 +256,7 @@ class Firewall(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -266,16 +272,20 @@ class Firewall(pulumi.CustomResource):
             ),
             output_policy="ACCEPT")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Important Notes
 
         Be careful not to use this resource multiple times for the same node.
 
         ## Import
 
-        Instances can be imported without an ID, but you still need to pass one, e.g., bash
+        Instances can be imported without an ID, but you still need to pass one, e.g.,
+
+        bash
 
         ```sh
-         $ pulumi import proxmoxve:Network/firewall:Firewall example example
+        $ pulumi import proxmoxve:Network/firewall:Firewall example example
         ```
 
         :param str resource_name: The name of the resource.

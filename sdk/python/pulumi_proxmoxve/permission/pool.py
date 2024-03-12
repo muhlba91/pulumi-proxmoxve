@@ -121,6 +121,7 @@ class Pool(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -129,13 +130,16 @@ class Pool(pulumi.CustomResource):
             comment="Managed by Terraform",
             pool_id="operations-pool")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        Instances can be imported using the `pool_id`, e.g., bash
+        Instances can be imported using the `pool_id`, e.g.,
+
+        bash
 
         ```sh
-         $ pulumi import proxmoxve:Permission/pool:Pool operations_pool operations-pool
+        $ pulumi import proxmoxve:Permission/pool:Pool operations_pool operations-pool
         ```
 
         :param str resource_name: The name of the resource.
@@ -154,6 +158,7 @@ class Pool(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -162,13 +167,16 @@ class Pool(pulumi.CustomResource):
             comment="Managed by Terraform",
             pool_id="operations-pool")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        Instances can be imported using the `pool_id`, e.g., bash
+        Instances can be imported using the `pool_id`, e.g.,
+
+        bash
 
         ```sh
-         $ pulumi import proxmoxve:Permission/pool:Pool operations_pool operations-pool
+        $ pulumi import proxmoxve:Permission/pool:Pool operations_pool operations-pool
         ```
 
         :param str resource_name: The name of the resource.

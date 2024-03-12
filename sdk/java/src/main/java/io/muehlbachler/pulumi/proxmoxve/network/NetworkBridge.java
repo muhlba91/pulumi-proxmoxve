@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
  * Manages a Linux Bridge network interface in a Proxmox VE node.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -55,13 +57,16 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * #!/usr/bin/env sh #Interfaces can be imported using the `node_name:iface` format, e.g.
+ * #!/usr/bin/env sh
+ * 
+ * #Interfaces can be imported using the `node_name:iface` format, e.g.
  * 
  * ```sh
- *  $ pulumi import proxmoxve:Network/networkBridge:NetworkBridge vmbr99 pve:vmbr99
+ * $ pulumi import proxmoxve:Network/networkBridge:NetworkBridge vmbr99 pve:vmbr99
  * ```
  * 
  */

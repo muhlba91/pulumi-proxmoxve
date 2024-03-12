@@ -85,12 +85,14 @@ def get_pool(pool_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
     operations_pool = proxmoxve.Permission.get_pool(pool_id="operations")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str pool_id: The pool identifier.
@@ -115,12 +117,14 @@ def get_pool_output(pool_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
     operations_pool = proxmoxve.Permission.get_pool(pool_id="operations")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str pool_id: The pool identifier.

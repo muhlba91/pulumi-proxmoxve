@@ -21,6 +21,8 @@ public final class VMFunctions {
      * Retrieves information about a specific VM.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -50,6 +52,7 @@ public final class VMFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVirtualMachineResult> getVirtualMachine(GetVirtualMachineArgs args) {
@@ -59,6 +62,8 @@ public final class VMFunctions {
      * Retrieves information about a specific VM.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -88,6 +93,7 @@ public final class VMFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVirtualMachineResult> getVirtualMachinePlain(GetVirtualMachinePlainArgs args) {
@@ -97,6 +103,8 @@ public final class VMFunctions {
      * Retrieves information about a specific VM.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -126,6 +134,7 @@ public final class VMFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVirtualMachineResult> getVirtualMachine(GetVirtualMachineArgs args, InvokeOptions options) {
@@ -135,6 +144,8 @@ public final class VMFunctions {
      * Retrieves information about a specific VM.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -164,6 +175,7 @@ public final class VMFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVirtualMachineResult> getVirtualMachinePlain(GetVirtualMachinePlainArgs args, InvokeOptions options) {
@@ -173,6 +185,8 @@ public final class VMFunctions {
      * Retrieves information about all VMs in the Proxmox cluster.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -201,6 +215,7 @@ public final class VMFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVirtualMachinesResult> getVirtualMachines() {
@@ -210,6 +225,8 @@ public final class VMFunctions {
      * Retrieves information about all VMs in the Proxmox cluster.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -238,6 +255,7 @@ public final class VMFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVirtualMachinesResult> getVirtualMachinesPlain() {
@@ -247,6 +265,8 @@ public final class VMFunctions {
      * Retrieves information about all VMs in the Proxmox cluster.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -275,6 +295,7 @@ public final class VMFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVirtualMachinesResult> getVirtualMachines(GetVirtualMachinesArgs args) {
@@ -284,6 +305,8 @@ public final class VMFunctions {
      * Retrieves information about all VMs in the Proxmox cluster.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -312,6 +335,7 @@ public final class VMFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVirtualMachinesResult> getVirtualMachinesPlain(GetVirtualMachinesPlainArgs args) {
@@ -321,6 +345,8 @@ public final class VMFunctions {
      * Retrieves information about all VMs in the Proxmox cluster.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -349,6 +375,7 @@ public final class VMFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVirtualMachinesResult> getVirtualMachines(GetVirtualMachinesArgs args, InvokeOptions options) {
@@ -358,6 +385,8 @@ public final class VMFunctions {
      * Retrieves information about all VMs in the Proxmox cluster.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -386,6 +415,7 @@ public final class VMFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVirtualMachinesResult> getVirtualMachinesPlain(GetVirtualMachinesPlainArgs args, InvokeOptions options) {

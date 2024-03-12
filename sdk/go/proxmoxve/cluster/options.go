@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
+	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,12 +15,13 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
 // import (
 //
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/Cluster"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Cluster"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -45,15 +46,16 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
-// #!/usr/bin/env sh Cluster options are global and can be imported using e.g.
+// #!/usr/bin/env sh
+//
+// Cluster options are global and can be imported using e.g.:
 //
 // ```sh
-//
-//	$ pulumi import proxmoxve:Cluster/options:Options options cluster
-//
+// $ pulumi import proxmoxve:Cluster/options:Options options cluster
 // ```
 type Options struct {
 	pulumi.CustomResourceState

@@ -14,6 +14,7 @@ namespace Pulumi.ProxmoxVE
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -30,13 +31,16 @@ namespace Pulumi.ProxmoxVE
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
-    /// Instances can be imported using the `node_name`, e.g., bash
+    /// Instances can be imported using the `node_name`, e.g.,
+    /// 
+    /// bash
     /// 
     /// ```sh
-    ///  $ pulumi import proxmoxve:index/time:Time first_node first-node
+    /// $ pulumi import proxmoxve:index/time:Time first_node first-node
     /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:index/time:Time")]

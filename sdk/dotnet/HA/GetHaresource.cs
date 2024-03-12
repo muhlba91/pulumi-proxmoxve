@@ -14,10 +14,9 @@ namespace Pulumi.ProxmoxVE.HA
         /// <summary>
         /// Retrieves the list of High Availability resources.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -42,8 +41,7 @@ namespace Pulumi.ProxmoxVE.HA
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetHAResourceResult> InvokeAsync(GetHAResourceArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHAResourceResult>("proxmoxve:HA/getHAResource:getHAResource", args ?? new GetHAResourceArgs(), options.WithDefaults());
@@ -51,10 +49,9 @@ namespace Pulumi.ProxmoxVE.HA
         /// <summary>
         /// Retrieves the list of High Availability resources.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -79,8 +76,7 @@ namespace Pulumi.ProxmoxVE.HA
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetHAResourceResult> Invoke(GetHAResourceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHAResourceResult>("proxmoxve:HA/getHAResource:getHAResource", args ?? new GetHAResourceInvokeArgs(), options.WithDefaults());

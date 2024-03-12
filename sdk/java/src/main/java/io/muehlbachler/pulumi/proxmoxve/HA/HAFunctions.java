@@ -27,6 +27,9 @@ public final class HAFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetHAGroupResult> getHAGroup(GetHAGroupArgs args) {
         return getHAGroup(args, InvokeOptions.Empty);
@@ -35,6 +38,9 @@ public final class HAFunctions {
      * Retrieves information about a specific High Availability group.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHAGroupResult> getHAGroupPlain(GetHAGroupPlainArgs args) {
@@ -45,6 +51,9 @@ public final class HAFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetHAGroupResult> getHAGroup(GetHAGroupArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:HA/getHAGroup:getHAGroup", TypeShape.of(GetHAGroupResult.class), args, Utilities.withVersion(options));
@@ -54,6 +63,9 @@ public final class HAFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static CompletableFuture<GetHAGroupResult> getHAGroupPlain(GetHAGroupPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("proxmoxve:HA/getHAGroup:getHAGroup", TypeShape.of(GetHAGroupResult.class), args, Utilities.withVersion(options));
@@ -62,6 +74,8 @@ public final class HAFunctions {
      * Retrieves the list of High Availability groups.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -88,6 +102,7 @@ public final class HAFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHAGroupsResult> getHAGroups() {
@@ -97,6 +112,8 @@ public final class HAFunctions {
      * Retrieves the list of High Availability groups.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -123,6 +140,7 @@ public final class HAFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHAGroupsResult> getHAGroupsPlain() {
@@ -132,6 +150,8 @@ public final class HAFunctions {
      * Retrieves the list of High Availability groups.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -158,6 +178,7 @@ public final class HAFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHAGroupsResult> getHAGroups(InvokeArgs args) {
@@ -167,6 +188,8 @@ public final class HAFunctions {
      * Retrieves the list of High Availability groups.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -193,6 +216,7 @@ public final class HAFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHAGroupsResult> getHAGroupsPlain(InvokeArgs args) {
@@ -202,6 +226,8 @@ public final class HAFunctions {
      * Retrieves the list of High Availability groups.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -228,6 +254,7 @@ public final class HAFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHAGroupsResult> getHAGroups(InvokeArgs args, InvokeOptions options) {
@@ -237,6 +264,8 @@ public final class HAFunctions {
      * Retrieves the list of High Availability groups.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -263,6 +292,7 @@ public final class HAFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHAGroupsResult> getHAGroupsPlain(InvokeArgs args, InvokeOptions options) {
@@ -273,6 +303,9 @@ public final class HAFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetHAResourceResult> getHAResource(GetHAResourceArgs args) {
         return getHAResource(args, InvokeOptions.Empty);
@@ -281,6 +314,9 @@ public final class HAFunctions {
      * Retrieves the list of High Availability resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHAResourceResult> getHAResourcePlain(GetHAResourcePlainArgs args) {
@@ -291,6 +327,9 @@ public final class HAFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetHAResourceResult> getHAResource(GetHAResourceArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:HA/getHAResource:getHAResource", TypeShape.of(GetHAResourceResult.class), args, Utilities.withVersion(options));
@@ -300,6 +339,9 @@ public final class HAFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static CompletableFuture<GetHAResourceResult> getHAResourcePlain(GetHAResourcePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("proxmoxve:HA/getHAResource:getHAResource", TypeShape.of(GetHAResourceResult.class), args, Utilities.withVersion(options));
@@ -308,6 +350,8 @@ public final class HAFunctions {
      * Retrieves the list of High Availability resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -339,6 +383,7 @@ public final class HAFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHAResourcesResult> getHAResources() {
@@ -348,6 +393,8 @@ public final class HAFunctions {
      * Retrieves the list of High Availability resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -379,6 +426,7 @@ public final class HAFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHAResourcesResult> getHAResourcesPlain() {
@@ -388,6 +436,8 @@ public final class HAFunctions {
      * Retrieves the list of High Availability resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -419,6 +469,7 @@ public final class HAFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHAResourcesResult> getHAResources(GetHAResourcesArgs args) {
@@ -428,6 +479,8 @@ public final class HAFunctions {
      * Retrieves the list of High Availability resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -459,6 +512,7 @@ public final class HAFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHAResourcesResult> getHAResourcesPlain(GetHAResourcesPlainArgs args) {
@@ -468,6 +522,8 @@ public final class HAFunctions {
      * Retrieves the list of High Availability resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -499,6 +555,7 @@ public final class HAFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHAResourcesResult> getHAResources(GetHAResourcesArgs args, InvokeOptions options) {
@@ -508,6 +565,8 @@ public final class HAFunctions {
      * Retrieves the list of High Availability resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -539,6 +598,7 @@ public final class HAFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHAResourcesResult> getHAResourcesPlain(GetHAResourcesPlainArgs args, InvokeOptions options) {

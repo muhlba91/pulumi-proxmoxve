@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
@@ -22,13 +23,16 @@ import * as utilities from "../utilities";
  *     dependsOn: [proxmox_virtual_environment_hagroup.example],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
- * #!/usr/bin/env sh HA resources can be imported using their identifiers, e.g.
+ * #!/usr/bin/env sh
+ *
+ * HA resources can be imported using their identifiers, e.g.:
  *
  * ```sh
- *  $ pulumi import proxmoxve:HA/hAResource:HAResource example vm:123
+ * $ pulumi import proxmoxve:HA/hAResource:HAResource example vm:123
  * ```
  */
 export class HAResource extends pulumi.CustomResource {

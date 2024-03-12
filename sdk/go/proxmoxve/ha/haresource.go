@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/internal"
+	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -16,12 +16,13 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
 // import (
 //
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v5/go/proxmoxve/HA"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/HA"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -44,15 +45,16 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
-// #!/usr/bin/env sh HA resources can be imported using their identifiers, e.g.
+// #!/usr/bin/env sh
+//
+// HA resources can be imported using their identifiers, e.g.:
 //
 // ```sh
-//
-//	$ pulumi import proxmoxve:HA/hAResource:HAResource example vm:123
-//
+// $ pulumi import proxmoxve:HA/hAResource:HAResource example vm:123
 // ```
 type HAResource struct {
 	pulumi.CustomResourceState

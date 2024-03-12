@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
@@ -20,13 +21,16 @@ import * as utilities from "../utilities";
  *     poolId: "operations-pool",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
- * Instances can be imported using the `pool_id`, e.g., bash
+ * Instances can be imported using the `pool_id`, e.g.,
+ *
+ * bash
  *
  * ```sh
- *  $ pulumi import proxmoxve:Permission/pool:Pool operations_pool operations-pool
+ * $ pulumi import proxmoxve:Permission/pool:Pool operations_pool operations-pool
  * ```
  */
 export class Pool extends pulumi.CustomResource {

@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
@@ -20,13 +21,16 @@ import * as utilities from "../utilities";
  *     groupId: "operations-team",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
- * Instances can be imported using the `group_id`, e.g., bash
+ * Instances can be imported using the `group_id`, e.g.,
+ *
+ * bash
  *
  * ```sh
- *  $ pulumi import proxmoxve:Permission/group:Group operations_team operations-team
+ * $ pulumi import proxmoxve:Permission/group:Group operations_team operations-team
  * ```
  */
 export class Group extends pulumi.CustomResource {

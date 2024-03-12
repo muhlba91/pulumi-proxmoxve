@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
@@ -17,6 +18,7 @@ import * as utilities from "../utilities";
  *     nodeName: "first-node",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTime(args: GetTimeArgs, opts?: pulumi.InvokeOptions): Promise<GetTimeResult> {
 
@@ -63,6 +65,7 @@ export interface GetTimeResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
@@ -71,6 +74,7 @@ export interface GetTimeResult {
  *     nodeName: "first-node",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTimeOutput(args: GetTimeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTimeResult> {
     return pulumi.output(args).apply((a: any) => getTime(a, opts))

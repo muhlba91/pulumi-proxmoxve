@@ -14,6 +14,7 @@ namespace Pulumi.ProxmoxVE.Permission
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -49,13 +50,16 @@ namespace Pulumi.ProxmoxVE.Permission
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
-    /// Instances can be imported using the `user_id`, e.g., bash
+    /// Instances can be imported using the `user_id`, e.g.,
+    /// 
+    /// bash
     /// 
     /// ```sh
-    ///  $ pulumi import proxmoxve:Permission/user:User operations_automation operations-automation@pve
+    /// $ pulumi import proxmoxve:Permission/user:User operations_automation operations-automation@pve
     /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:Permission/user:User")]

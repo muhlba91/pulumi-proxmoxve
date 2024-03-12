@@ -12,16 +12,14 @@ namespace Pulumi.ProxmoxVE
     /// <summary>
     /// Manages the DNS configuration for a specific node.
     /// 
-    /// ## Important Notes
-    /// 
-    /// Be careful not to use this resource multiple times for the same node.
-    /// 
     /// ## Import
     /// 
-    /// Instances can be imported using the `node_name`, e.g., bash
+    /// Instances can be imported using the `node_name`, e.g.,
+    /// 
+    /// bash
     /// 
     /// ```sh
-    ///  $ pulumi import proxmoxve:index/dNS:DNS first_node first-node
+    /// $ pulumi import proxmoxve:index/dNS:DNS first_node first-node
     /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:index/dNS:DNS")]

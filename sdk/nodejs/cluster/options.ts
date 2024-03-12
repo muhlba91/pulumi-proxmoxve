@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
@@ -24,13 +25,16 @@ import * as utilities from "../utilities";
  *     migrationType: "secure",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
- * #!/usr/bin/env sh Cluster options are global and can be imported using e.g.
+ * #!/usr/bin/env sh
+ *
+ * Cluster options are global and can be imported using e.g.:
  *
  * ```sh
- *  $ pulumi import proxmoxve:Cluster/options:Options options cluster
+ * $ pulumi import proxmoxve:Cluster/options:Options options cluster
  * ```
  */
 export class Options extends pulumi.CustomResource {
