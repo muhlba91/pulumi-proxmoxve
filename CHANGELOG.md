@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [6.0.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.0.0...v6.0.1) (2024-03-12)
+
+
+### Miscellaneous Chores
+
+* **deps:** update pulumi dependencies ([3ee252c](https://github.com/muhlba91/pulumi-proxmoxve/commit/3ee252c09e9a59fc6028783c6e2ef865c5901c16))
+
 ## [6.0.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v5.25.0...v6.0.0) (2024-03-12)
 
 
