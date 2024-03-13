@@ -1447,6 +1447,8 @@ github.com/boombuler/barcode v1.0.0/go.mod h1:paBWMcWSl3LHKBqUq+rly7CNSldXjb2rDl
 github.com/boombuler/barcode v1.0.1/go.mod h1:paBWMcWSl3LHKBqUq+rly7CNSldXjb2rDl3JlRe0mD8=
 github.com/bpg/terraform-provider-proxmox v0.48.3 h1:ZrWkGjBjzlAEObOyrUf57zX6uHTSivExl7NjUQzlG/U=
 github.com/bpg/terraform-provider-proxmox v0.48.3/go.mod h1:HWQp68IRJtvbJvnAAWxlQ5gtjZYCxxHilwxvmg8VuZ0=
+github.com/bpg/terraform-provider-proxmox v0.48.4 h1:FFtcuExqGDDiXrzMZ6DOgMGOnN6nutRqLlzXOZTmSe4=
+github.com/bpg/terraform-provider-proxmox v0.48.4/go.mod h1:HWQp68IRJtvbJvnAAWxlQ5gtjZYCxxHilwxvmg8VuZ0=
 github.com/bshuster-repo/logrus-logstash-hook v0.4.1/go.mod h1:zsTqEiSzDgAa/8GZR7E1qaXrhYNDKBYy5/dWPTIflbk=
 github.com/bufbuild/protocompile v0.4.0 h1:LbFKd2XowZvQ/kajzguUp2DC9UEIQhIq77fZZlaQsNA=
 github.com/bufbuild/protocompile v0.4.0/go.mod h1:3v93+mbWn/v3xzN+31nwkJfrEpAUwp+BagBSZWx+TP8=
