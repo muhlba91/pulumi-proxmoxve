@@ -501,6 +501,8 @@ class VirtualMachineDisk(dict):
 
     def __init__(__self__, *,
                  interface: str,
+                 aio: Optional[str] = None,
+                 backup: Optional[bool] = None,
                  cache: Optional[str] = None,
                  datastore_id: Optional[str] = None,
                  discard: Optional[str] = None,
@@ -508,6 +510,7 @@ class VirtualMachineDisk(dict):
                  file_id: Optional[str] = None,
                  iothread: Optional[bool] = None,
                  path_in_datastore: Optional[str] = None,
+                 replicate: Optional[bool] = None,
                  size: Optional[int] = None,
                  speed: Optional['outputs.VirtualMachineDiskSpeed'] = None,
                  ssd: Optional[bool] = None):
@@ -516,6 +519,8 @@ class VirtualMachineDisk(dict):
                image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
                detected if the setting is missing but a cloud-init image is present,
                otherwise defaults to `ide2`.
+        :param str aio: The disk AIO mode (defaults to `io_uring`).
+        :param bool backup: Whether the drive should be included when making backups (defaults to `true`).
         :param str cache: The cache type (defaults to `none`).
         :param str datastore_id: The identifier for the datastore to create the
                cloud-init disk in (defaults to `local-lvm`).
@@ -532,6 +537,7 @@ class VirtualMachineDisk(dict):
                ***Experimental.***Use to attach another VM's disks,
                or (as root only) host's filesystem paths (`datastore_id` empty string).
                See "*Example: Attached disks*".
+        :param bool replicate: Whether the drive should be considered for replication jobs (defaults to `true`).
         :param int size: The disk size in gigabytes (defaults to `8`).
         :param 'VirtualMachineDiskSpeedArgs' speed: The speed limits.
         :param bool ssd: Whether to use an SSD emulation option for this disk (
@@ -539,6 +545,10 @@ class VirtualMachineDisk(dict):
                Block drives.
         """
         pulumi.set(__self__, "interface", interface)
+        if aio is not None:
+            pulumi.set(__self__, "aio", aio)
+        if backup is not None:
+            pulumi.set(__self__, "backup", backup)
         if cache is not None:
             pulumi.set(__self__, "cache", cache)
         if datastore_id is not None:
@@ -553,6 +563,8 @@ class VirtualMachineDisk(dict):
             pulumi.set(__self__, "iothread", iothread)
         if path_in_datastore is not None:
             pulumi.set(__self__, "path_in_datastore", path_in_datastore)
+        if replicate is not None:
+            pulumi.set(__self__, "replicate", replicate)
         if size is not None:
             pulumi.set(__self__, "size", size)
         if speed is not None:
@@ -570,6 +582,22 @@ class VirtualMachineDisk(dict):
         otherwise defaults to `ide2`.
         """
         return pulumi.get(self, "interface")
+
+    @property
+    @pulumi.getter
+    def aio(self) -> Optional[str]:
+        """
+        The disk AIO mode (defaults to `io_uring`).
+        """
+        return pulumi.get(self, "aio")
+
+    @property
+    @pulumi.getter
+    def backup(self) -> Optional[bool]:
+        """
+        Whether the drive should be included when making backups (defaults to `true`).
+        """
+        return pulumi.get(self, "backup")
 
     @property
     @pulumi.getter
@@ -638,6 +666,14 @@ class VirtualMachineDisk(dict):
 
     @property
     @pulumi.getter
+    def replicate(self) -> Optional[bool]:
+        """
+        Whether the drive should be considered for replication jobs (defaults to `true`).
+        """
+        return pulumi.get(self, "replicate")
+
+    @property
+    @pulumi.getter
     def size(self) -> Optional[int]:
         """
         The disk size in gigabytes (defaults to `8`).
@@ -668,7 +704,15 @@ class VirtualMachineDiskSpeed(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "readBurstable":
+        if key == "iopsRead":
+            suggest = "iops_read"
+        elif key == "iopsReadBurstable":
+            suggest = "iops_read_burstable"
+        elif key == "iopsWrite":
+            suggest = "iops_write"
+        elif key == "iopsWriteBurstable":
+            suggest = "iops_write_burstable"
+        elif key == "readBurstable":
             suggest = "read_burstable"
         elif key == "writeBurstable":
             suggest = "write_burstable"
@@ -685,11 +729,19 @@ class VirtualMachineDiskSpeed(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 iops_read: Optional[int] = None,
+                 iops_read_burstable: Optional[int] = None,
+                 iops_write: Optional[int] = None,
+                 iops_write_burstable: Optional[int] = None,
                  read: Optional[int] = None,
                  read_burstable: Optional[int] = None,
                  write: Optional[int] = None,
                  write_burstable: Optional[int] = None):
         """
+        :param int iops_read: The maximum read I/O in operations per second.
+        :param int iops_read_burstable: The maximum unthrottled read I/O pool in operations per second.
+        :param int iops_write: The maximum write I/O in operations per second.
+        :param int iops_write_burstable: The maximum unthrottled write I/O pool in operations per second.
         :param int read: The maximum read speed in megabytes per second.
         :param int read_burstable: The maximum burstable read speed in
                megabytes per second.
@@ -697,6 +749,14 @@ class VirtualMachineDiskSpeed(dict):
         :param int write_burstable: The maximum burstable write speed in
                megabytes per second.
         """
+        if iops_read is not None:
+            pulumi.set(__self__, "iops_read", iops_read)
+        if iops_read_burstable is not None:
+            pulumi.set(__self__, "iops_read_burstable", iops_read_burstable)
+        if iops_write is not None:
+            pulumi.set(__self__, "iops_write", iops_write)
+        if iops_write_burstable is not None:
+            pulumi.set(__self__, "iops_write_burstable", iops_write_burstable)
         if read is not None:
             pulumi.set(__self__, "read", read)
         if read_burstable is not None:
@@ -705,6 +765,38 @@ class VirtualMachineDiskSpeed(dict):
             pulumi.set(__self__, "write", write)
         if write_burstable is not None:
             pulumi.set(__self__, "write_burstable", write_burstable)
+
+    @property
+    @pulumi.getter(name="iopsRead")
+    def iops_read(self) -> Optional[int]:
+        """
+        The maximum read I/O in operations per second.
+        """
+        return pulumi.get(self, "iops_read")
+
+    @property
+    @pulumi.getter(name="iopsReadBurstable")
+    def iops_read_burstable(self) -> Optional[int]:
+        """
+        The maximum unthrottled read I/O pool in operations per second.
+        """
+        return pulumi.get(self, "iops_read_burstable")
+
+    @property
+    @pulumi.getter(name="iopsWrite")
+    def iops_write(self) -> Optional[int]:
+        """
+        The maximum write I/O in operations per second.
+        """
+        return pulumi.get(self, "iops_write")
+
+    @property
+    @pulumi.getter(name="iopsWriteBurstable")
+    def iops_write_burstable(self) -> Optional[int]:
+        """
+        The maximum unthrottled write I/O pool in operations per second.
+        """
+        return pulumi.get(self, "iops_write_burstable")
 
     @property
     @pulumi.getter
@@ -1410,6 +1502,7 @@ class VirtualMachineNetworkDevice(dict):
 
     def __init__(__self__, *,
                  bridge: Optional[str] = None,
+                 disconnected: Optional[bool] = None,
                  enabled: Optional[bool] = None,
                  firewall: Optional[bool] = None,
                  mac_address: Optional[str] = None,
@@ -1420,16 +1513,14 @@ class VirtualMachineNetworkDevice(dict):
                  trunks: Optional[str] = None,
                  vlan_id: Optional[int] = None):
         """
-        :param str bridge: The name of the network bridge (defaults
-               to `vmbr0`).
+        :param str bridge: The name of the network bridge (defaults to `vmbr0`).
+        :param bool disconnected: Whether to disconnect the network device from the network (defaults to `false`).
         :param bool enabled: Whether to enable the VGA device (defaults
                to `true`).
-        :param bool firewall: Whether this interface's firewall rules should be
-               used (defaults to `false`).
+        :param bool firewall: Whether this interface's firewall rules should be used (defaults to `false`).
         :param str mac_address: The MAC address.
         :param str model: The network device model (defaults to `virtio`).
-        :param int mtu: Force MTU, for VirtIO only. Set to 1 to use the bridge
-               MTU. Cannot be larger than the bridge MTU.
+        :param int mtu: Force MTU, for VirtIO only. Set to 1 to use the bridge MTU. Cannot be larger than the bridge MTU.
         :param int queues: The number of queues for VirtIO (1..64).
         :param float rate_limit: The rate limit in megabytes per second.
         :param str trunks: String containing a `;` separated list of VLAN trunks 
@@ -1439,6 +1530,8 @@ class VirtualMachineNetworkDevice(dict):
         """
         if bridge is not None:
             pulumi.set(__self__, "bridge", bridge)
+        if disconnected is not None:
+            pulumi.set(__self__, "disconnected", disconnected)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if firewall is not None:
@@ -1462,10 +1555,17 @@ class VirtualMachineNetworkDevice(dict):
     @pulumi.getter
     def bridge(self) -> Optional[str]:
         """
-        The name of the network bridge (defaults
-        to `vmbr0`).
+        The name of the network bridge (defaults to `vmbr0`).
         """
         return pulumi.get(self, "bridge")
+
+    @property
+    @pulumi.getter
+    def disconnected(self) -> Optional[bool]:
+        """
+        Whether to disconnect the network device from the network (defaults to `false`).
+        """
+        return pulumi.get(self, "disconnected")
 
     @property
     @pulumi.getter
@@ -1480,8 +1580,7 @@ class VirtualMachineNetworkDevice(dict):
     @pulumi.getter
     def firewall(self) -> Optional[bool]:
         """
-        Whether this interface's firewall rules should be
-        used (defaults to `false`).
+        Whether this interface's firewall rules should be used (defaults to `false`).
         """
         return pulumi.get(self, "firewall")
 
@@ -1505,8 +1604,7 @@ class VirtualMachineNetworkDevice(dict):
     @pulumi.getter
     def mtu(self) -> Optional[int]:
         """
-        Force MTU, for VirtIO only. Set to 1 to use the bridge
-        MTU. Cannot be larger than the bridge MTU.
+        Force MTU, for VirtIO only. Set to 1 to use the bridge MTU. Cannot be larger than the bridge MTU.
         """
         return pulumi.get(self, "mtu")
 

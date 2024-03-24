@@ -38,6 +38,8 @@ type Container struct {
 	Disk ContainerDiskPtrOutput `pulumi:"disk"`
 	// The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
 	Features ContainerFeaturesPtrOutput `pulumi:"features"`
+	// The identifier for a file containing a hook script (needs to be executable).
+	HookScriptFileId pulumi.StringPtrOutput `pulumi:"hookScriptFileId"`
 	// The initialization configuration.
 	Initialization ContainerInitializationPtrOutput `pulumi:"initialization"`
 	// The memory configuration.
@@ -68,6 +70,8 @@ type Container struct {
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Whether to create a template (defaults to `false`).
 	Template pulumi.BoolPtrOutput `pulumi:"template"`
+	// Timeout for creating a container in seconds (defaults to 1800).
+	TimeoutCreate pulumi.IntPtrOutput `pulumi:"timeoutCreate"`
 	// Whether the container runs as unprivileged on
 	// the host (defaults to `false`).
 	Unprivileged pulumi.BoolPtrOutput `pulumi:"unprivileged"`
@@ -120,6 +124,8 @@ type containerState struct {
 	Disk *ContainerDisk `pulumi:"disk"`
 	// The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
 	Features *ContainerFeatures `pulumi:"features"`
+	// The identifier for a file containing a hook script (needs to be executable).
+	HookScriptFileId *string `pulumi:"hookScriptFileId"`
 	// The initialization configuration.
 	Initialization *ContainerInitialization `pulumi:"initialization"`
 	// The memory configuration.
@@ -150,6 +156,8 @@ type containerState struct {
 	Tags []string `pulumi:"tags"`
 	// Whether to create a template (defaults to `false`).
 	Template *bool `pulumi:"template"`
+	// Timeout for creating a container in seconds (defaults to 1800).
+	TimeoutCreate *int `pulumi:"timeoutCreate"`
 	// Whether the container runs as unprivileged on
 	// the host (defaults to `false`).
 	Unprivileged *bool `pulumi:"unprivileged"`
@@ -170,6 +178,8 @@ type ContainerState struct {
 	Disk ContainerDiskPtrInput
 	// The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
 	Features ContainerFeaturesPtrInput
+	// The identifier for a file containing a hook script (needs to be executable).
+	HookScriptFileId pulumi.StringPtrInput
 	// The initialization configuration.
 	Initialization ContainerInitializationPtrInput
 	// The memory configuration.
@@ -200,6 +210,8 @@ type ContainerState struct {
 	Tags pulumi.StringArrayInput
 	// Whether to create a template (defaults to `false`).
 	Template pulumi.BoolPtrInput
+	// Timeout for creating a container in seconds (defaults to 1800).
+	TimeoutCreate pulumi.IntPtrInput
 	// Whether the container runs as unprivileged on
 	// the host (defaults to `false`).
 	Unprivileged pulumi.BoolPtrInput
@@ -224,6 +236,8 @@ type containerArgs struct {
 	Disk *ContainerDisk `pulumi:"disk"`
 	// The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
 	Features *ContainerFeatures `pulumi:"features"`
+	// The identifier for a file containing a hook script (needs to be executable).
+	HookScriptFileId *string `pulumi:"hookScriptFileId"`
 	// The initialization configuration.
 	Initialization *ContainerInitialization `pulumi:"initialization"`
 	// The memory configuration.
@@ -254,6 +268,8 @@ type containerArgs struct {
 	Tags []string `pulumi:"tags"`
 	// Whether to create a template (defaults to `false`).
 	Template *bool `pulumi:"template"`
+	// Timeout for creating a container in seconds (defaults to 1800).
+	TimeoutCreate *int `pulumi:"timeoutCreate"`
 	// Whether the container runs as unprivileged on
 	// the host (defaults to `false`).
 	Unprivileged *bool `pulumi:"unprivileged"`
@@ -275,6 +291,8 @@ type ContainerArgs struct {
 	Disk ContainerDiskPtrInput
 	// The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
 	Features ContainerFeaturesPtrInput
+	// The identifier for a file containing a hook script (needs to be executable).
+	HookScriptFileId pulumi.StringPtrInput
 	// The initialization configuration.
 	Initialization ContainerInitializationPtrInput
 	// The memory configuration.
@@ -305,6 +323,8 @@ type ContainerArgs struct {
 	Tags pulumi.StringArrayInput
 	// Whether to create a template (defaults to `false`).
 	Template pulumi.BoolPtrInput
+	// Timeout for creating a container in seconds (defaults to 1800).
+	TimeoutCreate pulumi.IntPtrInput
 	// Whether the container runs as unprivileged on
 	// the host (defaults to `false`).
 	Unprivileged pulumi.BoolPtrInput
@@ -429,6 +449,11 @@ func (o ContainerOutput) Features() ContainerFeaturesPtrOutput {
 	return o.ApplyT(func(v *Container) ContainerFeaturesPtrOutput { return v.Features }).(ContainerFeaturesPtrOutput)
 }
 
+// The identifier for a file containing a hook script (needs to be executable).
+func (o ContainerOutput) HookScriptFileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Container) pulumi.StringPtrOutput { return v.HookScriptFileId }).(pulumi.StringPtrOutput)
+}
+
 // The initialization configuration.
 func (o ContainerOutput) Initialization() ContainerInitializationPtrOutput {
 	return o.ApplyT(func(v *Container) ContainerInitializationPtrOutput { return v.Initialization }).(ContainerInitializationPtrOutput)
@@ -493,6 +518,11 @@ func (o ContainerOutput) Tags() pulumi.StringArrayOutput {
 // Whether to create a template (defaults to `false`).
 func (o ContainerOutput) Template() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Container) pulumi.BoolPtrOutput { return v.Template }).(pulumi.BoolPtrOutput)
+}
+
+// Timeout for creating a container in seconds (defaults to 1800).
+func (o ContainerOutput) TimeoutCreate() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Container) pulumi.IntPtrOutput { return v.TimeoutCreate }).(pulumi.IntPtrOutput)
 }
 
 // Whether the container runs as unprivileged on

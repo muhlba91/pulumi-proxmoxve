@@ -14,6 +14,14 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     public sealed class VirtualMachineDisk
     {
         /// <summary>
+        /// The disk AIO mode (defaults to `io_uring`).
+        /// </summary>
+        public readonly string? Aio;
+        /// <summary>
+        /// Whether the drive should be included when making backups (defaults to `true`).
+        /// </summary>
+        public readonly bool? Backup;
+        /// <summary>
         /// The cache type (defaults to `none`).
         /// </summary>
         public readonly string? Cache;
@@ -58,6 +66,10 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly string? PathInDatastore;
         /// <summary>
+        /// Whether the drive should be considered for replication jobs (defaults to `true`).
+        /// </summary>
+        public readonly bool? Replicate;
+        /// <summary>
         /// The disk size in gigabytes (defaults to `8`).
         /// </summary>
         public readonly int? Size;
@@ -74,6 +86,10 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
 
         [OutputConstructor]
         private VirtualMachineDisk(
+            string? aio,
+
+            bool? backup,
+
             string? cache,
 
             string? datastoreId,
@@ -90,12 +106,16 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
 
             string? pathInDatastore,
 
+            bool? replicate,
+
             int? size,
 
             Outputs.VirtualMachineDiskSpeed? speed,
 
             bool? ssd)
         {
+            Aio = aio;
+            Backup = backup;
             Cache = cache;
             DatastoreId = datastoreId;
             Discard = discard;
@@ -104,6 +124,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
             Interface = @interface;
             Iothread = iothread;
             PathInDatastore = pathInDatastore;
+            Replicate = replicate;
             Size = size;
             Speed = speed;
             Ssd = ssd;

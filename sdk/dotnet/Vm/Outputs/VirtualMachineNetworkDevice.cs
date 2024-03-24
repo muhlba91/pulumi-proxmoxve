@@ -14,18 +14,20 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     public sealed class VirtualMachineNetworkDevice
     {
         /// <summary>
-        /// The name of the network bridge (defaults
-        /// to `vmbr0`).
+        /// The name of the network bridge (defaults to `vmbr0`).
         /// </summary>
         public readonly string? Bridge;
+        /// <summary>
+        /// Whether to disconnect the network device from the network (defaults to `false`).
+        /// </summary>
+        public readonly bool? Disconnected;
         /// <summary>
         /// Whether to enable the VGA device (defaults
         /// to `true`).
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Whether this interface's firewall rules should be
-        /// used (defaults to `false`).
+        /// Whether this interface's firewall rules should be used (defaults to `false`).
         /// </summary>
         public readonly bool? Firewall;
         /// <summary>
@@ -37,8 +39,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly string? Model;
         /// <summary>
-        /// Force MTU, for VirtIO only. Set to 1 to use the bridge
-        /// MTU. Cannot be larger than the bridge MTU.
+        /// Force MTU, for VirtIO only. Set to 1 to use the bridge MTU. Cannot be larger than the bridge MTU.
         /// </summary>
         public readonly int? Mtu;
         /// <summary>
@@ -64,6 +65,8 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         private VirtualMachineNetworkDevice(
             string? bridge,
 
+            bool? disconnected,
+
             bool? enabled,
 
             bool? firewall,
@@ -83,6 +86,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
             int? vlanId)
         {
             Bridge = bridge;
+            Disconnected = disconnected;
             Enabled = enabled;
             Firewall = firewall;
             MacAddress = macAddress;

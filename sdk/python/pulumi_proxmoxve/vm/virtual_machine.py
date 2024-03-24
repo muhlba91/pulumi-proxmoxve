@@ -42,6 +42,7 @@ class VirtualMachineArgs:
                  on_boot: Optional[pulumi.Input[bool]] = None,
                  operating_system: Optional[pulumi.Input['VirtualMachineOperatingSystemArgs']] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
+                 protection: Optional[pulumi.Input[bool]] = None,
                  reboot: Optional[pulumi.Input[bool]] = None,
                  scsi_hardware: Optional[pulumi.Input[str]] = None,
                  serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]]] = None,
@@ -97,10 +98,9 @@ class VirtualMachineArgs:
         :param pulumi.Input[bool] on_boot: Specifies whether a VM will be started during system
                boot. (defaults to `true`)
         :param pulumi.Input['VirtualMachineOperatingSystemArgs'] operating_system: The Operating System configuration.
-        :param pulumi.Input[str] pool_id: The identifier for a pool to assign the virtual machine
-               to.
-        :param pulumi.Input[bool] reboot: Reboot the VM after initial creation. (defaults
-               to `false`)
+        :param pulumi.Input[str] pool_id: The identifier for a pool to assign the virtual machine to.
+        :param pulumi.Input[bool] protection: Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+        :param pulumi.Input[bool] reboot: Reboot the VM after initial creation. (defaults to `false`)
         :param pulumi.Input[str] scsi_hardware: The SCSI hardware type (defaults to
                `virtio-scsi-pci`).
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]] serial_devices: A serial device (multiple blocks supported).
@@ -189,6 +189,8 @@ class VirtualMachineArgs:
             pulumi.set(__self__, "operating_system", operating_system)
         if pool_id is not None:
             pulumi.set(__self__, "pool_id", pool_id)
+        if protection is not None:
+            pulumi.set(__self__, "protection", protection)
         if reboot is not None:
             pulumi.set(__self__, "reboot", reboot)
         if scsi_hardware is not None:
@@ -544,8 +546,7 @@ class VirtualMachineArgs:
     @pulumi.getter(name="poolId")
     def pool_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The identifier for a pool to assign the virtual machine
-        to.
+        The identifier for a pool to assign the virtual machine to.
         """
         return pulumi.get(self, "pool_id")
 
@@ -555,10 +556,21 @@ class VirtualMachineArgs:
 
     @property
     @pulumi.getter
+    def protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+        """
+        return pulumi.get(self, "protection")
+
+    @protection.setter
+    def protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "protection", value)
+
+    @property
+    @pulumi.getter
     def reboot(self) -> Optional[pulumi.Input[bool]]:
         """
-        Reboot the VM after initial creation. (defaults
-        to `false`)
+        Reboot the VM after initial creation. (defaults to `false`)
         """
         return pulumi.get(self, "reboot")
 
@@ -866,6 +878,7 @@ class _VirtualMachineState:
                  on_boot: Optional[pulumi.Input[bool]] = None,
                  operating_system: Optional[pulumi.Input['VirtualMachineOperatingSystemArgs']] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
+                 protection: Optional[pulumi.Input[bool]] = None,
                  reboot: Optional[pulumi.Input[bool]] = None,
                  scsi_hardware: Optional[pulumi.Input[str]] = None,
                  serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]]] = None,
@@ -927,10 +940,9 @@ class _VirtualMachineState:
         :param pulumi.Input[bool] on_boot: Specifies whether a VM will be started during system
                boot. (defaults to `true`)
         :param pulumi.Input['VirtualMachineOperatingSystemArgs'] operating_system: The Operating System configuration.
-        :param pulumi.Input[str] pool_id: The identifier for a pool to assign the virtual machine
-               to.
-        :param pulumi.Input[bool] reboot: Reboot the VM after initial creation. (defaults
-               to `false`)
+        :param pulumi.Input[str] pool_id: The identifier for a pool to assign the virtual machine to.
+        :param pulumi.Input[bool] protection: Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+        :param pulumi.Input[bool] reboot: Reboot the VM after initial creation. (defaults to `false`)
         :param pulumi.Input[str] scsi_hardware: The SCSI hardware type (defaults to
                `virtio-scsi-pci`).
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]] serial_devices: A serial device (multiple blocks supported).
@@ -1026,6 +1038,8 @@ class _VirtualMachineState:
             pulumi.set(__self__, "operating_system", operating_system)
         if pool_id is not None:
             pulumi.set(__self__, "pool_id", pool_id)
+        if protection is not None:
+            pulumi.set(__self__, "protection", protection)
         if reboot is not None:
             pulumi.set(__self__, "reboot", reboot)
         if scsi_hardware is not None:
@@ -1420,8 +1434,7 @@ class _VirtualMachineState:
     @pulumi.getter(name="poolId")
     def pool_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The identifier for a pool to assign the virtual machine
-        to.
+        The identifier for a pool to assign the virtual machine to.
         """
         return pulumi.get(self, "pool_id")
 
@@ -1431,10 +1444,21 @@ class _VirtualMachineState:
 
     @property
     @pulumi.getter
+    def protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+        """
+        return pulumi.get(self, "protection")
+
+    @protection.setter
+    def protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "protection", value)
+
+    @property
+    @pulumi.getter
     def reboot(self) -> Optional[pulumi.Input[bool]]:
         """
-        Reboot the VM after initial creation. (defaults
-        to `false`)
+        Reboot the VM after initial creation. (defaults to `false`)
         """
         return pulumi.get(self, "reboot")
 
@@ -1741,6 +1765,7 @@ class VirtualMachine(pulumi.CustomResource):
                  on_boot: Optional[pulumi.Input[bool]] = None,
                  operating_system: Optional[pulumi.Input[pulumi.InputType['VirtualMachineOperatingSystemArgs']]] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
+                 protection: Optional[pulumi.Input[bool]] = None,
                  reboot: Optional[pulumi.Input[bool]] = None,
                  scsi_hardware: Optional[pulumi.Input[str]] = None,
                  serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]]] = None,
@@ -1812,10 +1837,9 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[bool] on_boot: Specifies whether a VM will be started during system
                boot. (defaults to `true`)
         :param pulumi.Input[pulumi.InputType['VirtualMachineOperatingSystemArgs']] operating_system: The Operating System configuration.
-        :param pulumi.Input[str] pool_id: The identifier for a pool to assign the virtual machine
-               to.
-        :param pulumi.Input[bool] reboot: Reboot the VM after initial creation. (defaults
-               to `false`)
+        :param pulumi.Input[str] pool_id: The identifier for a pool to assign the virtual machine to.
+        :param pulumi.Input[bool] protection: Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+        :param pulumi.Input[bool] reboot: Reboot the VM after initial creation. (defaults to `false`)
         :param pulumi.Input[str] scsi_hardware: The SCSI hardware type (defaults to
                `virtio-scsi-pci`).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]] serial_devices: A serial device (multiple blocks supported).
@@ -1915,6 +1939,7 @@ class VirtualMachine(pulumi.CustomResource):
                  on_boot: Optional[pulumi.Input[bool]] = None,
                  operating_system: Optional[pulumi.Input[pulumi.InputType['VirtualMachineOperatingSystemArgs']]] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
+                 protection: Optional[pulumi.Input[bool]] = None,
                  reboot: Optional[pulumi.Input[bool]] = None,
                  scsi_hardware: Optional[pulumi.Input[str]] = None,
                  serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]]] = None,
@@ -1974,6 +1999,7 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["on_boot"] = on_boot
             __props__.__dict__["operating_system"] = operating_system
             __props__.__dict__["pool_id"] = pool_id
+            __props__.__dict__["protection"] = protection
             __props__.__dict__["reboot"] = reboot
             __props__.__dict__["scsi_hardware"] = scsi_hardware
             __props__.__dict__["serial_devices"] = serial_devices
@@ -2038,6 +2064,7 @@ class VirtualMachine(pulumi.CustomResource):
             on_boot: Optional[pulumi.Input[bool]] = None,
             operating_system: Optional[pulumi.Input[pulumi.InputType['VirtualMachineOperatingSystemArgs']]] = None,
             pool_id: Optional[pulumi.Input[str]] = None,
+            protection: Optional[pulumi.Input[bool]] = None,
             reboot: Optional[pulumi.Input[bool]] = None,
             scsi_hardware: Optional[pulumi.Input[str]] = None,
             serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]]] = None,
@@ -2104,10 +2131,9 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[bool] on_boot: Specifies whether a VM will be started during system
                boot. (defaults to `true`)
         :param pulumi.Input[pulumi.InputType['VirtualMachineOperatingSystemArgs']] operating_system: The Operating System configuration.
-        :param pulumi.Input[str] pool_id: The identifier for a pool to assign the virtual machine
-               to.
-        :param pulumi.Input[bool] reboot: Reboot the VM after initial creation. (defaults
-               to `false`)
+        :param pulumi.Input[str] pool_id: The identifier for a pool to assign the virtual machine to.
+        :param pulumi.Input[bool] protection: Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+        :param pulumi.Input[bool] reboot: Reboot the VM after initial creation. (defaults to `false`)
         :param pulumi.Input[str] scsi_hardware: The SCSI hardware type (defaults to
                `virtio-scsi-pci`).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]] serial_devices: A serial device (multiple blocks supported).
@@ -2178,6 +2204,7 @@ class VirtualMachine(pulumi.CustomResource):
         __props__.__dict__["on_boot"] = on_boot
         __props__.__dict__["operating_system"] = operating_system
         __props__.__dict__["pool_id"] = pool_id
+        __props__.__dict__["protection"] = protection
         __props__.__dict__["reboot"] = reboot
         __props__.__dict__["scsi_hardware"] = scsi_hardware
         __props__.__dict__["serial_devices"] = serial_devices
@@ -2439,17 +2466,23 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="poolId")
     def pool_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The identifier for a pool to assign the virtual machine
-        to.
+        The identifier for a pool to assign the virtual machine to.
         """
         return pulumi.get(self, "pool_id")
 
     @property
     @pulumi.getter
+    def protection(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+        """
+        return pulumi.get(self, "protection")
+
+    @property
+    @pulumi.getter
     def reboot(self) -> pulumi.Output[Optional[bool]]:
         """
-        Reboot the VM after initial creation. (defaults
-        to `false`)
+        Reboot the VM after initial creation. (defaults to `false`)
         """
         return pulumi.get(self, "reboot")
 

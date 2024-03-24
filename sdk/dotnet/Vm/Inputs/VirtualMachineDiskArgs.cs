@@ -13,6 +13,18 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
     public sealed class VirtualMachineDiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The disk AIO mode (defaults to `io_uring`).
+        /// </summary>
+        [Input("aio")]
+        public Input<string>? Aio { get; set; }
+
+        /// <summary>
+        /// Whether the drive should be included when making backups (defaults to `true`).
+        /// </summary>
+        [Input("backup")]
+        public Input<bool>? Backup { get; set; }
+
+        /// <summary>
         /// The cache type (defaults to `none`).
         /// </summary>
         [Input("cache")]
@@ -71,6 +83,12 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         /// </summary>
         [Input("pathInDatastore")]
         public Input<string>? PathInDatastore { get; set; }
+
+        /// <summary>
+        /// Whether the drive should be considered for replication jobs (defaults to `true`).
+        /// </summary>
+        [Input("replicate")]
+        public Input<bool>? Replicate { get; set; }
 
         /// <summary>
         /// The disk size in gigabytes (defaults to `8`).

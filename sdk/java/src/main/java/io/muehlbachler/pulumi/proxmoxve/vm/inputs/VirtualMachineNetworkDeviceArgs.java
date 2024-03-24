@@ -19,20 +19,33 @@ public final class VirtualMachineNetworkDeviceArgs extends com.pulumi.resources.
     public static final VirtualMachineNetworkDeviceArgs Empty = new VirtualMachineNetworkDeviceArgs();
 
     /**
-     * The name of the network bridge (defaults
-     * to `vmbr0`).
+     * The name of the network bridge (defaults to `vmbr0`).
      * 
      */
     @Import(name="bridge")
     private @Nullable Output<String> bridge;
 
     /**
-     * @return The name of the network bridge (defaults
-     * to `vmbr0`).
+     * @return The name of the network bridge (defaults to `vmbr0`).
      * 
      */
     public Optional<Output<String>> bridge() {
         return Optional.ofNullable(this.bridge);
+    }
+
+    /**
+     * Whether to disconnect the network device from the network (defaults to `false`).
+     * 
+     */
+    @Import(name="disconnected")
+    private @Nullable Output<Boolean> disconnected;
+
+    /**
+     * @return Whether to disconnect the network device from the network (defaults to `false`).
+     * 
+     */
+    public Optional<Output<Boolean>> disconnected() {
+        return Optional.ofNullable(this.disconnected);
     }
 
     /**
@@ -53,16 +66,14 @@ public final class VirtualMachineNetworkDeviceArgs extends com.pulumi.resources.
     }
 
     /**
-     * Whether this interface&#39;s firewall rules should be
-     * used (defaults to `false`).
+     * Whether this interface&#39;s firewall rules should be used (defaults to `false`).
      * 
      */
     @Import(name="firewall")
     private @Nullable Output<Boolean> firewall;
 
     /**
-     * @return Whether this interface&#39;s firewall rules should be
-     * used (defaults to `false`).
+     * @return Whether this interface&#39;s firewall rules should be used (defaults to `false`).
      * 
      */
     public Optional<Output<Boolean>> firewall() {
@@ -100,16 +111,14 @@ public final class VirtualMachineNetworkDeviceArgs extends com.pulumi.resources.
     }
 
     /**
-     * Force MTU, for VirtIO only. Set to 1 to use the bridge
-     * MTU. Cannot be larger than the bridge MTU.
+     * Force MTU, for VirtIO only. Set to 1 to use the bridge MTU. Cannot be larger than the bridge MTU.
      * 
      */
     @Import(name="mtu")
     private @Nullable Output<Integer> mtu;
 
     /**
-     * @return Force MTU, for VirtIO only. Set to 1 to use the bridge
-     * MTU. Cannot be larger than the bridge MTU.
+     * @return Force MTU, for VirtIO only. Set to 1 to use the bridge MTU. Cannot be larger than the bridge MTU.
      * 
      */
     public Optional<Output<Integer>> mtu() {
@@ -184,6 +193,7 @@ public final class VirtualMachineNetworkDeviceArgs extends com.pulumi.resources.
 
     private VirtualMachineNetworkDeviceArgs(VirtualMachineNetworkDeviceArgs $) {
         this.bridge = $.bridge;
+        this.disconnected = $.disconnected;
         this.enabled = $.enabled;
         this.firewall = $.firewall;
         this.macAddress = $.macAddress;
@@ -214,8 +224,7 @@ public final class VirtualMachineNetworkDeviceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param bridge The name of the network bridge (defaults
-         * to `vmbr0`).
+         * @param bridge The name of the network bridge (defaults to `vmbr0`).
          * 
          * @return builder
          * 
@@ -226,14 +235,34 @@ public final class VirtualMachineNetworkDeviceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param bridge The name of the network bridge (defaults
-         * to `vmbr0`).
+         * @param bridge The name of the network bridge (defaults to `vmbr0`).
          * 
          * @return builder
          * 
          */
         public Builder bridge(String bridge) {
             return bridge(Output.of(bridge));
+        }
+
+        /**
+         * @param disconnected Whether to disconnect the network device from the network (defaults to `false`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disconnected(@Nullable Output<Boolean> disconnected) {
+            $.disconnected = disconnected;
+            return this;
+        }
+
+        /**
+         * @param disconnected Whether to disconnect the network device from the network (defaults to `false`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disconnected(Boolean disconnected) {
+            return disconnected(Output.of(disconnected));
         }
 
         /**
@@ -260,8 +289,7 @@ public final class VirtualMachineNetworkDeviceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param firewall Whether this interface&#39;s firewall rules should be
-         * used (defaults to `false`).
+         * @param firewall Whether this interface&#39;s firewall rules should be used (defaults to `false`).
          * 
          * @return builder
          * 
@@ -272,8 +300,7 @@ public final class VirtualMachineNetworkDeviceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param firewall Whether this interface&#39;s firewall rules should be
-         * used (defaults to `false`).
+         * @param firewall Whether this interface&#39;s firewall rules should be used (defaults to `false`).
          * 
          * @return builder
          * 
@@ -325,8 +352,7 @@ public final class VirtualMachineNetworkDeviceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param mtu Force MTU, for VirtIO only. Set to 1 to use the bridge
-         * MTU. Cannot be larger than the bridge MTU.
+         * @param mtu Force MTU, for VirtIO only. Set to 1 to use the bridge MTU. Cannot be larger than the bridge MTU.
          * 
          * @return builder
          * 
@@ -337,8 +363,7 @@ public final class VirtualMachineNetworkDeviceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param mtu Force MTU, for VirtIO only. Set to 1 to use the bridge
-         * MTU. Cannot be larger than the bridge MTU.
+         * @param mtu Force MTU, for VirtIO only. Set to 1 to use the bridge MTU. Cannot be larger than the bridge MTU.
          * 
          * @return builder
          * 

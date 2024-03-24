@@ -13,11 +13,16 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
     public sealed class VirtualMachineNetworkDeviceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the network bridge (defaults
-        /// to `vmbr0`).
+        /// The name of the network bridge (defaults to `vmbr0`).
         /// </summary>
         [Input("bridge")]
         public Input<string>? Bridge { get; set; }
+
+        /// <summary>
+        /// Whether to disconnect the network device from the network (defaults to `false`).
+        /// </summary>
+        [Input("disconnected")]
+        public Input<bool>? Disconnected { get; set; }
 
         /// <summary>
         /// Whether to enable the VGA device (defaults
@@ -27,8 +32,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Whether this interface's firewall rules should be
-        /// used (defaults to `false`).
+        /// Whether this interface's firewall rules should be used (defaults to `false`).
         /// </summary>
         [Input("firewall")]
         public Input<bool>? Firewall { get; set; }
@@ -46,8 +50,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<string>? Model { get; set; }
 
         /// <summary>
-        /// Force MTU, for VirtIO only. Set to 1 to use the bridge
-        /// MTU. Cannot be larger than the bridge MTU.
+        /// Force MTU, for VirtIO only. Set to 1 to use the bridge MTU. Cannot be larger than the bridge MTU.
         /// </summary>
         [Input("mtu")]
         public Input<int>? Mtu { get; set; }

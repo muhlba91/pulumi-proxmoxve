@@ -14,6 +14,22 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     public sealed class VirtualMachineDiskSpeed
     {
         /// <summary>
+        /// The maximum read I/O in operations per second.
+        /// </summary>
+        public readonly int? IopsRead;
+        /// <summary>
+        /// The maximum unthrottled read I/O pool in operations per second.
+        /// </summary>
+        public readonly int? IopsReadBurstable;
+        /// <summary>
+        /// The maximum write I/O in operations per second.
+        /// </summary>
+        public readonly int? IopsWrite;
+        /// <summary>
+        /// The maximum unthrottled write I/O pool in operations per second.
+        /// </summary>
+        public readonly int? IopsWriteBurstable;
+        /// <summary>
         /// The maximum read speed in megabytes per second.
         /// </summary>
         public readonly int? Read;
@@ -34,6 +50,14 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
 
         [OutputConstructor]
         private VirtualMachineDiskSpeed(
+            int? iopsRead,
+
+            int? iopsReadBurstable,
+
+            int? iopsWrite,
+
+            int? iopsWriteBurstable,
+
             int? read,
 
             int? readBurstable,
@@ -42,6 +66,10 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
 
             int? writeBurstable)
         {
+            IopsRead = iopsRead;
+            IopsReadBurstable = iopsReadBurstable;
+            IopsWrite = iopsWrite;
+            IopsWriteBurstable = iopsWriteBurstable;
             Read = read;
             ReadBurstable = readBurstable;
             Write = write;

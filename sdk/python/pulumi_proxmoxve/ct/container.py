@@ -23,6 +23,7 @@ class ContainerArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  disk: Optional[pulumi.Input['ContainerDiskArgs']] = None,
                  features: Optional[pulumi.Input['ContainerFeaturesArgs']] = None,
+                 hook_script_file_id: Optional[pulumi.Input[str]] = None,
                  initialization: Optional[pulumi.Input['ContainerInitializationArgs']] = None,
                  memory: Optional[pulumi.Input['ContainerMemoryArgs']] = None,
                  mount_points: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerMountPointArgs']]]] = None,
@@ -34,6 +35,7 @@ class ContainerArgs:
                  startup: Optional[pulumi.Input['ContainerStartupArgs']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
+                 timeout_create: Optional[pulumi.Input[int]] = None,
                  unprivileged: Optional[pulumi.Input[bool]] = None,
                  vm_id: Optional[pulumi.Input[int]] = None):
         """
@@ -45,6 +47,7 @@ class ContainerArgs:
         :param pulumi.Input[str] description: The description.
         :param pulumi.Input['ContainerDiskArgs'] disk: The disk configuration.
         :param pulumi.Input['ContainerFeaturesArgs'] features: The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
+        :param pulumi.Input[str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable).
         :param pulumi.Input['ContainerInitializationArgs'] initialization: The initialization configuration.
         :param pulumi.Input['ContainerMemoryArgs'] memory: The memory configuration.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerMountPointArgs']]] mount_points: A mount point
@@ -62,6 +65,7 @@ class ContainerArgs:
                difference on the resource. You may use the `ignore_changes` lifecycle
                meta-argument to ignore changes to this attribute.
         :param pulumi.Input[bool] template: Whether to create a template (defaults to `false`).
+        :param pulumi.Input[int] timeout_create: Timeout for creating a container in seconds (defaults to 1800).
         :param pulumi.Input[bool] unprivileged: Whether the container runs as unprivileged on
                the host (defaults to `false`).
         :param pulumi.Input[int] vm_id: The container identifier
@@ -79,6 +83,8 @@ class ContainerArgs:
             pulumi.set(__self__, "disk", disk)
         if features is not None:
             pulumi.set(__self__, "features", features)
+        if hook_script_file_id is not None:
+            pulumi.set(__self__, "hook_script_file_id", hook_script_file_id)
         if initialization is not None:
             pulumi.set(__self__, "initialization", initialization)
         if memory is not None:
@@ -101,6 +107,8 @@ class ContainerArgs:
             pulumi.set(__self__, "tags", tags)
         if template is not None:
             pulumi.set(__self__, "template", template)
+        if timeout_create is not None:
+            pulumi.set(__self__, "timeout_create", timeout_create)
         if unprivileged is not None:
             pulumi.set(__self__, "unprivileged", unprivileged)
         if vm_id is not None:
@@ -189,6 +197,18 @@ class ContainerArgs:
     @features.setter
     def features(self, value: Optional[pulumi.Input['ContainerFeaturesArgs']]):
         pulumi.set(self, "features", value)
+
+    @property
+    @pulumi.getter(name="hookScriptFileId")
+    def hook_script_file_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identifier for a file containing a hook script (needs to be executable).
+        """
+        return pulumi.get(self, "hook_script_file_id")
+
+    @hook_script_file_id.setter
+    def hook_script_file_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hook_script_file_id", value)
 
     @property
     @pulumi.getter
@@ -329,6 +349,18 @@ class ContainerArgs:
         pulumi.set(self, "template", value)
 
     @property
+    @pulumi.getter(name="timeoutCreate")
+    def timeout_create(self) -> Optional[pulumi.Input[int]]:
+        """
+        Timeout for creating a container in seconds (defaults to 1800).
+        """
+        return pulumi.get(self, "timeout_create")
+
+    @timeout_create.setter
+    def timeout_create(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout_create", value)
+
+    @property
     @pulumi.getter
     def unprivileged(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -363,6 +395,7 @@ class _ContainerState:
                  description: Optional[pulumi.Input[str]] = None,
                  disk: Optional[pulumi.Input['ContainerDiskArgs']] = None,
                  features: Optional[pulumi.Input['ContainerFeaturesArgs']] = None,
+                 hook_script_file_id: Optional[pulumi.Input[str]] = None,
                  initialization: Optional[pulumi.Input['ContainerInitializationArgs']] = None,
                  memory: Optional[pulumi.Input['ContainerMemoryArgs']] = None,
                  mount_points: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerMountPointArgs']]]] = None,
@@ -375,6 +408,7 @@ class _ContainerState:
                  startup: Optional[pulumi.Input['ContainerStartupArgs']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
+                 timeout_create: Optional[pulumi.Input[int]] = None,
                  unprivileged: Optional[pulumi.Input[bool]] = None,
                  vm_id: Optional[pulumi.Input[int]] = None):
         """
@@ -385,6 +419,7 @@ class _ContainerState:
         :param pulumi.Input[str] description: The description.
         :param pulumi.Input['ContainerDiskArgs'] disk: The disk configuration.
         :param pulumi.Input['ContainerFeaturesArgs'] features: The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
+        :param pulumi.Input[str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable).
         :param pulumi.Input['ContainerInitializationArgs'] initialization: The initialization configuration.
         :param pulumi.Input['ContainerMemoryArgs'] memory: The memory configuration.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerMountPointArgs']]] mount_points: A mount point
@@ -403,6 +438,7 @@ class _ContainerState:
                difference on the resource. You may use the `ignore_changes` lifecycle
                meta-argument to ignore changes to this attribute.
         :param pulumi.Input[bool] template: Whether to create a template (defaults to `false`).
+        :param pulumi.Input[int] timeout_create: Timeout for creating a container in seconds (defaults to 1800).
         :param pulumi.Input[bool] unprivileged: Whether the container runs as unprivileged on
                the host (defaults to `false`).
         :param pulumi.Input[int] vm_id: The container identifier
@@ -419,6 +455,8 @@ class _ContainerState:
             pulumi.set(__self__, "disk", disk)
         if features is not None:
             pulumi.set(__self__, "features", features)
+        if hook_script_file_id is not None:
+            pulumi.set(__self__, "hook_script_file_id", hook_script_file_id)
         if initialization is not None:
             pulumi.set(__self__, "initialization", initialization)
         if memory is not None:
@@ -443,6 +481,8 @@ class _ContainerState:
             pulumi.set(__self__, "tags", tags)
         if template is not None:
             pulumi.set(__self__, "template", template)
+        if timeout_create is not None:
+            pulumi.set(__self__, "timeout_create", timeout_create)
         if unprivileged is not None:
             pulumi.set(__self__, "unprivileged", unprivileged)
         if vm_id is not None:
@@ -519,6 +559,18 @@ class _ContainerState:
     @features.setter
     def features(self, value: Optional[pulumi.Input['ContainerFeaturesArgs']]):
         pulumi.set(self, "features", value)
+
+    @property
+    @pulumi.getter(name="hookScriptFileId")
+    def hook_script_file_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identifier for a file containing a hook script (needs to be executable).
+        """
+        return pulumi.get(self, "hook_script_file_id")
+
+    @hook_script_file_id.setter
+    def hook_script_file_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hook_script_file_id", value)
 
     @property
     @pulumi.getter
@@ -671,6 +723,18 @@ class _ContainerState:
         pulumi.set(self, "template", value)
 
     @property
+    @pulumi.getter(name="timeoutCreate")
+    def timeout_create(self) -> Optional[pulumi.Input[int]]:
+        """
+        Timeout for creating a container in seconds (defaults to 1800).
+        """
+        return pulumi.get(self, "timeout_create")
+
+    @timeout_create.setter
+    def timeout_create(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout_create", value)
+
+    @property
     @pulumi.getter
     def unprivileged(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -707,6 +771,7 @@ class Container(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  disk: Optional[pulumi.Input[pulumi.InputType['ContainerDiskArgs']]] = None,
                  features: Optional[pulumi.Input[pulumi.InputType['ContainerFeaturesArgs']]] = None,
+                 hook_script_file_id: Optional[pulumi.Input[str]] = None,
                  initialization: Optional[pulumi.Input[pulumi.InputType['ContainerInitializationArgs']]] = None,
                  memory: Optional[pulumi.Input[pulumi.InputType['ContainerMemoryArgs']]] = None,
                  mount_points: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerMountPointArgs']]]]] = None,
@@ -719,6 +784,7 @@ class Container(pulumi.CustomResource):
                  startup: Optional[pulumi.Input[pulumi.InputType['ContainerStartupArgs']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
+                 timeout_create: Optional[pulumi.Input[int]] = None,
                  unprivileged: Optional[pulumi.Input[bool]] = None,
                  vm_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -743,6 +809,7 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description.
         :param pulumi.Input[pulumi.InputType['ContainerDiskArgs']] disk: The disk configuration.
         :param pulumi.Input[pulumi.InputType['ContainerFeaturesArgs']] features: The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
+        :param pulumi.Input[str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable).
         :param pulumi.Input[pulumi.InputType['ContainerInitializationArgs']] initialization: The initialization configuration.
         :param pulumi.Input[pulumi.InputType['ContainerMemoryArgs']] memory: The memory configuration.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerMountPointArgs']]]] mount_points: A mount point
@@ -761,6 +828,7 @@ class Container(pulumi.CustomResource):
                difference on the resource. You may use the `ignore_changes` lifecycle
                meta-argument to ignore changes to this attribute.
         :param pulumi.Input[bool] template: Whether to create a template (defaults to `false`).
+        :param pulumi.Input[int] timeout_create: Timeout for creating a container in seconds (defaults to 1800).
         :param pulumi.Input[bool] unprivileged: Whether the container runs as unprivileged on
                the host (defaults to `false`).
         :param pulumi.Input[int] vm_id: The container identifier
@@ -805,6 +873,7 @@ class Container(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  disk: Optional[pulumi.Input[pulumi.InputType['ContainerDiskArgs']]] = None,
                  features: Optional[pulumi.Input[pulumi.InputType['ContainerFeaturesArgs']]] = None,
+                 hook_script_file_id: Optional[pulumi.Input[str]] = None,
                  initialization: Optional[pulumi.Input[pulumi.InputType['ContainerInitializationArgs']]] = None,
                  memory: Optional[pulumi.Input[pulumi.InputType['ContainerMemoryArgs']]] = None,
                  mount_points: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerMountPointArgs']]]]] = None,
@@ -817,6 +886,7 @@ class Container(pulumi.CustomResource):
                  startup: Optional[pulumi.Input[pulumi.InputType['ContainerStartupArgs']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
+                 timeout_create: Optional[pulumi.Input[int]] = None,
                  unprivileged: Optional[pulumi.Input[bool]] = None,
                  vm_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -834,6 +904,7 @@ class Container(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["disk"] = disk
             __props__.__dict__["features"] = features
+            __props__.__dict__["hook_script_file_id"] = hook_script_file_id
             __props__.__dict__["initialization"] = initialization
             __props__.__dict__["memory"] = memory
             __props__.__dict__["mount_points"] = mount_points
@@ -848,6 +919,7 @@ class Container(pulumi.CustomResource):
             __props__.__dict__["startup"] = startup
             __props__.__dict__["tags"] = tags
             __props__.__dict__["template"] = template
+            __props__.__dict__["timeout_create"] = timeout_create
             __props__.__dict__["unprivileged"] = unprivileged
             __props__.__dict__["vm_id"] = vm_id
         super(Container, __self__).__init__(
@@ -866,6 +938,7 @@ class Container(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             disk: Optional[pulumi.Input[pulumi.InputType['ContainerDiskArgs']]] = None,
             features: Optional[pulumi.Input[pulumi.InputType['ContainerFeaturesArgs']]] = None,
+            hook_script_file_id: Optional[pulumi.Input[str]] = None,
             initialization: Optional[pulumi.Input[pulumi.InputType['ContainerInitializationArgs']]] = None,
             memory: Optional[pulumi.Input[pulumi.InputType['ContainerMemoryArgs']]] = None,
             mount_points: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerMountPointArgs']]]]] = None,
@@ -878,6 +951,7 @@ class Container(pulumi.CustomResource):
             startup: Optional[pulumi.Input[pulumi.InputType['ContainerStartupArgs']]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             template: Optional[pulumi.Input[bool]] = None,
+            timeout_create: Optional[pulumi.Input[int]] = None,
             unprivileged: Optional[pulumi.Input[bool]] = None,
             vm_id: Optional[pulumi.Input[int]] = None) -> 'Container':
         """
@@ -893,6 +967,7 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description.
         :param pulumi.Input[pulumi.InputType['ContainerDiskArgs']] disk: The disk configuration.
         :param pulumi.Input[pulumi.InputType['ContainerFeaturesArgs']] features: The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
+        :param pulumi.Input[str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable).
         :param pulumi.Input[pulumi.InputType['ContainerInitializationArgs']] initialization: The initialization configuration.
         :param pulumi.Input[pulumi.InputType['ContainerMemoryArgs']] memory: The memory configuration.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerMountPointArgs']]]] mount_points: A mount point
@@ -911,6 +986,7 @@ class Container(pulumi.CustomResource):
                difference on the resource. You may use the `ignore_changes` lifecycle
                meta-argument to ignore changes to this attribute.
         :param pulumi.Input[bool] template: Whether to create a template (defaults to `false`).
+        :param pulumi.Input[int] timeout_create: Timeout for creating a container in seconds (defaults to 1800).
         :param pulumi.Input[bool] unprivileged: Whether the container runs as unprivileged on
                the host (defaults to `false`).
         :param pulumi.Input[int] vm_id: The container identifier
@@ -925,6 +1001,7 @@ class Container(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["disk"] = disk
         __props__.__dict__["features"] = features
+        __props__.__dict__["hook_script_file_id"] = hook_script_file_id
         __props__.__dict__["initialization"] = initialization
         __props__.__dict__["memory"] = memory
         __props__.__dict__["mount_points"] = mount_points
@@ -937,6 +1014,7 @@ class Container(pulumi.CustomResource):
         __props__.__dict__["startup"] = startup
         __props__.__dict__["tags"] = tags
         __props__.__dict__["template"] = template
+        __props__.__dict__["timeout_create"] = timeout_create
         __props__.__dict__["unprivileged"] = unprivileged
         __props__.__dict__["vm_id"] = vm_id
         return Container(resource_name, opts=opts, __props__=__props__)
@@ -988,6 +1066,14 @@ class Container(pulumi.CustomResource):
         The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
         """
         return pulumi.get(self, "features")
+
+    @property
+    @pulumi.getter(name="hookScriptFileId")
+    def hook_script_file_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The identifier for a file containing a hook script (needs to be executable).
+        """
+        return pulumi.get(self, "hook_script_file_id")
 
     @property
     @pulumi.getter
@@ -1090,6 +1176,14 @@ class Container(pulumi.CustomResource):
         Whether to create a template (defaults to `false`).
         """
         return pulumi.get(self, "template")
+
+    @property
+    @pulumi.getter(name="timeoutCreate")
+    def timeout_create(self) -> pulumi.Output[Optional[int]]:
+        """
+        Timeout for creating a container in seconds (defaults to 1800).
+        """
+        return pulumi.get(self, "timeout_create")
 
     @property
     @pulumi.getter

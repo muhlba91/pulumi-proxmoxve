@@ -425,16 +425,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The identifier for a pool to assign the virtual machine
-     * to.
+     * The identifier for a pool to assign the virtual machine to.
      * 
      */
     @Import(name="poolId")
     private @Nullable Output<String> poolId;
 
     /**
-     * @return The identifier for a pool to assign the virtual machine
-     * to.
+     * @return The identifier for a pool to assign the virtual machine to.
      * 
      */
     public Optional<Output<String>> poolId() {
@@ -442,16 +440,29 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Reboot the VM after initial creation. (defaults
-     * to `false`)
+     * Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+     * 
+     */
+    @Import(name="protection")
+    private @Nullable Output<Boolean> protection;
+
+    /**
+     * @return Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+     * 
+     */
+    public Optional<Output<Boolean>> protection() {
+        return Optional.ofNullable(this.protection);
+    }
+
+    /**
+     * Reboot the VM after initial creation. (defaults to `false`)
      * 
      */
     @Import(name="reboot")
     private @Nullable Output<Boolean> reboot;
 
     /**
-     * @return Reboot the VM after initial creation. (defaults
-     * to `false`)
+     * @return Reboot the VM after initial creation. (defaults to `false`)
      * 
      */
     public Optional<Output<Boolean>> reboot() {
@@ -832,6 +843,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         this.onBoot = $.onBoot;
         this.operatingSystem = $.operatingSystem;
         this.poolId = $.poolId;
+        this.protection = $.protection;
         this.reboot = $.reboot;
         this.scsiHardware = $.scsiHardware;
         this.serialDevices = $.serialDevices;
@@ -1464,8 +1476,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param poolId The identifier for a pool to assign the virtual machine
-         * to.
+         * @param poolId The identifier for a pool to assign the virtual machine to.
          * 
          * @return builder
          * 
@@ -1476,8 +1487,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param poolId The identifier for a pool to assign the virtual machine
-         * to.
+         * @param poolId The identifier for a pool to assign the virtual machine to.
          * 
          * @return builder
          * 
@@ -1487,8 +1497,28 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param reboot Reboot the VM after initial creation. (defaults
-         * to `false`)
+         * @param protection Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder protection(@Nullable Output<Boolean> protection) {
+            $.protection = protection;
+            return this;
+        }
+
+        /**
+         * @param protection Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder protection(Boolean protection) {
+            return protection(Output.of(protection));
+        }
+
+        /**
+         * @param reboot Reboot the VM after initial creation. (defaults to `false`)
          * 
          * @return builder
          * 
@@ -1499,8 +1529,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param reboot Reboot the VM after initial creation. (defaults
-         * to `false`)
+         * @param reboot Reboot the VM after initial creation. (defaults to `false`)
          * 
          * @return builder
          * 

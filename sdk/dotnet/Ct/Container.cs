@@ -62,6 +62,12 @@ namespace Pulumi.ProxmoxVE.CT
         public Output<Outputs.ContainerFeatures?> Features { get; private set; } = null!;
 
         /// <summary>
+        /// The identifier for a file containing a hook script (needs to be executable).
+        /// </summary>
+        [Output("hookScriptFileId")]
+        public Output<string?> HookScriptFileId { get; private set; } = null!;
+
+        /// <summary>
         /// The initialization configuration.
         /// </summary>
         [Output("initialization")]
@@ -138,6 +144,12 @@ namespace Pulumi.ProxmoxVE.CT
         /// </summary>
         [Output("template")]
         public Output<bool?> Template { get; private set; } = null!;
+
+        /// <summary>
+        /// Timeout for creating a container in seconds (defaults to 1800).
+        /// </summary>
+        [Output("timeoutCreate")]
+        public Output<int?> TimeoutCreate { get; private set; } = null!;
 
         /// <summary>
         /// Whether the container runs as unprivileged on
@@ -236,6 +248,12 @@ namespace Pulumi.ProxmoxVE.CT
         public Input<Inputs.ContainerFeaturesArgs>? Features { get; set; }
 
         /// <summary>
+        /// The identifier for a file containing a hook script (needs to be executable).
+        /// </summary>
+        [Input("hookScriptFileId")]
+        public Input<string>? HookScriptFileId { get; set; }
+
+        /// <summary>
         /// The initialization configuration.
         /// </summary>
         [Input("initialization")]
@@ -332,6 +350,12 @@ namespace Pulumi.ProxmoxVE.CT
         public Input<bool>? Template { get; set; }
 
         /// <summary>
+        /// Timeout for creating a container in seconds (defaults to 1800).
+        /// </summary>
+        [Input("timeoutCreate")]
+        public Input<int>? TimeoutCreate { get; set; }
+
+        /// <summary>
         /// Whether the container runs as unprivileged on
         /// the host (defaults to `false`).
         /// </summary>
@@ -387,6 +411,12 @@ namespace Pulumi.ProxmoxVE.CT
         /// </summary>
         [Input("features")]
         public Input<Inputs.ContainerFeaturesGetArgs>? Features { get; set; }
+
+        /// <summary>
+        /// The identifier for a file containing a hook script (needs to be executable).
+        /// </summary>
+        [Input("hookScriptFileId")]
+        public Input<string>? HookScriptFileId { get; set; }
 
         /// <summary>
         /// The initialization configuration.
@@ -483,6 +513,12 @@ namespace Pulumi.ProxmoxVE.CT
         /// </summary>
         [Input("template")]
         public Input<bool>? Template { get; set; }
+
+        /// <summary>
+        /// Timeout for creating a container in seconds (defaults to 1800).
+        /// </summary>
+        [Input("timeoutCreate")]
+        public Input<int>? TimeoutCreate { get; set; }
 
         /// <summary>
         /// Whether the container runs as unprivileged on

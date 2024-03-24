@@ -205,15 +205,19 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<Outputs.VirtualMachineOperatingSystem?> OperatingSystem { get; private set; } = null!;
 
         /// <summary>
-        /// The identifier for a pool to assign the virtual machine
-        /// to.
+        /// The identifier for a pool to assign the virtual machine to.
         /// </summary>
         [Output("poolId")]
         public Output<string?> PoolId { get; private set; } = null!;
 
         /// <summary>
-        /// Reboot the VM after initial creation. (defaults
-        /// to `false`)
+        /// Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+        /// </summary>
+        [Output("protection")]
+        public Output<bool?> Protection { get; private set; } = null!;
+
+        /// <summary>
+        /// Reboot the VM after initial creation. (defaults to `false`)
         /// </summary>
         [Output("reboot")]
         public Output<bool?> Reboot { get; private set; } = null!;
@@ -593,15 +597,19 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<Inputs.VirtualMachineOperatingSystemArgs>? OperatingSystem { get; set; }
 
         /// <summary>
-        /// The identifier for a pool to assign the virtual machine
-        /// to.
+        /// The identifier for a pool to assign the virtual machine to.
         /// </summary>
         [Input("poolId")]
         public Input<string>? PoolId { get; set; }
 
         /// <summary>
-        /// Reboot the VM after initial creation. (defaults
-        /// to `false`)
+        /// Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+        /// </summary>
+        [Input("protection")]
+        public Input<bool>? Protection { get; set; }
+
+        /// <summary>
+        /// Reboot the VM after initial creation. (defaults to `false`)
         /// </summary>
         [Input("reboot")]
         public Input<bool>? Reboot { get; set; }
@@ -999,15 +1007,19 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<Inputs.VirtualMachineOperatingSystemGetArgs>? OperatingSystem { get; set; }
 
         /// <summary>
-        /// The identifier for a pool to assign the virtual machine
-        /// to.
+        /// The identifier for a pool to assign the virtual machine to.
         /// </summary>
         [Input("poolId")]
         public Input<string>? PoolId { get; set; }
 
         /// <summary>
-        /// Reboot the VM after initial creation. (defaults
-        /// to `false`)
+        /// Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+        /// </summary>
+        [Input("protection")]
+        public Input<bool>? Protection { get; set; }
+
+        /// <summary>
+        /// Reboot the VM after initial creation. (defaults to `false`)
         /// </summary>
         [Input("reboot")]
         public Input<bool>? Reboot { get; set; }

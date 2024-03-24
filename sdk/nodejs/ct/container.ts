@@ -72,6 +72,10 @@ export class Container extends pulumi.CustomResource {
      */
     public readonly features!: pulumi.Output<outputs.CT.ContainerFeatures | undefined>;
     /**
+     * The identifier for a file containing a hook script (needs to be executable).
+     */
+    public readonly hookScriptFileId!: pulumi.Output<string | undefined>;
+    /**
      * The initialization configuration.
      */
     public readonly initialization!: pulumi.Output<outputs.CT.ContainerInitialization | undefined>;
@@ -126,6 +130,10 @@ export class Container extends pulumi.CustomResource {
      */
     public readonly template!: pulumi.Output<boolean | undefined>;
     /**
+     * Timeout for creating a container in seconds (defaults to 1800).
+     */
+    public readonly timeoutCreate!: pulumi.Output<number | undefined>;
+    /**
      * Whether the container runs as unprivileged on
      * the host (defaults to `false`).
      */
@@ -154,6 +162,7 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["disk"] = state ? state.disk : undefined;
             resourceInputs["features"] = state ? state.features : undefined;
+            resourceInputs["hookScriptFileId"] = state ? state.hookScriptFileId : undefined;
             resourceInputs["initialization"] = state ? state.initialization : undefined;
             resourceInputs["memory"] = state ? state.memory : undefined;
             resourceInputs["mountPoints"] = state ? state.mountPoints : undefined;
@@ -166,6 +175,7 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["startup"] = state ? state.startup : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["template"] = state ? state.template : undefined;
+            resourceInputs["timeoutCreate"] = state ? state.timeoutCreate : undefined;
             resourceInputs["unprivileged"] = state ? state.unprivileged : undefined;
             resourceInputs["vmId"] = state ? state.vmId : undefined;
         } else {
@@ -179,6 +189,7 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["disk"] = args ? args.disk : undefined;
             resourceInputs["features"] = args ? args.features : undefined;
+            resourceInputs["hookScriptFileId"] = args ? args.hookScriptFileId : undefined;
             resourceInputs["initialization"] = args ? args.initialization : undefined;
             resourceInputs["memory"] = args ? args.memory : undefined;
             resourceInputs["mountPoints"] = args ? args.mountPoints : undefined;
@@ -191,6 +202,7 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["startup"] = args ? args.startup : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["template"] = args ? args.template : undefined;
+            resourceInputs["timeoutCreate"] = args ? args.timeoutCreate : undefined;
             resourceInputs["unprivileged"] = args ? args.unprivileged : undefined;
             resourceInputs["vmId"] = args ? args.vmId : undefined;
         }
@@ -227,6 +239,10 @@ export interface ContainerState {
      * The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
      */
     features?: pulumi.Input<inputs.CT.ContainerFeatures>;
+    /**
+     * The identifier for a file containing a hook script (needs to be executable).
+     */
+    hookScriptFileId?: pulumi.Input<string>;
     /**
      * The initialization configuration.
      */
@@ -282,6 +298,10 @@ export interface ContainerState {
      */
     template?: pulumi.Input<boolean>;
     /**
+     * Timeout for creating a container in seconds (defaults to 1800).
+     */
+    timeoutCreate?: pulumi.Input<number>;
+    /**
      * Whether the container runs as unprivileged on
      * the host (defaults to `false`).
      */
@@ -320,6 +340,10 @@ export interface ContainerArgs {
      * The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
      */
     features?: pulumi.Input<inputs.CT.ContainerFeatures>;
+    /**
+     * The identifier for a file containing a hook script (needs to be executable).
+     */
+    hookScriptFileId?: pulumi.Input<string>;
     /**
      * The initialization configuration.
      */
@@ -374,6 +398,10 @@ export interface ContainerArgs {
      * Whether to create a template (defaults to `false`).
      */
     template?: pulumi.Input<boolean>;
+    /**
+     * Timeout for creating a container in seconds (defaults to 1800).
+     */
+    timeoutCreate?: pulumi.Input<number>;
     /**
      * Whether the container runs as unprivileged on
      * the host (defaults to `false`).

@@ -120,6 +120,21 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The identifier for a file containing a hook script (needs to be executable).
+     * 
+     */
+    @Import(name="hookScriptFileId")
+    private @Nullable Output<String> hookScriptFileId;
+
+    /**
+     * @return The identifier for a file containing a hook script (needs to be executable).
+     * 
+     */
+    public Optional<Output<String>> hookScriptFileId() {
+        return Optional.ofNullable(this.hookScriptFileId);
+    }
+
+    /**
      * The initialization configuration.
      * 
      */
@@ -312,6 +327,21 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Timeout for creating a container in seconds (defaults to 1800).
+     * 
+     */
+    @Import(name="timeoutCreate")
+    private @Nullable Output<Integer> timeoutCreate;
+
+    /**
+     * @return Timeout for creating a container in seconds (defaults to 1800).
+     * 
+     */
+    public Optional<Output<Integer>> timeoutCreate() {
+        return Optional.ofNullable(this.timeoutCreate);
+    }
+
+    /**
      * Whether the container runs as unprivileged on
      * the host (defaults to `false`).
      * 
@@ -352,6 +382,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.disk = $.disk;
         this.features = $.features;
+        this.hookScriptFileId = $.hookScriptFileId;
         this.initialization = $.initialization;
         this.memory = $.memory;
         this.mountPoints = $.mountPoints;
@@ -364,6 +395,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         this.startup = $.startup;
         this.tags = $.tags;
         this.template = $.template;
+        this.timeoutCreate = $.timeoutCreate;
         this.unprivileged = $.unprivileged;
         this.vmId = $.vmId;
     }
@@ -510,6 +542,27 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder features(ContainerFeaturesArgs features) {
             return features(Output.of(features));
+        }
+
+        /**
+         * @param hookScriptFileId The identifier for a file containing a hook script (needs to be executable).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hookScriptFileId(@Nullable Output<String> hookScriptFileId) {
+            $.hookScriptFileId = hookScriptFileId;
+            return this;
+        }
+
+        /**
+         * @param hookScriptFileId The identifier for a file containing a hook script (needs to be executable).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hookScriptFileId(String hookScriptFileId) {
+            return hookScriptFileId(Output.of(hookScriptFileId));
         }
 
         /**
@@ -809,6 +862,27 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder template(Boolean template) {
             return template(Output.of(template));
+        }
+
+        /**
+         * @param timeoutCreate Timeout for creating a container in seconds (defaults to 1800).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeoutCreate(@Nullable Output<Integer> timeoutCreate) {
+            $.timeoutCreate = timeoutCreate;
+            return this;
+        }
+
+        /**
+         * @param timeoutCreate Timeout for creating a container in seconds (defaults to 1800).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeoutCreate(Integer timeoutCreate) {
+            return timeoutCreate(Output.of(timeoutCreate));
         }
 
         /**

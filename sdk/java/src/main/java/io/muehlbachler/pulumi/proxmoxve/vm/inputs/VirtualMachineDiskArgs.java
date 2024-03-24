@@ -20,6 +20,36 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     public static final VirtualMachineDiskArgs Empty = new VirtualMachineDiskArgs();
 
     /**
+     * The disk AIO mode (defaults to `io_uring`).
+     * 
+     */
+    @Import(name="aio")
+    private @Nullable Output<String> aio;
+
+    /**
+     * @return The disk AIO mode (defaults to `io_uring`).
+     * 
+     */
+    public Optional<Output<String>> aio() {
+        return Optional.ofNullable(this.aio);
+    }
+
+    /**
+     * Whether the drive should be included when making backups (defaults to `true`).
+     * 
+     */
+    @Import(name="backup")
+    private @Nullable Output<Boolean> backup;
+
+    /**
+     * @return Whether the drive should be included when making backups (defaults to `true`).
+     * 
+     */
+    public Optional<Output<Boolean>> backup() {
+        return Optional.ofNullable(this.backup);
+    }
+
+    /**
      * The cache type (defaults to `none`).
      * 
      */
@@ -164,6 +194,21 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Whether the drive should be considered for replication jobs (defaults to `true`).
+     * 
+     */
+    @Import(name="replicate")
+    private @Nullable Output<Boolean> replicate;
+
+    /**
+     * @return Whether the drive should be considered for replication jobs (defaults to `true`).
+     * 
+     */
+    public Optional<Output<Boolean>> replicate() {
+        return Optional.ofNullable(this.replicate);
+    }
+
+    /**
      * The disk size in gigabytes (defaults to `8`).
      * 
      */
@@ -215,6 +260,8 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     private VirtualMachineDiskArgs() {}
 
     private VirtualMachineDiskArgs(VirtualMachineDiskArgs $) {
+        this.aio = $.aio;
+        this.backup = $.backup;
         this.cache = $.cache;
         this.datastoreId = $.datastoreId;
         this.discard = $.discard;
@@ -223,6 +270,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         this.interface_ = $.interface_;
         this.iothread = $.iothread;
         this.pathInDatastore = $.pathInDatastore;
+        this.replicate = $.replicate;
         this.size = $.size;
         this.speed = $.speed;
         this.ssd = $.ssd;
@@ -244,6 +292,48 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
 
         public Builder(VirtualMachineDiskArgs defaults) {
             $ = new VirtualMachineDiskArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param aio The disk AIO mode (defaults to `io_uring`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aio(@Nullable Output<String> aio) {
+            $.aio = aio;
+            return this;
+        }
+
+        /**
+         * @param aio The disk AIO mode (defaults to `io_uring`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aio(String aio) {
+            return aio(Output.of(aio));
+        }
+
+        /**
+         * @param backup Whether the drive should be included when making backups (defaults to `true`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backup(@Nullable Output<Boolean> backup) {
+            $.backup = backup;
+            return this;
+        }
+
+        /**
+         * @param backup Whether the drive should be included when making backups (defaults to `true`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backup(Boolean backup) {
+            return backup(Output.of(backup));
         }
 
         /**
@@ -436,6 +526,27 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
          */
         public Builder pathInDatastore(String pathInDatastore) {
             return pathInDatastore(Output.of(pathInDatastore));
+        }
+
+        /**
+         * @param replicate Whether the drive should be considered for replication jobs (defaults to `true`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicate(@Nullable Output<Boolean> replicate) {
+            $.replicate = replicate;
+            return this;
+        }
+
+        /**
+         * @param replicate Whether the drive should be considered for replication jobs (defaults to `true`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicate(Boolean replicate) {
+            return replicate(Output.of(replicate));
         }
 
         /**

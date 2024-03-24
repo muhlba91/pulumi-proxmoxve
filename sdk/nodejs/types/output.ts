@@ -857,6 +857,14 @@ export namespace VM {
 
     export interface VirtualMachineDisk {
         /**
+         * The disk AIO mode (defaults to `ioUring`).
+         */
+        aio?: string;
+        /**
+         * Whether the drive should be included when making backups (defaults to `true`).
+         */
+        backup?: boolean;
+        /**
          * The cache type (defaults to `none`).
          */
         cache?: string;
@@ -901,6 +909,10 @@ export namespace VM {
          */
         pathInDatastore: string;
         /**
+         * Whether the drive should be considered for replication jobs (defaults to `true`).
+         */
+        replicate?: boolean;
+        /**
          * The disk size in gigabytes (defaults to `8`).
          */
         size?: number;
@@ -917,6 +929,22 @@ export namespace VM {
     }
 
     export interface VirtualMachineDiskSpeed {
+        /**
+         * The maximum read I/O in operations per second.
+         */
+        iopsRead?: number;
+        /**
+         * The maximum unthrottled read I/O pool in operations per second.
+         */
+        iopsReadBurstable?: number;
+        /**
+         * The maximum write I/O in operations per second.
+         */
+        iopsWrite?: number;
+        /**
+         * The maximum unthrottled write I/O pool in operations per second.
+         */
+        iopsWriteBurstable?: number;
         /**
          * The maximum read speed in megabytes per second.
          */
@@ -1150,18 +1178,20 @@ export namespace VM {
 
     export interface VirtualMachineNetworkDevice {
         /**
-         * The name of the network bridge (defaults
-         * to `vmbr0`).
+         * The name of the network bridge (defaults to `vmbr0`).
          */
         bridge?: string;
+        /**
+         * Whether to disconnect the network device from the network (defaults to `false`).
+         */
+        disconnected?: boolean;
         /**
          * Whether to enable the VGA device (defaults
          * to `true`).
          */
         enabled?: boolean;
         /**
-         * Whether this interface's firewall rules should be
-         * used (defaults to `false`).
+         * Whether this interface's firewall rules should be used (defaults to `false`).
          */
         firewall?: boolean;
         /**
@@ -1173,8 +1203,7 @@ export namespace VM {
          */
         model?: string;
         /**
-         * Force MTU, for VirtIO only. Set to 1 to use the bridge
-         * MTU. Cannot be larger than the bridge MTU.
+         * Force MTU, for VirtIO only. Set to 1 to use the bridge MTU. Cannot be larger than the bridge MTU.
          */
         mtu?: number;
         /**

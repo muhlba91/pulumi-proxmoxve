@@ -12,6 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VirtualMachineDiskSpeed {
     /**
+     * @return The maximum read I/O in operations per second.
+     * 
+     */
+    private @Nullable Integer iopsRead;
+    /**
+     * @return The maximum unthrottled read I/O pool in operations per second.
+     * 
+     */
+    private @Nullable Integer iopsReadBurstable;
+    /**
+     * @return The maximum write I/O in operations per second.
+     * 
+     */
+    private @Nullable Integer iopsWrite;
+    /**
+     * @return The maximum unthrottled write I/O pool in operations per second.
+     * 
+     */
+    private @Nullable Integer iopsWriteBurstable;
+    /**
      * @return The maximum read speed in megabytes per second.
      * 
      */
@@ -35,6 +55,34 @@ public final class VirtualMachineDiskSpeed {
     private @Nullable Integer writeBurstable;
 
     private VirtualMachineDiskSpeed() {}
+    /**
+     * @return The maximum read I/O in operations per second.
+     * 
+     */
+    public Optional<Integer> iopsRead() {
+        return Optional.ofNullable(this.iopsRead);
+    }
+    /**
+     * @return The maximum unthrottled read I/O pool in operations per second.
+     * 
+     */
+    public Optional<Integer> iopsReadBurstable() {
+        return Optional.ofNullable(this.iopsReadBurstable);
+    }
+    /**
+     * @return The maximum write I/O in operations per second.
+     * 
+     */
+    public Optional<Integer> iopsWrite() {
+        return Optional.ofNullable(this.iopsWrite);
+    }
+    /**
+     * @return The maximum unthrottled write I/O pool in operations per second.
+     * 
+     */
+    public Optional<Integer> iopsWriteBurstable() {
+        return Optional.ofNullable(this.iopsWriteBurstable);
+    }
     /**
      * @return The maximum read speed in megabytes per second.
      * 
@@ -75,6 +123,10 @@ public final class VirtualMachineDiskSpeed {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Integer iopsRead;
+        private @Nullable Integer iopsReadBurstable;
+        private @Nullable Integer iopsWrite;
+        private @Nullable Integer iopsWriteBurstable;
         private @Nullable Integer read;
         private @Nullable Integer readBurstable;
         private @Nullable Integer write;
@@ -82,12 +134,40 @@ public final class VirtualMachineDiskSpeed {
         public Builder() {}
         public Builder(VirtualMachineDiskSpeed defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.iopsRead = defaults.iopsRead;
+    	      this.iopsReadBurstable = defaults.iopsReadBurstable;
+    	      this.iopsWrite = defaults.iopsWrite;
+    	      this.iopsWriteBurstable = defaults.iopsWriteBurstable;
     	      this.read = defaults.read;
     	      this.readBurstable = defaults.readBurstable;
     	      this.write = defaults.write;
     	      this.writeBurstable = defaults.writeBurstable;
         }
 
+        @CustomType.Setter
+        public Builder iopsRead(@Nullable Integer iopsRead) {
+
+            this.iopsRead = iopsRead;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder iopsReadBurstable(@Nullable Integer iopsReadBurstable) {
+
+            this.iopsReadBurstable = iopsReadBurstable;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder iopsWrite(@Nullable Integer iopsWrite) {
+
+            this.iopsWrite = iopsWrite;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder iopsWriteBurstable(@Nullable Integer iopsWriteBurstable) {
+
+            this.iopsWriteBurstable = iopsWriteBurstable;
+            return this;
+        }
         @CustomType.Setter
         public Builder read(@Nullable Integer read) {
 
@@ -114,6 +194,10 @@ public final class VirtualMachineDiskSpeed {
         }
         public VirtualMachineDiskSpeed build() {
             final var _resultValue = new VirtualMachineDiskSpeed();
+            _resultValue.iopsRead = iopsRead;
+            _resultValue.iopsReadBurstable = iopsReadBurstable;
+            _resultValue.iopsWrite = iopsWrite;
+            _resultValue.iopsWriteBurstable = iopsWriteBurstable;
             _resultValue.read = read;
             _resultValue.readBurstable = readBurstable;
             _resultValue.write = write;

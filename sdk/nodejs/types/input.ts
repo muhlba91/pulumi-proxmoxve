@@ -823,6 +823,14 @@ export namespace VM {
 
     export interface VirtualMachineDisk {
         /**
+         * The disk AIO mode (defaults to `ioUring`).
+         */
+        aio?: pulumi.Input<string>;
+        /**
+         * Whether the drive should be included when making backups (defaults to `true`).
+         */
+        backup?: pulumi.Input<boolean>;
+        /**
          * The cache type (defaults to `none`).
          */
         cache?: pulumi.Input<string>;
@@ -867,6 +875,10 @@ export namespace VM {
          */
         pathInDatastore?: pulumi.Input<string>;
         /**
+         * Whether the drive should be considered for replication jobs (defaults to `true`).
+         */
+        replicate?: pulumi.Input<boolean>;
+        /**
          * The disk size in gigabytes (defaults to `8`).
          */
         size?: pulumi.Input<number>;
@@ -883,6 +895,22 @@ export namespace VM {
     }
 
     export interface VirtualMachineDiskSpeed {
+        /**
+         * The maximum read I/O in operations per second.
+         */
+        iopsRead?: pulumi.Input<number>;
+        /**
+         * The maximum unthrottled read I/O pool in operations per second.
+         */
+        iopsReadBurstable?: pulumi.Input<number>;
+        /**
+         * The maximum write I/O in operations per second.
+         */
+        iopsWrite?: pulumi.Input<number>;
+        /**
+         * The maximum unthrottled write I/O pool in operations per second.
+         */
+        iopsWriteBurstable?: pulumi.Input<number>;
         /**
          * The maximum read speed in megabytes per second.
          */
@@ -1116,18 +1144,20 @@ export namespace VM {
 
     export interface VirtualMachineNetworkDevice {
         /**
-         * The name of the network bridge (defaults
-         * to `vmbr0`).
+         * The name of the network bridge (defaults to `vmbr0`).
          */
         bridge?: pulumi.Input<string>;
+        /**
+         * Whether to disconnect the network device from the network (defaults to `false`).
+         */
+        disconnected?: pulumi.Input<boolean>;
         /**
          * Whether to enable the VGA device (defaults
          * to `true`).
          */
         enabled?: pulumi.Input<boolean>;
         /**
-         * Whether this interface's firewall rules should be
-         * used (defaults to `false`).
+         * Whether this interface's firewall rules should be used (defaults to `false`).
          */
         firewall?: pulumi.Input<boolean>;
         /**
@@ -1139,8 +1169,7 @@ export namespace VM {
          */
         model?: pulumi.Input<string>;
         /**
-         * Force MTU, for VirtIO only. Set to 1 to use the bridge
-         * MTU. Cannot be larger than the bridge MTU.
+         * Force MTU, for VirtIO only. Set to 1 to use the bridge MTU. Cannot be larger than the bridge MTU.
          */
         mtu?: pulumi.Input<number>;
         /**

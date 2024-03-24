@@ -42,7 +42,7 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * The one-time password for the Proxmox VE API.
      *
-     * @deprecated The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.
+     * @deprecated The `otp` attribute is deprecated and will be removed in a future release. Please use the `apiToken` attribute instead.
      */
     public readonly otp!: pulumi.Output<string | undefined>;
     /**
@@ -109,7 +109,7 @@ export interface ProviderArgs {
     /**
      * The one-time password for the Proxmox VE API.
      *
-     * @deprecated The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.
+     * @deprecated The `otp` attribute is deprecated and will be removed in a future release. Please use the `apiToken` attribute instead.
      */
     otp?: pulumi.Input<string>;
     /**

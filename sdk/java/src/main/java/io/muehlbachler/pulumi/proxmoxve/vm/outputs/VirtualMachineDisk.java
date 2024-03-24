@@ -16,6 +16,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VirtualMachineDisk {
     /**
+     * @return The disk AIO mode (defaults to `io_uring`).
+     * 
+     */
+    private @Nullable String aio;
+    /**
+     * @return Whether the drive should be included when making backups (defaults to `true`).
+     * 
+     */
+    private @Nullable Boolean backup;
+    /**
      * @return The cache type (defaults to `none`).
      * 
      */
@@ -68,6 +78,11 @@ public final class VirtualMachineDisk {
      */
     private @Nullable String pathInDatastore;
     /**
+     * @return Whether the drive should be considered for replication jobs (defaults to `true`).
+     * 
+     */
+    private @Nullable Boolean replicate;
+    /**
      * @return The disk size in gigabytes (defaults to `8`).
      * 
      */
@@ -86,6 +101,20 @@ public final class VirtualMachineDisk {
     private @Nullable Boolean ssd;
 
     private VirtualMachineDisk() {}
+    /**
+     * @return The disk AIO mode (defaults to `io_uring`).
+     * 
+     */
+    public Optional<String> aio() {
+        return Optional.ofNullable(this.aio);
+    }
+    /**
+     * @return Whether the drive should be included when making backups (defaults to `true`).
+     * 
+     */
+    public Optional<Boolean> backup() {
+        return Optional.ofNullable(this.backup);
+    }
     /**
      * @return The cache type (defaults to `none`).
      * 
@@ -155,6 +184,13 @@ public final class VirtualMachineDisk {
         return Optional.ofNullable(this.pathInDatastore);
     }
     /**
+     * @return Whether the drive should be considered for replication jobs (defaults to `true`).
+     * 
+     */
+    public Optional<Boolean> replicate() {
+        return Optional.ofNullable(this.replicate);
+    }
+    /**
      * @return The disk size in gigabytes (defaults to `8`).
      * 
      */
@@ -187,6 +223,8 @@ public final class VirtualMachineDisk {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String aio;
+        private @Nullable Boolean backup;
         private @Nullable String cache;
         private @Nullable String datastoreId;
         private @Nullable String discard;
@@ -195,12 +233,15 @@ public final class VirtualMachineDisk {
         private String interface_;
         private @Nullable Boolean iothread;
         private @Nullable String pathInDatastore;
+        private @Nullable Boolean replicate;
         private @Nullable Integer size;
         private @Nullable VirtualMachineDiskSpeed speed;
         private @Nullable Boolean ssd;
         public Builder() {}
         public Builder(VirtualMachineDisk defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.aio = defaults.aio;
+    	      this.backup = defaults.backup;
     	      this.cache = defaults.cache;
     	      this.datastoreId = defaults.datastoreId;
     	      this.discard = defaults.discard;
@@ -209,11 +250,24 @@ public final class VirtualMachineDisk {
     	      this.interface_ = defaults.interface_;
     	      this.iothread = defaults.iothread;
     	      this.pathInDatastore = defaults.pathInDatastore;
+    	      this.replicate = defaults.replicate;
     	      this.size = defaults.size;
     	      this.speed = defaults.speed;
     	      this.ssd = defaults.ssd;
         }
 
+        @CustomType.Setter
+        public Builder aio(@Nullable String aio) {
+
+            this.aio = aio;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder backup(@Nullable Boolean backup) {
+
+            this.backup = backup;
+            return this;
+        }
         @CustomType.Setter
         public Builder cache(@Nullable String cache) {
 
@@ -265,6 +319,12 @@ public final class VirtualMachineDisk {
             return this;
         }
         @CustomType.Setter
+        public Builder replicate(@Nullable Boolean replicate) {
+
+            this.replicate = replicate;
+            return this;
+        }
+        @CustomType.Setter
         public Builder size(@Nullable Integer size) {
 
             this.size = size;
@@ -284,6 +344,8 @@ public final class VirtualMachineDisk {
         }
         public VirtualMachineDisk build() {
             final var _resultValue = new VirtualMachineDisk();
+            _resultValue.aio = aio;
+            _resultValue.backup = backup;
             _resultValue.cache = cache;
             _resultValue.datastoreId = datastoreId;
             _resultValue.discard = discard;
@@ -292,6 +354,7 @@ public final class VirtualMachineDisk {
             _resultValue.interface_ = interface_;
             _resultValue.iothread = iothread;
             _resultValue.pathInDatastore = pathInDatastore;
+            _resultValue.replicate = replicate;
             _resultValue.size = size;
             _resultValue.speed = speed;
             _resultValue.ssd = ssd;

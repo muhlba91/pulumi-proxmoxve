@@ -464,32 +464,42 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.operatingSystem);
     }
     /**
-     * The identifier for a pool to assign the virtual machine
-     * to.
+     * The identifier for a pool to assign the virtual machine to.
      * 
      */
     @Export(name="poolId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> poolId;
 
     /**
-     * @return The identifier for a pool to assign the virtual machine
-     * to.
+     * @return The identifier for a pool to assign the virtual machine to.
      * 
      */
     public Output<Optional<String>> poolId() {
         return Codegen.optional(this.poolId);
     }
     /**
-     * Reboot the VM after initial creation. (defaults
-     * to `false`)
+     * Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+     * 
+     */
+    @Export(name="protection", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> protection;
+
+    /**
+     * @return Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+     * 
+     */
+    public Output<Optional<Boolean>> protection() {
+        return Codegen.optional(this.protection);
+    }
+    /**
+     * Reboot the VM after initial creation. (defaults to `false`)
      * 
      */
     @Export(name="reboot", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> reboot;
 
     /**
-     * @return Reboot the VM after initial creation. (defaults
-     * to `false`)
+     * @return Reboot the VM after initial creation. (defaults to `false`)
      * 
      */
     public Output<Optional<Boolean>> reboot() {

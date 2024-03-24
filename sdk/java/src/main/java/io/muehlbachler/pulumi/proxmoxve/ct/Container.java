@@ -129,6 +129,20 @@ public class Container extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.features);
     }
     /**
+     * The identifier for a file containing a hook script (needs to be executable).
+     * 
+     */
+    @Export(name="hookScriptFileId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> hookScriptFileId;
+
+    /**
+     * @return The identifier for a file containing a hook script (needs to be executable).
+     * 
+     */
+    public Output<Optional<String>> hookScriptFileId() {
+        return Codegen.optional(this.hookScriptFileId);
+    }
+    /**
      * The initialization configuration.
      * 
      */
@@ -307,6 +321,20 @@ public class Container extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> template() {
         return Codegen.optional(this.template);
+    }
+    /**
+     * Timeout for creating a container in seconds (defaults to 1800).
+     * 
+     */
+    @Export(name="timeoutCreate", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> timeoutCreate;
+
+    /**
+     * @return Timeout for creating a container in seconds (defaults to 1800).
+     * 
+     */
+    public Output<Optional<Integer>> timeoutCreate() {
+        return Codegen.optional(this.timeoutCreate);
     }
     /**
      * Whether the container runs as unprivileged on

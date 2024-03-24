@@ -93,11 +93,11 @@ type VirtualMachine struct {
 	OnBoot pulumi.BoolPtrOutput `pulumi:"onBoot"`
 	// The Operating System configuration.
 	OperatingSystem VirtualMachineOperatingSystemPtrOutput `pulumi:"operatingSystem"`
-	// The identifier for a pool to assign the virtual machine
-	// to.
+	// The identifier for a pool to assign the virtual machine to.
 	PoolId pulumi.StringPtrOutput `pulumi:"poolId"`
-	// Reboot the VM after initial creation. (defaults
-	// to `false`)
+	// Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+	Protection pulumi.BoolPtrOutput `pulumi:"protection"`
+	// Reboot the VM after initial creation. (defaults to `false`)
 	Reboot pulumi.BoolPtrOutput `pulumi:"reboot"`
 	// The SCSI hardware type (defaults to
 	// `virtio-scsi-pci`).
@@ -256,11 +256,11 @@ type virtualMachineState struct {
 	OnBoot *bool `pulumi:"onBoot"`
 	// The Operating System configuration.
 	OperatingSystem *VirtualMachineOperatingSystem `pulumi:"operatingSystem"`
-	// The identifier for a pool to assign the virtual machine
-	// to.
+	// The identifier for a pool to assign the virtual machine to.
 	PoolId *string `pulumi:"poolId"`
-	// Reboot the VM after initial creation. (defaults
-	// to `false`)
+	// Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+	Protection *bool `pulumi:"protection"`
+	// Reboot the VM after initial creation. (defaults to `false`)
 	Reboot *bool `pulumi:"reboot"`
 	// The SCSI hardware type (defaults to
 	// `virtio-scsi-pci`).
@@ -387,11 +387,11 @@ type VirtualMachineState struct {
 	OnBoot pulumi.BoolPtrInput
 	// The Operating System configuration.
 	OperatingSystem VirtualMachineOperatingSystemPtrInput
-	// The identifier for a pool to assign the virtual machine
-	// to.
+	// The identifier for a pool to assign the virtual machine to.
 	PoolId pulumi.StringPtrInput
-	// Reboot the VM after initial creation. (defaults
-	// to `false`)
+	// Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+	Protection pulumi.BoolPtrInput
+	// Reboot the VM after initial creation. (defaults to `false`)
 	Reboot pulumi.BoolPtrInput
 	// The SCSI hardware type (defaults to
 	// `virtio-scsi-pci`).
@@ -513,11 +513,11 @@ type virtualMachineArgs struct {
 	OnBoot *bool `pulumi:"onBoot"`
 	// The Operating System configuration.
 	OperatingSystem *VirtualMachineOperatingSystem `pulumi:"operatingSystem"`
-	// The identifier for a pool to assign the virtual machine
-	// to.
+	// The identifier for a pool to assign the virtual machine to.
 	PoolId *string `pulumi:"poolId"`
-	// Reboot the VM after initial creation. (defaults
-	// to `false`)
+	// Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+	Protection *bool `pulumi:"protection"`
+	// Reboot the VM after initial creation. (defaults to `false`)
 	Reboot *bool `pulumi:"reboot"`
 	// The SCSI hardware type (defaults to
 	// `virtio-scsi-pci`).
@@ -636,11 +636,11 @@ type VirtualMachineArgs struct {
 	OnBoot pulumi.BoolPtrInput
 	// The Operating System configuration.
 	OperatingSystem VirtualMachineOperatingSystemPtrInput
-	// The identifier for a pool to assign the virtual machine
-	// to.
+	// The identifier for a pool to assign the virtual machine to.
 	PoolId pulumi.StringPtrInput
-	// Reboot the VM after initial creation. (defaults
-	// to `false`)
+	// Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+	Protection pulumi.BoolPtrInput
+	// Reboot the VM after initial creation. (defaults to `false`)
 	Reboot pulumi.BoolPtrInput
 	// The SCSI hardware type (defaults to
 	// `virtio-scsi-pci`).
@@ -937,14 +937,17 @@ func (o VirtualMachineOutput) OperatingSystem() VirtualMachineOperatingSystemPtr
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineOperatingSystemPtrOutput { return v.OperatingSystem }).(VirtualMachineOperatingSystemPtrOutput)
 }
 
-// The identifier for a pool to assign the virtual machine
-// to.
+// The identifier for a pool to assign the virtual machine to.
 func (o VirtualMachineOutput) PoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.PoolId }).(pulumi.StringPtrOutput)
 }
 
-// Reboot the VM after initial creation. (defaults
-// to `false`)
+// Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+func (o VirtualMachineOutput) Protection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.Protection }).(pulumi.BoolPtrOutput)
+}
+
+// Reboot the VM after initial creation. (defaults to `false`)
 func (o VirtualMachineOutput) Reboot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.Reboot }).(pulumi.BoolPtrOutput)
 }

@@ -33,7 +33,7 @@ func GetMinTls(ctx *pulumi.Context) string {
 
 // The one-time password for the Proxmox VE API.
 //
-// Deprecated: The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.
+// Deprecated: The `otp` attribute is deprecated and will be removed in a future release. Please use the `apiToken` attribute instead.
 func GetOtp(ctx *pulumi.Context) string {
 	return config.Get(ctx, "proxmoxve:otp")
 }

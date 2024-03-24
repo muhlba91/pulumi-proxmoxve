@@ -1212,6 +1212,10 @@ func (o VirtualMachineCpuPtrOutput) Units() pulumi.IntPtrOutput {
 }
 
 type VirtualMachineDisk struct {
+	// The disk AIO mode (defaults to `ioUring`).
+	Aio *string `pulumi:"aio"`
+	// Whether the drive should be included when making backups (defaults to `true`).
+	Backup *bool `pulumi:"backup"`
 	// The cache type (defaults to `none`).
 	Cache *string `pulumi:"cache"`
 	// The identifier for the datastore to create the
@@ -1240,6 +1244,8 @@ type VirtualMachineDisk struct {
 	// or (as root only) host's filesystem paths (`datastoreId` empty string).
 	// See "*Example: Attached disks*".
 	PathInDatastore *string `pulumi:"pathInDatastore"`
+	// Whether the drive should be considered for replication jobs (defaults to `true`).
+	Replicate *bool `pulumi:"replicate"`
 	// The disk size in gigabytes (defaults to `8`).
 	Size *int `pulumi:"size"`
 	// The speed limits.
@@ -1262,6 +1268,10 @@ type VirtualMachineDiskInput interface {
 }
 
 type VirtualMachineDiskArgs struct {
+	// The disk AIO mode (defaults to `ioUring`).
+	Aio pulumi.StringPtrInput `pulumi:"aio"`
+	// Whether the drive should be included when making backups (defaults to `true`).
+	Backup pulumi.BoolPtrInput `pulumi:"backup"`
 	// The cache type (defaults to `none`).
 	Cache pulumi.StringPtrInput `pulumi:"cache"`
 	// The identifier for the datastore to create the
@@ -1290,6 +1300,8 @@ type VirtualMachineDiskArgs struct {
 	// or (as root only) host's filesystem paths (`datastoreId` empty string).
 	// See "*Example: Attached disks*".
 	PathInDatastore pulumi.StringPtrInput `pulumi:"pathInDatastore"`
+	// Whether the drive should be considered for replication jobs (defaults to `true`).
+	Replicate pulumi.BoolPtrInput `pulumi:"replicate"`
 	// The disk size in gigabytes (defaults to `8`).
 	Size pulumi.IntPtrInput `pulumi:"size"`
 	// The speed limits.
@@ -1351,6 +1363,16 @@ func (o VirtualMachineDiskOutput) ToVirtualMachineDiskOutputWithContext(ctx cont
 	return o
 }
 
+// The disk AIO mode (defaults to `ioUring`).
+func (o VirtualMachineDiskOutput) Aio() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.Aio }).(pulumi.StringPtrOutput)
+}
+
+// Whether the drive should be included when making backups (defaults to `true`).
+func (o VirtualMachineDiskOutput) Backup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineDisk) *bool { return v.Backup }).(pulumi.BoolPtrOutput)
+}
+
 // The cache type (defaults to `none`).
 func (o VirtualMachineDiskOutput) Cache() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.Cache }).(pulumi.StringPtrOutput)
@@ -1403,6 +1425,11 @@ func (o VirtualMachineDiskOutput) PathInDatastore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.PathInDatastore }).(pulumi.StringPtrOutput)
 }
 
+// Whether the drive should be considered for replication jobs (defaults to `true`).
+func (o VirtualMachineDiskOutput) Replicate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineDisk) *bool { return v.Replicate }).(pulumi.BoolPtrOutput)
+}
+
 // The disk size in gigabytes (defaults to `8`).
 func (o VirtualMachineDiskOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
@@ -1441,6 +1468,14 @@ func (o VirtualMachineDiskArrayOutput) Index(i pulumi.IntInput) VirtualMachineDi
 }
 
 type VirtualMachineDiskSpeed struct {
+	// The maximum read I/O in operations per second.
+	IopsRead *int `pulumi:"iopsRead"`
+	// The maximum unthrottled read I/O pool in operations per second.
+	IopsReadBurstable *int `pulumi:"iopsReadBurstable"`
+	// The maximum write I/O in operations per second.
+	IopsWrite *int `pulumi:"iopsWrite"`
+	// The maximum unthrottled write I/O pool in operations per second.
+	IopsWriteBurstable *int `pulumi:"iopsWriteBurstable"`
 	// The maximum read speed in megabytes per second.
 	Read *int `pulumi:"read"`
 	// The maximum burstable read speed in
@@ -1465,6 +1500,14 @@ type VirtualMachineDiskSpeedInput interface {
 }
 
 type VirtualMachineDiskSpeedArgs struct {
+	// The maximum read I/O in operations per second.
+	IopsRead pulumi.IntPtrInput `pulumi:"iopsRead"`
+	// The maximum unthrottled read I/O pool in operations per second.
+	IopsReadBurstable pulumi.IntPtrInput `pulumi:"iopsReadBurstable"`
+	// The maximum write I/O in operations per second.
+	IopsWrite pulumi.IntPtrInput `pulumi:"iopsWrite"`
+	// The maximum unthrottled write I/O pool in operations per second.
+	IopsWriteBurstable pulumi.IntPtrInput `pulumi:"iopsWriteBurstable"`
 	// The maximum read speed in megabytes per second.
 	Read pulumi.IntPtrInput `pulumi:"read"`
 	// The maximum burstable read speed in
@@ -1554,6 +1597,26 @@ func (o VirtualMachineDiskSpeedOutput) ToVirtualMachineDiskSpeedPtrOutputWithCon
 	}).(VirtualMachineDiskSpeedPtrOutput)
 }
 
+// The maximum read I/O in operations per second.
+func (o VirtualMachineDiskSpeedOutput) IopsRead() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachineDiskSpeed) *int { return v.IopsRead }).(pulumi.IntPtrOutput)
+}
+
+// The maximum unthrottled read I/O pool in operations per second.
+func (o VirtualMachineDiskSpeedOutput) IopsReadBurstable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachineDiskSpeed) *int { return v.IopsReadBurstable }).(pulumi.IntPtrOutput)
+}
+
+// The maximum write I/O in operations per second.
+func (o VirtualMachineDiskSpeedOutput) IopsWrite() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachineDiskSpeed) *int { return v.IopsWrite }).(pulumi.IntPtrOutput)
+}
+
+// The maximum unthrottled write I/O pool in operations per second.
+func (o VirtualMachineDiskSpeedOutput) IopsWriteBurstable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachineDiskSpeed) *int { return v.IopsWriteBurstable }).(pulumi.IntPtrOutput)
+}
+
 // The maximum read speed in megabytes per second.
 func (o VirtualMachineDiskSpeedOutput) Read() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDiskSpeed) *int { return v.Read }).(pulumi.IntPtrOutput)
@@ -1598,6 +1661,46 @@ func (o VirtualMachineDiskSpeedPtrOutput) Elem() VirtualMachineDiskSpeedOutput {
 		var ret VirtualMachineDiskSpeed
 		return ret
 	}).(VirtualMachineDiskSpeedOutput)
+}
+
+// The maximum read I/O in operations per second.
+func (o VirtualMachineDiskSpeedPtrOutput) IopsRead() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineDiskSpeed) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IopsRead
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum unthrottled read I/O pool in operations per second.
+func (o VirtualMachineDiskSpeedPtrOutput) IopsReadBurstable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineDiskSpeed) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IopsReadBurstable
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum write I/O in operations per second.
+func (o VirtualMachineDiskSpeedPtrOutput) IopsWrite() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineDiskSpeed) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IopsWrite
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum unthrottled write I/O pool in operations per second.
+func (o VirtualMachineDiskSpeedPtrOutput) IopsWriteBurstable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineDiskSpeed) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IopsWriteBurstable
+	}).(pulumi.IntPtrOutput)
 }
 
 // The maximum read speed in megabytes per second.
@@ -3383,21 +3486,20 @@ func (o VirtualMachineMemoryPtrOutput) Shared() pulumi.IntPtrOutput {
 }
 
 type VirtualMachineNetworkDevice struct {
-	// The name of the network bridge (defaults
-	// to `vmbr0`).
+	// The name of the network bridge (defaults to `vmbr0`).
 	Bridge *string `pulumi:"bridge"`
+	// Whether to disconnect the network device from the network (defaults to `false`).
+	Disconnected *bool `pulumi:"disconnected"`
 	// Whether to enable the VGA device (defaults
 	// to `true`).
 	Enabled *bool `pulumi:"enabled"`
-	// Whether this interface's firewall rules should be
-	// used (defaults to `false`).
+	// Whether this interface's firewall rules should be used (defaults to `false`).
 	Firewall *bool `pulumi:"firewall"`
 	// The MAC address.
 	MacAddress *string `pulumi:"macAddress"`
 	// The network device model (defaults to `virtio`).
 	Model *string `pulumi:"model"`
-	// Force MTU, for VirtIO only. Set to 1 to use the bridge
-	// MTU. Cannot be larger than the bridge MTU.
+	// Force MTU, for VirtIO only. Set to 1 to use the bridge MTU. Cannot be larger than the bridge MTU.
 	Mtu *int `pulumi:"mtu"`
 	// The number of queues for VirtIO (1..64).
 	Queues *int `pulumi:"queues"`
@@ -3423,21 +3525,20 @@ type VirtualMachineNetworkDeviceInput interface {
 }
 
 type VirtualMachineNetworkDeviceArgs struct {
-	// The name of the network bridge (defaults
-	// to `vmbr0`).
+	// The name of the network bridge (defaults to `vmbr0`).
 	Bridge pulumi.StringPtrInput `pulumi:"bridge"`
+	// Whether to disconnect the network device from the network (defaults to `false`).
+	Disconnected pulumi.BoolPtrInput `pulumi:"disconnected"`
 	// Whether to enable the VGA device (defaults
 	// to `true`).
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Whether this interface's firewall rules should be
-	// used (defaults to `false`).
+	// Whether this interface's firewall rules should be used (defaults to `false`).
 	Firewall pulumi.BoolPtrInput `pulumi:"firewall"`
 	// The MAC address.
 	MacAddress pulumi.StringPtrInput `pulumi:"macAddress"`
 	// The network device model (defaults to `virtio`).
 	Model pulumi.StringPtrInput `pulumi:"model"`
-	// Force MTU, for VirtIO only. Set to 1 to use the bridge
-	// MTU. Cannot be larger than the bridge MTU.
+	// Force MTU, for VirtIO only. Set to 1 to use the bridge MTU. Cannot be larger than the bridge MTU.
 	Mtu pulumi.IntPtrInput `pulumi:"mtu"`
 	// The number of queues for VirtIO (1..64).
 	Queues pulumi.IntPtrInput `pulumi:"queues"`
@@ -3502,10 +3603,14 @@ func (o VirtualMachineNetworkDeviceOutput) ToVirtualMachineNetworkDeviceOutputWi
 	return o
 }
 
-// The name of the network bridge (defaults
-// to `vmbr0`).
+// The name of the network bridge (defaults to `vmbr0`).
 func (o VirtualMachineNetworkDeviceOutput) Bridge() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkDevice) *string { return v.Bridge }).(pulumi.StringPtrOutput)
+}
+
+// Whether to disconnect the network device from the network (defaults to `false`).
+func (o VirtualMachineNetworkDeviceOutput) Disconnected() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineNetworkDevice) *bool { return v.Disconnected }).(pulumi.BoolPtrOutput)
 }
 
 // Whether to enable the VGA device (defaults
@@ -3514,8 +3619,7 @@ func (o VirtualMachineNetworkDeviceOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkDevice) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Whether this interface's firewall rules should be
-// used (defaults to `false`).
+// Whether this interface's firewall rules should be used (defaults to `false`).
 func (o VirtualMachineNetworkDeviceOutput) Firewall() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkDevice) *bool { return v.Firewall }).(pulumi.BoolPtrOutput)
 }
@@ -3530,8 +3634,7 @@ func (o VirtualMachineNetworkDeviceOutput) Model() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkDevice) *string { return v.Model }).(pulumi.StringPtrOutput)
 }
 
-// Force MTU, for VirtIO only. Set to 1 to use the bridge
-// MTU. Cannot be larger than the bridge MTU.
+// Force MTU, for VirtIO only. Set to 1 to use the bridge MTU. Cannot be larger than the bridge MTU.
 func (o VirtualMachineNetworkDeviceOutput) Mtu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkDevice) *int { return v.Mtu }).(pulumi.IntPtrOutput)
 }

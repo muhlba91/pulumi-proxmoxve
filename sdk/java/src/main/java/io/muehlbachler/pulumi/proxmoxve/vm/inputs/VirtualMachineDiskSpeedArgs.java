@@ -16,6 +16,66 @@ public final class VirtualMachineDiskSpeedArgs extends com.pulumi.resources.Reso
     public static final VirtualMachineDiskSpeedArgs Empty = new VirtualMachineDiskSpeedArgs();
 
     /**
+     * The maximum read I/O in operations per second.
+     * 
+     */
+    @Import(name="iopsRead")
+    private @Nullable Output<Integer> iopsRead;
+
+    /**
+     * @return The maximum read I/O in operations per second.
+     * 
+     */
+    public Optional<Output<Integer>> iopsRead() {
+        return Optional.ofNullable(this.iopsRead);
+    }
+
+    /**
+     * The maximum unthrottled read I/O pool in operations per second.
+     * 
+     */
+    @Import(name="iopsReadBurstable")
+    private @Nullable Output<Integer> iopsReadBurstable;
+
+    /**
+     * @return The maximum unthrottled read I/O pool in operations per second.
+     * 
+     */
+    public Optional<Output<Integer>> iopsReadBurstable() {
+        return Optional.ofNullable(this.iopsReadBurstable);
+    }
+
+    /**
+     * The maximum write I/O in operations per second.
+     * 
+     */
+    @Import(name="iopsWrite")
+    private @Nullable Output<Integer> iopsWrite;
+
+    /**
+     * @return The maximum write I/O in operations per second.
+     * 
+     */
+    public Optional<Output<Integer>> iopsWrite() {
+        return Optional.ofNullable(this.iopsWrite);
+    }
+
+    /**
+     * The maximum unthrottled write I/O pool in operations per second.
+     * 
+     */
+    @Import(name="iopsWriteBurstable")
+    private @Nullable Output<Integer> iopsWriteBurstable;
+
+    /**
+     * @return The maximum unthrottled write I/O pool in operations per second.
+     * 
+     */
+    public Optional<Output<Integer>> iopsWriteBurstable() {
+        return Optional.ofNullable(this.iopsWriteBurstable);
+    }
+
+    /**
      * The maximum read speed in megabytes per second.
      * 
      */
@@ -82,6 +142,10 @@ public final class VirtualMachineDiskSpeedArgs extends com.pulumi.resources.Reso
     private VirtualMachineDiskSpeedArgs() {}
 
     private VirtualMachineDiskSpeedArgs(VirtualMachineDiskSpeedArgs $) {
+        this.iopsRead = $.iopsRead;
+        this.iopsReadBurstable = $.iopsReadBurstable;
+        this.iopsWrite = $.iopsWrite;
+        this.iopsWriteBurstable = $.iopsWriteBurstable;
         this.read = $.read;
         this.readBurstable = $.readBurstable;
         this.write = $.write;
@@ -104,6 +168,90 @@ public final class VirtualMachineDiskSpeedArgs extends com.pulumi.resources.Reso
 
         public Builder(VirtualMachineDiskSpeedArgs defaults) {
             $ = new VirtualMachineDiskSpeedArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param iopsRead The maximum read I/O in operations per second.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder iopsRead(@Nullable Output<Integer> iopsRead) {
+            $.iopsRead = iopsRead;
+            return this;
+        }
+
+        /**
+         * @param iopsRead The maximum read I/O in operations per second.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder iopsRead(Integer iopsRead) {
+            return iopsRead(Output.of(iopsRead));
+        }
+
+        /**
+         * @param iopsReadBurstable The maximum unthrottled read I/O pool in operations per second.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder iopsReadBurstable(@Nullable Output<Integer> iopsReadBurstable) {
+            $.iopsReadBurstable = iopsReadBurstable;
+            return this;
+        }
+
+        /**
+         * @param iopsReadBurstable The maximum unthrottled read I/O pool in operations per second.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder iopsReadBurstable(Integer iopsReadBurstable) {
+            return iopsReadBurstable(Output.of(iopsReadBurstable));
+        }
+
+        /**
+         * @param iopsWrite The maximum write I/O in operations per second.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder iopsWrite(@Nullable Output<Integer> iopsWrite) {
+            $.iopsWrite = iopsWrite;
+            return this;
+        }
+
+        /**
+         * @param iopsWrite The maximum write I/O in operations per second.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder iopsWrite(Integer iopsWrite) {
+            return iopsWrite(Output.of(iopsWrite));
+        }
+
+        /**
+         * @param iopsWriteBurstable The maximum unthrottled write I/O pool in operations per second.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder iopsWriteBurstable(@Nullable Output<Integer> iopsWriteBurstable) {
+            $.iopsWriteBurstable = iopsWriteBurstable;
+            return this;
+        }
+
+        /**
+         * @param iopsWriteBurstable The maximum unthrottled write I/O pool in operations per second.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder iopsWriteBurstable(Integer iopsWriteBurstable) {
+            return iopsWriteBurstable(Output.of(iopsWriteBurstable));
         }
 
         /**

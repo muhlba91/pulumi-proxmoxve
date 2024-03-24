@@ -26,7 +26,7 @@ type Provider struct {
 	MinTls pulumi.StringPtrOutput `pulumi:"minTls"`
 	// The one-time password for the Proxmox VE API.
 	//
-	// Deprecated: The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.
+	// Deprecated: The `otp` attribute is deprecated and will be removed in a future release. Please use the `apiToken` attribute instead.
 	Otp pulumi.StringPtrOutput `pulumi:"otp"`
 	// The password for the Proxmox VE API.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
@@ -74,7 +74,7 @@ type providerArgs struct {
 	MinTls *string `pulumi:"minTls"`
 	// The one-time password for the Proxmox VE API.
 	//
-	// Deprecated: The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.
+	// Deprecated: The `otp` attribute is deprecated and will be removed in a future release. Please use the `apiToken` attribute instead.
 	Otp *string `pulumi:"otp"`
 	// The password for the Proxmox VE API.
 	Password *string `pulumi:"password"`
@@ -98,7 +98,7 @@ type ProviderArgs struct {
 	MinTls pulumi.StringPtrInput
 	// The one-time password for the Proxmox VE API.
 	//
-	// Deprecated: The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.
+	// Deprecated: The `otp` attribute is deprecated and will be removed in a future release. Please use the `apiToken` attribute instead.
 	Otp pulumi.StringPtrInput
 	// The password for the Proxmox VE API.
 	Password pulumi.StringPtrInput
@@ -164,7 +164,7 @@ func (o ProviderOutput) MinTls() pulumi.StringPtrOutput {
 
 // The one-time password for the Proxmox VE API.
 //
-// Deprecated: The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.
+// Deprecated: The `otp` attribute is deprecated and will be removed in a future release. Please use the `apiToken` attribute instead.
 func (o ProviderOutput) Otp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Otp }).(pulumi.StringPtrOutput)
 }

@@ -15,11 +15,15 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VirtualMachineNetworkDevice {
     /**
-     * @return The name of the network bridge (defaults
-     * to `vmbr0`).
+     * @return The name of the network bridge (defaults to `vmbr0`).
      * 
      */
     private @Nullable String bridge;
+    /**
+     * @return Whether to disconnect the network device from the network (defaults to `false`).
+     * 
+     */
+    private @Nullable Boolean disconnected;
     /**
      * @return Whether to enable the VGA device (defaults
      * to `true`).
@@ -27,8 +31,7 @@ public final class VirtualMachineNetworkDevice {
      */
     private @Nullable Boolean enabled;
     /**
-     * @return Whether this interface&#39;s firewall rules should be
-     * used (defaults to `false`).
+     * @return Whether this interface&#39;s firewall rules should be used (defaults to `false`).
      * 
      */
     private @Nullable Boolean firewall;
@@ -43,8 +46,7 @@ public final class VirtualMachineNetworkDevice {
      */
     private @Nullable String model;
     /**
-     * @return Force MTU, for VirtIO only. Set to 1 to use the bridge
-     * MTU. Cannot be larger than the bridge MTU.
+     * @return Force MTU, for VirtIO only. Set to 1 to use the bridge MTU. Cannot be larger than the bridge MTU.
      * 
      */
     private @Nullable Integer mtu;
@@ -73,12 +75,18 @@ public final class VirtualMachineNetworkDevice {
 
     private VirtualMachineNetworkDevice() {}
     /**
-     * @return The name of the network bridge (defaults
-     * to `vmbr0`).
+     * @return The name of the network bridge (defaults to `vmbr0`).
      * 
      */
     public Optional<String> bridge() {
         return Optional.ofNullable(this.bridge);
+    }
+    /**
+     * @return Whether to disconnect the network device from the network (defaults to `false`).
+     * 
+     */
+    public Optional<Boolean> disconnected() {
+        return Optional.ofNullable(this.disconnected);
     }
     /**
      * @return Whether to enable the VGA device (defaults
@@ -89,8 +97,7 @@ public final class VirtualMachineNetworkDevice {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Whether this interface&#39;s firewall rules should be
-     * used (defaults to `false`).
+     * @return Whether this interface&#39;s firewall rules should be used (defaults to `false`).
      * 
      */
     public Optional<Boolean> firewall() {
@@ -111,8 +118,7 @@ public final class VirtualMachineNetworkDevice {
         return Optional.ofNullable(this.model);
     }
     /**
-     * @return Force MTU, for VirtIO only. Set to 1 to use the bridge
-     * MTU. Cannot be larger than the bridge MTU.
+     * @return Force MTU, for VirtIO only. Set to 1 to use the bridge MTU. Cannot be larger than the bridge MTU.
      * 
      */
     public Optional<Integer> mtu() {
@@ -159,6 +165,7 @@ public final class VirtualMachineNetworkDevice {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String bridge;
+        private @Nullable Boolean disconnected;
         private @Nullable Boolean enabled;
         private @Nullable Boolean firewall;
         private @Nullable String macAddress;
@@ -172,6 +179,7 @@ public final class VirtualMachineNetworkDevice {
         public Builder(VirtualMachineNetworkDevice defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bridge = defaults.bridge;
+    	      this.disconnected = defaults.disconnected;
     	      this.enabled = defaults.enabled;
     	      this.firewall = defaults.firewall;
     	      this.macAddress = defaults.macAddress;
@@ -187,6 +195,12 @@ public final class VirtualMachineNetworkDevice {
         public Builder bridge(@Nullable String bridge) {
 
             this.bridge = bridge;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder disconnected(@Nullable Boolean disconnected) {
+
+            this.disconnected = disconnected;
             return this;
         }
         @CustomType.Setter
@@ -246,6 +260,7 @@ public final class VirtualMachineNetworkDevice {
         public VirtualMachineNetworkDevice build() {
             final var _resultValue = new VirtualMachineNetworkDevice();
             _resultValue.bridge = bridge;
+            _resultValue.disconnected = disconnected;
             _resultValue.enabled = enabled;
             _resultValue.firewall = firewall;
             _resultValue.macAddress = macAddress;

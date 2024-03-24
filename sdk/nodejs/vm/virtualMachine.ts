@@ -171,13 +171,15 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly operatingSystem!: pulumi.Output<outputs.VM.VirtualMachineOperatingSystem | undefined>;
     /**
-     * The identifier for a pool to assign the virtual machine
-     * to.
+     * The identifier for a pool to assign the virtual machine to.
      */
     public readonly poolId!: pulumi.Output<string | undefined>;
     /**
-     * Reboot the VM after initial creation. (defaults
-     * to `false`)
+     * Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+     */
+    public readonly protection!: pulumi.Output<boolean | undefined>;
+    /**
+     * Reboot the VM after initial creation. (defaults to `false`)
      */
     public readonly reboot!: pulumi.Output<boolean | undefined>;
     /**
@@ -322,6 +324,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["onBoot"] = state ? state.onBoot : undefined;
             resourceInputs["operatingSystem"] = state ? state.operatingSystem : undefined;
             resourceInputs["poolId"] = state ? state.poolId : undefined;
+            resourceInputs["protection"] = state ? state.protection : undefined;
             resourceInputs["reboot"] = state ? state.reboot : undefined;
             resourceInputs["scsiHardware"] = state ? state.scsiHardware : undefined;
             resourceInputs["serialDevices"] = state ? state.serialDevices : undefined;
@@ -375,6 +378,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["onBoot"] = args ? args.onBoot : undefined;
             resourceInputs["operatingSystem"] = args ? args.operatingSystem : undefined;
             resourceInputs["poolId"] = args ? args.poolId : undefined;
+            resourceInputs["protection"] = args ? args.protection : undefined;
             resourceInputs["reboot"] = args ? args.reboot : undefined;
             resourceInputs["scsiHardware"] = args ? args.scsiHardware : undefined;
             resourceInputs["serialDevices"] = args ? args.serialDevices : undefined;
@@ -532,13 +536,15 @@ export interface VirtualMachineState {
      */
     operatingSystem?: pulumi.Input<inputs.VM.VirtualMachineOperatingSystem>;
     /**
-     * The identifier for a pool to assign the virtual machine
-     * to.
+     * The identifier for a pool to assign the virtual machine to.
      */
     poolId?: pulumi.Input<string>;
     /**
-     * Reboot the VM after initial creation. (defaults
-     * to `false`)
+     * Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+     */
+    protection?: pulumi.Input<boolean>;
+    /**
+     * Reboot the VM after initial creation. (defaults to `false`)
      */
     reboot?: pulumi.Input<boolean>;
     /**
@@ -753,13 +759,15 @@ export interface VirtualMachineArgs {
      */
     operatingSystem?: pulumi.Input<inputs.VM.VirtualMachineOperatingSystem>;
     /**
-     * The identifier for a pool to assign the virtual machine
-     * to.
+     * The identifier for a pool to assign the virtual machine to.
      */
     poolId?: pulumi.Input<string>;
     /**
-     * Reboot the VM after initial creation. (defaults
-     * to `false`)
+     * Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+     */
+    protection?: pulumi.Input<boolean>;
+    /**
+     * Reboot the VM after initial creation. (defaults to `false`)
      */
     reboot?: pulumi.Input<boolean>;
     /**
