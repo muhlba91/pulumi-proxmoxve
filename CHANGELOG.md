@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [6.1.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.1.0...v6.1.1) (2024-03-27)
+
+
+### Miscellaneous Chores
+
+* **deps:** update anchore/sbom-action action to v0.15.10 ([a2f3d5f](https://github.com/muhlba91/pulumi-proxmoxve/commit/a2f3d5f48bd4e11c4935ca1c4c4453210ac7a1dd))
+
 ## [6.1.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.0.2...v6.1.0) (2024-03-24)
 
 
