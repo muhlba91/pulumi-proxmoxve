@@ -24,6 +24,7 @@
         "dns.ts",
         "download/file.ts",
         "download/index.ts",
+        "getNode.ts",
         "ha/getHAGroup.ts",
         "ha/getHAGroups.ts",
         "ha/getHAResource.ts",

@@ -34,9 +34,9 @@ namespace Pulumi.ProxmoxVE.Network
     ///         },
     ///     }, new CustomResourceOptions
     ///     {
-    ///         DependsOn = new[]
+    ///         DependsOn =
     ///         {
-    ///             proxmox_virtual_environment_network_linux_vlan.Vlan99,
+    ///             proxmox_virtual_environment_network_linux_vlan.Vlan99, 
     ///         },
     ///     });
     /// 

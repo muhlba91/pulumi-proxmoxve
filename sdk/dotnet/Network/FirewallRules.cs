@@ -61,10 +61,10 @@ namespace Pulumi.ProxmoxVE.Network
     ///         },
     ///     }, new CustomResourceOptions
     ///     {
-    ///         DependsOn = new[]
+    ///         DependsOn =
     ///         {
-    ///             proxmox_virtual_environment_vm.Example,
-    ///             proxmox_virtual_environment_cluster_firewall_security_group.Example,
+    ///             proxmox_virtual_environment_vm.Example, 
+    ///             proxmox_virtual_environment_cluster_firewall_security_group.Example, 
     ///         },
     ///     });
     /// 

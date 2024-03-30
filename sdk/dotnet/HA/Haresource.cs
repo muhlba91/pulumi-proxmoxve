@@ -31,9 +31,9 @@ namespace Pulumi.ProxmoxVE.HA
     ///         Comment = "Managed by Terraform",
     ///     }, new CustomResourceOptions
     ///     {
-    ///         DependsOn = new[]
+    ///         DependsOn =
     ///         {
-    ///             proxmox_virtual_environment_hagroup.Example,
+    ///             proxmox_virtual_environment_hagroup.Example, 
     ///         },
     ///     });
     /// 

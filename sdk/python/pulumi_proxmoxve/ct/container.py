@@ -36,6 +36,7 @@ class ContainerArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
                  timeout_create: Optional[pulumi.Input[int]] = None,
+                 timeout_start: Optional[pulumi.Input[int]] = None,
                  unprivileged: Optional[pulumi.Input[bool]] = None,
                  vm_id: Optional[pulumi.Input[int]] = None):
         """
@@ -66,6 +67,7 @@ class ContainerArgs:
                meta-argument to ignore changes to this attribute.
         :param pulumi.Input[bool] template: Whether to create a template (defaults to `false`).
         :param pulumi.Input[int] timeout_create: Timeout for creating a container in seconds (defaults to 1800).
+        :param pulumi.Input[int] timeout_start: Timeout for starting a container in seconds (defaults to 300).
         :param pulumi.Input[bool] unprivileged: Whether the container runs as unprivileged on
                the host (defaults to `false`).
         :param pulumi.Input[int] vm_id: The container identifier
@@ -109,6 +111,8 @@ class ContainerArgs:
             pulumi.set(__self__, "template", template)
         if timeout_create is not None:
             pulumi.set(__self__, "timeout_create", timeout_create)
+        if timeout_start is not None:
+            pulumi.set(__self__, "timeout_start", timeout_start)
         if unprivileged is not None:
             pulumi.set(__self__, "unprivileged", unprivileged)
         if vm_id is not None:
@@ -361,6 +365,18 @@ class ContainerArgs:
         pulumi.set(self, "timeout_create", value)
 
     @property
+    @pulumi.getter(name="timeoutStart")
+    def timeout_start(self) -> Optional[pulumi.Input[int]]:
+        """
+        Timeout for starting a container in seconds (defaults to 300).
+        """
+        return pulumi.get(self, "timeout_start")
+
+    @timeout_start.setter
+    def timeout_start(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout_start", value)
+
+    @property
     @pulumi.getter
     def unprivileged(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -409,6 +425,7 @@ class _ContainerState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
                  timeout_create: Optional[pulumi.Input[int]] = None,
+                 timeout_start: Optional[pulumi.Input[int]] = None,
                  unprivileged: Optional[pulumi.Input[bool]] = None,
                  vm_id: Optional[pulumi.Input[int]] = None):
         """
@@ -439,6 +456,7 @@ class _ContainerState:
                meta-argument to ignore changes to this attribute.
         :param pulumi.Input[bool] template: Whether to create a template (defaults to `false`).
         :param pulumi.Input[int] timeout_create: Timeout for creating a container in seconds (defaults to 1800).
+        :param pulumi.Input[int] timeout_start: Timeout for starting a container in seconds (defaults to 300).
         :param pulumi.Input[bool] unprivileged: Whether the container runs as unprivileged on
                the host (defaults to `false`).
         :param pulumi.Input[int] vm_id: The container identifier
@@ -483,6 +501,8 @@ class _ContainerState:
             pulumi.set(__self__, "template", template)
         if timeout_create is not None:
             pulumi.set(__self__, "timeout_create", timeout_create)
+        if timeout_start is not None:
+            pulumi.set(__self__, "timeout_start", timeout_start)
         if unprivileged is not None:
             pulumi.set(__self__, "unprivileged", unprivileged)
         if vm_id is not None:
@@ -735,6 +755,18 @@ class _ContainerState:
         pulumi.set(self, "timeout_create", value)
 
     @property
+    @pulumi.getter(name="timeoutStart")
+    def timeout_start(self) -> Optional[pulumi.Input[int]]:
+        """
+        Timeout for starting a container in seconds (defaults to 300).
+        """
+        return pulumi.get(self, "timeout_start")
+
+    @timeout_start.setter
+    def timeout_start(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout_start", value)
+
+    @property
     @pulumi.getter
     def unprivileged(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -785,6 +817,7 @@ class Container(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
                  timeout_create: Optional[pulumi.Input[int]] = None,
+                 timeout_start: Optional[pulumi.Input[int]] = None,
                  unprivileged: Optional[pulumi.Input[bool]] = None,
                  vm_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -829,6 +862,7 @@ class Container(pulumi.CustomResource):
                meta-argument to ignore changes to this attribute.
         :param pulumi.Input[bool] template: Whether to create a template (defaults to `false`).
         :param pulumi.Input[int] timeout_create: Timeout for creating a container in seconds (defaults to 1800).
+        :param pulumi.Input[int] timeout_start: Timeout for starting a container in seconds (defaults to 300).
         :param pulumi.Input[bool] unprivileged: Whether the container runs as unprivileged on
                the host (defaults to `false`).
         :param pulumi.Input[int] vm_id: The container identifier
@@ -887,6 +921,7 @@ class Container(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
                  timeout_create: Optional[pulumi.Input[int]] = None,
+                 timeout_start: Optional[pulumi.Input[int]] = None,
                  unprivileged: Optional[pulumi.Input[bool]] = None,
                  vm_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -920,6 +955,7 @@ class Container(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["template"] = template
             __props__.__dict__["timeout_create"] = timeout_create
+            __props__.__dict__["timeout_start"] = timeout_start
             __props__.__dict__["unprivileged"] = unprivileged
             __props__.__dict__["vm_id"] = vm_id
         super(Container, __self__).__init__(
@@ -952,6 +988,7 @@ class Container(pulumi.CustomResource):
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             template: Optional[pulumi.Input[bool]] = None,
             timeout_create: Optional[pulumi.Input[int]] = None,
+            timeout_start: Optional[pulumi.Input[int]] = None,
             unprivileged: Optional[pulumi.Input[bool]] = None,
             vm_id: Optional[pulumi.Input[int]] = None) -> 'Container':
         """
@@ -987,6 +1024,7 @@ class Container(pulumi.CustomResource):
                meta-argument to ignore changes to this attribute.
         :param pulumi.Input[bool] template: Whether to create a template (defaults to `false`).
         :param pulumi.Input[int] timeout_create: Timeout for creating a container in seconds (defaults to 1800).
+        :param pulumi.Input[int] timeout_start: Timeout for starting a container in seconds (defaults to 300).
         :param pulumi.Input[bool] unprivileged: Whether the container runs as unprivileged on
                the host (defaults to `false`).
         :param pulumi.Input[int] vm_id: The container identifier
@@ -1015,6 +1053,7 @@ class Container(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["template"] = template
         __props__.__dict__["timeout_create"] = timeout_create
+        __props__.__dict__["timeout_start"] = timeout_start
         __props__.__dict__["unprivileged"] = unprivileged
         __props__.__dict__["vm_id"] = vm_id
         return Container(resource_name, opts=opts, __props__=__props__)
@@ -1184,6 +1223,14 @@ class Container(pulumi.CustomResource):
         Timeout for creating a container in seconds (defaults to 1800).
         """
         return pulumi.get(self, "timeout_create")
+
+    @property
+    @pulumi.getter(name="timeoutStart")
+    def timeout_start(self) -> pulumi.Output[Optional[int]]:
+        """
+        Timeout for starting a container in seconds (defaults to 300).
+        """
+        return pulumi.get(self, "timeout_start")
 
     @property
     @pulumi.getter

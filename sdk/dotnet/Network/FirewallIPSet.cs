@@ -50,9 +50,9 @@ namespace Pulumi.ProxmoxVE.Network
     ///         },
     ///     }, new CustomResourceOptions
     ///     {
-    ///         DependsOn = new[]
+    ///         DependsOn =
     ///         {
-    ///             proxmox_virtual_environment_vm.Example,
+    ///             proxmox_virtual_environment_vm.Example, 
     ///         },
     ///     });
     /// 

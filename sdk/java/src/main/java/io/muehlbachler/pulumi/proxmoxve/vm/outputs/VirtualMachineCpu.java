@@ -15,6 +15,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VirtualMachineCpu {
     /**
+     * @return The CPU cores that are used to run the VM’s vCPU. The
+     * value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.
+     * For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four
+     * CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+     * 
+     */
+    private @Nullable String affinity;
+    /**
      * @return The CPU architecture (defaults to `x86_64`).
      * 
      */
@@ -84,6 +92,16 @@ public final class VirtualMachineCpu {
     private @Nullable Integer units;
 
     private VirtualMachineCpu() {}
+    /**
+     * @return The CPU cores that are used to run the VM’s vCPU. The
+     * value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.
+     * For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four
+     * CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+     * 
+     */
+    public Optional<String> affinity() {
+        return Optional.ofNullable(this.affinity);
+    }
     /**
      * @return The CPU architecture (defaults to `x86_64`).
      * 
@@ -180,6 +198,7 @@ public final class VirtualMachineCpu {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String affinity;
         private @Nullable String architecture;
         private @Nullable Integer cores;
         private @Nullable List<String> flags;
@@ -192,6 +211,7 @@ public final class VirtualMachineCpu {
         public Builder() {}
         public Builder(VirtualMachineCpu defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.affinity = defaults.affinity;
     	      this.architecture = defaults.architecture;
     	      this.cores = defaults.cores;
     	      this.flags = defaults.flags;
@@ -203,6 +223,12 @@ public final class VirtualMachineCpu {
     	      this.units = defaults.units;
         }
 
+        @CustomType.Setter
+        public Builder affinity(@Nullable String affinity) {
+
+            this.affinity = affinity;
+            return this;
+        }
         @CustomType.Setter
         public Builder architecture(@Nullable String architecture) {
 
@@ -262,6 +288,7 @@ public final class VirtualMachineCpu {
         }
         public VirtualMachineCpu build() {
             final var _resultValue = new VirtualMachineCpu();
+            _resultValue.affinity = affinity;
             _resultValue.architecture = architecture;
             _resultValue.cores = cores;
             _resultValue.flags = flags;

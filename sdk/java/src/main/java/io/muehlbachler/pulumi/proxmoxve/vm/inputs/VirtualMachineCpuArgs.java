@@ -19,6 +19,27 @@ public final class VirtualMachineCpuArgs extends com.pulumi.resources.ResourceAr
     public static final VirtualMachineCpuArgs Empty = new VirtualMachineCpuArgs();
 
     /**
+     * The CPU cores that are used to run the VM’s vCPU. The
+     * value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.
+     * For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four
+     * CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+     * 
+     */
+    @Import(name="affinity")
+    private @Nullable Output<String> affinity;
+
+    /**
+     * @return The CPU cores that are used to run the VM’s vCPU. The
+     * value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.
+     * For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four
+     * CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+     * 
+     */
+    public Optional<Output<String>> affinity() {
+        return Optional.ofNullable(this.affinity);
+    }
+
+    /**
      * The CPU architecture (defaults to `x86_64`).
      * 
      */
@@ -202,6 +223,7 @@ public final class VirtualMachineCpuArgs extends com.pulumi.resources.ResourceAr
     private VirtualMachineCpuArgs() {}
 
     private VirtualMachineCpuArgs(VirtualMachineCpuArgs $) {
+        this.affinity = $.affinity;
         this.architecture = $.architecture;
         this.cores = $.cores;
         this.flags = $.flags;
@@ -229,6 +251,33 @@ public final class VirtualMachineCpuArgs extends com.pulumi.resources.ResourceAr
 
         public Builder(VirtualMachineCpuArgs defaults) {
             $ = new VirtualMachineCpuArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param affinity The CPU cores that are used to run the VM’s vCPU. The
+         * value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.
+         * For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four
+         * CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder affinity(@Nullable Output<String> affinity) {
+            $.affinity = affinity;
+            return this;
+        }
+
+        /**
+         * @param affinity The CPU cores that are used to run the VM’s vCPU. The
+         * value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.
+         * For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four
+         * CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder affinity(String affinity) {
+            return affinity(Output.of(affinity));
         }
 
         /**

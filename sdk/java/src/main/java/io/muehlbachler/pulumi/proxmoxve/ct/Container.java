@@ -337,6 +337,20 @@ public class Container extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.timeoutCreate);
     }
     /**
+     * Timeout for starting a container in seconds (defaults to 300).
+     * 
+     */
+    @Export(name="timeoutStart", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> timeoutStart;
+
+    /**
+     * @return Timeout for starting a container in seconds (defaults to 300).
+     * 
+     */
+    public Output<Optional<Integer>> timeoutStart() {
+        return Codegen.optional(this.timeoutStart);
+    }
+    /**
      * Whether the container runs as unprivileged on
      * the host (defaults to `false`).
      * 

@@ -831,6 +831,11 @@ func (o VirtualMachineClonePtrOutput) VmId() pulumi.IntPtrOutput {
 }
 
 type VirtualMachineCpu struct {
+	// The CPU cores that are used to run the VM’s vCPU. The
+	// value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.
+	// For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four
+	// CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+	Affinity *string `pulumi:"affinity"`
 	// The CPU architecture (defaults to `x8664`).
 	Architecture *string `pulumi:"architecture"`
 	// The number of CPU cores (defaults to `1`).
@@ -886,6 +891,11 @@ type VirtualMachineCpuInput interface {
 }
 
 type VirtualMachineCpuArgs struct {
+	// The CPU cores that are used to run the VM’s vCPU. The
+	// value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.
+	// For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four
+	// CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+	Affinity pulumi.StringPtrInput `pulumi:"affinity"`
 	// The CPU architecture (defaults to `x8664`).
 	Architecture pulumi.StringPtrInput `pulumi:"architecture"`
 	// The number of CPU cores (defaults to `1`).
@@ -1006,6 +1016,14 @@ func (o VirtualMachineCpuOutput) ToVirtualMachineCpuPtrOutputWithContext(ctx con
 	}).(VirtualMachineCpuPtrOutput)
 }
 
+// The CPU cores that are used to run the VM’s vCPU. The
+// value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.
+// For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four
+// CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+func (o VirtualMachineCpuOutput) Affinity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineCpu) *string { return v.Affinity }).(pulumi.StringPtrOutput)
+}
+
 // The CPU architecture (defaults to `x8664`).
 func (o VirtualMachineCpuOutput) Architecture() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCpu) *string { return v.Architecture }).(pulumi.StringPtrOutput)
@@ -1096,6 +1114,19 @@ func (o VirtualMachineCpuPtrOutput) Elem() VirtualMachineCpuOutput {
 		var ret VirtualMachineCpu
 		return ret
 	}).(VirtualMachineCpuOutput)
+}
+
+// The CPU cores that are used to run the VM’s vCPU. The
+// value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.
+// For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four
+// CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+func (o VirtualMachineCpuPtrOutput) Affinity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineCpu) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Affinity
+	}).(pulumi.StringPtrOutput)
 }
 
 // The CPU architecture (defaults to `x8664`).
@@ -3309,6 +3340,14 @@ type VirtualMachineMemory struct {
 	// The floating memory in megabytes (defaults
 	// to `0`).
 	Floating *int `pulumi:"floating"`
+	// Enable/disable hugepages memory (defaults to disable).
+	Hugepages *string `pulumi:"hugepages"`
+	// Keep hugepages memory after the VM is stopped (defaults
+	// to `false`).
+	//
+	// Settings `hugepages` and `keepHugepages` are only allowed for `root@pam` authenticated user.
+	// And required `cpu.numa` to be enabled.
+	KeepHugepages *bool `pulumi:"keepHugepages"`
 	// The shared memory in megabytes (defaults to `0`).
 	Shared *int `pulumi:"shared"`
 }
@@ -3331,6 +3370,14 @@ type VirtualMachineMemoryArgs struct {
 	// The floating memory in megabytes (defaults
 	// to `0`).
 	Floating pulumi.IntPtrInput `pulumi:"floating"`
+	// Enable/disable hugepages memory (defaults to disable).
+	Hugepages pulumi.StringPtrInput `pulumi:"hugepages"`
+	// Keep hugepages memory after the VM is stopped (defaults
+	// to `false`).
+	//
+	// Settings `hugepages` and `keepHugepages` are only allowed for `root@pam` authenticated user.
+	// And required `cpu.numa` to be enabled.
+	KeepHugepages pulumi.BoolPtrInput `pulumi:"keepHugepages"`
 	// The shared memory in megabytes (defaults to `0`).
 	Shared pulumi.IntPtrInput `pulumi:"shared"`
 }
@@ -3424,6 +3471,20 @@ func (o VirtualMachineMemoryOutput) Floating() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineMemory) *int { return v.Floating }).(pulumi.IntPtrOutput)
 }
 
+// Enable/disable hugepages memory (defaults to disable).
+func (o VirtualMachineMemoryOutput) Hugepages() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineMemory) *string { return v.Hugepages }).(pulumi.StringPtrOutput)
+}
+
+// Keep hugepages memory after the VM is stopped (defaults
+// to `false`).
+//
+// Settings `hugepages` and `keepHugepages` are only allowed for `root@pam` authenticated user.
+// And required `cpu.numa` to be enabled.
+func (o VirtualMachineMemoryOutput) KeepHugepages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineMemory) *bool { return v.KeepHugepages }).(pulumi.BoolPtrOutput)
+}
+
 // The shared memory in megabytes (defaults to `0`).
 func (o VirtualMachineMemoryOutput) Shared() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineMemory) *int { return v.Shared }).(pulumi.IntPtrOutput)
@@ -3473,6 +3534,30 @@ func (o VirtualMachineMemoryPtrOutput) Floating() pulumi.IntPtrOutput {
 		}
 		return v.Floating
 	}).(pulumi.IntPtrOutput)
+}
+
+// Enable/disable hugepages memory (defaults to disable).
+func (o VirtualMachineMemoryPtrOutput) Hugepages() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineMemory) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Hugepages
+	}).(pulumi.StringPtrOutput)
+}
+
+// Keep hugepages memory after the VM is stopped (defaults
+// to `false`).
+//
+// Settings `hugepages` and `keepHugepages` are only allowed for `root@pam` authenticated user.
+// And required `cpu.numa` to be enabled.
+func (o VirtualMachineMemoryPtrOutput) KeepHugepages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineMemory) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.KeepHugepages
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The shared memory in megabytes (defaults to `0`).

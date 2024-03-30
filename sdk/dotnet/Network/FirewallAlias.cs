@@ -33,9 +33,9 @@ namespace Pulumi.ProxmoxVE.Network
     ///         Comment = "Managed by Terraform",
     ///     }, new CustomResourceOptions
     ///     {
-    ///         DependsOn = new[]
+    ///         DependsOn =
     ///         {
-    ///             proxmox_virtual_environment_vm.Example,
+    ///             proxmox_virtual_environment_vm.Example, 
     ///         },
     ///     });
     /// 

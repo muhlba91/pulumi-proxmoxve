@@ -4,7 +4,9 @@
 package io.muehlbachler.pulumi.proxmoxve.VM.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -23,6 +25,20 @@ public final class VirtualMachineMemory {
      * 
      */
     private @Nullable Integer floating;
+    /**
+     * @return Enable/disable hugepages memory (defaults to disable).
+     * 
+     */
+    private @Nullable String hugepages;
+    /**
+     * @return Keep hugepages memory after the VM is stopped (defaults
+     * to `false`).
+     * 
+     * Settings `hugepages` and `keep_hugepages` are only allowed for `root@pam` authenticated user.
+     * And required `cpu.numa` to be enabled.
+     * 
+     */
+    private @Nullable Boolean keepHugepages;
     /**
      * @return The shared memory in megabytes (defaults to `0`).
      * 
@@ -47,6 +63,24 @@ public final class VirtualMachineMemory {
         return Optional.ofNullable(this.floating);
     }
     /**
+     * @return Enable/disable hugepages memory (defaults to disable).
+     * 
+     */
+    public Optional<String> hugepages() {
+        return Optional.ofNullable(this.hugepages);
+    }
+    /**
+     * @return Keep hugepages memory after the VM is stopped (defaults
+     * to `false`).
+     * 
+     * Settings `hugepages` and `keep_hugepages` are only allowed for `root@pam` authenticated user.
+     * And required `cpu.numa` to be enabled.
+     * 
+     */
+    public Optional<Boolean> keepHugepages() {
+        return Optional.ofNullable(this.keepHugepages);
+    }
+    /**
      * @return The shared memory in megabytes (defaults to `0`).
      * 
      */
@@ -65,12 +99,16 @@ public final class VirtualMachineMemory {
     public static final class Builder {
         private @Nullable Integer dedicated;
         private @Nullable Integer floating;
+        private @Nullable String hugepages;
+        private @Nullable Boolean keepHugepages;
         private @Nullable Integer shared;
         public Builder() {}
         public Builder(VirtualMachineMemory defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dedicated = defaults.dedicated;
     	      this.floating = defaults.floating;
+    	      this.hugepages = defaults.hugepages;
+    	      this.keepHugepages = defaults.keepHugepages;
     	      this.shared = defaults.shared;
         }
 
@@ -87,6 +125,18 @@ public final class VirtualMachineMemory {
             return this;
         }
         @CustomType.Setter
+        public Builder hugepages(@Nullable String hugepages) {
+
+            this.hugepages = hugepages;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder keepHugepages(@Nullable Boolean keepHugepages) {
+
+            this.keepHugepages = keepHugepages;
+            return this;
+        }
+        @CustomType.Setter
         public Builder shared(@Nullable Integer shared) {
 
             this.shared = shared;
@@ -96,6 +146,8 @@ public final class VirtualMachineMemory {
             final var _resultValue = new VirtualMachineMemory();
             _resultValue.dedicated = dedicated;
             _resultValue.floating = floating;
+            _resultValue.hugepages = hugepages;
+            _resultValue.keepHugepages = keepHugepages;
             _resultValue.shared = shared;
             return _resultValue;
         }

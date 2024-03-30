@@ -336,6 +336,7 @@ class VirtualMachineCloneArgs:
 @pulumi.input_type
 class VirtualMachineCpuArgs:
     def __init__(__self__, *,
+                 affinity: Optional[pulumi.Input[str]] = None,
                  architecture: Optional[pulumi.Input[str]] = None,
                  cores: Optional[pulumi.Input[int]] = None,
                  flags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -346,6 +347,10 @@ class VirtualMachineCpuArgs:
                  type: Optional[pulumi.Input[str]] = None,
                  units: Optional[pulumi.Input[int]] = None):
         """
+        :param pulumi.Input[str] affinity: The CPU cores that are used to run the VM’s vCPU. The
+               value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.
+               For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four
+               CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
         :param pulumi.Input[str] architecture: The CPU architecture (defaults to `x86_64`).
         :param pulumi.Input[int] cores: The number of CPU cores (defaults to `1`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] flags: The CPU flags.
@@ -379,6 +384,8 @@ class VirtualMachineCpuArgs:
         :param pulumi.Input[str] type: The VGA type (defaults to `std`).
         :param pulumi.Input[int] units: The CPU units (defaults to `1024`).
         """
+        if affinity is not None:
+            pulumi.set(__self__, "affinity", affinity)
         if architecture is not None:
             pulumi.set(__self__, "architecture", architecture)
         if cores is not None:
@@ -397,6 +404,21 @@ class VirtualMachineCpuArgs:
             pulumi.set(__self__, "type", type)
         if units is not None:
             pulumi.set(__self__, "units", units)
+
+    @property
+    @pulumi.getter
+    def affinity(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CPU cores that are used to run the VM’s vCPU. The
+        value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.
+        For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four
+        CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+        """
+        return pulumi.get(self, "affinity")
+
+    @affinity.setter
+    def affinity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "affinity", value)
 
     @property
     @pulumi.getter
@@ -1601,18 +1623,30 @@ class VirtualMachineMemoryArgs:
     def __init__(__self__, *,
                  dedicated: Optional[pulumi.Input[int]] = None,
                  floating: Optional[pulumi.Input[int]] = None,
+                 hugepages: Optional[pulumi.Input[str]] = None,
+                 keep_hugepages: Optional[pulumi.Input[bool]] = None,
                  shared: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] dedicated: The dedicated memory in megabytes (defaults
                to `512`).
         :param pulumi.Input[int] floating: The floating memory in megabytes (defaults
                to `0`).
+        :param pulumi.Input[str] hugepages: Enable/disable hugepages memory (defaults to disable).
+        :param pulumi.Input[bool] keep_hugepages: Keep hugepages memory after the VM is stopped (defaults
+               to `false`).
+               
+               Settings `hugepages` and `keep_hugepages` are only allowed for `root@pam` authenticated user.
+               And required `cpu.numa` to be enabled.
         :param pulumi.Input[int] shared: The shared memory in megabytes (defaults to `0`).
         """
         if dedicated is not None:
             pulumi.set(__self__, "dedicated", dedicated)
         if floating is not None:
             pulumi.set(__self__, "floating", floating)
+        if hugepages is not None:
+            pulumi.set(__self__, "hugepages", hugepages)
+        if keep_hugepages is not None:
+            pulumi.set(__self__, "keep_hugepages", keep_hugepages)
         if shared is not None:
             pulumi.set(__self__, "shared", shared)
 
@@ -1641,6 +1675,34 @@ class VirtualMachineMemoryArgs:
     @floating.setter
     def floating(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "floating", value)
+
+    @property
+    @pulumi.getter
+    def hugepages(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enable/disable hugepages memory (defaults to disable).
+        """
+        return pulumi.get(self, "hugepages")
+
+    @hugepages.setter
+    def hugepages(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hugepages", value)
+
+    @property
+    @pulumi.getter(name="keepHugepages")
+    def keep_hugepages(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Keep hugepages memory after the VM is stopped (defaults
+        to `false`).
+
+        Settings `hugepages` and `keep_hugepages` are only allowed for `root@pam` authenticated user.
+        And required `cpu.numa` to be enabled.
+        """
+        return pulumi.get(self, "keep_hugepages")
+
+    @keep_hugepages.setter
+    def keep_hugepages(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "keep_hugepages", value)
 
     @property
     @pulumi.getter
@@ -1680,7 +1742,7 @@ class VirtualMachineNetworkDeviceArgs:
         :param pulumi.Input[int] mtu: Force MTU, for VirtIO only. Set to 1 to use the bridge MTU. Cannot be larger than the bridge MTU.
         :param pulumi.Input[int] queues: The number of queues for VirtIO (1..64).
         :param pulumi.Input[float] rate_limit: The rate limit in megabytes per second.
-        :param pulumi.Input[str] trunks: String containing a `;` separated list of VLAN trunks 
+        :param pulumi.Input[str] trunks: String containing a `;` separated list of VLAN trunks
                ("10;20;30"). Note that the VLAN-aware feature need to be enabled on the PVE
                Linux Bridge to use trunks.
         :param pulumi.Input[int] vlan_id: The VLAN identifier.
@@ -1821,7 +1883,7 @@ class VirtualMachineNetworkDeviceArgs:
     @pulumi.getter
     def trunks(self) -> Optional[pulumi.Input[str]]:
         """
-        String containing a `;` separated list of VLAN trunks 
+        String containing a `;` separated list of VLAN trunks
         ("10;20;30"). Note that the VLAN-aware feature need to be enabled on the PVE
         Linux Bridge to use trunks.
         """

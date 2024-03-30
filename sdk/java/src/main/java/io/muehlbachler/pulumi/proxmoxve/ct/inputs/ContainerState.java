@@ -342,6 +342,21 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Timeout for starting a container in seconds (defaults to 300).
+     * 
+     */
+    @Import(name="timeoutStart")
+    private @Nullable Output<Integer> timeoutStart;
+
+    /**
+     * @return Timeout for starting a container in seconds (defaults to 300).
+     * 
+     */
+    public Optional<Output<Integer>> timeoutStart() {
+        return Optional.ofNullable(this.timeoutStart);
+    }
+
+    /**
      * Whether the container runs as unprivileged on
      * the host (defaults to `false`).
      * 
@@ -396,6 +411,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         this.tags = $.tags;
         this.template = $.template;
         this.timeoutCreate = $.timeoutCreate;
+        this.timeoutStart = $.timeoutStart;
         this.unprivileged = $.unprivileged;
         this.vmId = $.vmId;
     }
@@ -883,6 +899,27 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder timeoutCreate(Integer timeoutCreate) {
             return timeoutCreate(Output.of(timeoutCreate));
+        }
+
+        /**
+         * @param timeoutStart Timeout for starting a container in seconds (defaults to 300).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeoutStart(@Nullable Output<Integer> timeoutStart) {
+            $.timeoutStart = timeoutStart;
+            return this;
+        }
+
+        /**
+         * @param timeoutStart Timeout for starting a container in seconds (defaults to 300).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeoutStart(Integer timeoutStart) {
+            return timeoutStart(Output.of(timeoutStart));
         }
 
         /**

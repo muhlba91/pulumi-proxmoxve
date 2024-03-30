@@ -72,6 +72,8 @@ type Container struct {
 	Template pulumi.BoolPtrOutput `pulumi:"template"`
 	// Timeout for creating a container in seconds (defaults to 1800).
 	TimeoutCreate pulumi.IntPtrOutput `pulumi:"timeoutCreate"`
+	// Timeout for starting a container in seconds (defaults to 300).
+	TimeoutStart pulumi.IntPtrOutput `pulumi:"timeoutStart"`
 	// Whether the container runs as unprivileged on
 	// the host (defaults to `false`).
 	Unprivileged pulumi.BoolPtrOutput `pulumi:"unprivileged"`
@@ -158,6 +160,8 @@ type containerState struct {
 	Template *bool `pulumi:"template"`
 	// Timeout for creating a container in seconds (defaults to 1800).
 	TimeoutCreate *int `pulumi:"timeoutCreate"`
+	// Timeout for starting a container in seconds (defaults to 300).
+	TimeoutStart *int `pulumi:"timeoutStart"`
 	// Whether the container runs as unprivileged on
 	// the host (defaults to `false`).
 	Unprivileged *bool `pulumi:"unprivileged"`
@@ -212,6 +216,8 @@ type ContainerState struct {
 	Template pulumi.BoolPtrInput
 	// Timeout for creating a container in seconds (defaults to 1800).
 	TimeoutCreate pulumi.IntPtrInput
+	// Timeout for starting a container in seconds (defaults to 300).
+	TimeoutStart pulumi.IntPtrInput
 	// Whether the container runs as unprivileged on
 	// the host (defaults to `false`).
 	Unprivileged pulumi.BoolPtrInput
@@ -270,6 +276,8 @@ type containerArgs struct {
 	Template *bool `pulumi:"template"`
 	// Timeout for creating a container in seconds (defaults to 1800).
 	TimeoutCreate *int `pulumi:"timeoutCreate"`
+	// Timeout for starting a container in seconds (defaults to 300).
+	TimeoutStart *int `pulumi:"timeoutStart"`
 	// Whether the container runs as unprivileged on
 	// the host (defaults to `false`).
 	Unprivileged *bool `pulumi:"unprivileged"`
@@ -325,6 +333,8 @@ type ContainerArgs struct {
 	Template pulumi.BoolPtrInput
 	// Timeout for creating a container in seconds (defaults to 1800).
 	TimeoutCreate pulumi.IntPtrInput
+	// Timeout for starting a container in seconds (defaults to 300).
+	TimeoutStart pulumi.IntPtrInput
 	// Whether the container runs as unprivileged on
 	// the host (defaults to `false`).
 	Unprivileged pulumi.BoolPtrInput
@@ -523,6 +533,11 @@ func (o ContainerOutput) Template() pulumi.BoolPtrOutput {
 // Timeout for creating a container in seconds (defaults to 1800).
 func (o ContainerOutput) TimeoutCreate() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Container) pulumi.IntPtrOutput { return v.TimeoutCreate }).(pulumi.IntPtrOutput)
+}
+
+// Timeout for starting a container in seconds (defaults to 300).
+func (o ContainerOutput) TimeoutStart() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Container) pulumi.IntPtrOutput { return v.TimeoutStart }).(pulumi.IntPtrOutput)
 }
 
 // Whether the container runs as unprivileged on

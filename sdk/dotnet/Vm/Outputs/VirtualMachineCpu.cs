@@ -14,6 +14,13 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     public sealed class VirtualMachineCpu
     {
         /// <summary>
+        /// The CPU cores that are used to run the VM’s vCPU. The
+        /// value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.
+        /// For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four
+        /// CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+        /// </summary>
+        public readonly string? Affinity;
+        /// <summary>
         /// The CPU architecture (defaults to `x86_64`).
         /// </summary>
         public readonly string? Architecture;
@@ -75,6 +82,8 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
 
         [OutputConstructor]
         private VirtualMachineCpu(
+            string? affinity,
+
             string? architecture,
 
             int? cores,
@@ -93,6 +102,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
 
             int? units)
         {
+            Affinity = affinity;
             Architecture = architecture;
             Cores = cores;
             Flags = flags;

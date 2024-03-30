@@ -316,6 +316,7 @@ class VirtualMachineClone(dict):
 @pulumi.output_type
 class VirtualMachineCpu(dict):
     def __init__(__self__, *,
+                 affinity: Optional[str] = None,
                  architecture: Optional[str] = None,
                  cores: Optional[int] = None,
                  flags: Optional[Sequence[str]] = None,
@@ -326,6 +327,10 @@ class VirtualMachineCpu(dict):
                  type: Optional[str] = None,
                  units: Optional[int] = None):
         """
+        :param str affinity: The CPU cores that are used to run the VM’s vCPU. The
+               value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.
+               For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four
+               CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
         :param str architecture: The CPU architecture (defaults to `x86_64`).
         :param int cores: The number of CPU cores (defaults to `1`).
         :param Sequence[str] flags: The CPU flags.
@@ -359,6 +364,8 @@ class VirtualMachineCpu(dict):
         :param str type: The VGA type (defaults to `std`).
         :param int units: The CPU units (defaults to `1024`).
         """
+        if affinity is not None:
+            pulumi.set(__self__, "affinity", affinity)
         if architecture is not None:
             pulumi.set(__self__, "architecture", architecture)
         if cores is not None:
@@ -377,6 +384,17 @@ class VirtualMachineCpu(dict):
             pulumi.set(__self__, "type", type)
         if units is not None:
             pulumi.set(__self__, "units", units)
+
+    @property
+    @pulumi.getter
+    def affinity(self) -> Optional[str]:
+        """
+        The CPU cores that are used to run the VM’s vCPU. The
+        value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.
+        For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four
+        CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+        """
+        return pulumi.get(self, "affinity")
 
     @property
     @pulumi.getter
@@ -1432,21 +1450,50 @@ class VirtualMachineInitializationUserAccount(dict):
 
 @pulumi.output_type
 class VirtualMachineMemory(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keepHugepages":
+            suggest = "keep_hugepages"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineMemory. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VirtualMachineMemory.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VirtualMachineMemory.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dedicated: Optional[int] = None,
                  floating: Optional[int] = None,
+                 hugepages: Optional[str] = None,
+                 keep_hugepages: Optional[bool] = None,
                  shared: Optional[int] = None):
         """
         :param int dedicated: The dedicated memory in megabytes (defaults
                to `512`).
         :param int floating: The floating memory in megabytes (defaults
                to `0`).
+        :param str hugepages: Enable/disable hugepages memory (defaults to disable).
+        :param bool keep_hugepages: Keep hugepages memory after the VM is stopped (defaults
+               to `false`).
+               
+               Settings `hugepages` and `keep_hugepages` are only allowed for `root@pam` authenticated user.
+               And required `cpu.numa` to be enabled.
         :param int shared: The shared memory in megabytes (defaults to `0`).
         """
         if dedicated is not None:
             pulumi.set(__self__, "dedicated", dedicated)
         if floating is not None:
             pulumi.set(__self__, "floating", floating)
+        if hugepages is not None:
+            pulumi.set(__self__, "hugepages", hugepages)
+        if keep_hugepages is not None:
+            pulumi.set(__self__, "keep_hugepages", keep_hugepages)
         if shared is not None:
             pulumi.set(__self__, "shared", shared)
 
@@ -1467,6 +1514,26 @@ class VirtualMachineMemory(dict):
         to `0`).
         """
         return pulumi.get(self, "floating")
+
+    @property
+    @pulumi.getter
+    def hugepages(self) -> Optional[str]:
+        """
+        Enable/disable hugepages memory (defaults to disable).
+        """
+        return pulumi.get(self, "hugepages")
+
+    @property
+    @pulumi.getter(name="keepHugepages")
+    def keep_hugepages(self) -> Optional[bool]:
+        """
+        Keep hugepages memory after the VM is stopped (defaults
+        to `false`).
+
+        Settings `hugepages` and `keep_hugepages` are only allowed for `root@pam` authenticated user.
+        And required `cpu.numa` to be enabled.
+        """
+        return pulumi.get(self, "keep_hugepages")
 
     @property
     @pulumi.getter
@@ -1523,7 +1590,7 @@ class VirtualMachineNetworkDevice(dict):
         :param int mtu: Force MTU, for VirtIO only. Set to 1 to use the bridge MTU. Cannot be larger than the bridge MTU.
         :param int queues: The number of queues for VirtIO (1..64).
         :param float rate_limit: The rate limit in megabytes per second.
-        :param str trunks: String containing a `;` separated list of VLAN trunks 
+        :param str trunks: String containing a `;` separated list of VLAN trunks
                ("10;20;30"). Note that the VLAN-aware feature need to be enabled on the PVE
                Linux Bridge to use trunks.
         :param int vlan_id: The VLAN identifier.
@@ -1628,7 +1695,7 @@ class VirtualMachineNetworkDevice(dict):
     @pulumi.getter
     def trunks(self) -> Optional[str]:
         """
-        String containing a `;` separated list of VLAN trunks 
+        String containing a `;` separated list of VLAN trunks
         ("10;20;30"). Note that the VLAN-aware feature need to be enabled on the PVE
         Linux Bridge to use trunks.
         """

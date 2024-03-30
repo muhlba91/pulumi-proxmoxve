@@ -535,6 +535,10 @@
                     }
                 }
             },
+            "proxmox_virtual_environment_node": {
+                "current": "proxmoxve:index/getNode:getNode",
+                "majorVersion": 6
+            },
             "proxmox_virtual_environment_nodes": {
                 "current": "proxmoxve:Cluster/getNodes:getNodes",
                 "majorVersion": 6,
@@ -746,7 +750,8 @@
             "proxmoxve:Permission/getUsers:getUsers": 0,
             "proxmoxve:Storage/getDatastores:getDatastores": 0,
             "proxmoxve:VM/getVirtualMachine:getVirtualMachine": 0,
-            "proxmoxve:VM/getVirtualMachines:getVirtualMachines": 0
+            "proxmoxve:VM/getVirtualMachines:getVirtualMachines": 0,
+            "proxmoxve:index/getNode:getNode": 0
         }
     },
     "renames": {

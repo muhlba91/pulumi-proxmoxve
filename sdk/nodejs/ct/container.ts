@@ -134,6 +134,10 @@ export class Container extends pulumi.CustomResource {
      */
     public readonly timeoutCreate!: pulumi.Output<number | undefined>;
     /**
+     * Timeout for starting a container in seconds (defaults to 300).
+     */
+    public readonly timeoutStart!: pulumi.Output<number | undefined>;
+    /**
      * Whether the container runs as unprivileged on
      * the host (defaults to `false`).
      */
@@ -176,6 +180,7 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["template"] = state ? state.template : undefined;
             resourceInputs["timeoutCreate"] = state ? state.timeoutCreate : undefined;
+            resourceInputs["timeoutStart"] = state ? state.timeoutStart : undefined;
             resourceInputs["unprivileged"] = state ? state.unprivileged : undefined;
             resourceInputs["vmId"] = state ? state.vmId : undefined;
         } else {
@@ -203,6 +208,7 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["template"] = args ? args.template : undefined;
             resourceInputs["timeoutCreate"] = args ? args.timeoutCreate : undefined;
+            resourceInputs["timeoutStart"] = args ? args.timeoutStart : undefined;
             resourceInputs["unprivileged"] = args ? args.unprivileged : undefined;
             resourceInputs["vmId"] = args ? args.vmId : undefined;
         }
@@ -301,6 +307,10 @@ export interface ContainerState {
      * Timeout for creating a container in seconds (defaults to 1800).
      */
     timeoutCreate?: pulumi.Input<number>;
+    /**
+     * Timeout for starting a container in seconds (defaults to 300).
+     */
+    timeoutStart?: pulumi.Input<number>;
     /**
      * Whether the container runs as unprivileged on
      * the host (defaults to `false`).
@@ -402,6 +412,10 @@ export interface ContainerArgs {
      * Timeout for creating a container in seconds (defaults to 1800).
      */
     timeoutCreate?: pulumi.Input<number>;
+    /**
+     * Timeout for starting a container in seconds (defaults to 300).
+     */
+    timeoutStart?: pulumi.Input<number>;
     /**
      * Whether the container runs as unprivileged on
      * the host (defaults to `false`).

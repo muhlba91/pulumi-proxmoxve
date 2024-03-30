@@ -27,6 +27,22 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<int>? Floating { get; set; }
 
         /// <summary>
+        /// Enable/disable hugepages memory (defaults to disable).
+        /// </summary>
+        [Input("hugepages")]
+        public Input<string>? Hugepages { get; set; }
+
+        /// <summary>
+        /// Keep hugepages memory after the VM is stopped (defaults
+        /// to `false`).
+        /// 
+        /// Settings `hugepages` and `keep_hugepages` are only allowed for `root@pam` authenticated user.
+        /// And required `cpu.numa` to be enabled.
+        /// </summary>
+        [Input("keepHugepages")]
+        public Input<bool>? KeepHugepages { get; set; }
+
+        /// <summary>
         /// The shared memory in megabytes (defaults to `0`).
         /// </summary>
         [Input("shared")]

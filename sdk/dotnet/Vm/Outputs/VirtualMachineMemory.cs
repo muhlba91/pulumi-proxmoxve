@@ -24,6 +24,18 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly int? Floating;
         /// <summary>
+        /// Enable/disable hugepages memory (defaults to disable).
+        /// </summary>
+        public readonly string? Hugepages;
+        /// <summary>
+        /// Keep hugepages memory after the VM is stopped (defaults
+        /// to `false`).
+        /// 
+        /// Settings `hugepages` and `keep_hugepages` are only allowed for `root@pam` authenticated user.
+        /// And required `cpu.numa` to be enabled.
+        /// </summary>
+        public readonly bool? KeepHugepages;
+        /// <summary>
         /// The shared memory in megabytes (defaults to `0`).
         /// </summary>
         public readonly int? Shared;
@@ -34,10 +46,16 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
 
             int? floating,
 
+            string? hugepages,
+
+            bool? keepHugepages,
+
             int? shared)
         {
             Dedicated = dedicated;
             Floating = floating;
+            Hugepages = hugepages;
+            KeepHugepages = keepHugepages;
             Shared = shared;
         }
     }

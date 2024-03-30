@@ -51,7 +51,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly double? RateLimit;
         /// <summary>
-        /// String containing a `;` separated list of VLAN trunks 
+        /// String containing a `;` separated list of VLAN trunks
         /// ("10;20;30"). Note that the VLAN-aware feature need to be enabled on the PVE
         /// Linux Bridge to use trunks.
         /// </summary>

@@ -795,6 +795,13 @@ export namespace VM {
 
     export interface VirtualMachineCpu {
         /**
+         * The CPU cores that are used to run the VM’s vCPU. The
+         * value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.
+         * For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four
+         * CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+         */
+        affinity?: string;
+        /**
          * The CPU architecture (defaults to `x8664`).
          */
         architecture?: string;
@@ -1171,6 +1178,18 @@ export namespace VM {
          */
         floating?: number;
         /**
+         * Enable/disable hugepages memory (defaults to disable).
+         */
+        hugepages?: string;
+        /**
+         * Keep hugepages memory after the VM is stopped (defaults
+         * to `false`).
+         *
+         * Settings `hugepages` and `keepHugepages` are only allowed for `root@pam` authenticated user.
+         * And required `cpu.numa` to be enabled.
+         */
+        keepHugepages?: boolean;
+        /**
          * The shared memory in megabytes (defaults to `0`).
          */
         shared?: number;
@@ -1215,7 +1234,7 @@ export namespace VM {
          */
         rateLimit?: number;
         /**
-         * String containing a `;` separated list of VLAN trunks 
+         * String containing a `;` separated list of VLAN trunks
          * ("10;20;30"). Note that the VLAN-aware feature need to be enabled on the PVE
          * Linux Bridge to use trunks.
          */

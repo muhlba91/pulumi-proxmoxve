@@ -152,6 +152,12 @@ namespace Pulumi.ProxmoxVE.CT
         public Output<int?> TimeoutCreate { get; private set; } = null!;
 
         /// <summary>
+        /// Timeout for starting a container in seconds (defaults to 300).
+        /// </summary>
+        [Output("timeoutStart")]
+        public Output<int?> TimeoutStart { get; private set; } = null!;
+
+        /// <summary>
         /// Whether the container runs as unprivileged on
         /// the host (defaults to `false`).
         /// </summary>
@@ -356,6 +362,12 @@ namespace Pulumi.ProxmoxVE.CT
         public Input<int>? TimeoutCreate { get; set; }
 
         /// <summary>
+        /// Timeout for starting a container in seconds (defaults to 300).
+        /// </summary>
+        [Input("timeoutStart")]
+        public Input<int>? TimeoutStart { get; set; }
+
+        /// <summary>
         /// Whether the container runs as unprivileged on
         /// the host (defaults to `false`).
         /// </summary>
@@ -519,6 +531,12 @@ namespace Pulumi.ProxmoxVE.CT
         /// </summary>
         [Input("timeoutCreate")]
         public Input<int>? TimeoutCreate { get; set; }
+
+        /// <summary>
+        /// Timeout for starting a container in seconds (defaults to 300).
+        /// </summary>
+        [Input("timeoutStart")]
+        public Input<int>? TimeoutStart { get; set; }
 
         /// <summary>
         /// Whether the container runs as unprivileged on

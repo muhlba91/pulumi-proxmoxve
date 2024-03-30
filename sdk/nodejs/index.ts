@@ -15,6 +15,11 @@ export type DNS = import("./dns").DNS;
 export const DNS: typeof import("./dns").DNS = null as any;
 utilities.lazyLoad(exports, ["DNS"], () => require("./dns"));
 
+export { GetNodeArgs, GetNodeResult, GetNodeOutputArgs } from "./getNode";
+export const getNode: typeof import("./getNode").getNode = null as any;
+export const getNodeOutput: typeof import("./getNode").getNodeOutput = null as any;
+utilities.lazyLoad(exports, ["getNode","getNodeOutput"], () => require("./getNode"));
+
 export { HostsArgs, HostsState } from "./hosts";
 export type Hosts = import("./hosts").Hosts;
 export const Hosts: typeof import("./hosts").Hosts = null as any;
