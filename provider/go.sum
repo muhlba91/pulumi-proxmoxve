@@ -1457,6 +1457,8 @@ github.com/bpg/terraform-provider-proxmox v0.51.0 h1:6Mh1wWRg0FxgOznt3kkuSVIiQUY
 github.com/bpg/terraform-provider-proxmox v0.51.0/go.mod h1:4gqOOed99MxneEYHLcnbXJhUNuCcv168RuEeY/KfBwQ=
 github.com/bpg/terraform-provider-proxmox v0.51.1 h1:Y6u0SEaI5sleUjTsZhdkwqXmPWm0PcscoU5Nct2/m08=
 github.com/bpg/terraform-provider-proxmox v0.51.1/go.mod h1:3srFp/JXTP8MxawKFDk5P63UFlqteC1cTPZX4sPeAUY=
+github.com/bpg/terraform-provider-proxmox v0.52.0 h1:b76UON9DTSyvqXr0/EHOqhQfKdR8PsqLAJKJ9LxH40M=
+github.com/bpg/terraform-provider-proxmox v0.52.0/go.mod h1:3srFp/JXTP8MxawKFDk5P63UFlqteC1cTPZX4sPeAUY=
 github.com/bshuster-repo/logrus-logstash-hook v0.4.1/go.mod h1:zsTqEiSzDgAa/8GZR7E1qaXrhYNDKBYy5/dWPTIflbk=
 github.com/bufbuild/protocompile v0.4.0 h1:LbFKd2XowZvQ/kajzguUp2DC9UEIQhIq77fZZlaQsNA=
 github.com/bufbuild/protocompile v0.4.0/go.mod h1:3v93+mbWn/v3xzN+31nwkJfrEpAUwp+BagBSZWx+TP8=
