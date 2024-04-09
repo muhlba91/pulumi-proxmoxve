@@ -162,6 +162,10 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly nodeName!: pulumi.Output<string>;
     /**
+     * The NUMA configuration.
+     */
+    public readonly numas!: pulumi.Output<outputs.VM.VirtualMachineNuma[] | undefined>;
+    /**
      * Specifies whether a VM will be started during system
      * boot. (defaults to `true`)
      */
@@ -321,6 +325,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["networkDevices"] = state ? state.networkDevices : undefined;
             resourceInputs["networkInterfaceNames"] = state ? state.networkInterfaceNames : undefined;
             resourceInputs["nodeName"] = state ? state.nodeName : undefined;
+            resourceInputs["numas"] = state ? state.numas : undefined;
             resourceInputs["onBoot"] = state ? state.onBoot : undefined;
             resourceInputs["operatingSystem"] = state ? state.operatingSystem : undefined;
             resourceInputs["poolId"] = state ? state.poolId : undefined;
@@ -375,6 +380,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkDevices"] = args ? args.networkDevices : undefined;
             resourceInputs["nodeName"] = args ? args.nodeName : undefined;
+            resourceInputs["numas"] = args ? args.numas : undefined;
             resourceInputs["onBoot"] = args ? args.onBoot : undefined;
             resourceInputs["operatingSystem"] = args ? args.operatingSystem : undefined;
             resourceInputs["poolId"] = args ? args.poolId : undefined;
@@ -526,6 +532,10 @@ export interface VirtualMachineState {
      * to.
      */
     nodeName?: pulumi.Input<string>;
+    /**
+     * The NUMA configuration.
+     */
+    numas?: pulumi.Input<pulumi.Input<inputs.VM.VirtualMachineNuma>[]>;
     /**
      * Specifies whether a VM will be started during system
      * boot. (defaults to `true`)
@@ -749,6 +759,10 @@ export interface VirtualMachineArgs {
      * to.
      */
     nodeName: pulumi.Input<string>;
+    /**
+     * The NUMA configuration.
+     */
+    numas?: pulumi.Input<pulumi.Input<inputs.VM.VirtualMachineNuma>[]>;
     /**
      * Specifies whether a VM will be started during system
      * boot. (defaults to `true`)

@@ -845,7 +845,7 @@ export namespace VM {
          */
         limit?: number;
         /**
-         * Enable/disable NUMA. (default to `false`)
+         * The NUMA configuration.
          */
         numa?: boolean;
         /**
@@ -1243,6 +1243,30 @@ export namespace VM {
          * The VLAN identifier.
          */
         vlanId?: number;
+    }
+
+    export interface VirtualMachineNuma {
+        /**
+         * The CPU cores to assign to the NUMA node (format is `0-7;16-31`).
+         */
+        cpus: string;
+        /**
+         * The device (defaults to `socket`).
+         * - `/dev/*` - A host serial device.
+         */
+        device: string;
+        /**
+         * The NUMA host nodes.
+         */
+        hostnodes?: string;
+        /**
+         * The VGA memory in megabytes (defaults to `16`).
+         */
+        memory: number;
+        /**
+         * The NUMA policy (defaults to `preferred`).
+         */
+        policy?: string;
     }
 
     export interface VirtualMachineOperatingSystem {

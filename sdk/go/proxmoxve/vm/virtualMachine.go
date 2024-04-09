@@ -88,6 +88,8 @@ type VirtualMachine struct {
 	// The name of the node to assign the virtual machine
 	// to.
 	NodeName pulumi.StringOutput `pulumi:"nodeName"`
+	// The NUMA configuration.
+	Numas VirtualMachineNumaArrayOutput `pulumi:"numas"`
 	// Specifies whether a VM will be started during system
 	// boot. (defaults to `true`)
 	OnBoot pulumi.BoolPtrOutput `pulumi:"onBoot"`
@@ -251,6 +253,8 @@ type virtualMachineState struct {
 	// The name of the node to assign the virtual machine
 	// to.
 	NodeName *string `pulumi:"nodeName"`
+	// The NUMA configuration.
+	Numas []VirtualMachineNuma `pulumi:"numas"`
 	// Specifies whether a VM will be started during system
 	// boot. (defaults to `true`)
 	OnBoot *bool `pulumi:"onBoot"`
@@ -382,6 +386,8 @@ type VirtualMachineState struct {
 	// The name of the node to assign the virtual machine
 	// to.
 	NodeName pulumi.StringPtrInput
+	// The NUMA configuration.
+	Numas VirtualMachineNumaArrayInput
 	// Specifies whether a VM will be started during system
 	// boot. (defaults to `true`)
 	OnBoot pulumi.BoolPtrInput
@@ -508,6 +514,8 @@ type virtualMachineArgs struct {
 	// The name of the node to assign the virtual machine
 	// to.
 	NodeName string `pulumi:"nodeName"`
+	// The NUMA configuration.
+	Numas []VirtualMachineNuma `pulumi:"numas"`
 	// Specifies whether a VM will be started during system
 	// boot. (defaults to `true`)
 	OnBoot *bool `pulumi:"onBoot"`
@@ -631,6 +639,8 @@ type VirtualMachineArgs struct {
 	// The name of the node to assign the virtual machine
 	// to.
 	NodeName pulumi.StringInput
+	// The NUMA configuration.
+	Numas VirtualMachineNumaArrayInput
 	// Specifies whether a VM will be started during system
 	// boot. (defaults to `true`)
 	OnBoot pulumi.BoolPtrInput
@@ -924,6 +934,11 @@ func (o VirtualMachineOutput) NetworkInterfaceNames() pulumi.StringArrayOutput {
 // to.
 func (o VirtualMachineOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.NodeName }).(pulumi.StringOutput)
+}
+
+// The NUMA configuration.
+func (o VirtualMachineOutput) Numas() VirtualMachineNumaArrayOutput {
+	return o.ApplyT(func(v *VirtualMachine) VirtualMachineNumaArrayOutput { return v.Numas }).(VirtualMachineNumaArrayOutput)
 }
 
 // Specifies whether a VM will be started during system

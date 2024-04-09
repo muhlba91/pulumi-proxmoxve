@@ -387,6 +387,9 @@
                     "network_interface_names": {
                         "maxItemsOne": false
                     },
+                    "numa": {
+                        "maxItemsOne": false
+                    },
                     "operating_system": {
                         "maxItemsOne": true
                     },

@@ -161,14 +161,14 @@ public final class VirtualMachineCpuArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Enable/disable NUMA. (default to `false`)
+     * The NUMA configuration.
      * 
      */
     @Import(name="numa")
     private @Nullable Output<Boolean> numa;
 
     /**
-     * @return Enable/disable NUMA. (default to `false`)
+     * @return The NUMA configuration.
      * 
      */
     public Optional<Output<Boolean>> numa() {
@@ -464,7 +464,7 @@ public final class VirtualMachineCpuArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param numa Enable/disable NUMA. (default to `false`)
+         * @param numa The NUMA configuration.
          * 
          * @return builder
          * 
@@ -475,7 +475,7 @@ public final class VirtualMachineCpuArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param numa Enable/disable NUMA. (default to `false`)
+         * @param numa The NUMA configuration.
          * 
          * @return builder
          * 

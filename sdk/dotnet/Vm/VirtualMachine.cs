@@ -192,6 +192,12 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<string> NodeName { get; private set; } = null!;
 
         /// <summary>
+        /// The NUMA configuration.
+        /// </summary>
+        [Output("numas")]
+        public Output<ImmutableArray<Outputs.VirtualMachineNuma>> Numas { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies whether a VM will be started during system
         /// boot. (defaults to `true`)
         /// </summary>
@@ -582,6 +588,18 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Input("nodeName", required: true)]
         public Input<string> NodeName { get; set; } = null!;
+
+        [Input("numas")]
+        private InputList<Inputs.VirtualMachineNumaArgs>? _numas;
+
+        /// <summary>
+        /// The NUMA configuration.
+        /// </summary>
+        public InputList<Inputs.VirtualMachineNumaArgs> Numas
+        {
+            get => _numas ?? (_numas = new InputList<Inputs.VirtualMachineNumaArgs>());
+            set => _numas = value;
+        }
 
         /// <summary>
         /// Specifies whether a VM will be started during system
@@ -992,6 +1010,18 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
+
+        [Input("numas")]
+        private InputList<Inputs.VirtualMachineNumaGetArgs>? _numas;
+
+        /// <summary>
+        /// The NUMA configuration.
+        /// </summary>
+        public InputList<Inputs.VirtualMachineNumaGetArgs> Numas
+        {
+            get => _numas ?? (_numas = new InputList<Inputs.VirtualMachineNumaGetArgs>());
+            set => _numas = value;
+        }
 
         /// <summary>
         /// Specifies whether a VM will be started during system

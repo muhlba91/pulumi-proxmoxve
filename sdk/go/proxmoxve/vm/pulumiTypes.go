@@ -869,7 +869,7 @@ type VirtualMachineCpu struct {
 	Hotplugged *int `pulumi:"hotplugged"`
 	// Limit of CPU usage, `0...128`. (defaults to `0` -- no limit).
 	Limit *int `pulumi:"limit"`
-	// Enable/disable NUMA. (default to `false`)
+	// The NUMA configuration.
 	Numa *bool `pulumi:"numa"`
 	// The number of CPU sockets (defaults to `1`).
 	Sockets *int `pulumi:"sockets"`
@@ -929,7 +929,7 @@ type VirtualMachineCpuArgs struct {
 	Hotplugged pulumi.IntPtrInput `pulumi:"hotplugged"`
 	// Limit of CPU usage, `0...128`. (defaults to `0` -- no limit).
 	Limit pulumi.IntPtrInput `pulumi:"limit"`
-	// Enable/disable NUMA. (default to `false`)
+	// The NUMA configuration.
 	Numa pulumi.BoolPtrInput `pulumi:"numa"`
 	// The number of CPU sockets (defaults to `1`).
 	Sockets pulumi.IntPtrInput `pulumi:"sockets"`
@@ -1072,7 +1072,7 @@ func (o VirtualMachineCpuOutput) Limit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCpu) *int { return v.Limit }).(pulumi.IntPtrOutput)
 }
 
-// Enable/disable NUMA. (default to `false`)
+// The NUMA configuration.
 func (o VirtualMachineCpuOutput) Numa() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCpu) *bool { return v.Numa }).(pulumi.BoolPtrOutput)
 }
@@ -1202,7 +1202,7 @@ func (o VirtualMachineCpuPtrOutput) Limit() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Enable/disable NUMA. (default to `false`)
+// The NUMA configuration.
 func (o VirtualMachineCpuPtrOutput) Numa() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCpu) *bool {
 		if v == nil {
@@ -3766,6 +3766,142 @@ func (o VirtualMachineNetworkDeviceArrayOutput) Index(i pulumi.IntInput) Virtual
 	}).(VirtualMachineNetworkDeviceOutput)
 }
 
+type VirtualMachineNuma struct {
+	// The CPU cores to assign to the NUMA node (format is `0-7;16-31`).
+	Cpus string `pulumi:"cpus"`
+	// The device (defaults to `socket`).
+	// - `/dev/*` - A host serial device.
+	Device string `pulumi:"device"`
+	// The NUMA host nodes.
+	Hostnodes *string `pulumi:"hostnodes"`
+	// The VGA memory in megabytes (defaults to `16`).
+	Memory int `pulumi:"memory"`
+	// The NUMA policy (defaults to `preferred`).
+	Policy *string `pulumi:"policy"`
+}
+
+// VirtualMachineNumaInput is an input type that accepts VirtualMachineNumaArgs and VirtualMachineNumaOutput values.
+// You can construct a concrete instance of `VirtualMachineNumaInput` via:
+//
+//	VirtualMachineNumaArgs{...}
+type VirtualMachineNumaInput interface {
+	pulumi.Input
+
+	ToVirtualMachineNumaOutput() VirtualMachineNumaOutput
+	ToVirtualMachineNumaOutputWithContext(context.Context) VirtualMachineNumaOutput
+}
+
+type VirtualMachineNumaArgs struct {
+	// The CPU cores to assign to the NUMA node (format is `0-7;16-31`).
+	Cpus pulumi.StringInput `pulumi:"cpus"`
+	// The device (defaults to `socket`).
+	// - `/dev/*` - A host serial device.
+	Device pulumi.StringInput `pulumi:"device"`
+	// The NUMA host nodes.
+	Hostnodes pulumi.StringPtrInput `pulumi:"hostnodes"`
+	// The VGA memory in megabytes (defaults to `16`).
+	Memory pulumi.IntInput `pulumi:"memory"`
+	// The NUMA policy (defaults to `preferred`).
+	Policy pulumi.StringPtrInput `pulumi:"policy"`
+}
+
+func (VirtualMachineNumaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineNuma)(nil)).Elem()
+}
+
+func (i VirtualMachineNumaArgs) ToVirtualMachineNumaOutput() VirtualMachineNumaOutput {
+	return i.ToVirtualMachineNumaOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineNumaArgs) ToVirtualMachineNumaOutputWithContext(ctx context.Context) VirtualMachineNumaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineNumaOutput)
+}
+
+// VirtualMachineNumaArrayInput is an input type that accepts VirtualMachineNumaArray and VirtualMachineNumaArrayOutput values.
+// You can construct a concrete instance of `VirtualMachineNumaArrayInput` via:
+//
+//	VirtualMachineNumaArray{ VirtualMachineNumaArgs{...} }
+type VirtualMachineNumaArrayInput interface {
+	pulumi.Input
+
+	ToVirtualMachineNumaArrayOutput() VirtualMachineNumaArrayOutput
+	ToVirtualMachineNumaArrayOutputWithContext(context.Context) VirtualMachineNumaArrayOutput
+}
+
+type VirtualMachineNumaArray []VirtualMachineNumaInput
+
+func (VirtualMachineNumaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualMachineNuma)(nil)).Elem()
+}
+
+func (i VirtualMachineNumaArray) ToVirtualMachineNumaArrayOutput() VirtualMachineNumaArrayOutput {
+	return i.ToVirtualMachineNumaArrayOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineNumaArray) ToVirtualMachineNumaArrayOutputWithContext(ctx context.Context) VirtualMachineNumaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineNumaArrayOutput)
+}
+
+type VirtualMachineNumaOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineNumaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineNuma)(nil)).Elem()
+}
+
+func (o VirtualMachineNumaOutput) ToVirtualMachineNumaOutput() VirtualMachineNumaOutput {
+	return o
+}
+
+func (o VirtualMachineNumaOutput) ToVirtualMachineNumaOutputWithContext(ctx context.Context) VirtualMachineNumaOutput {
+	return o
+}
+
+// The CPU cores to assign to the NUMA node (format is `0-7;16-31`).
+func (o VirtualMachineNumaOutput) Cpus() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualMachineNuma) string { return v.Cpus }).(pulumi.StringOutput)
+}
+
+// The device (defaults to `socket`).
+// - `/dev/*` - A host serial device.
+func (o VirtualMachineNumaOutput) Device() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualMachineNuma) string { return v.Device }).(pulumi.StringOutput)
+}
+
+// The NUMA host nodes.
+func (o VirtualMachineNumaOutput) Hostnodes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineNuma) *string { return v.Hostnodes }).(pulumi.StringPtrOutput)
+}
+
+// The VGA memory in megabytes (defaults to `16`).
+func (o VirtualMachineNumaOutput) Memory() pulumi.IntOutput {
+	return o.ApplyT(func(v VirtualMachineNuma) int { return v.Memory }).(pulumi.IntOutput)
+}
+
+// The NUMA policy (defaults to `preferred`).
+func (o VirtualMachineNumaOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineNuma) *string { return v.Policy }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineNumaArrayOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineNumaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualMachineNuma)(nil)).Elem()
+}
+
+func (o VirtualMachineNumaArrayOutput) ToVirtualMachineNumaArrayOutput() VirtualMachineNumaArrayOutput {
+	return o
+}
+
+func (o VirtualMachineNumaArrayOutput) ToVirtualMachineNumaArrayOutputWithContext(ctx context.Context) VirtualMachineNumaArrayOutput {
+	return o
+}
+
+func (o VirtualMachineNumaArrayOutput) Index(i pulumi.IntInput) VirtualMachineNumaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualMachineNuma {
+		return vs[0].([]VirtualMachineNuma)[vs[1].(int)]
+	}).(VirtualMachineNumaOutput)
+}
+
 type VirtualMachineOperatingSystem struct {
 	// The VGA type (defaults to `std`).
 	Type *string `pulumi:"type"`
@@ -5063,6 +5199,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineMemoryPtrInput)(nil)).Elem(), VirtualMachineMemoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineNetworkDeviceInput)(nil)).Elem(), VirtualMachineNetworkDeviceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineNetworkDeviceArrayInput)(nil)).Elem(), VirtualMachineNetworkDeviceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineNumaInput)(nil)).Elem(), VirtualMachineNumaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineNumaArrayInput)(nil)).Elem(), VirtualMachineNumaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineOperatingSystemInput)(nil)).Elem(), VirtualMachineOperatingSystemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineOperatingSystemPtrInput)(nil)).Elem(), VirtualMachineOperatingSystemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineSerialDeviceInput)(nil)).Elem(), VirtualMachineSerialDeviceArgs{})
@@ -5113,6 +5251,8 @@ func init() {
 	pulumi.RegisterOutputType(VirtualMachineMemoryPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineNetworkDeviceOutput{})
 	pulumi.RegisterOutputType(VirtualMachineNetworkDeviceArrayOutput{})
+	pulumi.RegisterOutputType(VirtualMachineNumaOutput{})
+	pulumi.RegisterOutputType(VirtualMachineNumaArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachineOperatingSystemOutput{})
 	pulumi.RegisterOutputType(VirtualMachineOperatingSystemPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineSerialDeviceOutput{})

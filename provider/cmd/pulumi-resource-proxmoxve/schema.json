@@ -998,7 +998,7 @@
                 },
                 "numa": {
                     "type": "boolean",
-                    "description": "Enable/disable NUMA. (default to `false`)\n"
+                    "description": "The NUMA configuration.\n"
                 },
                 "sockets": {
                     "type": "integer",
@@ -1416,6 +1416,36 @@
                     ]
                 }
             }
+        },
+        "proxmoxve:VM/VirtualMachineNuma:VirtualMachineNuma": {
+            "properties": {
+                "cpus": {
+                    "type": "string",
+                    "description": "The CPU cores to assign to the NUMA node (format is `0-7;16-31`).\n"
+                },
+                "device": {
+                    "type": "string",
+                    "description": "The device (defaults to `socket`).\n- `/dev/*` - A host serial device.\n"
+                },
+                "hostnodes": {
+                    "type": "string",
+                    "description": "The NUMA host nodes.\n"
+                },
+                "memory": {
+                    "type": "integer",
+                    "description": "The VGA memory in megabytes (defaults to `16`).\n"
+                },
+                "policy": {
+                    "type": "string",
+                    "description": "The NUMA policy (defaults to `preferred`).\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "cpus",
+                "device",
+                "memory"
+            ]
         },
         "proxmoxve:VM/VirtualMachineOperatingSystem:VirtualMachineOperatingSystem": {
             "properties": {
@@ -4381,6 +4411,13 @@
                     "type": "string",
                     "description": "The name of the node to assign the virtual machine\nto.\n"
                 },
+                "numas": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/proxmoxve:VM/VirtualMachineNuma:VirtualMachineNuma"
+                    },
+                    "description": "The NUMA configuration.\n"
+                },
                 "onBoot": {
                     "type": "boolean",
                     "description": "Specifies whether a VM will be started during system\nboot. (defaults to `true`)\n"
@@ -4613,6 +4650,13 @@
                 "nodeName": {
                     "type": "string",
                     "description": "The name of the node to assign the virtual machine\nto.\n"
+                },
+                "numas": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/proxmoxve:VM/VirtualMachineNuma:VirtualMachineNuma"
+                    },
+                    "description": "The NUMA configuration.\n"
                 },
                 "onBoot": {
                     "type": "boolean",
@@ -4871,6 +4915,13 @@
                     "nodeName": {
                         "type": "string",
                         "description": "The name of the node to assign the virtual machine\nto.\n"
+                    },
+                    "numas": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/proxmoxve:VM/VirtualMachineNuma:VirtualMachineNuma"
+                        },
+                        "description": "The NUMA configuration.\n"
                     },
                     "onBoot": {
                         "type": "boolean",

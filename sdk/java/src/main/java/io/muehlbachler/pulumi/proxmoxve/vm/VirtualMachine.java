@@ -21,6 +21,7 @@ import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineHostpci;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineInitialization;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineMemory;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineNetworkDevice;
+import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineNuma;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineOperatingSystem;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineSerialDevice;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineSmbios;
@@ -432,6 +433,20 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      */
     public Output<String> nodeName() {
         return this.nodeName;
+    }
+    /**
+     * The NUMA configuration.
+     * 
+     */
+    @Export(name="numas", refs={List.class,VirtualMachineNuma.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<VirtualMachineNuma>> numas;
+
+    /**
+     * @return The NUMA configuration.
+     * 
+     */
+    public Output<Optional<List<VirtualMachineNuma>>> numas() {
+        return Codegen.optional(this.numas);
     }
     /**
      * Specifies whether a VM will be started during system

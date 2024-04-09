@@ -811,7 +811,7 @@ export namespace VM {
          */
         limit?: pulumi.Input<number>;
         /**
-         * Enable/disable NUMA. (default to `false`)
+         * The NUMA configuration.
          */
         numa?: pulumi.Input<boolean>;
         /**
@@ -1209,6 +1209,30 @@ export namespace VM {
          * The VLAN identifier.
          */
         vlanId?: pulumi.Input<number>;
+    }
+
+    export interface VirtualMachineNuma {
+        /**
+         * The CPU cores to assign to the NUMA node (format is `0-7;16-31`).
+         */
+        cpus: pulumi.Input<string>;
+        /**
+         * The device (defaults to `socket`).
+         * - `/dev/*` - A host serial device.
+         */
+        device: pulumi.Input<string>;
+        /**
+         * The NUMA host nodes.
+         */
+        hostnodes?: pulumi.Input<string>;
+        /**
+         * The VGA memory in megabytes (defaults to `16`).
+         */
+        memory: pulumi.Input<number>;
+        /**
+         * The NUMA policy (defaults to `preferred`).
+         */
+        policy?: pulumi.Input<string>;
     }
 
     export interface VirtualMachineOperatingSystem {

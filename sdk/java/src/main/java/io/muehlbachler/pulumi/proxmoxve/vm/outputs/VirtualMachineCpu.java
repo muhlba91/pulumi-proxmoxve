@@ -71,7 +71,7 @@ public final class VirtualMachineCpu {
      */
     private @Nullable Integer limit;
     /**
-     * @return Enable/disable NUMA. (default to `false`)
+     * @return The NUMA configuration.
      * 
      */
     private @Nullable Boolean numa;
@@ -161,7 +161,7 @@ public final class VirtualMachineCpu {
         return Optional.ofNullable(this.limit);
     }
     /**
-     * @return Enable/disable NUMA. (default to `false`)
+     * @return The NUMA configuration.
      * 
      */
     public Optional<Boolean> numa() {

@@ -28,6 +28,7 @@ __all__ = [
     'VirtualMachineInitializationUserAccount',
     'VirtualMachineMemory',
     'VirtualMachineNetworkDevice',
+    'VirtualMachineNuma',
     'VirtualMachineOperatingSystem',
     'VirtualMachineSerialDevice',
     'VirtualMachineSmbios',
@@ -359,7 +360,7 @@ class VirtualMachineCpu(dict):
         :param int hotplugged: The number of hotplugged vCPUs (defaults
                to `0`).
         :param int limit: Limit of CPU usage, `0...128`. (defaults to `0` -- no limit).
-        :param bool numa: Enable/disable NUMA. (default to `false`)
+        :param bool numa: The NUMA configuration.
         :param int sockets: The number of CPU sockets (defaults to `1`).
         :param str type: The VGA type (defaults to `std`).
         :param int units: The CPU units (defaults to `1024`).
@@ -463,7 +464,7 @@ class VirtualMachineCpu(dict):
     @pulumi.getter
     def numa(self) -> Optional[bool]:
         """
-        Enable/disable NUMA. (default to `false`)
+        The NUMA configuration.
         """
         return pulumi.get(self, "numa")
 
@@ -1708,6 +1709,72 @@ class VirtualMachineNetworkDevice(dict):
         The VLAN identifier.
         """
         return pulumi.get(self, "vlan_id")
+
+
+@pulumi.output_type
+class VirtualMachineNuma(dict):
+    def __init__(__self__, *,
+                 cpus: str,
+                 device: str,
+                 memory: int,
+                 hostnodes: Optional[str] = None,
+                 policy: Optional[str] = None):
+        """
+        :param str cpus: The CPU cores to assign to the NUMA node (format is `0-7;16-31`).
+        :param str device: The device (defaults to `socket`).
+               - `/dev/*` - A host serial device.
+        :param int memory: The VGA memory in megabytes (defaults to `16`).
+        :param str hostnodes: The NUMA host nodes.
+        :param str policy: The NUMA policy (defaults to `preferred`).
+        """
+        pulumi.set(__self__, "cpus", cpus)
+        pulumi.set(__self__, "device", device)
+        pulumi.set(__self__, "memory", memory)
+        if hostnodes is not None:
+            pulumi.set(__self__, "hostnodes", hostnodes)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+
+    @property
+    @pulumi.getter
+    def cpus(self) -> str:
+        """
+        The CPU cores to assign to the NUMA node (format is `0-7;16-31`).
+        """
+        return pulumi.get(self, "cpus")
+
+    @property
+    @pulumi.getter
+    def device(self) -> str:
+        """
+        The device (defaults to `socket`).
+        - `/dev/*` - A host serial device.
+        """
+        return pulumi.get(self, "device")
+
+    @property
+    @pulumi.getter
+    def memory(self) -> int:
+        """
+        The VGA memory in megabytes (defaults to `16`).
+        """
+        return pulumi.get(self, "memory")
+
+    @property
+    @pulumi.getter
+    def hostnodes(self) -> Optional[str]:
+        """
+        The NUMA host nodes.
+        """
+        return pulumi.get(self, "hostnodes")
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[str]:
+        """
+        The NUMA policy (defaults to `preferred`).
+        """
+        return pulumi.get(self, "policy")
 
 
 @pulumi.output_type

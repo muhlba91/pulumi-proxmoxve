@@ -16,6 +16,7 @@ import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineHostpciArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineInitializationArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineMemoryArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineNetworkDeviceArgs;
+import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineNumaArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineOperatingSystemArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineSerialDeviceArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineSmbiosArgs;
@@ -440,6 +441,21 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<String>> nodeName() {
         return Optional.ofNullable(this.nodeName);
+    }
+
+    /**
+     * The NUMA configuration.
+     * 
+     */
+    @Import(name="numas")
+    private @Nullable Output<List<VirtualMachineNumaArgs>> numas;
+
+    /**
+     * @return The NUMA configuration.
+     * 
+     */
+    public Optional<Output<List<VirtualMachineNumaArgs>>> numas() {
+        return Optional.ofNullable(this.numas);
     }
 
     /**
@@ -893,6 +909,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         this.networkDevices = $.networkDevices;
         this.networkInterfaceNames = $.networkInterfaceNames;
         this.nodeName = $.nodeName;
+        this.numas = $.numas;
         this.onBoot = $.onBoot;
         this.operatingSystem = $.operatingSystem;
         this.poolId = $.poolId;
@@ -1584,6 +1601,37 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
          */
         public Builder nodeName(String nodeName) {
             return nodeName(Output.of(nodeName));
+        }
+
+        /**
+         * @param numas The NUMA configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder numas(@Nullable Output<List<VirtualMachineNumaArgs>> numas) {
+            $.numas = numas;
+            return this;
+        }
+
+        /**
+         * @param numas The NUMA configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder numas(List<VirtualMachineNumaArgs> numas) {
+            return numas(Output.of(numas));
+        }
+
+        /**
+         * @param numas The NUMA configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder numas(VirtualMachineNumaArgs... numas) {
+            return numas(List.of(numas));
         }
 
         /**

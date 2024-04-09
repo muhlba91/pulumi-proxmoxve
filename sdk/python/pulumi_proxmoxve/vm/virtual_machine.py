@@ -39,6 +39,7 @@ class VirtualMachineArgs:
                  migrate: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_devices: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkDeviceArgs']]]] = None,
+                 numas: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineNumaArgs']]]] = None,
                  on_boot: Optional[pulumi.Input[bool]] = None,
                  operating_system: Optional[pulumi.Input['VirtualMachineOperatingSystemArgs']] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
@@ -95,6 +96,7 @@ class VirtualMachineArgs:
                it (defaults to `false`).
         :param pulumi.Input[str] name: The virtual machine name.
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkDeviceArgs']]] network_devices: A network device (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineNumaArgs']]] numas: The NUMA configuration.
         :param pulumi.Input[bool] on_boot: Specifies whether a VM will be started during system
                boot. (defaults to `true`)
         :param pulumi.Input['VirtualMachineOperatingSystemArgs'] operating_system: The Operating System configuration.
@@ -183,6 +185,8 @@ class VirtualMachineArgs:
             pulumi.set(__self__, "name", name)
         if network_devices is not None:
             pulumi.set(__self__, "network_devices", network_devices)
+        if numas is not None:
+            pulumi.set(__self__, "numas", numas)
         if on_boot is not None:
             pulumi.set(__self__, "on_boot", on_boot)
         if operating_system is not None:
@@ -516,6 +520,18 @@ class VirtualMachineArgs:
     @network_devices.setter
     def network_devices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkDeviceArgs']]]]):
         pulumi.set(self, "network_devices", value)
+
+    @property
+    @pulumi.getter
+    def numas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineNumaArgs']]]]:
+        """
+        The NUMA configuration.
+        """
+        return pulumi.get(self, "numas")
+
+    @numas.setter
+    def numas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineNumaArgs']]]]):
+        pulumi.set(self, "numas", value)
 
     @property
     @pulumi.getter(name="onBoot")
@@ -875,6 +891,7 @@ class _VirtualMachineState:
                  network_devices: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkDeviceArgs']]]] = None,
                  network_interface_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
+                 numas: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineNumaArgs']]]] = None,
                  on_boot: Optional[pulumi.Input[bool]] = None,
                  operating_system: Optional[pulumi.Input['VirtualMachineOperatingSystemArgs']] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
@@ -937,6 +954,7 @@ class _VirtualMachineState:
                agent (empty list when `agent.enabled` is `false`)
         :param pulumi.Input[str] node_name: The name of the node to assign the virtual machine
                to.
+        :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineNumaArgs']]] numas: The NUMA configuration.
         :param pulumi.Input[bool] on_boot: Specifies whether a VM will be started during system
                boot. (defaults to `true`)
         :param pulumi.Input['VirtualMachineOperatingSystemArgs'] operating_system: The Operating System configuration.
@@ -1032,6 +1050,8 @@ class _VirtualMachineState:
             pulumi.set(__self__, "network_interface_names", network_interface_names)
         if node_name is not None:
             pulumi.set(__self__, "node_name", node_name)
+        if numas is not None:
+            pulumi.set(__self__, "numas", numas)
         if on_boot is not None:
             pulumi.set(__self__, "on_boot", on_boot)
         if operating_system is not None:
@@ -1406,6 +1426,18 @@ class _VirtualMachineState:
         pulumi.set(self, "node_name", value)
 
     @property
+    @pulumi.getter
+    def numas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineNumaArgs']]]]:
+        """
+        The NUMA configuration.
+        """
+        return pulumi.get(self, "numas")
+
+    @numas.setter
+    def numas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineNumaArgs']]]]):
+        pulumi.set(self, "numas", value)
+
+    @property
     @pulumi.getter(name="onBoot")
     def on_boot(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1762,6 +1794,7 @@ class VirtualMachine(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNetworkDeviceArgs']]]]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
+                 numas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNumaArgs']]]]] = None,
                  on_boot: Optional[pulumi.Input[bool]] = None,
                  operating_system: Optional[pulumi.Input[pulumi.InputType['VirtualMachineOperatingSystemArgs']]] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
@@ -1834,6 +1867,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNetworkDeviceArgs']]]] network_devices: A network device (multiple blocks supported).
         :param pulumi.Input[str] node_name: The name of the node to assign the virtual machine
                to.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNumaArgs']]]] numas: The NUMA configuration.
         :param pulumi.Input[bool] on_boot: Specifies whether a VM will be started during system
                boot. (defaults to `true`)
         :param pulumi.Input[pulumi.InputType['VirtualMachineOperatingSystemArgs']] operating_system: The Operating System configuration.
@@ -1936,6 +1970,7 @@ class VirtualMachine(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNetworkDeviceArgs']]]]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
+                 numas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNumaArgs']]]]] = None,
                  on_boot: Optional[pulumi.Input[bool]] = None,
                  operating_system: Optional[pulumi.Input[pulumi.InputType['VirtualMachineOperatingSystemArgs']]] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
@@ -1996,6 +2031,7 @@ class VirtualMachine(pulumi.CustomResource):
             if node_name is None and not opts.urn:
                 raise TypeError("Missing required property 'node_name'")
             __props__.__dict__["node_name"] = node_name
+            __props__.__dict__["numas"] = numas
             __props__.__dict__["on_boot"] = on_boot
             __props__.__dict__["operating_system"] = operating_system
             __props__.__dict__["pool_id"] = pool_id
@@ -2061,6 +2097,7 @@ class VirtualMachine(pulumi.CustomResource):
             network_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNetworkDeviceArgs']]]]] = None,
             network_interface_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             node_name: Optional[pulumi.Input[str]] = None,
+            numas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNumaArgs']]]]] = None,
             on_boot: Optional[pulumi.Input[bool]] = None,
             operating_system: Optional[pulumi.Input[pulumi.InputType['VirtualMachineOperatingSystemArgs']]] = None,
             pool_id: Optional[pulumi.Input[str]] = None,
@@ -2128,6 +2165,7 @@ class VirtualMachine(pulumi.CustomResource):
                agent (empty list when `agent.enabled` is `false`)
         :param pulumi.Input[str] node_name: The name of the node to assign the virtual machine
                to.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNumaArgs']]]] numas: The NUMA configuration.
         :param pulumi.Input[bool] on_boot: Specifies whether a VM will be started during system
                boot. (defaults to `true`)
         :param pulumi.Input[pulumi.InputType['VirtualMachineOperatingSystemArgs']] operating_system: The Operating System configuration.
@@ -2201,6 +2239,7 @@ class VirtualMachine(pulumi.CustomResource):
         __props__.__dict__["network_devices"] = network_devices
         __props__.__dict__["network_interface_names"] = network_interface_names
         __props__.__dict__["node_name"] = node_name
+        __props__.__dict__["numas"] = numas
         __props__.__dict__["on_boot"] = on_boot
         __props__.__dict__["operating_system"] = operating_system
         __props__.__dict__["pool_id"] = pool_id
@@ -2444,6 +2483,14 @@ class VirtualMachine(pulumi.CustomResource):
         to.
         """
         return pulumi.get(self, "node_name")
+
+    @property
+    @pulumi.getter
+    def numas(self) -> pulumi.Output[Optional[Sequence['outputs.VirtualMachineNuma']]]:
+        """
+        The NUMA configuration.
+        """
+        return pulumi.get(self, "numas")
 
     @property
     @pulumi.getter(name="onBoot")

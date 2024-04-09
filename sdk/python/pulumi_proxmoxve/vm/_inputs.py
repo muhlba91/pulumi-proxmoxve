@@ -27,6 +27,7 @@ __all__ = [
     'VirtualMachineInitializationUserAccountArgs',
     'VirtualMachineMemoryArgs',
     'VirtualMachineNetworkDeviceArgs',
+    'VirtualMachineNumaArgs',
     'VirtualMachineOperatingSystemArgs',
     'VirtualMachineSerialDeviceArgs',
     'VirtualMachineSmbiosArgs',
@@ -379,7 +380,7 @@ class VirtualMachineCpuArgs:
         :param pulumi.Input[int] hotplugged: The number of hotplugged vCPUs (defaults
                to `0`).
         :param pulumi.Input[int] limit: Limit of CPU usage, `0...128`. (defaults to `0` -- no limit).
-        :param pulumi.Input[bool] numa: Enable/disable NUMA. (default to `false`)
+        :param pulumi.Input[bool] numa: The NUMA configuration.
         :param pulumi.Input[int] sockets: The number of CPU sockets (defaults to `1`).
         :param pulumi.Input[str] type: The VGA type (defaults to `std`).
         :param pulumi.Input[int] units: The CPU units (defaults to `1024`).
@@ -507,7 +508,7 @@ class VirtualMachineCpuArgs:
     @pulumi.getter
     def numa(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable/disable NUMA. (default to `false`)
+        The NUMA configuration.
         """
         return pulumi.get(self, "numa")
 
@@ -1904,6 +1905,92 @@ class VirtualMachineNetworkDeviceArgs:
     @vlan_id.setter
     def vlan_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "vlan_id", value)
+
+
+@pulumi.input_type
+class VirtualMachineNumaArgs:
+    def __init__(__self__, *,
+                 cpus: pulumi.Input[str],
+                 device: pulumi.Input[str],
+                 memory: pulumi.Input[int],
+                 hostnodes: Optional[pulumi.Input[str]] = None,
+                 policy: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] cpus: The CPU cores to assign to the NUMA node (format is `0-7;16-31`).
+        :param pulumi.Input[str] device: The device (defaults to `socket`).
+               - `/dev/*` - A host serial device.
+        :param pulumi.Input[int] memory: The VGA memory in megabytes (defaults to `16`).
+        :param pulumi.Input[str] hostnodes: The NUMA host nodes.
+        :param pulumi.Input[str] policy: The NUMA policy (defaults to `preferred`).
+        """
+        pulumi.set(__self__, "cpus", cpus)
+        pulumi.set(__self__, "device", device)
+        pulumi.set(__self__, "memory", memory)
+        if hostnodes is not None:
+            pulumi.set(__self__, "hostnodes", hostnodes)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+
+    @property
+    @pulumi.getter
+    def cpus(self) -> pulumi.Input[str]:
+        """
+        The CPU cores to assign to the NUMA node (format is `0-7;16-31`).
+        """
+        return pulumi.get(self, "cpus")
+
+    @cpus.setter
+    def cpus(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cpus", value)
+
+    @property
+    @pulumi.getter
+    def device(self) -> pulumi.Input[str]:
+        """
+        The device (defaults to `socket`).
+        - `/dev/*` - A host serial device.
+        """
+        return pulumi.get(self, "device")
+
+    @device.setter
+    def device(self, value: pulumi.Input[str]):
+        pulumi.set(self, "device", value)
+
+    @property
+    @pulumi.getter
+    def memory(self) -> pulumi.Input[int]:
+        """
+        The VGA memory in megabytes (defaults to `16`).
+        """
+        return pulumi.get(self, "memory")
+
+    @memory.setter
+    def memory(self, value: pulumi.Input[int]):
+        pulumi.set(self, "memory", value)
+
+    @property
+    @pulumi.getter
+    def hostnodes(self) -> Optional[pulumi.Input[str]]:
+        """
+        The NUMA host nodes.
+        """
+        return pulumi.get(self, "hostnodes")
+
+    @hostnodes.setter
+    def hostnodes(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hostnodes", value)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The NUMA policy (defaults to `preferred`).
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy", value)
 
 
 @pulumi.input_type
