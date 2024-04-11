@@ -1043,6 +1043,10 @@ export namespace VM {
          */
         type?: pulumi.Input<string>;
         /**
+         * Whether to do an automatic package upgrade after the first boot (defaults to `true`).
+         */
+        upgrade?: pulumi.Input<boolean>;
+        /**
          * The user account configuration (conflicts
          * with `userDataFileId`).
          */

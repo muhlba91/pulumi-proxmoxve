@@ -1191,6 +1191,7 @@ class VirtualMachineInitializationArgs:
                  meta_data_file_id: Optional[pulumi.Input[str]] = None,
                  network_data_file_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
+                 upgrade: Optional[pulumi.Input[bool]] = None,
                  user_account: Optional[pulumi.Input['VirtualMachineInitializationUserAccountArgs']] = None,
                  user_data_file_id: Optional[pulumi.Input[str]] = None,
                  vendor_data_file_id: Optional[pulumi.Input[str]] = None):
@@ -1210,6 +1211,7 @@ class VirtualMachineInitializationArgs:
                network configuration data passed to the VM via cloud-init (conflicts
                with `ip_config`).
         :param pulumi.Input[str] type: The VGA type (defaults to `std`).
+        :param pulumi.Input[bool] upgrade: Whether to do an automatic package upgrade after the first boot (defaults to `true`).
         :param pulumi.Input['VirtualMachineInitializationUserAccountArgs'] user_account: The user account configuration (conflicts
                with `user_data_file_id`).
         :param pulumi.Input[str] user_data_file_id: The identifier for a file containing
@@ -1231,6 +1233,8 @@ class VirtualMachineInitializationArgs:
             pulumi.set(__self__, "network_data_file_id", network_data_file_id)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if upgrade is not None:
+            pulumi.set(__self__, "upgrade", upgrade)
         if user_account is not None:
             pulumi.set(__self__, "user_account", user_account)
         if user_data_file_id is not None:
@@ -1329,6 +1333,18 @@ class VirtualMachineInitializationArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def upgrade(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to do an automatic package upgrade after the first boot (defaults to `true`).
+        """
+        return pulumi.get(self, "upgrade")
+
+    @upgrade.setter
+    def upgrade(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "upgrade", value)
 
     @property
     @pulumi.getter(name="userAccount")

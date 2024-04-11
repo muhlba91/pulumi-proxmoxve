@@ -1112,6 +1112,7 @@ class VirtualMachineInitialization(dict):
                  meta_data_file_id: Optional[str] = None,
                  network_data_file_id: Optional[str] = None,
                  type: Optional[str] = None,
+                 upgrade: Optional[bool] = None,
                  user_account: Optional['outputs.VirtualMachineInitializationUserAccount'] = None,
                  user_data_file_id: Optional[str] = None,
                  vendor_data_file_id: Optional[str] = None):
@@ -1131,6 +1132,7 @@ class VirtualMachineInitialization(dict):
                network configuration data passed to the VM via cloud-init (conflicts
                with `ip_config`).
         :param str type: The VGA type (defaults to `std`).
+        :param bool upgrade: Whether to do an automatic package upgrade after the first boot (defaults to `true`).
         :param 'VirtualMachineInitializationUserAccountArgs' user_account: The user account configuration (conflicts
                with `user_data_file_id`).
         :param str user_data_file_id: The identifier for a file containing
@@ -1152,6 +1154,8 @@ class VirtualMachineInitialization(dict):
             pulumi.set(__self__, "network_data_file_id", network_data_file_id)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if upgrade is not None:
+            pulumi.set(__self__, "upgrade", upgrade)
         if user_account is not None:
             pulumi.set(__self__, "user_account", user_account)
         if user_data_file_id is not None:
@@ -1222,6 +1226,14 @@ class VirtualMachineInitialization(dict):
         The VGA type (defaults to `std`).
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def upgrade(self) -> Optional[bool]:
+        """
+        Whether to do an automatic package upgrade after the first boot (defaults to `true`).
+        """
+        return pulumi.get(self, "upgrade")
 
     @property
     @pulumi.getter(name="userAccount")

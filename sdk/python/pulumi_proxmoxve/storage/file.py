@@ -355,7 +355,7 @@ class File(pulumi.CustomResource):
 
         ### Backups (`dump`)
 
-        > **Note:** The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
+        > The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
 
         <!--Start PulumiCodeChooser -->
         ```python
@@ -374,7 +374,7 @@ class File(pulumi.CustomResource):
 
         ### Images
 
-        **Consider using `Download.File` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.**
+        > Consider using `Download.File` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.
 
         <!--Start PulumiCodeChooser -->
         ```python
@@ -393,7 +393,7 @@ class File(pulumi.CustomResource):
 
         ### Container Template (`vztmpl`)
 
-        **Consider using `Download.File` resource instead. Using this resource for container images is less efficient (requires to transfer uploaded image to node) though still supported.**
+        > Consider using `Download.File` resource instead. Using this resource for container images is less efficient (requires to transfer uploaded image to node) though still supported.
 
         <!--Start PulumiCodeChooser -->
         ```python
@@ -471,7 +471,7 @@ class File(pulumi.CustomResource):
 
         ### Backups (`dump`)
 
-        > **Note:** The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
+        > The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
 
         <!--Start PulumiCodeChooser -->
         ```python
@@ -490,7 +490,7 @@ class File(pulumi.CustomResource):
 
         ### Images
 
-        **Consider using `Download.File` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.**
+        > Consider using `Download.File` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.
 
         <!--Start PulumiCodeChooser -->
         ```python
@@ -509,7 +509,7 @@ class File(pulumi.CustomResource):
 
         ### Container Template (`vztmpl`)
 
-        **Consider using `Download.File` resource instead. Using this resource for container images is less efficient (requires to transfer uploaded image to node) though still supported.**
+        > Consider using `Download.File` resource instead. Using this resource for container images is less efficient (requires to transfer uploaded image to node) though still supported.
 
         <!--Start PulumiCodeChooser -->
         ```python

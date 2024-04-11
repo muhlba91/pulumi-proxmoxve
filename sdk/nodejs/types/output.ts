@@ -1077,6 +1077,10 @@ export namespace VM {
          */
         type?: string;
         /**
+         * Whether to do an automatic package upgrade after the first boot (defaults to `true`).
+         */
+        upgrade?: boolean;
+        /**
          * The user account configuration (conflicts
          * with `userDataFileId`).
          */

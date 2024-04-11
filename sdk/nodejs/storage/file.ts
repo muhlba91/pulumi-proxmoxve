@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ### Backups (`dump`)
  *
- * > **Note:** The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
+ * > The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
  *
  * <!--Start PulumiCodeChooser -->
  * ```typescript
@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  *
  * ### Images
  *
- * **Consider using `proxmoxve.Download.File` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.**
+ * > Consider using `proxmoxve.Download.File` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.
  *
  * <!--Start PulumiCodeChooser -->
  * ```typescript
@@ -53,7 +53,7 @@ import * as utilities from "../utilities";
  *
  * ### Container Template (`vztmpl`)
  *
- * **Consider using `proxmoxve.Download.File` resource instead. Using this resource for container images is less efficient (requires to transfer uploaded image to node) though still supported.**
+ * > Consider using `proxmoxve.Download.File` resource instead. Using this resource for container images is less efficient (requires to transfer uploaded image to node) though still supported.
  *
  * <!--Start PulumiCodeChooser -->
  * ```typescript

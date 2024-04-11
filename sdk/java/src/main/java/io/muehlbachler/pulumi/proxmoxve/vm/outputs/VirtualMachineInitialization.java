@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineInitializationDns;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineInitializationIpConfig;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineInitializationUserAccount;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -58,6 +59,11 @@ public final class VirtualMachineInitialization {
      * 
      */
     private @Nullable String type;
+    /**
+     * @return Whether to do an automatic package upgrade after the first boot (defaults to `true`).
+     * 
+     */
+    private @Nullable Boolean upgrade;
     /**
      * @return The user account configuration (conflicts
      * with `user_data_file_id`).
@@ -136,6 +142,13 @@ public final class VirtualMachineInitialization {
         return Optional.ofNullable(this.type);
     }
     /**
+     * @return Whether to do an automatic package upgrade after the first boot (defaults to `true`).
+     * 
+     */
+    public Optional<Boolean> upgrade() {
+        return Optional.ofNullable(this.upgrade);
+    }
+    /**
      * @return The user account configuration (conflicts
      * with `user_data_file_id`).
      * 
@@ -176,6 +189,7 @@ public final class VirtualMachineInitialization {
         private @Nullable String metaDataFileId;
         private @Nullable String networkDataFileId;
         private @Nullable String type;
+        private @Nullable Boolean upgrade;
         private @Nullable VirtualMachineInitializationUserAccount userAccount;
         private @Nullable String userDataFileId;
         private @Nullable String vendorDataFileId;
@@ -189,6 +203,7 @@ public final class VirtualMachineInitialization {
     	      this.metaDataFileId = defaults.metaDataFileId;
     	      this.networkDataFileId = defaults.networkDataFileId;
     	      this.type = defaults.type;
+    	      this.upgrade = defaults.upgrade;
     	      this.userAccount = defaults.userAccount;
     	      this.userDataFileId = defaults.userDataFileId;
     	      this.vendorDataFileId = defaults.vendorDataFileId;
@@ -240,6 +255,12 @@ public final class VirtualMachineInitialization {
             return this;
         }
         @CustomType.Setter
+        public Builder upgrade(@Nullable Boolean upgrade) {
+
+            this.upgrade = upgrade;
+            return this;
+        }
+        @CustomType.Setter
         public Builder userAccount(@Nullable VirtualMachineInitializationUserAccount userAccount) {
 
             this.userAccount = userAccount;
@@ -266,6 +287,7 @@ public final class VirtualMachineInitialization {
             _resultValue.metaDataFileId = metaDataFileId;
             _resultValue.networkDataFileId = networkDataFileId;
             _resultValue.type = type;
+            _resultValue.upgrade = upgrade;
             _resultValue.userAccount = userAccount;
             _resultValue.userDataFileId = userDataFileId;
             _resultValue.vendorDataFileId = vendorDataFileId;

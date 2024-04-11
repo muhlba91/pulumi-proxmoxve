@@ -2196,6 +2196,8 @@ type VirtualMachineInitialization struct {
 	NetworkDataFileId *string `pulumi:"networkDataFileId"`
 	// The VGA type (defaults to `std`).
 	Type *string `pulumi:"type"`
+	// Whether to do an automatic package upgrade after the first boot (defaults to `true`).
+	Upgrade *bool `pulumi:"upgrade"`
 	// The user account configuration (conflicts
 	// with `userDataFileId`).
 	UserAccount *VirtualMachineInitializationUserAccount `pulumi:"userAccount"`
@@ -2241,6 +2243,8 @@ type VirtualMachineInitializationArgs struct {
 	NetworkDataFileId pulumi.StringPtrInput `pulumi:"networkDataFileId"`
 	// The VGA type (defaults to `std`).
 	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Whether to do an automatic package upgrade after the first boot (defaults to `true`).
+	Upgrade pulumi.BoolPtrInput `pulumi:"upgrade"`
 	// The user account configuration (conflicts
 	// with `userDataFileId`).
 	UserAccount VirtualMachineInitializationUserAccountPtrInput `pulumi:"userAccount"`
@@ -2372,6 +2376,11 @@ func (o VirtualMachineInitializationOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitialization) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// Whether to do an automatic package upgrade after the first boot (defaults to `true`).
+func (o VirtualMachineInitializationOutput) Upgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInitialization) *bool { return v.Upgrade }).(pulumi.BoolPtrOutput)
+}
+
 // The user account configuration (conflicts
 // with `userDataFileId`).
 func (o VirtualMachineInitializationOutput) UserAccount() VirtualMachineInitializationUserAccountPtrOutput {
@@ -2490,6 +2499,16 @@ func (o VirtualMachineInitializationPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to do an automatic package upgrade after the first boot (defaults to `true`).
+func (o VirtualMachineInitializationPtrOutput) Upgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInitialization) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Upgrade
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The user account configuration (conflicts
