@@ -1,6 +1,22 @@
 # Changelog
 
 
+## [6.3.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.2.1...v6.3.0) (2024-04-11)
+
+
+### Features
+
+* **deps:** prepare for upstream release v0.53.0 ([6610b89](https://github.com/muhlba91/pulumi-proxmoxve/commit/6610b891956a2740df065a51c63f6fa54d1e96f0))
+* prepare upstream update to v0.52.0 ([5c8005e](https://github.com/muhlba91/pulumi-proxmoxve/commit/5c8005ee45ba666329c9a808fa7436babe6bc4a0))
+
+
+### Miscellaneous Chores
+
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.52.0 ([fd9790f](https://github.com/muhlba91/pulumi-proxmoxve/commit/fd9790f94f2013b52353442650f64bb2d6d33e41))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.53.0 ([1665327](https://github.com/muhlba91/pulumi-proxmoxve/commit/1665327283d83bf5c4ed356a5016568093615c83))
+* **deps:** update module github.com/pulumi/pulumi-terraform-bridge/pf to v0.33.0 ([9c93adc](https://github.com/muhlba91/pulumi-proxmoxve/commit/9c93adc7464b7be4af62824be2def6bf6c011072))
+* **deps:** update sigstore/cosign-installer action to v3.5.0 ([9dfc03c](https://github.com/muhlba91/pulumi-proxmoxve/commit/9dfc03c8200a5f92586d62bd095a7134bb518e2a))
+
 ## [6.2.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.2.0...v6.2.1) (2024-04-05)
 
 
