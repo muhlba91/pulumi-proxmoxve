@@ -84,12 +84,6 @@ jobs:
     needs:
       - release
       - publish_provider
-    env:
-      SIGNING_KEY: ${{ secrets.JAVA_SIGNING_KEY }}
-      SIGNING_KEY_ID: ${{ secrets.JAVA_SIGNING_KEY_ID }}
-      SIGNING_PASSWORD: ${{ secrets.JAVA_SIGNING_PASSWORD }}
-      PUBLISH_REPO_PASSWORD: ${{ secrets.OSS_SONATYPE_PUBLISH_PASSWORD }}
-      PUBLISH_REPO_USERNAME: ${{ secrets.OSS_SONATYPE_PUBLISH_USERNAME }}
     strategy:
       max-parallel: 10
       matrix:
@@ -156,9 +150,25 @@ jobs:
       - name: Build SDK
         run: make build_${{ matrix.language }}
 
+      - uses: hashicorp/vault-action@v3
+        id: import-secrets
+        with:
+          method: jwt
+          url: ${{ secrets.VAULT_ADDR }}
+          path: ${{ secrets.VAULT_PATH }}
+          role: ${{ secrets.VAULT_ROLE }}
+          secrets: |
+            github-pulumi-proxmoxve/data/nuget publish_key | NUGET_PUBLISH_KEY ;
+            github-pulumi-proxmoxve/data/npm token | NPM_TOKEN ;
+            github-pulumi-proxmoxve/data/java signing_key | SIGNING_KEY ;
+            github-pulumi-proxmoxve/data/java signing_key_id | SIGNING_KEY_ID ;
+            github-pulumi-proxmoxve/data/java signing_password | SIGNING_PASSWORD ;
+            github-pulumi-proxmoxve/data/sonatype publish_password | SIGNING_PASSWORD ;
+            github-pulumi-proxmoxve/data/sonatype publish_username | PUBLISH_REPO_USERNAME
+
       - name: Publish .NET SDK
         run: |
-          dotnet nuget push -s "${{ env.NUGET_FEED_URL }}" -k "${{ secrets.NUGET_PUBLISH_KEY }}" ${{github.workspace}}/sdk/dotnet/bin/Debug/*.nupkg
+          dotnet nuget push -s "${{ env.NUGET_FEED_URL }}" -k "${{ env.NUGET_PUBLISH_KEY }}" ${{github.workspace}}/sdk/dotnet/bin/Debug/*.nupkg
         if: matrix.language == 'dotnet'
 
       - name: Publish Python SDK
@@ -173,7 +183,7 @@ jobs:
         with:
           package: ./sdk/nodejs/bin/package.json
           access: public
-          token: ${{ secrets.NPM_TOKEN }}
+          token: ${{ env.NPM_TOKEN }}
           provenance: true
         if: matrix.language == 'nodejs'
 
