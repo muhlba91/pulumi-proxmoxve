@@ -1,6 +1,23 @@
 # Changelog
 
 
+## [6.4.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.3.1...v6.4.0) (2024-04-20)
+
+
+### Features
+
+* **ci:** move from actions secrets to vault ([1cdda8d](https://github.com/muhlba91/pulumi-proxmoxve/commit/1cdda8d56f633e09af735046dfe6132f680af3e5))
+* prepare upstream update to v0.54.0 ([b7fbc63](https://github.com/muhlba91/pulumi-proxmoxve/commit/b7fbc63570c1dbdccbd95a7320671eb861095dd5))
+
+
+### Miscellaneous Chores
+
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.54.0 ([592b112](https://github.com/muhlba91/pulumi-proxmoxve/commit/592b1124a65debd41bb0f8604b56ef14fd85647e))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.113.0 ([2d78ab0](https://github.com/muhlba91/pulumi-proxmoxve/commit/2d78ab0191f5c0ad3979ba916eb02902cd11b2af))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.113.1 ([8618f87](https://github.com/muhlba91/pulumi-proxmoxve/commit/8618f87c3289fc59c94f595888ded70c0b16bda6))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.113.2 ([c4f36ff](https://github.com/muhlba91/pulumi-proxmoxve/commit/c4f36ff07515d07fe76ef6a25b817d3cd909ebfc))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.113.3 ([ab88d4c](https://github.com/muhlba91/pulumi-proxmoxve/commit/ab88d4c8aac41e9f3a974c5e4be83756cf883af1))
+
 ## [6.3.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.3.0...v6.3.1) (2024-04-12)
 
 
