@@ -11,6 +11,7 @@ from .get_node import *
 from .hosts import *
 from .provider import *
 from .time import *
+from .vm2 import *
 from ._inputs import *
 from . import outputs
 
@@ -26,6 +27,8 @@ if typing.TYPE_CHECKING:
     download = __download
     import pulumi_proxmoxve.ha as __ha
     ha = __ha
+    import pulumi_proxmoxve.hardware as __hardware
+    hardware = __hardware
     import pulumi_proxmoxve.network as __network
     network = __network
     import pulumi_proxmoxve.permission as __permission
@@ -40,6 +43,7 @@ else:
     ct = _utilities.lazy_import('pulumi_proxmoxve.ct')
     download = _utilities.lazy_import('pulumi_proxmoxve.download')
     ha = _utilities.lazy_import('pulumi_proxmoxve.ha')
+    hardware = _utilities.lazy_import('pulumi_proxmoxve.hardware')
     network = _utilities.lazy_import('pulumi_proxmoxve.network')
     permission = _utilities.lazy_import('pulumi_proxmoxve.permission')
     storage = _utilities.lazy_import('pulumi_proxmoxve.storage')
@@ -86,6 +90,22 @@ _utilities.register(
   "fqn": "pulumi_proxmoxve.ha",
   "classes": {
    "proxmoxve:HA/hAResource:HAResource": "HAResource"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "Hardware/mapping/pci",
+  "fqn": "pulumi_proxmoxve.hardware.mapping",
+  "classes": {
+   "proxmoxve:Hardware/mapping/pci:Pci": "Pci"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "Hardware/mapping/usb",
+  "fqn": "pulumi_proxmoxve.hardware.mapping",
+  "classes": {
+   "proxmoxve:Hardware/mapping/usb:Usb": "Usb"
   }
  },
  {
@@ -230,6 +250,14 @@ _utilities.register(
   "fqn": "pulumi_proxmoxve",
   "classes": {
    "proxmoxve:index/time:Time": "Time"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "index/vm2",
+  "fqn": "pulumi_proxmoxve",
+  "classes": {
+   "proxmoxve:index/vm2:Vm2": "Vm2"
   }
  }
 ]

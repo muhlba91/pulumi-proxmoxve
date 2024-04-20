@@ -35,6 +35,11 @@ export type Time = import("./time").Time;
 export const Time: typeof import("./time").Time = null as any;
 utilities.lazyLoad(exports, ["Time"], () => require("./time"));
 
+export { Vm2Args, Vm2State } from "./vm2";
+export type Vm2 = import("./vm2").Vm2;
+export const Vm2: typeof import("./vm2").Vm2 = null as any;
+utilities.lazyLoad(exports, ["Vm2"], () => require("./vm2"));
+
 
 // Export sub-modules:
 import * as cluster from "./cluster";
@@ -42,6 +47,7 @@ import * as config from "./config";
 import * as ct from "./ct";
 import * as download from "./download";
 import * as ha from "./ha";
+import * as hardware from "./hardware";
 import * as network from "./network";
 import * as permission from "./permission";
 import * as storage from "./storage";
@@ -54,6 +60,7 @@ export {
     ct,
     download,
     ha,
+    hardware,
     network,
     permission,
     storage,
@@ -73,6 +80,8 @@ const _module = {
                 return new Hosts(name, <any>undefined, { urn })
             case "proxmoxve:index/time:Time":
                 return new Time(name, <any>undefined, { urn })
+            case "proxmoxve:index/vm2:Vm2":
+                return new Vm2(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -82,6 +91,7 @@ pulumi.runtime.registerResourceModule("proxmoxve", "index/certifi", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "index/dNS", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "index/hosts", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "index/time", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "index/vm2", _module)
 pulumi.runtime.registerResourcePackage("proxmoxve", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

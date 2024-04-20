@@ -323,6 +323,20 @@ public class Container extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.template);
     }
     /**
+     * Timeout for cloning a container in seconds (defaults to 1800).
+     * 
+     */
+    @Export(name="timeoutClone", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> timeoutClone;
+
+    /**
+     * @return Timeout for cloning a container in seconds (defaults to 1800).
+     * 
+     */
+    public Output<Optional<Integer>> timeoutClone() {
+        return Codegen.optional(this.timeoutClone);
+    }
+    /**
      * Timeout for creating a container in seconds (defaults to 1800).
      * 
      */
@@ -337,18 +351,50 @@ public class Container extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.timeoutCreate);
     }
     /**
-     * Timeout for starting a container in seconds (defaults to 300).
+     * Timeout for deleting a container in seconds (defaults to 60).
      * 
      */
+    @Export(name="timeoutDelete", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> timeoutDelete;
+
+    /**
+     * @return Timeout for deleting a container in seconds (defaults to 60).
+     * 
+     */
+    public Output<Optional<Integer>> timeoutDelete() {
+        return Codegen.optional(this.timeoutDelete);
+    }
+    /**
+     * Start container timeout
+     * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead.
+     * 
+     */
+    @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead. */
     @Export(name="timeoutStart", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeoutStart;
 
     /**
-     * @return Timeout for starting a container in seconds (defaults to 300).
+     * @return Start container timeout
      * 
      */
     public Output<Optional<Integer>> timeoutStart() {
         return Codegen.optional(this.timeoutStart);
+    }
+    /**
+     * Timeout for updating a container in seconds (defaults to 1800).
+     * 
+     */
+    @Export(name="timeoutUpdate", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> timeoutUpdate;
+
+    /**
+     * @return Timeout for updating a container in seconds (defaults to 1800).
+     * 
+     */
+    public Output<Optional<Integer>> timeoutUpdate() {
+        return Codegen.optional(this.timeoutUpdate);
     }
     /**
      * Whether the container runs as unprivileged on

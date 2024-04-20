@@ -130,13 +130,27 @@ export class Container extends pulumi.CustomResource {
      */
     public readonly template!: pulumi.Output<boolean | undefined>;
     /**
+     * Timeout for cloning a container in seconds (defaults to 1800).
+     */
+    public readonly timeoutClone!: pulumi.Output<number | undefined>;
+    /**
      * Timeout for creating a container in seconds (defaults to 1800).
      */
     public readonly timeoutCreate!: pulumi.Output<number | undefined>;
     /**
-     * Timeout for starting a container in seconds (defaults to 300).
+     * Timeout for deleting a container in seconds (defaults to 60).
+     */
+    public readonly timeoutDelete!: pulumi.Output<number | undefined>;
+    /**
+     * Start container timeout
+     *
+     * @deprecated This field is deprecated and will be removed in a future release. An overall operation timeout (`timeoutCreate` / `timeoutClone`) is used instead.
      */
     public readonly timeoutStart!: pulumi.Output<number | undefined>;
+    /**
+     * Timeout for updating a container in seconds (defaults to 1800).
+     */
+    public readonly timeoutUpdate!: pulumi.Output<number | undefined>;
     /**
      * Whether the container runs as unprivileged on
      * the host (defaults to `false`).
@@ -179,8 +193,11 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["startup"] = state ? state.startup : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["template"] = state ? state.template : undefined;
+            resourceInputs["timeoutClone"] = state ? state.timeoutClone : undefined;
             resourceInputs["timeoutCreate"] = state ? state.timeoutCreate : undefined;
+            resourceInputs["timeoutDelete"] = state ? state.timeoutDelete : undefined;
             resourceInputs["timeoutStart"] = state ? state.timeoutStart : undefined;
+            resourceInputs["timeoutUpdate"] = state ? state.timeoutUpdate : undefined;
             resourceInputs["unprivileged"] = state ? state.unprivileged : undefined;
             resourceInputs["vmId"] = state ? state.vmId : undefined;
         } else {
@@ -207,8 +224,11 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["startup"] = args ? args.startup : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["template"] = args ? args.template : undefined;
+            resourceInputs["timeoutClone"] = args ? args.timeoutClone : undefined;
             resourceInputs["timeoutCreate"] = args ? args.timeoutCreate : undefined;
+            resourceInputs["timeoutDelete"] = args ? args.timeoutDelete : undefined;
             resourceInputs["timeoutStart"] = args ? args.timeoutStart : undefined;
+            resourceInputs["timeoutUpdate"] = args ? args.timeoutUpdate : undefined;
             resourceInputs["unprivileged"] = args ? args.unprivileged : undefined;
             resourceInputs["vmId"] = args ? args.vmId : undefined;
         }
@@ -304,13 +324,27 @@ export interface ContainerState {
      */
     template?: pulumi.Input<boolean>;
     /**
+     * Timeout for cloning a container in seconds (defaults to 1800).
+     */
+    timeoutClone?: pulumi.Input<number>;
+    /**
      * Timeout for creating a container in seconds (defaults to 1800).
      */
     timeoutCreate?: pulumi.Input<number>;
     /**
-     * Timeout for starting a container in seconds (defaults to 300).
+     * Timeout for deleting a container in seconds (defaults to 60).
+     */
+    timeoutDelete?: pulumi.Input<number>;
+    /**
+     * Start container timeout
+     *
+     * @deprecated This field is deprecated and will be removed in a future release. An overall operation timeout (`timeoutCreate` / `timeoutClone`) is used instead.
      */
     timeoutStart?: pulumi.Input<number>;
+    /**
+     * Timeout for updating a container in seconds (defaults to 1800).
+     */
+    timeoutUpdate?: pulumi.Input<number>;
     /**
      * Whether the container runs as unprivileged on
      * the host (defaults to `false`).
@@ -409,13 +443,27 @@ export interface ContainerArgs {
      */
     template?: pulumi.Input<boolean>;
     /**
+     * Timeout for cloning a container in seconds (defaults to 1800).
+     */
+    timeoutClone?: pulumi.Input<number>;
+    /**
      * Timeout for creating a container in seconds (defaults to 1800).
      */
     timeoutCreate?: pulumi.Input<number>;
     /**
-     * Timeout for starting a container in seconds (defaults to 300).
+     * Timeout for deleting a container in seconds (defaults to 60).
+     */
+    timeoutDelete?: pulumi.Input<number>;
+    /**
+     * Start container timeout
+     *
+     * @deprecated This field is deprecated and will be removed in a future release. An overall operation timeout (`timeoutCreate` / `timeoutClone`) is used instead.
      */
     timeoutStart?: pulumi.Input<number>;
+    /**
+     * Timeout for updating a container in seconds (defaults to 1800).
+     */
+    timeoutUpdate?: pulumi.Input<number>;
     /**
      * Whether the container runs as unprivileged on
      * the host (defaults to `false`).

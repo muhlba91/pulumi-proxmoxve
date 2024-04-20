@@ -245,8 +245,9 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly timeoutMigrate!: pulumi.Output<number | undefined>;
     /**
-     * Timeout for moving the disk of a VM in
-     * seconds (defaults to 1800).
+     * MoveDisk timeout
+     *
+     * @deprecated This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeoutClone / timeout_migrate) is used instead.
      */
     public readonly timeoutMoveDisk!: pulumi.Output<number | undefined>;
     /**
@@ -616,8 +617,9 @@ export interface VirtualMachineState {
      */
     timeoutMigrate?: pulumi.Input<number>;
     /**
-     * Timeout for moving the disk of a VM in
-     * seconds (defaults to 1800).
+     * MoveDisk timeout
+     *
+     * @deprecated This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeoutClone / timeout_migrate) is used instead.
      */
     timeoutMoveDisk?: pulumi.Input<number>;
     /**
@@ -843,8 +845,9 @@ export interface VirtualMachineArgs {
      */
     timeoutMigrate?: pulumi.Input<number>;
     /**
-     * Timeout for moving the disk of a VM in
-     * seconds (defaults to 1800).
+     * MoveDisk timeout
+     *
+     * @deprecated This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeoutClone / timeout_migrate) is used instead.
      */
     timeoutMoveDisk?: pulumi.Input<number>;
     /**

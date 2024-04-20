@@ -135,8 +135,9 @@ type VirtualMachine struct {
 	// Timeout for migrating the VM (defaults to
 	// 1800).
 	TimeoutMigrate pulumi.IntPtrOutput `pulumi:"timeoutMigrate"`
-	// Timeout for moving the disk of a VM in
-	// seconds (defaults to 1800).
+	// MoveDisk timeout
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeoutClone / timeout_migrate) is used instead.
 	TimeoutMoveDisk pulumi.IntPtrOutput `pulumi:"timeoutMoveDisk"`
 	// Timeout for rebooting a VM in seconds (defaults
 	// to 1800).
@@ -300,8 +301,9 @@ type virtualMachineState struct {
 	// Timeout for migrating the VM (defaults to
 	// 1800).
 	TimeoutMigrate *int `pulumi:"timeoutMigrate"`
-	// Timeout for moving the disk of a VM in
-	// seconds (defaults to 1800).
+	// MoveDisk timeout
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeoutClone / timeout_migrate) is used instead.
 	TimeoutMoveDisk *int `pulumi:"timeoutMoveDisk"`
 	// Timeout for rebooting a VM in seconds (defaults
 	// to 1800).
@@ -433,8 +435,9 @@ type VirtualMachineState struct {
 	// Timeout for migrating the VM (defaults to
 	// 1800).
 	TimeoutMigrate pulumi.IntPtrInput
-	// Timeout for moving the disk of a VM in
-	// seconds (defaults to 1800).
+	// MoveDisk timeout
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeoutClone / timeout_migrate) is used instead.
 	TimeoutMoveDisk pulumi.IntPtrInput
 	// Timeout for rebooting a VM in seconds (defaults
 	// to 1800).
@@ -561,8 +564,9 @@ type virtualMachineArgs struct {
 	// Timeout for migrating the VM (defaults to
 	// 1800).
 	TimeoutMigrate *int `pulumi:"timeoutMigrate"`
-	// Timeout for moving the disk of a VM in
-	// seconds (defaults to 1800).
+	// MoveDisk timeout
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeoutClone / timeout_migrate) is used instead.
 	TimeoutMoveDisk *int `pulumi:"timeoutMoveDisk"`
 	// Timeout for rebooting a VM in seconds (defaults
 	// to 1800).
@@ -686,8 +690,9 @@ type VirtualMachineArgs struct {
 	// Timeout for migrating the VM (defaults to
 	// 1800).
 	TimeoutMigrate pulumi.IntPtrInput
-	// Timeout for moving the disk of a VM in
-	// seconds (defaults to 1800).
+	// MoveDisk timeout
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeoutClone / timeout_migrate) is used instead.
 	TimeoutMoveDisk pulumi.IntPtrInput
 	// Timeout for rebooting a VM in seconds (defaults
 	// to 1800).
@@ -1037,8 +1042,9 @@ func (o VirtualMachineOutput) TimeoutMigrate() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.TimeoutMigrate }).(pulumi.IntPtrOutput)
 }
 
-// Timeout for moving the disk of a VM in
-// seconds (defaults to 1800).
+// MoveDisk timeout
+//
+// Deprecated: This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeoutClone / timeout_migrate) is used instead.
 func (o VirtualMachineOutput) TimeoutMoveDisk() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.TimeoutMoveDisk }).(pulumi.IntPtrOutput)
 }

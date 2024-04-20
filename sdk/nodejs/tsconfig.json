@@ -32,6 +32,13 @@
         "ha/hagroup.ts",
         "ha/haresource.ts",
         "ha/index.ts",
+        "hardware/getMappings.ts",
+        "hardware/index.ts",
+        "hardware/mapping/getPci.ts",
+        "hardware/mapping/getUsb.ts",
+        "hardware/mapping/index.ts",
+        "hardware/mapping/pci.ts",
+        "hardware/mapping/usb.ts",
         "hosts.ts",
         "index.ts",
         "network/firewall.ts",
@@ -72,6 +79,7 @@
         "vm/getVirtualMachine.ts",
         "vm/getVirtualMachines.ts",
         "vm/index.ts",
-        "vm/virtualMachine.ts"
+        "vm/virtualMachine.ts",
+        "vm2.ts"
     ]
 }

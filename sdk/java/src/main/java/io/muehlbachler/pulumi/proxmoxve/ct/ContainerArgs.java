@@ -328,6 +328,21 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Timeout for cloning a container in seconds (defaults to 1800).
+     * 
+     */
+    @Import(name="timeoutClone")
+    private @Nullable Output<Integer> timeoutClone;
+
+    /**
+     * @return Timeout for cloning a container in seconds (defaults to 1800).
+     * 
+     */
+    public Optional<Output<Integer>> timeoutClone() {
+        return Optional.ofNullable(this.timeoutClone);
+    }
+
+    /**
      * Timeout for creating a container in seconds (defaults to 1800).
      * 
      */
@@ -343,18 +358,56 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Timeout for starting a container in seconds (defaults to 300).
+     * Timeout for deleting a container in seconds (defaults to 60).
      * 
      */
+    @Import(name="timeoutDelete")
+    private @Nullable Output<Integer> timeoutDelete;
+
+    /**
+     * @return Timeout for deleting a container in seconds (defaults to 60).
+     * 
+     */
+    public Optional<Output<Integer>> timeoutDelete() {
+        return Optional.ofNullable(this.timeoutDelete);
+    }
+
+    /**
+     * Start container timeout
+     * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead.
+     * 
+     */
+    @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead. */
     @Import(name="timeoutStart")
     private @Nullable Output<Integer> timeoutStart;
 
     /**
-     * @return Timeout for starting a container in seconds (defaults to 300).
+     * @return Start container timeout
+     * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead.
      * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead. */
     public Optional<Output<Integer>> timeoutStart() {
         return Optional.ofNullable(this.timeoutStart);
+    }
+
+    /**
+     * Timeout for updating a container in seconds (defaults to 1800).
+     * 
+     */
+    @Import(name="timeoutUpdate")
+    private @Nullable Output<Integer> timeoutUpdate;
+
+    /**
+     * @return Timeout for updating a container in seconds (defaults to 1800).
+     * 
+     */
+    public Optional<Output<Integer>> timeoutUpdate() {
+        return Optional.ofNullable(this.timeoutUpdate);
     }
 
     /**
@@ -411,8 +464,11 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
         this.startup = $.startup;
         this.tags = $.tags;
         this.template = $.template;
+        this.timeoutClone = $.timeoutClone;
         this.timeoutCreate = $.timeoutCreate;
+        this.timeoutDelete = $.timeoutDelete;
         this.timeoutStart = $.timeoutStart;
+        this.timeoutUpdate = $.timeoutUpdate;
         this.unprivileged = $.unprivileged;
         this.vmId = $.vmId;
     }
@@ -882,6 +938,27 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param timeoutClone Timeout for cloning a container in seconds (defaults to 1800).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeoutClone(@Nullable Output<Integer> timeoutClone) {
+            $.timeoutClone = timeoutClone;
+            return this;
+        }
+
+        /**
+         * @param timeoutClone Timeout for cloning a container in seconds (defaults to 1800).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeoutClone(Integer timeoutClone) {
+            return timeoutClone(Output.of(timeoutClone));
+        }
+
+        /**
          * @param timeoutCreate Timeout for creating a container in seconds (defaults to 1800).
          * 
          * @return builder
@@ -903,24 +980,74 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeoutStart Timeout for starting a container in seconds (defaults to 300).
+         * @param timeoutDelete Timeout for deleting a container in seconds (defaults to 60).
          * 
          * @return builder
          * 
          */
+        public Builder timeoutDelete(@Nullable Output<Integer> timeoutDelete) {
+            $.timeoutDelete = timeoutDelete;
+            return this;
+        }
+
+        /**
+         * @param timeoutDelete Timeout for deleting a container in seconds (defaults to 60).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeoutDelete(Integer timeoutDelete) {
+            return timeoutDelete(Output.of(timeoutDelete));
+        }
+
+        /**
+         * @param timeoutStart Start container timeout
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead.
+         * 
+         */
+        @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead. */
         public Builder timeoutStart(@Nullable Output<Integer> timeoutStart) {
             $.timeoutStart = timeoutStart;
             return this;
         }
 
         /**
-         * @param timeoutStart Timeout for starting a container in seconds (defaults to 300).
+         * @param timeoutStart Start container timeout
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead.
+         * 
+         */
+        @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead. */
+        public Builder timeoutStart(Integer timeoutStart) {
+            return timeoutStart(Output.of(timeoutStart));
+        }
+
+        /**
+         * @param timeoutUpdate Timeout for updating a container in seconds (defaults to 1800).
          * 
          * @return builder
          * 
          */
-        public Builder timeoutStart(Integer timeoutStart) {
-            return timeoutStart(Output.of(timeoutStart));
+        public Builder timeoutUpdate(@Nullable Output<Integer> timeoutUpdate) {
+            $.timeoutUpdate = timeoutUpdate;
+            return this;
+        }
+
+        /**
+         * @param timeoutUpdate Timeout for updating a container in seconds (defaults to 1800).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeoutUpdate(Integer timeoutUpdate) {
+            return timeoutUpdate(Output.of(timeoutUpdate));
         }
 
         /**

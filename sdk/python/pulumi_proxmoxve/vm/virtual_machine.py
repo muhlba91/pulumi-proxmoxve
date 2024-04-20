@@ -125,8 +125,7 @@ class VirtualMachineArgs:
                1800).
         :param pulumi.Input[int] timeout_migrate: Timeout for migrating the VM (defaults to
                1800).
-        :param pulumi.Input[int] timeout_move_disk: Timeout for moving the disk of a VM in
-               seconds (defaults to 1800).
+        :param pulumi.Input[int] timeout_move_disk: MoveDisk timeout
         :param pulumi.Input[int] timeout_reboot: Timeout for rebooting a VM in seconds (defaults
                to 1800).
         :param pulumi.Input[int] timeout_shutdown_vm: Timeout for shutting down a VM in seconds (
@@ -221,6 +220,9 @@ class VirtualMachineArgs:
             pulumi.set(__self__, "timeout_create", timeout_create)
         if timeout_migrate is not None:
             pulumi.set(__self__, "timeout_migrate", timeout_migrate)
+        if timeout_move_disk is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead.""", DeprecationWarning)
+            pulumi.log.warn("""timeout_move_disk is deprecated: This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead.""")
         if timeout_move_disk is not None:
             pulumi.set(__self__, "timeout_move_disk", timeout_move_disk)
         if timeout_reboot is not None:
@@ -752,9 +754,11 @@ class VirtualMachineArgs:
     @pulumi.getter(name="timeoutMoveDisk")
     def timeout_move_disk(self) -> Optional[pulumi.Input[int]]:
         """
-        Timeout for moving the disk of a VM in
-        seconds (defaults to 1800).
+        MoveDisk timeout
         """
+        warnings.warn("""This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead.""", DeprecationWarning)
+        pulumi.log.warn("""timeout_move_disk is deprecated: This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead.""")
+
         return pulumi.get(self, "timeout_move_disk")
 
     @timeout_move_disk.setter
@@ -983,8 +987,7 @@ class _VirtualMachineState:
                1800).
         :param pulumi.Input[int] timeout_migrate: Timeout for migrating the VM (defaults to
                1800).
-        :param pulumi.Input[int] timeout_move_disk: Timeout for moving the disk of a VM in
-               seconds (defaults to 1800).
+        :param pulumi.Input[int] timeout_move_disk: MoveDisk timeout
         :param pulumi.Input[int] timeout_reboot: Timeout for rebooting a VM in seconds (defaults
                to 1800).
         :param pulumi.Input[int] timeout_shutdown_vm: Timeout for shutting down a VM in seconds (
@@ -1086,6 +1089,9 @@ class _VirtualMachineState:
             pulumi.set(__self__, "timeout_create", timeout_create)
         if timeout_migrate is not None:
             pulumi.set(__self__, "timeout_migrate", timeout_migrate)
+        if timeout_move_disk is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead.""", DeprecationWarning)
+            pulumi.log.warn("""timeout_move_disk is deprecated: This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead.""")
         if timeout_move_disk is not None:
             pulumi.set(__self__, "timeout_move_disk", timeout_move_disk)
         if timeout_reboot is not None:
@@ -1656,9 +1662,11 @@ class _VirtualMachineState:
     @pulumi.getter(name="timeoutMoveDisk")
     def timeout_move_disk(self) -> Optional[pulumi.Input[int]]:
         """
-        Timeout for moving the disk of a VM in
-        seconds (defaults to 1800).
+        MoveDisk timeout
         """
+        warnings.warn("""This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead.""", DeprecationWarning)
+        pulumi.log.warn("""timeout_move_disk is deprecated: This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead.""")
+
         return pulumi.get(self, "timeout_move_disk")
 
     @timeout_move_disk.setter
@@ -1896,8 +1904,7 @@ class VirtualMachine(pulumi.CustomResource):
                1800).
         :param pulumi.Input[int] timeout_migrate: Timeout for migrating the VM (defaults to
                1800).
-        :param pulumi.Input[int] timeout_move_disk: Timeout for moving the disk of a VM in
-               seconds (defaults to 1800).
+        :param pulumi.Input[int] timeout_move_disk: MoveDisk timeout
         :param pulumi.Input[int] timeout_reboot: Timeout for rebooting a VM in seconds (defaults
                to 1800).
         :param pulumi.Input[int] timeout_shutdown_vm: Timeout for shutting down a VM in seconds (
@@ -2194,8 +2201,7 @@ class VirtualMachine(pulumi.CustomResource):
                1800).
         :param pulumi.Input[int] timeout_migrate: Timeout for migrating the VM (defaults to
                1800).
-        :param pulumi.Input[int] timeout_move_disk: Timeout for moving the disk of a VM in
-               seconds (defaults to 1800).
+        :param pulumi.Input[int] timeout_move_disk: MoveDisk timeout
         :param pulumi.Input[int] timeout_reboot: Timeout for rebooting a VM in seconds (defaults
                to 1800).
         :param pulumi.Input[int] timeout_shutdown_vm: Timeout for shutting down a VM in seconds (
@@ -2643,9 +2649,11 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="timeoutMoveDisk")
     def timeout_move_disk(self) -> pulumi.Output[Optional[int]]:
         """
-        Timeout for moving the disk of a VM in
-        seconds (defaults to 1800).
+        MoveDisk timeout
         """
+        warnings.warn("""This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead.""", DeprecationWarning)
+        pulumi.log.warn("""timeout_move_disk is deprecated: This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead.""")
+
         return pulumi.get(self, "timeout_move_disk")
 
     @property

@@ -709,16 +709,18 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.timeoutMigrate);
     }
     /**
-     * Timeout for moving the disk of a VM in
-     * seconds (defaults to 1800).
+     * MoveDisk timeout
+     * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead.
      * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead. */
     @Export(name="timeoutMoveDisk", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeoutMoveDisk;
 
     /**
-     * @return Timeout for moving the disk of a VM in
-     * seconds (defaults to 1800).
+     * @return MoveDisk timeout
      * 
      */
     public Output<Optional<Integer>> timeoutMoveDisk() {

@@ -70,10 +70,18 @@ type Container struct {
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Whether to create a template (defaults to `false`).
 	Template pulumi.BoolPtrOutput `pulumi:"template"`
+	// Timeout for cloning a container in seconds (defaults to 1800).
+	TimeoutClone pulumi.IntPtrOutput `pulumi:"timeoutClone"`
 	// Timeout for creating a container in seconds (defaults to 1800).
 	TimeoutCreate pulumi.IntPtrOutput `pulumi:"timeoutCreate"`
-	// Timeout for starting a container in seconds (defaults to 300).
+	// Timeout for deleting a container in seconds (defaults to 60).
+	TimeoutDelete pulumi.IntPtrOutput `pulumi:"timeoutDelete"`
+	// Start container timeout
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release. An overall operation timeout (`timeoutCreate` / `timeoutClone`) is used instead.
 	TimeoutStart pulumi.IntPtrOutput `pulumi:"timeoutStart"`
+	// Timeout for updating a container in seconds (defaults to 1800).
+	TimeoutUpdate pulumi.IntPtrOutput `pulumi:"timeoutUpdate"`
 	// Whether the container runs as unprivileged on
 	// the host (defaults to `false`).
 	Unprivileged pulumi.BoolPtrOutput `pulumi:"unprivileged"`
@@ -158,10 +166,18 @@ type containerState struct {
 	Tags []string `pulumi:"tags"`
 	// Whether to create a template (defaults to `false`).
 	Template *bool `pulumi:"template"`
+	// Timeout for cloning a container in seconds (defaults to 1800).
+	TimeoutClone *int `pulumi:"timeoutClone"`
 	// Timeout for creating a container in seconds (defaults to 1800).
 	TimeoutCreate *int `pulumi:"timeoutCreate"`
-	// Timeout for starting a container in seconds (defaults to 300).
+	// Timeout for deleting a container in seconds (defaults to 60).
+	TimeoutDelete *int `pulumi:"timeoutDelete"`
+	// Start container timeout
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release. An overall operation timeout (`timeoutCreate` / `timeoutClone`) is used instead.
 	TimeoutStart *int `pulumi:"timeoutStart"`
+	// Timeout for updating a container in seconds (defaults to 1800).
+	TimeoutUpdate *int `pulumi:"timeoutUpdate"`
 	// Whether the container runs as unprivileged on
 	// the host (defaults to `false`).
 	Unprivileged *bool `pulumi:"unprivileged"`
@@ -214,10 +230,18 @@ type ContainerState struct {
 	Tags pulumi.StringArrayInput
 	// Whether to create a template (defaults to `false`).
 	Template pulumi.BoolPtrInput
+	// Timeout for cloning a container in seconds (defaults to 1800).
+	TimeoutClone pulumi.IntPtrInput
 	// Timeout for creating a container in seconds (defaults to 1800).
 	TimeoutCreate pulumi.IntPtrInput
-	// Timeout for starting a container in seconds (defaults to 300).
+	// Timeout for deleting a container in seconds (defaults to 60).
+	TimeoutDelete pulumi.IntPtrInput
+	// Start container timeout
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release. An overall operation timeout (`timeoutCreate` / `timeoutClone`) is used instead.
 	TimeoutStart pulumi.IntPtrInput
+	// Timeout for updating a container in seconds (defaults to 1800).
+	TimeoutUpdate pulumi.IntPtrInput
 	// Whether the container runs as unprivileged on
 	// the host (defaults to `false`).
 	Unprivileged pulumi.BoolPtrInput
@@ -274,10 +298,18 @@ type containerArgs struct {
 	Tags []string `pulumi:"tags"`
 	// Whether to create a template (defaults to `false`).
 	Template *bool `pulumi:"template"`
+	// Timeout for cloning a container in seconds (defaults to 1800).
+	TimeoutClone *int `pulumi:"timeoutClone"`
 	// Timeout for creating a container in seconds (defaults to 1800).
 	TimeoutCreate *int `pulumi:"timeoutCreate"`
-	// Timeout for starting a container in seconds (defaults to 300).
+	// Timeout for deleting a container in seconds (defaults to 60).
+	TimeoutDelete *int `pulumi:"timeoutDelete"`
+	// Start container timeout
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release. An overall operation timeout (`timeoutCreate` / `timeoutClone`) is used instead.
 	TimeoutStart *int `pulumi:"timeoutStart"`
+	// Timeout for updating a container in seconds (defaults to 1800).
+	TimeoutUpdate *int `pulumi:"timeoutUpdate"`
 	// Whether the container runs as unprivileged on
 	// the host (defaults to `false`).
 	Unprivileged *bool `pulumi:"unprivileged"`
@@ -331,10 +363,18 @@ type ContainerArgs struct {
 	Tags pulumi.StringArrayInput
 	// Whether to create a template (defaults to `false`).
 	Template pulumi.BoolPtrInput
+	// Timeout for cloning a container in seconds (defaults to 1800).
+	TimeoutClone pulumi.IntPtrInput
 	// Timeout for creating a container in seconds (defaults to 1800).
 	TimeoutCreate pulumi.IntPtrInput
-	// Timeout for starting a container in seconds (defaults to 300).
+	// Timeout for deleting a container in seconds (defaults to 60).
+	TimeoutDelete pulumi.IntPtrInput
+	// Start container timeout
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release. An overall operation timeout (`timeoutCreate` / `timeoutClone`) is used instead.
 	TimeoutStart pulumi.IntPtrInput
+	// Timeout for updating a container in seconds (defaults to 1800).
+	TimeoutUpdate pulumi.IntPtrInput
 	// Whether the container runs as unprivileged on
 	// the host (defaults to `false`).
 	Unprivileged pulumi.BoolPtrInput
@@ -530,14 +570,31 @@ func (o ContainerOutput) Template() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Container) pulumi.BoolPtrOutput { return v.Template }).(pulumi.BoolPtrOutput)
 }
 
+// Timeout for cloning a container in seconds (defaults to 1800).
+func (o ContainerOutput) TimeoutClone() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Container) pulumi.IntPtrOutput { return v.TimeoutClone }).(pulumi.IntPtrOutput)
+}
+
 // Timeout for creating a container in seconds (defaults to 1800).
 func (o ContainerOutput) TimeoutCreate() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Container) pulumi.IntPtrOutput { return v.TimeoutCreate }).(pulumi.IntPtrOutput)
 }
 
-// Timeout for starting a container in seconds (defaults to 300).
+// Timeout for deleting a container in seconds (defaults to 60).
+func (o ContainerOutput) TimeoutDelete() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Container) pulumi.IntPtrOutput { return v.TimeoutDelete }).(pulumi.IntPtrOutput)
+}
+
+// Start container timeout
+//
+// Deprecated: This field is deprecated and will be removed in a future release. An overall operation timeout (`timeoutCreate` / `timeoutClone`) is used instead.
 func (o ContainerOutput) TimeoutStart() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Container) pulumi.IntPtrOutput { return v.TimeoutStart }).(pulumi.IntPtrOutput)
+}
+
+// Timeout for updating a container in seconds (defaults to 1800).
+func (o ContainerOutput) TimeoutUpdate() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Container) pulumi.IntPtrOutput { return v.TimeoutUpdate }).(pulumi.IntPtrOutput)
 }
 
 // Whether the container runs as unprivileged on

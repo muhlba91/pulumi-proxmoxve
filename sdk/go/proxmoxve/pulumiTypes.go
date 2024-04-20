@@ -523,6 +523,200 @@ func (o ProviderSshNodeArrayOutput) Index(i pulumi.IntInput) ProviderSshNodeOutp
 	}).(ProviderSshNodeOutput)
 }
 
+type Vm2Timeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// Vm2TimeoutsInput is an input type that accepts Vm2TimeoutsArgs and Vm2TimeoutsOutput values.
+// You can construct a concrete instance of `Vm2TimeoutsInput` via:
+//
+//	Vm2TimeoutsArgs{...}
+type Vm2TimeoutsInput interface {
+	pulumi.Input
+
+	ToVm2TimeoutsOutput() Vm2TimeoutsOutput
+	ToVm2TimeoutsOutputWithContext(context.Context) Vm2TimeoutsOutput
+}
+
+type Vm2TimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (Vm2TimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vm2Timeouts)(nil)).Elem()
+}
+
+func (i Vm2TimeoutsArgs) ToVm2TimeoutsOutput() Vm2TimeoutsOutput {
+	return i.ToVm2TimeoutsOutputWithContext(context.Background())
+}
+
+func (i Vm2TimeoutsArgs) ToVm2TimeoutsOutputWithContext(ctx context.Context) Vm2TimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Vm2TimeoutsOutput)
+}
+
+func (i Vm2TimeoutsArgs) ToVm2TimeoutsPtrOutput() Vm2TimeoutsPtrOutput {
+	return i.ToVm2TimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i Vm2TimeoutsArgs) ToVm2TimeoutsPtrOutputWithContext(ctx context.Context) Vm2TimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Vm2TimeoutsOutput).ToVm2TimeoutsPtrOutputWithContext(ctx)
+}
+
+// Vm2TimeoutsPtrInput is an input type that accepts Vm2TimeoutsArgs, Vm2TimeoutsPtr and Vm2TimeoutsPtrOutput values.
+// You can construct a concrete instance of `Vm2TimeoutsPtrInput` via:
+//
+//	        Vm2TimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type Vm2TimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToVm2TimeoutsPtrOutput() Vm2TimeoutsPtrOutput
+	ToVm2TimeoutsPtrOutputWithContext(context.Context) Vm2TimeoutsPtrOutput
+}
+
+type vm2TimeoutsPtrType Vm2TimeoutsArgs
+
+func Vm2TimeoutsPtr(v *Vm2TimeoutsArgs) Vm2TimeoutsPtrInput {
+	return (*vm2TimeoutsPtrType)(v)
+}
+
+func (*vm2TimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Vm2Timeouts)(nil)).Elem()
+}
+
+func (i *vm2TimeoutsPtrType) ToVm2TimeoutsPtrOutput() Vm2TimeoutsPtrOutput {
+	return i.ToVm2TimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *vm2TimeoutsPtrType) ToVm2TimeoutsPtrOutputWithContext(ctx context.Context) Vm2TimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Vm2TimeoutsPtrOutput)
+}
+
+type Vm2TimeoutsOutput struct{ *pulumi.OutputState }
+
+func (Vm2TimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vm2Timeouts)(nil)).Elem()
+}
+
+func (o Vm2TimeoutsOutput) ToVm2TimeoutsOutput() Vm2TimeoutsOutput {
+	return o
+}
+
+func (o Vm2TimeoutsOutput) ToVm2TimeoutsOutputWithContext(ctx context.Context) Vm2TimeoutsOutput {
+	return o
+}
+
+func (o Vm2TimeoutsOutput) ToVm2TimeoutsPtrOutput() Vm2TimeoutsPtrOutput {
+	return o.ToVm2TimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o Vm2TimeoutsOutput) ToVm2TimeoutsPtrOutputWithContext(ctx context.Context) Vm2TimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Vm2Timeouts) *Vm2Timeouts {
+		return &v
+	}).(Vm2TimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o Vm2TimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Vm2Timeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o Vm2TimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Vm2Timeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o Vm2TimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Vm2Timeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o Vm2TimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Vm2Timeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type Vm2TimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (Vm2TimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Vm2Timeouts)(nil)).Elem()
+}
+
+func (o Vm2TimeoutsPtrOutput) ToVm2TimeoutsPtrOutput() Vm2TimeoutsPtrOutput {
+	return o
+}
+
+func (o Vm2TimeoutsPtrOutput) ToVm2TimeoutsPtrOutputWithContext(ctx context.Context) Vm2TimeoutsPtrOutput {
+	return o
+}
+
+func (o Vm2TimeoutsPtrOutput) Elem() Vm2TimeoutsOutput {
+	return o.ApplyT(func(v *Vm2Timeouts) Vm2Timeouts {
+		if v != nil {
+			return *v
+		}
+		var ret Vm2Timeouts
+		return ret
+	}).(Vm2TimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o Vm2TimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Vm2Timeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o Vm2TimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Vm2Timeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o Vm2TimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Vm2Timeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o Vm2TimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Vm2Timeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HostsEntryInput)(nil)).Elem(), HostsEntryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostsEntryArrayInput)(nil)).Elem(), HostsEntryArray{})
@@ -530,10 +724,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSshPtrInput)(nil)).Elem(), ProviderSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSshNodeInput)(nil)).Elem(), ProviderSshNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSshNodeArrayInput)(nil)).Elem(), ProviderSshNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Vm2TimeoutsInput)(nil)).Elem(), Vm2TimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Vm2TimeoutsPtrInput)(nil)).Elem(), Vm2TimeoutsArgs{})
 	pulumi.RegisterOutputType(HostsEntryOutput{})
 	pulumi.RegisterOutputType(HostsEntryArrayOutput{})
 	pulumi.RegisterOutputType(ProviderSshOutput{})
 	pulumi.RegisterOutputType(ProviderSshPtrOutput{})
 	pulumi.RegisterOutputType(ProviderSshNodeOutput{})
 	pulumi.RegisterOutputType(ProviderSshNodeArrayOutput{})
+	pulumi.RegisterOutputType(Vm2TimeoutsOutput{})
+	pulumi.RegisterOutputType(Vm2TimeoutsPtrOutput{})
 }

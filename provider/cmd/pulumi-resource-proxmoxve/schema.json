@@ -445,6 +445,166 @@
             },
             "type": "object"
         },
+        "proxmoxve:Hardware/getMappingsCheck:getMappingsCheck": {
+            "properties": {
+                "mappingId": {
+                    "type": "string",
+                    "description": "The corresponding hardware mapping ID of the node check diagnostic entry.\n"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "The message of the node check diagnostic entry.\n"
+                },
+                "severity": {
+                    "type": "string",
+                    "description": "The severity of the node check diagnostic entry.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "mappingId",
+                "message",
+                "severity"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "proxmoxve:Hardware/mapping/PciMap:PciMap": {
+            "properties": {
+                "comment": {
+                    "type": "string",
+                    "description": "The comment of the mapped PCI device.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of the map.\n"
+                },
+                "iommuGroup": {
+                    "type": "integer",
+                    "description": "The IOMMU group of the map. Not mandatory for the Proxmox VE API call, but causes a PCI hardware mapping to be incomplete when not set\n"
+                },
+                "node": {
+                    "type": "string",
+                    "description": "The node name of the map.\n"
+                },
+                "path": {
+                    "type": "string",
+                    "description": "The path of the map.\n"
+                },
+                "subsystemId": {
+                    "type": "string",
+                    "description": "The subsystem ID group of the map. Not mandatory for the Proxmox VE API call, but causes a PCI hardware mapping to be incomplete when not set\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "node",
+                "path"
+            ]
+        },
+        "proxmoxve:Hardware/mapping/UsbMap:UsbMap": {
+            "properties": {
+                "comment": {
+                    "type": "string",
+                    "description": "The comment of the mapped USB device.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of the map.\n"
+                },
+                "node": {
+                    "type": "string",
+                    "description": "The node name of the map.\n"
+                },
+                "path": {
+                    "type": "string",
+                    "description": "The path of the map. For hardware mappings of type USB the path is optional and indicates that the device is mapped through the device ID instead of ports.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "node"
+            ]
+        },
+        "proxmoxve:Hardware/mapping/getPciMap:getPciMap": {
+            "properties": {
+                "comment": {
+                    "type": "string",
+                    "description": "The comment of the mapped PCI device.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID attribute of the map.\n"
+                },
+                "iommuGroup": {
+                    "type": "integer",
+                    "description": "The IOMMU group attribute of the map.\n"
+                },
+                "node": {
+                    "type": "string",
+                    "description": "The node name attribute of the map.\n"
+                },
+                "path": {
+                    "type": "string",
+                    "description": "The path attribute of the map.\n"
+                },
+                "subsystemId": {
+                    "type": "string",
+                    "description": "The subsystem ID attribute of the map.Not mandatory for the Proxmox VE API call, but causes a PCI hardware mapping to be incomplete when not set.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "comment",
+                "id",
+                "iommuGroup",
+                "node",
+                "path",
+                "subsystemId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "proxmoxve:Hardware/mapping/getUsbMap:getUsbMap": {
+            "properties": {
+                "comment": {
+                    "type": "string",
+                    "description": "The comment of the mapped USB device.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID attribute of the map.\n"
+                },
+                "node": {
+                    "type": "string",
+                    "description": "The node name attribute of the map.\n"
+                },
+                "path": {
+                    "type": "string",
+                    "description": "The path attribute of the map.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "comment",
+                "id",
+                "node",
+                "path"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "proxmoxve:Network/FirewallIPSetCidr:FirewallIPSetCidr": {
             "properties": {
                 "comment": {
@@ -1777,6 +1937,27 @@
                     "requiredOutputs": []
                 }
             }
+        },
+        "proxmoxve:index/Vm2Timeouts:Vm2Timeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                },
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                },
+                "update": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
         }
     },
     "provider": {
@@ -1953,13 +2134,26 @@
                     "type": "boolean",
                     "description": "Whether to create a template (defaults to `false`).\n"
                 },
+                "timeoutClone": {
+                    "type": "integer",
+                    "description": "Timeout for cloning a container in seconds (defaults to 1800).\n"
+                },
                 "timeoutCreate": {
                     "type": "integer",
                     "description": "Timeout for creating a container in seconds (defaults to 1800).\n"
                 },
+                "timeoutDelete": {
+                    "type": "integer",
+                    "description": "Timeout for deleting a container in seconds (defaults to 60).\n"
+                },
                 "timeoutStart": {
                     "type": "integer",
-                    "description": "Timeout for starting a container in seconds (defaults to 300).\n"
+                    "description": "Start container timeout\n",
+                    "deprecationMessage": "This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead."
+                },
+                "timeoutUpdate": {
+                    "type": "integer",
+                    "description": "Timeout for updating a container in seconds (defaults to 1800).\n"
                 },
                 "unprivileged": {
                     "type": "boolean",
@@ -2064,13 +2258,26 @@
                     "description": "Whether to create a template (defaults to `false`).\n",
                     "willReplaceOnChanges": true
                 },
+                "timeoutClone": {
+                    "type": "integer",
+                    "description": "Timeout for cloning a container in seconds (defaults to 1800).\n"
+                },
                 "timeoutCreate": {
                     "type": "integer",
                     "description": "Timeout for creating a container in seconds (defaults to 1800).\n"
                 },
+                "timeoutDelete": {
+                    "type": "integer",
+                    "description": "Timeout for deleting a container in seconds (defaults to 60).\n"
+                },
                 "timeoutStart": {
                     "type": "integer",
-                    "description": "Timeout for starting a container in seconds (defaults to 300).\n"
+                    "description": "Start container timeout\n",
+                    "deprecationMessage": "This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead."
+                },
+                "timeoutUpdate": {
+                    "type": "integer",
+                    "description": "Timeout for updating a container in seconds (defaults to 1800).\n"
                 },
                 "unprivileged": {
                     "type": "boolean",
@@ -2179,13 +2386,26 @@
                         "description": "Whether to create a template (defaults to `false`).\n",
                         "willReplaceOnChanges": true
                     },
+                    "timeoutClone": {
+                        "type": "integer",
+                        "description": "Timeout for cloning a container in seconds (defaults to 1800).\n"
+                    },
                     "timeoutCreate": {
                         "type": "integer",
                         "description": "Timeout for creating a container in seconds (defaults to 1800).\n"
                     },
+                    "timeoutDelete": {
+                        "type": "integer",
+                        "description": "Timeout for deleting a container in seconds (defaults to 60).\n"
+                    },
                     "timeoutStart": {
                         "type": "integer",
-                        "description": "Timeout for starting a container in seconds (defaults to 300).\n"
+                        "description": "Start container timeout\n",
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead."
+                    },
+                    "timeoutUpdate": {
+                        "type": "integer",
+                        "description": "Timeout for updating a container in seconds (defaults to 1800).\n"
                     },
                     "unprivileged": {
                         "type": "boolean",
@@ -2809,6 +3029,149 @@
                     "type": {
                         "type": "string",
                         "description": "The type of HA resources to create. If unset, it will be deduced from the `resource_id`.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "proxmoxve:Hardware/mapping/pci:Pci": {
+            "description": "Manages a PCI hardware mapping in a Proxmox VE cluster.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Hardware.Pci;\nimport com.pulumi.proxmoxve.Hardware.PciArgs;\nimport com.pulumi.proxmoxve.Hardware.inputs.PciMapArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Pci(\"example\", PciArgs.builder()        \n            .comment(\"This is a comment\")\n            .maps(PciMapArgs.builder()\n                .comment(\"This is a device specific comment\")\n                .id(\"8086:5916\")\n                .iommu_group(0)\n                .node(\"pve\")\n                .path(\"0000:00:02.0\")\n                .subsystem_id(\"8086:2068\")\n                .build())\n            .mediatedDevices(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: proxmoxve:Hardware/mapping:Pci\n    properties:\n      comment: This is a comment\n      # The actual map of devices.\n      maps:\n        - comment: This is a device specific comment\n          id: 8086:5916\n          iommu_group: 0\n          node: pve\n          path: 0000:00:02.0\n          subsystem_id: 8086:2068\n      mediatedDevices: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n#!/usr/bin/env sh\n\nA PCI hardware mapping can be imported using their name, e.g.:\n\n```sh\n$ pulumi import proxmoxve:Hardware/mapping/pci:Pci example example\n```\n\n",
+            "properties": {
+                "comment": {
+                    "type": "string",
+                    "description": "The comment of the mapped PCI device.\n"
+                },
+                "maps": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/proxmoxve:Hardware/mapping/PciMap:PciMap"
+                    },
+                    "description": "The actual map of devices for the PCI hardware mapping.\n"
+                },
+                "mediatedDevices": {
+                    "type": "boolean",
+                    "description": "Indicates whether to enable mediated devices.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of this PCI hardware mapping.\n"
+                }
+            },
+            "required": [
+                "maps",
+                "mediatedDevices",
+                "name"
+            ],
+            "inputProperties": {
+                "comment": {
+                    "type": "string",
+                    "description": "The comment of the mapped PCI device.\n"
+                },
+                "maps": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/proxmoxve:Hardware/mapping/PciMap:PciMap"
+                    },
+                    "description": "The actual map of devices for the PCI hardware mapping.\n"
+                },
+                "mediatedDevices": {
+                    "type": "boolean",
+                    "description": "Indicates whether to enable mediated devices.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of this PCI hardware mapping.\n"
+                }
+            },
+            "requiredInputs": [
+                "maps"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Pci resources.\n",
+                "properties": {
+                    "comment": {
+                        "type": "string",
+                        "description": "The comment of the mapped PCI device.\n"
+                    },
+                    "maps": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/proxmoxve:Hardware/mapping/PciMap:PciMap"
+                        },
+                        "description": "The actual map of devices for the PCI hardware mapping.\n"
+                    },
+                    "mediatedDevices": {
+                        "type": "boolean",
+                        "description": "Indicates whether to enable mediated devices.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of this PCI hardware mapping.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "proxmoxve:Hardware/mapping/usb:Usb": {
+            "description": "Manages a USB hardware mapping in a Proxmox VE cluster.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst example = new proxmoxve.hardware.mapping.Usb(\"example\", {\n    comment: \"This is a comment\",\n    maps: [{\n        comment: \"This is a device specific comment\",\n        id: \"8087:0a2b\",\n        node: \"pve\",\n        path: \"1-8.2\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample = proxmoxve.hardware.mapping.Usb(\"example\",\n    comment=\"This is a comment\",\n    maps=[proxmoxve.hardware.mapping.UsbMapArgs(\n        comment=\"This is a device specific comment\",\n        id=\"8087:0a2b\",\n        node=\"pve\",\n        path=\"1-8.2\",\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new ProxmoxVE.Hardware.Mapping.Usb(\"example\", new()\n    {\n        Comment = \"This is a comment\",\n        Maps = new[]\n        {\n            new ProxmoxVE.Hardware.Mapping.Inputs.UsbMapArgs\n            {\n                Comment = \"This is a device specific comment\",\n                Id = \"8087:0a2b\",\n                Node = \"pve\",\n                Path = \"1-8.2\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Hardware\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Hardware.NewUsb(ctx, \"example\", \u0026Hardware.UsbArgs{\n\t\t\tComment: pulumi.String(\"This is a comment\"),\n\t\t\tMaps: mapping.UsbMapTypeArray{\n\t\t\t\t\u0026mapping.UsbMapTypeArgs{\n\t\t\t\t\tComment: pulumi.String(\"This is a device specific comment\"),\n\t\t\t\t\tId:      pulumi.String(\"8087:0a2b\"),\n\t\t\t\t\tNode:    pulumi.String(\"pve\"),\n\t\t\t\t\tPath:    pulumi.String(\"1-8.2\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Hardware.Usb;\nimport com.pulumi.proxmoxve.Hardware.UsbArgs;\nimport com.pulumi.proxmoxve.Hardware.inputs.UsbMapArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Usb(\"example\", UsbArgs.builder()        \n            .comment(\"This is a comment\")\n            .maps(UsbMapArgs.builder()\n                .comment(\"This is a device specific comment\")\n                .id(\"8087:0a2b\")\n                .node(\"pve\")\n                .path(\"1-8.2\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: proxmoxve:Hardware/mapping:Usb\n    properties:\n      comment: This is a comment\n      # The actual map of devices.\n      maps:\n        - comment: This is a device specific comment\n          id: 8087:0a2b\n          node: pve\n          path: 1-8.2\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n#!/usr/bin/env sh\n\nA USB hardware mapping can be imported using their name, e.g.:\n\n```sh\n$ pulumi import proxmoxve:Hardware/mapping/usb:Usb example example\n```\n\n",
+            "properties": {
+                "comment": {
+                    "type": "string",
+                    "description": "The comment of the mapped USB device.\n"
+                },
+                "maps": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/proxmoxve:Hardware/mapping/UsbMap:UsbMap"
+                    },
+                    "description": "The actual map of devices for the hardware mapping.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of this hardware mapping.\n"
+                }
+            },
+            "required": [
+                "maps",
+                "name"
+            ],
+            "inputProperties": {
+                "comment": {
+                    "type": "string",
+                    "description": "The comment of the mapped USB device.\n"
+                },
+                "maps": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/proxmoxve:Hardware/mapping/UsbMap:UsbMap"
+                    },
+                    "description": "The actual map of devices for the hardware mapping.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of this hardware mapping.\n"
+                }
+            },
+            "requiredInputs": [
+                "maps"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Usb resources.\n",
+                "properties": {
+                    "comment": {
+                        "type": "string",
+                        "description": "The comment of the mapped USB device.\n"
+                    },
+                    "maps": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/proxmoxve:Hardware/mapping/UsbMap:UsbMap"
+                        },
+                        "description": "The actual map of devices for the hardware mapping.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of this hardware mapping.\n"
                     }
                 },
                 "type": "object"
@@ -4498,7 +4861,8 @@
                 },
                 "timeoutMoveDisk": {
                     "type": "integer",
-                    "description": "Timeout for moving the disk of a VM in\nseconds (defaults to 1800).\n"
+                    "description": "MoveDisk timeout\n",
+                    "deprecationMessage": "This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead."
                 },
                 "timeoutReboot": {
                     "type": "integer",
@@ -4739,7 +5103,8 @@
                 },
                 "timeoutMoveDisk": {
                     "type": "integer",
-                    "description": "Timeout for moving the disk of a VM in\nseconds (defaults to 1800).\n"
+                    "description": "MoveDisk timeout\n",
+                    "deprecationMessage": "This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead."
                 },
                 "timeoutReboot": {
                     "type": "integer",
@@ -5004,7 +5369,8 @@
                     },
                     "timeoutMoveDisk": {
                         "type": "integer",
-                        "description": "Timeout for moving the disk of a VM in\nseconds (defaults to 1800).\n"
+                        "description": "MoveDisk timeout\n",
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead."
                     },
                     "timeoutReboot": {
                         "type": "integer",
@@ -5465,6 +5831,71 @@
                 },
                 "type": "object"
             }
+        },
+        "proxmoxve:index/vm2:Vm2": {
+            "description": "\u003e **DO NOT USE**\nThis is an experimental implementation of a Proxmox VM resource using Plugin Framework.\u003cbr\u003e\u003cbr\u003eIt is a Proof of Concept, highly experimental and **will** change in future. It does not support all features of the Proxmox API for VMs and **MUST NOT** be used in production.\n",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the VM.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the VM. Doesn't have to be unique.\n"
+                },
+                "nodeName": {
+                    "type": "string",
+                    "description": "The name of the node where the VM is provisioned.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/proxmoxve:index/Vm2Timeouts:Vm2Timeouts"
+                }
+            },
+            "required": [
+                "name",
+                "nodeName"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the VM.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the VM. Doesn't have to be unique.\n"
+                },
+                "nodeName": {
+                    "type": "string",
+                    "description": "The name of the node where the VM is provisioned.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/proxmoxve:index/Vm2Timeouts:Vm2Timeouts"
+                }
+            },
+            "requiredInputs": [
+                "nodeName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Vm2 resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the VM.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the VM. Doesn't have to be unique.\n"
+                    },
+                    "nodeName": {
+                        "type": "string",
+                        "description": "The name of the node where the VM is provisioned.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/proxmoxve:index/Vm2Timeouts:Vm2Timeouts"
+                    }
+                },
+                "type": "object"
+            }
         }
     },
     "functions": {
@@ -5736,6 +6167,163 @@
                 "required": [
                     "id",
                     "resourceIds"
+                ]
+            }
+        },
+        "proxmoxve:Hardware/getMappings:getMappings": {
+            "description": "Retrieves a list of hardware mapping resources.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@pulumi/proxmoxve\";\n\nconst example-pci = proxmoxve.Hardware.getMappings({\n    checkNode: \"pve\",\n    type: \"pci\",\n});\nconst example-usb = proxmoxve.Hardware.getMappings({\n    checkNode: \"pve\",\n    type: \"usb\",\n});\nexport const dataProxmoxVirtualEnvironmentHardwareMappingsPci = example_pci;\nexport const dataProxmoxVirtualEnvironmentHardwareMappingsUsb = example_usb;\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample_pci = proxmoxve.Hardware.get_mappings(check_node=\"pve\",\n    type=\"pci\")\nexample_usb = proxmoxve.Hardware.get_mappings(check_node=\"pve\",\n    type=\"usb\")\npulumi.export(\"dataProxmoxVirtualEnvironmentHardwareMappingsPci\", example_pci)\npulumi.export(\"dataProxmoxVirtualEnvironmentHardwareMappingsUsb\", example_usb)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example_pci = ProxmoxVE.Hardware.GetMappings.Invoke(new()\n    {\n        CheckNode = \"pve\",\n        Type = \"pci\",\n    });\n\n    var example_usb = ProxmoxVE.Hardware.GetMappings.Invoke(new()\n    {\n        CheckNode = \"pve\",\n        Type = \"usb\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"dataProxmoxVirtualEnvironmentHardwareMappingsPci\"] = example_pci,\n        [\"dataProxmoxVirtualEnvironmentHardwareMappingsUsb\"] = example_usb,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Hardware\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample_pci, err := Hardware.GetMappings(ctx, \u0026hardware.GetMappingsArgs{\n\t\t\tCheckNode: pulumi.StringRef(\"pve\"),\n\t\t\tType:      \"pci\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texample_usb, err := Hardware.GetMappings(ctx, \u0026hardware.GetMappingsArgs{\n\t\t\tCheckNode: pulumi.StringRef(\"pve\"),\n\t\t\tType:      \"usb\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"dataProxmoxVirtualEnvironmentHardwareMappingsPci\", example_pci)\n\t\tctx.Export(\"dataProxmoxVirtualEnvironmentHardwareMappingsUsb\", example_usb)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Hardware.HardwareFunctions;\nimport com.pulumi.proxmoxve.Hardware.inputs.GetMappingsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example-pci = HardwareFunctions.getMappings(GetMappingsArgs.builder()\n            .checkNode(\"pve\")\n            .type(\"pci\")\n            .build());\n\n        final var example-usb = HardwareFunctions.getMappings(GetMappingsArgs.builder()\n            .checkNode(\"pve\")\n            .type(\"usb\")\n            .build());\n\n        ctx.export(\"dataProxmoxVirtualEnvironmentHardwareMappingsPci\", example_pci);\n        ctx.export(\"dataProxmoxVirtualEnvironmentHardwareMappingsUsb\", example_usb);\n    }\n}\n```\n```yaml\nvariables:\n  example-pci:\n    fn::invoke:\n      Function: proxmoxve:Hardware:getMappings\n      Arguments:\n        checkNode: pve\n        type: pci\n  example-usb:\n    fn::invoke:\n      Function: proxmoxve:Hardware:getMappings\n      Arguments:\n        checkNode: pve\n        type: usb\noutputs:\n  dataProxmoxVirtualEnvironmentHardwareMappingsPci: ${[\"example-pci\"]}\n  dataProxmoxVirtualEnvironmentHardwareMappingsUsb: ${[\"example-usb\"]}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getMappings.\n",
+                "properties": {
+                    "checkNode": {
+                        "type": "string",
+                        "description": "The name of the node whose configurations should be checked for correctness.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of the hardware mappings.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "type"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getMappings.\n",
+                "properties": {
+                    "checkNode": {
+                        "type": "string",
+                        "description": "The name of the node whose configurations should be checked for correctness.\n"
+                    },
+                    "checks": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/proxmoxve:Hardware/getMappingsCheck:getMappingsCheck"
+                        },
+                        "description": "Might contain relevant diagnostics about incorrect configurations.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of this hardware mappings data source.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The identifiers of the hardware mappings.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of the hardware mappings.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "checks",
+                    "id",
+                    "ids",
+                    "type"
+                ]
+            }
+        },
+        "proxmoxve:Hardware/mapping/getPci:getPci": {
+            "description": "Retrieves a PCI hardware mapping from a Proxmox VE cluster.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@pulumi/proxmoxve\";\n\nconst example = proxmoxve.Hardware.mapping.getPci({\n    name: \"example\",\n});\nexport const dataProxmoxVirtualEnvironmentHardwareMappingPci = example;\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample = proxmoxve.Hardware.mapping.get_pci(name=\"example\")\npulumi.export(\"dataProxmoxVirtualEnvironmentHardwareMappingPci\", example)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = ProxmoxVE.Hardware.Mapping.GetPci.Invoke(new()\n    {\n        Name = \"example\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"dataProxmoxVirtualEnvironmentHardwareMappingPci\"] = example,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Hardware\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := Hardware.GetPci(ctx, \u0026mapping.GetPciArgs{\n\t\t\tName: \"example\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"dataProxmoxVirtualEnvironmentHardwareMappingPci\", example)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Hardware_mapping.Hardware_mappingFunctions;\nimport com.pulumi.proxmoxve.Hardware.inputs.GetPciArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = Hardware/mappingFunctions.getPci(GetPciArgs.builder()\n            .name(\"example\")\n            .build());\n\n        ctx.export(\"dataProxmoxVirtualEnvironmentHardwareMappingPci\", example.applyValue(getPciResult -\u003e getPciResult));\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: proxmoxve:Hardware/mapping:getPci\n      Arguments:\n        name: example\noutputs:\n  dataProxmoxVirtualEnvironmentHardwareMappingPci: ${example}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getPci.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The name of this PCI hardware mapping.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getPci.\n",
+                "properties": {
+                    "comment": {
+                        "type": "string",
+                        "description": "The comment of this PCI hardware mapping.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of this PCI hardware mapping data source.\n"
+                    },
+                    "maps": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/proxmoxve:Hardware/mapping/getPciMap:getPciMap"
+                        },
+                        "description": "The actual map of devices for the hardware mapping.\n"
+                    },
+                    "mediatedDevices": {
+                        "type": "boolean",
+                        "description": "Indicates whether to use with mediated devices.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of this PCI hardware mapping.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "comment",
+                    "id",
+                    "maps",
+                    "mediatedDevices",
+                    "name"
+                ]
+            }
+        },
+        "proxmoxve:Hardware/mapping/getUsb:getUsb": {
+            "description": "Retrieves a USB hardware mapping from a Proxmox VE cluster.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@pulumi/proxmoxve\";\n\nconst example = proxmoxve.Hardware.mapping.getUsb({\n    name: \"example\",\n});\nexport const dataProxmoxVirtualEnvironmentHardwareMappingUsb = example;\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample = proxmoxve.Hardware.mapping.get_usb(name=\"example\")\npulumi.export(\"dataProxmoxVirtualEnvironmentHardwareMappingUsb\", example)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = ProxmoxVE.Hardware.Mapping.GetUsb.Invoke(new()\n    {\n        Name = \"example\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"dataProxmoxVirtualEnvironmentHardwareMappingUsb\"] = example,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Hardware\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := Hardware.GetUsb(ctx, \u0026mapping.GetUsbArgs{\n\t\t\tName: \"example\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"dataProxmoxVirtualEnvironmentHardwareMappingUsb\", example)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Hardware_mapping.Hardware_mappingFunctions;\nimport com.pulumi.proxmoxve.Hardware.inputs.GetUsbArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = Hardware/mappingFunctions.getUsb(GetUsbArgs.builder()\n            .name(\"example\")\n            .build());\n\n        ctx.export(\"dataProxmoxVirtualEnvironmentHardwareMappingUsb\", example.applyValue(getUsbResult -\u003e getUsbResult));\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: proxmoxve:Hardware/mapping:getUsb\n      Arguments:\n        name: example\noutputs:\n  dataProxmoxVirtualEnvironmentHardwareMappingUsb: ${example}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getUsb.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The name of this USB hardware mapping.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getUsb.\n",
+                "properties": {
+                    "comment": {
+                        "type": "string",
+                        "description": "The comment of this USB hardware mapping.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of this USB hardware mapping data source.\n"
+                    },
+                    "maps": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/proxmoxve:Hardware/mapping/getUsbMap:getUsbMap"
+                        },
+                        "description": "The actual map of devices for the hardware mapping.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of this USB hardware mapping.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "comment",
+                    "id",
+                    "maps",
+                    "name"
                 ]
             }
         },

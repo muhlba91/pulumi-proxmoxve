@@ -146,16 +146,34 @@ namespace Pulumi.ProxmoxVE.CT
         public Output<bool?> Template { get; private set; } = null!;
 
         /// <summary>
+        /// Timeout for cloning a container in seconds (defaults to 1800).
+        /// </summary>
+        [Output("timeoutClone")]
+        public Output<int?> TimeoutClone { get; private set; } = null!;
+
+        /// <summary>
         /// Timeout for creating a container in seconds (defaults to 1800).
         /// </summary>
         [Output("timeoutCreate")]
         public Output<int?> TimeoutCreate { get; private set; } = null!;
 
         /// <summary>
-        /// Timeout for starting a container in seconds (defaults to 300).
+        /// Timeout for deleting a container in seconds (defaults to 60).
+        /// </summary>
+        [Output("timeoutDelete")]
+        public Output<int?> TimeoutDelete { get; private set; } = null!;
+
+        /// <summary>
+        /// Start container timeout
         /// </summary>
         [Output("timeoutStart")]
         public Output<int?> TimeoutStart { get; private set; } = null!;
+
+        /// <summary>
+        /// Timeout for updating a container in seconds (defaults to 1800).
+        /// </summary>
+        [Output("timeoutUpdate")]
+        public Output<int?> TimeoutUpdate { get; private set; } = null!;
 
         /// <summary>
         /// Whether the container runs as unprivileged on
@@ -356,16 +374,34 @@ namespace Pulumi.ProxmoxVE.CT
         public Input<bool>? Template { get; set; }
 
         /// <summary>
+        /// Timeout for cloning a container in seconds (defaults to 1800).
+        /// </summary>
+        [Input("timeoutClone")]
+        public Input<int>? TimeoutClone { get; set; }
+
+        /// <summary>
         /// Timeout for creating a container in seconds (defaults to 1800).
         /// </summary>
         [Input("timeoutCreate")]
         public Input<int>? TimeoutCreate { get; set; }
 
         /// <summary>
-        /// Timeout for starting a container in seconds (defaults to 300).
+        /// Timeout for deleting a container in seconds (defaults to 60).
+        /// </summary>
+        [Input("timeoutDelete")]
+        public Input<int>? TimeoutDelete { get; set; }
+
+        /// <summary>
+        /// Start container timeout
         /// </summary>
         [Input("timeoutStart")]
         public Input<int>? TimeoutStart { get; set; }
+
+        /// <summary>
+        /// Timeout for updating a container in seconds (defaults to 1800).
+        /// </summary>
+        [Input("timeoutUpdate")]
+        public Input<int>? TimeoutUpdate { get; set; }
 
         /// <summary>
         /// Whether the container runs as unprivileged on
@@ -527,16 +563,34 @@ namespace Pulumi.ProxmoxVE.CT
         public Input<bool>? Template { get; set; }
 
         /// <summary>
+        /// Timeout for cloning a container in seconds (defaults to 1800).
+        /// </summary>
+        [Input("timeoutClone")]
+        public Input<int>? TimeoutClone { get; set; }
+
+        /// <summary>
         /// Timeout for creating a container in seconds (defaults to 1800).
         /// </summary>
         [Input("timeoutCreate")]
         public Input<int>? TimeoutCreate { get; set; }
 
         /// <summary>
-        /// Timeout for starting a container in seconds (defaults to 300).
+        /// Timeout for deleting a container in seconds (defaults to 60).
+        /// </summary>
+        [Input("timeoutDelete")]
+        public Input<int>? TimeoutDelete { get; set; }
+
+        /// <summary>
+        /// Start container timeout
         /// </summary>
         [Input("timeoutStart")]
         public Input<int>? TimeoutStart { get; set; }
+
+        /// <summary>
+        /// Timeout for updating a container in seconds (defaults to 1800).
+        /// </summary>
+        [Input("timeoutUpdate")]
+        public Input<int>? TimeoutUpdate { get; set; }
 
         /// <summary>
         /// Whether the container runs as unprivileged on

@@ -16,6 +16,25 @@ export interface HostsEntry {
     hostnames: string[];
 }
 
+export interface Vm2Timeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
 export namespace CT {
     export interface ContainerClone {
         /**
@@ -315,6 +334,118 @@ export namespace CT {
         upDelay?: number;
     }
 
+}
+
+export namespace Hardware {
+    export interface GetMappingsCheck {
+        /**
+         * The corresponding hardware mapping ID of the node check diagnostic entry.
+         */
+        mappingId: string;
+        /**
+         * The message of the node check diagnostic entry.
+         */
+        message: string;
+        /**
+         * The severity of the node check diagnostic entry.
+         */
+        severity: string;
+    }
+
+    export namespace mapping {
+        export interface GetPciMap {
+            /**
+             * The comment of the mapped PCI device.
+             */
+            comment: string;
+            /**
+             * The ID attribute of the map.
+             */
+            id: string;
+            /**
+             * The IOMMU group attribute of the map.
+             */
+            iommuGroup: number;
+            /**
+             * The node name attribute of the map.
+             */
+            node: string;
+            /**
+             * The path attribute of the map.
+             */
+            path: string;
+            /**
+             * The subsystem ID attribute of the map.Not mandatory for the Proxmox VE API call, but causes a PCI hardware mapping to be incomplete when not set.
+             */
+            subsystemId: string;
+        }
+
+        export interface GetUsbMap {
+            /**
+             * The comment of the mapped USB device.
+             */
+            comment: string;
+            /**
+             * The ID attribute of the map.
+             */
+            id: string;
+            /**
+             * The node name attribute of the map.
+             */
+            node: string;
+            /**
+             * The path attribute of the map.
+             */
+            path: string;
+        }
+
+        export interface PciMap {
+            /**
+             * The comment of the mapped PCI device.
+             */
+            comment?: string;
+            /**
+             * The ID of the map.
+             */
+            id: string;
+            /**
+             * The IOMMU group of the map. Not mandatory for the Proxmox VE API call, but causes a PCI hardware mapping to be incomplete when not set
+             */
+            iommuGroup?: number;
+            /**
+             * The node name of the map.
+             */
+            node: string;
+            /**
+             * The path of the map.
+             */
+            path: string;
+            /**
+             * The subsystem ID group of the map. Not mandatory for the Proxmox VE API call, but causes a PCI hardware mapping to be incomplete when not set
+             */
+            subsystemId?: string;
+        }
+
+        export interface UsbMap {
+            /**
+             * The comment of the mapped USB device.
+             */
+            comment?: string;
+            /**
+             * The ID of the map.
+             */
+            id: string;
+            /**
+             * The node name of the map.
+             */
+            node: string;
+            /**
+             * The path of the map. For hardware mappings of type USB the path is optional and indicates that the device is mapped through the device ID instead of ports.
+             */
+            path?: string;
+        }
+
+    }
 }
 
 export namespace Network {

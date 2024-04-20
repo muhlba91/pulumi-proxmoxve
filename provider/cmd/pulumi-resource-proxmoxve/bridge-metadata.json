@@ -192,6 +192,24 @@
                 "current": "proxmoxve:HA/hAGroup:HAGroup",
                 "majorVersion": 6
             },
+            "proxmox_virtual_environment_hardware_mapping_pci": {
+                "current": "proxmoxve:Hardware/mapping/pci:Pci",
+                "majorVersion": 6,
+                "fields": {
+                    "map": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_hardware_mapping_usb": {
+                "current": "proxmoxve:Hardware/mapping/usb:Usb",
+                "majorVersion": 6,
+                "fields": {
+                    "map": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "proxmox_virtual_environment_haresource": {
                 "current": "proxmoxve:HA/hAResource:HAResource",
                 "majorVersion": 6
@@ -415,6 +433,10 @@
                         "maxItemsOne": true
                     }
                 }
+            },
+            "proxmox_virtual_environment_vm2": {
+                "current": "proxmoxve:index/vm2:Vm2",
+                "majorVersion": 6
             }
         },
         "datasources": {
@@ -496,6 +518,36 @@
                 "majorVersion": 6,
                 "fields": {
                     "group_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_hardware_mapping_pci": {
+                "current": "proxmoxve:Hardware/mapping/getPci:getPci",
+                "majorVersion": 6,
+                "fields": {
+                    "map": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_hardware_mapping_usb": {
+                "current": "proxmoxve:Hardware/mapping/getUsb:getUsb",
+                "majorVersion": 6,
+                "fields": {
+                    "map": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_hardware_mappings": {
+                "current": "proxmoxve:Hardware/getMappings:getMappings",
+                "majorVersion": 6,
+                "fields": {
+                    "checks": {
+                        "maxItemsOne": false
+                    },
+                    "ids": {
                         "maxItemsOne": false
                     }
                 }
@@ -714,6 +766,8 @@
             "proxmoxve:Download/file:File": 1,
             "proxmoxve:HA/hAGroup:HAGroup": 1,
             "proxmoxve:HA/hAResource:HAResource": 1,
+            "proxmoxve:Hardware/mapping/pci:Pci": 1,
+            "proxmoxve:Hardware/mapping/usb:Usb": 1,
             "proxmoxve:Network/firewall:Firewall": 0,
             "proxmoxve:Network/firewallAlias:FirewallAlias": 0,
             "proxmoxve:Network/firewallIPSet:FirewallIPSet": 0,
@@ -731,7 +785,8 @@
             "proxmoxve:index/certifi:Certifi": 0,
             "proxmoxve:index/dNS:DNS": 0,
             "proxmoxve:index/hosts:Hosts": 0,
-            "proxmoxve:index/time:Time": 0
+            "proxmoxve:index/time:Time": 0,
+            "proxmoxve:index/vm2:Vm2": 1
         },
         "functions": {
             "proxmoxve:Cluster/getNodes:getNodes": 0,
@@ -739,6 +794,9 @@
             "proxmoxve:HA/getHAGroups:getHAGroups": 1,
             "proxmoxve:HA/getHAResource:getHAResource": 1,
             "proxmoxve:HA/getHAResources:getHAResources": 1,
+            "proxmoxve:Hardware/getMappings:getMappings": 1,
+            "proxmoxve:Hardware/mapping/getPci:getPci": 1,
+            "proxmoxve:Hardware/mapping/getUsb:getUsb": 1,
             "proxmoxve:Network/getDNS:getDNS": 0,
             "proxmoxve:Network/getHosts:getHosts": 0,
             "proxmoxve:Network/getTime:getTime": 0,

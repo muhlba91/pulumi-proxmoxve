@@ -686,18 +686,24 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Timeout for moving the disk of a VM in
-     * seconds (defaults to 1800).
+     * MoveDisk timeout
+     * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead.
      * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead. */
     @Import(name="timeoutMoveDisk")
     private @Nullable Output<Integer> timeoutMoveDisk;
 
     /**
-     * @return Timeout for moving the disk of a VM in
-     * seconds (defaults to 1800).
+     * @return MoveDisk timeout
+     * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead.
      * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead. */
     public Optional<Output<Integer>> timeoutMoveDisk() {
         return Optional.ofNullable(this.timeoutMoveDisk);
     }
@@ -1883,24 +1889,30 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param timeoutMoveDisk Timeout for moving the disk of a VM in
-         * seconds (defaults to 1800).
+         * @param timeoutMoveDisk MoveDisk timeout
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead. */
         public Builder timeoutMoveDisk(@Nullable Output<Integer> timeoutMoveDisk) {
             $.timeoutMoveDisk = timeoutMoveDisk;
             return this;
         }
 
         /**
-         * @param timeoutMoveDisk Timeout for moving the disk of a VM in
-         * seconds (defaults to 1800).
+         * @param timeoutMoveDisk MoveDisk timeout
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead. */
         public Builder timeoutMoveDisk(Integer timeoutMoveDisk) {
             return timeoutMoveDisk(Output.of(timeoutMoveDisk));
         }

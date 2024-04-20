@@ -311,8 +311,7 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<int?> TimeoutMigrate { get; private set; } = null!;
 
         /// <summary>
-        /// Timeout for moving the disk of a VM in
-        /// seconds (defaults to 1800).
+        /// MoveDisk timeout
         /// </summary>
         [Output("timeoutMoveDisk")]
         public Output<int?> TimeoutMoveDisk { get; private set; } = null!;
@@ -727,8 +726,7 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<int>? TimeoutMigrate { get; set; }
 
         /// <summary>
-        /// Timeout for moving the disk of a VM in
-        /// seconds (defaults to 1800).
+        /// MoveDisk timeout
         /// </summary>
         [Input("timeoutMoveDisk")]
         public Input<int>? TimeoutMoveDisk { get; set; }
@@ -1149,8 +1147,7 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<int>? TimeoutMigrate { get; set; }
 
         /// <summary>
-        /// Timeout for moving the disk of a VM in
-        /// seconds (defaults to 1800).
+        /// MoveDisk timeout
         /// </summary>
         [Input("timeoutMoveDisk")]
         public Input<int>? TimeoutMoveDisk { get; set; }
