@@ -1,9 +1,9 @@
 // x-release-please-major
 module github.com/muhlba91/pulumi-proxmoxve/sdk/v6
 
-go 1.21
+go 1.22
 
-toolchain go1.21.1
+toolchain go1.22.2
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
