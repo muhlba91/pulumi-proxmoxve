@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [6.4.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.4.0...v6.4.1) (2024-04-21)
+
+
+### Miscellaneous Chores
+
+* **ci:** enable go cache ([cb9ccfc](https://github.com/muhlba91/pulumi-proxmoxve/commit/cb9ccfc29f535be4d71b8d1afd3d83ac38ba3897))
+* **ci:** replace deprecated gradle action ([a7a8511](https://github.com/muhlba91/pulumi-proxmoxve/commit/a7a851134da2f7da8125bfe4f0b7d48c50ee8549))
+* **ci:** update go version ([9886a2e](https://github.com/muhlba91/pulumi-proxmoxve/commit/9886a2e1f8d5283962a2199ba12da78d2346f230))
+* **deps:** update pulumi-java ([4c5840c](https://github.com/muhlba91/pulumi-proxmoxve/commit/4c5840c5325a60dd65f6cc038cec9c8e88480f19))
+
 ## [6.4.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.3.1...v6.4.0) (2024-04-20)
 
 
