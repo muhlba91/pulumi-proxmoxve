@@ -11,7 +11,7 @@ require (
 	github.com/ettle/strcase v0.2.0
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.33.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.80.0
-	github.com/pulumi/pulumi/sdk/v3 v3.113.3
+	github.com/pulumi/pulumi/sdk/v3 v3.114.0
 )
 
 require (
@@ -82,7 +82,7 @@ require (
 	github.com/gedex/inflector v0.0.0-20170307190818-16278e9db813 // indirect
 	github.com/go-git/gcfg v1.5.1-0.20230307220236-3a3c6141e376 // indirect
 	github.com/go-git/go-billy/v5 v5.5.0 // indirect
-	github.com/go-git/go-git/v5 v5.11.0 // indirect
+	github.com/go-git/go-git/v5 v5.12.0 // indirect
 	github.com/go-logr/logr v1.4.1 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/gofrs/uuid v4.2.0+incompatible // indirect
@@ -196,7 +196,7 @@ require (
 	github.com/santhosh-tekuri/jsonschema/v5 v5.0.0 // indirect
 	github.com/segmentio/asm v1.1.3 // indirect
 	github.com/segmentio/encoding v0.3.5 // indirect
-	github.com/sergi/go-diff v1.3.1 // indirect
+	github.com/sergi/go-diff v1.3.2-0.20230802210424-5b0b94c5c0d3 // indirect
 	github.com/shopspring/decimal v1.3.1 // indirect
 	github.com/skeema/knownhosts v1.2.2 // indirect
 	github.com/spf13/afero v1.9.5 // indirect
