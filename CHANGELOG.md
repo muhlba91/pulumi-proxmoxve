@@ -1,6 +1,21 @@
 # Changelog
 
 
+## [6.5.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.4.1...v6.5.0) (2024-04-30)
+
+
+### Features
+
+* prepare upstream update to v0.55.0 ([5598fc0](https://github.com/muhlba91/pulumi-proxmoxve/commit/5598fc05c2b394d2df134ce3fa17340e12c052ca))
+
+
+### Miscellaneous Chores
+
+* **deps:** update anchore/sbom-action action to v0.15.11 ([9afed11](https://github.com/muhlba91/pulumi-proxmoxve/commit/9afed112e2d5b2d59684bc356d9591670107cae2))
+* **deps:** update golangci/golangci-lint-action action to v5 ([1c05e46](https://github.com/muhlba91/pulumi-proxmoxve/commit/1c05e46ef3a930dc7f42ca50deaa6f67b7ab6baa))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.55.0 ([220b439](https://github.com/muhlba91/pulumi-proxmoxve/commit/220b43961e646555cdbb73eb9c812d66cad011d6))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.114.0 ([7c324a0](https://github.com/muhlba91/pulumi-proxmoxve/commit/7c324a006244b0b015b6cd802390952f0b6383b2))
+
 ## [6.4.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.4.0...v6.4.1) (2024-04-21)
 
 
