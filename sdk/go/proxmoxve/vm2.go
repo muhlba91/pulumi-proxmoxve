@@ -12,17 +12,32 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **DO NOT USE**
+// !> **DO NOT USE**
 // This is an experimental implementation of a Proxmox VM resource using Plugin Framework.<br><br>It is a Proof of Concept, highly experimental and **will** change in future. It does not support all features of the Proxmox API for VMs and **MUST NOT** be used in production.
+//
+// > Note: Many attributes are marked as **optional** _and_ **computed** in the schema,
+// hence you may seem added to the plan with "(known after apply)" status, even if they are not set in the configuration.
+// This is done to support the `clone` operation, when a VM is created from an existing one,
+// and attributes of the original VM are copied to the new one.
+//
+// Computed attributes allow the provider to set those attributes without user input.
+// The attributes are marked as optional to allow the user to set (or overwrite) them if needed.
+// In order to remove the computed attribute from the plan, you can set it to an empty value (e.g. `""` for string, `[]` for collection).
 type Vm2 struct {
 	pulumi.CustomResourceState
 
+	// The cloning configuration.
+	Clone Vm2ClonePtrOutput `pulumi:"clone"`
 	// The description of the VM.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The name of the VM. Doesn't have to be unique.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the node where the VM is provisioned.
-	NodeName pulumi.StringOutput  `pulumi:"nodeName"`
+	NodeName pulumi.StringOutput `pulumi:"nodeName"`
+	// The tags assigned to the resource.
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	// Set to true to create a VM template.
+	Template pulumi.BoolPtrOutput `pulumi:"template"`
 	Timeouts Vm2TimeoutsPtrOutput `pulumi:"timeouts"`
 }
 
@@ -59,22 +74,34 @@ func GetVm2(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Vm2 resources.
 type vm2State struct {
+	// The cloning configuration.
+	Clone *Vm2Clone `pulumi:"clone"`
 	// The description of the VM.
 	Description *string `pulumi:"description"`
 	// The name of the VM. Doesn't have to be unique.
 	Name *string `pulumi:"name"`
 	// The name of the node where the VM is provisioned.
-	NodeName *string      `pulumi:"nodeName"`
+	NodeName *string `pulumi:"nodeName"`
+	// The tags assigned to the resource.
+	Tags []string `pulumi:"tags"`
+	// Set to true to create a VM template.
+	Template *bool        `pulumi:"template"`
 	Timeouts *Vm2Timeouts `pulumi:"timeouts"`
 }
 
 type Vm2State struct {
+	// The cloning configuration.
+	Clone Vm2ClonePtrInput
 	// The description of the VM.
 	Description pulumi.StringPtrInput
 	// The name of the VM. Doesn't have to be unique.
 	Name pulumi.StringPtrInput
 	// The name of the node where the VM is provisioned.
 	NodeName pulumi.StringPtrInput
+	// The tags assigned to the resource.
+	Tags pulumi.StringArrayInput
+	// Set to true to create a VM template.
+	Template pulumi.BoolPtrInput
 	Timeouts Vm2TimeoutsPtrInput
 }
 
@@ -83,23 +110,35 @@ func (Vm2State) ElementType() reflect.Type {
 }
 
 type vm2Args struct {
+	// The cloning configuration.
+	Clone *Vm2Clone `pulumi:"clone"`
 	// The description of the VM.
 	Description *string `pulumi:"description"`
 	// The name of the VM. Doesn't have to be unique.
 	Name *string `pulumi:"name"`
 	// The name of the node where the VM is provisioned.
-	NodeName string       `pulumi:"nodeName"`
+	NodeName string `pulumi:"nodeName"`
+	// The tags assigned to the resource.
+	Tags []string `pulumi:"tags"`
+	// Set to true to create a VM template.
+	Template *bool        `pulumi:"template"`
 	Timeouts *Vm2Timeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a Vm2 resource.
 type Vm2Args struct {
+	// The cloning configuration.
+	Clone Vm2ClonePtrInput
 	// The description of the VM.
 	Description pulumi.StringPtrInput
 	// The name of the VM. Doesn't have to be unique.
 	Name pulumi.StringPtrInput
 	// The name of the node where the VM is provisioned.
 	NodeName pulumi.StringInput
+	// The tags assigned to the resource.
+	Tags pulumi.StringArrayInput
+	// Set to true to create a VM template.
+	Template pulumi.BoolPtrInput
 	Timeouts Vm2TimeoutsPtrInput
 }
 
@@ -190,6 +229,11 @@ func (o Vm2Output) ToVm2OutputWithContext(ctx context.Context) Vm2Output {
 	return o
 }
 
+// The cloning configuration.
+func (o Vm2Output) Clone() Vm2ClonePtrOutput {
+	return o.ApplyT(func(v *Vm2) Vm2ClonePtrOutput { return v.Clone }).(Vm2ClonePtrOutput)
+}
+
 // The description of the VM.
 func (o Vm2Output) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Vm2) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -203,6 +247,16 @@ func (o Vm2Output) Name() pulumi.StringOutput {
 // The name of the node where the VM is provisioned.
 func (o Vm2Output) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vm2) pulumi.StringOutput { return v.NodeName }).(pulumi.StringOutput)
+}
+
+// The tags assigned to the resource.
+func (o Vm2Output) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Vm2) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Set to true to create a VM template.
+func (o Vm2Output) Template() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Vm2) pulumi.BoolPtrOutput { return v.Template }).(pulumi.BoolPtrOutput)
 }
 
 func (o Vm2Output) Timeouts() Vm2TimeoutsPtrOutput {

@@ -16,6 +16,17 @@ export interface HostsEntry {
     hostnames: string[];
 }
 
+export interface Vm2Clone {
+    /**
+     * The ID of the VM to clone.
+     */
+    id: number;
+    /**
+     * The number of retries to perform when cloning the VM (default: 3).
+     */
+    retries: number;
+}
+
 export interface Vm2Timeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -332,6 +343,47 @@ export namespace CT {
          * seconds before the next container is started.
          */
         upDelay?: number;
+    }
+
+}
+
+export namespace Cluster {
+    export interface OptionsNextId {
+        /**
+         * The minimum number for the next free VM ID. Must be higher or equal to 100
+         */
+        lower?: number;
+        /**
+         * The maximum number for the next free VM ID. Must be less or equal to 999999999
+         */
+        upper?: number;
+    }
+
+    export interface OptionsNotify {
+        /**
+         * Cluster-wide notification settings for the HA fencing mode. Must be `always` | `never`.
+         */
+        haFencingMode?: string;
+        /**
+         * Cluster-wide notification settings for the HA fencing target.
+         */
+        haFencingTarget?: string;
+        /**
+         * Cluster-wide notification settings for package updates. Must be `auto` | `always` | `never`.
+         */
+        packageUpdates?: string;
+        /**
+         * Cluster-wide notification settings for the package updates target.
+         */
+        packageUpdatesTarget?: string;
+        /**
+         * Cluster-wide notification settings for replication. Must be `always` | `never`.
+         */
+        replication?: string;
+        /**
+         * Cluster-wide notification settings for the replication target.
+         */
+        replicationTarget?: string;
     }
 
 }

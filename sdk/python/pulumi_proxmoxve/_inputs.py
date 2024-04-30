@@ -13,6 +13,7 @@ __all__ = [
     'HostsEntryArgs',
     'ProviderSshArgs',
     'ProviderSshNodeArgs',
+    'Vm2CloneArgs',
     'Vm2TimeoutsArgs',
 ]
 
@@ -255,6 +256,44 @@ class ProviderSshNodeArgs:
     @port.setter
     def port(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port", value)
+
+
+@pulumi.input_type
+class Vm2CloneArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[int],
+                 retries: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] id: The ID of the VM to clone.
+        :param pulumi.Input[int] retries: The number of retries to perform when cloning the VM (default: 3).
+        """
+        pulumi.set(__self__, "id", id)
+        if retries is not None:
+            pulumi.set(__self__, "retries", retries)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[int]:
+        """
+        The ID of the VM to clone.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[int]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def retries(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of retries to perform when cloning the VM (default: 3).
+        """
+        return pulumi.get(self, "retries")
+
+    @retries.setter
+    def retries(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "retries", value)
 
 
 @pulumi.input_type

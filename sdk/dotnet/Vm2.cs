@@ -10,12 +10,27 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE
 {
     /// <summary>
-    /// &gt; **DO NOT USE**
+    /// !&gt; **DO NOT USE**
     /// This is an experimental implementation of a Proxmox VM resource using Plugin Framework.&lt;br&gt;&lt;br&gt;It is a Proof of Concept, highly experimental and **will** change in future. It does not support all features of the Proxmox API for VMs and **MUST NOT** be used in production.
+    /// 
+    /// &gt; Note: Many attributes are marked as **optional** _and_ **computed** in the schema,
+    /// hence you may seem added to the plan with "(known after apply)" status, even if they are not set in the configuration.
+    /// This is done to support the `clone` operation, when a VM is created from an existing one,
+    /// and attributes of the original VM are copied to the new one.
+    /// 
+    /// Computed attributes allow the provider to set those attributes without user input.
+    /// The attributes are marked as optional to allow the user to set (or overwrite) them if needed.
+    /// In order to remove the computed attribute from the plan, you can set it to an empty value (e.g. `""` for string, `[]` for collection).
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:index/vm2:Vm2")]
     public partial class Vm2 : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The cloning configuration.
+        /// </summary>
+        [Output("clone")]
+        public Output<Outputs.Vm2Clone?> Clone { get; private set; } = null!;
+
         /// <summary>
         /// The description of the VM.
         /// </summary>
@@ -33,6 +48,18 @@ namespace Pulumi.ProxmoxVE
         /// </summary>
         [Output("nodeName")]
         public Output<string> NodeName { get; private set; } = null!;
+
+        /// <summary>
+        /// The tags assigned to the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// Set to true to create a VM template.
+        /// </summary>
+        [Output("template")]
+        public Output<bool?> Template { get; private set; } = null!;
 
         [Output("timeouts")]
         public Output<Outputs.Vm2Timeouts?> Timeouts { get; private set; } = null!;
@@ -85,6 +112,12 @@ namespace Pulumi.ProxmoxVE
     public sealed class Vm2Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The cloning configuration.
+        /// </summary>
+        [Input("clone")]
+        public Input<Inputs.Vm2CloneArgs>? Clone { get; set; }
+
+        /// <summary>
         /// The description of the VM.
         /// </summary>
         [Input("description")]
@@ -102,6 +135,24 @@ namespace Pulumi.ProxmoxVE
         [Input("nodeName", required: true)]
         public Input<string> NodeName { get; set; } = null!;
 
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// The tags assigned to the resource.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// Set to true to create a VM template.
+        /// </summary>
+        [Input("template")]
+        public Input<bool>? Template { get; set; }
+
         [Input("timeouts")]
         public Input<Inputs.Vm2TimeoutsArgs>? Timeouts { get; set; }
 
@@ -113,6 +164,12 @@ namespace Pulumi.ProxmoxVE
 
     public sealed class Vm2State : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The cloning configuration.
+        /// </summary>
+        [Input("clone")]
+        public Input<Inputs.Vm2CloneGetArgs>? Clone { get; set; }
+
         /// <summary>
         /// The description of the VM.
         /// </summary>
@@ -130,6 +187,24 @@ namespace Pulumi.ProxmoxVE
         /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// The tags assigned to the resource.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// Set to true to create a VM template.
+        /// </summary>
+        [Input("template")]
+        public Input<bool>? Template { get; set; }
 
         [Input("timeouts")]
         public Input<Inputs.Vm2TimeoutsGetArgs>? Timeouts { get; set; }

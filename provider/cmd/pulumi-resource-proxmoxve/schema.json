@@ -445,6 +445,48 @@
             },
             "type": "object"
         },
+        "proxmoxve:Cluster/OptionsNextId:OptionsNextId": {
+            "properties": {
+                "lower": {
+                    "type": "integer",
+                    "description": "The minimum number for the next free VM ID. Must be higher or equal to 100\n"
+                },
+                "upper": {
+                    "type": "integer",
+                    "description": "The maximum number for the next free VM ID. Must be less or equal to 999999999\n"
+                }
+            },
+            "type": "object"
+        },
+        "proxmoxve:Cluster/OptionsNotify:OptionsNotify": {
+            "properties": {
+                "haFencingMode": {
+                    "type": "string",
+                    "description": "Cluster-wide notification settings for the HA fencing mode. Must be `always` | `never`.\n"
+                },
+                "haFencingTarget": {
+                    "type": "string",
+                    "description": "Cluster-wide notification settings for the HA fencing target.\n"
+                },
+                "packageUpdates": {
+                    "type": "string",
+                    "description": "Cluster-wide notification settings for package updates. Must be `auto` | `always` | `never`.\n"
+                },
+                "packageUpdatesTarget": {
+                    "type": "string",
+                    "description": "Cluster-wide notification settings for the package updates target.\n"
+                },
+                "replication": {
+                    "type": "string",
+                    "description": "Cluster-wide notification settings for replication. Must be `always` | `never`.\n"
+                },
+                "replicationTarget": {
+                    "type": "string",
+                    "description": "Cluster-wide notification settings for the replication target.\n"
+                }
+            },
+            "type": "object"
+        },
         "proxmoxve:Hardware/getMappingsCheck:getMappingsCheck": {
             "properties": {
                 "mappingId": {
@@ -1938,6 +1980,30 @@
                 }
             }
         },
+        "proxmoxve:index/Vm2Clone:Vm2Clone": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of the VM to clone.\n"
+                },
+                "retries": {
+                    "type": "integer",
+                    "description": "The number of retries to perform when cloning the VM (default: 3).\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "id",
+                        "retries"
+                    ]
+                }
+            }
+        },
         "proxmoxve:index/Vm2Timeouts:Vm2Timeouts": {
             "properties": {
                 "create": {
@@ -2422,7 +2488,7 @@
             }
         },
         "proxmoxve:Cluster/options:Options": {
-            "description": "Manages Proxmox VE Cluster Datacenter options.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst options = new proxmoxve.cluster.Options(\"options\", {\n    bandwidthLimitDefault: 666666,\n    bandwidthLimitMigration: 555555,\n    emailFrom: \"ged@gont.earthsea\",\n    keyboard: \"pl\",\n    language: \"en\",\n    maxWorkers: 5,\n    migrationCidr: \"10.0.0.0/8\",\n    migrationType: \"secure\",\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\noptions = proxmoxve.cluster.Options(\"options\",\n    bandwidth_limit_default=666666,\n    bandwidth_limit_migration=555555,\n    email_from=\"ged@gont.earthsea\",\n    keyboard=\"pl\",\n    language=\"en\",\n    max_workers=5,\n    migration_cidr=\"10.0.0.0/8\",\n    migration_type=\"secure\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var options = new ProxmoxVE.Cluster.Options(\"options\", new()\n    {\n        BandwidthLimitDefault = 666666,\n        BandwidthLimitMigration = 555555,\n        EmailFrom = \"ged@gont.earthsea\",\n        Keyboard = \"pl\",\n        Language = \"en\",\n        MaxWorkers = 5,\n        MigrationCidr = \"10.0.0.0/8\",\n        MigrationType = \"secure\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Cluster\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Cluster.NewOptions(ctx, \"options\", \u0026Cluster.OptionsArgs{\n\t\t\tBandwidthLimitDefault:   pulumi.Int(666666),\n\t\t\tBandwidthLimitMigration: pulumi.Int(555555),\n\t\t\tEmailFrom:               pulumi.String(\"ged@gont.earthsea\"),\n\t\t\tKeyboard:                pulumi.String(\"pl\"),\n\t\t\tLanguage:                pulumi.String(\"en\"),\n\t\t\tMaxWorkers:              pulumi.Int(5),\n\t\t\tMigrationCidr:           pulumi.String(\"10.0.0.0/8\"),\n\t\t\tMigrationType:           pulumi.String(\"secure\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Cluster.Options;\nimport com.pulumi.proxmoxve.Cluster.OptionsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var options = new Options(\"options\", OptionsArgs.builder()        \n            .bandwidthLimitDefault(666666)\n            .bandwidthLimitMigration(555555)\n            .emailFrom(\"ged@gont.earthsea\")\n            .keyboard(\"pl\")\n            .language(\"en\")\n            .maxWorkers(5)\n            .migrationCidr(\"10.0.0.0/8\")\n            .migrationType(\"secure\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  options:\n    type: proxmoxve:Cluster:Options\n    properties:\n      bandwidthLimitDefault: 666666\n      bandwidthLimitMigration: 555555\n      emailFrom: ged@gont.earthsea\n      keyboard: pl\n      language: en\n      maxWorkers: 5\n      migrationCidr: 10.0.0.0/8\n      migrationType: secure\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n#!/usr/bin/env sh\n\nCluster options are global and can be imported using e.g.:\n\n```sh\n$ pulumi import proxmoxve:Cluster/options:Options options cluster\n```\n\n",
+            "description": "Manages Proxmox VE Cluster Datacenter options.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Cluster.Options;\nimport com.pulumi.proxmoxve.Cluster.OptionsArgs;\nimport com.pulumi.proxmoxve.Cluster.inputs.OptionsNextIdArgs;\nimport com.pulumi.proxmoxve.Cluster.inputs.OptionsNotifyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var options = new Options(\"options\", OptionsArgs.builder()        \n            .bandwidthLimitDefault(666666)\n            .bandwidthLimitMigration(555555)\n            .emailFrom(\"ged@gont.earthsea\")\n            .keyboard(\"pl\")\n            .language(\"en\")\n            .maxWorkers(5)\n            .migrationCidr(\"10.0.0.0/8\")\n            .migrationType(\"secure\")\n            .nextId(OptionsNextIdArgs.builder()\n                .lower(100)\n                .upper(999999999)\n                .build())\n            .notify(OptionsNotifyArgs.builder()\n                .ha_fencing_mode(\"never\")\n                .ha_fencing_target(\"default-matcher\")\n                .package_replication(\"always\")\n                .package_replication_target(\"default-matcher\")\n                .package_updates(\"always\")\n                .package_updates_target(\"default-matcher\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  options:\n    type: proxmoxve:Cluster:Options\n    properties:\n      bandwidthLimitDefault: 666666\n      bandwidthLimitMigration: 555555\n      emailFrom: ged@gont.earthsea\n      keyboard: pl\n      language: en\n      maxWorkers: 5\n      migrationCidr: 10.0.0.0/8\n      migrationType: secure\n      nextId:\n        lower: 100\n        upper: 9.99999999e+08\n      notify:\n        ha_fencing_mode: never\n        ha_fencing_target: default-matcher\n        package_replication: always\n        package_replication_target: default-matcher\n        package_updates: always\n        package_updates_target: default-matcher\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n#!/usr/bin/env sh\n\nCluster options are global and can be imported using e.g.:\n\n```sh\n$ pulumi import proxmoxve:Cluster/options:Options options cluster\n```\n\n",
             "properties": {
                 "bandwidthLimitClone": {
                     "type": "integer",
@@ -2495,6 +2561,14 @@
                 "migrationType": {
                     "type": "string",
                     "description": "Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).\n"
+                },
+                "nextId": {
+                    "$ref": "#/types/proxmoxve:Cluster/OptionsNextId:OptionsNextId",
+                    "description": "The ranges for the next free VM ID auto-selection pool.\n"
+                },
+                "notify": {
+                    "$ref": "#/types/proxmoxve:Cluster/OptionsNotify:OptionsNotify",
+                    "description": "Cluster-wide notification settings.\n"
                 }
             },
             "required": [
@@ -2573,6 +2647,14 @@
                 "migrationType": {
                     "type": "string",
                     "description": "Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).\n"
+                },
+                "nextId": {
+                    "$ref": "#/types/proxmoxve:Cluster/OptionsNextId:OptionsNextId",
+                    "description": "The ranges for the next free VM ID auto-selection pool.\n"
+                },
+                "notify": {
+                    "$ref": "#/types/proxmoxve:Cluster/OptionsNotify:OptionsNotify",
+                    "description": "Cluster-wide notification settings.\n"
                 }
             },
             "stateInputs": {
@@ -2649,6 +2731,14 @@
                     "migrationType": {
                         "type": "string",
                         "description": "Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).\n"
+                    },
+                    "nextId": {
+                        "$ref": "#/types/proxmoxve:Cluster/OptionsNextId:OptionsNextId",
+                        "description": "The ranges for the next free VM ID auto-selection pool.\n"
+                    },
+                    "notify": {
+                        "$ref": "#/types/proxmoxve:Cluster/OptionsNotify:OptionsNotify",
+                        "description": "Cluster-wide notification settings.\n"
                     }
                 },
                 "type": "object"
@@ -5833,8 +5923,12 @@
             }
         },
         "proxmoxve:index/vm2:Vm2": {
-            "description": "\u003e **DO NOT USE**\nThis is an experimental implementation of a Proxmox VM resource using Plugin Framework.\u003cbr\u003e\u003cbr\u003eIt is a Proof of Concept, highly experimental and **will** change in future. It does not support all features of the Proxmox API for VMs and **MUST NOT** be used in production.\n",
+            "description": "!\u003e **DO NOT USE**\nThis is an experimental implementation of a Proxmox VM resource using Plugin Framework.\u003cbr\u003e\u003cbr\u003eIt is a Proof of Concept, highly experimental and **will** change in future. It does not support all features of the Proxmox API for VMs and **MUST NOT** be used in production.\n\n\u003e Note: Many attributes are marked as **optional** _and_ **computed** in the schema,\nhence you may seem added to the plan with \"(known after apply)\" status, even if they are not set in the configuration.\nThis is done to support the `clone` operation, when a VM is created from an existing one,\nand attributes of the original VM are copied to the new one.\n\nComputed attributes allow the provider to set those attributes without user input.\nThe attributes are marked as optional to allow the user to set (or overwrite) them if needed.\nIn order to remove the computed attribute from the plan, you can set it to an empty value (e.g. `\"\"` for string, `[]` for collection).\n",
             "properties": {
+                "clone": {
+                    "$ref": "#/types/proxmoxve:index/Vm2Clone:Vm2Clone",
+                    "description": "The cloning configuration.\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "The description of the VM.\n"
@@ -5846,6 +5940,17 @@
                 "nodeName": {
                     "type": "string",
                     "description": "The name of the node where the VM is provisioned.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The tags assigned to the resource.\n"
+                },
+                "template": {
+                    "type": "boolean",
+                    "description": "Set to true to create a VM template.\n"
                 },
                 "timeouts": {
                     "$ref": "#/types/proxmoxve:index/Vm2Timeouts:Vm2Timeouts"
@@ -5853,9 +5958,14 @@
             },
             "required": [
                 "name",
-                "nodeName"
+                "nodeName",
+                "tags"
             ],
             "inputProperties": {
+                "clone": {
+                    "$ref": "#/types/proxmoxve:index/Vm2Clone:Vm2Clone",
+                    "description": "The cloning configuration.\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "The description of the VM.\n"
@@ -5867,6 +5977,17 @@
                 "nodeName": {
                     "type": "string",
                     "description": "The name of the node where the VM is provisioned.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The tags assigned to the resource.\n"
+                },
+                "template": {
+                    "type": "boolean",
+                    "description": "Set to true to create a VM template.\n"
                 },
                 "timeouts": {
                     "$ref": "#/types/proxmoxve:index/Vm2Timeouts:Vm2Timeouts"
@@ -5878,6 +5999,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Vm2 resources.\n",
                 "properties": {
+                    "clone": {
+                        "$ref": "#/types/proxmoxve:index/Vm2Clone:Vm2Clone",
+                        "description": "The cloning configuration.\n"
+                    },
                     "description": {
                         "type": "string",
                         "description": "The description of the VM.\n"
@@ -5889,6 +6014,17 @@
                     "nodeName": {
                         "type": "string",
                         "description": "The name of the node where the VM is provisioned.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The tags assigned to the resource.\n"
+                    },
+                    "template": {
+                        "type": "boolean",
+                        "description": "Set to true to create a VM template.\n"
                     },
                     "timeouts": {
                         "$ref": "#/types/proxmoxve:index/Vm2Timeouts:Vm2Timeouts"

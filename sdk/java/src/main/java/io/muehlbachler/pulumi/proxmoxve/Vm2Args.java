@@ -6,8 +6,11 @@ package io.muehlbachler.pulumi.proxmoxve;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import io.muehlbachler.pulumi.proxmoxve.inputs.Vm2CloneArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.Vm2TimeoutsArgs;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +19,21 @@ import javax.annotation.Nullable;
 public final class Vm2Args extends com.pulumi.resources.ResourceArgs {
 
     public static final Vm2Args Empty = new Vm2Args();
+
+    /**
+     * The cloning configuration.
+     * 
+     */
+    @Import(name="clone")
+    private @Nullable Output<Vm2CloneArgs> clone;
+
+    /**
+     * @return The cloning configuration.
+     * 
+     */
+    public Optional<Output<Vm2CloneArgs>> clone_() {
+        return Optional.ofNullable(this.clone);
+    }
 
     /**
      * The description of the VM.
@@ -62,6 +80,36 @@ public final class Vm2Args extends com.pulumi.resources.ResourceArgs {
         return this.nodeName;
     }
 
+    /**
+     * The tags assigned to the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<List<String>> tags;
+
+    /**
+     * @return The tags assigned to the resource.
+     * 
+     */
+    public Optional<Output<List<String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * Set to true to create a VM template.
+     * 
+     */
+    @Import(name="template")
+    private @Nullable Output<Boolean> template;
+
+    /**
+     * @return Set to true to create a VM template.
+     * 
+     */
+    public Optional<Output<Boolean>> template() {
+        return Optional.ofNullable(this.template);
+    }
+
     @Import(name="timeouts")
     private @Nullable Output<Vm2TimeoutsArgs> timeouts;
 
@@ -72,9 +120,12 @@ public final class Vm2Args extends com.pulumi.resources.ResourceArgs {
     private Vm2Args() {}
 
     private Vm2Args(Vm2Args $) {
+        this.clone = $.clone;
         this.description = $.description;
         this.name = $.name;
         this.nodeName = $.nodeName;
+        this.tags = $.tags;
+        this.template = $.template;
         this.timeouts = $.timeouts;
     }
 
@@ -94,6 +145,27 @@ public final class Vm2Args extends com.pulumi.resources.ResourceArgs {
 
         public Builder(Vm2Args defaults) {
             $ = new Vm2Args(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param clone The cloning configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clone_(@Nullable Output<Vm2CloneArgs> clone) {
+            $.clone = clone;
+            return this;
+        }
+
+        /**
+         * @param clone The cloning configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clone_(Vm2CloneArgs clone) {
+            return clone_(Output.of(clone));
         }
 
         /**
@@ -157,6 +229,58 @@ public final class Vm2Args extends com.pulumi.resources.ResourceArgs {
          */
         public Builder nodeName(String nodeName) {
             return nodeName(Output.of(nodeName));
+        }
+
+        /**
+         * @param tags The tags assigned to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<List<String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tags assigned to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(List<String> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param tags The tags assigned to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
+        }
+
+        /**
+         * @param template Set to true to create a VM template.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder template(@Nullable Output<Boolean> template) {
+            $.template = template;
+            return this;
+        }
+
+        /**
+         * @param template Set to true to create a VM template.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder template(Boolean template) {
+            return template(Output.of(template));
         }
 
         public Builder timeouts(@Nullable Output<Vm2TimeoutsArgs> timeouts) {

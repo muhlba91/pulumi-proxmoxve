@@ -70,6 +70,17 @@ export interface ProviderSshNode {
     port?: pulumi.Input<number>;
 }
 
+export interface Vm2Clone {
+    /**
+     * The ID of the VM to clone.
+     */
+    id: pulumi.Input<number>;
+    /**
+     * The number of retries to perform when cloning the VM (default: 3).
+     */
+    retries?: pulumi.Input<number>;
+}
+
 export interface Vm2Timeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -385,6 +396,46 @@ export namespace CT {
          * seconds before the next container is started.
          */
         upDelay?: pulumi.Input<number>;
+    }
+}
+
+export namespace Cluster {
+    export interface OptionsNextId {
+        /**
+         * The minimum number for the next free VM ID. Must be higher or equal to 100
+         */
+        lower?: pulumi.Input<number>;
+        /**
+         * The maximum number for the next free VM ID. Must be less or equal to 999999999
+         */
+        upper?: pulumi.Input<number>;
+    }
+
+    export interface OptionsNotify {
+        /**
+         * Cluster-wide notification settings for the HA fencing mode. Must be `always` | `never`.
+         */
+        haFencingMode?: pulumi.Input<string>;
+        /**
+         * Cluster-wide notification settings for the HA fencing target.
+         */
+        haFencingTarget?: pulumi.Input<string>;
+        /**
+         * Cluster-wide notification settings for package updates. Must be `auto` | `always` | `never`.
+         */
+        packageUpdates?: pulumi.Input<string>;
+        /**
+         * Cluster-wide notification settings for the package updates target.
+         */
+        packageUpdatesTarget?: pulumi.Input<string>;
+        /**
+         * Cluster-wide notification settings for replication. Must be `always` | `never`.
+         */
+        replication?: pulumi.Input<string>;
+        /**
+         * Cluster-wide notification settings for the replication target.
+         */
+        replicationTarget?: pulumi.Input<string>;
     }
 }
 

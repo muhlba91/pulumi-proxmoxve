@@ -10,18 +10,44 @@ import com.pulumi.core.internal.Codegen;
 import io.muehlbachler.pulumi.proxmoxve.Utilities;
 import io.muehlbachler.pulumi.proxmoxve.Vm2Args;
 import io.muehlbachler.pulumi.proxmoxve.inputs.Vm2State;
+import io.muehlbachler.pulumi.proxmoxve.outputs.Vm2Clone;
 import io.muehlbachler.pulumi.proxmoxve.outputs.Vm2Timeouts;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **DO NOT USE**
+ * !&gt; **DO NOT USE**
  * This is an experimental implementation of a Proxmox VM resource using Plugin Framework.&lt;br&gt;&lt;br&gt;It is a Proof of Concept, highly experimental and **will** change in future. It does not support all features of the Proxmox API for VMs and **MUST NOT** be used in production.
+ * 
+ * &gt; Note: Many attributes are marked as **optional** _and_ **computed** in the schema,
+ * hence you may seem added to the plan with &#34;(known after apply)&#34; status, even if they are not set in the configuration.
+ * This is done to support the `clone` operation, when a VM is created from an existing one,
+ * and attributes of the original VM are copied to the new one.
+ * 
+ * Computed attributes allow the provider to set those attributes without user input.
+ * The attributes are marked as optional to allow the user to set (or overwrite) them if needed.
+ * In order to remove the computed attribute from the plan, you can set it to an empty value (e.g. `&#34;&#34;` for string, `[]` for collection).
  * 
  */
 @ResourceType(type="proxmoxve:index/vm2:Vm2")
 public class Vm2 extends com.pulumi.resources.CustomResource {
+    /**
+     * The cloning configuration.
+     * 
+     */
+    @Export(name="clone", refs={Vm2Clone.class}, tree="[0]")
+    private Output</* @Nullable */ Vm2Clone> clone;
+
+    /**
+     * @return The cloning configuration.
+     * 
+     */
+    public Output<Optional<Vm2Clone>> clone_() {
+        return Codegen.optional(this.clone);
+    }
     /**
      * The description of the VM.
      * 
@@ -63,6 +89,34 @@ public class Vm2 extends com.pulumi.resources.CustomResource {
      */
     public Output<String> nodeName() {
         return this.nodeName;
+    }
+    /**
+     * The tags assigned to the resource.
+     * 
+     */
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> tags;
+
+    /**
+     * @return The tags assigned to the resource.
+     * 
+     */
+    public Output<List<String>> tags() {
+        return this.tags;
+    }
+    /**
+     * Set to true to create a VM template.
+     * 
+     */
+    @Export(name="template", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> template;
+
+    /**
+     * @return Set to true to create a VM template.
+     * 
+     */
+    public Output<Optional<Boolean>> template() {
+        return Codegen.optional(this.template);
     }
     @Export(name="timeouts", refs={Vm2Timeouts.class}, tree="[0]")
     private Output</* @Nullable */ Vm2Timeouts> timeouts;

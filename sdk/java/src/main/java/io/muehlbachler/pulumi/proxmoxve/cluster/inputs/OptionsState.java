@@ -5,6 +5,8 @@ package io.muehlbachler.pulumi.proxmoxve.Cluster.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import io.muehlbachler.pulumi.proxmoxve.Cluster.inputs.OptionsNextIdArgs;
+import io.muehlbachler.pulumi.proxmoxve.Cluster.inputs.OptionsNotifyArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -287,6 +289,36 @@ public final class OptionsState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.migrationType);
     }
 
+    /**
+     * The ranges for the next free VM ID auto-selection pool.
+     * 
+     */
+    @Import(name="nextId")
+    private @Nullable Output<OptionsNextIdArgs> nextId;
+
+    /**
+     * @return The ranges for the next free VM ID auto-selection pool.
+     * 
+     */
+    public Optional<Output<OptionsNextIdArgs>> nextId() {
+        return Optional.ofNullable(this.nextId);
+    }
+
+    /**
+     * Cluster-wide notification settings.
+     * 
+     */
+    @Import(name="notify")
+    private @Nullable Output<OptionsNotifyArgs> notify;
+
+    /**
+     * @return Cluster-wide notification settings.
+     * 
+     */
+    public Optional<Output<OptionsNotifyArgs>> notify_() {
+        return Optional.ofNullable(this.notify);
+    }
+
     private OptionsState() {}
 
     private OptionsState(OptionsState $) {
@@ -308,6 +340,8 @@ public final class OptionsState extends com.pulumi.resources.ResourceArgs {
         this.maxWorkers = $.maxWorkers;
         this.migrationCidr = $.migrationCidr;
         this.migrationType = $.migrationType;
+        this.nextId = $.nextId;
+        this.notify = $.notify;
     }
 
     public static Builder builder() {
@@ -704,6 +738,48 @@ public final class OptionsState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder migrationType(String migrationType) {
             return migrationType(Output.of(migrationType));
+        }
+
+        /**
+         * @param nextId The ranges for the next free VM ID auto-selection pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nextId(@Nullable Output<OptionsNextIdArgs> nextId) {
+            $.nextId = nextId;
+            return this;
+        }
+
+        /**
+         * @param nextId The ranges for the next free VM ID auto-selection pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nextId(OptionsNextIdArgs nextId) {
+            return nextId(Output.of(nextId));
+        }
+
+        /**
+         * @param notify Cluster-wide notification settings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notify_(@Nullable Output<OptionsNotifyArgs> notify) {
+            $.notify = notify;
+            return this;
+        }
+
+        /**
+         * @param notify Cluster-wide notification settings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notify_(OptionsNotifyArgs notify) {
+            return notify_(Output.of(notify));
         }
 
         public OptionsState build() {

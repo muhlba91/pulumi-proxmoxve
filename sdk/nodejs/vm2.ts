@@ -7,8 +7,17 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * > **DO NOT USE**
+ * !> **DO NOT USE**
  * This is an experimental implementation of a Proxmox VM resource using Plugin Framework.<br><br>It is a Proof of Concept, highly experimental and **will** change in future. It does not support all features of the Proxmox API for VMs and **MUST NOT** be used in production.
+ *
+ * > Note: Many attributes are marked as **optional** _and_ **computed** in the schema,
+ * hence you may seem added to the plan with "(known after apply)" status, even if they are not set in the configuration.
+ * This is done to support the `clone` operation, when a VM is created from an existing one,
+ * and attributes of the original VM are copied to the new one.
+ *
+ * Computed attributes allow the provider to set those attributes without user input.
+ * The attributes are marked as optional to allow the user to set (or overwrite) them if needed.
+ * In order to remove the computed attribute from the plan, you can set it to an empty value (e.g. `""` for string, `[]` for collection).
  */
 export class Vm2 extends pulumi.CustomResource {
     /**
@@ -39,6 +48,10 @@ export class Vm2 extends pulumi.CustomResource {
     }
 
     /**
+     * The cloning configuration.
+     */
+    public readonly clone!: pulumi.Output<outputs.Vm2Clone | undefined>;
+    /**
      * The description of the VM.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -50,6 +63,14 @@ export class Vm2 extends pulumi.CustomResource {
      * The name of the node where the VM is provisioned.
      */
     public readonly nodeName!: pulumi.Output<string>;
+    /**
+     * The tags assigned to the resource.
+     */
+    public readonly tags!: pulumi.Output<string[]>;
+    /**
+     * Set to true to create a VM template.
+     */
+    public readonly template!: pulumi.Output<boolean | undefined>;
     public readonly timeouts!: pulumi.Output<outputs.Vm2Timeouts | undefined>;
 
     /**
@@ -65,18 +86,24 @@ export class Vm2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as Vm2State | undefined;
+            resourceInputs["clone"] = state ? state.clone : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nodeName"] = state ? state.nodeName : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["template"] = state ? state.template : undefined;
             resourceInputs["timeouts"] = state ? state.timeouts : undefined;
         } else {
             const args = argsOrState as Vm2Args | undefined;
             if ((!args || args.nodeName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nodeName'");
             }
+            resourceInputs["clone"] = args ? args.clone : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nodeName"] = args ? args.nodeName : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["template"] = args ? args.template : undefined;
             resourceInputs["timeouts"] = args ? args.timeouts : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -89,6 +116,10 @@ export class Vm2 extends pulumi.CustomResource {
  */
 export interface Vm2State {
     /**
+     * The cloning configuration.
+     */
+    clone?: pulumi.Input<inputs.Vm2Clone>;
+    /**
      * The description of the VM.
      */
     description?: pulumi.Input<string>;
@@ -100,6 +131,14 @@ export interface Vm2State {
      * The name of the node where the VM is provisioned.
      */
     nodeName?: pulumi.Input<string>;
+    /**
+     * The tags assigned to the resource.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Set to true to create a VM template.
+     */
+    template?: pulumi.Input<boolean>;
     timeouts?: pulumi.Input<inputs.Vm2Timeouts>;
 }
 
@@ -107,6 +146,10 @@ export interface Vm2State {
  * The set of arguments for constructing a Vm2 resource.
  */
 export interface Vm2Args {
+    /**
+     * The cloning configuration.
+     */
+    clone?: pulumi.Input<inputs.Vm2Clone>;
     /**
      * The description of the VM.
      */
@@ -119,5 +162,13 @@ export interface Vm2Args {
      * The name of the node where the VM is provisioned.
      */
     nodeName: pulumi.Input<string>;
+    /**
+     * The tags assigned to the resource.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Set to true to create a VM template.
+     */
+    template?: pulumi.Input<boolean>;
     timeouts?: pulumi.Input<inputs.Vm2Timeouts>;
 }

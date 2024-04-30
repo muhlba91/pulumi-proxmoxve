@@ -2,30 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * Manages Proxmox VE Cluster Datacenter options.
- *
- * ## Example Usage
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const options = new proxmoxve.cluster.Options("options", {
- *     bandwidthLimitDefault: 666666,
- *     bandwidthLimitMigration: 555555,
- *     emailFrom: "ged@gont.earthsea",
- *     keyboard: "pl",
- *     language: "en",
- *     maxWorkers: 5,
- *     migrationCidr: "10.0.0.0/8",
- *     migrationType: "secure",
- * });
- * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -137,6 +119,14 @@ export class Options extends pulumi.CustomResource {
      * Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).
      */
     public readonly migrationType!: pulumi.Output<string | undefined>;
+    /**
+     * The ranges for the next free VM ID auto-selection pool.
+     */
+    public readonly nextId!: pulumi.Output<outputs.Cluster.OptionsNextId | undefined>;
+    /**
+     * Cluster-wide notification settings.
+     */
+    public readonly notify!: pulumi.Output<outputs.Cluster.OptionsNotify | undefined>;
 
     /**
      * Create a Options resource with the given unique name, arguments, and options.
@@ -169,6 +159,8 @@ export class Options extends pulumi.CustomResource {
             resourceInputs["maxWorkers"] = state ? state.maxWorkers : undefined;
             resourceInputs["migrationCidr"] = state ? state.migrationCidr : undefined;
             resourceInputs["migrationType"] = state ? state.migrationType : undefined;
+            resourceInputs["nextId"] = state ? state.nextId : undefined;
+            resourceInputs["notify"] = state ? state.notify : undefined;
         } else {
             const args = argsOrState as OptionsArgs | undefined;
             resourceInputs["bandwidthLimitClone"] = args ? args.bandwidthLimitClone : undefined;
@@ -189,6 +181,8 @@ export class Options extends pulumi.CustomResource {
             resourceInputs["maxWorkers"] = args ? args.maxWorkers : undefined;
             resourceInputs["migrationCidr"] = args ? args.migrationCidr : undefined;
             resourceInputs["migrationType"] = args ? args.migrationType : undefined;
+            resourceInputs["nextId"] = args ? args.nextId : undefined;
+            resourceInputs["notify"] = args ? args.notify : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Options.__pulumiType, name, resourceInputs, opts);
@@ -271,6 +265,14 @@ export interface OptionsState {
      * Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).
      */
     migrationType?: pulumi.Input<string>;
+    /**
+     * The ranges for the next free VM ID auto-selection pool.
+     */
+    nextId?: pulumi.Input<inputs.Cluster.OptionsNextId>;
+    /**
+     * Cluster-wide notification settings.
+     */
+    notify?: pulumi.Input<inputs.Cluster.OptionsNotify>;
 }
 
 /**
@@ -349,4 +351,12 @@ export interface OptionsArgs {
      * Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).
      */
     migrationType?: pulumi.Input<string>;
+    /**
+     * The ranges for the next free VM ID auto-selection pool.
+     */
+    nextId?: pulumi.Input<inputs.Cluster.OptionsNextId>;
+    /**
+     * Cluster-wide notification settings.
+     */
+    notify?: pulumi.Input<inputs.Cluster.OptionsNotify>;
 }

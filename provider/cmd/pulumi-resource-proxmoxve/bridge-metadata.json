@@ -436,7 +436,12 @@
             },
             "proxmox_virtual_environment_vm2": {
                 "current": "proxmoxve:index/vm2:Vm2",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
             }
         },
         "datasources": {

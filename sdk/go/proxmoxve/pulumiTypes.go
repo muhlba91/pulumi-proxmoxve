@@ -523,6 +523,162 @@ func (o ProviderSshNodeArrayOutput) Index(i pulumi.IntInput) ProviderSshNodeOutp
 	}).(ProviderSshNodeOutput)
 }
 
+type Vm2Clone struct {
+	// The ID of the VM to clone.
+	Id int `pulumi:"id"`
+	// The number of retries to perform when cloning the VM (default: 3).
+	Retries *int `pulumi:"retries"`
+}
+
+// Vm2CloneInput is an input type that accepts Vm2CloneArgs and Vm2CloneOutput values.
+// You can construct a concrete instance of `Vm2CloneInput` via:
+//
+//	Vm2CloneArgs{...}
+type Vm2CloneInput interface {
+	pulumi.Input
+
+	ToVm2CloneOutput() Vm2CloneOutput
+	ToVm2CloneOutputWithContext(context.Context) Vm2CloneOutput
+}
+
+type Vm2CloneArgs struct {
+	// The ID of the VM to clone.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The number of retries to perform when cloning the VM (default: 3).
+	Retries pulumi.IntPtrInput `pulumi:"retries"`
+}
+
+func (Vm2CloneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vm2Clone)(nil)).Elem()
+}
+
+func (i Vm2CloneArgs) ToVm2CloneOutput() Vm2CloneOutput {
+	return i.ToVm2CloneOutputWithContext(context.Background())
+}
+
+func (i Vm2CloneArgs) ToVm2CloneOutputWithContext(ctx context.Context) Vm2CloneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Vm2CloneOutput)
+}
+
+func (i Vm2CloneArgs) ToVm2ClonePtrOutput() Vm2ClonePtrOutput {
+	return i.ToVm2ClonePtrOutputWithContext(context.Background())
+}
+
+func (i Vm2CloneArgs) ToVm2ClonePtrOutputWithContext(ctx context.Context) Vm2ClonePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Vm2CloneOutput).ToVm2ClonePtrOutputWithContext(ctx)
+}
+
+// Vm2ClonePtrInput is an input type that accepts Vm2CloneArgs, Vm2ClonePtr and Vm2ClonePtrOutput values.
+// You can construct a concrete instance of `Vm2ClonePtrInput` via:
+//
+//	        Vm2CloneArgs{...}
+//
+//	or:
+//
+//	        nil
+type Vm2ClonePtrInput interface {
+	pulumi.Input
+
+	ToVm2ClonePtrOutput() Vm2ClonePtrOutput
+	ToVm2ClonePtrOutputWithContext(context.Context) Vm2ClonePtrOutput
+}
+
+type vm2ClonePtrType Vm2CloneArgs
+
+func Vm2ClonePtr(v *Vm2CloneArgs) Vm2ClonePtrInput {
+	return (*vm2ClonePtrType)(v)
+}
+
+func (*vm2ClonePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Vm2Clone)(nil)).Elem()
+}
+
+func (i *vm2ClonePtrType) ToVm2ClonePtrOutput() Vm2ClonePtrOutput {
+	return i.ToVm2ClonePtrOutputWithContext(context.Background())
+}
+
+func (i *vm2ClonePtrType) ToVm2ClonePtrOutputWithContext(ctx context.Context) Vm2ClonePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Vm2ClonePtrOutput)
+}
+
+type Vm2CloneOutput struct{ *pulumi.OutputState }
+
+func (Vm2CloneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vm2Clone)(nil)).Elem()
+}
+
+func (o Vm2CloneOutput) ToVm2CloneOutput() Vm2CloneOutput {
+	return o
+}
+
+func (o Vm2CloneOutput) ToVm2CloneOutputWithContext(ctx context.Context) Vm2CloneOutput {
+	return o
+}
+
+func (o Vm2CloneOutput) ToVm2ClonePtrOutput() Vm2ClonePtrOutput {
+	return o.ToVm2ClonePtrOutputWithContext(context.Background())
+}
+
+func (o Vm2CloneOutput) ToVm2ClonePtrOutputWithContext(ctx context.Context) Vm2ClonePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Vm2Clone) *Vm2Clone {
+		return &v
+	}).(Vm2ClonePtrOutput)
+}
+
+// The ID of the VM to clone.
+func (o Vm2CloneOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v Vm2Clone) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The number of retries to perform when cloning the VM (default: 3).
+func (o Vm2CloneOutput) Retries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Vm2Clone) *int { return v.Retries }).(pulumi.IntPtrOutput)
+}
+
+type Vm2ClonePtrOutput struct{ *pulumi.OutputState }
+
+func (Vm2ClonePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Vm2Clone)(nil)).Elem()
+}
+
+func (o Vm2ClonePtrOutput) ToVm2ClonePtrOutput() Vm2ClonePtrOutput {
+	return o
+}
+
+func (o Vm2ClonePtrOutput) ToVm2ClonePtrOutputWithContext(ctx context.Context) Vm2ClonePtrOutput {
+	return o
+}
+
+func (o Vm2ClonePtrOutput) Elem() Vm2CloneOutput {
+	return o.ApplyT(func(v *Vm2Clone) Vm2Clone {
+		if v != nil {
+			return *v
+		}
+		var ret Vm2Clone
+		return ret
+	}).(Vm2CloneOutput)
+}
+
+// The ID of the VM to clone.
+func (o Vm2ClonePtrOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Vm2Clone) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of retries to perform when cloning the VM (default: 3).
+func (o Vm2ClonePtrOutput) Retries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Vm2Clone) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Retries
+	}).(pulumi.IntPtrOutput)
+}
+
 type Vm2Timeouts struct {
 	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
 	Create *string `pulumi:"create"`
@@ -724,6 +880,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSshPtrInput)(nil)).Elem(), ProviderSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSshNodeInput)(nil)).Elem(), ProviderSshNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSshNodeArrayInput)(nil)).Elem(), ProviderSshNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Vm2CloneInput)(nil)).Elem(), Vm2CloneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Vm2ClonePtrInput)(nil)).Elem(), Vm2CloneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Vm2TimeoutsInput)(nil)).Elem(), Vm2TimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Vm2TimeoutsPtrInput)(nil)).Elem(), Vm2TimeoutsArgs{})
 	pulumi.RegisterOutputType(HostsEntryOutput{})
@@ -732,6 +890,8 @@ func init() {
 	pulumi.RegisterOutputType(ProviderSshPtrOutput{})
 	pulumi.RegisterOutputType(ProviderSshNodeOutput{})
 	pulumi.RegisterOutputType(ProviderSshNodeArrayOutput{})
+	pulumi.RegisterOutputType(Vm2CloneOutput{})
+	pulumi.RegisterOutputType(Vm2ClonePtrOutput{})
 	pulumi.RegisterOutputType(Vm2TimeoutsOutput{})
 	pulumi.RegisterOutputType(Vm2TimeoutsPtrOutput{})
 }

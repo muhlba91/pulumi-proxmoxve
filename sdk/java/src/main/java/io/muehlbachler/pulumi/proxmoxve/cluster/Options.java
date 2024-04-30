@@ -9,6 +9,8 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import io.muehlbachler.pulumi.proxmoxve.Cluster.OptionsArgs;
 import io.muehlbachler.pulumi.proxmoxve.Cluster.inputs.OptionsState;
+import io.muehlbachler.pulumi.proxmoxve.Cluster.outputs.OptionsNextId;
+import io.muehlbachler.pulumi.proxmoxve.Cluster.outputs.OptionsNotify;
 import io.muehlbachler.pulumi.proxmoxve.Utilities;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -30,6 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.proxmoxve.Cluster.Options;
  * import com.pulumi.proxmoxve.Cluster.OptionsArgs;
+ * import com.pulumi.proxmoxve.Cluster.inputs.OptionsNextIdArgs;
+ * import com.pulumi.proxmoxve.Cluster.inputs.OptionsNotifyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -52,6 +56,18 @@ import javax.annotation.Nullable;
  *             .maxWorkers(5)
  *             .migrationCidr(&#34;10.0.0.0/8&#34;)
  *             .migrationType(&#34;secure&#34;)
+ *             .nextId(OptionsNextIdArgs.builder()
+ *                 .lower(100)
+ *                 .upper(999999999)
+ *                 .build())
+ *             .notify(OptionsNotifyArgs.builder()
+ *                 .ha_fencing_mode(&#34;never&#34;)
+ *                 .ha_fencing_target(&#34;default-matcher&#34;)
+ *                 .package_replication(&#34;always&#34;)
+ *                 .package_replication_target(&#34;default-matcher&#34;)
+ *                 .package_updates(&#34;always&#34;)
+ *                 .package_updates_target(&#34;default-matcher&#34;)
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -323,6 +339,34 @@ public class Options extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> migrationType() {
         return Codegen.optional(this.migrationType);
+    }
+    /**
+     * The ranges for the next free VM ID auto-selection pool.
+     * 
+     */
+    @Export(name="nextId", refs={OptionsNextId.class}, tree="[0]")
+    private Output</* @Nullable */ OptionsNextId> nextId;
+
+    /**
+     * @return The ranges for the next free VM ID auto-selection pool.
+     * 
+     */
+    public Output<Optional<OptionsNextId>> nextId() {
+        return Codegen.optional(this.nextId);
+    }
+    /**
+     * Cluster-wide notification settings.
+     * 
+     */
+    @Export(name="notify", refs={OptionsNotify.class}, tree="[0]")
+    private Output</* @Nullable */ OptionsNotify> notify;
+
+    /**
+     * @return Cluster-wide notification settings.
+     * 
+     */
+    public Output<Optional<OptionsNotify>> notify_() {
+        return Codegen.optional(this.notify);
     }
 
     /**

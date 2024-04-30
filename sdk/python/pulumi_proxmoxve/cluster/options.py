@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['OptionsArgs', 'Options']
 
@@ -31,7 +33,9 @@ class OptionsArgs:
                  mac_prefix: Optional[pulumi.Input[str]] = None,
                  max_workers: Optional[pulumi.Input[int]] = None,
                  migration_cidr: Optional[pulumi.Input[str]] = None,
-                 migration_type: Optional[pulumi.Input[str]] = None):
+                 migration_type: Optional[pulumi.Input[str]] = None,
+                 next_id: Optional[pulumi.Input['OptionsNextIdArgs']] = None,
+                 notify: Optional[pulumi.Input['OptionsNotifyArgs']] = None):
         """
         The set of arguments for constructing a Options resource.
         :param pulumi.Input[int] bandwidth_limit_clone: Clone I/O bandwidth limit in KiB/s.
@@ -52,6 +56,8 @@ class OptionsArgs:
         :param pulumi.Input[int] max_workers: Defines how many workers (per node) are maximal started on actions like 'stopall VMs' or task from the ha-manager.
         :param pulumi.Input[str] migration_cidr: Cluster wide migration network CIDR.
         :param pulumi.Input[str] migration_type: Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).
+        :param pulumi.Input['OptionsNextIdArgs'] next_id: The ranges for the next free VM ID auto-selection pool.
+        :param pulumi.Input['OptionsNotifyArgs'] notify: Cluster-wide notification settings.
         """
         if bandwidth_limit_clone is not None:
             pulumi.set(__self__, "bandwidth_limit_clone", bandwidth_limit_clone)
@@ -89,6 +95,10 @@ class OptionsArgs:
             pulumi.set(__self__, "migration_cidr", migration_cidr)
         if migration_type is not None:
             pulumi.set(__self__, "migration_type", migration_type)
+        if next_id is not None:
+            pulumi.set(__self__, "next_id", next_id)
+        if notify is not None:
+            pulumi.set(__self__, "notify", notify)
 
     @property
     @pulumi.getter(name="bandwidthLimitClone")
@@ -305,6 +315,30 @@ class OptionsArgs:
     @migration_type.setter
     def migration_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "migration_type", value)
+
+    @property
+    @pulumi.getter(name="nextId")
+    def next_id(self) -> Optional[pulumi.Input['OptionsNextIdArgs']]:
+        """
+        The ranges for the next free VM ID auto-selection pool.
+        """
+        return pulumi.get(self, "next_id")
+
+    @next_id.setter
+    def next_id(self, value: Optional[pulumi.Input['OptionsNextIdArgs']]):
+        pulumi.set(self, "next_id", value)
+
+    @property
+    @pulumi.getter
+    def notify(self) -> Optional[pulumi.Input['OptionsNotifyArgs']]:
+        """
+        Cluster-wide notification settings.
+        """
+        return pulumi.get(self, "notify")
+
+    @notify.setter
+    def notify(self, value: Optional[pulumi.Input['OptionsNotifyArgs']]):
+        pulumi.set(self, "notify", value)
 
 
 @pulumi.input_type
@@ -327,7 +361,9 @@ class _OptionsState:
                  mac_prefix: Optional[pulumi.Input[str]] = None,
                  max_workers: Optional[pulumi.Input[int]] = None,
                  migration_cidr: Optional[pulumi.Input[str]] = None,
-                 migration_type: Optional[pulumi.Input[str]] = None):
+                 migration_type: Optional[pulumi.Input[str]] = None,
+                 next_id: Optional[pulumi.Input['OptionsNextIdArgs']] = None,
+                 notify: Optional[pulumi.Input['OptionsNotifyArgs']] = None):
         """
         Input properties used for looking up and filtering Options resources.
         :param pulumi.Input[int] bandwidth_limit_clone: Clone I/O bandwidth limit in KiB/s.
@@ -348,6 +384,8 @@ class _OptionsState:
         :param pulumi.Input[int] max_workers: Defines how many workers (per node) are maximal started on actions like 'stopall VMs' or task from the ha-manager.
         :param pulumi.Input[str] migration_cidr: Cluster wide migration network CIDR.
         :param pulumi.Input[str] migration_type: Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).
+        :param pulumi.Input['OptionsNextIdArgs'] next_id: The ranges for the next free VM ID auto-selection pool.
+        :param pulumi.Input['OptionsNotifyArgs'] notify: Cluster-wide notification settings.
         """
         if bandwidth_limit_clone is not None:
             pulumi.set(__self__, "bandwidth_limit_clone", bandwidth_limit_clone)
@@ -385,6 +423,10 @@ class _OptionsState:
             pulumi.set(__self__, "migration_cidr", migration_cidr)
         if migration_type is not None:
             pulumi.set(__self__, "migration_type", migration_type)
+        if next_id is not None:
+            pulumi.set(__self__, "next_id", next_id)
+        if notify is not None:
+            pulumi.set(__self__, "notify", notify)
 
     @property
     @pulumi.getter(name="bandwidthLimitClone")
@@ -601,6 +643,30 @@ class _OptionsState:
     @migration_type.setter
     def migration_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "migration_type", value)
+
+    @property
+    @pulumi.getter(name="nextId")
+    def next_id(self) -> Optional[pulumi.Input['OptionsNextIdArgs']]:
+        """
+        The ranges for the next free VM ID auto-selection pool.
+        """
+        return pulumi.get(self, "next_id")
+
+    @next_id.setter
+    def next_id(self, value: Optional[pulumi.Input['OptionsNextIdArgs']]):
+        pulumi.set(self, "next_id", value)
+
+    @property
+    @pulumi.getter
+    def notify(self) -> Optional[pulumi.Input['OptionsNotifyArgs']]:
+        """
+        Cluster-wide notification settings.
+        """
+        return pulumi.get(self, "notify")
+
+    @notify.setter
+    def notify(self, value: Optional[pulumi.Input['OptionsNotifyArgs']]):
+        pulumi.set(self, "notify", value)
 
 
 class Options(pulumi.CustomResource):
@@ -626,28 +692,11 @@ class Options(pulumi.CustomResource):
                  max_workers: Optional[pulumi.Input[int]] = None,
                  migration_cidr: Optional[pulumi.Input[str]] = None,
                  migration_type: Optional[pulumi.Input[str]] = None,
+                 next_id: Optional[pulumi.Input[pulumi.InputType['OptionsNextIdArgs']]] = None,
+                 notify: Optional[pulumi.Input[pulumi.InputType['OptionsNotifyArgs']]] = None,
                  __props__=None):
         """
         Manages Proxmox VE Cluster Datacenter options.
-
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        options = proxmoxve.cluster.Options("options",
-            bandwidth_limit_default=666666,
-            bandwidth_limit_migration=555555,
-            email_from="ged@gont.earthsea",
-            keyboard="pl",
-            language="en",
-            max_workers=5,
-            migration_cidr="10.0.0.0/8",
-            migration_type="secure")
-        ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -679,6 +728,8 @@ class Options(pulumi.CustomResource):
         :param pulumi.Input[int] max_workers: Defines how many workers (per node) are maximal started on actions like 'stopall VMs' or task from the ha-manager.
         :param pulumi.Input[str] migration_cidr: Cluster wide migration network CIDR.
         :param pulumi.Input[str] migration_type: Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).
+        :param pulumi.Input[pulumi.InputType['OptionsNextIdArgs']] next_id: The ranges for the next free VM ID auto-selection pool.
+        :param pulumi.Input[pulumi.InputType['OptionsNotifyArgs']] notify: Cluster-wide notification settings.
         """
         ...
     @overload
@@ -688,25 +739,6 @@ class Options(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages Proxmox VE Cluster Datacenter options.
-
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        options = proxmoxve.cluster.Options("options",
-            bandwidth_limit_default=666666,
-            bandwidth_limit_migration=555555,
-            email_from="ged@gont.earthsea",
-            keyboard="pl",
-            language="en",
-            max_workers=5,
-            migration_cidr="10.0.0.0/8",
-            migration_type="secure")
-        ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -751,6 +783,8 @@ class Options(pulumi.CustomResource):
                  max_workers: Optional[pulumi.Input[int]] = None,
                  migration_cidr: Optional[pulumi.Input[str]] = None,
                  migration_type: Optional[pulumi.Input[str]] = None,
+                 next_id: Optional[pulumi.Input[pulumi.InputType['OptionsNextIdArgs']]] = None,
+                 notify: Optional[pulumi.Input[pulumi.InputType['OptionsNotifyArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -778,6 +812,8 @@ class Options(pulumi.CustomResource):
             __props__.__dict__["max_workers"] = max_workers
             __props__.__dict__["migration_cidr"] = migration_cidr
             __props__.__dict__["migration_type"] = migration_type
+            __props__.__dict__["next_id"] = next_id
+            __props__.__dict__["notify"] = notify
         super(Options, __self__).__init__(
             'proxmoxve:Cluster/options:Options',
             resource_name,
@@ -805,7 +841,9 @@ class Options(pulumi.CustomResource):
             mac_prefix: Optional[pulumi.Input[str]] = None,
             max_workers: Optional[pulumi.Input[int]] = None,
             migration_cidr: Optional[pulumi.Input[str]] = None,
-            migration_type: Optional[pulumi.Input[str]] = None) -> 'Options':
+            migration_type: Optional[pulumi.Input[str]] = None,
+            next_id: Optional[pulumi.Input[pulumi.InputType['OptionsNextIdArgs']]] = None,
+            notify: Optional[pulumi.Input[pulumi.InputType['OptionsNotifyArgs']]] = None) -> 'Options':
         """
         Get an existing Options resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -831,6 +869,8 @@ class Options(pulumi.CustomResource):
         :param pulumi.Input[int] max_workers: Defines how many workers (per node) are maximal started on actions like 'stopall VMs' or task from the ha-manager.
         :param pulumi.Input[str] migration_cidr: Cluster wide migration network CIDR.
         :param pulumi.Input[str] migration_type: Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).
+        :param pulumi.Input[pulumi.InputType['OptionsNextIdArgs']] next_id: The ranges for the next free VM ID auto-selection pool.
+        :param pulumi.Input[pulumi.InputType['OptionsNotifyArgs']] notify: Cluster-wide notification settings.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -854,6 +894,8 @@ class Options(pulumi.CustomResource):
         __props__.__dict__["max_workers"] = max_workers
         __props__.__dict__["migration_cidr"] = migration_cidr
         __props__.__dict__["migration_type"] = migration_type
+        __props__.__dict__["next_id"] = next_id
+        __props__.__dict__["notify"] = notify
         return Options(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -999,4 +1041,20 @@ class Options(pulumi.CustomResource):
         Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).
         """
         return pulumi.get(self, "migration_type")
+
+    @property
+    @pulumi.getter(name="nextId")
+    def next_id(self) -> pulumi.Output[Optional['outputs.OptionsNextId']]:
+        """
+        The ranges for the next free VM ID auto-selection pool.
+        """
+        return pulumi.get(self, "next_id")
+
+    @property
+    @pulumi.getter
+    def notify(self) -> pulumi.Output[Optional['outputs.OptionsNotify']]:
+        """
+        Cluster-wide notification settings.
+        """
+        return pulumi.get(self, "notify")
 

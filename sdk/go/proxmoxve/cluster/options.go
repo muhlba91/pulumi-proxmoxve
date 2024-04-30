@@ -13,41 +13,6 @@ import (
 
 // Manages Proxmox VE Cluster Datacenter options.
 //
-// ## Example Usage
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Cluster"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Cluster.NewOptions(ctx, "options", &Cluster.OptionsArgs{
-//				BandwidthLimitDefault:   pulumi.Int(666666),
-//				BandwidthLimitMigration: pulumi.Int(555555),
-//				EmailFrom:               pulumi.String("ged@gont.earthsea"),
-//				Keyboard:                pulumi.String("pl"),
-//				Language:                pulumi.String("en"),
-//				MaxWorkers:              pulumi.Int(5),
-//				MigrationCidr:           pulumi.String("10.0.0.0/8"),
-//				MigrationType:           pulumi.String("secure"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
-//
 // ## Import
 //
 // #!/usr/bin/env sh
@@ -96,6 +61,10 @@ type Options struct {
 	MigrationCidr pulumi.StringPtrOutput `pulumi:"migrationCidr"`
 	// Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).
 	MigrationType pulumi.StringPtrOutput `pulumi:"migrationType"`
+	// The ranges for the next free VM ID auto-selection pool.
+	NextId OptionsNextIdPtrOutput `pulumi:"nextId"`
+	// Cluster-wide notification settings.
+	Notify OptionsNotifyPtrOutput `pulumi:"notify"`
 }
 
 // NewOptions registers a new resource with the given unique name, arguments, and options.
@@ -164,6 +133,10 @@ type optionsState struct {
 	MigrationCidr *string `pulumi:"migrationCidr"`
 	// Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).
 	MigrationType *string `pulumi:"migrationType"`
+	// The ranges for the next free VM ID auto-selection pool.
+	NextId *OptionsNextId `pulumi:"nextId"`
+	// Cluster-wide notification settings.
+	Notify *OptionsNotify `pulumi:"notify"`
 }
 
 type OptionsState struct {
@@ -203,6 +176,10 @@ type OptionsState struct {
 	MigrationCidr pulumi.StringPtrInput
 	// Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).
 	MigrationType pulumi.StringPtrInput
+	// The ranges for the next free VM ID auto-selection pool.
+	NextId OptionsNextIdPtrInput
+	// Cluster-wide notification settings.
+	Notify OptionsNotifyPtrInput
 }
 
 func (OptionsState) ElementType() reflect.Type {
@@ -246,6 +223,10 @@ type optionsArgs struct {
 	MigrationCidr *string `pulumi:"migrationCidr"`
 	// Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).
 	MigrationType *string `pulumi:"migrationType"`
+	// The ranges for the next free VM ID auto-selection pool.
+	NextId *OptionsNextId `pulumi:"nextId"`
+	// Cluster-wide notification settings.
+	Notify *OptionsNotify `pulumi:"notify"`
 }
 
 // The set of arguments for constructing a Options resource.
@@ -286,6 +267,10 @@ type OptionsArgs struct {
 	MigrationCidr pulumi.StringPtrInput
 	// Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).
 	MigrationType pulumi.StringPtrInput
+	// The ranges for the next free VM ID auto-selection pool.
+	NextId OptionsNextIdPtrInput
+	// Cluster-wide notification settings.
+	Notify OptionsNotifyPtrInput
 }
 
 func (OptionsArgs) ElementType() reflect.Type {
@@ -463,6 +448,16 @@ func (o OptionsOutput) MigrationCidr() pulumi.StringPtrOutput {
 // Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).
 func (o OptionsOutput) MigrationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Options) pulumi.StringPtrOutput { return v.MigrationType }).(pulumi.StringPtrOutput)
+}
+
+// The ranges for the next free VM ID auto-selection pool.
+func (o OptionsOutput) NextId() OptionsNextIdPtrOutput {
+	return o.ApplyT(func(v *Options) OptionsNextIdPtrOutput { return v.NextId }).(OptionsNextIdPtrOutput)
+}
+
+// Cluster-wide notification settings.
+func (o OptionsOutput) Notify() OptionsNotifyPtrOutput {
+	return o.ApplyT(func(v *Options) OptionsNotifyPtrOutput { return v.Notify }).(OptionsNotifyPtrOutput)
 }
 
 type OptionsArrayOutput struct{ *pulumi.OutputState }

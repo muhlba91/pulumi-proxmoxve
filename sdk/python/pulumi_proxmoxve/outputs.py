@@ -11,6 +11,7 @@ from . import _utilities
 
 __all__ = [
     'HostsEntry',
+    'Vm2Clone',
     'Vm2Timeouts',
 ]
 
@@ -41,6 +42,36 @@ class HostsEntry(dict):
         The hostnames.
         """
         return pulumi.get(self, "hostnames")
+
+
+@pulumi.output_type
+class Vm2Clone(dict):
+    def __init__(__self__, *,
+                 id: int,
+                 retries: Optional[int] = None):
+        """
+        :param int id: The ID of the VM to clone.
+        :param int retries: The number of retries to perform when cloning the VM (default: 3).
+        """
+        pulumi.set(__self__, "id", id)
+        if retries is not None:
+            pulumi.set(__self__, "retries", retries)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of the VM to clone.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def retries(self) -> Optional[int]:
+        """
+        The number of retries to perform when cloning the VM (default: 3).
+        """
+        return pulumi.get(self, "retries")
 
 
 @pulumi.output_type

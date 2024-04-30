@@ -12,33 +12,6 @@ namespace Pulumi.ProxmoxVE.Cluster
     /// <summary>
     /// Manages Proxmox VE Cluster Datacenter options.
     /// 
-    /// ## Example Usage
-    /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using ProxmoxVE = Pulumi.ProxmoxVE;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var options = new ProxmoxVE.Cluster.Options("options", new()
-    ///     {
-    ///         BandwidthLimitDefault = 666666,
-    ///         BandwidthLimitMigration = 555555,
-    ///         EmailFrom = "ged@gont.earthsea",
-    ///         Keyboard = "pl",
-    ///         Language = "en",
-    ///         MaxWorkers = 5,
-    ///         MigrationCidr = "10.0.0.0/8",
-    ///         MigrationType = "secure",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
-    /// 
     /// ## Import
     /// 
     /// #!/usr/bin/env sh
@@ -159,6 +132,18 @@ namespace Pulumi.ProxmoxVE.Cluster
         /// </summary>
         [Output("migrationType")]
         public Output<string?> MigrationType { get; private set; } = null!;
+
+        /// <summary>
+        /// The ranges for the next free VM ID auto-selection pool.
+        /// </summary>
+        [Output("nextId")]
+        public Output<Outputs.OptionsNextId?> NextId { get; private set; } = null!;
+
+        /// <summary>
+        /// Cluster-wide notification settings.
+        /// </summary>
+        [Output("notify")]
+        public Output<Outputs.OptionsNotify?> Notify { get; private set; } = null!;
 
 
         /// <summary>
@@ -315,6 +300,18 @@ namespace Pulumi.ProxmoxVE.Cluster
         [Input("migrationType")]
         public Input<string>? MigrationType { get; set; }
 
+        /// <summary>
+        /// The ranges for the next free VM ID auto-selection pool.
+        /// </summary>
+        [Input("nextId")]
+        public Input<Inputs.OptionsNextIdArgs>? NextId { get; set; }
+
+        /// <summary>
+        /// Cluster-wide notification settings.
+        /// </summary>
+        [Input("notify")]
+        public Input<Inputs.OptionsNotifyArgs>? Notify { get; set; }
+
         public OptionsArgs()
         {
         }
@@ -430,6 +427,18 @@ namespace Pulumi.ProxmoxVE.Cluster
         /// </summary>
         [Input("migrationType")]
         public Input<string>? MigrationType { get; set; }
+
+        /// <summary>
+        /// The ranges for the next free VM ID auto-selection pool.
+        /// </summary>
+        [Input("nextId")]
+        public Input<Inputs.OptionsNextIdGetArgs>? NextId { get; set; }
+
+        /// <summary>
+        /// Cluster-wide notification settings.
+        /// </summary>
+        [Input("notify")]
+        public Input<Inputs.OptionsNotifyGetArgs>? Notify { get; set; }
 
         public OptionsState()
         {
