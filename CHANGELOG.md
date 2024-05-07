@@ -1,6 +1,22 @@
 # Changelog
 
 
+## [6.5.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.5.0...v6.5.1) (2024-05-07)
+
+
+### Bug Fixes
+
+* prepare for upstream release 0.55.1 ([bd41ce2](https://github.com/muhlba91/pulumi-proxmoxve/commit/bd41ce2077ef0e42a0524706955c61270997d5f0))
+
+
+### Miscellaneous Chores
+
+* **deps:** update golangci/golangci-lint-action action to v6 ([752bb62](https://github.com/muhlba91/pulumi-proxmoxve/commit/752bb62d54c80957d70bbf2403f05f16ab332ad1))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.55.1 ([f802e62](https://github.com/muhlba91/pulumi-proxmoxve/commit/f802e6291e0c24e3975958abab476e685ad926d6))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.115.0 ([6128aae](https://github.com/muhlba91/pulumi-proxmoxve/commit/6128aae00adc0c0e853c6339d75c631b9e48c6ac))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.115.1 ([5b0aa00](https://github.com/muhlba91/pulumi-proxmoxve/commit/5b0aa00fe025f41aeb3e22e5e78f2aead9802790))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.115.2 ([dc64ad9](https://github.com/muhlba91/pulumi-proxmoxve/commit/dc64ad908e24cf4005b58f9f2a59529193da4300))
+
 ## [6.5.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.4.1...v6.5.0) (2024-04-30)
 
 
