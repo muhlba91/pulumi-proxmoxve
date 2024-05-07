@@ -973,7 +973,7 @@ export namespace VM {
          */
         discard?: pulumi.Input<string>;
         /**
-         * The file format.
+         * The file format (defaults to `raw`).
          */
         fileFormat?: pulumi.Input<string>;
         /**
@@ -1065,7 +1065,7 @@ export namespace VM {
          */
         datastoreId?: pulumi.Input<string>;
         /**
-         * The file format.
+         * The file format (defaults to `raw`).
          */
         fileFormat?: pulumi.Input<string>;
         /**

@@ -19,7 +19,7 @@ public final class VirtualMachineEfiDisk {
      */
     private @Nullable String datastoreId;
     /**
-     * @return The file format.
+     * @return The file format (defaults to `raw`).
      * 
      */
     private @Nullable String fileFormat;
@@ -47,7 +47,7 @@ public final class VirtualMachineEfiDisk {
         return Optional.ofNullable(this.datastoreId);
     }
     /**
-     * @return The file format.
+     * @return The file format (defaults to `raw`).
      * 
      */
     public Optional<String> fileFormat() {

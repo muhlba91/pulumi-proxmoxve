@@ -1256,7 +1256,7 @@ type VirtualMachineDisk struct {
 	// underlying storage. Supported values are `on`/`ignore` (defaults
 	// to `ignore`).
 	Discard *string `pulumi:"discard"`
-	// The file format.
+	// The file format (defaults to `raw`).
 	FileFormat *string `pulumi:"fileFormat"`
 	// The file ID for a disk image (experimental -
 	// might cause high CPU utilization during import, especially with large
@@ -1312,7 +1312,7 @@ type VirtualMachineDiskArgs struct {
 	// underlying storage. Supported values are `on`/`ignore` (defaults
 	// to `ignore`).
 	Discard pulumi.StringPtrInput `pulumi:"discard"`
-	// The file format.
+	// The file format (defaults to `raw`).
 	FileFormat pulumi.StringPtrInput `pulumi:"fileFormat"`
 	// The file ID for a disk image (experimental -
 	// might cause high CPU utilization during import, especially with large
@@ -1422,7 +1422,7 @@ func (o VirtualMachineDiskOutput) Discard() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.Discard }).(pulumi.StringPtrOutput)
 }
 
-// The file format.
+// The file format (defaults to `raw`).
 func (o VirtualMachineDiskOutput) FileFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.FileFormat }).(pulumi.StringPtrOutput)
 }
@@ -1780,7 +1780,7 @@ type VirtualMachineEfiDisk struct {
 	// The identifier for the datastore to create the
 	// cloud-init disk in (defaults to `local-lvm`).
 	DatastoreId *string `pulumi:"datastoreId"`
-	// The file format.
+	// The file format (defaults to `raw`).
 	FileFormat *string `pulumi:"fileFormat"`
 	// Use am EFI vars template with
 	// distribution-specific and Microsoft Standard keys enrolled, if used with
@@ -1806,7 +1806,7 @@ type VirtualMachineEfiDiskArgs struct {
 	// The identifier for the datastore to create the
 	// cloud-init disk in (defaults to `local-lvm`).
 	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
-	// The file format.
+	// The file format (defaults to `raw`).
 	FileFormat pulumi.StringPtrInput `pulumi:"fileFormat"`
 	// Use am EFI vars template with
 	// distribution-specific and Microsoft Standard keys enrolled, if used with
@@ -1900,7 +1900,7 @@ func (o VirtualMachineEfiDiskOutput) DatastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineEfiDisk) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
 }
 
-// The file format.
+// The file format (defaults to `raw`).
 func (o VirtualMachineEfiDiskOutput) FileFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineEfiDisk) *string { return v.FileFormat }).(pulumi.StringPtrOutput)
 }
@@ -1953,7 +1953,7 @@ func (o VirtualMachineEfiDiskPtrOutput) DatastoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The file format.
+// The file format (defaults to `raw`).
 func (o VirtualMachineEfiDiskPtrOutput) FileFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineEfiDisk) *string {
 		if v == nil {

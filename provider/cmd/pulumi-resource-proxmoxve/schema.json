@@ -1241,7 +1241,7 @@
                 },
                 "fileFormat": {
                     "type": "string",
-                    "description": "The file format.\n",
+                    "description": "The file format (defaults to `raw`).\n",
                     "willReplaceOnChanges": true
                 },
                 "fileId": {
@@ -1337,7 +1337,7 @@
                 },
                 "fileFormat": {
                     "type": "string",
-                    "description": "The file format.\n",
+                    "description": "The file format (defaults to `raw`).\n",
                     "willReplaceOnChanges": true
                 },
                 "preEnrolledKeys": {
@@ -1456,7 +1456,14 @@
                     "willReplaceOnChanges": true
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "upgrade"
+                    ]
+                }
+            }
         },
         "proxmoxve:VM/VirtualMachineInitializationDns:VirtualMachineInitializationDns": {
             "properties": {
@@ -5923,7 +5930,7 @@
             }
         },
         "proxmoxve:index/vm2:Vm2": {
-            "description": "!\u003e **DO NOT USE**\nThis is an experimental implementation of a Proxmox VM resource using Plugin Framework.\u003cbr\u003e\u003cbr\u003eIt is a Proof of Concept, highly experimental and **will** change in future. It does not support all features of the Proxmox API for VMs and **MUST NOT** be used in production.\n\n\u003e Note: Many attributes are marked as **optional** _and_ **computed** in the schema,\nhence you may seem added to the plan with \"(known after apply)\" status, even if they are not set in the configuration.\nThis is done to support the `clone` operation, when a VM is created from an existing one,\nand attributes of the original VM are copied to the new one.\n\nComputed attributes allow the provider to set those attributes without user input.\nThe attributes are marked as optional to allow the user to set (or overwrite) them if needed.\nIn order to remove the computed attribute from the plan, you can set it to an empty value (e.g. `\"\"` for string, `[]` for collection).\n",
+            "description": "!\u003e **DO NOT USE**\nThis is an experimental implementation of a Proxmox VM resource using Plugin Framework.\u003cbr\u003e\u003cbr\u003eIt is a Proof of Concept, highly experimental and **will** change in future. It does not support all features of the Proxmox API for VMs and **MUST NOT** be used in production.\n\n\u003e Many attributes are marked as **optional** _and_ **computed** in the schema,\nhence you may seem added to the plan with \"(known after apply)\" status, even if they are not set in the configuration.\nThis is done to support the `clone` operation, when a VM is created from an existing one,\nand attributes of the original VM are copied to the new one.\u003cbr\u003e\u003cbr\u003e\nComputed attributes allow the provider to set those attributes without user input.\nThe attributes are marked as optional to allow the user to set (or overwrite) them if needed.\nIn order to remove the computed attribute from the plan, you can set it to an empty value (e.g. `\"\"` for string, `[]` for collection).\n",
             "properties": {
                 "clone": {
                     "$ref": "#/types/proxmoxve:index/Vm2Clone:Vm2Clone",

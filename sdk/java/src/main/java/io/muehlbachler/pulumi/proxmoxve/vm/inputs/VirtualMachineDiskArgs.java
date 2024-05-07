@@ -101,14 +101,14 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The file format.
+     * The file format (defaults to `raw`).
      * 
      */
     @Import(name="fileFormat")
     private @Nullable Output<String> fileFormat;
 
     /**
-     * @return The file format.
+     * @return The file format (defaults to `raw`).
      * 
      */
     public Optional<Output<String>> fileFormat() {
@@ -406,7 +406,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param fileFormat The file format.
+         * @param fileFormat The file format (defaults to `raw`).
          * 
          * @return builder
          * 
@@ -417,7 +417,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param fileFormat The file format.
+         * @param fileFormat The file format (defaults to `raw`).
          * 
          * @return builder
          * 

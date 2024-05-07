@@ -37,7 +37,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly string? Discard;
         /// <summary>
-        /// The file format.
+        /// The file format (defaults to `raw`).
         /// </summary>
         public readonly string? FileFormat;
         /// <summary>

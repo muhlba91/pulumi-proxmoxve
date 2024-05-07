@@ -46,7 +46,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<string>? Discard { get; set; }
 
         /// <summary>
-        /// The file format.
+        /// The file format (defaults to `raw`).
         /// </summary>
         [Input("fileFormat")]
         public Input<string>? FileFormat { get; set; }

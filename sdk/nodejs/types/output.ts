@@ -1070,7 +1070,7 @@ export namespace VM {
          */
         discard?: string;
         /**
-         * The file format.
+         * The file format (defaults to `raw`).
          */
         fileFormat: string;
         /**
@@ -1162,7 +1162,7 @@ export namespace VM {
          */
         datastoreId?: string;
         /**
-         * The file format.
+         * The file format (defaults to `raw`).
          */
         fileFormat: string;
         /**
@@ -1262,7 +1262,7 @@ export namespace VM {
         /**
          * Whether to do an automatic package upgrade after the first boot (defaults to `true`).
          */
-        upgrade?: boolean;
+        upgrade: boolean;
         /**
          * The user account configuration (conflicts
          * with `userDataFileId`).

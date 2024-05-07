@@ -583,7 +583,7 @@ class VirtualMachineDiskArgs:
         :param pulumi.Input[str] discard: Whether to pass discard/trim requests to the
                underlying storage. Supported values are `on`/`ignore` (defaults
                to `ignore`).
-        :param pulumi.Input[str] file_format: The file format.
+        :param pulumi.Input[str] file_format: The file format (defaults to `raw`).
         :param pulumi.Input[str] file_id: The file ID for a disk image (experimental -
                might cause high CPU utilization during import, especially with large
                disk images).
@@ -710,7 +710,7 @@ class VirtualMachineDiskArgs:
     @pulumi.getter(name="fileFormat")
     def file_format(self) -> Optional[pulumi.Input[str]]:
         """
-        The file format.
+        The file format (defaults to `raw`).
         """
         return pulumi.get(self, "file_format")
 
@@ -960,7 +960,7 @@ class VirtualMachineEfiDiskArgs:
         """
         :param pulumi.Input[str] datastore_id: The identifier for the datastore to create the
                cloud-init disk in (defaults to `local-lvm`).
-        :param pulumi.Input[str] file_format: The file format.
+        :param pulumi.Input[str] file_format: The file format (defaults to `raw`).
         :param pulumi.Input[bool] pre_enrolled_keys: Use am EFI vars template with
                distribution-specific and Microsoft Standard keys enrolled, if used with
                EFI type=`4m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
@@ -993,7 +993,7 @@ class VirtualMachineEfiDiskArgs:
     @pulumi.getter(name="fileFormat")
     def file_format(self) -> Optional[pulumi.Input[str]]:
         """
-        The file format.
+        The file format (defaults to `raw`).
         """
         return pulumi.get(self, "file_format")
 
