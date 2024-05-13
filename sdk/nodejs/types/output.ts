@@ -49,23 +49,23 @@ export interface Vm2Timeouts {
 export namespace CT {
     export interface ContainerClone {
         /**
-         * The identifier for the datastore to create the
-         * disk in (defaults to `local`).
+         * The identifier for the target datastore.
          */
         datastoreId?: string;
         /**
-         * The name of the node to assign the container to.
+         * The name of the source node (leave blank, if
+         * equal to the `nodeName` argument).
          */
         nodeName?: string;
         /**
-         * The container identifier
+         * The identifier for the source container.
          */
         vmId: number;
     }
 
     export interface ContainerConsole {
         /**
-         * Whether to enable the network device (defaults
+         * Whether to enable the console device (defaults
          * to `true`).
          */
         enabled?: boolean;
@@ -74,7 +74,7 @@ export namespace CT {
          */
         ttyCount?: number;
         /**
-         * The type (defaults to `unmanaged`).
+         * The console mode (defaults to `tty`).
          */
         type?: string;
     }
@@ -101,8 +101,8 @@ export namespace CT {
          */
         datastoreId?: string;
         /**
-         * Volume size (only for volume mount points).
-         * Can be specified with a unit suffix (e.g. `10G`).
+         * The size of the root filesystem in gigabytes (defaults
+         * to `4`). Requires `datastoreId` to be set.
          */
         size?: number;
     }
@@ -151,67 +151,61 @@ export namespace CT {
 
     export interface ContainerInitializationDns {
         /**
-         * The DNS search domain.
+         * The DNS search domain
          */
         domain?: string;
         /**
-         * The DNS server. The `server` attribute is
-         * deprecated and will be removed in a future release. Please use
-         * the `servers` attribute instead.
+         * The DNS server
          *
          * @deprecated The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
          */
         server?: string;
         /**
-         * The list of DNS servers.
+         * The list of DNS servers
          */
         servers?: string[];
     }
 
     export interface ContainerInitializationIpConfig {
         /**
-         * The IPv4 configuration.
+         * The IPv4 configuration
          */
         ipv4?: outputs.CT.ContainerInitializationIpConfigIpv4;
         /**
-         * The IPv4 configuration.
+         * The IPv6 configuration
          */
         ipv6?: outputs.CT.ContainerInitializationIpConfigIpv6;
     }
 
     export interface ContainerInitializationIpConfigIpv4 {
         /**
-         * The IPv6 address (use `dhcp` for
-         * autodiscovery).
+         * The IPv4 address
          */
         address?: string;
         /**
-         * The IPv6 gateway (must be omitted
-         * when `dhcp` is used as the address).
+         * The IPv4 gateway
          */
         gateway?: string;
     }
 
     export interface ContainerInitializationIpConfigIpv6 {
         /**
-         * The IPv6 address (use `dhcp` for
-         * autodiscovery).
+         * The IPv6 address
          */
         address?: string;
         /**
-         * The IPv6 gateway (must be omitted
-         * when `dhcp` is used as the address).
+         * The IPv6 gateway
          */
         gateway?: string;
     }
 
     export interface ContainerInitializationUserAccount {
         /**
-         * The SSH keys for the root account.
+         * The SSH keys
          */
         keys?: string[];
         /**
-         * The password for the root account.
+         * The SSH password
          */
         password?: string;
     }
@@ -832,7 +826,9 @@ export namespace Storage {
          */
         checksum?: string;
         /**
-         * The file name.
+         * The file name to use instead of the source file
+         * name. Useful when the source file does not have a valid file extension,
+         * for example when the source file is a URL referencing a `.qcow2` image.
          */
         fileName?: string;
         /**
@@ -891,8 +887,8 @@ export namespace VM {
 
     export interface VirtualMachineAgent {
         /**
-         * Whether to enable the VGA device (defaults
-         * to `true`).
+         * Whether to enable the QEMU agent (defaults
+         * to `false`).
          */
         enabled?: boolean;
         /**
@@ -906,15 +902,14 @@ export namespace VM {
          */
         trim?: boolean;
         /**
-         * The VGA type (defaults to `std`).
+         * The QEMU agent interface type (defaults to `virtio`).
          */
         type?: string;
     }
 
     export interface VirtualMachineAudioDevice {
         /**
-         * The device (defaults to `socket`).
-         * - `/dev/*` - A host serial device.
+         * The device (defaults to `intel-hda`).
          */
         device?: string;
         /**
@@ -922,7 +917,7 @@ export namespace VM {
          */
         driver?: string;
         /**
-         * Whether to enable the VGA device (defaults
+         * Whether to enable the audio device (defaults
          * to `true`).
          */
         enabled?: boolean;
@@ -930,29 +925,26 @@ export namespace VM {
 
     export interface VirtualMachineCdrom {
         /**
-         * Whether to enable the VGA device (defaults
-         * to `true`).
+         * Whether to enable the CDROM drive (defaults
+         * to `false`).
          */
         enabled?: boolean;
         /**
-         * The file ID for a disk image (experimental -
-         * might cause high CPU utilization during import, especially with large
-         * disk images).
+         * A file ID for an ISO file (defaults to `cdrom` as
+         * in the physical drive).
          */
         fileId?: string;
         /**
-         * The hardware interface to connect the cloud-init
-         * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
-         * detected if the setting is missing but a cloud-init image is present,
-         * otherwise defaults to `ide2`.
+         * A hardware interface to connect CDROM drive to,
+         * must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
+         * supports `ide0` and `ide2`.
          */
         interface?: string;
     }
 
     export interface VirtualMachineClone {
         /**
-         * The identifier for the datastore to create the
-         * cloud-init disk in (defaults to `local-lvm`).
+         * The identifier for the target datastore.
          */
         datastoreId?: string;
         /**
@@ -960,8 +952,8 @@ export namespace VM {
          */
         full?: boolean;
         /**
-         * The name of the node to assign the virtual machine
-         * to.
+         * The name of the source node (leave blank, if
+         * equal to the `nodeName` argument).
          */
         nodeName?: string;
         /**
@@ -971,7 +963,7 @@ export namespace VM {
          */
         retries?: number;
         /**
-         * The VM identifier.
+         * The identifier for the source VM.
          */
         vmId: number;
     }
@@ -1028,7 +1020,7 @@ export namespace VM {
          */
         limit?: number;
         /**
-         * The NUMA configuration.
+         * Enable/disable NUMA. (default to `false`)
          */
         numa?: boolean;
         /**
@@ -1036,7 +1028,8 @@ export namespace VM {
          */
         sockets?: number;
         /**
-         * The VGA type (defaults to `std`).
+         * The emulated CPU type, it's recommended to
+         * use `x86-64-v2-AES` (defaults to `qemu64`).
          */
         type?: string;
         /**
@@ -1059,8 +1052,8 @@ export namespace VM {
          */
         cache?: string;
         /**
-         * The identifier for the datastore to create the
-         * cloud-init disk in (defaults to `local-lvm`).
+         * The identifier for the datastore to create
+         * the disk in (defaults to `local-lvm`).
          */
         datastoreId?: string;
         /**
@@ -1070,7 +1063,7 @@ export namespace VM {
          */
         discard?: string;
         /**
-         * The file format (defaults to `raw`).
+         * The file format (defaults to `qcow2`).
          */
         fileFormat: string;
         /**
@@ -1080,10 +1073,10 @@ export namespace VM {
          */
         fileId?: string;
         /**
-         * The hardware interface to connect the cloud-init
-         * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
-         * detected if the setting is missing but a cloud-init image is present,
-         * otherwise defaults to `ide2`.
+         * The disk interface for Proxmox, currently `scsi`,
+         * `sata` and `virtio` interfaces are supported. Append the disk index at
+         * the end, for example, `virtio0` for the first virtio disk, `virtio1` for
+         * the second, etc.
          */
         interface: string;
         /**
@@ -1120,45 +1113,43 @@ export namespace VM {
 
     export interface VirtualMachineDiskSpeed {
         /**
-         * The maximum read I/O in operations per second.
+         * The maximum read I/O in operations per second
          */
         iopsRead?: number;
         /**
-         * The maximum unthrottled read I/O pool in operations per second.
+         * The maximum unthrottled read I/O pool in operations per second
          */
         iopsReadBurstable?: number;
         /**
-         * The maximum write I/O in operations per second.
+         * The maximum write I/O in operations per second
          */
         iopsWrite?: number;
         /**
-         * The maximum unthrottled write I/O pool in operations per second.
+         * The maximum unthrottled write I/O pool in operations per second
          */
         iopsWriteBurstable?: number;
         /**
-         * The maximum read speed in megabytes per second.
+         * The maximum read speed in megabytes per second
          */
         read?: number;
         /**
-         * The maximum burstable read speed in
-         * megabytes per second.
+         * The maximum burstable read speed in megabytes per second
          */
         readBurstable?: number;
         /**
-         * The maximum write speed in megabytes per second.
+         * The maximum write speed in megabytes per second
          */
         write?: number;
         /**
-         * The maximum burstable write speed in
-         * megabytes per second.
+         * The maximum burstable write speed in megabytes per second
          */
         writeBurstable?: number;
     }
 
     export interface VirtualMachineEfiDisk {
         /**
-         * The identifier for the datastore to create the
-         * cloud-init disk in (defaults to `local-lvm`).
+         * The identifier for the datastore to create
+         * the disk in (defaults to `local-lvm`).
          */
         datastoreId?: string;
         /**
@@ -1173,15 +1164,18 @@ export namespace VM {
          */
         preEnrolledKeys?: boolean;
         /**
-         * The VGA type (defaults to `std`).
+         * Size and type of the OVMF EFI disk. `4m` is newer and
+         * recommended, and required for Secure Boot. For backwards compatibility
+         * use `2m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
+         * to `2m`).
          */
         type?: string;
     }
 
     export interface VirtualMachineHostpci {
         /**
-         * The device (defaults to `socket`).
-         * - `/dev/*` - A host serial device.
+         * The PCI device name for Proxmox, in form
+         * of `hostpciX` where `X` is a sequential number from 0 to 3.
          */
         device: string;
         /**
@@ -1192,7 +1186,7 @@ export namespace VM {
         id?: string;
         /**
          * The resource mapping name of the device, for
-         * example usbdevice. Use either this or `id`.
+         * example gpu. Use either this or `id`.
          */
         mapping?: string;
         /**
@@ -1256,7 +1250,7 @@ export namespace VM {
          */
         networkDataFileId?: string;
         /**
-         * The VGA type (defaults to `std`).
+         * The cloud-init configuration format
          */
         type?: string;
         /**
@@ -1282,73 +1276,65 @@ export namespace VM {
 
     export interface VirtualMachineInitializationDns {
         /**
-         * The DNS search domain.
+         * The DNS search domain
          */
         domain?: string;
         /**
-         * The DNS server. The `server` attribute is
-         * deprecated and will be removed in a future release. Please use the
-         * `servers` attribute instead.
+         * The DNS server
          *
          * @deprecated The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
          */
         server?: string;
         /**
-         * The list of DNS servers.
+         * The list of DNS servers
          */
         servers?: string[];
     }
 
     export interface VirtualMachineInitializationIpConfig {
         /**
-         * The IPv4 configuration.
+         * The IPv4 configuration
          */
         ipv4?: outputs.VM.VirtualMachineInitializationIpConfigIpv4;
         /**
-         * The IPv4 configuration.
+         * The IPv6 configuration
          */
         ipv6?: outputs.VM.VirtualMachineInitializationIpConfigIpv6;
     }
 
     export interface VirtualMachineInitializationIpConfigIpv4 {
         /**
-         * The IPv6 address in CIDR notation
-         * (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
-         * to `dhcp` for autodiscovery.
+         * The IPv4 address
          */
         address?: string;
         /**
-         * The IPv6 gateway (must be omitted
-         * when `dhcp` is used as the address).
+         * The IPv4 gateway
          */
         gateway?: string;
     }
 
     export interface VirtualMachineInitializationIpConfigIpv6 {
         /**
-         * The IPv6 address in CIDR notation
-         * (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
-         * to `dhcp` for autodiscovery.
+         * The IPv6 address
          */
         address?: string;
         /**
-         * The IPv6 gateway (must be omitted
-         * when `dhcp` is used as the address).
+         * The IPv6 gateway
          */
         gateway?: string;
     }
 
     export interface VirtualMachineInitializationUserAccount {
         /**
-         * The SSH keys.
+         * The SSH keys
          */
         keys?: string[];
         /**
-         * The SSH password.
+         * The SSH password
          */
         password?: string;
         /**
-         * The SSH username.
+         * The SSH username
          */
         username?: string;
     }
@@ -1392,8 +1378,7 @@ export namespace VM {
          */
         disconnected?: boolean;
         /**
-         * Whether to enable the VGA device (defaults
-         * to `true`).
+         * Whether to enable the network device (defaults to `true`).
          */
         enabled?: boolean;
         /**
@@ -1438,8 +1423,8 @@ export namespace VM {
          */
         cpus: string;
         /**
-         * The device (defaults to `socket`).
-         * - `/dev/*` - A host serial device.
+         * The NUMA device name for Proxmox, in form
+         * of `numaX` where `X` is a sequential number from 0 to 7.
          */
         device: string;
         /**
@@ -1447,7 +1432,7 @@ export namespace VM {
          */
         hostnodes?: string;
         /**
-         * The VGA memory in megabytes (defaults to `16`).
+         * The memory in megabytes to assign to the NUMA node.
          */
         memory: number;
         /**
@@ -1458,7 +1443,7 @@ export namespace VM {
 
     export interface VirtualMachineOperatingSystem {
         /**
-         * The VGA type (defaults to `std`).
+         * The type (defaults to `other`).
          */
         type?: string;
     }
@@ -1522,12 +1507,13 @@ export namespace VM {
 
     export interface VirtualMachineTpmState {
         /**
-         * The identifier for the datastore to create the
-         * cloud-init disk in (defaults to `local-lvm`).
+         * The identifier for the datastore to create
+         * the disk in (defaults to `local-lvm`).
          */
         datastoreId?: string;
         /**
-         * The version.
+         * TPM state device version. Can be `v1.2` or `v2.0`.
+         * (defaults to `v2.0`).
          */
         version?: string;
     }

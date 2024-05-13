@@ -16,7 +16,6 @@ namespace Pulumi.ProxmoxVE.Network
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -55,7 +54,6 @@ namespace Pulumi.ProxmoxVE.Network
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -71,7 +69,7 @@ namespace Pulumi.ProxmoxVE.Network
     public partial class FirewallSecurityGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Rule comment.
+        /// Security group comment.
         /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
@@ -154,7 +152,7 @@ namespace Pulumi.ProxmoxVE.Network
     public sealed class FirewallSecurityGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Rule comment.
+        /// Security group comment.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
@@ -204,7 +202,7 @@ namespace Pulumi.ProxmoxVE.Network
     public sealed class FirewallSecurityGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Rule comment.
+        /// Security group comment.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }

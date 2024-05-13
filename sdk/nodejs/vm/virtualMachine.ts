@@ -135,7 +135,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly machine!: pulumi.Output<string | undefined>;
     /**
-     * The VGA memory in megabytes (defaults to `16`).
+     * The memory configuration.
      */
     public readonly memory!: pulumi.Output<outputs.VM.VirtualMachineMemory | undefined>;
     /**
@@ -507,7 +507,7 @@ export interface VirtualMachineState {
      */
     machine?: pulumi.Input<string>;
     /**
-     * The VGA memory in megabytes (defaults to `16`).
+     * The memory configuration.
      */
     memory?: pulumi.Input<inputs.VM.VirtualMachineMemory>;
     /**
@@ -740,7 +740,7 @@ export interface VirtualMachineArgs {
      */
     machine?: pulumi.Input<string>;
     /**
-     * The VGA memory in megabytes (defaults to `16`).
+     * The memory configuration.
      */
     memory?: pulumi.Input<inputs.VM.VirtualMachineMemory>;
     /**

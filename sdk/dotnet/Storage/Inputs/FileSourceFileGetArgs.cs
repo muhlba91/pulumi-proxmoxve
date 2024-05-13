@@ -25,7 +25,9 @@ namespace Pulumi.ProxmoxVE.Storage.Inputs
         public Input<string>? Checksum { get; set; }
 
         /// <summary>
-        /// The file name.
+        /// The file name to use instead of the source file
+        /// name. Useful when the source file does not have a valid file extension,
+        /// for example when the source file is a URL referencing a `.qcow2` image.
         /// </summary>
         [Input("fileName")]
         public Input<string>? FileName { get; set; }

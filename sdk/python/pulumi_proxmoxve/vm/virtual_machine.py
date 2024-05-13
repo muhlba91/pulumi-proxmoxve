@@ -91,7 +91,7 @@ class VirtualMachineArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] mac_addresses: The MAC addresses published by the QEMU agent with fallback
                to the network device configuration, if the agent is disabled
         :param pulumi.Input[str] machine: The VM machine type (defaults to `pc`).
-        :param pulumi.Input['VirtualMachineMemoryArgs'] memory: The VGA memory in megabytes (defaults to `16`).
+        :param pulumi.Input['VirtualMachineMemoryArgs'] memory: The memory configuration.
         :param pulumi.Input[bool] migrate: Migrate the VM on node change instead of re-creating
                it (defaults to `false`).
         :param pulumi.Input[str] name: The virtual machine name.
@@ -478,7 +478,7 @@ class VirtualMachineArgs:
     @pulumi.getter
     def memory(self) -> Optional[pulumi.Input['VirtualMachineMemoryArgs']]:
         """
-        The VGA memory in megabytes (defaults to `16`).
+        The memory configuration.
         """
         return pulumi.get(self, "memory")
 
@@ -949,7 +949,7 @@ class _VirtualMachineState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] mac_addresses: The MAC addresses published by the QEMU agent with fallback
                to the network device configuration, if the agent is disabled
         :param pulumi.Input[str] machine: The VM machine type (defaults to `pc`).
-        :param pulumi.Input['VirtualMachineMemoryArgs'] memory: The VGA memory in megabytes (defaults to `16`).
+        :param pulumi.Input['VirtualMachineMemoryArgs'] memory: The memory configuration.
         :param pulumi.Input[bool] migrate: Migrate the VM on node change instead of re-creating
                it (defaults to `false`).
         :param pulumi.Input[str] name: The virtual machine name.
@@ -1360,7 +1360,7 @@ class _VirtualMachineState:
     @pulumi.getter
     def memory(self) -> Optional[pulumi.Input['VirtualMachineMemoryArgs']]:
         """
-        The VGA memory in megabytes (defaults to `16`).
+        The memory configuration.
         """
         return pulumi.get(self, "memory")
 
@@ -1868,7 +1868,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] mac_addresses: The MAC addresses published by the QEMU agent with fallback
                to the network device configuration, if the agent is disabled
         :param pulumi.Input[str] machine: The VM machine type (defaults to `pc`).
-        :param pulumi.Input[pulumi.InputType['VirtualMachineMemoryArgs']] memory: The VGA memory in megabytes (defaults to `16`).
+        :param pulumi.Input[pulumi.InputType['VirtualMachineMemoryArgs']] memory: The memory configuration.
         :param pulumi.Input[bool] migrate: Migrate the VM on node change instead of re-creating
                it (defaults to `false`).
         :param pulumi.Input[str] name: The virtual machine name.
@@ -2163,7 +2163,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] mac_addresses: The MAC addresses published by the QEMU agent with fallback
                to the network device configuration, if the agent is disabled
         :param pulumi.Input[str] machine: The VM machine type (defaults to `pc`).
-        :param pulumi.Input[pulumi.InputType['VirtualMachineMemoryArgs']] memory: The VGA memory in megabytes (defaults to `16`).
+        :param pulumi.Input[pulumi.InputType['VirtualMachineMemoryArgs']] memory: The memory configuration.
         :param pulumi.Input[bool] migrate: Migrate the VM on node change instead of re-creating
                it (defaults to `false`).
         :param pulumi.Input[str] name: The virtual machine name.
@@ -2443,7 +2443,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter
     def memory(self) -> pulumi.Output[Optional['outputs.VirtualMachineMemory']]:
         """
-        The VGA memory in megabytes (defaults to `16`).
+        The memory configuration.
         """
         return pulumi.get(self, "memory")
 

@@ -75,7 +75,6 @@ def get_ha_resources(type: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_proxmoxve as proxmoxve
@@ -87,7 +86,6 @@ def get_ha_resources(type: Optional[str] = None,
         "vms": example_vm.resource_ids,
     })
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str type: The type of High Availability resources to fetch (`vm` or `ct`). All resources will be fetched if this option is unset.
@@ -111,7 +109,6 @@ def get_ha_resources_output(type: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_proxmoxve as proxmoxve
@@ -123,7 +120,6 @@ def get_ha_resources_output(type: Optional[pulumi.Input[Optional[str]]] = None,
         "vms": example_vm.resource_ids,
     })
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str type: The type of High Availability resources to fetch (`vm` or `ct`). All resources will be fetched if this option is unset.

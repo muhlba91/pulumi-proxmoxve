@@ -100,7 +100,6 @@ def get_pci(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_proxmoxve as proxmoxve
@@ -108,7 +107,6 @@ def get_pci(name: Optional[str] = None,
     example = proxmoxve.Hardware.mapping.get_pci(name="example")
     pulumi.export("dataProxmoxVirtualEnvironmentHardwareMappingPci", example)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of this PCI hardware mapping.
@@ -134,7 +132,6 @@ def get_pci_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_proxmoxve as proxmoxve
@@ -142,7 +139,6 @@ def get_pci_output(name: Optional[pulumi.Input[str]] = None,
     example = proxmoxve.Hardware.mapping.get_pci(name="example")
     pulumi.export("dataProxmoxVirtualEnvironmentHardwareMappingPci", example)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of this PCI hardware mapping.

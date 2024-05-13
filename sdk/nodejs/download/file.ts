@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
@@ -59,7 +58,6 @@ import * as utilities from "../utilities";
  *     url: "https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.tar.gz",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class File extends pulumi.CustomResource {
     /**

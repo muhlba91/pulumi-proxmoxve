@@ -48,7 +48,7 @@ export class Pci extends pulumi.CustomResource {
     }
 
     /**
-     * The comment of the mapped PCI device.
+     * The comment of this PCI hardware mapping.
      */
     public readonly comment!: pulumi.Output<string | undefined>;
     /**
@@ -101,7 +101,7 @@ export class Pci extends pulumi.CustomResource {
  */
 export interface PciState {
     /**
-     * The comment of the mapped PCI device.
+     * The comment of this PCI hardware mapping.
      */
     comment?: pulumi.Input<string>;
     /**
@@ -123,7 +123,7 @@ export interface PciState {
  */
 export interface PciArgs {
     /**
-     * The comment of the mapped PCI device.
+     * The comment of this PCI hardware mapping.
      */
     comment?: pulumi.Input<string>;
     /**

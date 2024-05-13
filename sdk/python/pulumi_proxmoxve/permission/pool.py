@@ -121,7 +121,6 @@ class Pool(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -130,7 +129,6 @@ class Pool(pulumi.CustomResource):
             comment="Managed by Terraform",
             pool_id="operations-pool")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -158,7 +156,6 @@ class Pool(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -167,7 +164,6 @@ class Pool(pulumi.CustomResource):
             comment="Managed by Terraform",
             pool_id="operations-pool")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

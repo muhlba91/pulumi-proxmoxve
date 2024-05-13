@@ -59,14 +59,14 @@ public class Container extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.clone);
     }
     /**
-     * Console.
+     * The console configuration.
      * 
      */
     @Export(name="console", refs={ContainerConsole.class}, tree="[0]")
     private Output</* @Nullable */ ContainerConsole> console;
 
     /**
-     * @return Console.
+     * @return The console configuration.
      * 
      */
     public Output<Optional<ContainerConsole>> console() {

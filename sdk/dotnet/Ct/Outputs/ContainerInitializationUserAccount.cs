@@ -14,11 +14,11 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
     public sealed class ContainerInitializationUserAccount
     {
         /// <summary>
-        /// The SSH keys for the root account.
+        /// The SSH keys
         /// </summary>
         public readonly ImmutableArray<string> Keys;
         /// <summary>
-        /// The password for the root account.
+        /// The SSH password
         /// </summary>
         public readonly string? Password;
 

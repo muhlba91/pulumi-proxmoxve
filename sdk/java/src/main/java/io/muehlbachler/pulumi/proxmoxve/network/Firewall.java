@@ -93,14 +93,14 @@ public class Firewall extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ebtables);
     }
     /**
-     * Enable or disable the log rate limit.
+     * Enable or disable the firewall cluster wide.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
-     * @return Enable or disable the log rate limit.
+     * @return Enable or disable the firewall cluster wide.
      * 
      */
     public Output<Optional<Boolean>> enabled() {

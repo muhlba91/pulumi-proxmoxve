@@ -16,14 +16,14 @@ public final class VirtualMachineDiskSpeedArgs extends com.pulumi.resources.Reso
     public static final VirtualMachineDiskSpeedArgs Empty = new VirtualMachineDiskSpeedArgs();
 
     /**
-     * The maximum read I/O in operations per second.
+     * The maximum read I/O in operations per second
      * 
      */
     @Import(name="iopsRead")
     private @Nullable Output<Integer> iopsRead;
 
     /**
-     * @return The maximum read I/O in operations per second.
+     * @return The maximum read I/O in operations per second
      * 
      */
     public Optional<Output<Integer>> iopsRead() {
@@ -31,14 +31,14 @@ public final class VirtualMachineDiskSpeedArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The maximum unthrottled read I/O pool in operations per second.
+     * The maximum unthrottled read I/O pool in operations per second
      * 
      */
     @Import(name="iopsReadBurstable")
     private @Nullable Output<Integer> iopsReadBurstable;
 
     /**
-     * @return The maximum unthrottled read I/O pool in operations per second.
+     * @return The maximum unthrottled read I/O pool in operations per second
      * 
      */
     public Optional<Output<Integer>> iopsReadBurstable() {
@@ -46,14 +46,14 @@ public final class VirtualMachineDiskSpeedArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The maximum write I/O in operations per second.
+     * The maximum write I/O in operations per second
      * 
      */
     @Import(name="iopsWrite")
     private @Nullable Output<Integer> iopsWrite;
 
     /**
-     * @return The maximum write I/O in operations per second.
+     * @return The maximum write I/O in operations per second
      * 
      */
     public Optional<Output<Integer>> iopsWrite() {
@@ -61,14 +61,14 @@ public final class VirtualMachineDiskSpeedArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The maximum unthrottled write I/O pool in operations per second.
+     * The maximum unthrottled write I/O pool in operations per second
      * 
      */
     @Import(name="iopsWriteBurstable")
     private @Nullable Output<Integer> iopsWriteBurstable;
 
     /**
-     * @return The maximum unthrottled write I/O pool in operations per second.
+     * @return The maximum unthrottled write I/O pool in operations per second
      * 
      */
     public Optional<Output<Integer>> iopsWriteBurstable() {
@@ -76,14 +76,14 @@ public final class VirtualMachineDiskSpeedArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The maximum read speed in megabytes per second.
+     * The maximum read speed in megabytes per second
      * 
      */
     @Import(name="read")
     private @Nullable Output<Integer> read;
 
     /**
-     * @return The maximum read speed in megabytes per second.
+     * @return The maximum read speed in megabytes per second
      * 
      */
     public Optional<Output<Integer>> read() {
@@ -91,16 +91,14 @@ public final class VirtualMachineDiskSpeedArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The maximum burstable read speed in
-     * megabytes per second.
+     * The maximum burstable read speed in megabytes per second
      * 
      */
     @Import(name="readBurstable")
     private @Nullable Output<Integer> readBurstable;
 
     /**
-     * @return The maximum burstable read speed in
-     * megabytes per second.
+     * @return The maximum burstable read speed in megabytes per second
      * 
      */
     public Optional<Output<Integer>> readBurstable() {
@@ -108,14 +106,14 @@ public final class VirtualMachineDiskSpeedArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The maximum write speed in megabytes per second.
+     * The maximum write speed in megabytes per second
      * 
      */
     @Import(name="write")
     private @Nullable Output<Integer> write;
 
     /**
-     * @return The maximum write speed in megabytes per second.
+     * @return The maximum write speed in megabytes per second
      * 
      */
     public Optional<Output<Integer>> write() {
@@ -123,16 +121,14 @@ public final class VirtualMachineDiskSpeedArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The maximum burstable write speed in
-     * megabytes per second.
+     * The maximum burstable write speed in megabytes per second
      * 
      */
     @Import(name="writeBurstable")
     private @Nullable Output<Integer> writeBurstable;
 
     /**
-     * @return The maximum burstable write speed in
-     * megabytes per second.
+     * @return The maximum burstable write speed in megabytes per second
      * 
      */
     public Optional<Output<Integer>> writeBurstable() {
@@ -171,7 +167,7 @@ public final class VirtualMachineDiskSpeedArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param iopsRead The maximum read I/O in operations per second.
+         * @param iopsRead The maximum read I/O in operations per second
          * 
          * @return builder
          * 
@@ -182,7 +178,7 @@ public final class VirtualMachineDiskSpeedArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param iopsRead The maximum read I/O in operations per second.
+         * @param iopsRead The maximum read I/O in operations per second
          * 
          * @return builder
          * 
@@ -192,7 +188,7 @@ public final class VirtualMachineDiskSpeedArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param iopsReadBurstable The maximum unthrottled read I/O pool in operations per second.
+         * @param iopsReadBurstable The maximum unthrottled read I/O pool in operations per second
          * 
          * @return builder
          * 
@@ -203,7 +199,7 @@ public final class VirtualMachineDiskSpeedArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param iopsReadBurstable The maximum unthrottled read I/O pool in operations per second.
+         * @param iopsReadBurstable The maximum unthrottled read I/O pool in operations per second
          * 
          * @return builder
          * 
@@ -213,7 +209,7 @@ public final class VirtualMachineDiskSpeedArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param iopsWrite The maximum write I/O in operations per second.
+         * @param iopsWrite The maximum write I/O in operations per second
          * 
          * @return builder
          * 
@@ -224,7 +220,7 @@ public final class VirtualMachineDiskSpeedArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param iopsWrite The maximum write I/O in operations per second.
+         * @param iopsWrite The maximum write I/O in operations per second
          * 
          * @return builder
          * 
@@ -234,7 +230,7 @@ public final class VirtualMachineDiskSpeedArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param iopsWriteBurstable The maximum unthrottled write I/O pool in operations per second.
+         * @param iopsWriteBurstable The maximum unthrottled write I/O pool in operations per second
          * 
          * @return builder
          * 
@@ -245,7 +241,7 @@ public final class VirtualMachineDiskSpeedArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param iopsWriteBurstable The maximum unthrottled write I/O pool in operations per second.
+         * @param iopsWriteBurstable The maximum unthrottled write I/O pool in operations per second
          * 
          * @return builder
          * 
@@ -255,7 +251,7 @@ public final class VirtualMachineDiskSpeedArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param read The maximum read speed in megabytes per second.
+         * @param read The maximum read speed in megabytes per second
          * 
          * @return builder
          * 
@@ -266,7 +262,7 @@ public final class VirtualMachineDiskSpeedArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param read The maximum read speed in megabytes per second.
+         * @param read The maximum read speed in megabytes per second
          * 
          * @return builder
          * 
@@ -276,8 +272,7 @@ public final class VirtualMachineDiskSpeedArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param readBurstable The maximum burstable read speed in
-         * megabytes per second.
+         * @param readBurstable The maximum burstable read speed in megabytes per second
          * 
          * @return builder
          * 
@@ -288,8 +283,7 @@ public final class VirtualMachineDiskSpeedArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param readBurstable The maximum burstable read speed in
-         * megabytes per second.
+         * @param readBurstable The maximum burstable read speed in megabytes per second
          * 
          * @return builder
          * 
@@ -299,7 +293,7 @@ public final class VirtualMachineDiskSpeedArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param write The maximum write speed in megabytes per second.
+         * @param write The maximum write speed in megabytes per second
          * 
          * @return builder
          * 
@@ -310,7 +304,7 @@ public final class VirtualMachineDiskSpeedArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param write The maximum write speed in megabytes per second.
+         * @param write The maximum write speed in megabytes per second
          * 
          * @return builder
          * 
@@ -320,8 +314,7 @@ public final class VirtualMachineDiskSpeedArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param writeBurstable The maximum burstable write speed in
-         * megabytes per second.
+         * @param writeBurstable The maximum burstable write speed in megabytes per second
          * 
          * @return builder
          * 
@@ -332,8 +325,7 @@ public final class VirtualMachineDiskSpeedArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param writeBurstable The maximum burstable write speed in
-         * megabytes per second.
+         * @param writeBurstable The maximum burstable write speed in megabytes per second
          * 
          * @return builder
          * 

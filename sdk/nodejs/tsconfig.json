@@ -13,6 +13,7 @@
         "strict": true
     },
     "files": [
+        "acl.ts",
         "certifi.ts",
         "cluster/getNodes.ts",
         "cluster/index.ts",
@@ -75,6 +76,8 @@
         "types/index.ts",
         "types/input.ts",
         "types/output.ts",
+        "user/index.ts",
+        "user/token.ts",
         "utilities.ts",
         "vm/getVirtualMachine.ts",
         "vm/getVirtualMachines.ts",

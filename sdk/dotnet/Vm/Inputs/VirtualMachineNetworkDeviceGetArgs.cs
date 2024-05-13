@@ -25,8 +25,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<bool>? Disconnected { get; set; }
 
         /// <summary>
-        /// Whether to enable the VGA device (defaults
-        /// to `true`).
+        /// Whether to enable the network device (defaults to `true`).
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

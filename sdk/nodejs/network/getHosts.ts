@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
@@ -20,7 +19,6 @@ import * as utilities from "../utilities";
  *     nodeName: "first-node",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getHosts(args: GetHostsArgs, opts?: pulumi.InvokeOptions): Promise<GetHostsResult> {
 
@@ -72,7 +70,6 @@ export interface GetHostsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
@@ -81,7 +78,6 @@ export interface GetHostsResult {
  *     nodeName: "first-node",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getHostsOutput(args: GetHostsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostsResult> {
     return pulumi.output(args).apply((a: any) => getHosts(a, opts))

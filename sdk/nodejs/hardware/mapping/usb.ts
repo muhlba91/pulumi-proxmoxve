@@ -11,7 +11,6 @@ import * as utilities from "../../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
@@ -26,7 +25,6 @@ import * as utilities from "../../utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -67,7 +65,7 @@ export class Usb extends pulumi.CustomResource {
     }
 
     /**
-     * The comment of the mapped USB device.
+     * The comment of this USB hardware mapping.
      */
     public readonly comment!: pulumi.Output<string | undefined>;
     /**
@@ -114,7 +112,7 @@ export class Usb extends pulumi.CustomResource {
  */
 export interface UsbState {
     /**
-     * The comment of the mapped USB device.
+     * The comment of this USB hardware mapping.
      */
     comment?: pulumi.Input<string>;
     /**
@@ -132,7 +130,7 @@ export interface UsbState {
  */
 export interface UsbArgs {
     /**
-     * The comment of the mapped USB device.
+     * The comment of this USB hardware mapping.
      */
     comment?: pulumi.Input<string>;
     /**

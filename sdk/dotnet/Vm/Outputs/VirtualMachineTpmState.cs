@@ -14,12 +14,13 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     public sealed class VirtualMachineTpmState
     {
         /// <summary>
-        /// The identifier for the datastore to create the
-        /// cloud-init disk in (defaults to `local-lvm`).
+        /// The identifier for the datastore to create
+        /// the disk in (defaults to `local-lvm`).
         /// </summary>
         public readonly string? DatastoreId;
         /// <summary>
-        /// The version.
+        /// TPM state device version. Can be `v1.2` or `v2.0`.
+        /// (defaults to `v2.0`).
         /// </summary>
         public readonly string? Version;
 

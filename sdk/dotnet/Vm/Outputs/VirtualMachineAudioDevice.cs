@@ -14,8 +14,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     public sealed class VirtualMachineAudioDevice
     {
         /// <summary>
-        /// The device (defaults to `socket`).
-        /// - `/dev/*` - A host serial device.
+        /// The device (defaults to `intel-hda`).
         /// </summary>
         public readonly string? Device;
         /// <summary>
@@ -23,7 +22,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly string? Driver;
         /// <summary>
-        /// Whether to enable the VGA device (defaults
+        /// Whether to enable the audio device (defaults
         /// to `true`).
         /// </summary>
         public readonly bool? Enabled;

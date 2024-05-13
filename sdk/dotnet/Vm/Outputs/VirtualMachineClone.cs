@@ -14,8 +14,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     public sealed class VirtualMachineClone
     {
         /// <summary>
-        /// The identifier for the datastore to create the
-        /// cloud-init disk in (defaults to `local-lvm`).
+        /// The identifier for the target datastore.
         /// </summary>
         public readonly string? DatastoreId;
         /// <summary>
@@ -23,8 +22,8 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly bool? Full;
         /// <summary>
-        /// The name of the node to assign the virtual machine
-        /// to.
+        /// The name of the source node (leave blank, if
+        /// equal to the `node_name` argument).
         /// </summary>
         public readonly string? NodeName;
         /// <summary>
@@ -34,7 +33,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly int? Retries;
         /// <summary>
-        /// The VM identifier.
+        /// The identifier for the source VM.
         /// </summary>
         public readonly int VmId;
 

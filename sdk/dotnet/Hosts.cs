@@ -51,7 +51,7 @@ namespace Pulumi.ProxmoxVE
         public Output<ImmutableArray<Outputs.HostsEntry>> Entry { get; private set; } = null!;
 
         /// <summary>
-        /// The hostnames.
+        /// The hostnames associated with each of the IP addresses.
         /// </summary>
         [Output("hostnames")]
         public Output<ImmutableArray<ImmutableArray<string>>> Hostnames { get; private set; } = null!;
@@ -182,7 +182,7 @@ namespace Pulumi.ProxmoxVE
         private InputList<ImmutableArray<string>>? _hostnames;
 
         /// <summary>
-        /// The hostnames.
+        /// The hostnames associated with each of the IP addresses.
         /// </summary>
         public InputList<ImmutableArray<string>> Hostnames
         {

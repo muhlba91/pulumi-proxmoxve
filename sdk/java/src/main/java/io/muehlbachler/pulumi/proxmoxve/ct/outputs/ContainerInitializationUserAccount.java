@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ContainerInitializationUserAccount {
     /**
-     * @return The SSH keys for the root account.
+     * @return The SSH keys
      * 
      */
     private @Nullable List<String> keys;
     /**
-     * @return The password for the root account.
+     * @return The SSH password
      * 
      */
     private @Nullable String password;
 
     private ContainerInitializationUserAccount() {}
     /**
-     * @return The SSH keys for the root account.
+     * @return The SSH keys
      * 
      */
     public List<String> keys() {
         return this.keys == null ? List.of() : this.keys;
     }
     /**
-     * @return The password for the root account.
+     * @return The SSH password
      * 
      */
     public Optional<String> password() {

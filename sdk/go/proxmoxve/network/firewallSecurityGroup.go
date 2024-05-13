@@ -18,7 +18,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -62,7 +61,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -76,7 +74,7 @@ import (
 type FirewallSecurityGroup struct {
 	pulumi.CustomResourceState
 
-	// Rule comment.
+	// Security group comment.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
 	// The ID of the container to manage the firewall for.
 	ContainerId pulumi.IntPtrOutput `pulumi:"containerId"`
@@ -123,7 +121,7 @@ func GetFirewallSecurityGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FirewallSecurityGroup resources.
 type firewallSecurityGroupState struct {
-	// Rule comment.
+	// Security group comment.
 	Comment *string `pulumi:"comment"`
 	// The ID of the container to manage the firewall for.
 	ContainerId *int `pulumi:"containerId"`
@@ -138,7 +136,7 @@ type firewallSecurityGroupState struct {
 }
 
 type FirewallSecurityGroupState struct {
-	// Rule comment.
+	// Security group comment.
 	Comment pulumi.StringPtrInput
 	// The ID of the container to manage the firewall for.
 	ContainerId pulumi.IntPtrInput
@@ -157,7 +155,7 @@ func (FirewallSecurityGroupState) ElementType() reflect.Type {
 }
 
 type firewallSecurityGroupArgs struct {
-	// Rule comment.
+	// Security group comment.
 	Comment *string `pulumi:"comment"`
 	// The ID of the container to manage the firewall for.
 	ContainerId *int `pulumi:"containerId"`
@@ -173,7 +171,7 @@ type firewallSecurityGroupArgs struct {
 
 // The set of arguments for constructing a FirewallSecurityGroup resource.
 type FirewallSecurityGroupArgs struct {
-	// Rule comment.
+	// Security group comment.
 	Comment pulumi.StringPtrInput
 	// The ID of the container to manage the firewall for.
 	ContainerId pulumi.IntPtrInput
@@ -274,7 +272,7 @@ func (o FirewallSecurityGroupOutput) ToFirewallSecurityGroupOutputWithContext(ct
 	return o
 }
 
-// Rule comment.
+// Security group comment.
 func (o FirewallSecurityGroupOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallSecurityGroup) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }

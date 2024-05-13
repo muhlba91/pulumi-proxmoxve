@@ -17,14 +17,14 @@ public final class ContainerInitializationUserAccountArgs extends com.pulumi.res
     public static final ContainerInitializationUserAccountArgs Empty = new ContainerInitializationUserAccountArgs();
 
     /**
-     * The SSH keys for the root account.
+     * The SSH keys
      * 
      */
     @Import(name="keys")
     private @Nullable Output<List<String>> keys;
 
     /**
-     * @return The SSH keys for the root account.
+     * @return The SSH keys
      * 
      */
     public Optional<Output<List<String>>> keys() {
@@ -32,14 +32,14 @@ public final class ContainerInitializationUserAccountArgs extends com.pulumi.res
     }
 
     /**
-     * The password for the root account.
+     * The SSH password
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The password for the root account.
+     * @return The SSH password
      * 
      */
     public Optional<Output<String>> password() {
@@ -72,7 +72,7 @@ public final class ContainerInitializationUserAccountArgs extends com.pulumi.res
         }
 
         /**
-         * @param keys The SSH keys for the root account.
+         * @param keys The SSH keys
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ContainerInitializationUserAccountArgs extends com.pulumi.res
         }
 
         /**
-         * @param keys The SSH keys for the root account.
+         * @param keys The SSH keys
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class ContainerInitializationUserAccountArgs extends com.pulumi.res
         }
 
         /**
-         * @param keys The SSH keys for the root account.
+         * @param keys The SSH keys
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ContainerInitializationUserAccountArgs extends com.pulumi.res
         }
 
         /**
-         * @param password The password for the root account.
+         * @param password The SSH password
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class ContainerInitializationUserAccountArgs extends com.pulumi.res
         }
 
         /**
-         * @param password The password for the root account.
+         * @param password The SSH password
          * 
          * @return builder
          * 

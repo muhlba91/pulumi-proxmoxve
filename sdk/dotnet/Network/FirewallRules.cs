@@ -17,7 +17,6 @@ namespace Pulumi.ProxmoxVE.Network
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -63,14 +62,13 @@ namespace Pulumi.ProxmoxVE.Network
     ///     {
     ///         DependsOn =
     ///         {
-    ///             proxmox_virtual_environment_vm.Example, 
-    ///             proxmox_virtual_environment_cluster_firewall_security_group.Example, 
+    ///             proxmox_virtual_environment_vm.Example,
+    ///             proxmox_virtual_environment_cluster_firewall_security_group.Example,
     ///         },
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:Network/firewallRules:FirewallRules")]
     public partial class FirewallRules : global::Pulumi.CustomResource

@@ -26,7 +26,7 @@ import (
 type Pci struct {
 	pulumi.CustomResourceState
 
-	// The comment of the mapped PCI device.
+	// The comment of this PCI hardware mapping.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
 	// The actual map of devices for the PCI hardware mapping.
 	Maps PciMapTypeArrayOutput `pulumi:"maps"`
@@ -69,7 +69,7 @@ func GetPci(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Pci resources.
 type pciState struct {
-	// The comment of the mapped PCI device.
+	// The comment of this PCI hardware mapping.
 	Comment *string `pulumi:"comment"`
 	// The actual map of devices for the PCI hardware mapping.
 	Maps []PciMapType `pulumi:"maps"`
@@ -80,7 +80,7 @@ type pciState struct {
 }
 
 type PciState struct {
-	// The comment of the mapped PCI device.
+	// The comment of this PCI hardware mapping.
 	Comment pulumi.StringPtrInput
 	// The actual map of devices for the PCI hardware mapping.
 	Maps PciMapTypeArrayInput
@@ -95,7 +95,7 @@ func (PciState) ElementType() reflect.Type {
 }
 
 type pciArgs struct {
-	// The comment of the mapped PCI device.
+	// The comment of this PCI hardware mapping.
 	Comment *string `pulumi:"comment"`
 	// The actual map of devices for the PCI hardware mapping.
 	Maps []PciMapType `pulumi:"maps"`
@@ -107,7 +107,7 @@ type pciArgs struct {
 
 // The set of arguments for constructing a Pci resource.
 type PciArgs struct {
-	// The comment of the mapped PCI device.
+	// The comment of this PCI hardware mapping.
 	Comment pulumi.StringPtrInput
 	// The actual map of devices for the PCI hardware mapping.
 	Maps PciMapTypeArrayInput
@@ -204,7 +204,7 @@ func (o PciOutput) ToPciOutputWithContext(ctx context.Context) PciOutput {
 	return o
 }
 
-// The comment of the mapped PCI device.
+// The comment of this PCI hardware mapping.
 func (o PciOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pci) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }

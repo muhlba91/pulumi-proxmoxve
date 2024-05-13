@@ -20,14 +20,14 @@ public final class FirewallSecurityGroupArgs extends com.pulumi.resources.Resour
     public static final FirewallSecurityGroupArgs Empty = new FirewallSecurityGroupArgs();
 
     /**
-     * Rule comment.
+     * Security group comment.
      * 
      */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
     /**
-     * @return Rule comment.
+     * @return Security group comment.
      * 
      */
     public Optional<Output<String>> comment() {
@@ -139,7 +139,7 @@ public final class FirewallSecurityGroupArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param comment Rule comment.
+         * @param comment Security group comment.
          * 
          * @return builder
          * 
@@ -150,7 +150,7 @@ public final class FirewallSecurityGroupArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param comment Rule comment.
+         * @param comment Security group comment.
          * 
          * @return builder
          * 

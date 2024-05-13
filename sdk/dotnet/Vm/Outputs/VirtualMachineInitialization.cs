@@ -46,7 +46,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly string? NetworkDataFileId;
         /// <summary>
-        /// The VGA type (defaults to `std`).
+        /// The cloud-init configuration format
         /// </summary>
         public readonly string? Type;
         /// <summary>

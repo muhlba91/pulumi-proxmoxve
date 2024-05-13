@@ -14,7 +14,6 @@ namespace Pulumi.ProxmoxVE.Hardware.Mapping
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -40,7 +39,6 @@ namespace Pulumi.ProxmoxVE.Hardware.Mapping
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -56,7 +54,7 @@ namespace Pulumi.ProxmoxVE.Hardware.Mapping
     public partial class Usb : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The comment of the mapped USB device.
+        /// The comment of this USB hardware mapping.
         /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
@@ -121,7 +119,7 @@ namespace Pulumi.ProxmoxVE.Hardware.Mapping
     public sealed class UsbArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The comment of the mapped USB device.
+        /// The comment of this USB hardware mapping.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
@@ -153,7 +151,7 @@ namespace Pulumi.ProxmoxVE.Hardware.Mapping
     public sealed class UsbState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The comment of the mapped USB device.
+        /// The comment of this USB hardware mapping.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }

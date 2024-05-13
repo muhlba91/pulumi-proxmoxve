@@ -14,7 +14,6 @@ namespace Pulumi.ProxmoxVE.Network
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -39,7 +38,6 @@ namespace Pulumi.ProxmoxVE.Network
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Important Notes
     /// 
@@ -65,7 +63,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Output<bool?> Ebtables { get; private set; } = null!;
 
         /// <summary>
-        /// Enable or disable the log rate limit.
+        /// Enable or disable the firewall cluster wide.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
@@ -142,7 +140,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Input<bool>? Ebtables { get; set; }
 
         /// <summary>
-        /// Enable or disable the log rate limit.
+        /// Enable or disable the firewall cluster wide.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -180,7 +178,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Input<bool>? Ebtables { get; set; }
 
         /// <summary>
-        /// Enable or disable the log rate limit.
+        /// Enable or disable the firewall cluster wide.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

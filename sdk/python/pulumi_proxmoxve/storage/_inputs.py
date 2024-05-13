@@ -27,7 +27,9 @@ class FileSourceFileArgs:
         :param pulumi.Input[str] path: A path to a local file or a URL.
         :param pulumi.Input[bool] changed: Whether the source file has changed since the last run
         :param pulumi.Input[str] checksum: The SHA256 checksum of the source file.
-        :param pulumi.Input[str] file_name: The file name.
+        :param pulumi.Input[str] file_name: The file name to use instead of the source file
+               name. Useful when the source file does not have a valid file extension,
+               for example when the source file is a URL referencing a `.qcow2` image.
         :param pulumi.Input[bool] insecure: Whether to skip the TLS verification step for
                HTTPS sources (defaults to `false`).
         :param pulumi.Input[str] min_tls: The minimum required TLS version for HTTPS
@@ -85,7 +87,9 @@ class FileSourceFileArgs:
     @pulumi.getter(name="fileName")
     def file_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The file name.
+        The file name to use instead of the source file
+        name. Useful when the source file does not have a valid file extension,
+        for example when the source file is a URL referencing a `.qcow2` image.
         """
         return pulumi.get(self, "file_name")
 

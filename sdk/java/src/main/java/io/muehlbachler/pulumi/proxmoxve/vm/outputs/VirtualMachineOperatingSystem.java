@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VirtualMachineOperatingSystem {
     /**
-     * @return The VGA type (defaults to `std`).
+     * @return The type (defaults to `other`).
      * 
      */
     private @Nullable String type;
 
     private VirtualMachineOperatingSystem() {}
     /**
-     * @return The VGA type (defaults to `std`).
+     * @return The type (defaults to `other`).
      * 
      */
     public Optional<String> type() {

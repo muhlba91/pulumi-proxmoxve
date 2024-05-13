@@ -14,8 +14,8 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     public sealed class VirtualMachineHostpci
     {
         /// <summary>
-        /// The device (defaults to `socket`).
-        /// - `/dev/*` - A host serial device.
+        /// The PCI device name for Proxmox, in form
+        /// of `hostpciX` where `X` is a sequential number from 0 to 3.
         /// </summary>
         public readonly string Device;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         public readonly string? Id;
         /// <summary>
         /// The resource mapping name of the device, for
-        /// example usbdevice. Use either this or `id`.
+        /// example gpu. Use either this or `id`.
         /// </summary>
         public readonly string? Mapping;
         /// <summary>

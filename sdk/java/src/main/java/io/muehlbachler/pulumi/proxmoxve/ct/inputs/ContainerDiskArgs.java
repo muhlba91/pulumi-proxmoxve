@@ -34,16 +34,16 @@ public final class ContainerDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Volume size (only for volume mount points).
-     * Can be specified with a unit suffix (e.g. `10G`).
+     * The size of the root filesystem in gigabytes (defaults
+     * to `4`). Requires `datastore_id` to be set.
      * 
      */
     @Import(name="size")
     private @Nullable Output<Integer> size;
 
     /**
-     * @return Volume size (only for volume mount points).
-     * Can be specified with a unit suffix (e.g. `10G`).
+     * @return The size of the root filesystem in gigabytes (defaults
+     * to `4`). Requires `datastore_id` to be set.
      * 
      */
     public Optional<Output<Integer>> size() {
@@ -99,8 +99,8 @@ public final class ContainerDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param size Volume size (only for volume mount points).
-         * Can be specified with a unit suffix (e.g. `10G`).
+         * @param size The size of the root filesystem in gigabytes (defaults
+         * to `4`). Requires `datastore_id` to be set.
          * 
          * @return builder
          * 
@@ -111,8 +111,8 @@ public final class ContainerDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param size Volume size (only for volume mount points).
-         * Can be specified with a unit suffix (e.g. `10G`).
+         * @param size The size of the root filesystem in gigabytes (defaults
+         * to `4`). Requires `datastore_id` to be set.
          * 
          * @return builder
          * 

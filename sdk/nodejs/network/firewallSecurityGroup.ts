@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
@@ -42,7 +41,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -83,7 +81,7 @@ export class FirewallSecurityGroup extends pulumi.CustomResource {
     }
 
     /**
-     * Rule comment.
+     * Security group comment.
      */
     public readonly comment!: pulumi.Output<string | undefined>;
     /**
@@ -148,7 +146,7 @@ export class FirewallSecurityGroup extends pulumi.CustomResource {
  */
 export interface FirewallSecurityGroupState {
     /**
-     * Rule comment.
+     * Security group comment.
      */
     comment?: pulumi.Input<string>;
     /**
@@ -178,7 +176,7 @@ export interface FirewallSecurityGroupState {
  */
 export interface FirewallSecurityGroupArgs {
     /**
-     * Rule comment.
+     * Security group comment.
      */
     comment?: pulumi.Input<string>;
     /**

@@ -33,14 +33,14 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable or disable the log rate limit.
+     * Enable or disable the firewall cluster wide.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable or disable the log rate limit.
+     * @return Enable or disable the firewall cluster wide.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -142,7 +142,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Enable or disable the log rate limit.
+         * @param enabled Enable or disable the firewall cluster wide.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Enable or disable the log rate limit.
+         * @param enabled Enable or disable the firewall cluster wide.
          * 
          * @return builder
          * 

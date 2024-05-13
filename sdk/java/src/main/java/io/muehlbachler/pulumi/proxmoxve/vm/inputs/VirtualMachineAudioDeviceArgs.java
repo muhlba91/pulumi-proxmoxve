@@ -17,16 +17,14 @@ public final class VirtualMachineAudioDeviceArgs extends com.pulumi.resources.Re
     public static final VirtualMachineAudioDeviceArgs Empty = new VirtualMachineAudioDeviceArgs();
 
     /**
-     * The device (defaults to `socket`).
-     * - `/dev/*` - A host serial device.
+     * The device (defaults to `intel-hda`).
      * 
      */
     @Import(name="device")
     private @Nullable Output<String> device;
 
     /**
-     * @return The device (defaults to `socket`).
-     * - `/dev/*` - A host serial device.
+     * @return The device (defaults to `intel-hda`).
      * 
      */
     public Optional<Output<String>> device() {
@@ -49,7 +47,7 @@ public final class VirtualMachineAudioDeviceArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Whether to enable the VGA device (defaults
+     * Whether to enable the audio device (defaults
      * to `true`).
      * 
      */
@@ -57,7 +55,7 @@ public final class VirtualMachineAudioDeviceArgs extends com.pulumi.resources.Re
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether to enable the VGA device (defaults
+     * @return Whether to enable the audio device (defaults
      * to `true`).
      * 
      */
@@ -92,8 +90,7 @@ public final class VirtualMachineAudioDeviceArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param device The device (defaults to `socket`).
-         * - `/dev/*` - A host serial device.
+         * @param device The device (defaults to `intel-hda`).
          * 
          * @return builder
          * 
@@ -104,8 +101,7 @@ public final class VirtualMachineAudioDeviceArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param device The device (defaults to `socket`).
-         * - `/dev/*` - A host serial device.
+         * @param device The device (defaults to `intel-hda`).
          * 
          * @return builder
          * 
@@ -136,7 +132,7 @@ public final class VirtualMachineAudioDeviceArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param enabled Whether to enable the VGA device (defaults
+         * @param enabled Whether to enable the audio device (defaults
          * to `true`).
          * 
          * @return builder
@@ -148,7 +144,7 @@ public final class VirtualMachineAudioDeviceArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param enabled Whether to enable the VGA device (defaults
+         * @param enabled Whether to enable the audio device (defaults
          * to `true`).
          * 
          * @return builder

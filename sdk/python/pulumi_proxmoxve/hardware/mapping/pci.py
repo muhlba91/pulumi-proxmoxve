@@ -23,7 +23,7 @@ class PciArgs:
         """
         The set of arguments for constructing a Pci resource.
         :param pulumi.Input[Sequence[pulumi.Input['PciMapArgs']]] maps: The actual map of devices for the PCI hardware mapping.
-        :param pulumi.Input[str] comment: The comment of the mapped PCI device.
+        :param pulumi.Input[str] comment: The comment of this PCI hardware mapping.
         :param pulumi.Input[bool] mediated_devices: Indicates whether to enable mediated devices.
         :param pulumi.Input[str] name: The name of this PCI hardware mapping.
         """
@@ -51,7 +51,7 @@ class PciArgs:
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
         """
-        The comment of the mapped PCI device.
+        The comment of this PCI hardware mapping.
         """
         return pulumi.get(self, "comment")
 
@@ -93,7 +93,7 @@ class _PciState:
                  name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Pci resources.
-        :param pulumi.Input[str] comment: The comment of the mapped PCI device.
+        :param pulumi.Input[str] comment: The comment of this PCI hardware mapping.
         :param pulumi.Input[Sequence[pulumi.Input['PciMapArgs']]] maps: The actual map of devices for the PCI hardware mapping.
         :param pulumi.Input[bool] mediated_devices: Indicates whether to enable mediated devices.
         :param pulumi.Input[str] name: The name of this PCI hardware mapping.
@@ -111,7 +111,7 @@ class _PciState:
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
         """
-        The comment of the mapped PCI device.
+        The comment of this PCI hardware mapping.
         """
         return pulumi.get(self, "comment")
 
@@ -181,7 +181,7 @@ class Pci(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] comment: The comment of the mapped PCI device.
+        :param pulumi.Input[str] comment: The comment of this PCI hardware mapping.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PciMapArgs']]]] maps: The actual map of devices for the PCI hardware mapping.
         :param pulumi.Input[bool] mediated_devices: Indicates whether to enable mediated devices.
         :param pulumi.Input[str] name: The name of this PCI hardware mapping.
@@ -260,7 +260,7 @@ class Pci(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] comment: The comment of the mapped PCI device.
+        :param pulumi.Input[str] comment: The comment of this PCI hardware mapping.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PciMapArgs']]]] maps: The actual map of devices for the PCI hardware mapping.
         :param pulumi.Input[bool] mediated_devices: Indicates whether to enable mediated devices.
         :param pulumi.Input[str] name: The name of this PCI hardware mapping.
@@ -279,7 +279,7 @@ class Pci(pulumi.CustomResource):
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[str]]:
         """
-        The comment of the mapped PCI device.
+        The comment of this PCI hardware mapping.
         """
         return pulumi.get(self, "comment")
 

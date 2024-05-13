@@ -13,7 +13,7 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
     public sealed class ContainerConsoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to enable the network device (defaults
+        /// Whether to enable the console device (defaults
         /// to `true`).
         /// </summary>
         [Input("enabled")]
@@ -26,7 +26,7 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
         public Input<int>? TtyCount { get; set; }
 
         /// <summary>
-        /// The type (defaults to `unmanaged`).
+        /// The console mode (defaults to `tty`).
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

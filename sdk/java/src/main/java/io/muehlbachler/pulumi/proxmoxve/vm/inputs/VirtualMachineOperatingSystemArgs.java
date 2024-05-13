@@ -16,14 +16,14 @@ public final class VirtualMachineOperatingSystemArgs extends com.pulumi.resource
     public static final VirtualMachineOperatingSystemArgs Empty = new VirtualMachineOperatingSystemArgs();
 
     /**
-     * The VGA type (defaults to `std`).
+     * The type (defaults to `other`).
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The VGA type (defaults to `std`).
+     * @return The type (defaults to `other`).
      * 
      */
     public Optional<Output<String>> type() {
@@ -55,7 +55,7 @@ public final class VirtualMachineOperatingSystemArgs extends com.pulumi.resource
         }
 
         /**
-         * @param type The VGA type (defaults to `std`).
+         * @param type The type (defaults to `other`).
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class VirtualMachineOperatingSystemArgs extends com.pulumi.resource
         }
 
         /**
-         * @param type The VGA type (defaults to `std`).
+         * @param type The type (defaults to `other`).
          * 
          * @return builder
          * 

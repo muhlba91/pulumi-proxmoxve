@@ -16,7 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -59,17 +58,16 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type FirewallIPSet struct {
 	pulumi.CustomResourceState
 
 	// IP/CIDR block (multiple blocks supported).
 	Cidrs FirewallIPSetCidrArrayOutput `pulumi:"cidrs"`
-	// Arbitrary string annotation.
+	// IPSet comment.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
 	// Container ID. Leave empty for cluster level aliases.
 	ContainerId pulumi.IntPtrOutput `pulumi:"containerId"`
-	// Network/IP specification in CIDR format.
+	// IPSet name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Node name. Leave empty for cluster level aliases.
 	NodeName pulumi.StringPtrOutput `pulumi:"nodeName"`
@@ -109,11 +107,11 @@ func GetFirewallIPSet(ctx *pulumi.Context,
 type firewallIPSetState struct {
 	// IP/CIDR block (multiple blocks supported).
 	Cidrs []FirewallIPSetCidr `pulumi:"cidrs"`
-	// Arbitrary string annotation.
+	// IPSet comment.
 	Comment *string `pulumi:"comment"`
 	// Container ID. Leave empty for cluster level aliases.
 	ContainerId *int `pulumi:"containerId"`
-	// Network/IP specification in CIDR format.
+	// IPSet name.
 	Name *string `pulumi:"name"`
 	// Node name. Leave empty for cluster level aliases.
 	NodeName *string `pulumi:"nodeName"`
@@ -124,11 +122,11 @@ type firewallIPSetState struct {
 type FirewallIPSetState struct {
 	// IP/CIDR block (multiple blocks supported).
 	Cidrs FirewallIPSetCidrArrayInput
-	// Arbitrary string annotation.
+	// IPSet comment.
 	Comment pulumi.StringPtrInput
 	// Container ID. Leave empty for cluster level aliases.
 	ContainerId pulumi.IntPtrInput
-	// Network/IP specification in CIDR format.
+	// IPSet name.
 	Name pulumi.StringPtrInput
 	// Node name. Leave empty for cluster level aliases.
 	NodeName pulumi.StringPtrInput
@@ -143,11 +141,11 @@ func (FirewallIPSetState) ElementType() reflect.Type {
 type firewallIPSetArgs struct {
 	// IP/CIDR block (multiple blocks supported).
 	Cidrs []FirewallIPSetCidr `pulumi:"cidrs"`
-	// Arbitrary string annotation.
+	// IPSet comment.
 	Comment *string `pulumi:"comment"`
 	// Container ID. Leave empty for cluster level aliases.
 	ContainerId *int `pulumi:"containerId"`
-	// Network/IP specification in CIDR format.
+	// IPSet name.
 	Name *string `pulumi:"name"`
 	// Node name. Leave empty for cluster level aliases.
 	NodeName *string `pulumi:"nodeName"`
@@ -159,11 +157,11 @@ type firewallIPSetArgs struct {
 type FirewallIPSetArgs struct {
 	// IP/CIDR block (multiple blocks supported).
 	Cidrs FirewallIPSetCidrArrayInput
-	// Arbitrary string annotation.
+	// IPSet comment.
 	Comment pulumi.StringPtrInput
 	// Container ID. Leave empty for cluster level aliases.
 	ContainerId pulumi.IntPtrInput
-	// Network/IP specification in CIDR format.
+	// IPSet name.
 	Name pulumi.StringPtrInput
 	// Node name. Leave empty for cluster level aliases.
 	NodeName pulumi.StringPtrInput
@@ -263,7 +261,7 @@ func (o FirewallIPSetOutput) Cidrs() FirewallIPSetCidrArrayOutput {
 	return o.ApplyT(func(v *FirewallIPSet) FirewallIPSetCidrArrayOutput { return v.Cidrs }).(FirewallIPSetCidrArrayOutput)
 }
 
-// Arbitrary string annotation.
+// IPSet comment.
 func (o FirewallIPSetOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallIPSet) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
@@ -273,7 +271,7 @@ func (o FirewallIPSetOutput) ContainerId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FirewallIPSet) pulumi.IntPtrOutput { return v.ContainerId }).(pulumi.IntPtrOutput)
 }
 
-// Network/IP specification in CIDR format.
+// IPSet name.
 func (o FirewallIPSetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallIPSet) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

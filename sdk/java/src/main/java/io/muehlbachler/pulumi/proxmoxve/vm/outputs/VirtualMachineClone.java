@@ -15,8 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VirtualMachineClone {
     /**
-     * @return The identifier for the datastore to create the
-     * cloud-init disk in (defaults to `local-lvm`).
+     * @return The identifier for the target datastore.
      * 
      */
     private @Nullable String datastoreId;
@@ -26,8 +25,8 @@ public final class VirtualMachineClone {
      */
     private @Nullable Boolean full;
     /**
-     * @return The name of the node to assign the virtual machine
-     * to.
+     * @return The name of the source node (leave blank, if
+     * equal to the `node_name` argument).
      * 
      */
     private @Nullable String nodeName;
@@ -39,15 +38,14 @@ public final class VirtualMachineClone {
      */
     private @Nullable Integer retries;
     /**
-     * @return The VM identifier.
+     * @return The identifier for the source VM.
      * 
      */
     private Integer vmId;
 
     private VirtualMachineClone() {}
     /**
-     * @return The identifier for the datastore to create the
-     * cloud-init disk in (defaults to `local-lvm`).
+     * @return The identifier for the target datastore.
      * 
      */
     public Optional<String> datastoreId() {
@@ -61,8 +59,8 @@ public final class VirtualMachineClone {
         return Optional.ofNullable(this.full);
     }
     /**
-     * @return The name of the node to assign the virtual machine
-     * to.
+     * @return The name of the source node (leave blank, if
+     * equal to the `node_name` argument).
      * 
      */
     public Optional<String> nodeName() {
@@ -78,7 +76,7 @@ public final class VirtualMachineClone {
         return Optional.ofNullable(this.retries);
     }
     /**
-     * @return The VM identifier.
+     * @return The identifier for the source VM.
      * 
      */
     public Integer vmId() {

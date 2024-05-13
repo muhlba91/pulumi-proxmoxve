@@ -20,7 +20,6 @@ import (
 //
 // > The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,13 +48,11 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Images
 //
 // > Consider using `Download.File` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -84,13 +81,11 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Container Template (`vztmpl`)
 //
 // > Consider using `Download.File` resource instead. Using this resource for container images is less efficient (requires to transfer uploaded image to node) though still supported.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -119,7 +114,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Important Notes
 //

@@ -400,7 +400,6 @@ class NetworkBridge(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -412,7 +411,6 @@ class NetworkBridge(pulumi.CustomResource):
             ports=["ens18.99"],
             opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_network_linux_vlan["vlan99"]]))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -449,7 +447,6 @@ class NetworkBridge(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -461,7 +458,6 @@ class NetworkBridge(pulumi.CustomResource):
             ports=["ens18.99"],
             opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_network_linux_vlan["vlan99"]]))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

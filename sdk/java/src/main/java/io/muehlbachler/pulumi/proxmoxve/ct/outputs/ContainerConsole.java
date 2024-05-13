@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ContainerConsole {
     /**
-     * @return Whether to enable the network device (defaults
+     * @return Whether to enable the console device (defaults
      * to `true`).
      * 
      */
@@ -25,14 +25,14 @@ public final class ContainerConsole {
      */
     private @Nullable Integer ttyCount;
     /**
-     * @return The type (defaults to `unmanaged`).
+     * @return The console mode (defaults to `tty`).
      * 
      */
     private @Nullable String type;
 
     private ContainerConsole() {}
     /**
-     * @return Whether to enable the network device (defaults
+     * @return Whether to enable the console device (defaults
      * to `true`).
      * 
      */
@@ -47,7 +47,7 @@ public final class ContainerConsole {
         return Optional.ofNullable(this.ttyCount);
     }
     /**
-     * @return The type (defaults to `unmanaged`).
+     * @return The console mode (defaults to `tty`).
      * 
      */
     public Optional<String> type() {

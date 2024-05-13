@@ -16,16 +16,16 @@ public final class VirtualMachineTpmStateArgs extends com.pulumi.resources.Resou
     public static final VirtualMachineTpmStateArgs Empty = new VirtualMachineTpmStateArgs();
 
     /**
-     * The identifier for the datastore to create the
-     * cloud-init disk in (defaults to `local-lvm`).
+     * The identifier for the datastore to create
+     * the disk in (defaults to `local-lvm`).
      * 
      */
     @Import(name="datastoreId")
     private @Nullable Output<String> datastoreId;
 
     /**
-     * @return The identifier for the datastore to create the
-     * cloud-init disk in (defaults to `local-lvm`).
+     * @return The identifier for the datastore to create
+     * the disk in (defaults to `local-lvm`).
      * 
      */
     public Optional<Output<String>> datastoreId() {
@@ -33,14 +33,16 @@ public final class VirtualMachineTpmStateArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The version.
+     * TPM state device version. Can be `v1.2` or `v2.0`.
+     * (defaults to `v2.0`).
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return The version.
+     * @return TPM state device version. Can be `v1.2` or `v2.0`.
+     * (defaults to `v2.0`).
      * 
      */
     public Optional<Output<String>> version() {
@@ -73,8 +75,8 @@ public final class VirtualMachineTpmStateArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param datastoreId The identifier for the datastore to create the
-         * cloud-init disk in (defaults to `local-lvm`).
+         * @param datastoreId The identifier for the datastore to create
+         * the disk in (defaults to `local-lvm`).
          * 
          * @return builder
          * 
@@ -85,8 +87,8 @@ public final class VirtualMachineTpmStateArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param datastoreId The identifier for the datastore to create the
-         * cloud-init disk in (defaults to `local-lvm`).
+         * @param datastoreId The identifier for the datastore to create
+         * the disk in (defaults to `local-lvm`).
          * 
          * @return builder
          * 
@@ -96,7 +98,8 @@ public final class VirtualMachineTpmStateArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param version The version.
+         * @param version TPM state device version. Can be `v1.2` or `v2.0`.
+         * (defaults to `v2.0`).
          * 
          * @return builder
          * 
@@ -107,7 +110,8 @@ public final class VirtualMachineTpmStateArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param version The version.
+         * @param version TPM state device version. Can be `v1.2` or `v2.0`.
+         * (defaults to `v2.0`).
          * 
          * @return builder
          * 

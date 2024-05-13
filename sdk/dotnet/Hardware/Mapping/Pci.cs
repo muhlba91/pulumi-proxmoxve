@@ -26,7 +26,7 @@ namespace Pulumi.ProxmoxVE.Hardware.Mapping
     public partial class Pci : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The comment of the mapped PCI device.
+        /// The comment of this PCI hardware mapping.
         /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
@@ -97,7 +97,7 @@ namespace Pulumi.ProxmoxVE.Hardware.Mapping
     public sealed class PciArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The comment of the mapped PCI device.
+        /// The comment of this PCI hardware mapping.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
@@ -135,7 +135,7 @@ namespace Pulumi.ProxmoxVE.Hardware.Mapping
     public sealed class PciState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The comment of the mapped PCI device.
+        /// The comment of this PCI hardware mapping.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }

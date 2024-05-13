@@ -14,7 +14,6 @@ namespace Pulumi.ProxmoxVE.HA
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -33,13 +32,12 @@ namespace Pulumi.ProxmoxVE.HA
     ///     {
     ///         DependsOn =
     ///         {
-    ///             proxmox_virtual_environment_hagroup.Example, 
+    ///             proxmox_virtual_environment_hagroup.Example,
     ///         },
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

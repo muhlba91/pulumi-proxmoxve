@@ -46,7 +46,7 @@ class ContainerArgs:
         The set of arguments for constructing a Container resource.
         :param pulumi.Input[str] node_name: The name of the node to assign the container to.
         :param pulumi.Input['ContainerCloneArgs'] clone: The cloning configuration.
-        :param pulumi.Input['ContainerConsoleArgs'] console: Console.
+        :param pulumi.Input['ContainerConsoleArgs'] console: The console configuration.
         :param pulumi.Input['ContainerCpuArgs'] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description.
         :param pulumi.Input['ContainerDiskArgs'] disk: The disk configuration.
@@ -161,7 +161,7 @@ class ContainerArgs:
     @pulumi.getter
     def console(self) -> Optional[pulumi.Input['ContainerConsoleArgs']]:
         """
-        Console.
+        The console configuration.
         """
         return pulumi.get(self, "console")
 
@@ -488,7 +488,7 @@ class _ContainerState:
         """
         Input properties used for looking up and filtering Container resources.
         :param pulumi.Input['ContainerCloneArgs'] clone: The cloning configuration.
-        :param pulumi.Input['ContainerConsoleArgs'] console: Console.
+        :param pulumi.Input['ContainerConsoleArgs'] console: The console configuration.
         :param pulumi.Input['ContainerCpuArgs'] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description.
         :param pulumi.Input['ContainerDiskArgs'] disk: The disk configuration.
@@ -593,7 +593,7 @@ class _ContainerState:
     @pulumi.getter
     def console(self) -> Optional[pulumi.Input['ContainerConsoleArgs']]:
         """
-        Console.
+        The console configuration.
         """
         return pulumi.get(self, "console")
 
@@ -948,7 +948,7 @@ class Container(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ContainerCloneArgs']] clone: The cloning configuration.
-        :param pulumi.Input[pulumi.InputType['ContainerConsoleArgs']] console: Console.
+        :param pulumi.Input[pulumi.InputType['ContainerConsoleArgs']] console: The console configuration.
         :param pulumi.Input[pulumi.InputType['ContainerCpuArgs']] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description.
         :param pulumi.Input[pulumi.InputType['ContainerDiskArgs']] disk: The disk configuration.
@@ -1122,7 +1122,7 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ContainerCloneArgs']] clone: The cloning configuration.
-        :param pulumi.Input[pulumi.InputType['ContainerConsoleArgs']] console: Console.
+        :param pulumi.Input[pulumi.InputType['ContainerConsoleArgs']] console: The console configuration.
         :param pulumi.Input[pulumi.InputType['ContainerCpuArgs']] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description.
         :param pulumi.Input[pulumi.InputType['ContainerDiskArgs']] disk: The disk configuration.
@@ -1199,7 +1199,7 @@ class Container(pulumi.CustomResource):
     @pulumi.getter
     def console(self) -> pulumi.Output[Optional['outputs.ContainerConsole']]:
         """
-        Console.
+        The console configuration.
         """
         return pulumi.get(self, "console")
 

@@ -15,7 +15,6 @@ namespace Pulumi.ProxmoxVE.Network
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -52,13 +51,12 @@ namespace Pulumi.ProxmoxVE.Network
     ///     {
     ///         DependsOn =
     ///         {
-    ///             proxmox_virtual_environment_vm.Example, 
+    ///             proxmox_virtual_environment_vm.Example,
     ///         },
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:Network/firewallIPSet:FirewallIPSet")]
     public partial class FirewallIPSet : global::Pulumi.CustomResource
@@ -70,7 +68,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Output<ImmutableArray<Outputs.FirewallIPSetCidr>> Cidrs { get; private set; } = null!;
 
         /// <summary>
-        /// Arbitrary string annotation.
+        /// IPSet comment.
         /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
@@ -82,7 +80,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Output<int?> ContainerId { get; private set; } = null!;
 
         /// <summary>
-        /// Network/IP specification in CIDR format.
+        /// IPSet name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -159,7 +157,7 @@ namespace Pulumi.ProxmoxVE.Network
         }
 
         /// <summary>
-        /// Arbitrary string annotation.
+        /// IPSet comment.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
@@ -171,7 +169,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Input<int>? ContainerId { get; set; }
 
         /// <summary>
-        /// Network/IP specification in CIDR format.
+        /// IPSet name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -209,7 +207,7 @@ namespace Pulumi.ProxmoxVE.Network
         }
 
         /// <summary>
-        /// Arbitrary string annotation.
+        /// IPSet comment.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
@@ -221,7 +219,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Input<int>? ContainerId { get; set; }
 
         /// <summary>
-        /// Network/IP specification in CIDR format.
+        /// IPSet name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

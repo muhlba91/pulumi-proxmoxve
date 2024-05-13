@@ -25,8 +25,7 @@ public final class VirtualMachineNetworkDevice {
      */
     private @Nullable Boolean disconnected;
     /**
-     * @return Whether to enable the VGA device (defaults
-     * to `true`).
+     * @return Whether to enable the network device (defaults to `true`).
      * 
      */
     private @Nullable Boolean enabled;
@@ -89,8 +88,7 @@ public final class VirtualMachineNetworkDevice {
         return Optional.ofNullable(this.disconnected);
     }
     /**
-     * @return Whether to enable the VGA device (defaults
-     * to `true`).
+     * @return Whether to enable the network device (defaults to `true`).
      * 
      */
     public Optional<Boolean> enabled() {

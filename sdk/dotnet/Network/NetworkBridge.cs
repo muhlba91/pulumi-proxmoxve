@@ -14,7 +14,6 @@ namespace Pulumi.ProxmoxVE.Network
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -36,13 +35,12 @@ namespace Pulumi.ProxmoxVE.Network
     ///     {
     ///         DependsOn =
     ///         {
-    ///             proxmox_virtual_environment_network_linux_vlan.Vlan99, 
+    ///             proxmox_virtual_environment_network_linux_vlan.Vlan99,
     ///         },
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

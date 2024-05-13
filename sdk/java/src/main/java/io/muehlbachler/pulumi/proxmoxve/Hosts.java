@@ -128,14 +128,14 @@ public class Hosts extends com.pulumi.resources.CustomResource {
         return this.entry;
     }
     /**
-     * The hostnames.
+     * The hostnames associated with each of the IP addresses.
      * 
      */
     @Export(name="hostnames", refs={List.class,String.class}, tree="[0,[0,1]]")
     private Output<List<List<String>>> hostnames;
 
     /**
-     * @return The hostnames.
+     * @return The hostnames associated with each of the IP addresses.
      * 
      */
     public Output<List<List<String>>> hostnames() {

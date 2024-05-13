@@ -47,13 +47,13 @@ class VirtualMachineAgent(dict):
                  trim: Optional[bool] = None,
                  type: Optional[str] = None):
         """
-        :param bool enabled: Whether to enable the VGA device (defaults
-               to `true`).
+        :param bool enabled: Whether to enable the QEMU agent (defaults
+               to `false`).
         :param str timeout: The maximum amount of time to wait for data from
                the QEMU agent to become available ( defaults to `15m`).
         :param bool trim: Whether to enable the FSTRIM feature in the QEMU agent
                (defaults to `false`).
-        :param str type: The VGA type (defaults to `std`).
+        :param str type: The QEMU agent interface type (defaults to `virtio`).
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -68,8 +68,8 @@ class VirtualMachineAgent(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Whether to enable the VGA device (defaults
-        to `true`).
+        Whether to enable the QEMU agent (defaults
+        to `false`).
         """
         return pulumi.get(self, "enabled")
 
@@ -95,7 +95,7 @@ class VirtualMachineAgent(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        The VGA type (defaults to `std`).
+        The QEMU agent interface type (defaults to `virtio`).
         """
         return pulumi.get(self, "type")
 
@@ -107,10 +107,9 @@ class VirtualMachineAudioDevice(dict):
                  driver: Optional[str] = None,
                  enabled: Optional[bool] = None):
         """
-        :param str device: The device (defaults to `socket`).
-               - `/dev/*` - A host serial device.
+        :param str device: The device (defaults to `intel-hda`).
         :param str driver: The driver (defaults to `spice`).
-        :param bool enabled: Whether to enable the VGA device (defaults
+        :param bool enabled: Whether to enable the audio device (defaults
                to `true`).
         """
         if device is not None:
@@ -124,8 +123,7 @@ class VirtualMachineAudioDevice(dict):
     @pulumi.getter
     def device(self) -> Optional[str]:
         """
-        The device (defaults to `socket`).
-        - `/dev/*` - A host serial device.
+        The device (defaults to `intel-hda`).
         """
         return pulumi.get(self, "device")
 
@@ -141,7 +139,7 @@ class VirtualMachineAudioDevice(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Whether to enable the VGA device (defaults
+        Whether to enable the audio device (defaults
         to `true`).
         """
         return pulumi.get(self, "enabled")
@@ -171,15 +169,13 @@ class VirtualMachineCdrom(dict):
                  file_id: Optional[str] = None,
                  interface: Optional[str] = None):
         """
-        :param bool enabled: Whether to enable the VGA device (defaults
-               to `true`).
-        :param str file_id: The file ID for a disk image (experimental -
-               might cause high CPU utilization during import, especially with large
-               disk images).
-        :param str interface: The hardware interface to connect the cloud-init
-               image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
-               detected if the setting is missing but a cloud-init image is present,
-               otherwise defaults to `ide2`.
+        :param bool enabled: Whether to enable the CDROM drive (defaults
+               to `false`).
+        :param str file_id: A file ID for an ISO file (defaults to `cdrom` as
+               in the physical drive).
+        :param str interface: A hardware interface to connect CDROM drive to,
+               must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
+               supports `ide0` and `ide2`.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -192,8 +188,8 @@ class VirtualMachineCdrom(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Whether to enable the VGA device (defaults
-        to `true`).
+        Whether to enable the CDROM drive (defaults
+        to `false`).
         """
         return pulumi.get(self, "enabled")
 
@@ -201,9 +197,8 @@ class VirtualMachineCdrom(dict):
     @pulumi.getter(name="fileId")
     def file_id(self) -> Optional[str]:
         """
-        The file ID for a disk image (experimental -
-        might cause high CPU utilization during import, especially with large
-        disk images).
+        A file ID for an ISO file (defaults to `cdrom` as
+        in the physical drive).
         """
         return pulumi.get(self, "file_id")
 
@@ -211,10 +206,9 @@ class VirtualMachineCdrom(dict):
     @pulumi.getter
     def interface(self) -> Optional[str]:
         """
-        The hardware interface to connect the cloud-init
-        image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
-        detected if the setting is missing but a cloud-init image is present,
-        otherwise defaults to `ide2`.
+        A hardware interface to connect CDROM drive to,
+        must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
+        supports `ide0` and `ide2`.
         """
         return pulumi.get(self, "interface")
 
@@ -249,12 +243,11 @@ class VirtualMachineClone(dict):
                  node_name: Optional[str] = None,
                  retries: Optional[int] = None):
         """
-        :param int vm_id: The VM identifier.
-        :param str datastore_id: The identifier for the datastore to create the
-               cloud-init disk in (defaults to `local-lvm`).
+        :param int vm_id: The identifier for the source VM.
+        :param str datastore_id: The identifier for the target datastore.
         :param bool full: Full or linked clone (defaults to `true`).
-        :param str node_name: The name of the node to assign the virtual machine
-               to.
+        :param str node_name: The name of the source node (leave blank, if
+               equal to the `node_name` argument).
         :param int retries: Number of retries in Proxmox for clone vm.
                Sometimes Proxmox errors with timeout when creating multiple clones at
                once.
@@ -273,7 +266,7 @@ class VirtualMachineClone(dict):
     @pulumi.getter(name="vmId")
     def vm_id(self) -> int:
         """
-        The VM identifier.
+        The identifier for the source VM.
         """
         return pulumi.get(self, "vm_id")
 
@@ -281,8 +274,7 @@ class VirtualMachineClone(dict):
     @pulumi.getter(name="datastoreId")
     def datastore_id(self) -> Optional[str]:
         """
-        The identifier for the datastore to create the
-        cloud-init disk in (defaults to `local-lvm`).
+        The identifier for the target datastore.
         """
         return pulumi.get(self, "datastore_id")
 
@@ -298,8 +290,8 @@ class VirtualMachineClone(dict):
     @pulumi.getter(name="nodeName")
     def node_name(self) -> Optional[str]:
         """
-        The name of the node to assign the virtual machine
-        to.
+        The name of the source node (leave blank, if
+        equal to the `node_name` argument).
         """
         return pulumi.get(self, "node_name")
 
@@ -360,9 +352,10 @@ class VirtualMachineCpu(dict):
         :param int hotplugged: The number of hotplugged vCPUs (defaults
                to `0`).
         :param int limit: Limit of CPU usage, `0...128`. (defaults to `0` -- no limit).
-        :param bool numa: The NUMA configuration.
+        :param bool numa: Enable/disable NUMA. (default to `false`)
         :param int sockets: The number of CPU sockets (defaults to `1`).
-        :param str type: The VGA type (defaults to `std`).
+        :param str type: The emulated CPU type, it's recommended to
+               use `x86-64-v2-AES` (defaults to `qemu64`).
         :param int units: The CPU units (defaults to `1024`).
         """
         if affinity is not None:
@@ -464,7 +457,7 @@ class VirtualMachineCpu(dict):
     @pulumi.getter
     def numa(self) -> Optional[bool]:
         """
-        The NUMA configuration.
+        Enable/disable NUMA. (default to `false`)
         """
         return pulumi.get(self, "numa")
 
@@ -480,7 +473,8 @@ class VirtualMachineCpu(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        The VGA type (defaults to `std`).
+        The emulated CPU type, it's recommended to
+        use `x86-64-v2-AES` (defaults to `qemu64`).
         """
         return pulumi.get(self, "type")
 
@@ -534,19 +528,19 @@ class VirtualMachineDisk(dict):
                  speed: Optional['outputs.VirtualMachineDiskSpeed'] = None,
                  ssd: Optional[bool] = None):
         """
-        :param str interface: The hardware interface to connect the cloud-init
-               image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
-               detected if the setting is missing but a cloud-init image is present,
-               otherwise defaults to `ide2`.
+        :param str interface: The disk interface for Proxmox, currently `scsi`,
+               `sata` and `virtio` interfaces are supported. Append the disk index at
+               the end, for example, `virtio0` for the first virtio disk, `virtio1` for
+               the second, etc.
         :param str aio: The disk AIO mode (defaults to `io_uring`).
         :param bool backup: Whether the drive should be included when making backups (defaults to `true`).
         :param str cache: The cache type (defaults to `none`).
-        :param str datastore_id: The identifier for the datastore to create the
-               cloud-init disk in (defaults to `local-lvm`).
+        :param str datastore_id: The identifier for the datastore to create
+               the disk in (defaults to `local-lvm`).
         :param str discard: Whether to pass discard/trim requests to the
                underlying storage. Supported values are `on`/`ignore` (defaults
                to `ignore`).
-        :param str file_format: The file format (defaults to `raw`).
+        :param str file_format: The file format (defaults to `qcow2`).
         :param str file_id: The file ID for a disk image (experimental -
                might cause high CPU utilization during import, especially with large
                disk images).
@@ -595,10 +589,10 @@ class VirtualMachineDisk(dict):
     @pulumi.getter
     def interface(self) -> str:
         """
-        The hardware interface to connect the cloud-init
-        image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
-        detected if the setting is missing but a cloud-init image is present,
-        otherwise defaults to `ide2`.
+        The disk interface for Proxmox, currently `scsi`,
+        `sata` and `virtio` interfaces are supported. Append the disk index at
+        the end, for example, `virtio0` for the first virtio disk, `virtio1` for
+        the second, etc.
         """
         return pulumi.get(self, "interface")
 
@@ -630,8 +624,8 @@ class VirtualMachineDisk(dict):
     @pulumi.getter(name="datastoreId")
     def datastore_id(self) -> Optional[str]:
         """
-        The identifier for the datastore to create the
-        cloud-init disk in (defaults to `local-lvm`).
+        The identifier for the datastore to create
+        the disk in (defaults to `local-lvm`).
         """
         return pulumi.get(self, "datastore_id")
 
@@ -649,7 +643,7 @@ class VirtualMachineDisk(dict):
     @pulumi.getter(name="fileFormat")
     def file_format(self) -> Optional[str]:
         """
-        The file format (defaults to `raw`).
+        The file format (defaults to `qcow2`).
         """
         return pulumi.get(self, "file_format")
 
@@ -757,16 +751,14 @@ class VirtualMachineDiskSpeed(dict):
                  write: Optional[int] = None,
                  write_burstable: Optional[int] = None):
         """
-        :param int iops_read: The maximum read I/O in operations per second.
-        :param int iops_read_burstable: The maximum unthrottled read I/O pool in operations per second.
-        :param int iops_write: The maximum write I/O in operations per second.
-        :param int iops_write_burstable: The maximum unthrottled write I/O pool in operations per second.
-        :param int read: The maximum read speed in megabytes per second.
-        :param int read_burstable: The maximum burstable read speed in
-               megabytes per second.
-        :param int write: The maximum write speed in megabytes per second.
-        :param int write_burstable: The maximum burstable write speed in
-               megabytes per second.
+        :param int iops_read: The maximum read I/O in operations per second
+        :param int iops_read_burstable: The maximum unthrottled read I/O pool in operations per second
+        :param int iops_write: The maximum write I/O in operations per second
+        :param int iops_write_burstable: The maximum unthrottled write I/O pool in operations per second
+        :param int read: The maximum read speed in megabytes per second
+        :param int read_burstable: The maximum burstable read speed in megabytes per second
+        :param int write: The maximum write speed in megabytes per second
+        :param int write_burstable: The maximum burstable write speed in megabytes per second
         """
         if iops_read is not None:
             pulumi.set(__self__, "iops_read", iops_read)
@@ -789,7 +781,7 @@ class VirtualMachineDiskSpeed(dict):
     @pulumi.getter(name="iopsRead")
     def iops_read(self) -> Optional[int]:
         """
-        The maximum read I/O in operations per second.
+        The maximum read I/O in operations per second
         """
         return pulumi.get(self, "iops_read")
 
@@ -797,7 +789,7 @@ class VirtualMachineDiskSpeed(dict):
     @pulumi.getter(name="iopsReadBurstable")
     def iops_read_burstable(self) -> Optional[int]:
         """
-        The maximum unthrottled read I/O pool in operations per second.
+        The maximum unthrottled read I/O pool in operations per second
         """
         return pulumi.get(self, "iops_read_burstable")
 
@@ -805,7 +797,7 @@ class VirtualMachineDiskSpeed(dict):
     @pulumi.getter(name="iopsWrite")
     def iops_write(self) -> Optional[int]:
         """
-        The maximum write I/O in operations per second.
+        The maximum write I/O in operations per second
         """
         return pulumi.get(self, "iops_write")
 
@@ -813,7 +805,7 @@ class VirtualMachineDiskSpeed(dict):
     @pulumi.getter(name="iopsWriteBurstable")
     def iops_write_burstable(self) -> Optional[int]:
         """
-        The maximum unthrottled write I/O pool in operations per second.
+        The maximum unthrottled write I/O pool in operations per second
         """
         return pulumi.get(self, "iops_write_burstable")
 
@@ -821,7 +813,7 @@ class VirtualMachineDiskSpeed(dict):
     @pulumi.getter
     def read(self) -> Optional[int]:
         """
-        The maximum read speed in megabytes per second.
+        The maximum read speed in megabytes per second
         """
         return pulumi.get(self, "read")
 
@@ -829,8 +821,7 @@ class VirtualMachineDiskSpeed(dict):
     @pulumi.getter(name="readBurstable")
     def read_burstable(self) -> Optional[int]:
         """
-        The maximum burstable read speed in
-        megabytes per second.
+        The maximum burstable read speed in megabytes per second
         """
         return pulumi.get(self, "read_burstable")
 
@@ -838,7 +829,7 @@ class VirtualMachineDiskSpeed(dict):
     @pulumi.getter
     def write(self) -> Optional[int]:
         """
-        The maximum write speed in megabytes per second.
+        The maximum write speed in megabytes per second
         """
         return pulumi.get(self, "write")
 
@@ -846,8 +837,7 @@ class VirtualMachineDiskSpeed(dict):
     @pulumi.getter(name="writeBurstable")
     def write_burstable(self) -> Optional[int]:
         """
-        The maximum burstable write speed in
-        megabytes per second.
+        The maximum burstable write speed in megabytes per second
         """
         return pulumi.get(self, "write_burstable")
 
@@ -881,14 +871,17 @@ class VirtualMachineEfiDisk(dict):
                  pre_enrolled_keys: Optional[bool] = None,
                  type: Optional[str] = None):
         """
-        :param str datastore_id: The identifier for the datastore to create the
-               cloud-init disk in (defaults to `local-lvm`).
+        :param str datastore_id: The identifier for the datastore to create
+               the disk in (defaults to `local-lvm`).
         :param str file_format: The file format (defaults to `raw`).
         :param bool pre_enrolled_keys: Use am EFI vars template with
                distribution-specific and Microsoft Standard keys enrolled, if used with
                EFI type=`4m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
                to `false`).
-        :param str type: The VGA type (defaults to `std`).
+        :param str type: Size and type of the OVMF EFI disk. `4m` is newer and
+               recommended, and required for Secure Boot. For backwards compatibility
+               use `2m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
+               to `2m`).
         """
         if datastore_id is not None:
             pulumi.set(__self__, "datastore_id", datastore_id)
@@ -903,8 +896,8 @@ class VirtualMachineEfiDisk(dict):
     @pulumi.getter(name="datastoreId")
     def datastore_id(self) -> Optional[str]:
         """
-        The identifier for the datastore to create the
-        cloud-init disk in (defaults to `local-lvm`).
+        The identifier for the datastore to create
+        the disk in (defaults to `local-lvm`).
         """
         return pulumi.get(self, "datastore_id")
 
@@ -931,7 +924,10 @@ class VirtualMachineEfiDisk(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        The VGA type (defaults to `std`).
+        Size and type of the OVMF EFI disk. `4m` is newer and
+        recommended, and required for Secure Boot. For backwards compatibility
+        use `2m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
+        to `2m`).
         """
         return pulumi.get(self, "type")
 
@@ -965,13 +961,13 @@ class VirtualMachineHostpci(dict):
                  rombar: Optional[bool] = None,
                  xvga: Optional[bool] = None):
         """
-        :param str device: The device (defaults to `socket`).
-               - `/dev/*` - A host serial device.
+        :param str device: The PCI device name for Proxmox, in form
+               of `hostpciX` where `X` is a sequential number from 0 to 3.
         :param str id: The PCI device ID. This parameter is not compatible
                with `api_token` and requires the root `username` and `password`
                configured in the proxmox provider. Use either this or `mapping`.
         :param str mapping: The resource mapping name of the device, for
-               example usbdevice. Use either this or `id`.
+               example gpu. Use either this or `id`.
         :param str mdev: The mediated device ID to use.
         :param bool pcie: Tells Proxmox to use a PCIe or PCI port. Some
                guests/device combination require PCIe rather than PCI. PCIe is only
@@ -1003,8 +999,8 @@ class VirtualMachineHostpci(dict):
     @pulumi.getter
     def device(self) -> str:
         """
-        The device (defaults to `socket`).
-        - `/dev/*` - A host serial device.
+        The PCI device name for Proxmox, in form
+        of `hostpciX` where `X` is a sequential number from 0 to 3.
         """
         return pulumi.get(self, "device")
 
@@ -1023,7 +1019,7 @@ class VirtualMachineHostpci(dict):
     def mapping(self) -> Optional[str]:
         """
         The resource mapping name of the device, for
-        example usbdevice. Use either this or `id`.
+        example gpu. Use either this or `id`.
         """
         return pulumi.get(self, "mapping")
 
@@ -1131,7 +1127,7 @@ class VirtualMachineInitialization(dict):
         :param str network_data_file_id: The identifier for a file containing
                network configuration data passed to the VM via cloud-init (conflicts
                with `ip_config`).
-        :param str type: The VGA type (defaults to `std`).
+        :param str type: The cloud-init configuration format
         :param bool upgrade: Whether to do an automatic package upgrade after the first boot (defaults to `true`).
         :param 'VirtualMachineInitializationUserAccountArgs' user_account: The user account configuration (conflicts
                with `user_data_file_id`).
@@ -1223,7 +1219,7 @@ class VirtualMachineInitialization(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        The VGA type (defaults to `std`).
+        The cloud-init configuration format
         """
         return pulumi.get(self, "type")
 
@@ -1270,11 +1266,9 @@ class VirtualMachineInitializationDns(dict):
                  server: Optional[str] = None,
                  servers: Optional[Sequence[str]] = None):
         """
-        :param str domain: The DNS search domain.
-        :param str server: The DNS server. The `server` attribute is
-               deprecated and will be removed in a future release. Please use the
-               `servers` attribute instead.
-        :param Sequence[str] servers: The list of DNS servers.
+        :param str domain: The DNS search domain
+        :param str server: The DNS server
+        :param Sequence[str] servers: The list of DNS servers
         """
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
@@ -1287,7 +1281,7 @@ class VirtualMachineInitializationDns(dict):
     @pulumi.getter
     def domain(self) -> Optional[str]:
         """
-        The DNS search domain.
+        The DNS search domain
         """
         return pulumi.get(self, "domain")
 
@@ -1295,9 +1289,7 @@ class VirtualMachineInitializationDns(dict):
     @pulumi.getter
     def server(self) -> Optional[str]:
         """
-        The DNS server. The `server` attribute is
-        deprecated and will be removed in a future release. Please use the
-        `servers` attribute instead.
+        The DNS server
         """
         warnings.warn("""The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.""", DeprecationWarning)
         pulumi.log.warn("""server is deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.""")
@@ -1308,7 +1300,7 @@ class VirtualMachineInitializationDns(dict):
     @pulumi.getter
     def servers(self) -> Optional[Sequence[str]]:
         """
-        The list of DNS servers.
+        The list of DNS servers
         """
         return pulumi.get(self, "servers")
 
@@ -1319,8 +1311,8 @@ class VirtualMachineInitializationIpConfig(dict):
                  ipv4: Optional['outputs.VirtualMachineInitializationIpConfigIpv4'] = None,
                  ipv6: Optional['outputs.VirtualMachineInitializationIpConfigIpv6'] = None):
         """
-        :param 'VirtualMachineInitializationIpConfigIpv4Args' ipv4: The IPv4 configuration.
-        :param 'VirtualMachineInitializationIpConfigIpv6Args' ipv6: The IPv4 configuration.
+        :param 'VirtualMachineInitializationIpConfigIpv4Args' ipv4: The IPv4 configuration
+        :param 'VirtualMachineInitializationIpConfigIpv6Args' ipv6: The IPv6 configuration
         """
         if ipv4 is not None:
             pulumi.set(__self__, "ipv4", ipv4)
@@ -1331,7 +1323,7 @@ class VirtualMachineInitializationIpConfig(dict):
     @pulumi.getter
     def ipv4(self) -> Optional['outputs.VirtualMachineInitializationIpConfigIpv4']:
         """
-        The IPv4 configuration.
+        The IPv4 configuration
         """
         return pulumi.get(self, "ipv4")
 
@@ -1339,7 +1331,7 @@ class VirtualMachineInitializationIpConfig(dict):
     @pulumi.getter
     def ipv6(self) -> Optional['outputs.VirtualMachineInitializationIpConfigIpv6']:
         """
-        The IPv4 configuration.
+        The IPv6 configuration
         """
         return pulumi.get(self, "ipv6")
 
@@ -1350,11 +1342,8 @@ class VirtualMachineInitializationIpConfigIpv4(dict):
                  address: Optional[str] = None,
                  gateway: Optional[str] = None):
         """
-        :param str address: The IPv6 address in CIDR notation
-               (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
-               to `dhcp` for autodiscovery.
-        :param str gateway: The IPv6 gateway (must be omitted
-               when `dhcp` is used as the address).
+        :param str address: The IPv4 address
+        :param str gateway: The IPv4 gateway
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -1365,9 +1354,7 @@ class VirtualMachineInitializationIpConfigIpv4(dict):
     @pulumi.getter
     def address(self) -> Optional[str]:
         """
-        The IPv6 address in CIDR notation
-        (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
-        to `dhcp` for autodiscovery.
+        The IPv4 address
         """
         return pulumi.get(self, "address")
 
@@ -1375,8 +1362,7 @@ class VirtualMachineInitializationIpConfigIpv4(dict):
     @pulumi.getter
     def gateway(self) -> Optional[str]:
         """
-        The IPv6 gateway (must be omitted
-        when `dhcp` is used as the address).
+        The IPv4 gateway
         """
         return pulumi.get(self, "gateway")
 
@@ -1387,11 +1373,8 @@ class VirtualMachineInitializationIpConfigIpv6(dict):
                  address: Optional[str] = None,
                  gateway: Optional[str] = None):
         """
-        :param str address: The IPv6 address in CIDR notation
-               (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
-               to `dhcp` for autodiscovery.
-        :param str gateway: The IPv6 gateway (must be omitted
-               when `dhcp` is used as the address).
+        :param str address: The IPv6 address
+        :param str gateway: The IPv6 gateway
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -1402,9 +1385,7 @@ class VirtualMachineInitializationIpConfigIpv6(dict):
     @pulumi.getter
     def address(self) -> Optional[str]:
         """
-        The IPv6 address in CIDR notation
-        (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
-        to `dhcp` for autodiscovery.
+        The IPv6 address
         """
         return pulumi.get(self, "address")
 
@@ -1412,8 +1393,7 @@ class VirtualMachineInitializationIpConfigIpv6(dict):
     @pulumi.getter
     def gateway(self) -> Optional[str]:
         """
-        The IPv6 gateway (must be omitted
-        when `dhcp` is used as the address).
+        The IPv6 gateway
         """
         return pulumi.get(self, "gateway")
 
@@ -1425,9 +1405,9 @@ class VirtualMachineInitializationUserAccount(dict):
                  password: Optional[str] = None,
                  username: Optional[str] = None):
         """
-        :param Sequence[str] keys: The SSH keys.
-        :param str password: The SSH password.
-        :param str username: The SSH username.
+        :param Sequence[str] keys: The SSH keys
+        :param str password: The SSH password
+        :param str username: The SSH username
         """
         if keys is not None:
             pulumi.set(__self__, "keys", keys)
@@ -1440,7 +1420,7 @@ class VirtualMachineInitializationUserAccount(dict):
     @pulumi.getter
     def keys(self) -> Optional[Sequence[str]]:
         """
-        The SSH keys.
+        The SSH keys
         """
         return pulumi.get(self, "keys")
 
@@ -1448,7 +1428,7 @@ class VirtualMachineInitializationUserAccount(dict):
     @pulumi.getter
     def password(self) -> Optional[str]:
         """
-        The SSH password.
+        The SSH password
         """
         return pulumi.get(self, "password")
 
@@ -1456,7 +1436,7 @@ class VirtualMachineInitializationUserAccount(dict):
     @pulumi.getter
     def username(self) -> Optional[str]:
         """
-        The SSH username.
+        The SSH username
         """
         return pulumi.get(self, "username")
 
@@ -1595,8 +1575,7 @@ class VirtualMachineNetworkDevice(dict):
         """
         :param str bridge: The name of the network bridge (defaults to `vmbr0`).
         :param bool disconnected: Whether to disconnect the network device from the network (defaults to `false`).
-        :param bool enabled: Whether to enable the VGA device (defaults
-               to `true`).
+        :param bool enabled: Whether to enable the network device (defaults to `true`).
         :param bool firewall: Whether this interface's firewall rules should be used (defaults to `false`).
         :param str mac_address: The MAC address.
         :param str model: The network device model (defaults to `virtio`).
@@ -1651,8 +1630,7 @@ class VirtualMachineNetworkDevice(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Whether to enable the VGA device (defaults
-        to `true`).
+        Whether to enable the network device (defaults to `true`).
         """
         return pulumi.get(self, "enabled")
 
@@ -1733,9 +1711,9 @@ class VirtualMachineNuma(dict):
                  policy: Optional[str] = None):
         """
         :param str cpus: The CPU cores to assign to the NUMA node (format is `0-7;16-31`).
-        :param str device: The device (defaults to `socket`).
-               - `/dev/*` - A host serial device.
-        :param int memory: The VGA memory in megabytes (defaults to `16`).
+        :param str device: The NUMA device name for Proxmox, in form
+               of `numaX` where `X` is a sequential number from 0 to 7.
+        :param int memory: The memory in megabytes to assign to the NUMA node.
         :param str hostnodes: The NUMA host nodes.
         :param str policy: The NUMA policy (defaults to `preferred`).
         """
@@ -1759,8 +1737,8 @@ class VirtualMachineNuma(dict):
     @pulumi.getter
     def device(self) -> str:
         """
-        The device (defaults to `socket`).
-        - `/dev/*` - A host serial device.
+        The NUMA device name for Proxmox, in form
+        of `numaX` where `X` is a sequential number from 0 to 7.
         """
         return pulumi.get(self, "device")
 
@@ -1768,7 +1746,7 @@ class VirtualMachineNuma(dict):
     @pulumi.getter
     def memory(self) -> int:
         """
-        The VGA memory in megabytes (defaults to `16`).
+        The memory in megabytes to assign to the NUMA node.
         """
         return pulumi.get(self, "memory")
 
@@ -1794,7 +1772,7 @@ class VirtualMachineOperatingSystem(dict):
     def __init__(__self__, *,
                  type: Optional[str] = None):
         """
-        :param str type: The VGA type (defaults to `std`).
+        :param str type: The type (defaults to `other`).
         """
         if type is not None:
             pulumi.set(__self__, "type", type)
@@ -1803,7 +1781,7 @@ class VirtualMachineOperatingSystem(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        The VGA type (defaults to `std`).
+        The type (defaults to `other`).
         """
         return pulumi.get(self, "type")
 
@@ -2011,9 +1989,10 @@ class VirtualMachineTpmState(dict):
                  datastore_id: Optional[str] = None,
                  version: Optional[str] = None):
         """
-        :param str datastore_id: The identifier for the datastore to create the
-               cloud-init disk in (defaults to `local-lvm`).
-        :param str version: The version.
+        :param str datastore_id: The identifier for the datastore to create
+               the disk in (defaults to `local-lvm`).
+        :param str version: TPM state device version. Can be `v1.2` or `v2.0`.
+               (defaults to `v2.0`).
         """
         if datastore_id is not None:
             pulumi.set(__self__, "datastore_id", datastore_id)
@@ -2024,8 +2003,8 @@ class VirtualMachineTpmState(dict):
     @pulumi.getter(name="datastoreId")
     def datastore_id(self) -> Optional[str]:
         """
-        The identifier for the datastore to create the
-        cloud-init disk in (defaults to `local-lvm`).
+        The identifier for the datastore to create
+        the disk in (defaults to `local-lvm`).
         """
         return pulumi.get(self, "datastore_id")
 
@@ -2033,7 +2012,8 @@ class VirtualMachineTpmState(dict):
     @pulumi.getter
     def version(self) -> Optional[str]:
         """
-        The version.
+        TPM state device version. Can be `v1.2` or `v2.0`.
+        (defaults to `v2.0`).
         """
         return pulumi.get(self, "version")
 

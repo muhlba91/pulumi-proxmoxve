@@ -18,7 +18,7 @@ public final class ContainerConsoleArgs extends com.pulumi.resources.ResourceArg
     public static final ContainerConsoleArgs Empty = new ContainerConsoleArgs();
 
     /**
-     * Whether to enable the network device (defaults
+     * Whether to enable the console device (defaults
      * to `true`).
      * 
      */
@@ -26,7 +26,7 @@ public final class ContainerConsoleArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether to enable the network device (defaults
+     * @return Whether to enable the console device (defaults
      * to `true`).
      * 
      */
@@ -50,14 +50,14 @@ public final class ContainerConsoleArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The type (defaults to `unmanaged`).
+     * The console mode (defaults to `tty`).
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type (defaults to `unmanaged`).
+     * @return The console mode (defaults to `tty`).
      * 
      */
     public Optional<Output<String>> type() {
@@ -91,7 +91,7 @@ public final class ContainerConsoleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enabled Whether to enable the network device (defaults
+         * @param enabled Whether to enable the console device (defaults
          * to `true`).
          * 
          * @return builder
@@ -103,7 +103,7 @@ public final class ContainerConsoleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enabled Whether to enable the network device (defaults
+         * @param enabled Whether to enable the console device (defaults
          * to `true`).
          * 
          * @return builder
@@ -135,7 +135,7 @@ public final class ContainerConsoleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param type The type (defaults to `unmanaged`).
+         * @param type The console mode (defaults to `tty`).
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class ContainerConsoleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param type The type (defaults to `unmanaged`).
+         * @param type The console mode (defaults to `tty`).
          * 
          * @return builder
          * 

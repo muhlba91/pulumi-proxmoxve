@@ -65,16 +65,16 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The identifier for the datastore to create the
-     * cloud-init disk in (defaults to `local-lvm`).
+     * The identifier for the datastore to create
+     * the disk in (defaults to `local-lvm`).
      * 
      */
     @Import(name="datastoreId")
     private @Nullable Output<String> datastoreId;
 
     /**
-     * @return The identifier for the datastore to create the
-     * cloud-init disk in (defaults to `local-lvm`).
+     * @return The identifier for the datastore to create
+     * the disk in (defaults to `local-lvm`).
      * 
      */
     public Optional<Output<String>> datastoreId() {
@@ -101,14 +101,14 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The file format (defaults to `raw`).
+     * The file format (defaults to `qcow2`).
      * 
      */
     @Import(name="fileFormat")
     private @Nullable Output<String> fileFormat;
 
     /**
-     * @return The file format (defaults to `raw`).
+     * @return The file format (defaults to `qcow2`).
      * 
      */
     public Optional<Output<String>> fileFormat() {
@@ -135,20 +135,20 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The hardware interface to connect the cloud-init
-     * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
-     * detected if the setting is missing but a cloud-init image is present,
-     * otherwise defaults to `ide2`.
+     * The disk interface for Proxmox, currently `scsi`,
+     * `sata` and `virtio` interfaces are supported. Append the disk index at
+     * the end, for example, `virtio0` for the first virtio disk, `virtio1` for
+     * the second, etc.
      * 
      */
     @Import(name="interface", required=true)
     private Output<String> interface_;
 
     /**
-     * @return The hardware interface to connect the cloud-init
-     * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
-     * detected if the setting is missing but a cloud-init image is present,
-     * otherwise defaults to `ide2`.
+     * @return The disk interface for Proxmox, currently `scsi`,
+     * `sata` and `virtio` interfaces are supported. Append the disk index at
+     * the end, for example, `virtio0` for the first virtio disk, `virtio1` for
+     * the second, etc.
      * 
      */
     public Output<String> interface_() {
@@ -358,8 +358,8 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param datastoreId The identifier for the datastore to create the
-         * cloud-init disk in (defaults to `local-lvm`).
+         * @param datastoreId The identifier for the datastore to create
+         * the disk in (defaults to `local-lvm`).
          * 
          * @return builder
          * 
@@ -370,8 +370,8 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param datastoreId The identifier for the datastore to create the
-         * cloud-init disk in (defaults to `local-lvm`).
+         * @param datastoreId The identifier for the datastore to create
+         * the disk in (defaults to `local-lvm`).
          * 
          * @return builder
          * 
@@ -406,7 +406,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param fileFormat The file format (defaults to `raw`).
+         * @param fileFormat The file format (defaults to `qcow2`).
          * 
          * @return builder
          * 
@@ -417,7 +417,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param fileFormat The file format (defaults to `raw`).
+         * @param fileFormat The file format (defaults to `qcow2`).
          * 
          * @return builder
          * 
@@ -452,10 +452,10 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param interface_ The hardware interface to connect the cloud-init
-         * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
-         * detected if the setting is missing but a cloud-init image is present,
-         * otherwise defaults to `ide2`.
+         * @param interface_ The disk interface for Proxmox, currently `scsi`,
+         * `sata` and `virtio` interfaces are supported. Append the disk index at
+         * the end, for example, `virtio0` for the first virtio disk, `virtio1` for
+         * the second, etc.
          * 
          * @return builder
          * 
@@ -466,10 +466,10 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param interface_ The hardware interface to connect the cloud-init
-         * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
-         * detected if the setting is missing but a cloud-init image is present,
-         * otherwise defaults to `ide2`.
+         * @param interface_ The disk interface for Proxmox, currently `scsi`,
+         * `sata` and `virtio` interfaces are supported. Append the disk index at
+         * the end, for example, `virtio0` for the first virtio disk, `virtio1` for
+         * the second, etc.
          * 
          * @return builder
          * 

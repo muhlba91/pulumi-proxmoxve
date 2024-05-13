@@ -19,16 +19,14 @@ public final class VirtualMachineCloneArgs extends com.pulumi.resources.Resource
     public static final VirtualMachineCloneArgs Empty = new VirtualMachineCloneArgs();
 
     /**
-     * The identifier for the datastore to create the
-     * cloud-init disk in (defaults to `local-lvm`).
+     * The identifier for the target datastore.
      * 
      */
     @Import(name="datastoreId")
     private @Nullable Output<String> datastoreId;
 
     /**
-     * @return The identifier for the datastore to create the
-     * cloud-init disk in (defaults to `local-lvm`).
+     * @return The identifier for the target datastore.
      * 
      */
     public Optional<Output<String>> datastoreId() {
@@ -51,16 +49,16 @@ public final class VirtualMachineCloneArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The name of the node to assign the virtual machine
-     * to.
+     * The name of the source node (leave blank, if
+     * equal to the `node_name` argument).
      * 
      */
     @Import(name="nodeName")
     private @Nullable Output<String> nodeName;
 
     /**
-     * @return The name of the node to assign the virtual machine
-     * to.
+     * @return The name of the source node (leave blank, if
+     * equal to the `node_name` argument).
      * 
      */
     public Optional<Output<String>> nodeName() {
@@ -87,14 +85,14 @@ public final class VirtualMachineCloneArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The VM identifier.
+     * The identifier for the source VM.
      * 
      */
     @Import(name="vmId", required=true)
     private Output<Integer> vmId;
 
     /**
-     * @return The VM identifier.
+     * @return The identifier for the source VM.
      * 
      */
     public Output<Integer> vmId() {
@@ -130,8 +128,7 @@ public final class VirtualMachineCloneArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param datastoreId The identifier for the datastore to create the
-         * cloud-init disk in (defaults to `local-lvm`).
+         * @param datastoreId The identifier for the target datastore.
          * 
          * @return builder
          * 
@@ -142,8 +139,7 @@ public final class VirtualMachineCloneArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param datastoreId The identifier for the datastore to create the
-         * cloud-init disk in (defaults to `local-lvm`).
+         * @param datastoreId The identifier for the target datastore.
          * 
          * @return builder
          * 
@@ -174,8 +170,8 @@ public final class VirtualMachineCloneArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param nodeName The name of the node to assign the virtual machine
-         * to.
+         * @param nodeName The name of the source node (leave blank, if
+         * equal to the `node_name` argument).
          * 
          * @return builder
          * 
@@ -186,8 +182,8 @@ public final class VirtualMachineCloneArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param nodeName The name of the node to assign the virtual machine
-         * to.
+         * @param nodeName The name of the source node (leave blank, if
+         * equal to the `node_name` argument).
          * 
          * @return builder
          * 
@@ -222,7 +218,7 @@ public final class VirtualMachineCloneArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param vmId The VM identifier.
+         * @param vmId The identifier for the source VM.
          * 
          * @return builder
          * 
@@ -233,7 +229,7 @@ public final class VirtualMachineCloneArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param vmId The VM identifier.
+         * @param vmId The identifier for the source VM.
          * 
          * @return builder
          * 

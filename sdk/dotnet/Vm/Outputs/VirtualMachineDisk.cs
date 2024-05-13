@@ -26,8 +26,8 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly string? Cache;
         /// <summary>
-        /// The identifier for the datastore to create the
-        /// cloud-init disk in (defaults to `local-lvm`).
+        /// The identifier for the datastore to create
+        /// the disk in (defaults to `local-lvm`).
         /// </summary>
         public readonly string? DatastoreId;
         /// <summary>
@@ -37,7 +37,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly string? Discard;
         /// <summary>
-        /// The file format (defaults to `raw`).
+        /// The file format (defaults to `qcow2`).
         /// </summary>
         public readonly string? FileFormat;
         /// <summary>
@@ -47,10 +47,10 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly string? FileId;
         /// <summary>
-        /// The hardware interface to connect the cloud-init
-        /// image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
-        /// detected if the setting is missing but a cloud-init image is present,
-        /// otherwise defaults to `ide2`.
+        /// The disk interface for Proxmox, currently `scsi`,
+        /// `sata` and `virtio` interfaces are supported. Append the disk index at
+        /// the end, for example, `virtio0` for the first virtio disk, `virtio1` for
+        /// the second, etc.
         /// </summary>
         public readonly string Interface;
         /// <summary>

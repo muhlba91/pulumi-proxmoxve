@@ -17,14 +17,14 @@ public final class VirtualMachineInitializationUserAccountArgs extends com.pulum
     public static final VirtualMachineInitializationUserAccountArgs Empty = new VirtualMachineInitializationUserAccountArgs();
 
     /**
-     * The SSH keys.
+     * The SSH keys
      * 
      */
     @Import(name="keys")
     private @Nullable Output<List<String>> keys;
 
     /**
-     * @return The SSH keys.
+     * @return The SSH keys
      * 
      */
     public Optional<Output<List<String>>> keys() {
@@ -32,14 +32,14 @@ public final class VirtualMachineInitializationUserAccountArgs extends com.pulum
     }
 
     /**
-     * The SSH password.
+     * The SSH password
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The SSH password.
+     * @return The SSH password
      * 
      */
     public Optional<Output<String>> password() {
@@ -47,14 +47,14 @@ public final class VirtualMachineInitializationUserAccountArgs extends com.pulum
     }
 
     /**
-     * The SSH username.
+     * The SSH username
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return The SSH username.
+     * @return The SSH username
      * 
      */
     public Optional<Output<String>> username() {
@@ -88,7 +88,7 @@ public final class VirtualMachineInitializationUserAccountArgs extends com.pulum
         }
 
         /**
-         * @param keys The SSH keys.
+         * @param keys The SSH keys
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class VirtualMachineInitializationUserAccountArgs extends com.pulum
         }
 
         /**
-         * @param keys The SSH keys.
+         * @param keys The SSH keys
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class VirtualMachineInitializationUserAccountArgs extends com.pulum
         }
 
         /**
-         * @param keys The SSH keys.
+         * @param keys The SSH keys
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class VirtualMachineInitializationUserAccountArgs extends com.pulum
         }
 
         /**
-         * @param password The SSH password.
+         * @param password The SSH password
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class VirtualMachineInitializationUserAccountArgs extends com.pulum
         }
 
         /**
-         * @param password The SSH password.
+         * @param password The SSH password
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class VirtualMachineInitializationUserAccountArgs extends com.pulum
         }
 
         /**
-         * @param username The SSH username.
+         * @param username The SSH username
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class VirtualMachineInitializationUserAccountArgs extends com.pulum
         }
 
         /**
-         * @param username The SSH username.
+         * @param username The SSH username
          * 
          * @return builder
          * 

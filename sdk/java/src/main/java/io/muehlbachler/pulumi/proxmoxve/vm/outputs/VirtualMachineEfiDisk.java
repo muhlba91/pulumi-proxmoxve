@@ -13,8 +13,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VirtualMachineEfiDisk {
     /**
-     * @return The identifier for the datastore to create the
-     * cloud-init disk in (defaults to `local-lvm`).
+     * @return The identifier for the datastore to create
+     * the disk in (defaults to `local-lvm`).
      * 
      */
     private @Nullable String datastoreId;
@@ -32,15 +32,18 @@ public final class VirtualMachineEfiDisk {
      */
     private @Nullable Boolean preEnrolledKeys;
     /**
-     * @return The VGA type (defaults to `std`).
+     * @return Size and type of the OVMF EFI disk. `4m` is newer and
+     * recommended, and required for Secure Boot. For backwards compatibility
+     * use `2m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
+     * to `2m`).
      * 
      */
     private @Nullable String type;
 
     private VirtualMachineEfiDisk() {}
     /**
-     * @return The identifier for the datastore to create the
-     * cloud-init disk in (defaults to `local-lvm`).
+     * @return The identifier for the datastore to create
+     * the disk in (defaults to `local-lvm`).
      * 
      */
     public Optional<String> datastoreId() {
@@ -64,7 +67,10 @@ public final class VirtualMachineEfiDisk {
         return Optional.ofNullable(this.preEnrolledKeys);
     }
     /**
-     * @return The VGA type (defaults to `std`).
+     * @return Size and type of the OVMF EFI disk. `4m` is newer and
+     * recommended, and required for Secure Boot. For backwards compatibility
+     * use `2m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
+     * to `2m`).
      * 
      */
     public Optional<String> type() {

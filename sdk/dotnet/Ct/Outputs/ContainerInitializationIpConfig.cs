@@ -14,11 +14,11 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
     public sealed class ContainerInitializationIpConfig
     {
         /// <summary>
-        /// The IPv4 configuration.
+        /// The IPv4 configuration
         /// </summary>
         public readonly Outputs.ContainerInitializationIpConfigIpv4? Ipv4;
         /// <summary>
-        /// The IPv4 configuration.
+        /// The IPv6 configuration
         /// </summary>
         public readonly Outputs.ContainerInitializationIpConfigIpv6? Ipv6;
 

@@ -17,16 +17,16 @@ public final class VirtualMachineAgentArgs extends com.pulumi.resources.Resource
     public static final VirtualMachineAgentArgs Empty = new VirtualMachineAgentArgs();
 
     /**
-     * Whether to enable the VGA device (defaults
-     * to `true`).
+     * Whether to enable the QEMU agent (defaults
+     * to `false`).
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether to enable the VGA device (defaults
-     * to `true`).
+     * @return Whether to enable the QEMU agent (defaults
+     * to `false`).
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -68,14 +68,14 @@ public final class VirtualMachineAgentArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The VGA type (defaults to `std`).
+     * The QEMU agent interface type (defaults to `virtio`).
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The VGA type (defaults to `std`).
+     * @return The QEMU agent interface type (defaults to `virtio`).
      * 
      */
     public Optional<Output<String>> type() {
@@ -110,8 +110,8 @@ public final class VirtualMachineAgentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param enabled Whether to enable the VGA device (defaults
-         * to `true`).
+         * @param enabled Whether to enable the QEMU agent (defaults
+         * to `false`).
          * 
          * @return builder
          * 
@@ -122,8 +122,8 @@ public final class VirtualMachineAgentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param enabled Whether to enable the VGA device (defaults
-         * to `true`).
+         * @param enabled Whether to enable the QEMU agent (defaults
+         * to `false`).
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class VirtualMachineAgentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param type The VGA type (defaults to `std`).
+         * @param type The QEMU agent interface type (defaults to `virtio`).
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class VirtualMachineAgentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param type The VGA type (defaults to `std`).
+         * @param type The QEMU agent interface type (defaults to `virtio`).
          * 
          * @return builder
          * 

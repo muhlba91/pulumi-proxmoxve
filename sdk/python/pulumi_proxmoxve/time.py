@@ -134,7 +134,6 @@ class Time(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -143,7 +142,6 @@ class Time(pulumi.CustomResource):
             node_name="first-node",
             time_zone="UTC")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -171,7 +169,6 @@ class Time(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -180,7 +177,6 @@ class Time(pulumi.CustomResource):
             node_name="first-node",
             time_zone="UTC")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -28,7 +28,7 @@ type Container struct {
 
 	// The cloning configuration.
 	Clone ContainerClonePtrOutput `pulumi:"clone"`
-	// Console.
+	// The console configuration.
 	Console ContainerConsolePtrOutput `pulumi:"console"`
 	// The CPU configuration.
 	Cpu ContainerCpuPtrOutput `pulumi:"cpu"`
@@ -124,7 +124,7 @@ func GetContainer(ctx *pulumi.Context,
 type containerState struct {
 	// The cloning configuration.
 	Clone *ContainerClone `pulumi:"clone"`
-	// Console.
+	// The console configuration.
 	Console *ContainerConsole `pulumi:"console"`
 	// The CPU configuration.
 	Cpu *ContainerCpu `pulumi:"cpu"`
@@ -188,7 +188,7 @@ type containerState struct {
 type ContainerState struct {
 	// The cloning configuration.
 	Clone ContainerClonePtrInput
-	// Console.
+	// The console configuration.
 	Console ContainerConsolePtrInput
 	// The CPU configuration.
 	Cpu ContainerCpuPtrInput
@@ -256,7 +256,7 @@ func (ContainerState) ElementType() reflect.Type {
 type containerArgs struct {
 	// The cloning configuration.
 	Clone *ContainerClone `pulumi:"clone"`
-	// Console.
+	// The console configuration.
 	Console *ContainerConsole `pulumi:"console"`
 	// The CPU configuration.
 	Cpu *ContainerCpu `pulumi:"cpu"`
@@ -321,7 +321,7 @@ type containerArgs struct {
 type ContainerArgs struct {
 	// The cloning configuration.
 	Clone ContainerClonePtrInput
-	// Console.
+	// The console configuration.
 	Console ContainerConsolePtrInput
 	// The CPU configuration.
 	Cpu ContainerCpuPtrInput
@@ -474,7 +474,7 @@ func (o ContainerOutput) Clone() ContainerClonePtrOutput {
 	return o.ApplyT(func(v *Container) ContainerClonePtrOutput { return v.Clone }).(ContainerClonePtrOutput)
 }
 
-// Console.
+// The console configuration.
 func (o ContainerOutput) Console() ContainerConsolePtrOutput {
 	return o.ApplyT(func(v *Container) ContainerConsolePtrOutput { return v.Console }).(ContainerConsolePtrOutput)
 }

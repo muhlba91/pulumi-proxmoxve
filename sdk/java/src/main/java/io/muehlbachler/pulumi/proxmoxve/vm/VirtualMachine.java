@@ -345,14 +345,14 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.machine);
     }
     /**
-     * The VGA memory in megabytes (defaults to `16`).
+     * The memory configuration.
      * 
      */
     @Export(name="memory", refs={VirtualMachineMemory.class}, tree="[0]")
     private Output</* @Nullable */ VirtualMachineMemory> memory;
 
     /**
-     * @return The VGA memory in megabytes (defaults to `16`).
+     * @return The memory configuration.
      * 
      */
     public Output<Optional<VirtualMachineMemory>> memory() {

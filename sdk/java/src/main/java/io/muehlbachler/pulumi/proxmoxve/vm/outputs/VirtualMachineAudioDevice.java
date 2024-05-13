@@ -13,8 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VirtualMachineAudioDevice {
     /**
-     * @return The device (defaults to `socket`).
-     * - `/dev/*` - A host serial device.
+     * @return The device (defaults to `intel-hda`).
      * 
      */
     private @Nullable String device;
@@ -24,7 +23,7 @@ public final class VirtualMachineAudioDevice {
      */
     private @Nullable String driver;
     /**
-     * @return Whether to enable the VGA device (defaults
+     * @return Whether to enable the audio device (defaults
      * to `true`).
      * 
      */
@@ -32,8 +31,7 @@ public final class VirtualMachineAudioDevice {
 
     private VirtualMachineAudioDevice() {}
     /**
-     * @return The device (defaults to `socket`).
-     * - `/dev/*` - A host serial device.
+     * @return The device (defaults to `intel-hda`).
      * 
      */
     public Optional<String> device() {
@@ -47,7 +45,7 @@ public final class VirtualMachineAudioDevice {
         return Optional.ofNullable(this.driver);
     }
     /**
-     * @return Whether to enable the VGA device (defaults
+     * @return Whether to enable the audio device (defaults
      * to `true`).
      * 
      */

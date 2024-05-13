@@ -14,8 +14,8 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     public sealed class VirtualMachineAgent
     {
         /// <summary>
-        /// Whether to enable the VGA device (defaults
-        /// to `true`).
+        /// Whether to enable the QEMU agent (defaults
+        /// to `false`).
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
@@ -29,7 +29,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly bool? Trim;
         /// <summary>
-        /// The VGA type (defaults to `std`).
+        /// The QEMU agent interface type (defaults to `virtio`).
         /// </summary>
         public readonly string? Type;
 

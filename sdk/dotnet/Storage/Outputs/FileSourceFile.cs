@@ -22,7 +22,9 @@ namespace Pulumi.ProxmoxVE.Storage.Outputs
         /// </summary>
         public readonly string? Checksum;
         /// <summary>
-        /// The file name.
+        /// The file name to use instead of the source file
+        /// name. Useful when the source file does not have a valid file extension,
+        /// for example when the source file is a URL referencing a `.qcow2` image.
         /// </summary>
         public readonly string? FileName;
         /// <summary>

@@ -101,7 +101,6 @@ def get_mappings(check_node: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_proxmoxve as proxmoxve
@@ -113,7 +112,6 @@ def get_mappings(check_node: Optional[str] = None,
     pulumi.export("dataProxmoxVirtualEnvironmentHardwareMappingsPci", example_pci)
     pulumi.export("dataProxmoxVirtualEnvironmentHardwareMappingsUsb", example_usb)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str check_node: The name of the node whose configurations should be checked for correctness.
@@ -142,7 +140,6 @@ def get_mappings_output(check_node: Optional[pulumi.Input[Optional[str]]] = None
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_proxmoxve as proxmoxve
@@ -154,7 +151,6 @@ def get_mappings_output(check_node: Optional[pulumi.Input[Optional[str]]] = None
     pulumi.export("dataProxmoxVirtualEnvironmentHardwareMappingsPci", example_pci)
     pulumi.export("dataProxmoxVirtualEnvironmentHardwareMappingsUsb", example_usb)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str check_node: The name of the node whose configurations should be checked for correctness.

@@ -5,6 +5,7 @@
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .acl import *
 from .certifi import *
 from .dns import *
 from .get_node import *
@@ -35,6 +36,8 @@ if typing.TYPE_CHECKING:
     permission = __permission
     import pulumi_proxmoxve.storage as __storage
     storage = __storage
+    import pulumi_proxmoxve.user as __user
+    user = __user
     import pulumi_proxmoxve.vm as __vm
     vm = __vm
 else:
@@ -47,6 +50,7 @@ else:
     network = _utilities.lazy_import('pulumi_proxmoxve.network')
     permission = _utilities.lazy_import('pulumi_proxmoxve.permission')
     storage = _utilities.lazy_import('pulumi_proxmoxve.storage')
+    user = _utilities.lazy_import('pulumi_proxmoxve.user')
     vm = _utilities.lazy_import('pulumi_proxmoxve.vm')
 
 _utilities.register(
@@ -214,10 +218,26 @@ _utilities.register(
  },
  {
   "pkg": "proxmoxve",
+  "mod": "User/token",
+  "fqn": "pulumi_proxmoxve.user",
+  "classes": {
+   "proxmoxve:User/token:Token": "Token"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
   "mod": "VM/virtualMachine",
   "fqn": "pulumi_proxmoxve.vm",
   "classes": {
    "proxmoxve:VM/virtualMachine:VirtualMachine": "VirtualMachine"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "index/acl",
+  "fqn": "pulumi_proxmoxve",
+  "classes": {
+   "proxmoxve:index/acl:Acl": "Acl"
   }
  },
  {

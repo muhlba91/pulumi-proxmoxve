@@ -14,40 +14,40 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ContainerClone {
     /**
-     * @return The identifier for the datastore to create the
-     * disk in (defaults to `local`).
+     * @return The identifier for the target datastore.
      * 
      */
     private @Nullable String datastoreId;
     /**
-     * @return The name of the node to assign the container to.
+     * @return The name of the source node (leave blank, if
+     * equal to the `node_name` argument).
      * 
      */
     private @Nullable String nodeName;
     /**
-     * @return The container identifier
+     * @return The identifier for the source container.
      * 
      */
     private Integer vmId;
 
     private ContainerClone() {}
     /**
-     * @return The identifier for the datastore to create the
-     * disk in (defaults to `local`).
+     * @return The identifier for the target datastore.
      * 
      */
     public Optional<String> datastoreId() {
         return Optional.ofNullable(this.datastoreId);
     }
     /**
-     * @return The name of the node to assign the container to.
+     * @return The name of the source node (leave blank, if
+     * equal to the `node_name` argument).
      * 
      */
     public Optional<String> nodeName() {
         return Optional.ofNullable(this.nodeName);
     }
     /**
-     * @return The container identifier
+     * @return The identifier for the source container.
      * 
      */
     public Integer vmId() {

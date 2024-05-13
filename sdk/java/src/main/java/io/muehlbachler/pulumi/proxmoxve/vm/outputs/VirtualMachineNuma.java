@@ -19,8 +19,8 @@ public final class VirtualMachineNuma {
      */
     private String cpus;
     /**
-     * @return The device (defaults to `socket`).
-     * - `/dev/*` - A host serial device.
+     * @return The NUMA device name for Proxmox, in form
+     * of `numaX` where `X` is a sequential number from 0 to 7.
      * 
      */
     private String device;
@@ -30,7 +30,7 @@ public final class VirtualMachineNuma {
      */
     private @Nullable String hostnodes;
     /**
-     * @return The VGA memory in megabytes (defaults to `16`).
+     * @return The memory in megabytes to assign to the NUMA node.
      * 
      */
     private Integer memory;
@@ -49,8 +49,8 @@ public final class VirtualMachineNuma {
         return this.cpus;
     }
     /**
-     * @return The device (defaults to `socket`).
-     * - `/dev/*` - A host serial device.
+     * @return The NUMA device name for Proxmox, in form
+     * of `numaX` where `X` is a sequential number from 0 to 7.
      * 
      */
     public String device() {
@@ -64,7 +64,7 @@ public final class VirtualMachineNuma {
         return Optional.ofNullable(this.hostnodes);
     }
     /**
-     * @return The VGA memory in megabytes (defaults to `16`).
+     * @return The memory in megabytes to assign to the NUMA node.
      * 
      */
     public Integer memory() {

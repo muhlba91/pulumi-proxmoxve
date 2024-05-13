@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
@@ -29,7 +28,6 @@ import * as utilities from "../utilities";
  *     comment: "Managed by Terraform",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class FirewallAlias extends pulumi.CustomResource {
     /**

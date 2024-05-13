@@ -16,7 +16,6 @@ namespace Pulumi.ProxmoxVE.Network
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,7 +31,6 @@ namespace Pulumi.ProxmoxVE.Network
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetHostsResult> InvokeAsync(GetHostsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHostsResult>("proxmoxve:Network/getHosts:getHosts", args ?? new GetHostsArgs(), options.WithDefaults());
@@ -42,7 +40,6 @@ namespace Pulumi.ProxmoxVE.Network
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -58,7 +55,6 @@ namespace Pulumi.ProxmoxVE.Network
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetHostsResult> Invoke(GetHostsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHostsResult>("proxmoxve:Network/getHosts:getHosts", args ?? new GetHostsInvokeArgs(), options.WithDefaults());

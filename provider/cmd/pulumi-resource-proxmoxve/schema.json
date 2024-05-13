@@ -110,17 +110,17 @@
             "properties": {
                 "datastoreId": {
                     "type": "string",
-                    "description": "The identifier for the datastore to create the\ndisk in (defaults to `local`).\n",
+                    "description": "The identifier for the target datastore.\n",
                     "willReplaceOnChanges": true
                 },
                 "nodeName": {
                     "type": "string",
-                    "description": "The name of the node to assign the container to.\n",
+                    "description": "The name of the source node (leave blank, if\nequal to the `node_name` argument).\n",
                     "willReplaceOnChanges": true
                 },
                 "vmId": {
                     "type": "integer",
-                    "description": "The container identifier\n",
+                    "description": "The identifier for the source container.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -133,7 +133,7 @@
             "properties": {
                 "enabled": {
                     "type": "boolean",
-                    "description": "Whether to enable the network device (defaults\nto `true`).\n"
+                    "description": "Whether to enable the console device (defaults\nto `true`).\n"
                 },
                 "ttyCount": {
                     "type": "integer",
@@ -141,7 +141,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type (defaults to `unmanaged`).\n"
+                    "description": "The console mode (defaults to `tty`).\n"
                 }
             },
             "type": "object"
@@ -172,7 +172,7 @@
                 },
                 "size": {
                     "type": "integer",
-                    "description": "Volume size (only for volume mount points).\nCan be specified with a unit suffix (e.g. `10G`).\n",
+                    "description": "The size of the root filesystem in gigabytes (defaults\nto `4`). Requires `datastore_id` to be set.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -231,11 +231,11 @@
             "properties": {
                 "domain": {
                     "type": "string",
-                    "description": "The DNS search domain.\n"
+                    "description": "The DNS search domain\n"
                 },
                 "server": {
                     "type": "string",
-                    "description": "The DNS server. The `server` attribute is\ndeprecated and will be removed in a future release. Please use\nthe `servers` attribute instead.\n",
+                    "description": "The DNS server\n",
                     "deprecationMessage": "The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead."
                 },
                 "servers": {
@@ -243,7 +243,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The list of DNS servers.\n"
+                    "description": "The list of DNS servers\n"
                 }
             },
             "type": "object"
@@ -252,11 +252,11 @@
             "properties": {
                 "ipv4": {
                     "$ref": "#/types/proxmoxve:CT/ContainerInitializationIpConfigIpv4:ContainerInitializationIpConfigIpv4",
-                    "description": "The IPv4 configuration.\n"
+                    "description": "The IPv4 configuration\n"
                 },
                 "ipv6": {
                     "$ref": "#/types/proxmoxve:CT/ContainerInitializationIpConfigIpv6:ContainerInitializationIpConfigIpv6",
-                    "description": "The IPv4 configuration.\n"
+                    "description": "The IPv6 configuration\n"
                 }
             },
             "type": "object"
@@ -265,11 +265,11 @@
             "properties": {
                 "address": {
                     "type": "string",
-                    "description": "The IPv6 address (use `dhcp` for\nautodiscovery).\n"
+                    "description": "The IPv4 address\n"
                 },
                 "gateway": {
                     "type": "string",
-                    "description": "The IPv6 gateway (must be omitted\nwhen `dhcp` is used as the address).\n"
+                    "description": "The IPv4 gateway\n"
                 }
             },
             "type": "object"
@@ -278,11 +278,11 @@
             "properties": {
                 "address": {
                     "type": "string",
-                    "description": "The IPv6 address (use `dhcp` for\nautodiscovery).\n"
+                    "description": "The IPv6 address\n"
                 },
                 "gateway": {
                     "type": "string",
-                    "description": "The IPv6 gateway (must be omitted\nwhen `dhcp` is used as the address).\n"
+                    "description": "The IPv6 gateway\n"
                 }
             },
             "type": "object"
@@ -294,12 +294,12 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The SSH keys for the root account.\n",
+                    "description": "The SSH keys\n",
                     "willReplaceOnChanges": true
                 },
                 "password": {
                     "type": "string",
-                    "description": "The password for the root account.\n",
+                    "description": "The SSH password\n",
                     "secret": true,
                     "willReplaceOnChanges": true
                 }
@@ -1033,7 +1033,7 @@
                 },
                 "fileName": {
                     "type": "string",
-                    "description": "The file name.\n",
+                    "description": "The file name to use instead of the source file\nname. Useful when the source file does not have a valid file extension,\nfor example when the source file is a URL referencing a `.qcow2` image.\n",
                     "willReplaceOnChanges": true
                 },
                 "insecure": {
@@ -1085,7 +1085,7 @@
             "properties": {
                 "enabled": {
                     "type": "boolean",
-                    "description": "Whether to enable the VGA device (defaults\nto `true`).\n"
+                    "description": "Whether to enable the QEMU agent (defaults\nto `false`).\n"
                 },
                 "timeout": {
                     "type": "string",
@@ -1097,7 +1097,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The VGA type (defaults to `std`).\n"
+                    "description": "The QEMU agent interface type (defaults to `virtio`).\n"
                 }
             },
             "type": "object"
@@ -1106,7 +1106,7 @@
             "properties": {
                 "device": {
                     "type": "string",
-                    "description": "The device (defaults to `socket`).\n- `/dev/*` - A host serial device.\n"
+                    "description": "The device (defaults to `intel-hda`).\n"
                 },
                 "driver": {
                     "type": "string",
@@ -1114,7 +1114,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Whether to enable the VGA device (defaults\nto `true`).\n"
+                    "description": "Whether to enable the audio device (defaults\nto `true`).\n"
                 }
             },
             "type": "object"
@@ -1123,15 +1123,15 @@
             "properties": {
                 "enabled": {
                     "type": "boolean",
-                    "description": "Whether to enable the VGA device (defaults\nto `true`).\n"
+                    "description": "Whether to enable the CDROM drive (defaults\nto `false`).\n"
                 },
                 "fileId": {
                     "type": "string",
-                    "description": "The file ID for a disk image (experimental -\nmight cause high CPU utilization during import, especially with large\ndisk images).\n"
+                    "description": "A file ID for an ISO file (defaults to `cdrom` as\nin the physical drive).\n"
                 },
                 "interface": {
                     "type": "string",
-                    "description": "The hardware interface to connect the cloud-init\nimage to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be\ndetected if the setting is missing but a cloud-init image is present,\notherwise defaults to `ide2`.\n"
+                    "description": "A hardware interface to connect CDROM drive to,\nmust be `ideN` (defaults to `ide3`). Note that `q35` machine type only\nsupports `ide0` and `ide2`.\n"
                 }
             },
             "type": "object"
@@ -1140,7 +1140,7 @@
             "properties": {
                 "datastoreId": {
                     "type": "string",
-                    "description": "The identifier for the datastore to create the\ncloud-init disk in (defaults to `local-lvm`).\n",
+                    "description": "The identifier for the target datastore.\n",
                     "willReplaceOnChanges": true
                 },
                 "full": {
@@ -1150,7 +1150,7 @@
                 },
                 "nodeName": {
                     "type": "string",
-                    "description": "The name of the node to assign the virtual machine\nto.\n",
+                    "description": "The name of the source node (leave blank, if\nequal to the `node_name` argument).\n",
                     "willReplaceOnChanges": true
                 },
                 "retries": {
@@ -1160,7 +1160,7 @@
                 },
                 "vmId": {
                     "type": "integer",
-                    "description": "The VM identifier.\n",
+                    "description": "The identifier for the source VM.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -1200,7 +1200,7 @@
                 },
                 "numa": {
                     "type": "boolean",
-                    "description": "The NUMA configuration.\n"
+                    "description": "Enable/disable NUMA. (default to `false`)\n"
                 },
                 "sockets": {
                     "type": "integer",
@@ -1208,7 +1208,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The VGA type (defaults to `std`).\n"
+                    "description": "The emulated CPU type, it's recommended to\nuse `x86-64-v2-AES` (defaults to `qemu64`).\n"
                 },
                 "units": {
                     "type": "integer",
@@ -1233,7 +1233,7 @@
                 },
                 "datastoreId": {
                     "type": "string",
-                    "description": "The identifier for the datastore to create the\ncloud-init disk in (defaults to `local-lvm`).\n"
+                    "description": "The identifier for the datastore to create\nthe disk in (defaults to `local-lvm`).\n"
                 },
                 "discard": {
                     "type": "string",
@@ -1241,7 +1241,7 @@
                 },
                 "fileFormat": {
                     "type": "string",
-                    "description": "The file format (defaults to `raw`).\n",
+                    "description": "The file format (defaults to `qcow2`).\n",
                     "willReplaceOnChanges": true
                 },
                 "fileId": {
@@ -1251,7 +1251,7 @@
                 },
                 "interface": {
                     "type": "string",
-                    "description": "The hardware interface to connect the cloud-init\nimage to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be\ndetected if the setting is missing but a cloud-init image is present,\notherwise defaults to `ide2`.\n"
+                    "description": "The disk interface for Proxmox, currently `scsi`,\n`sata` and `virtio` interfaces are supported. Append the disk index at\nthe end, for example, `virtio0` for the first virtio disk, `virtio1` for\nthe second, etc.\n"
                 },
                 "iothread": {
                     "type": "boolean",
@@ -1296,35 +1296,35 @@
             "properties": {
                 "iopsRead": {
                     "type": "integer",
-                    "description": "The maximum read I/O in operations per second.\n"
+                    "description": "The maximum read I/O in operations per second\n"
                 },
                 "iopsReadBurstable": {
                     "type": "integer",
-                    "description": "The maximum unthrottled read I/O pool in operations per second.\n"
+                    "description": "The maximum unthrottled read I/O pool in operations per second\n"
                 },
                 "iopsWrite": {
                     "type": "integer",
-                    "description": "The maximum write I/O in operations per second.\n"
+                    "description": "The maximum write I/O in operations per second\n"
                 },
                 "iopsWriteBurstable": {
                     "type": "integer",
-                    "description": "The maximum unthrottled write I/O pool in operations per second.\n"
+                    "description": "The maximum unthrottled write I/O pool in operations per second\n"
                 },
                 "read": {
                     "type": "integer",
-                    "description": "The maximum read speed in megabytes per second.\n"
+                    "description": "The maximum read speed in megabytes per second\n"
                 },
                 "readBurstable": {
                     "type": "integer",
-                    "description": "The maximum burstable read speed in\nmegabytes per second.\n"
+                    "description": "The maximum burstable read speed in megabytes per second\n"
                 },
                 "write": {
                     "type": "integer",
-                    "description": "The maximum write speed in megabytes per second.\n"
+                    "description": "The maximum write speed in megabytes per second\n"
                 },
                 "writeBurstable": {
                     "type": "integer",
-                    "description": "The maximum burstable write speed in\nmegabytes per second.\n"
+                    "description": "The maximum burstable write speed in megabytes per second\n"
                 }
             },
             "type": "object"
@@ -1333,7 +1333,7 @@
             "properties": {
                 "datastoreId": {
                     "type": "string",
-                    "description": "The identifier for the datastore to create the\ncloud-init disk in (defaults to `local-lvm`).\n"
+                    "description": "The identifier for the datastore to create\nthe disk in (defaults to `local-lvm`).\n"
                 },
                 "fileFormat": {
                     "type": "string",
@@ -1347,7 +1347,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The VGA type (defaults to `std`).\n",
+                    "description": "Size and type of the OVMF EFI disk. `4m` is newer and\nrecommended, and required for Secure Boot. For backwards compatibility\nuse `2m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults\nto `2m`).\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -1364,7 +1364,7 @@
             "properties": {
                 "device": {
                     "type": "string",
-                    "description": "The device (defaults to `socket`).\n- `/dev/*` - A host serial device.\n"
+                    "description": "The PCI device name for Proxmox, in form\nof `hostpciX` where `X` is a sequential number from 0 to 3.\n"
                 },
                 "id": {
                     "type": "string",
@@ -1372,7 +1372,7 @@
                 },
                 "mapping": {
                     "type": "string",
-                    "description": "The resource mapping name of the device, for\nexample usbdevice. Use either this or `id`.\n"
+                    "description": "The resource mapping name of the device, for\nexample gpu. Use either this or `id`.\n"
                 },
                 "mdev": {
                     "type": "string",
@@ -1433,7 +1433,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The VGA type (defaults to `std`).\n",
+                    "description": "The cloud-init configuration format\n",
                     "willReplaceOnChanges": true
                 },
                 "upgrade": {
@@ -1469,11 +1469,11 @@
             "properties": {
                 "domain": {
                     "type": "string",
-                    "description": "The DNS search domain.\n"
+                    "description": "The DNS search domain\n"
                 },
                 "server": {
                     "type": "string",
-                    "description": "The DNS server. The `server` attribute is\ndeprecated and will be removed in a future release. Please use the\n`servers` attribute instead.\n",
+                    "description": "The DNS server\n",
                     "deprecationMessage": "The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead."
                 },
                 "servers": {
@@ -1481,7 +1481,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The list of DNS servers.\n"
+                    "description": "The list of DNS servers\n"
                 }
             },
             "type": "object"
@@ -1490,11 +1490,11 @@
             "properties": {
                 "ipv4": {
                     "$ref": "#/types/proxmoxve:VM/VirtualMachineInitializationIpConfigIpv4:VirtualMachineInitializationIpConfigIpv4",
-                    "description": "The IPv4 configuration.\n"
+                    "description": "The IPv4 configuration\n"
                 },
                 "ipv6": {
                     "$ref": "#/types/proxmoxve:VM/VirtualMachineInitializationIpConfigIpv6:VirtualMachineInitializationIpConfigIpv6",
-                    "description": "The IPv4 configuration.\n"
+                    "description": "The IPv6 configuration\n"
                 }
             },
             "type": "object"
@@ -1503,11 +1503,11 @@
             "properties": {
                 "address": {
                     "type": "string",
-                    "description": "The IPv6 address in CIDR notation\n(e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this\nto `dhcp` for autodiscovery.\n"
+                    "description": "The IPv4 address\n"
                 },
                 "gateway": {
                     "type": "string",
-                    "description": "The IPv6 gateway (must be omitted\nwhen `dhcp` is used as the address).\n"
+                    "description": "The IPv4 gateway\n"
                 }
             },
             "type": "object"
@@ -1516,11 +1516,11 @@
             "properties": {
                 "address": {
                     "type": "string",
-                    "description": "The IPv6 address in CIDR notation\n(e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this\nto `dhcp` for autodiscovery.\n"
+                    "description": "The IPv6 address\n"
                 },
                 "gateway": {
                     "type": "string",
-                    "description": "The IPv6 gateway (must be omitted\nwhen `dhcp` is used as the address).\n"
+                    "description": "The IPv6 gateway\n"
                 }
             },
             "type": "object"
@@ -1532,18 +1532,18 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The SSH keys.\n",
+                    "description": "The SSH keys\n",
                     "willReplaceOnChanges": true
                 },
                 "password": {
                     "type": "string",
-                    "description": "The SSH password.\n",
+                    "description": "The SSH password\n",
                     "secret": true,
                     "willReplaceOnChanges": true
                 },
                 "username": {
                     "type": "string",
-                    "description": "The SSH username.\n",
+                    "description": "The SSH username\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -1586,7 +1586,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Whether to enable the VGA device (defaults\nto `true`).\n"
+                    "description": "Whether to enable the network device (defaults to `true`).\n"
                 },
                 "firewall": {
                     "type": "boolean",
@@ -1638,7 +1638,7 @@
                 },
                 "device": {
                     "type": "string",
-                    "description": "The device (defaults to `socket`).\n- `/dev/*` - A host serial device.\n"
+                    "description": "The NUMA device name for Proxmox, in form\nof `numaX` where `X` is a sequential number from 0 to 7.\n"
                 },
                 "hostnodes": {
                     "type": "string",
@@ -1646,7 +1646,7 @@
                 },
                 "memory": {
                     "type": "integer",
-                    "description": "The VGA memory in megabytes (defaults to `16`).\n"
+                    "description": "The memory in megabytes to assign to the NUMA node.\n"
                 },
                 "policy": {
                     "type": "string",
@@ -1664,7 +1664,7 @@
             "properties": {
                 "type": {
                     "type": "string",
-                    "description": "The VGA type (defaults to `std`).\n"
+                    "description": "The type (defaults to `other`).\n"
                 }
             },
             "type": "object"
@@ -1739,11 +1739,11 @@
             "properties": {
                 "datastoreId": {
                     "type": "string",
-                    "description": "The identifier for the datastore to create the\ncloud-init disk in (defaults to `local-lvm`).\n"
+                    "description": "The identifier for the datastore to create\nthe disk in (defaults to `local-lvm`).\n"
                 },
                 "version": {
                     "type": "string",
-                    "description": "The version.\n",
+                    "description": "TPM state device version. Can be `v1.2` or `v2.0`.\n(defaults to `v2.0`).\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -2128,7 +2128,7 @@
                 },
                 "console": {
                     "$ref": "#/types/proxmoxve:CT/ContainerConsole:ContainerConsole",
-                    "description": "Console.\n"
+                    "description": "The console configuration.\n"
                 },
                 "cpu": {
                     "$ref": "#/types/proxmoxve:CT/ContainerCpu:ContainerCpu",
@@ -2247,7 +2247,7 @@
                 },
                 "console": {
                     "$ref": "#/types/proxmoxve:CT/ContainerConsole:ContainerConsole",
-                    "description": "Console.\n"
+                    "description": "The console configuration.\n"
                 },
                 "cpu": {
                     "$ref": "#/types/proxmoxve:CT/ContainerCpu:ContainerCpu",
@@ -2375,7 +2375,7 @@
                     },
                     "console": {
                         "$ref": "#/types/proxmoxve:CT/ContainerConsole:ContainerConsole",
-                        "description": "Console.\n"
+                        "description": "The console configuration.\n"
                     },
                     "cpu": {
                         "$ref": "#/types/proxmoxve:CT/ContainerCpu:ContainerCpu",
@@ -3027,7 +3027,7 @@
             }
         },
         "proxmoxve:HA/hAResource:HAResource": {
-            "description": "Manages Proxmox HA resources.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst example = new proxmoxve.ha.HAResource(\"example\", {\n    resourceId: \"vm:123\",\n    state: \"started\",\n    group: \"example\",\n    comment: \"Managed by Terraform\",\n}, {\n    dependsOn: [proxmox_virtual_environment_hagroup.example],\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample = proxmoxve.ha.HAResource(\"example\",\n    resource_id=\"vm:123\",\n    state=\"started\",\n    group=\"example\",\n    comment=\"Managed by Terraform\",\n    opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_hagroup[\"example\"]]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new ProxmoxVE.HA.HAResource(\"example\", new()\n    {\n        ResourceId = \"vm:123\",\n        State = \"started\",\n        Group = \"example\",\n        Comment = \"Managed by Terraform\",\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            proxmox_virtual_environment_hagroup.Example, \n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/HA\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := HA.NewHAResource(ctx, \"example\", \u0026HA.HAResourceArgs{\n\t\t\tResourceId: pulumi.String(\"vm:123\"),\n\t\t\tState:      pulumi.String(\"started\"),\n\t\t\tGroup:      pulumi.String(\"example\"),\n\t\t\tComment:    pulumi.String(\"Managed by Terraform\"),\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tproxmox_virtual_environment_hagroup.Example,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.HA.HAResource;\nimport com.pulumi.proxmoxve.HA.HAResourceArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new HAResource(\"example\", HAResourceArgs.builder()        \n            .resourceId(\"vm:123\")\n            .state(\"started\")\n            .group(\"example\")\n            .comment(\"Managed by Terraform\")\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(proxmox_virtual_environment_hagroup.example())\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: proxmoxve:HA:HAResource\n    properties:\n      resourceId: vm:123\n      state: started\n      group: example\n      comment: Managed by Terraform\n    options:\n      dependson:\n        - ${proxmox_virtual_environment_hagroup.example}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n#!/usr/bin/env sh\n\nHA resources can be imported using their identifiers, e.g.:\n\n```sh\n$ pulumi import proxmoxve:HA/hAResource:HAResource example vm:123\n```\n\n",
+            "description": "Manages Proxmox HA resources.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst example = new proxmoxve.ha.HAResource(\"example\", {\n    resourceId: \"vm:123\",\n    state: \"started\",\n    group: \"example\",\n    comment: \"Managed by Terraform\",\n}, {\n    dependsOn: [proxmox_virtual_environment_hagroup.example],\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample = proxmoxve.ha.HAResource(\"example\",\n    resource_id=\"vm:123\",\n    state=\"started\",\n    group=\"example\",\n    comment=\"Managed by Terraform\",\n    opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_hagroup[\"example\"]]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new ProxmoxVE.HA.HAResource(\"example\", new()\n    {\n        ResourceId = \"vm:123\",\n        State = \"started\",\n        Group = \"example\",\n        Comment = \"Managed by Terraform\",\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            proxmox_virtual_environment_hagroup.Example,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/HA\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := HA.NewHAResource(ctx, \"example\", \u0026HA.HAResourceArgs{\n\t\t\tResourceId: pulumi.String(\"vm:123\"),\n\t\t\tState:      pulumi.String(\"started\"),\n\t\t\tGroup:      pulumi.String(\"example\"),\n\t\t\tComment:    pulumi.String(\"Managed by Terraform\"),\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tproxmox_virtual_environment_hagroup.Example,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.HA.HAResource;\nimport com.pulumi.proxmoxve.HA.HAResourceArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new HAResource(\"example\", HAResourceArgs.builder()        \n            .resourceId(\"vm:123\")\n            .state(\"started\")\n            .group(\"example\")\n            .comment(\"Managed by Terraform\")\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(proxmox_virtual_environment_hagroup.example())\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: proxmoxve:HA:HAResource\n    properties:\n      resourceId: vm:123\n      state: started\n      group: example\n      comment: Managed by Terraform\n    options:\n      dependson:\n        - ${proxmox_virtual_environment_hagroup.example}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n#!/usr/bin/env sh\n\nHA resources can be imported using their identifiers, e.g.:\n\n```sh\n$ pulumi import proxmoxve:HA/hAResource:HAResource example vm:123\n```\n\n",
             "properties": {
                 "comment": {
                     "type": "string",
@@ -3136,7 +3136,7 @@
             "properties": {
                 "comment": {
                     "type": "string",
-                    "description": "The comment of the mapped PCI device.\n"
+                    "description": "The comment of this PCI hardware mapping.\n"
                 },
                 "maps": {
                     "type": "array",
@@ -3162,7 +3162,7 @@
             "inputProperties": {
                 "comment": {
                     "type": "string",
-                    "description": "The comment of the mapped PCI device.\n"
+                    "description": "The comment of this PCI hardware mapping.\n"
                 },
                 "maps": {
                     "type": "array",
@@ -3188,7 +3188,7 @@
                 "properties": {
                     "comment": {
                         "type": "string",
-                        "description": "The comment of the mapped PCI device.\n"
+                        "description": "The comment of this PCI hardware mapping.\n"
                     },
                     "maps": {
                         "type": "array",
@@ -3214,7 +3214,7 @@
             "properties": {
                 "comment": {
                     "type": "string",
-                    "description": "The comment of the mapped USB device.\n"
+                    "description": "The comment of this USB hardware mapping.\n"
                 },
                 "maps": {
                     "type": "array",
@@ -3235,7 +3235,7 @@
             "inputProperties": {
                 "comment": {
                     "type": "string",
-                    "description": "The comment of the mapped USB device.\n"
+                    "description": "The comment of this USB hardware mapping.\n"
                 },
                 "maps": {
                     "type": "array",
@@ -3257,7 +3257,7 @@
                 "properties": {
                     "comment": {
                         "type": "string",
-                        "description": "The comment of the mapped USB device.\n"
+                        "description": "The comment of this USB hardware mapping.\n"
                     },
                     "maps": {
                         "type": "array",
@@ -3283,7 +3283,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Enable or disable the log rate limit.\n"
+                    "description": "Enable or disable the firewall cluster wide.\n"
                 },
                 "inputPolicy": {
                     "type": "string",
@@ -3305,7 +3305,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Enable or disable the log rate limit.\n"
+                    "description": "Enable or disable the firewall cluster wide.\n"
                 },
                 "inputPolicy": {
                     "type": "string",
@@ -3329,7 +3329,7 @@
                     },
                     "enabled": {
                         "type": "boolean",
-                        "description": "Enable or disable the log rate limit.\n"
+                        "description": "Enable or disable the firewall cluster wide.\n"
                     },
                     "inputPolicy": {
                         "type": "string",
@@ -3348,7 +3348,7 @@
             }
         },
         "proxmoxve:Network/firewallAlias:FirewallAlias": {
-            "description": "Aliases are used to see what devices or group of devices are affected by a rule.\nWe can create aliases to identify an IP address or a network. Aliases can be\ncreated on the cluster level, on VM / Container level.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst localNetwork = new proxmoxve.network.FirewallAlias(\"localNetwork\", {\n    nodeName: proxmox_virtual_environment_vm.example.node_name,\n    vmId: proxmox_virtual_environment_vm.example.vm_id,\n    cidr: \"192.168.0.0/23\",\n    comment: \"Managed by Terraform\",\n}, {\n    dependsOn: [proxmox_virtual_environment_vm.example],\n});\nconst ubuntuVm = new proxmoxve.network.FirewallAlias(\"ubuntuVm\", {\n    cidr: \"192.168.0.1\",\n    comment: \"Managed by Terraform\",\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nlocal_network = proxmoxve.network.FirewallAlias(\"localNetwork\",\n    node_name=proxmox_virtual_environment_vm[\"example\"][\"node_name\"],\n    vm_id=proxmox_virtual_environment_vm[\"example\"][\"vm_id\"],\n    cidr=\"192.168.0.0/23\",\n    comment=\"Managed by Terraform\",\n    opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_vm[\"example\"]]))\nubuntu_vm = proxmoxve.network.FirewallAlias(\"ubuntuVm\",\n    cidr=\"192.168.0.1\",\n    comment=\"Managed by Terraform\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var localNetwork = new ProxmoxVE.Network.FirewallAlias(\"localNetwork\", new()\n    {\n        NodeName = proxmox_virtual_environment_vm.Example.Node_name,\n        VmId = proxmox_virtual_environment_vm.Example.Vm_id,\n        Cidr = \"192.168.0.0/23\",\n        Comment = \"Managed by Terraform\",\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            proxmox_virtual_environment_vm.Example, \n        },\n    });\n\n    var ubuntuVm = new ProxmoxVE.Network.FirewallAlias(\"ubuntuVm\", new()\n    {\n        Cidr = \"192.168.0.1\",\n        Comment = \"Managed by Terraform\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Network\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Network.NewFirewallAlias(ctx, \"localNetwork\", \u0026Network.FirewallAliasArgs{\n\t\t\tNodeName: pulumi.Any(proxmox_virtual_environment_vm.Example.Node_name),\n\t\t\tVmId:     pulumi.Any(proxmox_virtual_environment_vm.Example.Vm_id),\n\t\t\tCidr:     pulumi.String(\"192.168.0.0/23\"),\n\t\t\tComment:  pulumi.String(\"Managed by Terraform\"),\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tproxmox_virtual_environment_vm.Example,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = Network.NewFirewallAlias(ctx, \"ubuntuVm\", \u0026Network.FirewallAliasArgs{\n\t\t\tCidr:    pulumi.String(\"192.168.0.1\"),\n\t\t\tComment: pulumi.String(\"Managed by Terraform\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Network.FirewallAlias;\nimport com.pulumi.proxmoxve.Network.FirewallAliasArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var localNetwork = new FirewallAlias(\"localNetwork\", FirewallAliasArgs.builder()        \n            .nodeName(proxmox_virtual_environment_vm.example().node_name())\n            .vmId(proxmox_virtual_environment_vm.example().vm_id())\n            .cidr(\"192.168.0.0/23\")\n            .comment(\"Managed by Terraform\")\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(proxmox_virtual_environment_vm.example())\n                .build());\n\n        var ubuntuVm = new FirewallAlias(\"ubuntuVm\", FirewallAliasArgs.builder()        \n            .cidr(\"192.168.0.1\")\n            .comment(\"Managed by Terraform\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  localNetwork:\n    type: proxmoxve:Network:FirewallAlias\n    properties:\n      nodeName: ${proxmox_virtual_environment_vm.example.node_name}\n      vmId: ${proxmox_virtual_environment_vm.example.vm_id}\n      cidr: 192.168.0.0/23\n      comment: Managed by Terraform\n    options:\n      dependson:\n        - ${proxmox_virtual_environment_vm.example}\n  ubuntuVm:\n    type: proxmoxve:Network:FirewallAlias\n    properties:\n      cidr: 192.168.0.1\n      comment: Managed by Terraform\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Aliases are used to see what devices or group of devices are affected by a rule.\nWe can create aliases to identify an IP address or a network. Aliases can be\ncreated on the cluster level, on VM / Container level.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst localNetwork = new proxmoxve.network.FirewallAlias(\"localNetwork\", {\n    nodeName: proxmox_virtual_environment_vm.example.node_name,\n    vmId: proxmox_virtual_environment_vm.example.vm_id,\n    cidr: \"192.168.0.0/23\",\n    comment: \"Managed by Terraform\",\n}, {\n    dependsOn: [proxmox_virtual_environment_vm.example],\n});\nconst ubuntuVm = new proxmoxve.network.FirewallAlias(\"ubuntuVm\", {\n    cidr: \"192.168.0.1\",\n    comment: \"Managed by Terraform\",\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nlocal_network = proxmoxve.network.FirewallAlias(\"localNetwork\",\n    node_name=proxmox_virtual_environment_vm[\"example\"][\"node_name\"],\n    vm_id=proxmox_virtual_environment_vm[\"example\"][\"vm_id\"],\n    cidr=\"192.168.0.0/23\",\n    comment=\"Managed by Terraform\",\n    opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_vm[\"example\"]]))\nubuntu_vm = proxmoxve.network.FirewallAlias(\"ubuntuVm\",\n    cidr=\"192.168.0.1\",\n    comment=\"Managed by Terraform\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var localNetwork = new ProxmoxVE.Network.FirewallAlias(\"localNetwork\", new()\n    {\n        NodeName = proxmox_virtual_environment_vm.Example.Node_name,\n        VmId = proxmox_virtual_environment_vm.Example.Vm_id,\n        Cidr = \"192.168.0.0/23\",\n        Comment = \"Managed by Terraform\",\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            proxmox_virtual_environment_vm.Example,\n        },\n    });\n\n    var ubuntuVm = new ProxmoxVE.Network.FirewallAlias(\"ubuntuVm\", new()\n    {\n        Cidr = \"192.168.0.1\",\n        Comment = \"Managed by Terraform\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Network\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Network.NewFirewallAlias(ctx, \"localNetwork\", \u0026Network.FirewallAliasArgs{\n\t\t\tNodeName: pulumi.Any(proxmox_virtual_environment_vm.Example.Node_name),\n\t\t\tVmId:     pulumi.Any(proxmox_virtual_environment_vm.Example.Vm_id),\n\t\t\tCidr:     pulumi.String(\"192.168.0.0/23\"),\n\t\t\tComment:  pulumi.String(\"Managed by Terraform\"),\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tproxmox_virtual_environment_vm.Example,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = Network.NewFirewallAlias(ctx, \"ubuntuVm\", \u0026Network.FirewallAliasArgs{\n\t\t\tCidr:    pulumi.String(\"192.168.0.1\"),\n\t\t\tComment: pulumi.String(\"Managed by Terraform\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Network.FirewallAlias;\nimport com.pulumi.proxmoxve.Network.FirewallAliasArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var localNetwork = new FirewallAlias(\"localNetwork\", FirewallAliasArgs.builder()        \n            .nodeName(proxmox_virtual_environment_vm.example().node_name())\n            .vmId(proxmox_virtual_environment_vm.example().vm_id())\n            .cidr(\"192.168.0.0/23\")\n            .comment(\"Managed by Terraform\")\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(proxmox_virtual_environment_vm.example())\n                .build());\n\n        var ubuntuVm = new FirewallAlias(\"ubuntuVm\", FirewallAliasArgs.builder()        \n            .cidr(\"192.168.0.1\")\n            .comment(\"Managed by Terraform\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  localNetwork:\n    type: proxmoxve:Network:FirewallAlias\n    properties:\n      nodeName: ${proxmox_virtual_environment_vm.example.node_name}\n      vmId: ${proxmox_virtual_environment_vm.example.vm_id}\n      cidr: 192.168.0.0/23\n      comment: Managed by Terraform\n    options:\n      dependson:\n        - ${proxmox_virtual_environment_vm.example}\n  ubuntuVm:\n    type: proxmoxve:Network:FirewallAlias\n    properties:\n      cidr: 192.168.0.1\n      comment: Managed by Terraform\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "cidr": {
                     "type": "string",
@@ -3440,7 +3440,7 @@
             }
         },
         "proxmoxve:Network/firewallIPSet:FirewallIPSet": {
-            "description": "An IPSet allows us to group multiple IP addresses, IP subnets and aliases. Aliases can be\ncreated on the cluster level, on VM / Container level.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst ipset = new proxmoxve.network.FirewallIPSet(\"ipset\", {\n    nodeName: proxmox_virtual_environment_vm.example.node_name,\n    vmId: proxmox_virtual_environment_vm.example.vm_id,\n    comment: \"Managed by Terraform\",\n    cidrs: [\n        {\n            name: \"192.168.0.0/23\",\n            comment: \"Local network 1\",\n        },\n        {\n            name: \"192.168.0.1\",\n            comment: \"Server 1\",\n            nomatch: true,\n        },\n        {\n            name: \"192.168.2.1\",\n            comment: \"Server 1\",\n        },\n    ],\n}, {\n    dependsOn: [proxmox_virtual_environment_vm.example],\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nipset = proxmoxve.network.FirewallIPSet(\"ipset\",\n    node_name=proxmox_virtual_environment_vm[\"example\"][\"node_name\"],\n    vm_id=proxmox_virtual_environment_vm[\"example\"][\"vm_id\"],\n    comment=\"Managed by Terraform\",\n    cidrs=[\n        proxmoxve.network.FirewallIPSetCidrArgs(\n            name=\"192.168.0.0/23\",\n            comment=\"Local network 1\",\n        ),\n        proxmoxve.network.FirewallIPSetCidrArgs(\n            name=\"192.168.0.1\",\n            comment=\"Server 1\",\n            nomatch=True,\n        ),\n        proxmoxve.network.FirewallIPSetCidrArgs(\n            name=\"192.168.2.1\",\n            comment=\"Server 1\",\n        ),\n    ],\n    opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_vm[\"example\"]]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var ipset = new ProxmoxVE.Network.FirewallIPSet(\"ipset\", new()\n    {\n        NodeName = proxmox_virtual_environment_vm.Example.Node_name,\n        VmId = proxmox_virtual_environment_vm.Example.Vm_id,\n        Comment = \"Managed by Terraform\",\n        Cidrs = new[]\n        {\n            new ProxmoxVE.Network.Inputs.FirewallIPSetCidrArgs\n            {\n                Name = \"192.168.0.0/23\",\n                Comment = \"Local network 1\",\n            },\n            new ProxmoxVE.Network.Inputs.FirewallIPSetCidrArgs\n            {\n                Name = \"192.168.0.1\",\n                Comment = \"Server 1\",\n                Nomatch = true,\n            },\n            new ProxmoxVE.Network.Inputs.FirewallIPSetCidrArgs\n            {\n                Name = \"192.168.2.1\",\n                Comment = \"Server 1\",\n            },\n        },\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            proxmox_virtual_environment_vm.Example, \n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Network\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Network.NewFirewallIPSet(ctx, \"ipset\", \u0026Network.FirewallIPSetArgs{\n\t\t\tNodeName: pulumi.Any(proxmox_virtual_environment_vm.Example.Node_name),\n\t\t\tVmId:     pulumi.Any(proxmox_virtual_environment_vm.Example.Vm_id),\n\t\t\tComment:  pulumi.String(\"Managed by Terraform\"),\n\t\t\tCidrs: network.FirewallIPSetCidrArray{\n\t\t\t\t\u0026network.FirewallIPSetCidrArgs{\n\t\t\t\t\tName:    pulumi.String(\"192.168.0.0/23\"),\n\t\t\t\t\tComment: pulumi.String(\"Local network 1\"),\n\t\t\t\t},\n\t\t\t\t\u0026network.FirewallIPSetCidrArgs{\n\t\t\t\t\tName:    pulumi.String(\"192.168.0.1\"),\n\t\t\t\t\tComment: pulumi.String(\"Server 1\"),\n\t\t\t\t\tNomatch: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t\t\u0026network.FirewallIPSetCidrArgs{\n\t\t\t\t\tName:    pulumi.String(\"192.168.2.1\"),\n\t\t\t\t\tComment: pulumi.String(\"Server 1\"),\n\t\t\t\t},\n\t\t\t},\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tproxmox_virtual_environment_vm.Example,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Network.FirewallIPSet;\nimport com.pulumi.proxmoxve.Network.FirewallIPSetArgs;\nimport com.pulumi.proxmoxve.Network.inputs.FirewallIPSetCidrArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var ipset = new FirewallIPSet(\"ipset\", FirewallIPSetArgs.builder()        \n            .nodeName(proxmox_virtual_environment_vm.example().node_name())\n            .vmId(proxmox_virtual_environment_vm.example().vm_id())\n            .comment(\"Managed by Terraform\")\n            .cidrs(            \n                FirewallIPSetCidrArgs.builder()\n                    .name(\"192.168.0.0/23\")\n                    .comment(\"Local network 1\")\n                    .build(),\n                FirewallIPSetCidrArgs.builder()\n                    .name(\"192.168.0.1\")\n                    .comment(\"Server 1\")\n                    .nomatch(true)\n                    .build(),\n                FirewallIPSetCidrArgs.builder()\n                    .name(\"192.168.2.1\")\n                    .comment(\"Server 1\")\n                    .build())\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(proxmox_virtual_environment_vm.example())\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  ipset:\n    type: proxmoxve:Network:FirewallIPSet\n    properties:\n      nodeName: ${proxmox_virtual_environment_vm.example.node_name}\n      vmId: ${proxmox_virtual_environment_vm.example.vm_id}\n      comment: Managed by Terraform\n      cidrs:\n        - name: 192.168.0.0/23\n          comment: Local network 1\n        - name: 192.168.0.1\n          comment: Server 1\n          nomatch: true\n        - name: 192.168.2.1\n          comment: Server 1\n    options:\n      dependson:\n        - ${proxmox_virtual_environment_vm.example}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "An IPSet allows us to group multiple IP addresses, IP subnets and aliases. Aliases can be\ncreated on the cluster level, on VM / Container level.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst ipset = new proxmoxve.network.FirewallIPSet(\"ipset\", {\n    nodeName: proxmox_virtual_environment_vm.example.node_name,\n    vmId: proxmox_virtual_environment_vm.example.vm_id,\n    comment: \"Managed by Terraform\",\n    cidrs: [\n        {\n            name: \"192.168.0.0/23\",\n            comment: \"Local network 1\",\n        },\n        {\n            name: \"192.168.0.1\",\n            comment: \"Server 1\",\n            nomatch: true,\n        },\n        {\n            name: \"192.168.2.1\",\n            comment: \"Server 1\",\n        },\n    ],\n}, {\n    dependsOn: [proxmox_virtual_environment_vm.example],\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nipset = proxmoxve.network.FirewallIPSet(\"ipset\",\n    node_name=proxmox_virtual_environment_vm[\"example\"][\"node_name\"],\n    vm_id=proxmox_virtual_environment_vm[\"example\"][\"vm_id\"],\n    comment=\"Managed by Terraform\",\n    cidrs=[\n        proxmoxve.network.FirewallIPSetCidrArgs(\n            name=\"192.168.0.0/23\",\n            comment=\"Local network 1\",\n        ),\n        proxmoxve.network.FirewallIPSetCidrArgs(\n            name=\"192.168.0.1\",\n            comment=\"Server 1\",\n            nomatch=True,\n        ),\n        proxmoxve.network.FirewallIPSetCidrArgs(\n            name=\"192.168.2.1\",\n            comment=\"Server 1\",\n        ),\n    ],\n    opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_vm[\"example\"]]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var ipset = new ProxmoxVE.Network.FirewallIPSet(\"ipset\", new()\n    {\n        NodeName = proxmox_virtual_environment_vm.Example.Node_name,\n        VmId = proxmox_virtual_environment_vm.Example.Vm_id,\n        Comment = \"Managed by Terraform\",\n        Cidrs = new[]\n        {\n            new ProxmoxVE.Network.Inputs.FirewallIPSetCidrArgs\n            {\n                Name = \"192.168.0.0/23\",\n                Comment = \"Local network 1\",\n            },\n            new ProxmoxVE.Network.Inputs.FirewallIPSetCidrArgs\n            {\n                Name = \"192.168.0.1\",\n                Comment = \"Server 1\",\n                Nomatch = true,\n            },\n            new ProxmoxVE.Network.Inputs.FirewallIPSetCidrArgs\n            {\n                Name = \"192.168.2.1\",\n                Comment = \"Server 1\",\n            },\n        },\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            proxmox_virtual_environment_vm.Example,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Network\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Network.NewFirewallIPSet(ctx, \"ipset\", \u0026Network.FirewallIPSetArgs{\n\t\t\tNodeName: pulumi.Any(proxmox_virtual_environment_vm.Example.Node_name),\n\t\t\tVmId:     pulumi.Any(proxmox_virtual_environment_vm.Example.Vm_id),\n\t\t\tComment:  pulumi.String(\"Managed by Terraform\"),\n\t\t\tCidrs: network.FirewallIPSetCidrArray{\n\t\t\t\t\u0026network.FirewallIPSetCidrArgs{\n\t\t\t\t\tName:    pulumi.String(\"192.168.0.0/23\"),\n\t\t\t\t\tComment: pulumi.String(\"Local network 1\"),\n\t\t\t\t},\n\t\t\t\t\u0026network.FirewallIPSetCidrArgs{\n\t\t\t\t\tName:    pulumi.String(\"192.168.0.1\"),\n\t\t\t\t\tComment: pulumi.String(\"Server 1\"),\n\t\t\t\t\tNomatch: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t\t\u0026network.FirewallIPSetCidrArgs{\n\t\t\t\t\tName:    pulumi.String(\"192.168.2.1\"),\n\t\t\t\t\tComment: pulumi.String(\"Server 1\"),\n\t\t\t\t},\n\t\t\t},\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tproxmox_virtual_environment_vm.Example,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Network.FirewallIPSet;\nimport com.pulumi.proxmoxve.Network.FirewallIPSetArgs;\nimport com.pulumi.proxmoxve.Network.inputs.FirewallIPSetCidrArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var ipset = new FirewallIPSet(\"ipset\", FirewallIPSetArgs.builder()        \n            .nodeName(proxmox_virtual_environment_vm.example().node_name())\n            .vmId(proxmox_virtual_environment_vm.example().vm_id())\n            .comment(\"Managed by Terraform\")\n            .cidrs(            \n                FirewallIPSetCidrArgs.builder()\n                    .name(\"192.168.0.0/23\")\n                    .comment(\"Local network 1\")\n                    .build(),\n                FirewallIPSetCidrArgs.builder()\n                    .name(\"192.168.0.1\")\n                    .comment(\"Server 1\")\n                    .nomatch(true)\n                    .build(),\n                FirewallIPSetCidrArgs.builder()\n                    .name(\"192.168.2.1\")\n                    .comment(\"Server 1\")\n                    .build())\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(proxmox_virtual_environment_vm.example())\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  ipset:\n    type: proxmoxve:Network:FirewallIPSet\n    properties:\n      nodeName: ${proxmox_virtual_environment_vm.example.node_name}\n      vmId: ${proxmox_virtual_environment_vm.example.vm_id}\n      comment: Managed by Terraform\n      cidrs:\n        - name: 192.168.0.0/23\n          comment: Local network 1\n        - name: 192.168.0.1\n          comment: Server 1\n          nomatch: true\n        - name: 192.168.2.1\n          comment: Server 1\n    options:\n      dependson:\n        - ${proxmox_virtual_environment_vm.example}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "cidrs": {
                     "type": "array",
@@ -3451,7 +3451,7 @@
                 },
                 "comment": {
                     "type": "string",
-                    "description": "Arbitrary string annotation.\n"
+                    "description": "IPSet comment.\n"
                 },
                 "containerId": {
                     "type": "integer",
@@ -3459,7 +3459,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Network/IP specification in CIDR format.\n"
+                    "description": "IPSet name.\n"
                 },
                 "nodeName": {
                     "type": "string",
@@ -3484,7 +3484,7 @@
                 },
                 "comment": {
                     "type": "string",
-                    "description": "Arbitrary string annotation.\n"
+                    "description": "IPSet comment.\n"
                 },
                 "containerId": {
                     "type": "integer",
@@ -3492,7 +3492,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Network/IP specification in CIDR format.\n"
+                    "description": "IPSet name.\n"
                 },
                 "nodeName": {
                     "type": "string",
@@ -3516,7 +3516,7 @@
                     },
                     "comment": {
                         "type": "string",
-                        "description": "Arbitrary string annotation.\n"
+                        "description": "IPSet comment.\n"
                     },
                     "containerId": {
                         "type": "integer",
@@ -3524,7 +3524,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Network/IP specification in CIDR format.\n"
+                        "description": "IPSet name.\n"
                     },
                     "nodeName": {
                         "type": "string",
@@ -3539,7 +3539,7 @@
             }
         },
         "proxmoxve:Network/firewallOptions:FirewallOptions": {
-            "description": "Manages firewall options on VM / Container level.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst example = new proxmoxve.network.FirewallOptions(\"example\", {\n    nodeName: proxmox_virtual_environment_vm.example.node_name,\n    vmId: proxmox_virtual_environment_vm.example.vm_id,\n    dhcp: true,\n    enabled: false,\n    ipfilter: true,\n    logLevelIn: \"info\",\n    logLevelOut: \"info\",\n    macfilter: false,\n    ndp: true,\n    inputPolicy: \"ACCEPT\",\n    outputPolicy: \"ACCEPT\",\n    radv: true,\n}, {\n    dependsOn: [proxmox_virtual_environment_vm.example],\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample = proxmoxve.network.FirewallOptions(\"example\",\n    node_name=proxmox_virtual_environment_vm[\"example\"][\"node_name\"],\n    vm_id=proxmox_virtual_environment_vm[\"example\"][\"vm_id\"],\n    dhcp=True,\n    enabled=False,\n    ipfilter=True,\n    log_level_in=\"info\",\n    log_level_out=\"info\",\n    macfilter=False,\n    ndp=True,\n    input_policy=\"ACCEPT\",\n    output_policy=\"ACCEPT\",\n    radv=True,\n    opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_vm[\"example\"]]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new ProxmoxVE.Network.FirewallOptions(\"example\", new()\n    {\n        NodeName = proxmox_virtual_environment_vm.Example.Node_name,\n        VmId = proxmox_virtual_environment_vm.Example.Vm_id,\n        Dhcp = true,\n        Enabled = false,\n        Ipfilter = true,\n        LogLevelIn = \"info\",\n        LogLevelOut = \"info\",\n        Macfilter = false,\n        Ndp = true,\n        InputPolicy = \"ACCEPT\",\n        OutputPolicy = \"ACCEPT\",\n        Radv = true,\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            proxmox_virtual_environment_vm.Example, \n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Network\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Network.NewFirewallOptions(ctx, \"example\", \u0026Network.FirewallOptionsArgs{\n\t\t\tNodeName:     pulumi.Any(proxmox_virtual_environment_vm.Example.Node_name),\n\t\t\tVmId:         pulumi.Any(proxmox_virtual_environment_vm.Example.Vm_id),\n\t\t\tDhcp:         pulumi.Bool(true),\n\t\t\tEnabled:      pulumi.Bool(false),\n\t\t\tIpfilter:     pulumi.Bool(true),\n\t\t\tLogLevelIn:   pulumi.String(\"info\"),\n\t\t\tLogLevelOut:  pulumi.String(\"info\"),\n\t\t\tMacfilter:    pulumi.Bool(false),\n\t\t\tNdp:          pulumi.Bool(true),\n\t\t\tInputPolicy:  pulumi.String(\"ACCEPT\"),\n\t\t\tOutputPolicy: pulumi.String(\"ACCEPT\"),\n\t\t\tRadv:         pulumi.Bool(true),\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tproxmox_virtual_environment_vm.Example,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Network.FirewallOptions;\nimport com.pulumi.proxmoxve.Network.FirewallOptionsArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new FirewallOptions(\"example\", FirewallOptionsArgs.builder()        \n            .nodeName(proxmox_virtual_environment_vm.example().node_name())\n            .vmId(proxmox_virtual_environment_vm.example().vm_id())\n            .dhcp(true)\n            .enabled(false)\n            .ipfilter(true)\n            .logLevelIn(\"info\")\n            .logLevelOut(\"info\")\n            .macfilter(false)\n            .ndp(true)\n            .inputPolicy(\"ACCEPT\")\n            .outputPolicy(\"ACCEPT\")\n            .radv(true)\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(proxmox_virtual_environment_vm.example())\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: proxmoxve:Network:FirewallOptions\n    properties:\n      nodeName: ${proxmox_virtual_environment_vm.example.node_name}\n      vmId: ${proxmox_virtual_environment_vm.example.vm_id}\n      dhcp: true\n      enabled: false\n      ipfilter: true\n      logLevelIn: info\n      logLevelOut: info\n      macfilter: false\n      ndp: true\n      inputPolicy: ACCEPT\n      outputPolicy: ACCEPT\n      radv: true\n    options:\n      dependson:\n        - ${proxmox_virtual_environment_vm.example}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Manages firewall options on VM / Container level.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst example = new proxmoxve.network.FirewallOptions(\"example\", {\n    nodeName: proxmox_virtual_environment_vm.example.node_name,\n    vmId: proxmox_virtual_environment_vm.example.vm_id,\n    dhcp: true,\n    enabled: false,\n    ipfilter: true,\n    logLevelIn: \"info\",\n    logLevelOut: \"info\",\n    macfilter: false,\n    ndp: true,\n    inputPolicy: \"ACCEPT\",\n    outputPolicy: \"ACCEPT\",\n    radv: true,\n}, {\n    dependsOn: [proxmox_virtual_environment_vm.example],\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample = proxmoxve.network.FirewallOptions(\"example\",\n    node_name=proxmox_virtual_environment_vm[\"example\"][\"node_name\"],\n    vm_id=proxmox_virtual_environment_vm[\"example\"][\"vm_id\"],\n    dhcp=True,\n    enabled=False,\n    ipfilter=True,\n    log_level_in=\"info\",\n    log_level_out=\"info\",\n    macfilter=False,\n    ndp=True,\n    input_policy=\"ACCEPT\",\n    output_policy=\"ACCEPT\",\n    radv=True,\n    opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_vm[\"example\"]]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new ProxmoxVE.Network.FirewallOptions(\"example\", new()\n    {\n        NodeName = proxmox_virtual_environment_vm.Example.Node_name,\n        VmId = proxmox_virtual_environment_vm.Example.Vm_id,\n        Dhcp = true,\n        Enabled = false,\n        Ipfilter = true,\n        LogLevelIn = \"info\",\n        LogLevelOut = \"info\",\n        Macfilter = false,\n        Ndp = true,\n        InputPolicy = \"ACCEPT\",\n        OutputPolicy = \"ACCEPT\",\n        Radv = true,\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            proxmox_virtual_environment_vm.Example,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Network\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Network.NewFirewallOptions(ctx, \"example\", \u0026Network.FirewallOptionsArgs{\n\t\t\tNodeName:     pulumi.Any(proxmox_virtual_environment_vm.Example.Node_name),\n\t\t\tVmId:         pulumi.Any(proxmox_virtual_environment_vm.Example.Vm_id),\n\t\t\tDhcp:         pulumi.Bool(true),\n\t\t\tEnabled:      pulumi.Bool(false),\n\t\t\tIpfilter:     pulumi.Bool(true),\n\t\t\tLogLevelIn:   pulumi.String(\"info\"),\n\t\t\tLogLevelOut:  pulumi.String(\"info\"),\n\t\t\tMacfilter:    pulumi.Bool(false),\n\t\t\tNdp:          pulumi.Bool(true),\n\t\t\tInputPolicy:  pulumi.String(\"ACCEPT\"),\n\t\t\tOutputPolicy: pulumi.String(\"ACCEPT\"),\n\t\t\tRadv:         pulumi.Bool(true),\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tproxmox_virtual_environment_vm.Example,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Network.FirewallOptions;\nimport com.pulumi.proxmoxve.Network.FirewallOptionsArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new FirewallOptions(\"example\", FirewallOptionsArgs.builder()        \n            .nodeName(proxmox_virtual_environment_vm.example().node_name())\n            .vmId(proxmox_virtual_environment_vm.example().vm_id())\n            .dhcp(true)\n            .enabled(false)\n            .ipfilter(true)\n            .logLevelIn(\"info\")\n            .logLevelOut(\"info\")\n            .macfilter(false)\n            .ndp(true)\n            .inputPolicy(\"ACCEPT\")\n            .outputPolicy(\"ACCEPT\")\n            .radv(true)\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(proxmox_virtual_environment_vm.example())\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: proxmoxve:Network:FirewallOptions\n    properties:\n      nodeName: ${proxmox_virtual_environment_vm.example.node_name}\n      vmId: ${proxmox_virtual_environment_vm.example.vm_id}\n      dhcp: true\n      enabled: false\n      ipfilter: true\n      logLevelIn: info\n      logLevelOut: info\n      macfilter: false\n      ndp: true\n      inputPolicy: ACCEPT\n      outputPolicy: ACCEPT\n      radv: true\n    options:\n      dependson:\n        - ${proxmox_virtual_environment_vm.example}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "containerId": {
                     "type": "integer",
@@ -3714,7 +3714,7 @@
             }
         },
         "proxmoxve:Network/firewallRules:FirewallRules": {
-            "description": "A security group is a collection of rules, defined at cluster level, which can\nbe used in all VMs' rules. For example, you can define a group named “webserver”\nwith rules to open the http and https ports. Rules can be created on the cluster\nlevel, on VM / Container level.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst inbound = new proxmoxve.network.FirewallRules(\"inbound\", {\n    nodeName: proxmox_virtual_environment_vm.example.node_name,\n    vmId: proxmox_virtual_environment_vm.example.vm_id,\n    rules: [\n        {\n            type: \"in\",\n            action: \"ACCEPT\",\n            comment: \"Allow HTTP\",\n            dest: \"192.168.1.5\",\n            dport: \"80\",\n            proto: \"tcp\",\n            log: \"info\",\n        },\n        {\n            type: \"in\",\n            action: \"ACCEPT\",\n            comment: \"Allow HTTPS\",\n            dest: \"192.168.1.5\",\n            dport: \"443\",\n            proto: \"tcp\",\n            log: \"info\",\n        },\n        {\n            securityGroup: proxmox_virtual_environment_cluster_firewall_security_group.example.name,\n            comment: \"From security group\",\n            iface: \"net0\",\n        },\n    ],\n}, {\n    dependsOn: [\n        proxmox_virtual_environment_vm.example,\n        proxmox_virtual_environment_cluster_firewall_security_group.example,\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\ninbound = proxmoxve.network.FirewallRules(\"inbound\",\n    node_name=proxmox_virtual_environment_vm[\"example\"][\"node_name\"],\n    vm_id=proxmox_virtual_environment_vm[\"example\"][\"vm_id\"],\n    rules=[\n        proxmoxve.network.FirewallRulesRuleArgs(\n            type=\"in\",\n            action=\"ACCEPT\",\n            comment=\"Allow HTTP\",\n            dest=\"192.168.1.5\",\n            dport=\"80\",\n            proto=\"tcp\",\n            log=\"info\",\n        ),\n        proxmoxve.network.FirewallRulesRuleArgs(\n            type=\"in\",\n            action=\"ACCEPT\",\n            comment=\"Allow HTTPS\",\n            dest=\"192.168.1.5\",\n            dport=\"443\",\n            proto=\"tcp\",\n            log=\"info\",\n        ),\n        proxmoxve.network.FirewallRulesRuleArgs(\n            security_group=proxmox_virtual_environment_cluster_firewall_security_group[\"example\"][\"name\"],\n            comment=\"From security group\",\n            iface=\"net0\",\n        ),\n    ],\n    opts=pulumi.ResourceOptions(depends_on=[\n            proxmox_virtual_environment_vm[\"example\"],\n            proxmox_virtual_environment_cluster_firewall_security_group[\"example\"],\n        ]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var inbound = new ProxmoxVE.Network.FirewallRules(\"inbound\", new()\n    {\n        NodeName = proxmox_virtual_environment_vm.Example.Node_name,\n        VmId = proxmox_virtual_environment_vm.Example.Vm_id,\n        Rules = new[]\n        {\n            new ProxmoxVE.Network.Inputs.FirewallRulesRuleArgs\n            {\n                Type = \"in\",\n                Action = \"ACCEPT\",\n                Comment = \"Allow HTTP\",\n                Dest = \"192.168.1.5\",\n                Dport = \"80\",\n                Proto = \"tcp\",\n                Log = \"info\",\n            },\n            new ProxmoxVE.Network.Inputs.FirewallRulesRuleArgs\n            {\n                Type = \"in\",\n                Action = \"ACCEPT\",\n                Comment = \"Allow HTTPS\",\n                Dest = \"192.168.1.5\",\n                Dport = \"443\",\n                Proto = \"tcp\",\n                Log = \"info\",\n            },\n            new ProxmoxVE.Network.Inputs.FirewallRulesRuleArgs\n            {\n                SecurityGroup = proxmox_virtual_environment_cluster_firewall_security_group.Example.Name,\n                Comment = \"From security group\",\n                Iface = \"net0\",\n            },\n        },\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            proxmox_virtual_environment_vm.Example, \n            proxmox_virtual_environment_cluster_firewall_security_group.Example, \n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Network\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Network.NewFirewallRules(ctx, \"inbound\", \u0026Network.FirewallRulesArgs{\n\t\t\tNodeName: pulumi.Any(proxmox_virtual_environment_vm.Example.Node_name),\n\t\t\tVmId:     pulumi.Any(proxmox_virtual_environment_vm.Example.Vm_id),\n\t\t\tRules: network.FirewallRulesRuleArray{\n\t\t\t\t\u0026network.FirewallRulesRuleArgs{\n\t\t\t\t\tType:    pulumi.String(\"in\"),\n\t\t\t\t\tAction:  pulumi.String(\"ACCEPT\"),\n\t\t\t\t\tComment: pulumi.String(\"Allow HTTP\"),\n\t\t\t\t\tDest:    pulumi.String(\"192.168.1.5\"),\n\t\t\t\t\tDport:   pulumi.String(\"80\"),\n\t\t\t\t\tProto:   pulumi.String(\"tcp\"),\n\t\t\t\t\tLog:     pulumi.String(\"info\"),\n\t\t\t\t},\n\t\t\t\t\u0026network.FirewallRulesRuleArgs{\n\t\t\t\t\tType:    pulumi.String(\"in\"),\n\t\t\t\t\tAction:  pulumi.String(\"ACCEPT\"),\n\t\t\t\t\tComment: pulumi.String(\"Allow HTTPS\"),\n\t\t\t\t\tDest:    pulumi.String(\"192.168.1.5\"),\n\t\t\t\t\tDport:   pulumi.String(\"443\"),\n\t\t\t\t\tProto:   pulumi.String(\"tcp\"),\n\t\t\t\t\tLog:     pulumi.String(\"info\"),\n\t\t\t\t},\n\t\t\t\t\u0026network.FirewallRulesRuleArgs{\n\t\t\t\t\tSecurityGroup: pulumi.Any(proxmox_virtual_environment_cluster_firewall_security_group.Example.Name),\n\t\t\t\t\tComment:       pulumi.String(\"From security group\"),\n\t\t\t\t\tIface:         pulumi.String(\"net0\"),\n\t\t\t\t},\n\t\t\t},\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tproxmox_virtual_environment_vm.Example,\n\t\t\tproxmox_virtual_environment_cluster_firewall_security_group.Example,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Network.FirewallRules;\nimport com.pulumi.proxmoxve.Network.FirewallRulesArgs;\nimport com.pulumi.proxmoxve.Network.inputs.FirewallRulesRuleArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var inbound = new FirewallRules(\"inbound\", FirewallRulesArgs.builder()        \n            .nodeName(proxmox_virtual_environment_vm.example().node_name())\n            .vmId(proxmox_virtual_environment_vm.example().vm_id())\n            .rules(            \n                FirewallRulesRuleArgs.builder()\n                    .type(\"in\")\n                    .action(\"ACCEPT\")\n                    .comment(\"Allow HTTP\")\n                    .dest(\"192.168.1.5\")\n                    .dport(\"80\")\n                    .proto(\"tcp\")\n                    .log(\"info\")\n                    .build(),\n                FirewallRulesRuleArgs.builder()\n                    .type(\"in\")\n                    .action(\"ACCEPT\")\n                    .comment(\"Allow HTTPS\")\n                    .dest(\"192.168.1.5\")\n                    .dport(\"443\")\n                    .proto(\"tcp\")\n                    .log(\"info\")\n                    .build(),\n                FirewallRulesRuleArgs.builder()\n                    .securityGroup(proxmox_virtual_environment_cluster_firewall_security_group.example().name())\n                    .comment(\"From security group\")\n                    .iface(\"net0\")\n                    .build())\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(                \n                    proxmox_virtual_environment_vm.example(),\n                    proxmox_virtual_environment_cluster_firewall_security_group.example())\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  inbound:\n    type: proxmoxve:Network:FirewallRules\n    properties:\n      nodeName: ${proxmox_virtual_environment_vm.example.node_name}\n      vmId: ${proxmox_virtual_environment_vm.example.vm_id}\n      rules:\n        - type: in\n          action: ACCEPT\n          comment: Allow HTTP\n          dest: 192.168.1.5\n          dport: '80'\n          proto: tcp\n          log: info\n        - type: in\n          action: ACCEPT\n          comment: Allow HTTPS\n          dest: 192.168.1.5\n          dport: '443'\n          proto: tcp\n          log: info\n        - securityGroup: ${proxmox_virtual_environment_cluster_firewall_security_group.example.name}\n          comment: From security group\n          iface: net0\n    options:\n      dependson:\n        - ${proxmox_virtual_environment_vm.example}\n        - ${proxmox_virtual_environment_cluster_firewall_security_group.example}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "A security group is a collection of rules, defined at cluster level, which can\nbe used in all VMs' rules. For example, you can define a group named “webserver”\nwith rules to open the http and https ports. Rules can be created on the cluster\nlevel, on VM / Container level.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst inbound = new proxmoxve.network.FirewallRules(\"inbound\", {\n    nodeName: proxmox_virtual_environment_vm.example.node_name,\n    vmId: proxmox_virtual_environment_vm.example.vm_id,\n    rules: [\n        {\n            type: \"in\",\n            action: \"ACCEPT\",\n            comment: \"Allow HTTP\",\n            dest: \"192.168.1.5\",\n            dport: \"80\",\n            proto: \"tcp\",\n            log: \"info\",\n        },\n        {\n            type: \"in\",\n            action: \"ACCEPT\",\n            comment: \"Allow HTTPS\",\n            dest: \"192.168.1.5\",\n            dport: \"443\",\n            proto: \"tcp\",\n            log: \"info\",\n        },\n        {\n            securityGroup: proxmox_virtual_environment_cluster_firewall_security_group.example.name,\n            comment: \"From security group\",\n            iface: \"net0\",\n        },\n    ],\n}, {\n    dependsOn: [\n        proxmox_virtual_environment_vm.example,\n        proxmox_virtual_environment_cluster_firewall_security_group.example,\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\ninbound = proxmoxve.network.FirewallRules(\"inbound\",\n    node_name=proxmox_virtual_environment_vm[\"example\"][\"node_name\"],\n    vm_id=proxmox_virtual_environment_vm[\"example\"][\"vm_id\"],\n    rules=[\n        proxmoxve.network.FirewallRulesRuleArgs(\n            type=\"in\",\n            action=\"ACCEPT\",\n            comment=\"Allow HTTP\",\n            dest=\"192.168.1.5\",\n            dport=\"80\",\n            proto=\"tcp\",\n            log=\"info\",\n        ),\n        proxmoxve.network.FirewallRulesRuleArgs(\n            type=\"in\",\n            action=\"ACCEPT\",\n            comment=\"Allow HTTPS\",\n            dest=\"192.168.1.5\",\n            dport=\"443\",\n            proto=\"tcp\",\n            log=\"info\",\n        ),\n        proxmoxve.network.FirewallRulesRuleArgs(\n            security_group=proxmox_virtual_environment_cluster_firewall_security_group[\"example\"][\"name\"],\n            comment=\"From security group\",\n            iface=\"net0\",\n        ),\n    ],\n    opts=pulumi.ResourceOptions(depends_on=[\n            proxmox_virtual_environment_vm[\"example\"],\n            proxmox_virtual_environment_cluster_firewall_security_group[\"example\"],\n        ]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var inbound = new ProxmoxVE.Network.FirewallRules(\"inbound\", new()\n    {\n        NodeName = proxmox_virtual_environment_vm.Example.Node_name,\n        VmId = proxmox_virtual_environment_vm.Example.Vm_id,\n        Rules = new[]\n        {\n            new ProxmoxVE.Network.Inputs.FirewallRulesRuleArgs\n            {\n                Type = \"in\",\n                Action = \"ACCEPT\",\n                Comment = \"Allow HTTP\",\n                Dest = \"192.168.1.5\",\n                Dport = \"80\",\n                Proto = \"tcp\",\n                Log = \"info\",\n            },\n            new ProxmoxVE.Network.Inputs.FirewallRulesRuleArgs\n            {\n                Type = \"in\",\n                Action = \"ACCEPT\",\n                Comment = \"Allow HTTPS\",\n                Dest = \"192.168.1.5\",\n                Dport = \"443\",\n                Proto = \"tcp\",\n                Log = \"info\",\n            },\n            new ProxmoxVE.Network.Inputs.FirewallRulesRuleArgs\n            {\n                SecurityGroup = proxmox_virtual_environment_cluster_firewall_security_group.Example.Name,\n                Comment = \"From security group\",\n                Iface = \"net0\",\n            },\n        },\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            proxmox_virtual_environment_vm.Example,\n            proxmox_virtual_environment_cluster_firewall_security_group.Example,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Network\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Network.NewFirewallRules(ctx, \"inbound\", \u0026Network.FirewallRulesArgs{\n\t\t\tNodeName: pulumi.Any(proxmox_virtual_environment_vm.Example.Node_name),\n\t\t\tVmId:     pulumi.Any(proxmox_virtual_environment_vm.Example.Vm_id),\n\t\t\tRules: network.FirewallRulesRuleArray{\n\t\t\t\t\u0026network.FirewallRulesRuleArgs{\n\t\t\t\t\tType:    pulumi.String(\"in\"),\n\t\t\t\t\tAction:  pulumi.String(\"ACCEPT\"),\n\t\t\t\t\tComment: pulumi.String(\"Allow HTTP\"),\n\t\t\t\t\tDest:    pulumi.String(\"192.168.1.5\"),\n\t\t\t\t\tDport:   pulumi.String(\"80\"),\n\t\t\t\t\tProto:   pulumi.String(\"tcp\"),\n\t\t\t\t\tLog:     pulumi.String(\"info\"),\n\t\t\t\t},\n\t\t\t\t\u0026network.FirewallRulesRuleArgs{\n\t\t\t\t\tType:    pulumi.String(\"in\"),\n\t\t\t\t\tAction:  pulumi.String(\"ACCEPT\"),\n\t\t\t\t\tComment: pulumi.String(\"Allow HTTPS\"),\n\t\t\t\t\tDest:    pulumi.String(\"192.168.1.5\"),\n\t\t\t\t\tDport:   pulumi.String(\"443\"),\n\t\t\t\t\tProto:   pulumi.String(\"tcp\"),\n\t\t\t\t\tLog:     pulumi.String(\"info\"),\n\t\t\t\t},\n\t\t\t\t\u0026network.FirewallRulesRuleArgs{\n\t\t\t\t\tSecurityGroup: pulumi.Any(proxmox_virtual_environment_cluster_firewall_security_group.Example.Name),\n\t\t\t\t\tComment:       pulumi.String(\"From security group\"),\n\t\t\t\t\tIface:         pulumi.String(\"net0\"),\n\t\t\t\t},\n\t\t\t},\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tproxmox_virtual_environment_vm.Example,\n\t\t\tproxmox_virtual_environment_cluster_firewall_security_group.Example,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Network.FirewallRules;\nimport com.pulumi.proxmoxve.Network.FirewallRulesArgs;\nimport com.pulumi.proxmoxve.Network.inputs.FirewallRulesRuleArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var inbound = new FirewallRules(\"inbound\", FirewallRulesArgs.builder()        \n            .nodeName(proxmox_virtual_environment_vm.example().node_name())\n            .vmId(proxmox_virtual_environment_vm.example().vm_id())\n            .rules(            \n                FirewallRulesRuleArgs.builder()\n                    .type(\"in\")\n                    .action(\"ACCEPT\")\n                    .comment(\"Allow HTTP\")\n                    .dest(\"192.168.1.5\")\n                    .dport(\"80\")\n                    .proto(\"tcp\")\n                    .log(\"info\")\n                    .build(),\n                FirewallRulesRuleArgs.builder()\n                    .type(\"in\")\n                    .action(\"ACCEPT\")\n                    .comment(\"Allow HTTPS\")\n                    .dest(\"192.168.1.5\")\n                    .dport(\"443\")\n                    .proto(\"tcp\")\n                    .log(\"info\")\n                    .build(),\n                FirewallRulesRuleArgs.builder()\n                    .securityGroup(proxmox_virtual_environment_cluster_firewall_security_group.example().name())\n                    .comment(\"From security group\")\n                    .iface(\"net0\")\n                    .build())\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(                \n                    proxmox_virtual_environment_vm.example(),\n                    proxmox_virtual_environment_cluster_firewall_security_group.example())\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  inbound:\n    type: proxmoxve:Network:FirewallRules\n    properties:\n      nodeName: ${proxmox_virtual_environment_vm.example.node_name}\n      vmId: ${proxmox_virtual_environment_vm.example.vm_id}\n      rules:\n        - type: in\n          action: ACCEPT\n          comment: Allow HTTP\n          dest: 192.168.1.5\n          dport: '80'\n          proto: tcp\n          log: info\n        - type: in\n          action: ACCEPT\n          comment: Allow HTTPS\n          dest: 192.168.1.5\n          dport: '443'\n          proto: tcp\n          log: info\n        - securityGroup: ${proxmox_virtual_environment_cluster_firewall_security_group.example.name}\n          comment: From security group\n          iface: net0\n    options:\n      dependson:\n        - ${proxmox_virtual_environment_vm.example}\n        - ${proxmox_virtual_environment_cluster_firewall_security_group.example}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "containerId": {
                     "type": "integer",
@@ -3796,7 +3796,7 @@
             "properties": {
                 "comment": {
                     "type": "string",
-                    "description": "Rule comment.\n"
+                    "description": "Security group comment.\n"
                 },
                 "containerId": {
                     "type": "integer",
@@ -3829,7 +3829,7 @@
             "inputProperties": {
                 "comment": {
                     "type": "string",
-                    "description": "Rule comment.\n"
+                    "description": "Security group comment.\n"
                 },
                 "containerId": {
                     "type": "integer",
@@ -3864,7 +3864,7 @@
                 "properties": {
                     "comment": {
                         "type": "string",
-                        "description": "Rule comment.\n"
+                        "description": "Security group comment.\n"
                     },
                     "containerId": {
                         "type": "integer",
@@ -3895,7 +3895,7 @@
             }
         },
         "proxmoxve:Network/networkBridge:NetworkBridge": {
-            "description": "Manages a Linux Bridge network interface in a Proxmox VE node.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst vmbr99 = new proxmoxve.network.NetworkBridge(\"vmbr99\", {\n    nodeName: \"pve\",\n    address: \"99.99.99.99/16\",\n    comment: \"vmbr99 comment\",\n    ports: [\"ens18.99\"],\n}, {\n    dependsOn: [proxmox_virtual_environment_network_linux_vlan.vlan99],\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nvmbr99 = proxmoxve.network.NetworkBridge(\"vmbr99\",\n    node_name=\"pve\",\n    address=\"99.99.99.99/16\",\n    comment=\"vmbr99 comment\",\n    ports=[\"ens18.99\"],\n    opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_network_linux_vlan[\"vlan99\"]]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var vmbr99 = new ProxmoxVE.Network.NetworkBridge(\"vmbr99\", new()\n    {\n        NodeName = \"pve\",\n        Address = \"99.99.99.99/16\",\n        Comment = \"vmbr99 comment\",\n        Ports = new[]\n        {\n            \"ens18.99\",\n        },\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            proxmox_virtual_environment_network_linux_vlan.Vlan99, \n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Network\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Network.NewNetworkBridge(ctx, \"vmbr99\", \u0026Network.NetworkBridgeArgs{\n\t\t\tNodeName: pulumi.String(\"pve\"),\n\t\t\tAddress:  pulumi.String(\"99.99.99.99/16\"),\n\t\t\tComment:  pulumi.String(\"vmbr99 comment\"),\n\t\t\tPorts: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"ens18.99\"),\n\t\t\t},\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tproxmox_virtual_environment_network_linux_vlan.Vlan99,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Network.NetworkBridge;\nimport com.pulumi.proxmoxve.Network.NetworkBridgeArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var vmbr99 = new NetworkBridge(\"vmbr99\", NetworkBridgeArgs.builder()        \n            .nodeName(\"pve\")\n            .address(\"99.99.99.99/16\")\n            .comment(\"vmbr99 comment\")\n            .ports(\"ens18.99\")\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(proxmox_virtual_environment_network_linux_vlan.vlan99())\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  vmbr99:\n    type: proxmoxve:Network:NetworkBridge\n    properties:\n      nodeName: pve\n      address: 99.99.99.99/16\n      comment: vmbr99 comment\n      ports:\n        - ens18.99\n    options:\n      dependson:\n        - ${proxmox_virtual_environment_network_linux_vlan.vlan99}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n#!/usr/bin/env sh\n\n#Interfaces can be imported using the `node_name:iface` format, e.g.\n\n```sh\n$ pulumi import proxmoxve:Network/networkBridge:NetworkBridge vmbr99 pve:vmbr99\n```\n\n",
+            "description": "Manages a Linux Bridge network interface in a Proxmox VE node.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst vmbr99 = new proxmoxve.network.NetworkBridge(\"vmbr99\", {\n    nodeName: \"pve\",\n    address: \"99.99.99.99/16\",\n    comment: \"vmbr99 comment\",\n    ports: [\"ens18.99\"],\n}, {\n    dependsOn: [proxmox_virtual_environment_network_linux_vlan.vlan99],\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nvmbr99 = proxmoxve.network.NetworkBridge(\"vmbr99\",\n    node_name=\"pve\",\n    address=\"99.99.99.99/16\",\n    comment=\"vmbr99 comment\",\n    ports=[\"ens18.99\"],\n    opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_network_linux_vlan[\"vlan99\"]]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var vmbr99 = new ProxmoxVE.Network.NetworkBridge(\"vmbr99\", new()\n    {\n        NodeName = \"pve\",\n        Address = \"99.99.99.99/16\",\n        Comment = \"vmbr99 comment\",\n        Ports = new[]\n        {\n            \"ens18.99\",\n        },\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            proxmox_virtual_environment_network_linux_vlan.Vlan99,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Network\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Network.NewNetworkBridge(ctx, \"vmbr99\", \u0026Network.NetworkBridgeArgs{\n\t\t\tNodeName: pulumi.String(\"pve\"),\n\t\t\tAddress:  pulumi.String(\"99.99.99.99/16\"),\n\t\t\tComment:  pulumi.String(\"vmbr99 comment\"),\n\t\t\tPorts: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"ens18.99\"),\n\t\t\t},\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tproxmox_virtual_environment_network_linux_vlan.Vlan99,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Network.NetworkBridge;\nimport com.pulumi.proxmoxve.Network.NetworkBridgeArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var vmbr99 = new NetworkBridge(\"vmbr99\", NetworkBridgeArgs.builder()        \n            .nodeName(\"pve\")\n            .address(\"99.99.99.99/16\")\n            .comment(\"vmbr99 comment\")\n            .ports(\"ens18.99\")\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(proxmox_virtual_environment_network_linux_vlan.vlan99())\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  vmbr99:\n    type: proxmoxve:Network:NetworkBridge\n    properties:\n      nodeName: pve\n      address: 99.99.99.99/16\n      comment: vmbr99 comment\n      ports:\n        - ens18.99\n    options:\n      dependson:\n        - ${proxmox_virtual_environment_network_linux_vlan.vlan99}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n#!/usr/bin/env sh\n\n#Interfaces can be imported using the `node_name:iface` format, e.g.\n\n```sh\n$ pulumi import proxmoxve:Network/networkBridge:NetworkBridge vmbr99 pve:vmbr99\n```\n\n",
             "properties": {
                 "address": {
                     "type": "string",
@@ -4738,6 +4738,99 @@
                 "type": "object"
             }
         },
+        "proxmoxve:User/token:Token": {
+            "description": "User API tokens.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\n// if creating a user token, the user must be created first\nconst user = new proxmoxve.permission.User(\"user\", {\n    comment: \"Managed by Terraform\",\n    email: \"user@pve\",\n    enabled: true,\n    expirationDate: \"2034-01-01T22:00:00Z\",\n    userId: \"user@pve\",\n});\nconst userToken = new proxmoxve.user.Token(\"userToken\", {\n    comment: \"Managed by Terraform\",\n    expirationDate: \"2033-01-01T22:00:00Z\",\n    tokenName: \"tk1\",\n    userId: user.userId,\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\n# if creating a user token, the user must be created first\nuser = proxmoxve.permission.User(\"user\",\n    comment=\"Managed by Terraform\",\n    email=\"user@pve\",\n    enabled=True,\n    expiration_date=\"2034-01-01T22:00:00Z\",\n    user_id=\"user@pve\")\nuser_token = proxmoxve.user.Token(\"userToken\",\n    comment=\"Managed by Terraform\",\n    expiration_date=\"2033-01-01T22:00:00Z\",\n    token_name=\"tk1\",\n    user_id=user.user_id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // if creating a user token, the user must be created first\n    var user = new ProxmoxVE.Permission.User(\"user\", new()\n    {\n        Comment = \"Managed by Terraform\",\n        Email = \"user@pve\",\n        Enabled = true,\n        ExpirationDate = \"2034-01-01T22:00:00Z\",\n        UserId = \"user@pve\",\n    });\n\n    var userToken = new ProxmoxVE.User.Token(\"userToken\", new()\n    {\n        Comment = \"Managed by Terraform\",\n        ExpirationDate = \"2033-01-01T22:00:00Z\",\n        TokenName = \"tk1\",\n        UserId = user.UserId,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Permission\"\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/User\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// if creating a user token, the user must be created first\n\t\tuser, err := Permission.NewUser(ctx, \"user\", \u0026Permission.UserArgs{\n\t\t\tComment:        pulumi.String(\"Managed by Terraform\"),\n\t\t\tEmail:          pulumi.String(\"user@pve\"),\n\t\t\tEnabled:        pulumi.Bool(true),\n\t\t\tExpirationDate: pulumi.String(\"2034-01-01T22:00:00Z\"),\n\t\t\tUserId:         pulumi.String(\"user@pve\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = User.NewToken(ctx, \"userToken\", \u0026User.TokenArgs{\n\t\t\tComment:        pulumi.String(\"Managed by Terraform\"),\n\t\t\tExpirationDate: pulumi.String(\"2033-01-01T22:00:00Z\"),\n\t\t\tTokenName:      pulumi.String(\"tk1\"),\n\t\t\tUserId:         user.UserId,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Permission.User;\nimport com.pulumi.proxmoxve.Permission.UserArgs;\nimport com.pulumi.proxmoxve.User.Token;\nimport com.pulumi.proxmoxve.User.TokenArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // if creating a user token, the user must be created first\n        var user = new User(\"user\", UserArgs.builder()        \n            .comment(\"Managed by Terraform\")\n            .email(\"user@pve\")\n            .enabled(true)\n            .expirationDate(\"2034-01-01T22:00:00Z\")\n            .userId(\"user@pve\")\n            .build());\n\n        var userToken = new Token(\"userToken\", TokenArgs.builder()        \n            .comment(\"Managed by Terraform\")\n            .expirationDate(\"2033-01-01T22:00:00Z\")\n            .tokenName(\"tk1\")\n            .userId(user.userId())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # if creating a user token, the user must be created first\n  user:\n    type: proxmoxve:Permission:User\n    properties:\n      comment: Managed by Terraform\n      email: user@pve\n      enabled: true\n      expirationDate: 2034-01-01T22:00:00Z\n      userId: user@pve\n  userToken:\n    type: proxmoxve:User:Token\n    properties:\n      comment: Managed by Terraform\n      expirationDate: 2033-01-01T22:00:00Z\n      tokenName: tk1\n      userId: ${user.userId}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n#!/usr/bin/env sh\n\n#Tokens can be imported using they identifiers in format `user_id!token_name` format, e.g.:\n\n```sh\n$ pulumi import proxmoxve:User/token:Token token1 user@pve!token1\n```\n\n",
+            "properties": {
+                "comment": {
+                    "type": "string",
+                    "description": "Comment for the token.\n"
+                },
+                "expirationDate": {
+                    "type": "string",
+                    "description": "Expiration date for the token.\n"
+                },
+                "privilegesSeparation": {
+                    "type": "boolean",
+                    "description": "Restrict API token privileges with separate ACLs (default), or give full privileges of corresponding user.\n"
+                },
+                "tokenName": {
+                    "type": "string",
+                    "description": "User-specific token identifier.\n"
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "User identifier.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "API token value used for authentication. It is populated only when creating a new token, and can't be retrieved at import.\n",
+                    "secret": true
+                }
+            },
+            "required": [
+                "privilegesSeparation",
+                "tokenName",
+                "userId",
+                "value"
+            ],
+            "inputProperties": {
+                "comment": {
+                    "type": "string",
+                    "description": "Comment for the token.\n"
+                },
+                "expirationDate": {
+                    "type": "string",
+                    "description": "Expiration date for the token.\n"
+                },
+                "privilegesSeparation": {
+                    "type": "boolean",
+                    "description": "Restrict API token privileges with separate ACLs (default), or give full privileges of corresponding user.\n"
+                },
+                "tokenName": {
+                    "type": "string",
+                    "description": "User-specific token identifier.\n"
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "User identifier.\n"
+                }
+            },
+            "requiredInputs": [
+                "tokenName",
+                "userId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Token resources.\n",
+                "properties": {
+                    "comment": {
+                        "type": "string",
+                        "description": "Comment for the token.\n"
+                    },
+                    "expirationDate": {
+                        "type": "string",
+                        "description": "Expiration date for the token.\n"
+                    },
+                    "privilegesSeparation": {
+                        "type": "boolean",
+                        "description": "Restrict API token privileges with separate ACLs (default), or give full privileges of corresponding user.\n"
+                    },
+                    "tokenName": {
+                        "type": "string",
+                        "description": "User-specific token identifier.\n"
+                    },
+                    "userId": {
+                        "type": "string",
+                        "description": "User identifier.\n"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "API token value used for authentication. It is populated only when creating a new token, and can't be retrieved at import.\n",
+                        "secret": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "proxmoxve:VM/virtualMachine:VirtualMachine": {
             "description": "Manages a virtual machine.\n\n\u003e This resource uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.\n\n## Import\n\nInstances can be imported using the `node_name` and the `vm_id`, e.g.,\n\nbash\n\n```sh\n$ pulumi import proxmoxve:VM/virtualMachine:VirtualMachine ubuntu_vm first-node/4321\n```\n\n",
             "properties": {
@@ -4847,7 +4940,7 @@
                 },
                 "memory": {
                     "$ref": "#/types/proxmoxve:VM/VirtualMachineMemory:VirtualMachineMemory",
-                    "description": "The VGA memory in megabytes (defaults to `16`).\n"
+                    "description": "The memory configuration.\n"
                 },
                 "migrate": {
                     "type": "boolean",
@@ -5095,7 +5188,7 @@
                 },
                 "memory": {
                     "$ref": "#/types/proxmoxve:VM/VirtualMachineMemory:VirtualMachineMemory",
-                    "description": "The VGA memory in megabytes (defaults to `16`).\n"
+                    "description": "The memory configuration.\n"
                 },
                 "migrate": {
                     "type": "boolean",
@@ -5354,7 +5447,7 @@
                     },
                     "memory": {
                         "$ref": "#/types/proxmoxve:VM/VirtualMachineMemory:VirtualMachineMemory",
-                        "description": "The VGA memory in megabytes (defaults to `16`).\n"
+                        "description": "The memory configuration.\n"
                     },
                     "migrate": {
                         "type": "boolean",
@@ -5504,6 +5597,100 @@
                     "vmId": {
                         "type": "integer",
                         "description": "The VM identifier.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "proxmoxve:index/acl:Acl": {
+            "description": "Manages ACLs on the Proxmox cluster.\n\nACLs are used to control access to resources in the Proxmox cluster.\nEach ACL consists of a path, a user, group or token, a role, and a flag to allow propagation of permissions.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst operationsAutomation = new proxmoxve.permission.User(\"operationsAutomation\", {\n    comment: \"Managed by Terraform\",\n    password: \"a-strong-password\",\n    userId: \"operations-automation@pve\",\n});\nconst operationsMonitoring = new proxmoxve.permission.Role(\"operationsMonitoring\", {\n    roleId: \"operations-monitoring\",\n    privileges: [\"VM.Monitor\"],\n});\nconst operationsAutomationMonitoring = new proxmoxve.Acl(\"operationsAutomationMonitoring\", {\n    userId: operationsAutomation.userId,\n    roleId: operationsMonitoring.roleId,\n    path: \"/vms/1234\",\n    propagate: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\noperations_automation = proxmoxve.permission.User(\"operationsAutomation\",\n    comment=\"Managed by Terraform\",\n    password=\"a-strong-password\",\n    user_id=\"operations-automation@pve\")\noperations_monitoring = proxmoxve.permission.Role(\"operationsMonitoring\",\n    role_id=\"operations-monitoring\",\n    privileges=[\"VM.Monitor\"])\noperations_automation_monitoring = proxmoxve.Acl(\"operationsAutomationMonitoring\",\n    user_id=operations_automation.user_id,\n    role_id=operations_monitoring.role_id,\n    path=\"/vms/1234\",\n    propagate=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var operationsAutomation = new ProxmoxVE.Permission.User(\"operationsAutomation\", new()\n    {\n        Comment = \"Managed by Terraform\",\n        Password = \"a-strong-password\",\n        UserId = \"operations-automation@pve\",\n    });\n\n    var operationsMonitoring = new ProxmoxVE.Permission.Role(\"operationsMonitoring\", new()\n    {\n        RoleId = \"operations-monitoring\",\n        Privileges = new[]\n        {\n            \"VM.Monitor\",\n        },\n    });\n\n    var operationsAutomationMonitoring = new ProxmoxVE.Acl(\"operationsAutomationMonitoring\", new()\n    {\n        UserId = operationsAutomation.UserId,\n        RoleId = operationsMonitoring.RoleId,\n        Path = \"/vms/1234\",\n        Propagate = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve\"\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Permission\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\toperationsAutomation, err := Permission.NewUser(ctx, \"operationsAutomation\", \u0026Permission.UserArgs{\n\t\t\tComment:  pulumi.String(\"Managed by Terraform\"),\n\t\t\tPassword: pulumi.String(\"a-strong-password\"),\n\t\t\tUserId:   pulumi.String(\"operations-automation@pve\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\toperationsMonitoring, err := Permission.NewRole(ctx, \"operationsMonitoring\", \u0026Permission.RoleArgs{\n\t\t\tRoleId: pulumi.String(\"operations-monitoring\"),\n\t\t\tPrivileges: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"VM.Monitor\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = proxmoxve.NewAcl(ctx, \"operationsAutomationMonitoring\", \u0026proxmoxve.AclArgs{\n\t\t\tUserId:    operationsAutomation.UserId,\n\t\t\tRoleId:    operationsMonitoring.RoleId,\n\t\t\tPath:      pulumi.String(\"/vms/1234\"),\n\t\t\tPropagate: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Permission.User;\nimport com.pulumi.proxmoxve.Permission.UserArgs;\nimport com.pulumi.proxmoxve.Permission.Role;\nimport com.pulumi.proxmoxve.Permission.RoleArgs;\nimport com.pulumi.proxmoxve.Acl;\nimport com.pulumi.proxmoxve.AclArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var operationsAutomation = new User(\"operationsAutomation\", UserArgs.builder()        \n            .comment(\"Managed by Terraform\")\n            .password(\"a-strong-password\")\n            .userId(\"operations-automation@pve\")\n            .build());\n\n        var operationsMonitoring = new Role(\"operationsMonitoring\", RoleArgs.builder()        \n            .roleId(\"operations-monitoring\")\n            .privileges(\"VM.Monitor\")\n            .build());\n\n        var operationsAutomationMonitoring = new Acl(\"operationsAutomationMonitoring\", AclArgs.builder()        \n            .userId(operationsAutomation.userId())\n            .roleId(operationsMonitoring.roleId())\n            .path(\"/vms/1234\")\n            .propagate(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  operationsAutomation:\n    type: proxmoxve:Permission:User\n    properties:\n      comment: Managed by Terraform\n      password: a-strong-password\n      userId: operations-automation@pve\n  operationsMonitoring:\n    type: proxmoxve:Permission:Role\n    properties:\n      roleId: operations-monitoring\n      privileges:\n        - VM.Monitor\n  operationsAutomationMonitoring:\n    type: proxmoxve:Acl\n    properties:\n      userId: ${operationsAutomation.userId}\n      roleId: ${operationsMonitoring.roleId}\n      path: /vms/1234\n      propagate: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n#!/usr/bin/env sh\n\nACL can be imported using its unique identifier, e.g.: {path}?{group|user@realm|user@realm!token}?{role}\n\n```sh\n$ pulumi import proxmoxve:index/acl:Acl operations_automation_monitoring /?monitor@pve?operations-monitoring\n```\n\n",
+            "properties": {
+                "groupId": {
+                    "type": "string",
+                    "description": "The group the ACL should apply to (mutually exclusive with `token_id` and `user_id`)\n"
+                },
+                "path": {
+                    "type": "string",
+                    "description": "Access control path\n"
+                },
+                "propagate": {
+                    "type": "boolean",
+                    "description": "Allow to propagate (inherit) permissions.\n"
+                },
+                "roleId": {
+                    "type": "string",
+                    "description": "The role to apply\n"
+                },
+                "tokenId": {
+                    "type": "string",
+                    "description": "The token the ACL should apply to (mutually exclusive with `group_id` and `user_id`)\n"
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "The user the ACL should apply to (mutually exclusive with `group_id` and `token_id`)\n"
+                }
+            },
+            "required": [
+                "path",
+                "propagate",
+                "roleId"
+            ],
+            "inputProperties": {
+                "groupId": {
+                    "type": "string",
+                    "description": "The group the ACL should apply to (mutually exclusive with `token_id` and `user_id`)\n"
+                },
+                "path": {
+                    "type": "string",
+                    "description": "Access control path\n"
+                },
+                "propagate": {
+                    "type": "boolean",
+                    "description": "Allow to propagate (inherit) permissions.\n"
+                },
+                "roleId": {
+                    "type": "string",
+                    "description": "The role to apply\n"
+                },
+                "tokenId": {
+                    "type": "string",
+                    "description": "The token the ACL should apply to (mutually exclusive with `group_id` and `user_id`)\n"
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "The user the ACL should apply to (mutually exclusive with `group_id` and `token_id`)\n"
+                }
+            },
+            "requiredInputs": [
+                "path",
+                "roleId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Acl resources.\n",
+                "properties": {
+                    "groupId": {
+                        "type": "string",
+                        "description": "The group the ACL should apply to (mutually exclusive with `token_id` and `user_id`)\n"
+                    },
+                    "path": {
+                        "type": "string",
+                        "description": "Access control path\n"
+                    },
+                    "propagate": {
+                        "type": "boolean",
+                        "description": "Allow to propagate (inherit) permissions.\n"
+                    },
+                    "roleId": {
+                        "type": "string",
+                        "description": "The role to apply\n"
+                    },
+                    "tokenId": {
+                        "type": "string",
+                        "description": "The token the ACL should apply to (mutually exclusive with `group_id` and `user_id`)\n"
+                    },
+                    "userId": {
+                        "type": "string",
+                        "description": "The user the ACL should apply to (mutually exclusive with `group_id` and `token_id`)\n"
                     }
                 },
                 "type": "object"
@@ -5788,7 +5975,7 @@
                             "type": "string"
                         }
                     },
-                    "description": "The hostnames.\n"
+                    "description": "The hostnames associated with each of the IP addresses.\n"
                 },
                 "nodeName": {
                     "type": "string",
@@ -5856,7 +6043,7 @@
                                 "type": "string"
                             }
                         },
-                        "description": "The hostnames.\n"
+                        "description": "The hostnames associated with each of the IP addresses.\n"
                     },
                     "nodeName": {
                         "type": "string",

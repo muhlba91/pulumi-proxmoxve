@@ -62,14 +62,12 @@ def get_pools(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPoolsR
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
     available_pools = proxmoxve.Permission.get_pools()
     ```
-    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -87,13 +85,11 @@ def get_pools_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Outp
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
     available_pools = proxmoxve.Permission.get_pools()
     ```
-    <!--End PulumiCodeChooser -->
     """
     ...

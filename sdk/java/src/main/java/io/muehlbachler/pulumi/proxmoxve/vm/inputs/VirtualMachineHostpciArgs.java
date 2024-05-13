@@ -18,16 +18,16 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
     public static final VirtualMachineHostpciArgs Empty = new VirtualMachineHostpciArgs();
 
     /**
-     * The device (defaults to `socket`).
-     * - `/dev/*` - A host serial device.
+     * The PCI device name for Proxmox, in form
+     * of `hostpciX` where `X` is a sequential number from 0 to 3.
      * 
      */
     @Import(name="device", required=true)
     private Output<String> device;
 
     /**
-     * @return The device (defaults to `socket`).
-     * - `/dev/*` - A host serial device.
+     * @return The PCI device name for Proxmox, in form
+     * of `hostpciX` where `X` is a sequential number from 0 to 3.
      * 
      */
     public Output<String> device() {
@@ -55,7 +55,7 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
 
     /**
      * The resource mapping name of the device, for
-     * example usbdevice. Use either this or `id`.
+     * example gpu. Use either this or `id`.
      * 
      */
     @Import(name="mapping")
@@ -63,7 +63,7 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
 
     /**
      * @return The resource mapping name of the device, for
-     * example usbdevice. Use either this or `id`.
+     * example gpu. Use either this or `id`.
      * 
      */
     public Optional<Output<String>> mapping() {
@@ -187,8 +187,8 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param device The device (defaults to `socket`).
-         * - `/dev/*` - A host serial device.
+         * @param device The PCI device name for Proxmox, in form
+         * of `hostpciX` where `X` is a sequential number from 0 to 3.
          * 
          * @return builder
          * 
@@ -199,8 +199,8 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param device The device (defaults to `socket`).
-         * - `/dev/*` - A host serial device.
+         * @param device The PCI device name for Proxmox, in form
+         * of `hostpciX` where `X` is a sequential number from 0 to 3.
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
 
         /**
          * @param mapping The resource mapping name of the device, for
-         * example usbdevice. Use either this or `id`.
+         * example gpu. Use either this or `id`.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
 
         /**
          * @param mapping The resource mapping name of the device, for
-         * example usbdevice. Use either this or `id`.
+         * example gpu. Use either this or `id`.
          * 
          * @return builder
          * 

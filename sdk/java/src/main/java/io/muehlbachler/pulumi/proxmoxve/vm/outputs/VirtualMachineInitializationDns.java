@@ -13,14 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VirtualMachineInitializationDns {
     /**
-     * @return The DNS search domain.
+     * @return The DNS search domain
      * 
      */
     private @Nullable String domain;
     /**
-     * @return The DNS server. The `server` attribute is
-     * deprecated and will be removed in a future release. Please use the
-     * `servers` attribute instead.
+     * @return The DNS server
      * 
      * @deprecated
      * The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
@@ -29,23 +27,21 @@ public final class VirtualMachineInitializationDns {
     @Deprecated /* The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead. */
     private @Nullable String server;
     /**
-     * @return The list of DNS servers.
+     * @return The list of DNS servers
      * 
      */
     private @Nullable List<String> servers;
 
     private VirtualMachineInitializationDns() {}
     /**
-     * @return The DNS search domain.
+     * @return The DNS search domain
      * 
      */
     public Optional<String> domain() {
         return Optional.ofNullable(this.domain);
     }
     /**
-     * @return The DNS server. The `server` attribute is
-     * deprecated and will be removed in a future release. Please use the
-     * `servers` attribute instead.
+     * @return The DNS server
      * 
      * @deprecated
      * The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
@@ -56,7 +52,7 @@ public final class VirtualMachineInitializationDns {
         return Optional.ofNullable(this.server);
     }
     /**
-     * @return The list of DNS servers.
+     * @return The list of DNS servers
      * 
      */
     public List<String> servers() {

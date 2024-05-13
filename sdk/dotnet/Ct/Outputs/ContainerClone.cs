@@ -14,16 +14,16 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
     public sealed class ContainerClone
     {
         /// <summary>
-        /// The identifier for the datastore to create the
-        /// disk in (defaults to `local`).
+        /// The identifier for the target datastore.
         /// </summary>
         public readonly string? DatastoreId;
         /// <summary>
-        /// The name of the node to assign the container to.
+        /// The name of the source node (leave blank, if
+        /// equal to the `node_name` argument).
         /// </summary>
         public readonly string? NodeName;
         /// <summary>
-        /// The container identifier
+        /// The identifier for the source container.
         /// </summary>
         public readonly int VmId;
 

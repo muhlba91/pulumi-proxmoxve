@@ -45,14 +45,14 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Console.
+     * The console configuration.
      * 
      */
     @Import(name="console")
     private @Nullable Output<ContainerConsoleArgs> console;
 
     /**
-     * @return Console.
+     * @return The console configuration.
      * 
      */
     public Optional<Output<ContainerConsoleArgs>> console() {
@@ -512,7 +512,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param console Console.
+         * @param console The console configuration.
          * 
          * @return builder
          * 
@@ -523,7 +523,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param console Console.
+         * @param console The console configuration.
          * 
          * @return builder
          * 

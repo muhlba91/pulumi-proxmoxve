@@ -11,7 +11,6 @@ import * as utilities from "../../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
@@ -21,7 +20,6 @@ import * as utilities from "../../utilities";
  * });
  * export const dataProxmoxVirtualEnvironmentHardwareMappingPci = example;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPci(args: GetPciArgs, opts?: pulumi.InvokeOptions): Promise<GetPciResult> {
 
@@ -71,7 +69,6 @@ export interface GetPciResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
@@ -81,7 +78,6 @@ export interface GetPciResult {
  * });
  * export const dataProxmoxVirtualEnvironmentHardwareMappingPci = example;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPciOutput(args: GetPciOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPciResult> {
     return pulumi.output(args).apply((a: any) => getPci(a, opts))

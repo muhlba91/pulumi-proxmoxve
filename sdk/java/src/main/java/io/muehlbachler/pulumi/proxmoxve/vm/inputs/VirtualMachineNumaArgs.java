@@ -33,16 +33,16 @@ public final class VirtualMachineNumaArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The device (defaults to `socket`).
-     * - `/dev/*` - A host serial device.
+     * The NUMA device name for Proxmox, in form
+     * of `numaX` where `X` is a sequential number from 0 to 7.
      * 
      */
     @Import(name="device", required=true)
     private Output<String> device;
 
     /**
-     * @return The device (defaults to `socket`).
-     * - `/dev/*` - A host serial device.
+     * @return The NUMA device name for Proxmox, in form
+     * of `numaX` where `X` is a sequential number from 0 to 7.
      * 
      */
     public Output<String> device() {
@@ -65,14 +65,14 @@ public final class VirtualMachineNumaArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The VGA memory in megabytes (defaults to `16`).
+     * The memory in megabytes to assign to the NUMA node.
      * 
      */
     @Import(name="memory", required=true)
     private Output<Integer> memory;
 
     /**
-     * @return The VGA memory in megabytes (defaults to `16`).
+     * @return The memory in megabytes to assign to the NUMA node.
      * 
      */
     public Output<Integer> memory() {
@@ -144,8 +144,8 @@ public final class VirtualMachineNumaArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param device The device (defaults to `socket`).
-         * - `/dev/*` - A host serial device.
+         * @param device The NUMA device name for Proxmox, in form
+         * of `numaX` where `X` is a sequential number from 0 to 7.
          * 
          * @return builder
          * 
@@ -156,8 +156,8 @@ public final class VirtualMachineNumaArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param device The device (defaults to `socket`).
-         * - `/dev/*` - A host serial device.
+         * @param device The NUMA device name for Proxmox, in form
+         * of `numaX` where `X` is a sequential number from 0 to 7.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class VirtualMachineNumaArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param memory The VGA memory in megabytes (defaults to `16`).
+         * @param memory The memory in megabytes to assign to the NUMA node.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class VirtualMachineNumaArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param memory The VGA memory in megabytes (defaults to `16`).
+         * @param memory The memory in megabytes to assign to the NUMA node.
          * 
          * @return builder
          * 

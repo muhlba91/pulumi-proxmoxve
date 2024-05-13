@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "proxmoxve:index/acl:Acl":
+		r = &Acl{}
 	case "proxmoxve:index/certifi:Certifi":
 		r = &Certifi{}
 	case "proxmoxve:index/dNS:DNS":
@@ -62,6 +64,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"index/acl",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
 		"index/certifi",

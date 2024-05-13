@@ -31,8 +31,8 @@ public final class VirtualMachineDisk {
      */
     private @Nullable String cache;
     /**
-     * @return The identifier for the datastore to create the
-     * cloud-init disk in (defaults to `local-lvm`).
+     * @return The identifier for the datastore to create
+     * the disk in (defaults to `local-lvm`).
      * 
      */
     private @Nullable String datastoreId;
@@ -44,7 +44,7 @@ public final class VirtualMachineDisk {
      */
     private @Nullable String discard;
     /**
-     * @return The file format (defaults to `raw`).
+     * @return The file format (defaults to `qcow2`).
      * 
      */
     private @Nullable String fileFormat;
@@ -56,10 +56,10 @@ public final class VirtualMachineDisk {
      */
     private @Nullable String fileId;
     /**
-     * @return The hardware interface to connect the cloud-init
-     * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
-     * detected if the setting is missing but a cloud-init image is present,
-     * otherwise defaults to `ide2`.
+     * @return The disk interface for Proxmox, currently `scsi`,
+     * `sata` and `virtio` interfaces are supported. Append the disk index at
+     * the end, for example, `virtio0` for the first virtio disk, `virtio1` for
+     * the second, etc.
      * 
      */
     private String interface_;
@@ -123,8 +123,8 @@ public final class VirtualMachineDisk {
         return Optional.ofNullable(this.cache);
     }
     /**
-     * @return The identifier for the datastore to create the
-     * cloud-init disk in (defaults to `local-lvm`).
+     * @return The identifier for the datastore to create
+     * the disk in (defaults to `local-lvm`).
      * 
      */
     public Optional<String> datastoreId() {
@@ -140,7 +140,7 @@ public final class VirtualMachineDisk {
         return Optional.ofNullable(this.discard);
     }
     /**
-     * @return The file format (defaults to `raw`).
+     * @return The file format (defaults to `qcow2`).
      * 
      */
     public Optional<String> fileFormat() {
@@ -156,10 +156,10 @@ public final class VirtualMachineDisk {
         return Optional.ofNullable(this.fileId);
     }
     /**
-     * @return The hardware interface to connect the cloud-init
-     * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
-     * detected if the setting is missing but a cloud-init image is present,
-     * otherwise defaults to `ide2`.
+     * @return The disk interface for Proxmox, currently `scsi`,
+     * `sata` and `virtio` interfaces are supported. Append the disk index at
+     * the end, for example, `virtio0` for the first virtio disk, `virtio1` for
+     * the second, etc.
      * 
      */
     public String interface_() {

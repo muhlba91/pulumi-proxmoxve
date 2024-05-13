@@ -144,14 +144,12 @@ def get_node(node_name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
     node = proxmoxve.get_node()
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str node_name: The node name.
@@ -181,14 +179,12 @@ def get_node_output(node_name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
     node = proxmoxve.get_node()
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str node_name: The node name.

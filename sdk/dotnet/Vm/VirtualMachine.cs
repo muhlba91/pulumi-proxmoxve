@@ -153,7 +153,7 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<string?> Machine { get; private set; } = null!;
 
         /// <summary>
-        /// The VGA memory in megabytes (defaults to `16`).
+        /// The memory configuration.
         /// </summary>
         [Output("memory")]
         public Output<Outputs.VirtualMachineMemory?> Memory { get; private set; } = null!;
@@ -551,7 +551,7 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<string>? Machine { get; set; }
 
         /// <summary>
-        /// The VGA memory in megabytes (defaults to `16`).
+        /// The memory configuration.
         /// </summary>
         [Input("memory")]
         public Input<Inputs.VirtualMachineMemoryArgs>? Memory { get; set; }
@@ -959,7 +959,7 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<string>? Machine { get; set; }
 
         /// <summary>
-        /// The VGA memory in megabytes (defaults to `16`).
+        /// The memory configuration.
         /// </summary>
         [Input("memory")]
         public Input<Inputs.VirtualMachineMemoryGetArgs>? Memory { get; set; }

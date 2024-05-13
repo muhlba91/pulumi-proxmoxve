@@ -16,7 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,7 +47,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -62,7 +60,7 @@ import (
 type Usb struct {
 	pulumi.CustomResourceState
 
-	// The comment of the mapped USB device.
+	// The comment of this USB hardware mapping.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
 	// The actual map of devices for the hardware mapping.
 	Maps UsbMapTypeArrayOutput `pulumi:"maps"`
@@ -103,7 +101,7 @@ func GetUsb(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Usb resources.
 type usbState struct {
-	// The comment of the mapped USB device.
+	// The comment of this USB hardware mapping.
 	Comment *string `pulumi:"comment"`
 	// The actual map of devices for the hardware mapping.
 	Maps []UsbMapType `pulumi:"maps"`
@@ -112,7 +110,7 @@ type usbState struct {
 }
 
 type UsbState struct {
-	// The comment of the mapped USB device.
+	// The comment of this USB hardware mapping.
 	Comment pulumi.StringPtrInput
 	// The actual map of devices for the hardware mapping.
 	Maps UsbMapTypeArrayInput
@@ -125,7 +123,7 @@ func (UsbState) ElementType() reflect.Type {
 }
 
 type usbArgs struct {
-	// The comment of the mapped USB device.
+	// The comment of this USB hardware mapping.
 	Comment *string `pulumi:"comment"`
 	// The actual map of devices for the hardware mapping.
 	Maps []UsbMapType `pulumi:"maps"`
@@ -135,7 +133,7 @@ type usbArgs struct {
 
 // The set of arguments for constructing a Usb resource.
 type UsbArgs struct {
-	// The comment of the mapped USB device.
+	// The comment of this USB hardware mapping.
 	Comment pulumi.StringPtrInput
 	// The actual map of devices for the hardware mapping.
 	Maps UsbMapTypeArrayInput
@@ -230,7 +228,7 @@ func (o UsbOutput) ToUsbOutputWithContext(ctx context.Context) UsbOutput {
 	return o
 }
 
-// The comment of the mapped USB device.
+// The comment of this USB hardware mapping.
 func (o UsbOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Usb) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }

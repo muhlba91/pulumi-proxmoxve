@@ -77,14 +77,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="proxmoxve:Hardware/mapping/pci:Pci")
 public class Pci extends com.pulumi.resources.CustomResource {
     /**
-     * The comment of the mapped PCI device.
+     * The comment of this PCI hardware mapping.
      * 
      */
     @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
-     * @return The comment of the mapped PCI device.
+     * @return The comment of this PCI hardware mapping.
      * 
      */
     public Output<Optional<String>> comment() {

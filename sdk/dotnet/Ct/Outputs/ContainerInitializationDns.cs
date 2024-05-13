@@ -14,17 +14,15 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
     public sealed class ContainerInitializationDns
     {
         /// <summary>
-        /// The DNS search domain.
+        /// The DNS search domain
         /// </summary>
         public readonly string? Domain;
         /// <summary>
-        /// The DNS server. The `server` attribute is
-        /// deprecated and will be removed in a future release. Please use
-        /// the `servers` attribute instead.
+        /// The DNS server
         /// </summary>
         public readonly string? Server;
         /// <summary>
-        /// The list of DNS servers.
+        /// The list of DNS servers
         /// </summary>
         public readonly ImmutableArray<string> Servers;
 

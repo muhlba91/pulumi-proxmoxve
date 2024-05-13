@@ -12,7 +12,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
@@ -40,7 +39,6 @@ import * as utilities from "../utilities";
  *     dependsOn: [proxmox_virtual_environment_vm.example],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class FirewallIPSet extends pulumi.CustomResource {
     /**
@@ -75,7 +73,7 @@ export class FirewallIPSet extends pulumi.CustomResource {
      */
     public readonly cidrs!: pulumi.Output<outputs.Network.FirewallIPSetCidr[] | undefined>;
     /**
-     * Arbitrary string annotation.
+     * IPSet comment.
      */
     public readonly comment!: pulumi.Output<string | undefined>;
     /**
@@ -83,7 +81,7 @@ export class FirewallIPSet extends pulumi.CustomResource {
      */
     public readonly containerId!: pulumi.Output<number | undefined>;
     /**
-     * Network/IP specification in CIDR format.
+     * IPSet name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -137,7 +135,7 @@ export interface FirewallIPSetState {
      */
     cidrs?: pulumi.Input<pulumi.Input<inputs.Network.FirewallIPSetCidr>[]>;
     /**
-     * Arbitrary string annotation.
+     * IPSet comment.
      */
     comment?: pulumi.Input<string>;
     /**
@@ -145,7 +143,7 @@ export interface FirewallIPSetState {
      */
     containerId?: pulumi.Input<number>;
     /**
-     * Network/IP specification in CIDR format.
+     * IPSet name.
      */
     name?: pulumi.Input<string>;
     /**
@@ -167,7 +165,7 @@ export interface FirewallIPSetArgs {
      */
     cidrs?: pulumi.Input<pulumi.Input<inputs.Network.FirewallIPSetCidr>[]>;
     /**
-     * Arbitrary string annotation.
+     * IPSet comment.
      */
     comment?: pulumi.Input<string>;
     /**
@@ -175,7 +173,7 @@ export interface FirewallIPSetArgs {
      */
     containerId?: pulumi.Input<number>;
     /**
-     * Network/IP specification in CIDR format.
+     * IPSet name.
      */
     name?: pulumi.Input<string>;
     /**

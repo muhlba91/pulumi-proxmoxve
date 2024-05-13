@@ -94,7 +94,6 @@ def get_virtual_machine(node_name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_proxmoxve as proxmoxve
@@ -102,7 +101,6 @@ def get_virtual_machine(node_name: Optional[str] = None,
     test_vm = proxmoxve.VM.get_virtual_machine(node_name="test",
         vm_id=100)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str node_name: The node name.
@@ -131,7 +129,6 @@ def get_virtual_machine_output(node_name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_proxmoxve as proxmoxve
@@ -139,7 +136,6 @@ def get_virtual_machine_output(node_name: Optional[pulumi.Input[str]] = None,
     test_vm = proxmoxve.VM.get_virtual_machine(node_name="test",
         vm_id=100)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str node_name: The node name.

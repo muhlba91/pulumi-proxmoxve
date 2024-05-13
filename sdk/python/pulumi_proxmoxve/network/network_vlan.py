@@ -400,7 +400,6 @@ class NetworkVlan(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -416,7 +415,6 @@ class NetworkVlan(pulumi.CustomResource):
             node_name="pve",
             vlan=98)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -453,7 +451,6 @@ class NetworkVlan(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -469,7 +466,6 @@ class NetworkVlan(pulumi.CustomResource):
             node_name="pve",
             vlan=98)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

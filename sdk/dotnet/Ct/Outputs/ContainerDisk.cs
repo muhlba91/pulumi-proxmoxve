@@ -19,8 +19,8 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
         /// </summary>
         public readonly string? DatastoreId;
         /// <summary>
-        /// Volume size (only for volume mount points).
-        /// Can be specified with a unit suffix (e.g. `10G`).
+        /// The size of the root filesystem in gigabytes (defaults
+        /// to `4`). Requires `datastore_id` to be set.
         /// </summary>
         public readonly int? Size;
 

@@ -14,7 +14,7 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
     public sealed class ContainerConsole
     {
         /// <summary>
-        /// Whether to enable the network device (defaults
+        /// Whether to enable the console device (defaults
         /// to `true`).
         /// </summary>
         public readonly bool? Enabled;
@@ -23,7 +23,7 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
         /// </summary>
         public readonly int? TtyCount;
         /// <summary>
-        /// The type (defaults to `unmanaged`).
+        /// The console mode (defaults to `tty`).
         /// </summary>
         public readonly string? Type;
 

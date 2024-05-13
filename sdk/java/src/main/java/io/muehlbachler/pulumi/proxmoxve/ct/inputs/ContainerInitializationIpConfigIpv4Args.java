@@ -16,16 +16,14 @@ public final class ContainerInitializationIpConfigIpv4Args extends com.pulumi.re
     public static final ContainerInitializationIpConfigIpv4Args Empty = new ContainerInitializationIpConfigIpv4Args();
 
     /**
-     * The IPv6 address (use `dhcp` for
-     * autodiscovery).
+     * The IPv4 address
      * 
      */
     @Import(name="address")
     private @Nullable Output<String> address;
 
     /**
-     * @return The IPv6 address (use `dhcp` for
-     * autodiscovery).
+     * @return The IPv4 address
      * 
      */
     public Optional<Output<String>> address() {
@@ -33,16 +31,14 @@ public final class ContainerInitializationIpConfigIpv4Args extends com.pulumi.re
     }
 
     /**
-     * The IPv6 gateway (must be omitted
-     * when `dhcp` is used as the address).
+     * The IPv4 gateway
      * 
      */
     @Import(name="gateway")
     private @Nullable Output<String> gateway;
 
     /**
-     * @return The IPv6 gateway (must be omitted
-     * when `dhcp` is used as the address).
+     * @return The IPv4 gateway
      * 
      */
     public Optional<Output<String>> gateway() {
@@ -75,8 +71,7 @@ public final class ContainerInitializationIpConfigIpv4Args extends com.pulumi.re
         }
 
         /**
-         * @param address The IPv6 address (use `dhcp` for
-         * autodiscovery).
+         * @param address The IPv4 address
          * 
          * @return builder
          * 
@@ -87,8 +82,7 @@ public final class ContainerInitializationIpConfigIpv4Args extends com.pulumi.re
         }
 
         /**
-         * @param address The IPv6 address (use `dhcp` for
-         * autodiscovery).
+         * @param address The IPv4 address
          * 
          * @return builder
          * 
@@ -98,8 +92,7 @@ public final class ContainerInitializationIpConfigIpv4Args extends com.pulumi.re
         }
 
         /**
-         * @param gateway The IPv6 gateway (must be omitted
-         * when `dhcp` is used as the address).
+         * @param gateway The IPv4 gateway
          * 
          * @return builder
          * 
@@ -110,8 +103,7 @@ public final class ContainerInitializationIpConfigIpv4Args extends com.pulumi.re
         }
 
         /**
-         * @param gateway The IPv6 gateway (must be omitted
-         * when `dhcp` is used as the address).
+         * @param gateway The IPv4 gateway
          * 
          * @return builder
          * 

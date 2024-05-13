@@ -97,14 +97,12 @@ def get_group(group_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
     operations_team = proxmoxve.Permission.get_group(group_id="operations-team")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str group_id: The group identifier.
@@ -130,14 +128,12 @@ def get_group_output(group_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
     operations_team = proxmoxve.Permission.get_group(group_id="operations-team")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str group_id: The group identifier.

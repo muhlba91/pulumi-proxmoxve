@@ -52,7 +52,7 @@ export class Container extends pulumi.CustomResource {
      */
     public readonly clone!: pulumi.Output<outputs.CT.ContainerClone | undefined>;
     /**
-     * Console.
+     * The console configuration.
      */
     public readonly console!: pulumi.Output<outputs.CT.ContainerConsole | undefined>;
     /**
@@ -246,7 +246,7 @@ export interface ContainerState {
      */
     clone?: pulumi.Input<inputs.CT.ContainerClone>;
     /**
-     * Console.
+     * The console configuration.
      */
     console?: pulumi.Input<inputs.CT.ContainerConsole>;
     /**
@@ -365,7 +365,7 @@ export interface ContainerArgs {
      */
     clone?: pulumi.Input<inputs.CT.ContainerClone>;
     /**
-     * Console.
+     * The console configuration.
      */
     console?: pulumi.Input<inputs.CT.ContainerConsole>;
     /**

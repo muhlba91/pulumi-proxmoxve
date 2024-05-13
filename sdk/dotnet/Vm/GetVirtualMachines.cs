@@ -16,7 +16,6 @@ namespace Pulumi.ProxmoxVE.VM
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,7 +34,6 @@ namespace Pulumi.ProxmoxVE.VM
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetVirtualMachinesResult> InvokeAsync(GetVirtualMachinesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVirtualMachinesResult>("proxmoxve:VM/getVirtualMachines:getVirtualMachines", args ?? new GetVirtualMachinesArgs(), options.WithDefaults());
@@ -45,7 +43,6 @@ namespace Pulumi.ProxmoxVE.VM
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -64,7 +61,6 @@ namespace Pulumi.ProxmoxVE.VM
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetVirtualMachinesResult> Invoke(GetVirtualMachinesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVirtualMachinesResult>("proxmoxve:VM/getVirtualMachines:getVirtualMachines", args ?? new GetVirtualMachinesInvokeArgs(), options.WithDefaults());

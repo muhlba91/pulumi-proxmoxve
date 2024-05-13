@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,7 +38,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetDNS(ctx *pulumi.Context, args *GetDNSArgs, opts ...pulumi.InvokeOption) (*GetDNSResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDNSResult

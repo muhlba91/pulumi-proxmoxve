@@ -16,7 +16,6 @@ namespace Pulumi.ProxmoxVE.HA
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,7 +40,6 @@ namespace Pulumi.ProxmoxVE.HA
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetHAGroupResult> InvokeAsync(GetHAGroupArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHAGroupResult>("proxmoxve:HA/getHAGroup:getHAGroup", args ?? new GetHAGroupArgs(), options.WithDefaults());
@@ -51,7 +49,6 @@ namespace Pulumi.ProxmoxVE.HA
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -76,7 +73,6 @@ namespace Pulumi.ProxmoxVE.HA
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetHAGroupResult> Invoke(GetHAGroupInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHAGroupResult>("proxmoxve:HA/getHAGroup:getHAGroup", args ?? new GetHAGroupInvokeArgs(), options.WithDefaults());

@@ -16,7 +16,6 @@ namespace Pulumi.ProxmoxVE.HA
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,7 +40,6 @@ namespace Pulumi.ProxmoxVE.HA
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetHAResourceResult> InvokeAsync(GetHAResourceArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHAResourceResult>("proxmoxve:HA/getHAResource:getHAResource", args ?? new GetHAResourceArgs(), options.WithDefaults());
@@ -51,7 +49,6 @@ namespace Pulumi.ProxmoxVE.HA
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -76,7 +73,6 @@ namespace Pulumi.ProxmoxVE.HA
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetHAResourceResult> Invoke(GetHAResourceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHAResourceResult>("proxmoxve:HA/getHAResource:getHAResource", args ?? new GetHAResourceInvokeArgs(), options.WithDefaults());

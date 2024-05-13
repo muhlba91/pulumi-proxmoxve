@@ -1,6 +1,10 @@
 {
     "auto-aliasing": {
         "resources": {
+            "proxmox_virtual_environment_acl": {
+                "current": "proxmoxve:index/acl:Acl",
+                "majorVersion": 6
+            },
             "proxmox_virtual_environment_certificate": {
                 "current": "proxmoxve:index/certifi:Certifi",
                 "majorVersion": 6,
@@ -295,6 +299,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "proxmox_virtual_environment_user_token": {
+                "current": "proxmoxve:User/token:Token",
+                "majorVersion": 6
             },
             "proxmox_virtual_environment_vm": {
                 "current": "proxmoxve:VM/virtualMachine:VirtualMachine",
@@ -786,7 +794,9 @@
             "proxmoxve:Permission/role:Role": 0,
             "proxmoxve:Permission/user:User": 0,
             "proxmoxve:Storage/file:File": 0,
+            "proxmoxve:User/token:Token": 1,
             "proxmoxve:VM/virtualMachine:VirtualMachine": 0,
+            "proxmoxve:index/acl:Acl": 1,
             "proxmoxve:index/certifi:Certifi": 0,
             "proxmoxve:index/dNS:DNS": 0,
             "proxmoxve:index/hosts:Hosts": 0,

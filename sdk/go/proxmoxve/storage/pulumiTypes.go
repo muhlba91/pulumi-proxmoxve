@@ -18,7 +18,9 @@ type FileSourceFile struct {
 	Changed *bool `pulumi:"changed"`
 	// The SHA256 checksum of the source file.
 	Checksum *string `pulumi:"checksum"`
-	// The file name.
+	// The file name to use instead of the source file
+	// name. Useful when the source file does not have a valid file extension,
+	// for example when the source file is a URL referencing a `.qcow2` image.
 	FileName *string `pulumi:"fileName"`
 	// Whether to skip the TLS verification step for
 	// HTTPS sources (defaults to `false`).
@@ -46,7 +48,9 @@ type FileSourceFileArgs struct {
 	Changed pulumi.BoolPtrInput `pulumi:"changed"`
 	// The SHA256 checksum of the source file.
 	Checksum pulumi.StringPtrInput `pulumi:"checksum"`
-	// The file name.
+	// The file name to use instead of the source file
+	// name. Useful when the source file does not have a valid file extension,
+	// for example when the source file is a URL referencing a `.qcow2` image.
 	FileName pulumi.StringPtrInput `pulumi:"fileName"`
 	// Whether to skip the TLS verification step for
 	// HTTPS sources (defaults to `false`).
@@ -145,7 +149,9 @@ func (o FileSourceFileOutput) Checksum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FileSourceFile) *string { return v.Checksum }).(pulumi.StringPtrOutput)
 }
 
-// The file name.
+// The file name to use instead of the source file
+// name. Useful when the source file does not have a valid file extension,
+// for example when the source file is a URL referencing a `.qcow2` image.
 func (o FileSourceFileOutput) FileName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FileSourceFile) *string { return v.FileName }).(pulumi.StringPtrOutput)
 }
@@ -211,7 +217,9 @@ func (o FileSourceFilePtrOutput) Checksum() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The file name.
+// The file name to use instead of the source file
+// name. Useful when the source file does not have a valid file extension,
+// for example when the source file is a URL referencing a `.qcow2` image.
 func (o FileSourceFilePtrOutput) FileName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FileSourceFile) *string {
 		if v == nil {

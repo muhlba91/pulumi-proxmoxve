@@ -11,7 +11,6 @@ import * as utilities from "../../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
@@ -21,7 +20,6 @@ import * as utilities from "../../utilities";
  * });
  * export const dataProxmoxVirtualEnvironmentHardwareMappingUsb = example;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getUsb(args: GetUsbArgs, opts?: pulumi.InvokeOptions): Promise<GetUsbResult> {
 
@@ -67,7 +65,6 @@ export interface GetUsbResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
@@ -77,7 +74,6 @@ export interface GetUsbResult {
  * });
  * export const dataProxmoxVirtualEnvironmentHardwareMappingUsb = example;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getUsbOutput(args: GetUsbOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsbResult> {
     return pulumi.output(args).apply((a: any) => getUsb(a, opts))

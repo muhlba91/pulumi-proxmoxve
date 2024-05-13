@@ -13,8 +13,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
     public sealed class VirtualMachineAudioDeviceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The device (defaults to `socket`).
-        /// - `/dev/*` - A host serial device.
+        /// The device (defaults to `intel-hda`).
         /// </summary>
         [Input("device")]
         public Input<string>? Device { get; set; }
@@ -26,7 +25,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<string>? Driver { get; set; }
 
         /// <summary>
-        /// Whether to enable the VGA device (defaults
+        /// Whether to enable the audio device (defaults
         /// to `true`).
         /// </summary>
         [Input("enabled")]

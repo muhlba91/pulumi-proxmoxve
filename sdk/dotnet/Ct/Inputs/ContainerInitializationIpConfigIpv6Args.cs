@@ -13,15 +13,13 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
     public sealed class ContainerInitializationIpConfigIpv6Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The IPv6 address (use `dhcp` for
-        /// autodiscovery).
+        /// The IPv6 address
         /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }
 
         /// <summary>
-        /// The IPv6 gateway (must be omitted
-        /// when `dhcp` is used as the address).
+        /// The IPv6 gateway
         /// </summary>
         [Input("gateway")]
         public Input<string>? Gateway { get; set; }

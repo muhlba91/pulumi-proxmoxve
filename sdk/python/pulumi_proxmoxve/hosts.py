@@ -67,7 +67,7 @@ class _HostsState:
         :param pulumi.Input[Sequence[pulumi.Input['HostsEntryArgs']]] entries: The host entries (conversion of `addresses` and `hostnames` into
                objects).
         :param pulumi.Input[Sequence[pulumi.Input['HostsEntryArgs']]] entry: A host entry (multiple blocks supported).
-        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]] hostnames: The hostnames.
+        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]] hostnames: The hostnames associated with each of the IP addresses.
         :param pulumi.Input[str] node_name: A node name.
         """
         if addresses is not None:
@@ -136,7 +136,7 @@ class _HostsState:
     @pulumi.getter
     def hostnames(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]]]:
         """
-        The hostnames.
+        The hostnames associated with each of the IP addresses.
         """
         return pulumi.get(self, "hostnames")
 
@@ -266,7 +266,7 @@ class Hosts(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostsEntryArgs']]]] entries: The host entries (conversion of `addresses` and `hostnames` into
                objects).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostsEntryArgs']]]] entry: A host entry (multiple blocks supported).
-        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]] hostnames: The hostnames.
+        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]] hostnames: The hostnames associated with each of the IP addresses.
         :param pulumi.Input[str] node_name: A node name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -318,7 +318,7 @@ class Hosts(pulumi.CustomResource):
     @pulumi.getter
     def hostnames(self) -> pulumi.Output[Sequence[Sequence[str]]]:
         """
-        The hostnames.
+        The hostnames associated with each of the IP addresses.
         """
         return pulumi.get(self, "hostnames")
 

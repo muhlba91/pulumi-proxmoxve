@@ -19,14 +19,14 @@ public final class FirewallSecurityGroupState extends com.pulumi.resources.Resou
     public static final FirewallSecurityGroupState Empty = new FirewallSecurityGroupState();
 
     /**
-     * Rule comment.
+     * Security group comment.
      * 
      */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
     /**
-     * @return Rule comment.
+     * @return Security group comment.
      * 
      */
     public Optional<Output<String>> comment() {
@@ -138,7 +138,7 @@ public final class FirewallSecurityGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param comment Rule comment.
+         * @param comment Security group comment.
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class FirewallSecurityGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param comment Rule comment.
+         * @param comment Security group comment.
          * 
          * @return builder
          * 

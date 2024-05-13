@@ -57,10 +57,10 @@ class ContainerClone(dict):
                  datastore_id: Optional[str] = None,
                  node_name: Optional[str] = None):
         """
-        :param int vm_id: The container identifier
-        :param str datastore_id: The identifier for the datastore to create the
-               disk in (defaults to `local`).
-        :param str node_name: The name of the node to assign the container to.
+        :param int vm_id: The identifier for the source container.
+        :param str datastore_id: The identifier for the target datastore.
+        :param str node_name: The name of the source node (leave blank, if
+               equal to the `node_name` argument).
         """
         pulumi.set(__self__, "vm_id", vm_id)
         if datastore_id is not None:
@@ -72,7 +72,7 @@ class ContainerClone(dict):
     @pulumi.getter(name="vmId")
     def vm_id(self) -> int:
         """
-        The container identifier
+        The identifier for the source container.
         """
         return pulumi.get(self, "vm_id")
 
@@ -80,8 +80,7 @@ class ContainerClone(dict):
     @pulumi.getter(name="datastoreId")
     def datastore_id(self) -> Optional[str]:
         """
-        The identifier for the datastore to create the
-        disk in (defaults to `local`).
+        The identifier for the target datastore.
         """
         return pulumi.get(self, "datastore_id")
 
@@ -89,7 +88,8 @@ class ContainerClone(dict):
     @pulumi.getter(name="nodeName")
     def node_name(self) -> Optional[str]:
         """
-        The name of the node to assign the container to.
+        The name of the source node (leave blank, if
+        equal to the `node_name` argument).
         """
         return pulumi.get(self, "node_name")
 
@@ -118,10 +118,10 @@ class ContainerConsole(dict):
                  tty_count: Optional[int] = None,
                  type: Optional[str] = None):
         """
-        :param bool enabled: Whether to enable the network device (defaults
+        :param bool enabled: Whether to enable the console device (defaults
                to `true`).
         :param int tty_count: The number of available TTY (defaults to `2`).
-        :param str type: The type (defaults to `unmanaged`).
+        :param str type: The console mode (defaults to `tty`).
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -134,7 +134,7 @@ class ContainerConsole(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Whether to enable the network device (defaults
+        Whether to enable the console device (defaults
         to `true`).
         """
         return pulumi.get(self, "enabled")
@@ -151,7 +151,7 @@ class ContainerConsole(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        The type (defaults to `unmanaged`).
+        The console mode (defaults to `tty`).
         """
         return pulumi.get(self, "type")
 
@@ -224,8 +224,8 @@ class ContainerDisk(dict):
         """
         :param str datastore_id: The identifier for the datastore to create the
                disk in (defaults to `local`).
-        :param int size: Volume size (only for volume mount points).
-               Can be specified with a unit suffix (e.g. `10G`).
+        :param int size: The size of the root filesystem in gigabytes (defaults
+               to `4`). Requires `datastore_id` to be set.
         """
         if datastore_id is not None:
             pulumi.set(__self__, "datastore_id", datastore_id)
@@ -245,8 +245,8 @@ class ContainerDisk(dict):
     @pulumi.getter
     def size(self) -> Optional[int]:
         """
-        Volume size (only for volume mount points).
-        Can be specified with a unit suffix (e.g. `10G`).
+        The size of the root filesystem in gigabytes (defaults
+        to `4`). Requires `datastore_id` to be set.
         """
         return pulumi.get(self, "size")
 
@@ -395,11 +395,9 @@ class ContainerInitializationDns(dict):
                  server: Optional[str] = None,
                  servers: Optional[Sequence[str]] = None):
         """
-        :param str domain: The DNS search domain.
-        :param str server: The DNS server. The `server` attribute is
-               deprecated and will be removed in a future release. Please use
-               the `servers` attribute instead.
-        :param Sequence[str] servers: The list of DNS servers.
+        :param str domain: The DNS search domain
+        :param str server: The DNS server
+        :param Sequence[str] servers: The list of DNS servers
         """
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
@@ -412,7 +410,7 @@ class ContainerInitializationDns(dict):
     @pulumi.getter
     def domain(self) -> Optional[str]:
         """
-        The DNS search domain.
+        The DNS search domain
         """
         return pulumi.get(self, "domain")
 
@@ -420,9 +418,7 @@ class ContainerInitializationDns(dict):
     @pulumi.getter
     def server(self) -> Optional[str]:
         """
-        The DNS server. The `server` attribute is
-        deprecated and will be removed in a future release. Please use
-        the `servers` attribute instead.
+        The DNS server
         """
         warnings.warn("""The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.""", DeprecationWarning)
         pulumi.log.warn("""server is deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.""")
@@ -433,7 +429,7 @@ class ContainerInitializationDns(dict):
     @pulumi.getter
     def servers(self) -> Optional[Sequence[str]]:
         """
-        The list of DNS servers.
+        The list of DNS servers
         """
         return pulumi.get(self, "servers")
 
@@ -444,8 +440,8 @@ class ContainerInitializationIpConfig(dict):
                  ipv4: Optional['outputs.ContainerInitializationIpConfigIpv4'] = None,
                  ipv6: Optional['outputs.ContainerInitializationIpConfigIpv6'] = None):
         """
-        :param 'ContainerInitializationIpConfigIpv4Args' ipv4: The IPv4 configuration.
-        :param 'ContainerInitializationIpConfigIpv6Args' ipv6: The IPv4 configuration.
+        :param 'ContainerInitializationIpConfigIpv4Args' ipv4: The IPv4 configuration
+        :param 'ContainerInitializationIpConfigIpv6Args' ipv6: The IPv6 configuration
         """
         if ipv4 is not None:
             pulumi.set(__self__, "ipv4", ipv4)
@@ -456,7 +452,7 @@ class ContainerInitializationIpConfig(dict):
     @pulumi.getter
     def ipv4(self) -> Optional['outputs.ContainerInitializationIpConfigIpv4']:
         """
-        The IPv4 configuration.
+        The IPv4 configuration
         """
         return pulumi.get(self, "ipv4")
 
@@ -464,7 +460,7 @@ class ContainerInitializationIpConfig(dict):
     @pulumi.getter
     def ipv6(self) -> Optional['outputs.ContainerInitializationIpConfigIpv6']:
         """
-        The IPv4 configuration.
+        The IPv6 configuration
         """
         return pulumi.get(self, "ipv6")
 
@@ -475,10 +471,8 @@ class ContainerInitializationIpConfigIpv4(dict):
                  address: Optional[str] = None,
                  gateway: Optional[str] = None):
         """
-        :param str address: The IPv6 address (use `dhcp` for
-               autodiscovery).
-        :param str gateway: The IPv6 gateway (must be omitted
-               when `dhcp` is used as the address).
+        :param str address: The IPv4 address
+        :param str gateway: The IPv4 gateway
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -489,8 +483,7 @@ class ContainerInitializationIpConfigIpv4(dict):
     @pulumi.getter
     def address(self) -> Optional[str]:
         """
-        The IPv6 address (use `dhcp` for
-        autodiscovery).
+        The IPv4 address
         """
         return pulumi.get(self, "address")
 
@@ -498,8 +491,7 @@ class ContainerInitializationIpConfigIpv4(dict):
     @pulumi.getter
     def gateway(self) -> Optional[str]:
         """
-        The IPv6 gateway (must be omitted
-        when `dhcp` is used as the address).
+        The IPv4 gateway
         """
         return pulumi.get(self, "gateway")
 
@@ -510,10 +502,8 @@ class ContainerInitializationIpConfigIpv6(dict):
                  address: Optional[str] = None,
                  gateway: Optional[str] = None):
         """
-        :param str address: The IPv6 address (use `dhcp` for
-               autodiscovery).
-        :param str gateway: The IPv6 gateway (must be omitted
-               when `dhcp` is used as the address).
+        :param str address: The IPv6 address
+        :param str gateway: The IPv6 gateway
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -524,8 +514,7 @@ class ContainerInitializationIpConfigIpv6(dict):
     @pulumi.getter
     def address(self) -> Optional[str]:
         """
-        The IPv6 address (use `dhcp` for
-        autodiscovery).
+        The IPv6 address
         """
         return pulumi.get(self, "address")
 
@@ -533,8 +522,7 @@ class ContainerInitializationIpConfigIpv6(dict):
     @pulumi.getter
     def gateway(self) -> Optional[str]:
         """
-        The IPv6 gateway (must be omitted
-        when `dhcp` is used as the address).
+        The IPv6 gateway
         """
         return pulumi.get(self, "gateway")
 
@@ -545,8 +533,8 @@ class ContainerInitializationUserAccount(dict):
                  keys: Optional[Sequence[str]] = None,
                  password: Optional[str] = None):
         """
-        :param Sequence[str] keys: The SSH keys for the root account.
-        :param str password: The password for the root account.
+        :param Sequence[str] keys: The SSH keys
+        :param str password: The SSH password
         """
         if keys is not None:
             pulumi.set(__self__, "keys", keys)
@@ -557,7 +545,7 @@ class ContainerInitializationUserAccount(dict):
     @pulumi.getter
     def keys(self) -> Optional[Sequence[str]]:
         """
-        The SSH keys for the root account.
+        The SSH keys
         """
         return pulumi.get(self, "keys")
 
@@ -565,7 +553,7 @@ class ContainerInitializationUserAccount(dict):
     @pulumi.getter
     def password(self) -> Optional[str]:
         """
-        The password for the root account.
+        The SSH password
         """
         return pulumi.get(self, "password")
 

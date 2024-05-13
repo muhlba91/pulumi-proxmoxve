@@ -13,8 +13,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VirtualMachineAgent {
     /**
-     * @return Whether to enable the VGA device (defaults
-     * to `true`).
+     * @return Whether to enable the QEMU agent (defaults
+     * to `false`).
      * 
      */
     private @Nullable Boolean enabled;
@@ -31,15 +31,15 @@ public final class VirtualMachineAgent {
      */
     private @Nullable Boolean trim;
     /**
-     * @return The VGA type (defaults to `std`).
+     * @return The QEMU agent interface type (defaults to `virtio`).
      * 
      */
     private @Nullable String type;
 
     private VirtualMachineAgent() {}
     /**
-     * @return Whether to enable the VGA device (defaults
-     * to `true`).
+     * @return Whether to enable the QEMU agent (defaults
+     * to `false`).
      * 
      */
     public Optional<Boolean> enabled() {
@@ -62,7 +62,7 @@ public final class VirtualMachineAgent {
         return Optional.ofNullable(this.trim);
     }
     /**
-     * @return The VGA type (defaults to `std`).
+     * @return The QEMU agent interface type (defaults to `virtio`).
      * 
      */
     public Optional<String> type() {

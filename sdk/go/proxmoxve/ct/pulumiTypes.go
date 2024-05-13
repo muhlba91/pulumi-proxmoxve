@@ -14,12 +14,12 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type ContainerClone struct {
-	// The identifier for the datastore to create the
-	// disk in (defaults to `local`).
+	// The identifier for the target datastore.
 	DatastoreId *string `pulumi:"datastoreId"`
-	// The name of the node to assign the container to.
+	// The name of the source node (leave blank, if
+	// equal to the `nodeName` argument).
 	NodeName *string `pulumi:"nodeName"`
-	// The container identifier
+	// The identifier for the source container.
 	VmId int `pulumi:"vmId"`
 }
 
@@ -35,12 +35,12 @@ type ContainerCloneInput interface {
 }
 
 type ContainerCloneArgs struct {
-	// The identifier for the datastore to create the
-	// disk in (defaults to `local`).
+	// The identifier for the target datastore.
 	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
-	// The name of the node to assign the container to.
+	// The name of the source node (leave blank, if
+	// equal to the `nodeName` argument).
 	NodeName pulumi.StringPtrInput `pulumi:"nodeName"`
-	// The container identifier
+	// The identifier for the source container.
 	VmId pulumi.IntInput `pulumi:"vmId"`
 }
 
@@ -121,18 +121,18 @@ func (o ContainerCloneOutput) ToContainerClonePtrOutputWithContext(ctx context.C
 	}).(ContainerClonePtrOutput)
 }
 
-// The identifier for the datastore to create the
-// disk in (defaults to `local`).
+// The identifier for the target datastore.
 func (o ContainerCloneOutput) DatastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerClone) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
 }
 
-// The name of the node to assign the container to.
+// The name of the source node (leave blank, if
+// equal to the `nodeName` argument).
 func (o ContainerCloneOutput) NodeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerClone) *string { return v.NodeName }).(pulumi.StringPtrOutput)
 }
 
-// The container identifier
+// The identifier for the source container.
 func (o ContainerCloneOutput) VmId() pulumi.IntOutput {
 	return o.ApplyT(func(v ContainerClone) int { return v.VmId }).(pulumi.IntOutput)
 }
@@ -161,8 +161,7 @@ func (o ContainerClonePtrOutput) Elem() ContainerCloneOutput {
 	}).(ContainerCloneOutput)
 }
 
-// The identifier for the datastore to create the
-// disk in (defaults to `local`).
+// The identifier for the target datastore.
 func (o ContainerClonePtrOutput) DatastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerClone) *string {
 		if v == nil {
@@ -172,7 +171,8 @@ func (o ContainerClonePtrOutput) DatastoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name of the node to assign the container to.
+// The name of the source node (leave blank, if
+// equal to the `nodeName` argument).
 func (o ContainerClonePtrOutput) NodeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerClone) *string {
 		if v == nil {
@@ -182,7 +182,7 @@ func (o ContainerClonePtrOutput) NodeName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The container identifier
+// The identifier for the source container.
 func (o ContainerClonePtrOutput) VmId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ContainerClone) *int {
 		if v == nil {
@@ -193,12 +193,12 @@ func (o ContainerClonePtrOutput) VmId() pulumi.IntPtrOutput {
 }
 
 type ContainerConsole struct {
-	// Whether to enable the network device (defaults
+	// Whether to enable the console device (defaults
 	// to `true`).
 	Enabled *bool `pulumi:"enabled"`
 	// The number of available TTY (defaults to `2`).
 	TtyCount *int `pulumi:"ttyCount"`
-	// The type (defaults to `unmanaged`).
+	// The console mode (defaults to `tty`).
 	Type *string `pulumi:"type"`
 }
 
@@ -214,12 +214,12 @@ type ContainerConsoleInput interface {
 }
 
 type ContainerConsoleArgs struct {
-	// Whether to enable the network device (defaults
+	// Whether to enable the console device (defaults
 	// to `true`).
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// The number of available TTY (defaults to `2`).
 	TtyCount pulumi.IntPtrInput `pulumi:"ttyCount"`
-	// The type (defaults to `unmanaged`).
+	// The console mode (defaults to `tty`).
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -300,7 +300,7 @@ func (o ContainerConsoleOutput) ToContainerConsolePtrOutputWithContext(ctx conte
 	}).(ContainerConsolePtrOutput)
 }
 
-// Whether to enable the network device (defaults
+// Whether to enable the console device (defaults
 // to `true`).
 func (o ContainerConsoleOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContainerConsole) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -311,7 +311,7 @@ func (o ContainerConsoleOutput) TtyCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerConsole) *int { return v.TtyCount }).(pulumi.IntPtrOutput)
 }
 
-// The type (defaults to `unmanaged`).
+// The console mode (defaults to `tty`).
 func (o ContainerConsoleOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerConsole) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -340,7 +340,7 @@ func (o ContainerConsolePtrOutput) Elem() ContainerConsoleOutput {
 	}).(ContainerConsoleOutput)
 }
 
-// Whether to enable the network device (defaults
+// Whether to enable the console device (defaults
 // to `true`).
 func (o ContainerConsolePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ContainerConsole) *bool {
@@ -361,7 +361,7 @@ func (o ContainerConsolePtrOutput) TtyCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The type (defaults to `unmanaged`).
+// The console mode (defaults to `tty`).
 func (o ContainerConsolePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerConsole) *string {
 		if v == nil {
@@ -550,8 +550,8 @@ type ContainerDisk struct {
 	// The identifier for the datastore to create the
 	// disk in (defaults to `local`).
 	DatastoreId *string `pulumi:"datastoreId"`
-	// Volume size (only for volume mount points).
-	// Can be specified with a unit suffix (e.g. `10G`).
+	// The size of the root filesystem in gigabytes (defaults
+	// to `4`). Requires `datastoreId` to be set.
 	Size *int `pulumi:"size"`
 }
 
@@ -570,8 +570,8 @@ type ContainerDiskArgs struct {
 	// The identifier for the datastore to create the
 	// disk in (defaults to `local`).
 	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
-	// Volume size (only for volume mount points).
-	// Can be specified with a unit suffix (e.g. `10G`).
+	// The size of the root filesystem in gigabytes (defaults
+	// to `4`). Requires `datastoreId` to be set.
 	Size pulumi.IntPtrInput `pulumi:"size"`
 }
 
@@ -658,8 +658,8 @@ func (o ContainerDiskOutput) DatastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerDisk) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
 }
 
-// Volume size (only for volume mount points).
-// Can be specified with a unit suffix (e.g. `10G`).
+// The size of the root filesystem in gigabytes (defaults
+// to `4`). Requires `datastoreId` to be set.
 func (o ContainerDiskOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
@@ -699,8 +699,8 @@ func (o ContainerDiskPtrOutput) DatastoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Volume size (only for volume mount points).
-// Can be specified with a unit suffix (e.g. `10G`).
+// The size of the root filesystem in gigabytes (defaults
+// to `4`). Requires `datastoreId` to be set.
 func (o ContainerDiskPtrOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ContainerDisk) *int {
 		if v == nil {
@@ -1115,15 +1115,13 @@ func (o ContainerInitializationPtrOutput) UserAccount() ContainerInitializationU
 }
 
 type ContainerInitializationDns struct {
-	// The DNS search domain.
+	// The DNS search domain
 	Domain *string `pulumi:"domain"`
-	// The DNS server. The `server` attribute is
-	// deprecated and will be removed in a future release. Please use
-	// the `servers` attribute instead.
+	// The DNS server
 	//
 	// Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
 	Server *string `pulumi:"server"`
-	// The list of DNS servers.
+	// The list of DNS servers
 	Servers []string `pulumi:"servers"`
 }
 
@@ -1139,15 +1137,13 @@ type ContainerInitializationDnsInput interface {
 }
 
 type ContainerInitializationDnsArgs struct {
-	// The DNS search domain.
+	// The DNS search domain
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
-	// The DNS server. The `server` attribute is
-	// deprecated and will be removed in a future release. Please use
-	// the `servers` attribute instead.
+	// The DNS server
 	//
 	// Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
 	Server pulumi.StringPtrInput `pulumi:"server"`
-	// The list of DNS servers.
+	// The list of DNS servers
 	Servers pulumi.StringArrayInput `pulumi:"servers"`
 }
 
@@ -1228,21 +1224,19 @@ func (o ContainerInitializationDnsOutput) ToContainerInitializationDnsPtrOutputW
 	}).(ContainerInitializationDnsPtrOutput)
 }
 
-// The DNS search domain.
+// The DNS search domain
 func (o ContainerInitializationDnsOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerInitializationDns) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
-// The DNS server. The `server` attribute is
-// deprecated and will be removed in a future release. Please use
-// the `servers` attribute instead.
+// The DNS server
 //
 // Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
 func (o ContainerInitializationDnsOutput) Server() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerInitializationDns) *string { return v.Server }).(pulumi.StringPtrOutput)
 }
 
-// The list of DNS servers.
+// The list of DNS servers
 func (o ContainerInitializationDnsOutput) Servers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ContainerInitializationDns) []string { return v.Servers }).(pulumi.StringArrayOutput)
 }
@@ -1271,7 +1265,7 @@ func (o ContainerInitializationDnsPtrOutput) Elem() ContainerInitializationDnsOu
 	}).(ContainerInitializationDnsOutput)
 }
 
-// The DNS search domain.
+// The DNS search domain
 func (o ContainerInitializationDnsPtrOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerInitializationDns) *string {
 		if v == nil {
@@ -1281,9 +1275,7 @@ func (o ContainerInitializationDnsPtrOutput) Domain() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The DNS server. The `server` attribute is
-// deprecated and will be removed in a future release. Please use
-// the `servers` attribute instead.
+// The DNS server
 //
 // Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
 func (o ContainerInitializationDnsPtrOutput) Server() pulumi.StringPtrOutput {
@@ -1295,7 +1287,7 @@ func (o ContainerInitializationDnsPtrOutput) Server() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The list of DNS servers.
+// The list of DNS servers
 func (o ContainerInitializationDnsPtrOutput) Servers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ContainerInitializationDns) []string {
 		if v == nil {
@@ -1306,9 +1298,9 @@ func (o ContainerInitializationDnsPtrOutput) Servers() pulumi.StringArrayOutput 
 }
 
 type ContainerInitializationIpConfig struct {
-	// The IPv4 configuration.
+	// The IPv4 configuration
 	Ipv4 *ContainerInitializationIpConfigIpv4 `pulumi:"ipv4"`
-	// The IPv4 configuration.
+	// The IPv6 configuration
 	Ipv6 *ContainerInitializationIpConfigIpv6 `pulumi:"ipv6"`
 }
 
@@ -1324,9 +1316,9 @@ type ContainerInitializationIpConfigInput interface {
 }
 
 type ContainerInitializationIpConfigArgs struct {
-	// The IPv4 configuration.
+	// The IPv4 configuration
 	Ipv4 ContainerInitializationIpConfigIpv4PtrInput `pulumi:"ipv4"`
-	// The IPv4 configuration.
+	// The IPv6 configuration
 	Ipv6 ContainerInitializationIpConfigIpv6PtrInput `pulumi:"ipv6"`
 }
 
@@ -1381,12 +1373,12 @@ func (o ContainerInitializationIpConfigOutput) ToContainerInitializationIpConfig
 	return o
 }
 
-// The IPv4 configuration.
+// The IPv4 configuration
 func (o ContainerInitializationIpConfigOutput) Ipv4() ContainerInitializationIpConfigIpv4PtrOutput {
 	return o.ApplyT(func(v ContainerInitializationIpConfig) *ContainerInitializationIpConfigIpv4 { return v.Ipv4 }).(ContainerInitializationIpConfigIpv4PtrOutput)
 }
 
-// The IPv4 configuration.
+// The IPv6 configuration
 func (o ContainerInitializationIpConfigOutput) Ipv6() ContainerInitializationIpConfigIpv6PtrOutput {
 	return o.ApplyT(func(v ContainerInitializationIpConfig) *ContainerInitializationIpConfigIpv6 { return v.Ipv6 }).(ContainerInitializationIpConfigIpv6PtrOutput)
 }
@@ -1412,11 +1404,9 @@ func (o ContainerInitializationIpConfigArrayOutput) Index(i pulumi.IntInput) Con
 }
 
 type ContainerInitializationIpConfigIpv4 struct {
-	// The IPv6 address (use `dhcp` for
-	// autodiscovery).
+	// The IPv4 address
 	Address *string `pulumi:"address"`
-	// The IPv6 gateway (must be omitted
-	// when `dhcp` is used as the address).
+	// The IPv4 gateway
 	Gateway *string `pulumi:"gateway"`
 }
 
@@ -1432,11 +1422,9 @@ type ContainerInitializationIpConfigIpv4Input interface {
 }
 
 type ContainerInitializationIpConfigIpv4Args struct {
-	// The IPv6 address (use `dhcp` for
-	// autodiscovery).
+	// The IPv4 address
 	Address pulumi.StringPtrInput `pulumi:"address"`
-	// The IPv6 gateway (must be omitted
-	// when `dhcp` is used as the address).
+	// The IPv4 gateway
 	Gateway pulumi.StringPtrInput `pulumi:"gateway"`
 }
 
@@ -1517,14 +1505,12 @@ func (o ContainerInitializationIpConfigIpv4Output) ToContainerInitializationIpCo
 	}).(ContainerInitializationIpConfigIpv4PtrOutput)
 }
 
-// The IPv6 address (use `dhcp` for
-// autodiscovery).
+// The IPv4 address
 func (o ContainerInitializationIpConfigIpv4Output) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerInitializationIpConfigIpv4) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
 
-// The IPv6 gateway (must be omitted
-// when `dhcp` is used as the address).
+// The IPv4 gateway
 func (o ContainerInitializationIpConfigIpv4Output) Gateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerInitializationIpConfigIpv4) *string { return v.Gateway }).(pulumi.StringPtrOutput)
 }
@@ -1553,8 +1539,7 @@ func (o ContainerInitializationIpConfigIpv4PtrOutput) Elem() ContainerInitializa
 	}).(ContainerInitializationIpConfigIpv4Output)
 }
 
-// The IPv6 address (use `dhcp` for
-// autodiscovery).
+// The IPv4 address
 func (o ContainerInitializationIpConfigIpv4PtrOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerInitializationIpConfigIpv4) *string {
 		if v == nil {
@@ -1564,8 +1549,7 @@ func (o ContainerInitializationIpConfigIpv4PtrOutput) Address() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// The IPv6 gateway (must be omitted
-// when `dhcp` is used as the address).
+// The IPv4 gateway
 func (o ContainerInitializationIpConfigIpv4PtrOutput) Gateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerInitializationIpConfigIpv4) *string {
 		if v == nil {
@@ -1576,11 +1560,9 @@ func (o ContainerInitializationIpConfigIpv4PtrOutput) Gateway() pulumi.StringPtr
 }
 
 type ContainerInitializationIpConfigIpv6 struct {
-	// The IPv6 address (use `dhcp` for
-	// autodiscovery).
+	// The IPv6 address
 	Address *string `pulumi:"address"`
-	// The IPv6 gateway (must be omitted
-	// when `dhcp` is used as the address).
+	// The IPv6 gateway
 	Gateway *string `pulumi:"gateway"`
 }
 
@@ -1596,11 +1578,9 @@ type ContainerInitializationIpConfigIpv6Input interface {
 }
 
 type ContainerInitializationIpConfigIpv6Args struct {
-	// The IPv6 address (use `dhcp` for
-	// autodiscovery).
+	// The IPv6 address
 	Address pulumi.StringPtrInput `pulumi:"address"`
-	// The IPv6 gateway (must be omitted
-	// when `dhcp` is used as the address).
+	// The IPv6 gateway
 	Gateway pulumi.StringPtrInput `pulumi:"gateway"`
 }
 
@@ -1681,14 +1661,12 @@ func (o ContainerInitializationIpConfigIpv6Output) ToContainerInitializationIpCo
 	}).(ContainerInitializationIpConfigIpv6PtrOutput)
 }
 
-// The IPv6 address (use `dhcp` for
-// autodiscovery).
+// The IPv6 address
 func (o ContainerInitializationIpConfigIpv6Output) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerInitializationIpConfigIpv6) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
 
-// The IPv6 gateway (must be omitted
-// when `dhcp` is used as the address).
+// The IPv6 gateway
 func (o ContainerInitializationIpConfigIpv6Output) Gateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerInitializationIpConfigIpv6) *string { return v.Gateway }).(pulumi.StringPtrOutput)
 }
@@ -1717,8 +1695,7 @@ func (o ContainerInitializationIpConfigIpv6PtrOutput) Elem() ContainerInitializa
 	}).(ContainerInitializationIpConfigIpv6Output)
 }
 
-// The IPv6 address (use `dhcp` for
-// autodiscovery).
+// The IPv6 address
 func (o ContainerInitializationIpConfigIpv6PtrOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerInitializationIpConfigIpv6) *string {
 		if v == nil {
@@ -1728,8 +1705,7 @@ func (o ContainerInitializationIpConfigIpv6PtrOutput) Address() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// The IPv6 gateway (must be omitted
-// when `dhcp` is used as the address).
+// The IPv6 gateway
 func (o ContainerInitializationIpConfigIpv6PtrOutput) Gateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerInitializationIpConfigIpv6) *string {
 		if v == nil {
@@ -1740,9 +1716,9 @@ func (o ContainerInitializationIpConfigIpv6PtrOutput) Gateway() pulumi.StringPtr
 }
 
 type ContainerInitializationUserAccount struct {
-	// The SSH keys for the root account.
+	// The SSH keys
 	Keys []string `pulumi:"keys"`
-	// The password for the root account.
+	// The SSH password
 	Password *string `pulumi:"password"`
 }
 
@@ -1758,9 +1734,9 @@ type ContainerInitializationUserAccountInput interface {
 }
 
 type ContainerInitializationUserAccountArgs struct {
-	// The SSH keys for the root account.
+	// The SSH keys
 	Keys pulumi.StringArrayInput `pulumi:"keys"`
-	// The password for the root account.
+	// The SSH password
 	Password pulumi.StringPtrInput `pulumi:"password"`
 }
 
@@ -1841,12 +1817,12 @@ func (o ContainerInitializationUserAccountOutput) ToContainerInitializationUserA
 	}).(ContainerInitializationUserAccountPtrOutput)
 }
 
-// The SSH keys for the root account.
+// The SSH keys
 func (o ContainerInitializationUserAccountOutput) Keys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ContainerInitializationUserAccount) []string { return v.Keys }).(pulumi.StringArrayOutput)
 }
 
-// The password for the root account.
+// The SSH password
 func (o ContainerInitializationUserAccountOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerInitializationUserAccount) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
@@ -1875,7 +1851,7 @@ func (o ContainerInitializationUserAccountPtrOutput) Elem() ContainerInitializat
 	}).(ContainerInitializationUserAccountOutput)
 }
 
-// The SSH keys for the root account.
+// The SSH keys
 func (o ContainerInitializationUserAccountPtrOutput) Keys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ContainerInitializationUserAccount) []string {
 		if v == nil {
@@ -1885,7 +1861,7 @@ func (o ContainerInitializationUserAccountPtrOutput) Keys() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
-// The password for the root account.
+// The SSH password
 func (o ContainerInitializationUserAccountPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerInitializationUserAccount) *string {
 		if v == nil {

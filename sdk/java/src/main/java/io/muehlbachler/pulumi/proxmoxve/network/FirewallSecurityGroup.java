@@ -89,14 +89,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="proxmoxve:Network/firewallSecurityGroup:FirewallSecurityGroup")
 public class FirewallSecurityGroup extends com.pulumi.resources.CustomResource {
     /**
-     * Rule comment.
+     * Security group comment.
      * 
      */
     @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
-     * @return Rule comment.
+     * @return Security group comment.
      * 
      */
     public Output<Optional<String>> comment() {

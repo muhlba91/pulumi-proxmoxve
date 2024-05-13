@@ -127,14 +127,14 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
     }
 
     /**
-     * The VGA type (defaults to `std`).
+     * The cloud-init configuration format
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The VGA type (defaults to `std`).
+     * @return The cloud-init configuration format
      * 
      */
     public Optional<Output<String>> type() {
@@ -395,7 +395,7 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param type The VGA type (defaults to `std`).
+         * @param type The cloud-init configuration format
          * 
          * @return builder
          * 
@@ -406,7 +406,7 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param type The VGA type (defaults to `std`).
+         * @param type The cloud-init configuration format
          * 
          * @return builder
          * 

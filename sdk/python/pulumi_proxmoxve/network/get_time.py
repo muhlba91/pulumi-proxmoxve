@@ -96,14 +96,12 @@ def get_time(node_name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
     first_node_time = proxmoxve.Network.get_time(node_name="first-node")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str node_name: A node name.
@@ -129,14 +127,12 @@ def get_time_output(node_name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
     first_node_time = proxmoxve.Network.get_time(node_name="first-node")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str node_name: A node name.

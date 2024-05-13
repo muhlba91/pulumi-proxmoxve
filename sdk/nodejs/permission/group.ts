@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
@@ -21,7 +20,6 @@ import * as utilities from "../utilities";
  *     groupId: "operations-team",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

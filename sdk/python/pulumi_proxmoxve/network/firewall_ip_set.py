@@ -25,9 +25,9 @@ class FirewallIPSetArgs:
         """
         The set of arguments for constructing a FirewallIPSet resource.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallIPSetCidrArgs']]] cidrs: IP/CIDR block (multiple blocks supported).
-        :param pulumi.Input[str] comment: Arbitrary string annotation.
+        :param pulumi.Input[str] comment: IPSet comment.
         :param pulumi.Input[int] container_id: Container ID. Leave empty for cluster level aliases.
-        :param pulumi.Input[str] name: Network/IP specification in CIDR format.
+        :param pulumi.Input[str] name: IPSet name.
         :param pulumi.Input[str] node_name: Node name. Leave empty for cluster level aliases.
         :param pulumi.Input[int] vm_id: VM ID. Leave empty for cluster level aliases.
         """
@@ -60,7 +60,7 @@ class FirewallIPSetArgs:
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
         """
-        Arbitrary string annotation.
+        IPSet comment.
         """
         return pulumi.get(self, "comment")
 
@@ -84,7 +84,7 @@ class FirewallIPSetArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Network/IP specification in CIDR format.
+        IPSet name.
         """
         return pulumi.get(self, "name")
 
@@ -129,9 +129,9 @@ class _FirewallIPSetState:
         """
         Input properties used for looking up and filtering FirewallIPSet resources.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallIPSetCidrArgs']]] cidrs: IP/CIDR block (multiple blocks supported).
-        :param pulumi.Input[str] comment: Arbitrary string annotation.
+        :param pulumi.Input[str] comment: IPSet comment.
         :param pulumi.Input[int] container_id: Container ID. Leave empty for cluster level aliases.
-        :param pulumi.Input[str] name: Network/IP specification in CIDR format.
+        :param pulumi.Input[str] name: IPSet name.
         :param pulumi.Input[str] node_name: Node name. Leave empty for cluster level aliases.
         :param pulumi.Input[int] vm_id: VM ID. Leave empty for cluster level aliases.
         """
@@ -164,7 +164,7 @@ class _FirewallIPSetState:
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
         """
-        Arbitrary string annotation.
+        IPSet comment.
         """
         return pulumi.get(self, "comment")
 
@@ -188,7 +188,7 @@ class _FirewallIPSetState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Network/IP specification in CIDR format.
+        IPSet name.
         """
         return pulumi.get(self, "name")
 
@@ -239,7 +239,6 @@ class FirewallIPSet(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -265,14 +264,13 @@ class FirewallIPSet(pulumi.CustomResource):
             ],
             opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_vm["example"]]))
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallIPSetCidrArgs']]]] cidrs: IP/CIDR block (multiple blocks supported).
-        :param pulumi.Input[str] comment: Arbitrary string annotation.
+        :param pulumi.Input[str] comment: IPSet comment.
         :param pulumi.Input[int] container_id: Container ID. Leave empty for cluster level aliases.
-        :param pulumi.Input[str] name: Network/IP specification in CIDR format.
+        :param pulumi.Input[str] name: IPSet name.
         :param pulumi.Input[str] node_name: Node name. Leave empty for cluster level aliases.
         :param pulumi.Input[int] vm_id: VM ID. Leave empty for cluster level aliases.
         """
@@ -288,7 +286,6 @@ class FirewallIPSet(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -314,7 +311,6 @@ class FirewallIPSet(pulumi.CustomResource):
             ],
             opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_vm["example"]]))
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param FirewallIPSetArgs args: The arguments to use to populate this resource's properties.
@@ -376,9 +372,9 @@ class FirewallIPSet(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallIPSetCidrArgs']]]] cidrs: IP/CIDR block (multiple blocks supported).
-        :param pulumi.Input[str] comment: Arbitrary string annotation.
+        :param pulumi.Input[str] comment: IPSet comment.
         :param pulumi.Input[int] container_id: Container ID. Leave empty for cluster level aliases.
-        :param pulumi.Input[str] name: Network/IP specification in CIDR format.
+        :param pulumi.Input[str] name: IPSet name.
         :param pulumi.Input[str] node_name: Node name. Leave empty for cluster level aliases.
         :param pulumi.Input[int] vm_id: VM ID. Leave empty for cluster level aliases.
         """
@@ -406,7 +402,7 @@ class FirewallIPSet(pulumi.CustomResource):
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[str]]:
         """
-        Arbitrary string annotation.
+        IPSet comment.
         """
         return pulumi.get(self, "comment")
 
@@ -422,7 +418,7 @@ class FirewallIPSet(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Network/IP specification in CIDR format.
+        IPSet name.
         """
         return pulumi.get(self, "name")
 

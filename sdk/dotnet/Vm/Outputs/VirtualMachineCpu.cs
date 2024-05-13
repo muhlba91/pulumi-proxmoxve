@@ -64,7 +64,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly int? Limit;
         /// <summary>
-        /// The NUMA configuration.
+        /// Enable/disable NUMA. (default to `false`)
         /// </summary>
         public readonly bool? Numa;
         /// <summary>
@@ -72,7 +72,8 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly int? Sockets;
         /// <summary>
-        /// The VGA type (defaults to `std`).
+        /// The emulated CPU type, it's recommended to
+        /// use `x86-64-v2-AES` (defaults to `qemu64`).
         /// </summary>
         public readonly string? Type;
         /// <summary>

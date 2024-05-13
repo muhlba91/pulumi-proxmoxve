@@ -357,7 +357,6 @@ class File(pulumi.CustomResource):
 
         > The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -370,13 +369,11 @@ class File(pulumi.CustomResource):
                 path="vzdump-lxc-100-2023_11_08-23_10_05.tar",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Images
 
         > Consider using `Download.File` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -389,13 +386,11 @@ class File(pulumi.CustomResource):
                 path="https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Container Template (`vztmpl`)
 
         > Consider using `Download.File` resource instead. Using this resource for container images is less efficient (requires to transfer uploaded image to node) though still supported.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -408,7 +403,6 @@ class File(pulumi.CustomResource):
                 path="https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Important Notes
 
@@ -473,7 +467,6 @@ class File(pulumi.CustomResource):
 
         > The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -486,13 +479,11 @@ class File(pulumi.CustomResource):
                 path="vzdump-lxc-100-2023_11_08-23_10_05.tar",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Images
 
         > Consider using `Download.File` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -505,13 +496,11 @@ class File(pulumi.CustomResource):
                 path="https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Container Template (`vztmpl`)
 
         > Consider using `Download.File` resource instead. Using this resource for container images is less efficient (requires to transfer uploaded image to node) though still supported.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -524,7 +513,6 @@ class File(pulumi.CustomResource):
                 path="https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Important Notes
 

@@ -14,14 +14,11 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     public sealed class VirtualMachineInitializationIpConfigIpv4
     {
         /// <summary>
-        /// The IPv6 address in CIDR notation
-        /// (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
-        /// to `dhcp` for autodiscovery.
+        /// The IPv4 address
         /// </summary>
         public readonly string? Address;
         /// <summary>
-        /// The IPv6 gateway (must be omitted
-        /// when `dhcp` is used as the address).
+        /// The IPv4 gateway
         /// </summary>
         public readonly string? Gateway;
 

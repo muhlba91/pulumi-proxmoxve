@@ -73,14 +73,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="proxmoxve:Hardware/mapping/usb:Usb")
 public class Usb extends com.pulumi.resources.CustomResource {
     /**
-     * The comment of the mapped USB device.
+     * The comment of this USB hardware mapping.
      * 
      */
     @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
-     * @return The comment of the mapped USB device.
+     * @return The comment of this USB hardware mapping.
      * 
      */
     public Output<Optional<String>> comment() {

@@ -17,16 +17,16 @@ public final class VirtualMachineEfiDiskArgs extends com.pulumi.resources.Resour
     public static final VirtualMachineEfiDiskArgs Empty = new VirtualMachineEfiDiskArgs();
 
     /**
-     * The identifier for the datastore to create the
-     * cloud-init disk in (defaults to `local-lvm`).
+     * The identifier for the datastore to create
+     * the disk in (defaults to `local-lvm`).
      * 
      */
     @Import(name="datastoreId")
     private @Nullable Output<String> datastoreId;
 
     /**
-     * @return The identifier for the datastore to create the
-     * cloud-init disk in (defaults to `local-lvm`).
+     * @return The identifier for the datastore to create
+     * the disk in (defaults to `local-lvm`).
      * 
      */
     public Optional<Output<String>> datastoreId() {
@@ -70,14 +70,20 @@ public final class VirtualMachineEfiDiskArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The VGA type (defaults to `std`).
+     * Size and type of the OVMF EFI disk. `4m` is newer and
+     * recommended, and required for Secure Boot. For backwards compatibility
+     * use `2m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
+     * to `2m`).
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The VGA type (defaults to `std`).
+     * @return Size and type of the OVMF EFI disk. `4m` is newer and
+     * recommended, and required for Secure Boot. For backwards compatibility
+     * use `2m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
+     * to `2m`).
      * 
      */
     public Optional<Output<String>> type() {
@@ -112,8 +118,8 @@ public final class VirtualMachineEfiDiskArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param datastoreId The identifier for the datastore to create the
-         * cloud-init disk in (defaults to `local-lvm`).
+         * @param datastoreId The identifier for the datastore to create
+         * the disk in (defaults to `local-lvm`).
          * 
          * @return builder
          * 
@@ -124,8 +130,8 @@ public final class VirtualMachineEfiDiskArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param datastoreId The identifier for the datastore to create the
-         * cloud-init disk in (defaults to `local-lvm`).
+         * @param datastoreId The identifier for the datastore to create
+         * the disk in (defaults to `local-lvm`).
          * 
          * @return builder
          * 
@@ -183,7 +189,10 @@ public final class VirtualMachineEfiDiskArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param type The VGA type (defaults to `std`).
+         * @param type Size and type of the OVMF EFI disk. `4m` is newer and
+         * recommended, and required for Secure Boot. For backwards compatibility
+         * use `2m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
+         * to `2m`).
          * 
          * @return builder
          * 
@@ -194,7 +203,10 @@ public final class VirtualMachineEfiDiskArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param type The VGA type (defaults to `std`).
+         * @param type Size and type of the OVMF EFI disk. `4m` is newer and
+         * recommended, and required for Secure Boot. For backwards compatibility
+         * use `2m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
+         * to `2m`).
          * 
          * @return builder
          * 

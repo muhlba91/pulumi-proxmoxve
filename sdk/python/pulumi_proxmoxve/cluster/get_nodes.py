@@ -158,14 +158,12 @@ def get_nodes(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodesR
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
     available_nodes = proxmoxve.Cluster.get_nodes()
     ```
-    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -191,13 +189,11 @@ def get_nodes_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Outp
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
     available_nodes = proxmoxve.Cluster.get_nodes()
     ```
-    <!--End PulumiCodeChooser -->
     """
     ...

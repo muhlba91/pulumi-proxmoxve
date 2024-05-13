@@ -22,8 +22,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly bool? Disconnected;
         /// <summary>
-        /// Whether to enable the VGA device (defaults
-        /// to `true`).
+        /// Whether to enable the network device (defaults to `true`).
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>

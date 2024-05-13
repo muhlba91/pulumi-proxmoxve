@@ -35,7 +35,7 @@ type Hosts struct {
 	Entries HostsEntryArrayOutput `pulumi:"entries"`
 	// A host entry (multiple blocks supported).
 	Entry HostsEntryArrayOutput `pulumi:"entry"`
-	// The hostnames.
+	// The hostnames associated with each of the IP addresses.
 	Hostnames pulumi.StringArrayArrayOutput `pulumi:"hostnames"`
 	// A node name.
 	NodeName pulumi.StringOutput `pulumi:"nodeName"`
@@ -86,7 +86,7 @@ type hostsState struct {
 	Entries []HostsEntry `pulumi:"entries"`
 	// A host entry (multiple blocks supported).
 	Entry []HostsEntry `pulumi:"entry"`
-	// The hostnames.
+	// The hostnames associated with each of the IP addresses.
 	Hostnames [][]string `pulumi:"hostnames"`
 	// A node name.
 	NodeName *string `pulumi:"nodeName"`
@@ -102,7 +102,7 @@ type HostsState struct {
 	Entries HostsEntryArrayInput
 	// A host entry (multiple blocks supported).
 	Entry HostsEntryArrayInput
-	// The hostnames.
+	// The hostnames associated with each of the IP addresses.
 	Hostnames pulumi.StringArrayArrayInput
 	// A node name.
 	NodeName pulumi.StringPtrInput
@@ -235,7 +235,7 @@ func (o HostsOutput) Entry() HostsEntryArrayOutput {
 	return o.ApplyT(func(v *Hosts) HostsEntryArrayOutput { return v.Entry }).(HostsEntryArrayOutput)
 }
 
-// The hostnames.
+// The hostnames associated with each of the IP addresses.
 func (o HostsOutput) Hostnames() pulumi.StringArrayArrayOutput {
 	return o.ApplyT(func(v *Hosts) pulumi.StringArrayArrayOutput { return v.Hostnames }).(pulumi.StringArrayArrayOutput)
 }

@@ -25,7 +25,7 @@ class FirewallSecurityGroupArgs:
         """
         The set of arguments for constructing a FirewallSecurityGroup resource.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallSecurityGroupRuleArgs']]] rules: Firewall rule block (multiple blocks supported).
-        :param pulumi.Input[str] comment: Rule comment.
+        :param pulumi.Input[str] comment: Security group comment.
         :param pulumi.Input[int] container_id: The ID of the container to manage the firewall for.
         :param pulumi.Input[str] name: Security group name.
         :param pulumi.Input[str] node_name: The name of the node.
@@ -59,7 +59,7 @@ class FirewallSecurityGroupArgs:
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule comment.
+        Security group comment.
         """
         return pulumi.get(self, "comment")
 
@@ -127,7 +127,7 @@ class _FirewallSecurityGroupState:
                  vm_id: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering FirewallSecurityGroup resources.
-        :param pulumi.Input[str] comment: Rule comment.
+        :param pulumi.Input[str] comment: Security group comment.
         :param pulumi.Input[int] container_id: The ID of the container to manage the firewall for.
         :param pulumi.Input[str] name: Security group name.
         :param pulumi.Input[str] node_name: The name of the node.
@@ -151,7 +151,7 @@ class _FirewallSecurityGroupState:
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule comment.
+        Security group comment.
         """
         return pulumi.get(self, "comment")
 
@@ -239,7 +239,6 @@ class FirewallSecurityGroup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -267,7 +266,6 @@ class FirewallSecurityGroup(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -281,7 +279,7 @@ class FirewallSecurityGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] comment: Rule comment.
+        :param pulumi.Input[str] comment: Security group comment.
         :param pulumi.Input[int] container_id: The ID of the container to manage the firewall for.
         :param pulumi.Input[str] name: Security group name.
         :param pulumi.Input[str] node_name: The name of the node.
@@ -301,7 +299,6 @@ class FirewallSecurityGroup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -329,7 +326,6 @@ class FirewallSecurityGroup(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -402,7 +398,7 @@ class FirewallSecurityGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] comment: Rule comment.
+        :param pulumi.Input[str] comment: Security group comment.
         :param pulumi.Input[int] container_id: The ID of the container to manage the firewall for.
         :param pulumi.Input[str] name: Security group name.
         :param pulumi.Input[str] node_name: The name of the node.
@@ -425,7 +421,7 @@ class FirewallSecurityGroup(pulumi.CustomResource):
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[str]]:
         """
-        Rule comment.
+        Security group comment.
         """
         return pulumi.get(self, "comment")
 

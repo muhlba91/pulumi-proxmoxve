@@ -34,14 +34,14 @@ public final class FirewallIPSetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Arbitrary string annotation.
+     * IPSet comment.
      * 
      */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
     /**
-     * @return Arbitrary string annotation.
+     * @return IPSet comment.
      * 
      */
     public Optional<Output<String>> comment() {
@@ -64,14 +64,14 @@ public final class FirewallIPSetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Network/IP specification in CIDR format.
+     * IPSet name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Network/IP specification in CIDR format.
+     * @return IPSet name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -169,7 +169,7 @@ public final class FirewallIPSetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comment Arbitrary string annotation.
+         * @param comment IPSet comment.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class FirewallIPSetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comment Arbitrary string annotation.
+         * @param comment IPSet comment.
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class FirewallIPSetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Network/IP specification in CIDR format.
+         * @param name IPSet name.
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class FirewallIPSetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Network/IP specification in CIDR format.
+         * @param name IPSet name.
          * 
          * @return builder
          * 

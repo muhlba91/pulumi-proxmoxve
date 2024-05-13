@@ -55,7 +55,7 @@ public final class VirtualMachineInitialization {
      */
     private @Nullable String networkDataFileId;
     /**
-     * @return The VGA type (defaults to `std`).
+     * @return The cloud-init configuration format
      * 
      */
     private @Nullable String type;
@@ -135,7 +135,7 @@ public final class VirtualMachineInitialization {
         return Optional.ofNullable(this.networkDataFileId);
     }
     /**
-     * @return The VGA type (defaults to `std`).
+     * @return The cloud-init configuration format
      * 
      */
     public Optional<String> type() {

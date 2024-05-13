@@ -19,14 +19,14 @@ public final class PciState extends com.pulumi.resources.ResourceArgs {
     public static final PciState Empty = new PciState();
 
     /**
-     * The comment of the mapped PCI device.
+     * The comment of this PCI hardware mapping.
      * 
      */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
     /**
-     * @return The comment of the mapped PCI device.
+     * @return The comment of this PCI hardware mapping.
      * 
      */
     public Optional<Output<String>> comment() {
@@ -106,7 +106,7 @@ public final class PciState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comment The comment of the mapped PCI device.
+         * @param comment The comment of this PCI hardware mapping.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class PciState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comment The comment of the mapped PCI device.
+         * @param comment The comment of this PCI hardware mapping.
          * 
          * @return builder
          * 

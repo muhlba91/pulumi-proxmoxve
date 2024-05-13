@@ -18,16 +18,14 @@ public final class ContainerCloneArgs extends com.pulumi.resources.ResourceArgs 
     public static final ContainerCloneArgs Empty = new ContainerCloneArgs();
 
     /**
-     * The identifier for the datastore to create the
-     * disk in (defaults to `local`).
+     * The identifier for the target datastore.
      * 
      */
     @Import(name="datastoreId")
     private @Nullable Output<String> datastoreId;
 
     /**
-     * @return The identifier for the datastore to create the
-     * disk in (defaults to `local`).
+     * @return The identifier for the target datastore.
      * 
      */
     public Optional<Output<String>> datastoreId() {
@@ -35,14 +33,16 @@ public final class ContainerCloneArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name of the node to assign the container to.
+     * The name of the source node (leave blank, if
+     * equal to the `node_name` argument).
      * 
      */
     @Import(name="nodeName")
     private @Nullable Output<String> nodeName;
 
     /**
-     * @return The name of the node to assign the container to.
+     * @return The name of the source node (leave blank, if
+     * equal to the `node_name` argument).
      * 
      */
     public Optional<Output<String>> nodeName() {
@@ -50,14 +50,14 @@ public final class ContainerCloneArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The container identifier
+     * The identifier for the source container.
      * 
      */
     @Import(name="vmId", required=true)
     private Output<Integer> vmId;
 
     /**
-     * @return The container identifier
+     * @return The identifier for the source container.
      * 
      */
     public Output<Integer> vmId() {
@@ -91,8 +91,7 @@ public final class ContainerCloneArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param datastoreId The identifier for the datastore to create the
-         * disk in (defaults to `local`).
+         * @param datastoreId The identifier for the target datastore.
          * 
          * @return builder
          * 
@@ -103,8 +102,7 @@ public final class ContainerCloneArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param datastoreId The identifier for the datastore to create the
-         * disk in (defaults to `local`).
+         * @param datastoreId The identifier for the target datastore.
          * 
          * @return builder
          * 
@@ -114,7 +112,8 @@ public final class ContainerCloneArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param nodeName The name of the node to assign the container to.
+         * @param nodeName The name of the source node (leave blank, if
+         * equal to the `node_name` argument).
          * 
          * @return builder
          * 
@@ -125,7 +124,8 @@ public final class ContainerCloneArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param nodeName The name of the node to assign the container to.
+         * @param nodeName The name of the source node (leave blank, if
+         * equal to the `node_name` argument).
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class ContainerCloneArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vmId The container identifier
+         * @param vmId The identifier for the source container.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class ContainerCloneArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vmId The container identifier
+         * @param vmId The identifier for the source container.
          * 
          * @return builder
          * 

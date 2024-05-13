@@ -81,7 +81,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<int>? Limit { get; set; }
 
         /// <summary>
-        /// The NUMA configuration.
+        /// Enable/disable NUMA. (default to `false`)
         /// </summary>
         [Input("numa")]
         public Input<bool>? Numa { get; set; }
@@ -93,7 +93,8 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<int>? Sockets { get; set; }
 
         /// <summary>
-        /// The VGA type (defaults to `std`).
+        /// The emulated CPU type, it's recommended to
+        /// use `x86-64-v2-AES` (defaults to `qemu64`).
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

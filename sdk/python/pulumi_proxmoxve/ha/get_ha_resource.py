@@ -135,7 +135,6 @@ def get_ha_resource(resource_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_proxmoxve as proxmoxve
@@ -144,7 +143,6 @@ def get_ha_resource(resource_id: Optional[str] = None,
     example = [proxmoxve.HA.get_ha_resource(resource_id=__value) for __key, __value in all.resource_ids]
     pulumi.export("proxmoxVirtualEnvironmentHaresourcesFull", example)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str resource_id: The identifier of the Proxmox HA resource to read.
@@ -173,7 +171,6 @@ def get_ha_resource_output(resource_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_proxmoxve as proxmoxve
@@ -182,7 +179,6 @@ def get_ha_resource_output(resource_id: Optional[pulumi.Input[str]] = None,
     example = [proxmoxve.HA.get_ha_resource(resource_id=__value) for __key, __value in all.resource_ids]
     pulumi.export("proxmoxVirtualEnvironmentHaresourcesFull", example)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str resource_id: The identifier of the Proxmox HA resource to read.

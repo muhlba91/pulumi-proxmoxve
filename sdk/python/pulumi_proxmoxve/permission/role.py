@@ -102,7 +102,6 @@ class Role(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -111,7 +110,6 @@ class Role(pulumi.CustomResource):
             privileges=["VM.Monitor"],
             role_id="operations-monitoring")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -139,7 +137,6 @@ class Role(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -148,7 +145,6 @@ class Role(pulumi.CustomResource):
             privileges=["VM.Monitor"],
             role_id="operations-monitoring")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

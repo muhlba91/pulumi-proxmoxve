@@ -13,8 +13,8 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
     public sealed class VirtualMachineHostpciGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The device (defaults to `socket`).
-        /// - `/dev/*` - A host serial device.
+        /// The PCI device name for Proxmox, in form
+        /// of `hostpciX` where `X` is a sequential number from 0 to 3.
         /// </summary>
         [Input("device", required: true)]
         public Input<string> Device { get; set; } = null!;
@@ -29,7 +29,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
 
         /// <summary>
         /// The resource mapping name of the device, for
-        /// example usbdevice. Use either this or `id`.
+        /// example gpu. Use either this or `id`.
         /// </summary>
         [Input("mapping")]
         public Input<string>? Mapping { get; set; }

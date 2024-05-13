@@ -92,14 +92,14 @@ public class FirewallIPSet extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.cidrs);
     }
     /**
-     * Arbitrary string annotation.
+     * IPSet comment.
      * 
      */
     @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
-     * @return Arbitrary string annotation.
+     * @return IPSet comment.
      * 
      */
     public Output<Optional<String>> comment() {
@@ -120,14 +120,14 @@ public class FirewallIPSet extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.containerId);
     }
     /**
-     * Network/IP specification in CIDR format.
+     * IPSet name.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Network/IP specification in CIDR format.
+     * @return IPSet name.
      * 
      */
     public Output<String> name() {

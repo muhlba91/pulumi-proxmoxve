@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { AclArgs, AclState } from "./acl";
+export type Acl = import("./acl").Acl;
+export const Acl: typeof import("./acl").Acl = null as any;
+utilities.lazyLoad(exports, ["Acl"], () => require("./acl"));
+
 export { CertifiArgs, CertifiState } from "./certifi";
 export type Certifi = import("./certifi").Certifi;
 export const Certifi: typeof import("./certifi").Certifi = null as any;
@@ -52,6 +57,7 @@ import * as network from "./network";
 import * as permission from "./permission";
 import * as storage from "./storage";
 import * as types from "./types";
+import * as user from "./user";
 import * as vm from "./vm";
 
 export {
@@ -65,6 +71,7 @@ export {
     permission,
     storage,
     types,
+    user,
     vm,
 };
 
@@ -72,6 +79,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "proxmoxve:index/acl:Acl":
+                return new Acl(name, <any>undefined, { urn })
             case "proxmoxve:index/certifi:Certifi":
                 return new Certifi(name, <any>undefined, { urn })
             case "proxmoxve:index/dNS:DNS":
@@ -87,6 +96,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("proxmoxve", "index/acl", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "index/certifi", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "index/dNS", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "index/hosts", _module)

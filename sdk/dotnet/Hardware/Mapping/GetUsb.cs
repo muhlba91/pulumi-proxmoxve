@@ -16,7 +16,6 @@ namespace Pulumi.ProxmoxVE.Hardware.Mapping
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,7 +35,6 @@ namespace Pulumi.ProxmoxVE.Hardware.Mapping
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetUsbResult> InvokeAsync(GetUsbArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUsbResult>("proxmoxve:Hardware/mapping/getUsb:getUsb", args ?? new GetUsbArgs(), options.WithDefaults());
@@ -46,7 +44,6 @@ namespace Pulumi.ProxmoxVE.Hardware.Mapping
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -66,7 +63,6 @@ namespace Pulumi.ProxmoxVE.Hardware.Mapping
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetUsbResult> Invoke(GetUsbInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUsbResult>("proxmoxve:Hardware/mapping/getUsb:getUsb", args ?? new GetUsbInvokeArgs(), options.WithDefaults());

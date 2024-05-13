@@ -19,14 +19,14 @@ public final class UsbArgs extends com.pulumi.resources.ResourceArgs {
     public static final UsbArgs Empty = new UsbArgs();
 
     /**
-     * The comment of the mapped USB device.
+     * The comment of this USB hardware mapping.
      * 
      */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
     /**
-     * @return The comment of the mapped USB device.
+     * @return The comment of this USB hardware mapping.
      * 
      */
     public Optional<Output<String>> comment() {
@@ -90,7 +90,7 @@ public final class UsbArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comment The comment of the mapped USB device.
+         * @param comment The comment of this USB hardware mapping.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class UsbArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comment The comment of the mapped USB device.
+         * @param comment The comment of this USB hardware mapping.
          * 
          * @return builder
          * 

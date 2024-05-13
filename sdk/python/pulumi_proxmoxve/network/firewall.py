@@ -24,7 +24,7 @@ class FirewallArgs:
         """
         The set of arguments for constructing a Firewall resource.
         :param pulumi.Input[bool] ebtables: Enable ebtables rules cluster wide.
-        :param pulumi.Input[bool] enabled: Enable or disable the log rate limit.
+        :param pulumi.Input[bool] enabled: Enable or disable the firewall cluster wide.
         :param pulumi.Input[str] input_policy: The default input policy (`ACCEPT`, `DROP`, `REJECT`).
         :param pulumi.Input['FirewallLogRatelimitArgs'] log_ratelimit: The log rate limit.
         :param pulumi.Input[str] output_policy: The default output policy (`ACCEPT`, `DROP`, `REJECT`).
@@ -56,7 +56,7 @@ class FirewallArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable or disable the log rate limit.
+        Enable or disable the firewall cluster wide.
         """
         return pulumi.get(self, "enabled")
 
@@ -112,7 +112,7 @@ class _FirewallState:
         """
         Input properties used for looking up and filtering Firewall resources.
         :param pulumi.Input[bool] ebtables: Enable ebtables rules cluster wide.
-        :param pulumi.Input[bool] enabled: Enable or disable the log rate limit.
+        :param pulumi.Input[bool] enabled: Enable or disable the firewall cluster wide.
         :param pulumi.Input[str] input_policy: The default input policy (`ACCEPT`, `DROP`, `REJECT`).
         :param pulumi.Input['FirewallLogRatelimitArgs'] log_ratelimit: The log rate limit.
         :param pulumi.Input[str] output_policy: The default output policy (`ACCEPT`, `DROP`, `REJECT`).
@@ -144,7 +144,7 @@ class _FirewallState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable or disable the log rate limit.
+        Enable or disable the firewall cluster wide.
         """
         return pulumi.get(self, "enabled")
 
@@ -205,7 +205,6 @@ class Firewall(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -221,7 +220,6 @@ class Firewall(pulumi.CustomResource):
             ),
             output_policy="ACCEPT")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Important Notes
 
@@ -240,7 +238,7 @@ class Firewall(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] ebtables: Enable ebtables rules cluster wide.
-        :param pulumi.Input[bool] enabled: Enable or disable the log rate limit.
+        :param pulumi.Input[bool] enabled: Enable or disable the firewall cluster wide.
         :param pulumi.Input[str] input_policy: The default input policy (`ACCEPT`, `DROP`, `REJECT`).
         :param pulumi.Input[pulumi.InputType['FirewallLogRatelimitArgs']] log_ratelimit: The log rate limit.
         :param pulumi.Input[str] output_policy: The default output policy (`ACCEPT`, `DROP`, `REJECT`).
@@ -256,7 +254,6 @@ class Firewall(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -272,7 +269,6 @@ class Firewall(pulumi.CustomResource):
             ),
             output_policy="ACCEPT")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Important Notes
 
@@ -345,7 +341,7 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] ebtables: Enable ebtables rules cluster wide.
-        :param pulumi.Input[bool] enabled: Enable or disable the log rate limit.
+        :param pulumi.Input[bool] enabled: Enable or disable the firewall cluster wide.
         :param pulumi.Input[str] input_policy: The default input policy (`ACCEPT`, `DROP`, `REJECT`).
         :param pulumi.Input[pulumi.InputType['FirewallLogRatelimitArgs']] log_ratelimit: The log rate limit.
         :param pulumi.Input[str] output_policy: The default output policy (`ACCEPT`, `DROP`, `REJECT`).
@@ -373,7 +369,7 @@ class Firewall(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Enable or disable the log rate limit.
+        Enable or disable the firewall cluster wide.
         """
         return pulumi.get(self, "enabled")
 

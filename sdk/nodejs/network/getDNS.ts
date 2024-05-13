@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
@@ -18,7 +17,6 @@ import * as utilities from "../utilities";
  *     nodeName: "first-node",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDNS(args: GetDNSArgs, opts?: pulumi.InvokeOptions): Promise<GetDNSResult> {
 
@@ -61,7 +59,6 @@ export interface GetDNSResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
@@ -70,7 +67,6 @@ export interface GetDNSResult {
  *     nodeName: "first-node",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDNSOutput(args: GetDNSOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDNSResult> {
     return pulumi.output(args).apply((a: any) => getDNS(a, opts))

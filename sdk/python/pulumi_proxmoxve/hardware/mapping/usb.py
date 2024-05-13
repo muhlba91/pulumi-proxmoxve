@@ -22,7 +22,7 @@ class UsbArgs:
         """
         The set of arguments for constructing a Usb resource.
         :param pulumi.Input[Sequence[pulumi.Input['UsbMapArgs']]] maps: The actual map of devices for the hardware mapping.
-        :param pulumi.Input[str] comment: The comment of the mapped USB device.
+        :param pulumi.Input[str] comment: The comment of this USB hardware mapping.
         :param pulumi.Input[str] name: The name of this hardware mapping.
         """
         pulumi.set(__self__, "maps", maps)
@@ -47,7 +47,7 @@ class UsbArgs:
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
         """
-        The comment of the mapped USB device.
+        The comment of this USB hardware mapping.
         """
         return pulumi.get(self, "comment")
 
@@ -76,7 +76,7 @@ class _UsbState:
                  name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Usb resources.
-        :param pulumi.Input[str] comment: The comment of the mapped USB device.
+        :param pulumi.Input[str] comment: The comment of this USB hardware mapping.
         :param pulumi.Input[Sequence[pulumi.Input['UsbMapArgs']]] maps: The actual map of devices for the hardware mapping.
         :param pulumi.Input[str] name: The name of this hardware mapping.
         """
@@ -91,7 +91,7 @@ class _UsbState:
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
         """
-        The comment of the mapped USB device.
+        The comment of this USB hardware mapping.
         """
         return pulumi.get(self, "comment")
 
@@ -138,7 +138,6 @@ class Usb(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -152,7 +151,6 @@ class Usb(pulumi.CustomResource):
                 path="1-8.2",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -166,7 +164,7 @@ class Usb(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] comment: The comment of the mapped USB device.
+        :param pulumi.Input[str] comment: The comment of this USB hardware mapping.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UsbMapArgs']]]] maps: The actual map of devices for the hardware mapping.
         :param pulumi.Input[str] name: The name of this hardware mapping.
         """
@@ -181,7 +179,6 @@ class Usb(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -195,7 +192,6 @@ class Usb(pulumi.CustomResource):
                 path="1-8.2",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -259,7 +255,7 @@ class Usb(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] comment: The comment of the mapped USB device.
+        :param pulumi.Input[str] comment: The comment of this USB hardware mapping.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UsbMapArgs']]]] maps: The actual map of devices for the hardware mapping.
         :param pulumi.Input[str] name: The name of this hardware mapping.
         """
@@ -276,7 +272,7 @@ class Usb(pulumi.CustomResource):
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[str]]:
         """
-        The comment of the mapped USB device.
+        The comment of this USB hardware mapping.
         """
         return pulumi.get(self, "comment")
 

@@ -16,7 +16,6 @@ namespace Pulumi.ProxmoxVE.Network
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,7 +31,6 @@ namespace Pulumi.ProxmoxVE.Network
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTimeResult> InvokeAsync(GetTimeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTimeResult>("proxmoxve:Network/getTime:getTime", args ?? new GetTimeArgs(), options.WithDefaults());
@@ -42,7 +40,6 @@ namespace Pulumi.ProxmoxVE.Network
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -58,7 +55,6 @@ namespace Pulumi.ProxmoxVE.Network
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTimeResult> Invoke(GetTimeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTimeResult>("proxmoxve:Network/getTime:getTime", args ?? new GetTimeInvokeArgs(), options.WithDefaults());

@@ -49,16 +49,14 @@ public final class VirtualMachineNetworkDeviceArgs extends com.pulumi.resources.
     }
 
     /**
-     * Whether to enable the VGA device (defaults
-     * to `true`).
+     * Whether to enable the network device (defaults to `true`).
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether to enable the VGA device (defaults
-     * to `true`).
+     * @return Whether to enable the network device (defaults to `true`).
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -266,8 +264,7 @@ public final class VirtualMachineNetworkDeviceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param enabled Whether to enable the VGA device (defaults
-         * to `true`).
+         * @param enabled Whether to enable the network device (defaults to `true`).
          * 
          * @return builder
          * 
@@ -278,8 +275,7 @@ public final class VirtualMachineNetworkDeviceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param enabled Whether to enable the VGA device (defaults
-         * to `true`).
+         * @param enabled Whether to enable the network device (defaults to `true`).
          * 
          * @return builder
          * 

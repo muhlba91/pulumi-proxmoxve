@@ -80,14 +80,14 @@ public final class HostsState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The hostnames.
+     * The hostnames associated with each of the IP addresses.
      * 
      */
     @Import(name="hostnames")
     private @Nullable Output<List<List<String>>> hostnames;
 
     /**
-     * @return The hostnames.
+     * @return The hostnames associated with each of the IP addresses.
      * 
      */
     public Optional<Output<List<List<String>>>> hostnames() {
@@ -256,7 +256,7 @@ public final class HostsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostnames The hostnames.
+         * @param hostnames The hostnames associated with each of the IP addresses.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class HostsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostnames The hostnames.
+         * @param hostnames The hostnames associated with each of the IP addresses.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class HostsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostnames The hostnames.
+         * @param hostnames The hostnames associated with each of the IP addresses.
          * 
          * @return builder
          * 

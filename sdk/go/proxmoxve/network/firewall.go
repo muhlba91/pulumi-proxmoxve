@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,7 +46,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Important Notes
 //
@@ -67,7 +65,7 @@ type Firewall struct {
 
 	// Enable ebtables rules cluster wide.
 	Ebtables pulumi.BoolPtrOutput `pulumi:"ebtables"`
-	// Enable or disable the log rate limit.
+	// Enable or disable the firewall cluster wide.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// The default input policy (`ACCEPT`, `DROP`, `REJECT`).
 	InputPolicy pulumi.StringPtrOutput `pulumi:"inputPolicy"`
@@ -109,7 +107,7 @@ func GetFirewall(ctx *pulumi.Context,
 type firewallState struct {
 	// Enable ebtables rules cluster wide.
 	Ebtables *bool `pulumi:"ebtables"`
-	// Enable or disable the log rate limit.
+	// Enable or disable the firewall cluster wide.
 	Enabled *bool `pulumi:"enabled"`
 	// The default input policy (`ACCEPT`, `DROP`, `REJECT`).
 	InputPolicy *string `pulumi:"inputPolicy"`
@@ -122,7 +120,7 @@ type firewallState struct {
 type FirewallState struct {
 	// Enable ebtables rules cluster wide.
 	Ebtables pulumi.BoolPtrInput
-	// Enable or disable the log rate limit.
+	// Enable or disable the firewall cluster wide.
 	Enabled pulumi.BoolPtrInput
 	// The default input policy (`ACCEPT`, `DROP`, `REJECT`).
 	InputPolicy pulumi.StringPtrInput
@@ -139,7 +137,7 @@ func (FirewallState) ElementType() reflect.Type {
 type firewallArgs struct {
 	// Enable ebtables rules cluster wide.
 	Ebtables *bool `pulumi:"ebtables"`
-	// Enable or disable the log rate limit.
+	// Enable or disable the firewall cluster wide.
 	Enabled *bool `pulumi:"enabled"`
 	// The default input policy (`ACCEPT`, `DROP`, `REJECT`).
 	InputPolicy *string `pulumi:"inputPolicy"`
@@ -153,7 +151,7 @@ type firewallArgs struct {
 type FirewallArgs struct {
 	// Enable ebtables rules cluster wide.
 	Ebtables pulumi.BoolPtrInput
-	// Enable or disable the log rate limit.
+	// Enable or disable the firewall cluster wide.
 	Enabled pulumi.BoolPtrInput
 	// The default input policy (`ACCEPT`, `DROP`, `REJECT`).
 	InputPolicy pulumi.StringPtrInput
@@ -255,7 +253,7 @@ func (o FirewallOutput) Ebtables() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.BoolPtrOutput { return v.Ebtables }).(pulumi.BoolPtrOutput)
 }
 
-// Enable or disable the log rate limit.
+// Enable or disable the firewall cluster wide.
 func (o FirewallOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }

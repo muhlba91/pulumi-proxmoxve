@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
@@ -28,7 +27,6 @@ import * as utilities from "../utilities";
  *     outputPolicy: "ACCEPT",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Important Notes
  *
@@ -77,7 +75,7 @@ export class Firewall extends pulumi.CustomResource {
      */
     public readonly ebtables!: pulumi.Output<boolean | undefined>;
     /**
-     * Enable or disable the log rate limit.
+     * Enable or disable the firewall cluster wide.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -133,7 +131,7 @@ export interface FirewallState {
      */
     ebtables?: pulumi.Input<boolean>;
     /**
-     * Enable or disable the log rate limit.
+     * Enable or disable the firewall cluster wide.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -159,7 +157,7 @@ export interface FirewallArgs {
      */
     ebtables?: pulumi.Input<boolean>;
     /**
-     * Enable or disable the log rate limit.
+     * Enable or disable the firewall cluster wide.
      */
     enabled?: pulumi.Input<boolean>;
     /**

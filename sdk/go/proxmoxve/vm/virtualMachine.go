@@ -73,7 +73,7 @@ type VirtualMachine struct {
 	MacAddresses pulumi.StringArrayOutput `pulumi:"macAddresses"`
 	// The VM machine type (defaults to `pc`).
 	Machine pulumi.StringPtrOutput `pulumi:"machine"`
-	// The VGA memory in megabytes (defaults to `16`).
+	// The memory configuration.
 	Memory VirtualMachineMemoryPtrOutput `pulumi:"memory"`
 	// Migrate the VM on node change instead of re-creating
 	// it (defaults to `false`).
@@ -239,7 +239,7 @@ type virtualMachineState struct {
 	MacAddresses []string `pulumi:"macAddresses"`
 	// The VM machine type (defaults to `pc`).
 	Machine *string `pulumi:"machine"`
-	// The VGA memory in megabytes (defaults to `16`).
+	// The memory configuration.
 	Memory *VirtualMachineMemory `pulumi:"memory"`
 	// Migrate the VM on node change instead of re-creating
 	// it (defaults to `false`).
@@ -373,7 +373,7 @@ type VirtualMachineState struct {
 	MacAddresses pulumi.StringArrayInput
 	// The VM machine type (defaults to `pc`).
 	Machine pulumi.StringPtrInput
-	// The VGA memory in megabytes (defaults to `16`).
+	// The memory configuration.
 	Memory VirtualMachineMemoryPtrInput
 	// Migrate the VM on node change instead of re-creating
 	// it (defaults to `false`).
@@ -505,7 +505,7 @@ type virtualMachineArgs struct {
 	MacAddresses []string `pulumi:"macAddresses"`
 	// The VM machine type (defaults to `pc`).
 	Machine *string `pulumi:"machine"`
-	// The VGA memory in megabytes (defaults to `16`).
+	// The memory configuration.
 	Memory *VirtualMachineMemory `pulumi:"memory"`
 	// Migrate the VM on node change instead of re-creating
 	// it (defaults to `false`).
@@ -631,7 +631,7 @@ type VirtualMachineArgs struct {
 	MacAddresses pulumi.StringArrayInput
 	// The VM machine type (defaults to `pc`).
 	Machine pulumi.StringPtrInput
-	// The VGA memory in megabytes (defaults to `16`).
+	// The memory configuration.
 	Memory VirtualMachineMemoryPtrInput
 	// Migrate the VM on node change instead of re-creating
 	// it (defaults to `false`).
@@ -908,7 +908,7 @@ func (o VirtualMachineOutput) Machine() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.Machine }).(pulumi.StringPtrOutput)
 }
 
-// The VGA memory in megabytes (defaults to `16`).
+// The memory configuration.
 func (o VirtualMachineOutput) Memory() VirtualMachineMemoryPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineMemoryPtrOutput { return v.Memory }).(VirtualMachineMemoryPtrOutput)
 }

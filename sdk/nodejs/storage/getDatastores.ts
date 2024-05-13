@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
@@ -18,7 +17,6 @@ import * as utilities from "../utilities";
  *     nodeName: "first-node",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDatastores(args: GetDatastoresArgs, opts?: pulumi.InvokeOptions): Promise<GetDatastoresResult> {
 
@@ -89,7 +87,6 @@ export interface GetDatastoresResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
@@ -98,7 +95,6 @@ export interface GetDatastoresResult {
  *     nodeName: "first-node",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDatastoresOutput(args: GetDatastoresOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatastoresResult> {
     return pulumi.output(args).apply((a: any) => getDatastores(a, opts))

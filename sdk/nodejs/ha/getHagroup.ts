@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
@@ -20,7 +19,6 @@ import * as utilities from "../utilities";
  * }))));
  * export const proxmoxVirtualEnvironmentHagroupsFull = example;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getHAGroup(args: GetHAGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetHAGroupResult> {
 
@@ -74,7 +72,6 @@ export interface GetHAGroupResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
@@ -85,7 +82,6 @@ export interface GetHAGroupResult {
  * }))));
  * export const proxmoxVirtualEnvironmentHagroupsFull = example;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getHAGroupOutput(args: GetHAGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHAGroupResult> {
     return pulumi.output(args).apply((a: any) => getHAGroup(a, opts))

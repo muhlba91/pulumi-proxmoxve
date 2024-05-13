@@ -13,8 +13,8 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
     public sealed class VirtualMachineAgentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to enable the VGA device (defaults
-        /// to `true`).
+        /// Whether to enable the QEMU agent (defaults
+        /// to `false`).
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<bool>? Trim { get; set; }
 
         /// <summary>
-        /// The VGA type (defaults to `std`).
+        /// The QEMU agent interface type (defaults to `virtio`).
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

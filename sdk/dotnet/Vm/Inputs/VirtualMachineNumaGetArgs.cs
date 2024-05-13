@@ -19,8 +19,8 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<string> Cpus { get; set; } = null!;
 
         /// <summary>
-        /// The device (defaults to `socket`).
-        /// - `/dev/*` - A host serial device.
+        /// The NUMA device name for Proxmox, in form
+        /// of `numaX` where `X` is a sequential number from 0 to 7.
         /// </summary>
         [Input("device", required: true)]
         public Input<string> Device { get; set; } = null!;
@@ -32,7 +32,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<string>? Hostnodes { get; set; }
 
         /// <summary>
-        /// The VGA memory in megabytes (defaults to `16`).
+        /// The memory in megabytes to assign to the NUMA node.
         /// </summary>
         [Input("memory", required: true)]
         public Input<int> Memory { get; set; } = null!;

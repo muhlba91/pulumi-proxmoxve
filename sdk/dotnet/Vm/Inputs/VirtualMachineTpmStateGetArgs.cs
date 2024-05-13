@@ -13,14 +13,15 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
     public sealed class VirtualMachineTpmStateGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The identifier for the datastore to create the
-        /// cloud-init disk in (defaults to `local-lvm`).
+        /// The identifier for the datastore to create
+        /// the disk in (defaults to `local-lvm`).
         /// </summary>
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
 
         /// <summary>
-        /// The version.
+        /// TPM state device version. Can be `v1.2` or `v2.0`.
+        /// (defaults to `v2.0`).
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

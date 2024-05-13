@@ -65,7 +65,7 @@ export class Hosts extends pulumi.CustomResource {
      */
     public readonly entry!: pulumi.Output<outputs.HostsEntry[]>;
     /**
-     * The hostnames.
+     * The hostnames associated with each of the IP addresses.
      */
     public /*out*/ readonly hostnames!: pulumi.Output<string[][]>;
     /**
@@ -134,7 +134,7 @@ export interface HostsState {
      */
     entry?: pulumi.Input<pulumi.Input<inputs.HostsEntry>[]>;
     /**
-     * The hostnames.
+     * The hostnames associated with each of the IP addresses.
      */
     hostnames?: pulumi.Input<pulumi.Input<pulumi.Input<string>[]>[]>;
     /**

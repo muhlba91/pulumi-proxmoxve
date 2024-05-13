@@ -16,7 +16,6 @@ namespace Pulumi.ProxmoxVE.Hardware
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,7 +43,6 @@ namespace Pulumi.ProxmoxVE.Hardware
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetMappingsResult> InvokeAsync(GetMappingsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMappingsResult>("proxmoxve:Hardware/getMappings:getMappings", args ?? new GetMappingsArgs(), options.WithDefaults());
@@ -54,7 +52,6 @@ namespace Pulumi.ProxmoxVE.Hardware
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -82,7 +79,6 @@ namespace Pulumi.ProxmoxVE.Hardware
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetMappingsResult> Invoke(GetMappingsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMappingsResult>("proxmoxve:Hardware/getMappings:getMappings", args ?? new GetMappingsInvokeArgs(), options.WithDefaults());

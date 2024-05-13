@@ -71,7 +71,7 @@ public final class VirtualMachineCpu {
      */
     private @Nullable Integer limit;
     /**
-     * @return The NUMA configuration.
+     * @return Enable/disable NUMA. (default to `false`)
      * 
      */
     private @Nullable Boolean numa;
@@ -81,7 +81,8 @@ public final class VirtualMachineCpu {
      */
     private @Nullable Integer sockets;
     /**
-     * @return The VGA type (defaults to `std`).
+     * @return The emulated CPU type, it&#39;s recommended to
+     * use `x86-64-v2-AES` (defaults to `qemu64`).
      * 
      */
     private @Nullable String type;
@@ -161,7 +162,7 @@ public final class VirtualMachineCpu {
         return Optional.ofNullable(this.limit);
     }
     /**
-     * @return The NUMA configuration.
+     * @return Enable/disable NUMA. (default to `false`)
      * 
      */
     public Optional<Boolean> numa() {
@@ -175,7 +176,8 @@ public final class VirtualMachineCpu {
         return Optional.ofNullable(this.sockets);
     }
     /**
-     * @return The VGA type (defaults to `std`).
+     * @return The emulated CPU type, it&#39;s recommended to
+     * use `x86-64-v2-AES` (defaults to `qemu64`).
      * 
      */
     public Optional<String> type() {

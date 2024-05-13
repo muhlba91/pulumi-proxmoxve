@@ -201,7 +201,6 @@ class HAGroup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -217,7 +216,6 @@ class HAGroup(pulumi.CustomResource):
             restricted=True,
             no_failback=False)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -248,7 +246,6 @@ class HAGroup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -264,7 +261,6 @@ class HAGroup(pulumi.CustomResource):
             restricted=True,
             no_failback=False)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -12,28 +12,30 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VirtualMachineTpmState {
     /**
-     * @return The identifier for the datastore to create the
-     * cloud-init disk in (defaults to `local-lvm`).
+     * @return The identifier for the datastore to create
+     * the disk in (defaults to `local-lvm`).
      * 
      */
     private @Nullable String datastoreId;
     /**
-     * @return The version.
+     * @return TPM state device version. Can be `v1.2` or `v2.0`.
+     * (defaults to `v2.0`).
      * 
      */
     private @Nullable String version;
 
     private VirtualMachineTpmState() {}
     /**
-     * @return The identifier for the datastore to create the
-     * cloud-init disk in (defaults to `local-lvm`).
+     * @return The identifier for the datastore to create
+     * the disk in (defaults to `local-lvm`).
      * 
      */
     public Optional<String> datastoreId() {
         return Optional.ofNullable(this.datastoreId);
     }
     /**
-     * @return The version.
+     * @return TPM state device version. Can be `v1.2` or `v2.0`.
+     * (defaults to `v2.0`).
      * 
      */
     public Optional<String> version() {

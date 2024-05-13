@@ -16,7 +16,6 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -29,7 +28,6 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetNodeResult> InvokeAsync(GetNodeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNodeResult>("proxmoxve:index/getNode:getNode", args ?? new GetNodeArgs(), options.WithDefaults());
@@ -39,7 +37,6 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -52,7 +49,6 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetNodeResult> Invoke(GetNodeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNodeResult>("proxmoxve:index/getNode:getNode", args ?? new GetNodeInvokeArgs(), options.WithDefaults());

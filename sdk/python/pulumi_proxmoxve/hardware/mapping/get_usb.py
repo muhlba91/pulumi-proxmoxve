@@ -88,7 +88,6 @@ def get_usb(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_proxmoxve as proxmoxve
@@ -96,7 +95,6 @@ def get_usb(name: Optional[str] = None,
     example = proxmoxve.Hardware.mapping.get_usb(name="example")
     pulumi.export("dataProxmoxVirtualEnvironmentHardwareMappingUsb", example)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of this USB hardware mapping.
@@ -121,7 +119,6 @@ def get_usb_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_proxmoxve as proxmoxve
@@ -129,7 +126,6 @@ def get_usb_output(name: Optional[pulumi.Input[str]] = None,
     example = proxmoxve.Hardware.mapping.get_usb(name="example")
     pulumi.export("dataProxmoxVirtualEnvironmentHardwareMappingUsb", example)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of this USB hardware mapping.

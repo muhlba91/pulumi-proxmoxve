@@ -63,7 +63,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<string>? NetworkDataFileId { get; set; }
 
         /// <summary>
-        /// The VGA type (defaults to `std`).
+        /// The cloud-init configuration format
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -17,16 +17,16 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
     public static final VirtualMachineCdromArgs Empty = new VirtualMachineCdromArgs();
 
     /**
-     * Whether to enable the VGA device (defaults
-     * to `true`).
+     * Whether to enable the CDROM drive (defaults
+     * to `false`).
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether to enable the VGA device (defaults
-     * to `true`).
+     * @return Whether to enable the CDROM drive (defaults
+     * to `false`).
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -34,18 +34,16 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The file ID for a disk image (experimental -
-     * might cause high CPU utilization during import, especially with large
-     * disk images).
+     * A file ID for an ISO file (defaults to `cdrom` as
+     * in the physical drive).
      * 
      */
     @Import(name="fileId")
     private @Nullable Output<String> fileId;
 
     /**
-     * @return The file ID for a disk image (experimental -
-     * might cause high CPU utilization during import, especially with large
-     * disk images).
+     * @return A file ID for an ISO file (defaults to `cdrom` as
+     * in the physical drive).
      * 
      */
     public Optional<Output<String>> fileId() {
@@ -53,20 +51,18 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The hardware interface to connect the cloud-init
-     * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
-     * detected if the setting is missing but a cloud-init image is present,
-     * otherwise defaults to `ide2`.
+     * A hardware interface to connect CDROM drive to,
+     * must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
+     * supports `ide0` and `ide2`.
      * 
      */
     @Import(name="interface")
     private @Nullable Output<String> interface_;
 
     /**
-     * @return The hardware interface to connect the cloud-init
-     * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
-     * detected if the setting is missing but a cloud-init image is present,
-     * otherwise defaults to `ide2`.
+     * @return A hardware interface to connect CDROM drive to,
+     * must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
+     * supports `ide0` and `ide2`.
      * 
      */
     public Optional<Output<String>> interface_() {
@@ -100,8 +96,8 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param enabled Whether to enable the VGA device (defaults
-         * to `true`).
+         * @param enabled Whether to enable the CDROM drive (defaults
+         * to `false`).
          * 
          * @return builder
          * 
@@ -112,8 +108,8 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param enabled Whether to enable the VGA device (defaults
-         * to `true`).
+         * @param enabled Whether to enable the CDROM drive (defaults
+         * to `false`).
          * 
          * @return builder
          * 
@@ -123,9 +119,8 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param fileId The file ID for a disk image (experimental -
-         * might cause high CPU utilization during import, especially with large
-         * disk images).
+         * @param fileId A file ID for an ISO file (defaults to `cdrom` as
+         * in the physical drive).
          * 
          * @return builder
          * 
@@ -136,9 +131,8 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param fileId The file ID for a disk image (experimental -
-         * might cause high CPU utilization during import, especially with large
-         * disk images).
+         * @param fileId A file ID for an ISO file (defaults to `cdrom` as
+         * in the physical drive).
          * 
          * @return builder
          * 
@@ -148,10 +142,9 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param interface_ The hardware interface to connect the cloud-init
-         * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
-         * detected if the setting is missing but a cloud-init image is present,
-         * otherwise defaults to `ide2`.
+         * @param interface_ A hardware interface to connect CDROM drive to,
+         * must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
+         * supports `ide0` and `ide2`.
          * 
          * @return builder
          * 
@@ -162,10 +155,9 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param interface_ The hardware interface to connect the cloud-init
-         * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
-         * detected if the setting is missing but a cloud-init image is present,
-         * otherwise defaults to `ide2`.
+         * @param interface_ A hardware interface to connect CDROM drive to,
+         * must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
+         * supports `ide0` and `ide2`.
          * 
          * @return builder
          * 

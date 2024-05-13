@@ -14,8 +14,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VirtualMachineHostpci {
     /**
-     * @return The device (defaults to `socket`).
-     * - `/dev/*` - A host serial device.
+     * @return The PCI device name for Proxmox, in form
+     * of `hostpciX` where `X` is a sequential number from 0 to 3.
      * 
      */
     private String device;
@@ -28,7 +28,7 @@ public final class VirtualMachineHostpci {
     private @Nullable String id;
     /**
      * @return The resource mapping name of the device, for
-     * example usbdevice. Use either this or `id`.
+     * example gpu. Use either this or `id`.
      * 
      */
     private @Nullable String mapping;
@@ -65,8 +65,8 @@ public final class VirtualMachineHostpci {
 
     private VirtualMachineHostpci() {}
     /**
-     * @return The device (defaults to `socket`).
-     * - `/dev/*` - A host serial device.
+     * @return The PCI device name for Proxmox, in form
+     * of `hostpciX` where `X` is a sequential number from 0 to 3.
      * 
      */
     public String device() {
@@ -83,7 +83,7 @@ public final class VirtualMachineHostpci {
     }
     /**
      * @return The resource mapping name of the device, for
-     * example usbdevice. Use either this or `id`.
+     * example gpu. Use either this or `id`.
      * 
      */
     public Optional<String> mapping() {

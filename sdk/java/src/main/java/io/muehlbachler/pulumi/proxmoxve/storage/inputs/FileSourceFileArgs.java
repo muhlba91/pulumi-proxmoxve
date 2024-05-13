@@ -48,14 +48,18 @@ public final class FileSourceFileArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The file name.
+     * The file name to use instead of the source file
+     * name. Useful when the source file does not have a valid file extension,
+     * for example when the source file is a URL referencing a `.qcow2` image.
      * 
      */
     @Import(name="fileName")
     private @Nullable Output<String> fileName;
 
     /**
-     * @return The file name.
+     * @return The file name to use instead of the source file
+     * name. Useful when the source file does not have a valid file extension,
+     * for example when the source file is a URL referencing a `.qcow2` image.
      * 
      */
     public Optional<Output<String>> fileName() {
@@ -183,7 +187,9 @@ public final class FileSourceFileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param fileName The file name.
+         * @param fileName The file name to use instead of the source file
+         * name. Useful when the source file does not have a valid file extension,
+         * for example when the source file is a URL referencing a `.qcow2` image.
          * 
          * @return builder
          * 
@@ -194,7 +200,9 @@ public final class FileSourceFileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param fileName The file name.
+         * @param fileName The file name to use instead of the source file
+         * name. Useful when the source file does not have a valid file extension,
+         * for example when the source file is a URL referencing a `.qcow2` image.
          * 
          * @return builder
          * 

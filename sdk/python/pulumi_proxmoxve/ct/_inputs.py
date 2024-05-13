@@ -35,10 +35,10 @@ class ContainerCloneArgs:
                  datastore_id: Optional[pulumi.Input[str]] = None,
                  node_name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[int] vm_id: The container identifier
-        :param pulumi.Input[str] datastore_id: The identifier for the datastore to create the
-               disk in (defaults to `local`).
-        :param pulumi.Input[str] node_name: The name of the node to assign the container to.
+        :param pulumi.Input[int] vm_id: The identifier for the source container.
+        :param pulumi.Input[str] datastore_id: The identifier for the target datastore.
+        :param pulumi.Input[str] node_name: The name of the source node (leave blank, if
+               equal to the `node_name` argument).
         """
         pulumi.set(__self__, "vm_id", vm_id)
         if datastore_id is not None:
@@ -50,7 +50,7 @@ class ContainerCloneArgs:
     @pulumi.getter(name="vmId")
     def vm_id(self) -> pulumi.Input[int]:
         """
-        The container identifier
+        The identifier for the source container.
         """
         return pulumi.get(self, "vm_id")
 
@@ -62,8 +62,7 @@ class ContainerCloneArgs:
     @pulumi.getter(name="datastoreId")
     def datastore_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The identifier for the datastore to create the
-        disk in (defaults to `local`).
+        The identifier for the target datastore.
         """
         return pulumi.get(self, "datastore_id")
 
@@ -75,7 +74,8 @@ class ContainerCloneArgs:
     @pulumi.getter(name="nodeName")
     def node_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the node to assign the container to.
+        The name of the source node (leave blank, if
+        equal to the `node_name` argument).
         """
         return pulumi.get(self, "node_name")
 
@@ -91,10 +91,10 @@ class ContainerConsoleArgs:
                  tty_count: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] enabled: Whether to enable the network device (defaults
+        :param pulumi.Input[bool] enabled: Whether to enable the console device (defaults
                to `true`).
         :param pulumi.Input[int] tty_count: The number of available TTY (defaults to `2`).
-        :param pulumi.Input[str] type: The type (defaults to `unmanaged`).
+        :param pulumi.Input[str] type: The console mode (defaults to `tty`).
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -107,7 +107,7 @@ class ContainerConsoleArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable the network device (defaults
+        Whether to enable the console device (defaults
         to `true`).
         """
         return pulumi.get(self, "enabled")
@@ -132,7 +132,7 @@ class ContainerConsoleArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type (defaults to `unmanaged`).
+        The console mode (defaults to `tty`).
         """
         return pulumi.get(self, "type")
 
@@ -204,8 +204,8 @@ class ContainerDiskArgs:
         """
         :param pulumi.Input[str] datastore_id: The identifier for the datastore to create the
                disk in (defaults to `local`).
-        :param pulumi.Input[int] size: Volume size (only for volume mount points).
-               Can be specified with a unit suffix (e.g. `10G`).
+        :param pulumi.Input[int] size: The size of the root filesystem in gigabytes (defaults
+               to `4`). Requires `datastore_id` to be set.
         """
         if datastore_id is not None:
             pulumi.set(__self__, "datastore_id", datastore_id)
@@ -229,8 +229,8 @@ class ContainerDiskArgs:
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[int]]:
         """
-        Volume size (only for volume mount points).
-        Can be specified with a unit suffix (e.g. `10G`).
+        The size of the root filesystem in gigabytes (defaults
+        to `4`). Requires `datastore_id` to be set.
         """
         return pulumi.get(self, "size")
 
@@ -396,11 +396,9 @@ class ContainerInitializationDnsArgs:
                  server: Optional[pulumi.Input[str]] = None,
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] domain: The DNS search domain.
-        :param pulumi.Input[str] server: The DNS server. The `server` attribute is
-               deprecated and will be removed in a future release. Please use
-               the `servers` attribute instead.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] servers: The list of DNS servers.
+        :param pulumi.Input[str] domain: The DNS search domain
+        :param pulumi.Input[str] server: The DNS server
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] servers: The list of DNS servers
         """
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
@@ -416,7 +414,7 @@ class ContainerInitializationDnsArgs:
     @pulumi.getter
     def domain(self) -> Optional[pulumi.Input[str]]:
         """
-        The DNS search domain.
+        The DNS search domain
         """
         return pulumi.get(self, "domain")
 
@@ -428,9 +426,7 @@ class ContainerInitializationDnsArgs:
     @pulumi.getter
     def server(self) -> Optional[pulumi.Input[str]]:
         """
-        The DNS server. The `server` attribute is
-        deprecated and will be removed in a future release. Please use
-        the `servers` attribute instead.
+        The DNS server
         """
         warnings.warn("""The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.""", DeprecationWarning)
         pulumi.log.warn("""server is deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.""")
@@ -445,7 +441,7 @@ class ContainerInitializationDnsArgs:
     @pulumi.getter
     def servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The list of DNS servers.
+        The list of DNS servers
         """
         return pulumi.get(self, "servers")
 
@@ -460,8 +456,8 @@ class ContainerInitializationIpConfigArgs:
                  ipv4: Optional[pulumi.Input['ContainerInitializationIpConfigIpv4Args']] = None,
                  ipv6: Optional[pulumi.Input['ContainerInitializationIpConfigIpv6Args']] = None):
         """
-        :param pulumi.Input['ContainerInitializationIpConfigIpv4Args'] ipv4: The IPv4 configuration.
-        :param pulumi.Input['ContainerInitializationIpConfigIpv6Args'] ipv6: The IPv4 configuration.
+        :param pulumi.Input['ContainerInitializationIpConfigIpv4Args'] ipv4: The IPv4 configuration
+        :param pulumi.Input['ContainerInitializationIpConfigIpv6Args'] ipv6: The IPv6 configuration
         """
         if ipv4 is not None:
             pulumi.set(__self__, "ipv4", ipv4)
@@ -472,7 +468,7 @@ class ContainerInitializationIpConfigArgs:
     @pulumi.getter
     def ipv4(self) -> Optional[pulumi.Input['ContainerInitializationIpConfigIpv4Args']]:
         """
-        The IPv4 configuration.
+        The IPv4 configuration
         """
         return pulumi.get(self, "ipv4")
 
@@ -484,7 +480,7 @@ class ContainerInitializationIpConfigArgs:
     @pulumi.getter
     def ipv6(self) -> Optional[pulumi.Input['ContainerInitializationIpConfigIpv6Args']]:
         """
-        The IPv4 configuration.
+        The IPv6 configuration
         """
         return pulumi.get(self, "ipv6")
 
@@ -499,10 +495,8 @@ class ContainerInitializationIpConfigIpv4Args:
                  address: Optional[pulumi.Input[str]] = None,
                  gateway: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] address: The IPv6 address (use `dhcp` for
-               autodiscovery).
-        :param pulumi.Input[str] gateway: The IPv6 gateway (must be omitted
-               when `dhcp` is used as the address).
+        :param pulumi.Input[str] address: The IPv4 address
+        :param pulumi.Input[str] gateway: The IPv4 gateway
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -513,8 +507,7 @@ class ContainerInitializationIpConfigIpv4Args:
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input[str]]:
         """
-        The IPv6 address (use `dhcp` for
-        autodiscovery).
+        The IPv4 address
         """
         return pulumi.get(self, "address")
 
@@ -526,8 +519,7 @@ class ContainerInitializationIpConfigIpv4Args:
     @pulumi.getter
     def gateway(self) -> Optional[pulumi.Input[str]]:
         """
-        The IPv6 gateway (must be omitted
-        when `dhcp` is used as the address).
+        The IPv4 gateway
         """
         return pulumi.get(self, "gateway")
 
@@ -542,10 +534,8 @@ class ContainerInitializationIpConfigIpv6Args:
                  address: Optional[pulumi.Input[str]] = None,
                  gateway: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] address: The IPv6 address (use `dhcp` for
-               autodiscovery).
-        :param pulumi.Input[str] gateway: The IPv6 gateway (must be omitted
-               when `dhcp` is used as the address).
+        :param pulumi.Input[str] address: The IPv6 address
+        :param pulumi.Input[str] gateway: The IPv6 gateway
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -556,8 +546,7 @@ class ContainerInitializationIpConfigIpv6Args:
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input[str]]:
         """
-        The IPv6 address (use `dhcp` for
-        autodiscovery).
+        The IPv6 address
         """
         return pulumi.get(self, "address")
 
@@ -569,8 +558,7 @@ class ContainerInitializationIpConfigIpv6Args:
     @pulumi.getter
     def gateway(self) -> Optional[pulumi.Input[str]]:
         """
-        The IPv6 gateway (must be omitted
-        when `dhcp` is used as the address).
+        The IPv6 gateway
         """
         return pulumi.get(self, "gateway")
 
@@ -585,8 +573,8 @@ class ContainerInitializationUserAccountArgs:
                  keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  password: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] keys: The SSH keys for the root account.
-        :param pulumi.Input[str] password: The password for the root account.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] keys: The SSH keys
+        :param pulumi.Input[str] password: The SSH password
         """
         if keys is not None:
             pulumi.set(__self__, "keys", keys)
@@ -597,7 +585,7 @@ class ContainerInitializationUserAccountArgs:
     @pulumi.getter
     def keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The SSH keys for the root account.
+        The SSH keys
         """
         return pulumi.get(self, "keys")
 
@@ -609,7 +597,7 @@ class ContainerInitializationUserAccountArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password for the root account.
+        The SSH password
         """
         return pulumi.get(self, "password")
 

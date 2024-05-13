@@ -14,7 +14,6 @@ namespace Pulumi.ProxmoxVE.Download
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -81,7 +80,6 @@ namespace Pulumi.ProxmoxVE.Download
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:Download/file:File")]
     public partial class File : global::Pulumi.CustomResource

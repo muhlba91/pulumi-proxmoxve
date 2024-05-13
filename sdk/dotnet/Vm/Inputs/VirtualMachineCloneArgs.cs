@@ -13,8 +13,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
     public sealed class VirtualMachineCloneArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The identifier for the datastore to create the
-        /// cloud-init disk in (defaults to `local-lvm`).
+        /// The identifier for the target datastore.
         /// </summary>
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
@@ -26,8 +25,8 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<bool>? Full { get; set; }
 
         /// <summary>
-        /// The name of the node to assign the virtual machine
-        /// to.
+        /// The name of the source node (leave blank, if
+        /// equal to the `node_name` argument).
         /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
@@ -41,7 +40,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<int>? Retries { get; set; }
 
         /// <summary>
-        /// The VM identifier.
+        /// The identifier for the source VM.
         /// </summary>
         [Input("vmId", required: true)]
         public Input<int> VmId { get; set; } = null!;

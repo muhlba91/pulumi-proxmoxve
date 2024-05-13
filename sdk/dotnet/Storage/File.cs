@@ -18,7 +18,6 @@ namespace Pulumi.ProxmoxVE.Storage
     /// 
     /// &gt; The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -40,13 +39,11 @@ namespace Pulumi.ProxmoxVE.Storage
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Images
     /// 
     /// &gt; Consider using `proxmoxve.Download.File` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -68,13 +65,11 @@ namespace Pulumi.ProxmoxVE.Storage
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Container Template (`vztmpl`)
     /// 
     /// &gt; Consider using `proxmoxve.Download.File` resource instead. Using this resource for container images is less efficient (requires to transfer uploaded image to node) though still supported.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -96,7 +91,6 @@ namespace Pulumi.ProxmoxVE.Storage
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Important Notes
     /// 

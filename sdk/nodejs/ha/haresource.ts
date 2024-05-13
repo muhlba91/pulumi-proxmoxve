@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
@@ -23,7 +22,6 @@ import * as utilities from "../utilities";
  *     dependsOn: [proxmox_virtual_environment_hagroup.example],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -14,15 +14,15 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     public sealed class VirtualMachineInitializationUserAccount
     {
         /// <summary>
-        /// The SSH keys.
+        /// The SSH keys
         /// </summary>
         public readonly ImmutableArray<string> Keys;
         /// <summary>
-        /// The SSH password.
+        /// The SSH password
         /// </summary>
         public readonly string? Password;
         /// <summary>
-        /// The SSH username.
+        /// The SSH username
         /// </summary>
         public readonly string? Username;
 

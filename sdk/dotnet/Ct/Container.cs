@@ -32,7 +32,7 @@ namespace Pulumi.ProxmoxVE.CT
         public Output<Outputs.ContainerClone?> Clone { get; private set; } = null!;
 
         /// <summary>
-        /// Console.
+        /// The console configuration.
         /// </summary>
         [Output("console")]
         public Output<Outputs.ContainerConsole?> Console { get; private set; } = null!;
@@ -242,7 +242,7 @@ namespace Pulumi.ProxmoxVE.CT
         public Input<Inputs.ContainerCloneArgs>? Clone { get; set; }
 
         /// <summary>
-        /// Console.
+        /// The console configuration.
         /// </summary>
         [Input("console")]
         public Input<Inputs.ContainerConsoleArgs>? Console { get; set; }
@@ -431,7 +431,7 @@ namespace Pulumi.ProxmoxVE.CT
         public Input<Inputs.ContainerCloneGetArgs>? Clone { get; set; }
 
         /// <summary>
-        /// Console.
+        /// The console configuration.
         /// </summary>
         [Input("console")]
         public Input<Inputs.ContainerConsoleGetArgs>? Console { get; set; }

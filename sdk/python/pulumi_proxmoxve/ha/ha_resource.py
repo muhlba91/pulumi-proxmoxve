@@ -268,7 +268,6 @@ class HAResource(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -280,7 +279,6 @@ class HAResource(pulumi.CustomResource):
             comment="Managed by Terraform",
             opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_hagroup["example"]]))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -313,7 +311,6 @@ class HAResource(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -325,7 +322,6 @@ class HAResource(pulumi.CustomResource):
             comment="Managed by Terraform",
             opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_hagroup["example"]]))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

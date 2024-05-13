@@ -154,7 +154,6 @@ class Group(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -163,7 +162,6 @@ class Group(pulumi.CustomResource):
             comment="Managed by Terraform",
             group_id="operations-team")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -192,7 +190,6 @@ class Group(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
@@ -201,7 +198,6 @@ class Group(pulumi.CustomResource):
             comment="Managed by Terraform",
             group_id="operations-team")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

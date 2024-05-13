@@ -16,7 +16,6 @@ namespace Pulumi.ProxmoxVE.Network
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -35,7 +34,7 @@ namespace Pulumi.ProxmoxVE.Network
     ///     {
     ///         DependsOn =
     ///         {
-    ///             proxmox_virtual_environment_vm.Example, 
+    ///             proxmox_virtual_environment_vm.Example,
     ///         },
     ///     });
     /// 
@@ -47,7 +46,6 @@ namespace Pulumi.ProxmoxVE.Network
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:Network/firewallAlias:FirewallAlias")]
     public partial class FirewallAlias : global::Pulumi.CustomResource

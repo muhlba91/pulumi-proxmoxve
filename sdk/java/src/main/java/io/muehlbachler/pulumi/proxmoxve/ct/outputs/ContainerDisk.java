@@ -19,8 +19,8 @@ public final class ContainerDisk {
      */
     private @Nullable String datastoreId;
     /**
-     * @return Volume size (only for volume mount points).
-     * Can be specified with a unit suffix (e.g. `10G`).
+     * @return The size of the root filesystem in gigabytes (defaults
+     * to `4`). Requires `datastore_id` to be set.
      * 
      */
     private @Nullable Integer size;
@@ -35,8 +35,8 @@ public final class ContainerDisk {
         return Optional.ofNullable(this.datastoreId);
     }
     /**
-     * @return Volume size (only for volume mount points).
-     * Can be specified with a unit suffix (e.g. `10G`).
+     * @return The size of the root filesystem in gigabytes (defaults
+     * to `4`). Requires `datastore_id` to be set.
      * 
      */
     public Optional<Integer> size() {

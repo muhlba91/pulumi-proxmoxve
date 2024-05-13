@@ -18,8 +18,8 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly string Cpus;
         /// <summary>
-        /// The device (defaults to `socket`).
-        /// - `/dev/*` - A host serial device.
+        /// The NUMA device name for Proxmox, in form
+        /// of `numaX` where `X` is a sequential number from 0 to 7.
         /// </summary>
         public readonly string Device;
         /// <summary>
@@ -27,7 +27,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly string? Hostnodes;
         /// <summary>
-        /// The VGA memory in megabytes (defaults to `16`).
+        /// The memory in megabytes to assign to the NUMA node.
         /// </summary>
         public readonly int Memory;
         /// <summary>

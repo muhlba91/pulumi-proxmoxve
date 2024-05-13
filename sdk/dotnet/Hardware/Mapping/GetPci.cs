@@ -16,7 +16,6 @@ namespace Pulumi.ProxmoxVE.Hardware.Mapping
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,7 +35,6 @@ namespace Pulumi.ProxmoxVE.Hardware.Mapping
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetPciResult> InvokeAsync(GetPciArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPciResult>("proxmoxve:Hardware/mapping/getPci:getPci", args ?? new GetPciArgs(), options.WithDefaults());
@@ -46,7 +44,6 @@ namespace Pulumi.ProxmoxVE.Hardware.Mapping
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -66,7 +63,6 @@ namespace Pulumi.ProxmoxVE.Hardware.Mapping
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetPciResult> Invoke(GetPciInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPciResult>("proxmoxve:Hardware/mapping/getPci:getPci", args ?? new GetPciInvokeArgs(), options.WithDefaults());

@@ -24,7 +24,9 @@ public final class FileSourceFile {
      */
     private @Nullable String checksum;
     /**
-     * @return The file name.
+     * @return The file name to use instead of the source file
+     * name. Useful when the source file does not have a valid file extension,
+     * for example when the source file is a URL referencing a `.qcow2` image.
      * 
      */
     private @Nullable String fileName;
@@ -62,7 +64,9 @@ public final class FileSourceFile {
         return Optional.ofNullable(this.checksum);
     }
     /**
-     * @return The file name.
+     * @return The file name to use instead of the source file
+     * name. Useful when the source file does not have a valid file extension,
+     * for example when the source file is a URL referencing a `.qcow2` image.
      * 
      */
     public Optional<String> fileName() {

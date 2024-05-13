@@ -13,8 +13,8 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
     public sealed class VirtualMachineEfiDiskGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The identifier for the datastore to create the
-        /// cloud-init disk in (defaults to `local-lvm`).
+        /// The identifier for the datastore to create
+        /// the disk in (defaults to `local-lvm`).
         /// </summary>
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
@@ -35,7 +35,10 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<bool>? PreEnrolledKeys { get; set; }
 
         /// <summary>
-        /// The VGA type (defaults to `std`).
+        /// Size and type of the OVMF EFI disk. `4m` is newer and
+        /// recommended, and required for Secure Boot. For backwards compatibility
+        /// use `2m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
+        /// to `2m`).
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

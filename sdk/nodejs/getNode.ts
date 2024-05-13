@@ -9,14 +9,12 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
  *
  * const node = proxmoxve.getNode({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNode(args: GetNodeArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeResult> {
 
@@ -79,14 +77,12 @@ export interface GetNodeResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
  *
  * const node = proxmoxve.getNode({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNodeOutput(args: GetNodeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeResult> {
     return pulumi.output(args).apply((a: any) => getNode(a, opts))

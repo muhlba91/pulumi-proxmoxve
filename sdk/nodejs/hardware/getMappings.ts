@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
@@ -27,7 +26,6 @@ import * as utilities from "../utilities";
  * export const dataProxmoxVirtualEnvironmentHardwareMappingsPci = example_pci;
  * export const dataProxmoxVirtualEnvironmentHardwareMappingsUsb = example_usb;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getMappings(args: GetMappingsArgs, opts?: pulumi.InvokeOptions): Promise<GetMappingsResult> {
 
@@ -82,7 +80,6 @@ export interface GetMappingsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
@@ -98,7 +95,6 @@ export interface GetMappingsResult {
  * export const dataProxmoxVirtualEnvironmentHardwareMappingsPci = example_pci;
  * export const dataProxmoxVirtualEnvironmentHardwareMappingsUsb = example_usb;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getMappingsOutput(args: GetMappingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMappingsResult> {
     return pulumi.output(args).apply((a: any) => getMappings(a, opts))

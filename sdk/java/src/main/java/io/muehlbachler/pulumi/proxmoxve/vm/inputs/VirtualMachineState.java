@@ -348,14 +348,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The VGA memory in megabytes (defaults to `16`).
+     * The memory configuration.
      * 
      */
     @Import(name="memory")
     private @Nullable Output<VirtualMachineMemoryArgs> memory;
 
     /**
-     * @return The VGA memory in megabytes (defaults to `16`).
+     * @return The memory configuration.
      * 
      */
     public Optional<Output<VirtualMachineMemoryArgs>> memory() {
@@ -1457,7 +1457,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param memory The VGA memory in megabytes (defaults to `16`).
+         * @param memory The memory configuration.
          * 
          * @return builder
          * 
@@ -1468,7 +1468,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param memory The VGA memory in megabytes (defaults to `16`).
+         * @param memory The memory configuration.
          * 
          * @return builder
          * 

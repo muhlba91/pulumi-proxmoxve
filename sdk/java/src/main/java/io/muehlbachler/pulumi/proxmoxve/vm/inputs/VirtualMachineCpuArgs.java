@@ -161,14 +161,14 @@ public final class VirtualMachineCpuArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The NUMA configuration.
+     * Enable/disable NUMA. (default to `false`)
      * 
      */
     @Import(name="numa")
     private @Nullable Output<Boolean> numa;
 
     /**
-     * @return The NUMA configuration.
+     * @return Enable/disable NUMA. (default to `false`)
      * 
      */
     public Optional<Output<Boolean>> numa() {
@@ -191,14 +191,16 @@ public final class VirtualMachineCpuArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The VGA type (defaults to `std`).
+     * The emulated CPU type, it&#39;s recommended to
+     * use `x86-64-v2-AES` (defaults to `qemu64`).
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The VGA type (defaults to `std`).
+     * @return The emulated CPU type, it&#39;s recommended to
+     * use `x86-64-v2-AES` (defaults to `qemu64`).
      * 
      */
     public Optional<Output<String>> type() {
@@ -464,7 +466,7 @@ public final class VirtualMachineCpuArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param numa The NUMA configuration.
+         * @param numa Enable/disable NUMA. (default to `false`)
          * 
          * @return builder
          * 
@@ -475,7 +477,7 @@ public final class VirtualMachineCpuArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param numa The NUMA configuration.
+         * @param numa Enable/disable NUMA. (default to `false`)
          * 
          * @return builder
          * 
@@ -506,7 +508,8 @@ public final class VirtualMachineCpuArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type The VGA type (defaults to `std`).
+         * @param type The emulated CPU type, it&#39;s recommended to
+         * use `x86-64-v2-AES` (defaults to `qemu64`).
          * 
          * @return builder
          * 
@@ -517,7 +520,8 @@ public final class VirtualMachineCpuArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type The VGA type (defaults to `std`).
+         * @param type The emulated CPU type, it&#39;s recommended to
+         * use `x86-64-v2-AES` (defaults to `qemu64`).
          * 
          * @return builder
          * 

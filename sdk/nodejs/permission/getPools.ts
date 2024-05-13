@@ -9,14 +9,12 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
  *
  * const availablePools = proxmoxve.Permission.getPools({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPools(opts?: pulumi.InvokeOptions): Promise<GetPoolsResult> {
 
@@ -43,14 +41,12 @@ export interface GetPoolsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
  *
  * const availablePools = proxmoxve.Permission.getPools({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPoolsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetPoolsResult> {
     return pulumi.output(getPools(opts))
