@@ -1207,7 +1207,7 @@ class VirtualMachineInitializationArgs:
                network configuration data passed to the VM via cloud-init (conflicts
                with `ip_config`).
         :param pulumi.Input[str] type: The cloud-init configuration format
-        :param pulumi.Input[bool] upgrade: Whether to do an automatic package upgrade after the first boot (defaults to `true`).
+        :param pulumi.Input[bool] upgrade: Whether to do an automatic package upgrade after the first boot
         :param pulumi.Input['VirtualMachineInitializationUserAccountArgs'] user_account: The user account configuration (conflicts
                with `user_data_file_id`).
         :param pulumi.Input[str] user_data_file_id: The identifier for a file containing
@@ -1229,6 +1229,9 @@ class VirtualMachineInitializationArgs:
             pulumi.set(__self__, "network_data_file_id", network_data_file_id)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if upgrade is not None:
+            warnings.warn("""The `upgrade` attribute is deprecated and will be removed in a future release.""", DeprecationWarning)
+            pulumi.log.warn("""upgrade is deprecated: The `upgrade` attribute is deprecated and will be removed in a future release.""")
         if upgrade is not None:
             pulumi.set(__self__, "upgrade", upgrade)
         if user_account is not None:
@@ -1334,8 +1337,11 @@ class VirtualMachineInitializationArgs:
     @pulumi.getter
     def upgrade(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to do an automatic package upgrade after the first boot (defaults to `true`).
+        Whether to do an automatic package upgrade after the first boot
         """
+        warnings.warn("""The `upgrade` attribute is deprecated and will be removed in a future release.""", DeprecationWarning)
+        pulumi.log.warn("""upgrade is deprecated: The `upgrade` attribute is deprecated and will be removed in a future release.""")
+
         return pulumi.get(self, "upgrade")
 
     @upgrade.setter

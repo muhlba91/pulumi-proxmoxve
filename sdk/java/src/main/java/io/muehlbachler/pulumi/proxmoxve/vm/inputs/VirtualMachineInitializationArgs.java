@@ -142,16 +142,24 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
     }
 
     /**
-     * Whether to do an automatic package upgrade after the first boot (defaults to `true`).
+     * Whether to do an automatic package upgrade after the first boot
+     * 
+     * @deprecated
+     * The `upgrade` attribute is deprecated and will be removed in a future release.
      * 
      */
+    @Deprecated /* The `upgrade` attribute is deprecated and will be removed in a future release. */
     @Import(name="upgrade")
     private @Nullable Output<Boolean> upgrade;
 
     /**
-     * @return Whether to do an automatic package upgrade after the first boot (defaults to `true`).
+     * @return Whether to do an automatic package upgrade after the first boot
+     * 
+     * @deprecated
+     * The `upgrade` attribute is deprecated and will be removed in a future release.
      * 
      */
+    @Deprecated /* The `upgrade` attribute is deprecated and will be removed in a future release. */
     public Optional<Output<Boolean>> upgrade() {
         return Optional.ofNullable(this.upgrade);
     }
@@ -416,22 +424,30 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param upgrade Whether to do an automatic package upgrade after the first boot (defaults to `true`).
+         * @param upgrade Whether to do an automatic package upgrade after the first boot
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `upgrade` attribute is deprecated and will be removed in a future release.
+         * 
          */
+        @Deprecated /* The `upgrade` attribute is deprecated and will be removed in a future release. */
         public Builder upgrade(@Nullable Output<Boolean> upgrade) {
             $.upgrade = upgrade;
             return this;
         }
 
         /**
-         * @param upgrade Whether to do an automatic package upgrade after the first boot (defaults to `true`).
+         * @param upgrade Whether to do an automatic package upgrade after the first boot
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `upgrade` attribute is deprecated and will be removed in a future release.
+         * 
          */
+        @Deprecated /* The `upgrade` attribute is deprecated and will be removed in a future release. */
         public Builder upgrade(Boolean upgrade) {
             return upgrade(Output.of(upgrade));
         }

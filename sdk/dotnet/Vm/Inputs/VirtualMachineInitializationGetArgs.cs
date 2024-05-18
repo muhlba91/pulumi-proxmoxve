@@ -69,7 +69,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// Whether to do an automatic package upgrade after the first boot (defaults to `true`).
+        /// Whether to do an automatic package upgrade after the first boot
         /// </summary>
         [Input("upgrade")]
         public Input<bool>? Upgrade { get; set; }

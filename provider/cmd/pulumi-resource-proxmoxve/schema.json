@@ -1438,7 +1438,8 @@
                 },
                 "upgrade": {
                     "type": "boolean",
-                    "description": "Whether to do an automatic package upgrade after the first boot (defaults to `true`).\n"
+                    "description": "Whether to do an automatic package upgrade after the first boot\n",
+                    "deprecationMessage": "The `upgrade` attribute is deprecated and will be removed in a future release."
                 },
                 "userAccount": {
                     "$ref": "#/types/proxmoxve:VM/VirtualMachineInitializationUserAccount:VirtualMachineInitializationUserAccount",

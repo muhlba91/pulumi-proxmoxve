@@ -2188,7 +2188,9 @@ type VirtualMachineInitialization struct {
 	NetworkDataFileId *string `pulumi:"networkDataFileId"`
 	// The cloud-init configuration format
 	Type *string `pulumi:"type"`
-	// Whether to do an automatic package upgrade after the first boot (defaults to `true`).
+	// Whether to do an automatic package upgrade after the first boot
+	//
+	// Deprecated: The `upgrade` attribute is deprecated and will be removed in a future release.
 	Upgrade *bool `pulumi:"upgrade"`
 	// The user account configuration (conflicts
 	// with `userDataFileId`).
@@ -2235,7 +2237,9 @@ type VirtualMachineInitializationArgs struct {
 	NetworkDataFileId pulumi.StringPtrInput `pulumi:"networkDataFileId"`
 	// The cloud-init configuration format
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// Whether to do an automatic package upgrade after the first boot (defaults to `true`).
+	// Whether to do an automatic package upgrade after the first boot
+	//
+	// Deprecated: The `upgrade` attribute is deprecated and will be removed in a future release.
 	Upgrade pulumi.BoolPtrInput `pulumi:"upgrade"`
 	// The user account configuration (conflicts
 	// with `userDataFileId`).
@@ -2368,7 +2372,9 @@ func (o VirtualMachineInitializationOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitialization) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// Whether to do an automatic package upgrade after the first boot (defaults to `true`).
+// Whether to do an automatic package upgrade after the first boot
+//
+// Deprecated: The `upgrade` attribute is deprecated and will be removed in a future release.
 func (o VirtualMachineInitializationOutput) Upgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitialization) *bool { return v.Upgrade }).(pulumi.BoolPtrOutput)
 }
@@ -2493,7 +2499,9 @@ func (o VirtualMachineInitializationPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Whether to do an automatic package upgrade after the first boot (defaults to `true`).
+// Whether to do an automatic package upgrade after the first boot
+//
+// Deprecated: The `upgrade` attribute is deprecated and will be removed in a future release.
 func (o VirtualMachineInitializationPtrOutput) Upgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineInitialization) *bool {
 		if v == nil {

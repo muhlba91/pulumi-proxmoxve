@@ -60,9 +60,13 @@ public final class VirtualMachineInitialization {
      */
     private @Nullable String type;
     /**
-     * @return Whether to do an automatic package upgrade after the first boot (defaults to `true`).
+     * @return Whether to do an automatic package upgrade after the first boot
+     * 
+     * @deprecated
+     * The `upgrade` attribute is deprecated and will be removed in a future release.
      * 
      */
+    @Deprecated /* The `upgrade` attribute is deprecated and will be removed in a future release. */
     private @Nullable Boolean upgrade;
     /**
      * @return The user account configuration (conflicts
@@ -142,9 +146,13 @@ public final class VirtualMachineInitialization {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return Whether to do an automatic package upgrade after the first boot (defaults to `true`).
+     * @return Whether to do an automatic package upgrade after the first boot
+     * 
+     * @deprecated
+     * The `upgrade` attribute is deprecated and will be removed in a future release.
      * 
      */
+    @Deprecated /* The `upgrade` attribute is deprecated and will be removed in a future release. */
     public Optional<Boolean> upgrade() {
         return Optional.ofNullable(this.upgrade);
     }

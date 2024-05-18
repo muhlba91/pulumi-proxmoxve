@@ -50,7 +50,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// Whether to do an automatic package upgrade after the first boot (defaults to `true`).
+        /// Whether to do an automatic package upgrade after the first boot
         /// </summary>
         public readonly bool? Upgrade;
         /// <summary>

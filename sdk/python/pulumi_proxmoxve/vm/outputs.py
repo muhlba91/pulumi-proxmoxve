@@ -1128,7 +1128,7 @@ class VirtualMachineInitialization(dict):
                network configuration data passed to the VM via cloud-init (conflicts
                with `ip_config`).
         :param str type: The cloud-init configuration format
-        :param bool upgrade: Whether to do an automatic package upgrade after the first boot (defaults to `true`).
+        :param bool upgrade: Whether to do an automatic package upgrade after the first boot
         :param 'VirtualMachineInitializationUserAccountArgs' user_account: The user account configuration (conflicts
                with `user_data_file_id`).
         :param str user_data_file_id: The identifier for a file containing
@@ -1227,8 +1227,11 @@ class VirtualMachineInitialization(dict):
     @pulumi.getter
     def upgrade(self) -> Optional[bool]:
         """
-        Whether to do an automatic package upgrade after the first boot (defaults to `true`).
+        Whether to do an automatic package upgrade after the first boot
         """
+        warnings.warn("""The `upgrade` attribute is deprecated and will be removed in a future release.""", DeprecationWarning)
+        pulumi.log.warn("""upgrade is deprecated: The `upgrade` attribute is deprecated and will be removed in a future release.""")
+
         return pulumi.get(self, "upgrade")
 
     @property

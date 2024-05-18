@@ -1254,7 +1254,9 @@ export namespace VM {
          */
         type?: string;
         /**
-         * Whether to do an automatic package upgrade after the first boot (defaults to `true`).
+         * Whether to do an automatic package upgrade after the first boot
+         *
+         * @deprecated The `upgrade` attribute is deprecated and will be removed in a future release.
          */
         upgrade: boolean;
         /**
