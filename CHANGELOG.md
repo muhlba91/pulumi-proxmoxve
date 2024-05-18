@@ -1,6 +1,21 @@
 # Changelog
 
 
+## [6.7.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.6.0...v6.7.0) (2024-05-18)
+
+
+### Features
+
+* prepare upstream update to v0.57.0 ([0d17b4b](https://github.com/muhlba91/pulumi-proxmoxve/commit/0d17b4b6995a47290338a3b61308ad3a6a867c8d))
+
+
+### Miscellaneous Chores
+
+* **deps:** update jaxxstorm/action-install-gh-release action to v1.12.0 ([794aa0e](https://github.com/muhlba91/pulumi-proxmoxve/commit/794aa0e64d5fe7ca8e98ebc2e9e59398d9e04125))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.57.0 ([20b088c](https://github.com/muhlba91/pulumi-proxmoxve/commit/20b088cb0fc1f000a1f6b17ebd1bf4fbed615d16))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.116.0 ([cc2e62a](https://github.com/muhlba91/pulumi-proxmoxve/commit/cc2e62a6fa5a5be2ec080629183ae8221c0c8bef))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.116.1 ([69dadf1](https://github.com/muhlba91/pulumi-proxmoxve/commit/69dadf170641d9015dc90fc7dbc8907f30cc8417))
+
 ## [6.6.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.5.1...v6.6.0) (2024-05-13)
 
 
