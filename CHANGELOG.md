@@ -1,6 +1,19 @@
 # Changelog
 
 
+## [6.7.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.7.0...v6.7.1) (2024-05-22)
+
+
+### Bug Fixes
+
+* prepare for upstream release 0.57.1 ([504c90d](https://github.com/muhlba91/pulumi-proxmoxve/commit/504c90d81f88c2316f70c7c65747285453a06853))
+
+
+### Miscellaneous Chores
+
+* **deps:** update anchore/sbom-action action to v0.16.0 ([4a3738f](https://github.com/muhlba91/pulumi-proxmoxve/commit/4a3738f6926bd9d734107833e3bdb71a24f96800))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.57.1 ([77a41a7](https://github.com/muhlba91/pulumi-proxmoxve/commit/77a41a7c55f995b1d7c46149dc746452d4a0372c))
+
 ## [6.7.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.6.0...v6.7.0) (2024-05-18)
 
 
