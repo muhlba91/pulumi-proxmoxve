@@ -10,7 +10,10 @@ import com.pulumi.deployment.InvokeOptions;
 import io.muehlbachler.pulumi.proxmoxve.Utilities;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetNodeArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetNodePlainArgs;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetVm2Args;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetVm2PlainArgs;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetNodeResult;
+import io.muehlbachler.pulumi.proxmoxve.outputs.GetVm2Result;
 import java.util.concurrent.CompletableFuture;
 
 public final class ProxmoxveFunctions {
@@ -165,5 +168,37 @@ public final class ProxmoxveFunctions {
      */
     public static CompletableFuture<GetNodeResult> getNodePlain(GetNodePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("proxmoxve:index/getNode:getNode", TypeShape.of(GetNodeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * !&gt; **DO NOT USE**
+     * This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
+     * 
+     */
+    public static Output<GetVm2Result> getVm2(GetVm2Args args) {
+        return getVm2(args, InvokeOptions.Empty);
+    }
+    /**
+     * !&gt; **DO NOT USE**
+     * This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
+     * 
+     */
+    public static CompletableFuture<GetVm2Result> getVm2Plain(GetVm2PlainArgs args) {
+        return getVm2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * !&gt; **DO NOT USE**
+     * This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
+     * 
+     */
+    public static Output<GetVm2Result> getVm2(GetVm2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getVm2:getVm2", TypeShape.of(GetVm2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * !&gt; **DO NOT USE**
+     * This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
+     * 
+     */
+    public static CompletableFuture<GetVm2Result> getVm2Plain(GetVm2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("proxmoxve:index/getVm2:getVm2", TypeShape.of(GetVm2Result.class), args, Utilities.withVersion(options));
     }
 }

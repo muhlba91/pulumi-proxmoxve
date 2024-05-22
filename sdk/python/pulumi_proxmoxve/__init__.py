@@ -9,6 +9,7 @@ from .acl import *
 from .certifi import *
 from .dns import *
 from .get_node import *
+from .get_vm2 import *
 from .hosts import *
 from .provider import *
 from .time import *

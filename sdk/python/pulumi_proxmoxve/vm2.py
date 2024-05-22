@@ -18,6 +18,7 @@ class Vm2Args:
     def __init__(__self__, *,
                  node_name: pulumi.Input[str],
                  clone: Optional[pulumi.Input['Vm2CloneArgs']] = None,
+                 cpu: Optional[pulumi.Input['Vm2CpuArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -27,14 +28,17 @@ class Vm2Args:
         The set of arguments for constructing a Vm2 resource.
         :param pulumi.Input[str] node_name: The name of the node where the VM is provisioned.
         :param pulumi.Input['Vm2CloneArgs'] clone: The cloning configuration.
+        :param pulumi.Input['Vm2CpuArgs'] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description of the VM.
         :param pulumi.Input[str] name: The name of the VM. Doesn't have to be unique.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags assigned to the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags assigned to the VM.
         :param pulumi.Input[bool] template: Set to true to create a VM template.
         """
         pulumi.set(__self__, "node_name", node_name)
         if clone is not None:
             pulumi.set(__self__, "clone", clone)
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -72,6 +76,18 @@ class Vm2Args:
 
     @property
     @pulumi.getter
+    def cpu(self) -> Optional[pulumi.Input['Vm2CpuArgs']]:
+        """
+        The CPU configuration.
+        """
+        return pulumi.get(self, "cpu")
+
+    @cpu.setter
+    def cpu(self, value: Optional[pulumi.Input['Vm2CpuArgs']]):
+        pulumi.set(self, "cpu", value)
+
+    @property
+    @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         The description of the VM.
@@ -98,7 +114,7 @@ class Vm2Args:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The tags assigned to the resource.
+        The tags assigned to the VM.
         """
         return pulumi.get(self, "tags")
 
@@ -132,6 +148,7 @@ class Vm2Args:
 class _Vm2State:
     def __init__(__self__, *,
                  clone: Optional[pulumi.Input['Vm2CloneArgs']] = None,
+                 cpu: Optional[pulumi.Input['Vm2CpuArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
@@ -141,14 +158,17 @@ class _Vm2State:
         """
         Input properties used for looking up and filtering Vm2 resources.
         :param pulumi.Input['Vm2CloneArgs'] clone: The cloning configuration.
+        :param pulumi.Input['Vm2CpuArgs'] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description of the VM.
         :param pulumi.Input[str] name: The name of the VM. Doesn't have to be unique.
         :param pulumi.Input[str] node_name: The name of the node where the VM is provisioned.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags assigned to the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags assigned to the VM.
         :param pulumi.Input[bool] template: Set to true to create a VM template.
         """
         if clone is not None:
             pulumi.set(__self__, "clone", clone)
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -173,6 +193,18 @@ class _Vm2State:
     @clone.setter
     def clone(self, value: Optional[pulumi.Input['Vm2CloneArgs']]):
         pulumi.set(self, "clone", value)
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> Optional[pulumi.Input['Vm2CpuArgs']]:
+        """
+        The CPU configuration.
+        """
+        return pulumi.get(self, "cpu")
+
+    @cpu.setter
+    def cpu(self, value: Optional[pulumi.Input['Vm2CpuArgs']]):
+        pulumi.set(self, "cpu", value)
 
     @property
     @pulumi.getter
@@ -214,7 +246,7 @@ class _Vm2State:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The tags assigned to the resource.
+        The tags assigned to the VM.
         """
         return pulumi.get(self, "tags")
 
@@ -250,6 +282,7 @@ class Vm2(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  clone: Optional[pulumi.Input[pulumi.InputType['Vm2CloneArgs']]] = None,
+                 cpu: Optional[pulumi.Input[pulumi.InputType['Vm2CpuArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
@@ -263,19 +296,19 @@ class Vm2(pulumi.CustomResource):
 
         > Many attributes are marked as **optional** _and_ **computed** in the schema,
         hence you may seem added to the plan with "(known after apply)" status, even if they are not set in the configuration.
-        This is done to support the `clone` operation, when a VM is created from an existing one,
-        and attributes of the original VM are copied to the new one.<br><br>
+        This is done to support the `clone` operation, when a VM is created from an existing VM or template,
+        and the source attributes are copied to the clone.<br><br>
         Computed attributes allow the provider to set those attributes without user input.
-        The attributes are marked as optional to allow the user to set (or overwrite) them if needed.
-        In order to remove the computed attribute from the plan, you can set it to an empty value (e.g. `""` for string, `[]` for collection).
+        The attributes are also marked as optional to allow the practitioner to set (or overwrite) them if needed.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['Vm2CloneArgs']] clone: The cloning configuration.
+        :param pulumi.Input[pulumi.InputType['Vm2CpuArgs']] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description of the VM.
         :param pulumi.Input[str] name: The name of the VM. Doesn't have to be unique.
         :param pulumi.Input[str] node_name: The name of the node where the VM is provisioned.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags assigned to the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags assigned to the VM.
         :param pulumi.Input[bool] template: Set to true to create a VM template.
         """
         ...
@@ -290,11 +323,10 @@ class Vm2(pulumi.CustomResource):
 
         > Many attributes are marked as **optional** _and_ **computed** in the schema,
         hence you may seem added to the plan with "(known after apply)" status, even if they are not set in the configuration.
-        This is done to support the `clone` operation, when a VM is created from an existing one,
-        and attributes of the original VM are copied to the new one.<br><br>
+        This is done to support the `clone` operation, when a VM is created from an existing VM or template,
+        and the source attributes are copied to the clone.<br><br>
         Computed attributes allow the provider to set those attributes without user input.
-        The attributes are marked as optional to allow the user to set (or overwrite) them if needed.
-        In order to remove the computed attribute from the plan, you can set it to an empty value (e.g. `""` for string, `[]` for collection).
+        The attributes are also marked as optional to allow the practitioner to set (or overwrite) them if needed.
 
         :param str resource_name: The name of the resource.
         :param Vm2Args args: The arguments to use to populate this resource's properties.
@@ -312,6 +344,7 @@ class Vm2(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  clone: Optional[pulumi.Input[pulumi.InputType['Vm2CloneArgs']]] = None,
+                 cpu: Optional[pulumi.Input[pulumi.InputType['Vm2CpuArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
@@ -328,6 +361,7 @@ class Vm2(pulumi.CustomResource):
             __props__ = Vm2Args.__new__(Vm2Args)
 
             __props__.__dict__["clone"] = clone
+            __props__.__dict__["cpu"] = cpu
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             if node_name is None and not opts.urn:
@@ -347,6 +381,7 @@ class Vm2(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             clone: Optional[pulumi.Input[pulumi.InputType['Vm2CloneArgs']]] = None,
+            cpu: Optional[pulumi.Input[pulumi.InputType['Vm2CpuArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             node_name: Optional[pulumi.Input[str]] = None,
@@ -361,10 +396,11 @@ class Vm2(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['Vm2CloneArgs']] clone: The cloning configuration.
+        :param pulumi.Input[pulumi.InputType['Vm2CpuArgs']] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description of the VM.
         :param pulumi.Input[str] name: The name of the VM. Doesn't have to be unique.
         :param pulumi.Input[str] node_name: The name of the node where the VM is provisioned.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags assigned to the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags assigned to the VM.
         :param pulumi.Input[bool] template: Set to true to create a VM template.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -372,6 +408,7 @@ class Vm2(pulumi.CustomResource):
         __props__ = _Vm2State.__new__(_Vm2State)
 
         __props__.__dict__["clone"] = clone
+        __props__.__dict__["cpu"] = cpu
         __props__.__dict__["description"] = description
         __props__.__dict__["name"] = name
         __props__.__dict__["node_name"] = node_name
@@ -387,6 +424,14 @@ class Vm2(pulumi.CustomResource):
         The cloning configuration.
         """
         return pulumi.get(self, "clone")
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> pulumi.Output['outputs.Vm2Cpu']:
+        """
+        The CPU configuration.
+        """
+        return pulumi.get(self, "cpu")
 
     @property
     @pulumi.getter
@@ -416,7 +461,7 @@ class Vm2(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Sequence[str]]:
         """
-        The tags assigned to the resource.
+        The tags assigned to the VM.
         """
         return pulumi.get(self, "tags")
 

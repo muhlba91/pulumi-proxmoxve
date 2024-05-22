@@ -5,6 +5,128 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface GetVm2Clone {
+    /**
+     * The ID of the VM to clone.
+     */
+    id: number;
+    /**
+     * The number of retries to perform when cloning the VM (default: 3).
+     */
+    retries?: number;
+}
+
+export interface GetVm2CloneArgs {
+    /**
+     * The ID of the VM to clone.
+     */
+    id: pulumi.Input<number>;
+    /**
+     * The number of retries to perform when cloning the VM (default: 3).
+     */
+    retries?: pulumi.Input<number>;
+}
+
+export interface GetVm2Cpu {
+    /**
+     * List of host cores used to execute guest processes, for example: '0,5,8-11'
+     */
+    affinity?: string;
+    /**
+     * The CPU architecture.
+     */
+    architecture?: string;
+    /**
+     * The number of CPU cores per socket.
+     */
+    cores?: number;
+    /**
+     * Set of additional CPU flags.
+     */
+    flags?: string[];
+    /**
+     * The number of hotplugged vCPUs.
+     */
+    hotplugged?: number;
+    /**
+     * Limit of CPU usage.
+     */
+    limit?: number;
+    /**
+     * Enable NUMA.
+     */
+    numa?: boolean;
+    /**
+     * The number of CPU sockets.
+     */
+    sockets?: number;
+    /**
+     * Emulated CPU type.
+     */
+    type?: string;
+    /**
+     * CPU weight for a VM
+     */
+    units?: number;
+}
+
+export interface GetVm2CpuArgs {
+    /**
+     * List of host cores used to execute guest processes, for example: '0,5,8-11'
+     */
+    affinity?: pulumi.Input<string>;
+    /**
+     * The CPU architecture.
+     */
+    architecture?: pulumi.Input<string>;
+    /**
+     * The number of CPU cores per socket.
+     */
+    cores?: pulumi.Input<number>;
+    /**
+     * Set of additional CPU flags.
+     */
+    flags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The number of hotplugged vCPUs.
+     */
+    hotplugged?: pulumi.Input<number>;
+    /**
+     * Limit of CPU usage.
+     */
+    limit?: pulumi.Input<number>;
+    /**
+     * Enable NUMA.
+     */
+    numa?: pulumi.Input<boolean>;
+    /**
+     * The number of CPU sockets.
+     */
+    sockets?: pulumi.Input<number>;
+    /**
+     * Emulated CPU type.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * CPU weight for a VM
+     */
+    units?: pulumi.Input<number>;
+}
+
+export interface GetVm2Timeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+}
+
+export interface GetVm2TimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+}
+
 export interface HostsEntry {
     /**
      * The IP address.
@@ -79,6 +201,49 @@ export interface Vm2Clone {
      * The number of retries to perform when cloning the VM (default: 3).
      */
     retries?: pulumi.Input<number>;
+}
+
+export interface Vm2Cpu {
+    /**
+     * The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+     */
+    affinity?: pulumi.Input<string>;
+    /**
+     * The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `affinity` is only allowed for `root@pam` authenticated user.
+     */
+    architecture?: pulumi.Input<string>;
+    /**
+     * The number of CPU cores per socket (defaults to `1`).
+     */
+    cores?: pulumi.Input<number>;
+    /**
+     * Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+     */
+    flags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The number of hotplugged vCPUs (defaults to `0`).
+     */
+    hotplugged?: pulumi.Input<number>;
+    /**
+     * Limit of CPU usage (defaults to `0` which means no limit).
+     */
+    limit?: pulumi.Input<number>;
+    /**
+     * Enable NUMA (defaults to `false`).
+     */
+    numa?: pulumi.Input<boolean>;
+    /**
+     * The number of CPU sockets (defaults to `1`).
+     */
+    sockets?: pulumi.Input<number>;
+    /**
+     * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+     */
+    units?: pulumi.Input<number>;
 }
 
 export interface Vm2Timeouts {

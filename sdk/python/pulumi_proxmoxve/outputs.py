@@ -12,7 +12,11 @@ from . import _utilities
 __all__ = [
     'HostsEntry',
     'Vm2Clone',
+    'Vm2Cpu',
     'Vm2Timeouts',
+    'GetVm2CloneResult',
+    'GetVm2CpuResult',
+    'GetVm2TimeoutsResult',
 ]
 
 @pulumi.output_type
@@ -75,6 +79,133 @@ class Vm2Clone(dict):
 
 
 @pulumi.output_type
+class Vm2Cpu(dict):
+    def __init__(__self__, *,
+                 affinity: Optional[str] = None,
+                 architecture: Optional[str] = None,
+                 cores: Optional[int] = None,
+                 flags: Optional[Sequence[str]] = None,
+                 hotplugged: Optional[int] = None,
+                 limit: Optional[int] = None,
+                 numa: Optional[bool] = None,
+                 sockets: Optional[int] = None,
+                 type: Optional[str] = None,
+                 units: Optional[int] = None):
+        """
+        :param str affinity: The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+        :param str architecture: The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `affinity` is only allowed for `root@pam` authenticated user.
+        :param int cores: The number of CPU cores per socket (defaults to `1`).
+        :param Sequence[str] flags: Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+        :param int hotplugged: The number of hotplugged vCPUs (defaults to `0`).
+        :param int limit: Limit of CPU usage (defaults to `0` which means no limit).
+        :param bool numa: Enable NUMA (defaults to `false`).
+        :param int sockets: The number of CPU sockets (defaults to `1`).
+        :param str type: Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+        :param int units: CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+        """
+        if affinity is not None:
+            pulumi.set(__self__, "affinity", affinity)
+        if architecture is not None:
+            pulumi.set(__self__, "architecture", architecture)
+        if cores is not None:
+            pulumi.set(__self__, "cores", cores)
+        if flags is not None:
+            pulumi.set(__self__, "flags", flags)
+        if hotplugged is not None:
+            pulumi.set(__self__, "hotplugged", hotplugged)
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if numa is not None:
+            pulumi.set(__self__, "numa", numa)
+        if sockets is not None:
+            pulumi.set(__self__, "sockets", sockets)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if units is not None:
+            pulumi.set(__self__, "units", units)
+
+    @property
+    @pulumi.getter
+    def affinity(self) -> Optional[str]:
+        """
+        The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+        """
+        return pulumi.get(self, "affinity")
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> Optional[str]:
+        """
+        The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `affinity` is only allowed for `root@pam` authenticated user.
+        """
+        return pulumi.get(self, "architecture")
+
+    @property
+    @pulumi.getter
+    def cores(self) -> Optional[int]:
+        """
+        The number of CPU cores per socket (defaults to `1`).
+        """
+        return pulumi.get(self, "cores")
+
+    @property
+    @pulumi.getter
+    def flags(self) -> Optional[Sequence[str]]:
+        """
+        Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+        """
+        return pulumi.get(self, "flags")
+
+    @property
+    @pulumi.getter
+    def hotplugged(self) -> Optional[int]:
+        """
+        The number of hotplugged vCPUs (defaults to `0`).
+        """
+        return pulumi.get(self, "hotplugged")
+
+    @property
+    @pulumi.getter
+    def limit(self) -> Optional[int]:
+        """
+        Limit of CPU usage (defaults to `0` which means no limit).
+        """
+        return pulumi.get(self, "limit")
+
+    @property
+    @pulumi.getter
+    def numa(self) -> Optional[bool]:
+        """
+        Enable NUMA (defaults to `false`).
+        """
+        return pulumi.get(self, "numa")
+
+    @property
+    @pulumi.getter
+    def sockets(self) -> Optional[int]:
+        """
+        The number of CPU sockets (defaults to `1`).
+        """
+        return pulumi.get(self, "sockets")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def units(self) -> Optional[int]:
+        """
+        CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+        """
+        return pulumi.get(self, "units")
+
+
+@pulumi.output_type
 class Vm2Timeouts(dict):
     def __init__(__self__, *,
                  create: Optional[str] = None,
@@ -127,5 +258,170 @@ class Vm2Timeouts(dict):
         A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
         """
         return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class GetVm2CloneResult(dict):
+    def __init__(__self__, *,
+                 id: int,
+                 retries: int):
+        """
+        :param int id: The ID of the VM to clone.
+        :param int retries: The number of retries to perform when cloning the VM (default: 3).
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "retries", retries)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of the VM to clone.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def retries(self) -> int:
+        """
+        The number of retries to perform when cloning the VM (default: 3).
+        """
+        return pulumi.get(self, "retries")
+
+
+@pulumi.output_type
+class GetVm2CpuResult(dict):
+    def __init__(__self__, *,
+                 affinity: str,
+                 architecture: str,
+                 cores: int,
+                 flags: Sequence[str],
+                 hotplugged: int,
+                 limit: int,
+                 numa: bool,
+                 sockets: int,
+                 type: str,
+                 units: int):
+        """
+        :param str affinity: List of host cores used to execute guest processes, for example: '0,5,8-11'
+        :param str architecture: The CPU architecture.
+        :param int cores: The number of CPU cores per socket.
+        :param Sequence[str] flags: Set of additional CPU flags.
+        :param int hotplugged: The number of hotplugged vCPUs.
+        :param int limit: Limit of CPU usage.
+        :param bool numa: Enable NUMA.
+        :param int sockets: The number of CPU sockets.
+        :param str type: Emulated CPU type.
+        :param int units: CPU weight for a VM
+        """
+        pulumi.set(__self__, "affinity", affinity)
+        pulumi.set(__self__, "architecture", architecture)
+        pulumi.set(__self__, "cores", cores)
+        pulumi.set(__self__, "flags", flags)
+        pulumi.set(__self__, "hotplugged", hotplugged)
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "numa", numa)
+        pulumi.set(__self__, "sockets", sockets)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "units", units)
+
+    @property
+    @pulumi.getter
+    def affinity(self) -> str:
+        """
+        List of host cores used to execute guest processes, for example: '0,5,8-11'
+        """
+        return pulumi.get(self, "affinity")
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> str:
+        """
+        The CPU architecture.
+        """
+        return pulumi.get(self, "architecture")
+
+    @property
+    @pulumi.getter
+    def cores(self) -> int:
+        """
+        The number of CPU cores per socket.
+        """
+        return pulumi.get(self, "cores")
+
+    @property
+    @pulumi.getter
+    def flags(self) -> Sequence[str]:
+        """
+        Set of additional CPU flags.
+        """
+        return pulumi.get(self, "flags")
+
+    @property
+    @pulumi.getter
+    def hotplugged(self) -> int:
+        """
+        The number of hotplugged vCPUs.
+        """
+        return pulumi.get(self, "hotplugged")
+
+    @property
+    @pulumi.getter
+    def limit(self) -> int:
+        """
+        Limit of CPU usage.
+        """
+        return pulumi.get(self, "limit")
+
+    @property
+    @pulumi.getter
+    def numa(self) -> bool:
+        """
+        Enable NUMA.
+        """
+        return pulumi.get(self, "numa")
+
+    @property
+    @pulumi.getter
+    def sockets(self) -> int:
+        """
+        The number of CPU sockets.
+        """
+        return pulumi.get(self, "sockets")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Emulated CPU type.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def units(self) -> int:
+        """
+        CPU weight for a VM
+        """
+        return pulumi.get(self, "units")
+
+
+@pulumi.output_type
+class GetVm2TimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[str] = None):
+        """
+        :param str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
 
 

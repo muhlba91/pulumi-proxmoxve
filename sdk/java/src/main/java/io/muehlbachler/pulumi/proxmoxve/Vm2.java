@@ -11,6 +11,7 @@ import io.muehlbachler.pulumi.proxmoxve.Utilities;
 import io.muehlbachler.pulumi.proxmoxve.Vm2Args;
 import io.muehlbachler.pulumi.proxmoxve.inputs.Vm2State;
 import io.muehlbachler.pulumi.proxmoxve.outputs.Vm2Clone;
+import io.muehlbachler.pulumi.proxmoxve.outputs.Vm2Cpu;
 import io.muehlbachler.pulumi.proxmoxve.outputs.Vm2Timeouts;
 import java.lang.Boolean;
 import java.lang.String;
@@ -24,11 +25,10 @@ import javax.annotation.Nullable;
  * 
  * &gt; Many attributes are marked as **optional** _and_ **computed** in the schema,
  * hence you may seem added to the plan with &#34;(known after apply)&#34; status, even if they are not set in the configuration.
- * This is done to support the `clone` operation, when a VM is created from an existing one,
- * and attributes of the original VM are copied to the new one.&lt;br&gt;&lt;br&gt;
+ * This is done to support the `clone` operation, when a VM is created from an existing VM or template,
+ * and the source attributes are copied to the clone.&lt;br&gt;&lt;br&gt;
  * Computed attributes allow the provider to set those attributes without user input.
- * The attributes are marked as optional to allow the user to set (or overwrite) them if needed.
- * In order to remove the computed attribute from the plan, you can set it to an empty value (e.g. `&#34;&#34;` for string, `[]` for collection).
+ * The attributes are also marked as optional to allow the practitioner to set (or overwrite) them if needed.
  * 
  */
 @ResourceType(type="proxmoxve:index/vm2:Vm2")
@@ -46,6 +46,20 @@ public class Vm2 extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Vm2Clone>> clone_() {
         return Codegen.optional(this.clone);
+    }
+    /**
+     * The CPU configuration.
+     * 
+     */
+    @Export(name="cpu", refs={Vm2Cpu.class}, tree="[0]")
+    private Output<Vm2Cpu> cpu;
+
+    /**
+     * @return The CPU configuration.
+     * 
+     */
+    public Output<Vm2Cpu> cpu() {
+        return this.cpu;
     }
     /**
      * The description of the VM.
@@ -90,14 +104,14 @@ public class Vm2 extends com.pulumi.resources.CustomResource {
         return this.nodeName;
     }
     /**
-     * The tags assigned to the resource.
+     * The tags assigned to the VM.
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> tags;
 
     /**
-     * @return The tags assigned to the resource.
+     * @return The tags assigned to the VM.
      * 
      */
     public Output<List<String>> tags() {

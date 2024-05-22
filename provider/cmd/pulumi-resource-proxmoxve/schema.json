@@ -2012,6 +2012,70 @@
                 }
             }
         },
+        "proxmoxve:index/Vm2Cpu:Vm2Cpu": {
+            "properties": {
+                "affinity": {
+                    "type": "string",
+                    "description": "The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.\n"
+                },
+                "architecture": {
+                    "type": "string",
+                    "description": "The CPU architecture `\u003caarch64 | x86_64\u003e` (defaults to the host). Setting `affinity` is only allowed for `root@pam` authenticated user.\n"
+                },
+                "cores": {
+                    "type": "integer",
+                    "description": "The number of CPU cores per socket (defaults to `1`).\n"
+                },
+                "flags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.\n"
+                },
+                "hotplugged": {
+                    "type": "integer",
+                    "description": "The number of hotplugged vCPUs (defaults to `0`).\n"
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "Limit of CPU usage (defaults to `0` which means no limit).\n"
+                },
+                "numa": {
+                    "type": "boolean",
+                    "description": "Enable NUMA (defaults to `false`).\n"
+                },
+                "sockets": {
+                    "type": "integer",
+                    "description": "The number of CPU sockets (defaults to `1`).\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.\n"
+                },
+                "units": {
+                    "type": "integer",
+                    "description": "CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "affinity",
+                        "architecture",
+                        "cores",
+                        "flags",
+                        "hotplugged",
+                        "limit",
+                        "numa",
+                        "sockets",
+                        "type",
+                        "units"
+                    ]
+                }
+            }
+        },
         "proxmoxve:index/Vm2Timeouts:Vm2Timeouts": {
             "properties": {
                 "create": {
@@ -2029,6 +2093,104 @@
                 "update": {
                     "type": "string",
                     "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
+        },
+        "proxmoxve:index/getVm2Clone:getVm2Clone": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of the VM to clone.\n"
+                },
+                "retries": {
+                    "type": "integer",
+                    "description": "The number of retries to perform when cloning the VM (default: 3).\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "retries"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": [
+                        "id"
+                    ]
+                }
+            }
+        },
+        "proxmoxve:index/getVm2Cpu:getVm2Cpu": {
+            "properties": {
+                "affinity": {
+                    "type": "string",
+                    "description": "List of host cores used to execute guest processes, for example: '0,5,8-11'\n"
+                },
+                "architecture": {
+                    "type": "string",
+                    "description": "The CPU architecture.\n"
+                },
+                "cores": {
+                    "type": "integer",
+                    "description": "The number of CPU cores per socket.\n"
+                },
+                "flags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Set of additional CPU flags.\n"
+                },
+                "hotplugged": {
+                    "type": "integer",
+                    "description": "The number of hotplugged vCPUs.\n"
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "Limit of CPU usage.\n"
+                },
+                "numa": {
+                    "type": "boolean",
+                    "description": "Enable NUMA.\n"
+                },
+                "sockets": {
+                    "type": "integer",
+                    "description": "The number of CPU sockets.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Emulated CPU type.\n"
+                },
+                "units": {
+                    "type": "integer",
+                    "description": "CPU weight for a VM\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "affinity",
+                "architecture",
+                "cores",
+                "flags",
+                "hotplugged",
+                "limit",
+                "numa",
+                "sockets",
+                "type",
+                "units"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "proxmoxve:index/getVm2Timeouts:getVm2Timeouts": {
+            "properties": {
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
                 }
             },
             "type": "object"
@@ -6118,11 +6280,15 @@
             }
         },
         "proxmoxve:index/vm2:Vm2": {
-            "description": "!\u003e **DO NOT USE**\nThis is an experimental implementation of a Proxmox VM resource using Plugin Framework.\u003cbr\u003e\u003cbr\u003eIt is a Proof of Concept, highly experimental and **will** change in future. It does not support all features of the Proxmox API for VMs and **MUST NOT** be used in production.\n\n\u003e Many attributes are marked as **optional** _and_ **computed** in the schema,\nhence you may seem added to the plan with \"(known after apply)\" status, even if they are not set in the configuration.\nThis is done to support the `clone` operation, when a VM is created from an existing one,\nand attributes of the original VM are copied to the new one.\u003cbr\u003e\u003cbr\u003e\nComputed attributes allow the provider to set those attributes without user input.\nThe attributes are marked as optional to allow the user to set (or overwrite) them if needed.\nIn order to remove the computed attribute from the plan, you can set it to an empty value (e.g. `\"\"` for string, `[]` for collection).\n",
+            "description": "!\u003e **DO NOT USE**\nThis is an experimental implementation of a Proxmox VM resource using Plugin Framework.\u003cbr\u003e\u003cbr\u003eIt is a Proof of Concept, highly experimental and **will** change in future. It does not support all features of the Proxmox API for VMs and **MUST NOT** be used in production.\n\n\u003e Many attributes are marked as **optional** _and_ **computed** in the schema,\nhence you may seem added to the plan with \"(known after apply)\" status, even if they are not set in the configuration.\nThis is done to support the `clone` operation, when a VM is created from an existing VM or template,\nand the source attributes are copied to the clone.\u003cbr\u003e\u003cbr\u003e\nComputed attributes allow the provider to set those attributes without user input.\nThe attributes are also marked as optional to allow the practitioner to set (or overwrite) them if needed.\n",
             "properties": {
                 "clone": {
                     "$ref": "#/types/proxmoxve:index/Vm2Clone:Vm2Clone",
                     "description": "The cloning configuration.\n"
+                },
+                "cpu": {
+                    "$ref": "#/types/proxmoxve:index/Vm2Cpu:Vm2Cpu",
+                    "description": "The CPU configuration.\n"
                 },
                 "description": {
                     "type": "string",
@@ -6141,7 +6307,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The tags assigned to the resource.\n"
+                    "description": "The tags assigned to the VM.\n"
                 },
                 "template": {
                     "type": "boolean",
@@ -6152,6 +6318,7 @@
                 }
             },
             "required": [
+                "cpu",
                 "name",
                 "nodeName",
                 "tags"
@@ -6160,6 +6327,10 @@
                 "clone": {
                     "$ref": "#/types/proxmoxve:index/Vm2Clone:Vm2Clone",
                     "description": "The cloning configuration.\n"
+                },
+                "cpu": {
+                    "$ref": "#/types/proxmoxve:index/Vm2Cpu:Vm2Cpu",
+                    "description": "The CPU configuration.\n"
                 },
                 "description": {
                     "type": "string",
@@ -6178,7 +6349,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The tags assigned to the resource.\n"
+                    "description": "The tags assigned to the VM.\n"
                 },
                 "template": {
                     "type": "boolean",
@@ -6198,6 +6369,10 @@
                         "$ref": "#/types/proxmoxve:index/Vm2Clone:Vm2Clone",
                         "description": "The cloning configuration.\n"
                     },
+                    "cpu": {
+                        "$ref": "#/types/proxmoxve:index/Vm2Cpu:Vm2Cpu",
+                        "description": "The CPU configuration.\n"
+                    },
                     "description": {
                         "type": "string",
                         "description": "The description of the VM.\n"
@@ -6215,7 +6390,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The tags assigned to the resource.\n"
+                        "description": "The tags assigned to the VM.\n"
                     },
                     "template": {
                         "type": "boolean",
@@ -7543,6 +7718,107 @@
                     "nodeName",
                     "uptime",
                     "id"
+                ]
+            }
+        },
+        "proxmoxve:index/getVm2:getVm2": {
+            "description": "!\u003e **DO NOT USE**\nThis is an experimental implementation of a Proxmox VM datasource using Plugin Framework.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getVm2.\n",
+                "properties": {
+                    "clone": {
+                        "$ref": "#/types/proxmoxve:index/getVm2Clone:getVm2Clone",
+                        "description": "The cloning configuration.\n"
+                    },
+                    "cpu": {
+                        "$ref": "#/types/proxmoxve:index/getVm2Cpu:getVm2Cpu",
+                        "description": "The CPU configuration.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the VM.\n"
+                    },
+                    "id": {
+                        "type": "integer",
+                        "description": "The unique identifier of the VM in the Proxmox cluster.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the VM.\n"
+                    },
+                    "nodeName": {
+                        "type": "string",
+                        "description": "The name of the node where the VM is provisioned.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The tags assigned to the VM.\n"
+                    },
+                    "template": {
+                        "type": "boolean",
+                        "description": "Whether the VM is a template.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/proxmoxve:index/getVm2Timeouts:getVm2Timeouts"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "nodeName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getVm2.\n",
+                "properties": {
+                    "clone": {
+                        "$ref": "#/types/proxmoxve:index/getVm2Clone:getVm2Clone",
+                        "description": "The cloning configuration.\n"
+                    },
+                    "cpu": {
+                        "$ref": "#/types/proxmoxve:index/getVm2Cpu:getVm2Cpu",
+                        "description": "The CPU configuration.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the VM.\n"
+                    },
+                    "id": {
+                        "type": "integer",
+                        "description": "The unique identifier of the VM in the Proxmox cluster.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the VM.\n"
+                    },
+                    "nodeName": {
+                        "type": "string",
+                        "description": "The name of the node where the VM is provisioned.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The tags assigned to the VM.\n"
+                    },
+                    "template": {
+                        "type": "boolean",
+                        "description": "Whether the VM is a template.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/proxmoxve:index/getVm2Timeouts:getVm2Timeouts"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "cpu",
+                    "id",
+                    "nodeName",
+                    "tags"
                 ]
             }
         }

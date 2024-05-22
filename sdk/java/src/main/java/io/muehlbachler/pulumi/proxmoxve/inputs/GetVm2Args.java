@@ -5,10 +5,12 @@ package io.muehlbachler.pulumi.proxmoxve.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import io.muehlbachler.pulumi.proxmoxve.inputs.Vm2CloneArgs;
-import io.muehlbachler.pulumi.proxmoxve.inputs.Vm2CpuArgs;
-import io.muehlbachler.pulumi.proxmoxve.inputs.Vm2TimeoutsArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetVm2CloneArgs;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetVm2CpuArgs;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetVm2TimeoutsArgs;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -16,22 +18,22 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class Vm2State extends com.pulumi.resources.ResourceArgs {
+public final class GetVm2Args extends com.pulumi.resources.InvokeArgs {
 
-    public static final Vm2State Empty = new Vm2State();
+    public static final GetVm2Args Empty = new GetVm2Args();
 
     /**
      * The cloning configuration.
      * 
      */
     @Import(name="clone")
-    private @Nullable Output<Vm2CloneArgs> clone;
+    private @Nullable Output<GetVm2CloneArgs> clone;
 
     /**
      * @return The cloning configuration.
      * 
      */
-    public Optional<Output<Vm2CloneArgs>> clone_() {
+    public Optional<Output<GetVm2CloneArgs>> clone_() {
         return Optional.ofNullable(this.clone);
     }
 
@@ -40,13 +42,13 @@ public final class Vm2State extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="cpu")
-    private @Nullable Output<Vm2CpuArgs> cpu;
+    private @Nullable Output<GetVm2CpuArgs> cpu;
 
     /**
      * @return The CPU configuration.
      * 
      */
-    public Optional<Output<Vm2CpuArgs>> cpu() {
+    public Optional<Output<GetVm2CpuArgs>> cpu() {
         return Optional.ofNullable(this.cpu);
     }
 
@@ -66,14 +68,29 @@ public final class Vm2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the VM. Doesn&#39;t have to be unique.
+     * The unique identifier of the VM in the Proxmox cluster.
+     * 
+     */
+    @Import(name="id", required=true)
+    private Output<Integer> id;
+
+    /**
+     * @return The unique identifier of the VM in the Proxmox cluster.
+     * 
+     */
+    public Output<Integer> id() {
+        return this.id;
+    }
+
+    /**
+     * The name of the VM.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the VM. Doesn&#39;t have to be unique.
+     * @return The name of the VM.
      * 
      */
     public Optional<Output<String>> name() {
@@ -84,15 +101,15 @@ public final class Vm2State extends com.pulumi.resources.ResourceArgs {
      * The name of the node where the VM is provisioned.
      * 
      */
-    @Import(name="nodeName")
-    private @Nullable Output<String> nodeName;
+    @Import(name="nodeName", required=true)
+    private Output<String> nodeName;
 
     /**
      * @return The name of the node where the VM is provisioned.
      * 
      */
-    public Optional<Output<String>> nodeName() {
-        return Optional.ofNullable(this.nodeName);
+    public Output<String> nodeName() {
+        return this.nodeName;
     }
 
     /**
@@ -111,14 +128,14 @@ public final class Vm2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set to true to create a VM template.
+     * Whether the VM is a template.
      * 
      */
     @Import(name="template")
     private @Nullable Output<Boolean> template;
 
     /**
-     * @return Set to true to create a VM template.
+     * @return Whether the VM is a template.
      * 
      */
     public Optional<Output<Boolean>> template() {
@@ -126,18 +143,19 @@ public final class Vm2State extends com.pulumi.resources.ResourceArgs {
     }
 
     @Import(name="timeouts")
-    private @Nullable Output<Vm2TimeoutsArgs> timeouts;
+    private @Nullable Output<GetVm2TimeoutsArgs> timeouts;
 
-    public Optional<Output<Vm2TimeoutsArgs>> timeouts() {
+    public Optional<Output<GetVm2TimeoutsArgs>> timeouts() {
         return Optional.ofNullable(this.timeouts);
     }
 
-    private Vm2State() {}
+    private GetVm2Args() {}
 
-    private Vm2State(Vm2State $) {
+    private GetVm2Args(GetVm2Args $) {
         this.clone = $.clone;
         this.cpu = $.cpu;
         this.description = $.description;
+        this.id = $.id;
         this.name = $.name;
         this.nodeName = $.nodeName;
         this.tags = $.tags;
@@ -148,19 +166,19 @@ public final class Vm2State extends com.pulumi.resources.ResourceArgs {
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(Vm2State defaults) {
+    public static Builder builder(GetVm2Args defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private Vm2State $;
+        private GetVm2Args $;
 
         public Builder() {
-            $ = new Vm2State();
+            $ = new GetVm2Args();
         }
 
-        public Builder(Vm2State defaults) {
-            $ = new Vm2State(Objects.requireNonNull(defaults));
+        public Builder(GetVm2Args defaults) {
+            $ = new GetVm2Args(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -169,7 +187,7 @@ public final class Vm2State extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder clone_(@Nullable Output<Vm2CloneArgs> clone) {
+        public Builder clone_(@Nullable Output<GetVm2CloneArgs> clone) {
             $.clone = clone;
             return this;
         }
@@ -180,7 +198,7 @@ public final class Vm2State extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder clone_(Vm2CloneArgs clone) {
+        public Builder clone_(GetVm2CloneArgs clone) {
             return clone_(Output.of(clone));
         }
 
@@ -190,7 +208,7 @@ public final class Vm2State extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder cpu(@Nullable Output<Vm2CpuArgs> cpu) {
+        public Builder cpu(@Nullable Output<GetVm2CpuArgs> cpu) {
             $.cpu = cpu;
             return this;
         }
@@ -201,7 +219,7 @@ public final class Vm2State extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder cpu(Vm2CpuArgs cpu) {
+        public Builder cpu(GetVm2CpuArgs cpu) {
             return cpu(Output.of(cpu));
         }
 
@@ -227,7 +245,28 @@ public final class Vm2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the VM. Doesn&#39;t have to be unique.
+         * @param id The unique identifier of the VM in the Proxmox cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(Output<Integer> id) {
+            $.id = id;
+            return this;
+        }
+
+        /**
+         * @param id The unique identifier of the VM in the Proxmox cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(Integer id) {
+            return id(Output.of(id));
+        }
+
+        /**
+         * @param name The name of the VM.
          * 
          * @return builder
          * 
@@ -238,7 +277,7 @@ public final class Vm2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the VM. Doesn&#39;t have to be unique.
+         * @param name The name of the VM.
          * 
          * @return builder
          * 
@@ -253,7 +292,7 @@ public final class Vm2State extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder nodeName(@Nullable Output<String> nodeName) {
+        public Builder nodeName(Output<String> nodeName) {
             $.nodeName = nodeName;
             return this;
         }
@@ -300,7 +339,7 @@ public final class Vm2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param template Set to true to create a VM template.
+         * @param template Whether the VM is a template.
          * 
          * @return builder
          * 
@@ -311,7 +350,7 @@ public final class Vm2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param template Set to true to create a VM template.
+         * @param template Whether the VM is a template.
          * 
          * @return builder
          * 
@@ -320,16 +359,22 @@ public final class Vm2State extends com.pulumi.resources.ResourceArgs {
             return template(Output.of(template));
         }
 
-        public Builder timeouts(@Nullable Output<Vm2TimeoutsArgs> timeouts) {
+        public Builder timeouts(@Nullable Output<GetVm2TimeoutsArgs> timeouts) {
             $.timeouts = timeouts;
             return this;
         }
 
-        public Builder timeouts(Vm2TimeoutsArgs timeouts) {
+        public Builder timeouts(GetVm2TimeoutsArgs timeouts) {
             return timeouts(Output.of(timeouts));
         }
 
-        public Vm2State build() {
+        public GetVm2Args build() {
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GetVm2Args", "id");
+            }
+            if ($.nodeName == null) {
+                throw new MissingRequiredPropertyException("GetVm2Args", "nodeName");
+            }
             return $;
         }
     }

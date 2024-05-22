@@ -26,6 +26,7 @@
         "download/file.ts",
         "download/index.ts",
         "getNode.ts",
+        "getVm2.ts",
         "ha/getHAGroup.ts",
         "ha/getHAGroups.ts",
         "ha/getHAResource.ts",

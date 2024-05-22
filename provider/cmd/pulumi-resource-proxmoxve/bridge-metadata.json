@@ -446,6 +446,13 @@
                 "current": "proxmoxve:index/vm2:Vm2",
                 "majorVersion": 6,
                 "fields": {
+                    "cpu": {
+                        "fields": {
+                            "flags": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
                     "tags": {
                         "maxItemsOne": false
                     }
@@ -750,6 +757,22 @@
                     }
                 }
             },
+            "proxmox_virtual_environment_vm2": {
+                "current": "proxmoxve:index/getVm2:getVm2",
+                "majorVersion": 6,
+                "fields": {
+                    "cpu": {
+                        "fields": {
+                            "flags": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "proxmox_virtual_environment_vms": {
                 "current": "proxmoxve:VM/getVirtualMachines:getVirtualMachines",
                 "majorVersion": 6,
@@ -827,7 +850,8 @@
             "proxmoxve:Storage/getDatastores:getDatastores": 0,
             "proxmoxve:VM/getVirtualMachine:getVirtualMachine": 0,
             "proxmoxve:VM/getVirtualMachines:getVirtualMachines": 0,
-            "proxmoxve:index/getNode:getNode": 0
+            "proxmoxve:index/getNode:getNode": 0,
+            "proxmoxve:index/getVm2:getVm2": 1
         }
     },
     "renames": {

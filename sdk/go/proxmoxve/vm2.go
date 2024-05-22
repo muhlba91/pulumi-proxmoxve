@@ -17,23 +17,24 @@ import (
 //
 // > Many attributes are marked as **optional** _and_ **computed** in the schema,
 // hence you may seem added to the plan with "(known after apply)" status, even if they are not set in the configuration.
-// This is done to support the `clone` operation, when a VM is created from an existing one,
-// and attributes of the original VM are copied to the new one.<br><br>
+// This is done to support the `clone` operation, when a VM is created from an existing VM or template,
+// and the source attributes are copied to the clone.<br><br>
 // Computed attributes allow the provider to set those attributes without user input.
-// The attributes are marked as optional to allow the user to set (or overwrite) them if needed.
-// In order to remove the computed attribute from the plan, you can set it to an empty value (e.g. `""` for string, `[]` for collection).
+// The attributes are also marked as optional to allow the practitioner to set (or overwrite) them if needed.
 type Vm2 struct {
 	pulumi.CustomResourceState
 
 	// The cloning configuration.
 	Clone Vm2ClonePtrOutput `pulumi:"clone"`
+	// The CPU configuration.
+	Cpu Vm2CpuOutput `pulumi:"cpu"`
 	// The description of the VM.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The name of the VM. Doesn't have to be unique.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the node where the VM is provisioned.
 	NodeName pulumi.StringOutput `pulumi:"nodeName"`
-	// The tags assigned to the resource.
+	// The tags assigned to the VM.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Set to true to create a VM template.
 	Template pulumi.BoolPtrOutput `pulumi:"template"`
@@ -75,13 +76,15 @@ func GetVm2(ctx *pulumi.Context,
 type vm2State struct {
 	// The cloning configuration.
 	Clone *Vm2Clone `pulumi:"clone"`
+	// The CPU configuration.
+	Cpu *Vm2Cpu `pulumi:"cpu"`
 	// The description of the VM.
 	Description *string `pulumi:"description"`
 	// The name of the VM. Doesn't have to be unique.
 	Name *string `pulumi:"name"`
 	// The name of the node where the VM is provisioned.
 	NodeName *string `pulumi:"nodeName"`
-	// The tags assigned to the resource.
+	// The tags assigned to the VM.
 	Tags []string `pulumi:"tags"`
 	// Set to true to create a VM template.
 	Template *bool        `pulumi:"template"`
@@ -91,13 +94,15 @@ type vm2State struct {
 type Vm2State struct {
 	// The cloning configuration.
 	Clone Vm2ClonePtrInput
+	// The CPU configuration.
+	Cpu Vm2CpuPtrInput
 	// The description of the VM.
 	Description pulumi.StringPtrInput
 	// The name of the VM. Doesn't have to be unique.
 	Name pulumi.StringPtrInput
 	// The name of the node where the VM is provisioned.
 	NodeName pulumi.StringPtrInput
-	// The tags assigned to the resource.
+	// The tags assigned to the VM.
 	Tags pulumi.StringArrayInput
 	// Set to true to create a VM template.
 	Template pulumi.BoolPtrInput
@@ -111,13 +116,15 @@ func (Vm2State) ElementType() reflect.Type {
 type vm2Args struct {
 	// The cloning configuration.
 	Clone *Vm2Clone `pulumi:"clone"`
+	// The CPU configuration.
+	Cpu *Vm2Cpu `pulumi:"cpu"`
 	// The description of the VM.
 	Description *string `pulumi:"description"`
 	// The name of the VM. Doesn't have to be unique.
 	Name *string `pulumi:"name"`
 	// The name of the node where the VM is provisioned.
 	NodeName string `pulumi:"nodeName"`
-	// The tags assigned to the resource.
+	// The tags assigned to the VM.
 	Tags []string `pulumi:"tags"`
 	// Set to true to create a VM template.
 	Template *bool        `pulumi:"template"`
@@ -128,13 +135,15 @@ type vm2Args struct {
 type Vm2Args struct {
 	// The cloning configuration.
 	Clone Vm2ClonePtrInput
+	// The CPU configuration.
+	Cpu Vm2CpuPtrInput
 	// The description of the VM.
 	Description pulumi.StringPtrInput
 	// The name of the VM. Doesn't have to be unique.
 	Name pulumi.StringPtrInput
 	// The name of the node where the VM is provisioned.
 	NodeName pulumi.StringInput
-	// The tags assigned to the resource.
+	// The tags assigned to the VM.
 	Tags pulumi.StringArrayInput
 	// Set to true to create a VM template.
 	Template pulumi.BoolPtrInput
@@ -233,6 +242,11 @@ func (o Vm2Output) Clone() Vm2ClonePtrOutput {
 	return o.ApplyT(func(v *Vm2) Vm2ClonePtrOutput { return v.Clone }).(Vm2ClonePtrOutput)
 }
 
+// The CPU configuration.
+func (o Vm2Output) Cpu() Vm2CpuOutput {
+	return o.ApplyT(func(v *Vm2) Vm2CpuOutput { return v.Cpu }).(Vm2CpuOutput)
+}
+
 // The description of the VM.
 func (o Vm2Output) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Vm2) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -248,7 +262,7 @@ func (o Vm2Output) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vm2) pulumi.StringOutput { return v.NodeName }).(pulumi.StringOutput)
 }
 
-// The tags assigned to the resource.
+// The tags assigned to the VM.
 func (o Vm2Output) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Vm2) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

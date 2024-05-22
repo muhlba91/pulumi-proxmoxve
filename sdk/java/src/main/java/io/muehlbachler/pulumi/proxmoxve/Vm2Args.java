@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import io.muehlbachler.pulumi.proxmoxve.inputs.Vm2CloneArgs;
+import io.muehlbachler.pulumi.proxmoxve.inputs.Vm2CpuArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.Vm2TimeoutsArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -33,6 +34,21 @@ public final class Vm2Args extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Vm2CloneArgs>> clone_() {
         return Optional.ofNullable(this.clone);
+    }
+
+    /**
+     * The CPU configuration.
+     * 
+     */
+    @Import(name="cpu")
+    private @Nullable Output<Vm2CpuArgs> cpu;
+
+    /**
+     * @return The CPU configuration.
+     * 
+     */
+    public Optional<Output<Vm2CpuArgs>> cpu() {
+        return Optional.ofNullable(this.cpu);
     }
 
     /**
@@ -81,14 +97,14 @@ public final class Vm2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The tags assigned to the resource.
+     * The tags assigned to the VM.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return The tags assigned to the resource.
+     * @return The tags assigned to the VM.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -121,6 +137,7 @@ public final class Vm2Args extends com.pulumi.resources.ResourceArgs {
 
     private Vm2Args(Vm2Args $) {
         this.clone = $.clone;
+        this.cpu = $.cpu;
         this.description = $.description;
         this.name = $.name;
         this.nodeName = $.nodeName;
@@ -166,6 +183,27 @@ public final class Vm2Args extends com.pulumi.resources.ResourceArgs {
          */
         public Builder clone_(Vm2CloneArgs clone) {
             return clone_(Output.of(clone));
+        }
+
+        /**
+         * @param cpu The CPU configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cpu(@Nullable Output<Vm2CpuArgs> cpu) {
+            $.cpu = cpu;
+            return this;
+        }
+
+        /**
+         * @param cpu The CPU configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cpu(Vm2CpuArgs cpu) {
+            return cpu(Output.of(cpu));
         }
 
         /**
@@ -232,7 +270,7 @@ public final class Vm2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The tags assigned to the resource.
+         * @param tags The tags assigned to the VM.
          * 
          * @return builder
          * 
@@ -243,7 +281,7 @@ public final class Vm2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The tags assigned to the resource.
+         * @param tags The tags assigned to the VM.
          * 
          * @return builder
          * 
@@ -253,7 +291,7 @@ public final class Vm2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The tags assigned to the resource.
+         * @param tags The tags assigned to the VM.
          * 
          * @return builder
          * 

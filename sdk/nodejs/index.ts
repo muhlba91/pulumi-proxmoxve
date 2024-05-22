@@ -25,6 +25,11 @@ export const getNode: typeof import("./getNode").getNode = null as any;
 export const getNodeOutput: typeof import("./getNode").getNodeOutput = null as any;
 utilities.lazyLoad(exports, ["getNode","getNodeOutput"], () => require("./getNode"));
 
+export { GetVm2Args, GetVm2Result, GetVm2OutputArgs } from "./getVm2";
+export const getVm2: typeof import("./getVm2").getVm2 = null as any;
+export const getVm2Output: typeof import("./getVm2").getVm2Output = null as any;
+utilities.lazyLoad(exports, ["getVm2","getVm2Output"], () => require("./getVm2"));
+
 export { HostsArgs, HostsState } from "./hosts";
 export type Hosts = import("./hosts").Hosts;
 export const Hosts: typeof import("./hosts").Hosts = null as any;

@@ -15,11 +15,10 @@ namespace Pulumi.ProxmoxVE
     /// 
     /// &gt; Many attributes are marked as **optional** _and_ **computed** in the schema,
     /// hence you may seem added to the plan with "(known after apply)" status, even if they are not set in the configuration.
-    /// This is done to support the `clone` operation, when a VM is created from an existing one,
-    /// and attributes of the original VM are copied to the new one.&lt;br&gt;&lt;br&gt;
+    /// This is done to support the `clone` operation, when a VM is created from an existing VM or template,
+    /// and the source attributes are copied to the clone.&lt;br&gt;&lt;br&gt;
     /// Computed attributes allow the provider to set those attributes without user input.
-    /// The attributes are marked as optional to allow the user to set (or overwrite) them if needed.
-    /// In order to remove the computed attribute from the plan, you can set it to an empty value (e.g. `""` for string, `[]` for collection).
+    /// The attributes are also marked as optional to allow the practitioner to set (or overwrite) them if needed.
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:index/vm2:Vm2")]
     public partial class Vm2 : global::Pulumi.CustomResource
@@ -29,6 +28,12 @@ namespace Pulumi.ProxmoxVE
         /// </summary>
         [Output("clone")]
         public Output<Outputs.Vm2Clone?> Clone { get; private set; } = null!;
+
+        /// <summary>
+        /// The CPU configuration.
+        /// </summary>
+        [Output("cpu")]
+        public Output<Outputs.Vm2Cpu> Cpu { get; private set; } = null!;
 
         /// <summary>
         /// The description of the VM.
@@ -49,7 +54,7 @@ namespace Pulumi.ProxmoxVE
         public Output<string> NodeName { get; private set; } = null!;
 
         /// <summary>
-        /// The tags assigned to the resource.
+        /// The tags assigned to the VM.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -117,6 +122,12 @@ namespace Pulumi.ProxmoxVE
         public Input<Inputs.Vm2CloneArgs>? Clone { get; set; }
 
         /// <summary>
+        /// The CPU configuration.
+        /// </summary>
+        [Input("cpu")]
+        public Input<Inputs.Vm2CpuArgs>? Cpu { get; set; }
+
+        /// <summary>
         /// The description of the VM.
         /// </summary>
         [Input("description")]
@@ -138,7 +149,7 @@ namespace Pulumi.ProxmoxVE
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The tags assigned to the resource.
+        /// The tags assigned to the VM.
         /// </summary>
         public InputList<string> Tags
         {
@@ -170,6 +181,12 @@ namespace Pulumi.ProxmoxVE
         public Input<Inputs.Vm2CloneGetArgs>? Clone { get; set; }
 
         /// <summary>
+        /// The CPU configuration.
+        /// </summary>
+        [Input("cpu")]
+        public Input<Inputs.Vm2CpuGetArgs>? Cpu { get; set; }
+
+        /// <summary>
         /// The description of the VM.
         /// </summary>
         [Input("description")]
@@ -191,7 +208,7 @@ namespace Pulumi.ProxmoxVE
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The tags assigned to the resource.
+        /// The tags assigned to the VM.
         /// </summary>
         public InputList<string> Tags
         {

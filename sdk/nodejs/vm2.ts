@@ -12,11 +12,10 @@ import * as utilities from "./utilities";
  *
  * > Many attributes are marked as **optional** _and_ **computed** in the schema,
  * hence you may seem added to the plan with "(known after apply)" status, even if they are not set in the configuration.
- * This is done to support the `clone` operation, when a VM is created from an existing one,
- * and attributes of the original VM are copied to the new one.<br><br>
+ * This is done to support the `clone` operation, when a VM is created from an existing VM or template,
+ * and the source attributes are copied to the clone.<br><br>
  * Computed attributes allow the provider to set those attributes without user input.
- * The attributes are marked as optional to allow the user to set (or overwrite) them if needed.
- * In order to remove the computed attribute from the plan, you can set it to an empty value (e.g. `""` for string, `[]` for collection).
+ * The attributes are also marked as optional to allow the practitioner to set (or overwrite) them if needed.
  */
 export class Vm2 extends pulumi.CustomResource {
     /**
@@ -51,6 +50,10 @@ export class Vm2 extends pulumi.CustomResource {
      */
     public readonly clone!: pulumi.Output<outputs.Vm2Clone | undefined>;
     /**
+     * The CPU configuration.
+     */
+    public readonly cpu!: pulumi.Output<outputs.Vm2Cpu>;
+    /**
      * The description of the VM.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -63,7 +66,7 @@ export class Vm2 extends pulumi.CustomResource {
      */
     public readonly nodeName!: pulumi.Output<string>;
     /**
-     * The tags assigned to the resource.
+     * The tags assigned to the VM.
      */
     public readonly tags!: pulumi.Output<string[]>;
     /**
@@ -86,6 +89,7 @@ export class Vm2 extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as Vm2State | undefined;
             resourceInputs["clone"] = state ? state.clone : undefined;
+            resourceInputs["cpu"] = state ? state.cpu : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nodeName"] = state ? state.nodeName : undefined;
@@ -98,6 +102,7 @@ export class Vm2 extends pulumi.CustomResource {
                 throw new Error("Missing required property 'nodeName'");
             }
             resourceInputs["clone"] = args ? args.clone : undefined;
+            resourceInputs["cpu"] = args ? args.cpu : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nodeName"] = args ? args.nodeName : undefined;
@@ -119,6 +124,10 @@ export interface Vm2State {
      */
     clone?: pulumi.Input<inputs.Vm2Clone>;
     /**
+     * The CPU configuration.
+     */
+    cpu?: pulumi.Input<inputs.Vm2Cpu>;
+    /**
      * The description of the VM.
      */
     description?: pulumi.Input<string>;
@@ -131,7 +140,7 @@ export interface Vm2State {
      */
     nodeName?: pulumi.Input<string>;
     /**
-     * The tags assigned to the resource.
+     * The tags assigned to the VM.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -150,6 +159,10 @@ export interface Vm2Args {
      */
     clone?: pulumi.Input<inputs.Vm2Clone>;
     /**
+     * The CPU configuration.
+     */
+    cpu?: pulumi.Input<inputs.Vm2Cpu>;
+    /**
      * The description of the VM.
      */
     description?: pulumi.Input<string>;
@@ -162,7 +175,7 @@ export interface Vm2Args {
      */
     nodeName: pulumi.Input<string>;
     /**
-     * The tags assigned to the resource.
+     * The tags assigned to the VM.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
