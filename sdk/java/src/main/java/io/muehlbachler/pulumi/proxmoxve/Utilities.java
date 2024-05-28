@@ -74,7 +74,7 @@ public class Utilities {
     }
 
     static {
-        var resourceName = "com/pulumi/proxmoxve/version.txt";
+        var resourceName = "io/muehlbachler/pulumi/proxmoxve/version.txt";
         var versionFile = Utilities.class.getClassLoader().getResourceAsStream(resourceName);
         if (versionFile == null) {
             throw new IllegalStateException(

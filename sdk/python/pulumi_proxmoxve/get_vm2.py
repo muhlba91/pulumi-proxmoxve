@@ -23,7 +23,7 @@ class GetVm2Result:
     """
     A collection of values returned by getVm2.
     """
-    def __init__(__self__, clone=None, cpu=None, description=None, id=None, name=None, node_name=None, tags=None, template=None, timeouts=None):
+    def __init__(__self__, clone=None, cpu=None, description=None, id=None, name=None, node_name=None, tags=None, template=None, timeouts=None, vga=None):
         if clone and not isinstance(clone, dict):
             raise TypeError("Expected argument 'clone' to be a dict")
         pulumi.set(__self__, "clone", clone)
@@ -51,6 +51,9 @@ class GetVm2Result:
         if timeouts and not isinstance(timeouts, dict):
             raise TypeError("Expected argument 'timeouts' to be a dict")
         pulumi.set(__self__, "timeouts", timeouts)
+        if vga and not isinstance(vga, dict):
+            raise TypeError("Expected argument 'vga' to be a dict")
+        pulumi.set(__self__, "vga", vga)
 
     @property
     @pulumi.getter
@@ -121,6 +124,14 @@ class GetVm2Result:
     def timeouts(self) -> Optional['outputs.GetVm2TimeoutsResult']:
         return pulumi.get(self, "timeouts")
 
+    @property
+    @pulumi.getter
+    def vga(self) -> 'outputs.GetVm2VgaResult':
+        """
+        The VGA configuration.
+        """
+        return pulumi.get(self, "vga")
+
 
 class AwaitableGetVm2Result(GetVm2Result):
     # pylint: disable=using-constant-test
@@ -136,7 +147,8 @@ class AwaitableGetVm2Result(GetVm2Result):
             node_name=self.node_name,
             tags=self.tags,
             template=self.template,
-            timeouts=self.timeouts)
+            timeouts=self.timeouts,
+            vga=self.vga)
 
 
 def get_vm2(clone: Optional[pulumi.InputType['GetVm2CloneArgs']] = None,
@@ -148,6 +160,7 @@ def get_vm2(clone: Optional[pulumi.InputType['GetVm2CloneArgs']] = None,
             tags: Optional[Sequence[str]] = None,
             template: Optional[bool] = None,
             timeouts: Optional[pulumi.InputType['GetVm2TimeoutsArgs']] = None,
+            vga: Optional[pulumi.InputType['GetVm2VgaArgs']] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVm2Result:
     """
     !> **DO NOT USE**
@@ -162,6 +175,7 @@ def get_vm2(clone: Optional[pulumi.InputType['GetVm2CloneArgs']] = None,
     :param str node_name: The name of the node where the VM is provisioned.
     :param Sequence[str] tags: The tags assigned to the VM.
     :param bool template: Whether the VM is a template.
+    :param pulumi.InputType['GetVm2VgaArgs'] vga: The VGA configuration.
     """
     __args__ = dict()
     __args__['clone'] = clone
@@ -173,6 +187,7 @@ def get_vm2(clone: Optional[pulumi.InputType['GetVm2CloneArgs']] = None,
     __args__['tags'] = tags
     __args__['template'] = template
     __args__['timeouts'] = timeouts
+    __args__['vga'] = vga
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('proxmoxve:index/getVm2:getVm2', __args__, opts=opts, typ=GetVm2Result).value
 
@@ -185,7 +200,8 @@ def get_vm2(clone: Optional[pulumi.InputType['GetVm2CloneArgs']] = None,
         node_name=pulumi.get(__ret__, 'node_name'),
         tags=pulumi.get(__ret__, 'tags'),
         template=pulumi.get(__ret__, 'template'),
-        timeouts=pulumi.get(__ret__, 'timeouts'))
+        timeouts=pulumi.get(__ret__, 'timeouts'),
+        vga=pulumi.get(__ret__, 'vga'))
 
 
 @_utilities.lift_output_func(get_vm2)
@@ -198,6 +214,7 @@ def get_vm2_output(clone: Optional[pulumi.Input[Optional[pulumi.InputType['GetVm
                    tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                    template: Optional[pulumi.Input[Optional[bool]]] = None,
                    timeouts: Optional[pulumi.Input[Optional[pulumi.InputType['GetVm2TimeoutsArgs']]]] = None,
+                   vga: Optional[pulumi.Input[Optional[pulumi.InputType['GetVm2VgaArgs']]]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVm2Result]:
     """
     !> **DO NOT USE**
@@ -212,5 +229,6 @@ def get_vm2_output(clone: Optional[pulumi.Input[Optional[pulumi.InputType['GetVm
     :param str node_name: The name of the node where the VM is provisioned.
     :param Sequence[str] tags: The tags assigned to the VM.
     :param bool template: Whether the VM is a template.
+    :param pulumi.InputType['GetVm2VgaArgs'] vga: The VGA configuration.
     """
     ...

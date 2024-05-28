@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,18 +44,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new HAResource(&#34;example&#34;, HAResourceArgs.builder()        
- *             .resourceId(&#34;vm:123&#34;)
- *             .state(&#34;started&#34;)
- *             .group(&#34;example&#34;)
- *             .comment(&#34;Managed by Terraform&#34;)
+ *         var example = new HAResource("example", HAResourceArgs.builder()
+ *             .resourceId("vm:123")
+ *             .state("started")
+ *             .group("example")
+ *             .comment("Managed by Terraform")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(proxmox_virtual_environment_hagroup.example())
  *                 .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

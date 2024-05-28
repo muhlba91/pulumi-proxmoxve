@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,14 +44,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var operationsPool = new Pool(&#34;operationsPool&#34;, PoolArgs.builder()        
- *             .comment(&#34;Managed by Terraform&#34;)
- *             .poolId(&#34;operations-pool&#34;)
+ *         var operationsPool = new Pool("operationsPool", PoolArgs.builder()
+ *             .comment("Managed by Terraform")
+ *             .poolId("operations-pool")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -23,7 +23,8 @@ public final class Hardware_mappingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -45,13 +46,14 @@ public final class Hardware_mappingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = Hardware/mappingFunctions.getPci(GetPciArgs.builder()
-     *             .name(&#34;example&#34;)
+     *             .name("example")
      *             .build());
      * 
-     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentHardwareMappingPci&#34;, example.applyValue(getPciResult -&gt; getPciResult));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingPci", example.applyValue(getPciResult -> getPciResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -64,7 +66,8 @@ public final class Hardware_mappingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -86,13 +89,14 @@ public final class Hardware_mappingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = Hardware/mappingFunctions.getPci(GetPciArgs.builder()
-     *             .name(&#34;example&#34;)
+     *             .name("example")
      *             .build());
      * 
-     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentHardwareMappingPci&#34;, example.applyValue(getPciResult -&gt; getPciResult));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingPci", example.applyValue(getPciResult -> getPciResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -105,7 +109,8 @@ public final class Hardware_mappingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -127,13 +132,14 @@ public final class Hardware_mappingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = Hardware/mappingFunctions.getPci(GetPciArgs.builder()
-     *             .name(&#34;example&#34;)
+     *             .name("example")
      *             .build());
      * 
-     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentHardwareMappingPci&#34;, example.applyValue(getPciResult -&gt; getPciResult));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingPci", example.applyValue(getPciResult -> getPciResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -146,7 +152,8 @@ public final class Hardware_mappingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -168,13 +175,14 @@ public final class Hardware_mappingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = Hardware/mappingFunctions.getPci(GetPciArgs.builder()
-     *             .name(&#34;example&#34;)
+     *             .name("example")
      *             .build());
      * 
-     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentHardwareMappingPci&#34;, example.applyValue(getPciResult -&gt; getPciResult));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingPci", example.applyValue(getPciResult -> getPciResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -187,7 +195,8 @@ public final class Hardware_mappingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -209,13 +218,14 @@ public final class Hardware_mappingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = Hardware/mappingFunctions.getUsb(GetUsbArgs.builder()
-     *             .name(&#34;example&#34;)
+     *             .name("example")
      *             .build());
      * 
-     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentHardwareMappingUsb&#34;, example.applyValue(getUsbResult -&gt; getUsbResult));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingUsb", example.applyValue(getUsbResult -> getUsbResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -228,7 +238,8 @@ public final class Hardware_mappingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -250,13 +261,14 @@ public final class Hardware_mappingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = Hardware/mappingFunctions.getUsb(GetUsbArgs.builder()
-     *             .name(&#34;example&#34;)
+     *             .name("example")
      *             .build());
      * 
-     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentHardwareMappingUsb&#34;, example.applyValue(getUsbResult -&gt; getUsbResult));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingUsb", example.applyValue(getUsbResult -> getUsbResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -269,7 +281,8 @@ public final class Hardware_mappingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -291,13 +304,14 @@ public final class Hardware_mappingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = Hardware/mappingFunctions.getUsb(GetUsbArgs.builder()
-     *             .name(&#34;example&#34;)
+     *             .name("example")
      *             .build());
      * 
-     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentHardwareMappingUsb&#34;, example.applyValue(getUsbResult -&gt; getUsbResult));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingUsb", example.applyValue(getUsbResult -> getUsbResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -310,7 +324,8 @@ public final class Hardware_mappingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -332,13 +347,14 @@ public final class Hardware_mappingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = Hardware/mappingFunctions.getUsb(GetUsbArgs.builder()
-     *             .name(&#34;example&#34;)
+     *             .name("example")
      *             .build());
      * 
-     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentHardwareMappingUsb&#34;, example.applyValue(getUsbResult -&gt; getUsbResult));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingUsb", example.applyValue(getUsbResult -> getUsbResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

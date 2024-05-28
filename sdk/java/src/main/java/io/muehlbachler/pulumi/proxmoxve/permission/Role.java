@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,14 +42,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var operationsMonitoring = new Role(&#34;operationsMonitoring&#34;, RoleArgs.builder()        
- *             .privileges(&#34;VM.Monitor&#34;)
- *             .roleId(&#34;operations-monitoring&#34;)
+ *         var operationsMonitoring = new Role("operationsMonitoring", RoleArgs.builder()
+ *             .privileges("VM.Monitor")
+ *             .roleId("operations-monitoring")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

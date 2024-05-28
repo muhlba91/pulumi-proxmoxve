@@ -42,6 +42,8 @@ type LookupVm2Args struct {
 	// Whether the VM is a template.
 	Template *bool           `pulumi:"template"`
 	Timeouts *GetVm2Timeouts `pulumi:"timeouts"`
+	// The VGA configuration.
+	Vga *GetVm2Vga `pulumi:"vga"`
 }
 
 // A collection of values returned by getVm2.
@@ -63,6 +65,8 @@ type LookupVm2Result struct {
 	// Whether the VM is a template.
 	Template *bool           `pulumi:"template"`
 	Timeouts *GetVm2Timeouts `pulumi:"timeouts"`
+	// The VGA configuration.
+	Vga GetVm2Vga `pulumi:"vga"`
 }
 
 func LookupVm2Output(ctx *pulumi.Context, args LookupVm2OutputArgs, opts ...pulumi.InvokeOption) LookupVm2ResultOutput {
@@ -97,6 +101,8 @@ type LookupVm2OutputArgs struct {
 	// Whether the VM is a template.
 	Template pulumi.BoolPtrInput    `pulumi:"template"`
 	Timeouts GetVm2TimeoutsPtrInput `pulumi:"timeouts"`
+	// The VGA configuration.
+	Vga GetVm2VgaPtrInput `pulumi:"vga"`
 }
 
 func (LookupVm2OutputArgs) ElementType() reflect.Type {
@@ -160,6 +166,11 @@ func (o LookupVm2ResultOutput) Template() pulumi.BoolPtrOutput {
 
 func (o LookupVm2ResultOutput) Timeouts() GetVm2TimeoutsPtrOutput {
 	return o.ApplyT(func(v LookupVm2Result) *GetVm2Timeouts { return v.Timeouts }).(GetVm2TimeoutsPtrOutput)
+}
+
+// The VGA configuration.
+func (o LookupVm2ResultOutput) Vga() GetVm2VgaOutput {
+	return o.ApplyT(func(v LookupVm2Result) GetVm2Vga { return v.Vga }).(GetVm2VgaOutput)
 }
 
 func init() {

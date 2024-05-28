@@ -13,8 +13,13 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
     public sealed class VirtualMachineVgaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to enable the VGA device (defaults
-        /// to `true`).
+        /// Enable VNC clipboard by setting to `vnc`. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
+        /// </summary>
+        [Input("clipboard")]
+        public Input<string>? Clipboard { get; set; }
+
+        /// <summary>
+        /// Whether to enable the VGA device
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

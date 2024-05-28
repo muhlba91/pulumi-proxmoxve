@@ -17,14 +17,14 @@ public final class ContainerInitializationDnsArgs extends com.pulumi.resources.R
     public static final ContainerInitializationDnsArgs Empty = new ContainerInitializationDnsArgs();
 
     /**
-     * The DNS search domain
+     * The DNS search domain.
      * 
      */
     @Import(name="domain")
     private @Nullable Output<String> domain;
 
     /**
-     * @return The DNS search domain
+     * @return The DNS search domain.
      * 
      */
     public Optional<Output<String>> domain() {
@@ -32,7 +32,9 @@ public final class ContainerInitializationDnsArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The DNS server
+     * The DNS server. The `server` attribute is
+     * deprecated and will be removed in a future release. Please use
+     * the `servers` attribute instead.
      * 
      * @deprecated
      * The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
@@ -43,7 +45,9 @@ public final class ContainerInitializationDnsArgs extends com.pulumi.resources.R
     private @Nullable Output<String> server;
 
     /**
-     * @return The DNS server
+     * @return The DNS server. The `server` attribute is
+     * deprecated and will be removed in a future release. Please use
+     * the `servers` attribute instead.
      * 
      * @deprecated
      * The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
@@ -55,14 +59,14 @@ public final class ContainerInitializationDnsArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The list of DNS servers
+     * The list of DNS servers.
      * 
      */
     @Import(name="servers")
     private @Nullable Output<List<String>> servers;
 
     /**
-     * @return The list of DNS servers
+     * @return The list of DNS servers.
      * 
      */
     public Optional<Output<List<String>>> servers() {
@@ -96,7 +100,7 @@ public final class ContainerInitializationDnsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param domain The DNS search domain
+         * @param domain The DNS search domain.
          * 
          * @return builder
          * 
@@ -107,7 +111,7 @@ public final class ContainerInitializationDnsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param domain The DNS search domain
+         * @param domain The DNS search domain.
          * 
          * @return builder
          * 
@@ -117,7 +121,9 @@ public final class ContainerInitializationDnsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param server The DNS server
+         * @param server The DNS server. The `server` attribute is
+         * deprecated and will be removed in a future release. Please use
+         * the `servers` attribute instead.
          * 
          * @return builder
          * 
@@ -132,7 +138,9 @@ public final class ContainerInitializationDnsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param server The DNS server
+         * @param server The DNS server. The `server` attribute is
+         * deprecated and will be removed in a future release. Please use
+         * the `servers` attribute instead.
          * 
          * @return builder
          * 
@@ -146,7 +154,7 @@ public final class ContainerInitializationDnsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param servers The list of DNS servers
+         * @param servers The list of DNS servers.
          * 
          * @return builder
          * 
@@ -157,7 +165,7 @@ public final class ContainerInitializationDnsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param servers The list of DNS servers
+         * @param servers The list of DNS servers.
          * 
          * @return builder
          * 
@@ -167,7 +175,7 @@ public final class ContainerInitializationDnsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param servers The list of DNS servers
+         * @param servers The list of DNS servers.
          * 
          * @return builder
          * 

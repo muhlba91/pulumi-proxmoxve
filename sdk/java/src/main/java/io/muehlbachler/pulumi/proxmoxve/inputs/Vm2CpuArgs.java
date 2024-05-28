@@ -19,14 +19,14 @@ public final class Vm2CpuArgs extends com.pulumi.resources.ResourceArgs {
     public static final Vm2CpuArgs Empty = new Vm2CpuArgs();
 
     /**
-     * The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+     * The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root{@literal @}pam` authenticated user.
      * 
      */
     @Import(name="affinity")
     private @Nullable Output<String> affinity;
 
     /**
-     * @return The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+     * @return The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root{@literal @}pam` authenticated user.
      * 
      */
     public Optional<Output<String>> affinity() {
@@ -34,14 +34,14 @@ public final class Vm2CpuArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The CPU architecture `&lt;aarch64 | x86_64&gt;` (defaults to the host). Setting `affinity` is only allowed for `root@pam` authenticated user.
+     * The CPU architecture `&lt;aarch64 | x86_64&gt;` (defaults to the host). Setting `affinity` is only allowed for `root{@literal @}pam` authenticated user.
      * 
      */
     @Import(name="architecture")
     private @Nullable Output<String> architecture;
 
     /**
-     * @return The CPU architecture `&lt;aarch64 | x86_64&gt;` (defaults to the host). Setting `affinity` is only allowed for `root@pam` authenticated user.
+     * @return The CPU architecture `&lt;aarch64 | x86_64&gt;` (defaults to the host). Setting `affinity` is only allowed for `root{@literal @}pam` authenticated user.
      * 
      */
     public Optional<Output<String>> architecture() {
@@ -202,7 +202,7 @@ public final class Vm2CpuArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param affinity The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+         * @param affinity The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root{@literal @}pam` authenticated user.
          * 
          * @return builder
          * 
@@ -213,7 +213,7 @@ public final class Vm2CpuArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param affinity The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+         * @param affinity The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root{@literal @}pam` authenticated user.
          * 
          * @return builder
          * 
@@ -223,7 +223,7 @@ public final class Vm2CpuArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param architecture The CPU architecture `&lt;aarch64 | x86_64&gt;` (defaults to the host). Setting `affinity` is only allowed for `root@pam` authenticated user.
+         * @param architecture The CPU architecture `&lt;aarch64 | x86_64&gt;` (defaults to the host). Setting `affinity` is only allowed for `root{@literal @}pam` authenticated user.
          * 
          * @return builder
          * 
@@ -234,7 +234,7 @@ public final class Vm2CpuArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param architecture The CPU architecture `&lt;aarch64 | x86_64&gt;` (defaults to the host). Setting `affinity` is only allowed for `root@pam` authenticated user.
+         * @param architecture The CPU architecture `&lt;aarch64 | x86_64&gt;` (defaults to the host). Setting `affinity` is only allowed for `root{@literal @}pam` authenticated user.
          * 
          * @return builder
          * 

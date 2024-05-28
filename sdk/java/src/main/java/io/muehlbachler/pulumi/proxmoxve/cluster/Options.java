@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,32 +48,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var options = new Options(&#34;options&#34;, OptionsArgs.builder()        
+ *         var options = new Options("options", OptionsArgs.builder()
  *             .bandwidthLimitDefault(666666)
  *             .bandwidthLimitMigration(555555)
- *             .emailFrom(&#34;ged@gont.earthsea&#34;)
- *             .keyboard(&#34;pl&#34;)
- *             .language(&#34;en&#34;)
+ *             .emailFrom("ged{@literal @}gont.earthsea")
+ *             .keyboard("pl")
+ *             .language("en")
  *             .maxWorkers(5)
- *             .migrationCidr(&#34;10.0.0.0/8&#34;)
- *             .migrationType(&#34;secure&#34;)
+ *             .migrationCidr("10.0.0.0/8")
+ *             .migrationType("secure")
  *             .nextId(OptionsNextIdArgs.builder()
  *                 .lower(100)
  *                 .upper(999999999)
  *                 .build())
  *             .notify(OptionsNotifyArgs.builder()
- *                 .ha_fencing_mode(&#34;never&#34;)
- *                 .ha_fencing_target(&#34;default-matcher&#34;)
- *                 .package_replication(&#34;always&#34;)
- *                 .package_replication_target(&#34;default-matcher&#34;)
- *                 .package_updates(&#34;always&#34;)
- *                 .package_updates_target(&#34;default-matcher&#34;)
+ *                 .ha_fencing_mode("never")
+ *                 .ha_fencing_target("default-matcher")
+ *                 .package_replication("always")
+ *                 .package_replication_target("default-matcher")
+ *                 .package_updates("always")
+ *                 .package_updates_target("default-matcher")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -215,14 +217,14 @@ public class Options extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * email address to send notification from (default is root@$hostname).
+     * email address to send notification from (default is root{@literal @}$hostname).
      * 
      */
     @Export(name="emailFrom", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> emailFrom;
 
     /**
-     * @return email address to send notification from (default is root@$hostname).
+     * @return email address to send notification from (default is root{@literal @}$hostname).
      * 
      */
     public Output<Optional<String>> emailFrom() {
@@ -243,14 +245,14 @@ public class Options extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.haShutdownPolicy);
     }
     /**
-     * Specify external http proxy which is used for downloads (example: `http://username:password@host:port/`).
+     * Specify external http proxy which is used for downloads (example: `http://username:password{@literal @}host:port/`).
      * 
      */
     @Export(name="httpProxy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> httpProxy;
 
     /**
-     * @return Specify external http proxy which is used for downloads (example: `http://username:password@host:port/`).
+     * @return Specify external http proxy which is used for downloads (example: `http://username:password{@literal @}host:port/`).
      * 
      */
     public Output<Optional<String>> httpProxy() {

@@ -23,6 +23,7 @@ export function getVm2(args: GetVm2Args, opts?: pulumi.InvokeOptions): Promise<G
         "tags": args.tags,
         "template": args.template,
         "timeouts": args.timeouts,
+        "vga": args.vga,
     }, opts);
 }
 
@@ -63,6 +64,10 @@ export interface GetVm2Args {
      */
     template?: boolean;
     timeouts?: inputs.GetVm2Timeouts;
+    /**
+     * The VGA configuration.
+     */
+    vga?: inputs.GetVm2Vga;
 }
 
 /**
@@ -102,6 +107,10 @@ export interface GetVm2Result {
      */
     readonly template?: boolean;
     readonly timeouts?: outputs.GetVm2Timeouts;
+    /**
+     * The VGA configuration.
+     */
+    readonly vga: outputs.GetVm2Vga;
 }
 /**
  * !> **DO NOT USE**
@@ -148,4 +157,8 @@ export interface GetVm2OutputArgs {
      */
     template?: pulumi.Input<boolean>;
     timeouts?: pulumi.Input<inputs.GetVm2TimeoutsArgs>;
+    /**
+     * The VGA configuration.
+     */
+    vga?: pulumi.Input<inputs.GetVm2VgaArgs>;
 }

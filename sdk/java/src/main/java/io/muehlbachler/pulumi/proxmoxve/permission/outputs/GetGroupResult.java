@@ -29,7 +29,7 @@ public final class GetGroupResult {
      */
     private String id;
     /**
-     * @return The group members as a list with `username@realm` entries.
+     * @return The group members as a list with `username{@literal @}realm` entries.
      * 
      */
     private List<String> members;
@@ -60,7 +60,7 @@ public final class GetGroupResult {
         return this.id;
     }
     /**
-     * @return The group members as a list with `username@realm` entries.
+     * @return The group members as a list with `username{@literal @}realm` entries.
      * 
      */
     public List<String> members() {

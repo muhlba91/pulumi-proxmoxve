@@ -20,7 +20,8 @@ public final class HardwareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -42,20 +43,21 @@ public final class HardwareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example-pci = HardwareFunctions.getMappings(GetMappingsArgs.builder()
-     *             .checkNode(&#34;pve&#34;)
-     *             .type(&#34;pci&#34;)
+     *             .checkNode("pve")
+     *             .type("pci")
      *             .build());
      * 
      *         final var example-usb = HardwareFunctions.getMappings(GetMappingsArgs.builder()
-     *             .checkNode(&#34;pve&#34;)
-     *             .type(&#34;usb&#34;)
+     *             .checkNode("pve")
+     *             .type("usb")
      *             .build());
      * 
-     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentHardwareMappingsPci&#34;, example_pci);
-     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentHardwareMappingsUsb&#34;, example_usb);
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingsPci", example_pci);
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingsUsb", example_usb);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -68,7 +70,8 @@ public final class HardwareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -90,20 +93,21 @@ public final class HardwareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example-pci = HardwareFunctions.getMappings(GetMappingsArgs.builder()
-     *             .checkNode(&#34;pve&#34;)
-     *             .type(&#34;pci&#34;)
+     *             .checkNode("pve")
+     *             .type("pci")
      *             .build());
      * 
      *         final var example-usb = HardwareFunctions.getMappings(GetMappingsArgs.builder()
-     *             .checkNode(&#34;pve&#34;)
-     *             .type(&#34;usb&#34;)
+     *             .checkNode("pve")
+     *             .type("usb")
      *             .build());
      * 
-     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentHardwareMappingsPci&#34;, example_pci);
-     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentHardwareMappingsUsb&#34;, example_usb);
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingsPci", example_pci);
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingsUsb", example_usb);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -116,7 +120,8 @@ public final class HardwareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -138,20 +143,21 @@ public final class HardwareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example-pci = HardwareFunctions.getMappings(GetMappingsArgs.builder()
-     *             .checkNode(&#34;pve&#34;)
-     *             .type(&#34;pci&#34;)
+     *             .checkNode("pve")
+     *             .type("pci")
      *             .build());
      * 
      *         final var example-usb = HardwareFunctions.getMappings(GetMappingsArgs.builder()
-     *             .checkNode(&#34;pve&#34;)
-     *             .type(&#34;usb&#34;)
+     *             .checkNode("pve")
+     *             .type("usb")
      *             .build());
      * 
-     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentHardwareMappingsPci&#34;, example_pci);
-     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentHardwareMappingsUsb&#34;, example_usb);
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingsPci", example_pci);
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingsUsb", example_usb);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -164,7 +170,8 @@ public final class HardwareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -186,20 +193,21 @@ public final class HardwareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example-pci = HardwareFunctions.getMappings(GetMappingsArgs.builder()
-     *             .checkNode(&#34;pve&#34;)
-     *             .type(&#34;pci&#34;)
+     *             .checkNode("pve")
+     *             .type("pci")
      *             .build());
      * 
      *         final var example-usb = HardwareFunctions.getMappings(GetMappingsArgs.builder()
-     *             .checkNode(&#34;pve&#34;)
-     *             .type(&#34;usb&#34;)
+     *             .checkNode("pve")
+     *             .type("usb")
      *             .build());
      * 
-     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentHardwareMappingsPci&#34;, example_pci);
-     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentHardwareMappingsUsb&#34;, example_usb);
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingsPci", example_pci);
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingsUsb", example_usb);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

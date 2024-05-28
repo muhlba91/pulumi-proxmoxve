@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,18 +46,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vmbr99 = new NetworkBridge(&#34;vmbr99&#34;, NetworkBridgeArgs.builder()        
- *             .nodeName(&#34;pve&#34;)
- *             .address(&#34;99.99.99.99/16&#34;)
- *             .comment(&#34;vmbr99 comment&#34;)
- *             .ports(&#34;ens18.99&#34;)
+ *         var vmbr99 = new NetworkBridge("vmbr99", NetworkBridgeArgs.builder()
+ *             .nodeName("pve")
+ *             .address("99.99.99.99/16")
+ *             .comment("vmbr99 comment")
+ *             .ports("ens18.99")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(proxmox_virtual_environment_network_linux_vlan.vlan99())
  *                 .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

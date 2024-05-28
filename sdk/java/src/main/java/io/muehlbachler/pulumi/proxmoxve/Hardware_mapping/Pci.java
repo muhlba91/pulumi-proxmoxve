@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,22 +46,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Pci(&#34;example&#34;, PciArgs.builder()        
- *             .comment(&#34;This is a comment&#34;)
+ *         var example = new Pci("example", PciArgs.builder()
+ *             .comment("This is a comment")
  *             .maps(PciMapArgs.builder()
- *                 .comment(&#34;This is a device specific comment&#34;)
- *                 .id(&#34;8086:5916&#34;)
+ *                 .comment("This is a device specific comment")
+ *                 .id("8086:5916")
  *                 .iommu_group(0)
- *                 .node(&#34;pve&#34;)
- *                 .path(&#34;0000:00:02.0&#34;)
- *                 .subsystem_id(&#34;8086:2068&#34;)
+ *                 .node("pve")
+ *                 .path("0000:00:02.0")
+ *                 .subsystem_id("8086:2068")
  *                 .build())
  *             .mediatedDevices(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

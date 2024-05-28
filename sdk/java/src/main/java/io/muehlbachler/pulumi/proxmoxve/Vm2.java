@@ -13,6 +13,7 @@ import io.muehlbachler.pulumi.proxmoxve.inputs.Vm2State;
 import io.muehlbachler.pulumi.proxmoxve.outputs.Vm2Clone;
 import io.muehlbachler.pulumi.proxmoxve.outputs.Vm2Cpu;
 import io.muehlbachler.pulumi.proxmoxve.outputs.Vm2Timeouts;
+import io.muehlbachler.pulumi.proxmoxve.outputs.Vm2Vga;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -136,6 +137,20 @@ public class Vm2 extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<Vm2Timeouts>> timeouts() {
         return Codegen.optional(this.timeouts);
+    }
+    /**
+     * Configure the VGA Hardware. If you want to use high resolution modes (&gt;= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
+     * 
+     */
+    @Export(name="vga", refs={Vm2Vga.class}, tree="[0]")
+    private Output<Vm2Vga> vga;
+
+    /**
+     * @return Configure the VGA Hardware. If you want to use high resolution modes (&gt;= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
+     * 
+     */
+    public Output<Vm2Vga> vga() {
+        return this.vga;
     }
 
     /**

@@ -14,6 +14,9 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
     {
         /// <summary>
         /// The device (defaults to `intel-hda`).
+        /// - `AC97` - Intel 82801AA AC97 Audio.
+        /// - `ich9-intel-hda` - Intel HD Audio Controller (ich9).
+        /// - `intel-hda` - Intel HD Audio.
         /// </summary>
         [Input("device")]
         public Input<string>? Device { get; set; }

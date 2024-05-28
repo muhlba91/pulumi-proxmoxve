@@ -13,13 +13,13 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
     public sealed class ContainerInitializationIpConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The IPv4 configuration
+        /// The IPv4 configuration.
         /// </summary>
         [Input("ipv4")]
         public Input<Inputs.ContainerInitializationIpConfigIpv4GetArgs>? Ipv4 { get; set; }
 
         /// <summary>
-        /// The IPv6 configuration
+        /// The IPv4 configuration.
         /// </summary>
         [Input("ipv6")]
         public Input<Inputs.ContainerInitializationIpConfigIpv6GetArgs>? Ipv6 { get; set; }

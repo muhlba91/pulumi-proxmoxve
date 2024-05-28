@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ContainerInitializationIpConfig {
     /**
-     * @return The IPv4 configuration
+     * @return The IPv4 configuration.
      * 
      */
     private @Nullable ContainerInitializationIpConfigIpv4 ipv4;
     /**
-     * @return The IPv6 configuration
+     * @return The IPv4 configuration.
      * 
      */
     private @Nullable ContainerInitializationIpConfigIpv6 ipv6;
 
     private ContainerInitializationIpConfig() {}
     /**
-     * @return The IPv4 configuration
+     * @return The IPv4 configuration.
      * 
      */
     public Optional<ContainerInitializationIpConfigIpv4> ipv4() {
         return Optional.ofNullable(this.ipv4);
     }
     /**
-     * @return The IPv6 configuration
+     * @return The IPv4 configuration.
      * 
      */
     public Optional<ContainerInitializationIpConfigIpv6> ipv6() {

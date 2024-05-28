@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetVm2Clone;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetVm2Cpu;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetVm2Timeouts;
+import io.muehlbachler.pulumi.proxmoxve.outputs.GetVm2Vga;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -59,6 +60,11 @@ public final class GetVm2Result {
      */
     private @Nullable Boolean template;
     private @Nullable GetVm2Timeouts timeouts;
+    /**
+     * @return The VGA configuration.
+     * 
+     */
+    private GetVm2Vga vga;
 
     private GetVm2Result() {}
     /**
@@ -120,6 +126,13 @@ public final class GetVm2Result {
     public Optional<GetVm2Timeouts> timeouts() {
         return Optional.ofNullable(this.timeouts);
     }
+    /**
+     * @return The VGA configuration.
+     * 
+     */
+    public GetVm2Vga vga() {
+        return this.vga;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -139,6 +152,7 @@ public final class GetVm2Result {
         private List<String> tags;
         private @Nullable Boolean template;
         private @Nullable GetVm2Timeouts timeouts;
+        private GetVm2Vga vga;
         public Builder() {}
         public Builder(GetVm2Result defaults) {
     	      Objects.requireNonNull(defaults);
@@ -151,6 +165,7 @@ public final class GetVm2Result {
     	      this.tags = defaults.tags;
     	      this.template = defaults.template;
     	      this.timeouts = defaults.timeouts;
+    	      this.vga = defaults.vga;
         }
 
         @CustomType.Setter("clone")
@@ -218,6 +233,14 @@ public final class GetVm2Result {
             this.timeouts = timeouts;
             return this;
         }
+        @CustomType.Setter
+        public Builder vga(GetVm2Vga vga) {
+            if (vga == null) {
+              throw new MissingRequiredPropertyException("GetVm2Result", "vga");
+            }
+            this.vga = vga;
+            return this;
+        }
         public GetVm2Result build() {
             final var _resultValue = new GetVm2Result();
             _resultValue.clone = clone;
@@ -229,6 +252,7 @@ public final class GetVm2Result {
             _resultValue.tags = tags;
             _resultValue.template = template;
             _resultValue.timeouts = timeouts;
+            _resultValue.vga = vga;
             return _resultValue;
         }
     }

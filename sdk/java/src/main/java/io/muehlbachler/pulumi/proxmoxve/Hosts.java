@@ -21,35 +21,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.proxmoxve.Hosts;
- * import com.pulumi.proxmoxve.HostsArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var firstNodeHostEntries = new Hosts(&#34;firstNodeHostEntries&#34;, HostsArgs.builder()        
- *             .entries(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *             .nodeName(&#34;first-node&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Important Notes

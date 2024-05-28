@@ -22,7 +22,7 @@ public final class VirtualMachineCpuArgs extends com.pulumi.resources.ResourceAr
      * The CPU cores that are used to run the VM’s vCPU. The
      * value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.
      * For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four
-     * CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+     * CPU cores. Setting `affinity` is only allowed for `root{@literal @}pam` authenticated user.
      * 
      */
     @Import(name="affinity")
@@ -32,7 +32,7 @@ public final class VirtualMachineCpuArgs extends com.pulumi.resources.ResourceAr
      * @return The CPU cores that are used to run the VM’s vCPU. The
      * value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.
      * For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four
-     * CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+     * CPU cores. Setting `affinity` is only allowed for `root{@literal @}pam` authenticated user.
      * 
      */
     public Optional<Output<String>> affinity() {
@@ -259,7 +259,7 @@ public final class VirtualMachineCpuArgs extends com.pulumi.resources.ResourceAr
          * @param affinity The CPU cores that are used to run the VM’s vCPU. The
          * value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.
          * For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four
-         * CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+         * CPU cores. Setting `affinity` is only allowed for `root{@literal @}pam` authenticated user.
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class VirtualMachineCpuArgs extends com.pulumi.resources.ResourceAr
          * @param affinity The CPU cores that are used to run the VM’s vCPU. The
          * value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.
          * For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four
-         * CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+         * CPU cores. Setting `affinity` is only allowed for `root{@literal @}pam` authenticated user.
          * 
          * @return builder
          * 

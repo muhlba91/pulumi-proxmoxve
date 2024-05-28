@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,23 +48,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ipset = new FirewallIPSet(&#34;ipset&#34;, FirewallIPSetArgs.builder()        
+ *         var ipset = new FirewallIPSet("ipset", FirewallIPSetArgs.builder()
  *             .nodeName(proxmox_virtual_environment_vm.example().node_name())
  *             .vmId(proxmox_virtual_environment_vm.example().vm_id())
- *             .comment(&#34;Managed by Terraform&#34;)
+ *             .comment("Managed by Terraform")
  *             .cidrs(            
  *                 FirewallIPSetCidrArgs.builder()
- *                     .name(&#34;192.168.0.0/23&#34;)
- *                     .comment(&#34;Local network 1&#34;)
+ *                     .name("192.168.0.0/23")
+ *                     .comment("Local network 1")
  *                     .build(),
  *                 FirewallIPSetCidrArgs.builder()
- *                     .name(&#34;192.168.0.1&#34;)
- *                     .comment(&#34;Server 1&#34;)
+ *                     .name("192.168.0.1")
+ *                     .comment("Server 1")
  *                     .nomatch(true)
  *                     .build(),
  *                 FirewallIPSetCidrArgs.builder()
- *                     .name(&#34;192.168.2.1&#34;)
- *                     .comment(&#34;Server 1&#34;)
+ *                     .name("192.168.2.1")
+ *                     .comment("Server 1")
  *                     .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(proxmox_virtual_environment_vm.example())
@@ -71,7 +72,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

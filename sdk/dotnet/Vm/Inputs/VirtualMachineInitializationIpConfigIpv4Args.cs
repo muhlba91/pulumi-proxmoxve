@@ -13,13 +13,16 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
     public sealed class VirtualMachineInitializationIpConfigIpv4Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The IPv4 address
+        /// The IPv4 address in CIDR notation
+        /// (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
+        /// autodiscovery.
         /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }
 
         /// <summary>
-        /// The IPv4 gateway
+        /// The IPv4 gateway (must be omitted
+        /// when `dhcp` is used as the address).
         /// </summary>
         [Input("gateway")]
         public Input<string>? Gateway { get; set; }

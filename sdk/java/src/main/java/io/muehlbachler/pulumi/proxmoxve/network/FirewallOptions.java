@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,18 +45,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new FirewallOptions(&#34;example&#34;, FirewallOptionsArgs.builder()        
+ *         var example = new FirewallOptions("example", FirewallOptionsArgs.builder()
  *             .nodeName(proxmox_virtual_environment_vm.example().node_name())
  *             .vmId(proxmox_virtual_environment_vm.example().vm_id())
  *             .dhcp(true)
  *             .enabled(false)
  *             .ipfilter(true)
- *             .logLevelIn(&#34;info&#34;)
- *             .logLevelOut(&#34;info&#34;)
+ *             .logLevelIn("info")
+ *             .logLevelOut("info")
  *             .macfilter(false)
  *             .ndp(true)
- *             .inputPolicy(&#34;ACCEPT&#34;)
- *             .outputPolicy(&#34;ACCEPT&#34;)
+ *             .inputPolicy("ACCEPT")
+ *             .outputPolicy("ACCEPT")
  *             .radv(true)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(proxmox_virtual_environment_vm.example())
@@ -63,7 +64,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

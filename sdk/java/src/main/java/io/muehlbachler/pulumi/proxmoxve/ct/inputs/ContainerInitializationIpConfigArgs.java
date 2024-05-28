@@ -17,14 +17,14 @@ public final class ContainerInitializationIpConfigArgs extends com.pulumi.resour
     public static final ContainerInitializationIpConfigArgs Empty = new ContainerInitializationIpConfigArgs();
 
     /**
-     * The IPv4 configuration
+     * The IPv4 configuration.
      * 
      */
     @Import(name="ipv4")
     private @Nullable Output<ContainerInitializationIpConfigIpv4Args> ipv4;
 
     /**
-     * @return The IPv4 configuration
+     * @return The IPv4 configuration.
      * 
      */
     public Optional<Output<ContainerInitializationIpConfigIpv4Args>> ipv4() {
@@ -32,14 +32,14 @@ public final class ContainerInitializationIpConfigArgs extends com.pulumi.resour
     }
 
     /**
-     * The IPv6 configuration
+     * The IPv4 configuration.
      * 
      */
     @Import(name="ipv6")
     private @Nullable Output<ContainerInitializationIpConfigIpv6Args> ipv6;
 
     /**
-     * @return The IPv6 configuration
+     * @return The IPv4 configuration.
      * 
      */
     public Optional<Output<ContainerInitializationIpConfigIpv6Args>> ipv6() {
@@ -72,7 +72,7 @@ public final class ContainerInitializationIpConfigArgs extends com.pulumi.resour
         }
 
         /**
-         * @param ipv4 The IPv4 configuration
+         * @param ipv4 The IPv4 configuration.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ContainerInitializationIpConfigArgs extends com.pulumi.resour
         }
 
         /**
-         * @param ipv4 The IPv4 configuration
+         * @param ipv4 The IPv4 configuration.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class ContainerInitializationIpConfigArgs extends com.pulumi.resour
         }
 
         /**
-         * @param ipv6 The IPv6 configuration
+         * @param ipv6 The IPv4 configuration.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ContainerInitializationIpConfigArgs extends com.pulumi.resour
         }
 
         /**
-         * @param ipv6 The IPv6 configuration
+         * @param ipv6 The IPv4 configuration.
          * 
          * @return builder
          * 

@@ -63,14 +63,14 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The group members as a list of `username@realm` entries
+     * The group members as a list of `username{@literal @}realm` entries
      * 
      */
     @Import(name="members")
     private @Nullable Output<List<String>> members;
 
     /**
-     * @return The group members as a list of `username@realm` entries
+     * @return The group members as a list of `username{@literal @}realm` entries
      * 
      */
     public Optional<Output<List<String>>> members() {
@@ -178,7 +178,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param members The group members as a list of `username@realm` entries
+         * @param members The group members as a list of `username{@literal @}realm` entries
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param members The group members as a list of `username@realm` entries
+         * @param members The group members as a list of `username{@literal @}realm` entries
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param members The group members as a list of `username@realm` entries
+         * @param members The group members as a list of `username{@literal @}realm` entries
          * 
          * @return builder
          * 

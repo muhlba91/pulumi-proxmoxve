@@ -14,11 +14,14 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     public sealed class VirtualMachineInitializationIpConfigIpv4
     {
         /// <summary>
-        /// The IPv4 address
+        /// The IPv4 address in CIDR notation
+        /// (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
+        /// autodiscovery.
         /// </summary>
         public readonly string? Address;
         /// <summary>
-        /// The IPv4 gateway
+        /// The IPv4 gateway (must be omitted
+        /// when `dhcp` is used as the address).
         /// </summary>
         public readonly string? Gateway;
 

@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -40,14 +41,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var firstNodeTime = new Time(&#34;firstNodeTime&#34;, TimeArgs.builder()        
- *             .nodeName(&#34;first-node&#34;)
- *             .timeZone(&#34;UTC&#34;)
+ *         var firstNodeTime = new Time("firstNodeTime", TimeArgs.builder()
+ *             .nodeName("first-node")
+ *             .timeZone("UTC")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

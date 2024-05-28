@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetVm2Clone;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetVm2Cpu;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetVm2Timeouts;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetVm2Vga;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -148,6 +149,21 @@ public final class GetVm2PlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.timeouts);
     }
 
+    /**
+     * The VGA configuration.
+     * 
+     */
+    @Import(name="vga")
+    private @Nullable GetVm2Vga vga;
+
+    /**
+     * @return The VGA configuration.
+     * 
+     */
+    public Optional<GetVm2Vga> vga() {
+        return Optional.ofNullable(this.vga);
+    }
+
     private GetVm2PlainArgs() {}
 
     private GetVm2PlainArgs(GetVm2PlainArgs $) {
@@ -160,6 +176,7 @@ public final class GetVm2PlainArgs extends com.pulumi.resources.InvokeArgs {
         this.tags = $.tags;
         this.template = $.template;
         this.timeouts = $.timeouts;
+        this.vga = $.vga;
     }
 
     public static Builder builder() {
@@ -280,6 +297,17 @@ public final class GetVm2PlainArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder timeouts(@Nullable GetVm2Timeouts timeouts) {
             $.timeouts = timeouts;
+            return this;
+        }
+
+        /**
+         * @param vga The VGA configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vga(@Nullable GetVm2Vga vga) {
+            $.vga = vga;
             return this;
         }
 

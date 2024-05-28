@@ -13,13 +13,15 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
     public sealed class ContainerInitializationDnsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The DNS search domain
+        /// The DNS search domain.
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// The DNS server
+        /// The DNS server. The `server` attribute is
+        /// deprecated and will be removed in a future release. Please use
+        /// the `servers` attribute instead.
         /// </summary>
         [Input("server")]
         public Input<string>? Server { get; set; }
@@ -28,7 +30,7 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
         private InputList<string>? _servers;
 
         /// <summary>
-        /// The list of DNS servers
+        /// The list of DNS servers.
         /// </summary>
         public InputList<string> Servers
         {

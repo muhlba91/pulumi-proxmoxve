@@ -16,14 +16,18 @@ public final class VirtualMachineInitializationIpConfigIpv6Args extends com.pulu
     public static final VirtualMachineInitializationIpConfigIpv6Args Empty = new VirtualMachineInitializationIpConfigIpv6Args();
 
     /**
-     * The IPv6 address
+     * The IPv6 address in CIDR notation
+     * (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
+     * to `dhcp` for autodiscovery.
      * 
      */
     @Import(name="address")
     private @Nullable Output<String> address;
 
     /**
-     * @return The IPv6 address
+     * @return The IPv6 address in CIDR notation
+     * (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
+     * to `dhcp` for autodiscovery.
      * 
      */
     public Optional<Output<String>> address() {
@@ -31,14 +35,16 @@ public final class VirtualMachineInitializationIpConfigIpv6Args extends com.pulu
     }
 
     /**
-     * The IPv6 gateway
+     * The IPv6 gateway (must be omitted
+     * when `dhcp` is used as the address).
      * 
      */
     @Import(name="gateway")
     private @Nullable Output<String> gateway;
 
     /**
-     * @return The IPv6 gateway
+     * @return The IPv6 gateway (must be omitted
+     * when `dhcp` is used as the address).
      * 
      */
     public Optional<Output<String>> gateway() {
@@ -71,7 +77,9 @@ public final class VirtualMachineInitializationIpConfigIpv6Args extends com.pulu
         }
 
         /**
-         * @param address The IPv6 address
+         * @param address The IPv6 address in CIDR notation
+         * (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
+         * to `dhcp` for autodiscovery.
          * 
          * @return builder
          * 
@@ -82,7 +90,9 @@ public final class VirtualMachineInitializationIpConfigIpv6Args extends com.pulu
         }
 
         /**
-         * @param address The IPv6 address
+         * @param address The IPv6 address in CIDR notation
+         * (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
+         * to `dhcp` for autodiscovery.
          * 
          * @return builder
          * 
@@ -92,7 +102,8 @@ public final class VirtualMachineInitializationIpConfigIpv6Args extends com.pulu
         }
 
         /**
-         * @param gateway The IPv6 gateway
+         * @param gateway The IPv6 gateway (must be omitted
+         * when `dhcp` is used as the address).
          * 
          * @return builder
          * 
@@ -103,7 +114,8 @@ public final class VirtualMachineInitializationIpConfigIpv6Args extends com.pulu
         }
 
         /**
-         * @param gateway The IPv6 gateway
+         * @param gateway The IPv6 gateway (must be omitted
+         * when `dhcp` is used as the address).
          * 
          * @return builder
          * 

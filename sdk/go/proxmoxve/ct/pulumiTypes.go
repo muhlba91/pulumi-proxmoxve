@@ -1115,13 +1115,15 @@ func (o ContainerInitializationPtrOutput) UserAccount() ContainerInitializationU
 }
 
 type ContainerInitializationDns struct {
-	// The DNS search domain
+	// The DNS search domain.
 	Domain *string `pulumi:"domain"`
-	// The DNS server
+	// The DNS server. The `server` attribute is
+	// deprecated and will be removed in a future release. Please use
+	// the `servers` attribute instead.
 	//
 	// Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
 	Server *string `pulumi:"server"`
-	// The list of DNS servers
+	// The list of DNS servers.
 	Servers []string `pulumi:"servers"`
 }
 
@@ -1137,13 +1139,15 @@ type ContainerInitializationDnsInput interface {
 }
 
 type ContainerInitializationDnsArgs struct {
-	// The DNS search domain
+	// The DNS search domain.
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
-	// The DNS server
+	// The DNS server. The `server` attribute is
+	// deprecated and will be removed in a future release. Please use
+	// the `servers` attribute instead.
 	//
 	// Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
 	Server pulumi.StringPtrInput `pulumi:"server"`
-	// The list of DNS servers
+	// The list of DNS servers.
 	Servers pulumi.StringArrayInput `pulumi:"servers"`
 }
 
@@ -1224,19 +1228,21 @@ func (o ContainerInitializationDnsOutput) ToContainerInitializationDnsPtrOutputW
 	}).(ContainerInitializationDnsPtrOutput)
 }
 
-// The DNS search domain
+// The DNS search domain.
 func (o ContainerInitializationDnsOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerInitializationDns) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
-// The DNS server
+// The DNS server. The `server` attribute is
+// deprecated and will be removed in a future release. Please use
+// the `servers` attribute instead.
 //
 // Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
 func (o ContainerInitializationDnsOutput) Server() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerInitializationDns) *string { return v.Server }).(pulumi.StringPtrOutput)
 }
 
-// The list of DNS servers
+// The list of DNS servers.
 func (o ContainerInitializationDnsOutput) Servers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ContainerInitializationDns) []string { return v.Servers }).(pulumi.StringArrayOutput)
 }
@@ -1265,7 +1271,7 @@ func (o ContainerInitializationDnsPtrOutput) Elem() ContainerInitializationDnsOu
 	}).(ContainerInitializationDnsOutput)
 }
 
-// The DNS search domain
+// The DNS search domain.
 func (o ContainerInitializationDnsPtrOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerInitializationDns) *string {
 		if v == nil {
@@ -1275,7 +1281,9 @@ func (o ContainerInitializationDnsPtrOutput) Domain() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The DNS server
+// The DNS server. The `server` attribute is
+// deprecated and will be removed in a future release. Please use
+// the `servers` attribute instead.
 //
 // Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
 func (o ContainerInitializationDnsPtrOutput) Server() pulumi.StringPtrOutput {
@@ -1287,7 +1295,7 @@ func (o ContainerInitializationDnsPtrOutput) Server() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The list of DNS servers
+// The list of DNS servers.
 func (o ContainerInitializationDnsPtrOutput) Servers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ContainerInitializationDns) []string {
 		if v == nil {
@@ -1298,9 +1306,9 @@ func (o ContainerInitializationDnsPtrOutput) Servers() pulumi.StringArrayOutput 
 }
 
 type ContainerInitializationIpConfig struct {
-	// The IPv4 configuration
+	// The IPv4 configuration.
 	Ipv4 *ContainerInitializationIpConfigIpv4 `pulumi:"ipv4"`
-	// The IPv6 configuration
+	// The IPv4 configuration.
 	Ipv6 *ContainerInitializationIpConfigIpv6 `pulumi:"ipv6"`
 }
 
@@ -1316,9 +1324,9 @@ type ContainerInitializationIpConfigInput interface {
 }
 
 type ContainerInitializationIpConfigArgs struct {
-	// The IPv4 configuration
+	// The IPv4 configuration.
 	Ipv4 ContainerInitializationIpConfigIpv4PtrInput `pulumi:"ipv4"`
-	// The IPv6 configuration
+	// The IPv4 configuration.
 	Ipv6 ContainerInitializationIpConfigIpv6PtrInput `pulumi:"ipv6"`
 }
 
@@ -1373,12 +1381,12 @@ func (o ContainerInitializationIpConfigOutput) ToContainerInitializationIpConfig
 	return o
 }
 
-// The IPv4 configuration
+// The IPv4 configuration.
 func (o ContainerInitializationIpConfigOutput) Ipv4() ContainerInitializationIpConfigIpv4PtrOutput {
 	return o.ApplyT(func(v ContainerInitializationIpConfig) *ContainerInitializationIpConfigIpv4 { return v.Ipv4 }).(ContainerInitializationIpConfigIpv4PtrOutput)
 }
 
-// The IPv6 configuration
+// The IPv4 configuration.
 func (o ContainerInitializationIpConfigOutput) Ipv6() ContainerInitializationIpConfigIpv6PtrOutput {
 	return o.ApplyT(func(v ContainerInitializationIpConfig) *ContainerInitializationIpConfigIpv6 { return v.Ipv6 }).(ContainerInitializationIpConfigIpv6PtrOutput)
 }
@@ -1404,9 +1412,11 @@ func (o ContainerInitializationIpConfigArrayOutput) Index(i pulumi.IntInput) Con
 }
 
 type ContainerInitializationIpConfigIpv4 struct {
-	// The IPv4 address
+	// The IPv4 address (use `dhcp` for
+	// autodiscovery).
 	Address *string `pulumi:"address"`
-	// The IPv4 gateway
+	// The IPv4 gateway (must be omitted
+	// when `dhcp` is used as the address).
 	Gateway *string `pulumi:"gateway"`
 }
 
@@ -1422,9 +1432,11 @@ type ContainerInitializationIpConfigIpv4Input interface {
 }
 
 type ContainerInitializationIpConfigIpv4Args struct {
-	// The IPv4 address
+	// The IPv4 address (use `dhcp` for
+	// autodiscovery).
 	Address pulumi.StringPtrInput `pulumi:"address"`
-	// The IPv4 gateway
+	// The IPv4 gateway (must be omitted
+	// when `dhcp` is used as the address).
 	Gateway pulumi.StringPtrInput `pulumi:"gateway"`
 }
 
@@ -1505,12 +1517,14 @@ func (o ContainerInitializationIpConfigIpv4Output) ToContainerInitializationIpCo
 	}).(ContainerInitializationIpConfigIpv4PtrOutput)
 }
 
-// The IPv4 address
+// The IPv4 address (use `dhcp` for
+// autodiscovery).
 func (o ContainerInitializationIpConfigIpv4Output) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerInitializationIpConfigIpv4) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
 
-// The IPv4 gateway
+// The IPv4 gateway (must be omitted
+// when `dhcp` is used as the address).
 func (o ContainerInitializationIpConfigIpv4Output) Gateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerInitializationIpConfigIpv4) *string { return v.Gateway }).(pulumi.StringPtrOutput)
 }
@@ -1539,7 +1553,8 @@ func (o ContainerInitializationIpConfigIpv4PtrOutput) Elem() ContainerInitializa
 	}).(ContainerInitializationIpConfigIpv4Output)
 }
 
-// The IPv4 address
+// The IPv4 address (use `dhcp` for
+// autodiscovery).
 func (o ContainerInitializationIpConfigIpv4PtrOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerInitializationIpConfigIpv4) *string {
 		if v == nil {
@@ -1549,7 +1564,8 @@ func (o ContainerInitializationIpConfigIpv4PtrOutput) Address() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// The IPv4 gateway
+// The IPv4 gateway (must be omitted
+// when `dhcp` is used as the address).
 func (o ContainerInitializationIpConfigIpv4PtrOutput) Gateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerInitializationIpConfigIpv4) *string {
 		if v == nil {
@@ -1560,9 +1576,11 @@ func (o ContainerInitializationIpConfigIpv4PtrOutput) Gateway() pulumi.StringPtr
 }
 
 type ContainerInitializationIpConfigIpv6 struct {
-	// The IPv6 address
+	// The IPv6 address (use `dhcp` for
+	// autodiscovery).
 	Address *string `pulumi:"address"`
-	// The IPv6 gateway
+	// The IPv6 gateway (must be omitted
+	// when `dhcp` is used as the address).
 	Gateway *string `pulumi:"gateway"`
 }
 
@@ -1578,9 +1596,11 @@ type ContainerInitializationIpConfigIpv6Input interface {
 }
 
 type ContainerInitializationIpConfigIpv6Args struct {
-	// The IPv6 address
+	// The IPv6 address (use `dhcp` for
+	// autodiscovery).
 	Address pulumi.StringPtrInput `pulumi:"address"`
-	// The IPv6 gateway
+	// The IPv6 gateway (must be omitted
+	// when `dhcp` is used as the address).
 	Gateway pulumi.StringPtrInput `pulumi:"gateway"`
 }
 
@@ -1661,12 +1681,14 @@ func (o ContainerInitializationIpConfigIpv6Output) ToContainerInitializationIpCo
 	}).(ContainerInitializationIpConfigIpv6PtrOutput)
 }
 
-// The IPv6 address
+// The IPv6 address (use `dhcp` for
+// autodiscovery).
 func (o ContainerInitializationIpConfigIpv6Output) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerInitializationIpConfigIpv6) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
 
-// The IPv6 gateway
+// The IPv6 gateway (must be omitted
+// when `dhcp` is used as the address).
 func (o ContainerInitializationIpConfigIpv6Output) Gateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerInitializationIpConfigIpv6) *string { return v.Gateway }).(pulumi.StringPtrOutput)
 }
@@ -1695,7 +1717,8 @@ func (o ContainerInitializationIpConfigIpv6PtrOutput) Elem() ContainerInitializa
 	}).(ContainerInitializationIpConfigIpv6Output)
 }
 
-// The IPv6 address
+// The IPv6 address (use `dhcp` for
+// autodiscovery).
 func (o ContainerInitializationIpConfigIpv6PtrOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerInitializationIpConfigIpv6) *string {
 		if v == nil {
@@ -1705,7 +1728,8 @@ func (o ContainerInitializationIpConfigIpv6PtrOutput) Address() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// The IPv6 gateway
+// The IPv6 gateway (must be omitted
+// when `dhcp` is used as the address).
 func (o ContainerInitializationIpConfigIpv6PtrOutput) Gateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerInitializationIpConfigIpv6) *string {
 		if v == nil {
@@ -1716,9 +1740,9 @@ func (o ContainerInitializationIpConfigIpv6PtrOutput) Gateway() pulumi.StringPtr
 }
 
 type ContainerInitializationUserAccount struct {
-	// The SSH keys
+	// The SSH keys for the root account.
 	Keys []string `pulumi:"keys"`
-	// The SSH password
+	// The password for the root account.
 	Password *string `pulumi:"password"`
 }
 
@@ -1734,9 +1758,9 @@ type ContainerInitializationUserAccountInput interface {
 }
 
 type ContainerInitializationUserAccountArgs struct {
-	// The SSH keys
+	// The SSH keys for the root account.
 	Keys pulumi.StringArrayInput `pulumi:"keys"`
-	// The SSH password
+	// The password for the root account.
 	Password pulumi.StringPtrInput `pulumi:"password"`
 }
 
@@ -1817,12 +1841,12 @@ func (o ContainerInitializationUserAccountOutput) ToContainerInitializationUserA
 	}).(ContainerInitializationUserAccountPtrOutput)
 }
 
-// The SSH keys
+// The SSH keys for the root account.
 func (o ContainerInitializationUserAccountOutput) Keys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ContainerInitializationUserAccount) []string { return v.Keys }).(pulumi.StringArrayOutput)
 }
 
-// The SSH password
+// The password for the root account.
 func (o ContainerInitializationUserAccountOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerInitializationUserAccount) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
@@ -1851,7 +1875,7 @@ func (o ContainerInitializationUserAccountPtrOutput) Elem() ContainerInitializat
 	}).(ContainerInitializationUserAccountOutput)
 }
 
-// The SSH keys
+// The SSH keys for the root account.
 func (o ContainerInitializationUserAccountPtrOutput) Keys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ContainerInitializationUserAccount) []string {
 		if v == nil {
@@ -1861,7 +1885,7 @@ func (o ContainerInitializationUserAccountPtrOutput) Keys() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
-// The SSH password
+// The password for the root account.
 func (o ContainerInitializationUserAccountPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerInitializationUserAccount) *string {
 		if v == nil {
@@ -2035,7 +2059,7 @@ type ContainerMountPoint struct {
 	// Explicitly enable or disable ACL support.
 	Acl *bool `pulumi:"acl"`
 	// Whether to include the mount point in backups (only
-	// used for volume mount points).
+	// used for volume mount points, defaults to `false`).
 	Backup *bool `pulumi:"backup"`
 	// List of extra mount options.
 	MountOptions []string `pulumi:"mountOptions"`
@@ -2075,7 +2099,7 @@ type ContainerMountPointArgs struct {
 	// Explicitly enable or disable ACL support.
 	Acl pulumi.BoolPtrInput `pulumi:"acl"`
 	// Whether to include the mount point in backups (only
-	// used for volume mount points).
+	// used for volume mount points, defaults to `false`).
 	Backup pulumi.BoolPtrInput `pulumi:"backup"`
 	// List of extra mount options.
 	MountOptions pulumi.StringArrayInput `pulumi:"mountOptions"`
@@ -2157,7 +2181,7 @@ func (o ContainerMountPointOutput) Acl() pulumi.BoolPtrOutput {
 }
 
 // Whether to include the mount point in backups (only
-// used for volume mount points).
+// used for volume mount points, defaults to `false`).
 func (o ContainerMountPointOutput) Backup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContainerMountPoint) *bool { return v.Backup }).(pulumi.BoolPtrOutput)
 }

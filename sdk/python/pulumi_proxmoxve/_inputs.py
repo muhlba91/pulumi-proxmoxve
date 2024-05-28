@@ -16,9 +16,11 @@ __all__ = [
     'Vm2CloneArgs',
     'Vm2CpuArgs',
     'Vm2TimeoutsArgs',
+    'Vm2VgaArgs',
     'GetVm2CloneArgs',
     'GetVm2CpuArgs',
     'GetVm2TimeoutsArgs',
+    'GetVm2VgaArgs',
 ]
 
 @pulumi.input_type
@@ -539,6 +541,61 @@ class Vm2TimeoutsArgs:
 
 
 @pulumi.input_type
+class Vm2VgaArgs:
+    def __init__(__self__, *,
+                 clipboard: Optional[pulumi.Input[str]] = None,
+                 memory: Optional[pulumi.Input[int]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] clipboard: Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+        :param pulumi.Input[int] memory: The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+        :param pulumi.Input[str] type: The VGA type (defaults to `std`).
+        """
+        if clipboard is not None:
+            pulumi.set(__self__, "clipboard", clipboard)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def clipboard(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+        """
+        return pulumi.get(self, "clipboard")
+
+    @clipboard.setter
+    def clipboard(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "clipboard", value)
+
+    @property
+    @pulumi.getter
+    def memory(self) -> Optional[pulumi.Input[int]]:
+        """
+        The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+        """
+        return pulumi.get(self, "memory")
+
+    @memory.setter
+    def memory(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "memory", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VGA type (defaults to `std`).
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
 class GetVm2CloneArgs:
     def __init__(__self__, *,
                  id: int,
@@ -753,5 +810,57 @@ class GetVm2TimeoutsArgs:
     @read.setter
     def read(self, value: Optional[str]):
         pulumi.set(self, "read", value)
+
+
+@pulumi.input_type
+class GetVm2VgaArgs:
+    def __init__(__self__, *,
+                 clipboard: str,
+                 memory: int,
+                 type: str):
+        """
+        :param str clipboard: Enable a specific clipboard.
+        :param int memory: The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+        :param str type: The VGA type.
+        """
+        pulumi.set(__self__, "clipboard", clipboard)
+        pulumi.set(__self__, "memory", memory)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def clipboard(self) -> str:
+        """
+        Enable a specific clipboard.
+        """
+        return pulumi.get(self, "clipboard")
+
+    @clipboard.setter
+    def clipboard(self, value: str):
+        pulumi.set(self, "clipboard", value)
+
+    @property
+    @pulumi.getter
+    def memory(self) -> int:
+        """
+        The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+        """
+        return pulumi.get(self, "memory")
+
+    @memory.setter
+    def memory(self, value: int):
+        pulumi.set(self, "memory", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The VGA type.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: str):
+        pulumi.set(self, "type", value)
 
 

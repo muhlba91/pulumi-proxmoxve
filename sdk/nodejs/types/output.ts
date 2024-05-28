@@ -66,6 +66,21 @@ export interface GetVm2Timeouts {
     read?: string;
 }
 
+export interface GetVm2Vga {
+    /**
+     * Enable a specific clipboard.
+     */
+    clipboard: string;
+    /**
+     * The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+     */
+    memory: number;
+    /**
+     * The VGA type.
+     */
+    type: string;
+}
+
 export interface HostsEntry {
     /**
      * The IP address.
@@ -148,6 +163,21 @@ export interface Vm2Timeouts {
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
     update?: string;
+}
+
+export interface Vm2Vga {
+    /**
+     * Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+     */
+    clipboard: string;
+    /**
+     * The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+     */
+    memory: number;
+    /**
+     * The VGA type (defaults to `std`).
+     */
+    type: string;
 }
 
 export namespace CT {
@@ -255,61 +285,67 @@ export namespace CT {
 
     export interface ContainerInitializationDns {
         /**
-         * The DNS search domain
+         * The DNS search domain.
          */
         domain?: string;
         /**
-         * The DNS server
+         * The DNS server. The `server` attribute is
+         * deprecated and will be removed in a future release. Please use
+         * the `servers` attribute instead.
          *
          * @deprecated The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
          */
         server?: string;
         /**
-         * The list of DNS servers
+         * The list of DNS servers.
          */
         servers?: string[];
     }
 
     export interface ContainerInitializationIpConfig {
         /**
-         * The IPv4 configuration
+         * The IPv4 configuration.
          */
         ipv4?: outputs.CT.ContainerInitializationIpConfigIpv4;
         /**
-         * The IPv6 configuration
+         * The IPv4 configuration.
          */
         ipv6?: outputs.CT.ContainerInitializationIpConfigIpv6;
     }
 
     export interface ContainerInitializationIpConfigIpv4 {
         /**
-         * The IPv4 address
+         * The IPv4 address (use `dhcp` for
+         * autodiscovery).
          */
         address?: string;
         /**
-         * The IPv4 gateway
+         * The IPv4 gateway (must be omitted
+         * when `dhcp` is used as the address).
          */
         gateway?: string;
     }
 
     export interface ContainerInitializationIpConfigIpv6 {
         /**
-         * The IPv6 address
+         * The IPv6 address (use `dhcp` for
+         * autodiscovery).
          */
         address?: string;
         /**
-         * The IPv6 gateway
+         * The IPv6 gateway (must be omitted
+         * when `dhcp` is used as the address).
          */
         gateway?: string;
     }
 
     export interface ContainerInitializationUserAccount {
         /**
-         * The SSH keys
+         * The SSH keys for the root account.
          */
         keys?: string[];
         /**
-         * The SSH password
+         * The password for the root account.
          */
         password?: string;
     }
@@ -333,7 +369,7 @@ export namespace CT {
         acl?: boolean;
         /**
          * Whether to include the mount point in backups (only
-         * used for volume mount points).
+         * used for volume mount points, defaults to `false`).
          */
         backup?: boolean;
         /**
@@ -1014,6 +1050,9 @@ export namespace VM {
     export interface VirtualMachineAudioDevice {
         /**
          * The device (defaults to `intel-hda`).
+         * - `AC97` - Intel 82801AA AC97 Audio.
+         * - `ich9-intel-hda` - Intel HD Audio Controller (ich9).
+         * - `intel-hda` - Intel HD Audio.
          */
         device?: string;
         /**
@@ -1217,35 +1256,37 @@ export namespace VM {
 
     export interface VirtualMachineDiskSpeed {
         /**
-         * The maximum read I/O in operations per second
+         * The maximum read I/O in operations per second.
          */
         iopsRead?: number;
         /**
-         * The maximum unthrottled read I/O pool in operations per second
+         * The maximum unthrottled read I/O pool in operations per second.
          */
         iopsReadBurstable?: number;
         /**
-         * The maximum write I/O in operations per second
+         * The maximum write I/O in operations per second.
          */
         iopsWrite?: number;
         /**
-         * The maximum unthrottled write I/O pool in operations per second
+         * The maximum unthrottled write I/O pool in operations per second.
          */
         iopsWriteBurstable?: number;
         /**
-         * The maximum read speed in megabytes per second
+         * The maximum read speed in megabytes per second.
          */
         read?: number;
         /**
-         * The maximum burstable read speed in megabytes per second
+         * The maximum burstable read speed in
+         * megabytes per second.
          */
         readBurstable?: number;
         /**
-         * The maximum write speed in megabytes per second
+         * The maximum write speed in megabytes per second.
          */
         write?: number;
         /**
-         * The maximum burstable write speed in megabytes per second
+         * The maximum burstable write speed in
+         * megabytes per second.
          */
         writeBurstable?: number;
     }
@@ -1382,65 +1423,73 @@ export namespace VM {
 
     export interface VirtualMachineInitializationDns {
         /**
-         * The DNS search domain
+         * The DNS search domain.
          */
         domain?: string;
         /**
-         * The DNS server
+         * The DNS server. The `server` attribute is
+         * deprecated and will be removed in a future release. Please use the
+         * `servers` attribute instead.
          *
          * @deprecated The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
          */
         server?: string;
         /**
-         * The list of DNS servers
+         * The list of DNS servers.
          */
         servers?: string[];
     }
 
     export interface VirtualMachineInitializationIpConfig {
         /**
-         * The IPv4 configuration
+         * The IPv4 configuration.
          */
         ipv4?: outputs.VM.VirtualMachineInitializationIpConfigIpv4;
         /**
-         * The IPv6 configuration
+         * The IPv4 configuration.
          */
         ipv6?: outputs.VM.VirtualMachineInitializationIpConfigIpv6;
     }
 
     export interface VirtualMachineInitializationIpConfigIpv4 {
         /**
-         * The IPv4 address
+         * The IPv4 address in CIDR notation
+         * (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
+         * autodiscovery.
          */
         address?: string;
         /**
-         * The IPv4 gateway
+         * The IPv4 gateway (must be omitted
+         * when `dhcp` is used as the address).
          */
         gateway?: string;
     }
 
     export interface VirtualMachineInitializationIpConfigIpv6 {
         /**
-         * The IPv6 address
+         * The IPv6 address in CIDR notation
+         * (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
+         * to `dhcp` for autodiscovery.
          */
         address?: string;
         /**
-         * The IPv6 gateway
+         * The IPv6 gateway (must be omitted
+         * when `dhcp` is used as the address).
          */
         gateway?: string;
     }
 
     export interface VirtualMachineInitializationUserAccount {
         /**
-         * The SSH keys
+         * The SSH keys.
          */
         keys?: string[];
         /**
-         * The SSH password
+         * The SSH password.
          */
         password?: string;
         /**
-         * The SSH username
+         * The SSH username.
          */
         username?: string;
     }
@@ -1643,8 +1692,13 @@ export namespace VM {
 
     export interface VirtualMachineVga {
         /**
-         * Whether to enable the VGA device (defaults
-         * to `true`).
+         * Enable VNC clipboard by setting to `vnc`. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
+         */
+        clipboard?: string;
+        /**
+         * Whether to enable the VGA device
+         *
+         * @deprecated The `enabled` attribute is deprecated and will be removed in a future release. Use type `none` instead.
          */
         enabled?: boolean;
         /**

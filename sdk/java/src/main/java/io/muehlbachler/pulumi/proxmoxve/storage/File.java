@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * &gt; The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,18 +51,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var backup = new File(&#34;backup&#34;, FileArgs.builder()        
- *             .contentType(&#34;dump&#34;)
- *             .datastoreId(&#34;local&#34;)
- *             .nodeName(&#34;pve&#34;)
+ *         var backup = new File("backup", FileArgs.builder()
+ *             .contentType("dump")
+ *             .datastoreId("local")
+ *             .nodeName("pve")
  *             .sourceFile(FileSourceFileArgs.builder()
- *                 .path(&#34;vzdump-lxc-100-2023_11_08-23_10_05.tar&#34;)
+ *                 .path("vzdump-lxc-100-2023_11_08-23_10_05.tar")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Images
@@ -69,7 +71,8 @@ import javax.annotation.Nullable;
  * &gt; Consider using `proxmoxve.Download.File` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -91,18 +94,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ubuntuContainerTemplate = new File(&#34;ubuntuContainerTemplate&#34;, FileArgs.builder()        
- *             .contentType(&#34;iso&#34;)
- *             .datastoreId(&#34;local&#34;)
- *             .nodeName(&#34;pve&#34;)
+ *         var ubuntuContainerTemplate = new File("ubuntuContainerTemplate", FileArgs.builder()
+ *             .contentType("iso")
+ *             .datastoreId("local")
+ *             .nodeName("pve")
  *             .sourceFile(FileSourceFileArgs.builder()
- *                 .path(&#34;https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img&#34;)
+ *                 .path("https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Container Template (`vztmpl`)
@@ -110,7 +114,8 @@ import javax.annotation.Nullable;
  * &gt; Consider using `proxmoxve.Download.File` resource instead. Using this resource for container images is less efficient (requires to transfer uploaded image to node) though still supported.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -132,18 +137,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ubuntuContainerTemplate = new File(&#34;ubuntuContainerTemplate&#34;, FileArgs.builder()        
- *             .contentType(&#34;vztmpl&#34;)
- *             .datastoreId(&#34;local&#34;)
- *             .nodeName(&#34;first-node&#34;)
+ *         var ubuntuContainerTemplate = new File("ubuntuContainerTemplate", FileArgs.builder()
+ *             .contentType("vztmpl")
+ *             .datastoreId("local")
+ *             .nodeName("first-node")
  *             .sourceFile(FileSourceFileArgs.builder()
- *                 .path(&#34;https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz&#34;)
+ *                 .path("https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Important Notes

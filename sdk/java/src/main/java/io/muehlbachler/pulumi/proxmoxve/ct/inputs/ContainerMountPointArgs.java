@@ -35,7 +35,7 @@ public final class ContainerMountPointArgs extends com.pulumi.resources.Resource
 
     /**
      * Whether to include the mount point in backups (only
-     * used for volume mount points).
+     * used for volume mount points, defaults to `false`).
      * 
      */
     @Import(name="backup")
@@ -43,7 +43,7 @@ public final class ContainerMountPointArgs extends com.pulumi.resources.Resource
 
     /**
      * @return Whether to include the mount point in backups (only
-     * used for volume mount points).
+     * used for volume mount points, defaults to `false`).
      * 
      */
     public Optional<Output<Boolean>> backup() {
@@ -236,7 +236,7 @@ public final class ContainerMountPointArgs extends com.pulumi.resources.Resource
 
         /**
          * @param backup Whether to include the mount point in backups (only
-         * used for volume mount points).
+         * used for volume mount points, defaults to `false`).
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class ContainerMountPointArgs extends com.pulumi.resources.Resource
 
         /**
          * @param backup Whether to include the mount point in backups (only
-         * used for volume mount points).
+         * used for volume mount points, defaults to `false`).
          * 
          * @return builder
          * 

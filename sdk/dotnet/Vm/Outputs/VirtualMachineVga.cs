@@ -14,8 +14,11 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     public sealed class VirtualMachineVga
     {
         /// <summary>
-        /// Whether to enable the VGA device (defaults
-        /// to `true`).
+        /// Enable VNC clipboard by setting to `vnc`. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
+        /// </summary>
+        public readonly string? Clipboard;
+        /// <summary>
+        /// Whether to enable the VGA device
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
@@ -29,12 +32,15 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
 
         [OutputConstructor]
         private VirtualMachineVga(
+            string? clipboard,
+
             bool? enabled,
 
             int? memory,
 
             string? type)
         {
+            Clipboard = clipboard;
             Enabled = enabled;
             Memory = memory;
             Type = type;

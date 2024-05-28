@@ -108,6 +108,9 @@ class VirtualMachineAudioDevice(dict):
                  enabled: Optional[bool] = None):
         """
         :param str device: The device (defaults to `intel-hda`).
+               - `AC97` - Intel 82801AA AC97 Audio.
+               - `ich9-intel-hda` - Intel HD Audio Controller (ich9).
+               - `intel-hda` - Intel HD Audio.
         :param str driver: The driver (defaults to `spice`).
         :param bool enabled: Whether to enable the audio device (defaults
                to `true`).
@@ -124,6 +127,9 @@ class VirtualMachineAudioDevice(dict):
     def device(self) -> Optional[str]:
         """
         The device (defaults to `intel-hda`).
+        - `AC97` - Intel 82801AA AC97 Audio.
+        - `ich9-intel-hda` - Intel HD Audio Controller (ich9).
+        - `intel-hda` - Intel HD Audio.
         """
         return pulumi.get(self, "device")
 
@@ -751,14 +757,16 @@ class VirtualMachineDiskSpeed(dict):
                  write: Optional[int] = None,
                  write_burstable: Optional[int] = None):
         """
-        :param int iops_read: The maximum read I/O in operations per second
-        :param int iops_read_burstable: The maximum unthrottled read I/O pool in operations per second
-        :param int iops_write: The maximum write I/O in operations per second
-        :param int iops_write_burstable: The maximum unthrottled write I/O pool in operations per second
-        :param int read: The maximum read speed in megabytes per second
-        :param int read_burstable: The maximum burstable read speed in megabytes per second
-        :param int write: The maximum write speed in megabytes per second
-        :param int write_burstable: The maximum burstable write speed in megabytes per second
+        :param int iops_read: The maximum read I/O in operations per second.
+        :param int iops_read_burstable: The maximum unthrottled read I/O pool in operations per second.
+        :param int iops_write: The maximum write I/O in operations per second.
+        :param int iops_write_burstable: The maximum unthrottled write I/O pool in operations per second.
+        :param int read: The maximum read speed in megabytes per second.
+        :param int read_burstable: The maximum burstable read speed in
+               megabytes per second.
+        :param int write: The maximum write speed in megabytes per second.
+        :param int write_burstable: The maximum burstable write speed in
+               megabytes per second.
         """
         if iops_read is not None:
             pulumi.set(__self__, "iops_read", iops_read)
@@ -781,7 +789,7 @@ class VirtualMachineDiskSpeed(dict):
     @pulumi.getter(name="iopsRead")
     def iops_read(self) -> Optional[int]:
         """
-        The maximum read I/O in operations per second
+        The maximum read I/O in operations per second.
         """
         return pulumi.get(self, "iops_read")
 
@@ -789,7 +797,7 @@ class VirtualMachineDiskSpeed(dict):
     @pulumi.getter(name="iopsReadBurstable")
     def iops_read_burstable(self) -> Optional[int]:
         """
-        The maximum unthrottled read I/O pool in operations per second
+        The maximum unthrottled read I/O pool in operations per second.
         """
         return pulumi.get(self, "iops_read_burstable")
 
@@ -797,7 +805,7 @@ class VirtualMachineDiskSpeed(dict):
     @pulumi.getter(name="iopsWrite")
     def iops_write(self) -> Optional[int]:
         """
-        The maximum write I/O in operations per second
+        The maximum write I/O in operations per second.
         """
         return pulumi.get(self, "iops_write")
 
@@ -805,7 +813,7 @@ class VirtualMachineDiskSpeed(dict):
     @pulumi.getter(name="iopsWriteBurstable")
     def iops_write_burstable(self) -> Optional[int]:
         """
-        The maximum unthrottled write I/O pool in operations per second
+        The maximum unthrottled write I/O pool in operations per second.
         """
         return pulumi.get(self, "iops_write_burstable")
 
@@ -813,7 +821,7 @@ class VirtualMachineDiskSpeed(dict):
     @pulumi.getter
     def read(self) -> Optional[int]:
         """
-        The maximum read speed in megabytes per second
+        The maximum read speed in megabytes per second.
         """
         return pulumi.get(self, "read")
 
@@ -821,7 +829,8 @@ class VirtualMachineDiskSpeed(dict):
     @pulumi.getter(name="readBurstable")
     def read_burstable(self) -> Optional[int]:
         """
-        The maximum burstable read speed in megabytes per second
+        The maximum burstable read speed in
+        megabytes per second.
         """
         return pulumi.get(self, "read_burstable")
 
@@ -829,7 +838,7 @@ class VirtualMachineDiskSpeed(dict):
     @pulumi.getter
     def write(self) -> Optional[int]:
         """
-        The maximum write speed in megabytes per second
+        The maximum write speed in megabytes per second.
         """
         return pulumi.get(self, "write")
 
@@ -837,7 +846,8 @@ class VirtualMachineDiskSpeed(dict):
     @pulumi.getter(name="writeBurstable")
     def write_burstable(self) -> Optional[int]:
         """
-        The maximum burstable write speed in megabytes per second
+        The maximum burstable write speed in
+        megabytes per second.
         """
         return pulumi.get(self, "write_burstable")
 
@@ -1269,9 +1279,11 @@ class VirtualMachineInitializationDns(dict):
                  server: Optional[str] = None,
                  servers: Optional[Sequence[str]] = None):
         """
-        :param str domain: The DNS search domain
-        :param str server: The DNS server
-        :param Sequence[str] servers: The list of DNS servers
+        :param str domain: The DNS search domain.
+        :param str server: The DNS server. The `server` attribute is
+               deprecated and will be removed in a future release. Please use the
+               `servers` attribute instead.
+        :param Sequence[str] servers: The list of DNS servers.
         """
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
@@ -1284,7 +1296,7 @@ class VirtualMachineInitializationDns(dict):
     @pulumi.getter
     def domain(self) -> Optional[str]:
         """
-        The DNS search domain
+        The DNS search domain.
         """
         return pulumi.get(self, "domain")
 
@@ -1292,7 +1304,9 @@ class VirtualMachineInitializationDns(dict):
     @pulumi.getter
     def server(self) -> Optional[str]:
         """
-        The DNS server
+        The DNS server. The `server` attribute is
+        deprecated and will be removed in a future release. Please use the
+        `servers` attribute instead.
         """
         warnings.warn("""The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.""", DeprecationWarning)
         pulumi.log.warn("""server is deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.""")
@@ -1303,7 +1317,7 @@ class VirtualMachineInitializationDns(dict):
     @pulumi.getter
     def servers(self) -> Optional[Sequence[str]]:
         """
-        The list of DNS servers
+        The list of DNS servers.
         """
         return pulumi.get(self, "servers")
 
@@ -1314,8 +1328,8 @@ class VirtualMachineInitializationIpConfig(dict):
                  ipv4: Optional['outputs.VirtualMachineInitializationIpConfigIpv4'] = None,
                  ipv6: Optional['outputs.VirtualMachineInitializationIpConfigIpv6'] = None):
         """
-        :param 'VirtualMachineInitializationIpConfigIpv4Args' ipv4: The IPv4 configuration
-        :param 'VirtualMachineInitializationIpConfigIpv6Args' ipv6: The IPv6 configuration
+        :param 'VirtualMachineInitializationIpConfigIpv4Args' ipv4: The IPv4 configuration.
+        :param 'VirtualMachineInitializationIpConfigIpv6Args' ipv6: The IPv4 configuration.
         """
         if ipv4 is not None:
             pulumi.set(__self__, "ipv4", ipv4)
@@ -1326,7 +1340,7 @@ class VirtualMachineInitializationIpConfig(dict):
     @pulumi.getter
     def ipv4(self) -> Optional['outputs.VirtualMachineInitializationIpConfigIpv4']:
         """
-        The IPv4 configuration
+        The IPv4 configuration.
         """
         return pulumi.get(self, "ipv4")
 
@@ -1334,7 +1348,7 @@ class VirtualMachineInitializationIpConfig(dict):
     @pulumi.getter
     def ipv6(self) -> Optional['outputs.VirtualMachineInitializationIpConfigIpv6']:
         """
-        The IPv6 configuration
+        The IPv4 configuration.
         """
         return pulumi.get(self, "ipv6")
 
@@ -1345,8 +1359,11 @@ class VirtualMachineInitializationIpConfigIpv4(dict):
                  address: Optional[str] = None,
                  gateway: Optional[str] = None):
         """
-        :param str address: The IPv4 address
-        :param str gateway: The IPv4 gateway
+        :param str address: The IPv4 address in CIDR notation
+               (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
+               autodiscovery.
+        :param str gateway: The IPv4 gateway (must be omitted
+               when `dhcp` is used as the address).
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -1357,7 +1374,9 @@ class VirtualMachineInitializationIpConfigIpv4(dict):
     @pulumi.getter
     def address(self) -> Optional[str]:
         """
-        The IPv4 address
+        The IPv4 address in CIDR notation
+        (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
+        autodiscovery.
         """
         return pulumi.get(self, "address")
 
@@ -1365,7 +1384,8 @@ class VirtualMachineInitializationIpConfigIpv4(dict):
     @pulumi.getter
     def gateway(self) -> Optional[str]:
         """
-        The IPv4 gateway
+        The IPv4 gateway (must be omitted
+        when `dhcp` is used as the address).
         """
         return pulumi.get(self, "gateway")
 
@@ -1376,8 +1396,11 @@ class VirtualMachineInitializationIpConfigIpv6(dict):
                  address: Optional[str] = None,
                  gateway: Optional[str] = None):
         """
-        :param str address: The IPv6 address
-        :param str gateway: The IPv6 gateway
+        :param str address: The IPv6 address in CIDR notation
+               (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
+               to `dhcp` for autodiscovery.
+        :param str gateway: The IPv6 gateway (must be omitted
+               when `dhcp` is used as the address).
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -1388,7 +1411,9 @@ class VirtualMachineInitializationIpConfigIpv6(dict):
     @pulumi.getter
     def address(self) -> Optional[str]:
         """
-        The IPv6 address
+        The IPv6 address in CIDR notation
+        (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
+        to `dhcp` for autodiscovery.
         """
         return pulumi.get(self, "address")
 
@@ -1396,7 +1421,8 @@ class VirtualMachineInitializationIpConfigIpv6(dict):
     @pulumi.getter
     def gateway(self) -> Optional[str]:
         """
-        The IPv6 gateway
+        The IPv6 gateway (must be omitted
+        when `dhcp` is used as the address).
         """
         return pulumi.get(self, "gateway")
 
@@ -1408,9 +1434,9 @@ class VirtualMachineInitializationUserAccount(dict):
                  password: Optional[str] = None,
                  username: Optional[str] = None):
         """
-        :param Sequence[str] keys: The SSH keys
-        :param str password: The SSH password
-        :param str username: The SSH username
+        :param Sequence[str] keys: The SSH keys.
+        :param str password: The SSH password.
+        :param str username: The SSH username.
         """
         if keys is not None:
             pulumi.set(__self__, "keys", keys)
@@ -1423,7 +1449,7 @@ class VirtualMachineInitializationUserAccount(dict):
     @pulumi.getter
     def keys(self) -> Optional[Sequence[str]]:
         """
-        The SSH keys
+        The SSH keys.
         """
         return pulumi.get(self, "keys")
 
@@ -1431,7 +1457,7 @@ class VirtualMachineInitializationUserAccount(dict):
     @pulumi.getter
     def password(self) -> Optional[str]:
         """
-        The SSH password
+        The SSH password.
         """
         return pulumi.get(self, "password")
 
@@ -1439,7 +1465,7 @@ class VirtualMachineInitializationUserAccount(dict):
     @pulumi.getter
     def username(self) -> Optional[str]:
         """
-        The SSH username
+        The SSH username.
         """
         return pulumi.get(self, "username")
 
@@ -2070,15 +2096,18 @@ class VirtualMachineUsb(dict):
 @pulumi.output_type
 class VirtualMachineVga(dict):
     def __init__(__self__, *,
+                 clipboard: Optional[str] = None,
                  enabled: Optional[bool] = None,
                  memory: Optional[int] = None,
                  type: Optional[str] = None):
         """
-        :param bool enabled: Whether to enable the VGA device (defaults
-               to `true`).
+        :param str clipboard: Enable VNC clipboard by setting to `vnc`. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
+        :param bool enabled: Whether to enable the VGA device
         :param int memory: The VGA memory in megabytes (defaults to `16`).
         :param str type: The VGA type (defaults to `std`).
         """
+        if clipboard is not None:
+            pulumi.set(__self__, "clipboard", clipboard)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if memory is not None:
@@ -2088,11 +2117,21 @@ class VirtualMachineVga(dict):
 
     @property
     @pulumi.getter
+    def clipboard(self) -> Optional[str]:
+        """
+        Enable VNC clipboard by setting to `vnc`. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
+        """
+        return pulumi.get(self, "clipboard")
+
+    @property
+    @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Whether to enable the VGA device (defaults
-        to `true`).
+        Whether to enable the VGA device
         """
+        warnings.warn("""The `enabled` attribute is deprecated and will be removed in a future release. Use type `none` instead.""", DeprecationWarning)
+        pulumi.log.warn("""enabled is deprecated: The `enabled` attribute is deprecated and will be removed in a future release. Use type `none` instead.""")
+
         return pulumi.get(self, "enabled")
 
     @property

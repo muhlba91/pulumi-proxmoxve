@@ -12,98 +12,102 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VirtualMachineDiskSpeed {
     /**
-     * @return The maximum read I/O in operations per second
+     * @return The maximum read I/O in operations per second.
      * 
      */
     private @Nullable Integer iopsRead;
     /**
-     * @return The maximum unthrottled read I/O pool in operations per second
+     * @return The maximum unthrottled read I/O pool in operations per second.
      * 
      */
     private @Nullable Integer iopsReadBurstable;
     /**
-     * @return The maximum write I/O in operations per second
+     * @return The maximum write I/O in operations per second.
      * 
      */
     private @Nullable Integer iopsWrite;
     /**
-     * @return The maximum unthrottled write I/O pool in operations per second
+     * @return The maximum unthrottled write I/O pool in operations per second.
      * 
      */
     private @Nullable Integer iopsWriteBurstable;
     /**
-     * @return The maximum read speed in megabytes per second
+     * @return The maximum read speed in megabytes per second.
      * 
      */
     private @Nullable Integer read;
     /**
-     * @return The maximum burstable read speed in megabytes per second
+     * @return The maximum burstable read speed in
+     * megabytes per second.
      * 
      */
     private @Nullable Integer readBurstable;
     /**
-     * @return The maximum write speed in megabytes per second
+     * @return The maximum write speed in megabytes per second.
      * 
      */
     private @Nullable Integer write;
     /**
-     * @return The maximum burstable write speed in megabytes per second
+     * @return The maximum burstable write speed in
+     * megabytes per second.
      * 
      */
     private @Nullable Integer writeBurstable;
 
     private VirtualMachineDiskSpeed() {}
     /**
-     * @return The maximum read I/O in operations per second
+     * @return The maximum read I/O in operations per second.
      * 
      */
     public Optional<Integer> iopsRead() {
         return Optional.ofNullable(this.iopsRead);
     }
     /**
-     * @return The maximum unthrottled read I/O pool in operations per second
+     * @return The maximum unthrottled read I/O pool in operations per second.
      * 
      */
     public Optional<Integer> iopsReadBurstable() {
         return Optional.ofNullable(this.iopsReadBurstable);
     }
     /**
-     * @return The maximum write I/O in operations per second
+     * @return The maximum write I/O in operations per second.
      * 
      */
     public Optional<Integer> iopsWrite() {
         return Optional.ofNullable(this.iopsWrite);
     }
     /**
-     * @return The maximum unthrottled write I/O pool in operations per second
+     * @return The maximum unthrottled write I/O pool in operations per second.
      * 
      */
     public Optional<Integer> iopsWriteBurstable() {
         return Optional.ofNullable(this.iopsWriteBurstable);
     }
     /**
-     * @return The maximum read speed in megabytes per second
+     * @return The maximum read speed in megabytes per second.
      * 
      */
     public Optional<Integer> read() {
         return Optional.ofNullable(this.read);
     }
     /**
-     * @return The maximum burstable read speed in megabytes per second
+     * @return The maximum burstable read speed in
+     * megabytes per second.
      * 
      */
     public Optional<Integer> readBurstable() {
         return Optional.ofNullable(this.readBurstable);
     }
     /**
-     * @return The maximum write speed in megabytes per second
+     * @return The maximum write speed in megabytes per second.
      * 
      */
     public Optional<Integer> write() {
         return Optional.ofNullable(this.write);
     }
     /**
-     * @return The maximum burstable write speed in megabytes per second
+     * @return The maximum burstable write speed in
+     * megabytes per second.
      * 
      */
     public Optional<Integer> writeBurstable() {

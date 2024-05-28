@@ -23,7 +23,8 @@ public final class VMFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -45,13 +46,14 @@ public final class VMFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var testVm = VMFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
-     *             .nodeName(&#34;test&#34;)
+     *             .nodeName("test")
      *             .vmId(100)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -64,7 +66,8 @@ public final class VMFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -86,13 +89,14 @@ public final class VMFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var testVm = VMFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
-     *             .nodeName(&#34;test&#34;)
+     *             .nodeName("test")
      *             .vmId(100)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -105,7 +109,8 @@ public final class VMFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -127,13 +132,14 @@ public final class VMFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var testVm = VMFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
-     *             .nodeName(&#34;test&#34;)
+     *             .nodeName("test")
      *             .vmId(100)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -146,7 +152,8 @@ public final class VMFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -168,13 +175,14 @@ public final class VMFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var testVm = VMFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
-     *             .nodeName(&#34;test&#34;)
+     *             .nodeName("test")
      *             .vmId(100)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -187,7 +195,8 @@ public final class VMFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -209,12 +218,13 @@ public final class VMFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ubuntuVms = VMFunctions.getVirtualMachines(GetVirtualMachinesArgs.builder()
-     *             .tags(&#34;ubuntu&#34;)
+     *             .tags("ubuntu")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -227,7 +237,8 @@ public final class VMFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -249,12 +260,13 @@ public final class VMFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ubuntuVms = VMFunctions.getVirtualMachines(GetVirtualMachinesArgs.builder()
-     *             .tags(&#34;ubuntu&#34;)
+     *             .tags("ubuntu")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -267,7 +279,8 @@ public final class VMFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -289,12 +302,13 @@ public final class VMFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ubuntuVms = VMFunctions.getVirtualMachines(GetVirtualMachinesArgs.builder()
-     *             .tags(&#34;ubuntu&#34;)
+     *             .tags("ubuntu")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -307,7 +321,8 @@ public final class VMFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -329,12 +344,13 @@ public final class VMFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ubuntuVms = VMFunctions.getVirtualMachines(GetVirtualMachinesArgs.builder()
-     *             .tags(&#34;ubuntu&#34;)
+     *             .tags("ubuntu")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -347,7 +363,8 @@ public final class VMFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -369,12 +386,13 @@ public final class VMFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ubuntuVms = VMFunctions.getVirtualMachines(GetVirtualMachinesArgs.builder()
-     *             .tags(&#34;ubuntu&#34;)
+     *             .tags("ubuntu")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -387,7 +405,8 @@ public final class VMFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -409,12 +428,13 @@ public final class VMFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ubuntuVms = VMFunctions.getVirtualMachines(GetVirtualMachinesArgs.builder()
-     *             .tags(&#34;ubuntu&#34;)
+     *             .tags("ubuntu")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

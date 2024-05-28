@@ -28,7 +28,8 @@ public final class HAFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -50,12 +51,13 @@ public final class HAFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = HAFunctions.getHAGroups();
      * 
-     *         final var example = &#34;TODO: ForExpression&#34;;
+     *         final var example = "TODO: ForExpression";
      * 
-     *         ctx.export(&#34;proxmoxVirtualEnvironmentHagroupsFull&#34;, example);
+     *         ctx.export("proxmoxVirtualEnvironmentHagroupsFull", example);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -68,7 +70,8 @@ public final class HAFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -90,12 +93,13 @@ public final class HAFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = HAFunctions.getHAGroups();
      * 
-     *         final var example = &#34;TODO: ForExpression&#34;;
+     *         final var example = "TODO: ForExpression";
      * 
-     *         ctx.export(&#34;proxmoxVirtualEnvironmentHagroupsFull&#34;, example);
+     *         ctx.export("proxmoxVirtualEnvironmentHagroupsFull", example);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -108,7 +112,8 @@ public final class HAFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -130,12 +135,13 @@ public final class HAFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = HAFunctions.getHAGroups();
      * 
-     *         final var example = &#34;TODO: ForExpression&#34;;
+     *         final var example = "TODO: ForExpression";
      * 
-     *         ctx.export(&#34;proxmoxVirtualEnvironmentHagroupsFull&#34;, example);
+     *         ctx.export("proxmoxVirtualEnvironmentHagroupsFull", example);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -148,7 +154,8 @@ public final class HAFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -170,12 +177,13 @@ public final class HAFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = HAFunctions.getHAGroups();
      * 
-     *         final var example = &#34;TODO: ForExpression&#34;;
+     *         final var example = "TODO: ForExpression";
      * 
-     *         ctx.export(&#34;proxmoxVirtualEnvironmentHagroupsFull&#34;, example);
+     *         ctx.export("proxmoxVirtualEnvironmentHagroupsFull", example);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -188,7 +196,8 @@ public final class HAFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -210,10 +219,11 @@ public final class HAFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = HAFunctions.getHAGroups();
      * 
-     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentHagroups&#34;, example.applyValue(getHAGroupsResult -&gt; getHAGroupsResult.groupIds()));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHagroups", example.applyValue(getHAGroupsResult -> getHAGroupsResult.groupIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -226,7 +236,8 @@ public final class HAFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -248,10 +259,11 @@ public final class HAFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = HAFunctions.getHAGroups();
      * 
-     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentHagroups&#34;, example.applyValue(getHAGroupsResult -&gt; getHAGroupsResult.groupIds()));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHagroups", example.applyValue(getHAGroupsResult -> getHAGroupsResult.groupIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -264,7 +276,8 @@ public final class HAFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -286,10 +299,11 @@ public final class HAFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = HAFunctions.getHAGroups();
      * 
-     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentHagroups&#34;, example.applyValue(getHAGroupsResult -&gt; getHAGroupsResult.groupIds()));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHagroups", example.applyValue(getHAGroupsResult -> getHAGroupsResult.groupIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -302,7 +316,8 @@ public final class HAFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -324,10 +339,11 @@ public final class HAFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = HAFunctions.getHAGroups();
      * 
-     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentHagroups&#34;, example.applyValue(getHAGroupsResult -&gt; getHAGroupsResult.groupIds()));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHagroups", example.applyValue(getHAGroupsResult -> getHAGroupsResult.groupIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -340,7 +356,8 @@ public final class HAFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -362,10 +379,11 @@ public final class HAFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = HAFunctions.getHAGroups();
      * 
-     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentHagroups&#34;, example.applyValue(getHAGroupsResult -&gt; getHAGroupsResult.groupIds()));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHagroups", example.applyValue(getHAGroupsResult -> getHAGroupsResult.groupIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -378,7 +396,8 @@ public final class HAFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -400,10 +419,11 @@ public final class HAFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = HAFunctions.getHAGroups();
      * 
-     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentHagroups&#34;, example.applyValue(getHAGroupsResult -&gt; getHAGroupsResult.groupIds()));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHagroups", example.applyValue(getHAGroupsResult -> getHAGroupsResult.groupIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -416,7 +436,8 @@ public final class HAFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -439,12 +460,13 @@ public final class HAFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = HAFunctions.getHAResources();
      * 
-     *         final var example = &#34;TODO: ForExpression&#34;;
+     *         final var example = "TODO: ForExpression";
      * 
-     *         ctx.export(&#34;proxmoxVirtualEnvironmentHaresourcesFull&#34;, example);
+     *         ctx.export("proxmoxVirtualEnvironmentHaresourcesFull", example);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -457,7 +479,8 @@ public final class HAFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -480,12 +503,13 @@ public final class HAFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = HAFunctions.getHAResources();
      * 
-     *         final var example = &#34;TODO: ForExpression&#34;;
+     *         final var example = "TODO: ForExpression";
      * 
-     *         ctx.export(&#34;proxmoxVirtualEnvironmentHaresourcesFull&#34;, example);
+     *         ctx.export("proxmoxVirtualEnvironmentHaresourcesFull", example);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -498,7 +522,8 @@ public final class HAFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -521,12 +546,13 @@ public final class HAFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = HAFunctions.getHAResources();
      * 
-     *         final var example = &#34;TODO: ForExpression&#34;;
+     *         final var example = "TODO: ForExpression";
      * 
-     *         ctx.export(&#34;proxmoxVirtualEnvironmentHaresourcesFull&#34;, example);
+     *         ctx.export("proxmoxVirtualEnvironmentHaresourcesFull", example);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -539,7 +565,8 @@ public final class HAFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -562,12 +589,13 @@ public final class HAFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = HAFunctions.getHAResources();
      * 
-     *         final var example = &#34;TODO: ForExpression&#34;;
+     *         final var example = "TODO: ForExpression";
      * 
-     *         ctx.export(&#34;proxmoxVirtualEnvironmentHaresourcesFull&#34;, example);
+     *         ctx.export("proxmoxVirtualEnvironmentHaresourcesFull", example);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -580,7 +608,8 @@ public final class HAFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -604,13 +633,14 @@ public final class HAFunctions {
      *         final var exampleAll = HAFunctions.getHAResources();
      * 
      *         final var exampleVm = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
-     *             .type(&#34;vm&#34;)
+     *             .type("vm")
      *             .build());
      * 
-     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentHaresources&#34;, %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHaresources", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -623,7 +653,8 @@ public final class HAFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -647,13 +678,14 @@ public final class HAFunctions {
      *         final var exampleAll = HAFunctions.getHAResources();
      * 
      *         final var exampleVm = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
-     *             .type(&#34;vm&#34;)
+     *             .type("vm")
      *             .build());
      * 
-     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentHaresources&#34;, %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHaresources", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -666,7 +698,8 @@ public final class HAFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -690,13 +723,14 @@ public final class HAFunctions {
      *         final var exampleAll = HAFunctions.getHAResources();
      * 
      *         final var exampleVm = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
-     *             .type(&#34;vm&#34;)
+     *             .type("vm")
      *             .build());
      * 
-     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentHaresources&#34;, %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHaresources", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -709,7 +743,8 @@ public final class HAFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -733,13 +768,14 @@ public final class HAFunctions {
      *         final var exampleAll = HAFunctions.getHAResources();
      * 
      *         final var exampleVm = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
-     *             .type(&#34;vm&#34;)
+     *             .type("vm")
      *             .build());
      * 
-     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentHaresources&#34;, %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHaresources", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -752,7 +788,8 @@ public final class HAFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -776,13 +813,14 @@ public final class HAFunctions {
      *         final var exampleAll = HAFunctions.getHAResources();
      * 
      *         final var exampleVm = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
-     *             .type(&#34;vm&#34;)
+     *             .type("vm")
      *             .build());
      * 
-     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentHaresources&#34;, %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHaresources", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -795,7 +833,8 @@ public final class HAFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -819,13 +858,14 @@ public final class HAFunctions {
      *         final var exampleAll = HAFunctions.getHAResources();
      * 
      *         final var exampleVm = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
-     *             .type(&#34;vm&#34;)
+     *             .type("vm")
      *             .build());
      * 
-     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentHaresources&#34;, %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHaresources", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

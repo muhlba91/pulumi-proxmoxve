@@ -221,6 +221,9 @@ func (o VirtualMachineAgentPtrOutput) Type() pulumi.StringPtrOutput {
 
 type VirtualMachineAudioDevice struct {
 	// The device (defaults to `intel-hda`).
+	// - `AC97` - Intel 82801AA AC97 Audio.
+	// - `ich9-intel-hda` - Intel HD Audio Controller (ich9).
+	// - `intel-hda` - Intel HD Audio.
 	Device *string `pulumi:"device"`
 	// The driver (defaults to `spice`).
 	Driver *string `pulumi:"driver"`
@@ -242,6 +245,9 @@ type VirtualMachineAudioDeviceInput interface {
 
 type VirtualMachineAudioDeviceArgs struct {
 	// The device (defaults to `intel-hda`).
+	// - `AC97` - Intel 82801AA AC97 Audio.
+	// - `ich9-intel-hda` - Intel HD Audio Controller (ich9).
+	// - `intel-hda` - Intel HD Audio.
 	Device pulumi.StringPtrInput `pulumi:"device"`
 	// The driver (defaults to `spice`).
 	Driver pulumi.StringPtrInput `pulumi:"driver"`
@@ -328,6 +334,9 @@ func (o VirtualMachineAudioDeviceOutput) ToVirtualMachineAudioDevicePtrOutputWit
 }
 
 // The device (defaults to `intel-hda`).
+// - `AC97` - Intel 82801AA AC97 Audio.
+// - `ich9-intel-hda` - Intel HD Audio Controller (ich9).
+// - `intel-hda` - Intel HD Audio.
 func (o VirtualMachineAudioDeviceOutput) Device() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineAudioDevice) *string { return v.Device }).(pulumi.StringPtrOutput)
 }
@@ -368,6 +377,9 @@ func (o VirtualMachineAudioDevicePtrOutput) Elem() VirtualMachineAudioDeviceOutp
 }
 
 // The device (defaults to `intel-hda`).
+// - `AC97` - Intel 82801AA AC97 Audio.
+// - `ich9-intel-hda` - Intel HD Audio Controller (ich9).
+// - `intel-hda` - Intel HD Audio.
 func (o VirtualMachineAudioDevicePtrOutput) Device() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineAudioDevice) *string {
 		if v == nil {
@@ -1487,21 +1499,23 @@ func (o VirtualMachineDiskArrayOutput) Index(i pulumi.IntInput) VirtualMachineDi
 }
 
 type VirtualMachineDiskSpeed struct {
-	// The maximum read I/O in operations per second
+	// The maximum read I/O in operations per second.
 	IopsRead *int `pulumi:"iopsRead"`
-	// The maximum unthrottled read I/O pool in operations per second
+	// The maximum unthrottled read I/O pool in operations per second.
 	IopsReadBurstable *int `pulumi:"iopsReadBurstable"`
-	// The maximum write I/O in operations per second
+	// The maximum write I/O in operations per second.
 	IopsWrite *int `pulumi:"iopsWrite"`
-	// The maximum unthrottled write I/O pool in operations per second
+	// The maximum unthrottled write I/O pool in operations per second.
 	IopsWriteBurstable *int `pulumi:"iopsWriteBurstable"`
-	// The maximum read speed in megabytes per second
+	// The maximum read speed in megabytes per second.
 	Read *int `pulumi:"read"`
-	// The maximum burstable read speed in megabytes per second
+	// The maximum burstable read speed in
+	// megabytes per second.
 	ReadBurstable *int `pulumi:"readBurstable"`
-	// The maximum write speed in megabytes per second
+	// The maximum write speed in megabytes per second.
 	Write *int `pulumi:"write"`
-	// The maximum burstable write speed in megabytes per second
+	// The maximum burstable write speed in
+	// megabytes per second.
 	WriteBurstable *int `pulumi:"writeBurstable"`
 }
 
@@ -1517,21 +1531,23 @@ type VirtualMachineDiskSpeedInput interface {
 }
 
 type VirtualMachineDiskSpeedArgs struct {
-	// The maximum read I/O in operations per second
+	// The maximum read I/O in operations per second.
 	IopsRead pulumi.IntPtrInput `pulumi:"iopsRead"`
-	// The maximum unthrottled read I/O pool in operations per second
+	// The maximum unthrottled read I/O pool in operations per second.
 	IopsReadBurstable pulumi.IntPtrInput `pulumi:"iopsReadBurstable"`
-	// The maximum write I/O in operations per second
+	// The maximum write I/O in operations per second.
 	IopsWrite pulumi.IntPtrInput `pulumi:"iopsWrite"`
-	// The maximum unthrottled write I/O pool in operations per second
+	// The maximum unthrottled write I/O pool in operations per second.
 	IopsWriteBurstable pulumi.IntPtrInput `pulumi:"iopsWriteBurstable"`
-	// The maximum read speed in megabytes per second
+	// The maximum read speed in megabytes per second.
 	Read pulumi.IntPtrInput `pulumi:"read"`
-	// The maximum burstable read speed in megabytes per second
+	// The maximum burstable read speed in
+	// megabytes per second.
 	ReadBurstable pulumi.IntPtrInput `pulumi:"readBurstable"`
-	// The maximum write speed in megabytes per second
+	// The maximum write speed in megabytes per second.
 	Write pulumi.IntPtrInput `pulumi:"write"`
-	// The maximum burstable write speed in megabytes per second
+	// The maximum burstable write speed in
+	// megabytes per second.
 	WriteBurstable pulumi.IntPtrInput `pulumi:"writeBurstable"`
 }
 
@@ -1612,42 +1628,44 @@ func (o VirtualMachineDiskSpeedOutput) ToVirtualMachineDiskSpeedPtrOutputWithCon
 	}).(VirtualMachineDiskSpeedPtrOutput)
 }
 
-// The maximum read I/O in operations per second
+// The maximum read I/O in operations per second.
 func (o VirtualMachineDiskSpeedOutput) IopsRead() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDiskSpeed) *int { return v.IopsRead }).(pulumi.IntPtrOutput)
 }
 
-// The maximum unthrottled read I/O pool in operations per second
+// The maximum unthrottled read I/O pool in operations per second.
 func (o VirtualMachineDiskSpeedOutput) IopsReadBurstable() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDiskSpeed) *int { return v.IopsReadBurstable }).(pulumi.IntPtrOutput)
 }
 
-// The maximum write I/O in operations per second
+// The maximum write I/O in operations per second.
 func (o VirtualMachineDiskSpeedOutput) IopsWrite() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDiskSpeed) *int { return v.IopsWrite }).(pulumi.IntPtrOutput)
 }
 
-// The maximum unthrottled write I/O pool in operations per second
+// The maximum unthrottled write I/O pool in operations per second.
 func (o VirtualMachineDiskSpeedOutput) IopsWriteBurstable() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDiskSpeed) *int { return v.IopsWriteBurstable }).(pulumi.IntPtrOutput)
 }
 
-// The maximum read speed in megabytes per second
+// The maximum read speed in megabytes per second.
 func (o VirtualMachineDiskSpeedOutput) Read() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDiskSpeed) *int { return v.Read }).(pulumi.IntPtrOutput)
 }
 
-// The maximum burstable read speed in megabytes per second
+// The maximum burstable read speed in
+// megabytes per second.
 func (o VirtualMachineDiskSpeedOutput) ReadBurstable() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDiskSpeed) *int { return v.ReadBurstable }).(pulumi.IntPtrOutput)
 }
 
-// The maximum write speed in megabytes per second
+// The maximum write speed in megabytes per second.
 func (o VirtualMachineDiskSpeedOutput) Write() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDiskSpeed) *int { return v.Write }).(pulumi.IntPtrOutput)
 }
 
-// The maximum burstable write speed in megabytes per second
+// The maximum burstable write speed in
+// megabytes per second.
 func (o VirtualMachineDiskSpeedOutput) WriteBurstable() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDiskSpeed) *int { return v.WriteBurstable }).(pulumi.IntPtrOutput)
 }
@@ -1676,7 +1694,7 @@ func (o VirtualMachineDiskSpeedPtrOutput) Elem() VirtualMachineDiskSpeedOutput {
 	}).(VirtualMachineDiskSpeedOutput)
 }
 
-// The maximum read I/O in operations per second
+// The maximum read I/O in operations per second.
 func (o VirtualMachineDiskSpeedPtrOutput) IopsRead() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineDiskSpeed) *int {
 		if v == nil {
@@ -1686,7 +1704,7 @@ func (o VirtualMachineDiskSpeedPtrOutput) IopsRead() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The maximum unthrottled read I/O pool in operations per second
+// The maximum unthrottled read I/O pool in operations per second.
 func (o VirtualMachineDiskSpeedPtrOutput) IopsReadBurstable() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineDiskSpeed) *int {
 		if v == nil {
@@ -1696,7 +1714,7 @@ func (o VirtualMachineDiskSpeedPtrOutput) IopsReadBurstable() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
-// The maximum write I/O in operations per second
+// The maximum write I/O in operations per second.
 func (o VirtualMachineDiskSpeedPtrOutput) IopsWrite() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineDiskSpeed) *int {
 		if v == nil {
@@ -1706,7 +1724,7 @@ func (o VirtualMachineDiskSpeedPtrOutput) IopsWrite() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The maximum unthrottled write I/O pool in operations per second
+// The maximum unthrottled write I/O pool in operations per second.
 func (o VirtualMachineDiskSpeedPtrOutput) IopsWriteBurstable() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineDiskSpeed) *int {
 		if v == nil {
@@ -1716,7 +1734,7 @@ func (o VirtualMachineDiskSpeedPtrOutput) IopsWriteBurstable() pulumi.IntPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
-// The maximum read speed in megabytes per second
+// The maximum read speed in megabytes per second.
 func (o VirtualMachineDiskSpeedPtrOutput) Read() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineDiskSpeed) *int {
 		if v == nil {
@@ -1726,7 +1744,8 @@ func (o VirtualMachineDiskSpeedPtrOutput) Read() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The maximum burstable read speed in megabytes per second
+// The maximum burstable read speed in
+// megabytes per second.
 func (o VirtualMachineDiskSpeedPtrOutput) ReadBurstable() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineDiskSpeed) *int {
 		if v == nil {
@@ -1736,7 +1755,7 @@ func (o VirtualMachineDiskSpeedPtrOutput) ReadBurstable() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The maximum write speed in megabytes per second
+// The maximum write speed in megabytes per second.
 func (o VirtualMachineDiskSpeedPtrOutput) Write() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineDiskSpeed) *int {
 		if v == nil {
@@ -1746,7 +1765,8 @@ func (o VirtualMachineDiskSpeedPtrOutput) Write() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The maximum burstable write speed in megabytes per second
+// The maximum burstable write speed in
+// megabytes per second.
 func (o VirtualMachineDiskSpeedPtrOutput) WriteBurstable() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineDiskSpeed) *int {
 		if v == nil {
@@ -2545,13 +2565,15 @@ func (o VirtualMachineInitializationPtrOutput) VendorDataFileId() pulumi.StringP
 }
 
 type VirtualMachineInitializationDns struct {
-	// The DNS search domain
+	// The DNS search domain.
 	Domain *string `pulumi:"domain"`
-	// The DNS server
+	// The DNS server. The `server` attribute is
+	// deprecated and will be removed in a future release. Please use the
+	// `servers` attribute instead.
 	//
 	// Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
 	Server *string `pulumi:"server"`
-	// The list of DNS servers
+	// The list of DNS servers.
 	Servers []string `pulumi:"servers"`
 }
 
@@ -2567,13 +2589,15 @@ type VirtualMachineInitializationDnsInput interface {
 }
 
 type VirtualMachineInitializationDnsArgs struct {
-	// The DNS search domain
+	// The DNS search domain.
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
-	// The DNS server
+	// The DNS server. The `server` attribute is
+	// deprecated and will be removed in a future release. Please use the
+	// `servers` attribute instead.
 	//
 	// Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
 	Server pulumi.StringPtrInput `pulumi:"server"`
-	// The list of DNS servers
+	// The list of DNS servers.
 	Servers pulumi.StringArrayInput `pulumi:"servers"`
 }
 
@@ -2654,19 +2678,21 @@ func (o VirtualMachineInitializationDnsOutput) ToVirtualMachineInitializationDns
 	}).(VirtualMachineInitializationDnsPtrOutput)
 }
 
-// The DNS search domain
+// The DNS search domain.
 func (o VirtualMachineInitializationDnsOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationDns) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
-// The DNS server
+// The DNS server. The `server` attribute is
+// deprecated and will be removed in a future release. Please use the
+// `servers` attribute instead.
 //
 // Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
 func (o VirtualMachineInitializationDnsOutput) Server() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationDns) *string { return v.Server }).(pulumi.StringPtrOutput)
 }
 
-// The list of DNS servers
+// The list of DNS servers.
 func (o VirtualMachineInitializationDnsOutput) Servers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationDns) []string { return v.Servers }).(pulumi.StringArrayOutput)
 }
@@ -2695,7 +2721,7 @@ func (o VirtualMachineInitializationDnsPtrOutput) Elem() VirtualMachineInitializ
 	}).(VirtualMachineInitializationDnsOutput)
 }
 
-// The DNS search domain
+// The DNS search domain.
 func (o VirtualMachineInitializationDnsPtrOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineInitializationDns) *string {
 		if v == nil {
@@ -2705,7 +2731,9 @@ func (o VirtualMachineInitializationDnsPtrOutput) Domain() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The DNS server
+// The DNS server. The `server` attribute is
+// deprecated and will be removed in a future release. Please use the
+// `servers` attribute instead.
 //
 // Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
 func (o VirtualMachineInitializationDnsPtrOutput) Server() pulumi.StringPtrOutput {
@@ -2717,7 +2745,7 @@ func (o VirtualMachineInitializationDnsPtrOutput) Server() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The list of DNS servers
+// The list of DNS servers.
 func (o VirtualMachineInitializationDnsPtrOutput) Servers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VirtualMachineInitializationDns) []string {
 		if v == nil {
@@ -2728,9 +2756,9 @@ func (o VirtualMachineInitializationDnsPtrOutput) Servers() pulumi.StringArrayOu
 }
 
 type VirtualMachineInitializationIpConfig struct {
-	// The IPv4 configuration
+	// The IPv4 configuration.
 	Ipv4 *VirtualMachineInitializationIpConfigIpv4 `pulumi:"ipv4"`
-	// The IPv6 configuration
+	// The IPv4 configuration.
 	Ipv6 *VirtualMachineInitializationIpConfigIpv6 `pulumi:"ipv6"`
 }
 
@@ -2746,9 +2774,9 @@ type VirtualMachineInitializationIpConfigInput interface {
 }
 
 type VirtualMachineInitializationIpConfigArgs struct {
-	// The IPv4 configuration
+	// The IPv4 configuration.
 	Ipv4 VirtualMachineInitializationIpConfigIpv4PtrInput `pulumi:"ipv4"`
-	// The IPv6 configuration
+	// The IPv4 configuration.
 	Ipv6 VirtualMachineInitializationIpConfigIpv6PtrInput `pulumi:"ipv6"`
 }
 
@@ -2803,12 +2831,12 @@ func (o VirtualMachineInitializationIpConfigOutput) ToVirtualMachineInitializati
 	return o
 }
 
-// The IPv4 configuration
+// The IPv4 configuration.
 func (o VirtualMachineInitializationIpConfigOutput) Ipv4() VirtualMachineInitializationIpConfigIpv4PtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationIpConfig) *VirtualMachineInitializationIpConfigIpv4 { return v.Ipv4 }).(VirtualMachineInitializationIpConfigIpv4PtrOutput)
 }
 
-// The IPv6 configuration
+// The IPv4 configuration.
 func (o VirtualMachineInitializationIpConfigOutput) Ipv6() VirtualMachineInitializationIpConfigIpv6PtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationIpConfig) *VirtualMachineInitializationIpConfigIpv6 { return v.Ipv6 }).(VirtualMachineInitializationIpConfigIpv6PtrOutput)
 }
@@ -2834,9 +2862,12 @@ func (o VirtualMachineInitializationIpConfigArrayOutput) Index(i pulumi.IntInput
 }
 
 type VirtualMachineInitializationIpConfigIpv4 struct {
-	// The IPv4 address
+	// The IPv4 address in CIDR notation
+	// (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
+	// autodiscovery.
 	Address *string `pulumi:"address"`
-	// The IPv4 gateway
+	// The IPv4 gateway (must be omitted
+	// when `dhcp` is used as the address).
 	Gateway *string `pulumi:"gateway"`
 }
 
@@ -2852,9 +2883,12 @@ type VirtualMachineInitializationIpConfigIpv4Input interface {
 }
 
 type VirtualMachineInitializationIpConfigIpv4Args struct {
-	// The IPv4 address
+	// The IPv4 address in CIDR notation
+	// (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
+	// autodiscovery.
 	Address pulumi.StringPtrInput `pulumi:"address"`
-	// The IPv4 gateway
+	// The IPv4 gateway (must be omitted
+	// when `dhcp` is used as the address).
 	Gateway pulumi.StringPtrInput `pulumi:"gateway"`
 }
 
@@ -2935,12 +2969,15 @@ func (o VirtualMachineInitializationIpConfigIpv4Output) ToVirtualMachineInitiali
 	}).(VirtualMachineInitializationIpConfigIpv4PtrOutput)
 }
 
-// The IPv4 address
+// The IPv4 address in CIDR notation
+// (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
+// autodiscovery.
 func (o VirtualMachineInitializationIpConfigIpv4Output) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationIpConfigIpv4) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
 
-// The IPv4 gateway
+// The IPv4 gateway (must be omitted
+// when `dhcp` is used as the address).
 func (o VirtualMachineInitializationIpConfigIpv4Output) Gateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationIpConfigIpv4) *string { return v.Gateway }).(pulumi.StringPtrOutput)
 }
@@ -2969,7 +3006,9 @@ func (o VirtualMachineInitializationIpConfigIpv4PtrOutput) Elem() VirtualMachine
 	}).(VirtualMachineInitializationIpConfigIpv4Output)
 }
 
-// The IPv4 address
+// The IPv4 address in CIDR notation
+// (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
+// autodiscovery.
 func (o VirtualMachineInitializationIpConfigIpv4PtrOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineInitializationIpConfigIpv4) *string {
 		if v == nil {
@@ -2979,7 +3018,8 @@ func (o VirtualMachineInitializationIpConfigIpv4PtrOutput) Address() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// The IPv4 gateway
+// The IPv4 gateway (must be omitted
+// when `dhcp` is used as the address).
 func (o VirtualMachineInitializationIpConfigIpv4PtrOutput) Gateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineInitializationIpConfigIpv4) *string {
 		if v == nil {
@@ -2990,9 +3030,12 @@ func (o VirtualMachineInitializationIpConfigIpv4PtrOutput) Gateway() pulumi.Stri
 }
 
 type VirtualMachineInitializationIpConfigIpv6 struct {
-	// The IPv6 address
+	// The IPv6 address in CIDR notation
+	// (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
+	// to `dhcp` for autodiscovery.
 	Address *string `pulumi:"address"`
-	// The IPv6 gateway
+	// The IPv6 gateway (must be omitted
+	// when `dhcp` is used as the address).
 	Gateway *string `pulumi:"gateway"`
 }
 
@@ -3008,9 +3051,12 @@ type VirtualMachineInitializationIpConfigIpv6Input interface {
 }
 
 type VirtualMachineInitializationIpConfigIpv6Args struct {
-	// The IPv6 address
+	// The IPv6 address in CIDR notation
+	// (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
+	// to `dhcp` for autodiscovery.
 	Address pulumi.StringPtrInput `pulumi:"address"`
-	// The IPv6 gateway
+	// The IPv6 gateway (must be omitted
+	// when `dhcp` is used as the address).
 	Gateway pulumi.StringPtrInput `pulumi:"gateway"`
 }
 
@@ -3091,12 +3137,15 @@ func (o VirtualMachineInitializationIpConfigIpv6Output) ToVirtualMachineInitiali
 	}).(VirtualMachineInitializationIpConfigIpv6PtrOutput)
 }
 
-// The IPv6 address
+// The IPv6 address in CIDR notation
+// (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
+// to `dhcp` for autodiscovery.
 func (o VirtualMachineInitializationIpConfigIpv6Output) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationIpConfigIpv6) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
 
-// The IPv6 gateway
+// The IPv6 gateway (must be omitted
+// when `dhcp` is used as the address).
 func (o VirtualMachineInitializationIpConfigIpv6Output) Gateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationIpConfigIpv6) *string { return v.Gateway }).(pulumi.StringPtrOutput)
 }
@@ -3125,7 +3174,9 @@ func (o VirtualMachineInitializationIpConfigIpv6PtrOutput) Elem() VirtualMachine
 	}).(VirtualMachineInitializationIpConfigIpv6Output)
 }
 
-// The IPv6 address
+// The IPv6 address in CIDR notation
+// (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
+// to `dhcp` for autodiscovery.
 func (o VirtualMachineInitializationIpConfigIpv6PtrOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineInitializationIpConfigIpv6) *string {
 		if v == nil {
@@ -3135,7 +3186,8 @@ func (o VirtualMachineInitializationIpConfigIpv6PtrOutput) Address() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// The IPv6 gateway
+// The IPv6 gateway (must be omitted
+// when `dhcp` is used as the address).
 func (o VirtualMachineInitializationIpConfigIpv6PtrOutput) Gateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineInitializationIpConfigIpv6) *string {
 		if v == nil {
@@ -3146,11 +3198,11 @@ func (o VirtualMachineInitializationIpConfigIpv6PtrOutput) Gateway() pulumi.Stri
 }
 
 type VirtualMachineInitializationUserAccount struct {
-	// The SSH keys
+	// The SSH keys.
 	Keys []string `pulumi:"keys"`
-	// The SSH password
+	// The SSH password.
 	Password *string `pulumi:"password"`
-	// The SSH username
+	// The SSH username.
 	Username *string `pulumi:"username"`
 }
 
@@ -3166,11 +3218,11 @@ type VirtualMachineInitializationUserAccountInput interface {
 }
 
 type VirtualMachineInitializationUserAccountArgs struct {
-	// The SSH keys
+	// The SSH keys.
 	Keys pulumi.StringArrayInput `pulumi:"keys"`
-	// The SSH password
+	// The SSH password.
 	Password pulumi.StringPtrInput `pulumi:"password"`
-	// The SSH username
+	// The SSH username.
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
@@ -3251,17 +3303,17 @@ func (o VirtualMachineInitializationUserAccountOutput) ToVirtualMachineInitializ
 	}).(VirtualMachineInitializationUserAccountPtrOutput)
 }
 
-// The SSH keys
+// The SSH keys.
 func (o VirtualMachineInitializationUserAccountOutput) Keys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationUserAccount) []string { return v.Keys }).(pulumi.StringArrayOutput)
 }
 
-// The SSH password
+// The SSH password.
 func (o VirtualMachineInitializationUserAccountOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationUserAccount) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// The SSH username
+// The SSH username.
 func (o VirtualMachineInitializationUserAccountOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationUserAccount) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -3290,7 +3342,7 @@ func (o VirtualMachineInitializationUserAccountPtrOutput) Elem() VirtualMachineI
 	}).(VirtualMachineInitializationUserAccountOutput)
 }
 
-// The SSH keys
+// The SSH keys.
 func (o VirtualMachineInitializationUserAccountPtrOutput) Keys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VirtualMachineInitializationUserAccount) []string {
 		if v == nil {
@@ -3300,7 +3352,7 @@ func (o VirtualMachineInitializationUserAccountPtrOutput) Keys() pulumi.StringAr
 	}).(pulumi.StringArrayOutput)
 }
 
-// The SSH password
+// The SSH password.
 func (o VirtualMachineInitializationUserAccountPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineInitializationUserAccount) *string {
 		if v == nil {
@@ -3310,7 +3362,7 @@ func (o VirtualMachineInitializationUserAccountPtrOutput) Password() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// The SSH username
+// The SSH username.
 func (o VirtualMachineInitializationUserAccountPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineInitializationUserAccount) *string {
 		if v == nil {
@@ -4847,8 +4899,11 @@ func (o VirtualMachineUsbArrayOutput) Index(i pulumi.IntInput) VirtualMachineUsb
 }
 
 type VirtualMachineVga struct {
-	// Whether to enable the VGA device (defaults
-	// to `true`).
+	// Enable VNC clipboard by setting to `vnc`. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
+	Clipboard *string `pulumi:"clipboard"`
+	// Whether to enable the VGA device
+	//
+	// Deprecated: The `enabled` attribute is deprecated and will be removed in a future release. Use type `none` instead.
 	Enabled *bool `pulumi:"enabled"`
 	// The VGA memory in megabytes (defaults to `16`).
 	Memory *int `pulumi:"memory"`
@@ -4868,8 +4923,11 @@ type VirtualMachineVgaInput interface {
 }
 
 type VirtualMachineVgaArgs struct {
-	// Whether to enable the VGA device (defaults
-	// to `true`).
+	// Enable VNC clipboard by setting to `vnc`. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
+	Clipboard pulumi.StringPtrInput `pulumi:"clipboard"`
+	// Whether to enable the VGA device
+	//
+	// Deprecated: The `enabled` attribute is deprecated and will be removed in a future release. Use type `none` instead.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// The VGA memory in megabytes (defaults to `16`).
 	Memory pulumi.IntPtrInput `pulumi:"memory"`
@@ -4954,8 +5012,14 @@ func (o VirtualMachineVgaOutput) ToVirtualMachineVgaPtrOutputWithContext(ctx con
 	}).(VirtualMachineVgaPtrOutput)
 }
 
-// Whether to enable the VGA device (defaults
-// to `true`).
+// Enable VNC clipboard by setting to `vnc`. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
+func (o VirtualMachineVgaOutput) Clipboard() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineVga) *string { return v.Clipboard }).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable the VGA device
+//
+// Deprecated: The `enabled` attribute is deprecated and will be removed in a future release. Use type `none` instead.
 func (o VirtualMachineVgaOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineVga) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -4994,8 +5058,19 @@ func (o VirtualMachineVgaPtrOutput) Elem() VirtualMachineVgaOutput {
 	}).(VirtualMachineVgaOutput)
 }
 
-// Whether to enable the VGA device (defaults
-// to `true`).
+// Enable VNC clipboard by setting to `vnc`. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
+func (o VirtualMachineVgaPtrOutput) Clipboard() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineVga) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Clipboard
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable the VGA device
+//
+// Deprecated: The `enabled` attribute is deprecated and will be removed in a future release. Use type `none` instead.
 func (o VirtualMachineVgaPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineVga) *bool {
 		if v == nil {

@@ -1181,6 +1181,181 @@ func (o Vm2TimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type Vm2Vga struct {
+	// Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+	Clipboard *string `pulumi:"clipboard"`
+	// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+	Memory *int `pulumi:"memory"`
+	// The VGA type (defaults to `std`).
+	Type *string `pulumi:"type"`
+}
+
+// Vm2VgaInput is an input type that accepts Vm2VgaArgs and Vm2VgaOutput values.
+// You can construct a concrete instance of `Vm2VgaInput` via:
+//
+//	Vm2VgaArgs{...}
+type Vm2VgaInput interface {
+	pulumi.Input
+
+	ToVm2VgaOutput() Vm2VgaOutput
+	ToVm2VgaOutputWithContext(context.Context) Vm2VgaOutput
+}
+
+type Vm2VgaArgs struct {
+	// Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+	Clipboard pulumi.StringPtrInput `pulumi:"clipboard"`
+	// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+	Memory pulumi.IntPtrInput `pulumi:"memory"`
+	// The VGA type (defaults to `std`).
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (Vm2VgaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vm2Vga)(nil)).Elem()
+}
+
+func (i Vm2VgaArgs) ToVm2VgaOutput() Vm2VgaOutput {
+	return i.ToVm2VgaOutputWithContext(context.Background())
+}
+
+func (i Vm2VgaArgs) ToVm2VgaOutputWithContext(ctx context.Context) Vm2VgaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Vm2VgaOutput)
+}
+
+func (i Vm2VgaArgs) ToVm2VgaPtrOutput() Vm2VgaPtrOutput {
+	return i.ToVm2VgaPtrOutputWithContext(context.Background())
+}
+
+func (i Vm2VgaArgs) ToVm2VgaPtrOutputWithContext(ctx context.Context) Vm2VgaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Vm2VgaOutput).ToVm2VgaPtrOutputWithContext(ctx)
+}
+
+// Vm2VgaPtrInput is an input type that accepts Vm2VgaArgs, Vm2VgaPtr and Vm2VgaPtrOutput values.
+// You can construct a concrete instance of `Vm2VgaPtrInput` via:
+//
+//	        Vm2VgaArgs{...}
+//
+//	or:
+//
+//	        nil
+type Vm2VgaPtrInput interface {
+	pulumi.Input
+
+	ToVm2VgaPtrOutput() Vm2VgaPtrOutput
+	ToVm2VgaPtrOutputWithContext(context.Context) Vm2VgaPtrOutput
+}
+
+type vm2VgaPtrType Vm2VgaArgs
+
+func Vm2VgaPtr(v *Vm2VgaArgs) Vm2VgaPtrInput {
+	return (*vm2VgaPtrType)(v)
+}
+
+func (*vm2VgaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Vm2Vga)(nil)).Elem()
+}
+
+func (i *vm2VgaPtrType) ToVm2VgaPtrOutput() Vm2VgaPtrOutput {
+	return i.ToVm2VgaPtrOutputWithContext(context.Background())
+}
+
+func (i *vm2VgaPtrType) ToVm2VgaPtrOutputWithContext(ctx context.Context) Vm2VgaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Vm2VgaPtrOutput)
+}
+
+type Vm2VgaOutput struct{ *pulumi.OutputState }
+
+func (Vm2VgaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vm2Vga)(nil)).Elem()
+}
+
+func (o Vm2VgaOutput) ToVm2VgaOutput() Vm2VgaOutput {
+	return o
+}
+
+func (o Vm2VgaOutput) ToVm2VgaOutputWithContext(ctx context.Context) Vm2VgaOutput {
+	return o
+}
+
+func (o Vm2VgaOutput) ToVm2VgaPtrOutput() Vm2VgaPtrOutput {
+	return o.ToVm2VgaPtrOutputWithContext(context.Background())
+}
+
+func (o Vm2VgaOutput) ToVm2VgaPtrOutputWithContext(ctx context.Context) Vm2VgaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Vm2Vga) *Vm2Vga {
+		return &v
+	}).(Vm2VgaPtrOutput)
+}
+
+// Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+func (o Vm2VgaOutput) Clipboard() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Vm2Vga) *string { return v.Clipboard }).(pulumi.StringPtrOutput)
+}
+
+// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+func (o Vm2VgaOutput) Memory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Vm2Vga) *int { return v.Memory }).(pulumi.IntPtrOutput)
+}
+
+// The VGA type (defaults to `std`).
+func (o Vm2VgaOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Vm2Vga) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type Vm2VgaPtrOutput struct{ *pulumi.OutputState }
+
+func (Vm2VgaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Vm2Vga)(nil)).Elem()
+}
+
+func (o Vm2VgaPtrOutput) ToVm2VgaPtrOutput() Vm2VgaPtrOutput {
+	return o
+}
+
+func (o Vm2VgaPtrOutput) ToVm2VgaPtrOutputWithContext(ctx context.Context) Vm2VgaPtrOutput {
+	return o
+}
+
+func (o Vm2VgaPtrOutput) Elem() Vm2VgaOutput {
+	return o.ApplyT(func(v *Vm2Vga) Vm2Vga {
+		if v != nil {
+			return *v
+		}
+		var ret Vm2Vga
+		return ret
+	}).(Vm2VgaOutput)
+}
+
+// Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+func (o Vm2VgaPtrOutput) Clipboard() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Vm2Vga) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Clipboard
+	}).(pulumi.StringPtrOutput)
+}
+
+// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+func (o Vm2VgaPtrOutput) Memory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Vm2Vga) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Memory
+	}).(pulumi.IntPtrOutput)
+}
+
+// The VGA type (defaults to `std`).
+func (o Vm2VgaPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Vm2Vga) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetVm2Clone struct {
 	// The ID of the VM to clone.
 	Id int `pulumi:"id"`
@@ -1782,6 +1957,181 @@ func (o GetVm2TimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetVm2Vga struct {
+	// Enable a specific clipboard.
+	Clipboard string `pulumi:"clipboard"`
+	// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+	Memory int `pulumi:"memory"`
+	// The VGA type.
+	Type string `pulumi:"type"`
+}
+
+// GetVm2VgaInput is an input type that accepts GetVm2VgaArgs and GetVm2VgaOutput values.
+// You can construct a concrete instance of `GetVm2VgaInput` via:
+//
+//	GetVm2VgaArgs{...}
+type GetVm2VgaInput interface {
+	pulumi.Input
+
+	ToGetVm2VgaOutput() GetVm2VgaOutput
+	ToGetVm2VgaOutputWithContext(context.Context) GetVm2VgaOutput
+}
+
+type GetVm2VgaArgs struct {
+	// Enable a specific clipboard.
+	Clipboard pulumi.StringInput `pulumi:"clipboard"`
+	// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+	Memory pulumi.IntInput `pulumi:"memory"`
+	// The VGA type.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetVm2VgaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVm2Vga)(nil)).Elem()
+}
+
+func (i GetVm2VgaArgs) ToGetVm2VgaOutput() GetVm2VgaOutput {
+	return i.ToGetVm2VgaOutputWithContext(context.Background())
+}
+
+func (i GetVm2VgaArgs) ToGetVm2VgaOutputWithContext(ctx context.Context) GetVm2VgaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVm2VgaOutput)
+}
+
+func (i GetVm2VgaArgs) ToGetVm2VgaPtrOutput() GetVm2VgaPtrOutput {
+	return i.ToGetVm2VgaPtrOutputWithContext(context.Background())
+}
+
+func (i GetVm2VgaArgs) ToGetVm2VgaPtrOutputWithContext(ctx context.Context) GetVm2VgaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVm2VgaOutput).ToGetVm2VgaPtrOutputWithContext(ctx)
+}
+
+// GetVm2VgaPtrInput is an input type that accepts GetVm2VgaArgs, GetVm2VgaPtr and GetVm2VgaPtrOutput values.
+// You can construct a concrete instance of `GetVm2VgaPtrInput` via:
+//
+//	        GetVm2VgaArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetVm2VgaPtrInput interface {
+	pulumi.Input
+
+	ToGetVm2VgaPtrOutput() GetVm2VgaPtrOutput
+	ToGetVm2VgaPtrOutputWithContext(context.Context) GetVm2VgaPtrOutput
+}
+
+type getVm2VgaPtrType GetVm2VgaArgs
+
+func GetVm2VgaPtr(v *GetVm2VgaArgs) GetVm2VgaPtrInput {
+	return (*getVm2VgaPtrType)(v)
+}
+
+func (*getVm2VgaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVm2Vga)(nil)).Elem()
+}
+
+func (i *getVm2VgaPtrType) ToGetVm2VgaPtrOutput() GetVm2VgaPtrOutput {
+	return i.ToGetVm2VgaPtrOutputWithContext(context.Background())
+}
+
+func (i *getVm2VgaPtrType) ToGetVm2VgaPtrOutputWithContext(ctx context.Context) GetVm2VgaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVm2VgaPtrOutput)
+}
+
+type GetVm2VgaOutput struct{ *pulumi.OutputState }
+
+func (GetVm2VgaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVm2Vga)(nil)).Elem()
+}
+
+func (o GetVm2VgaOutput) ToGetVm2VgaOutput() GetVm2VgaOutput {
+	return o
+}
+
+func (o GetVm2VgaOutput) ToGetVm2VgaOutputWithContext(ctx context.Context) GetVm2VgaOutput {
+	return o
+}
+
+func (o GetVm2VgaOutput) ToGetVm2VgaPtrOutput() GetVm2VgaPtrOutput {
+	return o.ToGetVm2VgaPtrOutputWithContext(context.Background())
+}
+
+func (o GetVm2VgaOutput) ToGetVm2VgaPtrOutputWithContext(ctx context.Context) GetVm2VgaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVm2Vga) *GetVm2Vga {
+		return &v
+	}).(GetVm2VgaPtrOutput)
+}
+
+// Enable a specific clipboard.
+func (o GetVm2VgaOutput) Clipboard() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVm2Vga) string { return v.Clipboard }).(pulumi.StringOutput)
+}
+
+// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+func (o GetVm2VgaOutput) Memory() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVm2Vga) int { return v.Memory }).(pulumi.IntOutput)
+}
+
+// The VGA type.
+func (o GetVm2VgaOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVm2Vga) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetVm2VgaPtrOutput struct{ *pulumi.OutputState }
+
+func (GetVm2VgaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVm2Vga)(nil)).Elem()
+}
+
+func (o GetVm2VgaPtrOutput) ToGetVm2VgaPtrOutput() GetVm2VgaPtrOutput {
+	return o
+}
+
+func (o GetVm2VgaPtrOutput) ToGetVm2VgaPtrOutputWithContext(ctx context.Context) GetVm2VgaPtrOutput {
+	return o
+}
+
+func (o GetVm2VgaPtrOutput) Elem() GetVm2VgaOutput {
+	return o.ApplyT(func(v *GetVm2Vga) GetVm2Vga {
+		if v != nil {
+			return *v
+		}
+		var ret GetVm2Vga
+		return ret
+	}).(GetVm2VgaOutput)
+}
+
+// Enable a specific clipboard.
+func (o GetVm2VgaPtrOutput) Clipboard() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVm2Vga) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Clipboard
+	}).(pulumi.StringPtrOutput)
+}
+
+// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+func (o GetVm2VgaPtrOutput) Memory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetVm2Vga) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Memory
+	}).(pulumi.IntPtrOutput)
+}
+
+// The VGA type.
+func (o GetVm2VgaPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVm2Vga) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HostsEntryInput)(nil)).Elem(), HostsEntryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostsEntryArrayInput)(nil)).Elem(), HostsEntryArray{})
@@ -1795,12 +2145,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*Vm2CpuPtrInput)(nil)).Elem(), Vm2CpuArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Vm2TimeoutsInput)(nil)).Elem(), Vm2TimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Vm2TimeoutsPtrInput)(nil)).Elem(), Vm2TimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Vm2VgaInput)(nil)).Elem(), Vm2VgaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Vm2VgaPtrInput)(nil)).Elem(), Vm2VgaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2CloneInput)(nil)).Elem(), GetVm2CloneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2ClonePtrInput)(nil)).Elem(), GetVm2CloneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2CpuInput)(nil)).Elem(), GetVm2CpuArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2CpuPtrInput)(nil)).Elem(), GetVm2CpuArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2TimeoutsInput)(nil)).Elem(), GetVm2TimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2TimeoutsPtrInput)(nil)).Elem(), GetVm2TimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2VgaInput)(nil)).Elem(), GetVm2VgaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2VgaPtrInput)(nil)).Elem(), GetVm2VgaArgs{})
 	pulumi.RegisterOutputType(HostsEntryOutput{})
 	pulumi.RegisterOutputType(HostsEntryArrayOutput{})
 	pulumi.RegisterOutputType(ProviderSshOutput{})
@@ -1813,10 +2167,14 @@ func init() {
 	pulumi.RegisterOutputType(Vm2CpuPtrOutput{})
 	pulumi.RegisterOutputType(Vm2TimeoutsOutput{})
 	pulumi.RegisterOutputType(Vm2TimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(Vm2VgaOutput{})
+	pulumi.RegisterOutputType(Vm2VgaPtrOutput{})
 	pulumi.RegisterOutputType(GetVm2CloneOutput{})
 	pulumi.RegisterOutputType(GetVm2ClonePtrOutput{})
 	pulumi.RegisterOutputType(GetVm2CpuOutput{})
 	pulumi.RegisterOutputType(GetVm2CpuPtrOutput{})
 	pulumi.RegisterOutputType(GetVm2TimeoutsOutput{})
 	pulumi.RegisterOutputType(GetVm2TimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetVm2VgaOutput{})
+	pulumi.RegisterOutputType(GetVm2VgaPtrOutput{})
 }

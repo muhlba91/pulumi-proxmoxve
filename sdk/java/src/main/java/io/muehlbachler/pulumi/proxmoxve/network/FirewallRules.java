@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,32 +50,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var inbound = new FirewallRules(&#34;inbound&#34;, FirewallRulesArgs.builder()        
+ *         var inbound = new FirewallRules("inbound", FirewallRulesArgs.builder()
  *             .nodeName(proxmox_virtual_environment_vm.example().node_name())
  *             .vmId(proxmox_virtual_environment_vm.example().vm_id())
  *             .rules(            
  *                 FirewallRulesRuleArgs.builder()
- *                     .type(&#34;in&#34;)
- *                     .action(&#34;ACCEPT&#34;)
- *                     .comment(&#34;Allow HTTP&#34;)
- *                     .dest(&#34;192.168.1.5&#34;)
- *                     .dport(&#34;80&#34;)
- *                     .proto(&#34;tcp&#34;)
- *                     .log(&#34;info&#34;)
+ *                     .type("in")
+ *                     .action("ACCEPT")
+ *                     .comment("Allow HTTP")
+ *                     .dest("192.168.1.5")
+ *                     .dport("80")
+ *                     .proto("tcp")
+ *                     .log("info")
  *                     .build(),
  *                 FirewallRulesRuleArgs.builder()
- *                     .type(&#34;in&#34;)
- *                     .action(&#34;ACCEPT&#34;)
- *                     .comment(&#34;Allow HTTPS&#34;)
- *                     .dest(&#34;192.168.1.5&#34;)
- *                     .dport(&#34;443&#34;)
- *                     .proto(&#34;tcp&#34;)
- *                     .log(&#34;info&#34;)
+ *                     .type("in")
+ *                     .action("ACCEPT")
+ *                     .comment("Allow HTTPS")
+ *                     .dest("192.168.1.5")
+ *                     .dport("443")
+ *                     .proto("tcp")
+ *                     .log("info")
  *                     .build(),
  *                 FirewallRulesRuleArgs.builder()
  *                     .securityGroup(proxmox_virtual_environment_cluster_firewall_security_group.example().name())
- *                     .comment(&#34;From security group&#34;)
- *                     .iface(&#34;net0&#34;)
+ *                     .comment("From security group")
+ *                     .iface("net0")
  *                     .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(                
@@ -84,7 +85,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,37 +50,38 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var operationsAutomation = new User(&#34;operationsAutomation&#34;, UserArgs.builder()        
- *             .comment(&#34;Managed by Terraform&#34;)
- *             .password(&#34;a-strong-password&#34;)
- *             .userId(&#34;operations-automation@pve&#34;)
+ *         var operationsAutomation = new User("operationsAutomation", UserArgs.builder()
+ *             .comment("Managed by Terraform")
+ *             .password("a-strong-password")
+ *             .userId("operations-automation{@literal @}pve")
  *             .build());
  * 
- *         var operationsMonitoring = new Role(&#34;operationsMonitoring&#34;, RoleArgs.builder()        
- *             .roleId(&#34;operations-monitoring&#34;)
- *             .privileges(&#34;VM.Monitor&#34;)
+ *         var operationsMonitoring = new Role("operationsMonitoring", RoleArgs.builder()
+ *             .roleId("operations-monitoring")
+ *             .privileges("VM.Monitor")
  *             .build());
  * 
- *         var operationsAutomationMonitoring = new Acl(&#34;operationsAutomationMonitoring&#34;, AclArgs.builder()        
+ *         var operationsAutomationMonitoring = new Acl("operationsAutomationMonitoring", AclArgs.builder()
  *             .userId(operationsAutomation.userId())
  *             .roleId(operationsMonitoring.roleId())
- *             .path(&#34;/vms/1234&#34;)
+ *             .path("/vms/1234")
  *             .propagate(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * #!/usr/bin/env sh
  * 
- * ACL can be imported using its unique identifier, e.g.: {path}?{group|user@realm|user@realm!token}?{role}
+ * ACL can be imported using its unique identifier, e.g.: {path}?{group|user{@literal @}realm|user{@literal @}realm!token}?{role}
  * 
  * ```sh
- * $ pulumi import proxmoxve:index/acl:Acl operations_automation_monitoring /?monitor@pve?operations-monitoring
+ * $ pulumi import proxmoxve:index/acl:Acl operations_automation_monitoring /?monitor{@literal @}pve?operations-monitoring
  * ```
  * 
  */

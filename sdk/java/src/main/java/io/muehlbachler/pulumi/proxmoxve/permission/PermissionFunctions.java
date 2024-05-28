@@ -34,7 +34,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -56,12 +57,13 @@ public final class PermissionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var operationsTeam = PermissionFunctions.getGroup(GetGroupArgs.builder()
-     *             .groupId(&#34;operations-team&#34;)
+     *             .groupId("operations-team")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -74,7 +76,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -96,12 +99,13 @@ public final class PermissionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var operationsTeam = PermissionFunctions.getGroup(GetGroupArgs.builder()
-     *             .groupId(&#34;operations-team&#34;)
+     *             .groupId("operations-team")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -114,7 +118,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -136,12 +141,13 @@ public final class PermissionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var operationsTeam = PermissionFunctions.getGroup(GetGroupArgs.builder()
-     *             .groupId(&#34;operations-team&#34;)
+     *             .groupId("operations-team")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -154,7 +160,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -176,12 +183,13 @@ public final class PermissionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var operationsTeam = PermissionFunctions.getGroup(GetGroupArgs.builder()
-     *             .groupId(&#34;operations-team&#34;)
+     *             .groupId("operations-team")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -194,7 +202,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -218,7 +227,8 @@ public final class PermissionFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -231,7 +241,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -255,7 +266,8 @@ public final class PermissionFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -268,7 +280,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -292,7 +305,8 @@ public final class PermissionFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -305,7 +319,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -329,7 +344,8 @@ public final class PermissionFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -342,7 +358,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -366,7 +383,8 @@ public final class PermissionFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -379,7 +397,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -403,7 +422,8 @@ public final class PermissionFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -416,7 +436,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -438,12 +459,13 @@ public final class PermissionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var operationsPool = PermissionFunctions.getPool(GetPoolArgs.builder()
-     *             .poolId(&#34;operations&#34;)
+     *             .poolId("operations")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -456,7 +478,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -478,12 +501,13 @@ public final class PermissionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var operationsPool = PermissionFunctions.getPool(GetPoolArgs.builder()
-     *             .poolId(&#34;operations&#34;)
+     *             .poolId("operations")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -496,7 +520,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -518,12 +543,13 @@ public final class PermissionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var operationsPool = PermissionFunctions.getPool(GetPoolArgs.builder()
-     *             .poolId(&#34;operations&#34;)
+     *             .poolId("operations")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -536,7 +562,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -558,12 +585,13 @@ public final class PermissionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var operationsPool = PermissionFunctions.getPool(GetPoolArgs.builder()
-     *             .poolId(&#34;operations&#34;)
+     *             .poolId("operations")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -576,7 +604,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -600,7 +629,8 @@ public final class PermissionFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -613,7 +643,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -637,7 +668,8 @@ public final class PermissionFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -650,7 +682,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -674,7 +707,8 @@ public final class PermissionFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -687,7 +721,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -711,7 +746,8 @@ public final class PermissionFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -724,7 +760,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -748,7 +785,8 @@ public final class PermissionFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -761,7 +799,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -785,7 +824,8 @@ public final class PermissionFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -798,7 +838,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -820,12 +861,13 @@ public final class PermissionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var operationsRole = PermissionFunctions.getRole(GetRoleArgs.builder()
-     *             .roleId(&#34;operations&#34;)
+     *             .roleId("operations")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -838,7 +880,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -860,12 +903,13 @@ public final class PermissionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var operationsRole = PermissionFunctions.getRole(GetRoleArgs.builder()
-     *             .roleId(&#34;operations&#34;)
+     *             .roleId("operations")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -878,7 +922,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -900,12 +945,13 @@ public final class PermissionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var operationsRole = PermissionFunctions.getRole(GetRoleArgs.builder()
-     *             .roleId(&#34;operations&#34;)
+     *             .roleId("operations")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -918,7 +964,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -940,12 +987,13 @@ public final class PermissionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var operationsRole = PermissionFunctions.getRole(GetRoleArgs.builder()
-     *             .roleId(&#34;operations&#34;)
+     *             .roleId("operations")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -958,7 +1006,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -982,7 +1031,8 @@ public final class PermissionFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -995,7 +1045,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1019,7 +1070,8 @@ public final class PermissionFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1032,7 +1084,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1056,7 +1109,8 @@ public final class PermissionFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1069,7 +1123,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1093,7 +1148,8 @@ public final class PermissionFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1106,7 +1162,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1130,7 +1187,8 @@ public final class PermissionFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1143,7 +1201,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1167,7 +1226,8 @@ public final class PermissionFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1180,7 +1240,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1202,12 +1263,13 @@ public final class PermissionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var operationsUser = PermissionFunctions.getUser(GetUserArgs.builder()
-     *             .userId(&#34;operation@pam&#34;)
+     *             .userId("operation{@literal @}pam")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1220,7 +1282,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1242,12 +1305,13 @@ public final class PermissionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var operationsUser = PermissionFunctions.getUser(GetUserArgs.builder()
-     *             .userId(&#34;operation@pam&#34;)
+     *             .userId("operation{@literal @}pam")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1260,7 +1324,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1282,12 +1347,13 @@ public final class PermissionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var operationsUser = PermissionFunctions.getUser(GetUserArgs.builder()
-     *             .userId(&#34;operation@pam&#34;)
+     *             .userId("operation{@literal @}pam")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1300,7 +1366,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1322,12 +1389,13 @@ public final class PermissionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var operationsUser = PermissionFunctions.getUser(GetUserArgs.builder()
-     *             .userId(&#34;operation@pam&#34;)
+     *             .userId("operation{@literal @}pam")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1340,7 +1408,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1364,7 +1433,8 @@ public final class PermissionFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1377,7 +1447,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1401,7 +1472,8 @@ public final class PermissionFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1414,7 +1486,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1438,7 +1511,8 @@ public final class PermissionFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1451,7 +1525,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1475,7 +1550,8 @@ public final class PermissionFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1488,7 +1564,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1512,7 +1589,8 @@ public final class PermissionFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1525,7 +1603,8 @@ public final class PermissionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1549,7 +1628,8 @@ public final class PermissionFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

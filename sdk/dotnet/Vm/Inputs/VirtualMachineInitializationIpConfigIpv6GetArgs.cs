@@ -13,13 +13,16 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
     public sealed class VirtualMachineInitializationIpConfigIpv6GetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The IPv6 address
+        /// The IPv6 address in CIDR notation
+        /// (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
+        /// to `dhcp` for autodiscovery.
         /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }
 
         /// <summary>
-        /// The IPv6 gateway
+        /// The IPv6 gateway (must be omitted
+        /// when `dhcp` is used as the address).
         /// </summary>
         [Input("gateway")]
         public Input<string>? Gateway { get; set; }

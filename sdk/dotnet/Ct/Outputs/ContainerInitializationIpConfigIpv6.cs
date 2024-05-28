@@ -14,11 +14,13 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
     public sealed class ContainerInitializationIpConfigIpv6
     {
         /// <summary>
-        /// The IPv6 address
+        /// The IPv6 address (use `dhcp` for
+        /// autodiscovery).
         /// </summary>
         public readonly string? Address;
         /// <summary>
-        /// The IPv6 gateway
+        /// The IPv6 gateway (must be omitted
+        /// when `dhcp` is used as the address).
         /// </summary>
         public readonly string? Gateway;
 

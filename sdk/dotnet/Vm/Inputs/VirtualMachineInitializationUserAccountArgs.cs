@@ -16,7 +16,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         private InputList<string>? _keys;
 
         /// <summary>
-        /// The SSH keys
+        /// The SSH keys.
         /// </summary>
         public InputList<string> Keys
         {
@@ -28,7 +28,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         private Input<string>? _password;
 
         /// <summary>
-        /// The SSH password
+        /// The SSH password.
         /// </summary>
         public Input<string>? Password
         {
@@ -41,7 +41,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         }
 
         /// <summary>
-        /// The SSH username
+        /// The SSH username.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

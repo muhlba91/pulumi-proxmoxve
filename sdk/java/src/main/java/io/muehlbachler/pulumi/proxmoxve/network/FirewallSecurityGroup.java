@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,32 +48,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var webserver = new FirewallSecurityGroup(&#34;webserver&#34;, FirewallSecurityGroupArgs.builder()        
- *             .comment(&#34;Managed by Terraform&#34;)
+ *         var webserver = new FirewallSecurityGroup("webserver", FirewallSecurityGroupArgs.builder()
+ *             .comment("Managed by Terraform")
  *             .rules(            
  *                 FirewallSecurityGroupRuleArgs.builder()
- *                     .action(&#34;ACCEPT&#34;)
- *                     .comment(&#34;Allow HTTP&#34;)
- *                     .dest(&#34;192.168.1.5&#34;)
- *                     .dport(&#34;80&#34;)
- *                     .log(&#34;info&#34;)
- *                     .proto(&#34;tcp&#34;)
- *                     .type(&#34;in&#34;)
+ *                     .action("ACCEPT")
+ *                     .comment("Allow HTTP")
+ *                     .dest("192.168.1.5")
+ *                     .dport("80")
+ *                     .log("info")
+ *                     .proto("tcp")
+ *                     .type("in")
  *                     .build(),
  *                 FirewallSecurityGroupRuleArgs.builder()
- *                     .action(&#34;ACCEPT&#34;)
- *                     .comment(&#34;Allow HTTPS&#34;)
- *                     .dest(&#34;192.168.1.5&#34;)
- *                     .dport(&#34;443&#34;)
- *                     .log(&#34;info&#34;)
- *                     .proto(&#34;tcp&#34;)
- *                     .type(&#34;in&#34;)
+ *                     .action("ACCEPT")
+ *                     .comment("Allow HTTPS")
+ *                     .dest("192.168.1.5")
+ *                     .dport("443")
+ *                     .log("info")
+ *                     .proto("tcp")
+ *                     .type("in")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -155,14 +155,14 @@ public final class OptionsState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * email address to send notification from (default is root@$hostname).
+     * email address to send notification from (default is root{@literal @}$hostname).
      * 
      */
     @Import(name="emailFrom")
     private @Nullable Output<String> emailFrom;
 
     /**
-     * @return email address to send notification from (default is root@$hostname).
+     * @return email address to send notification from (default is root{@literal @}$hostname).
      * 
      */
     public Optional<Output<String>> emailFrom() {
@@ -185,14 +185,14 @@ public final class OptionsState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specify external http proxy which is used for downloads (example: `http://username:password@host:port/`).
+     * Specify external http proxy which is used for downloads (example: `http://username:password{@literal @}host:port/`).
      * 
      */
     @Import(name="httpProxy")
     private @Nullable Output<String> httpProxy;
 
     /**
-     * @return Specify external http proxy which is used for downloads (example: `http://username:password@host:port/`).
+     * @return Specify external http proxy which is used for downloads (example: `http://username:password{@literal @}host:port/`).
      * 
      */
     public Optional<Output<String>> httpProxy() {
@@ -552,7 +552,7 @@ public final class OptionsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param emailFrom email address to send notification from (default is root@$hostname).
+         * @param emailFrom email address to send notification from (default is root{@literal @}$hostname).
          * 
          * @return builder
          * 
@@ -563,7 +563,7 @@ public final class OptionsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param emailFrom email address to send notification from (default is root@$hostname).
+         * @param emailFrom email address to send notification from (default is root{@literal @}$hostname).
          * 
          * @return builder
          * 
@@ -594,7 +594,7 @@ public final class OptionsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param httpProxy Specify external http proxy which is used for downloads (example: `http://username:password@host:port/`).
+         * @param httpProxy Specify external http proxy which is used for downloads (example: `http://username:password{@literal @}host:port/`).
          * 
          * @return builder
          * 
@@ -605,7 +605,7 @@ public final class OptionsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param httpProxy Specify external http proxy which is used for downloads (example: `http://username:password@host:port/`).
+         * @param httpProxy Specify external http proxy which is used for downloads (example: `http://username:password{@literal @}host:port/`).
          * 
          * @return builder
          * 

@@ -13,49 +13,51 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
     public sealed class VirtualMachineDiskSpeedGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The maximum read I/O in operations per second
+        /// The maximum read I/O in operations per second.
         /// </summary>
         [Input("iopsRead")]
         public Input<int>? IopsRead { get; set; }
 
         /// <summary>
-        /// The maximum unthrottled read I/O pool in operations per second
+        /// The maximum unthrottled read I/O pool in operations per second.
         /// </summary>
         [Input("iopsReadBurstable")]
         public Input<int>? IopsReadBurstable { get; set; }
 
         /// <summary>
-        /// The maximum write I/O in operations per second
+        /// The maximum write I/O in operations per second.
         /// </summary>
         [Input("iopsWrite")]
         public Input<int>? IopsWrite { get; set; }
 
         /// <summary>
-        /// The maximum unthrottled write I/O pool in operations per second
+        /// The maximum unthrottled write I/O pool in operations per second.
         /// </summary>
         [Input("iopsWriteBurstable")]
         public Input<int>? IopsWriteBurstable { get; set; }
 
         /// <summary>
-        /// The maximum read speed in megabytes per second
+        /// The maximum read speed in megabytes per second.
         /// </summary>
         [Input("read")]
         public Input<int>? Read { get; set; }
 
         /// <summary>
-        /// The maximum burstable read speed in megabytes per second
+        /// The maximum burstable read speed in
+        /// megabytes per second.
         /// </summary>
         [Input("readBurstable")]
         public Input<int>? ReadBurstable { get; set; }
 
         /// <summary>
-        /// The maximum write speed in megabytes per second
+        /// The maximum write speed in megabytes per second.
         /// </summary>
         [Input("write")]
         public Input<int>? Write { get; set; }
 
         /// <summary>
-        /// The maximum burstable write speed in megabytes per second
+        /// The maximum burstable write speed in
+        /// megabytes per second.
         /// </summary>
         [Input("writeBurstable")]
         public Input<int>? WriteBurstable { get; set; }

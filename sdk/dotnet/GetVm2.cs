@@ -86,6 +86,12 @@ namespace Pulumi.ProxmoxVE
         [Input("timeouts")]
         public Inputs.GetVm2TimeoutsArgs? Timeouts { get; set; }
 
+        /// <summary>
+        /// The VGA configuration.
+        /// </summary>
+        [Input("vga")]
+        public Inputs.GetVm2VgaArgs? Vga { get; set; }
+
         public GetVm2Args()
         {
         }
@@ -151,6 +157,12 @@ namespace Pulumi.ProxmoxVE
         [Input("timeouts")]
         public Input<Inputs.GetVm2TimeoutsInputArgs>? Timeouts { get; set; }
 
+        /// <summary>
+        /// The VGA configuration.
+        /// </summary>
+        [Input("vga")]
+        public Input<Inputs.GetVm2VgaInputArgs>? Vga { get; set; }
+
         public GetVm2InvokeArgs()
         {
         }
@@ -194,6 +206,10 @@ namespace Pulumi.ProxmoxVE
         /// </summary>
         public readonly bool? Template;
         public readonly Outputs.GetVm2TimeoutsResult? Timeouts;
+        /// <summary>
+        /// The VGA configuration.
+        /// </summary>
+        public readonly Outputs.GetVm2VgaResult Vga;
 
         [OutputConstructor]
         private GetVm2Result(
@@ -213,7 +229,9 @@ namespace Pulumi.ProxmoxVE
 
             bool? template,
 
-            Outputs.GetVm2TimeoutsResult? timeouts)
+            Outputs.GetVm2TimeoutsResult? timeouts,
+
+            Outputs.GetVm2VgaResult vga)
         {
             Clone = clone;
             Cpu = cpu;
@@ -224,6 +242,7 @@ namespace Pulumi.ProxmoxVE
             Tags = tags;
             Template = template;
             Timeouts = timeouts;
+            Vga = vga;
         }
     }
 }

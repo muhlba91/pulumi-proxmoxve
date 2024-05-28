@@ -14,10 +14,18 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VirtualMachineVga {
     /**
-     * @return Whether to enable the VGA device (defaults
-     * to `true`).
+     * @return Enable VNC clipboard by setting to `vnc`. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
      * 
      */
+    private @Nullable String clipboard;
+    /**
+     * @return Whether to enable the VGA device
+     * 
+     * @deprecated
+     * The `enabled` attribute is deprecated and will be removed in a future release. Use type `none` instead.
+     * 
+     */
+    @Deprecated /* The `enabled` attribute is deprecated and will be removed in a future release. Use type `none` instead. */
     private @Nullable Boolean enabled;
     /**
      * @return The VGA memory in megabytes (defaults to `16`).
@@ -32,10 +40,20 @@ public final class VirtualMachineVga {
 
     private VirtualMachineVga() {}
     /**
-     * @return Whether to enable the VGA device (defaults
-     * to `true`).
+     * @return Enable VNC clipboard by setting to `vnc`. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
      * 
      */
+    public Optional<String> clipboard() {
+        return Optional.ofNullable(this.clipboard);
+    }
+    /**
+     * @return Whether to enable the VGA device
+     * 
+     * @deprecated
+     * The `enabled` attribute is deprecated and will be removed in a future release. Use type `none` instead.
+     * 
+     */
+    @Deprecated /* The `enabled` attribute is deprecated and will be removed in a future release. Use type `none` instead. */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -63,17 +81,25 @@ public final class VirtualMachineVga {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String clipboard;
         private @Nullable Boolean enabled;
         private @Nullable Integer memory;
         private @Nullable String type;
         public Builder() {}
         public Builder(VirtualMachineVga defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.clipboard = defaults.clipboard;
     	      this.enabled = defaults.enabled;
     	      this.memory = defaults.memory;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
+        public Builder clipboard(@Nullable String clipboard) {
+
+            this.clipboard = clipboard;
+            return this;
+        }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
 
@@ -94,6 +120,7 @@ public final class VirtualMachineVga {
         }
         public VirtualMachineVga build() {
             final var _resultValue = new VirtualMachineVga();
+            _resultValue.clipboard = clipboard;
             _resultValue.enabled = enabled;
             _resultValue.memory = memory;
             _resultValue.type = type;

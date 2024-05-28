@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,22 +45,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // using VLAN tag
- *         var vlan99 = new NetworkVlan(&#34;vlan99&#34;, NetworkVlanArgs.builder()        
- *             .comment(&#34;VLAN 99&#34;)
- *             .nodeName(&#34;pve&#34;)
+ *         var vlan99 = new NetworkVlan("vlan99", NetworkVlanArgs.builder()
+ *             .comment("VLAN 99")
+ *             .nodeName("pve")
  *             .build());
  * 
  *         // using custom network interface name
- *         var vlan98 = new NetworkVlan(&#34;vlan98&#34;, NetworkVlanArgs.builder()        
- *             .comment(&#34;VLAN 98&#34;)
- *             .interface_(&#34;eno0&#34;)
- *             .nodeName(&#34;pve&#34;)
+ *         var vlan98 = new NetworkVlan("vlan98", NetworkVlanArgs.builder()
+ *             .comment("VLAN 98")
+ *             .interface_("eno0")
+ *             .nodeName("pve")
  *             .vlan(98)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

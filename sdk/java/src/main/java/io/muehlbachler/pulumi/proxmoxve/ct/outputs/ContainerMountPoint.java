@@ -21,7 +21,7 @@ public final class ContainerMountPoint {
     private @Nullable Boolean acl;
     /**
      * @return Whether to include the mount point in backups (only
-     * used for volume mount points).
+     * used for volume mount points, defaults to `false`).
      * 
      */
     private @Nullable Boolean backup;
@@ -81,7 +81,7 @@ public final class ContainerMountPoint {
     }
     /**
      * @return Whether to include the mount point in backups (only
-     * used for volume mount points).
+     * used for volume mount points, defaults to `false`).
      * 
      */
     public Optional<Boolean> backup() {

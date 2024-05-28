@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,21 +45,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Firewall(&#34;example&#34;, FirewallArgs.builder()        
+ *         var example = new Firewall("example", FirewallArgs.builder()
  *             .ebtables(false)
  *             .enabled(false)
- *             .inputPolicy(&#34;DROP&#34;)
+ *             .inputPolicy("DROP")
  *             .logRatelimit(FirewallLogRatelimitArgs.builder()
  *                 .burst(10)
  *                 .enabled(false)
- *                 .rate(&#34;5/second&#34;)
+ *                 .rate("5/second")
  *                 .build())
- *             .outputPolicy(&#34;ACCEPT&#34;)
+ *             .outputPolicy("ACCEPT")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Important Notes

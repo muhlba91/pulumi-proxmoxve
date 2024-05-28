@@ -34,7 +34,7 @@ public final class VirtualMachineMemory {
      * @return Keep hugepages memory after the VM is stopped (defaults
      * to `false`).
      * 
-     * Settings `hugepages` and `keep_hugepages` are only allowed for `root@pam` authenticated user.
+     * Settings `hugepages` and `keep_hugepages` are only allowed for `root{@literal @}pam` authenticated user.
      * And required `cpu.numa` to be enabled.
      * 
      */
@@ -73,7 +73,7 @@ public final class VirtualMachineMemory {
      * @return Keep hugepages memory after the VM is stopped (defaults
      * to `false`).
      * 
-     * Settings `hugepages` and `keep_hugepages` are only allowed for `root@pam` authenticated user.
+     * Settings `hugepages` and `keep_hugepages` are only allowed for `root{@literal @}pam` authenticated user.
      * And required `cpu.numa` to be enabled.
      * 
      */

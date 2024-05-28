@@ -396,9 +396,11 @@ class ContainerInitializationDnsArgs:
                  server: Optional[pulumi.Input[str]] = None,
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] domain: The DNS search domain
-        :param pulumi.Input[str] server: The DNS server
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] servers: The list of DNS servers
+        :param pulumi.Input[str] domain: The DNS search domain.
+        :param pulumi.Input[str] server: The DNS server. The `server` attribute is
+               deprecated and will be removed in a future release. Please use
+               the `servers` attribute instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] servers: The list of DNS servers.
         """
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
@@ -414,7 +416,7 @@ class ContainerInitializationDnsArgs:
     @pulumi.getter
     def domain(self) -> Optional[pulumi.Input[str]]:
         """
-        The DNS search domain
+        The DNS search domain.
         """
         return pulumi.get(self, "domain")
 
@@ -426,7 +428,9 @@ class ContainerInitializationDnsArgs:
     @pulumi.getter
     def server(self) -> Optional[pulumi.Input[str]]:
         """
-        The DNS server
+        The DNS server. The `server` attribute is
+        deprecated and will be removed in a future release. Please use
+        the `servers` attribute instead.
         """
         warnings.warn("""The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.""", DeprecationWarning)
         pulumi.log.warn("""server is deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.""")
@@ -441,7 +445,7 @@ class ContainerInitializationDnsArgs:
     @pulumi.getter
     def servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The list of DNS servers
+        The list of DNS servers.
         """
         return pulumi.get(self, "servers")
 
@@ -456,8 +460,8 @@ class ContainerInitializationIpConfigArgs:
                  ipv4: Optional[pulumi.Input['ContainerInitializationIpConfigIpv4Args']] = None,
                  ipv6: Optional[pulumi.Input['ContainerInitializationIpConfigIpv6Args']] = None):
         """
-        :param pulumi.Input['ContainerInitializationIpConfigIpv4Args'] ipv4: The IPv4 configuration
-        :param pulumi.Input['ContainerInitializationIpConfigIpv6Args'] ipv6: The IPv6 configuration
+        :param pulumi.Input['ContainerInitializationIpConfigIpv4Args'] ipv4: The IPv4 configuration.
+        :param pulumi.Input['ContainerInitializationIpConfigIpv6Args'] ipv6: The IPv4 configuration.
         """
         if ipv4 is not None:
             pulumi.set(__self__, "ipv4", ipv4)
@@ -468,7 +472,7 @@ class ContainerInitializationIpConfigArgs:
     @pulumi.getter
     def ipv4(self) -> Optional[pulumi.Input['ContainerInitializationIpConfigIpv4Args']]:
         """
-        The IPv4 configuration
+        The IPv4 configuration.
         """
         return pulumi.get(self, "ipv4")
 
@@ -480,7 +484,7 @@ class ContainerInitializationIpConfigArgs:
     @pulumi.getter
     def ipv6(self) -> Optional[pulumi.Input['ContainerInitializationIpConfigIpv6Args']]:
         """
-        The IPv6 configuration
+        The IPv4 configuration.
         """
         return pulumi.get(self, "ipv6")
 
@@ -495,8 +499,10 @@ class ContainerInitializationIpConfigIpv4Args:
                  address: Optional[pulumi.Input[str]] = None,
                  gateway: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] address: The IPv4 address
-        :param pulumi.Input[str] gateway: The IPv4 gateway
+        :param pulumi.Input[str] address: The IPv4 address (use `dhcp` for
+               autodiscovery).
+        :param pulumi.Input[str] gateway: The IPv4 gateway (must be omitted
+               when `dhcp` is used as the address).
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -507,7 +513,8 @@ class ContainerInitializationIpConfigIpv4Args:
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input[str]]:
         """
-        The IPv4 address
+        The IPv4 address (use `dhcp` for
+        autodiscovery).
         """
         return pulumi.get(self, "address")
 
@@ -519,7 +526,8 @@ class ContainerInitializationIpConfigIpv4Args:
     @pulumi.getter
     def gateway(self) -> Optional[pulumi.Input[str]]:
         """
-        The IPv4 gateway
+        The IPv4 gateway (must be omitted
+        when `dhcp` is used as the address).
         """
         return pulumi.get(self, "gateway")
 
@@ -534,8 +542,10 @@ class ContainerInitializationIpConfigIpv6Args:
                  address: Optional[pulumi.Input[str]] = None,
                  gateway: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] address: The IPv6 address
-        :param pulumi.Input[str] gateway: The IPv6 gateway
+        :param pulumi.Input[str] address: The IPv6 address (use `dhcp` for
+               autodiscovery).
+        :param pulumi.Input[str] gateway: The IPv6 gateway (must be omitted
+               when `dhcp` is used as the address).
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -546,7 +556,8 @@ class ContainerInitializationIpConfigIpv6Args:
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input[str]]:
         """
-        The IPv6 address
+        The IPv6 address (use `dhcp` for
+        autodiscovery).
         """
         return pulumi.get(self, "address")
 
@@ -558,7 +569,8 @@ class ContainerInitializationIpConfigIpv6Args:
     @pulumi.getter
     def gateway(self) -> Optional[pulumi.Input[str]]:
         """
-        The IPv6 gateway
+        The IPv6 gateway (must be omitted
+        when `dhcp` is used as the address).
         """
         return pulumi.get(self, "gateway")
 
@@ -573,8 +585,8 @@ class ContainerInitializationUserAccountArgs:
                  keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  password: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] keys: The SSH keys
-        :param pulumi.Input[str] password: The SSH password
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] keys: The SSH keys for the root account.
+        :param pulumi.Input[str] password: The password for the root account.
         """
         if keys is not None:
             pulumi.set(__self__, "keys", keys)
@@ -585,7 +597,7 @@ class ContainerInitializationUserAccountArgs:
     @pulumi.getter
     def keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The SSH keys
+        The SSH keys for the root account.
         """
         return pulumi.get(self, "keys")
 
@@ -597,7 +609,7 @@ class ContainerInitializationUserAccountArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The SSH password
+        The password for the root account.
         """
         return pulumi.get(self, "password")
 
@@ -667,7 +679,7 @@ class ContainerMountPointArgs:
                container.
         :param pulumi.Input[bool] acl: Explicitly enable or disable ACL support.
         :param pulumi.Input[bool] backup: Whether to include the mount point in backups (only
-               used for volume mount points).
+               used for volume mount points, defaults to `false`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] mount_options: List of extra mount options.
         :param pulumi.Input[bool] quota: Enable user quotas inside the container (not supported
                with ZFS subvolumes).
@@ -740,7 +752,7 @@ class ContainerMountPointArgs:
     def backup(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to include the mount point in backups (only
-        used for volume mount points).
+        used for volume mount points, defaults to `false`).
         """
         return pulumi.get(self, "backup")
 

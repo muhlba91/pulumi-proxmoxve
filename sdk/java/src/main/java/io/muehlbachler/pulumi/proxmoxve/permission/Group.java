@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,14 +44,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var operationsTeam = new Group(&#34;operationsTeam&#34;, GroupArgs.builder()        
- *             .comment(&#34;Managed by Terraform&#34;)
- *             .groupId(&#34;operations-team&#34;)
+ *         var operationsTeam = new Group("operationsTeam", GroupArgs.builder()
+ *             .comment("Managed by Terraform")
+ *             .groupId("operations-team")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -109,14 +111,14 @@ public class Group extends com.pulumi.resources.CustomResource {
         return this.groupId;
     }
     /**
-     * The group members as a list of `username@realm` entries
+     * The group members as a list of `username{@literal @}realm` entries
      * 
      */
     @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> members;
 
     /**
-     * @return The group members as a list of `username@realm` entries
+     * @return The group members as a list of `username{@literal @}realm` entries
      * 
      */
     public Output<List<String>> members() {

@@ -70,7 +70,7 @@ public final class VirtualMachineMemoryArgs extends com.pulumi.resources.Resourc
      * Keep hugepages memory after the VM is stopped (defaults
      * to `false`).
      * 
-     * Settings `hugepages` and `keep_hugepages` are only allowed for `root@pam` authenticated user.
+     * Settings `hugepages` and `keep_hugepages` are only allowed for `root{@literal @}pam` authenticated user.
      * And required `cpu.numa` to be enabled.
      * 
      */
@@ -81,7 +81,7 @@ public final class VirtualMachineMemoryArgs extends com.pulumi.resources.Resourc
      * @return Keep hugepages memory after the VM is stopped (defaults
      * to `false`).
      * 
-     * Settings `hugepages` and `keep_hugepages` are only allowed for `root@pam` authenticated user.
+     * Settings `hugepages` and `keep_hugepages` are only allowed for `root{@literal @}pam` authenticated user.
      * And required `cpu.numa` to be enabled.
      * 
      */
@@ -203,7 +203,7 @@ public final class VirtualMachineMemoryArgs extends com.pulumi.resources.Resourc
          * @param keepHugepages Keep hugepages memory after the VM is stopped (defaults
          * to `false`).
          * 
-         * Settings `hugepages` and `keep_hugepages` are only allowed for `root@pam` authenticated user.
+         * Settings `hugepages` and `keep_hugepages` are only allowed for `root{@literal @}pam` authenticated user.
          * And required `cpu.numa` to be enabled.
          * 
          * @return builder
@@ -218,7 +218,7 @@ public final class VirtualMachineMemoryArgs extends com.pulumi.resources.Resourc
          * @param keepHugepages Keep hugepages memory after the VM is stopped (defaults
          * to `false`).
          * 
-         * Settings `hugepages` and `keep_hugepages` are only allowed for `root@pam` authenticated user.
+         * Settings `hugepages` and `keep_hugepages` are only allowed for `root{@literal @}pam` authenticated user.
          * And required `cpu.numa` to be enabled.
          * 
          * @return builder

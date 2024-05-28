@@ -14,9 +14,11 @@ __all__ = [
     'Vm2Clone',
     'Vm2Cpu',
     'Vm2Timeouts',
+    'Vm2Vga',
     'GetVm2CloneResult',
     'GetVm2CpuResult',
     'GetVm2TimeoutsResult',
+    'GetVm2VgaResult',
 ]
 
 @pulumi.output_type
@@ -261,6 +263,49 @@ class Vm2Timeouts(dict):
 
 
 @pulumi.output_type
+class Vm2Vga(dict):
+    def __init__(__self__, *,
+                 clipboard: Optional[str] = None,
+                 memory: Optional[int] = None,
+                 type: Optional[str] = None):
+        """
+        :param str clipboard: Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+        :param int memory: The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+        :param str type: The VGA type (defaults to `std`).
+        """
+        if clipboard is not None:
+            pulumi.set(__self__, "clipboard", clipboard)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def clipboard(self) -> Optional[str]:
+        """
+        Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+        """
+        return pulumi.get(self, "clipboard")
+
+    @property
+    @pulumi.getter
+    def memory(self) -> Optional[int]:
+        """
+        The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+        """
+        return pulumi.get(self, "memory")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        The VGA type (defaults to `std`).
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
 class GetVm2CloneResult(dict):
     def __init__(__self__, *,
                  id: int,
@@ -423,5 +468,45 @@ class GetVm2TimeoutsResult(dict):
         A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
         """
         return pulumi.get(self, "read")
+
+
+@pulumi.output_type
+class GetVm2VgaResult(dict):
+    def __init__(__self__, *,
+                 clipboard: str,
+                 memory: int,
+                 type: str):
+        """
+        :param str clipboard: Enable a specific clipboard.
+        :param int memory: The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+        :param str type: The VGA type.
+        """
+        pulumi.set(__self__, "clipboard", clipboard)
+        pulumi.set(__self__, "memory", memory)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def clipboard(self) -> str:
+        """
+        Enable a specific clipboard.
+        """
+        return pulumi.get(self, "clipboard")
+
+    @property
+    @pulumi.getter
+    def memory(self) -> int:
+        """
+        The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+        """
+        return pulumi.get(self, "memory")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The VGA type.
+        """
+        return pulumi.get(self, "type")
 
 

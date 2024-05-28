@@ -14,6 +14,9 @@ import javax.annotation.Nullable;
 public final class VirtualMachineAudioDevice {
     /**
      * @return The device (defaults to `intel-hda`).
+     * - `AC97` - Intel 82801AA AC97 Audio.
+     * - `ich9-intel-hda` - Intel HD Audio Controller (ich9).
+     * - `intel-hda` - Intel HD Audio.
      * 
      */
     private @Nullable String device;
@@ -32,6 +35,9 @@ public final class VirtualMachineAudioDevice {
     private VirtualMachineAudioDevice() {}
     /**
      * @return The device (defaults to `intel-hda`).
+     * - `AC97` - Intel 82801AA AC97 Audio.
+     * - `ich9-intel-hda` - Intel HD Audio Controller (ich9).
+     * - `intel-hda` - Intel HD Audio.
      * 
      */
     public Optional<String> device() {

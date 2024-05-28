@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,23 +46,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var localNetwork = new FirewallAlias(&#34;localNetwork&#34;, FirewallAliasArgs.builder()        
+ *         var localNetwork = new FirewallAlias("localNetwork", FirewallAliasArgs.builder()
  *             .nodeName(proxmox_virtual_environment_vm.example().node_name())
  *             .vmId(proxmox_virtual_environment_vm.example().vm_id())
- *             .cidr(&#34;192.168.0.0/23&#34;)
- *             .comment(&#34;Managed by Terraform&#34;)
+ *             .cidr("192.168.0.0/23")
+ *             .comment("Managed by Terraform")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(proxmox_virtual_environment_vm.example())
  *                 .build());
  * 
- *         var ubuntuVm = new FirewallAlias(&#34;ubuntuVm&#34;, FirewallAliasArgs.builder()        
- *             .cidr(&#34;192.168.0.1&#34;)
- *             .comment(&#34;Managed by Terraform&#34;)
+ *         var ubuntuVm = new FirewallAlias("ubuntuVm", FirewallAliasArgs.builder()
+ *             .cidr("192.168.0.1")
+ *             .comment("Managed by Terraform")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

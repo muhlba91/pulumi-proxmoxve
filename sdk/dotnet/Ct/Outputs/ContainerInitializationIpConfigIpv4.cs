@@ -14,11 +14,13 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
     public sealed class ContainerInitializationIpConfigIpv4
     {
         /// <summary>
-        /// The IPv4 address
+        /// The IPv4 address (use `dhcp` for
+        /// autodiscovery).
         /// </summary>
         public readonly string? Address;
         /// <summary>
-        /// The IPv4 gateway
+        /// The IPv4 gateway (must be omitted
+        /// when `dhcp` is used as the address).
         /// </summary>
         public readonly string? Gateway;
 

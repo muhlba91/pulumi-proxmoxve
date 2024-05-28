@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,19 +45,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Usb(&#34;example&#34;, UsbArgs.builder()        
- *             .comment(&#34;This is a comment&#34;)
+ *         var example = new Usb("example", UsbArgs.builder()
+ *             .comment("This is a comment")
  *             .maps(UsbMapArgs.builder()
- *                 .comment(&#34;This is a device specific comment&#34;)
- *                 .id(&#34;8087:0a2b&#34;)
- *                 .node(&#34;pve&#34;)
- *                 .path(&#34;1-8.2&#34;)
+ *                 .comment("This is a device specific comment")
+ *                 .id("8087:0a2b")
+ *                 .node("pve")
+ *                 .path("1-8.2")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -12,26 +12,32 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VirtualMachineInitializationIpConfigIpv6 {
     /**
-     * @return The IPv6 address
+     * @return The IPv6 address in CIDR notation
+     * (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
+     * to `dhcp` for autodiscovery.
      * 
      */
     private @Nullable String address;
     /**
-     * @return The IPv6 gateway
+     * @return The IPv6 gateway (must be omitted
+     * when `dhcp` is used as the address).
      * 
      */
     private @Nullable String gateway;
 
     private VirtualMachineInitializationIpConfigIpv6() {}
     /**
-     * @return The IPv6 address
+     * @return The IPv6 address in CIDR notation
+     * (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
+     * to `dhcp` for autodiscovery.
      * 
      */
     public Optional<String> address() {
         return Optional.ofNullable(this.address);
     }
     /**
-     * @return The IPv6 gateway
+     * @return The IPv6 gateway (must be omitted
+     * when `dhcp` is used as the address).
      * 
      */
     public Optional<String> gateway() {

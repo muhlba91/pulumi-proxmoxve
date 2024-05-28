@@ -18,6 +18,9 @@ public final class VirtualMachineAudioDeviceArgs extends com.pulumi.resources.Re
 
     /**
      * The device (defaults to `intel-hda`).
+     * - `AC97` - Intel 82801AA AC97 Audio.
+     * - `ich9-intel-hda` - Intel HD Audio Controller (ich9).
+     * - `intel-hda` - Intel HD Audio.
      * 
      */
     @Import(name="device")
@@ -25,6 +28,9 @@ public final class VirtualMachineAudioDeviceArgs extends com.pulumi.resources.Re
 
     /**
      * @return The device (defaults to `intel-hda`).
+     * - `AC97` - Intel 82801AA AC97 Audio.
+     * - `ich9-intel-hda` - Intel HD Audio Controller (ich9).
+     * - `intel-hda` - Intel HD Audio.
      * 
      */
     public Optional<Output<String>> device() {
@@ -91,6 +97,9 @@ public final class VirtualMachineAudioDeviceArgs extends com.pulumi.resources.Re
 
         /**
          * @param device The device (defaults to `intel-hda`).
+         * - `AC97` - Intel 82801AA AC97 Audio.
+         * - `ich9-intel-hda` - Intel HD Audio Controller (ich9).
+         * - `intel-hda` - Intel HD Audio.
          * 
          * @return builder
          * 
@@ -102,6 +111,9 @@ public final class VirtualMachineAudioDeviceArgs extends com.pulumi.resources.Re
 
         /**
          * @param device The device (defaults to `intel-hda`).
+         * - `AC97` - Intel 82801AA AC97 Audio.
+         * - `ich9-intel-hda` - Intel HD Audio Controller (ich9).
+         * - `intel-hda` - Intel HD Audio.
          * 
          * @return builder
          * 

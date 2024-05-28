@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,13 +45,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new HAGroup(&#34;example&#34;, HAGroupArgs.builder()        
- *             .group(&#34;example&#34;)
- *             .comment(&#34;This is a comment.&#34;)
+ *         var example = new HAGroup("example", HAGroupArgs.builder()
+ *             .group("example")
+ *             .comment("This is a comment.")
  *             .nodes(Map.ofEntries(
- *                 Map.entry(&#34;node1&#34;, null),
- *                 Map.entry(&#34;node2&#34;, 2),
- *                 Map.entry(&#34;node3&#34;, 1)
+ *                 Map.entry("node1", null),
+ *                 Map.entry("node2", 2),
+ *                 Map.entry("node3", 1)
  *             ))
  *             .restricted(true)
  *             .noFailback(false)
@@ -58,7 +59,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

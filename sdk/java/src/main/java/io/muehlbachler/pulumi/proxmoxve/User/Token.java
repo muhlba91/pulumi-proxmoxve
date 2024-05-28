@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,24 +47,25 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // if creating a user token, the user must be created first
- *         var user = new User(&#34;user&#34;, UserArgs.builder()        
- *             .comment(&#34;Managed by Terraform&#34;)
- *             .email(&#34;user@pve&#34;)
+ *         var user = new User("user", UserArgs.builder()
+ *             .comment("Managed by Terraform")
+ *             .email("user{@literal @}pve")
  *             .enabled(true)
- *             .expirationDate(&#34;2034-01-01T22:00:00Z&#34;)
- *             .userId(&#34;user@pve&#34;)
+ *             .expirationDate("2034-01-01T22:00:00Z")
+ *             .userId("user{@literal @}pve")
  *             .build());
  * 
- *         var userToken = new Token(&#34;userToken&#34;, TokenArgs.builder()        
- *             .comment(&#34;Managed by Terraform&#34;)
- *             .expirationDate(&#34;2033-01-01T22:00:00Z&#34;)
- *             .tokenName(&#34;tk1&#34;)
+ *         var userToken = new Token("userToken", TokenArgs.builder()
+ *             .comment("Managed by Terraform")
+ *             .expirationDate("2033-01-01T22:00:00Z")
+ *             .tokenName("tk1")
  *             .userId(user.userId())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -73,7 +75,7 @@ import javax.annotation.Nullable;
  * #Tokens can be imported using they identifiers in format `user_id!token_name` format, e.g.:
  * 
  * ```sh
- * $ pulumi import proxmoxve:User/token:Token token1 user@pve!token1
+ * $ pulumi import proxmoxve:User/token:Token token1 user{@literal @}pve!token1
  * ```
  * 
  */

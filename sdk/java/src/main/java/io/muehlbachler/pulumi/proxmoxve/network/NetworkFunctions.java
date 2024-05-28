@@ -28,7 +28,8 @@ public final class NetworkFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -50,12 +51,13 @@ public final class NetworkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var firstNode = NetworkFunctions.getDNS(GetDNSArgs.builder()
-     *             .nodeName(&#34;first-node&#34;)
+     *             .nodeName("first-node")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -68,7 +70,8 @@ public final class NetworkFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -90,12 +93,13 @@ public final class NetworkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var firstNode = NetworkFunctions.getDNS(GetDNSArgs.builder()
-     *             .nodeName(&#34;first-node&#34;)
+     *             .nodeName("first-node")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -108,7 +112,8 @@ public final class NetworkFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -130,12 +135,13 @@ public final class NetworkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var firstNode = NetworkFunctions.getDNS(GetDNSArgs.builder()
-     *             .nodeName(&#34;first-node&#34;)
+     *             .nodeName("first-node")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -148,7 +154,8 @@ public final class NetworkFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -170,12 +177,13 @@ public final class NetworkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var firstNode = NetworkFunctions.getDNS(GetDNSArgs.builder()
-     *             .nodeName(&#34;first-node&#34;)
+     *             .nodeName("first-node")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -188,7 +196,8 @@ public final class NetworkFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -210,12 +219,13 @@ public final class NetworkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var firstNodeHostEntries = NetworkFunctions.getHosts(GetHostsArgs.builder()
-     *             .nodeName(&#34;first-node&#34;)
+     *             .nodeName("first-node")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -228,7 +238,8 @@ public final class NetworkFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -250,12 +261,13 @@ public final class NetworkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var firstNodeHostEntries = NetworkFunctions.getHosts(GetHostsArgs.builder()
-     *             .nodeName(&#34;first-node&#34;)
+     *             .nodeName("first-node")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -268,7 +280,8 @@ public final class NetworkFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -290,12 +303,13 @@ public final class NetworkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var firstNodeHostEntries = NetworkFunctions.getHosts(GetHostsArgs.builder()
-     *             .nodeName(&#34;first-node&#34;)
+     *             .nodeName("first-node")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -308,7 +322,8 @@ public final class NetworkFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -330,12 +345,13 @@ public final class NetworkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var firstNodeHostEntries = NetworkFunctions.getHosts(GetHostsArgs.builder()
-     *             .nodeName(&#34;first-node&#34;)
+     *             .nodeName("first-node")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -348,7 +364,8 @@ public final class NetworkFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -370,12 +387,13 @@ public final class NetworkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var firstNodeTime = NetworkFunctions.getTime(GetTimeArgs.builder()
-     *             .nodeName(&#34;first-node&#34;)
+     *             .nodeName("first-node")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -388,7 +406,8 @@ public final class NetworkFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -410,12 +429,13 @@ public final class NetworkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var firstNodeTime = NetworkFunctions.getTime(GetTimeArgs.builder()
-     *             .nodeName(&#34;first-node&#34;)
+     *             .nodeName("first-node")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -428,7 +448,8 @@ public final class NetworkFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -450,12 +471,13 @@ public final class NetworkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var firstNodeTime = NetworkFunctions.getTime(GetTimeArgs.builder()
-     *             .nodeName(&#34;first-node&#34;)
+     *             .nodeName("first-node")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -468,7 +490,8 @@ public final class NetworkFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -490,12 +513,13 @@ public final class NetworkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var firstNodeTime = NetworkFunctions.getTime(GetTimeArgs.builder()
-     *             .nodeName(&#34;first-node&#34;)
+     *             .nodeName("first-node")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -508,7 +532,8 @@ public final class NetworkFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -530,10 +555,11 @@ public final class NetworkFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = NetworkFunctions.getVersion();
      * 
-     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentVersion&#34;, %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("dataProxmoxVirtualEnvironmentVersion", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -546,7 +572,8 @@ public final class NetworkFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -568,10 +595,11 @@ public final class NetworkFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = NetworkFunctions.getVersion();
      * 
-     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentVersion&#34;, %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("dataProxmoxVirtualEnvironmentVersion", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -584,7 +612,8 @@ public final class NetworkFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -606,10 +635,11 @@ public final class NetworkFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = NetworkFunctions.getVersion();
      * 
-     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentVersion&#34;, %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("dataProxmoxVirtualEnvironmentVersion", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -622,7 +652,8 @@ public final class NetworkFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -644,10 +675,11 @@ public final class NetworkFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = NetworkFunctions.getVersion();
      * 
-     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentVersion&#34;, %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("dataProxmoxVirtualEnvironmentVersion", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -660,7 +692,8 @@ public final class NetworkFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -682,10 +715,11 @@ public final class NetworkFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = NetworkFunctions.getVersion();
      * 
-     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentVersion&#34;, %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("dataProxmoxVirtualEnvironmentVersion", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -698,7 +732,8 @@ public final class NetworkFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -720,10 +755,11 @@ public final class NetworkFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = NetworkFunctions.getVersion();
      * 
-     *         ctx.export(&#34;dataProxmoxVirtualEnvironmentVersion&#34;, %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("dataProxmoxVirtualEnvironmentVersion", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

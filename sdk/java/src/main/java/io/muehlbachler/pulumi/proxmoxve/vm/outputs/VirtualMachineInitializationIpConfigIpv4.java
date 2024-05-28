@@ -12,26 +12,32 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VirtualMachineInitializationIpConfigIpv4 {
     /**
-     * @return The IPv4 address
+     * @return The IPv4 address in CIDR notation
+     * (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
+     * autodiscovery.
      * 
      */
     private @Nullable String address;
     /**
-     * @return The IPv4 gateway
+     * @return The IPv4 gateway (must be omitted
+     * when `dhcp` is used as the address).
      * 
      */
     private @Nullable String gateway;
 
     private VirtualMachineInitializationIpConfigIpv4() {}
     /**
-     * @return The IPv4 address
+     * @return The IPv4 address in CIDR notation
+     * (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
+     * autodiscovery.
      * 
      */
     public Optional<String> address() {
         return Optional.ofNullable(this.address);
     }
     /**
-     * @return The IPv4 gateway
+     * @return The IPv4 gateway (must be omitted
+     * when `dhcp` is used as the address).
      * 
      */
     public Optional<String> gateway() {

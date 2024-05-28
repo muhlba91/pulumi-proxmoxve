@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,25 +48,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var operationsMonitoring = new Role(&#34;operationsMonitoring&#34;, RoleArgs.builder()        
- *             .roleId(&#34;operations-monitoring&#34;)
- *             .privileges(&#34;VM.Monitor&#34;)
+ *         var operationsMonitoring = new Role("operationsMonitoring", RoleArgs.builder()
+ *             .roleId("operations-monitoring")
+ *             .privileges("VM.Monitor")
  *             .build());
  * 
- *         var operationsAutomation = new User(&#34;operationsAutomation&#34;, UserArgs.builder()        
+ *         var operationsAutomation = new User("operationsAutomation", UserArgs.builder()
  *             .acls(UserAclArgs.builder()
- *                 .path(&#34;/vms/1234&#34;)
+ *                 .path("/vms/1234")
  *                 .propagate(true)
  *                 .roleId(operationsMonitoring.roleId())
  *                 .build())
- *             .comment(&#34;Managed by Terraform&#34;)
- *             .password(&#34;a-strong-password&#34;)
- *             .userId(&#34;operations-automation@pve&#34;)
+ *             .comment("Managed by Terraform")
+ *             .password("a-strong-password")
+ *             .userId("operations-automation{@literal @}pve")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -75,7 +77,7 @@ import javax.annotation.Nullable;
  * bash
  * 
  * ```sh
- * $ pulumi import proxmoxve:Permission/user:User operations_automation operations-automation@pve
+ * $ pulumi import proxmoxve:Permission/user:User operations_automation operations-automation{@literal @}pve
  * ```
  * 
  */
