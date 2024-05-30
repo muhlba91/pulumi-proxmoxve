@@ -4779,7 +4779,7 @@ func (o VirtualMachineTpmStatePtrOutput) Version() pulumi.StringPtrOutput {
 
 type VirtualMachineUsb struct {
 	// The USB device ID. Use either this or `mapping`.
-	Host string `pulumi:"host"`
+	Host *string `pulumi:"host"`
 	// The resource mapping name of the device, for
 	// example usbdevice. Use either this or `id`.
 	Mapping *string `pulumi:"mapping"`
@@ -4801,7 +4801,7 @@ type VirtualMachineUsbInput interface {
 
 type VirtualMachineUsbArgs struct {
 	// The USB device ID. Use either this or `mapping`.
-	Host pulumi.StringInput `pulumi:"host"`
+	Host pulumi.StringPtrInput `pulumi:"host"`
 	// The resource mapping name of the device, for
 	// example usbdevice. Use either this or `id`.
 	Mapping pulumi.StringPtrInput `pulumi:"mapping"`
@@ -4862,8 +4862,8 @@ func (o VirtualMachineUsbOutput) ToVirtualMachineUsbOutputWithContext(ctx contex
 }
 
 // The USB device ID. Use either this or `mapping`.
-func (o VirtualMachineUsbOutput) Host() pulumi.StringOutput {
-	return o.ApplyT(func(v VirtualMachineUsb) string { return v.Host }).(pulumi.StringOutput)
+func (o VirtualMachineUsbOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineUsb) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
 // The resource mapping name of the device, for

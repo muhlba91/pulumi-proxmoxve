@@ -16,7 +16,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// <summary>
         /// The USB device ID. Use either this or `mapping`.
         /// </summary>
-        public readonly string Host;
+        public readonly string? Host;
         /// <summary>
         /// The resource mapping name of the device, for
         /// example usbdevice. Use either this or `id`.
@@ -30,7 +30,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
 
         [OutputConstructor]
         private VirtualMachineUsb(
-            string host,
+            string? host,
 
             string? mapping,
 

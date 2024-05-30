@@ -1656,7 +1656,7 @@ export namespace VM {
         /**
          * The USB device ID. Use either this or `mapping`.
          */
-        host: pulumi.Input<string>;
+        host?: pulumi.Input<string>;
         /**
          * The resource mapping name of the device, for
          * example usbdevice. Use either this or `id`.

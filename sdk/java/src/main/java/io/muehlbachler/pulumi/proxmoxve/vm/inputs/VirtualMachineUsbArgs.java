@@ -5,7 +5,6 @@ package io.muehlbachler.pulumi.proxmoxve.VM.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -21,15 +20,15 @@ public final class VirtualMachineUsbArgs extends com.pulumi.resources.ResourceAr
      * The USB device ID. Use either this or `mapping`.
      * 
      */
-    @Import(name="host", required=true)
-    private Output<String> host;
+    @Import(name="host")
+    private @Nullable Output<String> host;
 
     /**
      * @return The USB device ID. Use either this or `mapping`.
      * 
      */
-    public Output<String> host() {
-        return this.host;
+    public Optional<Output<String>> host() {
+        return Optional.ofNullable(this.host);
     }
 
     /**
@@ -98,7 +97,7 @@ public final class VirtualMachineUsbArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder host(Output<String> host) {
+        public Builder host(@Nullable Output<String> host) {
             $.host = host;
             return this;
         }
@@ -160,9 +159,6 @@ public final class VirtualMachineUsbArgs extends com.pulumi.resources.ResourceAr
         }
 
         public VirtualMachineUsbArgs build() {
-            if ($.host == null) {
-                throw new MissingRequiredPropertyException("VirtualMachineUsbArgs", "host");
-            }
             return $;
         }
     }

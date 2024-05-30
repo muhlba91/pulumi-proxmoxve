@@ -2293,7 +2293,7 @@ class VirtualMachineTpmStateArgs:
 @pulumi.input_type
 class VirtualMachineUsbArgs:
     def __init__(__self__, *,
-                 host: pulumi.Input[str],
+                 host: Optional[pulumi.Input[str]] = None,
                  mapping: Optional[pulumi.Input[str]] = None,
                  usb3: Optional[pulumi.Input[bool]] = None):
         """
@@ -2303,7 +2303,8 @@ class VirtualMachineUsbArgs:
         :param pulumi.Input[bool] usb3: Makes the USB device a USB3 device for the VM
                (defaults to `false`).
         """
-        pulumi.set(__self__, "host", host)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
         if mapping is not None:
             pulumi.set(__self__, "mapping", mapping)
         if usb3 is not None:
@@ -2311,14 +2312,14 @@ class VirtualMachineUsbArgs:
 
     @property
     @pulumi.getter
-    def host(self) -> pulumi.Input[str]:
+    def host(self) -> Optional[pulumi.Input[str]]:
         """
         The USB device ID. Use either this or `mapping`.
         """
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: pulumi.Input[str]):
+    def host(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "host", value)
 
     @property

@@ -15,8 +15,8 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         /// <summary>
         /// The USB device ID. Use either this or `mapping`.
         /// </summary>
-        [Input("host", required: true)]
-        public Input<string> Host { get; set; } = null!;
+        [Input("host")]
+        public Input<string>? Host { get; set; }
 
         /// <summary>
         /// The resource mapping name of the device, for

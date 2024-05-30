@@ -2050,7 +2050,7 @@ class VirtualMachineTpmState(dict):
 @pulumi.output_type
 class VirtualMachineUsb(dict):
     def __init__(__self__, *,
-                 host: str,
+                 host: Optional[str] = None,
                  mapping: Optional[str] = None,
                  usb3: Optional[bool] = None):
         """
@@ -2060,7 +2060,8 @@ class VirtualMachineUsb(dict):
         :param bool usb3: Makes the USB device a USB3 device for the VM
                (defaults to `false`).
         """
-        pulumi.set(__self__, "host", host)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
         if mapping is not None:
             pulumi.set(__self__, "mapping", mapping)
         if usb3 is not None:
@@ -2068,7 +2069,7 @@ class VirtualMachineUsb(dict):
 
     @property
     @pulumi.getter
-    def host(self) -> str:
+    def host(self) -> Optional[str]:
         """
         The USB device ID. Use either this or `mapping`.
         """

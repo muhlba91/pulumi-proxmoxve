@@ -1241,8 +1241,7 @@
                 },
                 "fileFormat": {
                     "type": "string",
-                    "description": "The file format (defaults to `qcow2`).\n",
-                    "willReplaceOnChanges": true
+                    "description": "The file format (defaults to `qcow2`).\n"
                 },
                 "fileId": {
                     "type": "string",
@@ -1765,10 +1764,7 @@
                     "description": "Makes the USB device a USB3 device for the VM\n(defaults to `false`).\n"
                 }
             },
-            "type": "object",
-            "required": [
-                "host"
-            ]
+            "type": "object"
         },
         "proxmoxve:VM/VirtualMachineVga:VirtualMachineVga": {
             "properties": {
@@ -5365,8 +5361,7 @@
                     "items": {
                         "$ref": "#/types/proxmoxve:VM/VirtualMachineDisk:VirtualMachineDisk"
                     },
-                    "description": "A disk (multiple blocks supported).\n",
-                    "willReplaceOnChanges": true
+                    "description": "A disk (multiple blocks supported).\n"
                 },
                 "efiDisk": {
                     "$ref": "#/types/proxmoxve:VM/VirtualMachineEfiDisk:VirtualMachineEfiDisk",
@@ -5604,8 +5599,7 @@
                         "items": {
                             "$ref": "#/types/proxmoxve:VM/VirtualMachineDisk:VirtualMachineDisk"
                         },
-                        "description": "A disk (multiple blocks supported).\n",
-                        "willReplaceOnChanges": true
+                        "description": "A disk (multiple blocks supported).\n"
                     },
                     "efiDisk": {
                         "$ref": "#/types/proxmoxve:VM/VirtualMachineEfiDisk:VirtualMachineEfiDisk",
