@@ -35,7 +35,7 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
 
     /**
      * A file ID for an ISO file (defaults to `cdrom` as
-     * in the physical drive).
+     * in the physical drive). Use `none` to leave the CDROM drive empty.
      * 
      */
     @Import(name="fileId")
@@ -43,7 +43,7 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
 
     /**
      * @return A file ID for an ISO file (defaults to `cdrom` as
-     * in the physical drive).
+     * in the physical drive). Use `none` to leave the CDROM drive empty.
      * 
      */
     public Optional<Output<String>> fileId() {
@@ -120,7 +120,7 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
 
         /**
          * @param fileId A file ID for an ISO file (defaults to `cdrom` as
-         * in the physical drive).
+         * in the physical drive). Use `none` to leave the CDROM drive empty.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
 
         /**
          * @param fileId A file ID for an ISO file (defaults to `cdrom` as
-         * in the physical drive).
+         * in the physical drive). Use `none` to leave the CDROM drive empty.
          * 
          * @return builder
          * 

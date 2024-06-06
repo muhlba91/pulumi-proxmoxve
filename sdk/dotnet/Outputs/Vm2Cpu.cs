@@ -46,7 +46,7 @@ namespace Pulumi.ProxmoxVE.Outputs
         /// </summary>
         public readonly int? Sockets;
         /// <summary>
-        /// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+        /// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings for more information.
         /// </summary>
         public readonly string? Type;
         /// <summary>

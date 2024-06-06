@@ -20,7 +20,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         public readonly bool? Enabled;
         /// <summary>
         /// A file ID for an ISO file (defaults to `cdrom` as
-        /// in the physical drive).
+        /// in the physical drive). Use `none` to leave the CDROM drive empty.
         /// </summary>
         public readonly string? FileId;
         /// <summary>

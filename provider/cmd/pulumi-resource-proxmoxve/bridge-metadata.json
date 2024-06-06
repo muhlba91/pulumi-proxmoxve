@@ -443,7 +443,24 @@
                 }
             },
             "proxmox_virtual_environment_vm2": {
-                "current": "proxmoxve:index/vm2:Vm2",
+                "current": "proxmoxve:VM/virtualMachine2:VirtualMachine2",
+                "past": [
+                    {
+                        "name": "proxmoxve:Index/vm2:Vm2",
+                        "inCodegen": true,
+                        "majorVersion": 6
+                    },
+                    {
+                        "name": "proxmoxve:VM/vm2:Vm2",
+                        "inCodegen": true,
+                        "majorVersion": 6
+                    },
+                    {
+                        "name": "proxmoxve:index/vm2:Vm2",
+                        "inCodegen": true,
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "cpu": {
@@ -794,7 +811,17 @@
             }
         }
     },
-    "auto-settings": {},
+    "auto-settings": {
+        "resources": {
+            "proxmox_virtual_environment_vm2": {
+                "aliases": [
+                    "proxmoxve:Index/vm2:Vm2",
+                    "proxmoxve:VM/vm2:Vm2",
+                    "proxmoxve:index/vm2:Vm2"
+                ]
+            }
+        }
+    },
     "mux": {
         "resources": {
             "proxmoxve:CT/container:Container": 0,
@@ -818,6 +845,7 @@
             "proxmoxve:Permission/user:User": 0,
             "proxmoxve:Storage/file:File": 0,
             "proxmoxve:User/token:Token": 1,
+            "proxmoxve:VM/virtualMachine2:VirtualMachine2": 1,
             "proxmoxve:VM/virtualMachine:VirtualMachine": 0,
             "proxmoxve:index/acl:Acl": 1,
             "proxmoxve:index/certifi:Certifi": 0,

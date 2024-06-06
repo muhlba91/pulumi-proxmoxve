@@ -267,7 +267,7 @@ export interface Vm2Cpu {
      */
     sockets?: pulumi.Input<number>;
     /**
-     * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+     * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings for more information.
      */
     type?: pulumi.Input<string>;
     /**
@@ -1004,6 +1004,94 @@ export namespace Storage {
 }
 
 export namespace VM {
+    export interface VirtualMachine2Clone {
+        /**
+         * The ID of the VM to clone.
+         */
+        id: pulumi.Input<number>;
+        /**
+         * The number of retries to perform when cloning the VM (default: 3).
+         */
+        retries?: pulumi.Input<number>;
+    }
+
+    export interface VirtualMachine2Cpu {
+        /**
+         * The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+         */
+        affinity?: pulumi.Input<string>;
+        /**
+         * The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `affinity` is only allowed for `root@pam` authenticated user.
+         */
+        architecture?: pulumi.Input<string>;
+        /**
+         * The number of CPU cores per socket (defaults to `1`).
+         */
+        cores?: pulumi.Input<number>;
+        /**
+         * Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+         */
+        flags?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The number of hotplugged vCPUs (defaults to `0`).
+         */
+        hotplugged?: pulumi.Input<number>;
+        /**
+         * Limit of CPU usage (defaults to `0` which means no limit).
+         */
+        limit?: pulumi.Input<number>;
+        /**
+         * Enable NUMA (defaults to `false`).
+         */
+        numa?: pulumi.Input<boolean>;
+        /**
+         * The number of CPU sockets (defaults to `1`).
+         */
+        sockets?: pulumi.Input<number>;
+        /**
+         * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+         */
+        units?: pulumi.Input<number>;
+    }
+
+    export interface VirtualMachine2Timeouts {
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        create?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+         */
+        delete?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+         */
+        read?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        update?: pulumi.Input<string>;
+    }
+
+    export interface VirtualMachine2Vga {
+        /**
+         * Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+         */
+        clipboard?: pulumi.Input<string>;
+        /**
+         * The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+         */
+        memory?: pulumi.Input<number>;
+        /**
+         * The VGA type (defaults to `std`).
+         */
+        type?: pulumi.Input<string>;
+    }
+
     export interface VirtualMachineAgent {
         /**
          * Whether to enable the QEMU agent (defaults
@@ -1053,7 +1141,7 @@ export namespace VM {
         enabled?: pulumi.Input<boolean>;
         /**
          * A file ID for an ISO file (defaults to `cdrom` as
-         * in the physical drive).
+         * in the physical drive). Use `none` to leave the CDROM drive empty.
          */
         fileId?: pulumi.Input<string>;
         /**

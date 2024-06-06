@@ -84,6 +84,7 @@
         "vm/getVirtualMachines.ts",
         "vm/index.ts",
         "vm/virtualMachine.ts",
+        "vm/virtualMachine2.ts",
         "vm2.ts"
     ]
 }
