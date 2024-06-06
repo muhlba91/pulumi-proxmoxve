@@ -20,11 +20,18 @@ export type VirtualMachine = import("./virtualMachine").VirtualMachine;
 export const VirtualMachine: typeof import("./virtualMachine").VirtualMachine = null as any;
 utilities.lazyLoad(exports, ["VirtualMachine"], () => require("./virtualMachine"));
 
+export { VirtualMachine2Args, VirtualMachine2State } from "./virtualMachine2";
+export type VirtualMachine2 = import("./virtualMachine2").VirtualMachine2;
+export const VirtualMachine2: typeof import("./virtualMachine2").VirtualMachine2 = null as any;
+utilities.lazyLoad(exports, ["VirtualMachine2"], () => require("./virtualMachine2"));
+
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "proxmoxve:VM/virtualMachine2:VirtualMachine2":
+                return new VirtualMachine2(name, <any>undefined, { urn })
             case "proxmoxve:VM/virtualMachine:VirtualMachine":
                 return new VirtualMachine(name, <any>undefined, { urn })
             default:
@@ -33,3 +40,4 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("proxmoxve", "VM/virtualMachine", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "VM/virtualMachine2", _module)

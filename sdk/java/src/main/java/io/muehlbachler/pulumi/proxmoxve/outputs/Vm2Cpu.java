@@ -55,7 +55,7 @@ public final class Vm2Cpu {
      */
     private @Nullable Integer sockets;
     /**
-     * @return Emulated CPU type, it&#39;s recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+     * @return Emulated CPU type, it&#39;s recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings for more information.
      * 
      */
     private @Nullable String type;
@@ -123,7 +123,7 @@ public final class Vm2Cpu {
         return Optional.ofNullable(this.sockets);
     }
     /**
-     * @return Emulated CPU type, it&#39;s recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+     * @return Emulated CPU type, it&#39;s recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings for more information.
      * 
      */
     public Optional<String> type() {

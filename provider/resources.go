@@ -170,6 +170,13 @@ func Provider() tfbridge.ProviderInfo {
 		Resources: map[string]*tfbridge.ResourceInfo{
 			// VM/CT
 			"proxmox_virtual_environment_vm": {Tok: tfbridge.MakeResource(mainPkg, "VM", "VirtualMachine")},
+			"proxmox_virtual_environment_vm2": {
+				Tok: tfbridge.MakeResource(mainPkg, "VM", "VirtualMachine2"),
+				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
+					const vm2ResourceIDPropertyKey = resource.PropertyKey("id")
+					return resource.ID(state[vm2ResourceIDPropertyKey].V.(string)), nil
+				},
+			},
 			"proxmox_virtual_environment_container": {
 				Tok: tfbridge.MakeResource(mainPkg, "CT", "Container"),
 				TransformOutputs: func(_ context.Context, rpm resource.PropertyMap) (resource.PropertyMap, error) {

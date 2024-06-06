@@ -235,6 +235,14 @@ _utilities.register(
  },
  {
   "pkg": "proxmoxve",
+  "mod": "VM/virtualMachine2",
+  "fqn": "pulumi_proxmoxve.vm",
+  "classes": {
+   "proxmoxve:VM/virtualMachine2:VirtualMachine2": "VirtualMachine2"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
   "mod": "index/acl",
   "fqn": "pulumi_proxmoxve",
   "classes": {

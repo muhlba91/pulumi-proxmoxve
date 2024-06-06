@@ -8,5 +8,6 @@ import typing
 from .get_virtual_machine import *
 from .get_virtual_machines import *
 from .virtual_machine import *
+from .virtual_machine2 import *
 from ._inputs import *
 from . import outputs

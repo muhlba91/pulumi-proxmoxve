@@ -13,6 +13,839 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type VirtualMachine2Clone struct {
+	// The ID of the VM to clone.
+	Id int `pulumi:"id"`
+	// The number of retries to perform when cloning the VM (default: 3).
+	Retries *int `pulumi:"retries"`
+}
+
+// VirtualMachine2CloneInput is an input type that accepts VirtualMachine2CloneArgs and VirtualMachine2CloneOutput values.
+// You can construct a concrete instance of `VirtualMachine2CloneInput` via:
+//
+//	VirtualMachine2CloneArgs{...}
+type VirtualMachine2CloneInput interface {
+	pulumi.Input
+
+	ToVirtualMachine2CloneOutput() VirtualMachine2CloneOutput
+	ToVirtualMachine2CloneOutputWithContext(context.Context) VirtualMachine2CloneOutput
+}
+
+type VirtualMachine2CloneArgs struct {
+	// The ID of the VM to clone.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The number of retries to perform when cloning the VM (default: 3).
+	Retries pulumi.IntPtrInput `pulumi:"retries"`
+}
+
+func (VirtualMachine2CloneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachine2Clone)(nil)).Elem()
+}
+
+func (i VirtualMachine2CloneArgs) ToVirtualMachine2CloneOutput() VirtualMachine2CloneOutput {
+	return i.ToVirtualMachine2CloneOutputWithContext(context.Background())
+}
+
+func (i VirtualMachine2CloneArgs) ToVirtualMachine2CloneOutputWithContext(ctx context.Context) VirtualMachine2CloneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachine2CloneOutput)
+}
+
+func (i VirtualMachine2CloneArgs) ToVirtualMachine2ClonePtrOutput() VirtualMachine2ClonePtrOutput {
+	return i.ToVirtualMachine2ClonePtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachine2CloneArgs) ToVirtualMachine2ClonePtrOutputWithContext(ctx context.Context) VirtualMachine2ClonePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachine2CloneOutput).ToVirtualMachine2ClonePtrOutputWithContext(ctx)
+}
+
+// VirtualMachine2ClonePtrInput is an input type that accepts VirtualMachine2CloneArgs, VirtualMachine2ClonePtr and VirtualMachine2ClonePtrOutput values.
+// You can construct a concrete instance of `VirtualMachine2ClonePtrInput` via:
+//
+//	        VirtualMachine2CloneArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachine2ClonePtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachine2ClonePtrOutput() VirtualMachine2ClonePtrOutput
+	ToVirtualMachine2ClonePtrOutputWithContext(context.Context) VirtualMachine2ClonePtrOutput
+}
+
+type virtualMachine2ClonePtrType VirtualMachine2CloneArgs
+
+func VirtualMachine2ClonePtr(v *VirtualMachine2CloneArgs) VirtualMachine2ClonePtrInput {
+	return (*virtualMachine2ClonePtrType)(v)
+}
+
+func (*virtualMachine2ClonePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachine2Clone)(nil)).Elem()
+}
+
+func (i *virtualMachine2ClonePtrType) ToVirtualMachine2ClonePtrOutput() VirtualMachine2ClonePtrOutput {
+	return i.ToVirtualMachine2ClonePtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachine2ClonePtrType) ToVirtualMachine2ClonePtrOutputWithContext(ctx context.Context) VirtualMachine2ClonePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachine2ClonePtrOutput)
+}
+
+type VirtualMachine2CloneOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachine2CloneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachine2Clone)(nil)).Elem()
+}
+
+func (o VirtualMachine2CloneOutput) ToVirtualMachine2CloneOutput() VirtualMachine2CloneOutput {
+	return o
+}
+
+func (o VirtualMachine2CloneOutput) ToVirtualMachine2CloneOutputWithContext(ctx context.Context) VirtualMachine2CloneOutput {
+	return o
+}
+
+func (o VirtualMachine2CloneOutput) ToVirtualMachine2ClonePtrOutput() VirtualMachine2ClonePtrOutput {
+	return o.ToVirtualMachine2ClonePtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachine2CloneOutput) ToVirtualMachine2ClonePtrOutputWithContext(ctx context.Context) VirtualMachine2ClonePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachine2Clone) *VirtualMachine2Clone {
+		return &v
+	}).(VirtualMachine2ClonePtrOutput)
+}
+
+// The ID of the VM to clone.
+func (o VirtualMachine2CloneOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v VirtualMachine2Clone) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The number of retries to perform when cloning the VM (default: 3).
+func (o VirtualMachine2CloneOutput) Retries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachine2Clone) *int { return v.Retries }).(pulumi.IntPtrOutput)
+}
+
+type VirtualMachine2ClonePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachine2ClonePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachine2Clone)(nil)).Elem()
+}
+
+func (o VirtualMachine2ClonePtrOutput) ToVirtualMachine2ClonePtrOutput() VirtualMachine2ClonePtrOutput {
+	return o
+}
+
+func (o VirtualMachine2ClonePtrOutput) ToVirtualMachine2ClonePtrOutputWithContext(ctx context.Context) VirtualMachine2ClonePtrOutput {
+	return o
+}
+
+func (o VirtualMachine2ClonePtrOutput) Elem() VirtualMachine2CloneOutput {
+	return o.ApplyT(func(v *VirtualMachine2Clone) VirtualMachine2Clone {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachine2Clone
+		return ret
+	}).(VirtualMachine2CloneOutput)
+}
+
+// The ID of the VM to clone.
+func (o VirtualMachine2ClonePtrOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine2Clone) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of retries to perform when cloning the VM (default: 3).
+func (o VirtualMachine2ClonePtrOutput) Retries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine2Clone) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Retries
+	}).(pulumi.IntPtrOutput)
+}
+
+type VirtualMachine2Cpu struct {
+	// The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+	Affinity *string `pulumi:"affinity"`
+	// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `affinity` is only allowed for `root@pam` authenticated user.
+	Architecture *string `pulumi:"architecture"`
+	// The number of CPU cores per socket (defaults to `1`).
+	Cores *int `pulumi:"cores"`
+	// Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+	Flags []string `pulumi:"flags"`
+	// The number of hotplugged vCPUs (defaults to `0`).
+	Hotplugged *int `pulumi:"hotplugged"`
+	// Limit of CPU usage (defaults to `0` which means no limit).
+	Limit *int `pulumi:"limit"`
+	// Enable NUMA (defaults to `false`).
+	Numa *bool `pulumi:"numa"`
+	// The number of CPU sockets (defaults to `1`).
+	Sockets *int `pulumi:"sockets"`
+	// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+	Type *string `pulumi:"type"`
+	// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+	Units *int `pulumi:"units"`
+}
+
+// VirtualMachine2CpuInput is an input type that accepts VirtualMachine2CpuArgs and VirtualMachine2CpuOutput values.
+// You can construct a concrete instance of `VirtualMachine2CpuInput` via:
+//
+//	VirtualMachine2CpuArgs{...}
+type VirtualMachine2CpuInput interface {
+	pulumi.Input
+
+	ToVirtualMachine2CpuOutput() VirtualMachine2CpuOutput
+	ToVirtualMachine2CpuOutputWithContext(context.Context) VirtualMachine2CpuOutput
+}
+
+type VirtualMachine2CpuArgs struct {
+	// The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+	Affinity pulumi.StringPtrInput `pulumi:"affinity"`
+	// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `affinity` is only allowed for `root@pam` authenticated user.
+	Architecture pulumi.StringPtrInput `pulumi:"architecture"`
+	// The number of CPU cores per socket (defaults to `1`).
+	Cores pulumi.IntPtrInput `pulumi:"cores"`
+	// Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+	Flags pulumi.StringArrayInput `pulumi:"flags"`
+	// The number of hotplugged vCPUs (defaults to `0`).
+	Hotplugged pulumi.IntPtrInput `pulumi:"hotplugged"`
+	// Limit of CPU usage (defaults to `0` which means no limit).
+	Limit pulumi.IntPtrInput `pulumi:"limit"`
+	// Enable NUMA (defaults to `false`).
+	Numa pulumi.BoolPtrInput `pulumi:"numa"`
+	// The number of CPU sockets (defaults to `1`).
+	Sockets pulumi.IntPtrInput `pulumi:"sockets"`
+	// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+	Units pulumi.IntPtrInput `pulumi:"units"`
+}
+
+func (VirtualMachine2CpuArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachine2Cpu)(nil)).Elem()
+}
+
+func (i VirtualMachine2CpuArgs) ToVirtualMachine2CpuOutput() VirtualMachine2CpuOutput {
+	return i.ToVirtualMachine2CpuOutputWithContext(context.Background())
+}
+
+func (i VirtualMachine2CpuArgs) ToVirtualMachine2CpuOutputWithContext(ctx context.Context) VirtualMachine2CpuOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachine2CpuOutput)
+}
+
+func (i VirtualMachine2CpuArgs) ToVirtualMachine2CpuPtrOutput() VirtualMachine2CpuPtrOutput {
+	return i.ToVirtualMachine2CpuPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachine2CpuArgs) ToVirtualMachine2CpuPtrOutputWithContext(ctx context.Context) VirtualMachine2CpuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachine2CpuOutput).ToVirtualMachine2CpuPtrOutputWithContext(ctx)
+}
+
+// VirtualMachine2CpuPtrInput is an input type that accepts VirtualMachine2CpuArgs, VirtualMachine2CpuPtr and VirtualMachine2CpuPtrOutput values.
+// You can construct a concrete instance of `VirtualMachine2CpuPtrInput` via:
+//
+//	        VirtualMachine2CpuArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachine2CpuPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachine2CpuPtrOutput() VirtualMachine2CpuPtrOutput
+	ToVirtualMachine2CpuPtrOutputWithContext(context.Context) VirtualMachine2CpuPtrOutput
+}
+
+type virtualMachine2CpuPtrType VirtualMachine2CpuArgs
+
+func VirtualMachine2CpuPtr(v *VirtualMachine2CpuArgs) VirtualMachine2CpuPtrInput {
+	return (*virtualMachine2CpuPtrType)(v)
+}
+
+func (*virtualMachine2CpuPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachine2Cpu)(nil)).Elem()
+}
+
+func (i *virtualMachine2CpuPtrType) ToVirtualMachine2CpuPtrOutput() VirtualMachine2CpuPtrOutput {
+	return i.ToVirtualMachine2CpuPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachine2CpuPtrType) ToVirtualMachine2CpuPtrOutputWithContext(ctx context.Context) VirtualMachine2CpuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachine2CpuPtrOutput)
+}
+
+type VirtualMachine2CpuOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachine2CpuOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachine2Cpu)(nil)).Elem()
+}
+
+func (o VirtualMachine2CpuOutput) ToVirtualMachine2CpuOutput() VirtualMachine2CpuOutput {
+	return o
+}
+
+func (o VirtualMachine2CpuOutput) ToVirtualMachine2CpuOutputWithContext(ctx context.Context) VirtualMachine2CpuOutput {
+	return o
+}
+
+func (o VirtualMachine2CpuOutput) ToVirtualMachine2CpuPtrOutput() VirtualMachine2CpuPtrOutput {
+	return o.ToVirtualMachine2CpuPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachine2CpuOutput) ToVirtualMachine2CpuPtrOutputWithContext(ctx context.Context) VirtualMachine2CpuPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachine2Cpu) *VirtualMachine2Cpu {
+		return &v
+	}).(VirtualMachine2CpuPtrOutput)
+}
+
+// The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+func (o VirtualMachine2CpuOutput) Affinity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachine2Cpu) *string { return v.Affinity }).(pulumi.StringPtrOutput)
+}
+
+// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `affinity` is only allowed for `root@pam` authenticated user.
+func (o VirtualMachine2CpuOutput) Architecture() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachine2Cpu) *string { return v.Architecture }).(pulumi.StringPtrOutput)
+}
+
+// The number of CPU cores per socket (defaults to `1`).
+func (o VirtualMachine2CpuOutput) Cores() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachine2Cpu) *int { return v.Cores }).(pulumi.IntPtrOutput)
+}
+
+// Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+func (o VirtualMachine2CpuOutput) Flags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VirtualMachine2Cpu) []string { return v.Flags }).(pulumi.StringArrayOutput)
+}
+
+// The number of hotplugged vCPUs (defaults to `0`).
+func (o VirtualMachine2CpuOutput) Hotplugged() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachine2Cpu) *int { return v.Hotplugged }).(pulumi.IntPtrOutput)
+}
+
+// Limit of CPU usage (defaults to `0` which means no limit).
+func (o VirtualMachine2CpuOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachine2Cpu) *int { return v.Limit }).(pulumi.IntPtrOutput)
+}
+
+// Enable NUMA (defaults to `false`).
+func (o VirtualMachine2CpuOutput) Numa() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachine2Cpu) *bool { return v.Numa }).(pulumi.BoolPtrOutput)
+}
+
+// The number of CPU sockets (defaults to `1`).
+func (o VirtualMachine2CpuOutput) Sockets() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachine2Cpu) *int { return v.Sockets }).(pulumi.IntPtrOutput)
+}
+
+// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+func (o VirtualMachine2CpuOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachine2Cpu) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+func (o VirtualMachine2CpuOutput) Units() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachine2Cpu) *int { return v.Units }).(pulumi.IntPtrOutput)
+}
+
+type VirtualMachine2CpuPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachine2CpuPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachine2Cpu)(nil)).Elem()
+}
+
+func (o VirtualMachine2CpuPtrOutput) ToVirtualMachine2CpuPtrOutput() VirtualMachine2CpuPtrOutput {
+	return o
+}
+
+func (o VirtualMachine2CpuPtrOutput) ToVirtualMachine2CpuPtrOutputWithContext(ctx context.Context) VirtualMachine2CpuPtrOutput {
+	return o
+}
+
+func (o VirtualMachine2CpuPtrOutput) Elem() VirtualMachine2CpuOutput {
+	return o.ApplyT(func(v *VirtualMachine2Cpu) VirtualMachine2Cpu {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachine2Cpu
+		return ret
+	}).(VirtualMachine2CpuOutput)
+}
+
+// The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+func (o VirtualMachine2CpuPtrOutput) Affinity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine2Cpu) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Affinity
+	}).(pulumi.StringPtrOutput)
+}
+
+// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `affinity` is only allowed for `root@pam` authenticated user.
+func (o VirtualMachine2CpuPtrOutput) Architecture() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine2Cpu) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Architecture
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of CPU cores per socket (defaults to `1`).
+func (o VirtualMachine2CpuPtrOutput) Cores() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine2Cpu) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Cores
+	}).(pulumi.IntPtrOutput)
+}
+
+// Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+func (o VirtualMachine2CpuPtrOutput) Flags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VirtualMachine2Cpu) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Flags
+	}).(pulumi.StringArrayOutput)
+}
+
+// The number of hotplugged vCPUs (defaults to `0`).
+func (o VirtualMachine2CpuPtrOutput) Hotplugged() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine2Cpu) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hotplugged
+	}).(pulumi.IntPtrOutput)
+}
+
+// Limit of CPU usage (defaults to `0` which means no limit).
+func (o VirtualMachine2CpuPtrOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine2Cpu) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Limit
+	}).(pulumi.IntPtrOutput)
+}
+
+// Enable NUMA (defaults to `false`).
+func (o VirtualMachine2CpuPtrOutput) Numa() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine2Cpu) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Numa
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The number of CPU sockets (defaults to `1`).
+func (o VirtualMachine2CpuPtrOutput) Sockets() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine2Cpu) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Sockets
+	}).(pulumi.IntPtrOutput)
+}
+
+// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+func (o VirtualMachine2CpuPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine2Cpu) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+func (o VirtualMachine2CpuPtrOutput) Units() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine2Cpu) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Units
+	}).(pulumi.IntPtrOutput)
+}
+
+type VirtualMachine2Timeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// VirtualMachine2TimeoutsInput is an input type that accepts VirtualMachine2TimeoutsArgs and VirtualMachine2TimeoutsOutput values.
+// You can construct a concrete instance of `VirtualMachine2TimeoutsInput` via:
+//
+//	VirtualMachine2TimeoutsArgs{...}
+type VirtualMachine2TimeoutsInput interface {
+	pulumi.Input
+
+	ToVirtualMachine2TimeoutsOutput() VirtualMachine2TimeoutsOutput
+	ToVirtualMachine2TimeoutsOutputWithContext(context.Context) VirtualMachine2TimeoutsOutput
+}
+
+type VirtualMachine2TimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (VirtualMachine2TimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachine2Timeouts)(nil)).Elem()
+}
+
+func (i VirtualMachine2TimeoutsArgs) ToVirtualMachine2TimeoutsOutput() VirtualMachine2TimeoutsOutput {
+	return i.ToVirtualMachine2TimeoutsOutputWithContext(context.Background())
+}
+
+func (i VirtualMachine2TimeoutsArgs) ToVirtualMachine2TimeoutsOutputWithContext(ctx context.Context) VirtualMachine2TimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachine2TimeoutsOutput)
+}
+
+func (i VirtualMachine2TimeoutsArgs) ToVirtualMachine2TimeoutsPtrOutput() VirtualMachine2TimeoutsPtrOutput {
+	return i.ToVirtualMachine2TimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachine2TimeoutsArgs) ToVirtualMachine2TimeoutsPtrOutputWithContext(ctx context.Context) VirtualMachine2TimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachine2TimeoutsOutput).ToVirtualMachine2TimeoutsPtrOutputWithContext(ctx)
+}
+
+// VirtualMachine2TimeoutsPtrInput is an input type that accepts VirtualMachine2TimeoutsArgs, VirtualMachine2TimeoutsPtr and VirtualMachine2TimeoutsPtrOutput values.
+// You can construct a concrete instance of `VirtualMachine2TimeoutsPtrInput` via:
+//
+//	        VirtualMachine2TimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachine2TimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachine2TimeoutsPtrOutput() VirtualMachine2TimeoutsPtrOutput
+	ToVirtualMachine2TimeoutsPtrOutputWithContext(context.Context) VirtualMachine2TimeoutsPtrOutput
+}
+
+type virtualMachine2TimeoutsPtrType VirtualMachine2TimeoutsArgs
+
+func VirtualMachine2TimeoutsPtr(v *VirtualMachine2TimeoutsArgs) VirtualMachine2TimeoutsPtrInput {
+	return (*virtualMachine2TimeoutsPtrType)(v)
+}
+
+func (*virtualMachine2TimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachine2Timeouts)(nil)).Elem()
+}
+
+func (i *virtualMachine2TimeoutsPtrType) ToVirtualMachine2TimeoutsPtrOutput() VirtualMachine2TimeoutsPtrOutput {
+	return i.ToVirtualMachine2TimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachine2TimeoutsPtrType) ToVirtualMachine2TimeoutsPtrOutputWithContext(ctx context.Context) VirtualMachine2TimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachine2TimeoutsPtrOutput)
+}
+
+type VirtualMachine2TimeoutsOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachine2TimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachine2Timeouts)(nil)).Elem()
+}
+
+func (o VirtualMachine2TimeoutsOutput) ToVirtualMachine2TimeoutsOutput() VirtualMachine2TimeoutsOutput {
+	return o
+}
+
+func (o VirtualMachine2TimeoutsOutput) ToVirtualMachine2TimeoutsOutputWithContext(ctx context.Context) VirtualMachine2TimeoutsOutput {
+	return o
+}
+
+func (o VirtualMachine2TimeoutsOutput) ToVirtualMachine2TimeoutsPtrOutput() VirtualMachine2TimeoutsPtrOutput {
+	return o.ToVirtualMachine2TimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachine2TimeoutsOutput) ToVirtualMachine2TimeoutsPtrOutputWithContext(ctx context.Context) VirtualMachine2TimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachine2Timeouts) *VirtualMachine2Timeouts {
+		return &v
+	}).(VirtualMachine2TimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VirtualMachine2TimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachine2Timeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o VirtualMachine2TimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachine2Timeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o VirtualMachine2TimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachine2Timeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VirtualMachine2TimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachine2Timeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachine2TimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachine2TimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachine2Timeouts)(nil)).Elem()
+}
+
+func (o VirtualMachine2TimeoutsPtrOutput) ToVirtualMachine2TimeoutsPtrOutput() VirtualMachine2TimeoutsPtrOutput {
+	return o
+}
+
+func (o VirtualMachine2TimeoutsPtrOutput) ToVirtualMachine2TimeoutsPtrOutputWithContext(ctx context.Context) VirtualMachine2TimeoutsPtrOutput {
+	return o
+}
+
+func (o VirtualMachine2TimeoutsPtrOutput) Elem() VirtualMachine2TimeoutsOutput {
+	return o.ApplyT(func(v *VirtualMachine2Timeouts) VirtualMachine2Timeouts {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachine2Timeouts
+		return ret
+	}).(VirtualMachine2TimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VirtualMachine2TimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine2Timeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o VirtualMachine2TimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine2Timeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o VirtualMachine2TimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine2Timeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VirtualMachine2TimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine2Timeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachine2Vga struct {
+	// Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+	Clipboard *string `pulumi:"clipboard"`
+	// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+	Memory *int `pulumi:"memory"`
+	// The VGA type (defaults to `std`).
+	Type *string `pulumi:"type"`
+}
+
+// VirtualMachine2VgaInput is an input type that accepts VirtualMachine2VgaArgs and VirtualMachine2VgaOutput values.
+// You can construct a concrete instance of `VirtualMachine2VgaInput` via:
+//
+//	VirtualMachine2VgaArgs{...}
+type VirtualMachine2VgaInput interface {
+	pulumi.Input
+
+	ToVirtualMachine2VgaOutput() VirtualMachine2VgaOutput
+	ToVirtualMachine2VgaOutputWithContext(context.Context) VirtualMachine2VgaOutput
+}
+
+type VirtualMachine2VgaArgs struct {
+	// Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+	Clipboard pulumi.StringPtrInput `pulumi:"clipboard"`
+	// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+	Memory pulumi.IntPtrInput `pulumi:"memory"`
+	// The VGA type (defaults to `std`).
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (VirtualMachine2VgaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachine2Vga)(nil)).Elem()
+}
+
+func (i VirtualMachine2VgaArgs) ToVirtualMachine2VgaOutput() VirtualMachine2VgaOutput {
+	return i.ToVirtualMachine2VgaOutputWithContext(context.Background())
+}
+
+func (i VirtualMachine2VgaArgs) ToVirtualMachine2VgaOutputWithContext(ctx context.Context) VirtualMachine2VgaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachine2VgaOutput)
+}
+
+func (i VirtualMachine2VgaArgs) ToVirtualMachine2VgaPtrOutput() VirtualMachine2VgaPtrOutput {
+	return i.ToVirtualMachine2VgaPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachine2VgaArgs) ToVirtualMachine2VgaPtrOutputWithContext(ctx context.Context) VirtualMachine2VgaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachine2VgaOutput).ToVirtualMachine2VgaPtrOutputWithContext(ctx)
+}
+
+// VirtualMachine2VgaPtrInput is an input type that accepts VirtualMachine2VgaArgs, VirtualMachine2VgaPtr and VirtualMachine2VgaPtrOutput values.
+// You can construct a concrete instance of `VirtualMachine2VgaPtrInput` via:
+//
+//	        VirtualMachine2VgaArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachine2VgaPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachine2VgaPtrOutput() VirtualMachine2VgaPtrOutput
+	ToVirtualMachine2VgaPtrOutputWithContext(context.Context) VirtualMachine2VgaPtrOutput
+}
+
+type virtualMachine2VgaPtrType VirtualMachine2VgaArgs
+
+func VirtualMachine2VgaPtr(v *VirtualMachine2VgaArgs) VirtualMachine2VgaPtrInput {
+	return (*virtualMachine2VgaPtrType)(v)
+}
+
+func (*virtualMachine2VgaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachine2Vga)(nil)).Elem()
+}
+
+func (i *virtualMachine2VgaPtrType) ToVirtualMachine2VgaPtrOutput() VirtualMachine2VgaPtrOutput {
+	return i.ToVirtualMachine2VgaPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachine2VgaPtrType) ToVirtualMachine2VgaPtrOutputWithContext(ctx context.Context) VirtualMachine2VgaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachine2VgaPtrOutput)
+}
+
+type VirtualMachine2VgaOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachine2VgaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachine2Vga)(nil)).Elem()
+}
+
+func (o VirtualMachine2VgaOutput) ToVirtualMachine2VgaOutput() VirtualMachine2VgaOutput {
+	return o
+}
+
+func (o VirtualMachine2VgaOutput) ToVirtualMachine2VgaOutputWithContext(ctx context.Context) VirtualMachine2VgaOutput {
+	return o
+}
+
+func (o VirtualMachine2VgaOutput) ToVirtualMachine2VgaPtrOutput() VirtualMachine2VgaPtrOutput {
+	return o.ToVirtualMachine2VgaPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachine2VgaOutput) ToVirtualMachine2VgaPtrOutputWithContext(ctx context.Context) VirtualMachine2VgaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachine2Vga) *VirtualMachine2Vga {
+		return &v
+	}).(VirtualMachine2VgaPtrOutput)
+}
+
+// Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+func (o VirtualMachine2VgaOutput) Clipboard() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachine2Vga) *string { return v.Clipboard }).(pulumi.StringPtrOutput)
+}
+
+// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+func (o VirtualMachine2VgaOutput) Memory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachine2Vga) *int { return v.Memory }).(pulumi.IntPtrOutput)
+}
+
+// The VGA type (defaults to `std`).
+func (o VirtualMachine2VgaOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachine2Vga) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachine2VgaPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachine2VgaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachine2Vga)(nil)).Elem()
+}
+
+func (o VirtualMachine2VgaPtrOutput) ToVirtualMachine2VgaPtrOutput() VirtualMachine2VgaPtrOutput {
+	return o
+}
+
+func (o VirtualMachine2VgaPtrOutput) ToVirtualMachine2VgaPtrOutputWithContext(ctx context.Context) VirtualMachine2VgaPtrOutput {
+	return o
+}
+
+func (o VirtualMachine2VgaPtrOutput) Elem() VirtualMachine2VgaOutput {
+	return o.ApplyT(func(v *VirtualMachine2Vga) VirtualMachine2Vga {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachine2Vga
+		return ret
+	}).(VirtualMachine2VgaOutput)
+}
+
+// Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+func (o VirtualMachine2VgaPtrOutput) Clipboard() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine2Vga) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Clipboard
+	}).(pulumi.StringPtrOutput)
+}
+
+// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+func (o VirtualMachine2VgaPtrOutput) Memory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine2Vga) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Memory
+	}).(pulumi.IntPtrOutput)
+}
+
+// The VGA type (defaults to `std`).
+func (o VirtualMachine2VgaPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine2Vga) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 type VirtualMachineAgent struct {
 	// Whether to enable the QEMU agent (defaults
 	// to `false`).
@@ -415,7 +1248,7 @@ type VirtualMachineCdrom struct {
 	// to `false`).
 	Enabled *bool `pulumi:"enabled"`
 	// A file ID for an ISO file (defaults to `cdrom` as
-	// in the physical drive).
+	// in the physical drive). Use `none` to leave the CDROM drive empty.
 	FileId *string `pulumi:"fileId"`
 	// A hardware interface to connect CDROM drive to,
 	// must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
@@ -439,7 +1272,7 @@ type VirtualMachineCdromArgs struct {
 	// to `false`).
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// A file ID for an ISO file (defaults to `cdrom` as
-	// in the physical drive).
+	// in the physical drive). Use `none` to leave the CDROM drive empty.
 	FileId pulumi.StringPtrInput `pulumi:"fileId"`
 	// A hardware interface to connect CDROM drive to,
 	// must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
@@ -531,7 +1364,7 @@ func (o VirtualMachineCdromOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 // A file ID for an ISO file (defaults to `cdrom` as
-// in the physical drive).
+// in the physical drive). Use `none` to leave the CDROM drive empty.
 func (o VirtualMachineCdromOutput) FileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCdrom) *string { return v.FileId }).(pulumi.StringPtrOutput)
 }
@@ -579,7 +1412,7 @@ func (o VirtualMachineCdromPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 // A file ID for an ISO file (defaults to `cdrom` as
-// in the physical drive).
+// in the physical drive). Use `none` to leave the CDROM drive empty.
 func (o VirtualMachineCdromPtrOutput) FileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCdrom) *string {
 		if v == nil {
@@ -5228,6 +6061,14 @@ func (o GetVirtualMachinesVmArrayOutput) Index(i pulumi.IntInput) GetVirtualMach
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachine2CloneInput)(nil)).Elem(), VirtualMachine2CloneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachine2ClonePtrInput)(nil)).Elem(), VirtualMachine2CloneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachine2CpuInput)(nil)).Elem(), VirtualMachine2CpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachine2CpuPtrInput)(nil)).Elem(), VirtualMachine2CpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachine2TimeoutsInput)(nil)).Elem(), VirtualMachine2TimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachine2TimeoutsPtrInput)(nil)).Elem(), VirtualMachine2TimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachine2VgaInput)(nil)).Elem(), VirtualMachine2VgaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachine2VgaPtrInput)(nil)).Elem(), VirtualMachine2VgaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineAgentInput)(nil)).Elem(), VirtualMachineAgentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineAgentPtrInput)(nil)).Elem(), VirtualMachineAgentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineAudioDeviceInput)(nil)).Elem(), VirtualMachineAudioDeviceArgs{})
@@ -5280,6 +6121,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineVgaPtrInput)(nil)).Elem(), VirtualMachineVgaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachinesVmInput)(nil)).Elem(), GetVirtualMachinesVmArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachinesVmArrayInput)(nil)).Elem(), GetVirtualMachinesVmArray{})
+	pulumi.RegisterOutputType(VirtualMachine2CloneOutput{})
+	pulumi.RegisterOutputType(VirtualMachine2ClonePtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachine2CpuOutput{})
+	pulumi.RegisterOutputType(VirtualMachine2CpuPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachine2TimeoutsOutput{})
+	pulumi.RegisterOutputType(VirtualMachine2TimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachine2VgaOutput{})
+	pulumi.RegisterOutputType(VirtualMachine2VgaPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineAgentOutput{})
 	pulumi.RegisterOutputType(VirtualMachineAgentPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineAudioDeviceOutput{})

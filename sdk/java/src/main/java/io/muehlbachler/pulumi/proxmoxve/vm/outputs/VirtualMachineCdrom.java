@@ -20,7 +20,7 @@ public final class VirtualMachineCdrom {
     private @Nullable Boolean enabled;
     /**
      * @return A file ID for an ISO file (defaults to `cdrom` as
-     * in the physical drive).
+     * in the physical drive). Use `none` to leave the CDROM drive empty.
      * 
      */
     private @Nullable String fileId;
@@ -43,7 +43,7 @@ public final class VirtualMachineCdrom {
     }
     /**
      * @return A file ID for an ISO file (defaults to `cdrom` as
-     * in the physical drive).
+     * in the physical drive). Use `none` to leave the CDROM drive empty.
      * 
      */
     public Optional<String> fileId() {

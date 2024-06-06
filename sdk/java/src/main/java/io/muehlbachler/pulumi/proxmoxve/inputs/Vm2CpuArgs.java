@@ -139,14 +139,14 @@ public final class Vm2CpuArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Emulated CPU type, it&#39;s recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+     * Emulated CPU type, it&#39;s recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings for more information.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Emulated CPU type, it&#39;s recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+     * @return Emulated CPU type, it&#39;s recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings for more information.
      * 
      */
     public Optional<Output<String>> type() {
@@ -380,7 +380,7 @@ public final class Vm2CpuArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Emulated CPU type, it&#39;s recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+         * @param type Emulated CPU type, it&#39;s recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings for more information.
          * 
          * @return builder
          * 
@@ -391,7 +391,7 @@ public final class Vm2CpuArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Emulated CPU type, it&#39;s recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+         * @param type Emulated CPU type, it&#39;s recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings for more information.
          * 
          * @return builder
          * 

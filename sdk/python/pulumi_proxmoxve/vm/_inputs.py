@@ -10,6 +10,10 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'VirtualMachine2CloneArgs',
+    'VirtualMachine2CpuArgs',
+    'VirtualMachine2TimeoutsArgs',
+    'VirtualMachine2VgaArgs',
     'VirtualMachineAgentArgs',
     'VirtualMachineAudioDeviceArgs',
     'VirtualMachineCdromArgs',
@@ -36,6 +40,337 @@ __all__ = [
     'VirtualMachineUsbArgs',
     'VirtualMachineVgaArgs',
 ]
+
+@pulumi.input_type
+class VirtualMachine2CloneArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[int],
+                 retries: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] id: The ID of the VM to clone.
+        :param pulumi.Input[int] retries: The number of retries to perform when cloning the VM (default: 3).
+        """
+        pulumi.set(__self__, "id", id)
+        if retries is not None:
+            pulumi.set(__self__, "retries", retries)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[int]:
+        """
+        The ID of the VM to clone.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[int]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def retries(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of retries to perform when cloning the VM (default: 3).
+        """
+        return pulumi.get(self, "retries")
+
+    @retries.setter
+    def retries(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "retries", value)
+
+
+@pulumi.input_type
+class VirtualMachine2CpuArgs:
+    def __init__(__self__, *,
+                 affinity: Optional[pulumi.Input[str]] = None,
+                 architecture: Optional[pulumi.Input[str]] = None,
+                 cores: Optional[pulumi.Input[int]] = None,
+                 flags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 hotplugged: Optional[pulumi.Input[int]] = None,
+                 limit: Optional[pulumi.Input[int]] = None,
+                 numa: Optional[pulumi.Input[bool]] = None,
+                 sockets: Optional[pulumi.Input[int]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 units: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] affinity: The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+        :param pulumi.Input[str] architecture: The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `affinity` is only allowed for `root@pam` authenticated user.
+        :param pulumi.Input[int] cores: The number of CPU cores per socket (defaults to `1`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] flags: Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+        :param pulumi.Input[int] hotplugged: The number of hotplugged vCPUs (defaults to `0`).
+        :param pulumi.Input[int] limit: Limit of CPU usage (defaults to `0` which means no limit).
+        :param pulumi.Input[bool] numa: Enable NUMA (defaults to `false`).
+        :param pulumi.Input[int] sockets: The number of CPU sockets (defaults to `1`).
+        :param pulumi.Input[str] type: Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+        :param pulumi.Input[int] units: CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+        """
+        if affinity is not None:
+            pulumi.set(__self__, "affinity", affinity)
+        if architecture is not None:
+            pulumi.set(__self__, "architecture", architecture)
+        if cores is not None:
+            pulumi.set(__self__, "cores", cores)
+        if flags is not None:
+            pulumi.set(__self__, "flags", flags)
+        if hotplugged is not None:
+            pulumi.set(__self__, "hotplugged", hotplugged)
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if numa is not None:
+            pulumi.set(__self__, "numa", numa)
+        if sockets is not None:
+            pulumi.set(__self__, "sockets", sockets)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if units is not None:
+            pulumi.set(__self__, "units", units)
+
+    @property
+    @pulumi.getter
+    def affinity(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+        """
+        return pulumi.get(self, "affinity")
+
+    @affinity.setter
+    def affinity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "affinity", value)
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `affinity` is only allowed for `root@pam` authenticated user.
+        """
+        return pulumi.get(self, "architecture")
+
+    @architecture.setter
+    def architecture(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "architecture", value)
+
+    @property
+    @pulumi.getter
+    def cores(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of CPU cores per socket (defaults to `1`).
+        """
+        return pulumi.get(self, "cores")
+
+    @cores.setter
+    def cores(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cores", value)
+
+    @property
+    @pulumi.getter
+    def flags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+        """
+        return pulumi.get(self, "flags")
+
+    @flags.setter
+    def flags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "flags", value)
+
+    @property
+    @pulumi.getter
+    def hotplugged(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of hotplugged vCPUs (defaults to `0`).
+        """
+        return pulumi.get(self, "hotplugged")
+
+    @hotplugged.setter
+    def hotplugged(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "hotplugged", value)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Limit of CPU usage (defaults to `0` which means no limit).
+        """
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "limit", value)
+
+    @property
+    @pulumi.getter
+    def numa(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable NUMA (defaults to `false`).
+        """
+        return pulumi.get(self, "numa")
+
+    @numa.setter
+    def numa(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "numa", value)
+
+    @property
+    @pulumi.getter
+    def sockets(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of CPU sockets (defaults to `1`).
+        """
+        return pulumi.get(self, "sockets")
+
+    @sockets.setter
+    def sockets(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "sockets", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def units(self) -> Optional[pulumi.Input[int]]:
+        """
+        CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+        """
+        return pulumi.get(self, "units")
+
+    @units.setter
+    def units(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "units", value)
+
+
+@pulumi.input_type
+class VirtualMachine2TimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[str]] = None,
+                 delete: Optional[pulumi.Input[str]] = None,
+                 read: Optional[pulumi.Input[str]] = None,
+                 update: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create", value)
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delete", value)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "read", value)
+
+    @property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update", value)
+
+
+@pulumi.input_type
+class VirtualMachine2VgaArgs:
+    def __init__(__self__, *,
+                 clipboard: Optional[pulumi.Input[str]] = None,
+                 memory: Optional[pulumi.Input[int]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] clipboard: Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+        :param pulumi.Input[int] memory: The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+        :param pulumi.Input[str] type: The VGA type (defaults to `std`).
+        """
+        if clipboard is not None:
+            pulumi.set(__self__, "clipboard", clipboard)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def clipboard(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+        """
+        return pulumi.get(self, "clipboard")
+
+    @clipboard.setter
+    def clipboard(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "clipboard", value)
+
+    @property
+    @pulumi.getter
+    def memory(self) -> Optional[pulumi.Input[int]]:
+        """
+        The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+        """
+        return pulumi.get(self, "memory")
+
+    @memory.setter
+    def memory(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "memory", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VGA type (defaults to `std`).
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
 
 @pulumi.input_type
 class VirtualMachineAgentArgs:
@@ -187,7 +522,7 @@ class VirtualMachineCdromArgs:
         :param pulumi.Input[bool] enabled: Whether to enable the CDROM drive (defaults
                to `false`).
         :param pulumi.Input[str] file_id: A file ID for an ISO file (defaults to `cdrom` as
-               in the physical drive).
+               in the physical drive). Use `none` to leave the CDROM drive empty.
         :param pulumi.Input[str] interface: A hardware interface to connect CDROM drive to,
                must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
                supports `ide0` and `ide2`.
@@ -217,7 +552,7 @@ class VirtualMachineCdromArgs:
     def file_id(self) -> Optional[pulumi.Input[str]]:
         """
         A file ID for an ISO file (defaults to `cdrom` as
-        in the physical drive).
+        in the physical drive). Use `none` to leave the CDROM drive empty.
         """
         return pulumi.get(self, "file_id")
 

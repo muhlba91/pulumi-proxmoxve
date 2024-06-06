@@ -1081,6 +1081,141 @@
                 "fileName"
             ]
         },
+        "proxmoxve:VM/VirtualMachine2Clone:VirtualMachine2Clone": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of the VM to clone.\n"
+                },
+                "retries": {
+                    "type": "integer",
+                    "description": "The number of retries to perform when cloning the VM (default: 3).\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "id",
+                        "retries"
+                    ]
+                }
+            }
+        },
+        "proxmoxve:VM/VirtualMachine2Cpu:VirtualMachine2Cpu": {
+            "properties": {
+                "affinity": {
+                    "type": "string",
+                    "description": "The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.\n"
+                },
+                "architecture": {
+                    "type": "string",
+                    "description": "The CPU architecture `\u003caarch64 | x86_64\u003e` (defaults to the host). Setting `affinity` is only allowed for `root@pam` authenticated user.\n"
+                },
+                "cores": {
+                    "type": "integer",
+                    "description": "The number of CPU cores per socket (defaults to `1`).\n"
+                },
+                "flags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.\n"
+                },
+                "hotplugged": {
+                    "type": "integer",
+                    "description": "The number of hotplugged vCPUs (defaults to `0`).\n"
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "Limit of CPU usage (defaults to `0` which means no limit).\n"
+                },
+                "numa": {
+                    "type": "boolean",
+                    "description": "Enable NUMA (defaults to `false`).\n"
+                },
+                "sockets": {
+                    "type": "integer",
+                    "description": "The number of CPU sockets (defaults to `1`).\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.\n"
+                },
+                "units": {
+                    "type": "integer",
+                    "description": "CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "affinity",
+                        "architecture",
+                        "cores",
+                        "flags",
+                        "hotplugged",
+                        "limit",
+                        "numa",
+                        "sockets",
+                        "type",
+                        "units"
+                    ]
+                }
+            }
+        },
+        "proxmoxve:VM/VirtualMachine2Timeouts:VirtualMachine2Timeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                },
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                },
+                "update": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
+        },
+        "proxmoxve:VM/VirtualMachine2Vga:VirtualMachine2Vga": {
+            "properties": {
+                "clipboard": {
+                    "type": "string",
+                    "description": "Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.\n"
+                },
+                "memory": {
+                    "type": "integer",
+                    "description": "The VGA memory in megabytes (4-512 MB). Has no effect with serial display.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The VGA type (defaults to `std`).\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "clipboard",
+                        "memory",
+                        "type"
+                    ]
+                }
+            }
+        },
         "proxmoxve:VM/VirtualMachineAgent:VirtualMachineAgent": {
             "properties": {
                 "enabled": {
@@ -1127,7 +1262,7 @@
                 },
                 "fileId": {
                     "type": "string",
-                    "description": "A file ID for an ISO file (defaults to `cdrom` as\nin the physical drive).\n"
+                    "description": "A file ID for an ISO file (defaults to `cdrom` as\nin the physical drive). Use `none` to leave the CDROM drive empty.\n"
                 },
                 "interface": {
                     "type": "string",
@@ -2052,7 +2187,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.\n"
+                    "description": "Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings for more information.\n"
                 },
                 "units": {
                     "type": "integer",
@@ -5048,6 +5183,148 @@
                 "type": "object"
             }
         },
+        "proxmoxve:VM/virtualMachine2:VirtualMachine2": {
+            "description": "!\u003e **DO NOT USE**\nThis is an experimental implementation of a Proxmox VM resource using Plugin Framework.\u003cbr\u003e\u003cbr\u003eIt is a Proof of Concept, highly experimental and **will** change in future. It does not support all features of the Proxmox API for VMs and **MUST NOT** be used in production.\n\n\u003e Many attributes are marked as **optional** _and_ **computed** in the schema,\nhence you may seem added to the plan with \"(known after apply)\" status, even if they are not set in the configuration.\nThis is done to support the `clone` operation, when a VM is created from an existing VM or template,\nand the source attributes are copied to the clone.\u003cbr\u003e\u003cbr\u003e\nComputed attributes allow the provider to set those attributes without user input.\nThe attributes are also marked as optional to allow the practitioner to set (or overwrite) them if needed.\n",
+            "properties": {
+                "clone": {
+                    "$ref": "#/types/proxmoxve:VM/VirtualMachine2Clone:VirtualMachine2Clone",
+                    "description": "The cloning configuration.\n"
+                },
+                "cpu": {
+                    "$ref": "#/types/proxmoxve:VM/VirtualMachine2Cpu:VirtualMachine2Cpu",
+                    "description": "The CPU configuration.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the VM.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the VM. Doesn't have to be unique.\n"
+                },
+                "nodeName": {
+                    "type": "string",
+                    "description": "The name of the node where the VM is provisioned.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The tags assigned to the VM.\n"
+                },
+                "template": {
+                    "type": "boolean",
+                    "description": "Set to true to create a VM template.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/proxmoxve:VM/VirtualMachine2Timeouts:VirtualMachine2Timeouts"
+                },
+                "vga": {
+                    "$ref": "#/types/proxmoxve:VM/VirtualMachine2Vga:VirtualMachine2Vga",
+                    "description": "Configure the VGA Hardware. If you want to use high resolution modes (\u003e= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.\n"
+                }
+            },
+            "required": [
+                "cpu",
+                "name",
+                "nodeName",
+                "tags",
+                "vga"
+            ],
+            "inputProperties": {
+                "clone": {
+                    "$ref": "#/types/proxmoxve:VM/VirtualMachine2Clone:VirtualMachine2Clone",
+                    "description": "The cloning configuration.\n"
+                },
+                "cpu": {
+                    "$ref": "#/types/proxmoxve:VM/VirtualMachine2Cpu:VirtualMachine2Cpu",
+                    "description": "The CPU configuration.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the VM.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the VM. Doesn't have to be unique.\n"
+                },
+                "nodeName": {
+                    "type": "string",
+                    "description": "The name of the node where the VM is provisioned.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The tags assigned to the VM.\n"
+                },
+                "template": {
+                    "type": "boolean",
+                    "description": "Set to true to create a VM template.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/proxmoxve:VM/VirtualMachine2Timeouts:VirtualMachine2Timeouts"
+                },
+                "vga": {
+                    "$ref": "#/types/proxmoxve:VM/VirtualMachine2Vga:VirtualMachine2Vga",
+                    "description": "Configure the VGA Hardware. If you want to use high resolution modes (\u003e= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.\n"
+                }
+            },
+            "requiredInputs": [
+                "nodeName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering VirtualMachine2 resources.\n",
+                "properties": {
+                    "clone": {
+                        "$ref": "#/types/proxmoxve:VM/VirtualMachine2Clone:VirtualMachine2Clone",
+                        "description": "The cloning configuration.\n"
+                    },
+                    "cpu": {
+                        "$ref": "#/types/proxmoxve:VM/VirtualMachine2Cpu:VirtualMachine2Cpu",
+                        "description": "The CPU configuration.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the VM.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the VM. Doesn't have to be unique.\n"
+                    },
+                    "nodeName": {
+                        "type": "string",
+                        "description": "The name of the node where the VM is provisioned.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The tags assigned to the VM.\n"
+                    },
+                    "template": {
+                        "type": "boolean",
+                        "description": "Set to true to create a VM template.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/proxmoxve:VM/VirtualMachine2Timeouts:VirtualMachine2Timeouts"
+                    },
+                    "vga": {
+                        "$ref": "#/types/proxmoxve:VM/VirtualMachine2Vga:VirtualMachine2Vga",
+                        "description": "Configure the VGA Hardware. If you want to use high resolution modes (\u003e= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "aliases": [
+                {
+                    "type": "proxmoxve:index/vm2:Vm2"
+                }
+            ]
+        },
         "proxmoxve:VM/virtualMachine:VirtualMachine": {
             "description": "Manages a virtual machine.\n\n\u003e This resource uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.\n\n## Import\n\nInstances can be imported using the `node_name` and the `vm_id`, e.g.,\n\nbash\n\n```sh\n$ pulumi import proxmoxve:VM/virtualMachine:VirtualMachine ubuntu_vm first-node/4321\n```\n\n",
             "properties": {
@@ -6332,7 +6609,6 @@
             }
         },
         "proxmoxve:index/vm2:Vm2": {
-            "description": "!\u003e **DO NOT USE**\nThis is an experimental implementation of a Proxmox VM resource using Plugin Framework.\u003cbr\u003e\u003cbr\u003eIt is a Proof of Concept, highly experimental and **will** change in future. It does not support all features of the Proxmox API for VMs and **MUST NOT** be used in production.\n\n\u003e Many attributes are marked as **optional** _and_ **computed** in the schema,\nhence you may seem added to the plan with \"(known after apply)\" status, even if they are not set in the configuration.\nThis is done to support the `clone` operation, when a VM is created from an existing VM or template,\nand the source attributes are copied to the clone.\u003cbr\u003e\u003cbr\u003e\nComputed attributes allow the provider to set those attributes without user input.\nThe attributes are also marked as optional to allow the practitioner to set (or overwrite) them if needed.\n",
             "properties": {
                 "clone": {
                     "$ref": "#/types/proxmoxve:index/Vm2Clone:Vm2Clone",
@@ -6370,7 +6646,7 @@
                 },
                 "vga": {
                     "$ref": "#/types/proxmoxve:index/Vm2Vga:Vm2Vga",
-                    "description": "Configure the VGA Hardware. If you want to use high resolution modes (\u003e= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.\n"
+                    "description": "Configure the VGA Hardware. If you want to use high resolution modes (\u003e= 1280x1024x16) you may need to increase the vga\nmemory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP\nand older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many\nindependent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using\na serial device as terminal. See the [Proxmox\ndocumentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for\nmore information and available configuration parameters.\n"
                 }
             },
             "required": [
@@ -6417,7 +6693,7 @@
                 },
                 "vga": {
                     "$ref": "#/types/proxmoxve:index/Vm2Vga:Vm2Vga",
-                    "description": "Configure the VGA Hardware. If you want to use high resolution modes (\u003e= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.\n"
+                    "description": "Configure the VGA Hardware. If you want to use high resolution modes (\u003e= 1280x1024x16) you may need to increase the vga\nmemory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP\nand older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many\nindependent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using\na serial device as terminal. See the [Proxmox\ndocumentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for\nmore information and available configuration parameters.\n"
                 }
             },
             "requiredInputs": [
@@ -6462,11 +6738,12 @@
                     },
                     "vga": {
                         "$ref": "#/types/proxmoxve:index/Vm2Vga:Vm2Vga",
-                        "description": "Configure the VGA Hardware. If you want to use high resolution modes (\u003e= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.\n"
+                        "description": "Configure the VGA Hardware. If you want to use high resolution modes (\u003e= 1280x1024x16) you may need to increase the vga\nmemory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP\nand older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many\nindependent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using\na serial device as terminal. See the [Proxmox\ndocumentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for\nmore information and available configuration parameters.\n"
                     }
                 },
                 "type": "object"
-            }
+            },
+            "deprecationMessage": "proxmoxve.index/vm2.Vm2 has been deprecated in favor of proxmoxve.vm/virtualmachine2.VirtualMachine2"
         }
     },
     "functions": {

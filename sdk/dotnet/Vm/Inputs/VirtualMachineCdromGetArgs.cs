@@ -21,7 +21,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
 
         /// <summary>
         /// A file ID for an ISO file (defaults to `cdrom` as
-        /// in the physical drive).
+        /// in the physical drive). Use `none` to leave the CDROM drive empty.
         /// </summary>
         [Input("fileId")]
         public Input<string>? FileId { get; set; }
