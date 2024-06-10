@@ -1,6 +1,25 @@
 # Changelog
 
 
+## [6.9.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.8.1...v6.9.0) (2024-06-10)
+
+
+### Features
+
+* prepare upstream update to v0.59.0; update pulumi dependencies ([f108f78](https://github.com/muhlba91/pulumi-proxmoxve/commit/f108f78f5a40f603cdfc418e4a39a99192e3a8aa))
+
+
+### Bug Fixes
+
+* prepare for upstream release 0.59.1 ([7b9f5b2](https://github.com/muhlba91/pulumi-proxmoxve/commit/7b9f5b2a911e0b0bd13aa612498429a6a564479c))
+
+
+### Miscellaneous Chores
+
+* **deps:** update goreleaser/goreleaser-action action to v6 ([b8132be](https://github.com/muhlba91/pulumi-proxmoxve/commit/b8132be62147a2429a7ce909c27dba430ea35ac8))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.59.0 ([240572f](https://github.com/muhlba91/pulumi-proxmoxve/commit/240572fed3cd6694ef3173658dd83b67e812bb3b))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.59.1 ([64a7176](https://github.com/muhlba91/pulumi-proxmoxve/commit/64a7176f68909043924da065f47874b27d8b567a))
+
 ## [6.8.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.8.0...v6.8.1) (2024-05-30)
 
 
