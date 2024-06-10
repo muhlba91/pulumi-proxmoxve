@@ -116,18 +116,18 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The file ID for a disk image (experimental -
-     * might cause high CPU utilization during import, especially with large
-     * disk images).
+     * The file ID for a disk image. The ID format is
+     * `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`. Can be also taken from
+     * `proxmoxve.Download.File` resource.
      * 
      */
     @Import(name="fileId")
     private @Nullable Output<String> fileId;
 
     /**
-     * @return The file ID for a disk image (experimental -
-     * might cause high CPU utilization during import, especially with large
-     * disk images).
+     * @return The file ID for a disk image. The ID format is
+     * `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`. Can be also taken from
+     * `proxmoxve.Download.File` resource.
      * 
      */
     public Optional<Output<String>> fileId() {
@@ -427,9 +427,9 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param fileId The file ID for a disk image (experimental -
-         * might cause high CPU utilization during import, especially with large
-         * disk images).
+         * @param fileId The file ID for a disk image. The ID format is
+         * `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`. Can be also taken from
+         * `proxmoxve.Download.File` resource.
          * 
          * @return builder
          * 
@@ -440,9 +440,9 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param fileId The file ID for a disk image (experimental -
-         * might cause high CPU utilization during import, especially with large
-         * disk images).
+         * @param fileId The file ID for a disk image. The ID format is
+         * `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`. Can be also taken from
+         * `proxmoxve.Download.File` resource.
          * 
          * @return builder
          * 

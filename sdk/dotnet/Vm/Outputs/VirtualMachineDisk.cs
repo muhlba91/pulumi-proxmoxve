@@ -41,9 +41,9 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly string? FileFormat;
         /// <summary>
-        /// The file ID for a disk image (experimental -
-        /// might cause high CPU utilization during import, especially with large
-        /// disk images).
+        /// The file ID for a disk image. The ID format is
+        /// `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`. Can be also taken from
+        /// `proxmoxve.Download.File` resource.
         /// </summary>
         public readonly string? FileId;
         /// <summary>

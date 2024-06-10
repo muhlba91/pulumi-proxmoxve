@@ -17,6 +17,7 @@ __all__ = ['Vm2Args', 'Vm2']
 class Vm2Args:
     def __init__(__self__, *,
                  node_name: pulumi.Input[str],
+                 cdrom: Optional[pulumi.Input[Mapping[str, pulumi.Input['Vm2CdromArgs']]]] = None,
                  clone: Optional[pulumi.Input['Vm2CloneArgs']] = None,
                  cpu: Optional[pulumi.Input['Vm2CpuArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -28,6 +29,8 @@ class Vm2Args:
         """
         The set of arguments for constructing a Vm2 resource.
         :param pulumi.Input[str] node_name: The name of the node where the VM is provisioned.
+        :param pulumi.Input[Mapping[str, pulumi.Input['Vm2CdromArgs']]] cdrom: The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is
+               the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
         :param pulumi.Input['Vm2CloneArgs'] clone: The cloning configuration.
         :param pulumi.Input['Vm2CpuArgs'] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description of the VM.
@@ -43,6 +46,8 @@ class Vm2Args:
                more information and available configuration parameters.
         """
         pulumi.set(__self__, "node_name", node_name)
+        if cdrom is not None:
+            pulumi.set(__self__, "cdrom", cdrom)
         if clone is not None:
             pulumi.set(__self__, "clone", clone)
         if cpu is not None:
@@ -71,6 +76,19 @@ class Vm2Args:
     @node_name.setter
     def node_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "node_name", value)
+
+    @property
+    @pulumi.getter
+    def cdrom(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['Vm2CdromArgs']]]]:
+        """
+        The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is
+        the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+        """
+        return pulumi.get(self, "cdrom")
+
+    @cdrom.setter
+    def cdrom(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['Vm2CdromArgs']]]]):
+        pulumi.set(self, "cdrom", value)
 
     @property
     @pulumi.getter
@@ -175,6 +193,7 @@ class Vm2Args:
 @pulumi.input_type
 class _Vm2State:
     def __init__(__self__, *,
+                 cdrom: Optional[pulumi.Input[Mapping[str, pulumi.Input['Vm2CdromArgs']]]] = None,
                  clone: Optional[pulumi.Input['Vm2CloneArgs']] = None,
                  cpu: Optional[pulumi.Input['Vm2CpuArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -186,6 +205,8 @@ class _Vm2State:
                  vga: Optional[pulumi.Input['Vm2VgaArgs']] = None):
         """
         Input properties used for looking up and filtering Vm2 resources.
+        :param pulumi.Input[Mapping[str, pulumi.Input['Vm2CdromArgs']]] cdrom: The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is
+               the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
         :param pulumi.Input['Vm2CloneArgs'] clone: The cloning configuration.
         :param pulumi.Input['Vm2CpuArgs'] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description of the VM.
@@ -201,6 +222,8 @@ class _Vm2State:
                documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for
                more information and available configuration parameters.
         """
+        if cdrom is not None:
+            pulumi.set(__self__, "cdrom", cdrom)
         if clone is not None:
             pulumi.set(__self__, "clone", clone)
         if cpu is not None:
@@ -219,6 +242,19 @@ class _Vm2State:
             pulumi.set(__self__, "timeouts", timeouts)
         if vga is not None:
             pulumi.set(__self__, "vga", vga)
+
+    @property
+    @pulumi.getter
+    def cdrom(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['Vm2CdromArgs']]]]:
+        """
+        The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is
+        the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+        """
+        return pulumi.get(self, "cdrom")
+
+    @cdrom.setter
+    def cdrom(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['Vm2CdromArgs']]]]):
+        pulumi.set(self, "cdrom", value)
 
     @property
     @pulumi.getter
@@ -342,6 +378,7 @@ class Vm2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cdrom: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['Vm2CdromArgs']]]]] = None,
                  clone: Optional[pulumi.Input[pulumi.InputType['Vm2CloneArgs']]] = None,
                  cpu: Optional[pulumi.Input[pulumi.InputType['Vm2CpuArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -356,6 +393,8 @@ class Vm2(pulumi.CustomResource):
         Create a Vm2 resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['Vm2CdromArgs']]]] cdrom: The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is
+               the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
         :param pulumi.Input[pulumi.InputType['Vm2CloneArgs']] clone: The cloning configuration.
         :param pulumi.Input[pulumi.InputType['Vm2CpuArgs']] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description of the VM.
@@ -394,6 +433,7 @@ class Vm2(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cdrom: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['Vm2CdromArgs']]]]] = None,
                  clone: Optional[pulumi.Input[pulumi.InputType['Vm2CloneArgs']]] = None,
                  cpu: Optional[pulumi.Input[pulumi.InputType['Vm2CpuArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -413,6 +453,7 @@ class Vm2(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = Vm2Args.__new__(Vm2Args)
 
+            __props__.__dict__["cdrom"] = cdrom
             __props__.__dict__["clone"] = clone
             __props__.__dict__["cpu"] = cpu
             __props__.__dict__["description"] = description
@@ -434,6 +475,7 @@ class Vm2(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            cdrom: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['Vm2CdromArgs']]]]] = None,
             clone: Optional[pulumi.Input[pulumi.InputType['Vm2CloneArgs']]] = None,
             cpu: Optional[pulumi.Input[pulumi.InputType['Vm2CpuArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -450,6 +492,8 @@ class Vm2(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['Vm2CdromArgs']]]] cdrom: The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is
+               the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
         :param pulumi.Input[pulumi.InputType['Vm2CloneArgs']] clone: The cloning configuration.
         :param pulumi.Input[pulumi.InputType['Vm2CpuArgs']] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description of the VM.
@@ -469,6 +513,7 @@ class Vm2(pulumi.CustomResource):
 
         __props__ = _Vm2State.__new__(_Vm2State)
 
+        __props__.__dict__["cdrom"] = cdrom
         __props__.__dict__["clone"] = clone
         __props__.__dict__["cpu"] = cpu
         __props__.__dict__["description"] = description
@@ -479,6 +524,15 @@ class Vm2(pulumi.CustomResource):
         __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["vga"] = vga
         return Vm2(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def cdrom(self) -> pulumi.Output[Mapping[str, 'outputs.Vm2Cdrom']]:
+        """
+        The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is
+        the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+        """
+        return pulumi.get(self, "cdrom")
 
     @property
     @pulumi.getter

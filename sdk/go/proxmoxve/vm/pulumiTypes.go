@@ -13,6 +13,103 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type VirtualMachine2Cdrom struct {
+	// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+	FileId *string `pulumi:"fileId"`
+}
+
+// VirtualMachine2CdromInput is an input type that accepts VirtualMachine2CdromArgs and VirtualMachine2CdromOutput values.
+// You can construct a concrete instance of `VirtualMachine2CdromInput` via:
+//
+//	VirtualMachine2CdromArgs{...}
+type VirtualMachine2CdromInput interface {
+	pulumi.Input
+
+	ToVirtualMachine2CdromOutput() VirtualMachine2CdromOutput
+	ToVirtualMachine2CdromOutputWithContext(context.Context) VirtualMachine2CdromOutput
+}
+
+type VirtualMachine2CdromArgs struct {
+	// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+	FileId pulumi.StringPtrInput `pulumi:"fileId"`
+}
+
+func (VirtualMachine2CdromArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachine2Cdrom)(nil)).Elem()
+}
+
+func (i VirtualMachine2CdromArgs) ToVirtualMachine2CdromOutput() VirtualMachine2CdromOutput {
+	return i.ToVirtualMachine2CdromOutputWithContext(context.Background())
+}
+
+func (i VirtualMachine2CdromArgs) ToVirtualMachine2CdromOutputWithContext(ctx context.Context) VirtualMachine2CdromOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachine2CdromOutput)
+}
+
+// VirtualMachine2CdromMapInput is an input type that accepts VirtualMachine2CdromMap and VirtualMachine2CdromMapOutput values.
+// You can construct a concrete instance of `VirtualMachine2CdromMapInput` via:
+//
+//	VirtualMachine2CdromMap{ "key": VirtualMachine2CdromArgs{...} }
+type VirtualMachine2CdromMapInput interface {
+	pulumi.Input
+
+	ToVirtualMachine2CdromMapOutput() VirtualMachine2CdromMapOutput
+	ToVirtualMachine2CdromMapOutputWithContext(context.Context) VirtualMachine2CdromMapOutput
+}
+
+type VirtualMachine2CdromMap map[string]VirtualMachine2CdromInput
+
+func (VirtualMachine2CdromMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]VirtualMachine2Cdrom)(nil)).Elem()
+}
+
+func (i VirtualMachine2CdromMap) ToVirtualMachine2CdromMapOutput() VirtualMachine2CdromMapOutput {
+	return i.ToVirtualMachine2CdromMapOutputWithContext(context.Background())
+}
+
+func (i VirtualMachine2CdromMap) ToVirtualMachine2CdromMapOutputWithContext(ctx context.Context) VirtualMachine2CdromMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachine2CdromMapOutput)
+}
+
+type VirtualMachine2CdromOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachine2CdromOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachine2Cdrom)(nil)).Elem()
+}
+
+func (o VirtualMachine2CdromOutput) ToVirtualMachine2CdromOutput() VirtualMachine2CdromOutput {
+	return o
+}
+
+func (o VirtualMachine2CdromOutput) ToVirtualMachine2CdromOutputWithContext(ctx context.Context) VirtualMachine2CdromOutput {
+	return o
+}
+
+// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+func (o VirtualMachine2CdromOutput) FileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachine2Cdrom) *string { return v.FileId }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachine2CdromMapOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachine2CdromMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]VirtualMachine2Cdrom)(nil)).Elem()
+}
+
+func (o VirtualMachine2CdromMapOutput) ToVirtualMachine2CdromMapOutput() VirtualMachine2CdromMapOutput {
+	return o
+}
+
+func (o VirtualMachine2CdromMapOutput) ToVirtualMachine2CdromMapOutputWithContext(ctx context.Context) VirtualMachine2CdromMapOutput {
+	return o
+}
+
+func (o VirtualMachine2CdromMapOutput) MapIndex(k pulumi.StringInput) VirtualMachine2CdromOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) VirtualMachine2Cdrom {
+		return vs[0].(map[string]VirtualMachine2Cdrom)[vs[1].(string)]
+	}).(VirtualMachine2CdromOutput)
+}
+
 type VirtualMachine2Clone struct {
 	// The ID of the VM to clone.
 	Id int `pulumi:"id"`
@@ -2091,9 +2188,9 @@ type VirtualMachineDisk struct {
 	Discard *string `pulumi:"discard"`
 	// The file format (defaults to `qcow2`).
 	FileFormat *string `pulumi:"fileFormat"`
-	// The file ID for a disk image (experimental -
-	// might cause high CPU utilization during import, especially with large
-	// disk images).
+	// The file ID for a disk image. The ID format is
+	// `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
+	// `Download.File` resource.
 	FileId *string `pulumi:"fileId"`
 	// The disk interface for Proxmox, currently `scsi`,
 	// `sata` and `virtio` interfaces are supported. Append the disk index at
@@ -2147,9 +2244,9 @@ type VirtualMachineDiskArgs struct {
 	Discard pulumi.StringPtrInput `pulumi:"discard"`
 	// The file format (defaults to `qcow2`).
 	FileFormat pulumi.StringPtrInput `pulumi:"fileFormat"`
-	// The file ID for a disk image (experimental -
-	// might cause high CPU utilization during import, especially with large
-	// disk images).
+	// The file ID for a disk image. The ID format is
+	// `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
+	// `Download.File` resource.
 	FileId pulumi.StringPtrInput `pulumi:"fileId"`
 	// The disk interface for Proxmox, currently `scsi`,
 	// `sata` and `virtio` interfaces are supported. Append the disk index at
@@ -2260,9 +2357,9 @@ func (o VirtualMachineDiskOutput) FileFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.FileFormat }).(pulumi.StringPtrOutput)
 }
 
-// The file ID for a disk image (experimental -
-// might cause high CPU utilization during import, especially with large
-// disk images).
+// The file ID for a disk image. The ID format is
+// `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
+// `Download.File` resource.
 func (o VirtualMachineDiskOutput) FileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.FileId }).(pulumi.StringPtrOutput)
 }
@@ -6061,6 +6158,8 @@ func (o GetVirtualMachinesVmArrayOutput) Index(i pulumi.IntInput) GetVirtualMach
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachine2CdromInput)(nil)).Elem(), VirtualMachine2CdromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachine2CdromMapInput)(nil)).Elem(), VirtualMachine2CdromMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachine2CloneInput)(nil)).Elem(), VirtualMachine2CloneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachine2ClonePtrInput)(nil)).Elem(), VirtualMachine2CloneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachine2CpuInput)(nil)).Elem(), VirtualMachine2CpuArgs{})
@@ -6121,6 +6220,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineVgaPtrInput)(nil)).Elem(), VirtualMachineVgaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachinesVmInput)(nil)).Elem(), GetVirtualMachinesVmArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachinesVmArrayInput)(nil)).Elem(), GetVirtualMachinesVmArray{})
+	pulumi.RegisterOutputType(VirtualMachine2CdromOutput{})
+	pulumi.RegisterOutputType(VirtualMachine2CdromMapOutput{})
 	pulumi.RegisterOutputType(VirtualMachine2CloneOutput{})
 	pulumi.RegisterOutputType(VirtualMachine2ClonePtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachine2CpuOutput{})

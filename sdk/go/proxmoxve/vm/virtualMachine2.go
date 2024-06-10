@@ -24,6 +24,8 @@ import (
 type VirtualMachine2 struct {
 	pulumi.CustomResourceState
 
+	// The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+	Cdrom VirtualMachine2CdromMapOutput `pulumi:"cdrom"`
 	// The cloning configuration.
 	Clone VirtualMachine2ClonePtrOutput `pulumi:"clone"`
 	// The CPU configuration.
@@ -82,6 +84,8 @@ func GetVirtualMachine2(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering VirtualMachine2 resources.
 type virtualMachine2State struct {
+	// The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+	Cdrom map[string]VirtualMachine2Cdrom `pulumi:"cdrom"`
 	// The cloning configuration.
 	Clone *VirtualMachine2Clone `pulumi:"clone"`
 	// The CPU configuration.
@@ -102,6 +106,8 @@ type virtualMachine2State struct {
 }
 
 type VirtualMachine2State struct {
+	// The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+	Cdrom VirtualMachine2CdromMapInput
 	// The cloning configuration.
 	Clone VirtualMachine2ClonePtrInput
 	// The CPU configuration.
@@ -126,6 +132,8 @@ func (VirtualMachine2State) ElementType() reflect.Type {
 }
 
 type virtualMachine2Args struct {
+	// The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+	Cdrom map[string]VirtualMachine2Cdrom `pulumi:"cdrom"`
 	// The cloning configuration.
 	Clone *VirtualMachine2Clone `pulumi:"clone"`
 	// The CPU configuration.
@@ -147,6 +155,8 @@ type virtualMachine2Args struct {
 
 // The set of arguments for constructing a VirtualMachine2 resource.
 type VirtualMachine2Args struct {
+	// The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+	Cdrom VirtualMachine2CdromMapInput
 	// The cloning configuration.
 	Clone VirtualMachine2ClonePtrInput
 	// The CPU configuration.
@@ -251,6 +261,11 @@ func (o VirtualMachine2Output) ToVirtualMachine2Output() VirtualMachine2Output {
 
 func (o VirtualMachine2Output) ToVirtualMachine2OutputWithContext(ctx context.Context) VirtualMachine2Output {
 	return o
+}
+
+// The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+func (o VirtualMachine2Output) Cdrom() VirtualMachine2CdromMapOutput {
+	return o.ApplyT(func(v *VirtualMachine2) VirtualMachine2CdromMapOutput { return v.Cdrom }).(VirtualMachine2CdromMapOutput)
 }
 
 // The cloning configuration.

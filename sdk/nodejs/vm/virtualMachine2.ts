@@ -46,6 +46,10 @@ export class VirtualMachine2 extends pulumi.CustomResource {
     }
 
     /**
+     * The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+     */
+    public readonly cdrom!: pulumi.Output<{[key: string]: outputs.VM.VirtualMachine2Cdrom}>;
+    /**
      * The cloning configuration.
      */
     public readonly clone!: pulumi.Output<outputs.VM.VirtualMachine2Clone | undefined>;
@@ -92,6 +96,7 @@ export class VirtualMachine2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VirtualMachine2State | undefined;
+            resourceInputs["cdrom"] = state ? state.cdrom : undefined;
             resourceInputs["clone"] = state ? state.clone : undefined;
             resourceInputs["cpu"] = state ? state.cpu : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -106,6 +111,7 @@ export class VirtualMachine2 extends pulumi.CustomResource {
             if ((!args || args.nodeName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nodeName'");
             }
+            resourceInputs["cdrom"] = args ? args.cdrom : undefined;
             resourceInputs["clone"] = args ? args.clone : undefined;
             resourceInputs["cpu"] = args ? args.cpu : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -127,6 +133,10 @@ export class VirtualMachine2 extends pulumi.CustomResource {
  * Input properties used for looking up and filtering VirtualMachine2 resources.
  */
 export interface VirtualMachine2State {
+    /**
+     * The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+     */
+    cdrom?: pulumi.Input<{[key: string]: pulumi.Input<inputs.VM.VirtualMachine2Cdrom>}>;
     /**
      * The cloning configuration.
      */
@@ -166,6 +176,10 @@ export interface VirtualMachine2State {
  * The set of arguments for constructing a VirtualMachine2 resource.
  */
 export interface VirtualMachine2Args {
+    /**
+     * The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+     */
+    cdrom?: pulumi.Input<{[key: string]: pulumi.Input<inputs.VM.VirtualMachine2Cdrom>}>;
     /**
      * The cloning configuration.
      */

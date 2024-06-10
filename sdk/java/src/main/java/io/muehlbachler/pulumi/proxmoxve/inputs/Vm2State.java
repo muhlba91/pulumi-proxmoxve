@@ -5,6 +5,7 @@ package io.muehlbachler.pulumi.proxmoxve.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import io.muehlbachler.pulumi.proxmoxve.inputs.Vm2CdromArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.Vm2CloneArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.Vm2CpuArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.Vm2TimeoutsArgs;
@@ -12,6 +13,7 @@ import io.muehlbachler.pulumi.proxmoxve.inputs.Vm2VgaArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -20,6 +22,23 @@ import javax.annotation.Nullable;
 public final class Vm2State extends com.pulumi.resources.ResourceArgs {
 
     public static final Vm2State Empty = new Vm2State();
+
+    /**
+     * The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is
+     * the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+     * 
+     */
+    @Import(name="cdrom")
+    private @Nullable Output<Map<String,Vm2CdromArgs>> cdrom;
+
+    /**
+     * @return The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is
+     * the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+     * 
+     */
+    public Optional<Output<Map<String,Vm2CdromArgs>>> cdrom() {
+        return Optional.ofNullable(this.cdrom);
+    }
 
     /**
      * The cloning configuration.
@@ -163,6 +182,7 @@ public final class Vm2State extends com.pulumi.resources.ResourceArgs {
     private Vm2State() {}
 
     private Vm2State(Vm2State $) {
+        this.cdrom = $.cdrom;
         this.clone = $.clone;
         this.cpu = $.cpu;
         this.description = $.description;
@@ -190,6 +210,29 @@ public final class Vm2State extends com.pulumi.resources.ResourceArgs {
 
         public Builder(Vm2State defaults) {
             $ = new Vm2State(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param cdrom The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is
+         * the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cdrom(@Nullable Output<Map<String,Vm2CdromArgs>> cdrom) {
+            $.cdrom = cdrom;
+            return this;
+        }
+
+        /**
+         * @param cdrom The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is
+         * the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cdrom(Map<String,Vm2CdromArgs> cdrom) {
+            return cdrom(Output.of(cdrom));
         }
 
         /**

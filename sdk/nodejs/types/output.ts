@@ -92,6 +92,13 @@ export interface HostsEntry {
     hostnames: string[];
 }
 
+export interface Vm2Cdrom {
+    /**
+     * The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+     */
+    fileId: string;
+}
+
 export interface Vm2Clone {
     /**
      * The ID of the VM to clone.
@@ -1025,6 +1032,13 @@ export namespace VM {
         vmId: number;
     }
 
+    export interface VirtualMachine2Cdrom {
+        /**
+         * The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+         */
+        fileId: string;
+    }
+
     export interface VirtualMachine2Clone {
         /**
          * The ID of the VM to clone.
@@ -1298,9 +1312,9 @@ export namespace VM {
          */
         fileFormat: string;
         /**
-         * The file ID for a disk image (experimental -
-         * might cause high CPU utilization during import, especially with large
-         * disk images).
+         * The file ID for a disk image. The ID format is
+         * `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
+         * `proxmoxve.Download.File` resource.
          */
         fileId?: string;
         /**

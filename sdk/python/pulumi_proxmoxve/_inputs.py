@@ -13,6 +13,7 @@ __all__ = [
     'HostsEntryArgs',
     'ProviderSshArgs',
     'ProviderSshNodeArgs',
+    'Vm2CdromArgs',
     'Vm2CloneArgs',
     'Vm2CpuArgs',
     'Vm2TimeoutsArgs',
@@ -262,6 +263,29 @@ class ProviderSshNodeArgs:
     @port.setter
     def port(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port", value)
+
+
+@pulumi.input_type
+class Vm2CdromArgs:
+    def __init__(__self__, *,
+                 file_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] file_id: The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+        """
+        if file_id is not None:
+            pulumi.set(__self__, "file_id", file_id)
+
+    @property
+    @pulumi.getter(name="fileId")
+    def file_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+        """
+        return pulumi.get(self, "file_id")
+
+    @file_id.setter
+    def file_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_id", value)
 
 
 @pulumi.input_type

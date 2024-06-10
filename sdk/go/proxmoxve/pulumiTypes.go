@@ -523,6 +523,103 @@ func (o ProviderSshNodeArrayOutput) Index(i pulumi.IntInput) ProviderSshNodeOutp
 	}).(ProviderSshNodeOutput)
 }
 
+type Vm2Cdrom struct {
+	// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+	FileId *string `pulumi:"fileId"`
+}
+
+// Vm2CdromInput is an input type that accepts Vm2CdromArgs and Vm2CdromOutput values.
+// You can construct a concrete instance of `Vm2CdromInput` via:
+//
+//	Vm2CdromArgs{...}
+type Vm2CdromInput interface {
+	pulumi.Input
+
+	ToVm2CdromOutput() Vm2CdromOutput
+	ToVm2CdromOutputWithContext(context.Context) Vm2CdromOutput
+}
+
+type Vm2CdromArgs struct {
+	// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+	FileId pulumi.StringPtrInput `pulumi:"fileId"`
+}
+
+func (Vm2CdromArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vm2Cdrom)(nil)).Elem()
+}
+
+func (i Vm2CdromArgs) ToVm2CdromOutput() Vm2CdromOutput {
+	return i.ToVm2CdromOutputWithContext(context.Background())
+}
+
+func (i Vm2CdromArgs) ToVm2CdromOutputWithContext(ctx context.Context) Vm2CdromOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Vm2CdromOutput)
+}
+
+// Vm2CdromMapInput is an input type that accepts Vm2CdromMap and Vm2CdromMapOutput values.
+// You can construct a concrete instance of `Vm2CdromMapInput` via:
+//
+//	Vm2CdromMap{ "key": Vm2CdromArgs{...} }
+type Vm2CdromMapInput interface {
+	pulumi.Input
+
+	ToVm2CdromMapOutput() Vm2CdromMapOutput
+	ToVm2CdromMapOutputWithContext(context.Context) Vm2CdromMapOutput
+}
+
+type Vm2CdromMap map[string]Vm2CdromInput
+
+func (Vm2CdromMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Vm2Cdrom)(nil)).Elem()
+}
+
+func (i Vm2CdromMap) ToVm2CdromMapOutput() Vm2CdromMapOutput {
+	return i.ToVm2CdromMapOutputWithContext(context.Background())
+}
+
+func (i Vm2CdromMap) ToVm2CdromMapOutputWithContext(ctx context.Context) Vm2CdromMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Vm2CdromMapOutput)
+}
+
+type Vm2CdromOutput struct{ *pulumi.OutputState }
+
+func (Vm2CdromOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vm2Cdrom)(nil)).Elem()
+}
+
+func (o Vm2CdromOutput) ToVm2CdromOutput() Vm2CdromOutput {
+	return o
+}
+
+func (o Vm2CdromOutput) ToVm2CdromOutputWithContext(ctx context.Context) Vm2CdromOutput {
+	return o
+}
+
+// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+func (o Vm2CdromOutput) FileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Vm2Cdrom) *string { return v.FileId }).(pulumi.StringPtrOutput)
+}
+
+type Vm2CdromMapOutput struct{ *pulumi.OutputState }
+
+func (Vm2CdromMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Vm2Cdrom)(nil)).Elem()
+}
+
+func (o Vm2CdromMapOutput) ToVm2CdromMapOutput() Vm2CdromMapOutput {
+	return o
+}
+
+func (o Vm2CdromMapOutput) ToVm2CdromMapOutputWithContext(ctx context.Context) Vm2CdromMapOutput {
+	return o
+}
+
+func (o Vm2CdromMapOutput) MapIndex(k pulumi.StringInput) Vm2CdromOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Vm2Cdrom {
+		return vs[0].(map[string]Vm2Cdrom)[vs[1].(string)]
+	}).(Vm2CdromOutput)
+}
+
 type Vm2Clone struct {
 	// The ID of the VM to clone.
 	Id int `pulumi:"id"`
@@ -2139,6 +2236,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSshPtrInput)(nil)).Elem(), ProviderSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSshNodeInput)(nil)).Elem(), ProviderSshNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSshNodeArrayInput)(nil)).Elem(), ProviderSshNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Vm2CdromInput)(nil)).Elem(), Vm2CdromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Vm2CdromMapInput)(nil)).Elem(), Vm2CdromMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Vm2CloneInput)(nil)).Elem(), Vm2CloneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Vm2ClonePtrInput)(nil)).Elem(), Vm2CloneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Vm2CpuInput)(nil)).Elem(), Vm2CpuArgs{})
@@ -2161,6 +2260,8 @@ func init() {
 	pulumi.RegisterOutputType(ProviderSshPtrOutput{})
 	pulumi.RegisterOutputType(ProviderSshNodeOutput{})
 	pulumi.RegisterOutputType(ProviderSshNodeArrayOutput{})
+	pulumi.RegisterOutputType(Vm2CdromOutput{})
+	pulumi.RegisterOutputType(Vm2CdromMapOutput{})
 	pulumi.RegisterOutputType(Vm2CloneOutput{})
 	pulumi.RegisterOutputType(Vm2ClonePtrOutput{})
 	pulumi.RegisterOutputType(Vm2CpuOutput{})

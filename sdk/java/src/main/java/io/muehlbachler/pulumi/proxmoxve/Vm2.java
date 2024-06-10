@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import io.muehlbachler.pulumi.proxmoxve.Utilities;
 import io.muehlbachler.pulumi.proxmoxve.Vm2Args;
 import io.muehlbachler.pulumi.proxmoxve.inputs.Vm2State;
+import io.muehlbachler.pulumi.proxmoxve.outputs.Vm2Cdrom;
 import io.muehlbachler.pulumi.proxmoxve.outputs.Vm2Clone;
 import io.muehlbachler.pulumi.proxmoxve.outputs.Vm2Cpu;
 import io.muehlbachler.pulumi.proxmoxve.outputs.Vm2Timeouts;
@@ -17,6 +18,7 @@ import io.muehlbachler.pulumi.proxmoxve.outputs.Vm2Vga;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -28,6 +30,22 @@ import javax.annotation.Nullable;
 @Deprecated /* proxmoxve.index/vm2.Vm2 has been deprecated in favor of proxmoxve.vm/virtualmachine2.VirtualMachine2 */
 @ResourceType(type="proxmoxve:index/vm2:Vm2")
 public class Vm2 extends com.pulumi.resources.CustomResource {
+    /**
+     * The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is
+     * the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+     * 
+     */
+    @Export(name="cdrom", refs={Map.class,String.class,Vm2Cdrom.class}, tree="[0,1,2]")
+    private Output<Map<String,Vm2Cdrom>> cdrom;
+
+    /**
+     * @return The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is
+     * the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+     * 
+     */
+    public Output<Map<String,Vm2Cdrom>> cdrom() {
+        return this.cdrom;
+    }
     /**
      * The cloning configuration.
      * 

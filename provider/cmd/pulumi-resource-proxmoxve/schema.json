@@ -1081,6 +1081,22 @@
                 "fileName"
             ]
         },
+        "proxmoxve:VM/VirtualMachine2Cdrom:VirtualMachine2Cdrom": {
+            "properties": {
+                "fileId": {
+                    "type": "string",
+                    "description": "The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "fileId"
+                    ]
+                }
+            }
+        },
         "proxmoxve:VM/VirtualMachine2Clone:VirtualMachine2Clone": {
             "properties": {
                 "id": {
@@ -1380,7 +1396,7 @@
                 },
                 "fileId": {
                     "type": "string",
-                    "description": "The file ID for a disk image (experimental -\nmight cause high CPU utilization during import, especially with large\ndisk images).\n",
+                    "description": "The file ID for a disk image. The ID format is\n`\u003cdatastore_id\u003e:\u003ccontent_type\u003e/\u003cfile_name\u003e`, for example `local:iso/centos8.img`. Can be also taken from\n`proxmoxve.Download.File` resource.\n",
                     "willReplaceOnChanges": true
                 },
                 "interface": {
@@ -2121,6 +2137,22 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": []
+                }
+            }
+        },
+        "proxmoxve:index/Vm2Cdrom:Vm2Cdrom": {
+            "properties": {
+                "fileId": {
+                    "type": "string",
+                    "description": "The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "fileId"
+                    ]
                 }
             }
         },
@@ -5186,6 +5218,13 @@
         "proxmoxve:VM/virtualMachine2:VirtualMachine2": {
             "description": "!\u003e **DO NOT USE**\nThis is an experimental implementation of a Proxmox VM resource using Plugin Framework.\u003cbr\u003e\u003cbr\u003eIt is a Proof of Concept, highly experimental and **will** change in future. It does not support all features of the Proxmox API for VMs and **MUST NOT** be used in production.\n\n\u003e Many attributes are marked as **optional** _and_ **computed** in the schema,\nhence you may seem added to the plan with \"(known after apply)\" status, even if they are not set in the configuration.\nThis is done to support the `clone` operation, when a VM is created from an existing VM or template,\nand the source attributes are copied to the clone.\u003cbr\u003e\u003cbr\u003e\nComputed attributes allow the provider to set those attributes without user input.\nThe attributes are also marked as optional to allow the practitioner to set (or overwrite) them if needed.\n",
             "properties": {
+                "cdrom": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/proxmoxve:VM/VirtualMachine2Cdrom:VirtualMachine2Cdrom"
+                    },
+                    "description": "The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.\n"
+                },
                 "clone": {
                     "$ref": "#/types/proxmoxve:VM/VirtualMachine2Clone:VirtualMachine2Clone",
                     "description": "The cloning configuration.\n"
@@ -5226,6 +5265,7 @@
                 }
             },
             "required": [
+                "cdrom",
                 "cpu",
                 "name",
                 "nodeName",
@@ -5233,6 +5273,13 @@
                 "vga"
             ],
             "inputProperties": {
+                "cdrom": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/proxmoxve:VM/VirtualMachine2Cdrom:VirtualMachine2Cdrom"
+                    },
+                    "description": "The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.\n"
+                },
                 "clone": {
                     "$ref": "#/types/proxmoxve:VM/VirtualMachine2Clone:VirtualMachine2Clone",
                     "description": "The cloning configuration.\n"
@@ -5278,6 +5325,13 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering VirtualMachine2 resources.\n",
                 "properties": {
+                    "cdrom": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/types/proxmoxve:VM/VirtualMachine2Cdrom:VirtualMachine2Cdrom"
+                        },
+                        "description": "The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.\n"
+                    },
                     "clone": {
                         "$ref": "#/types/proxmoxve:VM/VirtualMachine2Clone:VirtualMachine2Clone",
                         "description": "The cloning configuration.\n"
@@ -6610,6 +6664,13 @@
         },
         "proxmoxve:index/vm2:Vm2": {
             "properties": {
+                "cdrom": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/proxmoxve:index/Vm2Cdrom:Vm2Cdrom"
+                    },
+                    "description": "The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is\nthe index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.\n"
+                },
                 "clone": {
                     "$ref": "#/types/proxmoxve:index/Vm2Clone:Vm2Clone",
                     "description": "The cloning configuration.\n"
@@ -6650,6 +6711,7 @@
                 }
             },
             "required": [
+                "cdrom",
                 "cpu",
                 "name",
                 "nodeName",
@@ -6657,6 +6719,13 @@
                 "vga"
             ],
             "inputProperties": {
+                "cdrom": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/proxmoxve:index/Vm2Cdrom:Vm2Cdrom"
+                    },
+                    "description": "The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is\nthe index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.\n"
+                },
                 "clone": {
                     "$ref": "#/types/proxmoxve:index/Vm2Clone:Vm2Clone",
                     "description": "The cloning configuration.\n"
@@ -6702,6 +6771,13 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Vm2 resources.\n",
                 "properties": {
+                    "cdrom": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/types/proxmoxve:index/Vm2Cdrom:Vm2Cdrom"
+                        },
+                        "description": "The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is\nthe index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.\n"
+                    },
                     "clone": {
                         "$ref": "#/types/proxmoxve:index/Vm2Clone:Vm2Clone",
                         "description": "The cloning configuration.\n"

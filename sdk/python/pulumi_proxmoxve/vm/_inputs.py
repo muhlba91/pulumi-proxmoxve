@@ -10,6 +10,7 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'VirtualMachine2CdromArgs',
     'VirtualMachine2CloneArgs',
     'VirtualMachine2CpuArgs',
     'VirtualMachine2TimeoutsArgs',
@@ -40,6 +41,29 @@ __all__ = [
     'VirtualMachineUsbArgs',
     'VirtualMachineVgaArgs',
 ]
+
+@pulumi.input_type
+class VirtualMachine2CdromArgs:
+    def __init__(__self__, *,
+                 file_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] file_id: The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+        """
+        if file_id is not None:
+            pulumi.set(__self__, "file_id", file_id)
+
+    @property
+    @pulumi.getter(name="fileId")
+    def file_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+        """
+        return pulumi.get(self, "file_id")
+
+    @file_id.setter
+    def file_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_id", value)
+
 
 @pulumi.input_type
 class VirtualMachine2CloneArgs:
@@ -919,9 +943,9 @@ class VirtualMachineDiskArgs:
                underlying storage. Supported values are `on`/`ignore` (defaults
                to `ignore`).
         :param pulumi.Input[str] file_format: The file format (defaults to `qcow2`).
-        :param pulumi.Input[str] file_id: The file ID for a disk image (experimental -
-               might cause high CPU utilization during import, especially with large
-               disk images).
+        :param pulumi.Input[str] file_id: The file ID for a disk image. The ID format is
+               `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
+               `Download.File` resource.
         :param pulumi.Input[bool] iothread: Whether to use iothreads for this disk (defaults
                to `false`).
         :param pulumi.Input[str] path_in_datastore: The in-datastore path to the disk image.
@@ -1057,9 +1081,9 @@ class VirtualMachineDiskArgs:
     @pulumi.getter(name="fileId")
     def file_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The file ID for a disk image (experimental -
-        might cause high CPU utilization during import, especially with large
-        disk images).
+        The file ID for a disk image. The ID format is
+        `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
+        `Download.File` resource.
         """
         return pulumi.get(self, "file_id")
 

@@ -11,6 +11,7 @@ from . import _utilities
 
 __all__ = [
     'HostsEntry',
+    'Vm2Cdrom',
     'Vm2Clone',
     'Vm2Cpu',
     'Vm2Timeouts',
@@ -48,6 +49,42 @@ class HostsEntry(dict):
         The hostnames.
         """
         return pulumi.get(self, "hostnames")
+
+
+@pulumi.output_type
+class Vm2Cdrom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fileId":
+            suggest = "file_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in Vm2Cdrom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        Vm2Cdrom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        Vm2Cdrom.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 file_id: Optional[str] = None):
+        """
+        :param str file_id: The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+        """
+        if file_id is not None:
+            pulumi.set(__self__, "file_id", file_id)
+
+    @property
+    @pulumi.getter(name="fileId")
+    def file_id(self) -> Optional[str]:
+        """
+        The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+        """
+        return pulumi.get(self, "file_id")
 
 
 @pulumi.output_type

@@ -24,6 +24,12 @@ namespace Pulumi.ProxmoxVE.VM
     public partial class VirtualMachine2 : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+        /// </summary>
+        [Output("cdrom")]
+        public Output<ImmutableDictionary<string, Outputs.VirtualMachine2Cdrom>> Cdrom { get; private set; } = null!;
+
+        /// <summary>
         /// The cloning configuration.
         /// </summary>
         [Output("clone")]
@@ -125,6 +131,18 @@ namespace Pulumi.ProxmoxVE.VM
 
     public sealed class VirtualMachine2Args : global::Pulumi.ResourceArgs
     {
+        [Input("cdrom")]
+        private InputMap<Inputs.VirtualMachine2CdromArgs>? _cdrom;
+
+        /// <summary>
+        /// The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+        /// </summary>
+        public InputMap<Inputs.VirtualMachine2CdromArgs> Cdrom
+        {
+            get => _cdrom ?? (_cdrom = new InputMap<Inputs.VirtualMachine2CdromArgs>());
+            set => _cdrom = value;
+        }
+
         /// <summary>
         /// The cloning configuration.
         /// </summary>
@@ -190,6 +208,18 @@ namespace Pulumi.ProxmoxVE.VM
 
     public sealed class VirtualMachine2State : global::Pulumi.ResourceArgs
     {
+        [Input("cdrom")]
+        private InputMap<Inputs.VirtualMachine2CdromGetArgs>? _cdrom;
+
+        /// <summary>
+        /// The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+        /// </summary>
+        public InputMap<Inputs.VirtualMachine2CdromGetArgs> Cdrom
+        {
+            get => _cdrom ?? (_cdrom = new InputMap<Inputs.VirtualMachine2CdromGetArgs>());
+            set => _cdrom = value;
+        }
+
         /// <summary>
         /// The cloning configuration.
         /// </summary>

@@ -6,6 +6,7 @@ package io.muehlbachler.pulumi.proxmoxve.VM;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachine2CdromArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachine2CloneArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachine2CpuArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachine2TimeoutsArgs;
@@ -13,6 +14,7 @@ import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachine2VgaArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -21,6 +23,21 @@ import javax.annotation.Nullable;
 public final class VirtualMachine2Args extends com.pulumi.resources.ResourceArgs {
 
     public static final VirtualMachine2Args Empty = new VirtualMachine2Args();
+
+    /**
+     * The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+     * 
+     */
+    @Import(name="cdrom")
+    private @Nullable Output<Map<String,VirtualMachine2CdromArgs>> cdrom;
+
+    /**
+     * @return The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+     * 
+     */
+    public Optional<Output<Map<String,VirtualMachine2CdromArgs>>> cdrom() {
+        return Optional.ofNullable(this.cdrom);
+    }
 
     /**
      * The cloning configuration.
@@ -152,6 +169,7 @@ public final class VirtualMachine2Args extends com.pulumi.resources.ResourceArgs
     private VirtualMachine2Args() {}
 
     private VirtualMachine2Args(VirtualMachine2Args $) {
+        this.cdrom = $.cdrom;
         this.clone = $.clone;
         this.cpu = $.cpu;
         this.description = $.description;
@@ -179,6 +197,27 @@ public final class VirtualMachine2Args extends com.pulumi.resources.ResourceArgs
 
         public Builder(VirtualMachine2Args defaults) {
             $ = new VirtualMachine2Args(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param cdrom The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cdrom(@Nullable Output<Map<String,VirtualMachine2CdromArgs>> cdrom) {
+            $.cdrom = cdrom;
+            return this;
+        }
+
+        /**
+         * @param cdrom The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cdrom(Map<String,VirtualMachine2CdromArgs> cdrom) {
+            return cdrom(Output.of(cdrom));
         }
 
         /**

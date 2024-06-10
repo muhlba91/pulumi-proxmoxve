@@ -16,6 +16,9 @@ import (
 type Vm2 struct {
 	pulumi.CustomResourceState
 
+	// The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is
+	// the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+	Cdrom Vm2CdromMapOutput `pulumi:"cdrom"`
 	// The cloning configuration.
 	Clone Vm2ClonePtrOutput `pulumi:"clone"`
 	// The CPU configuration.
@@ -74,6 +77,9 @@ func GetVm2(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Vm2 resources.
 type vm2State struct {
+	// The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is
+	// the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+	Cdrom map[string]Vm2Cdrom `pulumi:"cdrom"`
 	// The cloning configuration.
 	Clone *Vm2Clone `pulumi:"clone"`
 	// The CPU configuration.
@@ -100,6 +106,9 @@ type vm2State struct {
 }
 
 type Vm2State struct {
+	// The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is
+	// the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+	Cdrom Vm2CdromMapInput
 	// The cloning configuration.
 	Clone Vm2ClonePtrInput
 	// The CPU configuration.
@@ -130,6 +139,9 @@ func (Vm2State) ElementType() reflect.Type {
 }
 
 type vm2Args struct {
+	// The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is
+	// the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+	Cdrom map[string]Vm2Cdrom `pulumi:"cdrom"`
 	// The cloning configuration.
 	Clone *Vm2Clone `pulumi:"clone"`
 	// The CPU configuration.
@@ -157,6 +169,9 @@ type vm2Args struct {
 
 // The set of arguments for constructing a Vm2 resource.
 type Vm2Args struct {
+	// The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is
+	// the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+	Cdrom Vm2CdromMapInput
 	// The cloning configuration.
 	Clone Vm2ClonePtrInput
 	// The CPU configuration.
@@ -267,6 +282,12 @@ func (o Vm2Output) ToVm2Output() Vm2Output {
 
 func (o Vm2Output) ToVm2OutputWithContext(ctx context.Context) Vm2Output {
 	return o
+}
+
+// The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is
+// the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+func (o Vm2Output) Cdrom() Vm2CdromMapOutput {
+	return o.ApplyT(func(v *Vm2) Vm2CdromMapOutput { return v.Cdrom }).(Vm2CdromMapOutput)
 }
 
 // The cloning configuration.
