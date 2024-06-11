@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [6.9.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.9.0...v6.9.1) (2024-06-11)
+
+
+### Bug Fixes
+
+* fix goreleaser update to v2 ([c97dd5e](https://github.com/muhlba91/pulumi-proxmoxve/commit/c97dd5ee97c1e5e123d124058944d7270936cdcf))
+
 ## [6.9.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.8.1...v6.9.0) (2024-06-10)
 
 
