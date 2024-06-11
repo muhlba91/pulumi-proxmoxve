@@ -1,7 +1,8 @@
 ---
+version: 2
 archives:
   - id: archive
-    name_template: '{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}'
+    name_template: "{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}"
 before:
   hooks:
     - make tfgen
@@ -27,13 +28,13 @@ signs:
   - cmd: cosign
     env:
       - COSIGN_EXPERIMENTAL=1
-    certificate: '${artifact}.pem'
+    certificate: "${artifact}.pem"
     args:
       - sign-blob
       - --yes
-      - '--output-certificate=${certificate}'
-      - '--bundle=${signature}'
-      - '${artifact}'
+      - "--output-certificate=${certificate}"
+      - "--bundle=${signature}"
+      - "${artifact}"
     artifacts: all
     output: true
 sboms:
@@ -41,23 +42,23 @@ sboms:
   - id: source
     artifacts: source
 changelog:
-  skip: true
+  disable: true
   use: github
   filters:
     exclude:
-      - '^docs'
-      - '^chore'
-  groups:	
-    - title: 'New Features'	
-      regexp: "^.*feat[(\\w)]*:+.*$"	
-      order: 0	
-    - title: 'Bugfixes'	
-      regexp: "^.*fix[(\\w)]*:+.*$"	
-      order: 10	
-    - title: Other Work	
+      - "^docs"
+      - "^chore"
+  groups:
+    - title: "New Features"
+      regexp: "^.*feat[(\\w)]*:+.*$"
+      order: 0
+    - title: "Bugfixes"
+      regexp: "^.*fix[(\\w)]*:+.*$"
+      order: 10
+    - title: Other Work
       order: 999
 release:
   disable: false
   prerelease: auto
 snapshot:
-  name_template: '{{ .Tag }}-SNAPSHOT'
+  name_template: "{{ .Tag }}-SNAPSHOT"
