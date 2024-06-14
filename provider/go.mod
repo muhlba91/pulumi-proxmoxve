@@ -7,7 +7,7 @@ toolchain go1.22.3
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240520223432-0c0bf0d65f10
 
 require (
-	github.com/bpg/terraform-provider-proxmox v0.59.1
+	github.com/bpg/terraform-provider-proxmox v0.60.0
 	github.com/ettle/strcase v0.2.0
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.37.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.84.0
@@ -221,7 +221,7 @@ require (
 	gocloud.dev v0.37.0 // indirect
 	gocloud.dev/secrets/hashivault v0.37.0 // indirect
 	golang.org/x/crypto v0.24.0 // indirect
-	golang.org/x/exp v0.0.0-20240604190554-fc45aab8b7f8 // indirect
+	golang.org/x/exp v0.0.0-20240613232115-7f521ea00fb8 // indirect
 	golang.org/x/mod v0.18.0 // indirect
 	golang.org/x/net v0.26.0 // indirect
 	golang.org/x/oauth2 v0.18.0 // indirect
