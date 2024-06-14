@@ -2207,6 +2207,8 @@ type VirtualMachineDisk struct {
 	PathInDatastore *string `pulumi:"pathInDatastore"`
 	// Whether the drive should be considered for replication jobs (defaults to `true`).
 	Replicate *bool `pulumi:"replicate"`
+	// The serial number of the disk, up to 20 bytes long.
+	Serial *string `pulumi:"serial"`
 	// The disk size in gigabytes (defaults to `8`).
 	Size *int `pulumi:"size"`
 	// The speed limits.
@@ -2263,6 +2265,8 @@ type VirtualMachineDiskArgs struct {
 	PathInDatastore pulumi.StringPtrInput `pulumi:"pathInDatastore"`
 	// Whether the drive should be considered for replication jobs (defaults to `true`).
 	Replicate pulumi.BoolPtrInput `pulumi:"replicate"`
+	// The serial number of the disk, up to 20 bytes long.
+	Serial pulumi.StringPtrInput `pulumi:"serial"`
 	// The disk size in gigabytes (defaults to `8`).
 	Size pulumi.IntPtrInput `pulumi:"size"`
 	// The speed limits.
@@ -2389,6 +2393,11 @@ func (o VirtualMachineDiskOutput) PathInDatastore() pulumi.StringPtrOutput {
 // Whether the drive should be considered for replication jobs (defaults to `true`).
 func (o VirtualMachineDiskOutput) Replicate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *bool { return v.Replicate }).(pulumi.BoolPtrOutput)
+}
+
+// The serial number of the disk, up to 20 bytes long.
+func (o VirtualMachineDiskOutput) Serial() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.Serial }).(pulumi.StringPtrOutput)
 }
 
 // The disk size in gigabytes (defaults to `8`).
@@ -3688,7 +3697,7 @@ func (o VirtualMachineInitializationDnsPtrOutput) Servers() pulumi.StringArrayOu
 type VirtualMachineInitializationIpConfig struct {
 	// The IPv4 configuration.
 	Ipv4 *VirtualMachineInitializationIpConfigIpv4 `pulumi:"ipv4"`
-	// The IPv4 configuration.
+	// The IPv6 configuration.
 	Ipv6 *VirtualMachineInitializationIpConfigIpv6 `pulumi:"ipv6"`
 }
 
@@ -3706,7 +3715,7 @@ type VirtualMachineInitializationIpConfigInput interface {
 type VirtualMachineInitializationIpConfigArgs struct {
 	// The IPv4 configuration.
 	Ipv4 VirtualMachineInitializationIpConfigIpv4PtrInput `pulumi:"ipv4"`
-	// The IPv4 configuration.
+	// The IPv6 configuration.
 	Ipv6 VirtualMachineInitializationIpConfigIpv6PtrInput `pulumi:"ipv6"`
 }
 
@@ -3766,7 +3775,7 @@ func (o VirtualMachineInitializationIpConfigOutput) Ipv4() VirtualMachineInitial
 	return o.ApplyT(func(v VirtualMachineInitializationIpConfig) *VirtualMachineInitializationIpConfigIpv4 { return v.Ipv4 }).(VirtualMachineInitializationIpConfigIpv4PtrOutput)
 }
 
-// The IPv4 configuration.
+// The IPv6 configuration.
 func (o VirtualMachineInitializationIpConfigOutput) Ipv6() VirtualMachineInitializationIpConfigIpv6PtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationIpConfig) *VirtualMachineInitializationIpConfigIpv6 { return v.Ipv6 }).(VirtualMachineInitializationIpConfigIpv6PtrOutput)
 }
@@ -5708,10 +5717,9 @@ func (o VirtualMachineTpmStatePtrOutput) Version() pulumi.StringPtrOutput {
 }
 
 type VirtualMachineUsb struct {
-	// The USB device ID. Use either this or `mapping`.
+	// The Host USB device or port or the value `spice`. Use either this or `mapping`.
 	Host *string `pulumi:"host"`
-	// The resource mapping name of the device, for
-	// example usbdevice. Use either this or `id`.
+	// The cluster-wide resource mapping name of the device, for example "usbdevice". Use either this or `host`.
 	Mapping *string `pulumi:"mapping"`
 	// Makes the USB device a USB3 device for the VM
 	// (defaults to `false`).
@@ -5730,10 +5738,9 @@ type VirtualMachineUsbInput interface {
 }
 
 type VirtualMachineUsbArgs struct {
-	// The USB device ID. Use either this or `mapping`.
+	// The Host USB device or port or the value `spice`. Use either this or `mapping`.
 	Host pulumi.StringPtrInput `pulumi:"host"`
-	// The resource mapping name of the device, for
-	// example usbdevice. Use either this or `id`.
+	// The cluster-wide resource mapping name of the device, for example "usbdevice". Use either this or `host`.
 	Mapping pulumi.StringPtrInput `pulumi:"mapping"`
 	// Makes the USB device a USB3 device for the VM
 	// (defaults to `false`).
@@ -5791,13 +5798,12 @@ func (o VirtualMachineUsbOutput) ToVirtualMachineUsbOutputWithContext(ctx contex
 	return o
 }
 
-// The USB device ID. Use either this or `mapping`.
+// The Host USB device or port or the value `spice`. Use either this or `mapping`.
 func (o VirtualMachineUsbOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineUsb) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
-// The resource mapping name of the device, for
-// example usbdevice. Use either this or `id`.
+// The cluster-wide resource mapping name of the device, for example "usbdevice". Use either this or `host`.
 func (o VirtualMachineUsbOutput) Mapping() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineUsb) *string { return v.Mapping }).(pulumi.StringPtrOutput)
 }

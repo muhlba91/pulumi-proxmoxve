@@ -86,7 +86,7 @@ type Container struct {
 	// the host (defaults to `false`).
 	Unprivileged pulumi.BoolPtrOutput `pulumi:"unprivileged"`
 	// The container identifier
-	VmId pulumi.IntPtrOutput `pulumi:"vmId"`
+	VmId pulumi.IntOutput `pulumi:"vmId"`
 }
 
 // NewContainer registers a new resource with the given unique name, arguments, and options.
@@ -604,8 +604,8 @@ func (o ContainerOutput) Unprivileged() pulumi.BoolPtrOutput {
 }
 
 // The container identifier
-func (o ContainerOutput) VmId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Container) pulumi.IntPtrOutput { return v.VmId }).(pulumi.IntPtrOutput)
+func (o ContainerOutput) VmId() pulumi.IntOutput {
+	return o.ApplyT(func(v *Container) pulumi.IntOutput { return v.VmId }).(pulumi.IntOutput)
 }
 
 type ContainerArrayOutput struct{ *pulumi.OutputState }

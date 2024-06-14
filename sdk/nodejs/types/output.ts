@@ -1341,6 +1341,10 @@ export namespace VM {
          */
         replicate?: boolean;
         /**
+         * The serial number of the disk, up to 20 bytes long.
+         */
+        serial?: string;
+        /**
          * The disk size in gigabytes (defaults to `8`).
          */
         size?: number;
@@ -1548,7 +1552,7 @@ export namespace VM {
          */
         ipv4?: outputs.VM.VirtualMachineInitializationIpConfigIpv4;
         /**
-         * The IPv4 configuration.
+         * The IPv6 configuration.
          */
         ipv6?: outputs.VM.VirtualMachineInitializationIpConfigIpv6;
     }
@@ -1777,12 +1781,11 @@ export namespace VM {
 
     export interface VirtualMachineUsb {
         /**
-         * The USB device ID. Use either this or `mapping`.
+         * The Host USB device or port or the value `spice`. Use either this or `mapping`.
          */
         host?: string;
         /**
-         * The resource mapping name of the device, for
-         * example usbdevice. Use either this or `id`.
+         * The cluster-wide resource mapping name of the device, for example "usbdevice". Use either this or `host`.
          */
         mapping?: string;
         /**

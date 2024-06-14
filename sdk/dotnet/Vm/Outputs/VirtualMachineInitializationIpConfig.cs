@@ -18,7 +18,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly Outputs.VirtualMachineInitializationIpConfigIpv4? Ipv4;
         /// <summary>
-        /// The IPv4 configuration.
+        /// The IPv6 configuration.
         /// </summary>
         public readonly Outputs.VirtualMachineInitializationIpConfigIpv6? Ipv6;
 

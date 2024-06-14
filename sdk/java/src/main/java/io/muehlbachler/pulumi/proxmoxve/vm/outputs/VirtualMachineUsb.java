@@ -13,13 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VirtualMachineUsb {
     /**
-     * @return The USB device ID. Use either this or `mapping`.
+     * @return The Host USB device or port or the value `spice`. Use either this or `mapping`.
      * 
      */
     private @Nullable String host;
     /**
-     * @return The resource mapping name of the device, for
-     * example usbdevice. Use either this or `id`.
+     * @return The cluster-wide resource mapping name of the device, for example &#34;usbdevice&#34;. Use either this or `host`.
      * 
      */
     private @Nullable String mapping;
@@ -32,15 +31,14 @@ public final class VirtualMachineUsb {
 
     private VirtualMachineUsb() {}
     /**
-     * @return The USB device ID. Use either this or `mapping`.
+     * @return The Host USB device or port or the value `spice`. Use either this or `mapping`.
      * 
      */
     public Optional<String> host() {
         return Optional.ofNullable(this.host);
     }
     /**
-     * @return The resource mapping name of the device, for
-     * example usbdevice. Use either this or `id`.
+     * @return The cluster-wide resource mapping name of the device, for example &#34;usbdevice&#34;. Use either this or `host`.
      * 
      */
     public Optional<String> mapping() {

@@ -70,6 +70,10 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly bool? Replicate;
         /// <summary>
+        /// The serial number of the disk, up to 20 bytes long.
+        /// </summary>
+        public readonly string? Serial;
+        /// <summary>
         /// The disk size in gigabytes (defaults to `8`).
         /// </summary>
         public readonly int? Size;
@@ -108,6 +112,8 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
 
             bool? replicate,
 
+            string? serial,
+
             int? size,
 
             Outputs.VirtualMachineDiskSpeed? speed,
@@ -125,6 +131,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
             Iothread = iothread;
             PathInDatastore = pathInDatastore;
             Replicate = replicate;
+            Serial = serial;
             Size = size;
             Speed = speed;
             Ssd = ssd;

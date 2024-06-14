@@ -417,14 +417,14 @@ public class Container extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="vmId", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> vmId;
+    private Output<Integer> vmId;
 
     /**
      * @return The container identifier
      * 
      */
-    public Output<Optional<Integer>> vmId() {
-        return Codegen.optional(this.vmId);
+    public Output<Integer> vmId() {
+        return this.vmId;
     }
 
     /**

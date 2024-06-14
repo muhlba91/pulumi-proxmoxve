@@ -83,6 +83,11 @@ public final class VirtualMachineDisk {
      */
     private @Nullable Boolean replicate;
     /**
+     * @return The serial number of the disk, up to 20 bytes long.
+     * 
+     */
+    private @Nullable String serial;
+    /**
      * @return The disk size in gigabytes (defaults to `8`).
      * 
      */
@@ -191,6 +196,13 @@ public final class VirtualMachineDisk {
         return Optional.ofNullable(this.replicate);
     }
     /**
+     * @return The serial number of the disk, up to 20 bytes long.
+     * 
+     */
+    public Optional<String> serial() {
+        return Optional.ofNullable(this.serial);
+    }
+    /**
      * @return The disk size in gigabytes (defaults to `8`).
      * 
      */
@@ -234,6 +246,7 @@ public final class VirtualMachineDisk {
         private @Nullable Boolean iothread;
         private @Nullable String pathInDatastore;
         private @Nullable Boolean replicate;
+        private @Nullable String serial;
         private @Nullable Integer size;
         private @Nullable VirtualMachineDiskSpeed speed;
         private @Nullable Boolean ssd;
@@ -251,6 +264,7 @@ public final class VirtualMachineDisk {
     	      this.iothread = defaults.iothread;
     	      this.pathInDatastore = defaults.pathInDatastore;
     	      this.replicate = defaults.replicate;
+    	      this.serial = defaults.serial;
     	      this.size = defaults.size;
     	      this.speed = defaults.speed;
     	      this.ssd = defaults.ssd;
@@ -325,6 +339,12 @@ public final class VirtualMachineDisk {
             return this;
         }
         @CustomType.Setter
+        public Builder serial(@Nullable String serial) {
+
+            this.serial = serial;
+            return this;
+        }
+        @CustomType.Setter
         public Builder size(@Nullable Integer size) {
 
             this.size = size;
@@ -355,6 +375,7 @@ public final class VirtualMachineDisk {
             _resultValue.iothread = iothread;
             _resultValue.pathInDatastore = pathInDatastore;
             _resultValue.replicate = replicate;
+            _resultValue.serial = serial;
             _resultValue.size = size;
             _resultValue.speed = speed;
             _resultValue.ssd = ssd;

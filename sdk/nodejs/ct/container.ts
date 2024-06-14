@@ -159,7 +159,7 @@ export class Container extends pulumi.CustomResource {
     /**
      * The container identifier
      */
-    public readonly vmId!: pulumi.Output<number | undefined>;
+    public readonly vmId!: pulumi.Output<number>;
 
     /**
      * Create a Container resource with the given unique name, arguments, and options.

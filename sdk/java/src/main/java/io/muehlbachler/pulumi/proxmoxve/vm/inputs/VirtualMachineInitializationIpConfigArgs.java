@@ -32,14 +32,14 @@ public final class VirtualMachineInitializationIpConfigArgs extends com.pulumi.r
     }
 
     /**
-     * The IPv4 configuration.
+     * The IPv6 configuration.
      * 
      */
     @Import(name="ipv6")
     private @Nullable Output<VirtualMachineInitializationIpConfigIpv6Args> ipv6;
 
     /**
-     * @return The IPv4 configuration.
+     * @return The IPv6 configuration.
      * 
      */
     public Optional<Output<VirtualMachineInitializationIpConfigIpv6Args>> ipv6() {
@@ -93,7 +93,7 @@ public final class VirtualMachineInitializationIpConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param ipv6 The IPv4 configuration.
+         * @param ipv6 The IPv6 configuration.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class VirtualMachineInitializationIpConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param ipv6 The IPv4 configuration.
+         * @param ipv6 The IPv6 configuration.
          * 
          * @return builder
          * 

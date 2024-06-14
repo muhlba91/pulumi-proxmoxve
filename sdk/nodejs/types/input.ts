@@ -1320,6 +1320,10 @@ export namespace VM {
          */
         replicate?: pulumi.Input<boolean>;
         /**
+         * The serial number of the disk, up to 20 bytes long.
+         */
+        serial?: pulumi.Input<string>;
+        /**
          * The disk size in gigabytes (defaults to `8`).
          */
         size?: pulumi.Input<number>;
@@ -1527,7 +1531,7 @@ export namespace VM {
          */
         ipv4?: pulumi.Input<inputs.VM.VirtualMachineInitializationIpConfigIpv4>;
         /**
-         * The IPv4 configuration.
+         * The IPv6 configuration.
          */
         ipv6?: pulumi.Input<inputs.VM.VirtualMachineInitializationIpConfigIpv6>;
     }
@@ -1756,12 +1760,11 @@ export namespace VM {
 
     export interface VirtualMachineUsb {
         /**
-         * The USB device ID. Use either this or `mapping`.
+         * The Host USB device or port or the value `spice`. Use either this or `mapping`.
          */
         host?: pulumi.Input<string>;
         /**
-         * The resource mapping name of the device, for
-         * example usbdevice. Use either this or `id`.
+         * The cluster-wide resource mapping name of the device, for example "usbdevice". Use either this or `host`.
          */
         mapping?: pulumi.Input<string>;
         /**

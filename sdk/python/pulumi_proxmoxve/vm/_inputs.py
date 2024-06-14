@@ -926,6 +926,7 @@ class VirtualMachineDiskArgs:
                  iothread: Optional[pulumi.Input[bool]] = None,
                  path_in_datastore: Optional[pulumi.Input[str]] = None,
                  replicate: Optional[pulumi.Input[bool]] = None,
+                 serial: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  speed: Optional[pulumi.Input['VirtualMachineDiskSpeedArgs']] = None,
                  ssd: Optional[pulumi.Input[bool]] = None):
@@ -953,6 +954,7 @@ class VirtualMachineDiskArgs:
                or (as root only) host's filesystem paths (`datastore_id` empty string).
                See "*Example: Attached disks*".
         :param pulumi.Input[bool] replicate: Whether the drive should be considered for replication jobs (defaults to `true`).
+        :param pulumi.Input[str] serial: The serial number of the disk, up to 20 bytes long.
         :param pulumi.Input[int] size: The disk size in gigabytes (defaults to `8`).
         :param pulumi.Input['VirtualMachineDiskSpeedArgs'] speed: The speed limits.
         :param pulumi.Input[bool] ssd: Whether to use an SSD emulation option for this disk (
@@ -980,6 +982,8 @@ class VirtualMachineDiskArgs:
             pulumi.set(__self__, "path_in_datastore", path_in_datastore)
         if replicate is not None:
             pulumi.set(__self__, "replicate", replicate)
+        if serial is not None:
+            pulumi.set(__self__, "serial", serial)
         if size is not None:
             pulumi.set(__self__, "size", size)
         if speed is not None:
@@ -1130,6 +1134,18 @@ class VirtualMachineDiskArgs:
     @replicate.setter
     def replicate(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "replicate", value)
+
+    @property
+    @pulumi.getter
+    def serial(self) -> Optional[pulumi.Input[str]]:
+        """
+        The serial number of the disk, up to 20 bytes long.
+        """
+        return pulumi.get(self, "serial")
+
+    @serial.setter
+    def serial(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "serial", value)
 
     @property
     @pulumi.getter
@@ -1829,7 +1845,7 @@ class VirtualMachineInitializationIpConfigArgs:
                  ipv6: Optional[pulumi.Input['VirtualMachineInitializationIpConfigIpv6Args']] = None):
         """
         :param pulumi.Input['VirtualMachineInitializationIpConfigIpv4Args'] ipv4: The IPv4 configuration.
-        :param pulumi.Input['VirtualMachineInitializationIpConfigIpv6Args'] ipv6: The IPv4 configuration.
+        :param pulumi.Input['VirtualMachineInitializationIpConfigIpv6Args'] ipv6: The IPv6 configuration.
         """
         if ipv4 is not None:
             pulumi.set(__self__, "ipv4", ipv4)
@@ -1852,7 +1868,7 @@ class VirtualMachineInitializationIpConfigArgs:
     @pulumi.getter
     def ipv6(self) -> Optional[pulumi.Input['VirtualMachineInitializationIpConfigIpv6Args']]:
         """
-        The IPv4 configuration.
+        The IPv6 configuration.
         """
         return pulumi.get(self, "ipv6")
 
@@ -2656,9 +2672,8 @@ class VirtualMachineUsbArgs:
                  mapping: Optional[pulumi.Input[str]] = None,
                  usb3: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] host: The USB device ID. Use either this or `mapping`.
-        :param pulumi.Input[str] mapping: The resource mapping name of the device, for
-               example usbdevice. Use either this or `id`.
+        :param pulumi.Input[str] host: The Host USB device or port or the value `spice`. Use either this or `mapping`.
+        :param pulumi.Input[str] mapping: The cluster-wide resource mapping name of the device, for example "usbdevice". Use either this or `host`.
         :param pulumi.Input[bool] usb3: Makes the USB device a USB3 device for the VM
                (defaults to `false`).
         """
@@ -2673,7 +2688,7 @@ class VirtualMachineUsbArgs:
     @pulumi.getter
     def host(self) -> Optional[pulumi.Input[str]]:
         """
-        The USB device ID. Use either this or `mapping`.
+        The Host USB device or port or the value `spice`. Use either this or `mapping`.
         """
         return pulumi.get(self, "host")
 
@@ -2685,8 +2700,7 @@ class VirtualMachineUsbArgs:
     @pulumi.getter
     def mapping(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource mapping name of the device, for
-        example usbdevice. Use either this or `id`.
+        The cluster-wide resource mapping name of the device, for example "usbdevice". Use either this or `host`.
         """
         return pulumi.get(self, "mapping")
 

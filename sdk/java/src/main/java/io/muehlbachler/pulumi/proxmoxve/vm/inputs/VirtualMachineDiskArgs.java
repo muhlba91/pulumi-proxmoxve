@@ -209,6 +209,21 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The serial number of the disk, up to 20 bytes long.
+     * 
+     */
+    @Import(name="serial")
+    private @Nullable Output<String> serial;
+
+    /**
+     * @return The serial number of the disk, up to 20 bytes long.
+     * 
+     */
+    public Optional<Output<String>> serial() {
+        return Optional.ofNullable(this.serial);
+    }
+
+    /**
      * The disk size in gigabytes (defaults to `8`).
      * 
      */
@@ -271,6 +286,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         this.iothread = $.iothread;
         this.pathInDatastore = $.pathInDatastore;
         this.replicate = $.replicate;
+        this.serial = $.serial;
         this.size = $.size;
         this.speed = $.speed;
         this.ssd = $.ssd;
@@ -547,6 +563,27 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
          */
         public Builder replicate(Boolean replicate) {
             return replicate(Output.of(replicate));
+        }
+
+        /**
+         * @param serial The serial number of the disk, up to 20 bytes long.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serial(@Nullable Output<String> serial) {
+            $.serial = serial;
+            return this;
+        }
+
+        /**
+         * @param serial The serial number of the disk, up to 20 bytes long.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serial(String serial) {
+            return serial(Output.of(serial));
         }
 
         /**

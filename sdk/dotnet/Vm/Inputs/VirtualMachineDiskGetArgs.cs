@@ -91,6 +91,12 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<bool>? Replicate { get; set; }
 
         /// <summary>
+        /// The serial number of the disk, up to 20 bytes long.
+        /// </summary>
+        [Input("serial")]
+        public Input<string>? Serial { get; set; }
+
+        /// <summary>
         /// The disk size in gigabytes (defaults to `8`).
         /// </summary>
         [Input("size")]

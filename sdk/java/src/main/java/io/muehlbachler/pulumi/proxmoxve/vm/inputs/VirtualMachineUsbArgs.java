@@ -17,14 +17,14 @@ public final class VirtualMachineUsbArgs extends com.pulumi.resources.ResourceAr
     public static final VirtualMachineUsbArgs Empty = new VirtualMachineUsbArgs();
 
     /**
-     * The USB device ID. Use either this or `mapping`.
+     * The Host USB device or port or the value `spice`. Use either this or `mapping`.
      * 
      */
     @Import(name="host")
     private @Nullable Output<String> host;
 
     /**
-     * @return The USB device ID. Use either this or `mapping`.
+     * @return The Host USB device or port or the value `spice`. Use either this or `mapping`.
      * 
      */
     public Optional<Output<String>> host() {
@@ -32,16 +32,14 @@ public final class VirtualMachineUsbArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The resource mapping name of the device, for
-     * example usbdevice. Use either this or `id`.
+     * The cluster-wide resource mapping name of the device, for example &#34;usbdevice&#34;. Use either this or `host`.
      * 
      */
     @Import(name="mapping")
     private @Nullable Output<String> mapping;
 
     /**
-     * @return The resource mapping name of the device, for
-     * example usbdevice. Use either this or `id`.
+     * @return The cluster-wide resource mapping name of the device, for example &#34;usbdevice&#34;. Use either this or `host`.
      * 
      */
     public Optional<Output<String>> mapping() {
@@ -92,7 +90,7 @@ public final class VirtualMachineUsbArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param host The USB device ID. Use either this or `mapping`.
+         * @param host The Host USB device or port or the value `spice`. Use either this or `mapping`.
          * 
          * @return builder
          * 
@@ -103,7 +101,7 @@ public final class VirtualMachineUsbArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param host The USB device ID. Use either this or `mapping`.
+         * @param host The Host USB device or port or the value `spice`. Use either this or `mapping`.
          * 
          * @return builder
          * 
@@ -113,8 +111,7 @@ public final class VirtualMachineUsbArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param mapping The resource mapping name of the device, for
-         * example usbdevice. Use either this or `id`.
+         * @param mapping The cluster-wide resource mapping name of the device, for example &#34;usbdevice&#34;. Use either this or `host`.
          * 
          * @return builder
          * 
@@ -125,8 +122,7 @@ public final class VirtualMachineUsbArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param mapping The resource mapping name of the device, for
-         * example usbdevice. Use either this or `id`.
+         * @param mapping The cluster-wide resource mapping name of the device, for example &#34;usbdevice&#34;. Use either this or `host`.
          * 
          * @return builder
          * 

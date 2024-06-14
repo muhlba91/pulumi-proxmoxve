@@ -1415,6 +1415,10 @@
                     "type": "boolean",
                     "description": "Whether the drive should be considered for replication jobs (defaults to `true`).\n"
                 },
+                "serial": {
+                    "type": "string",
+                    "description": "The serial number of the disk, up to 20 bytes long.\n"
+                },
                 "size": {
                     "type": "integer",
                     "description": "The disk size in gigabytes (defaults to `8`).\n"
@@ -1645,7 +1649,7 @@
                 },
                 "ipv6": {
                     "$ref": "#/types/proxmoxve:VM/VirtualMachineInitializationIpConfigIpv6:VirtualMachineInitializationIpConfigIpv6",
-                    "description": "The IPv4 configuration.\n"
+                    "description": "The IPv6 configuration.\n"
                 }
             },
             "type": "object"
@@ -1904,11 +1908,11 @@
             "properties": {
                 "host": {
                     "type": "string",
-                    "description": "The USB device ID. Use either this or `mapping`.\n"
+                    "description": "The Host USB device or port or the value `spice`. Use either this or `mapping`.\n"
                 },
                 "mapping": {
                     "type": "string",
-                    "description": "The resource mapping name of the device, for\nexample usbdevice. Use either this or `id`.\n"
+                    "description": "The cluster-wide resource mapping name of the device, for example \"usbdevice\". Use either this or `host`.\n"
                 },
                 "usb3": {
                     "type": "boolean",
@@ -2622,7 +2626,8 @@
                 }
             },
             "required": [
-                "nodeName"
+                "nodeName",
+                "vmId"
             ],
             "inputProperties": {
                 "clone": {
@@ -2743,8 +2748,7 @@
                 },
                 "vmId": {
                     "type": "integer",
-                    "description": "The container identifier\n",
-                    "willReplaceOnChanges": true
+                    "description": "The container identifier\n"
                 }
             },
             "requiredInputs": [
@@ -2871,8 +2875,7 @@
                     },
                     "vmId": {
                         "type": "integer",
-                        "description": "The container identifier\n",
-                        "willReplaceOnChanges": true
+                        "description": "The container identifier\n"
                     }
                 },
                 "type": "object"
