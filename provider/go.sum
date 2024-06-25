@@ -1293,6 +1293,8 @@ github.com/boombuler/barcode v1.0.0/go.mod h1:paBWMcWSl3LHKBqUq+rly7CNSldXjb2rDl
 github.com/boombuler/barcode v1.0.1/go.mod h1:paBWMcWSl3LHKBqUq+rly7CNSldXjb2rDl3JlRe0mD8=
 github.com/bpg/terraform-provider-proxmox v0.60.0 h1:/pL6vGb6yqQDTENhTH5TBv4+NIz5cvoqDxg3oTvA5ss=
 github.com/bpg/terraform-provider-proxmox v0.60.0/go.mod h1:iI9wumGTgdFG4bzjei8s8MOH3YB9CEcAVRNCFakReVU=
+github.com/bpg/terraform-provider-proxmox v0.60.1 h1:o8EvpXkgar/F+BPE+JBJxNw6UsWgDIT/E+FXPvHWN4I=
+github.com/bpg/terraform-provider-proxmox v0.60.1/go.mod h1:kbTtuskH7Kt3kgK6LI6mbO1n+wZ1ECBDh5pPPSgI0Bw=
 github.com/brianvoe/gofakeit/v7 v7.0.3 h1:tGCt+eYfhTMWE1ko5G2EO1f/yE44yNpIwUb4h32O0wo=
 github.com/brianvoe/gofakeit/v7 v7.0.3/go.mod h1:QXuPeBw164PJCzCUZVmgpgHJ3Llj49jSLVkKPMtxtxA=
 github.com/bufbuild/protocompile v0.4.0 h1:LbFKd2XowZvQ/kajzguUp2DC9UEIQhIq77fZZlaQsNA=
