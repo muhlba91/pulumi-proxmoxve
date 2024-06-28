@@ -262,7 +262,7 @@ class FirewallIPSet(pulumi.CustomResource):
                     comment="Server 1",
                 ),
             ],
-            opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_vm["example"]]))
+            opts = pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_vm["example"]]))
         ```
 
         :param str resource_name: The name of the resource.
@@ -309,7 +309,7 @@ class FirewallIPSet(pulumi.CustomResource):
                     comment="Server 1",
                 ),
             ],
-            opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_vm["example"]]))
+            opts = pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_vm["example"]]))
         ```
 
         :param str resource_name: The name of the resource.

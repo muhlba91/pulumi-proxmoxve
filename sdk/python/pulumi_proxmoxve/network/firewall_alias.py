@@ -246,7 +246,7 @@ class FirewallAlias(pulumi.CustomResource):
             vm_id=proxmox_virtual_environment_vm["example"]["vm_id"],
             cidr="192.168.0.0/23",
             comment="Managed by Terraform",
-            opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_vm["example"]]))
+            opts = pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_vm["example"]]))
         ubuntu_vm = proxmoxve.network.FirewallAlias("ubuntuVm",
             cidr="192.168.0.1",
             comment="Managed by Terraform")
@@ -283,7 +283,7 @@ class FirewallAlias(pulumi.CustomResource):
             vm_id=proxmox_virtual_environment_vm["example"]["vm_id"],
             cidr="192.168.0.0/23",
             comment="Managed by Terraform",
-            opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_vm["example"]]))
+            opts = pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_vm["example"]]))
         ubuntu_vm = proxmoxve.network.FirewallAlias("ubuntuVm",
             cidr="192.168.0.1",
             comment="Managed by Terraform")

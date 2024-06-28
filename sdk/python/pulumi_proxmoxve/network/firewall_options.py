@@ -523,7 +523,7 @@ class FirewallOptions(pulumi.CustomResource):
             input_policy="ACCEPT",
             output_policy="ACCEPT",
             radv=True,
-            opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_vm["example"]]))
+            opts = pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_vm["example"]]))
         ```
 
         :param str resource_name: The name of the resource.
@@ -580,7 +580,7 @@ class FirewallOptions(pulumi.CustomResource):
             input_policy="ACCEPT",
             output_policy="ACCEPT",
             radv=True,
-            opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_vm["example"]]))
+            opts = pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_vm["example"]]))
         ```
 
         :param str resource_name: The name of the resource.

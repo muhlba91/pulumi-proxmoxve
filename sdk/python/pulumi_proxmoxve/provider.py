@@ -108,13 +108,11 @@ class ProviderArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.""")
     def otp(self) -> Optional[pulumi.Input[str]]:
         """
         The one-time password for the Proxmox VE API.
         """
-        warnings.warn("""The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.""", DeprecationWarning)
-        pulumi.log.warn("""otp is deprecated: The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.""")
-
         return pulumi.get(self, "otp")
 
     @otp.setter
@@ -291,13 +289,11 @@ class Provider(pulumi.ProviderResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.""")
     def otp(self) -> pulumi.Output[Optional[str]]:
         """
         The one-time password for the Proxmox VE API.
         """
-        warnings.warn("""The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.""", DeprecationWarning)
-        pulumi.log.warn("""otp is deprecated: The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.""")
-
         return pulumi.get(self, "otp")
 
     @property

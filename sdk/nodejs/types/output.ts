@@ -460,6 +460,8 @@ export namespace CT {
     export interface ContainerOperatingSystem {
         /**
          * The identifier for an OS template file.
+         * The ID format is `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`. Can be also taken from
+         * `proxmoxve.Download.File` resource, or from the output of `pvesm list <storage>`.
          */
         templateFileId: string;
         /**

@@ -752,13 +752,11 @@ class VirtualMachineArgs:
 
     @property
     @pulumi.getter(name="timeoutMoveDisk")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead.""")
     def timeout_move_disk(self) -> Optional[pulumi.Input[int]]:
         """
         MoveDisk timeout
         """
-        warnings.warn("""This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead.""", DeprecationWarning)
-        pulumi.log.warn("""timeout_move_disk is deprecated: This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead.""")
-
         return pulumi.get(self, "timeout_move_disk")
 
     @timeout_move_disk.setter
@@ -1660,13 +1658,11 @@ class _VirtualMachineState:
 
     @property
     @pulumi.getter(name="timeoutMoveDisk")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead.""")
     def timeout_move_disk(self) -> Optional[pulumi.Input[int]]:
         """
         MoveDisk timeout
         """
-        warnings.warn("""This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead.""", DeprecationWarning)
-        pulumi.log.warn("""timeout_move_disk is deprecated: This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead.""")
-
         return pulumi.get(self, "timeout_move_disk")
 
     @timeout_move_disk.setter
@@ -2647,13 +2643,11 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="timeoutMoveDisk")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead.""")
     def timeout_move_disk(self) -> pulumi.Output[Optional[int]]:
         """
         MoveDisk timeout
         """
-        warnings.warn("""This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead.""", DeprecationWarning)
-        pulumi.log.warn("""timeout_move_disk is deprecated: This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead.""")
-
         return pulumi.get(self, "timeout_move_disk")
 
     @property

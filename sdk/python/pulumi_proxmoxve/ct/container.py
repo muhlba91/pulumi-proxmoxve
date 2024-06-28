@@ -405,13 +405,11 @@ class ContainerArgs:
 
     @property
     @pulumi.getter(name="timeoutStart")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead.""")
     def timeout_start(self) -> Optional[pulumi.Input[int]]:
         """
         Start container timeout
         """
-        warnings.warn("""This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead.""", DeprecationWarning)
-        pulumi.log.warn("""timeout_start is deprecated: This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead.""")
-
         return pulumi.get(self, "timeout_start")
 
     @timeout_start.setter
@@ -849,13 +847,11 @@ class _ContainerState:
 
     @property
     @pulumi.getter(name="timeoutStart")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead.""")
     def timeout_start(self) -> Optional[pulumi.Input[int]]:
         """
         Start container timeout
         """
-        warnings.warn("""This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead.""", DeprecationWarning)
-        pulumi.log.warn("""timeout_start is deprecated: This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead.""")
-
         return pulumi.get(self, "timeout_start")
 
     @timeout_start.setter
@@ -1371,13 +1367,11 @@ class Container(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="timeoutStart")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead.""")
     def timeout_start(self) -> pulumi.Output[Optional[int]]:
         """
         Start container timeout
         """
-        warnings.warn("""This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead.""", DeprecationWarning)
-        pulumi.log.warn("""timeout_start is deprecated: This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead.""")
-
         return pulumi.get(self, "timeout_start")
 
     @property

@@ -117,6 +117,20 @@ public class Vm2 extends com.pulumi.resources.CustomResource {
         return this.nodeName;
     }
     /**
+     * Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
+     * 
+     */
+    @Export(name="stopOnDestroy", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> stopOnDestroy;
+
+    /**
+     * @return Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
+     * 
+     */
+    public Output<Boolean> stopOnDestroy() {
+        return this.stopOnDestroy;
+    }
+    /**
      * The tags assigned to the VM.
      * 
      */

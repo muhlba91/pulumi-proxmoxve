@@ -15,6 +15,8 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
     {
         /// <summary>
         /// The identifier for an OS template file.
+        /// The ID format is `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`. Can be also taken from
+        /// `proxmoxve.Download.File` resource, or from the output of `pvesm list &lt;storage&gt;`.
         /// </summary>
         public readonly string TemplateFileId;
         /// <summary>

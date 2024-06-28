@@ -409,7 +409,7 @@ class NetworkBridge(pulumi.CustomResource):
             address="99.99.99.99/16",
             comment="vmbr99 comment",
             ports=["ens18.99"],
-            opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_network_linux_vlan["vlan99"]]))
+            opts = pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_network_linux_vlan["vlan99"]]))
         ```
 
         ## Import
@@ -456,7 +456,7 @@ class NetworkBridge(pulumi.CustomResource):
             address="99.99.99.99/16",
             comment="vmbr99 comment",
             ports=["ens18.99"],
-            opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_network_linux_vlan["vlan99"]]))
+            opts = pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_network_linux_vlan["vlan99"]]))
         ```
 
         ## Import

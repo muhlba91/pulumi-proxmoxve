@@ -36,6 +36,8 @@ type VirtualMachine2 struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the node where the VM is provisioned.
 	NodeName pulumi.StringOutput `pulumi:"nodeName"`
+	// Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
+	StopOnDestroy pulumi.BoolOutput `pulumi:"stopOnDestroy"`
 	// The tags assigned to the VM.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Set to true to create a VM template.
@@ -96,6 +98,8 @@ type virtualMachine2State struct {
 	Name *string `pulumi:"name"`
 	// The name of the node where the VM is provisioned.
 	NodeName *string `pulumi:"nodeName"`
+	// Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
+	StopOnDestroy *bool `pulumi:"stopOnDestroy"`
 	// The tags assigned to the VM.
 	Tags []string `pulumi:"tags"`
 	// Set to true to create a VM template.
@@ -118,6 +122,8 @@ type VirtualMachine2State struct {
 	Name pulumi.StringPtrInput
 	// The name of the node where the VM is provisioned.
 	NodeName pulumi.StringPtrInput
+	// Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
+	StopOnDestroy pulumi.BoolPtrInput
 	// The tags assigned to the VM.
 	Tags pulumi.StringArrayInput
 	// Set to true to create a VM template.
@@ -144,6 +150,8 @@ type virtualMachine2Args struct {
 	Name *string `pulumi:"name"`
 	// The name of the node where the VM is provisioned.
 	NodeName string `pulumi:"nodeName"`
+	// Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
+	StopOnDestroy *bool `pulumi:"stopOnDestroy"`
 	// The tags assigned to the VM.
 	Tags []string `pulumi:"tags"`
 	// Set to true to create a VM template.
@@ -167,6 +175,8 @@ type VirtualMachine2Args struct {
 	Name pulumi.StringPtrInput
 	// The name of the node where the VM is provisioned.
 	NodeName pulumi.StringInput
+	// Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
+	StopOnDestroy pulumi.BoolPtrInput
 	// The tags assigned to the VM.
 	Tags pulumi.StringArrayInput
 	// Set to true to create a VM template.
@@ -291,6 +301,11 @@ func (o VirtualMachine2Output) Name() pulumi.StringOutput {
 // The name of the node where the VM is provisioned.
 func (o VirtualMachine2Output) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine2) pulumi.StringOutput { return v.NodeName }).(pulumi.StringOutput)
+}
+
+// Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
+func (o VirtualMachine2Output) StopOnDestroy() pulumi.BoolOutput {
+	return o.ApplyT(func(v *VirtualMachine2) pulumi.BoolOutput { return v.StopOnDestroy }).(pulumi.BoolOutput)
 }
 
 // The tags assigned to the VM.

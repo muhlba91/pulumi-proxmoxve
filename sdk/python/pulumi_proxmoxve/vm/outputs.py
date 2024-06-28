@@ -1543,13 +1543,11 @@ class VirtualMachineInitialization(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The `upgrade` attribute is deprecated and will be removed in a future release.""")
     def upgrade(self) -> Optional[bool]:
         """
         Whether to do an automatic package upgrade after the first boot
         """
-        warnings.warn("""The `upgrade` attribute is deprecated and will be removed in a future release.""", DeprecationWarning)
-        pulumi.log.warn("""upgrade is deprecated: The `upgrade` attribute is deprecated and will be removed in a future release.""")
-
         return pulumi.get(self, "upgrade")
 
     @property
@@ -1610,15 +1608,13 @@ class VirtualMachineInitializationDns(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.""")
     def server(self) -> Optional[str]:
         """
         The DNS server. The `server` attribute is
         deprecated and will be removed in a future release. Please use the
         `servers` attribute instead.
         """
-        warnings.warn("""The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.""", DeprecationWarning)
-        pulumi.log.warn("""server is deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.""")
-
         return pulumi.get(self, "server")
 
     @property
@@ -2432,13 +2428,11 @@ class VirtualMachineVga(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The `enabled` attribute is deprecated and will be removed in a future release. Use type `none` instead.""")
     def enabled(self) -> Optional[bool]:
         """
         Whether to enable the VGA device
         """
-        warnings.warn("""The `enabled` attribute is deprecated and will be removed in a future release. Use type `none` instead.""", DeprecationWarning)
-        pulumi.log.warn("""enabled is deprecated: The `enabled` attribute is deprecated and will be removed in a future release. Use type `none` instead.""")
-
         return pulumi.get(self, "enabled")
 
     @property

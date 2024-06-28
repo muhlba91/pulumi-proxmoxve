@@ -418,15 +418,13 @@ class ContainerInitializationDns(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.""")
     def server(self) -> Optional[str]:
         """
         The DNS server. The `server` attribute is
         deprecated and will be removed in a future release. Please use
         the `servers` attribute instead.
         """
-        warnings.warn("""The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.""", DeprecationWarning)
-        pulumi.log.warn("""server is deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.""")
-
         return pulumi.get(self, "server")
 
     @property
@@ -914,6 +912,8 @@ class ContainerOperatingSystem(dict):
                  type: Optional[str] = None):
         """
         :param str template_file_id: The identifier for an OS template file.
+               The ID format is `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`. Can be also taken from
+               `Download.File` resource, or from the output of `pvesm list <storage>`.
         :param str type: The type (defaults to `unmanaged`).
         """
         pulumi.set(__self__, "template_file_id", template_file_id)
@@ -925,6 +925,8 @@ class ContainerOperatingSystem(dict):
     def template_file_id(self) -> str:
         """
         The identifier for an OS template file.
+        The ID format is `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`. Can be also taken from
+        `Download.File` resource, or from the output of `pvesm list <storage>`.
         """
         return pulumi.get(self, "template_file_id")
 

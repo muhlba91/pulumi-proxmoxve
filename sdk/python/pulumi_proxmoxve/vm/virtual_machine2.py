@@ -22,6 +22,7 @@ class VirtualMachine2Args:
                  cpu: Optional[pulumi.Input['VirtualMachine2CpuArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 stop_on_destroy: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
                  timeouts: Optional[pulumi.Input['VirtualMachine2TimeoutsArgs']] = None,
@@ -34,6 +35,7 @@ class VirtualMachine2Args:
         :param pulumi.Input['VirtualMachine2CpuArgs'] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description of the VM.
         :param pulumi.Input[str] name: The name of the VM. Doesn't have to be unique.
+        :param pulumi.Input[bool] stop_on_destroy: Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags assigned to the VM.
         :param pulumi.Input[bool] template: Set to true to create a VM template.
         :param pulumi.Input['VirtualMachine2VgaArgs'] vga: Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
@@ -49,6 +51,8 @@ class VirtualMachine2Args:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if stop_on_destroy is not None:
+            pulumi.set(__self__, "stop_on_destroy", stop_on_destroy)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if template is not None:
@@ -131,6 +135,18 @@ class VirtualMachine2Args:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="stopOnDestroy")
+    def stop_on_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
+        """
+        return pulumi.get(self, "stop_on_destroy")
+
+    @stop_on_destroy.setter
+    def stop_on_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "stop_on_destroy", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -185,6 +201,7 @@ class _VirtualMachine2State:
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
+                 stop_on_destroy: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
                  timeouts: Optional[pulumi.Input['VirtualMachine2TimeoutsArgs']] = None,
@@ -197,6 +214,7 @@ class _VirtualMachine2State:
         :param pulumi.Input[str] description: The description of the VM.
         :param pulumi.Input[str] name: The name of the VM. Doesn't have to be unique.
         :param pulumi.Input[str] node_name: The name of the node where the VM is provisioned.
+        :param pulumi.Input[bool] stop_on_destroy: Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags assigned to the VM.
         :param pulumi.Input[bool] template: Set to true to create a VM template.
         :param pulumi.Input['VirtualMachine2VgaArgs'] vga: Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
@@ -213,6 +231,8 @@ class _VirtualMachine2State:
             pulumi.set(__self__, "name", name)
         if node_name is not None:
             pulumi.set(__self__, "node_name", node_name)
+        if stop_on_destroy is not None:
+            pulumi.set(__self__, "stop_on_destroy", stop_on_destroy)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if template is not None:
@@ -295,6 +315,18 @@ class _VirtualMachine2State:
         pulumi.set(self, "node_name", value)
 
     @property
+    @pulumi.getter(name="stopOnDestroy")
+    def stop_on_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
+        """
+        return pulumi.get(self, "stop_on_destroy")
+
+    @stop_on_destroy.setter
+    def stop_on_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "stop_on_destroy", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -351,6 +383,7 @@ class VirtualMachine2(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
+                 stop_on_destroy: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
                  timeouts: Optional[pulumi.Input[pulumi.InputType['VirtualMachine2TimeoutsArgs']]] = None,
@@ -375,6 +408,7 @@ class VirtualMachine2(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the VM.
         :param pulumi.Input[str] name: The name of the VM. Doesn't have to be unique.
         :param pulumi.Input[str] node_name: The name of the node where the VM is provisioned.
+        :param pulumi.Input[bool] stop_on_destroy: Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags assigned to the VM.
         :param pulumi.Input[bool] template: Set to true to create a VM template.
         :param pulumi.Input[pulumi.InputType['VirtualMachine2VgaArgs']] vga: Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
@@ -417,6 +451,7 @@ class VirtualMachine2(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
+                 stop_on_destroy: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
                  timeouts: Optional[pulumi.Input[pulumi.InputType['VirtualMachine2TimeoutsArgs']]] = None,
@@ -438,6 +473,7 @@ class VirtualMachine2(pulumi.CustomResource):
             if node_name is None and not opts.urn:
                 raise TypeError("Missing required property 'node_name'")
             __props__.__dict__["node_name"] = node_name
+            __props__.__dict__["stop_on_destroy"] = stop_on_destroy
             __props__.__dict__["tags"] = tags
             __props__.__dict__["template"] = template
             __props__.__dict__["timeouts"] = timeouts
@@ -460,6 +496,7 @@ class VirtualMachine2(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             node_name: Optional[pulumi.Input[str]] = None,
+            stop_on_destroy: Optional[pulumi.Input[bool]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             template: Optional[pulumi.Input[bool]] = None,
             timeouts: Optional[pulumi.Input[pulumi.InputType['VirtualMachine2TimeoutsArgs']]] = None,
@@ -477,6 +514,7 @@ class VirtualMachine2(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the VM.
         :param pulumi.Input[str] name: The name of the VM. Doesn't have to be unique.
         :param pulumi.Input[str] node_name: The name of the node where the VM is provisioned.
+        :param pulumi.Input[bool] stop_on_destroy: Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags assigned to the VM.
         :param pulumi.Input[bool] template: Set to true to create a VM template.
         :param pulumi.Input[pulumi.InputType['VirtualMachine2VgaArgs']] vga: Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
@@ -491,6 +529,7 @@ class VirtualMachine2(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["name"] = name
         __props__.__dict__["node_name"] = node_name
+        __props__.__dict__["stop_on_destroy"] = stop_on_destroy
         __props__.__dict__["tags"] = tags
         __props__.__dict__["template"] = template
         __props__.__dict__["timeouts"] = timeouts
@@ -544,6 +583,14 @@ class VirtualMachine2(pulumi.CustomResource):
         The name of the node where the VM is provisioned.
         """
         return pulumi.get(self, "node_name")
+
+    @property
+    @pulumi.getter(name="stopOnDestroy")
+    def stop_on_destroy(self) -> pulumi.Output[bool]:
+        """
+        Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
+        """
+        return pulumi.get(self, "stop_on_destroy")
 
     @property
     @pulumi.getter

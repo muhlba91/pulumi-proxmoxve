@@ -218,7 +218,7 @@ class FirewallRules(pulumi.CustomResource):
                     iface="net0",
                 ),
             ],
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     proxmox_virtual_environment_vm["example"],
                     proxmox_virtual_environment_cluster_firewall_security_group["example"],
                 ]))
@@ -280,7 +280,7 @@ class FirewallRules(pulumi.CustomResource):
                     iface="net0",
                 ),
             ],
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     proxmox_virtual_environment_vm["example"],
                     proxmox_virtual_environment_cluster_firewall_security_group["example"],
                 ]))

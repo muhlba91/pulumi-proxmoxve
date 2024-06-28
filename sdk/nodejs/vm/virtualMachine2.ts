@@ -70,6 +70,10 @@ export class VirtualMachine2 extends pulumi.CustomResource {
      */
     public readonly nodeName!: pulumi.Output<string>;
     /**
+     * Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
+     */
+    public readonly stopOnDestroy!: pulumi.Output<boolean>;
+    /**
      * The tags assigned to the VM.
      */
     public readonly tags!: pulumi.Output<string[]>;
@@ -102,6 +106,7 @@ export class VirtualMachine2 extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nodeName"] = state ? state.nodeName : undefined;
+            resourceInputs["stopOnDestroy"] = state ? state.stopOnDestroy : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["template"] = state ? state.template : undefined;
             resourceInputs["timeouts"] = state ? state.timeouts : undefined;
@@ -117,6 +122,7 @@ export class VirtualMachine2 extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nodeName"] = args ? args.nodeName : undefined;
+            resourceInputs["stopOnDestroy"] = args ? args.stopOnDestroy : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["template"] = args ? args.template : undefined;
             resourceInputs["timeouts"] = args ? args.timeouts : undefined;
@@ -157,6 +163,10 @@ export interface VirtualMachine2State {
      * The name of the node where the VM is provisioned.
      */
     nodeName?: pulumi.Input<string>;
+    /**
+     * Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
+     */
+    stopOnDestroy?: pulumi.Input<boolean>;
     /**
      * The tags assigned to the VM.
      */
@@ -200,6 +210,10 @@ export interface VirtualMachine2Args {
      * The name of the node where the VM is provisioned.
      */
     nodeName: pulumi.Input<string>;
+    /**
+     * Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
+     */
+    stopOnDestroy?: pulumi.Input<boolean>;
     /**
      * The tags assigned to the VM.
      */

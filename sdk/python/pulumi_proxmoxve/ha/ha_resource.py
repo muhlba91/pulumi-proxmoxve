@@ -277,7 +277,7 @@ class HAResource(pulumi.CustomResource):
             state="started",
             group="example",
             comment="Managed by Terraform",
-            opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_hagroup["example"]]))
+            opts = pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_hagroup["example"]]))
         ```
 
         ## Import
@@ -320,7 +320,7 @@ class HAResource(pulumi.CustomResource):
             state="started",
             group="example",
             comment="Managed by Terraform",
-            opts=pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_hagroup["example"]]))
+            opts = pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_hagroup["example"]]))
         ```
 
         ## Import

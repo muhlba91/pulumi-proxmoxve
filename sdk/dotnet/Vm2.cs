@@ -51,6 +51,12 @@ namespace Pulumi.ProxmoxVE
         public Output<string> NodeName { get; private set; } = null!;
 
         /// <summary>
+        /// Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
+        /// </summary>
+        [Output("stopOnDestroy")]
+        public Output<bool> StopOnDestroy { get; private set; } = null!;
+
+        /// <summary>
         /// The tags assigned to the VM.
         /// </summary>
         [Output("tags")]
@@ -167,6 +173,12 @@ namespace Pulumi.ProxmoxVE
         [Input("nodeName", required: true)]
         public Input<string> NodeName { get; set; } = null!;
 
+        /// <summary>
+        /// Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
+        /// </summary>
+        [Input("stopOnDestroy")]
+        public Input<bool>? StopOnDestroy { get; set; }
+
         [Input("tags")]
         private InputList<string>? _tags;
 
@@ -250,6 +262,12 @@ namespace Pulumi.ProxmoxVE
         /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
+
+        /// <summary>
+        /// Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
+        /// </summary>
+        [Input("stopOnDestroy")]
+        public Input<bool>? StopOnDestroy { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;

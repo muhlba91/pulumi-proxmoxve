@@ -115,6 +115,21 @@ public final class VirtualMachine2Args extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
+     * 
+     */
+    @Import(name="stopOnDestroy")
+    private @Nullable Output<Boolean> stopOnDestroy;
+
+    /**
+     * @return Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
+     * 
+     */
+    public Optional<Output<Boolean>> stopOnDestroy() {
+        return Optional.ofNullable(this.stopOnDestroy);
+    }
+
+    /**
      * The tags assigned to the VM.
      * 
      */
@@ -175,6 +190,7 @@ public final class VirtualMachine2Args extends com.pulumi.resources.ResourceArgs
         this.description = $.description;
         this.name = $.name;
         this.nodeName = $.nodeName;
+        this.stopOnDestroy = $.stopOnDestroy;
         this.tags = $.tags;
         this.template = $.template;
         this.timeouts = $.timeouts;
@@ -323,6 +339,27 @@ public final class VirtualMachine2Args extends com.pulumi.resources.ResourceArgs
          */
         public Builder nodeName(String nodeName) {
             return nodeName(Output.of(nodeName));
+        }
+
+        /**
+         * @param stopOnDestroy Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stopOnDestroy(@Nullable Output<Boolean> stopOnDestroy) {
+            $.stopOnDestroy = stopOnDestroy;
+            return this;
+        }
+
+        /**
+         * @param stopOnDestroy Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stopOnDestroy(Boolean stopOnDestroy) {
+            return stopOnDestroy(Output.of(stopOnDestroy));
         }
 
         /**
