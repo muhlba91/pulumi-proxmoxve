@@ -1,6 +1,20 @@
 # Changelog
 
 
+## [6.10.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.10.0...v6.10.1) (2024-06-28)
+
+
+### Bug Fixes
+
+* prepare upstream update to v0.60.1 ([dcbeb95](https://github.com/muhlba91/pulumi-proxmoxve/commit/dcbeb95fcfaf49685834add3ae6d3cdf456e30a9))
+
+
+### Miscellaneous Chores
+
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.60.1 ([f475dd4](https://github.com/muhlba91/pulumi-proxmoxve/commit/f475dd4bec804816e8c3bb636b8077a1568b7fb7))
+* **deps:** update module github.com/pulumi/pulumi-terraform-bridge/pf to v0.38.0 ([f1bb476](https://github.com/muhlba91/pulumi-proxmoxve/commit/f1bb4766750a8a3e386e1cb8f6a023e5f5668e3b))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.121.0 ([3d9d91f](https://github.com/muhlba91/pulumi-proxmoxve/commit/3d9d91fd72be128156ad4c785a1d16a25a30958c))
+
 ## [6.10.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.9.1...v6.10.0) (2024-06-14)
 
 
