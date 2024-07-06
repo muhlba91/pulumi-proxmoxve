@@ -2,7 +2,7 @@ module github.com/muhlba91/pulumi-proxmoxve/provider
 
 go 1.22
 
-toolchain go1.22.3
+toolchain go1.22.5
 
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240520223432-0c0bf0d65f10
 
