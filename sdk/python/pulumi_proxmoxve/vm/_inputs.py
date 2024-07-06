@@ -40,6 +40,7 @@ __all__ = [
     'VirtualMachineTpmStateArgs',
     'VirtualMachineUsbArgs',
     'VirtualMachineVgaArgs',
+    'GetVirtualMachinesFilterArgs',
 ]
 
 @pulumi.input_type
@@ -2791,5 +2792,58 @@ class VirtualMachineVgaArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class GetVirtualMachinesFilterArgs:
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str],
+                 regex: Optional[bool] = None):
+        """
+        :param str name: Name of the VM attribute to filter on. One of [`name`, `template`, `status`, `node_name`]
+        :param Sequence[str] values: List of values to pass the filter. VM's attribute should match at least one value in the list.
+        :param bool regex: Treat values as regex patterns
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if regex is not None:
+            pulumi.set(__self__, "regex", regex)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the VM attribute to filter on. One of [`name`, `template`, `status`, `node_name`]
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        List of values to pass the filter. VM's attribute should match at least one value in the list.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[str]):
+        pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter
+    def regex(self) -> Optional[bool]:
+        """
+        Treat values as regex patterns
+        """
+        return pulumi.get(self, "regex")
+
+    @regex.setter
+    def regex(self, value: Optional[bool]):
+        pulumi.set(self, "regex", value)
 
 

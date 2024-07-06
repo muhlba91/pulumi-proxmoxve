@@ -5,10 +5,13 @@ package io.muehlbachler.pulumi.proxmoxve.VM.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetVirtualMachinesVm {
@@ -18,16 +21,26 @@ public final class GetVirtualMachinesVm {
      */
     private String name;
     /**
-     * @return The node name.
+     * @return The node name. All cluster nodes will be queried in case this is omitted
      * 
      */
     private String nodeName;
+    /**
+     * @return Status of the VM
+     * 
+     */
+    private @Nullable String status;
     /**
      * @return A list of tags to filter the VMs. The VM must have all
      * the tags to be included in the result.
      * 
      */
     private List<String> tags;
+    /**
+     * @return Is VM a template (true) or a regular VM (false)
+     * 
+     */
+    private @Nullable Boolean template;
     /**
      * @return The VM identifier.
      * 
@@ -43,11 +56,18 @@ public final class GetVirtualMachinesVm {
         return this.name;
     }
     /**
-     * @return The node name.
+     * @return The node name. All cluster nodes will be queried in case this is omitted
      * 
      */
     public String nodeName() {
         return this.nodeName;
+    }
+    /**
+     * @return Status of the VM
+     * 
+     */
+    public Optional<String> status() {
+        return Optional.ofNullable(this.status);
     }
     /**
      * @return A list of tags to filter the VMs. The VM must have all
@@ -56,6 +76,13 @@ public final class GetVirtualMachinesVm {
      */
     public List<String> tags() {
         return this.tags;
+    }
+    /**
+     * @return Is VM a template (true) or a regular VM (false)
+     * 
+     */
+    public Optional<Boolean> template() {
+        return Optional.ofNullable(this.template);
     }
     /**
      * @return The VM identifier.
@@ -76,14 +103,18 @@ public final class GetVirtualMachinesVm {
     public static final class Builder {
         private String name;
         private String nodeName;
+        private @Nullable String status;
         private List<String> tags;
+        private @Nullable Boolean template;
         private Integer vmId;
         public Builder() {}
         public Builder(GetVirtualMachinesVm defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.nodeName = defaults.nodeName;
+    	      this.status = defaults.status;
     	      this.tags = defaults.tags;
+    	      this.template = defaults.template;
     	      this.vmId = defaults.vmId;
         }
 
@@ -104,6 +135,12 @@ public final class GetVirtualMachinesVm {
             return this;
         }
         @CustomType.Setter
+        public Builder status(@Nullable String status) {
+
+            this.status = status;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tags(List<String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetVirtualMachinesVm", "tags");
@@ -113,6 +150,12 @@ public final class GetVirtualMachinesVm {
         }
         public Builder tags(String... tags) {
             return tags(List.of(tags));
+        }
+        @CustomType.Setter
+        public Builder template(@Nullable Boolean template) {
+
+            this.template = template;
+            return this;
         }
         @CustomType.Setter
         public Builder vmId(Integer vmId) {
@@ -126,7 +169,9 @@ public final class GetVirtualMachinesVm {
             final var _resultValue = new GetVirtualMachinesVm();
             _resultValue.name = name;
             _resultValue.nodeName = nodeName;
+            _resultValue.status = status;
             _resultValue.tags = tags;
+            _resultValue.template = template;
             _resultValue.vmId = vmId;
             return _resultValue;
         }

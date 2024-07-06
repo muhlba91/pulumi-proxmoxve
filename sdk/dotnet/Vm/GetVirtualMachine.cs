@@ -72,6 +72,18 @@ namespace Pulumi.ProxmoxVE.VM
         public string NodeName { get; set; } = null!;
 
         /// <summary>
+        /// Status of the VM
+        /// </summary>
+        [Input("status")]
+        public string? Status { get; set; }
+
+        /// <summary>
+        /// Is VM a template (true) or a regular VM (false)
+        /// </summary>
+        [Input("template")]
+        public bool? Template { get; set; }
+
+        /// <summary>
         /// The VM identifier.
         /// </summary>
         [Input("vmId", required: true)]
@@ -90,6 +102,18 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Input("nodeName", required: true)]
         public Input<string> NodeName { get; set; } = null!;
+
+        /// <summary>
+        /// Status of the VM
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// Is VM a template (true) or a regular VM (false)
+        /// </summary>
+        [Input("template")]
+        public Input<bool>? Template { get; set; }
 
         /// <summary>
         /// The VM identifier.
@@ -117,9 +141,17 @@ namespace Pulumi.ProxmoxVE.VM
         public readonly string Name;
         public readonly string NodeName;
         /// <summary>
+        /// Status of the VM
+        /// </summary>
+        public readonly string? Status;
+        /// <summary>
         /// A list of tags of the VM.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// Is VM a template (true) or a regular VM (false)
+        /// </summary>
+        public readonly bool? Template;
         public readonly int VmId;
 
         [OutputConstructor]
@@ -130,14 +162,20 @@ namespace Pulumi.ProxmoxVE.VM
 
             string nodeName,
 
+            string? status,
+
             ImmutableArray<string> tags,
+
+            bool? template,
 
             int vmId)
         {
             Id = id;
             Name = name;
             NodeName = nodeName;
+            Status = status;
             Tags = tags;
+            Template = template;
             VmId = vmId;
         }
     }

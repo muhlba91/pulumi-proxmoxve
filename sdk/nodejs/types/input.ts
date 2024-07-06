@@ -1013,6 +1013,36 @@ export namespace Storage {
 }
 
 export namespace VM {
+    export interface GetVirtualMachinesFilter {
+        /**
+         * Name of the VM attribute to filter on. One of [`name`, `template`, `status`, `nodeName`]
+         */
+        name: string;
+        /**
+         * Treat values as regex patterns
+         */
+        regex?: boolean;
+        /**
+         * List of values to pass the filter. VM's attribute should match at least one value in the list.
+         */
+        values: string[];
+    }
+
+    export interface GetVirtualMachinesFilterArgs {
+        /**
+         * Name of the VM attribute to filter on. One of [`name`, `template`, `status`, `nodeName`]
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Treat values as regex patterns
+         */
+        regex?: pulumi.Input<boolean>;
+        /**
+         * List of values to pass the filter. VM's attribute should match at least one value in the list.
+         */
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface VirtualMachine2Cdrom {
         /**
          * The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.

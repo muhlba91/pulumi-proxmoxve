@@ -6036,14 +6036,133 @@ func (o VirtualMachineVgaPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetVirtualMachinesFilter struct {
+	// Name of the VM attribute to filter on. One of [`name`, `template`, `status`, `nodeName`]
+	Name string `pulumi:"name"`
+	// Treat values as regex patterns
+	Regex *bool `pulumi:"regex"`
+	// List of values to pass the filter. VM's attribute should match at least one value in the list.
+	Values []string `pulumi:"values"`
+}
+
+// GetVirtualMachinesFilterInput is an input type that accepts GetVirtualMachinesFilterArgs and GetVirtualMachinesFilterOutput values.
+// You can construct a concrete instance of `GetVirtualMachinesFilterInput` via:
+//
+//	GetVirtualMachinesFilterArgs{...}
+type GetVirtualMachinesFilterInput interface {
+	pulumi.Input
+
+	ToGetVirtualMachinesFilterOutput() GetVirtualMachinesFilterOutput
+	ToGetVirtualMachinesFilterOutputWithContext(context.Context) GetVirtualMachinesFilterOutput
+}
+
+type GetVirtualMachinesFilterArgs struct {
+	// Name of the VM attribute to filter on. One of [`name`, `template`, `status`, `nodeName`]
+	Name pulumi.StringInput `pulumi:"name"`
+	// Treat values as regex patterns
+	Regex pulumi.BoolPtrInput `pulumi:"regex"`
+	// List of values to pass the filter. VM's attribute should match at least one value in the list.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetVirtualMachinesFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVirtualMachinesFilter)(nil)).Elem()
+}
+
+func (i GetVirtualMachinesFilterArgs) ToGetVirtualMachinesFilterOutput() GetVirtualMachinesFilterOutput {
+	return i.ToGetVirtualMachinesFilterOutputWithContext(context.Background())
+}
+
+func (i GetVirtualMachinesFilterArgs) ToGetVirtualMachinesFilterOutputWithContext(ctx context.Context) GetVirtualMachinesFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualMachinesFilterOutput)
+}
+
+// GetVirtualMachinesFilterArrayInput is an input type that accepts GetVirtualMachinesFilterArray and GetVirtualMachinesFilterArrayOutput values.
+// You can construct a concrete instance of `GetVirtualMachinesFilterArrayInput` via:
+//
+//	GetVirtualMachinesFilterArray{ GetVirtualMachinesFilterArgs{...} }
+type GetVirtualMachinesFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetVirtualMachinesFilterArrayOutput() GetVirtualMachinesFilterArrayOutput
+	ToGetVirtualMachinesFilterArrayOutputWithContext(context.Context) GetVirtualMachinesFilterArrayOutput
+}
+
+type GetVirtualMachinesFilterArray []GetVirtualMachinesFilterInput
+
+func (GetVirtualMachinesFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVirtualMachinesFilter)(nil)).Elem()
+}
+
+func (i GetVirtualMachinesFilterArray) ToGetVirtualMachinesFilterArrayOutput() GetVirtualMachinesFilterArrayOutput {
+	return i.ToGetVirtualMachinesFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetVirtualMachinesFilterArray) ToGetVirtualMachinesFilterArrayOutputWithContext(ctx context.Context) GetVirtualMachinesFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualMachinesFilterArrayOutput)
+}
+
+type GetVirtualMachinesFilterOutput struct{ *pulumi.OutputState }
+
+func (GetVirtualMachinesFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVirtualMachinesFilter)(nil)).Elem()
+}
+
+func (o GetVirtualMachinesFilterOutput) ToGetVirtualMachinesFilterOutput() GetVirtualMachinesFilterOutput {
+	return o
+}
+
+func (o GetVirtualMachinesFilterOutput) ToGetVirtualMachinesFilterOutputWithContext(ctx context.Context) GetVirtualMachinesFilterOutput {
+	return o
+}
+
+// Name of the VM attribute to filter on. One of [`name`, `template`, `status`, `nodeName`]
+func (o GetVirtualMachinesFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualMachinesFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Treat values as regex patterns
+func (o GetVirtualMachinesFilterOutput) Regex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetVirtualMachinesFilter) *bool { return v.Regex }).(pulumi.BoolPtrOutput)
+}
+
+// List of values to pass the filter. VM's attribute should match at least one value in the list.
+func (o GetVirtualMachinesFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVirtualMachinesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetVirtualMachinesFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVirtualMachinesFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVirtualMachinesFilter)(nil)).Elem()
+}
+
+func (o GetVirtualMachinesFilterArrayOutput) ToGetVirtualMachinesFilterArrayOutput() GetVirtualMachinesFilterArrayOutput {
+	return o
+}
+
+func (o GetVirtualMachinesFilterArrayOutput) ToGetVirtualMachinesFilterArrayOutputWithContext(ctx context.Context) GetVirtualMachinesFilterArrayOutput {
+	return o
+}
+
+func (o GetVirtualMachinesFilterArrayOutput) Index(i pulumi.IntInput) GetVirtualMachinesFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVirtualMachinesFilter {
+		return vs[0].([]GetVirtualMachinesFilter)[vs[1].(int)]
+	}).(GetVirtualMachinesFilterOutput)
+}
+
 type GetVirtualMachinesVm struct {
 	// The virtual machine name.
 	Name string `pulumi:"name"`
-	// The node name.
+	// The node name. All cluster nodes will be queried in case this is omitted
 	NodeName string `pulumi:"nodeName"`
+	// Status of the VM
+	Status *string `pulumi:"status"`
 	// A list of tags to filter the VMs. The VM must have all
 	// the tags to be included in the result.
 	Tags []string `pulumi:"tags"`
+	// Is VM a template (true) or a regular VM (false)
+	Template *bool `pulumi:"template"`
 	// The VM identifier.
 	VmId int `pulumi:"vmId"`
 }
@@ -6062,11 +6181,15 @@ type GetVirtualMachinesVmInput interface {
 type GetVirtualMachinesVmArgs struct {
 	// The virtual machine name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The node name.
+	// The node name. All cluster nodes will be queried in case this is omitted
 	NodeName pulumi.StringInput `pulumi:"nodeName"`
+	// Status of the VM
+	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A list of tags to filter the VMs. The VM must have all
 	// the tags to be included in the result.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// Is VM a template (true) or a regular VM (false)
+	Template pulumi.BoolPtrInput `pulumi:"template"`
 	// The VM identifier.
 	VmId pulumi.IntInput `pulumi:"vmId"`
 }
@@ -6127,15 +6250,25 @@ func (o GetVirtualMachinesVmOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVirtualMachinesVm) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The node name.
+// The node name. All cluster nodes will be queried in case this is omitted
 func (o GetVirtualMachinesVmOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVirtualMachinesVm) string { return v.NodeName }).(pulumi.StringOutput)
+}
+
+// Status of the VM
+func (o GetVirtualMachinesVmOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVirtualMachinesVm) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
 // A list of tags to filter the VMs. The VM must have all
 // the tags to be included in the result.
 func (o GetVirtualMachinesVmOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetVirtualMachinesVm) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Is VM a template (true) or a regular VM (false)
+func (o GetVirtualMachinesVmOutput) Template() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetVirtualMachinesVm) *bool { return v.Template }).(pulumi.BoolPtrOutput)
 }
 
 // The VM identifier.
@@ -6224,6 +6357,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineUsbArrayInput)(nil)).Elem(), VirtualMachineUsbArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineVgaInput)(nil)).Elem(), VirtualMachineVgaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineVgaPtrInput)(nil)).Elem(), VirtualMachineVgaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachinesFilterInput)(nil)).Elem(), GetVirtualMachinesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachinesFilterArrayInput)(nil)).Elem(), GetVirtualMachinesFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachinesVmInput)(nil)).Elem(), GetVirtualMachinesVmArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachinesVmArrayInput)(nil)).Elem(), GetVirtualMachinesVmArray{})
 	pulumi.RegisterOutputType(VirtualMachine2CdromOutput{})
@@ -6286,6 +6421,8 @@ func init() {
 	pulumi.RegisterOutputType(VirtualMachineUsbArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachineVgaOutput{})
 	pulumi.RegisterOutputType(VirtualMachineVgaPtrOutput{})
+	pulumi.RegisterOutputType(GetVirtualMachinesFilterOutput{})
+	pulumi.RegisterOutputType(GetVirtualMachinesFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetVirtualMachinesVmOutput{})
 	pulumi.RegisterOutputType(GetVirtualMachinesVmArrayOutput{})
 }

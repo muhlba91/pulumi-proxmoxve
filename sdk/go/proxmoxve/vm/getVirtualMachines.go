@@ -35,6 +35,44 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			_, err = VM.GetVirtualMachines(ctx, &vm.GetVirtualMachinesArgs{
+//				Filters: []vm.GetVirtualMachinesFilter{
+//					{
+//						Name: "template",
+//						Values: []string{
+//							"true",
+//						},
+//					},
+//					{
+//						Name: "status",
+//						Values: []string{
+//							"stopped",
+//						},
+//					},
+//					{
+//						Name:  "name",
+//						Regex: pulumi.BoolRef(true),
+//						Values: []string{
+//							"^ubuntu-20.*$",
+//						},
+//					},
+//					{
+//						Name:  "node_name",
+//						Regex: pulumi.BoolRef(true),
+//						Values: []string{
+//							"node_us_[1-3]",
+//							"node_eu_[1-3]",
+//						},
+//					},
+//				},
+//				Tags: []string{
+//					"template",
+//					"latest",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -52,7 +90,9 @@ func GetVirtualMachines(ctx *pulumi.Context, args *GetVirtualMachinesArgs, opts 
 
 // A collection of arguments for invoking getVirtualMachines.
 type GetVirtualMachinesArgs struct {
-	// The node name.
+	// Filter blocks. The VM must satisfy all filter blocks to be included in the result.
+	Filters []GetVirtualMachinesFilter `pulumi:"filters"`
+	// The node name. All cluster nodes will be queried in case this is omitted
 	NodeName *string `pulumi:"nodeName"`
 	// A list of tags to filter the VMs. The VM must have all
 	// the tags to be included in the result.
@@ -61,6 +101,7 @@ type GetVirtualMachinesArgs struct {
 
 // A collection of values returned by getVirtualMachines.
 type GetVirtualMachinesResult struct {
+	Filters []GetVirtualMachinesFilter `pulumi:"filters"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The node name.
@@ -86,7 +127,9 @@ func GetVirtualMachinesOutput(ctx *pulumi.Context, args GetVirtualMachinesOutput
 
 // A collection of arguments for invoking getVirtualMachines.
 type GetVirtualMachinesOutputArgs struct {
-	// The node name.
+	// Filter blocks. The VM must satisfy all filter blocks to be included in the result.
+	Filters GetVirtualMachinesFilterArrayInput `pulumi:"filters"`
+	// The node name. All cluster nodes will be queried in case this is omitted
 	NodeName pulumi.StringPtrInput `pulumi:"nodeName"`
 	// A list of tags to filter the VMs. The VM must have all
 	// the tags to be included in the result.
@@ -110,6 +153,10 @@ func (o GetVirtualMachinesResultOutput) ToGetVirtualMachinesResultOutput() GetVi
 
 func (o GetVirtualMachinesResultOutput) ToGetVirtualMachinesResultOutputWithContext(ctx context.Context) GetVirtualMachinesResultOutput {
 	return o
+}
+
+func (o GetVirtualMachinesResultOutput) Filters() GetVirtualMachinesFilterArrayOutput {
+	return o.ApplyT(func(v GetVirtualMachinesResult) []GetVirtualMachinesFilter { return v.Filters }).(GetVirtualMachinesFilterArrayOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

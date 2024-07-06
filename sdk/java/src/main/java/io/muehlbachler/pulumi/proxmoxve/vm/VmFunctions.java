@@ -221,6 +221,33 @@ public final class VMFunctions {
      *             .tags("ubuntu")
      *             .build());
      * 
+     *         final var ubuntuTemplates = VMFunctions.getVirtualMachines(GetVirtualMachinesArgs.builder()
+     *             .filters(            
+     *                 GetVirtualMachinesFilterArgs.builder()
+     *                     .name("template")
+     *                     .values(true)
+     *                     .build(),
+     *                 GetVirtualMachinesFilterArgs.builder()
+     *                     .name("status")
+     *                     .values("stopped")
+     *                     .build(),
+     *                 GetVirtualMachinesFilterArgs.builder()
+     *                     .name("name")
+     *                     .regex(true)
+     *                     .values("^ubuntu-20.*$")
+     *                     .build(),
+     *                 GetVirtualMachinesFilterArgs.builder()
+     *                     .name("node_name")
+     *                     .regex(true)
+     *                     .values(                    
+     *                         "node_us_[1-3]",
+     *                         "node_eu_[1-3]")
+     *                     .build())
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
+     *             .build());
+     * 
      *     }
      * }
      * }
@@ -261,6 +288,33 @@ public final class VMFunctions {
      *     public static void stack(Context ctx) {
      *         final var ubuntuVms = VMFunctions.getVirtualMachines(GetVirtualMachinesArgs.builder()
      *             .tags("ubuntu")
+     *             .build());
+     * 
+     *         final var ubuntuTemplates = VMFunctions.getVirtualMachines(GetVirtualMachinesArgs.builder()
+     *             .filters(            
+     *                 GetVirtualMachinesFilterArgs.builder()
+     *                     .name("template")
+     *                     .values(true)
+     *                     .build(),
+     *                 GetVirtualMachinesFilterArgs.builder()
+     *                     .name("status")
+     *                     .values("stopped")
+     *                     .build(),
+     *                 GetVirtualMachinesFilterArgs.builder()
+     *                     .name("name")
+     *                     .regex(true)
+     *                     .values("^ubuntu-20.*$")
+     *                     .build(),
+     *                 GetVirtualMachinesFilterArgs.builder()
+     *                     .name("node_name")
+     *                     .regex(true)
+     *                     .values(                    
+     *                         "node_us_[1-3]",
+     *                         "node_eu_[1-3]")
+     *                     .build())
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
      *             .build());
      * 
      *     }
@@ -305,6 +359,33 @@ public final class VMFunctions {
      *             .tags("ubuntu")
      *             .build());
      * 
+     *         final var ubuntuTemplates = VMFunctions.getVirtualMachines(GetVirtualMachinesArgs.builder()
+     *             .filters(            
+     *                 GetVirtualMachinesFilterArgs.builder()
+     *                     .name("template")
+     *                     .values(true)
+     *                     .build(),
+     *                 GetVirtualMachinesFilterArgs.builder()
+     *                     .name("status")
+     *                     .values("stopped")
+     *                     .build(),
+     *                 GetVirtualMachinesFilterArgs.builder()
+     *                     .name("name")
+     *                     .regex(true)
+     *                     .values("^ubuntu-20.*$")
+     *                     .build(),
+     *                 GetVirtualMachinesFilterArgs.builder()
+     *                     .name("node_name")
+     *                     .regex(true)
+     *                     .values(                    
+     *                         "node_us_[1-3]",
+     *                         "node_eu_[1-3]")
+     *                     .build())
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
+     *             .build());
+     * 
      *     }
      * }
      * }
@@ -345,6 +426,33 @@ public final class VMFunctions {
      *     public static void stack(Context ctx) {
      *         final var ubuntuVms = VMFunctions.getVirtualMachines(GetVirtualMachinesArgs.builder()
      *             .tags("ubuntu")
+     *             .build());
+     * 
+     *         final var ubuntuTemplates = VMFunctions.getVirtualMachines(GetVirtualMachinesArgs.builder()
+     *             .filters(            
+     *                 GetVirtualMachinesFilterArgs.builder()
+     *                     .name("template")
+     *                     .values(true)
+     *                     .build(),
+     *                 GetVirtualMachinesFilterArgs.builder()
+     *                     .name("status")
+     *                     .values("stopped")
+     *                     .build(),
+     *                 GetVirtualMachinesFilterArgs.builder()
+     *                     .name("name")
+     *                     .regex(true)
+     *                     .values("^ubuntu-20.*$")
+     *                     .build(),
+     *                 GetVirtualMachinesFilterArgs.builder()
+     *                     .name("node_name")
+     *                     .regex(true)
+     *                     .values(                    
+     *                         "node_us_[1-3]",
+     *                         "node_eu_[1-3]")
+     *                     .build())
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
      *             .build());
      * 
      *     }
@@ -389,6 +497,33 @@ public final class VMFunctions {
      *             .tags("ubuntu")
      *             .build());
      * 
+     *         final var ubuntuTemplates = VMFunctions.getVirtualMachines(GetVirtualMachinesArgs.builder()
+     *             .filters(            
+     *                 GetVirtualMachinesFilterArgs.builder()
+     *                     .name("template")
+     *                     .values(true)
+     *                     .build(),
+     *                 GetVirtualMachinesFilterArgs.builder()
+     *                     .name("status")
+     *                     .values("stopped")
+     *                     .build(),
+     *                 GetVirtualMachinesFilterArgs.builder()
+     *                     .name("name")
+     *                     .regex(true)
+     *                     .values("^ubuntu-20.*$")
+     *                     .build(),
+     *                 GetVirtualMachinesFilterArgs.builder()
+     *                     .name("node_name")
+     *                     .regex(true)
+     *                     .values(                    
+     *                         "node_us_[1-3]",
+     *                         "node_eu_[1-3]")
+     *                     .build())
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
+     *             .build());
+     * 
      *     }
      * }
      * }
@@ -429,6 +564,33 @@ public final class VMFunctions {
      *     public static void stack(Context ctx) {
      *         final var ubuntuVms = VMFunctions.getVirtualMachines(GetVirtualMachinesArgs.builder()
      *             .tags("ubuntu")
+     *             .build());
+     * 
+     *         final var ubuntuTemplates = VMFunctions.getVirtualMachines(GetVirtualMachinesArgs.builder()
+     *             .filters(            
+     *                 GetVirtualMachinesFilterArgs.builder()
+     *                     .name("template")
+     *                     .values(true)
+     *                     .build(),
+     *                 GetVirtualMachinesFilterArgs.builder()
+     *                     .name("status")
+     *                     .values("stopped")
+     *                     .build(),
+     *                 GetVirtualMachinesFilterArgs.builder()
+     *                     .name("name")
+     *                     .regex(true)
+     *                     .values("^ubuntu-20.*$")
+     *                     .build(),
+     *                 GetVirtualMachinesFilterArgs.builder()
+     *                     .name("node_name")
+     *                     .regex(true)
+     *                     .values(                    
+     *                         "node_us_[1-3]",
+     *                         "node_eu_[1-3]")
+     *                     .build())
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
      *             .build());
      * 
      *     }

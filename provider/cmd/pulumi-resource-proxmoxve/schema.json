@@ -1943,6 +1943,30 @@
             },
             "type": "object"
         },
+        "proxmoxve:VM/getVirtualMachinesFilter:getVirtualMachinesFilter": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Name of the VM attribute to filter on. One of [`name`, `template`, `status`, `node_name`]\n"
+                },
+                "regex": {
+                    "type": "boolean",
+                    "description": "Treat values as regex patterns\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of values to pass the filter. VM's attribute should match at least one value in the list.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "values"
+            ]
+        },
         "proxmoxve:VM/getVirtualMachinesVm:getVirtualMachinesVm": {
             "properties": {
                 "name": {
@@ -1951,7 +1975,11 @@
                 },
                 "nodeName": {
                     "type": "string",
-                    "description": "The node name.\n"
+                    "description": "The node name. All cluster nodes will be queried in case this is omitted\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Status of the VM\n"
                 },
                 "tags": {
                     "type": "array",
@@ -1959,6 +1987,10 @@
                         "type": "string"
                     },
                     "description": "A list of tags to filter the VMs. The VM must have all\nthe tags to be included in the result.\n"
+                },
+                "template": {
+                    "type": "boolean",
+                    "description": "Is VM a template (true) or a regular VM (false)\n"
                 },
                 "vmId": {
                     "type": "integer",
@@ -2507,6 +2539,246 @@
         }
     },
     "resources": {
+        "proxmoxve:Apt/repository:Repository": {
+            "description": "Manages an APT repository of a Proxmox VE node.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst example = new proxmoxve.apt.Repository(\"example\", {\n    enabled: true,\n    filePath: \"/etc/apt/sources.list\",\n    index: 0,\n    node: \"pve\",\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample = proxmoxve.apt.Repository(\"example\",\n    enabled=True,\n    file_path=\"/etc/apt/sources.list\",\n    index=0,\n    node=\"pve\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new ProxmoxVE.Apt.Repository(\"example\", new()\n    {\n        Enabled = true,\n        FilePath = \"/etc/apt/sources.list\",\n        Index = 0,\n        Node = \"pve\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Apt\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Apt.NewRepository(ctx, \"example\", \u0026Apt.RepositoryArgs{\n\t\t\tEnabled:  pulumi.Bool(true),\n\t\t\tFilePath: pulumi.String(\"/etc/apt/sources.list\"),\n\t\t\tIndex:    pulumi.Int(0),\n\t\t\tNode:     pulumi.String(\"pve\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Apt.Repository;\nimport com.pulumi.proxmoxve.Apt.RepositoryArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Repository(\"example\", RepositoryArgs.builder()\n            .enabled(true)\n            .filePath(\"/etc/apt/sources.list\")\n            .index(0)\n            .node(\"pve\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: proxmoxve:Apt:Repository\n    properties:\n      enabled: true\n      filePath: /etc/apt/sources.list\n      index: 0\n      node: pve\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n#!/usr/bin/env sh\n\nAn APT repository can be imported using a comma-separated list consisting of the name of the Proxmox VE node,\n\nthe absolute source list file path, and the index in the exact same order, e.g.:\n\n```sh\n$ pulumi import proxmoxve:Apt/repository:Repository example pve,/etc/apt/sources.list,0\n```\n\n",
+            "properties": {
+                "comment": {
+                    "type": "string",
+                    "description": "The associated comment.\n"
+                },
+                "components": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of components.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Indicates the activation status.\n"
+                },
+                "filePath": {
+                    "type": "string",
+                    "description": "The absolute path of the source list file that contains this repository.\n"
+                },
+                "fileType": {
+                    "type": "string",
+                    "description": "The format of the defining source list file.\n"
+                },
+                "index": {
+                    "type": "integer",
+                    "description": "The index within the defining source list file.\n"
+                },
+                "node": {
+                    "type": "string",
+                    "description": "The name of the target Proxmox VE node.\n"
+                },
+                "packageTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of package types.\n"
+                },
+                "suites": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of package distributions.\n"
+                },
+                "uris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of repository URIs.\n"
+                }
+            },
+            "required": [
+                "comment",
+                "components",
+                "enabled",
+                "filePath",
+                "fileType",
+                "index",
+                "node",
+                "packageTypes",
+                "suites",
+                "uris"
+            ],
+            "inputProperties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Indicates the activation status.\n"
+                },
+                "filePath": {
+                    "type": "string",
+                    "description": "The absolute path of the source list file that contains this repository.\n"
+                },
+                "index": {
+                    "type": "integer",
+                    "description": "The index within the defining source list file.\n"
+                },
+                "node": {
+                    "type": "string",
+                    "description": "The name of the target Proxmox VE node.\n"
+                }
+            },
+            "requiredInputs": [
+                "filePath",
+                "index",
+                "node"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Repository resources.\n",
+                "properties": {
+                    "comment": {
+                        "type": "string",
+                        "description": "The associated comment.\n"
+                    },
+                    "components": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of components.\n"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Indicates the activation status.\n"
+                    },
+                    "filePath": {
+                        "type": "string",
+                        "description": "The absolute path of the source list file that contains this repository.\n"
+                    },
+                    "fileType": {
+                        "type": "string",
+                        "description": "The format of the defining source list file.\n"
+                    },
+                    "index": {
+                        "type": "integer",
+                        "description": "The index within the defining source list file.\n"
+                    },
+                    "node": {
+                        "type": "string",
+                        "description": "The name of the target Proxmox VE node.\n"
+                    },
+                    "packageTypes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of package types.\n"
+                    },
+                    "suites": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of package distributions.\n"
+                    },
+                    "uris": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of repository URIs.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "proxmoxve:Apt/standard/repository:Repository": {
+            "description": "Manages an APT standard repository of a Proxmox VE node.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst exampleRepository = new proxmoxve.apt.standard.Repository(\"exampleRepository\", {\n    handle: \"no-subscription\",\n    node: \"pve\",\n});\nconst exampleApt_repositoryRepository = new proxmoxve.apt.Repository(\"exampleApt/repositoryRepository\", {\n    enabled: true,\n    filePath: exampleRepository.filePath,\n    index: exampleRepository.index,\n    node: exampleRepository.node,\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample_repository = proxmoxve.apt.standard.Repository(\"exampleRepository\",\n    handle=\"no-subscription\",\n    node=\"pve\")\nexample_apt_repository_repository = proxmoxve.apt.Repository(\"exampleApt/repositoryRepository\",\n    enabled=True,\n    file_path=example_repository.file_path,\n    index=example_repository.index,\n    node=example_repository.node)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleRepository = new ProxmoxVE.Apt.Standard.Repository(\"exampleRepository\", new()\n    {\n        Handle = \"no-subscription\",\n        Node = \"pve\",\n    });\n\n    var exampleApt_repositoryRepository = new ProxmoxVE.Apt.Repository(\"exampleApt/repositoryRepository\", new()\n    {\n        Enabled = true,\n        FilePath = exampleRepository.FilePath,\n        Index = exampleRepository.Index,\n        Node = exampleRepository.Node,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Apt\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleRepository, err := Apt.NewRepository(ctx, \"exampleRepository\", \u0026Apt.RepositoryArgs{\n\t\t\tHandle: pulumi.String(\"no-subscription\"),\n\t\t\tNode:   pulumi.String(\"pve\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = Apt.NewRepository(ctx, \"exampleApt/repositoryRepository\", \u0026Apt.RepositoryArgs{\n\t\t\tEnabled:  pulumi.Bool(true),\n\t\t\tFilePath: exampleRepository.FilePath,\n\t\t\tIndex:    exampleRepository.Index,\n\t\t\tNode:     exampleRepository.Node,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Apt.Repository;\nimport com.pulumi.proxmoxve.Apt.RepositoryArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleRepository = new Repository(\"exampleRepository\", RepositoryArgs.builder()\n            .handle(\"no-subscription\")\n            .node(\"pve\")\n            .build());\n\n        var exampleApt_repositoryRepository = new Repository(\"exampleApt/repositoryRepository\", RepositoryArgs.builder()\n            .enabled(true)\n            .filePath(exampleRepository.filePath())\n            .index(exampleRepository.index())\n            .node(exampleRepository.node())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleRepository:\n    type: proxmoxve:Apt/standard:Repository\n    properties:\n      handle: no-subscription\n      node: pve\n  exampleApt/repositoryRepository:\n    type: proxmoxve:Apt:Repository\n    properties:\n      enabled: true\n      filePath: ${exampleRepository.filePath}\n      index: ${exampleRepository.index}\n      node: ${exampleRepository.node}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n#!/usr/bin/env sh\n\nAn APT standard repository can be imported using a comma-separated list consisting of the name of the Proxmox VE node,\n\nand the standard repository handle in the exact same order, e.g.:\n\n```sh\n$ pulumi import proxmoxve:Apt/standard/repository:Repository example pve,no-subscription\n```\n\n",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the APT standard repository.\n"
+                },
+                "filePath": {
+                    "type": "string",
+                    "description": "The absolute path of the source list file that contains this standard repository.\n"
+                },
+                "handle": {
+                    "type": "string",
+                    "description": "The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `enterprise` | `no-subscription` | `test`.\n"
+                },
+                "index": {
+                    "type": "integer",
+                    "description": "The index within the defining source list file.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the APT standard repository.\n"
+                },
+                "node": {
+                    "type": "string",
+                    "description": "The name of the target Proxmox VE node.\n"
+                },
+                "status": {
+                    "type": "integer",
+                    "description": "Indicates the activation status.\n"
+                }
+            },
+            "required": [
+                "description",
+                "filePath",
+                "handle",
+                "index",
+                "name",
+                "node",
+                "status"
+            ],
+            "inputProperties": {
+                "handle": {
+                    "type": "string",
+                    "description": "The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `enterprise` | `no-subscription` | `test`.\n"
+                },
+                "node": {
+                    "type": "string",
+                    "description": "The name of the target Proxmox VE node.\n"
+                }
+            },
+            "requiredInputs": [
+                "handle",
+                "node"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Repository resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the APT standard repository.\n"
+                    },
+                    "filePath": {
+                        "type": "string",
+                        "description": "The absolute path of the source list file that contains this standard repository.\n"
+                    },
+                    "handle": {
+                        "type": "string",
+                        "description": "The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `enterprise` | `no-subscription` | `test`.\n"
+                    },
+                    "index": {
+                        "type": "integer",
+                        "description": "The index within the defining source list file.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the APT standard repository.\n"
+                    },
+                    "node": {
+                        "type": "string",
+                        "description": "The name of the target Proxmox VE node.\n"
+                    },
+                    "status": {
+                        "type": "integer",
+                        "description": "Indicates the activation status.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "proxmoxve:CT/container:Container": {
             "description": "Manages a container.\n\n## Import\n\nInstances can be imported using the `node_name` and the `vm_id`, e.g.,\n\nbash\n\n```sh\n$ pulumi import proxmoxve:CT/container:Container ubuntu_container first-node/1234\n```\n\n",
             "properties": {
@@ -6852,6 +7124,176 @@
         }
     },
     "functions": {
+        "proxmoxve:Apt/getRepository:getRepository": {
+            "description": "Retrieves an APT repository from a Proxmox VE cluster.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@pulumi/proxmoxve\";\n\nconst example = proxmoxve.Apt.getRepository({\n    filePath: \"/etc/apt/sources.list\",\n    index: 0,\n    node: \"pve\",\n});\nexport const proxmoxVirtualEnvironmentAptRepository = example;\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample = proxmoxve.Apt.get_repository(file_path=\"/etc/apt/sources.list\",\n    index=0,\n    node=\"pve\")\npulumi.export(\"proxmoxVirtualEnvironmentAptRepository\", example)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = ProxmoxVE.Apt.GetRepository.Invoke(new()\n    {\n        FilePath = \"/etc/apt/sources.list\",\n        Index = 0,\n        Node = \"pve\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"proxmoxVirtualEnvironmentAptRepository\"] = example,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Apt\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := Apt.GetRepository(ctx, \u0026apt.GetRepositoryArgs{\n\t\t\tFilePath: \"/etc/apt/sources.list\",\n\t\t\tIndex:    0,\n\t\t\tNode:     \"pve\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"proxmoxVirtualEnvironmentAptRepository\", example)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Apt.AptFunctions;\nimport com.pulumi.proxmoxve.Apt.inputs.GetRepositoryArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = AptFunctions.getRepository(GetRepositoryArgs.builder()\n            .filePath(\"/etc/apt/sources.list\")\n            .index(0)\n            .node(\"pve\")\n            .build());\n\n        ctx.export(\"proxmoxVirtualEnvironmentAptRepository\", example.applyValue(getRepositoryResult -\u003e getRepositoryResult));\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: proxmoxve:Apt:getRepository\n      Arguments:\n        filePath: /etc/apt/sources.list\n        index: 0\n        node: pve\noutputs:\n  proxmoxVirtualEnvironmentAptRepository: ${example}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getRepository.\n",
+                "properties": {
+                    "filePath": {
+                        "type": "string",
+                        "description": "The absolute path of the source list file that contains this repository.\n"
+                    },
+                    "index": {
+                        "type": "integer",
+                        "description": "The index within the defining source list file.\n"
+                    },
+                    "node": {
+                        "type": "string",
+                        "description": "The name of the target Proxmox VE node.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "filePath",
+                    "index",
+                    "node"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getRepository.\n",
+                "properties": {
+                    "comment": {
+                        "type": "string",
+                        "description": "The associated comment.\n"
+                    },
+                    "components": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of components.\n"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Indicates the activation status.\n"
+                    },
+                    "filePath": {
+                        "type": "string",
+                        "description": "The absolute path of the source list file that contains this repository.\n"
+                    },
+                    "fileType": {
+                        "type": "string",
+                        "description": "The format of the defining source list file.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of this APT repository data source.\n"
+                    },
+                    "index": {
+                        "type": "integer",
+                        "description": "The index within the defining source list file.\n"
+                    },
+                    "node": {
+                        "type": "string",
+                        "description": "The name of the target Proxmox VE node.\n"
+                    },
+                    "packageTypes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of package types.\n"
+                    },
+                    "suites": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of package distributions.\n"
+                    },
+                    "uris": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of repository URIs.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "comment",
+                    "components",
+                    "enabled",
+                    "filePath",
+                    "fileType",
+                    "id",
+                    "index",
+                    "node",
+                    "packageTypes",
+                    "suites",
+                    "uris"
+                ]
+            }
+        },
+        "proxmoxve:Apt/standard/getRepository:getRepository": {
+            "description": "Retrieves an APT standard repository from a Proxmox VE cluster.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@pulumi/proxmoxve\";\n\nconst example = proxmoxve.Apt.standard.getRepository({\n    handle: \"no-subscription\",\n    node: \"pve\",\n});\nexport const proxmoxVirtualEnvironmentAptStandardRepository = example;\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample = proxmoxve.Apt.standard.get_repository(handle=\"no-subscription\",\n    node=\"pve\")\npulumi.export(\"proxmoxVirtualEnvironmentAptStandardRepository\", example)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = ProxmoxVE.Apt.Standard.GetRepository.Invoke(new()\n    {\n        Handle = \"no-subscription\",\n        Node = \"pve\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"proxmoxVirtualEnvironmentAptStandardRepository\"] = example,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Apt\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := Apt.GetRepository(ctx, \u0026standard.GetRepositoryArgs{\n\t\t\tHandle: \"no-subscription\",\n\t\t\tNode:   \"pve\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"proxmoxVirtualEnvironmentAptStandardRepository\", example)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Apt_standard.Apt_standardFunctions;\nimport com.pulumi.proxmoxve.Apt.inputs.GetRepositoryArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = Apt/standardFunctions.getRepository(GetRepositoryArgs.builder()\n            .handle(\"no-subscription\")\n            .node(\"pve\")\n            .build());\n\n        ctx.export(\"proxmoxVirtualEnvironmentAptStandardRepository\", example.applyValue(getRepositoryResult -\u003e getRepositoryResult));\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: proxmoxve:Apt/standard:getRepository\n      Arguments:\n        handle: no-subscription\n        node: pve\noutputs:\n  proxmoxVirtualEnvironmentAptStandardRepository: ${example}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getRepository.\n",
+                "properties": {
+                    "handle": {
+                        "type": "string",
+                        "description": "The handle of the APT standard repository.\n"
+                    },
+                    "node": {
+                        "type": "string",
+                        "description": "The name of the target Proxmox VE node.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "handle",
+                    "node"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getRepository.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the APT standard repository.\n"
+                    },
+                    "filePath": {
+                        "type": "string",
+                        "description": "The absolute path of the source list file that contains this standard repository.\n"
+                    },
+                    "handle": {
+                        "type": "string",
+                        "description": "The handle of the APT standard repository.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of this APT standard repository data source.\n"
+                    },
+                    "index": {
+                        "type": "integer",
+                        "description": "The index within the defining source list file.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the APT standard repository.\n"
+                    },
+                    "node": {
+                        "type": "string",
+                        "description": "The name of the target Proxmox VE node.\n"
+                    },
+                    "status": {
+                        "type": "integer",
+                        "description": "Indicates the activation status.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "description",
+                    "filePath",
+                    "handle",
+                    "id",
+                    "index",
+                    "name",
+                    "node",
+                    "status"
+                ]
+            }
+        },
         "proxmoxve:Cluster/getNodes:getNodes": {
             "description": "Retrieves information about all available nodes.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@pulumi/proxmoxve\";\n\nconst availableNodes = proxmoxve.Cluster.getNodes({});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\navailable_nodes = proxmoxve.Cluster.get_nodes()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var availableNodes = ProxmoxVE.Cluster.GetNodes.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Cluster\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Cluster.GetNodes(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Cluster.ClusterFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var availableNodes = ClusterFunctions.getNodes();\n\n    }\n}\n```\n```yaml\nvariables:\n  availableNodes:\n    fn::invoke:\n      Function: proxmoxve:Cluster:getNodes\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "outputs": {
@@ -8002,6 +8444,14 @@
                         "type": "string",
                         "description": "The node name.\n"
                     },
+                    "status": {
+                        "type": "string",
+                        "description": "Status of the VM\n"
+                    },
+                    "template": {
+                        "type": "boolean",
+                        "description": "Is VM a template (true) or a regular VM (false)\n"
+                    },
                     "vmId": {
                         "type": "integer",
                         "description": "The VM identifier.\n"
@@ -8027,12 +8477,20 @@
                     "nodeName": {
                         "type": "string"
                     },
+                    "status": {
+                        "type": "string",
+                        "description": "Status of the VM\n"
+                    },
                     "tags": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
                         "description": "A list of tags of the VM.\n"
+                    },
+                    "template": {
+                        "type": "boolean",
+                        "description": "Is VM a template (true) or a regular VM (false)\n"
                     },
                     "vmId": {
                         "type": "integer"
@@ -8049,13 +8507,20 @@
             }
         },
         "proxmoxve:VM/getVirtualMachines:getVirtualMachines": {
-            "description": "Retrieves information about all VMs in the Proxmox cluster.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@pulumi/proxmoxve\";\n\nconst ubuntuVms = proxmoxve.VM.getVirtualMachines({\n    tags: [\"ubuntu\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nubuntu_vms = proxmoxve.VM.get_virtual_machines(tags=[\"ubuntu\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var ubuntuVms = ProxmoxVE.VM.GetVirtualMachines.Invoke(new()\n    {\n        Tags = new[]\n        {\n            \"ubuntu\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/VM\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := VM.GetVirtualMachines(ctx, \u0026vm.GetVirtualMachinesArgs{\n\t\t\tTags: []string{\n\t\t\t\t\"ubuntu\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.VM.VMFunctions;\nimport com.pulumi.proxmoxve.VM.inputs.GetVirtualMachinesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var ubuntuVms = VMFunctions.getVirtualMachines(GetVirtualMachinesArgs.builder()\n            .tags(\"ubuntu\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  ubuntuVms:\n    fn::invoke:\n      Function: proxmoxve:VM:getVirtualMachines\n      Arguments:\n        tags:\n          - ubuntu\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Retrieves information about all VMs in the Proxmox cluster.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@pulumi/proxmoxve\";\n\nconst ubuntuVms = proxmoxve.VM.getVirtualMachines({\n    tags: [\"ubuntu\"],\n});\nconst ubuntuTemplates = proxmoxve.VM.getVirtualMachines({\n    filters: [\n        {\n            name: \"template\",\n            values: [\"true\"],\n        },\n        {\n            name: \"status\",\n            values: [\"stopped\"],\n        },\n        {\n            name: \"name\",\n            regex: true,\n            values: [\"^ubuntu-20.*$\"],\n        },\n        {\n            name: \"node_name\",\n            regex: true,\n            values: [\n                \"node_us_[1-3]\",\n                \"node_eu_[1-3]\",\n            ],\n        },\n    ],\n    tags: [\n        \"template\",\n        \"latest\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nubuntu_vms = proxmoxve.VM.get_virtual_machines(tags=[\"ubuntu\"])\nubuntu_templates = proxmoxve.VM.get_virtual_machines(filters=[\n        proxmoxve.vm.GetVirtualMachinesFilterArgs(\n            name=\"template\",\n            values=[\"true\"],\n        ),\n        proxmoxve.vm.GetVirtualMachinesFilterArgs(\n            name=\"status\",\n            values=[\"stopped\"],\n        ),\n        proxmoxve.vm.GetVirtualMachinesFilterArgs(\n            name=\"name\",\n            regex=True,\n            values=[\"^ubuntu-20.*$\"],\n        ),\n        proxmoxve.vm.GetVirtualMachinesFilterArgs(\n            name=\"node_name\",\n            regex=True,\n            values=[\n                \"node_us_[1-3]\",\n                \"node_eu_[1-3]\",\n            ],\n        ),\n    ],\n    tags=[\n        \"template\",\n        \"latest\",\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var ubuntuVms = ProxmoxVE.VM.GetVirtualMachines.Invoke(new()\n    {\n        Tags = new[]\n        {\n            \"ubuntu\",\n        },\n    });\n\n    var ubuntuTemplates = ProxmoxVE.VM.GetVirtualMachines.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new ProxmoxVE.VM.Inputs.GetVirtualMachinesFilterInputArgs\n            {\n                Name = \"template\",\n                Values = new[]\n                {\n                    \"true\",\n                },\n            },\n            new ProxmoxVE.VM.Inputs.GetVirtualMachinesFilterInputArgs\n            {\n                Name = \"status\",\n                Values = new[]\n                {\n                    \"stopped\",\n                },\n            },\n            new ProxmoxVE.VM.Inputs.GetVirtualMachinesFilterInputArgs\n            {\n                Name = \"name\",\n                Regex = true,\n                Values = new[]\n                {\n                    \"^ubuntu-20.*$\",\n                },\n            },\n            new ProxmoxVE.VM.Inputs.GetVirtualMachinesFilterInputArgs\n            {\n                Name = \"node_name\",\n                Regex = true,\n                Values = new[]\n                {\n                    \"node_us_[1-3]\",\n                    \"node_eu_[1-3]\",\n                },\n            },\n        },\n        Tags = new[]\n        {\n            \"template\",\n            \"latest\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/VM\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := VM.GetVirtualMachines(ctx, \u0026vm.GetVirtualMachinesArgs{\n\t\t\tTags: []string{\n\t\t\t\t\"ubuntu\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = VM.GetVirtualMachines(ctx, \u0026vm.GetVirtualMachinesArgs{\n\t\t\tFilters: []vm.GetVirtualMachinesFilter{\n\t\t\t\t{\n\t\t\t\t\tName: \"template\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"true\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\tName: \"status\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"stopped\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\tName:  \"name\",\n\t\t\t\t\tRegex: pulumi.BoolRef(true),\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"^ubuntu-20.*$\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\tName:  \"node_name\",\n\t\t\t\t\tRegex: pulumi.BoolRef(true),\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"node_us_[1-3]\",\n\t\t\t\t\t\t\"node_eu_[1-3]\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tTags: []string{\n\t\t\t\t\"template\",\n\t\t\t\t\"latest\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.VM.VMFunctions;\nimport com.pulumi.proxmoxve.VM.inputs.GetVirtualMachinesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var ubuntuVms = VMFunctions.getVirtualMachines(GetVirtualMachinesArgs.builder()\n            .tags(\"ubuntu\")\n            .build());\n\n        final var ubuntuTemplates = VMFunctions.getVirtualMachines(GetVirtualMachinesArgs.builder()\n            .filters(            \n                GetVirtualMachinesFilterArgs.builder()\n                    .name(\"template\")\n                    .values(true)\n                    .build(),\n                GetVirtualMachinesFilterArgs.builder()\n                    .name(\"status\")\n                    .values(\"stopped\")\n                    .build(),\n                GetVirtualMachinesFilterArgs.builder()\n                    .name(\"name\")\n                    .regex(true)\n                    .values(\"^ubuntu-20.*$\")\n                    .build(),\n                GetVirtualMachinesFilterArgs.builder()\n                    .name(\"node_name\")\n                    .regex(true)\n                    .values(                    \n                        \"node_us_[1-3]\",\n                        \"node_eu_[1-3]\")\n                    .build())\n            .tags(            \n                \"template\",\n                \"latest\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  ubuntuVms:\n    fn::invoke:\n      Function: proxmoxve:VM:getVirtualMachines\n      Arguments:\n        tags:\n          - ubuntu\n  ubuntuTemplates:\n    fn::invoke:\n      Function: proxmoxve:VM:getVirtualMachines\n      Arguments:\n        filters:\n          - name: template\n            values:\n              - true\n          - name: status\n            values:\n              - stopped\n          - name: name\n            regex: true\n            values:\n              - ^ubuntu-20.*$\n          - name: node_name\n            regex: true\n            values:\n              - node_us_[1-3]\n              - node_eu_[1-3]\n        tags:\n          - template\n          - latest\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getVirtualMachines.\n",
                 "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/proxmoxve:VM/getVirtualMachinesFilter:getVirtualMachinesFilter"
+                        },
+                        "description": "Filter blocks. The VM must satisfy all filter blocks to be included in the result.\n"
+                    },
                     "nodeName": {
                         "type": "string",
-                        "description": "The node name.\n"
+                        "description": "The node name. All cluster nodes will be queried in case this is omitted\n"
                     },
                     "tags": {
                         "type": "array",
@@ -8070,6 +8535,12 @@
             "outputs": {
                 "description": "A collection of values returned by getVirtualMachines.\n",
                 "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/proxmoxve:VM/getVirtualMachinesFilter:getVirtualMachinesFilter"
+                        }
+                    },
                     "id": {
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"

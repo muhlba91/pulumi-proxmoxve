@@ -5,10 +5,13 @@ package io.muehlbachler.pulumi.proxmoxve.VM.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetVirtualMachineResult {
@@ -24,10 +27,20 @@ public final class GetVirtualMachineResult {
     private String name;
     private String nodeName;
     /**
+     * @return Status of the VM
+     * 
+     */
+    private @Nullable String status;
+    /**
      * @return A list of tags of the VM.
      * 
      */
     private List<String> tags;
+    /**
+     * @return Is VM a template (true) or a regular VM (false)
+     * 
+     */
+    private @Nullable Boolean template;
     private Integer vmId;
 
     private GetVirtualMachineResult() {}
@@ -49,11 +62,25 @@ public final class GetVirtualMachineResult {
         return this.nodeName;
     }
     /**
+     * @return Status of the VM
+     * 
+     */
+    public Optional<String> status() {
+        return Optional.ofNullable(this.status);
+    }
+    /**
      * @return A list of tags of the VM.
      * 
      */
     public List<String> tags() {
         return this.tags;
+    }
+    /**
+     * @return Is VM a template (true) or a regular VM (false)
+     * 
+     */
+    public Optional<Boolean> template() {
+        return Optional.ofNullable(this.template);
     }
     public Integer vmId() {
         return this.vmId;
@@ -71,7 +98,9 @@ public final class GetVirtualMachineResult {
         private String id;
         private String name;
         private String nodeName;
+        private @Nullable String status;
         private List<String> tags;
+        private @Nullable Boolean template;
         private Integer vmId;
         public Builder() {}
         public Builder(GetVirtualMachineResult defaults) {
@@ -79,7 +108,9 @@ public final class GetVirtualMachineResult {
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.nodeName = defaults.nodeName;
+    	      this.status = defaults.status;
     	      this.tags = defaults.tags;
+    	      this.template = defaults.template;
     	      this.vmId = defaults.vmId;
         }
 
@@ -108,6 +139,12 @@ public final class GetVirtualMachineResult {
             return this;
         }
         @CustomType.Setter
+        public Builder status(@Nullable String status) {
+
+            this.status = status;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tags(List<String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetVirtualMachineResult", "tags");
@@ -117,6 +154,12 @@ public final class GetVirtualMachineResult {
         }
         public Builder tags(String... tags) {
             return tags(List.of(tags));
+        }
+        @CustomType.Setter
+        public Builder template(@Nullable Boolean template) {
+
+            this.template = template;
+            return this;
         }
         @CustomType.Setter
         public Builder vmId(Integer vmId) {
@@ -131,7 +174,9 @@ public final class GetVirtualMachineResult {
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.nodeName = nodeName;
+            _resultValue.status = status;
             _resultValue.tags = tags;
+            _resultValue.template = template;
             _resultValue.vmId = vmId;
             return _resultValue;
         }

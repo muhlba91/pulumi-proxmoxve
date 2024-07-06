@@ -24,6 +24,8 @@ export function getVirtualMachine(args: GetVirtualMachineArgs, opts?: pulumi.Inv
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("proxmoxve:VM/getVirtualMachine:getVirtualMachine", {
         "nodeName": args.nodeName,
+        "status": args.status,
+        "template": args.template,
         "vmId": args.vmId,
     }, opts);
 }
@@ -36,6 +38,14 @@ export interface GetVirtualMachineArgs {
      * The node name.
      */
     nodeName: string;
+    /**
+     * Status of the VM
+     */
+    status?: string;
+    /**
+     * Is VM a template (true) or a regular VM (false)
+     */
+    template?: boolean;
     /**
      * The VM identifier.
      */
@@ -56,9 +66,17 @@ export interface GetVirtualMachineResult {
     readonly name: string;
     readonly nodeName: string;
     /**
+     * Status of the VM
+     */
+    readonly status?: string;
+    /**
      * A list of tags of the VM.
      */
     readonly tags: string[];
+    /**
+     * Is VM a template (true) or a regular VM (false)
+     */
+    readonly template?: boolean;
     readonly vmId: number;
 }
 /**
@@ -88,6 +106,14 @@ export interface GetVirtualMachineOutputArgs {
      * The node name.
      */
     nodeName: pulumi.Input<string>;
+    /**
+     * Status of the VM
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * Is VM a template (true) or a regular VM (false)
+     */
+    template?: pulumi.Input<boolean>;
     /**
      * The VM identifier.
      */

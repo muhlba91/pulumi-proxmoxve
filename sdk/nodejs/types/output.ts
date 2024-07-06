@@ -1014,20 +1014,43 @@ export namespace Storage {
 }
 
 export namespace VM {
+    export interface GetVirtualMachinesFilter {
+        /**
+         * Name of the VM attribute to filter on. One of [`name`, `template`, `status`, `nodeName`]
+         */
+        name: string;
+        /**
+         * Treat values as regex patterns
+         */
+        regex?: boolean;
+        /**
+         * List of values to pass the filter. VM's attribute should match at least one value in the list.
+         */
+        values: string[];
+    }
+
     export interface GetVirtualMachinesVm {
         /**
          * The virtual machine name.
          */
         name: string;
         /**
-         * The node name.
+         * The node name. All cluster nodes will be queried in case this is omitted
          */
         nodeName: string;
+        /**
+         * Status of the VM
+         */
+        status?: string;
         /**
          * A list of tags to filter the VMs. The VM must have all
          * the tags to be included in the result.
          */
         tags: string[];
+        /**
+         * Is VM a template (true) or a regular VM (false)
+         */
+        template?: boolean;
         /**
          * The VM identifier.
          */

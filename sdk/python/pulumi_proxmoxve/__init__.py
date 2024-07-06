@@ -19,6 +19,8 @@ from . import outputs
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
+    import pulumi_proxmoxve.apt as __apt
+    apt = __apt
     import pulumi_proxmoxve.cluster as __cluster
     cluster = __cluster
     import pulumi_proxmoxve.config as __config
@@ -42,6 +44,7 @@ if typing.TYPE_CHECKING:
     import pulumi_proxmoxve.vm as __vm
     vm = __vm
 else:
+    apt = _utilities.lazy_import('pulumi_proxmoxve.apt')
     cluster = _utilities.lazy_import('pulumi_proxmoxve.cluster')
     config = _utilities.lazy_import('pulumi_proxmoxve.config')
     ct = _utilities.lazy_import('pulumi_proxmoxve.ct')
@@ -57,6 +60,22 @@ else:
 _utilities.register(
     resource_modules="""
 [
+ {
+  "pkg": "proxmoxve",
+  "mod": "Apt/repository",
+  "fqn": "pulumi_proxmoxve.apt",
+  "classes": {
+   "proxmoxve:Apt/repository:Repository": "Repository"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "Apt/standard/repository",
+  "fqn": "pulumi_proxmoxve.apt.standard",
+  "classes": {
+   "proxmoxve:Apt/standard/repository:Repository": "Repository"
+  }
+ },
  {
   "pkg": "proxmoxve",
   "mod": "CT/container",

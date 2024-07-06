@@ -6,9 +6,12 @@ package io.muehlbachler.pulumi.proxmoxve.VM.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs {
@@ -31,6 +34,36 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
+     * Status of the VM
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return Status of the VM
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * Is VM a template (true) or a regular VM (false)
+     * 
+     */
+    @Import(name="template")
+    private @Nullable Output<Boolean> template;
+
+    /**
+     * @return Is VM a template (true) or a regular VM (false)
+     * 
+     */
+    public Optional<Output<Boolean>> template() {
+        return Optional.ofNullable(this.template);
+    }
+
+    /**
      * The VM identifier.
      * 
      */
@@ -49,6 +82,8 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
 
     private GetVirtualMachineArgs(GetVirtualMachineArgs $) {
         this.nodeName = $.nodeName;
+        this.status = $.status;
+        this.template = $.template;
         this.vmId = $.vmId;
     }
 
@@ -89,6 +124,48 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
          */
         public Builder nodeName(String nodeName) {
             return nodeName(Output.of(nodeName));
+        }
+
+        /**
+         * @param status Status of the VM
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status Status of the VM
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
+        }
+
+        /**
+         * @param template Is VM a template (true) or a regular VM (false)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder template(@Nullable Output<Boolean> template) {
+            $.template = template;
+            return this;
+        }
+
+        /**
+         * @param template Is VM a template (true) or a regular VM (false)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder template(Boolean template) {
+            return template(Output.of(template));
         }
 
         /**

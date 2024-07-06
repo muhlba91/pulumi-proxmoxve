@@ -52,6 +52,7 @@ utilities.lazyLoad(exports, ["Vm2"], () => require("./vm2"));
 
 
 // Export sub-modules:
+import * as apt from "./apt";
 import * as cluster from "./cluster";
 import * as config from "./config";
 import * as ct from "./ct";
@@ -66,6 +67,7 @@ import * as user from "./user";
 import * as vm from "./vm";
 
 export {
+    apt,
     cluster,
     config,
     ct,

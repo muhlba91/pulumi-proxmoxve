@@ -18,6 +18,35 @@ import * as utilities from "../utilities";
  * const ubuntuVms = proxmoxve.VM.getVirtualMachines({
  *     tags: ["ubuntu"],
  * });
+ * const ubuntuTemplates = proxmoxve.VM.getVirtualMachines({
+ *     filters: [
+ *         {
+ *             name: "template",
+ *             values: ["true"],
+ *         },
+ *         {
+ *             name: "status",
+ *             values: ["stopped"],
+ *         },
+ *         {
+ *             name: "name",
+ *             regex: true,
+ *             values: ["^ubuntu-20.*$"],
+ *         },
+ *         {
+ *             name: "node_name",
+ *             regex: true,
+ *             values: [
+ *                 "node_us_[1-3]",
+ *                 "node_eu_[1-3]",
+ *             ],
+ *         },
+ *     ],
+ *     tags: [
+ *         "template",
+ *         "latest",
+ *     ],
+ * });
  * ```
  */
 export function getVirtualMachines(args?: GetVirtualMachinesArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachinesResult> {
@@ -25,6 +54,7 @@ export function getVirtualMachines(args?: GetVirtualMachinesArgs, opts?: pulumi.
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("proxmoxve:VM/getVirtualMachines:getVirtualMachines", {
+        "filters": args.filters,
         "nodeName": args.nodeName,
         "tags": args.tags,
     }, opts);
@@ -35,7 +65,11 @@ export function getVirtualMachines(args?: GetVirtualMachinesArgs, opts?: pulumi.
  */
 export interface GetVirtualMachinesArgs {
     /**
-     * The node name.
+     * Filter blocks. The VM must satisfy all filter blocks to be included in the result.
+     */
+    filters?: inputs.VM.GetVirtualMachinesFilter[];
+    /**
+     * The node name. All cluster nodes will be queried in case this is omitted
      */
     nodeName?: string;
     /**
@@ -49,6 +83,7 @@ export interface GetVirtualMachinesArgs {
  * A collection of values returned by getVirtualMachines.
  */
 export interface GetVirtualMachinesResult {
+    readonly filters?: outputs.VM.GetVirtualMachinesFilter[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -78,6 +113,35 @@ export interface GetVirtualMachinesResult {
  * const ubuntuVms = proxmoxve.VM.getVirtualMachines({
  *     tags: ["ubuntu"],
  * });
+ * const ubuntuTemplates = proxmoxve.VM.getVirtualMachines({
+ *     filters: [
+ *         {
+ *             name: "template",
+ *             values: ["true"],
+ *         },
+ *         {
+ *             name: "status",
+ *             values: ["stopped"],
+ *         },
+ *         {
+ *             name: "name",
+ *             regex: true,
+ *             values: ["^ubuntu-20.*$"],
+ *         },
+ *         {
+ *             name: "node_name",
+ *             regex: true,
+ *             values: [
+ *                 "node_us_[1-3]",
+ *                 "node_eu_[1-3]",
+ *             ],
+ *         },
+ *     ],
+ *     tags: [
+ *         "template",
+ *         "latest",
+ *     ],
+ * });
  * ```
  */
 export function getVirtualMachinesOutput(args?: GetVirtualMachinesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualMachinesResult> {
@@ -89,7 +153,11 @@ export function getVirtualMachinesOutput(args?: GetVirtualMachinesOutputArgs, op
  */
 export interface GetVirtualMachinesOutputArgs {
     /**
-     * The node name.
+     * Filter blocks. The VM must satisfy all filter blocks to be included in the result.
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.VM.GetVirtualMachinesFilterArgs>[]>;
+    /**
+     * The node name. All cluster nodes will be queried in case this is omitted
      */
     nodeName?: pulumi.Input<string>;
     /**

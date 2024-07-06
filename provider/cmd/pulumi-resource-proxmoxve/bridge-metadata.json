@@ -5,6 +5,28 @@
                 "current": "proxmoxve:index/acl:Acl",
                 "majorVersion": 6
             },
+            "proxmox_virtual_environment_apt_repository": {
+                "current": "proxmoxve:Apt/repository:Repository",
+                "majorVersion": 6,
+                "fields": {
+                    "components": {
+                        "maxItemsOne": false
+                    },
+                    "package_types": {
+                        "maxItemsOne": false
+                    },
+                    "suites": {
+                        "maxItemsOne": false
+                    },
+                    "uris": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_apt_standard_repository": {
+                "current": "proxmoxve:Apt/standard/repository:Repository",
+                "majorVersion": 6
+            },
             "proxmox_virtual_environment_certificate": {
                 "current": "proxmoxve:index/certifi:Certifi",
                 "majorVersion": 6,
@@ -477,6 +499,28 @@
             }
         },
         "datasources": {
+            "proxmox_virtual_environment_apt_repository": {
+                "current": "proxmoxve:Apt/getRepository:getRepository",
+                "majorVersion": 6,
+                "fields": {
+                    "components": {
+                        "maxItemsOne": false
+                    },
+                    "package_types": {
+                        "maxItemsOne": false
+                    },
+                    "suites": {
+                        "maxItemsOne": false
+                    },
+                    "uris": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_apt_standard_repository": {
+                "current": "proxmoxve:Apt/standard/getRepository:getRepository",
+                "majorVersion": 6
+            },
             "proxmox_virtual_environment_datastores": {
                 "current": "proxmoxve:Storage/getDatastores:getDatastores",
                 "majorVersion": 6,
@@ -794,6 +838,16 @@
                 "current": "proxmoxve:VM/getVirtualMachines:getVirtualMachines",
                 "majorVersion": 6,
                 "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "tags": {
                         "maxItemsOne": false
                     },
@@ -824,6 +878,8 @@
     },
     "mux": {
         "resources": {
+            "proxmoxve:Apt/repository:Repository": 1,
+            "proxmoxve:Apt/standard/repository:Repository": 1,
             "proxmoxve:CT/container:Container": 0,
             "proxmoxve:Cluster/options:Options": 1,
             "proxmoxve:Download/file:File": 1,
@@ -855,6 +911,8 @@
             "proxmoxve:index/vm2:Vm2": 1
         },
         "functions": {
+            "proxmoxve:Apt/getRepository:getRepository": 1,
+            "proxmoxve:Apt/standard/getRepository:getRepository": 1,
             "proxmoxve:Cluster/getNodes:getNodes": 0,
             "proxmoxve:HA/getHAGroup:getHAGroup": 1,
             "proxmoxve:HA/getHAGroups:getHAGroups": 1,

@@ -4,6 +4,7 @@
 package io.muehlbachler.pulumi.proxmoxve.VM.inputs;
 
 import com.pulumi.core.annotations.Import;
+import io.muehlbachler.pulumi.proxmoxve.VM.inputs.GetVirtualMachinesFilter;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -16,14 +17,29 @@ public final class GetVirtualMachinesPlainArgs extends com.pulumi.resources.Invo
     public static final GetVirtualMachinesPlainArgs Empty = new GetVirtualMachinesPlainArgs();
 
     /**
-     * The node name.
+     * Filter blocks. The VM must satisfy all filter blocks to be included in the result.
+     * 
+     */
+    @Import(name="filters")
+    private @Nullable List<GetVirtualMachinesFilter> filters;
+
+    /**
+     * @return Filter blocks. The VM must satisfy all filter blocks to be included in the result.
+     * 
+     */
+    public Optional<List<GetVirtualMachinesFilter>> filters() {
+        return Optional.ofNullable(this.filters);
+    }
+
+    /**
+     * The node name. All cluster nodes will be queried in case this is omitted
      * 
      */
     @Import(name="nodeName")
     private @Nullable String nodeName;
 
     /**
-     * @return The node name.
+     * @return The node name. All cluster nodes will be queried in case this is omitted
      * 
      */
     public Optional<String> nodeName() {
@@ -50,6 +66,7 @@ public final class GetVirtualMachinesPlainArgs extends com.pulumi.resources.Invo
     private GetVirtualMachinesPlainArgs() {}
 
     private GetVirtualMachinesPlainArgs(GetVirtualMachinesPlainArgs $) {
+        this.filters = $.filters;
         this.nodeName = $.nodeName;
         this.tags = $.tags;
     }
@@ -73,7 +90,28 @@ public final class GetVirtualMachinesPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param nodeName The node name.
+         * @param filters Filter blocks. The VM must satisfy all filter blocks to be included in the result.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filters(@Nullable List<GetVirtualMachinesFilter> filters) {
+            $.filters = filters;
+            return this;
+        }
+
+        /**
+         * @param filters Filter blocks. The VM must satisfy all filter blocks to be included in the result.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filters(GetVirtualMachinesFilter... filters) {
+            return filters(List.of(filters));
+        }
+
+        /**
+         * @param nodeName The node name. All cluster nodes will be queried in case this is omitted
          * 
          * @return builder
          * 

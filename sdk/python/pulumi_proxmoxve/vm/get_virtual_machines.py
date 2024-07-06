@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetVirtualMachinesResult',
@@ -22,7 +23,10 @@ class GetVirtualMachinesResult:
     """
     A collection of values returned by getVirtualMachines.
     """
-    def __init__(__self__, id=None, node_name=None, tags=None, vms=None):
+    def __init__(__self__, filters=None, id=None, node_name=None, tags=None, vms=None):
+        if filters and not isinstance(filters, list):
+            raise TypeError("Expected argument 'filters' to be a list")
+        pulumi.set(__self__, "filters", filters)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -35,6 +39,11 @@ class GetVirtualMachinesResult:
         if vms and not isinstance(vms, list):
             raise TypeError("Expected argument 'vms' to be a list")
         pulumi.set(__self__, "vms", vms)
+
+    @property
+    @pulumi.getter
+    def filters(self) -> Optional[Sequence['outputs.GetVirtualMachinesFilterResult']]:
+        return pulumi.get(self, "filters")
 
     @property
     @pulumi.getter
@@ -75,13 +84,15 @@ class AwaitableGetVirtualMachinesResult(GetVirtualMachinesResult):
         if False:
             yield self
         return GetVirtualMachinesResult(
+            filters=self.filters,
             id=self.id,
             node_name=self.node_name,
             tags=self.tags,
             vms=self.vms)
 
 
-def get_virtual_machines(node_name: Optional[str] = None,
+def get_virtual_machines(filters: Optional[Sequence[pulumi.InputType['GetVirtualMachinesFilterArgs']]] = None,
+                         node_name: Optional[str] = None,
                          tags: Optional[Sequence[str]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVirtualMachinesResult:
     """
@@ -94,20 +105,50 @@ def get_virtual_machines(node_name: Optional[str] = None,
     import pulumi_proxmoxve as proxmoxve
 
     ubuntu_vms = proxmoxve.VM.get_virtual_machines(tags=["ubuntu"])
+    ubuntu_templates = proxmoxve.VM.get_virtual_machines(filters=[
+            proxmoxve.vm.GetVirtualMachinesFilterArgs(
+                name="template",
+                values=["true"],
+            ),
+            proxmoxve.vm.GetVirtualMachinesFilterArgs(
+                name="status",
+                values=["stopped"],
+            ),
+            proxmoxve.vm.GetVirtualMachinesFilterArgs(
+                name="name",
+                regex=True,
+                values=["^ubuntu-20.*$"],
+            ),
+            proxmoxve.vm.GetVirtualMachinesFilterArgs(
+                name="node_name",
+                regex=True,
+                values=[
+                    "node_us_[1-3]",
+                    "node_eu_[1-3]",
+                ],
+            ),
+        ],
+        tags=[
+            "template",
+            "latest",
+        ])
     ```
 
 
-    :param str node_name: The node name.
+    :param Sequence[pulumi.InputType['GetVirtualMachinesFilterArgs']] filters: Filter blocks. The VM must satisfy all filter blocks to be included in the result.
+    :param str node_name: The node name. All cluster nodes will be queried in case this is omitted
     :param Sequence[str] tags: A list of tags to filter the VMs. The VM must have all
            the tags to be included in the result.
     """
     __args__ = dict()
+    __args__['filters'] = filters
     __args__['nodeName'] = node_name
     __args__['tags'] = tags
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('proxmoxve:VM/getVirtualMachines:getVirtualMachines', __args__, opts=opts, typ=GetVirtualMachinesResult).value
 
     return AwaitableGetVirtualMachinesResult(
+        filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
         node_name=pulumi.get(__ret__, 'node_name'),
         tags=pulumi.get(__ret__, 'tags'),
@@ -115,7 +156,8 @@ def get_virtual_machines(node_name: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_virtual_machines)
-def get_virtual_machines_output(node_name: Optional[pulumi.Input[Optional[str]]] = None,
+def get_virtual_machines_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetVirtualMachinesFilterArgs']]]]] = None,
+                                node_name: Optional[pulumi.Input[Optional[str]]] = None,
                                 tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVirtualMachinesResult]:
     """
@@ -128,10 +170,38 @@ def get_virtual_machines_output(node_name: Optional[pulumi.Input[Optional[str]]]
     import pulumi_proxmoxve as proxmoxve
 
     ubuntu_vms = proxmoxve.VM.get_virtual_machines(tags=["ubuntu"])
+    ubuntu_templates = proxmoxve.VM.get_virtual_machines(filters=[
+            proxmoxve.vm.GetVirtualMachinesFilterArgs(
+                name="template",
+                values=["true"],
+            ),
+            proxmoxve.vm.GetVirtualMachinesFilterArgs(
+                name="status",
+                values=["stopped"],
+            ),
+            proxmoxve.vm.GetVirtualMachinesFilterArgs(
+                name="name",
+                regex=True,
+                values=["^ubuntu-20.*$"],
+            ),
+            proxmoxve.vm.GetVirtualMachinesFilterArgs(
+                name="node_name",
+                regex=True,
+                values=[
+                    "node_us_[1-3]",
+                    "node_eu_[1-3]",
+                ],
+            ),
+        ],
+        tags=[
+            "template",
+            "latest",
+        ])
     ```
 
 
-    :param str node_name: The node name.
+    :param Sequence[pulumi.InputType['GetVirtualMachinesFilterArgs']] filters: Filter blocks. The VM must satisfy all filter blocks to be included in the result.
+    :param str node_name: The node name. All cluster nodes will be queried in case this is omitted
     :param Sequence[str] tags: A list of tags to filter the VMs. The VM must have all
            the tags to be included in the result.
     """

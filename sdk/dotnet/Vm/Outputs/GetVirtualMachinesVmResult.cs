@@ -18,14 +18,22 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The node name.
+        /// The node name. All cluster nodes will be queried in case this is omitted
         /// </summary>
         public readonly string NodeName;
+        /// <summary>
+        /// Status of the VM
+        /// </summary>
+        public readonly string? Status;
         /// <summary>
         /// A list of tags to filter the VMs. The VM must have all
         /// the tags to be included in the result.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// Is VM a template (true) or a regular VM (false)
+        /// </summary>
+        public readonly bool? Template;
         /// <summary>
         /// The VM identifier.
         /// </summary>
@@ -37,13 +45,19 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
 
             string nodeName,
 
+            string? status,
+
             ImmutableArray<string> tags,
+
+            bool? template,
 
             int vmId)
         {
             Name = name;
             NodeName = nodeName;
+            Status = status;
             Tags = tags;
+            Template = template;
             VmId = vmId;
         }
     }

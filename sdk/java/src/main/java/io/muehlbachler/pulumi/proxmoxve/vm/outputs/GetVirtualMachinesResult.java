@@ -5,6 +5,7 @@ package io.muehlbachler.pulumi.proxmoxve.VM.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import io.muehlbachler.pulumi.proxmoxve.VM.outputs.GetVirtualMachinesFilter;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.GetVirtualMachinesVm;
 import java.lang.String;
 import java.util.List;
@@ -14,6 +15,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetVirtualMachinesResult {
+    private @Nullable List<GetVirtualMachinesFilter> filters;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -36,6 +38,9 @@ public final class GetVirtualMachinesResult {
     private List<GetVirtualMachinesVm> vms;
 
     private GetVirtualMachinesResult() {}
+    public List<GetVirtualMachinesFilter> filters() {
+        return this.filters == null ? List.of() : this.filters;
+    }
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -74,6 +79,7 @@ public final class GetVirtualMachinesResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<GetVirtualMachinesFilter> filters;
         private String id;
         private @Nullable String nodeName;
         private @Nullable List<String> tags;
@@ -81,12 +87,22 @@ public final class GetVirtualMachinesResult {
         public Builder() {}
         public Builder(GetVirtualMachinesResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.filters = defaults.filters;
     	      this.id = defaults.id;
     	      this.nodeName = defaults.nodeName;
     	      this.tags = defaults.tags;
     	      this.vms = defaults.vms;
         }
 
+        @CustomType.Setter
+        public Builder filters(@Nullable List<GetVirtualMachinesFilter> filters) {
+
+            this.filters = filters;
+            return this;
+        }
+        public Builder filters(GetVirtualMachinesFilter... filters) {
+            return filters(List.of(filters));
+        }
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
@@ -123,6 +139,7 @@ public final class GetVirtualMachinesResult {
         }
         public GetVirtualMachinesResult build() {
             final var _resultValue = new GetVirtualMachinesResult();
+            _resultValue.filters = filters;
             _resultValue.id = id;
             _resultValue.nodeName = nodeName;
             _resultValue.tags = tags;

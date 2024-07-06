@@ -32,6 +32,53 @@ namespace Pulumi.ProxmoxVE.VM
         ///         },
         ///     });
         /// 
+        ///     var ubuntuTemplates = ProxmoxVE.VM.GetVirtualMachines.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new ProxmoxVE.VM.Inputs.GetVirtualMachinesFilterInputArgs
+        ///             {
+        ///                 Name = "template",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "true",
+        ///                 },
+        ///             },
+        ///             new ProxmoxVE.VM.Inputs.GetVirtualMachinesFilterInputArgs
+        ///             {
+        ///                 Name = "status",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "stopped",
+        ///                 },
+        ///             },
+        ///             new ProxmoxVE.VM.Inputs.GetVirtualMachinesFilterInputArgs
+        ///             {
+        ///                 Name = "name",
+        ///                 Regex = true,
+        ///                 Values = new[]
+        ///                 {
+        ///                     "^ubuntu-20.*$",
+        ///                 },
+        ///             },
+        ///             new ProxmoxVE.VM.Inputs.GetVirtualMachinesFilterInputArgs
+        ///             {
+        ///                 Name = "node_name",
+        ///                 Regex = true,
+        ///                 Values = new[]
+        ///                 {
+        ///                     "node_us_[1-3]",
+        ///                     "node_eu_[1-3]",
+        ///                 },
+        ///             },
+        ///         },
+        ///         Tags = new[]
+        ///         {
+        ///             "template",
+        ///             "latest",
+        ///         },
+        ///     });
+        /// 
         /// });
         /// ```
         /// </summary>
@@ -59,6 +106,53 @@ namespace Pulumi.ProxmoxVE.VM
         ///         },
         ///     });
         /// 
+        ///     var ubuntuTemplates = ProxmoxVE.VM.GetVirtualMachines.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new ProxmoxVE.VM.Inputs.GetVirtualMachinesFilterInputArgs
+        ///             {
+        ///                 Name = "template",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "true",
+        ///                 },
+        ///             },
+        ///             new ProxmoxVE.VM.Inputs.GetVirtualMachinesFilterInputArgs
+        ///             {
+        ///                 Name = "status",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "stopped",
+        ///                 },
+        ///             },
+        ///             new ProxmoxVE.VM.Inputs.GetVirtualMachinesFilterInputArgs
+        ///             {
+        ///                 Name = "name",
+        ///                 Regex = true,
+        ///                 Values = new[]
+        ///                 {
+        ///                     "^ubuntu-20.*$",
+        ///                 },
+        ///             },
+        ///             new ProxmoxVE.VM.Inputs.GetVirtualMachinesFilterInputArgs
+        ///             {
+        ///                 Name = "node_name",
+        ///                 Regex = true,
+        ///                 Values = new[]
+        ///                 {
+        ///                     "node_us_[1-3]",
+        ///                     "node_eu_[1-3]",
+        ///                 },
+        ///             },
+        ///         },
+        ///         Tags = new[]
+        ///         {
+        ///             "template",
+        ///             "latest",
+        ///         },
+        ///     });
+        /// 
         /// });
         /// ```
         /// </summary>
@@ -69,8 +163,20 @@ namespace Pulumi.ProxmoxVE.VM
 
     public sealed class GetVirtualMachinesArgs : global::Pulumi.InvokeArgs
     {
+        [Input("filters")]
+        private List<Inputs.GetVirtualMachinesFilterArgs>? _filters;
+
         /// <summary>
-        /// The node name.
+        /// Filter blocks. The VM must satisfy all filter blocks to be included in the result.
+        /// </summary>
+        public List<Inputs.GetVirtualMachinesFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new List<Inputs.GetVirtualMachinesFilterArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// The node name. All cluster nodes will be queried in case this is omitted
         /// </summary>
         [Input("nodeName")]
         public string? NodeName { get; set; }
@@ -96,8 +202,20 @@ namespace Pulumi.ProxmoxVE.VM
 
     public sealed class GetVirtualMachinesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("filters")]
+        private InputList<Inputs.GetVirtualMachinesFilterInputArgs>? _filters;
+
         /// <summary>
-        /// The node name.
+        /// Filter blocks. The VM must satisfy all filter blocks to be included in the result.
+        /// </summary>
+        public InputList<Inputs.GetVirtualMachinesFilterInputArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetVirtualMachinesFilterInputArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// The node name. All cluster nodes will be queried in case this is omitted
         /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
@@ -125,6 +243,7 @@ namespace Pulumi.ProxmoxVE.VM
     [OutputType]
     public sealed class GetVirtualMachinesResult
     {
+        public readonly ImmutableArray<Outputs.GetVirtualMachinesFilterResult> Filters;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -144,6 +263,8 @@ namespace Pulumi.ProxmoxVE.VM
 
         [OutputConstructor]
         private GetVirtualMachinesResult(
+            ImmutableArray<Outputs.GetVirtualMachinesFilterResult> filters,
+
             string id,
 
             string? nodeName,
@@ -152,6 +273,7 @@ namespace Pulumi.ProxmoxVE.VM
 
             ImmutableArray<Outputs.GetVirtualMachinesVmResult> vms)
         {
+            Filters = filters;
             Id = id;
             NodeName = nodeName;
             Tags = tags;

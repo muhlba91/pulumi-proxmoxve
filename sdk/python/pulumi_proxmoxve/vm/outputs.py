@@ -41,6 +41,7 @@ __all__ = [
     'VirtualMachineTpmState',
     'VirtualMachineUsb',
     'VirtualMachineVga',
+    'GetVirtualMachinesFilterResult',
     'GetVirtualMachinesVmResult',
 ]
 
@@ -2453,23 +2454,72 @@ class VirtualMachineVga(dict):
 
 
 @pulumi.output_type
+class GetVirtualMachinesFilterResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str],
+                 regex: Optional[bool] = None):
+        """
+        :param str name: Name of the VM attribute to filter on. One of [`name`, `template`, `status`, `node_name`]
+        :param Sequence[str] values: List of values to pass the filter. VM's attribute should match at least one value in the list.
+        :param bool regex: Treat values as regex patterns
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if regex is not None:
+            pulumi.set(__self__, "regex", regex)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the VM attribute to filter on. One of [`name`, `template`, `status`, `node_name`]
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        List of values to pass the filter. VM's attribute should match at least one value in the list.
+        """
+        return pulumi.get(self, "values")
+
+    @property
+    @pulumi.getter
+    def regex(self) -> Optional[bool]:
+        """
+        Treat values as regex patterns
+        """
+        return pulumi.get(self, "regex")
+
+
+@pulumi.output_type
 class GetVirtualMachinesVmResult(dict):
     def __init__(__self__, *,
                  name: str,
                  node_name: str,
                  tags: Sequence[str],
-                 vm_id: int):
+                 vm_id: int,
+                 status: Optional[str] = None,
+                 template: Optional[bool] = None):
         """
         :param str name: The virtual machine name.
-        :param str node_name: The node name.
+        :param str node_name: The node name. All cluster nodes will be queried in case this is omitted
         :param Sequence[str] tags: A list of tags to filter the VMs. The VM must have all
                the tags to be included in the result.
         :param int vm_id: The VM identifier.
+        :param str status: Status of the VM
+        :param bool template: Is VM a template (true) or a regular VM (false)
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "node_name", node_name)
         pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "vm_id", vm_id)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if template is not None:
+            pulumi.set(__self__, "template", template)
 
     @property
     @pulumi.getter
@@ -2483,7 +2533,7 @@ class GetVirtualMachinesVmResult(dict):
     @pulumi.getter(name="nodeName")
     def node_name(self) -> str:
         """
-        The node name.
+        The node name. All cluster nodes will be queried in case this is omitted
         """
         return pulumi.get(self, "node_name")
 
@@ -2503,5 +2553,21 @@ class GetVirtualMachinesVmResult(dict):
         The VM identifier.
         """
         return pulumi.get(self, "vm_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        Status of the VM
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def template(self) -> Optional[bool]:
+        """
+        Is VM a template (true) or a regular VM (false)
+        """
+        return pulumi.get(self, "template")
 
 
