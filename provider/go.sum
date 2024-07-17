@@ -1936,6 +1936,8 @@ github.com/pulumi/pulumi-java/pkg v0.11.0 h1:Jw9gBvyfmfOMq/EkYDm9+zGPxsDAA8jfeMp
 github.com/pulumi/pulumi-java/pkg v0.11.0/go.mod h1:sXAk25P47AQVQL6ilAbFmRNgZykC7og/+87ihnqzFTc=
 github.com/pulumi/pulumi-terraform-bridge/pf v0.39.0 h1:yV5LHLTF878wKMQcHVTqKRShaeJTX7ee36pL3cVvCLs=
 github.com/pulumi/pulumi-terraform-bridge/pf v0.39.0/go.mod h1:teMSjww/2MdNvGTbtLNrjMDkGXteRJso/1iViv8AnCI=
+github.com/pulumi/pulumi-terraform-bridge/pf v0.40.0 h1:igJrGpUnN53vi0ORXpoomvaTkmjJDmYIFY9CpKKJJxI=
+github.com/pulumi/pulumi-terraform-bridge/pf v0.40.0/go.mod h1:zdR+52XBu6oYOUUy8DpsWhsaMnf9f6yhfXwxukVtYmM=
 github.com/pulumi/pulumi-terraform-bridge/v3 v3.86.0 h1:55ydBXwbNpL+eAPExJSfL1pSDUuPNSGCU08EamVh3qg=
 github.com/pulumi/pulumi-terraform-bridge/v3 v3.86.0/go.mod h1:jyywJUc4gFP5vWOar8qSQWzSrpwht7XDrYQtVvneza4=
 github.com/pulumi/pulumi-terraform-bridge/v3 v3.87.0 h1:XgsT5w1KHhjP3ChPC1eVY6A47cdg1EPq6JzbQruvUHU=
