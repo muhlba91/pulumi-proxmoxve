@@ -85,6 +85,7 @@ jobs:
             dist/*_checksums.txt
             dist/*.sig
             dist/*.pem
+        continue-on-error: true # Attestation is in alpha stage
 
   publish_sdk:
     if: needs.release.outputs.release_created
