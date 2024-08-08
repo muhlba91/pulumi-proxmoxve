@@ -793,7 +793,7 @@ type Vm2Cpu struct {
 	Numa *bool `pulumi:"numa"`
 	// The number of CPU sockets (defaults to `1`).
 	Sockets *int `pulumi:"sockets"`
-	// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings for more information.
+	// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
 	Type *string `pulumi:"type"`
 	// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
 	Units *int `pulumi:"units"`
@@ -827,7 +827,7 @@ type Vm2CpuArgs struct {
 	Numa pulumi.BoolPtrInput `pulumi:"numa"`
 	// The number of CPU sockets (defaults to `1`).
 	Sockets pulumi.IntPtrInput `pulumi:"sockets"`
-	// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings for more information.
+	// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
 	Units pulumi.IntPtrInput `pulumi:"units"`
@@ -950,7 +950,7 @@ func (o Vm2CpuOutput) Sockets() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Vm2Cpu) *int { return v.Sockets }).(pulumi.IntPtrOutput)
 }
 
-// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings for more information.
+// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
 func (o Vm2CpuOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Vm2Cpu) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -1064,7 +1064,7 @@ func (o Vm2CpuPtrOutput) Sockets() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings for more information.
+// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
 func (o Vm2CpuPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Vm2Cpu) *string {
 		if v == nil {

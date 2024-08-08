@@ -24,27 +24,25 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleAll, err := HA.GetHAResources(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			exampleVm, err := HA.GetHAResources(ctx, &ha.GetHAResourcesArgs{
-//				Type: pulumi.StringRef("vm"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("dataProxmoxVirtualEnvironmentHaresources", map[string]interface{}{
-//				"all": exampleAll.ResourceIds,
-//				"vms": exampleVm.ResourceIds,
-//			})
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// exampleAll, err := HA.GetHAResources(ctx, nil, nil);
+// if err != nil {
+// return err
+// }
+// exampleVm, err := HA.GetHAResources(ctx, &ha.GetHAResourcesArgs{
+// Type: pulumi.StringRef("vm"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("dataProxmoxVirtualEnvironmentHaresources", interface{}Map{
+// "all": exampleAll.ResourceIds,
+// "vms": exampleVm.ResourceIds,
+// })
+// return nil
+// })
+// }
 // ```
 func GetHAResources(ctx *pulumi.Context, args *GetHAResourcesArgs, opts ...pulumi.InvokeOption) (*GetHAResourcesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

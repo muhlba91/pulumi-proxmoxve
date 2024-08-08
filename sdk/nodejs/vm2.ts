@@ -7,6 +7,16 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * !> **DO NOT USE**
+ * This is an experimental implementation of a Proxmox VM resource using Plugin Framework.<br><br>It is a Proof of Concept, highly experimental and **will** change in future. It does not support all features of the Proxmox API for VMs and **MUST NOT** be used in production.
+ *
+ * > Many attributes are marked as **optional** _and_ **computed** in the schema,
+ * hence you may seem added to the plan with "(known after apply)" status, even if they are not set in the configuration.
+ * This is done to support the `clone` operation, when a VM is created from an existing VM or template,
+ * and the source attributes are copied to the clone.<br><br>
+ * Computed attributes allow the provider to set those attributes without user input.
+ * The attributes are also marked as optional to allow the practitioner to set (or overwrite) them if needed.
+ *
  * @deprecated proxmoxve.index/vm2.Vm2 has been deprecated in favor of proxmoxve.vm/virtualmachine2.VirtualMachine2
  */
 export class Vm2 extends pulumi.CustomResource {
@@ -39,8 +49,7 @@ export class Vm2 extends pulumi.CustomResource {
     }
 
     /**
-     * The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is
-     * the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+     * The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
      */
     public readonly cdrom!: pulumi.Output<{[key: string]: outputs.Vm2Cdrom}>;
     /**
@@ -77,13 +86,7 @@ export class Vm2 extends pulumi.CustomResource {
     public readonly template!: pulumi.Output<boolean | undefined>;
     public readonly timeouts!: pulumi.Output<outputs.Vm2Timeouts | undefined>;
     /**
-     * Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga
-     * memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP
-     * and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many
-     * independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using
-     * a serial device as terminal. See the [Proxmox
-     * documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for
-     * more information and available configuration parameters.
+     * Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
      */
     public readonly vga!: pulumi.Output<outputs.Vm2Vga>;
 
@@ -141,8 +144,7 @@ export class Vm2 extends pulumi.CustomResource {
  */
 export interface Vm2State {
     /**
-     * The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is
-     * the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+     * The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
      */
     cdrom?: pulumi.Input<{[key: string]: pulumi.Input<inputs.Vm2Cdrom>}>;
     /**
@@ -179,13 +181,7 @@ export interface Vm2State {
     template?: pulumi.Input<boolean>;
     timeouts?: pulumi.Input<inputs.Vm2Timeouts>;
     /**
-     * Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga
-     * memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP
-     * and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many
-     * independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using
-     * a serial device as terminal. See the [Proxmox
-     * documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for
-     * more information and available configuration parameters.
+     * Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
      */
     vga?: pulumi.Input<inputs.Vm2Vga>;
 }
@@ -195,8 +191,7 @@ export interface Vm2State {
  */
 export interface Vm2Args {
     /**
-     * The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is
-     * the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+     * The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
      */
     cdrom?: pulumi.Input<{[key: string]: pulumi.Input<inputs.Vm2Cdrom>}>;
     /**
@@ -233,13 +228,7 @@ export interface Vm2Args {
     template?: pulumi.Input<boolean>;
     timeouts?: pulumi.Input<inputs.Vm2Timeouts>;
     /**
-     * Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga
-     * memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP
-     * and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many
-     * independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using
-     * a serial device as terminal. See the [Proxmox
-     * documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for
-     * more information and available configuration parameters.
+     * Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
      */
     vga?: pulumi.Input<inputs.Vm2Vga>;
 }

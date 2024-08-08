@@ -12,6 +12,9 @@ namespace Pulumi.ProxmoxVE.Download
     /// <summary>
     /// Manages files upload using PVE download-url API. It can be fully compatible and faster replacement for image files created using `proxmoxve.Storage.File`. Supports images for VMs (ISO images) and LXC (CT Templates).
     /// 
+    /// &gt; Besides the `Datastore.AllocateTemplate` privilege, this resource requires both the `Sys.Audit` and `Sys.Modify` privileges.&lt;br&gt;&lt;br&gt;
+    /// For more details, see the [`download-url`](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/storage/{storage}/download-url) API documentation under the "Required permissions" section.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

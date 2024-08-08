@@ -25,16 +25,14 @@ public final class Vm2Args extends com.pulumi.resources.ResourceArgs {
     public static final Vm2Args Empty = new Vm2Args();
 
     /**
-     * The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is
-     * the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+     * The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
      * 
      */
     @Import(name="cdrom")
     private @Nullable Output<Map<String,Vm2CdromArgs>> cdrom;
 
     /**
-     * @return The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is
-     * the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+     * @return The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
      * 
      */
     public Optional<Output<Map<String,Vm2CdromArgs>>> cdrom() {
@@ -169,26 +167,14 @@ public final class Vm2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configure the VGA Hardware. If you want to use high resolution modes (&gt;= 1280x1024x16) you may need to increase the vga
-     * memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP
-     * and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many
-     * independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using
-     * a serial device as terminal. See the [Proxmox
-     * documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for
-     * more information and available configuration parameters.
+     * Configure the VGA Hardware. If you want to use high resolution modes (&gt;= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
      * 
      */
     @Import(name="vga")
     private @Nullable Output<Vm2VgaArgs> vga;
 
     /**
-     * @return Configure the VGA Hardware. If you want to use high resolution modes (&gt;= 1280x1024x16) you may need to increase the vga
-     * memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP
-     * and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many
-     * independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using
-     * a serial device as terminal. See the [Proxmox
-     * documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for
-     * more information and available configuration parameters.
+     * @return Configure the VGA Hardware. If you want to use high resolution modes (&gt;= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
      * 
      */
     public Optional<Output<Vm2VgaArgs>> vga() {
@@ -230,8 +216,7 @@ public final class Vm2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cdrom The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is
-         * the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+         * @param cdrom The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
          * 
          * @return builder
          * 
@@ -242,8 +227,7 @@ public final class Vm2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cdrom The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is
-         * the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+         * @param cdrom The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
          * 
          * @return builder
          * 
@@ -440,13 +424,7 @@ public final class Vm2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vga Configure the VGA Hardware. If you want to use high resolution modes (&gt;= 1280x1024x16) you may need to increase the vga
-         * memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP
-         * and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many
-         * independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using
-         * a serial device as terminal. See the [Proxmox
-         * documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for
-         * more information and available configuration parameters.
+         * @param vga Configure the VGA Hardware. If you want to use high resolution modes (&gt;= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
          * 
          * @return builder
          * 
@@ -457,13 +435,7 @@ public final class Vm2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vga Configure the VGA Hardware. If you want to use high resolution modes (&gt;= 1280x1024x16) you may need to increase the vga
-         * memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP
-         * and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many
-         * independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using
-         * a serial device as terminal. See the [Proxmox
-         * documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for
-         * more information and available configuration parameters.
+         * @param vga Configure the VGA Hardware. If you want to use high resolution modes (&gt;= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
          * 
          * @return builder
          * 

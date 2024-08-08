@@ -139,7 +139,7 @@ class Vm2Cpu(dict):
         :param int limit: Limit of CPU usage (defaults to `0` which means no limit).
         :param bool numa: Enable NUMA (defaults to `false`).
         :param int sockets: The number of CPU sockets (defaults to `1`).
-        :param str type: Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings for more information.
+        :param str type: Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
         :param int units: CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
         """
         if affinity is not None:
@@ -231,7 +231,7 @@ class Vm2Cpu(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings for more information.
+        Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
         """
         return pulumi.get(self, "type")
 

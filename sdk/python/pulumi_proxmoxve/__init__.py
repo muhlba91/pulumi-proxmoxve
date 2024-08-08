@@ -6,6 +6,7 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .acl import *
+from .acme_account import *
 from .certifi import *
 from .dns import *
 from .get_node import *
@@ -19,6 +20,8 @@ from . import outputs
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
+    import pulumi_proxmoxve.acme as __acme
+    acme = __acme
     import pulumi_proxmoxve.apt as __apt
     apt = __apt
     import pulumi_proxmoxve.cluster as __cluster
@@ -44,6 +47,7 @@ if typing.TYPE_CHECKING:
     import pulumi_proxmoxve.vm as __vm
     vm = __vm
 else:
+    acme = _utilities.lazy_import('pulumi_proxmoxve.acme')
     apt = _utilities.lazy_import('pulumi_proxmoxve.apt')
     cluster = _utilities.lazy_import('pulumi_proxmoxve.cluster')
     config = _utilities.lazy_import('pulumi_proxmoxve.config')
@@ -266,6 +270,14 @@ _utilities.register(
   "fqn": "pulumi_proxmoxve",
   "classes": {
    "proxmoxve:index/acl:Acl": "Acl"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "index/acmeAccount",
+  "fqn": "pulumi_proxmoxve",
+  "classes": {
+   "proxmoxve:index/acmeAccount:AcmeAccount": "AcmeAccount"
   }
  },
  {

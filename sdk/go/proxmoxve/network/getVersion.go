@@ -31,7 +31,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("dataProxmoxVirtualEnvironmentVersion", map[string]interface{}{
+//			ctx.Export("dataProxmoxVirtualEnvironmentVersion", pulumi.StringMap{
 //				"release":       example.Release,
 //				"repository_id": example.RepositoryId,
 //				"version":       example.Version,

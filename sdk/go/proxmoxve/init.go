@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "proxmoxve:index/acl:Acl":
 		r = &Acl{}
+	case "proxmoxve:index/acmeAccount:AcmeAccount":
+		r = &AcmeAccount{}
 	case "proxmoxve:index/certifi:Certifi":
 		r = &Certifi{}
 	case "proxmoxve:index/dNS:DNS":
@@ -67,6 +69,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
 		"index/acl",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"index/acmeAccount",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

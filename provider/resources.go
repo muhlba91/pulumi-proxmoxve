@@ -206,6 +206,11 @@ func Provider() tfbridge.ProviderInfo {
 			"proxmox_virtual_environment_firewall_ipset":                  {Tok: tfbridge.MakeResource(mainPkg, "Network", "FirewallIPSet")},
 			"proxmox_virtual_environment_firewall_options":                {Tok: tfbridge.MakeResource(mainPkg, "Network", "FirewallOptions")},
 			"proxmox_virtual_environment_firewall_rules":                  {Tok: tfbridge.MakeResource(mainPkg, "Network", "FirewallRules")},
+			// ACME
+			"proxmox_virtual_environment_acme_account": {
+				Tok:       tfbridge.MakeResource(mainPkg, "index", "AcmeAccount"),
+				ComputeID: tfbridge.DelegateIDField("name", "proxmoxve", "https://github.com/muhlba91/pulumi-proxmoxve"),
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Cluster

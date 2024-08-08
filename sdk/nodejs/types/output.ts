@@ -144,7 +144,7 @@ export interface Vm2Cpu {
      */
     sockets: number;
     /**
-     * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings for more information.
+     * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
      */
     type: string;
     /**
@@ -185,6 +185,24 @@ export interface Vm2Vga {
      * The VGA type (defaults to `std`).
      */
     type: string;
+}
+
+export namespace Acme {
+    export interface GetAccountAccount {
+        /**
+         * An array of contact email addresses.
+         */
+        contacts: string[];
+        /**
+         * The timestamp of the account creation.
+         */
+        createdAt: string;
+        /**
+         * The status of the account. Can be one of `valid`, `deactivated` or `revoked`.
+         */
+        status: string;
+    }
+
 }
 
 export namespace CT {

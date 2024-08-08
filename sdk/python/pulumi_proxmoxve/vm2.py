@@ -30,8 +30,7 @@ class Vm2Args:
         """
         The set of arguments for constructing a Vm2 resource.
         :param pulumi.Input[str] node_name: The name of the node where the VM is provisioned.
-        :param pulumi.Input[Mapping[str, pulumi.Input['Vm2CdromArgs']]] cdrom: The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is
-               the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+        :param pulumi.Input[Mapping[str, pulumi.Input['Vm2CdromArgs']]] cdrom: The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
         :param pulumi.Input['Vm2CloneArgs'] clone: The cloning configuration.
         :param pulumi.Input['Vm2CpuArgs'] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description of the VM.
@@ -39,13 +38,7 @@ class Vm2Args:
         :param pulumi.Input[bool] stop_on_destroy: Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags assigned to the VM.
         :param pulumi.Input[bool] template: Set to true to create a VM template.
-        :param pulumi.Input['Vm2VgaArgs'] vga: Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga
-               memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP
-               and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many
-               independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using
-               a serial device as terminal. See the [Proxmox
-               documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for
-               more information and available configuration parameters.
+        :param pulumi.Input['Vm2VgaArgs'] vga: Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
         """
         pulumi.set(__self__, "node_name", node_name)
         if cdrom is not None:
@@ -85,8 +78,7 @@ class Vm2Args:
     @pulumi.getter
     def cdrom(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['Vm2CdromArgs']]]]:
         """
-        The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is
-        the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+        The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
         """
         return pulumi.get(self, "cdrom")
 
@@ -191,13 +183,7 @@ class Vm2Args:
     @pulumi.getter
     def vga(self) -> Optional[pulumi.Input['Vm2VgaArgs']]:
         """
-        Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga
-        memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP
-        and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many
-        independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using
-        a serial device as terminal. See the [Proxmox
-        documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for
-        more information and available configuration parameters.
+        Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
         """
         return pulumi.get(self, "vga")
 
@@ -222,8 +208,7 @@ class _Vm2State:
                  vga: Optional[pulumi.Input['Vm2VgaArgs']] = None):
         """
         Input properties used for looking up and filtering Vm2 resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input['Vm2CdromArgs']]] cdrom: The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is
-               the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+        :param pulumi.Input[Mapping[str, pulumi.Input['Vm2CdromArgs']]] cdrom: The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
         :param pulumi.Input['Vm2CloneArgs'] clone: The cloning configuration.
         :param pulumi.Input['Vm2CpuArgs'] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description of the VM.
@@ -232,13 +217,7 @@ class _Vm2State:
         :param pulumi.Input[bool] stop_on_destroy: Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags assigned to the VM.
         :param pulumi.Input[bool] template: Set to true to create a VM template.
-        :param pulumi.Input['Vm2VgaArgs'] vga: Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga
-               memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP
-               and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many
-               independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using
-               a serial device as terminal. See the [Proxmox
-               documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for
-               more information and available configuration parameters.
+        :param pulumi.Input['Vm2VgaArgs'] vga: Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
         """
         if cdrom is not None:
             pulumi.set(__self__, "cdrom", cdrom)
@@ -267,8 +246,7 @@ class _Vm2State:
     @pulumi.getter
     def cdrom(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['Vm2CdromArgs']]]]:
         """
-        The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is
-        the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+        The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
         """
         return pulumi.get(self, "cdrom")
 
@@ -385,13 +363,7 @@ class _Vm2State:
     @pulumi.getter
     def vga(self) -> Optional[pulumi.Input['Vm2VgaArgs']]:
         """
-        Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga
-        memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP
-        and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many
-        independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using
-        a serial device as terminal. See the [Proxmox
-        documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for
-        more information and available configuration parameters.
+        Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
         """
         return pulumi.get(self, "vga")
 
@@ -423,11 +395,19 @@ class Vm2(pulumi.CustomResource):
                  vga: Optional[pulumi.Input[pulumi.InputType['Vm2VgaArgs']]] = None,
                  __props__=None):
         """
-        Create a Vm2 resource with the given unique name, props, and options.
+        !> **DO NOT USE**
+        This is an experimental implementation of a Proxmox VM resource using Plugin Framework.<br><br>It is a Proof of Concept, highly experimental and **will** change in future. It does not support all features of the Proxmox API for VMs and **MUST NOT** be used in production.
+
+        > Many attributes are marked as **optional** _and_ **computed** in the schema,
+        hence you may seem added to the plan with "(known after apply)" status, even if they are not set in the configuration.
+        This is done to support the `clone` operation, when a VM is created from an existing VM or template,
+        and the source attributes are copied to the clone.<br><br>
+        Computed attributes allow the provider to set those attributes without user input.
+        The attributes are also marked as optional to allow the practitioner to set (or overwrite) them if needed.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['Vm2CdromArgs']]]] cdrom: The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is
-               the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['Vm2CdromArgs']]]] cdrom: The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
         :param pulumi.Input[pulumi.InputType['Vm2CloneArgs']] clone: The cloning configuration.
         :param pulumi.Input[pulumi.InputType['Vm2CpuArgs']] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description of the VM.
@@ -436,13 +416,7 @@ class Vm2(pulumi.CustomResource):
         :param pulumi.Input[bool] stop_on_destroy: Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags assigned to the VM.
         :param pulumi.Input[bool] template: Set to true to create a VM template.
-        :param pulumi.Input[pulumi.InputType['Vm2VgaArgs']] vga: Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga
-               memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP
-               and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many
-               independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using
-               a serial device as terminal. See the [Proxmox
-               documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for
-               more information and available configuration parameters.
+        :param pulumi.Input[pulumi.InputType['Vm2VgaArgs']] vga: Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
         """
         ...
     @overload
@@ -451,7 +425,16 @@ class Vm2(pulumi.CustomResource):
                  args: Vm2Args,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Vm2 resource with the given unique name, props, and options.
+        !> **DO NOT USE**
+        This is an experimental implementation of a Proxmox VM resource using Plugin Framework.<br><br>It is a Proof of Concept, highly experimental and **will** change in future. It does not support all features of the Proxmox API for VMs and **MUST NOT** be used in production.
+
+        > Many attributes are marked as **optional** _and_ **computed** in the schema,
+        hence you may seem added to the plan with "(known after apply)" status, even if they are not set in the configuration.
+        This is done to support the `clone` operation, when a VM is created from an existing VM or template,
+        and the source attributes are copied to the clone.<br><br>
+        Computed attributes allow the provider to set those attributes without user input.
+        The attributes are also marked as optional to allow the practitioner to set (or overwrite) them if needed.
+
         :param str resource_name: The name of the resource.
         :param Vm2Args args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -529,8 +512,7 @@ class Vm2(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['Vm2CdromArgs']]]] cdrom: The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is
-               the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['Vm2CdromArgs']]]] cdrom: The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
         :param pulumi.Input[pulumi.InputType['Vm2CloneArgs']] clone: The cloning configuration.
         :param pulumi.Input[pulumi.InputType['Vm2CpuArgs']] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description of the VM.
@@ -539,13 +521,7 @@ class Vm2(pulumi.CustomResource):
         :param pulumi.Input[bool] stop_on_destroy: Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags assigned to the VM.
         :param pulumi.Input[bool] template: Set to true to create a VM template.
-        :param pulumi.Input[pulumi.InputType['Vm2VgaArgs']] vga: Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga
-               memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP
-               and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many
-               independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using
-               a serial device as terminal. See the [Proxmox
-               documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for
-               more information and available configuration parameters.
+        :param pulumi.Input[pulumi.InputType['Vm2VgaArgs']] vga: Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -568,8 +544,7 @@ class Vm2(pulumi.CustomResource):
     @pulumi.getter
     def cdrom(self) -> pulumi.Output[Mapping[str, 'outputs.Vm2Cdrom']]:
         """
-        The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is
-        the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+        The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
         """
         return pulumi.get(self, "cdrom")
 
@@ -646,13 +621,7 @@ class Vm2(pulumi.CustomResource):
     @pulumi.getter
     def vga(self) -> pulumi.Output['outputs.Vm2Vga']:
         """
-        Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga
-        memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP
-        and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many
-        independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using
-        a serial device as terminal. See the [Proxmox
-        documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for
-        more information and available configuration parameters.
+        Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
         """
         return pulumi.get(self, "vga")
 

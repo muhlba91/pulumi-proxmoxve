@@ -5,6 +5,10 @@
                 "current": "proxmoxve:index/acl:Acl",
                 "majorVersion": 6
             },
+            "proxmox_virtual_environment_acme_account": {
+                "current": "proxmoxve:index/acmeAccount:AcmeAccount",
+                "majorVersion": 6
+            },
             "proxmox_virtual_environment_apt_repository": {
                 "current": "proxmoxve:Apt/repository:Repository",
                 "majorVersion": 6,
@@ -499,6 +503,28 @@
             }
         },
         "datasources": {
+            "proxmox_virtual_environment_acme_account": {
+                "current": "proxmoxve:Acme/getAccount:getAccount",
+                "majorVersion": 6,
+                "fields": {
+                    "account": {
+                        "fields": {
+                            "contact": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "proxmox_virtual_environment_acme_accounts": {
+                "current": "proxmoxve:Acme/getAccounts:getAccounts",
+                "majorVersion": 6,
+                "fields": {
+                    "accounts": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "proxmox_virtual_environment_apt_repository": {
                 "current": "proxmoxve:Apt/getRepository:getRepository",
                 "majorVersion": 6,
@@ -904,6 +930,7 @@
             "proxmoxve:VM/virtualMachine2:VirtualMachine2": 1,
             "proxmoxve:VM/virtualMachine:VirtualMachine": 0,
             "proxmoxve:index/acl:Acl": 1,
+            "proxmoxve:index/acmeAccount:AcmeAccount": 1,
             "proxmoxve:index/certifi:Certifi": 0,
             "proxmoxve:index/dNS:DNS": 0,
             "proxmoxve:index/hosts:Hosts": 0,
@@ -911,6 +938,8 @@
             "proxmoxve:index/vm2:Vm2": 1
         },
         "functions": {
+            "proxmoxve:Acme/getAccount:getAccount": 1,
+            "proxmoxve:Acme/getAccounts:getAccounts": 1,
             "proxmoxve:Apt/getRepository:getRepository": 1,
             "proxmoxve:Apt/standard/getRepository:getRepository": 1,
             "proxmoxve:Cluster/getNodes:getNodes": 0,

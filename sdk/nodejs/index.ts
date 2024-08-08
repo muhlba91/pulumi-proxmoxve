@@ -10,6 +10,11 @@ export type Acl = import("./acl").Acl;
 export const Acl: typeof import("./acl").Acl = null as any;
 utilities.lazyLoad(exports, ["Acl"], () => require("./acl"));
 
+export { AcmeAccountArgs, AcmeAccountState } from "./acmeAccount";
+export type AcmeAccount = import("./acmeAccount").AcmeAccount;
+export const AcmeAccount: typeof import("./acmeAccount").AcmeAccount = null as any;
+utilities.lazyLoad(exports, ["AcmeAccount"], () => require("./acmeAccount"));
+
 export { CertifiArgs, CertifiState } from "./certifi";
 export type Certifi = import("./certifi").Certifi;
 export const Certifi: typeof import("./certifi").Certifi = null as any;
@@ -52,6 +57,7 @@ utilities.lazyLoad(exports, ["Vm2"], () => require("./vm2"));
 
 
 // Export sub-modules:
+import * as acme from "./acme";
 import * as apt from "./apt";
 import * as cluster from "./cluster";
 import * as config from "./config";
@@ -67,6 +73,7 @@ import * as user from "./user";
 import * as vm from "./vm";
 
 export {
+    acme,
     apt,
     cluster,
     config,
@@ -88,6 +95,8 @@ const _module = {
         switch (type) {
             case "proxmoxve:index/acl:Acl":
                 return new Acl(name, <any>undefined, { urn })
+            case "proxmoxve:index/acmeAccount:AcmeAccount":
+                return new AcmeAccount(name, <any>undefined, { urn })
             case "proxmoxve:index/certifi:Certifi":
                 return new Certifi(name, <any>undefined, { urn })
             case "proxmoxve:index/dNS:DNS":
@@ -104,6 +113,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("proxmoxve", "index/acl", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "index/acmeAccount", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "index/certifi", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "index/dNS", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "index/hosts", _module)

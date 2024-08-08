@@ -274,7 +274,7 @@ export interface Vm2Cpu {
      */
     sockets?: pulumi.Input<number>;
     /**
-     * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings for more information.
+     * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
      */
     type?: pulumi.Input<string>;
     /**
@@ -316,6 +316,9 @@ export interface Vm2Vga {
      */
     type?: pulumi.Input<string>;
 }
+export namespace Acme {
+}
+
 export namespace CT {
     export interface ContainerClone {
         /**
