@@ -1,6 +1,30 @@
 # Changelog
 
 
+## [6.12.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.11.1...v6.12.0) (2024-08-08)
+
+
+### Features
+
+* enable java sdk ([d85b972](https://github.com/muhlba91/pulumi-proxmoxve/commit/d85b972800c8fada1a2f181ee874f8fa4033b6de))
+* upgrade to upstream provider v0.62.0 ([5750a4e](https://github.com/muhlba91/pulumi-proxmoxve/commit/5750a4e1bb63ad8966cb84c1a706e7f57c8146f6))
+
+
+### Miscellaneous Chores
+
+* **ci:** allow attestations to fail on release ([443427c](https://github.com/muhlba91/pulumi-proxmoxve/commit/443427c874b174d85b91c715019b7c666993f822))
+* **ci:** allow java publishing action to fail for releases ([e3bb8b7](https://github.com/muhlba91/pulumi-proxmoxve/commit/e3bb8b79e440fe4a5fbb3dd52ba3898036f7ca12))
+* **deps:** update anchore/sbom-action action to v0.17.0 ([b4c2423](https://github.com/muhlba91/pulumi-proxmoxve/commit/b4c2423205dcc5fe632999ea605e9da7007c94b3))
+* **deps:** update dependency go to v1.22.6 ([f7af2f7](https://github.com/muhlba91/pulumi-proxmoxve/commit/f7af2f71461a38592a68458fbbc07a3c434b66a7))
+* **deps:** update gradle/actions action to v4 ([9ed6ff8](https://github.com/muhlba91/pulumi-proxmoxve/commit/9ed6ff81918e77b8520d69eaa32226bd70ea5689))
+* **deps:** update module github.com/pulumi/pulumi-terraform-bridge/pf to v0.40.0 ([33349df](https://github.com/muhlba91/pulumi-proxmoxve/commit/33349df3601de78508bea9dc9ec9ef4031891125))
+* **deps:** update module github.com/pulumi/pulumi-terraform-bridge/pf to v0.41.0 ([f249246](https://github.com/muhlba91/pulumi-proxmoxve/commit/f249246856cd941fa962177fd6d515d624cbd280))
+* **deps:** update module github.com/pulumi/pulumi-terraform-bridge/v3 to v3.87.0 ([1e144fd](https://github.com/muhlba91/pulumi-proxmoxve/commit/1e144fde3ca0fa947b9beb0667b57c6b17db743f))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.124.0 ([59353eb](https://github.com/muhlba91/pulumi-proxmoxve/commit/59353eb536ac798af698c2cd89aaee5f372a293a))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.125.0 ([396ff28](https://github.com/muhlba91/pulumi-proxmoxve/commit/396ff28d5cd4cd45df939d15206818368d76f1f9))
+* **deps:** update sdk dependencies ([74e6848](https://github.com/muhlba91/pulumi-proxmoxve/commit/74e6848372bdc715e3ef6db144652a634db984eb))
+* **deps:** update sigstore/cosign-installer action to v3.6.0 ([7e295d8](https://github.com/muhlba91/pulumi-proxmoxve/commit/7e295d88c4e3066690f63ede322e30ae06b67959))
+
 ## [6.11.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.11.0...v6.11.1) (2024-07-12)
 
 
