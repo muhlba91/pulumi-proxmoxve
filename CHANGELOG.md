@@ -1,6 +1,15 @@
 # Changelog
 
 
+## [6.12.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.12.0...v6.12.1) (2024-08-08)
+
+
+### Miscellaneous Chores
+
+* **ci:** migrate release-please-action ([12f89ee](https://github.com/muhlba91/pulumi-proxmoxve/commit/12f89eef80bd811276e839f13722a87c4a48d4ed))
+* **ci:** move attestations to stable ([ac4b1d6](https://github.com/muhlba91/pulumi-proxmoxve/commit/ac4b1d66d2f54aa53273931eca6793ce74df2034))
+* **ci:** update golangci-lint ([eee67ab](https://github.com/muhlba91/pulumi-proxmoxve/commit/eee67ab60524d658dac8b7d8953355d31aa29d40))
+
 ## [6.12.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.11.1...v6.12.0) (2024-08-08)
 
 
