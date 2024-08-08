@@ -207,6 +207,7 @@ jobs:
         working-directory: sdk/java
         run: gradle publishToSonatype closeAndReleaseSonatypeStagingRepository
         if: matrix.language == 'java'
+        continue-on-error: true # Java SDK publishing is in alpha stage
 
   tag_sdk:
     if: needs.release.outputs.release_created
