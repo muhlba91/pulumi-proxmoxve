@@ -139,11 +139,18 @@ public class Usb extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Usb(String name, UsbArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("proxmoxve:Hardware/mapping/usb:Usb", name, args == null ? UsbArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("proxmoxve:Hardware/mapping/usb:Usb", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Usb(String name, Output<String> id, @Nullable UsbState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("proxmoxve:Hardware/mapping/usb:Usb", name, state, makeResourceOptions(options, id));
+    }
+
+    private static UsbArgs makeArgs(UsbArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? UsbArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

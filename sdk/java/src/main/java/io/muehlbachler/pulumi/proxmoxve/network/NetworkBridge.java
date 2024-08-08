@@ -251,11 +251,18 @@ public class NetworkBridge extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public NetworkBridge(String name, NetworkBridgeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("proxmoxve:Network/networkBridge:NetworkBridge", name, args == null ? NetworkBridgeArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("proxmoxve:Network/networkBridge:NetworkBridge", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private NetworkBridge(String name, Output<String> id, @Nullable NetworkBridgeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("proxmoxve:Network/networkBridge:NetworkBridge", name, state, makeResourceOptions(options, id));
+    }
+
+    private static NetworkBridgeArgs makeArgs(NetworkBridgeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NetworkBridgeArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

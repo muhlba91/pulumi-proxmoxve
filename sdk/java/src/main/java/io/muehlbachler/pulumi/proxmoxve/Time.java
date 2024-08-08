@@ -144,11 +144,18 @@ public class Time extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Time(String name, TimeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("proxmoxve:index/time:Time", name, args == null ? TimeArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("proxmoxve:index/time:Time", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Time(String name, Output<String> id, @Nullable TimeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("proxmoxve:index/time:Time", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TimeArgs makeArgs(TimeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TimeArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

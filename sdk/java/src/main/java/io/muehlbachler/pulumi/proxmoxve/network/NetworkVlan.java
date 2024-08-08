@@ -254,11 +254,18 @@ public class NetworkVlan extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public NetworkVlan(String name, NetworkVlanArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("proxmoxve:Network/networkVlan:NetworkVlan", name, args == null ? NetworkVlanArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("proxmoxve:Network/networkVlan:NetworkVlan", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private NetworkVlan(String name, Output<String> id, @Nullable NetworkVlanState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("proxmoxve:Network/networkVlan:NetworkVlan", name, state, makeResourceOptions(options, id));
+    }
+
+    private static NetworkVlanArgs makeArgs(NetworkVlanArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NetworkVlanArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

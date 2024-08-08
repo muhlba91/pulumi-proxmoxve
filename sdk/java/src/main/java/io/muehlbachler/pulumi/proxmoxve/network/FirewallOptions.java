@@ -296,11 +296,18 @@ public class FirewallOptions extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public FirewallOptions(String name, FirewallOptionsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("proxmoxve:Network/firewallOptions:FirewallOptions", name, args == null ? FirewallOptionsArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("proxmoxve:Network/firewallOptions:FirewallOptions", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private FirewallOptions(String name, Output<String> id, @Nullable FirewallOptionsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("proxmoxve:Network/firewallOptions:FirewallOptions", name, state, makeResourceOptions(options, id));
+    }
+
+    private static FirewallOptionsArgs makeArgs(FirewallOptionsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FirewallOptionsArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

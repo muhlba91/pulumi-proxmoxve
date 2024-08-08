@@ -193,11 +193,18 @@ public class HAResource extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public HAResource(String name, HAResourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("proxmoxve:HA/hAResource:HAResource", name, args == null ? HAResourceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("proxmoxve:HA/hAResource:HAResource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private HAResource(String name, Output<String> id, @Nullable HAResourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("proxmoxve:HA/hAResource:HAResource", name, state, makeResourceOptions(options, id));
+    }
+
+    private static HAResourceArgs makeArgs(HAResourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HAResourceArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

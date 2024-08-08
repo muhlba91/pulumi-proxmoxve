@@ -204,11 +204,18 @@ public class AcmeAccount extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AcmeAccount(String name, AcmeAccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("proxmoxve:index/acmeAccount:AcmeAccount", name, args == null ? AcmeAccountArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("proxmoxve:index/acmeAccount:AcmeAccount", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AcmeAccount(String name, Output<String> id, @Nullable AcmeAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("proxmoxve:index/acmeAccount:AcmeAccount", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AcmeAccountArgs makeArgs(AcmeAccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AcmeAccountArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

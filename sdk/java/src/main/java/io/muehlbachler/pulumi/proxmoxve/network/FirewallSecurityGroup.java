@@ -197,11 +197,18 @@ public class FirewallSecurityGroup extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public FirewallSecurityGroup(String name, FirewallSecurityGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("proxmoxve:Network/firewallSecurityGroup:FirewallSecurityGroup", name, args == null ? FirewallSecurityGroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("proxmoxve:Network/firewallSecurityGroup:FirewallSecurityGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private FirewallSecurityGroup(String name, Output<String> id, @Nullable FirewallSecurityGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("proxmoxve:Network/firewallSecurityGroup:FirewallSecurityGroup", name, state, makeResourceOptions(options, id));
+    }
+
+    private static FirewallSecurityGroupArgs makeArgs(FirewallSecurityGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FirewallSecurityGroupArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

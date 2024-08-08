@@ -449,11 +449,18 @@ public class Container extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Container(String name, ContainerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("proxmoxve:CT/container:Container", name, args == null ? ContainerArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("proxmoxve:CT/container:Container", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Container(String name, Output<String> id, @Nullable ContainerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("proxmoxve:CT/container:Container", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ContainerArgs makeArgs(ContainerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ContainerArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

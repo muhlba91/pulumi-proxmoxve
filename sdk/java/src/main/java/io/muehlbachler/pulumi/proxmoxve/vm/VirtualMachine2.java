@@ -206,11 +206,18 @@ public class VirtualMachine2 extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public VirtualMachine2(String name, VirtualMachine2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("proxmoxve:VM/virtualMachine2:VirtualMachine2", name, args == null ? VirtualMachine2Args.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("proxmoxve:VM/virtualMachine2:VirtualMachine2", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private VirtualMachine2(String name, Output<String> id, @Nullable VirtualMachine2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("proxmoxve:VM/virtualMachine2:VirtualMachine2", name, state, makeResourceOptions(options, id));
+    }
+
+    private static VirtualMachine2Args makeArgs(VirtualMachine2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? VirtualMachine2Args.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -44,7 +44,7 @@ repositories {
 dependencies {
     implementation("com.google.code.findbugs:jsr305:3.0.2")
     implementation("com.google.code.gson:gson:2.8.9")
-    implementation("com.pulumi:pulumi:0.12.0")
+    implementation("com.pulumi:pulumi:0.13.0")
 }
 
 task sourcesJar(type: Jar) {
@@ -68,6 +68,7 @@ def genPulumiResources = tasks.register('genPulumiResources') {
         def info = new Object()
         info.metaClass.resource = true
         info.metaClass.name = "proxmoxve"
+        info.metaClass.server = "github://api.github.com/muhlba91/pulumi-proxmoxve"
         info.metaClass.version = resolvedVersion
         def infoJson = new groovy.json.JsonBuilder(info).toPrettyString()
         new File(outDir, "plugin.json").text = infoJson

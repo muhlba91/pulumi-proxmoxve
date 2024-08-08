@@ -169,11 +169,18 @@ public class HAGroup extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public HAGroup(String name, HAGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("proxmoxve:HA/hAGroup:HAGroup", name, args == null ? HAGroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("proxmoxve:HA/hAGroup:HAGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private HAGroup(String name, Output<String> id, @Nullable HAGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("proxmoxve:HA/hAGroup:HAGroup", name, state, makeResourceOptions(options, id));
+    }
+
+    private static HAGroupArgs makeArgs(HAGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HAGroupArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

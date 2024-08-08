@@ -176,11 +176,18 @@ public class FirewallAlias extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public FirewallAlias(String name, FirewallAliasArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("proxmoxve:Network/firewallAlias:FirewallAlias", name, args == null ? FirewallAliasArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("proxmoxve:Network/firewallAlias:FirewallAlias", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private FirewallAlias(String name, Output<String> id, @Nullable FirewallAliasState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("proxmoxve:Network/firewallAlias:FirewallAlias", name, state, makeResourceOptions(options, id));
+    }
+
+    private static FirewallAliasArgs makeArgs(FirewallAliasArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FirewallAliasArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
