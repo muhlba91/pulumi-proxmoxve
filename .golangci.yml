@@ -7,16 +7,18 @@ linters:
     - govet
     - ineffassign
     - lll
-    - megacheck
+    - gosimple
+    - staticcheck
     - misspell
     - unconvert
     - unused
   enable-all: false
+issues:
+  exclude-files:
+    - schema.go
+    - pulumiManifest.go
 linters-settings:
   lll:
     line-length: 150
 run:
-  skip-files:
-    - schema.go
-    - pulumiManifest.go
   timeout: 10m
