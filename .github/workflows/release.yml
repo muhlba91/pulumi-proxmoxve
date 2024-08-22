@@ -201,7 +201,9 @@ jobs:
         if: matrix.language == 'nodejs'
 
       - name: Java PACKAGE_VERSION
-        run: echo "PACKAGE_VERSION=$(pulumictl get version --language generic)" >> $GITHUB_ENV
+        run: |
+          REF_NAME=`git describe --abbrev=0 --tags`
+          echo "PACKAGE_VERSION=${REF_NAME:1}" >> $GITHUB_ENV
         if: matrix.language == 'java'
       - name: Publish Java SDK
         working-directory: sdk/java
