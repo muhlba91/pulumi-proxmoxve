@@ -217,7 +217,7 @@ class Pool(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             comment: Optional[pulumi.Input[str]] = None,
-            members: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PoolMemberArgs']]]]] = None,
+            members: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PoolMemberArgs', 'PoolMemberArgsDict']]]]] = None,
             pool_id: Optional[pulumi.Input[str]] = None) -> 'Pool':
         """
         Get an existing Pool resource's state with the given name, id, and optional extra
@@ -227,7 +227,7 @@ class Pool(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: The pool comment.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PoolMemberArgs']]]] members: The pool members.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PoolMemberArgs', 'PoolMemberArgsDict']]]] members: The pool members.
         :param pulumi.Input[str] pool_id: The pool identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

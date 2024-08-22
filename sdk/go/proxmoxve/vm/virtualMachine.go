@@ -52,7 +52,7 @@ type VirtualMachine struct {
 	// The efi disk device (required if `bios` is set
 	// to `ovmf`)
 	EfiDisk VirtualMachineEfiDiskPtrOutput `pulumi:"efiDisk"`
-	// The identifier for a file containing a hook script (needs to be executable).
+	// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
 	HookScriptFileId pulumi.StringPtrOutput `pulumi:"hookScriptFileId"`
 	// A host PCI device mapping (multiple blocks supported).
 	Hostpcis VirtualMachineHostpciArrayOutput `pulumi:"hostpcis"`
@@ -218,7 +218,7 @@ type virtualMachineState struct {
 	// The efi disk device (required if `bios` is set
 	// to `ovmf`)
 	EfiDisk *VirtualMachineEfiDisk `pulumi:"efiDisk"`
-	// The identifier for a file containing a hook script (needs to be executable).
+	// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
 	HookScriptFileId *string `pulumi:"hookScriptFileId"`
 	// A host PCI device mapping (multiple blocks supported).
 	Hostpcis []VirtualMachineHostpci `pulumi:"hostpcis"`
@@ -352,7 +352,7 @@ type VirtualMachineState struct {
 	// The efi disk device (required if `bios` is set
 	// to `ovmf`)
 	EfiDisk VirtualMachineEfiDiskPtrInput
-	// The identifier for a file containing a hook script (needs to be executable).
+	// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
 	HookScriptFileId pulumi.StringPtrInput
 	// A host PCI device mapping (multiple blocks supported).
 	Hostpcis VirtualMachineHostpciArrayInput
@@ -490,7 +490,7 @@ type virtualMachineArgs struct {
 	// The efi disk device (required if `bios` is set
 	// to `ovmf`)
 	EfiDisk *VirtualMachineEfiDisk `pulumi:"efiDisk"`
-	// The identifier for a file containing a hook script (needs to be executable).
+	// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
 	HookScriptFileId *string `pulumi:"hookScriptFileId"`
 	// A host PCI device mapping (multiple blocks supported).
 	Hostpcis []VirtualMachineHostpci `pulumi:"hostpcis"`
@@ -616,7 +616,7 @@ type VirtualMachineArgs struct {
 	// The efi disk device (required if `bios` is set
 	// to `ovmf`)
 	EfiDisk VirtualMachineEfiDiskPtrInput
-	// The identifier for a file containing a hook script (needs to be executable).
+	// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
 	HookScriptFileId pulumi.StringPtrInput
 	// A host PCI device mapping (multiple blocks supported).
 	Hostpcis VirtualMachineHostpciArrayInput
@@ -860,7 +860,7 @@ func (o VirtualMachineOutput) EfiDisk() VirtualMachineEfiDiskPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineEfiDiskPtrOutput { return v.EfiDisk }).(VirtualMachineEfiDiskPtrOutput)
 }
 
-// The identifier for a file containing a hook script (needs to be executable).
+// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
 func (o VirtualMachineOutput) HookScriptFileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.HookScriptFileId }).(pulumi.StringPtrOutput)
 }

@@ -229,7 +229,7 @@ class FirewallSecurityGroup(pulumi.CustomResource):
                  container_id: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallSecurityGroupRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallSecurityGroupRuleArgs', 'FirewallSecurityGroupRuleArgsDict']]]]] = None,
                  vm_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -246,24 +246,24 @@ class FirewallSecurityGroup(pulumi.CustomResource):
         webserver = proxmoxve.network.FirewallSecurityGroup("webserver",
             comment="Managed by Terraform",
             rules=[
-                proxmoxve.network.FirewallSecurityGroupRuleArgs(
-                    action="ACCEPT",
-                    comment="Allow HTTP",
-                    dest="192.168.1.5",
-                    dport="80",
-                    log="info",
-                    proto="tcp",
-                    type="in",
-                ),
-                proxmoxve.network.FirewallSecurityGroupRuleArgs(
-                    action="ACCEPT",
-                    comment="Allow HTTPS",
-                    dest="192.168.1.5",
-                    dport="443",
-                    log="info",
-                    proto="tcp",
-                    type="in",
-                ),
+                {
+                    "action": "ACCEPT",
+                    "comment": "Allow HTTP",
+                    "dest": "192.168.1.5",
+                    "dport": "80",
+                    "log": "info",
+                    "proto": "tcp",
+                    "type": "in",
+                },
+                {
+                    "action": "ACCEPT",
+                    "comment": "Allow HTTPS",
+                    "dest": "192.168.1.5",
+                    "dport": "443",
+                    "log": "info",
+                    "proto": "tcp",
+                    "type": "in",
+                },
             ])
         ```
 
@@ -283,7 +283,7 @@ class FirewallSecurityGroup(pulumi.CustomResource):
         :param pulumi.Input[int] container_id: The ID of the container to manage the firewall for.
         :param pulumi.Input[str] name: Security group name.
         :param pulumi.Input[str] node_name: The name of the node.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallSecurityGroupRuleArgs']]]] rules: Firewall rule block (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallSecurityGroupRuleArgs', 'FirewallSecurityGroupRuleArgsDict']]]] rules: Firewall rule block (multiple blocks supported).
         :param pulumi.Input[int] vm_id: The ID of the VM to manage the firewall for.
         """
         ...
@@ -306,24 +306,24 @@ class FirewallSecurityGroup(pulumi.CustomResource):
         webserver = proxmoxve.network.FirewallSecurityGroup("webserver",
             comment="Managed by Terraform",
             rules=[
-                proxmoxve.network.FirewallSecurityGroupRuleArgs(
-                    action="ACCEPT",
-                    comment="Allow HTTP",
-                    dest="192.168.1.5",
-                    dport="80",
-                    log="info",
-                    proto="tcp",
-                    type="in",
-                ),
-                proxmoxve.network.FirewallSecurityGroupRuleArgs(
-                    action="ACCEPT",
-                    comment="Allow HTTPS",
-                    dest="192.168.1.5",
-                    dport="443",
-                    log="info",
-                    proto="tcp",
-                    type="in",
-                ),
+                {
+                    "action": "ACCEPT",
+                    "comment": "Allow HTTP",
+                    "dest": "192.168.1.5",
+                    "dport": "80",
+                    "log": "info",
+                    "proto": "tcp",
+                    "type": "in",
+                },
+                {
+                    "action": "ACCEPT",
+                    "comment": "Allow HTTPS",
+                    "dest": "192.168.1.5",
+                    "dport": "443",
+                    "log": "info",
+                    "proto": "tcp",
+                    "type": "in",
+                },
             ])
         ```
 
@@ -356,7 +356,7 @@ class FirewallSecurityGroup(pulumi.CustomResource):
                  container_id: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallSecurityGroupRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallSecurityGroupRuleArgs', 'FirewallSecurityGroupRuleArgsDict']]]]] = None,
                  vm_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -389,7 +389,7 @@ class FirewallSecurityGroup(pulumi.CustomResource):
             container_id: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             node_name: Optional[pulumi.Input[str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallSecurityGroupRuleArgs']]]]] = None,
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallSecurityGroupRuleArgs', 'FirewallSecurityGroupRuleArgsDict']]]]] = None,
             vm_id: Optional[pulumi.Input[int]] = None) -> 'FirewallSecurityGroup':
         """
         Get an existing FirewallSecurityGroup resource's state with the given name, id, and optional extra
@@ -402,7 +402,7 @@ class FirewallSecurityGroup(pulumi.CustomResource):
         :param pulumi.Input[int] container_id: The ID of the container to manage the firewall for.
         :param pulumi.Input[str] name: Security group name.
         :param pulumi.Input[str] node_name: The name of the node.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallSecurityGroupRuleArgs']]]] rules: Firewall rule block (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallSecurityGroupRuleArgs', 'FirewallSecurityGroupRuleArgsDict']]]] rules: Firewall rule block (multiple blocks supported).
         :param pulumi.Input[int] vm_id: The ID of the VM to manage the firewall for.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

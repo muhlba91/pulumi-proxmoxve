@@ -51,7 +51,7 @@ class ContainerArgs:
         :param pulumi.Input[str] description: The description.
         :param pulumi.Input['ContainerDiskArgs'] disk: The disk configuration.
         :param pulumi.Input['ContainerFeaturesArgs'] features: The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
-        :param pulumi.Input[str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable).
+        :param pulumi.Input[str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
         :param pulumi.Input['ContainerInitializationArgs'] initialization: The initialization configuration.
         :param pulumi.Input['ContainerMemoryArgs'] memory: The memory configuration.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerMountPointArgs']]] mount_points: A mount point
@@ -221,7 +221,7 @@ class ContainerArgs:
     @pulumi.getter(name="hookScriptFileId")
     def hook_script_file_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The identifier for a file containing a hook script (needs to be executable).
+        The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
         """
         return pulumi.get(self, "hook_script_file_id")
 
@@ -491,7 +491,7 @@ class _ContainerState:
         :param pulumi.Input[str] description: The description.
         :param pulumi.Input['ContainerDiskArgs'] disk: The disk configuration.
         :param pulumi.Input['ContainerFeaturesArgs'] features: The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
-        :param pulumi.Input[str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable).
+        :param pulumi.Input[str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
         :param pulumi.Input['ContainerInitializationArgs'] initialization: The initialization configuration.
         :param pulumi.Input['ContainerMemoryArgs'] memory: The memory configuration.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerMountPointArgs']]] mount_points: A mount point
@@ -651,7 +651,7 @@ class _ContainerState:
     @pulumi.getter(name="hookScriptFileId")
     def hook_script_file_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The identifier for a file containing a hook script (needs to be executable).
+        The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
         """
         return pulumi.get(self, "hook_script_file_id")
 
@@ -901,23 +901,23 @@ class Container(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 clone: Optional[pulumi.Input[pulumi.InputType['ContainerCloneArgs']]] = None,
-                 console: Optional[pulumi.Input[pulumi.InputType['ContainerConsoleArgs']]] = None,
-                 cpu: Optional[pulumi.Input[pulumi.InputType['ContainerCpuArgs']]] = None,
+                 clone: Optional[pulumi.Input[Union['ContainerCloneArgs', 'ContainerCloneArgsDict']]] = None,
+                 console: Optional[pulumi.Input[Union['ContainerConsoleArgs', 'ContainerConsoleArgsDict']]] = None,
+                 cpu: Optional[pulumi.Input[Union['ContainerCpuArgs', 'ContainerCpuArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 disk: Optional[pulumi.Input[pulumi.InputType['ContainerDiskArgs']]] = None,
-                 features: Optional[pulumi.Input[pulumi.InputType['ContainerFeaturesArgs']]] = None,
+                 disk: Optional[pulumi.Input[Union['ContainerDiskArgs', 'ContainerDiskArgsDict']]] = None,
+                 features: Optional[pulumi.Input[Union['ContainerFeaturesArgs', 'ContainerFeaturesArgsDict']]] = None,
                  hook_script_file_id: Optional[pulumi.Input[str]] = None,
-                 initialization: Optional[pulumi.Input[pulumi.InputType['ContainerInitializationArgs']]] = None,
-                 memory: Optional[pulumi.Input[pulumi.InputType['ContainerMemoryArgs']]] = None,
-                 mount_points: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerMountPointArgs']]]]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerNetworkInterfaceArgs']]]]] = None,
+                 initialization: Optional[pulumi.Input[Union['ContainerInitializationArgs', 'ContainerInitializationArgsDict']]] = None,
+                 memory: Optional[pulumi.Input[Union['ContainerMemoryArgs', 'ContainerMemoryArgsDict']]] = None,
+                 mount_points: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerMountPointArgs', 'ContainerMountPointArgsDict']]]]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerNetworkInterfaceArgs', 'ContainerNetworkInterfaceArgsDict']]]]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
-                 operating_system: Optional[pulumi.Input[pulumi.InputType['ContainerOperatingSystemArgs']]] = None,
+                 operating_system: Optional[pulumi.Input[Union['ContainerOperatingSystemArgs', 'ContainerOperatingSystemArgsDict']]] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
                  start_on_boot: Optional[pulumi.Input[bool]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
-                 startup: Optional[pulumi.Input[pulumi.InputType['ContainerStartupArgs']]] = None,
+                 startup: Optional[pulumi.Input[Union['ContainerStartupArgs', 'ContainerStartupArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
                  timeout_clone: Optional[pulumi.Input[int]] = None,
@@ -943,25 +943,25 @@ class Container(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ContainerCloneArgs']] clone: The cloning configuration.
-        :param pulumi.Input[pulumi.InputType['ContainerConsoleArgs']] console: The console configuration.
-        :param pulumi.Input[pulumi.InputType['ContainerCpuArgs']] cpu: The CPU configuration.
+        :param pulumi.Input[Union['ContainerCloneArgs', 'ContainerCloneArgsDict']] clone: The cloning configuration.
+        :param pulumi.Input[Union['ContainerConsoleArgs', 'ContainerConsoleArgsDict']] console: The console configuration.
+        :param pulumi.Input[Union['ContainerCpuArgs', 'ContainerCpuArgsDict']] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description.
-        :param pulumi.Input[pulumi.InputType['ContainerDiskArgs']] disk: The disk configuration.
-        :param pulumi.Input[pulumi.InputType['ContainerFeaturesArgs']] features: The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
-        :param pulumi.Input[str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable).
-        :param pulumi.Input[pulumi.InputType['ContainerInitializationArgs']] initialization: The initialization configuration.
-        :param pulumi.Input[pulumi.InputType['ContainerMemoryArgs']] memory: The memory configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerMountPointArgs']]]] mount_points: A mount point
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerNetworkInterfaceArgs']]]] network_interfaces: A network interface (multiple blocks
+        :param pulumi.Input[Union['ContainerDiskArgs', 'ContainerDiskArgsDict']] disk: The disk configuration.
+        :param pulumi.Input[Union['ContainerFeaturesArgs', 'ContainerFeaturesArgsDict']] features: The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
+        :param pulumi.Input[str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
+        :param pulumi.Input[Union['ContainerInitializationArgs', 'ContainerInitializationArgsDict']] initialization: The initialization configuration.
+        :param pulumi.Input[Union['ContainerMemoryArgs', 'ContainerMemoryArgsDict']] memory: The memory configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerMountPointArgs', 'ContainerMountPointArgsDict']]]] mount_points: A mount point
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerNetworkInterfaceArgs', 'ContainerNetworkInterfaceArgsDict']]]] network_interfaces: A network interface (multiple blocks
                supported).
         :param pulumi.Input[str] node_name: The name of the node to assign the container to.
-        :param pulumi.Input[pulumi.InputType['ContainerOperatingSystemArgs']] operating_system: The Operating System configuration.
+        :param pulumi.Input[Union['ContainerOperatingSystemArgs', 'ContainerOperatingSystemArgsDict']] operating_system: The Operating System configuration.
         :param pulumi.Input[str] pool_id: The identifier for a pool to assign the container to.
         :param pulumi.Input[bool] start_on_boot: Automatically start container when the host
                system boots (defaults to `true`).
         :param pulumi.Input[bool] started: Whether to start the container (defaults to `true`).
-        :param pulumi.Input[pulumi.InputType['ContainerStartupArgs']] startup: Defines startup and shutdown behavior of the container.
+        :param pulumi.Input[Union['ContainerStartupArgs', 'ContainerStartupArgsDict']] startup: Defines startup and shutdown behavior of the container.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags the container tags. This is only meta
                information (defaults to `[]`). Note: Proxmox always sorts the container tags.
                If the list in template is not sorted, then Proxmox will always report a
@@ -1011,23 +1011,23 @@ class Container(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 clone: Optional[pulumi.Input[pulumi.InputType['ContainerCloneArgs']]] = None,
-                 console: Optional[pulumi.Input[pulumi.InputType['ContainerConsoleArgs']]] = None,
-                 cpu: Optional[pulumi.Input[pulumi.InputType['ContainerCpuArgs']]] = None,
+                 clone: Optional[pulumi.Input[Union['ContainerCloneArgs', 'ContainerCloneArgsDict']]] = None,
+                 console: Optional[pulumi.Input[Union['ContainerConsoleArgs', 'ContainerConsoleArgsDict']]] = None,
+                 cpu: Optional[pulumi.Input[Union['ContainerCpuArgs', 'ContainerCpuArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 disk: Optional[pulumi.Input[pulumi.InputType['ContainerDiskArgs']]] = None,
-                 features: Optional[pulumi.Input[pulumi.InputType['ContainerFeaturesArgs']]] = None,
+                 disk: Optional[pulumi.Input[Union['ContainerDiskArgs', 'ContainerDiskArgsDict']]] = None,
+                 features: Optional[pulumi.Input[Union['ContainerFeaturesArgs', 'ContainerFeaturesArgsDict']]] = None,
                  hook_script_file_id: Optional[pulumi.Input[str]] = None,
-                 initialization: Optional[pulumi.Input[pulumi.InputType['ContainerInitializationArgs']]] = None,
-                 memory: Optional[pulumi.Input[pulumi.InputType['ContainerMemoryArgs']]] = None,
-                 mount_points: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerMountPointArgs']]]]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerNetworkInterfaceArgs']]]]] = None,
+                 initialization: Optional[pulumi.Input[Union['ContainerInitializationArgs', 'ContainerInitializationArgsDict']]] = None,
+                 memory: Optional[pulumi.Input[Union['ContainerMemoryArgs', 'ContainerMemoryArgsDict']]] = None,
+                 mount_points: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerMountPointArgs', 'ContainerMountPointArgsDict']]]]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerNetworkInterfaceArgs', 'ContainerNetworkInterfaceArgsDict']]]]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
-                 operating_system: Optional[pulumi.Input[pulumi.InputType['ContainerOperatingSystemArgs']]] = None,
+                 operating_system: Optional[pulumi.Input[Union['ContainerOperatingSystemArgs', 'ContainerOperatingSystemArgsDict']]] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
                  start_on_boot: Optional[pulumi.Input[bool]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
-                 startup: Optional[pulumi.Input[pulumi.InputType['ContainerStartupArgs']]] = None,
+                 startup: Optional[pulumi.Input[Union['ContainerStartupArgs', 'ContainerStartupArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
                  timeout_clone: Optional[pulumi.Input[int]] = None,
@@ -1084,23 +1084,23 @@ class Container(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            clone: Optional[pulumi.Input[pulumi.InputType['ContainerCloneArgs']]] = None,
-            console: Optional[pulumi.Input[pulumi.InputType['ContainerConsoleArgs']]] = None,
-            cpu: Optional[pulumi.Input[pulumi.InputType['ContainerCpuArgs']]] = None,
+            clone: Optional[pulumi.Input[Union['ContainerCloneArgs', 'ContainerCloneArgsDict']]] = None,
+            console: Optional[pulumi.Input[Union['ContainerConsoleArgs', 'ContainerConsoleArgsDict']]] = None,
+            cpu: Optional[pulumi.Input[Union['ContainerCpuArgs', 'ContainerCpuArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            disk: Optional[pulumi.Input[pulumi.InputType['ContainerDiskArgs']]] = None,
-            features: Optional[pulumi.Input[pulumi.InputType['ContainerFeaturesArgs']]] = None,
+            disk: Optional[pulumi.Input[Union['ContainerDiskArgs', 'ContainerDiskArgsDict']]] = None,
+            features: Optional[pulumi.Input[Union['ContainerFeaturesArgs', 'ContainerFeaturesArgsDict']]] = None,
             hook_script_file_id: Optional[pulumi.Input[str]] = None,
-            initialization: Optional[pulumi.Input[pulumi.InputType['ContainerInitializationArgs']]] = None,
-            memory: Optional[pulumi.Input[pulumi.InputType['ContainerMemoryArgs']]] = None,
-            mount_points: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerMountPointArgs']]]]] = None,
-            network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerNetworkInterfaceArgs']]]]] = None,
+            initialization: Optional[pulumi.Input[Union['ContainerInitializationArgs', 'ContainerInitializationArgsDict']]] = None,
+            memory: Optional[pulumi.Input[Union['ContainerMemoryArgs', 'ContainerMemoryArgsDict']]] = None,
+            mount_points: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerMountPointArgs', 'ContainerMountPointArgsDict']]]]] = None,
+            network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerNetworkInterfaceArgs', 'ContainerNetworkInterfaceArgsDict']]]]] = None,
             node_name: Optional[pulumi.Input[str]] = None,
-            operating_system: Optional[pulumi.Input[pulumi.InputType['ContainerOperatingSystemArgs']]] = None,
+            operating_system: Optional[pulumi.Input[Union['ContainerOperatingSystemArgs', 'ContainerOperatingSystemArgsDict']]] = None,
             pool_id: Optional[pulumi.Input[str]] = None,
             start_on_boot: Optional[pulumi.Input[bool]] = None,
             started: Optional[pulumi.Input[bool]] = None,
-            startup: Optional[pulumi.Input[pulumi.InputType['ContainerStartupArgs']]] = None,
+            startup: Optional[pulumi.Input[Union['ContainerStartupArgs', 'ContainerStartupArgsDict']]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             template: Optional[pulumi.Input[bool]] = None,
             timeout_clone: Optional[pulumi.Input[int]] = None,
@@ -1117,25 +1117,25 @@ class Container(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ContainerCloneArgs']] clone: The cloning configuration.
-        :param pulumi.Input[pulumi.InputType['ContainerConsoleArgs']] console: The console configuration.
-        :param pulumi.Input[pulumi.InputType['ContainerCpuArgs']] cpu: The CPU configuration.
+        :param pulumi.Input[Union['ContainerCloneArgs', 'ContainerCloneArgsDict']] clone: The cloning configuration.
+        :param pulumi.Input[Union['ContainerConsoleArgs', 'ContainerConsoleArgsDict']] console: The console configuration.
+        :param pulumi.Input[Union['ContainerCpuArgs', 'ContainerCpuArgsDict']] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description.
-        :param pulumi.Input[pulumi.InputType['ContainerDiskArgs']] disk: The disk configuration.
-        :param pulumi.Input[pulumi.InputType['ContainerFeaturesArgs']] features: The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
-        :param pulumi.Input[str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable).
-        :param pulumi.Input[pulumi.InputType['ContainerInitializationArgs']] initialization: The initialization configuration.
-        :param pulumi.Input[pulumi.InputType['ContainerMemoryArgs']] memory: The memory configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerMountPointArgs']]]] mount_points: A mount point
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerNetworkInterfaceArgs']]]] network_interfaces: A network interface (multiple blocks
+        :param pulumi.Input[Union['ContainerDiskArgs', 'ContainerDiskArgsDict']] disk: The disk configuration.
+        :param pulumi.Input[Union['ContainerFeaturesArgs', 'ContainerFeaturesArgsDict']] features: The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
+        :param pulumi.Input[str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
+        :param pulumi.Input[Union['ContainerInitializationArgs', 'ContainerInitializationArgsDict']] initialization: The initialization configuration.
+        :param pulumi.Input[Union['ContainerMemoryArgs', 'ContainerMemoryArgsDict']] memory: The memory configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerMountPointArgs', 'ContainerMountPointArgsDict']]]] mount_points: A mount point
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerNetworkInterfaceArgs', 'ContainerNetworkInterfaceArgsDict']]]] network_interfaces: A network interface (multiple blocks
                supported).
         :param pulumi.Input[str] node_name: The name of the node to assign the container to.
-        :param pulumi.Input[pulumi.InputType['ContainerOperatingSystemArgs']] operating_system: The Operating System configuration.
+        :param pulumi.Input[Union['ContainerOperatingSystemArgs', 'ContainerOperatingSystemArgsDict']] operating_system: The Operating System configuration.
         :param pulumi.Input[str] pool_id: The identifier for a pool to assign the container to.
         :param pulumi.Input[bool] start_on_boot: Automatically start container when the host
                system boots (defaults to `true`).
         :param pulumi.Input[bool] started: Whether to start the container (defaults to `true`).
-        :param pulumi.Input[pulumi.InputType['ContainerStartupArgs']] startup: Defines startup and shutdown behavior of the container.
+        :param pulumi.Input[Union['ContainerStartupArgs', 'ContainerStartupArgsDict']] startup: Defines startup and shutdown behavior of the container.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags the container tags. This is only meta
                information (defaults to `[]`). Note: Proxmox always sorts the container tags.
                If the list in template is not sorted, then Proxmox will always report a
@@ -1235,7 +1235,7 @@ class Container(pulumi.CustomResource):
     @pulumi.getter(name="hookScriptFileId")
     def hook_script_file_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The identifier for a file containing a hook script (needs to be executable).
+        The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
         """
         return pulumi.get(self, "hook_script_file_id")
 

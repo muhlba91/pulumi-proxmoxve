@@ -179,7 +179,7 @@ class Provider(pulumi.ProviderResource):
                  min_tls: Optional[pulumi.Input[str]] = None,
                  otp: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
-                 ssh: Optional[pulumi.Input[pulumi.InputType['ProviderSshArgs']]] = None,
+                 ssh: Optional[pulumi.Input[Union['ProviderSshArgs', 'ProviderSshArgsDict']]] = None,
                  tmp_dir: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -197,7 +197,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] min_tls: The minimum required TLS version for API calls.Supported values: `1.0|1.1|1.2|1.3`. Defaults to `1.3`.
         :param pulumi.Input[str] otp: The one-time password for the Proxmox VE API.
         :param pulumi.Input[str] password: The password for the Proxmox VE API.
-        :param pulumi.Input[pulumi.InputType['ProviderSshArgs']] ssh: The SSH configuration for the Proxmox nodes.
+        :param pulumi.Input[Union['ProviderSshArgs', 'ProviderSshArgsDict']] ssh: The SSH configuration for the Proxmox nodes.
         :param pulumi.Input[str] tmp_dir: The alternative temporary directory.
         :param pulumi.Input[str] username: The username for the Proxmox VE API.
         """
@@ -234,7 +234,7 @@ class Provider(pulumi.ProviderResource):
                  min_tls: Optional[pulumi.Input[str]] = None,
                  otp: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
-                 ssh: Optional[pulumi.Input[pulumi.InputType['ProviderSshArgs']]] = None,
+                 ssh: Optional[pulumi.Input[Union['ProviderSshArgs', 'ProviderSshArgsDict']]] = None,
                  tmp_dir: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):

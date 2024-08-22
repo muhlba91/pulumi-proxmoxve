@@ -83,7 +83,7 @@ class VirtualMachineArgs:
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]] disks: A disk (multiple blocks supported).
         :param pulumi.Input['VirtualMachineEfiDiskArgs'] efi_disk: The efi disk device (required if `bios` is set
                to `ovmf`)
-        :param pulumi.Input[str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable).
+        :param pulumi.Input[str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]] hostpcis: A host PCI device mapping (multiple blocks supported).
         :param pulumi.Input['VirtualMachineInitializationArgs'] initialization: The cloud-init configuration.
         :param pulumi.Input[str] keyboard_layout: The keyboard layout (defaults to `en-us`).
@@ -393,7 +393,7 @@ class VirtualMachineArgs:
     @pulumi.getter(name="hookScriptFileId")
     def hook_script_file_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The identifier for a file containing a hook script (needs to be executable).
+        The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
         """
         return pulumi.get(self, "hook_script_file_id")
 
@@ -935,7 +935,7 @@ class _VirtualMachineState:
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]] disks: A disk (multiple blocks supported).
         :param pulumi.Input['VirtualMachineEfiDiskArgs'] efi_disk: The efi disk device (required if `bios` is set
                to `ovmf`)
-        :param pulumi.Input[str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable).
+        :param pulumi.Input[str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]] hostpcis: A host PCI device mapping (multiple blocks supported).
         :param pulumi.Input['VirtualMachineInitializationArgs'] initialization: The cloud-init configuration.
         :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]] ipv4_addresses: The IPv4 addresses per network interface published by the
@@ -1247,7 +1247,7 @@ class _VirtualMachineState:
     @pulumi.getter(name="hookScriptFileId")
     def hook_script_file_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The identifier for a file containing a hook script (needs to be executable).
+        The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
         """
         return pulumi.get(self, "hook_script_file_id")
 
@@ -1776,39 +1776,39 @@ class VirtualMachine(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acpi: Optional[pulumi.Input[bool]] = None,
-                 agent: Optional[pulumi.Input[pulumi.InputType['VirtualMachineAgentArgs']]] = None,
-                 audio_device: Optional[pulumi.Input[pulumi.InputType['VirtualMachineAudioDeviceArgs']]] = None,
+                 agent: Optional[pulumi.Input[Union['VirtualMachineAgentArgs', 'VirtualMachineAgentArgsDict']]] = None,
+                 audio_device: Optional[pulumi.Input[Union['VirtualMachineAudioDeviceArgs', 'VirtualMachineAudioDeviceArgsDict']]] = None,
                  bios: Optional[pulumi.Input[str]] = None,
                  boot_orders: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 cdrom: Optional[pulumi.Input[pulumi.InputType['VirtualMachineCdromArgs']]] = None,
-                 clone: Optional[pulumi.Input[pulumi.InputType['VirtualMachineCloneArgs']]] = None,
-                 cpu: Optional[pulumi.Input[pulumi.InputType['VirtualMachineCpuArgs']]] = None,
+                 cdrom: Optional[pulumi.Input[Union['VirtualMachineCdromArgs', 'VirtualMachineCdromArgsDict']]] = None,
+                 clone: Optional[pulumi.Input[Union['VirtualMachineCloneArgs', 'VirtualMachineCloneArgsDict']]] = None,
+                 cpu: Optional[pulumi.Input[Union['VirtualMachineCpuArgs', 'VirtualMachineCpuArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]]] = None,
-                 efi_disk: Optional[pulumi.Input[pulumi.InputType['VirtualMachineEfiDiskArgs']]] = None,
+                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineDiskArgs', 'VirtualMachineDiskArgsDict']]]]] = None,
+                 efi_disk: Optional[pulumi.Input[Union['VirtualMachineEfiDiskArgs', 'VirtualMachineEfiDiskArgsDict']]] = None,
                  hook_script_file_id: Optional[pulumi.Input[str]] = None,
-                 hostpcis: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineHostpciArgs']]]]] = None,
-                 initialization: Optional[pulumi.Input[pulumi.InputType['VirtualMachineInitializationArgs']]] = None,
+                 hostpcis: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineHostpciArgs', 'VirtualMachineHostpciArgsDict']]]]] = None,
+                 initialization: Optional[pulumi.Input[Union['VirtualMachineInitializationArgs', 'VirtualMachineInitializationArgsDict']]] = None,
                  keyboard_layout: Optional[pulumi.Input[str]] = None,
                  kvm_arguments: Optional[pulumi.Input[str]] = None,
                  mac_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  machine: Optional[pulumi.Input[str]] = None,
-                 memory: Optional[pulumi.Input[pulumi.InputType['VirtualMachineMemoryArgs']]] = None,
+                 memory: Optional[pulumi.Input[Union['VirtualMachineMemoryArgs', 'VirtualMachineMemoryArgsDict']]] = None,
                  migrate: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNetworkDeviceArgs']]]]] = None,
+                 network_devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineNetworkDeviceArgs', 'VirtualMachineNetworkDeviceArgsDict']]]]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
-                 numas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNumaArgs']]]]] = None,
+                 numas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineNumaArgs', 'VirtualMachineNumaArgsDict']]]]] = None,
                  on_boot: Optional[pulumi.Input[bool]] = None,
-                 operating_system: Optional[pulumi.Input[pulumi.InputType['VirtualMachineOperatingSystemArgs']]] = None,
+                 operating_system: Optional[pulumi.Input[Union['VirtualMachineOperatingSystemArgs', 'VirtualMachineOperatingSystemArgsDict']]] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
                  protection: Optional[pulumi.Input[bool]] = None,
                  reboot: Optional[pulumi.Input[bool]] = None,
                  scsi_hardware: Optional[pulumi.Input[str]] = None,
-                 serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]]] = None,
-                 smbios: Optional[pulumi.Input[pulumi.InputType['VirtualMachineSmbiosArgs']]] = None,
+                 serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineSerialDeviceArgs', 'VirtualMachineSerialDeviceArgsDict']]]]] = None,
+                 smbios: Optional[pulumi.Input[Union['VirtualMachineSmbiosArgs', 'VirtualMachineSmbiosArgsDict']]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
-                 startup: Optional[pulumi.Input[pulumi.InputType['VirtualMachineStartupArgs']]] = None,
+                 startup: Optional[pulumi.Input[Union['VirtualMachineStartupArgs', 'VirtualMachineStartupArgsDict']]] = None,
                  stop_on_destroy: Optional[pulumi.Input[bool]] = None,
                  tablet_device: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1821,9 +1821,9 @@ class VirtualMachine(pulumi.CustomResource):
                  timeout_shutdown_vm: Optional[pulumi.Input[int]] = None,
                  timeout_start_vm: Optional[pulumi.Input[int]] = None,
                  timeout_stop_vm: Optional[pulumi.Input[int]] = None,
-                 tpm_state: Optional[pulumi.Input[pulumi.InputType['VirtualMachineTpmStateArgs']]] = None,
-                 usbs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineUsbArgs']]]]] = None,
-                 vga: Optional[pulumi.Input[pulumi.InputType['VirtualMachineVgaArgs']]] = None,
+                 tpm_state: Optional[pulumi.Input[Union['VirtualMachineTpmStateArgs', 'VirtualMachineTpmStateArgsDict']]] = None,
+                 usbs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineUsbArgs', 'VirtualMachineUsbArgsDict']]]]] = None,
+                 vga: Optional[pulumi.Input[Union['VirtualMachineVgaArgs', 'VirtualMachineVgaArgsDict']]] = None,
                  vm_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -1844,47 +1844,47 @@ class VirtualMachine(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] acpi: Whether to enable ACPI (defaults to `true`).
-        :param pulumi.Input[pulumi.InputType['VirtualMachineAgentArgs']] agent: The QEMU agent configuration.
-        :param pulumi.Input[pulumi.InputType['VirtualMachineAudioDeviceArgs']] audio_device: An audio device.
+        :param pulumi.Input[Union['VirtualMachineAgentArgs', 'VirtualMachineAgentArgsDict']] agent: The QEMU agent configuration.
+        :param pulumi.Input[Union['VirtualMachineAudioDeviceArgs', 'VirtualMachineAudioDeviceArgsDict']] audio_device: An audio device.
         :param pulumi.Input[str] bios: The BIOS implementation (defaults to `seabios`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] boot_orders: Specify a list of devices to boot from in the order
                they appear in the list (defaults to `[]`).
-        :param pulumi.Input[pulumi.InputType['VirtualMachineCdromArgs']] cdrom: The CDROM configuration.
-        :param pulumi.Input[pulumi.InputType['VirtualMachineCloneArgs']] clone: The cloning configuration.
-        :param pulumi.Input[pulumi.InputType['VirtualMachineCpuArgs']] cpu: The CPU configuration.
+        :param pulumi.Input[Union['VirtualMachineCdromArgs', 'VirtualMachineCdromArgsDict']] cdrom: The CDROM configuration.
+        :param pulumi.Input[Union['VirtualMachineCloneArgs', 'VirtualMachineCloneArgsDict']] clone: The cloning configuration.
+        :param pulumi.Input[Union['VirtualMachineCpuArgs', 'VirtualMachineCpuArgsDict']] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]] disks: A disk (multiple blocks supported).
-        :param pulumi.Input[pulumi.InputType['VirtualMachineEfiDiskArgs']] efi_disk: The efi disk device (required if `bios` is set
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineDiskArgs', 'VirtualMachineDiskArgsDict']]]] disks: A disk (multiple blocks supported).
+        :param pulumi.Input[Union['VirtualMachineEfiDiskArgs', 'VirtualMachineEfiDiskArgsDict']] efi_disk: The efi disk device (required if `bios` is set
                to `ovmf`)
-        :param pulumi.Input[str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineHostpciArgs']]]] hostpcis: A host PCI device mapping (multiple blocks supported).
-        :param pulumi.Input[pulumi.InputType['VirtualMachineInitializationArgs']] initialization: The cloud-init configuration.
+        :param pulumi.Input[str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineHostpciArgs', 'VirtualMachineHostpciArgsDict']]]] hostpcis: A host PCI device mapping (multiple blocks supported).
+        :param pulumi.Input[Union['VirtualMachineInitializationArgs', 'VirtualMachineInitializationArgsDict']] initialization: The cloud-init configuration.
         :param pulumi.Input[str] keyboard_layout: The keyboard layout (defaults to `en-us`).
         :param pulumi.Input[str] kvm_arguments: Arbitrary arguments passed to kvm.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] mac_addresses: The MAC addresses published by the QEMU agent with fallback
                to the network device configuration, if the agent is disabled
         :param pulumi.Input[str] machine: The VM machine type (defaults to `pc`).
-        :param pulumi.Input[pulumi.InputType['VirtualMachineMemoryArgs']] memory: The memory configuration.
+        :param pulumi.Input[Union['VirtualMachineMemoryArgs', 'VirtualMachineMemoryArgsDict']] memory: The memory configuration.
         :param pulumi.Input[bool] migrate: Migrate the VM on node change instead of re-creating
                it (defaults to `false`).
         :param pulumi.Input[str] name: The virtual machine name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNetworkDeviceArgs']]]] network_devices: A network device (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineNetworkDeviceArgs', 'VirtualMachineNetworkDeviceArgsDict']]]] network_devices: A network device (multiple blocks supported).
         :param pulumi.Input[str] node_name: The name of the node to assign the virtual machine
                to.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNumaArgs']]]] numas: The NUMA configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineNumaArgs', 'VirtualMachineNumaArgsDict']]]] numas: The NUMA configuration.
         :param pulumi.Input[bool] on_boot: Specifies whether a VM will be started during system
                boot. (defaults to `true`)
-        :param pulumi.Input[pulumi.InputType['VirtualMachineOperatingSystemArgs']] operating_system: The Operating System configuration.
+        :param pulumi.Input[Union['VirtualMachineOperatingSystemArgs', 'VirtualMachineOperatingSystemArgsDict']] operating_system: The Operating System configuration.
         :param pulumi.Input[str] pool_id: The identifier for a pool to assign the virtual machine to.
         :param pulumi.Input[bool] protection: Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
         :param pulumi.Input[bool] reboot: Reboot the VM after initial creation. (defaults to `false`)
         :param pulumi.Input[str] scsi_hardware: The SCSI hardware type (defaults to
                `virtio-scsi-pci`).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]] serial_devices: A serial device (multiple blocks supported).
-        :param pulumi.Input[pulumi.InputType['VirtualMachineSmbiosArgs']] smbios: The SMBIOS (type1) settings for the VM.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineSerialDeviceArgs', 'VirtualMachineSerialDeviceArgsDict']]]] serial_devices: A serial device (multiple blocks supported).
+        :param pulumi.Input[Union['VirtualMachineSmbiosArgs', 'VirtualMachineSmbiosArgsDict']] smbios: The SMBIOS (type1) settings for the VM.
         :param pulumi.Input[bool] started: Whether to start the virtual machine (defaults
                to `true`).
-        :param pulumi.Input[pulumi.InputType['VirtualMachineStartupArgs']] startup: Defines startup and shutdown behavior of the VM.
+        :param pulumi.Input[Union['VirtualMachineStartupArgs', 'VirtualMachineStartupArgsDict']] startup: Defines startup and shutdown behavior of the VM.
         :param pulumi.Input[bool] stop_on_destroy: Whether to stop rather than shutdown on VM destroy (defaults to `false`)
         :param pulumi.Input[bool] tablet_device: Whether to enable the USB tablet device (defaults
                to `true`).
@@ -1909,9 +1909,9 @@ class VirtualMachine(pulumi.CustomResource):
                to 1800).
         :param pulumi.Input[int] timeout_stop_vm: Timeout for stopping a VM in seconds (defaults
                to 300).
-        :param pulumi.Input[pulumi.InputType['VirtualMachineTpmStateArgs']] tpm_state: The TPM state device.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineUsbArgs']]]] usbs: A host USB device mapping (multiple blocks supported).
-        :param pulumi.Input[pulumi.InputType['VirtualMachineVgaArgs']] vga: The VGA configuration.
+        :param pulumi.Input[Union['VirtualMachineTpmStateArgs', 'VirtualMachineTpmStateArgsDict']] tpm_state: The TPM state device.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineUsbArgs', 'VirtualMachineUsbArgsDict']]]] usbs: A host USB device mapping (multiple blocks supported).
+        :param pulumi.Input[Union['VirtualMachineVgaArgs', 'VirtualMachineVgaArgsDict']] vga: The VGA configuration.
         :param pulumi.Input[int] vm_id: The VM identifier.
         """
         ...
@@ -1951,39 +1951,39 @@ class VirtualMachine(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acpi: Optional[pulumi.Input[bool]] = None,
-                 agent: Optional[pulumi.Input[pulumi.InputType['VirtualMachineAgentArgs']]] = None,
-                 audio_device: Optional[pulumi.Input[pulumi.InputType['VirtualMachineAudioDeviceArgs']]] = None,
+                 agent: Optional[pulumi.Input[Union['VirtualMachineAgentArgs', 'VirtualMachineAgentArgsDict']]] = None,
+                 audio_device: Optional[pulumi.Input[Union['VirtualMachineAudioDeviceArgs', 'VirtualMachineAudioDeviceArgsDict']]] = None,
                  bios: Optional[pulumi.Input[str]] = None,
                  boot_orders: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 cdrom: Optional[pulumi.Input[pulumi.InputType['VirtualMachineCdromArgs']]] = None,
-                 clone: Optional[pulumi.Input[pulumi.InputType['VirtualMachineCloneArgs']]] = None,
-                 cpu: Optional[pulumi.Input[pulumi.InputType['VirtualMachineCpuArgs']]] = None,
+                 cdrom: Optional[pulumi.Input[Union['VirtualMachineCdromArgs', 'VirtualMachineCdromArgsDict']]] = None,
+                 clone: Optional[pulumi.Input[Union['VirtualMachineCloneArgs', 'VirtualMachineCloneArgsDict']]] = None,
+                 cpu: Optional[pulumi.Input[Union['VirtualMachineCpuArgs', 'VirtualMachineCpuArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]]] = None,
-                 efi_disk: Optional[pulumi.Input[pulumi.InputType['VirtualMachineEfiDiskArgs']]] = None,
+                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineDiskArgs', 'VirtualMachineDiskArgsDict']]]]] = None,
+                 efi_disk: Optional[pulumi.Input[Union['VirtualMachineEfiDiskArgs', 'VirtualMachineEfiDiskArgsDict']]] = None,
                  hook_script_file_id: Optional[pulumi.Input[str]] = None,
-                 hostpcis: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineHostpciArgs']]]]] = None,
-                 initialization: Optional[pulumi.Input[pulumi.InputType['VirtualMachineInitializationArgs']]] = None,
+                 hostpcis: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineHostpciArgs', 'VirtualMachineHostpciArgsDict']]]]] = None,
+                 initialization: Optional[pulumi.Input[Union['VirtualMachineInitializationArgs', 'VirtualMachineInitializationArgsDict']]] = None,
                  keyboard_layout: Optional[pulumi.Input[str]] = None,
                  kvm_arguments: Optional[pulumi.Input[str]] = None,
                  mac_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  machine: Optional[pulumi.Input[str]] = None,
-                 memory: Optional[pulumi.Input[pulumi.InputType['VirtualMachineMemoryArgs']]] = None,
+                 memory: Optional[pulumi.Input[Union['VirtualMachineMemoryArgs', 'VirtualMachineMemoryArgsDict']]] = None,
                  migrate: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNetworkDeviceArgs']]]]] = None,
+                 network_devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineNetworkDeviceArgs', 'VirtualMachineNetworkDeviceArgsDict']]]]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
-                 numas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNumaArgs']]]]] = None,
+                 numas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineNumaArgs', 'VirtualMachineNumaArgsDict']]]]] = None,
                  on_boot: Optional[pulumi.Input[bool]] = None,
-                 operating_system: Optional[pulumi.Input[pulumi.InputType['VirtualMachineOperatingSystemArgs']]] = None,
+                 operating_system: Optional[pulumi.Input[Union['VirtualMachineOperatingSystemArgs', 'VirtualMachineOperatingSystemArgsDict']]] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
                  protection: Optional[pulumi.Input[bool]] = None,
                  reboot: Optional[pulumi.Input[bool]] = None,
                  scsi_hardware: Optional[pulumi.Input[str]] = None,
-                 serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]]] = None,
-                 smbios: Optional[pulumi.Input[pulumi.InputType['VirtualMachineSmbiosArgs']]] = None,
+                 serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineSerialDeviceArgs', 'VirtualMachineSerialDeviceArgsDict']]]]] = None,
+                 smbios: Optional[pulumi.Input[Union['VirtualMachineSmbiosArgs', 'VirtualMachineSmbiosArgsDict']]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
-                 startup: Optional[pulumi.Input[pulumi.InputType['VirtualMachineStartupArgs']]] = None,
+                 startup: Optional[pulumi.Input[Union['VirtualMachineStartupArgs', 'VirtualMachineStartupArgsDict']]] = None,
                  stop_on_destroy: Optional[pulumi.Input[bool]] = None,
                  tablet_device: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1996,9 +1996,9 @@ class VirtualMachine(pulumi.CustomResource):
                  timeout_shutdown_vm: Optional[pulumi.Input[int]] = None,
                  timeout_start_vm: Optional[pulumi.Input[int]] = None,
                  timeout_stop_vm: Optional[pulumi.Input[int]] = None,
-                 tpm_state: Optional[pulumi.Input[pulumi.InputType['VirtualMachineTpmStateArgs']]] = None,
-                 usbs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineUsbArgs']]]]] = None,
-                 vga: Optional[pulumi.Input[pulumi.InputType['VirtualMachineVgaArgs']]] = None,
+                 tpm_state: Optional[pulumi.Input[Union['VirtualMachineTpmStateArgs', 'VirtualMachineTpmStateArgsDict']]] = None,
+                 usbs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineUsbArgs', 'VirtualMachineUsbArgsDict']]]]] = None,
+                 vga: Optional[pulumi.Input[Union['VirtualMachineVgaArgs', 'VirtualMachineVgaArgsDict']]] = None,
                  vm_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -2075,42 +2075,42 @@ class VirtualMachine(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             acpi: Optional[pulumi.Input[bool]] = None,
-            agent: Optional[pulumi.Input[pulumi.InputType['VirtualMachineAgentArgs']]] = None,
-            audio_device: Optional[pulumi.Input[pulumi.InputType['VirtualMachineAudioDeviceArgs']]] = None,
+            agent: Optional[pulumi.Input[Union['VirtualMachineAgentArgs', 'VirtualMachineAgentArgsDict']]] = None,
+            audio_device: Optional[pulumi.Input[Union['VirtualMachineAudioDeviceArgs', 'VirtualMachineAudioDeviceArgsDict']]] = None,
             bios: Optional[pulumi.Input[str]] = None,
             boot_orders: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            cdrom: Optional[pulumi.Input[pulumi.InputType['VirtualMachineCdromArgs']]] = None,
-            clone: Optional[pulumi.Input[pulumi.InputType['VirtualMachineCloneArgs']]] = None,
-            cpu: Optional[pulumi.Input[pulumi.InputType['VirtualMachineCpuArgs']]] = None,
+            cdrom: Optional[pulumi.Input[Union['VirtualMachineCdromArgs', 'VirtualMachineCdromArgsDict']]] = None,
+            clone: Optional[pulumi.Input[Union['VirtualMachineCloneArgs', 'VirtualMachineCloneArgsDict']]] = None,
+            cpu: Optional[pulumi.Input[Union['VirtualMachineCpuArgs', 'VirtualMachineCpuArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]]] = None,
-            efi_disk: Optional[pulumi.Input[pulumi.InputType['VirtualMachineEfiDiskArgs']]] = None,
+            disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineDiskArgs', 'VirtualMachineDiskArgsDict']]]]] = None,
+            efi_disk: Optional[pulumi.Input[Union['VirtualMachineEfiDiskArgs', 'VirtualMachineEfiDiskArgsDict']]] = None,
             hook_script_file_id: Optional[pulumi.Input[str]] = None,
-            hostpcis: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineHostpciArgs']]]]] = None,
-            initialization: Optional[pulumi.Input[pulumi.InputType['VirtualMachineInitializationArgs']]] = None,
+            hostpcis: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineHostpciArgs', 'VirtualMachineHostpciArgsDict']]]]] = None,
+            initialization: Optional[pulumi.Input[Union['VirtualMachineInitializationArgs', 'VirtualMachineInitializationArgsDict']]] = None,
             ipv4_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]]] = None,
             ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]]] = None,
             keyboard_layout: Optional[pulumi.Input[str]] = None,
             kvm_arguments: Optional[pulumi.Input[str]] = None,
             mac_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             machine: Optional[pulumi.Input[str]] = None,
-            memory: Optional[pulumi.Input[pulumi.InputType['VirtualMachineMemoryArgs']]] = None,
+            memory: Optional[pulumi.Input[Union['VirtualMachineMemoryArgs', 'VirtualMachineMemoryArgsDict']]] = None,
             migrate: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            network_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNetworkDeviceArgs']]]]] = None,
+            network_devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineNetworkDeviceArgs', 'VirtualMachineNetworkDeviceArgsDict']]]]] = None,
             network_interface_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             node_name: Optional[pulumi.Input[str]] = None,
-            numas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNumaArgs']]]]] = None,
+            numas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineNumaArgs', 'VirtualMachineNumaArgsDict']]]]] = None,
             on_boot: Optional[pulumi.Input[bool]] = None,
-            operating_system: Optional[pulumi.Input[pulumi.InputType['VirtualMachineOperatingSystemArgs']]] = None,
+            operating_system: Optional[pulumi.Input[Union['VirtualMachineOperatingSystemArgs', 'VirtualMachineOperatingSystemArgsDict']]] = None,
             pool_id: Optional[pulumi.Input[str]] = None,
             protection: Optional[pulumi.Input[bool]] = None,
             reboot: Optional[pulumi.Input[bool]] = None,
             scsi_hardware: Optional[pulumi.Input[str]] = None,
-            serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]]] = None,
-            smbios: Optional[pulumi.Input[pulumi.InputType['VirtualMachineSmbiosArgs']]] = None,
+            serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineSerialDeviceArgs', 'VirtualMachineSerialDeviceArgsDict']]]]] = None,
+            smbios: Optional[pulumi.Input[Union['VirtualMachineSmbiosArgs', 'VirtualMachineSmbiosArgsDict']]] = None,
             started: Optional[pulumi.Input[bool]] = None,
-            startup: Optional[pulumi.Input[pulumi.InputType['VirtualMachineStartupArgs']]] = None,
+            startup: Optional[pulumi.Input[Union['VirtualMachineStartupArgs', 'VirtualMachineStartupArgsDict']]] = None,
             stop_on_destroy: Optional[pulumi.Input[bool]] = None,
             tablet_device: Optional[pulumi.Input[bool]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -2123,9 +2123,9 @@ class VirtualMachine(pulumi.CustomResource):
             timeout_shutdown_vm: Optional[pulumi.Input[int]] = None,
             timeout_start_vm: Optional[pulumi.Input[int]] = None,
             timeout_stop_vm: Optional[pulumi.Input[int]] = None,
-            tpm_state: Optional[pulumi.Input[pulumi.InputType['VirtualMachineTpmStateArgs']]] = None,
-            usbs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineUsbArgs']]]]] = None,
-            vga: Optional[pulumi.Input[pulumi.InputType['VirtualMachineVgaArgs']]] = None,
+            tpm_state: Optional[pulumi.Input[Union['VirtualMachineTpmStateArgs', 'VirtualMachineTpmStateArgsDict']]] = None,
+            usbs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineUsbArgs', 'VirtualMachineUsbArgsDict']]]]] = None,
+            vga: Optional[pulumi.Input[Union['VirtualMachineVgaArgs', 'VirtualMachineVgaArgsDict']]] = None,
             vm_id: Optional[pulumi.Input[int]] = None) -> 'VirtualMachine':
         """
         Get an existing VirtualMachine resource's state with the given name, id, and optional extra
@@ -2135,21 +2135,21 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] acpi: Whether to enable ACPI (defaults to `true`).
-        :param pulumi.Input[pulumi.InputType['VirtualMachineAgentArgs']] agent: The QEMU agent configuration.
-        :param pulumi.Input[pulumi.InputType['VirtualMachineAudioDeviceArgs']] audio_device: An audio device.
+        :param pulumi.Input[Union['VirtualMachineAgentArgs', 'VirtualMachineAgentArgsDict']] agent: The QEMU agent configuration.
+        :param pulumi.Input[Union['VirtualMachineAudioDeviceArgs', 'VirtualMachineAudioDeviceArgsDict']] audio_device: An audio device.
         :param pulumi.Input[str] bios: The BIOS implementation (defaults to `seabios`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] boot_orders: Specify a list of devices to boot from in the order
                they appear in the list (defaults to `[]`).
-        :param pulumi.Input[pulumi.InputType['VirtualMachineCdromArgs']] cdrom: The CDROM configuration.
-        :param pulumi.Input[pulumi.InputType['VirtualMachineCloneArgs']] clone: The cloning configuration.
-        :param pulumi.Input[pulumi.InputType['VirtualMachineCpuArgs']] cpu: The CPU configuration.
+        :param pulumi.Input[Union['VirtualMachineCdromArgs', 'VirtualMachineCdromArgsDict']] cdrom: The CDROM configuration.
+        :param pulumi.Input[Union['VirtualMachineCloneArgs', 'VirtualMachineCloneArgsDict']] clone: The cloning configuration.
+        :param pulumi.Input[Union['VirtualMachineCpuArgs', 'VirtualMachineCpuArgsDict']] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]] disks: A disk (multiple blocks supported).
-        :param pulumi.Input[pulumi.InputType['VirtualMachineEfiDiskArgs']] efi_disk: The efi disk device (required if `bios` is set
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineDiskArgs', 'VirtualMachineDiskArgsDict']]]] disks: A disk (multiple blocks supported).
+        :param pulumi.Input[Union['VirtualMachineEfiDiskArgs', 'VirtualMachineEfiDiskArgsDict']] efi_disk: The efi disk device (required if `bios` is set
                to `ovmf`)
-        :param pulumi.Input[str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineHostpciArgs']]]] hostpcis: A host PCI device mapping (multiple blocks supported).
-        :param pulumi.Input[pulumi.InputType['VirtualMachineInitializationArgs']] initialization: The cloud-init configuration.
+        :param pulumi.Input[str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineHostpciArgs', 'VirtualMachineHostpciArgsDict']]]] hostpcis: A host PCI device mapping (multiple blocks supported).
+        :param pulumi.Input[Union['VirtualMachineInitializationArgs', 'VirtualMachineInitializationArgsDict']] initialization: The cloud-init configuration.
         :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]] ipv4_addresses: The IPv4 addresses per network interface published by the
                QEMU agent (empty list when `agent.enabled` is `false`)
         :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]] ipv6_addresses: The IPv6 addresses per network interface published by the
@@ -2159,29 +2159,29 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] mac_addresses: The MAC addresses published by the QEMU agent with fallback
                to the network device configuration, if the agent is disabled
         :param pulumi.Input[str] machine: The VM machine type (defaults to `pc`).
-        :param pulumi.Input[pulumi.InputType['VirtualMachineMemoryArgs']] memory: The memory configuration.
+        :param pulumi.Input[Union['VirtualMachineMemoryArgs', 'VirtualMachineMemoryArgsDict']] memory: The memory configuration.
         :param pulumi.Input[bool] migrate: Migrate the VM on node change instead of re-creating
                it (defaults to `false`).
         :param pulumi.Input[str] name: The virtual machine name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNetworkDeviceArgs']]]] network_devices: A network device (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineNetworkDeviceArgs', 'VirtualMachineNetworkDeviceArgsDict']]]] network_devices: A network device (multiple blocks supported).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] network_interface_names: The network interface names published by the QEMU
                agent (empty list when `agent.enabled` is `false`)
         :param pulumi.Input[str] node_name: The name of the node to assign the virtual machine
                to.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNumaArgs']]]] numas: The NUMA configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineNumaArgs', 'VirtualMachineNumaArgsDict']]]] numas: The NUMA configuration.
         :param pulumi.Input[bool] on_boot: Specifies whether a VM will be started during system
                boot. (defaults to `true`)
-        :param pulumi.Input[pulumi.InputType['VirtualMachineOperatingSystemArgs']] operating_system: The Operating System configuration.
+        :param pulumi.Input[Union['VirtualMachineOperatingSystemArgs', 'VirtualMachineOperatingSystemArgsDict']] operating_system: The Operating System configuration.
         :param pulumi.Input[str] pool_id: The identifier for a pool to assign the virtual machine to.
         :param pulumi.Input[bool] protection: Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
         :param pulumi.Input[bool] reboot: Reboot the VM after initial creation. (defaults to `false`)
         :param pulumi.Input[str] scsi_hardware: The SCSI hardware type (defaults to
                `virtio-scsi-pci`).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineSerialDeviceArgs']]]] serial_devices: A serial device (multiple blocks supported).
-        :param pulumi.Input[pulumi.InputType['VirtualMachineSmbiosArgs']] smbios: The SMBIOS (type1) settings for the VM.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineSerialDeviceArgs', 'VirtualMachineSerialDeviceArgsDict']]]] serial_devices: A serial device (multiple blocks supported).
+        :param pulumi.Input[Union['VirtualMachineSmbiosArgs', 'VirtualMachineSmbiosArgsDict']] smbios: The SMBIOS (type1) settings for the VM.
         :param pulumi.Input[bool] started: Whether to start the virtual machine (defaults
                to `true`).
-        :param pulumi.Input[pulumi.InputType['VirtualMachineStartupArgs']] startup: Defines startup and shutdown behavior of the VM.
+        :param pulumi.Input[Union['VirtualMachineStartupArgs', 'VirtualMachineStartupArgsDict']] startup: Defines startup and shutdown behavior of the VM.
         :param pulumi.Input[bool] stop_on_destroy: Whether to stop rather than shutdown on VM destroy (defaults to `false`)
         :param pulumi.Input[bool] tablet_device: Whether to enable the USB tablet device (defaults
                to `true`).
@@ -2206,9 +2206,9 @@ class VirtualMachine(pulumi.CustomResource):
                to 1800).
         :param pulumi.Input[int] timeout_stop_vm: Timeout for stopping a VM in seconds (defaults
                to 300).
-        :param pulumi.Input[pulumi.InputType['VirtualMachineTpmStateArgs']] tpm_state: The TPM state device.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineUsbArgs']]]] usbs: A host USB device mapping (multiple blocks supported).
-        :param pulumi.Input[pulumi.InputType['VirtualMachineVgaArgs']] vga: The VGA configuration.
+        :param pulumi.Input[Union['VirtualMachineTpmStateArgs', 'VirtualMachineTpmStateArgsDict']] tpm_state: The TPM state device.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineUsbArgs', 'VirtualMachineUsbArgsDict']]]] usbs: A host USB device mapping (multiple blocks supported).
+        :param pulumi.Input[Union['VirtualMachineVgaArgs', 'VirtualMachineVgaArgsDict']] vga: The VGA configuration.
         :param pulumi.Input[int] vm_id: The VM identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -2364,7 +2364,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="hookScriptFileId")
     def hook_script_file_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The identifier for a file containing a hook script (needs to be executable).
+        The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
         """
         return pulumi.get(self, "hook_script_file_id")
 

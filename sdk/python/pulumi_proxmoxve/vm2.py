@@ -382,17 +382,17 @@ class Vm2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cdrom: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['Vm2CdromArgs']]]]] = None,
-                 clone: Optional[pulumi.Input[pulumi.InputType['Vm2CloneArgs']]] = None,
-                 cpu: Optional[pulumi.Input[pulumi.InputType['Vm2CpuArgs']]] = None,
+                 cdrom: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['Vm2CdromArgs', 'Vm2CdromArgsDict']]]]] = None,
+                 clone: Optional[pulumi.Input[Union['Vm2CloneArgs', 'Vm2CloneArgsDict']]] = None,
+                 cpu: Optional[pulumi.Input[Union['Vm2CpuArgs', 'Vm2CpuArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
                  stop_on_destroy: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['Vm2TimeoutsArgs']]] = None,
-                 vga: Optional[pulumi.Input[pulumi.InputType['Vm2VgaArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['Vm2TimeoutsArgs', 'Vm2TimeoutsArgsDict']]] = None,
+                 vga: Optional[pulumi.Input[Union['Vm2VgaArgs', 'Vm2VgaArgsDict']]] = None,
                  __props__=None):
         """
         !> **DO NOT USE**
@@ -407,16 +407,16 @@ class Vm2(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['Vm2CdromArgs']]]] cdrom: The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
-        :param pulumi.Input[pulumi.InputType['Vm2CloneArgs']] clone: The cloning configuration.
-        :param pulumi.Input[pulumi.InputType['Vm2CpuArgs']] cpu: The CPU configuration.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['Vm2CdromArgs', 'Vm2CdromArgsDict']]]] cdrom: The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+        :param pulumi.Input[Union['Vm2CloneArgs', 'Vm2CloneArgsDict']] clone: The cloning configuration.
+        :param pulumi.Input[Union['Vm2CpuArgs', 'Vm2CpuArgsDict']] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description of the VM.
         :param pulumi.Input[str] name: The name of the VM. Doesn't have to be unique.
         :param pulumi.Input[str] node_name: The name of the node where the VM is provisioned.
         :param pulumi.Input[bool] stop_on_destroy: Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags assigned to the VM.
         :param pulumi.Input[bool] template: Set to true to create a VM template.
-        :param pulumi.Input[pulumi.InputType['Vm2VgaArgs']] vga: Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
+        :param pulumi.Input[Union['Vm2VgaArgs', 'Vm2VgaArgsDict']] vga: Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
         """
         ...
     @overload
@@ -450,17 +450,17 @@ class Vm2(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cdrom: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['Vm2CdromArgs']]]]] = None,
-                 clone: Optional[pulumi.Input[pulumi.InputType['Vm2CloneArgs']]] = None,
-                 cpu: Optional[pulumi.Input[pulumi.InputType['Vm2CpuArgs']]] = None,
+                 cdrom: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['Vm2CdromArgs', 'Vm2CdromArgsDict']]]]] = None,
+                 clone: Optional[pulumi.Input[Union['Vm2CloneArgs', 'Vm2CloneArgsDict']]] = None,
+                 cpu: Optional[pulumi.Input[Union['Vm2CpuArgs', 'Vm2CpuArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
                  stop_on_destroy: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['Vm2TimeoutsArgs']]] = None,
-                 vga: Optional[pulumi.Input[pulumi.InputType['Vm2VgaArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['Vm2TimeoutsArgs', 'Vm2TimeoutsArgsDict']]] = None,
+                 vga: Optional[pulumi.Input[Union['Vm2VgaArgs', 'Vm2VgaArgsDict']]] = None,
                  __props__=None):
         pulumi.log.warn("""Vm2 is deprecated: proxmoxve.index/vm2.Vm2 has been deprecated in favor of proxmoxve.vm/virtualmachine2.VirtualMachine2""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -494,17 +494,17 @@ class Vm2(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cdrom: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['Vm2CdromArgs']]]]] = None,
-            clone: Optional[pulumi.Input[pulumi.InputType['Vm2CloneArgs']]] = None,
-            cpu: Optional[pulumi.Input[pulumi.InputType['Vm2CpuArgs']]] = None,
+            cdrom: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['Vm2CdromArgs', 'Vm2CdromArgsDict']]]]] = None,
+            clone: Optional[pulumi.Input[Union['Vm2CloneArgs', 'Vm2CloneArgsDict']]] = None,
+            cpu: Optional[pulumi.Input[Union['Vm2CpuArgs', 'Vm2CpuArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             node_name: Optional[pulumi.Input[str]] = None,
             stop_on_destroy: Optional[pulumi.Input[bool]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             template: Optional[pulumi.Input[bool]] = None,
-            timeouts: Optional[pulumi.Input[pulumi.InputType['Vm2TimeoutsArgs']]] = None,
-            vga: Optional[pulumi.Input[pulumi.InputType['Vm2VgaArgs']]] = None) -> 'Vm2':
+            timeouts: Optional[pulumi.Input[Union['Vm2TimeoutsArgs', 'Vm2TimeoutsArgsDict']]] = None,
+            vga: Optional[pulumi.Input[Union['Vm2VgaArgs', 'Vm2VgaArgsDict']]] = None) -> 'Vm2':
         """
         Get an existing Vm2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -512,16 +512,16 @@ class Vm2(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['Vm2CdromArgs']]]] cdrom: The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
-        :param pulumi.Input[pulumi.InputType['Vm2CloneArgs']] clone: The cloning configuration.
-        :param pulumi.Input[pulumi.InputType['Vm2CpuArgs']] cpu: The CPU configuration.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['Vm2CdromArgs', 'Vm2CdromArgsDict']]]] cdrom: The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+        :param pulumi.Input[Union['Vm2CloneArgs', 'Vm2CloneArgsDict']] clone: The cloning configuration.
+        :param pulumi.Input[Union['Vm2CpuArgs', 'Vm2CpuArgsDict']] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description of the VM.
         :param pulumi.Input[str] name: The name of the VM. Doesn't have to be unique.
         :param pulumi.Input[str] node_name: The name of the node where the VM is provisioned.
         :param pulumi.Input[bool] stop_on_destroy: Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags assigned to the VM.
         :param pulumi.Input[bool] template: Set to true to create a VM template.
-        :param pulumi.Input[pulumi.InputType['Vm2VgaArgs']] vga: Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
+        :param pulumi.Input[Union['Vm2VgaArgs', 'Vm2VgaArgsDict']] vga: Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

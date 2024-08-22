@@ -155,6 +155,8 @@ type File struct {
 	ContentType pulumi.StringOutput `pulumi:"contentType"`
 	// The datastore id.
 	DatastoreId pulumi.StringOutput `pulumi:"datastoreId"`
+	// The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
+	FileMode pulumi.StringPtrOutput `pulumi:"fileMode"`
 	// The file modification date (RFC 3339).
 	FileModificationDate pulumi.StringOutput `pulumi:"fileModificationDate"`
 	// The file name.
@@ -220,6 +222,8 @@ type fileState struct {
 	ContentType *string `pulumi:"contentType"`
 	// The datastore id.
 	DatastoreId *string `pulumi:"datastoreId"`
+	// The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
+	FileMode *string `pulumi:"fileMode"`
 	// The file modification date (RFC 3339).
 	FileModificationDate *string `pulumi:"fileModificationDate"`
 	// The file name.
@@ -250,6 +254,8 @@ type FileState struct {
 	ContentType pulumi.StringPtrInput
 	// The datastore id.
 	DatastoreId pulumi.StringPtrInput
+	// The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
+	FileMode pulumi.StringPtrInput
 	// The file modification date (RFC 3339).
 	FileModificationDate pulumi.StringPtrInput
 	// The file name.
@@ -284,6 +290,8 @@ type fileArgs struct {
 	ContentType *string `pulumi:"contentType"`
 	// The datastore id.
 	DatastoreId string `pulumi:"datastoreId"`
+	// The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
+	FileMode *string `pulumi:"fileMode"`
 	// The node name.
 	NodeName string `pulumi:"nodeName"`
 	// Whether to overwrite an existing file (defaults to
@@ -307,6 +315,8 @@ type FileArgs struct {
 	ContentType pulumi.StringPtrInput
 	// The datastore id.
 	DatastoreId pulumi.StringInput
+	// The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
+	FileMode pulumi.StringPtrInput
 	// The node name.
 	NodeName pulumi.StringInput
 	// Whether to overwrite an existing file (defaults to
@@ -419,6 +429,11 @@ func (o FileOutput) ContentType() pulumi.StringOutput {
 // The datastore id.
 func (o FileOutput) DatastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *File) pulumi.StringOutput { return v.DatastoreId }).(pulumi.StringOutput)
+}
+
+// The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
+func (o FileOutput) FileMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *File) pulumi.StringPtrOutput { return v.FileMode }).(pulumi.StringPtrOutput)
 }
 
 // The file modification date (RFC 3339).

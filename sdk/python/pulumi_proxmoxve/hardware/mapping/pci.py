@@ -162,7 +162,7 @@ class Pci(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: Optional[pulumi.Input[str]] = None,
-                 maps: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PciMapArgs']]]]] = None,
+                 maps: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PciMapArgs', 'PciMapArgsDict']]]]] = None,
                  mediated_devices: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -182,7 +182,7 @@ class Pci(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: The comment of this PCI hardware mapping.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PciMapArgs']]]] maps: The actual map of devices for the PCI hardware mapping.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PciMapArgs', 'PciMapArgsDict']]]] maps: The actual map of devices for the PCI hardware mapping.
         :param pulumi.Input[bool] mediated_devices: Indicates whether to enable mediated devices.
         :param pulumi.Input[str] name: The name of this PCI hardware mapping.
         """
@@ -221,7 +221,7 @@ class Pci(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: Optional[pulumi.Input[str]] = None,
-                 maps: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PciMapArgs']]]]] = None,
+                 maps: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PciMapArgs', 'PciMapArgsDict']]]]] = None,
                  mediated_devices: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -250,7 +250,7 @@ class Pci(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             comment: Optional[pulumi.Input[str]] = None,
-            maps: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PciMapArgs']]]]] = None,
+            maps: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PciMapArgs', 'PciMapArgsDict']]]]] = None,
             mediated_devices: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None) -> 'Pci':
         """
@@ -261,7 +261,7 @@ class Pci(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: The comment of this PCI hardware mapping.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PciMapArgs']]]] maps: The actual map of devices for the PCI hardware mapping.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PciMapArgs', 'PciMapArgsDict']]]] maps: The actual map of devices for the PCI hardware mapping.
         :param pulumi.Input[bool] mediated_devices: Indicates whether to enable mediated devices.
         :param pulumi.Input[str] name: The name of this PCI hardware mapping.
         """

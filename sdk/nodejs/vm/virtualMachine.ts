@@ -96,7 +96,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly efiDisk!: pulumi.Output<outputs.VM.VirtualMachineEfiDisk | undefined>;
     /**
-     * The identifier for a file containing a hook script (needs to be executable).
+     * The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
      */
     public readonly hookScriptFileId!: pulumi.Output<string | undefined>;
     /**
@@ -468,7 +468,7 @@ export interface VirtualMachineState {
      */
     efiDisk?: pulumi.Input<inputs.VM.VirtualMachineEfiDisk>;
     /**
-     * The identifier for a file containing a hook script (needs to be executable).
+     * The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
      */
     hookScriptFileId?: pulumi.Input<string>;
     /**
@@ -711,7 +711,7 @@ export interface VirtualMachineArgs {
      */
     efiDisk?: pulumi.Input<inputs.VM.VirtualMachineEfiDisk>;
     /**
-     * The identifier for a file containing a hook script (needs to be executable).
+     * The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
      */
     hookScriptFileId?: pulumi.Input<string>;
     /**

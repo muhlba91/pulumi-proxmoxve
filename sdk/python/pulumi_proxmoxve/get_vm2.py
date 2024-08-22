@@ -151,31 +151,31 @@ class AwaitableGetVm2Result(GetVm2Result):
             vga=self.vga)
 
 
-def get_vm2(clone: Optional[pulumi.InputType['GetVm2CloneArgs']] = None,
-            cpu: Optional[pulumi.InputType['GetVm2CpuArgs']] = None,
+def get_vm2(clone: Optional[Union['GetVm2CloneArgs', 'GetVm2CloneArgsDict']] = None,
+            cpu: Optional[Union['GetVm2CpuArgs', 'GetVm2CpuArgsDict']] = None,
             description: Optional[str] = None,
             id: Optional[int] = None,
             name: Optional[str] = None,
             node_name: Optional[str] = None,
             tags: Optional[Sequence[str]] = None,
             template: Optional[bool] = None,
-            timeouts: Optional[pulumi.InputType['GetVm2TimeoutsArgs']] = None,
-            vga: Optional[pulumi.InputType['GetVm2VgaArgs']] = None,
+            timeouts: Optional[Union['GetVm2TimeoutsArgs', 'GetVm2TimeoutsArgsDict']] = None,
+            vga: Optional[Union['GetVm2VgaArgs', 'GetVm2VgaArgsDict']] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVm2Result:
     """
     !> **DO NOT USE**
     This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
 
 
-    :param pulumi.InputType['GetVm2CloneArgs'] clone: The cloning configuration.
-    :param pulumi.InputType['GetVm2CpuArgs'] cpu: The CPU configuration.
+    :param Union['GetVm2CloneArgs', 'GetVm2CloneArgsDict'] clone: The cloning configuration.
+    :param Union['GetVm2CpuArgs', 'GetVm2CpuArgsDict'] cpu: The CPU configuration.
     :param str description: The description of the VM.
     :param int id: The unique identifier of the VM in the Proxmox cluster.
     :param str name: The name of the VM.
     :param str node_name: The name of the node where the VM is provisioned.
     :param Sequence[str] tags: The tags assigned to the VM.
     :param bool template: Whether the VM is a template.
-    :param pulumi.InputType['GetVm2VgaArgs'] vga: The VGA configuration.
+    :param Union['GetVm2VgaArgs', 'GetVm2VgaArgsDict'] vga: The VGA configuration.
     """
     __args__ = dict()
     __args__['clone'] = clone
@@ -205,30 +205,30 @@ def get_vm2(clone: Optional[pulumi.InputType['GetVm2CloneArgs']] = None,
 
 
 @_utilities.lift_output_func(get_vm2)
-def get_vm2_output(clone: Optional[pulumi.Input[Optional[pulumi.InputType['GetVm2CloneArgs']]]] = None,
-                   cpu: Optional[pulumi.Input[Optional[pulumi.InputType['GetVm2CpuArgs']]]] = None,
+def get_vm2_output(clone: Optional[pulumi.Input[Optional[Union['GetVm2CloneArgs', 'GetVm2CloneArgsDict']]]] = None,
+                   cpu: Optional[pulumi.Input[Optional[Union['GetVm2CpuArgs', 'GetVm2CpuArgsDict']]]] = None,
                    description: Optional[pulumi.Input[Optional[str]]] = None,
                    id: Optional[pulumi.Input[int]] = None,
                    name: Optional[pulumi.Input[Optional[str]]] = None,
                    node_name: Optional[pulumi.Input[str]] = None,
                    tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                    template: Optional[pulumi.Input[Optional[bool]]] = None,
-                   timeouts: Optional[pulumi.Input[Optional[pulumi.InputType['GetVm2TimeoutsArgs']]]] = None,
-                   vga: Optional[pulumi.Input[Optional[pulumi.InputType['GetVm2VgaArgs']]]] = None,
+                   timeouts: Optional[pulumi.Input[Optional[Union['GetVm2TimeoutsArgs', 'GetVm2TimeoutsArgsDict']]]] = None,
+                   vga: Optional[pulumi.Input[Optional[Union['GetVm2VgaArgs', 'GetVm2VgaArgsDict']]]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVm2Result]:
     """
     !> **DO NOT USE**
     This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
 
 
-    :param pulumi.InputType['GetVm2CloneArgs'] clone: The cloning configuration.
-    :param pulumi.InputType['GetVm2CpuArgs'] cpu: The CPU configuration.
+    :param Union['GetVm2CloneArgs', 'GetVm2CloneArgsDict'] clone: The cloning configuration.
+    :param Union['GetVm2CpuArgs', 'GetVm2CpuArgsDict'] cpu: The CPU configuration.
     :param str description: The description of the VM.
     :param int id: The unique identifier of the VM in the Proxmox cluster.
     :param str name: The name of the VM.
     :param str node_name: The name of the node where the VM is provisioned.
     :param Sequence[str] tags: The tags assigned to the VM.
     :param bool template: Whether the VM is a template.
-    :param pulumi.InputType['GetVm2VgaArgs'] vga: The VGA configuration.
+    :param Union['GetVm2VgaArgs', 'GetVm2VgaArgsDict'] vga: The VGA configuration.
     """
     ...

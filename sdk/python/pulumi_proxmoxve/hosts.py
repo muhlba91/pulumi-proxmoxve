@@ -162,7 +162,7 @@ class Hosts(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 entry: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostsEntryArgs']]]]] = None,
+                 entry: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HostsEntryArgs', 'HostsEntryArgsDict']]]]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -180,7 +180,7 @@ class Hosts(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostsEntryArgs']]]] entry: A host entry (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HostsEntryArgs', 'HostsEntryArgsDict']]]] entry: A host entry (multiple blocks supported).
         :param pulumi.Input[str] node_name: A node name.
         """
         ...
@@ -217,7 +217,7 @@ class Hosts(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 entry: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostsEntryArgs']]]]] = None,
+                 entry: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HostsEntryArgs', 'HostsEntryArgsDict']]]]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -250,8 +250,8 @@ class Hosts(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             digest: Optional[pulumi.Input[str]] = None,
-            entries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostsEntryArgs']]]]] = None,
-            entry: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostsEntryArgs']]]]] = None,
+            entries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HostsEntryArgs', 'HostsEntryArgsDict']]]]] = None,
+            entry: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HostsEntryArgs', 'HostsEntryArgsDict']]]]] = None,
             hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]]] = None,
             node_name: Optional[pulumi.Input[str]] = None) -> 'Hosts':
         """
@@ -263,9 +263,9 @@ class Hosts(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: The IP addresses.
         :param pulumi.Input[str] digest: The SHA1 digest.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostsEntryArgs']]]] entries: The host entries (conversion of `addresses` and `hostnames` into
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HostsEntryArgs', 'HostsEntryArgsDict']]]] entries: The host entries (conversion of `addresses` and `hostnames` into
                objects).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostsEntryArgs']]]] entry: A host entry (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HostsEntryArgs', 'HostsEntryArgsDict']]]] entry: A host entry (multiple blocks supported).
         :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]] hostnames: The hostnames associated with each of the IP addresses.
         :param pulumi.Input[str] node_name: A node name.
         """

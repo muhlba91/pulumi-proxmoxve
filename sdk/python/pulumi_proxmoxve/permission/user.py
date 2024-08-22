@@ -385,7 +385,7 @@ class User(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserAclArgs']]]]] = None,
+                 acls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserAclArgs', 'UserAclArgsDict']]]]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
@@ -410,11 +410,11 @@ class User(pulumi.CustomResource):
             role_id="operations-monitoring",
             privileges=["VM.Monitor"])
         operations_automation = proxmoxve.permission.User("operationsAutomation",
-            acls=[proxmoxve.permission.UserAclArgs(
-                path="/vms/1234",
-                propagate=True,
-                role_id=operations_monitoring.role_id,
-            )],
+            acls=[{
+                "path": "/vms/1234",
+                "propagate": True,
+                "role_id": operations_monitoring.role_id,
+            }],
             comment="Managed by Terraform",
             password="a-strong-password",
             user_id="operations-automation@pve")
@@ -432,7 +432,7 @@ class User(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserAclArgs']]]] acls: The access control list (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserAclArgs', 'UserAclArgsDict']]]] acls: The access control list (multiple blocks supported).
         :param pulumi.Input[str] comment: The user comment.
         :param pulumi.Input[str] email: The user's email address.
         :param pulumi.Input[bool] enabled: Whether the user account is enabled.
@@ -463,11 +463,11 @@ class User(pulumi.CustomResource):
             role_id="operations-monitoring",
             privileges=["VM.Monitor"])
         operations_automation = proxmoxve.permission.User("operationsAutomation",
-            acls=[proxmoxve.permission.UserAclArgs(
-                path="/vms/1234",
-                propagate=True,
-                role_id=operations_monitoring.role_id,
-            )],
+            acls=[{
+                "path": "/vms/1234",
+                "propagate": True,
+                "role_id": operations_monitoring.role_id,
+            }],
             comment="Managed by Terraform",
             password="a-strong-password",
             user_id="operations-automation@pve")
@@ -498,7 +498,7 @@ class User(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserAclArgs']]]]] = None,
+                 acls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserAclArgs', 'UserAclArgsDict']]]]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
@@ -543,7 +543,7 @@ class User(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserAclArgs']]]]] = None,
+            acls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserAclArgs', 'UserAclArgsDict']]]]] = None,
             comment: Optional[pulumi.Input[str]] = None,
             email: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
@@ -561,7 +561,7 @@ class User(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserAclArgs']]]] acls: The access control list (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserAclArgs', 'UserAclArgsDict']]]] acls: The access control list (multiple blocks supported).
         :param pulumi.Input[str] comment: The user comment.
         :param pulumi.Input[str] email: The user's email address.
         :param pulumi.Input[bool] enabled: Whether the user account is enabled.

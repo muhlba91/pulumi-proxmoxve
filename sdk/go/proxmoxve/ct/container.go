@@ -38,7 +38,7 @@ type Container struct {
 	Disk ContainerDiskPtrOutput `pulumi:"disk"`
 	// The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
 	Features ContainerFeaturesPtrOutput `pulumi:"features"`
-	// The identifier for a file containing a hook script (needs to be executable).
+	// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
 	HookScriptFileId pulumi.StringPtrOutput `pulumi:"hookScriptFileId"`
 	// The initialization configuration.
 	Initialization ContainerInitializationPtrOutput `pulumi:"initialization"`
@@ -134,7 +134,7 @@ type containerState struct {
 	Disk *ContainerDisk `pulumi:"disk"`
 	// The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
 	Features *ContainerFeatures `pulumi:"features"`
-	// The identifier for a file containing a hook script (needs to be executable).
+	// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
 	HookScriptFileId *string `pulumi:"hookScriptFileId"`
 	// The initialization configuration.
 	Initialization *ContainerInitialization `pulumi:"initialization"`
@@ -198,7 +198,7 @@ type ContainerState struct {
 	Disk ContainerDiskPtrInput
 	// The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
 	Features ContainerFeaturesPtrInput
-	// The identifier for a file containing a hook script (needs to be executable).
+	// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
 	HookScriptFileId pulumi.StringPtrInput
 	// The initialization configuration.
 	Initialization ContainerInitializationPtrInput
@@ -266,7 +266,7 @@ type containerArgs struct {
 	Disk *ContainerDisk `pulumi:"disk"`
 	// The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
 	Features *ContainerFeatures `pulumi:"features"`
-	// The identifier for a file containing a hook script (needs to be executable).
+	// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
 	HookScriptFileId *string `pulumi:"hookScriptFileId"`
 	// The initialization configuration.
 	Initialization *ContainerInitialization `pulumi:"initialization"`
@@ -331,7 +331,7 @@ type ContainerArgs struct {
 	Disk ContainerDiskPtrInput
 	// The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
 	Features ContainerFeaturesPtrInput
-	// The identifier for a file containing a hook script (needs to be executable).
+	// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
 	HookScriptFileId pulumi.StringPtrInput
 	// The initialization configuration.
 	Initialization ContainerInitializationPtrInput
@@ -499,7 +499,7 @@ func (o ContainerOutput) Features() ContainerFeaturesPtrOutput {
 	return o.ApplyT(func(v *Container) ContainerFeaturesPtrOutput { return v.Features }).(ContainerFeaturesPtrOutput)
 }
 
-// The identifier for a file containing a hook script (needs to be executable).
+// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
 func (o ContainerOutput) HookScriptFileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Container) pulumi.StringPtrOutput { return v.HookScriptFileId }).(pulumi.StringPtrOutput)
 }

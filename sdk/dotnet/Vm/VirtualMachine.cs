@@ -96,7 +96,7 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<Outputs.VirtualMachineEfiDisk?> EfiDisk { get; private set; } = null!;
 
         /// <summary>
-        /// The identifier for a file containing a hook script (needs to be executable).
+        /// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
         /// </summary>
         [Output("hookScriptFileId")]
         public Output<string?> HookScriptFileId { get; private set; } = null!;
@@ -496,7 +496,7 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<Inputs.VirtualMachineEfiDiskArgs>? EfiDisk { get; set; }
 
         /// <summary>
-        /// The identifier for a file containing a hook script (needs to be executable).
+        /// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
         /// </summary>
         [Input("hookScriptFileId")]
         public Input<string>? HookScriptFileId { get; set; }
@@ -878,7 +878,7 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<Inputs.VirtualMachineEfiDiskGetArgs>? EfiDisk { get; set; }
 
         /// <summary>
-        /// The identifier for a file containing a hook script (needs to be executable).
+        /// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
         /// </summary>
         [Input("hookScriptFileId")]
         public Input<string>? HookScriptFileId { get; set; }

@@ -52,6 +52,21 @@ public final class FileState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root{@literal @}pam` authenticated user.
+     * 
+     */
+    @Import(name="fileMode")
+    private @Nullable Output<String> fileMode;
+
+    /**
+     * @return The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root{@literal @}pam` authenticated user.
+     * 
+     */
+    public Optional<Output<String>> fileMode() {
+        return Optional.ofNullable(this.fileMode);
+    }
+
+    /**
      * The file modification date (RFC 3339).
      * 
      */
@@ -199,6 +214,7 @@ public final class FileState extends com.pulumi.resources.ResourceArgs {
     private FileState(FileState $) {
         this.contentType = $.contentType;
         this.datastoreId = $.datastoreId;
+        this.fileMode = $.fileMode;
         this.fileModificationDate = $.fileModificationDate;
         this.fileName = $.fileName;
         this.fileSize = $.fileSize;
@@ -270,6 +286,27 @@ public final class FileState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder datastoreId(String datastoreId) {
             return datastoreId(Output.of(datastoreId));
+        }
+
+        /**
+         * @param fileMode The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root{@literal @}pam` authenticated user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fileMode(@Nullable Output<String> fileMode) {
+            $.fileMode = fileMode;
+            return this;
+        }
+
+        /**
+         * @param fileMode The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root{@literal @}pam` authenticated user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fileMode(String fileMode) {
+            return fileMode(Output.of(fileMode));
         }
 
         /**

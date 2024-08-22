@@ -136,6 +136,10 @@ export class File extends pulumi.CustomResource {
      */
     public readonly datastoreId!: pulumi.Output<string>;
     /**
+     * The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
+     */
+    public readonly fileMode!: pulumi.Output<string | undefined>;
+    /**
      * The file modification date (RFC 3339).
      */
     public /*out*/ readonly fileModificationDate!: pulumi.Output<string>;
@@ -191,6 +195,7 @@ export class File extends pulumi.CustomResource {
             const state = argsOrState as FileState | undefined;
             resourceInputs["contentType"] = state ? state.contentType : undefined;
             resourceInputs["datastoreId"] = state ? state.datastoreId : undefined;
+            resourceInputs["fileMode"] = state ? state.fileMode : undefined;
             resourceInputs["fileModificationDate"] = state ? state.fileModificationDate : undefined;
             resourceInputs["fileName"] = state ? state.fileName : undefined;
             resourceInputs["fileSize"] = state ? state.fileSize : undefined;
@@ -210,6 +215,7 @@ export class File extends pulumi.CustomResource {
             }
             resourceInputs["contentType"] = args ? args.contentType : undefined;
             resourceInputs["datastoreId"] = args ? args.datastoreId : undefined;
+            resourceInputs["fileMode"] = args ? args.fileMode : undefined;
             resourceInputs["nodeName"] = args ? args.nodeName : undefined;
             resourceInputs["overwrite"] = args ? args.overwrite : undefined;
             resourceInputs["sourceFile"] = args ? args.sourceFile : undefined;
@@ -238,6 +244,10 @@ export interface FileState {
      * The datastore id.
      */
     datastoreId?: pulumi.Input<string>;
+    /**
+     * The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
+     */
+    fileMode?: pulumi.Input<string>;
     /**
      * The file modification date (RFC 3339).
      */
@@ -293,6 +303,10 @@ export interface FileArgs {
      * The datastore id.
      */
     datastoreId: pulumi.Input<string>;
+    /**
+     * The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
+     */
+    fileMode?: pulumi.Input<string>;
     /**
      * The node name.
      */

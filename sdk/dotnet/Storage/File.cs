@@ -142,6 +142,12 @@ namespace Pulumi.ProxmoxVE.Storage
         public Output<string> DatastoreId { get; private set; } = null!;
 
         /// <summary>
+        /// The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
+        /// </summary>
+        [Output("fileMode")]
+        public Output<string?> FileMode { get; private set; } = null!;
+
+        /// <summary>
         /// The file modification date (RFC 3339).
         /// </summary>
         [Output("fileModificationDate")]
@@ -260,6 +266,12 @@ namespace Pulumi.ProxmoxVE.Storage
         public Input<string> DatastoreId { get; set; } = null!;
 
         /// <summary>
+        /// The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
+        /// </summary>
+        [Input("fileMode")]
+        public Input<string>? FileMode { get; set; }
+
+        /// <summary>
         /// The node name.
         /// </summary>
         [Input("nodeName", required: true)]
@@ -313,6 +325,12 @@ namespace Pulumi.ProxmoxVE.Storage
         /// </summary>
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
+
+        /// <summary>
+        /// The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
+        /// </summary>
+        [Input("fileMode")]
+        public Input<string>? FileMode { get; set; }
 
         /// <summary>
         /// The file modification date (RFC 3339).

@@ -175,7 +175,7 @@ class FirewallRules(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  container_id: Optional[pulumi.Input[int]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallRulesRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallRulesRuleArgs', 'FirewallRulesRuleArgsDict']]]]] = None,
                  vm_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -194,29 +194,29 @@ class FirewallRules(pulumi.CustomResource):
             node_name=proxmox_virtual_environment_vm["example"]["node_name"],
             vm_id=proxmox_virtual_environment_vm["example"]["vm_id"],
             rules=[
-                proxmoxve.network.FirewallRulesRuleArgs(
-                    type="in",
-                    action="ACCEPT",
-                    comment="Allow HTTP",
-                    dest="192.168.1.5",
-                    dport="80",
-                    proto="tcp",
-                    log="info",
-                ),
-                proxmoxve.network.FirewallRulesRuleArgs(
-                    type="in",
-                    action="ACCEPT",
-                    comment="Allow HTTPS",
-                    dest="192.168.1.5",
-                    dport="443",
-                    proto="tcp",
-                    log="info",
-                ),
-                proxmoxve.network.FirewallRulesRuleArgs(
-                    security_group=proxmox_virtual_environment_cluster_firewall_security_group["example"]["name"],
-                    comment="From security group",
-                    iface="net0",
-                ),
+                {
+                    "type": "in",
+                    "action": "ACCEPT",
+                    "comment": "Allow HTTP",
+                    "dest": "192.168.1.5",
+                    "dport": "80",
+                    "proto": "tcp",
+                    "log": "info",
+                },
+                {
+                    "type": "in",
+                    "action": "ACCEPT",
+                    "comment": "Allow HTTPS",
+                    "dest": "192.168.1.5",
+                    "dport": "443",
+                    "proto": "tcp",
+                    "log": "info",
+                },
+                {
+                    "security_group": proxmox_virtual_environment_cluster_firewall_security_group["example"]["name"],
+                    "comment": "From security group",
+                    "iface": "net0",
+                },
             ],
             opts = pulumi.ResourceOptions(depends_on=[
                     proxmox_virtual_environment_vm["example"],
@@ -229,7 +229,7 @@ class FirewallRules(pulumi.CustomResource):
         :param pulumi.Input[int] container_id: Container ID. Leave empty for cluster level
                rules.
         :param pulumi.Input[str] node_name: Node name. Leave empty for cluster level rules.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallRulesRuleArgs']]]] rules: Firewall rule block (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallRulesRuleArgs', 'FirewallRulesRuleArgsDict']]]] rules: Firewall rule block (multiple blocks supported).
                The provider supports two types of the `rule` blocks:
                - A rule definition block, which includes the following arguments:
         :param pulumi.Input[int] vm_id: VM ID. Leave empty for cluster level rules.
@@ -256,29 +256,29 @@ class FirewallRules(pulumi.CustomResource):
             node_name=proxmox_virtual_environment_vm["example"]["node_name"],
             vm_id=proxmox_virtual_environment_vm["example"]["vm_id"],
             rules=[
-                proxmoxve.network.FirewallRulesRuleArgs(
-                    type="in",
-                    action="ACCEPT",
-                    comment="Allow HTTP",
-                    dest="192.168.1.5",
-                    dport="80",
-                    proto="tcp",
-                    log="info",
-                ),
-                proxmoxve.network.FirewallRulesRuleArgs(
-                    type="in",
-                    action="ACCEPT",
-                    comment="Allow HTTPS",
-                    dest="192.168.1.5",
-                    dport="443",
-                    proto="tcp",
-                    log="info",
-                ),
-                proxmoxve.network.FirewallRulesRuleArgs(
-                    security_group=proxmox_virtual_environment_cluster_firewall_security_group["example"]["name"],
-                    comment="From security group",
-                    iface="net0",
-                ),
+                {
+                    "type": "in",
+                    "action": "ACCEPT",
+                    "comment": "Allow HTTP",
+                    "dest": "192.168.1.5",
+                    "dport": "80",
+                    "proto": "tcp",
+                    "log": "info",
+                },
+                {
+                    "type": "in",
+                    "action": "ACCEPT",
+                    "comment": "Allow HTTPS",
+                    "dest": "192.168.1.5",
+                    "dport": "443",
+                    "proto": "tcp",
+                    "log": "info",
+                },
+                {
+                    "security_group": proxmox_virtual_environment_cluster_firewall_security_group["example"]["name"],
+                    "comment": "From security group",
+                    "iface": "net0",
+                },
             ],
             opts = pulumi.ResourceOptions(depends_on=[
                     proxmox_virtual_environment_vm["example"],
@@ -303,7 +303,7 @@ class FirewallRules(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  container_id: Optional[pulumi.Input[int]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallRulesRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallRulesRuleArgs', 'FirewallRulesRuleArgsDict']]]]] = None,
                  vm_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -332,7 +332,7 @@ class FirewallRules(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             container_id: Optional[pulumi.Input[int]] = None,
             node_name: Optional[pulumi.Input[str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallRulesRuleArgs']]]]] = None,
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallRulesRuleArgs', 'FirewallRulesRuleArgsDict']]]]] = None,
             vm_id: Optional[pulumi.Input[int]] = None) -> 'FirewallRules':
         """
         Get an existing FirewallRules resource's state with the given name, id, and optional extra
@@ -344,7 +344,7 @@ class FirewallRules(pulumi.CustomResource):
         :param pulumi.Input[int] container_id: Container ID. Leave empty for cluster level
                rules.
         :param pulumi.Input[str] node_name: Node name. Leave empty for cluster level rules.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallRulesRuleArgs']]]] rules: Firewall rule block (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallRulesRuleArgs', 'FirewallRulesRuleArgsDict']]]] rules: Firewall rule block (multiple blocks supported).
                The provider supports two types of the `rule` blocks:
                - A rule definition block, which includes the following arguments:
         :param pulumi.Input[int] vm_id: VM ID. Leave empty for cluster level rules.

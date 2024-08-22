@@ -226,7 +226,7 @@ class FirewallIPSet(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallIPSetCidrArgs']]]]] = None,
+                 cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallIPSetCidrArgs', 'FirewallIPSetCidrArgsDict']]]]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  container_id: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -248,26 +248,26 @@ class FirewallIPSet(pulumi.CustomResource):
             vm_id=proxmox_virtual_environment_vm["example"]["vm_id"],
             comment="Managed by Terraform",
             cidrs=[
-                proxmoxve.network.FirewallIPSetCidrArgs(
-                    name="192.168.0.0/23",
-                    comment="Local network 1",
-                ),
-                proxmoxve.network.FirewallIPSetCidrArgs(
-                    name="192.168.0.1",
-                    comment="Server 1",
-                    nomatch=True,
-                ),
-                proxmoxve.network.FirewallIPSetCidrArgs(
-                    name="192.168.2.1",
-                    comment="Server 1",
-                ),
+                {
+                    "name": "192.168.0.0/23",
+                    "comment": "Local network 1",
+                },
+                {
+                    "name": "192.168.0.1",
+                    "comment": "Server 1",
+                    "nomatch": True,
+                },
+                {
+                    "name": "192.168.2.1",
+                    "comment": "Server 1",
+                },
             ],
             opts = pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_vm["example"]]))
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallIPSetCidrArgs']]]] cidrs: IP/CIDR block (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallIPSetCidrArgs', 'FirewallIPSetCidrArgsDict']]]] cidrs: IP/CIDR block (multiple blocks supported).
         :param pulumi.Input[str] comment: IPSet comment.
         :param pulumi.Input[int] container_id: Container ID. Leave empty for cluster level aliases.
         :param pulumi.Input[str] name: IPSet name.
@@ -295,19 +295,19 @@ class FirewallIPSet(pulumi.CustomResource):
             vm_id=proxmox_virtual_environment_vm["example"]["vm_id"],
             comment="Managed by Terraform",
             cidrs=[
-                proxmoxve.network.FirewallIPSetCidrArgs(
-                    name="192.168.0.0/23",
-                    comment="Local network 1",
-                ),
-                proxmoxve.network.FirewallIPSetCidrArgs(
-                    name="192.168.0.1",
-                    comment="Server 1",
-                    nomatch=True,
-                ),
-                proxmoxve.network.FirewallIPSetCidrArgs(
-                    name="192.168.2.1",
-                    comment="Server 1",
-                ),
+                {
+                    "name": "192.168.0.0/23",
+                    "comment": "Local network 1",
+                },
+                {
+                    "name": "192.168.0.1",
+                    "comment": "Server 1",
+                    "nomatch": True,
+                },
+                {
+                    "name": "192.168.2.1",
+                    "comment": "Server 1",
+                },
             ],
             opts = pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_vm["example"]]))
         ```
@@ -327,7 +327,7 @@ class FirewallIPSet(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallIPSetCidrArgs']]]]] = None,
+                 cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallIPSetCidrArgs', 'FirewallIPSetCidrArgsDict']]]]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  container_id: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -358,7 +358,7 @@ class FirewallIPSet(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallIPSetCidrArgs']]]]] = None,
+            cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallIPSetCidrArgs', 'FirewallIPSetCidrArgsDict']]]]] = None,
             comment: Optional[pulumi.Input[str]] = None,
             container_id: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -371,7 +371,7 @@ class FirewallIPSet(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallIPSetCidrArgs']]]] cidrs: IP/CIDR block (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallIPSetCidrArgs', 'FirewallIPSetCidrArgsDict']]]] cidrs: IP/CIDR block (multiple blocks supported).
         :param pulumi.Input[str] comment: IPSet comment.
         :param pulumi.Input[int] container_id: Container ID. Leave empty for cluster level aliases.
         :param pulumi.Input[str] name: IPSet name.

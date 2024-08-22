@@ -219,6 +219,20 @@ public class File extends com.pulumi.resources.CustomResource {
         return this.datastoreId;
     }
     /**
+     * The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root{@literal @}pam` authenticated user.
+     * 
+     */
+    @Export(name="fileMode", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> fileMode;
+
+    /**
+     * @return The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root{@literal @}pam` authenticated user.
+     * 
+     */
+    public Output<Optional<String>> fileMode() {
+        return Codegen.optional(this.fileMode);
+    }
+    /**
      * The file modification date (RFC 3339).
      * 
      */

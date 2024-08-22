@@ -145,7 +145,7 @@ class Group(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupAclArgs']]]]] = None,
+                 acls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupAclArgs', 'GroupAclArgsDict']]]]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -175,7 +175,7 @@ class Group(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupAclArgs']]]] acls: The access control list (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupAclArgs', 'GroupAclArgsDict']]]] acls: The access control list (multiple blocks supported).
         :param pulumi.Input[str] comment: The group comment.
         :param pulumi.Input[str] group_id: The group identifier.
         """
@@ -224,7 +224,7 @@ class Group(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupAclArgs']]]]] = None,
+                 acls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupAclArgs', 'GroupAclArgsDict']]]]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -252,7 +252,7 @@ class Group(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupAclArgs']]]]] = None,
+            acls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupAclArgs', 'GroupAclArgsDict']]]]] = None,
             comment: Optional[pulumi.Input[str]] = None,
             group_id: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Group':
@@ -263,7 +263,7 @@ class Group(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupAclArgs']]]] acls: The access control list (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupAclArgs', 'GroupAclArgsDict']]]] acls: The access control list (multiple blocks supported).
         :param pulumi.Input[str] comment: The group comment.
         :param pulumi.Input[str] group_id: The group identifier.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: The group members as a list of `username@realm` entries

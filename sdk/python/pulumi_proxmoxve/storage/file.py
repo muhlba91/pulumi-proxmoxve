@@ -19,6 +19,7 @@ class FileArgs:
                  datastore_id: pulumi.Input[str],
                  node_name: pulumi.Input[str],
                  content_type: Optional[pulumi.Input[str]] = None,
+                 file_mode: Optional[pulumi.Input[str]] = None,
                  overwrite: Optional[pulumi.Input[bool]] = None,
                  source_file: Optional[pulumi.Input['FileSourceFileArgs']] = None,
                  source_raw: Optional[pulumi.Input['FileSourceRawArgs']] = None,
@@ -29,6 +30,7 @@ class FileArgs:
         :param pulumi.Input[str] node_name: The node name.
         :param pulumi.Input[str] content_type: The content type. If not specified, the content
                type will be inferred from the file extension. Valid values are:
+        :param pulumi.Input[str] file_mode: The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
         :param pulumi.Input[bool] overwrite: Whether to overwrite an existing file (defaults to
                `true`).
         :param pulumi.Input['FileSourceFileArgs'] source_file: The source file (conflicts with `source_raw`),
@@ -42,6 +44,8 @@ class FileArgs:
         pulumi.set(__self__, "node_name", node_name)
         if content_type is not None:
             pulumi.set(__self__, "content_type", content_type)
+        if file_mode is not None:
+            pulumi.set(__self__, "file_mode", file_mode)
         if overwrite is not None:
             pulumi.set(__self__, "overwrite", overwrite)
         if source_file is not None:
@@ -87,6 +91,18 @@ class FileArgs:
     @content_type.setter
     def content_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "content_type", value)
+
+    @property
+    @pulumi.getter(name="fileMode")
+    def file_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
+        """
+        return pulumi.get(self, "file_mode")
+
+    @file_mode.setter
+    def file_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_mode", value)
 
     @property
     @pulumi.getter
@@ -146,6 +162,7 @@ class _FileState:
     def __init__(__self__, *,
                  content_type: Optional[pulumi.Input[str]] = None,
                  datastore_id: Optional[pulumi.Input[str]] = None,
+                 file_mode: Optional[pulumi.Input[str]] = None,
                  file_modification_date: Optional[pulumi.Input[str]] = None,
                  file_name: Optional[pulumi.Input[str]] = None,
                  file_size: Optional[pulumi.Input[int]] = None,
@@ -160,6 +177,7 @@ class _FileState:
         :param pulumi.Input[str] content_type: The content type. If not specified, the content
                type will be inferred from the file extension. Valid values are:
         :param pulumi.Input[str] datastore_id: The datastore id.
+        :param pulumi.Input[str] file_mode: The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
         :param pulumi.Input[str] file_modification_date: The file modification date (RFC 3339).
         :param pulumi.Input[str] file_name: The file name.
         :param pulumi.Input[int] file_size: The file size in bytes.
@@ -178,6 +196,8 @@ class _FileState:
             pulumi.set(__self__, "content_type", content_type)
         if datastore_id is not None:
             pulumi.set(__self__, "datastore_id", datastore_id)
+        if file_mode is not None:
+            pulumi.set(__self__, "file_mode", file_mode)
         if file_modification_date is not None:
             pulumi.set(__self__, "file_modification_date", file_modification_date)
         if file_name is not None:
@@ -221,6 +241,18 @@ class _FileState:
     @datastore_id.setter
     def datastore_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "datastore_id", value)
+
+    @property
+    @pulumi.getter(name="fileMode")
+    def file_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
+        """
+        return pulumi.get(self, "file_mode")
+
+    @file_mode.setter
+    def file_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_mode", value)
 
     @property
     @pulumi.getter(name="fileModificationDate")
@@ -342,10 +374,11 @@ class File(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  datastore_id: Optional[pulumi.Input[str]] = None,
+                 file_mode: Optional[pulumi.Input[str]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
                  overwrite: Optional[pulumi.Input[bool]] = None,
-                 source_file: Optional[pulumi.Input[pulumi.InputType['FileSourceFileArgs']]] = None,
-                 source_raw: Optional[pulumi.Input[pulumi.InputType['FileSourceRawArgs']]] = None,
+                 source_file: Optional[pulumi.Input[Union['FileSourceFileArgs', 'FileSourceFileArgsDict']]] = None,
+                 source_raw: Optional[pulumi.Input[Union['FileSourceRawArgs', 'FileSourceRawArgsDict']]] = None,
                  timeout_upload: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -365,9 +398,9 @@ class File(pulumi.CustomResource):
             content_type="dump",
             datastore_id="local",
             node_name="pve",
-            source_file=proxmoxve.storage.FileSourceFileArgs(
-                path="vzdump-lxc-100-2023_11_08-23_10_05.tar",
-            ))
+            source_file={
+                "path": "vzdump-lxc-100-2023_11_08-23_10_05.tar",
+            })
         ```
 
         ### Images
@@ -382,9 +415,9 @@ class File(pulumi.CustomResource):
             content_type="iso",
             datastore_id="local",
             node_name="pve",
-            source_file=proxmoxve.storage.FileSourceFileArgs(
-                path="https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img",
-            ))
+            source_file={
+                "path": "https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img",
+            })
         ```
 
         ### Container Template (`vztmpl`)
@@ -399,9 +432,9 @@ class File(pulumi.CustomResource):
             content_type="vztmpl",
             datastore_id="local",
             node_name="first-node",
-            source_file=proxmoxve.storage.FileSourceFileArgs(
-                path="https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz",
-            ))
+            source_file={
+                "path": "https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz",
+            })
         ```
 
         ## Important Notes
@@ -442,13 +475,14 @@ class File(pulumi.CustomResource):
         :param pulumi.Input[str] content_type: The content type. If not specified, the content
                type will be inferred from the file extension. Valid values are:
         :param pulumi.Input[str] datastore_id: The datastore id.
+        :param pulumi.Input[str] file_mode: The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
         :param pulumi.Input[str] node_name: The node name.
         :param pulumi.Input[bool] overwrite: Whether to overwrite an existing file (defaults to
                `true`).
-        :param pulumi.Input[pulumi.InputType['FileSourceFileArgs']] source_file: The source file (conflicts with `source_raw`),
+        :param pulumi.Input[Union['FileSourceFileArgs', 'FileSourceFileArgsDict']] source_file: The source file (conflicts with `source_raw`),
                could be a local file or a URL. If the source file is a URL, the file will
                be downloaded and stored locally before uploading it to Proxmox VE.
-        :param pulumi.Input[pulumi.InputType['FileSourceRawArgs']] source_raw: The raw source (conflicts with `source_file`).
+        :param pulumi.Input[Union['FileSourceRawArgs', 'FileSourceRawArgsDict']] source_raw: The raw source (conflicts with `source_file`).
         :param pulumi.Input[int] timeout_upload: Timeout for uploading ISO/VSTMPL files in
                seconds (defaults to 1800).
         """
@@ -475,9 +509,9 @@ class File(pulumi.CustomResource):
             content_type="dump",
             datastore_id="local",
             node_name="pve",
-            source_file=proxmoxve.storage.FileSourceFileArgs(
-                path="vzdump-lxc-100-2023_11_08-23_10_05.tar",
-            ))
+            source_file={
+                "path": "vzdump-lxc-100-2023_11_08-23_10_05.tar",
+            })
         ```
 
         ### Images
@@ -492,9 +526,9 @@ class File(pulumi.CustomResource):
             content_type="iso",
             datastore_id="local",
             node_name="pve",
-            source_file=proxmoxve.storage.FileSourceFileArgs(
-                path="https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img",
-            ))
+            source_file={
+                "path": "https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img",
+            })
         ```
 
         ### Container Template (`vztmpl`)
@@ -509,9 +543,9 @@ class File(pulumi.CustomResource):
             content_type="vztmpl",
             datastore_id="local",
             node_name="first-node",
-            source_file=proxmoxve.storage.FileSourceFileArgs(
-                path="https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz",
-            ))
+            source_file={
+                "path": "https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz",
+            })
         ```
 
         ## Important Notes
@@ -564,10 +598,11 @@ class File(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  datastore_id: Optional[pulumi.Input[str]] = None,
+                 file_mode: Optional[pulumi.Input[str]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
                  overwrite: Optional[pulumi.Input[bool]] = None,
-                 source_file: Optional[pulumi.Input[pulumi.InputType['FileSourceFileArgs']]] = None,
-                 source_raw: Optional[pulumi.Input[pulumi.InputType['FileSourceRawArgs']]] = None,
+                 source_file: Optional[pulumi.Input[Union['FileSourceFileArgs', 'FileSourceFileArgsDict']]] = None,
+                 source_raw: Optional[pulumi.Input[Union['FileSourceRawArgs', 'FileSourceRawArgsDict']]] = None,
                  timeout_upload: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -582,6 +617,7 @@ class File(pulumi.CustomResource):
             if datastore_id is None and not opts.urn:
                 raise TypeError("Missing required property 'datastore_id'")
             __props__.__dict__["datastore_id"] = datastore_id
+            __props__.__dict__["file_mode"] = file_mode
             if node_name is None and not opts.urn:
                 raise TypeError("Missing required property 'node_name'")
             __props__.__dict__["node_name"] = node_name
@@ -605,14 +641,15 @@ class File(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             content_type: Optional[pulumi.Input[str]] = None,
             datastore_id: Optional[pulumi.Input[str]] = None,
+            file_mode: Optional[pulumi.Input[str]] = None,
             file_modification_date: Optional[pulumi.Input[str]] = None,
             file_name: Optional[pulumi.Input[str]] = None,
             file_size: Optional[pulumi.Input[int]] = None,
             file_tag: Optional[pulumi.Input[str]] = None,
             node_name: Optional[pulumi.Input[str]] = None,
             overwrite: Optional[pulumi.Input[bool]] = None,
-            source_file: Optional[pulumi.Input[pulumi.InputType['FileSourceFileArgs']]] = None,
-            source_raw: Optional[pulumi.Input[pulumi.InputType['FileSourceRawArgs']]] = None,
+            source_file: Optional[pulumi.Input[Union['FileSourceFileArgs', 'FileSourceFileArgsDict']]] = None,
+            source_raw: Optional[pulumi.Input[Union['FileSourceRawArgs', 'FileSourceRawArgsDict']]] = None,
             timeout_upload: Optional[pulumi.Input[int]] = None) -> 'File':
         """
         Get an existing File resource's state with the given name, id, and optional extra
@@ -624,6 +661,7 @@ class File(pulumi.CustomResource):
         :param pulumi.Input[str] content_type: The content type. If not specified, the content
                type will be inferred from the file extension. Valid values are:
         :param pulumi.Input[str] datastore_id: The datastore id.
+        :param pulumi.Input[str] file_mode: The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
         :param pulumi.Input[str] file_modification_date: The file modification date (RFC 3339).
         :param pulumi.Input[str] file_name: The file name.
         :param pulumi.Input[int] file_size: The file size in bytes.
@@ -631,10 +669,10 @@ class File(pulumi.CustomResource):
         :param pulumi.Input[str] node_name: The node name.
         :param pulumi.Input[bool] overwrite: Whether to overwrite an existing file (defaults to
                `true`).
-        :param pulumi.Input[pulumi.InputType['FileSourceFileArgs']] source_file: The source file (conflicts with `source_raw`),
+        :param pulumi.Input[Union['FileSourceFileArgs', 'FileSourceFileArgsDict']] source_file: The source file (conflicts with `source_raw`),
                could be a local file or a URL. If the source file is a URL, the file will
                be downloaded and stored locally before uploading it to Proxmox VE.
-        :param pulumi.Input[pulumi.InputType['FileSourceRawArgs']] source_raw: The raw source (conflicts with `source_file`).
+        :param pulumi.Input[Union['FileSourceRawArgs', 'FileSourceRawArgsDict']] source_raw: The raw source (conflicts with `source_file`).
         :param pulumi.Input[int] timeout_upload: Timeout for uploading ISO/VSTMPL files in
                seconds (defaults to 1800).
         """
@@ -644,6 +682,7 @@ class File(pulumi.CustomResource):
 
         __props__.__dict__["content_type"] = content_type
         __props__.__dict__["datastore_id"] = datastore_id
+        __props__.__dict__["file_mode"] = file_mode
         __props__.__dict__["file_modification_date"] = file_modification_date
         __props__.__dict__["file_name"] = file_name
         __props__.__dict__["file_size"] = file_size
@@ -671,6 +710,14 @@ class File(pulumi.CustomResource):
         The datastore id.
         """
         return pulumi.get(self, "datastore_id")
+
+    @property
+    @pulumi.getter(name="fileMode")
+    def file_mode(self) -> pulumi.Output[Optional[str]]:
+        """
+        The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
+        """
+        return pulumi.get(self, "file_mode")
 
     @property
     @pulumi.getter(name="fileModificationDate")

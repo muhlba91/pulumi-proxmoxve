@@ -120,14 +120,14 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The identifier for a file containing a hook script (needs to be executable).
+     * The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
      * 
      */
     @Import(name="hookScriptFileId")
     private @Nullable Output<String> hookScriptFileId;
 
     /**
-     * @return The identifier for a file containing a hook script (needs to be executable).
+     * @return The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
      * 
      */
     public Optional<Output<String>> hookScriptFileId() {
@@ -617,7 +617,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hookScriptFileId The identifier for a file containing a hook script (needs to be executable).
+         * @param hookScriptFileId The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
          * 
          * @return builder
          * 
@@ -628,7 +628,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hookScriptFileId The identifier for a file containing a hook script (needs to be executable).
+         * @param hookScriptFileId The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
          * 
          * @return builder
          * 

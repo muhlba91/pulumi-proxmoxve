@@ -72,7 +72,7 @@ export class Container extends pulumi.CustomResource {
      */
     public readonly features!: pulumi.Output<outputs.CT.ContainerFeatures | undefined>;
     /**
-     * The identifier for a file containing a hook script (needs to be executable).
+     * The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
      */
     public readonly hookScriptFileId!: pulumi.Output<string | undefined>;
     /**
@@ -266,7 +266,7 @@ export interface ContainerState {
      */
     features?: pulumi.Input<inputs.CT.ContainerFeatures>;
     /**
-     * The identifier for a file containing a hook script (needs to be executable).
+     * The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
      */
     hookScriptFileId?: pulumi.Input<string>;
     /**
@@ -385,7 +385,7 @@ export interface ContainerArgs {
      */
     features?: pulumi.Input<inputs.CT.ContainerFeatures>;
     /**
-     * The identifier for a file containing a hook script (needs to be executable).
+     * The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
      */
     hookScriptFileId?: pulumi.Input<string>;
     /**
