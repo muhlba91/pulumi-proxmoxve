@@ -83,7 +83,153 @@ func (o GetAccountAccountOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountAccount) string { return v.Status }).(pulumi.StringOutput)
 }
 
+type GetPluginsPlugin struct {
+	// API plugin name.
+	Api string `pulumi:"api"`
+	// DNS plugin data.
+	Data map[string]string `pulumi:"data"`
+	// Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
+	Digest string `pulumi:"digest"`
+	// ACME Plugin ID name.
+	Plugin string `pulumi:"plugin"`
+	// ACME challenge type (dns, standalone).
+	Type string `pulumi:"type"`
+	// Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records (0 - 172800).
+	ValidationDelay int `pulumi:"validationDelay"`
+}
+
+// GetPluginsPluginInput is an input type that accepts GetPluginsPluginArgs and GetPluginsPluginOutput values.
+// You can construct a concrete instance of `GetPluginsPluginInput` via:
+//
+//	GetPluginsPluginArgs{...}
+type GetPluginsPluginInput interface {
+	pulumi.Input
+
+	ToGetPluginsPluginOutput() GetPluginsPluginOutput
+	ToGetPluginsPluginOutputWithContext(context.Context) GetPluginsPluginOutput
+}
+
+type GetPluginsPluginArgs struct {
+	// API plugin name.
+	Api pulumi.StringInput `pulumi:"api"`
+	// DNS plugin data.
+	Data pulumi.StringMapInput `pulumi:"data"`
+	// Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
+	Digest pulumi.StringInput `pulumi:"digest"`
+	// ACME Plugin ID name.
+	Plugin pulumi.StringInput `pulumi:"plugin"`
+	// ACME challenge type (dns, standalone).
+	Type pulumi.StringInput `pulumi:"type"`
+	// Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records (0 - 172800).
+	ValidationDelay pulumi.IntInput `pulumi:"validationDelay"`
+}
+
+func (GetPluginsPluginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPluginsPlugin)(nil)).Elem()
+}
+
+func (i GetPluginsPluginArgs) ToGetPluginsPluginOutput() GetPluginsPluginOutput {
+	return i.ToGetPluginsPluginOutputWithContext(context.Background())
+}
+
+func (i GetPluginsPluginArgs) ToGetPluginsPluginOutputWithContext(ctx context.Context) GetPluginsPluginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPluginsPluginOutput)
+}
+
+// GetPluginsPluginArrayInput is an input type that accepts GetPluginsPluginArray and GetPluginsPluginArrayOutput values.
+// You can construct a concrete instance of `GetPluginsPluginArrayInput` via:
+//
+//	GetPluginsPluginArray{ GetPluginsPluginArgs{...} }
+type GetPluginsPluginArrayInput interface {
+	pulumi.Input
+
+	ToGetPluginsPluginArrayOutput() GetPluginsPluginArrayOutput
+	ToGetPluginsPluginArrayOutputWithContext(context.Context) GetPluginsPluginArrayOutput
+}
+
+type GetPluginsPluginArray []GetPluginsPluginInput
+
+func (GetPluginsPluginArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPluginsPlugin)(nil)).Elem()
+}
+
+func (i GetPluginsPluginArray) ToGetPluginsPluginArrayOutput() GetPluginsPluginArrayOutput {
+	return i.ToGetPluginsPluginArrayOutputWithContext(context.Background())
+}
+
+func (i GetPluginsPluginArray) ToGetPluginsPluginArrayOutputWithContext(ctx context.Context) GetPluginsPluginArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPluginsPluginArrayOutput)
+}
+
+type GetPluginsPluginOutput struct{ *pulumi.OutputState }
+
+func (GetPluginsPluginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPluginsPlugin)(nil)).Elem()
+}
+
+func (o GetPluginsPluginOutput) ToGetPluginsPluginOutput() GetPluginsPluginOutput {
+	return o
+}
+
+func (o GetPluginsPluginOutput) ToGetPluginsPluginOutputWithContext(ctx context.Context) GetPluginsPluginOutput {
+	return o
+}
+
+// API plugin name.
+func (o GetPluginsPluginOutput) Api() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPluginsPlugin) string { return v.Api }).(pulumi.StringOutput)
+}
+
+// DNS plugin data.
+func (o GetPluginsPluginOutput) Data() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetPluginsPlugin) map[string]string { return v.Data }).(pulumi.StringMapOutput)
+}
+
+// Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
+func (o GetPluginsPluginOutput) Digest() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPluginsPlugin) string { return v.Digest }).(pulumi.StringOutput)
+}
+
+// ACME Plugin ID name.
+func (o GetPluginsPluginOutput) Plugin() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPluginsPlugin) string { return v.Plugin }).(pulumi.StringOutput)
+}
+
+// ACME challenge type (dns, standalone).
+func (o GetPluginsPluginOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPluginsPlugin) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records (0 - 172800).
+func (o GetPluginsPluginOutput) ValidationDelay() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPluginsPlugin) int { return v.ValidationDelay }).(pulumi.IntOutput)
+}
+
+type GetPluginsPluginArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPluginsPluginArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPluginsPlugin)(nil)).Elem()
+}
+
+func (o GetPluginsPluginArrayOutput) ToGetPluginsPluginArrayOutput() GetPluginsPluginArrayOutput {
+	return o
+}
+
+func (o GetPluginsPluginArrayOutput) ToGetPluginsPluginArrayOutputWithContext(ctx context.Context) GetPluginsPluginArrayOutput {
+	return o
+}
+
+func (o GetPluginsPluginArrayOutput) Index(i pulumi.IntInput) GetPluginsPluginOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPluginsPlugin {
+		return vs[0].([]GetPluginsPlugin)[vs[1].(int)]
+	}).(GetPluginsPluginOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountAccountInput)(nil)).Elem(), GetAccountAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPluginsPluginInput)(nil)).Elem(), GetPluginsPluginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPluginsPluginArrayInput)(nil)).Elem(), GetPluginsPluginArray{})
 	pulumi.RegisterOutputType(GetAccountAccountOutput{})
+	pulumi.RegisterOutputType(GetPluginsPluginOutput{})
+	pulumi.RegisterOutputType(GetPluginsPluginArrayOutput{})
 }

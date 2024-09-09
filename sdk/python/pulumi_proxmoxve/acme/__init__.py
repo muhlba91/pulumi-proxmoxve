@@ -7,4 +7,6 @@ import typing
 # Export this package's modules as members:
 from .get_account import *
 from .get_accounts import *
+from .get_plugin import *
+from .get_plugins import *
 from . import outputs

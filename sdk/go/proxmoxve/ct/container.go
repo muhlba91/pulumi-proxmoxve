@@ -55,6 +55,8 @@ type Container struct {
 	OperatingSystem ContainerOperatingSystemPtrOutput `pulumi:"operatingSystem"`
 	// The identifier for a pool to assign the container to.
 	PoolId pulumi.StringPtrOutput `pulumi:"poolId"`
+	// Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
+	Protection pulumi.BoolPtrOutput `pulumi:"protection"`
 	// Automatically start container when the host
 	// system boots (defaults to `true`).
 	StartOnBoot pulumi.BoolPtrOutput `pulumi:"startOnBoot"`
@@ -151,6 +153,8 @@ type containerState struct {
 	OperatingSystem *ContainerOperatingSystem `pulumi:"operatingSystem"`
 	// The identifier for a pool to assign the container to.
 	PoolId *string `pulumi:"poolId"`
+	// Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
+	Protection *bool `pulumi:"protection"`
 	// Automatically start container when the host
 	// system boots (defaults to `true`).
 	StartOnBoot *bool `pulumi:"startOnBoot"`
@@ -215,6 +219,8 @@ type ContainerState struct {
 	OperatingSystem ContainerOperatingSystemPtrInput
 	// The identifier for a pool to assign the container to.
 	PoolId pulumi.StringPtrInput
+	// Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
+	Protection pulumi.BoolPtrInput
 	// Automatically start container when the host
 	// system boots (defaults to `true`).
 	StartOnBoot pulumi.BoolPtrInput
@@ -283,6 +289,8 @@ type containerArgs struct {
 	OperatingSystem *ContainerOperatingSystem `pulumi:"operatingSystem"`
 	// The identifier for a pool to assign the container to.
 	PoolId *string `pulumi:"poolId"`
+	// Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
+	Protection *bool `pulumi:"protection"`
 	// Automatically start container when the host
 	// system boots (defaults to `true`).
 	StartOnBoot *bool `pulumi:"startOnBoot"`
@@ -348,6 +356,8 @@ type ContainerArgs struct {
 	OperatingSystem ContainerOperatingSystemPtrInput
 	// The identifier for a pool to assign the container to.
 	PoolId pulumi.StringPtrInput
+	// Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
+	Protection pulumi.BoolPtrInput
 	// Automatically start container when the host
 	// system boots (defaults to `true`).
 	StartOnBoot pulumi.BoolPtrInput
@@ -538,6 +548,11 @@ func (o ContainerOutput) OperatingSystem() ContainerOperatingSystemPtrOutput {
 // The identifier for a pool to assign the container to.
 func (o ContainerOutput) PoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Container) pulumi.StringPtrOutput { return v.PoolId }).(pulumi.StringPtrOutput)
+}
+
+// Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
+func (o ContainerOutput) Protection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Container) pulumi.BoolPtrOutput { return v.Protection }).(pulumi.BoolPtrOutput)
 }
 
 // Automatically start container when the host

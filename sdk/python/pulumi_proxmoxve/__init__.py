@@ -7,6 +7,7 @@ import typing
 # Export this package's modules as members:
 from .acl import *
 from .acme_account import *
+from .acme_dns_plugin import *
 from .certifi import *
 from .dns import *
 from .get_node import *
@@ -278,6 +279,14 @@ _utilities.register(
   "fqn": "pulumi_proxmoxve",
   "classes": {
    "proxmoxve:index/acmeAccount:AcmeAccount": "AcmeAccount"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "index/acmeDnsPlugin",
+  "fqn": "pulumi_proxmoxve",
+  "classes": {
+   "proxmoxve:index/acmeDnsPlugin:AcmeDnsPlugin": "AcmeDnsPlugin"
   }
  },
  {

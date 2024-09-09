@@ -136,6 +136,51 @@
                 }
             }
         },
+        "proxmoxve:Acme/getPluginsPlugin:getPluginsPlugin": {
+            "properties": {
+                "api": {
+                    "type": "string",
+                    "description": "API plugin name.\n"
+                },
+                "data": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "DNS plugin data.\n"
+                },
+                "digest": {
+                    "type": "string",
+                    "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.\n"
+                },
+                "plugin": {
+                    "type": "string",
+                    "description": "ACME Plugin ID name.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "ACME challenge type (dns, standalone).\n"
+                },
+                "validationDelay": {
+                    "type": "integer",
+                    "description": "Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records (0 - 172800).\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "api",
+                "data",
+                "digest",
+                "plugin",
+                "type",
+                "validationDelay"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "proxmoxve:CT/ContainerClone:ContainerClone": {
             "properties": {
                 "datastoreId": {
@@ -2874,6 +2919,10 @@
                     "type": "string",
                     "description": "The identifier for a pool to assign the container to.\n"
                 },
+                "protection": {
+                    "type": "boolean",
+                    "description": "Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.\n"
+                },
                 "startOnBoot": {
                     "type": "boolean",
                     "description": "Automatically start container when the host\nsystem boots (defaults to `true`).\n"
@@ -2997,6 +3046,10 @@
                     "type": "string",
                     "description": "The identifier for a pool to assign the container to.\n",
                     "willReplaceOnChanges": true
+                },
+                "protection": {
+                    "type": "boolean",
+                    "description": "Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.\n"
                 },
                 "startOnBoot": {
                     "type": "boolean",
@@ -3124,6 +3177,10 @@
                         "type": "string",
                         "description": "The identifier for a pool to assign the container to.\n",
                         "willReplaceOnChanges": true
+                    },
+                    "protection": {
+                        "type": "boolean",
+                        "description": "Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.\n"
                     },
                     "startOnBoot": {
                         "type": "boolean",
@@ -6684,6 +6741,110 @@
                 "type": "object"
             }
         },
+        "proxmoxve:index/acmeDnsPlugin:AcmeDnsPlugin": {
+            "description": "Manages an ACME plugin in a Proxmox VE cluster.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst example = new proxmoxve.AcmeDnsPlugin(\"example\", {\n    api: \"aws\",\n    data: {\n        AWS_ACCESS_KEY_ID: \"EXAMPLE\",\n        AWS_SECRET_ACCESS_KEY: \"EXAMPLE\",\n    },\n    plugin: \"test\",\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample = proxmoxve.AcmeDnsPlugin(\"example\",\n    api=\"aws\",\n    data={\n        \"AWS_ACCESS_KEY_ID\": \"EXAMPLE\",\n        \"AWS_SECRET_ACCESS_KEY\": \"EXAMPLE\",\n    },\n    plugin=\"test\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new ProxmoxVE.AcmeDnsPlugin(\"example\", new()\n    {\n        Api = \"aws\",\n        Data = \n        {\n            { \"AWS_ACCESS_KEY_ID\", \"EXAMPLE\" },\n            { \"AWS_SECRET_ACCESS_KEY\", \"EXAMPLE\" },\n        },\n        Plugin = \"test\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := proxmoxve.NewAcmeDnsPlugin(ctx, \"example\", \u0026proxmoxve.AcmeDnsPluginArgs{\n\t\t\tApi: pulumi.String(\"aws\"),\n\t\t\tData: pulumi.StringMap{\n\t\t\t\t\"AWS_ACCESS_KEY_ID\":     pulumi.String(\"EXAMPLE\"),\n\t\t\t\t\"AWS_SECRET_ACCESS_KEY\": pulumi.String(\"EXAMPLE\"),\n\t\t\t},\n\t\t\tPlugin: pulumi.String(\"test\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.AcmeDnsPlugin;\nimport com.pulumi.proxmoxve.AcmeDnsPluginArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new AcmeDnsPlugin(\"example\", AcmeDnsPluginArgs.builder()\n            .api(\"aws\")\n            .data(Map.ofEntries(\n                Map.entry(\"AWS_ACCESS_KEY_ID\", \"EXAMPLE\"),\n                Map.entry(\"AWS_SECRET_ACCESS_KEY\", \"EXAMPLE\")\n            ))\n            .plugin(\"test\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: proxmoxve:AcmeDnsPlugin\n    properties:\n      api: aws\n      data:\n        AWS_ACCESS_KEY_ID: EXAMPLE\n        AWS_SECRET_ACCESS_KEY: EXAMPLE\n      plugin: test\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n#!/usr/bin/env sh\n\nACME accounts can be imported using their name, e.g.:\n\n```sh\n$ pulumi import proxmoxve:index/acmeDnsPlugin:AcmeDnsPlugin example test\n```\n\n",
+            "properties": {
+                "api": {
+                    "type": "string",
+                    "description": "API plugin name.\n"
+                },
+                "data": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "DNS plugin data.\n"
+                },
+                "digest": {
+                    "type": "string",
+                    "description": "SHA1 digest of the current configuration. Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.\n"
+                },
+                "disable": {
+                    "type": "boolean",
+                    "description": "Flag to disable the config.\n"
+                },
+                "plugin": {
+                    "type": "string",
+                    "description": "ACME Plugin ID name.\n"
+                },
+                "validationDelay": {
+                    "type": "integer",
+                    "description": "Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records (0 - 172800).\n"
+                }
+            },
+            "required": [
+                "api",
+                "digest",
+                "plugin",
+                "validationDelay"
+            ],
+            "inputProperties": {
+                "api": {
+                    "type": "string",
+                    "description": "API plugin name.\n"
+                },
+                "data": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "DNS plugin data.\n"
+                },
+                "digest": {
+                    "type": "string",
+                    "description": "SHA1 digest of the current configuration. Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.\n"
+                },
+                "disable": {
+                    "type": "boolean",
+                    "description": "Flag to disable the config.\n"
+                },
+                "plugin": {
+                    "type": "string",
+                    "description": "ACME Plugin ID name.\n"
+                },
+                "validationDelay": {
+                    "type": "integer",
+                    "description": "Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records (0 - 172800).\n"
+                }
+            },
+            "requiredInputs": [
+                "api",
+                "plugin"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AcmeDnsPlugin resources.\n",
+                "properties": {
+                    "api": {
+                        "type": "string",
+                        "description": "API plugin name.\n"
+                    },
+                    "data": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "DNS plugin data.\n"
+                    },
+                    "digest": {
+                        "type": "string",
+                        "description": "SHA1 digest of the current configuration. Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.\n"
+                    },
+                    "disable": {
+                        "type": "boolean",
+                        "description": "Flag to disable the config.\n"
+                    },
+                    "plugin": {
+                        "type": "string",
+                        "description": "ACME Plugin ID name.\n"
+                    },
+                    "validationDelay": {
+                        "type": "integer",
+                        "description": "Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records (0 - 172800).\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "proxmoxve:index/certifi:Certifi": {
             "description": "Manages the custom SSL/TLS certificate for a specific node.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  example:\n    type: proxmoxve:Certifi\n    properties:\n      certificate: ${proxmoxVirtualEnvironmentCertificateSelfSignedCert.certPem}\n      nodeName: first-node\n      privateKey: ${proxmoxVirtualEnvironmentCertificatePrivateKey.privateKeyPem}\n  proxmoxVirtualEnvironmentCertificatePrivateKey:\n    type: tls:PrivateKey\n    properties:\n      algorithm: RSA\n      rsaBits: 2048\n  proxmoxVirtualEnvironmentCertificateSelfSignedCert:\n    type: tls:SelfSignedCert\n    properties:\n      keyAlgorithm: ${proxmoxVirtualEnvironmentCertificatePrivateKey.algorithm}\n      privateKeyPem: ${proxmoxVirtualEnvironmentCertificatePrivateKey.privateKeyPem}\n      subject:\n        commonName: example.com\n        organization: Terraform Provider for Proxmox\n      validityPeriodHours: 8760\n      allowedUses:\n        - key_encipherment\n        - digital_signature\n        - server_auth\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
@@ -7349,6 +7510,92 @@
                 "type": "object",
                 "required": [
                     "accounts",
+                    "id"
+                ]
+            }
+        },
+        "proxmoxve:Acme/getPlugin:getPlugin": {
+            "description": "Retrieves a single ACME plugin by plugin ID name.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@pulumi/proxmoxve\";\n\nconst example = proxmoxve.Acme.getPlugin({\n    plugin: \"standalone\",\n});\nexport const dataProxmoxVirtualEnvironmentAcmePlugin = example;\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample = proxmoxve.Acme.get_plugin(plugin=\"standalone\")\npulumi.export(\"dataProxmoxVirtualEnvironmentAcmePlugin\", example)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = ProxmoxVE.Acme.GetPlugin.Invoke(new()\n    {\n        Plugin = \"standalone\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"dataProxmoxVirtualEnvironmentAcmePlugin\"] = example,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Acme\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := Acme.GetPlugin(ctx, \u0026acme.GetPluginArgs{\n\t\t\tPlugin: \"standalone\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"dataProxmoxVirtualEnvironmentAcmePlugin\", example)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Acme.AcmeFunctions;\nimport com.pulumi.proxmoxve.Acme.inputs.GetPluginArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = AcmeFunctions.getPlugin(GetPluginArgs.builder()\n            .plugin(\"standalone\")\n            .build());\n\n        ctx.export(\"dataProxmoxVirtualEnvironmentAcmePlugin\", example.applyValue(getPluginResult -\u003e getPluginResult));\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: proxmoxve:Acme:getPlugin\n      Arguments:\n        plugin: standalone\noutputs:\n  dataProxmoxVirtualEnvironmentAcmePlugin: ${example}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getPlugin.\n",
+                "properties": {
+                    "plugin": {
+                        "type": "string",
+                        "description": "ACME Plugin ID name.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "plugin"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getPlugin.\n",
+                "properties": {
+                    "api": {
+                        "type": "string",
+                        "description": "API plugin name.\n"
+                    },
+                    "data": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "DNS plugin data.\n"
+                    },
+                    "digest": {
+                        "type": "string",
+                        "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "plugin": {
+                        "type": "string",
+                        "description": "ACME Plugin ID name.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "ACME challenge type (dns, standalone).\n"
+                    },
+                    "validationDelay": {
+                        "type": "integer",
+                        "description": "Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records (0 - 172800).\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "api",
+                    "data",
+                    "digest",
+                    "plugin",
+                    "type",
+                    "validationDelay",
+                    "id"
+                ]
+            }
+        },
+        "proxmoxve:Acme/getPlugins:getPlugins": {
+            "description": "Retrieves the list of ACME plugins.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@pulumi/proxmoxve\";\n\nconst example = proxmoxve.Acme.getPlugins({});\nexport const dataProxmoxVirtualEnvironmentAcmePlugins = example.then(example =\u003e example.plugins);\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample = proxmoxve.Acme.get_plugins()\npulumi.export(\"dataProxmoxVirtualEnvironmentAcmePlugins\", example.plugins)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = ProxmoxVE.Acme.GetPlugins.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"dataProxmoxVirtualEnvironmentAcmePlugins\"] = example.Apply(getPluginsResult =\u003e getPluginsResult.Plugins),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Acme\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := Acme.GetPlugins(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"dataProxmoxVirtualEnvironmentAcmePlugins\", example.Plugins)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Acme.AcmeFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = AcmeFunctions.getPlugins();\n\n        ctx.export(\"dataProxmoxVirtualEnvironmentAcmePlugins\", example.applyValue(getPluginsResult -\u003e getPluginsResult.plugins()));\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: proxmoxve:Acme:getPlugins\n      Arguments: {}\noutputs:\n  dataProxmoxVirtualEnvironmentAcmePlugins: ${example.plugins}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "outputs": {
+                "description": "A collection of values returned by getPlugins.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "plugins": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/proxmoxve:Acme/getPluginsPlugin:getPluginsPlugin"
+                        },
+                        "description": "List of ACME plugins\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "plugins",
                     "id"
                 ]
             }

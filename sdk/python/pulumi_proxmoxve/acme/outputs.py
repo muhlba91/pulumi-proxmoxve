@@ -11,6 +11,7 @@ from .. import _utilities
 
 __all__ = [
     'GetAccountAccountResult',
+    'GetPluginsPluginResult',
 ]
 
 @pulumi.output_type
@@ -51,5 +52,78 @@ class GetAccountAccountResult(dict):
         The status of the account. Can be one of `valid`, `deactivated` or `revoked`.
         """
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetPluginsPluginResult(dict):
+    def __init__(__self__, *,
+                 api: str,
+                 data: Mapping[str, str],
+                 digest: str,
+                 plugin: str,
+                 type: str,
+                 validation_delay: int):
+        """
+        :param str api: API plugin name.
+        :param Mapping[str, str] data: DNS plugin data.
+        :param str digest: Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
+        :param str plugin: ACME Plugin ID name.
+        :param str type: ACME challenge type (dns, standalone).
+        :param int validation_delay: Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records (0 - 172800).
+        """
+        pulumi.set(__self__, "api", api)
+        pulumi.set(__self__, "data", data)
+        pulumi.set(__self__, "digest", digest)
+        pulumi.set(__self__, "plugin", plugin)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "validation_delay", validation_delay)
+
+    @property
+    @pulumi.getter
+    def api(self) -> str:
+        """
+        API plugin name.
+        """
+        return pulumi.get(self, "api")
+
+    @property
+    @pulumi.getter
+    def data(self) -> Mapping[str, str]:
+        """
+        DNS plugin data.
+        """
+        return pulumi.get(self, "data")
+
+    @property
+    @pulumi.getter
+    def digest(self) -> str:
+        """
+        Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
+        """
+        return pulumi.get(self, "digest")
+
+    @property
+    @pulumi.getter
+    def plugin(self) -> str:
+        """
+        ACME Plugin ID name.
+        """
+        return pulumi.get(self, "plugin")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        ACME challenge type (dns, standalone).
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="validationDelay")
+    def validation_delay(self) -> int:
+        """
+        Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records (0 - 172800).
+        """
+        return pulumi.get(self, "validation_delay")
 
 

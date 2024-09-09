@@ -111,6 +111,12 @@ namespace Pulumi.ProxmoxVE.CT
         public Output<string?> PoolId { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
+        /// </summary>
+        [Output("protection")]
+        public Output<bool?> Protection { get; private set; } = null!;
+
+        /// <summary>
         /// Automatically start container when the host
         /// system boots (defaults to `true`).
         /// </summary>
@@ -333,6 +339,12 @@ namespace Pulumi.ProxmoxVE.CT
         public Input<string>? PoolId { get; set; }
 
         /// <summary>
+        /// Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
+        /// </summary>
+        [Input("protection")]
+        public Input<bool>? Protection { get; set; }
+
+        /// <summary>
         /// Automatically start container when the host
         /// system boots (defaults to `true`).
         /// </summary>
@@ -520,6 +532,12 @@ namespace Pulumi.ProxmoxVE.CT
         /// </summary>
         [Input("poolId")]
         public Input<string>? PoolId { get; set; }
+
+        /// <summary>
+        /// Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
+        /// </summary>
+        [Input("protection")]
+        public Input<bool>? Protection { get; set; }
 
         /// <summary>
         /// Automatically start container when the host

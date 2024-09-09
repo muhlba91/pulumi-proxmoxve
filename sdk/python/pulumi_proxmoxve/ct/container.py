@@ -30,6 +30,7 @@ class ContainerArgs:
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerNetworkInterfaceArgs']]]] = None,
                  operating_system: Optional[pulumi.Input['ContainerOperatingSystemArgs']] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
+                 protection: Optional[pulumi.Input[bool]] = None,
                  start_on_boot: Optional[pulumi.Input[bool]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
                  startup: Optional[pulumi.Input['ContainerStartupArgs']] = None,
@@ -59,6 +60,7 @@ class ContainerArgs:
                supported).
         :param pulumi.Input['ContainerOperatingSystemArgs'] operating_system: The Operating System configuration.
         :param pulumi.Input[str] pool_id: The identifier for a pool to assign the container to.
+        :param pulumi.Input[bool] protection: Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
         :param pulumi.Input[bool] start_on_boot: Automatically start container when the host
                system boots (defaults to `true`).
         :param pulumi.Input[bool] started: Whether to start the container (defaults to `true`).
@@ -105,6 +107,8 @@ class ContainerArgs:
             pulumi.set(__self__, "operating_system", operating_system)
         if pool_id is not None:
             pulumi.set(__self__, "pool_id", pool_id)
+        if protection is not None:
+            pulumi.set(__self__, "protection", protection)
         if start_on_boot is not None:
             pulumi.set(__self__, "start_on_boot", start_on_boot)
         if started is not None:
@@ -303,6 +307,18 @@ class ContainerArgs:
         pulumi.set(self, "pool_id", value)
 
     @property
+    @pulumi.getter
+    def protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
+        """
+        return pulumi.get(self, "protection")
+
+    @protection.setter
+    def protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "protection", value)
+
+    @property
     @pulumi.getter(name="startOnBoot")
     def start_on_boot(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -471,6 +487,7 @@ class _ContainerState:
                  node_name: Optional[pulumi.Input[str]] = None,
                  operating_system: Optional[pulumi.Input['ContainerOperatingSystemArgs']] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
+                 protection: Optional[pulumi.Input[bool]] = None,
                  start_on_boot: Optional[pulumi.Input[bool]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
                  startup: Optional[pulumi.Input['ContainerStartupArgs']] = None,
@@ -500,6 +517,7 @@ class _ContainerState:
         :param pulumi.Input[str] node_name: The name of the node to assign the container to.
         :param pulumi.Input['ContainerOperatingSystemArgs'] operating_system: The Operating System configuration.
         :param pulumi.Input[str] pool_id: The identifier for a pool to assign the container to.
+        :param pulumi.Input[bool] protection: Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
         :param pulumi.Input[bool] start_on_boot: Automatically start container when the host
                system boots (defaults to `true`).
         :param pulumi.Input[bool] started: Whether to start the container (defaults to `true`).
@@ -547,6 +565,8 @@ class _ContainerState:
             pulumi.set(__self__, "operating_system", operating_system)
         if pool_id is not None:
             pulumi.set(__self__, "pool_id", pool_id)
+        if protection is not None:
+            pulumi.set(__self__, "protection", protection)
         if start_on_boot is not None:
             pulumi.set(__self__, "start_on_boot", start_on_boot)
         if started is not None:
@@ -745,6 +765,18 @@ class _ContainerState:
         pulumi.set(self, "pool_id", value)
 
     @property
+    @pulumi.getter
+    def protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
+        """
+        return pulumi.get(self, "protection")
+
+    @protection.setter
+    def protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "protection", value)
+
+    @property
     @pulumi.getter(name="startOnBoot")
     def start_on_boot(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -915,6 +947,7 @@ class Container(pulumi.CustomResource):
                  node_name: Optional[pulumi.Input[str]] = None,
                  operating_system: Optional[pulumi.Input[Union['ContainerOperatingSystemArgs', 'ContainerOperatingSystemArgsDict']]] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
+                 protection: Optional[pulumi.Input[bool]] = None,
                  start_on_boot: Optional[pulumi.Input[bool]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
                  startup: Optional[pulumi.Input[Union['ContainerStartupArgs', 'ContainerStartupArgsDict']]] = None,
@@ -958,6 +991,7 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[str] node_name: The name of the node to assign the container to.
         :param pulumi.Input[Union['ContainerOperatingSystemArgs', 'ContainerOperatingSystemArgsDict']] operating_system: The Operating System configuration.
         :param pulumi.Input[str] pool_id: The identifier for a pool to assign the container to.
+        :param pulumi.Input[bool] protection: Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
         :param pulumi.Input[bool] start_on_boot: Automatically start container when the host
                system boots (defaults to `true`).
         :param pulumi.Input[bool] started: Whether to start the container (defaults to `true`).
@@ -1025,6 +1059,7 @@ class Container(pulumi.CustomResource):
                  node_name: Optional[pulumi.Input[str]] = None,
                  operating_system: Optional[pulumi.Input[Union['ContainerOperatingSystemArgs', 'ContainerOperatingSystemArgsDict']]] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
+                 protection: Optional[pulumi.Input[bool]] = None,
                  start_on_boot: Optional[pulumi.Input[bool]] = None,
                  started: Optional[pulumi.Input[bool]] = None,
                  startup: Optional[pulumi.Input[Union['ContainerStartupArgs', 'ContainerStartupArgsDict']]] = None,
@@ -1062,6 +1097,7 @@ class Container(pulumi.CustomResource):
             __props__.__dict__["node_name"] = node_name
             __props__.__dict__["operating_system"] = operating_system
             __props__.__dict__["pool_id"] = pool_id
+            __props__.__dict__["protection"] = protection
             __props__.__dict__["start_on_boot"] = start_on_boot
             __props__.__dict__["started"] = started
             __props__.__dict__["startup"] = startup
@@ -1098,6 +1134,7 @@ class Container(pulumi.CustomResource):
             node_name: Optional[pulumi.Input[str]] = None,
             operating_system: Optional[pulumi.Input[Union['ContainerOperatingSystemArgs', 'ContainerOperatingSystemArgsDict']]] = None,
             pool_id: Optional[pulumi.Input[str]] = None,
+            protection: Optional[pulumi.Input[bool]] = None,
             start_on_boot: Optional[pulumi.Input[bool]] = None,
             started: Optional[pulumi.Input[bool]] = None,
             startup: Optional[pulumi.Input[Union['ContainerStartupArgs', 'ContainerStartupArgsDict']]] = None,
@@ -1132,6 +1169,7 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[str] node_name: The name of the node to assign the container to.
         :param pulumi.Input[Union['ContainerOperatingSystemArgs', 'ContainerOperatingSystemArgsDict']] operating_system: The Operating System configuration.
         :param pulumi.Input[str] pool_id: The identifier for a pool to assign the container to.
+        :param pulumi.Input[bool] protection: Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
         :param pulumi.Input[bool] start_on_boot: Automatically start container when the host
                system boots (defaults to `true`).
         :param pulumi.Input[bool] started: Whether to start the container (defaults to `true`).
@@ -1169,6 +1207,7 @@ class Container(pulumi.CustomResource):
         __props__.__dict__["node_name"] = node_name
         __props__.__dict__["operating_system"] = operating_system
         __props__.__dict__["pool_id"] = pool_id
+        __props__.__dict__["protection"] = protection
         __props__.__dict__["start_on_boot"] = start_on_boot
         __props__.__dict__["started"] = started
         __props__.__dict__["startup"] = startup
@@ -1295,6 +1334,14 @@ class Container(pulumi.CustomResource):
         The identifier for a pool to assign the container to.
         """
         return pulumi.get(self, "pool_id")
+
+    @property
+    @pulumi.getter
+    def protection(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
+        """
+        return pulumi.get(self, "protection")
 
     @property
     @pulumi.getter(name="startOnBoot")

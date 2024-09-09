@@ -243,6 +243,20 @@ public class Container extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.poolId);
     }
     /**
+     * Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
+     * 
+     */
+    @Export(name="protection", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> protection;
+
+    /**
+     * @return Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
+     * 
+     */
+    public Output<Optional<Boolean>> protection() {
+        return Codegen.optional(this.protection);
+    }
+    /**
      * Automatically start container when the host
      * system boots (defaults to `true`).
      * 

@@ -105,6 +105,10 @@ export class Container extends pulumi.CustomResource {
      */
     public readonly poolId!: pulumi.Output<string | undefined>;
     /**
+     * Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
+     */
+    public readonly protection!: pulumi.Output<boolean | undefined>;
+    /**
      * Automatically start container when the host
      * system boots (defaults to `true`).
      */
@@ -188,6 +192,7 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["nodeName"] = state ? state.nodeName : undefined;
             resourceInputs["operatingSystem"] = state ? state.operatingSystem : undefined;
             resourceInputs["poolId"] = state ? state.poolId : undefined;
+            resourceInputs["protection"] = state ? state.protection : undefined;
             resourceInputs["startOnBoot"] = state ? state.startOnBoot : undefined;
             resourceInputs["started"] = state ? state.started : undefined;
             resourceInputs["startup"] = state ? state.startup : undefined;
@@ -219,6 +224,7 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["nodeName"] = args ? args.nodeName : undefined;
             resourceInputs["operatingSystem"] = args ? args.operatingSystem : undefined;
             resourceInputs["poolId"] = args ? args.poolId : undefined;
+            resourceInputs["protection"] = args ? args.protection : undefined;
             resourceInputs["startOnBoot"] = args ? args.startOnBoot : undefined;
             resourceInputs["started"] = args ? args.started : undefined;
             resourceInputs["startup"] = args ? args.startup : undefined;
@@ -298,6 +304,10 @@ export interface ContainerState {
      * The identifier for a pool to assign the container to.
      */
     poolId?: pulumi.Input<string>;
+    /**
+     * Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
+     */
+    protection?: pulumi.Input<boolean>;
     /**
      * Automatically start container when the host
      * system boots (defaults to `true`).
@@ -417,6 +427,10 @@ export interface ContainerArgs {
      * The identifier for a pool to assign the container to.
      */
     poolId?: pulumi.Input<string>;
+    /**
+     * Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
+     */
+    protection?: pulumi.Input<boolean>;
     /**
      * Automatically start container when the host
      * system boots (defaults to `true`).

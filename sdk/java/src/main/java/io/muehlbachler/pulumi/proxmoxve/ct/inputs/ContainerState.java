@@ -242,6 +242,21 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
+     * 
+     */
+    @Import(name="protection")
+    private @Nullable Output<Boolean> protection;
+
+    /**
+     * @return Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
+     * 
+     */
+    public Optional<Output<Boolean>> protection() {
+        return Optional.ofNullable(this.protection);
+    }
+
+    /**
      * Automatically start container when the host
      * system boots (defaults to `true`).
      * 
@@ -458,6 +473,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         this.nodeName = $.nodeName;
         this.operatingSystem = $.operatingSystem;
         this.poolId = $.poolId;
+        this.protection = $.protection;
         this.startOnBoot = $.startOnBoot;
         this.started = $.started;
         this.startup = $.startup;
@@ -805,6 +821,27 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder poolId(String poolId) {
             return poolId(Output.of(poolId));
+        }
+
+        /**
+         * @param protection Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder protection(@Nullable Output<Boolean> protection) {
+            $.protection = protection;
+            return this;
+        }
+
+        /**
+         * @param protection Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder protection(Boolean protection) {
+            return protection(Output.of(protection));
         }
 
         /**

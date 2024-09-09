@@ -203,6 +203,33 @@ export namespace Acme {
         status: string;
     }
 
+    export interface GetPluginsPlugin {
+        /**
+         * API plugin name.
+         */
+        api: string;
+        /**
+         * DNS plugin data.
+         */
+        data: {[key: string]: string};
+        /**
+         * Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
+         */
+        digest: string;
+        /**
+         * ACME Plugin ID name.
+         */
+        plugin: string;
+        /**
+         * ACME challenge type (dns, standalone).
+         */
+        type: string;
+        /**
+         * Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records (0 - 172800).
+         */
+        validationDelay: number;
+    }
+
 }
 
 export namespace CT {

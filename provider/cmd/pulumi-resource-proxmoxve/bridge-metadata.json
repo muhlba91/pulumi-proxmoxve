@@ -9,6 +9,10 @@
                 "current": "proxmoxve:index/acmeAccount:AcmeAccount",
                 "majorVersion": 6
             },
+            "proxmox_virtual_environment_acme_dns_plugin": {
+                "current": "proxmoxve:index/acmeDnsPlugin:AcmeDnsPlugin",
+                "majorVersion": 6
+            },
             "proxmox_virtual_environment_apt_repository": {
                 "current": "proxmoxve:Apt/repository:Repository",
                 "majorVersion": 6,
@@ -525,6 +529,19 @@
                     }
                 }
             },
+            "proxmox_virtual_environment_acme_plugin": {
+                "current": "proxmoxve:Acme/getPlugin:getPlugin",
+                "majorVersion": 6
+            },
+            "proxmox_virtual_environment_acme_plugins": {
+                "current": "proxmoxve:Acme/getPlugins:getPlugins",
+                "majorVersion": 6,
+                "fields": {
+                    "plugins": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "proxmox_virtual_environment_apt_repository": {
                 "current": "proxmoxve:Apt/getRepository:getRepository",
                 "majorVersion": 6,
@@ -931,6 +948,7 @@
             "proxmoxve:VM/virtualMachine:VirtualMachine": 0,
             "proxmoxve:index/acl:Acl": 1,
             "proxmoxve:index/acmeAccount:AcmeAccount": 1,
+            "proxmoxve:index/acmeDnsPlugin:AcmeDnsPlugin": 1,
             "proxmoxve:index/certifi:Certifi": 0,
             "proxmoxve:index/dNS:DNS": 0,
             "proxmoxve:index/hosts:Hosts": 0,
@@ -940,6 +958,8 @@
         "functions": {
             "proxmoxve:Acme/getAccount:getAccount": 1,
             "proxmoxve:Acme/getAccounts:getAccounts": 1,
+            "proxmoxve:Acme/getPlugin:getPlugin": 1,
+            "proxmoxve:Acme/getPlugins:getPlugins": 1,
             "proxmoxve:Apt/getRepository:getRepository": 1,
             "proxmoxve:Apt/standard/getRepository:getRepository": 1,
             "proxmoxve:Cluster/getNodes:getNodes": 0,
