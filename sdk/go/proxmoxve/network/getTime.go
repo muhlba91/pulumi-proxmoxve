@@ -69,14 +69,20 @@ type GetTimeResult struct {
 
 func GetTimeOutput(ctx *pulumi.Context, args GetTimeOutputArgs, opts ...pulumi.InvokeOption) GetTimeResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetTimeResult, error) {
+		ApplyT(func(v interface{}) (GetTimeResultOutput, error) {
 			args := v.(GetTimeArgs)
-			r, err := GetTime(ctx, &args, opts...)
-			var s GetTimeResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetTimeResult
+			secret, err := ctx.InvokePackageRaw("proxmoxve:Network/getTime:getTime", args, &rv, "", opts...)
+			if err != nil {
+				return GetTimeResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetTimeResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetTimeResultOutput), nil
+			}
+			return output, nil
 		}).(GetTimeResultOutput)
 }
 

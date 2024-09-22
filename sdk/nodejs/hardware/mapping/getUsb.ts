@@ -22,7 +22,6 @@ import * as utilities from "../../utilities";
  * ```
  */
 export function getUsb(args: GetUsbArgs, opts?: pulumi.InvokeOptions): Promise<GetUsbResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("proxmoxve:Hardware/mapping/getUsb:getUsb", {
         "name": args.name,
@@ -76,7 +75,10 @@ export interface GetUsbResult {
  * ```
  */
 export function getUsbOutput(args: GetUsbOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsbResult> {
-    return pulumi.output(args).apply((a: any) => getUsb(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("proxmoxve:Hardware/mapping/getUsb:getUsb", {
+        "name": args.name,
+    }, opts);
 }
 
 /**

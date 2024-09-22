@@ -16,16 +16,14 @@ public final class ContainerInitializationIpConfigIpv6Args extends com.pulumi.re
     public static final ContainerInitializationIpConfigIpv6Args Empty = new ContainerInitializationIpConfigIpv6Args();
 
     /**
-     * The IPv6 address (use `dhcp` for
-     * autodiscovery).
+     * The IPv6 address (use `dhcp` for auto-discovery).
      * 
      */
     @Import(name="address")
     private @Nullable Output<String> address;
 
     /**
-     * @return The IPv6 address (use `dhcp` for
-     * autodiscovery).
+     * @return The IPv6 address (use `dhcp` for auto-discovery).
      * 
      */
     public Optional<Output<String>> address() {
@@ -75,8 +73,7 @@ public final class ContainerInitializationIpConfigIpv6Args extends com.pulumi.re
         }
 
         /**
-         * @param address The IPv6 address (use `dhcp` for
-         * autodiscovery).
+         * @param address The IPv6 address (use `dhcp` for auto-discovery).
          * 
          * @return builder
          * 
@@ -87,8 +84,7 @@ public final class ContainerInitializationIpConfigIpv6Args extends com.pulumi.re
         }
 
         /**
-         * @param address The IPv6 address (use `dhcp` for
-         * autodiscovery).
+         * @param address The IPv6 address (use `dhcp` for auto-discovery).
          * 
          * @return builder
          * 

@@ -191,7 +191,7 @@ public class Vm2 extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Vm2(String name) {
+    public Vm2(java.lang.String name) {
         this(name, Vm2Args.Empty);
     }
     /**
@@ -199,7 +199,7 @@ public class Vm2 extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Vm2(String name, Vm2Args args) {
+    public Vm2(java.lang.String name, Vm2Args args) {
         this(name, args, null);
     }
     /**
@@ -208,12 +208,12 @@ public class Vm2 extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Vm2(String name, Vm2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("proxmoxve:index/vm2:Vm2", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Vm2(java.lang.String name, Vm2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("proxmoxve:index/vm2:Vm2", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Vm2(String name, Output<String> id, @Nullable Vm2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("proxmoxve:index/vm2:Vm2", name, state, makeResourceOptions(options, id));
+    private Vm2(java.lang.String name, Output<java.lang.String> id, @Nullable Vm2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("proxmoxve:index/vm2:Vm2", name, state, makeResourceOptions(options, id), false);
     }
 
     private static Vm2Args makeArgs(Vm2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -223,7 +223,7 @@ public class Vm2 extends com.pulumi.resources.CustomResource {
         return args == null ? Vm2Args.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -239,7 +239,7 @@ public class Vm2 extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Vm2 get(String name, Output<String> id, @Nullable Vm2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Vm2 get(java.lang.String name, Output<java.lang.String> id, @Nullable Vm2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Vm2(name, id, state, options);
     }
 }

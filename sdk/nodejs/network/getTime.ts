@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getTime(args: GetTimeArgs, opts?: pulumi.InvokeOptions): Promise<GetTimeResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("proxmoxve:Network/getTime:getTime", {
         "nodeName": args.nodeName,
@@ -73,7 +72,10 @@ export interface GetTimeResult {
  * ```
  */
 export function getTimeOutput(args: GetTimeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTimeResult> {
-    return pulumi.output(args).apply((a: any) => getTime(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("proxmoxve:Network/getTime:getTime", {
+        "nodeName": args.nodeName,
+    }, opts);
 }
 
 /**

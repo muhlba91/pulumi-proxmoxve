@@ -159,7 +159,7 @@ public class FirewallRules extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public FirewallRules(String name) {
+    public FirewallRules(java.lang.String name) {
         this(name, FirewallRulesArgs.Empty);
     }
     /**
@@ -167,7 +167,7 @@ public class FirewallRules extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public FirewallRules(String name, FirewallRulesArgs args) {
+    public FirewallRules(java.lang.String name, FirewallRulesArgs args) {
         this(name, args, null);
     }
     /**
@@ -176,12 +176,12 @@ public class FirewallRules extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public FirewallRules(String name, FirewallRulesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("proxmoxve:Network/firewallRules:FirewallRules", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public FirewallRules(java.lang.String name, FirewallRulesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("proxmoxve:Network/firewallRules:FirewallRules", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private FirewallRules(String name, Output<String> id, @Nullable FirewallRulesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("proxmoxve:Network/firewallRules:FirewallRules", name, state, makeResourceOptions(options, id));
+    private FirewallRules(java.lang.String name, Output<java.lang.String> id, @Nullable FirewallRulesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("proxmoxve:Network/firewallRules:FirewallRules", name, state, makeResourceOptions(options, id), false);
     }
 
     private static FirewallRulesArgs makeArgs(FirewallRulesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -191,7 +191,7 @@ public class FirewallRules extends com.pulumi.resources.CustomResource {
         return args == null ? FirewallRulesArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -207,7 +207,7 @@ public class FirewallRules extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static FirewallRules get(String name, Output<String> id, @Nullable FirewallRulesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static FirewallRules get(java.lang.String name, Output<java.lang.String> id, @Nullable FirewallRulesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new FirewallRules(name, id, state, options);
     }
 }

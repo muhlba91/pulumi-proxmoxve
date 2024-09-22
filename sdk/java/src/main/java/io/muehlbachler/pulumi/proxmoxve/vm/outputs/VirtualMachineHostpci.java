@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 public final class VirtualMachineHostpci {
     /**
      * @return The PCI device name for Proxmox, in form
-     * of `hostpciX` where `X` is a sequential number from 0 to 3.
+     * of `hostpciX` where `X` is a sequential number from 0 to 15.
      * 
      */
     private String device;
@@ -66,7 +66,7 @@ public final class VirtualMachineHostpci {
     private VirtualMachineHostpci() {}
     /**
      * @return The PCI device name for Proxmox, in form
-     * of `hostpciX` where `X` is a sequential number from 0 to 3.
+     * of `hostpciX` where `X` is a sequential number from 0 to 15.
      * 
      */
     public String device() {

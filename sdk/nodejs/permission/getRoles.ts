@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getRoles(opts?: pulumi.InvokeOptions): Promise<GetRolesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("proxmoxve:Permission/getRoles:getRoles", {
     }, opts);
@@ -57,5 +56,7 @@ export interface GetRolesResult {
  * ```
  */
 export function getRolesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetRolesResult> {
-    return pulumi.output(getRoles(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("proxmoxve:Permission/getRoles:getRoles", {
+    }, opts);
 }

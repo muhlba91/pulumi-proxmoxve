@@ -22,7 +22,6 @@ import * as utilities from "../../utilities";
  * ```
  */
 export function getPci(args: GetPciArgs, opts?: pulumi.InvokeOptions): Promise<GetPciResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("proxmoxve:Hardware/mapping/getPci:getPci", {
         "name": args.name,
@@ -80,7 +79,10 @@ export interface GetPciResult {
  * ```
  */
 export function getPciOutput(args: GetPciOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPciResult> {
-    return pulumi.output(args).apply((a: any) => getPci(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("proxmoxve:Hardware/mapping/getPci:getPci", {
+        "name": args.name,
+    }, opts);
 }
 
 /**

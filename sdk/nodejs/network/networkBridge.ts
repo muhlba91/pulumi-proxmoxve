@@ -13,13 +13,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
+ * const vlan99 = new proxmoxve.network.NetworkVlan("vlan99", {nodeName: "pve"});
+ * //# or alternatively, use custom name:
+ * // name      = "vlan_lab"
+ * // interface = "eno0"
+ * // vlan      = 98
  * const vmbr99 = new proxmoxve.network.NetworkBridge("vmbr99", {
  *     nodeName: "pve",
  *     address: "99.99.99.99/16",
  *     comment: "vmbr99 comment",
  *     ports: ["ens18.99"],
  * }, {
- *     dependsOn: [proxmox_virtual_environment_network_linux_vlan.vlan99],
+ *     dependsOn: [vlan99],
  * });
  * ```
  *

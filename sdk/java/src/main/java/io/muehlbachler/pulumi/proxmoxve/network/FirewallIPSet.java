@@ -168,7 +168,7 @@ public class FirewallIPSet extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public FirewallIPSet(String name) {
+    public FirewallIPSet(java.lang.String name) {
         this(name, FirewallIPSetArgs.Empty);
     }
     /**
@@ -176,7 +176,7 @@ public class FirewallIPSet extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public FirewallIPSet(String name, @Nullable FirewallIPSetArgs args) {
+    public FirewallIPSet(java.lang.String name, @Nullable FirewallIPSetArgs args) {
         this(name, args, null);
     }
     /**
@@ -185,12 +185,12 @@ public class FirewallIPSet extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public FirewallIPSet(String name, @Nullable FirewallIPSetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("proxmoxve:Network/firewallIPSet:FirewallIPSet", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public FirewallIPSet(java.lang.String name, @Nullable FirewallIPSetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("proxmoxve:Network/firewallIPSet:FirewallIPSet", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private FirewallIPSet(String name, Output<String> id, @Nullable FirewallIPSetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("proxmoxve:Network/firewallIPSet:FirewallIPSet", name, state, makeResourceOptions(options, id));
+    private FirewallIPSet(java.lang.String name, Output<java.lang.String> id, @Nullable FirewallIPSetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("proxmoxve:Network/firewallIPSet:FirewallIPSet", name, state, makeResourceOptions(options, id), false);
     }
 
     private static FirewallIPSetArgs makeArgs(@Nullable FirewallIPSetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -200,7 +200,7 @@ public class FirewallIPSet extends com.pulumi.resources.CustomResource {
         return args == null ? FirewallIPSetArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -216,7 +216,7 @@ public class FirewallIPSet extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static FirewallIPSet get(String name, Output<String> id, @Nullable FirewallIPSetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static FirewallIPSet get(java.lang.String name, Output<java.lang.String> id, @Nullable FirewallIPSetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new FirewallIPSet(name, id, state, options);
     }
 }

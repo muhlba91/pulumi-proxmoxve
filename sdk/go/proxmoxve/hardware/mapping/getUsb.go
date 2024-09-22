@@ -69,14 +69,20 @@ type LookupUsbResult struct {
 
 func LookupUsbOutput(ctx *pulumi.Context, args LookupUsbOutputArgs, opts ...pulumi.InvokeOption) LookupUsbResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupUsbResult, error) {
+		ApplyT(func(v interface{}) (LookupUsbResultOutput, error) {
 			args := v.(LookupUsbArgs)
-			r, err := LookupUsb(ctx, &args, opts...)
-			var s LookupUsbResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupUsbResult
+			secret, err := ctx.InvokePackageRaw("proxmoxve:Hardware/mapping/getUsb:getUsb", args, &rv, "", opts...)
+			if err != nil {
+				return LookupUsbResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupUsbResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupUsbResultOutput), nil
+			}
+			return output, nil
 		}).(LookupUsbResultOutput)
 }
 

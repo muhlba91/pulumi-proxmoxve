@@ -71,14 +71,20 @@ type LookupPciResult struct {
 
 func LookupPciOutput(ctx *pulumi.Context, args LookupPciOutputArgs, opts ...pulumi.InvokeOption) LookupPciResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPciResult, error) {
+		ApplyT(func(v interface{}) (LookupPciResultOutput, error) {
 			args := v.(LookupPciArgs)
-			r, err := LookupPci(ctx, &args, opts...)
-			var s LookupPciResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupPciResult
+			secret, err := ctx.InvokePackageRaw("proxmoxve:Hardware/mapping/getPci:getPci", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPciResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPciResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPciResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPciResultOutput)
 }
 

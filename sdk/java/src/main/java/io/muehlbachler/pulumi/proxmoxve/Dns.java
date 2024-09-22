@@ -78,7 +78,7 @@ public class DNS extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DNS(String name) {
+    public DNS(java.lang.String name) {
         this(name, DNSArgs.Empty);
     }
     /**
@@ -86,7 +86,7 @@ public class DNS extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DNS(String name, DNSArgs args) {
+    public DNS(java.lang.String name, DNSArgs args) {
         this(name, args, null);
     }
     /**
@@ -95,12 +95,12 @@ public class DNS extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DNS(String name, DNSArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("proxmoxve:index/dNS:DNS", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public DNS(java.lang.String name, DNSArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("proxmoxve:index/dNS:DNS", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DNS(String name, Output<String> id, @Nullable DNSState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("proxmoxve:index/dNS:DNS", name, state, makeResourceOptions(options, id));
+    private DNS(java.lang.String name, Output<java.lang.String> id, @Nullable DNSState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("proxmoxve:index/dNS:DNS", name, state, makeResourceOptions(options, id), false);
     }
 
     private static DNSArgs makeArgs(DNSArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -110,7 +110,7 @@ public class DNS extends com.pulumi.resources.CustomResource {
         return args == null ? DNSArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -126,7 +126,7 @@ public class DNS extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DNS get(String name, Output<String> id, @Nullable DNSState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DNS get(java.lang.String name, Output<java.lang.String> id, @Nullable DNSState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DNS(name, id, state, options);
     }
 }

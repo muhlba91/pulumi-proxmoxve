@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDatastores(args: GetDatastoresArgs, opts?: pulumi.InvokeOptions): Promise<GetDatastoresResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("proxmoxve:Storage/getDatastores:getDatastores", {
         "nodeName": args.nodeName,
@@ -97,7 +96,10 @@ export interface GetDatastoresResult {
  * ```
  */
 export function getDatastoresOutput(args: GetDatastoresOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatastoresResult> {
-    return pulumi.output(args).apply((a: any) => getDatastores(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("proxmoxve:Storage/getDatastores:getDatastores", {
+        "nodeName": args.nodeName,
+    }, opts);
 }
 
 /**

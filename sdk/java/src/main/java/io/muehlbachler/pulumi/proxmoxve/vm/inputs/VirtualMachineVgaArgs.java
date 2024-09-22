@@ -5,7 +5,6 @@ package io.muehlbachler.pulumi.proxmoxve.VM.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -30,29 +29,6 @@ public final class VirtualMachineVgaArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> clipboard() {
         return Optional.ofNullable(this.clipboard);
-    }
-
-    /**
-     * Whether to enable the VGA device
-     * 
-     * @deprecated
-     * The `enabled` attribute is deprecated and will be removed in a future release. Use type `none` instead.
-     * 
-     */
-    @Deprecated /* The `enabled` attribute is deprecated and will be removed in a future release. Use type `none` instead. */
-    @Import(name="enabled")
-    private @Nullable Output<Boolean> enabled;
-
-    /**
-     * @return Whether to enable the VGA device
-     * 
-     * @deprecated
-     * The `enabled` attribute is deprecated and will be removed in a future release. Use type `none` instead.
-     * 
-     */
-    @Deprecated /* The `enabled` attribute is deprecated and will be removed in a future release. Use type `none` instead. */
-    public Optional<Output<Boolean>> enabled() {
-        return Optional.ofNullable(this.enabled);
     }
 
     /**
@@ -89,7 +65,6 @@ public final class VirtualMachineVgaArgs extends com.pulumi.resources.ResourceAr
 
     private VirtualMachineVgaArgs(VirtualMachineVgaArgs $) {
         this.clipboard = $.clipboard;
-        this.enabled = $.enabled;
         this.memory = $.memory;
         this.type = $.type;
     }
@@ -131,35 +106,6 @@ public final class VirtualMachineVgaArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder clipboard(String clipboard) {
             return clipboard(Output.of(clipboard));
-        }
-
-        /**
-         * @param enabled Whether to enable the VGA device
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The `enabled` attribute is deprecated and will be removed in a future release. Use type `none` instead.
-         * 
-         */
-        @Deprecated /* The `enabled` attribute is deprecated and will be removed in a future release. Use type `none` instead. */
-        public Builder enabled(@Nullable Output<Boolean> enabled) {
-            $.enabled = enabled;
-            return this;
-        }
-
-        /**
-         * @param enabled Whether to enable the VGA device
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The `enabled` attribute is deprecated and will be removed in a future release. Use type `none` instead.
-         * 
-         */
-        @Deprecated /* The `enabled` attribute is deprecated and will be removed in a future release. Use type `none` instead. */
-        public Builder enabled(Boolean enabled) {
-            return enabled(Output.of(enabled));
         }
 
         /**

@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getPlugin(args: GetPluginArgs, opts?: pulumi.InvokeOptions): Promise<GetPluginResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("proxmoxve:Acme/getPlugin:getPlugin", {
         "plugin": args.plugin,
@@ -86,7 +85,10 @@ export interface GetPluginResult {
  * ```
  */
 export function getPluginOutput(args: GetPluginOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPluginResult> {
-    return pulumi.output(args).apply((a: any) => getPlugin(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("proxmoxve:Acme/getPlugin:getPlugin", {
+        "plugin": args.plugin,
+    }, opts);
 }
 
 /**

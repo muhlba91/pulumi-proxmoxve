@@ -18,7 +18,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAccounts(opts?: pulumi.InvokeOptions): Promise<GetAccountsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("proxmoxve:Acme/getAccounts:getAccounts", {
     }, opts);
@@ -51,5 +50,7 @@ export interface GetAccountsResult {
  * ```
  */
 export function getAccountsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountsResult> {
-    return pulumi.output(getAccounts(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("proxmoxve:Acme/getAccounts:getAccounts", {
+    }, opts);
 }

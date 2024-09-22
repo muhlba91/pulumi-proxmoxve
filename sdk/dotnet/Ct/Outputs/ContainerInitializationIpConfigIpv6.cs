@@ -14,8 +14,7 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
     public sealed class ContainerInitializationIpConfigIpv6
     {
         /// <summary>
-        /// The IPv6 address (use `dhcp` for
-        /// autodiscovery).
+        /// The IPv6 address (use `dhcp` for auto-discovery).
         /// </summary>
         public readonly string? Address;
         /// <summary>

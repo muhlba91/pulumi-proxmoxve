@@ -18,8 +18,8 @@ public final class ContainerOperatingSystemArgs extends com.pulumi.resources.Res
 
     /**
      * The identifier for an OS template file.
-     * The ID format is `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`. Can be also taken from
-     * `proxmoxve.Download.File` resource, or from the output of `pvesm list &lt;storage&gt;`.
+     * The ID format is `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`.
+     * Can be also taken from `proxmoxve.Download.File` resource, or from the output of `pvesm list &lt;storage&gt;`.
      * 
      */
     @Import(name="templateFileId", required=true)
@@ -27,8 +27,8 @@ public final class ContainerOperatingSystemArgs extends com.pulumi.resources.Res
 
     /**
      * @return The identifier for an OS template file.
-     * The ID format is `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`. Can be also taken from
-     * `proxmoxve.Download.File` resource, or from the output of `pvesm list &lt;storage&gt;`.
+     * The ID format is `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`.
+     * Can be also taken from `proxmoxve.Download.File` resource, or from the output of `pvesm list &lt;storage&gt;`.
      * 
      */
     public Output<String> templateFileId() {
@@ -77,8 +77,8 @@ public final class ContainerOperatingSystemArgs extends com.pulumi.resources.Res
 
         /**
          * @param templateFileId The identifier for an OS template file.
-         * The ID format is `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`. Can be also taken from
-         * `proxmoxve.Download.File` resource, or from the output of `pvesm list &lt;storage&gt;`.
+         * The ID format is `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`.
+         * Can be also taken from `proxmoxve.Download.File` resource, or from the output of `pvesm list &lt;storage&gt;`.
          * 
          * @return builder
          * 
@@ -90,8 +90,8 @@ public final class ContainerOperatingSystemArgs extends com.pulumi.resources.Res
 
         /**
          * @param templateFileId The identifier for an OS template file.
-         * The ID format is `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`. Can be also taken from
-         * `proxmoxve.Download.File` resource, or from the output of `pvesm list &lt;storage&gt;`.
+         * The ID format is `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`.
+         * Can be also taken from `proxmoxve.Download.File` resource, or from the output of `pvesm list &lt;storage&gt;`.
          * 
          * @return builder
          * 

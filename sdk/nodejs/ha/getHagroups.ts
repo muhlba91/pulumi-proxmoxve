@@ -18,7 +18,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getHAGroups(opts?: pulumi.InvokeOptions): Promise<GetHAGroupsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("proxmoxve:HA/getHAGroups:getHAGroups", {
     }, opts);
@@ -51,5 +50,7 @@ export interface GetHAGroupsResult {
  * ```
  */
 export function getHAGroupsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetHAGroupsResult> {
-    return pulumi.output(getHAGroups(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("proxmoxve:HA/getHAGroups:getHAGroups", {
+    }, opts);
 }

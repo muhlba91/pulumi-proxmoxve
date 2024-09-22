@@ -23,3 +23,7 @@ provider/**/schema.go
 **/dist
 .vscode/
 local.env
+
+/yarn.lock
+/package.json
+

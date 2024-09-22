@@ -71,13 +71,19 @@ type GetUsersResult struct {
 }
 
 func GetUsersOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetUsersResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetUsersResult, error) {
-		r, err := GetUsers(ctx, opts...)
-		var s GetUsersResult
-		if r != nil {
-			s = *r
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetUsersResultOutput, error) {
+		opts = internal.PkgInvokeDefaultOpts(opts)
+		var rv GetUsersResult
+		secret, err := ctx.InvokePackageRaw("proxmoxve:Permission/getUsers:getUsers", nil, &rv, "", opts...)
+		if err != nil {
+			return GetUsersResultOutput{}, err
 		}
-		return s, err
+
+		output := pulumi.ToOutput(rv).(GetUsersResultOutput)
+		if secret {
+			return pulumi.ToSecret(output).(GetUsersResultOutput), nil
+		}
+		return output, nil
 	}).(GetUsersResultOutput)
 }
 

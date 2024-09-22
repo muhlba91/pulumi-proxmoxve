@@ -59,13 +59,19 @@ type GetRolesResult struct {
 }
 
 func GetRolesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetRolesResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetRolesResult, error) {
-		r, err := GetRoles(ctx, opts...)
-		var s GetRolesResult
-		if r != nil {
-			s = *r
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetRolesResultOutput, error) {
+		opts = internal.PkgInvokeDefaultOpts(opts)
+		var rv GetRolesResult
+		secret, err := ctx.InvokePackageRaw("proxmoxve:Permission/getRoles:getRoles", nil, &rv, "", opts...)
+		if err != nil {
+			return GetRolesResultOutput{}, err
 		}
-		return s, err
+
+		output := pulumi.ToOutput(rv).(GetRolesResultOutput)
+		if secret {
+			return pulumi.ToSecret(output).(GetRolesResultOutput), nil
+		}
+		return output, nil
 	}).(GetRolesResultOutput)
 }
 

@@ -404,12 +404,17 @@ class NetworkBridge(pulumi.CustomResource):
         import pulumi
         import pulumi_proxmoxve as proxmoxve
 
+        vlan99 = proxmoxve.network.NetworkVlan("vlan99", node_name="pve")
+        ## or alternatively, use custom name:
+        # name      = "vlan_lab"
+        # interface = "eno0"
+        # vlan      = 98
         vmbr99 = proxmoxve.network.NetworkBridge("vmbr99",
             node_name="pve",
             address="99.99.99.99/16",
             comment="vmbr99 comment",
             ports=["ens18.99"],
-            opts = pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_network_linux_vlan["vlan99"]]))
+            opts = pulumi.ResourceOptions(depends_on=[vlan99]))
         ```
 
         ## Import
@@ -451,12 +456,17 @@ class NetworkBridge(pulumi.CustomResource):
         import pulumi
         import pulumi_proxmoxve as proxmoxve
 
+        vlan99 = proxmoxve.network.NetworkVlan("vlan99", node_name="pve")
+        ## or alternatively, use custom name:
+        # name      = "vlan_lab"
+        # interface = "eno0"
+        # vlan      = 98
         vmbr99 = proxmoxve.network.NetworkBridge("vmbr99",
             node_name="pve",
             address="99.99.99.99/16",
             comment="vmbr99 comment",
             ports=["ens18.99"],
-            opts = pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_network_linux_vlan["vlan99"]]))
+            opts = pulumi.ResourceOptions(depends_on=[vlan99]))
         ```
 
         ## Import
