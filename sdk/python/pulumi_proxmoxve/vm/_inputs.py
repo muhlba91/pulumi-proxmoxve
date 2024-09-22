@@ -1424,7 +1424,7 @@ class VirtualMachineHostpciArgs:
                  xvga: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] device: The PCI device name for Proxmox, in form
-               of `hostpciX` where `X` is a sequential number from 0 to 3.
+               of `hostpciX` where `X` is a sequential number from 0 to 15.
         :param pulumi.Input[str] id: The PCI device ID. This parameter is not compatible
                with `api_token` and requires the root `username` and `password`
                configured in the proxmox provider. Use either this or `mapping`.
@@ -1462,7 +1462,7 @@ class VirtualMachineHostpciArgs:
     def device(self) -> pulumi.Input[str]:
         """
         The PCI device name for Proxmox, in form
-        of `hostpciX` where `X` is a sequential number from 0 to 3.
+        of `hostpciX` where `X` is a sequential number from 0 to 15.
         """
         return pulumi.get(self, "device")
 
@@ -2723,22 +2723,15 @@ class VirtualMachineUsbArgs:
 class VirtualMachineVgaArgs:
     def __init__(__self__, *,
                  clipboard: Optional[pulumi.Input[str]] = None,
-                 enabled: Optional[pulumi.Input[bool]] = None,
                  memory: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] clipboard: Enable VNC clipboard by setting to `vnc`. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
-        :param pulumi.Input[bool] enabled: Whether to enable the VGA device
         :param pulumi.Input[int] memory: The VGA memory in megabytes (defaults to `16`).
         :param pulumi.Input[str] type: The VGA type (defaults to `std`).
         """
         if clipboard is not None:
             pulumi.set(__self__, "clipboard", clipboard)
-        if enabled is not None:
-            warnings.warn("""The `enabled` attribute is deprecated and will be removed in a future release. Use type `none` instead.""", DeprecationWarning)
-            pulumi.log.warn("""enabled is deprecated: The `enabled` attribute is deprecated and will be removed in a future release. Use type `none` instead.""")
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
         if memory is not None:
             pulumi.set(__self__, "memory", memory)
         if type is not None:
@@ -2755,19 +2748,6 @@ class VirtualMachineVgaArgs:
     @clipboard.setter
     def clipboard(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "clipboard", value)
-
-    @property
-    @pulumi.getter
-    @_utilities.deprecated("""The `enabled` attribute is deprecated and will be removed in a future release. Use type `none` instead.""")
-    def enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether to enable the VGA device
-        """
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "enabled", value)
 
     @property
     @pulumi.getter

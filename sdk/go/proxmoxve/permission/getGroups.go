@@ -57,13 +57,19 @@ type GetGroupsResult struct {
 }
 
 func GetGroupsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetGroupsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetGroupsResult, error) {
-		r, err := GetGroups(ctx, opts...)
-		var s GetGroupsResult
-		if r != nil {
-			s = *r
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetGroupsResultOutput, error) {
+		opts = internal.PkgInvokeDefaultOpts(opts)
+		var rv GetGroupsResult
+		secret, err := ctx.InvokePackageRaw("proxmoxve:Permission/getGroups:getGroups", nil, &rv, "", opts...)
+		if err != nil {
+			return GetGroupsResultOutput{}, err
 		}
-		return s, err
+
+		output := pulumi.ToOutput(rv).(GetGroupsResultOutput)
+		if secret {
+			return pulumi.ToSecret(output).(GetGroupsResultOutput), nil
+		}
+		return output, nil
 	}).(GetGroupsResultOutput)
 }
 

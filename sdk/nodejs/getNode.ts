@@ -17,7 +17,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getNode(args: GetNodeArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("proxmoxve:index/getNode:getNode", {
         "nodeName": args.nodeName,
@@ -85,7 +84,10 @@ export interface GetNodeResult {
  * ```
  */
 export function getNodeOutput(args: GetNodeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeResult> {
-    return pulumi.output(args).apply((a: any) => getNode(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("proxmoxve:index/getNode:getNode", {
+        "nodeName": args.nodeName,
+    }, opts);
 }
 
 /**

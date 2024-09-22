@@ -2939,7 +2939,7 @@ func (o VirtualMachineEfiDiskPtrOutput) Type() pulumi.StringPtrOutput {
 
 type VirtualMachineHostpci struct {
 	// The PCI device name for Proxmox, in form
-	// of `hostpciX` where `X` is a sequential number from 0 to 3.
+	// of `hostpciX` where `X` is a sequential number from 0 to 15.
 	Device string `pulumi:"device"`
 	// The PCI device ID. This parameter is not compatible
 	// with `apiToken` and requires the root `username` and `password`
@@ -2978,7 +2978,7 @@ type VirtualMachineHostpciInput interface {
 
 type VirtualMachineHostpciArgs struct {
 	// The PCI device name for Proxmox, in form
-	// of `hostpciX` where `X` is a sequential number from 0 to 3.
+	// of `hostpciX` where `X` is a sequential number from 0 to 15.
 	Device pulumi.StringInput `pulumi:"device"`
 	// The PCI device ID. This parameter is not compatible
 	// with `apiToken` and requires the root `username` and `password`
@@ -3056,7 +3056,7 @@ func (o VirtualMachineHostpciOutput) ToVirtualMachineHostpciOutputWithContext(ct
 }
 
 // The PCI device name for Proxmox, in form
-// of `hostpciX` where `X` is a sequential number from 0 to 3.
+// of `hostpciX` where `X` is a sequential number from 0 to 15.
 func (o VirtualMachineHostpciOutput) Device() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineHostpci) string { return v.Device }).(pulumi.StringOutput)
 }
@@ -5837,10 +5837,6 @@ func (o VirtualMachineUsbArrayOutput) Index(i pulumi.IntInput) VirtualMachineUsb
 type VirtualMachineVga struct {
 	// Enable VNC clipboard by setting to `vnc`. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
 	Clipboard *string `pulumi:"clipboard"`
-	// Whether to enable the VGA device
-	//
-	// Deprecated: The `enabled` attribute is deprecated and will be removed in a future release. Use type `none` instead.
-	Enabled *bool `pulumi:"enabled"`
 	// The VGA memory in megabytes (defaults to `16`).
 	Memory *int `pulumi:"memory"`
 	// The VGA type (defaults to `std`).
@@ -5861,10 +5857,6 @@ type VirtualMachineVgaInput interface {
 type VirtualMachineVgaArgs struct {
 	// Enable VNC clipboard by setting to `vnc`. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
 	Clipboard pulumi.StringPtrInput `pulumi:"clipboard"`
-	// Whether to enable the VGA device
-	//
-	// Deprecated: The `enabled` attribute is deprecated and will be removed in a future release. Use type `none` instead.
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// The VGA memory in megabytes (defaults to `16`).
 	Memory pulumi.IntPtrInput `pulumi:"memory"`
 	// The VGA type (defaults to `std`).
@@ -5953,13 +5945,6 @@ func (o VirtualMachineVgaOutput) Clipboard() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineVga) *string { return v.Clipboard }).(pulumi.StringPtrOutput)
 }
 
-// Whether to enable the VGA device
-//
-// Deprecated: The `enabled` attribute is deprecated and will be removed in a future release. Use type `none` instead.
-func (o VirtualMachineVgaOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineVga) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
 // The VGA memory in megabytes (defaults to `16`).
 func (o VirtualMachineVgaOutput) Memory() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineVga) *int { return v.Memory }).(pulumi.IntPtrOutput)
@@ -6002,18 +5987,6 @@ func (o VirtualMachineVgaPtrOutput) Clipboard() pulumi.StringPtrOutput {
 		}
 		return v.Clipboard
 	}).(pulumi.StringPtrOutput)
-}
-
-// Whether to enable the VGA device
-//
-// Deprecated: The `enabled` attribute is deprecated and will be removed in a future release. Use type `none` instead.
-func (o VirtualMachineVgaPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineVga) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
 }
 
 // The VGA memory in megabytes (defaults to `16`).

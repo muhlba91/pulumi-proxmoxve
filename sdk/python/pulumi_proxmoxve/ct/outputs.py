@@ -473,8 +473,7 @@ class ContainerInitializationIpConfigIpv4(dict):
                  address: Optional[str] = None,
                  gateway: Optional[str] = None):
         """
-        :param str address: The IPv4 address (use `dhcp` for
-               autodiscovery).
+        :param str address: The IPv4 address (use `dhcp` for auto-discovery).
         :param str gateway: The IPv4 gateway (must be omitted
                when `dhcp` is used as the address).
         """
@@ -487,8 +486,7 @@ class ContainerInitializationIpConfigIpv4(dict):
     @pulumi.getter
     def address(self) -> Optional[str]:
         """
-        The IPv4 address (use `dhcp` for
-        autodiscovery).
+        The IPv4 address (use `dhcp` for auto-discovery).
         """
         return pulumi.get(self, "address")
 
@@ -508,8 +506,7 @@ class ContainerInitializationIpConfigIpv6(dict):
                  address: Optional[str] = None,
                  gateway: Optional[str] = None):
         """
-        :param str address: The IPv6 address (use `dhcp` for
-               autodiscovery).
+        :param str address: The IPv6 address (use `dhcp` for auto-discovery).
         :param str gateway: The IPv6 gateway (must be omitted
                when `dhcp` is used as the address).
         """
@@ -522,8 +519,7 @@ class ContainerInitializationIpConfigIpv6(dict):
     @pulumi.getter
     def address(self) -> Optional[str]:
         """
-        The IPv6 address (use `dhcp` for
-        autodiscovery).
+        The IPv6 address (use `dhcp` for auto-discovery).
         """
         return pulumi.get(self, "address")
 
@@ -912,8 +908,8 @@ class ContainerOperatingSystem(dict):
                  type: Optional[str] = None):
         """
         :param str template_file_id: The identifier for an OS template file.
-               The ID format is `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`. Can be also taken from
-               `Download.File` resource, or from the output of `pvesm list <storage>`.
+               The ID format is `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`.
+               Can be also taken from `Download.File` resource, or from the output of `pvesm list <storage>`.
         :param str type: The type (defaults to `unmanaged`).
         """
         pulumi.set(__self__, "template_file_id", template_file_id)
@@ -925,8 +921,8 @@ class ContainerOperatingSystem(dict):
     def template_file_id(self) -> str:
         """
         The identifier for an OS template file.
-        The ID format is `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`. Can be also taken from
-        `Download.File` resource, or from the output of `pvesm list <storage>`.
+        The ID format is `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`.
+        Can be also taken from `Download.File` resource, or from the output of `pvesm list <storage>`.
         """
         return pulumi.get(self, "template_file_id")
 

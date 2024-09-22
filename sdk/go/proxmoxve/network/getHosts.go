@@ -72,14 +72,20 @@ type GetHostsResult struct {
 
 func GetHostsOutput(ctx *pulumi.Context, args GetHostsOutputArgs, opts ...pulumi.InvokeOption) GetHostsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetHostsResult, error) {
+		ApplyT(func(v interface{}) (GetHostsResultOutput, error) {
 			args := v.(GetHostsArgs)
-			r, err := GetHosts(ctx, &args, opts...)
-			var s GetHostsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetHostsResult
+			secret, err := ctx.InvokePackageRaw("proxmoxve:Network/getHosts:getHosts", args, &rv, "", opts...)
+			if err != nil {
+				return GetHostsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetHostsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetHostsResultOutput), nil
+			}
+			return output, nil
 		}).(GetHostsResultOutput)
 }
 

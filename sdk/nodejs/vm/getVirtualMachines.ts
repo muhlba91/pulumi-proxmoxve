@@ -51,7 +51,6 @@ import * as utilities from "../utilities";
  */
 export function getVirtualMachines(args?: GetVirtualMachinesArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachinesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("proxmoxve:VM/getVirtualMachines:getVirtualMachines", {
         "filters": args.filters,
@@ -145,7 +144,13 @@ export interface GetVirtualMachinesResult {
  * ```
  */
 export function getVirtualMachinesOutput(args?: GetVirtualMachinesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualMachinesResult> {
-    return pulumi.output(args).apply((a: any) => getVirtualMachines(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("proxmoxve:VM/getVirtualMachines:getVirtualMachines", {
+        "filters": args.filters,
+        "nodeName": args.nodeName,
+        "tags": args.tags,
+    }, opts);
 }
 
 /**

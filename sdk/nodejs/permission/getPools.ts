@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getPools(opts?: pulumi.InvokeOptions): Promise<GetPoolsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("proxmoxve:Permission/getPools:getPools", {
     }, opts);
@@ -49,5 +48,7 @@ export interface GetPoolsResult {
  * ```
  */
 export function getPoolsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetPoolsResult> {
-    return pulumi.output(getPools(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("proxmoxve:Permission/getPools:getPools", {
+    }, opts);
 }

@@ -15,7 +15,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     {
         /// <summary>
         /// The PCI device name for Proxmox, in form
-        /// of `hostpciX` where `X` is a sequential number from 0 to 3.
+        /// of `hostpciX` where `X` is a sequential number from 0 to 15.
         /// </summary>
         public readonly string Device;
         /// <summary>

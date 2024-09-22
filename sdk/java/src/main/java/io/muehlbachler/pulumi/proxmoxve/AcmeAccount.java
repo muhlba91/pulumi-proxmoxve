@@ -38,20 +38,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var example = new AcmeAccount("example", AcmeAccountArgs.builder()
- *             .contact("example{@literal @}email.com")
+ *             .contact("example}{@literal @}{@code email.com")
  *             .directory("https://acme-staging-v02.api.letsencrypt.org/directory")
  *             .tos("https://letsencrypt.org/documents/LE-SA-v1.3-September-21-2022.pdf")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -186,7 +186,7 @@ public class AcmeAccount extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AcmeAccount(String name) {
+    public AcmeAccount(java.lang.String name) {
         this(name, AcmeAccountArgs.Empty);
     }
     /**
@@ -194,7 +194,7 @@ public class AcmeAccount extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AcmeAccount(String name, AcmeAccountArgs args) {
+    public AcmeAccount(java.lang.String name, AcmeAccountArgs args) {
         this(name, args, null);
     }
     /**
@@ -203,12 +203,12 @@ public class AcmeAccount extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AcmeAccount(String name, AcmeAccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("proxmoxve:index/acmeAccount:AcmeAccount", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AcmeAccount(java.lang.String name, AcmeAccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("proxmoxve:index/acmeAccount:AcmeAccount", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AcmeAccount(String name, Output<String> id, @Nullable AcmeAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("proxmoxve:index/acmeAccount:AcmeAccount", name, state, makeResourceOptions(options, id));
+    private AcmeAccount(java.lang.String name, Output<java.lang.String> id, @Nullable AcmeAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("proxmoxve:index/acmeAccount:AcmeAccount", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AcmeAccountArgs makeArgs(AcmeAccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -218,7 +218,7 @@ public class AcmeAccount extends com.pulumi.resources.CustomResource {
         return args == null ? AcmeAccountArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -234,7 +234,7 @@ public class AcmeAccount extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AcmeAccount get(String name, Output<String> id, @Nullable AcmeAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AcmeAccount get(java.lang.String name, Output<java.lang.String> id, @Nullable AcmeAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AcmeAccount(name, id, state, options);
     }
 }

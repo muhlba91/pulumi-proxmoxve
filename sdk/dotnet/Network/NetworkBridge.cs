@@ -22,6 +22,15 @@ namespace Pulumi.ProxmoxVE.Network
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var vlan99 = new ProxmoxVE.Network.NetworkVlan("vlan99", new()
+    ///     {
+    ///         NodeName = "pve",
+    ///     });
+    /// 
+    ///     //# or alternatively, use custom name:
+    ///     // name      = "vlan_lab"
+    ///     // interface = "eno0"
+    ///     // vlan      = 98
     ///     var vmbr99 = new ProxmoxVE.Network.NetworkBridge("vmbr99", new()
     ///     {
     ///         NodeName = "pve",
@@ -35,7 +44,7 @@ namespace Pulumi.ProxmoxVE.Network
     ///     {
     ///         DependsOn =
     ///         {
-    ///             proxmox_virtual_environment_network_linux_vlan.Vlan99,
+    ///             vlan99,
     ///         },
     ///     });
     /// 

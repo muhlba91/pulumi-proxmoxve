@@ -64,13 +64,19 @@ type GetVersionResult struct {
 }
 
 func GetVersionOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetVersionResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetVersionResult, error) {
-		r, err := GetVersion(ctx, opts...)
-		var s GetVersionResult
-		if r != nil {
-			s = *r
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetVersionResultOutput, error) {
+		opts = internal.PkgInvokeDefaultOpts(opts)
+		var rv GetVersionResult
+		secret, err := ctx.InvokePackageRaw("proxmoxve:Network/getVersion:getVersion", nil, &rv, "", opts...)
+		if err != nil {
+			return GetVersionResultOutput{}, err
 		}
-		return s, err
+
+		output := pulumi.ToOutput(rv).(GetVersionResultOutput)
+		if secret {
+			return pulumi.ToSecret(output).(GetVersionResultOutput), nil
+		}
+		return output, nil
 	}).(GetVersionResultOutput)
 }
 

@@ -1281,7 +1281,7 @@ class VirtualMachineHostpci(dict):
                  xvga: Optional[bool] = None):
         """
         :param str device: The PCI device name for Proxmox, in form
-               of `hostpciX` where `X` is a sequential number from 0 to 3.
+               of `hostpciX` where `X` is a sequential number from 0 to 15.
         :param str id: The PCI device ID. This parameter is not compatible
                with `api_token` and requires the root `username` and `password`
                configured in the proxmox provider. Use either this or `mapping`.
@@ -1319,7 +1319,7 @@ class VirtualMachineHostpci(dict):
     def device(self) -> str:
         """
         The PCI device name for Proxmox, in form
-        of `hostpciX` where `X` is a sequential number from 0 to 3.
+        of `hostpciX` where `X` is a sequential number from 0 to 15.
         """
         return pulumi.get(self, "device")
 
@@ -2401,19 +2401,15 @@ class VirtualMachineUsb(dict):
 class VirtualMachineVga(dict):
     def __init__(__self__, *,
                  clipboard: Optional[str] = None,
-                 enabled: Optional[bool] = None,
                  memory: Optional[int] = None,
                  type: Optional[str] = None):
         """
         :param str clipboard: Enable VNC clipboard by setting to `vnc`. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
-        :param bool enabled: Whether to enable the VGA device
         :param int memory: The VGA memory in megabytes (defaults to `16`).
         :param str type: The VGA type (defaults to `std`).
         """
         if clipboard is not None:
             pulumi.set(__self__, "clipboard", clipboard)
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
         if memory is not None:
             pulumi.set(__self__, "memory", memory)
         if type is not None:
@@ -2426,15 +2422,6 @@ class VirtualMachineVga(dict):
         Enable VNC clipboard by setting to `vnc`. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
         """
         return pulumi.get(self, "clipboard")
-
-    @property
-    @pulumi.getter
-    @_utilities.deprecated("""The `enabled` attribute is deprecated and will be removed in a future release. Use type `none` instead.""")
-    def enabled(self) -> Optional[bool]:
-        """
-        Whether to enable the VGA device
-        """
-        return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter

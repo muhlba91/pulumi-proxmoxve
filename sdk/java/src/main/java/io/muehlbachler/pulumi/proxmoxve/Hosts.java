@@ -131,7 +131,7 @@ public class Hosts extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Hosts(String name) {
+    public Hosts(java.lang.String name) {
         this(name, HostsArgs.Empty);
     }
     /**
@@ -139,7 +139,7 @@ public class Hosts extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Hosts(String name, HostsArgs args) {
+    public Hosts(java.lang.String name, HostsArgs args) {
         this(name, args, null);
     }
     /**
@@ -148,12 +148,12 @@ public class Hosts extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Hosts(String name, HostsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("proxmoxve:index/hosts:Hosts", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Hosts(java.lang.String name, HostsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("proxmoxve:index/hosts:Hosts", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Hosts(String name, Output<String> id, @Nullable HostsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("proxmoxve:index/hosts:Hosts", name, state, makeResourceOptions(options, id));
+    private Hosts(java.lang.String name, Output<java.lang.String> id, @Nullable HostsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("proxmoxve:index/hosts:Hosts", name, state, makeResourceOptions(options, id), false);
     }
 
     private static HostsArgs makeArgs(HostsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -163,7 +163,7 @@ public class Hosts extends com.pulumi.resources.CustomResource {
         return args == null ? HostsArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -179,7 +179,7 @@ public class Hosts extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Hosts get(String name, Output<String> id, @Nullable HostsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Hosts get(java.lang.String name, Output<java.lang.String> id, @Nullable HostsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Hosts(name, id, state, options);
     }
 }

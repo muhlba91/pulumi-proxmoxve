@@ -1412,8 +1412,7 @@ func (o ContainerInitializationIpConfigArrayOutput) Index(i pulumi.IntInput) Con
 }
 
 type ContainerInitializationIpConfigIpv4 struct {
-	// The IPv4 address (use `dhcp` for
-	// autodiscovery).
+	// The IPv4 address (use `dhcp` for auto-discovery).
 	Address *string `pulumi:"address"`
 	// The IPv4 gateway (must be omitted
 	// when `dhcp` is used as the address).
@@ -1432,8 +1431,7 @@ type ContainerInitializationIpConfigIpv4Input interface {
 }
 
 type ContainerInitializationIpConfigIpv4Args struct {
-	// The IPv4 address (use `dhcp` for
-	// autodiscovery).
+	// The IPv4 address (use `dhcp` for auto-discovery).
 	Address pulumi.StringPtrInput `pulumi:"address"`
 	// The IPv4 gateway (must be omitted
 	// when `dhcp` is used as the address).
@@ -1517,8 +1515,7 @@ func (o ContainerInitializationIpConfigIpv4Output) ToContainerInitializationIpCo
 	}).(ContainerInitializationIpConfigIpv4PtrOutput)
 }
 
-// The IPv4 address (use `dhcp` for
-// autodiscovery).
+// The IPv4 address (use `dhcp` for auto-discovery).
 func (o ContainerInitializationIpConfigIpv4Output) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerInitializationIpConfigIpv4) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
@@ -1553,8 +1550,7 @@ func (o ContainerInitializationIpConfigIpv4PtrOutput) Elem() ContainerInitializa
 	}).(ContainerInitializationIpConfigIpv4Output)
 }
 
-// The IPv4 address (use `dhcp` for
-// autodiscovery).
+// The IPv4 address (use `dhcp` for auto-discovery).
 func (o ContainerInitializationIpConfigIpv4PtrOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerInitializationIpConfigIpv4) *string {
 		if v == nil {
@@ -1576,8 +1572,7 @@ func (o ContainerInitializationIpConfigIpv4PtrOutput) Gateway() pulumi.StringPtr
 }
 
 type ContainerInitializationIpConfigIpv6 struct {
-	// The IPv6 address (use `dhcp` for
-	// autodiscovery).
+	// The IPv6 address (use `dhcp` for auto-discovery).
 	Address *string `pulumi:"address"`
 	// The IPv6 gateway (must be omitted
 	// when `dhcp` is used as the address).
@@ -1596,8 +1591,7 @@ type ContainerInitializationIpConfigIpv6Input interface {
 }
 
 type ContainerInitializationIpConfigIpv6Args struct {
-	// The IPv6 address (use `dhcp` for
-	// autodiscovery).
+	// The IPv6 address (use `dhcp` for auto-discovery).
 	Address pulumi.StringPtrInput `pulumi:"address"`
 	// The IPv6 gateway (must be omitted
 	// when `dhcp` is used as the address).
@@ -1681,8 +1675,7 @@ func (o ContainerInitializationIpConfigIpv6Output) ToContainerInitializationIpCo
 	}).(ContainerInitializationIpConfigIpv6PtrOutput)
 }
 
-// The IPv6 address (use `dhcp` for
-// autodiscovery).
+// The IPv6 address (use `dhcp` for auto-discovery).
 func (o ContainerInitializationIpConfigIpv6Output) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerInitializationIpConfigIpv6) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
@@ -1717,8 +1710,7 @@ func (o ContainerInitializationIpConfigIpv6PtrOutput) Elem() ContainerInitializa
 	}).(ContainerInitializationIpConfigIpv6Output)
 }
 
-// The IPv6 address (use `dhcp` for
-// autodiscovery).
+// The IPv6 address (use `dhcp` for auto-discovery).
 func (o ContainerInitializationIpConfigIpv6PtrOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerInitializationIpConfigIpv6) *string {
 		if v == nil {
@@ -2425,8 +2417,8 @@ func (o ContainerNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) Container
 
 type ContainerOperatingSystem struct {
 	// The identifier for an OS template file.
-	// The ID format is `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`. Can be also taken from
-	// `Download.File` resource, or from the output of `pvesm list <storage>`.
+	// The ID format is `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`.
+	// Can be also taken from `Download.File` resource, or from the output of `pvesm list <storage>`.
 	TemplateFileId string `pulumi:"templateFileId"`
 	// The type (defaults to `unmanaged`).
 	Type *string `pulumi:"type"`
@@ -2445,8 +2437,8 @@ type ContainerOperatingSystemInput interface {
 
 type ContainerOperatingSystemArgs struct {
 	// The identifier for an OS template file.
-	// The ID format is `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`. Can be also taken from
-	// `Download.File` resource, or from the output of `pvesm list <storage>`.
+	// The ID format is `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`.
+	// Can be also taken from `Download.File` resource, or from the output of `pvesm list <storage>`.
 	TemplateFileId pulumi.StringInput `pulumi:"templateFileId"`
 	// The type (defaults to `unmanaged`).
 	Type pulumi.StringPtrInput `pulumi:"type"`
@@ -2530,8 +2522,8 @@ func (o ContainerOperatingSystemOutput) ToContainerOperatingSystemPtrOutputWithC
 }
 
 // The identifier for an OS template file.
-// The ID format is `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`. Can be also taken from
-// `Download.File` resource, or from the output of `pvesm list <storage>`.
+// The ID format is `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`.
+// Can be also taken from `Download.File` resource, or from the output of `pvesm list <storage>`.
 func (o ContainerOperatingSystemOutput) TemplateFileId() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerOperatingSystem) string { return v.TemplateFileId }).(pulumi.StringOutput)
 }
@@ -2566,8 +2558,8 @@ func (o ContainerOperatingSystemPtrOutput) Elem() ContainerOperatingSystemOutput
 }
 
 // The identifier for an OS template file.
-// The ID format is `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`. Can be also taken from
-// `Download.File` resource, or from the output of `pvesm list <storage>`.
+// The ID format is `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`.
+// Can be also taken from `Download.File` resource, or from the output of `pvesm list <storage>`.
 func (o ContainerOperatingSystemPtrOutput) TemplateFileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerOperatingSystem) *string {
 		if v == nil {

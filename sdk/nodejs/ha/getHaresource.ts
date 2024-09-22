@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getHAResource(args: GetHAResourceArgs, opts?: pulumi.InvokeOptions): Promise<GetHAResourceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("proxmoxve:HA/getHAResource:getHAResource", {
         "resourceId": args.resourceId,
@@ -92,7 +91,10 @@ export interface GetHAResourceResult {
  * ```
  */
 export function getHAResourceOutput(args: GetHAResourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHAResourceResult> {
-    return pulumi.output(args).apply((a: any) => getHAResource(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("proxmoxve:HA/getHAResource:getHAResource", {
+        "resourceId": args.resourceId,
+    }, opts);
 }
 
 /**

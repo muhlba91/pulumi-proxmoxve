@@ -14,7 +14,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
     {
         /// <summary>
         /// The PCI device name for Proxmox, in form
-        /// of `hostpciX` where `X` is a sequential number from 0 to 3.
+        /// of `hostpciX` where `X` is a sequential number from 0 to 15.
         /// </summary>
         [Input("device", required: true)]
         public Input<string> Device { get; set; } = null!;

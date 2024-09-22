@@ -12,8 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ContainerInitializationIpConfigIpv6 {
     /**
-     * @return The IPv6 address (use `dhcp` for
-     * autodiscovery).
+     * @return The IPv6 address (use `dhcp` for auto-discovery).
      * 
      */
     private @Nullable String address;
@@ -26,8 +25,7 @@ public final class ContainerInitializationIpConfigIpv6 {
 
     private ContainerInitializationIpConfigIpv6() {}
     /**
-     * @return The IPv6 address (use `dhcp` for
-     * autodiscovery).
+     * @return The IPv6 address (use `dhcp` for auto-discovery).
      * 
      */
     public Optional<String> address() {

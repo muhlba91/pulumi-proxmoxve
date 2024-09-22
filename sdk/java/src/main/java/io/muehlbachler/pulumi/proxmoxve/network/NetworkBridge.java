@@ -30,6 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.proxmoxve.Network.NetworkVlan;
+ * import com.pulumi.proxmoxve.Network.NetworkVlanArgs;
  * import com.pulumi.proxmoxve.Network.NetworkBridge;
  * import com.pulumi.proxmoxve.Network.NetworkBridgeArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -46,13 +48,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var vlan99 = new NetworkVlan("vlan99", NetworkVlanArgs.builder()
+ *             .nodeName("pve")
+ *             .build());
+ * 
+ *         //# or alternatively, use custom name:
+ *         // name      = "vlan_lab"
+ *         // interface = "eno0"
+ *         // vlan      = 98
  *         var vmbr99 = new NetworkBridge("vmbr99", NetworkBridgeArgs.builder()
  *             .nodeName("pve")
  *             .address("99.99.99.99/16")
  *             .comment("vmbr99 comment")
  *             .ports("ens18.99")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(proxmox_virtual_environment_network_linux_vlan.vlan99())
+ *                 .dependsOn(vlan99)
  *                 .build());
  * 
  *     }
@@ -233,7 +243,7 @@ public class NetworkBridge extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public NetworkBridge(String name) {
+    public NetworkBridge(java.lang.String name) {
         this(name, NetworkBridgeArgs.Empty);
     }
     /**
@@ -241,7 +251,7 @@ public class NetworkBridge extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public NetworkBridge(String name, NetworkBridgeArgs args) {
+    public NetworkBridge(java.lang.String name, NetworkBridgeArgs args) {
         this(name, args, null);
     }
     /**
@@ -250,12 +260,12 @@ public class NetworkBridge extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public NetworkBridge(String name, NetworkBridgeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("proxmoxve:Network/networkBridge:NetworkBridge", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public NetworkBridge(java.lang.String name, NetworkBridgeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("proxmoxve:Network/networkBridge:NetworkBridge", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private NetworkBridge(String name, Output<String> id, @Nullable NetworkBridgeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("proxmoxve:Network/networkBridge:NetworkBridge", name, state, makeResourceOptions(options, id));
+    private NetworkBridge(java.lang.String name, Output<java.lang.String> id, @Nullable NetworkBridgeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("proxmoxve:Network/networkBridge:NetworkBridge", name, state, makeResourceOptions(options, id), false);
     }
 
     private static NetworkBridgeArgs makeArgs(NetworkBridgeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -265,7 +275,7 @@ public class NetworkBridge extends com.pulumi.resources.CustomResource {
         return args == null ? NetworkBridgeArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -281,7 +291,7 @@ public class NetworkBridge extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static NetworkBridge get(String name, Output<String> id, @Nullable NetworkBridgeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static NetworkBridge get(java.lang.String name, Output<java.lang.String> id, @Nullable NetworkBridgeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new NetworkBridge(name, id, state, options);
     }
 }

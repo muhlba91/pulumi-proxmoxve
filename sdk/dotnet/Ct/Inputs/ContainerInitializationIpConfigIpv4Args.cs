@@ -13,8 +13,7 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
     public sealed class ContainerInitializationIpConfigIpv4Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The IPv4 address (use `dhcp` for
-        /// autodiscovery).
+        /// The IPv4 address (use `dhcp` for auto-discovery).
         /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }

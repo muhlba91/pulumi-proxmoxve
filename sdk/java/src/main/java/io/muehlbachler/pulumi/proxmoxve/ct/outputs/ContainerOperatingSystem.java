@@ -14,8 +14,8 @@ import javax.annotation.Nullable;
 public final class ContainerOperatingSystem {
     /**
      * @return The identifier for an OS template file.
-     * The ID format is `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`. Can be also taken from
-     * `proxmoxve.Download.File` resource, or from the output of `pvesm list &lt;storage&gt;`.
+     * The ID format is `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`.
+     * Can be also taken from `proxmoxve.Download.File` resource, or from the output of `pvesm list &lt;storage&gt;`.
      * 
      */
     private String templateFileId;
@@ -28,8 +28,8 @@ public final class ContainerOperatingSystem {
     private ContainerOperatingSystem() {}
     /**
      * @return The identifier for an OS template file.
-     * The ID format is `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`. Can be also taken from
-     * `proxmoxve.Download.File` resource, or from the output of `pvesm list &lt;storage&gt;`.
+     * The ID format is `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`.
+     * Can be also taken from `proxmoxve.Download.File` resource, or from the output of `pvesm list &lt;storage&gt;`.
      * 
      */
     public String templateFileId() {

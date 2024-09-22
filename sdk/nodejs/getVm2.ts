@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  * This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
  */
 export function getVm2(args: GetVm2Args, opts?: pulumi.InvokeOptions): Promise<GetVm2Result> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("proxmoxve:index/getVm2:getVm2", {
         "clone": args.clone,
@@ -117,7 +116,19 @@ export interface GetVm2Result {
  * This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
  */
 export function getVm2Output(args: GetVm2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVm2Result> {
-    return pulumi.output(args).apply((a: any) => getVm2(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("proxmoxve:index/getVm2:getVm2", {
+        "clone": args.clone,
+        "cpu": args.cpu,
+        "description": args.description,
+        "id": args.id,
+        "name": args.name,
+        "nodeName": args.nodeName,
+        "tags": args.tags,
+        "template": args.template,
+        "timeouts": args.timeouts,
+        "vga": args.vga,
+    }, opts);
 }
 
 /**

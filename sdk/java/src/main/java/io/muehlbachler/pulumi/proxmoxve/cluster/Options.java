@@ -42,16 +42,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var options = new Options("options", OptionsArgs.builder()
  *             .bandwidthLimitDefault(666666)
  *             .bandwidthLimitMigration(555555)
- *             .emailFrom("ged{@literal @}gont.earthsea")
+ *             .emailFrom("ged}{@literal @}{@code gont.earthsea")
  *             .keyboard("pl")
  *             .language("en")
  *             .maxWorkers(5)
@@ -71,8 +71,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -375,7 +375,7 @@ public class Options extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Options(String name) {
+    public Options(java.lang.String name) {
         this(name, OptionsArgs.Empty);
     }
     /**
@@ -383,7 +383,7 @@ public class Options extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Options(String name, @Nullable OptionsArgs args) {
+    public Options(java.lang.String name, @Nullable OptionsArgs args) {
         this(name, args, null);
     }
     /**
@@ -392,12 +392,12 @@ public class Options extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Options(String name, @Nullable OptionsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("proxmoxve:Cluster/options:Options", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Options(java.lang.String name, @Nullable OptionsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("proxmoxve:Cluster/options:Options", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Options(String name, Output<String> id, @Nullable OptionsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("proxmoxve:Cluster/options:Options", name, state, makeResourceOptions(options, id));
+    private Options(java.lang.String name, Output<java.lang.String> id, @Nullable OptionsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("proxmoxve:Cluster/options:Options", name, state, makeResourceOptions(options, id), false);
     }
 
     private static OptionsArgs makeArgs(@Nullable OptionsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -407,7 +407,7 @@ public class Options extends com.pulumi.resources.CustomResource {
         return args == null ? OptionsArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -423,7 +423,7 @@ public class Options extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Options get(String name, Output<String> id, @Nullable OptionsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Options get(java.lang.String name, Output<java.lang.String> id, @Nullable OptionsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Options(name, id, state, options);
     }
 }

@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getMappings(args: GetMappingsArgs, opts?: pulumi.InvokeOptions): Promise<GetMappingsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("proxmoxve:Hardware/getMappings:getMappings", {
         "checkNode": args.checkNode,
@@ -97,7 +96,11 @@ export interface GetMappingsResult {
  * ```
  */
 export function getMappingsOutput(args: GetMappingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMappingsResult> {
-    return pulumi.output(args).apply((a: any) => getMappings(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("proxmoxve:Hardware/getMappings:getMappings", {
+        "checkNode": args.checkNode,
+        "type": args.type,
+    }, opts);
 }
 
 /**

@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getHosts(args: GetHostsArgs, opts?: pulumi.InvokeOptions): Promise<GetHostsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("proxmoxve:Network/getHosts:getHosts", {
         "nodeName": args.nodeName,
@@ -80,7 +79,10 @@ export interface GetHostsResult {
  * ```
  */
 export function getHostsOutput(args: GetHostsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostsResult> {
-    return pulumi.output(args).apply((a: any) => getHosts(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("proxmoxve:Network/getHosts:getHosts", {
+        "nodeName": args.nodeName,
+    }, opts);
 }
 
 /**

@@ -18,10 +18,6 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly string? Clipboard;
         /// <summary>
-        /// Whether to enable the VGA device
-        /// </summary>
-        public readonly bool? Enabled;
-        /// <summary>
         /// The VGA memory in megabytes (defaults to `16`).
         /// </summary>
         public readonly int? Memory;
@@ -34,14 +30,11 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         private VirtualMachineVga(
             string? clipboard,
 
-            bool? enabled,
-
             int? memory,
 
             string? type)
         {
             Clipboard = clipboard;
-            Enabled = enabled;
             Memory = memory;
             Type = type;
         }

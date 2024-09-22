@@ -56,13 +56,19 @@ type GetHAGroupsResult struct {
 }
 
 func GetHAGroupsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetHAGroupsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetHAGroupsResult, error) {
-		r, err := GetHAGroups(ctx, opts...)
-		var s GetHAGroupsResult
-		if r != nil {
-			s = *r
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetHAGroupsResultOutput, error) {
+		opts = internal.PkgInvokeDefaultOpts(opts)
+		var rv GetHAGroupsResult
+		secret, err := ctx.InvokePackageRaw("proxmoxve:HA/getHAGroups:getHAGroups", nil, &rv, "", opts...)
+		if err != nil {
+			return GetHAGroupsResultOutput{}, err
 		}
-		return s, err
+
+		output := pulumi.ToOutput(rv).(GetHAGroupsResultOutput)
+		if secret {
+			return pulumi.ToSecret(output).(GetHAGroupsResultOutput), nil
+		}
+		return output, nil
 	}).(GetHAGroupsResultOutput)
 }
 

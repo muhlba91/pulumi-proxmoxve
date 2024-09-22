@@ -454,8 +454,7 @@ export namespace CT {
 
     export interface ContainerInitializationIpConfigIpv4 {
         /**
-         * The IPv4 address (use `dhcp` for
-         * autodiscovery).
+         * The IPv4 address (use `dhcp` for auto-discovery).
          */
         address?: pulumi.Input<string>;
         /**
@@ -467,8 +466,7 @@ export namespace CT {
 
     export interface ContainerInitializationIpConfigIpv6 {
         /**
-         * The IPv6 address (use `dhcp` for
-         * autodiscovery).
+         * The IPv6 address (use `dhcp` for auto-discovery).
          */
         address?: pulumi.Input<string>;
         /**
@@ -592,8 +590,8 @@ export namespace CT {
     export interface ContainerOperatingSystem {
         /**
          * The identifier for an OS template file.
-         * The ID format is `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`. Can be also taken from
-         * `proxmoxve.Download.File` resource, or from the output of `pvesm list <storage>`.
+         * The ID format is `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`.
+         * Can be also taken from `proxmoxve.Download.File` resource, or from the output of `pvesm list <storage>`.
          */
         templateFileId: pulumi.Input<string>;
         /**
@@ -1440,7 +1438,7 @@ export namespace VM {
     export interface VirtualMachineHostpci {
         /**
          * The PCI device name for Proxmox, in form
-         * of `hostpciX` where `X` is a sequential number from 0 to 3.
+         * of `hostpciX` where `X` is a sequential number from 0 to 15.
          */
         device: pulumi.Input<string>;
         /**
@@ -1814,12 +1812,6 @@ export namespace VM {
          * Enable VNC clipboard by setting to `vnc`. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
          */
         clipboard?: pulumi.Input<string>;
-        /**
-         * Whether to enable the VGA device
-         *
-         * @deprecated The `enabled` attribute is deprecated and will be removed in a future release. Use type `none` instead.
-         */
-        enabled?: pulumi.Input<boolean>;
         /**
          * The VGA memory in megabytes (defaults to `16`).
          */

@@ -21,7 +21,6 @@ import * as utilities from "../../utilities";
  * ```
  */
 export function getRepository(args: GetRepositoryArgs, opts?: pulumi.InvokeOptions): Promise<GetRepositoryResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("proxmoxve:Apt/standard/getRepository:getRepository", {
         "handle": args.handle,
@@ -97,7 +96,11 @@ export interface GetRepositoryResult {
  * ```
  */
 export function getRepositoryOutput(args: GetRepositoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepositoryResult> {
-    return pulumi.output(args).apply((a: any) => getRepository(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("proxmoxve:Apt/standard/getRepository:getRepository", {
+        "handle": args.handle,
+        "node": args.node,
+    }, opts);
 }
 
 /**

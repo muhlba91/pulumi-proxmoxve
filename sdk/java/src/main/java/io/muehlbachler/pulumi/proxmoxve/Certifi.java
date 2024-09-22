@@ -229,7 +229,7 @@ public class Certifi extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Certifi(String name) {
+    public Certifi(java.lang.String name) {
         this(name, CertifiArgs.Empty);
     }
     /**
@@ -237,7 +237,7 @@ public class Certifi extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Certifi(String name, CertifiArgs args) {
+    public Certifi(java.lang.String name, CertifiArgs args) {
         this(name, args, null);
     }
     /**
@@ -246,12 +246,12 @@ public class Certifi extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Certifi(String name, CertifiArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("proxmoxve:index/certifi:Certifi", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Certifi(java.lang.String name, CertifiArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("proxmoxve:index/certifi:Certifi", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Certifi(String name, Output<String> id, @Nullable CertifiState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("proxmoxve:index/certifi:Certifi", name, state, makeResourceOptions(options, id));
+    private Certifi(java.lang.String name, Output<java.lang.String> id, @Nullable CertifiState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("proxmoxve:index/certifi:Certifi", name, state, makeResourceOptions(options, id), false);
     }
 
     private static CertifiArgs makeArgs(CertifiArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -261,7 +261,7 @@ public class Certifi extends com.pulumi.resources.CustomResource {
         return args == null ? CertifiArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -280,7 +280,7 @@ public class Certifi extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Certifi get(String name, Output<String> id, @Nullable CertifiState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Certifi get(java.lang.String name, Output<java.lang.String> id, @Nullable CertifiState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Certifi(name, id, state, options);
     }
 }

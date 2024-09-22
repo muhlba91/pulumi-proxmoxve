@@ -121,7 +121,7 @@ public class Usb extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Usb(String name) {
+    public Usb(java.lang.String name) {
         this(name, UsbArgs.Empty);
     }
     /**
@@ -129,7 +129,7 @@ public class Usb extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Usb(String name, UsbArgs args) {
+    public Usb(java.lang.String name, UsbArgs args) {
         this(name, args, null);
     }
     /**
@@ -138,12 +138,12 @@ public class Usb extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Usb(String name, UsbArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("proxmoxve:Hardware/mapping/usb:Usb", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Usb(java.lang.String name, UsbArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("proxmoxve:Hardware/mapping/usb:Usb", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Usb(String name, Output<String> id, @Nullable UsbState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("proxmoxve:Hardware/mapping/usb:Usb", name, state, makeResourceOptions(options, id));
+    private Usb(java.lang.String name, Output<java.lang.String> id, @Nullable UsbState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("proxmoxve:Hardware/mapping/usb:Usb", name, state, makeResourceOptions(options, id), false);
     }
 
     private static UsbArgs makeArgs(UsbArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -153,7 +153,7 @@ public class Usb extends com.pulumi.resources.CustomResource {
         return args == null ? UsbArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -169,7 +169,7 @@ public class Usb extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Usb get(String name, Output<String> id, @Nullable UsbState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Usb get(java.lang.String name, Output<java.lang.String> id, @Nullable UsbState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Usb(name, id, state, options);
     }
 }

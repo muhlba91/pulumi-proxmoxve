@@ -28,7 +28,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Network.NewNetworkBridge(ctx, "vmbr99", &Network.NetworkBridgeArgs{
+//			vlan99, err := Network.NewNetworkVlan(ctx, "vlan99", &Network.NetworkVlanArgs{
+//				NodeName: pulumi.String("pve"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = Network.NewNetworkBridge(ctx, "vmbr99", &Network.NetworkBridgeArgs{
 //				NodeName: pulumi.String("pve"),
 //				Address:  pulumi.String("99.99.99.99/16"),
 //				Comment:  pulumi.String("vmbr99 comment"),
@@ -36,7 +42,7 @@ import (
 //					pulumi.String("ens18.99"),
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				proxmox_virtual_environment_network_linux_vlan.Vlan99,
+//				vlan99,
 //			}))
 //			if err != nil {
 //				return err

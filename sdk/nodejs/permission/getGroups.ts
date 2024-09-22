@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getGroups(opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("proxmoxve:Permission/getGroups:getGroups", {
     }, opts);
@@ -53,5 +52,7 @@ export interface GetGroupsResult {
  * ```
  */
 export function getGroupsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsResult> {
-    return pulumi.output(getGroups(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("proxmoxve:Permission/getGroups:getGroups", {
+    }, opts);
 }

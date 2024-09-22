@@ -19,7 +19,7 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
 
     /**
      * The PCI device name for Proxmox, in form
-     * of `hostpciX` where `X` is a sequential number from 0 to 3.
+     * of `hostpciX` where `X` is a sequential number from 0 to 15.
      * 
      */
     @Import(name="device", required=true)
@@ -27,7 +27,7 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
 
     /**
      * @return The PCI device name for Proxmox, in form
-     * of `hostpciX` where `X` is a sequential number from 0 to 3.
+     * of `hostpciX` where `X` is a sequential number from 0 to 15.
      * 
      */
     public Output<String> device() {
@@ -188,7 +188,7 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
 
         /**
          * @param device The PCI device name for Proxmox, in form
-         * of `hostpciX` where `X` is a sequential number from 0 to 3.
+         * of `hostpciX` where `X` is a sequential number from 0 to 15.
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
 
         /**
          * @param device The PCI device name for Proxmox, in form
-         * of `hostpciX` where `X` is a sequential number from 0 to 3.
+         * of `hostpciX` where `X` is a sequential number from 0 to 15.
          * 
          * @return builder
          * 

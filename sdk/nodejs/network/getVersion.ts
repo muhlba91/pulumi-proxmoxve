@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getVersion(opts?: pulumi.InvokeOptions): Promise<GetVersionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("proxmoxve:Network/getVersion:getVersion", {
     }, opts);
@@ -67,5 +66,7 @@ export interface GetVersionResult {
  * ```
  */
 export function getVersionOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetVersionResult> {
-    return pulumi.output(getVersion(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("proxmoxve:Network/getVersion:getVersion", {
+    }, opts);
 }

@@ -75,14 +75,20 @@ type GetNodeResult struct {
 
 func GetNodeOutput(ctx *pulumi.Context, args GetNodeOutputArgs, opts ...pulumi.InvokeOption) GetNodeResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetNodeResult, error) {
+		ApplyT(func(v interface{}) (GetNodeResultOutput, error) {
 			args := v.(GetNodeArgs)
-			r, err := GetNode(ctx, &args, opts...)
-			var s GetNodeResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetNodeResult
+			secret, err := ctx.InvokePackageRaw("proxmoxve:index/getNode:getNode", args, &rv, "", opts...)
+			if err != nil {
+				return GetNodeResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetNodeResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetNodeResultOutput), nil
+			}
+			return output, nil
 		}).(GetNodeResultOutput)
 }
 

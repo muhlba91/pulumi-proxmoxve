@@ -19,12 +19,6 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<string>? Clipboard { get; set; }
 
         /// <summary>
-        /// Whether to enable the VGA device
-        /// </summary>
-        [Input("enabled")]
-        public Input<bool>? Enabled { get; set; }
-
-        /// <summary>
         /// The VGA memory in megabytes (defaults to `16`).
         /// </summary>
         [Input("memory")]
