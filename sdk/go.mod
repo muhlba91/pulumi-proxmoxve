@@ -7,7 +7,7 @@ toolchain go1.23.1
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
-	github.com/pulumi/pulumi/sdk/v3 v3.134.0
+	github.com/pulumi/pulumi/sdk/v3 v3.134.1
 )
 
 require (
