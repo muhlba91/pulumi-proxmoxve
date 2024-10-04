@@ -16,28 +16,42 @@ __all__ = ['ProviderArgs', 'Provider']
 class ProviderArgs:
     def __init__(__self__, *,
                  api_token: Optional[pulumi.Input[str]] = None,
+                 auth_ticket: Optional[pulumi.Input[str]] = None,
+                 csrf_prevention_token: Optional[pulumi.Input[str]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
                  min_tls: Optional[pulumi.Input[str]] = None,
                  otp: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 random_vm_id_end: Optional[pulumi.Input[int]] = None,
+                 random_vm_id_start: Optional[pulumi.Input[int]] = None,
+                 random_vm_ids: Optional[pulumi.Input[bool]] = None,
                  ssh: Optional[pulumi.Input['ProviderSshArgs']] = None,
                  tmp_dir: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[str] api_token: The API token for the Proxmox VE API.
+        :param pulumi.Input[str] auth_ticket: The pre-authenticated Ticket for the Proxmox VE API.
+        :param pulumi.Input[str] csrf_prevention_token: The pre-authenticated CSRF Prevention Token for the Proxmox VE API.
         :param pulumi.Input[str] endpoint: The endpoint for the Proxmox VE API.
         :param pulumi.Input[bool] insecure: Whether to skip the TLS verification step.
         :param pulumi.Input[str] min_tls: The minimum required TLS version for API calls.Supported values: `1.0|1.1|1.2|1.3`. Defaults to `1.3`.
         :param pulumi.Input[str] otp: The one-time password for the Proxmox VE API.
         :param pulumi.Input[str] password: The password for the Proxmox VE API.
+        :param pulumi.Input[int] random_vm_id_end: The ending number for random VM / Container IDs.
+        :param pulumi.Input[int] random_vm_id_start: The starting number for random VM / Container IDs.
+        :param pulumi.Input[bool] random_vm_ids: Whether to generate random VM / Container IDs.
         :param pulumi.Input['ProviderSshArgs'] ssh: The SSH configuration for the Proxmox nodes.
         :param pulumi.Input[str] tmp_dir: The alternative temporary directory.
         :param pulumi.Input[str] username: The username for the Proxmox VE API.
         """
         if api_token is not None:
             pulumi.set(__self__, "api_token", api_token)
+        if auth_ticket is not None:
+            pulumi.set(__self__, "auth_ticket", auth_ticket)
+        if csrf_prevention_token is not None:
+            pulumi.set(__self__, "csrf_prevention_token", csrf_prevention_token)
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
         if insecure is not None:
@@ -51,6 +65,12 @@ class ProviderArgs:
             pulumi.set(__self__, "otp", otp)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if random_vm_id_end is not None:
+            pulumi.set(__self__, "random_vm_id_end", random_vm_id_end)
+        if random_vm_id_start is not None:
+            pulumi.set(__self__, "random_vm_id_start", random_vm_id_start)
+        if random_vm_ids is not None:
+            pulumi.set(__self__, "random_vm_ids", random_vm_ids)
         if ssh is not None:
             pulumi.set(__self__, "ssh", ssh)
         if tmp_dir is not None:
@@ -69,6 +89,30 @@ class ProviderArgs:
     @api_token.setter
     def api_token(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "api_token", value)
+
+    @property
+    @pulumi.getter(name="authTicket")
+    def auth_ticket(self) -> Optional[pulumi.Input[str]]:
+        """
+        The pre-authenticated Ticket for the Proxmox VE API.
+        """
+        return pulumi.get(self, "auth_ticket")
+
+    @auth_ticket.setter
+    def auth_ticket(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_ticket", value)
+
+    @property
+    @pulumi.getter(name="csrfPreventionToken")
+    def csrf_prevention_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        The pre-authenticated CSRF Prevention Token for the Proxmox VE API.
+        """
+        return pulumi.get(self, "csrf_prevention_token")
+
+    @csrf_prevention_token.setter
+    def csrf_prevention_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "csrf_prevention_token", value)
 
     @property
     @pulumi.getter
@@ -132,6 +176,42 @@ class ProviderArgs:
         pulumi.set(self, "password", value)
 
     @property
+    @pulumi.getter(name="randomVmIdEnd")
+    def random_vm_id_end(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ending number for random VM / Container IDs.
+        """
+        return pulumi.get(self, "random_vm_id_end")
+
+    @random_vm_id_end.setter
+    def random_vm_id_end(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "random_vm_id_end", value)
+
+    @property
+    @pulumi.getter(name="randomVmIdStart")
+    def random_vm_id_start(self) -> Optional[pulumi.Input[int]]:
+        """
+        The starting number for random VM / Container IDs.
+        """
+        return pulumi.get(self, "random_vm_id_start")
+
+    @random_vm_id_start.setter
+    def random_vm_id_start(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "random_vm_id_start", value)
+
+    @property
+    @pulumi.getter(name="randomVmIds")
+    def random_vm_ids(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to generate random VM / Container IDs.
+        """
+        return pulumi.get(self, "random_vm_ids")
+
+    @random_vm_ids.setter
+    def random_vm_ids(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "random_vm_ids", value)
+
+    @property
     @pulumi.getter
     def ssh(self) -> Optional[pulumi.Input['ProviderSshArgs']]:
         """
@@ -174,11 +254,16 @@ class Provider(pulumi.ProviderResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_token: Optional[pulumi.Input[str]] = None,
+                 auth_ticket: Optional[pulumi.Input[str]] = None,
+                 csrf_prevention_token: Optional[pulumi.Input[str]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
                  min_tls: Optional[pulumi.Input[str]] = None,
                  otp: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 random_vm_id_end: Optional[pulumi.Input[int]] = None,
+                 random_vm_id_start: Optional[pulumi.Input[int]] = None,
+                 random_vm_ids: Optional[pulumi.Input[bool]] = None,
                  ssh: Optional[pulumi.Input[Union['ProviderSshArgs', 'ProviderSshArgsDict']]] = None,
                  tmp_dir: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
@@ -192,11 +277,16 @@ class Provider(pulumi.ProviderResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_token: The API token for the Proxmox VE API.
+        :param pulumi.Input[str] auth_ticket: The pre-authenticated Ticket for the Proxmox VE API.
+        :param pulumi.Input[str] csrf_prevention_token: The pre-authenticated CSRF Prevention Token for the Proxmox VE API.
         :param pulumi.Input[str] endpoint: The endpoint for the Proxmox VE API.
         :param pulumi.Input[bool] insecure: Whether to skip the TLS verification step.
         :param pulumi.Input[str] min_tls: The minimum required TLS version for API calls.Supported values: `1.0|1.1|1.2|1.3`. Defaults to `1.3`.
         :param pulumi.Input[str] otp: The one-time password for the Proxmox VE API.
         :param pulumi.Input[str] password: The password for the Proxmox VE API.
+        :param pulumi.Input[int] random_vm_id_end: The ending number for random VM / Container IDs.
+        :param pulumi.Input[int] random_vm_id_start: The starting number for random VM / Container IDs.
+        :param pulumi.Input[bool] random_vm_ids: Whether to generate random VM / Container IDs.
         :param pulumi.Input[Union['ProviderSshArgs', 'ProviderSshArgsDict']] ssh: The SSH configuration for the Proxmox nodes.
         :param pulumi.Input[str] tmp_dir: The alternative temporary directory.
         :param pulumi.Input[str] username: The username for the Proxmox VE API.
@@ -229,11 +319,16 @@ class Provider(pulumi.ProviderResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_token: Optional[pulumi.Input[str]] = None,
+                 auth_ticket: Optional[pulumi.Input[str]] = None,
+                 csrf_prevention_token: Optional[pulumi.Input[str]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
                  min_tls: Optional[pulumi.Input[str]] = None,
                  otp: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 random_vm_id_end: Optional[pulumi.Input[int]] = None,
+                 random_vm_id_start: Optional[pulumi.Input[int]] = None,
+                 random_vm_ids: Optional[pulumi.Input[bool]] = None,
                  ssh: Optional[pulumi.Input[Union['ProviderSshArgs', 'ProviderSshArgsDict']]] = None,
                  tmp_dir: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
@@ -247,15 +342,20 @@ class Provider(pulumi.ProviderResource):
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
             __props__.__dict__["api_token"] = None if api_token is None else pulumi.Output.secret(api_token)
+            __props__.__dict__["auth_ticket"] = None if auth_ticket is None else pulumi.Output.secret(auth_ticket)
+            __props__.__dict__["csrf_prevention_token"] = None if csrf_prevention_token is None else pulumi.Output.secret(csrf_prevention_token)
             __props__.__dict__["endpoint"] = endpoint
             __props__.__dict__["insecure"] = pulumi.Output.from_input(insecure).apply(pulumi.runtime.to_json) if insecure is not None else None
             __props__.__dict__["min_tls"] = min_tls
             __props__.__dict__["otp"] = otp
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
+            __props__.__dict__["random_vm_id_end"] = pulumi.Output.from_input(random_vm_id_end).apply(pulumi.runtime.to_json) if random_vm_id_end is not None else None
+            __props__.__dict__["random_vm_id_start"] = pulumi.Output.from_input(random_vm_id_start).apply(pulumi.runtime.to_json) if random_vm_id_start is not None else None
+            __props__.__dict__["random_vm_ids"] = pulumi.Output.from_input(random_vm_ids).apply(pulumi.runtime.to_json) if random_vm_ids is not None else None
             __props__.__dict__["ssh"] = pulumi.Output.from_input(ssh).apply(pulumi.runtime.to_json) if ssh is not None else None
             __props__.__dict__["tmp_dir"] = tmp_dir
             __props__.__dict__["username"] = username
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["apiToken", "password"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["apiToken", "authTicket", "csrfPreventionToken", "password"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
             'proxmoxve',
@@ -270,6 +370,22 @@ class Provider(pulumi.ProviderResource):
         The API token for the Proxmox VE API.
         """
         return pulumi.get(self, "api_token")
+
+    @property
+    @pulumi.getter(name="authTicket")
+    def auth_ticket(self) -> pulumi.Output[Optional[str]]:
+        """
+        The pre-authenticated Ticket for the Proxmox VE API.
+        """
+        return pulumi.get(self, "auth_ticket")
+
+    @property
+    @pulumi.getter(name="csrfPreventionToken")
+    def csrf_prevention_token(self) -> pulumi.Output[Optional[str]]:
+        """
+        The pre-authenticated CSRF Prevention Token for the Proxmox VE API.
+        """
+        return pulumi.get(self, "csrf_prevention_token")
 
     @property
     @pulumi.getter

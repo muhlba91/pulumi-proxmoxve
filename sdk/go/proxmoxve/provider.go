@@ -20,6 +20,10 @@ type Provider struct {
 
 	// The API token for the Proxmox VE API.
 	ApiToken pulumi.StringPtrOutput `pulumi:"apiToken"`
+	// The pre-authenticated Ticket for the Proxmox VE API.
+	AuthTicket pulumi.StringPtrOutput `pulumi:"authTicket"`
+	// The pre-authenticated CSRF Prevention Token for the Proxmox VE API.
+	CsrfPreventionToken pulumi.StringPtrOutput `pulumi:"csrfPreventionToken"`
 	// The endpoint for the Proxmox VE API.
 	Endpoint pulumi.StringPtrOutput `pulumi:"endpoint"`
 	// The minimum required TLS version for API calls.Supported values: `1.0|1.1|1.2|1.3`. Defaults to `1.3`.
@@ -46,11 +50,19 @@ func NewProvider(ctx *pulumi.Context,
 	if args.ApiToken != nil {
 		args.ApiToken = pulumi.ToSecret(args.ApiToken).(pulumi.StringPtrInput)
 	}
+	if args.AuthTicket != nil {
+		args.AuthTicket = pulumi.ToSecret(args.AuthTicket).(pulumi.StringPtrInput)
+	}
+	if args.CsrfPreventionToken != nil {
+		args.CsrfPreventionToken = pulumi.ToSecret(args.CsrfPreventionToken).(pulumi.StringPtrInput)
+	}
 	if args.Password != nil {
 		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"apiToken",
+		"authTicket",
+		"csrfPreventionToken",
 		"password",
 	})
 	opts = append(opts, secrets)
@@ -66,6 +78,10 @@ func NewProvider(ctx *pulumi.Context,
 type providerArgs struct {
 	// The API token for the Proxmox VE API.
 	ApiToken *string `pulumi:"apiToken"`
+	// The pre-authenticated Ticket for the Proxmox VE API.
+	AuthTicket *string `pulumi:"authTicket"`
+	// The pre-authenticated CSRF Prevention Token for the Proxmox VE API.
+	CsrfPreventionToken *string `pulumi:"csrfPreventionToken"`
 	// The endpoint for the Proxmox VE API.
 	Endpoint *string `pulumi:"endpoint"`
 	// Whether to skip the TLS verification step.
@@ -78,6 +94,12 @@ type providerArgs struct {
 	Otp *string `pulumi:"otp"`
 	// The password for the Proxmox VE API.
 	Password *string `pulumi:"password"`
+	// The ending number for random VM / Container IDs.
+	RandomVmIdEnd *int `pulumi:"randomVmIdEnd"`
+	// The starting number for random VM / Container IDs.
+	RandomVmIdStart *int `pulumi:"randomVmIdStart"`
+	// Whether to generate random VM / Container IDs.
+	RandomVmIds *bool `pulumi:"randomVmIds"`
 	// The SSH configuration for the Proxmox nodes.
 	Ssh *ProviderSsh `pulumi:"ssh"`
 	// The alternative temporary directory.
@@ -90,6 +112,10 @@ type providerArgs struct {
 type ProviderArgs struct {
 	// The API token for the Proxmox VE API.
 	ApiToken pulumi.StringPtrInput
+	// The pre-authenticated Ticket for the Proxmox VE API.
+	AuthTicket pulumi.StringPtrInput
+	// The pre-authenticated CSRF Prevention Token for the Proxmox VE API.
+	CsrfPreventionToken pulumi.StringPtrInput
 	// The endpoint for the Proxmox VE API.
 	Endpoint pulumi.StringPtrInput
 	// Whether to skip the TLS verification step.
@@ -102,6 +128,12 @@ type ProviderArgs struct {
 	Otp pulumi.StringPtrInput
 	// The password for the Proxmox VE API.
 	Password pulumi.StringPtrInput
+	// The ending number for random VM / Container IDs.
+	RandomVmIdEnd pulumi.IntPtrInput
+	// The starting number for random VM / Container IDs.
+	RandomVmIdStart pulumi.IntPtrInput
+	// Whether to generate random VM / Container IDs.
+	RandomVmIds pulumi.BoolPtrInput
 	// The SSH configuration for the Proxmox nodes.
 	Ssh ProviderSshPtrInput
 	// The alternative temporary directory.
@@ -150,6 +182,16 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 // The API token for the Proxmox VE API.
 func (o ProviderOutput) ApiToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApiToken }).(pulumi.StringPtrOutput)
+}
+
+// The pre-authenticated Ticket for the Proxmox VE API.
+func (o ProviderOutput) AuthTicket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AuthTicket }).(pulumi.StringPtrOutput)
+}
+
+// The pre-authenticated CSRF Prevention Token for the Proxmox VE API.
+func (o ProviderOutput) CsrfPreventionToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CsrfPreventionToken }).(pulumi.StringPtrOutput)
 }
 
 // The endpoint for the Proxmox VE API.

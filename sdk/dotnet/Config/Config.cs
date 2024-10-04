@@ -42,6 +42,26 @@ namespace Pulumi.ProxmoxVE
             set => _apiToken.Set(value);
         }
 
+        private static readonly __Value<string?> _authTicket = new __Value<string?>(() => __config.Get("authTicket"));
+        /// <summary>
+        /// The pre-authenticated Ticket for the Proxmox VE API.
+        /// </summary>
+        public static string? AuthTicket
+        {
+            get => _authTicket.Get();
+            set => _authTicket.Set(value);
+        }
+
+        private static readonly __Value<string?> _csrfPreventionToken = new __Value<string?>(() => __config.Get("csrfPreventionToken"));
+        /// <summary>
+        /// The pre-authenticated CSRF Prevention Token for the Proxmox VE API.
+        /// </summary>
+        public static string? CsrfPreventionToken
+        {
+            get => _csrfPreventionToken.Get();
+            set => _csrfPreventionToken.Set(value);
+        }
+
         private static readonly __Value<string?> _endpoint = new __Value<string?>(() => __config.Get("endpoint"));
         /// <summary>
         /// The endpoint for the Proxmox VE API.
@@ -90,6 +110,36 @@ namespace Pulumi.ProxmoxVE
         {
             get => _password.Get();
             set => _password.Set(value);
+        }
+
+        private static readonly __Value<int?> _randomVmIdEnd = new __Value<int?>(() => __config.GetInt32("randomVmIdEnd"));
+        /// <summary>
+        /// The ending number for random VM / Container IDs.
+        /// </summary>
+        public static int? RandomVmIdEnd
+        {
+            get => _randomVmIdEnd.Get();
+            set => _randomVmIdEnd.Set(value);
+        }
+
+        private static readonly __Value<int?> _randomVmIdStart = new __Value<int?>(() => __config.GetInt32("randomVmIdStart"));
+        /// <summary>
+        /// The starting number for random VM / Container IDs.
+        /// </summary>
+        public static int? RandomVmIdStart
+        {
+            get => _randomVmIdStart.Get();
+            set => _randomVmIdStart.Set(value);
+        }
+
+        private static readonly __Value<bool?> _randomVmIds = new __Value<bool?>(() => __config.GetBoolean("randomVmIds"));
+        /// <summary>
+        /// Whether to generate random VM / Container IDs.
+        /// </summary>
+        public static bool? RandomVmIds
+        {
+            get => _randomVmIds.Get();
+            set => _randomVmIds.Set(value);
         }
 
         private static readonly __Value<Pulumi.ProxmoxVE.Config.Types.Ssh?> _ssh = new __Value<Pulumi.ProxmoxVE.Config.Types.Ssh?>(() => __config.GetObject<Pulumi.ProxmoxVE.Config.Types.Ssh>("ssh"));

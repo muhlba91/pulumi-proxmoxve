@@ -4312,16 +4312,15 @@ func (o VirtualMachineInitializationUserAccountPtrOutput) Username() pulumi.Stri
 }
 
 type VirtualMachineMemory struct {
-	// The dedicated memory in megabytes (defaults
-	// to `512`).
+	// The dedicated memory in megabytes (defaults to `512`).
 	Dedicated *int `pulumi:"dedicated"`
-	// The floating memory in megabytes (defaults
-	// to `0`).
+	// The floating memory in megabytes. The default is `0`, which disables "ballooning device" for the VM.
+	// Please note that Proxmox has ballooning enabled by default. To enable it, set `floating` to the same value as `dedicated`.
+	// See [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_memory) section 10.2.6 for more information.
 	Floating *int `pulumi:"floating"`
 	// Enable/disable hugepages memory (defaults to disable).
 	Hugepages *string `pulumi:"hugepages"`
-	// Keep hugepages memory after the VM is stopped (defaults
-	// to `false`).
+	// Keep hugepages memory after the VM is stopped (defaults to `false`).
 	//
 	// Settings `hugepages` and `keepHugepages` are only allowed for `root@pam` authenticated user.
 	// And required `cpu.numa` to be enabled.
@@ -4342,16 +4341,15 @@ type VirtualMachineMemoryInput interface {
 }
 
 type VirtualMachineMemoryArgs struct {
-	// The dedicated memory in megabytes (defaults
-	// to `512`).
+	// The dedicated memory in megabytes (defaults to `512`).
 	Dedicated pulumi.IntPtrInput `pulumi:"dedicated"`
-	// The floating memory in megabytes (defaults
-	// to `0`).
+	// The floating memory in megabytes. The default is `0`, which disables "ballooning device" for the VM.
+	// Please note that Proxmox has ballooning enabled by default. To enable it, set `floating` to the same value as `dedicated`.
+	// See [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_memory) section 10.2.6 for more information.
 	Floating pulumi.IntPtrInput `pulumi:"floating"`
 	// Enable/disable hugepages memory (defaults to disable).
 	Hugepages pulumi.StringPtrInput `pulumi:"hugepages"`
-	// Keep hugepages memory after the VM is stopped (defaults
-	// to `false`).
+	// Keep hugepages memory after the VM is stopped (defaults to `false`).
 	//
 	// Settings `hugepages` and `keepHugepages` are only allowed for `root@pam` authenticated user.
 	// And required `cpu.numa` to be enabled.
@@ -4437,14 +4435,14 @@ func (o VirtualMachineMemoryOutput) ToVirtualMachineMemoryPtrOutputWithContext(c
 	}).(VirtualMachineMemoryPtrOutput)
 }
 
-// The dedicated memory in megabytes (defaults
-// to `512`).
+// The dedicated memory in megabytes (defaults to `512`).
 func (o VirtualMachineMemoryOutput) Dedicated() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineMemory) *int { return v.Dedicated }).(pulumi.IntPtrOutput)
 }
 
-// The floating memory in megabytes (defaults
-// to `0`).
+// The floating memory in megabytes. The default is `0`, which disables "ballooning device" for the VM.
+// Please note that Proxmox has ballooning enabled by default. To enable it, set `floating` to the same value as `dedicated`.
+// See [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_memory) section 10.2.6 for more information.
 func (o VirtualMachineMemoryOutput) Floating() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineMemory) *int { return v.Floating }).(pulumi.IntPtrOutput)
 }
@@ -4454,8 +4452,7 @@ func (o VirtualMachineMemoryOutput) Hugepages() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineMemory) *string { return v.Hugepages }).(pulumi.StringPtrOutput)
 }
 
-// Keep hugepages memory after the VM is stopped (defaults
-// to `false`).
+// Keep hugepages memory after the VM is stopped (defaults to `false`).
 //
 // Settings `hugepages` and `keepHugepages` are only allowed for `root@pam` authenticated user.
 // And required `cpu.numa` to be enabled.
@@ -4492,8 +4489,7 @@ func (o VirtualMachineMemoryPtrOutput) Elem() VirtualMachineMemoryOutput {
 	}).(VirtualMachineMemoryOutput)
 }
 
-// The dedicated memory in megabytes (defaults
-// to `512`).
+// The dedicated memory in megabytes (defaults to `512`).
 func (o VirtualMachineMemoryPtrOutput) Dedicated() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineMemory) *int {
 		if v == nil {
@@ -4503,8 +4499,9 @@ func (o VirtualMachineMemoryPtrOutput) Dedicated() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The floating memory in megabytes (defaults
-// to `0`).
+// The floating memory in megabytes. The default is `0`, which disables "ballooning device" for the VM.
+// Please note that Proxmox has ballooning enabled by default. To enable it, set `floating` to the same value as `dedicated`.
+// See [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_memory) section 10.2.6 for more information.
 func (o VirtualMachineMemoryPtrOutput) Floating() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineMemory) *int {
 		if v == nil {
@@ -4524,8 +4521,7 @@ func (o VirtualMachineMemoryPtrOutput) Hugepages() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Keep hugepages memory after the VM is stopped (defaults
-// to `false`).
+// Keep hugepages memory after the VM is stopped (defaults to `false`).
 //
 // Settings `hugepages` and `keepHugepages` are only allowed for `root@pam` authenticated user.
 // And required `cpu.numa` to be enabled.
@@ -6009,6 +6005,181 @@ func (o VirtualMachineVgaPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type VirtualMachineWatchdog struct {
+	// The action to perform if after activation the guest fails to poll the watchdog in time  (defaults to `none`).
+	Action *string `pulumi:"action"`
+	// Whether the watchdog is enabled (defaults to `false`).
+	Enabled *bool `pulumi:"enabled"`
+	// The watchdog type to emulate (defaults to `i6300esb`).
+	Model *string `pulumi:"model"`
+}
+
+// VirtualMachineWatchdogInput is an input type that accepts VirtualMachineWatchdogArgs and VirtualMachineWatchdogOutput values.
+// You can construct a concrete instance of `VirtualMachineWatchdogInput` via:
+//
+//	VirtualMachineWatchdogArgs{...}
+type VirtualMachineWatchdogInput interface {
+	pulumi.Input
+
+	ToVirtualMachineWatchdogOutput() VirtualMachineWatchdogOutput
+	ToVirtualMachineWatchdogOutputWithContext(context.Context) VirtualMachineWatchdogOutput
+}
+
+type VirtualMachineWatchdogArgs struct {
+	// The action to perform if after activation the guest fails to poll the watchdog in time  (defaults to `none`).
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// Whether the watchdog is enabled (defaults to `false`).
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The watchdog type to emulate (defaults to `i6300esb`).
+	Model pulumi.StringPtrInput `pulumi:"model"`
+}
+
+func (VirtualMachineWatchdogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineWatchdog)(nil)).Elem()
+}
+
+func (i VirtualMachineWatchdogArgs) ToVirtualMachineWatchdogOutput() VirtualMachineWatchdogOutput {
+	return i.ToVirtualMachineWatchdogOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineWatchdogArgs) ToVirtualMachineWatchdogOutputWithContext(ctx context.Context) VirtualMachineWatchdogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineWatchdogOutput)
+}
+
+func (i VirtualMachineWatchdogArgs) ToVirtualMachineWatchdogPtrOutput() VirtualMachineWatchdogPtrOutput {
+	return i.ToVirtualMachineWatchdogPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineWatchdogArgs) ToVirtualMachineWatchdogPtrOutputWithContext(ctx context.Context) VirtualMachineWatchdogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineWatchdogOutput).ToVirtualMachineWatchdogPtrOutputWithContext(ctx)
+}
+
+// VirtualMachineWatchdogPtrInput is an input type that accepts VirtualMachineWatchdogArgs, VirtualMachineWatchdogPtr and VirtualMachineWatchdogPtrOutput values.
+// You can construct a concrete instance of `VirtualMachineWatchdogPtrInput` via:
+//
+//	        VirtualMachineWatchdogArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachineWatchdogPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineWatchdogPtrOutput() VirtualMachineWatchdogPtrOutput
+	ToVirtualMachineWatchdogPtrOutputWithContext(context.Context) VirtualMachineWatchdogPtrOutput
+}
+
+type virtualMachineWatchdogPtrType VirtualMachineWatchdogArgs
+
+func VirtualMachineWatchdogPtr(v *VirtualMachineWatchdogArgs) VirtualMachineWatchdogPtrInput {
+	return (*virtualMachineWatchdogPtrType)(v)
+}
+
+func (*virtualMachineWatchdogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineWatchdog)(nil)).Elem()
+}
+
+func (i *virtualMachineWatchdogPtrType) ToVirtualMachineWatchdogPtrOutput() VirtualMachineWatchdogPtrOutput {
+	return i.ToVirtualMachineWatchdogPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachineWatchdogPtrType) ToVirtualMachineWatchdogPtrOutputWithContext(ctx context.Context) VirtualMachineWatchdogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineWatchdogPtrOutput)
+}
+
+type VirtualMachineWatchdogOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineWatchdogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineWatchdog)(nil)).Elem()
+}
+
+func (o VirtualMachineWatchdogOutput) ToVirtualMachineWatchdogOutput() VirtualMachineWatchdogOutput {
+	return o
+}
+
+func (o VirtualMachineWatchdogOutput) ToVirtualMachineWatchdogOutputWithContext(ctx context.Context) VirtualMachineWatchdogOutput {
+	return o
+}
+
+func (o VirtualMachineWatchdogOutput) ToVirtualMachineWatchdogPtrOutput() VirtualMachineWatchdogPtrOutput {
+	return o.ToVirtualMachineWatchdogPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineWatchdogOutput) ToVirtualMachineWatchdogPtrOutputWithContext(ctx context.Context) VirtualMachineWatchdogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineWatchdog) *VirtualMachineWatchdog {
+		return &v
+	}).(VirtualMachineWatchdogPtrOutput)
+}
+
+// The action to perform if after activation the guest fails to poll the watchdog in time  (defaults to `none`).
+func (o VirtualMachineWatchdogOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineWatchdog) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// Whether the watchdog is enabled (defaults to `false`).
+func (o VirtualMachineWatchdogOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineWatchdog) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The watchdog type to emulate (defaults to `i6300esb`).
+func (o VirtualMachineWatchdogOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineWatchdog) *string { return v.Model }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineWatchdogPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineWatchdogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineWatchdog)(nil)).Elem()
+}
+
+func (o VirtualMachineWatchdogPtrOutput) ToVirtualMachineWatchdogPtrOutput() VirtualMachineWatchdogPtrOutput {
+	return o
+}
+
+func (o VirtualMachineWatchdogPtrOutput) ToVirtualMachineWatchdogPtrOutputWithContext(ctx context.Context) VirtualMachineWatchdogPtrOutput {
+	return o
+}
+
+func (o VirtualMachineWatchdogPtrOutput) Elem() VirtualMachineWatchdogOutput {
+	return o.ApplyT(func(v *VirtualMachineWatchdog) VirtualMachineWatchdog {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineWatchdog
+		return ret
+	}).(VirtualMachineWatchdogOutput)
+}
+
+// The action to perform if after activation the guest fails to poll the watchdog in time  (defaults to `none`).
+func (o VirtualMachineWatchdogPtrOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineWatchdog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Action
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the watchdog is enabled (defaults to `false`).
+func (o VirtualMachineWatchdogPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineWatchdog) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The watchdog type to emulate (defaults to `i6300esb`).
+func (o VirtualMachineWatchdogPtrOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineWatchdog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Model
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetVirtualMachinesFilter struct {
 	// Name of the VM attribute to filter on. One of [`name`, `template`, `status`, `nodeName`]
 	Name string `pulumi:"name"`
@@ -6330,6 +6501,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineUsbArrayInput)(nil)).Elem(), VirtualMachineUsbArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineVgaInput)(nil)).Elem(), VirtualMachineVgaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineVgaPtrInput)(nil)).Elem(), VirtualMachineVgaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineWatchdogInput)(nil)).Elem(), VirtualMachineWatchdogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineWatchdogPtrInput)(nil)).Elem(), VirtualMachineWatchdogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachinesFilterInput)(nil)).Elem(), GetVirtualMachinesFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachinesFilterArrayInput)(nil)).Elem(), GetVirtualMachinesFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachinesVmInput)(nil)).Elem(), GetVirtualMachinesVmArgs{})
@@ -6394,6 +6567,8 @@ func init() {
 	pulumi.RegisterOutputType(VirtualMachineUsbArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachineVgaOutput{})
 	pulumi.RegisterOutputType(VirtualMachineVgaPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineWatchdogOutput{})
+	pulumi.RegisterOutputType(VirtualMachineWatchdogPtrOutput{})
 	pulumi.RegisterOutputType(GetVirtualMachinesFilterOutput{})
 	pulumi.RegisterOutputType(GetVirtualMachinesFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetVirtualMachinesVmOutput{})

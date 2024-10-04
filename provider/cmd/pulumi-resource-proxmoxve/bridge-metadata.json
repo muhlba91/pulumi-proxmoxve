@@ -469,6 +469,9 @@
                     },
                     "vga": {
                         "maxItemsOne": true
+                    },
+                    "watchdog": {
+                        "maxItemsOne": true
                     }
                 }
             },

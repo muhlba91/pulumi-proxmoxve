@@ -24,6 +24,20 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('apiToken')
 
     @property
+    def auth_ticket(self) -> Optional[str]:
+        """
+        The pre-authenticated Ticket for the Proxmox VE API.
+        """
+        return __config__.get('authTicket')
+
+    @property
+    def csrf_prevention_token(self) -> Optional[str]:
+        """
+        The pre-authenticated CSRF Prevention Token for the Proxmox VE API.
+        """
+        return __config__.get('csrfPreventionToken')
+
+    @property
     def endpoint(self) -> Optional[str]:
         """
         The endpoint for the Proxmox VE API.
@@ -57,6 +71,27 @@ class _ExportableConfig(types.ModuleType):
         The password for the Proxmox VE API.
         """
         return __config__.get('password')
+
+    @property
+    def random_vm_id_end(self) -> Optional[int]:
+        """
+        The ending number for random VM / Container IDs.
+        """
+        return __config__.get_int('randomVmIdEnd')
+
+    @property
+    def random_vm_id_start(self) -> Optional[int]:
+        """
+        The starting number for random VM / Container IDs.
+        """
+        return __config__.get_int('randomVmIdStart')
+
+    @property
+    def random_vm_ids(self) -> Optional[bool]:
+        """
+        Whether to generate random VM / Container IDs.
+        """
+        return __config__.get_bool('randomVmIds')
 
     @property
     def ssh(self) -> Optional[str]:

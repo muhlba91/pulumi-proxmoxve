@@ -38,6 +38,34 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.apiToken);
     }
     /**
+     * The pre-authenticated Ticket for the Proxmox VE API.
+     * 
+     */
+    @Export(name="authTicket", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> authTicket;
+
+    /**
+     * @return The pre-authenticated Ticket for the Proxmox VE API.
+     * 
+     */
+    public Output<Optional<String>> authTicket() {
+        return Codegen.optional(this.authTicket);
+    }
+    /**
+     * The pre-authenticated CSRF Prevention Token for the Proxmox VE API.
+     * 
+     */
+    @Export(name="csrfPreventionToken", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> csrfPreventionToken;
+
+    /**
+     * @return The pre-authenticated CSRF Prevention Token for the Proxmox VE API.
+     * 
+     */
+    public Output<Optional<String>> csrfPreventionToken() {
+        return Codegen.optional(this.csrfPreventionToken);
+    }
+    /**
      * The endpoint for the Proxmox VE API.
      * 
      */
@@ -163,6 +191,8 @@ public class Provider extends com.pulumi.resources.ProviderResource {
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
                 "apiToken",
+                "authTicket",
+                "csrfPreventionToken",
                 "password"
             ))
             .build();

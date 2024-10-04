@@ -6,6 +6,7 @@ package io.muehlbachler.pulumi.proxmoxve;
 import com.pulumi.core.internal.Codegen;
 import io.muehlbachler.pulumi.proxmoxve.config.inputs.Ssh;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 
@@ -18,6 +19,20 @@ public final class Config {
  */
     public Optional<String> apiToken() {
         return Codegen.stringProp("apiToken").config(config).get();
+    }
+/**
+ * The pre-authenticated Ticket for the Proxmox VE API.
+ * 
+ */
+    public Optional<String> authTicket() {
+        return Codegen.stringProp("authTicket").config(config).get();
+    }
+/**
+ * The pre-authenticated CSRF Prevention Token for the Proxmox VE API.
+ * 
+ */
+    public Optional<String> csrfPreventionToken() {
+        return Codegen.stringProp("csrfPreventionToken").config(config).get();
     }
 /**
  * The endpoint for the Proxmox VE API.
@@ -53,6 +68,27 @@ public final class Config {
  */
     public Optional<String> password() {
         return Codegen.stringProp("password").config(config).get();
+    }
+/**
+ * The ending number for random VM / Container IDs.
+ * 
+ */
+    public Optional<Integer> randomVmIdEnd() {
+        return Codegen.integerProp("randomVmIdEnd").config(config).get();
+    }
+/**
+ * The starting number for random VM / Container IDs.
+ * 
+ */
+    public Optional<Integer> randomVmIdStart() {
+        return Codegen.integerProp("randomVmIdStart").config(config).get();
+    }
+/**
+ * Whether to generate random VM / Container IDs.
+ * 
+ */
+    public Optional<Boolean> randomVmIds() {
+        return Codegen.booleanProp("randomVmIds").config(config).get();
     }
 /**
  * The SSH configuration for the Proxmox nodes.

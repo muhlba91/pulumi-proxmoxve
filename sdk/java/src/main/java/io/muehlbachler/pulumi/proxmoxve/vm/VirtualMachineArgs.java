@@ -25,6 +25,7 @@ import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineStartupArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineTpmStateArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineUsbArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineVgaArgs;
+import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineWatchdogArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -836,6 +837,21 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.vmId);
     }
 
+    /**
+     * The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
+     * 
+     */
+    @Import(name="watchdog")
+    private @Nullable Output<VirtualMachineWatchdogArgs> watchdog;
+
+    /**
+     * @return The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
+     * 
+     */
+    public Optional<Output<VirtualMachineWatchdogArgs>> watchdog() {
+        return Optional.ofNullable(this.watchdog);
+    }
+
     private VirtualMachineArgs() {}
 
     private VirtualMachineArgs(VirtualMachineArgs $) {
@@ -889,6 +905,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         this.usbs = $.usbs;
         this.vga = $.vga;
         this.vmId = $.vmId;
+        this.watchdog = $.watchdog;
     }
 
     public static Builder builder() {
@@ -2101,6 +2118,27 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder vmId(Integer vmId) {
             return vmId(Output.of(vmId));
+        }
+
+        /**
+         * @param watchdog The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder watchdog(@Nullable Output<VirtualMachineWatchdogArgs> watchdog) {
+            $.watchdog = watchdog;
+            return this;
+        }
+
+        /**
+         * @param watchdog The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder watchdog(VirtualMachineWatchdogArgs watchdog) {
+            return watchdog(Output.of(watchdog));
         }
 
         public VirtualMachineArgs build() {

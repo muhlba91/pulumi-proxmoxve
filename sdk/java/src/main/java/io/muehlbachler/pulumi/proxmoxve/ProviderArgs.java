@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import io.muehlbachler.pulumi.proxmoxve.inputs.ProviderSshArgs;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -30,6 +31,36 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> apiToken() {
         return Optional.ofNullable(this.apiToken);
+    }
+
+    /**
+     * The pre-authenticated Ticket for the Proxmox VE API.
+     * 
+     */
+    @Import(name="authTicket")
+    private @Nullable Output<String> authTicket;
+
+    /**
+     * @return The pre-authenticated Ticket for the Proxmox VE API.
+     * 
+     */
+    public Optional<Output<String>> authTicket() {
+        return Optional.ofNullable(this.authTicket);
+    }
+
+    /**
+     * The pre-authenticated CSRF Prevention Token for the Proxmox VE API.
+     * 
+     */
+    @Import(name="csrfPreventionToken")
+    private @Nullable Output<String> csrfPreventionToken;
+
+    /**
+     * @return The pre-authenticated CSRF Prevention Token for the Proxmox VE API.
+     * 
+     */
+    public Optional<Output<String>> csrfPreventionToken() {
+        return Optional.ofNullable(this.csrfPreventionToken);
     }
 
     /**
@@ -116,6 +147,51 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ending number for random VM / Container IDs.
+     * 
+     */
+    @Import(name="randomVmIdEnd", json=true)
+    private @Nullable Output<Integer> randomVmIdEnd;
+
+    /**
+     * @return The ending number for random VM / Container IDs.
+     * 
+     */
+    public Optional<Output<Integer>> randomVmIdEnd() {
+        return Optional.ofNullable(this.randomVmIdEnd);
+    }
+
+    /**
+     * The starting number for random VM / Container IDs.
+     * 
+     */
+    @Import(name="randomVmIdStart", json=true)
+    private @Nullable Output<Integer> randomVmIdStart;
+
+    /**
+     * @return The starting number for random VM / Container IDs.
+     * 
+     */
+    public Optional<Output<Integer>> randomVmIdStart() {
+        return Optional.ofNullable(this.randomVmIdStart);
+    }
+
+    /**
+     * Whether to generate random VM / Container IDs.
+     * 
+     */
+    @Import(name="randomVmIds", json=true)
+    private @Nullable Output<Boolean> randomVmIds;
+
+    /**
+     * @return Whether to generate random VM / Container IDs.
+     * 
+     */
+    public Optional<Output<Boolean>> randomVmIds() {
+        return Optional.ofNullable(this.randomVmIds);
+    }
+
+    /**
      * The SSH configuration for the Proxmox nodes.
      * 
      */
@@ -164,11 +240,16 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     private ProviderArgs(ProviderArgs $) {
         this.apiToken = $.apiToken;
+        this.authTicket = $.authTicket;
+        this.csrfPreventionToken = $.csrfPreventionToken;
         this.endpoint = $.endpoint;
         this.insecure = $.insecure;
         this.minTls = $.minTls;
         this.otp = $.otp;
         this.password = $.password;
+        this.randomVmIdEnd = $.randomVmIdEnd;
+        this.randomVmIdStart = $.randomVmIdStart;
+        this.randomVmIds = $.randomVmIds;
         this.ssh = $.ssh;
         this.tmpDir = $.tmpDir;
         this.username = $.username;
@@ -211,6 +292,48 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder apiToken(String apiToken) {
             return apiToken(Output.of(apiToken));
+        }
+
+        /**
+         * @param authTicket The pre-authenticated Ticket for the Proxmox VE API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authTicket(@Nullable Output<String> authTicket) {
+            $.authTicket = authTicket;
+            return this;
+        }
+
+        /**
+         * @param authTicket The pre-authenticated Ticket for the Proxmox VE API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authTicket(String authTicket) {
+            return authTicket(Output.of(authTicket));
+        }
+
+        /**
+         * @param csrfPreventionToken The pre-authenticated CSRF Prevention Token for the Proxmox VE API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder csrfPreventionToken(@Nullable Output<String> csrfPreventionToken) {
+            $.csrfPreventionToken = csrfPreventionToken;
+            return this;
+        }
+
+        /**
+         * @param csrfPreventionToken The pre-authenticated CSRF Prevention Token for the Proxmox VE API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder csrfPreventionToken(String csrfPreventionToken) {
+            return csrfPreventionToken(Output.of(csrfPreventionToken));
         }
 
         /**
@@ -324,6 +447,69 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder password(String password) {
             return password(Output.of(password));
+        }
+
+        /**
+         * @param randomVmIdEnd The ending number for random VM / Container IDs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder randomVmIdEnd(@Nullable Output<Integer> randomVmIdEnd) {
+            $.randomVmIdEnd = randomVmIdEnd;
+            return this;
+        }
+
+        /**
+         * @param randomVmIdEnd The ending number for random VM / Container IDs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder randomVmIdEnd(Integer randomVmIdEnd) {
+            return randomVmIdEnd(Output.of(randomVmIdEnd));
+        }
+
+        /**
+         * @param randomVmIdStart The starting number for random VM / Container IDs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder randomVmIdStart(@Nullable Output<Integer> randomVmIdStart) {
+            $.randomVmIdStart = randomVmIdStart;
+            return this;
+        }
+
+        /**
+         * @param randomVmIdStart The starting number for random VM / Container IDs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder randomVmIdStart(Integer randomVmIdStart) {
+            return randomVmIdStart(Output.of(randomVmIdStart));
+        }
+
+        /**
+         * @param randomVmIds Whether to generate random VM / Container IDs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder randomVmIds(@Nullable Output<Boolean> randomVmIds) {
+            $.randomVmIds = randomVmIds;
+            return this;
+        }
+
+        /**
+         * @param randomVmIds Whether to generate random VM / Container IDs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder randomVmIds(Boolean randomVmIds) {
+            return randomVmIds(Output.of(randomVmIds));
         }
 
         /**

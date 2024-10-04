@@ -16,6 +16,16 @@ func GetApiToken(ctx *pulumi.Context) string {
 	return config.Get(ctx, "proxmoxve:apiToken")
 }
 
+// The pre-authenticated Ticket for the Proxmox VE API.
+func GetAuthTicket(ctx *pulumi.Context) string {
+	return config.Get(ctx, "proxmoxve:authTicket")
+}
+
+// The pre-authenticated CSRF Prevention Token for the Proxmox VE API.
+func GetCsrfPreventionToken(ctx *pulumi.Context) string {
+	return config.Get(ctx, "proxmoxve:csrfPreventionToken")
+}
+
 // The endpoint for the Proxmox VE API.
 func GetEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "proxmoxve:endpoint")
@@ -41,6 +51,21 @@ func GetOtp(ctx *pulumi.Context) string {
 // The password for the Proxmox VE API.
 func GetPassword(ctx *pulumi.Context) string {
 	return config.Get(ctx, "proxmoxve:password")
+}
+
+// The ending number for random VM / Container IDs.
+func GetRandomVmIdEnd(ctx *pulumi.Context) int {
+	return config.GetInt(ctx, "proxmoxve:randomVmIdEnd")
+}
+
+// The starting number for random VM / Container IDs.
+func GetRandomVmIdStart(ctx *pulumi.Context) int {
+	return config.GetInt(ctx, "proxmoxve:randomVmIdStart")
+}
+
+// Whether to generate random VM / Container IDs.
+func GetRandomVmIds(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "proxmoxve:randomVmIds")
 }
 
 // The SSH configuration for the Proxmox nodes.

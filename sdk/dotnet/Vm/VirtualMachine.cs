@@ -368,6 +368,12 @@ namespace Pulumi.ProxmoxVE.VM
         [Output("vmId")]
         public Output<int> VmId { get; private set; } = null!;
 
+        /// <summary>
+        /// The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
+        /// </summary>
+        [Output("watchdog")]
+        public Output<Outputs.VirtualMachineWatchdog?> Watchdog { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a VirtualMachine resource with the given unique name, arguments, and options.
@@ -789,6 +795,12 @@ namespace Pulumi.ProxmoxVE.VM
         [Input("vmId")]
         public Input<int>? VmId { get; set; }
 
+        /// <summary>
+        /// The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
+        /// </summary>
+        [Input("watchdog")]
+        public Input<Inputs.VirtualMachineWatchdogArgs>? Watchdog { get; set; }
+
         public VirtualMachineArgs()
         {
         }
@@ -1209,6 +1221,12 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Input("vmId")]
         public Input<int>? VmId { get; set; }
+
+        /// <summary>
+        /// The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
+        /// </summary>
+        [Input("watchdog")]
+        public Input<Inputs.VirtualMachineWatchdogGetArgs>? Watchdog { get; set; }
 
         public VirtualMachineState()
         {

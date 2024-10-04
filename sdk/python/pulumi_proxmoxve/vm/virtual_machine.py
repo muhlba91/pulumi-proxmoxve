@@ -65,7 +65,8 @@ class VirtualMachineArgs:
                  tpm_state: Optional[pulumi.Input['VirtualMachineTpmStateArgs']] = None,
                  usbs: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineUsbArgs']]]] = None,
                  vga: Optional[pulumi.Input['VirtualMachineVgaArgs']] = None,
-                 vm_id: Optional[pulumi.Input[int]] = None):
+                 vm_id: Optional[pulumi.Input[int]] = None,
+                 watchdog: Optional[pulumi.Input['VirtualMachineWatchdogArgs']] = None):
         """
         The set of arguments for constructing a VirtualMachine resource.
         :param pulumi.Input[str] node_name: The name of the node to assign the virtual machine
@@ -138,6 +139,7 @@ class VirtualMachineArgs:
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineUsbArgs']]] usbs: A host USB device mapping (multiple blocks supported).
         :param pulumi.Input['VirtualMachineVgaArgs'] vga: The VGA configuration.
         :param pulumi.Input[int] vm_id: The VM identifier.
+        :param pulumi.Input['VirtualMachineWatchdogArgs'] watchdog: The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
         """
         pulumi.set(__self__, "node_name", node_name)
         if acpi is not None:
@@ -241,6 +243,8 @@ class VirtualMachineArgs:
             pulumi.set(__self__, "vga", vga)
         if vm_id is not None:
             pulumi.set(__self__, "vm_id", vm_id)
+        if watchdog is not None:
+            pulumi.set(__self__, "watchdog", watchdog)
 
     @property
     @pulumi.getter(name="nodeName")
@@ -863,6 +867,18 @@ class VirtualMachineArgs:
     def vm_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "vm_id", value)
 
+    @property
+    @pulumi.getter
+    def watchdog(self) -> Optional[pulumi.Input['VirtualMachineWatchdogArgs']]:
+        """
+        The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
+        """
+        return pulumi.get(self, "watchdog")
+
+    @watchdog.setter
+    def watchdog(self, value: Optional[pulumi.Input['VirtualMachineWatchdogArgs']]):
+        pulumi.set(self, "watchdog", value)
+
 
 @pulumi.input_type
 class _VirtualMachineState:
@@ -919,7 +935,8 @@ class _VirtualMachineState:
                  tpm_state: Optional[pulumi.Input['VirtualMachineTpmStateArgs']] = None,
                  usbs: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineUsbArgs']]]] = None,
                  vga: Optional[pulumi.Input['VirtualMachineVgaArgs']] = None,
-                 vm_id: Optional[pulumi.Input[int]] = None):
+                 vm_id: Optional[pulumi.Input[int]] = None,
+                 watchdog: Optional[pulumi.Input['VirtualMachineWatchdogArgs']] = None):
         """
         Input properties used for looking up and filtering VirtualMachine resources.
         :param pulumi.Input[bool] acpi: Whether to enable ACPI (defaults to `true`).
@@ -998,6 +1015,7 @@ class _VirtualMachineState:
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineUsbArgs']]] usbs: A host USB device mapping (multiple blocks supported).
         :param pulumi.Input['VirtualMachineVgaArgs'] vga: The VGA configuration.
         :param pulumi.Input[int] vm_id: The VM identifier.
+        :param pulumi.Input['VirtualMachineWatchdogArgs'] watchdog: The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
         """
         if acpi is not None:
             pulumi.set(__self__, "acpi", acpi)
@@ -1108,6 +1126,8 @@ class _VirtualMachineState:
             pulumi.set(__self__, "vga", vga)
         if vm_id is not None:
             pulumi.set(__self__, "vm_id", vm_id)
+        if watchdog is not None:
+            pulumi.set(__self__, "watchdog", watchdog)
 
     @property
     @pulumi.getter
@@ -1769,6 +1789,18 @@ class _VirtualMachineState:
     def vm_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "vm_id", value)
 
+    @property
+    @pulumi.getter
+    def watchdog(self) -> Optional[pulumi.Input['VirtualMachineWatchdogArgs']]:
+        """
+        The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
+        """
+        return pulumi.get(self, "watchdog")
+
+    @watchdog.setter
+    def watchdog(self, value: Optional[pulumi.Input['VirtualMachineWatchdogArgs']]):
+        pulumi.set(self, "watchdog", value)
+
 
 class VirtualMachine(pulumi.CustomResource):
     @overload
@@ -1825,6 +1857,7 @@ class VirtualMachine(pulumi.CustomResource):
                  usbs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineUsbArgs', 'VirtualMachineUsbArgsDict']]]]] = None,
                  vga: Optional[pulumi.Input[Union['VirtualMachineVgaArgs', 'VirtualMachineVgaArgsDict']]] = None,
                  vm_id: Optional[pulumi.Input[int]] = None,
+                 watchdog: Optional[pulumi.Input[Union['VirtualMachineWatchdogArgs', 'VirtualMachineWatchdogArgsDict']]] = None,
                  __props__=None):
         """
         Manages a virtual machine.
@@ -1913,6 +1946,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineUsbArgs', 'VirtualMachineUsbArgsDict']]]] usbs: A host USB device mapping (multiple blocks supported).
         :param pulumi.Input[Union['VirtualMachineVgaArgs', 'VirtualMachineVgaArgsDict']] vga: The VGA configuration.
         :param pulumi.Input[int] vm_id: The VM identifier.
+        :param pulumi.Input[Union['VirtualMachineWatchdogArgs', 'VirtualMachineWatchdogArgsDict']] watchdog: The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
         """
         ...
     @overload
@@ -2000,6 +2034,7 @@ class VirtualMachine(pulumi.CustomResource):
                  usbs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineUsbArgs', 'VirtualMachineUsbArgsDict']]]]] = None,
                  vga: Optional[pulumi.Input[Union['VirtualMachineVgaArgs', 'VirtualMachineVgaArgsDict']]] = None,
                  vm_id: Optional[pulumi.Input[int]] = None,
+                 watchdog: Optional[pulumi.Input[Union['VirtualMachineWatchdogArgs', 'VirtualMachineWatchdogArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2061,6 +2096,7 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["usbs"] = usbs
             __props__.__dict__["vga"] = vga
             __props__.__dict__["vm_id"] = vm_id
+            __props__.__dict__["watchdog"] = watchdog
             __props__.__dict__["ipv4_addresses"] = None
             __props__.__dict__["ipv6_addresses"] = None
             __props__.__dict__["network_interface_names"] = None
@@ -2126,7 +2162,8 @@ class VirtualMachine(pulumi.CustomResource):
             tpm_state: Optional[pulumi.Input[Union['VirtualMachineTpmStateArgs', 'VirtualMachineTpmStateArgsDict']]] = None,
             usbs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineUsbArgs', 'VirtualMachineUsbArgsDict']]]]] = None,
             vga: Optional[pulumi.Input[Union['VirtualMachineVgaArgs', 'VirtualMachineVgaArgsDict']]] = None,
-            vm_id: Optional[pulumi.Input[int]] = None) -> 'VirtualMachine':
+            vm_id: Optional[pulumi.Input[int]] = None,
+            watchdog: Optional[pulumi.Input[Union['VirtualMachineWatchdogArgs', 'VirtualMachineWatchdogArgsDict']]] = None) -> 'VirtualMachine':
         """
         Get an existing VirtualMachine resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -2210,6 +2247,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineUsbArgs', 'VirtualMachineUsbArgsDict']]]] usbs: A host USB device mapping (multiple blocks supported).
         :param pulumi.Input[Union['VirtualMachineVgaArgs', 'VirtualMachineVgaArgsDict']] vga: The VGA configuration.
         :param pulumi.Input[int] vm_id: The VM identifier.
+        :param pulumi.Input[Union['VirtualMachineWatchdogArgs', 'VirtualMachineWatchdogArgsDict']] watchdog: The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2268,6 +2306,7 @@ class VirtualMachine(pulumi.CustomResource):
         __props__.__dict__["usbs"] = usbs
         __props__.__dict__["vga"] = vga
         __props__.__dict__["vm_id"] = vm_id
+        __props__.__dict__["watchdog"] = watchdog
         return VirtualMachine(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -2717,4 +2756,12 @@ class VirtualMachine(pulumi.CustomResource):
         The VM identifier.
         """
         return pulumi.get(self, "vm_id")
+
+    @property
+    @pulumi.getter
+    def watchdog(self) -> pulumi.Output[Optional['outputs.VirtualMachineWatchdog']]:
+        """
+        The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
+        """
+        return pulumi.get(self, "watchdog")
 

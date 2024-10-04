@@ -32,6 +32,14 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly apiToken!: pulumi.Output<string | undefined>;
     /**
+     * The pre-authenticated Ticket for the Proxmox VE API.
+     */
+    public readonly authTicket!: pulumi.Output<string | undefined>;
+    /**
+     * The pre-authenticated CSRF Prevention Token for the Proxmox VE API.
+     */
+    public readonly csrfPreventionToken!: pulumi.Output<string | undefined>;
+    /**
      * The endpoint for the Proxmox VE API.
      */
     public readonly endpoint!: pulumi.Output<string | undefined>;
@@ -70,17 +78,22 @@ export class Provider extends pulumi.ProviderResource {
         opts = opts || {};
         {
             resourceInputs["apiToken"] = args?.apiToken ? pulumi.secret(args.apiToken) : undefined;
+            resourceInputs["authTicket"] = args?.authTicket ? pulumi.secret(args.authTicket) : undefined;
+            resourceInputs["csrfPreventionToken"] = args?.csrfPreventionToken ? pulumi.secret(args.csrfPreventionToken) : undefined;
             resourceInputs["endpoint"] = args ? args.endpoint : undefined;
             resourceInputs["insecure"] = pulumi.output(args ? args.insecure : undefined).apply(JSON.stringify);
             resourceInputs["minTls"] = args ? args.minTls : undefined;
             resourceInputs["otp"] = args ? args.otp : undefined;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
+            resourceInputs["randomVmIdEnd"] = pulumi.output(args ? args.randomVmIdEnd : undefined).apply(JSON.stringify);
+            resourceInputs["randomVmIdStart"] = pulumi.output(args ? args.randomVmIdStart : undefined).apply(JSON.stringify);
+            resourceInputs["randomVmIds"] = pulumi.output(args ? args.randomVmIds : undefined).apply(JSON.stringify);
             resourceInputs["ssh"] = pulumi.output(args ? args.ssh : undefined).apply(JSON.stringify);
             resourceInputs["tmpDir"] = args ? args.tmpDir : undefined;
             resourceInputs["username"] = args ? args.username : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["apiToken", "password"] };
+        const secretOpts = { additionalSecretOutputs: ["apiToken", "authTicket", "csrfPreventionToken", "password"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
     }
@@ -94,6 +107,14 @@ export interface ProviderArgs {
      * The API token for the Proxmox VE API.
      */
     apiToken?: pulumi.Input<string>;
+    /**
+     * The pre-authenticated Ticket for the Proxmox VE API.
+     */
+    authTicket?: pulumi.Input<string>;
+    /**
+     * The pre-authenticated CSRF Prevention Token for the Proxmox VE API.
+     */
+    csrfPreventionToken?: pulumi.Input<string>;
     /**
      * The endpoint for the Proxmox VE API.
      */
@@ -116,6 +137,18 @@ export interface ProviderArgs {
      * The password for the Proxmox VE API.
      */
     password?: pulumi.Input<string>;
+    /**
+     * The ending number for random VM / Container IDs.
+     */
+    randomVmIdEnd?: pulumi.Input<number>;
+    /**
+     * The starting number for random VM / Container IDs.
+     */
+    randomVmIdStart?: pulumi.Input<number>;
+    /**
+     * Whether to generate random VM / Container IDs.
+     */
+    randomVmIds?: pulumi.Input<boolean>;
     /**
      * The SSH configuration for the Proxmox nodes.
      */

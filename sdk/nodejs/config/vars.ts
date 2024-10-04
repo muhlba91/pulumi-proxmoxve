@@ -21,6 +21,28 @@ Object.defineProperty(exports, "apiToken", {
 });
 
 /**
+ * The pre-authenticated Ticket for the Proxmox VE API.
+ */
+export declare const authTicket: string | undefined;
+Object.defineProperty(exports, "authTicket", {
+    get() {
+        return __config.get("authTicket");
+    },
+    enumerable: true,
+});
+
+/**
+ * The pre-authenticated CSRF Prevention Token for the Proxmox VE API.
+ */
+export declare const csrfPreventionToken: string | undefined;
+Object.defineProperty(exports, "csrfPreventionToken", {
+    get() {
+        return __config.get("csrfPreventionToken");
+    },
+    enumerable: true,
+});
+
+/**
  * The endpoint for the Proxmox VE API.
  */
 export declare const endpoint: string | undefined;
@@ -71,6 +93,39 @@ export declare const password: string | undefined;
 Object.defineProperty(exports, "password", {
     get() {
         return __config.get("password");
+    },
+    enumerable: true,
+});
+
+/**
+ * The ending number for random VM / Container IDs.
+ */
+export declare const randomVmIdEnd: number | undefined;
+Object.defineProperty(exports, "randomVmIdEnd", {
+    get() {
+        return __config.getObject<number>("randomVmIdEnd");
+    },
+    enumerable: true,
+});
+
+/**
+ * The starting number for random VM / Container IDs.
+ */
+export declare const randomVmIdStart: number | undefined;
+Object.defineProperty(exports, "randomVmIdStart", {
+    get() {
+        return __config.getObject<number>("randomVmIdStart");
+    },
+    enumerable: true,
+});
+
+/**
+ * Whether to generate random VM / Container IDs.
+ */
+export declare const randomVmIds: boolean | undefined;
+Object.defineProperty(exports, "randomVmIds", {
+    get() {
+        return __config.getObject<boolean>("randomVmIds");
     },
     enumerable: true,
 });

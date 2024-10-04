@@ -41,6 +41,7 @@ __all__ = [
     'VirtualMachineTpmState',
     'VirtualMachineUsb',
     'VirtualMachineVga',
+    'VirtualMachineWatchdog',
     'GetVirtualMachinesFilterResult',
     'GetVirtualMachinesVmResult',
 ]
@@ -1801,13 +1802,12 @@ class VirtualMachineMemory(dict):
                  keep_hugepages: Optional[bool] = None,
                  shared: Optional[int] = None):
         """
-        :param int dedicated: The dedicated memory in megabytes (defaults
-               to `512`).
-        :param int floating: The floating memory in megabytes (defaults
-               to `0`).
+        :param int dedicated: The dedicated memory in megabytes (defaults to `512`).
+        :param int floating: The floating memory in megabytes. The default is `0`, which disables "ballooning device" for the VM.
+               Please note that Proxmox has ballooning enabled by default. To enable it, set `floating` to the same value as `dedicated`.
+               See [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_memory) section 10.2.6 for more information.
         :param str hugepages: Enable/disable hugepages memory (defaults to disable).
-        :param bool keep_hugepages: Keep hugepages memory after the VM is stopped (defaults
-               to `false`).
+        :param bool keep_hugepages: Keep hugepages memory after the VM is stopped (defaults to `false`).
                
                Settings `hugepages` and `keep_hugepages` are only allowed for `root@pam` authenticated user.
                And required `cpu.numa` to be enabled.
@@ -1828,8 +1828,7 @@ class VirtualMachineMemory(dict):
     @pulumi.getter
     def dedicated(self) -> Optional[int]:
         """
-        The dedicated memory in megabytes (defaults
-        to `512`).
+        The dedicated memory in megabytes (defaults to `512`).
         """
         return pulumi.get(self, "dedicated")
 
@@ -1837,8 +1836,9 @@ class VirtualMachineMemory(dict):
     @pulumi.getter
     def floating(self) -> Optional[int]:
         """
-        The floating memory in megabytes (defaults
-        to `0`).
+        The floating memory in megabytes. The default is `0`, which disables "ballooning device" for the VM.
+        Please note that Proxmox has ballooning enabled by default. To enable it, set `floating` to the same value as `dedicated`.
+        See [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_memory) section 10.2.6 for more information.
         """
         return pulumi.get(self, "floating")
 
@@ -1854,8 +1854,7 @@ class VirtualMachineMemory(dict):
     @pulumi.getter(name="keepHugepages")
     def keep_hugepages(self) -> Optional[bool]:
         """
-        Keep hugepages memory after the VM is stopped (defaults
-        to `false`).
+        Keep hugepages memory after the VM is stopped (defaults to `false`).
 
         Settings `hugepages` and `keep_hugepages` are only allowed for `root@pam` authenticated user.
         And required `cpu.numa` to be enabled.
@@ -2438,6 +2437,49 @@ class VirtualMachineVga(dict):
         The VGA type (defaults to `std`).
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class VirtualMachineWatchdog(dict):
+    def __init__(__self__, *,
+                 action: Optional[str] = None,
+                 enabled: Optional[bool] = None,
+                 model: Optional[str] = None):
+        """
+        :param str action: The action to perform if after activation the guest fails to poll the watchdog in time  (defaults to `none`).
+        :param bool enabled: Whether the watchdog is enabled (defaults to `false`).
+        :param str model: The watchdog type to emulate (defaults to `i6300esb`).
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if model is not None:
+            pulumi.set(__self__, "model", model)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[str]:
+        """
+        The action to perform if after activation the guest fails to poll the watchdog in time  (defaults to `none`).
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether the watchdog is enabled (defaults to `false`).
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def model(self) -> Optional[str]:
+        """
+        The watchdog type to emulate (defaults to `i6300esb`).
+        """
+        return pulumi.get(self, "model")
 
 
 @pulumi.output_type

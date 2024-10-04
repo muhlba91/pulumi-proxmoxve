@@ -25,6 +25,18 @@ namespace Pulumi.ProxmoxVE
         public Output<string?> ApiToken { get; private set; } = null!;
 
         /// <summary>
+        /// The pre-authenticated Ticket for the Proxmox VE API.
+        /// </summary>
+        [Output("authTicket")]
+        public Output<string?> AuthTicket { get; private set; } = null!;
+
+        /// <summary>
+        /// The pre-authenticated CSRF Prevention Token for the Proxmox VE API.
+        /// </summary>
+        [Output("csrfPreventionToken")]
+        public Output<string?> CsrfPreventionToken { get; private set; } = null!;
+
+        /// <summary>
         /// The endpoint for the Proxmox VE API.
         /// </summary>
         [Output("endpoint")]
@@ -82,6 +94,8 @@ namespace Pulumi.ProxmoxVE
                 AdditionalSecretOutputs =
                 {
                     "apiToken",
+                    "authTicket",
+                    "csrfPreventionToken",
                     "password",
                 },
             };
@@ -107,6 +121,38 @@ namespace Pulumi.ProxmoxVE
             {
                 var emptySecret = Output.CreateSecret(0);
                 _apiToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("authTicket")]
+        private Input<string>? _authTicket;
+
+        /// <summary>
+        /// The pre-authenticated Ticket for the Proxmox VE API.
+        /// </summary>
+        public Input<string>? AuthTicket
+        {
+            get => _authTicket;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _authTicket = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("csrfPreventionToken")]
+        private Input<string>? _csrfPreventionToken;
+
+        /// <summary>
+        /// The pre-authenticated CSRF Prevention Token for the Proxmox VE API.
+        /// </summary>
+        public Input<string>? CsrfPreventionToken
+        {
+            get => _csrfPreventionToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _csrfPreventionToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
 
@@ -149,6 +195,24 @@ namespace Pulumi.ProxmoxVE
                 _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        /// <summary>
+        /// The ending number for random VM / Container IDs.
+        /// </summary>
+        [Input("randomVmIdEnd", json: true)]
+        public Input<int>? RandomVmIdEnd { get; set; }
+
+        /// <summary>
+        /// The starting number for random VM / Container IDs.
+        /// </summary>
+        [Input("randomVmIdStart", json: true)]
+        public Input<int>? RandomVmIdStart { get; set; }
+
+        /// <summary>
+        /// Whether to generate random VM / Container IDs.
+        /// </summary>
+        [Input("randomVmIds", json: true)]
+        public Input<bool>? RandomVmIds { get; set; }
 
         /// <summary>
         /// The SSH configuration for the Proxmox nodes.

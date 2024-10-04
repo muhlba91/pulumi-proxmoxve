@@ -15,6 +15,16 @@ apiToken: Optional[str]
 The API token for the Proxmox VE API.
 """
 
+authTicket: Optional[str]
+"""
+The pre-authenticated Ticket for the Proxmox VE API.
+"""
+
+csrfPreventionToken: Optional[str]
+"""
+The pre-authenticated CSRF Prevention Token for the Proxmox VE API.
+"""
+
 endpoint: Optional[str]
 """
 The endpoint for the Proxmox VE API.
@@ -38,6 +48,21 @@ The one-time password for the Proxmox VE API.
 password: Optional[str]
 """
 The password for the Proxmox VE API.
+"""
+
+randomVmIdEnd: Optional[int]
+"""
+The ending number for random VM / Container IDs.
+"""
+
+randomVmIdStart: Optional[int]
+"""
+The starting number for random VM / Container IDs.
+"""
+
+randomVmIds: Optional[bool]
+"""
+Whether to generate random VM / Container IDs.
 """
 
 ssh: Optional[str]

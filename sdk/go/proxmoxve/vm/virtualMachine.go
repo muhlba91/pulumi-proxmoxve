@@ -159,6 +159,8 @@ type VirtualMachine struct {
 	Vga VirtualMachineVgaPtrOutput `pulumi:"vga"`
 	// The VM identifier.
 	VmId pulumi.IntOutput `pulumi:"vmId"`
+	// The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
+	Watchdog VirtualMachineWatchdogPtrOutput `pulumi:"watchdog"`
 }
 
 // NewVirtualMachine registers a new resource with the given unique name, arguments, and options.
@@ -325,6 +327,8 @@ type virtualMachineState struct {
 	Vga *VirtualMachineVga `pulumi:"vga"`
 	// The VM identifier.
 	VmId *int `pulumi:"vmId"`
+	// The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
+	Watchdog *VirtualMachineWatchdog `pulumi:"watchdog"`
 }
 
 type VirtualMachineState struct {
@@ -459,6 +463,8 @@ type VirtualMachineState struct {
 	Vga VirtualMachineVgaPtrInput
 	// The VM identifier.
 	VmId pulumi.IntPtrInput
+	// The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
+	Watchdog VirtualMachineWatchdogPtrInput
 }
 
 func (VirtualMachineState) ElementType() reflect.Type {
@@ -588,6 +594,8 @@ type virtualMachineArgs struct {
 	Vga *VirtualMachineVga `pulumi:"vga"`
 	// The VM identifier.
 	VmId *int `pulumi:"vmId"`
+	// The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
+	Watchdog *VirtualMachineWatchdog `pulumi:"watchdog"`
 }
 
 // The set of arguments for constructing a VirtualMachine resource.
@@ -714,6 +722,8 @@ type VirtualMachineArgs struct {
 	Vga VirtualMachineVgaPtrInput
 	// The VM identifier.
 	VmId pulumi.IntPtrInput
+	// The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
+	Watchdog VirtualMachineWatchdogPtrInput
 }
 
 func (VirtualMachineArgs) ElementType() reflect.Type {
@@ -1091,6 +1101,11 @@ func (o VirtualMachineOutput) Vga() VirtualMachineVgaPtrOutput {
 // The VM identifier.
 func (o VirtualMachineOutput) VmId() pulumi.IntOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntOutput { return v.VmId }).(pulumi.IntOutput)
+}
+
+// The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
+func (o VirtualMachineOutput) Watchdog() VirtualMachineWatchdogPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) VirtualMachineWatchdogPtrOutput { return v.Watchdog }).(VirtualMachineWatchdogPtrOutput)
 }
 
 type VirtualMachineArrayOutput struct{ *pulumi.OutputState }

@@ -29,6 +29,7 @@ import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineStartup;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineTpmState;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineUsb;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineVga;
+import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineWatchdog;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -845,6 +846,20 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> vmId() {
         return this.vmId;
+    }
+    /**
+     * The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
+     * 
+     */
+    @Export(name="watchdog", refs={VirtualMachineWatchdog.class}, tree="[0]")
+    private Output</* @Nullable */ VirtualMachineWatchdog> watchdog;
+
+    /**
+     * @return The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
+     * 
+     */
+    public Output<Optional<VirtualMachineWatchdog>> watchdog() {
+        return Codegen.optional(this.watchdog);
     }
 
     /**

@@ -286,6 +286,10 @@ export class VirtualMachine extends pulumi.CustomResource {
      * The VM identifier.
      */
     public readonly vmId!: pulumi.Output<number>;
+    /**
+     * The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
+     */
+    public readonly watchdog!: pulumi.Output<outputs.VM.VirtualMachineWatchdog | undefined>;
 
     /**
      * Create a VirtualMachine resource with the given unique name, arguments, and options.
@@ -353,6 +357,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["usbs"] = state ? state.usbs : undefined;
             resourceInputs["vga"] = state ? state.vga : undefined;
             resourceInputs["vmId"] = state ? state.vmId : undefined;
+            resourceInputs["watchdog"] = state ? state.watchdog : undefined;
         } else {
             const args = argsOrState as VirtualMachineArgs | undefined;
             if ((!args || args.nodeName === undefined) && !opts.urn) {
@@ -408,6 +413,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["usbs"] = args ? args.usbs : undefined;
             resourceInputs["vga"] = args ? args.vga : undefined;
             resourceInputs["vmId"] = args ? args.vmId : undefined;
+            resourceInputs["watchdog"] = args ? args.watchdog : undefined;
             resourceInputs["ipv4Addresses"] = undefined /*out*/;
             resourceInputs["ipv6Addresses"] = undefined /*out*/;
             resourceInputs["networkInterfaceNames"] = undefined /*out*/;
@@ -658,6 +664,10 @@ export interface VirtualMachineState {
      * The VM identifier.
      */
     vmId?: pulumi.Input<number>;
+    /**
+     * The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
+     */
+    watchdog?: pulumi.Input<inputs.VM.VirtualMachineWatchdog>;
 }
 
 /**
@@ -886,4 +896,8 @@ export interface VirtualMachineArgs {
      * The VM identifier.
      */
     vmId?: pulumi.Input<number>;
+    /**
+     * The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
+     */
+    watchdog?: pulumi.Input<inputs.VM.VirtualMachineWatchdog>;
 }

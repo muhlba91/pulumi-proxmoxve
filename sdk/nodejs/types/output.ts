@@ -1670,13 +1670,13 @@ export namespace VM {
 
     export interface VirtualMachineMemory {
         /**
-         * The dedicated memory in megabytes (defaults
-         * to `512`).
+         * The dedicated memory in megabytes (defaults to `512`).
          */
         dedicated?: number;
         /**
-         * The floating memory in megabytes (defaults
-         * to `0`).
+         * The floating memory in megabytes. The default is `0`, which disables "ballooning device" for the VM.
+         * Please note that Proxmox has ballooning enabled by default. To enable it, set `floating` to the same value as `dedicated`.
+         * See [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_memory) section 10.2.6 for more information.
          */
         floating?: number;
         /**
@@ -1684,8 +1684,7 @@ export namespace VM {
          */
         hugepages?: string;
         /**
-         * Keep hugepages memory after the VM is stopped (defaults
-         * to `false`).
+         * Keep hugepages memory after the VM is stopped (defaults to `false`).
          *
          * Settings `hugepages` and `keepHugepages` are only allowed for `root@pam` authenticated user.
          * And required `cpu.numa` to be enabled.
@@ -1876,6 +1875,21 @@ export namespace VM {
          * The VGA type (defaults to `std`).
          */
         type?: string;
+    }
+
+    export interface VirtualMachineWatchdog {
+        /**
+         * The action to perform if after activation the guest fails to poll the watchdog in time  (defaults to `none`).
+         */
+        action?: string;
+        /**
+         * Whether the watchdog is enabled (defaults to `false`).
+         */
+        enabled?: boolean;
+        /**
+         * The watchdog type to emulate (defaults to `i6300esb`).
+         */
+        model?: string;
     }
 
 }

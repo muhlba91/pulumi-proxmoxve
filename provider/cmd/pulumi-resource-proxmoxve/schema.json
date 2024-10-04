@@ -69,6 +69,16 @@
                 "description": "The API token for the Proxmox VE API.\n",
                 "secret": true
             },
+            "authTicket": {
+                "type": "string",
+                "description": "The pre-authenticated Ticket for the Proxmox VE API.\n",
+                "secret": true
+            },
+            "csrfPreventionToken": {
+                "type": "string",
+                "description": "The pre-authenticated CSRF Prevention Token for the Proxmox VE API.\n",
+                "secret": true
+            },
             "endpoint": {
                 "type": "string",
                 "description": "The endpoint for the Proxmox VE API.\n"
@@ -90,6 +100,18 @@
                 "type": "string",
                 "description": "The password for the Proxmox VE API.\n",
                 "secret": true
+            },
+            "randomVmIdEnd": {
+                "type": "integer",
+                "description": "The ending number for random VM / Container IDs.\n"
+            },
+            "randomVmIdStart": {
+                "type": "integer",
+                "description": "The starting number for random VM / Container IDs.\n"
+            },
+            "randomVmIds": {
+                "type": "boolean",
+                "description": "Whether to generate random VM / Container IDs.\n"
             },
             "ssh": {
                 "$ref": "#/types/proxmoxve:config/ssh:ssh",
@@ -1783,11 +1805,11 @@
             "properties": {
                 "dedicated": {
                     "type": "integer",
-                    "description": "The dedicated memory in megabytes (defaults\nto `512`).\n"
+                    "description": "The dedicated memory in megabytes (defaults to `512`).\n"
                 },
                 "floating": {
                     "type": "integer",
-                    "description": "The floating memory in megabytes (defaults\nto `0`).\n"
+                    "description": "The floating memory in megabytes. The default is `0`, which disables \"ballooning device\" for the VM.\nPlease note that Proxmox has ballooning enabled by default. To enable it, set `floating` to the same value as `dedicated`.\nSee [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_memory) section 10.2.6 for more information.\n"
                 },
                 "hugepages": {
                     "type": "string",
@@ -1795,7 +1817,7 @@
                 },
                 "keepHugepages": {
                     "type": "boolean",
-                    "description": "Keep hugepages memory after the VM is stopped (defaults\nto `false`).\n\nSettings `hugepages` and `keep_hugepages` are only allowed for `root@pam` authenticated user.\nAnd required `cpu.numa` to be enabled.\n"
+                    "description": "Keep hugepages memory after the VM is stopped (defaults to `false`).\n\nSettings `hugepages` and `keep_hugepages` are only allowed for `root@pam` authenticated user.\nAnd required `cpu.numa` to be enabled.\n"
                 },
                 "shared": {
                     "type": "integer",
@@ -2009,6 +2031,23 @@
                 "type": {
                     "type": "string",
                     "description": "The VGA type (defaults to `std`).\n"
+                }
+            },
+            "type": "object"
+        },
+        "proxmoxve:VM/VirtualMachineWatchdog:VirtualMachineWatchdog": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "The action to perform if after activation the guest fails to poll the watchdog in time  (defaults to `none`).\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the watchdog is enabled (defaults to `false`).\n"
+                },
+                "model": {
+                    "type": "string",
+                    "description": "The watchdog type to emulate (defaults to `i6300esb`).\n"
                 }
             },
             "type": "object"
@@ -2531,6 +2570,16 @@
                 "description": "The API token for the Proxmox VE API.\n",
                 "secret": true
             },
+            "authTicket": {
+                "type": "string",
+                "description": "The pre-authenticated Ticket for the Proxmox VE API.\n",
+                "secret": true
+            },
+            "csrfPreventionToken": {
+                "type": "string",
+                "description": "The pre-authenticated CSRF Prevention Token for the Proxmox VE API.\n",
+                "secret": true
+            },
             "endpoint": {
                 "type": "string",
                 "description": "The endpoint for the Proxmox VE API.\n"
@@ -2552,6 +2601,18 @@
                 "type": "string",
                 "description": "The password for the Proxmox VE API.\n",
                 "secret": true
+            },
+            "randomVmIdEnd": {
+                "type": "integer",
+                "description": "The ending number for random VM / Container IDs.\n"
+            },
+            "randomVmIdStart": {
+                "type": "integer",
+                "description": "The starting number for random VM / Container IDs.\n"
+            },
+            "randomVmIds": {
+                "type": "boolean",
+                "description": "Whether to generate random VM / Container IDs.\n"
             },
             "ssh": {
                 "$ref": "#/types/proxmoxve:index/ProviderSsh:ProviderSsh",
@@ -2572,6 +2633,16 @@
                 "description": "The API token for the Proxmox VE API.\n",
                 "secret": true
             },
+            "authTicket": {
+                "type": "string",
+                "description": "The pre-authenticated Ticket for the Proxmox VE API.\n",
+                "secret": true
+            },
+            "csrfPreventionToken": {
+                "type": "string",
+                "description": "The pre-authenticated CSRF Prevention Token for the Proxmox VE API.\n",
+                "secret": true
+            },
             "endpoint": {
                 "type": "string",
                 "description": "The endpoint for the Proxmox VE API.\n"
@@ -2593,6 +2664,18 @@
                 "type": "string",
                 "description": "The password for the Proxmox VE API.\n",
                 "secret": true
+            },
+            "randomVmIdEnd": {
+                "type": "integer",
+                "description": "The ending number for random VM / Container IDs.\n"
+            },
+            "randomVmIdStart": {
+                "type": "integer",
+                "description": "The starting number for random VM / Container IDs.\n"
+            },
+            "randomVmIds": {
+                "type": "boolean",
+                "description": "Whether to generate random VM / Container IDs.\n"
             },
             "ssh": {
                 "$ref": "#/types/proxmoxve:index/ProviderSsh:ProviderSsh",
@@ -6020,6 +6103,10 @@
                 "vmId": {
                     "type": "integer",
                     "description": "The VM identifier.\n"
+                },
+                "watchdog": {
+                    "$ref": "#/types/proxmoxve:VM/VirtualMachineWatchdog:VirtualMachineWatchdog",
+                    "description": "The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).\n"
                 }
             },
             "required": [
@@ -6262,6 +6349,10 @@
                 "vmId": {
                     "type": "integer",
                     "description": "The VM identifier.\n"
+                },
+                "watchdog": {
+                    "$ref": "#/types/proxmoxve:VM/VirtualMachineWatchdog:VirtualMachineWatchdog",
+                    "description": "The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).\n"
                 }
             },
             "requiredInputs": [
@@ -6527,6 +6618,10 @@
                     "vmId": {
                         "type": "integer",
                         "description": "The VM identifier.\n"
+                    },
+                    "watchdog": {
+                        "$ref": "#/types/proxmoxve:VM/VirtualMachineWatchdog:VirtualMachineWatchdog",
+                        "description": "The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).\n"
                     }
                 },
                 "type": "object"

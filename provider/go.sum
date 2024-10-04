@@ -1284,8 +1284,6 @@ github.com/blang/semver v3.5.1+incompatible h1:cQNTCjp13qL8KC3Nbxr/y2Bqb63oX6wdn
 github.com/blang/semver v3.5.1+incompatible/go.mod h1:kRBLl5iJ+tD4TcOOxsy/0fnwebNt5EWlYSAyrTnjyyk=
 github.com/boombuler/barcode v1.0.0/go.mod h1:paBWMcWSl3LHKBqUq+rly7CNSldXjb2rDl3JlRe0mD8=
 github.com/boombuler/barcode v1.0.1/go.mod h1:paBWMcWSl3LHKBqUq+rly7CNSldXjb2rDl3JlRe0mD8=
-github.com/bpg/terraform-provider-proxmox v0.65.0 h1:8fsqTs7f0WjAC+0yTABjyI63HXX7itGKWxTJLTzmdlM=
-github.com/bpg/terraform-provider-proxmox v0.65.0/go.mod h1:Invk5amZ8vVfWSwfj4kxtINQpIuFjX9IIBeVEIUrZBE=
 github.com/bpg/terraform-provider-proxmox v0.66.0 h1:UbhpRfDfiFhFlcLQAc4YwL16eHOUMmxzp52ali3tzoM=
 github.com/bpg/terraform-provider-proxmox v0.66.0/go.mod h1:8uAv7gPssibBUk/2PoqOwOAX0S+ezk92z5jTxQRo/2k=
 github.com/brianvoe/gofakeit/v7 v7.0.4 h1:Mkxwz9jYg8Ad8NvT9HA27pCMZGFQo08MK6jD0QTKEww=
@@ -1934,12 +1932,8 @@ github.com/pulumi/providertest v0.0.14 h1:5QlAPAAs82jkQraHsJvq1xgVfC7xtW8sFJwv2p
 github.com/pulumi/providertest v0.0.14/go.mod h1:GcsqEGgSngwaNOD+kICJPIUQlnA911fGBU8HDlJvVL0=
 github.com/pulumi/pulumi-java/pkg v0.16.1 h1:orHnDWFbpOERwaBLry9f+6nqPX7x0MsrIkaa5QDGAns=
 github.com/pulumi/pulumi-java/pkg v0.16.1/go.mod h1:QH0DihZkWYle9XFc+LJ76m4hUo+fA3RdyaM90pqOaSM=
-github.com/pulumi/pulumi-terraform-bridge/pf v0.44.0 h1:132fy7aKhfT3AdftxHFsOIbrh+FqtosXH8+cVFHt0TE=
-github.com/pulumi/pulumi-terraform-bridge/pf v0.44.0/go.mod h1:5O1yEvWEP37s12Pu++LWcDcccvQWn87GLHQ4gTvjYh8=
 github.com/pulumi/pulumi-terraform-bridge/pf v0.44.1 h1:39UPLBqbnvylm2heU/Rxa1+G++NZHdtW2Qg+hEhp5Wo=
 github.com/pulumi/pulumi-terraform-bridge/pf v0.44.1/go.mod h1:Zj4XBf+TuV3um7y82X3xk2yQiP+pnQ7YxMc4fq/rVVw=
-github.com/pulumi/pulumi-terraform-bridge/v3 v3.91.0 h1:E4YTsAI8oAF8cDj5XR1cbHUfINCc1IJxElriOZBdsxE=
-github.com/pulumi/pulumi-terraform-bridge/v3 v3.91.0/go.mod h1:DvueDDtOIbf7W1Or4oH0o7F990ozp/ROmlm/vgLoe+g=
 github.com/pulumi/pulumi-terraform-bridge/v3 v3.91.1 h1:Twh0IKS1pGHP6LHDq1oR0vbHlV52asoUCC7spEJl3Ao=
 github.com/pulumi/pulumi-terraform-bridge/v3 v3.91.1/go.mod h1:DvueDDtOIbf7W1Or4oH0o7F990ozp/ROmlm/vgLoe+g=
 github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.8 h1:mav2tSitA9BPJPLLahKgepHyYsMzwaTm4cvp0dcTMYw=
@@ -1948,14 +1942,6 @@ github.com/pulumi/pulumi-yaml v1.10.0 h1:djbgMJCxJBmYMr4kOpAXH5iauxGohYjEuTLfxD3
 github.com/pulumi/pulumi-yaml v1.10.0/go.mod h1://lTvwHpgJ+WBKeMGiLrd/jinc4dl3eWV5LZ3G8iCfE=
 github.com/pulumi/pulumi/pkg/v3 v3.133.0 h1:j1rd7ToLZIQc5H0427ISOXSbOIIemZ6B0MXtRhQ38Yg=
 github.com/pulumi/pulumi/pkg/v3 v3.133.0/go.mod h1:JtMAnrsFIccO138WcMfPdhO0PioDukKihnZC0xTRLwo=
-github.com/pulumi/pulumi/sdk/v3 v3.133.0 h1:o+7dbJZY9BVgAjOF5GYIWgjp/zpKAgWZwD4pPjUMXKQ=
-github.com/pulumi/pulumi/sdk/v3 v3.133.0/go.mod h1:J5kQEX8v87aeUhk6NdQXnjCo1DbiOnOiL3Sf2DuDda8=
-github.com/pulumi/pulumi/sdk/v3 v3.134.0 h1:jnkRmtB/2Swkdj6b6CdtbDlCVLZTPCqINi8slnN7I/I=
-github.com/pulumi/pulumi/sdk/v3 v3.134.0/go.mod h1:J5kQEX8v87aeUhk6NdQXnjCo1DbiOnOiL3Sf2DuDda8=
-github.com/pulumi/pulumi/sdk/v3 v3.134.1 h1:v1zd0d+B9gpUhsdJ483YUMHwHXqDvXvZ+mh/A4HhPWg=
-github.com/pulumi/pulumi/sdk/v3 v3.134.1/go.mod h1:J5kQEX8v87aeUhk6NdQXnjCo1DbiOnOiL3Sf2DuDda8=
-github.com/pulumi/pulumi/sdk/v3 v3.135.0 h1:oBP7QsmZv6uUf3eJ9j6av0nrZpipV9IguNu6rVpHlFU=
-github.com/pulumi/pulumi/sdk/v3 v3.135.0/go.mod h1:J5kQEX8v87aeUhk6NdQXnjCo1DbiOnOiL3Sf2DuDda8=
 github.com/pulumi/pulumi/sdk/v3 v3.135.1 h1:NvJ6buVtt257X3Bg4/x2vsORAoK21n7BNF0cHOYAhpA=
 github.com/pulumi/pulumi/sdk/v3 v3.135.1/go.mod h1:PvKsX88co8XuwuPdzolMvew5lZV+4JmZfkeSjj7A6dI=
 github.com/pulumi/schema-tools v0.1.2 h1:Fd9xvUjgck4NA+7/jSk7InqCUT4Kj940+EcnbQKpfZo=
@@ -1978,8 +1964,6 @@ github.com/rogpeppe/go-internal v1.3.0/go.mod h1:M8bDsm7K2OlrFYOpmOWEs/qY81heoFR
 github.com/rogpeppe/go-internal v1.6.1/go.mod h1:xXDCJY+GAPziupqXw64V24skbSoqbTEfhy4qGm1nDQc=
 github.com/rogpeppe/go-internal v1.9.0/go.mod h1:WtVeX8xhTBvf0smdhujwtBcq4Qrzq/fJaraNFVN+nFs=
 github.com/rogpeppe/go-internal v1.11.0/go.mod h1:ddIwULY96R17DhadqLgMfk9H9tvdUzkipdSkR5nkCZA=
-github.com/rogpeppe/go-internal v1.12.0 h1:exVL4IDcn6na9z1rAb56Vxr+CgyK3nn3O+epU5NdKM8=
-github.com/rogpeppe/go-internal v1.12.0/go.mod h1:E+RYuTGaKKdloAfM02xzb0FW3Paa99yedzYV+kq4uf4=
 github.com/rogpeppe/go-internal v1.13.1 h1:KvO1DLK/DRN07sQ1LQKScxyZJuNnedQ5/wKSR38lUII=
 github.com/rogpeppe/go-internal v1.13.1/go.mod h1:uMEvuHeurkdAXX61udpOXGD/AzZDWNMNyH2VO9fmH0o=
 github.com/russross/blackfriday/v2 v2.1.0 h1:JIOH55/0cWyOuilr9/qlrm0BSXldqnqwMsf35Ld67mk=

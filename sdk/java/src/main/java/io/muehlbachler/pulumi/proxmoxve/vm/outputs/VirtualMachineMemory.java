@@ -14,14 +14,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VirtualMachineMemory {
     /**
-     * @return The dedicated memory in megabytes (defaults
-     * to `512`).
+     * @return The dedicated memory in megabytes (defaults to `512`).
      * 
      */
     private @Nullable Integer dedicated;
     /**
-     * @return The floating memory in megabytes (defaults
-     * to `0`).
+     * @return The floating memory in megabytes. The default is `0`, which disables &#34;ballooning device&#34; for the VM.
+     * Please note that Proxmox has ballooning enabled by default. To enable it, set `floating` to the same value as `dedicated`.
+     * See [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_memory) section 10.2.6 for more information.
      * 
      */
     private @Nullable Integer floating;
@@ -31,8 +31,7 @@ public final class VirtualMachineMemory {
      */
     private @Nullable String hugepages;
     /**
-     * @return Keep hugepages memory after the VM is stopped (defaults
-     * to `false`).
+     * @return Keep hugepages memory after the VM is stopped (defaults to `false`).
      * 
      * Settings `hugepages` and `keep_hugepages` are only allowed for `root{@literal @}pam` authenticated user.
      * And required `cpu.numa` to be enabled.
@@ -47,16 +46,16 @@ public final class VirtualMachineMemory {
 
     private VirtualMachineMemory() {}
     /**
-     * @return The dedicated memory in megabytes (defaults
-     * to `512`).
+     * @return The dedicated memory in megabytes (defaults to `512`).
      * 
      */
     public Optional<Integer> dedicated() {
         return Optional.ofNullable(this.dedicated);
     }
     /**
-     * @return The floating memory in megabytes (defaults
-     * to `0`).
+     * @return The floating memory in megabytes. The default is `0`, which disables &#34;ballooning device&#34; for the VM.
+     * Please note that Proxmox has ballooning enabled by default. To enable it, set `floating` to the same value as `dedicated`.
+     * See [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_memory) section 10.2.6 for more information.
      * 
      */
     public Optional<Integer> floating() {
@@ -70,8 +69,7 @@ public final class VirtualMachineMemory {
         return Optional.ofNullable(this.hugepages);
     }
     /**
-     * @return Keep hugepages memory after the VM is stopped (defaults
-     * to `false`).
+     * @return Keep hugepages memory after the VM is stopped (defaults to `false`).
      * 
      * Settings `hugepages` and `keep_hugepages` are only allowed for `root{@literal @}pam` authenticated user.
      * And required `cpu.numa` to be enabled.
