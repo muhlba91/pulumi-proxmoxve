@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [6.15.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.15.0...v6.15.1) (2024-10-09)
+
+
+### Miscellaneous Chores
+
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.66.1 ([3c6d536](https://github.com/muhlba91/pulumi-proxmoxve/commit/3c6d5363aea1df1dc9d05c81a86f6ebe5168ad85))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.136.0 ([96f8efc](https://github.com/muhlba91/pulumi-proxmoxve/commit/96f8efc0dc92c9a73d258395ca553be7b4669bec))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.136.1 ([ee57fff](https://github.com/muhlba91/pulumi-proxmoxve/commit/ee57fff0587188e087dc2c46e12c4f74c3055ed9))
+* **deps:** update sigstore/cosign-installer action to v3.7.0 ([8b665a5](https://github.com/muhlba91/pulumi-proxmoxve/commit/8b665a54e786c5cf118847205b452e58cbcd9056))
+
 ## [6.15.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.14.0...v6.15.0) (2024-10-04)
 
 
