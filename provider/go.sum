@@ -1288,6 +1288,8 @@ github.com/bpg/terraform-provider-proxmox v0.66.0 h1:UbhpRfDfiFhFlcLQAc4YwL16eHO
 github.com/bpg/terraform-provider-proxmox v0.66.0/go.mod h1:8uAv7gPssibBUk/2PoqOwOAX0S+ezk92z5jTxQRo/2k=
 github.com/bpg/terraform-provider-proxmox v0.66.1 h1:6y3i5RNI722UimMHTYwOu/rNebAXSft7J5p+xVRU/0U=
 github.com/bpg/terraform-provider-proxmox v0.66.1/go.mod h1:T6OAwmHmuFtDS3BjV0+y5wIjdcdcCibPTt2t57KMzwk=
+github.com/bpg/terraform-provider-proxmox v0.66.2 h1:mAKHUjKnn7FO0+YRp+onzrVqojnfZMFHYVqcO+mCMbo=
+github.com/bpg/terraform-provider-proxmox v0.66.2/go.mod h1:5AtxNGzMWXYp7SBsjYAa1WSNLzQ7rMlIoG/N57i7yeg=
 github.com/brianvoe/gofakeit/v7 v7.0.4 h1:Mkxwz9jYg8Ad8NvT9HA27pCMZGFQo08MK6jD0QTKEww=
 github.com/brianvoe/gofakeit/v7 v7.0.4/go.mod h1:QXuPeBw164PJCzCUZVmgpgHJ3Llj49jSLVkKPMtxtxA=
 github.com/bufbuild/protocompile v0.4.0 h1:LbFKd2XowZvQ/kajzguUp2DC9UEIQhIq77fZZlaQsNA=
@@ -2186,6 +2188,8 @@ golang.org/x/exp v0.0.0-20240909161429-701f63a606c0 h1:e66Fs6Z+fZTbFBAxKfP3PALWB
 golang.org/x/exp v0.0.0-20240909161429-701f63a606c0/go.mod h1:2TbTHSBQa924w8M6Xs1QcRcFwyucIwBGpK1p2f1YFFY=
 golang.org/x/exp v0.0.0-20241004190924-225e2abe05e6 h1:1wqE9dj9NpSm04INVsJhhEUzhuDVjbcyKH91sVyPATw=
 golang.org/x/exp v0.0.0-20241004190924-225e2abe05e6/go.mod h1:NQtJDoLvd6faHhE7m4T/1IY708gDefGGjR/iUW8yQQ8=
+golang.org/x/exp v0.0.0-20241009180824-f66d83c29e7c h1:7dEasQXItcW1xKJ2+gg5VOiBnqWrJc+rq0DPKyvvdbY=
+golang.org/x/exp v0.0.0-20241009180824-f66d83c29e7c/go.mod h1:NQtJDoLvd6faHhE7m4T/1IY708gDefGGjR/iUW8yQQ8=
 golang.org/x/image v0.0.0-20180708004352-c73c2afc3b81/go.mod h1:ux5Hcp/YLpHSI86hEcLt0YII63i6oz57MZXIpbrjZUs=
 golang.org/x/image v0.0.0-20190227222117-0694c2d4d067/go.mod h1:kZ7UVZpmo3dzQBMxlp+ypCbDeSB+sBbTgSJuh5dn5js=
 golang.org/x/image v0.0.0-20190802002840-cff245a6509b/go.mod h1:FeLwcggjj3mMvU+oOTbSwawSJRM1uh48EjtB4UJZlP0=
