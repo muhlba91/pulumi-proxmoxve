@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			all, err := HA.GetHAGroups(ctx, nil, nil)
+//			all, err := HA.GetHAGroups(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}

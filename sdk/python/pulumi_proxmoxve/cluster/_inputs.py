@@ -4,15 +4,37 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'OptionsNextIdArgs',
+    'OptionsNextIdArgsDict',
     'OptionsNotifyArgs',
+    'OptionsNotifyArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class OptionsNextIdArgsDict(TypedDict):
+        lower: NotRequired[pulumi.Input[int]]
+        """
+        The minimum number for the next free VM ID. Must be higher or equal to 100
+        """
+        upper: NotRequired[pulumi.Input[int]]
+        """
+        The maximum number for the next free VM ID. Must be less or equal to 999999999
+        """
+elif False:
+    OptionsNextIdArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OptionsNextIdArgs:
@@ -52,6 +74,35 @@ class OptionsNextIdArgs:
     def upper(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "upper", value)
 
+
+if not MYPY:
+    class OptionsNotifyArgsDict(TypedDict):
+        ha_fencing_mode: NotRequired[pulumi.Input[str]]
+        """
+        Cluster-wide notification settings for the HA fencing mode. Must be `always` | `never`.
+        """
+        ha_fencing_target: NotRequired[pulumi.Input[str]]
+        """
+        Cluster-wide notification settings for the HA fencing target.
+        """
+        package_updates: NotRequired[pulumi.Input[str]]
+        """
+        Cluster-wide notification settings for package updates. Must be `auto` | `always` | `never`.
+        """
+        package_updates_target: NotRequired[pulumi.Input[str]]
+        """
+        Cluster-wide notification settings for the package updates target.
+        """
+        replication: NotRequired[pulumi.Input[str]]
+        """
+        Cluster-wide notification settings for replication. Must be `always` | `never`.
+        """
+        replication_target: NotRequired[pulumi.Input[str]]
+        """
+        Cluster-wide notification settings for the replication target.
+        """
+elif False:
+    OptionsNotifyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OptionsNotifyArgs:

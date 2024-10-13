@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := Network.GetVersion(ctx, nil, nil)
+//			example, err := Network.GetVersion(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}

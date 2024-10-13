@@ -4,29 +4,70 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'ContainerCloneArgs',
+    'ContainerCloneArgsDict',
     'ContainerConsoleArgs',
+    'ContainerConsoleArgsDict',
     'ContainerCpuArgs',
+    'ContainerCpuArgsDict',
     'ContainerDiskArgs',
+    'ContainerDiskArgsDict',
     'ContainerFeaturesArgs',
+    'ContainerFeaturesArgsDict',
     'ContainerInitializationArgs',
+    'ContainerInitializationArgsDict',
     'ContainerInitializationDnsArgs',
+    'ContainerInitializationDnsArgsDict',
     'ContainerInitializationIpConfigArgs',
+    'ContainerInitializationIpConfigArgsDict',
     'ContainerInitializationIpConfigIpv4Args',
+    'ContainerInitializationIpConfigIpv4ArgsDict',
     'ContainerInitializationIpConfigIpv6Args',
+    'ContainerInitializationIpConfigIpv6ArgsDict',
     'ContainerInitializationUserAccountArgs',
+    'ContainerInitializationUserAccountArgsDict',
     'ContainerMemoryArgs',
+    'ContainerMemoryArgsDict',
     'ContainerMountPointArgs',
+    'ContainerMountPointArgsDict',
     'ContainerNetworkInterfaceArgs',
+    'ContainerNetworkInterfaceArgsDict',
     'ContainerOperatingSystemArgs',
+    'ContainerOperatingSystemArgsDict',
     'ContainerStartupArgs',
+    'ContainerStartupArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ContainerCloneArgsDict(TypedDict):
+        vm_id: pulumi.Input[int]
+        """
+        The identifier for the source container.
+        """
+        datastore_id: NotRequired[pulumi.Input[str]]
+        """
+        The identifier for the target datastore.
+        """
+        node_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the source node (leave blank, if
+        equal to the `node_name` argument).
+        """
+elif False:
+    ContainerCloneArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ContainerCloneArgs:
@@ -83,6 +124,24 @@ class ContainerCloneArgs:
     def node_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "node_name", value)
 
+
+if not MYPY:
+    class ContainerConsoleArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable the console device (defaults
+        to `true`).
+        """
+        tty_count: NotRequired[pulumi.Input[int]]
+        """
+        The number of available TTY (defaults to `2`).
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The console mode (defaults to `tty`).
+        """
+elif False:
+    ContainerConsoleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ContainerConsoleArgs:
@@ -141,6 +200,23 @@ class ContainerConsoleArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class ContainerCpuArgsDict(TypedDict):
+        architecture: NotRequired[pulumi.Input[str]]
+        """
+        The CPU architecture (defaults to `amd64`).
+        """
+        cores: NotRequired[pulumi.Input[int]]
+        """
+        The number of CPU cores (defaults to `1`).
+        """
+        units: NotRequired[pulumi.Input[int]]
+        """
+        The CPU units (defaults to `1024`).
+        """
+elif False:
+    ContainerCpuArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ContainerCpuArgs:
     def __init__(__self__, *,
@@ -196,6 +272,21 @@ class ContainerCpuArgs:
         pulumi.set(self, "units", value)
 
 
+if not MYPY:
+    class ContainerDiskArgsDict(TypedDict):
+        datastore_id: NotRequired[pulumi.Input[str]]
+        """
+        The identifier for the datastore to create the
+        disk in (defaults to `local`).
+        """
+        size: NotRequired[pulumi.Input[int]]
+        """
+        The size of the root filesystem in gigabytes (defaults
+        to `4`). Requires `datastore_id` to be set.
+        """
+elif False:
+    ContainerDiskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ContainerDiskArgs:
     def __init__(__self__, *,
@@ -238,6 +329,30 @@ class ContainerDiskArgs:
     def size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "size", value)
 
+
+if not MYPY:
+    class ContainerFeaturesArgsDict(TypedDict):
+        fuse: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the container supports FUSE mounts (defaults
+        to `false`)
+        """
+        keyctl: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the container supports `keyctl()` system
+        call (defaults to `false`)
+        """
+        mounts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of allowed mount types (`cifs` or `nfs`)
+        """
+        nesting: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the container is nested (defaults
+        to `false`)
+        """
+elif False:
+    ContainerFeaturesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ContainerFeaturesArgs:
@@ -316,6 +431,28 @@ class ContainerFeaturesArgs:
         pulumi.set(self, "nesting", value)
 
 
+if not MYPY:
+    class ContainerInitializationArgsDict(TypedDict):
+        dns: NotRequired[pulumi.Input['ContainerInitializationDnsArgsDict']]
+        """
+        The DNS configuration.
+        """
+        hostname: NotRequired[pulumi.Input[str]]
+        """
+        The hostname.
+        """
+        ip_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerInitializationIpConfigArgsDict']]]]
+        """
+        The IP configuration (one block per network
+        device).
+        """
+        user_account: NotRequired[pulumi.Input['ContainerInitializationUserAccountArgsDict']]
+        """
+        The user account configuration.
+        """
+elif False:
+    ContainerInitializationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ContainerInitializationArgs:
     def __init__(__self__, *,
@@ -389,6 +526,25 @@ class ContainerInitializationArgs:
         pulumi.set(self, "user_account", value)
 
 
+if not MYPY:
+    class ContainerInitializationDnsArgsDict(TypedDict):
+        domain: NotRequired[pulumi.Input[str]]
+        """
+        The DNS search domain.
+        """
+        server: NotRequired[pulumi.Input[str]]
+        """
+        The DNS server. The `server` attribute is
+        deprecated and will be removed in a future release. Please use
+        the `servers` attribute instead.
+        """
+        servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The list of DNS servers.
+        """
+elif False:
+    ContainerInitializationDnsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ContainerInitializationDnsArgs:
     def __init__(__self__, *,
@@ -452,6 +608,19 @@ class ContainerInitializationDnsArgs:
         pulumi.set(self, "servers", value)
 
 
+if not MYPY:
+    class ContainerInitializationIpConfigArgsDict(TypedDict):
+        ipv4: NotRequired[pulumi.Input['ContainerInitializationIpConfigIpv4ArgsDict']]
+        """
+        The IPv4 configuration.
+        """
+        ipv6: NotRequired[pulumi.Input['ContainerInitializationIpConfigIpv6ArgsDict']]
+        """
+        The IPv4 configuration.
+        """
+elif False:
+    ContainerInitializationIpConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ContainerInitializationIpConfigArgs:
     def __init__(__self__, *,
@@ -490,6 +659,20 @@ class ContainerInitializationIpConfigArgs:
     def ipv6(self, value: Optional[pulumi.Input['ContainerInitializationIpConfigIpv6Args']]):
         pulumi.set(self, "ipv6", value)
 
+
+if not MYPY:
+    class ContainerInitializationIpConfigIpv4ArgsDict(TypedDict):
+        address: NotRequired[pulumi.Input[str]]
+        """
+        The IPv4 address (use `dhcp` for auto-discovery).
+        """
+        gateway: NotRequired[pulumi.Input[str]]
+        """
+        The IPv4 gateway (must be omitted
+        when `dhcp` is used as the address).
+        """
+elif False:
+    ContainerInitializationIpConfigIpv4ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ContainerInitializationIpConfigIpv4Args:
@@ -532,6 +715,20 @@ class ContainerInitializationIpConfigIpv4Args:
         pulumi.set(self, "gateway", value)
 
 
+if not MYPY:
+    class ContainerInitializationIpConfigIpv6ArgsDict(TypedDict):
+        address: NotRequired[pulumi.Input[str]]
+        """
+        The IPv6 address (use `dhcp` for auto-discovery).
+        """
+        gateway: NotRequired[pulumi.Input[str]]
+        """
+        The IPv6 gateway (must be omitted
+        when `dhcp` is used as the address).
+        """
+elif False:
+    ContainerInitializationIpConfigIpv6ArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ContainerInitializationIpConfigIpv6Args:
     def __init__(__self__, *,
@@ -573,6 +770,19 @@ class ContainerInitializationIpConfigIpv6Args:
         pulumi.set(self, "gateway", value)
 
 
+if not MYPY:
+    class ContainerInitializationUserAccountArgsDict(TypedDict):
+        keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The SSH keys for the root account.
+        """
+        password: NotRequired[pulumi.Input[str]]
+        """
+        The password for the root account.
+        """
+elif False:
+    ContainerInitializationUserAccountArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ContainerInitializationUserAccountArgs:
     def __init__(__self__, *,
@@ -611,6 +821,20 @@ class ContainerInitializationUserAccountArgs:
     def password(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "password", value)
 
+
+if not MYPY:
+    class ContainerMemoryArgsDict(TypedDict):
+        dedicated: NotRequired[pulumi.Input[int]]
+        """
+        The dedicated memory in megabytes (defaults
+        to `512`).
+        """
+        swap: NotRequired[pulumi.Input[int]]
+        """
+        The swap size in megabytes (defaults to `0`).
+        """
+elif False:
+    ContainerMemoryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ContainerMemoryArgs:
@@ -652,6 +876,57 @@ class ContainerMemoryArgs:
     def swap(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "swap", value)
 
+
+if not MYPY:
+    class ContainerMountPointArgsDict(TypedDict):
+        path: pulumi.Input[str]
+        """
+        Path to the mount point as seen from inside the
+        container.
+        """
+        volume: pulumi.Input[str]
+        """
+        Volume, device or directory to mount into the
+        container.
+        """
+        acl: NotRequired[pulumi.Input[bool]]
+        """
+        Explicitly enable or disable ACL support.
+        """
+        backup: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to include the mount point in backups (only
+        used for volume mount points, defaults to `false`).
+        """
+        mount_options: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of extra mount options.
+        """
+        quota: NotRequired[pulumi.Input[bool]]
+        """
+        Enable user quotas inside the container (not supported
+        with ZFS subvolumes).
+        """
+        read_only: NotRequired[pulumi.Input[bool]]
+        """
+        Read-only mount point.
+        """
+        replicate: NotRequired[pulumi.Input[bool]]
+        """
+        Will include this volume to a storage replica job.
+        """
+        shared: NotRequired[pulumi.Input[bool]]
+        """
+        Mark this non-volume mount point as available on all
+        nodes.
+        """
+        size: NotRequired[pulumi.Input[str]]
+        """
+        Volume size (only for volume mount points).
+        Can be specified with a unit suffix (e.g. `10G`).
+        """
+elif False:
+    ContainerMountPointArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ContainerMountPointArgs:
@@ -830,6 +1105,47 @@ class ContainerMountPointArgs:
         pulumi.set(self, "size", value)
 
 
+if not MYPY:
+    class ContainerNetworkInterfaceArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The network interface name.
+        """
+        bridge: NotRequired[pulumi.Input[str]]
+        """
+        The name of the network bridge (defaults
+        to `vmbr0`).
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable the network device (defaults
+        to `true`).
+        """
+        firewall: NotRequired[pulumi.Input[bool]]
+        """
+        Whether this interface's firewall rules should be
+        used (defaults to `false`).
+        """
+        mac_address: NotRequired[pulumi.Input[str]]
+        """
+        The MAC address.
+        """
+        mtu: NotRequired[pulumi.Input[int]]
+        """
+        Maximum transfer unit of the interface. Cannot be
+        larger than the bridge's MTU.
+        """
+        rate_limit: NotRequired[pulumi.Input[float]]
+        """
+        The rate limit in megabytes per second.
+        """
+        vlan_id: NotRequired[pulumi.Input[int]]
+        """
+        The VLAN identifier.
+        """
+elif False:
+    ContainerNetworkInterfaceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ContainerNetworkInterfaceArgs:
     def __init__(__self__, *,
@@ -972,6 +1288,21 @@ class ContainerNetworkInterfaceArgs:
         pulumi.set(self, "vlan_id", value)
 
 
+if not MYPY:
+    class ContainerOperatingSystemArgsDict(TypedDict):
+        template_file_id: pulumi.Input[str]
+        """
+        The identifier for an OS template file.
+        The ID format is `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`.
+        Can be also taken from `Download.File` resource, or from the output of `pvesm list <storage>`.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The type (defaults to `unmanaged`).
+        """
+elif False:
+    ContainerOperatingSystemArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ContainerOperatingSystemArgs:
     def __init__(__self__, *,
@@ -1013,6 +1344,26 @@ class ContainerOperatingSystemArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class ContainerStartupArgsDict(TypedDict):
+        down_delay: NotRequired[pulumi.Input[int]]
+        """
+        A non-negative number defining the delay in
+        seconds before the next container is shut down.
+        """
+        order: NotRequired[pulumi.Input[int]]
+        """
+        A non-negative number defining the general startup
+        order.
+        """
+        up_delay: NotRequired[pulumi.Input[int]]
+        """
+        A non-negative number defining the delay in
+        seconds before the next container is started.
+        """
+elif False:
+    ContainerStartupArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ContainerStartupArgs:

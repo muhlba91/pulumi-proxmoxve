@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from ... import _utilities
 
 __all__ = [
@@ -164,9 +169,6 @@ def get_repository(handle: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         node=pulumi.get(__ret__, 'node'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_repository)
 def get_repository_output(handle: Optional[pulumi.Input[str]] = None,
                           node: Optional[pulumi.Input[str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRepositoryResult]:
@@ -188,4 +190,17 @@ def get_repository_output(handle: Optional[pulumi.Input[str]] = None,
     :param str handle: The handle of the APT standard repository.
     :param str node: The name of the target Proxmox VE node.
     """
-    ...
+    __args__ = dict()
+    __args__['handle'] = handle
+    __args__['node'] = node
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:Apt/standard/getRepository:getRepository', __args__, opts=opts, typ=GetRepositoryResult)
+    return __ret__.apply(lambda __response__: GetRepositoryResult(
+        description=pulumi.get(__response__, 'description'),
+        file_path=pulumi.get(__response__, 'file_path'),
+        handle=pulumi.get(__response__, 'handle'),
+        id=pulumi.get(__response__, 'id'),
+        index=pulumi.get(__response__, 'index'),
+        name=pulumi.get(__response__, 'name'),
+        node=pulumi.get(__response__, 'node'),
+        status=pulumi.get(__response__, 'status')))

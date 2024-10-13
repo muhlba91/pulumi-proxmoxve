@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -195,9 +200,6 @@ def get_datastores(node_name: Optional[str] = None,
         space_totals=pulumi.get(__ret__, 'space_totals'),
         space_useds=pulumi.get(__ret__, 'space_useds'),
         types=pulumi.get(__ret__, 'types'))
-
-
-@_utilities.lift_output_func(get_datastores)
 def get_datastores_output(node_name: Optional[pulumi.Input[str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatastoresResult]:
     """
@@ -215,4 +217,19 @@ def get_datastores_output(node_name: Optional[pulumi.Input[str]] = None,
 
     :param str node_name: A node name.
     """
-    ...
+    __args__ = dict()
+    __args__['nodeName'] = node_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:Storage/getDatastores:getDatastores', __args__, opts=opts, typ=GetDatastoresResult)
+    return __ret__.apply(lambda __response__: GetDatastoresResult(
+        actives=pulumi.get(__response__, 'actives'),
+        content_types=pulumi.get(__response__, 'content_types'),
+        datastore_ids=pulumi.get(__response__, 'datastore_ids'),
+        enableds=pulumi.get(__response__, 'enableds'),
+        id=pulumi.get(__response__, 'id'),
+        node_name=pulumi.get(__response__, 'node_name'),
+        shareds=pulumi.get(__response__, 'shareds'),
+        space_availables=pulumi.get(__response__, 'space_availables'),
+        space_totals=pulumi.get(__response__, 'space_totals'),
+        space_useds=pulumi.get(__response__, 'space_useds'),
+        types=pulumi.get(__response__, 'types')))

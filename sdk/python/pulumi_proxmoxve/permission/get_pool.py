@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -105,9 +110,6 @@ def get_pool(pool_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         members=pulumi.get(__ret__, 'members'),
         pool_id=pulumi.get(__ret__, 'pool_id'))
-
-
-@_utilities.lift_output_func(get_pool)
 def get_pool_output(pool_id: Optional[pulumi.Input[str]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPoolResult]:
     """
@@ -125,4 +127,12 @@ def get_pool_output(pool_id: Optional[pulumi.Input[str]] = None,
 
     :param str pool_id: The pool identifier.
     """
-    ...
+    __args__ = dict()
+    __args__['poolId'] = pool_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:Permission/getPool:getPool', __args__, opts=opts, typ=GetPoolResult)
+    return __ret__.apply(lambda __response__: GetPoolResult(
+        comment=pulumi.get(__response__, 'comment'),
+        id=pulumi.get(__response__, 'id'),
+        members=pulumi.get(__response__, 'members'),
+        pool_id=pulumi.get(__response__, 'pool_id')))

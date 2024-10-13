@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -147,9 +152,6 @@ def get_plugin(plugin: Optional[str] = None,
         plugin=pulumi.get(__ret__, 'plugin'),
         type=pulumi.get(__ret__, 'type'),
         validation_delay=pulumi.get(__ret__, 'validation_delay'))
-
-
-@_utilities.lift_output_func(get_plugin)
 def get_plugin_output(plugin: Optional[pulumi.Input[str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPluginResult]:
     """
@@ -168,4 +170,15 @@ def get_plugin_output(plugin: Optional[pulumi.Input[str]] = None,
 
     :param str plugin: ACME Plugin ID name.
     """
-    ...
+    __args__ = dict()
+    __args__['plugin'] = plugin
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:Acme/getPlugin:getPlugin', __args__, opts=opts, typ=GetPluginResult)
+    return __ret__.apply(lambda __response__: GetPluginResult(
+        api=pulumi.get(__response__, 'api'),
+        data=pulumi.get(__response__, 'data'),
+        digest=pulumi.get(__response__, 'digest'),
+        id=pulumi.get(__response__, 'id'),
+        plugin=pulumi.get(__response__, 'plugin'),
+        type=pulumi.get(__response__, 'type'),
+        validation_delay=pulumi.get(__response__, 'validation_delay')))

@@ -4,25 +4,57 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
     'HostsEntryArgs',
+    'HostsEntryArgsDict',
     'ProviderSshArgs',
+    'ProviderSshArgsDict',
     'ProviderSshNodeArgs',
+    'ProviderSshNodeArgsDict',
     'Vm2CdromArgs',
+    'Vm2CdromArgsDict',
     'Vm2CloneArgs',
+    'Vm2CloneArgsDict',
     'Vm2CpuArgs',
+    'Vm2CpuArgsDict',
     'Vm2TimeoutsArgs',
+    'Vm2TimeoutsArgsDict',
     'Vm2VgaArgs',
+    'Vm2VgaArgsDict',
     'GetVm2CloneArgs',
+    'GetVm2CloneArgsDict',
     'GetVm2CpuArgs',
+    'GetVm2CpuArgsDict',
     'GetVm2TimeoutsArgs',
+    'GetVm2TimeoutsArgsDict',
     'GetVm2VgaArgs',
+    'GetVm2VgaArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class HostsEntryArgsDict(TypedDict):
+        address: pulumi.Input[str]
+        """
+        The IP address.
+        """
+        hostnames: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The hostnames.
+        """
+elif False:
+    HostsEntryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HostsEntryArgs:
@@ -60,6 +92,47 @@ class HostsEntryArgs:
     def hostnames(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "hostnames", value)
 
+
+if not MYPY:
+    class ProviderSshArgsDict(TypedDict):
+        agent: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to use the SSH agent for authentication. Takes precedence over the `private_key` and `password` fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or `false` if not set.
+        """
+        agent_socket: NotRequired[pulumi.Input[str]]
+        """
+        The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
+        """
+        nodes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ProviderSshNodeArgsDict']]]]
+        """
+        Overrides for SSH connection configuration for a Proxmox VE node.
+        """
+        password: NotRequired[pulumi.Input[str]]
+        """
+        The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
+        """
+        private_key: NotRequired[pulumi.Input[str]]
+        """
+        The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
+        """
+        socks5_password: NotRequired[pulumi.Input[str]]
+        """
+        The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
+        """
+        socks5_server: NotRequired[pulumi.Input[str]]
+        """
+        The address:port of the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_SERVER` environment variable.
+        """
+        socks5_username: NotRequired[pulumi.Input[str]]
+        """
+        The username for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_USERNAME` environment variable.
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        The username used for the SSH connection. Defaults to the value of the `username` field of the `provider` block.
+        """
+elif False:
+    ProviderSshArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ProviderSshArgs:
@@ -212,6 +285,23 @@ class ProviderSshArgs:
         pulumi.set(self, "username", value)
 
 
+if not MYPY:
+    class ProviderSshNodeArgsDict(TypedDict):
+        address: pulumi.Input[str]
+        """
+        The address of the Proxmox VE node.
+        """
+        name: pulumi.Input[str]
+        """
+        The name of the Proxmox VE node.
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        The port of the Proxmox VE node.
+        """
+elif False:
+    ProviderSshNodeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ProviderSshNodeArgs:
     def __init__(__self__, *,
@@ -265,6 +355,15 @@ class ProviderSshNodeArgs:
         pulumi.set(self, "port", value)
 
 
+if not MYPY:
+    class Vm2CdromArgsDict(TypedDict):
+        file_id: NotRequired[pulumi.Input[str]]
+        """
+        The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+        """
+elif False:
+    Vm2CdromArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class Vm2CdromArgs:
     def __init__(__self__, *,
@@ -287,6 +386,19 @@ class Vm2CdromArgs:
     def file_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "file_id", value)
 
+
+if not MYPY:
+    class Vm2CloneArgsDict(TypedDict):
+        id: pulumi.Input[int]
+        """
+        The ID of the VM to clone.
+        """
+        retries: NotRequired[pulumi.Input[int]]
+        """
+        The number of retries to perform when cloning the VM (default: 3).
+        """
+elif False:
+    Vm2CloneArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class Vm2CloneArgs:
@@ -325,6 +437,51 @@ class Vm2CloneArgs:
     def retries(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "retries", value)
 
+
+if not MYPY:
+    class Vm2CpuArgsDict(TypedDict):
+        affinity: NotRequired[pulumi.Input[str]]
+        """
+        The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+        """
+        architecture: NotRequired[pulumi.Input[str]]
+        """
+        The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `affinity` is only allowed for `root@pam` authenticated user.
+        """
+        cores: NotRequired[pulumi.Input[int]]
+        """
+        The number of CPU cores per socket (defaults to `1`).
+        """
+        flags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+        """
+        hotplugged: NotRequired[pulumi.Input[int]]
+        """
+        The number of hotplugged vCPUs (defaults to `0`).
+        """
+        limit: NotRequired[pulumi.Input[int]]
+        """
+        Limit of CPU usage (defaults to `0` which means no limit).
+        """
+        numa: NotRequired[pulumi.Input[bool]]
+        """
+        Enable NUMA (defaults to `false`).
+        """
+        sockets: NotRequired[pulumi.Input[int]]
+        """
+        The number of CPU sockets (defaults to `1`).
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+        """
+        units: NotRequired[pulumi.Input[int]]
+        """
+        CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+        """
+elif False:
+    Vm2CpuArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class Vm2CpuArgs:
@@ -493,6 +650,27 @@ class Vm2CpuArgs:
         pulumi.set(self, "units", value)
 
 
+if not MYPY:
+    class Vm2TimeoutsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        delete: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        read: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        update: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    Vm2TimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class Vm2TimeoutsArgs:
     def __init__(__self__, *,
@@ -564,6 +742,23 @@ class Vm2TimeoutsArgs:
         pulumi.set(self, "update", value)
 
 
+if not MYPY:
+    class Vm2VgaArgsDict(TypedDict):
+        clipboard: NotRequired[pulumi.Input[str]]
+        """
+        Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+        """
+        memory: NotRequired[pulumi.Input[int]]
+        """
+        The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The VGA type (defaults to `std`).
+        """
+elif False:
+    Vm2VgaArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class Vm2VgaArgs:
     def __init__(__self__, *,
@@ -619,6 +814,19 @@ class Vm2VgaArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class GetVm2CloneArgsDict(TypedDict):
+        id: int
+        """
+        The ID of the VM to clone.
+        """
+        retries: int
+        """
+        The number of retries to perform when cloning the VM (default: 3).
+        """
+elif False:
+    GetVm2CloneArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetVm2CloneArgs:
     def __init__(__self__, *,
@@ -655,6 +863,51 @@ class GetVm2CloneArgs:
     def retries(self, value: int):
         pulumi.set(self, "retries", value)
 
+
+if not MYPY:
+    class GetVm2CpuArgsDict(TypedDict):
+        affinity: str
+        """
+        List of host cores used to execute guest processes, for example: '0,5,8-11'
+        """
+        architecture: str
+        """
+        The CPU architecture.
+        """
+        cores: int
+        """
+        The number of CPU cores per socket.
+        """
+        flags: Sequence[str]
+        """
+        Set of additional CPU flags.
+        """
+        hotplugged: int
+        """
+        The number of hotplugged vCPUs.
+        """
+        limit: int
+        """
+        Limit of CPU usage.
+        """
+        numa: bool
+        """
+        Enable NUMA.
+        """
+        sockets: int
+        """
+        The number of CPU sockets.
+        """
+        type: str
+        """
+        Emulated CPU type.
+        """
+        units: int
+        """
+        CPU weight for a VM
+        """
+elif False:
+    GetVm2CpuArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetVm2CpuArgs:
@@ -813,6 +1066,15 @@ class GetVm2CpuArgs:
         pulumi.set(self, "units", value)
 
 
+if not MYPY:
+    class GetVm2TimeoutsArgsDict(TypedDict):
+        read: NotRequired[str]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+elif False:
+    GetVm2TimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetVm2TimeoutsArgs:
     def __init__(__self__, *,
@@ -835,6 +1097,23 @@ class GetVm2TimeoutsArgs:
     def read(self, value: Optional[str]):
         pulumi.set(self, "read", value)
 
+
+if not MYPY:
+    class GetVm2VgaArgsDict(TypedDict):
+        clipboard: str
+        """
+        Enable a specific clipboard.
+        """
+        memory: int
+        """
+        The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+        """
+        type: str
+        """
+        The VGA type.
+        """
+elif False:
+    GetVm2VgaArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetVm2VgaArgs:

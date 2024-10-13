@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -107,9 +112,6 @@ def get_version(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVers
         release=pulumi.get(__ret__, 'release'),
         repository_id=pulumi.get(__ret__, 'repository_id'),
         version=pulumi.get(__ret__, 'version'))
-
-
-@_utilities.lift_output_func(get_version)
 def get_version_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVersionResult]:
     """
     Retrieves API version details.
@@ -128,4 +130,11 @@ def get_version_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Ou
     })
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:Network/getVersion:getVersion', __args__, opts=opts, typ=GetVersionResult)
+    return __ret__.apply(lambda __response__: GetVersionResult(
+        id=pulumi.get(__response__, 'id'),
+        release=pulumi.get(__response__, 'release'),
+        repository_id=pulumi.get(__response__, 'repository_id'),
+        version=pulumi.get(__response__, 'version')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -161,9 +166,6 @@ def get_ha_resource(resource_id: Optional[str] = None,
         resource_id=pulumi.get(__ret__, 'resource_id'),
         state=pulumi.get(__ret__, 'state'),
         type=pulumi.get(__ret__, 'type'))
-
-
-@_utilities.lift_output_func(get_ha_resource)
 def get_ha_resource_output(resource_id: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHAResourceResult]:
     """
@@ -183,4 +185,16 @@ def get_ha_resource_output(resource_id: Optional[pulumi.Input[str]] = None,
 
     :param str resource_id: The identifier of the Proxmox HA resource to read.
     """
-    ...
+    __args__ = dict()
+    __args__['resourceId'] = resource_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:HA/getHAResource:getHAResource', __args__, opts=opts, typ=GetHAResourceResult)
+    return __ret__.apply(lambda __response__: GetHAResourceResult(
+        comment=pulumi.get(__response__, 'comment'),
+        group=pulumi.get(__response__, 'group'),
+        id=pulumi.get(__response__, 'id'),
+        max_relocate=pulumi.get(__response__, 'max_relocate'),
+        max_restart=pulumi.get(__response__, 'max_restart'),
+        resource_id=pulumi.get(__response__, 'resource_id'),
+        state=pulumi.get(__response__, 'state'),
+        type=pulumi.get(__response__, 'type')))

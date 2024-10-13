@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := proxmoxve.GetNode(ctx, nil, nil)
+//			_, err := proxmoxve.GetNode(ctx, &proxmoxve.GetNodeArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

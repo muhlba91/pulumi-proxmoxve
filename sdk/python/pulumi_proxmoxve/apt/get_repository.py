@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -207,9 +212,6 @@ def get_repository(file_path: Optional[str] = None,
         package_types=pulumi.get(__ret__, 'package_types'),
         suites=pulumi.get(__ret__, 'suites'),
         uris=pulumi.get(__ret__, 'uris'))
-
-
-@_utilities.lift_output_func(get_repository)
 def get_repository_output(file_path: Optional[pulumi.Input[str]] = None,
                           index: Optional[pulumi.Input[int]] = None,
                           node: Optional[pulumi.Input[str]] = None,
@@ -234,4 +236,21 @@ def get_repository_output(file_path: Optional[pulumi.Input[str]] = None,
     :param int index: The index within the defining source list file.
     :param str node: The name of the target Proxmox VE node.
     """
-    ...
+    __args__ = dict()
+    __args__['filePath'] = file_path
+    __args__['index'] = index
+    __args__['node'] = node
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:Apt/getRepository:getRepository', __args__, opts=opts, typ=GetRepositoryResult)
+    return __ret__.apply(lambda __response__: GetRepositoryResult(
+        comment=pulumi.get(__response__, 'comment'),
+        components=pulumi.get(__response__, 'components'),
+        enabled=pulumi.get(__response__, 'enabled'),
+        file_path=pulumi.get(__response__, 'file_path'),
+        file_type=pulumi.get(__response__, 'file_type'),
+        id=pulumi.get(__response__, 'id'),
+        index=pulumi.get(__response__, 'index'),
+        node=pulumi.get(__response__, 'node'),
+        package_types=pulumi.get(__response__, 'package_types'),
+        suites=pulumi.get(__response__, 'suites'),
+        uris=pulumi.get(__response__, 'uris')))

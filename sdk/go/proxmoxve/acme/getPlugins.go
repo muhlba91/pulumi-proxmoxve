@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := Acme.GetPlugins(ctx, nil, nil)
+//			example, err := Acme.GetPlugins(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -180,9 +185,6 @@ def get_users(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUsersR
         keys=pulumi.get(__ret__, 'keys'),
         last_names=pulumi.get(__ret__, 'last_names'),
         user_ids=pulumi.get(__ret__, 'user_ids'))
-
-
-@_utilities.lift_output_func(get_users)
 def get_users_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUsersResult]:
     """
     Retrieves information about all the available users.
@@ -196,4 +198,17 @@ def get_users_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Outp
     available_users = proxmoxve.Permission.get_users()
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:Permission/getUsers:getUsers', __args__, opts=opts, typ=GetUsersResult)
+    return __ret__.apply(lambda __response__: GetUsersResult(
+        comments=pulumi.get(__response__, 'comments'),
+        emails=pulumi.get(__response__, 'emails'),
+        enableds=pulumi.get(__response__, 'enableds'),
+        expiration_dates=pulumi.get(__response__, 'expiration_dates'),
+        first_names=pulumi.get(__response__, 'first_names'),
+        groups=pulumi.get(__response__, 'groups'),
+        id=pulumi.get(__response__, 'id'),
+        keys=pulumi.get(__response__, 'keys'),
+        last_names=pulumi.get(__response__, 'last_names'),
+        user_ids=pulumi.get(__response__, 'user_ids')))

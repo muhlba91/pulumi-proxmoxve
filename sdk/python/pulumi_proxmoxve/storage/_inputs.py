@@ -4,15 +4,57 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'FileSourceFileArgs',
+    'FileSourceFileArgsDict',
     'FileSourceRawArgs',
+    'FileSourceRawArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class FileSourceFileArgsDict(TypedDict):
+        path: pulumi.Input[str]
+        """
+        A path to a local file or a URL.
+        """
+        changed: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the source file has changed since the last run
+        """
+        checksum: NotRequired[pulumi.Input[str]]
+        """
+        The SHA256 checksum of the source file.
+        """
+        file_name: NotRequired[pulumi.Input[str]]
+        """
+        The file name to use instead of the source file
+        name. Useful when the source file does not have a valid file extension,
+        for example when the source file is a URL referencing a `.qcow2` image.
+        """
+        insecure: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to skip the TLS verification step for
+        HTTPS sources (defaults to `false`).
+        """
+        min_tls: NotRequired[pulumi.Input[str]]
+        """
+        The minimum required TLS version for HTTPS
+        sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
+        """
+elif False:
+    FileSourceFileArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FileSourceFileArgs:
@@ -123,6 +165,23 @@ class FileSourceFileArgs:
     def min_tls(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "min_tls", value)
 
+
+if not MYPY:
+    class FileSourceRawArgsDict(TypedDict):
+        data: pulumi.Input[str]
+        """
+        The raw data.
+        """
+        file_name: pulumi.Input[str]
+        """
+        The file name.
+        """
+        resize: NotRequired[pulumi.Input[int]]
+        """
+        The number of bytes to resize the file to.
+        """
+elif False:
+    FileSourceRawArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FileSourceRawArgs:

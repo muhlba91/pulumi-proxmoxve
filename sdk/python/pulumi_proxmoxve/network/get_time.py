@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -117,9 +122,6 @@ def get_time(node_name: Optional[str] = None,
         node_name=pulumi.get(__ret__, 'node_name'),
         time_zone=pulumi.get(__ret__, 'time_zone'),
         utc_time=pulumi.get(__ret__, 'utc_time'))
-
-
-@_utilities.lift_output_func(get_time)
 def get_time_output(node_name: Optional[pulumi.Input[str]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTimeResult]:
     """
@@ -137,4 +139,13 @@ def get_time_output(node_name: Optional[pulumi.Input[str]] = None,
 
     :param str node_name: A node name.
     """
-    ...
+    __args__ = dict()
+    __args__['nodeName'] = node_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:Network/getTime:getTime', __args__, opts=opts, typ=GetTimeResult)
+    return __ret__.apply(lambda __response__: GetTimeResult(
+        id=pulumi.get(__response__, 'id'),
+        local_time=pulumi.get(__response__, 'local_time'),
+        node_name=pulumi.get(__response__, 'node_name'),
+        time_zone=pulumi.get(__response__, 'time_zone'),
+        utc_time=pulumi.get(__response__, 'utc_time')))

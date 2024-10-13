@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -135,9 +140,6 @@ def get_ha_group(group: Optional[str] = None,
         no_failback=pulumi.get(__ret__, 'no_failback'),
         nodes=pulumi.get(__ret__, 'nodes'),
         restricted=pulumi.get(__ret__, 'restricted'))
-
-
-@_utilities.lift_output_func(get_ha_group)
 def get_ha_group_output(group: Optional[pulumi.Input[str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHAGroupResult]:
     """
@@ -157,4 +159,14 @@ def get_ha_group_output(group: Optional[pulumi.Input[str]] = None,
 
     :param str group: The identifier of the High Availability group to read.
     """
-    ...
+    __args__ = dict()
+    __args__['group'] = group
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:HA/getHAGroup:getHAGroup', __args__, opts=opts, typ=GetHAGroupResult)
+    return __ret__.apply(lambda __response__: GetHAGroupResult(
+        comment=pulumi.get(__response__, 'comment'),
+        group=pulumi.get(__response__, 'group'),
+        id=pulumi.get(__response__, 'id'),
+        no_failback=pulumi.get(__response__, 'no_failback'),
+        nodes=pulumi.get(__response__, 'nodes'),
+        restricted=pulumi.get(__response__, 'restricted')))

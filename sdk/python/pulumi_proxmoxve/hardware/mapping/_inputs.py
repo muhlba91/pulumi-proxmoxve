@@ -4,15 +4,53 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from ... import _utilities
 
 __all__ = [
     'PciMapArgs',
+    'PciMapArgsDict',
     'UsbMapArgs',
+    'UsbMapArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class PciMapArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of the map.
+        """
+        node: pulumi.Input[str]
+        """
+        The node name of the map.
+        """
+        path: pulumi.Input[str]
+        """
+        The path of the map.
+        """
+        comment: NotRequired[pulumi.Input[str]]
+        """
+        The comment of the mapped PCI device.
+        """
+        iommu_group: NotRequired[pulumi.Input[int]]
+        """
+        The IOMMU group of the map. Not mandatory for the Proxmox VE API call, but causes a PCI hardware mapping to be incomplete when not set
+        """
+        subsystem_id: NotRequired[pulumi.Input[str]]
+        """
+        The subsystem ID group of the map. Not mandatory for the Proxmox VE API call, but causes a PCI hardware mapping to be incomplete when not set
+        """
+elif False:
+    PciMapArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PciMapArgs:
@@ -113,6 +151,27 @@ class PciMapArgs:
     def subsystem_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subsystem_id", value)
 
+
+if not MYPY:
+    class UsbMapArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of the map.
+        """
+        node: pulumi.Input[str]
+        """
+        The node name of the map.
+        """
+        comment: NotRequired[pulumi.Input[str]]
+        """
+        The comment of the mapped USB device.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        The path of the map. For hardware mappings of type USB the path is optional and indicates that the device is mapped through the device ID instead of ports.
+        """
+elif False:
+    UsbMapArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class UsbMapArgs:

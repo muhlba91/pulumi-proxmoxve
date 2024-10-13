@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -196,9 +201,6 @@ def get_user(user_id: Optional[str] = None,
         keys=pulumi.get(__ret__, 'keys'),
         last_name=pulumi.get(__ret__, 'last_name'),
         user_id=pulumi.get(__ret__, 'user_id'))
-
-
-@_utilities.lift_output_func(get_user)
 def get_user_output(user_id: Optional[pulumi.Input[str]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
     """
@@ -216,4 +218,19 @@ def get_user_output(user_id: Optional[pulumi.Input[str]] = None,
 
     :param str user_id: The user identifier.
     """
-    ...
+    __args__ = dict()
+    __args__['userId'] = user_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:Permission/getUser:getUser', __args__, opts=opts, typ=GetUserResult)
+    return __ret__.apply(lambda __response__: GetUserResult(
+        acls=pulumi.get(__response__, 'acls'),
+        comment=pulumi.get(__response__, 'comment'),
+        email=pulumi.get(__response__, 'email'),
+        enabled=pulumi.get(__response__, 'enabled'),
+        expiration_date=pulumi.get(__response__, 'expiration_date'),
+        first_name=pulumi.get(__response__, 'first_name'),
+        groups=pulumi.get(__response__, 'groups'),
+        id=pulumi.get(__response__, 'id'),
+        keys=pulumi.get(__response__, 'keys'),
+        last_name=pulumi.get(__response__, 'last_name'),
+        user_id=pulumi.get(__response__, 'user_id')))

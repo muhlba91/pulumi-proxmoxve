@@ -4,45 +4,93 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'VirtualMachine2CdromArgs',
+    'VirtualMachine2CdromArgsDict',
     'VirtualMachine2CloneArgs',
+    'VirtualMachine2CloneArgsDict',
     'VirtualMachine2CpuArgs',
+    'VirtualMachine2CpuArgsDict',
     'VirtualMachine2TimeoutsArgs',
+    'VirtualMachine2TimeoutsArgsDict',
     'VirtualMachine2VgaArgs',
+    'VirtualMachine2VgaArgsDict',
     'VirtualMachineAgentArgs',
+    'VirtualMachineAgentArgsDict',
     'VirtualMachineAudioDeviceArgs',
+    'VirtualMachineAudioDeviceArgsDict',
     'VirtualMachineCdromArgs',
+    'VirtualMachineCdromArgsDict',
     'VirtualMachineCloneArgs',
+    'VirtualMachineCloneArgsDict',
     'VirtualMachineCpuArgs',
+    'VirtualMachineCpuArgsDict',
     'VirtualMachineDiskArgs',
+    'VirtualMachineDiskArgsDict',
     'VirtualMachineDiskSpeedArgs',
+    'VirtualMachineDiskSpeedArgsDict',
     'VirtualMachineEfiDiskArgs',
+    'VirtualMachineEfiDiskArgsDict',
     'VirtualMachineHostpciArgs',
+    'VirtualMachineHostpciArgsDict',
     'VirtualMachineInitializationArgs',
+    'VirtualMachineInitializationArgsDict',
     'VirtualMachineInitializationDnsArgs',
+    'VirtualMachineInitializationDnsArgsDict',
     'VirtualMachineInitializationIpConfigArgs',
+    'VirtualMachineInitializationIpConfigArgsDict',
     'VirtualMachineInitializationIpConfigIpv4Args',
+    'VirtualMachineInitializationIpConfigIpv4ArgsDict',
     'VirtualMachineInitializationIpConfigIpv6Args',
+    'VirtualMachineInitializationIpConfigIpv6ArgsDict',
     'VirtualMachineInitializationUserAccountArgs',
+    'VirtualMachineInitializationUserAccountArgsDict',
     'VirtualMachineMemoryArgs',
+    'VirtualMachineMemoryArgsDict',
     'VirtualMachineNetworkDeviceArgs',
+    'VirtualMachineNetworkDeviceArgsDict',
     'VirtualMachineNumaArgs',
+    'VirtualMachineNumaArgsDict',
     'VirtualMachineOperatingSystemArgs',
+    'VirtualMachineOperatingSystemArgsDict',
     'VirtualMachineSerialDeviceArgs',
+    'VirtualMachineSerialDeviceArgsDict',
     'VirtualMachineSmbiosArgs',
+    'VirtualMachineSmbiosArgsDict',
     'VirtualMachineStartupArgs',
+    'VirtualMachineStartupArgsDict',
     'VirtualMachineTpmStateArgs',
+    'VirtualMachineTpmStateArgsDict',
     'VirtualMachineUsbArgs',
+    'VirtualMachineUsbArgsDict',
     'VirtualMachineVgaArgs',
+    'VirtualMachineVgaArgsDict',
     'VirtualMachineWatchdogArgs',
+    'VirtualMachineWatchdogArgsDict',
     'GetVirtualMachinesFilterArgs',
+    'GetVirtualMachinesFilterArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class VirtualMachine2CdromArgsDict(TypedDict):
+        file_id: NotRequired[pulumi.Input[str]]
+        """
+        The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+        """
+elif False:
+    VirtualMachine2CdromArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VirtualMachine2CdromArgs:
@@ -66,6 +114,19 @@ class VirtualMachine2CdromArgs:
     def file_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "file_id", value)
 
+
+if not MYPY:
+    class VirtualMachine2CloneArgsDict(TypedDict):
+        id: pulumi.Input[int]
+        """
+        The ID of the VM to clone.
+        """
+        retries: NotRequired[pulumi.Input[int]]
+        """
+        The number of retries to perform when cloning the VM (default: 3).
+        """
+elif False:
+    VirtualMachine2CloneArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VirtualMachine2CloneArgs:
@@ -104,6 +165,51 @@ class VirtualMachine2CloneArgs:
     def retries(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "retries", value)
 
+
+if not MYPY:
+    class VirtualMachine2CpuArgsDict(TypedDict):
+        affinity: NotRequired[pulumi.Input[str]]
+        """
+        The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+        """
+        architecture: NotRequired[pulumi.Input[str]]
+        """
+        The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `affinity` is only allowed for `root@pam` authenticated user.
+        """
+        cores: NotRequired[pulumi.Input[int]]
+        """
+        The number of CPU cores per socket (defaults to `1`).
+        """
+        flags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+        """
+        hotplugged: NotRequired[pulumi.Input[int]]
+        """
+        The number of hotplugged vCPUs (defaults to `0`).
+        """
+        limit: NotRequired[pulumi.Input[int]]
+        """
+        Limit of CPU usage (defaults to `0` which means no limit).
+        """
+        numa: NotRequired[pulumi.Input[bool]]
+        """
+        Enable NUMA (defaults to `false`).
+        """
+        sockets: NotRequired[pulumi.Input[int]]
+        """
+        The number of CPU sockets (defaults to `1`).
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+        """
+        units: NotRequired[pulumi.Input[int]]
+        """
+        CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+        """
+elif False:
+    VirtualMachine2CpuArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VirtualMachine2CpuArgs:
@@ -272,6 +378,27 @@ class VirtualMachine2CpuArgs:
         pulumi.set(self, "units", value)
 
 
+if not MYPY:
+    class VirtualMachine2TimeoutsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        delete: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        read: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        update: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    VirtualMachine2TimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VirtualMachine2TimeoutsArgs:
     def __init__(__self__, *,
@@ -343,6 +470,23 @@ class VirtualMachine2TimeoutsArgs:
         pulumi.set(self, "update", value)
 
 
+if not MYPY:
+    class VirtualMachine2VgaArgsDict(TypedDict):
+        clipboard: NotRequired[pulumi.Input[str]]
+        """
+        Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+        """
+        memory: NotRequired[pulumi.Input[int]]
+        """
+        The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The VGA type (defaults to `std`).
+        """
+elif False:
+    VirtualMachine2VgaArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VirtualMachine2VgaArgs:
     def __init__(__self__, *,
@@ -397,6 +541,30 @@ class VirtualMachine2VgaArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class VirtualMachineAgentArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable the QEMU agent (defaults
+        to `false`).
+        """
+        timeout: NotRequired[pulumi.Input[str]]
+        """
+        The maximum amount of time to wait for data from
+        the QEMU agent to become available ( defaults to `15m`).
+        """
+        trim: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable the FSTRIM feature in the QEMU agent
+        (defaults to `false`).
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The QEMU agent interface type (defaults to `virtio`).
+        """
+elif False:
+    VirtualMachineAgentArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VirtualMachineAgentArgs:
@@ -475,6 +643,27 @@ class VirtualMachineAgentArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class VirtualMachineAudioDeviceArgsDict(TypedDict):
+        device: NotRequired[pulumi.Input[str]]
+        """
+        The device (defaults to `intel-hda`).
+        - `AC97` - Intel 82801AA AC97 Audio.
+        - `ich9-intel-hda` - Intel HD Audio Controller (ich9).
+        - `intel-hda` - Intel HD Audio.
+        """
+        driver: NotRequired[pulumi.Input[str]]
+        """
+        The driver (defaults to `spice`).
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable the audio device (defaults
+        to `true`).
+        """
+elif False:
+    VirtualMachineAudioDeviceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VirtualMachineAudioDeviceArgs:
     def __init__(__self__, *,
@@ -538,6 +727,27 @@ class VirtualMachineAudioDeviceArgs:
         pulumi.set(self, "enabled", value)
 
 
+if not MYPY:
+    class VirtualMachineCdromArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable the CDROM drive (defaults
+        to `false`).
+        """
+        file_id: NotRequired[pulumi.Input[str]]
+        """
+        A file ID for an ISO file (defaults to `cdrom` as
+        in the physical drive). Use `none` to leave the CDROM drive empty.
+        """
+        interface: NotRequired[pulumi.Input[str]]
+        """
+        A hardware interface to connect CDROM drive to,
+        must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
+        supports `ide0` and `ide2`.
+        """
+elif False:
+    VirtualMachineCdromArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VirtualMachineCdromArgs:
     def __init__(__self__, *,
@@ -600,6 +810,34 @@ class VirtualMachineCdromArgs:
     def interface(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "interface", value)
 
+
+if not MYPY:
+    class VirtualMachineCloneArgsDict(TypedDict):
+        vm_id: pulumi.Input[int]
+        """
+        The identifier for the source VM.
+        """
+        datastore_id: NotRequired[pulumi.Input[str]]
+        """
+        The identifier for the target datastore.
+        """
+        full: NotRequired[pulumi.Input[bool]]
+        """
+        Full or linked clone (defaults to `true`).
+        """
+        node_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the source node (leave blank, if
+        equal to the `node_name` argument).
+        """
+        retries: NotRequired[pulumi.Input[int]]
+        """
+        Number of retries in Proxmox for clone vm.
+        Sometimes Proxmox errors with timeout when creating multiple clones at
+        once.
+        """
+elif False:
+    VirtualMachineCloneArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VirtualMachineCloneArgs:
@@ -692,6 +930,78 @@ class VirtualMachineCloneArgs:
     def retries(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "retries", value)
 
+
+if not MYPY:
+    class VirtualMachineCpuArgsDict(TypedDict):
+        affinity: NotRequired[pulumi.Input[str]]
+        """
+        The CPU cores that are used to run the VM’s vCPU. The
+        value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.
+        For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four
+        CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+        """
+        architecture: NotRequired[pulumi.Input[str]]
+        """
+        The CPU architecture (defaults to `x86_64`).
+        """
+        cores: NotRequired[pulumi.Input[int]]
+        """
+        The number of CPU cores (defaults to `1`).
+        """
+        flags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The CPU flags.
+        - `+aes`/`-aes` - Activate AES instruction set for HW acceleration.
+        - `+amd-no-ssb`/`-amd-no-ssb` - Notifies guest OS that host is not
+        vulnerable for Spectre on AMD CPUs.
+        - `+amd-ssbd`/`-amd-ssbd` - Improves Spectre mitigation performance with
+        AMD CPUs, best used with "virt-ssbd".
+        - `+hv-evmcs`/`-hv-evmcs` - Improve performance for nested
+        virtualization (only supported on Intel CPUs).
+        - `+hv-tlbflush`/`-hv-tlbflush` - Improve performance in overcommitted
+        Windows guests (may lead to guest BSOD on old CPUs).
+        - `+ibpb`/`-ibpb` - Allows improved Spectre mitigation on AMD CPUs.
+        - `+md-clear`/`-md-clear` - Required to let the guest OS know if MDS is
+        mitigated correctly.
+        - `+pcid`/`-pcid` - Meltdown fix cost reduction on Westmere, Sandy- and
+        Ivy Bridge Intel CPUs.
+        - `+pdpe1gb`/`-pdpe1gb` - Allows guest OS to use 1 GB size pages, if
+        host HW supports it.
+        - `+spec-ctrl`/`-spec-ctrl` - Allows improved Spectre mitigation with
+        Intel CPUs.
+        - `+ssbd`/`-ssbd` - Protection for "Speculative Store Bypass" for Intel
+        models.
+        - `+virt-ssbd`/`-virt-ssbd` - Basis for "Speculative Store Bypass"
+        protection for AMD models.
+        """
+        hotplugged: NotRequired[pulumi.Input[int]]
+        """
+        The number of hotplugged vCPUs (defaults
+        to `0`).
+        """
+        limit: NotRequired[pulumi.Input[int]]
+        """
+        Limit of CPU usage, `0...128`. (defaults to `0` -- no limit).
+        """
+        numa: NotRequired[pulumi.Input[bool]]
+        """
+        Enable/disable NUMA. (default to `false`)
+        """
+        sockets: NotRequired[pulumi.Input[int]]
+        """
+        The number of CPU sockets (defaults to `1`).
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The emulated CPU type, it's recommended to
+        use `x86-64-v2-AES` (defaults to `qemu64`).
+        """
+        units: NotRequired[pulumi.Input[int]]
+        """
+        The CPU units (defaults to `1024`).
+        """
+elif False:
+    VirtualMachineCpuArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VirtualMachineCpuArgs:
@@ -913,6 +1223,85 @@ class VirtualMachineCpuArgs:
     def units(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "units", value)
 
+
+if not MYPY:
+    class VirtualMachineDiskArgsDict(TypedDict):
+        interface: pulumi.Input[str]
+        """
+        The disk interface for Proxmox, currently `scsi`,
+        `sata` and `virtio` interfaces are supported. Append the disk index at
+        the end, for example, `virtio0` for the first virtio disk, `virtio1` for
+        the second, etc.
+        """
+        aio: NotRequired[pulumi.Input[str]]
+        """
+        The disk AIO mode (defaults to `io_uring`).
+        """
+        backup: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the drive should be included when making backups (defaults to `true`).
+        """
+        cache: NotRequired[pulumi.Input[str]]
+        """
+        The cache type (defaults to `none`).
+        """
+        datastore_id: NotRequired[pulumi.Input[str]]
+        """
+        The identifier for the datastore to create
+        the disk in (defaults to `local-lvm`).
+        """
+        discard: NotRequired[pulumi.Input[str]]
+        """
+        Whether to pass discard/trim requests to the
+        underlying storage. Supported values are `on`/`ignore` (defaults
+        to `ignore`).
+        """
+        file_format: NotRequired[pulumi.Input[str]]
+        """
+        The file format (defaults to `qcow2`).
+        """
+        file_id: NotRequired[pulumi.Input[str]]
+        """
+        The file ID for a disk image. The ID format is
+        `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
+        `Download.File` resource.
+        """
+        iothread: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to use iothreads for this disk (defaults
+        to `false`).
+        """
+        path_in_datastore: NotRequired[pulumi.Input[str]]
+        """
+        The in-datastore path to the disk image.
+        ***Experimental.***Use to attach another VM's disks,
+        or (as root only) host's filesystem paths (`datastore_id` empty string).
+        See "*Example: Attached disks*".
+        """
+        replicate: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the drive should be considered for replication jobs (defaults to `true`).
+        """
+        serial: NotRequired[pulumi.Input[str]]
+        """
+        The serial number of the disk, up to 20 bytes long.
+        """
+        size: NotRequired[pulumi.Input[int]]
+        """
+        The disk size in gigabytes (defaults to `8`).
+        """
+        speed: NotRequired[pulumi.Input['VirtualMachineDiskSpeedArgsDict']]
+        """
+        The speed limits.
+        """
+        ssd: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to use an SSD emulation option for this disk (
+        defaults to `false`). Note that SSD emulation is not supported on VirtIO
+        Block drives.
+        """
+elif False:
+    VirtualMachineDiskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VirtualMachineDiskArgs:
@@ -1188,6 +1577,45 @@ class VirtualMachineDiskArgs:
         pulumi.set(self, "ssd", value)
 
 
+if not MYPY:
+    class VirtualMachineDiskSpeedArgsDict(TypedDict):
+        iops_read: NotRequired[pulumi.Input[int]]
+        """
+        The maximum read I/O in operations per second.
+        """
+        iops_read_burstable: NotRequired[pulumi.Input[int]]
+        """
+        The maximum unthrottled read I/O pool in operations per second.
+        """
+        iops_write: NotRequired[pulumi.Input[int]]
+        """
+        The maximum write I/O in operations per second.
+        """
+        iops_write_burstable: NotRequired[pulumi.Input[int]]
+        """
+        The maximum unthrottled write I/O pool in operations per second.
+        """
+        read: NotRequired[pulumi.Input[int]]
+        """
+        The maximum read speed in megabytes per second.
+        """
+        read_burstable: NotRequired[pulumi.Input[int]]
+        """
+        The maximum burstable read speed in
+        megabytes per second.
+        """
+        write: NotRequired[pulumi.Input[int]]
+        """
+        The maximum write speed in megabytes per second.
+        """
+        write_burstable: NotRequired[pulumi.Input[int]]
+        """
+        The maximum burstable write speed in
+        megabytes per second.
+        """
+elif False:
+    VirtualMachineDiskSpeedArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VirtualMachineDiskSpeedArgs:
     def __init__(__self__, *,
@@ -1327,6 +1755,34 @@ class VirtualMachineDiskSpeedArgs:
         pulumi.set(self, "write_burstable", value)
 
 
+if not MYPY:
+    class VirtualMachineEfiDiskArgsDict(TypedDict):
+        datastore_id: NotRequired[pulumi.Input[str]]
+        """
+        The identifier for the datastore to create
+        the disk in (defaults to `local-lvm`).
+        """
+        file_format: NotRequired[pulumi.Input[str]]
+        """
+        The file format (defaults to `raw`).
+        """
+        pre_enrolled_keys: NotRequired[pulumi.Input[bool]]
+        """
+        Use am EFI vars template with
+        distribution-specific and Microsoft Standard keys enrolled, if used with
+        EFI type=`4m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
+        to `false`).
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Size and type of the OVMF EFI disk. `4m` is newer and
+        recommended, and required for Secure Boot. For backwards compatibility
+        use `2m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
+        to `2m`).
+        """
+elif False:
+    VirtualMachineEfiDiskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VirtualMachineEfiDiskArgs:
     def __init__(__self__, *,
@@ -1411,6 +1867,52 @@ class VirtualMachineEfiDiskArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class VirtualMachineHostpciArgsDict(TypedDict):
+        device: pulumi.Input[str]
+        """
+        The PCI device name for Proxmox, in form
+        of `hostpciX` where `X` is a sequential number from 0 to 15.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        The PCI device ID. This parameter is not compatible
+        with `api_token` and requires the root `username` and `password`
+        configured in the proxmox provider. Use either this or `mapping`.
+        """
+        mapping: NotRequired[pulumi.Input[str]]
+        """
+        The resource mapping name of the device, for
+        example gpu. Use either this or `id`.
+        """
+        mdev: NotRequired[pulumi.Input[str]]
+        """
+        The mediated device ID to use.
+        """
+        pcie: NotRequired[pulumi.Input[bool]]
+        """
+        Tells Proxmox to use a PCIe or PCI port. Some
+        guests/device combination require PCIe rather than PCI. PCIe is only
+        available for q35 machine types.
+        """
+        rom_file: NotRequired[pulumi.Input[str]]
+        """
+        A path to a ROM file for the device to use. This
+        is a relative path under `/usr/share/kvm/`.
+        """
+        rombar: NotRequired[pulumi.Input[bool]]
+        """
+        Makes the firmware ROM visible for the VM (defaults
+        to `true`).
+        """
+        xvga: NotRequired[pulumi.Input[bool]]
+        """
+        Marks the PCI(e) device as the primary GPU of the VM.
+        With this enabled the `vga` configuration argument will be ignored.
+        """
+elif False:
+    VirtualMachineHostpciArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VirtualMachineHostpciArgs:
@@ -1563,6 +2065,66 @@ class VirtualMachineHostpciArgs:
     def xvga(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "xvga", value)
 
+
+if not MYPY:
+    class VirtualMachineInitializationArgsDict(TypedDict):
+        datastore_id: NotRequired[pulumi.Input[str]]
+        """
+        The identifier for the datastore to create the
+        cloud-init disk in (defaults to `local-lvm`).
+        """
+        dns: NotRequired[pulumi.Input['VirtualMachineInitializationDnsArgsDict']]
+        """
+        The DNS configuration.
+        """
+        interface: NotRequired[pulumi.Input[str]]
+        """
+        The hardware interface to connect the cloud-init
+        image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+        detected if the setting is missing but a cloud-init image is present,
+        otherwise defaults to `ide2`.
+        """
+        ip_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['VirtualMachineInitializationIpConfigArgsDict']]]]
+        """
+        The IP configuration (one block per network
+        device).
+        """
+        meta_data_file_id: NotRequired[pulumi.Input[str]]
+        """
+        The identifier for a file containing
+        all meta data passed to the VM via cloud-init.
+        """
+        network_data_file_id: NotRequired[pulumi.Input[str]]
+        """
+        The identifier for a file containing
+        network configuration data passed to the VM via cloud-init (conflicts
+        with `ip_config`).
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The cloud-init configuration format
+        """
+        upgrade: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to do an automatic package upgrade after the first boot
+        """
+        user_account: NotRequired[pulumi.Input['VirtualMachineInitializationUserAccountArgsDict']]
+        """
+        The user account configuration (conflicts
+        with `user_data_file_id`).
+        """
+        user_data_file_id: NotRequired[pulumi.Input[str]]
+        """
+        The identifier for a file containing
+        custom user data (conflicts with `user_account`).
+        """
+        vendor_data_file_id: NotRequired[pulumi.Input[str]]
+        """
+        The identifier for a file containing
+        all vendor data passed to the VM via cloud-init.
+        """
+elif False:
+    VirtualMachineInitializationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VirtualMachineInitializationArgs:
@@ -1773,6 +2335,25 @@ class VirtualMachineInitializationArgs:
         pulumi.set(self, "vendor_data_file_id", value)
 
 
+if not MYPY:
+    class VirtualMachineInitializationDnsArgsDict(TypedDict):
+        domain: NotRequired[pulumi.Input[str]]
+        """
+        The DNS search domain.
+        """
+        server: NotRequired[pulumi.Input[str]]
+        """
+        The DNS server. The `server` attribute is
+        deprecated and will be removed in a future release. Please use the
+        `servers` attribute instead.
+        """
+        servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The list of DNS servers.
+        """
+elif False:
+    VirtualMachineInitializationDnsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VirtualMachineInitializationDnsArgs:
     def __init__(__self__, *,
@@ -1836,6 +2417,19 @@ class VirtualMachineInitializationDnsArgs:
         pulumi.set(self, "servers", value)
 
 
+if not MYPY:
+    class VirtualMachineInitializationIpConfigArgsDict(TypedDict):
+        ipv4: NotRequired[pulumi.Input['VirtualMachineInitializationIpConfigIpv4ArgsDict']]
+        """
+        The IPv4 configuration.
+        """
+        ipv6: NotRequired[pulumi.Input['VirtualMachineInitializationIpConfigIpv6ArgsDict']]
+        """
+        The IPv6 configuration.
+        """
+elif False:
+    VirtualMachineInitializationIpConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VirtualMachineInitializationIpConfigArgs:
     def __init__(__self__, *,
@@ -1874,6 +2468,22 @@ class VirtualMachineInitializationIpConfigArgs:
     def ipv6(self, value: Optional[pulumi.Input['VirtualMachineInitializationIpConfigIpv6Args']]):
         pulumi.set(self, "ipv6", value)
 
+
+if not MYPY:
+    class VirtualMachineInitializationIpConfigIpv4ArgsDict(TypedDict):
+        address: NotRequired[pulumi.Input[str]]
+        """
+        The IPv4 address in CIDR notation
+        (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
+        autodiscovery.
+        """
+        gateway: NotRequired[pulumi.Input[str]]
+        """
+        The IPv4 gateway (must be omitted
+        when `dhcp` is used as the address).
+        """
+elif False:
+    VirtualMachineInitializationIpConfigIpv4ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VirtualMachineInitializationIpConfigIpv4Args:
@@ -1920,6 +2530,22 @@ class VirtualMachineInitializationIpConfigIpv4Args:
         pulumi.set(self, "gateway", value)
 
 
+if not MYPY:
+    class VirtualMachineInitializationIpConfigIpv6ArgsDict(TypedDict):
+        address: NotRequired[pulumi.Input[str]]
+        """
+        The IPv6 address in CIDR notation
+        (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
+        to `dhcp` for autodiscovery.
+        """
+        gateway: NotRequired[pulumi.Input[str]]
+        """
+        The IPv6 gateway (must be omitted
+        when `dhcp` is used as the address).
+        """
+elif False:
+    VirtualMachineInitializationIpConfigIpv6ArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VirtualMachineInitializationIpConfigIpv6Args:
     def __init__(__self__, *,
@@ -1964,6 +2590,23 @@ class VirtualMachineInitializationIpConfigIpv6Args:
     def gateway(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "gateway", value)
 
+
+if not MYPY:
+    class VirtualMachineInitializationUserAccountArgsDict(TypedDict):
+        keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The SSH keys.
+        """
+        password: NotRequired[pulumi.Input[str]]
+        """
+        The SSH password.
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        The SSH username.
+        """
+elif False:
+    VirtualMachineInitializationUserAccountArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VirtualMachineInitializationUserAccountArgs:
@@ -2019,6 +2662,36 @@ class VirtualMachineInitializationUserAccountArgs:
     def username(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "username", value)
 
+
+if not MYPY:
+    class VirtualMachineMemoryArgsDict(TypedDict):
+        dedicated: NotRequired[pulumi.Input[int]]
+        """
+        The dedicated memory in megabytes (defaults to `512`).
+        """
+        floating: NotRequired[pulumi.Input[int]]
+        """
+        The floating memory in megabytes. The default is `0`, which disables "ballooning device" for the VM.
+        Please note that Proxmox has ballooning enabled by default. To enable it, set `floating` to the same value as `dedicated`.
+        See [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_memory) section 10.2.6 for more information.
+        """
+        hugepages: NotRequired[pulumi.Input[str]]
+        """
+        Enable/disable hugepages memory (defaults to disable).
+        """
+        keep_hugepages: NotRequired[pulumi.Input[bool]]
+        """
+        Keep hugepages memory after the VM is stopped (defaults to `false`).
+
+        Settings `hugepages` and `keep_hugepages` are only allowed for `root@pam` authenticated user.
+        And required `cpu.numa` to be enabled.
+        """
+        shared: NotRequired[pulumi.Input[int]]
+        """
+        The shared memory in megabytes (defaults to `0`).
+        """
+elif False:
+    VirtualMachineMemoryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VirtualMachineMemoryArgs:
@@ -2116,6 +2789,57 @@ class VirtualMachineMemoryArgs:
     def shared(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "shared", value)
 
+
+if not MYPY:
+    class VirtualMachineNetworkDeviceArgsDict(TypedDict):
+        bridge: NotRequired[pulumi.Input[str]]
+        """
+        The name of the network bridge (defaults to `vmbr0`).
+        """
+        disconnected: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to disconnect the network device from the network (defaults to `false`).
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable the network device (defaults to `true`).
+        """
+        firewall: NotRequired[pulumi.Input[bool]]
+        """
+        Whether this interface's firewall rules should be used (defaults to `false`).
+        """
+        mac_address: NotRequired[pulumi.Input[str]]
+        """
+        The MAC address.
+        """
+        model: NotRequired[pulumi.Input[str]]
+        """
+        The network device model (defaults to `virtio`).
+        """
+        mtu: NotRequired[pulumi.Input[int]]
+        """
+        Force MTU, for VirtIO only. Set to 1 to use the bridge MTU. Cannot be larger than the bridge MTU.
+        """
+        queues: NotRequired[pulumi.Input[int]]
+        """
+        The number of queues for VirtIO (1..64).
+        """
+        rate_limit: NotRequired[pulumi.Input[float]]
+        """
+        The rate limit in megabytes per second.
+        """
+        trunks: NotRequired[pulumi.Input[str]]
+        """
+        String containing a `;` separated list of VLAN trunks
+        ("10;20;30"). Note that the VLAN-aware feature need to be enabled on the PVE
+        Linux Bridge to use trunks.
+        """
+        vlan_id: NotRequired[pulumi.Input[int]]
+        """
+        The VLAN identifier.
+        """
+elif False:
+    VirtualMachineNetworkDeviceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VirtualMachineNetworkDeviceArgs:
@@ -2304,6 +3028,32 @@ class VirtualMachineNetworkDeviceArgs:
         pulumi.set(self, "vlan_id", value)
 
 
+if not MYPY:
+    class VirtualMachineNumaArgsDict(TypedDict):
+        cpus: pulumi.Input[str]
+        """
+        The CPU cores to assign to the NUMA node (format is `0-7;16-31`).
+        """
+        device: pulumi.Input[str]
+        """
+        The NUMA device name for Proxmox, in form
+        of `numaX` where `X` is a sequential number from 0 to 7.
+        """
+        memory: pulumi.Input[int]
+        """
+        The memory in megabytes to assign to the NUMA node.
+        """
+        hostnodes: NotRequired[pulumi.Input[str]]
+        """
+        The NUMA host nodes.
+        """
+        policy: NotRequired[pulumi.Input[str]]
+        """
+        The NUMA policy (defaults to `preferred`).
+        """
+elif False:
+    VirtualMachineNumaArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VirtualMachineNumaArgs:
     def __init__(__self__, *,
@@ -2390,6 +3140,15 @@ class VirtualMachineNumaArgs:
         pulumi.set(self, "policy", value)
 
 
+if not MYPY:
+    class VirtualMachineOperatingSystemArgsDict(TypedDict):
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The type (defaults to `other`).
+        """
+elif False:
+    VirtualMachineOperatingSystemArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VirtualMachineOperatingSystemArgs:
     def __init__(__self__, *,
@@ -2412,6 +3171,16 @@ class VirtualMachineOperatingSystemArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class VirtualMachineSerialDeviceArgsDict(TypedDict):
+        device: NotRequired[pulumi.Input[str]]
+        """
+        The device (defaults to `socket`).
+        - `/dev/*` - A host serial device.
+        """
+elif False:
+    VirtualMachineSerialDeviceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VirtualMachineSerialDeviceArgs:
@@ -2437,6 +3206,39 @@ class VirtualMachineSerialDeviceArgs:
     def device(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "device", value)
 
+
+if not MYPY:
+    class VirtualMachineSmbiosArgsDict(TypedDict):
+        family: NotRequired[pulumi.Input[str]]
+        """
+        The family string.
+        """
+        manufacturer: NotRequired[pulumi.Input[str]]
+        """
+        The manufacturer.
+        """
+        product: NotRequired[pulumi.Input[str]]
+        """
+        The product ID.
+        """
+        serial: NotRequired[pulumi.Input[str]]
+        """
+        The serial number.
+        """
+        sku: NotRequired[pulumi.Input[str]]
+        """
+        The SKU number.
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        The UUID (defaults to randomly generated UUID).
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        The version.
+        """
+elif False:
+    VirtualMachineSmbiosArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VirtualMachineSmbiosArgs:
@@ -2557,6 +3359,26 @@ class VirtualMachineSmbiosArgs:
         pulumi.set(self, "version", value)
 
 
+if not MYPY:
+    class VirtualMachineStartupArgsDict(TypedDict):
+        down_delay: NotRequired[pulumi.Input[int]]
+        """
+        A non-negative number defining the delay in
+        seconds before the next VM is shut down.
+        """
+        order: NotRequired[pulumi.Input[int]]
+        """
+        A non-negative number defining the general startup
+        order.
+        """
+        up_delay: NotRequired[pulumi.Input[int]]
+        """
+        A non-negative number defining the delay in
+        seconds before the next VM is started.
+        """
+elif False:
+    VirtualMachineStartupArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VirtualMachineStartupArgs:
     def __init__(__self__, *,
@@ -2618,6 +3440,21 @@ class VirtualMachineStartupArgs:
         pulumi.set(self, "up_delay", value)
 
 
+if not MYPY:
+    class VirtualMachineTpmStateArgsDict(TypedDict):
+        datastore_id: NotRequired[pulumi.Input[str]]
+        """
+        The identifier for the datastore to create
+        the disk in (defaults to `local-lvm`).
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        TPM state device version. Can be `v1.2` or `v2.0`.
+        (defaults to `v2.0`).
+        """
+elif False:
+    VirtualMachineTpmStateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VirtualMachineTpmStateArgs:
     def __init__(__self__, *,
@@ -2660,6 +3497,24 @@ class VirtualMachineTpmStateArgs:
     def version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "version", value)
 
+
+if not MYPY:
+    class VirtualMachineUsbArgsDict(TypedDict):
+        host: NotRequired[pulumi.Input[str]]
+        """
+        The Host USB device or port or the value `spice`. Use either this or `mapping`.
+        """
+        mapping: NotRequired[pulumi.Input[str]]
+        """
+        The cluster-wide resource mapping name of the device, for example "usbdevice". Use either this or `host`.
+        """
+        usb3: NotRequired[pulumi.Input[bool]]
+        """
+        Makes the USB device a USB3 device for the VM
+        (defaults to `false`).
+        """
+elif False:
+    VirtualMachineUsbArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VirtualMachineUsbArgs:
@@ -2718,6 +3573,23 @@ class VirtualMachineUsbArgs:
         pulumi.set(self, "usb3", value)
 
 
+if not MYPY:
+    class VirtualMachineVgaArgsDict(TypedDict):
+        clipboard: NotRequired[pulumi.Input[str]]
+        """
+        Enable VNC clipboard by setting to `vnc`. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
+        """
+        memory: NotRequired[pulumi.Input[int]]
+        """
+        The VGA memory in megabytes (defaults to `16`).
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The VGA type (defaults to `std`).
+        """
+elif False:
+    VirtualMachineVgaArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VirtualMachineVgaArgs:
     def __init__(__self__, *,
@@ -2773,6 +3645,23 @@ class VirtualMachineVgaArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class VirtualMachineWatchdogArgsDict(TypedDict):
+        action: NotRequired[pulumi.Input[str]]
+        """
+        The action to perform if after activation the guest fails to poll the watchdog in time  (defaults to `none`).
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the watchdog is enabled (defaults to `false`).
+        """
+        model: NotRequired[pulumi.Input[str]]
+        """
+        The watchdog type to emulate (defaults to `i6300esb`).
+        """
+elif False:
+    VirtualMachineWatchdogArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VirtualMachineWatchdogArgs:
     def __init__(__self__, *,
@@ -2827,6 +3716,23 @@ class VirtualMachineWatchdogArgs:
     def model(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "model", value)
 
+
+if not MYPY:
+    class GetVirtualMachinesFilterArgsDict(TypedDict):
+        name: str
+        """
+        Name of the VM attribute to filter on. One of [`name`, `template`, `status`, `node_name`]
+        """
+        values: Sequence[str]
+        """
+        List of values to pass the filter. VM's attribute should match at least one value in the list.
+        """
+        regex: NotRequired[bool]
+        """
+        Treat values as regex patterns
+        """
+elif False:
+    GetVirtualMachinesFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetVirtualMachinesFilterArgs:

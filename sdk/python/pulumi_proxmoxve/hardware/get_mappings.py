@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -129,9 +134,6 @@ def get_mappings(check_node: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         type=pulumi.get(__ret__, 'type'))
-
-
-@_utilities.lift_output_func(get_mappings)
 def get_mappings_output(check_node: Optional[pulumi.Input[Optional[str]]] = None,
                         type: Optional[pulumi.Input[str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMappingsResult]:
@@ -156,4 +158,14 @@ def get_mappings_output(check_node: Optional[pulumi.Input[Optional[str]]] = None
     :param str check_node: The name of the node whose configurations should be checked for correctness.
     :param str type: The type of the hardware mappings.
     """
-    ...
+    __args__ = dict()
+    __args__['checkNode'] = check_node
+    __args__['type'] = type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:Hardware/getMappings:getMappings', __args__, opts=opts, typ=GetMappingsResult)
+    return __ret__.apply(lambda __response__: GetMappingsResult(
+        check_node=pulumi.get(__response__, 'check_node'),
+        checks=pulumi.get(__response__, 'checks'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        type=pulumi.get(__response__, 'type')))

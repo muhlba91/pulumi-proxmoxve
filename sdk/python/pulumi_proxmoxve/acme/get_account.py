@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -136,9 +141,6 @@ def get_account(name: Optional[str] = None,
         location=pulumi.get(__ret__, 'location'),
         name=pulumi.get(__ret__, 'name'),
         tos=pulumi.get(__ret__, 'tos'))
-
-
-@_utilities.lift_output_func(get_account)
 def get_account_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountResult]:
     """
@@ -158,4 +160,14 @@ def get_account_output(name: Optional[pulumi.Input[Optional[str]]] = None,
 
     :param str name: The identifier of the ACME account to read.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:Acme/getAccount:getAccount', __args__, opts=opts, typ=GetAccountResult)
+    return __ret__.apply(lambda __response__: GetAccountResult(
+        account=pulumi.get(__response__, 'account'),
+        directory=pulumi.get(__response__, 'directory'),
+        id=pulumi.get(__response__, 'id'),
+        location=pulumi.get(__response__, 'location'),
+        name=pulumi.get(__response__, 'name'),
+        tos=pulumi.get(__response__, 'tos')))

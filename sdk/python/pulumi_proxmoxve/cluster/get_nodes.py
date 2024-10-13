@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -180,9 +185,6 @@ def get_nodes(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodesR
         ssl_fingerprints=pulumi.get(__ret__, 'ssl_fingerprints'),
         support_levels=pulumi.get(__ret__, 'support_levels'),
         uptimes=pulumi.get(__ret__, 'uptimes'))
-
-
-@_utilities.lift_output_func(get_nodes)
 def get_nodes_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodesResult]:
     """
     Retrieves information about all available nodes.
@@ -196,4 +198,17 @@ def get_nodes_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Outp
     available_nodes = proxmoxve.Cluster.get_nodes()
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:Cluster/getNodes:getNodes', __args__, opts=opts, typ=GetNodesResult)
+    return __ret__.apply(lambda __response__: GetNodesResult(
+        cpu_counts=pulumi.get(__response__, 'cpu_counts'),
+        cpu_utilizations=pulumi.get(__response__, 'cpu_utilizations'),
+        id=pulumi.get(__response__, 'id'),
+        memory_availables=pulumi.get(__response__, 'memory_availables'),
+        memory_useds=pulumi.get(__response__, 'memory_useds'),
+        names=pulumi.get(__response__, 'names'),
+        onlines=pulumi.get(__response__, 'onlines'),
+        ssl_fingerprints=pulumi.get(__response__, 'ssl_fingerprints'),
+        support_levels=pulumi.get(__response__, 'support_levels'),
+        uptimes=pulumi.get(__response__, 'uptimes')))

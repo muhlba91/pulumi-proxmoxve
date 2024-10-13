@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -150,9 +155,6 @@ def get_virtual_machine(node_name: Optional[str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         template=pulumi.get(__ret__, 'template'),
         vm_id=pulumi.get(__ret__, 'vm_id'))
-
-
-@_utilities.lift_output_func(get_virtual_machine)
 def get_virtual_machine_output(node_name: Optional[pulumi.Input[str]] = None,
                                status: Optional[pulumi.Input[Optional[str]]] = None,
                                template: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -177,4 +179,18 @@ def get_virtual_machine_output(node_name: Optional[pulumi.Input[str]] = None,
     :param bool template: Is VM a template (true) or a regular VM (false)
     :param int vm_id: The VM identifier.
     """
-    ...
+    __args__ = dict()
+    __args__['nodeName'] = node_name
+    __args__['status'] = status
+    __args__['template'] = template
+    __args__['vmId'] = vm_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:VM/getVirtualMachine:getVirtualMachine', __args__, opts=opts, typ=GetVirtualMachineResult)
+    return __ret__.apply(lambda __response__: GetVirtualMachineResult(
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        node_name=pulumi.get(__response__, 'node_name'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags'),
+        template=pulumi.get(__response__, 'template'),
+        vm_id=pulumi.get(__response__, 'vm_id')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -202,9 +207,6 @@ def get_vm2(clone: Optional[Union['GetVm2CloneArgs', 'GetVm2CloneArgsDict']] = N
         template=pulumi.get(__ret__, 'template'),
         timeouts=pulumi.get(__ret__, 'timeouts'),
         vga=pulumi.get(__ret__, 'vga'))
-
-
-@_utilities.lift_output_func(get_vm2)
 def get_vm2_output(clone: Optional[pulumi.Input[Optional[Union['GetVm2CloneArgs', 'GetVm2CloneArgsDict']]]] = None,
                    cpu: Optional[pulumi.Input[Optional[Union['GetVm2CpuArgs', 'GetVm2CpuArgsDict']]]] = None,
                    description: Optional[pulumi.Input[Optional[str]]] = None,
@@ -231,4 +233,27 @@ def get_vm2_output(clone: Optional[pulumi.Input[Optional[Union['GetVm2CloneArgs'
     :param bool template: Whether the VM is a template.
     :param Union['GetVm2VgaArgs', 'GetVm2VgaArgsDict'] vga: The VGA configuration.
     """
-    ...
+    __args__ = dict()
+    __args__['clone'] = clone
+    __args__['cpu'] = cpu
+    __args__['description'] = description
+    __args__['id'] = id
+    __args__['name'] = name
+    __args__['nodeName'] = node_name
+    __args__['tags'] = tags
+    __args__['template'] = template
+    __args__['timeouts'] = timeouts
+    __args__['vga'] = vga
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:index/getVm2:getVm2', __args__, opts=opts, typ=GetVm2Result)
+    return __ret__.apply(lambda __response__: GetVm2Result(
+        clone=pulumi.get(__response__, 'clone'),
+        cpu=pulumi.get(__response__, 'cpu'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        node_name=pulumi.get(__response__, 'node_name'),
+        tags=pulumi.get(__response__, 'tags'),
+        template=pulumi.get(__response__, 'template'),
+        timeouts=pulumi.get(__response__, 'timeouts'),
+        vga=pulumi.get(__response__, 'vga')))

@@ -4,17 +4,46 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'FirewallIPSetCidrArgs',
+    'FirewallIPSetCidrArgsDict',
     'FirewallLogRatelimitArgs',
+    'FirewallLogRatelimitArgsDict',
     'FirewallRulesRuleArgs',
+    'FirewallRulesRuleArgsDict',
     'FirewallSecurityGroupRuleArgs',
+    'FirewallSecurityGroupRuleArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class FirewallIPSetCidrArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Network/IP specification in CIDR format.
+        """
+        comment: NotRequired[pulumi.Input[str]]
+        """
+        Arbitrary string annotation.
+        """
+        nomatch: NotRequired[pulumi.Input[bool]]
+        """
+        Entries marked as `nomatch` are skipped as if those
+        were not added to the set.
+        """
+elif False:
+    FirewallIPSetCidrArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FirewallIPSetCidrArgs:
@@ -71,6 +100,25 @@ class FirewallIPSetCidrArgs:
     def nomatch(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "nomatch", value)
 
+
+if not MYPY:
+    class FirewallLogRatelimitArgsDict(TypedDict):
+        burst: NotRequired[pulumi.Input[int]]
+        """
+        Initial burst of packages which will always get
+        logged before the rate is applied (defaults to `5`).
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable or disable the log rate limit.
+        """
+        rate: NotRequired[pulumi.Input[str]]
+        """
+        Frequency with which the burst bucket gets refilled
+        (defaults to `1/second`).
+        """
+elif False:
+    FirewallLogRatelimitArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FirewallLogRatelimitArgs:
@@ -130,6 +178,91 @@ class FirewallLogRatelimitArgs:
     def rate(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "rate", value)
 
+
+if not MYPY:
+    class FirewallRulesRuleArgsDict(TypedDict):
+        action: NotRequired[pulumi.Input[str]]
+        """
+        Rule action (`ACCEPT`, `DROP`, `REJECT`).
+        """
+        comment: NotRequired[pulumi.Input[str]]
+        """
+        Rule comment.
+        """
+        dest: NotRequired[pulumi.Input[str]]
+        """
+        Restrict packet destination address. This can
+        refer to a single IP address, an IP set ('+ipsetname') or an IP
+        alias definition. You can also specify an address range
+        like `20.34.101.207-201.3.9.99`, or a list of IP addresses and
+        networks (entries are separated by comma). Please do not mix IPv4
+        and IPv6 addresses inside such lists.
+        """
+        dport: NotRequired[pulumi.Input[str]]
+        """
+        Restrict TCP/UDP destination port. You can use
+        service names or simple numbers (0-65535), as defined
+        in `/etc/services`. Port ranges can be specified with '\\d+:\\d+', for
+        example `80:85`, and you can use comma separated list to match
+        several ports or ranges.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable this rule. Defaults to `true`.
+        """
+        iface: NotRequired[pulumi.Input[str]]
+        """
+        Network interface name. You have to use network
+        configuration key names for VMs and containers ('net\\d+'). Host
+        related rules can use arbitrary strings.
+        """
+        log: NotRequired[pulumi.Input[str]]
+        """
+        Log level for this rule (`emerg`, `alert`, `crit`,
+        `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+        """
+        macro: NotRequired[pulumi.Input[str]]
+        """
+        Macro name. Use predefined standard macro
+        from <https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions>
+        """
+        pos: NotRequired[pulumi.Input[int]]
+        """
+        Position of the rule in the list.
+        """
+        proto: NotRequired[pulumi.Input[str]]
+        """
+        Restrict packet protocol. You can use protocol
+        names as defined in '/etc/protocols'.
+        """
+        security_group: NotRequired[pulumi.Input[str]]
+        """
+        Security group name.
+        """
+        source: NotRequired[pulumi.Input[str]]
+        """
+        Restrict packet source address. This can refer
+        to a single IP address, an IP set ('+ipsetname') or an IP alias
+        definition. You can also specify an address range
+        like `20.34.101.207-201.3.9.99`, or a list of IP addresses and
+        networks (entries are separated by comma). Please do not mix IPv4
+        and IPv6 addresses inside such lists.
+        """
+        sport: NotRequired[pulumi.Input[str]]
+        """
+        Restrict TCP/UDP source port. You can use
+        service names or simple numbers (0-65535), as defined
+        in `/etc/services`. Port ranges can be specified with '\\d+:\\d+', for
+        example `80:85`, and you can use comma separated list to match
+        several ports or ranges.
+        - a security group insertion block, which includes the following arguments:
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Rule type (`in`, `out`).
+        """
+elif False:
+    FirewallRulesRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FirewallRulesRuleArgs:
@@ -409,6 +542,90 @@ class FirewallRulesRuleArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class FirewallSecurityGroupRuleArgsDict(TypedDict):
+        action: NotRequired[pulumi.Input[str]]
+        """
+        Rule action (`ACCEPT`, `DROP`, `REJECT`).
+        """
+        comment: NotRequired[pulumi.Input[str]]
+        """
+        Rule comment.
+        """
+        dest: NotRequired[pulumi.Input[str]]
+        """
+        Restrict packet destination address. This can refer to
+        a single IP address, an IP set ('+ipsetname') or an IP alias
+        definition. You can also specify an address range like
+        `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks
+        (entries are separated by comma). Please do not mix IPv4 and IPv6
+        addresses inside such lists.
+        """
+        dport: NotRequired[pulumi.Input[str]]
+        """
+        Restrict TCP/UDP destination port. You can use
+        service names or simple numbers (0-65535), as defined in '/etc/
+        services'. Port ranges can be specified with '\\d+:\\d+', for example
+        `80:85`, and you can use comma separated list to match several ports or
+        ranges.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable rule
+        """
+        iface: NotRequired[pulumi.Input[str]]
+        """
+        Network interface name. You have to use network
+        configuration key names for VMs and containers ('net\\d+'). Host related
+        rules can use arbitrary strings.
+        """
+        log: NotRequired[pulumi.Input[str]]
+        """
+        Log level for this rule (`emerg`, `alert`, `crit`,
+        `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+        """
+        macro: NotRequired[pulumi.Input[str]]
+        """
+        Macro name. Use predefined standard macro
+        from <https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions>
+        """
+        pos: NotRequired[pulumi.Input[int]]
+        """
+        Position of the rule in the list.
+        """
+        proto: NotRequired[pulumi.Input[str]]
+        """
+        Restrict packet protocol. You can use protocol names
+        as defined in '/etc/protocols'.
+        """
+        security_group: NotRequired[pulumi.Input[str]]
+        """
+        Security group name
+        """
+        source: NotRequired[pulumi.Input[str]]
+        """
+        Restrict packet source address. This can refer
+        to a single IP address, an IP set ('+ipsetname') or an IP alias
+        definition. You can also specify an address range like
+        `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks (
+        entries are separated by comma). Please do not mix IPv4 and IPv6
+        addresses inside such lists.
+        """
+        sport: NotRequired[pulumi.Input[str]]
+        """
+        Restrict TCP/UDP source port. You can use
+        service names or simple numbers (0-65535), as defined in '/etc/
+        services'. Port ranges can be specified with '\\d+:\\d+', for example
+        `80:85`, and you can use comma separated list to match several ports or
+        ranges.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Rule type (`in`, `out`).
+        """
+elif False:
+    FirewallSecurityGroupRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FirewallSecurityGroupRuleArgs:

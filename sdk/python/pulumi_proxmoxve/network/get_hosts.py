@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -132,9 +137,6 @@ def get_hosts(node_name: Optional[str] = None,
         hostnames=pulumi.get(__ret__, 'hostnames'),
         id=pulumi.get(__ret__, 'id'),
         node_name=pulumi.get(__ret__, 'node_name'))
-
-
-@_utilities.lift_output_func(get_hosts)
 def get_hosts_output(node_name: Optional[pulumi.Input[str]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHostsResult]:
     """
@@ -152,4 +154,14 @@ def get_hosts_output(node_name: Optional[pulumi.Input[str]] = None,
 
     :param str node_name: A node name.
     """
-    ...
+    __args__ = dict()
+    __args__['nodeName'] = node_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:Network/getHosts:getHosts', __args__, opts=opts, typ=GetHostsResult)
+    return __ret__.apply(lambda __response__: GetHostsResult(
+        addresses=pulumi.get(__response__, 'addresses'),
+        digest=pulumi.get(__response__, 'digest'),
+        entries=pulumi.get(__response__, 'entries'),
+        hostnames=pulumi.get(__response__, 'hostnames'),
+        id=pulumi.get(__response__, 'id'),
+        node_name=pulumi.get(__response__, 'node_name')))

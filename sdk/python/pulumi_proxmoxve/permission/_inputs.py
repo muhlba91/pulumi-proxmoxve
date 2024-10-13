@@ -4,16 +4,43 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'GroupAclArgs',
+    'GroupAclArgsDict',
     'PoolMemberArgs',
+    'PoolMemberArgsDict',
     'UserAclArgs',
+    'UserAclArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class GroupAclArgsDict(TypedDict):
+        path: pulumi.Input[str]
+        """
+        The path.
+        """
+        role_id: pulumi.Input[str]
+        """
+        The role identifier.
+        """
+        propagate: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to propagate to child paths.
+        """
+elif False:
+    GroupAclArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GroupAclArgs:
@@ -67,6 +94,31 @@ class GroupAclArgs:
     def propagate(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "propagate", value)
 
+
+if not MYPY:
+    class PoolMemberArgsDict(TypedDict):
+        datastore_id: NotRequired[pulumi.Input[str]]
+        """
+        The datastore identifier.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        The member identifier.
+        """
+        node_name: NotRequired[pulumi.Input[str]]
+        """
+        The node name.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The member type.
+        """
+        vm_id: NotRequired[pulumi.Input[int]]
+        """
+        The virtual machine identifier.
+        """
+elif False:
+    PoolMemberArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PoolMemberArgs:
@@ -154,6 +206,23 @@ class PoolMemberArgs:
     def vm_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "vm_id", value)
 
+
+if not MYPY:
+    class UserAclArgsDict(TypedDict):
+        path: pulumi.Input[str]
+        """
+        The path.
+        """
+        role_id: pulumi.Input[str]
+        """
+        The role identifier.
+        """
+        propagate: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to propagate to child paths.
+        """
+elif False:
+    UserAclArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class UserAclArgs:

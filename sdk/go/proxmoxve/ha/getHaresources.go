@@ -26,7 +26,8 @@ import (
 // )
 // func main() {
 // pulumi.Run(func(ctx *pulumi.Context) error {
-// exampleAll, err := HA.GetHAResources(ctx, nil, nil);
+// exampleAll, err := HA.GetHAResources(ctx, &ha.GetHAResourcesArgs{
+// }, nil);
 // if err != nil {
 // return err
 // }

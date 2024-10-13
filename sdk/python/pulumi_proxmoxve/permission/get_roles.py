@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -102,9 +107,6 @@ def get_roles(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRolesR
         privileges=pulumi.get(__ret__, 'privileges'),
         role_ids=pulumi.get(__ret__, 'role_ids'),
         specials=pulumi.get(__ret__, 'specials'))
-
-
-@_utilities.lift_output_func(get_roles)
 def get_roles_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRolesResult]:
     """
     Retrieves information about all the available roles.
@@ -118,4 +120,11 @@ def get_roles_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Outp
     available_roles = proxmoxve.Permission.get_roles()
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:Permission/getRoles:getRoles', __args__, opts=opts, typ=GetRolesResult)
+    return __ret__.apply(lambda __response__: GetRolesResult(
+        id=pulumi.get(__response__, 'id'),
+        privileges=pulumi.get(__response__, 'privileges'),
+        role_ids=pulumi.get(__response__, 'role_ids'),
+        specials=pulumi.get(__response__, 'specials')))

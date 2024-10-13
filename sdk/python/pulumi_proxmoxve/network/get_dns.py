@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -104,9 +109,6 @@ def get_dns(node_name: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         node_name=pulumi.get(__ret__, 'node_name'),
         servers=pulumi.get(__ret__, 'servers'))
-
-
-@_utilities.lift_output_func(get_dns)
 def get_dns_output(node_name: Optional[pulumi.Input[str]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDNSResult]:
     """
@@ -124,4 +126,12 @@ def get_dns_output(node_name: Optional[pulumi.Input[str]] = None,
 
     :param str node_name: A node name.
     """
-    ...
+    __args__ = dict()
+    __args__['nodeName'] = node_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:Network/getDNS:getDNS', __args__, opts=opts, typ=GetDNSResult)
+    return __ret__.apply(lambda __response__: GetDNSResult(
+        domain=pulumi.get(__response__, 'domain'),
+        id=pulumi.get(__response__, 'id'),
+        node_name=pulumi.get(__response__, 'node_name'),
+        servers=pulumi.get(__response__, 'servers')))

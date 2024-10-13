@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -153,9 +158,6 @@ def get_virtual_machines(filters: Optional[Sequence[Union['GetVirtualMachinesFil
         node_name=pulumi.get(__ret__, 'node_name'),
         tags=pulumi.get(__ret__, 'tags'),
         vms=pulumi.get(__ret__, 'vms'))
-
-
-@_utilities.lift_output_func(get_virtual_machines)
 def get_virtual_machines_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetVirtualMachinesFilterArgs', 'GetVirtualMachinesFilterArgsDict']]]]] = None,
                                 node_name: Optional[pulumi.Input[Optional[str]]] = None,
                                 tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -205,4 +207,15 @@ def get_virtual_machines_output(filters: Optional[pulumi.Input[Optional[Sequence
     :param Sequence[str] tags: A list of tags to filter the VMs. The VM must have all
            the tags to be included in the result.
     """
-    ...
+    __args__ = dict()
+    __args__['filters'] = filters
+    __args__['nodeName'] = node_name
+    __args__['tags'] = tags
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:VM/getVirtualMachines:getVirtualMachines', __args__, opts=opts, typ=GetVirtualMachinesResult)
+    return __ret__.apply(lambda __response__: GetVirtualMachinesResult(
+        filters=pulumi.get(__response__, 'filters'),
+        id=pulumi.get(__response__, 'id'),
+        node_name=pulumi.get(__response__, 'node_name'),
+        tags=pulumi.get(__response__, 'tags'),
+        vms=pulumi.get(__response__, 'vms')))

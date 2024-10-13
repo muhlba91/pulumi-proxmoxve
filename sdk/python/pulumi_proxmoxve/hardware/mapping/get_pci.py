@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from ... import _utilities
 from . import outputs
 
@@ -122,9 +127,6 @@ def get_pci(name: Optional[str] = None,
         maps=pulumi.get(__ret__, 'maps'),
         mediated_devices=pulumi.get(__ret__, 'mediated_devices'),
         name=pulumi.get(__ret__, 'name'))
-
-
-@_utilities.lift_output_func(get_pci)
 def get_pci_output(name: Optional[pulumi.Input[str]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPciResult]:
     """
@@ -143,4 +145,13 @@ def get_pci_output(name: Optional[pulumi.Input[str]] = None,
 
     :param str name: The name of this PCI hardware mapping.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:Hardware/mapping/getPci:getPci', __args__, opts=opts, typ=GetPciResult)
+    return __ret__.apply(lambda __response__: GetPciResult(
+        comment=pulumi.get(__response__, 'comment'),
+        id=pulumi.get(__response__, 'id'),
+        maps=pulumi.get(__response__, 'maps'),
+        mediated_devices=pulumi.get(__response__, 'mediated_devices'),
+        name=pulumi.get(__response__, 'name')))

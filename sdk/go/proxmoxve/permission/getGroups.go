@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Permission.GetGroups(ctx, nil, nil)
+//			_, err := Permission.GetGroups(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}

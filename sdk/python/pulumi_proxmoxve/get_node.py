@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -169,9 +174,6 @@ def get_node(node_name: Optional[str] = None,
         memory_used=pulumi.get(__ret__, 'memory_used'),
         node_name=pulumi.get(__ret__, 'node_name'),
         uptime=pulumi.get(__ret__, 'uptime'))
-
-
-@_utilities.lift_output_func(get_node)
 def get_node_output(node_name: Optional[pulumi.Input[str]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeResult]:
     """
@@ -189,4 +191,17 @@ def get_node_output(node_name: Optional[pulumi.Input[str]] = None,
 
     :param str node_name: The node name.
     """
-    ...
+    __args__ = dict()
+    __args__['nodeName'] = node_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:index/getNode:getNode', __args__, opts=opts, typ=GetNodeResult)
+    return __ret__.apply(lambda __response__: GetNodeResult(
+        cpu_count=pulumi.get(__response__, 'cpu_count'),
+        cpu_model=pulumi.get(__response__, 'cpu_model'),
+        cpu_sockets=pulumi.get(__response__, 'cpu_sockets'),
+        id=pulumi.get(__response__, 'id'),
+        memory_available=pulumi.get(__response__, 'memory_available'),
+        memory_total=pulumi.get(__response__, 'memory_total'),
+        memory_used=pulumi.get(__response__, 'memory_used'),
+        node_name=pulumi.get(__response__, 'node_name'),
+        uptime=pulumi.get(__response__, 'uptime')))

@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			all, err := Acme.GetAccounts(ctx, nil, nil)
+//			all, err := Acme.GetAccounts(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
