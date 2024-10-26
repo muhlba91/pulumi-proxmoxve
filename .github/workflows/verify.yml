@@ -22,11 +22,11 @@ jobs:
     name: Conform
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           fetch-depth: 0
 
-      - uses: siderolabs/conform@v0.1.0-alpha.27
+      - uses: siderolabs/conform@6380738b7fdfc68b208ce0674c4ac1ba314ba600 # v0.1.0-alpha.27
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -41,27 +41,27 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           fetch-depth: 0
 
       - name: Install Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@41dfa10bad2bb2ae585af6ee5bb4d7d973ad74ed # v5.1.0
         with:
           go-version: "${{ matrix.go-version }}"
           cache-dependency-path: "**/*.sum"
 
       - name: Install pulumictl
-        uses: jaxxstorm/action-install-gh-release@v1.12.0
+        uses: jaxxstorm/action-install-gh-release@25d5e2dd555cd74f1fab9ac1e6ea117acde2c0c4 # v1.12.0
         with:
           repo: pulumi/pulumictl
       - name: Install Pulumi CLI
-        uses: pulumi/actions@v6
+        uses: pulumi/actions@c7fad9e2f0b79653172b36538b8b34b3c0291952 # v6.0.0
 
       - name: Build Provider
         run: make provider
       - name: Lint Provider
-        uses: golangci/golangci-lint-action@v6
+        uses: golangci/golangci-lint-action@971e284b6050e8a5849b72094c50ab08da042db8 # v6.1.1
         with:
           version: "${{ matrix.golangci-lint-version }}"
           working-directory: provider
@@ -89,46 +89,46 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           fetch-depth: 0
 
       - name: Install Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@41dfa10bad2bb2ae585af6ee5bb4d7d973ad74ed # v5.1.0
         with:
           go-version: "${{ matrix.go-version }}"
           cache-dependency-path: "**/*.sum"
 
       - name: Install pulumictl
-        uses: jaxxstorm/action-install-gh-release@v1.12.0
+        uses: jaxxstorm/action-install-gh-release@25d5e2dd555cd74f1fab9ac1e6ea117acde2c0c4 # v1.12.0
         with:
           repo: pulumi/pulumictl
       - name: Install Pulumi CLI
-        uses: pulumi/actions@v6
+        uses: pulumi/actions@c7fad9e2f0b79653172b36538b8b34b3c0291952 # v6.0.0
 
       - name: Setup DotNet
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@3e891b0cb619bf60e2c25674b222b8940e2c1c25 # v4.1.0
         with:
           dotnet-version: "${{ matrix.dotnet-version }}"
         if: matrix.language == 'dotnet'
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5.3.0
         with:
           python-version: "${{ matrix.python-version }}"
         if: matrix.language == 'python'
       - name: Use Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4.1.0
         with:
           node-version: "${{ matrix.node-version }}"
         if: matrix.language == 'nodejs'
       - name: Setup Java
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@8df1039502a15bceb9433410b1a100fbe190c53b # v4.5.0
         with:
           distribution: corretto
           java-version: ${{ matrix.java-version }}
         if: matrix.language == 'java'
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
+        uses: gradle/actions/setup-gradle@d156388eb19639ec20ade50009f3d199ce1e2808 # v4.1.0
         if: matrix.language == 'java'
 
       - name: Build SDK
