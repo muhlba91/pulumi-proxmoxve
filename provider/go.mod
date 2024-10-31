@@ -8,7 +8,7 @@ require (
 	github.com/bpg/terraform-provider-proxmox v0.66.3
 	github.com/ettle/strcase v0.2.0
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.46.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.93.1
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.94.0
 	github.com/pulumi/pulumi/sdk/v3 v3.137.0
 )
 
@@ -174,8 +174,8 @@ require (
 	github.com/pulumi/esc v0.10.0 // indirect
 	github.com/pulumi/inflector v0.1.1 // indirect
 	github.com/pulumi/pulumi-java/pkg v0.16.1 // indirect
-	github.com/pulumi/pulumi-yaml v1.10.3 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.136.1 // indirect
+	github.com/pulumi/pulumi-yaml v1.11.1 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.137.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
