@@ -9,7 +9,7 @@ require (
 	github.com/ettle/strcase v0.2.0
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.47.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.94.0
-	github.com/pulumi/pulumi/sdk/v3 v3.137.0
+	github.com/pulumi/pulumi/sdk/v3 v3.138.0
 )
 
 require (
