@@ -52,7 +52,7 @@ jobs:
           cache-dependency-path: "**/*.sum"
 
       - name: Install pulumictl
-        uses: jaxxstorm/action-install-gh-release@25d5e2dd555cd74f1fab9ac1e6ea117acde2c0c4 # v1.12.0
+        uses: jaxxstorm/action-install-gh-release@7f2440a9a41f74262d8f6433da138c799799a969 # v1.13.0
         with:
           repo: pulumi/pulumictl
       - name: Install Pulumi CLI
@@ -100,7 +100,7 @@ jobs:
           cache-dependency-path: "**/*.sum"
 
       - name: Install pulumictl
-        uses: jaxxstorm/action-install-gh-release@25d5e2dd555cd74f1fab9ac1e6ea117acde2c0c4 # v1.12.0
+        uses: jaxxstorm/action-install-gh-release@7f2440a9a41f74262d8f6433da138c799799a969 # v1.13.0
         with:
           repo: pulumi/pulumictl
       - name: Install Pulumi CLI
