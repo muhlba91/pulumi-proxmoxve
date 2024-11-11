@@ -1,6 +1,34 @@
 # Changelog
 
 
+## [6.15.3](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.15.2...v6.15.3) (2024-11-11)
+
+
+### Bug Fixes
+
+* fix id property of acme provider ([81f6619](https://github.com/muhlba91/pulumi-proxmoxve/commit/81f66198f232df671b3e4182a51cd080fa299b54))
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/attest-build-provenance action to v1.4.4 ([ead7496](https://github.com/muhlba91/pulumi-proxmoxve/commit/ead749663939903671997d1c7716dbd232e53f1a))
+* **deps:** update actions/dependency-review-action action to v4.4.0 ([53e83d3](https://github.com/muhlba91/pulumi-proxmoxve/commit/53e83d34b6f9ccca5906e6f5d7371dfd609f562d))
+* **deps:** update anchore/sbom-action action to v0.17.6 ([1aa28bd](https://github.com/muhlba91/pulumi-proxmoxve/commit/1aa28bd4f2e2f5b6e0e8dc61290f5bd0c4f1e718))
+* **deps:** update anchore/sbom-action action to v0.17.7 ([5c19b23](https://github.com/muhlba91/pulumi-proxmoxve/commit/5c19b2308aeed968d75ae193e63b83a8e025cba4))
+* **deps:** update dependency go to v1.23.3 ([aa1090c](https://github.com/muhlba91/pulumi-proxmoxve/commit/aa1090c739e5cb2697763c4bc9de60264c360654))
+* **deps:** update github/codeql-action action to v3.27.1 ([fc3c338](https://github.com/muhlba91/pulumi-proxmoxve/commit/fc3c338ac240d9990674b063e3e266b7b77143c5))
+* **deps:** update goreleaser/goreleaser-action action to v6.1.0 ([505a7d6](https://github.com/muhlba91/pulumi-proxmoxve/commit/505a7d64fb3ebd88f712e74f377470b5b9950430))
+* **deps:** update jaxxstorm/action-install-gh-release action to v1.13.0 ([0181fbe](https://github.com/muhlba91/pulumi-proxmoxve/commit/0181fbec7a22007bbfe70e9a5dd9d11a26d4a18e))
+* **deps:** update module github.com/pulumi/pulumi-terraform-bridge/pf to v0.47.0 ([ea639be](https://github.com/muhlba91/pulumi-proxmoxve/commit/ea639be3c12f3622ff0cc285a4676a6a6910f458))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.138.0 ([836b9f5](https://github.com/muhlba91/pulumi-proxmoxve/commit/836b9f508f9a8f3f3fc42a1c5eb3a6bc7292f28b))
+* **deps:** update pypa/gh-action-pypi-publish digest to 0d02f37 ([33fa818](https://github.com/muhlba91/pulumi-proxmoxve/commit/33fa8188fc269f11ef149232a61fe14a29ce7a4c))
+* **deps:** update pypa/gh-action-pypi-publish digest to 15c56db ([deef9c6](https://github.com/muhlba91/pulumi-proxmoxve/commit/deef9c6fd8faefc150dfe690395c5b1c33ab4b66))
+* **deps:** update pypa/gh-action-pypi-publish digest to 1f5d4ec ([9cf82a4](https://github.com/muhlba91/pulumi-proxmoxve/commit/9cf82a458a102597a4ba75f41de33ff0b93f80cf))
+* **deps:** update pypa/gh-action-pypi-publish digest to 61da13d ([f7434d1](https://github.com/muhlba91/pulumi-proxmoxve/commit/f7434d1275b926fd816128ba72890c7cb85497fc))
+* **deps:** update pypa/gh-action-pypi-publish digest to a8b73a6 ([989ebd1](https://github.com/muhlba91/pulumi-proxmoxve/commit/989ebd1a8d1f3b2ffdba1a531717e57ab868c562))
+* **deps:** update pypa/gh-action-pypi-publish digest to fb13cb3 ([a749eb9](https://github.com/muhlba91/pulumi-proxmoxve/commit/a749eb9357cb573fbbbd8610f2841e3d4e1a5304))
+* introduce repository and project security scanning ([fe7a6ea](https://github.com/muhlba91/pulumi-proxmoxve/commit/fe7a6eae4350b1455ed045e5f9140455f1d956e7))
+
 ## [6.15.2](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.15.1...v6.15.2) (2024-10-26)
 
 
