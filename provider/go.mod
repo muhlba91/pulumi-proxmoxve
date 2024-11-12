@@ -7,7 +7,7 @@ replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraf
 require (
 	github.com/bpg/terraform-provider-proxmox v0.66.3
 	github.com/ettle/strcase v0.2.0
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.47.0
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.48.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.95.0
 	github.com/pulumi/pulumi/sdk/v3 v3.138.0
 )
