@@ -387,13 +387,15 @@ class File(pulumi.CustomResource):
                  timeout_upload: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Manages a file.
+        Use this resource to upload files to a Proxmox VE node. The file can be a backup, an ISO image, a snippet, or a container template depending on the `content_type` attribute.
 
         ## Example Usage
 
         ### Backups (`dump`)
 
         > The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
+
+        > The provider currently does not support restoring backups. You can use the Proxmox VE web interface or the `qmrestore` / `pct restore` command to restore VM / Container from a backup.
 
         ```python
         import pulumi
@@ -498,13 +500,15 @@ class File(pulumi.CustomResource):
                  args: FileArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a file.
+        Use this resource to upload files to a Proxmox VE node. The file can be a backup, an ISO image, a snippet, or a container template depending on the `content_type` attribute.
 
         ## Example Usage
 
         ### Backups (`dump`)
 
         > The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
+
+        > The provider currently does not support restoring backups. You can use the Proxmox VE web interface or the `qmrestore` / `pct restore` command to restore VM / Container from a backup.
 
         ```python
         import pulumi

@@ -329,14 +329,14 @@ public class Options extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.migrationCidr);
     }
     /**
-     * Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).
+     * Cluster wide migration type. Must be `secure` | `insecure` (default is `secure`).
      * 
      */
     @Export(name="migrationType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> migrationType;
 
     /**
-     * @return Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).
+     * @return Cluster wide migration type. Must be `secure` | `insecure` (default is `secure`).
      * 
      */
     public Output<Optional<String>> migrationType() {

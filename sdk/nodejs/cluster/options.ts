@@ -116,7 +116,7 @@ export class Options extends pulumi.CustomResource {
      */
     public readonly migrationCidr!: pulumi.Output<string | undefined>;
     /**
-     * Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).
+     * Cluster wide migration type. Must be `secure` | `insecure` (default is `secure`).
      */
     public readonly migrationType!: pulumi.Output<string | undefined>;
     /**
@@ -262,7 +262,7 @@ export interface OptionsState {
      */
     migrationCidr?: pulumi.Input<string>;
     /**
-     * Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).
+     * Cluster wide migration type. Must be `secure` | `insecure` (default is `secure`).
      */
     migrationType?: pulumi.Input<string>;
     /**
@@ -348,7 +348,7 @@ export interface OptionsArgs {
      */
     migrationCidr?: pulumi.Input<string>;
     /**
-     * Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).
+     * Cluster wide migration type. Must be `secure` | `insecure` (default is `secure`).
      */
     migrationType?: pulumi.Input<string>;
     /**

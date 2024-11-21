@@ -275,14 +275,14 @@ public final class OptionsState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).
+     * Cluster wide migration type. Must be `secure` | `insecure` (default is `secure`).
      * 
      */
     @Import(name="migrationType")
     private @Nullable Output<String> migrationType;
 
     /**
-     * @return Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).
+     * @return Cluster wide migration type. Must be `secure` | `insecure` (default is `secure`).
      * 
      */
     public Optional<Output<String>> migrationType() {
@@ -720,7 +720,7 @@ public final class OptionsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param migrationType Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).
+         * @param migrationType Cluster wide migration type. Must be `secure` | `insecure` (default is `secure`).
          * 
          * @return builder
          * 
@@ -731,7 +731,7 @@ public final class OptionsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param migrationType Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).
+         * @param migrationType Cluster wide migration type. Must be `secure` | `insecure` (default is `secure`).
          * 
          * @return builder
          * 

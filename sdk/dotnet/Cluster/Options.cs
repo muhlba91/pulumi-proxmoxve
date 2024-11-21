@@ -128,7 +128,7 @@ namespace Pulumi.ProxmoxVE.Cluster
         public Output<string?> MigrationCidr { get; private set; } = null!;
 
         /// <summary>
-        /// Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).
+        /// Cluster wide migration type. Must be `secure` | `insecure` (default is `secure`).
         /// </summary>
         [Output("migrationType")]
         public Output<string?> MigrationType { get; private set; } = null!;
@@ -295,7 +295,7 @@ namespace Pulumi.ProxmoxVE.Cluster
         public Input<string>? MigrationCidr { get; set; }
 
         /// <summary>
-        /// Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).
+        /// Cluster wide migration type. Must be `secure` | `insecure` (default is `secure`).
         /// </summary>
         [Input("migrationType")]
         public Input<string>? MigrationType { get; set; }
@@ -423,7 +423,7 @@ namespace Pulumi.ProxmoxVE.Cluster
         public Input<string>? MigrationCidr { get; set; }
 
         /// <summary>
-        /// Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).
+        /// Cluster wide migration type. Must be `secure` | `insecure` (default is `secure`).
         /// </summary>
         [Input("migrationType")]
         public Input<string>? MigrationType { get; set; }

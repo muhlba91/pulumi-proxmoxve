@@ -59,7 +59,7 @@ type Options struct {
 	MaxWorkers pulumi.IntPtrOutput `pulumi:"maxWorkers"`
 	// Cluster wide migration network CIDR.
 	MigrationCidr pulumi.StringPtrOutput `pulumi:"migrationCidr"`
-	// Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).
+	// Cluster wide migration type. Must be `secure` | `insecure` (default is `secure`).
 	MigrationType pulumi.StringPtrOutput `pulumi:"migrationType"`
 	// The ranges for the next free VM ID auto-selection pool.
 	NextId OptionsNextIdPtrOutput `pulumi:"nextId"`
@@ -131,7 +131,7 @@ type optionsState struct {
 	MaxWorkers *int `pulumi:"maxWorkers"`
 	// Cluster wide migration network CIDR.
 	MigrationCidr *string `pulumi:"migrationCidr"`
-	// Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).
+	// Cluster wide migration type. Must be `secure` | `insecure` (default is `secure`).
 	MigrationType *string `pulumi:"migrationType"`
 	// The ranges for the next free VM ID auto-selection pool.
 	NextId *OptionsNextId `pulumi:"nextId"`
@@ -174,7 +174,7 @@ type OptionsState struct {
 	MaxWorkers pulumi.IntPtrInput
 	// Cluster wide migration network CIDR.
 	MigrationCidr pulumi.StringPtrInput
-	// Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).
+	// Cluster wide migration type. Must be `secure` | `insecure` (default is `secure`).
 	MigrationType pulumi.StringPtrInput
 	// The ranges for the next free VM ID auto-selection pool.
 	NextId OptionsNextIdPtrInput
@@ -221,7 +221,7 @@ type optionsArgs struct {
 	MaxWorkers *int `pulumi:"maxWorkers"`
 	// Cluster wide migration network CIDR.
 	MigrationCidr *string `pulumi:"migrationCidr"`
-	// Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).
+	// Cluster wide migration type. Must be `secure` | `insecure` (default is `secure`).
 	MigrationType *string `pulumi:"migrationType"`
 	// The ranges for the next free VM ID auto-selection pool.
 	NextId *OptionsNextId `pulumi:"nextId"`
@@ -265,7 +265,7 @@ type OptionsArgs struct {
 	MaxWorkers pulumi.IntPtrInput
 	// Cluster wide migration network CIDR.
 	MigrationCidr pulumi.StringPtrInput
-	// Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).
+	// Cluster wide migration type. Must be `secure` | `insecure` (default is `secure`).
 	MigrationType pulumi.StringPtrInput
 	// The ranges for the next free VM ID auto-selection pool.
 	NextId OptionsNextIdPtrInput
@@ -445,7 +445,7 @@ func (o OptionsOutput) MigrationCidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Options) pulumi.StringPtrOutput { return v.MigrationCidr }).(pulumi.StringPtrOutput)
 }
 
-// Cluster wide migration type. Must be `secure` | `unsecure` (default is `secure`).
+// Cluster wide migration type. Must be `secure` | `insecure` (default is `secure`).
 func (o OptionsOutput) MigrationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Options) pulumi.StringPtrOutput { return v.MigrationType }).(pulumi.StringPtrOutput)
 }
