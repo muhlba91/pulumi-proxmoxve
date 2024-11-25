@@ -29,7 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := Permission.NewPool(ctx, "operationsPool", &Permission.PoolArgs{
-//				Comment: pulumi.String("Managed by Terraform"),
+//				Comment: pulumi.String("Managed by Pulumi"),
 //				PoolId:  pulumi.String("operations-pool"),
 //			})
 //			if err != nil {

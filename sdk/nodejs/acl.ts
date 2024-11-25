@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
  * const operationsAutomation = new proxmoxve.permission.User("operationsAutomation", {
- *     comment: "Managed by Terraform",
+ *     comment: "Managed by Pulumi",
  *     password: "a-strong-password",
  *     userId: "operations-automation@pve",
  * });

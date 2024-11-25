@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *     resourceId: "vm:123",
  *     state: "started",
  *     group: "example",
- *     comment: "Managed by Terraform",
+ *     comment: "Managed by Pulumi",
  * }, {
  *     dependsOn: [proxmox_virtual_environment_hagroup.example],
  * });

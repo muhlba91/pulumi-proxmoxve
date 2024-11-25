@@ -251,7 +251,7 @@ class FirewallIPSet(pulumi.CustomResource):
         ipset = proxmoxve.network.FirewallIPSet("ipset",
             node_name=proxmox_virtual_environment_vm["example"]["node_name"],
             vm_id=proxmox_virtual_environment_vm["example"]["vm_id"],
-            comment="Managed by Terraform",
+            comment="Managed by Pulumi",
             cidrs=[
                 {
                     "name": "192.168.0.0/23",
@@ -298,7 +298,7 @@ class FirewallIPSet(pulumi.CustomResource):
         ipset = proxmoxve.network.FirewallIPSet("ipset",
             node_name=proxmox_virtual_environment_vm["example"]["node_name"],
             vm_id=proxmox_virtual_environment_vm["example"]["vm_id"],
-            comment="Managed by Terraform",
+            comment="Managed by Pulumi",
             cidrs=[
                 {
                     "name": "192.168.0.0/23",

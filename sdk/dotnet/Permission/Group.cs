@@ -24,7 +24,7 @@ namespace Pulumi.ProxmoxVE.Permission
     /// {
     ///     var operationsTeam = new ProxmoxVE.Permission.Group("operationsTeam", new()
     ///     {
-    ///         Comment = "Managed by Terraform",
+    ///         Comment = "Managed by Pulumi",
     ///         GroupId = "operations-team",
     ///     });
     /// 

@@ -131,7 +131,7 @@ class Pool(pulumi.CustomResource):
         import pulumi_proxmoxve as proxmoxve
 
         operations_pool = proxmoxve.permission.Pool("operationsPool",
-            comment="Managed by Terraform",
+            comment="Managed by Pulumi",
             pool_id="operations-pool")
         ```
 
@@ -166,7 +166,7 @@ class Pool(pulumi.CustomResource):
         import pulumi_proxmoxve as proxmoxve
 
         operations_pool = proxmoxve.permission.Pool("operationsPool",
-            comment="Managed by Terraform",
+            comment="Managed by Pulumi",
             pool_id="operations-pool")
         ```
 

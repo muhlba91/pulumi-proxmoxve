@@ -34,7 +34,7 @@ import (
 //				NodeName: pulumi.Any(proxmox_virtual_environment_vm.Example.Node_name),
 //				VmId:     pulumi.Any(proxmox_virtual_environment_vm.Example.Vm_id),
 //				Cidr:     pulumi.String("192.168.0.0/23"),
-//				Comment:  pulumi.String("Managed by Terraform"),
+//				Comment:  pulumi.String("Managed by Pulumi"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				proxmox_virtual_environment_vm.Example,
 //			}))
@@ -43,7 +43,7 @@ import (
 //			}
 //			_, err = Network.NewFirewallAlias(ctx, "ubuntuVm", &Network.FirewallAliasArgs{
 //				Cidr:    pulumi.String("192.168.0.1"),
-//				Comment: pulumi.String("Managed by Terraform"),
+//				Comment: pulumi.String("Managed by Pulumi"),
 //			})
 //			if err != nil {
 //				return err

@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *         propagate: true,
  *         roleId: operationsMonitoring.roleId,
  *     }],
- *     comment: "Managed by Terraform",
+ *     comment: "Managed by Pulumi",
  *     password: "a-strong-password",
  *     userId: "operations-automation@pve",
  * });

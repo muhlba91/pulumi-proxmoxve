@@ -29,7 +29,7 @@ namespace Pulumi.ProxmoxVE.Network
     ///         NodeName = proxmox_virtual_environment_vm.Example.Node_name,
     ///         VmId = proxmox_virtual_environment_vm.Example.Vm_id,
     ///         Cidr = "192.168.0.0/23",
-    ///         Comment = "Managed by Terraform",
+    ///         Comment = "Managed by Pulumi",
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =
@@ -41,7 +41,7 @@ namespace Pulumi.ProxmoxVE.Network
     ///     var ubuntuVm = new ProxmoxVE.Network.FirewallAlias("ubuntuVm", new()
     ///     {
     ///         Cidr = "192.168.0.1",
-    ///         Comment = "Managed by Terraform",
+    ///         Comment = "Managed by Pulumi",
     ///     });
     /// 
     /// });

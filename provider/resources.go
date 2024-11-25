@@ -26,7 +26,7 @@ import (
 	"github.com/bpg/terraform-provider-proxmox/proxmoxtf/provider"
 	"github.com/ettle/strcase"
 	"github.com/muhlba91/pulumi-proxmoxve/provider/pkg/version"
-	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
+	pf "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"

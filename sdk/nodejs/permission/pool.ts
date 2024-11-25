@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
  * const operationsPool = new proxmoxve.permission.Pool("operationsPool", {
- *     comment: "Managed by Terraform",
+ *     comment: "Managed by Pulumi",
  *     poolId: "operations-pool",
  * });
  * ```

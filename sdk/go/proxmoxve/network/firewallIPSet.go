@@ -31,7 +31,7 @@ import (
 //			_, err := Network.NewFirewallIPSet(ctx, "ipset", &Network.FirewallIPSetArgs{
 //				NodeName: pulumi.Any(proxmox_virtual_environment_vm.Example.Node_name),
 //				VmId:     pulumi.Any(proxmox_virtual_environment_vm.Example.Vm_id),
-//				Comment:  pulumi.String("Managed by Terraform"),
+//				Comment:  pulumi.String("Managed by Pulumi"),
 //				Cidrs: network.FirewallIPSetCidrArray{
 //					&network.FirewallIPSetCidrArgs{
 //						Name:    pulumi.String("192.168.0.0/23"),

@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *             .resourceId("vm:123")
  *             .state("started")
  *             .group("example")
- *             .comment("Managed by Terraform")
+ *             .comment("Managed by Pulumi")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(proxmox_virtual_environment_hagroup.example())
  *                 .build());

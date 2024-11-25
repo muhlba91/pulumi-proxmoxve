@@ -25,7 +25,7 @@ namespace Pulumi.ProxmoxVE.User
     ///     // if creating a user token, the user must be created first
     ///     var user = new ProxmoxVE.Permission.User("user", new()
     ///     {
-    ///         Comment = "Managed by Terraform",
+    ///         Comment = "Managed by Pulumi",
     ///         Email = "user@pve",
     ///         Enabled = true,
     ///         ExpirationDate = "2034-01-01T22:00:00Z",
@@ -34,7 +34,7 @@ namespace Pulumi.ProxmoxVE.User
     /// 
     ///     var userToken = new ProxmoxVE.User.Token("userToken", new()
     ///     {
-    ///         Comment = "Managed by Terraform",
+    ///         Comment = "Managed by Pulumi",
     ///         ExpirationDate = "2033-01-01T22:00:00Z",
     ///         TokenName = "tk1",
     ///         UserId = user.UserId,

@@ -250,11 +250,11 @@ class FirewallAlias(pulumi.CustomResource):
             node_name=proxmox_virtual_environment_vm["example"]["node_name"],
             vm_id=proxmox_virtual_environment_vm["example"]["vm_id"],
             cidr="192.168.0.0/23",
-            comment="Managed by Terraform",
+            comment="Managed by Pulumi",
             opts = pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_vm["example"]]))
         ubuntu_vm = proxmoxve.network.FirewallAlias("ubuntuVm",
             cidr="192.168.0.1",
-            comment="Managed by Terraform")
+            comment="Managed by Pulumi")
         ```
 
         :param str resource_name: The name of the resource.
@@ -287,11 +287,11 @@ class FirewallAlias(pulumi.CustomResource):
             node_name=proxmox_virtual_environment_vm["example"]["node_name"],
             vm_id=proxmox_virtual_environment_vm["example"]["vm_id"],
             cidr="192.168.0.0/23",
-            comment="Managed by Terraform",
+            comment="Managed by Pulumi",
             opts = pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_vm["example"]]))
         ubuntu_vm = proxmoxve.network.FirewallAlias("ubuntuVm",
             cidr="192.168.0.1",
-            comment="Managed by Terraform")
+            comment="Managed by Pulumi")
         ```
 
         :param str resource_name: The name of the resource.

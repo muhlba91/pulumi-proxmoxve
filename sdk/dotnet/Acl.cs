@@ -27,7 +27,7 @@ namespace Pulumi.ProxmoxVE
     /// {
     ///     var operationsAutomation = new ProxmoxVE.Permission.User("operationsAutomation", new()
     ///     {
-    ///         Comment = "Managed by Terraform",
+    ///         Comment = "Managed by Pulumi",
     ///         Password = "a-strong-password",
     ///         UserId = "operations-automation@pve",
     ///     });

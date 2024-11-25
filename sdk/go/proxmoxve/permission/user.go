@@ -45,7 +45,7 @@ import (
 //						RoleId:    operationsMonitoring.RoleId,
 //					},
 //				},
-//				Comment:  pulumi.String("Managed by Terraform"),
+//				Comment:  pulumi.String("Managed by Pulumi"),
 //				Password: pulumi.String("a-strong-password"),
 //				UserId:   pulumi.String("operations-automation@pve"),
 //			})

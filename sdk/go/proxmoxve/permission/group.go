@@ -29,7 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := Permission.NewGroup(ctx, "operationsTeam", &Permission.GroupArgs{
-//				Comment: pulumi.String("Managed by Terraform"),
+//				Comment: pulumi.String("Managed by Pulumi"),
 //				GroupId: pulumi.String("operations-team"),
 //			})
 //			if err != nil {

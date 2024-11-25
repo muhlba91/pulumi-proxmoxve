@@ -281,7 +281,7 @@ class HAResource(pulumi.CustomResource):
             resource_id="vm:123",
             state="started",
             group="example",
-            comment="Managed by Terraform",
+            comment="Managed by Pulumi",
             opts = pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_hagroup["example"]]))
         ```
 
@@ -324,7 +324,7 @@ class HAResource(pulumi.CustomResource):
             resource_id="vm:123",
             state="started",
             group="example",
-            comment="Managed by Terraform",
+            comment="Managed by Pulumi",
             opts = pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_hagroup["example"]]))
         ```
 

@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var operationsPool = new Pool("operationsPool", PoolArgs.builder()
- *             .comment("Managed by Terraform")
+ *             .comment("Managed by Pulumi")
  *             .poolId("operations-pool")
  *             .build());
  * 

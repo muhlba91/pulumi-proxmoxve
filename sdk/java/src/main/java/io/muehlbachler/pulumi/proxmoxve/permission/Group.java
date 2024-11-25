@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var operationsTeam = new Group("operationsTeam", GroupArgs.builder()
- *             .comment("Managed by Terraform")
+ *             .comment("Managed by Pulumi")
  *             .groupId("operations-team")
  *             .build());
  * 

@@ -249,7 +249,7 @@ class FirewallSecurityGroup(pulumi.CustomResource):
         import pulumi_proxmoxve as proxmoxve
 
         webserver = proxmoxve.network.FirewallSecurityGroup("webserver",
-            comment="Managed by Terraform",
+            comment="Managed by Pulumi",
             rules=[
                 {
                     "action": "ACCEPT",
@@ -309,7 +309,7 @@ class FirewallSecurityGroup(pulumi.CustomResource):
         import pulumi_proxmoxve as proxmoxve
 
         webserver = proxmoxve.network.FirewallSecurityGroup("webserver",
-            comment="Managed by Terraform",
+            comment="Managed by Pulumi",
             rules=[
                 {
                     "action": "ACCEPT",

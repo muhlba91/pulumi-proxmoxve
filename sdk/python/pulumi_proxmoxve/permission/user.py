@@ -420,7 +420,7 @@ class User(pulumi.CustomResource):
                 "propagate": True,
                 "role_id": operations_monitoring.role_id,
             }],
-            comment="Managed by Terraform",
+            comment="Managed by Pulumi",
             password="a-strong-password",
             user_id="operations-automation@pve")
         ```
@@ -473,7 +473,7 @@ class User(pulumi.CustomResource):
                 "propagate": True,
                 "role_id": operations_monitoring.role_id,
             }],
-            comment="Managed by Terraform",
+            comment="Managed by Pulumi",
             password="a-strong-password",
             user_id="operations-automation@pve")
         ```

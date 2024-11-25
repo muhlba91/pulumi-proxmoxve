@@ -31,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := Network.NewFirewallSecurityGroup(ctx, "webserver", &Network.FirewallSecurityGroupArgs{
-//				Comment: pulumi.String("Managed by Terraform"),
+//				Comment: pulumi.String("Managed by Pulumi"),
 //				Rules: network.FirewallSecurityGroupRuleArray{
 //					&network.FirewallSecurityGroupRuleArgs{
 //						Action:  pulumi.String("ACCEPT"),

@@ -19,13 +19,13 @@ import * as utilities from "../utilities";
  *     nodeName: proxmox_virtual_environment_vm.example.node_name,
  *     vmId: proxmox_virtual_environment_vm.example.vm_id,
  *     cidr: "192.168.0.0/23",
- *     comment: "Managed by Terraform",
+ *     comment: "Managed by Pulumi",
  * }, {
  *     dependsOn: [proxmox_virtual_environment_vm.example],
  * });
  * const ubuntuVm = new proxmoxve.network.FirewallAlias("ubuntuVm", {
  *     cidr: "192.168.0.1",
- *     comment: "Managed by Terraform",
+ *     comment: "Managed by Pulumi",
  * });
  * ```
  */

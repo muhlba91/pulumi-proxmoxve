@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         // if creating a user token, the user must be created first
  *         var user = new User("user", UserArgs.builder()
- *             .comment("Managed by Terraform")
+ *             .comment("Managed by Pulumi")
  *             .email("user}{@literal @}{@code pve")
  *             .enabled(true)
  *             .expirationDate("2034-01-01T22:00:00Z")
@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var userToken = new Token("userToken", TokenArgs.builder()
- *             .comment("Managed by Terraform")
+ *             .comment("Managed by Pulumi")
  *             .expirationDate("2033-01-01T22:00:00Z")
  *             .tokenName("tk1")
  *             .userId(user.userId())
