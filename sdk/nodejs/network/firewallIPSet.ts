@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * const ipset = new proxmoxve.network.FirewallIPSet("ipset", {
  *     nodeName: proxmox_virtual_environment_vm.example.node_name,
  *     vmId: proxmox_virtual_environment_vm.example.vm_id,
- *     comment: "Managed by Terraform",
+ *     comment: "Managed by Pulumi",
  *     cidrs: [
  *         {
  *             name: "192.168.0.0/23",

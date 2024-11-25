@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *         var ipset = new FirewallIPSet("ipset", FirewallIPSetArgs.builder()
  *             .nodeName(proxmox_virtual_environment_vm.example().node_name())
  *             .vmId(proxmox_virtual_environment_vm.example().vm_id())
- *             .comment("Managed by Terraform")
+ *             .comment("Managed by Pulumi")
  *             .cidrs(            
  *                 FirewallIPSetCidrArgs.builder()
  *                     .name("192.168.0.0/23")

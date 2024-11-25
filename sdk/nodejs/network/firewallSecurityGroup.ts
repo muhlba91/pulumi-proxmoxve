@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
  * const webserver = new proxmoxve.network.FirewallSecurityGroup("webserver", {
- *     comment: "Managed by Terraform",
+ *     comment: "Managed by Pulumi",
  *     rules: [
  *         {
  *             action: "ACCEPT",

@@ -33,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			operationsAutomation, err := Permission.NewUser(ctx, "operationsAutomation", &Permission.UserArgs{
-//				Comment:  pulumi.String("Managed by Terraform"),
+//				Comment:  pulumi.String("Managed by Pulumi"),
 //				Password: pulumi.String("a-strong-password"),
 //				UserId:   pulumi.String("operations-automation@pve"),
 //			})

@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var webserver = new FirewallSecurityGroup("webserver", FirewallSecurityGroupArgs.builder()
- *             .comment("Managed by Terraform")
+ *             .comment("Managed by Pulumi")
  *             .rules(            
  *                 FirewallSecurityGroupRuleArgs.builder()
  *                     .action("ACCEPT")

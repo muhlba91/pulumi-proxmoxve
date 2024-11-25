@@ -164,7 +164,7 @@ class Group(pulumi.CustomResource):
         import pulumi_proxmoxve as proxmoxve
 
         operations_team = proxmoxve.permission.Group("operationsTeam",
-            comment="Managed by Terraform",
+            comment="Managed by Pulumi",
             group_id="operations-team")
         ```
 
@@ -200,7 +200,7 @@ class Group(pulumi.CustomResource):
         import pulumi_proxmoxve as proxmoxve
 
         operations_team = proxmoxve.permission.Group("operationsTeam",
-            comment="Managed by Terraform",
+            comment="Managed by Pulumi",
             group_id="operations-team")
         ```
 

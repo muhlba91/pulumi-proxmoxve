@@ -26,7 +26,7 @@ namespace Pulumi.ProxmoxVE.Network
     /// {
     ///     var webserver = new ProxmoxVE.Network.FirewallSecurityGroup("webserver", new()
     ///     {
-    ///         Comment = "Managed by Terraform",
+    ///         Comment = "Managed by Pulumi",
     ///         Rules = new[]
     ///         {
     ///             new ProxmoxVE.Network.Inputs.FirewallSecurityGroupRuleArgs

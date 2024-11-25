@@ -15,14 +15,14 @@ import * as utilities from "../utilities";
  *
  * // if creating a user token, the user must be created first
  * const user = new proxmoxve.permission.User("user", {
- *     comment: "Managed by Terraform",
+ *     comment: "Managed by Pulumi",
  *     email: "user@pve",
  *     enabled: true,
  *     expirationDate: "2034-01-01T22:00:00Z",
  *     userId: "user@pve",
  * });
  * const userToken = new proxmoxve.user.Token("userToken", {
- *     comment: "Managed by Terraform",
+ *     comment: "Managed by Pulumi",
  *     expirationDate: "2033-01-01T22:00:00Z",
  *     tokenName: "tk1",
  *     userId: user.userId,

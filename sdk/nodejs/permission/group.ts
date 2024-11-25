@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
  * const operationsTeam = new proxmoxve.permission.Group("operationsTeam", {
- *     comment: "Managed by Terraform",
+ *     comment: "Managed by Pulumi",
  *     groupId: "operations-team",
  * });
  * ```

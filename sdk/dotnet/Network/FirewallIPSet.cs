@@ -27,7 +27,7 @@ namespace Pulumi.ProxmoxVE.Network
     ///     {
     ///         NodeName = proxmox_virtual_environment_vm.Example.Node_name,
     ///         VmId = proxmox_virtual_environment_vm.Example.Vm_id,
-    ///         Comment = "Managed by Terraform",
+    ///         Comment = "Managed by Pulumi",
     ///         Cidrs = new[]
     ///         {
     ///             new ProxmoxVE.Network.Inputs.FirewallIPSetCidrArgs

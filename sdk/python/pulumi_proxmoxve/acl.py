@@ -247,7 +247,7 @@ class Acl(pulumi.CustomResource):
         import pulumi_proxmoxve as proxmoxve
 
         operations_automation = proxmoxve.permission.User("operationsAutomation",
-            comment="Managed by Terraform",
+            comment="Managed by Pulumi",
             password="a-strong-password",
             user_id="operations-automation@pve")
         operations_monitoring = proxmoxve.permission.Role("operationsMonitoring",
@@ -298,7 +298,7 @@ class Acl(pulumi.CustomResource):
         import pulumi_proxmoxve as proxmoxve
 
         operations_automation = proxmoxve.permission.User("operationsAutomation",
-            comment="Managed by Terraform",
+            comment="Managed by Pulumi",
             password="a-strong-password",
             user_id="operations-automation@pve")
         operations_monitoring = proxmoxve.permission.Role("operationsMonitoring",

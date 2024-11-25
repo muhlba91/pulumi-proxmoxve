@@ -32,7 +32,7 @@ import (
 //				ResourceId: pulumi.String("vm:123"),
 //				State:      pulumi.String("started"),
 //				Group:      pulumi.String("example"),
-//				Comment:    pulumi.String("Managed by Terraform"),
+//				Comment:    pulumi.String("Managed by Pulumi"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				proxmox_virtual_environment_hagroup.Example,
 //			}))

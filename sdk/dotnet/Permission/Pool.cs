@@ -24,7 +24,7 @@ namespace Pulumi.ProxmoxVE.Permission
     /// {
     ///     var operationsPool = new ProxmoxVE.Permission.Pool("operationsPool", new()
     ///     {
-    ///         Comment = "Managed by Terraform",
+    ///         Comment = "Managed by Pulumi",
     ///         PoolId = "operations-pool",
     ///     });
     /// 

@@ -21,7 +21,7 @@ import (
 	_ "embed"
 
 	proxmoxve "github.com/muhlba91/pulumi-proxmoxve/provider"
-	"github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 )
 
 //go:embed schema-embed.json

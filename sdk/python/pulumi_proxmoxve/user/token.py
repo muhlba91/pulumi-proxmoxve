@@ -228,13 +228,13 @@ class Token(pulumi.CustomResource):
 
         # if creating a user token, the user must be created first
         user = proxmoxve.permission.User("user",
-            comment="Managed by Terraform",
+            comment="Managed by Pulumi",
             email="user@pve",
             enabled=True,
             expiration_date="2034-01-01T22:00:00Z",
             user_id="user@pve")
         user_token = proxmoxve.user.Token("userToken",
-            comment="Managed by Terraform",
+            comment="Managed by Pulumi",
             expiration_date="2033-01-01T22:00:00Z",
             token_name="tk1",
             user_id=user.user_id)
@@ -275,13 +275,13 @@ class Token(pulumi.CustomResource):
 
         # if creating a user token, the user must be created first
         user = proxmoxve.permission.User("user",
-            comment="Managed by Terraform",
+            comment="Managed by Pulumi",
             email="user@pve",
             enabled=True,
             expiration_date="2034-01-01T22:00:00Z",
             user_id="user@pve")
         user_token = proxmoxve.user.Token("userToken",
-            comment="Managed by Terraform",
+            comment="Managed by Pulumi",
             expiration_date="2033-01-01T22:00:00Z",
             token_name="tk1",
             user_id=user.user_id)

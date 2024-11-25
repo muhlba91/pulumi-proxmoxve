@@ -27,7 +27,7 @@ namespace Pulumi.ProxmoxVE.HA
     ///         ResourceId = "vm:123",
     ///         State = "started",
     ///         Group = "example",
-    ///         Comment = "Managed by Terraform",
+    ///         Comment = "Managed by Pulumi",
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =

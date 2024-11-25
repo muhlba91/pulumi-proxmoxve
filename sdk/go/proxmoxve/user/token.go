@@ -31,7 +31,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// if creating a user token, the user must be created first
 //			user, err := Permission.NewUser(ctx, "user", &Permission.UserArgs{
-//				Comment:        pulumi.String("Managed by Terraform"),
+//				Comment:        pulumi.String("Managed by Pulumi"),
 //				Email:          pulumi.String("user@pve"),
 //				Enabled:        pulumi.Bool(true),
 //				ExpirationDate: pulumi.String("2034-01-01T22:00:00Z"),
@@ -41,7 +41,7 @@ import (
 //				return err
 //			}
 //			_, err = User.NewToken(ctx, "userToken", &User.TokenArgs{
-//				Comment:        pulumi.String("Managed by Terraform"),
+//				Comment:        pulumi.String("Managed by Pulumi"),
 //				ExpirationDate: pulumi.String("2033-01-01T22:00:00Z"),
 //				TokenName:      pulumi.String("tk1"),
 //				UserId:         user.UserId,

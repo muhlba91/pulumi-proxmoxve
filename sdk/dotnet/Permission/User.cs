@@ -42,7 +42,7 @@ namespace Pulumi.ProxmoxVE.Permission
     ///                 RoleId = operationsMonitoring.RoleId,
     ///             },
     ///         },
-    ///         Comment = "Managed by Terraform",
+    ///         Comment = "Managed by Pulumi",
     ///         Password = "a-strong-password",
     ///         UserId = "operations-automation@pve",
     ///     });

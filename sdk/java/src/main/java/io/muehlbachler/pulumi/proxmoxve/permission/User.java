@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *                 .propagate(true)
  *                 .roleId(operationsMonitoring.roleId())
  *                 .build())
- *             .comment("Managed by Terraform")
+ *             .comment("Managed by Pulumi")
  *             .password("a-strong-password")
  *             .userId("operations-automation}{@literal @}{@code pve")
  *             .build());

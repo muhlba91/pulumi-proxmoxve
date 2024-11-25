@@ -50,14 +50,14 @@ import javax.annotation.Nullable;
  *             .nodeName(proxmox_virtual_environment_vm.example().node_name())
  *             .vmId(proxmox_virtual_environment_vm.example().vm_id())
  *             .cidr("192.168.0.0/23")
- *             .comment("Managed by Terraform")
+ *             .comment("Managed by Pulumi")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(proxmox_virtual_environment_vm.example())
  *                 .build());
  * 
  *         var ubuntuVm = new FirewallAlias("ubuntuVm", FirewallAliasArgs.builder()
  *             .cidr("192.168.0.1")
- *             .comment("Managed by Terraform")
+ *             .comment("Managed by Pulumi")
  *             .build());
  * 
  *     }
