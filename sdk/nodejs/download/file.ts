@@ -107,7 +107,7 @@ export class File extends pulumi.CustomResource {
      */
     public readonly datastoreId!: pulumi.Output<string>;
     /**
-     * Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst`.
+     * Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
      */
     public readonly decompressionAlgorithm!: pulumi.Output<string | undefined>;
     /**
@@ -223,7 +223,7 @@ export interface FileState {
      */
     datastoreId?: pulumi.Input<string>;
     /**
-     * Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst`.
+     * Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
      */
     decompressionAlgorithm?: pulumi.Input<string>;
     /**
@@ -281,7 +281,7 @@ export interface FileArgs {
      */
     datastoreId: pulumi.Input<string>;
     /**
-     * Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst`.
+     * Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
      */
     decompressionAlgorithm?: pulumi.Input<string>;
     /**

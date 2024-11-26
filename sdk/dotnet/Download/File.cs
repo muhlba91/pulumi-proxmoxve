@@ -112,7 +112,7 @@ namespace Pulumi.ProxmoxVE.Download
         public Output<string> DatastoreId { get; private set; } = null!;
 
         /// <summary>
-        /// Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst`.
+        /// Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
         /// </summary>
         [Output("decompressionAlgorithm")]
         public Output<string?> DecompressionAlgorithm { get; private set; } = null!;
@@ -237,7 +237,7 @@ namespace Pulumi.ProxmoxVE.Download
         public Input<string> DatastoreId { get; set; } = null!;
 
         /// <summary>
-        /// Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst`.
+        /// Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
         /// </summary>
         [Input("decompressionAlgorithm")]
         public Input<string>? DecompressionAlgorithm { get; set; }
@@ -317,7 +317,7 @@ namespace Pulumi.ProxmoxVE.Download
         public Input<string>? DatastoreId { get; set; }
 
         /// <summary>
-        /// Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst`.
+        /// Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
         /// </summary>
         [Input("decompressionAlgorithm")]
         public Input<string>? DecompressionAlgorithm { get; set; }

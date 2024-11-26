@@ -3596,7 +3596,7 @@
                 },
                 "decompressionAlgorithm": {
                     "type": "string",
-                    "description": "Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst`.\n"
+                    "description": "Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.\n"
                 },
                 "fileName": {
                     "type": "string",
@@ -3662,7 +3662,7 @@
                 },
                 "decompressionAlgorithm": {
                     "type": "string",
-                    "description": "Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst`.\n"
+                    "description": "Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.\n"
                 },
                 "fileName": {
                     "type": "string",
@@ -3720,7 +3720,7 @@
                     },
                     "decompressionAlgorithm": {
                         "type": "string",
-                        "description": "Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst`.\n"
+                        "description": "Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.\n"
                     },
                     "fileName": {
                         "type": "string",

@@ -109,7 +109,7 @@ type File struct {
 	ContentType pulumi.StringOutput `pulumi:"contentType"`
 	// The identifier for the target datastore.
 	DatastoreId pulumi.StringOutput `pulumi:"datastoreId"`
-	// Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst`.
+	// Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
 	DecompressionAlgorithm pulumi.StringPtrOutput `pulumi:"decompressionAlgorithm"`
 	// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2`. Workaround is to use e.g. `.img` instead.
 	FileName pulumi.StringOutput `pulumi:"fileName"`
@@ -179,7 +179,7 @@ type fileState struct {
 	ContentType *string `pulumi:"contentType"`
 	// The identifier for the target datastore.
 	DatastoreId *string `pulumi:"datastoreId"`
-	// Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst`.
+	// Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
 	DecompressionAlgorithm *string `pulumi:"decompressionAlgorithm"`
 	// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2`. Workaround is to use e.g. `.img` instead.
 	FileName *string `pulumi:"fileName"`
@@ -208,7 +208,7 @@ type FileState struct {
 	ContentType pulumi.StringPtrInput
 	// The identifier for the target datastore.
 	DatastoreId pulumi.StringPtrInput
-	// Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst`.
+	// Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
 	DecompressionAlgorithm pulumi.StringPtrInput
 	// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2`. Workaround is to use e.g. `.img` instead.
 	FileName pulumi.StringPtrInput
@@ -241,7 +241,7 @@ type fileArgs struct {
 	ContentType string `pulumi:"contentType"`
 	// The identifier for the target datastore.
 	DatastoreId string `pulumi:"datastoreId"`
-	// Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst`.
+	// Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
 	DecompressionAlgorithm *string `pulumi:"decompressionAlgorithm"`
 	// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2`. Workaround is to use e.g. `.img` instead.
 	FileName *string `pulumi:"fileName"`
@@ -269,7 +269,7 @@ type FileArgs struct {
 	ContentType pulumi.StringInput
 	// The identifier for the target datastore.
 	DatastoreId pulumi.StringInput
-	// Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst`.
+	// Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
 	DecompressionAlgorithm pulumi.StringPtrInput
 	// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2`. Workaround is to use e.g. `.img` instead.
 	FileName pulumi.StringPtrInput
@@ -394,7 +394,7 @@ func (o FileOutput) DatastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *File) pulumi.StringOutput { return v.DatastoreId }).(pulumi.StringOutput)
 }
 
-// Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst`.
+// Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
 func (o FileOutput) DecompressionAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *File) pulumi.StringPtrOutput { return v.DecompressionAlgorithm }).(pulumi.StringPtrOutput)
 }

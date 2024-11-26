@@ -163,14 +163,14 @@ public class File extends com.pulumi.resources.CustomResource {
         return this.datastoreId;
     }
     /**
-     * Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst`.
+     * Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
      * 
      */
     @Export(name="decompressionAlgorithm", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> decompressionAlgorithm;
 
     /**
-     * @return Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst`.
+     * @return Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
      * 
      */
     public Output<Optional<String>> decompressionAlgorithm() {

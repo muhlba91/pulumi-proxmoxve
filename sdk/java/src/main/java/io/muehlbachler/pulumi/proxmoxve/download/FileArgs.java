@@ -79,14 +79,14 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst`.
+     * Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
      * 
      */
     @Import(name="decompressionAlgorithm")
     private @Nullable Output<String> decompressionAlgorithm;
 
     /**
-     * @return Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst`.
+     * @return Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
      * 
      */
     public Optional<Output<String>> decompressionAlgorithm() {
@@ -318,7 +318,7 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param decompressionAlgorithm Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst`.
+         * @param decompressionAlgorithm Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
          * 
          * @return builder
          * 
@@ -329,7 +329,7 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param decompressionAlgorithm Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst`.
+         * @param decompressionAlgorithm Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
          * 
          * @return builder
          * 

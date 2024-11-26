@@ -39,7 +39,7 @@ class FileArgs:
         :param pulumi.Input[str] url: The URL to download the file from. Format `https?://.*`.
         :param pulumi.Input[str] checksum: The expected checksum of the file.
         :param pulumi.Input[str] checksum_algorithm: The algorithm to calculate the checksum of the file. Must be `md5` | `sha1` | `sha224` | `sha256` | `sha384` | `sha512`.
-        :param pulumi.Input[str] decompression_algorithm: Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst`.
+        :param pulumi.Input[str] decompression_algorithm: Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
         :param pulumi.Input[str] file_name: The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2`. Workaround is to use e.g. `.img` instead.
         :param pulumi.Input[bool] overwrite: If `true` and size of uploaded file is different, than size from `url` Content-Length header, file will be downloaded again. If `false`, there will be no checks.
         :param pulumi.Input[bool] overwrite_unmanaged: If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
@@ -143,7 +143,7 @@ class FileArgs:
     @pulumi.getter(name="decompressionAlgorithm")
     def decompression_algorithm(self) -> Optional[pulumi.Input[str]]:
         """
-        Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst`.
+        Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
         """
         return pulumi.get(self, "decompression_algorithm")
 
@@ -234,7 +234,7 @@ class _FileState:
         :param pulumi.Input[str] checksum_algorithm: The algorithm to calculate the checksum of the file. Must be `md5` | `sha1` | `sha224` | `sha256` | `sha384` | `sha512`.
         :param pulumi.Input[str] content_type: The file content type. Must be `iso` for VM images or `vztmpl` for LXC images.
         :param pulumi.Input[str] datastore_id: The identifier for the target datastore.
-        :param pulumi.Input[str] decompression_algorithm: Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst`.
+        :param pulumi.Input[str] decompression_algorithm: Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
         :param pulumi.Input[str] file_name: The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2`. Workaround is to use e.g. `.img` instead.
         :param pulumi.Input[str] node_name: The node name.
         :param pulumi.Input[bool] overwrite: If `true` and size of uploaded file is different, than size from `url` Content-Length header, file will be downloaded again. If `false`, there will be no checks.
@@ -323,7 +323,7 @@ class _FileState:
     @pulumi.getter(name="decompressionAlgorithm")
     def decompression_algorithm(self) -> Optional[pulumi.Input[str]]:
         """
-        Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst`.
+        Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
         """
         return pulumi.get(self, "decompression_algorithm")
 
@@ -504,7 +504,7 @@ class File(pulumi.CustomResource):
         :param pulumi.Input[str] checksum_algorithm: The algorithm to calculate the checksum of the file. Must be `md5` | `sha1` | `sha224` | `sha256` | `sha384` | `sha512`.
         :param pulumi.Input[str] content_type: The file content type. Must be `iso` for VM images or `vztmpl` for LXC images.
         :param pulumi.Input[str] datastore_id: The identifier for the target datastore.
-        :param pulumi.Input[str] decompression_algorithm: Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst`.
+        :param pulumi.Input[str] decompression_algorithm: Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
         :param pulumi.Input[str] file_name: The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2`. Workaround is to use e.g. `.img` instead.
         :param pulumi.Input[str] node_name: The node name.
         :param pulumi.Input[bool] overwrite: If `true` and size of uploaded file is different, than size from `url` Content-Length header, file will be downloaded again. If `false`, there will be no checks.
@@ -662,7 +662,7 @@ class File(pulumi.CustomResource):
         :param pulumi.Input[str] checksum_algorithm: The algorithm to calculate the checksum of the file. Must be `md5` | `sha1` | `sha224` | `sha256` | `sha384` | `sha512`.
         :param pulumi.Input[str] content_type: The file content type. Must be `iso` for VM images or `vztmpl` for LXC images.
         :param pulumi.Input[str] datastore_id: The identifier for the target datastore.
-        :param pulumi.Input[str] decompression_algorithm: Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst`.
+        :param pulumi.Input[str] decompression_algorithm: Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
         :param pulumi.Input[str] file_name: The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2`. Workaround is to use e.g. `.img` instead.
         :param pulumi.Input[str] node_name: The node name.
         :param pulumi.Input[bool] overwrite: If `true` and size of uploaded file is different, than size from `url` Content-Length header, file will be downloaded again. If `false`, there will be no checks.
@@ -727,7 +727,7 @@ class File(pulumi.CustomResource):
     @pulumi.getter(name="decompressionAlgorithm")
     def decompression_algorithm(self) -> pulumi.Output[Optional[str]]:
         """
-        Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst`.
+        Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
         """
         return pulumi.get(self, "decompression_algorithm")
 
