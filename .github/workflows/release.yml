@@ -62,7 +62,7 @@ jobs:
           go-version: "${{ matrix.go-version }}"
           cache-dependency-path: "**/*.sum"
 
-      - uses: jaxxstorm/action-install-gh-release@7f2440a9a41f74262d8f6433da138c799799a969 # v1.13.0
+      - uses: jaxxstorm/action-install-gh-release@cd6b2b78ad38bdd294341cda064ec0692b06215b # v1.14.0
         with:
           repo: pulumi/pulumictl
       - uses: pulumi/actions@c7fad9e2f0b79653172b36538b8b34b3c0291952 # v6.0.0
@@ -125,7 +125,7 @@ jobs:
           go-version: "${{ matrix.go-version }}"
           cache-dependency-path: "**/*.sum"
 
-      - uses: jaxxstorm/action-install-gh-release@7f2440a9a41f74262d8f6433da138c799799a969 # v1.13.0
+      - uses: jaxxstorm/action-install-gh-release@cd6b2b78ad38bdd294341cda064ec0692b06215b # v1.14.0
         with:
           repo: pulumi/pulumictl
       - uses: pulumi/actions@c7fad9e2f0b79653172b36538b8b34b3c0291952 # v6.0.0
