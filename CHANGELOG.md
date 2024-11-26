@@ -1,6 +1,27 @@
 # Changelog
 
 
+## [6.17.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.16.0...v6.17.0) (2024-11-26)
+
+
+### Features
+
+* prepare for upstream release v0.68.0 ([6539b95](https://github.com/muhlba91/pulumi-proxmoxve/commit/6539b951ccd3c07869c2afba226c5c3e913b2f6e))
+* update pulumi-terraform-bridge ([8ce3feb](https://github.com/muhlba91/pulumi-proxmoxve/commit/8ce3feb4b1cce03993fc2e61da1180120abd3835))
+
+
+### Miscellaneous Chores
+
+* **ci:** migrate renovate config ([4785896](https://github.com/muhlba91/pulumi-proxmoxve/commit/4785896e1e77c26e6b102bf69df251a44c50f560))
+* **deps:** update anchore/sbom-action action to v0.17.8 ([16a2657](https://github.com/muhlba91/pulumi-proxmoxve/commit/16a2657465e81cbbb66225b652e2d191bc76dc23))
+* **deps:** update jaxxstorm/action-install-gh-release action to v1.14.0 ([a9d2f95](https://github.com/muhlba91/pulumi-proxmoxve/commit/a9d2f95e606166afc78c86cbecf8c94b219103a9))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.68.0 ([a4d36d2](https://github.com/muhlba91/pulumi-proxmoxve/commit/a4d36d28c7b609c16401331ebc5df6f8c7f2999f))
+* **deps:** update module github.com/pulumi/pulumi-terraform-bridge/v3 to v3.96.0 ([ad418b6](https://github.com/muhlba91/pulumi-proxmoxve/commit/ad418b6af107e190e8d0b3bceab6ce530e7c69d3))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.140.0 ([26fa8a3](https://github.com/muhlba91/pulumi-proxmoxve/commit/26fa8a302c9582ed799d0394759c9a30c567a971))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.141.0 ([7c4b3bf](https://github.com/muhlba91/pulumi-proxmoxve/commit/7c4b3bf53c7ee893ee86d5618697c04350858081))
+* **deps:** update pulumi-java to 0.17.0 ([456cdbb](https://github.com/muhlba91/pulumi-proxmoxve/commit/456cdbbf877c6cbe3f87ec5d15855d274d53ee67))
+* **deps:** update pypa/gh-action-pypi-publish digest to 218af42 ([221eec8](https://github.com/muhlba91/pulumi-proxmoxve/commit/221eec8ae0ca833bb14b18b06120227cce5bcb6b))
+
 ## [6.16.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.15.3...v6.16.0) (2024-11-21)
 
 
