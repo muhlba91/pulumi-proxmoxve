@@ -228,6 +228,6 @@ jobs:
 
       - run: |
           REF_NAME=`git describe --abbrev=0 --tags`
-          echo "REF_NAME=${REF_NAME}" >> $GITHUB_ENV
-          git tag -a sdk/${{ env.REF_NAME }} -m sdk/${{ env.REF_NAME }}
-          git push origin sdk/${{ env.REF_NAME }}
+          echo "found tag: $REF_NAME"
+          git tag -a sdk/$REF_NAME -m sdk/$REF_NAME
+          git push origin sdk/$REF_NAME
