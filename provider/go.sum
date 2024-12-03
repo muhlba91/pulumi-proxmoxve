@@ -1922,8 +1922,6 @@ github.com/pulumi/pulumi-yaml v1.11.2 h1:MU7TTNbruGCSgNHhaBygjIbLWm3WSbd1q98GpMI
 github.com/pulumi/pulumi-yaml v1.11.2/go.mod h1:RdXRBupRGGAD1kbYNG1V1h6pyFnXisvQsl0AANvVjGI=
 github.com/pulumi/pulumi/pkg/v3 v3.140.0 h1:/bvHa19HY/6qHWvuAOVII8qr72MDGGczBWlPYlPo3j0=
 github.com/pulumi/pulumi/pkg/v3 v3.140.0/go.mod h1:rcTtSyisd7BzZTugNk/s9zlYgX9S0S10+pha3Tko6yM=
-github.com/pulumi/pulumi/sdk/v3 v3.141.0 h1:ojJlof5h2ZoqxSgpEKXJzW1efUtHAKdzdqj6v5R2wTA=
-github.com/pulumi/pulumi/sdk/v3 v3.141.0/go.mod h1:PvKsX88co8XuwuPdzolMvew5lZV+4JmZfkeSjj7A6dI=
 github.com/pulumi/pulumi/sdk/v3 v3.142.0 h1:SmcVddGuvwAh3g3XUVQQ5gVRQUKH1yZ6iETpDNHIHlw=
 github.com/pulumi/pulumi/sdk/v3 v3.142.0/go.mod h1:PvKsX88co8XuwuPdzolMvew5lZV+4JmZfkeSjj7A6dI=
 github.com/pulumi/schema-tools v0.1.2 h1:Fd9xvUjgck4NA+7/jSk7InqCUT4Kj940+EcnbQKpfZo=
