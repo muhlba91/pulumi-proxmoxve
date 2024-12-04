@@ -177,7 +177,7 @@ jobs:
         if: matrix.language == 'dotnet'
 
       - name: Publish Python SDK
-        uses: pypa/gh-action-pypi-publish@218af422c0fa05550b8e80695d044935d35a8652 # release/v1
+        uses: pypa/gh-action-pypi-publish@e7723a410eb01c55f02a75cf26a230ed14f1b19e # release/v1
         with:
           skip-existing: true
           packages-dir: "${{ github.workspace }}/sdk/python/bin/dist/"
