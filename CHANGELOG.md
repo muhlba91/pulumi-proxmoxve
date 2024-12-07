@@ -1,6 +1,28 @@
 # Changelog
 
 
+## [6.17.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.17.0...v6.17.1) (2024-12-07)
+
+
+### Bug Fixes
+
+* **ci:** change environment variable access for release pipeline tagging ([ed3c4c4](https://github.com/muhlba91/pulumi-proxmoxve/commit/ed3c4c44f512f0c452ca5849416efe79f48ff8a3))
+* prepare for upstream release v0.68.1 ([6b43f2a](https://github.com/muhlba91/pulumi-proxmoxve/commit/6b43f2abcb40444c60e8f0e898c1bebc30bc691f))
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/attest-build-provenance action to v2 ([ce9f58b](https://github.com/muhlba91/pulumi-proxmoxve/commit/ce9f58b77c1304daec5fe83c27b32cd8eb61ebe2))
+* **deps:** update actions/attest-build-provenance action to v2.0.1 ([1efce34](https://github.com/muhlba91/pulumi-proxmoxve/commit/1efce340e748af0cd4446cfc200db17626b27ef3))
+* **deps:** update dependency go to v1.23.4 ([c158efd](https://github.com/muhlba91/pulumi-proxmoxve/commit/c158efd9b17e4f89008624c3ebc9c12ef3386a5e))
+* **deps:** update github/codeql-action action to v3.27.6 ([623b304](https://github.com/muhlba91/pulumi-proxmoxve/commit/623b3046f63e0d6f717331fdd8ea9d5a9656c2a0))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.68.1 ([083761d](https://github.com/muhlba91/pulumi-proxmoxve/commit/083761d6a5c490b3b8575799df998d828779b335))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.142.0 ([cf9777d](https://github.com/muhlba91/pulumi-proxmoxve/commit/cf9777d7abffff81ef92db382cfcfae5988223c2))
+* **deps:** update pulumi-java to v0.18.0 ([c0e794b](https://github.com/muhlba91/pulumi-proxmoxve/commit/c0e794b42305d6053922f8e7c63e7bfbbf0390f0))
+* **deps:** update pypa/gh-action-pypi-publish digest to a536fa9 ([01ba150](https://github.com/muhlba91/pulumi-proxmoxve/commit/01ba1508eb77924f8f5cf17d51640c361bd1b3fd))
+* **deps:** update pypa/gh-action-pypi-publish digest to e7723a4 ([37293d1](https://github.com/muhlba91/pulumi-proxmoxve/commit/37293d10d5ebabbe4c6d0bc2c3637bac02568a19))
+* **deps:** update pypa/gh-action-pypi-publish digest to f371c3d ([1cc5449](https://github.com/muhlba91/pulumi-proxmoxve/commit/1cc54498c275aabf55707f25b79b3715038a5312))
+
 ## [6.17.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.16.0...v6.17.0) (2024-11-26)
 
 
