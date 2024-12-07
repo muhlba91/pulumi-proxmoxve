@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [6.17.2](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.17.1...v6.17.2) (2024-12-07)
+
+
+### Miscellaneous Chores
+
+* **deps:** update pypa/gh-action-pypi-publish digest to cbd6d01 ([2240ee6](https://github.com/muhlba91/pulumi-proxmoxve/commit/2240ee6ae69a55e1ab6dca507cb5fcecdbd39ad1))
+
 ## [6.17.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.17.0...v6.17.1) (2024-12-07)
 
 
