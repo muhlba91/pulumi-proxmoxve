@@ -1,6 +1,21 @@
 # Changelog
 
 
+## [6.17.2](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.17.1...v6.17.2) (2024-12-11)
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/attest-build-provenance action to v2.1.0 ([f59f0db](https://github.com/muhlba91/pulumi-proxmoxve/commit/f59f0dbb2227c87b221c8f2a3becf666f6195c3d))
+* **deps:** update actions/setup-go action to v5.2.0 ([161f47a](https://github.com/muhlba91/pulumi-proxmoxve/commit/161f47a8656095e3b0d56320cbdc9698a724589d))
+* **deps:** update github/codeql-action action to v3.27.7 ([1435050](https://github.com/muhlba91/pulumi-proxmoxve/commit/143505092e9473e65300cf23e3cd6f8d0bf09ca0))
+* **deps:** update module github.com/pulumi/pulumi-terraform-bridge/v3 to v3.97.0 ([f9decf7](https://github.com/muhlba91/pulumi-proxmoxve/commit/f9decf7b4612f87e446430fc48a548c3e81290fe))
+* **deps:** update module github.com/pulumi/pulumi-terraform-bridge/v3 to v3.97.1 ([5304383](https://github.com/muhlba91/pulumi-proxmoxve/commit/53043833197a3e60c2af0f648006c71faed71692))
+* **deps:** update pypa/gh-action-pypi-publish digest to 67339c7 ([f18e8e9](https://github.com/muhlba91/pulumi-proxmoxve/commit/f18e8e9b28e7eacb79eed0e0e22eabb34b971fa4))
+* **deps:** update pypa/gh-action-pypi-publish digest to 916e576 ([b031e84](https://github.com/muhlba91/pulumi-proxmoxve/commit/b031e8423360ccb60f90f41893fc5a6dd74ad3b6))
+* **deps:** update pypa/gh-action-pypi-publish digest to cbd6d01 ([2240ee6](https://github.com/muhlba91/pulumi-proxmoxve/commit/2240ee6ae69a55e1ab6dca507cb5fcecdbd39ad1))
+* **deps:** update pypa/gh-action-pypi-publish digest to daa8997 ([49fe7d2](https://github.com/muhlba91/pulumi-proxmoxve/commit/49fe7d2a7521175587622bdbaec4e2c504494a8a))
+
 ## [6.17.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.17.0...v6.17.1) (2024-12-07)
 
 
