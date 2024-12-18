@@ -1,6 +1,35 @@
 # Changelog
 
 
+## [6.18.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.17.1...v6.18.0) (2024-12-18)
+
+
+### Features
+
+* prepare for upstream release v0.69.0 ([4f57bdd](https://github.com/muhlba91/pulumi-proxmoxve/commit/4f57bdd24a3d69a373d62604fe8b1414b777487d))
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/attest-build-provenance action to v2.1.0 ([f59f0db](https://github.com/muhlba91/pulumi-proxmoxve/commit/f59f0dbb2227c87b221c8f2a3becf666f6195c3d))
+* **deps:** update actions/setup-go action to v5.2.0 ([161f47a](https://github.com/muhlba91/pulumi-proxmoxve/commit/161f47a8656095e3b0d56320cbdc9698a724589d))
+* **deps:** update actions/setup-java action to v4.6.0 ([522d58a](https://github.com/muhlba91/pulumi-proxmoxve/commit/522d58a0423904dd71602e1a312e9bb4492999cc))
+* **deps:** update actions/upload-artifact action to v4.5.0 ([529f46e](https://github.com/muhlba91/pulumi-proxmoxve/commit/529f46e94432f27869949fd461f067aa68a38e7a))
+* **deps:** update anchore/sbom-action action to v0.17.9 ([7db7dc2](https://github.com/muhlba91/pulumi-proxmoxve/commit/7db7dc24b9376c6e37edfc36f8e070ee36786985))
+* **deps:** update github/codeql-action action to v3.27.7 ([1435050](https://github.com/muhlba91/pulumi-proxmoxve/commit/143505092e9473e65300cf23e3cd6f8d0bf09ca0))
+* **deps:** update github/codeql-action action to v3.27.8 ([4a266f5](https://github.com/muhlba91/pulumi-proxmoxve/commit/4a266f546f8f013229024b93c78f9321b10b78d0))
+* **deps:** update github/codeql-action action to v3.27.9 ([2cbf4b8](https://github.com/muhlba91/pulumi-proxmoxve/commit/2cbf4b847a0bbe1950c8813dd1cf32aa094fe867))
+* **deps:** update gradle/actions action to v4.2.2 ([265d199](https://github.com/muhlba91/pulumi-proxmoxve/commit/265d199f0a08aa9d3b6241f3d8756efe95da4055))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.69.0 ([e9be4eb](https://github.com/muhlba91/pulumi-proxmoxve/commit/e9be4ebab001a65fb0839055348a92d0cc9cda56))
+* **deps:** update module github.com/pulumi/pulumi-terraform-bridge/v3 to v3.97.0 ([f9decf7](https://github.com/muhlba91/pulumi-proxmoxve/commit/f9decf7b4612f87e446430fc48a548c3e81290fe))
+* **deps:** update module github.com/pulumi/pulumi-terraform-bridge/v3 to v3.97.1 ([5304383](https://github.com/muhlba91/pulumi-proxmoxve/commit/53043833197a3e60c2af0f648006c71faed71692))
+* **deps:** update module github.com/pulumi/pulumi-terraform-bridge/v3 to v3.98.0 ([a2c5a5a](https://github.com/muhlba91/pulumi-proxmoxve/commit/a2c5a5a7cc63114865aa710c772d0726cc8b4e4b))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.143.0 ([7c27a81](https://github.com/muhlba91/pulumi-proxmoxve/commit/7c27a818ed0279b35d737fbd29c02945309ea1eb))
+* **deps:** update pypa/gh-action-pypi-publish digest to 67339c7 ([f18e8e9](https://github.com/muhlba91/pulumi-proxmoxve/commit/f18e8e9b28e7eacb79eed0e0e22eabb34b971fa4))
+* **deps:** update pypa/gh-action-pypi-publish digest to 916e576 ([b031e84](https://github.com/muhlba91/pulumi-proxmoxve/commit/b031e8423360ccb60f90f41893fc5a6dd74ad3b6))
+* **deps:** update pypa/gh-action-pypi-publish digest to cbd6d01 ([2240ee6](https://github.com/muhlba91/pulumi-proxmoxve/commit/2240ee6ae69a55e1ab6dca507cb5fcecdbd39ad1))
+* **deps:** update pypa/gh-action-pypi-publish digest to daa8997 ([49fe7d2](https://github.com/muhlba91/pulumi-proxmoxve/commit/49fe7d2a7521175587622bdbaec4e2c504494a8a))
+
 ## [6.17.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.17.0...v6.17.1) (2024-12-07)
 
 
