@@ -55,7 +55,7 @@ export interface GetRolesResult {
  * const availableRoles = proxmoxve.Permission.getRoles({});
  * ```
  */
-export function getRolesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetRolesResult> {
+export function getRolesOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRolesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("proxmoxve:Permission/getRoles:getRoles", {
     }, opts);

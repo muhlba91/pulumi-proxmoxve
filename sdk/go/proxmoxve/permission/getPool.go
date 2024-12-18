@@ -66,21 +66,11 @@ type LookupPoolResult struct {
 }
 
 func LookupPoolOutput(ctx *pulumi.Context, args LookupPoolOutputArgs, opts ...pulumi.InvokeOption) LookupPoolResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupPoolResultOutput, error) {
 			args := v.(LookupPoolArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupPoolResult
-			secret, err := ctx.InvokePackageRaw("proxmoxve:Permission/getPool:getPool", args, &rv, "", opts...)
-			if err != nil {
-				return LookupPoolResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupPoolResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupPoolResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("proxmoxve:Permission/getPool:getPool", args, LookupPoolResultOutput{}, options).(LookupPoolResultOutput), nil
 		}).(LookupPoolResultOutput)
 }
 

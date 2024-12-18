@@ -82,7 +82,7 @@ def get_accounts(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAcc
     return AwaitableGetAccountsResult(
         accounts=pulumi.get(__ret__, 'accounts'),
         id=pulumi.get(__ret__, 'id'))
-def get_accounts_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountsResult]:
+def get_accounts_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountsResult]:
     """
     Retrieves the list of ACME accounts.
 
@@ -97,7 +97,7 @@ def get_accounts_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.O
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:Acme/getAccounts:getAccounts', __args__, opts=opts, typ=GetAccountsResult)
     return __ret__.apply(lambda __response__: GetAccountsResult(
         accounts=pulumi.get(__response__, 'accounts'),

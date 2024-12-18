@@ -81,7 +81,7 @@ def get_pools(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPoolsR
     return AwaitableGetPoolsResult(
         id=pulumi.get(__ret__, 'id'),
         pool_ids=pulumi.get(__ret__, 'pool_ids'))
-def get_pools_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPoolsResult]:
+def get_pools_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPoolsResult]:
     """
     Retrieves the identifiers for all the available resource pools.
 
@@ -95,7 +95,7 @@ def get_pools_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Outp
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:Permission/getPools:getPools', __args__, opts=opts, typ=GetPoolsResult)
     return __ret__.apply(lambda __response__: GetPoolsResult(
         id=pulumi.get(__response__, 'id'),

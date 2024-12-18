@@ -215,7 +215,7 @@ def get_repository(file_path: Optional[str] = None,
 def get_repository_output(file_path: Optional[pulumi.Input[str]] = None,
                           index: Optional[pulumi.Input[int]] = None,
                           node: Optional[pulumi.Input[str]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRepositoryResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRepositoryResult]:
     """
     Retrieves an APT repository from a Proxmox VE cluster.
 
@@ -240,7 +240,7 @@ def get_repository_output(file_path: Optional[pulumi.Input[str]] = None,
     __args__['filePath'] = file_path
     __args__['index'] = index
     __args__['node'] = node
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:Apt/getRepository:getRepository', __args__, opts=opts, typ=GetRepositoryResult)
     return __ret__.apply(lambda __response__: GetRepositoryResult(
         comment=pulumi.get(__response__, 'comment'),

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import io.muehlbachler.pulumi.proxmoxve.Utilities;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetNodeArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetNodePlainArgs;
@@ -174,6 +175,46 @@ public final class ProxmoxveFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetNodeResult> getNode(GetNodeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getNode:getNode", TypeShape.of(GetNodeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about node.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetNodeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var node = ProxmoxveFunctions.getNode();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetNodeResult> getNodePlain(GetNodePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("proxmoxve:index/getNode:getNode", TypeShape.of(GetNodeResult.class), args, Utilities.withVersion(options));
     }
@@ -199,6 +240,14 @@ public final class ProxmoxveFunctions {
      * 
      */
     public static Output<GetVm2Result> getVm2(GetVm2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getVm2:getVm2", TypeShape.of(GetVm2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * !&gt; **DO NOT USE**
+     * This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
+     * 
+     */
+    public static Output<GetVm2Result> getVm2(GetVm2Args args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:index/getVm2:getVm2", TypeShape.of(GetVm2Result.class), args, Utilities.withVersion(options));
     }
     /**

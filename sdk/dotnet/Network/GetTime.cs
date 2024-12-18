@@ -58,6 +58,30 @@ namespace Pulumi.ProxmoxVE.Network
         /// </summary>
         public static Output<GetTimeResult> Invoke(GetTimeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTimeResult>("proxmoxve:Network/getTime:getTime", args ?? new GetTimeInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current time for a specific node.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var firstNodeTime = ProxmoxVE.Network.GetTime.Invoke(new()
+        ///     {
+        ///         NodeName = "first-node",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTimeResult> Invoke(GetTimeInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTimeResult>("proxmoxve:Network/getTime:getTime", args ?? new GetTimeInvokeArgs(), options.WithDefaults());
     }
 
 

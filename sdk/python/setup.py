@@ -18,7 +18,7 @@ def readme():
 
 
 setup(name='pulumi_proxmoxve',
-      python_requires='>=3.8',
+      python_requires='>=3.9',
       version=VERSION,
       description="A Pulumi package for creating and managing Proxmox Virtual Environment cloud resources.",
       long_description=readme(),

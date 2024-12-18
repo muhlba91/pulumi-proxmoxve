@@ -49,7 +49,7 @@ export interface GetAccountsResult {
  * export const dataProxmoxVirtualEnvironmentAcmeAccounts = example.then(example => example.accounts);
  * ```
  */
-export function getAccountsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountsResult> {
+export function getAccountsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("proxmoxve:Acme/getAccounts:getAccounts", {
     }, opts);

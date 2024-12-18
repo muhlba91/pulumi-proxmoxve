@@ -52,6 +52,27 @@ namespace Pulumi.ProxmoxVE.Permission
         /// </summary>
         public static Output<GetRolesResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRolesResult>("proxmoxve:Permission/getRoles:getRoles", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves information about all the available roles.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var availableRoles = ProxmoxVE.Permission.GetRoles.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRolesResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRolesResult>("proxmoxve:Permission/getRoles:getRoles", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

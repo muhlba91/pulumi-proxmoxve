@@ -83,7 +83,7 @@ def get_plugins(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPlug
     return AwaitableGetPluginsResult(
         id=pulumi.get(__ret__, 'id'),
         plugins=pulumi.get(__ret__, 'plugins'))
-def get_plugins_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPluginsResult]:
+def get_plugins_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPluginsResult]:
     """
     Retrieves the list of ACME plugins.
 
@@ -98,7 +98,7 @@ def get_plugins_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Ou
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:Acme/getPlugins:getPlugins', __args__, opts=opts, typ=GetPluginsResult)
     return __ret__.apply(lambda __response__: GetPluginsResult(
         id=pulumi.get(__response__, 'id'),

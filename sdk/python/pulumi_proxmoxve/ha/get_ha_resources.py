@@ -105,7 +105,7 @@ def get_ha_resources(type: Optional[str] = None,
         resource_ids=pulumi.get(__ret__, 'resource_ids'),
         type=pulumi.get(__ret__, 'type'))
 def get_ha_resources_output(type: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHAResourcesResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHAResourcesResult]:
     """
     Retrieves the list of High Availability resources.
 
@@ -128,7 +128,7 @@ def get_ha_resources_output(type: Optional[pulumi.Input[Optional[str]]] = None,
     """
     __args__ = dict()
     __args__['type'] = type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:HA/getHAResources:getHAResources', __args__, opts=opts, typ=GetHAResourcesResult)
     return __ret__.apply(lambda __response__: GetHAResourcesResult(
         id=pulumi.get(__response__, 'id'),

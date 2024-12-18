@@ -74,7 +74,7 @@ export interface GetUsbResult {
  * export const dataProxmoxVirtualEnvironmentHardwareMappingUsb = example;
  * ```
  */
-export function getUsbOutput(args: GetUsbOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsbResult> {
+export function getUsbOutput(args: GetUsbOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUsbResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("proxmoxve:Hardware/mapping/getUsb:getUsb", {
         "name": args.name,

@@ -138,7 +138,7 @@ def get_hosts(node_name: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         node_name=pulumi.get(__ret__, 'node_name'))
 def get_hosts_output(node_name: Optional[pulumi.Input[str]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHostsResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHostsResult]:
     """
     Retrieves all the host entries from a specific node.
 
@@ -156,7 +156,7 @@ def get_hosts_output(node_name: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['nodeName'] = node_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:Network/getHosts:getHosts', __args__, opts=opts, typ=GetHostsResult)
     return __ret__.apply(lambda __response__: GetHostsResult(
         addresses=pulumi.get(__response__, 'addresses'),

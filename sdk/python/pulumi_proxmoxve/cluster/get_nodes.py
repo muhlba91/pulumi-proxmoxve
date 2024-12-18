@@ -185,7 +185,7 @@ def get_nodes(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodesR
         ssl_fingerprints=pulumi.get(__ret__, 'ssl_fingerprints'),
         support_levels=pulumi.get(__ret__, 'support_levels'),
         uptimes=pulumi.get(__ret__, 'uptimes'))
-def get_nodes_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodesResult]:
+def get_nodes_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodesResult]:
     """
     Retrieves information about all available nodes.
 
@@ -199,7 +199,7 @@ def get_nodes_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Outp
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:Cluster/getNodes:getNodes', __args__, opts=opts, typ=GetNodesResult)
     return __ret__.apply(lambda __response__: GetNodesResult(
         cpu_counts=pulumi.get(__response__, 'cpu_counts'),

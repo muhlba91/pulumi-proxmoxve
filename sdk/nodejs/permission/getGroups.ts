@@ -51,7 +51,7 @@ export interface GetGroupsResult {
  * const availableGroups = proxmoxve.Permission.getGroups({});
  * ```
  */
-export function getGroupsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsResult> {
+export function getGroupsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("proxmoxve:Permission/getGroups:getGroups", {
     }, opts);

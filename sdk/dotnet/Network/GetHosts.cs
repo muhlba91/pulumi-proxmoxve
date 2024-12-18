@@ -58,6 +58,30 @@ namespace Pulumi.ProxmoxVE.Network
         /// </summary>
         public static Output<GetHostsResult> Invoke(GetHostsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHostsResult>("proxmoxve:Network/getHosts:getHosts", args ?? new GetHostsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves all the host entries from a specific node.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var firstNodeHostEntries = ProxmoxVE.Network.GetHosts.Invoke(new()
+        ///     {
+        ///         NodeName = "first-node",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetHostsResult> Invoke(GetHostsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetHostsResult>("proxmoxve:Network/getHosts:getHosts", args ?? new GetHostsInvokeArgs(), options.WithDefaults());
     }
 
 

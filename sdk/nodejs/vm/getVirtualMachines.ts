@@ -143,7 +143,7 @@ export interface GetVirtualMachinesResult {
  * });
  * ```
  */
-export function getVirtualMachinesOutput(args?: GetVirtualMachinesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualMachinesResult> {
+export function getVirtualMachinesOutput(args?: GetVirtualMachinesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVirtualMachinesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("proxmoxve:VM/getVirtualMachines:getVirtualMachines", {

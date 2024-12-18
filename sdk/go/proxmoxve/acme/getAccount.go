@@ -71,21 +71,11 @@ type GetAccountResult struct {
 }
 
 func GetAccountOutput(ctx *pulumi.Context, args GetAccountOutputArgs, opts ...pulumi.InvokeOption) GetAccountResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAccountResultOutput, error) {
 			args := v.(GetAccountArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetAccountResult
-			secret, err := ctx.InvokePackageRaw("proxmoxve:Acme/getAccount:getAccount", args, &rv, "", opts...)
-			if err != nil {
-				return GetAccountResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetAccountResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetAccountResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("proxmoxve:Acme/getAccount:getAccount", args, GetAccountResultOutput{}, options).(GetAccountResultOutput), nil
 		}).(GetAccountResultOutput)
 }
 

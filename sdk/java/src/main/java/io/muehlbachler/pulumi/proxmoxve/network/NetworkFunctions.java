@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.resources.InvokeArgs;
 import io.muehlbachler.pulumi.proxmoxve.Network.inputs.GetDNSArgs;
 import io.muehlbachler.pulumi.proxmoxve.Network.inputs.GetDNSPlainArgs;
@@ -146,6 +147,48 @@ public final class NetworkFunctions {
      * 
      */
     public static Output<GetDNSResult> getDNS(GetDNSArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:Network/getDNS:getDNS", TypeShape.of(GetDNSResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the DNS configuration for a specific node.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.Network.NetworkFunctions;
+     * import com.pulumi.proxmoxve.Network.inputs.GetDNSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var firstNode = NetworkFunctions.getDNS(GetDNSArgs.builder()
+     *             .nodeName("first-node")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDNSResult> getDNS(GetDNSArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:Network/getDNS:getDNS", TypeShape.of(GetDNSResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -355,6 +398,48 @@ public final class NetworkFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetHostsResult> getHosts(GetHostsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:Network/getHosts:getHosts", TypeShape.of(GetHostsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves all the host entries from a specific node.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.Network.NetworkFunctions;
+     * import com.pulumi.proxmoxve.Network.inputs.GetHostsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var firstNodeHostEntries = NetworkFunctions.getHosts(GetHostsArgs.builder()
+     *             .nodeName("first-node")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetHostsResult> getHostsPlain(GetHostsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("proxmoxve:Network/getHosts:getHosts", TypeShape.of(GetHostsResult.class), args, Utilities.withVersion(options));
     }
@@ -482,6 +567,48 @@ public final class NetworkFunctions {
      * 
      */
     public static Output<GetTimeResult> getTime(GetTimeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:Network/getTime:getTime", TypeShape.of(GetTimeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current time for a specific node.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.Network.NetworkFunctions;
+     * import com.pulumi.proxmoxve.Network.inputs.GetTimeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var firstNodeTime = NetworkFunctions.getTime(GetTimeArgs.builder()
+     *             .nodeName("first-node")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTimeResult> getTime(GetTimeArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:Network/getTime:getTime", TypeShape.of(GetTimeResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -724,6 +851,46 @@ public final class NetworkFunctions {
      * 
      */
     public static Output<GetVersionResult> getVersion(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:Network/getVersion:getVersion", TypeShape.of(GetVersionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves API version details.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.Network.NetworkFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = NetworkFunctions.getVersion();
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentVersion", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVersionResult> getVersion(InvokeArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:Network/getVersion:getVersion", TypeShape.of(GetVersionResult.class), args, Utilities.withVersion(options));
     }
     /**

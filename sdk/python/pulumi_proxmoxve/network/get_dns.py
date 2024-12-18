@@ -110,7 +110,7 @@ def get_dns(node_name: Optional[str] = None,
         node_name=pulumi.get(__ret__, 'node_name'),
         servers=pulumi.get(__ret__, 'servers'))
 def get_dns_output(node_name: Optional[pulumi.Input[str]] = None,
-                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDNSResult]:
+                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDNSResult]:
     """
     Retrieves the DNS configuration for a specific node.
 
@@ -128,7 +128,7 @@ def get_dns_output(node_name: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['nodeName'] = node_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:Network/getDNS:getDNS', __args__, opts=opts, typ=GetDNSResult)
     return __ret__.apply(lambda __response__: GetDNSResult(
         domain=pulumi.get(__response__, 'domain'),

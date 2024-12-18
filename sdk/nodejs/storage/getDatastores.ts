@@ -95,7 +95,7 @@ export interface GetDatastoresResult {
  * });
  * ```
  */
-export function getDatastoresOutput(args: GetDatastoresOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatastoresResult> {
+export function getDatastoresOutput(args: GetDatastoresOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatastoresResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("proxmoxve:Storage/getDatastores:getDatastores", {
         "nodeName": args.nodeName,

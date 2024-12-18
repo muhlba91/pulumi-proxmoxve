@@ -175,7 +175,7 @@ def get_node(node_name: Optional[str] = None,
         node_name=pulumi.get(__ret__, 'node_name'),
         uptime=pulumi.get(__ret__, 'uptime'))
 def get_node_output(node_name: Optional[pulumi.Input[str]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodeResult]:
     """
     Retrieves information about node.
 
@@ -193,7 +193,7 @@ def get_node_output(node_name: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['nodeName'] = node_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:index/getNode:getNode', __args__, opts=opts, typ=GetNodeResult)
     return __ret__.apply(lambda __response__: GetNodeResult(
         cpu_count=pulumi.get(__response__, 'cpu_count'),

@@ -56,18 +56,8 @@ type GetPoolsResult struct {
 
 func GetPoolsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetPoolsResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (GetPoolsResultOutput, error) {
-		opts = internal.PkgInvokeDefaultOpts(opts)
-		var rv GetPoolsResult
-		secret, err := ctx.InvokePackageRaw("proxmoxve:Permission/getPools:getPools", nil, &rv, "", opts...)
-		if err != nil {
-			return GetPoolsResultOutput{}, err
-		}
-
-		output := pulumi.ToOutput(rv).(GetPoolsResultOutput)
-		if secret {
-			return pulumi.ToSecret(output).(GetPoolsResultOutput), nil
-		}
-		return output, nil
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("proxmoxve:Permission/getPools:getPools", nil, GetPoolsResultOutput{}, options).(GetPoolsResultOutput), nil
 	}).(GetPoolsResultOutput)
 }
 

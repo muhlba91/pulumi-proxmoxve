@@ -113,21 +113,11 @@ type GetVirtualMachinesResult struct {
 }
 
 func GetVirtualMachinesOutput(ctx *pulumi.Context, args GetVirtualMachinesOutputArgs, opts ...pulumi.InvokeOption) GetVirtualMachinesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetVirtualMachinesResultOutput, error) {
 			args := v.(GetVirtualMachinesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetVirtualMachinesResult
-			secret, err := ctx.InvokePackageRaw("proxmoxve:VM/getVirtualMachines:getVirtualMachines", args, &rv, "", opts...)
-			if err != nil {
-				return GetVirtualMachinesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetVirtualMachinesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetVirtualMachinesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("proxmoxve:VM/getVirtualMachines:getVirtualMachines", args, GetVirtualMachinesResultOutput{}, options).(GetVirtualMachinesResultOutput), nil
 		}).(GetVirtualMachinesResultOutput)
 }
 

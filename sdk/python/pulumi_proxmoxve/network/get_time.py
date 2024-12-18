@@ -123,7 +123,7 @@ def get_time(node_name: Optional[str] = None,
         time_zone=pulumi.get(__ret__, 'time_zone'),
         utc_time=pulumi.get(__ret__, 'utc_time'))
 def get_time_output(node_name: Optional[pulumi.Input[str]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTimeResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTimeResult]:
     """
     Retrieves the current time for a specific node.
 
@@ -141,7 +141,7 @@ def get_time_output(node_name: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['nodeName'] = node_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:Network/getTime:getTime', __args__, opts=opts, typ=GetTimeResult)
     return __ret__.apply(lambda __response__: GetTimeResult(
         id=pulumi.get(__response__, 'id'),

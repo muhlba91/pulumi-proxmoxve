@@ -51,7 +51,7 @@ export interface GetPluginsResult {
  * export const dataProxmoxVirtualEnvironmentAcmePlugins = example.then(example => example.plugins);
  * ```
  */
-export function getPluginsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetPluginsResult> {
+export function getPluginsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPluginsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("proxmoxve:Acme/getPlugins:getPlugins", {
     }, opts);

@@ -80,21 +80,11 @@ type GetDatastoresResult struct {
 }
 
 func GetDatastoresOutput(ctx *pulumi.Context, args GetDatastoresOutputArgs, opts ...pulumi.InvokeOption) GetDatastoresResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDatastoresResultOutput, error) {
 			args := v.(GetDatastoresArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetDatastoresResult
-			secret, err := ctx.InvokePackageRaw("proxmoxve:Storage/getDatastores:getDatastores", args, &rv, "", opts...)
-			if err != nil {
-				return GetDatastoresResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetDatastoresResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetDatastoresResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("proxmoxve:Storage/getDatastores:getDatastores", args, GetDatastoresResultOutput{}, options).(GetDatastoresResultOutput), nil
 		}).(GetDatastoresResultOutput)
 }
 

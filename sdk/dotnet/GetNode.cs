@@ -52,6 +52,27 @@ namespace Pulumi.ProxmoxVE
         /// </summary>
         public static Output<GetNodeResult> Invoke(GetNodeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNodeResult>("proxmoxve:index/getNode:getNode", args ?? new GetNodeInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves information about node.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var node = ProxmoxVE.GetNode.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetNodeResult> Invoke(GetNodeInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNodeResult>("proxmoxve:index/getNode:getNode", args ?? new GetNodeInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -49,7 +49,7 @@ export interface GetHAGroupsResult {
  * export const dataProxmoxVirtualEnvironmentHagroups = example.then(example => example.groupIds);
  * ```
  */
-export function getHAGroupsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetHAGroupsResult> {
+export function getHAGroupsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHAGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("proxmoxve:HA/getHAGroups:getHAGroups", {
     }, opts);

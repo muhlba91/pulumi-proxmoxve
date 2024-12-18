@@ -66,21 +66,11 @@ type GetDNSResult struct {
 }
 
 func GetDNSOutput(ctx *pulumi.Context, args GetDNSOutputArgs, opts ...pulumi.InvokeOption) GetDNSResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDNSResultOutput, error) {
 			args := v.(GetDNSArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetDNSResult
-			secret, err := ctx.InvokePackageRaw("proxmoxve:Network/getDNS:getDNS", args, &rv, "", opts...)
-			if err != nil {
-				return GetDNSResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetDNSResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetDNSResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("proxmoxve:Network/getDNS:getDNS", args, GetDNSResultOutput{}, options).(GetDNSResultOutput), nil
 		}).(GetDNSResultOutput)
 }
 

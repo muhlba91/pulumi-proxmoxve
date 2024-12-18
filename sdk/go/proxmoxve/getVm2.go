@@ -70,21 +70,11 @@ type LookupVm2Result struct {
 }
 
 func LookupVm2Output(ctx *pulumi.Context, args LookupVm2OutputArgs, opts ...pulumi.InvokeOption) LookupVm2ResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupVm2ResultOutput, error) {
 			args := v.(LookupVm2Args)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupVm2Result
-			secret, err := ctx.InvokePackageRaw("proxmoxve:index/getVm2:getVm2", args, &rv, "", opts...)
-			if err != nil {
-				return LookupVm2ResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupVm2ResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupVm2ResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("proxmoxve:index/getVm2:getVm2", args, LookupVm2ResultOutput{}, options).(LookupVm2ResultOutput), nil
 		}).(LookupVm2ResultOutput)
 }
 

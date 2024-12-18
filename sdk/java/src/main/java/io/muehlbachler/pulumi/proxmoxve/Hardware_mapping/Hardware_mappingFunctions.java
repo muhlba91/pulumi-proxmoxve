@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import io.muehlbachler.pulumi.proxmoxve.Hardware_mapping.inputs.GetPciArgs;
 import io.muehlbachler.pulumi.proxmoxve.Hardware_mapping.inputs.GetPciPlainArgs;
 import io.muehlbachler.pulumi.proxmoxve.Hardware_mapping.inputs.GetUsbArgs;
@@ -186,6 +187,49 @@ public final class Hardware_mappingFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetPciResult> getPci(GetPciArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:Hardware/mapping/getPci:getPci", TypeShape.of(GetPciResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves a PCI hardware mapping from a Proxmox VE cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.Hardware_mapping.Hardware_mappingFunctions;
+     * import com.pulumi.proxmoxve.Hardware.inputs.GetPciArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Hardware/mappingFunctions.getPci(GetPciArgs.builder()
+     *             .name("example")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingPci", example.applyValue(getPciResult -> getPciResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetPciResult> getPciPlain(GetPciPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("proxmoxve:Hardware/mapping/getPci:getPci", TypeShape.of(GetPciResult.class), args, Utilities.withVersion(options));
     }
@@ -316,6 +360,49 @@ public final class Hardware_mappingFunctions {
      * 
      */
     public static Output<GetUsbResult> getUsb(GetUsbArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:Hardware/mapping/getUsb:getUsb", TypeShape.of(GetUsbResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves a USB hardware mapping from a Proxmox VE cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.Hardware_mapping.Hardware_mappingFunctions;
+     * import com.pulumi.proxmoxve.Hardware.inputs.GetUsbArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Hardware/mappingFunctions.getUsb(GetUsbArgs.builder()
+     *             .name("example")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingUsb", example.applyValue(getUsbResult -> getUsbResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetUsbResult> getUsb(GetUsbArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:Hardware/mapping/getUsb:getUsb", TypeShape.of(GetUsbResult.class), args, Utilities.withVersion(options));
     }
     /**

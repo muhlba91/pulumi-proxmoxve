@@ -142,7 +142,7 @@ def get_account(name: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         tos=pulumi.get(__ret__, 'tos'))
 def get_account_output(name: Optional[pulumi.Input[Optional[str]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountResult]:
     """
     Retrieves information about a specific ACME account.
 
@@ -162,7 +162,7 @@ def get_account_output(name: Optional[pulumi.Input[Optional[str]]] = None,
     """
     __args__ = dict()
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:Acme/getAccount:getAccount', __args__, opts=opts, typ=GetAccountResult)
     return __ret__.apply(lambda __response__: GetAccountResult(
         account=pulumi.get(__response__, 'account'),

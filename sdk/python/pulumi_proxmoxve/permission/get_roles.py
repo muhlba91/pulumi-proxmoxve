@@ -107,7 +107,7 @@ def get_roles(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRolesR
         privileges=pulumi.get(__ret__, 'privileges'),
         role_ids=pulumi.get(__ret__, 'role_ids'),
         specials=pulumi.get(__ret__, 'specials'))
-def get_roles_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRolesResult]:
+def get_roles_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRolesResult]:
     """
     Retrieves information about all the available roles.
 
@@ -121,7 +121,7 @@ def get_roles_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Outp
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:Permission/getRoles:getRoles', __args__, opts=opts, typ=GetRolesResult)
     return __ret__.apply(lambda __response__: GetRolesResult(
         id=pulumi.get(__response__, 'id'),

@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * import * as proxmoxve from "@pulumi/proxmoxve";
  *
  * const all = proxmoxve.Acme.getAccounts({});
- * const example = all.then(all => .map(([, ]) => (proxmoxve.Acme.getAccount({
+ * const example = all.then(all => .map(([__key, __value]) => (proxmoxve.Acme.getAccount({
  *     name: __value,
  * }))));
  * export const dataProxmoxVirtualEnvironmentAcmeAccount = example;
@@ -79,13 +79,13 @@ export interface GetAccountResult {
  * import * as proxmoxve from "@pulumi/proxmoxve";
  *
  * const all = proxmoxve.Acme.getAccounts({});
- * const example = all.then(all => .map(([, ]) => (proxmoxve.Acme.getAccount({
+ * const example = all.then(all => .map(([__key, __value]) => (proxmoxve.Acme.getAccount({
  *     name: __value,
  * }))));
  * export const dataProxmoxVirtualEnvironmentAcmeAccount = example;
  * ```
  */
-export function getAccountOutput(args?: GetAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountResult> {
+export function getAccountOutput(args?: GetAccountOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("proxmoxve:Acme/getAccount:getAccount", {

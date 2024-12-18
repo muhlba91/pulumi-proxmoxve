@@ -47,7 +47,7 @@ export interface GetPoolsResult {
  * const availablePools = proxmoxve.Permission.getPools({});
  * ```
  */
-export function getPoolsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetPoolsResult> {
+export function getPoolsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPoolsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("proxmoxve:Permission/getPools:getPools", {
     }, opts);

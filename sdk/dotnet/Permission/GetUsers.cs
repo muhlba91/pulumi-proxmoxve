@@ -52,6 +52,27 @@ namespace Pulumi.ProxmoxVE.Permission
         /// </summary>
         public static Output<GetUsersResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUsersResult>("proxmoxve:Permission/getUsers:getUsers", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves information about all the available users.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var availableUsers = ProxmoxVE.Permission.GetUsers.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetUsersResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetUsersResult>("proxmoxve:Permission/getUsers:getUsers", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

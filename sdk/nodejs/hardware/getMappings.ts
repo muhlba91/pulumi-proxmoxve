@@ -95,7 +95,7 @@ export interface GetMappingsResult {
  * export const dataProxmoxVirtualEnvironmentHardwareMappingsUsb = example_usb;
  * ```
  */
-export function getMappingsOutput(args: GetMappingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMappingsResult> {
+export function getMappingsOutput(args: GetMappingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMappingsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("proxmoxve:Hardware/getMappings:getMappings", {
         "checkNode": args.checkNode,

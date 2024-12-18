@@ -70,6 +70,36 @@ namespace Pulumi.ProxmoxVE.Network
         /// </summary>
         public static Output<GetVersionResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVersionResult>("proxmoxve:Network/getVersion:getVersion", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves API version details.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = ProxmoxVE.Network.GetVersion.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxVirtualEnvironmentVersion"] = 
+        ///         {
+        ///             { "release", example.Apply(getVersionResult =&gt; getVersionResult.Release) },
+        ///             { "repository_id", example.Apply(getVersionResult =&gt; getVersionResult.RepositoryId) },
+        ///             { "version", example.Apply(getVersionResult =&gt; getVersionResult.Version) },
+        ///         },
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetVersionResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVersionResult>("proxmoxve:Network/getVersion:getVersion", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

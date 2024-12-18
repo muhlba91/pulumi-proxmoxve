@@ -67,7 +67,7 @@ export interface GetDNSResult {
  * });
  * ```
  */
-export function getDNSOutput(args: GetDNSOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDNSResult> {
+export function getDNSOutput(args: GetDNSOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDNSResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("proxmoxve:Network/getDNS:getDNS", {
         "nodeName": args.nodeName,

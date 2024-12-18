@@ -24,6 +24,13 @@ namespace Pulumi.ProxmoxVE
         /// </summary>
         public static Output<GetVm2Result> Invoke(GetVm2InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVm2Result>("proxmoxve:index/getVm2:getVm2", args ?? new GetVm2InvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// !&gt; **DO NOT USE**
+        /// This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
+        /// </summary>
+        public static Output<GetVm2Result> Invoke(GetVm2InvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVm2Result>("proxmoxve:index/getVm2:getVm2", args ?? new GetVm2InvokeArgs(), options.WithDefaults());
     }
 
 

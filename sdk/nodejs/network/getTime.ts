@@ -71,7 +71,7 @@ export interface GetTimeResult {
  * });
  * ```
  */
-export function getTimeOutput(args: GetTimeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTimeResult> {
+export function getTimeOutput(args: GetTimeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTimeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("proxmoxve:Network/getTime:getTime", {
         "nodeName": args.nodeName,

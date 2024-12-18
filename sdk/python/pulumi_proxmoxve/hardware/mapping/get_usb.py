@@ -115,7 +115,7 @@ def get_usb(name: Optional[str] = None,
         maps=pulumi.get(__ret__, 'maps'),
         name=pulumi.get(__ret__, 'name'))
 def get_usb_output(name: Optional[pulumi.Input[str]] = None,
-                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUsbResult]:
+                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUsbResult]:
     """
     Retrieves a USB hardware mapping from a Proxmox VE cluster.
 
@@ -134,7 +134,7 @@ def get_usb_output(name: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:Hardware/mapping/getUsb:getUsb', __args__, opts=opts, typ=GetUsbResult)
     return __ret__.apply(lambda __response__: GetUsbResult(
         comment=pulumi.get(__response__, 'comment'),

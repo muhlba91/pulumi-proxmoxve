@@ -78,7 +78,7 @@ export interface GetPciResult {
  * export const dataProxmoxVirtualEnvironmentHardwareMappingPci = example;
  * ```
  */
-export function getPciOutput(args: GetPciOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPciResult> {
+export function getPciOutput(args: GetPciOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPciResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("proxmoxve:Hardware/mapping/getPci:getPci", {
         "name": args.name,

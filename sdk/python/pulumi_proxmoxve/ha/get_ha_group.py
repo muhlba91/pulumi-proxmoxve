@@ -141,7 +141,7 @@ def get_ha_group(group: Optional[str] = None,
         nodes=pulumi.get(__ret__, 'nodes'),
         restricted=pulumi.get(__ret__, 'restricted'))
 def get_ha_group_output(group: Optional[pulumi.Input[str]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHAGroupResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHAGroupResult]:
     """
     Retrieves information about a specific High Availability group.
 
@@ -161,7 +161,7 @@ def get_ha_group_output(group: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['group'] = group
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:HA/getHAGroup:getHAGroup', __args__, opts=opts, typ=GetHAGroupResult)
     return __ret__.apply(lambda __response__: GetHAGroupResult(
         comment=pulumi.get(__response__, 'comment'),

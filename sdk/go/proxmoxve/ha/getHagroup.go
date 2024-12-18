@@ -71,21 +71,11 @@ type LookupHAGroupResult struct {
 }
 
 func LookupHAGroupOutput(ctx *pulumi.Context, args LookupHAGroupOutputArgs, opts ...pulumi.InvokeOption) LookupHAGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupHAGroupResultOutput, error) {
 			args := v.(LookupHAGroupArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupHAGroupResult
-			secret, err := ctx.InvokePackageRaw("proxmoxve:HA/getHAGroup:getHAGroup", args, &rv, "", opts...)
-			if err != nil {
-				return LookupHAGroupResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupHAGroupResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupHAGroupResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("proxmoxve:HA/getHAGroup:getHAGroup", args, LookupHAGroupResultOutput{}, options).(LookupHAGroupResultOutput), nil
 		}).(LookupHAGroupResultOutput)
 }
 

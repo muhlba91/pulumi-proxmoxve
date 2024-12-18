@@ -82,6 +82,42 @@ namespace Pulumi.ProxmoxVE.Hardware
         /// </summary>
         public static Output<GetMappingsResult> Invoke(GetMappingsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMappingsResult>("proxmoxve:Hardware/getMappings:getMappings", args ?? new GetMappingsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves a list of hardware mapping resources.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example_pci = ProxmoxVE.Hardware.GetMappings.Invoke(new()
+        ///     {
+        ///         CheckNode = "pve",
+        ///         Type = "pci",
+        ///     });
+        /// 
+        ///     var example_usb = ProxmoxVE.Hardware.GetMappings.Invoke(new()
+        ///     {
+        ///         CheckNode = "pve",
+        ///         Type = "usb",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxVirtualEnvironmentHardwareMappingsPci"] = example_pci,
+        ///         ["dataProxmoxVirtualEnvironmentHardwareMappingsUsb"] = example_usb,
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetMappingsResult> Invoke(GetMappingsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMappingsResult>("proxmoxve:Hardware/getMappings:getMappings", args ?? new GetMappingsInvokeArgs(), options.WithDefaults());
     }
 
 

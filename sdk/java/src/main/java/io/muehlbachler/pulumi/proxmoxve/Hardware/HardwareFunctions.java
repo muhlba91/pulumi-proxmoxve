@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import io.muehlbachler.pulumi.proxmoxve.Hardware.inputs.GetMappingsArgs;
 import io.muehlbachler.pulumi.proxmoxve.Hardware.inputs.GetMappingsPlainArgs;
 import io.muehlbachler.pulumi.proxmoxve.Hardware.outputs.GetMappingsResult;
@@ -162,6 +163,56 @@ public final class HardwareFunctions {
      * 
      */
     public static Output<GetMappingsResult> getMappings(GetMappingsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:Hardware/getMappings:getMappings", TypeShape.of(GetMappingsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves a list of hardware mapping resources.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.Hardware.HardwareFunctions;
+     * import com.pulumi.proxmoxve.Hardware.inputs.GetMappingsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example-pci = HardwareFunctions.getMappings(GetMappingsArgs.builder()
+     *             .checkNode("pve")
+     *             .type("pci")
+     *             .build());
+     * 
+     *         final var example-usb = HardwareFunctions.getMappings(GetMappingsArgs.builder()
+     *             .checkNode("pve")
+     *             .type("usb")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingsPci", example_pci);
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingsUsb", example_usb);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMappingsResult> getMappings(GetMappingsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:Hardware/getMappings:getMappings", TypeShape.of(GetMappingsResult.class), args, Utilities.withVersion(options));
     }
     /**

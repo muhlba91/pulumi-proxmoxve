@@ -161,7 +161,7 @@ def get_virtual_machines(filters: Optional[Sequence[Union['GetVirtualMachinesFil
 def get_virtual_machines_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetVirtualMachinesFilterArgs', 'GetVirtualMachinesFilterArgsDict']]]]] = None,
                                 node_name: Optional[pulumi.Input[Optional[str]]] = None,
                                 tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVirtualMachinesResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVirtualMachinesResult]:
     """
     Retrieves information about all VMs in the Proxmox cluster.
 
@@ -211,7 +211,7 @@ def get_virtual_machines_output(filters: Optional[pulumi.Input[Optional[Sequence
     __args__['filters'] = filters
     __args__['nodeName'] = node_name
     __args__['tags'] = tags
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:VM/getVirtualMachines:getVirtualMachines', __args__, opts=opts, typ=GetVirtualMachinesResult)
     return __ret__.apply(lambda __response__: GetVirtualMachinesResult(
         filters=pulumi.get(__response__, 'filters'),

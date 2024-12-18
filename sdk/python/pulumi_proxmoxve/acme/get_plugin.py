@@ -153,7 +153,7 @@ def get_plugin(plugin: Optional[str] = None,
         type=pulumi.get(__ret__, 'type'),
         validation_delay=pulumi.get(__ret__, 'validation_delay'))
 def get_plugin_output(plugin: Optional[pulumi.Input[str]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPluginResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPluginResult]:
     """
     Retrieves a single ACME plugin by plugin ID name.
 
@@ -172,7 +172,7 @@ def get_plugin_output(plugin: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['plugin'] = plugin
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:Acme/getPlugin:getPlugin', __args__, opts=opts, typ=GetPluginResult)
     return __ret__.apply(lambda __response__: GetPluginResult(
         api=pulumi.get(__response__, 'api'),

@@ -112,7 +112,7 @@ def get_version(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVers
         release=pulumi.get(__ret__, 'release'),
         repository_id=pulumi.get(__ret__, 'repository_id'),
         version=pulumi.get(__ret__, 'version'))
-def get_version_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVersionResult]:
+def get_version_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVersionResult]:
     """
     Retrieves API version details.
 
@@ -131,7 +131,7 @@ def get_version_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Ou
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:Network/getVersion:getVersion', __args__, opts=opts, typ=GetVersionResult)
     return __ret__.apply(lambda __response__: GetVersionResult(
         id=pulumi.get(__response__, 'id'),

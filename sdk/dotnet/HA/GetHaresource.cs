@@ -76,6 +76,39 @@ namespace Pulumi.ProxmoxVE.HA
         /// </summary>
         public static Output<GetHAResourceResult> Invoke(GetHAResourceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHAResourceResult>("proxmoxve:HA/getHAResource:getHAResource", args ?? new GetHAResourceInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the list of High Availability resources.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = ProxmoxVE.HA.GetHAResources.Invoke();
+        /// 
+        ///     var example = .Select(__value =&gt; 
+        ///     {
+        ///         return ProxmoxVE.HA.GetHAResource.Invoke(new()
+        ///         {
+        ///             ResourceId = __value,
+        ///         });
+        ///     }).ToList();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["proxmoxVirtualEnvironmentHaresourcesFull"] = example,
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetHAResourceResult> Invoke(GetHAResourceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetHAResourceResult>("proxmoxve:HA/getHAResource:getHAResource", args ?? new GetHAResourceInvokeArgs(), options.WithDefaults());
     }
 
 

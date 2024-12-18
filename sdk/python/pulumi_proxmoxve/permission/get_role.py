@@ -97,7 +97,7 @@ def get_role(role_id: Optional[str] = None,
         privileges=pulumi.get(__ret__, 'privileges'),
         role_id=pulumi.get(__ret__, 'role_id'))
 def get_role_output(role_id: Optional[pulumi.Input[str]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRoleResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRoleResult]:
     """
     Retrieves information about a specific role.
 
@@ -115,7 +115,7 @@ def get_role_output(role_id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['roleId'] = role_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:Permission/getRole:getRole', __args__, opts=opts, typ=GetRoleResult)
     return __ret__.apply(lambda __response__: GetRoleResult(
         id=pulumi.get(__response__, 'id'),

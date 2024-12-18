@@ -217,7 +217,7 @@ def get_vm2_output(clone: Optional[pulumi.Input[Optional[Union['GetVm2CloneArgs'
                    template: Optional[pulumi.Input[Optional[bool]]] = None,
                    timeouts: Optional[pulumi.Input[Optional[Union['GetVm2TimeoutsArgs', 'GetVm2TimeoutsArgsDict']]]] = None,
                    vga: Optional[pulumi.Input[Optional[Union['GetVm2VgaArgs', 'GetVm2VgaArgsDict']]]] = None,
-                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVm2Result]:
+                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVm2Result]:
     """
     !> **DO NOT USE**
     This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
@@ -244,7 +244,7 @@ def get_vm2_output(clone: Optional[pulumi.Input[Optional[Union['GetVm2CloneArgs'
     __args__['template'] = template
     __args__['timeouts'] = timeouts
     __args__['vga'] = vga
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:index/getVm2:getVm2', __args__, opts=opts, typ=GetVm2Result)
     return __ret__.apply(lambda __response__: GetVm2Result(
         clone=pulumi.get(__response__, 'clone'),

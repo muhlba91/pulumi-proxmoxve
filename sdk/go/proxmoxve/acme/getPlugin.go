@@ -74,21 +74,11 @@ type GetPluginResult struct {
 }
 
 func GetPluginOutput(ctx *pulumi.Context, args GetPluginOutputArgs, opts ...pulumi.InvokeOption) GetPluginResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetPluginResultOutput, error) {
 			args := v.(GetPluginArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetPluginResult
-			secret, err := ctx.InvokePackageRaw("proxmoxve:Acme/getPlugin:getPlugin", args, &rv, "", opts...)
-			if err != nil {
-				return GetPluginResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetPluginResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetPluginResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("proxmoxve:Acme/getPlugin:getPlugin", args, GetPluginResultOutput{}, options).(GetPluginResultOutput), nil
 		}).(GetPluginResultOutput)
 }
 

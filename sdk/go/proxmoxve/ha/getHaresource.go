@@ -75,21 +75,11 @@ type LookupHAResourceResult struct {
 }
 
 func LookupHAResourceOutput(ctx *pulumi.Context, args LookupHAResourceOutputArgs, opts ...pulumi.InvokeOption) LookupHAResourceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupHAResourceResultOutput, error) {
 			args := v.(LookupHAResourceArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupHAResourceResult
-			secret, err := ctx.InvokePackageRaw("proxmoxve:HA/getHAResource:getHAResource", args, &rv, "", opts...)
-			if err != nil {
-				return LookupHAResourceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupHAResourceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupHAResourceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("proxmoxve:HA/getHAResource:getHAResource", args, LookupHAResourceResultOutput{}, options).(LookupHAResourceResultOutput), nil
 		}).(LookupHAResourceResultOutput)
 }
 

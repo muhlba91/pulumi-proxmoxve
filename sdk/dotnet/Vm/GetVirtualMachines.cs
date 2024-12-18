@@ -158,6 +158,80 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         public static Output<GetVirtualMachinesResult> Invoke(GetVirtualMachinesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVirtualMachinesResult>("proxmoxve:VM/getVirtualMachines:getVirtualMachines", args ?? new GetVirtualMachinesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves information about all VMs in the Proxmox cluster.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ubuntuVms = ProxmoxVE.VM.GetVirtualMachines.Invoke(new()
+        ///     {
+        ///         Tags = new[]
+        ///         {
+        ///             "ubuntu",
+        ///         },
+        ///     });
+        /// 
+        ///     var ubuntuTemplates = ProxmoxVE.VM.GetVirtualMachines.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new ProxmoxVE.VM.Inputs.GetVirtualMachinesFilterInputArgs
+        ///             {
+        ///                 Name = "template",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "true",
+        ///                 },
+        ///             },
+        ///             new ProxmoxVE.VM.Inputs.GetVirtualMachinesFilterInputArgs
+        ///             {
+        ///                 Name = "status",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "stopped",
+        ///                 },
+        ///             },
+        ///             new ProxmoxVE.VM.Inputs.GetVirtualMachinesFilterInputArgs
+        ///             {
+        ///                 Name = "name",
+        ///                 Regex = true,
+        ///                 Values = new[]
+        ///                 {
+        ///                     "^ubuntu-20.*$",
+        ///                 },
+        ///             },
+        ///             new ProxmoxVE.VM.Inputs.GetVirtualMachinesFilterInputArgs
+        ///             {
+        ///                 Name = "node_name",
+        ///                 Regex = true,
+        ///                 Values = new[]
+        ///                 {
+        ///                     "node_us_[1-3]",
+        ///                     "node_eu_[1-3]",
+        ///                 },
+        ///             },
+        ///         },
+        ///         Tags = new[]
+        ///         {
+        ///             "template",
+        ///             "latest",
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetVirtualMachinesResult> Invoke(GetVirtualMachinesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVirtualMachinesResult>("proxmoxve:VM/getVirtualMachines:getVirtualMachines", args ?? new GetVirtualMachinesInvokeArgs(), options.WithDefaults());
     }
 
 

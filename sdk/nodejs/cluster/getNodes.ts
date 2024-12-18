@@ -79,7 +79,7 @@ export interface GetNodesResult {
  * const availableNodes = proxmoxve.Cluster.getNodes({});
  * ```
  */
-export function getNodesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetNodesResult> {
+export function getNodesOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNodesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("proxmoxve:Cluster/getNodes:getNodes", {
     }, opts);

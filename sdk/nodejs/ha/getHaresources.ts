@@ -77,7 +77,7 @@ export interface GetHAResourcesResult {
  * };
  * ```
  */
-export function getHAResourcesOutput(args?: GetHAResourcesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHAResourcesResult> {
+export function getHAResourcesOutput(args?: GetHAResourcesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHAResourcesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("proxmoxve:HA/getHAResources:getHAResources", {

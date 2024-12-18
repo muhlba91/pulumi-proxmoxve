@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.resources.InvokeArgs;
 import io.muehlbachler.pulumi.proxmoxve.HA.inputs.GetHAGroupArgs;
 import io.muehlbachler.pulumi.proxmoxve.HA.inputs.GetHAGroupPlainArgs;
@@ -146,6 +147,48 @@ public final class HAFunctions {
      * 
      */
     public static Output<GetHAGroupResult> getHAGroup(GetHAGroupArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:HA/getHAGroup:getHAGroup", TypeShape.of(GetHAGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about a specific High Availability group.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.HA.HAFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = HAFunctions.getHAGroups();
+     * 
+     *         final var example = "TODO: ForExpression";
+     * 
+     *         ctx.export("proxmoxVirtualEnvironmentHagroupsFull", example);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetHAGroupResult> getHAGroup(GetHAGroupArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:HA/getHAGroup:getHAGroup", TypeShape.of(GetHAGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -427,6 +470,46 @@ public final class HAFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetHAGroupsResult> getHAGroups(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:HA/getHAGroups:getHAGroups", TypeShape.of(GetHAGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the list of High Availability groups.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.HA.HAFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = HAFunctions.getHAGroups();
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentHagroups", example.applyValue(getHAGroupsResult -> getHAGroupsResult.groupIds()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetHAGroupsResult> getHAGroupsPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("proxmoxve:HA/getHAGroups:getHAGroups", TypeShape.of(GetHAGroupsResult.class), args, Utilities.withVersion(options));
     }
@@ -557,6 +640,49 @@ public final class HAFunctions {
      * 
      */
     public static Output<GetHAResourceResult> getHAResource(GetHAResourceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:HA/getHAResource:getHAResource", TypeShape.of(GetHAResourceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the list of High Availability resources.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.HA.HAFunctions;
+     * import com.pulumi.proxmoxve.HA.inputs.GetHAResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = HAFunctions.getHAResources();
+     * 
+     *         final var example = "TODO: ForExpression";
+     * 
+     *         ctx.export("proxmoxVirtualEnvironmentHaresourcesFull", example);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetHAResourceResult> getHAResource(GetHAResourceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:HA/getHAResource:getHAResource", TypeShape.of(GetHAResourceResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -825,6 +951,51 @@ public final class HAFunctions {
      * 
      */
     public static Output<GetHAResourcesResult> getHAResources(GetHAResourcesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:HA/getHAResources:getHAResources", TypeShape.of(GetHAResourcesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the list of High Availability resources.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.HA.HAFunctions;
+     * import com.pulumi.proxmoxve.HA.inputs.GetHAResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleAll = HAFunctions.getHAResources();
+     * 
+     *         final var exampleVm = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
+     *             .type("vm")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentHaresources", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetHAResourcesResult> getHAResources(GetHAResourcesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:HA/getHAResources:getHAResources", TypeShape.of(GetHAResourcesResult.class), args, Utilities.withVersion(options));
     }
     /**

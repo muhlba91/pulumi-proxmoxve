@@ -94,7 +94,7 @@ def get_groups(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroup
         comments=pulumi.get(__ret__, 'comments'),
         group_ids=pulumi.get(__ret__, 'group_ids'),
         id=pulumi.get(__ret__, 'id'))
-def get_groups_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupsResult]:
+def get_groups_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupsResult]:
     """
     Retrieves basic information about all available user groups.
 
@@ -108,7 +108,7 @@ def get_groups_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Out
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:Permission/getGroups:getGroups', __args__, opts=opts, typ=GetGroupsResult)
     return __ret__.apply(lambda __response__: GetGroupsResult(
         comments=pulumi.get(__response__, 'comments'),

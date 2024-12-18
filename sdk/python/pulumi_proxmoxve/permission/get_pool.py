@@ -111,7 +111,7 @@ def get_pool(pool_id: Optional[str] = None,
         members=pulumi.get(__ret__, 'members'),
         pool_id=pulumi.get(__ret__, 'pool_id'))
 def get_pool_output(pool_id: Optional[pulumi.Input[str]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPoolResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPoolResult]:
     """
     Retrieves information about a specific resource pool.
 
@@ -129,7 +129,7 @@ def get_pool_output(pool_id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['poolId'] = pool_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:Permission/getPool:getPool', __args__, opts=opts, typ=GetPoolResult)
     return __ret__.apply(lambda __response__: GetPoolResult(
         comment=pulumi.get(__response__, 'comment'),

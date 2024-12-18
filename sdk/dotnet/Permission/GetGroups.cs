@@ -52,6 +52,27 @@ namespace Pulumi.ProxmoxVE.Permission
         /// </summary>
         public static Output<GetGroupsResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupsResult>("proxmoxve:Permission/getGroups:getGroups", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves basic information about all available user groups.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var availableGroups = ProxmoxVE.Permission.GetGroups.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetGroupsResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGroupsResult>("proxmoxve:Permission/getGroups:getGroups", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

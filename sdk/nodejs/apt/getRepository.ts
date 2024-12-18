@@ -114,7 +114,7 @@ export interface GetRepositoryResult {
  * export const proxmoxVirtualEnvironmentAptRepository = example;
  * ```
  */
-export function getRepositoryOutput(args: GetRepositoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepositoryResult> {
+export function getRepositoryOutput(args: GetRepositoryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRepositoryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("proxmoxve:Apt/getRepository:getRepository", {
         "filePath": args.filePath,

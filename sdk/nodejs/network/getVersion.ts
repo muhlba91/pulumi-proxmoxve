@@ -65,7 +65,7 @@ export interface GetVersionResult {
  * };
  * ```
  */
-export function getVersionOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetVersionResult> {
+export function getVersionOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVersionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("proxmoxve:Network/getVersion:getVersion", {
     }, opts);

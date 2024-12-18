@@ -58,6 +58,30 @@ namespace Pulumi.ProxmoxVE.Network
         /// </summary>
         public static Output<GetDNSResult> Invoke(GetDNSInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDNSResult>("proxmoxve:Network/getDNS:getDNS", args ?? new GetDNSInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the DNS configuration for a specific node.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var firstNode = ProxmoxVE.Network.GetDNS.Invoke(new()
+        ///     {
+        ///         NodeName = "first-node",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDNSResult> Invoke(GetDNSInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDNSResult>("proxmoxve:Network/getDNS:getDNS", args ?? new GetDNSInvokeArgs(), options.WithDefaults());
     }
 
 

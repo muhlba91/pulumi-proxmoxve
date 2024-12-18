@@ -115,7 +115,7 @@ export interface GetVm2Result {
  * !> **DO NOT USE**
  * This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
  */
-export function getVm2Output(args: GetVm2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVm2Result> {
+export function getVm2Output(args: GetVm2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVm2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("proxmoxve:index/getVm2:getVm2", {
         "clone": args.clone,

@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as proxmoxve from "@pulumi/proxmoxve";
  *
  * const all = proxmoxve.HA.getHAGroups({});
- * const example = all.then(all => .map(([, ]) => (proxmoxve.HA.getHAGroup({
+ * const example = all.then(all => .map(([__key, __value]) => (proxmoxve.HA.getHAGroup({
  *     group: __value,
  * }))));
  * export const proxmoxVirtualEnvironmentHagroupsFull = example;
@@ -76,13 +76,13 @@ export interface GetHAGroupResult {
  * import * as proxmoxve from "@pulumi/proxmoxve";
  *
  * const all = proxmoxve.HA.getHAGroups({});
- * const example = all.then(all => .map(([, ]) => (proxmoxve.HA.getHAGroup({
+ * const example = all.then(all => .map(([__key, __value]) => (proxmoxve.HA.getHAGroup({
  *     group: __value,
  * }))));
  * export const proxmoxVirtualEnvironmentHagroupsFull = example;
  * ```
  */
-export function getHAGroupOutput(args: GetHAGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHAGroupResult> {
+export function getHAGroupOutput(args: GetHAGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHAGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("proxmoxve:HA/getHAGroup:getHAGroup", {
         "group": args.group,

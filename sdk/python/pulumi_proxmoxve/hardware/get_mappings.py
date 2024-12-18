@@ -136,7 +136,7 @@ def get_mappings(check_node: Optional[str] = None,
         type=pulumi.get(__ret__, 'type'))
 def get_mappings_output(check_node: Optional[pulumi.Input[Optional[str]]] = None,
                         type: Optional[pulumi.Input[str]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMappingsResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMappingsResult]:
     """
     Retrieves a list of hardware mapping resources.
 
@@ -161,7 +161,7 @@ def get_mappings_output(check_node: Optional[pulumi.Input[Optional[str]]] = None
     __args__ = dict()
     __args__['checkNode'] = check_node
     __args__['type'] = type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:Hardware/getMappings:getMappings', __args__, opts=opts, typ=GetMappingsResult)
     return __ret__.apply(lambda __response__: GetMappingsResult(
         check_node=pulumi.get(__response__, 'check_node'),

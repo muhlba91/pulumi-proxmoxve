@@ -201,7 +201,7 @@ def get_datastores(node_name: Optional[str] = None,
         space_useds=pulumi.get(__ret__, 'space_useds'),
         types=pulumi.get(__ret__, 'types'))
 def get_datastores_output(node_name: Optional[pulumi.Input[str]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatastoresResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatastoresResult]:
     """
     Retrieves information about all the datastores available to a specific node.
 
@@ -219,7 +219,7 @@ def get_datastores_output(node_name: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['nodeName'] = node_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:Storage/getDatastores:getDatastores', __args__, opts=opts, typ=GetDatastoresResult)
     return __ret__.apply(lambda __response__: GetDatastoresResult(
         actives=pulumi.get(__response__, 'actives'),

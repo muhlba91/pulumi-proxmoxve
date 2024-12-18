@@ -78,7 +78,7 @@ export interface GetHostsResult {
  * });
  * ```
  */
-export function getHostsOutput(args: GetHostsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostsResult> {
+export function getHostsOutput(args: GetHostsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHostsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("proxmoxve:Network/getHosts:getHosts", {
         "nodeName": args.nodeName,

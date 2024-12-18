@@ -76,6 +76,39 @@ namespace Pulumi.ProxmoxVE.HA
         /// </summary>
         public static Output<GetHAGroupResult> Invoke(GetHAGroupInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHAGroupResult>("proxmoxve:HA/getHAGroup:getHAGroup", args ?? new GetHAGroupInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves information about a specific High Availability group.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = ProxmoxVE.HA.GetHAGroups.Invoke();
+        /// 
+        ///     var example = .Select(__value =&gt; 
+        ///     {
+        ///         return ProxmoxVE.HA.GetHAGroup.Invoke(new()
+        ///         {
+        ///             Group = __value,
+        ///         });
+        ///     }).ToList();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["proxmoxVirtualEnvironmentHagroupsFull"] = example,
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetHAGroupResult> Invoke(GetHAGroupInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetHAGroupResult>("proxmoxve:HA/getHAGroup:getHAGroup", args ?? new GetHAGroupInvokeArgs(), options.WithDefaults());
     }
 
 

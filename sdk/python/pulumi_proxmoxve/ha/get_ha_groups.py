@@ -82,7 +82,7 @@ def get_ha_groups(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHA
     return AwaitableGetHAGroupsResult(
         group_ids=pulumi.get(__ret__, 'group_ids'),
         id=pulumi.get(__ret__, 'id'))
-def get_ha_groups_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHAGroupsResult]:
+def get_ha_groups_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHAGroupsResult]:
     """
     Retrieves the list of High Availability groups.
 
@@ -97,7 +97,7 @@ def get_ha_groups_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:HA/getHAGroups:getHAGroups', __args__, opts=opts, typ=GetHAGroupsResult)
     return __ret__.apply(lambda __response__: GetHAGroupsResult(
         group_ids=pulumi.get(__response__, 'group_ids'),

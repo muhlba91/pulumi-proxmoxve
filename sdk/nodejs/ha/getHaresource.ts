@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as proxmoxve from "@pulumi/proxmoxve";
  *
  * const all = proxmoxve.HA.getHAResources({});
- * const example = all.then(all => .map(([, ]) => (proxmoxve.HA.getHAResource({
+ * const example = all.then(all => .map(([__key, __value]) => (proxmoxve.HA.getHAResource({
  *     resourceId: __value,
  * }))));
  * export const proxmoxVirtualEnvironmentHaresourcesFull = example;
@@ -84,13 +84,13 @@ export interface GetHAResourceResult {
  * import * as proxmoxve from "@pulumi/proxmoxve";
  *
  * const all = proxmoxve.HA.getHAResources({});
- * const example = all.then(all => .map(([, ]) => (proxmoxve.HA.getHAResource({
+ * const example = all.then(all => .map(([__key, __value]) => (proxmoxve.HA.getHAResource({
  *     resourceId: __value,
  * }))));
  * export const proxmoxVirtualEnvironmentHaresourcesFull = example;
  * ```
  */
-export function getHAResourceOutput(args: GetHAResourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHAResourceResult> {
+export function getHAResourceOutput(args: GetHAResourceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHAResourceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("proxmoxve:HA/getHAResource:getHAResource", {
         "resourceId": args.resourceId,

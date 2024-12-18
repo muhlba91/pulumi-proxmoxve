@@ -159,7 +159,7 @@ def get_virtual_machine_output(node_name: Optional[pulumi.Input[str]] = None,
                                status: Optional[pulumi.Input[Optional[str]]] = None,
                                template: Optional[pulumi.Input[Optional[bool]]] = None,
                                vm_id: Optional[pulumi.Input[int]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVirtualMachineResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVirtualMachineResult]:
     """
     Retrieves information about a specific VM.
 
@@ -184,7 +184,7 @@ def get_virtual_machine_output(node_name: Optional[pulumi.Input[str]] = None,
     __args__['status'] = status
     __args__['template'] = template
     __args__['vmId'] = vm_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:VM/getVirtualMachine:getVirtualMachine', __args__, opts=opts, typ=GetVirtualMachineResult)
     return __ret__.apply(lambda __response__: GetVirtualMachineResult(
         id=pulumi.get(__response__, 'id'),
