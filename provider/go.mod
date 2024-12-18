@@ -5,7 +5,7 @@ go 1.23.0
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240520223432-0c0bf0d65f10
 
 require (
-	github.com/bpg/terraform-provider-proxmox v0.68.1
+	github.com/bpg/terraform-provider-proxmox v0.69.0
 	github.com/ettle/strcase v0.2.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.98.0
 	github.com/pulumi/pulumi/sdk/v3 v3.143.0
@@ -83,7 +83,7 @@ require (
 	github.com/hashicorp/logutils v1.0.0 // indirect
 	github.com/hashicorp/terraform-plugin-framework v1.13.0 // indirect
 	github.com/hashicorp/terraform-plugin-framework-timeouts v0.4.1 // indirect
-	github.com/hashicorp/terraform-plugin-framework-validators v0.15.0 // indirect
+	github.com/hashicorp/terraform-plugin-framework-validators v0.16.0 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.25.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.35.0 // indirect
@@ -174,7 +174,7 @@ require (
 	go.opentelemetry.io/otel/trace v1.24.0 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
 	golang.org/x/crypto v0.31.0 // indirect
-	golang.org/x/exp v0.0.0-20241204233417-43b7b7cde48d // indirect
+	golang.org/x/exp v0.0.0-20241217172543-b2144cdd0a67 // indirect
 	golang.org/x/mod v0.22.0 // indirect
 	golang.org/x/net v0.32.0 // indirect
 	golang.org/x/oauth2 v0.22.0 // indirect
