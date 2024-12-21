@@ -1,6 +1,15 @@
 # Changelog
 
 
+## [6.18.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.18.0...v6.18.1) (2024-12-21)
+
+
+### Miscellaneous Chores
+
+* **deps:** update github/codeql-action action to v3.28.0 ([a2d6c2a](https://github.com/muhlba91/pulumi-proxmoxve/commit/a2d6c2a599b67409135b827e3d5bbb5ef1283b3a))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.144.0 ([aa629e3](https://github.com/muhlba91/pulumi-proxmoxve/commit/aa629e35229d574779928e0e046beee256b933b7))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.144.1 ([21e5703](https://github.com/muhlba91/pulumi-proxmoxve/commit/21e57037dd91d44155f29adcca8fa6e0e5b420ad))
+
 ## [6.18.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.17.1...v6.18.0) (2024-12-18)
 
 
