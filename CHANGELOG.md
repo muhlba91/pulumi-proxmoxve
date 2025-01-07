@@ -1,6 +1,24 @@
 # Changelog
 
 
+## [6.18.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.18.0...v6.18.1) (2025-01-07)
+
+
+### Bug Fixes
+
+* prepare for upstream release v0.69.1 ([f3408f4](https://github.com/muhlba91/pulumi-proxmoxve/commit/f3408f4c646d53bcedd1b090b1c1a462d7157012))
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/setup-dotnet action to v4.2.0 ([e4922da](https://github.com/muhlba91/pulumi-proxmoxve/commit/e4922da4fae636bd4e946ac4a06ddf3d10c91c61))
+* **deps:** update github/codeql-action action to v3.28.0 ([a2d6c2a](https://github.com/muhlba91/pulumi-proxmoxve/commit/a2d6c2a599b67409135b827e3d5bbb5ef1283b3a))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.69.1 ([172296b](https://github.com/muhlba91/pulumi-proxmoxve/commit/172296b742c2c2e3d08c60771e2dd6ae337ea36d))
+* **deps:** update module github.com/pulumi/pulumi-terraform-bridge/v3 to v3.99.0 ([755656a](https://github.com/muhlba91/pulumi-proxmoxve/commit/755656a0d9ebbcf5ef2d758cf5d94a1b8c752d89))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.144.0 ([aa629e3](https://github.com/muhlba91/pulumi-proxmoxve/commit/aa629e35229d574779928e0e046beee256b933b7))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.144.1 ([21e5703](https://github.com/muhlba91/pulumi-proxmoxve/commit/21e57037dd91d44155f29adcca8fa6e0e5b420ad))
+* **deps:** update pypa/gh-action-pypi-publish digest to 8cafb5c ([c56809c](https://github.com/muhlba91/pulumi-proxmoxve/commit/c56809c585501d2962c47b64f2accf751e1d727d))
+
 ## [6.18.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.17.1...v6.18.0) (2024-12-18)
 
 
