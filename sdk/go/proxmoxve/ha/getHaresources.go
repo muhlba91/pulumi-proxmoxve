@@ -20,18 +20,18 @@ import (
 //
 // import (
 //
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/HA"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/ha"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 // func main() {
 // pulumi.Run(func(ctx *pulumi.Context) error {
-// exampleAll, err := HA.GetHAResources(ctx, &ha.GetHAResourcesArgs{
+// exampleAll, err := ha.GetHAResources(ctx, &ha.GetHAResourcesArgs{
 // }, nil);
 // if err != nil {
 // return err
 // }
-// exampleVm, err := HA.GetHAResources(ctx, &ha.GetHAResourcesArgs{
+// exampleVm, err := ha.GetHAResources(ctx, &ha.GetHAResourcesArgs{
 // Type: pulumi.StringRef("vm"),
 // }, nil);
 // if err != nil {

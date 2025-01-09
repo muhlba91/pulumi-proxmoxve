@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Cluster"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/cluster"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Cluster.GetNodes(ctx, map[string]interface{}{}, nil)
+//			_, err := cluster.GetNodes(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}

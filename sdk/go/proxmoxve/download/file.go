@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Download"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/download"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Download.NewFile(ctx, "release20231228Debian12BookwormQcow2Img", &Download.FileArgs{
+//			_, err := download.NewFile(ctx, "release20231228Debian12BookwormQcow2Img", &download.FileArgs{
 //				Checksum:          pulumi.String("d2fbcf11fb28795842e91364d8c7b69f1870db09ff299eb94e4fbbfa510eb78d141e74c1f4bf6dfa0b7e33d0c3b66e6751886feadb4e9916f778bab1776bdf1b"),
 //				ChecksumAlgorithm: pulumi.String("sha512"),
 //				ContentType:       pulumi.String("iso"),
@@ -43,7 +43,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Download.NewFile(ctx, "latestDebian12BookwormQcow2Img", &Download.FileArgs{
+//			_, err = download.NewFile(ctx, "latestDebian12BookwormQcow2Img", &download.FileArgs{
 //				ContentType: pulumi.String("iso"),
 //				DatastoreId: pulumi.String("local"),
 //				FileName:    pulumi.String("debian-12-generic-amd64.qcow2.img"),
@@ -53,7 +53,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Download.NewFile(ctx, "latestUbuntu22JammyQcow2Img", &Download.FileArgs{
+//			_, err = download.NewFile(ctx, "latestUbuntu22JammyQcow2Img", &download.FileArgs{
 //				ContentType: pulumi.String("iso"),
 //				DatastoreId: pulumi.String("local"),
 //				NodeName:    pulumi.String("pve"),
@@ -62,7 +62,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Download.NewFile(ctx, "latestStaticUbuntu24NobleQcow2Img", &Download.FileArgs{
+//			_, err = download.NewFile(ctx, "latestStaticUbuntu24NobleQcow2Img", &download.FileArgs{
 //				ContentType: pulumi.String("iso"),
 //				DatastoreId: pulumi.String("local"),
 //				NodeName:    pulumi.String("pve"),
@@ -72,7 +72,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Download.NewFile(ctx, "release20231211Ubuntu22JammyLxcImg", &Download.FileArgs{
+//			_, err = download.NewFile(ctx, "release20231211Ubuntu22JammyLxcImg", &download.FileArgs{
 //				Checksum:          pulumi.String("c9997dcfea5d826fd04871f960c513665f2e87dd7450bba99f68a97e60e4586e"),
 //				ChecksumAlgorithm: pulumi.String("sha256"),
 //				ContentType:       pulumi.String("vztmpl"),
@@ -84,7 +84,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Download.NewFile(ctx, "latestUbuntu22JammyLxcImg", &Download.FileArgs{
+//			_, err = download.NewFile(ctx, "latestUbuntu22JammyLxcImg", &download.FileArgs{
 //				ContentType: pulumi.String("vztmpl"),
 //				DatastoreId: pulumi.String("local"),
 //				NodeName:    pulumi.String("pve"),

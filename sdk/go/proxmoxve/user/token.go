@@ -21,8 +21,8 @@ import (
 //
 // import (
 //
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Permission"
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/User"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/permission"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/user"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// if creating a user token, the user must be created first
-//			user, err := Permission.NewUser(ctx, "user", &Permission.UserArgs{
+//			user, err := permission.NewUser(ctx, "user", &permission.UserArgs{
 //				Comment:        pulumi.String("Managed by Pulumi"),
 //				Email:          pulumi.String("user@pve"),
 //				Enabled:        pulumi.Bool(true),
@@ -40,7 +40,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = User.NewToken(ctx, "userToken", &User.TokenArgs{
+//			_, err = user.NewToken(ctx, "userToken", &user.TokenArgs{
 //				Comment:        pulumi.String("Managed by Pulumi"),
 //				ExpirationDate: pulumi.String("2033-01-01T22:00:00Z"),
 //				TokenName:      pulumi.String("tk1"),

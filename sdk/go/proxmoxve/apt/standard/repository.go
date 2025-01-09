@@ -21,21 +21,21 @@ import (
 //
 // import (
 //
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Apt"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/apt"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleRepository, err := Apt.NewRepository(ctx, "exampleRepository", &Apt.RepositoryArgs{
+//			exampleRepository, err := apt.NewRepository(ctx, "exampleRepository", &apt.RepositoryArgs{
 //				Handle: pulumi.String("no-subscription"),
 //				Node:   pulumi.String("pve"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Apt.NewRepository(ctx, "exampleApt/repositoryRepository", &Apt.RepositoryArgs{
+//			_, err = apt.NewRepository(ctx, "exampleApt/repositoryRepository", &apt.RepositoryArgs{
 //				Enabled:  pulumi.Bool(true),
 //				FilePath: exampleRepository.FilePath,
 //				Index:    exampleRepository.Index,

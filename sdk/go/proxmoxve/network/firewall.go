@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Network"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/network"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Network.NewFirewall(ctx, "example", &Network.FirewallArgs{
+//			_, err := network.NewFirewall(ctx, "example", &network.FirewallArgs{
 //				Ebtables:    pulumi.Bool(false),
 //				Enabled:     pulumi.Bool(false),
 //				InputPolicy: pulumi.String("DROP"),

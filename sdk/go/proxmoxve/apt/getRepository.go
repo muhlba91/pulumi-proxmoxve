@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Apt"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/apt"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := Apt.GetRepository(ctx, &apt.GetRepositoryArgs{
+//			example, err := apt.GetRepository(ctx, &apt.GetRepositoryArgs{
 //				FilePath: "/etc/apt/sources.list",
 //				Index:    0,
 //				Node:     "pve",

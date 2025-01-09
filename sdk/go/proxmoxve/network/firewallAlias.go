@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Network"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/network"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Network.NewFirewallAlias(ctx, "localNetwork", &Network.FirewallAliasArgs{
+//			_, err := network.NewFirewallAlias(ctx, "localNetwork", &network.FirewallAliasArgs{
 //				NodeName: pulumi.Any(proxmox_virtual_environment_vm.Example.Node_name),
 //				VmId:     pulumi.Any(proxmox_virtual_environment_vm.Example.Vm_id),
 //				Cidr:     pulumi.String("192.168.0.0/23"),
@@ -41,7 +41,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Network.NewFirewallAlias(ctx, "ubuntuVm", &Network.FirewallAliasArgs{
+//			_, err = network.NewFirewallAlias(ctx, "ubuntuVm", &network.FirewallAliasArgs{
 //				Cidr:    pulumi.String("192.168.0.1"),
 //				Comment: pulumi.String("Managed by Pulumi"),
 //			})

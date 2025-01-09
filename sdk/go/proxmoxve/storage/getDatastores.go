@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Storage"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Storage.GetDatastores(ctx, &storage.GetDatastoresArgs{
+//			_, err := storage.GetDatastores(ctx, &storage.GetDatastoresArgs{
 //				NodeName: "first-node",
 //			}, nil)
 //			if err != nil {
