@@ -27,14 +27,14 @@ import (
 //
 // import (
 //
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Storage"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Storage.NewFile(ctx, "backup", &Storage.FileArgs{
+//			_, err := storage.NewFile(ctx, "backup", &storage.FileArgs{
 //				ContentType: pulumi.String("dump"),
 //				DatastoreId: pulumi.String("local"),
 //				NodeName:    pulumi.String("pve"),
@@ -60,14 +60,14 @@ import (
 //
 // import (
 //
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Storage"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Storage.NewFile(ctx, "ubuntuContainerTemplate", &Storage.FileArgs{
+//			_, err := storage.NewFile(ctx, "ubuntuContainerTemplate", &storage.FileArgs{
 //				ContentType: pulumi.String("iso"),
 //				DatastoreId: pulumi.String("local"),
 //				NodeName:    pulumi.String("pve"),
@@ -93,14 +93,14 @@ import (
 //
 // import (
 //
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Storage"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Storage.NewFile(ctx, "ubuntuContainerTemplate", &Storage.FileArgs{
+//			_, err := storage.NewFile(ctx, "ubuntuContainerTemplate", &storage.FileArgs{
 //				ContentType: pulumi.String("vztmpl"),
 //				DatastoreId: pulumi.String("local"),
 //				NodeName:    pulumi.String("first-node"),

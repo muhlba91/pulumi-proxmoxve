@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Acme"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/acme"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := Acme.GetAccounts(ctx, map[string]interface{}{}, nil)
+//			example, err := acme.GetAccounts(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}

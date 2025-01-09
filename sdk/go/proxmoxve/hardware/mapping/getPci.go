@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Hardware"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/hardware"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := Hardware.GetPci(ctx, &mapping.GetPciArgs{
+//			example, err := hardware.GetPci(ctx, &mapping.GetPciArgs{
 //				Name: "example",
 //			}, nil)
 //			if err != nil {

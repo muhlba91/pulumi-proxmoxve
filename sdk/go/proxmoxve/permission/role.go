@@ -21,14 +21,14 @@ import (
 //
 // import (
 //
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Permission"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/permission"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Permission.NewRole(ctx, "operationsMonitoring", &Permission.RoleArgs{
+//			_, err := permission.NewRole(ctx, "operationsMonitoring", &permission.RoleArgs{
 //				Privileges: pulumi.StringArray{
 //					pulumi.String("VM.Monitor"),
 //				},

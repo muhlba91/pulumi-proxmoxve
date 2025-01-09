@@ -21,20 +21,20 @@ import (
 //
 // import (
 //
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Network"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/network"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			vlan99, err := Network.NewNetworkVlan(ctx, "vlan99", &Network.NetworkVlanArgs{
+//			vlan99, err := network.NewNetworkVlan(ctx, "vlan99", &network.NetworkVlanArgs{
 //				NodeName: pulumi.String("pve"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Network.NewNetworkBridge(ctx, "vmbr99", &Network.NetworkBridgeArgs{
+//			_, err = network.NewNetworkBridge(ctx, "vmbr99", &network.NetworkBridgeArgs{
 //				NodeName: pulumi.String("pve"),
 //				Address:  pulumi.String("99.99.99.99/16"),
 //				Comment:  pulumi.String("vmbr99 comment"),

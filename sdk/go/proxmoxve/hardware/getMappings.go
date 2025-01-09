@@ -20,21 +20,21 @@ import (
 //
 // import (
 //
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Hardware"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/hardware"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example_pci, err := Hardware.GetMappings(ctx, &hardware.GetMappingsArgs{
+//			example_pci, err := hardware.GetMappings(ctx, &hardware.GetMappingsArgs{
 //				CheckNode: pulumi.StringRef("pve"),
 //				Type:      "pci",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			example_usb, err := Hardware.GetMappings(ctx, &hardware.GetMappingsArgs{
+//			example_usb, err := hardware.GetMappings(ctx, &hardware.GetMappingsArgs{
 //				CheckNode: pulumi.StringRef("pve"),
 //				Type:      "usb",
 //			}, nil)

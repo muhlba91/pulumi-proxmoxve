@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/VM"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/vm"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := VM.GetVirtualMachines(ctx, &vm.GetVirtualMachinesArgs{
+//			_, err := vm.GetVirtualMachines(ctx, &vm.GetVirtualMachinesArgs{
 //				Tags: []string{
 //					"ubuntu",
 //				},
@@ -35,7 +35,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = VM.GetVirtualMachines(ctx, &vm.GetVirtualMachinesArgs{
+//			_, err = vm.GetVirtualMachines(ctx, &vm.GetVirtualMachinesArgs{
 //				Filters: []vm.GetVirtualMachinesFilter{
 //					{
 //						Name: "template",

@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Permission"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/permission"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Permission.GetGroup(ctx, &permission.GetGroupArgs{
+//			_, err := permission.GetGroup(ctx, &permission.GetGroupArgs{
 //				GroupId: "operations-team",
 //			}, nil)
 //			if err != nil {

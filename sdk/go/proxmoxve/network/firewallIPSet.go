@@ -21,14 +21,14 @@ import (
 //
 // import (
 //
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Network"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/network"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Network.NewFirewallIPSet(ctx, "ipset", &Network.FirewallIPSetArgs{
+//			_, err := network.NewFirewallIPSet(ctx, "ipset", &network.FirewallIPSetArgs{
 //				NodeName: pulumi.Any(proxmox_virtual_environment_vm.Example.Node_name),
 //				VmId:     pulumi.Any(proxmox_virtual_environment_vm.Example.Vm_id),
 //				Comment:  pulumi.String("Managed by Pulumi"),

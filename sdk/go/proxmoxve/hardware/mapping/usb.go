@@ -21,14 +21,14 @@ import (
 //
 // import (
 //
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Hardware"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/hardware"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Hardware.NewUsb(ctx, "example", &Hardware.UsbArgs{
+//			_, err := hardware.NewUsb(ctx, "example", &hardware.UsbArgs{
 //				Comment: pulumi.String("This is a comment"),
 //				Maps: mapping.UsbMapTypeArray{
 //					&mapping.UsbMapTypeArgs{

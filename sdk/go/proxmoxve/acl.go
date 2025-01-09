@@ -25,14 +25,14 @@ import (
 // import (
 //
 //	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve"
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Permission"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/permission"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			operationsAutomation, err := Permission.NewUser(ctx, "operationsAutomation", &Permission.UserArgs{
+//			operationsAutomation, err := permission.NewUser(ctx, "operationsAutomation", &permission.UserArgs{
 //				Comment:  pulumi.String("Managed by Pulumi"),
 //				Password: pulumi.String("a-strong-password"),
 //				UserId:   pulumi.String("operations-automation@pve"),
@@ -40,7 +40,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			operationsMonitoring, err := Permission.NewRole(ctx, "operationsMonitoring", &Permission.RoleArgs{
+//			operationsMonitoring, err := permission.NewRole(ctx, "operationsMonitoring", &permission.RoleArgs{
 //				RoleId: pulumi.String("operations-monitoring"),
 //				Privileges: pulumi.StringArray{
 //					pulumi.String("VM.Monitor"),

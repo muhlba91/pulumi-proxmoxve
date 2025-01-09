@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Network"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/network"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Network.NewFirewallSecurityGroup(ctx, "webserver", &Network.FirewallSecurityGroupArgs{
+//			_, err := network.NewFirewallSecurityGroup(ctx, "webserver", &network.FirewallSecurityGroupArgs{
 //				Comment: pulumi.String("Managed by Pulumi"),
 //				Rules: network.FirewallSecurityGroupRuleArray{
 //					&network.FirewallSecurityGroupRuleArgs{

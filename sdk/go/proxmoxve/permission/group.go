@@ -21,14 +21,14 @@ import (
 //
 // import (
 //
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Permission"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/permission"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Permission.NewGroup(ctx, "operationsTeam", &Permission.GroupArgs{
+//			_, err := permission.NewGroup(ctx, "operationsTeam", &permission.GroupArgs{
 //				Comment: pulumi.String("Managed by Pulumi"),
 //				GroupId: pulumi.String("operations-team"),
 //			})

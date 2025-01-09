@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Permission"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/permission"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Permission.GetPool(ctx, &permission.GetPoolArgs{
+//			_, err := permission.GetPool(ctx, &permission.GetPoolArgs{
 //				PoolId: "operations",
 //			}, nil)
 //			if err != nil {

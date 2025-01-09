@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/Network"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/network"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -29,7 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// using VLAN tag
-//			_, err := Network.NewNetworkVlan(ctx, "vlan99", &Network.NetworkVlanArgs{
+//			_, err := network.NewNetworkVlan(ctx, "vlan99", &network.NetworkVlanArgs{
 //				Comment:  pulumi.String("VLAN 99"),
 //				NodeName: pulumi.String("pve"),
 //			})
@@ -37,7 +37,7 @@ import (
 //				return err
 //			}
 //			// using custom network interface name
-//			_, err = Network.NewNetworkVlan(ctx, "vlan98", &Network.NetworkVlanArgs{
+//			_, err = network.NewNetworkVlan(ctx, "vlan98", &network.NetworkVlanArgs{
 //				Comment:   pulumi.String("VLAN 98"),
 //				Interface: pulumi.String("eno0"),
 //				NodeName:  pulumi.String("pve"),
