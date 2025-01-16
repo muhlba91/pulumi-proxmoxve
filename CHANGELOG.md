@@ -1,6 +1,27 @@
 # Changelog
 
 
+## [6.19.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.18.1...v6.19.0) (2025-01-16)
+
+
+### Features
+
+* upgrade pulumi sdks ([c95b313](https://github.com/muhlba91/pulumi-proxmoxve/commit/c95b31372ed7094c8a89480a4214e0efea0af4af))
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/upload-artifact action to v4.6.0 ([5ea87c9](https://github.com/muhlba91/pulumi-proxmoxve/commit/5ea87c9ae03bf9c5ec4beb188f1c1c2d514cb0c3))
+* **deps:** update github/codeql-action action to v3.28.1 ([f2c9dbf](https://github.com/muhlba91/pulumi-proxmoxve/commit/f2c9dbfaf467a769da954a64d02e7c4a49e06735))
+* **deps:** update hashicorp/vault-action action to v3.1.0 ([2c63f5a](https://github.com/muhlba91/pulumi-proxmoxve/commit/2c63f5a30068a160cdef8de96025965970fc5f6b))
+* **deps:** update module github.com/pulumi/pulumi-terraform-bridge/v3 to v3.100.0 ([9f36035](https://github.com/muhlba91/pulumi-proxmoxve/commit/9f36035b5723bb3e3797c5c4e44237fdf32d7486))
+* **deps:** update module github.com/pulumi/pulumi-terraform-bridge/v3 to v3.101.0 ([694feb9](https://github.com/muhlba91/pulumi-proxmoxve/commit/694feb91cc32e63a3131713b031c510ab7e08892))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.146.0 ([dbbf82c](https://github.com/muhlba91/pulumi-proxmoxve/commit/dbbf82c3f9c80c0d8458459f182ee99f88198de1))
+* **deps:** update pulumi/actions action to v6.0.1 ([98f675c](https://github.com/muhlba91/pulumi-proxmoxve/commit/98f675c6ab6fcb39f68d182e80196dedb75f8a3c))
+* **deps:** update step-security/harden-runner action to v2.10.3 ([24c2ca9](https://github.com/muhlba91/pulumi-proxmoxve/commit/24c2ca9120c9632291be6c3430ca81bbe48b4a66))
+* fix renamed property in goreleaser ([5a8bdb8](https://github.com/muhlba91/pulumi-proxmoxve/commit/5a8bdb8465b7260ba70cd1b7d53cd8f27711300e))
+* update pulumi-java to v1.0.0 ([7649c63](https://github.com/muhlba91/pulumi-proxmoxve/commit/7649c636a98ab0df382d541855f894a06640bad1))
+
 ## [6.18.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.18.0...v6.18.1) (2025-01-07)
 
 
