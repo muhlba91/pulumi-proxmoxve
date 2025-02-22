@@ -260,6 +260,34 @@
             },
             "type": "object"
         },
+        "proxmoxve:CT/ContainerDevicePassthrough:ContainerDevicePassthrough": {
+            "properties": {
+                "denyWrite": {
+                    "type": "boolean",
+                    "description": "Deny the container to write to the device (defaults to `false`).\n"
+                },
+                "gid": {
+                    "type": "integer",
+                    "description": "Group ID to be assigned to the device node.\n"
+                },
+                "mode": {
+                    "type": "string",
+                    "description": "Access mode to be set on the device node. Must be a\n4-digit octal number.\n"
+                },
+                "path": {
+                    "type": "string",
+                    "description": "Device to pass through to the container (e.g. `/dev/sda`).\n"
+                },
+                "uid": {
+                    "type": "integer",
+                    "description": "User ID to be assigned to the device node.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "path"
+            ]
+        },
         "proxmoxve:CT/ContainerDisk:ContainerDisk": {
             "properties": {
                 "datastoreId": {
@@ -2951,6 +2979,13 @@
                     "type": "string",
                     "description": "The description.\n"
                 },
+                "devicePassthroughs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/proxmoxve:CT/ContainerDevicePassthrough:ContainerDevicePassthrough"
+                    },
+                    "description": "Device to pass through to the container (multiple blocks supported).\n"
+                },
                 "disk": {
                     "$ref": "#/types/proxmoxve:CT/ContainerDisk:ContainerDisk",
                     "description": "The disk configuration.\n"
@@ -3074,6 +3109,13 @@
                 "description": {
                     "type": "string",
                     "description": "The description.\n"
+                },
+                "devicePassthroughs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/proxmoxve:CT/ContainerDevicePassthrough:ContainerDevicePassthrough"
+                    },
+                    "description": "Device to pass through to the container (multiple blocks supported).\n"
                 },
                 "disk": {
                     "$ref": "#/types/proxmoxve:CT/ContainerDisk:ContainerDisk",
@@ -3205,6 +3247,13 @@
                     "description": {
                         "type": "string",
                         "description": "The description.\n"
+                    },
+                    "devicePassthroughs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/proxmoxve:CT/ContainerDevicePassthrough:ContainerDevicePassthrough"
+                        },
+                        "description": "Device to pass through to the container (multiple blocks supported).\n"
                     },
                     "disk": {
                         "$ref": "#/types/proxmoxve:CT/ContainerDisk:ContainerDisk",
@@ -8132,7 +8181,7 @@
             }
         },
         "proxmoxve:Hardware/getMappings:getMappings": {
-            "description": "Retrieves a list of hardware mapping resources.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@pulumi/proxmoxve\";\n\nconst example-pci = proxmoxve.Hardware.getMappings({\n    checkNode: \"pve\",\n    type: \"pci\",\n});\nconst example-usb = proxmoxve.Hardware.getMappings({\n    checkNode: \"pve\",\n    type: \"usb\",\n});\nexport const dataProxmoxVirtualEnvironmentHardwareMappingsPci = example_pci;\nexport const dataProxmoxVirtualEnvironmentHardwareMappingsUsb = example_usb;\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample_pci = proxmoxve.Hardware.get_mappings(check_node=\"pve\",\n    type=\"pci\")\nexample_usb = proxmoxve.Hardware.get_mappings(check_node=\"pve\",\n    type=\"usb\")\npulumi.export(\"dataProxmoxVirtualEnvironmentHardwareMappingsPci\", example_pci)\npulumi.export(\"dataProxmoxVirtualEnvironmentHardwareMappingsUsb\", example_usb)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example_pci = ProxmoxVE.Hardware.GetMappings.Invoke(new()\n    {\n        CheckNode = \"pve\",\n        Type = \"pci\",\n    });\n\n    var example_usb = ProxmoxVE.Hardware.GetMappings.Invoke(new()\n    {\n        CheckNode = \"pve\",\n        Type = \"usb\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"dataProxmoxVirtualEnvironmentHardwareMappingsPci\"] = example_pci,\n        [\"dataProxmoxVirtualEnvironmentHardwareMappingsUsb\"] = example_usb,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/hardware\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample_pci, err := hardware.GetMappings(ctx, \u0026hardware.GetMappingsArgs{\n\t\t\tCheckNode: pulumi.StringRef(\"pve\"),\n\t\t\tType:      \"pci\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texample_usb, err := hardware.GetMappings(ctx, \u0026hardware.GetMappingsArgs{\n\t\t\tCheckNode: pulumi.StringRef(\"pve\"),\n\t\t\tType:      \"usb\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"dataProxmoxVirtualEnvironmentHardwareMappingsPci\", example_pci)\n\t\tctx.Export(\"dataProxmoxVirtualEnvironmentHardwareMappingsUsb\", example_usb)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Hardware.HardwareFunctions;\nimport com.pulumi.proxmoxve.Hardware.inputs.GetMappingsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example-pci = HardwareFunctions.getMappings(GetMappingsArgs.builder()\n            .checkNode(\"pve\")\n            .type(\"pci\")\n            .build());\n\n        final var example-usb = HardwareFunctions.getMappings(GetMappingsArgs.builder()\n            .checkNode(\"pve\")\n            .type(\"usb\")\n            .build());\n\n        ctx.export(\"dataProxmoxVirtualEnvironmentHardwareMappingsPci\", example_pci);\n        ctx.export(\"dataProxmoxVirtualEnvironmentHardwareMappingsUsb\", example_usb);\n    }\n}\n```\n```yaml\nvariables:\n  example-pci:\n    fn::invoke:\n      function: proxmoxve:Hardware:getMappings\n      arguments:\n        checkNode: pve\n        type: pci\n  example-usb:\n    fn::invoke:\n      function: proxmoxve:Hardware:getMappings\n      arguments:\n        checkNode: pve\n        type: usb\noutputs:\n  dataProxmoxVirtualEnvironmentHardwareMappingsPci: ${[\"example-pci\"]}\n  dataProxmoxVirtualEnvironmentHardwareMappingsUsb: ${[\"example-usb\"]}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Retrieves a list of hardware mapping resources.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@pulumi/proxmoxve\";\n\nconst example_pci = proxmoxve.Hardware.getMappings({\n    checkNode: \"pve\",\n    type: \"pci\",\n});\nconst example_usb = proxmoxve.Hardware.getMappings({\n    checkNode: \"pve\",\n    type: \"usb\",\n});\nexport const dataProxmoxVirtualEnvironmentHardwareMappingsPci = example_pci;\nexport const dataProxmoxVirtualEnvironmentHardwareMappingsUsb = example_usb;\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample_pci = proxmoxve.Hardware.get_mappings(check_node=\"pve\",\n    type=\"pci\")\nexample_usb = proxmoxve.Hardware.get_mappings(check_node=\"pve\",\n    type=\"usb\")\npulumi.export(\"dataProxmoxVirtualEnvironmentHardwareMappingsPci\", example_pci)\npulumi.export(\"dataProxmoxVirtualEnvironmentHardwareMappingsUsb\", example_usb)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example_pci = ProxmoxVE.Hardware.GetMappings.Invoke(new()\n    {\n        CheckNode = \"pve\",\n        Type = \"pci\",\n    });\n\n    var example_usb = ProxmoxVE.Hardware.GetMappings.Invoke(new()\n    {\n        CheckNode = \"pve\",\n        Type = \"usb\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"dataProxmoxVirtualEnvironmentHardwareMappingsPci\"] = example_pci,\n        [\"dataProxmoxVirtualEnvironmentHardwareMappingsUsb\"] = example_usb,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/hardware\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample_pci, err := hardware.GetMappings(ctx, \u0026hardware.GetMappingsArgs{\n\t\t\tCheckNode: pulumi.StringRef(\"pve\"),\n\t\t\tType:      \"pci\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texample_usb, err := hardware.GetMappings(ctx, \u0026hardware.GetMappingsArgs{\n\t\t\tCheckNode: pulumi.StringRef(\"pve\"),\n\t\t\tType:      \"usb\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"dataProxmoxVirtualEnvironmentHardwareMappingsPci\", example_pci)\n\t\tctx.Export(\"dataProxmoxVirtualEnvironmentHardwareMappingsUsb\", example_usb)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Hardware.HardwareFunctions;\nimport com.pulumi.proxmoxve.Hardware.inputs.GetMappingsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example-pci = HardwareFunctions.getMappings(GetMappingsArgs.builder()\n            .checkNode(\"pve\")\n            .type(\"pci\")\n            .build());\n\n        final var example-usb = HardwareFunctions.getMappings(GetMappingsArgs.builder()\n            .checkNode(\"pve\")\n            .type(\"usb\")\n            .build());\n\n        ctx.export(\"dataProxmoxVirtualEnvironmentHardwareMappingsPci\", example_pci);\n        ctx.export(\"dataProxmoxVirtualEnvironmentHardwareMappingsUsb\", example_usb);\n    }\n}\n```\n```yaml\nvariables:\n  example-pci:\n    fn::invoke:\n      function: proxmoxve:Hardware:getMappings\n      arguments:\n        checkNode: pve\n        type: pci\n  example-usb:\n    fn::invoke:\n      function: proxmoxve:Hardware:getMappings\n      arguments:\n        checkNode: pve\n        type: usb\noutputs:\n  dataProxmoxVirtualEnvironmentHardwareMappingsPci: ${[\"example-pci\"]}\n  dataProxmoxVirtualEnvironmentHardwareMappingsUsb: ${[\"example-usb\"]}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getMappings.\n",
                 "properties": {

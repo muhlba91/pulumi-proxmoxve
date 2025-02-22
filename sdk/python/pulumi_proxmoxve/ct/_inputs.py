@@ -21,6 +21,8 @@ __all__ = [
     'ContainerConsoleArgsDict',
     'ContainerCpuArgs',
     'ContainerCpuArgsDict',
+    'ContainerDevicePassthroughArgs',
+    'ContainerDevicePassthroughArgsDict',
     'ContainerDiskArgs',
     'ContainerDiskArgsDict',
     'ContainerFeaturesArgs',
@@ -270,6 +272,120 @@ class ContainerCpuArgs:
     @units.setter
     def units(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "units", value)
+
+
+if not MYPY:
+    class ContainerDevicePassthroughArgsDict(TypedDict):
+        path: pulumi.Input[str]
+        """
+        Device to pass through to the container (e.g. `/dev/sda`).
+        """
+        deny_write: NotRequired[pulumi.Input[bool]]
+        """
+        Deny the container to write to the device (defaults to `false`).
+        """
+        gid: NotRequired[pulumi.Input[int]]
+        """
+        Group ID to be assigned to the device node.
+        """
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        Access mode to be set on the device node. Must be a
+        4-digit octal number.
+        """
+        uid: NotRequired[pulumi.Input[int]]
+        """
+        User ID to be assigned to the device node.
+        """
+elif False:
+    ContainerDevicePassthroughArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ContainerDevicePassthroughArgs:
+    def __init__(__self__, *,
+                 path: pulumi.Input[str],
+                 deny_write: Optional[pulumi.Input[bool]] = None,
+                 gid: Optional[pulumi.Input[int]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 uid: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] path: Device to pass through to the container (e.g. `/dev/sda`).
+        :param pulumi.Input[bool] deny_write: Deny the container to write to the device (defaults to `false`).
+        :param pulumi.Input[int] gid: Group ID to be assigned to the device node.
+        :param pulumi.Input[str] mode: Access mode to be set on the device node. Must be a
+               4-digit octal number.
+        :param pulumi.Input[int] uid: User ID to be assigned to the device node.
+        """
+        pulumi.set(__self__, "path", path)
+        if deny_write is not None:
+            pulumi.set(__self__, "deny_write", deny_write)
+        if gid is not None:
+            pulumi.set(__self__, "gid", gid)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[str]:
+        """
+        Device to pass through to the container (e.g. `/dev/sda`).
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter(name="denyWrite")
+    def deny_write(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Deny the container to write to the device (defaults to `false`).
+        """
+        return pulumi.get(self, "deny_write")
+
+    @deny_write.setter
+    def deny_write(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deny_write", value)
+
+    @property
+    @pulumi.getter
+    def gid(self) -> Optional[pulumi.Input[int]]:
+        """
+        Group ID to be assigned to the device node.
+        """
+        return pulumi.get(self, "gid")
+
+    @gid.setter
+    def gid(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "gid", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Access mode to be set on the device node. Must be a
+        4-digit octal number.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter
+    def uid(self) -> Optional[pulumi.Input[int]]:
+        """
+        User ID to be assigned to the device node.
+        """
+        return pulumi.get(self, "uid")
+
+    @uid.setter
+    def uid(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "uid", value)
 
 
 if not MYPY:

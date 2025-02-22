@@ -26,6 +26,7 @@ class ContainerArgs:
                  console: Optional[pulumi.Input['ContainerConsoleArgs']] = None,
                  cpu: Optional[pulumi.Input['ContainerCpuArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 device_passthroughs: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerDevicePassthroughArgs']]]] = None,
                  disk: Optional[pulumi.Input['ContainerDiskArgs']] = None,
                  features: Optional[pulumi.Input['ContainerFeaturesArgs']] = None,
                  hook_script_file_id: Optional[pulumi.Input[str]] = None,
@@ -55,6 +56,7 @@ class ContainerArgs:
         :param pulumi.Input['ContainerConsoleArgs'] console: The console configuration.
         :param pulumi.Input['ContainerCpuArgs'] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerDevicePassthroughArgs']]] device_passthroughs: Device to pass through to the container (multiple blocks supported).
         :param pulumi.Input['ContainerDiskArgs'] disk: The disk configuration.
         :param pulumi.Input['ContainerFeaturesArgs'] features: The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
         :param pulumi.Input[str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
@@ -94,6 +96,8 @@ class ContainerArgs:
             pulumi.set(__self__, "cpu", cpu)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if device_passthroughs is not None:
+            pulumi.set(__self__, "device_passthroughs", device_passthroughs)
         if disk is not None:
             pulumi.set(__self__, "disk", disk)
         if features is not None:
@@ -201,6 +205,18 @@ class ContainerArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="devicePassthroughs")
+    def device_passthroughs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerDevicePassthroughArgs']]]]:
+        """
+        Device to pass through to the container (multiple blocks supported).
+        """
+        return pulumi.get(self, "device_passthroughs")
+
+    @device_passthroughs.setter
+    def device_passthroughs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerDevicePassthroughArgs']]]]):
+        pulumi.set(self, "device_passthroughs", value)
 
     @property
     @pulumi.getter
@@ -482,6 +498,7 @@ class _ContainerState:
                  console: Optional[pulumi.Input['ContainerConsoleArgs']] = None,
                  cpu: Optional[pulumi.Input['ContainerCpuArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 device_passthroughs: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerDevicePassthroughArgs']]]] = None,
                  disk: Optional[pulumi.Input['ContainerDiskArgs']] = None,
                  features: Optional[pulumi.Input['ContainerFeaturesArgs']] = None,
                  hook_script_file_id: Optional[pulumi.Input[str]] = None,
@@ -511,6 +528,7 @@ class _ContainerState:
         :param pulumi.Input['ContainerConsoleArgs'] console: The console configuration.
         :param pulumi.Input['ContainerCpuArgs'] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerDevicePassthroughArgs']]] device_passthroughs: Device to pass through to the container (multiple blocks supported).
         :param pulumi.Input['ContainerDiskArgs'] disk: The disk configuration.
         :param pulumi.Input['ContainerFeaturesArgs'] features: The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
         :param pulumi.Input[str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
@@ -550,6 +568,8 @@ class _ContainerState:
             pulumi.set(__self__, "cpu", cpu)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if device_passthroughs is not None:
+            pulumi.set(__self__, "device_passthroughs", device_passthroughs)
         if disk is not None:
             pulumi.set(__self__, "disk", disk)
         if features is not None:
@@ -647,6 +667,18 @@ class _ContainerState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="devicePassthroughs")
+    def device_passthroughs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerDevicePassthroughArgs']]]]:
+        """
+        Device to pass through to the container (multiple blocks supported).
+        """
+        return pulumi.get(self, "device_passthroughs")
+
+    @device_passthroughs.setter
+    def device_passthroughs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerDevicePassthroughArgs']]]]):
+        pulumi.set(self, "device_passthroughs", value)
 
     @property
     @pulumi.getter
@@ -942,6 +974,7 @@ class Container(pulumi.CustomResource):
                  console: Optional[pulumi.Input[Union['ContainerConsoleArgs', 'ContainerConsoleArgsDict']]] = None,
                  cpu: Optional[pulumi.Input[Union['ContainerCpuArgs', 'ContainerCpuArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 device_passthroughs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerDevicePassthroughArgs', 'ContainerDevicePassthroughArgsDict']]]]] = None,
                  disk: Optional[pulumi.Input[Union['ContainerDiskArgs', 'ContainerDiskArgsDict']]] = None,
                  features: Optional[pulumi.Input[Union['ContainerFeaturesArgs', 'ContainerFeaturesArgsDict']]] = None,
                  hook_script_file_id: Optional[pulumi.Input[str]] = None,
@@ -985,6 +1018,7 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[Union['ContainerConsoleArgs', 'ContainerConsoleArgsDict']] console: The console configuration.
         :param pulumi.Input[Union['ContainerCpuArgs', 'ContainerCpuArgsDict']] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerDevicePassthroughArgs', 'ContainerDevicePassthroughArgsDict']]]] device_passthroughs: Device to pass through to the container (multiple blocks supported).
         :param pulumi.Input[Union['ContainerDiskArgs', 'ContainerDiskArgsDict']] disk: The disk configuration.
         :param pulumi.Input[Union['ContainerFeaturesArgs', 'ContainerFeaturesArgsDict']] features: The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
         :param pulumi.Input[str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
@@ -1054,6 +1088,7 @@ class Container(pulumi.CustomResource):
                  console: Optional[pulumi.Input[Union['ContainerConsoleArgs', 'ContainerConsoleArgsDict']]] = None,
                  cpu: Optional[pulumi.Input[Union['ContainerCpuArgs', 'ContainerCpuArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 device_passthroughs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerDevicePassthroughArgs', 'ContainerDevicePassthroughArgsDict']]]]] = None,
                  disk: Optional[pulumi.Input[Union['ContainerDiskArgs', 'ContainerDiskArgsDict']]] = None,
                  features: Optional[pulumi.Input[Union['ContainerFeaturesArgs', 'ContainerFeaturesArgsDict']]] = None,
                  hook_script_file_id: Optional[pulumi.Input[str]] = None,
@@ -1090,6 +1125,7 @@ class Container(pulumi.CustomResource):
             __props__.__dict__["console"] = console
             __props__.__dict__["cpu"] = cpu
             __props__.__dict__["description"] = description
+            __props__.__dict__["device_passthroughs"] = device_passthroughs
             __props__.__dict__["disk"] = disk
             __props__.__dict__["features"] = features
             __props__.__dict__["hook_script_file_id"] = hook_script_file_id
@@ -1129,6 +1165,7 @@ class Container(pulumi.CustomResource):
             console: Optional[pulumi.Input[Union['ContainerConsoleArgs', 'ContainerConsoleArgsDict']]] = None,
             cpu: Optional[pulumi.Input[Union['ContainerCpuArgs', 'ContainerCpuArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            device_passthroughs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerDevicePassthroughArgs', 'ContainerDevicePassthroughArgsDict']]]]] = None,
             disk: Optional[pulumi.Input[Union['ContainerDiskArgs', 'ContainerDiskArgsDict']]] = None,
             features: Optional[pulumi.Input[Union['ContainerFeaturesArgs', 'ContainerFeaturesArgsDict']]] = None,
             hook_script_file_id: Optional[pulumi.Input[str]] = None,
@@ -1163,6 +1200,7 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[Union['ContainerConsoleArgs', 'ContainerConsoleArgsDict']] console: The console configuration.
         :param pulumi.Input[Union['ContainerCpuArgs', 'ContainerCpuArgsDict']] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerDevicePassthroughArgs', 'ContainerDevicePassthroughArgsDict']]]] device_passthroughs: Device to pass through to the container (multiple blocks supported).
         :param pulumi.Input[Union['ContainerDiskArgs', 'ContainerDiskArgsDict']] disk: The disk configuration.
         :param pulumi.Input[Union['ContainerFeaturesArgs', 'ContainerFeaturesArgsDict']] features: The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
         :param pulumi.Input[str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
@@ -1202,6 +1240,7 @@ class Container(pulumi.CustomResource):
         __props__.__dict__["console"] = console
         __props__.__dict__["cpu"] = cpu
         __props__.__dict__["description"] = description
+        __props__.__dict__["device_passthroughs"] = device_passthroughs
         __props__.__dict__["disk"] = disk
         __props__.__dict__["features"] = features
         __props__.__dict__["hook_script_file_id"] = hook_script_file_id
@@ -1258,6 +1297,14 @@ class Container(pulumi.CustomResource):
         The description.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="devicePassthroughs")
+    def device_passthroughs(self) -> pulumi.Output[Optional[Sequence['outputs.ContainerDevicePassthrough']]]:
+        """
+        Device to pass through to the container (multiple blocks supported).
+        """
+        return pulumi.get(self, "device_passthroughs")
 
     @property
     @pulumi.getter

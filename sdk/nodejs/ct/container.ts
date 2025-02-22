@@ -64,6 +64,10 @@ export class Container extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Device to pass through to the container (multiple blocks supported).
+     */
+    public readonly devicePassthroughs!: pulumi.Output<outputs.CT.ContainerDevicePassthrough[] | undefined>;
+    /**
      * The disk configuration.
      */
     public readonly disk!: pulumi.Output<outputs.CT.ContainerDisk | undefined>;
@@ -182,6 +186,7 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["console"] = state ? state.console : undefined;
             resourceInputs["cpu"] = state ? state.cpu : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["devicePassthroughs"] = state ? state.devicePassthroughs : undefined;
             resourceInputs["disk"] = state ? state.disk : undefined;
             resourceInputs["features"] = state ? state.features : undefined;
             resourceInputs["hookScriptFileId"] = state ? state.hookScriptFileId : undefined;
@@ -214,6 +219,7 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["console"] = args ? args.console : undefined;
             resourceInputs["cpu"] = args ? args.cpu : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["devicePassthroughs"] = args ? args.devicePassthroughs : undefined;
             resourceInputs["disk"] = args ? args.disk : undefined;
             resourceInputs["features"] = args ? args.features : undefined;
             resourceInputs["hookScriptFileId"] = args ? args.hookScriptFileId : undefined;
@@ -263,6 +269,10 @@ export interface ContainerState {
      * The description.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Device to pass through to the container (multiple blocks supported).
+     */
+    devicePassthroughs?: pulumi.Input<pulumi.Input<inputs.CT.ContainerDevicePassthrough>[]>;
     /**
      * The disk configuration.
      */
@@ -386,6 +396,10 @@ export interface ContainerArgs {
      * The description.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Device to pass through to the container (multiple blocks supported).
+     */
+    devicePassthroughs?: pulumi.Input<pulumi.Input<inputs.CT.ContainerDevicePassthrough>[]>;
     /**
      * The disk configuration.
      */

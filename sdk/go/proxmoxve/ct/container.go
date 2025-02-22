@@ -34,6 +34,8 @@ type Container struct {
 	Cpu ContainerCpuPtrOutput `pulumi:"cpu"`
 	// The description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Device to pass through to the container (multiple blocks supported).
+	DevicePassthroughs ContainerDevicePassthroughArrayOutput `pulumi:"devicePassthroughs"`
 	// The disk configuration.
 	Disk ContainerDiskPtrOutput `pulumi:"disk"`
 	// The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
@@ -132,6 +134,8 @@ type containerState struct {
 	Cpu *ContainerCpu `pulumi:"cpu"`
 	// The description.
 	Description *string `pulumi:"description"`
+	// Device to pass through to the container (multiple blocks supported).
+	DevicePassthroughs []ContainerDevicePassthrough `pulumi:"devicePassthroughs"`
 	// The disk configuration.
 	Disk *ContainerDisk `pulumi:"disk"`
 	// The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
@@ -198,6 +202,8 @@ type ContainerState struct {
 	Cpu ContainerCpuPtrInput
 	// The description.
 	Description pulumi.StringPtrInput
+	// Device to pass through to the container (multiple blocks supported).
+	DevicePassthroughs ContainerDevicePassthroughArrayInput
 	// The disk configuration.
 	Disk ContainerDiskPtrInput
 	// The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
@@ -268,6 +274,8 @@ type containerArgs struct {
 	Cpu *ContainerCpu `pulumi:"cpu"`
 	// The description.
 	Description *string `pulumi:"description"`
+	// Device to pass through to the container (multiple blocks supported).
+	DevicePassthroughs []ContainerDevicePassthrough `pulumi:"devicePassthroughs"`
 	// The disk configuration.
 	Disk *ContainerDisk `pulumi:"disk"`
 	// The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
@@ -335,6 +343,8 @@ type ContainerArgs struct {
 	Cpu ContainerCpuPtrInput
 	// The description.
 	Description pulumi.StringPtrInput
+	// Device to pass through to the container (multiple blocks supported).
+	DevicePassthroughs ContainerDevicePassthroughArrayInput
 	// The disk configuration.
 	Disk ContainerDiskPtrInput
 	// The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
@@ -497,6 +507,11 @@ func (o ContainerOutput) Cpu() ContainerCpuPtrOutput {
 // The description.
 func (o ContainerOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Container) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Device to pass through to the container (multiple blocks supported).
+func (o ContainerOutput) DevicePassthroughs() ContainerDevicePassthroughArrayOutput {
+	return o.ApplyT(func(v *Container) ContainerDevicePassthroughArrayOutput { return v.DevicePassthroughs }).(ContainerDevicePassthroughArrayOutput)
 }
 
 // The disk configuration.

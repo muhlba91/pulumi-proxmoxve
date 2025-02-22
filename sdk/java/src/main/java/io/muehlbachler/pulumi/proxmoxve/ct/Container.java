@@ -12,6 +12,7 @@ import io.muehlbachler.pulumi.proxmoxve.CT.inputs.ContainerState;
 import io.muehlbachler.pulumi.proxmoxve.CT.outputs.ContainerClone;
 import io.muehlbachler.pulumi.proxmoxve.CT.outputs.ContainerConsole;
 import io.muehlbachler.pulumi.proxmoxve.CT.outputs.ContainerCpu;
+import io.muehlbachler.pulumi.proxmoxve.CT.outputs.ContainerDevicePassthrough;
 import io.muehlbachler.pulumi.proxmoxve.CT.outputs.ContainerDisk;
 import io.muehlbachler.pulumi.proxmoxve.CT.outputs.ContainerFeatures;
 import io.muehlbachler.pulumi.proxmoxve.CT.outputs.ContainerInitialization;
@@ -99,6 +100,20 @@ public class Container extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Device to pass through to the container (multiple blocks supported).
+     * 
+     */
+    @Export(name="devicePassthroughs", refs={List.class,ContainerDevicePassthrough.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ContainerDevicePassthrough>> devicePassthroughs;
+
+    /**
+     * @return Device to pass through to the container (multiple blocks supported).
+     * 
+     */
+    public Output<Optional<List<ContainerDevicePassthrough>>> devicePassthroughs() {
+        return Codegen.optional(this.devicePassthroughs);
     }
     /**
      * The disk configuration.

@@ -79,6 +79,9 @@
                     "cpu": {
                         "maxItemsOne": true
                     },
+                    "device_passthrough": {
+                        "maxItemsOne": false
+                    },
                     "disk": {
                         "maxItemsOne": true
                     },

@@ -15,11 +15,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
  *
- * const example-pci = proxmoxve.Hardware.getMappings({
+ * const example_pci = proxmoxve.Hardware.getMappings({
  *     checkNode: "pve",
  *     type: "pci",
  * });
- * const example-usb = proxmoxve.Hardware.getMappings({
+ * const example_usb = proxmoxve.Hardware.getMappings({
  *     checkNode: "pve",
  *     type: "usb",
  * });
@@ -83,11 +83,11 @@ export interface GetMappingsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@pulumi/proxmoxve";
  *
- * const example-pci = proxmoxve.Hardware.getMappings({
+ * const example_pci = proxmoxve.Hardware.getMappings({
  *     checkNode: "pve",
  *     type: "pci",
  * });
- * const example-usb = proxmoxve.Hardware.getMappings({
+ * const example_usb = proxmoxve.Hardware.getMappings({
  *     checkNode: "pve",
  *     type: "usb",
  * });

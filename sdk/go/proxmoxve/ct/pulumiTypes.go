@@ -546,6 +546,142 @@ func (o ContainerCpuPtrOutput) Units() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type ContainerDevicePassthrough struct {
+	// Deny the container to write to the device (defaults to `false`).
+	DenyWrite *bool `pulumi:"denyWrite"`
+	// Group ID to be assigned to the device node.
+	Gid *int `pulumi:"gid"`
+	// Access mode to be set on the device node. Must be a
+	// 4-digit octal number.
+	Mode *string `pulumi:"mode"`
+	// Device to pass through to the container (e.g. `/dev/sda`).
+	Path string `pulumi:"path"`
+	// User ID to be assigned to the device node.
+	Uid *int `pulumi:"uid"`
+}
+
+// ContainerDevicePassthroughInput is an input type that accepts ContainerDevicePassthroughArgs and ContainerDevicePassthroughOutput values.
+// You can construct a concrete instance of `ContainerDevicePassthroughInput` via:
+//
+//	ContainerDevicePassthroughArgs{...}
+type ContainerDevicePassthroughInput interface {
+	pulumi.Input
+
+	ToContainerDevicePassthroughOutput() ContainerDevicePassthroughOutput
+	ToContainerDevicePassthroughOutputWithContext(context.Context) ContainerDevicePassthroughOutput
+}
+
+type ContainerDevicePassthroughArgs struct {
+	// Deny the container to write to the device (defaults to `false`).
+	DenyWrite pulumi.BoolPtrInput `pulumi:"denyWrite"`
+	// Group ID to be assigned to the device node.
+	Gid pulumi.IntPtrInput `pulumi:"gid"`
+	// Access mode to be set on the device node. Must be a
+	// 4-digit octal number.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// Device to pass through to the container (e.g. `/dev/sda`).
+	Path pulumi.StringInput `pulumi:"path"`
+	// User ID to be assigned to the device node.
+	Uid pulumi.IntPtrInput `pulumi:"uid"`
+}
+
+func (ContainerDevicePassthroughArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerDevicePassthrough)(nil)).Elem()
+}
+
+func (i ContainerDevicePassthroughArgs) ToContainerDevicePassthroughOutput() ContainerDevicePassthroughOutput {
+	return i.ToContainerDevicePassthroughOutputWithContext(context.Background())
+}
+
+func (i ContainerDevicePassthroughArgs) ToContainerDevicePassthroughOutputWithContext(ctx context.Context) ContainerDevicePassthroughOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerDevicePassthroughOutput)
+}
+
+// ContainerDevicePassthroughArrayInput is an input type that accepts ContainerDevicePassthroughArray and ContainerDevicePassthroughArrayOutput values.
+// You can construct a concrete instance of `ContainerDevicePassthroughArrayInput` via:
+//
+//	ContainerDevicePassthroughArray{ ContainerDevicePassthroughArgs{...} }
+type ContainerDevicePassthroughArrayInput interface {
+	pulumi.Input
+
+	ToContainerDevicePassthroughArrayOutput() ContainerDevicePassthroughArrayOutput
+	ToContainerDevicePassthroughArrayOutputWithContext(context.Context) ContainerDevicePassthroughArrayOutput
+}
+
+type ContainerDevicePassthroughArray []ContainerDevicePassthroughInput
+
+func (ContainerDevicePassthroughArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerDevicePassthrough)(nil)).Elem()
+}
+
+func (i ContainerDevicePassthroughArray) ToContainerDevicePassthroughArrayOutput() ContainerDevicePassthroughArrayOutput {
+	return i.ToContainerDevicePassthroughArrayOutputWithContext(context.Background())
+}
+
+func (i ContainerDevicePassthroughArray) ToContainerDevicePassthroughArrayOutputWithContext(ctx context.Context) ContainerDevicePassthroughArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerDevicePassthroughArrayOutput)
+}
+
+type ContainerDevicePassthroughOutput struct{ *pulumi.OutputState }
+
+func (ContainerDevicePassthroughOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerDevicePassthrough)(nil)).Elem()
+}
+
+func (o ContainerDevicePassthroughOutput) ToContainerDevicePassthroughOutput() ContainerDevicePassthroughOutput {
+	return o
+}
+
+func (o ContainerDevicePassthroughOutput) ToContainerDevicePassthroughOutputWithContext(ctx context.Context) ContainerDevicePassthroughOutput {
+	return o
+}
+
+// Deny the container to write to the device (defaults to `false`).
+func (o ContainerDevicePassthroughOutput) DenyWrite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerDevicePassthrough) *bool { return v.DenyWrite }).(pulumi.BoolPtrOutput)
+}
+
+// Group ID to be assigned to the device node.
+func (o ContainerDevicePassthroughOutput) Gid() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ContainerDevicePassthrough) *int { return v.Gid }).(pulumi.IntPtrOutput)
+}
+
+// Access mode to be set on the device node. Must be a
+// 4-digit octal number.
+func (o ContainerDevicePassthroughOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerDevicePassthrough) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// Device to pass through to the container (e.g. `/dev/sda`).
+func (o ContainerDevicePassthroughOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerDevicePassthrough) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// User ID to be assigned to the device node.
+func (o ContainerDevicePassthroughOutput) Uid() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ContainerDevicePassthrough) *int { return v.Uid }).(pulumi.IntPtrOutput)
+}
+
+type ContainerDevicePassthroughArrayOutput struct{ *pulumi.OutputState }
+
+func (ContainerDevicePassthroughArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerDevicePassthrough)(nil)).Elem()
+}
+
+func (o ContainerDevicePassthroughArrayOutput) ToContainerDevicePassthroughArrayOutput() ContainerDevicePassthroughArrayOutput {
+	return o
+}
+
+func (o ContainerDevicePassthroughArrayOutput) ToContainerDevicePassthroughArrayOutputWithContext(ctx context.Context) ContainerDevicePassthroughArrayOutput {
+	return o
+}
+
+func (o ContainerDevicePassthroughArrayOutput) Index(i pulumi.IntInput) ContainerDevicePassthroughOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerDevicePassthrough {
+		return vs[0].([]ContainerDevicePassthrough)[vs[1].(int)]
+	}).(ContainerDevicePassthroughOutput)
+}
+
 type ContainerDisk struct {
 	// The identifier for the datastore to create the
 	// disk in (defaults to `local`).
@@ -2773,6 +2909,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerConsolePtrInput)(nil)).Elem(), ContainerConsoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerCpuInput)(nil)).Elem(), ContainerCpuArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerCpuPtrInput)(nil)).Elem(), ContainerCpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerDevicePassthroughInput)(nil)).Elem(), ContainerDevicePassthroughArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerDevicePassthroughArrayInput)(nil)).Elem(), ContainerDevicePassthroughArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerDiskInput)(nil)).Elem(), ContainerDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerDiskPtrInput)(nil)).Elem(), ContainerDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerFeaturesInput)(nil)).Elem(), ContainerFeaturesArgs{})
@@ -2805,6 +2943,8 @@ func init() {
 	pulumi.RegisterOutputType(ContainerConsolePtrOutput{})
 	pulumi.RegisterOutputType(ContainerCpuOutput{})
 	pulumi.RegisterOutputType(ContainerCpuPtrOutput{})
+	pulumi.RegisterOutputType(ContainerDevicePassthroughOutput{})
+	pulumi.RegisterOutputType(ContainerDevicePassthroughArrayOutput{})
 	pulumi.RegisterOutputType(ContainerDiskOutput{})
 	pulumi.RegisterOutputType(ContainerDiskPtrOutput{})
 	pulumi.RegisterOutputType(ContainerFeaturesOutput{})

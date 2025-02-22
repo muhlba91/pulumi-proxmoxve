@@ -367,6 +367,30 @@ export namespace CT {
         units?: pulumi.Input<number>;
     }
 
+    export interface ContainerDevicePassthrough {
+        /**
+         * Deny the container to write to the device (defaults to `false`).
+         */
+        denyWrite?: pulumi.Input<boolean>;
+        /**
+         * Group ID to be assigned to the device node.
+         */
+        gid?: pulumi.Input<number>;
+        /**
+         * Access mode to be set on the device node. Must be a
+         * 4-digit octal number.
+         */
+        mode?: pulumi.Input<string>;
+        /**
+         * Device to pass through to the container (e.g. `/dev/sda`).
+         */
+        path: pulumi.Input<string>;
+        /**
+         * User ID to be assigned to the device node.
+         */
+        uid?: pulumi.Input<number>;
+    }
+
     export interface ContainerDisk {
         /**
          * The identifier for the datastore to create the

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import io.muehlbachler.pulumi.proxmoxve.CT.inputs.ContainerCloneArgs;
 import io.muehlbachler.pulumi.proxmoxve.CT.inputs.ContainerConsoleArgs;
 import io.muehlbachler.pulumi.proxmoxve.CT.inputs.ContainerCpuArgs;
+import io.muehlbachler.pulumi.proxmoxve.CT.inputs.ContainerDevicePassthroughArgs;
 import io.muehlbachler.pulumi.proxmoxve.CT.inputs.ContainerDiskArgs;
 import io.muehlbachler.pulumi.proxmoxve.CT.inputs.ContainerFeaturesArgs;
 import io.muehlbachler.pulumi.proxmoxve.CT.inputs.ContainerInitializationArgs;
@@ -87,6 +88,21 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Device to pass through to the container (multiple blocks supported).
+     * 
+     */
+    @Import(name="devicePassthroughs")
+    private @Nullable Output<List<ContainerDevicePassthroughArgs>> devicePassthroughs;
+
+    /**
+     * @return Device to pass through to the container (multiple blocks supported).
+     * 
+     */
+    public Optional<Output<List<ContainerDevicePassthroughArgs>>> devicePassthroughs() {
+        return Optional.ofNullable(this.devicePassthroughs);
     }
 
     /**
@@ -463,6 +479,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         this.console = $.console;
         this.cpu = $.cpu;
         this.description = $.description;
+        this.devicePassthroughs = $.devicePassthroughs;
         this.disk = $.disk;
         this.features = $.features;
         this.hookScriptFileId = $.hookScriptFileId;
@@ -588,6 +605,37 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param devicePassthroughs Device to pass through to the container (multiple blocks supported).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder devicePassthroughs(@Nullable Output<List<ContainerDevicePassthroughArgs>> devicePassthroughs) {
+            $.devicePassthroughs = devicePassthroughs;
+            return this;
+        }
+
+        /**
+         * @param devicePassthroughs Device to pass through to the container (multiple blocks supported).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder devicePassthroughs(List<ContainerDevicePassthroughArgs> devicePassthroughs) {
+            return devicePassthroughs(Output.of(devicePassthroughs));
+        }
+
+        /**
+         * @param devicePassthroughs Device to pass through to the container (multiple blocks supported).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder devicePassthroughs(ContainerDevicePassthroughArgs... devicePassthroughs) {
+            return devicePassthroughs(List.of(devicePassthroughs));
         }
 
         /**

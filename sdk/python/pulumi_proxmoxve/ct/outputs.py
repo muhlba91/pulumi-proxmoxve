@@ -19,6 +19,7 @@ __all__ = [
     'ContainerClone',
     'ContainerConsole',
     'ContainerCpu',
+    'ContainerDevicePassthrough',
     'ContainerDisk',
     'ContainerFeatures',
     'ContainerInitialization',
@@ -202,6 +203,91 @@ class ContainerCpu(dict):
         The CPU units (defaults to `1024`).
         """
         return pulumi.get(self, "units")
+
+
+@pulumi.output_type
+class ContainerDevicePassthrough(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "denyWrite":
+            suggest = "deny_write"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerDevicePassthrough. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerDevicePassthrough.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerDevicePassthrough.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 path: str,
+                 deny_write: Optional[bool] = None,
+                 gid: Optional[int] = None,
+                 mode: Optional[str] = None,
+                 uid: Optional[int] = None):
+        """
+        :param str path: Device to pass through to the container (e.g. `/dev/sda`).
+        :param bool deny_write: Deny the container to write to the device (defaults to `false`).
+        :param int gid: Group ID to be assigned to the device node.
+        :param str mode: Access mode to be set on the device node. Must be a
+               4-digit octal number.
+        :param int uid: User ID to be assigned to the device node.
+        """
+        pulumi.set(__self__, "path", path)
+        if deny_write is not None:
+            pulumi.set(__self__, "deny_write", deny_write)
+        if gid is not None:
+            pulumi.set(__self__, "gid", gid)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        Device to pass through to the container (e.g. `/dev/sda`).
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter(name="denyWrite")
+    def deny_write(self) -> Optional[bool]:
+        """
+        Deny the container to write to the device (defaults to `false`).
+        """
+        return pulumi.get(self, "deny_write")
+
+    @property
+    @pulumi.getter
+    def gid(self) -> Optional[int]:
+        """
+        Group ID to be assigned to the device node.
+        """
+        return pulumi.get(self, "gid")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[str]:
+        """
+        Access mode to be set on the device node. Must be a
+        4-digit octal number.
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter
+    def uid(self) -> Optional[int]:
+        """
+        User ID to be assigned to the device node.
+        """
+        return pulumi.get(self, "uid")
 
 
 @pulumi.output_type

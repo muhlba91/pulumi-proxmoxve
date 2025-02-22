@@ -50,6 +50,12 @@ namespace Pulumi.ProxmoxVE.CT
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Device to pass through to the container (multiple blocks supported).
+        /// </summary>
+        [Output("devicePassthroughs")]
+        public Output<ImmutableArray<Outputs.ContainerDevicePassthrough>> DevicePassthroughs { get; private set; } = null!;
+
+        /// <summary>
         /// The disk configuration.
         /// </summary>
         [Output("disk")]
@@ -265,6 +271,18 @@ namespace Pulumi.ProxmoxVE.CT
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("devicePassthroughs")]
+        private InputList<Inputs.ContainerDevicePassthroughArgs>? _devicePassthroughs;
+
+        /// <summary>
+        /// Device to pass through to the container (multiple blocks supported).
+        /// </summary>
+        public InputList<Inputs.ContainerDevicePassthroughArgs> DevicePassthroughs
+        {
+            get => _devicePassthroughs ?? (_devicePassthroughs = new InputList<Inputs.ContainerDevicePassthroughArgs>());
+            set => _devicePassthroughs = value;
+        }
+
         /// <summary>
         /// The disk configuration.
         /// </summary>
@@ -459,6 +477,18 @@ namespace Pulumi.ProxmoxVE.CT
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("devicePassthroughs")]
+        private InputList<Inputs.ContainerDevicePassthroughGetArgs>? _devicePassthroughs;
+
+        /// <summary>
+        /// Device to pass through to the container (multiple blocks supported).
+        /// </summary>
+        public InputList<Inputs.ContainerDevicePassthroughGetArgs> DevicePassthroughs
+        {
+            get => _devicePassthroughs ?? (_devicePassthroughs = new InputList<Inputs.ContainerDevicePassthroughGetArgs>());
+            set => _devicePassthroughs = value;
+        }
 
         /// <summary>
         /// The disk configuration.
