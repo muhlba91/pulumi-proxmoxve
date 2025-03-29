@@ -1,24 +1,32 @@
+version: "2"
 linters:
   enable:
-    - errcheck
     - goconst
-    - revive
     - gosec
-    - govet
-    - ineffassign
     - lll
-    - gosimple
-    - staticcheck
     - misspell
+    - revive
     - unconvert
-    - unused
-  enable-all: false
-issues:
-  exclude-files:
-    - schema.go
-    - pulumiManifest.go
-linters-settings:
-  lll:
-    line-length: 150
-run:
-  timeout: 10m
+  settings:
+    lll:
+      line-length: 150
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    paths:
+      - schema.go
+      - pulumiManifest.go
+      - third_party$
+      - builtin$
+      - examples$
+formatters:
+  exclusions:
+    generated: lax
+    paths:
+      - third_party$
+      - builtin$
+      - examples$

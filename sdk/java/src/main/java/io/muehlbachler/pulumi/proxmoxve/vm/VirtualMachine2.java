@@ -223,6 +223,7 @@ public class VirtualMachine2 extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/muhlba91/pulumi-proxmoxve")
             .aliases(List.of(
                 Output.of(Alias.builder().type("proxmoxve:index/vm2:Vm2").build())
             ))

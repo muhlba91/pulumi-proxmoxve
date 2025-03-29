@@ -1930,16 +1930,6 @@ github.com/pulumi/pulumi-yaml v1.12.0 h1:ThJP+EBqeJyCnS6w6/PwcEFOT5o112qv0lObhef
 github.com/pulumi/pulumi-yaml v1.12.0/go.mod h1:EhZd1XDfuLa15O51qVVE16U6r8ldK9mLIBclqWCX27Y=
 github.com/pulumi/pulumi/pkg/v3 v3.148.0 h1:7FuRpw1ysvt5400x+5Ukbj14ue5W8b9fI+FZ8YMD7o4=
 github.com/pulumi/pulumi/pkg/v3 v3.148.0/go.mod h1:xxL0LnlNmjotV8Kz3sKITKCQf+U72prabgt4NAlJfRk=
-github.com/pulumi/pulumi/sdk/v3 v3.152.0 h1:sPstmYhbf/ArkREjkPYRgFUf+iv1llskLY2/4aASdxc=
-github.com/pulumi/pulumi/sdk/v3 v3.152.0/go.mod h1:+WC9aIDo8fMgd2g0jCHuZU2S/VYNLRAZ3QXt6YVgwaA=
-github.com/pulumi/pulumi/sdk/v3 v3.153.0 h1:4uno4G0NdUxgAuascyDFOovVLVCA/kZ8NgnAf3TBllg=
-github.com/pulumi/pulumi/sdk/v3 v3.153.0/go.mod h1:+WC9aIDo8fMgd2g0jCHuZU2S/VYNLRAZ3QXt6YVgwaA=
-github.com/pulumi/pulumi/sdk/v3 v3.153.1 h1:qlkttqvoPcuxbMZd1ZfwairuYAZ68izqRnCWmpA9p84=
-github.com/pulumi/pulumi/sdk/v3 v3.153.1/go.mod h1:+WC9aIDo8fMgd2g0jCHuZU2S/VYNLRAZ3QXt6YVgwaA=
-github.com/pulumi/pulumi/sdk/v3 v3.154.0 h1:AK2XAIYwCVcCdvHuB87DqmnRLt7AlMRQobYb2VVycN8=
-github.com/pulumi/pulumi/sdk/v3 v3.154.0/go.mod h1:+WC9aIDo8fMgd2g0jCHuZU2S/VYNLRAZ3QXt6YVgwaA=
-github.com/pulumi/pulumi/sdk/v3 v3.155.0 h1:BzQoPriMNC/TiWvfyCnng8y6CaBXpYd+4H2CsN8InrA=
-github.com/pulumi/pulumi/sdk/v3 v3.155.0/go.mod h1:+WC9aIDo8fMgd2g0jCHuZU2S/VYNLRAZ3QXt6YVgwaA=
 github.com/pulumi/pulumi/sdk/v3 v3.156.0 h1:C4l4Z89EDft6aKe/ZmQYkZ8/7FUh/YvbKD4huIW4PoA=
 github.com/pulumi/pulumi/sdk/v3 v3.156.0/go.mod h1:+WC9aIDo8fMgd2g0jCHuZU2S/VYNLRAZ3QXt6YVgwaA=
 github.com/pulumi/schema-tools v0.1.2 h1:Fd9xvUjgck4NA+7/jSk7InqCUT4Kj940+EcnbQKpfZo=

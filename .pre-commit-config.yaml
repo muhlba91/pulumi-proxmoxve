@@ -1,13 +1,13 @@
 ---
 repos:
   - repo: https://github.com/talos-systems/conform
-    rev: v0.1.0-alpha.27
+    rev: v0.1.0-alpha.30
     hooks:
       - id: conform
         stages:
           - commit-msg
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v5.0.0
     hooks:
       - id: end-of-file-fixer
       - id: trailing-whitespace
@@ -32,10 +32,10 @@ repos:
 #            "next"
 #        ]
   - repo: https://github.com/gitleaks/gitleaks
-    rev: v8.16.3
+    rev: v8.24.2
     hooks:
       - id: gitleaks
   - repo: https://github.com/golangci/golangci-lint
-    rev: v1.52.2
+    rev: v2.0.2
     hooks:
       - id: golangci-lint
