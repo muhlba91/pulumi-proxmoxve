@@ -489,6 +489,8 @@ class Vm2(pulumi.CustomResource):
             __props__.__dict__["template"] = template
             __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["vga"] = vga
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="proxmoxve:index/vm2:Vm2")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Vm2, __self__).__init__(
             'proxmoxve:index/vm2:Vm2',
             resource_name,

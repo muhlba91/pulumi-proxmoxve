@@ -7575,6 +7575,11 @@
                 },
                 "type": "object"
             },
+            "aliases": [
+                {
+                    "type": "proxmoxve:index/vm2:Vm2"
+                }
+            ],
             "deprecationMessage": "proxmoxve.index/vm2.Vm2 has been deprecated in favor of proxmoxve.vm/virtualmachine2.VirtualMachine2"
         }
     },

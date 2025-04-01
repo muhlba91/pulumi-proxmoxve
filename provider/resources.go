@@ -16,6 +16,7 @@ package proxmoxve
 
 import (
 	"context"
+	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
 	"fmt"
 	"path/filepath"
@@ -279,6 +280,8 @@ func Provider() tfbridge.ProviderInfo {
 
 	prov.MustComputeTokens(moduleComputeStrategy())
 	prov.MustApplyAutoAliases()
+	err := tfbridge.ApplyAutoAliases(&prov)
+	contract.AssertNoErrorf(err, "auto aliasing apply failed")
 	prov.SetAutonaming(255, "-")
 
 	return prov

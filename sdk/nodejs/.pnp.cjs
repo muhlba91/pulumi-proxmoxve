@@ -883,7 +883,7 @@ const RAW_RUNTIME_STATE =
           ["@types/cacheable-request", "npm:6.0.3"],\
           ["@types/http-cache-semantics", "npm:4.0.4"],\
           ["@types/keyv", "npm:3.1.4"],\
-          ["@types/node", "npm:22.13.14"],\
+          ["@types/node", "npm:22.13.16"],\
           ["@types/responselike", "npm:1.0.3"]\
         ],\
         "linkType": "HARD"\
@@ -912,7 +912,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../../../.yarn/berry/cache/@types-keyv-npm-3.1.4-a8082ea56b-10c0.zip/node_modules/@types/keyv/",\
         "packageDependencies": [\
           ["@types/keyv", "npm:3.1.4"],\
-          ["@types/node", "npm:22.13.14"]\
+          ["@types/node", "npm:22.13.16"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -934,10 +934,10 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
-      ["npm:22.13.14", {\
-        "packageLocation": "../../../../.yarn/berry/cache/@types-node-npm-22.13.14-2796c41449-10c0.zip/node_modules/@types/node/",\
+      ["npm:22.13.16", {\
+        "packageLocation": "../../../../.yarn/berry/cache/@types-node-npm-22.13.16-2049f7298a-10c0.zip/node_modules/@types/node/",\
         "packageDependencies": [\
-          ["@types/node", "npm:22.13.14"],\
+          ["@types/node", "npm:22.13.16"],\
           ["undici-types", "npm:6.20.0"]\
         ],\
         "linkType": "HARD"\
@@ -948,7 +948,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../../../.yarn/berry/cache/@types-responselike-npm-1.0.3-de0150f03d-10c0.zip/node_modules/@types/responselike/",\
         "packageDependencies": [\
           ["@types/responselike", "npm:1.0.3"],\
-          ["@types/node", "npm:22.13.14"]\
+          ["@types/node", "npm:22.13.16"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -2518,7 +2518,7 @@ const RAW_RUNTIME_STATE =
           ["@protobufjs/path", "npm:1.1.2"],\
           ["@protobufjs/pool", "npm:1.1.0"],\
           ["@protobufjs/utf8", "npm:1.1.0"],\
-          ["@types/node", "npm:22.13.14"],\
+          ["@types/node", "npm:22.13.16"],\
           ["long", "npm:5.3.1"]\
         ],\
         "linkType": "HARD"\
