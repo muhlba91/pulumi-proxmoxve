@@ -14,7 +14,7 @@ namespace Pulumi.ProxmoxVE.Storage
     /// 
     /// ## Example Usage
     /// 
-    /// ### Backups (`dump`)
+    /// ### Backups (`backup`)
     /// 
     /// &gt; The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
     /// 
@@ -30,12 +30,12 @@ namespace Pulumi.ProxmoxVE.Storage
     /// {
     ///     var backup = new ProxmoxVE.Storage.File("backup", new()
     ///     {
-    ///         ContentType = "dump",
+    ///         ContentType = "backup",
     ///         DatastoreId = "local",
     ///         NodeName = "pve",
     ///         SourceFile = new ProxmoxVE.Storage.Inputs.FileSourceFileArgs
     ///         {
-    ///             Path = "vzdump-lxc-100-2023_11_08-23_10_05.tar",
+    ///             Path = "vzdump-lxc-100-2023_11_08-23_10_05.tar.zst",
     ///         },
     ///     });
     /// 

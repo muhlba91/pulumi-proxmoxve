@@ -19,6 +19,7 @@ export function getVm2(args: GetVm2Args, opts?: pulumi.InvokeOptions): Promise<G
         "id": args.id,
         "name": args.name,
         "nodeName": args.nodeName,
+        "rng": args.rng,
         "tags": args.tags,
         "template": args.template,
         "timeouts": args.timeouts,
@@ -54,6 +55,10 @@ export interface GetVm2Args {
      * The name of the node where the VM is provisioned.
      */
     nodeName: string;
+    /**
+     * The RNG (Random Number Generator) configuration.
+     */
+    rng?: inputs.GetVm2Rng;
     /**
      * The tags assigned to the VM.
      */
@@ -98,6 +103,10 @@ export interface GetVm2Result {
      */
     readonly nodeName: string;
     /**
+     * The RNG (Random Number Generator) configuration.
+     */
+    readonly rng: outputs.GetVm2Rng;
+    /**
      * The tags assigned to the VM.
      */
     readonly tags: string[];
@@ -124,6 +133,7 @@ export function getVm2Output(args: GetVm2OutputArgs, opts?: pulumi.InvokeOutputO
         "id": args.id,
         "name": args.name,
         "nodeName": args.nodeName,
+        "rng": args.rng,
         "tags": args.tags,
         "template": args.template,
         "timeouts": args.timeouts,
@@ -159,6 +169,10 @@ export interface GetVm2OutputArgs {
      * The name of the node where the VM is provisioned.
      */
     nodeName: pulumi.Input<string>;
+    /**
+     * The RNG (Random Number Generator) configuration.
+     */
+    rng?: pulumi.Input<inputs.GetVm2RngArgs>;
     /**
      * The tags assigned to the VM.
      */

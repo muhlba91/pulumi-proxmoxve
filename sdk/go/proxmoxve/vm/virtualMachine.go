@@ -39,7 +39,7 @@ type VirtualMachine struct {
 	// Specify a list of devices to boot from in the order
 	// they appear in the list (defaults to `[]`).
 	BootOrders pulumi.StringArrayOutput `pulumi:"bootOrders"`
-	// The CDROM configuration.
+	// The CD-ROM configuration.
 	Cdrom VirtualMachineCdromPtrOutput `pulumi:"cdrom"`
 	// The cloning configuration.
 	Clone VirtualMachineClonePtrOutput `pulumi:"clone"`
@@ -99,8 +99,12 @@ type VirtualMachine struct {
 	PoolId pulumi.StringPtrOutput `pulumi:"poolId"`
 	// Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
 	Protection pulumi.BoolPtrOutput `pulumi:"protection"`
-	// Reboot the VM after initial creation. (defaults to `false`)
+	// Reboot the VM after initial creation (defaults to `false`).
 	Reboot pulumi.BoolPtrOutput `pulumi:"reboot"`
+	// Reboot the VM after update if needed (defaults to `true`).
+	RebootAfterUpdate pulumi.BoolPtrOutput `pulumi:"rebootAfterUpdate"`
+	// The random number generator configuration. Can only be set by `root@pam.`
+	Rngs VirtualMachineRngArrayOutput `pulumi:"rngs"`
 	// The SCSI hardware type (defaults to
 	// `virtio-scsi-pci`).
 	ScsiHardware pulumi.StringPtrOutput `pulumi:"scsiHardware"`
@@ -207,7 +211,7 @@ type virtualMachineState struct {
 	// Specify a list of devices to boot from in the order
 	// they appear in the list (defaults to `[]`).
 	BootOrders []string `pulumi:"bootOrders"`
-	// The CDROM configuration.
+	// The CD-ROM configuration.
 	Cdrom *VirtualMachineCdrom `pulumi:"cdrom"`
 	// The cloning configuration.
 	Clone *VirtualMachineClone `pulumi:"clone"`
@@ -267,8 +271,12 @@ type virtualMachineState struct {
 	PoolId *string `pulumi:"poolId"`
 	// Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
 	Protection *bool `pulumi:"protection"`
-	// Reboot the VM after initial creation. (defaults to `false`)
+	// Reboot the VM after initial creation (defaults to `false`).
 	Reboot *bool `pulumi:"reboot"`
+	// Reboot the VM after update if needed (defaults to `true`).
+	RebootAfterUpdate *bool `pulumi:"rebootAfterUpdate"`
+	// The random number generator configuration. Can only be set by `root@pam.`
+	Rngs []VirtualMachineRng `pulumi:"rngs"`
 	// The SCSI hardware type (defaults to
 	// `virtio-scsi-pci`).
 	ScsiHardware *string `pulumi:"scsiHardware"`
@@ -343,7 +351,7 @@ type VirtualMachineState struct {
 	// Specify a list of devices to boot from in the order
 	// they appear in the list (defaults to `[]`).
 	BootOrders pulumi.StringArrayInput
-	// The CDROM configuration.
+	// The CD-ROM configuration.
 	Cdrom VirtualMachineCdromPtrInput
 	// The cloning configuration.
 	Clone VirtualMachineClonePtrInput
@@ -403,8 +411,12 @@ type VirtualMachineState struct {
 	PoolId pulumi.StringPtrInput
 	// Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
 	Protection pulumi.BoolPtrInput
-	// Reboot the VM after initial creation. (defaults to `false`)
+	// Reboot the VM after initial creation (defaults to `false`).
 	Reboot pulumi.BoolPtrInput
+	// Reboot the VM after update if needed (defaults to `true`).
+	RebootAfterUpdate pulumi.BoolPtrInput
+	// The random number generator configuration. Can only be set by `root@pam.`
+	Rngs VirtualMachineRngArrayInput
 	// The SCSI hardware type (defaults to
 	// `virtio-scsi-pci`).
 	ScsiHardware pulumi.StringPtrInput
@@ -483,7 +495,7 @@ type virtualMachineArgs struct {
 	// Specify a list of devices to boot from in the order
 	// they appear in the list (defaults to `[]`).
 	BootOrders []string `pulumi:"bootOrders"`
-	// The CDROM configuration.
+	// The CD-ROM configuration.
 	Cdrom *VirtualMachineCdrom `pulumi:"cdrom"`
 	// The cloning configuration.
 	Clone *VirtualMachineClone `pulumi:"clone"`
@@ -534,8 +546,12 @@ type virtualMachineArgs struct {
 	PoolId *string `pulumi:"poolId"`
 	// Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
 	Protection *bool `pulumi:"protection"`
-	// Reboot the VM after initial creation. (defaults to `false`)
+	// Reboot the VM after initial creation (defaults to `false`).
 	Reboot *bool `pulumi:"reboot"`
+	// Reboot the VM after update if needed (defaults to `true`).
+	RebootAfterUpdate *bool `pulumi:"rebootAfterUpdate"`
+	// The random number generator configuration. Can only be set by `root@pam.`
+	Rngs []VirtualMachineRng `pulumi:"rngs"`
 	// The SCSI hardware type (defaults to
 	// `virtio-scsi-pci`).
 	ScsiHardware *string `pulumi:"scsiHardware"`
@@ -611,7 +627,7 @@ type VirtualMachineArgs struct {
 	// Specify a list of devices to boot from in the order
 	// they appear in the list (defaults to `[]`).
 	BootOrders pulumi.StringArrayInput
-	// The CDROM configuration.
+	// The CD-ROM configuration.
 	Cdrom VirtualMachineCdromPtrInput
 	// The cloning configuration.
 	Clone VirtualMachineClonePtrInput
@@ -662,8 +678,12 @@ type VirtualMachineArgs struct {
 	PoolId pulumi.StringPtrInput
 	// Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
 	Protection pulumi.BoolPtrInput
-	// Reboot the VM after initial creation. (defaults to `false`)
+	// Reboot the VM after initial creation (defaults to `false`).
 	Reboot pulumi.BoolPtrInput
+	// Reboot the VM after update if needed (defaults to `true`).
+	RebootAfterUpdate pulumi.BoolPtrInput
+	// The random number generator configuration. Can only be set by `root@pam.`
+	Rngs VirtualMachineRngArrayInput
 	// The SCSI hardware type (defaults to
 	// `virtio-scsi-pci`).
 	ScsiHardware pulumi.StringPtrInput
@@ -839,7 +859,7 @@ func (o VirtualMachineOutput) BootOrders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringArrayOutput { return v.BootOrders }).(pulumi.StringArrayOutput)
 }
 
-// The CDROM configuration.
+// The CD-ROM configuration.
 func (o VirtualMachineOutput) Cdrom() VirtualMachineCdromPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineCdromPtrOutput { return v.Cdrom }).(VirtualMachineCdromPtrOutput)
 }
@@ -977,9 +997,19 @@ func (o VirtualMachineOutput) Protection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.Protection }).(pulumi.BoolPtrOutput)
 }
 
-// Reboot the VM after initial creation. (defaults to `false`)
+// Reboot the VM after initial creation (defaults to `false`).
 func (o VirtualMachineOutput) Reboot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.Reboot }).(pulumi.BoolPtrOutput)
+}
+
+// Reboot the VM after update if needed (defaults to `true`).
+func (o VirtualMachineOutput) RebootAfterUpdate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.RebootAfterUpdate }).(pulumi.BoolPtrOutput)
+}
+
+// The random number generator configuration. Can only be set by `root@pam.`
+func (o VirtualMachineOutput) Rngs() VirtualMachineRngArrayOutput {
+	return o.ApplyT(func(v *VirtualMachine) VirtualMachineRngArrayOutput { return v.Rngs }).(VirtualMachineRngArrayOutput)
 }
 
 // The SCSI hardware type (defaults to

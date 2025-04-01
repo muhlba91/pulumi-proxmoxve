@@ -13,19 +13,24 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VirtualMachineCdrom {
     /**
-     * @return Whether to enable the CDROM drive (defaults
-     * to `false`).
+     * @return Whether to enable the CD-ROM drive (defaults
+     * to `false`). *Deprecated*. The attribute will be removed in the next version of the provider.
+     * Set `file_id` to `none` to leave the CD-ROM drive empty.
+     * 
+     * @deprecated
+     * Remove this attribute&#39;s configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `file_id` to `none` to leave the CDROM drive empty.
      * 
      */
+    @Deprecated /* Remove this attribute's configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `file_id` to `none` to leave the CDROM drive empty. */
     private @Nullable Boolean enabled;
     /**
      * @return A file ID for an ISO file (defaults to `cdrom` as
-     * in the physical drive). Use `none` to leave the CDROM drive empty.
+     * in the physical drive). Use `none` to leave the CD-ROM drive empty.
      * 
      */
     private @Nullable String fileId;
     /**
-     * @return A hardware interface to connect CDROM drive to,
+     * @return A hardware interface to connect CD-ROM drive to,
      * must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
      * supports `ide0` and `ide2`.
      * 
@@ -34,23 +39,28 @@ public final class VirtualMachineCdrom {
 
     private VirtualMachineCdrom() {}
     /**
-     * @return Whether to enable the CDROM drive (defaults
-     * to `false`).
+     * @return Whether to enable the CD-ROM drive (defaults
+     * to `false`). *Deprecated*. The attribute will be removed in the next version of the provider.
+     * Set `file_id` to `none` to leave the CD-ROM drive empty.
+     * 
+     * @deprecated
+     * Remove this attribute&#39;s configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `file_id` to `none` to leave the CDROM drive empty.
      * 
      */
+    @Deprecated /* Remove this attribute's configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `file_id` to `none` to leave the CDROM drive empty. */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
      * @return A file ID for an ISO file (defaults to `cdrom` as
-     * in the physical drive). Use `none` to leave the CDROM drive empty.
+     * in the physical drive). Use `none` to leave the CD-ROM drive empty.
      * 
      */
     public Optional<String> fileId() {
         return Optional.ofNullable(this.fileId);
     }
     /**
-     * @return A hardware interface to connect CDROM drive to,
+     * @return A hardware interface to connect CD-ROM drive to,
      * must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
      * supports `ide0` and `ide2`.
      * 

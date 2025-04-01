@@ -523,936 +523,6 @@ func (o ProviderSshNodeArrayOutput) Index(i pulumi.IntInput) ProviderSshNodeOutp
 	}).(ProviderSshNodeOutput)
 }
 
-type Vm2Cdrom struct {
-	// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
-	FileId *string `pulumi:"fileId"`
-}
-
-// Vm2CdromInput is an input type that accepts Vm2CdromArgs and Vm2CdromOutput values.
-// You can construct a concrete instance of `Vm2CdromInput` via:
-//
-//	Vm2CdromArgs{...}
-type Vm2CdromInput interface {
-	pulumi.Input
-
-	ToVm2CdromOutput() Vm2CdromOutput
-	ToVm2CdromOutputWithContext(context.Context) Vm2CdromOutput
-}
-
-type Vm2CdromArgs struct {
-	// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
-	FileId pulumi.StringPtrInput `pulumi:"fileId"`
-}
-
-func (Vm2CdromArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Vm2Cdrom)(nil)).Elem()
-}
-
-func (i Vm2CdromArgs) ToVm2CdromOutput() Vm2CdromOutput {
-	return i.ToVm2CdromOutputWithContext(context.Background())
-}
-
-func (i Vm2CdromArgs) ToVm2CdromOutputWithContext(ctx context.Context) Vm2CdromOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Vm2CdromOutput)
-}
-
-// Vm2CdromMapInput is an input type that accepts Vm2CdromMap and Vm2CdromMapOutput values.
-// You can construct a concrete instance of `Vm2CdromMapInput` via:
-//
-//	Vm2CdromMap{ "key": Vm2CdromArgs{...} }
-type Vm2CdromMapInput interface {
-	pulumi.Input
-
-	ToVm2CdromMapOutput() Vm2CdromMapOutput
-	ToVm2CdromMapOutputWithContext(context.Context) Vm2CdromMapOutput
-}
-
-type Vm2CdromMap map[string]Vm2CdromInput
-
-func (Vm2CdromMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Vm2Cdrom)(nil)).Elem()
-}
-
-func (i Vm2CdromMap) ToVm2CdromMapOutput() Vm2CdromMapOutput {
-	return i.ToVm2CdromMapOutputWithContext(context.Background())
-}
-
-func (i Vm2CdromMap) ToVm2CdromMapOutputWithContext(ctx context.Context) Vm2CdromMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Vm2CdromMapOutput)
-}
-
-type Vm2CdromOutput struct{ *pulumi.OutputState }
-
-func (Vm2CdromOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Vm2Cdrom)(nil)).Elem()
-}
-
-func (o Vm2CdromOutput) ToVm2CdromOutput() Vm2CdromOutput {
-	return o
-}
-
-func (o Vm2CdromOutput) ToVm2CdromOutputWithContext(ctx context.Context) Vm2CdromOutput {
-	return o
-}
-
-// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
-func (o Vm2CdromOutput) FileId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Vm2Cdrom) *string { return v.FileId }).(pulumi.StringPtrOutput)
-}
-
-type Vm2CdromMapOutput struct{ *pulumi.OutputState }
-
-func (Vm2CdromMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Vm2Cdrom)(nil)).Elem()
-}
-
-func (o Vm2CdromMapOutput) ToVm2CdromMapOutput() Vm2CdromMapOutput {
-	return o
-}
-
-func (o Vm2CdromMapOutput) ToVm2CdromMapOutputWithContext(ctx context.Context) Vm2CdromMapOutput {
-	return o
-}
-
-func (o Vm2CdromMapOutput) MapIndex(k pulumi.StringInput) Vm2CdromOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Vm2Cdrom {
-		return vs[0].(map[string]Vm2Cdrom)[vs[1].(string)]
-	}).(Vm2CdromOutput)
-}
-
-type Vm2Clone struct {
-	// The ID of the VM to clone.
-	Id int `pulumi:"id"`
-	// The number of retries to perform when cloning the VM (default: 3).
-	Retries *int `pulumi:"retries"`
-}
-
-// Vm2CloneInput is an input type that accepts Vm2CloneArgs and Vm2CloneOutput values.
-// You can construct a concrete instance of `Vm2CloneInput` via:
-//
-//	Vm2CloneArgs{...}
-type Vm2CloneInput interface {
-	pulumi.Input
-
-	ToVm2CloneOutput() Vm2CloneOutput
-	ToVm2CloneOutputWithContext(context.Context) Vm2CloneOutput
-}
-
-type Vm2CloneArgs struct {
-	// The ID of the VM to clone.
-	Id pulumi.IntInput `pulumi:"id"`
-	// The number of retries to perform when cloning the VM (default: 3).
-	Retries pulumi.IntPtrInput `pulumi:"retries"`
-}
-
-func (Vm2CloneArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Vm2Clone)(nil)).Elem()
-}
-
-func (i Vm2CloneArgs) ToVm2CloneOutput() Vm2CloneOutput {
-	return i.ToVm2CloneOutputWithContext(context.Background())
-}
-
-func (i Vm2CloneArgs) ToVm2CloneOutputWithContext(ctx context.Context) Vm2CloneOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Vm2CloneOutput)
-}
-
-func (i Vm2CloneArgs) ToVm2ClonePtrOutput() Vm2ClonePtrOutput {
-	return i.ToVm2ClonePtrOutputWithContext(context.Background())
-}
-
-func (i Vm2CloneArgs) ToVm2ClonePtrOutputWithContext(ctx context.Context) Vm2ClonePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Vm2CloneOutput).ToVm2ClonePtrOutputWithContext(ctx)
-}
-
-// Vm2ClonePtrInput is an input type that accepts Vm2CloneArgs, Vm2ClonePtr and Vm2ClonePtrOutput values.
-// You can construct a concrete instance of `Vm2ClonePtrInput` via:
-//
-//	        Vm2CloneArgs{...}
-//
-//	or:
-//
-//	        nil
-type Vm2ClonePtrInput interface {
-	pulumi.Input
-
-	ToVm2ClonePtrOutput() Vm2ClonePtrOutput
-	ToVm2ClonePtrOutputWithContext(context.Context) Vm2ClonePtrOutput
-}
-
-type vm2ClonePtrType Vm2CloneArgs
-
-func Vm2ClonePtr(v *Vm2CloneArgs) Vm2ClonePtrInput {
-	return (*vm2ClonePtrType)(v)
-}
-
-func (*vm2ClonePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Vm2Clone)(nil)).Elem()
-}
-
-func (i *vm2ClonePtrType) ToVm2ClonePtrOutput() Vm2ClonePtrOutput {
-	return i.ToVm2ClonePtrOutputWithContext(context.Background())
-}
-
-func (i *vm2ClonePtrType) ToVm2ClonePtrOutputWithContext(ctx context.Context) Vm2ClonePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Vm2ClonePtrOutput)
-}
-
-type Vm2CloneOutput struct{ *pulumi.OutputState }
-
-func (Vm2CloneOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Vm2Clone)(nil)).Elem()
-}
-
-func (o Vm2CloneOutput) ToVm2CloneOutput() Vm2CloneOutput {
-	return o
-}
-
-func (o Vm2CloneOutput) ToVm2CloneOutputWithContext(ctx context.Context) Vm2CloneOutput {
-	return o
-}
-
-func (o Vm2CloneOutput) ToVm2ClonePtrOutput() Vm2ClonePtrOutput {
-	return o.ToVm2ClonePtrOutputWithContext(context.Background())
-}
-
-func (o Vm2CloneOutput) ToVm2ClonePtrOutputWithContext(ctx context.Context) Vm2ClonePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Vm2Clone) *Vm2Clone {
-		return &v
-	}).(Vm2ClonePtrOutput)
-}
-
-// The ID of the VM to clone.
-func (o Vm2CloneOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func(v Vm2Clone) int { return v.Id }).(pulumi.IntOutput)
-}
-
-// The number of retries to perform when cloning the VM (default: 3).
-func (o Vm2CloneOutput) Retries() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v Vm2Clone) *int { return v.Retries }).(pulumi.IntPtrOutput)
-}
-
-type Vm2ClonePtrOutput struct{ *pulumi.OutputState }
-
-func (Vm2ClonePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Vm2Clone)(nil)).Elem()
-}
-
-func (o Vm2ClonePtrOutput) ToVm2ClonePtrOutput() Vm2ClonePtrOutput {
-	return o
-}
-
-func (o Vm2ClonePtrOutput) ToVm2ClonePtrOutputWithContext(ctx context.Context) Vm2ClonePtrOutput {
-	return o
-}
-
-func (o Vm2ClonePtrOutput) Elem() Vm2CloneOutput {
-	return o.ApplyT(func(v *Vm2Clone) Vm2Clone {
-		if v != nil {
-			return *v
-		}
-		var ret Vm2Clone
-		return ret
-	}).(Vm2CloneOutput)
-}
-
-// The ID of the VM to clone.
-func (o Vm2ClonePtrOutput) Id() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Vm2Clone) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.IntPtrOutput)
-}
-
-// The number of retries to perform when cloning the VM (default: 3).
-func (o Vm2ClonePtrOutput) Retries() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Vm2Clone) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Retries
-	}).(pulumi.IntPtrOutput)
-}
-
-type Vm2Cpu struct {
-	// The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
-	Affinity *string `pulumi:"affinity"`
-	// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `affinity` is only allowed for `root@pam` authenticated user.
-	Architecture *string `pulumi:"architecture"`
-	// The number of CPU cores per socket (defaults to `1`).
-	Cores *int `pulumi:"cores"`
-	// Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
-	Flags []string `pulumi:"flags"`
-	// The number of hotplugged vCPUs (defaults to `0`).
-	Hotplugged *int `pulumi:"hotplugged"`
-	// Limit of CPU usage (defaults to `0` which means no limit).
-	Limit *int `pulumi:"limit"`
-	// Enable NUMA (defaults to `false`).
-	Numa *bool `pulumi:"numa"`
-	// The number of CPU sockets (defaults to `1`).
-	Sockets *int `pulumi:"sockets"`
-	// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
-	Type *string `pulumi:"type"`
-	// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
-	Units *int `pulumi:"units"`
-}
-
-// Vm2CpuInput is an input type that accepts Vm2CpuArgs and Vm2CpuOutput values.
-// You can construct a concrete instance of `Vm2CpuInput` via:
-//
-//	Vm2CpuArgs{...}
-type Vm2CpuInput interface {
-	pulumi.Input
-
-	ToVm2CpuOutput() Vm2CpuOutput
-	ToVm2CpuOutputWithContext(context.Context) Vm2CpuOutput
-}
-
-type Vm2CpuArgs struct {
-	// The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
-	Affinity pulumi.StringPtrInput `pulumi:"affinity"`
-	// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `affinity` is only allowed for `root@pam` authenticated user.
-	Architecture pulumi.StringPtrInput `pulumi:"architecture"`
-	// The number of CPU cores per socket (defaults to `1`).
-	Cores pulumi.IntPtrInput `pulumi:"cores"`
-	// Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
-	Flags pulumi.StringArrayInput `pulumi:"flags"`
-	// The number of hotplugged vCPUs (defaults to `0`).
-	Hotplugged pulumi.IntPtrInput `pulumi:"hotplugged"`
-	// Limit of CPU usage (defaults to `0` which means no limit).
-	Limit pulumi.IntPtrInput `pulumi:"limit"`
-	// Enable NUMA (defaults to `false`).
-	Numa pulumi.BoolPtrInput `pulumi:"numa"`
-	// The number of CPU sockets (defaults to `1`).
-	Sockets pulumi.IntPtrInput `pulumi:"sockets"`
-	// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
-	Type pulumi.StringPtrInput `pulumi:"type"`
-	// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
-	Units pulumi.IntPtrInput `pulumi:"units"`
-}
-
-func (Vm2CpuArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Vm2Cpu)(nil)).Elem()
-}
-
-func (i Vm2CpuArgs) ToVm2CpuOutput() Vm2CpuOutput {
-	return i.ToVm2CpuOutputWithContext(context.Background())
-}
-
-func (i Vm2CpuArgs) ToVm2CpuOutputWithContext(ctx context.Context) Vm2CpuOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Vm2CpuOutput)
-}
-
-func (i Vm2CpuArgs) ToVm2CpuPtrOutput() Vm2CpuPtrOutput {
-	return i.ToVm2CpuPtrOutputWithContext(context.Background())
-}
-
-func (i Vm2CpuArgs) ToVm2CpuPtrOutputWithContext(ctx context.Context) Vm2CpuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Vm2CpuOutput).ToVm2CpuPtrOutputWithContext(ctx)
-}
-
-// Vm2CpuPtrInput is an input type that accepts Vm2CpuArgs, Vm2CpuPtr and Vm2CpuPtrOutput values.
-// You can construct a concrete instance of `Vm2CpuPtrInput` via:
-//
-//	        Vm2CpuArgs{...}
-//
-//	or:
-//
-//	        nil
-type Vm2CpuPtrInput interface {
-	pulumi.Input
-
-	ToVm2CpuPtrOutput() Vm2CpuPtrOutput
-	ToVm2CpuPtrOutputWithContext(context.Context) Vm2CpuPtrOutput
-}
-
-type vm2CpuPtrType Vm2CpuArgs
-
-func Vm2CpuPtr(v *Vm2CpuArgs) Vm2CpuPtrInput {
-	return (*vm2CpuPtrType)(v)
-}
-
-func (*vm2CpuPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Vm2Cpu)(nil)).Elem()
-}
-
-func (i *vm2CpuPtrType) ToVm2CpuPtrOutput() Vm2CpuPtrOutput {
-	return i.ToVm2CpuPtrOutputWithContext(context.Background())
-}
-
-func (i *vm2CpuPtrType) ToVm2CpuPtrOutputWithContext(ctx context.Context) Vm2CpuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Vm2CpuPtrOutput)
-}
-
-type Vm2CpuOutput struct{ *pulumi.OutputState }
-
-func (Vm2CpuOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Vm2Cpu)(nil)).Elem()
-}
-
-func (o Vm2CpuOutput) ToVm2CpuOutput() Vm2CpuOutput {
-	return o
-}
-
-func (o Vm2CpuOutput) ToVm2CpuOutputWithContext(ctx context.Context) Vm2CpuOutput {
-	return o
-}
-
-func (o Vm2CpuOutput) ToVm2CpuPtrOutput() Vm2CpuPtrOutput {
-	return o.ToVm2CpuPtrOutputWithContext(context.Background())
-}
-
-func (o Vm2CpuOutput) ToVm2CpuPtrOutputWithContext(ctx context.Context) Vm2CpuPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Vm2Cpu) *Vm2Cpu {
-		return &v
-	}).(Vm2CpuPtrOutput)
-}
-
-// The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
-func (o Vm2CpuOutput) Affinity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Vm2Cpu) *string { return v.Affinity }).(pulumi.StringPtrOutput)
-}
-
-// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `affinity` is only allowed for `root@pam` authenticated user.
-func (o Vm2CpuOutput) Architecture() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Vm2Cpu) *string { return v.Architecture }).(pulumi.StringPtrOutput)
-}
-
-// The number of CPU cores per socket (defaults to `1`).
-func (o Vm2CpuOutput) Cores() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v Vm2Cpu) *int { return v.Cores }).(pulumi.IntPtrOutput)
-}
-
-// Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
-func (o Vm2CpuOutput) Flags() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v Vm2Cpu) []string { return v.Flags }).(pulumi.StringArrayOutput)
-}
-
-// The number of hotplugged vCPUs (defaults to `0`).
-func (o Vm2CpuOutput) Hotplugged() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v Vm2Cpu) *int { return v.Hotplugged }).(pulumi.IntPtrOutput)
-}
-
-// Limit of CPU usage (defaults to `0` which means no limit).
-func (o Vm2CpuOutput) Limit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v Vm2Cpu) *int { return v.Limit }).(pulumi.IntPtrOutput)
-}
-
-// Enable NUMA (defaults to `false`).
-func (o Vm2CpuOutput) Numa() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v Vm2Cpu) *bool { return v.Numa }).(pulumi.BoolPtrOutput)
-}
-
-// The number of CPU sockets (defaults to `1`).
-func (o Vm2CpuOutput) Sockets() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v Vm2Cpu) *int { return v.Sockets }).(pulumi.IntPtrOutput)
-}
-
-// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
-func (o Vm2CpuOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Vm2Cpu) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
-func (o Vm2CpuOutput) Units() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v Vm2Cpu) *int { return v.Units }).(pulumi.IntPtrOutput)
-}
-
-type Vm2CpuPtrOutput struct{ *pulumi.OutputState }
-
-func (Vm2CpuPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Vm2Cpu)(nil)).Elem()
-}
-
-func (o Vm2CpuPtrOutput) ToVm2CpuPtrOutput() Vm2CpuPtrOutput {
-	return o
-}
-
-func (o Vm2CpuPtrOutput) ToVm2CpuPtrOutputWithContext(ctx context.Context) Vm2CpuPtrOutput {
-	return o
-}
-
-func (o Vm2CpuPtrOutput) Elem() Vm2CpuOutput {
-	return o.ApplyT(func(v *Vm2Cpu) Vm2Cpu {
-		if v != nil {
-			return *v
-		}
-		var ret Vm2Cpu
-		return ret
-	}).(Vm2CpuOutput)
-}
-
-// The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
-func (o Vm2CpuPtrOutput) Affinity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Vm2Cpu) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Affinity
-	}).(pulumi.StringPtrOutput)
-}
-
-// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `affinity` is only allowed for `root@pam` authenticated user.
-func (o Vm2CpuPtrOutput) Architecture() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Vm2Cpu) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Architecture
-	}).(pulumi.StringPtrOutput)
-}
-
-// The number of CPU cores per socket (defaults to `1`).
-func (o Vm2CpuPtrOutput) Cores() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Vm2Cpu) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Cores
-	}).(pulumi.IntPtrOutput)
-}
-
-// Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
-func (o Vm2CpuPtrOutput) Flags() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *Vm2Cpu) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Flags
-	}).(pulumi.StringArrayOutput)
-}
-
-// The number of hotplugged vCPUs (defaults to `0`).
-func (o Vm2CpuPtrOutput) Hotplugged() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Vm2Cpu) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Hotplugged
-	}).(pulumi.IntPtrOutput)
-}
-
-// Limit of CPU usage (defaults to `0` which means no limit).
-func (o Vm2CpuPtrOutput) Limit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Vm2Cpu) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Limit
-	}).(pulumi.IntPtrOutput)
-}
-
-// Enable NUMA (defaults to `false`).
-func (o Vm2CpuPtrOutput) Numa() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Vm2Cpu) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Numa
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The number of CPU sockets (defaults to `1`).
-func (o Vm2CpuPtrOutput) Sockets() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Vm2Cpu) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Sockets
-	}).(pulumi.IntPtrOutput)
-}
-
-// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
-func (o Vm2CpuPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Vm2Cpu) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
-func (o Vm2CpuPtrOutput) Units() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Vm2Cpu) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Units
-	}).(pulumi.IntPtrOutput)
-}
-
-type Vm2Timeouts struct {
-	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-	Create *string `pulumi:"create"`
-	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-	Delete *string `pulumi:"delete"`
-	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-	Read *string `pulumi:"read"`
-	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-	Update *string `pulumi:"update"`
-}
-
-// Vm2TimeoutsInput is an input type that accepts Vm2TimeoutsArgs and Vm2TimeoutsOutput values.
-// You can construct a concrete instance of `Vm2TimeoutsInput` via:
-//
-//	Vm2TimeoutsArgs{...}
-type Vm2TimeoutsInput interface {
-	pulumi.Input
-
-	ToVm2TimeoutsOutput() Vm2TimeoutsOutput
-	ToVm2TimeoutsOutputWithContext(context.Context) Vm2TimeoutsOutput
-}
-
-type Vm2TimeoutsArgs struct {
-	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-	Create pulumi.StringPtrInput `pulumi:"create"`
-	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-	Delete pulumi.StringPtrInput `pulumi:"delete"`
-	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-	Read pulumi.StringPtrInput `pulumi:"read"`
-	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-	Update pulumi.StringPtrInput `pulumi:"update"`
-}
-
-func (Vm2TimeoutsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Vm2Timeouts)(nil)).Elem()
-}
-
-func (i Vm2TimeoutsArgs) ToVm2TimeoutsOutput() Vm2TimeoutsOutput {
-	return i.ToVm2TimeoutsOutputWithContext(context.Background())
-}
-
-func (i Vm2TimeoutsArgs) ToVm2TimeoutsOutputWithContext(ctx context.Context) Vm2TimeoutsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Vm2TimeoutsOutput)
-}
-
-func (i Vm2TimeoutsArgs) ToVm2TimeoutsPtrOutput() Vm2TimeoutsPtrOutput {
-	return i.ToVm2TimeoutsPtrOutputWithContext(context.Background())
-}
-
-func (i Vm2TimeoutsArgs) ToVm2TimeoutsPtrOutputWithContext(ctx context.Context) Vm2TimeoutsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Vm2TimeoutsOutput).ToVm2TimeoutsPtrOutputWithContext(ctx)
-}
-
-// Vm2TimeoutsPtrInput is an input type that accepts Vm2TimeoutsArgs, Vm2TimeoutsPtr and Vm2TimeoutsPtrOutput values.
-// You can construct a concrete instance of `Vm2TimeoutsPtrInput` via:
-//
-//	        Vm2TimeoutsArgs{...}
-//
-//	or:
-//
-//	        nil
-type Vm2TimeoutsPtrInput interface {
-	pulumi.Input
-
-	ToVm2TimeoutsPtrOutput() Vm2TimeoutsPtrOutput
-	ToVm2TimeoutsPtrOutputWithContext(context.Context) Vm2TimeoutsPtrOutput
-}
-
-type vm2TimeoutsPtrType Vm2TimeoutsArgs
-
-func Vm2TimeoutsPtr(v *Vm2TimeoutsArgs) Vm2TimeoutsPtrInput {
-	return (*vm2TimeoutsPtrType)(v)
-}
-
-func (*vm2TimeoutsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Vm2Timeouts)(nil)).Elem()
-}
-
-func (i *vm2TimeoutsPtrType) ToVm2TimeoutsPtrOutput() Vm2TimeoutsPtrOutput {
-	return i.ToVm2TimeoutsPtrOutputWithContext(context.Background())
-}
-
-func (i *vm2TimeoutsPtrType) ToVm2TimeoutsPtrOutputWithContext(ctx context.Context) Vm2TimeoutsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Vm2TimeoutsPtrOutput)
-}
-
-type Vm2TimeoutsOutput struct{ *pulumi.OutputState }
-
-func (Vm2TimeoutsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Vm2Timeouts)(nil)).Elem()
-}
-
-func (o Vm2TimeoutsOutput) ToVm2TimeoutsOutput() Vm2TimeoutsOutput {
-	return o
-}
-
-func (o Vm2TimeoutsOutput) ToVm2TimeoutsOutputWithContext(ctx context.Context) Vm2TimeoutsOutput {
-	return o
-}
-
-func (o Vm2TimeoutsOutput) ToVm2TimeoutsPtrOutput() Vm2TimeoutsPtrOutput {
-	return o.ToVm2TimeoutsPtrOutputWithContext(context.Background())
-}
-
-func (o Vm2TimeoutsOutput) ToVm2TimeoutsPtrOutputWithContext(ctx context.Context) Vm2TimeoutsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Vm2Timeouts) *Vm2Timeouts {
-		return &v
-	}).(Vm2TimeoutsPtrOutput)
-}
-
-// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-func (o Vm2TimeoutsOutput) Create() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Vm2Timeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
-}
-
-// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-func (o Vm2TimeoutsOutput) Delete() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Vm2Timeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
-}
-
-// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-func (o Vm2TimeoutsOutput) Read() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Vm2Timeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
-}
-
-// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-func (o Vm2TimeoutsOutput) Update() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Vm2Timeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
-}
-
-type Vm2TimeoutsPtrOutput struct{ *pulumi.OutputState }
-
-func (Vm2TimeoutsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Vm2Timeouts)(nil)).Elem()
-}
-
-func (o Vm2TimeoutsPtrOutput) ToVm2TimeoutsPtrOutput() Vm2TimeoutsPtrOutput {
-	return o
-}
-
-func (o Vm2TimeoutsPtrOutput) ToVm2TimeoutsPtrOutputWithContext(ctx context.Context) Vm2TimeoutsPtrOutput {
-	return o
-}
-
-func (o Vm2TimeoutsPtrOutput) Elem() Vm2TimeoutsOutput {
-	return o.ApplyT(func(v *Vm2Timeouts) Vm2Timeouts {
-		if v != nil {
-			return *v
-		}
-		var ret Vm2Timeouts
-		return ret
-	}).(Vm2TimeoutsOutput)
-}
-
-// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-func (o Vm2TimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Vm2Timeouts) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Create
-	}).(pulumi.StringPtrOutput)
-}
-
-// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-func (o Vm2TimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Vm2Timeouts) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Delete
-	}).(pulumi.StringPtrOutput)
-}
-
-// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-func (o Vm2TimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Vm2Timeouts) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Read
-	}).(pulumi.StringPtrOutput)
-}
-
-// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-func (o Vm2TimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Vm2Timeouts) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Update
-	}).(pulumi.StringPtrOutput)
-}
-
-type Vm2Vga struct {
-	// Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
-	Clipboard *string `pulumi:"clipboard"`
-	// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
-	Memory *int `pulumi:"memory"`
-	// The VGA type (defaults to `std`).
-	Type *string `pulumi:"type"`
-}
-
-// Vm2VgaInput is an input type that accepts Vm2VgaArgs and Vm2VgaOutput values.
-// You can construct a concrete instance of `Vm2VgaInput` via:
-//
-//	Vm2VgaArgs{...}
-type Vm2VgaInput interface {
-	pulumi.Input
-
-	ToVm2VgaOutput() Vm2VgaOutput
-	ToVm2VgaOutputWithContext(context.Context) Vm2VgaOutput
-}
-
-type Vm2VgaArgs struct {
-	// Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
-	Clipboard pulumi.StringPtrInput `pulumi:"clipboard"`
-	// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
-	Memory pulumi.IntPtrInput `pulumi:"memory"`
-	// The VGA type (defaults to `std`).
-	Type pulumi.StringPtrInput `pulumi:"type"`
-}
-
-func (Vm2VgaArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Vm2Vga)(nil)).Elem()
-}
-
-func (i Vm2VgaArgs) ToVm2VgaOutput() Vm2VgaOutput {
-	return i.ToVm2VgaOutputWithContext(context.Background())
-}
-
-func (i Vm2VgaArgs) ToVm2VgaOutputWithContext(ctx context.Context) Vm2VgaOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Vm2VgaOutput)
-}
-
-func (i Vm2VgaArgs) ToVm2VgaPtrOutput() Vm2VgaPtrOutput {
-	return i.ToVm2VgaPtrOutputWithContext(context.Background())
-}
-
-func (i Vm2VgaArgs) ToVm2VgaPtrOutputWithContext(ctx context.Context) Vm2VgaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Vm2VgaOutput).ToVm2VgaPtrOutputWithContext(ctx)
-}
-
-// Vm2VgaPtrInput is an input type that accepts Vm2VgaArgs, Vm2VgaPtr and Vm2VgaPtrOutput values.
-// You can construct a concrete instance of `Vm2VgaPtrInput` via:
-//
-//	        Vm2VgaArgs{...}
-//
-//	or:
-//
-//	        nil
-type Vm2VgaPtrInput interface {
-	pulumi.Input
-
-	ToVm2VgaPtrOutput() Vm2VgaPtrOutput
-	ToVm2VgaPtrOutputWithContext(context.Context) Vm2VgaPtrOutput
-}
-
-type vm2VgaPtrType Vm2VgaArgs
-
-func Vm2VgaPtr(v *Vm2VgaArgs) Vm2VgaPtrInput {
-	return (*vm2VgaPtrType)(v)
-}
-
-func (*vm2VgaPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Vm2Vga)(nil)).Elem()
-}
-
-func (i *vm2VgaPtrType) ToVm2VgaPtrOutput() Vm2VgaPtrOutput {
-	return i.ToVm2VgaPtrOutputWithContext(context.Background())
-}
-
-func (i *vm2VgaPtrType) ToVm2VgaPtrOutputWithContext(ctx context.Context) Vm2VgaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Vm2VgaPtrOutput)
-}
-
-type Vm2VgaOutput struct{ *pulumi.OutputState }
-
-func (Vm2VgaOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Vm2Vga)(nil)).Elem()
-}
-
-func (o Vm2VgaOutput) ToVm2VgaOutput() Vm2VgaOutput {
-	return o
-}
-
-func (o Vm2VgaOutput) ToVm2VgaOutputWithContext(ctx context.Context) Vm2VgaOutput {
-	return o
-}
-
-func (o Vm2VgaOutput) ToVm2VgaPtrOutput() Vm2VgaPtrOutput {
-	return o.ToVm2VgaPtrOutputWithContext(context.Background())
-}
-
-func (o Vm2VgaOutput) ToVm2VgaPtrOutputWithContext(ctx context.Context) Vm2VgaPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Vm2Vga) *Vm2Vga {
-		return &v
-	}).(Vm2VgaPtrOutput)
-}
-
-// Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
-func (o Vm2VgaOutput) Clipboard() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Vm2Vga) *string { return v.Clipboard }).(pulumi.StringPtrOutput)
-}
-
-// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
-func (o Vm2VgaOutput) Memory() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v Vm2Vga) *int { return v.Memory }).(pulumi.IntPtrOutput)
-}
-
-// The VGA type (defaults to `std`).
-func (o Vm2VgaOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Vm2Vga) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-type Vm2VgaPtrOutput struct{ *pulumi.OutputState }
-
-func (Vm2VgaPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Vm2Vga)(nil)).Elem()
-}
-
-func (o Vm2VgaPtrOutput) ToVm2VgaPtrOutput() Vm2VgaPtrOutput {
-	return o
-}
-
-func (o Vm2VgaPtrOutput) ToVm2VgaPtrOutputWithContext(ctx context.Context) Vm2VgaPtrOutput {
-	return o
-}
-
-func (o Vm2VgaPtrOutput) Elem() Vm2VgaOutput {
-	return o.ApplyT(func(v *Vm2Vga) Vm2Vga {
-		if v != nil {
-			return *v
-		}
-		var ret Vm2Vga
-		return ret
-	}).(Vm2VgaOutput)
-}
-
-// Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
-func (o Vm2VgaPtrOutput) Clipboard() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Vm2Vga) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Clipboard
-	}).(pulumi.StringPtrOutput)
-}
-
-// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
-func (o Vm2VgaPtrOutput) Memory() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Vm2Vga) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Memory
-	}).(pulumi.IntPtrOutput)
-}
-
-// The VGA type (defaults to `std`).
-func (o Vm2VgaPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Vm2Vga) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
 type GetVm2Clone struct {
 	// The ID of the VM to clone.
 	Id int `pulumi:"id"`
@@ -1917,6 +987,181 @@ func (o GetVm2CpuPtrOutput) Units() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type GetVm2Rng struct {
+	// Maximum bytes of entropy allowed to get injected into the guest every period.
+	MaxBytes int `pulumi:"maxBytes"`
+	// Period in milliseconds to limit entropy injection to the guest.
+	Period int `pulumi:"period"`
+	// The entropy source for the RNG device.
+	Source string `pulumi:"source"`
+}
+
+// GetVm2RngInput is an input type that accepts GetVm2RngArgs and GetVm2RngOutput values.
+// You can construct a concrete instance of `GetVm2RngInput` via:
+//
+//	GetVm2RngArgs{...}
+type GetVm2RngInput interface {
+	pulumi.Input
+
+	ToGetVm2RngOutput() GetVm2RngOutput
+	ToGetVm2RngOutputWithContext(context.Context) GetVm2RngOutput
+}
+
+type GetVm2RngArgs struct {
+	// Maximum bytes of entropy allowed to get injected into the guest every period.
+	MaxBytes pulumi.IntInput `pulumi:"maxBytes"`
+	// Period in milliseconds to limit entropy injection to the guest.
+	Period pulumi.IntInput `pulumi:"period"`
+	// The entropy source for the RNG device.
+	Source pulumi.StringInput `pulumi:"source"`
+}
+
+func (GetVm2RngArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVm2Rng)(nil)).Elem()
+}
+
+func (i GetVm2RngArgs) ToGetVm2RngOutput() GetVm2RngOutput {
+	return i.ToGetVm2RngOutputWithContext(context.Background())
+}
+
+func (i GetVm2RngArgs) ToGetVm2RngOutputWithContext(ctx context.Context) GetVm2RngOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVm2RngOutput)
+}
+
+func (i GetVm2RngArgs) ToGetVm2RngPtrOutput() GetVm2RngPtrOutput {
+	return i.ToGetVm2RngPtrOutputWithContext(context.Background())
+}
+
+func (i GetVm2RngArgs) ToGetVm2RngPtrOutputWithContext(ctx context.Context) GetVm2RngPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVm2RngOutput).ToGetVm2RngPtrOutputWithContext(ctx)
+}
+
+// GetVm2RngPtrInput is an input type that accepts GetVm2RngArgs, GetVm2RngPtr and GetVm2RngPtrOutput values.
+// You can construct a concrete instance of `GetVm2RngPtrInput` via:
+//
+//	        GetVm2RngArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetVm2RngPtrInput interface {
+	pulumi.Input
+
+	ToGetVm2RngPtrOutput() GetVm2RngPtrOutput
+	ToGetVm2RngPtrOutputWithContext(context.Context) GetVm2RngPtrOutput
+}
+
+type getVm2RngPtrType GetVm2RngArgs
+
+func GetVm2RngPtr(v *GetVm2RngArgs) GetVm2RngPtrInput {
+	return (*getVm2RngPtrType)(v)
+}
+
+func (*getVm2RngPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVm2Rng)(nil)).Elem()
+}
+
+func (i *getVm2RngPtrType) ToGetVm2RngPtrOutput() GetVm2RngPtrOutput {
+	return i.ToGetVm2RngPtrOutputWithContext(context.Background())
+}
+
+func (i *getVm2RngPtrType) ToGetVm2RngPtrOutputWithContext(ctx context.Context) GetVm2RngPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVm2RngPtrOutput)
+}
+
+type GetVm2RngOutput struct{ *pulumi.OutputState }
+
+func (GetVm2RngOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVm2Rng)(nil)).Elem()
+}
+
+func (o GetVm2RngOutput) ToGetVm2RngOutput() GetVm2RngOutput {
+	return o
+}
+
+func (o GetVm2RngOutput) ToGetVm2RngOutputWithContext(ctx context.Context) GetVm2RngOutput {
+	return o
+}
+
+func (o GetVm2RngOutput) ToGetVm2RngPtrOutput() GetVm2RngPtrOutput {
+	return o.ToGetVm2RngPtrOutputWithContext(context.Background())
+}
+
+func (o GetVm2RngOutput) ToGetVm2RngPtrOutputWithContext(ctx context.Context) GetVm2RngPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVm2Rng) *GetVm2Rng {
+		return &v
+	}).(GetVm2RngPtrOutput)
+}
+
+// Maximum bytes of entropy allowed to get injected into the guest every period.
+func (o GetVm2RngOutput) MaxBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVm2Rng) int { return v.MaxBytes }).(pulumi.IntOutput)
+}
+
+// Period in milliseconds to limit entropy injection to the guest.
+func (o GetVm2RngOutput) Period() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVm2Rng) int { return v.Period }).(pulumi.IntOutput)
+}
+
+// The entropy source for the RNG device.
+func (o GetVm2RngOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVm2Rng) string { return v.Source }).(pulumi.StringOutput)
+}
+
+type GetVm2RngPtrOutput struct{ *pulumi.OutputState }
+
+func (GetVm2RngPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVm2Rng)(nil)).Elem()
+}
+
+func (o GetVm2RngPtrOutput) ToGetVm2RngPtrOutput() GetVm2RngPtrOutput {
+	return o
+}
+
+func (o GetVm2RngPtrOutput) ToGetVm2RngPtrOutputWithContext(ctx context.Context) GetVm2RngPtrOutput {
+	return o
+}
+
+func (o GetVm2RngPtrOutput) Elem() GetVm2RngOutput {
+	return o.ApplyT(func(v *GetVm2Rng) GetVm2Rng {
+		if v != nil {
+			return *v
+		}
+		var ret GetVm2Rng
+		return ret
+	}).(GetVm2RngOutput)
+}
+
+// Maximum bytes of entropy allowed to get injected into the guest every period.
+func (o GetVm2RngPtrOutput) MaxBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetVm2Rng) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxBytes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Period in milliseconds to limit entropy injection to the guest.
+func (o GetVm2RngPtrOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetVm2Rng) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Period
+	}).(pulumi.IntPtrOutput)
+}
+
+// The entropy source for the RNG device.
+func (o GetVm2RngPtrOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVm2Rng) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Source
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetVm2Timeouts struct {
 	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
 	Read *string `pulumi:"read"`
@@ -2236,20 +1481,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSshPtrInput)(nil)).Elem(), ProviderSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSshNodeInput)(nil)).Elem(), ProviderSshNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSshNodeArrayInput)(nil)).Elem(), ProviderSshNodeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*Vm2CdromInput)(nil)).Elem(), Vm2CdromArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*Vm2CdromMapInput)(nil)).Elem(), Vm2CdromMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*Vm2CloneInput)(nil)).Elem(), Vm2CloneArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*Vm2ClonePtrInput)(nil)).Elem(), Vm2CloneArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*Vm2CpuInput)(nil)).Elem(), Vm2CpuArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*Vm2CpuPtrInput)(nil)).Elem(), Vm2CpuArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*Vm2TimeoutsInput)(nil)).Elem(), Vm2TimeoutsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*Vm2TimeoutsPtrInput)(nil)).Elem(), Vm2TimeoutsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*Vm2VgaInput)(nil)).Elem(), Vm2VgaArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*Vm2VgaPtrInput)(nil)).Elem(), Vm2VgaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2CloneInput)(nil)).Elem(), GetVm2CloneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2ClonePtrInput)(nil)).Elem(), GetVm2CloneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2CpuInput)(nil)).Elem(), GetVm2CpuArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2CpuPtrInput)(nil)).Elem(), GetVm2CpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2RngInput)(nil)).Elem(), GetVm2RngArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2RngPtrInput)(nil)).Elem(), GetVm2RngArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2TimeoutsInput)(nil)).Elem(), GetVm2TimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2TimeoutsPtrInput)(nil)).Elem(), GetVm2TimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2VgaInput)(nil)).Elem(), GetVm2VgaArgs{})
@@ -2260,20 +1497,12 @@ func init() {
 	pulumi.RegisterOutputType(ProviderSshPtrOutput{})
 	pulumi.RegisterOutputType(ProviderSshNodeOutput{})
 	pulumi.RegisterOutputType(ProviderSshNodeArrayOutput{})
-	pulumi.RegisterOutputType(Vm2CdromOutput{})
-	pulumi.RegisterOutputType(Vm2CdromMapOutput{})
-	pulumi.RegisterOutputType(Vm2CloneOutput{})
-	pulumi.RegisterOutputType(Vm2ClonePtrOutput{})
-	pulumi.RegisterOutputType(Vm2CpuOutput{})
-	pulumi.RegisterOutputType(Vm2CpuPtrOutput{})
-	pulumi.RegisterOutputType(Vm2TimeoutsOutput{})
-	pulumi.RegisterOutputType(Vm2TimeoutsPtrOutput{})
-	pulumi.RegisterOutputType(Vm2VgaOutput{})
-	pulumi.RegisterOutputType(Vm2VgaPtrOutput{})
 	pulumi.RegisterOutputType(GetVm2CloneOutput{})
 	pulumi.RegisterOutputType(GetVm2ClonePtrOutput{})
 	pulumi.RegisterOutputType(GetVm2CpuOutput{})
 	pulumi.RegisterOutputType(GetVm2CpuPtrOutput{})
+	pulumi.RegisterOutputType(GetVm2RngOutput{})
+	pulumi.RegisterOutputType(GetVm2RngPtrOutput{})
 	pulumi.RegisterOutputType(GetVm2TimeoutsOutput{})
 	pulumi.RegisterOutputType(GetVm2TimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetVm2VgaOutput{})

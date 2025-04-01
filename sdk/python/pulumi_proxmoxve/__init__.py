@@ -10,12 +10,12 @@ from .acme_account import *
 from .acme_dns_plugin import *
 from .certifi import *
 from .dns import *
+from .get_container import *
 from .get_node import *
 from .get_vm2 import *
 from .hosts import *
 from .provider import *
 from .time import *
-from .vm2 import *
 from ._inputs import *
 from . import outputs
 
@@ -37,6 +37,8 @@ if typing.TYPE_CHECKING:
     ha = __ha
     import pulumi_proxmoxve.hardware as __hardware
     hardware = __hardware
+    import pulumi_proxmoxve.metrics as __metrics
+    metrics = __metrics
     import pulumi_proxmoxve.network as __network
     network = __network
     import pulumi_proxmoxve.permission as __permission
@@ -56,6 +58,7 @@ else:
     download = _utilities.lazy_import('pulumi_proxmoxve.download')
     ha = _utilities.lazy_import('pulumi_proxmoxve.ha')
     hardware = _utilities.lazy_import('pulumi_proxmoxve.hardware')
+    metrics = _utilities.lazy_import('pulumi_proxmoxve.metrics')
     network = _utilities.lazy_import('pulumi_proxmoxve.network')
     permission = _utilities.lazy_import('pulumi_proxmoxve.permission')
     storage = _utilities.lazy_import('pulumi_proxmoxve.storage')
@@ -135,6 +138,14 @@ _utilities.register(
   "fqn": "pulumi_proxmoxve.hardware.mapping",
   "classes": {
    "proxmoxve:Hardware/mapping/usb:Usb": "Usb"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "Metrics/metricsServer",
+  "fqn": "pulumi_proxmoxve.metrics",
+  "classes": {
+   "proxmoxve:Metrics/metricsServer:MetricsServer": "MetricsServer"
   }
  },
  {
@@ -319,14 +330,6 @@ _utilities.register(
   "fqn": "pulumi_proxmoxve",
   "classes": {
    "proxmoxve:index/time:Time": "Time"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "index/vm2",
-  "fqn": "pulumi_proxmoxve",
-  "classes": {
-   "proxmoxve:index/vm2:Vm2": "Vm2"
   }
  }
 ]

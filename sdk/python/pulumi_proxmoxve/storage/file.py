@@ -391,7 +391,7 @@ class File(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Backups (`dump`)
+        ### Backups (`backup`)
 
         > The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
 
@@ -402,11 +402,11 @@ class File(pulumi.CustomResource):
         import pulumi_proxmoxve as proxmoxve
 
         backup = proxmoxve.storage.File("backup",
-            content_type="dump",
+            content_type="backup",
             datastore_id="local",
             node_name="pve",
             source_file={
-                "path": "vzdump-lxc-100-2023_11_08-23_10_05.tar",
+                "path": "vzdump-lxc-100-2023_11_08-23_10_05.tar.zst",
             })
         ```
 
@@ -504,7 +504,7 @@ class File(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Backups (`dump`)
+        ### Backups (`backup`)
 
         > The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
 
@@ -515,11 +515,11 @@ class File(pulumi.CustomResource):
         import pulumi_proxmoxve as proxmoxve
 
         backup = proxmoxve.storage.File("backup",
-            content_type="dump",
+            content_type="backup",
             datastore_id="local",
             node_name="pve",
             source_file={
-                "path": "vzdump-lxc-100-2023_11_08-23_10_05.tar",
+                "path": "vzdump-lxc-100-2023_11_08-23_10_05.tar.zst",
             })
         ```
 

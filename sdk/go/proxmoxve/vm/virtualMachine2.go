@@ -36,6 +36,8 @@ type VirtualMachine2 struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the node where the VM is provisioned.
 	NodeName pulumi.StringOutput `pulumi:"nodeName"`
+	// Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+	Rng VirtualMachine2RngOutput `pulumi:"rng"`
 	// Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
 	StopOnDestroy pulumi.BoolOutput `pulumi:"stopOnDestroy"`
 	// The tags assigned to the VM.
@@ -57,12 +59,6 @@ func NewVirtualMachine2(ctx *pulumi.Context,
 	if args.NodeName == nil {
 		return nil, errors.New("invalid value for required argument 'NodeName'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("proxmoxve:index/vm2:Vm2"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource VirtualMachine2
 	err := ctx.RegisterResource("proxmoxve:VM/virtualMachine2:VirtualMachine2", name, args, &resource, opts...)
@@ -98,6 +94,8 @@ type virtualMachine2State struct {
 	Name *string `pulumi:"name"`
 	// The name of the node where the VM is provisioned.
 	NodeName *string `pulumi:"nodeName"`
+	// Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+	Rng *VirtualMachine2Rng `pulumi:"rng"`
 	// Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
 	StopOnDestroy *bool `pulumi:"stopOnDestroy"`
 	// The tags assigned to the VM.
@@ -122,6 +120,8 @@ type VirtualMachine2State struct {
 	Name pulumi.StringPtrInput
 	// The name of the node where the VM is provisioned.
 	NodeName pulumi.StringPtrInput
+	// Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+	Rng VirtualMachine2RngPtrInput
 	// Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
 	StopOnDestroy pulumi.BoolPtrInput
 	// The tags assigned to the VM.
@@ -150,6 +150,8 @@ type virtualMachine2Args struct {
 	Name *string `pulumi:"name"`
 	// The name of the node where the VM is provisioned.
 	NodeName string `pulumi:"nodeName"`
+	// Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+	Rng *VirtualMachine2Rng `pulumi:"rng"`
 	// Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
 	StopOnDestroy *bool `pulumi:"stopOnDestroy"`
 	// The tags assigned to the VM.
@@ -175,6 +177,8 @@ type VirtualMachine2Args struct {
 	Name pulumi.StringPtrInput
 	// The name of the node where the VM is provisioned.
 	NodeName pulumi.StringInput
+	// Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+	Rng VirtualMachine2RngPtrInput
 	// Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
 	StopOnDestroy pulumi.BoolPtrInput
 	// The tags assigned to the VM.
@@ -301,6 +305,11 @@ func (o VirtualMachine2Output) Name() pulumi.StringOutput {
 // The name of the node where the VM is provisioned.
 func (o VirtualMachine2Output) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine2) pulumi.StringOutput { return v.NodeName }).(pulumi.StringOutput)
+}
+
+// Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+func (o VirtualMachine2Output) Rng() VirtualMachine2RngOutput {
+	return o.ApplyT(func(v *VirtualMachine2) VirtualMachine2RngOutput { return v.Rng }).(VirtualMachine2RngOutput)
 }
 
 // Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).

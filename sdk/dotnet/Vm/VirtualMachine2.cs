@@ -60,6 +60,12 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<string> NodeName { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+        /// </summary>
+        [Output("rng")]
+        public Output<Outputs.VirtualMachine2Rng> Rng { get; private set; } = null!;
+
+        /// <summary>
         /// Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
         /// </summary>
         [Output("stopOnDestroy")]
@@ -110,10 +116,6 @@ namespace Pulumi.ProxmoxVE.VM
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/muhlba91/pulumi-proxmoxve",
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "proxmoxve:index/vm2:Vm2" },
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -178,6 +180,12 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Input("nodeName", required: true)]
         public Input<string> NodeName { get; set; } = null!;
+
+        /// <summary>
+        /// Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+        /// </summary>
+        [Input("rng")]
+        public Input<Inputs.VirtualMachine2RngArgs>? Rng { get; set; }
 
         /// <summary>
         /// Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
@@ -261,6 +269,12 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
+
+        /// <summary>
+        /// Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+        /// </summary>
+        [Input("rng")]
+        public Input<Inputs.VirtualMachine2RngGetArgs>? Rng { get; set; }
 
         /// <summary>
         /// Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).

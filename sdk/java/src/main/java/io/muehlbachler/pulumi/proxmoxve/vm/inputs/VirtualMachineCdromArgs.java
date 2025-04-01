@@ -17,25 +17,35 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
     public static final VirtualMachineCdromArgs Empty = new VirtualMachineCdromArgs();
 
     /**
-     * Whether to enable the CDROM drive (defaults
-     * to `false`).
+     * Whether to enable the CD-ROM drive (defaults
+     * to `false`). *Deprecated*. The attribute will be removed in the next version of the provider.
+     * Set `file_id` to `none` to leave the CD-ROM drive empty.
+     * 
+     * @deprecated
+     * Remove this attribute&#39;s configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `file_id` to `none` to leave the CDROM drive empty.
      * 
      */
+    @Deprecated /* Remove this attribute's configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `file_id` to `none` to leave the CDROM drive empty. */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether to enable the CDROM drive (defaults
-     * to `false`).
+     * @return Whether to enable the CD-ROM drive (defaults
+     * to `false`). *Deprecated*. The attribute will be removed in the next version of the provider.
+     * Set `file_id` to `none` to leave the CD-ROM drive empty.
+     * 
+     * @deprecated
+     * Remove this attribute&#39;s configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `file_id` to `none` to leave the CDROM drive empty.
      * 
      */
+    @Deprecated /* Remove this attribute's configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `file_id` to `none` to leave the CDROM drive empty. */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
     /**
      * A file ID for an ISO file (defaults to `cdrom` as
-     * in the physical drive). Use `none` to leave the CDROM drive empty.
+     * in the physical drive). Use `none` to leave the CD-ROM drive empty.
      * 
      */
     @Import(name="fileId")
@@ -43,7 +53,7 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
 
     /**
      * @return A file ID for an ISO file (defaults to `cdrom` as
-     * in the physical drive). Use `none` to leave the CDROM drive empty.
+     * in the physical drive). Use `none` to leave the CD-ROM drive empty.
      * 
      */
     public Optional<Output<String>> fileId() {
@@ -51,7 +61,7 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * A hardware interface to connect CDROM drive to,
+     * A hardware interface to connect CD-ROM drive to,
      * must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
      * supports `ide0` and `ide2`.
      * 
@@ -60,7 +70,7 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
     private @Nullable Output<String> interface_;
 
     /**
-     * @return A hardware interface to connect CDROM drive to,
+     * @return A hardware interface to connect CD-ROM drive to,
      * must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
      * supports `ide0` and `ide2`.
      * 
@@ -96,31 +106,41 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param enabled Whether to enable the CDROM drive (defaults
-         * to `false`).
+         * @param enabled Whether to enable the CD-ROM drive (defaults
+         * to `false`). *Deprecated*. The attribute will be removed in the next version of the provider.
+         * Set `file_id` to `none` to leave the CD-ROM drive empty.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Remove this attribute&#39;s configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `file_id` to `none` to leave the CDROM drive empty.
+         * 
          */
+        @Deprecated /* Remove this attribute's configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `file_id` to `none` to leave the CDROM drive empty. */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
         /**
-         * @param enabled Whether to enable the CDROM drive (defaults
-         * to `false`).
+         * @param enabled Whether to enable the CD-ROM drive (defaults
+         * to `false`). *Deprecated*. The attribute will be removed in the next version of the provider.
+         * Set `file_id` to `none` to leave the CD-ROM drive empty.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Remove this attribute&#39;s configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `file_id` to `none` to leave the CDROM drive empty.
+         * 
          */
+        @Deprecated /* Remove this attribute's configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `file_id` to `none` to leave the CDROM drive empty. */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
         /**
          * @param fileId A file ID for an ISO file (defaults to `cdrom` as
-         * in the physical drive). Use `none` to leave the CDROM drive empty.
+         * in the physical drive). Use `none` to leave the CD-ROM drive empty.
          * 
          * @return builder
          * 
@@ -132,7 +152,7 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
 
         /**
          * @param fileId A file ID for an ISO file (defaults to `cdrom` as
-         * in the physical drive). Use `none` to leave the CDROM drive empty.
+         * in the physical drive). Use `none` to leave the CD-ROM drive empty.
          * 
          * @return builder
          * 
@@ -142,7 +162,7 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param interface_ A hardware interface to connect CDROM drive to,
+         * @param interface_ A hardware interface to connect CD-ROM drive to,
          * must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
          * supports `ide0` and `ide2`.
          * 
@@ -155,7 +175,7 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param interface_ A hardware interface to connect CDROM drive to,
+         * @param interface_ A hardware interface to connect CD-ROM drive to,
          * must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
          * supports `ide0` and `ide2`.
          * 

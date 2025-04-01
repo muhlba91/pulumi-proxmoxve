@@ -20,7 +20,8 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
         public readonly string? DatastoreId;
         /// <summary>
         /// The size of the root filesystem in gigabytes (defaults
-        /// to `4`). Requires `datastore_id` to be set.
+        /// to `4`). When set to 0 a directory or zfs/btrfs subvolume will be created.
+        /// Requires `datastore_id` to be set.
         /// </summary>
         public readonly int? Size;
 

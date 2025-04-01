@@ -44,12 +44,12 @@ public final class VirtualMachineDisk {
      */
     private @Nullable String discard;
     /**
-     * @return The file format (defaults to `qcow2`).
+     * @return The file format.
      * 
      */
     private @Nullable String fileFormat;
     /**
-     * @return The file ID for a disk image. The ID format is
+     * @return The file ID for a disk image when importing a disk into VM. The ID format is
      * `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`. Can be also taken from
      * `proxmoxve.Download.File` resource.
      * 
@@ -145,14 +145,14 @@ public final class VirtualMachineDisk {
         return Optional.ofNullable(this.discard);
     }
     /**
-     * @return The file format (defaults to `qcow2`).
+     * @return The file format.
      * 
      */
     public Optional<String> fileFormat() {
         return Optional.ofNullable(this.fileFormat);
     }
     /**
-     * @return The file ID for a disk image. The ID format is
+     * @return The file ID for a disk image when importing a disk into VM. The ID format is
      * `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`. Can be also taken from
      * `proxmoxve.Download.File` resource.
      * 

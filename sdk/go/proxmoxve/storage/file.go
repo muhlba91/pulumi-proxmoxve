@@ -16,7 +16,7 @@ import (
 //
 // ## Example Usage
 //
-// ### Backups (`dump`)
+// ### Backups (`backup`)
 //
 // > The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
 //
@@ -35,11 +35,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := storage.NewFile(ctx, "backup", &storage.FileArgs{
-//				ContentType: pulumi.String("dump"),
+//				ContentType: pulumi.String("backup"),
 //				DatastoreId: pulumi.String("local"),
 //				NodeName:    pulumi.String("pve"),
 //				SourceFile: &storage.FileSourceFileArgs{
-//					Path: pulumi.String("vzdump-lxc-100-2023_11_08-23_10_05.tar"),
+//					Path: pulumi.String("vzdump-lxc-100-2023_11_08-23_10_05.tar.zst"),
 //				},
 //			})
 //			if err != nil {

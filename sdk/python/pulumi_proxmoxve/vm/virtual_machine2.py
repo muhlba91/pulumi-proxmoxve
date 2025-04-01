@@ -27,6 +27,7 @@ class VirtualMachine2Args:
                  cpu: Optional[pulumi.Input['VirtualMachine2CpuArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 rng: Optional[pulumi.Input['VirtualMachine2RngArgs']] = None,
                  stop_on_destroy: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
@@ -40,6 +41,7 @@ class VirtualMachine2Args:
         :param pulumi.Input['VirtualMachine2CpuArgs'] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description of the VM.
         :param pulumi.Input[str] name: The name of the VM. Doesn't have to be unique.
+        :param pulumi.Input['VirtualMachine2RngArgs'] rng: Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
         :param pulumi.Input[bool] stop_on_destroy: Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags assigned to the VM.
         :param pulumi.Input[bool] template: Set to true to create a VM template.
@@ -56,6 +58,8 @@ class VirtualMachine2Args:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if rng is not None:
+            pulumi.set(__self__, "rng", rng)
         if stop_on_destroy is not None:
             pulumi.set(__self__, "stop_on_destroy", stop_on_destroy)
         if tags is not None:
@@ -140,6 +144,18 @@ class VirtualMachine2Args:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter
+    def rng(self) -> Optional[pulumi.Input['VirtualMachine2RngArgs']]:
+        """
+        Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+        """
+        return pulumi.get(self, "rng")
+
+    @rng.setter
+    def rng(self, value: Optional[pulumi.Input['VirtualMachine2RngArgs']]):
+        pulumi.set(self, "rng", value)
+
+    @property
     @pulumi.getter(name="stopOnDestroy")
     def stop_on_destroy(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -206,6 +222,7 @@ class _VirtualMachine2State:
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
+                 rng: Optional[pulumi.Input['VirtualMachine2RngArgs']] = None,
                  stop_on_destroy: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
@@ -219,6 +236,7 @@ class _VirtualMachine2State:
         :param pulumi.Input[str] description: The description of the VM.
         :param pulumi.Input[str] name: The name of the VM. Doesn't have to be unique.
         :param pulumi.Input[str] node_name: The name of the node where the VM is provisioned.
+        :param pulumi.Input['VirtualMachine2RngArgs'] rng: Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
         :param pulumi.Input[bool] stop_on_destroy: Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags assigned to the VM.
         :param pulumi.Input[bool] template: Set to true to create a VM template.
@@ -236,6 +254,8 @@ class _VirtualMachine2State:
             pulumi.set(__self__, "name", name)
         if node_name is not None:
             pulumi.set(__self__, "node_name", node_name)
+        if rng is not None:
+            pulumi.set(__self__, "rng", rng)
         if stop_on_destroy is not None:
             pulumi.set(__self__, "stop_on_destroy", stop_on_destroy)
         if tags is not None:
@@ -320,6 +340,18 @@ class _VirtualMachine2State:
         pulumi.set(self, "node_name", value)
 
     @property
+    @pulumi.getter
+    def rng(self) -> Optional[pulumi.Input['VirtualMachine2RngArgs']]:
+        """
+        Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+        """
+        return pulumi.get(self, "rng")
+
+    @rng.setter
+    def rng(self, value: Optional[pulumi.Input['VirtualMachine2RngArgs']]):
+        pulumi.set(self, "rng", value)
+
+    @property
     @pulumi.getter(name="stopOnDestroy")
     def stop_on_destroy(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -388,6 +420,7 @@ class VirtualMachine2(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
+                 rng: Optional[pulumi.Input[Union['VirtualMachine2RngArgs', 'VirtualMachine2RngArgsDict']]] = None,
                  stop_on_destroy: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
@@ -413,6 +446,7 @@ class VirtualMachine2(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the VM.
         :param pulumi.Input[str] name: The name of the VM. Doesn't have to be unique.
         :param pulumi.Input[str] node_name: The name of the node where the VM is provisioned.
+        :param pulumi.Input[Union['VirtualMachine2RngArgs', 'VirtualMachine2RngArgsDict']] rng: Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
         :param pulumi.Input[bool] stop_on_destroy: Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags assigned to the VM.
         :param pulumi.Input[bool] template: Set to true to create a VM template.
@@ -456,6 +490,7 @@ class VirtualMachine2(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
+                 rng: Optional[pulumi.Input[Union['VirtualMachine2RngArgs', 'VirtualMachine2RngArgsDict']]] = None,
                  stop_on_destroy: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[bool]] = None,
@@ -478,13 +513,12 @@ class VirtualMachine2(pulumi.CustomResource):
             if node_name is None and not opts.urn:
                 raise TypeError("Missing required property 'node_name'")
             __props__.__dict__["node_name"] = node_name
+            __props__.__dict__["rng"] = rng
             __props__.__dict__["stop_on_destroy"] = stop_on_destroy
             __props__.__dict__["tags"] = tags
             __props__.__dict__["template"] = template
             __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["vga"] = vga
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="proxmoxve:index/vm2:Vm2")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(VirtualMachine2, __self__).__init__(
             'proxmoxve:VM/virtualMachine2:VirtualMachine2',
             resource_name,
@@ -501,6 +535,7 @@ class VirtualMachine2(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             node_name: Optional[pulumi.Input[str]] = None,
+            rng: Optional[pulumi.Input[Union['VirtualMachine2RngArgs', 'VirtualMachine2RngArgsDict']]] = None,
             stop_on_destroy: Optional[pulumi.Input[bool]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             template: Optional[pulumi.Input[bool]] = None,
@@ -519,6 +554,7 @@ class VirtualMachine2(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the VM.
         :param pulumi.Input[str] name: The name of the VM. Doesn't have to be unique.
         :param pulumi.Input[str] node_name: The name of the node where the VM is provisioned.
+        :param pulumi.Input[Union['VirtualMachine2RngArgs', 'VirtualMachine2RngArgsDict']] rng: Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
         :param pulumi.Input[bool] stop_on_destroy: Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags assigned to the VM.
         :param pulumi.Input[bool] template: Set to true to create a VM template.
@@ -534,6 +570,7 @@ class VirtualMachine2(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["name"] = name
         __props__.__dict__["node_name"] = node_name
+        __props__.__dict__["rng"] = rng
         __props__.__dict__["stop_on_destroy"] = stop_on_destroy
         __props__.__dict__["tags"] = tags
         __props__.__dict__["template"] = template
@@ -588,6 +625,14 @@ class VirtualMachine2(pulumi.CustomResource):
         The name of the node where the VM is provisioned.
         """
         return pulumi.get(self, "node_name")
+
+    @property
+    @pulumi.getter
+    def rng(self) -> pulumi.Output['outputs.VirtualMachine2Rng']:
+        """
+        Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+        """
+        return pulumi.get(self, "rng")
 
     @property
     @pulumi.getter(name="stopOnDestroy")

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetVm2CloneArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetVm2CpuArgs;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetVm2RngArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetVm2TimeoutsArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetVm2VgaArgs;
 import java.lang.Boolean;
@@ -114,6 +115,21 @@ public final class GetVm2Args extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * The RNG (Random Number Generator) configuration.
+     * 
+     */
+    @Import(name="rng")
+    private @Nullable Output<GetVm2RngArgs> rng;
+
+    /**
+     * @return The RNG (Random Number Generator) configuration.
+     * 
+     */
+    public Optional<Output<GetVm2RngArgs>> rng() {
+        return Optional.ofNullable(this.rng);
+    }
+
+    /**
      * The tags assigned to the VM.
      * 
      */
@@ -174,6 +190,7 @@ public final class GetVm2Args extends com.pulumi.resources.InvokeArgs {
         this.id = $.id;
         this.name = $.name;
         this.nodeName = $.nodeName;
+        this.rng = $.rng;
         this.tags = $.tags;
         this.template = $.template;
         this.timeouts = $.timeouts;
@@ -322,6 +339,27 @@ public final class GetVm2Args extends com.pulumi.resources.InvokeArgs {
          */
         public Builder nodeName(String nodeName) {
             return nodeName(Output.of(nodeName));
+        }
+
+        /**
+         * @param rng The RNG (Random Number Generator) configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rng(@Nullable Output<GetVm2RngArgs> rng) {
+            $.rng = rng;
+            return this;
+        }
+
+        /**
+         * @param rng The RNG (Random Number Generator) configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rng(GetVm2RngArgs rng) {
+            return rng(Output.of(rng));
         }
 
         /**

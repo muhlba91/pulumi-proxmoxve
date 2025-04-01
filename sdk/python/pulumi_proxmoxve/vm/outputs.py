@@ -19,6 +19,7 @@ __all__ = [
     'VirtualMachine2Cdrom',
     'VirtualMachine2Clone',
     'VirtualMachine2Cpu',
+    'VirtualMachine2Rng',
     'VirtualMachine2Timeouts',
     'VirtualMachine2Vga',
     'VirtualMachineAgent',
@@ -40,6 +41,7 @@ __all__ = [
     'VirtualMachineNetworkDevice',
     'VirtualMachineNuma',
     'VirtualMachineOperatingSystem',
+    'VirtualMachineRng',
     'VirtualMachineSerialDevice',
     'VirtualMachineSmbios',
     'VirtualMachineStartup',
@@ -242,6 +244,66 @@ class VirtualMachine2Cpu(dict):
         CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
         """
         return pulumi.get(self, "units")
+
+
+@pulumi.output_type
+class VirtualMachine2Rng(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxBytes":
+            suggest = "max_bytes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VirtualMachine2Rng. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VirtualMachine2Rng.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VirtualMachine2Rng.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_bytes: Optional[int] = None,
+                 period: Optional[int] = None,
+                 source: Optional[str] = None):
+        """
+        :param int max_bytes: Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+        :param int period: Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+        :param str source: The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+        """
+        if max_bytes is not None:
+            pulumi.set(__self__, "max_bytes", max_bytes)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+
+    @property
+    @pulumi.getter(name="maxBytes")
+    def max_bytes(self) -> Optional[int]:
+        """
+        Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+        """
+        return pulumi.get(self, "max_bytes")
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[int]:
+        """
+        Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+        """
+        return pulumi.get(self, "period")
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[str]:
+        """
+        The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+        """
+        return pulumi.get(self, "source")
 
 
 @pulumi.output_type
@@ -478,11 +540,12 @@ class VirtualMachineCdrom(dict):
                  file_id: Optional[str] = None,
                  interface: Optional[str] = None):
         """
-        :param bool enabled: Whether to enable the CDROM drive (defaults
-               to `false`).
+        :param bool enabled: Whether to enable the CD-ROM drive (defaults
+               to `false`). *Deprecated*. The attribute will be removed in the next version of the provider.
+               Set `file_id` to `none` to leave the CD-ROM drive empty.
         :param str file_id: A file ID for an ISO file (defaults to `cdrom` as
-               in the physical drive). Use `none` to leave the CDROM drive empty.
-        :param str interface: A hardware interface to connect CDROM drive to,
+               in the physical drive). Use `none` to leave the CD-ROM drive empty.
+        :param str interface: A hardware interface to connect CD-ROM drive to,
                must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
                supports `ide0` and `ide2`.
         """
@@ -495,10 +558,12 @@ class VirtualMachineCdrom(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Remove this attribute's configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `file_id` to `none` to leave the CDROM drive empty.""")
     def enabled(self) -> Optional[bool]:
         """
-        Whether to enable the CDROM drive (defaults
-        to `false`).
+        Whether to enable the CD-ROM drive (defaults
+        to `false`). *Deprecated*. The attribute will be removed in the next version of the provider.
+        Set `file_id` to `none` to leave the CD-ROM drive empty.
         """
         return pulumi.get(self, "enabled")
 
@@ -507,7 +572,7 @@ class VirtualMachineCdrom(dict):
     def file_id(self) -> Optional[str]:
         """
         A file ID for an ISO file (defaults to `cdrom` as
-        in the physical drive). Use `none` to leave the CDROM drive empty.
+        in the physical drive). Use `none` to leave the CD-ROM drive empty.
         """
         return pulumi.get(self, "file_id")
 
@@ -515,7 +580,7 @@ class VirtualMachineCdrom(dict):
     @pulumi.getter
     def interface(self) -> Optional[str]:
         """
-        A hardware interface to connect CDROM drive to,
+        A hardware interface to connect CD-ROM drive to,
         must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
         supports `ide0` and `ide2`.
         """
@@ -850,8 +915,8 @@ class VirtualMachineDisk(dict):
         :param str discard: Whether to pass discard/trim requests to the
                underlying storage. Supported values are `on`/`ignore` (defaults
                to `ignore`).
-        :param str file_format: The file format (defaults to `qcow2`).
-        :param str file_id: The file ID for a disk image. The ID format is
+        :param str file_format: The file format.
+        :param str file_id: The file ID for a disk image when importing a disk into VM. The ID format is
                `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
                `Download.File` resource.
         :param bool iothread: Whether to use iothreads for this disk (defaults
@@ -956,7 +1021,7 @@ class VirtualMachineDisk(dict):
     @pulumi.getter(name="fileFormat")
     def file_format(self) -> Optional[str]:
         """
-        The file format (defaults to `qcow2`).
+        The file format.
         """
         return pulumi.get(self, "file_format")
 
@@ -964,7 +1029,7 @@ class VirtualMachineDisk(dict):
     @pulumi.getter(name="fileId")
     def file_id(self) -> Optional[str]:
         """
-        The file ID for a disk image. The ID format is
+        The file ID for a disk image when importing a disk into VM. The ID format is
         `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
         `Download.File` resource.
         """
@@ -2122,6 +2187,65 @@ class VirtualMachineOperatingSystem(dict):
         The type (defaults to `other`).
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class VirtualMachineRng(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxBytes":
+            suggest = "max_bytes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineRng. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VirtualMachineRng.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VirtualMachineRng.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 source: str,
+                 max_bytes: Optional[int] = None,
+                 period: Optional[int] = None):
+        """
+        :param str source: The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+        :param int max_bytes: Maximum bytes of entropy allowed to get injected into the guest every `period` milliseconds (defaults to `1024`). Prefer a lower value when using `/dev/random` as source.
+        :param int period: Every `period` milliseconds the entropy-injection quota is reset, allowing the guest to retrieve another `max_bytes` of entropy (defaults to `1000`).
+        """
+        pulumi.set(__self__, "source", source)
+        if max_bytes is not None:
+            pulumi.set(__self__, "max_bytes", max_bytes)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+
+    @property
+    @pulumi.getter
+    def source(self) -> str:
+        """
+        The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+        """
+        return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter(name="maxBytes")
+    def max_bytes(self) -> Optional[int]:
+        """
+        Maximum bytes of entropy allowed to get injected into the guest every `period` milliseconds (defaults to `1024`). Prefer a lower value when using `/dev/random` as source.
+        """
+        return pulumi.get(self, "max_bytes")
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[int]:
+        """
+        Every `period` milliseconds the entropy-injection quota is reset, allowing the guest to retrieve another `max_bytes` of entropy (defaults to `1000`).
+        """
+        return pulumi.get(self, "period")
 
 
 @pulumi.output_type

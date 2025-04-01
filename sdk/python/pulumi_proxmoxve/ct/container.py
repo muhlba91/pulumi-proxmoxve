@@ -73,8 +73,8 @@ class ContainerArgs:
         :param pulumi.Input[bool] started: Whether to start the container (defaults to `true`).
         :param pulumi.Input['ContainerStartupArgs'] startup: Defines startup and shutdown behavior of the container.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags the container tags. This is only meta
-               information (defaults to `[]`). Note: Proxmox always sorts the container tags.
-               If the list in template is not sorted, then Proxmox will always report a
+               information (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.
+               If tag contains capital letters, then Proxmox will always report a
                difference on the resource. You may use the `ignore_changes` lifecycle
                meta-argument to ignore changes to this attribute.
         :param pulumi.Input[bool] template: Whether to create a template (defaults to `false`).
@@ -381,8 +381,8 @@ class ContainerArgs:
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of tags the container tags. This is only meta
-        information (defaults to `[]`). Note: Proxmox always sorts the container tags.
-        If the list in template is not sorted, then Proxmox will always report a
+        information (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.
+        If tag contains capital letters, then Proxmox will always report a
         difference on the resource. You may use the `ignore_changes` lifecycle
         meta-argument to ignore changes to this attribute.
         """
@@ -546,8 +546,8 @@ class _ContainerState:
         :param pulumi.Input[bool] started: Whether to start the container (defaults to `true`).
         :param pulumi.Input['ContainerStartupArgs'] startup: Defines startup and shutdown behavior of the container.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags the container tags. This is only meta
-               information (defaults to `[]`). Note: Proxmox always sorts the container tags.
-               If the list in template is not sorted, then Proxmox will always report a
+               information (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.
+               If tag contains capital letters, then Proxmox will always report a
                difference on the resource. You may use the `ignore_changes` lifecycle
                meta-argument to ignore changes to this attribute.
         :param pulumi.Input[bool] template: Whether to create a template (defaults to `false`).
@@ -855,8 +855,8 @@ class _ContainerState:
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of tags the container tags. This is only meta
-        information (defaults to `[]`). Note: Proxmox always sorts the container tags.
-        If the list in template is not sorted, then Proxmox will always report a
+        information (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.
+        If tag contains capital letters, then Proxmox will always report a
         difference on the resource. You may use the `ignore_changes` lifecycle
         meta-argument to ignore changes to this attribute.
         """
@@ -1036,8 +1036,8 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[bool] started: Whether to start the container (defaults to `true`).
         :param pulumi.Input[Union['ContainerStartupArgs', 'ContainerStartupArgsDict']] startup: Defines startup and shutdown behavior of the container.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags the container tags. This is only meta
-               information (defaults to `[]`). Note: Proxmox always sorts the container tags.
-               If the list in template is not sorted, then Proxmox will always report a
+               information (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.
+               If tag contains capital letters, then Proxmox will always report a
                difference on the resource. You may use the `ignore_changes` lifecycle
                meta-argument to ignore changes to this attribute.
         :param pulumi.Input[bool] template: Whether to create a template (defaults to `false`).
@@ -1218,8 +1218,8 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[bool] started: Whether to start the container (defaults to `true`).
         :param pulumi.Input[Union['ContainerStartupArgs', 'ContainerStartupArgsDict']] startup: Defines startup and shutdown behavior of the container.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags the container tags. This is only meta
-               information (defaults to `[]`). Note: Proxmox always sorts the container tags.
-               If the list in template is not sorted, then Proxmox will always report a
+               information (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.
+               If tag contains capital letters, then Proxmox will always report a
                difference on the resource. You may use the `ignore_changes` lifecycle
                meta-argument to ignore changes to this attribute.
         :param pulumi.Input[bool] template: Whether to create a template (defaults to `false`).
@@ -1425,8 +1425,8 @@ class Container(pulumi.CustomResource):
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         A list of tags the container tags. This is only meta
-        information (defaults to `[]`). Note: Proxmox always sorts the container tags.
-        If the list in template is not sorted, then Proxmox will always report a
+        information (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.
+        If tag contains capital letters, then Proxmox will always report a
         difference on the resource. You may use the `ignore_changes` lifecycle
         meta-argument to ignore changes to this attribute.
         """

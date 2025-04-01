@@ -59,6 +59,21 @@ export interface GetVm2Cpu {
     units: number;
 }
 
+export interface GetVm2Rng {
+    /**
+     * Maximum bytes of entropy allowed to get injected into the guest every period.
+     */
+    maxBytes: number;
+    /**
+     * Period in milliseconds to limit entropy injection to the guest.
+     */
+    period: number;
+    /**
+     * The entropy source for the RNG device.
+     */
+    source: string;
+}
+
 export interface GetVm2Timeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
@@ -90,101 +105,6 @@ export interface HostsEntry {
      * The hostnames.
      */
     hostnames: string[];
-}
-
-export interface Vm2Cdrom {
-    /**
-     * The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
-     */
-    fileId: string;
-}
-
-export interface Vm2Clone {
-    /**
-     * The ID of the VM to clone.
-     */
-    id: number;
-    /**
-     * The number of retries to perform when cloning the VM (default: 3).
-     */
-    retries: number;
-}
-
-export interface Vm2Cpu {
-    /**
-     * The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
-     */
-    affinity: string;
-    /**
-     * The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `affinity` is only allowed for `root@pam` authenticated user.
-     */
-    architecture: string;
-    /**
-     * The number of CPU cores per socket (defaults to `1`).
-     */
-    cores: number;
-    /**
-     * Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
-     */
-    flags: string[];
-    /**
-     * The number of hotplugged vCPUs (defaults to `0`).
-     */
-    hotplugged: number;
-    /**
-     * Limit of CPU usage (defaults to `0` which means no limit).
-     */
-    limit: number;
-    /**
-     * Enable NUMA (defaults to `false`).
-     */
-    numa: boolean;
-    /**
-     * The number of CPU sockets (defaults to `1`).
-     */
-    sockets: number;
-    /**
-     * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
-     */
-    type: string;
-    /**
-     * CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
-     */
-    units: number;
-}
-
-export interface Vm2Timeouts {
-    /**
-     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-     */
-    create?: string;
-    /**
-     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-     */
-    delete?: string;
-    /**
-     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-     */
-    read?: string;
-    /**
-     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-     */
-    update?: string;
-}
-
-export interface Vm2Vga {
-    /**
-     * Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
-     */
-    clipboard: string;
-    /**
-     * The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
-     */
-    memory: number;
-    /**
-     * The VGA type (defaults to `std`).
-     */
-    type: string;
 }
 
 export namespace Acme {
@@ -312,7 +232,8 @@ export namespace CT {
         datastoreId?: string;
         /**
          * The size of the root filesystem in gigabytes (defaults
-         * to `4`). Requires `datastoreId` to be set.
+         * to `4`). When set to 0 a directory or zfs/btrfs subvolume will be created.
+         * Requires `datastoreId` to be set.
          */
         size?: number;
     }
@@ -1185,6 +1106,21 @@ export namespace VM {
         units: number;
     }
 
+    export interface VirtualMachine2Rng {
+        /**
+         * Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+         */
+        maxBytes: number;
+        /**
+         * Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+         */
+        period: number;
+        /**
+         * The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+         */
+        source: string;
+    }
+
     export interface VirtualMachine2Timeouts {
         /**
          * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -1262,17 +1198,20 @@ export namespace VM {
 
     export interface VirtualMachineCdrom {
         /**
-         * Whether to enable the CDROM drive (defaults
-         * to `false`).
+         * Whether to enable the CD-ROM drive (defaults
+         * to `false`). *Deprecated*. The attribute will be removed in the next version of the provider.
+         * Set `fileId` to `none` to leave the CD-ROM drive empty.
+         *
+         * @deprecated Remove this attribute's configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `fileId` to `none` to leave the CDROM drive empty.
          */
         enabled?: boolean;
         /**
          * A file ID for an ISO file (defaults to `cdrom` as
-         * in the physical drive). Use `none` to leave the CDROM drive empty.
+         * in the physical drive). Use `none` to leave the CD-ROM drive empty.
          */
         fileId?: string;
         /**
-         * A hardware interface to connect CDROM drive to,
+         * A hardware interface to connect CD-ROM drive to,
          * must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
          * supports `ide0` and `ide2`.
          */
@@ -1400,11 +1339,11 @@ export namespace VM {
          */
         discard?: string;
         /**
-         * The file format (defaults to `qcow2`).
+         * The file format.
          */
         fileFormat: string;
         /**
-         * The file ID for a disk image. The ID format is
+         * The file ID for a disk image when importing a disk into VM. The ID format is
          * `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
          * `proxmoxve.Download.File` resource.
          */
@@ -1798,6 +1737,21 @@ export namespace VM {
          * The type (defaults to `other`).
          */
         type?: string;
+    }
+
+    export interface VirtualMachineRng {
+        /**
+         * Maximum bytes of entropy allowed to get injected into the guest every `period` milliseconds (defaults to `1024`). Prefer a lower value when using `/dev/random` as source.
+         */
+        maxBytes: number;
+        /**
+         * Every `period` milliseconds the entropy-injection quota is reset, allowing the guest to retrieve another `maxBytes` of entropy (defaults to `1000`).
+         */
+        period: number;
+        /**
+         * The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+         */
+        source: string;
     }
 
     export interface VirtualMachineSerialDevice {

@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Backups (`dump`)
+ * ### Backups (`backup`)
  * 
  * &gt; The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
  * 
@@ -54,11 +54,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var backup = new File("backup", FileArgs.builder()
- *             .contentType("dump")
+ *             .contentType("backup")
  *             .datastoreId("local")
  *             .nodeName("pve")
  *             .sourceFile(FileSourceFileArgs.builder()
- *                 .path("vzdump-lxc-100-2023_11_08-23_10_05.tar")
+ *                 .path("vzdump-lxc-100-2023_11_08-23_10_05.tar.zst")
  *                 .build())
  *             .build());
  * 

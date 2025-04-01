@@ -37,11 +37,11 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly string? Discard;
         /// <summary>
-        /// The file format (defaults to `qcow2`).
+        /// The file format.
         /// </summary>
         public readonly string? FileFormat;
         /// <summary>
-        /// The file ID for a disk image. The ID format is
+        /// The file ID for a disk image when importing a disk into VM. The ID format is
         /// `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`. Can be also taken from
         /// `proxmoxve.Download.File` resource.
         /// </summary>

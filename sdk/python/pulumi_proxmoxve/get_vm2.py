@@ -28,7 +28,7 @@ class GetVm2Result:
     """
     A collection of values returned by getVm2.
     """
-    def __init__(__self__, clone=None, cpu=None, description=None, id=None, name=None, node_name=None, tags=None, template=None, timeouts=None, vga=None):
+    def __init__(__self__, clone=None, cpu=None, description=None, id=None, name=None, node_name=None, rng=None, tags=None, template=None, timeouts=None, vga=None):
         if clone and not isinstance(clone, dict):
             raise TypeError("Expected argument 'clone' to be a dict")
         pulumi.set(__self__, "clone", clone)
@@ -47,6 +47,9 @@ class GetVm2Result:
         if node_name and not isinstance(node_name, str):
             raise TypeError("Expected argument 'node_name' to be a str")
         pulumi.set(__self__, "node_name", node_name)
+        if rng and not isinstance(rng, dict):
+            raise TypeError("Expected argument 'rng' to be a dict")
+        pulumi.set(__self__, "rng", rng)
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         pulumi.set(__self__, "tags", tags)
@@ -110,6 +113,14 @@ class GetVm2Result:
 
     @property
     @pulumi.getter
+    def rng(self) -> 'outputs.GetVm2RngResult':
+        """
+        The RNG (Random Number Generator) configuration.
+        """
+        return pulumi.get(self, "rng")
+
+    @property
+    @pulumi.getter
     def tags(self) -> Sequence[str]:
         """
         The tags assigned to the VM.
@@ -150,6 +161,7 @@ class AwaitableGetVm2Result(GetVm2Result):
             id=self.id,
             name=self.name,
             node_name=self.node_name,
+            rng=self.rng,
             tags=self.tags,
             template=self.template,
             timeouts=self.timeouts,
@@ -162,6 +174,7 @@ def get_vm2(clone: Optional[Union['GetVm2CloneArgs', 'GetVm2CloneArgsDict']] = N
             id: Optional[int] = None,
             name: Optional[str] = None,
             node_name: Optional[str] = None,
+            rng: Optional[Union['GetVm2RngArgs', 'GetVm2RngArgsDict']] = None,
             tags: Optional[Sequence[str]] = None,
             template: Optional[bool] = None,
             timeouts: Optional[Union['GetVm2TimeoutsArgs', 'GetVm2TimeoutsArgsDict']] = None,
@@ -178,6 +191,7 @@ def get_vm2(clone: Optional[Union['GetVm2CloneArgs', 'GetVm2CloneArgsDict']] = N
     :param int id: The unique identifier of the VM in the Proxmox cluster.
     :param str name: The name of the VM.
     :param str node_name: The name of the node where the VM is provisioned.
+    :param Union['GetVm2RngArgs', 'GetVm2RngArgsDict'] rng: The RNG (Random Number Generator) configuration.
     :param Sequence[str] tags: The tags assigned to the VM.
     :param bool template: Whether the VM is a template.
     :param Union['GetVm2VgaArgs', 'GetVm2VgaArgsDict'] vga: The VGA configuration.
@@ -189,6 +203,7 @@ def get_vm2(clone: Optional[Union['GetVm2CloneArgs', 'GetVm2CloneArgsDict']] = N
     __args__['id'] = id
     __args__['name'] = name
     __args__['nodeName'] = node_name
+    __args__['rng'] = rng
     __args__['tags'] = tags
     __args__['template'] = template
     __args__['timeouts'] = timeouts
@@ -203,6 +218,7 @@ def get_vm2(clone: Optional[Union['GetVm2CloneArgs', 'GetVm2CloneArgsDict']] = N
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         node_name=pulumi.get(__ret__, 'node_name'),
+        rng=pulumi.get(__ret__, 'rng'),
         tags=pulumi.get(__ret__, 'tags'),
         template=pulumi.get(__ret__, 'template'),
         timeouts=pulumi.get(__ret__, 'timeouts'),
@@ -213,6 +229,7 @@ def get_vm2_output(clone: Optional[pulumi.Input[Optional[Union['GetVm2CloneArgs'
                    id: Optional[pulumi.Input[int]] = None,
                    name: Optional[pulumi.Input[Optional[str]]] = None,
                    node_name: Optional[pulumi.Input[str]] = None,
+                   rng: Optional[pulumi.Input[Optional[Union['GetVm2RngArgs', 'GetVm2RngArgsDict']]]] = None,
                    tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                    template: Optional[pulumi.Input[Optional[bool]]] = None,
                    timeouts: Optional[pulumi.Input[Optional[Union['GetVm2TimeoutsArgs', 'GetVm2TimeoutsArgsDict']]]] = None,
@@ -229,6 +246,7 @@ def get_vm2_output(clone: Optional[pulumi.Input[Optional[Union['GetVm2CloneArgs'
     :param int id: The unique identifier of the VM in the Proxmox cluster.
     :param str name: The name of the VM.
     :param str node_name: The name of the node where the VM is provisioned.
+    :param Union['GetVm2RngArgs', 'GetVm2RngArgsDict'] rng: The RNG (Random Number Generator) configuration.
     :param Sequence[str] tags: The tags assigned to the VM.
     :param bool template: Whether the VM is a template.
     :param Union['GetVm2VgaArgs', 'GetVm2VgaArgsDict'] vga: The VGA configuration.
@@ -240,6 +258,7 @@ def get_vm2_output(clone: Optional[pulumi.Input[Optional[Union['GetVm2CloneArgs'
     __args__['id'] = id
     __args__['name'] = name
     __args__['nodeName'] = node_name
+    __args__['rng'] = rng
     __args__['tags'] = tags
     __args__['template'] = template
     __args__['timeouts'] = timeouts
@@ -253,6 +272,7 @@ def get_vm2_output(clone: Optional[pulumi.Input[Optional[Union['GetVm2CloneArgs'
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         node_name=pulumi.get(__response__, 'node_name'),
+        rng=pulumi.get(__response__, 'rng'),
         tags=pulumi.get(__response__, 'tags'),
         template=pulumi.get(__response__, 'template'),
         timeouts=pulumi.get(__response__, 'timeouts'),

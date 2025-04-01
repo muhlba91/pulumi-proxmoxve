@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Backups (`dump`)
+ * ### Backups (`backup`)
  *
  * > The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
  *
@@ -22,11 +22,11 @@ import * as utilities from "../utilities";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
  * const backup = new proxmoxve.storage.File("backup", {
- *     contentType: "dump",
+ *     contentType: "backup",
  *     datastoreId: "local",
  *     nodeName: "pve",
  *     sourceFile: {
- *         path: "vzdump-lxc-100-2023_11_08-23_10_05.tar",
+ *         path: "vzdump-lxc-100-2023_11_08-23_10_05.tar.zst",
  *     },
  * });
  * ```

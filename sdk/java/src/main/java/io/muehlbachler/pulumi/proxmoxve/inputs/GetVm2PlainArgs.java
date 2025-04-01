@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetVm2Clone;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetVm2Cpu;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetVm2Rng;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetVm2Timeouts;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetVm2Vga;
 import java.lang.Boolean;
@@ -113,6 +114,21 @@ public final class GetVm2PlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * The RNG (Random Number Generator) configuration.
+     * 
+     */
+    @Import(name="rng")
+    private @Nullable GetVm2Rng rng;
+
+    /**
+     * @return The RNG (Random Number Generator) configuration.
+     * 
+     */
+    public Optional<GetVm2Rng> rng() {
+        return Optional.ofNullable(this.rng);
+    }
+
+    /**
      * The tags assigned to the VM.
      * 
      */
@@ -173,6 +189,7 @@ public final class GetVm2PlainArgs extends com.pulumi.resources.InvokeArgs {
         this.id = $.id;
         this.name = $.name;
         this.nodeName = $.nodeName;
+        this.rng = $.rng;
         this.tags = $.tags;
         this.template = $.template;
         this.timeouts = $.timeouts;
@@ -260,6 +277,17 @@ public final class GetVm2PlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder nodeName(String nodeName) {
             $.nodeName = nodeName;
+            return this;
+        }
+
+        /**
+         * @param rng The RNG (Random Number Generator) configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rng(@Nullable GetVm2Rng rng) {
+            $.rng = rng;
             return this;
         }
 
