@@ -216,6 +216,8 @@ func Provider() tfbridge.ProviderInfo {
 				Tok:       tfbridge.MakeResource(mainPkg, "index", "AcmeDnsPlugin"),
 				ComputeID: tfbridge.DelegateIDField("plugin", "proxmoxve", "https://github.com/muhlba91/pulumi-proxmoxve"),
 			},
+			// Metrics
+			"proxmox_virtual_environment_metrics_server": {Tok: tfbridge.MakeResource(mainPkg, "Metrics", "MetricsServer")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Cluster

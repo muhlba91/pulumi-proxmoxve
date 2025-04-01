@@ -38,6 +38,7 @@
         "dns.ts",
         "download/file.ts",
         "download/index.ts",
+        "getContainer.ts",
         "getNode.ts",
         "getVm2.ts",
         "ha/getHAGroup.ts",
@@ -56,6 +57,9 @@
         "hardware/mapping/usb.ts",
         "hosts.ts",
         "index.ts",
+        "metrics/getServer.ts",
+        "metrics/index.ts",
+        "metrics/metricsServer.ts",
         "network/firewall.ts",
         "network/firewallAlias.ts",
         "network/firewallIPSet.ts",
@@ -97,7 +101,6 @@
         "vm/getVirtualMachines.ts",
         "vm/index.ts",
         "vm/virtualMachine.ts",
-        "vm/virtualMachine2.ts",
-        "vm2.ts"
+        "vm/virtualMachine2.ts"
     ]
 }

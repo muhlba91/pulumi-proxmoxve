@@ -19,6 +19,7 @@ import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineMemoryArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineNetworkDeviceArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineNumaArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineOperatingSystemArgs;
+import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineRngArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineSerialDeviceArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineSmbiosArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineStartupArgs;
@@ -117,14 +118,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The CDROM configuration.
+     * The CD-ROM configuration.
      * 
      */
     @Import(name="cdrom")
     private @Nullable Output<VirtualMachineCdromArgs> cdrom;
 
     /**
-     * @return The CDROM configuration.
+     * @return The CD-ROM configuration.
      * 
      */
     public Optional<Output<VirtualMachineCdromArgs>> cdrom() {
@@ -472,18 +473,48 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Reboot the VM after initial creation. (defaults to `false`)
+     * Reboot the VM after initial creation (defaults to `false`).
      * 
      */
     @Import(name="reboot")
     private @Nullable Output<Boolean> reboot;
 
     /**
-     * @return Reboot the VM after initial creation. (defaults to `false`)
+     * @return Reboot the VM after initial creation (defaults to `false`).
      * 
      */
     public Optional<Output<Boolean>> reboot() {
         return Optional.ofNullable(this.reboot);
+    }
+
+    /**
+     * Reboot the VM after update if needed (defaults to `true`).
+     * 
+     */
+    @Import(name="rebootAfterUpdate")
+    private @Nullable Output<Boolean> rebootAfterUpdate;
+
+    /**
+     * @return Reboot the VM after update if needed (defaults to `true`).
+     * 
+     */
+    public Optional<Output<Boolean>> rebootAfterUpdate() {
+        return Optional.ofNullable(this.rebootAfterUpdate);
+    }
+
+    /**
+     * The random number generator configuration. Can only be set by `root{@literal @}pam.`
+     * 
+     */
+    @Import(name="rngs")
+    private @Nullable Output<List<VirtualMachineRngArgs>> rngs;
+
+    /**
+     * @return The random number generator configuration. Can only be set by `root{@literal @}pam.`
+     * 
+     */
+    public Optional<Output<List<VirtualMachineRngArgs>>> rngs() {
+        return Optional.ofNullable(this.rngs);
     }
 
     /**
@@ -884,6 +915,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         this.poolId = $.poolId;
         this.protection = $.protection;
         this.reboot = $.reboot;
+        this.rebootAfterUpdate = $.rebootAfterUpdate;
+        this.rngs = $.rngs;
         this.scsiHardware = $.scsiHardware;
         this.serialDevices = $.serialDevices;
         this.smbios = $.smbios;
@@ -1045,7 +1078,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param cdrom The CDROM configuration.
+         * @param cdrom The CD-ROM configuration.
          * 
          * @return builder
          * 
@@ -1056,7 +1089,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param cdrom The CDROM configuration.
+         * @param cdrom The CD-ROM configuration.
          * 
          * @return builder
          * 
@@ -1589,7 +1622,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param reboot Reboot the VM after initial creation. (defaults to `false`)
+         * @param reboot Reboot the VM after initial creation (defaults to `false`).
          * 
          * @return builder
          * 
@@ -1600,13 +1633,65 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param reboot Reboot the VM after initial creation. (defaults to `false`)
+         * @param reboot Reboot the VM after initial creation (defaults to `false`).
          * 
          * @return builder
          * 
          */
         public Builder reboot(Boolean reboot) {
             return reboot(Output.of(reboot));
+        }
+
+        /**
+         * @param rebootAfterUpdate Reboot the VM after update if needed (defaults to `true`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rebootAfterUpdate(@Nullable Output<Boolean> rebootAfterUpdate) {
+            $.rebootAfterUpdate = rebootAfterUpdate;
+            return this;
+        }
+
+        /**
+         * @param rebootAfterUpdate Reboot the VM after update if needed (defaults to `true`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rebootAfterUpdate(Boolean rebootAfterUpdate) {
+            return rebootAfterUpdate(Output.of(rebootAfterUpdate));
+        }
+
+        /**
+         * @param rngs The random number generator configuration. Can only be set by `root{@literal @}pam.`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rngs(@Nullable Output<List<VirtualMachineRngArgs>> rngs) {
+            $.rngs = rngs;
+            return this;
+        }
+
+        /**
+         * @param rngs The random number generator configuration. Can only be set by `root{@literal @}pam.`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rngs(List<VirtualMachineRngArgs> rngs) {
+            return rngs(Output.of(rngs));
+        }
+
+        /**
+         * @param rngs The random number generator configuration. Can only be set by `root{@literal @}pam.`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rngs(VirtualMachineRngArgs... rngs) {
+            return rngs(List.of(rngs));
         }
 
         /**

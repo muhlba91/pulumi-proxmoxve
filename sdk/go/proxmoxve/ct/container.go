@@ -67,8 +67,8 @@ type Container struct {
 	// Defines startup and shutdown behavior of the container.
 	Startup ContainerStartupPtrOutput `pulumi:"startup"`
 	// A list of tags the container tags. This is only meta
-	// information (defaults to `[]`). Note: Proxmox always sorts the container tags.
-	// If the list in template is not sorted, then Proxmox will always report a
+	// information (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.
+	// If tag contains capital letters, then Proxmox will always report a
 	// difference on the resource. You may use the `ignoreChanges` lifecycle
 	// meta-argument to ignore changes to this attribute.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
@@ -167,8 +167,8 @@ type containerState struct {
 	// Defines startup and shutdown behavior of the container.
 	Startup *ContainerStartup `pulumi:"startup"`
 	// A list of tags the container tags. This is only meta
-	// information (defaults to `[]`). Note: Proxmox always sorts the container tags.
-	// If the list in template is not sorted, then Proxmox will always report a
+	// information (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.
+	// If tag contains capital letters, then Proxmox will always report a
 	// difference on the resource. You may use the `ignoreChanges` lifecycle
 	// meta-argument to ignore changes to this attribute.
 	Tags []string `pulumi:"tags"`
@@ -235,8 +235,8 @@ type ContainerState struct {
 	// Defines startup and shutdown behavior of the container.
 	Startup ContainerStartupPtrInput
 	// A list of tags the container tags. This is only meta
-	// information (defaults to `[]`). Note: Proxmox always sorts the container tags.
-	// If the list in template is not sorted, then Proxmox will always report a
+	// information (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.
+	// If tag contains capital letters, then Proxmox will always report a
 	// difference on the resource. You may use the `ignoreChanges` lifecycle
 	// meta-argument to ignore changes to this attribute.
 	Tags pulumi.StringArrayInput
@@ -307,8 +307,8 @@ type containerArgs struct {
 	// Defines startup and shutdown behavior of the container.
 	Startup *ContainerStartup `pulumi:"startup"`
 	// A list of tags the container tags. This is only meta
-	// information (defaults to `[]`). Note: Proxmox always sorts the container tags.
-	// If the list in template is not sorted, then Proxmox will always report a
+	// information (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.
+	// If tag contains capital letters, then Proxmox will always report a
 	// difference on the resource. You may use the `ignoreChanges` lifecycle
 	// meta-argument to ignore changes to this attribute.
 	Tags []string `pulumi:"tags"`
@@ -376,8 +376,8 @@ type ContainerArgs struct {
 	// Defines startup and shutdown behavior of the container.
 	Startup ContainerStartupPtrInput
 	// A list of tags the container tags. This is only meta
-	// information (defaults to `[]`). Note: Proxmox always sorts the container tags.
-	// If the list in template is not sorted, then Proxmox will always report a
+	// information (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.
+	// If tag contains capital letters, then Proxmox will always report a
 	// difference on the resource. You may use the `ignoreChanges` lifecycle
 	// meta-argument to ignore changes to this attribute.
 	Tags pulumi.StringArrayInput
@@ -587,8 +587,8 @@ func (o ContainerOutput) Startup() ContainerStartupPtrOutput {
 }
 
 // A list of tags the container tags. This is only meta
-// information (defaults to `[]`). Note: Proxmox always sorts the container tags.
-// If the list in template is not sorted, then Proxmox will always report a
+// information (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.
+// If tag contains capital letters, then Proxmox will always report a
 // difference on the resource. You may use the `ignoreChanges` lifecycle
 // meta-argument to ignore changes to this attribute.
 func (o ContainerOutput) Tags() pulumi.StringArrayOutput {

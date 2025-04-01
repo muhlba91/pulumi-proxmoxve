@@ -317,8 +317,8 @@ public class Container extends com.pulumi.resources.CustomResource {
     }
     /**
      * A list of tags the container tags. This is only meta
-     * information (defaults to `[]`). Note: Proxmox always sorts the container tags.
-     * If the list in template is not sorted, then Proxmox will always report a
+     * information (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.
+     * If tag contains capital letters, then Proxmox will always report a
      * difference on the resource. You may use the `ignore_changes` lifecycle
      * meta-argument to ignore changes to this attribute.
      * 
@@ -328,8 +328,8 @@ public class Container extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A list of tags the container tags. This is only meta
-     * information (defaults to `[]`). Note: Proxmox always sorts the container tags.
-     * If the list in template is not sorted, then Proxmox will always report a
+     * information (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.
+     * If tag contains capital letters, then Proxmox will always report a
      * difference on the resource. You may use the `ignore_changes` lifecycle
      * meta-argument to ignore changes to this attribute.
      * 

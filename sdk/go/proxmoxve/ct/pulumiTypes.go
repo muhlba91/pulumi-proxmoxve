@@ -687,7 +687,8 @@ type ContainerDisk struct {
 	// disk in (defaults to `local`).
 	DatastoreId *string `pulumi:"datastoreId"`
 	// The size of the root filesystem in gigabytes (defaults
-	// to `4`). Requires `datastoreId` to be set.
+	// to `4`). When set to 0 a directory or zfs/btrfs subvolume will be created.
+	// Requires `datastoreId` to be set.
 	Size *int `pulumi:"size"`
 }
 
@@ -707,7 +708,8 @@ type ContainerDiskArgs struct {
 	// disk in (defaults to `local`).
 	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
 	// The size of the root filesystem in gigabytes (defaults
-	// to `4`). Requires `datastoreId` to be set.
+	// to `4`). When set to 0 a directory or zfs/btrfs subvolume will be created.
+	// Requires `datastoreId` to be set.
 	Size pulumi.IntPtrInput `pulumi:"size"`
 }
 
@@ -795,7 +797,8 @@ func (o ContainerDiskOutput) DatastoreId() pulumi.StringPtrOutput {
 }
 
 // The size of the root filesystem in gigabytes (defaults
-// to `4`). Requires `datastoreId` to be set.
+// to `4`). When set to 0 a directory or zfs/btrfs subvolume will be created.
+// Requires `datastoreId` to be set.
 func (o ContainerDiskOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
@@ -836,7 +839,8 @@ func (o ContainerDiskPtrOutput) DatastoreId() pulumi.StringPtrOutput {
 }
 
 // The size of the root filesystem in gigabytes (defaults
-// to `4`). Requires `datastoreId` to be set.
+// to `4`). When set to 0 a directory or zfs/btrfs subvolume will be created.
+// Requires `datastoreId` to be set.
 func (o ContainerDiskPtrOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ContainerDisk) *int {
 		if v == nil {

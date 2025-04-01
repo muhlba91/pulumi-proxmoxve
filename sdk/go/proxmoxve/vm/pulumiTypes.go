@@ -574,6 +574,181 @@ func (o VirtualMachine2CpuPtrOutput) Units() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type VirtualMachine2Rng struct {
+	// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+	MaxBytes *int `pulumi:"maxBytes"`
+	// Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+	Period *int `pulumi:"period"`
+	// The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+	Source *string `pulumi:"source"`
+}
+
+// VirtualMachine2RngInput is an input type that accepts VirtualMachine2RngArgs and VirtualMachine2RngOutput values.
+// You can construct a concrete instance of `VirtualMachine2RngInput` via:
+//
+//	VirtualMachine2RngArgs{...}
+type VirtualMachine2RngInput interface {
+	pulumi.Input
+
+	ToVirtualMachine2RngOutput() VirtualMachine2RngOutput
+	ToVirtualMachine2RngOutputWithContext(context.Context) VirtualMachine2RngOutput
+}
+
+type VirtualMachine2RngArgs struct {
+	// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+	MaxBytes pulumi.IntPtrInput `pulumi:"maxBytes"`
+	// Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+	Period pulumi.IntPtrInput `pulumi:"period"`
+	// The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+	Source pulumi.StringPtrInput `pulumi:"source"`
+}
+
+func (VirtualMachine2RngArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachine2Rng)(nil)).Elem()
+}
+
+func (i VirtualMachine2RngArgs) ToVirtualMachine2RngOutput() VirtualMachine2RngOutput {
+	return i.ToVirtualMachine2RngOutputWithContext(context.Background())
+}
+
+func (i VirtualMachine2RngArgs) ToVirtualMachine2RngOutputWithContext(ctx context.Context) VirtualMachine2RngOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachine2RngOutput)
+}
+
+func (i VirtualMachine2RngArgs) ToVirtualMachine2RngPtrOutput() VirtualMachine2RngPtrOutput {
+	return i.ToVirtualMachine2RngPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachine2RngArgs) ToVirtualMachine2RngPtrOutputWithContext(ctx context.Context) VirtualMachine2RngPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachine2RngOutput).ToVirtualMachine2RngPtrOutputWithContext(ctx)
+}
+
+// VirtualMachine2RngPtrInput is an input type that accepts VirtualMachine2RngArgs, VirtualMachine2RngPtr and VirtualMachine2RngPtrOutput values.
+// You can construct a concrete instance of `VirtualMachine2RngPtrInput` via:
+//
+//	        VirtualMachine2RngArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachine2RngPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachine2RngPtrOutput() VirtualMachine2RngPtrOutput
+	ToVirtualMachine2RngPtrOutputWithContext(context.Context) VirtualMachine2RngPtrOutput
+}
+
+type virtualMachine2RngPtrType VirtualMachine2RngArgs
+
+func VirtualMachine2RngPtr(v *VirtualMachine2RngArgs) VirtualMachine2RngPtrInput {
+	return (*virtualMachine2RngPtrType)(v)
+}
+
+func (*virtualMachine2RngPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachine2Rng)(nil)).Elem()
+}
+
+func (i *virtualMachine2RngPtrType) ToVirtualMachine2RngPtrOutput() VirtualMachine2RngPtrOutput {
+	return i.ToVirtualMachine2RngPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachine2RngPtrType) ToVirtualMachine2RngPtrOutputWithContext(ctx context.Context) VirtualMachine2RngPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachine2RngPtrOutput)
+}
+
+type VirtualMachine2RngOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachine2RngOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachine2Rng)(nil)).Elem()
+}
+
+func (o VirtualMachine2RngOutput) ToVirtualMachine2RngOutput() VirtualMachine2RngOutput {
+	return o
+}
+
+func (o VirtualMachine2RngOutput) ToVirtualMachine2RngOutputWithContext(ctx context.Context) VirtualMachine2RngOutput {
+	return o
+}
+
+func (o VirtualMachine2RngOutput) ToVirtualMachine2RngPtrOutput() VirtualMachine2RngPtrOutput {
+	return o.ToVirtualMachine2RngPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachine2RngOutput) ToVirtualMachine2RngPtrOutputWithContext(ctx context.Context) VirtualMachine2RngPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachine2Rng) *VirtualMachine2Rng {
+		return &v
+	}).(VirtualMachine2RngPtrOutput)
+}
+
+// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+func (o VirtualMachine2RngOutput) MaxBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachine2Rng) *int { return v.MaxBytes }).(pulumi.IntPtrOutput)
+}
+
+// Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+func (o VirtualMachine2RngOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachine2Rng) *int { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+func (o VirtualMachine2RngOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachine2Rng) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachine2RngPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachine2RngPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachine2Rng)(nil)).Elem()
+}
+
+func (o VirtualMachine2RngPtrOutput) ToVirtualMachine2RngPtrOutput() VirtualMachine2RngPtrOutput {
+	return o
+}
+
+func (o VirtualMachine2RngPtrOutput) ToVirtualMachine2RngPtrOutputWithContext(ctx context.Context) VirtualMachine2RngPtrOutput {
+	return o
+}
+
+func (o VirtualMachine2RngPtrOutput) Elem() VirtualMachine2RngOutput {
+	return o.ApplyT(func(v *VirtualMachine2Rng) VirtualMachine2Rng {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachine2Rng
+		return ret
+	}).(VirtualMachine2RngOutput)
+}
+
+// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+func (o VirtualMachine2RngPtrOutput) MaxBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine2Rng) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxBytes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+func (o VirtualMachine2RngPtrOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine2Rng) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Period
+	}).(pulumi.IntPtrOutput)
+}
+
+// The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+func (o VirtualMachine2RngPtrOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine2Rng) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Source
+	}).(pulumi.StringPtrOutput)
+}
+
 type VirtualMachine2Timeouts struct {
 	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
 	Create *string `pulumi:"create"`
@@ -1341,13 +1516,16 @@ func (o VirtualMachineAudioDevicePtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type VirtualMachineCdrom struct {
-	// Whether to enable the CDROM drive (defaults
-	// to `false`).
+	// Whether to enable the CD-ROM drive (defaults
+	// to `false`). *Deprecated*. The attribute will be removed in the next version of the provider.
+	// Set `fileId` to `none` to leave the CD-ROM drive empty.
+	//
+	// Deprecated: Remove this attribute's configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `fileId` to `none` to leave the CDROM drive empty.
 	Enabled *bool `pulumi:"enabled"`
 	// A file ID for an ISO file (defaults to `cdrom` as
-	// in the physical drive). Use `none` to leave the CDROM drive empty.
+	// in the physical drive). Use `none` to leave the CD-ROM drive empty.
 	FileId *string `pulumi:"fileId"`
-	// A hardware interface to connect CDROM drive to,
+	// A hardware interface to connect CD-ROM drive to,
 	// must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
 	// supports `ide0` and `ide2`.
 	Interface *string `pulumi:"interface"`
@@ -1365,13 +1543,16 @@ type VirtualMachineCdromInput interface {
 }
 
 type VirtualMachineCdromArgs struct {
-	// Whether to enable the CDROM drive (defaults
-	// to `false`).
+	// Whether to enable the CD-ROM drive (defaults
+	// to `false`). *Deprecated*. The attribute will be removed in the next version of the provider.
+	// Set `fileId` to `none` to leave the CD-ROM drive empty.
+	//
+	// Deprecated: Remove this attribute's configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `fileId` to `none` to leave the CDROM drive empty.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// A file ID for an ISO file (defaults to `cdrom` as
-	// in the physical drive). Use `none` to leave the CDROM drive empty.
+	// in the physical drive). Use `none` to leave the CD-ROM drive empty.
 	FileId pulumi.StringPtrInput `pulumi:"fileId"`
-	// A hardware interface to connect CDROM drive to,
+	// A hardware interface to connect CD-ROM drive to,
 	// must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
 	// supports `ide0` and `ide2`.
 	Interface pulumi.StringPtrInput `pulumi:"interface"`
@@ -1454,19 +1635,22 @@ func (o VirtualMachineCdromOutput) ToVirtualMachineCdromPtrOutputWithContext(ctx
 	}).(VirtualMachineCdromPtrOutput)
 }
 
-// Whether to enable the CDROM drive (defaults
-// to `false`).
+// Whether to enable the CD-ROM drive (defaults
+// to `false`). *Deprecated*. The attribute will be removed in the next version of the provider.
+// Set `fileId` to `none` to leave the CD-ROM drive empty.
+//
+// Deprecated: Remove this attribute's configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `fileId` to `none` to leave the CDROM drive empty.
 func (o VirtualMachineCdromOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCdrom) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
 // A file ID for an ISO file (defaults to `cdrom` as
-// in the physical drive). Use `none` to leave the CDROM drive empty.
+// in the physical drive). Use `none` to leave the CD-ROM drive empty.
 func (o VirtualMachineCdromOutput) FileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCdrom) *string { return v.FileId }).(pulumi.StringPtrOutput)
 }
 
-// A hardware interface to connect CDROM drive to,
+// A hardware interface to connect CD-ROM drive to,
 // must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
 // supports `ide0` and `ide2`.
 func (o VirtualMachineCdromOutput) Interface() pulumi.StringPtrOutput {
@@ -1497,8 +1681,11 @@ func (o VirtualMachineCdromPtrOutput) Elem() VirtualMachineCdromOutput {
 	}).(VirtualMachineCdromOutput)
 }
 
-// Whether to enable the CDROM drive (defaults
-// to `false`).
+// Whether to enable the CD-ROM drive (defaults
+// to `false`). *Deprecated*. The attribute will be removed in the next version of the provider.
+// Set `fileId` to `none` to leave the CD-ROM drive empty.
+//
+// Deprecated: Remove this attribute's configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `fileId` to `none` to leave the CDROM drive empty.
 func (o VirtualMachineCdromPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCdrom) *bool {
 		if v == nil {
@@ -1509,7 +1696,7 @@ func (o VirtualMachineCdromPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 // A file ID for an ISO file (defaults to `cdrom` as
-// in the physical drive). Use `none` to leave the CDROM drive empty.
+// in the physical drive). Use `none` to leave the CD-ROM drive empty.
 func (o VirtualMachineCdromPtrOutput) FileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCdrom) *string {
 		if v == nil {
@@ -1519,7 +1706,7 @@ func (o VirtualMachineCdromPtrOutput) FileId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A hardware interface to connect CDROM drive to,
+// A hardware interface to connect CD-ROM drive to,
 // must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
 // supports `ide0` and `ide2`.
 func (o VirtualMachineCdromPtrOutput) Interface() pulumi.StringPtrOutput {
@@ -2186,9 +2373,9 @@ type VirtualMachineDisk struct {
 	// underlying storage. Supported values are `on`/`ignore` (defaults
 	// to `ignore`).
 	Discard *string `pulumi:"discard"`
-	// The file format (defaults to `qcow2`).
+	// The file format.
 	FileFormat *string `pulumi:"fileFormat"`
-	// The file ID for a disk image. The ID format is
+	// The file ID for a disk image when importing a disk into VM. The ID format is
 	// `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
 	// `Download.File` resource.
 	FileId *string `pulumi:"fileId"`
@@ -2244,9 +2431,9 @@ type VirtualMachineDiskArgs struct {
 	// underlying storage. Supported values are `on`/`ignore` (defaults
 	// to `ignore`).
 	Discard pulumi.StringPtrInput `pulumi:"discard"`
-	// The file format (defaults to `qcow2`).
+	// The file format.
 	FileFormat pulumi.StringPtrInput `pulumi:"fileFormat"`
-	// The file ID for a disk image. The ID format is
+	// The file ID for a disk image when importing a disk into VM. The ID format is
 	// `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
 	// `Download.File` resource.
 	FileId pulumi.StringPtrInput `pulumi:"fileId"`
@@ -2356,12 +2543,12 @@ func (o VirtualMachineDiskOutput) Discard() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.Discard }).(pulumi.StringPtrOutput)
 }
 
-// The file format (defaults to `qcow2`).
+// The file format.
 func (o VirtualMachineDiskOutput) FileFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.FileFormat }).(pulumi.StringPtrOutput)
 }
 
-// The file ID for a disk image. The ID format is
+// The file ID for a disk image when importing a disk into VM. The ID format is
 // `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
 // `Download.File` resource.
 func (o VirtualMachineDiskOutput) FileId() pulumi.StringPtrOutput {
@@ -5010,6 +5197,121 @@ func (o VirtualMachineOperatingSystemPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type VirtualMachineRng struct {
+	// Maximum bytes of entropy allowed to get injected into the guest every `period` milliseconds (defaults to `1024`). Prefer a lower value when using `/dev/random` as source.
+	MaxBytes *int `pulumi:"maxBytes"`
+	// Every `period` milliseconds the entropy-injection quota is reset, allowing the guest to retrieve another `maxBytes` of entropy (defaults to `1000`).
+	Period *int `pulumi:"period"`
+	// The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+	Source string `pulumi:"source"`
+}
+
+// VirtualMachineRngInput is an input type that accepts VirtualMachineRngArgs and VirtualMachineRngOutput values.
+// You can construct a concrete instance of `VirtualMachineRngInput` via:
+//
+//	VirtualMachineRngArgs{...}
+type VirtualMachineRngInput interface {
+	pulumi.Input
+
+	ToVirtualMachineRngOutput() VirtualMachineRngOutput
+	ToVirtualMachineRngOutputWithContext(context.Context) VirtualMachineRngOutput
+}
+
+type VirtualMachineRngArgs struct {
+	// Maximum bytes of entropy allowed to get injected into the guest every `period` milliseconds (defaults to `1024`). Prefer a lower value when using `/dev/random` as source.
+	MaxBytes pulumi.IntPtrInput `pulumi:"maxBytes"`
+	// Every `period` milliseconds the entropy-injection quota is reset, allowing the guest to retrieve another `maxBytes` of entropy (defaults to `1000`).
+	Period pulumi.IntPtrInput `pulumi:"period"`
+	// The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+	Source pulumi.StringInput `pulumi:"source"`
+}
+
+func (VirtualMachineRngArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineRng)(nil)).Elem()
+}
+
+func (i VirtualMachineRngArgs) ToVirtualMachineRngOutput() VirtualMachineRngOutput {
+	return i.ToVirtualMachineRngOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineRngArgs) ToVirtualMachineRngOutputWithContext(ctx context.Context) VirtualMachineRngOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineRngOutput)
+}
+
+// VirtualMachineRngArrayInput is an input type that accepts VirtualMachineRngArray and VirtualMachineRngArrayOutput values.
+// You can construct a concrete instance of `VirtualMachineRngArrayInput` via:
+//
+//	VirtualMachineRngArray{ VirtualMachineRngArgs{...} }
+type VirtualMachineRngArrayInput interface {
+	pulumi.Input
+
+	ToVirtualMachineRngArrayOutput() VirtualMachineRngArrayOutput
+	ToVirtualMachineRngArrayOutputWithContext(context.Context) VirtualMachineRngArrayOutput
+}
+
+type VirtualMachineRngArray []VirtualMachineRngInput
+
+func (VirtualMachineRngArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualMachineRng)(nil)).Elem()
+}
+
+func (i VirtualMachineRngArray) ToVirtualMachineRngArrayOutput() VirtualMachineRngArrayOutput {
+	return i.ToVirtualMachineRngArrayOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineRngArray) ToVirtualMachineRngArrayOutputWithContext(ctx context.Context) VirtualMachineRngArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineRngArrayOutput)
+}
+
+type VirtualMachineRngOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineRngOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineRng)(nil)).Elem()
+}
+
+func (o VirtualMachineRngOutput) ToVirtualMachineRngOutput() VirtualMachineRngOutput {
+	return o
+}
+
+func (o VirtualMachineRngOutput) ToVirtualMachineRngOutputWithContext(ctx context.Context) VirtualMachineRngOutput {
+	return o
+}
+
+// Maximum bytes of entropy allowed to get injected into the guest every `period` milliseconds (defaults to `1024`). Prefer a lower value when using `/dev/random` as source.
+func (o VirtualMachineRngOutput) MaxBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachineRng) *int { return v.MaxBytes }).(pulumi.IntPtrOutput)
+}
+
+// Every `period` milliseconds the entropy-injection quota is reset, allowing the guest to retrieve another `maxBytes` of entropy (defaults to `1000`).
+func (o VirtualMachineRngOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachineRng) *int { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+func (o VirtualMachineRngOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualMachineRng) string { return v.Source }).(pulumi.StringOutput)
+}
+
+type VirtualMachineRngArrayOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineRngArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualMachineRng)(nil)).Elem()
+}
+
+func (o VirtualMachineRngArrayOutput) ToVirtualMachineRngArrayOutput() VirtualMachineRngArrayOutput {
+	return o
+}
+
+func (o VirtualMachineRngArrayOutput) ToVirtualMachineRngArrayOutputWithContext(ctx context.Context) VirtualMachineRngArrayOutput {
+	return o
+}
+
+func (o VirtualMachineRngArrayOutput) Index(i pulumi.IntInput) VirtualMachineRngOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualMachineRng {
+		return vs[0].([]VirtualMachineRng)[vs[1].(int)]
+	}).(VirtualMachineRngOutput)
+}
+
 type VirtualMachineSerialDevice struct {
 	// The device (defaults to `socket`).
 	// - `/dev/*` - A host serial device.
@@ -6447,6 +6749,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachine2ClonePtrInput)(nil)).Elem(), VirtualMachine2CloneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachine2CpuInput)(nil)).Elem(), VirtualMachine2CpuArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachine2CpuPtrInput)(nil)).Elem(), VirtualMachine2CpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachine2RngInput)(nil)).Elem(), VirtualMachine2RngArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachine2RngPtrInput)(nil)).Elem(), VirtualMachine2RngArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachine2TimeoutsInput)(nil)).Elem(), VirtualMachine2TimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachine2TimeoutsPtrInput)(nil)).Elem(), VirtualMachine2TimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachine2VgaInput)(nil)).Elem(), VirtualMachine2VgaArgs{})
@@ -6489,6 +6793,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineNumaArrayInput)(nil)).Elem(), VirtualMachineNumaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineOperatingSystemInput)(nil)).Elem(), VirtualMachineOperatingSystemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineOperatingSystemPtrInput)(nil)).Elem(), VirtualMachineOperatingSystemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineRngInput)(nil)).Elem(), VirtualMachineRngArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineRngArrayInput)(nil)).Elem(), VirtualMachineRngArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineSerialDeviceInput)(nil)).Elem(), VirtualMachineSerialDeviceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineSerialDeviceArrayInput)(nil)).Elem(), VirtualMachineSerialDeviceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineSmbiosInput)(nil)).Elem(), VirtualMachineSmbiosArgs{})
@@ -6513,6 +6819,8 @@ func init() {
 	pulumi.RegisterOutputType(VirtualMachine2ClonePtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachine2CpuOutput{})
 	pulumi.RegisterOutputType(VirtualMachine2CpuPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachine2RngOutput{})
+	pulumi.RegisterOutputType(VirtualMachine2RngPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachine2TimeoutsOutput{})
 	pulumi.RegisterOutputType(VirtualMachine2TimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachine2VgaOutput{})
@@ -6555,6 +6863,8 @@ func init() {
 	pulumi.RegisterOutputType(VirtualMachineNumaArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachineOperatingSystemOutput{})
 	pulumi.RegisterOutputType(VirtualMachineOperatingSystemPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineRngOutput{})
+	pulumi.RegisterOutputType(VirtualMachineRngArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachineSerialDeviceOutput{})
 	pulumi.RegisterOutputType(VirtualMachineSerialDeviceArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachineSmbiosOutput{})

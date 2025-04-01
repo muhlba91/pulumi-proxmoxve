@@ -297,7 +297,7 @@
                 },
                 "size": {
                     "type": "integer",
-                    "description": "The size of the root filesystem in gigabytes (defaults\nto `4`). Requires `datastore_id` to be set.\n",
+                    "description": "The size of the root filesystem in gigabytes (defaults\nto `4`). When set to 0 a directory or zfs/btrfs subvolume will be created.\nRequires `datastore_id` to be set.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -1310,6 +1310,32 @@
                 }
             }
         },
+        "proxmoxve:VM/VirtualMachine2Rng:VirtualMachine2Rng": {
+            "properties": {
+                "maxBytes": {
+                    "type": "integer",
+                    "description": "Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).\n"
+                },
+                "period": {
+                    "type": "integer",
+                    "description": "Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).\n"
+                },
+                "source": {
+                    "type": "string",
+                    "description": "The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "maxBytes",
+                        "period",
+                        "source"
+                    ]
+                }
+            }
+        },
         "proxmoxve:VM/VirtualMachine2Timeouts:VirtualMachine2Timeouts": {
             "properties": {
                 "create": {
@@ -1399,15 +1425,16 @@
             "properties": {
                 "enabled": {
                     "type": "boolean",
-                    "description": "Whether to enable the CDROM drive (defaults\nto `false`).\n"
+                    "description": "Whether to enable the CD-ROM drive (defaults\nto `false`). *Deprecated*. The attribute will be removed in the next version of the provider.\nSet `file_id` to `none` to leave the CD-ROM drive empty.\n",
+                    "deprecationMessage": "Remove this attribute's configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `file_id` to `none` to leave the CDROM drive empty."
                 },
                 "fileId": {
                     "type": "string",
-                    "description": "A file ID for an ISO file (defaults to `cdrom` as\nin the physical drive). Use `none` to leave the CDROM drive empty.\n"
+                    "description": "A file ID for an ISO file (defaults to `cdrom` as\nin the physical drive). Use `none` to leave the CD-ROM drive empty.\n"
                 },
                 "interface": {
                     "type": "string",
-                    "description": "A hardware interface to connect CDROM drive to,\nmust be `ideN` (defaults to `ide3`). Note that `q35` machine type only\nsupports `ide0` and `ide2`.\n"
+                    "description": "A hardware interface to connect CD-ROM drive to,\nmust be `ideN` (defaults to `ide3`). Note that `q35` machine type only\nsupports `ide0` and `ide2`.\n"
                 }
             },
             "type": "object"
@@ -1517,11 +1544,11 @@
                 },
                 "fileFormat": {
                     "type": "string",
-                    "description": "The file format (defaults to `qcow2`).\n"
+                    "description": "The file format.\n"
                 },
                 "fileId": {
                     "type": "string",
-                    "description": "The file ID for a disk image. The ID format is\n`\u003cdatastore_id\u003e:\u003ccontent_type\u003e/\u003cfile_name\u003e`, for example `local:iso/centos8.img`. Can be also taken from\n`proxmoxve.Download.File` resource.\n",
+                    "description": "The file ID for a disk image when importing a disk into VM. The ID format is\n`\u003cdatastore_id\u003e:\u003ccontent_type\u003e/\u003cfile_name\u003e`, for example `local:iso/centos8.img`. Can be also taken from\n`proxmoxve.Download.File` resource.\n",
                     "willReplaceOnChanges": true
                 },
                 "interface": {
@@ -1949,6 +1976,35 @@
             },
             "type": "object"
         },
+        "proxmoxve:VM/VirtualMachineRng:VirtualMachineRng": {
+            "properties": {
+                "maxBytes": {
+                    "type": "integer",
+                    "description": "Maximum bytes of entropy allowed to get injected into the guest every `period` milliseconds (defaults to `1024`). Prefer a lower value when using `/dev/random` as source.\n"
+                },
+                "period": {
+                    "type": "integer",
+                    "description": "Every `period` milliseconds the entropy-injection quota is reset, allowing the guest to retrieve another `max_bytes` of entropy (defaults to `1000`).\n"
+                },
+                "source": {
+                    "type": "string",
+                    "description": "The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "source"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "maxBytes",
+                        "period",
+                        "source"
+                    ]
+                }
+            }
+        },
         "proxmoxve:VM/VirtualMachineSerialDevice:VirtualMachineSerialDevice": {
             "properties": {
                 "device": {
@@ -2313,157 +2369,6 @@
                 }
             }
         },
-        "proxmoxve:index/Vm2Cdrom:Vm2Cdrom": {
-            "properties": {
-                "fileId": {
-                    "type": "string",
-                    "description": "The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.\n"
-                }
-            },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "fileId"
-                    ]
-                }
-            }
-        },
-        "proxmoxve:index/Vm2Clone:Vm2Clone": {
-            "properties": {
-                "id": {
-                    "type": "integer",
-                    "description": "The ID of the VM to clone.\n"
-                },
-                "retries": {
-                    "type": "integer",
-                    "description": "The number of retries to perform when cloning the VM (default: 3).\n"
-                }
-            },
-            "type": "object",
-            "required": [
-                "id"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "id",
-                        "retries"
-                    ]
-                }
-            }
-        },
-        "proxmoxve:index/Vm2Cpu:Vm2Cpu": {
-            "properties": {
-                "affinity": {
-                    "type": "string",
-                    "description": "The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.\n"
-                },
-                "architecture": {
-                    "type": "string",
-                    "description": "The CPU architecture `\u003caarch64 | x86_64\u003e` (defaults to the host). Setting `affinity` is only allowed for `root@pam` authenticated user.\n"
-                },
-                "cores": {
-                    "type": "integer",
-                    "description": "The number of CPU cores per socket (defaults to `1`).\n"
-                },
-                "flags": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.\n"
-                },
-                "hotplugged": {
-                    "type": "integer",
-                    "description": "The number of hotplugged vCPUs (defaults to `0`).\n"
-                },
-                "limit": {
-                    "type": "integer",
-                    "description": "Limit of CPU usage (defaults to `0` which means no limit).\n"
-                },
-                "numa": {
-                    "type": "boolean",
-                    "description": "Enable NUMA (defaults to `false`).\n"
-                },
-                "sockets": {
-                    "type": "integer",
-                    "description": "The number of CPU sockets (defaults to `1`).\n"
-                },
-                "type": {
-                    "type": "string",
-                    "description": "Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.\n"
-                },
-                "units": {
-                    "type": "integer",
-                    "description": "CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.\n"
-                }
-            },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "affinity",
-                        "architecture",
-                        "cores",
-                        "flags",
-                        "hotplugged",
-                        "limit",
-                        "numa",
-                        "sockets",
-                        "type",
-                        "units"
-                    ]
-                }
-            }
-        },
-        "proxmoxve:index/Vm2Timeouts:Vm2Timeouts": {
-            "properties": {
-                "create": {
-                    "type": "string",
-                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
-                },
-                "delete": {
-                    "type": "string",
-                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
-                },
-                "read": {
-                    "type": "string",
-                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
-                },
-                "update": {
-                    "type": "string",
-                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
-                }
-            },
-            "type": "object"
-        },
-        "proxmoxve:index/Vm2Vga:Vm2Vga": {
-            "properties": {
-                "clipboard": {
-                    "type": "string",
-                    "description": "Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.\n"
-                },
-                "memory": {
-                    "type": "integer",
-                    "description": "The VGA memory in megabytes (4-512 MB). Has no effect with serial display.\n"
-                },
-                "type": {
-                    "type": "string",
-                    "description": "The VGA type (defaults to `std`).\n"
-                }
-            },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "clipboard",
-                        "memory",
-                        "type"
-                    ]
-                }
-            }
-        },
         "proxmoxve:index/getVm2Clone:getVm2Clone": {
             "properties": {
                 "id": {
@@ -2546,6 +2451,33 @@
                 "sockets",
                 "type",
                 "units"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "proxmoxve:index/getVm2Rng:getVm2Rng": {
+            "properties": {
+                "maxBytes": {
+                    "type": "integer",
+                    "description": "Maximum bytes of entropy allowed to get injected into the guest every period.\n"
+                },
+                "period": {
+                    "type": "integer",
+                    "description": "Period in milliseconds to limit entropy injection to the guest.\n"
+                },
+                "source": {
+                    "type": "string",
+                    "description": "The entropy source for the RNG device.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "maxBytes",
+                "period",
+                "source"
             ],
             "language": {
                 "nodejs": {
@@ -3053,7 +2985,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of tags the container tags. This is only meta\ninformation (defaults to `[]`). Note: Proxmox always sorts the container tags.\nIf the list in template is not sorted, then Proxmox will always report a\ndifference on the resource. You may use the `ignore_changes` lifecycle\nmeta-argument to ignore changes to this attribute.\n"
+                    "description": "A list of tags the container tags. This is only meta\ninformation (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.\nIf tag contains capital letters, then Proxmox will always report a\ndifference on the resource. You may use the `ignore_changes` lifecycle\nmeta-argument to ignore changes to this attribute.\n"
                 },
                 "template": {
                     "type": "boolean",
@@ -3188,7 +3120,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of tags the container tags. This is only meta\ninformation (defaults to `[]`). Note: Proxmox always sorts the container tags.\nIf the list in template is not sorted, then Proxmox will always report a\ndifference on the resource. You may use the `ignore_changes` lifecycle\nmeta-argument to ignore changes to this attribute.\n"
+                    "description": "A list of tags the container tags. This is only meta\ninformation (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.\nIf tag contains capital letters, then Proxmox will always report a\ndifference on the resource. You may use the `ignore_changes` lifecycle\nmeta-argument to ignore changes to this attribute.\n"
                 },
                 "template": {
                     "type": "boolean",
@@ -3326,7 +3258,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of tags the container tags. This is only meta\ninformation (defaults to `[]`). Note: Proxmox always sorts the container tags.\nIf the list in template is not sorted, then Proxmox will always report a\ndifference on the resource. You may use the `ignore_changes` lifecycle\nmeta-argument to ignore changes to this attribute.\n"
+                        "description": "A list of tags the container tags. This is only meta\ninformation (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.\nIf tag contains capital letters, then Proxmox will always report a\ndifference on the resource. You may use the `ignore_changes` lifecycle\nmeta-argument to ignore changes to this attribute.\n"
                     },
                     "template": {
                         "type": "boolean",
@@ -4142,6 +4074,225 @@
                     "name": {
                         "type": "string",
                         "description": "The name of this hardware mapping.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "proxmoxve:Metrics/metricsServer:MetricsServer": {
+            "description": "Manages PVE metrics server.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst influxdbServer = new proxmoxve.metrics.MetricsServer(\"influxdbServer\", {\n    port: 8089,\n    server: \"192.168.3.2\",\n    type: \"influxdb\",\n});\nconst graphiteServer = new proxmoxve.metrics.MetricsServer(\"graphiteServer\", {\n    port: 2003,\n    server: \"192.168.4.2\",\n    type: \"graphite\",\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\ninfluxdb_server = proxmoxve.metrics.MetricsServer(\"influxdbServer\",\n    port=8089,\n    server=\"192.168.3.2\",\n    type=\"influxdb\")\ngraphite_server = proxmoxve.metrics.MetricsServer(\"graphiteServer\",\n    port=2003,\n    server=\"192.168.4.2\",\n    type=\"graphite\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var influxdbServer = new ProxmoxVE.Metrics.MetricsServer(\"influxdbServer\", new()\n    {\n        Port = 8089,\n        Server = \"192.168.3.2\",\n        Type = \"influxdb\",\n    });\n\n    var graphiteServer = new ProxmoxVE.Metrics.MetricsServer(\"graphiteServer\", new()\n    {\n        Port = 2003,\n        Server = \"192.168.4.2\",\n        Type = \"graphite\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/metrics\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := metrics.NewMetricsServer(ctx, \"influxdbServer\", \u0026metrics.MetricsServerArgs{\n\t\t\tPort:   pulumi.Int(8089),\n\t\t\tServer: pulumi.String(\"192.168.3.2\"),\n\t\t\tType:   pulumi.String(\"influxdb\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = metrics.NewMetricsServer(ctx, \"graphiteServer\", \u0026metrics.MetricsServerArgs{\n\t\t\tPort:   pulumi.Int(2003),\n\t\t\tServer: pulumi.String(\"192.168.4.2\"),\n\t\t\tType:   pulumi.String(\"graphite\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Metrics.MetricsServer;\nimport com.pulumi.proxmoxve.Metrics.MetricsServerArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var influxdbServer = new MetricsServer(\"influxdbServer\", MetricsServerArgs.builder()\n            .port(8089)\n            .server(\"192.168.3.2\")\n            .type(\"influxdb\")\n            .build());\n\n        var graphiteServer = new MetricsServer(\"graphiteServer\", MetricsServerArgs.builder()\n            .port(2003)\n            .server(\"192.168.4.2\")\n            .type(\"graphite\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  influxdbServer:\n    type: proxmoxve:Metrics:MetricsServer\n    properties:\n      port: 8089\n      server: 192.168.3.2\n      type: influxdb\n  graphiteServer:\n    type: proxmoxve:Metrics:MetricsServer\n    properties:\n      port: 2003\n      server: 192.168.4.2\n      type: graphite\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n#!/usr/bin/env sh\n\n```sh\n$ pulumi import proxmoxve:Metrics/metricsServer:MetricsServer example example\n```\n\n",
+            "properties": {
+                "disable": {
+                    "type": "boolean",
+                    "description": "Set this to `true` to disable this metric server.\n"
+                },
+                "graphitePath": {
+                    "type": "string",
+                    "description": "Root graphite path (ex: `proxmox.mycluster.mykey`).\n"
+                },
+                "graphiteProto": {
+                    "type": "string",
+                    "description": "Protocol to send graphite data. Choice is between `udp` | `tcp`. If not set, PVE default is `udp`.\n"
+                },
+                "influxApiPathPrefix": {
+                    "type": "string",
+                    "description": "An API path prefix inserted between `\u003chost\u003e:\u003cport\u003e/` and `/api2/`. Can be useful if the InfluxDB service runs behind a reverse proxy.\n"
+                },
+                "influxBucket": {
+                    "type": "string",
+                    "description": "The InfluxDB bucket/db. Only necessary when using the http v2 api.\n"
+                },
+                "influxDbProto": {
+                    "type": "string",
+                    "description": "Protocol for InfluxDB. Choice is between `udp` | `http` | `https`. If not set, PVE default is `udp`.\n"
+                },
+                "influxMaxBodySize": {
+                    "type": "integer",
+                    "description": "InfluxDB max-body-size in bytes. Requests are batched up to this size. If not set, PVE default is `25000000`.\n"
+                },
+                "influxOrganization": {
+                    "type": "string",
+                    "description": "The InfluxDB organization. Only necessary when using the http v2 api. Has no meaning when using v2 compatibility api.\n"
+                },
+                "influxToken": {
+                    "type": "string",
+                    "description": "The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.\n",
+                    "secret": true
+                },
+                "influxVerify": {
+                    "type": "boolean",
+                    "description": "Set to `false` to disable certificate verification for https endpoints.\n"
+                },
+                "mtu": {
+                    "type": "integer",
+                    "description": "MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique name that will be ID of this metric server in PVE.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "Server network port.\n"
+                },
+                "server": {
+                    "type": "string",
+                    "description": "Server dns name or IP address.\n"
+                },
+                "timeout": {
+                    "type": "integer",
+                    "description": "TCP socket timeout in seconds. If not set, PVE default is `1`.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Plugin type. Choice is between `graphite` | `influxdb`.\n"
+                }
+            },
+            "required": [
+                "name",
+                "port",
+                "server",
+                "type"
+            ],
+            "inputProperties": {
+                "disable": {
+                    "type": "boolean",
+                    "description": "Set this to `true` to disable this metric server.\n"
+                },
+                "graphitePath": {
+                    "type": "string",
+                    "description": "Root graphite path (ex: `proxmox.mycluster.mykey`).\n"
+                },
+                "graphiteProto": {
+                    "type": "string",
+                    "description": "Protocol to send graphite data. Choice is between `udp` | `tcp`. If not set, PVE default is `udp`.\n"
+                },
+                "influxApiPathPrefix": {
+                    "type": "string",
+                    "description": "An API path prefix inserted between `\u003chost\u003e:\u003cport\u003e/` and `/api2/`. Can be useful if the InfluxDB service runs behind a reverse proxy.\n"
+                },
+                "influxBucket": {
+                    "type": "string",
+                    "description": "The InfluxDB bucket/db. Only necessary when using the http v2 api.\n"
+                },
+                "influxDbProto": {
+                    "type": "string",
+                    "description": "Protocol for InfluxDB. Choice is between `udp` | `http` | `https`. If not set, PVE default is `udp`.\n"
+                },
+                "influxMaxBodySize": {
+                    "type": "integer",
+                    "description": "InfluxDB max-body-size in bytes. Requests are batched up to this size. If not set, PVE default is `25000000`.\n"
+                },
+                "influxOrganization": {
+                    "type": "string",
+                    "description": "The InfluxDB organization. Only necessary when using the http v2 api. Has no meaning when using v2 compatibility api.\n"
+                },
+                "influxToken": {
+                    "type": "string",
+                    "description": "The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.\n",
+                    "secret": true
+                },
+                "influxVerify": {
+                    "type": "boolean",
+                    "description": "Set to `false` to disable certificate verification for https endpoints.\n"
+                },
+                "mtu": {
+                    "type": "integer",
+                    "description": "MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique name that will be ID of this metric server in PVE.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "Server network port.\n"
+                },
+                "server": {
+                    "type": "string",
+                    "description": "Server dns name or IP address.\n"
+                },
+                "timeout": {
+                    "type": "integer",
+                    "description": "TCP socket timeout in seconds. If not set, PVE default is `1`.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Plugin type. Choice is between `graphite` | `influxdb`.\n"
+                }
+            },
+            "requiredInputs": [
+                "port",
+                "server",
+                "type"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering MetricsServer resources.\n",
+                "properties": {
+                    "disable": {
+                        "type": "boolean",
+                        "description": "Set this to `true` to disable this metric server.\n"
+                    },
+                    "graphitePath": {
+                        "type": "string",
+                        "description": "Root graphite path (ex: `proxmox.mycluster.mykey`).\n"
+                    },
+                    "graphiteProto": {
+                        "type": "string",
+                        "description": "Protocol to send graphite data. Choice is between `udp` | `tcp`. If not set, PVE default is `udp`.\n"
+                    },
+                    "influxApiPathPrefix": {
+                        "type": "string",
+                        "description": "An API path prefix inserted between `\u003chost\u003e:\u003cport\u003e/` and `/api2/`. Can be useful if the InfluxDB service runs behind a reverse proxy.\n"
+                    },
+                    "influxBucket": {
+                        "type": "string",
+                        "description": "The InfluxDB bucket/db. Only necessary when using the http v2 api.\n"
+                    },
+                    "influxDbProto": {
+                        "type": "string",
+                        "description": "Protocol for InfluxDB. Choice is between `udp` | `http` | `https`. If not set, PVE default is `udp`.\n"
+                    },
+                    "influxMaxBodySize": {
+                        "type": "integer",
+                        "description": "InfluxDB max-body-size in bytes. Requests are batched up to this size. If not set, PVE default is `25000000`.\n"
+                    },
+                    "influxOrganization": {
+                        "type": "string",
+                        "description": "The InfluxDB organization. Only necessary when using the http v2 api. Has no meaning when using v2 compatibility api.\n"
+                    },
+                    "influxToken": {
+                        "type": "string",
+                        "description": "The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.\n",
+                        "secret": true
+                    },
+                    "influxVerify": {
+                        "type": "boolean",
+                        "description": "Set to `false` to disable certificate verification for https endpoints.\n"
+                    },
+                    "mtu": {
+                        "type": "integer",
+                        "description": "MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Unique name that will be ID of this metric server in PVE.\n"
+                    },
+                    "port": {
+                        "type": "integer",
+                        "description": "Server network port.\n"
+                    },
+                    "server": {
+                        "type": "string",
+                        "description": "Server dns name or IP address.\n"
+                    },
+                    "timeout": {
+                        "type": "integer",
+                        "description": "TCP socket timeout in seconds. If not set, PVE default is `1`.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Plugin type. Choice is between `graphite` | `influxdb`.\n"
                     }
                 },
                 "type": "object"
@@ -5457,7 +5608,7 @@
             }
         },
         "proxmoxve:Storage/file:File": {
-            "description": "Use this resource to upload files to a Proxmox VE node. The file can be a backup, an ISO image, a snippet, or a container template depending on the `content_type` attribute.\n\n## Example Usage\n\n### Backups (`dump`)\n\n\u003e The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.\n\n\u003e The provider currently does not support restoring backups. You can use the Proxmox VE web interface or the `qmrestore` / `pct restore` command to restore VM / Container from a backup.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst backup = new proxmoxve.storage.File(\"backup\", {\n    contentType: \"dump\",\n    datastoreId: \"local\",\n    nodeName: \"pve\",\n    sourceFile: {\n        path: \"vzdump-lxc-100-2023_11_08-23_10_05.tar\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nbackup = proxmoxve.storage.File(\"backup\",\n    content_type=\"dump\",\n    datastore_id=\"local\",\n    node_name=\"pve\",\n    source_file={\n        \"path\": \"vzdump-lxc-100-2023_11_08-23_10_05.tar\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var backup = new ProxmoxVE.Storage.File(\"backup\", new()\n    {\n        ContentType = \"dump\",\n        DatastoreId = \"local\",\n        NodeName = \"pve\",\n        SourceFile = new ProxmoxVE.Storage.Inputs.FileSourceFileArgs\n        {\n            Path = \"vzdump-lxc-100-2023_11_08-23_10_05.tar\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/storage\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := storage.NewFile(ctx, \"backup\", \u0026storage.FileArgs{\n\t\t\tContentType: pulumi.String(\"dump\"),\n\t\t\tDatastoreId: pulumi.String(\"local\"),\n\t\t\tNodeName:    pulumi.String(\"pve\"),\n\t\t\tSourceFile: \u0026storage.FileSourceFileArgs{\n\t\t\t\tPath: pulumi.String(\"vzdump-lxc-100-2023_11_08-23_10_05.tar\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Storage.File;\nimport com.pulumi.proxmoxve.Storage.FileArgs;\nimport com.pulumi.proxmoxve.Storage.inputs.FileSourceFileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var backup = new File(\"backup\", FileArgs.builder()\n            .contentType(\"dump\")\n            .datastoreId(\"local\")\n            .nodeName(\"pve\")\n            .sourceFile(FileSourceFileArgs.builder()\n                .path(\"vzdump-lxc-100-2023_11_08-23_10_05.tar\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  backup:\n    type: proxmoxve:Storage:File\n    properties:\n      contentType: dump\n      datastoreId: local\n      nodeName: pve\n      sourceFile:\n        path: vzdump-lxc-100-2023_11_08-23_10_05.tar\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Images\n\n\u003e Consider using `proxmoxve.Download.File` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst ubuntuContainerTemplate = new proxmoxve.storage.File(\"ubuntuContainerTemplate\", {\n    contentType: \"iso\",\n    datastoreId: \"local\",\n    nodeName: \"pve\",\n    sourceFile: {\n        path: \"https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nubuntu_container_template = proxmoxve.storage.File(\"ubuntuContainerTemplate\",\n    content_type=\"iso\",\n    datastore_id=\"local\",\n    node_name=\"pve\",\n    source_file={\n        \"path\": \"https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var ubuntuContainerTemplate = new ProxmoxVE.Storage.File(\"ubuntuContainerTemplate\", new()\n    {\n        ContentType = \"iso\",\n        DatastoreId = \"local\",\n        NodeName = \"pve\",\n        SourceFile = new ProxmoxVE.Storage.Inputs.FileSourceFileArgs\n        {\n            Path = \"https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/storage\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := storage.NewFile(ctx, \"ubuntuContainerTemplate\", \u0026storage.FileArgs{\n\t\t\tContentType: pulumi.String(\"iso\"),\n\t\t\tDatastoreId: pulumi.String(\"local\"),\n\t\t\tNodeName:    pulumi.String(\"pve\"),\n\t\t\tSourceFile: \u0026storage.FileSourceFileArgs{\n\t\t\t\tPath: pulumi.String(\"https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Storage.File;\nimport com.pulumi.proxmoxve.Storage.FileArgs;\nimport com.pulumi.proxmoxve.Storage.inputs.FileSourceFileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var ubuntuContainerTemplate = new File(\"ubuntuContainerTemplate\", FileArgs.builder()\n            .contentType(\"iso\")\n            .datastoreId(\"local\")\n            .nodeName(\"pve\")\n            .sourceFile(FileSourceFileArgs.builder()\n                .path(\"https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  ubuntuContainerTemplate:\n    type: proxmoxve:Storage:File\n    properties:\n      contentType: iso\n      datastoreId: local\n      nodeName: pve\n      sourceFile:\n        path: https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Container Template (`vztmpl`)\n\n\u003e Consider using `proxmoxve.Download.File` resource instead. Using this resource for container images is less efficient (requires to transfer uploaded image to node) though still supported.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst ubuntuContainerTemplate = new proxmoxve.storage.File(\"ubuntuContainerTemplate\", {\n    contentType: \"vztmpl\",\n    datastoreId: \"local\",\n    nodeName: \"first-node\",\n    sourceFile: {\n        path: \"https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nubuntu_container_template = proxmoxve.storage.File(\"ubuntuContainerTemplate\",\n    content_type=\"vztmpl\",\n    datastore_id=\"local\",\n    node_name=\"first-node\",\n    source_file={\n        \"path\": \"https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var ubuntuContainerTemplate = new ProxmoxVE.Storage.File(\"ubuntuContainerTemplate\", new()\n    {\n        ContentType = \"vztmpl\",\n        DatastoreId = \"local\",\n        NodeName = \"first-node\",\n        SourceFile = new ProxmoxVE.Storage.Inputs.FileSourceFileArgs\n        {\n            Path = \"https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/storage\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := storage.NewFile(ctx, \"ubuntuContainerTemplate\", \u0026storage.FileArgs{\n\t\t\tContentType: pulumi.String(\"vztmpl\"),\n\t\t\tDatastoreId: pulumi.String(\"local\"),\n\t\t\tNodeName:    pulumi.String(\"first-node\"),\n\t\t\tSourceFile: \u0026storage.FileSourceFileArgs{\n\t\t\t\tPath: pulumi.String(\"https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Storage.File;\nimport com.pulumi.proxmoxve.Storage.FileArgs;\nimport com.pulumi.proxmoxve.Storage.inputs.FileSourceFileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var ubuntuContainerTemplate = new File(\"ubuntuContainerTemplate\", FileArgs.builder()\n            .contentType(\"vztmpl\")\n            .datastoreId(\"local\")\n            .nodeName(\"first-node\")\n            .sourceFile(FileSourceFileArgs.builder()\n                .path(\"https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  ubuntuContainerTemplate:\n    type: proxmoxve:Storage:File\n    properties:\n      contentType: vztmpl\n      datastoreId: local\n      nodeName: first-node\n      sourceFile:\n        path: https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Important Notes\n\nThe Proxmox VE API endpoint for file uploads does not support chunked transfer\nencoding, which means that we must first store the source file as a temporary\nfile locally before uploading it.\n\nYou must ensure that you have at least `Size-in-MB * 2 + 1` MB of storage space\navailable (twice the size plus overhead because a multipart payload needs to be\ncreated as another temporary file).\n\nBy default, if the specified file already exists, the resource will\nunconditionally replace it and take ownership of the resource. On destruction,\nthe file will be deleted as if it did not exist before. If you want to prevent\nthe resource from replacing the file, set `overwrite` to `false`.\n\n## Import\n\nInstances can be imported using the `node_name`, `datastore_id`, `content_type`\n\nand the `file_name` in the following format:\n\ntext\n\nnode_name:datastore_id/content_type/file_name\n\nExample:\n\nbash\n\n```sh\n$ pulumi import proxmoxve:Storage/file:File cloud_config pve/local:snippets/example.cloud-config.yaml\n```\n\n",
+            "description": "Use this resource to upload files to a Proxmox VE node. The file can be a backup, an ISO image, a snippet, or a container template depending on the `content_type` attribute.\n\n## Example Usage\n\n### Backups (`backup`)\n\n\u003e The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.\n\n\u003e The provider currently does not support restoring backups. You can use the Proxmox VE web interface or the `qmrestore` / `pct restore` command to restore VM / Container from a backup.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst backup = new proxmoxve.storage.File(\"backup\", {\n    contentType: \"backup\",\n    datastoreId: \"local\",\n    nodeName: \"pve\",\n    sourceFile: {\n        path: \"vzdump-lxc-100-2023_11_08-23_10_05.tar.zst\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nbackup = proxmoxve.storage.File(\"backup\",\n    content_type=\"backup\",\n    datastore_id=\"local\",\n    node_name=\"pve\",\n    source_file={\n        \"path\": \"vzdump-lxc-100-2023_11_08-23_10_05.tar.zst\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var backup = new ProxmoxVE.Storage.File(\"backup\", new()\n    {\n        ContentType = \"backup\",\n        DatastoreId = \"local\",\n        NodeName = \"pve\",\n        SourceFile = new ProxmoxVE.Storage.Inputs.FileSourceFileArgs\n        {\n            Path = \"vzdump-lxc-100-2023_11_08-23_10_05.tar.zst\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/storage\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := storage.NewFile(ctx, \"backup\", \u0026storage.FileArgs{\n\t\t\tContentType: pulumi.String(\"backup\"),\n\t\t\tDatastoreId: pulumi.String(\"local\"),\n\t\t\tNodeName:    pulumi.String(\"pve\"),\n\t\t\tSourceFile: \u0026storage.FileSourceFileArgs{\n\t\t\t\tPath: pulumi.String(\"vzdump-lxc-100-2023_11_08-23_10_05.tar.zst\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Storage.File;\nimport com.pulumi.proxmoxve.Storage.FileArgs;\nimport com.pulumi.proxmoxve.Storage.inputs.FileSourceFileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var backup = new File(\"backup\", FileArgs.builder()\n            .contentType(\"backup\")\n            .datastoreId(\"local\")\n            .nodeName(\"pve\")\n            .sourceFile(FileSourceFileArgs.builder()\n                .path(\"vzdump-lxc-100-2023_11_08-23_10_05.tar.zst\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  backup:\n    type: proxmoxve:Storage:File\n    properties:\n      contentType: backup\n      datastoreId: local\n      nodeName: pve\n      sourceFile:\n        path: vzdump-lxc-100-2023_11_08-23_10_05.tar.zst\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Images\n\n\u003e Consider using `proxmoxve.Download.File` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst ubuntuContainerTemplate = new proxmoxve.storage.File(\"ubuntuContainerTemplate\", {\n    contentType: \"iso\",\n    datastoreId: \"local\",\n    nodeName: \"pve\",\n    sourceFile: {\n        path: \"https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nubuntu_container_template = proxmoxve.storage.File(\"ubuntuContainerTemplate\",\n    content_type=\"iso\",\n    datastore_id=\"local\",\n    node_name=\"pve\",\n    source_file={\n        \"path\": \"https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var ubuntuContainerTemplate = new ProxmoxVE.Storage.File(\"ubuntuContainerTemplate\", new()\n    {\n        ContentType = \"iso\",\n        DatastoreId = \"local\",\n        NodeName = \"pve\",\n        SourceFile = new ProxmoxVE.Storage.Inputs.FileSourceFileArgs\n        {\n            Path = \"https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/storage\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := storage.NewFile(ctx, \"ubuntuContainerTemplate\", \u0026storage.FileArgs{\n\t\t\tContentType: pulumi.String(\"iso\"),\n\t\t\tDatastoreId: pulumi.String(\"local\"),\n\t\t\tNodeName:    pulumi.String(\"pve\"),\n\t\t\tSourceFile: \u0026storage.FileSourceFileArgs{\n\t\t\t\tPath: pulumi.String(\"https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Storage.File;\nimport com.pulumi.proxmoxve.Storage.FileArgs;\nimport com.pulumi.proxmoxve.Storage.inputs.FileSourceFileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var ubuntuContainerTemplate = new File(\"ubuntuContainerTemplate\", FileArgs.builder()\n            .contentType(\"iso\")\n            .datastoreId(\"local\")\n            .nodeName(\"pve\")\n            .sourceFile(FileSourceFileArgs.builder()\n                .path(\"https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  ubuntuContainerTemplate:\n    type: proxmoxve:Storage:File\n    properties:\n      contentType: iso\n      datastoreId: local\n      nodeName: pve\n      sourceFile:\n        path: https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Container Template (`vztmpl`)\n\n\u003e Consider using `proxmoxve.Download.File` resource instead. Using this resource for container images is less efficient (requires to transfer uploaded image to node) though still supported.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst ubuntuContainerTemplate = new proxmoxve.storage.File(\"ubuntuContainerTemplate\", {\n    contentType: \"vztmpl\",\n    datastoreId: \"local\",\n    nodeName: \"first-node\",\n    sourceFile: {\n        path: \"https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nubuntu_container_template = proxmoxve.storage.File(\"ubuntuContainerTemplate\",\n    content_type=\"vztmpl\",\n    datastore_id=\"local\",\n    node_name=\"first-node\",\n    source_file={\n        \"path\": \"https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var ubuntuContainerTemplate = new ProxmoxVE.Storage.File(\"ubuntuContainerTemplate\", new()\n    {\n        ContentType = \"vztmpl\",\n        DatastoreId = \"local\",\n        NodeName = \"first-node\",\n        SourceFile = new ProxmoxVE.Storage.Inputs.FileSourceFileArgs\n        {\n            Path = \"https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/storage\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := storage.NewFile(ctx, \"ubuntuContainerTemplate\", \u0026storage.FileArgs{\n\t\t\tContentType: pulumi.String(\"vztmpl\"),\n\t\t\tDatastoreId: pulumi.String(\"local\"),\n\t\t\tNodeName:    pulumi.String(\"first-node\"),\n\t\t\tSourceFile: \u0026storage.FileSourceFileArgs{\n\t\t\t\tPath: pulumi.String(\"https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Storage.File;\nimport com.pulumi.proxmoxve.Storage.FileArgs;\nimport com.pulumi.proxmoxve.Storage.inputs.FileSourceFileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var ubuntuContainerTemplate = new File(\"ubuntuContainerTemplate\", FileArgs.builder()\n            .contentType(\"vztmpl\")\n            .datastoreId(\"local\")\n            .nodeName(\"first-node\")\n            .sourceFile(FileSourceFileArgs.builder()\n                .path(\"https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  ubuntuContainerTemplate:\n    type: proxmoxve:Storage:File\n    properties:\n      contentType: vztmpl\n      datastoreId: local\n      nodeName: first-node\n      sourceFile:\n        path: https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Important Notes\n\nThe Proxmox VE API endpoint for file uploads does not support chunked transfer\nencoding, which means that we must first store the source file as a temporary\nfile locally before uploading it.\n\nYou must ensure that you have at least `Size-in-MB * 2 + 1` MB of storage space\navailable (twice the size plus overhead because a multipart payload needs to be\ncreated as another temporary file).\n\nBy default, if the specified file already exists, the resource will\nunconditionally replace it and take ownership of the resource. On destruction,\nthe file will be deleted as if it did not exist before. If you want to prevent\nthe resource from replacing the file, set `overwrite` to `false`.\n\n## Import\n\nInstances can be imported using the `node_name`, `datastore_id`, `content_type`\n\nand the `file_name` in the following format:\n\ntext\n\nnode_name:datastore_id/content_type/file_name\n\nExample:\n\nbash\n\n```sh\n$ pulumi import proxmoxve:Storage/file:File cloud_config pve/local:snippets/example.cloud-config.yaml\n```\n\n",
             "properties": {
                 "contentType": {
                     "type": "string",
@@ -5748,6 +5899,10 @@
                     "type": "string",
                     "description": "The name of the node where the VM is provisioned.\n"
                 },
+                "rng": {
+                    "$ref": "#/types/proxmoxve:VM/VirtualMachine2Rng:VirtualMachine2Rng",
+                    "description": "Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.\n"
+                },
                 "stopOnDestroy": {
                     "type": "boolean",
                     "description": "Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).\n"
@@ -5776,6 +5931,7 @@
                 "cpu",
                 "name",
                 "nodeName",
+                "rng",
                 "stopOnDestroy",
                 "tags",
                 "vga"
@@ -5807,6 +5963,10 @@
                 "nodeName": {
                     "type": "string",
                     "description": "The name of the node where the VM is provisioned.\n"
+                },
+                "rng": {
+                    "$ref": "#/types/proxmoxve:VM/VirtualMachine2Rng:VirtualMachine2Rng",
+                    "description": "Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.\n"
                 },
                 "stopOnDestroy": {
                     "type": "boolean",
@@ -5864,6 +6024,10 @@
                         "type": "string",
                         "description": "The name of the node where the VM is provisioned.\n"
                     },
+                    "rng": {
+                        "$ref": "#/types/proxmoxve:VM/VirtualMachine2Rng:VirtualMachine2Rng",
+                        "description": "Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.\n"
+                    },
                     "stopOnDestroy": {
                         "type": "boolean",
                         "description": "Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).\n"
@@ -5888,12 +6052,7 @@
                     }
                 },
                 "type": "object"
-            },
-            "aliases": [
-                {
-                    "type": "proxmoxve:index/vm2:Vm2"
-                }
-            ]
+            }
         },
         "proxmoxve:VM/virtualMachine:VirtualMachine": {
             "description": "Manages a virtual machine.\n\n\u003e This resource uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.\n\n## Import\n\nInstances can be imported using the `node_name` and the `vm_id`, e.g.,\n\nbash\n\n```sh\n$ pulumi import proxmoxve:VM/virtualMachine:VirtualMachine ubuntu_vm first-node/4321\n```\n\n",
@@ -5923,7 +6082,7 @@
                 },
                 "cdrom": {
                     "$ref": "#/types/proxmoxve:VM/VirtualMachineCdrom:VirtualMachineCdrom",
-                    "description": "The CDROM configuration.\n"
+                    "description": "The CD-ROM configuration.\n"
                 },
                 "clone": {
                     "$ref": "#/types/proxmoxve:VM/VirtualMachineClone:VirtualMachineClone",
@@ -6057,7 +6216,18 @@
                 },
                 "reboot": {
                     "type": "boolean",
-                    "description": "Reboot the VM after initial creation. (defaults to `false`)\n"
+                    "description": "Reboot the VM after initial creation (defaults to `false`).\n"
+                },
+                "rebootAfterUpdate": {
+                    "type": "boolean",
+                    "description": "Reboot the VM after update if needed (defaults to `true`).\n"
+                },
+                "rngs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/proxmoxve:VM/VirtualMachineRng:VirtualMachineRng"
+                    },
+                    "description": "The random number generator configuration. Can only be set by `root@pam.`\n"
                 },
                 "scsiHardware": {
                     "type": "string",
@@ -6193,7 +6363,7 @@
                 },
                 "cdrom": {
                     "$ref": "#/types/proxmoxve:VM/VirtualMachineCdrom:VirtualMachineCdrom",
-                    "description": "The CDROM configuration.\n"
+                    "description": "The CD-ROM configuration.\n"
                 },
                 "clone": {
                     "$ref": "#/types/proxmoxve:VM/VirtualMachineClone:VirtualMachineClone",
@@ -6301,7 +6471,18 @@
                 },
                 "reboot": {
                     "type": "boolean",
-                    "description": "Reboot the VM after initial creation. (defaults to `false`)\n"
+                    "description": "Reboot the VM after initial creation (defaults to `false`).\n"
+                },
+                "rebootAfterUpdate": {
+                    "type": "boolean",
+                    "description": "Reboot the VM after update if needed (defaults to `true`).\n"
+                },
+                "rngs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/proxmoxve:VM/VirtualMachineRng:VirtualMachineRng"
+                    },
+                    "description": "The random number generator configuration. Can only be set by `root@pam.`\n"
                 },
                 "scsiHardware": {
                     "type": "string",
@@ -6435,7 +6616,7 @@
                     },
                     "cdrom": {
                         "$ref": "#/types/proxmoxve:VM/VirtualMachineCdrom:VirtualMachineCdrom",
-                        "description": "The CDROM configuration.\n"
+                        "description": "The CD-ROM configuration.\n"
                     },
                     "clone": {
                         "$ref": "#/types/proxmoxve:VM/VirtualMachineClone:VirtualMachineClone",
@@ -6570,7 +6751,18 @@
                     },
                     "reboot": {
                         "type": "boolean",
-                        "description": "Reboot the VM after initial creation. (defaults to `false`)\n"
+                        "description": "Reboot the VM after initial creation (defaults to `false`).\n"
+                    },
+                    "rebootAfterUpdate": {
+                        "type": "boolean",
+                        "description": "Reboot the VM after update if needed (defaults to `true`).\n"
+                    },
+                    "rngs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/proxmoxve:VM/VirtualMachineRng:VirtualMachineRng"
+                        },
+                        "description": "The random number generator configuration. Can only be set by `root@pam.`\n"
                     },
                     "scsiHardware": {
                         "type": "string",
@@ -7403,184 +7595,6 @@
                 },
                 "type": "object"
             }
-        },
-        "proxmoxve:index/vm2:Vm2": {
-            "description": "!\u003e **DO NOT USE**\nThis is an experimental implementation of a Proxmox VM resource using Plugin Framework.\u003cbr\u003e\u003cbr\u003eIt is a Proof of Concept, highly experimental and **will** change in future. It does not support all features of the Proxmox API for VMs and **MUST NOT** be used in production.\n\n\u003e Many attributes are marked as **optional** _and_ **computed** in the schema,\nhence you may seem added to the plan with \"(known after apply)\" status, even if they are not set in the configuration.\nThis is done to support the `clone` operation, when a VM is created from an existing VM or template,\nand the source attributes are copied to the clone.\u003cbr\u003e\u003cbr\u003e\nComputed attributes allow the provider to set those attributes without user input.\nThe attributes are also marked as optional to allow the practitioner to set (or overwrite) them if needed.\n",
-            "properties": {
-                "cdrom": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "$ref": "#/types/proxmoxve:index/Vm2Cdrom:Vm2Cdrom"
-                    },
-                    "description": "The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.\n"
-                },
-                "clone": {
-                    "$ref": "#/types/proxmoxve:index/Vm2Clone:Vm2Clone",
-                    "description": "The cloning configuration.\n"
-                },
-                "cpu": {
-                    "$ref": "#/types/proxmoxve:index/Vm2Cpu:Vm2Cpu",
-                    "description": "The CPU configuration.\n"
-                },
-                "description": {
-                    "type": "string",
-                    "description": "The description of the VM.\n"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "The name of the VM. Doesn't have to be unique.\n"
-                },
-                "nodeName": {
-                    "type": "string",
-                    "description": "The name of the node where the VM is provisioned.\n"
-                },
-                "stopOnDestroy": {
-                    "type": "boolean",
-                    "description": "Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).\n"
-                },
-                "tags": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "The tags assigned to the VM.\n"
-                },
-                "template": {
-                    "type": "boolean",
-                    "description": "Set to true to create a VM template.\n"
-                },
-                "timeouts": {
-                    "$ref": "#/types/proxmoxve:index/Vm2Timeouts:Vm2Timeouts"
-                },
-                "vga": {
-                    "$ref": "#/types/proxmoxve:index/Vm2Vga:Vm2Vga",
-                    "description": "Configure the VGA Hardware. If you want to use high resolution modes (\u003e= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.\n"
-                }
-            },
-            "required": [
-                "cdrom",
-                "cpu",
-                "name",
-                "nodeName",
-                "stopOnDestroy",
-                "tags",
-                "vga"
-            ],
-            "inputProperties": {
-                "cdrom": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "$ref": "#/types/proxmoxve:index/Vm2Cdrom:Vm2Cdrom"
-                    },
-                    "description": "The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.\n"
-                },
-                "clone": {
-                    "$ref": "#/types/proxmoxve:index/Vm2Clone:Vm2Clone",
-                    "description": "The cloning configuration.\n"
-                },
-                "cpu": {
-                    "$ref": "#/types/proxmoxve:index/Vm2Cpu:Vm2Cpu",
-                    "description": "The CPU configuration.\n"
-                },
-                "description": {
-                    "type": "string",
-                    "description": "The description of the VM.\n"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "The name of the VM. Doesn't have to be unique.\n"
-                },
-                "nodeName": {
-                    "type": "string",
-                    "description": "The name of the node where the VM is provisioned.\n"
-                },
-                "stopOnDestroy": {
-                    "type": "boolean",
-                    "description": "Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).\n"
-                },
-                "tags": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "The tags assigned to the VM.\n"
-                },
-                "template": {
-                    "type": "boolean",
-                    "description": "Set to true to create a VM template.\n"
-                },
-                "timeouts": {
-                    "$ref": "#/types/proxmoxve:index/Vm2Timeouts:Vm2Timeouts"
-                },
-                "vga": {
-                    "$ref": "#/types/proxmoxve:index/Vm2Vga:Vm2Vga",
-                    "description": "Configure the VGA Hardware. If you want to use high resolution modes (\u003e= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.\n"
-                }
-            },
-            "requiredInputs": [
-                "nodeName"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering Vm2 resources.\n",
-                "properties": {
-                    "cdrom": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "$ref": "#/types/proxmoxve:index/Vm2Cdrom:Vm2Cdrom"
-                        },
-                        "description": "The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.\n"
-                    },
-                    "clone": {
-                        "$ref": "#/types/proxmoxve:index/Vm2Clone:Vm2Clone",
-                        "description": "The cloning configuration.\n"
-                    },
-                    "cpu": {
-                        "$ref": "#/types/proxmoxve:index/Vm2Cpu:Vm2Cpu",
-                        "description": "The CPU configuration.\n"
-                    },
-                    "description": {
-                        "type": "string",
-                        "description": "The description of the VM.\n"
-                    },
-                    "name": {
-                        "type": "string",
-                        "description": "The name of the VM. Doesn't have to be unique.\n"
-                    },
-                    "nodeName": {
-                        "type": "string",
-                        "description": "The name of the node where the VM is provisioned.\n"
-                    },
-                    "stopOnDestroy": {
-                        "type": "boolean",
-                        "description": "Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).\n"
-                    },
-                    "tags": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "The tags assigned to the VM.\n"
-                    },
-                    "template": {
-                        "type": "boolean",
-                        "description": "Set to true to create a VM template.\n"
-                    },
-                    "timeouts": {
-                        "$ref": "#/types/proxmoxve:index/Vm2Timeouts:Vm2Timeouts"
-                    },
-                    "vga": {
-                        "$ref": "#/types/proxmoxve:index/Vm2Vga:Vm2Vga",
-                        "description": "Configure the VGA Hardware. If you want to use high resolution modes (\u003e= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.\n"
-                    }
-                },
-                "type": "object"
-            },
-            "aliases": [
-                {
-                    "type": "proxmoxve:index/vm2:Vm2"
-                }
-            ],
-            "deprecationMessage": "proxmoxve.index/vm2.Vm2 has been deprecated in favor of proxmoxve.vm/virtualmachine2.VirtualMachine2"
         }
     },
     "functions": {
@@ -8339,6 +8353,60 @@
                     "id",
                     "maps",
                     "name"
+                ]
+            }
+        },
+        "proxmoxve:Metrics/getServer:getServer": {
+            "description": "Retrieves information about a specific PVE metric server.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@pulumi/proxmoxve\";\n\nconst example = proxmoxve.Metrics.getServer({\n    name: \"example_influxdb\",\n});\nexport const dataProxmoxVirtualEnvironmentMetricsServer = {\n    server: example.then(example =\u003e example.server),\n    port: example.then(example =\u003e example.port),\n};\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample = proxmoxve.Metrics.get_server(name=\"example_influxdb\")\npulumi.export(\"dataProxmoxVirtualEnvironmentMetricsServer\", {\n    \"server\": example.server,\n    \"port\": example.port,\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = ProxmoxVE.Metrics.GetServer.Invoke(new()\n    {\n        Name = \"example_influxdb\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"dataProxmoxVirtualEnvironmentMetricsServer\"] = \n        {\n            { \"server\", example.Apply(getServerResult =\u003e getServerResult.Server) },\n            { \"port\", example.Apply(getServerResult =\u003e getServerResult.Port) },\n        },\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/metrics\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := metrics.GetServer(ctx, \u0026metrics.GetServerArgs{\n\t\t\tName: \"example_influxdb\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"dataProxmoxVirtualEnvironmentMetricsServer\", pulumi.Map{\n\t\t\t\"server\": example.Server,\n\t\t\t\"port\":   example.Port,\n\t\t})\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Metrics.MetricsFunctions;\nimport com.pulumi.proxmoxve.Metrics.inputs.GetServerArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = MetricsFunctions.getServer(GetServerArgs.builder()\n            .name(\"example_influxdb\")\n            .build());\n\n        ctx.export(\"dataProxmoxVirtualEnvironmentMetricsServer\", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: proxmoxve:Metrics:getServer\n      arguments:\n        name: example_influxdb\noutputs:\n  dataProxmoxVirtualEnvironmentMetricsServer:\n    server: ${example.server}\n    port: ${example.port}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getServer.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Unique name that will be ID of this metric server in PVE.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getServer.\n",
+                "properties": {
+                    "disable": {
+                        "type": "boolean",
+                        "description": "Indicates if the metric server is disabled.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of this resource.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Unique name that will be ID of this metric server in PVE.\n"
+                    },
+                    "port": {
+                        "type": "integer",
+                        "description": "Server network port.\n"
+                    },
+                    "server": {
+                        "type": "string",
+                        "description": "Server dns name or IP address.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Plugin type. Either `graphite` or `influxdb`.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "disable",
+                    "id",
+                    "name",
+                    "port",
+                    "server",
+                    "type"
                 ]
             }
         },
@@ -9191,6 +9259,77 @@
                 ]
             }
         },
+        "proxmoxve:index/getContainer:getContainer": {
+            "description": "Retrieves information about a specific Container.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@pulumi/proxmoxve\";\n\nconst testContainer = proxmoxve.getContainer({\n    nodeName: \"test\",\n    vmId: 100,\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\ntest_container = proxmoxve.get_container(node_name=\"test\",\n    vm_id=100)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testContainer = ProxmoxVE.GetContainer.Invoke(new()\n    {\n        NodeName = \"test\",\n        VmId = 100,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := proxmoxve.GetContainer(ctx, \u0026proxmoxve.GetContainerArgs{\n\t\t\tNodeName: \"test\",\n\t\t\tVmId:     100,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.ProxmoxveFunctions;\nimport com.pulumi.proxmoxve.inputs.GetContainerArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var testContainer = ProxmoxveFunctions.getContainer(GetContainerArgs.builder()\n            .nodeName(\"test\")\n            .vmId(100)\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  testContainer:\n    fn::invoke:\n      function: proxmoxve:getContainer\n      arguments:\n        nodeName: test\n        vmId: 100\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getContainer.\n",
+                "properties": {
+                    "nodeName": {
+                        "type": "string",
+                        "description": "The node name.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "Status of the container\n"
+                    },
+                    "template": {
+                        "type": "boolean",
+                        "description": "Is container a template (true) or a regular container (false)\n"
+                    },
+                    "vmId": {
+                        "type": "integer",
+                        "description": "The container identifier.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "nodeName",
+                    "vmId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getContainer.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The container name.\n"
+                    },
+                    "nodeName": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "Status of the container\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of tags of the container.\n"
+                    },
+                    "template": {
+                        "type": "boolean",
+                        "description": "Is container a template (true) or a regular container (false)\n"
+                    },
+                    "vmId": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "nodeName",
+                    "tags",
+                    "vmId",
+                    "id"
+                ]
+            }
+        },
         "proxmoxve:index/getNode:getNode": {
             "description": "Retrieves information about node.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@pulumi/proxmoxve\";\n\nconst node = proxmoxve.getNode({});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nnode = proxmoxve.get_node()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var node = ProxmoxVE.GetNode.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := proxmoxve.GetNode(ctx, \u0026proxmoxve.GetNodeArgs{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.ProxmoxveFunctions;\nimport com.pulumi.proxmoxve.inputs.GetNodeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var node = ProxmoxveFunctions.getNode();\n\n    }\n}\n```\n```yaml\nvariables:\n  node:\n    fn::invoke:\n      function: proxmoxve:getNode\n      arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
@@ -9288,6 +9427,10 @@
                         "type": "string",
                         "description": "The name of the node where the VM is provisioned.\n"
                     },
+                    "rng": {
+                        "$ref": "#/types/proxmoxve:index/getVm2Rng:getVm2Rng",
+                        "description": "The RNG (Random Number Generator) configuration.\n"
+                    },
                     "tags": {
                         "type": "array",
                         "items": {
@@ -9340,6 +9483,10 @@
                         "type": "string",
                         "description": "The name of the node where the VM is provisioned.\n"
                     },
+                    "rng": {
+                        "$ref": "#/types/proxmoxve:index/getVm2Rng:getVm2Rng",
+                        "description": "The RNG (Random Number Generator) configuration.\n"
+                    },
                     "tags": {
                         "type": "array",
                         "items": {
@@ -9364,6 +9511,7 @@
                     "cpu",
                     "id",
                     "nodeName",
+                    "rng",
                     "tags",
                     "vga"
                 ]

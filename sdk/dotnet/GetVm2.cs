@@ -72,6 +72,12 @@ namespace Pulumi.ProxmoxVE
         [Input("nodeName", required: true)]
         public string NodeName { get; set; } = null!;
 
+        /// <summary>
+        /// The RNG (Random Number Generator) configuration.
+        /// </summary>
+        [Input("rng")]
+        public Inputs.GetVm2RngArgs? Rng { get; set; }
+
         [Input("tags")]
         private List<string>? _tags;
 
@@ -143,6 +149,12 @@ namespace Pulumi.ProxmoxVE
         [Input("nodeName", required: true)]
         public Input<string> NodeName { get; set; } = null!;
 
+        /// <summary>
+        /// The RNG (Random Number Generator) configuration.
+        /// </summary>
+        [Input("rng")]
+        public Input<Inputs.GetVm2RngInputArgs>? Rng { get; set; }
+
         [Input("tags")]
         private InputList<string>? _tags;
 
@@ -205,6 +217,10 @@ namespace Pulumi.ProxmoxVE
         /// </summary>
         public readonly string NodeName;
         /// <summary>
+        /// The RNG (Random Number Generator) configuration.
+        /// </summary>
+        public readonly Outputs.GetVm2RngResult Rng;
+        /// <summary>
         /// The tags assigned to the VM.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
@@ -232,6 +248,8 @@ namespace Pulumi.ProxmoxVE
 
             string nodeName,
 
+            Outputs.GetVm2RngResult rng,
+
             ImmutableArray<string> tags,
 
             bool? template,
@@ -246,6 +264,7 @@ namespace Pulumi.ProxmoxVE
             Id = id;
             Name = name;
             NodeName = nodeName;
+            Rng = rng;
             Tags = tags;
             Template = template;
             Timeouts = timeouts;

@@ -59,7 +59,7 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<ImmutableArray<string>> BootOrders { get; private set; } = null!;
 
         /// <summary>
-        /// The CDROM configuration.
+        /// The CD-ROM configuration.
         /// </summary>
         [Output("cdrom")]
         public Output<Outputs.VirtualMachineCdrom?> Cdrom { get; private set; } = null!;
@@ -223,10 +223,22 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<bool?> Protection { get; private set; } = null!;
 
         /// <summary>
-        /// Reboot the VM after initial creation. (defaults to `false`)
+        /// Reboot the VM after initial creation (defaults to `false`).
         /// </summary>
         [Output("reboot")]
         public Output<bool?> Reboot { get; private set; } = null!;
+
+        /// <summary>
+        /// Reboot the VM after update if needed (defaults to `true`).
+        /// </summary>
+        [Output("rebootAfterUpdate")]
+        public Output<bool?> RebootAfterUpdate { get; private set; } = null!;
+
+        /// <summary>
+        /// The random number generator configuration. Can only be set by `root@pam.`
+        /// </summary>
+        [Output("rngs")]
+        public Output<ImmutableArray<Outputs.VirtualMachineRng>> Rngs { get; private set; } = null!;
 
         /// <summary>
         /// The SCSI hardware type (defaults to
@@ -459,7 +471,7 @@ namespace Pulumi.ProxmoxVE.VM
         }
 
         /// <summary>
-        /// The CDROM configuration.
+        /// The CD-ROM configuration.
         /// </summary>
         [Input("cdrom")]
         public Input<Inputs.VirtualMachineCdromArgs>? Cdrom { get; set; }
@@ -632,10 +644,28 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<bool>? Protection { get; set; }
 
         /// <summary>
-        /// Reboot the VM after initial creation. (defaults to `false`)
+        /// Reboot the VM after initial creation (defaults to `false`).
         /// </summary>
         [Input("reboot")]
         public Input<bool>? Reboot { get; set; }
+
+        /// <summary>
+        /// Reboot the VM after update if needed (defaults to `true`).
+        /// </summary>
+        [Input("rebootAfterUpdate")]
+        public Input<bool>? RebootAfterUpdate { get; set; }
+
+        [Input("rngs")]
+        private InputList<Inputs.VirtualMachineRngArgs>? _rngs;
+
+        /// <summary>
+        /// The random number generator configuration. Can only be set by `root@pam.`
+        /// </summary>
+        public InputList<Inputs.VirtualMachineRngArgs> Rngs
+        {
+            get => _rngs ?? (_rngs = new InputList<Inputs.VirtualMachineRngArgs>());
+            set => _rngs = value;
+        }
 
         /// <summary>
         /// The SCSI hardware type (defaults to
@@ -847,7 +877,7 @@ namespace Pulumi.ProxmoxVE.VM
         }
 
         /// <summary>
-        /// The CDROM configuration.
+        /// The CD-ROM configuration.
         /// </summary>
         [Input("cdrom")]
         public Input<Inputs.VirtualMachineCdromGetArgs>? Cdrom { get; set; }
@@ -1059,10 +1089,28 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<bool>? Protection { get; set; }
 
         /// <summary>
-        /// Reboot the VM after initial creation. (defaults to `false`)
+        /// Reboot the VM after initial creation (defaults to `false`).
         /// </summary>
         [Input("reboot")]
         public Input<bool>? Reboot { get; set; }
+
+        /// <summary>
+        /// Reboot the VM after update if needed (defaults to `true`).
+        /// </summary>
+        [Input("rebootAfterUpdate")]
+        public Input<bool>? RebootAfterUpdate { get; set; }
+
+        [Input("rngs")]
+        private InputList<Inputs.VirtualMachineRngGetArgs>? _rngs;
+
+        /// <summary>
+        /// The random number generator configuration. Can only be set by `root@pam.`
+        /// </summary>
+        public InputList<Inputs.VirtualMachineRngGetArgs> Rngs
+        {
+            get => _rngs ?? (_rngs = new InputList<Inputs.VirtualMachineRngGetArgs>());
+            set => _rngs = value;
+        }
 
         /// <summary>
         /// The SCSI hardware type (defaults to

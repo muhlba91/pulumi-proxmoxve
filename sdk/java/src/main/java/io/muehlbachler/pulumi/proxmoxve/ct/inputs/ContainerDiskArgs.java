@@ -35,7 +35,8 @@ public final class ContainerDiskArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The size of the root filesystem in gigabytes (defaults
-     * to `4`). Requires `datastore_id` to be set.
+     * to `4`). When set to 0 a directory or zfs/btrfs subvolume will be created.
+     * Requires `datastore_id` to be set.
      * 
      */
     @Import(name="size")
@@ -43,7 +44,8 @@ public final class ContainerDiskArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The size of the root filesystem in gigabytes (defaults
-     * to `4`). Requires `datastore_id` to be set.
+     * to `4`). When set to 0 a directory or zfs/btrfs subvolume will be created.
+     * Requires `datastore_id` to be set.
      * 
      */
     public Optional<Output<Integer>> size() {
@@ -100,7 +102,8 @@ public final class ContainerDiskArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param size The size of the root filesystem in gigabytes (defaults
-         * to `4`). Requires `datastore_id` to be set.
+         * to `4`). When set to 0 a directory or zfs/btrfs subvolume will be created.
+         * Requires `datastore_id` to be set.
          * 
          * @return builder
          * 
@@ -112,7 +115,8 @@ public final class ContainerDiskArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param size The size of the root filesystem in gigabytes (defaults
-         * to `4`). Requires `datastore_id` to be set.
+         * to `4`). When set to 0 a directory or zfs/btrfs subvolume will be created.
+         * Requires `datastore_id` to be set.
          * 
          * @return builder
          * 

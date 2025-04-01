@@ -23,6 +23,7 @@ import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineMemory;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineNetworkDevice;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineNuma;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineOperatingSystem;
+import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineRng;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineSerialDevice;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineSmbios;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineStartup;
@@ -128,14 +129,14 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.bootOrders);
     }
     /**
-     * The CDROM configuration.
+     * The CD-ROM configuration.
      * 
      */
     @Export(name="cdrom", refs={VirtualMachineCdrom.class}, tree="[0]")
     private Output</* @Nullable */ VirtualMachineCdrom> cdrom;
 
     /**
-     * @return The CDROM configuration.
+     * @return The CD-ROM configuration.
      * 
      */
     public Output<Optional<VirtualMachineCdrom>> cdrom() {
@@ -508,18 +509,46 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.protection);
     }
     /**
-     * Reboot the VM after initial creation. (defaults to `false`)
+     * Reboot the VM after initial creation (defaults to `false`).
      * 
      */
     @Export(name="reboot", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> reboot;
 
     /**
-     * @return Reboot the VM after initial creation. (defaults to `false`)
+     * @return Reboot the VM after initial creation (defaults to `false`).
      * 
      */
     public Output<Optional<Boolean>> reboot() {
         return Codegen.optional(this.reboot);
+    }
+    /**
+     * Reboot the VM after update if needed (defaults to `true`).
+     * 
+     */
+    @Export(name="rebootAfterUpdate", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> rebootAfterUpdate;
+
+    /**
+     * @return Reboot the VM after update if needed (defaults to `true`).
+     * 
+     */
+    public Output<Optional<Boolean>> rebootAfterUpdate() {
+        return Codegen.optional(this.rebootAfterUpdate);
+    }
+    /**
+     * The random number generator configuration. Can only be set by `root{@literal @}pam.`
+     * 
+     */
+    @Export(name="rngs", refs={List.class,VirtualMachineRng.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<VirtualMachineRng>> rngs;
+
+    /**
+     * @return The random number generator configuration. Can only be set by `root{@literal @}pam.`
+     * 
+     */
+    public Output<Optional<List<VirtualMachineRng>>> rngs() {
+        return Codegen.optional(this.rngs);
     }
     /**
      * The SCSI hardware type (defaults to

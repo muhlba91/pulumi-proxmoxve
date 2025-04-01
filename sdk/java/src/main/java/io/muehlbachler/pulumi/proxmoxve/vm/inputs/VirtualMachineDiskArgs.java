@@ -101,14 +101,14 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The file format (defaults to `qcow2`).
+     * The file format.
      * 
      */
     @Import(name="fileFormat")
     private @Nullable Output<String> fileFormat;
 
     /**
-     * @return The file format (defaults to `qcow2`).
+     * @return The file format.
      * 
      */
     public Optional<Output<String>> fileFormat() {
@@ -116,7 +116,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The file ID for a disk image. The ID format is
+     * The file ID for a disk image when importing a disk into VM. The ID format is
      * `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`. Can be also taken from
      * `proxmoxve.Download.File` resource.
      * 
@@ -125,7 +125,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     private @Nullable Output<String> fileId;
 
     /**
-     * @return The file ID for a disk image. The ID format is
+     * @return The file ID for a disk image when importing a disk into VM. The ID format is
      * `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`. Can be also taken from
      * `proxmoxve.Download.File` resource.
      * 
@@ -422,7 +422,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param fileFormat The file format (defaults to `qcow2`).
+         * @param fileFormat The file format.
          * 
          * @return builder
          * 
@@ -433,7 +433,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param fileFormat The file format (defaults to `qcow2`).
+         * @param fileFormat The file format.
          * 
          * @return builder
          * 
@@ -443,7 +443,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param fileId The file ID for a disk image. The ID format is
+         * @param fileId The file ID for a disk image when importing a disk into VM. The ID format is
          * `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`. Can be also taken from
          * `proxmoxve.Download.File` resource.
          * 
@@ -456,7 +456,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param fileId The file ID for a disk image. The ID format is
+         * @param fileId The file ID for a disk image when importing a disk into VM. The ID format is
          * `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`. Can be also taken from
          * `proxmoxve.Download.File` resource.
          * 

@@ -50,6 +50,8 @@ class VirtualMachineArgs:
                  pool_id: Optional[pulumi.Input[str]] = None,
                  protection: Optional[pulumi.Input[bool]] = None,
                  reboot: Optional[pulumi.Input[bool]] = None,
+                 reboot_after_update: Optional[pulumi.Input[bool]] = None,
+                 rngs: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineRngArgs']]]] = None,
                  scsi_hardware: Optional[pulumi.Input[str]] = None,
                  serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]]] = None,
                  smbios: Optional[pulumi.Input['VirtualMachineSmbiosArgs']] = None,
@@ -82,7 +84,7 @@ class VirtualMachineArgs:
         :param pulumi.Input[str] bios: The BIOS implementation (defaults to `seabios`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] boot_orders: Specify a list of devices to boot from in the order
                they appear in the list (defaults to `[]`).
-        :param pulumi.Input['VirtualMachineCdromArgs'] cdrom: The CDROM configuration.
+        :param pulumi.Input['VirtualMachineCdromArgs'] cdrom: The CD-ROM configuration.
         :param pulumi.Input['VirtualMachineCloneArgs'] clone: The cloning configuration.
         :param pulumi.Input['VirtualMachineCpuArgs'] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description.
@@ -108,7 +110,9 @@ class VirtualMachineArgs:
         :param pulumi.Input['VirtualMachineOperatingSystemArgs'] operating_system: The Operating System configuration.
         :param pulumi.Input[str] pool_id: The identifier for a pool to assign the virtual machine to.
         :param pulumi.Input[bool] protection: Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
-        :param pulumi.Input[bool] reboot: Reboot the VM after initial creation. (defaults to `false`)
+        :param pulumi.Input[bool] reboot: Reboot the VM after initial creation (defaults to `false`).
+        :param pulumi.Input[bool] reboot_after_update: Reboot the VM after update if needed (defaults to `true`).
+        :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineRngArgs']]] rngs: The random number generator configuration. Can only be set by `root@pam.`
         :param pulumi.Input[str] scsi_hardware: The SCSI hardware type (defaults to
                `virtio-scsi-pci`).
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]] serial_devices: A serial device (multiple blocks supported).
@@ -203,6 +207,10 @@ class VirtualMachineArgs:
             pulumi.set(__self__, "protection", protection)
         if reboot is not None:
             pulumi.set(__self__, "reboot", reboot)
+        if reboot_after_update is not None:
+            pulumi.set(__self__, "reboot_after_update", reboot_after_update)
+        if rngs is not None:
+            pulumi.set(__self__, "rngs", rngs)
         if scsi_hardware is not None:
             pulumi.set(__self__, "scsi_hardware", scsi_hardware)
         if serial_devices is not None:
@@ -329,7 +337,7 @@ class VirtualMachineArgs:
     @pulumi.getter
     def cdrom(self) -> Optional[pulumi.Input['VirtualMachineCdromArgs']]:
         """
-        The CDROM configuration.
+        The CD-ROM configuration.
         """
         return pulumi.get(self, "cdrom")
 
@@ -597,13 +605,37 @@ class VirtualMachineArgs:
     @pulumi.getter
     def reboot(self) -> Optional[pulumi.Input[bool]]:
         """
-        Reboot the VM after initial creation. (defaults to `false`)
+        Reboot the VM after initial creation (defaults to `false`).
         """
         return pulumi.get(self, "reboot")
 
     @reboot.setter
     def reboot(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "reboot", value)
+
+    @property
+    @pulumi.getter(name="rebootAfterUpdate")
+    def reboot_after_update(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Reboot the VM after update if needed (defaults to `true`).
+        """
+        return pulumi.get(self, "reboot_after_update")
+
+    @reboot_after_update.setter
+    def reboot_after_update(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "reboot_after_update", value)
+
+    @property
+    @pulumi.getter
+    def rngs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineRngArgs']]]]:
+        """
+        The random number generator configuration. Can only be set by `root@pam.`
+        """
+        return pulumi.get(self, "rngs")
+
+    @rngs.setter
+    def rngs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineRngArgs']]]]):
+        pulumi.set(self, "rngs", value)
 
     @property
     @pulumi.getter(name="scsiHardware")
@@ -920,6 +952,8 @@ class _VirtualMachineState:
                  pool_id: Optional[pulumi.Input[str]] = None,
                  protection: Optional[pulumi.Input[bool]] = None,
                  reboot: Optional[pulumi.Input[bool]] = None,
+                 reboot_after_update: Optional[pulumi.Input[bool]] = None,
+                 rngs: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineRngArgs']]]] = None,
                  scsi_hardware: Optional[pulumi.Input[str]] = None,
                  serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]]] = None,
                  smbios: Optional[pulumi.Input['VirtualMachineSmbiosArgs']] = None,
@@ -950,7 +984,7 @@ class _VirtualMachineState:
         :param pulumi.Input[str] bios: The BIOS implementation (defaults to `seabios`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] boot_orders: Specify a list of devices to boot from in the order
                they appear in the list (defaults to `[]`).
-        :param pulumi.Input['VirtualMachineCdromArgs'] cdrom: The CDROM configuration.
+        :param pulumi.Input['VirtualMachineCdromArgs'] cdrom: The CD-ROM configuration.
         :param pulumi.Input['VirtualMachineCloneArgs'] clone: The cloning configuration.
         :param pulumi.Input['VirtualMachineCpuArgs'] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description.
@@ -984,7 +1018,9 @@ class _VirtualMachineState:
         :param pulumi.Input['VirtualMachineOperatingSystemArgs'] operating_system: The Operating System configuration.
         :param pulumi.Input[str] pool_id: The identifier for a pool to assign the virtual machine to.
         :param pulumi.Input[bool] protection: Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
-        :param pulumi.Input[bool] reboot: Reboot the VM after initial creation. (defaults to `false`)
+        :param pulumi.Input[bool] reboot: Reboot the VM after initial creation (defaults to `false`).
+        :param pulumi.Input[bool] reboot_after_update: Reboot the VM after update if needed (defaults to `true`).
+        :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineRngArgs']]] rngs: The random number generator configuration. Can only be set by `root@pam.`
         :param pulumi.Input[str] scsi_hardware: The SCSI hardware type (defaults to
                `virtio-scsi-pci`).
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineSerialDeviceArgs']]] serial_devices: A serial device (multiple blocks supported).
@@ -1086,6 +1122,10 @@ class _VirtualMachineState:
             pulumi.set(__self__, "protection", protection)
         if reboot is not None:
             pulumi.set(__self__, "reboot", reboot)
+        if reboot_after_update is not None:
+            pulumi.set(__self__, "reboot_after_update", reboot_after_update)
+        if rngs is not None:
+            pulumi.set(__self__, "rngs", rngs)
         if scsi_hardware is not None:
             pulumi.set(__self__, "scsi_hardware", scsi_hardware)
         if serial_devices is not None:
@@ -1199,7 +1239,7 @@ class _VirtualMachineState:
     @pulumi.getter
     def cdrom(self) -> Optional[pulumi.Input['VirtualMachineCdromArgs']]:
         """
-        The CDROM configuration.
+        The CD-ROM configuration.
         """
         return pulumi.get(self, "cdrom")
 
@@ -1519,13 +1559,37 @@ class _VirtualMachineState:
     @pulumi.getter
     def reboot(self) -> Optional[pulumi.Input[bool]]:
         """
-        Reboot the VM after initial creation. (defaults to `false`)
+        Reboot the VM after initial creation (defaults to `false`).
         """
         return pulumi.get(self, "reboot")
 
     @reboot.setter
     def reboot(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "reboot", value)
+
+    @property
+    @pulumi.getter(name="rebootAfterUpdate")
+    def reboot_after_update(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Reboot the VM after update if needed (defaults to `true`).
+        """
+        return pulumi.get(self, "reboot_after_update")
+
+    @reboot_after_update.setter
+    def reboot_after_update(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "reboot_after_update", value)
+
+    @property
+    @pulumi.getter
+    def rngs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineRngArgs']]]]:
+        """
+        The random number generator configuration. Can only be set by `root@pam.`
+        """
+        return pulumi.get(self, "rngs")
+
+    @rngs.setter
+    def rngs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineRngArgs']]]]):
+        pulumi.set(self, "rngs", value)
 
     @property
     @pulumi.getter(name="scsiHardware")
@@ -1841,6 +1905,8 @@ class VirtualMachine(pulumi.CustomResource):
                  pool_id: Optional[pulumi.Input[str]] = None,
                  protection: Optional[pulumi.Input[bool]] = None,
                  reboot: Optional[pulumi.Input[bool]] = None,
+                 reboot_after_update: Optional[pulumi.Input[bool]] = None,
+                 rngs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineRngArgs', 'VirtualMachineRngArgsDict']]]]] = None,
                  scsi_hardware: Optional[pulumi.Input[str]] = None,
                  serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineSerialDeviceArgs', 'VirtualMachineSerialDeviceArgsDict']]]]] = None,
                  smbios: Optional[pulumi.Input[Union['VirtualMachineSmbiosArgs', 'VirtualMachineSmbiosArgsDict']]] = None,
@@ -1887,7 +1953,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[str] bios: The BIOS implementation (defaults to `seabios`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] boot_orders: Specify a list of devices to boot from in the order
                they appear in the list (defaults to `[]`).
-        :param pulumi.Input[Union['VirtualMachineCdromArgs', 'VirtualMachineCdromArgsDict']] cdrom: The CDROM configuration.
+        :param pulumi.Input[Union['VirtualMachineCdromArgs', 'VirtualMachineCdromArgsDict']] cdrom: The CD-ROM configuration.
         :param pulumi.Input[Union['VirtualMachineCloneArgs', 'VirtualMachineCloneArgsDict']] clone: The cloning configuration.
         :param pulumi.Input[Union['VirtualMachineCpuArgs', 'VirtualMachineCpuArgsDict']] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description.
@@ -1915,7 +1981,9 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[Union['VirtualMachineOperatingSystemArgs', 'VirtualMachineOperatingSystemArgsDict']] operating_system: The Operating System configuration.
         :param pulumi.Input[str] pool_id: The identifier for a pool to assign the virtual machine to.
         :param pulumi.Input[bool] protection: Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
-        :param pulumi.Input[bool] reboot: Reboot the VM after initial creation. (defaults to `false`)
+        :param pulumi.Input[bool] reboot: Reboot the VM after initial creation (defaults to `false`).
+        :param pulumi.Input[bool] reboot_after_update: Reboot the VM after update if needed (defaults to `true`).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineRngArgs', 'VirtualMachineRngArgsDict']]]] rngs: The random number generator configuration. Can only be set by `root@pam.`
         :param pulumi.Input[str] scsi_hardware: The SCSI hardware type (defaults to
                `virtio-scsi-pci`).
         :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineSerialDeviceArgs', 'VirtualMachineSerialDeviceArgsDict']]]] serial_devices: A serial device (multiple blocks supported).
@@ -2018,6 +2086,8 @@ class VirtualMachine(pulumi.CustomResource):
                  pool_id: Optional[pulumi.Input[str]] = None,
                  protection: Optional[pulumi.Input[bool]] = None,
                  reboot: Optional[pulumi.Input[bool]] = None,
+                 reboot_after_update: Optional[pulumi.Input[bool]] = None,
+                 rngs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineRngArgs', 'VirtualMachineRngArgsDict']]]]] = None,
                  scsi_hardware: Optional[pulumi.Input[str]] = None,
                  serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineSerialDeviceArgs', 'VirtualMachineSerialDeviceArgsDict']]]]] = None,
                  smbios: Optional[pulumi.Input[Union['VirtualMachineSmbiosArgs', 'VirtualMachineSmbiosArgsDict']]] = None,
@@ -2080,6 +2150,8 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["pool_id"] = pool_id
             __props__.__dict__["protection"] = protection
             __props__.__dict__["reboot"] = reboot
+            __props__.__dict__["reboot_after_update"] = reboot_after_update
+            __props__.__dict__["rngs"] = rngs
             __props__.__dict__["scsi_hardware"] = scsi_hardware
             __props__.__dict__["serial_devices"] = serial_devices
             __props__.__dict__["smbios"] = smbios
@@ -2147,6 +2219,8 @@ class VirtualMachine(pulumi.CustomResource):
             pool_id: Optional[pulumi.Input[str]] = None,
             protection: Optional[pulumi.Input[bool]] = None,
             reboot: Optional[pulumi.Input[bool]] = None,
+            reboot_after_update: Optional[pulumi.Input[bool]] = None,
+            rngs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineRngArgs', 'VirtualMachineRngArgsDict']]]]] = None,
             scsi_hardware: Optional[pulumi.Input[str]] = None,
             serial_devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineSerialDeviceArgs', 'VirtualMachineSerialDeviceArgsDict']]]]] = None,
             smbios: Optional[pulumi.Input[Union['VirtualMachineSmbiosArgs', 'VirtualMachineSmbiosArgsDict']]] = None,
@@ -2182,7 +2256,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[str] bios: The BIOS implementation (defaults to `seabios`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] boot_orders: Specify a list of devices to boot from in the order
                they appear in the list (defaults to `[]`).
-        :param pulumi.Input[Union['VirtualMachineCdromArgs', 'VirtualMachineCdromArgsDict']] cdrom: The CDROM configuration.
+        :param pulumi.Input[Union['VirtualMachineCdromArgs', 'VirtualMachineCdromArgsDict']] cdrom: The CD-ROM configuration.
         :param pulumi.Input[Union['VirtualMachineCloneArgs', 'VirtualMachineCloneArgsDict']] clone: The cloning configuration.
         :param pulumi.Input[Union['VirtualMachineCpuArgs', 'VirtualMachineCpuArgsDict']] cpu: The CPU configuration.
         :param pulumi.Input[str] description: The description.
@@ -2216,7 +2290,9 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[Union['VirtualMachineOperatingSystemArgs', 'VirtualMachineOperatingSystemArgsDict']] operating_system: The Operating System configuration.
         :param pulumi.Input[str] pool_id: The identifier for a pool to assign the virtual machine to.
         :param pulumi.Input[bool] protection: Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
-        :param pulumi.Input[bool] reboot: Reboot the VM after initial creation. (defaults to `false`)
+        :param pulumi.Input[bool] reboot: Reboot the VM after initial creation (defaults to `false`).
+        :param pulumi.Input[bool] reboot_after_update: Reboot the VM after update if needed (defaults to `true`).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineRngArgs', 'VirtualMachineRngArgsDict']]]] rngs: The random number generator configuration. Can only be set by `root@pam.`
         :param pulumi.Input[str] scsi_hardware: The SCSI hardware type (defaults to
                `virtio-scsi-pci`).
         :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineSerialDeviceArgs', 'VirtualMachineSerialDeviceArgsDict']]]] serial_devices: A serial device (multiple blocks supported).
@@ -2290,6 +2366,8 @@ class VirtualMachine(pulumi.CustomResource):
         __props__.__dict__["pool_id"] = pool_id
         __props__.__dict__["protection"] = protection
         __props__.__dict__["reboot"] = reboot
+        __props__.__dict__["reboot_after_update"] = reboot_after_update
+        __props__.__dict__["rngs"] = rngs
         __props__.__dict__["scsi_hardware"] = scsi_hardware
         __props__.__dict__["serial_devices"] = serial_devices
         __props__.__dict__["smbios"] = smbios
@@ -2359,7 +2437,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter
     def cdrom(self) -> pulumi.Output[Optional['outputs.VirtualMachineCdrom']]:
         """
-        The CDROM configuration.
+        The CD-ROM configuration.
         """
         return pulumi.get(self, "cdrom")
 
@@ -2575,9 +2653,25 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter
     def reboot(self) -> pulumi.Output[Optional[bool]]:
         """
-        Reboot the VM after initial creation. (defaults to `false`)
+        Reboot the VM after initial creation (defaults to `false`).
         """
         return pulumi.get(self, "reboot")
+
+    @property
+    @pulumi.getter(name="rebootAfterUpdate")
+    def reboot_after_update(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Reboot the VM after update if needed (defaults to `true`).
+        """
+        return pulumi.get(self, "reboot_after_update")
+
+    @property
+    @pulumi.getter
+    def rngs(self) -> pulumi.Output[Optional[Sequence['outputs.VirtualMachineRng']]]:
+        """
+        The random number generator configuration. Can only be set by `root@pam.`
+        """
+        return pulumi.get(self, "rngs")
 
     @property
     @pulumi.getter(name="scsiHardware")

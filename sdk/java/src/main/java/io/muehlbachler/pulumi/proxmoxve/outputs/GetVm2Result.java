@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetVm2Clone;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetVm2Cpu;
+import io.muehlbachler.pulumi.proxmoxve.outputs.GetVm2Rng;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetVm2Timeouts;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetVm2Vga;
 import java.lang.Boolean;
@@ -49,6 +50,11 @@ public final class GetVm2Result {
      * 
      */
     private String nodeName;
+    /**
+     * @return The RNG (Random Number Generator) configuration.
+     * 
+     */
+    private GetVm2Rng rng;
     /**
      * @return The tags assigned to the VM.
      * 
@@ -110,6 +116,13 @@ public final class GetVm2Result {
         return this.nodeName;
     }
     /**
+     * @return The RNG (Random Number Generator) configuration.
+     * 
+     */
+    public GetVm2Rng rng() {
+        return this.rng;
+    }
+    /**
      * @return The tags assigned to the VM.
      * 
      */
@@ -149,6 +162,7 @@ public final class GetVm2Result {
         private Integer id;
         private @Nullable String name;
         private String nodeName;
+        private GetVm2Rng rng;
         private List<String> tags;
         private @Nullable Boolean template;
         private @Nullable GetVm2Timeouts timeouts;
@@ -162,6 +176,7 @@ public final class GetVm2Result {
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.nodeName = defaults.nodeName;
+    	      this.rng = defaults.rng;
     	      this.tags = defaults.tags;
     	      this.template = defaults.template;
     	      this.timeouts = defaults.timeouts;
@@ -211,6 +226,14 @@ public final class GetVm2Result {
             return this;
         }
         @CustomType.Setter
+        public Builder rng(GetVm2Rng rng) {
+            if (rng == null) {
+              throw new MissingRequiredPropertyException("GetVm2Result", "rng");
+            }
+            this.rng = rng;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tags(List<String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetVm2Result", "tags");
@@ -249,6 +272,7 @@ public final class GetVm2Result {
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.nodeName = nodeName;
+            _resultValue.rng = rng;
             _resultValue.tags = tags;
             _resultValue.template = template;
             _resultValue.timeouts = timeouts;

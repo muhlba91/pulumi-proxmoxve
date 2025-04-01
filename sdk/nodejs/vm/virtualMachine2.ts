@@ -70,6 +70,10 @@ export class VirtualMachine2 extends pulumi.CustomResource {
      */
     public readonly nodeName!: pulumi.Output<string>;
     /**
+     * Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+     */
+    public readonly rng!: pulumi.Output<outputs.VM.VirtualMachine2Rng>;
+    /**
      * Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
      */
     public readonly stopOnDestroy!: pulumi.Output<boolean>;
@@ -106,6 +110,7 @@ export class VirtualMachine2 extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nodeName"] = state ? state.nodeName : undefined;
+            resourceInputs["rng"] = state ? state.rng : undefined;
             resourceInputs["stopOnDestroy"] = state ? state.stopOnDestroy : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["template"] = state ? state.template : undefined;
@@ -122,6 +127,7 @@ export class VirtualMachine2 extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nodeName"] = args ? args.nodeName : undefined;
+            resourceInputs["rng"] = args ? args.rng : undefined;
             resourceInputs["stopOnDestroy"] = args ? args.stopOnDestroy : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["template"] = args ? args.template : undefined;
@@ -129,8 +135,6 @@ export class VirtualMachine2 extends pulumi.CustomResource {
             resourceInputs["vga"] = args ? args.vga : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "proxmoxve:index/vm2:Vm2" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VirtualMachine2.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -163,6 +167,10 @@ export interface VirtualMachine2State {
      * The name of the node where the VM is provisioned.
      */
     nodeName?: pulumi.Input<string>;
+    /**
+     * Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+     */
+    rng?: pulumi.Input<inputs.VM.VirtualMachine2Rng>;
     /**
      * Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
      */
@@ -210,6 +218,10 @@ export interface VirtualMachine2Args {
      * The name of the node where the VM is provisioned.
      */
     nodeName: pulumi.Input<string>;
+    /**
+     * Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+     */
+    rng?: pulumi.Input<inputs.VM.VirtualMachine2Rng>;
     /**
      * Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
      */

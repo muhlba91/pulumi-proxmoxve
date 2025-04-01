@@ -398,7 +398,8 @@ if not MYPY:
         size: NotRequired[pulumi.Input[int]]
         """
         The size of the root filesystem in gigabytes (defaults
-        to `4`). Requires `datastore_id` to be set.
+        to `4`). When set to 0 a directory or zfs/btrfs subvolume will be created.
+        Requires `datastore_id` to be set.
         """
 elif False:
     ContainerDiskArgsDict: TypeAlias = Mapping[str, Any]
@@ -412,7 +413,8 @@ class ContainerDiskArgs:
         :param pulumi.Input[str] datastore_id: The identifier for the datastore to create the
                disk in (defaults to `local`).
         :param pulumi.Input[int] size: The size of the root filesystem in gigabytes (defaults
-               to `4`). Requires `datastore_id` to be set.
+               to `4`). When set to 0 a directory or zfs/btrfs subvolume will be created.
+               Requires `datastore_id` to be set.
         """
         if datastore_id is not None:
             pulumi.set(__self__, "datastore_id", datastore_id)
@@ -437,7 +439,8 @@ class ContainerDiskArgs:
     def size(self) -> Optional[pulumi.Input[int]]:
         """
         The size of the root filesystem in gigabytes (defaults
-        to `4`). Requires `datastore_id` to be set.
+        to `4`). When set to 0 a directory or zfs/btrfs subvolume will be created.
+        Requires `datastore_id` to be set.
         """
         return pulumi.get(self, "size")
 

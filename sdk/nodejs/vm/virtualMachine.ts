@@ -71,7 +71,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly bootOrders!: pulumi.Output<string[] | undefined>;
     /**
-     * The CDROM configuration.
+     * The CD-ROM configuration.
      */
     public readonly cdrom!: pulumi.Output<outputs.VM.VirtualMachineCdrom | undefined>;
     /**
@@ -183,9 +183,17 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly protection!: pulumi.Output<boolean | undefined>;
     /**
-     * Reboot the VM after initial creation. (defaults to `false`)
+     * Reboot the VM after initial creation (defaults to `false`).
      */
     public readonly reboot!: pulumi.Output<boolean | undefined>;
+    /**
+     * Reboot the VM after update if needed (defaults to `true`).
+     */
+    public readonly rebootAfterUpdate!: pulumi.Output<boolean | undefined>;
+    /**
+     * The random number generator configuration. Can only be set by `root@pam.`
+     */
+    public readonly rngs!: pulumi.Output<outputs.VM.VirtualMachineRng[] | undefined>;
     /**
      * The SCSI hardware type (defaults to
      * `virtio-scsi-pci`).
@@ -336,6 +344,8 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["poolId"] = state ? state.poolId : undefined;
             resourceInputs["protection"] = state ? state.protection : undefined;
             resourceInputs["reboot"] = state ? state.reboot : undefined;
+            resourceInputs["rebootAfterUpdate"] = state ? state.rebootAfterUpdate : undefined;
+            resourceInputs["rngs"] = state ? state.rngs : undefined;
             resourceInputs["scsiHardware"] = state ? state.scsiHardware : undefined;
             resourceInputs["serialDevices"] = state ? state.serialDevices : undefined;
             resourceInputs["smbios"] = state ? state.smbios : undefined;
@@ -392,6 +402,8 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["poolId"] = args ? args.poolId : undefined;
             resourceInputs["protection"] = args ? args.protection : undefined;
             resourceInputs["reboot"] = args ? args.reboot : undefined;
+            resourceInputs["rebootAfterUpdate"] = args ? args.rebootAfterUpdate : undefined;
+            resourceInputs["rngs"] = args ? args.rngs : undefined;
             resourceInputs["scsiHardware"] = args ? args.scsiHardware : undefined;
             resourceInputs["serialDevices"] = args ? args.serialDevices : undefined;
             resourceInputs["smbios"] = args ? args.smbios : undefined;
@@ -449,7 +461,7 @@ export interface VirtualMachineState {
      */
     bootOrders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The CDROM configuration.
+     * The CD-ROM configuration.
      */
     cdrom?: pulumi.Input<inputs.VM.VirtualMachineCdrom>;
     /**
@@ -561,9 +573,17 @@ export interface VirtualMachineState {
      */
     protection?: pulumi.Input<boolean>;
     /**
-     * Reboot the VM after initial creation. (defaults to `false`)
+     * Reboot the VM after initial creation (defaults to `false`).
      */
     reboot?: pulumi.Input<boolean>;
+    /**
+     * Reboot the VM after update if needed (defaults to `true`).
+     */
+    rebootAfterUpdate?: pulumi.Input<boolean>;
+    /**
+     * The random number generator configuration. Can only be set by `root@pam.`
+     */
+    rngs?: pulumi.Input<pulumi.Input<inputs.VM.VirtualMachineRng>[]>;
     /**
      * The SCSI hardware type (defaults to
      * `virtio-scsi-pci`).
@@ -696,7 +716,7 @@ export interface VirtualMachineArgs {
      */
     bootOrders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The CDROM configuration.
+     * The CD-ROM configuration.
      */
     cdrom?: pulumi.Input<inputs.VM.VirtualMachineCdrom>;
     /**
@@ -793,9 +813,17 @@ export interface VirtualMachineArgs {
      */
     protection?: pulumi.Input<boolean>;
     /**
-     * Reboot the VM after initial creation. (defaults to `false`)
+     * Reboot the VM after initial creation (defaults to `false`).
      */
     reboot?: pulumi.Input<boolean>;
+    /**
+     * Reboot the VM after update if needed (defaults to `true`).
+     */
+    rebootAfterUpdate?: pulumi.Input<boolean>;
+    /**
+     * The random number generator configuration. Can only be set by `root@pam.`
+     */
+    rngs?: pulumi.Input<pulumi.Input<inputs.VM.VirtualMachineRng>[]>;
     /**
      * The SCSI hardware type (defaults to
      * `virtio-scsi-pci`).

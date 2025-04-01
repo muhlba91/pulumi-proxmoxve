@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachine2CdromArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachine2CloneArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachine2CpuArgs;
+import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachine2RngArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachine2TimeoutsArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachine2VgaArgs;
 import java.lang.Boolean;
@@ -114,6 +115,21 @@ public final class VirtualMachine2State extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root{@literal @}pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+     * 
+     */
+    @Import(name="rng")
+    private @Nullable Output<VirtualMachine2RngArgs> rng;
+
+    /**
+     * @return Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root{@literal @}pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+     * 
+     */
+    public Optional<Output<VirtualMachine2RngArgs>> rng() {
+        return Optional.ofNullable(this.rng);
+    }
+
+    /**
      * Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
      * 
      */
@@ -189,6 +205,7 @@ public final class VirtualMachine2State extends com.pulumi.resources.ResourceArg
         this.description = $.description;
         this.name = $.name;
         this.nodeName = $.nodeName;
+        this.rng = $.rng;
         this.stopOnDestroy = $.stopOnDestroy;
         this.tags = $.tags;
         this.template = $.template;
@@ -338,6 +355,27 @@ public final class VirtualMachine2State extends com.pulumi.resources.ResourceArg
          */
         public Builder nodeName(String nodeName) {
             return nodeName(Output.of(nodeName));
+        }
+
+        /**
+         * @param rng Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root{@literal @}pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rng(@Nullable Output<VirtualMachine2RngArgs> rng) {
+            $.rng = rng;
+            return this;
+        }
+
+        /**
+         * @param rng Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root{@literal @}pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rng(VirtualMachine2RngArgs rng) {
+            return rng(Output.of(rng));
         }
 
         /**

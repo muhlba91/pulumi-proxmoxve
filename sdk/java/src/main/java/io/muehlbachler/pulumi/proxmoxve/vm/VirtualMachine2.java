@@ -3,7 +3,6 @@
 
 package io.muehlbachler.pulumi.proxmoxve.VM;
 
-import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -14,6 +13,7 @@ import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachine2State;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachine2Cdrom;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachine2Clone;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachine2Cpu;
+import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachine2Rng;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachine2Timeouts;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachine2Vga;
 import java.lang.Boolean;
@@ -122,6 +122,20 @@ public class VirtualMachine2 extends com.pulumi.resources.CustomResource {
         return this.nodeName;
     }
     /**
+     * Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root{@literal @}pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+     * 
+     */
+    @Export(name="rng", refs={VirtualMachine2Rng.class}, tree="[0]")
+    private Output<VirtualMachine2Rng> rng;
+
+    /**
+     * @return Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root{@literal @}pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+     * 
+     */
+    public Output<VirtualMachine2Rng> rng() {
+        return this.rng;
+    }
+    /**
      * Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
      * 
      */
@@ -224,9 +238,6 @@ public class VirtualMachine2 extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .pluginDownloadURL("github://api.github.com/muhlba91/pulumi-proxmoxve")
-            .aliases(List.of(
-                Output.of(Alias.builder().type("proxmoxve:index/vm2:Vm2").build())
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }
