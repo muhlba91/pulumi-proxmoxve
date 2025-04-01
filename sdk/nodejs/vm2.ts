@@ -135,6 +135,8 @@ export class Vm2 extends pulumi.CustomResource {
             resourceInputs["vga"] = args ? args.vga : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "proxmoxve:index/vm2:Vm2" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Vm2.__pulumiType, name, resourceInputs, opts);
     }
 }

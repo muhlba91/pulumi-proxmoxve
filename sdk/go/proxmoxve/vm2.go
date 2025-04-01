@@ -59,6 +59,12 @@ func NewVm2(ctx *pulumi.Context,
 	if args.NodeName == nil {
 		return nil, errors.New("invalid value for required argument 'NodeName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("proxmoxve:index/vm2:Vm2"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Vm2
 	err := ctx.RegisterResource("proxmoxve:index/vm2:Vm2", name, args, &resource, opts...)

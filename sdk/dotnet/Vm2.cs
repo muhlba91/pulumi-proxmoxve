@@ -111,6 +111,10 @@ namespace Pulumi.ProxmoxVE
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/muhlba91/pulumi-proxmoxve",
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "proxmoxve:index/vm2:Vm2" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

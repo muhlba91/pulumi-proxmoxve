@@ -3,6 +3,7 @@
 
 package io.muehlbachler.pulumi.proxmoxve;
 
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -227,6 +228,9 @@ public class Vm2 extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .pluginDownloadURL("github://api.github.com/muhlba91/pulumi-proxmoxve")
+            .aliases(List.of(
+                Output.of(Alias.builder().type("proxmoxve:index/vm2:Vm2").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }
