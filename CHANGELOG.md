@@ -1,6 +1,15 @@
 # Changelog
 
 
+## [7.0.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.0.0...v7.0.1) (2025-04-02)
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/dependency-review-action action to v4.6.0 ([f912b91](https://github.com/muhlba91/pulumi-proxmoxve/commit/f912b9143909e2b65e4fd1bf3f228481be7bfa56))
+* **deps:** update dependency go to v1.24.2 ([f658bce](https://github.com/muhlba91/pulumi-proxmoxve/commit/f658bce78f711a9a4a93b388080d4c7d10b17fc5))
+* **deps:** update step-security/harden-runner action to v2.11.1 ([4e9e28e](https://github.com/muhlba91/pulumi-proxmoxve/commit/4e9e28e7efabeeb578ac0ad24f2b2aa74f883d19))
+
 ## [7.0.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.18.1...v7.0.0) (2025-04-01)
 
 
