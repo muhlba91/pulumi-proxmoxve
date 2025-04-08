@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/internal"
+	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -3334,10 +3334,6 @@ type VirtualMachineInitialization struct {
 	NetworkDataFileId *string `pulumi:"networkDataFileId"`
 	// The cloud-init configuration format
 	Type *string `pulumi:"type"`
-	// Whether to do an automatic package upgrade after the first boot
-	//
-	// Deprecated: The `upgrade` attribute is deprecated and will be removed in a future release.
-	Upgrade *bool `pulumi:"upgrade"`
 	// The user account configuration (conflicts
 	// with `userDataFileId`).
 	UserAccount *VirtualMachineInitializationUserAccount `pulumi:"userAccount"`
@@ -3383,10 +3379,6 @@ type VirtualMachineInitializationArgs struct {
 	NetworkDataFileId pulumi.StringPtrInput `pulumi:"networkDataFileId"`
 	// The cloud-init configuration format
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// Whether to do an automatic package upgrade after the first boot
-	//
-	// Deprecated: The `upgrade` attribute is deprecated and will be removed in a future release.
-	Upgrade pulumi.BoolPtrInput `pulumi:"upgrade"`
 	// The user account configuration (conflicts
 	// with `userDataFileId`).
 	UserAccount VirtualMachineInitializationUserAccountPtrInput `pulumi:"userAccount"`
@@ -3518,13 +3510,6 @@ func (o VirtualMachineInitializationOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitialization) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// Whether to do an automatic package upgrade after the first boot
-//
-// Deprecated: The `upgrade` attribute is deprecated and will be removed in a future release.
-func (o VirtualMachineInitializationOutput) Upgrade() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineInitialization) *bool { return v.Upgrade }).(pulumi.BoolPtrOutput)
-}
-
 // The user account configuration (conflicts
 // with `userDataFileId`).
 func (o VirtualMachineInitializationOutput) UserAccount() VirtualMachineInitializationUserAccountPtrOutput {
@@ -3645,18 +3630,6 @@ func (o VirtualMachineInitializationPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Whether to do an automatic package upgrade after the first boot
-//
-// Deprecated: The `upgrade` attribute is deprecated and will be removed in a future release.
-func (o VirtualMachineInitializationPtrOutput) Upgrade() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineInitialization) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Upgrade
-	}).(pulumi.BoolPtrOutput)
-}
-
 // The user account configuration (conflicts
 // with `userDataFileId`).
 func (o VirtualMachineInitializationPtrOutput) UserAccount() VirtualMachineInitializationUserAccountPtrOutput {
@@ -3693,12 +3666,6 @@ func (o VirtualMachineInitializationPtrOutput) VendorDataFileId() pulumi.StringP
 type VirtualMachineInitializationDns struct {
 	// The DNS search domain.
 	Domain *string `pulumi:"domain"`
-	// The DNS server. The `server` attribute is
-	// deprecated and will be removed in a future release. Please use the
-	// `servers` attribute instead.
-	//
-	// Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
-	Server *string `pulumi:"server"`
 	// The list of DNS servers.
 	Servers []string `pulumi:"servers"`
 }
@@ -3717,12 +3684,6 @@ type VirtualMachineInitializationDnsInput interface {
 type VirtualMachineInitializationDnsArgs struct {
 	// The DNS search domain.
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
-	// The DNS server. The `server` attribute is
-	// deprecated and will be removed in a future release. Please use the
-	// `servers` attribute instead.
-	//
-	// Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
-	Server pulumi.StringPtrInput `pulumi:"server"`
 	// The list of DNS servers.
 	Servers pulumi.StringArrayInput `pulumi:"servers"`
 }
@@ -3809,15 +3770,6 @@ func (o VirtualMachineInitializationDnsOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationDns) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
-// The DNS server. The `server` attribute is
-// deprecated and will be removed in a future release. Please use the
-// `servers` attribute instead.
-//
-// Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
-func (o VirtualMachineInitializationDnsOutput) Server() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineInitializationDns) *string { return v.Server }).(pulumi.StringPtrOutput)
-}
-
 // The list of DNS servers.
 func (o VirtualMachineInitializationDnsOutput) Servers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationDns) []string { return v.Servers }).(pulumi.StringArrayOutput)
@@ -3854,20 +3806,6 @@ func (o VirtualMachineInitializationDnsPtrOutput) Domain() pulumi.StringPtrOutpu
 			return nil
 		}
 		return v.Domain
-	}).(pulumi.StringPtrOutput)
-}
-
-// The DNS server. The `server` attribute is
-// deprecated and will be removed in a future release. Please use the
-// `servers` attribute instead.
-//
-// Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
-func (o VirtualMachineInitializationDnsPtrOutput) Server() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineInitializationDns) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Server
 	}).(pulumi.StringPtrOutput)
 }
 

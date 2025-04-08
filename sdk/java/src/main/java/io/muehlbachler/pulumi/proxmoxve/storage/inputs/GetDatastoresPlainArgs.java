@@ -5,8 +5,13 @@ package io.muehlbachler.pulumi.proxmoxve.Storage.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import io.muehlbachler.pulumi.proxmoxve.Storage.inputs.GetDatastoresDatastore;
+import io.muehlbachler.pulumi.proxmoxve.Storage.inputs.GetDatastoresFilters;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetDatastoresPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -14,14 +19,44 @@ public final class GetDatastoresPlainArgs extends com.pulumi.resources.InvokeArg
     public static final GetDatastoresPlainArgs Empty = new GetDatastoresPlainArgs();
 
     /**
-     * A node name.
+     * The list of datastores.
+     * 
+     */
+    @Import(name="datastores")
+    private @Nullable List<GetDatastoresDatastore> datastores;
+
+    /**
+     * @return The list of datastores.
+     * 
+     */
+    public Optional<List<GetDatastoresDatastore>> datastores() {
+        return Optional.ofNullable(this.datastores);
+    }
+
+    /**
+     * The filters to apply to the stores.
+     * 
+     */
+    @Import(name="filters")
+    private @Nullable GetDatastoresFilters filters;
+
+    /**
+     * @return The filters to apply to the stores.
+     * 
+     */
+    public Optional<GetDatastoresFilters> filters() {
+        return Optional.ofNullable(this.filters);
+    }
+
+    /**
+     * The name of the node to retrieve the stores from.
      * 
      */
     @Import(name="nodeName", required=true)
     private String nodeName;
 
     /**
-     * @return A node name.
+     * @return The name of the node to retrieve the stores from.
      * 
      */
     public String nodeName() {
@@ -31,6 +66,8 @@ public final class GetDatastoresPlainArgs extends com.pulumi.resources.InvokeArg
     private GetDatastoresPlainArgs() {}
 
     private GetDatastoresPlainArgs(GetDatastoresPlainArgs $) {
+        this.datastores = $.datastores;
+        this.filters = $.filters;
         this.nodeName = $.nodeName;
     }
 
@@ -53,7 +90,39 @@ public final class GetDatastoresPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param nodeName A node name.
+         * @param datastores The list of datastores.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datastores(@Nullable List<GetDatastoresDatastore> datastores) {
+            $.datastores = datastores;
+            return this;
+        }
+
+        /**
+         * @param datastores The list of datastores.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datastores(GetDatastoresDatastore... datastores) {
+            return datastores(List.of(datastores));
+        }
+
+        /**
+         * @param filters The filters to apply to the stores.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filters(@Nullable GetDatastoresFilters filters) {
+            $.filters = filters;
+            return this;
+        }
+
+        /**
+         * @param nodeName The name of the node to retrieve the stores from.
          * 
          * @return builder
          * 

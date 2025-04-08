@@ -5,94 +5,51 @@ package io.muehlbachler.pulumi.proxmoxve.Storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Boolean;
-import java.lang.Integer;
+import io.muehlbachler.pulumi.proxmoxve.Storage.outputs.GetDatastoresDatastore;
+import io.muehlbachler.pulumi.proxmoxve.Storage.outputs.GetDatastoresFilters;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDatastoresResult {
     /**
-     * @return Whether the datastore is active.
+     * @return The list of datastores.
      * 
      */
-    private List<Boolean> actives;
+    private @Nullable List<GetDatastoresDatastore> datastores;
     /**
-     * @return The allowed content types.
+     * @return The filters to apply to the stores.
      * 
      */
-    private List<List<String>> contentTypes;
-    /**
-     * @return The datastore identifiers.
-     * 
-     */
-    private List<String> datastoreIds;
-    /**
-     * @return Whether the datastore is enabled.
-     * 
-     */
-    private List<Boolean> enableds;
+    private @Nullable GetDatastoresFilters filters;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return The name of the node to retrieve the stores from.
+     * 
+     */
     private String nodeName;
-    /**
-     * @return Whether the datastore is shared.
-     * 
-     */
-    private List<Boolean> shareds;
-    /**
-     * @return The available space in bytes.
-     * 
-     */
-    private List<Integer> spaceAvailables;
-    /**
-     * @return The total space in bytes.
-     * 
-     */
-    private List<Integer> spaceTotals;
-    /**
-     * @return The used space in bytes.
-     * 
-     */
-    private List<Integer> spaceUseds;
-    /**
-     * @return The storage types.
-     * 
-     */
-    private List<String> types;
 
     private GetDatastoresResult() {}
     /**
-     * @return Whether the datastore is active.
+     * @return The list of datastores.
      * 
      */
-    public List<Boolean> actives() {
-        return this.actives;
+    public List<GetDatastoresDatastore> datastores() {
+        return this.datastores == null ? List.of() : this.datastores;
     }
     /**
-     * @return The allowed content types.
+     * @return The filters to apply to the stores.
      * 
      */
-    public List<List<String>> contentTypes() {
-        return this.contentTypes;
-    }
-    /**
-     * @return The datastore identifiers.
-     * 
-     */
-    public List<String> datastoreIds() {
-        return this.datastoreIds;
-    }
-    /**
-     * @return Whether the datastore is enabled.
-     * 
-     */
-    public List<Boolean> enableds() {
-        return this.enableds;
+    public Optional<GetDatastoresFilters> filters() {
+        return Optional.ofNullable(this.filters);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -101,43 +58,12 @@ public final class GetDatastoresResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The name of the node to retrieve the stores from.
+     * 
+     */
     public String nodeName() {
         return this.nodeName;
-    }
-    /**
-     * @return Whether the datastore is shared.
-     * 
-     */
-    public List<Boolean> shareds() {
-        return this.shareds;
-    }
-    /**
-     * @return The available space in bytes.
-     * 
-     */
-    public List<Integer> spaceAvailables() {
-        return this.spaceAvailables;
-    }
-    /**
-     * @return The total space in bytes.
-     * 
-     */
-    public List<Integer> spaceTotals() {
-        return this.spaceTotals;
-    }
-    /**
-     * @return The used space in bytes.
-     * 
-     */
-    public List<Integer> spaceUseds() {
-        return this.spaceUseds;
-    }
-    /**
-     * @return The storage types.
-     * 
-     */
-    public List<String> types() {
-        return this.types;
     }
 
     public static Builder builder() {
@@ -149,73 +75,33 @@ public final class GetDatastoresResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<Boolean> actives;
-        private List<List<String>> contentTypes;
-        private List<String> datastoreIds;
-        private List<Boolean> enableds;
+        private @Nullable List<GetDatastoresDatastore> datastores;
+        private @Nullable GetDatastoresFilters filters;
         private String id;
         private String nodeName;
-        private List<Boolean> shareds;
-        private List<Integer> spaceAvailables;
-        private List<Integer> spaceTotals;
-        private List<Integer> spaceUseds;
-        private List<String> types;
         public Builder() {}
         public Builder(GetDatastoresResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.actives = defaults.actives;
-    	      this.contentTypes = defaults.contentTypes;
-    	      this.datastoreIds = defaults.datastoreIds;
-    	      this.enableds = defaults.enableds;
+    	      this.datastores = defaults.datastores;
+    	      this.filters = defaults.filters;
     	      this.id = defaults.id;
     	      this.nodeName = defaults.nodeName;
-    	      this.shareds = defaults.shareds;
-    	      this.spaceAvailables = defaults.spaceAvailables;
-    	      this.spaceTotals = defaults.spaceTotals;
-    	      this.spaceUseds = defaults.spaceUseds;
-    	      this.types = defaults.types;
         }
 
         @CustomType.Setter
-        public Builder actives(List<Boolean> actives) {
-            if (actives == null) {
-              throw new MissingRequiredPropertyException("GetDatastoresResult", "actives");
-            }
-            this.actives = actives;
+        public Builder datastores(@Nullable List<GetDatastoresDatastore> datastores) {
+
+            this.datastores = datastores;
             return this;
         }
-        public Builder actives(Boolean... actives) {
-            return actives(List.of(actives));
+        public Builder datastores(GetDatastoresDatastore... datastores) {
+            return datastores(List.of(datastores));
         }
         @CustomType.Setter
-        public Builder contentTypes(List<List<String>> contentTypes) {
-            if (contentTypes == null) {
-              throw new MissingRequiredPropertyException("GetDatastoresResult", "contentTypes");
-            }
-            this.contentTypes = contentTypes;
+        public Builder filters(@Nullable GetDatastoresFilters filters) {
+
+            this.filters = filters;
             return this;
-        }
-        @CustomType.Setter
-        public Builder datastoreIds(List<String> datastoreIds) {
-            if (datastoreIds == null) {
-              throw new MissingRequiredPropertyException("GetDatastoresResult", "datastoreIds");
-            }
-            this.datastoreIds = datastoreIds;
-            return this;
-        }
-        public Builder datastoreIds(String... datastoreIds) {
-            return datastoreIds(List.of(datastoreIds));
-        }
-        @CustomType.Setter
-        public Builder enableds(List<Boolean> enableds) {
-            if (enableds == null) {
-              throw new MissingRequiredPropertyException("GetDatastoresResult", "enableds");
-            }
-            this.enableds = enableds;
-            return this;
-        }
-        public Builder enableds(Boolean... enableds) {
-            return enableds(List.of(enableds));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -233,74 +119,12 @@ public final class GetDatastoresResult {
             this.nodeName = nodeName;
             return this;
         }
-        @CustomType.Setter
-        public Builder shareds(List<Boolean> shareds) {
-            if (shareds == null) {
-              throw new MissingRequiredPropertyException("GetDatastoresResult", "shareds");
-            }
-            this.shareds = shareds;
-            return this;
-        }
-        public Builder shareds(Boolean... shareds) {
-            return shareds(List.of(shareds));
-        }
-        @CustomType.Setter
-        public Builder spaceAvailables(List<Integer> spaceAvailables) {
-            if (spaceAvailables == null) {
-              throw new MissingRequiredPropertyException("GetDatastoresResult", "spaceAvailables");
-            }
-            this.spaceAvailables = spaceAvailables;
-            return this;
-        }
-        public Builder spaceAvailables(Integer... spaceAvailables) {
-            return spaceAvailables(List.of(spaceAvailables));
-        }
-        @CustomType.Setter
-        public Builder spaceTotals(List<Integer> spaceTotals) {
-            if (spaceTotals == null) {
-              throw new MissingRequiredPropertyException("GetDatastoresResult", "spaceTotals");
-            }
-            this.spaceTotals = spaceTotals;
-            return this;
-        }
-        public Builder spaceTotals(Integer... spaceTotals) {
-            return spaceTotals(List.of(spaceTotals));
-        }
-        @CustomType.Setter
-        public Builder spaceUseds(List<Integer> spaceUseds) {
-            if (spaceUseds == null) {
-              throw new MissingRequiredPropertyException("GetDatastoresResult", "spaceUseds");
-            }
-            this.spaceUseds = spaceUseds;
-            return this;
-        }
-        public Builder spaceUseds(Integer... spaceUseds) {
-            return spaceUseds(List.of(spaceUseds));
-        }
-        @CustomType.Setter
-        public Builder types(List<String> types) {
-            if (types == null) {
-              throw new MissingRequiredPropertyException("GetDatastoresResult", "types");
-            }
-            this.types = types;
-            return this;
-        }
-        public Builder types(String... types) {
-            return types(List.of(types));
-        }
         public GetDatastoresResult build() {
             final var _resultValue = new GetDatastoresResult();
-            _resultValue.actives = actives;
-            _resultValue.contentTypes = contentTypes;
-            _resultValue.datastoreIds = datastoreIds;
-            _resultValue.enableds = enableds;
+            _resultValue.datastores = datastores;
+            _resultValue.filters = filters;
             _resultValue.id = id;
             _resultValue.nodeName = nodeName;
-            _resultValue.shareds = shareds;
-            _resultValue.spaceAvailables = spaceAvailables;
-            _resultValue.spaceTotals = spaceTotals;
-            _resultValue.spaceUseds = spaceUseds;
-            _resultValue.types = types;
             return _resultValue;
         }
     }

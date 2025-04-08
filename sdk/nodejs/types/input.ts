@@ -971,6 +971,130 @@ export namespace Storage {
          */
         resize?: pulumi.Input<number>;
     }
+
+    export interface GetDatastoresDatastore {
+        /**
+         * Whether the store is active.
+         */
+        active?: boolean;
+        /**
+         * Allowed store content types.
+         */
+        contentTypes: string[];
+        /**
+         * Whether the store is enabled.
+         */
+        enabled?: boolean;
+        /**
+         * The ID of the store.
+         */
+        id: string;
+        /**
+         * The name of the node the store is on.
+         */
+        nodeName: string;
+        /**
+         * Shared flag from store configuration.
+         */
+        shared?: boolean;
+        /**
+         * Available store space in bytes.
+         */
+        spaceAvailable?: number;
+        /**
+         * Total store space in bytes.
+         */
+        spaceTotal?: number;
+        /**
+         * Used store space in bytes.
+         */
+        spaceUsed?: number;
+        /**
+         * Used fraction (used/total).
+         */
+        spaceUsedFraction?: number;
+        /**
+         * Store type.
+         */
+        type: string;
+    }
+
+    export interface GetDatastoresDatastoreArgs {
+        /**
+         * Whether the store is active.
+         */
+        active?: pulumi.Input<boolean>;
+        /**
+         * Allowed store content types.
+         */
+        contentTypes: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Whether the store is enabled.
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * The ID of the store.
+         */
+        id: pulumi.Input<string>;
+        /**
+         * The name of the node the store is on.
+         */
+        nodeName: pulumi.Input<string>;
+        /**
+         * Shared flag from store configuration.
+         */
+        shared?: pulumi.Input<boolean>;
+        /**
+         * Available store space in bytes.
+         */
+        spaceAvailable?: pulumi.Input<number>;
+        /**
+         * Total store space in bytes.
+         */
+        spaceTotal?: pulumi.Input<number>;
+        /**
+         * Used store space in bytes.
+         */
+        spaceUsed?: pulumi.Input<number>;
+        /**
+         * Used fraction (used/total).
+         */
+        spaceUsedFraction?: pulumi.Input<number>;
+        /**
+         * Store type.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface GetDatastoresFilters {
+        /**
+         * Only list stores with the given content types.
+         */
+        contentTypes?: string[];
+        /**
+         * Only list stores with the given ID.
+         */
+        id?: string;
+        /**
+         * If `target` is different to `nodeName`, then only lists shared stores which content is accessible on this node and the specified `target` node.
+         */
+        target?: string;
+    }
+
+    export interface GetDatastoresFiltersArgs {
+        /**
+         * Only list stores with the given content types.
+         */
+        contentTypes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Only list stores with the given ID.
+         */
+        id?: pulumi.Input<string>;
+        /**
+         * If `target` is different to `nodeName`, then only lists shared stores which content is accessible on this node and the specified `target` node.
+         */
+        target?: pulumi.Input<string>;
+    }
 }
 
 export namespace VM {
@@ -1495,12 +1619,6 @@ export namespace VM {
          */
         type?: pulumi.Input<string>;
         /**
-         * Whether to do an automatic package upgrade after the first boot
-         *
-         * @deprecated The `upgrade` attribute is deprecated and will be removed in a future release.
-         */
-        upgrade?: pulumi.Input<boolean>;
-        /**
          * The user account configuration (conflicts
          * with `userDataFileId`).
          */
@@ -1522,14 +1640,6 @@ export namespace VM {
          * The DNS search domain.
          */
         domain?: pulumi.Input<string>;
-        /**
-         * The DNS server. The `server` attribute is
-         * deprecated and will be removed in a future release. Please use the
-         * `servers` attribute instead.
-         *
-         * @deprecated The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
-         */
-        server?: pulumi.Input<string>;
         /**
          * The list of DNS servers.
          */

@@ -19,6 +19,10 @@ __all__ = [
     'FileSourceFileArgsDict',
     'FileSourceRawArgs',
     'FileSourceRawArgsDict',
+    'GetDatastoresDatastoreArgs',
+    'GetDatastoresDatastoreArgsDict',
+    'GetDatastoresFiltersArgs',
+    'GetDatastoresFiltersArgsDict',
 ]
 
 MYPY = False
@@ -234,5 +238,305 @@ class FileSourceRawArgs:
     @resize.setter
     def resize(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "resize", value)
+
+
+if not MYPY:
+    class GetDatastoresDatastoreArgsDict(TypedDict):
+        content_types: Sequence[str]
+        """
+        Allowed store content types.
+        """
+        id: str
+        """
+        The ID of the store.
+        """
+        node_name: str
+        """
+        The name of the node the store is on.
+        """
+        type: str
+        """
+        Store type.
+        """
+        active: NotRequired[bool]
+        """
+        Whether the store is active.
+        """
+        enabled: NotRequired[bool]
+        """
+        Whether the store is enabled.
+        """
+        shared: NotRequired[bool]
+        """
+        Shared flag from store configuration.
+        """
+        space_available: NotRequired[int]
+        """
+        Available store space in bytes.
+        """
+        space_total: NotRequired[int]
+        """
+        Total store space in bytes.
+        """
+        space_used: NotRequired[int]
+        """
+        Used store space in bytes.
+        """
+        space_used_fraction: NotRequired[float]
+        """
+        Used fraction (used/total).
+        """
+elif False:
+    GetDatastoresDatastoreArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetDatastoresDatastoreArgs:
+    def __init__(__self__, *,
+                 content_types: Sequence[str],
+                 id: str,
+                 node_name: str,
+                 type: str,
+                 active: Optional[bool] = None,
+                 enabled: Optional[bool] = None,
+                 shared: Optional[bool] = None,
+                 space_available: Optional[int] = None,
+                 space_total: Optional[int] = None,
+                 space_used: Optional[int] = None,
+                 space_used_fraction: Optional[float] = None):
+        """
+        :param Sequence[str] content_types: Allowed store content types.
+        :param str id: The ID of the store.
+        :param str node_name: The name of the node the store is on.
+        :param str type: Store type.
+        :param bool active: Whether the store is active.
+        :param bool enabled: Whether the store is enabled.
+        :param bool shared: Shared flag from store configuration.
+        :param int space_available: Available store space in bytes.
+        :param int space_total: Total store space in bytes.
+        :param int space_used: Used store space in bytes.
+        :param float space_used_fraction: Used fraction (used/total).
+        """
+        pulumi.set(__self__, "content_types", content_types)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "node_name", node_name)
+        pulumi.set(__self__, "type", type)
+        if active is not None:
+            pulumi.set(__self__, "active", active)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if shared is not None:
+            pulumi.set(__self__, "shared", shared)
+        if space_available is not None:
+            pulumi.set(__self__, "space_available", space_available)
+        if space_total is not None:
+            pulumi.set(__self__, "space_total", space_total)
+        if space_used is not None:
+            pulumi.set(__self__, "space_used", space_used)
+        if space_used_fraction is not None:
+            pulumi.set(__self__, "space_used_fraction", space_used_fraction)
+
+    @property
+    @pulumi.getter(name="contentTypes")
+    def content_types(self) -> Sequence[str]:
+        """
+        Allowed store content types.
+        """
+        return pulumi.get(self, "content_types")
+
+    @content_types.setter
+    def content_types(self, value: Sequence[str]):
+        pulumi.set(self, "content_types", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the store.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: str):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="nodeName")
+    def node_name(self) -> str:
+        """
+        The name of the node the store is on.
+        """
+        return pulumi.get(self, "node_name")
+
+    @node_name.setter
+    def node_name(self, value: str):
+        pulumi.set(self, "node_name", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Store type.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: str):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def active(self) -> Optional[bool]:
+        """
+        Whether the store is active.
+        """
+        return pulumi.get(self, "active")
+
+    @active.setter
+    def active(self, value: Optional[bool]):
+        pulumi.set(self, "active", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether the store is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def shared(self) -> Optional[bool]:
+        """
+        Shared flag from store configuration.
+        """
+        return pulumi.get(self, "shared")
+
+    @shared.setter
+    def shared(self, value: Optional[bool]):
+        pulumi.set(self, "shared", value)
+
+    @property
+    @pulumi.getter(name="spaceAvailable")
+    def space_available(self) -> Optional[int]:
+        """
+        Available store space in bytes.
+        """
+        return pulumi.get(self, "space_available")
+
+    @space_available.setter
+    def space_available(self, value: Optional[int]):
+        pulumi.set(self, "space_available", value)
+
+    @property
+    @pulumi.getter(name="spaceTotal")
+    def space_total(self) -> Optional[int]:
+        """
+        Total store space in bytes.
+        """
+        return pulumi.get(self, "space_total")
+
+    @space_total.setter
+    def space_total(self, value: Optional[int]):
+        pulumi.set(self, "space_total", value)
+
+    @property
+    @pulumi.getter(name="spaceUsed")
+    def space_used(self) -> Optional[int]:
+        """
+        Used store space in bytes.
+        """
+        return pulumi.get(self, "space_used")
+
+    @space_used.setter
+    def space_used(self, value: Optional[int]):
+        pulumi.set(self, "space_used", value)
+
+    @property
+    @pulumi.getter(name="spaceUsedFraction")
+    def space_used_fraction(self) -> Optional[float]:
+        """
+        Used fraction (used/total).
+        """
+        return pulumi.get(self, "space_used_fraction")
+
+    @space_used_fraction.setter
+    def space_used_fraction(self, value: Optional[float]):
+        pulumi.set(self, "space_used_fraction", value)
+
+
+if not MYPY:
+    class GetDatastoresFiltersArgsDict(TypedDict):
+        content_types: NotRequired[Sequence[str]]
+        """
+        Only list stores with the given content types.
+        """
+        id: NotRequired[str]
+        """
+        Only list stores with the given ID.
+        """
+        target: NotRequired[str]
+        """
+        If `target` is different to `node_name`, then only lists shared stores which content is accessible on this node and the specified `target` node.
+        """
+elif False:
+    GetDatastoresFiltersArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetDatastoresFiltersArgs:
+    def __init__(__self__, *,
+                 content_types: Optional[Sequence[str]] = None,
+                 id: Optional[str] = None,
+                 target: Optional[str] = None):
+        """
+        :param Sequence[str] content_types: Only list stores with the given content types.
+        :param str id: Only list stores with the given ID.
+        :param str target: If `target` is different to `node_name`, then only lists shared stores which content is accessible on this node and the specified `target` node.
+        """
+        if content_types is not None:
+            pulumi.set(__self__, "content_types", content_types)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if target is not None:
+            pulumi.set(__self__, "target", target)
+
+    @property
+    @pulumi.getter(name="contentTypes")
+    def content_types(self) -> Optional[Sequence[str]]:
+        """
+        Only list stores with the given content types.
+        """
+        return pulumi.get(self, "content_types")
+
+    @content_types.setter
+    def content_types(self, value: Optional[Sequence[str]]):
+        pulumi.set(self, "content_types", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Only list stores with the given ID.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def target(self) -> Optional[str]:
+        """
+        If `target` is different to `node_name`, then only lists shared stores which content is accessible on this node and the specified `target` node.
+        """
+        return pulumi.get(self, "target")
+
+    @target.setter
+    def target(self, value: Optional[str]):
+        pulumi.set(self, "target", value)
 
 

@@ -4,7 +4,7 @@
 package config
 
 import (
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/internal"
+	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )

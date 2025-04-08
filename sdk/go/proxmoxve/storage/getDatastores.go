@@ -7,37 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/internal"
+	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves information about all the datastores available to a specific node.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/storage"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := storage.GetDatastores(ctx, &storage.GetDatastoresArgs{
-//				NodeName: "first-node",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetDatastores(ctx *pulumi.Context, args *GetDatastoresArgs, opts ...pulumi.InvokeOption) (*GetDatastoresResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatastoresResult
@@ -50,33 +24,24 @@ func GetDatastores(ctx *pulumi.Context, args *GetDatastoresArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getDatastores.
 type GetDatastoresArgs struct {
-	// A node name.
+	// The list of datastores.
+	Datastores []GetDatastoresDatastore `pulumi:"datastores"`
+	// The filters to apply to the stores.
+	Filters *GetDatastoresFilters `pulumi:"filters"`
+	// The name of the node to retrieve the stores from.
 	NodeName string `pulumi:"nodeName"`
 }
 
 // A collection of values returned by getDatastores.
 type GetDatastoresResult struct {
-	// Whether the datastore is active.
-	Actives []bool `pulumi:"actives"`
-	// The allowed content types.
-	ContentTypes [][]string `pulumi:"contentTypes"`
-	// The datastore identifiers.
-	DatastoreIds []string `pulumi:"datastoreIds"`
-	// Whether the datastore is enabled.
-	Enableds []bool `pulumi:"enableds"`
+	// The list of datastores.
+	Datastores []GetDatastoresDatastore `pulumi:"datastores"`
+	// The filters to apply to the stores.
+	Filters *GetDatastoresFilters `pulumi:"filters"`
 	// The provider-assigned unique ID for this managed resource.
-	Id       string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The name of the node to retrieve the stores from.
 	NodeName string `pulumi:"nodeName"`
-	// Whether the datastore is shared.
-	Shareds []bool `pulumi:"shareds"`
-	// The available space in bytes.
-	SpaceAvailables []int `pulumi:"spaceAvailables"`
-	// The total space in bytes.
-	SpaceTotals []int `pulumi:"spaceTotals"`
-	// The used space in bytes.
-	SpaceUseds []int `pulumi:"spaceUseds"`
-	// The storage types.
-	Types []string `pulumi:"types"`
 }
 
 func GetDatastoresOutput(ctx *pulumi.Context, args GetDatastoresOutputArgs, opts ...pulumi.InvokeOption) GetDatastoresResultOutput {
@@ -90,7 +55,11 @@ func GetDatastoresOutput(ctx *pulumi.Context, args GetDatastoresOutputArgs, opts
 
 // A collection of arguments for invoking getDatastores.
 type GetDatastoresOutputArgs struct {
-	// A node name.
+	// The list of datastores.
+	Datastores GetDatastoresDatastoreArrayInput `pulumi:"datastores"`
+	// The filters to apply to the stores.
+	Filters GetDatastoresFiltersPtrInput `pulumi:"filters"`
+	// The name of the node to retrieve the stores from.
 	NodeName pulumi.StringInput `pulumi:"nodeName"`
 }
 
@@ -113,24 +82,14 @@ func (o GetDatastoresResultOutput) ToGetDatastoresResultOutputWithContext(ctx co
 	return o
 }
 
-// Whether the datastore is active.
-func (o GetDatastoresResultOutput) Actives() pulumi.BoolArrayOutput {
-	return o.ApplyT(func(v GetDatastoresResult) []bool { return v.Actives }).(pulumi.BoolArrayOutput)
+// The list of datastores.
+func (o GetDatastoresResultOutput) Datastores() GetDatastoresDatastoreArrayOutput {
+	return o.ApplyT(func(v GetDatastoresResult) []GetDatastoresDatastore { return v.Datastores }).(GetDatastoresDatastoreArrayOutput)
 }
 
-// The allowed content types.
-func (o GetDatastoresResultOutput) ContentTypes() pulumi.StringArrayArrayOutput {
-	return o.ApplyT(func(v GetDatastoresResult) [][]string { return v.ContentTypes }).(pulumi.StringArrayArrayOutput)
-}
-
-// The datastore identifiers.
-func (o GetDatastoresResultOutput) DatastoreIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetDatastoresResult) []string { return v.DatastoreIds }).(pulumi.StringArrayOutput)
-}
-
-// Whether the datastore is enabled.
-func (o GetDatastoresResultOutput) Enableds() pulumi.BoolArrayOutput {
-	return o.ApplyT(func(v GetDatastoresResult) []bool { return v.Enableds }).(pulumi.BoolArrayOutput)
+// The filters to apply to the stores.
+func (o GetDatastoresResultOutput) Filters() GetDatastoresFiltersPtrOutput {
+	return o.ApplyT(func(v GetDatastoresResult) *GetDatastoresFilters { return v.Filters }).(GetDatastoresFiltersPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -138,33 +97,9 @@ func (o GetDatastoresResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatastoresResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the node to retrieve the stores from.
 func (o GetDatastoresResultOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatastoresResult) string { return v.NodeName }).(pulumi.StringOutput)
-}
-
-// Whether the datastore is shared.
-func (o GetDatastoresResultOutput) Shareds() pulumi.BoolArrayOutput {
-	return o.ApplyT(func(v GetDatastoresResult) []bool { return v.Shareds }).(pulumi.BoolArrayOutput)
-}
-
-// The available space in bytes.
-func (o GetDatastoresResultOutput) SpaceAvailables() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v GetDatastoresResult) []int { return v.SpaceAvailables }).(pulumi.IntArrayOutput)
-}
-
-// The total space in bytes.
-func (o GetDatastoresResultOutput) SpaceTotals() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v GetDatastoresResult) []int { return v.SpaceTotals }).(pulumi.IntArrayOutput)
-}
-
-// The used space in bytes.
-func (o GetDatastoresResultOutput) SpaceUseds() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v GetDatastoresResult) []int { return v.SpaceUseds }).(pulumi.IntArrayOutput)
-}
-
-// The storage types.
-func (o GetDatastoresResultOutput) Types() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetDatastoresResult) []string { return v.Types }).(pulumi.StringArrayOutput)
 }
 
 func init() {

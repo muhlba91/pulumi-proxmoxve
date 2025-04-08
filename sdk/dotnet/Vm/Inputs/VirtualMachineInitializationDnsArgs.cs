@@ -18,14 +18,6 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
-        /// <summary>
-        /// The DNS server. The `server` attribute is
-        /// deprecated and will be removed in a future release. Please use the
-        /// `servers` attribute instead.
-        /// </summary>
-        [Input("server")]
-        public Input<string>? Server { get; set; }
-
         [Input("servers")]
         private InputList<string>? _servers;
 

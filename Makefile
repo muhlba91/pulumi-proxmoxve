@@ -13,7 +13,7 @@ PROVIDER        := pulumi-resource-${PACK}
 VERSION         := $(shell pulumictl get version)
 
 JAVA_GEN 		 := pulumi-java-gen
-JAVA_GEN_VERSION := v1.8.0
+JAVA_GEN_VERSION := v1.9.0
 
 TESTPARALLELISM := 4
 
@@ -75,11 +75,11 @@ build_python:: install_plugins tfgen # build the python sdk
 	$(WORKING_DIR)/bin/$(TFGEN) python --overlays provider/overlays/python --out sdk/python/
 	cd sdk/python/ && \
         cp ../../README.md . && \
-        python3 setup.py clean --all 2>/dev/null && \
-        rm -rf ./bin/ ../python.bin/ && cp -R . ../python.bin && mv ../python.bin ./bin && \
-        sed -i.bak -e 's/^VERSION = .*/VERSION = "$(PYPI_VERSION)"/g' -e 's/^PLUGIN_VERSION = .*/PLUGIN_VERSION = "$(VERSION)"/g' ./bin/setup.py && \
-        rm ./bin/setup.py.bak && \
-        cd ./bin && python3 setup.py build sdist
+				python3 -m venv venv && \
+				rm -rf ./bin/ ../python.bin/ && cp -R . ../python.bin && mv ../python.bin ./bin && \
+				./venv/bin/python -m pip install build && \
+				cd ./bin && \
+        ../venv/bin/python -m build .
 
 build_dotnet:: DOTNET_VERSION := $(shell pulumictl get version --language dotnet)
 build_dotnet:: install_plugins tfgen # build the dotnet sdk

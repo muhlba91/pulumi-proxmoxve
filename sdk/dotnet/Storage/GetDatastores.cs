@@ -13,72 +13,18 @@ namespace Pulumi.ProxmoxVE.Storage
     {
         /// <summary>
         /// Retrieves information about all the datastores available to a specific node.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using ProxmoxVE = Pulumi.ProxmoxVE;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var firstNode = ProxmoxVE.Storage.GetDatastores.Invoke(new()
-        ///     {
-        ///         NodeName = "first-node",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetDatastoresResult> InvokeAsync(GetDatastoresArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatastoresResult>("proxmoxve:Storage/getDatastores:getDatastores", args ?? new GetDatastoresArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about all the datastores available to a specific node.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using ProxmoxVE = Pulumi.ProxmoxVE;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var firstNode = ProxmoxVE.Storage.GetDatastores.Invoke(new()
-        ///     {
-        ///         NodeName = "first-node",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetDatastoresResult> Invoke(GetDatastoresInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatastoresResult>("proxmoxve:Storage/getDatastores:getDatastores", args ?? new GetDatastoresInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about all the datastores available to a specific node.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using ProxmoxVE = Pulumi.ProxmoxVE;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var firstNode = ProxmoxVE.Storage.GetDatastores.Invoke(new()
-        ///     {
-        ///         NodeName = "first-node",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetDatastoresResult> Invoke(GetDatastoresInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatastoresResult>("proxmoxve:Storage/getDatastores:getDatastores", args ?? new GetDatastoresInvokeArgs(), options.WithDefaults());
@@ -87,8 +33,26 @@ namespace Pulumi.ProxmoxVE.Storage
 
     public sealed class GetDatastoresArgs : global::Pulumi.InvokeArgs
     {
+        [Input("datastores")]
+        private List<Inputs.GetDatastoresDatastoreArgs>? _datastores;
+
         /// <summary>
-        /// A node name.
+        /// The list of datastores.
+        /// </summary>
+        public List<Inputs.GetDatastoresDatastoreArgs> Datastores
+        {
+            get => _datastores ?? (_datastores = new List<Inputs.GetDatastoresDatastoreArgs>());
+            set => _datastores = value;
+        }
+
+        /// <summary>
+        /// The filters to apply to the stores.
+        /// </summary>
+        [Input("filters")]
+        public Inputs.GetDatastoresFiltersArgs? Filters { get; set; }
+
+        /// <summary>
+        /// The name of the node to retrieve the stores from.
         /// </summary>
         [Input("nodeName", required: true)]
         public string NodeName { get; set; } = null!;
@@ -101,8 +65,26 @@ namespace Pulumi.ProxmoxVE.Storage
 
     public sealed class GetDatastoresInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("datastores")]
+        private InputList<Inputs.GetDatastoresDatastoreInputArgs>? _datastores;
+
         /// <summary>
-        /// A node name.
+        /// The list of datastores.
+        /// </summary>
+        public InputList<Inputs.GetDatastoresDatastoreInputArgs> Datastores
+        {
+            get => _datastores ?? (_datastores = new InputList<Inputs.GetDatastoresDatastoreInputArgs>());
+            set => _datastores = value;
+        }
+
+        /// <summary>
+        /// The filters to apply to the stores.
+        /// </summary>
+        [Input("filters")]
+        public Input<Inputs.GetDatastoresFiltersInputArgs>? Filters { get; set; }
+
+        /// <summary>
+        /// The name of the node to retrieve the stores from.
         /// </summary>
         [Input("nodeName", required: true)]
         public Input<string> NodeName { get; set; } = null!;
@@ -118,82 +100,36 @@ namespace Pulumi.ProxmoxVE.Storage
     public sealed class GetDatastoresResult
     {
         /// <summary>
-        /// Whether the datastore is active.
+        /// The list of datastores.
         /// </summary>
-        public readonly ImmutableArray<bool> Actives;
+        public readonly ImmutableArray<Outputs.GetDatastoresDatastoreResult> Datastores;
         /// <summary>
-        /// The allowed content types.
+        /// The filters to apply to the stores.
         /// </summary>
-        public readonly ImmutableArray<ImmutableArray<string>> ContentTypes;
-        /// <summary>
-        /// The datastore identifiers.
-        /// </summary>
-        public readonly ImmutableArray<string> DatastoreIds;
-        /// <summary>
-        /// Whether the datastore is enabled.
-        /// </summary>
-        public readonly ImmutableArray<bool> Enableds;
+        public readonly Outputs.GetDatastoresFiltersResult? Filters;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The name of the node to retrieve the stores from.
+        /// </summary>
         public readonly string NodeName;
-        /// <summary>
-        /// Whether the datastore is shared.
-        /// </summary>
-        public readonly ImmutableArray<bool> Shareds;
-        /// <summary>
-        /// The available space in bytes.
-        /// </summary>
-        public readonly ImmutableArray<int> SpaceAvailables;
-        /// <summary>
-        /// The total space in bytes.
-        /// </summary>
-        public readonly ImmutableArray<int> SpaceTotals;
-        /// <summary>
-        /// The used space in bytes.
-        /// </summary>
-        public readonly ImmutableArray<int> SpaceUseds;
-        /// <summary>
-        /// The storage types.
-        /// </summary>
-        public readonly ImmutableArray<string> Types;
 
         [OutputConstructor]
         private GetDatastoresResult(
-            ImmutableArray<bool> actives,
+            ImmutableArray<Outputs.GetDatastoresDatastoreResult> datastores,
 
-            ImmutableArray<ImmutableArray<string>> contentTypes,
-
-            ImmutableArray<string> datastoreIds,
-
-            ImmutableArray<bool> enableds,
+            Outputs.GetDatastoresFiltersResult? filters,
 
             string id,
 
-            string nodeName,
-
-            ImmutableArray<bool> shareds,
-
-            ImmutableArray<int> spaceAvailables,
-
-            ImmutableArray<int> spaceTotals,
-
-            ImmutableArray<int> spaceUseds,
-
-            ImmutableArray<string> types)
+            string nodeName)
         {
-            Actives = actives;
-            ContentTypes = contentTypes;
-            DatastoreIds = datastoreIds;
-            Enableds = enableds;
+            Datastores = datastores;
+            Filters = filters;
             Id = id;
             NodeName = nodeName;
-            Shareds = shareds;
-            SpaceAvailables = spaceAvailables;
-            SpaceTotals = spaceTotals;
-            SpaceUseds = spaceUseds;
-            Types = types;
         }
     }
 }

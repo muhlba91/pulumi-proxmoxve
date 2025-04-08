@@ -18,17 +18,6 @@ public final class VirtualMachineInitializationDns {
      */
     private @Nullable String domain;
     /**
-     * @return The DNS server. The `server` attribute is
-     * deprecated and will be removed in a future release. Please use the
-     * `servers` attribute instead.
-     * 
-     * @deprecated
-     * The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
-     * 
-     */
-    @Deprecated /* The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead. */
-    private @Nullable String server;
-    /**
      * @return The list of DNS servers.
      * 
      */
@@ -41,19 +30,6 @@ public final class VirtualMachineInitializationDns {
      */
     public Optional<String> domain() {
         return Optional.ofNullable(this.domain);
-    }
-    /**
-     * @return The DNS server. The `server` attribute is
-     * deprecated and will be removed in a future release. Please use the
-     * `servers` attribute instead.
-     * 
-     * @deprecated
-     * The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
-     * 
-     */
-    @Deprecated /* The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead. */
-    public Optional<String> server() {
-        return Optional.ofNullable(this.server);
     }
     /**
      * @return The list of DNS servers.
@@ -73,13 +49,11 @@ public final class VirtualMachineInitializationDns {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String domain;
-        private @Nullable String server;
         private @Nullable List<String> servers;
         public Builder() {}
         public Builder(VirtualMachineInitializationDns defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.domain = defaults.domain;
-    	      this.server = defaults.server;
     	      this.servers = defaults.servers;
         }
 
@@ -87,12 +61,6 @@ public final class VirtualMachineInitializationDns {
         public Builder domain(@Nullable String domain) {
 
             this.domain = domain;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder server(@Nullable String server) {
-
-            this.server = server;
             return this;
         }
         @CustomType.Setter
@@ -107,7 +75,6 @@ public final class VirtualMachineInitializationDns {
         public VirtualMachineInitializationDns build() {
             final var _resultValue = new VirtualMachineInitializationDns();
             _resultValue.domain = domain;
-            _resultValue.server = server;
             _resultValue.servers = servers;
             return _resultValue;
         }

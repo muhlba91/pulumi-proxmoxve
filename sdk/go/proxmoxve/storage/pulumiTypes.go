@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve/internal"
+	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -436,13 +436,383 @@ func (o FileSourceRawPtrOutput) Resize() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type GetDatastoresDatastore struct {
+	// Whether the store is active.
+	Active *bool `pulumi:"active"`
+	// Allowed store content types.
+	ContentTypes []string `pulumi:"contentTypes"`
+	// Whether the store is enabled.
+	Enabled *bool `pulumi:"enabled"`
+	// The ID of the store.
+	Id string `pulumi:"id"`
+	// The name of the node the store is on.
+	NodeName string `pulumi:"nodeName"`
+	// Shared flag from store configuration.
+	Shared *bool `pulumi:"shared"`
+	// Available store space in bytes.
+	SpaceAvailable *int `pulumi:"spaceAvailable"`
+	// Total store space in bytes.
+	SpaceTotal *int `pulumi:"spaceTotal"`
+	// Used store space in bytes.
+	SpaceUsed *int `pulumi:"spaceUsed"`
+	// Used fraction (used/total).
+	SpaceUsedFraction *float64 `pulumi:"spaceUsedFraction"`
+	// Store type.
+	Type string `pulumi:"type"`
+}
+
+// GetDatastoresDatastoreInput is an input type that accepts GetDatastoresDatastoreArgs and GetDatastoresDatastoreOutput values.
+// You can construct a concrete instance of `GetDatastoresDatastoreInput` via:
+//
+//	GetDatastoresDatastoreArgs{...}
+type GetDatastoresDatastoreInput interface {
+	pulumi.Input
+
+	ToGetDatastoresDatastoreOutput() GetDatastoresDatastoreOutput
+	ToGetDatastoresDatastoreOutputWithContext(context.Context) GetDatastoresDatastoreOutput
+}
+
+type GetDatastoresDatastoreArgs struct {
+	// Whether the store is active.
+	Active pulumi.BoolPtrInput `pulumi:"active"`
+	// Allowed store content types.
+	ContentTypes pulumi.StringArrayInput `pulumi:"contentTypes"`
+	// Whether the store is enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The ID of the store.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the node the store is on.
+	NodeName pulumi.StringInput `pulumi:"nodeName"`
+	// Shared flag from store configuration.
+	Shared pulumi.BoolPtrInput `pulumi:"shared"`
+	// Available store space in bytes.
+	SpaceAvailable pulumi.IntPtrInput `pulumi:"spaceAvailable"`
+	// Total store space in bytes.
+	SpaceTotal pulumi.IntPtrInput `pulumi:"spaceTotal"`
+	// Used store space in bytes.
+	SpaceUsed pulumi.IntPtrInput `pulumi:"spaceUsed"`
+	// Used fraction (used/total).
+	SpaceUsedFraction pulumi.Float64PtrInput `pulumi:"spaceUsedFraction"`
+	// Store type.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatastoresDatastoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatastoresDatastore)(nil)).Elem()
+}
+
+func (i GetDatastoresDatastoreArgs) ToGetDatastoresDatastoreOutput() GetDatastoresDatastoreOutput {
+	return i.ToGetDatastoresDatastoreOutputWithContext(context.Background())
+}
+
+func (i GetDatastoresDatastoreArgs) ToGetDatastoresDatastoreOutputWithContext(ctx context.Context) GetDatastoresDatastoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatastoresDatastoreOutput)
+}
+
+// GetDatastoresDatastoreArrayInput is an input type that accepts GetDatastoresDatastoreArray and GetDatastoresDatastoreArrayOutput values.
+// You can construct a concrete instance of `GetDatastoresDatastoreArrayInput` via:
+//
+//	GetDatastoresDatastoreArray{ GetDatastoresDatastoreArgs{...} }
+type GetDatastoresDatastoreArrayInput interface {
+	pulumi.Input
+
+	ToGetDatastoresDatastoreArrayOutput() GetDatastoresDatastoreArrayOutput
+	ToGetDatastoresDatastoreArrayOutputWithContext(context.Context) GetDatastoresDatastoreArrayOutput
+}
+
+type GetDatastoresDatastoreArray []GetDatastoresDatastoreInput
+
+func (GetDatastoresDatastoreArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatastoresDatastore)(nil)).Elem()
+}
+
+func (i GetDatastoresDatastoreArray) ToGetDatastoresDatastoreArrayOutput() GetDatastoresDatastoreArrayOutput {
+	return i.ToGetDatastoresDatastoreArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatastoresDatastoreArray) ToGetDatastoresDatastoreArrayOutputWithContext(ctx context.Context) GetDatastoresDatastoreArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatastoresDatastoreArrayOutput)
+}
+
+type GetDatastoresDatastoreOutput struct{ *pulumi.OutputState }
+
+func (GetDatastoresDatastoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatastoresDatastore)(nil)).Elem()
+}
+
+func (o GetDatastoresDatastoreOutput) ToGetDatastoresDatastoreOutput() GetDatastoresDatastoreOutput {
+	return o
+}
+
+func (o GetDatastoresDatastoreOutput) ToGetDatastoresDatastoreOutputWithContext(ctx context.Context) GetDatastoresDatastoreOutput {
+	return o
+}
+
+// Whether the store is active.
+func (o GetDatastoresDatastoreOutput) Active() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetDatastoresDatastore) *bool { return v.Active }).(pulumi.BoolPtrOutput)
+}
+
+// Allowed store content types.
+func (o GetDatastoresDatastoreOutput) ContentTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDatastoresDatastore) []string { return v.ContentTypes }).(pulumi.StringArrayOutput)
+}
+
+// Whether the store is enabled.
+func (o GetDatastoresDatastoreOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetDatastoresDatastore) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the store.
+func (o GetDatastoresDatastoreOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatastoresDatastore) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the node the store is on.
+func (o GetDatastoresDatastoreOutput) NodeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatastoresDatastore) string { return v.NodeName }).(pulumi.StringOutput)
+}
+
+// Shared flag from store configuration.
+func (o GetDatastoresDatastoreOutput) Shared() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetDatastoresDatastore) *bool { return v.Shared }).(pulumi.BoolPtrOutput)
+}
+
+// Available store space in bytes.
+func (o GetDatastoresDatastoreOutput) SpaceAvailable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetDatastoresDatastore) *int { return v.SpaceAvailable }).(pulumi.IntPtrOutput)
+}
+
+// Total store space in bytes.
+func (o GetDatastoresDatastoreOutput) SpaceTotal() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetDatastoresDatastore) *int { return v.SpaceTotal }).(pulumi.IntPtrOutput)
+}
+
+// Used store space in bytes.
+func (o GetDatastoresDatastoreOutput) SpaceUsed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetDatastoresDatastore) *int { return v.SpaceUsed }).(pulumi.IntPtrOutput)
+}
+
+// Used fraction (used/total).
+func (o GetDatastoresDatastoreOutput) SpaceUsedFraction() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetDatastoresDatastore) *float64 { return v.SpaceUsedFraction }).(pulumi.Float64PtrOutput)
+}
+
+// Store type.
+func (o GetDatastoresDatastoreOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatastoresDatastore) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatastoresDatastoreArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatastoresDatastoreArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatastoresDatastore)(nil)).Elem()
+}
+
+func (o GetDatastoresDatastoreArrayOutput) ToGetDatastoresDatastoreArrayOutput() GetDatastoresDatastoreArrayOutput {
+	return o
+}
+
+func (o GetDatastoresDatastoreArrayOutput) ToGetDatastoresDatastoreArrayOutputWithContext(ctx context.Context) GetDatastoresDatastoreArrayOutput {
+	return o
+}
+
+func (o GetDatastoresDatastoreArrayOutput) Index(i pulumi.IntInput) GetDatastoresDatastoreOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatastoresDatastore {
+		return vs[0].([]GetDatastoresDatastore)[vs[1].(int)]
+	}).(GetDatastoresDatastoreOutput)
+}
+
+type GetDatastoresFilters struct {
+	// Only list stores with the given content types.
+	ContentTypes []string `pulumi:"contentTypes"`
+	// Only list stores with the given ID.
+	Id *string `pulumi:"id"`
+	// If `target` is different to `nodeName`, then only lists shared stores which content is accessible on this node and the specified `target` node.
+	Target *string `pulumi:"target"`
+}
+
+// GetDatastoresFiltersInput is an input type that accepts GetDatastoresFiltersArgs and GetDatastoresFiltersOutput values.
+// You can construct a concrete instance of `GetDatastoresFiltersInput` via:
+//
+//	GetDatastoresFiltersArgs{...}
+type GetDatastoresFiltersInput interface {
+	pulumi.Input
+
+	ToGetDatastoresFiltersOutput() GetDatastoresFiltersOutput
+	ToGetDatastoresFiltersOutputWithContext(context.Context) GetDatastoresFiltersOutput
+}
+
+type GetDatastoresFiltersArgs struct {
+	// Only list stores with the given content types.
+	ContentTypes pulumi.StringArrayInput `pulumi:"contentTypes"`
+	// Only list stores with the given ID.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// If `target` is different to `nodeName`, then only lists shared stores which content is accessible on this node and the specified `target` node.
+	Target pulumi.StringPtrInput `pulumi:"target"`
+}
+
+func (GetDatastoresFiltersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatastoresFilters)(nil)).Elem()
+}
+
+func (i GetDatastoresFiltersArgs) ToGetDatastoresFiltersOutput() GetDatastoresFiltersOutput {
+	return i.ToGetDatastoresFiltersOutputWithContext(context.Background())
+}
+
+func (i GetDatastoresFiltersArgs) ToGetDatastoresFiltersOutputWithContext(ctx context.Context) GetDatastoresFiltersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatastoresFiltersOutput)
+}
+
+func (i GetDatastoresFiltersArgs) ToGetDatastoresFiltersPtrOutput() GetDatastoresFiltersPtrOutput {
+	return i.ToGetDatastoresFiltersPtrOutputWithContext(context.Background())
+}
+
+func (i GetDatastoresFiltersArgs) ToGetDatastoresFiltersPtrOutputWithContext(ctx context.Context) GetDatastoresFiltersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatastoresFiltersOutput).ToGetDatastoresFiltersPtrOutputWithContext(ctx)
+}
+
+// GetDatastoresFiltersPtrInput is an input type that accepts GetDatastoresFiltersArgs, GetDatastoresFiltersPtr and GetDatastoresFiltersPtrOutput values.
+// You can construct a concrete instance of `GetDatastoresFiltersPtrInput` via:
+//
+//	        GetDatastoresFiltersArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetDatastoresFiltersPtrInput interface {
+	pulumi.Input
+
+	ToGetDatastoresFiltersPtrOutput() GetDatastoresFiltersPtrOutput
+	ToGetDatastoresFiltersPtrOutputWithContext(context.Context) GetDatastoresFiltersPtrOutput
+}
+
+type getDatastoresFiltersPtrType GetDatastoresFiltersArgs
+
+func GetDatastoresFiltersPtr(v *GetDatastoresFiltersArgs) GetDatastoresFiltersPtrInput {
+	return (*getDatastoresFiltersPtrType)(v)
+}
+
+func (*getDatastoresFiltersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetDatastoresFilters)(nil)).Elem()
+}
+
+func (i *getDatastoresFiltersPtrType) ToGetDatastoresFiltersPtrOutput() GetDatastoresFiltersPtrOutput {
+	return i.ToGetDatastoresFiltersPtrOutputWithContext(context.Background())
+}
+
+func (i *getDatastoresFiltersPtrType) ToGetDatastoresFiltersPtrOutputWithContext(ctx context.Context) GetDatastoresFiltersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatastoresFiltersPtrOutput)
+}
+
+type GetDatastoresFiltersOutput struct{ *pulumi.OutputState }
+
+func (GetDatastoresFiltersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatastoresFilters)(nil)).Elem()
+}
+
+func (o GetDatastoresFiltersOutput) ToGetDatastoresFiltersOutput() GetDatastoresFiltersOutput {
+	return o
+}
+
+func (o GetDatastoresFiltersOutput) ToGetDatastoresFiltersOutputWithContext(ctx context.Context) GetDatastoresFiltersOutput {
+	return o
+}
+
+func (o GetDatastoresFiltersOutput) ToGetDatastoresFiltersPtrOutput() GetDatastoresFiltersPtrOutput {
+	return o.ToGetDatastoresFiltersPtrOutputWithContext(context.Background())
+}
+
+func (o GetDatastoresFiltersOutput) ToGetDatastoresFiltersPtrOutputWithContext(ctx context.Context) GetDatastoresFiltersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetDatastoresFilters) *GetDatastoresFilters {
+		return &v
+	}).(GetDatastoresFiltersPtrOutput)
+}
+
+// Only list stores with the given content types.
+func (o GetDatastoresFiltersOutput) ContentTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDatastoresFilters) []string { return v.ContentTypes }).(pulumi.StringArrayOutput)
+}
+
+// Only list stores with the given ID.
+func (o GetDatastoresFiltersOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDatastoresFilters) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// If `target` is different to `nodeName`, then only lists shared stores which content is accessible on this node and the specified `target` node.
+func (o GetDatastoresFiltersOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDatastoresFilters) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+type GetDatastoresFiltersPtrOutput struct{ *pulumi.OutputState }
+
+func (GetDatastoresFiltersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetDatastoresFilters)(nil)).Elem()
+}
+
+func (o GetDatastoresFiltersPtrOutput) ToGetDatastoresFiltersPtrOutput() GetDatastoresFiltersPtrOutput {
+	return o
+}
+
+func (o GetDatastoresFiltersPtrOutput) ToGetDatastoresFiltersPtrOutputWithContext(ctx context.Context) GetDatastoresFiltersPtrOutput {
+	return o
+}
+
+func (o GetDatastoresFiltersPtrOutput) Elem() GetDatastoresFiltersOutput {
+	return o.ApplyT(func(v *GetDatastoresFilters) GetDatastoresFilters {
+		if v != nil {
+			return *v
+		}
+		var ret GetDatastoresFilters
+		return ret
+	}).(GetDatastoresFiltersOutput)
+}
+
+// Only list stores with the given content types.
+func (o GetDatastoresFiltersPtrOutput) ContentTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetDatastoresFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ContentTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Only list stores with the given ID.
+func (o GetDatastoresFiltersPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetDatastoresFilters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// If `target` is different to `nodeName`, then only lists shared stores which content is accessible on this node and the specified `target` node.
+func (o GetDatastoresFiltersPtrOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetDatastoresFilters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Target
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FileSourceFileInput)(nil)).Elem(), FileSourceFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileSourceFilePtrInput)(nil)).Elem(), FileSourceFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileSourceRawInput)(nil)).Elem(), FileSourceRawArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileSourceRawPtrInput)(nil)).Elem(), FileSourceRawArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatastoresDatastoreInput)(nil)).Elem(), GetDatastoresDatastoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatastoresDatastoreArrayInput)(nil)).Elem(), GetDatastoresDatastoreArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatastoresFiltersInput)(nil)).Elem(), GetDatastoresFiltersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatastoresFiltersPtrInput)(nil)).Elem(), GetDatastoresFiltersArgs{})
 	pulumi.RegisterOutputType(FileSourceFileOutput{})
 	pulumi.RegisterOutputType(FileSourceFilePtrOutput{})
 	pulumi.RegisterOutputType(FileSourceRawOutput{})
 	pulumi.RegisterOutputType(FileSourceRawPtrOutput{})
+	pulumi.RegisterOutputType(GetDatastoresDatastoreOutput{})
+	pulumi.RegisterOutputType(GetDatastoresDatastoreArrayOutput{})
+	pulumi.RegisterOutputType(GetDatastoresFiltersOutput{})
+	pulumi.RegisterOutputType(GetDatastoresFiltersPtrOutput{})
 }

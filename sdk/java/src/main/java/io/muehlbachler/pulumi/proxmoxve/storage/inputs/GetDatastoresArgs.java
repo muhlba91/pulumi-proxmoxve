@@ -6,8 +6,13 @@ package io.muehlbachler.pulumi.proxmoxve.Storage.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import io.muehlbachler.pulumi.proxmoxve.Storage.inputs.GetDatastoresDatastoreArgs;
+import io.muehlbachler.pulumi.proxmoxve.Storage.inputs.GetDatastoresFiltersArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetDatastoresArgs extends com.pulumi.resources.InvokeArgs {
@@ -15,14 +20,44 @@ public final class GetDatastoresArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetDatastoresArgs Empty = new GetDatastoresArgs();
 
     /**
-     * A node name.
+     * The list of datastores.
+     * 
+     */
+    @Import(name="datastores")
+    private @Nullable Output<List<GetDatastoresDatastoreArgs>> datastores;
+
+    /**
+     * @return The list of datastores.
+     * 
+     */
+    public Optional<Output<List<GetDatastoresDatastoreArgs>>> datastores() {
+        return Optional.ofNullable(this.datastores);
+    }
+
+    /**
+     * The filters to apply to the stores.
+     * 
+     */
+    @Import(name="filters")
+    private @Nullable Output<GetDatastoresFiltersArgs> filters;
+
+    /**
+     * @return The filters to apply to the stores.
+     * 
+     */
+    public Optional<Output<GetDatastoresFiltersArgs>> filters() {
+        return Optional.ofNullable(this.filters);
+    }
+
+    /**
+     * The name of the node to retrieve the stores from.
      * 
      */
     @Import(name="nodeName", required=true)
     private Output<String> nodeName;
 
     /**
-     * @return A node name.
+     * @return The name of the node to retrieve the stores from.
      * 
      */
     public Output<String> nodeName() {
@@ -32,6 +67,8 @@ public final class GetDatastoresArgs extends com.pulumi.resources.InvokeArgs {
     private GetDatastoresArgs() {}
 
     private GetDatastoresArgs(GetDatastoresArgs $) {
+        this.datastores = $.datastores;
+        this.filters = $.filters;
         this.nodeName = $.nodeName;
     }
 
@@ -54,7 +91,59 @@ public final class GetDatastoresArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param nodeName A node name.
+         * @param datastores The list of datastores.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datastores(@Nullable Output<List<GetDatastoresDatastoreArgs>> datastores) {
+            $.datastores = datastores;
+            return this;
+        }
+
+        /**
+         * @param datastores The list of datastores.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datastores(List<GetDatastoresDatastoreArgs> datastores) {
+            return datastores(Output.of(datastores));
+        }
+
+        /**
+         * @param datastores The list of datastores.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datastores(GetDatastoresDatastoreArgs... datastores) {
+            return datastores(List.of(datastores));
+        }
+
+        /**
+         * @param filters The filters to apply to the stores.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filters(@Nullable Output<GetDatastoresFiltersArgs> filters) {
+            $.filters = filters;
+            return this;
+        }
+
+        /**
+         * @param filters The filters to apply to the stores.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filters(GetDatastoresFiltersArgs filters) {
+            return filters(Output.of(filters));
+        }
+
+        /**
+         * @param nodeName The name of the node to retrieve the stores from.
          * 
          * @return builder
          * 
@@ -65,7 +154,7 @@ public final class GetDatastoresArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param nodeName A node name.
+         * @param nodeName The name of the node to retrieve the stores from.
          * 
          * @return builder
          * 

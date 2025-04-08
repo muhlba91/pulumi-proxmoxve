@@ -2187,10 +2187,6 @@ if not MYPY:
         """
         The cloud-init configuration format
         """
-        upgrade: NotRequired[pulumi.Input[bool]]
-        """
-        Whether to do an automatic package upgrade after the first boot
-        """
         user_account: NotRequired[pulumi.Input['VirtualMachineInitializationUserAccountArgsDict']]
         """
         The user account configuration (conflicts
@@ -2219,7 +2215,6 @@ class VirtualMachineInitializationArgs:
                  meta_data_file_id: Optional[pulumi.Input[str]] = None,
                  network_data_file_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 upgrade: Optional[pulumi.Input[bool]] = None,
                  user_account: Optional[pulumi.Input['VirtualMachineInitializationUserAccountArgs']] = None,
                  user_data_file_id: Optional[pulumi.Input[str]] = None,
                  vendor_data_file_id: Optional[pulumi.Input[str]] = None):
@@ -2239,7 +2234,6 @@ class VirtualMachineInitializationArgs:
                network configuration data passed to the VM via cloud-init (conflicts
                with `ip_config`).
         :param pulumi.Input[str] type: The cloud-init configuration format
-        :param pulumi.Input[bool] upgrade: Whether to do an automatic package upgrade after the first boot
         :param pulumi.Input['VirtualMachineInitializationUserAccountArgs'] user_account: The user account configuration (conflicts
                with `user_data_file_id`).
         :param pulumi.Input[str] user_data_file_id: The identifier for a file containing
@@ -2261,11 +2255,6 @@ class VirtualMachineInitializationArgs:
             pulumi.set(__self__, "network_data_file_id", network_data_file_id)
         if type is not None:
             pulumi.set(__self__, "type", type)
-        if upgrade is not None:
-            warnings.warn("""The `upgrade` attribute is deprecated and will be removed in a future release.""", DeprecationWarning)
-            pulumi.log.warn("""upgrade is deprecated: The `upgrade` attribute is deprecated and will be removed in a future release.""")
-        if upgrade is not None:
-            pulumi.set(__self__, "upgrade", upgrade)
         if user_account is not None:
             pulumi.set(__self__, "user_account", user_account)
         if user_data_file_id is not None:
@@ -2366,19 +2355,6 @@ class VirtualMachineInitializationArgs:
         pulumi.set(self, "type", value)
 
     @property
-    @pulumi.getter
-    @_utilities.deprecated("""The `upgrade` attribute is deprecated and will be removed in a future release.""")
-    def upgrade(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether to do an automatic package upgrade after the first boot
-        """
-        return pulumi.get(self, "upgrade")
-
-    @upgrade.setter
-    def upgrade(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "upgrade", value)
-
-    @property
     @pulumi.getter(name="userAccount")
     def user_account(self) -> Optional[pulumi.Input['VirtualMachineInitializationUserAccountArgs']]:
         """
@@ -2424,12 +2400,6 @@ if not MYPY:
         """
         The DNS search domain.
         """
-        server: NotRequired[pulumi.Input[str]]
-        """
-        The DNS server. The `server` attribute is
-        deprecated and will be removed in a future release. Please use the
-        `servers` attribute instead.
-        """
         servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
         The list of DNS servers.
@@ -2441,22 +2411,13 @@ elif False:
 class VirtualMachineInitializationDnsArgs:
     def __init__(__self__, *,
                  domain: Optional[pulumi.Input[str]] = None,
-                 server: Optional[pulumi.Input[str]] = None,
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] domain: The DNS search domain.
-        :param pulumi.Input[str] server: The DNS server. The `server` attribute is
-               deprecated and will be removed in a future release. Please use the
-               `servers` attribute instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] servers: The list of DNS servers.
         """
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
-        if server is not None:
-            warnings.warn("""The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.""", DeprecationWarning)
-            pulumi.log.warn("""server is deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.""")
-        if server is not None:
-            pulumi.set(__self__, "server", server)
         if servers is not None:
             pulumi.set(__self__, "servers", servers)
 
@@ -2471,21 +2432,6 @@ class VirtualMachineInitializationDnsArgs:
     @domain.setter
     def domain(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "domain", value)
-
-    @property
-    @pulumi.getter
-    @_utilities.deprecated("""The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.""")
-    def server(self) -> Optional[pulumi.Input[str]]:
-        """
-        The DNS server. The `server` attribute is
-        deprecated and will be removed in a future release. Please use the
-        `servers` attribute instead.
-        """
-        return pulumi.get(self, "server")
-
-    @server.setter
-    def server(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "server", value)
 
     @property
     @pulumi.getter

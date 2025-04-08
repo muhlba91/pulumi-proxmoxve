@@ -32,33 +32,6 @@ public final class VirtualMachineInitializationDnsArgs extends com.pulumi.resour
     }
 
     /**
-     * The DNS server. The `server` attribute is
-     * deprecated and will be removed in a future release. Please use the
-     * `servers` attribute instead.
-     * 
-     * @deprecated
-     * The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
-     * 
-     */
-    @Deprecated /* The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead. */
-    @Import(name="server")
-    private @Nullable Output<String> server;
-
-    /**
-     * @return The DNS server. The `server` attribute is
-     * deprecated and will be removed in a future release. Please use the
-     * `servers` attribute instead.
-     * 
-     * @deprecated
-     * The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
-     * 
-     */
-    @Deprecated /* The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead. */
-    public Optional<Output<String>> server() {
-        return Optional.ofNullable(this.server);
-    }
-
-    /**
      * The list of DNS servers.
      * 
      */
@@ -77,7 +50,6 @@ public final class VirtualMachineInitializationDnsArgs extends com.pulumi.resour
 
     private VirtualMachineInitializationDnsArgs(VirtualMachineInitializationDnsArgs $) {
         this.domain = $.domain;
-        this.server = $.server;
         this.servers = $.servers;
     }
 
@@ -118,39 +90,6 @@ public final class VirtualMachineInitializationDnsArgs extends com.pulumi.resour
          */
         public Builder domain(String domain) {
             return domain(Output.of(domain));
-        }
-
-        /**
-         * @param server The DNS server. The `server` attribute is
-         * deprecated and will be removed in a future release. Please use the
-         * `servers` attribute instead.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
-         * 
-         */
-        @Deprecated /* The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead. */
-        public Builder server(@Nullable Output<String> server) {
-            $.server = server;
-            return this;
-        }
-
-        /**
-         * @param server The DNS server. The `server` attribute is
-         * deprecated and will be removed in a future release. Please use the
-         * `servers` attribute instead.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
-         * 
-         */
-        @Deprecated /* The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead. */
-        public Builder server(String server) {
-            return server(Output.of(server));
         }
 
         /**

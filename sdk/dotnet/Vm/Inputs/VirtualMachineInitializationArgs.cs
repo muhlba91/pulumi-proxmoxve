@@ -69,12 +69,6 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// Whether to do an automatic package upgrade after the first boot
-        /// </summary>
-        [Input("upgrade")]
-        public Input<bool>? Upgrade { get; set; }
-
-        /// <summary>
         /// The user account configuration (conflicts
         /// with `user_data_file_id`).
         /// </summary>

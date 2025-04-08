@@ -18,12 +18,6 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly string? Domain;
         /// <summary>
-        /// The DNS server. The `server` attribute is
-        /// deprecated and will be removed in a future release. Please use the
-        /// `servers` attribute instead.
-        /// </summary>
-        public readonly string? Server;
-        /// <summary>
         /// The list of DNS servers.
         /// </summary>
         public readonly ImmutableArray<string> Servers;
@@ -32,12 +26,9 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         private VirtualMachineInitializationDns(
             string? domain,
 
-            string? server,
-
             ImmutableArray<string> servers)
         {
             Domain = domain;
-            Server = server;
             Servers = servers;
         }
     }

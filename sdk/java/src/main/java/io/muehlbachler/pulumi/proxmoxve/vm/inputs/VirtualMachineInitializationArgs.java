@@ -8,7 +8,6 @@ import com.pulumi.core.annotations.Import;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineInitializationDnsArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineInitializationIpConfigArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineInitializationUserAccountArgs;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -142,29 +141,6 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
     }
 
     /**
-     * Whether to do an automatic package upgrade after the first boot
-     * 
-     * @deprecated
-     * The `upgrade` attribute is deprecated and will be removed in a future release.
-     * 
-     */
-    @Deprecated /* The `upgrade` attribute is deprecated and will be removed in a future release. */
-    @Import(name="upgrade")
-    private @Nullable Output<Boolean> upgrade;
-
-    /**
-     * @return Whether to do an automatic package upgrade after the first boot
-     * 
-     * @deprecated
-     * The `upgrade` attribute is deprecated and will be removed in a future release.
-     * 
-     */
-    @Deprecated /* The `upgrade` attribute is deprecated and will be removed in a future release. */
-    public Optional<Output<Boolean>> upgrade() {
-        return Optional.ofNullable(this.upgrade);
-    }
-
-    /**
      * The user account configuration (conflicts
      * with `user_data_file_id`).
      * 
@@ -225,7 +201,6 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
         this.metaDataFileId = $.metaDataFileId;
         this.networkDataFileId = $.networkDataFileId;
         this.type = $.type;
-        this.upgrade = $.upgrade;
         this.userAccount = $.userAccount;
         this.userDataFileId = $.userDataFileId;
         this.vendorDataFileId = $.vendorDataFileId;
@@ -421,35 +396,6 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
          */
         public Builder type(String type) {
             return type(Output.of(type));
-        }
-
-        /**
-         * @param upgrade Whether to do an automatic package upgrade after the first boot
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The `upgrade` attribute is deprecated and will be removed in a future release.
-         * 
-         */
-        @Deprecated /* The `upgrade` attribute is deprecated and will be removed in a future release. */
-        public Builder upgrade(@Nullable Output<Boolean> upgrade) {
-            $.upgrade = upgrade;
-            return this;
-        }
-
-        /**
-         * @param upgrade Whether to do an automatic package upgrade after the first boot
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The `upgrade` attribute is deprecated and will be removed in a future release.
-         * 
-         */
-        @Deprecated /* The `upgrade` attribute is deprecated and will be removed in a future release. */
-        public Builder upgrade(Boolean upgrade) {
-            return upgrade(Output.of(upgrade));
         }
 
         /**

@@ -2,25 +2,18 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * Retrieves information about all the datastores available to a specific node.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@pulumi/proxmoxve";
- *
- * const firstNode = proxmoxve.Storage.getDatastores({
- *     nodeName: "first-node",
- * });
- * ```
  */
 export function getDatastores(args: GetDatastoresArgs, opts?: pulumi.InvokeOptions): Promise<GetDatastoresResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("proxmoxve:Storage/getDatastores:getDatastores", {
+        "datastores": args.datastores,
+        "filters": args.filters,
         "nodeName": args.nodeName,
     }, opts);
 }
@@ -30,7 +23,15 @@ export function getDatastores(args: GetDatastoresArgs, opts?: pulumi.InvokeOptio
  */
 export interface GetDatastoresArgs {
     /**
-     * A node name.
+     * The list of datastores.
+     */
+    datastores?: inputs.Storage.GetDatastoresDatastore[];
+    /**
+     * The filters to apply to the stores.
+     */
+    filters?: inputs.Storage.GetDatastoresFilters;
+    /**
+     * The name of the node to retrieve the stores from.
      */
     nodeName: string;
 }
@@ -40,64 +41,30 @@ export interface GetDatastoresArgs {
  */
 export interface GetDatastoresResult {
     /**
-     * Whether the datastore is active.
+     * The list of datastores.
      */
-    readonly actives: boolean[];
+    readonly datastores?: outputs.Storage.GetDatastoresDatastore[];
     /**
-     * The allowed content types.
+     * The filters to apply to the stores.
      */
-    readonly contentTypes: string[][];
-    /**
-     * The datastore identifiers.
-     */
-    readonly datastoreIds: string[];
-    /**
-     * Whether the datastore is enabled.
-     */
-    readonly enableds: boolean[];
+    readonly filters?: outputs.Storage.GetDatastoresFilters;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The name of the node to retrieve the stores from.
+     */
     readonly nodeName: string;
-    /**
-     * Whether the datastore is shared.
-     */
-    readonly shareds: boolean[];
-    /**
-     * The available space in bytes.
-     */
-    readonly spaceAvailables: number[];
-    /**
-     * The total space in bytes.
-     */
-    readonly spaceTotals: number[];
-    /**
-     * The used space in bytes.
-     */
-    readonly spaceUseds: number[];
-    /**
-     * The storage types.
-     */
-    readonly types: string[];
 }
 /**
  * Retrieves information about all the datastores available to a specific node.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@pulumi/proxmoxve";
- *
- * const firstNode = proxmoxve.Storage.getDatastores({
- *     nodeName: "first-node",
- * });
- * ```
  */
 export function getDatastoresOutput(args: GetDatastoresOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatastoresResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("proxmoxve:Storage/getDatastores:getDatastores", {
+        "datastores": args.datastores,
+        "filters": args.filters,
         "nodeName": args.nodeName,
     }, opts);
 }
@@ -107,7 +74,15 @@ export function getDatastoresOutput(args: GetDatastoresOutputArgs, opts?: pulumi
  */
 export interface GetDatastoresOutputArgs {
     /**
-     * A node name.
+     * The list of datastores.
+     */
+    datastores?: pulumi.Input<pulumi.Input<inputs.Storage.GetDatastoresDatastoreArgs>[]>;
+    /**
+     * The filters to apply to the stores.
+     */
+    filters?: pulumi.Input<inputs.Storage.GetDatastoresFiltersArgs>;
+    /**
+     * The name of the node to retrieve the stores from.
      */
     nodeName: pulumi.Input<string>;
 }

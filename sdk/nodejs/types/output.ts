@@ -999,6 +999,68 @@ export namespace Storage {
         resize?: number;
     }
 
+    export interface GetDatastoresDatastore {
+        /**
+         * Whether the store is active.
+         */
+        active?: boolean;
+        /**
+         * Allowed store content types.
+         */
+        contentTypes: string[];
+        /**
+         * Whether the store is enabled.
+         */
+        enabled?: boolean;
+        /**
+         * The ID of the store.
+         */
+        id: string;
+        /**
+         * The name of the node the store is on.
+         */
+        nodeName: string;
+        /**
+         * Shared flag from store configuration.
+         */
+        shared?: boolean;
+        /**
+         * Available store space in bytes.
+         */
+        spaceAvailable?: number;
+        /**
+         * Total store space in bytes.
+         */
+        spaceTotal?: number;
+        /**
+         * Used store space in bytes.
+         */
+        spaceUsed?: number;
+        /**
+         * Used fraction (used/total).
+         */
+        spaceUsedFraction?: number;
+        /**
+         * Store type.
+         */
+        type: string;
+    }
+
+    export interface GetDatastoresFilters {
+        /**
+         * Only list stores with the given content types.
+         */
+        contentTypes?: string[];
+        /**
+         * Only list stores with the given ID.
+         */
+        id?: string;
+        /**
+         * If `target` is different to `nodeName`, then only lists shared stores which content is accessible on this node and the specified `target` node.
+         */
+        target?: string;
+    }
+
 }
 
 export namespace VM {
@@ -1536,12 +1598,6 @@ export namespace VM {
          */
         type?: string;
         /**
-         * Whether to do an automatic package upgrade after the first boot
-         *
-         * @deprecated The `upgrade` attribute is deprecated and will be removed in a future release.
-         */
-        upgrade: boolean;
-        /**
          * The user account configuration (conflicts
          * with `userDataFileId`).
          */
@@ -1563,14 +1619,6 @@ export namespace VM {
          * The DNS search domain.
          */
         domain?: string;
-        /**
-         * The DNS server. The `server` attribute is
-         * deprecated and will be removed in a future release. Please use the
-         * `servers` attribute instead.
-         *
-         * @deprecated The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
-         */
-        server?: string;
         /**
          * The list of DNS servers.
          */

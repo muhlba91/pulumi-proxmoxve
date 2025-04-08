@@ -1498,7 +1498,6 @@ class VirtualMachineInitialization(dict):
                  meta_data_file_id: Optional[str] = None,
                  network_data_file_id: Optional[str] = None,
                  type: Optional[str] = None,
-                 upgrade: Optional[bool] = None,
                  user_account: Optional['outputs.VirtualMachineInitializationUserAccount'] = None,
                  user_data_file_id: Optional[str] = None,
                  vendor_data_file_id: Optional[str] = None):
@@ -1518,7 +1517,6 @@ class VirtualMachineInitialization(dict):
                network configuration data passed to the VM via cloud-init (conflicts
                with `ip_config`).
         :param str type: The cloud-init configuration format
-        :param bool upgrade: Whether to do an automatic package upgrade after the first boot
         :param 'VirtualMachineInitializationUserAccountArgs' user_account: The user account configuration (conflicts
                with `user_data_file_id`).
         :param str user_data_file_id: The identifier for a file containing
@@ -1540,8 +1538,6 @@ class VirtualMachineInitialization(dict):
             pulumi.set(__self__, "network_data_file_id", network_data_file_id)
         if type is not None:
             pulumi.set(__self__, "type", type)
-        if upgrade is not None:
-            pulumi.set(__self__, "upgrade", upgrade)
         if user_account is not None:
             pulumi.set(__self__, "user_account", user_account)
         if user_data_file_id is not None:
@@ -1614,15 +1610,6 @@ class VirtualMachineInitialization(dict):
         return pulumi.get(self, "type")
 
     @property
-    @pulumi.getter
-    @_utilities.deprecated("""The `upgrade` attribute is deprecated and will be removed in a future release.""")
-    def upgrade(self) -> Optional[bool]:
-        """
-        Whether to do an automatic package upgrade after the first boot
-        """
-        return pulumi.get(self, "upgrade")
-
-    @property
     @pulumi.getter(name="userAccount")
     def user_account(self) -> Optional['outputs.VirtualMachineInitializationUserAccount']:
         """
@@ -1654,19 +1641,13 @@ class VirtualMachineInitialization(dict):
 class VirtualMachineInitializationDns(dict):
     def __init__(__self__, *,
                  domain: Optional[str] = None,
-                 server: Optional[str] = None,
                  servers: Optional[Sequence[str]] = None):
         """
         :param str domain: The DNS search domain.
-        :param str server: The DNS server. The `server` attribute is
-               deprecated and will be removed in a future release. Please use the
-               `servers` attribute instead.
         :param Sequence[str] servers: The list of DNS servers.
         """
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
-        if server is not None:
-            pulumi.set(__self__, "server", server)
         if servers is not None:
             pulumi.set(__self__, "servers", servers)
 
@@ -1677,17 +1658,6 @@ class VirtualMachineInitializationDns(dict):
         The DNS search domain.
         """
         return pulumi.get(self, "domain")
-
-    @property
-    @pulumi.getter
-    @_utilities.deprecated("""The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.""")
-    def server(self) -> Optional[str]:
-        """
-        The DNS server. The `server` attribute is
-        deprecated and will be removed in a future release. Please use the
-        `servers` attribute instead.
-        """
-        return pulumi.get(self, "server")
 
     @property
     @pulumi.getter
