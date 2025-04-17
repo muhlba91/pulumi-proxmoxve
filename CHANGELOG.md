@@ -1,6 +1,28 @@
 # Changelog
 
 
+## [7.1.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.0.0...v7.1.0) (2025-04-17)
+
+
+### Features
+
+* update upstream provider to v0.75.0; update python project to use pyproject style ([9889292](https://github.com/muhlba91/pulumi-proxmoxve/commit/98892921de704bd52e67a7dabf8687b18a8a818d))
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/dependency-review-action action to v4.6.0 ([f912b91](https://github.com/muhlba91/pulumi-proxmoxve/commit/f912b9143909e2b65e4fd1bf3f228481be7bfa56))
+* **deps:** update actions/setup-java action to v4.7.1 ([53d046f](https://github.com/muhlba91/pulumi-proxmoxve/commit/53d046f8c3b047bf894826cc017d4689b80bb8d5))
+* **deps:** update actions/setup-node action to v4.4.0 ([bdb49ad](https://github.com/muhlba91/pulumi-proxmoxve/commit/bdb49ad79389bcab4e28b9592cac8c3a0bf6de40))
+* **deps:** update dependency go to v1.24.2 ([f658bce](https://github.com/muhlba91/pulumi-proxmoxve/commit/f658bce78f711a9a4a93b388080d4c7d10b17fc5))
+* **deps:** update github/codeql-action action to v3.28.14 ([578656d](https://github.com/muhlba91/pulumi-proxmoxve/commit/578656d9d8924df92c605bbcd1e7f3bde058d73d))
+* **deps:** update github/codeql-action action to v3.28.15 ([cc24aa7](https://github.com/muhlba91/pulumi-proxmoxve/commit/cc24aa71c4ac9a6b917399548bb8e6847b93afce))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.75.0 ([6700162](https://github.com/muhlba91/pulumi-proxmoxve/commit/67001625b1d4f31328b8d6c4e1c8c30aeec8c0f6))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.76.0 ([85fd742](https://github.com/muhlba91/pulumi-proxmoxve/commit/85fd74243645f05034496325861baf77638bd12b))
+* **deps:** update module github.com/pulumi/pulumi-terraform-bridge/v3 to v3.106.0 ([d78e368](https://github.com/muhlba91/pulumi-proxmoxve/commit/d78e368ba749ed338cef8eeea6ab7cfa6bd48d7a))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.160.0 ([1f70cbd](https://github.com/muhlba91/pulumi-proxmoxve/commit/1f70cbdf22401f0bf22b61da5a46cf874762cdd7))
+* **deps:** update step-security/harden-runner action to v2.11.1 ([4e9e28e](https://github.com/muhlba91/pulumi-proxmoxve/commit/4e9e28e7efabeeb578ac0ad24f2b2aa74f883d19))
+
 ## [7.0.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v6.18.1...v7.0.0) (2025-04-01)
 
 
