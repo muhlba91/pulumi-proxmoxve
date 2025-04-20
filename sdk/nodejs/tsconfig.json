@@ -50,6 +50,8 @@
         "ha/index.ts",
         "hardware/getMappings.ts",
         "hardware/index.ts",
+        "hardware/mapping/dir.ts",
+        "hardware/mapping/getDir.ts",
         "hardware/mapping/getPci.ts",
         "hardware/mapping/getUsb.ts",
         "hardware/mapping/index.ts",

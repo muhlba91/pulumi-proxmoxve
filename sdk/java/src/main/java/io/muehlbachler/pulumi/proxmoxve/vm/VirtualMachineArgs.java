@@ -26,6 +26,7 @@ import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineStartupArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineTpmStateArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineUsbArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineVgaArgs;
+import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineVirtiofArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineWatchdogArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -854,6 +855,21 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Virtiofs share
+     * 
+     */
+    @Import(name="virtiofs")
+    private @Nullable Output<List<VirtualMachineVirtiofArgs>> virtiofs;
+
+    /**
+     * @return Virtiofs share
+     * 
+     */
+    public Optional<Output<List<VirtualMachineVirtiofArgs>>> virtiofs() {
+        return Optional.ofNullable(this.virtiofs);
+    }
+
+    /**
      * The VM identifier.
      * 
      */
@@ -937,6 +953,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         this.tpmState = $.tpmState;
         this.usbs = $.usbs;
         this.vga = $.vga;
+        this.virtiofs = $.virtiofs;
         this.vmId = $.vmId;
         this.watchdog = $.watchdog;
     }
@@ -2182,6 +2199,37 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder vga(VirtualMachineVgaArgs vga) {
             return vga(Output.of(vga));
+        }
+
+        /**
+         * @param virtiofs Virtiofs share
+         * 
+         * @return builder
+         * 
+         */
+        public Builder virtiofs(@Nullable Output<List<VirtualMachineVirtiofArgs>> virtiofs) {
+            $.virtiofs = virtiofs;
+            return this;
+        }
+
+        /**
+         * @param virtiofs Virtiofs share
+         * 
+         * @return builder
+         * 
+         */
+        public Builder virtiofs(List<VirtualMachineVirtiofArgs> virtiofs) {
+            return virtiofs(Output.of(virtiofs));
+        }
+
+        /**
+         * @param virtiofs Virtiofs share
+         * 
+         * @return builder
+         * 
+         */
+        public Builder virtiofs(VirtualMachineVirtiofArgs... virtiofs) {
+            return virtiofs(List.of(virtiofs));
         }
 
         /**

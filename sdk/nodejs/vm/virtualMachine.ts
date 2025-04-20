@@ -291,6 +291,10 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly vga!: pulumi.Output<outputs.VM.VirtualMachineVga | undefined>;
     /**
+     * Virtiofs share
+     */
+    public readonly virtiofs!: pulumi.Output<outputs.VM.VirtualMachineVirtiof[] | undefined>;
+    /**
      * The VM identifier.
      */
     public readonly vmId!: pulumi.Output<number>;
@@ -366,6 +370,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["tpmState"] = state ? state.tpmState : undefined;
             resourceInputs["usbs"] = state ? state.usbs : undefined;
             resourceInputs["vga"] = state ? state.vga : undefined;
+            resourceInputs["virtiofs"] = state ? state.virtiofs : undefined;
             resourceInputs["vmId"] = state ? state.vmId : undefined;
             resourceInputs["watchdog"] = state ? state.watchdog : undefined;
         } else {
@@ -424,6 +429,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["tpmState"] = args ? args.tpmState : undefined;
             resourceInputs["usbs"] = args ? args.usbs : undefined;
             resourceInputs["vga"] = args ? args.vga : undefined;
+            resourceInputs["virtiofs"] = args ? args.virtiofs : undefined;
             resourceInputs["vmId"] = args ? args.vmId : undefined;
             resourceInputs["watchdog"] = args ? args.watchdog : undefined;
             resourceInputs["ipv4Addresses"] = undefined /*out*/;
@@ -681,6 +687,10 @@ export interface VirtualMachineState {
      */
     vga?: pulumi.Input<inputs.VM.VirtualMachineVga>;
     /**
+     * Virtiofs share
+     */
+    virtiofs?: pulumi.Input<pulumi.Input<inputs.VM.VirtualMachineVirtiof>[]>;
+    /**
      * The VM identifier.
      */
     vmId?: pulumi.Input<number>;
@@ -920,6 +930,10 @@ export interface VirtualMachineArgs {
      * The VGA configuration.
      */
     vga?: pulumi.Input<inputs.VM.VirtualMachineVga>;
+    /**
+     * Virtiofs share
+     */
+    virtiofs?: pulumi.Input<pulumi.Input<inputs.VM.VirtualMachineVirtiof>[]>;
     /**
      * The VM identifier.
      */

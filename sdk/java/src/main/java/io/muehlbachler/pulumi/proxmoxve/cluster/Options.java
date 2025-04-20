@@ -24,57 +24,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.proxmoxve.Cluster.Options;
- * import com.pulumi.proxmoxve.Cluster.OptionsArgs;
- * import com.pulumi.proxmoxve.Cluster.inputs.OptionsNextIdArgs;
- * import com.pulumi.proxmoxve.Cluster.inputs.OptionsNotifyArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
- *         Pulumi.run(App::stack);
- *     }}{@code
- * 
- *     public static void stack(Context ctx) }{{@code
- *         var options = new Options("options", OptionsArgs.builder()
- *             .bandwidthLimitDefault(666666)
- *             .bandwidthLimitMigration(555555)
- *             .emailFrom("ged}{@literal @}{@code gont.earthsea")
- *             .keyboard("pl")
- *             .language("en")
- *             .maxWorkers(5)
- *             .migrationCidr("10.0.0.0/8")
- *             .migrationType("secure")
- *             .nextId(OptionsNextIdArgs.builder()
- *                 .lower(100)
- *                 .upper(999999999)
- *                 .build())
- *             .notify(OptionsNotifyArgs.builder()
- *                 .ha_fencing_mode("never")
- *                 .ha_fencing_target("default-matcher")
- *                 .package_replication("always")
- *                 .package_replication_target("default-matcher")
- *                 .package_updates("always")
- *                 .package_updates_target("default-matcher")
- *                 .build())
- *             .build());
- * 
- *     }}{@code
- * }}{@code
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

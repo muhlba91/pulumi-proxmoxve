@@ -35,6 +35,7 @@ public final class AcmeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.Acme.AcmeFunctions;
+     * import com.pulumi.proxmoxve.Acme.inputs.GetAccountArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -48,7 +49,7 @@ public final class AcmeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = AcmeFunctions.getAccounts();
+     *         final var all = AcmeFunctions.getAccounts(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         final var example = "TODO: ForExpression";
      * 
@@ -77,6 +78,7 @@ public final class AcmeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.Acme.AcmeFunctions;
+     * import com.pulumi.proxmoxve.Acme.inputs.GetAccountArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -90,7 +92,7 @@ public final class AcmeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = AcmeFunctions.getAccounts();
+     *         final var all = AcmeFunctions.getAccounts(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         final var example = "TODO: ForExpression";
      * 
@@ -119,6 +121,7 @@ public final class AcmeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.Acme.AcmeFunctions;
+     * import com.pulumi.proxmoxve.Acme.inputs.GetAccountArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -132,7 +135,7 @@ public final class AcmeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = AcmeFunctions.getAccounts();
+     *         final var all = AcmeFunctions.getAccounts(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         final var example = "TODO: ForExpression";
      * 
@@ -161,6 +164,7 @@ public final class AcmeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.Acme.AcmeFunctions;
+     * import com.pulumi.proxmoxve.Acme.inputs.GetAccountArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -174,7 +178,7 @@ public final class AcmeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = AcmeFunctions.getAccounts();
+     *         final var all = AcmeFunctions.getAccounts(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         final var example = "TODO: ForExpression";
      * 
@@ -203,6 +207,7 @@ public final class AcmeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.Acme.AcmeFunctions;
+     * import com.pulumi.proxmoxve.Acme.inputs.GetAccountArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -216,7 +221,7 @@ public final class AcmeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = AcmeFunctions.getAccounts();
+     *         final var all = AcmeFunctions.getAccounts(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         final var example = "TODO: ForExpression";
      * 
@@ -245,6 +250,7 @@ public final class AcmeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.Acme.AcmeFunctions;
+     * import com.pulumi.proxmoxve.Acme.inputs.GetAccountArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -258,7 +264,7 @@ public final class AcmeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = AcmeFunctions.getAccounts();
+     *         final var all = AcmeFunctions.getAccounts(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         final var example = "TODO: ForExpression";
      * 
@@ -287,6 +293,7 @@ public final class AcmeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.Acme.AcmeFunctions;
+     * import com.pulumi.proxmoxve.Acme.inputs.GetAccountArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -300,7 +307,7 @@ public final class AcmeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = AcmeFunctions.getAccounts();
+     *         final var all = AcmeFunctions.getAccounts(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         final var example = "TODO: ForExpression";
      * 
@@ -342,9 +349,9 @@ public final class AcmeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = AcmeFunctions.getAccounts();
+     *         final var example = AcmeFunctions.getAccounts(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentAcmeAccounts", example.applyValue(getAccountsResult -> getAccountsResult.accounts()));
+     *         ctx.export("dataProxmoxVirtualEnvironmentAcmeAccounts", example.accounts());
      *     }
      * }
      * }
@@ -382,9 +389,9 @@ public final class AcmeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = AcmeFunctions.getAccounts();
+     *         final var example = AcmeFunctions.getAccounts(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentAcmeAccounts", example.applyValue(getAccountsResult -> getAccountsResult.accounts()));
+     *         ctx.export("dataProxmoxVirtualEnvironmentAcmeAccounts", example.accounts());
      *     }
      * }
      * }
@@ -422,9 +429,9 @@ public final class AcmeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = AcmeFunctions.getAccounts();
+     *         final var example = AcmeFunctions.getAccounts(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentAcmeAccounts", example.applyValue(getAccountsResult -> getAccountsResult.accounts()));
+     *         ctx.export("dataProxmoxVirtualEnvironmentAcmeAccounts", example.accounts());
      *     }
      * }
      * }
@@ -462,9 +469,9 @@ public final class AcmeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = AcmeFunctions.getAccounts();
+     *         final var example = AcmeFunctions.getAccounts(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentAcmeAccounts", example.applyValue(getAccountsResult -> getAccountsResult.accounts()));
+     *         ctx.export("dataProxmoxVirtualEnvironmentAcmeAccounts", example.accounts());
      *     }
      * }
      * }
@@ -502,9 +509,9 @@ public final class AcmeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = AcmeFunctions.getAccounts();
+     *         final var example = AcmeFunctions.getAccounts(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentAcmeAccounts", example.applyValue(getAccountsResult -> getAccountsResult.accounts()));
+     *         ctx.export("dataProxmoxVirtualEnvironmentAcmeAccounts", example.accounts());
      *     }
      * }
      * }
@@ -542,9 +549,9 @@ public final class AcmeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = AcmeFunctions.getAccounts();
+     *         final var example = AcmeFunctions.getAccounts(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentAcmeAccounts", example.applyValue(getAccountsResult -> getAccountsResult.accounts()));
+     *         ctx.export("dataProxmoxVirtualEnvironmentAcmeAccounts", example.accounts());
      *     }
      * }
      * }
@@ -582,9 +589,9 @@ public final class AcmeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = AcmeFunctions.getAccounts();
+     *         final var example = AcmeFunctions.getAccounts(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentAcmeAccounts", example.applyValue(getAccountsResult -> getAccountsResult.accounts()));
+     *         ctx.export("dataProxmoxVirtualEnvironmentAcmeAccounts", example.accounts());
      *     }
      * }
      * }
@@ -627,7 +634,7 @@ public final class AcmeFunctions {
      *             .plugin("standalone")
      *             .build());
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentAcmePlugin", example.applyValue(getPluginResult -> getPluginResult));
+     *         ctx.export("dataProxmoxVirtualEnvironmentAcmePlugin", example);
      *     }
      * }
      * }
@@ -670,7 +677,7 @@ public final class AcmeFunctions {
      *             .plugin("standalone")
      *             .build());
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentAcmePlugin", example.applyValue(getPluginResult -> getPluginResult));
+     *         ctx.export("dataProxmoxVirtualEnvironmentAcmePlugin", example);
      *     }
      * }
      * }
@@ -713,7 +720,7 @@ public final class AcmeFunctions {
      *             .plugin("standalone")
      *             .build());
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentAcmePlugin", example.applyValue(getPluginResult -> getPluginResult));
+     *         ctx.export("dataProxmoxVirtualEnvironmentAcmePlugin", example);
      *     }
      * }
      * }
@@ -756,7 +763,7 @@ public final class AcmeFunctions {
      *             .plugin("standalone")
      *             .build());
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentAcmePlugin", example.applyValue(getPluginResult -> getPluginResult));
+     *         ctx.export("dataProxmoxVirtualEnvironmentAcmePlugin", example);
      *     }
      * }
      * }
@@ -799,7 +806,7 @@ public final class AcmeFunctions {
      *             .plugin("standalone")
      *             .build());
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentAcmePlugin", example.applyValue(getPluginResult -> getPluginResult));
+     *         ctx.export("dataProxmoxVirtualEnvironmentAcmePlugin", example);
      *     }
      * }
      * }
@@ -837,9 +844,9 @@ public final class AcmeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = AcmeFunctions.getPlugins();
+     *         final var example = AcmeFunctions.getPlugins(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentAcmePlugins", example.applyValue(getPluginsResult -> getPluginsResult.plugins()));
+     *         ctx.export("dataProxmoxVirtualEnvironmentAcmePlugins", example.plugins());
      *     }
      * }
      * }
@@ -877,9 +884,9 @@ public final class AcmeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = AcmeFunctions.getPlugins();
+     *         final var example = AcmeFunctions.getPlugins(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentAcmePlugins", example.applyValue(getPluginsResult -> getPluginsResult.plugins()));
+     *         ctx.export("dataProxmoxVirtualEnvironmentAcmePlugins", example.plugins());
      *     }
      * }
      * }
@@ -917,9 +924,9 @@ public final class AcmeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = AcmeFunctions.getPlugins();
+     *         final var example = AcmeFunctions.getPlugins(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentAcmePlugins", example.applyValue(getPluginsResult -> getPluginsResult.plugins()));
+     *         ctx.export("dataProxmoxVirtualEnvironmentAcmePlugins", example.plugins());
      *     }
      * }
      * }
@@ -957,9 +964,9 @@ public final class AcmeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = AcmeFunctions.getPlugins();
+     *         final var example = AcmeFunctions.getPlugins(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentAcmePlugins", example.applyValue(getPluginsResult -> getPluginsResult.plugins()));
+     *         ctx.export("dataProxmoxVirtualEnvironmentAcmePlugins", example.plugins());
      *     }
      * }
      * }
@@ -997,9 +1004,9 @@ public final class AcmeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = AcmeFunctions.getPlugins();
+     *         final var example = AcmeFunctions.getPlugins(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentAcmePlugins", example.applyValue(getPluginsResult -> getPluginsResult.plugins()));
+     *         ctx.export("dataProxmoxVirtualEnvironmentAcmePlugins", example.plugins());
      *     }
      * }
      * }
@@ -1037,9 +1044,9 @@ public final class AcmeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = AcmeFunctions.getPlugins();
+     *         final var example = AcmeFunctions.getPlugins(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentAcmePlugins", example.applyValue(getPluginsResult -> getPluginsResult.plugins()));
+     *         ctx.export("dataProxmoxVirtualEnvironmentAcmePlugins", example.plugins());
      *     }
      * }
      * }
@@ -1077,9 +1084,9 @@ public final class AcmeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = AcmeFunctions.getPlugins();
+     *         final var example = AcmeFunctions.getPlugins(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentAcmePlugins", example.applyValue(getPluginsResult -> getPluginsResult.plugins()));
+     *         ctx.export("dataProxmoxVirtualEnvironmentAcmePlugins", example.plugins());
      *     }
      * }
      * }

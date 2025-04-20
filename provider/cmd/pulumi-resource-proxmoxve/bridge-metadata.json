@@ -229,6 +229,15 @@
                 "current": "proxmoxve:HA/hAGroup:HAGroup",
                 "majorVersion": 7
             },
+            "proxmox_virtual_environment_hardware_mapping_dir": {
+                "current": "proxmoxve:Hardware/mapping/dir:Dir",
+                "majorVersion": 7,
+                "fields": {
+                    "map": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "proxmox_virtual_environment_hardware_mapping_pci": {
                 "current": "proxmoxve:Hardware/mapping/pci:Pci",
                 "majorVersion": 7,
@@ -480,6 +489,9 @@
                     "vga": {
                         "maxItemsOne": true
                     },
+                    "virtiofs": {
+                        "maxItemsOne": false
+                    },
                     "watchdog": {
                         "maxItemsOne": true
                     }
@@ -634,6 +646,15 @@
                 "majorVersion": 7,
                 "fields": {
                     "group_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_hardware_mapping_dir": {
+                "current": "proxmoxve:Hardware/mapping/getDir:getDir",
+                "majorVersion": 7,
+                "fields": {
+                    "map": {
                         "maxItemsOne": false
                     }
                 }
@@ -914,6 +935,7 @@
             "proxmoxve:Download/file:File": 1,
             "proxmoxve:HA/hAGroup:HAGroup": 1,
             "proxmoxve:HA/hAResource:HAResource": 1,
+            "proxmoxve:Hardware/mapping/dir:Dir": 1,
             "proxmoxve:Hardware/mapping/pci:Pci": 1,
             "proxmoxve:Hardware/mapping/usb:Usb": 1,
             "proxmoxve:Metrics/metricsServer:MetricsServer": 1,
@@ -954,6 +976,7 @@
             "proxmoxve:HA/getHAResource:getHAResource": 1,
             "proxmoxve:HA/getHAResources:getHAResources": 1,
             "proxmoxve:Hardware/getMappings:getMappings": 1,
+            "proxmoxve:Hardware/mapping/getDir:getDir": 1,
             "proxmoxve:Hardware/mapping/getPci:getPci": 1,
             "proxmoxve:Hardware/mapping/getUsb:getUsb": 1,
             "proxmoxve:Metrics/getServer:getServer": 1,

@@ -161,6 +161,8 @@ type VirtualMachine struct {
 	Usbs VirtualMachineUsbArrayOutput `pulumi:"usbs"`
 	// The VGA configuration.
 	Vga VirtualMachineVgaPtrOutput `pulumi:"vga"`
+	// Virtiofs share
+	Virtiofs VirtualMachineVirtiofArrayOutput `pulumi:"virtiofs"`
 	// The VM identifier.
 	VmId pulumi.IntOutput `pulumi:"vmId"`
 	// The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
@@ -333,6 +335,8 @@ type virtualMachineState struct {
 	Usbs []VirtualMachineUsb `pulumi:"usbs"`
 	// The VGA configuration.
 	Vga *VirtualMachineVga `pulumi:"vga"`
+	// Virtiofs share
+	Virtiofs []VirtualMachineVirtiof `pulumi:"virtiofs"`
 	// The VM identifier.
 	VmId *int `pulumi:"vmId"`
 	// The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
@@ -473,6 +477,8 @@ type VirtualMachineState struct {
 	Usbs VirtualMachineUsbArrayInput
 	// The VGA configuration.
 	Vga VirtualMachineVgaPtrInput
+	// Virtiofs share
+	Virtiofs VirtualMachineVirtiofArrayInput
 	// The VM identifier.
 	VmId pulumi.IntPtrInput
 	// The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
@@ -608,6 +614,8 @@ type virtualMachineArgs struct {
 	Usbs []VirtualMachineUsb `pulumi:"usbs"`
 	// The VGA configuration.
 	Vga *VirtualMachineVga `pulumi:"vga"`
+	// Virtiofs share
+	Virtiofs []VirtualMachineVirtiof `pulumi:"virtiofs"`
 	// The VM identifier.
 	VmId *int `pulumi:"vmId"`
 	// The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
@@ -740,6 +748,8 @@ type VirtualMachineArgs struct {
 	Usbs VirtualMachineUsbArrayInput
 	// The VGA configuration.
 	Vga VirtualMachineVgaPtrInput
+	// Virtiofs share
+	Virtiofs VirtualMachineVirtiofArrayInput
 	// The VM identifier.
 	VmId pulumi.IntPtrInput
 	// The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
@@ -1126,6 +1136,11 @@ func (o VirtualMachineOutput) Usbs() VirtualMachineUsbArrayOutput {
 // The VGA configuration.
 func (o VirtualMachineOutput) Vga() VirtualMachineVgaPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineVgaPtrOutput { return v.Vga }).(VirtualMachineVgaPtrOutput)
+}
+
+// Virtiofs share
+func (o VirtualMachineOutput) Virtiofs() VirtualMachineVirtiofArrayOutput {
+	return o.ApplyT(func(v *VirtualMachine) VirtualMachineVirtiofArrayOutput { return v.Virtiofs }).(VirtualMachineVirtiofArrayOutput)
 }
 
 // The VM identifier.

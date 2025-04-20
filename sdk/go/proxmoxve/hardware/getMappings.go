@@ -27,6 +27,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := hardware.GetMappings(ctx, &hardware.GetMappingsArgs{
+//				CheckNode: pulumi.StringRef("pve"),
+//				Type:      "dir",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			example_pci, err := hardware.GetMappings(ctx, &hardware.GetMappingsArgs{
 //				CheckNode: pulumi.StringRef("pve"),
 //				Type:      "pci",

@@ -47,7 +47,10 @@ public final class MetricsFunctions {
      *             .name("example_influxdb")
      *             .build());
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentMetricsServer", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("dataProxmoxVirtualEnvironmentMetricsServer", Map.ofEntries(
+     *             Map.entry("server", example.server()),
+     *             Map.entry("port", example.port())
+     *         ));
      *     }
      * }
      * }
@@ -90,7 +93,10 @@ public final class MetricsFunctions {
      *             .name("example_influxdb")
      *             .build());
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentMetricsServer", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("dataProxmoxVirtualEnvironmentMetricsServer", Map.ofEntries(
+     *             Map.entry("server", example.server()),
+     *             Map.entry("port", example.port())
+     *         ));
      *     }
      * }
      * }
@@ -133,7 +139,10 @@ public final class MetricsFunctions {
      *             .name("example_influxdb")
      *             .build());
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentMetricsServer", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("dataProxmoxVirtualEnvironmentMetricsServer", Map.ofEntries(
+     *             Map.entry("server", example.server()),
+     *             Map.entry("port", example.port())
+     *         ));
      *     }
      * }
      * }
@@ -176,7 +185,10 @@ public final class MetricsFunctions {
      *             .name("example_influxdb")
      *             .build());
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentMetricsServer", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("dataProxmoxVirtualEnvironmentMetricsServer", Map.ofEntries(
+     *             Map.entry("server", example.server()),
+     *             Map.entry("port", example.port())
+     *         ));
      *     }
      * }
      * }
@@ -219,7 +231,10 @@ public final class MetricsFunctions {
      *             .name("example_influxdb")
      *             .build());
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentMetricsServer", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("dataProxmoxVirtualEnvironmentMetricsServer", Map.ofEntries(
+     *             Map.entry("server", example.server()),
+     *             Map.entry("port", example.port())
+     *         ));
      *     }
      * }
      * }

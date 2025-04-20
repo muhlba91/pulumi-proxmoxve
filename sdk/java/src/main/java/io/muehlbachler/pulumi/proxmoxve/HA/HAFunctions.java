@@ -37,6 +37,7 @@ public final class HAFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.HA.HAFunctions;
+     * import com.pulumi.proxmoxve.HA.inputs.GetHAGroupArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -50,7 +51,7 @@ public final class HAFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = HAFunctions.getHAGroups();
+     *         final var all = HAFunctions.getHAGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         final var example = "TODO: ForExpression";
      * 
@@ -79,6 +80,7 @@ public final class HAFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.HA.HAFunctions;
+     * import com.pulumi.proxmoxve.HA.inputs.GetHAGroupArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -92,7 +94,7 @@ public final class HAFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = HAFunctions.getHAGroups();
+     *         final var all = HAFunctions.getHAGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         final var example = "TODO: ForExpression";
      * 
@@ -121,6 +123,7 @@ public final class HAFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.HA.HAFunctions;
+     * import com.pulumi.proxmoxve.HA.inputs.GetHAGroupArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -134,7 +137,7 @@ public final class HAFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = HAFunctions.getHAGroups();
+     *         final var all = HAFunctions.getHAGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         final var example = "TODO: ForExpression";
      * 
@@ -163,6 +166,7 @@ public final class HAFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.HA.HAFunctions;
+     * import com.pulumi.proxmoxve.HA.inputs.GetHAGroupArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -176,7 +180,7 @@ public final class HAFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = HAFunctions.getHAGroups();
+     *         final var all = HAFunctions.getHAGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         final var example = "TODO: ForExpression";
      * 
@@ -205,6 +209,7 @@ public final class HAFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.HA.HAFunctions;
+     * import com.pulumi.proxmoxve.HA.inputs.GetHAGroupArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -218,7 +223,7 @@ public final class HAFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = HAFunctions.getHAGroups();
+     *         final var all = HAFunctions.getHAGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         final var example = "TODO: ForExpression";
      * 
@@ -260,9 +265,9 @@ public final class HAFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = HAFunctions.getHAGroups();
+     *         final var example = HAFunctions.getHAGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentHagroups", example.applyValue(getHAGroupsResult -> getHAGroupsResult.groupIds()));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHagroups", example.groupIds());
      *     }
      * }
      * }
@@ -300,9 +305,9 @@ public final class HAFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = HAFunctions.getHAGroups();
+     *         final var example = HAFunctions.getHAGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentHagroups", example.applyValue(getHAGroupsResult -> getHAGroupsResult.groupIds()));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHagroups", example.groupIds());
      *     }
      * }
      * }
@@ -340,9 +345,9 @@ public final class HAFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = HAFunctions.getHAGroups();
+     *         final var example = HAFunctions.getHAGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentHagroups", example.applyValue(getHAGroupsResult -> getHAGroupsResult.groupIds()));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHagroups", example.groupIds());
      *     }
      * }
      * }
@@ -380,9 +385,9 @@ public final class HAFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = HAFunctions.getHAGroups();
+     *         final var example = HAFunctions.getHAGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentHagroups", example.applyValue(getHAGroupsResult -> getHAGroupsResult.groupIds()));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHagroups", example.groupIds());
      *     }
      * }
      * }
@@ -420,9 +425,9 @@ public final class HAFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = HAFunctions.getHAGroups();
+     *         final var example = HAFunctions.getHAGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentHagroups", example.applyValue(getHAGroupsResult -> getHAGroupsResult.groupIds()));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHagroups", example.groupIds());
      *     }
      * }
      * }
@@ -460,9 +465,9 @@ public final class HAFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = HAFunctions.getHAGroups();
+     *         final var example = HAFunctions.getHAGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentHagroups", example.applyValue(getHAGroupsResult -> getHAGroupsResult.groupIds()));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHagroups", example.groupIds());
      *     }
      * }
      * }
@@ -500,9 +505,9 @@ public final class HAFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = HAFunctions.getHAGroups();
+     *         final var example = HAFunctions.getHAGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentHagroups", example.applyValue(getHAGroupsResult -> getHAGroupsResult.groupIds()));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHagroups", example.groupIds());
      *     }
      * }
      * }
@@ -528,6 +533,7 @@ public final class HAFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.HA.HAFunctions;
      * import com.pulumi.proxmoxve.HA.inputs.GetHAResourcesArgs;
+     * import com.pulumi.proxmoxve.HA.inputs.GetHAResourceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -541,7 +547,8 @@ public final class HAFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = HAFunctions.getHAResources();
+     *         final var all = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
+     *             .build());
      * 
      *         final var example = "TODO: ForExpression";
      * 
@@ -571,6 +578,7 @@ public final class HAFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.HA.HAFunctions;
      * import com.pulumi.proxmoxve.HA.inputs.GetHAResourcesArgs;
+     * import com.pulumi.proxmoxve.HA.inputs.GetHAResourceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -584,7 +592,8 @@ public final class HAFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = HAFunctions.getHAResources();
+     *         final var all = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
+     *             .build());
      * 
      *         final var example = "TODO: ForExpression";
      * 
@@ -614,6 +623,7 @@ public final class HAFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.HA.HAFunctions;
      * import com.pulumi.proxmoxve.HA.inputs.GetHAResourcesArgs;
+     * import com.pulumi.proxmoxve.HA.inputs.GetHAResourceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -627,7 +637,8 @@ public final class HAFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = HAFunctions.getHAResources();
+     *         final var all = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
+     *             .build());
      * 
      *         final var example = "TODO: ForExpression";
      * 
@@ -657,6 +668,7 @@ public final class HAFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.HA.HAFunctions;
      * import com.pulumi.proxmoxve.HA.inputs.GetHAResourcesArgs;
+     * import com.pulumi.proxmoxve.HA.inputs.GetHAResourceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -670,7 +682,8 @@ public final class HAFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = HAFunctions.getHAResources();
+     *         final var all = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
+     *             .build());
      * 
      *         final var example = "TODO: ForExpression";
      * 
@@ -700,6 +713,7 @@ public final class HAFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.HA.HAFunctions;
      * import com.pulumi.proxmoxve.HA.inputs.GetHAResourcesArgs;
+     * import com.pulumi.proxmoxve.HA.inputs.GetHAResourceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -713,7 +727,8 @@ public final class HAFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = HAFunctions.getHAResources();
+     *         final var all = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
+     *             .build());
      * 
      *         final var example = "TODO: ForExpression";
      * 
@@ -756,13 +771,17 @@ public final class HAFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleAll = HAFunctions.getHAResources();
+     *         final var exampleAll = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
+     *             .build());
      * 
      *         final var exampleVm = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
      *             .type("vm")
      *             .build());
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentHaresources", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHaresources", Map.ofEntries(
+     *             Map.entry("all", exampleAll.resourceIds()),
+     *             Map.entry("vms", exampleVm.resourceIds())
+     *         ));
      *     }
      * }
      * }
@@ -801,13 +820,17 @@ public final class HAFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleAll = HAFunctions.getHAResources();
+     *         final var exampleAll = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
+     *             .build());
      * 
      *         final var exampleVm = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
      *             .type("vm")
      *             .build());
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentHaresources", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHaresources", Map.ofEntries(
+     *             Map.entry("all", exampleAll.resourceIds()),
+     *             Map.entry("vms", exampleVm.resourceIds())
+     *         ));
      *     }
      * }
      * }
@@ -846,13 +869,17 @@ public final class HAFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleAll = HAFunctions.getHAResources();
+     *         final var exampleAll = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
+     *             .build());
      * 
      *         final var exampleVm = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
      *             .type("vm")
      *             .build());
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentHaresources", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHaresources", Map.ofEntries(
+     *             Map.entry("all", exampleAll.resourceIds()),
+     *             Map.entry("vms", exampleVm.resourceIds())
+     *         ));
      *     }
      * }
      * }
@@ -891,13 +918,17 @@ public final class HAFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleAll = HAFunctions.getHAResources();
+     *         final var exampleAll = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
+     *             .build());
      * 
      *         final var exampleVm = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
      *             .type("vm")
      *             .build());
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentHaresources", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHaresources", Map.ofEntries(
+     *             Map.entry("all", exampleAll.resourceIds()),
+     *             Map.entry("vms", exampleVm.resourceIds())
+     *         ));
      *     }
      * }
      * }
@@ -936,13 +967,17 @@ public final class HAFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleAll = HAFunctions.getHAResources();
+     *         final var exampleAll = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
+     *             .build());
      * 
      *         final var exampleVm = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
      *             .type("vm")
      *             .build());
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentHaresources", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHaresources", Map.ofEntries(
+     *             Map.entry("all", exampleAll.resourceIds()),
+     *             Map.entry("vms", exampleVm.resourceIds())
+     *         ));
      *     }
      * }
      * }
@@ -981,13 +1016,17 @@ public final class HAFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleAll = HAFunctions.getHAResources();
+     *         final var exampleAll = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
+     *             .build());
      * 
      *         final var exampleVm = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
      *             .type("vm")
      *             .build());
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentHaresources", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHaresources", Map.ofEntries(
+     *             Map.entry("all", exampleAll.resourceIds()),
+     *             Map.entry("vms", exampleVm.resourceIds())
+     *         ));
      *     }
      * }
      * }
@@ -1026,13 +1065,17 @@ public final class HAFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleAll = HAFunctions.getHAResources();
+     *         final var exampleAll = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
+     *             .build());
      * 
      *         final var exampleVm = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
      *             .type("vm")
      *             .build());
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentHaresources", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHaresources", Map.ofEntries(
+     *             Map.entry("all", exampleAll.resourceIds()),
+     *             Map.entry("vms", exampleVm.resourceIds())
+     *         ));
      *     }
      * }
      * }

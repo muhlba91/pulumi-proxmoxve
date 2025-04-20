@@ -269,7 +269,7 @@ public final class VMFunctions {
      *             .filters(            
      *                 GetVirtualMachinesFilterArgs.builder()
      *                     .name("template")
-     *                     .values(true)
+     *                     .values("true")
      *                     .build(),
      *                 GetVirtualMachinesFilterArgs.builder()
      *                     .name("status")
@@ -338,7 +338,7 @@ public final class VMFunctions {
      *             .filters(            
      *                 GetVirtualMachinesFilterArgs.builder()
      *                     .name("template")
-     *                     .values(true)
+     *                     .values("true")
      *                     .build(),
      *                 GetVirtualMachinesFilterArgs.builder()
      *                     .name("status")
@@ -407,7 +407,7 @@ public final class VMFunctions {
      *             .filters(            
      *                 GetVirtualMachinesFilterArgs.builder()
      *                     .name("template")
-     *                     .values(true)
+     *                     .values("true")
      *                     .build(),
      *                 GetVirtualMachinesFilterArgs.builder()
      *                     .name("status")
@@ -476,7 +476,7 @@ public final class VMFunctions {
      *             .filters(            
      *                 GetVirtualMachinesFilterArgs.builder()
      *                     .name("template")
-     *                     .values(true)
+     *                     .values("true")
      *                     .build(),
      *                 GetVirtualMachinesFilterArgs.builder()
      *                     .name("status")
@@ -545,7 +545,7 @@ public final class VMFunctions {
      *             .filters(            
      *                 GetVirtualMachinesFilterArgs.builder()
      *                     .name("template")
-     *                     .values(true)
+     *                     .values("true")
      *                     .build(),
      *                 GetVirtualMachinesFilterArgs.builder()
      *                     .name("status")
@@ -614,7 +614,7 @@ public final class VMFunctions {
      *             .filters(            
      *                 GetVirtualMachinesFilterArgs.builder()
      *                     .name("template")
-     *                     .values(true)
+     *                     .values("true")
      *                     .build(),
      *                 GetVirtualMachinesFilterArgs.builder()
      *                     .name("status")
@@ -683,7 +683,7 @@ public final class VMFunctions {
      *             .filters(            
      *                 GetVirtualMachinesFilterArgs.builder()
      *                     .name("template")
-     *                     .values(true)
+     *                     .values("true")
      *                     .build(),
      *                 GetVirtualMachinesFilterArgs.builder()
      *                     .name("status")

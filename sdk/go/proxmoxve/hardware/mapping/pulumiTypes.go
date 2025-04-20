@@ -13,6 +13,112 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type DirMapType struct {
+	// The node this mapping applies to.
+	Node string `pulumi:"node"`
+	// The path of the map. For directory mappings the path is required and refers to the POSIX path of the directory as visible from the node.
+	Path string `pulumi:"path"`
+}
+
+// DirMapTypeInput is an input type that accepts DirMapTypeArgs and DirMapTypeOutput values.
+// You can construct a concrete instance of `DirMapTypeInput` via:
+//
+//	DirMapTypeArgs{...}
+type DirMapTypeInput interface {
+	pulumi.Input
+
+	ToDirMapTypeOutput() DirMapTypeOutput
+	ToDirMapTypeOutputWithContext(context.Context) DirMapTypeOutput
+}
+
+type DirMapTypeArgs struct {
+	// The node this mapping applies to.
+	Node pulumi.StringInput `pulumi:"node"`
+	// The path of the map. For directory mappings the path is required and refers to the POSIX path of the directory as visible from the node.
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (DirMapTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DirMapType)(nil)).Elem()
+}
+
+func (i DirMapTypeArgs) ToDirMapTypeOutput() DirMapTypeOutput {
+	return i.ToDirMapTypeOutputWithContext(context.Background())
+}
+
+func (i DirMapTypeArgs) ToDirMapTypeOutputWithContext(ctx context.Context) DirMapTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirMapTypeOutput)
+}
+
+// DirMapTypeArrayInput is an input type that accepts DirMapTypeArray and DirMapTypeArrayOutput values.
+// You can construct a concrete instance of `DirMapTypeArrayInput` via:
+//
+//	DirMapTypeArray{ DirMapTypeArgs{...} }
+type DirMapTypeArrayInput interface {
+	pulumi.Input
+
+	ToDirMapTypeArrayOutput() DirMapTypeArrayOutput
+	ToDirMapTypeArrayOutputWithContext(context.Context) DirMapTypeArrayOutput
+}
+
+type DirMapTypeArray []DirMapTypeInput
+
+func (DirMapTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DirMapType)(nil)).Elem()
+}
+
+func (i DirMapTypeArray) ToDirMapTypeArrayOutput() DirMapTypeArrayOutput {
+	return i.ToDirMapTypeArrayOutputWithContext(context.Background())
+}
+
+func (i DirMapTypeArray) ToDirMapTypeArrayOutputWithContext(ctx context.Context) DirMapTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirMapTypeArrayOutput)
+}
+
+type DirMapTypeOutput struct{ *pulumi.OutputState }
+
+func (DirMapTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DirMapType)(nil)).Elem()
+}
+
+func (o DirMapTypeOutput) ToDirMapTypeOutput() DirMapTypeOutput {
+	return o
+}
+
+func (o DirMapTypeOutput) ToDirMapTypeOutputWithContext(ctx context.Context) DirMapTypeOutput {
+	return o
+}
+
+// The node this mapping applies to.
+func (o DirMapTypeOutput) Node() pulumi.StringOutput {
+	return o.ApplyT(func(v DirMapType) string { return v.Node }).(pulumi.StringOutput)
+}
+
+// The path of the map. For directory mappings the path is required and refers to the POSIX path of the directory as visible from the node.
+func (o DirMapTypeOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v DirMapType) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type DirMapTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (DirMapTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DirMapType)(nil)).Elem()
+}
+
+func (o DirMapTypeArrayOutput) ToDirMapTypeArrayOutput() DirMapTypeArrayOutput {
+	return o
+}
+
+func (o DirMapTypeArrayOutput) ToDirMapTypeArrayOutputWithContext(ctx context.Context) DirMapTypeArrayOutput {
+	return o
+}
+
+func (o DirMapTypeArrayOutput) Index(i pulumi.IntInput) DirMapTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DirMapType {
+		return vs[0].([]DirMapType)[vs[1].(int)]
+	}).(DirMapTypeOutput)
+}
+
 type PciMapType struct {
 	// The comment of the mapped PCI device.
 	Comment *string `pulumi:"comment"`
@@ -277,6 +383,112 @@ func (o UsbMapTypeArrayOutput) Index(i pulumi.IntInput) UsbMapTypeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UsbMapType {
 		return vs[0].([]UsbMapType)[vs[1].(int)]
 	}).(UsbMapTypeOutput)
+}
+
+type GetDirMap struct {
+	// The node name attribute of the map.
+	Node string `pulumi:"node"`
+	// The path attribute of the map.
+	Path string `pulumi:"path"`
+}
+
+// GetDirMapInput is an input type that accepts GetDirMap and GetDirMapOutput values.
+// You can construct a concrete instance of `GetDirMapInput` via:
+//
+//	GetDirMap{ "key": GetDirArgs{...} }
+type GetDirMapInput interface {
+	pulumi.Input
+
+	ToGetDirMapOutput() GetDirMapOutput
+	ToGetDirMapOutputWithContext(context.Context) GetDirMapOutput
+}
+
+type GetDirMapArgs struct {
+	// The node name attribute of the map.
+	Node pulumi.StringInput `pulumi:"node"`
+	// The path attribute of the map.
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (GetDirMapArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDirMap)(nil)).Elem()
+}
+
+func (i GetDirMapArgs) ToGetDirMapOutput() GetDirMapOutput {
+	return i.ToGetDirMapOutputWithContext(context.Background())
+}
+
+func (i GetDirMapArgs) ToGetDirMapOutputWithContext(ctx context.Context) GetDirMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDirMapOutput)
+}
+
+// GetDirMapArrayInput is an input type that accepts GetDirMapArray and GetDirMapArrayOutput values.
+// You can construct a concrete instance of `GetDirMapArrayInput` via:
+//
+//	GetDirMapArray{ GetDirMapArgs{...} }
+type GetDirMapArrayInput interface {
+	pulumi.Input
+
+	ToGetDirMapArrayOutput() GetDirMapArrayOutput
+	ToGetDirMapArrayOutputWithContext(context.Context) GetDirMapArrayOutput
+}
+
+type GetDirMapArray []GetDirMapInput
+
+func (GetDirMapArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDirMap)(nil)).Elem()
+}
+
+func (i GetDirMapArray) ToGetDirMapArrayOutput() GetDirMapArrayOutput {
+	return i.ToGetDirMapArrayOutputWithContext(context.Background())
+}
+
+func (i GetDirMapArray) ToGetDirMapArrayOutputWithContext(ctx context.Context) GetDirMapArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDirMapArrayOutput)
+}
+
+type GetDirMapOutput struct{ *pulumi.OutputState }
+
+func (GetDirMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDirMap)(nil)).Elem()
+}
+
+func (o GetDirMapOutput) ToGetDirMapOutput() GetDirMapOutput {
+	return o
+}
+
+func (o GetDirMapOutput) ToGetDirMapOutputWithContext(ctx context.Context) GetDirMapOutput {
+	return o
+}
+
+// The node name attribute of the map.
+func (o GetDirMapOutput) Node() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDirMap) string { return v.Node }).(pulumi.StringOutput)
+}
+
+// The path attribute of the map.
+func (o GetDirMapOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDirMap) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type GetDirMapArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDirMapArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDirMap)(nil)).Elem()
+}
+
+func (o GetDirMapArrayOutput) ToGetDirMapArrayOutput() GetDirMapArrayOutput {
+	return o
+}
+
+func (o GetDirMapArrayOutput) ToGetDirMapArrayOutputWithContext(ctx context.Context) GetDirMapArrayOutput {
+	return o
+}
+
+func (o GetDirMapArrayOutput) Index(i pulumi.IntInput) GetDirMapOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDirMap {
+		return vs[0].([]GetDirMap)[vs[1].(int)]
+	}).(GetDirMapOutput)
 }
 
 type GetPciMap struct {
@@ -546,18 +758,26 @@ func (o GetUsbMapArrayOutput) Index(i pulumi.IntInput) GetUsbMapOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DirMapTypeInput)(nil)).Elem(), DirMapTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DirMapTypeArrayInput)(nil)).Elem(), DirMapTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PciMapTypeInput)(nil)).Elem(), PciMapTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PciMapTypeArrayInput)(nil)).Elem(), PciMapTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UsbMapTypeInput)(nil)).Elem(), UsbMapTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UsbMapTypeArrayInput)(nil)).Elem(), UsbMapTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDirMapInput)(nil)).Elem(), GetDirMapArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDirMapArrayInput)(nil)).Elem(), GetDirMapArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPciMapInput)(nil)).Elem(), GetPciMapArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPciMapArrayInput)(nil)).Elem(), GetPciMapArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsbMapInput)(nil)).Elem(), GetUsbMapArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsbMapArrayInput)(nil)).Elem(), GetUsbMapArray{})
+	pulumi.RegisterOutputType(DirMapTypeOutput{})
+	pulumi.RegisterOutputType(DirMapTypeArrayOutput{})
 	pulumi.RegisterOutputType(PciMapTypeOutput{})
 	pulumi.RegisterOutputType(PciMapTypeArrayOutput{})
 	pulumi.RegisterOutputType(UsbMapTypeOutput{})
 	pulumi.RegisterOutputType(UsbMapTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetDirMapOutput{})
+	pulumi.RegisterOutputType(GetDirMapArrayOutput{})
 	pulumi.RegisterOutputType(GetPciMapOutput{})
 	pulumi.RegisterOutputType(GetPciMapArrayOutput{})
 	pulumi.RegisterOutputType(GetUsbMapOutput{})

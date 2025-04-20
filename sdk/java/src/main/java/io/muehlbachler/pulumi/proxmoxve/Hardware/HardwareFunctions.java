@@ -43,6 +43,11 @@ public final class HardwareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var example-dir = HardwareFunctions.getMappings(GetMappingsArgs.builder()
+     *             .checkNode("pve")
+     *             .type("dir")
+     *             .build());
+     * 
      *         final var example-pci = HardwareFunctions.getMappings(GetMappingsArgs.builder()
      *             .checkNode("pve")
      *             .type("pci")
@@ -93,6 +98,11 @@ public final class HardwareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var example-dir = HardwareFunctions.getMappings(GetMappingsArgs.builder()
+     *             .checkNode("pve")
+     *             .type("dir")
+     *             .build());
+     * 
      *         final var example-pci = HardwareFunctions.getMappings(GetMappingsArgs.builder()
      *             .checkNode("pve")
      *             .type("pci")
@@ -143,6 +153,11 @@ public final class HardwareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var example-dir = HardwareFunctions.getMappings(GetMappingsArgs.builder()
+     *             .checkNode("pve")
+     *             .type("dir")
+     *             .build());
+     * 
      *         final var example-pci = HardwareFunctions.getMappings(GetMappingsArgs.builder()
      *             .checkNode("pve")
      *             .type("pci")
@@ -193,6 +208,11 @@ public final class HardwareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var example-dir = HardwareFunctions.getMappings(GetMappingsArgs.builder()
+     *             .checkNode("pve")
+     *             .type("dir")
+     *             .build());
+     * 
      *         final var example-pci = HardwareFunctions.getMappings(GetMappingsArgs.builder()
      *             .checkNode("pve")
      *             .type("pci")
@@ -243,6 +263,11 @@ public final class HardwareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var example-dir = HardwareFunctions.getMappings(GetMappingsArgs.builder()
+     *             .checkNode("pve")
+     *             .type("dir")
+     *             .build());
+     * 
      *         final var example-pci = HardwareFunctions.getMappings(GetMappingsArgs.builder()
      *             .checkNode("pve")
      *             .type("pci")

@@ -24,6 +24,12 @@ namespace Pulumi.ProxmoxVE.Hardware
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var example_dir = ProxmoxVE.Hardware.GetMappings.Invoke(new()
+        ///     {
+        ///         CheckNode = "pve",
+        ///         Type = "dir",
+        ///     });
+        /// 
         ///     var example_pci = ProxmoxVE.Hardware.GetMappings.Invoke(new()
         ///     {
         ///         CheckNode = "pve",
@@ -60,6 +66,12 @@ namespace Pulumi.ProxmoxVE.Hardware
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var example_dir = ProxmoxVE.Hardware.GetMappings.Invoke(new()
+        ///     {
+        ///         CheckNode = "pve",
+        ///         Type = "dir",
+        ///     });
+        /// 
         ///     var example_pci = ProxmoxVE.Hardware.GetMappings.Invoke(new()
         ///     {
         ///         CheckNode = "pve",
@@ -96,6 +108,12 @@ namespace Pulumi.ProxmoxVE.Hardware
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var example_dir = ProxmoxVE.Hardware.GetMappings.Invoke(new()
+        ///     {
+        ///         CheckNode = "pve",
+        ///         Type = "dir",
+        ///     });
+        /// 
         ///     var example_pci = ProxmoxVE.Hardware.GetMappings.Invoke(new()
         ///     {
         ///         CheckNode = "pve",

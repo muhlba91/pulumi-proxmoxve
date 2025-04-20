@@ -41,7 +41,7 @@ public final class ClusterFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableNodes = ClusterFunctions.getNodes();
+     *         final var availableNodes = ClusterFunctions.getNodes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -80,7 +80,7 @@ public final class ClusterFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableNodes = ClusterFunctions.getNodes();
+     *         final var availableNodes = ClusterFunctions.getNodes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -119,7 +119,7 @@ public final class ClusterFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableNodes = ClusterFunctions.getNodes();
+     *         final var availableNodes = ClusterFunctions.getNodes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -158,7 +158,7 @@ public final class ClusterFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableNodes = ClusterFunctions.getNodes();
+     *         final var availableNodes = ClusterFunctions.getNodes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -197,7 +197,7 @@ public final class ClusterFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableNodes = ClusterFunctions.getNodes();
+     *         final var availableNodes = ClusterFunctions.getNodes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -236,7 +236,7 @@ public final class ClusterFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableNodes = ClusterFunctions.getNodes();
+     *         final var availableNodes = ClusterFunctions.getNodes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -275,7 +275,7 @@ public final class ClusterFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableNodes = ClusterFunctions.getNodes();
+     *         final var availableNodes = ClusterFunctions.getNodes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }

@@ -375,6 +375,12 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<Outputs.VirtualMachineVga?> Vga { get; private set; } = null!;
 
         /// <summary>
+        /// Virtiofs share
+        /// </summary>
+        [Output("virtiofs")]
+        public Output<ImmutableArray<Outputs.VirtualMachineVirtiof>> Virtiofs { get; private set; } = null!;
+
+        /// <summary>
         /// The VM identifier.
         /// </summary>
         [Output("vmId")]
@@ -818,6 +824,18 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Input("vga")]
         public Input<Inputs.VirtualMachineVgaArgs>? Vga { get; set; }
+
+        [Input("virtiofs")]
+        private InputList<Inputs.VirtualMachineVirtiofArgs>? _virtiofs;
+
+        /// <summary>
+        /// Virtiofs share
+        /// </summary>
+        public InputList<Inputs.VirtualMachineVirtiofArgs> Virtiofs
+        {
+            get => _virtiofs ?? (_virtiofs = new InputList<Inputs.VirtualMachineVirtiofArgs>());
+            set => _virtiofs = value;
+        }
 
         /// <summary>
         /// The VM identifier.
@@ -1263,6 +1281,18 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Input("vga")]
         public Input<Inputs.VirtualMachineVgaGetArgs>? Vga { get; set; }
+
+        [Input("virtiofs")]
+        private InputList<Inputs.VirtualMachineVirtiofGetArgs>? _virtiofs;
+
+        /// <summary>
+        /// Virtiofs share
+        /// </summary>
+        public InputList<Inputs.VirtualMachineVirtiofGetArgs> Virtiofs
+        {
+            get => _virtiofs ?? (_virtiofs = new InputList<Inputs.VirtualMachineVirtiofGetArgs>());
+            set => _virtiofs = value;
+        }
 
         /// <summary>
         /// The VM identifier.

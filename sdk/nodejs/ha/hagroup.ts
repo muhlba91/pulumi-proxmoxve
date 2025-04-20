@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *     group: "example",
  *     comment: "This is a comment.",
  *     nodes: {
- *         node1: undefined,
+ *         node1: null,
  *         node2: 2,
  *         node3: 1,
  *     },

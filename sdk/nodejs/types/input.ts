@@ -621,6 +621,17 @@ export namespace Cluster {
 
 export namespace Hardware {
     export namespace mapping {
+        export interface DirMap {
+            /**
+             * The node this mapping applies to.
+             */
+            node: pulumi.Input<string>;
+            /**
+             * The path of the map. For directory mappings the path is required and refers to the POSIX path of the directory as visible from the node.
+             */
+            path: pulumi.Input<string>;
+        }
+
         export interface PciMap {
             /**
              * The comment of the mapped PCI device.
@@ -1922,6 +1933,29 @@ export namespace VM {
          * The VGA type (defaults to `std`).
          */
         type?: pulumi.Input<string>;
+    }
+
+    export interface VirtualMachineVirtiof {
+        /**
+         * The caching mode
+         */
+        cache?: pulumi.Input<string>;
+        /**
+         * Whether to allow direct io
+         */
+        directIo?: pulumi.Input<boolean>;
+        /**
+         * Enable POSIX ACLs, implies xattr support
+         */
+        exposeAcl?: pulumi.Input<boolean>;
+        /**
+         * Enable support for extended attributes
+         */
+        exposeXattr?: pulumi.Input<boolean>;
+        /**
+         * Identifier of the directory mapping
+         */
+        mapping: pulumi.Input<string>;
     }
 
     export interface VirtualMachineWatchdog {

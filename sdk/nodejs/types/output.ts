@@ -536,6 +536,28 @@ export namespace Hardware {
     }
 
     export namespace mapping {
+        export interface DirMap {
+            /**
+             * The node this mapping applies to.
+             */
+            node: string;
+            /**
+             * The path of the map. For directory mappings the path is required and refers to the POSIX path of the directory as visible from the node.
+             */
+            path: string;
+        }
+
+        export interface GetDirMap {
+            /**
+             * The node name attribute of the map.
+             */
+            node: string;
+            /**
+             * The path attribute of the map.
+             */
+            path: string;
+        }
+
         export interface GetPciMap {
             /**
              * The comment of the mapped PCI device.
@@ -1901,6 +1923,29 @@ export namespace VM {
          * The VGA type (defaults to `std`).
          */
         type?: string;
+    }
+
+    export interface VirtualMachineVirtiof {
+        /**
+         * The caching mode
+         */
+        cache?: string;
+        /**
+         * Whether to allow direct io
+         */
+        directIo?: boolean;
+        /**
+         * Enable POSIX ACLs, implies xattr support
+         */
+        exposeAcl?: boolean;
+        /**
+         * Enable support for extended attributes
+         */
+        exposeXattr?: boolean;
+        /**
+         * Identifier of the directory mapping
+         */
+        mapping: string;
     }
 
     export interface VirtualMachineWatchdog {

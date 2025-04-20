@@ -8,16 +8,234 @@ import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.deployment.InvokeOutputOptions;
+import io.muehlbachler.pulumi.proxmoxve.Hardware_mapping.inputs.GetDirArgs;
+import io.muehlbachler.pulumi.proxmoxve.Hardware_mapping.inputs.GetDirPlainArgs;
 import io.muehlbachler.pulumi.proxmoxve.Hardware_mapping.inputs.GetPciArgs;
 import io.muehlbachler.pulumi.proxmoxve.Hardware_mapping.inputs.GetPciPlainArgs;
 import io.muehlbachler.pulumi.proxmoxve.Hardware_mapping.inputs.GetUsbArgs;
 import io.muehlbachler.pulumi.proxmoxve.Hardware_mapping.inputs.GetUsbPlainArgs;
+import io.muehlbachler.pulumi.proxmoxve.Hardware_mapping.outputs.GetDirResult;
 import io.muehlbachler.pulumi.proxmoxve.Hardware_mapping.outputs.GetPciResult;
 import io.muehlbachler.pulumi.proxmoxve.Hardware_mapping.outputs.GetUsbResult;
 import io.muehlbachler.pulumi.proxmoxve.Utilities;
 import java.util.concurrent.CompletableFuture;
 
 public final class Hardware_mappingFunctions {
+    /**
+     * Retrieves a directory mapping from a Proxmox VE cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.Hardware_mapping.Hardware_mappingFunctions;
+     * import com.pulumi.proxmoxve.Hardware.inputs.GetDirArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Hardware_mappingFunctions.getDir(GetDirArgs.builder()
+     *             .name("example")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingDir", example);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDirResult> getDir(GetDirArgs args) {
+        return getDir(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves a directory mapping from a Proxmox VE cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.Hardware_mapping.Hardware_mappingFunctions;
+     * import com.pulumi.proxmoxve.Hardware.inputs.GetDirArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Hardware_mappingFunctions.getDir(GetDirArgs.builder()
+     *             .name("example")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingDir", example);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDirResult> getDirPlain(GetDirPlainArgs args) {
+        return getDirPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves a directory mapping from a Proxmox VE cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.Hardware_mapping.Hardware_mappingFunctions;
+     * import com.pulumi.proxmoxve.Hardware.inputs.GetDirArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Hardware_mappingFunctions.getDir(GetDirArgs.builder()
+     *             .name("example")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingDir", example);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDirResult> getDir(GetDirArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:Hardware/mapping/getDir:getDir", TypeShape.of(GetDirResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves a directory mapping from a Proxmox VE cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.Hardware_mapping.Hardware_mappingFunctions;
+     * import com.pulumi.proxmoxve.Hardware.inputs.GetDirArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Hardware_mappingFunctions.getDir(GetDirArgs.builder()
+     *             .name("example")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingDir", example);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDirResult> getDir(GetDirArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:Hardware/mapping/getDir:getDir", TypeShape.of(GetDirResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves a directory mapping from a Proxmox VE cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.Hardware_mapping.Hardware_mappingFunctions;
+     * import com.pulumi.proxmoxve.Hardware.inputs.GetDirArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Hardware_mappingFunctions.getDir(GetDirArgs.builder()
+     *             .name("example")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingDir", example);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDirResult> getDirPlain(GetDirPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("proxmoxve:Hardware/mapping/getDir:getDir", TypeShape.of(GetDirResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Retrieves a PCI hardware mapping from a Proxmox VE cluster.
      * 
@@ -46,11 +264,11 @@ public final class Hardware_mappingFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Hardware/mappingFunctions.getPci(GetPciArgs.builder()
+     *         final var example = Hardware_mappingFunctions.getPci(GetPciArgs.builder()
      *             .name("example")
      *             .build());
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingPci", example.applyValue(getPciResult -> getPciResult));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingPci", example);
      *     }
      * }
      * }
@@ -89,11 +307,11 @@ public final class Hardware_mappingFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Hardware/mappingFunctions.getPci(GetPciArgs.builder()
+     *         final var example = Hardware_mappingFunctions.getPci(GetPciArgs.builder()
      *             .name("example")
      *             .build());
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingPci", example.applyValue(getPciResult -> getPciResult));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingPci", example);
      *     }
      * }
      * }
@@ -132,11 +350,11 @@ public final class Hardware_mappingFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Hardware/mappingFunctions.getPci(GetPciArgs.builder()
+     *         final var example = Hardware_mappingFunctions.getPci(GetPciArgs.builder()
      *             .name("example")
      *             .build());
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingPci", example.applyValue(getPciResult -> getPciResult));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingPci", example);
      *     }
      * }
      * }
@@ -175,11 +393,11 @@ public final class Hardware_mappingFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Hardware/mappingFunctions.getPci(GetPciArgs.builder()
+     *         final var example = Hardware_mappingFunctions.getPci(GetPciArgs.builder()
      *             .name("example")
      *             .build());
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingPci", example.applyValue(getPciResult -> getPciResult));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingPci", example);
      *     }
      * }
      * }
@@ -218,11 +436,11 @@ public final class Hardware_mappingFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Hardware/mappingFunctions.getPci(GetPciArgs.builder()
+     *         final var example = Hardware_mappingFunctions.getPci(GetPciArgs.builder()
      *             .name("example")
      *             .build());
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingPci", example.applyValue(getPciResult -> getPciResult));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingPci", example);
      *     }
      * }
      * }
@@ -261,11 +479,11 @@ public final class Hardware_mappingFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Hardware/mappingFunctions.getUsb(GetUsbArgs.builder()
+     *         final var example = Hardware_mappingFunctions.getUsb(GetUsbArgs.builder()
      *             .name("example")
      *             .build());
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingUsb", example.applyValue(getUsbResult -> getUsbResult));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingUsb", example);
      *     }
      * }
      * }
@@ -304,11 +522,11 @@ public final class Hardware_mappingFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Hardware/mappingFunctions.getUsb(GetUsbArgs.builder()
+     *         final var example = Hardware_mappingFunctions.getUsb(GetUsbArgs.builder()
      *             .name("example")
      *             .build());
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingUsb", example.applyValue(getUsbResult -> getUsbResult));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingUsb", example);
      *     }
      * }
      * }
@@ -347,11 +565,11 @@ public final class Hardware_mappingFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Hardware/mappingFunctions.getUsb(GetUsbArgs.builder()
+     *         final var example = Hardware_mappingFunctions.getUsb(GetUsbArgs.builder()
      *             .name("example")
      *             .build());
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingUsb", example.applyValue(getUsbResult -> getUsbResult));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingUsb", example);
      *     }
      * }
      * }
@@ -390,11 +608,11 @@ public final class Hardware_mappingFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Hardware/mappingFunctions.getUsb(GetUsbArgs.builder()
+     *         final var example = Hardware_mappingFunctions.getUsb(GetUsbArgs.builder()
      *             .name("example")
      *             .build());
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingUsb", example.applyValue(getUsbResult -> getUsbResult));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingUsb", example);
      *     }
      * }
      * }
@@ -433,11 +651,11 @@ public final class Hardware_mappingFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Hardware/mappingFunctions.getUsb(GetUsbArgs.builder()
+     *         final var example = Hardware_mappingFunctions.getUsb(GetUsbArgs.builder()
      *             .name("example")
      *             .build());
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingUsb", example.applyValue(getUsbResult -> getUsbResult));
+     *         ctx.export("dataProxmoxVirtualEnvironmentHardwareMappingUsb", example);
      *     }
      * }
      * }

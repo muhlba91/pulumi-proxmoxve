@@ -266,7 +266,7 @@ public final class PermissionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableGroups = PermissionFunctions.getGroups();
+     *         final var availableGroups = PermissionFunctions.getGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -305,7 +305,7 @@ public final class PermissionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableGroups = PermissionFunctions.getGroups();
+     *         final var availableGroups = PermissionFunctions.getGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -344,7 +344,7 @@ public final class PermissionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableGroups = PermissionFunctions.getGroups();
+     *         final var availableGroups = PermissionFunctions.getGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -383,7 +383,7 @@ public final class PermissionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableGroups = PermissionFunctions.getGroups();
+     *         final var availableGroups = PermissionFunctions.getGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -422,7 +422,7 @@ public final class PermissionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableGroups = PermissionFunctions.getGroups();
+     *         final var availableGroups = PermissionFunctions.getGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -461,7 +461,7 @@ public final class PermissionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableGroups = PermissionFunctions.getGroups();
+     *         final var availableGroups = PermissionFunctions.getGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -500,7 +500,7 @@ public final class PermissionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableGroups = PermissionFunctions.getGroups();
+     *         final var availableGroups = PermissionFunctions.getGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -749,7 +749,7 @@ public final class PermissionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availablePools = PermissionFunctions.getPools();
+     *         final var availablePools = PermissionFunctions.getPools(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -788,7 +788,7 @@ public final class PermissionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availablePools = PermissionFunctions.getPools();
+     *         final var availablePools = PermissionFunctions.getPools(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -827,7 +827,7 @@ public final class PermissionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availablePools = PermissionFunctions.getPools();
+     *         final var availablePools = PermissionFunctions.getPools(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -866,7 +866,7 @@ public final class PermissionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availablePools = PermissionFunctions.getPools();
+     *         final var availablePools = PermissionFunctions.getPools(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -905,7 +905,7 @@ public final class PermissionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availablePools = PermissionFunctions.getPools();
+     *         final var availablePools = PermissionFunctions.getPools(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -944,7 +944,7 @@ public final class PermissionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availablePools = PermissionFunctions.getPools();
+     *         final var availablePools = PermissionFunctions.getPools(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -983,7 +983,7 @@ public final class PermissionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availablePools = PermissionFunctions.getPools();
+     *         final var availablePools = PermissionFunctions.getPools(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1232,7 +1232,7 @@ public final class PermissionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableRoles = PermissionFunctions.getRoles();
+     *         final var availableRoles = PermissionFunctions.getRoles(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1271,7 +1271,7 @@ public final class PermissionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableRoles = PermissionFunctions.getRoles();
+     *         final var availableRoles = PermissionFunctions.getRoles(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1310,7 +1310,7 @@ public final class PermissionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableRoles = PermissionFunctions.getRoles();
+     *         final var availableRoles = PermissionFunctions.getRoles(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1349,7 +1349,7 @@ public final class PermissionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableRoles = PermissionFunctions.getRoles();
+     *         final var availableRoles = PermissionFunctions.getRoles(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1388,7 +1388,7 @@ public final class PermissionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableRoles = PermissionFunctions.getRoles();
+     *         final var availableRoles = PermissionFunctions.getRoles(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1427,7 +1427,7 @@ public final class PermissionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableRoles = PermissionFunctions.getRoles();
+     *         final var availableRoles = PermissionFunctions.getRoles(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1466,7 +1466,7 @@ public final class PermissionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableRoles = PermissionFunctions.getRoles();
+     *         final var availableRoles = PermissionFunctions.getRoles(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1715,7 +1715,7 @@ public final class PermissionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableUsers = PermissionFunctions.getUsers();
+     *         final var availableUsers = PermissionFunctions.getUsers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1754,7 +1754,7 @@ public final class PermissionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableUsers = PermissionFunctions.getUsers();
+     *         final var availableUsers = PermissionFunctions.getUsers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1793,7 +1793,7 @@ public final class PermissionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableUsers = PermissionFunctions.getUsers();
+     *         final var availableUsers = PermissionFunctions.getUsers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1832,7 +1832,7 @@ public final class PermissionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableUsers = PermissionFunctions.getUsers();
+     *         final var availableUsers = PermissionFunctions.getUsers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1871,7 +1871,7 @@ public final class PermissionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableUsers = PermissionFunctions.getUsers();
+     *         final var availableUsers = PermissionFunctions.getUsers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1910,7 +1910,7 @@ public final class PermissionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableUsers = PermissionFunctions.getUsers();
+     *         final var availableUsers = PermissionFunctions.getUsers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1949,7 +1949,7 @@ public final class PermissionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableUsers = PermissionFunctions.getUsers();
+     *         final var availableUsers = PermissionFunctions.getUsers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }

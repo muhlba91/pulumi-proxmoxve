@@ -5,6 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export { DirArgs, DirState } from "./dir";
+export type Dir = import("./dir").Dir;
+export const Dir: typeof import("./dir").Dir = null as any;
+utilities.lazyLoad(exports, ["Dir"], () => require("./dir"));
+
+export { GetDirArgs, GetDirResult, GetDirOutputArgs } from "./getDir";
+export const getDir: typeof import("./getDir").getDir = null as any;
+export const getDirOutput: typeof import("./getDir").getDirOutput = null as any;
+utilities.lazyLoad(exports, ["getDir","getDirOutput"], () => require("./getDir"));
+
 export { GetPciArgs, GetPciResult, GetPciOutputArgs } from "./getPci";
 export const getPci: typeof import("./getPci").getPci = null as any;
 export const getPciOutput: typeof import("./getPci").getPciOutput = null as any;
@@ -30,6 +40,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "proxmoxve:Hardware/mapping/dir:Dir":
+                return new Dir(name, <any>undefined, { urn })
             case "proxmoxve:Hardware/mapping/pci:Pci":
                 return new Pci(name, <any>undefined, { urn })
             case "proxmoxve:Hardware/mapping/usb:Usb":
@@ -39,5 +51,6 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("proxmoxve", "Hardware/mapping/dir", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "Hardware/mapping/pci", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "Hardware/mapping/usb", _module)

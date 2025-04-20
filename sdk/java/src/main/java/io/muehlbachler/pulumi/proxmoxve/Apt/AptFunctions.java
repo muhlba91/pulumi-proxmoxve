@@ -49,7 +49,7 @@ public final class AptFunctions {
      *             .node("pve")
      *             .build());
      * 
-     *         ctx.export("proxmoxVirtualEnvironmentAptRepository", example.applyValue(getRepositoryResult -> getRepositoryResult));
+     *         ctx.export("proxmoxVirtualEnvironmentAptRepository", example);
      *     }
      * }
      * }
@@ -94,7 +94,7 @@ public final class AptFunctions {
      *             .node("pve")
      *             .build());
      * 
-     *         ctx.export("proxmoxVirtualEnvironmentAptRepository", example.applyValue(getRepositoryResult -> getRepositoryResult));
+     *         ctx.export("proxmoxVirtualEnvironmentAptRepository", example);
      *     }
      * }
      * }
@@ -139,7 +139,7 @@ public final class AptFunctions {
      *             .node("pve")
      *             .build());
      * 
-     *         ctx.export("proxmoxVirtualEnvironmentAptRepository", example.applyValue(getRepositoryResult -> getRepositoryResult));
+     *         ctx.export("proxmoxVirtualEnvironmentAptRepository", example);
      *     }
      * }
      * }
@@ -184,7 +184,7 @@ public final class AptFunctions {
      *             .node("pve")
      *             .build());
      * 
-     *         ctx.export("proxmoxVirtualEnvironmentAptRepository", example.applyValue(getRepositoryResult -> getRepositoryResult));
+     *         ctx.export("proxmoxVirtualEnvironmentAptRepository", example);
      *     }
      * }
      * }
@@ -229,7 +229,7 @@ public final class AptFunctions {
      *             .node("pve")
      *             .build());
      * 
-     *         ctx.export("proxmoxVirtualEnvironmentAptRepository", example.applyValue(getRepositoryResult -> getRepositoryResult));
+     *         ctx.export("proxmoxVirtualEnvironmentAptRepository", example);
      *     }
      * }
      * }

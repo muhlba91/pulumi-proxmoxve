@@ -43,12 +43,12 @@ public final class Apt_standardFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Apt/standardFunctions.getRepository(GetRepositoryArgs.builder()
+     *         final var example = Apt_standardFunctions.getRepository(GetRepositoryArgs.builder()
      *             .handle("no-subscription")
      *             .node("pve")
      *             .build());
      * 
-     *         ctx.export("proxmoxVirtualEnvironmentAptStandardRepository", example.applyValue(getRepositoryResult -> getRepositoryResult));
+     *         ctx.export("proxmoxVirtualEnvironmentAptStandardRepository", example);
      *     }
      * }
      * }
@@ -87,12 +87,12 @@ public final class Apt_standardFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Apt/standardFunctions.getRepository(GetRepositoryArgs.builder()
+     *         final var example = Apt_standardFunctions.getRepository(GetRepositoryArgs.builder()
      *             .handle("no-subscription")
      *             .node("pve")
      *             .build());
      * 
-     *         ctx.export("proxmoxVirtualEnvironmentAptStandardRepository", example.applyValue(getRepositoryResult -> getRepositoryResult));
+     *         ctx.export("proxmoxVirtualEnvironmentAptStandardRepository", example);
      *     }
      * }
      * }
@@ -131,12 +131,12 @@ public final class Apt_standardFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Apt/standardFunctions.getRepository(GetRepositoryArgs.builder()
+     *         final var example = Apt_standardFunctions.getRepository(GetRepositoryArgs.builder()
      *             .handle("no-subscription")
      *             .node("pve")
      *             .build());
      * 
-     *         ctx.export("proxmoxVirtualEnvironmentAptStandardRepository", example.applyValue(getRepositoryResult -> getRepositoryResult));
+     *         ctx.export("proxmoxVirtualEnvironmentAptStandardRepository", example);
      *     }
      * }
      * }
@@ -175,12 +175,12 @@ public final class Apt_standardFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Apt/standardFunctions.getRepository(GetRepositoryArgs.builder()
+     *         final var example = Apt_standardFunctions.getRepository(GetRepositoryArgs.builder()
      *             .handle("no-subscription")
      *             .node("pve")
      *             .build());
      * 
-     *         ctx.export("proxmoxVirtualEnvironmentAptStandardRepository", example.applyValue(getRepositoryResult -> getRepositoryResult));
+     *         ctx.export("proxmoxVirtualEnvironmentAptStandardRepository", example);
      *     }
      * }
      * }
@@ -219,12 +219,12 @@ public final class Apt_standardFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Apt/standardFunctions.getRepository(GetRepositoryArgs.builder()
+     *         final var example = Apt_standardFunctions.getRepository(GetRepositoryArgs.builder()
      *             .handle("no-subscription")
      *             .node("pve")
      *             .build());
      * 
-     *         ctx.export("proxmoxVirtualEnvironmentAptStandardRepository", example.applyValue(getRepositoryResult -> getRepositoryResult));
+     *         ctx.export("proxmoxVirtualEnvironmentAptStandardRepository", example);
      *     }
      * }
      * }

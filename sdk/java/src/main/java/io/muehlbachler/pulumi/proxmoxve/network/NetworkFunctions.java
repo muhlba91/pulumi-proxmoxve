@@ -680,9 +680,13 @@ public final class NetworkFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = NetworkFunctions.getVersion();
+     *         final var example = NetworkFunctions.getVersion(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentVersion", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("dataProxmoxVirtualEnvironmentVersion", Map.ofEntries(
+     *             Map.entry("release", example.release()),
+     *             Map.entry("repository_id", example.repositoryId()),
+     *             Map.entry("version", example.version())
+     *         ));
      *     }
      * }
      * }
@@ -720,9 +724,13 @@ public final class NetworkFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = NetworkFunctions.getVersion();
+     *         final var example = NetworkFunctions.getVersion(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentVersion", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("dataProxmoxVirtualEnvironmentVersion", Map.ofEntries(
+     *             Map.entry("release", example.release()),
+     *             Map.entry("repository_id", example.repositoryId()),
+     *             Map.entry("version", example.version())
+     *         ));
      *     }
      * }
      * }
@@ -760,9 +768,13 @@ public final class NetworkFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = NetworkFunctions.getVersion();
+     *         final var example = NetworkFunctions.getVersion(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentVersion", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("dataProxmoxVirtualEnvironmentVersion", Map.ofEntries(
+     *             Map.entry("release", example.release()),
+     *             Map.entry("repository_id", example.repositoryId()),
+     *             Map.entry("version", example.version())
+     *         ));
      *     }
      * }
      * }
@@ -800,9 +812,13 @@ public final class NetworkFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = NetworkFunctions.getVersion();
+     *         final var example = NetworkFunctions.getVersion(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentVersion", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("dataProxmoxVirtualEnvironmentVersion", Map.ofEntries(
+     *             Map.entry("release", example.release()),
+     *             Map.entry("repository_id", example.repositoryId()),
+     *             Map.entry("version", example.version())
+     *         ));
      *     }
      * }
      * }
@@ -840,9 +856,13 @@ public final class NetworkFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = NetworkFunctions.getVersion();
+     *         final var example = NetworkFunctions.getVersion(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentVersion", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("dataProxmoxVirtualEnvironmentVersion", Map.ofEntries(
+     *             Map.entry("release", example.release()),
+     *             Map.entry("repository_id", example.repositoryId()),
+     *             Map.entry("version", example.version())
+     *         ));
      *     }
      * }
      * }
@@ -880,9 +900,13 @@ public final class NetworkFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = NetworkFunctions.getVersion();
+     *         final var example = NetworkFunctions.getVersion(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentVersion", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("dataProxmoxVirtualEnvironmentVersion", Map.ofEntries(
+     *             Map.entry("release", example.release()),
+     *             Map.entry("repository_id", example.repositoryId()),
+     *             Map.entry("version", example.version())
+     *         ));
      *     }
      * }
      * }
@@ -920,9 +944,13 @@ public final class NetworkFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = NetworkFunctions.getVersion();
+     *         final var example = NetworkFunctions.getVersion(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentVersion", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("dataProxmoxVirtualEnvironmentVersion", Map.ofEntries(
+     *             Map.entry("release", example.release()),
+     *             Map.entry("repository_id", example.repositoryId()),
+     *             Map.entry("version", example.version())
+     *         ));
      *     }
      * }
      * }

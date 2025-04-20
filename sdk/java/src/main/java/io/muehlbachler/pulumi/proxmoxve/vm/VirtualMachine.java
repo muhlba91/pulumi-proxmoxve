@@ -30,6 +30,7 @@ import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineStartup;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineTpmState;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineUsb;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineVga;
+import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineVirtiof;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineWatchdog;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -861,6 +862,20 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<VirtualMachineVga>> vga() {
         return Codegen.optional(this.vga);
+    }
+    /**
+     * Virtiofs share
+     * 
+     */
+    @Export(name="virtiofs", refs={List.class,VirtualMachineVirtiof.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<VirtualMachineVirtiof>> virtiofs;
+
+    /**
+     * @return Virtiofs share
+     * 
+     */
+    public Output<Optional<List<VirtualMachineVirtiof>>> virtiofs() {
+        return Codegen.optional(this.virtiofs);
     }
     /**
      * The VM identifier.

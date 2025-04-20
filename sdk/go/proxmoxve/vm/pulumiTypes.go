@@ -6245,6 +6245,139 @@ func (o VirtualMachineVgaPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type VirtualMachineVirtiof struct {
+	// The caching mode
+	Cache *string `pulumi:"cache"`
+	// Whether to allow direct io
+	DirectIo *bool `pulumi:"directIo"`
+	// Enable POSIX ACLs, implies xattr support
+	ExposeAcl *bool `pulumi:"exposeAcl"`
+	// Enable support for extended attributes
+	ExposeXattr *bool `pulumi:"exposeXattr"`
+	// Identifier of the directory mapping
+	Mapping string `pulumi:"mapping"`
+}
+
+// VirtualMachineVirtiofInput is an input type that accepts VirtualMachineVirtiofArgs and VirtualMachineVirtiofOutput values.
+// You can construct a concrete instance of `VirtualMachineVirtiofInput` via:
+//
+//	VirtualMachineVirtiofArgs{...}
+type VirtualMachineVirtiofInput interface {
+	pulumi.Input
+
+	ToVirtualMachineVirtiofOutput() VirtualMachineVirtiofOutput
+	ToVirtualMachineVirtiofOutputWithContext(context.Context) VirtualMachineVirtiofOutput
+}
+
+type VirtualMachineVirtiofArgs struct {
+	// The caching mode
+	Cache pulumi.StringPtrInput `pulumi:"cache"`
+	// Whether to allow direct io
+	DirectIo pulumi.BoolPtrInput `pulumi:"directIo"`
+	// Enable POSIX ACLs, implies xattr support
+	ExposeAcl pulumi.BoolPtrInput `pulumi:"exposeAcl"`
+	// Enable support for extended attributes
+	ExposeXattr pulumi.BoolPtrInput `pulumi:"exposeXattr"`
+	// Identifier of the directory mapping
+	Mapping pulumi.StringInput `pulumi:"mapping"`
+}
+
+func (VirtualMachineVirtiofArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineVirtiof)(nil)).Elem()
+}
+
+func (i VirtualMachineVirtiofArgs) ToVirtualMachineVirtiofOutput() VirtualMachineVirtiofOutput {
+	return i.ToVirtualMachineVirtiofOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineVirtiofArgs) ToVirtualMachineVirtiofOutputWithContext(ctx context.Context) VirtualMachineVirtiofOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineVirtiofOutput)
+}
+
+// VirtualMachineVirtiofArrayInput is an input type that accepts VirtualMachineVirtiofArray and VirtualMachineVirtiofArrayOutput values.
+// You can construct a concrete instance of `VirtualMachineVirtiofArrayInput` via:
+//
+//	VirtualMachineVirtiofArray{ VirtualMachineVirtiofArgs{...} }
+type VirtualMachineVirtiofArrayInput interface {
+	pulumi.Input
+
+	ToVirtualMachineVirtiofArrayOutput() VirtualMachineVirtiofArrayOutput
+	ToVirtualMachineVirtiofArrayOutputWithContext(context.Context) VirtualMachineVirtiofArrayOutput
+}
+
+type VirtualMachineVirtiofArray []VirtualMachineVirtiofInput
+
+func (VirtualMachineVirtiofArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualMachineVirtiof)(nil)).Elem()
+}
+
+func (i VirtualMachineVirtiofArray) ToVirtualMachineVirtiofArrayOutput() VirtualMachineVirtiofArrayOutput {
+	return i.ToVirtualMachineVirtiofArrayOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineVirtiofArray) ToVirtualMachineVirtiofArrayOutputWithContext(ctx context.Context) VirtualMachineVirtiofArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineVirtiofArrayOutput)
+}
+
+type VirtualMachineVirtiofOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineVirtiofOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineVirtiof)(nil)).Elem()
+}
+
+func (o VirtualMachineVirtiofOutput) ToVirtualMachineVirtiofOutput() VirtualMachineVirtiofOutput {
+	return o
+}
+
+func (o VirtualMachineVirtiofOutput) ToVirtualMachineVirtiofOutputWithContext(ctx context.Context) VirtualMachineVirtiofOutput {
+	return o
+}
+
+// The caching mode
+func (o VirtualMachineVirtiofOutput) Cache() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineVirtiof) *string { return v.Cache }).(pulumi.StringPtrOutput)
+}
+
+// Whether to allow direct io
+func (o VirtualMachineVirtiofOutput) DirectIo() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineVirtiof) *bool { return v.DirectIo }).(pulumi.BoolPtrOutput)
+}
+
+// Enable POSIX ACLs, implies xattr support
+func (o VirtualMachineVirtiofOutput) ExposeAcl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineVirtiof) *bool { return v.ExposeAcl }).(pulumi.BoolPtrOutput)
+}
+
+// Enable support for extended attributes
+func (o VirtualMachineVirtiofOutput) ExposeXattr() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineVirtiof) *bool { return v.ExposeXattr }).(pulumi.BoolPtrOutput)
+}
+
+// Identifier of the directory mapping
+func (o VirtualMachineVirtiofOutput) Mapping() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualMachineVirtiof) string { return v.Mapping }).(pulumi.StringOutput)
+}
+
+type VirtualMachineVirtiofArrayOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineVirtiofArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualMachineVirtiof)(nil)).Elem()
+}
+
+func (o VirtualMachineVirtiofArrayOutput) ToVirtualMachineVirtiofArrayOutput() VirtualMachineVirtiofArrayOutput {
+	return o
+}
+
+func (o VirtualMachineVirtiofArrayOutput) ToVirtualMachineVirtiofArrayOutputWithContext(ctx context.Context) VirtualMachineVirtiofArrayOutput {
+	return o
+}
+
+func (o VirtualMachineVirtiofArrayOutput) Index(i pulumi.IntInput) VirtualMachineVirtiofOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualMachineVirtiof {
+		return vs[0].([]VirtualMachineVirtiof)[vs[1].(int)]
+	}).(VirtualMachineVirtiofOutput)
+}
+
 type VirtualMachineWatchdog struct {
 	// The action to perform if after activation the guest fails to poll the watchdog in time  (defaults to `none`).
 	Action *string `pulumi:"action"`
@@ -6745,6 +6878,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineUsbArrayInput)(nil)).Elem(), VirtualMachineUsbArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineVgaInput)(nil)).Elem(), VirtualMachineVgaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineVgaPtrInput)(nil)).Elem(), VirtualMachineVgaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineVirtiofInput)(nil)).Elem(), VirtualMachineVirtiofArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineVirtiofArrayInput)(nil)).Elem(), VirtualMachineVirtiofArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineWatchdogInput)(nil)).Elem(), VirtualMachineWatchdogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineWatchdogPtrInput)(nil)).Elem(), VirtualMachineWatchdogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachinesFilterInput)(nil)).Elem(), GetVirtualMachinesFilterArgs{})
@@ -6815,6 +6950,8 @@ func init() {
 	pulumi.RegisterOutputType(VirtualMachineUsbArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachineVgaOutput{})
 	pulumi.RegisterOutputType(VirtualMachineVgaPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineVirtiofOutput{})
+	pulumi.RegisterOutputType(VirtualMachineVirtiofArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachineWatchdogOutput{})
 	pulumi.RegisterOutputType(VirtualMachineWatchdogPtrOutput{})
 	pulumi.RegisterOutputType(GetVirtualMachinesFilterOutput{})

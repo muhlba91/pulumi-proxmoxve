@@ -264,7 +264,8 @@ public final class ProxmoxveFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var node = ProxmoxveFunctions.getNode();
+     *         final var node = ProxmoxveFunctions.getNode(GetNodeArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -304,7 +305,8 @@ public final class ProxmoxveFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var node = ProxmoxveFunctions.getNode();
+     *         final var node = ProxmoxveFunctions.getNode(GetNodeArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -344,7 +346,8 @@ public final class ProxmoxveFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var node = ProxmoxveFunctions.getNode();
+     *         final var node = ProxmoxveFunctions.getNode(GetNodeArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -384,7 +387,8 @@ public final class ProxmoxveFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var node = ProxmoxveFunctions.getNode();
+     *         final var node = ProxmoxveFunctions.getNode(GetNodeArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -424,7 +428,8 @@ public final class ProxmoxveFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var node = ProxmoxveFunctions.getNode();
+     *         final var node = ProxmoxveFunctions.getNode(GetNodeArgs.builder()
+     *             .build());
      * 
      *     }
      * }
