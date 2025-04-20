@@ -1,5 +1,5 @@
 // x-release-please-major
-module github.com/muhlba91/pulumi-proxmoxve/sdk/v6
+module github.com/muhlba91/pulumi-proxmoxve/sdk/v7
 
 go 1.22
 
