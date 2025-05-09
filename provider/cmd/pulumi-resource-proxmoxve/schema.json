@@ -1876,7 +1876,18 @@
                     "willReplaceOnChanges": true
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "metaDataFileId",
+                        "networkDataFileId",
+                        "type",
+                        "userDataFileId",
+                        "vendorDataFileId"
+                    ]
+                }
+            }
         },
         "proxmoxve:VM/VirtualMachineInitializationDns:VirtualMachineInitializationDns": {
             "properties": {
@@ -3731,7 +3742,7 @@
                 },
                 "url": {
                     "type": "string",
-                    "description": "The URL to download the file from. Format `https?://.*`.\n"
+                    "description": "The URL to download the file from. Must match regex: `https?://.*`.\n"
                 },
                 "verify": {
                     "type": "boolean",
@@ -3793,7 +3804,7 @@
                 },
                 "url": {
                     "type": "string",
-                    "description": "The URL to download the file from. Format `https?://.*`.\n"
+                    "description": "The URL to download the file from. Must match regex: `https?://.*`.\n"
                 },
                 "verify": {
                     "type": "boolean",
@@ -3855,7 +3866,7 @@
                     },
                     "url": {
                         "type": "string",
-                        "description": "The URL to download the file from. Format `https?://.*`.\n"
+                        "description": "The URL to download the file from. Must match regex: `https?://.*`.\n"
                     },
                     "verify": {
                         "type": "boolean",
@@ -6531,8 +6542,10 @@
                 "ipv6Addresses",
                 "macAddresses",
                 "name",
+                "networkDevices",
                 "networkInterfaceNames",
                 "nodeName",
+                "vga",
                 "vmId"
             ],
             "inputProperties": {
