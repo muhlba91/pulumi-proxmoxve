@@ -967,6 +967,9 @@ class _ContainerState:
 
 
 class Container(pulumi.CustomResource):
+
+    pulumi_type = "proxmoxve:CT/container:Container"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

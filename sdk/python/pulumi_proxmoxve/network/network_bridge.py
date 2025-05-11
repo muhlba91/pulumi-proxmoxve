@@ -385,6 +385,9 @@ class _NetworkBridgeState:
 
 
 class NetworkBridge(pulumi.CustomResource):
+
+    pulumi_type = "proxmoxve:Network/networkBridge:NetworkBridge"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

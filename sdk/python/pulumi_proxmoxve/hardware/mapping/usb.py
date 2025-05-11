@@ -131,6 +131,9 @@ class _UsbState:
 
 
 class Usb(pulumi.CustomResource):
+
+    pulumi_type = "proxmoxve:Hardware/mapping/usb:Usb"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

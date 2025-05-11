@@ -411,6 +411,9 @@ class _VirtualMachine2State:
 
 
 class VirtualMachine2(pulumi.CustomResource):
+
+    pulumi_type = "proxmoxve:VM/virtualMachine2:VirtualMachine2"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

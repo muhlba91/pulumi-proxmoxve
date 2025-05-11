@@ -1905,6 +1905,9 @@ class _VirtualMachineState:
 
 
 class VirtualMachine(pulumi.CustomResource):
+
+    pulumi_type = "proxmoxve:VM/virtualMachine:VirtualMachine"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -2624,7 +2627,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkDevices")
-    def network_devices(self) -> pulumi.Output[Optional[Sequence['outputs.VirtualMachineNetworkDevice']]]:
+    def network_devices(self) -> pulumi.Output[Sequence['outputs.VirtualMachineNetworkDevice']]:
         """
         A network device (multiple blocks supported).
         """
@@ -2882,7 +2885,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def vga(self) -> pulumi.Output[Optional['outputs.VirtualMachineVga']]:
+    def vga(self) -> pulumi.Output['outputs.VirtualMachineVga']:
         """
         The VGA configuration.
         """

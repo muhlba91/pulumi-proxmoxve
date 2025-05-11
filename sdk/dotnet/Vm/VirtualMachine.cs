@@ -372,7 +372,7 @@ namespace Pulumi.ProxmoxVE.VM
         /// The VGA configuration.
         /// </summary>
         [Output("vga")]
-        public Output<Outputs.VirtualMachineVga?> Vga { get; private set; } = null!;
+        public Output<Outputs.VirtualMachineVga> Vga { get; private set; } = null!;
 
         /// <summary>
         /// Virtiofs share

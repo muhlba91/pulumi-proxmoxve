@@ -257,6 +257,9 @@ class _HAResourceState:
 
 
 class HAResource(pulumi.CustomResource):
+
+    pulumi_type = "proxmoxve:HA/hAResource:HAResource"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

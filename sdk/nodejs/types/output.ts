@@ -1608,17 +1608,17 @@ export namespace VM {
          * The identifier for a file containing
          * all meta data passed to the VM via cloud-init.
          */
-        metaDataFileId?: string;
+        metaDataFileId: string;
         /**
          * The identifier for a file containing
          * network configuration data passed to the VM via cloud-init (conflicts
          * with `ipConfig`).
          */
-        networkDataFileId?: string;
+        networkDataFileId: string;
         /**
          * The cloud-init configuration format
          */
-        type?: string;
+        type: string;
         /**
          * The user account configuration (conflicts
          * with `userDataFileId`).
@@ -1628,12 +1628,12 @@ export namespace VM {
          * The identifier for a file containing
          * custom user data (conflicts with `userAccount`).
          */
-        userDataFileId?: string;
+        userDataFileId: string;
         /**
          * The identifier for a file containing
          * all vendor data passed to the VM via cloud-init.
          */
-        vendorDataFileId?: string;
+        vendorDataFileId: string;
     }
 
     export interface VirtualMachineInitializationDns {

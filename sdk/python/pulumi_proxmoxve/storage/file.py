@@ -374,6 +374,9 @@ class _FileState:
 
 
 class File(pulumi.CustomResource):
+
+    pulumi_type = "proxmoxve:Storage/file:File"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

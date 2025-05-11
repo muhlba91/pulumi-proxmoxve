@@ -225,6 +225,9 @@ class _FirewallAliasState:
 
 
 class FirewallAlias(pulumi.CustomResource):
+
+    pulumi_type = "proxmoxve:Network/firewallAlias:FirewallAlias"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

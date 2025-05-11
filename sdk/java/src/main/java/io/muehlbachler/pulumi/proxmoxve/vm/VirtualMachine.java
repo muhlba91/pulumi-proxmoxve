@@ -396,14 +396,14 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="networkDevices", refs={List.class,VirtualMachineNetworkDevice.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<VirtualMachineNetworkDevice>> networkDevices;
+    private Output<List<VirtualMachineNetworkDevice>> networkDevices;
 
     /**
      * @return A network device (multiple blocks supported).
      * 
      */
-    public Output<Optional<List<VirtualMachineNetworkDevice>>> networkDevices() {
-        return Codegen.optional(this.networkDevices);
+    public Output<List<VirtualMachineNetworkDevice>> networkDevices() {
+        return this.networkDevices;
     }
     /**
      * The network interface names published by the QEMU
@@ -854,14 +854,14 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="vga", refs={VirtualMachineVga.class}, tree="[0]")
-    private Output</* @Nullable */ VirtualMachineVga> vga;
+    private Output<VirtualMachineVga> vga;
 
     /**
      * @return The VGA configuration.
      * 
      */
-    public Output<Optional<VirtualMachineVga>> vga() {
-        return Codegen.optional(this.vga);
+    public Output<VirtualMachineVga> vga() {
+        return this.vga;
     }
     /**
      * Virtiofs share

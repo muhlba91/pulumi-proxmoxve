@@ -676,6 +676,9 @@ class _OptionsState:
 
 
 class Options(pulumi.CustomResource):
+
+    pulumi_type = "proxmoxve:Cluster/options:Options"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

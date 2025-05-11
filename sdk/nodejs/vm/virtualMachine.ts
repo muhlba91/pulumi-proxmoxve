@@ -150,7 +150,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * A network device (multiple blocks supported).
      */
-    public readonly networkDevices!: pulumi.Output<outputs.VM.VirtualMachineNetworkDevice[] | undefined>;
+    public readonly networkDevices!: pulumi.Output<outputs.VM.VirtualMachineNetworkDevice[]>;
     /**
      * The network interface names published by the QEMU
      * agent (empty list when `agent.enabled` is `false`)
@@ -289,7 +289,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * The VGA configuration.
      */
-    public readonly vga!: pulumi.Output<outputs.VM.VirtualMachineVga | undefined>;
+    public readonly vga!: pulumi.Output<outputs.VM.VirtualMachineVga>;
     /**
      * Virtiofs share
      */

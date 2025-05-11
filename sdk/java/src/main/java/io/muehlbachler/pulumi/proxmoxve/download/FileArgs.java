@@ -169,14 +169,14 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The URL to download the file from. Format `https?://.*`.
+     * The URL to download the file from. Must match regex: `https?://.*`.
      * 
      */
     @Import(name="url", required=true)
     private Output<String> url;
 
     /**
-     * @return The URL to download the file from. Format `https?://.*`.
+     * @return The URL to download the file from. Must match regex: `https?://.*`.
      * 
      */
     public Output<String> url() {
@@ -444,7 +444,7 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url The URL to download the file from. Format `https?://.*`.
+         * @param url The URL to download the file from. Must match regex: `https?://.*`.
          * 
          * @return builder
          * 
@@ -455,7 +455,7 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url The URL to download the file from. Format `https?://.*`.
+         * @param url The URL to download the file from. Must match regex: `https?://.*`.
          * 
          * @return builder
          * 

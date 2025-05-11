@@ -154,7 +154,7 @@ namespace Pulumi.ProxmoxVE.Download
         public Output<int> UploadTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// The URL to download the file from. Format `https?://.*`.
+        /// The URL to download the file from. Must match regex: `https?://.*`.
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
@@ -273,7 +273,7 @@ namespace Pulumi.ProxmoxVE.Download
         public Input<int>? UploadTimeout { get; set; }
 
         /// <summary>
-        /// The URL to download the file from. Format `https?://.*`.
+        /// The URL to download the file from. Must match regex: `https?://.*`.
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
@@ -359,7 +359,7 @@ namespace Pulumi.ProxmoxVE.Download
         public Input<int>? UploadTimeout { get; set; }
 
         /// <summary>
-        /// The URL to download the file from. Format `https?://.*`.
+        /// The URL to download the file from. Must match regex: `https?://.*`.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

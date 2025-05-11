@@ -261,14 +261,14 @@ public class File extends com.pulumi.resources.CustomResource {
         return this.uploadTimeout;
     }
     /**
-     * The URL to download the file from. Format `https?://.*`.
+     * The URL to download the file from. Must match regex: `https?://.*`.
      * 
      */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
-     * @return The URL to download the file from. Format `https?://.*`.
+     * @return The URL to download the file from. Must match regex: `https?://.*`.
      * 
      */
     public Output<String> url() {

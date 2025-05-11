@@ -160,7 +160,7 @@ type VirtualMachine struct {
 	// A host USB device mapping (multiple blocks supported).
 	Usbs VirtualMachineUsbArrayOutput `pulumi:"usbs"`
 	// The VGA configuration.
-	Vga VirtualMachineVgaPtrOutput `pulumi:"vga"`
+	Vga VirtualMachineVgaOutput `pulumi:"vga"`
 	// Virtiofs share
 	Virtiofs VirtualMachineVirtiofArrayOutput `pulumi:"virtiofs"`
 	// The VM identifier.
@@ -1134,8 +1134,8 @@ func (o VirtualMachineOutput) Usbs() VirtualMachineUsbArrayOutput {
 }
 
 // The VGA configuration.
-func (o VirtualMachineOutput) Vga() VirtualMachineVgaPtrOutput {
-	return o.ApplyT(func(v *VirtualMachine) VirtualMachineVgaPtrOutput { return v.Vga }).(VirtualMachineVgaPtrOutput)
+func (o VirtualMachineOutput) Vga() VirtualMachineVgaOutput {
+	return o.ApplyT(func(v *VirtualMachine) VirtualMachineVgaOutput { return v.Vga }).(VirtualMachineVgaOutput)
 }
 
 // Virtiofs share

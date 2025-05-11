@@ -128,6 +128,9 @@ class _TimeState:
 
 
 class Time(pulumi.CustomResource):
+
+    pulumi_type = "proxmoxve:index/time:Time"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

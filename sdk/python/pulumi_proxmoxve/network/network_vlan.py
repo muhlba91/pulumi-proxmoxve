@@ -385,6 +385,9 @@ class _NetworkVlanState:
 
 
 class NetworkVlan(pulumi.CustomResource):
+
+    pulumi_type = "proxmoxve:Network/networkVlan:NetworkVlan"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

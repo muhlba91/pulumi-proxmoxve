@@ -135,7 +135,7 @@ export class File extends pulumi.CustomResource {
      */
     public readonly uploadTimeout!: pulumi.Output<number>;
     /**
-     * The URL to download the file from. Format `https?://.*`.
+     * The URL to download the file from. Must match regex: `https?://.*`.
      */
     public readonly url!: pulumi.Output<string>;
     /**
@@ -251,7 +251,7 @@ export interface FileState {
      */
     uploadTimeout?: pulumi.Input<number>;
     /**
-     * The URL to download the file from. Format `https?://.*`.
+     * The URL to download the file from. Must match regex: `https?://.*`.
      */
     url?: pulumi.Input<string>;
     /**
@@ -305,7 +305,7 @@ export interface FileArgs {
      */
     uploadTimeout?: pulumi.Input<number>;
     /**
-     * The URL to download the file from. Format `https?://.*`.
+     * The URL to download the file from. Must match regex: `https?://.*`.
      */
     url: pulumi.Input<string>;
     /**

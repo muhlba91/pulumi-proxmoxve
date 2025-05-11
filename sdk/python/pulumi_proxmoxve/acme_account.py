@@ -257,6 +257,9 @@ class _AcmeAccountState:
 
 
 class AcmeAccount(pulumi.CustomResource):
+
+    pulumi_type = "proxmoxve:index/acmeAccount:AcmeAccount"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

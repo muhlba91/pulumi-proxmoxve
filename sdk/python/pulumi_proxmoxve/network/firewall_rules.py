@@ -175,6 +175,9 @@ class _FirewallRulesState:
 
 
 class FirewallRules(pulumi.CustomResource):
+
+    pulumi_type = "proxmoxve:Network/firewallRules:FirewallRules"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

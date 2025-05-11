@@ -164,6 +164,9 @@ class _HostsState:
 
 
 class Hosts(pulumi.CustomResource):
+
+    pulumi_type = "proxmoxve:index/hosts:Hosts"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

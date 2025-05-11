@@ -128,6 +128,9 @@ class _DNSState:
 
 
 class DNS(pulumi.CustomResource):
+
+    pulumi_type = "proxmoxve:index/dNS:DNS"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

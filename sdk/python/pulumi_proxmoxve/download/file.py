@@ -37,7 +37,7 @@ class FileArgs:
         :param pulumi.Input[builtins.str] content_type: The file content type. Must be `iso` for VM images or `vztmpl` for LXC images.
         :param pulumi.Input[builtins.str] datastore_id: The identifier for the target datastore.
         :param pulumi.Input[builtins.str] node_name: The node name.
-        :param pulumi.Input[builtins.str] url: The URL to download the file from. Format `https?://.*`.
+        :param pulumi.Input[builtins.str] url: The URL to download the file from. Must match regex: `https?://.*`.
         :param pulumi.Input[builtins.str] checksum: The expected checksum of the file.
         :param pulumi.Input[builtins.str] checksum_algorithm: The algorithm to calculate the checksum of the file. Must be `md5` | `sha1` | `sha224` | `sha256` | `sha384` | `sha512`.
         :param pulumi.Input[builtins.str] decompression_algorithm: Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
@@ -108,7 +108,7 @@ class FileArgs:
     @pulumi.getter
     def url(self) -> pulumi.Input[builtins.str]:
         """
-        The URL to download the file from. Format `https?://.*`.
+        The URL to download the file from. Must match regex: `https?://.*`.
         """
         return pulumi.get(self, "url")
 
@@ -242,7 +242,7 @@ class _FileState:
         :param pulumi.Input[builtins.bool] overwrite_unmanaged: If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
         :param pulumi.Input[builtins.int] size: The file size.
         :param pulumi.Input[builtins.int] upload_timeout: The file download timeout seconds. Default is 600 (10min).
-        :param pulumi.Input[builtins.str] url: The URL to download the file from. Format `https?://.*`.
+        :param pulumi.Input[builtins.str] url: The URL to download the file from. Must match regex: `https?://.*`.
         :param pulumi.Input[builtins.bool] verify: By default `true`. If `false`, no SSL/TLS certificates will be verified.
         """
         if checksum is not None:
@@ -408,7 +408,7 @@ class _FileState:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The URL to download the file from. Format `https?://.*`.
+        The URL to download the file from. Must match regex: `https?://.*`.
         """
         return pulumi.get(self, "url")
 
@@ -430,6 +430,9 @@ class _FileState:
 
 
 class File(pulumi.CustomResource):
+
+    pulumi_type = "proxmoxve:Download/file:File"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -511,7 +514,7 @@ class File(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] overwrite: If `true` and size of uploaded file is different, than size from `url` Content-Length header, file will be downloaded again. If `false`, there will be no checks.
         :param pulumi.Input[builtins.bool] overwrite_unmanaged: If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
         :param pulumi.Input[builtins.int] upload_timeout: The file download timeout seconds. Default is 600 (10min).
-        :param pulumi.Input[builtins.str] url: The URL to download the file from. Format `https?://.*`.
+        :param pulumi.Input[builtins.str] url: The URL to download the file from. Must match regex: `https?://.*`.
         :param pulumi.Input[builtins.bool] verify: By default `true`. If `false`, no SSL/TLS certificates will be verified.
         """
         ...
@@ -670,7 +673,7 @@ class File(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] overwrite_unmanaged: If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
         :param pulumi.Input[builtins.int] size: The file size.
         :param pulumi.Input[builtins.int] upload_timeout: The file download timeout seconds. Default is 600 (10min).
-        :param pulumi.Input[builtins.str] url: The URL to download the file from. Format `https?://.*`.
+        :param pulumi.Input[builtins.str] url: The URL to download the file from. Must match regex: `https?://.*`.
         :param pulumi.Input[builtins.bool] verify: By default `true`. If `false`, no SSL/TLS certificates will be verified.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -784,7 +787,7 @@ class File(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[builtins.str]:
         """
-        The URL to download the file from. Format `https?://.*`.
+        The URL to download the file from. Must match regex: `https?://.*`.
         """
         return pulumi.get(self, "url")
 

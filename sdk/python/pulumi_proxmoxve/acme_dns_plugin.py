@@ -224,6 +224,9 @@ class _AcmeDnsPluginState:
 
 
 class AcmeDnsPlugin(pulumi.CustomResource):
+
+    pulumi_type = "proxmoxve:index/acmeDnsPlugin:AcmeDnsPlugin"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

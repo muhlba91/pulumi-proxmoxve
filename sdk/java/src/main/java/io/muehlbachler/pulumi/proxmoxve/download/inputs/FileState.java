@@ -183,14 +183,14 @@ public final class FileState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The URL to download the file from. Format `https?://.*`.
+     * The URL to download the file from. Must match regex: `https?://.*`.
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return The URL to download the file from. Format `https?://.*`.
+     * @return The URL to download the file from. Must match regex: `https?://.*`.
      * 
      */
     public Optional<Output<String>> url() {
@@ -480,7 +480,7 @@ public final class FileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url The URL to download the file from. Format `https?://.*`.
+         * @param url The URL to download the file from. Must match regex: `https?://.*`.
          * 
          * @return builder
          * 
@@ -491,7 +491,7 @@ public final class FileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url The URL to download the file from. Format `https?://.*`.
+         * @param url The URL to download the file from. Must match regex: `https?://.*`.
          * 
          * @return builder
          * 

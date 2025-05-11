@@ -123,7 +123,7 @@ type File struct {
 	Size pulumi.IntOutput `pulumi:"size"`
 	// The file download timeout seconds. Default is 600 (10min).
 	UploadTimeout pulumi.IntOutput `pulumi:"uploadTimeout"`
-	// The URL to download the file from. Format `https?://.*`.
+	// The URL to download the file from. Must match regex: `https?://.*`.
 	Url pulumi.StringOutput `pulumi:"url"`
 	// By default `true`. If `false`, no SSL/TLS certificates will be verified.
 	Verify pulumi.BoolOutput `pulumi:"verify"`
@@ -193,7 +193,7 @@ type fileState struct {
 	Size *int `pulumi:"size"`
 	// The file download timeout seconds. Default is 600 (10min).
 	UploadTimeout *int `pulumi:"uploadTimeout"`
-	// The URL to download the file from. Format `https?://.*`.
+	// The URL to download the file from. Must match regex: `https?://.*`.
 	Url *string `pulumi:"url"`
 	// By default `true`. If `false`, no SSL/TLS certificates will be verified.
 	Verify *bool `pulumi:"verify"`
@@ -222,7 +222,7 @@ type FileState struct {
 	Size pulumi.IntPtrInput
 	// The file download timeout seconds. Default is 600 (10min).
 	UploadTimeout pulumi.IntPtrInput
-	// The URL to download the file from. Format `https?://.*`.
+	// The URL to download the file from. Must match regex: `https?://.*`.
 	Url pulumi.StringPtrInput
 	// By default `true`. If `false`, no SSL/TLS certificates will be verified.
 	Verify pulumi.BoolPtrInput
@@ -253,7 +253,7 @@ type fileArgs struct {
 	OverwriteUnmanaged *bool `pulumi:"overwriteUnmanaged"`
 	// The file download timeout seconds. Default is 600 (10min).
 	UploadTimeout *int `pulumi:"uploadTimeout"`
-	// The URL to download the file from. Format `https?://.*`.
+	// The URL to download the file from. Must match regex: `https?://.*`.
 	Url string `pulumi:"url"`
 	// By default `true`. If `false`, no SSL/TLS certificates will be verified.
 	Verify *bool `pulumi:"verify"`
@@ -281,7 +281,7 @@ type FileArgs struct {
 	OverwriteUnmanaged pulumi.BoolPtrInput
 	// The file download timeout seconds. Default is 600 (10min).
 	UploadTimeout pulumi.IntPtrInput
-	// The URL to download the file from. Format `https?://.*`.
+	// The URL to download the file from. Must match regex: `https?://.*`.
 	Url pulumi.StringInput
 	// By default `true`. If `false`, no SSL/TLS certificates will be verified.
 	Verify pulumi.BoolPtrInput
@@ -429,7 +429,7 @@ func (o FileOutput) UploadTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v *File) pulumi.IntOutput { return v.UploadTimeout }).(pulumi.IntOutput)
 }
 
-// The URL to download the file from. Format `https?://.*`.
+// The URL to download the file from. Must match regex: `https?://.*`.
 func (o FileOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *File) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }
