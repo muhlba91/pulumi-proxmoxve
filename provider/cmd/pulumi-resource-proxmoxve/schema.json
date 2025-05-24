@@ -1523,6 +1523,31 @@
             },
             "type": "object"
         },
+        "proxmoxve:VM/VirtualMachineAmdSev:VirtualMachineAmdSev": {
+            "properties": {
+                "allowSmt": {
+                    "type": "boolean",
+                    "description": "Sets policy bit to allow Simultaneous Multi Threading (SMT)\n(Ignored unless for SEV-SNP) (defaults to `true`).\n"
+                },
+                "kernelHashes": {
+                    "type": "boolean",
+                    "description": "Add kernel hashes to guest firmware for measured \nlinux kernel launch (defaults to `false`).\n"
+                },
+                "noDebug": {
+                    "type": "boolean",
+                    "description": "Sets policy bit to disallow debugging of guest (defaults\nto `false`).\n"
+                },
+                "noKeySharing": {
+                    "type": "boolean",
+                    "description": "Sets policy bit to disallow key sharing with \nother guests (Ignored for SEV-SNP) (defaults to `false`).\n\nThe `amd_sev` setting is only allowed for a `root@pam` authenticated user.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Enable standard SEV with `std` or enable experimental \nSEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option\n(defaults to `std`).\n"
+                }
+            },
+            "type": "object"
+        },
         "proxmoxve:VM/VirtualMachineAudioDevice:VirtualMachineAudioDevice": {
             "properties": {
                 "device": {
@@ -2786,6 +2811,9 @@
                 "type": "string",
                 "description": "The username for the Proxmox VE API.\n"
             }
+        },
+        "methods": {
+            "terraformConfig": "pulumi:providers:proxmoxve/terraformConfig"
         }
     },
     "resources": {
@@ -5153,7 +5181,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The interface name. Must be `vmbrN`, where N is a number between 0 and 9999.\n"
+                    "description": "The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.\n"
                 },
                 "nodeName": {
                     "type": "string",
@@ -5208,7 +5236,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The interface name. Must be `vmbrN`, where N is a number between 0 and 9999.\n"
+                    "description": "The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.\n"
                 },
                 "nodeName": {
                     "type": "string",
@@ -5262,7 +5290,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The interface name. Must be `vmbrN`, where N is a number between 0 and 9999.\n"
+                        "description": "The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.\n"
                     },
                     "nodeName": {
                         "type": "string",
@@ -6267,6 +6295,10 @@
                     "$ref": "#/types/proxmoxve:VM/VirtualMachineAgent:VirtualMachineAgent",
                     "description": "The QEMU agent configuration.\n"
                 },
+                "amdSev": {
+                    "$ref": "#/types/proxmoxve:VM/VirtualMachineAmdSev:VirtualMachineAmdSev",
+                    "description": "Secure Encrypted Virtualization (SEV) features by AMD CPUs.\n"
+                },
                 "audioDevice": {
                     "$ref": "#/types/proxmoxve:VM/VirtualMachineAudioDevice:VirtualMachineAudioDevice",
                     "description": "An audio device.\n"
@@ -6557,6 +6589,11 @@
                     "$ref": "#/types/proxmoxve:VM/VirtualMachineAgent:VirtualMachineAgent",
                     "description": "The QEMU agent configuration.\n"
                 },
+                "amdSev": {
+                    "$ref": "#/types/proxmoxve:VM/VirtualMachineAmdSev:VirtualMachineAmdSev",
+                    "description": "Secure Encrypted Virtualization (SEV) features by AMD CPUs.\n",
+                    "willReplaceOnChanges": true
+                },
                 "audioDevice": {
                     "$ref": "#/types/proxmoxve:VM/VirtualMachineAudioDevice:VirtualMachineAudioDevice",
                     "description": "An audio device.\n"
@@ -6816,6 +6853,11 @@
                     "agent": {
                         "$ref": "#/types/proxmoxve:VM/VirtualMachineAgent:VirtualMachineAgent",
                         "description": "The QEMU agent configuration.\n"
+                    },
+                    "amdSev": {
+                        "$ref": "#/types/proxmoxve:VM/VirtualMachineAmdSev:VirtualMachineAmdSev",
+                        "description": "Secure Encrypted Virtualization (SEV) features by AMD CPUs.\n",
+                        "willReplaceOnChanges": true
                     },
                     "audioDevice": {
                         "$ref": "#/types/proxmoxve:VM/VirtualMachineAudioDevice:VirtualMachineAudioDevice",
@@ -9735,6 +9777,35 @@
                     "tags",
                     "vga"
                 ]
+            }
+        },
+        "pulumi:providers:proxmoxve/terraformConfig": {
+            "description": "This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.",
+            "inputs": {
+                "properties": {
+                    "__self__": {
+                        "type": "ref",
+                        "$ref": "#/resources/pulumi:providers:proxmoxve"
+                    }
+                },
+                "type": "pulumi:providers:proxmoxve/terraformConfig",
+                "required": [
+                    "__self__"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "result": {
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "result"
+                ],
+                "type": "object"
             }
         }
     }

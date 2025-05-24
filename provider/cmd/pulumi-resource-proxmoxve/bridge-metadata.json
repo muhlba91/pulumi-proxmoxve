@@ -357,6 +357,9 @@
                     "agent": {
                         "maxItemsOne": true
                     },
+                    "amd_sev": {
+                        "maxItemsOne": true
+                    },
                     "audio_device": {
                         "maxItemsOne": true
                     },
