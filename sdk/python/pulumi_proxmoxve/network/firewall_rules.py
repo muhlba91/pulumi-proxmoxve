@@ -174,10 +174,8 @@ class _FirewallRulesState:
         pulumi.set(self, "vm_id", value)
 
 
+@pulumi.type_token("proxmoxve:Network/firewallRules:FirewallRules")
 class FirewallRules(pulumi.CustomResource):
-
-    pulumi_type = "proxmoxve:Network/firewallRules:FirewallRules"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

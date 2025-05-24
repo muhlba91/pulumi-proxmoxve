@@ -58,6 +58,10 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly agent!: pulumi.Output<outputs.VM.VirtualMachineAgent | undefined>;
     /**
+     * Secure Encrypted Virtualization (SEV) features by AMD CPUs.
+     */
+    public readonly amdSev!: pulumi.Output<outputs.VM.VirtualMachineAmdSev | undefined>;
+    /**
      * An audio device.
      */
     public readonly audioDevice!: pulumi.Output<outputs.VM.VirtualMachineAudioDevice | undefined>;
@@ -318,6 +322,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             const state = argsOrState as VirtualMachineState | undefined;
             resourceInputs["acpi"] = state ? state.acpi : undefined;
             resourceInputs["agent"] = state ? state.agent : undefined;
+            resourceInputs["amdSev"] = state ? state.amdSev : undefined;
             resourceInputs["audioDevice"] = state ? state.audioDevice : undefined;
             resourceInputs["bios"] = state ? state.bios : undefined;
             resourceInputs["bootOrders"] = state ? state.bootOrders : undefined;
@@ -380,6 +385,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             }
             resourceInputs["acpi"] = args ? args.acpi : undefined;
             resourceInputs["agent"] = args ? args.agent : undefined;
+            resourceInputs["amdSev"] = args ? args.amdSev : undefined;
             resourceInputs["audioDevice"] = args ? args.audioDevice : undefined;
             resourceInputs["bios"] = args ? args.bios : undefined;
             resourceInputs["bootOrders"] = args ? args.bootOrders : undefined;
@@ -453,6 +459,10 @@ export interface VirtualMachineState {
      * The QEMU agent configuration.
      */
     agent?: pulumi.Input<inputs.VM.VirtualMachineAgent>;
+    /**
+     * Secure Encrypted Virtualization (SEV) features by AMD CPUs.
+     */
+    amdSev?: pulumi.Input<inputs.VM.VirtualMachineAmdSev>;
     /**
      * An audio device.
      */
@@ -712,6 +722,10 @@ export interface VirtualMachineArgs {
      * The QEMU agent configuration.
      */
     agent?: pulumi.Input<inputs.VM.VirtualMachineAgent>;
+    /**
+     * Secure Encrypted Virtualization (SEV) features by AMD CPUs.
+     */
+    amdSev?: pulumi.Input<inputs.VM.VirtualMachineAmdSev>;
     /**
      * An audio device.
      */

@@ -24,6 +24,7 @@ __all__ = [
     'VirtualMachine2Timeouts',
     'VirtualMachine2Vga',
     'VirtualMachineAgent',
+    'VirtualMachineAmdSev',
     'VirtualMachineAudioDevice',
     'VirtualMachineCdrom',
     'VirtualMachineClone',
@@ -463,6 +464,112 @@ class VirtualMachineAgent(dict):
     def type(self) -> Optional[builtins.str]:
         """
         The QEMU agent interface type (defaults to `virtio`).
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class VirtualMachineAmdSev(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowSmt":
+            suggest = "allow_smt"
+        elif key == "kernelHashes":
+            suggest = "kernel_hashes"
+        elif key == "noDebug":
+            suggest = "no_debug"
+        elif key == "noKeySharing":
+            suggest = "no_key_sharing"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineAmdSev. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VirtualMachineAmdSev.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VirtualMachineAmdSev.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_smt: Optional[builtins.bool] = None,
+                 kernel_hashes: Optional[builtins.bool] = None,
+                 no_debug: Optional[builtins.bool] = None,
+                 no_key_sharing: Optional[builtins.bool] = None,
+                 type: Optional[builtins.str] = None):
+        """
+        :param builtins.bool allow_smt: Sets policy bit to allow Simultaneous Multi Threading (SMT)
+               (Ignored unless for SEV-SNP) (defaults to `true`).
+        :param builtins.bool kernel_hashes: Add kernel hashes to guest firmware for measured 
+               linux kernel launch (defaults to `false`).
+        :param builtins.bool no_debug: Sets policy bit to disallow debugging of guest (defaults
+               to `false`).
+        :param builtins.bool no_key_sharing: Sets policy bit to disallow key sharing with 
+               other guests (Ignored for SEV-SNP) (defaults to `false`).
+               
+               The `amd_sev` setting is only allowed for a `root@pam` authenticated user.
+        :param builtins.str type: Enable standard SEV with `std` or enable experimental 
+               SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option
+               (defaults to `std`).
+        """
+        if allow_smt is not None:
+            pulumi.set(__self__, "allow_smt", allow_smt)
+        if kernel_hashes is not None:
+            pulumi.set(__self__, "kernel_hashes", kernel_hashes)
+        if no_debug is not None:
+            pulumi.set(__self__, "no_debug", no_debug)
+        if no_key_sharing is not None:
+            pulumi.set(__self__, "no_key_sharing", no_key_sharing)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="allowSmt")
+    def allow_smt(self) -> Optional[builtins.bool]:
+        """
+        Sets policy bit to allow Simultaneous Multi Threading (SMT)
+        (Ignored unless for SEV-SNP) (defaults to `true`).
+        """
+        return pulumi.get(self, "allow_smt")
+
+    @property
+    @pulumi.getter(name="kernelHashes")
+    def kernel_hashes(self) -> Optional[builtins.bool]:
+        """
+        Add kernel hashes to guest firmware for measured 
+        linux kernel launch (defaults to `false`).
+        """
+        return pulumi.get(self, "kernel_hashes")
+
+    @property
+    @pulumi.getter(name="noDebug")
+    def no_debug(self) -> Optional[builtins.bool]:
+        """
+        Sets policy bit to disallow debugging of guest (defaults
+        to `false`).
+        """
+        return pulumi.get(self, "no_debug")
+
+    @property
+    @pulumi.getter(name="noKeySharing")
+    def no_key_sharing(self) -> Optional[builtins.bool]:
+        """
+        Sets policy bit to disallow key sharing with 
+        other guests (Ignored for SEV-SNP) (defaults to `false`).
+
+        The `amd_sev` setting is only allowed for a `root@pam` authenticated user.
+        """
+        return pulumi.get(self, "no_key_sharing")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[builtins.str]:
+        """
+        Enable standard SEV with `std` or enable experimental 
+        SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option
+        (defaults to `std`).
         """
         return pulumi.get(self, "type")
 

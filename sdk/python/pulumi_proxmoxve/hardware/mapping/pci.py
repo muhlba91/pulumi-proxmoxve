@@ -162,10 +162,8 @@ class _PciState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("proxmoxve:Hardware/mapping/pci:Pci")
 class Pci(pulumi.CustomResource):
-
-    pulumi_type = "proxmoxve:Hardware/mapping/pci:Pci"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

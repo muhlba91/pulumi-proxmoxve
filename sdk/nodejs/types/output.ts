@@ -1261,6 +1261,37 @@ export namespace VM {
         type?: string;
     }
 
+    export interface VirtualMachineAmdSev {
+        /**
+         * Sets policy bit to allow Simultaneous Multi Threading (SMT)
+         * (Ignored unless for SEV-SNP) (defaults to `true`).
+         */
+        allowSmt?: boolean;
+        /**
+         * Add kernel hashes to guest firmware for measured 
+         * linux kernel launch (defaults to `false`).
+         */
+        kernelHashes?: boolean;
+        /**
+         * Sets policy bit to disallow debugging of guest (defaults
+         * to `false`).
+         */
+        noDebug?: boolean;
+        /**
+         * Sets policy bit to disallow key sharing with 
+         * other guests (Ignored for SEV-SNP) (defaults to `false`).
+         *
+         * The `amdSev` setting is only allowed for a `root@pam` authenticated user.
+         */
+        noKeySharing?: boolean;
+        /**
+         * Enable standard SEV with `std` or enable experimental 
+         * SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option
+         * (defaults to `std`).
+         */
+        type?: string;
+    }
+
     export interface VirtualMachineAudioDevice {
         /**
          * The device (defaults to `intel-hda`).

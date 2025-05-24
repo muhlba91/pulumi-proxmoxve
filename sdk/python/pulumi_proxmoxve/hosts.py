@@ -163,10 +163,8 @@ class _HostsState:
         pulumi.set(self, "node_name", value)
 
 
+@pulumi.type_token("proxmoxve:index/hosts:Hosts")
 class Hosts(pulumi.CustomResource):
-
-    pulumi_type = "proxmoxve:index/hosts:Hosts"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -386,10 +386,8 @@ class _UserState:
         pulumi.set(self, "user_id", value)
 
 
+@pulumi.type_token("proxmoxve:Permission/user:User")
 class User(pulumi.CustomResource):
-
-    pulumi_type = "proxmoxve:Permission/user:User"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

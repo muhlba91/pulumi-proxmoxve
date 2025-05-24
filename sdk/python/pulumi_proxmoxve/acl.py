@@ -223,10 +223,8 @@ class _AclState:
         pulumi.set(self, "user_id", value)
 
 
+@pulumi.type_token("proxmoxve:index/acl:Acl")
 class Acl(pulumi.CustomResource):
-
-    pulumi_type = "proxmoxve:index/acl:Acl"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

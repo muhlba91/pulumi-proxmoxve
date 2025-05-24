@@ -130,10 +130,8 @@ class _DirState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("proxmoxve:Hardware/mapping/dir:Dir")
 class Dir(pulumi.CustomResource):
-
-    pulumi_type = "proxmoxve:Hardware/mapping/dir:Dir"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

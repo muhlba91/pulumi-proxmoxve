@@ -114,10 +114,8 @@ class _PoolState:
         pulumi.set(self, "pool_id", value)
 
 
+@pulumi.type_token("proxmoxve:Permission/pool:Pool")
 class Pool(pulumi.CustomResource):
-
-    pulumi_type = "proxmoxve:Permission/pool:Pool"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -95,10 +95,8 @@ class _RoleState:
         pulumi.set(self, "role_id", value)
 
 
+@pulumi.type_token("proxmoxve:Permission/role:Role")
 class Role(pulumi.CustomResource):
-
-    pulumi_type = "proxmoxve:Permission/role:Role"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

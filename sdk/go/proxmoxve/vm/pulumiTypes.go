@@ -1324,6 +1324,251 @@ func (o VirtualMachineAgentPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type VirtualMachineAmdSev struct {
+	// Sets policy bit to allow Simultaneous Multi Threading (SMT)
+	// (Ignored unless for SEV-SNP) (defaults to `true`).
+	AllowSmt *bool `pulumi:"allowSmt"`
+	// Add kernel hashes to guest firmware for measured
+	// linux kernel launch (defaults to `false`).
+	KernelHashes *bool `pulumi:"kernelHashes"`
+	// Sets policy bit to disallow debugging of guest (defaults
+	// to `false`).
+	NoDebug *bool `pulumi:"noDebug"`
+	// Sets policy bit to disallow key sharing with
+	// other guests (Ignored for SEV-SNP) (defaults to `false`).
+	//
+	// The `amdSev` setting is only allowed for a `root@pam` authenticated user.
+	NoKeySharing *bool `pulumi:"noKeySharing"`
+	// Enable standard SEV with `std` or enable experimental
+	// SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option
+	// (defaults to `std`).
+	Type *string `pulumi:"type"`
+}
+
+// VirtualMachineAmdSevInput is an input type that accepts VirtualMachineAmdSevArgs and VirtualMachineAmdSevOutput values.
+// You can construct a concrete instance of `VirtualMachineAmdSevInput` via:
+//
+//	VirtualMachineAmdSevArgs{...}
+type VirtualMachineAmdSevInput interface {
+	pulumi.Input
+
+	ToVirtualMachineAmdSevOutput() VirtualMachineAmdSevOutput
+	ToVirtualMachineAmdSevOutputWithContext(context.Context) VirtualMachineAmdSevOutput
+}
+
+type VirtualMachineAmdSevArgs struct {
+	// Sets policy bit to allow Simultaneous Multi Threading (SMT)
+	// (Ignored unless for SEV-SNP) (defaults to `true`).
+	AllowSmt pulumi.BoolPtrInput `pulumi:"allowSmt"`
+	// Add kernel hashes to guest firmware for measured
+	// linux kernel launch (defaults to `false`).
+	KernelHashes pulumi.BoolPtrInput `pulumi:"kernelHashes"`
+	// Sets policy bit to disallow debugging of guest (defaults
+	// to `false`).
+	NoDebug pulumi.BoolPtrInput `pulumi:"noDebug"`
+	// Sets policy bit to disallow key sharing with
+	// other guests (Ignored for SEV-SNP) (defaults to `false`).
+	//
+	// The `amdSev` setting is only allowed for a `root@pam` authenticated user.
+	NoKeySharing pulumi.BoolPtrInput `pulumi:"noKeySharing"`
+	// Enable standard SEV with `std` or enable experimental
+	// SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option
+	// (defaults to `std`).
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (VirtualMachineAmdSevArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineAmdSev)(nil)).Elem()
+}
+
+func (i VirtualMachineAmdSevArgs) ToVirtualMachineAmdSevOutput() VirtualMachineAmdSevOutput {
+	return i.ToVirtualMachineAmdSevOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineAmdSevArgs) ToVirtualMachineAmdSevOutputWithContext(ctx context.Context) VirtualMachineAmdSevOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineAmdSevOutput)
+}
+
+func (i VirtualMachineAmdSevArgs) ToVirtualMachineAmdSevPtrOutput() VirtualMachineAmdSevPtrOutput {
+	return i.ToVirtualMachineAmdSevPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineAmdSevArgs) ToVirtualMachineAmdSevPtrOutputWithContext(ctx context.Context) VirtualMachineAmdSevPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineAmdSevOutput).ToVirtualMachineAmdSevPtrOutputWithContext(ctx)
+}
+
+// VirtualMachineAmdSevPtrInput is an input type that accepts VirtualMachineAmdSevArgs, VirtualMachineAmdSevPtr and VirtualMachineAmdSevPtrOutput values.
+// You can construct a concrete instance of `VirtualMachineAmdSevPtrInput` via:
+//
+//	        VirtualMachineAmdSevArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachineAmdSevPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineAmdSevPtrOutput() VirtualMachineAmdSevPtrOutput
+	ToVirtualMachineAmdSevPtrOutputWithContext(context.Context) VirtualMachineAmdSevPtrOutput
+}
+
+type virtualMachineAmdSevPtrType VirtualMachineAmdSevArgs
+
+func VirtualMachineAmdSevPtr(v *VirtualMachineAmdSevArgs) VirtualMachineAmdSevPtrInput {
+	return (*virtualMachineAmdSevPtrType)(v)
+}
+
+func (*virtualMachineAmdSevPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineAmdSev)(nil)).Elem()
+}
+
+func (i *virtualMachineAmdSevPtrType) ToVirtualMachineAmdSevPtrOutput() VirtualMachineAmdSevPtrOutput {
+	return i.ToVirtualMachineAmdSevPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachineAmdSevPtrType) ToVirtualMachineAmdSevPtrOutputWithContext(ctx context.Context) VirtualMachineAmdSevPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineAmdSevPtrOutput)
+}
+
+type VirtualMachineAmdSevOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineAmdSevOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineAmdSev)(nil)).Elem()
+}
+
+func (o VirtualMachineAmdSevOutput) ToVirtualMachineAmdSevOutput() VirtualMachineAmdSevOutput {
+	return o
+}
+
+func (o VirtualMachineAmdSevOutput) ToVirtualMachineAmdSevOutputWithContext(ctx context.Context) VirtualMachineAmdSevOutput {
+	return o
+}
+
+func (o VirtualMachineAmdSevOutput) ToVirtualMachineAmdSevPtrOutput() VirtualMachineAmdSevPtrOutput {
+	return o.ToVirtualMachineAmdSevPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineAmdSevOutput) ToVirtualMachineAmdSevPtrOutputWithContext(ctx context.Context) VirtualMachineAmdSevPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineAmdSev) *VirtualMachineAmdSev {
+		return &v
+	}).(VirtualMachineAmdSevPtrOutput)
+}
+
+// Sets policy bit to allow Simultaneous Multi Threading (SMT)
+// (Ignored unless for SEV-SNP) (defaults to `true`).
+func (o VirtualMachineAmdSevOutput) AllowSmt() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineAmdSev) *bool { return v.AllowSmt }).(pulumi.BoolPtrOutput)
+}
+
+// Add kernel hashes to guest firmware for measured
+// linux kernel launch (defaults to `false`).
+func (o VirtualMachineAmdSevOutput) KernelHashes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineAmdSev) *bool { return v.KernelHashes }).(pulumi.BoolPtrOutput)
+}
+
+// Sets policy bit to disallow debugging of guest (defaults
+// to `false`).
+func (o VirtualMachineAmdSevOutput) NoDebug() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineAmdSev) *bool { return v.NoDebug }).(pulumi.BoolPtrOutput)
+}
+
+// Sets policy bit to disallow key sharing with
+// other guests (Ignored for SEV-SNP) (defaults to `false`).
+//
+// The `amdSev` setting is only allowed for a `root@pam` authenticated user.
+func (o VirtualMachineAmdSevOutput) NoKeySharing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineAmdSev) *bool { return v.NoKeySharing }).(pulumi.BoolPtrOutput)
+}
+
+// Enable standard SEV with `std` or enable experimental
+// SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option
+// (defaults to `std`).
+func (o VirtualMachineAmdSevOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineAmdSev) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineAmdSevPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineAmdSevPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineAmdSev)(nil)).Elem()
+}
+
+func (o VirtualMachineAmdSevPtrOutput) ToVirtualMachineAmdSevPtrOutput() VirtualMachineAmdSevPtrOutput {
+	return o
+}
+
+func (o VirtualMachineAmdSevPtrOutput) ToVirtualMachineAmdSevPtrOutputWithContext(ctx context.Context) VirtualMachineAmdSevPtrOutput {
+	return o
+}
+
+func (o VirtualMachineAmdSevPtrOutput) Elem() VirtualMachineAmdSevOutput {
+	return o.ApplyT(func(v *VirtualMachineAmdSev) VirtualMachineAmdSev {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineAmdSev
+		return ret
+	}).(VirtualMachineAmdSevOutput)
+}
+
+// Sets policy bit to allow Simultaneous Multi Threading (SMT)
+// (Ignored unless for SEV-SNP) (defaults to `true`).
+func (o VirtualMachineAmdSevPtrOutput) AllowSmt() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineAmdSev) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowSmt
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Add kernel hashes to guest firmware for measured
+// linux kernel launch (defaults to `false`).
+func (o VirtualMachineAmdSevPtrOutput) KernelHashes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineAmdSev) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.KernelHashes
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Sets policy bit to disallow debugging of guest (defaults
+// to `false`).
+func (o VirtualMachineAmdSevPtrOutput) NoDebug() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineAmdSev) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoDebug
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Sets policy bit to disallow key sharing with
+// other guests (Ignored for SEV-SNP) (defaults to `false`).
+//
+// The `amdSev` setting is only allowed for a `root@pam` authenticated user.
+func (o VirtualMachineAmdSevPtrOutput) NoKeySharing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineAmdSev) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoKeySharing
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable standard SEV with `std` or enable experimental
+// SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option
+// (defaults to `std`).
+func (o VirtualMachineAmdSevPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineAmdSev) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 type VirtualMachineAudioDevice struct {
 	// The device (defaults to `intel-hda`).
 	// - `AC97` - Intel 82801AA AC97 Audio.
@@ -6828,6 +7073,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachine2VgaPtrInput)(nil)).Elem(), VirtualMachine2VgaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineAgentInput)(nil)).Elem(), VirtualMachineAgentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineAgentPtrInput)(nil)).Elem(), VirtualMachineAgentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineAmdSevInput)(nil)).Elem(), VirtualMachineAmdSevArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineAmdSevPtrInput)(nil)).Elem(), VirtualMachineAmdSevArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineAudioDeviceInput)(nil)).Elem(), VirtualMachineAudioDeviceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineAudioDevicePtrInput)(nil)).Elem(), VirtualMachineAudioDeviceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineCdromInput)(nil)).Elem(), VirtualMachineCdromArgs{})
@@ -6900,6 +7147,8 @@ func init() {
 	pulumi.RegisterOutputType(VirtualMachine2VgaPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineAgentOutput{})
 	pulumi.RegisterOutputType(VirtualMachineAgentPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineAmdSevOutput{})
+	pulumi.RegisterOutputType(VirtualMachineAmdSevPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineAudioDeviceOutput{})
 	pulumi.RegisterOutputType(VirtualMachineAudioDevicePtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineCdromOutput{})

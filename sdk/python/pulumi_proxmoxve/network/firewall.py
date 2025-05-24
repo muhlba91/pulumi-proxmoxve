@@ -195,10 +195,8 @@ class _FirewallState:
         pulumi.set(self, "output_policy", value)
 
 
+@pulumi.type_token("proxmoxve:Network/firewall:Firewall")
 class Firewall(pulumi.CustomResource):
-
-    pulumi_type = "proxmoxve:Network/firewall:Firewall"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

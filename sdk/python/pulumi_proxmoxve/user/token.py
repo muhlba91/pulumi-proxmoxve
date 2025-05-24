@@ -207,10 +207,8 @@ class _TokenState:
         pulumi.set(self, "value", value)
 
 
+@pulumi.type_token("proxmoxve:User/token:Token")
 class Token(pulumi.CustomResource):
-
-    pulumi_type = "proxmoxve:User/token:Token"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

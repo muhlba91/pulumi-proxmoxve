@@ -429,10 +429,8 @@ class _FileState:
         pulumi.set(self, "verify", value)
 
 
+@pulumi.type_token("proxmoxve:Download/file:File")
 class File(pulumi.CustomResource):
-
-    pulumi_type = "proxmoxve:Download/file:File"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -50,10 +50,8 @@ export type Hosts = import("./hosts").Hosts;
 export const Hosts: typeof import("./hosts").Hosts = null as any;
 utilities.lazyLoad(exports, ["Hosts"], () => require("./hosts"));
 
-export { ProviderArgs } from "./provider";
-export type Provider = import("./provider").Provider;
-export const Provider: typeof import("./provider").Provider = null as any;
-utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+export * from "./provider";
+import { Provider } from "./provider";
 
 export { TimeArgs, TimeState } from "./time";
 export type Time = import("./time").Time;

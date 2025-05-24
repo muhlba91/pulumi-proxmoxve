@@ -146,10 +146,8 @@ class _GroupState:
         pulumi.set(self, "members", value)
 
 
+@pulumi.type_token("proxmoxve:Permission/group:Group")
 class Group(pulumi.CustomResource):
-
-    pulumi_type = "proxmoxve:Permission/group:Group"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -32,6 +32,8 @@ type VirtualMachine struct {
 	Acpi pulumi.BoolPtrOutput `pulumi:"acpi"`
 	// The QEMU agent configuration.
 	Agent VirtualMachineAgentPtrOutput `pulumi:"agent"`
+	// Secure Encrypted Virtualization (SEV) features by AMD CPUs.
+	AmdSev VirtualMachineAmdSevPtrOutput `pulumi:"amdSev"`
 	// An audio device.
 	AudioDevice VirtualMachineAudioDevicePtrOutput `pulumi:"audioDevice"`
 	// The BIOS implementation (defaults to `seabios`).
@@ -206,6 +208,8 @@ type virtualMachineState struct {
 	Acpi *bool `pulumi:"acpi"`
 	// The QEMU agent configuration.
 	Agent *VirtualMachineAgent `pulumi:"agent"`
+	// Secure Encrypted Virtualization (SEV) features by AMD CPUs.
+	AmdSev *VirtualMachineAmdSev `pulumi:"amdSev"`
 	// An audio device.
 	AudioDevice *VirtualMachineAudioDevice `pulumi:"audioDevice"`
 	// The BIOS implementation (defaults to `seabios`).
@@ -348,6 +352,8 @@ type VirtualMachineState struct {
 	Acpi pulumi.BoolPtrInput
 	// The QEMU agent configuration.
 	Agent VirtualMachineAgentPtrInput
+	// Secure Encrypted Virtualization (SEV) features by AMD CPUs.
+	AmdSev VirtualMachineAmdSevPtrInput
 	// An audio device.
 	AudioDevice VirtualMachineAudioDevicePtrInput
 	// The BIOS implementation (defaults to `seabios`).
@@ -494,6 +500,8 @@ type virtualMachineArgs struct {
 	Acpi *bool `pulumi:"acpi"`
 	// The QEMU agent configuration.
 	Agent *VirtualMachineAgent `pulumi:"agent"`
+	// Secure Encrypted Virtualization (SEV) features by AMD CPUs.
+	AmdSev *VirtualMachineAmdSev `pulumi:"amdSev"`
 	// An audio device.
 	AudioDevice *VirtualMachineAudioDevice `pulumi:"audioDevice"`
 	// The BIOS implementation (defaults to `seabios`).
@@ -628,6 +636,8 @@ type VirtualMachineArgs struct {
 	Acpi pulumi.BoolPtrInput
 	// The QEMU agent configuration.
 	Agent VirtualMachineAgentPtrInput
+	// Secure Encrypted Virtualization (SEV) features by AMD CPUs.
+	AmdSev VirtualMachineAmdSevPtrInput
 	// An audio device.
 	AudioDevice VirtualMachineAudioDevicePtrInput
 	// The BIOS implementation (defaults to `seabios`).
@@ -851,6 +861,11 @@ func (o VirtualMachineOutput) Acpi() pulumi.BoolPtrOutput {
 // The QEMU agent configuration.
 func (o VirtualMachineOutput) Agent() VirtualMachineAgentPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineAgentPtrOutput { return v.Agent }).(VirtualMachineAgentPtrOutput)
+}
+
+// Secure Encrypted Virtualization (SEV) features by AMD CPUs.
+func (o VirtualMachineOutput) AmdSev() VirtualMachineAmdSevPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) VirtualMachineAmdSevPtrOutput { return v.AmdSev }).(VirtualMachineAmdSevPtrOutput)
 }
 
 // An audio device.

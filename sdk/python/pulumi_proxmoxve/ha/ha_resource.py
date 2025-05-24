@@ -256,10 +256,8 @@ class _HAResourceState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("proxmoxve:HA/hAResource:HAResource")
 class HAResource(pulumi.CustomResource):
-
-    pulumi_type = "proxmoxve:HA/hAResource:HAResource"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

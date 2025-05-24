@@ -334,10 +334,8 @@ class _CertifiState:
         pulumi.set(self, "subject_alternative_names", value)
 
 
+@pulumi.type_token("proxmoxve:index/certifi:Certifi")
 class Certifi(pulumi.CustomResource):
-
-    pulumi_type = "proxmoxve:index/certifi:Certifi"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

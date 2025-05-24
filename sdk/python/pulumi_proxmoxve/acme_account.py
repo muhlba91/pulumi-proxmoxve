@@ -256,10 +256,8 @@ class _AcmeAccountState:
         pulumi.set(self, "tos", value)
 
 
+@pulumi.type_token("proxmoxve:index/acmeAccount:AcmeAccount")
 class AcmeAccount(pulumi.CustomResource):
-
-    pulumi_type = "proxmoxve:index/acmeAccount:AcmeAccount"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

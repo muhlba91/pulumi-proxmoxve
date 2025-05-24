@@ -542,10 +542,8 @@ class _MetricsServerState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("proxmoxve:Metrics/metricsServer:MetricsServer")
 class MetricsServer(pulumi.CustomResource):
-
-    pulumi_type = "proxmoxve:Metrics/metricsServer:MetricsServer"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

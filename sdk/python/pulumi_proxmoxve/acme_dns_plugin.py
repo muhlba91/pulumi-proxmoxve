@@ -223,10 +223,8 @@ class _AcmeDnsPluginState:
         pulumi.set(self, "validation_delay", value)
 
 
+@pulumi.type_token("proxmoxve:index/acmeDnsPlugin:AcmeDnsPlugin")
 class AcmeDnsPlugin(pulumi.CustomResource):
-
-    pulumi_type = "proxmoxve:index/acmeDnsPlugin:AcmeDnsPlugin"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
