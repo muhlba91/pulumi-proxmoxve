@@ -1271,6 +1271,37 @@ export namespace VM {
         type?: pulumi.Input<string>;
     }
 
+    export interface VirtualMachineAmdSev {
+        /**
+         * Sets policy bit to allow Simultaneous Multi Threading (SMT)
+         * (Ignored unless for SEV-SNP) (defaults to `true`).
+         */
+        allowSmt?: pulumi.Input<boolean>;
+        /**
+         * Add kernel hashes to guest firmware for measured 
+         * linux kernel launch (defaults to `false`).
+         */
+        kernelHashes?: pulumi.Input<boolean>;
+        /**
+         * Sets policy bit to disallow debugging of guest (defaults
+         * to `false`).
+         */
+        noDebug?: pulumi.Input<boolean>;
+        /**
+         * Sets policy bit to disallow key sharing with 
+         * other guests (Ignored for SEV-SNP) (defaults to `false`).
+         *
+         * The `amdSev` setting is only allowed for a `root@pam` authenticated user.
+         */
+        noKeySharing?: pulumi.Input<boolean>;
+        /**
+         * Enable standard SEV with `std` or enable experimental 
+         * SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option
+         * (defaults to `std`).
+         */
+        type?: pulumi.Input<string>;
+    }
+
     export interface VirtualMachineAudioDevice {
         /**
          * The device (defaults to `intel-hda`).

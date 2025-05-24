@@ -41,7 +41,7 @@ class NetworkBridgeArgs:
         :param pulumi.Input[builtins.str] gateway: Default gateway address.
         :param pulumi.Input[builtins.str] gateway6: Default IPv6 gateway address.
         :param pulumi.Input[builtins.int] mtu: The interface MTU.
-        :param pulumi.Input[builtins.str] name: The interface name. Must be `vmbrN`, where N is a number between 0 and 9999.
+        :param pulumi.Input[builtins.str] name: The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ports: The interface bridge ports.
         :param pulumi.Input[builtins.bool] vlan_aware: Whether the interface bridge is VLAN aware (defaults to `false`).
         """
@@ -167,7 +167,7 @@ class NetworkBridgeArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The interface name. Must be `vmbrN`, where N is a number between 0 and 9999.
+        The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
         """
         return pulumi.get(self, "name")
 
@@ -223,7 +223,7 @@ class _NetworkBridgeState:
         :param pulumi.Input[builtins.str] gateway: Default gateway address.
         :param pulumi.Input[builtins.str] gateway6: Default IPv6 gateway address.
         :param pulumi.Input[builtins.int] mtu: The interface MTU.
-        :param pulumi.Input[builtins.str] name: The interface name. Must be `vmbrN`, where N is a number between 0 and 9999.
+        :param pulumi.Input[builtins.str] name: The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
         :param pulumi.Input[builtins.str] node_name: The name of the node.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ports: The interface bridge ports.
         :param pulumi.Input[builtins.bool] vlan_aware: Whether the interface bridge is VLAN aware (defaults to `false`).
@@ -339,7 +339,7 @@ class _NetworkBridgeState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The interface name. Must be `vmbrN`, where N is a number between 0 and 9999.
+        The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
         """
         return pulumi.get(self, "name")
 
@@ -384,10 +384,8 @@ class _NetworkBridgeState:
         pulumi.set(self, "vlan_aware", value)
 
 
+@pulumi.type_token("proxmoxve:Network/networkBridge:NetworkBridge")
 class NetworkBridge(pulumi.CustomResource):
-
-    pulumi_type = "proxmoxve:Network/networkBridge:NetworkBridge"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -445,7 +443,7 @@ class NetworkBridge(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] gateway: Default gateway address.
         :param pulumi.Input[builtins.str] gateway6: Default IPv6 gateway address.
         :param pulumi.Input[builtins.int] mtu: The interface MTU.
-        :param pulumi.Input[builtins.str] name: The interface name. Must be `vmbrN`, where N is a number between 0 and 9999.
+        :param pulumi.Input[builtins.str] name: The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
         :param pulumi.Input[builtins.str] node_name: The name of the node.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ports: The interface bridge ports.
         :param pulumi.Input[builtins.bool] vlan_aware: Whether the interface bridge is VLAN aware (defaults to `false`).
@@ -571,7 +569,7 @@ class NetworkBridge(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] gateway: Default gateway address.
         :param pulumi.Input[builtins.str] gateway6: Default IPv6 gateway address.
         :param pulumi.Input[builtins.int] mtu: The interface MTU.
-        :param pulumi.Input[builtins.str] name: The interface name. Must be `vmbrN`, where N is a number between 0 and 9999.
+        :param pulumi.Input[builtins.str] name: The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
         :param pulumi.Input[builtins.str] node_name: The name of the node.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ports: The interface bridge ports.
         :param pulumi.Input[builtins.bool] vlan_aware: Whether the interface bridge is VLAN aware (defaults to `false`).
@@ -653,7 +651,7 @@ class NetworkBridge(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[builtins.str]:
         """
-        The interface name. Must be `vmbrN`, where N is a number between 0 and 9999.
+        The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
         """
         return pulumi.get(self, "name")
 

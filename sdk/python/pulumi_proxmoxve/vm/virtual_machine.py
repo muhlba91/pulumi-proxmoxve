@@ -25,6 +25,7 @@ class VirtualMachineArgs:
                  node_name: pulumi.Input[builtins.str],
                  acpi: Optional[pulumi.Input[builtins.bool]] = None,
                  agent: Optional[pulumi.Input['VirtualMachineAgentArgs']] = None,
+                 amd_sev: Optional[pulumi.Input['VirtualMachineAmdSevArgs']] = None,
                  audio_device: Optional[pulumi.Input['VirtualMachineAudioDeviceArgs']] = None,
                  bios: Optional[pulumi.Input[builtins.str]] = None,
                  boot_orders: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -82,6 +83,7 @@ class VirtualMachineArgs:
                to.
         :param pulumi.Input[builtins.bool] acpi: Whether to enable ACPI (defaults to `true`).
         :param pulumi.Input['VirtualMachineAgentArgs'] agent: The QEMU agent configuration.
+        :param pulumi.Input['VirtualMachineAmdSevArgs'] amd_sev: Secure Encrypted Virtualization (SEV) features by AMD CPUs.
         :param pulumi.Input['VirtualMachineAudioDeviceArgs'] audio_device: An audio device.
         :param pulumi.Input[builtins.str] bios: The BIOS implementation (defaults to `seabios`).
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] boot_orders: Specify a list of devices to boot from in the order
@@ -158,6 +160,8 @@ class VirtualMachineArgs:
             pulumi.set(__self__, "acpi", acpi)
         if agent is not None:
             pulumi.set(__self__, "agent", agent)
+        if amd_sev is not None:
+            pulumi.set(__self__, "amd_sev", amd_sev)
         if audio_device is not None:
             pulumi.set(__self__, "audio_device", audio_device)
         if bios is not None:
@@ -300,6 +304,18 @@ class VirtualMachineArgs:
     @agent.setter
     def agent(self, value: Optional[pulumi.Input['VirtualMachineAgentArgs']]):
         pulumi.set(self, "agent", value)
+
+    @property
+    @pulumi.getter(name="amdSev")
+    def amd_sev(self) -> Optional[pulumi.Input['VirtualMachineAmdSevArgs']]:
+        """
+        Secure Encrypted Virtualization (SEV) features by AMD CPUs.
+        """
+        return pulumi.get(self, "amd_sev")
+
+    @amd_sev.setter
+    def amd_sev(self, value: Optional[pulumi.Input['VirtualMachineAmdSevArgs']]):
+        pulumi.set(self, "amd_sev", value)
 
     @property
     @pulumi.getter(name="audioDevice")
@@ -939,6 +955,7 @@ class _VirtualMachineState:
     def __init__(__self__, *,
                  acpi: Optional[pulumi.Input[builtins.bool]] = None,
                  agent: Optional[pulumi.Input['VirtualMachineAgentArgs']] = None,
+                 amd_sev: Optional[pulumi.Input['VirtualMachineAmdSevArgs']] = None,
                  audio_device: Optional[pulumi.Input['VirtualMachineAudioDeviceArgs']] = None,
                  bios: Optional[pulumi.Input[builtins.str]] = None,
                  boot_orders: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -998,6 +1015,7 @@ class _VirtualMachineState:
         Input properties used for looking up and filtering VirtualMachine resources.
         :param pulumi.Input[builtins.bool] acpi: Whether to enable ACPI (defaults to `true`).
         :param pulumi.Input['VirtualMachineAgentArgs'] agent: The QEMU agent configuration.
+        :param pulumi.Input['VirtualMachineAmdSevArgs'] amd_sev: Secure Encrypted Virtualization (SEV) features by AMD CPUs.
         :param pulumi.Input['VirtualMachineAudioDeviceArgs'] audio_device: An audio device.
         :param pulumi.Input[builtins.str] bios: The BIOS implementation (defaults to `seabios`).
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] boot_orders: Specify a list of devices to boot from in the order
@@ -1081,6 +1099,8 @@ class _VirtualMachineState:
             pulumi.set(__self__, "acpi", acpi)
         if agent is not None:
             pulumi.set(__self__, "agent", agent)
+        if amd_sev is not None:
+            pulumi.set(__self__, "amd_sev", amd_sev)
         if audio_device is not None:
             pulumi.set(__self__, "audio_device", audio_device)
         if bios is not None:
@@ -1218,6 +1238,18 @@ class _VirtualMachineState:
     @agent.setter
     def agent(self, value: Optional[pulumi.Input['VirtualMachineAgentArgs']]):
         pulumi.set(self, "agent", value)
+
+    @property
+    @pulumi.getter(name="amdSev")
+    def amd_sev(self) -> Optional[pulumi.Input['VirtualMachineAmdSevArgs']]:
+        """
+        Secure Encrypted Virtualization (SEV) features by AMD CPUs.
+        """
+        return pulumi.get(self, "amd_sev")
+
+    @amd_sev.setter
+    def amd_sev(self, value: Optional[pulumi.Input['VirtualMachineAmdSevArgs']]):
+        pulumi.set(self, "amd_sev", value)
 
     @property
     @pulumi.getter(name="audioDevice")
@@ -1904,16 +1936,15 @@ class _VirtualMachineState:
         pulumi.set(self, "watchdog", value)
 
 
+@pulumi.type_token("proxmoxve:VM/virtualMachine:VirtualMachine")
 class VirtualMachine(pulumi.CustomResource):
-
-    pulumi_type = "proxmoxve:VM/virtualMachine:VirtualMachine"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acpi: Optional[pulumi.Input[builtins.bool]] = None,
                  agent: Optional[pulumi.Input[Union['VirtualMachineAgentArgs', 'VirtualMachineAgentArgsDict']]] = None,
+                 amd_sev: Optional[pulumi.Input[Union['VirtualMachineAmdSevArgs', 'VirtualMachineAmdSevArgsDict']]] = None,
                  audio_device: Optional[pulumi.Input[Union['VirtualMachineAudioDeviceArgs', 'VirtualMachineAudioDeviceArgsDict']]] = None,
                  bios: Optional[pulumi.Input[builtins.str]] = None,
                  boot_orders: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -1986,6 +2017,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.bool] acpi: Whether to enable ACPI (defaults to `true`).
         :param pulumi.Input[Union['VirtualMachineAgentArgs', 'VirtualMachineAgentArgsDict']] agent: The QEMU agent configuration.
+        :param pulumi.Input[Union['VirtualMachineAmdSevArgs', 'VirtualMachineAmdSevArgsDict']] amd_sev: Secure Encrypted Virtualization (SEV) features by AMD CPUs.
         :param pulumi.Input[Union['VirtualMachineAudioDeviceArgs', 'VirtualMachineAudioDeviceArgsDict']] audio_device: An audio device.
         :param pulumi.Input[builtins.str] bios: The BIOS implementation (defaults to `seabios`).
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] boot_orders: Specify a list of devices to boot from in the order
@@ -2097,6 +2129,7 @@ class VirtualMachine(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acpi: Optional[pulumi.Input[builtins.bool]] = None,
                  agent: Optional[pulumi.Input[Union['VirtualMachineAgentArgs', 'VirtualMachineAgentArgsDict']]] = None,
+                 amd_sev: Optional[pulumi.Input[Union['VirtualMachineAmdSevArgs', 'VirtualMachineAmdSevArgsDict']]] = None,
                  audio_device: Optional[pulumi.Input[Union['VirtualMachineAudioDeviceArgs', 'VirtualMachineAudioDeviceArgsDict']]] = None,
                  bios: Optional[pulumi.Input[builtins.str]] = None,
                  boot_orders: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -2160,6 +2193,7 @@ class VirtualMachine(pulumi.CustomResource):
 
             __props__.__dict__["acpi"] = acpi
             __props__.__dict__["agent"] = agent
+            __props__.__dict__["amd_sev"] = amd_sev
             __props__.__dict__["audio_device"] = audio_device
             __props__.__dict__["bios"] = bios
             __props__.__dict__["boot_orders"] = boot_orders
@@ -2229,6 +2263,7 @@ class VirtualMachine(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             acpi: Optional[pulumi.Input[builtins.bool]] = None,
             agent: Optional[pulumi.Input[Union['VirtualMachineAgentArgs', 'VirtualMachineAgentArgsDict']]] = None,
+            amd_sev: Optional[pulumi.Input[Union['VirtualMachineAmdSevArgs', 'VirtualMachineAmdSevArgsDict']]] = None,
             audio_device: Optional[pulumi.Input[Union['VirtualMachineAudioDeviceArgs', 'VirtualMachineAudioDeviceArgsDict']]] = None,
             bios: Optional[pulumi.Input[builtins.str]] = None,
             boot_orders: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -2293,6 +2328,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.bool] acpi: Whether to enable ACPI (defaults to `true`).
         :param pulumi.Input[Union['VirtualMachineAgentArgs', 'VirtualMachineAgentArgsDict']] agent: The QEMU agent configuration.
+        :param pulumi.Input[Union['VirtualMachineAmdSevArgs', 'VirtualMachineAmdSevArgsDict']] amd_sev: Secure Encrypted Virtualization (SEV) features by AMD CPUs.
         :param pulumi.Input[Union['VirtualMachineAudioDeviceArgs', 'VirtualMachineAudioDeviceArgsDict']] audio_device: An audio device.
         :param pulumi.Input[builtins.str] bios: The BIOS implementation (defaults to `seabios`).
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] boot_orders: Specify a list of devices to boot from in the order
@@ -2378,6 +2414,7 @@ class VirtualMachine(pulumi.CustomResource):
 
         __props__.__dict__["acpi"] = acpi
         __props__.__dict__["agent"] = agent
+        __props__.__dict__["amd_sev"] = amd_sev
         __props__.__dict__["audio_device"] = audio_device
         __props__.__dict__["bios"] = bios
         __props__.__dict__["boot_orders"] = boot_orders
@@ -2450,6 +2487,14 @@ class VirtualMachine(pulumi.CustomResource):
         The QEMU agent configuration.
         """
         return pulumi.get(self, "agent")
+
+    @property
+    @pulumi.getter(name="amdSev")
+    def amd_sev(self) -> pulumi.Output[Optional['outputs.VirtualMachineAmdSev']]:
+        """
+        Secure Encrypted Virtualization (SEV) features by AMD CPUs.
+        """
+        return pulumi.get(self, "amd_sev")
 
     @property
     @pulumi.getter(name="audioDevice")

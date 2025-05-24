@@ -107,7 +107,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Output<int?> Mtu { get; private set; } = null!;
 
         /// <summary>
-        /// The interface name. Must be `vmbrN`, where N is a number between 0 and 9999.
+        /// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -220,7 +220,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Input<int>? Mtu { get; set; }
 
         /// <summary>
-        /// The interface name. Must be `vmbrN`, where N is a number between 0 and 9999.
+        /// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -300,7 +300,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Input<int>? Mtu { get; set; }
 
         /// <summary>
-        /// The interface name. Must be `vmbrN`, where N is a number between 0 and 9999.
+        /// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -183,14 +183,14 @@ public class NetworkBridge extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.mtu);
     }
     /**
-     * The interface name. Must be `vmbrN`, where N is a number between 0 and 9999.
+     * The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The interface name. Must be `vmbrN`, where N is a number between 0 and 9999.
+     * @return The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
      * 
      */
     public Output<String> name() {

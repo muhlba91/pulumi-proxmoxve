@@ -966,10 +966,8 @@ class _ContainerState:
         pulumi.set(self, "vm_id", value)
 
 
+@pulumi.type_token("proxmoxve:CT/container:Container")
 class Container(pulumi.CustomResource):
-
-    pulumi_type = "proxmoxve:CT/container:Container"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

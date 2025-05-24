@@ -127,10 +127,8 @@ class _TimeState:
         pulumi.set(self, "utc_time", value)
 
 
+@pulumi.type_token("proxmoxve:index/time:Time")
 class Time(pulumi.CustomResource):
-
-    pulumi_type = "proxmoxve:index/time:Time"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

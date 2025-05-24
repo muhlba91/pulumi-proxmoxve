@@ -40,6 +40,12 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<Outputs.VirtualMachineAgent?> Agent { get; private set; } = null!;
 
         /// <summary>
+        /// Secure Encrypted Virtualization (SEV) features by AMD CPUs.
+        /// </summary>
+        [Output("amdSev")]
+        public Output<Outputs.VirtualMachineAmdSev?> AmdSev { get; private set; } = null!;
+
+        /// <summary>
         /// An audio device.
         /// </summary>
         [Output("audioDevice")]
@@ -450,6 +456,12 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Input("agent")]
         public Input<Inputs.VirtualMachineAgentArgs>? Agent { get; set; }
+
+        /// <summary>
+        /// Secure Encrypted Virtualization (SEV) features by AMD CPUs.
+        /// </summary>
+        [Input("amdSev")]
+        public Input<Inputs.VirtualMachineAmdSevArgs>? AmdSev { get; set; }
 
         /// <summary>
         /// An audio device.
@@ -868,6 +880,12 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Input("agent")]
         public Input<Inputs.VirtualMachineAgentGetArgs>? Agent { get; set; }
+
+        /// <summary>
+        /// Secure Encrypted Virtualization (SEV) features by AMD CPUs.
+        /// </summary>
+        [Input("amdSev")]
+        public Input<Inputs.VirtualMachineAmdSevGetArgs>? AmdSev { get; set; }
 
         /// <summary>
         /// An audio device.

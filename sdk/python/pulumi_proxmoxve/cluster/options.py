@@ -675,10 +675,8 @@ class _OptionsState:
         pulumi.set(self, "notify", value)
 
 
+@pulumi.type_token("proxmoxve:Cluster/options:Options")
 class Options(pulumi.CustomResource):
-
-    pulumi_type = "proxmoxve:Cluster/options:Options"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

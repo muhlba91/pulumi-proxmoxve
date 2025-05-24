@@ -124,14 +124,14 @@ public final class NetworkBridgeState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The interface name. Must be `vmbrN`, where N is a number between 0 and 9999.
+     * The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The interface name. Must be `vmbrN`, where N is a number between 0 and 9999.
+     * @return The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
      * 
      */
     public Optional<Output<String>> name() {
@@ -365,7 +365,7 @@ public final class NetworkBridgeState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name The interface name. Must be `vmbrN`, where N is a number between 0 and 9999.
+         * @param name The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
          * 
          * @return builder
          * 
@@ -376,7 +376,7 @@ public final class NetworkBridgeState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name The interface name. Must be `vmbrN`, where N is a number between 0 and 9999.
+         * @param name The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
          * 
          * @return builder
          * 

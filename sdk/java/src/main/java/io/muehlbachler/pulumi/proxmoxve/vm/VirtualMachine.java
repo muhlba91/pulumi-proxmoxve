@@ -11,6 +11,7 @@ import io.muehlbachler.pulumi.proxmoxve.Utilities;
 import io.muehlbachler.pulumi.proxmoxve.VM.VirtualMachineArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineState;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineAgent;
+import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineAmdSev;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineAudioDevice;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineCdrom;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineClone;
@@ -84,6 +85,20 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<VirtualMachineAgent>> agent() {
         return Codegen.optional(this.agent);
+    }
+    /**
+     * Secure Encrypted Virtualization (SEV) features by AMD CPUs.
+     * 
+     */
+    @Export(name="amdSev", refs={VirtualMachineAmdSev.class}, tree="[0]")
+    private Output</* @Nullable */ VirtualMachineAmdSev> amdSev;
+
+    /**
+     * @return Secure Encrypted Virtualization (SEV) features by AMD CPUs.
+     * 
+     */
+    public Output<Optional<VirtualMachineAmdSev>> amdSev() {
+        return Codegen.optional(this.amdSev);
     }
     /**
      * An audio device.

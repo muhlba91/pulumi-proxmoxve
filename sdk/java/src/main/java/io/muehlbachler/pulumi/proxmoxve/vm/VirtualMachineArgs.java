@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineAgentArgs;
+import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineAmdSevArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineAudioDeviceArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineCdromArgs;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineCloneArgs;
@@ -69,6 +70,21 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<VirtualMachineAgentArgs>> agent() {
         return Optional.ofNullable(this.agent);
+    }
+
+    /**
+     * Secure Encrypted Virtualization (SEV) features by AMD CPUs.
+     * 
+     */
+    @Import(name="amdSev")
+    private @Nullable Output<VirtualMachineAmdSevArgs> amdSev;
+
+    /**
+     * @return Secure Encrypted Virtualization (SEV) features by AMD CPUs.
+     * 
+     */
+    public Optional<Output<VirtualMachineAmdSevArgs>> amdSev() {
+        return Optional.ofNullable(this.amdSev);
     }
 
     /**
@@ -904,6 +920,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     private VirtualMachineArgs(VirtualMachineArgs $) {
         this.acpi = $.acpi;
         this.agent = $.agent;
+        this.amdSev = $.amdSev;
         this.audioDevice = $.audioDevice;
         this.bios = $.bios;
         this.bootOrders = $.bootOrders;
@@ -1016,6 +1033,27 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder agent(VirtualMachineAgentArgs agent) {
             return agent(Output.of(agent));
+        }
+
+        /**
+         * @param amdSev Secure Encrypted Virtualization (SEV) features by AMD CPUs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder amdSev(@Nullable Output<VirtualMachineAmdSevArgs> amdSev) {
+            $.amdSev = amdSev;
+            return this;
+        }
+
+        /**
+         * @param amdSev Secure Encrypted Virtualization (SEV) features by AMD CPUs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder amdSev(VirtualMachineAmdSevArgs amdSev) {
+            return amdSev(Output.of(amdSev));
         }
 
         /**

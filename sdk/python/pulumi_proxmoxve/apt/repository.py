@@ -254,10 +254,8 @@ class _RepositoryState:
         pulumi.set(self, "uris", value)
 
 
+@pulumi.type_token("proxmoxve:Apt/repository:Repository")
 class Repository(pulumi.CustomResource):
-
-    pulumi_type = "proxmoxve:Apt/repository:Repository"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

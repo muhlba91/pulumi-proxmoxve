@@ -30,6 +30,8 @@ __all__ = [
     'VirtualMachine2VgaArgsDict',
     'VirtualMachineAgentArgs',
     'VirtualMachineAgentArgsDict',
+    'VirtualMachineAmdSevArgs',
+    'VirtualMachineAmdSevArgsDict',
     'VirtualMachineAudioDeviceArgs',
     'VirtualMachineAudioDeviceArgsDict',
     'VirtualMachineCdromArgs',
@@ -714,6 +716,142 @@ class VirtualMachineAgentArgs:
     def type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The QEMU agent interface type (defaults to `virtio`).
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class VirtualMachineAmdSevArgsDict(TypedDict):
+        allow_smt: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Sets policy bit to allow Simultaneous Multi Threading (SMT)
+        (Ignored unless for SEV-SNP) (defaults to `true`).
+        """
+        kernel_hashes: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Add kernel hashes to guest firmware for measured 
+        linux kernel launch (defaults to `false`).
+        """
+        no_debug: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Sets policy bit to disallow debugging of guest (defaults
+        to `false`).
+        """
+        no_key_sharing: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Sets policy bit to disallow key sharing with 
+        other guests (Ignored for SEV-SNP) (defaults to `false`).
+
+        The `amd_sev` setting is only allowed for a `root@pam` authenticated user.
+        """
+        type: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Enable standard SEV with `std` or enable experimental 
+        SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option
+        (defaults to `std`).
+        """
+elif False:
+    VirtualMachineAmdSevArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VirtualMachineAmdSevArgs:
+    def __init__(__self__, *,
+                 allow_smt: Optional[pulumi.Input[builtins.bool]] = None,
+                 kernel_hashes: Optional[pulumi.Input[builtins.bool]] = None,
+                 no_debug: Optional[pulumi.Input[builtins.bool]] = None,
+                 no_key_sharing: Optional[pulumi.Input[builtins.bool]] = None,
+                 type: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.bool] allow_smt: Sets policy bit to allow Simultaneous Multi Threading (SMT)
+               (Ignored unless for SEV-SNP) (defaults to `true`).
+        :param pulumi.Input[builtins.bool] kernel_hashes: Add kernel hashes to guest firmware for measured 
+               linux kernel launch (defaults to `false`).
+        :param pulumi.Input[builtins.bool] no_debug: Sets policy bit to disallow debugging of guest (defaults
+               to `false`).
+        :param pulumi.Input[builtins.bool] no_key_sharing: Sets policy bit to disallow key sharing with 
+               other guests (Ignored for SEV-SNP) (defaults to `false`).
+               
+               The `amd_sev` setting is only allowed for a `root@pam` authenticated user.
+        :param pulumi.Input[builtins.str] type: Enable standard SEV with `std` or enable experimental 
+               SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option
+               (defaults to `std`).
+        """
+        if allow_smt is not None:
+            pulumi.set(__self__, "allow_smt", allow_smt)
+        if kernel_hashes is not None:
+            pulumi.set(__self__, "kernel_hashes", kernel_hashes)
+        if no_debug is not None:
+            pulumi.set(__self__, "no_debug", no_debug)
+        if no_key_sharing is not None:
+            pulumi.set(__self__, "no_key_sharing", no_key_sharing)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="allowSmt")
+    def allow_smt(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Sets policy bit to allow Simultaneous Multi Threading (SMT)
+        (Ignored unless for SEV-SNP) (defaults to `true`).
+        """
+        return pulumi.get(self, "allow_smt")
+
+    @allow_smt.setter
+    def allow_smt(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "allow_smt", value)
+
+    @property
+    @pulumi.getter(name="kernelHashes")
+    def kernel_hashes(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Add kernel hashes to guest firmware for measured 
+        linux kernel launch (defaults to `false`).
+        """
+        return pulumi.get(self, "kernel_hashes")
+
+    @kernel_hashes.setter
+    def kernel_hashes(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "kernel_hashes", value)
+
+    @property
+    @pulumi.getter(name="noDebug")
+    def no_debug(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Sets policy bit to disallow debugging of guest (defaults
+        to `false`).
+        """
+        return pulumi.get(self, "no_debug")
+
+    @no_debug.setter
+    def no_debug(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "no_debug", value)
+
+    @property
+    @pulumi.getter(name="noKeySharing")
+    def no_key_sharing(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Sets policy bit to disallow key sharing with 
+        other guests (Ignored for SEV-SNP) (defaults to `false`).
+
+        The `amd_sev` setting is only allowed for a `root@pam` authenticated user.
+        """
+        return pulumi.get(self, "no_key_sharing")
+
+    @no_key_sharing.setter
+    def no_key_sharing(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "no_key_sharing", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Enable standard SEV with `std` or enable experimental 
+        SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option
+        (defaults to `std`).
         """
         return pulumi.get(self, "type")
 

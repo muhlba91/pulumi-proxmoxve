@@ -95,7 +95,7 @@ export class NetworkBridge extends pulumi.CustomResource {
      */
     public readonly mtu!: pulumi.Output<number | undefined>;
     /**
-     * The interface name. Must be `vmbrN`, where N is a number between 0 and 9999.
+     * The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -190,7 +190,7 @@ export interface NetworkBridgeState {
      */
     mtu?: pulumi.Input<number>;
     /**
-     * The interface name. Must be `vmbrN`, where N is a number between 0 and 9999.
+     * The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
      */
     name?: pulumi.Input<string>;
     /**
@@ -240,7 +240,7 @@ export interface NetworkBridgeArgs {
      */
     mtu?: pulumi.Input<number>;
     /**
-     * The interface name. Must be `vmbrN`, where N is a number between 0 and 9999.
+     * The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
      */
     name?: pulumi.Input<string>;
     /**

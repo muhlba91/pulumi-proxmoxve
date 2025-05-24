@@ -373,10 +373,8 @@ class _FileState:
         pulumi.set(self, "timeout_upload", value)
 
 
+@pulumi.type_token("proxmoxve:Storage/file:File")
 class File(pulumi.CustomResource):
-
-    pulumi_type = "proxmoxve:Storage/file:File"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

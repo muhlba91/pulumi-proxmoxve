@@ -79,7 +79,7 @@ type NetworkBridge struct {
 	Gateway6 pulumi.StringPtrOutput `pulumi:"gateway6"`
 	// The interface MTU.
 	Mtu pulumi.IntPtrOutput `pulumi:"mtu"`
-	// The interface name. Must be `vmbrN`, where N is a number between 0 and 9999.
+	// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the node.
 	NodeName pulumi.StringOutput `pulumi:"nodeName"`
@@ -136,7 +136,7 @@ type networkBridgeState struct {
 	Gateway6 *string `pulumi:"gateway6"`
 	// The interface MTU.
 	Mtu *int `pulumi:"mtu"`
-	// The interface name. Must be `vmbrN`, where N is a number between 0 and 9999.
+	// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
 	Name *string `pulumi:"name"`
 	// The name of the node.
 	NodeName *string `pulumi:"nodeName"`
@@ -161,7 +161,7 @@ type NetworkBridgeState struct {
 	Gateway6 pulumi.StringPtrInput
 	// The interface MTU.
 	Mtu pulumi.IntPtrInput
-	// The interface name. Must be `vmbrN`, where N is a number between 0 and 9999.
+	// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
 	Name pulumi.StringPtrInput
 	// The name of the node.
 	NodeName pulumi.StringPtrInput
@@ -190,7 +190,7 @@ type networkBridgeArgs struct {
 	Gateway6 *string `pulumi:"gateway6"`
 	// The interface MTU.
 	Mtu *int `pulumi:"mtu"`
-	// The interface name. Must be `vmbrN`, where N is a number between 0 and 9999.
+	// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
 	Name *string `pulumi:"name"`
 	// The name of the node.
 	NodeName string `pulumi:"nodeName"`
@@ -216,7 +216,7 @@ type NetworkBridgeArgs struct {
 	Gateway6 pulumi.StringPtrInput
 	// The interface MTU.
 	Mtu pulumi.IntPtrInput
-	// The interface name. Must be `vmbrN`, where N is a number between 0 and 9999.
+	// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
 	Name pulumi.StringPtrInput
 	// The name of the node.
 	NodeName pulumi.StringInput
@@ -348,7 +348,7 @@ func (o NetworkBridgeOutput) Mtu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NetworkBridge) pulumi.IntPtrOutput { return v.Mtu }).(pulumi.IntPtrOutput)
 }
 
-// The interface name. Must be `vmbrN`, where N is a number between 0 and 9999.
+// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
 func (o NetworkBridgeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkBridge) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

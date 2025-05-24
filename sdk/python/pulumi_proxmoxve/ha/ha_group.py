@@ -191,10 +191,8 @@ class _HAGroupState:
         pulumi.set(self, "restricted", value)
 
 
+@pulumi.type_token("proxmoxve:HA/hAGroup:HAGroup")
 class HAGroup(pulumi.CustomResource):
-
-    pulumi_type = "proxmoxve:HA/hAGroup:HAGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
