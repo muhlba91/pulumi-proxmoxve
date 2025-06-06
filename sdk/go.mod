@@ -3,7 +3,7 @@ module github.com/muhlba91/pulumi-proxmoxve/sdk/v7
 
 go 1.23.0
 
-toolchain go1.24.3
+toolchain go1.24.4
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
