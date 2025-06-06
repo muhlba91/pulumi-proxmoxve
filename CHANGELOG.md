@@ -1,6 +1,15 @@
 # Changelog
 
 
+## [7.1.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.1.0...v7.1.1) (2025-06-06)
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency go to v1.24.4 ([fee1cbe](https://github.com/muhlba91/pulumi-proxmoxve/commit/fee1cbe5c2525ee7954c6c0496353037a1d1594b))
+* **deps:** update github/codeql-action action to v3.28.19 ([d617751](https://github.com/muhlba91/pulumi-proxmoxve/commit/d6177515fa4cb30d79810ce0c135b496f8431ecb))
+* **deps:** update ossf/scorecard-action action to v2.4.2 ([43e6ef7](https://github.com/muhlba91/pulumi-proxmoxve/commit/43e6ef778f7bd6216c0647f4991af546c7e62838))
+
 ## [7.1.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.0.0...v7.1.0) (2025-05-24)
 
 
