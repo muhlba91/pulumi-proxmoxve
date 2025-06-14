@@ -1,6 +1,21 @@
 # Changelog
 
 
+## [7.1.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.1.0...v7.1.1) (2025-06-14)
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/attest-build-provenance action to v2.4.0 ([cbdfb50](https://github.com/muhlba91/pulumi-proxmoxve/commit/cbdfb50d3101d9671e3c013d4b69735de1330a5f))
+* **deps:** update anchore/sbom-action action to v0.20.1 ([f8acc94](https://github.com/muhlba91/pulumi-proxmoxve/commit/f8acc94650955ba3b21264a3ded8191f65732e2f))
+* **deps:** update dependency go to v1.24.4 ([fee1cbe](https://github.com/muhlba91/pulumi-proxmoxve/commit/fee1cbe5c2525ee7954c6c0496353037a1d1594b))
+* **deps:** update github/codeql-action action to v3.28.19 ([d617751](https://github.com/muhlba91/pulumi-proxmoxve/commit/d6177515fa4cb30d79810ce0c135b496f8431ecb))
+* **deps:** update github/codeql-action action to v3.29.0 ([12359ef](https://github.com/muhlba91/pulumi-proxmoxve/commit/12359eff270cdb8daeef6f825401441305ec045b))
+* **deps:** update gradle/actions action to v4.4.1 ([f0e0615](https://github.com/muhlba91/pulumi-proxmoxve/commit/f0e0615ecfc350806d2d90d34282ff7366fa3099))
+* **deps:** update hashicorp/vault-action action to v3.4.0 ([0c84532](https://github.com/muhlba91/pulumi-proxmoxve/commit/0c845324df245d65c70201e26f474630f93c25a2))
+* **deps:** update ossf/scorecard-action action to v2.4.2 ([43e6ef7](https://github.com/muhlba91/pulumi-proxmoxve/commit/43e6ef778f7bd6216c0647f4991af546c7e62838))
+* **deps:** update step-security/harden-runner action to v2.12.1 ([5e27906](https://github.com/muhlba91/pulumi-proxmoxve/commit/5e27906cddcda482d1ecb1b2677e3dda73fc6072))
+
 ## [7.1.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.0.0...v7.1.0) (2025-05-24)
 
 
