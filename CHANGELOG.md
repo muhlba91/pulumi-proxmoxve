@@ -1,6 +1,32 @@
 # Changelog
 
 
+## [7.2.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.1.0...v7.2.0) (2025-06-29)
+
+
+### Features
+
+* **deps:** prepare for upstream v0.78.2 ([e5e184e](https://github.com/muhlba91/pulumi-proxmoxve/commit/e5e184e9f167dbeb995eb11dc6922b91f5cd068f))
+* **deps:** update pulumi dependencies ([2c33831](https://github.com/muhlba91/pulumi-proxmoxve/commit/2c3383123783db1bf84a6efa07e43a7453d6d88d))
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/attest-build-provenance action to v2.4.0 ([cbdfb50](https://github.com/muhlba91/pulumi-proxmoxve/commit/cbdfb50d3101d9671e3c013d4b69735de1330a5f))
+* **deps:** update anchore/sbom-action action to v0.20.1 ([f8acc94](https://github.com/muhlba91/pulumi-proxmoxve/commit/f8acc94650955ba3b21264a3ded8191f65732e2f))
+* **deps:** update dependency go to v1.24.4 ([fee1cbe](https://github.com/muhlba91/pulumi-proxmoxve/commit/fee1cbe5c2525ee7954c6c0496353037a1d1594b))
+* **deps:** update github/codeql-action action to v3.28.19 ([d617751](https://github.com/muhlba91/pulumi-proxmoxve/commit/d6177515fa4cb30d79810ce0c135b496f8431ecb))
+* **deps:** update github/codeql-action action to v3.29.0 ([12359ef](https://github.com/muhlba91/pulumi-proxmoxve/commit/12359eff270cdb8daeef6f825401441305ec045b))
+* **deps:** update github/codeql-action action to v3.29.1 ([9135d2f](https://github.com/muhlba91/pulumi-proxmoxve/commit/9135d2f4412e6fe4ab119e7c08d8cc98ea02e70f))
+* **deps:** update gradle/actions action to v4.4.1 ([f0e0615](https://github.com/muhlba91/pulumi-proxmoxve/commit/f0e0615ecfc350806d2d90d34282ff7366fa3099))
+* **deps:** update hashicorp/vault-action action to v3.4.0 ([0c84532](https://github.com/muhlba91/pulumi-proxmoxve/commit/0c845324df245d65c70201e26f474630f93c25a2))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.78.2 ([3b17adf](https://github.com/muhlba91/pulumi-proxmoxve/commit/3b17adf7b76eefdec70fbdd8b59f80e9a2f1345f))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.181.0 ([01f0106](https://github.com/muhlba91/pulumi-proxmoxve/commit/01f01066682c3bf390c6895a018ee62f4df4fd1b))
+* **deps:** update ossf/scorecard-action action to v2.4.2 ([43e6ef7](https://github.com/muhlba91/pulumi-proxmoxve/commit/43e6ef778f7bd6216c0647f4991af546c7e62838))
+* **deps:** update sigstore/cosign-installer action to v3.9.0 ([086cb7e](https://github.com/muhlba91/pulumi-proxmoxve/commit/086cb7eef0278e590571115c9f5a5572b0655588))
+* **deps:** update sigstore/cosign-installer action to v3.9.1 ([4f368a1](https://github.com/muhlba91/pulumi-proxmoxve/commit/4f368a194321f9d480b8f487ae7df2ff1a2ace30))
+* **deps:** update step-security/harden-runner action to v2.12.1 ([5e27906](https://github.com/muhlba91/pulumi-proxmoxve/commit/5e27906cddcda482d1ecb1b2677e3dda73fc6072))
+
 ## [7.1.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.0.0...v7.1.0) (2025-05-24)
 
 
