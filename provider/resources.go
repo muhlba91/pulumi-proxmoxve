@@ -167,7 +167,6 @@ func Provider() tfbridge.ProviderInfo {
 		Config:               map[string]*tfbridge.SchemaInfo{},
 		PreConfigureCallback: preConfigureCallback,
 		MuxWith:              []tfbridge.MuxProvider{},
-		MetadataInfo:         tfbridge.NewProviderMetadata(metadata),
 		Resources: map[string]*tfbridge.ResourceInfo{
 			// VM/CT
 			"proxmox_virtual_environment_vm": {Tok: tfbridge.MakeResource(mainPkg, "VM", "VirtualMachine")},
@@ -279,11 +278,14 @@ func Provider() tfbridge.ProviderInfo {
 		Java: &tfbridge.JavaInfo{
 			BasePackage: "io.muehlbachler.pulumi",
 		},
+		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 	}
 
 	prov.MustComputeTokens(moduleComputeStrategy())
 	prov.MustApplyAutoAliases()
 	err := tfbridge.ApplyAutoAliases(&prov)
+	contract.AssertNoErrorf(err, "auto aliasing apply failed")
+	err = tfbridge.ApplyAutoAliases(&prov)
 	contract.AssertNoErrorf(err, "auto aliasing apply failed")
 	prov.SetAutonaming(255, "-")
 
