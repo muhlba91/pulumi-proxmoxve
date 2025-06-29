@@ -502,17 +502,13 @@ class VirtualMachineAmdSev(dict):
         """
         :param builtins.bool allow_smt: Sets policy bit to allow Simultaneous Multi Threading (SMT)
                (Ignored unless for SEV-SNP) (defaults to `true`).
-        :param builtins.bool kernel_hashes: Add kernel hashes to guest firmware for measured 
-               linux kernel launch (defaults to `false`).
+        :param builtins.bool kernel_hashes: Add kernel hashes to guest firmware for measured linux kernel launch (defaults to `false`).
         :param builtins.bool no_debug: Sets policy bit to disallow debugging of guest (defaults
                to `false`).
-        :param builtins.bool no_key_sharing: Sets policy bit to disallow key sharing with 
-               other guests (Ignored for SEV-SNP) (defaults to `false`).
+        :param builtins.bool no_key_sharing: Sets policy bit to disallow key sharing with other guests (Ignored for SEV-SNP) (defaults to `false`).
                
                The `amd_sev` setting is only allowed for a `root@pam` authenticated user.
-        :param builtins.str type: Enable standard SEV with `std` or enable experimental 
-               SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option
-               (defaults to `std`).
+        :param builtins.str type: Enable standard SEV with `std` or enable experimental SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option (defaults to `std`).
         """
         if allow_smt is not None:
             pulumi.set(__self__, "allow_smt", allow_smt)
@@ -538,8 +534,7 @@ class VirtualMachineAmdSev(dict):
     @pulumi.getter(name="kernelHashes")
     def kernel_hashes(self) -> Optional[builtins.bool]:
         """
-        Add kernel hashes to guest firmware for measured 
-        linux kernel launch (defaults to `false`).
+        Add kernel hashes to guest firmware for measured linux kernel launch (defaults to `false`).
         """
         return pulumi.get(self, "kernel_hashes")
 
@@ -556,8 +551,7 @@ class VirtualMachineAmdSev(dict):
     @pulumi.getter(name="noKeySharing")
     def no_key_sharing(self) -> Optional[builtins.bool]:
         """
-        Sets policy bit to disallow key sharing with 
-        other guests (Ignored for SEV-SNP) (defaults to `false`).
+        Sets policy bit to disallow key sharing with other guests (Ignored for SEV-SNP) (defaults to `false`).
 
         The `amd_sev` setting is only allowed for a `root@pam` authenticated user.
         """
@@ -567,9 +561,7 @@ class VirtualMachineAmdSev(dict):
     @pulumi.getter
     def type(self) -> Optional[builtins.str]:
         """
-        Enable standard SEV with `std` or enable experimental 
-        SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option
-        (defaults to `std`).
+        Enable standard SEV with `std` or enable experimental SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option (defaults to `std`).
         """
         return pulumi.get(self, "type")
 
@@ -654,9 +646,9 @@ class VirtualMachineCdrom(dict):
                Set `file_id` to `none` to leave the CD-ROM drive empty.
         :param builtins.str file_id: A file ID for an ISO file (defaults to `cdrom` as
                in the physical drive). Use `none` to leave the CD-ROM drive empty.
-        :param builtins.str interface: A hardware interface to connect CD-ROM drive to,
-               must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
-               supports `ide0` and `ide2`.
+        :param builtins.str interface: A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
+               "Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. " +
+               "Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -689,9 +681,9 @@ class VirtualMachineCdrom(dict):
     @pulumi.getter
     def interface(self) -> Optional[builtins.str]:
         """
-        A hardware interface to connect CD-ROM drive to,
-        must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
-        supports `ide0` and `ide2`.
+        A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
+        "Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. " +
+        "Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
         """
         return pulumi.get(self, "interface")
 

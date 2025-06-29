@@ -124,14 +124,14 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `true` and size of uploaded file is different, than size from `url` Content-Length header, file will be downloaded again. If `false`, there will be no checks.
+     * By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
      * 
      */
     @Import(name="overwrite")
     private @Nullable Output<Boolean> overwrite;
 
     /**
-     * @return If `true` and size of uploaded file is different, than size from `url` Content-Length header, file will be downloaded again. If `false`, there will be no checks.
+     * @return By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
      * 
      */
     public Optional<Output<Boolean>> overwrite() {
@@ -381,7 +381,7 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param overwrite If `true` and size of uploaded file is different, than size from `url` Content-Length header, file will be downloaded again. If `false`, there will be no checks.
+         * @param overwrite By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
          * 
          * @return builder
          * 
@@ -392,7 +392,7 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param overwrite If `true` and size of uploaded file is different, than size from `url` Content-Length header, file will be downloaded again. If `false`, there will be no checks.
+         * @param overwrite By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
          * 
          * @return builder
          * 

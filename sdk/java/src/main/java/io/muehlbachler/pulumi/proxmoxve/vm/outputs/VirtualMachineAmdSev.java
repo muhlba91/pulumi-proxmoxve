@@ -19,8 +19,7 @@ public final class VirtualMachineAmdSev {
      */
     private @Nullable Boolean allowSmt;
     /**
-     * @return Add kernel hashes to guest firmware for measured
-     * linux kernel launch (defaults to `false`).
+     * @return Add kernel hashes to guest firmware for measured linux kernel launch (defaults to `false`).
      * 
      */
     private @Nullable Boolean kernelHashes;
@@ -31,17 +30,14 @@ public final class VirtualMachineAmdSev {
      */
     private @Nullable Boolean noDebug;
     /**
-     * @return Sets policy bit to disallow key sharing with
-     * other guests (Ignored for SEV-SNP) (defaults to `false`).
+     * @return Sets policy bit to disallow key sharing with other guests (Ignored for SEV-SNP) (defaults to `false`).
      * 
      * The `amd_sev` setting is only allowed for a `root{@literal @}pam` authenticated user.
      * 
      */
     private @Nullable Boolean noKeySharing;
     /**
-     * @return Enable standard SEV with `std` or enable experimental
-     * SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option
-     * (defaults to `std`).
+     * @return Enable standard SEV with `std` or enable experimental SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option (defaults to `std`).
      * 
      */
     private @Nullable String type;
@@ -56,8 +52,7 @@ public final class VirtualMachineAmdSev {
         return Optional.ofNullable(this.allowSmt);
     }
     /**
-     * @return Add kernel hashes to guest firmware for measured
-     * linux kernel launch (defaults to `false`).
+     * @return Add kernel hashes to guest firmware for measured linux kernel launch (defaults to `false`).
      * 
      */
     public Optional<Boolean> kernelHashes() {
@@ -72,8 +67,7 @@ public final class VirtualMachineAmdSev {
         return Optional.ofNullable(this.noDebug);
     }
     /**
-     * @return Sets policy bit to disallow key sharing with
-     * other guests (Ignored for SEV-SNP) (defaults to `false`).
+     * @return Sets policy bit to disallow key sharing with other guests (Ignored for SEV-SNP) (defaults to `false`).
      * 
      * The `amd_sev` setting is only allowed for a `root{@literal @}pam` authenticated user.
      * 
@@ -82,9 +76,7 @@ public final class VirtualMachineAmdSev {
         return Optional.ofNullable(this.noKeySharing);
     }
     /**
-     * @return Enable standard SEV with `std` or enable experimental
-     * SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option
-     * (defaults to `std`).
+     * @return Enable standard SEV with `std` or enable experimental SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option (defaults to `std`).
      * 
      */
     public Optional<String> type() {

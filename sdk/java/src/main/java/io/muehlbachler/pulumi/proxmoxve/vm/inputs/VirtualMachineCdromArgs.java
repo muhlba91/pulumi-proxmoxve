@@ -61,18 +61,18 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * A hardware interface to connect CD-ROM drive to,
-     * must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
-     * supports `ide0` and `ide2`.
+     * A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
+     * &#34;Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. &#34; +
+     * &#34;Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
      * 
      */
     @Import(name="interface")
     private @Nullable Output<String> interface_;
 
     /**
-     * @return A hardware interface to connect CD-ROM drive to,
-     * must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
-     * supports `ide0` and `ide2`.
+     * @return A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
+     * &#34;Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. &#34; +
+     * &#34;Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
      * 
      */
     public Optional<Output<String>> interface_() {
@@ -162,9 +162,9 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param interface_ A hardware interface to connect CD-ROM drive to,
-         * must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
-         * supports `ide0` and `ide2`.
+         * @param interface_ A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
+         * &#34;Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. &#34; +
+         * &#34;Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
          * 
          * @return builder
          * 
@@ -175,9 +175,9 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param interface_ A hardware interface to connect CD-ROM drive to,
-         * must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
-         * supports `ide0` and `ide2`.
+         * @param interface_ A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
+         * &#34;Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. &#34; +
+         * &#34;Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
          * 
          * @return builder
          * 

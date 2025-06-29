@@ -130,7 +130,7 @@ namespace Pulumi.ProxmoxVE.Download
         public Output<string> NodeName { get; private set; } = null!;
 
         /// <summary>
-        /// If `true` and size of uploaded file is different, than size from `url` Content-Length header, file will be downloaded again. If `false`, there will be no checks.
+        /// By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
         /// </summary>
         [Output("overwrite")]
         public Output<bool> Overwrite { get; private set; } = null!;
@@ -142,7 +142,7 @@ namespace Pulumi.ProxmoxVE.Download
         public Output<bool> OverwriteUnmanaged { get; private set; } = null!;
 
         /// <summary>
-        /// The file size.
+        /// The file size in PVE.
         /// </summary>
         [Output("size")]
         public Output<int> Size { get; private set; } = null!;
@@ -255,7 +255,7 @@ namespace Pulumi.ProxmoxVE.Download
         public Input<string> NodeName { get; set; } = null!;
 
         /// <summary>
-        /// If `true` and size of uploaded file is different, than size from `url` Content-Length header, file will be downloaded again. If `false`, there will be no checks.
+        /// By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
         /// </summary>
         [Input("overwrite")]
         public Input<bool>? Overwrite { get; set; }
@@ -335,7 +335,7 @@ namespace Pulumi.ProxmoxVE.Download
         public Input<string>? NodeName { get; set; }
 
         /// <summary>
-        /// If `true` and size of uploaded file is different, than size from `url` Content-Length header, file will be downloaded again. If `false`, there will be no checks.
+        /// By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
         /// </summary>
         [Input("overwrite")]
         public Input<bool>? Overwrite { get; set; }
@@ -347,7 +347,7 @@ namespace Pulumi.ProxmoxVE.Download
         public Input<bool>? OverwriteUnmanaged { get; set; }
 
         /// <summary>
-        /// The file size.
+        /// The file size in PVE.
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }

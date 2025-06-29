@@ -30,9 +30,9 @@ public final class VirtualMachineCdrom {
      */
     private @Nullable String fileId;
     /**
-     * @return A hardware interface to connect CD-ROM drive to,
-     * must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
-     * supports `ide0` and `ide2`.
+     * @return A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
+     * &#34;Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. &#34; +
+     * &#34;Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
      * 
      */
     private @Nullable String interface_;
@@ -60,9 +60,9 @@ public final class VirtualMachineCdrom {
         return Optional.ofNullable(this.fileId);
     }
     /**
-     * @return A hardware interface to connect CD-ROM drive to,
-     * must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
-     * supports `ide0` and `ide2`.
+     * @return A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
+     * &#34;Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. &#34; +
+     * &#34;Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
      * 
      */
     public Optional<String> interface_() {

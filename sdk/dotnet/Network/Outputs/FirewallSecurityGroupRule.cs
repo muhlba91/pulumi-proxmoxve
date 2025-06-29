@@ -39,7 +39,7 @@ namespace Pulumi.ProxmoxVE.Network.Outputs
         /// </summary>
         public readonly string? Dport;
         /// <summary>
-        /// Enable rule
+        /// Enable this rule. Defaults to `true`.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>

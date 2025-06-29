@@ -25,9 +25,9 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly string? FileId;
         /// <summary>
-        /// A hardware interface to connect CD-ROM drive to,
-        /// must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
-        /// supports `ide0` and `ide2`.
+        /// A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
+        /// "Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. " +
+        /// "Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
         /// </summary>
         public readonly string? Interface;
 

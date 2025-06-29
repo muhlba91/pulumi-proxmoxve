@@ -573,7 +573,7 @@ if not MYPY:
         """
         enabled: NotRequired[pulumi.Input[builtins.bool]]
         """
-        Enable rule
+        Enable this rule. Defaults to `true`.
         """
         iface: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -659,7 +659,7 @@ class FirewallSecurityGroupRuleArgs:
                services'. Port ranges can be specified with '\\d+:\\d+', for example
                `80:85`, and you can use comma separated list to match several ports or
                ranges.
-        :param pulumi.Input[builtins.bool] enabled: Enable rule
+        :param pulumi.Input[builtins.bool] enabled: Enable this rule. Defaults to `true`.
         :param pulumi.Input[builtins.str] iface: Network interface name. You have to use network
                configuration key names for VMs and containers ('net\\d+'). Host related
                rules can use arbitrary strings.
@@ -774,7 +774,7 @@ class FirewallSecurityGroupRuleArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Enable rule
+        Enable this rule. Defaults to `true`.
         """
         return pulumi.get(self, "enabled")
 

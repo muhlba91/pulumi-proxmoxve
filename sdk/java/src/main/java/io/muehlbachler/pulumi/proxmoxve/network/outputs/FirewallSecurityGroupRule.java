@@ -43,7 +43,7 @@ public final class FirewallSecurityGroupRule {
      */
     private @Nullable String dport;
     /**
-     * @return Enable rule
+     * @return Enable this rule. Defaults to `true`.
      * 
      */
     private @Nullable Boolean enabled;
@@ -146,7 +146,7 @@ public final class FirewallSecurityGroupRule {
         return Optional.ofNullable(this.dport);
     }
     /**
-     * @return Enable rule
+     * @return Enable this rule. Defaults to `true`.
      * 
      */
     public Optional<Boolean> enabled() {

@@ -46,7 +46,7 @@ namespace Pulumi.ProxmoxVE.Network.Inputs
         public Input<string>? Dport { get; set; }
 
         /// <summary>
-        /// Enable rule
+        /// Enable this rule. Defaults to `true`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

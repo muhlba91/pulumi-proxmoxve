@@ -1328,20 +1328,16 @@ type VirtualMachineAmdSev struct {
 	// Sets policy bit to allow Simultaneous Multi Threading (SMT)
 	// (Ignored unless for SEV-SNP) (defaults to `true`).
 	AllowSmt *bool `pulumi:"allowSmt"`
-	// Add kernel hashes to guest firmware for measured
-	// linux kernel launch (defaults to `false`).
+	// Add kernel hashes to guest firmware for measured linux kernel launch (defaults to `false`).
 	KernelHashes *bool `pulumi:"kernelHashes"`
 	// Sets policy bit to disallow debugging of guest (defaults
 	// to `false`).
 	NoDebug *bool `pulumi:"noDebug"`
-	// Sets policy bit to disallow key sharing with
-	// other guests (Ignored for SEV-SNP) (defaults to `false`).
+	// Sets policy bit to disallow key sharing with other guests (Ignored for SEV-SNP) (defaults to `false`).
 	//
 	// The `amdSev` setting is only allowed for a `root@pam` authenticated user.
 	NoKeySharing *bool `pulumi:"noKeySharing"`
-	// Enable standard SEV with `std` or enable experimental
-	// SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option
-	// (defaults to `std`).
+	// Enable standard SEV with `std` or enable experimental SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option (defaults to `std`).
 	Type *string `pulumi:"type"`
 }
 
@@ -1360,20 +1356,16 @@ type VirtualMachineAmdSevArgs struct {
 	// Sets policy bit to allow Simultaneous Multi Threading (SMT)
 	// (Ignored unless for SEV-SNP) (defaults to `true`).
 	AllowSmt pulumi.BoolPtrInput `pulumi:"allowSmt"`
-	// Add kernel hashes to guest firmware for measured
-	// linux kernel launch (defaults to `false`).
+	// Add kernel hashes to guest firmware for measured linux kernel launch (defaults to `false`).
 	KernelHashes pulumi.BoolPtrInput `pulumi:"kernelHashes"`
 	// Sets policy bit to disallow debugging of guest (defaults
 	// to `false`).
 	NoDebug pulumi.BoolPtrInput `pulumi:"noDebug"`
-	// Sets policy bit to disallow key sharing with
-	// other guests (Ignored for SEV-SNP) (defaults to `false`).
+	// Sets policy bit to disallow key sharing with other guests (Ignored for SEV-SNP) (defaults to `false`).
 	//
 	// The `amdSev` setting is only allowed for a `root@pam` authenticated user.
 	NoKeySharing pulumi.BoolPtrInput `pulumi:"noKeySharing"`
-	// Enable standard SEV with `std` or enable experimental
-	// SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option
-	// (defaults to `std`).
+	// Enable standard SEV with `std` or enable experimental SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option (defaults to `std`).
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -1460,8 +1452,7 @@ func (o VirtualMachineAmdSevOutput) AllowSmt() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineAmdSev) *bool { return v.AllowSmt }).(pulumi.BoolPtrOutput)
 }
 
-// Add kernel hashes to guest firmware for measured
-// linux kernel launch (defaults to `false`).
+// Add kernel hashes to guest firmware for measured linux kernel launch (defaults to `false`).
 func (o VirtualMachineAmdSevOutput) KernelHashes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineAmdSev) *bool { return v.KernelHashes }).(pulumi.BoolPtrOutput)
 }
@@ -1472,17 +1463,14 @@ func (o VirtualMachineAmdSevOutput) NoDebug() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineAmdSev) *bool { return v.NoDebug }).(pulumi.BoolPtrOutput)
 }
 
-// Sets policy bit to disallow key sharing with
-// other guests (Ignored for SEV-SNP) (defaults to `false`).
+// Sets policy bit to disallow key sharing with other guests (Ignored for SEV-SNP) (defaults to `false`).
 //
 // The `amdSev` setting is only allowed for a `root@pam` authenticated user.
 func (o VirtualMachineAmdSevOutput) NoKeySharing() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineAmdSev) *bool { return v.NoKeySharing }).(pulumi.BoolPtrOutput)
 }
 
-// Enable standard SEV with `std` or enable experimental
-// SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option
-// (defaults to `std`).
+// Enable standard SEV with `std` or enable experimental SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option (defaults to `std`).
 func (o VirtualMachineAmdSevOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineAmdSev) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -1522,8 +1510,7 @@ func (o VirtualMachineAmdSevPtrOutput) AllowSmt() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Add kernel hashes to guest firmware for measured
-// linux kernel launch (defaults to `false`).
+// Add kernel hashes to guest firmware for measured linux kernel launch (defaults to `false`).
 func (o VirtualMachineAmdSevPtrOutput) KernelHashes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineAmdSev) *bool {
 		if v == nil {
@@ -1544,8 +1531,7 @@ func (o VirtualMachineAmdSevPtrOutput) NoDebug() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Sets policy bit to disallow key sharing with
-// other guests (Ignored for SEV-SNP) (defaults to `false`).
+// Sets policy bit to disallow key sharing with other guests (Ignored for SEV-SNP) (defaults to `false`).
 //
 // The `amdSev` setting is only allowed for a `root@pam` authenticated user.
 func (o VirtualMachineAmdSevPtrOutput) NoKeySharing() pulumi.BoolPtrOutput {
@@ -1557,9 +1543,7 @@ func (o VirtualMachineAmdSevPtrOutput) NoKeySharing() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Enable standard SEV with `std` or enable experimental
-// SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option
-// (defaults to `std`).
+// Enable standard SEV with `std` or enable experimental SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option (defaults to `std`).
 func (o VirtualMachineAmdSevPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineAmdSev) *string {
 		if v == nil {
@@ -1770,9 +1754,9 @@ type VirtualMachineCdrom struct {
 	// A file ID for an ISO file (defaults to `cdrom` as
 	// in the physical drive). Use `none` to leave the CD-ROM drive empty.
 	FileId *string `pulumi:"fileId"`
-	// A hardware interface to connect CD-ROM drive to,
-	// must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
-	// supports `ide0` and `ide2`.
+	// A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
+	// "Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. " +
+	// "Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
 	Interface *string `pulumi:"interface"`
 }
 
@@ -1797,9 +1781,9 @@ type VirtualMachineCdromArgs struct {
 	// A file ID for an ISO file (defaults to `cdrom` as
 	// in the physical drive). Use `none` to leave the CD-ROM drive empty.
 	FileId pulumi.StringPtrInput `pulumi:"fileId"`
-	// A hardware interface to connect CD-ROM drive to,
-	// must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
-	// supports `ide0` and `ide2`.
+	// A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
+	// "Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. " +
+	// "Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
 	Interface pulumi.StringPtrInput `pulumi:"interface"`
 }
 
@@ -1895,9 +1879,9 @@ func (o VirtualMachineCdromOutput) FileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCdrom) *string { return v.FileId }).(pulumi.StringPtrOutput)
 }
 
-// A hardware interface to connect CD-ROM drive to,
-// must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
-// supports `ide0` and `ide2`.
+// A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
+// "Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. " +
+// "Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
 func (o VirtualMachineCdromOutput) Interface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCdrom) *string { return v.Interface }).(pulumi.StringPtrOutput)
 }
@@ -1951,9 +1935,9 @@ func (o VirtualMachineCdromPtrOutput) FileId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A hardware interface to connect CD-ROM drive to,
-// must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
-// supports `ide0` and `ide2`.
+// A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
+// "Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. " +
+// "Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
 func (o VirtualMachineCdromPtrOutput) Interface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCdrom) *string {
 		if v == nil {

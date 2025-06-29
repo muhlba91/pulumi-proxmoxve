@@ -34,16 +34,14 @@ public final class VirtualMachineAmdSevArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Add kernel hashes to guest firmware for measured
-     * linux kernel launch (defaults to `false`).
+     * Add kernel hashes to guest firmware for measured linux kernel launch (defaults to `false`).
      * 
      */
     @Import(name="kernelHashes")
     private @Nullable Output<Boolean> kernelHashes;
 
     /**
-     * @return Add kernel hashes to guest firmware for measured
-     * linux kernel launch (defaults to `false`).
+     * @return Add kernel hashes to guest firmware for measured linux kernel launch (defaults to `false`).
      * 
      */
     public Optional<Output<Boolean>> kernelHashes() {
@@ -68,8 +66,7 @@ public final class VirtualMachineAmdSevArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Sets policy bit to disallow key sharing with
-     * other guests (Ignored for SEV-SNP) (defaults to `false`).
+     * Sets policy bit to disallow key sharing with other guests (Ignored for SEV-SNP) (defaults to `false`).
      * 
      * The `amd_sev` setting is only allowed for a `root{@literal @}pam` authenticated user.
      * 
@@ -78,8 +75,7 @@ public final class VirtualMachineAmdSevArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<Boolean> noKeySharing;
 
     /**
-     * @return Sets policy bit to disallow key sharing with
-     * other guests (Ignored for SEV-SNP) (defaults to `false`).
+     * @return Sets policy bit to disallow key sharing with other guests (Ignored for SEV-SNP) (defaults to `false`).
      * 
      * The `amd_sev` setting is only allowed for a `root{@literal @}pam` authenticated user.
      * 
@@ -89,18 +85,14 @@ public final class VirtualMachineAmdSevArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Enable standard SEV with `std` or enable experimental
-     * SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option
-     * (defaults to `std`).
+     * Enable standard SEV with `std` or enable experimental SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option (defaults to `std`).
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Enable standard SEV with `std` or enable experimental
-     * SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option
-     * (defaults to `std`).
+     * @return Enable standard SEV with `std` or enable experimental SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option (defaults to `std`).
      * 
      */
     public Optional<Output<String>> type() {
@@ -159,8 +151,7 @@ public final class VirtualMachineAmdSevArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param kernelHashes Add kernel hashes to guest firmware for measured
-         * linux kernel launch (defaults to `false`).
+         * @param kernelHashes Add kernel hashes to guest firmware for measured linux kernel launch (defaults to `false`).
          * 
          * @return builder
          * 
@@ -171,8 +162,7 @@ public final class VirtualMachineAmdSevArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param kernelHashes Add kernel hashes to guest firmware for measured
-         * linux kernel launch (defaults to `false`).
+         * @param kernelHashes Add kernel hashes to guest firmware for measured linux kernel launch (defaults to `false`).
          * 
          * @return builder
          * 
@@ -205,8 +195,7 @@ public final class VirtualMachineAmdSevArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param noKeySharing Sets policy bit to disallow key sharing with
-         * other guests (Ignored for SEV-SNP) (defaults to `false`).
+         * @param noKeySharing Sets policy bit to disallow key sharing with other guests (Ignored for SEV-SNP) (defaults to `false`).
          * 
          * The `amd_sev` setting is only allowed for a `root{@literal @}pam` authenticated user.
          * 
@@ -219,8 +208,7 @@ public final class VirtualMachineAmdSevArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param noKeySharing Sets policy bit to disallow key sharing with
-         * other guests (Ignored for SEV-SNP) (defaults to `false`).
+         * @param noKeySharing Sets policy bit to disallow key sharing with other guests (Ignored for SEV-SNP) (defaults to `false`).
          * 
          * The `amd_sev` setting is only allowed for a `root{@literal @}pam` authenticated user.
          * 
@@ -232,9 +220,7 @@ public final class VirtualMachineAmdSevArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param type Enable standard SEV with `std` or enable experimental
-         * SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option
-         * (defaults to `std`).
+         * @param type Enable standard SEV with `std` or enable experimental SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option (defaults to `std`).
          * 
          * @return builder
          * 
@@ -245,9 +231,7 @@ public final class VirtualMachineAmdSevArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param type Enable standard SEV with `std` or enable experimental
-         * SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option
-         * (defaults to `std`).
+         * @param type Enable standard SEV with `std` or enable experimental SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option (defaults to `std`).
          * 
          * @return builder
          * 

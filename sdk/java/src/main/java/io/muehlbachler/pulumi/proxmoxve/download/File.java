@@ -205,14 +205,14 @@ public class File extends com.pulumi.resources.CustomResource {
         return this.nodeName;
     }
     /**
-     * If `true` and size of uploaded file is different, than size from `url` Content-Length header, file will be downloaded again. If `false`, there will be no checks.
+     * By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
      * 
      */
     @Export(name="overwrite", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> overwrite;
 
     /**
-     * @return If `true` and size of uploaded file is different, than size from `url` Content-Length header, file will be downloaded again. If `false`, there will be no checks.
+     * @return By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
      * 
      */
     public Output<Boolean> overwrite() {
@@ -233,14 +233,14 @@ public class File extends com.pulumi.resources.CustomResource {
         return this.overwriteUnmanaged;
     }
     /**
-     * The file size.
+     * The file size in PVE.
      * 
      */
     @Export(name="size", refs={Integer.class}, tree="[0]")
     private Output<Integer> size;
 
     /**
-     * @return The file size.
+     * @return The file size in PVE.
      * 
      */
     public Output<Integer> size() {

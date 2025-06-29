@@ -115,11 +115,11 @@ type File struct {
 	FileName pulumi.StringOutput `pulumi:"fileName"`
 	// The node name.
 	NodeName pulumi.StringOutput `pulumi:"nodeName"`
-	// If `true` and size of uploaded file is different, than size from `url` Content-Length header, file will be downloaded again. If `false`, there will be no checks.
+	// By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
 	Overwrite pulumi.BoolOutput `pulumi:"overwrite"`
 	// If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
 	OverwriteUnmanaged pulumi.BoolOutput `pulumi:"overwriteUnmanaged"`
-	// The file size.
+	// The file size in PVE.
 	Size pulumi.IntOutput `pulumi:"size"`
 	// The file download timeout seconds. Default is 600 (10min).
 	UploadTimeout pulumi.IntOutput `pulumi:"uploadTimeout"`
@@ -185,11 +185,11 @@ type fileState struct {
 	FileName *string `pulumi:"fileName"`
 	// The node name.
 	NodeName *string `pulumi:"nodeName"`
-	// If `true` and size of uploaded file is different, than size from `url` Content-Length header, file will be downloaded again. If `false`, there will be no checks.
+	// By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
 	Overwrite *bool `pulumi:"overwrite"`
 	// If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
 	OverwriteUnmanaged *bool `pulumi:"overwriteUnmanaged"`
-	// The file size.
+	// The file size in PVE.
 	Size *int `pulumi:"size"`
 	// The file download timeout seconds. Default is 600 (10min).
 	UploadTimeout *int `pulumi:"uploadTimeout"`
@@ -214,11 +214,11 @@ type FileState struct {
 	FileName pulumi.StringPtrInput
 	// The node name.
 	NodeName pulumi.StringPtrInput
-	// If `true` and size of uploaded file is different, than size from `url` Content-Length header, file will be downloaded again. If `false`, there will be no checks.
+	// By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
 	Overwrite pulumi.BoolPtrInput
 	// If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
 	OverwriteUnmanaged pulumi.BoolPtrInput
-	// The file size.
+	// The file size in PVE.
 	Size pulumi.IntPtrInput
 	// The file download timeout seconds. Default is 600 (10min).
 	UploadTimeout pulumi.IntPtrInput
@@ -247,7 +247,7 @@ type fileArgs struct {
 	FileName *string `pulumi:"fileName"`
 	// The node name.
 	NodeName string `pulumi:"nodeName"`
-	// If `true` and size of uploaded file is different, than size from `url` Content-Length header, file will be downloaded again. If `false`, there will be no checks.
+	// By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
 	Overwrite *bool `pulumi:"overwrite"`
 	// If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
 	OverwriteUnmanaged *bool `pulumi:"overwriteUnmanaged"`
@@ -275,7 +275,7 @@ type FileArgs struct {
 	FileName pulumi.StringPtrInput
 	// The node name.
 	NodeName pulumi.StringInput
-	// If `true` and size of uploaded file is different, than size from `url` Content-Length header, file will be downloaded again. If `false`, there will be no checks.
+	// By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
 	Overwrite pulumi.BoolPtrInput
 	// If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
 	OverwriteUnmanaged pulumi.BoolPtrInput
@@ -409,7 +409,7 @@ func (o FileOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v *File) pulumi.StringOutput { return v.NodeName }).(pulumi.StringOutput)
 }
 
-// If `true` and size of uploaded file is different, than size from `url` Content-Length header, file will be downloaded again. If `false`, there will be no checks.
+// By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
 func (o FileOutput) Overwrite() pulumi.BoolOutput {
 	return o.ApplyT(func(v *File) pulumi.BoolOutput { return v.Overwrite }).(pulumi.BoolOutput)
 }
@@ -419,7 +419,7 @@ func (o FileOutput) OverwriteUnmanaged() pulumi.BoolOutput {
 	return o.ApplyT(func(v *File) pulumi.BoolOutput { return v.OverwriteUnmanaged }).(pulumi.BoolOutput)
 }
 
-// The file size.
+// The file size in PVE.
 func (o FileOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v *File) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
 }

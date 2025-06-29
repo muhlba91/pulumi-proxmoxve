@@ -402,7 +402,7 @@ class FirewallSecurityGroupRule(dict):
                services'. Port ranges can be specified with '\\d+:\\d+', for example
                `80:85`, and you can use comma separated list to match several ports or
                ranges.
-        :param builtins.bool enabled: Enable rule
+        :param builtins.bool enabled: Enable this rule. Defaults to `true`.
         :param builtins.str iface: Network interface name. You have to use network
                configuration key names for VMs and containers ('net\\d+'). Host related
                rules can use arbitrary strings.
@@ -501,7 +501,7 @@ class FirewallSecurityGroupRule(dict):
     @pulumi.getter
     def enabled(self) -> Optional[builtins.bool]:
         """
-        Enable rule
+        Enable this rule. Defaults to `true`.
         """
         return pulumi.get(self, "enabled")
 

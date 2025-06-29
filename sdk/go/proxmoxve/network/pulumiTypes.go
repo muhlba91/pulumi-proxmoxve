@@ -618,7 +618,7 @@ type FirewallSecurityGroupRule struct {
 	// `80:85`, and you can use comma separated list to match several ports or
 	// ranges.
 	Dport *string `pulumi:"dport"`
-	// Enable rule
+	// Enable this rule. Defaults to `true`.
 	Enabled *bool `pulumi:"enabled"`
 	// Network interface name. You have to use network
 	// configuration key names for VMs and containers ('net\d+'). Host related
@@ -683,7 +683,7 @@ type FirewallSecurityGroupRuleArgs struct {
 	// `80:85`, and you can use comma separated list to match several ports or
 	// ranges.
 	Dport pulumi.StringPtrInput `pulumi:"dport"`
-	// Enable rule
+	// Enable this rule. Defaults to `true`.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Network interface name. You have to use network
 	// configuration key names for VMs and containers ('net\d+'). Host related
@@ -799,7 +799,7 @@ func (o FirewallSecurityGroupRuleOutput) Dport() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallSecurityGroupRule) *string { return v.Dport }).(pulumi.StringPtrOutput)
 }
 
-// Enable rule
+// Enable this rule. Defaults to `true`.
 func (o FirewallSecurityGroupRuleOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FirewallSecurityGroupRule) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }

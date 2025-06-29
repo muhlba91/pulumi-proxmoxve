@@ -96,14 +96,14 @@ public final class FirewallSecurityGroupRuleArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Enable rule
+     * Enable this rule. Defaults to `true`.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable rule
+     * @return Enable this rule. Defaults to `true`.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -413,7 +413,7 @@ public final class FirewallSecurityGroupRuleArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param enabled Enable rule
+         * @param enabled Enable this rule. Defaults to `true`.
          * 
          * @return builder
          * 
@@ -424,7 +424,7 @@ public final class FirewallSecurityGroupRuleArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param enabled Enable rule
+         * @param enabled Enable this rule. Defaults to `true`.
          * 
          * @return builder
          * 

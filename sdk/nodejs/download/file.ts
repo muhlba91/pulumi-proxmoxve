@@ -119,7 +119,7 @@ export class File extends pulumi.CustomResource {
      */
     public readonly nodeName!: pulumi.Output<string>;
     /**
-     * If `true` and size of uploaded file is different, than size from `url` Content-Length header, file will be downloaded again. If `false`, there will be no checks.
+     * By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
      */
     public readonly overwrite!: pulumi.Output<boolean>;
     /**
@@ -127,7 +127,7 @@ export class File extends pulumi.CustomResource {
      */
     public readonly overwriteUnmanaged!: pulumi.Output<boolean>;
     /**
-     * The file size.
+     * The file size in PVE.
      */
     public /*out*/ readonly size!: pulumi.Output<number>;
     /**
@@ -235,7 +235,7 @@ export interface FileState {
      */
     nodeName?: pulumi.Input<string>;
     /**
-     * If `true` and size of uploaded file is different, than size from `url` Content-Length header, file will be downloaded again. If `false`, there will be no checks.
+     * By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
      */
     overwrite?: pulumi.Input<boolean>;
     /**
@@ -243,7 +243,7 @@ export interface FileState {
      */
     overwriteUnmanaged?: pulumi.Input<boolean>;
     /**
-     * The file size.
+     * The file size in PVE.
      */
     size?: pulumi.Input<number>;
     /**
@@ -293,7 +293,7 @@ export interface FileArgs {
      */
     nodeName: pulumi.Input<string>;
     /**
-     * If `true` and size of uploaded file is different, than size from `url` Content-Length header, file will be downloaded again. If `false`, there will be no checks.
+     * By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
      */
     overwrite?: pulumi.Input<boolean>;
     /**

@@ -20,8 +20,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<bool>? AllowSmt { get; set; }
 
         /// <summary>
-        /// Add kernel hashes to guest firmware for measured 
-        /// linux kernel launch (defaults to `false`).
+        /// Add kernel hashes to guest firmware for measured linux kernel launch (defaults to `false`).
         /// </summary>
         [Input("kernelHashes")]
         public Input<bool>? KernelHashes { get; set; }
@@ -34,8 +33,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<bool>? NoDebug { get; set; }
 
         /// <summary>
-        /// Sets policy bit to disallow key sharing with 
-        /// other guests (Ignored for SEV-SNP) (defaults to `false`).
+        /// Sets policy bit to disallow key sharing with other guests (Ignored for SEV-SNP) (defaults to `false`).
         /// 
         /// The `amd_sev` setting is only allowed for a `root@pam` authenticated user.
         /// </summary>
@@ -43,9 +41,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<bool>? NoKeySharing { get; set; }
 
         /// <summary>
-        /// Enable standard SEV with `std` or enable experimental 
-        /// SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option
-        /// (defaults to `std`).
+        /// Enable standard SEV with `std` or enable experimental SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option (defaults to `std`).
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

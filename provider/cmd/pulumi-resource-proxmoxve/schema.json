@@ -942,7 +942,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Enable rule\n"
+                    "description": "Enable this rule. Defaults to `true`.\n"
                 },
                 "iface": {
                     "type": "string",
@@ -1531,7 +1531,7 @@
                 },
                 "kernelHashes": {
                     "type": "boolean",
-                    "description": "Add kernel hashes to guest firmware for measured \nlinux kernel launch (defaults to `false`).\n"
+                    "description": "Add kernel hashes to guest firmware for measured linux kernel launch (defaults to `false`).\n"
                 },
                 "noDebug": {
                     "type": "boolean",
@@ -1539,11 +1539,11 @@
                 },
                 "noKeySharing": {
                     "type": "boolean",
-                    "description": "Sets policy bit to disallow key sharing with \nother guests (Ignored for SEV-SNP) (defaults to `false`).\n\nThe `amd_sev` setting is only allowed for a `root@pam` authenticated user.\n"
+                    "description": "Sets policy bit to disallow key sharing with other guests (Ignored for SEV-SNP) (defaults to `false`).\n\nThe `amd_sev` setting is only allowed for a `root@pam` authenticated user.\n"
                 },
                 "type": {
                     "type": "string",
-                    "description": "Enable standard SEV with `std` or enable experimental \nSEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option\n(defaults to `std`).\n"
+                    "description": "Enable standard SEV with `std` or enable experimental SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option (defaults to `std`).\n"
                 }
             },
             "type": "object"
@@ -1578,7 +1578,7 @@
                 },
                 "interface": {
                     "type": "string",
-                    "description": "A hardware interface to connect CD-ROM drive to,\nmust be `ideN` (defaults to `ide3`). Note that `q35` machine type only\nsupports `ide0` and `ide2`.\n"
+                    "description": "A hardware interface to connect CD-ROM drive to (defaults to `ide3`).\n\"Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. \" +\n\"Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.\n"
                 }
             },
             "type": "object"
@@ -3754,7 +3754,7 @@
                 },
                 "overwrite": {
                     "type": "boolean",
-                    "description": "If `true` and size of uploaded file is different, than size from `url` Content-Length header, file will be downloaded again. If `false`, there will be no checks.\n"
+                    "description": "By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.\n"
                 },
                 "overwriteUnmanaged": {
                     "type": "boolean",
@@ -3762,7 +3762,7 @@
                 },
                 "size": {
                     "type": "integer",
-                    "description": "The file size.\n"
+                    "description": "The file size in PVE.\n"
                 },
                 "uploadTimeout": {
                     "type": "integer",
@@ -3820,7 +3820,7 @@
                 },
                 "overwrite": {
                     "type": "boolean",
-                    "description": "If `true` and size of uploaded file is different, than size from `url` Content-Length header, file will be downloaded again. If `false`, there will be no checks.\n"
+                    "description": "By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.\n"
                 },
                 "overwriteUnmanaged": {
                     "type": "boolean",
@@ -3878,7 +3878,7 @@
                     },
                     "overwrite": {
                         "type": "boolean",
-                        "description": "If `true` and size of uploaded file is different, than size from `url` Content-Length header, file will be downloaded again. If `false`, there will be no checks.\n"
+                        "description": "By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.\n"
                     },
                     "overwriteUnmanaged": {
                         "type": "boolean",
@@ -3886,7 +3886,7 @@
                     },
                     "size": {
                         "type": "integer",
-                        "description": "The file size.\n"
+                        "description": "The file size in PVE.\n"
                     },
                     "uploadTimeout": {
                         "type": "integer",

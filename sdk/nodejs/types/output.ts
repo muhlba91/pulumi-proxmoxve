@@ -797,7 +797,7 @@ export namespace Network {
          */
         dport?: string;
         /**
-         * Enable rule
+         * Enable this rule. Defaults to `true`.
          */
         enabled?: boolean;
         /**
@@ -1268,8 +1268,7 @@ export namespace VM {
          */
         allowSmt?: boolean;
         /**
-         * Add kernel hashes to guest firmware for measured 
-         * linux kernel launch (defaults to `false`).
+         * Add kernel hashes to guest firmware for measured linux kernel launch (defaults to `false`).
          */
         kernelHashes?: boolean;
         /**
@@ -1278,16 +1277,13 @@ export namespace VM {
          */
         noDebug?: boolean;
         /**
-         * Sets policy bit to disallow key sharing with 
-         * other guests (Ignored for SEV-SNP) (defaults to `false`).
+         * Sets policy bit to disallow key sharing with other guests (Ignored for SEV-SNP) (defaults to `false`).
          *
          * The `amdSev` setting is only allowed for a `root@pam` authenticated user.
          */
         noKeySharing?: boolean;
         /**
-         * Enable standard SEV with `std` or enable experimental 
-         * SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option
-         * (defaults to `std`).
+         * Enable standard SEV with `std` or enable experimental SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option (defaults to `std`).
          */
         type?: string;
     }
@@ -1326,9 +1322,9 @@ export namespace VM {
          */
         fileId?: string;
         /**
-         * A hardware interface to connect CD-ROM drive to,
-         * must be `ideN` (defaults to `ide3`). Note that `q35` machine type only
-         * supports `ide0` and `ide2`.
+         * A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
+         * "Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. " +
+         * "Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
          */
         interface?: string;
     }
