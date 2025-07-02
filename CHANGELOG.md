@@ -1,6 +1,15 @@
 # Changelog
 
 
+## [7.2.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.2.0...v7.2.1) (2025-07-02)
+
+
+### Miscellaneous Chores
+
+* **deps:** update anchore/sbom-action action to v0.20.2 ([b3404d2](https://github.com/muhlba91/pulumi-proxmoxve/commit/b3404d213c2ac7fee1433c9810059b564fa23f92))
+* **deps:** update github/codeql-action action to v3.29.2 ([fff7932](https://github.com/muhlba91/pulumi-proxmoxve/commit/fff793234686be5585096be2e7a9f5eec01704cf))
+* **deps:** update step-security/harden-runner action to v2.12.2 ([9e7590a](https://github.com/muhlba91/pulumi-proxmoxve/commit/9e7590a687888684419648af377960fbf30cc555))
+
 ## [7.2.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.1.0...v7.2.0) (2025-06-29)
 
 
