@@ -1,6 +1,17 @@
 # Changelog
 
 
+## [7.2.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.2.0...v7.2.1) (2025-07-08)
+
+
+### Miscellaneous Chores
+
+* **deps:** update anchore/sbom-action action to v0.20.2 ([b3404d2](https://github.com/muhlba91/pulumi-proxmoxve/commit/b3404d213c2ac7fee1433c9810059b564fa23f92))
+* **deps:** update dependency go to v1.24.5 ([22f3ad1](https://github.com/muhlba91/pulumi-proxmoxve/commit/22f3ad196f80da3fd91579f3d919d6502fc62dbb))
+* **deps:** update github/codeql-action action to v3.29.2 ([fff7932](https://github.com/muhlba91/pulumi-proxmoxve/commit/fff793234686be5585096be2e7a9f5eec01704cf))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.79.0 ([089c665](https://github.com/muhlba91/pulumi-proxmoxve/commit/089c6650e1a897d6bc10fc6b758763a0cabbf8f4))
+* **deps:** update step-security/harden-runner action to v2.12.2 ([9e7590a](https://github.com/muhlba91/pulumi-proxmoxve/commit/9e7590a687888684419648af377960fbf30cc555))
+
 ## [7.2.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.1.0...v7.2.0) (2025-06-29)
 
 
