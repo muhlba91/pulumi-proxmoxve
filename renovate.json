@@ -7,7 +7,7 @@
     ],
     "prHourlyLimit": 0,
     "prConcurrentLimit": 0,
-    "baseBranches": [
+    "baseBranchPatterns": [
         "main"
     ],
     "ignorePaths": [
@@ -25,19 +25,19 @@
         "npm"
     ],
     "github-actions": {
-        "fileMatch": [
-            "^(workflow-templates|\\.github/workflows)/[^/]+\\.ya?ml$",
-            "(^|/)action\\.ya?ml$"
+        "managerFilePatterns": [
+            "/^(workflow-templates|\\.github/workflows)/[^/]+\\.ya?ml$/",
+            "/(^|/)action\\.ya?ml$/"
         ]
     },
     "gomod": {
-        "fileMatch": [
-            "(^|/)go\\.mod$"
+        "managerFilePatterns": [
+            "/(^|/)go\\.mod$/"
         ]
     },
     "npm": {
-        "fileMatch": [
-            "(^|/)package\\.json$"
+        "managerFilePatterns": [
+            "/(^|/)package\\.json$/"
         ],
         "rollbackPrs": true,
         "versioning": "npm",
