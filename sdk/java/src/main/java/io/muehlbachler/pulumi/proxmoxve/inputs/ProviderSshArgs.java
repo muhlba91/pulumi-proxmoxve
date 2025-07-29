@@ -34,6 +34,21 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether to enable SSH agent forwarding. Defaults to the value of the `PROXMOX_VE_SSH_AGENT_FORWARDING` environment variable, or `false` if not set.
+     * 
+     */
+    @Import(name="agentForwarding")
+    private @Nullable Output<Boolean> agentForwarding;
+
+    /**
+     * @return Whether to enable SSH agent forwarding. Defaults to the value of the `PROXMOX_VE_SSH_AGENT_FORWARDING` environment variable, or `false` if not set.
+     * 
+     */
+    public Optional<Output<Boolean>> agentForwarding() {
+        return Optional.ofNullable(this.agentForwarding);
+    }
+
+    /**
      * The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
      * 
      */
@@ -157,6 +172,7 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
 
     private ProviderSshArgs(ProviderSshArgs $) {
         this.agent = $.agent;
+        this.agentForwarding = $.agentForwarding;
         this.agentSocket = $.agentSocket;
         this.nodes = $.nodes;
         this.password = $.password;
@@ -204,6 +220,27 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder agent(Boolean agent) {
             return agent(Output.of(agent));
+        }
+
+        /**
+         * @param agentForwarding Whether to enable SSH agent forwarding. Defaults to the value of the `PROXMOX_VE_SSH_AGENT_FORWARDING` environment variable, or `false` if not set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder agentForwarding(@Nullable Output<Boolean> agentForwarding) {
+            $.agentForwarding = agentForwarding;
+            return this;
+        }
+
+        /**
+         * @param agentForwarding Whether to enable SSH agent forwarding. Defaults to the value of the `PROXMOX_VE_SSH_AGENT_FORWARDING` environment variable, or `false` if not set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder agentForwarding(Boolean agentForwarding) {
+            return agentForwarding(Output.of(agentForwarding));
         }
 
         /**

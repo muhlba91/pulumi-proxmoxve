@@ -48,14 +48,14 @@ public final class FileState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The file content type. Must be `iso` for VM images or `vztmpl` for LXC images.
+     * The file content type. Must be `iso` or `import` for VM images or `vztmpl` for LXC images.
      * 
      */
     @Import(name="contentType")
     private @Nullable Output<String> contentType;
 
     /**
-     * @return The file content type. Must be `iso` for VM images or `vztmpl` for LXC images.
+     * @return The file content type. Must be `iso` or `import` for VM images or `vztmpl` for LXC images.
      * 
      */
     public Optional<Output<String>> contentType() {
@@ -93,14 +93,14 @@ public final class FileState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The file name. If not provided, it is calculated using `url`. PVE will raise &#39;wrong file extension&#39; error for some popular extensions file `.raw` or `.qcow2`. Workaround is to use e.g. `.img` instead.
+     * The file name. If not provided, it is calculated using `url`. PVE will raise &#39;wrong file extension&#39; error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
      * 
      */
     @Import(name="fileName")
     private @Nullable Output<String> fileName;
 
     /**
-     * @return The file name. If not provided, it is calculated using `url`. PVE will raise &#39;wrong file extension&#39; error for some popular extensions file `.raw` or `.qcow2`. Workaround is to use e.g. `.img` instead.
+     * @return The file name. If not provided, it is calculated using `url`. PVE will raise &#39;wrong file extension&#39; error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
      * 
      */
     public Optional<Output<String>> fileName() {
@@ -291,7 +291,7 @@ public final class FileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param contentType The file content type. Must be `iso` for VM images or `vztmpl` for LXC images.
+         * @param contentType The file content type. Must be `iso` or `import` for VM images or `vztmpl` for LXC images.
          * 
          * @return builder
          * 
@@ -302,7 +302,7 @@ public final class FileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param contentType The file content type. Must be `iso` for VM images or `vztmpl` for LXC images.
+         * @param contentType The file content type. Must be `iso` or `import` for VM images or `vztmpl` for LXC images.
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class FileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fileName The file name. If not provided, it is calculated using `url`. PVE will raise &#39;wrong file extension&#39; error for some popular extensions file `.raw` or `.qcow2`. Workaround is to use e.g. `.img` instead.
+         * @param fileName The file name. If not provided, it is calculated using `url`. PVE will raise &#39;wrong file extension&#39; error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
          * 
          * @return builder
          * 
@@ -365,7 +365,7 @@ public final class FileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fileName The file name. If not provided, it is calculated using `url`. PVE will raise &#39;wrong file extension&#39; error for some popular extensions file `.raw` or `.qcow2`. Workaround is to use e.g. `.img` instead.
+         * @param fileName The file name. If not provided, it is calculated using `url`. PVE will raise &#39;wrong file extension&#39; error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
          * 
          * @return builder
          * 

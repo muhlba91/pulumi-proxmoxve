@@ -19,7 +19,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Use this resource to upload files to a Proxmox VE node. The file can be a backup, an ISO image, a snippet, or a container template depending on the `content_type` attribute.
+ * Use this resource to upload files to a Proxmox VE node. The file can be a backup, an ISO image, a Disk Image, a snippet, or a container template depending on the `content_type` attribute.
  * 
  * ## Example Usage
  * 
@@ -72,6 +72,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; Consider using `proxmoxve.Download.File` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.
  * 
+ * &gt; Importing Disks is not enabled by default in new Proxmox installations. You need to enable them in the &#39;Datacenter&gt;Storage&#39; section of the proxmox interface before first using this resource with `content_type = &#34;import&#34;`.
+ * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -98,6 +100,45 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var ubuntuContainerTemplate = new File("ubuntuContainerTemplate", FileArgs.builder()
  *             .contentType("iso")
+ *             .datastoreId("local")
+ *             .nodeName("pve")
+ *             .sourceFile(FileSourceFileArgs.builder()
+ *                 .path("https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.Storage.File;
+ * import io.muehlbachler.pulumi.proxmoxve.Storage.FileArgs;
+ * import com.pulumi.proxmoxve.Storage.inputs.FileSourceFileArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var ubuntuContainerTemplate = new File("ubuntuContainerTemplate", FileArgs.builder()
+ *             .contentType("import")
  *             .datastoreId("local")
  *             .nodeName("pve")
  *             .sourceFile(FileSourceFileArgs.builder()
@@ -144,7 +185,7 @@ import javax.annotation.Nullable;
  *             .datastoreId("local")
  *             .nodeName("first-node")
  *             .sourceFile(FileSourceFileArgs.builder()
- *                 .path("https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz")
+ *                 .path("http://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz")
  *                 .build())
  *             .build());
  * 

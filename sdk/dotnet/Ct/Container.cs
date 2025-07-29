@@ -80,6 +80,18 @@ namespace Pulumi.ProxmoxVE.CT
         public Output<Outputs.ContainerInitialization?> Initialization { get; private set; } = null!;
 
         /// <summary>
+        /// The map of IPv4 addresses per network devices. Returns the first address for each network device, if multiple addresses are assigned.
+        /// </summary>
+        [Output("ipv4")]
+        public Output<ImmutableDictionary<string, string>> Ipv4 { get; private set; } = null!;
+
+        /// <summary>
+        /// The map of IPv6 addresses per network device. Returns the first address for each network device, if multiple addresses are assigned.
+        /// </summary>
+        [Output("ipv6")]
+        public Output<ImmutableDictionary<string, string>> Ipv6 { get; private set; } = null!;
+
+        /// <summary>
         /// The memory configuration.
         /// </summary>
         [Output("memory")]
@@ -188,8 +200,7 @@ namespace Pulumi.ProxmoxVE.CT
         public Output<int?> TimeoutUpdate { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the container runs as unprivileged on
-        /// the host (defaults to `false`).
+        /// Whether the container runs as unprivileged on the host (defaults to `false`).
         /// </summary>
         [Output("unprivileged")]
         public Output<bool?> Unprivileged { get; private set; } = null!;
@@ -434,8 +445,7 @@ namespace Pulumi.ProxmoxVE.CT
         public Input<int>? TimeoutUpdate { get; set; }
 
         /// <summary>
-        /// Whether the container runs as unprivileged on
-        /// the host (defaults to `false`).
+        /// Whether the container runs as unprivileged on the host (defaults to `false`).
         /// </summary>
         [Input("unprivileged")]
         public Input<bool>? Unprivileged { get; set; }
@@ -513,6 +523,30 @@ namespace Pulumi.ProxmoxVE.CT
         /// </summary>
         [Input("initialization")]
         public Input<Inputs.ContainerInitializationGetArgs>? Initialization { get; set; }
+
+        [Input("ipv4")]
+        private InputMap<string>? _ipv4;
+
+        /// <summary>
+        /// The map of IPv4 addresses per network devices. Returns the first address for each network device, if multiple addresses are assigned.
+        /// </summary>
+        public InputMap<string> Ipv4
+        {
+            get => _ipv4 ?? (_ipv4 = new InputMap<string>());
+            set => _ipv4 = value;
+        }
+
+        [Input("ipv6")]
+        private InputMap<string>? _ipv6;
+
+        /// <summary>
+        /// The map of IPv6 addresses per network device. Returns the first address for each network device, if multiple addresses are assigned.
+        /// </summary>
+        public InputMap<string> Ipv6
+        {
+            get => _ipv6 ?? (_ipv6 = new InputMap<string>());
+            set => _ipv6 = value;
+        }
 
         /// <summary>
         /// The memory configuration.
@@ -641,8 +675,7 @@ namespace Pulumi.ProxmoxVE.CT
         public Input<int>? TimeoutUpdate { get; set; }
 
         /// <summary>
-        /// Whether the container runs as unprivileged on
-        /// the host (defaults to `false`).
+        /// Whether the container runs as unprivileged on the host (defaults to `false`).
         /// </summary>
         [Input("unprivileged")]
         public Input<bool>? Unprivileged { get; set; }

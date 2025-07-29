@@ -54,10 +54,18 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         /// <summary>
         /// The file ID for a disk image when importing a disk into VM. The ID format is
         /// `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`. Can be also taken from
-        /// `proxmoxve.Download.File` resource.
+        /// `proxmoxve.Download.File` resource. *Deprecated*, use `import_from` instead.
         /// </summary>
         [Input("fileId")]
         public Input<string>? FileId { get; set; }
+
+        /// <summary>
+        /// The file ID for a disk image to import into VM. The image must be of `import` content type.
+        /// The ID format is `&lt;datastore_id&gt;:import/&lt;file_name&gt;`, for example `local:import/centos8.qcow2`. Can be also taken from
+        /// `proxmoxve.Download.File` resource.
+        /// </summary>
+        [Input("importFrom")]
+        public Input<string>? ImportFrom { get; set; }
 
         /// <summary>
         /// The disk interface for Proxmox, currently `scsi`,

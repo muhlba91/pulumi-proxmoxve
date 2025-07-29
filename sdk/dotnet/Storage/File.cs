@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.Storage
 {
     /// <summary>
-    /// Use this resource to upload files to a Proxmox VE node. The file can be a backup, an ISO image, a snippet, or a container template depending on the `content_type` attribute.
+    /// Use this resource to upload files to a Proxmox VE node. The file can be a backup, an ISO image, a Disk Image, a snippet, or a container template depending on the `content_type` attribute.
     /// 
     /// ## Example Usage
     /// 
@@ -46,6 +46,8 @@ namespace Pulumi.ProxmoxVE.Storage
     /// 
     /// &gt; Consider using `proxmoxve.Download.File` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.
     /// 
+    /// &gt; Importing Disks is not enabled by default in new Proxmox installations. You need to enable them in the 'Datacenter&gt;Storage' section of the proxmox interface before first using this resource with `content_type = "import"`.
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -57,6 +59,28 @@ namespace Pulumi.ProxmoxVE.Storage
     ///     var ubuntuContainerTemplate = new ProxmoxVE.Storage.File("ubuntuContainerTemplate", new()
     ///     {
     ///         ContentType = "iso",
+    ///         DatastoreId = "local",
+    ///         NodeName = "pve",
+    ///         SourceFile = new ProxmoxVE.Storage.Inputs.FileSourceFileArgs
+    ///         {
+    ///             Path = "https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var ubuntuContainerTemplate = new ProxmoxVE.Storage.File("ubuntuContainerTemplate", new()
+    ///     {
+    ///         ContentType = "import",
     ///         DatastoreId = "local",
     ///         NodeName = "pve",
     ///         SourceFile = new ProxmoxVE.Storage.Inputs.FileSourceFileArgs
@@ -87,7 +111,7 @@ namespace Pulumi.ProxmoxVE.Storage
     ///         NodeName = "first-node",
     ///         SourceFile = new ProxmoxVE.Storage.Inputs.FileSourceFileArgs
     ///         {
-    ///             Path = "https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz",
+    ///             Path = "http://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz",
     ///         },
     ///     });
     /// 

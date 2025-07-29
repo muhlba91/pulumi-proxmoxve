@@ -26,6 +26,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -170,6 +171,34 @@ public class Container extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ContainerInitialization>> initialization() {
         return Codegen.optional(this.initialization);
+    }
+    /**
+     * The map of IPv4 addresses per network devices. Returns the first address for each network device, if multiple addresses are assigned.
+     * 
+     */
+    @Export(name="ipv4", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> ipv4;
+
+    /**
+     * @return The map of IPv4 addresses per network devices. Returns the first address for each network device, if multiple addresses are assigned.
+     * 
+     */
+    public Output<Map<String,String>> ipv4() {
+        return this.ipv4;
+    }
+    /**
+     * The map of IPv6 addresses per network device. Returns the first address for each network device, if multiple addresses are assigned.
+     * 
+     */
+    @Export(name="ipv6", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> ipv6;
+
+    /**
+     * @return The map of IPv6 addresses per network device. Returns the first address for each network device, if multiple addresses are assigned.
+     * 
+     */
+    public Output<Map<String,String>> ipv6() {
+        return this.ipv6;
     }
     /**
      * The memory configuration.
@@ -426,16 +455,14 @@ public class Container extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.timeoutUpdate);
     }
     /**
-     * Whether the container runs as unprivileged on
-     * the host (defaults to `false`).
+     * Whether the container runs as unprivileged on the host (defaults to `false`).
      * 
      */
     @Export(name="unprivileged", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> unprivileged;
 
     /**
-     * @return Whether the container runs as unprivileged on
-     * the host (defaults to `false`).
+     * @return Whether the container runs as unprivileged on the host (defaults to `false`).
      * 
      */
     public Output<Optional<Boolean>> unprivileged() {

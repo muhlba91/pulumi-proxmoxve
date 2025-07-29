@@ -51,10 +51,17 @@ public final class VirtualMachineDisk {
     /**
      * @return The file ID for a disk image when importing a disk into VM. The ID format is
      * `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`. Can be also taken from
-     * `proxmoxve.Download.File` resource.
+     * `proxmoxve.Download.File` resource. *Deprecated*, use `import_from` instead.
      * 
      */
     private @Nullable String fileId;
+    /**
+     * @return The file ID for a disk image to import into VM. The image must be of `import` content type.
+     * The ID format is `&lt;datastore_id&gt;:import/&lt;file_name&gt;`, for example `local:import/centos8.qcow2`. Can be also taken from
+     * `proxmoxve.Download.File` resource.
+     * 
+     */
+    private @Nullable String importFrom;
     /**
      * @return The disk interface for Proxmox, currently `scsi`,
      * `sata` and `virtio` interfaces are supported. Append the disk index at
@@ -154,11 +161,20 @@ public final class VirtualMachineDisk {
     /**
      * @return The file ID for a disk image when importing a disk into VM. The ID format is
      * `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`. Can be also taken from
-     * `proxmoxve.Download.File` resource.
+     * `proxmoxve.Download.File` resource. *Deprecated*, use `import_from` instead.
      * 
      */
     public Optional<String> fileId() {
         return Optional.ofNullable(this.fileId);
+    }
+    /**
+     * @return The file ID for a disk image to import into VM. The image must be of `import` content type.
+     * The ID format is `&lt;datastore_id&gt;:import/&lt;file_name&gt;`, for example `local:import/centos8.qcow2`. Can be also taken from
+     * `proxmoxve.Download.File` resource.
+     * 
+     */
+    public Optional<String> importFrom() {
+        return Optional.ofNullable(this.importFrom);
     }
     /**
      * @return The disk interface for Proxmox, currently `scsi`,
@@ -242,6 +258,7 @@ public final class VirtualMachineDisk {
         private @Nullable String discard;
         private @Nullable String fileFormat;
         private @Nullable String fileId;
+        private @Nullable String importFrom;
         private String interface_;
         private @Nullable Boolean iothread;
         private @Nullable String pathInDatastore;
@@ -260,6 +277,7 @@ public final class VirtualMachineDisk {
     	      this.discard = defaults.discard;
     	      this.fileFormat = defaults.fileFormat;
     	      this.fileId = defaults.fileId;
+    	      this.importFrom = defaults.importFrom;
     	      this.interface_ = defaults.interface_;
     	      this.iothread = defaults.iothread;
     	      this.pathInDatastore = defaults.pathInDatastore;
@@ -310,6 +328,12 @@ public final class VirtualMachineDisk {
         public Builder fileId(@Nullable String fileId) {
 
             this.fileId = fileId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder importFrom(@Nullable String importFrom) {
+
+            this.importFrom = importFrom;
             return this;
         }
         @CustomType.Setter("interface")
@@ -371,6 +395,7 @@ public final class VirtualMachineDisk {
             _resultValue.discard = discard;
             _resultValue.fileFormat = fileFormat;
             _resultValue.fileId = fileId;
+            _resultValue.importFrom = importFrom;
             _resultValue.interface_ = interface_;
             _resultValue.iothread = iothread;
             _resultValue.pathInDatastore = pathInDatastore;

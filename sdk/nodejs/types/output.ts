@@ -240,13 +240,11 @@ export namespace CT {
 
     export interface ContainerFeatures {
         /**
-         * Whether the container supports FUSE mounts (defaults
-         * to `false`)
+         * Whether the container supports FUSE mounts (defaults to `false`)
          */
         fuse?: boolean;
         /**
-         * Whether the container supports `keyctl()` system
-         * call (defaults to `false`)
+         * Whether the container supports `keyctl()` system call (defaults to `false`)
          */
         keyctl?: boolean;
         /**
@@ -254,8 +252,7 @@ export namespace CT {
          */
         mounts?: string[];
         /**
-         * Whether the container is nested (defaults
-         * to `false`)
+         * Whether the container is nested (defaults to `false`)
          */
         nesting?: boolean;
     }
@@ -425,7 +422,7 @@ export namespace CT {
         /**
          * The MAC address.
          */
-        macAddress?: string;
+        macAddress: string;
         /**
          * Maximum transfer unit of the interface. Cannot be
          * larger than the bridge's MTU.
@@ -1456,9 +1453,15 @@ export namespace VM {
         /**
          * The file ID for a disk image when importing a disk into VM. The ID format is
          * `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
-         * `proxmoxve.Download.File` resource.
+         * `proxmoxve.Download.File` resource. *Deprecated*, use `importFrom` instead.
          */
         fileId?: string;
+        /**
+         * The file ID for a disk image to import into VM. The image must be of `import` content type.
+         * The ID format is `<datastore_id>:import/<file_name>`, for example `local:import/centos8.qcow2`. Can be also taken from
+         * `proxmoxve.Download.File` resource.
+         */
+        importFrom?: string;
         /**
          * The disk interface for Proxmox, currently `scsi`,
          * `sata` and `virtio` interfaces are supported. Append the disk index at
@@ -1998,6 +2001,10 @@ export namespace config {
          * Whether to use the SSH agent for authentication. Takes precedence over the `privateKey` and `password` fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or `false` if not set.
          */
         agent?: boolean;
+        /**
+         * Whether to enable SSH agent forwarding. Defaults to the value of the `PROXMOX_VE_SSH_AGENT_FORWARDING` environment variable, or `false` if not set.
+         */
+        agentForwarding?: boolean;
         /**
          * The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
          */

@@ -118,7 +118,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     /**
      * The file ID for a disk image when importing a disk into VM. The ID format is
      * `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`. Can be also taken from
-     * `proxmoxve.Download.File` resource.
+     * `proxmoxve.Download.File` resource. *Deprecated*, use `import_from` instead.
      * 
      */
     @Import(name="fileId")
@@ -127,11 +127,30 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     /**
      * @return The file ID for a disk image when importing a disk into VM. The ID format is
      * `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`. Can be also taken from
-     * `proxmoxve.Download.File` resource.
+     * `proxmoxve.Download.File` resource. *Deprecated*, use `import_from` instead.
      * 
      */
     public Optional<Output<String>> fileId() {
         return Optional.ofNullable(this.fileId);
+    }
+
+    /**
+     * The file ID for a disk image to import into VM. The image must be of `import` content type.
+     * The ID format is `&lt;datastore_id&gt;:import/&lt;file_name&gt;`, for example `local:import/centos8.qcow2`. Can be also taken from
+     * `proxmoxve.Download.File` resource.
+     * 
+     */
+    @Import(name="importFrom")
+    private @Nullable Output<String> importFrom;
+
+    /**
+     * @return The file ID for a disk image to import into VM. The image must be of `import` content type.
+     * The ID format is `&lt;datastore_id&gt;:import/&lt;file_name&gt;`, for example `local:import/centos8.qcow2`. Can be also taken from
+     * `proxmoxve.Download.File` resource.
+     * 
+     */
+    public Optional<Output<String>> importFrom() {
+        return Optional.ofNullable(this.importFrom);
     }
 
     /**
@@ -282,6 +301,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         this.discard = $.discard;
         this.fileFormat = $.fileFormat;
         this.fileId = $.fileId;
+        this.importFrom = $.importFrom;
         this.interface_ = $.interface_;
         this.iothread = $.iothread;
         this.pathInDatastore = $.pathInDatastore;
@@ -445,7 +465,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         /**
          * @param fileId The file ID for a disk image when importing a disk into VM. The ID format is
          * `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`. Can be also taken from
-         * `proxmoxve.Download.File` resource.
+         * `proxmoxve.Download.File` resource. *Deprecated*, use `import_from` instead.
          * 
          * @return builder
          * 
@@ -458,13 +478,38 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         /**
          * @param fileId The file ID for a disk image when importing a disk into VM. The ID format is
          * `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`. Can be also taken from
-         * `proxmoxve.Download.File` resource.
+         * `proxmoxve.Download.File` resource. *Deprecated*, use `import_from` instead.
          * 
          * @return builder
          * 
          */
         public Builder fileId(String fileId) {
             return fileId(Output.of(fileId));
+        }
+
+        /**
+         * @param importFrom The file ID for a disk image to import into VM. The image must be of `import` content type.
+         * The ID format is `&lt;datastore_id&gt;:import/&lt;file_name&gt;`, for example `local:import/centos8.qcow2`. Can be also taken from
+         * `proxmoxve.Download.File` resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importFrom(@Nullable Output<String> importFrom) {
+            $.importFrom = importFrom;
+            return this;
+        }
+
+        /**
+         * @param importFrom The file ID for a disk image to import into VM. The image must be of `import` content type.
+         * The ID format is `&lt;datastore_id&gt;:import/&lt;file_name&gt;`, for example `local:import/centos8.qcow2`. Can be also taken from
+         * `proxmoxve.Download.File` resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importFrom(String importFrom) {
+            return importFrom(Output.of(importFrom));
         }
 
         /**

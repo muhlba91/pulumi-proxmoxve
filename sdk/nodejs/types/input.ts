@@ -204,6 +204,10 @@ export interface ProviderSsh {
      */
     agent?: pulumi.Input<boolean>;
     /**
+     * Whether to enable SSH agent forwarding. Defaults to the value of the `PROXMOX_VE_SSH_AGENT_FORWARDING` environment variable, or `false` if not set.
+     */
+    agentForwarding?: pulumi.Input<boolean>;
+    /**
      * The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
      */
     agentSocket?: pulumi.Input<string>;
@@ -342,13 +346,11 @@ export namespace CT {
 
     export interface ContainerFeatures {
         /**
-         * Whether the container supports FUSE mounts (defaults
-         * to `false`)
+         * Whether the container supports FUSE mounts (defaults to `false`)
          */
         fuse?: pulumi.Input<boolean>;
         /**
-         * Whether the container supports `keyctl()` system
-         * call (defaults to `false`)
+         * Whether the container supports `keyctl()` system call (defaults to `false`)
          */
         keyctl?: pulumi.Input<boolean>;
         /**
@@ -356,8 +358,7 @@ export namespace CT {
          */
         mounts?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Whether the container is nested (defaults
-         * to `false`)
+         * Whether the container is nested (defaults to `false`)
          */
         nesting?: pulumi.Input<boolean>;
     }
@@ -1466,9 +1467,15 @@ export namespace VM {
         /**
          * The file ID for a disk image when importing a disk into VM. The ID format is
          * `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
-         * `proxmoxve.Download.File` resource.
+         * `proxmoxve.Download.File` resource. *Deprecated*, use `importFrom` instead.
          */
         fileId?: pulumi.Input<string>;
+        /**
+         * The file ID for a disk image to import into VM. The image must be of `import` content type.
+         * The ID format is `<datastore_id>:import/<file_name>`, for example `local:import/centos8.qcow2`. Can be also taken from
+         * `proxmoxve.Download.File` resource.
+         */
+        importFrom?: pulumi.Input<string>;
         /**
          * The disk interface for Proxmox, currently `scsi`,
          * `sata` and `virtio` interfaces are supported. Append the disk index at

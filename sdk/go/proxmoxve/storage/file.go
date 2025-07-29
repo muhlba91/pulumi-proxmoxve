@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this resource to upload files to a Proxmox VE node. The file can be a backup, an ISO image, a snippet, or a container template depending on the `contentType` attribute.
+// Use this resource to upload files to a Proxmox VE node. The file can be a backup, an ISO image, a Disk Image, a snippet, or a container template depending on the `contentType` attribute.
 //
 // ## Example Usage
 //
@@ -55,6 +55,8 @@ import (
 //
 // > Consider using `Download.File` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.
 //
+// > Importing Disks is not enabled by default in new Proxmox installations. You need to enable them in the 'Datacenter>Storage' section of the proxmox interface before first using this resource with `contentType = "import"`.
+//
 // ```go
 // package main
 //
@@ -69,6 +71,35 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := storage.NewFile(ctx, "ubuntuContainerTemplate", &storage.FileArgs{
 //				ContentType: pulumi.String("iso"),
+//				DatastoreId: pulumi.String("local"),
+//				NodeName:    pulumi.String("pve"),
+//				SourceFile: &storage.FileSourceFileArgs{
+//					Path: pulumi.String("https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := storage.NewFile(ctx, "ubuntuContainerTemplate", &storage.FileArgs{
+//				ContentType: pulumi.String("import"),
 //				DatastoreId: pulumi.String("local"),
 //				NodeName:    pulumi.String("pve"),
 //				SourceFile: &storage.FileSourceFileArgs{
@@ -105,7 +136,7 @@ import (
 //				DatastoreId: pulumi.String("local"),
 //				NodeName:    pulumi.String("first-node"),
 //				SourceFile: &storage.FileSourceFileArgs{
-//					Path: pulumi.String("https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz"),
+//					Path: pulumi.String("http://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz"),
 //				},
 //			})
 //			if err != nil {

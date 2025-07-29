@@ -442,16 +442,14 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether the container runs as unprivileged on
-     * the host (defaults to `false`).
+     * Whether the container runs as unprivileged on the host (defaults to `false`).
      * 
      */
     @Import(name="unprivileged")
     private @Nullable Output<Boolean> unprivileged;
 
     /**
-     * @return Whether the container runs as unprivileged on
-     * the host (defaults to `false`).
+     * @return Whether the container runs as unprivileged on the host (defaults to `false`).
      * 
      */
     public Optional<Output<Boolean>> unprivileged() {
@@ -1136,8 +1134,7 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param unprivileged Whether the container runs as unprivileged on
-         * the host (defaults to `false`).
+         * @param unprivileged Whether the container runs as unprivileged on the host (defaults to `false`).
          * 
          * @return builder
          * 
@@ -1148,8 +1145,7 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param unprivileged Whether the container runs as unprivileged on
-         * the host (defaults to `false`).
+         * @param unprivileged Whether the container runs as unprivileged on the host (defaults to `false`).
          * 
          * @return builder
          * 

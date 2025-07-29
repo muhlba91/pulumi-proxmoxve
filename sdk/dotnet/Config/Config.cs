@@ -182,6 +182,10 @@ namespace Pulumi.ProxmoxVE
             /// </summary>
                 public bool? Agent { get; set; }
             /// <summary>
+            /// Whether to enable SSH agent forwarding. Defaults to the value of the `PROXMOX_VE_SSH_AGENT_FORWARDING` environment variable, or `false` if not set.
+            /// </summary>
+                public bool? AgentForwarding { get; set; }
+            /// <summary>
             /// The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
             /// </summary>
                 public string? AgentSocket { get; set; } = null!;

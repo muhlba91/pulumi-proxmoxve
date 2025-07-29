@@ -43,7 +43,85 @@ import javax.annotation.Nullable;
 /**
  * Manages a virtual machine.
  * 
- * &gt; This resource uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
+ * ## High Availability
+ * 
+ * When managing a virtual machine in a multi-node cluster, the VM&#39;s HA settings can
+ * be managed using the `proxmoxve.HA.HAResource` resource.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.VM.VirtualMachine;
+ * import io.muehlbachler.pulumi.proxmoxve.VM.VirtualMachineArgs;
+ * import io.muehlbachler.pulumi.proxmoxve.HA.HAResource;
+ * import io.muehlbachler.pulumi.proxmoxve.HA.HAResourceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var ubuntuVmVirtualMachine = new VirtualMachine("ubuntuVmVirtualMachine", VirtualMachineArgs.builder()
+ *             .vmId(4321)
+ *             .build());
+ * 
+ *         var ubuntuVmHAResource = new HAResource("ubuntuVmHAResource", HAResourceArgs.builder()
+ *             .comment("Managed by Pulumi")
+ *             .group("node1")
+ *             .resourceId(ubuntuVmVirtualMachine.vmId().applyValue(_vmId -> String.format("vm:%s", _vmId)))
+ *             .state("started")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Important Notes
+ * 
+ * ### `local-lvm` Datastore
+ * 
+ * The `local-lvm` is the **default datastore** for many configuration blocks, including `initialization` and `tpm_state`, which may not seem to be related to &#34;storage&#34;.
+ * If you do not have `local-lvm` configured in your environment, you may need to explicitly set the `datastore_id` in such blocks to a different value.
+ * 
+ * ### Cloning
+ * 
+ * When cloning an existing virtual machine, whether it&#39;s a template or not, the
+ * resource will inherit the disks and other configuration from the source VM.
+ * 
+ * *If* you modify any attributes of an existing disk in the clone, you also need to\
+ * explicitly provide values for any other attributes that differ from the schema defaults\
+ * in the source (e.g., `size`, `discard`, `cache`, `aio`).\
+ * Otherwise, the schema defaults will take effect and override the source values.
+ * 
+ * Furthermore, when cloning from one node to a different one, the behavior changes
+ * depening on the datastores of the source VM. If at least one non-shared
+ * datastore is used, the VM is first cloned to the source node before being
+ * migrated to the target node. This circumvents a limitation in the Proxmox clone
+ * API.
+ * 
+ * Because the migration step after the clone tries to preserve the used
+ * datastores by their name, it may fail if a datastore used in the source VM is
+ * not available on the target node (e.g. `local-lvm` is used on the source node in
+ * the VM but no `local-lvm` datastore is available on the target node). In this
+ * case, it is recommended to set the `datastore_id` argument in the `clone` block
+ * to force the migration step to migrate all disks to a specific datastore on the
+ * target node. If you need certain disks to be on specific datastores, set
+ * the `datastore_id` argument of the disks in the `disks` block to move the disks
+ * to the correct datastore after the cloning and migrating succeeded.
  * 
  * ## Import
  * 

@@ -44,6 +44,10 @@ type Container struct {
 	HookScriptFileId pulumi.StringPtrOutput `pulumi:"hookScriptFileId"`
 	// The initialization configuration.
 	Initialization ContainerInitializationPtrOutput `pulumi:"initialization"`
+	// The map of IPv4 addresses per network devices. Returns the first address for each network device, if multiple addresses are assigned.
+	Ipv4 pulumi.StringMapOutput `pulumi:"ipv4"`
+	// The map of IPv6 addresses per network device. Returns the first address for each network device, if multiple addresses are assigned.
+	Ipv6 pulumi.StringMapOutput `pulumi:"ipv6"`
 	// The memory configuration.
 	Memory ContainerMemoryPtrOutput `pulumi:"memory"`
 	// A mount point
@@ -86,8 +90,7 @@ type Container struct {
 	TimeoutStart pulumi.IntPtrOutput `pulumi:"timeoutStart"`
 	// Timeout for updating a container in seconds (defaults to 1800).
 	TimeoutUpdate pulumi.IntPtrOutput `pulumi:"timeoutUpdate"`
-	// Whether the container runs as unprivileged on
-	// the host (defaults to `false`).
+	// Whether the container runs as unprivileged on the host (defaults to `false`).
 	Unprivileged pulumi.BoolPtrOutput `pulumi:"unprivileged"`
 	// The container identifier
 	VmId pulumi.IntOutput `pulumi:"vmId"`
@@ -144,6 +147,10 @@ type containerState struct {
 	HookScriptFileId *string `pulumi:"hookScriptFileId"`
 	// The initialization configuration.
 	Initialization *ContainerInitialization `pulumi:"initialization"`
+	// The map of IPv4 addresses per network devices. Returns the first address for each network device, if multiple addresses are assigned.
+	Ipv4 map[string]string `pulumi:"ipv4"`
+	// The map of IPv6 addresses per network device. Returns the first address for each network device, if multiple addresses are assigned.
+	Ipv6 map[string]string `pulumi:"ipv6"`
 	// The memory configuration.
 	Memory *ContainerMemory `pulumi:"memory"`
 	// A mount point
@@ -186,8 +193,7 @@ type containerState struct {
 	TimeoutStart *int `pulumi:"timeoutStart"`
 	// Timeout for updating a container in seconds (defaults to 1800).
 	TimeoutUpdate *int `pulumi:"timeoutUpdate"`
-	// Whether the container runs as unprivileged on
-	// the host (defaults to `false`).
+	// Whether the container runs as unprivileged on the host (defaults to `false`).
 	Unprivileged *bool `pulumi:"unprivileged"`
 	// The container identifier
 	VmId *int `pulumi:"vmId"`
@@ -212,6 +218,10 @@ type ContainerState struct {
 	HookScriptFileId pulumi.StringPtrInput
 	// The initialization configuration.
 	Initialization ContainerInitializationPtrInput
+	// The map of IPv4 addresses per network devices. Returns the first address for each network device, if multiple addresses are assigned.
+	Ipv4 pulumi.StringMapInput
+	// The map of IPv6 addresses per network device. Returns the first address for each network device, if multiple addresses are assigned.
+	Ipv6 pulumi.StringMapInput
 	// The memory configuration.
 	Memory ContainerMemoryPtrInput
 	// A mount point
@@ -254,8 +264,7 @@ type ContainerState struct {
 	TimeoutStart pulumi.IntPtrInput
 	// Timeout for updating a container in seconds (defaults to 1800).
 	TimeoutUpdate pulumi.IntPtrInput
-	// Whether the container runs as unprivileged on
-	// the host (defaults to `false`).
+	// Whether the container runs as unprivileged on the host (defaults to `false`).
 	Unprivileged pulumi.BoolPtrInput
 	// The container identifier
 	VmId pulumi.IntPtrInput
@@ -326,8 +335,7 @@ type containerArgs struct {
 	TimeoutStart *int `pulumi:"timeoutStart"`
 	// Timeout for updating a container in seconds (defaults to 1800).
 	TimeoutUpdate *int `pulumi:"timeoutUpdate"`
-	// Whether the container runs as unprivileged on
-	// the host (defaults to `false`).
+	// Whether the container runs as unprivileged on the host (defaults to `false`).
 	Unprivileged *bool `pulumi:"unprivileged"`
 	// The container identifier
 	VmId *int `pulumi:"vmId"`
@@ -395,8 +403,7 @@ type ContainerArgs struct {
 	TimeoutStart pulumi.IntPtrInput
 	// Timeout for updating a container in seconds (defaults to 1800).
 	TimeoutUpdate pulumi.IntPtrInput
-	// Whether the container runs as unprivileged on
-	// the host (defaults to `false`).
+	// Whether the container runs as unprivileged on the host (defaults to `false`).
 	Unprivileged pulumi.BoolPtrInput
 	// The container identifier
 	VmId pulumi.IntPtrInput
@@ -534,6 +541,16 @@ func (o ContainerOutput) Initialization() ContainerInitializationPtrOutput {
 	return o.ApplyT(func(v *Container) ContainerInitializationPtrOutput { return v.Initialization }).(ContainerInitializationPtrOutput)
 }
 
+// The map of IPv4 addresses per network devices. Returns the first address for each network device, if multiple addresses are assigned.
+func (o ContainerOutput) Ipv4() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Container) pulumi.StringMapOutput { return v.Ipv4 }).(pulumi.StringMapOutput)
+}
+
+// The map of IPv6 addresses per network device. Returns the first address for each network device, if multiple addresses are assigned.
+func (o ContainerOutput) Ipv6() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Container) pulumi.StringMapOutput { return v.Ipv6 }).(pulumi.StringMapOutput)
+}
+
 // The memory configuration.
 func (o ContainerOutput) Memory() ContainerMemoryPtrOutput {
 	return o.ApplyT(func(v *Container) ContainerMemoryPtrOutput { return v.Memory }).(ContainerMemoryPtrOutput)
@@ -627,8 +644,7 @@ func (o ContainerOutput) TimeoutUpdate() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Container) pulumi.IntPtrOutput { return v.TimeoutUpdate }).(pulumi.IntPtrOutput)
 }
 
-// Whether the container runs as unprivileged on
-// the host (defaults to `false`).
+// Whether the container runs as unprivileged on the host (defaults to `false`).
 func (o ContainerOutput) Unprivileged() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Container) pulumi.BoolPtrOutput { return v.Unprivileged }).(pulumi.BoolPtrOutput)
 }

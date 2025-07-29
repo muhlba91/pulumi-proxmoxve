@@ -21,6 +21,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -163,6 +164,36 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<ContainerInitializationArgs>> initialization() {
         return Optional.ofNullable(this.initialization);
+    }
+
+    /**
+     * The map of IPv4 addresses per network devices. Returns the first address for each network device, if multiple addresses are assigned.
+     * 
+     */
+    @Import(name="ipv4")
+    private @Nullable Output<Map<String,String>> ipv4;
+
+    /**
+     * @return The map of IPv4 addresses per network devices. Returns the first address for each network device, if multiple addresses are assigned.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> ipv4() {
+        return Optional.ofNullable(this.ipv4);
+    }
+
+    /**
+     * The map of IPv6 addresses per network device. Returns the first address for each network device, if multiple addresses are assigned.
+     * 
+     */
+    @Import(name="ipv6")
+    private @Nullable Output<Map<String,String>> ipv6;
+
+    /**
+     * @return The map of IPv6 addresses per network device. Returns the first address for each network device, if multiple addresses are assigned.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> ipv6() {
+        return Optional.ofNullable(this.ipv6);
     }
 
     /**
@@ -441,16 +472,14 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether the container runs as unprivileged on
-     * the host (defaults to `false`).
+     * Whether the container runs as unprivileged on the host (defaults to `false`).
      * 
      */
     @Import(name="unprivileged")
     private @Nullable Output<Boolean> unprivileged;
 
     /**
-     * @return Whether the container runs as unprivileged on
-     * the host (defaults to `false`).
+     * @return Whether the container runs as unprivileged on the host (defaults to `false`).
      * 
      */
     public Optional<Output<Boolean>> unprivileged() {
@@ -484,6 +513,8 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         this.features = $.features;
         this.hookScriptFileId = $.hookScriptFileId;
         this.initialization = $.initialization;
+        this.ipv4 = $.ipv4;
+        this.ipv6 = $.ipv6;
         this.memory = $.memory;
         this.mountPoints = $.mountPoints;
         this.networkInterfaces = $.networkInterfaces;
@@ -720,6 +751,48 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder initialization(ContainerInitializationArgs initialization) {
             return initialization(Output.of(initialization));
+        }
+
+        /**
+         * @param ipv4 The map of IPv4 addresses per network devices. Returns the first address for each network device, if multiple addresses are assigned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv4(@Nullable Output<Map<String,String>> ipv4) {
+            $.ipv4 = ipv4;
+            return this;
+        }
+
+        /**
+         * @param ipv4 The map of IPv4 addresses per network devices. Returns the first address for each network device, if multiple addresses are assigned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv4(Map<String,String> ipv4) {
+            return ipv4(Output.of(ipv4));
+        }
+
+        /**
+         * @param ipv6 The map of IPv6 addresses per network device. Returns the first address for each network device, if multiple addresses are assigned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6(@Nullable Output<Map<String,String>> ipv6) {
+            $.ipv6 = ipv6;
+            return this;
+        }
+
+        /**
+         * @param ipv6 The map of IPv6 addresses per network device. Returns the first address for each network device, if multiple addresses are assigned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6(Map<String,String> ipv6) {
+            return ipv6(Output.of(ipv6));
         }
 
         /**
@@ -1135,8 +1208,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param unprivileged Whether the container runs as unprivileged on
-         * the host (defaults to `false`).
+         * @param unprivileged Whether the container runs as unprivileged on the host (defaults to `false`).
          * 
          * @return builder
          * 
@@ -1147,8 +1219,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param unprivileged Whether the container runs as unprivileged on
-         * the host (defaults to `false`).
+         * @param unprivileged Whether the container runs as unprivileged on the host (defaults to `false`).
          * 
          * @return builder
          * 

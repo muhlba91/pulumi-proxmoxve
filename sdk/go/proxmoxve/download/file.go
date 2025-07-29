@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages files upload using PVE download-url API. It can be fully compatible and faster replacement for image files created using `Storage.File`. Supports images for VMs (ISO images) and LXC (CT Templates).
+// Manages files upload using PVE download-url API. It can be fully compatible and faster replacement for image files created using `Storage.File`. Supports images for VMs (ISO and disk images) and LXC (CT Templates).
 //
 // > Besides the `Datastore.AllocateTemplate` privilege, this resource requires both the `Sys.Audit` and `Sys.Modify` privileges.<br><br>
 // For more details, see the [`download-url`](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/storage/{storage}/download-url) API documentation under the "Required permissions" section.
@@ -43,10 +43,32 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			_, err = download.NewFile(ctx, "release20231228Debian12BookwormQcow2", &download.FileArgs{
+//				Checksum:          pulumi.String("d2fbcf11fb28795842e91364d8c7b69f1870db09ff299eb94e4fbbfa510eb78d141e74c1f4bf6dfa0b7e33d0c3b66e6751886feadb4e9916f778bab1776bdf1b"),
+//				ChecksumAlgorithm: pulumi.String("sha512"),
+//				ContentType:       pulumi.String("import"),
+//				DatastoreId:       pulumi.String("local"),
+//				FileName:          pulumi.String("debian-12-generic-amd64-20231228-1609.qcow2"),
+//				NodeName:          pulumi.String("pve"),
+//				Url:               pulumi.String("https://cloud.debian.org/images/cloud/bookworm/20231228-1609/debian-12-generic-amd64-20231228-1609.qcow2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = download.NewFile(ctx, "latestDebian12BookwormQcow2Img", &download.FileArgs{
 //				ContentType: pulumi.String("iso"),
 //				DatastoreId: pulumi.String("local"),
 //				FileName:    pulumi.String("debian-12-generic-amd64.qcow2.img"),
+//				NodeName:    pulumi.String("pve"),
+//				Url:         pulumi.String("https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = download.NewFile(ctx, "latestDebian12BookwormQcow2", &download.FileArgs{
+//				ContentType: pulumi.String("import"),
+//				DatastoreId: pulumi.String("local"),
+//				FileName:    pulumi.String("debian-12-generic-amd64.qcow2"),
 //				NodeName:    pulumi.String("pve"),
 //				Url:         pulumi.String("https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2"),
 //			})
@@ -105,13 +127,13 @@ type File struct {
 	Checksum pulumi.StringPtrOutput `pulumi:"checksum"`
 	// The algorithm to calculate the checksum of the file. Must be `md5` | `sha1` | `sha224` | `sha256` | `sha384` | `sha512`.
 	ChecksumAlgorithm pulumi.StringPtrOutput `pulumi:"checksumAlgorithm"`
-	// The file content type. Must be `iso` for VM images or `vztmpl` for LXC images.
+	// The file content type. Must be `iso` or `import` for VM images or `vztmpl` for LXC images.
 	ContentType pulumi.StringOutput `pulumi:"contentType"`
 	// The identifier for the target datastore.
 	DatastoreId pulumi.StringOutput `pulumi:"datastoreId"`
 	// Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
 	DecompressionAlgorithm pulumi.StringPtrOutput `pulumi:"decompressionAlgorithm"`
-	// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2`. Workaround is to use e.g. `.img` instead.
+	// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
 	FileName pulumi.StringOutput `pulumi:"fileName"`
 	// The node name.
 	NodeName pulumi.StringOutput `pulumi:"nodeName"`
@@ -175,13 +197,13 @@ type fileState struct {
 	Checksum *string `pulumi:"checksum"`
 	// The algorithm to calculate the checksum of the file. Must be `md5` | `sha1` | `sha224` | `sha256` | `sha384` | `sha512`.
 	ChecksumAlgorithm *string `pulumi:"checksumAlgorithm"`
-	// The file content type. Must be `iso` for VM images or `vztmpl` for LXC images.
+	// The file content type. Must be `iso` or `import` for VM images or `vztmpl` for LXC images.
 	ContentType *string `pulumi:"contentType"`
 	// The identifier for the target datastore.
 	DatastoreId *string `pulumi:"datastoreId"`
 	// Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
 	DecompressionAlgorithm *string `pulumi:"decompressionAlgorithm"`
-	// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2`. Workaround is to use e.g. `.img` instead.
+	// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
 	FileName *string `pulumi:"fileName"`
 	// The node name.
 	NodeName *string `pulumi:"nodeName"`
@@ -204,13 +226,13 @@ type FileState struct {
 	Checksum pulumi.StringPtrInput
 	// The algorithm to calculate the checksum of the file. Must be `md5` | `sha1` | `sha224` | `sha256` | `sha384` | `sha512`.
 	ChecksumAlgorithm pulumi.StringPtrInput
-	// The file content type. Must be `iso` for VM images or `vztmpl` for LXC images.
+	// The file content type. Must be `iso` or `import` for VM images or `vztmpl` for LXC images.
 	ContentType pulumi.StringPtrInput
 	// The identifier for the target datastore.
 	DatastoreId pulumi.StringPtrInput
 	// Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
 	DecompressionAlgorithm pulumi.StringPtrInput
-	// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2`. Workaround is to use e.g. `.img` instead.
+	// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
 	FileName pulumi.StringPtrInput
 	// The node name.
 	NodeName pulumi.StringPtrInput
@@ -237,13 +259,13 @@ type fileArgs struct {
 	Checksum *string `pulumi:"checksum"`
 	// The algorithm to calculate the checksum of the file. Must be `md5` | `sha1` | `sha224` | `sha256` | `sha384` | `sha512`.
 	ChecksumAlgorithm *string `pulumi:"checksumAlgorithm"`
-	// The file content type. Must be `iso` for VM images or `vztmpl` for LXC images.
+	// The file content type. Must be `iso` or `import` for VM images or `vztmpl` for LXC images.
 	ContentType string `pulumi:"contentType"`
 	// The identifier for the target datastore.
 	DatastoreId string `pulumi:"datastoreId"`
 	// Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
 	DecompressionAlgorithm *string `pulumi:"decompressionAlgorithm"`
-	// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2`. Workaround is to use e.g. `.img` instead.
+	// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
 	FileName *string `pulumi:"fileName"`
 	// The node name.
 	NodeName string `pulumi:"nodeName"`
@@ -265,13 +287,13 @@ type FileArgs struct {
 	Checksum pulumi.StringPtrInput
 	// The algorithm to calculate the checksum of the file. Must be `md5` | `sha1` | `sha224` | `sha256` | `sha384` | `sha512`.
 	ChecksumAlgorithm pulumi.StringPtrInput
-	// The file content type. Must be `iso` for VM images or `vztmpl` for LXC images.
+	// The file content type. Must be `iso` or `import` for VM images or `vztmpl` for LXC images.
 	ContentType pulumi.StringInput
 	// The identifier for the target datastore.
 	DatastoreId pulumi.StringInput
 	// Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
 	DecompressionAlgorithm pulumi.StringPtrInput
-	// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2`. Workaround is to use e.g. `.img` instead.
+	// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
 	FileName pulumi.StringPtrInput
 	// The node name.
 	NodeName pulumi.StringInput
@@ -384,7 +406,7 @@ func (o FileOutput) ChecksumAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *File) pulumi.StringPtrOutput { return v.ChecksumAlgorithm }).(pulumi.StringPtrOutput)
 }
 
-// The file content type. Must be `iso` for VM images or `vztmpl` for LXC images.
+// The file content type. Must be `iso` or `import` for VM images or `vztmpl` for LXC images.
 func (o FileOutput) ContentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *File) pulumi.StringOutput { return v.ContentType }).(pulumi.StringOutput)
 }
@@ -399,7 +421,7 @@ func (o FileOutput) DecompressionAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *File) pulumi.StringPtrOutput { return v.DecompressionAlgorithm }).(pulumi.StringPtrOutput)
 }
 
-// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2`. Workaround is to use e.g. `.img` instead.
+// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
 func (o FileOutput) FileName() pulumi.StringOutput {
 	return o.ApplyT(func(v *File) pulumi.StringOutput { return v.FileName }).(pulumi.StringOutput)
 }

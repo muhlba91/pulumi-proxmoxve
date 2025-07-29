@@ -14,14 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ContainerFeatures {
     /**
-     * @return Whether the container supports FUSE mounts (defaults
-     * to `false`)
+     * @return Whether the container supports FUSE mounts (defaults to `false`)
      * 
      */
     private @Nullable Boolean fuse;
     /**
-     * @return Whether the container supports `keyctl()` system
-     * call (defaults to `false`)
+     * @return Whether the container supports `keyctl()` system call (defaults to `false`)
      * 
      */
     private @Nullable Boolean keyctl;
@@ -31,24 +29,21 @@ public final class ContainerFeatures {
      */
     private @Nullable List<String> mounts;
     /**
-     * @return Whether the container is nested (defaults
-     * to `false`)
+     * @return Whether the container is nested (defaults to `false`)
      * 
      */
     private @Nullable Boolean nesting;
 
     private ContainerFeatures() {}
     /**
-     * @return Whether the container supports FUSE mounts (defaults
-     * to `false`)
+     * @return Whether the container supports FUSE mounts (defaults to `false`)
      * 
      */
     public Optional<Boolean> fuse() {
         return Optional.ofNullable(this.fuse);
     }
     /**
-     * @return Whether the container supports `keyctl()` system
-     * call (defaults to `false`)
+     * @return Whether the container supports `keyctl()` system call (defaults to `false`)
      * 
      */
     public Optional<Boolean> keyctl() {
@@ -62,8 +57,7 @@ public final class ContainerFeatures {
         return this.mounts == null ? List.of() : this.mounts;
     }
     /**
-     * @return Whether the container is nested (defaults
-     * to `false`)
+     * @return Whether the container is nested (defaults to `false`)
      * 
      */
     public Optional<Boolean> nesting() {

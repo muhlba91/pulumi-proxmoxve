@@ -84,6 +84,14 @@ export class Container extends pulumi.CustomResource {
      */
     public readonly initialization!: pulumi.Output<outputs.CT.ContainerInitialization | undefined>;
     /**
+     * The map of IPv4 addresses per network devices. Returns the first address for each network device, if multiple addresses are assigned.
+     */
+    public /*out*/ readonly ipv4!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The map of IPv6 addresses per network device. Returns the first address for each network device, if multiple addresses are assigned.
+     */
+    public /*out*/ readonly ipv6!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The memory configuration.
      */
     public readonly memory!: pulumi.Output<outputs.CT.ContainerMemory | undefined>;
@@ -160,8 +168,7 @@ export class Container extends pulumi.CustomResource {
      */
     public readonly timeoutUpdate!: pulumi.Output<number | undefined>;
     /**
-     * Whether the container runs as unprivileged on
-     * the host (defaults to `false`).
+     * Whether the container runs as unprivileged on the host (defaults to `false`).
      */
     public readonly unprivileged!: pulumi.Output<boolean | undefined>;
     /**
@@ -191,6 +198,8 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["features"] = state ? state.features : undefined;
             resourceInputs["hookScriptFileId"] = state ? state.hookScriptFileId : undefined;
             resourceInputs["initialization"] = state ? state.initialization : undefined;
+            resourceInputs["ipv4"] = state ? state.ipv4 : undefined;
+            resourceInputs["ipv6"] = state ? state.ipv6 : undefined;
             resourceInputs["memory"] = state ? state.memory : undefined;
             resourceInputs["mountPoints"] = state ? state.mountPoints : undefined;
             resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
@@ -243,6 +252,8 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["timeoutUpdate"] = args ? args.timeoutUpdate : undefined;
             resourceInputs["unprivileged"] = args ? args.unprivileged : undefined;
             resourceInputs["vmId"] = args ? args.vmId : undefined;
+            resourceInputs["ipv4"] = undefined /*out*/;
+            resourceInputs["ipv6"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Container.__pulumiType, name, resourceInputs, opts);
@@ -289,6 +300,14 @@ export interface ContainerState {
      * The initialization configuration.
      */
     initialization?: pulumi.Input<inputs.CT.ContainerInitialization>;
+    /**
+     * The map of IPv4 addresses per network devices. Returns the first address for each network device, if multiple addresses are assigned.
+     */
+    ipv4?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The map of IPv6 addresses per network device. Returns the first address for each network device, if multiple addresses are assigned.
+     */
+    ipv6?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The memory configuration.
      */
@@ -366,8 +385,7 @@ export interface ContainerState {
      */
     timeoutUpdate?: pulumi.Input<number>;
     /**
-     * Whether the container runs as unprivileged on
-     * the host (defaults to `false`).
+     * Whether the container runs as unprivileged on the host (defaults to `false`).
      */
     unprivileged?: pulumi.Input<boolean>;
     /**
@@ -493,8 +511,7 @@ export interface ContainerArgs {
      */
     timeoutUpdate?: pulumi.Input<number>;
     /**
-     * Whether the container runs as unprivileged on
-     * the host (defaults to `false`).
+     * Whether the container runs as unprivileged on the host (defaults to `false`).
      */
     unprivileged?: pulumi.Input<boolean>;
     /**

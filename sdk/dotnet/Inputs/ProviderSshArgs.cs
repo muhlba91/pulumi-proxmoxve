@@ -19,6 +19,12 @@ namespace Pulumi.ProxmoxVE.Inputs
         public Input<bool>? Agent { get; set; }
 
         /// <summary>
+        /// Whether to enable SSH agent forwarding. Defaults to the value of the `PROXMOX_VE_SSH_AGENT_FORWARDING` environment variable, or `false` if not set.
+        /// </summary>
+        [Input("agentForwarding")]
+        public Input<bool>? AgentForwarding { get; set; }
+
+        /// <summary>
         /// The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
         /// </summary>
         [Input("agentSocket")]

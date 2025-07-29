@@ -2606,8 +2606,12 @@ type VirtualMachineDisk struct {
 	FileFormat *string `pulumi:"fileFormat"`
 	// The file ID for a disk image when importing a disk into VM. The ID format is
 	// `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
-	// `Download.File` resource.
+	// `Download.File` resource. *Deprecated*, use `importFrom` instead.
 	FileId *string `pulumi:"fileId"`
+	// The file ID for a disk image to import into VM. The image must be of `import` content type.
+	// The ID format is `<datastore_id>:import/<file_name>`, for example `local:import/centos8.qcow2`. Can be also taken from
+	// `Download.File` resource.
+	ImportFrom *string `pulumi:"importFrom"`
 	// The disk interface for Proxmox, currently `scsi`,
 	// `sata` and `virtio` interfaces are supported. Append the disk index at
 	// the end, for example, `virtio0` for the first virtio disk, `virtio1` for
@@ -2664,8 +2668,12 @@ type VirtualMachineDiskArgs struct {
 	FileFormat pulumi.StringPtrInput `pulumi:"fileFormat"`
 	// The file ID for a disk image when importing a disk into VM. The ID format is
 	// `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
-	// `Download.File` resource.
+	// `Download.File` resource. *Deprecated*, use `importFrom` instead.
 	FileId pulumi.StringPtrInput `pulumi:"fileId"`
+	// The file ID for a disk image to import into VM. The image must be of `import` content type.
+	// The ID format is `<datastore_id>:import/<file_name>`, for example `local:import/centos8.qcow2`. Can be also taken from
+	// `Download.File` resource.
+	ImportFrom pulumi.StringPtrInput `pulumi:"importFrom"`
 	// The disk interface for Proxmox, currently `scsi`,
 	// `sata` and `virtio` interfaces are supported. Append the disk index at
 	// the end, for example, `virtio0` for the first virtio disk, `virtio1` for
@@ -2779,9 +2787,16 @@ func (o VirtualMachineDiskOutput) FileFormat() pulumi.StringPtrOutput {
 
 // The file ID for a disk image when importing a disk into VM. The ID format is
 // `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
-// `Download.File` resource.
+// `Download.File` resource. *Deprecated*, use `importFrom` instead.
 func (o VirtualMachineDiskOutput) FileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.FileId }).(pulumi.StringPtrOutput)
+}
+
+// The file ID for a disk image to import into VM. The image must be of `import` content type.
+// The ID format is `<datastore_id>:import/<file_name>`, for example `local:import/centos8.qcow2`. Can be also taken from
+// `Download.File` resource.
+func (o VirtualMachineDiskOutput) ImportFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.ImportFrom }).(pulumi.StringPtrOutput)
 }
 
 // The disk interface for Proxmox, currently `scsi`,

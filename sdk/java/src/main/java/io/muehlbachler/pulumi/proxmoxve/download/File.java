@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Manages files upload using PVE download-url API. It can be fully compatible and faster replacement for image files created using `proxmoxve.Storage.File`. Supports images for VMs (ISO images) and LXC (CT Templates).
+ * Manages files upload using PVE download-url API. It can be fully compatible and faster replacement for image files created using `proxmoxve.Storage.File`. Supports images for VMs (ISO and disk images) and LXC (CT Templates).
  * 
  * &gt; Besides the `Datastore.AllocateTemplate` privilege, this resource requires both the `Sys.Audit` and `Sys.Modify` privileges.&lt;br&gt;&lt;br&gt;
  * For more details, see the [`download-url`](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/storage/{storage}/download-url) API documentation under the &#34;Required permissions&#34; section.
@@ -57,10 +57,28 @@ import javax.annotation.Nullable;
  *             .url("https://cloud.debian.org/images/cloud/bookworm/20231228-1609/debian-12-generic-amd64-20231228-1609.qcow2")
  *             .build());
  * 
+ *         var release20231228Debian12BookwormQcow2 = new File("release20231228Debian12BookwormQcow2", FileArgs.builder()
+ *             .checksum("d2fbcf11fb28795842e91364d8c7b69f1870db09ff299eb94e4fbbfa510eb78d141e74c1f4bf6dfa0b7e33d0c3b66e6751886feadb4e9916f778bab1776bdf1b")
+ *             .checksumAlgorithm("sha512")
+ *             .contentType("import")
+ *             .datastoreId("local")
+ *             .fileName("debian-12-generic-amd64-20231228-1609.qcow2")
+ *             .nodeName("pve")
+ *             .url("https://cloud.debian.org/images/cloud/bookworm/20231228-1609/debian-12-generic-amd64-20231228-1609.qcow2")
+ *             .build());
+ * 
  *         var latestDebian12BookwormQcow2Img = new File("latestDebian12BookwormQcow2Img", FileArgs.builder()
  *             .contentType("iso")
  *             .datastoreId("local")
  *             .fileName("debian-12-generic-amd64.qcow2.img")
+ *             .nodeName("pve")
+ *             .url("https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2")
+ *             .build());
+ * 
+ *         var latestDebian12BookwormQcow2 = new File("latestDebian12BookwormQcow2", FileArgs.builder()
+ *             .contentType("import")
+ *             .datastoreId("local")
+ *             .fileName("debian-12-generic-amd64.qcow2")
  *             .nodeName("pve")
  *             .url("https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2")
  *             .build());
@@ -135,14 +153,14 @@ public class File extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.checksumAlgorithm);
     }
     /**
-     * The file content type. Must be `iso` for VM images or `vztmpl` for LXC images.
+     * The file content type. Must be `iso` or `import` for VM images or `vztmpl` for LXC images.
      * 
      */
     @Export(name="contentType", refs={String.class}, tree="[0]")
     private Output<String> contentType;
 
     /**
-     * @return The file content type. Must be `iso` for VM images or `vztmpl` for LXC images.
+     * @return The file content type. Must be `iso` or `import` for VM images or `vztmpl` for LXC images.
      * 
      */
     public Output<String> contentType() {
@@ -177,14 +195,14 @@ public class File extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.decompressionAlgorithm);
     }
     /**
-     * The file name. If not provided, it is calculated using `url`. PVE will raise &#39;wrong file extension&#39; error for some popular extensions file `.raw` or `.qcow2`. Workaround is to use e.g. `.img` instead.
+     * The file name. If not provided, it is calculated using `url`. PVE will raise &#39;wrong file extension&#39; error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
      * 
      */
     @Export(name="fileName", refs={String.class}, tree="[0]")
     private Output<String> fileName;
 
     /**
-     * @return The file name. If not provided, it is calculated using `url`. PVE will raise &#39;wrong file extension&#39; error for some popular extensions file `.raw` or `.qcow2`. Workaround is to use e.g. `.img` instead.
+     * @return The file name. If not provided, it is calculated using `url`. PVE will raise &#39;wrong file extension&#39; error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
      * 
      */
     public Output<String> fileName() {

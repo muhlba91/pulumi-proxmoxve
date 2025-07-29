@@ -122,6 +122,8 @@ func (o HostsEntryArrayOutput) Index(i pulumi.IntInput) HostsEntryOutput {
 type ProviderSsh struct {
 	// Whether to use the SSH agent for authentication. Takes precedence over the `privateKey` and `password` fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or `false` if not set.
 	Agent *bool `pulumi:"agent"`
+	// Whether to enable SSH agent forwarding. Defaults to the value of the `PROXMOX_VE_SSH_AGENT_FORWARDING` environment variable, or `false` if not set.
+	AgentForwarding *bool `pulumi:"agentForwarding"`
 	// The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
 	AgentSocket *string `pulumi:"agentSocket"`
 	// Overrides for SSH connection configuration for a Proxmox VE node.
@@ -154,6 +156,8 @@ type ProviderSshInput interface {
 type ProviderSshArgs struct {
 	// Whether to use the SSH agent for authentication. Takes precedence over the `privateKey` and `password` fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or `false` if not set.
 	Agent pulumi.BoolPtrInput `pulumi:"agent"`
+	// Whether to enable SSH agent forwarding. Defaults to the value of the `PROXMOX_VE_SSH_AGENT_FORWARDING` environment variable, or `false` if not set.
+	AgentForwarding pulumi.BoolPtrInput `pulumi:"agentForwarding"`
 	// The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
 	AgentSocket pulumi.StringPtrInput `pulumi:"agentSocket"`
 	// Overrides for SSH connection configuration for a Proxmox VE node.
@@ -254,6 +258,11 @@ func (o ProviderSshOutput) Agent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProviderSsh) *bool { return v.Agent }).(pulumi.BoolPtrOutput)
 }
 
+// Whether to enable SSH agent forwarding. Defaults to the value of the `PROXMOX_VE_SSH_AGENT_FORWARDING` environment variable, or `false` if not set.
+func (o ProviderSshOutput) AgentForwarding() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProviderSsh) *bool { return v.AgentForwarding }).(pulumi.BoolPtrOutput)
+}
+
 // The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
 func (o ProviderSshOutput) AgentSocket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderSsh) *string { return v.AgentSocket }).(pulumi.StringPtrOutput)
@@ -325,6 +334,16 @@ func (o ProviderSshPtrOutput) Agent() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return v.Agent
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable SSH agent forwarding. Defaults to the value of the `PROXMOX_VE_SSH_AGENT_FORWARDING` environment variable, or `false` if not set.
+func (o ProviderSshPtrOutput) AgentForwarding() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProviderSsh) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AgentForwarding
 	}).(pulumi.BoolPtrOutput)
 }
 

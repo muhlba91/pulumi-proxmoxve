@@ -851,16 +851,13 @@ func (o ContainerDiskPtrOutput) Size() pulumi.IntPtrOutput {
 }
 
 type ContainerFeatures struct {
-	// Whether the container supports FUSE mounts (defaults
-	// to `false`)
+	// Whether the container supports FUSE mounts (defaults to `false`)
 	Fuse *bool `pulumi:"fuse"`
-	// Whether the container supports `keyctl()` system
-	// call (defaults to `false`)
+	// Whether the container supports `keyctl()` system call (defaults to `false`)
 	Keyctl *bool `pulumi:"keyctl"`
 	// List of allowed mount types (`cifs` or `nfs`)
 	Mounts []string `pulumi:"mounts"`
-	// Whether the container is nested (defaults
-	// to `false`)
+	// Whether the container is nested (defaults to `false`)
 	Nesting *bool `pulumi:"nesting"`
 }
 
@@ -876,16 +873,13 @@ type ContainerFeaturesInput interface {
 }
 
 type ContainerFeaturesArgs struct {
-	// Whether the container supports FUSE mounts (defaults
-	// to `false`)
+	// Whether the container supports FUSE mounts (defaults to `false`)
 	Fuse pulumi.BoolPtrInput `pulumi:"fuse"`
-	// Whether the container supports `keyctl()` system
-	// call (defaults to `false`)
+	// Whether the container supports `keyctl()` system call (defaults to `false`)
 	Keyctl pulumi.BoolPtrInput `pulumi:"keyctl"`
 	// List of allowed mount types (`cifs` or `nfs`)
 	Mounts pulumi.StringArrayInput `pulumi:"mounts"`
-	// Whether the container is nested (defaults
-	// to `false`)
+	// Whether the container is nested (defaults to `false`)
 	Nesting pulumi.BoolPtrInput `pulumi:"nesting"`
 }
 
@@ -966,14 +960,12 @@ func (o ContainerFeaturesOutput) ToContainerFeaturesPtrOutputWithContext(ctx con
 	}).(ContainerFeaturesPtrOutput)
 }
 
-// Whether the container supports FUSE mounts (defaults
-// to `false`)
+// Whether the container supports FUSE mounts (defaults to `false`)
 func (o ContainerFeaturesOutput) Fuse() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContainerFeatures) *bool { return v.Fuse }).(pulumi.BoolPtrOutput)
 }
 
-// Whether the container supports `keyctl()` system
-// call (defaults to `false`)
+// Whether the container supports `keyctl()` system call (defaults to `false`)
 func (o ContainerFeaturesOutput) Keyctl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContainerFeatures) *bool { return v.Keyctl }).(pulumi.BoolPtrOutput)
 }
@@ -983,8 +975,7 @@ func (o ContainerFeaturesOutput) Mounts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ContainerFeatures) []string { return v.Mounts }).(pulumi.StringArrayOutput)
 }
 
-// Whether the container is nested (defaults
-// to `false`)
+// Whether the container is nested (defaults to `false`)
 func (o ContainerFeaturesOutput) Nesting() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContainerFeatures) *bool { return v.Nesting }).(pulumi.BoolPtrOutput)
 }
@@ -1013,8 +1004,7 @@ func (o ContainerFeaturesPtrOutput) Elem() ContainerFeaturesOutput {
 	}).(ContainerFeaturesOutput)
 }
 
-// Whether the container supports FUSE mounts (defaults
-// to `false`)
+// Whether the container supports FUSE mounts (defaults to `false`)
 func (o ContainerFeaturesPtrOutput) Fuse() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ContainerFeatures) *bool {
 		if v == nil {
@@ -1024,8 +1014,7 @@ func (o ContainerFeaturesPtrOutput) Fuse() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether the container supports `keyctl()` system
-// call (defaults to `false`)
+// Whether the container supports `keyctl()` system call (defaults to `false`)
 func (o ContainerFeaturesPtrOutput) Keyctl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ContainerFeatures) *bool {
 		if v == nil {
@@ -1045,8 +1034,7 @@ func (o ContainerFeaturesPtrOutput) Mounts() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Whether the container is nested (defaults
-// to `false`)
+// Whether the container is nested (defaults to `false`)
 func (o ContainerFeaturesPtrOutput) Nesting() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ContainerFeatures) *bool {
 		if v == nil {

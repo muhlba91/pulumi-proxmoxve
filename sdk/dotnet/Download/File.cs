@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.Download
 {
     /// <summary>
-    /// Manages files upload using PVE download-url API. It can be fully compatible and faster replacement for image files created using `proxmoxve.Storage.File`. Supports images for VMs (ISO images) and LXC (CT Templates).
+    /// Manages files upload using PVE download-url API. It can be fully compatible and faster replacement for image files created using `proxmoxve.Storage.File`. Supports images for VMs (ISO and disk images) and LXC (CT Templates).
     /// 
     /// &gt; Besides the `Datastore.AllocateTemplate` privilege, this resource requires both the `Sys.Audit` and `Sys.Modify` privileges.&lt;br&gt;&lt;br&gt;
     /// For more details, see the [`download-url`](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/storage/{storage}/download-url) API documentation under the "Required permissions" section.
@@ -36,11 +36,31 @@ namespace Pulumi.ProxmoxVE.Download
     ///         Url = "https://cloud.debian.org/images/cloud/bookworm/20231228-1609/debian-12-generic-amd64-20231228-1609.qcow2",
     ///     });
     /// 
+    ///     var release20231228Debian12BookwormQcow2 = new ProxmoxVE.Download.File("release20231228Debian12BookwormQcow2", new()
+    ///     {
+    ///         Checksum = "d2fbcf11fb28795842e91364d8c7b69f1870db09ff299eb94e4fbbfa510eb78d141e74c1f4bf6dfa0b7e33d0c3b66e6751886feadb4e9916f778bab1776bdf1b",
+    ///         ChecksumAlgorithm = "sha512",
+    ///         ContentType = "import",
+    ///         DatastoreId = "local",
+    ///         FileName = "debian-12-generic-amd64-20231228-1609.qcow2",
+    ///         NodeName = "pve",
+    ///         Url = "https://cloud.debian.org/images/cloud/bookworm/20231228-1609/debian-12-generic-amd64-20231228-1609.qcow2",
+    ///     });
+    /// 
     ///     var latestDebian12BookwormQcow2Img = new ProxmoxVE.Download.File("latestDebian12BookwormQcow2Img", new()
     ///     {
     ///         ContentType = "iso",
     ///         DatastoreId = "local",
     ///         FileName = "debian-12-generic-amd64.qcow2.img",
+    ///         NodeName = "pve",
+    ///         Url = "https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2",
+    ///     });
+    /// 
+    ///     var latestDebian12BookwormQcow2 = new ProxmoxVE.Download.File("latestDebian12BookwormQcow2", new()
+    ///     {
+    ///         ContentType = "import",
+    ///         DatastoreId = "local",
+    ///         FileName = "debian-12-generic-amd64.qcow2",
     ///         NodeName = "pve",
     ///         Url = "https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2",
     ///     });
@@ -100,7 +120,7 @@ namespace Pulumi.ProxmoxVE.Download
         public Output<string?> ChecksumAlgorithm { get; private set; } = null!;
 
         /// <summary>
-        /// The file content type. Must be `iso` for VM images or `vztmpl` for LXC images.
+        /// The file content type. Must be `iso` or `import` for VM images or `vztmpl` for LXC images.
         /// </summary>
         [Output("contentType")]
         public Output<string> ContentType { get; private set; } = null!;
@@ -118,7 +138,7 @@ namespace Pulumi.ProxmoxVE.Download
         public Output<string?> DecompressionAlgorithm { get; private set; } = null!;
 
         /// <summary>
-        /// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2`. Workaround is to use e.g. `.img` instead.
+        /// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
         /// </summary>
         [Output("fileName")]
         public Output<string> FileName { get; private set; } = null!;
@@ -225,7 +245,7 @@ namespace Pulumi.ProxmoxVE.Download
         public Input<string>? ChecksumAlgorithm { get; set; }
 
         /// <summary>
-        /// The file content type. Must be `iso` for VM images or `vztmpl` for LXC images.
+        /// The file content type. Must be `iso` or `import` for VM images or `vztmpl` for LXC images.
         /// </summary>
         [Input("contentType", required: true)]
         public Input<string> ContentType { get; set; } = null!;
@@ -243,7 +263,7 @@ namespace Pulumi.ProxmoxVE.Download
         public Input<string>? DecompressionAlgorithm { get; set; }
 
         /// <summary>
-        /// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2`. Workaround is to use e.g. `.img` instead.
+        /// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
         /// </summary>
         [Input("fileName")]
         public Input<string>? FileName { get; set; }
@@ -305,7 +325,7 @@ namespace Pulumi.ProxmoxVE.Download
         public Input<string>? ChecksumAlgorithm { get; set; }
 
         /// <summary>
-        /// The file content type. Must be `iso` for VM images or `vztmpl` for LXC images.
+        /// The file content type. Must be `iso` or `import` for VM images or `vztmpl` for LXC images.
         /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
@@ -323,7 +343,7 @@ namespace Pulumi.ProxmoxVE.Download
         public Input<string>? DecompressionAlgorithm { get; set; }
 
         /// <summary>
-        /// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2`. Workaround is to use e.g. `.img` instead.
+        /// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
         /// </summary>
         [Input("fileName")]
         public Input<string>? FileName { get; set; }

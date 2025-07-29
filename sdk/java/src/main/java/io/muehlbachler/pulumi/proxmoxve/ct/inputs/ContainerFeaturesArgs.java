@@ -18,16 +18,14 @@ public final class ContainerFeaturesArgs extends com.pulumi.resources.ResourceAr
     public static final ContainerFeaturesArgs Empty = new ContainerFeaturesArgs();
 
     /**
-     * Whether the container supports FUSE mounts (defaults
-     * to `false`)
+     * Whether the container supports FUSE mounts (defaults to `false`)
      * 
      */
     @Import(name="fuse")
     private @Nullable Output<Boolean> fuse;
 
     /**
-     * @return Whether the container supports FUSE mounts (defaults
-     * to `false`)
+     * @return Whether the container supports FUSE mounts (defaults to `false`)
      * 
      */
     public Optional<Output<Boolean>> fuse() {
@@ -35,16 +33,14 @@ public final class ContainerFeaturesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Whether the container supports `keyctl()` system
-     * call (defaults to `false`)
+     * Whether the container supports `keyctl()` system call (defaults to `false`)
      * 
      */
     @Import(name="keyctl")
     private @Nullable Output<Boolean> keyctl;
 
     /**
-     * @return Whether the container supports `keyctl()` system
-     * call (defaults to `false`)
+     * @return Whether the container supports `keyctl()` system call (defaults to `false`)
      * 
      */
     public Optional<Output<Boolean>> keyctl() {
@@ -67,16 +63,14 @@ public final class ContainerFeaturesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Whether the container is nested (defaults
-     * to `false`)
+     * Whether the container is nested (defaults to `false`)
      * 
      */
     @Import(name="nesting")
     private @Nullable Output<Boolean> nesting;
 
     /**
-     * @return Whether the container is nested (defaults
-     * to `false`)
+     * @return Whether the container is nested (defaults to `false`)
      * 
      */
     public Optional<Output<Boolean>> nesting() {
@@ -111,8 +105,7 @@ public final class ContainerFeaturesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param fuse Whether the container supports FUSE mounts (defaults
-         * to `false`)
+         * @param fuse Whether the container supports FUSE mounts (defaults to `false`)
          * 
          * @return builder
          * 
@@ -123,8 +116,7 @@ public final class ContainerFeaturesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param fuse Whether the container supports FUSE mounts (defaults
-         * to `false`)
+         * @param fuse Whether the container supports FUSE mounts (defaults to `false`)
          * 
          * @return builder
          * 
@@ -134,8 +126,7 @@ public final class ContainerFeaturesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param keyctl Whether the container supports `keyctl()` system
-         * call (defaults to `false`)
+         * @param keyctl Whether the container supports `keyctl()` system call (defaults to `false`)
          * 
          * @return builder
          * 
@@ -146,8 +137,7 @@ public final class ContainerFeaturesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param keyctl Whether the container supports `keyctl()` system
-         * call (defaults to `false`)
+         * @param keyctl Whether the container supports `keyctl()` system call (defaults to `false`)
          * 
          * @return builder
          * 
@@ -188,8 +178,7 @@ public final class ContainerFeaturesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param nesting Whether the container is nested (defaults
-         * to `false`)
+         * @param nesting Whether the container is nested (defaults to `false`)
          * 
          * @return builder
          * 
@@ -200,8 +189,7 @@ public final class ContainerFeaturesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param nesting Whether the container is nested (defaults
-         * to `false`)
+         * @param nesting Whether the container is nested (defaults to `false`)
          * 
          * @return builder
          * 

@@ -20,6 +20,11 @@ public final class Ssh {
      */
     private @Nullable Boolean agent;
     /**
+     * @return Whether to enable SSH agent forwarding. Defaults to the value of the `PROXMOX_VE_SSH_AGENT_FORWARDING` environment variable, or `false` if not set.
+     * 
+     */
+    private @Nullable Boolean agentForwarding;
+    /**
      * @return The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
      * 
      */
@@ -67,6 +72,13 @@ public final class Ssh {
      */
     public Optional<Boolean> agent() {
         return Optional.ofNullable(this.agent);
+    }
+    /**
+     * @return Whether to enable SSH agent forwarding. Defaults to the value of the `PROXMOX_VE_SSH_AGENT_FORWARDING` environment variable, or `false` if not set.
+     * 
+     */
+    public Optional<Boolean> agentForwarding() {
+        return Optional.ofNullable(this.agentForwarding);
     }
     /**
      * @return The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
@@ -135,6 +147,7 @@ public final class Ssh {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean agent;
+        private @Nullable Boolean agentForwarding;
         private @Nullable String agentSocket;
         private @Nullable List<SshNode> nodes;
         private @Nullable String password;
@@ -147,6 +160,7 @@ public final class Ssh {
         public Builder(Ssh defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.agent = defaults.agent;
+    	      this.agentForwarding = defaults.agentForwarding;
     	      this.agentSocket = defaults.agentSocket;
     	      this.nodes = defaults.nodes;
     	      this.password = defaults.password;
@@ -161,6 +175,12 @@ public final class Ssh {
         public Builder agent(@Nullable Boolean agent) {
 
             this.agent = agent;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder agentForwarding(@Nullable Boolean agentForwarding) {
+
+            this.agentForwarding = agentForwarding;
             return this;
         }
         @CustomType.Setter
@@ -217,6 +237,7 @@ public final class Ssh {
         public Ssh build() {
             final var _resultValue = new Ssh();
             _resultValue.agent = agent;
+            _resultValue.agentForwarding = agentForwarding;
             _resultValue.agentSocket = agentSocket;
             _resultValue.nodes = nodes;
             _resultValue.password = password;

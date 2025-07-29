@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Use this resource to upload files to a Proxmox VE node. The file can be a backup, an ISO image, a snippet, or a container template depending on the `contentType` attribute.
+ * Use this resource to upload files to a Proxmox VE node. The file can be a backup, an ISO image, a Disk Image, a snippet, or a container template depending on the `contentType` attribute.
  *
  * ## Example Usage
  *
@@ -35,12 +35,28 @@ import * as utilities from "../utilities";
  *
  * > Consider using `proxmoxve.Download.File` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.
  *
+ * > Importing Disks is not enabled by default in new Proxmox installations. You need to enable them in the 'Datacenter>Storage' section of the proxmox interface before first using this resource with `contentType = "import"`.
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
  * const ubuntuContainerTemplate = new proxmoxve.storage.File("ubuntuContainerTemplate", {
  *     contentType: "iso",
+ *     datastoreId: "local",
+ *     nodeName: "pve",
+ *     sourceFile: {
+ *         path: "https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img",
+ *     },
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const ubuntuContainerTemplate = new proxmoxve.storage.File("ubuntuContainerTemplate", {
+ *     contentType: "import",
  *     datastoreId: "local",
  *     nodeName: "pve",
  *     sourceFile: {
@@ -62,7 +78,7 @@ import * as utilities from "../utilities";
  *     datastoreId: "local",
  *     nodeName: "first-node",
  *     sourceFile: {
- *         path: "https://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz",
+ *         path: "http://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz",
  *     },
  * });
  * ```
