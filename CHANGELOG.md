@@ -1,6 +1,19 @@
 # Changelog
 
 
+## [7.4.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.3.0...v7.4.0) (2025-08-01)
+
+
+### Features
+
+* update renovate to use preset ([c8e6cd2](https://github.com/muhlba91/pulumi-proxmoxve/commit/c8e6cd23ad9af216874dac75edf6a40e3832a27e))
+
+
+### Miscellaneous Chores
+
+* **deps:** update github/codeql-action action to v3.29.5 ([fefaadc](https://github.com/muhlba91/pulumi-proxmoxve/commit/fefaadc135a4cb90a9a92176e743c3ea327294f7))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.187.0 ([1c37662](https://github.com/muhlba91/pulumi-proxmoxve/commit/1c376623f8c109fc387ad8d804529246f889690b))
+
 ## [7.3.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.2.0...v7.3.0) (2025-07-29)
 
 
