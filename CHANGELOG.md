@@ -1,6 +1,25 @@
 # Changelog
 
 
+## [7.4.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.3.0...v7.4.0) (2025-08-08)
+
+
+### Features
+
+* update renovate to use preset ([c8e6cd2](https://github.com/muhlba91/pulumi-proxmoxve/commit/c8e6cd23ad9af216874dac75edf6a40e3832a27e))
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency go to v1.24.6 ([b64b322](https://github.com/muhlba91/pulumi-proxmoxve/commit/b64b3229bb6c981edb054aea106ff1e681bd99c0))
+* **deps:** update github/codeql-action action to v3.29.5 ([fefaadc](https://github.com/muhlba91/pulumi-proxmoxve/commit/fefaadc135a4cb90a9a92176e743c3ea327294f7))
+* **deps:** update github/codeql-action action to v3.29.6 ([1391f31](https://github.com/muhlba91/pulumi-proxmoxve/commit/1391f31ab56612d6021bcb5238f64211442b5ea4))
+* **deps:** update github/codeql-action action to v3.29.7 ([29ff688](https://github.com/muhlba91/pulumi-proxmoxve/commit/29ff688b4ee1ee9ead498ac03128ba8fe13fb544))
+* **deps:** update github/codeql-action action to v3.29.8 ([0fd605a](https://github.com/muhlba91/pulumi-proxmoxve/commit/0fd605a9339e87c722af7f2c73463284feb14e9d))
+* **deps:** update gradle/actions action to v4.4.2 ([19c41b3](https://github.com/muhlba91/pulumi-proxmoxve/commit/19c41b3c48ab1c650098681d7473861463d19395))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.187.0 ([1c37662](https://github.com/muhlba91/pulumi-proxmoxve/commit/1c376623f8c109fc387ad8d804529246f889690b))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.188.0 ([0a31905](https://github.com/muhlba91/pulumi-proxmoxve/commit/0a31905a4e9ce995ad7c7a0d712d3e759a862e97))
+
 ## [7.3.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.2.0...v7.3.0) (2025-07-29)
 
 
