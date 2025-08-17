@@ -1,6 +1,34 @@
 # Changelog
 
 
+## [7.4.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.3.0...v7.4.0) (2025-08-17)
+
+
+### Features
+
+* prepare for upgrade upstream to v0.81.0 ([95beefa](https://github.com/muhlba91/pulumi-proxmoxve/commit/95beefaf33099fbdb3715f9f16d465ead9b1812c))
+* update renovate to use preset ([c8e6cd2](https://github.com/muhlba91/pulumi-proxmoxve/commit/c8e6cd23ad9af216874dac75edf6a40e3832a27e))
+* upgrade upstream to v0.81.0 ([94a6044](https://github.com/muhlba91/pulumi-proxmoxve/commit/94a6044ef4b5b66f7ed2e8eca44469c351807a37))
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/checkout action to v5 ([d98b3d7](https://github.com/muhlba91/pulumi-proxmoxve/commit/d98b3d79b378ad732508bba63495ecb86c27f388))
+* **deps:** update anchore/sbom-action action to v0.20.5 ([fff208d](https://github.com/muhlba91/pulumi-proxmoxve/commit/fff208d0ad3e5bc3229518e21a91317ade49dda0))
+* **deps:** update dependency go to v1.24.6 ([b64b322](https://github.com/muhlba91/pulumi-proxmoxve/commit/b64b3229bb6c981edb054aea106ff1e681bd99c0))
+* **deps:** update dependency go to v1.25.0 ([b34bfe4](https://github.com/muhlba91/pulumi-proxmoxve/commit/b34bfe413962248692bfdf95732294bf35b67d9b))
+* **deps:** update github/codeql-action action to v3.29.5 ([fefaadc](https://github.com/muhlba91/pulumi-proxmoxve/commit/fefaadc135a4cb90a9a92176e743c3ea327294f7))
+* **deps:** update github/codeql-action action to v3.29.6 ([1391f31](https://github.com/muhlba91/pulumi-proxmoxve/commit/1391f31ab56612d6021bcb5238f64211442b5ea4))
+* **deps:** update github/codeql-action action to v3.29.7 ([29ff688](https://github.com/muhlba91/pulumi-proxmoxve/commit/29ff688b4ee1ee9ead498ac03128ba8fe13fb544))
+* **deps:** update github/codeql-action action to v3.29.8 ([0fd605a](https://github.com/muhlba91/pulumi-proxmoxve/commit/0fd605a9339e87c722af7f2c73463284feb14e9d))
+* **deps:** update github/codeql-action action to v3.29.9 ([58d6bb1](https://github.com/muhlba91/pulumi-proxmoxve/commit/58d6bb14f9096f1f47584845c945b337bddc5520))
+* **deps:** update goreleaser/goreleaser-action action to v6.4.0 ([85de3c1](https://github.com/muhlba91/pulumi-proxmoxve/commit/85de3c197dedf25e18a683c86ba5f47e1047fcf3))
+* **deps:** update gradle/actions action to v4.4.2 ([19c41b3](https://github.com/muhlba91/pulumi-proxmoxve/commit/19c41b3c48ab1c650098681d7473861463d19395))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.187.0 ([1c37662](https://github.com/muhlba91/pulumi-proxmoxve/commit/1c376623f8c109fc387ad8d804529246f889690b))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.188.0 ([0a31905](https://github.com/muhlba91/pulumi-proxmoxve/commit/0a31905a4e9ce995ad7c7a0d712d3e759a862e97))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.190.0 ([895c338](https://github.com/muhlba91/pulumi-proxmoxve/commit/895c3386292e4211bf4f53d6752ef9085e383525))
+* update pre-commit ([a9cebe7](https://github.com/muhlba91/pulumi-proxmoxve/commit/a9cebe7e180cdca4950d447cda0c17886ff2b508))
+
 ## [7.3.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.2.0...v7.3.0) (2025-07-29)
 
 
