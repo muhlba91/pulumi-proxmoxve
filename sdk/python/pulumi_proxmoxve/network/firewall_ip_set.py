@@ -31,10 +31,10 @@ class FirewallIPSetArgs:
         The set of arguments for constructing a FirewallIPSet resource.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallIPSetCidrArgs']]] cidrs: IP/CIDR block (multiple blocks supported).
         :param pulumi.Input[_builtins.str] comment: IPSet comment.
-        :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for cluster level aliases.
+        :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for cluster level ipsets.
         :param pulumi.Input[_builtins.str] name: IPSet name.
-        :param pulumi.Input[_builtins.str] node_name: Node name. Leave empty for cluster level aliases.
-        :param pulumi.Input[_builtins.int] vm_id: VM ID. Leave empty for cluster level aliases.
+        :param pulumi.Input[_builtins.str] node_name: Node name. Leave empty for cluster level ipsets.
+        :param pulumi.Input[_builtins.int] vm_id: VM ID. Leave empty for cluster level ipsets.
         """
         if cidrs is not None:
             pulumi.set(__self__, "cidrs", cidrs)
@@ -77,7 +77,7 @@ class FirewallIPSetArgs:
     @pulumi.getter(name="containerId")
     def container_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Container ID. Leave empty for cluster level aliases.
+        Container ID. Leave empty for cluster level ipsets.
         """
         return pulumi.get(self, "container_id")
 
@@ -101,7 +101,7 @@ class FirewallIPSetArgs:
     @pulumi.getter(name="nodeName")
     def node_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Node name. Leave empty for cluster level aliases.
+        Node name. Leave empty for cluster level ipsets.
         """
         return pulumi.get(self, "node_name")
 
@@ -113,7 +113,7 @@ class FirewallIPSetArgs:
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        VM ID. Leave empty for cluster level aliases.
+        VM ID. Leave empty for cluster level ipsets.
         """
         return pulumi.get(self, "vm_id")
 
@@ -135,10 +135,10 @@ class _FirewallIPSetState:
         Input properties used for looking up and filtering FirewallIPSet resources.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallIPSetCidrArgs']]] cidrs: IP/CIDR block (multiple blocks supported).
         :param pulumi.Input[_builtins.str] comment: IPSet comment.
-        :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for cluster level aliases.
+        :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for cluster level ipsets.
         :param pulumi.Input[_builtins.str] name: IPSet name.
-        :param pulumi.Input[_builtins.str] node_name: Node name. Leave empty for cluster level aliases.
-        :param pulumi.Input[_builtins.int] vm_id: VM ID. Leave empty for cluster level aliases.
+        :param pulumi.Input[_builtins.str] node_name: Node name. Leave empty for cluster level ipsets.
+        :param pulumi.Input[_builtins.int] vm_id: VM ID. Leave empty for cluster level ipsets.
         """
         if cidrs is not None:
             pulumi.set(__self__, "cidrs", cidrs)
@@ -181,7 +181,7 @@ class _FirewallIPSetState:
     @pulumi.getter(name="containerId")
     def container_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Container ID. Leave empty for cluster level aliases.
+        Container ID. Leave empty for cluster level ipsets.
         """
         return pulumi.get(self, "container_id")
 
@@ -205,7 +205,7 @@ class _FirewallIPSetState:
     @pulumi.getter(name="nodeName")
     def node_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Node name. Leave empty for cluster level aliases.
+        Node name. Leave empty for cluster level ipsets.
         """
         return pulumi.get(self, "node_name")
 
@@ -217,7 +217,7 @@ class _FirewallIPSetState:
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        VM ID. Leave empty for cluster level aliases.
+        VM ID. Leave empty for cluster level ipsets.
         """
         return pulumi.get(self, "vm_id")
 
@@ -275,10 +275,10 @@ class FirewallIPSet(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallIPSetCidrArgs', 'FirewallIPSetCidrArgsDict']]]] cidrs: IP/CIDR block (multiple blocks supported).
         :param pulumi.Input[_builtins.str] comment: IPSet comment.
-        :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for cluster level aliases.
+        :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for cluster level ipsets.
         :param pulumi.Input[_builtins.str] name: IPSet name.
-        :param pulumi.Input[_builtins.str] node_name: Node name. Leave empty for cluster level aliases.
-        :param pulumi.Input[_builtins.int] vm_id: VM ID. Leave empty for cluster level aliases.
+        :param pulumi.Input[_builtins.str] node_name: Node name. Leave empty for cluster level ipsets.
+        :param pulumi.Input[_builtins.int] vm_id: VM ID. Leave empty for cluster level ipsets.
         """
         ...
     @overload
@@ -379,10 +379,10 @@ class FirewallIPSet(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallIPSetCidrArgs', 'FirewallIPSetCidrArgsDict']]]] cidrs: IP/CIDR block (multiple blocks supported).
         :param pulumi.Input[_builtins.str] comment: IPSet comment.
-        :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for cluster level aliases.
+        :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for cluster level ipsets.
         :param pulumi.Input[_builtins.str] name: IPSet name.
-        :param pulumi.Input[_builtins.str] node_name: Node name. Leave empty for cluster level aliases.
-        :param pulumi.Input[_builtins.int] vm_id: VM ID. Leave empty for cluster level aliases.
+        :param pulumi.Input[_builtins.str] node_name: Node name. Leave empty for cluster level ipsets.
+        :param pulumi.Input[_builtins.int] vm_id: VM ID. Leave empty for cluster level ipsets.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -416,7 +416,7 @@ class FirewallIPSet(pulumi.CustomResource):
     @pulumi.getter(name="containerId")
     def container_id(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Container ID. Leave empty for cluster level aliases.
+        Container ID. Leave empty for cluster level ipsets.
         """
         return pulumi.get(self, "container_id")
 
@@ -432,7 +432,7 @@ class FirewallIPSet(pulumi.CustomResource):
     @pulumi.getter(name="nodeName")
     def node_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Node name. Leave empty for cluster level aliases.
+        Node name. Leave empty for cluster level ipsets.
         """
         return pulumi.get(self, "node_name")
 
@@ -440,7 +440,7 @@ class FirewallIPSet(pulumi.CustomResource):
     @pulumi.getter(name="vmId")
     def vm_id(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        VM ID. Leave empty for cluster level aliases.
+        VM ID. Leave empty for cluster level ipsets.
         """
         return pulumi.get(self, "vm_id")
 

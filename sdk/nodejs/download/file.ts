@@ -109,55 +109,55 @@ export class File extends pulumi.CustomResource {
     /**
      * The expected checksum of the file.
      */
-    public readonly checksum!: pulumi.Output<string | undefined>;
+    declare public readonly checksum: pulumi.Output<string | undefined>;
     /**
      * The algorithm to calculate the checksum of the file. Must be `md5` | `sha1` | `sha224` | `sha256` | `sha384` | `sha512`.
      */
-    public readonly checksumAlgorithm!: pulumi.Output<string | undefined>;
+    declare public readonly checksumAlgorithm: pulumi.Output<string | undefined>;
     /**
      * The file content type. Must be `iso` or `import` for VM images or `vztmpl` for LXC images.
      */
-    public readonly contentType!: pulumi.Output<string>;
+    declare public readonly contentType: pulumi.Output<string>;
     /**
      * The identifier for the target datastore.
      */
-    public readonly datastoreId!: pulumi.Output<string>;
+    declare public readonly datastoreId: pulumi.Output<string>;
     /**
      * Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
      */
-    public readonly decompressionAlgorithm!: pulumi.Output<string | undefined>;
+    declare public readonly decompressionAlgorithm: pulumi.Output<string | undefined>;
     /**
      * The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
      */
-    public readonly fileName!: pulumi.Output<string>;
+    declare public readonly fileName: pulumi.Output<string>;
     /**
      * The node name.
      */
-    public readonly nodeName!: pulumi.Output<string>;
+    declare public readonly nodeName: pulumi.Output<string>;
     /**
      * By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
      */
-    public readonly overwrite!: pulumi.Output<boolean>;
+    declare public readonly overwrite: pulumi.Output<boolean>;
     /**
      * If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
      */
-    public readonly overwriteUnmanaged!: pulumi.Output<boolean>;
+    declare public readonly overwriteUnmanaged: pulumi.Output<boolean>;
     /**
      * The file size in PVE.
      */
-    public /*out*/ readonly size!: pulumi.Output<number>;
+    declare public /*out*/ readonly size: pulumi.Output<number>;
     /**
      * The file download timeout seconds. Default is 600 (10min).
      */
-    public readonly uploadTimeout!: pulumi.Output<number>;
+    declare public readonly uploadTimeout: pulumi.Output<number>;
     /**
      * The URL to download the file from. Must match regex: `https?://.*`.
      */
-    public readonly url!: pulumi.Output<string>;
+    declare public readonly url: pulumi.Output<string>;
     /**
      * By default `true`. If `false`, no SSL/TLS certificates will be verified.
      */
-    public readonly verify!: pulumi.Output<boolean>;
+    declare public readonly verify: pulumi.Output<boolean>;
 
     /**
      * Create a File resource with the given unique name, arguments, and options.
@@ -172,45 +172,45 @@ export class File extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FileState | undefined;
-            resourceInputs["checksum"] = state ? state.checksum : undefined;
-            resourceInputs["checksumAlgorithm"] = state ? state.checksumAlgorithm : undefined;
-            resourceInputs["contentType"] = state ? state.contentType : undefined;
-            resourceInputs["datastoreId"] = state ? state.datastoreId : undefined;
-            resourceInputs["decompressionAlgorithm"] = state ? state.decompressionAlgorithm : undefined;
-            resourceInputs["fileName"] = state ? state.fileName : undefined;
-            resourceInputs["nodeName"] = state ? state.nodeName : undefined;
-            resourceInputs["overwrite"] = state ? state.overwrite : undefined;
-            resourceInputs["overwriteUnmanaged"] = state ? state.overwriteUnmanaged : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["uploadTimeout"] = state ? state.uploadTimeout : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
-            resourceInputs["verify"] = state ? state.verify : undefined;
+            resourceInputs["checksum"] = state?.checksum;
+            resourceInputs["checksumAlgorithm"] = state?.checksumAlgorithm;
+            resourceInputs["contentType"] = state?.contentType;
+            resourceInputs["datastoreId"] = state?.datastoreId;
+            resourceInputs["decompressionAlgorithm"] = state?.decompressionAlgorithm;
+            resourceInputs["fileName"] = state?.fileName;
+            resourceInputs["nodeName"] = state?.nodeName;
+            resourceInputs["overwrite"] = state?.overwrite;
+            resourceInputs["overwriteUnmanaged"] = state?.overwriteUnmanaged;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["uploadTimeout"] = state?.uploadTimeout;
+            resourceInputs["url"] = state?.url;
+            resourceInputs["verify"] = state?.verify;
         } else {
             const args = argsOrState as FileArgs | undefined;
-            if ((!args || args.contentType === undefined) && !opts.urn) {
+            if (args?.contentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'contentType'");
             }
-            if ((!args || args.datastoreId === undefined) && !opts.urn) {
+            if (args?.datastoreId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'datastoreId'");
             }
-            if ((!args || args.nodeName === undefined) && !opts.urn) {
+            if (args?.nodeName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodeName'");
             }
-            if ((!args || args.url === undefined) && !opts.urn) {
+            if (args?.url === undefined && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            resourceInputs["checksum"] = args ? args.checksum : undefined;
-            resourceInputs["checksumAlgorithm"] = args ? args.checksumAlgorithm : undefined;
-            resourceInputs["contentType"] = args ? args.contentType : undefined;
-            resourceInputs["datastoreId"] = args ? args.datastoreId : undefined;
-            resourceInputs["decompressionAlgorithm"] = args ? args.decompressionAlgorithm : undefined;
-            resourceInputs["fileName"] = args ? args.fileName : undefined;
-            resourceInputs["nodeName"] = args ? args.nodeName : undefined;
-            resourceInputs["overwrite"] = args ? args.overwrite : undefined;
-            resourceInputs["overwriteUnmanaged"] = args ? args.overwriteUnmanaged : undefined;
-            resourceInputs["uploadTimeout"] = args ? args.uploadTimeout : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
-            resourceInputs["verify"] = args ? args.verify : undefined;
+            resourceInputs["checksum"] = args?.checksum;
+            resourceInputs["checksumAlgorithm"] = args?.checksumAlgorithm;
+            resourceInputs["contentType"] = args?.contentType;
+            resourceInputs["datastoreId"] = args?.datastoreId;
+            resourceInputs["decompressionAlgorithm"] = args?.decompressionAlgorithm;
+            resourceInputs["fileName"] = args?.fileName;
+            resourceInputs["nodeName"] = args?.nodeName;
+            resourceInputs["overwrite"] = args?.overwrite;
+            resourceInputs["overwriteUnmanaged"] = args?.overwriteUnmanaged;
+            resourceInputs["uploadTimeout"] = args?.uploadTimeout;
+            resourceInputs["url"] = args?.url;
+            resourceInputs["verify"] = args?.verify;
             resourceInputs["size"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -18,14 +18,14 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
     public static final FirewallOptionsState Empty = new FirewallOptionsState();
 
     /**
-     * Container ID. Leave empty for cluster level aliases.
+     * Container ID.
      * 
      */
     @Import(name="containerId")
     private @Nullable Output<Integer> containerId;
 
     /**
-     * @return Container ID. Leave empty for cluster level aliases.
+     * @return Container ID.
      * 
      */
     public Optional<Output<Integer>> containerId() {
@@ -218,14 +218,14 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * VM ID. Leave empty for cluster level aliases.
+     * VM ID.
      * 
      */
     @Import(name="vmId")
     private @Nullable Output<Integer> vmId;
 
     /**
-     * @return VM ID. Leave empty for cluster level aliases.
+     * @return VM ID.
      * 
      */
     public Optional<Output<Integer>> vmId() {
@@ -269,7 +269,7 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param containerId Container ID. Leave empty for cluster level aliases.
+         * @param containerId Container ID.
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param containerId Container ID. Leave empty for cluster level aliases.
+         * @param containerId Container ID.
          * 
          * @return builder
          * 
@@ -541,7 +541,7 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param vmId VM ID. Leave empty for cluster level aliases.
+         * @param vmId VM ID.
          * 
          * @return builder
          * 
@@ -552,7 +552,7 @@ public final class FirewallOptionsState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param vmId VM ID. Leave empty for cluster level aliases.
+         * @param vmId VM ID.
          * 
          * @return builder
          * 

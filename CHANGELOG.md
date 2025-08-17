@@ -63,7 +63,7 @@
 
 ### Features
 
-* **deps:** update golangci-lint to v2.1.x; update go to 1.24.x ([4e8d2bc](https://github.com/muhlba91/pulumi-proxmoxve/commit/4e8d2bcabfbeb8640f58463c43b535ed40a4581c))
+* **deps:** update golangci-lint to v2.1.x; update go to 1.25.x ([4e8d2bc](https://github.com/muhlba91/pulumi-proxmoxve/commit/4e8d2bcabfbeb8640f58463c43b535ed40a4581c))
 * prepare for upstream release v0.76.0 ([553c16f](https://github.com/muhlba91/pulumi-proxmoxve/commit/553c16f884c7788231b8c5f71cc58da14908d945))
 * prepare upgrade to v0.76.0 ([40d6040](https://github.com/muhlba91/pulumi-proxmoxve/commit/40d6040c3689e50cf2aa10c1eb22455eeaf6d3a1))
 * prepare upgrade to v0.78.0 ([18ff489](https://github.com/muhlba91/pulumi-proxmoxve/commit/18ff4894411bd31670c896a87466f9c552de8ca5))

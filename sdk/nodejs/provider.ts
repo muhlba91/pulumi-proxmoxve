@@ -30,41 +30,41 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * The API token for the Proxmox VE API.
      */
-    public readonly apiToken!: pulumi.Output<string | undefined>;
+    declare public readonly apiToken: pulumi.Output<string | undefined>;
     /**
      * The pre-authenticated Ticket for the Proxmox VE API.
      */
-    public readonly authTicket!: pulumi.Output<string | undefined>;
+    declare public readonly authTicket: pulumi.Output<string | undefined>;
     /**
      * The pre-authenticated CSRF Prevention Token for the Proxmox VE API.
      */
-    public readonly csrfPreventionToken!: pulumi.Output<string | undefined>;
+    declare public readonly csrfPreventionToken: pulumi.Output<string | undefined>;
     /**
      * The endpoint for the Proxmox VE API.
      */
-    public readonly endpoint!: pulumi.Output<string | undefined>;
+    declare public readonly endpoint: pulumi.Output<string | undefined>;
     /**
      * The minimum required TLS version for API calls.Supported values: `1.0|1.1|1.2|1.3`. Defaults to `1.3`.
      */
-    public readonly minTls!: pulumi.Output<string | undefined>;
+    declare public readonly minTls: pulumi.Output<string | undefined>;
     /**
      * The one-time password for the Proxmox VE API.
      *
      * @deprecated The `otp` attribute is deprecated and will be removed in a future release. Please use the `apiToken` attribute instead.
      */
-    public readonly otp!: pulumi.Output<string | undefined>;
+    declare public readonly otp: pulumi.Output<string | undefined>;
     /**
      * The password for the Proxmox VE API.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * The alternative temporary directory.
      */
-    public readonly tmpDir!: pulumi.Output<string | undefined>;
+    declare public readonly tmpDir: pulumi.Output<string | undefined>;
     /**
      * The username for the Proxmox VE API.
      */
-    public readonly username!: pulumi.Output<string | undefined>;
+    declare public readonly username: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -80,17 +80,17 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["apiToken"] = args?.apiToken ? pulumi.secret(args.apiToken) : undefined;
             resourceInputs["authTicket"] = args?.authTicket ? pulumi.secret(args.authTicket) : undefined;
             resourceInputs["csrfPreventionToken"] = args?.csrfPreventionToken ? pulumi.secret(args.csrfPreventionToken) : undefined;
-            resourceInputs["endpoint"] = args ? args.endpoint : undefined;
-            resourceInputs["insecure"] = pulumi.output(args ? args.insecure : undefined).apply(JSON.stringify);
-            resourceInputs["minTls"] = args ? args.minTls : undefined;
-            resourceInputs["otp"] = args ? args.otp : undefined;
+            resourceInputs["endpoint"] = args?.endpoint;
+            resourceInputs["insecure"] = pulumi.output(args?.insecure).apply(JSON.stringify);
+            resourceInputs["minTls"] = args?.minTls;
+            resourceInputs["otp"] = args?.otp;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["randomVmIdEnd"] = pulumi.output(args ? args.randomVmIdEnd : undefined).apply(JSON.stringify);
-            resourceInputs["randomVmIdStart"] = pulumi.output(args ? args.randomVmIdStart : undefined).apply(JSON.stringify);
-            resourceInputs["randomVmIds"] = pulumi.output(args ? args.randomVmIds : undefined).apply(JSON.stringify);
-            resourceInputs["ssh"] = pulumi.output(args ? args.ssh : undefined).apply(JSON.stringify);
-            resourceInputs["tmpDir"] = args ? args.tmpDir : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["randomVmIdEnd"] = pulumi.output(args?.randomVmIdEnd).apply(JSON.stringify);
+            resourceInputs["randomVmIdStart"] = pulumi.output(args?.randomVmIdStart).apply(JSON.stringify);
+            resourceInputs["randomVmIds"] = pulumi.output(args?.randomVmIds).apply(JSON.stringify);
+            resourceInputs["ssh"] = pulumi.output(args?.ssh).apply(JSON.stringify);
+            resourceInputs["tmpDir"] = args?.tmpDir;
+            resourceInputs["username"] = args?.username;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["apiToken", "authTicket", "csrfPreventionToken", "password"] };

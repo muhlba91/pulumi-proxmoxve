@@ -67,23 +67,23 @@ export class HAGroup extends pulumi.CustomResource {
     /**
      * The comment associated with this group
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * The identifier of the High Availability group to manage.
      */
-    public readonly group!: pulumi.Output<string>;
+    declare public readonly group: pulumi.Output<string>;
     /**
      * A flag that indicates that failing back to a higher priority node is disabled for this HA group. Defaults to `false`.
      */
-    public readonly noFailback!: pulumi.Output<boolean>;
+    declare public readonly noFailback: pulumi.Output<boolean>;
     /**
      * The member nodes for this group. They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or `null` for unset priorities.
      */
-    public readonly nodes!: pulumi.Output<{[key: string]: number}>;
+    declare public readonly nodes: pulumi.Output<{[key: string]: number}>;
     /**
      * A flag that indicates that other nodes may not be used to run resources associated to this HA group. Defaults to `false`.
      */
-    public readonly restricted!: pulumi.Output<boolean>;
+    declare public readonly restricted: pulumi.Output<boolean>;
 
     /**
      * Create a HAGroup resource with the given unique name, arguments, and options.
@@ -98,24 +98,24 @@ export class HAGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HAGroupState | undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["group"] = state ? state.group : undefined;
-            resourceInputs["noFailback"] = state ? state.noFailback : undefined;
-            resourceInputs["nodes"] = state ? state.nodes : undefined;
-            resourceInputs["restricted"] = state ? state.restricted : undefined;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["group"] = state?.group;
+            resourceInputs["noFailback"] = state?.noFailback;
+            resourceInputs["nodes"] = state?.nodes;
+            resourceInputs["restricted"] = state?.restricted;
         } else {
             const args = argsOrState as HAGroupArgs | undefined;
-            if ((!args || args.group === undefined) && !opts.urn) {
+            if (args?.group === undefined && !opts.urn) {
                 throw new Error("Missing required property 'group'");
             }
-            if ((!args || args.nodes === undefined) && !opts.urn) {
+            if (args?.nodes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodes'");
             }
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["group"] = args ? args.group : undefined;
-            resourceInputs["noFailback"] = args ? args.noFailback : undefined;
-            resourceInputs["nodes"] = args ? args.nodes : undefined;
-            resourceInputs["restricted"] = args ? args.restricted : undefined;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["group"] = args?.group;
+            resourceInputs["noFailback"] = args?.noFailback;
+            resourceInputs["nodes"] = args?.nodes;
+            resourceInputs["restricted"] = args?.restricted;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(HAGroup.__pulumiType, name, resourceInputs, opts);

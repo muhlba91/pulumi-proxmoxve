@@ -65,13 +65,13 @@ type FirewallIPSet struct {
 	Cidrs FirewallIPSetCidrArrayOutput `pulumi:"cidrs"`
 	// IPSet comment.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
-	// Container ID. Leave empty for cluster level aliases.
+	// Container ID. Leave empty for cluster level ipsets.
 	ContainerId pulumi.IntPtrOutput `pulumi:"containerId"`
 	// IPSet name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Node name. Leave empty for cluster level aliases.
+	// Node name. Leave empty for cluster level ipsets.
 	NodeName pulumi.StringPtrOutput `pulumi:"nodeName"`
-	// VM ID. Leave empty for cluster level aliases.
+	// VM ID. Leave empty for cluster level ipsets.
 	VmId pulumi.IntPtrOutput `pulumi:"vmId"`
 }
 
@@ -109,13 +109,13 @@ type firewallIPSetState struct {
 	Cidrs []FirewallIPSetCidr `pulumi:"cidrs"`
 	// IPSet comment.
 	Comment *string `pulumi:"comment"`
-	// Container ID. Leave empty for cluster level aliases.
+	// Container ID. Leave empty for cluster level ipsets.
 	ContainerId *int `pulumi:"containerId"`
 	// IPSet name.
 	Name *string `pulumi:"name"`
-	// Node name. Leave empty for cluster level aliases.
+	// Node name. Leave empty for cluster level ipsets.
 	NodeName *string `pulumi:"nodeName"`
-	// VM ID. Leave empty for cluster level aliases.
+	// VM ID. Leave empty for cluster level ipsets.
 	VmId *int `pulumi:"vmId"`
 }
 
@@ -124,13 +124,13 @@ type FirewallIPSetState struct {
 	Cidrs FirewallIPSetCidrArrayInput
 	// IPSet comment.
 	Comment pulumi.StringPtrInput
-	// Container ID. Leave empty for cluster level aliases.
+	// Container ID. Leave empty for cluster level ipsets.
 	ContainerId pulumi.IntPtrInput
 	// IPSet name.
 	Name pulumi.StringPtrInput
-	// Node name. Leave empty for cluster level aliases.
+	// Node name. Leave empty for cluster level ipsets.
 	NodeName pulumi.StringPtrInput
-	// VM ID. Leave empty for cluster level aliases.
+	// VM ID. Leave empty for cluster level ipsets.
 	VmId pulumi.IntPtrInput
 }
 
@@ -143,13 +143,13 @@ type firewallIPSetArgs struct {
 	Cidrs []FirewallIPSetCidr `pulumi:"cidrs"`
 	// IPSet comment.
 	Comment *string `pulumi:"comment"`
-	// Container ID. Leave empty for cluster level aliases.
+	// Container ID. Leave empty for cluster level ipsets.
 	ContainerId *int `pulumi:"containerId"`
 	// IPSet name.
 	Name *string `pulumi:"name"`
-	// Node name. Leave empty for cluster level aliases.
+	// Node name. Leave empty for cluster level ipsets.
 	NodeName *string `pulumi:"nodeName"`
-	// VM ID. Leave empty for cluster level aliases.
+	// VM ID. Leave empty for cluster level ipsets.
 	VmId *int `pulumi:"vmId"`
 }
 
@@ -159,13 +159,13 @@ type FirewallIPSetArgs struct {
 	Cidrs FirewallIPSetCidrArrayInput
 	// IPSet comment.
 	Comment pulumi.StringPtrInput
-	// Container ID. Leave empty for cluster level aliases.
+	// Container ID. Leave empty for cluster level ipsets.
 	ContainerId pulumi.IntPtrInput
 	// IPSet name.
 	Name pulumi.StringPtrInput
-	// Node name. Leave empty for cluster level aliases.
+	// Node name. Leave empty for cluster level ipsets.
 	NodeName pulumi.StringPtrInput
-	// VM ID. Leave empty for cluster level aliases.
+	// VM ID. Leave empty for cluster level ipsets.
 	VmId pulumi.IntPtrInput
 }
 
@@ -266,7 +266,7 @@ func (o FirewallIPSetOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallIPSet) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-// Container ID. Leave empty for cluster level aliases.
+// Container ID. Leave empty for cluster level ipsets.
 func (o FirewallIPSetOutput) ContainerId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FirewallIPSet) pulumi.IntPtrOutput { return v.ContainerId }).(pulumi.IntPtrOutput)
 }
@@ -276,12 +276,12 @@ func (o FirewallIPSetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallIPSet) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Node name. Leave empty for cluster level aliases.
+// Node name. Leave empty for cluster level ipsets.
 func (o FirewallIPSetOutput) NodeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallIPSet) pulumi.StringPtrOutput { return v.NodeName }).(pulumi.StringPtrOutput)
 }
 
-// VM ID. Leave empty for cluster level aliases.
+// VM ID. Leave empty for cluster level ipsets.
 func (o FirewallIPSetOutput) VmId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FirewallIPSet) pulumi.IntPtrOutput { return v.VmId }).(pulumi.IntPtrOutput)
 }

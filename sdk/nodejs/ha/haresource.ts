@@ -64,31 +64,31 @@ export class HAResource extends pulumi.CustomResource {
     /**
      * The comment associated with this resource.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * The identifier of the High Availability group this resource is a member of.
      */
-    public readonly group!: pulumi.Output<string | undefined>;
+    declare public readonly group: pulumi.Output<string | undefined>;
     /**
      * The maximal number of relocation attempts.
      */
-    public readonly maxRelocate!: pulumi.Output<number | undefined>;
+    declare public readonly maxRelocate: pulumi.Output<number | undefined>;
     /**
      * The maximal number of restart attempts.
      */
-    public readonly maxRestart!: pulumi.Output<number | undefined>;
+    declare public readonly maxRestart: pulumi.Output<number | undefined>;
     /**
      * The Proxmox HA resource identifier
      */
-    public readonly resourceId!: pulumi.Output<string>;
+    declare public readonly resourceId: pulumi.Output<string>;
     /**
      * The desired state of the resource.
      */
-    public readonly state!: pulumi.Output<string>;
+    declare public readonly state: pulumi.Output<string>;
     /**
      * The type of HA resources to create. If unset, it will be deduced from the `resourceId`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a HAResource resource with the given unique name, arguments, and options.
@@ -103,25 +103,25 @@ export class HAResource extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HAResourceState | undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["group"] = state ? state.group : undefined;
-            resourceInputs["maxRelocate"] = state ? state.maxRelocate : undefined;
-            resourceInputs["maxRestart"] = state ? state.maxRestart : undefined;
-            resourceInputs["resourceId"] = state ? state.resourceId : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["group"] = state?.group;
+            resourceInputs["maxRelocate"] = state?.maxRelocate;
+            resourceInputs["maxRestart"] = state?.maxRestart;
+            resourceInputs["resourceId"] = state?.resourceId;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as HAResourceArgs | undefined;
-            if ((!args || args.resourceId === undefined) && !opts.urn) {
+            if (args?.resourceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceId'");
             }
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["group"] = args ? args.group : undefined;
-            resourceInputs["maxRelocate"] = args ? args.maxRelocate : undefined;
-            resourceInputs["maxRestart"] = args ? args.maxRestart : undefined;
-            resourceInputs["resourceId"] = args ? args.resourceId : undefined;
-            resourceInputs["state"] = args ? args.state : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["group"] = args?.group;
+            resourceInputs["maxRelocate"] = args?.maxRelocate;
+            resourceInputs["maxRestart"] = args?.maxRestart;
+            resourceInputs["resourceId"] = args?.resourceId;
+            resourceInputs["state"] = args?.state;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(HAResource.__pulumiType, name, resourceInputs, opts);

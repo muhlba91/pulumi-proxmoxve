@@ -72,47 +72,47 @@ export class User extends pulumi.CustomResource {
     /**
      * The access control list (multiple blocks supported).
      */
-    public readonly acls!: pulumi.Output<outputs.Permission.UserAcl[] | undefined>;
+    declare public readonly acls: pulumi.Output<outputs.Permission.UserAcl[] | undefined>;
     /**
      * The user comment.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * The user's email address.
      */
-    public readonly email!: pulumi.Output<string | undefined>;
+    declare public readonly email: pulumi.Output<string | undefined>;
     /**
      * Whether the user account is enabled.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * The user account's expiration date (RFC 3339).
      */
-    public readonly expirationDate!: pulumi.Output<string | undefined>;
+    declare public readonly expirationDate: pulumi.Output<string | undefined>;
     /**
      * The user's first name.
      */
-    public readonly firstName!: pulumi.Output<string | undefined>;
+    declare public readonly firstName: pulumi.Output<string | undefined>;
     /**
      * The user's groups.
      */
-    public readonly groups!: pulumi.Output<string[] | undefined>;
+    declare public readonly groups: pulumi.Output<string[] | undefined>;
     /**
      * The user's keys.
      */
-    public readonly keys!: pulumi.Output<string | undefined>;
+    declare public readonly keys: pulumi.Output<string | undefined>;
     /**
      * The user's last name.
      */
-    public readonly lastName!: pulumi.Output<string | undefined>;
+    declare public readonly lastName: pulumi.Output<string | undefined>;
     /**
      * The user's password. Required for PVE or PAM realms.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * The user identifier.
      */
-    public readonly userId!: pulumi.Output<string>;
+    declare public readonly userId: pulumi.Output<string>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -127,33 +127,33 @@ export class User extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            resourceInputs["acls"] = state ? state.acls : undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["expirationDate"] = state ? state.expirationDate : undefined;
-            resourceInputs["firstName"] = state ? state.firstName : undefined;
-            resourceInputs["groups"] = state ? state.groups : undefined;
-            resourceInputs["keys"] = state ? state.keys : undefined;
-            resourceInputs["lastName"] = state ? state.lastName : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["acls"] = state?.acls;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["expirationDate"] = state?.expirationDate;
+            resourceInputs["firstName"] = state?.firstName;
+            resourceInputs["groups"] = state?.groups;
+            resourceInputs["keys"] = state?.keys;
+            resourceInputs["lastName"] = state?.lastName;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as UserArgs | undefined;
-            if ((!args || args.userId === undefined) && !opts.urn) {
+            if (args?.userId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            resourceInputs["acls"] = args ? args.acls : undefined;
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["expirationDate"] = args ? args.expirationDate : undefined;
-            resourceInputs["firstName"] = args ? args.firstName : undefined;
-            resourceInputs["groups"] = args ? args.groups : undefined;
-            resourceInputs["keys"] = args ? args.keys : undefined;
-            resourceInputs["lastName"] = args ? args.lastName : undefined;
+            resourceInputs["acls"] = args?.acls;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["expirationDate"] = args?.expirationDate;
+            resourceInputs["firstName"] = args?.firstName;
+            resourceInputs["groups"] = args?.groups;
+            resourceInputs["keys"] = args?.keys;
+            resourceInputs["lastName"] = args?.lastName;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["userId"] = args?.userId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password"] };

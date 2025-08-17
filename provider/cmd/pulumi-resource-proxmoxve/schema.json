@@ -918,7 +918,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Rule type (`in`, `out`).\n"
+                    "description": "Rule type (`in`, `out`, `forward`).\n"
                 }
             },
             "type": "object",
@@ -987,7 +987,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Rule type (`in`, `out`).\n"
+                    "description": "Rule type (`in`, `out`, `forward`).\n"
                 }
             },
             "type": "object",
@@ -1186,6 +1186,107 @@
                 "path",
                 "propagate",
                 "roleId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "proxmoxve:Sdn/getZonesZone:getZonesZone": {
+            "properties": {
+                "advertiseSubnets": {
+                    "type": "boolean"
+                },
+                "bridge": {
+                    "type": "string"
+                },
+                "controller": {
+                    "type": "string"
+                },
+                "disableArpNdSuppression": {
+                    "type": "boolean"
+                },
+                "dns": {
+                    "type": "string"
+                },
+                "dnsZone": {
+                    "type": "string"
+                },
+                "exitNodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "exitNodesLocalRouting": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "ipam": {
+                    "type": "string"
+                },
+                "mtu": {
+                    "type": "integer"
+                },
+                "nodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "peers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "primaryExitNode": {
+                    "type": "string"
+                },
+                "reverseDns": {
+                    "type": "string"
+                },
+                "rtImport": {
+                    "type": "string"
+                },
+                "serviceVlan": {
+                    "type": "integer"
+                },
+                "serviceVlanProtocol": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "vrfVxlan": {
+                    "type": "integer"
+                }
+            },
+            "type": "object",
+            "required": [
+                "advertiseSubnets",
+                "bridge",
+                "controller",
+                "disableArpNdSuppression",
+                "dns",
+                "dnsZone",
+                "exitNodes",
+                "exitNodesLocalRouting",
+                "id",
+                "ipam",
+                "mtu",
+                "nodes",
+                "peers",
+                "primaryExitNode",
+                "reverseDns",
+                "rtImport",
+                "serviceVlan",
+                "serviceVlanProtocol",
+                "type",
+                "vrfVxlan"
             ],
             "language": {
                 "nodejs": {
@@ -3000,7 +3101,7 @@
                 },
                 "handle": {
                     "type": "string",
-                    "description": "The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `enterprise` | `no-subscription` | `test`.\n"
+                    "description": "The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `ceph-squid-enterprise` | `ceph-squid-no-subscription` | `ceph-squid-test` | `enterprise` | `no-subscription` | `test`.\n"
                 },
                 "index": {
                     "type": "integer",
@@ -3031,7 +3132,7 @@
             "inputProperties": {
                 "handle": {
                     "type": "string",
-                    "description": "The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `enterprise` | `no-subscription` | `test`.\n"
+                    "description": "The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `ceph-squid-enterprise` | `ceph-squid-no-subscription` | `ceph-squid-test` | `enterprise` | `no-subscription` | `test`.\n"
                 },
                 "node": {
                     "type": "string",
@@ -3055,7 +3156,7 @@
                     },
                     "handle": {
                         "type": "string",
-                        "description": "The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `enterprise` | `no-subscription` | `test`.\n"
+                        "description": "The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `ceph-squid-enterprise` | `ceph-squid-no-subscription` | `ceph-squid-test` | `enterprise` | `no-subscription` | `test`.\n"
                     },
                     "index": {
                         "type": "integer",
@@ -4579,7 +4680,7 @@
             }
         },
         "proxmoxve:Network/firewall:Firewall": {
-            "description": "Manages firewall options on the cluster level.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst example = new proxmoxve.network.Firewall(\"example\", {\n    ebtables: false,\n    enabled: false,\n    inputPolicy: \"DROP\",\n    logRatelimit: {\n        burst: 10,\n        enabled: false,\n        rate: \"5/second\",\n    },\n    outputPolicy: \"ACCEPT\",\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample = proxmoxve.network.Firewall(\"example\",\n    ebtables=False,\n    enabled=False,\n    input_policy=\"DROP\",\n    log_ratelimit={\n        \"burst\": 10,\n        \"enabled\": False,\n        \"rate\": \"5/second\",\n    },\n    output_policy=\"ACCEPT\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new ProxmoxVE.Network.Firewall(\"example\", new()\n    {\n        Ebtables = false,\n        Enabled = false,\n        InputPolicy = \"DROP\",\n        LogRatelimit = new ProxmoxVE.Network.Inputs.FirewallLogRatelimitArgs\n        {\n            Burst = 10,\n            Enabled = false,\n            Rate = \"5/second\",\n        },\n        OutputPolicy = \"ACCEPT\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/network\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := network.NewFirewall(ctx, \"example\", \u0026network.FirewallArgs{\n\t\t\tEbtables:    pulumi.Bool(false),\n\t\t\tEnabled:     pulumi.Bool(false),\n\t\t\tInputPolicy: pulumi.String(\"DROP\"),\n\t\t\tLogRatelimit: \u0026network.FirewallLogRatelimitArgs{\n\t\t\t\tBurst:   pulumi.Int(10),\n\t\t\t\tEnabled: pulumi.Bool(false),\n\t\t\t\tRate:    pulumi.String(\"5/second\"),\n\t\t\t},\n\t\t\tOutputPolicy: pulumi.String(\"ACCEPT\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport io.muehlbachler.pulumi.proxmoxve.Network.Firewall;\nimport io.muehlbachler.pulumi.proxmoxve.Network.FirewallArgs;\nimport com.pulumi.proxmoxve.Network.inputs.FirewallLogRatelimitArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Firewall(\"example\", FirewallArgs.builder()\n            .ebtables(false)\n            .enabled(false)\n            .inputPolicy(\"DROP\")\n            .logRatelimit(FirewallLogRatelimitArgs.builder()\n                .burst(10)\n                .enabled(false)\n                .rate(\"5/second\")\n                .build())\n            .outputPolicy(\"ACCEPT\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: proxmoxve:Network:Firewall\n    properties:\n      ebtables: false\n      enabled: false\n      inputPolicy: DROP\n      logRatelimit:\n        burst: 10\n        enabled: false\n        rate: 5/second\n      outputPolicy: ACCEPT\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Important Notes\n\nBe careful not to use this resource multiple times for the same node.\n\n## Import\n\nInstances can be imported without an ID, but you still need to pass one, e.g.,\n\nbash\n\n```sh\n$ pulumi import proxmoxve:Network/firewall:Firewall example example\n```\n\n",
+            "description": "Manages firewall options on the cluster level.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst example = new proxmoxve.network.Firewall(\"example\", {\n    ebtables: false,\n    enabled: false,\n    forwardPolicy: \"ACCEPT\",\n    inputPolicy: \"DROP\",\n    logRatelimit: {\n        burst: 10,\n        enabled: false,\n        rate: \"5/second\",\n    },\n    outputPolicy: \"ACCEPT\",\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample = proxmoxve.network.Firewall(\"example\",\n    ebtables=False,\n    enabled=False,\n    forward_policy=\"ACCEPT\",\n    input_policy=\"DROP\",\n    log_ratelimit={\n        \"burst\": 10,\n        \"enabled\": False,\n        \"rate\": \"5/second\",\n    },\n    output_policy=\"ACCEPT\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new ProxmoxVE.Network.Firewall(\"example\", new()\n    {\n        Ebtables = false,\n        Enabled = false,\n        ForwardPolicy = \"ACCEPT\",\n        InputPolicy = \"DROP\",\n        LogRatelimit = new ProxmoxVE.Network.Inputs.FirewallLogRatelimitArgs\n        {\n            Burst = 10,\n            Enabled = false,\n            Rate = \"5/second\",\n        },\n        OutputPolicy = \"ACCEPT\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/network\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := network.NewFirewall(ctx, \"example\", \u0026network.FirewallArgs{\n\t\t\tEbtables:      pulumi.Bool(false),\n\t\t\tEnabled:       pulumi.Bool(false),\n\t\t\tForwardPolicy: pulumi.String(\"ACCEPT\"),\n\t\t\tInputPolicy:   pulumi.String(\"DROP\"),\n\t\t\tLogRatelimit: \u0026network.FirewallLogRatelimitArgs{\n\t\t\t\tBurst:   pulumi.Int(10),\n\t\t\t\tEnabled: pulumi.Bool(false),\n\t\t\t\tRate:    pulumi.String(\"5/second\"),\n\t\t\t},\n\t\t\tOutputPolicy: pulumi.String(\"ACCEPT\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport io.muehlbachler.pulumi.proxmoxve.Network.Firewall;\nimport io.muehlbachler.pulumi.proxmoxve.Network.FirewallArgs;\nimport com.pulumi.proxmoxve.Network.inputs.FirewallLogRatelimitArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Firewall(\"example\", FirewallArgs.builder()\n            .ebtables(false)\n            .enabled(false)\n            .forwardPolicy(\"ACCEPT\")\n            .inputPolicy(\"DROP\")\n            .logRatelimit(FirewallLogRatelimitArgs.builder()\n                .burst(10)\n                .enabled(false)\n                .rate(\"5/second\")\n                .build())\n            .outputPolicy(\"ACCEPT\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: proxmoxve:Network:Firewall\n    properties:\n      ebtables: false\n      enabled: false\n      forwardPolicy: ACCEPT\n      inputPolicy: DROP\n      logRatelimit:\n        burst: 10\n        enabled: false\n        rate: 5/second\n      outputPolicy: ACCEPT\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Important Notes\n\nBe careful not to use this resource multiple times for the same node.\n\n## Import\n\nInstances can be imported without an ID, but you still need to pass one, e.g.,\n\nbash\n\n```sh\n$ pulumi import proxmoxve:Network/firewall:Firewall example example\n```\n\n",
             "properties": {
                 "ebtables": {
                     "type": "boolean",
@@ -4588,6 +4689,10 @@
                 "enabled": {
                     "type": "boolean",
                     "description": "Enable or disable the firewall cluster wide.\n"
+                },
+                "forwardPolicy": {
+                    "type": "string",
+                    "description": "The default forward policy (`ACCEPT`, `DROP`).\n"
                 },
                 "inputPolicy": {
                     "type": "string",
@@ -4610,6 +4715,10 @@
                 "enabled": {
                     "type": "boolean",
                     "description": "Enable or disable the firewall cluster wide.\n"
+                },
+                "forwardPolicy": {
+                    "type": "string",
+                    "description": "The default forward policy (`ACCEPT`, `DROP`).\n"
                 },
                 "inputPolicy": {
                     "type": "string",
@@ -4634,6 +4743,10 @@
                     "enabled": {
                         "type": "boolean",
                         "description": "Enable or disable the firewall cluster wide.\n"
+                    },
+                    "forwardPolicy": {
+                        "type": "string",
+                        "description": "The default forward policy (`ACCEPT`, `DROP`).\n"
                     },
                     "inputPolicy": {
                         "type": "string",
@@ -4759,7 +4872,7 @@
                 },
                 "containerId": {
                     "type": "integer",
-                    "description": "Container ID. Leave empty for cluster level aliases.\n"
+                    "description": "Container ID. Leave empty for cluster level ipsets.\n"
                 },
                 "name": {
                     "type": "string",
@@ -4767,11 +4880,11 @@
                 },
                 "nodeName": {
                     "type": "string",
-                    "description": "Node name. Leave empty for cluster level aliases.\n"
+                    "description": "Node name. Leave empty for cluster level ipsets.\n"
                 },
                 "vmId": {
                     "type": "integer",
-                    "description": "VM ID. Leave empty for cluster level aliases.\n"
+                    "description": "VM ID. Leave empty for cluster level ipsets.\n"
                 }
             },
             "required": [
@@ -4792,7 +4905,7 @@
                 },
                 "containerId": {
                     "type": "integer",
-                    "description": "Container ID. Leave empty for cluster level aliases.\n"
+                    "description": "Container ID. Leave empty for cluster level ipsets.\n"
                 },
                 "name": {
                     "type": "string",
@@ -4800,11 +4913,11 @@
                 },
                 "nodeName": {
                     "type": "string",
-                    "description": "Node name. Leave empty for cluster level aliases.\n"
+                    "description": "Node name. Leave empty for cluster level ipsets.\n"
                 },
                 "vmId": {
                     "type": "integer",
-                    "description": "VM ID. Leave empty for cluster level aliases.\n"
+                    "description": "VM ID. Leave empty for cluster level ipsets.\n"
                 }
             },
             "stateInputs": {
@@ -4824,7 +4937,7 @@
                     },
                     "containerId": {
                         "type": "integer",
-                        "description": "Container ID. Leave empty for cluster level aliases.\n"
+                        "description": "Container ID. Leave empty for cluster level ipsets.\n"
                     },
                     "name": {
                         "type": "string",
@@ -4832,11 +4945,11 @@
                     },
                     "nodeName": {
                         "type": "string",
-                        "description": "Node name. Leave empty for cluster level aliases.\n"
+                        "description": "Node name. Leave empty for cluster level ipsets.\n"
                     },
                     "vmId": {
                         "type": "integer",
-                        "description": "VM ID. Leave empty for cluster level aliases.\n"
+                        "description": "VM ID. Leave empty for cluster level ipsets.\n"
                     }
                 },
                 "type": "object"
@@ -4847,7 +4960,7 @@
             "properties": {
                 "containerId": {
                     "type": "integer",
-                    "description": "Container ID. Leave empty for cluster level aliases.\n"
+                    "description": "Container ID.\n"
                 },
                 "dhcp": {
                     "type": "boolean",
@@ -4895,7 +5008,7 @@
                 },
                 "vmId": {
                     "type": "integer",
-                    "description": "VM ID. Leave empty for cluster level aliases.\n"
+                    "description": "VM ID.\n"
                 }
             },
             "required": [
@@ -4904,7 +5017,7 @@
             "inputProperties": {
                 "containerId": {
                     "type": "integer",
-                    "description": "Container ID. Leave empty for cluster level aliases.\n"
+                    "description": "Container ID.\n"
                 },
                 "dhcp": {
                     "type": "boolean",
@@ -4952,7 +5065,7 @@
                 },
                 "vmId": {
                     "type": "integer",
-                    "description": "VM ID. Leave empty for cluster level aliases.\n"
+                    "description": "VM ID.\n"
                 }
             },
             "requiredInputs": [
@@ -4963,7 +5076,7 @@
                 "properties": {
                     "containerId": {
                         "type": "integer",
-                        "description": "Container ID. Leave empty for cluster level aliases.\n"
+                        "description": "Container ID.\n"
                     },
                     "dhcp": {
                         "type": "boolean",
@@ -5011,7 +5124,7 @@
                     },
                     "vmId": {
                         "type": "integer",
-                        "description": "VM ID. Leave empty for cluster level aliases.\n"
+                        "description": "VM ID.\n"
                     }
                 },
                 "type": "object"
@@ -5882,6 +5995,763 @@
                         "type": "string",
                         "description": "The user identifier.\n",
                         "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "proxmoxve:SDNZone/evpn:Evpn": {
+            "description": "EVPN Zone in Proxmox SDN. The EVPN zone creates a routable Layer 3 network, capable of spanning across multiple clusters.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst example = new proxmoxve.sdnzone.Evpn(\"example\", {\n    advertiseSubnets: true,\n    controller: \"evpn-controller1\",\n    disableArpNdSuppression: false,\n    dns: \"1.1.1.1\",\n    dnsZone: \"example.com\",\n    exitNodes: [\n        \"pve-exit1\",\n        \"pve-exit2\",\n    ],\n    exitNodesLocalRouting: true,\n    zoneId: \"evpn1\",\n    ipam: \"pve\",\n    mtu: 1450,\n    nodes: [\"pve\"],\n    primaryExitNode: \"pve-exit1\",\n    reverseDns: \"1.1.1.1\",\n    rtImport: \"65000:65000\",\n    vrfVxlan: 4000,\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample = proxmoxve.sdnzone.Evpn(\"example\",\n    advertise_subnets=True,\n    controller=\"evpn-controller1\",\n    disable_arp_nd_suppression=False,\n    dns=\"1.1.1.1\",\n    dns_zone=\"example.com\",\n    exit_nodes=[\n        \"pve-exit1\",\n        \"pve-exit2\",\n    ],\n    exit_nodes_local_routing=True,\n    zone_id=\"evpn1\",\n    ipam=\"pve\",\n    mtu=1450,\n    nodes=[\"pve\"],\n    primary_exit_node=\"pve-exit1\",\n    reverse_dns=\"1.1.1.1\",\n    rt_import=\"65000:65000\",\n    vrf_vxlan=4000)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new ProxmoxVE.SDNZone.Evpn(\"example\", new()\n    {\n        AdvertiseSubnets = true,\n        Controller = \"evpn-controller1\",\n        DisableArpNdSuppression = false,\n        Dns = \"1.1.1.1\",\n        DnsZone = \"example.com\",\n        ExitNodes = new[]\n        {\n            \"pve-exit1\",\n            \"pve-exit2\",\n        },\n        ExitNodesLocalRouting = true,\n        ZoneId = \"evpn1\",\n        Ipam = \"pve\",\n        Mtu = 1450,\n        Nodes = new[]\n        {\n            \"pve\",\n        },\n        PrimaryExitNode = \"pve-exit1\",\n        ReverseDns = \"1.1.1.1\",\n        RtImport = \"65000:65000\",\n        VrfVxlan = 4000,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/sdnzone\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdnzone.NewEvpn(ctx, \"example\", \u0026sdnzone.EvpnArgs{\n\t\t\tAdvertiseSubnets:        pulumi.Bool(true),\n\t\t\tController:              pulumi.String(\"evpn-controller1\"),\n\t\t\tDisableArpNdSuppression: pulumi.Bool(false),\n\t\t\tDns:                     pulumi.String(\"1.1.1.1\"),\n\t\t\tDnsZone:                 pulumi.String(\"example.com\"),\n\t\t\tExitNodes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"pve-exit1\"),\n\t\t\t\tpulumi.String(\"pve-exit2\"),\n\t\t\t},\n\t\t\tExitNodesLocalRouting: pulumi.Bool(true),\n\t\t\tZoneId:                pulumi.String(\"evpn1\"),\n\t\t\tIpam:                  pulumi.String(\"pve\"),\n\t\t\tMtu:                   pulumi.Int(1450),\n\t\t\tNodes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"pve\"),\n\t\t\t},\n\t\t\tPrimaryExitNode: pulumi.String(\"pve-exit1\"),\n\t\t\tReverseDns:      pulumi.String(\"1.1.1.1\"),\n\t\t\tRtImport:        pulumi.String(\"65000:65000\"),\n\t\t\tVrfVxlan:        pulumi.Int(4000),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport io.muehlbachler.pulumi.proxmoxve.SDNZone.Evpn;\nimport io.muehlbachler.pulumi.proxmoxve.SDNZone.EvpnArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Evpn(\"example\", EvpnArgs.builder()\n            .advertiseSubnets(true)\n            .controller(\"evpn-controller1\")\n            .disableArpNdSuppression(false)\n            .dns(\"1.1.1.1\")\n            .dnsZone(\"example.com\")\n            .exitNodes(            \n                \"pve-exit1\",\n                \"pve-exit2\")\n            .exitNodesLocalRouting(true)\n            .zoneId(\"evpn1\")\n            .ipam(\"pve\")\n            .mtu(1450)\n            .nodes(\"pve\")\n            .primaryExitNode(\"pve-exit1\")\n            .reverseDns(\"1.1.1.1\")\n            .rtImport(\"65000:65000\")\n            .vrfVxlan(4000)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: proxmoxve:SDNZone:Evpn\n    properties:\n      # Optional attributes\n      advertiseSubnets: true\n      controller: evpn-controller1\n      disableArpNdSuppression: false\n      # Generic optional attributes\n      dns: 1.1.1.1\n      dnsZone: example.com\n      exitNodes:\n        - pve-exit1\n        - pve-exit2\n      exitNodesLocalRouting: true\n      zoneId: evpn1\n      ipam: pve\n      mtu: 1450\n      nodes:\n        - pve\n      primaryExitNode: pve-exit1\n      reverseDns: 1.1.1.1\n      rtImport: 65000:65000\n      vrfVxlan: 4000\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n#!/usr/bin/env sh\n\nEVPN SDN zone can be imported using its unique identifier (zone ID)\n\n```sh\n$ pulumi import proxmoxve:SDNZone/evpn:Evpn example evpn1\n```\n\n",
+            "properties": {
+                "advertiseSubnets": {
+                    "type": "boolean",
+                    "description": "Enable subnet advertisement for EVPN.\n"
+                },
+                "controller": {
+                    "type": "string",
+                    "description": "EVPN controller address.\n"
+                },
+                "disableArpNdSuppression": {
+                    "type": "boolean",
+                    "description": "Disable ARP/ND suppression for EVPN.\n"
+                },
+                "dns": {
+                    "type": "string",
+                    "description": "DNS API server address.\n"
+                },
+                "dnsZone": {
+                    "type": "string",
+                    "description": "DNS domain name. Used to register hostnames, such as `\u003chostname\u003e.\u003cdomain\u003e`. The DNS zone must already exist on the DNS server.\n"
+                },
+                "exitNodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of exit nodes for EVPN.\n"
+                },
+                "exitNodesLocalRouting": {
+                    "type": "boolean",
+                    "description": "Enable local routing for EVPN exit nodes.\n"
+                },
+                "ipam": {
+                    "type": "string",
+                    "description": "IP Address Management system.\n"
+                },
+                "mtu": {
+                    "type": "integer",
+                    "description": "MTU value for the zone.\n"
+                },
+                "nodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The Proxmox nodes which the zone and associated VNets should be deployed on\n"
+                },
+                "primaryExitNode": {
+                    "type": "string",
+                    "description": "Primary exit node for EVPN.\n"
+                },
+                "reverseDns": {
+                    "type": "string",
+                    "description": "Reverse DNS API server address.\n"
+                },
+                "rtImport": {
+                    "type": "string",
+                    "description": "Route target import for EVPN.\n"
+                },
+                "vrfVxlan": {
+                    "type": "integer",
+                    "description": "VRF VXLAN-ID used for dedicated routing interconnect between VNets. It must be different than the VXLAN-ID of the VNets.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The unique identifier of the SDN zone.\n"
+                }
+            },
+            "required": [
+                "controller",
+                "exitNodes",
+                "zoneId",
+                "nodes",
+                "vrfVxlan"
+            ],
+            "inputProperties": {
+                "advertiseSubnets": {
+                    "type": "boolean",
+                    "description": "Enable subnet advertisement for EVPN.\n"
+                },
+                "controller": {
+                    "type": "string",
+                    "description": "EVPN controller address.\n"
+                },
+                "disableArpNdSuppression": {
+                    "type": "boolean",
+                    "description": "Disable ARP/ND suppression for EVPN.\n"
+                },
+                "dns": {
+                    "type": "string",
+                    "description": "DNS API server address.\n"
+                },
+                "dnsZone": {
+                    "type": "string",
+                    "description": "DNS domain name. Used to register hostnames, such as `\u003chostname\u003e.\u003cdomain\u003e`. The DNS zone must already exist on the DNS server.\n"
+                },
+                "exitNodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of exit nodes for EVPN.\n"
+                },
+                "exitNodesLocalRouting": {
+                    "type": "boolean",
+                    "description": "Enable local routing for EVPN exit nodes.\n"
+                },
+                "ipam": {
+                    "type": "string",
+                    "description": "IP Address Management system.\n"
+                },
+                "mtu": {
+                    "type": "integer",
+                    "description": "MTU value for the zone.\n"
+                },
+                "nodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The Proxmox nodes which the zone and associated VNets should be deployed on\n"
+                },
+                "primaryExitNode": {
+                    "type": "string",
+                    "description": "Primary exit node for EVPN.\n"
+                },
+                "reverseDns": {
+                    "type": "string",
+                    "description": "Reverse DNS API server address.\n"
+                },
+                "rtImport": {
+                    "type": "string",
+                    "description": "Route target import for EVPN.\n"
+                },
+                "vrfVxlan": {
+                    "type": "integer",
+                    "description": "VRF VXLAN-ID used for dedicated routing interconnect between VNets. It must be different than the VXLAN-ID of the VNets.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The unique identifier of the SDN zone.\n"
+                }
+            },
+            "requiredInputs": [
+                "controller",
+                "zoneId",
+                "nodes",
+                "vrfVxlan"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Evpn resources.\n",
+                "properties": {
+                    "advertiseSubnets": {
+                        "type": "boolean",
+                        "description": "Enable subnet advertisement for EVPN.\n"
+                    },
+                    "controller": {
+                        "type": "string",
+                        "description": "EVPN controller address.\n"
+                    },
+                    "disableArpNdSuppression": {
+                        "type": "boolean",
+                        "description": "Disable ARP/ND suppression for EVPN.\n"
+                    },
+                    "dns": {
+                        "type": "string",
+                        "description": "DNS API server address.\n"
+                    },
+                    "dnsZone": {
+                        "type": "string",
+                        "description": "DNS domain name. Used to register hostnames, such as `\u003chostname\u003e.\u003cdomain\u003e`. The DNS zone must already exist on the DNS server.\n"
+                    },
+                    "exitNodes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of exit nodes for EVPN.\n"
+                    },
+                    "exitNodesLocalRouting": {
+                        "type": "boolean",
+                        "description": "Enable local routing for EVPN exit nodes.\n"
+                    },
+                    "ipam": {
+                        "type": "string",
+                        "description": "IP Address Management system.\n"
+                    },
+                    "mtu": {
+                        "type": "integer",
+                        "description": "MTU value for the zone.\n"
+                    },
+                    "nodes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The Proxmox nodes which the zone and associated VNets should be deployed on\n"
+                    },
+                    "primaryExitNode": {
+                        "type": "string",
+                        "description": "Primary exit node for EVPN.\n"
+                    },
+                    "reverseDns": {
+                        "type": "string",
+                        "description": "Reverse DNS API server address.\n"
+                    },
+                    "rtImport": {
+                        "type": "string",
+                        "description": "Route target import for EVPN.\n"
+                    },
+                    "vrfVxlan": {
+                        "type": "integer",
+                        "description": "VRF VXLAN-ID used for dedicated routing interconnect between VNets. It must be different than the VXLAN-ID of the VNets.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The unique identifier of the SDN zone.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "proxmoxve:SDNZone/qinq:Qinq": {
+            "description": "QinQ Zone in Proxmox SDN. QinQ also known as VLAN stacking, that uses multiple layers of VLAN tags for isolation. The QinQ zone defines the outer VLAN tag (the Service VLAN) whereas the inner VLAN tag is defined by the VNet. Your physical network switches must support stacked VLANs for this configuration. Due to the double stacking of tags, you need 4 more bytes for QinQ VLANs. For example, you must reduce the MTU to 1496 if you physical interface MTU is 1500.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst example = new proxmoxve.sdnzone.Qinq(\"example\", {\n    bridge: \"vmbr0\",\n    dns: \"1.1.1.1\",\n    dnsZone: \"example.com\",\n    zoneId: \"qinq1\",\n    ipam: \"pve\",\n    mtu: 1496,\n    nodes: [\"pve\"],\n    reverseDns: \"1.1.1.1\",\n    serviceVlan: 100,\n    serviceVlanProtocol: \"802.1ad\",\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample = proxmoxve.sdnzone.Qinq(\"example\",\n    bridge=\"vmbr0\",\n    dns=\"1.1.1.1\",\n    dns_zone=\"example.com\",\n    zone_id=\"qinq1\",\n    ipam=\"pve\",\n    mtu=1496,\n    nodes=[\"pve\"],\n    reverse_dns=\"1.1.1.1\",\n    service_vlan=100,\n    service_vlan_protocol=\"802.1ad\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new ProxmoxVE.SDNZone.Qinq(\"example\", new()\n    {\n        Bridge = \"vmbr0\",\n        Dns = \"1.1.1.1\",\n        DnsZone = \"example.com\",\n        ZoneId = \"qinq1\",\n        Ipam = \"pve\",\n        Mtu = 1496,\n        Nodes = new[]\n        {\n            \"pve\",\n        },\n        ReverseDns = \"1.1.1.1\",\n        ServiceVlan = 100,\n        ServiceVlanProtocol = \"802.1ad\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/sdnzone\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdnzone.NewQinq(ctx, \"example\", \u0026sdnzone.QinqArgs{\n\t\t\tBridge:  pulumi.String(\"vmbr0\"),\n\t\t\tDns:     pulumi.String(\"1.1.1.1\"),\n\t\t\tDnsZone: pulumi.String(\"example.com\"),\n\t\t\tZoneId:  pulumi.String(\"qinq1\"),\n\t\t\tIpam:    pulumi.String(\"pve\"),\n\t\t\tMtu:     pulumi.Int(1496),\n\t\t\tNodes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"pve\"),\n\t\t\t},\n\t\t\tReverseDns:          pulumi.String(\"1.1.1.1\"),\n\t\t\tServiceVlan:         pulumi.Int(100),\n\t\t\tServiceVlanProtocol: pulumi.String(\"802.1ad\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport io.muehlbachler.pulumi.proxmoxve.SDNZone.Qinq;\nimport io.muehlbachler.pulumi.proxmoxve.SDNZone.QinqArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Qinq(\"example\", QinqArgs.builder()\n            .bridge(\"vmbr0\")\n            .dns(\"1.1.1.1\")\n            .dnsZone(\"example.com\")\n            .zoneId(\"qinq1\")\n            .ipam(\"pve\")\n            .mtu(1496)\n            .nodes(\"pve\")\n            .reverseDns(\"1.1.1.1\")\n            .serviceVlan(100)\n            .serviceVlanProtocol(\"802.1ad\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: proxmoxve:SDNZone:Qinq\n    properties:\n      bridge: vmbr0\n      # Optional attributes\n      dns: 1.1.1.1\n      dnsZone: example.com\n      zoneId: qinq1\n      ipam: pve\n      mtu: 1496\n      nodes:\n        - pve\n      reverseDns: 1.1.1.1\n      serviceVlan: 100\n      serviceVlanProtocol: 802.1ad\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n#!/usr/bin/env sh\n\nQinQ SDN zone can be imported using its unique identifier (zone ID)\n\n```sh\n$ pulumi import proxmoxve:SDNZone/qinq:Qinq example qinq1\n```\n\n",
+            "properties": {
+                "bridge": {
+                    "type": "string",
+                    "description": "A local, VLAN-aware bridge that is already configured on each local node\n"
+                },
+                "dns": {
+                    "type": "string",
+                    "description": "DNS API server address.\n"
+                },
+                "dnsZone": {
+                    "type": "string",
+                    "description": "DNS domain name. Used to register hostnames, such as `\u003chostname\u003e.\u003cdomain\u003e`. The DNS zone must already exist on the DNS server.\n"
+                },
+                "ipam": {
+                    "type": "string",
+                    "description": "IP Address Management system.\n"
+                },
+                "mtu": {
+                    "type": "integer",
+                    "description": "MTU value for the zone.\n"
+                },
+                "nodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The Proxmox nodes which the zone and associated VNets should be deployed on\n"
+                },
+                "reverseDns": {
+                    "type": "string",
+                    "description": "Reverse DNS API server address.\n"
+                },
+                "serviceVlan": {
+                    "type": "integer",
+                    "description": "Service VLAN tag for QinQ. The tag must be between `1` and `4094`.\n"
+                },
+                "serviceVlanProtocol": {
+                    "type": "string",
+                    "description": "Service VLAN protocol for QinQ. The protocol must be `802.1ad` or `802.1q`.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The unique identifier of the SDN zone.\n"
+                }
+            },
+            "required": [
+                "bridge",
+                "zoneId",
+                "nodes",
+                "serviceVlan"
+            ],
+            "inputProperties": {
+                "bridge": {
+                    "type": "string",
+                    "description": "A local, VLAN-aware bridge that is already configured on each local node\n"
+                },
+                "dns": {
+                    "type": "string",
+                    "description": "DNS API server address.\n"
+                },
+                "dnsZone": {
+                    "type": "string",
+                    "description": "DNS domain name. Used to register hostnames, such as `\u003chostname\u003e.\u003cdomain\u003e`. The DNS zone must already exist on the DNS server.\n"
+                },
+                "ipam": {
+                    "type": "string",
+                    "description": "IP Address Management system.\n"
+                },
+                "mtu": {
+                    "type": "integer",
+                    "description": "MTU value for the zone.\n"
+                },
+                "nodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The Proxmox nodes which the zone and associated VNets should be deployed on\n"
+                },
+                "reverseDns": {
+                    "type": "string",
+                    "description": "Reverse DNS API server address.\n"
+                },
+                "serviceVlan": {
+                    "type": "integer",
+                    "description": "Service VLAN tag for QinQ. The tag must be between `1` and `4094`.\n"
+                },
+                "serviceVlanProtocol": {
+                    "type": "string",
+                    "description": "Service VLAN protocol for QinQ. The protocol must be `802.1ad` or `802.1q`.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The unique identifier of the SDN zone.\n"
+                }
+            },
+            "requiredInputs": [
+                "bridge",
+                "zoneId",
+                "nodes",
+                "serviceVlan"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Qinq resources.\n",
+                "properties": {
+                    "bridge": {
+                        "type": "string",
+                        "description": "A local, VLAN-aware bridge that is already configured on each local node\n"
+                    },
+                    "dns": {
+                        "type": "string",
+                        "description": "DNS API server address.\n"
+                    },
+                    "dnsZone": {
+                        "type": "string",
+                        "description": "DNS domain name. Used to register hostnames, such as `\u003chostname\u003e.\u003cdomain\u003e`. The DNS zone must already exist on the DNS server.\n"
+                    },
+                    "ipam": {
+                        "type": "string",
+                        "description": "IP Address Management system.\n"
+                    },
+                    "mtu": {
+                        "type": "integer",
+                        "description": "MTU value for the zone.\n"
+                    },
+                    "nodes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The Proxmox nodes which the zone and associated VNets should be deployed on\n"
+                    },
+                    "reverseDns": {
+                        "type": "string",
+                        "description": "Reverse DNS API server address.\n"
+                    },
+                    "serviceVlan": {
+                        "type": "integer",
+                        "description": "Service VLAN tag for QinQ. The tag must be between `1` and `4094`.\n"
+                    },
+                    "serviceVlanProtocol": {
+                        "type": "string",
+                        "description": "Service VLAN protocol for QinQ. The protocol must be `802.1ad` or `802.1q`.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The unique identifier of the SDN zone.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "proxmoxve:SDNZone/simple:Simple": {
+            "description": "Simple Zone in Proxmox SDN. It will create an isolated VNet bridge. This bridge is not linked to a physical interface, and VM traffic is only local on each the node. It can be used in NAT or routed setups.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst example = new proxmoxve.sdnzone.Simple(\"example\", {\n    dns: \"1.1.1.1\",\n    dnsZone: \"example.com\",\n    zoneId: \"simple1\",\n    ipam: \"pve\",\n    mtu: 1500,\n    nodes: [\"pve\"],\n    reverseDns: \"1.1.1.1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample = proxmoxve.sdnzone.Simple(\"example\",\n    dns=\"1.1.1.1\",\n    dns_zone=\"example.com\",\n    zone_id=\"simple1\",\n    ipam=\"pve\",\n    mtu=1500,\n    nodes=[\"pve\"],\n    reverse_dns=\"1.1.1.1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new ProxmoxVE.SDNZone.Simple(\"example\", new()\n    {\n        Dns = \"1.1.1.1\",\n        DnsZone = \"example.com\",\n        ZoneId = \"simple1\",\n        Ipam = \"pve\",\n        Mtu = 1500,\n        Nodes = new[]\n        {\n            \"pve\",\n        },\n        ReverseDns = \"1.1.1.1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/sdnzone\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdnzone.NewSimple(ctx, \"example\", \u0026sdnzone.SimpleArgs{\n\t\t\tDns:     pulumi.String(\"1.1.1.1\"),\n\t\t\tDnsZone: pulumi.String(\"example.com\"),\n\t\t\tZoneId:  pulumi.String(\"simple1\"),\n\t\t\tIpam:    pulumi.String(\"pve\"),\n\t\t\tMtu:     pulumi.Int(1500),\n\t\t\tNodes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"pve\"),\n\t\t\t},\n\t\t\tReverseDns: pulumi.String(\"1.1.1.1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport io.muehlbachler.pulumi.proxmoxve.SDNZone.Simple;\nimport io.muehlbachler.pulumi.proxmoxve.SDNZone.SimpleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Simple(\"example\", SimpleArgs.builder()\n            .dns(\"1.1.1.1\")\n            .dnsZone(\"example.com\")\n            .zoneId(\"simple1\")\n            .ipam(\"pve\")\n            .mtu(1500)\n            .nodes(\"pve\")\n            .reverseDns(\"1.1.1.1\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: proxmoxve:SDNZone:Simple\n    properties:\n      # Optional attributes\n      dns: 1.1.1.1\n      dnsZone: example.com\n      zoneId: simple1\n      ipam: pve\n      mtu: 1500\n      nodes:\n        - pve\n      reverseDns: 1.1.1.1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n#!/usr/bin/env sh\n\nSimple SDN zone can be imported using its unique identifier (zone ID)\n\n```sh\n$ pulumi import proxmoxve:SDNZone/simple:Simple example simple1\n```\n\n",
+            "properties": {
+                "dns": {
+                    "type": "string",
+                    "description": "DNS API server address.\n"
+                },
+                "dnsZone": {
+                    "type": "string",
+                    "description": "DNS domain name. Used to register hostnames, such as `\u003chostname\u003e.\u003cdomain\u003e`. The DNS zone must already exist on the DNS server.\n"
+                },
+                "ipam": {
+                    "type": "string",
+                    "description": "IP Address Management system.\n"
+                },
+                "mtu": {
+                    "type": "integer",
+                    "description": "MTU value for the zone.\n"
+                },
+                "nodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The Proxmox nodes which the zone and associated VNets should be deployed on\n"
+                },
+                "reverseDns": {
+                    "type": "string",
+                    "description": "Reverse DNS API server address.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The unique identifier of the SDN zone.\n"
+                }
+            },
+            "required": [
+                "zoneId",
+                "nodes"
+            ],
+            "inputProperties": {
+                "dns": {
+                    "type": "string",
+                    "description": "DNS API server address.\n"
+                },
+                "dnsZone": {
+                    "type": "string",
+                    "description": "DNS domain name. Used to register hostnames, such as `\u003chostname\u003e.\u003cdomain\u003e`. The DNS zone must already exist on the DNS server.\n"
+                },
+                "ipam": {
+                    "type": "string",
+                    "description": "IP Address Management system.\n"
+                },
+                "mtu": {
+                    "type": "integer",
+                    "description": "MTU value for the zone.\n"
+                },
+                "nodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The Proxmox nodes which the zone and associated VNets should be deployed on\n"
+                },
+                "reverseDns": {
+                    "type": "string",
+                    "description": "Reverse DNS API server address.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The unique identifier of the SDN zone.\n"
+                }
+            },
+            "requiredInputs": [
+                "zoneId",
+                "nodes"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Simple resources.\n",
+                "properties": {
+                    "dns": {
+                        "type": "string",
+                        "description": "DNS API server address.\n"
+                    },
+                    "dnsZone": {
+                        "type": "string",
+                        "description": "DNS domain name. Used to register hostnames, such as `\u003chostname\u003e.\u003cdomain\u003e`. The DNS zone must already exist on the DNS server.\n"
+                    },
+                    "ipam": {
+                        "type": "string",
+                        "description": "IP Address Management system.\n"
+                    },
+                    "mtu": {
+                        "type": "integer",
+                        "description": "MTU value for the zone.\n"
+                    },
+                    "nodes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The Proxmox nodes which the zone and associated VNets should be deployed on\n"
+                    },
+                    "reverseDns": {
+                        "type": "string",
+                        "description": "Reverse DNS API server address.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The unique identifier of the SDN zone.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "proxmoxve:SDNZone/vlan:Vlan": {
+            "description": "VLAN Zone in Proxmox SDN. It uses an existing local Linux or OVS bridge to connect to the node's physical interface. It uses VLAN tagging defined in the VNet to isolate the network segments. This allows connectivity of VMs between different nodes.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst example = new proxmoxve.sdnzone.Vlan(\"example\", {\n    bridge: \"vmbr0\",\n    dns: \"1.1.1.1\",\n    dnsZone: \"example.com\",\n    zoneId: \"vlan1\",\n    ipam: \"pve\",\n    mtu: 1500,\n    nodes: [\"pve\"],\n    reverseDns: \"1.1.1.1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample = proxmoxve.sdnzone.Vlan(\"example\",\n    bridge=\"vmbr0\",\n    dns=\"1.1.1.1\",\n    dns_zone=\"example.com\",\n    zone_id=\"vlan1\",\n    ipam=\"pve\",\n    mtu=1500,\n    nodes=[\"pve\"],\n    reverse_dns=\"1.1.1.1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new ProxmoxVE.SDNZone.Vlan(\"example\", new()\n    {\n        Bridge = \"vmbr0\",\n        Dns = \"1.1.1.1\",\n        DnsZone = \"example.com\",\n        ZoneId = \"vlan1\",\n        Ipam = \"pve\",\n        Mtu = 1500,\n        Nodes = new[]\n        {\n            \"pve\",\n        },\n        ReverseDns = \"1.1.1.1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/sdnzone\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdnzone.NewVlan(ctx, \"example\", \u0026sdnzone.VlanArgs{\n\t\t\tBridge:  pulumi.String(\"vmbr0\"),\n\t\t\tDns:     pulumi.String(\"1.1.1.1\"),\n\t\t\tDnsZone: pulumi.String(\"example.com\"),\n\t\t\tZoneId:  pulumi.String(\"vlan1\"),\n\t\t\tIpam:    pulumi.String(\"pve\"),\n\t\t\tMtu:     pulumi.Int(1500),\n\t\t\tNodes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"pve\"),\n\t\t\t},\n\t\t\tReverseDns: pulumi.String(\"1.1.1.1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport io.muehlbachler.pulumi.proxmoxve.SDNZone.Vlan;\nimport io.muehlbachler.pulumi.proxmoxve.SDNZone.VlanArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Vlan(\"example\", VlanArgs.builder()\n            .bridge(\"vmbr0\")\n            .dns(\"1.1.1.1\")\n            .dnsZone(\"example.com\")\n            .zoneId(\"vlan1\")\n            .ipam(\"pve\")\n            .mtu(1500)\n            .nodes(\"pve\")\n            .reverseDns(\"1.1.1.1\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: proxmoxve:SDNZone:Vlan\n    properties:\n      bridge: vmbr0\n      # Optional attributes\n      dns: 1.1.1.1\n      dnsZone: example.com\n      zoneId: vlan1\n      ipam: pve\n      mtu: 1500\n      nodes:\n        - pve\n      reverseDns: 1.1.1.1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n#!/usr/bin/env sh\n\nVLAN SDN zone can be imported using its unique identifier (zone ID)\n\n```sh\n$ pulumi import proxmoxve:SDNZone/vlan:Vlan example vlan1\n```\n\n",
+            "properties": {
+                "bridge": {
+                    "type": "string",
+                    "description": "The local bridge or OVS switch, already configured on *each* node that allows node-to-node connection.\n"
+                },
+                "dns": {
+                    "type": "string",
+                    "description": "DNS API server address.\n"
+                },
+                "dnsZone": {
+                    "type": "string",
+                    "description": "DNS domain name. Used to register hostnames, such as `\u003chostname\u003e.\u003cdomain\u003e`. The DNS zone must already exist on the DNS server.\n"
+                },
+                "ipam": {
+                    "type": "string",
+                    "description": "IP Address Management system.\n"
+                },
+                "mtu": {
+                    "type": "integer",
+                    "description": "MTU value for the zone.\n"
+                },
+                "nodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The Proxmox nodes which the zone and associated VNets should be deployed on\n"
+                },
+                "reverseDns": {
+                    "type": "string",
+                    "description": "Reverse DNS API server address.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The unique identifier of the SDN zone.\n"
+                }
+            },
+            "required": [
+                "bridge",
+                "zoneId",
+                "nodes"
+            ],
+            "inputProperties": {
+                "bridge": {
+                    "type": "string",
+                    "description": "The local bridge or OVS switch, already configured on *each* node that allows node-to-node connection.\n"
+                },
+                "dns": {
+                    "type": "string",
+                    "description": "DNS API server address.\n"
+                },
+                "dnsZone": {
+                    "type": "string",
+                    "description": "DNS domain name. Used to register hostnames, such as `\u003chostname\u003e.\u003cdomain\u003e`. The DNS zone must already exist on the DNS server.\n"
+                },
+                "ipam": {
+                    "type": "string",
+                    "description": "IP Address Management system.\n"
+                },
+                "mtu": {
+                    "type": "integer",
+                    "description": "MTU value for the zone.\n"
+                },
+                "nodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The Proxmox nodes which the zone and associated VNets should be deployed on\n"
+                },
+                "reverseDns": {
+                    "type": "string",
+                    "description": "Reverse DNS API server address.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The unique identifier of the SDN zone.\n"
+                }
+            },
+            "requiredInputs": [
+                "bridge",
+                "zoneId",
+                "nodes"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Vlan resources.\n",
+                "properties": {
+                    "bridge": {
+                        "type": "string",
+                        "description": "The local bridge or OVS switch, already configured on *each* node that allows node-to-node connection.\n"
+                    },
+                    "dns": {
+                        "type": "string",
+                        "description": "DNS API server address.\n"
+                    },
+                    "dnsZone": {
+                        "type": "string",
+                        "description": "DNS domain name. Used to register hostnames, such as `\u003chostname\u003e.\u003cdomain\u003e`. The DNS zone must already exist on the DNS server.\n"
+                    },
+                    "ipam": {
+                        "type": "string",
+                        "description": "IP Address Management system.\n"
+                    },
+                    "mtu": {
+                        "type": "integer",
+                        "description": "MTU value for the zone.\n"
+                    },
+                    "nodes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The Proxmox nodes which the zone and associated VNets should be deployed on\n"
+                    },
+                    "reverseDns": {
+                        "type": "string",
+                        "description": "Reverse DNS API server address.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The unique identifier of the SDN zone.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "proxmoxve:SDNZone/vxlan:Vxlan": {
+            "description": "VXLAN Zone in Proxmox SDN. It establishes a tunnel (overlay) on top of an existing network (underlay). This encapsulates layer 2 Ethernet frames within layer 4 UDP datagrams using the default destination port 4789. You have to configure the underlay network yourself to enable UDP connectivity between all peers. Because VXLAN encapsulation uses 50 bytes, the MTU needs to be 50 bytes lower than the outgoing physical interface.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst example = new proxmoxve.sdnzone.Vxlan(\"example\", {\n    dns: \"1.1.1.1\",\n    dnsZone: \"example.com\",\n    zoneId: \"vxlan1\",\n    ipam: \"pve\",\n    mtu: 1450,\n    nodes: [\"pve\"],\n    peers: [\n        \"10.0.0.1\",\n        \"10.0.0.2\",\n        \"10.0.0.3\",\n    ],\n    reverseDns: \"1.1.1.1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample = proxmoxve.sdnzone.Vxlan(\"example\",\n    dns=\"1.1.1.1\",\n    dns_zone=\"example.com\",\n    zone_id=\"vxlan1\",\n    ipam=\"pve\",\n    mtu=1450,\n    nodes=[\"pve\"],\n    peers=[\n        \"10.0.0.1\",\n        \"10.0.0.2\",\n        \"10.0.0.3\",\n    ],\n    reverse_dns=\"1.1.1.1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new ProxmoxVE.SDNZone.Vxlan(\"example\", new()\n    {\n        Dns = \"1.1.1.1\",\n        DnsZone = \"example.com\",\n        ZoneId = \"vxlan1\",\n        Ipam = \"pve\",\n        Mtu = 1450,\n        Nodes = new[]\n        {\n            \"pve\",\n        },\n        Peers = new[]\n        {\n            \"10.0.0.1\",\n            \"10.0.0.2\",\n            \"10.0.0.3\",\n        },\n        ReverseDns = \"1.1.1.1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/sdnzone\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdnzone.NewVxlan(ctx, \"example\", \u0026sdnzone.VxlanArgs{\n\t\t\tDns:     pulumi.String(\"1.1.1.1\"),\n\t\t\tDnsZone: pulumi.String(\"example.com\"),\n\t\t\tZoneId:  pulumi.String(\"vxlan1\"),\n\t\t\tIpam:    pulumi.String(\"pve\"),\n\t\t\tMtu:     pulumi.Int(1450),\n\t\t\tNodes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"pve\"),\n\t\t\t},\n\t\t\tPeers: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"10.0.0.1\"),\n\t\t\t\tpulumi.String(\"10.0.0.2\"),\n\t\t\t\tpulumi.String(\"10.0.0.3\"),\n\t\t\t},\n\t\t\tReverseDns: pulumi.String(\"1.1.1.1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport io.muehlbachler.pulumi.proxmoxve.SDNZone.Vxlan;\nimport io.muehlbachler.pulumi.proxmoxve.SDNZone.VxlanArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Vxlan(\"example\", VxlanArgs.builder()\n            .dns(\"1.1.1.1\")\n            .dnsZone(\"example.com\")\n            .zoneId(\"vxlan1\")\n            .ipam(\"pve\")\n            .mtu(1450)\n            .nodes(\"pve\")\n            .peers(            \n                \"10.0.0.1\",\n                \"10.0.0.2\",\n                \"10.0.0.3\")\n            .reverseDns(\"1.1.1.1\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: proxmoxve:SDNZone:Vxlan\n    properties:\n      # Optional attributes\n      dns: 1.1.1.1\n      dnsZone: example.com\n      zoneId: vxlan1\n      ipam: pve\n      mtu: 1450\n      nodes:\n        - pve\n      peers:\n        - 10.0.0.1\n        - 10.0.0.2\n        - 10.0.0.3\n      reverseDns: 1.1.1.1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n#!/usr/bin/env sh\n\nVXLAN SDN zone can be imported using its unique identifier (zone ID)\n\n```sh\n$ pulumi import proxmoxve:SDNZone/vxlan:Vxlan example vxlan1\n```\n\n",
+            "properties": {
+                "dns": {
+                    "type": "string",
+                    "description": "DNS API server address.\n"
+                },
+                "dnsZone": {
+                    "type": "string",
+                    "description": "DNS domain name. Used to register hostnames, such as `\u003chostname\u003e.\u003cdomain\u003e`. The DNS zone must already exist on the DNS server.\n"
+                },
+                "ipam": {
+                    "type": "string",
+                    "description": "IP Address Management system.\n"
+                },
+                "mtu": {
+                    "type": "integer",
+                    "description": "MTU value for the zone.\n"
+                },
+                "nodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The Proxmox nodes which the zone and associated VNets should be deployed on\n"
+                },
+                "peers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of IP addresses of each node in the VXLAN zone. This can be external nodes reachable at this IP address. All nodes in the cluster need to be mentioned here\n"
+                },
+                "reverseDns": {
+                    "type": "string",
+                    "description": "Reverse DNS API server address.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The unique identifier of the SDN zone.\n"
+                }
+            },
+            "required": [
+                "zoneId",
+                "nodes",
+                "peers"
+            ],
+            "inputProperties": {
+                "dns": {
+                    "type": "string",
+                    "description": "DNS API server address.\n"
+                },
+                "dnsZone": {
+                    "type": "string",
+                    "description": "DNS domain name. Used to register hostnames, such as `\u003chostname\u003e.\u003cdomain\u003e`. The DNS zone must already exist on the DNS server.\n"
+                },
+                "ipam": {
+                    "type": "string",
+                    "description": "IP Address Management system.\n"
+                },
+                "mtu": {
+                    "type": "integer",
+                    "description": "MTU value for the zone.\n"
+                },
+                "nodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The Proxmox nodes which the zone and associated VNets should be deployed on\n"
+                },
+                "peers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of IP addresses of each node in the VXLAN zone. This can be external nodes reachable at this IP address. All nodes in the cluster need to be mentioned here\n"
+                },
+                "reverseDns": {
+                    "type": "string",
+                    "description": "Reverse DNS API server address.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The unique identifier of the SDN zone.\n"
+                }
+            },
+            "requiredInputs": [
+                "zoneId",
+                "nodes",
+                "peers"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Vxlan resources.\n",
+                "properties": {
+                    "dns": {
+                        "type": "string",
+                        "description": "DNS API server address.\n"
+                    },
+                    "dnsZone": {
+                        "type": "string",
+                        "description": "DNS domain name. Used to register hostnames, such as `\u003chostname\u003e.\u003cdomain\u003e`. The DNS zone must already exist on the DNS server.\n"
+                    },
+                    "ipam": {
+                        "type": "string",
+                        "description": "IP Address Management system.\n"
+                    },
+                    "mtu": {
+                        "type": "integer",
+                        "description": "MTU value for the zone.\n"
+                    },
+                    "nodes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The Proxmox nodes which the zone and associated VNets should be deployed on\n"
+                    },
+                    "peers": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of IP addresses of each node in the VXLAN zone. This can be external nodes reachable at this IP address. All nodes in the cluster need to be mentioned here\n"
+                    },
+                    "reverseDns": {
+                        "type": "string",
+                        "description": "Reverse DNS API server address.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The unique identifier of the SDN zone.\n"
                     }
                 },
                 "type": "object"
@@ -9375,6 +10245,425 @@
                     "keys",
                     "lastNames",
                     "userIds",
+                    "id"
+                ]
+            }
+        },
+        "proxmoxve:SDNZone/getEvpn:getEvpn": {
+            "description": "Retrieves information about an EVPN Zone in Proxmox SDN. The EVPN zone creates a routable Layer 3 network, capable of spanning across multiple clusters.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst example = proxmoxve.SDNZone.getEvpn({\n    id: \"evpn1\",\n});\nexport const dataProxmoxVirtualEnvironmentSdnZoneEvpn = {\n    id: example.then(example =\u003e example.id),\n    nodes: example.then(example =\u003e example.nodes),\n    controller: example.then(example =\u003e example.controller),\n    vrf_vxlan: example.then(example =\u003e example.vrfVxlan),\n    advertise_subnets: example.then(example =\u003e example.advertiseSubnets),\n    disable_arp_nd_suppression: example.then(example =\u003e example.disableArpNdSuppression),\n    exit_nodes: example.then(example =\u003e example.exitNodes),\n    exit_nodes_local_routing: example.then(example =\u003e example.exitNodesLocalRouting),\n    primary_exit_node: example.then(example =\u003e example.primaryExitNode),\n    rt_import: example.then(example =\u003e example.rtImport),\n    mtu: example.then(example =\u003e example.mtu),\n    dns: example.then(example =\u003e example.dns),\n    dns_zone: example.then(example =\u003e example.dnsZone),\n    ipam: example.then(example =\u003e example.ipam),\n    reverse_dns: example.then(example =\u003e example.reverseDns),\n};\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample = proxmoxve.SDNZone.get_evpn(id=\"evpn1\")\npulumi.export(\"dataProxmoxVirtualEnvironmentSdnZoneEvpn\", {\n    \"id\": example.id,\n    \"nodes\": example.nodes,\n    \"controller\": example.controller,\n    \"vrf_vxlan\": example.vrf_vxlan,\n    \"advertise_subnets\": example.advertise_subnets,\n    \"disable_arp_nd_suppression\": example.disable_arp_nd_suppression,\n    \"exit_nodes\": example.exit_nodes,\n    \"exit_nodes_local_routing\": example.exit_nodes_local_routing,\n    \"primary_exit_node\": example.primary_exit_node,\n    \"rt_import\": example.rt_import,\n    \"mtu\": example.mtu,\n    \"dns\": example.dns,\n    \"dns_zone\": example.dns_zone,\n    \"ipam\": example.ipam,\n    \"reverse_dns\": example.reverse_dns,\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = ProxmoxVE.SDNZone.GetEvpn.Invoke(new()\n    {\n        Id = \"evpn1\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"dataProxmoxVirtualEnvironmentSdnZoneEvpn\"] = \n        {\n            { \"id\", example.Apply(getEvpnResult =\u003e getEvpnResult.Id) },\n            { \"nodes\", example.Apply(getEvpnResult =\u003e getEvpnResult.Nodes) },\n            { \"controller\", example.Apply(getEvpnResult =\u003e getEvpnResult.Controller) },\n            { \"vrf_vxlan\", example.Apply(getEvpnResult =\u003e getEvpnResult.VrfVxlan) },\n            { \"advertise_subnets\", example.Apply(getEvpnResult =\u003e getEvpnResult.AdvertiseSubnets) },\n            { \"disable_arp_nd_suppression\", example.Apply(getEvpnResult =\u003e getEvpnResult.DisableArpNdSuppression) },\n            { \"exit_nodes\", example.Apply(getEvpnResult =\u003e getEvpnResult.ExitNodes) },\n            { \"exit_nodes_local_routing\", example.Apply(getEvpnResult =\u003e getEvpnResult.ExitNodesLocalRouting) },\n            { \"primary_exit_node\", example.Apply(getEvpnResult =\u003e getEvpnResult.PrimaryExitNode) },\n            { \"rt_import\", example.Apply(getEvpnResult =\u003e getEvpnResult.RtImport) },\n            { \"mtu\", example.Apply(getEvpnResult =\u003e getEvpnResult.Mtu) },\n            { \"dns\", example.Apply(getEvpnResult =\u003e getEvpnResult.Dns) },\n            { \"dns_zone\", example.Apply(getEvpnResult =\u003e getEvpnResult.DnsZone) },\n            { \"ipam\", example.Apply(getEvpnResult =\u003e getEvpnResult.Ipam) },\n            { \"reverse_dns\", example.Apply(getEvpnResult =\u003e getEvpnResult.ReverseDns) },\n        },\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/sdnzone\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := sdnzone.GetEvpn(ctx, \u0026sdnzone.GetEvpnArgs{\n\t\t\tId: \"evpn1\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"dataProxmoxVirtualEnvironmentSdnZoneEvpn\", pulumi.Map{\n\t\t\t\"id\":                         example.Id,\n\t\t\t\"nodes\":                      example.Nodes,\n\t\t\t\"controller\":                 example.Controller,\n\t\t\t\"vrf_vxlan\":                  example.VrfVxlan,\n\t\t\t\"advertise_subnets\":          example.AdvertiseSubnets,\n\t\t\t\"disable_arp_nd_suppression\": example.DisableArpNdSuppression,\n\t\t\t\"exit_nodes\":                 example.ExitNodes,\n\t\t\t\"exit_nodes_local_routing\":   example.ExitNodesLocalRouting,\n\t\t\t\"primary_exit_node\":          example.PrimaryExitNode,\n\t\t\t\"rt_import\":                  example.RtImport,\n\t\t\t\"mtu\":                        example.Mtu,\n\t\t\t\"dns\":                        example.Dns,\n\t\t\t\"dns_zone\":                   example.DnsZone,\n\t\t\t\"ipam\":                       example.Ipam,\n\t\t\t\"reverse_dns\":                example.ReverseDns,\n\t\t})\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.SDNZone.SDNZoneFunctions;\nimport com.pulumi.proxmoxve.SDNZone.inputs.GetEvpnArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = SDNZoneFunctions.getEvpn(GetEvpnArgs.builder()\n            .id(\"evpn1\")\n            .build());\n\n        ctx.export(\"dataProxmoxVirtualEnvironmentSdnZoneEvpn\", Map.ofEntries(\n            Map.entry(\"id\", example.id()),\n            Map.entry(\"nodes\", example.nodes()),\n            Map.entry(\"controller\", example.controller()),\n            Map.entry(\"vrf_vxlan\", example.vrfVxlan()),\n            Map.entry(\"advertise_subnets\", example.advertiseSubnets()),\n            Map.entry(\"disable_arp_nd_suppression\", example.disableArpNdSuppression()),\n            Map.entry(\"exit_nodes\", example.exitNodes()),\n            Map.entry(\"exit_nodes_local_routing\", example.exitNodesLocalRouting()),\n            Map.entry(\"primary_exit_node\", example.primaryExitNode()),\n            Map.entry(\"rt_import\", example.rtImport()),\n            Map.entry(\"mtu\", example.mtu()),\n            Map.entry(\"dns\", example.dns()),\n            Map.entry(\"dns_zone\", example.dnsZone()),\n            Map.entry(\"ipam\", example.ipam()),\n            Map.entry(\"reverse_dns\", example.reverseDns())\n        ));\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: proxmoxve:SDNZone:getEvpn\n      arguments:\n        id: evpn1\noutputs:\n  dataProxmoxVirtualEnvironmentSdnZoneEvpn:\n    id: ${example.id}\n    nodes: ${example.nodes}\n    controller: ${example.controller}\n    vrf_vxlan: ${example.vrfVxlan}\n    advertise_subnets: ${example.advertiseSubnets}\n    disable_arp_nd_suppression: ${example.disableArpNdSuppression}\n    exit_nodes: ${example.exitNodes}\n    exit_nodes_local_routing: ${example.exitNodesLocalRouting}\n    primary_exit_node: ${example.primaryExitNode}\n    rt_import: ${example.rtImport}\n    mtu: ${example.mtu}\n    dns: ${example.dns}\n    dns_zone: ${example.dnsZone}\n    ipam: ${example.ipam}\n    reverse_dns: ${example.reverseDns}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getEvpn.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of the SDN zone.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getEvpn.\n",
+                "properties": {
+                    "advertiseSubnets": {
+                        "type": "boolean",
+                        "description": "Enable subnet advertisement for EVPN.\n"
+                    },
+                    "controller": {
+                        "type": "string",
+                        "description": "EVPN controller address.\n"
+                    },
+                    "disableArpNdSuppression": {
+                        "type": "boolean",
+                        "description": "Disable ARP/ND suppression for EVPN.\n"
+                    },
+                    "dns": {
+                        "type": "string",
+                        "description": "DNS API server address.\n"
+                    },
+                    "dnsZone": {
+                        "type": "string",
+                        "description": "DNS domain name. Used to register hostnames, such as `\u003chostname\u003e.\u003cdomain\u003e`. The DNS zone must already exist on the DNS server.\n"
+                    },
+                    "exitNodes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of exit nodes for EVPN.\n"
+                    },
+                    "exitNodesLocalRouting": {
+                        "type": "boolean",
+                        "description": "Enable local routing for EVPN exit nodes.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of the SDN zone.\n"
+                    },
+                    "ipam": {
+                        "type": "string",
+                        "description": "IP Address Management system.\n"
+                    },
+                    "mtu": {
+                        "type": "integer",
+                        "description": "MTU value for the zone.\n"
+                    },
+                    "nodes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The Proxmox nodes which the zone and associated VNets are deployed on\n"
+                    },
+                    "primaryExitNode": {
+                        "type": "string",
+                        "description": "Primary exit node for EVPN.\n"
+                    },
+                    "reverseDns": {
+                        "type": "string",
+                        "description": "Reverse DNS API server address.\n"
+                    },
+                    "rtImport": {
+                        "type": "string",
+                        "description": "Route target import for EVPN. Must be in the format '\\n\\n:\\n\\n' (e.g., '65000:65000').\n"
+                    },
+                    "vrfVxlan": {
+                        "type": "integer",
+                        "description": "VRF VXLAN-ID used for dedicated routing interconnect between VNets. It must be different than the VXLAN-ID of the VNets.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "advertiseSubnets",
+                    "controller",
+                    "disableArpNdSuppression",
+                    "dns",
+                    "dnsZone",
+                    "exitNodes",
+                    "exitNodesLocalRouting",
+                    "id",
+                    "ipam",
+                    "mtu",
+                    "nodes",
+                    "primaryExitNode",
+                    "reverseDns",
+                    "rtImport",
+                    "vrfVxlan"
+                ]
+            }
+        },
+        "proxmoxve:SDNZone/getQinq:getQinq": {
+            "description": "Retrieves information about a QinQ Zone in Proxmox SDN. QinQ also known as VLAN stacking, that uses multiple layers of VLAN tags for isolation. The QinQ zone defines the outer VLAN tag (the Service VLAN) whereas the inner VLAN tag is defined by the VNet. Your physical network switches must support stacked VLANs for this configuration. Due to the double stacking of tags, you need 4 more bytes for QinQ VLANs. For example, you must reduce the MTU to 1496 if you physical interface MTU is 1500.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst example = proxmoxve.SDNZone.getQinq({\n    id: \"qinq1\",\n});\nexport const dataProxmoxVirtualEnvironmentSdnZoneQinq = {\n    id: example.then(example =\u003e example.id),\n    nodes: example.then(example =\u003e example.nodes),\n    bridge: example.then(example =\u003e example.bridge),\n    service_vlan: example.then(example =\u003e example.serviceVlan),\n    service_vlan_protocol: example.then(example =\u003e example.serviceVlanProtocol),\n    mtu: example.then(example =\u003e example.mtu),\n    dns: example.then(example =\u003e example.dns),\n    dns_zone: example.then(example =\u003e example.dnsZone),\n    ipam: example.then(example =\u003e example.ipam),\n    reverse_dns: example.then(example =\u003e example.reverseDns),\n};\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample = proxmoxve.SDNZone.get_qinq(id=\"qinq1\")\npulumi.export(\"dataProxmoxVirtualEnvironmentSdnZoneQinq\", {\n    \"id\": example.id,\n    \"nodes\": example.nodes,\n    \"bridge\": example.bridge,\n    \"service_vlan\": example.service_vlan,\n    \"service_vlan_protocol\": example.service_vlan_protocol,\n    \"mtu\": example.mtu,\n    \"dns\": example.dns,\n    \"dns_zone\": example.dns_zone,\n    \"ipam\": example.ipam,\n    \"reverse_dns\": example.reverse_dns,\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = ProxmoxVE.SDNZone.GetQinq.Invoke(new()\n    {\n        Id = \"qinq1\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"dataProxmoxVirtualEnvironmentSdnZoneQinq\"] = \n        {\n            { \"id\", example.Apply(getQinqResult =\u003e getQinqResult.Id) },\n            { \"nodes\", example.Apply(getQinqResult =\u003e getQinqResult.Nodes) },\n            { \"bridge\", example.Apply(getQinqResult =\u003e getQinqResult.Bridge) },\n            { \"service_vlan\", example.Apply(getQinqResult =\u003e getQinqResult.ServiceVlan) },\n            { \"service_vlan_protocol\", example.Apply(getQinqResult =\u003e getQinqResult.ServiceVlanProtocol) },\n            { \"mtu\", example.Apply(getQinqResult =\u003e getQinqResult.Mtu) },\n            { \"dns\", example.Apply(getQinqResult =\u003e getQinqResult.Dns) },\n            { \"dns_zone\", example.Apply(getQinqResult =\u003e getQinqResult.DnsZone) },\n            { \"ipam\", example.Apply(getQinqResult =\u003e getQinqResult.Ipam) },\n            { \"reverse_dns\", example.Apply(getQinqResult =\u003e getQinqResult.ReverseDns) },\n        },\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/sdnzone\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := sdnzone.GetQinq(ctx, \u0026sdnzone.GetQinqArgs{\n\t\t\tId: \"qinq1\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"dataProxmoxVirtualEnvironmentSdnZoneQinq\", pulumi.Map{\n\t\t\t\"id\":                    example.Id,\n\t\t\t\"nodes\":                 example.Nodes,\n\t\t\t\"bridge\":                example.Bridge,\n\t\t\t\"service_vlan\":          example.ServiceVlan,\n\t\t\t\"service_vlan_protocol\": example.ServiceVlanProtocol,\n\t\t\t\"mtu\":                   example.Mtu,\n\t\t\t\"dns\":                   example.Dns,\n\t\t\t\"dns_zone\":              example.DnsZone,\n\t\t\t\"ipam\":                  example.Ipam,\n\t\t\t\"reverse_dns\":           example.ReverseDns,\n\t\t})\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.SDNZone.SDNZoneFunctions;\nimport com.pulumi.proxmoxve.SDNZone.inputs.GetQinqArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = SDNZoneFunctions.getQinq(GetQinqArgs.builder()\n            .id(\"qinq1\")\n            .build());\n\n        ctx.export(\"dataProxmoxVirtualEnvironmentSdnZoneQinq\", Map.ofEntries(\n            Map.entry(\"id\", example.id()),\n            Map.entry(\"nodes\", example.nodes()),\n            Map.entry(\"bridge\", example.bridge()),\n            Map.entry(\"service_vlan\", example.serviceVlan()),\n            Map.entry(\"service_vlan_protocol\", example.serviceVlanProtocol()),\n            Map.entry(\"mtu\", example.mtu()),\n            Map.entry(\"dns\", example.dns()),\n            Map.entry(\"dns_zone\", example.dnsZone()),\n            Map.entry(\"ipam\", example.ipam()),\n            Map.entry(\"reverse_dns\", example.reverseDns())\n        ));\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: proxmoxve:SDNZone:getQinq\n      arguments:\n        id: qinq1\noutputs:\n  dataProxmoxVirtualEnvironmentSdnZoneQinq:\n    id: ${example.id}\n    nodes: ${example.nodes}\n    bridge: ${example.bridge}\n    service_vlan: ${example.serviceVlan}\n    service_vlan_protocol: ${example.serviceVlanProtocol}\n    mtu: ${example.mtu}\n    dns: ${example.dns}\n    dns_zone: ${example.dnsZone}\n    ipam: ${example.ipam}\n    reverse_dns: ${example.reverseDns}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getQinq.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of the SDN zone.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getQinq.\n",
+                "properties": {
+                    "bridge": {
+                        "type": "string",
+                        "description": "A local, VLAN-aware bridge that is already configured on each local node\n"
+                    },
+                    "dns": {
+                        "type": "string",
+                        "description": "DNS API server address.\n"
+                    },
+                    "dnsZone": {
+                        "type": "string",
+                        "description": "DNS domain name. Used to register hostnames, such as `\u003chostname\u003e.\u003cdomain\u003e`. The DNS zone must already exist on the DNS server.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of the SDN zone.\n"
+                    },
+                    "ipam": {
+                        "type": "string",
+                        "description": "IP Address Management system.\n"
+                    },
+                    "mtu": {
+                        "type": "integer",
+                        "description": "MTU value for the zone.\n"
+                    },
+                    "nodes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The Proxmox nodes which the zone and associated VNets are deployed on\n"
+                    },
+                    "reverseDns": {
+                        "type": "string",
+                        "description": "Reverse DNS API server address.\n"
+                    },
+                    "serviceVlan": {
+                        "type": "integer",
+                        "description": "Service VLAN tag for QinQ. The tag must be between `1` and `4094`.\n"
+                    },
+                    "serviceVlanProtocol": {
+                        "type": "string",
+                        "description": "Service VLAN protocol for QinQ. The protocol must be `802.1ad` or `802.1q`.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "bridge",
+                    "dns",
+                    "dnsZone",
+                    "id",
+                    "ipam",
+                    "mtu",
+                    "nodes",
+                    "reverseDns",
+                    "serviceVlan",
+                    "serviceVlanProtocol"
+                ]
+            }
+        },
+        "proxmoxve:SDNZone/getSimple:getSimple": {
+            "description": "Retrieves information about a Simple Zone in Proxmox SDN. It will create an isolated VNet bridge. This bridge is not linked to a physical interface, and VM traffic is only local on each the node. It can be used in NAT or routed setups.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst example = proxmoxve.SDNZone.getSimple({\n    id: \"simple1\",\n});\nexport const dataProxmoxVirtualEnvironmentSdnZoneSimple = {\n    id: example.then(example =\u003e example.id),\n    nodes: example.then(example =\u003e example.nodes),\n    mtu: example.then(example =\u003e example.mtu),\n    dns: example.then(example =\u003e example.dns),\n    dns_zone: example.then(example =\u003e example.dnsZone),\n    ipam: example.then(example =\u003e example.ipam),\n    reverse_dns: example.then(example =\u003e example.reverseDns),\n};\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample = proxmoxve.SDNZone.get_simple(id=\"simple1\")\npulumi.export(\"dataProxmoxVirtualEnvironmentSdnZoneSimple\", {\n    \"id\": example.id,\n    \"nodes\": example.nodes,\n    \"mtu\": example.mtu,\n    \"dns\": example.dns,\n    \"dns_zone\": example.dns_zone,\n    \"ipam\": example.ipam,\n    \"reverse_dns\": example.reverse_dns,\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = ProxmoxVE.SDNZone.GetSimple.Invoke(new()\n    {\n        Id = \"simple1\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"dataProxmoxVirtualEnvironmentSdnZoneSimple\"] = \n        {\n            { \"id\", example.Apply(getSimpleResult =\u003e getSimpleResult.Id) },\n            { \"nodes\", example.Apply(getSimpleResult =\u003e getSimpleResult.Nodes) },\n            { \"mtu\", example.Apply(getSimpleResult =\u003e getSimpleResult.Mtu) },\n            { \"dns\", example.Apply(getSimpleResult =\u003e getSimpleResult.Dns) },\n            { \"dns_zone\", example.Apply(getSimpleResult =\u003e getSimpleResult.DnsZone) },\n            { \"ipam\", example.Apply(getSimpleResult =\u003e getSimpleResult.Ipam) },\n            { \"reverse_dns\", example.Apply(getSimpleResult =\u003e getSimpleResult.ReverseDns) },\n        },\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/sdnzone\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := sdnzone.GetSimple(ctx, \u0026sdnzone.GetSimpleArgs{\n\t\t\tId: \"simple1\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"dataProxmoxVirtualEnvironmentSdnZoneSimple\", pulumi.Map{\n\t\t\t\"id\":          example.Id,\n\t\t\t\"nodes\":       example.Nodes,\n\t\t\t\"mtu\":         example.Mtu,\n\t\t\t\"dns\":         example.Dns,\n\t\t\t\"dns_zone\":    example.DnsZone,\n\t\t\t\"ipam\":        example.Ipam,\n\t\t\t\"reverse_dns\": example.ReverseDns,\n\t\t})\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.SDNZone.SDNZoneFunctions;\nimport com.pulumi.proxmoxve.SDNZone.inputs.GetSimpleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = SDNZoneFunctions.getSimple(GetSimpleArgs.builder()\n            .id(\"simple1\")\n            .build());\n\n        ctx.export(\"dataProxmoxVirtualEnvironmentSdnZoneSimple\", Map.ofEntries(\n            Map.entry(\"id\", example.id()),\n            Map.entry(\"nodes\", example.nodes()),\n            Map.entry(\"mtu\", example.mtu()),\n            Map.entry(\"dns\", example.dns()),\n            Map.entry(\"dns_zone\", example.dnsZone()),\n            Map.entry(\"ipam\", example.ipam()),\n            Map.entry(\"reverse_dns\", example.reverseDns())\n        ));\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: proxmoxve:SDNZone:getSimple\n      arguments:\n        id: simple1\noutputs:\n  dataProxmoxVirtualEnvironmentSdnZoneSimple:\n    id: ${example.id}\n    nodes: ${example.nodes}\n    mtu: ${example.mtu}\n    dns: ${example.dns}\n    dns_zone: ${example.dnsZone}\n    ipam: ${example.ipam}\n    reverse_dns: ${example.reverseDns}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getSimple.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of the SDN zone.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getSimple.\n",
+                "properties": {
+                    "dns": {
+                        "type": "string",
+                        "description": "DNS API server address.\n"
+                    },
+                    "dnsZone": {
+                        "type": "string",
+                        "description": "DNS domain name. Used to register hostnames, such as `\u003chostname\u003e.\u003cdomain\u003e`. The DNS zone must already exist on the DNS server.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of the SDN zone.\n"
+                    },
+                    "ipam": {
+                        "type": "string",
+                        "description": "IP Address Management system.\n"
+                    },
+                    "mtu": {
+                        "type": "integer",
+                        "description": "MTU value for the zone.\n"
+                    },
+                    "nodes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The Proxmox nodes which the zone and associated VNets are deployed on\n"
+                    },
+                    "reverseDns": {
+                        "type": "string",
+                        "description": "Reverse DNS API server address.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "dns",
+                    "dnsZone",
+                    "id",
+                    "ipam",
+                    "mtu",
+                    "nodes",
+                    "reverseDns"
+                ]
+            }
+        },
+        "proxmoxve:SDNZone/getVlan:getVlan": {
+            "description": "Retrieves information about a VLAN Zone in Proxmox SDN. It uses an existing local Linux or OVS bridge to connect to the node's physical interface. It uses VLAN tagging defined in the VNet to isolate the network segments. This allows connectivity of VMs between different nodes.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst example = proxmoxve.SDNZone.getVlan({\n    id: \"vlan1\",\n});\nexport const dataProxmoxVirtualEnvironmentSdnZoneVlan = {\n    id: example.then(example =\u003e example.id),\n    nodes: example.then(example =\u003e example.nodes),\n    bridge: example.then(example =\u003e example.bridge),\n    mtu: example.then(example =\u003e example.mtu),\n    dns: example.then(example =\u003e example.dns),\n    dns_zone: example.then(example =\u003e example.dnsZone),\n    ipam: example.then(example =\u003e example.ipam),\n    reverse_dns: example.then(example =\u003e example.reverseDns),\n};\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample = proxmoxve.SDNZone.get_vlan(id=\"vlan1\")\npulumi.export(\"dataProxmoxVirtualEnvironmentSdnZoneVlan\", {\n    \"id\": example.id,\n    \"nodes\": example.nodes,\n    \"bridge\": example.bridge,\n    \"mtu\": example.mtu,\n    \"dns\": example.dns,\n    \"dns_zone\": example.dns_zone,\n    \"ipam\": example.ipam,\n    \"reverse_dns\": example.reverse_dns,\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = ProxmoxVE.SDNZone.GetVlan.Invoke(new()\n    {\n        Id = \"vlan1\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"dataProxmoxVirtualEnvironmentSdnZoneVlan\"] = \n        {\n            { \"id\", example.Apply(getVlanResult =\u003e getVlanResult.Id) },\n            { \"nodes\", example.Apply(getVlanResult =\u003e getVlanResult.Nodes) },\n            { \"bridge\", example.Apply(getVlanResult =\u003e getVlanResult.Bridge) },\n            { \"mtu\", example.Apply(getVlanResult =\u003e getVlanResult.Mtu) },\n            { \"dns\", example.Apply(getVlanResult =\u003e getVlanResult.Dns) },\n            { \"dns_zone\", example.Apply(getVlanResult =\u003e getVlanResult.DnsZone) },\n            { \"ipam\", example.Apply(getVlanResult =\u003e getVlanResult.Ipam) },\n            { \"reverse_dns\", example.Apply(getVlanResult =\u003e getVlanResult.ReverseDns) },\n        },\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/sdnzone\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := sdnzone.GetVlan(ctx, \u0026sdnzone.GetVlanArgs{\n\t\t\tId: \"vlan1\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"dataProxmoxVirtualEnvironmentSdnZoneVlan\", pulumi.Map{\n\t\t\t\"id\":          example.Id,\n\t\t\t\"nodes\":       example.Nodes,\n\t\t\t\"bridge\":      example.Bridge,\n\t\t\t\"mtu\":         example.Mtu,\n\t\t\t\"dns\":         example.Dns,\n\t\t\t\"dns_zone\":    example.DnsZone,\n\t\t\t\"ipam\":        example.Ipam,\n\t\t\t\"reverse_dns\": example.ReverseDns,\n\t\t})\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.SDNZone.SDNZoneFunctions;\nimport com.pulumi.proxmoxve.SDNZone.inputs.GetVlanArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = SDNZoneFunctions.getVlan(GetVlanArgs.builder()\n            .id(\"vlan1\")\n            .build());\n\n        ctx.export(\"dataProxmoxVirtualEnvironmentSdnZoneVlan\", Map.ofEntries(\n            Map.entry(\"id\", example.id()),\n            Map.entry(\"nodes\", example.nodes()),\n            Map.entry(\"bridge\", example.bridge()),\n            Map.entry(\"mtu\", example.mtu()),\n            Map.entry(\"dns\", example.dns()),\n            Map.entry(\"dns_zone\", example.dnsZone()),\n            Map.entry(\"ipam\", example.ipam()),\n            Map.entry(\"reverse_dns\", example.reverseDns())\n        ));\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: proxmoxve:SDNZone:getVlan\n      arguments:\n        id: vlan1\noutputs:\n  dataProxmoxVirtualEnvironmentSdnZoneVlan:\n    id: ${example.id}\n    nodes: ${example.nodes}\n    bridge: ${example.bridge}\n    mtu: ${example.mtu}\n    dns: ${example.dns}\n    dns_zone: ${example.dnsZone}\n    ipam: ${example.ipam}\n    reverse_dns: ${example.reverseDns}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getVlan.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of the SDN zone.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getVlan.\n",
+                "properties": {
+                    "bridge": {
+                        "type": "string",
+                        "description": "The local bridge or OVS switch, already configured on *each* node that allows node-to-node connection.\n"
+                    },
+                    "dns": {
+                        "type": "string",
+                        "description": "DNS API server address.\n"
+                    },
+                    "dnsZone": {
+                        "type": "string",
+                        "description": "DNS domain name. Used to register hostnames, such as `\u003chostname\u003e.\u003cdomain\u003e`. The DNS zone must already exist on the DNS server.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of the SDN zone.\n"
+                    },
+                    "ipam": {
+                        "type": "string",
+                        "description": "IP Address Management system.\n"
+                    },
+                    "mtu": {
+                        "type": "integer",
+                        "description": "MTU value for the zone.\n"
+                    },
+                    "nodes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The Proxmox nodes which the zone and associated VNets are deployed on\n"
+                    },
+                    "reverseDns": {
+                        "type": "string",
+                        "description": "Reverse DNS API server address.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "bridge",
+                    "dns",
+                    "dnsZone",
+                    "id",
+                    "ipam",
+                    "mtu",
+                    "nodes",
+                    "reverseDns"
+                ]
+            }
+        },
+        "proxmoxve:SDNZone/getVxlan:getVxlan": {
+            "description": "Retrieves information about a VXLAN Zone in Proxmox SDN. It establishes a tunnel (overlay) on top of an existing network (underlay). This encapsulates layer 2 Ethernet frames within layer 4 UDP datagrams using the default destination port 4789. You have to configure the underlay network yourself to enable UDP connectivity between all peers. Because VXLAN encapsulation uses 50 bytes, the MTU needs to be 50 bytes lower than the outgoing physical interface.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst example = proxmoxve.SDNZone.getVxlan({\n    id: \"vxlan1\",\n});\nexport const dataProxmoxVirtualEnvironmentSdnZoneVxlan = {\n    id: example.then(example =\u003e example.id),\n    nodes: example.then(example =\u003e example.nodes),\n    peers: example.then(example =\u003e example.peers),\n    mtu: example.then(example =\u003e example.mtu),\n    dns: example.then(example =\u003e example.dns),\n    dns_zone: example.then(example =\u003e example.dnsZone),\n    ipam: example.then(example =\u003e example.ipam),\n    reverse_dns: example.then(example =\u003e example.reverseDns),\n};\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample = proxmoxve.SDNZone.get_vxlan(id=\"vxlan1\")\npulumi.export(\"dataProxmoxVirtualEnvironmentSdnZoneVxlan\", {\n    \"id\": example.id,\n    \"nodes\": example.nodes,\n    \"peers\": example.peers,\n    \"mtu\": example.mtu,\n    \"dns\": example.dns,\n    \"dns_zone\": example.dns_zone,\n    \"ipam\": example.ipam,\n    \"reverse_dns\": example.reverse_dns,\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = ProxmoxVE.SDNZone.GetVxlan.Invoke(new()\n    {\n        Id = \"vxlan1\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"dataProxmoxVirtualEnvironmentSdnZoneVxlan\"] = \n        {\n            { \"id\", example.Apply(getVxlanResult =\u003e getVxlanResult.Id) },\n            { \"nodes\", example.Apply(getVxlanResult =\u003e getVxlanResult.Nodes) },\n            { \"peers\", example.Apply(getVxlanResult =\u003e getVxlanResult.Peers) },\n            { \"mtu\", example.Apply(getVxlanResult =\u003e getVxlanResult.Mtu) },\n            { \"dns\", example.Apply(getVxlanResult =\u003e getVxlanResult.Dns) },\n            { \"dns_zone\", example.Apply(getVxlanResult =\u003e getVxlanResult.DnsZone) },\n            { \"ipam\", example.Apply(getVxlanResult =\u003e getVxlanResult.Ipam) },\n            { \"reverse_dns\", example.Apply(getVxlanResult =\u003e getVxlanResult.ReverseDns) },\n        },\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/sdnzone\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := sdnzone.GetVxlan(ctx, \u0026sdnzone.GetVxlanArgs{\n\t\t\tId: \"vxlan1\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"dataProxmoxVirtualEnvironmentSdnZoneVxlan\", pulumi.Map{\n\t\t\t\"id\":          example.Id,\n\t\t\t\"nodes\":       example.Nodes,\n\t\t\t\"peers\":       example.Peers,\n\t\t\t\"mtu\":         example.Mtu,\n\t\t\t\"dns\":         example.Dns,\n\t\t\t\"dns_zone\":    example.DnsZone,\n\t\t\t\"ipam\":        example.Ipam,\n\t\t\t\"reverse_dns\": example.ReverseDns,\n\t\t})\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.SDNZone.SDNZoneFunctions;\nimport com.pulumi.proxmoxve.SDNZone.inputs.GetVxlanArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = SDNZoneFunctions.getVxlan(GetVxlanArgs.builder()\n            .id(\"vxlan1\")\n            .build());\n\n        ctx.export(\"dataProxmoxVirtualEnvironmentSdnZoneVxlan\", Map.ofEntries(\n            Map.entry(\"id\", example.id()),\n            Map.entry(\"nodes\", example.nodes()),\n            Map.entry(\"peers\", example.peers()),\n            Map.entry(\"mtu\", example.mtu()),\n            Map.entry(\"dns\", example.dns()),\n            Map.entry(\"dns_zone\", example.dnsZone()),\n            Map.entry(\"ipam\", example.ipam()),\n            Map.entry(\"reverse_dns\", example.reverseDns())\n        ));\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: proxmoxve:SDNZone:getVxlan\n      arguments:\n        id: vxlan1\noutputs:\n  dataProxmoxVirtualEnvironmentSdnZoneVxlan:\n    id: ${example.id}\n    nodes: ${example.nodes}\n    peers: ${example.peers}\n    mtu: ${example.mtu}\n    dns: ${example.dns}\n    dns_zone: ${example.dnsZone}\n    ipam: ${example.ipam}\n    reverse_dns: ${example.reverseDns}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getVxlan.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of the SDN zone.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getVxlan.\n",
+                "properties": {
+                    "dns": {
+                        "type": "string",
+                        "description": "DNS API server address.\n"
+                    },
+                    "dnsZone": {
+                        "type": "string",
+                        "description": "DNS domain name. Used to register hostnames, such as `\u003chostname\u003e.\u003cdomain\u003e`. The DNS zone must already exist on the DNS server.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of the SDN zone.\n"
+                    },
+                    "ipam": {
+                        "type": "string",
+                        "description": "IP Address Management system.\n"
+                    },
+                    "mtu": {
+                        "type": "integer",
+                        "description": "MTU value for the zone.\n"
+                    },
+                    "nodes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The Proxmox nodes which the zone and associated VNets are deployed on\n"
+                    },
+                    "peers": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of IP addresses of each node in the VXLAN zone. This can be external nodes reachable at this IP address. All nodes in the cluster need to be mentioned here\n"
+                    },
+                    "reverseDns": {
+                        "type": "string",
+                        "description": "Reverse DNS API server address.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "dns",
+                    "dnsZone",
+                    "id",
+                    "ipam",
+                    "mtu",
+                    "nodes",
+                    "peers",
+                    "reverseDns"
+                ]
+            }
+        },
+        "proxmoxve:Sdn/getZones:getZones": {
+            "description": "Retrieves information about all SDN Zones in Proxmox. This data source can optionally filter zones by type.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst all = proxmoxve.Sdn.getZones({});\nconst evpnOnly = proxmoxve.Sdn.getZones({\n    type: \"evpn\",\n});\nconst simpleOnly = proxmoxve.Sdn.getZones({\n    type: \"simple\",\n});\nexport const dataProxmoxVirtualEnvironmentSdnZonesAll = {\n    zones: all.then(all =\u003e all.zones),\n};\nexport const dataProxmoxVirtualEnvironmentSdnZonesFiltered = {\n    evpn_zones: evpnOnly.then(evpnOnly =\u003e evpnOnly.zones),\n    simple_zones: simpleOnly.then(simpleOnly =\u003e simpleOnly.zones),\n};\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nall = proxmoxve.Sdn.get_zones()\nevpn_only = proxmoxve.Sdn.get_zones(type=\"evpn\")\nsimple_only = proxmoxve.Sdn.get_zones(type=\"simple\")\npulumi.export(\"dataProxmoxVirtualEnvironmentSdnZonesAll\", {\n    \"zones\": all.zones,\n})\npulumi.export(\"dataProxmoxVirtualEnvironmentSdnZonesFiltered\", {\n    \"evpn_zones\": evpn_only.zones,\n    \"simple_zones\": simple_only.zones,\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = ProxmoxVE.Sdn.GetZones.Invoke();\n\n    var evpnOnly = ProxmoxVE.Sdn.GetZones.Invoke(new()\n    {\n        Type = \"evpn\",\n    });\n\n    var simpleOnly = ProxmoxVE.Sdn.GetZones.Invoke(new()\n    {\n        Type = \"simple\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"dataProxmoxVirtualEnvironmentSdnZonesAll\"] = \n        {\n            { \"zones\", all.Apply(getZonesResult =\u003e getZonesResult.Zones) },\n        },\n        [\"dataProxmoxVirtualEnvironmentSdnZonesFiltered\"] = \n        {\n            { \"evpn_zones\", evpnOnly.Apply(getZonesResult =\u003e getZonesResult.Zones) },\n            { \"simple_zones\", simpleOnly.Apply(getZonesResult =\u003e getZonesResult.Zones) },\n        },\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/sdn\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tall, err := sdn.GetZones(ctx, \u0026sdn.GetZonesArgs{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tevpnOnly, err := sdn.GetZones(ctx, \u0026sdn.GetZonesArgs{\n\t\t\tType: pulumi.StringRef(\"evpn\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tsimpleOnly, err := sdn.GetZones(ctx, \u0026sdn.GetZonesArgs{\n\t\t\tType: pulumi.StringRef(\"simple\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"dataProxmoxVirtualEnvironmentSdnZonesAll\", []sdn.GetZonesZoneMap{\n\t\t\t\"zones\": all.Zones,\n\t\t})\n\t\tctx.Export(\"dataProxmoxVirtualEnvironmentSdnZonesFiltered\", []sdn.GetZonesZoneMap{\n\t\t\t\"evpn_zones\":   evpnOnly.Zones,\n\t\t\t\"simple_zones\": simpleOnly.Zones,\n\t\t})\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Sdn.SdnFunctions;\nimport com.pulumi.proxmoxve.Sdn.inputs.GetZonesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = SdnFunctions.getZones(GetZonesArgs.builder()\n            .build());\n\n        final var evpnOnly = SdnFunctions.getZones(GetZonesArgs.builder()\n            .type(\"evpn\")\n            .build());\n\n        final var simpleOnly = SdnFunctions.getZones(GetZonesArgs.builder()\n            .type(\"simple\")\n            .build());\n\n        ctx.export(\"dataProxmoxVirtualEnvironmentSdnZonesAll\", Map.of(\"zones\", all.zones()));\n        ctx.export(\"dataProxmoxVirtualEnvironmentSdnZonesFiltered\", Map.ofEntries(\n            Map.entry(\"evpn_zones\", evpnOnly.zones()),\n            Map.entry(\"simple_zones\", simpleOnly.zones())\n        ));\n    }\n}\n```\n```yaml\nvariables:\n  all:\n    fn::invoke:\n      function: proxmoxve:Sdn:getZones\n      arguments: {}\n  evpnOnly:\n    fn::invoke:\n      function: proxmoxve:Sdn:getZones\n      arguments:\n        type: evpn\n  simpleOnly:\n    fn::invoke:\n      function: proxmoxve:Sdn:getZones\n      arguments:\n        type: simple\noutputs:\n  dataProxmoxVirtualEnvironmentSdnZonesAll:\n    zones: ${all.zones}\n  dataProxmoxVirtualEnvironmentSdnZonesFiltered:\n    evpn_zones: ${evpnOnly.zones}\n    simple_zones: ${simpleOnly.zones}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getZones.\n",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "description": "Filter zones by type (simple, vlan, qinq, vxlan, evpn).\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getZones.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Filter zones by type (simple, vlan, qinq, vxlan, evpn).\n"
+                    },
+                    "zones": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/proxmoxve:Sdn/getZonesZone:getZonesZone"
+                        },
+                        "description": "List of SDN zones.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "zones",
                     "id"
                 ]
             }

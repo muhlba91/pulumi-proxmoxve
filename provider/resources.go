@@ -47,6 +47,7 @@ const (
 	networkMod    = "network"
 	firewallMod   = "firewall"
 	downloadMod   = "download"
+	sdnZoneMod    = "sdnzone"
 	haMod         = "ha"
 )
 
@@ -217,6 +218,67 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			// Metrics
 			"proxmox_virtual_environment_metrics_server": {Tok: tfbridge.MakeResource(mainPkg, "Metrics", "MetricsServer")},
+			// SDNZone
+			"proxmox_virtual_environment_sdn_zone_qinq": {
+				Tok: tfbridge.MakeResource(mainPkg, "SDNZone", "Qinq"),
+				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
+					const resourceIDPropertyKey = resource.PropertyKey("id")
+					return resource.ID(state[resourceIDPropertyKey].V.(string)), nil
+				},
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"id": {
+						Name: "zoneId",
+					},
+				},
+			},
+			"proxmox_virtual_environment_sdn_zone_vlan": {
+				Tok: tfbridge.MakeResource(mainPkg, "SDNZone", "Vlan"),
+				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
+					const resourceIDPropertyKey = resource.PropertyKey("id")
+					return resource.ID(state[resourceIDPropertyKey].V.(string)), nil
+				},
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"id": {
+						Name: "zoneId",
+					},
+				},
+			},
+			"proxmox_virtual_environment_sdn_zone_vxlan": {
+				Tok: tfbridge.MakeResource(mainPkg, "SDNZone", "Vxlan"),
+				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
+					const resourceIDPropertyKey = resource.PropertyKey("id")
+					return resource.ID(state[resourceIDPropertyKey].V.(string)), nil
+				},
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"id": {
+						Name: "zoneId",
+					},
+				},
+			},
+			"proxmox_virtual_environment_sdn_zone_evpn": {
+				Tok: tfbridge.MakeResource(mainPkg, "SDNZone", "Evpn"),
+				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
+					const resourceIDPropertyKey = resource.PropertyKey("id")
+					return resource.ID(state[resourceIDPropertyKey].V.(string)), nil
+				},
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"id": {
+						Name: "zoneId",
+					},
+				},
+			},
+			"proxmox_virtual_environment_sdn_zone_simple": {
+				Tok: tfbridge.MakeResource(mainPkg, "SDNZone", "Simple"),
+				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
+					const resourceIDPropertyKey = resource.PropertyKey("id")
+					return resource.ID(state[resourceIDPropertyKey].V.(string)), nil
+				},
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"id": {
+						Name: "zoneId",
+					},
+				},
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Cluster
@@ -240,6 +302,12 @@ func Provider() tfbridge.ProviderInfo {
 			"proxmox_virtual_environment_pools":  {Tok: tfbridge.MakeDataSource(mainPkg, "Permission", "getPools")},
 			"proxmox_virtual_environment_role":   {Tok: tfbridge.MakeDataSource(mainPkg, "Permission", "getRole")},
 			"proxmox_virtual_environment_roles":  {Tok: tfbridge.MakeDataSource(mainPkg, "Permission", "getRoles")},
+			// SDNZone
+			"proxmox_virtual_environment_sdn_zone_qinq":   {Tok: tfbridge.MakeDataSource(mainPkg, "SDNZone", "getQinq")},
+			"proxmox_virtual_environment_sdn_zone_vlan":   {Tok: tfbridge.MakeDataSource(mainPkg, "SDNZone", "getVlan")},
+			"proxmox_virtual_environment_sdn_zone_vxlan":  {Tok: tfbridge.MakeDataSource(mainPkg, "SDNZone", "getVxlan")},
+			"proxmox_virtual_environment_sdn_zone_evpn":   {Tok: tfbridge.MakeDataSource(mainPkg, "SDNZone", "getEvpn")},
+			"proxmox_virtual_environment_sdn_zone_simple": {Tok: tfbridge.MakeDataSource(mainPkg, "SDNZone", "getSimple")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			PackageName: "@muhlba91/pulumi-proxmoxve",

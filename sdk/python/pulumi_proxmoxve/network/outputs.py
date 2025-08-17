@@ -185,7 +185,7 @@ class FirewallRulesRule(dict):
                example `80:85`, and you can use comma separated list to match
                several ports or ranges.
                - a security group insertion block, which includes the following arguments:
-        :param _builtins.str type: Rule type (`in`, `out`).
+        :param _builtins.str type: Rule type (`in`, `out`, `forward`).
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -348,7 +348,7 @@ class FirewallRulesRule(dict):
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
         """
-        Rule type (`in`, `out`).
+        Rule type (`in`, `out`, `forward`).
         """
         return pulumi.get(self, "type")
 
@@ -424,7 +424,7 @@ class FirewallSecurityGroupRule(dict):
                services'. Port ranges can be specified with '\\d+:\\d+', for example
                `80:85`, and you can use comma separated list to match several ports or
                ranges.
-        :param _builtins.str type: Rule type (`in`, `out`).
+        :param _builtins.str type: Rule type (`in`, `out`, `forward`).
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -586,7 +586,7 @@ class FirewallSecurityGroupRule(dict):
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
         """
-        Rule type (`in`, `out`).
+        Rule type (`in`, `out`, `forward`).
         """
         return pulumi.get(self, "type")
 

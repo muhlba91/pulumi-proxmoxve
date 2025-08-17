@@ -23,7 +23,7 @@ class RepositoryArgs:
                  node: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a Repository resource.
-        :param pulumi.Input[_builtins.str] handle: The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `enterprise` | `no-subscription` | `test`.
+        :param pulumi.Input[_builtins.str] handle: The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `ceph-squid-enterprise` | `ceph-squid-no-subscription` | `ceph-squid-test` | `enterprise` | `no-subscription` | `test`.
         :param pulumi.Input[_builtins.str] node: The name of the target Proxmox VE node.
         """
         pulumi.set(__self__, "handle", handle)
@@ -33,7 +33,7 @@ class RepositoryArgs:
     @pulumi.getter
     def handle(self) -> pulumi.Input[_builtins.str]:
         """
-        The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `enterprise` | `no-subscription` | `test`.
+        The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `ceph-squid-enterprise` | `ceph-squid-no-subscription` | `ceph-squid-test` | `enterprise` | `no-subscription` | `test`.
         """
         return pulumi.get(self, "handle")
 
@@ -68,7 +68,7 @@ class _RepositoryState:
         Input properties used for looking up and filtering Repository resources.
         :param pulumi.Input[_builtins.str] description: The description of the APT standard repository.
         :param pulumi.Input[_builtins.str] file_path: The absolute path of the source list file that contains this standard repository.
-        :param pulumi.Input[_builtins.str] handle: The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `enterprise` | `no-subscription` | `test`.
+        :param pulumi.Input[_builtins.str] handle: The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `ceph-squid-enterprise` | `ceph-squid-no-subscription` | `ceph-squid-test` | `enterprise` | `no-subscription` | `test`.
         :param pulumi.Input[_builtins.int] index: The index within the defining source list file.
         :param pulumi.Input[_builtins.str] name: The name of the APT standard repository.
         :param pulumi.Input[_builtins.str] node: The name of the target Proxmox VE node.
@@ -117,7 +117,7 @@ class _RepositoryState:
     @pulumi.getter
     def handle(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `enterprise` | `no-subscription` | `test`.
+        The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `ceph-squid-enterprise` | `ceph-squid-no-subscription` | `ceph-squid-test` | `enterprise` | `no-subscription` | `test`.
         """
         return pulumi.get(self, "handle")
 
@@ -216,7 +216,7 @@ class Repository(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] handle: The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `enterprise` | `no-subscription` | `test`.
+        :param pulumi.Input[_builtins.str] handle: The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `ceph-squid-enterprise` | `ceph-squid-no-subscription` | `ceph-squid-test` | `enterprise` | `no-subscription` | `test`.
         :param pulumi.Input[_builtins.str] node: The name of the target Proxmox VE node.
         """
         ...
@@ -319,7 +319,7 @@ class Repository(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the APT standard repository.
         :param pulumi.Input[_builtins.str] file_path: The absolute path of the source list file that contains this standard repository.
-        :param pulumi.Input[_builtins.str] handle: The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `enterprise` | `no-subscription` | `test`.
+        :param pulumi.Input[_builtins.str] handle: The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `ceph-squid-enterprise` | `ceph-squid-no-subscription` | `ceph-squid-test` | `enterprise` | `no-subscription` | `test`.
         :param pulumi.Input[_builtins.int] index: The index within the defining source list file.
         :param pulumi.Input[_builtins.str] name: The name of the APT standard repository.
         :param pulumi.Input[_builtins.str] node: The name of the target Proxmox VE node.
@@ -358,7 +358,7 @@ class Repository(pulumi.CustomResource):
     @pulumi.getter
     def handle(self) -> pulumi.Output[_builtins.str]:
         """
-        The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `enterprise` | `no-subscription` | `test`.
+        The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `ceph-squid-enterprise` | `ceph-squid-no-subscription` | `ceph-squid-test` | `enterprise` | `no-subscription` | `test`.
         """
         return pulumi.get(self, "handle")
 

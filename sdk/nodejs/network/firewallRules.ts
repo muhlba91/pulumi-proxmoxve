@@ -86,21 +86,21 @@ export class FirewallRules extends pulumi.CustomResource {
      * Container ID. Leave empty for cluster level
      * rules.
      */
-    public readonly containerId!: pulumi.Output<number | undefined>;
+    declare public readonly containerId: pulumi.Output<number | undefined>;
     /**
      * Node name. Leave empty for cluster level rules.
      */
-    public readonly nodeName!: pulumi.Output<string | undefined>;
+    declare public readonly nodeName: pulumi.Output<string | undefined>;
     /**
      * Firewall rule block (multiple blocks supported).
      * The provider supports two types of the `rule` blocks:
      * - A rule definition block, which includes the following arguments:
      */
-    public readonly rules!: pulumi.Output<outputs.Network.FirewallRulesRule[]>;
+    declare public readonly rules: pulumi.Output<outputs.Network.FirewallRulesRule[]>;
     /**
      * VM ID. Leave empty for cluster level rules.
      */
-    public readonly vmId!: pulumi.Output<number | undefined>;
+    declare public readonly vmId: pulumi.Output<number | undefined>;
 
     /**
      * Create a FirewallRules resource with the given unique name, arguments, and options.
@@ -115,19 +115,19 @@ export class FirewallRules extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FirewallRulesState | undefined;
-            resourceInputs["containerId"] = state ? state.containerId : undefined;
-            resourceInputs["nodeName"] = state ? state.nodeName : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
-            resourceInputs["vmId"] = state ? state.vmId : undefined;
+            resourceInputs["containerId"] = state?.containerId;
+            resourceInputs["nodeName"] = state?.nodeName;
+            resourceInputs["rules"] = state?.rules;
+            resourceInputs["vmId"] = state?.vmId;
         } else {
             const args = argsOrState as FirewallRulesArgs | undefined;
-            if ((!args || args.rules === undefined) && !opts.urn) {
+            if (args?.rules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rules'");
             }
-            resourceInputs["containerId"] = args ? args.containerId : undefined;
-            resourceInputs["nodeName"] = args ? args.nodeName : undefined;
-            resourceInputs["rules"] = args ? args.rules : undefined;
-            resourceInputs["vmId"] = args ? args.vmId : undefined;
+            resourceInputs["containerId"] = args?.containerId;
+            resourceInputs["nodeName"] = args?.nodeName;
+            resourceInputs["rules"] = args?.rules;
+            resourceInputs["vmId"] = args?.vmId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FirewallRules.__pulumiType, name, resourceInputs, opts);

@@ -28,9 +28,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := network.NewFirewall(ctx, "example", &network.FirewallArgs{
-//				Ebtables:    pulumi.Bool(false),
-//				Enabled:     pulumi.Bool(false),
-//				InputPolicy: pulumi.String("DROP"),
+//				Ebtables:      pulumi.Bool(false),
+//				Enabled:       pulumi.Bool(false),
+//				ForwardPolicy: pulumi.String("ACCEPT"),
+//				InputPolicy:   pulumi.String("DROP"),
 //				LogRatelimit: &network.FirewallLogRatelimitArgs{
 //					Burst:   pulumi.Int(10),
 //					Enabled: pulumi.Bool(false),
@@ -67,6 +68,8 @@ type Firewall struct {
 	Ebtables pulumi.BoolPtrOutput `pulumi:"ebtables"`
 	// Enable or disable the firewall cluster wide.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
+	// The default forward policy (`ACCEPT`, `DROP`).
+	ForwardPolicy pulumi.StringPtrOutput `pulumi:"forwardPolicy"`
 	// The default input policy (`ACCEPT`, `DROP`, `REJECT`).
 	InputPolicy pulumi.StringPtrOutput `pulumi:"inputPolicy"`
 	// The log rate limit.
@@ -109,6 +112,8 @@ type firewallState struct {
 	Ebtables *bool `pulumi:"ebtables"`
 	// Enable or disable the firewall cluster wide.
 	Enabled *bool `pulumi:"enabled"`
+	// The default forward policy (`ACCEPT`, `DROP`).
+	ForwardPolicy *string `pulumi:"forwardPolicy"`
 	// The default input policy (`ACCEPT`, `DROP`, `REJECT`).
 	InputPolicy *string `pulumi:"inputPolicy"`
 	// The log rate limit.
@@ -122,6 +127,8 @@ type FirewallState struct {
 	Ebtables pulumi.BoolPtrInput
 	// Enable or disable the firewall cluster wide.
 	Enabled pulumi.BoolPtrInput
+	// The default forward policy (`ACCEPT`, `DROP`).
+	ForwardPolicy pulumi.StringPtrInput
 	// The default input policy (`ACCEPT`, `DROP`, `REJECT`).
 	InputPolicy pulumi.StringPtrInput
 	// The log rate limit.
@@ -139,6 +146,8 @@ type firewallArgs struct {
 	Ebtables *bool `pulumi:"ebtables"`
 	// Enable or disable the firewall cluster wide.
 	Enabled *bool `pulumi:"enabled"`
+	// The default forward policy (`ACCEPT`, `DROP`).
+	ForwardPolicy *string `pulumi:"forwardPolicy"`
 	// The default input policy (`ACCEPT`, `DROP`, `REJECT`).
 	InputPolicy *string `pulumi:"inputPolicy"`
 	// The log rate limit.
@@ -153,6 +162,8 @@ type FirewallArgs struct {
 	Ebtables pulumi.BoolPtrInput
 	// Enable or disable the firewall cluster wide.
 	Enabled pulumi.BoolPtrInput
+	// The default forward policy (`ACCEPT`, `DROP`).
+	ForwardPolicy pulumi.StringPtrInput
 	// The default input policy (`ACCEPT`, `DROP`, `REJECT`).
 	InputPolicy pulumi.StringPtrInput
 	// The log rate limit.
@@ -256,6 +267,11 @@ func (o FirewallOutput) Ebtables() pulumi.BoolPtrOutput {
 // Enable or disable the firewall cluster wide.
 func (o FirewallOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The default forward policy (`ACCEPT`, `DROP`).
+func (o FirewallOutput) ForwardPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Firewall) pulumi.StringPtrOutput { return v.ForwardPolicy }).(pulumi.StringPtrOutput)
 }
 
 // The default input policy (`ACCEPT`, `DROP`, `REJECT`).

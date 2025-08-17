@@ -89,7 +89,7 @@ namespace Pulumi.ProxmoxVE.Network.Outputs
         /// </summary>
         public readonly string? Sport;
         /// <summary>
-        /// Rule type (`in`, `out`).
+        /// Rule type (`in`, `out`, `forward`).
         /// </summary>
         public readonly string? Type;
 

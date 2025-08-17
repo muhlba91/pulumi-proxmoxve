@@ -64,27 +64,27 @@ export class AcmeDnsPlugin extends pulumi.CustomResource {
     /**
      * API plugin name.
      */
-    public readonly api!: pulumi.Output<string>;
+    declare public readonly api: pulumi.Output<string>;
     /**
      * DNS plugin data.
      */
-    public readonly data!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly data: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * SHA1 digest of the current configuration. Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
      */
-    public readonly digest!: pulumi.Output<string>;
+    declare public readonly digest: pulumi.Output<string>;
     /**
      * Flag to disable the config.
      */
-    public readonly disable!: pulumi.Output<boolean | undefined>;
+    declare public readonly disable: pulumi.Output<boolean | undefined>;
     /**
      * ACME Plugin ID name.
      */
-    public readonly plugin!: pulumi.Output<string>;
+    declare public readonly plugin: pulumi.Output<string>;
     /**
      * Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records (0 - 172800).
      */
-    public readonly validationDelay!: pulumi.Output<number>;
+    declare public readonly validationDelay: pulumi.Output<number>;
 
     /**
      * Create a AcmeDnsPlugin resource with the given unique name, arguments, and options.
@@ -99,26 +99,26 @@ export class AcmeDnsPlugin extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AcmeDnsPluginState | undefined;
-            resourceInputs["api"] = state ? state.api : undefined;
-            resourceInputs["data"] = state ? state.data : undefined;
-            resourceInputs["digest"] = state ? state.digest : undefined;
-            resourceInputs["disable"] = state ? state.disable : undefined;
-            resourceInputs["plugin"] = state ? state.plugin : undefined;
-            resourceInputs["validationDelay"] = state ? state.validationDelay : undefined;
+            resourceInputs["api"] = state?.api;
+            resourceInputs["data"] = state?.data;
+            resourceInputs["digest"] = state?.digest;
+            resourceInputs["disable"] = state?.disable;
+            resourceInputs["plugin"] = state?.plugin;
+            resourceInputs["validationDelay"] = state?.validationDelay;
         } else {
             const args = argsOrState as AcmeDnsPluginArgs | undefined;
-            if ((!args || args.api === undefined) && !opts.urn) {
+            if (args?.api === undefined && !opts.urn) {
                 throw new Error("Missing required property 'api'");
             }
-            if ((!args || args.plugin === undefined) && !opts.urn) {
+            if (args?.plugin === undefined && !opts.urn) {
                 throw new Error("Missing required property 'plugin'");
             }
-            resourceInputs["api"] = args ? args.api : undefined;
-            resourceInputs["data"] = args ? args.data : undefined;
-            resourceInputs["digest"] = args ? args.digest : undefined;
-            resourceInputs["disable"] = args ? args.disable : undefined;
-            resourceInputs["plugin"] = args ? args.plugin : undefined;
-            resourceInputs["validationDelay"] = args ? args.validationDelay : undefined;
+            resourceInputs["api"] = args?.api;
+            resourceInputs["data"] = args?.data;
+            resourceInputs["digest"] = args?.digest;
+            resourceInputs["disable"] = args?.disable;
+            resourceInputs["plugin"] = args?.plugin;
+            resourceInputs["validationDelay"] = args?.validationDelay;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AcmeDnsPlugin.__pulumiType, name, resourceInputs, opts);

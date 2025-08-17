@@ -83,27 +83,27 @@ export class FirewallSecurityGroup extends pulumi.CustomResource {
     /**
      * Security group comment.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * The ID of the container to manage the firewall for.
      */
-    public readonly containerId!: pulumi.Output<number | undefined>;
+    declare public readonly containerId: pulumi.Output<number | undefined>;
     /**
      * Security group name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The name of the node.
      */
-    public readonly nodeName!: pulumi.Output<string | undefined>;
+    declare public readonly nodeName: pulumi.Output<string | undefined>;
     /**
      * Firewall rule block (multiple blocks supported).
      */
-    public readonly rules!: pulumi.Output<outputs.Network.FirewallSecurityGroupRule[]>;
+    declare public readonly rules: pulumi.Output<outputs.Network.FirewallSecurityGroupRule[]>;
     /**
      * The ID of the VM to manage the firewall for.
      */
-    public readonly vmId!: pulumi.Output<number | undefined>;
+    declare public readonly vmId: pulumi.Output<number | undefined>;
 
     /**
      * Create a FirewallSecurityGroup resource with the given unique name, arguments, and options.
@@ -118,23 +118,23 @@ export class FirewallSecurityGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FirewallSecurityGroupState | undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["containerId"] = state ? state.containerId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nodeName"] = state ? state.nodeName : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
-            resourceInputs["vmId"] = state ? state.vmId : undefined;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["containerId"] = state?.containerId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nodeName"] = state?.nodeName;
+            resourceInputs["rules"] = state?.rules;
+            resourceInputs["vmId"] = state?.vmId;
         } else {
             const args = argsOrState as FirewallSecurityGroupArgs | undefined;
-            if ((!args || args.rules === undefined) && !opts.urn) {
+            if (args?.rules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rules'");
             }
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["containerId"] = args ? args.containerId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nodeName"] = args ? args.nodeName : undefined;
-            resourceInputs["rules"] = args ? args.rules : undefined;
-            resourceInputs["vmId"] = args ? args.vmId : undefined;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["containerId"] = args?.containerId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nodeName"] = args?.nodeName;
+            resourceInputs["rules"] = args?.rules;
+            resourceInputs["vmId"] = args?.vmId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FirewallSecurityGroup.__pulumiType, name, resourceInputs, opts);

@@ -259,7 +259,7 @@ if not MYPY:
         """
         type: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Rule type (`in`, `out`).
+        Rule type (`in`, `out`, `forward`).
         """
 elif False:
     FirewallRulesRuleArgsDict: TypeAlias = Mapping[str, Any]
@@ -319,7 +319,7 @@ class FirewallRulesRuleArgs:
                example `80:85`, and you can use comma separated list to match
                several ports or ranges.
                - a security group insertion block, which includes the following arguments:
-        :param pulumi.Input[_builtins.str] type: Rule type (`in`, `out`).
+        :param pulumi.Input[_builtins.str] type: Rule type (`in`, `out`, `forward`).
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -534,7 +534,7 @@ class FirewallRulesRuleArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Rule type (`in`, `out`).
+        Rule type (`in`, `out`, `forward`).
         """
         return pulumi.get(self, "type")
 
@@ -622,7 +622,7 @@ if not MYPY:
         """
         type: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Rule type (`in`, `out`).
+        Rule type (`in`, `out`, `forward`).
         """
 elif False:
     FirewallSecurityGroupRuleArgsDict: TypeAlias = Mapping[str, Any]
@@ -681,7 +681,7 @@ class FirewallSecurityGroupRuleArgs:
                services'. Port ranges can be specified with '\\d+:\\d+', for example
                `80:85`, and you can use comma separated list to match several ports or
                ranges.
-        :param pulumi.Input[_builtins.str] type: Rule type (`in`, `out`).
+        :param pulumi.Input[_builtins.str] type: Rule type (`in`, `out`, `forward`).
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -895,7 +895,7 @@ class FirewallSecurityGroupRuleArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Rule type (`in`, `out`).
+        Rule type (`in`, `out`, `forward`).
         """
         return pulumi.get(self, "type")
 

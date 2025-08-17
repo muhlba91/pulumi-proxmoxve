@@ -101,183 +101,183 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * Whether to enable ACPI (defaults to `true`).
      */
-    public readonly acpi!: pulumi.Output<boolean | undefined>;
+    declare public readonly acpi: pulumi.Output<boolean | undefined>;
     /**
      * The QEMU agent configuration.
      */
-    public readonly agent!: pulumi.Output<outputs.VM.VirtualMachineAgent | undefined>;
+    declare public readonly agent: pulumi.Output<outputs.VM.VirtualMachineAgent | undefined>;
     /**
      * Secure Encrypted Virtualization (SEV) features by AMD CPUs.
      */
-    public readonly amdSev!: pulumi.Output<outputs.VM.VirtualMachineAmdSev | undefined>;
+    declare public readonly amdSev: pulumi.Output<outputs.VM.VirtualMachineAmdSev | undefined>;
     /**
      * An audio device.
      */
-    public readonly audioDevice!: pulumi.Output<outputs.VM.VirtualMachineAudioDevice | undefined>;
+    declare public readonly audioDevice: pulumi.Output<outputs.VM.VirtualMachineAudioDevice | undefined>;
     /**
      * The BIOS implementation (defaults to `seabios`).
      */
-    public readonly bios!: pulumi.Output<string | undefined>;
+    declare public readonly bios: pulumi.Output<string | undefined>;
     /**
      * Specify a list of devices to boot from in the order
      * they appear in the list (defaults to `[]`).
      */
-    public readonly bootOrders!: pulumi.Output<string[] | undefined>;
+    declare public readonly bootOrders: pulumi.Output<string[] | undefined>;
     /**
      * The CD-ROM configuration.
      */
-    public readonly cdrom!: pulumi.Output<outputs.VM.VirtualMachineCdrom | undefined>;
+    declare public readonly cdrom: pulumi.Output<outputs.VM.VirtualMachineCdrom | undefined>;
     /**
      * The cloning configuration.
      */
-    public readonly clone!: pulumi.Output<outputs.VM.VirtualMachineClone | undefined>;
+    declare public readonly clone: pulumi.Output<outputs.VM.VirtualMachineClone | undefined>;
     /**
      * The CPU configuration.
      */
-    public readonly cpu!: pulumi.Output<outputs.VM.VirtualMachineCpu | undefined>;
+    declare public readonly cpu: pulumi.Output<outputs.VM.VirtualMachineCpu | undefined>;
     /**
      * The description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * A disk (multiple blocks supported).
      */
-    public readonly disks!: pulumi.Output<outputs.VM.VirtualMachineDisk[] | undefined>;
+    declare public readonly disks: pulumi.Output<outputs.VM.VirtualMachineDisk[] | undefined>;
     /**
      * The efi disk device (required if `bios` is set
      * to `ovmf`)
      */
-    public readonly efiDisk!: pulumi.Output<outputs.VM.VirtualMachineEfiDisk | undefined>;
+    declare public readonly efiDisk: pulumi.Output<outputs.VM.VirtualMachineEfiDisk | undefined>;
     /**
      * The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
      */
-    public readonly hookScriptFileId!: pulumi.Output<string | undefined>;
+    declare public readonly hookScriptFileId: pulumi.Output<string | undefined>;
     /**
      * A host PCI device mapping (multiple blocks supported).
      */
-    public readonly hostpcis!: pulumi.Output<outputs.VM.VirtualMachineHostpci[] | undefined>;
+    declare public readonly hostpcis: pulumi.Output<outputs.VM.VirtualMachineHostpci[] | undefined>;
     /**
      * The cloud-init configuration.
      */
-    public readonly initialization!: pulumi.Output<outputs.VM.VirtualMachineInitialization | undefined>;
+    declare public readonly initialization: pulumi.Output<outputs.VM.VirtualMachineInitialization | undefined>;
     /**
      * The IPv4 addresses per network interface published by the
      * QEMU agent (empty list when `agent.enabled` is `false`)
      */
-    public /*out*/ readonly ipv4Addresses!: pulumi.Output<string[][]>;
+    declare public /*out*/ readonly ipv4Addresses: pulumi.Output<string[][]>;
     /**
      * The IPv6 addresses per network interface published by the
      * QEMU agent (empty list when `agent.enabled` is `false`)
      */
-    public /*out*/ readonly ipv6Addresses!: pulumi.Output<string[][]>;
+    declare public /*out*/ readonly ipv6Addresses: pulumi.Output<string[][]>;
     /**
      * The keyboard layout (defaults to `en-us`).
      */
-    public readonly keyboardLayout!: pulumi.Output<string | undefined>;
+    declare public readonly keyboardLayout: pulumi.Output<string | undefined>;
     /**
      * Arbitrary arguments passed to kvm.
      */
-    public readonly kvmArguments!: pulumi.Output<string | undefined>;
+    declare public readonly kvmArguments: pulumi.Output<string | undefined>;
     /**
      * The MAC addresses published by the QEMU agent with fallback
      * to the network device configuration, if the agent is disabled
      */
-    public readonly macAddresses!: pulumi.Output<string[]>;
+    declare public readonly macAddresses: pulumi.Output<string[]>;
     /**
      * The VM machine type (defaults to `pc`).
      */
-    public readonly machine!: pulumi.Output<string | undefined>;
+    declare public readonly machine: pulumi.Output<string | undefined>;
     /**
      * The memory configuration.
      */
-    public readonly memory!: pulumi.Output<outputs.VM.VirtualMachineMemory | undefined>;
+    declare public readonly memory: pulumi.Output<outputs.VM.VirtualMachineMemory | undefined>;
     /**
      * Migrate the VM on node change instead of re-creating
      * it (defaults to `false`).
      */
-    public readonly migrate!: pulumi.Output<boolean | undefined>;
+    declare public readonly migrate: pulumi.Output<boolean | undefined>;
     /**
      * The virtual machine name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * A network device (multiple blocks supported).
      */
-    public readonly networkDevices!: pulumi.Output<outputs.VM.VirtualMachineNetworkDevice[]>;
+    declare public readonly networkDevices: pulumi.Output<outputs.VM.VirtualMachineNetworkDevice[]>;
     /**
      * The network interface names published by the QEMU
      * agent (empty list when `agent.enabled` is `false`)
      */
-    public /*out*/ readonly networkInterfaceNames!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly networkInterfaceNames: pulumi.Output<string[]>;
     /**
      * The name of the node to assign the virtual machine
      * to.
      */
-    public readonly nodeName!: pulumi.Output<string>;
+    declare public readonly nodeName: pulumi.Output<string>;
     /**
      * The NUMA configuration.
      */
-    public readonly numas!: pulumi.Output<outputs.VM.VirtualMachineNuma[] | undefined>;
+    declare public readonly numas: pulumi.Output<outputs.VM.VirtualMachineNuma[] | undefined>;
     /**
      * Specifies whether a VM will be started during system
      * boot. (defaults to `true`)
      */
-    public readonly onBoot!: pulumi.Output<boolean | undefined>;
+    declare public readonly onBoot: pulumi.Output<boolean | undefined>;
     /**
      * The Operating System configuration.
      */
-    public readonly operatingSystem!: pulumi.Output<outputs.VM.VirtualMachineOperatingSystem | undefined>;
+    declare public readonly operatingSystem: pulumi.Output<outputs.VM.VirtualMachineOperatingSystem | undefined>;
     /**
      * The identifier for a pool to assign the virtual machine to.
      */
-    public readonly poolId!: pulumi.Output<string | undefined>;
+    declare public readonly poolId: pulumi.Output<string | undefined>;
     /**
      * Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
      */
-    public readonly protection!: pulumi.Output<boolean | undefined>;
+    declare public readonly protection: pulumi.Output<boolean | undefined>;
     /**
      * Reboot the VM after initial creation (defaults to `false`).
      */
-    public readonly reboot!: pulumi.Output<boolean | undefined>;
+    declare public readonly reboot: pulumi.Output<boolean | undefined>;
     /**
      * Reboot the VM after update if needed (defaults to `true`).
      */
-    public readonly rebootAfterUpdate!: pulumi.Output<boolean | undefined>;
+    declare public readonly rebootAfterUpdate: pulumi.Output<boolean | undefined>;
     /**
      * The random number generator configuration. Can only be set by `root@pam.`
      */
-    public readonly rngs!: pulumi.Output<outputs.VM.VirtualMachineRng[] | undefined>;
+    declare public readonly rngs: pulumi.Output<outputs.VM.VirtualMachineRng[] | undefined>;
     /**
      * The SCSI hardware type (defaults to
      * `virtio-scsi-pci`).
      */
-    public readonly scsiHardware!: pulumi.Output<string | undefined>;
+    declare public readonly scsiHardware: pulumi.Output<string | undefined>;
     /**
      * A serial device (multiple blocks supported).
      */
-    public readonly serialDevices!: pulumi.Output<outputs.VM.VirtualMachineSerialDevice[] | undefined>;
+    declare public readonly serialDevices: pulumi.Output<outputs.VM.VirtualMachineSerialDevice[] | undefined>;
     /**
      * The SMBIOS (type1) settings for the VM.
      */
-    public readonly smbios!: pulumi.Output<outputs.VM.VirtualMachineSmbios | undefined>;
+    declare public readonly smbios: pulumi.Output<outputs.VM.VirtualMachineSmbios | undefined>;
     /**
      * Whether to start the virtual machine (defaults
      * to `true`).
      */
-    public readonly started!: pulumi.Output<boolean | undefined>;
+    declare public readonly started: pulumi.Output<boolean | undefined>;
     /**
      * Defines startup and shutdown behavior of the VM.
      */
-    public readonly startup!: pulumi.Output<outputs.VM.VirtualMachineStartup | undefined>;
+    declare public readonly startup: pulumi.Output<outputs.VM.VirtualMachineStartup | undefined>;
     /**
      * Whether to stop rather than shutdown on VM destroy (defaults to `false`)
      */
-    public readonly stopOnDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly stopOnDestroy: pulumi.Output<boolean | undefined>;
     /**
      * Whether to enable the USB tablet device (defaults
      * to `true`).
      */
-    public readonly tabletDevice!: pulumi.Output<boolean | undefined>;
+    declare public readonly tabletDevice: pulumi.Output<boolean | undefined>;
     /**
      * A list of tags of the VM. This is only meta information (
      * defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
@@ -285,76 +285,76 @@ export class VirtualMachine extends pulumi.CustomResource {
      * resource. You may use the `ignoreChanges` lifecycle meta-argument to ignore
      * changes to this attribute.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * Whether to create a template (defaults to `false`).
      */
-    public readonly template!: pulumi.Output<boolean | undefined>;
+    declare public readonly template: pulumi.Output<boolean | undefined>;
     /**
      * Timeout for cloning a VM in seconds (defaults to
      * 1800).
      */
-    public readonly timeoutClone!: pulumi.Output<number | undefined>;
+    declare public readonly timeoutClone: pulumi.Output<number | undefined>;
     /**
      * Timeout for creating a VM in seconds (defaults to
      * 1800).
      */
-    public readonly timeoutCreate!: pulumi.Output<number | undefined>;
+    declare public readonly timeoutCreate: pulumi.Output<number | undefined>;
     /**
      * Timeout for migrating the VM (defaults to
      * 1800).
      */
-    public readonly timeoutMigrate!: pulumi.Output<number | undefined>;
+    declare public readonly timeoutMigrate: pulumi.Output<number | undefined>;
     /**
      * MoveDisk timeout
      *
      * @deprecated This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeoutClone / timeout_migrate) is used instead.
      */
-    public readonly timeoutMoveDisk!: pulumi.Output<number | undefined>;
+    declare public readonly timeoutMoveDisk: pulumi.Output<number | undefined>;
     /**
      * Timeout for rebooting a VM in seconds (defaults
      * to 1800).
      */
-    public readonly timeoutReboot!: pulumi.Output<number | undefined>;
+    declare public readonly timeoutReboot: pulumi.Output<number | undefined>;
     /**
      * Timeout for shutting down a VM in seconds (
      * defaults to 1800).
      */
-    public readonly timeoutShutdownVm!: pulumi.Output<number | undefined>;
+    declare public readonly timeoutShutdownVm: pulumi.Output<number | undefined>;
     /**
      * Timeout for starting a VM in seconds (defaults
      * to 1800).
      */
-    public readonly timeoutStartVm!: pulumi.Output<number | undefined>;
+    declare public readonly timeoutStartVm: pulumi.Output<number | undefined>;
     /**
      * Timeout for stopping a VM in seconds (defaults
      * to 300).
      */
-    public readonly timeoutStopVm!: pulumi.Output<number | undefined>;
+    declare public readonly timeoutStopVm: pulumi.Output<number | undefined>;
     /**
      * The TPM state device.
      */
-    public readonly tpmState!: pulumi.Output<outputs.VM.VirtualMachineTpmState | undefined>;
+    declare public readonly tpmState: pulumi.Output<outputs.VM.VirtualMachineTpmState | undefined>;
     /**
      * A host USB device mapping (multiple blocks supported).
      */
-    public readonly usbs!: pulumi.Output<outputs.VM.VirtualMachineUsb[] | undefined>;
+    declare public readonly usbs: pulumi.Output<outputs.VM.VirtualMachineUsb[] | undefined>;
     /**
      * The VGA configuration.
      */
-    public readonly vga!: pulumi.Output<outputs.VM.VirtualMachineVga>;
+    declare public readonly vga: pulumi.Output<outputs.VM.VirtualMachineVga>;
     /**
      * Virtiofs share
      */
-    public readonly virtiofs!: pulumi.Output<outputs.VM.VirtualMachineVirtiof[] | undefined>;
+    declare public readonly virtiofs: pulumi.Output<outputs.VM.VirtualMachineVirtiof[] | undefined>;
     /**
      * The VM identifier.
      */
-    public readonly vmId!: pulumi.Output<number>;
+    declare public readonly vmId: pulumi.Output<number>;
     /**
      * The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
      */
-    public readonly watchdog!: pulumi.Output<outputs.VM.VirtualMachineWatchdog | undefined>;
+    declare public readonly watchdog: pulumi.Output<outputs.VM.VirtualMachineWatchdog | undefined>;
 
     /**
      * Create a VirtualMachine resource with the given unique name, arguments, and options.
@@ -369,124 +369,124 @@ export class VirtualMachine extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VirtualMachineState | undefined;
-            resourceInputs["acpi"] = state ? state.acpi : undefined;
-            resourceInputs["agent"] = state ? state.agent : undefined;
-            resourceInputs["amdSev"] = state ? state.amdSev : undefined;
-            resourceInputs["audioDevice"] = state ? state.audioDevice : undefined;
-            resourceInputs["bios"] = state ? state.bios : undefined;
-            resourceInputs["bootOrders"] = state ? state.bootOrders : undefined;
-            resourceInputs["cdrom"] = state ? state.cdrom : undefined;
-            resourceInputs["clone"] = state ? state.clone : undefined;
-            resourceInputs["cpu"] = state ? state.cpu : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disks"] = state ? state.disks : undefined;
-            resourceInputs["efiDisk"] = state ? state.efiDisk : undefined;
-            resourceInputs["hookScriptFileId"] = state ? state.hookScriptFileId : undefined;
-            resourceInputs["hostpcis"] = state ? state.hostpcis : undefined;
-            resourceInputs["initialization"] = state ? state.initialization : undefined;
-            resourceInputs["ipv4Addresses"] = state ? state.ipv4Addresses : undefined;
-            resourceInputs["ipv6Addresses"] = state ? state.ipv6Addresses : undefined;
-            resourceInputs["keyboardLayout"] = state ? state.keyboardLayout : undefined;
-            resourceInputs["kvmArguments"] = state ? state.kvmArguments : undefined;
-            resourceInputs["macAddresses"] = state ? state.macAddresses : undefined;
-            resourceInputs["machine"] = state ? state.machine : undefined;
-            resourceInputs["memory"] = state ? state.memory : undefined;
-            resourceInputs["migrate"] = state ? state.migrate : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkDevices"] = state ? state.networkDevices : undefined;
-            resourceInputs["networkInterfaceNames"] = state ? state.networkInterfaceNames : undefined;
-            resourceInputs["nodeName"] = state ? state.nodeName : undefined;
-            resourceInputs["numas"] = state ? state.numas : undefined;
-            resourceInputs["onBoot"] = state ? state.onBoot : undefined;
-            resourceInputs["operatingSystem"] = state ? state.operatingSystem : undefined;
-            resourceInputs["poolId"] = state ? state.poolId : undefined;
-            resourceInputs["protection"] = state ? state.protection : undefined;
-            resourceInputs["reboot"] = state ? state.reboot : undefined;
-            resourceInputs["rebootAfterUpdate"] = state ? state.rebootAfterUpdate : undefined;
-            resourceInputs["rngs"] = state ? state.rngs : undefined;
-            resourceInputs["scsiHardware"] = state ? state.scsiHardware : undefined;
-            resourceInputs["serialDevices"] = state ? state.serialDevices : undefined;
-            resourceInputs["smbios"] = state ? state.smbios : undefined;
-            resourceInputs["started"] = state ? state.started : undefined;
-            resourceInputs["startup"] = state ? state.startup : undefined;
-            resourceInputs["stopOnDestroy"] = state ? state.stopOnDestroy : undefined;
-            resourceInputs["tabletDevice"] = state ? state.tabletDevice : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["template"] = state ? state.template : undefined;
-            resourceInputs["timeoutClone"] = state ? state.timeoutClone : undefined;
-            resourceInputs["timeoutCreate"] = state ? state.timeoutCreate : undefined;
-            resourceInputs["timeoutMigrate"] = state ? state.timeoutMigrate : undefined;
-            resourceInputs["timeoutMoveDisk"] = state ? state.timeoutMoveDisk : undefined;
-            resourceInputs["timeoutReboot"] = state ? state.timeoutReboot : undefined;
-            resourceInputs["timeoutShutdownVm"] = state ? state.timeoutShutdownVm : undefined;
-            resourceInputs["timeoutStartVm"] = state ? state.timeoutStartVm : undefined;
-            resourceInputs["timeoutStopVm"] = state ? state.timeoutStopVm : undefined;
-            resourceInputs["tpmState"] = state ? state.tpmState : undefined;
-            resourceInputs["usbs"] = state ? state.usbs : undefined;
-            resourceInputs["vga"] = state ? state.vga : undefined;
-            resourceInputs["virtiofs"] = state ? state.virtiofs : undefined;
-            resourceInputs["vmId"] = state ? state.vmId : undefined;
-            resourceInputs["watchdog"] = state ? state.watchdog : undefined;
+            resourceInputs["acpi"] = state?.acpi;
+            resourceInputs["agent"] = state?.agent;
+            resourceInputs["amdSev"] = state?.amdSev;
+            resourceInputs["audioDevice"] = state?.audioDevice;
+            resourceInputs["bios"] = state?.bios;
+            resourceInputs["bootOrders"] = state?.bootOrders;
+            resourceInputs["cdrom"] = state?.cdrom;
+            resourceInputs["clone"] = state?.clone;
+            resourceInputs["cpu"] = state?.cpu;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disks"] = state?.disks;
+            resourceInputs["efiDisk"] = state?.efiDisk;
+            resourceInputs["hookScriptFileId"] = state?.hookScriptFileId;
+            resourceInputs["hostpcis"] = state?.hostpcis;
+            resourceInputs["initialization"] = state?.initialization;
+            resourceInputs["ipv4Addresses"] = state?.ipv4Addresses;
+            resourceInputs["ipv6Addresses"] = state?.ipv6Addresses;
+            resourceInputs["keyboardLayout"] = state?.keyboardLayout;
+            resourceInputs["kvmArguments"] = state?.kvmArguments;
+            resourceInputs["macAddresses"] = state?.macAddresses;
+            resourceInputs["machine"] = state?.machine;
+            resourceInputs["memory"] = state?.memory;
+            resourceInputs["migrate"] = state?.migrate;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkDevices"] = state?.networkDevices;
+            resourceInputs["networkInterfaceNames"] = state?.networkInterfaceNames;
+            resourceInputs["nodeName"] = state?.nodeName;
+            resourceInputs["numas"] = state?.numas;
+            resourceInputs["onBoot"] = state?.onBoot;
+            resourceInputs["operatingSystem"] = state?.operatingSystem;
+            resourceInputs["poolId"] = state?.poolId;
+            resourceInputs["protection"] = state?.protection;
+            resourceInputs["reboot"] = state?.reboot;
+            resourceInputs["rebootAfterUpdate"] = state?.rebootAfterUpdate;
+            resourceInputs["rngs"] = state?.rngs;
+            resourceInputs["scsiHardware"] = state?.scsiHardware;
+            resourceInputs["serialDevices"] = state?.serialDevices;
+            resourceInputs["smbios"] = state?.smbios;
+            resourceInputs["started"] = state?.started;
+            resourceInputs["startup"] = state?.startup;
+            resourceInputs["stopOnDestroy"] = state?.stopOnDestroy;
+            resourceInputs["tabletDevice"] = state?.tabletDevice;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["template"] = state?.template;
+            resourceInputs["timeoutClone"] = state?.timeoutClone;
+            resourceInputs["timeoutCreate"] = state?.timeoutCreate;
+            resourceInputs["timeoutMigrate"] = state?.timeoutMigrate;
+            resourceInputs["timeoutMoveDisk"] = state?.timeoutMoveDisk;
+            resourceInputs["timeoutReboot"] = state?.timeoutReboot;
+            resourceInputs["timeoutShutdownVm"] = state?.timeoutShutdownVm;
+            resourceInputs["timeoutStartVm"] = state?.timeoutStartVm;
+            resourceInputs["timeoutStopVm"] = state?.timeoutStopVm;
+            resourceInputs["tpmState"] = state?.tpmState;
+            resourceInputs["usbs"] = state?.usbs;
+            resourceInputs["vga"] = state?.vga;
+            resourceInputs["virtiofs"] = state?.virtiofs;
+            resourceInputs["vmId"] = state?.vmId;
+            resourceInputs["watchdog"] = state?.watchdog;
         } else {
             const args = argsOrState as VirtualMachineArgs | undefined;
-            if ((!args || args.nodeName === undefined) && !opts.urn) {
+            if (args?.nodeName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodeName'");
             }
-            resourceInputs["acpi"] = args ? args.acpi : undefined;
-            resourceInputs["agent"] = args ? args.agent : undefined;
-            resourceInputs["amdSev"] = args ? args.amdSev : undefined;
-            resourceInputs["audioDevice"] = args ? args.audioDevice : undefined;
-            resourceInputs["bios"] = args ? args.bios : undefined;
-            resourceInputs["bootOrders"] = args ? args.bootOrders : undefined;
-            resourceInputs["cdrom"] = args ? args.cdrom : undefined;
-            resourceInputs["clone"] = args ? args.clone : undefined;
-            resourceInputs["cpu"] = args ? args.cpu : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disks"] = args ? args.disks : undefined;
-            resourceInputs["efiDisk"] = args ? args.efiDisk : undefined;
-            resourceInputs["hookScriptFileId"] = args ? args.hookScriptFileId : undefined;
-            resourceInputs["hostpcis"] = args ? args.hostpcis : undefined;
-            resourceInputs["initialization"] = args ? args.initialization : undefined;
-            resourceInputs["keyboardLayout"] = args ? args.keyboardLayout : undefined;
-            resourceInputs["kvmArguments"] = args ? args.kvmArguments : undefined;
-            resourceInputs["macAddresses"] = args ? args.macAddresses : undefined;
-            resourceInputs["machine"] = args ? args.machine : undefined;
-            resourceInputs["memory"] = args ? args.memory : undefined;
-            resourceInputs["migrate"] = args ? args.migrate : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networkDevices"] = args ? args.networkDevices : undefined;
-            resourceInputs["nodeName"] = args ? args.nodeName : undefined;
-            resourceInputs["numas"] = args ? args.numas : undefined;
-            resourceInputs["onBoot"] = args ? args.onBoot : undefined;
-            resourceInputs["operatingSystem"] = args ? args.operatingSystem : undefined;
-            resourceInputs["poolId"] = args ? args.poolId : undefined;
-            resourceInputs["protection"] = args ? args.protection : undefined;
-            resourceInputs["reboot"] = args ? args.reboot : undefined;
-            resourceInputs["rebootAfterUpdate"] = args ? args.rebootAfterUpdate : undefined;
-            resourceInputs["rngs"] = args ? args.rngs : undefined;
-            resourceInputs["scsiHardware"] = args ? args.scsiHardware : undefined;
-            resourceInputs["serialDevices"] = args ? args.serialDevices : undefined;
-            resourceInputs["smbios"] = args ? args.smbios : undefined;
-            resourceInputs["started"] = args ? args.started : undefined;
-            resourceInputs["startup"] = args ? args.startup : undefined;
-            resourceInputs["stopOnDestroy"] = args ? args.stopOnDestroy : undefined;
-            resourceInputs["tabletDevice"] = args ? args.tabletDevice : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["template"] = args ? args.template : undefined;
-            resourceInputs["timeoutClone"] = args ? args.timeoutClone : undefined;
-            resourceInputs["timeoutCreate"] = args ? args.timeoutCreate : undefined;
-            resourceInputs["timeoutMigrate"] = args ? args.timeoutMigrate : undefined;
-            resourceInputs["timeoutMoveDisk"] = args ? args.timeoutMoveDisk : undefined;
-            resourceInputs["timeoutReboot"] = args ? args.timeoutReboot : undefined;
-            resourceInputs["timeoutShutdownVm"] = args ? args.timeoutShutdownVm : undefined;
-            resourceInputs["timeoutStartVm"] = args ? args.timeoutStartVm : undefined;
-            resourceInputs["timeoutStopVm"] = args ? args.timeoutStopVm : undefined;
-            resourceInputs["tpmState"] = args ? args.tpmState : undefined;
-            resourceInputs["usbs"] = args ? args.usbs : undefined;
-            resourceInputs["vga"] = args ? args.vga : undefined;
-            resourceInputs["virtiofs"] = args ? args.virtiofs : undefined;
-            resourceInputs["vmId"] = args ? args.vmId : undefined;
-            resourceInputs["watchdog"] = args ? args.watchdog : undefined;
+            resourceInputs["acpi"] = args?.acpi;
+            resourceInputs["agent"] = args?.agent;
+            resourceInputs["amdSev"] = args?.amdSev;
+            resourceInputs["audioDevice"] = args?.audioDevice;
+            resourceInputs["bios"] = args?.bios;
+            resourceInputs["bootOrders"] = args?.bootOrders;
+            resourceInputs["cdrom"] = args?.cdrom;
+            resourceInputs["clone"] = args?.clone;
+            resourceInputs["cpu"] = args?.cpu;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disks"] = args?.disks;
+            resourceInputs["efiDisk"] = args?.efiDisk;
+            resourceInputs["hookScriptFileId"] = args?.hookScriptFileId;
+            resourceInputs["hostpcis"] = args?.hostpcis;
+            resourceInputs["initialization"] = args?.initialization;
+            resourceInputs["keyboardLayout"] = args?.keyboardLayout;
+            resourceInputs["kvmArguments"] = args?.kvmArguments;
+            resourceInputs["macAddresses"] = args?.macAddresses;
+            resourceInputs["machine"] = args?.machine;
+            resourceInputs["memory"] = args?.memory;
+            resourceInputs["migrate"] = args?.migrate;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networkDevices"] = args?.networkDevices;
+            resourceInputs["nodeName"] = args?.nodeName;
+            resourceInputs["numas"] = args?.numas;
+            resourceInputs["onBoot"] = args?.onBoot;
+            resourceInputs["operatingSystem"] = args?.operatingSystem;
+            resourceInputs["poolId"] = args?.poolId;
+            resourceInputs["protection"] = args?.protection;
+            resourceInputs["reboot"] = args?.reboot;
+            resourceInputs["rebootAfterUpdate"] = args?.rebootAfterUpdate;
+            resourceInputs["rngs"] = args?.rngs;
+            resourceInputs["scsiHardware"] = args?.scsiHardware;
+            resourceInputs["serialDevices"] = args?.serialDevices;
+            resourceInputs["smbios"] = args?.smbios;
+            resourceInputs["started"] = args?.started;
+            resourceInputs["startup"] = args?.startup;
+            resourceInputs["stopOnDestroy"] = args?.stopOnDestroy;
+            resourceInputs["tabletDevice"] = args?.tabletDevice;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["template"] = args?.template;
+            resourceInputs["timeoutClone"] = args?.timeoutClone;
+            resourceInputs["timeoutCreate"] = args?.timeoutCreate;
+            resourceInputs["timeoutMigrate"] = args?.timeoutMigrate;
+            resourceInputs["timeoutMoveDisk"] = args?.timeoutMoveDisk;
+            resourceInputs["timeoutReboot"] = args?.timeoutReboot;
+            resourceInputs["timeoutShutdownVm"] = args?.timeoutShutdownVm;
+            resourceInputs["timeoutStartVm"] = args?.timeoutStartVm;
+            resourceInputs["timeoutStopVm"] = args?.timeoutStopVm;
+            resourceInputs["tpmState"] = args?.tpmState;
+            resourceInputs["usbs"] = args?.usbs;
+            resourceInputs["vga"] = args?.vga;
+            resourceInputs["virtiofs"] = args?.virtiofs;
+            resourceInputs["vmId"] = args?.vmId;
+            resourceInputs["watchdog"] = args?.watchdog;
             resourceInputs["ipv4Addresses"] = undefined /*out*/;
             resourceInputs["ipv6Addresses"] = undefined /*out*/;
             resourceInputs["networkInterfaceNames"] = undefined /*out*/;

@@ -23,6 +23,7 @@ class FirewallArgs:
     def __init__(__self__, *,
                  ebtables: Optional[pulumi.Input[_builtins.bool]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 forward_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  input_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  log_ratelimit: Optional[pulumi.Input['FirewallLogRatelimitArgs']] = None,
                  output_policy: Optional[pulumi.Input[_builtins.str]] = None):
@@ -30,6 +31,7 @@ class FirewallArgs:
         The set of arguments for constructing a Firewall resource.
         :param pulumi.Input[_builtins.bool] ebtables: Enable ebtables rules cluster wide.
         :param pulumi.Input[_builtins.bool] enabled: Enable or disable the firewall cluster wide.
+        :param pulumi.Input[_builtins.str] forward_policy: The default forward policy (`ACCEPT`, `DROP`).
         :param pulumi.Input[_builtins.str] input_policy: The default input policy (`ACCEPT`, `DROP`, `REJECT`).
         :param pulumi.Input['FirewallLogRatelimitArgs'] log_ratelimit: The log rate limit.
         :param pulumi.Input[_builtins.str] output_policy: The default output policy (`ACCEPT`, `DROP`, `REJECT`).
@@ -38,6 +40,8 @@ class FirewallArgs:
             pulumi.set(__self__, "ebtables", ebtables)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if forward_policy is not None:
+            pulumi.set(__self__, "forward_policy", forward_policy)
         if input_policy is not None:
             pulumi.set(__self__, "input_policy", input_policy)
         if log_ratelimit is not None:
@@ -68,6 +72,18 @@ class FirewallArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="forwardPolicy")
+    def forward_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The default forward policy (`ACCEPT`, `DROP`).
+        """
+        return pulumi.get(self, "forward_policy")
+
+    @forward_policy.setter
+    def forward_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "forward_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="inputPolicy")
@@ -111,6 +127,7 @@ class _FirewallState:
     def __init__(__self__, *,
                  ebtables: Optional[pulumi.Input[_builtins.bool]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 forward_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  input_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  log_ratelimit: Optional[pulumi.Input['FirewallLogRatelimitArgs']] = None,
                  output_policy: Optional[pulumi.Input[_builtins.str]] = None):
@@ -118,6 +135,7 @@ class _FirewallState:
         Input properties used for looking up and filtering Firewall resources.
         :param pulumi.Input[_builtins.bool] ebtables: Enable ebtables rules cluster wide.
         :param pulumi.Input[_builtins.bool] enabled: Enable or disable the firewall cluster wide.
+        :param pulumi.Input[_builtins.str] forward_policy: The default forward policy (`ACCEPT`, `DROP`).
         :param pulumi.Input[_builtins.str] input_policy: The default input policy (`ACCEPT`, `DROP`, `REJECT`).
         :param pulumi.Input['FirewallLogRatelimitArgs'] log_ratelimit: The log rate limit.
         :param pulumi.Input[_builtins.str] output_policy: The default output policy (`ACCEPT`, `DROP`, `REJECT`).
@@ -126,6 +144,8 @@ class _FirewallState:
             pulumi.set(__self__, "ebtables", ebtables)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if forward_policy is not None:
+            pulumi.set(__self__, "forward_policy", forward_policy)
         if input_policy is not None:
             pulumi.set(__self__, "input_policy", input_policy)
         if log_ratelimit is not None:
@@ -156,6 +176,18 @@ class _FirewallState:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="forwardPolicy")
+    def forward_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The default forward policy (`ACCEPT`, `DROP`).
+        """
+        return pulumi.get(self, "forward_policy")
+
+    @forward_policy.setter
+    def forward_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "forward_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="inputPolicy")
@@ -202,6 +234,7 @@ class Firewall(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ebtables: Optional[pulumi.Input[_builtins.bool]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 forward_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  input_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  log_ratelimit: Optional[pulumi.Input[Union['FirewallLogRatelimitArgs', 'FirewallLogRatelimitArgsDict']]] = None,
                  output_policy: Optional[pulumi.Input[_builtins.str]] = None,
@@ -218,6 +251,7 @@ class Firewall(pulumi.CustomResource):
         example = proxmoxve.network.Firewall("example",
             ebtables=False,
             enabled=False,
+            forward_policy="ACCEPT",
             input_policy="DROP",
             log_ratelimit={
                 "burst": 10,
@@ -245,6 +279,7 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] ebtables: Enable ebtables rules cluster wide.
         :param pulumi.Input[_builtins.bool] enabled: Enable or disable the firewall cluster wide.
+        :param pulumi.Input[_builtins.str] forward_policy: The default forward policy (`ACCEPT`, `DROP`).
         :param pulumi.Input[_builtins.str] input_policy: The default input policy (`ACCEPT`, `DROP`, `REJECT`).
         :param pulumi.Input[Union['FirewallLogRatelimitArgs', 'FirewallLogRatelimitArgsDict']] log_ratelimit: The log rate limit.
         :param pulumi.Input[_builtins.str] output_policy: The default output policy (`ACCEPT`, `DROP`, `REJECT`).
@@ -267,6 +302,7 @@ class Firewall(pulumi.CustomResource):
         example = proxmoxve.network.Firewall("example",
             ebtables=False,
             enabled=False,
+            forward_policy="ACCEPT",
             input_policy="DROP",
             log_ratelimit={
                 "burst": 10,
@@ -307,6 +343,7 @@ class Firewall(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ebtables: Optional[pulumi.Input[_builtins.bool]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 forward_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  input_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  log_ratelimit: Optional[pulumi.Input[Union['FirewallLogRatelimitArgs', 'FirewallLogRatelimitArgsDict']]] = None,
                  output_policy: Optional[pulumi.Input[_builtins.str]] = None,
@@ -321,6 +358,7 @@ class Firewall(pulumi.CustomResource):
 
             __props__.__dict__["ebtables"] = ebtables
             __props__.__dict__["enabled"] = enabled
+            __props__.__dict__["forward_policy"] = forward_policy
             __props__.__dict__["input_policy"] = input_policy
             __props__.__dict__["log_ratelimit"] = log_ratelimit
             __props__.__dict__["output_policy"] = output_policy
@@ -336,6 +374,7 @@ class Firewall(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             ebtables: Optional[pulumi.Input[_builtins.bool]] = None,
             enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+            forward_policy: Optional[pulumi.Input[_builtins.str]] = None,
             input_policy: Optional[pulumi.Input[_builtins.str]] = None,
             log_ratelimit: Optional[pulumi.Input[Union['FirewallLogRatelimitArgs', 'FirewallLogRatelimitArgsDict']]] = None,
             output_policy: Optional[pulumi.Input[_builtins.str]] = None) -> 'Firewall':
@@ -348,6 +387,7 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] ebtables: Enable ebtables rules cluster wide.
         :param pulumi.Input[_builtins.bool] enabled: Enable or disable the firewall cluster wide.
+        :param pulumi.Input[_builtins.str] forward_policy: The default forward policy (`ACCEPT`, `DROP`).
         :param pulumi.Input[_builtins.str] input_policy: The default input policy (`ACCEPT`, `DROP`, `REJECT`).
         :param pulumi.Input[Union['FirewallLogRatelimitArgs', 'FirewallLogRatelimitArgsDict']] log_ratelimit: The log rate limit.
         :param pulumi.Input[_builtins.str] output_policy: The default output policy (`ACCEPT`, `DROP`, `REJECT`).
@@ -358,6 +398,7 @@ class Firewall(pulumi.CustomResource):
 
         __props__.__dict__["ebtables"] = ebtables
         __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["forward_policy"] = forward_policy
         __props__.__dict__["input_policy"] = input_policy
         __props__.__dict__["log_ratelimit"] = log_ratelimit
         __props__.__dict__["output_policy"] = output_policy
@@ -378,6 +419,14 @@ class Firewall(pulumi.CustomResource):
         Enable or disable the firewall cluster wide.
         """
         return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="forwardPolicy")
+    def forward_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The default forward policy (`ACCEPT`, `DROP`).
+        """
+        return pulumi.get(self, "forward_policy")
 
     @_builtins.property
     @pulumi.getter(name="inputPolicy")

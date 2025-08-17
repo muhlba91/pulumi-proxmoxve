@@ -72,14 +72,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="proxmoxve:Network/firewallOptions:FirewallOptions")
 public class FirewallOptions extends com.pulumi.resources.CustomResource {
     /**
-     * Container ID. Leave empty for cluster level aliases.
+     * Container ID.
      * 
      */
     @Export(name="containerId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> containerId;
 
     /**
-     * @return Container ID. Leave empty for cluster level aliases.
+     * @return Container ID.
      * 
      */
     public Output<Optional<Integer>> containerId() {
@@ -260,14 +260,14 @@ public class FirewallOptions extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.radv);
     }
     /**
-     * VM ID. Leave empty for cluster level aliases.
+     * VM ID.
      * 
      */
     @Export(name="vmId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> vmId;
 
     /**
-     * @return VM ID. Leave empty for cluster level aliases.
+     * @return VM ID.
      * 
      */
     public Output<Optional<Integer>> vmId() {

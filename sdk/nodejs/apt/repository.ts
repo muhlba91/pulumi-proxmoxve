@@ -64,43 +64,43 @@ export class Repository extends pulumi.CustomResource {
     /**
      * The associated comment.
      */
-    public /*out*/ readonly comment!: pulumi.Output<string>;
+    declare public /*out*/ readonly comment: pulumi.Output<string>;
     /**
      * The list of components.
      */
-    public /*out*/ readonly components!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly components: pulumi.Output<string[]>;
     /**
      * Indicates the activation status.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * The absolute path of the source list file that contains this repository.
      */
-    public readonly filePath!: pulumi.Output<string>;
+    declare public readonly filePath: pulumi.Output<string>;
     /**
      * The format of the defining source list file.
      */
-    public /*out*/ readonly fileType!: pulumi.Output<string>;
+    declare public /*out*/ readonly fileType: pulumi.Output<string>;
     /**
      * The index within the defining source list file.
      */
-    public readonly index!: pulumi.Output<number>;
+    declare public readonly index: pulumi.Output<number>;
     /**
      * The name of the target Proxmox VE node.
      */
-    public readonly node!: pulumi.Output<string>;
+    declare public readonly node: pulumi.Output<string>;
     /**
      * The list of package types.
      */
-    public /*out*/ readonly packageTypes!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly packageTypes: pulumi.Output<string[]>;
     /**
      * The list of package distributions.
      */
-    public /*out*/ readonly suites!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly suites: pulumi.Output<string[]>;
     /**
      * The list of repository URIs.
      */
-    public /*out*/ readonly uris!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly uris: pulumi.Output<string[]>;
 
     /**
      * Create a Repository resource with the given unique name, arguments, and options.
@@ -115,31 +115,31 @@ export class Repository extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RepositoryState | undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["components"] = state ? state.components : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["filePath"] = state ? state.filePath : undefined;
-            resourceInputs["fileType"] = state ? state.fileType : undefined;
-            resourceInputs["index"] = state ? state.index : undefined;
-            resourceInputs["node"] = state ? state.node : undefined;
-            resourceInputs["packageTypes"] = state ? state.packageTypes : undefined;
-            resourceInputs["suites"] = state ? state.suites : undefined;
-            resourceInputs["uris"] = state ? state.uris : undefined;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["components"] = state?.components;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["filePath"] = state?.filePath;
+            resourceInputs["fileType"] = state?.fileType;
+            resourceInputs["index"] = state?.index;
+            resourceInputs["node"] = state?.node;
+            resourceInputs["packageTypes"] = state?.packageTypes;
+            resourceInputs["suites"] = state?.suites;
+            resourceInputs["uris"] = state?.uris;
         } else {
             const args = argsOrState as RepositoryArgs | undefined;
-            if ((!args || args.filePath === undefined) && !opts.urn) {
+            if (args?.filePath === undefined && !opts.urn) {
                 throw new Error("Missing required property 'filePath'");
             }
-            if ((!args || args.index === undefined) && !opts.urn) {
+            if (args?.index === undefined && !opts.urn) {
                 throw new Error("Missing required property 'index'");
             }
-            if ((!args || args.node === undefined) && !opts.urn) {
+            if (args?.node === undefined && !opts.urn) {
                 throw new Error("Missing required property 'node'");
             }
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["filePath"] = args ? args.filePath : undefined;
-            resourceInputs["index"] = args ? args.index : undefined;
-            resourceInputs["node"] = args ? args.node : undefined;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["filePath"] = args?.filePath;
+            resourceInputs["index"] = args?.index;
+            resourceInputs["node"] = args?.node;
             resourceInputs["comment"] = undefined /*out*/;
             resourceInputs["components"] = undefined /*out*/;
             resourceInputs["fileType"] = undefined /*out*/;

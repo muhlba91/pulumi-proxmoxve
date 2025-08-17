@@ -71,6 +71,8 @@ import * as hardware from "./hardware";
 import * as metrics from "./metrics";
 import * as network from "./network";
 import * as permission from "./permission";
+import * as sdn from "./sdn";
+import * as sdnzone from "./sdnzone";
 import * as storage from "./storage";
 import * as types from "./types";
 import * as user from "./user";
@@ -88,6 +90,8 @@ export {
     metrics,
     network,
     permission,
+    sdn,
+    sdnzone,
     storage,
     types,
     user,

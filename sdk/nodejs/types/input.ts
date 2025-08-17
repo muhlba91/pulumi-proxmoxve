@@ -793,7 +793,7 @@ export namespace Network {
          */
         sport?: pulumi.Input<string>;
         /**
-         * Rule type (`in`, `out`).
+         * Rule type (`in`, `out`, `forward`).
          */
         type?: pulumi.Input<string>;
     }
@@ -875,7 +875,7 @@ export namespace Network {
          */
         sport?: pulumi.Input<string>;
         /**
-         * Rule type (`in`, `out`).
+         * Rule type (`in`, `out`, `forward`).
          */
         type?: pulumi.Input<string>;
     }
@@ -935,6 +935,9 @@ export namespace Permission {
          */
         roleId: pulumi.Input<string>;
     }
+}
+
+export namespace Sdn {
 }
 
 export namespace Storage {

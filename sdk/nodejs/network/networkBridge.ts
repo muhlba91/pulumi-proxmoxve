@@ -69,47 +69,47 @@ export class NetworkBridge extends pulumi.CustomResource {
     /**
      * The interface IPv4/CIDR address.
      */
-    public readonly address!: pulumi.Output<string | undefined>;
+    declare public readonly address: pulumi.Output<string | undefined>;
     /**
      * The interface IPv6/CIDR address.
      */
-    public readonly address6!: pulumi.Output<string | undefined>;
+    declare public readonly address6: pulumi.Output<string | undefined>;
     /**
      * Automatically start interface on boot (defaults to `true`).
      */
-    public readonly autostart!: pulumi.Output<boolean>;
+    declare public readonly autostart: pulumi.Output<boolean>;
     /**
      * Comment for the interface.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * Default gateway address.
      */
-    public readonly gateway!: pulumi.Output<string | undefined>;
+    declare public readonly gateway: pulumi.Output<string | undefined>;
     /**
      * Default IPv6 gateway address.
      */
-    public readonly gateway6!: pulumi.Output<string | undefined>;
+    declare public readonly gateway6: pulumi.Output<string | undefined>;
     /**
      * The interface MTU.
      */
-    public readonly mtu!: pulumi.Output<number | undefined>;
+    declare public readonly mtu: pulumi.Output<number | undefined>;
     /**
      * The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The name of the node.
      */
-    public readonly nodeName!: pulumi.Output<string>;
+    declare public readonly nodeName: pulumi.Output<string>;
     /**
      * The interface bridge ports.
      */
-    public readonly ports!: pulumi.Output<string[] | undefined>;
+    declare public readonly ports: pulumi.Output<string[] | undefined>;
     /**
      * Whether the interface bridge is VLAN aware (defaults to `false`).
      */
-    public readonly vlanAware!: pulumi.Output<boolean>;
+    declare public readonly vlanAware: pulumi.Output<boolean>;
 
     /**
      * Create a NetworkBridge resource with the given unique name, arguments, and options.
@@ -124,33 +124,33 @@ export class NetworkBridge extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkBridgeState | undefined;
-            resourceInputs["address"] = state ? state.address : undefined;
-            resourceInputs["address6"] = state ? state.address6 : undefined;
-            resourceInputs["autostart"] = state ? state.autostart : undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["gateway"] = state ? state.gateway : undefined;
-            resourceInputs["gateway6"] = state ? state.gateway6 : undefined;
-            resourceInputs["mtu"] = state ? state.mtu : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nodeName"] = state ? state.nodeName : undefined;
-            resourceInputs["ports"] = state ? state.ports : undefined;
-            resourceInputs["vlanAware"] = state ? state.vlanAware : undefined;
+            resourceInputs["address"] = state?.address;
+            resourceInputs["address6"] = state?.address6;
+            resourceInputs["autostart"] = state?.autostart;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["gateway"] = state?.gateway;
+            resourceInputs["gateway6"] = state?.gateway6;
+            resourceInputs["mtu"] = state?.mtu;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nodeName"] = state?.nodeName;
+            resourceInputs["ports"] = state?.ports;
+            resourceInputs["vlanAware"] = state?.vlanAware;
         } else {
             const args = argsOrState as NetworkBridgeArgs | undefined;
-            if ((!args || args.nodeName === undefined) && !opts.urn) {
+            if (args?.nodeName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodeName'");
             }
-            resourceInputs["address"] = args ? args.address : undefined;
-            resourceInputs["address6"] = args ? args.address6 : undefined;
-            resourceInputs["autostart"] = args ? args.autostart : undefined;
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["gateway"] = args ? args.gateway : undefined;
-            resourceInputs["gateway6"] = args ? args.gateway6 : undefined;
-            resourceInputs["mtu"] = args ? args.mtu : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nodeName"] = args ? args.nodeName : undefined;
-            resourceInputs["ports"] = args ? args.ports : undefined;
-            resourceInputs["vlanAware"] = args ? args.vlanAware : undefined;
+            resourceInputs["address"] = args?.address;
+            resourceInputs["address6"] = args?.address6;
+            resourceInputs["autostart"] = args?.autostart;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["gateway"] = args?.gateway;
+            resourceInputs["gateway6"] = args?.gateway6;
+            resourceInputs["mtu"] = args?.mtu;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nodeName"] = args?.nodeName;
+            resourceInputs["ports"] = args?.ports;
+            resourceInputs["vlanAware"] = args?.vlanAware;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(NetworkBridge.__pulumiType, name, resourceInputs, opts);

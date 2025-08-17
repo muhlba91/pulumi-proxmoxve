@@ -60,22 +60,22 @@ export class FirewallOptions extends pulumi.CustomResource {
     }
 
     /**
-     * Container ID. Leave empty for cluster level aliases.
+     * Container ID.
      */
-    public readonly containerId!: pulumi.Output<number | undefined>;
+    declare public readonly containerId: pulumi.Output<number | undefined>;
     /**
      * Enable DHCP.
      */
-    public readonly dhcp!: pulumi.Output<boolean | undefined>;
+    declare public readonly dhcp: pulumi.Output<boolean | undefined>;
     /**
      * Enable or disable the firewall.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * The default input
      * policy (`ACCEPT`, `DROP`, `REJECT`).
      */
-    public readonly inputPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly inputPolicy: pulumi.Output<string | undefined>;
     /**
      * Enable default IP filters. This is equivalent to
      * adding an empty `ipfilter-net<id>` ipset for every interface. Such ipsets
@@ -83,44 +83,44 @@ export class FirewallOptions extends pulumi.CustomResource {
      * local addresses to the one derived from the interface's MAC address. For
      * containers the configured IP addresses will be implicitly added.
      */
-    public readonly ipfilter!: pulumi.Output<boolean | undefined>;
+    declare public readonly ipfilter: pulumi.Output<boolean | undefined>;
     /**
      * Log level for incoming
      * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
      * `debug`, `nolog`).
      */
-    public readonly logLevelIn!: pulumi.Output<string | undefined>;
+    declare public readonly logLevelIn: pulumi.Output<string | undefined>;
     /**
      * Log level for outgoing
      * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
      * `debug`, `nolog`).
      */
-    public readonly logLevelOut!: pulumi.Output<string | undefined>;
+    declare public readonly logLevelOut: pulumi.Output<string | undefined>;
     /**
      * Enable/disable MAC address filter.
      */
-    public readonly macfilter!: pulumi.Output<boolean | undefined>;
+    declare public readonly macfilter: pulumi.Output<boolean | undefined>;
     /**
      * Enable NDP (Neighbor Discovery Protocol).
      */
-    public readonly ndp!: pulumi.Output<boolean | undefined>;
+    declare public readonly ndp: pulumi.Output<boolean | undefined>;
     /**
      * Node name.
      */
-    public readonly nodeName!: pulumi.Output<string>;
+    declare public readonly nodeName: pulumi.Output<string>;
     /**
      * The default output
      * policy (`ACCEPT`, `DROP`, `REJECT`).
      */
-    public readonly outputPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly outputPolicy: pulumi.Output<string | undefined>;
     /**
      * Enable Router Advertisement.
      */
-    public readonly radv!: pulumi.Output<boolean | undefined>;
+    declare public readonly radv: pulumi.Output<boolean | undefined>;
     /**
-     * VM ID. Leave empty for cluster level aliases.
+     * VM ID.
      */
-    public readonly vmId!: pulumi.Output<number | undefined>;
+    declare public readonly vmId: pulumi.Output<number | undefined>;
 
     /**
      * Create a FirewallOptions resource with the given unique name, arguments, and options.
@@ -135,37 +135,37 @@ export class FirewallOptions extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FirewallOptionsState | undefined;
-            resourceInputs["containerId"] = state ? state.containerId : undefined;
-            resourceInputs["dhcp"] = state ? state.dhcp : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["inputPolicy"] = state ? state.inputPolicy : undefined;
-            resourceInputs["ipfilter"] = state ? state.ipfilter : undefined;
-            resourceInputs["logLevelIn"] = state ? state.logLevelIn : undefined;
-            resourceInputs["logLevelOut"] = state ? state.logLevelOut : undefined;
-            resourceInputs["macfilter"] = state ? state.macfilter : undefined;
-            resourceInputs["ndp"] = state ? state.ndp : undefined;
-            resourceInputs["nodeName"] = state ? state.nodeName : undefined;
-            resourceInputs["outputPolicy"] = state ? state.outputPolicy : undefined;
-            resourceInputs["radv"] = state ? state.radv : undefined;
-            resourceInputs["vmId"] = state ? state.vmId : undefined;
+            resourceInputs["containerId"] = state?.containerId;
+            resourceInputs["dhcp"] = state?.dhcp;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["inputPolicy"] = state?.inputPolicy;
+            resourceInputs["ipfilter"] = state?.ipfilter;
+            resourceInputs["logLevelIn"] = state?.logLevelIn;
+            resourceInputs["logLevelOut"] = state?.logLevelOut;
+            resourceInputs["macfilter"] = state?.macfilter;
+            resourceInputs["ndp"] = state?.ndp;
+            resourceInputs["nodeName"] = state?.nodeName;
+            resourceInputs["outputPolicy"] = state?.outputPolicy;
+            resourceInputs["radv"] = state?.radv;
+            resourceInputs["vmId"] = state?.vmId;
         } else {
             const args = argsOrState as FirewallOptionsArgs | undefined;
-            if ((!args || args.nodeName === undefined) && !opts.urn) {
+            if (args?.nodeName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodeName'");
             }
-            resourceInputs["containerId"] = args ? args.containerId : undefined;
-            resourceInputs["dhcp"] = args ? args.dhcp : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["inputPolicy"] = args ? args.inputPolicy : undefined;
-            resourceInputs["ipfilter"] = args ? args.ipfilter : undefined;
-            resourceInputs["logLevelIn"] = args ? args.logLevelIn : undefined;
-            resourceInputs["logLevelOut"] = args ? args.logLevelOut : undefined;
-            resourceInputs["macfilter"] = args ? args.macfilter : undefined;
-            resourceInputs["ndp"] = args ? args.ndp : undefined;
-            resourceInputs["nodeName"] = args ? args.nodeName : undefined;
-            resourceInputs["outputPolicy"] = args ? args.outputPolicy : undefined;
-            resourceInputs["radv"] = args ? args.radv : undefined;
-            resourceInputs["vmId"] = args ? args.vmId : undefined;
+            resourceInputs["containerId"] = args?.containerId;
+            resourceInputs["dhcp"] = args?.dhcp;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["inputPolicy"] = args?.inputPolicy;
+            resourceInputs["ipfilter"] = args?.ipfilter;
+            resourceInputs["logLevelIn"] = args?.logLevelIn;
+            resourceInputs["logLevelOut"] = args?.logLevelOut;
+            resourceInputs["macfilter"] = args?.macfilter;
+            resourceInputs["ndp"] = args?.ndp;
+            resourceInputs["nodeName"] = args?.nodeName;
+            resourceInputs["outputPolicy"] = args?.outputPolicy;
+            resourceInputs["radv"] = args?.radv;
+            resourceInputs["vmId"] = args?.vmId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FirewallOptions.__pulumiType, name, resourceInputs, opts);
@@ -177,7 +177,7 @@ export class FirewallOptions extends pulumi.CustomResource {
  */
 export interface FirewallOptionsState {
     /**
-     * Container ID. Leave empty for cluster level aliases.
+     * Container ID.
      */
     containerId?: pulumi.Input<number>;
     /**
@@ -235,7 +235,7 @@ export interface FirewallOptionsState {
      */
     radv?: pulumi.Input<boolean>;
     /**
-     * VM ID. Leave empty for cluster level aliases.
+     * VM ID.
      */
     vmId?: pulumi.Input<number>;
 }
@@ -245,7 +245,7 @@ export interface FirewallOptionsState {
  */
 export interface FirewallOptionsArgs {
     /**
-     * Container ID. Leave empty for cluster level aliases.
+     * Container ID.
      */
     containerId?: pulumi.Input<number>;
     /**
@@ -303,7 +303,7 @@ export interface FirewallOptionsArgs {
      */
     radv?: pulumi.Input<boolean>;
     /**
-     * VM ID. Leave empty for cluster level aliases.
+     * VM ID.
      */
     vmId?: pulumi.Input<number>;
 }

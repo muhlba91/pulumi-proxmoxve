@@ -60,19 +60,19 @@ export class Time extends pulumi.CustomResource {
     /**
      * The node's local time.
      */
-    public /*out*/ readonly localTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly localTime: pulumi.Output<string>;
     /**
      * A node name.
      */
-    public readonly nodeName!: pulumi.Output<string>;
+    declare public readonly nodeName: pulumi.Output<string>;
     /**
      * The node's time zone.
      */
-    public readonly timeZone!: pulumi.Output<string>;
+    declare public readonly timeZone: pulumi.Output<string>;
     /**
      * The node's local time formatted as UTC.
      */
-    public /*out*/ readonly utcTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly utcTime: pulumi.Output<string>;
 
     /**
      * Create a Time resource with the given unique name, arguments, and options.
@@ -87,20 +87,20 @@ export class Time extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TimeState | undefined;
-            resourceInputs["localTime"] = state ? state.localTime : undefined;
-            resourceInputs["nodeName"] = state ? state.nodeName : undefined;
-            resourceInputs["timeZone"] = state ? state.timeZone : undefined;
-            resourceInputs["utcTime"] = state ? state.utcTime : undefined;
+            resourceInputs["localTime"] = state?.localTime;
+            resourceInputs["nodeName"] = state?.nodeName;
+            resourceInputs["timeZone"] = state?.timeZone;
+            resourceInputs["utcTime"] = state?.utcTime;
         } else {
             const args = argsOrState as TimeArgs | undefined;
-            if ((!args || args.nodeName === undefined) && !opts.urn) {
+            if (args?.nodeName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodeName'");
             }
-            if ((!args || args.timeZone === undefined) && !opts.urn) {
+            if (args?.timeZone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'timeZone'");
             }
-            resourceInputs["nodeName"] = args ? args.nodeName : undefined;
-            resourceInputs["timeZone"] = args ? args.timeZone : undefined;
+            resourceInputs["nodeName"] = args?.nodeName;
+            resourceInputs["timeZone"] = args?.timeZone;
             resourceInputs["localTime"] = undefined /*out*/;
             resourceInputs["utcTime"] = undefined /*out*/;
         }

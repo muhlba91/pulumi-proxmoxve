@@ -68,31 +68,31 @@ export class Repository extends pulumi.CustomResource {
     /**
      * The description of the APT standard repository.
      */
-    public /*out*/ readonly description!: pulumi.Output<string>;
+    declare public /*out*/ readonly description: pulumi.Output<string>;
     /**
      * The absolute path of the source list file that contains this standard repository.
      */
-    public /*out*/ readonly filePath!: pulumi.Output<string>;
+    declare public /*out*/ readonly filePath: pulumi.Output<string>;
     /**
-     * The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `enterprise` | `no-subscription` | `test`.
+     * The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `ceph-squid-enterprise` | `ceph-squid-no-subscription` | `ceph-squid-test` | `enterprise` | `no-subscription` | `test`.
      */
-    public readonly handle!: pulumi.Output<string>;
+    declare public readonly handle: pulumi.Output<string>;
     /**
      * The index within the defining source list file.
      */
-    public /*out*/ readonly index!: pulumi.Output<number>;
+    declare public /*out*/ readonly index: pulumi.Output<number>;
     /**
      * The name of the APT standard repository.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The name of the target Proxmox VE node.
      */
-    public readonly node!: pulumi.Output<string>;
+    declare public readonly node: pulumi.Output<string>;
     /**
      * Indicates the activation status.
      */
-    public /*out*/ readonly status!: pulumi.Output<number>;
+    declare public /*out*/ readonly status: pulumi.Output<number>;
 
     /**
      * Create a Repository resource with the given unique name, arguments, and options.
@@ -107,23 +107,23 @@ export class Repository extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RepositoryState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["filePath"] = state ? state.filePath : undefined;
-            resourceInputs["handle"] = state ? state.handle : undefined;
-            resourceInputs["index"] = state ? state.index : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["node"] = state ? state.node : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["filePath"] = state?.filePath;
+            resourceInputs["handle"] = state?.handle;
+            resourceInputs["index"] = state?.index;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["node"] = state?.node;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as RepositoryArgs | undefined;
-            if ((!args || args.handle === undefined) && !opts.urn) {
+            if (args?.handle === undefined && !opts.urn) {
                 throw new Error("Missing required property 'handle'");
             }
-            if ((!args || args.node === undefined) && !opts.urn) {
+            if (args?.node === undefined && !opts.urn) {
                 throw new Error("Missing required property 'node'");
             }
-            resourceInputs["handle"] = args ? args.handle : undefined;
-            resourceInputs["node"] = args ? args.node : undefined;
+            resourceInputs["handle"] = args?.handle;
+            resourceInputs["node"] = args?.node;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["filePath"] = undefined /*out*/;
             resourceInputs["index"] = undefined /*out*/;
@@ -148,7 +148,7 @@ export interface RepositoryState {
      */
     filePath?: pulumi.Input<string>;
     /**
-     * The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `enterprise` | `no-subscription` | `test`.
+     * The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `ceph-squid-enterprise` | `ceph-squid-no-subscription` | `ceph-squid-test` | `enterprise` | `no-subscription` | `test`.
      */
     handle?: pulumi.Input<string>;
     /**
@@ -174,7 +174,7 @@ export interface RepositoryState {
  */
 export interface RepositoryArgs {
     /**
-     * The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `enterprise` | `no-subscription` | `test`.
+     * The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `ceph-squid-enterprise` | `ceph-squid-no-subscription` | `ceph-squid-test` | `enterprise` | `no-subscription` | `test`.
      */
     handle: pulumi.Input<string>;
     /**

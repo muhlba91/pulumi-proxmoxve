@@ -48,48 +48,48 @@ export class VirtualMachine2 extends pulumi.CustomResource {
     /**
      * The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
      */
-    public readonly cdrom!: pulumi.Output<{[key: string]: outputs.VM.VirtualMachine2Cdrom}>;
+    declare public readonly cdrom: pulumi.Output<{[key: string]: outputs.VM.VirtualMachine2Cdrom}>;
     /**
      * The cloning configuration.
      */
-    public readonly clone!: pulumi.Output<outputs.VM.VirtualMachine2Clone | undefined>;
+    declare public readonly clone: pulumi.Output<outputs.VM.VirtualMachine2Clone | undefined>;
     /**
      * The CPU configuration.
      */
-    public readonly cpu!: pulumi.Output<outputs.VM.VirtualMachine2Cpu>;
+    declare public readonly cpu: pulumi.Output<outputs.VM.VirtualMachine2Cpu>;
     /**
      * The description of the VM.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of the VM. Doesn't have to be unique.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The name of the node where the VM is provisioned.
      */
-    public readonly nodeName!: pulumi.Output<string>;
+    declare public readonly nodeName: pulumi.Output<string>;
     /**
      * Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
      */
-    public readonly rng!: pulumi.Output<outputs.VM.VirtualMachine2Rng>;
+    declare public readonly rng: pulumi.Output<outputs.VM.VirtualMachine2Rng>;
     /**
      * Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
      */
-    public readonly stopOnDestroy!: pulumi.Output<boolean>;
+    declare public readonly stopOnDestroy: pulumi.Output<boolean>;
     /**
      * The tags assigned to the VM.
      */
-    public readonly tags!: pulumi.Output<string[]>;
+    declare public readonly tags: pulumi.Output<string[]>;
     /**
      * Set to true to create a VM template.
      */
-    public readonly template!: pulumi.Output<boolean | undefined>;
-    public readonly timeouts!: pulumi.Output<outputs.VM.VirtualMachine2Timeouts | undefined>;
+    declare public readonly template: pulumi.Output<boolean | undefined>;
+    declare public readonly timeouts: pulumi.Output<outputs.VM.VirtualMachine2Timeouts | undefined>;
     /**
      * Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
      */
-    public readonly vga!: pulumi.Output<outputs.VM.VirtualMachine2Vga>;
+    declare public readonly vga: pulumi.Output<outputs.VM.VirtualMachine2Vga>;
 
     /**
      * Create a VirtualMachine2 resource with the given unique name, arguments, and options.
@@ -104,35 +104,35 @@ export class VirtualMachine2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VirtualMachine2State | undefined;
-            resourceInputs["cdrom"] = state ? state.cdrom : undefined;
-            resourceInputs["clone"] = state ? state.clone : undefined;
-            resourceInputs["cpu"] = state ? state.cpu : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nodeName"] = state ? state.nodeName : undefined;
-            resourceInputs["rng"] = state ? state.rng : undefined;
-            resourceInputs["stopOnDestroy"] = state ? state.stopOnDestroy : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["template"] = state ? state.template : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
-            resourceInputs["vga"] = state ? state.vga : undefined;
+            resourceInputs["cdrom"] = state?.cdrom;
+            resourceInputs["clone"] = state?.clone;
+            resourceInputs["cpu"] = state?.cpu;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nodeName"] = state?.nodeName;
+            resourceInputs["rng"] = state?.rng;
+            resourceInputs["stopOnDestroy"] = state?.stopOnDestroy;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["template"] = state?.template;
+            resourceInputs["timeouts"] = state?.timeouts;
+            resourceInputs["vga"] = state?.vga;
         } else {
             const args = argsOrState as VirtualMachine2Args | undefined;
-            if ((!args || args.nodeName === undefined) && !opts.urn) {
+            if (args?.nodeName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodeName'");
             }
-            resourceInputs["cdrom"] = args ? args.cdrom : undefined;
-            resourceInputs["clone"] = args ? args.clone : undefined;
-            resourceInputs["cpu"] = args ? args.cpu : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nodeName"] = args ? args.nodeName : undefined;
-            resourceInputs["rng"] = args ? args.rng : undefined;
-            resourceInputs["stopOnDestroy"] = args ? args.stopOnDestroy : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["template"] = args ? args.template : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
-            resourceInputs["vga"] = args ? args.vga : undefined;
+            resourceInputs["cdrom"] = args?.cdrom;
+            resourceInputs["clone"] = args?.clone;
+            resourceInputs["cpu"] = args?.cpu;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nodeName"] = args?.nodeName;
+            resourceInputs["rng"] = args?.rng;
+            resourceInputs["stopOnDestroy"] = args?.stopOnDestroy;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["template"] = args?.template;
+            resourceInputs["timeouts"] = args?.timeouts;
+            resourceInputs["vga"] = args?.vga;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VirtualMachine2.__pulumiType, name, resourceInputs, opts);
