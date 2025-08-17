@@ -64,67 +64,67 @@ export class MetricsServer extends pulumi.CustomResource {
     /**
      * Set this to `true` to disable this metric server.
      */
-    public readonly disable!: pulumi.Output<boolean | undefined>;
+    declare public readonly disable: pulumi.Output<boolean | undefined>;
     /**
      * Root graphite path (ex: `proxmox.mycluster.mykey`).
      */
-    public readonly graphitePath!: pulumi.Output<string | undefined>;
+    declare public readonly graphitePath: pulumi.Output<string | undefined>;
     /**
      * Protocol to send graphite data. Choice is between `udp` | `tcp`. If not set, PVE default is `udp`.
      */
-    public readonly graphiteProto!: pulumi.Output<string | undefined>;
+    declare public readonly graphiteProto: pulumi.Output<string | undefined>;
     /**
      * An API path prefix inserted between `<host>:<port>/` and `/api2/`. Can be useful if the InfluxDB service runs behind a reverse proxy.
      */
-    public readonly influxApiPathPrefix!: pulumi.Output<string | undefined>;
+    declare public readonly influxApiPathPrefix: pulumi.Output<string | undefined>;
     /**
      * The InfluxDB bucket/db. Only necessary when using the http v2 api.
      */
-    public readonly influxBucket!: pulumi.Output<string | undefined>;
+    declare public readonly influxBucket: pulumi.Output<string | undefined>;
     /**
      * Protocol for InfluxDB. Choice is between `udp` | `http` | `https`. If not set, PVE default is `udp`.
      */
-    public readonly influxDbProto!: pulumi.Output<string | undefined>;
+    declare public readonly influxDbProto: pulumi.Output<string | undefined>;
     /**
      * InfluxDB max-body-size in bytes. Requests are batched up to this size. If not set, PVE default is `25000000`.
      */
-    public readonly influxMaxBodySize!: pulumi.Output<number | undefined>;
+    declare public readonly influxMaxBodySize: pulumi.Output<number | undefined>;
     /**
      * The InfluxDB organization. Only necessary when using the http v2 api. Has no meaning when using v2 compatibility api.
      */
-    public readonly influxOrganization!: pulumi.Output<string | undefined>;
+    declare public readonly influxOrganization: pulumi.Output<string | undefined>;
     /**
      * The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
      */
-    public readonly influxToken!: pulumi.Output<string | undefined>;
+    declare public readonly influxToken: pulumi.Output<string | undefined>;
     /**
      * Set to `false` to disable certificate verification for https endpoints.
      */
-    public readonly influxVerify!: pulumi.Output<boolean | undefined>;
+    declare public readonly influxVerify: pulumi.Output<boolean | undefined>;
     /**
      * MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
      */
-    public readonly mtu!: pulumi.Output<number | undefined>;
+    declare public readonly mtu: pulumi.Output<number | undefined>;
     /**
      * Unique name that will be ID of this metric server in PVE.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Server network port.
      */
-    public readonly port!: pulumi.Output<number>;
+    declare public readonly port: pulumi.Output<number>;
     /**
      * Server dns name or IP address.
      */
-    public readonly server!: pulumi.Output<string>;
+    declare public readonly server: pulumi.Output<string>;
     /**
      * TCP socket timeout in seconds. If not set, PVE default is `1`.
      */
-    public readonly timeout!: pulumi.Output<number | undefined>;
+    declare public readonly timeout: pulumi.Output<number | undefined>;
     /**
      * Plugin type. Choice is between `graphite` | `influxdb`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a MetricsServer resource with the given unique name, arguments, and options.
@@ -139,49 +139,49 @@ export class MetricsServer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MetricsServerState | undefined;
-            resourceInputs["disable"] = state ? state.disable : undefined;
-            resourceInputs["graphitePath"] = state ? state.graphitePath : undefined;
-            resourceInputs["graphiteProto"] = state ? state.graphiteProto : undefined;
-            resourceInputs["influxApiPathPrefix"] = state ? state.influxApiPathPrefix : undefined;
-            resourceInputs["influxBucket"] = state ? state.influxBucket : undefined;
-            resourceInputs["influxDbProto"] = state ? state.influxDbProto : undefined;
-            resourceInputs["influxMaxBodySize"] = state ? state.influxMaxBodySize : undefined;
-            resourceInputs["influxOrganization"] = state ? state.influxOrganization : undefined;
-            resourceInputs["influxToken"] = state ? state.influxToken : undefined;
-            resourceInputs["influxVerify"] = state ? state.influxVerify : undefined;
-            resourceInputs["mtu"] = state ? state.mtu : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["server"] = state ? state.server : undefined;
-            resourceInputs["timeout"] = state ? state.timeout : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["disable"] = state?.disable;
+            resourceInputs["graphitePath"] = state?.graphitePath;
+            resourceInputs["graphiteProto"] = state?.graphiteProto;
+            resourceInputs["influxApiPathPrefix"] = state?.influxApiPathPrefix;
+            resourceInputs["influxBucket"] = state?.influxBucket;
+            resourceInputs["influxDbProto"] = state?.influxDbProto;
+            resourceInputs["influxMaxBodySize"] = state?.influxMaxBodySize;
+            resourceInputs["influxOrganization"] = state?.influxOrganization;
+            resourceInputs["influxToken"] = state?.influxToken;
+            resourceInputs["influxVerify"] = state?.influxVerify;
+            resourceInputs["mtu"] = state?.mtu;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["server"] = state?.server;
+            resourceInputs["timeout"] = state?.timeout;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as MetricsServerArgs | undefined;
-            if ((!args || args.port === undefined) && !opts.urn) {
+            if (args?.port === undefined && !opts.urn) {
                 throw new Error("Missing required property 'port'");
             }
-            if ((!args || args.server === undefined) && !opts.urn) {
+            if (args?.server === undefined && !opts.urn) {
                 throw new Error("Missing required property 'server'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["disable"] = args ? args.disable : undefined;
-            resourceInputs["graphitePath"] = args ? args.graphitePath : undefined;
-            resourceInputs["graphiteProto"] = args ? args.graphiteProto : undefined;
-            resourceInputs["influxApiPathPrefix"] = args ? args.influxApiPathPrefix : undefined;
-            resourceInputs["influxBucket"] = args ? args.influxBucket : undefined;
-            resourceInputs["influxDbProto"] = args ? args.influxDbProto : undefined;
-            resourceInputs["influxMaxBodySize"] = args ? args.influxMaxBodySize : undefined;
-            resourceInputs["influxOrganization"] = args ? args.influxOrganization : undefined;
+            resourceInputs["disable"] = args?.disable;
+            resourceInputs["graphitePath"] = args?.graphitePath;
+            resourceInputs["graphiteProto"] = args?.graphiteProto;
+            resourceInputs["influxApiPathPrefix"] = args?.influxApiPathPrefix;
+            resourceInputs["influxBucket"] = args?.influxBucket;
+            resourceInputs["influxDbProto"] = args?.influxDbProto;
+            resourceInputs["influxMaxBodySize"] = args?.influxMaxBodySize;
+            resourceInputs["influxOrganization"] = args?.influxOrganization;
             resourceInputs["influxToken"] = args?.influxToken ? pulumi.secret(args.influxToken) : undefined;
-            resourceInputs["influxVerify"] = args ? args.influxVerify : undefined;
-            resourceInputs["mtu"] = args ? args.mtu : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["server"] = args ? args.server : undefined;
-            resourceInputs["timeout"] = args ? args.timeout : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["influxVerify"] = args?.influxVerify;
+            resourceInputs["mtu"] = args?.mtu;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["server"] = args?.server;
+            resourceInputs["timeout"] = args?.timeout;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["influxToken"] };

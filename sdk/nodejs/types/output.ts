@@ -762,7 +762,7 @@ export namespace Network {
          */
         sport?: string;
         /**
-         * Rule type (`in`, `out`).
+         * Rule type (`in`, `out`, `forward`).
          */
         type?: string;
     }
@@ -844,7 +844,7 @@ export namespace Network {
          */
         sport?: string;
         /**
-         * Rule type (`in`, `out`).
+         * Rule type (`in`, `out`, `forward`).
          */
         type?: string;
     }
@@ -967,6 +967,32 @@ export namespace Permission {
          * The role identifier.
          */
         roleId: string;
+    }
+
+}
+
+export namespace Sdn {
+    export interface GetZonesZone {
+        advertiseSubnets: boolean;
+        bridge: string;
+        controller: string;
+        disableArpNdSuppression: boolean;
+        dns: string;
+        dnsZone: string;
+        exitNodes: string[];
+        exitNodesLocalRouting: boolean;
+        id: string;
+        ipam: string;
+        mtu: number;
+        nodes: string[];
+        peers: string[];
+        primaryExitNode: string;
+        reverseDns: string;
+        rtImport: string;
+        serviceVlan: number;
+        serviceVlanProtocol: string;
+        type: string;
+        vrfVxlan: number;
     }
 
 }

@@ -46,7 +46,7 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        go-version: [1.24.x]
+        go-version: [1.25.x]
 
     steps:
       - uses: step-security/harden-runner@ec9f2d5744a09debf3a187a3f4f675c53b671911 # v2.13.0
@@ -99,7 +99,7 @@ jobs:
     strategy:
       max-parallel: 10
       matrix:
-        go-version: [1.24.x]
+        go-version: [1.25.x]
         node-version: ["24"]
         dotnet-version: [8.0.x]
         python-version: [3.11]
@@ -109,7 +109,7 @@ jobs:
           - nodejs
           - python
           - dotnet
-          - java
+          # - java
 
     steps:
       - uses: step-security/harden-runner@ec9f2d5744a09debf3a187a3f4f675c53b671911 # v2.13.0

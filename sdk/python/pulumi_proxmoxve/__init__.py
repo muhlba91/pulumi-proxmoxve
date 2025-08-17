@@ -44,6 +44,10 @@ if typing.TYPE_CHECKING:
     network = __network
     import pulumi_proxmoxve.permission as __permission
     permission = __permission
+    import pulumi_proxmoxve.sdn as __sdn
+    sdn = __sdn
+    import pulumi_proxmoxve.sdnzone as __sdnzone
+    sdnzone = __sdnzone
     import pulumi_proxmoxve.storage as __storage
     storage = __storage
     import pulumi_proxmoxve.user as __user
@@ -62,6 +66,8 @@ else:
     metrics = _utilities.lazy_import('pulumi_proxmoxve.metrics')
     network = _utilities.lazy_import('pulumi_proxmoxve.network')
     permission = _utilities.lazy_import('pulumi_proxmoxve.permission')
+    sdn = _utilities.lazy_import('pulumi_proxmoxve.sdn')
+    sdnzone = _utilities.lazy_import('pulumi_proxmoxve.sdnzone')
     storage = _utilities.lazy_import('pulumi_proxmoxve.storage')
     user = _utilities.lazy_import('pulumi_proxmoxve.user')
     vm = _utilities.lazy_import('pulumi_proxmoxve.vm')
@@ -251,6 +257,46 @@ _utilities.register(
   "fqn": "pulumi_proxmoxve.permission",
   "classes": {
    "proxmoxve:Permission/user:User": "User"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "SDNZone/evpn",
+  "fqn": "pulumi_proxmoxve.sdnzone",
+  "classes": {
+   "proxmoxve:SDNZone/evpn:Evpn": "Evpn"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "SDNZone/qinq",
+  "fqn": "pulumi_proxmoxve.sdnzone",
+  "classes": {
+   "proxmoxve:SDNZone/qinq:Qinq": "Qinq"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "SDNZone/simple",
+  "fqn": "pulumi_proxmoxve.sdnzone",
+  "classes": {
+   "proxmoxve:SDNZone/simple:Simple": "Simple"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "SDNZone/vlan",
+  "fqn": "pulumi_proxmoxve.sdnzone",
+  "classes": {
+   "proxmoxve:SDNZone/vlan:Vlan": "Vlan"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "SDNZone/vxlan",
+  "fqn": "pulumi_proxmoxve.sdnzone",
+  "classes": {
+   "proxmoxve:SDNZone/vxlan:Vxlan": "Vxlan"
   }
  },
  {

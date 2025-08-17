@@ -50,89 +50,89 @@ export class Container extends pulumi.CustomResource {
     /**
      * The cloning configuration.
      */
-    public readonly clone!: pulumi.Output<outputs.CT.ContainerClone | undefined>;
+    declare public readonly clone: pulumi.Output<outputs.CT.ContainerClone | undefined>;
     /**
      * The console configuration.
      */
-    public readonly console!: pulumi.Output<outputs.CT.ContainerConsole | undefined>;
+    declare public readonly console: pulumi.Output<outputs.CT.ContainerConsole | undefined>;
     /**
      * The CPU configuration.
      */
-    public readonly cpu!: pulumi.Output<outputs.CT.ContainerCpu | undefined>;
+    declare public readonly cpu: pulumi.Output<outputs.CT.ContainerCpu | undefined>;
     /**
      * The description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Device to pass through to the container (multiple blocks supported).
      */
-    public readonly devicePassthroughs!: pulumi.Output<outputs.CT.ContainerDevicePassthrough[] | undefined>;
+    declare public readonly devicePassthroughs: pulumi.Output<outputs.CT.ContainerDevicePassthrough[] | undefined>;
     /**
      * The disk configuration.
      */
-    public readonly disk!: pulumi.Output<outputs.CT.ContainerDisk | undefined>;
+    declare public readonly disk: pulumi.Output<outputs.CT.ContainerDisk | undefined>;
     /**
      * The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
      */
-    public readonly features!: pulumi.Output<outputs.CT.ContainerFeatures | undefined>;
+    declare public readonly features: pulumi.Output<outputs.CT.ContainerFeatures | undefined>;
     /**
      * The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
      */
-    public readonly hookScriptFileId!: pulumi.Output<string | undefined>;
+    declare public readonly hookScriptFileId: pulumi.Output<string | undefined>;
     /**
      * The initialization configuration.
      */
-    public readonly initialization!: pulumi.Output<outputs.CT.ContainerInitialization | undefined>;
+    declare public readonly initialization: pulumi.Output<outputs.CT.ContainerInitialization | undefined>;
     /**
      * The map of IPv4 addresses per network devices. Returns the first address for each network device, if multiple addresses are assigned.
      */
-    public /*out*/ readonly ipv4!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly ipv4: pulumi.Output<{[key: string]: string}>;
     /**
      * The map of IPv6 addresses per network device. Returns the first address for each network device, if multiple addresses are assigned.
      */
-    public /*out*/ readonly ipv6!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly ipv6: pulumi.Output<{[key: string]: string}>;
     /**
      * The memory configuration.
      */
-    public readonly memory!: pulumi.Output<outputs.CT.ContainerMemory | undefined>;
+    declare public readonly memory: pulumi.Output<outputs.CT.ContainerMemory | undefined>;
     /**
      * A mount point
      */
-    public readonly mountPoints!: pulumi.Output<outputs.CT.ContainerMountPoint[] | undefined>;
+    declare public readonly mountPoints: pulumi.Output<outputs.CT.ContainerMountPoint[] | undefined>;
     /**
      * A network interface (multiple blocks
      * supported).
      */
-    public readonly networkInterfaces!: pulumi.Output<outputs.CT.ContainerNetworkInterface[] | undefined>;
+    declare public readonly networkInterfaces: pulumi.Output<outputs.CT.ContainerNetworkInterface[] | undefined>;
     /**
      * The name of the node to assign the container to.
      */
-    public readonly nodeName!: pulumi.Output<string>;
+    declare public readonly nodeName: pulumi.Output<string>;
     /**
      * The Operating System configuration.
      */
-    public readonly operatingSystem!: pulumi.Output<outputs.CT.ContainerOperatingSystem | undefined>;
+    declare public readonly operatingSystem: pulumi.Output<outputs.CT.ContainerOperatingSystem | undefined>;
     /**
      * The identifier for a pool to assign the container to.
      */
-    public readonly poolId!: pulumi.Output<string | undefined>;
+    declare public readonly poolId: pulumi.Output<string | undefined>;
     /**
      * Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
      */
-    public readonly protection!: pulumi.Output<boolean | undefined>;
+    declare public readonly protection: pulumi.Output<boolean | undefined>;
     /**
      * Automatically start container when the host
      * system boots (defaults to `true`).
      */
-    public readonly startOnBoot!: pulumi.Output<boolean | undefined>;
+    declare public readonly startOnBoot: pulumi.Output<boolean | undefined>;
     /**
      * Whether to start the container (defaults to `true`).
      */
-    public readonly started!: pulumi.Output<boolean | undefined>;
+    declare public readonly started: pulumi.Output<boolean | undefined>;
     /**
      * Defines startup and shutdown behavior of the container.
      */
-    public readonly startup!: pulumi.Output<outputs.CT.ContainerStartup | undefined>;
+    declare public readonly startup: pulumi.Output<outputs.CT.ContainerStartup | undefined>;
     /**
      * A list of tags the container tags. This is only meta
      * information (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.
@@ -140,41 +140,41 @@ export class Container extends pulumi.CustomResource {
      * difference on the resource. You may use the `ignoreChanges` lifecycle
      * meta-argument to ignore changes to this attribute.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * Whether to create a template (defaults to `false`).
      */
-    public readonly template!: pulumi.Output<boolean | undefined>;
+    declare public readonly template: pulumi.Output<boolean | undefined>;
     /**
      * Timeout for cloning a container in seconds (defaults to 1800).
      */
-    public readonly timeoutClone!: pulumi.Output<number | undefined>;
+    declare public readonly timeoutClone: pulumi.Output<number | undefined>;
     /**
      * Timeout for creating a container in seconds (defaults to 1800).
      */
-    public readonly timeoutCreate!: pulumi.Output<number | undefined>;
+    declare public readonly timeoutCreate: pulumi.Output<number | undefined>;
     /**
      * Timeout for deleting a container in seconds (defaults to 60).
      */
-    public readonly timeoutDelete!: pulumi.Output<number | undefined>;
+    declare public readonly timeoutDelete: pulumi.Output<number | undefined>;
     /**
      * Start container timeout
      *
      * @deprecated This field is deprecated and will be removed in a future release. An overall operation timeout (`timeoutCreate` / `timeoutClone`) is used instead.
      */
-    public readonly timeoutStart!: pulumi.Output<number | undefined>;
+    declare public readonly timeoutStart: pulumi.Output<number | undefined>;
     /**
      * Timeout for updating a container in seconds (defaults to 1800).
      */
-    public readonly timeoutUpdate!: pulumi.Output<number | undefined>;
+    declare public readonly timeoutUpdate: pulumi.Output<number | undefined>;
     /**
      * Whether the container runs as unprivileged on the host (defaults to `false`).
      */
-    public readonly unprivileged!: pulumi.Output<boolean | undefined>;
+    declare public readonly unprivileged: pulumi.Output<boolean | undefined>;
     /**
      * The container identifier
      */
-    public readonly vmId!: pulumi.Output<number>;
+    declare public readonly vmId: pulumi.Output<number>;
 
     /**
      * Create a Container resource with the given unique name, arguments, and options.
@@ -189,69 +189,69 @@ export class Container extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ContainerState | undefined;
-            resourceInputs["clone"] = state ? state.clone : undefined;
-            resourceInputs["console"] = state ? state.console : undefined;
-            resourceInputs["cpu"] = state ? state.cpu : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["devicePassthroughs"] = state ? state.devicePassthroughs : undefined;
-            resourceInputs["disk"] = state ? state.disk : undefined;
-            resourceInputs["features"] = state ? state.features : undefined;
-            resourceInputs["hookScriptFileId"] = state ? state.hookScriptFileId : undefined;
-            resourceInputs["initialization"] = state ? state.initialization : undefined;
-            resourceInputs["ipv4"] = state ? state.ipv4 : undefined;
-            resourceInputs["ipv6"] = state ? state.ipv6 : undefined;
-            resourceInputs["memory"] = state ? state.memory : undefined;
-            resourceInputs["mountPoints"] = state ? state.mountPoints : undefined;
-            resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
-            resourceInputs["nodeName"] = state ? state.nodeName : undefined;
-            resourceInputs["operatingSystem"] = state ? state.operatingSystem : undefined;
-            resourceInputs["poolId"] = state ? state.poolId : undefined;
-            resourceInputs["protection"] = state ? state.protection : undefined;
-            resourceInputs["startOnBoot"] = state ? state.startOnBoot : undefined;
-            resourceInputs["started"] = state ? state.started : undefined;
-            resourceInputs["startup"] = state ? state.startup : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["template"] = state ? state.template : undefined;
-            resourceInputs["timeoutClone"] = state ? state.timeoutClone : undefined;
-            resourceInputs["timeoutCreate"] = state ? state.timeoutCreate : undefined;
-            resourceInputs["timeoutDelete"] = state ? state.timeoutDelete : undefined;
-            resourceInputs["timeoutStart"] = state ? state.timeoutStart : undefined;
-            resourceInputs["timeoutUpdate"] = state ? state.timeoutUpdate : undefined;
-            resourceInputs["unprivileged"] = state ? state.unprivileged : undefined;
-            resourceInputs["vmId"] = state ? state.vmId : undefined;
+            resourceInputs["clone"] = state?.clone;
+            resourceInputs["console"] = state?.console;
+            resourceInputs["cpu"] = state?.cpu;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["devicePassthroughs"] = state?.devicePassthroughs;
+            resourceInputs["disk"] = state?.disk;
+            resourceInputs["features"] = state?.features;
+            resourceInputs["hookScriptFileId"] = state?.hookScriptFileId;
+            resourceInputs["initialization"] = state?.initialization;
+            resourceInputs["ipv4"] = state?.ipv4;
+            resourceInputs["ipv6"] = state?.ipv6;
+            resourceInputs["memory"] = state?.memory;
+            resourceInputs["mountPoints"] = state?.mountPoints;
+            resourceInputs["networkInterfaces"] = state?.networkInterfaces;
+            resourceInputs["nodeName"] = state?.nodeName;
+            resourceInputs["operatingSystem"] = state?.operatingSystem;
+            resourceInputs["poolId"] = state?.poolId;
+            resourceInputs["protection"] = state?.protection;
+            resourceInputs["startOnBoot"] = state?.startOnBoot;
+            resourceInputs["started"] = state?.started;
+            resourceInputs["startup"] = state?.startup;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["template"] = state?.template;
+            resourceInputs["timeoutClone"] = state?.timeoutClone;
+            resourceInputs["timeoutCreate"] = state?.timeoutCreate;
+            resourceInputs["timeoutDelete"] = state?.timeoutDelete;
+            resourceInputs["timeoutStart"] = state?.timeoutStart;
+            resourceInputs["timeoutUpdate"] = state?.timeoutUpdate;
+            resourceInputs["unprivileged"] = state?.unprivileged;
+            resourceInputs["vmId"] = state?.vmId;
         } else {
             const args = argsOrState as ContainerArgs | undefined;
-            if ((!args || args.nodeName === undefined) && !opts.urn) {
+            if (args?.nodeName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodeName'");
             }
-            resourceInputs["clone"] = args ? args.clone : undefined;
-            resourceInputs["console"] = args ? args.console : undefined;
-            resourceInputs["cpu"] = args ? args.cpu : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["devicePassthroughs"] = args ? args.devicePassthroughs : undefined;
-            resourceInputs["disk"] = args ? args.disk : undefined;
-            resourceInputs["features"] = args ? args.features : undefined;
-            resourceInputs["hookScriptFileId"] = args ? args.hookScriptFileId : undefined;
-            resourceInputs["initialization"] = args ? args.initialization : undefined;
-            resourceInputs["memory"] = args ? args.memory : undefined;
-            resourceInputs["mountPoints"] = args ? args.mountPoints : undefined;
-            resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
-            resourceInputs["nodeName"] = args ? args.nodeName : undefined;
-            resourceInputs["operatingSystem"] = args ? args.operatingSystem : undefined;
-            resourceInputs["poolId"] = args ? args.poolId : undefined;
-            resourceInputs["protection"] = args ? args.protection : undefined;
-            resourceInputs["startOnBoot"] = args ? args.startOnBoot : undefined;
-            resourceInputs["started"] = args ? args.started : undefined;
-            resourceInputs["startup"] = args ? args.startup : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["template"] = args ? args.template : undefined;
-            resourceInputs["timeoutClone"] = args ? args.timeoutClone : undefined;
-            resourceInputs["timeoutCreate"] = args ? args.timeoutCreate : undefined;
-            resourceInputs["timeoutDelete"] = args ? args.timeoutDelete : undefined;
-            resourceInputs["timeoutStart"] = args ? args.timeoutStart : undefined;
-            resourceInputs["timeoutUpdate"] = args ? args.timeoutUpdate : undefined;
-            resourceInputs["unprivileged"] = args ? args.unprivileged : undefined;
-            resourceInputs["vmId"] = args ? args.vmId : undefined;
+            resourceInputs["clone"] = args?.clone;
+            resourceInputs["console"] = args?.console;
+            resourceInputs["cpu"] = args?.cpu;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["devicePassthroughs"] = args?.devicePassthroughs;
+            resourceInputs["disk"] = args?.disk;
+            resourceInputs["features"] = args?.features;
+            resourceInputs["hookScriptFileId"] = args?.hookScriptFileId;
+            resourceInputs["initialization"] = args?.initialization;
+            resourceInputs["memory"] = args?.memory;
+            resourceInputs["mountPoints"] = args?.mountPoints;
+            resourceInputs["networkInterfaces"] = args?.networkInterfaces;
+            resourceInputs["nodeName"] = args?.nodeName;
+            resourceInputs["operatingSystem"] = args?.operatingSystem;
+            resourceInputs["poolId"] = args?.poolId;
+            resourceInputs["protection"] = args?.protection;
+            resourceInputs["startOnBoot"] = args?.startOnBoot;
+            resourceInputs["started"] = args?.started;
+            resourceInputs["startup"] = args?.startup;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["template"] = args?.template;
+            resourceInputs["timeoutClone"] = args?.timeoutClone;
+            resourceInputs["timeoutCreate"] = args?.timeoutCreate;
+            resourceInputs["timeoutDelete"] = args?.timeoutDelete;
+            resourceInputs["timeoutStart"] = args?.timeoutStart;
+            resourceInputs["timeoutUpdate"] = args?.timeoutUpdate;
+            resourceInputs["unprivileged"] = args?.unprivileged;
+            resourceInputs["vmId"] = args?.vmId;
             resourceInputs["ipv4"] = undefined /*out*/;
             resourceInputs["ipv6"] = undefined /*out*/;
         }

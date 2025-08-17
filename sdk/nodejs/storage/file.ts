@@ -148,55 +148,55 @@ export class File extends pulumi.CustomResource {
      * The content type. If not specified, the content
      * type will be inferred from the file extension. Valid values are:
      */
-    public readonly contentType!: pulumi.Output<string>;
+    declare public readonly contentType: pulumi.Output<string>;
     /**
      * The datastore id.
      */
-    public readonly datastoreId!: pulumi.Output<string>;
+    declare public readonly datastoreId: pulumi.Output<string>;
     /**
      * The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
      */
-    public readonly fileMode!: pulumi.Output<string | undefined>;
+    declare public readonly fileMode: pulumi.Output<string | undefined>;
     /**
      * The file modification date (RFC 3339).
      */
-    public /*out*/ readonly fileModificationDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly fileModificationDate: pulumi.Output<string>;
     /**
      * The file name.
      */
-    public /*out*/ readonly fileName!: pulumi.Output<string>;
+    declare public /*out*/ readonly fileName: pulumi.Output<string>;
     /**
      * The file size in bytes.
      */
-    public /*out*/ readonly fileSize!: pulumi.Output<number>;
+    declare public /*out*/ readonly fileSize: pulumi.Output<number>;
     /**
      * The file tag.
      */
-    public /*out*/ readonly fileTag!: pulumi.Output<string>;
+    declare public /*out*/ readonly fileTag: pulumi.Output<string>;
     /**
      * The node name.
      */
-    public readonly nodeName!: pulumi.Output<string>;
+    declare public readonly nodeName: pulumi.Output<string>;
     /**
      * Whether to overwrite an existing file (defaults to
      * `true`).
      */
-    public readonly overwrite!: pulumi.Output<boolean | undefined>;
+    declare public readonly overwrite: pulumi.Output<boolean | undefined>;
     /**
      * The source file (conflicts with `sourceRaw`),
      * could be a local file or a URL. If the source file is a URL, the file will
      * be downloaded and stored locally before uploading it to Proxmox VE.
      */
-    public readonly sourceFile!: pulumi.Output<outputs.Storage.FileSourceFile | undefined>;
+    declare public readonly sourceFile: pulumi.Output<outputs.Storage.FileSourceFile | undefined>;
     /**
      * The raw source (conflicts with `sourceFile`).
      */
-    public readonly sourceRaw!: pulumi.Output<outputs.Storage.FileSourceRaw | undefined>;
+    declare public readonly sourceRaw: pulumi.Output<outputs.Storage.FileSourceRaw | undefined>;
     /**
      * Timeout for uploading ISO/VSTMPL files in
      * seconds (defaults to 1800).
      */
-    public readonly timeoutUpload!: pulumi.Output<number | undefined>;
+    declare public readonly timeoutUpload: pulumi.Output<number | undefined>;
 
     /**
      * Create a File resource with the given unique name, arguments, and options.
@@ -211,34 +211,34 @@ export class File extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FileState | undefined;
-            resourceInputs["contentType"] = state ? state.contentType : undefined;
-            resourceInputs["datastoreId"] = state ? state.datastoreId : undefined;
-            resourceInputs["fileMode"] = state ? state.fileMode : undefined;
-            resourceInputs["fileModificationDate"] = state ? state.fileModificationDate : undefined;
-            resourceInputs["fileName"] = state ? state.fileName : undefined;
-            resourceInputs["fileSize"] = state ? state.fileSize : undefined;
-            resourceInputs["fileTag"] = state ? state.fileTag : undefined;
-            resourceInputs["nodeName"] = state ? state.nodeName : undefined;
-            resourceInputs["overwrite"] = state ? state.overwrite : undefined;
-            resourceInputs["sourceFile"] = state ? state.sourceFile : undefined;
-            resourceInputs["sourceRaw"] = state ? state.sourceRaw : undefined;
-            resourceInputs["timeoutUpload"] = state ? state.timeoutUpload : undefined;
+            resourceInputs["contentType"] = state?.contentType;
+            resourceInputs["datastoreId"] = state?.datastoreId;
+            resourceInputs["fileMode"] = state?.fileMode;
+            resourceInputs["fileModificationDate"] = state?.fileModificationDate;
+            resourceInputs["fileName"] = state?.fileName;
+            resourceInputs["fileSize"] = state?.fileSize;
+            resourceInputs["fileTag"] = state?.fileTag;
+            resourceInputs["nodeName"] = state?.nodeName;
+            resourceInputs["overwrite"] = state?.overwrite;
+            resourceInputs["sourceFile"] = state?.sourceFile;
+            resourceInputs["sourceRaw"] = state?.sourceRaw;
+            resourceInputs["timeoutUpload"] = state?.timeoutUpload;
         } else {
             const args = argsOrState as FileArgs | undefined;
-            if ((!args || args.datastoreId === undefined) && !opts.urn) {
+            if (args?.datastoreId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'datastoreId'");
             }
-            if ((!args || args.nodeName === undefined) && !opts.urn) {
+            if (args?.nodeName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodeName'");
             }
-            resourceInputs["contentType"] = args ? args.contentType : undefined;
-            resourceInputs["datastoreId"] = args ? args.datastoreId : undefined;
-            resourceInputs["fileMode"] = args ? args.fileMode : undefined;
-            resourceInputs["nodeName"] = args ? args.nodeName : undefined;
-            resourceInputs["overwrite"] = args ? args.overwrite : undefined;
-            resourceInputs["sourceFile"] = args ? args.sourceFile : undefined;
-            resourceInputs["sourceRaw"] = args ? args.sourceRaw : undefined;
-            resourceInputs["timeoutUpload"] = args ? args.timeoutUpload : undefined;
+            resourceInputs["contentType"] = args?.contentType;
+            resourceInputs["datastoreId"] = args?.datastoreId;
+            resourceInputs["fileMode"] = args?.fileMode;
+            resourceInputs["nodeName"] = args?.nodeName;
+            resourceInputs["overwrite"] = args?.overwrite;
+            resourceInputs["sourceFile"] = args?.sourceFile;
+            resourceInputs["sourceRaw"] = args?.sourceRaw;
+            resourceInputs["timeoutUpload"] = args?.timeoutUpload;
             resourceInputs["fileModificationDate"] = undefined /*out*/;
             resourceInputs["fileName"] = undefined /*out*/;
             resourceInputs["fileSize"] = undefined /*out*/;

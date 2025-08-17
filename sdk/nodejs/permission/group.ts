@@ -62,19 +62,19 @@ export class Group extends pulumi.CustomResource {
     /**
      * The access control list (multiple blocks supported).
      */
-    public readonly acls!: pulumi.Output<outputs.Permission.GroupAcl[] | undefined>;
+    declare public readonly acls: pulumi.Output<outputs.Permission.GroupAcl[] | undefined>;
     /**
      * The group comment.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * The group identifier.
      */
-    public readonly groupId!: pulumi.Output<string>;
+    declare public readonly groupId: pulumi.Output<string>;
     /**
      * The group members as a list of `username@realm` entries
      */
-    public /*out*/ readonly members!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly members: pulumi.Output<string[]>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -89,18 +89,18 @@ export class Group extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
-            resourceInputs["acls"] = state ? state.acls : undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["members"] = state ? state.members : undefined;
+            resourceInputs["acls"] = state?.acls;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["members"] = state?.members;
         } else {
             const args = argsOrState as GroupArgs | undefined;
-            if ((!args || args.groupId === undefined) && !opts.urn) {
+            if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            resourceInputs["acls"] = args ? args.acls : undefined;
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["acls"] = args?.acls;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["groupId"] = args?.groupId;
             resourceInputs["members"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

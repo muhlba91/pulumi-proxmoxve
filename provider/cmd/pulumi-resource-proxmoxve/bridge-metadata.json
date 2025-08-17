@@ -330,6 +330,57 @@
                     }
                 }
             },
+            "proxmox_virtual_environment_sdn_zone_evpn": {
+                "current": "proxmoxve:SDNZone/evpn:Evpn",
+                "majorVersion": 7,
+                "fields": {
+                    "exit_nodes": {
+                        "maxItemsOne": false
+                    },
+                    "nodes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_sdn_zone_qinq": {
+                "current": "proxmoxve:SDNZone/qinq:Qinq",
+                "majorVersion": 7,
+                "fields": {
+                    "nodes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_sdn_zone_simple": {
+                "current": "proxmoxve:SDNZone/simple:Simple",
+                "majorVersion": 7,
+                "fields": {
+                    "nodes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_sdn_zone_vlan": {
+                "current": "proxmoxve:SDNZone/vlan:Vlan",
+                "majorVersion": 7,
+                "fields": {
+                    "nodes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_sdn_zone_vxlan": {
+                "current": "proxmoxve:SDNZone/vxlan:Vxlan",
+                "majorVersion": 7,
+                "fields": {
+                    "nodes": {
+                        "maxItemsOne": false
+                    },
+                    "peers": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "proxmox_virtual_environment_time": {
                 "current": "proxmoxve:index/time:Time",
                 "majorVersion": 7
@@ -816,6 +867,79 @@
                     }
                 }
             },
+            "proxmox_virtual_environment_sdn_zone_evpn": {
+                "current": "proxmoxve:SDNZone/getEvpn:getEvpn",
+                "majorVersion": 7,
+                "fields": {
+                    "exit_nodes": {
+                        "maxItemsOne": false
+                    },
+                    "nodes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_sdn_zone_qinq": {
+                "current": "proxmoxve:SDNZone/getQinq:getQinq",
+                "majorVersion": 7,
+                "fields": {
+                    "nodes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_sdn_zone_simple": {
+                "current": "proxmoxve:SDNZone/getSimple:getSimple",
+                "majorVersion": 7,
+                "fields": {
+                    "nodes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_sdn_zone_vlan": {
+                "current": "proxmoxve:SDNZone/getVlan:getVlan",
+                "majorVersion": 7,
+                "fields": {
+                    "nodes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_sdn_zone_vxlan": {
+                "current": "proxmoxve:SDNZone/getVxlan:getVxlan",
+                "majorVersion": 7,
+                "fields": {
+                    "nodes": {
+                        "maxItemsOne": false
+                    },
+                    "peers": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_sdn_zones": {
+                "current": "proxmoxve:Sdn/getZones:getZones",
+                "majorVersion": 7,
+                "fields": {
+                    "zones": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "exit_nodes": {
+                                    "maxItemsOne": false
+                                },
+                                "nodes": {
+                                    "maxItemsOne": false
+                                },
+                                "peers": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "proxmox_virtual_environment_time": {
                 "current": "proxmoxve:Network/getTime:getTime",
                 "majorVersion": 7
@@ -954,6 +1078,11 @@
             "proxmoxve:Permission/pool:Pool": 0,
             "proxmoxve:Permission/role:Role": 0,
             "proxmoxve:Permission/user:User": 0,
+            "proxmoxve:SDNZone/evpn:Evpn": 1,
+            "proxmoxve:SDNZone/qinq:Qinq": 1,
+            "proxmoxve:SDNZone/simple:Simple": 1,
+            "proxmoxve:SDNZone/vlan:Vlan": 1,
+            "proxmoxve:SDNZone/vxlan:Vxlan": 1,
             "proxmoxve:Storage/file:File": 0,
             "proxmoxve:User/token:Token": 1,
             "proxmoxve:VM/virtualMachine2:VirtualMachine2": 1,
@@ -995,6 +1124,12 @@
             "proxmoxve:Permission/getRoles:getRoles": 0,
             "proxmoxve:Permission/getUser:getUser": 0,
             "proxmoxve:Permission/getUsers:getUsers": 0,
+            "proxmoxve:SDNZone/getEvpn:getEvpn": 1,
+            "proxmoxve:SDNZone/getQinq:getQinq": 1,
+            "proxmoxve:SDNZone/getSimple:getSimple": 1,
+            "proxmoxve:SDNZone/getVlan:getVlan": 1,
+            "proxmoxve:SDNZone/getVxlan:getVxlan": 1,
+            "proxmoxve:Sdn/getZones:getZones": 1,
             "proxmoxve:Storage/getDatastores:getDatastores": 1,
             "proxmoxve:VM/getVirtualMachine:getVirtualMachine": 0,
             "proxmoxve:VM/getVirtualMachines:getVirtualMachines": 0,

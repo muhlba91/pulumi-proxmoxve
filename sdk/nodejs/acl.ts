@@ -74,27 +74,27 @@ export class Acl extends pulumi.CustomResource {
     /**
      * The group the ACL should apply to (mutually exclusive with `tokenId` and `userId`)
      */
-    public readonly groupId!: pulumi.Output<string | undefined>;
+    declare public readonly groupId: pulumi.Output<string | undefined>;
     /**
      * Access control path
      */
-    public readonly path!: pulumi.Output<string>;
+    declare public readonly path: pulumi.Output<string>;
     /**
      * Allow to propagate (inherit) permissions.
      */
-    public readonly propagate!: pulumi.Output<boolean>;
+    declare public readonly propagate: pulumi.Output<boolean>;
     /**
      * The role to apply
      */
-    public readonly roleId!: pulumi.Output<string>;
+    declare public readonly roleId: pulumi.Output<string>;
     /**
      * The token the ACL should apply to (mutually exclusive with `groupId` and `userId`)
      */
-    public readonly tokenId!: pulumi.Output<string | undefined>;
+    declare public readonly tokenId: pulumi.Output<string | undefined>;
     /**
      * The user the ACL should apply to (mutually exclusive with `groupId` and `tokenId`)
      */
-    public readonly userId!: pulumi.Output<string | undefined>;
+    declare public readonly userId: pulumi.Output<string | undefined>;
 
     /**
      * Create a Acl resource with the given unique name, arguments, and options.
@@ -109,26 +109,26 @@ export class Acl extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AclState | undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["path"] = state ? state.path : undefined;
-            resourceInputs["propagate"] = state ? state.propagate : undefined;
-            resourceInputs["roleId"] = state ? state.roleId : undefined;
-            resourceInputs["tokenId"] = state ? state.tokenId : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["path"] = state?.path;
+            resourceInputs["propagate"] = state?.propagate;
+            resourceInputs["roleId"] = state?.roleId;
+            resourceInputs["tokenId"] = state?.tokenId;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as AclArgs | undefined;
-            if ((!args || args.path === undefined) && !opts.urn) {
+            if (args?.path === undefined && !opts.urn) {
                 throw new Error("Missing required property 'path'");
             }
-            if ((!args || args.roleId === undefined) && !opts.urn) {
+            if (args?.roleId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'roleId'");
             }
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["path"] = args ? args.path : undefined;
-            resourceInputs["propagate"] = args ? args.propagate : undefined;
-            resourceInputs["roleId"] = args ? args.roleId : undefined;
-            resourceInputs["tokenId"] = args ? args.tokenId : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["path"] = args?.path;
+            resourceInputs["propagate"] = args?.propagate;
+            resourceInputs["roleId"] = args?.roleId;
+            resourceInputs["tokenId"] = args?.tokenId;
+            resourceInputs["userId"] = args?.userId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Acl.__pulumiType, name, resourceInputs, opts);

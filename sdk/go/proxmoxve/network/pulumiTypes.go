@@ -365,7 +365,7 @@ type FirewallRulesRule struct {
 	// several ports or ranges.
 	// - a security group insertion block, which includes the following arguments:
 	Sport *string `pulumi:"sport"`
-	// Rule type (`in`, `out`).
+	// Rule type (`in`, `out`, `forward`).
 	Type *string `pulumi:"type"`
 }
 
@@ -431,7 +431,7 @@ type FirewallRulesRuleArgs struct {
 	// several ports or ranges.
 	// - a security group insertion block, which includes the following arguments:
 	Sport pulumi.StringPtrInput `pulumi:"sport"`
-	// Rule type (`in`, `out`).
+	// Rule type (`in`, `out`, `forward`).
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -575,7 +575,7 @@ func (o FirewallRulesRuleOutput) Sport() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallRulesRule) *string { return v.Sport }).(pulumi.StringPtrOutput)
 }
 
-// Rule type (`in`, `out`).
+// Rule type (`in`, `out`, `forward`).
 func (o FirewallRulesRuleOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallRulesRule) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -650,7 +650,7 @@ type FirewallSecurityGroupRule struct {
 	// `80:85`, and you can use comma separated list to match several ports or
 	// ranges.
 	Sport *string `pulumi:"sport"`
-	// Rule type (`in`, `out`).
+	// Rule type (`in`, `out`, `forward`).
 	Type *string `pulumi:"type"`
 }
 
@@ -715,7 +715,7 @@ type FirewallSecurityGroupRuleArgs struct {
 	// `80:85`, and you can use comma separated list to match several ports or
 	// ranges.
 	Sport pulumi.StringPtrInput `pulumi:"sport"`
-	// Rule type (`in`, `out`).
+	// Rule type (`in`, `out`, `forward`).
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -858,7 +858,7 @@ func (o FirewallSecurityGroupRuleOutput) Sport() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallSecurityGroupRule) *string { return v.Sport }).(pulumi.StringPtrOutput)
 }
 
-// Rule type (`in`, `out`).
+// Rule type (`in`, `out`, `forward`).
 func (o FirewallSecurityGroupRuleOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallSecurityGroupRule) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

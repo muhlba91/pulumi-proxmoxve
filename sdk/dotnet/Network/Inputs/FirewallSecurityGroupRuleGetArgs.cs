@@ -114,7 +114,7 @@ namespace Pulumi.ProxmoxVE.Network.Inputs
         public Input<string>? Sport { get; set; }
 
         /// <summary>
-        /// Rule type (`in`, `out`).
+        /// Rule type (`in`, `out`, `forward`).
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -26,6 +26,7 @@ namespace Pulumi.ProxmoxVE.Network
     ///     {
     ///         Ebtables = false,
     ///         Enabled = false,
+    ///         ForwardPolicy = "ACCEPT",
     ///         InputPolicy = "DROP",
     ///         LogRatelimit = new ProxmoxVE.Network.Inputs.FirewallLogRatelimitArgs
     ///         {
@@ -67,6 +68,12 @@ namespace Pulumi.ProxmoxVE.Network
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
+
+        /// <summary>
+        /// The default forward policy (`ACCEPT`, `DROP`).
+        /// </summary>
+        [Output("forwardPolicy")]
+        public Output<string?> ForwardPolicy { get; private set; } = null!;
 
         /// <summary>
         /// The default input policy (`ACCEPT`, `DROP`, `REJECT`).
@@ -146,6 +153,12 @@ namespace Pulumi.ProxmoxVE.Network
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
+        /// The default forward policy (`ACCEPT`, `DROP`).
+        /// </summary>
+        [Input("forwardPolicy")]
+        public Input<string>? ForwardPolicy { get; set; }
+
+        /// <summary>
         /// The default input policy (`ACCEPT`, `DROP`, `REJECT`).
         /// </summary>
         [Input("inputPolicy")]
@@ -182,6 +195,12 @@ namespace Pulumi.ProxmoxVE.Network
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// The default forward policy (`ACCEPT`, `DROP`).
+        /// </summary>
+        [Input("forwardPolicy")]
+        public Input<string>? ForwardPolicy { get; set; }
 
         /// <summary>
         /// The default input policy (`ACCEPT`, `DROP`, `REJECT`).

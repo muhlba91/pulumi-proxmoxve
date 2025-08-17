@@ -50,19 +50,19 @@ export class Pci extends pulumi.CustomResource {
     /**
      * The comment of this PCI hardware mapping.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * The actual map of devices for the PCI hardware mapping.
      */
-    public readonly maps!: pulumi.Output<outputs.Hardware.mapping.PciMap[]>;
+    declare public readonly maps: pulumi.Output<outputs.Hardware.mapping.PciMap[]>;
     /**
      * Indicates whether to enable mediated devices.
      */
-    public readonly mediatedDevices!: pulumi.Output<boolean>;
+    declare public readonly mediatedDevices: pulumi.Output<boolean>;
     /**
      * The name of this PCI hardware mapping.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a Pci resource with the given unique name, arguments, and options.
@@ -77,19 +77,19 @@ export class Pci extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PciState | undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["maps"] = state ? state.maps : undefined;
-            resourceInputs["mediatedDevices"] = state ? state.mediatedDevices : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["maps"] = state?.maps;
+            resourceInputs["mediatedDevices"] = state?.mediatedDevices;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as PciArgs | undefined;
-            if ((!args || args.maps === undefined) && !opts.urn) {
+            if (args?.maps === undefined && !opts.urn) {
                 throw new Error("Missing required property 'maps'");
             }
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["maps"] = args ? args.maps : undefined;
-            resourceInputs["mediatedDevices"] = args ? args.mediatedDevices : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["maps"] = args?.maps;
+            resourceInputs["mediatedDevices"] = args?.mediatedDevices;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Pci.__pulumiType, name, resourceInputs, opts);

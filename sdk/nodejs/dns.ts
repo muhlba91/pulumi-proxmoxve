@@ -48,15 +48,15 @@ export class DNS extends pulumi.CustomResource {
     /**
      * The DNS search domain.
      */
-    public readonly domain!: pulumi.Output<string>;
+    declare public readonly domain: pulumi.Output<string>;
     /**
      * A node name.
      */
-    public readonly nodeName!: pulumi.Output<string>;
+    declare public readonly nodeName: pulumi.Output<string>;
     /**
      * The DNS servers.
      */
-    public readonly servers!: pulumi.Output<string[] | undefined>;
+    declare public readonly servers: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a DNS resource with the given unique name, arguments, and options.
@@ -71,20 +71,20 @@ export class DNS extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DNSState | undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["nodeName"] = state ? state.nodeName : undefined;
-            resourceInputs["servers"] = state ? state.servers : undefined;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["nodeName"] = state?.nodeName;
+            resourceInputs["servers"] = state?.servers;
         } else {
             const args = argsOrState as DNSArgs | undefined;
-            if ((!args || args.domain === undefined) && !opts.urn) {
+            if (args?.domain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domain'");
             }
-            if ((!args || args.nodeName === undefined) && !opts.urn) {
+            if (args?.nodeName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodeName'");
             }
-            resourceInputs["domain"] = args ? args.domain : undefined;
-            resourceInputs["nodeName"] = args ? args.nodeName : undefined;
-            resourceInputs["servers"] = args ? args.servers : undefined;
+            resourceInputs["domain"] = args?.domain;
+            resourceInputs["nodeName"] = args?.nodeName;
+            resourceInputs["servers"] = args?.servers;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DNS.__pulumiType, name, resourceInputs, opts);

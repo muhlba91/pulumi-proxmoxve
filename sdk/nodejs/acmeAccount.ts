@@ -63,35 +63,35 @@ export class AcmeAccount extends pulumi.CustomResource {
     /**
      * The contact email addresses.
      */
-    public readonly contact!: pulumi.Output<string>;
+    declare public readonly contact: pulumi.Output<string>;
     /**
      * The timestamp of the ACME account creation.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The URL of the ACME CA directory endpoint.
      */
-    public readonly directory!: pulumi.Output<string | undefined>;
+    declare public readonly directory: pulumi.Output<string | undefined>;
     /**
      * The HMAC key for External Account Binding.
      */
-    public readonly eabHmacKey!: pulumi.Output<string | undefined>;
+    declare public readonly eabHmacKey: pulumi.Output<string | undefined>;
     /**
      * The Key Identifier for External Account Binding.
      */
-    public readonly eabKid!: pulumi.Output<string | undefined>;
+    declare public readonly eabKid: pulumi.Output<string | undefined>;
     /**
      * The location of the ACME account.
      */
-    public /*out*/ readonly location!: pulumi.Output<string>;
+    declare public /*out*/ readonly location: pulumi.Output<string>;
     /**
      * The ACME account config file name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The URL of CA TermsOfService - setting this indicates agreement.
      */
-    public readonly tos!: pulumi.Output<string | undefined>;
+    declare public readonly tos: pulumi.Output<string | undefined>;
 
     /**
      * Create a AcmeAccount resource with the given unique name, arguments, and options.
@@ -106,25 +106,25 @@ export class AcmeAccount extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AcmeAccountState | undefined;
-            resourceInputs["contact"] = state ? state.contact : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["directory"] = state ? state.directory : undefined;
-            resourceInputs["eabHmacKey"] = state ? state.eabHmacKey : undefined;
-            resourceInputs["eabKid"] = state ? state.eabKid : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["tos"] = state ? state.tos : undefined;
+            resourceInputs["contact"] = state?.contact;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["directory"] = state?.directory;
+            resourceInputs["eabHmacKey"] = state?.eabHmacKey;
+            resourceInputs["eabKid"] = state?.eabKid;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["tos"] = state?.tos;
         } else {
             const args = argsOrState as AcmeAccountArgs | undefined;
-            if ((!args || args.contact === undefined) && !opts.urn) {
+            if (args?.contact === undefined && !opts.urn) {
                 throw new Error("Missing required property 'contact'");
             }
-            resourceInputs["contact"] = args ? args.contact : undefined;
-            resourceInputs["directory"] = args ? args.directory : undefined;
-            resourceInputs["eabHmacKey"] = args ? args.eabHmacKey : undefined;
-            resourceInputs["eabKid"] = args ? args.eabKid : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["tos"] = args ? args.tos : undefined;
+            resourceInputs["contact"] = args?.contact;
+            resourceInputs["directory"] = args?.directory;
+            resourceInputs["eabHmacKey"] = args?.eabHmacKey;
+            resourceInputs["eabKid"] = args?.eabKid;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["tos"] = args?.tos;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
         }

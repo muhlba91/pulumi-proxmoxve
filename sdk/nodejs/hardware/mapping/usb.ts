@@ -67,15 +67,15 @@ export class Usb extends pulumi.CustomResource {
     /**
      * The comment of this USB hardware mapping.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * The actual map of devices for the hardware mapping.
      */
-    public readonly maps!: pulumi.Output<outputs.Hardware.mapping.UsbMap[]>;
+    declare public readonly maps: pulumi.Output<outputs.Hardware.mapping.UsbMap[]>;
     /**
      * The name of this hardware mapping.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a Usb resource with the given unique name, arguments, and options.
@@ -90,17 +90,17 @@ export class Usb extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UsbState | undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["maps"] = state ? state.maps : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["maps"] = state?.maps;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as UsbArgs | undefined;
-            if ((!args || args.maps === undefined) && !opts.urn) {
+            if (args?.maps === undefined && !opts.urn) {
                 throw new Error("Missing required property 'maps'");
             }
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["maps"] = args ? args.maps : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["maps"] = args?.maps;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Usb.__pulumiType, name, resourceInputs, opts);

@@ -102,7 +102,7 @@ public final class FirewallSecurityGroupRule {
      */
     private @Nullable String sport;
     /**
-     * @return Rule type (`in`, `out`).
+     * @return Rule type (`in`, `out`, `forward`).
      * 
      */
     private @Nullable String type;
@@ -223,7 +223,7 @@ public final class FirewallSecurityGroupRule {
         return Optional.ofNullable(this.sport);
     }
     /**
-     * @return Rule type (`in`, `out`).
+     * @return Rule type (`in`, `out`, `forward`).
      * 
      */
     public Optional<String> type() {

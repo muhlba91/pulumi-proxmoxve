@@ -48,6 +48,7 @@ import javax.annotation.Nullable;
  *         var example = new Firewall("example", FirewallArgs.builder()
  *             .ebtables(false)
  *             .enabled(false)
+ *             .forwardPolicy("ACCEPT")
  *             .inputPolicy("DROP")
  *             .logRatelimit(FirewallLogRatelimitArgs.builder()
  *                 .burst(10)
@@ -107,6 +108,20 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> enabled() {
         return Codegen.optional(this.enabled);
+    }
+    /**
+     * The default forward policy (`ACCEPT`, `DROP`).
+     * 
+     */
+    @Export(name="forwardPolicy", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> forwardPolicy;
+
+    /**
+     * @return The default forward policy (`ACCEPT`, `DROP`).
+     * 
+     */
+    public Output<Optional<String>> forwardPolicy() {
+        return Codegen.optional(this.forwardPolicy);
     }
     /**
      * The default input policy (`ACCEPT`, `DROP`, `REJECT`).

@@ -108,14 +108,14 @@ public class FirewallIPSet extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.comment);
     }
     /**
-     * Container ID. Leave empty for cluster level aliases.
+     * Container ID. Leave empty for cluster level ipsets.
      * 
      */
     @Export(name="containerId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> containerId;
 
     /**
-     * @return Container ID. Leave empty for cluster level aliases.
+     * @return Container ID. Leave empty for cluster level ipsets.
      * 
      */
     public Output<Optional<Integer>> containerId() {
@@ -136,28 +136,28 @@ public class FirewallIPSet extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Node name. Leave empty for cluster level aliases.
+     * Node name. Leave empty for cluster level ipsets.
      * 
      */
     @Export(name="nodeName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> nodeName;
 
     /**
-     * @return Node name. Leave empty for cluster level aliases.
+     * @return Node name. Leave empty for cluster level ipsets.
      * 
      */
     public Output<Optional<String>> nodeName() {
         return Codegen.optional(this.nodeName);
     }
     /**
-     * VM ID. Leave empty for cluster level aliases.
+     * VM ID. Leave empty for cluster level ipsets.
      * 
      */
     @Export(name="vmId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> vmId;
 
     /**
-     * @return VM ID. Leave empty for cluster level aliases.
+     * @return VM ID. Leave empty for cluster level ipsets.
      * 
      */
     public Output<Optional<Integer>> vmId() {

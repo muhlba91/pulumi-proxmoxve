@@ -48,6 +48,21 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The default forward policy (`ACCEPT`, `DROP`).
+     * 
+     */
+    @Import(name="forwardPolicy")
+    private @Nullable Output<String> forwardPolicy;
+
+    /**
+     * @return The default forward policy (`ACCEPT`, `DROP`).
+     * 
+     */
+    public Optional<Output<String>> forwardPolicy() {
+        return Optional.ofNullable(this.forwardPolicy);
+    }
+
+    /**
      * The default input policy (`ACCEPT`, `DROP`, `REJECT`).
      * 
      */
@@ -97,6 +112,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
     private FirewallState(FirewallState $) {
         this.ebtables = $.ebtables;
         this.enabled = $.enabled;
+        this.forwardPolicy = $.forwardPolicy;
         this.inputPolicy = $.inputPolicy;
         this.logRatelimit = $.logRatelimit;
         this.outputPolicy = $.outputPolicy;
@@ -160,6 +176,27 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param forwardPolicy The default forward policy (`ACCEPT`, `DROP`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forwardPolicy(@Nullable Output<String> forwardPolicy) {
+            $.forwardPolicy = forwardPolicy;
+            return this;
+        }
+
+        /**
+         * @param forwardPolicy The default forward policy (`ACCEPT`, `DROP`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forwardPolicy(String forwardPolicy) {
+            return forwardPolicy(Output.of(forwardPolicy));
         }
 
         /**

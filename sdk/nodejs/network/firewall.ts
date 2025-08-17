@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  * const example = new proxmoxve.network.Firewall("example", {
  *     ebtables: false,
  *     enabled: false,
+ *     forwardPolicy: "ACCEPT",
  *     inputPolicy: "DROP",
  *     logRatelimit: {
  *         burst: 10,
@@ -73,23 +74,27 @@ export class Firewall extends pulumi.CustomResource {
     /**
      * Enable ebtables rules cluster wide.
      */
-    public readonly ebtables!: pulumi.Output<boolean | undefined>;
+    declare public readonly ebtables: pulumi.Output<boolean | undefined>;
     /**
      * Enable or disable the firewall cluster wide.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
+    /**
+     * The default forward policy (`ACCEPT`, `DROP`).
+     */
+    declare public readonly forwardPolicy: pulumi.Output<string | undefined>;
     /**
      * The default input policy (`ACCEPT`, `DROP`, `REJECT`).
      */
-    public readonly inputPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly inputPolicy: pulumi.Output<string | undefined>;
     /**
      * The log rate limit.
      */
-    public readonly logRatelimit!: pulumi.Output<outputs.Network.FirewallLogRatelimit | undefined>;
+    declare public readonly logRatelimit: pulumi.Output<outputs.Network.FirewallLogRatelimit | undefined>;
     /**
      * The default output policy (`ACCEPT`, `DROP`, `REJECT`).
      */
-    public readonly outputPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly outputPolicy: pulumi.Output<string | undefined>;
 
     /**
      * Create a Firewall resource with the given unique name, arguments, and options.
@@ -104,18 +109,20 @@ export class Firewall extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FirewallState | undefined;
-            resourceInputs["ebtables"] = state ? state.ebtables : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["inputPolicy"] = state ? state.inputPolicy : undefined;
-            resourceInputs["logRatelimit"] = state ? state.logRatelimit : undefined;
-            resourceInputs["outputPolicy"] = state ? state.outputPolicy : undefined;
+            resourceInputs["ebtables"] = state?.ebtables;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["forwardPolicy"] = state?.forwardPolicy;
+            resourceInputs["inputPolicy"] = state?.inputPolicy;
+            resourceInputs["logRatelimit"] = state?.logRatelimit;
+            resourceInputs["outputPolicy"] = state?.outputPolicy;
         } else {
             const args = argsOrState as FirewallArgs | undefined;
-            resourceInputs["ebtables"] = args ? args.ebtables : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["inputPolicy"] = args ? args.inputPolicy : undefined;
-            resourceInputs["logRatelimit"] = args ? args.logRatelimit : undefined;
-            resourceInputs["outputPolicy"] = args ? args.outputPolicy : undefined;
+            resourceInputs["ebtables"] = args?.ebtables;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["forwardPolicy"] = args?.forwardPolicy;
+            resourceInputs["inputPolicy"] = args?.inputPolicy;
+            resourceInputs["logRatelimit"] = args?.logRatelimit;
+            resourceInputs["outputPolicy"] = args?.outputPolicy;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Firewall.__pulumiType, name, resourceInputs, opts);
@@ -134,6 +141,10 @@ export interface FirewallState {
      * Enable or disable the firewall cluster wide.
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * The default forward policy (`ACCEPT`, `DROP`).
+     */
+    forwardPolicy?: pulumi.Input<string>;
     /**
      * The default input policy (`ACCEPT`, `DROP`, `REJECT`).
      */
@@ -160,6 +171,10 @@ export interface FirewallArgs {
      * Enable or disable the firewall cluster wide.
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * The default forward policy (`ACCEPT`, `DROP`).
+     */
+    forwardPolicy?: pulumi.Input<string>;
     /**
      * The default input policy (`ACCEPT`, `DROP`, `REJECT`).
      */

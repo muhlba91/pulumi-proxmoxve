@@ -261,14 +261,14 @@ public final class FirewallRulesRuleArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Rule type (`in`, `out`).
+     * Rule type (`in`, `out`, `forward`).
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Rule type (`in`, `out`).
+     * @return Rule type (`in`, `out`, `forward`).
      * 
      */
     public Optional<Output<String>> type() {
@@ -634,7 +634,7 @@ public final class FirewallRulesRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type Rule type (`in`, `out`).
+         * @param type Rule type (`in`, `out`, `forward`).
          * 
          * @return builder
          * 
@@ -645,7 +645,7 @@ public final class FirewallRulesRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type Rule type (`in`, `out`).
+         * @param type Rule type (`in`, `out`, `forward`).
          * 
          * @return builder
          * 

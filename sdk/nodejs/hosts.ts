@@ -50,28 +50,28 @@ export class Hosts extends pulumi.CustomResource {
     /**
      * The IP addresses.
      */
-    public /*out*/ readonly addresses!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly addresses: pulumi.Output<string[]>;
     /**
      * The SHA1 digest.
      */
-    public /*out*/ readonly digest!: pulumi.Output<string>;
+    declare public /*out*/ readonly digest: pulumi.Output<string>;
     /**
      * The host entries (conversion of `addresses` and `hostnames` into
      * objects).
      */
-    public /*out*/ readonly entries!: pulumi.Output<outputs.HostsEntry[]>;
+    declare public /*out*/ readonly entries: pulumi.Output<outputs.HostsEntry[]>;
     /**
      * A host entry (multiple blocks supported).
      */
-    public readonly entry!: pulumi.Output<outputs.HostsEntry[]>;
+    declare public readonly entry: pulumi.Output<outputs.HostsEntry[]>;
     /**
      * The hostnames associated with each of the IP addresses.
      */
-    public /*out*/ readonly hostnames!: pulumi.Output<string[][]>;
+    declare public /*out*/ readonly hostnames: pulumi.Output<string[][]>;
     /**
      * A node name.
      */
-    public readonly nodeName!: pulumi.Output<string>;
+    declare public readonly nodeName: pulumi.Output<string>;
 
     /**
      * Create a Hosts resource with the given unique name, arguments, and options.
@@ -86,22 +86,22 @@ export class Hosts extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HostsState | undefined;
-            resourceInputs["addresses"] = state ? state.addresses : undefined;
-            resourceInputs["digest"] = state ? state.digest : undefined;
-            resourceInputs["entries"] = state ? state.entries : undefined;
-            resourceInputs["entry"] = state ? state.entry : undefined;
-            resourceInputs["hostnames"] = state ? state.hostnames : undefined;
-            resourceInputs["nodeName"] = state ? state.nodeName : undefined;
+            resourceInputs["addresses"] = state?.addresses;
+            resourceInputs["digest"] = state?.digest;
+            resourceInputs["entries"] = state?.entries;
+            resourceInputs["entry"] = state?.entry;
+            resourceInputs["hostnames"] = state?.hostnames;
+            resourceInputs["nodeName"] = state?.nodeName;
         } else {
             const args = argsOrState as HostsArgs | undefined;
-            if ((!args || args.entry === undefined) && !opts.urn) {
+            if (args?.entry === undefined && !opts.urn) {
                 throw new Error("Missing required property 'entry'");
             }
-            if ((!args || args.nodeName === undefined) && !opts.urn) {
+            if (args?.nodeName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodeName'");
             }
-            resourceInputs["entry"] = args ? args.entry : undefined;
-            resourceInputs["nodeName"] = args ? args.nodeName : undefined;
+            resourceInputs["entry"] = args?.entry;
+            resourceInputs["nodeName"] = args?.nodeName;
             resourceInputs["addresses"] = undefined /*out*/;
             resourceInputs["digest"] = undefined /*out*/;
             resourceInputs["entries"] = undefined /*out*/;

@@ -60,27 +60,27 @@ export class FirewallAlias extends pulumi.CustomResource {
     /**
      * Network/IP specification in CIDR format.
      */
-    public readonly cidr!: pulumi.Output<string>;
+    declare public readonly cidr: pulumi.Output<string>;
     /**
      * Alias comment.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * Container ID. Leave empty for cluster level aliases.
      */
-    public readonly containerId!: pulumi.Output<number | undefined>;
+    declare public readonly containerId: pulumi.Output<number | undefined>;
     /**
      * Alias name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Node name. Leave empty for cluster level aliases.
      */
-    public readonly nodeName!: pulumi.Output<string | undefined>;
+    declare public readonly nodeName: pulumi.Output<string | undefined>;
     /**
      * VM ID. Leave empty for cluster level aliases.
      */
-    public readonly vmId!: pulumi.Output<number | undefined>;
+    declare public readonly vmId: pulumi.Output<number | undefined>;
 
     /**
      * Create a FirewallAlias resource with the given unique name, arguments, and options.
@@ -95,23 +95,23 @@ export class FirewallAlias extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FirewallAliasState | undefined;
-            resourceInputs["cidr"] = state ? state.cidr : undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["containerId"] = state ? state.containerId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nodeName"] = state ? state.nodeName : undefined;
-            resourceInputs["vmId"] = state ? state.vmId : undefined;
+            resourceInputs["cidr"] = state?.cidr;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["containerId"] = state?.containerId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nodeName"] = state?.nodeName;
+            resourceInputs["vmId"] = state?.vmId;
         } else {
             const args = argsOrState as FirewallAliasArgs | undefined;
-            if ((!args || args.cidr === undefined) && !opts.urn) {
+            if (args?.cidr === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cidr'");
             }
-            resourceInputs["cidr"] = args ? args.cidr : undefined;
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["containerId"] = args ? args.containerId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nodeName"] = args ? args.nodeName : undefined;
-            resourceInputs["vmId"] = args ? args.vmId : undefined;
+            resourceInputs["cidr"] = args?.cidr;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["containerId"] = args?.containerId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nodeName"] = args?.nodeName;
+            resourceInputs["vmId"] = args?.vmId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FirewallAlias.__pulumiType, name, resourceInputs, opts);

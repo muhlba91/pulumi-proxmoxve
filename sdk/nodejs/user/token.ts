@@ -70,27 +70,27 @@ export class Token extends pulumi.CustomResource {
     /**
      * Comment for the token.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * Expiration date for the token.
      */
-    public readonly expirationDate!: pulumi.Output<string | undefined>;
+    declare public readonly expirationDate: pulumi.Output<string | undefined>;
     /**
      * Restrict API token privileges with separate ACLs (default), or give full privileges of corresponding user.
      */
-    public readonly privilegesSeparation!: pulumi.Output<boolean>;
+    declare public readonly privilegesSeparation: pulumi.Output<boolean>;
     /**
      * User-specific token identifier.
      */
-    public readonly tokenName!: pulumi.Output<string>;
+    declare public readonly tokenName: pulumi.Output<string>;
     /**
      * User identifier.
      */
-    public readonly userId!: pulumi.Output<string>;
+    declare public readonly userId: pulumi.Output<string>;
     /**
      * API token value used for authentication. It is populated only when creating a new token, and can't be retrieved at import.
      */
-    public /*out*/ readonly value!: pulumi.Output<string>;
+    declare public /*out*/ readonly value: pulumi.Output<string>;
 
     /**
      * Create a Token resource with the given unique name, arguments, and options.
@@ -105,25 +105,25 @@ export class Token extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TokenState | undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["expirationDate"] = state ? state.expirationDate : undefined;
-            resourceInputs["privilegesSeparation"] = state ? state.privilegesSeparation : undefined;
-            resourceInputs["tokenName"] = state ? state.tokenName : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["expirationDate"] = state?.expirationDate;
+            resourceInputs["privilegesSeparation"] = state?.privilegesSeparation;
+            resourceInputs["tokenName"] = state?.tokenName;
+            resourceInputs["userId"] = state?.userId;
+            resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as TokenArgs | undefined;
-            if ((!args || args.tokenName === undefined) && !opts.urn) {
+            if (args?.tokenName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tokenName'");
             }
-            if ((!args || args.userId === undefined) && !opts.urn) {
+            if (args?.userId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["expirationDate"] = args ? args.expirationDate : undefined;
-            resourceInputs["privilegesSeparation"] = args ? args.privilegesSeparation : undefined;
-            resourceInputs["tokenName"] = args ? args.tokenName : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["expirationDate"] = args?.expirationDate;
+            resourceInputs["privilegesSeparation"] = args?.privilegesSeparation;
+            resourceInputs["tokenName"] = args?.tokenName;
+            resourceInputs["userId"] = args?.userId;
             resourceInputs["value"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -74,7 +74,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Output<string?> Comment { get; private set; } = null!;
 
         /// <summary>
-        /// Container ID. Leave empty for cluster level aliases.
+        /// Container ID. Leave empty for cluster level ipsets.
         /// </summary>
         [Output("containerId")]
         public Output<int?> ContainerId { get; private set; } = null!;
@@ -86,13 +86,13 @@ namespace Pulumi.ProxmoxVE.Network
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Node name. Leave empty for cluster level aliases.
+        /// Node name. Leave empty for cluster level ipsets.
         /// </summary>
         [Output("nodeName")]
         public Output<string?> NodeName { get; private set; } = null!;
 
         /// <summary>
-        /// VM ID. Leave empty for cluster level aliases.
+        /// VM ID. Leave empty for cluster level ipsets.
         /// </summary>
         [Output("vmId")]
         public Output<int?> VmId { get; private set; } = null!;
@@ -163,7 +163,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Container ID. Leave empty for cluster level aliases.
+        /// Container ID. Leave empty for cluster level ipsets.
         /// </summary>
         [Input("containerId")]
         public Input<int>? ContainerId { get; set; }
@@ -175,13 +175,13 @@ namespace Pulumi.ProxmoxVE.Network
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Node name. Leave empty for cluster level aliases.
+        /// Node name. Leave empty for cluster level ipsets.
         /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
 
         /// <summary>
-        /// VM ID. Leave empty for cluster level aliases.
+        /// VM ID. Leave empty for cluster level ipsets.
         /// </summary>
         [Input("vmId")]
         public Input<int>? VmId { get; set; }
@@ -213,7 +213,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Container ID. Leave empty for cluster level aliases.
+        /// Container ID. Leave empty for cluster level ipsets.
         /// </summary>
         [Input("containerId")]
         public Input<int>? ContainerId { get; set; }
@@ -225,13 +225,13 @@ namespace Pulumi.ProxmoxVE.Network
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Node name. Leave empty for cluster level aliases.
+        /// Node name. Leave empty for cluster level ipsets.
         /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
 
         /// <summary>
-        /// VM ID. Leave empty for cluster level aliases.
+        /// VM ID. Leave empty for cluster level ipsets.
         /// </summary>
         [Input("vmId")]
         public Input<int>? VmId { get; set; }

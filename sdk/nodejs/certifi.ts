@@ -38,59 +38,59 @@ export class Certifi extends pulumi.CustomResource {
     /**
      * The PEM encoded certificate.
      */
-    public readonly certificate!: pulumi.Output<string>;
+    declare public readonly certificate: pulumi.Output<string>;
     /**
      * The PEM encoded certificate chain.
      */
-    public readonly certificateChain!: pulumi.Output<string | undefined>;
+    declare public readonly certificateChain: pulumi.Output<string | undefined>;
     /**
      * The expiration date (RFC 3339).
      */
-    public /*out*/ readonly expirationDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly expirationDate: pulumi.Output<string>;
     /**
      * The file name.
      */
-    public /*out*/ readonly fileName!: pulumi.Output<string>;
+    declare public /*out*/ readonly fileName: pulumi.Output<string>;
     /**
      * The issuer.
      */
-    public /*out*/ readonly issuer!: pulumi.Output<string>;
+    declare public /*out*/ readonly issuer: pulumi.Output<string>;
     /**
      * A node name.
      */
-    public readonly nodeName!: pulumi.Output<string>;
+    declare public readonly nodeName: pulumi.Output<string>;
     /**
      * Whether to overwrite an existing certificate
      */
-    public readonly overwrite!: pulumi.Output<boolean | undefined>;
+    declare public readonly overwrite: pulumi.Output<boolean | undefined>;
     /**
      * The PEM encoded private key.
      */
-    public readonly privateKey!: pulumi.Output<string>;
+    declare public readonly privateKey: pulumi.Output<string>;
     /**
      * The public key size.
      */
-    public /*out*/ readonly publicKeySize!: pulumi.Output<number>;
+    declare public /*out*/ readonly publicKeySize: pulumi.Output<number>;
     /**
      * The public key type.
      */
-    public /*out*/ readonly publicKeyType!: pulumi.Output<string>;
+    declare public /*out*/ readonly publicKeyType: pulumi.Output<string>;
     /**
      * The SSL fingerprint.
      */
-    public /*out*/ readonly sslFingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly sslFingerprint: pulumi.Output<string>;
     /**
      * The start date (RFC 3339).
      */
-    public /*out*/ readonly startDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly startDate: pulumi.Output<string>;
     /**
      * The subject.
      */
-    public /*out*/ readonly subject!: pulumi.Output<string>;
+    declare public /*out*/ readonly subject: pulumi.Output<string>;
     /**
      * The subject alternative names.
      */
-    public /*out*/ readonly subjectAlternativeNames!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly subjectAlternativeNames: pulumi.Output<string[]>;
 
     /**
      * Create a Certifi resource with the given unique name, arguments, and options.
@@ -105,35 +105,35 @@ export class Certifi extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CertifiState | undefined;
-            resourceInputs["certificate"] = state ? state.certificate : undefined;
-            resourceInputs["certificateChain"] = state ? state.certificateChain : undefined;
-            resourceInputs["expirationDate"] = state ? state.expirationDate : undefined;
-            resourceInputs["fileName"] = state ? state.fileName : undefined;
-            resourceInputs["issuer"] = state ? state.issuer : undefined;
-            resourceInputs["nodeName"] = state ? state.nodeName : undefined;
-            resourceInputs["overwrite"] = state ? state.overwrite : undefined;
-            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
-            resourceInputs["publicKeySize"] = state ? state.publicKeySize : undefined;
-            resourceInputs["publicKeyType"] = state ? state.publicKeyType : undefined;
-            resourceInputs["sslFingerprint"] = state ? state.sslFingerprint : undefined;
-            resourceInputs["startDate"] = state ? state.startDate : undefined;
-            resourceInputs["subject"] = state ? state.subject : undefined;
-            resourceInputs["subjectAlternativeNames"] = state ? state.subjectAlternativeNames : undefined;
+            resourceInputs["certificate"] = state?.certificate;
+            resourceInputs["certificateChain"] = state?.certificateChain;
+            resourceInputs["expirationDate"] = state?.expirationDate;
+            resourceInputs["fileName"] = state?.fileName;
+            resourceInputs["issuer"] = state?.issuer;
+            resourceInputs["nodeName"] = state?.nodeName;
+            resourceInputs["overwrite"] = state?.overwrite;
+            resourceInputs["privateKey"] = state?.privateKey;
+            resourceInputs["publicKeySize"] = state?.publicKeySize;
+            resourceInputs["publicKeyType"] = state?.publicKeyType;
+            resourceInputs["sslFingerprint"] = state?.sslFingerprint;
+            resourceInputs["startDate"] = state?.startDate;
+            resourceInputs["subject"] = state?.subject;
+            resourceInputs["subjectAlternativeNames"] = state?.subjectAlternativeNames;
         } else {
             const args = argsOrState as CertifiArgs | undefined;
-            if ((!args || args.certificate === undefined) && !opts.urn) {
+            if (args?.certificate === undefined && !opts.urn) {
                 throw new Error("Missing required property 'certificate'");
             }
-            if ((!args || args.nodeName === undefined) && !opts.urn) {
+            if (args?.nodeName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodeName'");
             }
-            if ((!args || args.privateKey === undefined) && !opts.urn) {
+            if (args?.privateKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'privateKey'");
             }
-            resourceInputs["certificate"] = args ? args.certificate : undefined;
-            resourceInputs["certificateChain"] = args ? args.certificateChain : undefined;
-            resourceInputs["nodeName"] = args ? args.nodeName : undefined;
-            resourceInputs["overwrite"] = args ? args.overwrite : undefined;
+            resourceInputs["certificate"] = args?.certificate;
+            resourceInputs["certificateChain"] = args?.certificateChain;
+            resourceInputs["nodeName"] = args?.nodeName;
+            resourceInputs["overwrite"] = args?.overwrite;
             resourceInputs["privateKey"] = args?.privateKey ? pulumi.secret(args.privateKey) : undefined;
             resourceInputs["expirationDate"] = undefined /*out*/;
             resourceInputs["fileName"] = undefined /*out*/;

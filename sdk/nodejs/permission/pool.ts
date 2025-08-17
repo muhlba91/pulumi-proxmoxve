@@ -62,15 +62,15 @@ export class Pool extends pulumi.CustomResource {
     /**
      * The pool comment.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * The pool members.
      */
-    public /*out*/ readonly members!: pulumi.Output<outputs.Permission.PoolMember[]>;
+    declare public /*out*/ readonly members: pulumi.Output<outputs.Permission.PoolMember[]>;
     /**
      * The pool identifier.
      */
-    public readonly poolId!: pulumi.Output<string>;
+    declare public readonly poolId: pulumi.Output<string>;
 
     /**
      * Create a Pool resource with the given unique name, arguments, and options.
@@ -85,16 +85,16 @@ export class Pool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PoolState | undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["members"] = state ? state.members : undefined;
-            resourceInputs["poolId"] = state ? state.poolId : undefined;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["members"] = state?.members;
+            resourceInputs["poolId"] = state?.poolId;
         } else {
             const args = argsOrState as PoolArgs | undefined;
-            if ((!args || args.poolId === undefined) && !opts.urn) {
+            if (args?.poolId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'poolId'");
             }
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["poolId"] = args ? args.poolId : undefined;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["poolId"] = args?.poolId;
             resourceInputs["members"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -71,27 +71,27 @@ export class FirewallIPSet extends pulumi.CustomResource {
     /**
      * IP/CIDR block (multiple blocks supported).
      */
-    public readonly cidrs!: pulumi.Output<outputs.Network.FirewallIPSetCidr[] | undefined>;
+    declare public readonly cidrs: pulumi.Output<outputs.Network.FirewallIPSetCidr[] | undefined>;
     /**
      * IPSet comment.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
-     * Container ID. Leave empty for cluster level aliases.
+     * Container ID. Leave empty for cluster level ipsets.
      */
-    public readonly containerId!: pulumi.Output<number | undefined>;
+    declare public readonly containerId: pulumi.Output<number | undefined>;
     /**
      * IPSet name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
-     * Node name. Leave empty for cluster level aliases.
+     * Node name. Leave empty for cluster level ipsets.
      */
-    public readonly nodeName!: pulumi.Output<string | undefined>;
+    declare public readonly nodeName: pulumi.Output<string | undefined>;
     /**
-     * VM ID. Leave empty for cluster level aliases.
+     * VM ID. Leave empty for cluster level ipsets.
      */
-    public readonly vmId!: pulumi.Output<number | undefined>;
+    declare public readonly vmId: pulumi.Output<number | undefined>;
 
     /**
      * Create a FirewallIPSet resource with the given unique name, arguments, and options.
@@ -106,20 +106,20 @@ export class FirewallIPSet extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FirewallIPSetState | undefined;
-            resourceInputs["cidrs"] = state ? state.cidrs : undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["containerId"] = state ? state.containerId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nodeName"] = state ? state.nodeName : undefined;
-            resourceInputs["vmId"] = state ? state.vmId : undefined;
+            resourceInputs["cidrs"] = state?.cidrs;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["containerId"] = state?.containerId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nodeName"] = state?.nodeName;
+            resourceInputs["vmId"] = state?.vmId;
         } else {
             const args = argsOrState as FirewallIPSetArgs | undefined;
-            resourceInputs["cidrs"] = args ? args.cidrs : undefined;
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["containerId"] = args ? args.containerId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nodeName"] = args ? args.nodeName : undefined;
-            resourceInputs["vmId"] = args ? args.vmId : undefined;
+            resourceInputs["cidrs"] = args?.cidrs;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["containerId"] = args?.containerId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nodeName"] = args?.nodeName;
+            resourceInputs["vmId"] = args?.vmId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FirewallIPSet.__pulumiType, name, resourceInputs, opts);
@@ -139,7 +139,7 @@ export interface FirewallIPSetState {
      */
     comment?: pulumi.Input<string>;
     /**
-     * Container ID. Leave empty for cluster level aliases.
+     * Container ID. Leave empty for cluster level ipsets.
      */
     containerId?: pulumi.Input<number>;
     /**
@@ -147,11 +147,11 @@ export interface FirewallIPSetState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Node name. Leave empty for cluster level aliases.
+     * Node name. Leave empty for cluster level ipsets.
      */
     nodeName?: pulumi.Input<string>;
     /**
-     * VM ID. Leave empty for cluster level aliases.
+     * VM ID. Leave empty for cluster level ipsets.
      */
     vmId?: pulumi.Input<number>;
 }
@@ -169,7 +169,7 @@ export interface FirewallIPSetArgs {
      */
     comment?: pulumi.Input<string>;
     /**
-     * Container ID. Leave empty for cluster level aliases.
+     * Container ID. Leave empty for cluster level ipsets.
      */
     containerId?: pulumi.Input<number>;
     /**
@@ -177,11 +177,11 @@ export interface FirewallIPSetArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Node name. Leave empty for cluster level aliases.
+     * Node name. Leave empty for cluster level ipsets.
      */
     nodeName?: pulumi.Input<string>;
     /**
-     * VM ID. Leave empty for cluster level aliases.
+     * VM ID. Leave empty for cluster level ipsets.
      */
     vmId?: pulumi.Input<number>;
 }
