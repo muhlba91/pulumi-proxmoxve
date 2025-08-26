@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         var operationsMonitoring = new Role("operationsMonitoring", RoleArgs.builder()
  *             .roleId("operations-monitoring")
- *             .privileges("VM.Monitor")
+ *             .privileges("VM.GuestAgent.Audit")
  *             .build());
  * 
  *         var operationsAutomation = new User("operationsAutomation", UserArgs.builder()

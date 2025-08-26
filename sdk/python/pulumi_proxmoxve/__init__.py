@@ -12,6 +12,7 @@ from .acme_dns_plugin import *
 from .certifi import *
 from .dns import *
 from .get_container import *
+from .get_containers import *
 from .get_node import *
 from .get_vm2 import *
 from .hosts import *

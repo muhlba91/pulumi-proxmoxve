@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * const operationsMonitoring = new proxmoxve.permission.Role("operationsMonitoring", {
  *     roleId: "operations-monitoring",
- *     privileges: ["VM.Monitor"],
+ *     privileges: ["VM.GuestAgent.Audit"],
  * });
  * const operationsAutomation = new proxmoxve.permission.User("operationsAutomation", {
  *     acls: [{

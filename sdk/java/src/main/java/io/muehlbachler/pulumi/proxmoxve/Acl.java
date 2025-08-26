@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  * 
  *         var operationsMonitoring = new Role("operationsMonitoring", RoleArgs.builder()
  *             .roleId("operations-monitoring")
- *             .privileges("VM.Monitor")
+ *             .privileges("VM.GuestAgent.Audit")
  *             .build());
  * 
  *         var operationsAutomationMonitoring = new Acl("operationsAutomationMonitoring", AclArgs.builder()

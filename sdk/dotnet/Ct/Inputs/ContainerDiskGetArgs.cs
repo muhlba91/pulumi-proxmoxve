@@ -13,11 +13,41 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
     public sealed class ContainerDiskGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Explicitly enable or disable ACL support
+        /// </summary>
+        [Input("acl")]
+        public Input<bool>? Acl { get; set; }
+
+        /// <summary>
         /// The identifier for the datastore to create the
         /// disk in (defaults to `local`).
         /// </summary>
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
+
+        [Input("mountOptions")]
+        private InputList<string>? _mountOptions;
+
+        /// <summary>
+        /// List of extra mount options.
+        /// </summary>
+        public InputList<string> MountOptions
+        {
+            get => _mountOptions ?? (_mountOptions = new InputList<string>());
+            set => _mountOptions = value;
+        }
+
+        /// <summary>
+        /// Enable user quotas for the container rootfs
+        /// </summary>
+        [Input("quota")]
+        public Input<bool>? Quota { get; set; }
+
+        /// <summary>
+        /// Will include this volume to a storage replica job
+        /// </summary>
+        [Input("replicate")]
+        public Input<bool>? Replicate { get; set; }
 
         /// <summary>
         /// The size of the root filesystem in gigabytes (defaults

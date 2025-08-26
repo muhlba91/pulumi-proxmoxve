@@ -14,10 +14,26 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
     public sealed class ContainerDisk
     {
         /// <summary>
+        /// Explicitly enable or disable ACL support
+        /// </summary>
+        public readonly bool? Acl;
+        /// <summary>
         /// The identifier for the datastore to create the
         /// disk in (defaults to `local`).
         /// </summary>
         public readonly string? DatastoreId;
+        /// <summary>
+        /// List of extra mount options.
+        /// </summary>
+        public readonly ImmutableArray<string> MountOptions;
+        /// <summary>
+        /// Enable user quotas for the container rootfs
+        /// </summary>
+        public readonly bool? Quota;
+        /// <summary>
+        /// Will include this volume to a storage replica job
+        /// </summary>
+        public readonly bool? Replicate;
         /// <summary>
         /// The size of the root filesystem in gigabytes (defaults
         /// to `4`). When set to 0 a directory or zfs/btrfs subvolume will be created.
@@ -27,11 +43,23 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
 
         [OutputConstructor]
         private ContainerDisk(
+            bool? acl,
+
             string? datastoreId,
+
+            ImmutableArray<string> mountOptions,
+
+            bool? quota,
+
+            bool? replicate,
 
             int? size)
         {
+            Acl = acl;
             DatastoreId = datastoreId;
+            MountOptions = mountOptions;
+            Quota = quota;
+            Replicate = replicate;
             Size = size;
         }
     }

@@ -5,8 +5,10 @@ package io.muehlbachler.pulumi.proxmoxve.CT.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,6 +17,21 @@ import javax.annotation.Nullable;
 public final class ContainerDiskArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ContainerDiskArgs Empty = new ContainerDiskArgs();
+
+    /**
+     * Explicitly enable or disable ACL support
+     * 
+     */
+    @Import(name="acl")
+    private @Nullable Output<Boolean> acl;
+
+    /**
+     * @return Explicitly enable or disable ACL support
+     * 
+     */
+    public Optional<Output<Boolean>> acl() {
+        return Optional.ofNullable(this.acl);
+    }
 
     /**
      * The identifier for the datastore to create the
@@ -31,6 +48,51 @@ public final class ContainerDiskArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> datastoreId() {
         return Optional.ofNullable(this.datastoreId);
+    }
+
+    /**
+     * List of extra mount options.
+     * 
+     */
+    @Import(name="mountOptions")
+    private @Nullable Output<List<String>> mountOptions;
+
+    /**
+     * @return List of extra mount options.
+     * 
+     */
+    public Optional<Output<List<String>>> mountOptions() {
+        return Optional.ofNullable(this.mountOptions);
+    }
+
+    /**
+     * Enable user quotas for the container rootfs
+     * 
+     */
+    @Import(name="quota")
+    private @Nullable Output<Boolean> quota;
+
+    /**
+     * @return Enable user quotas for the container rootfs
+     * 
+     */
+    public Optional<Output<Boolean>> quota() {
+        return Optional.ofNullable(this.quota);
+    }
+
+    /**
+     * Will include this volume to a storage replica job
+     * 
+     */
+    @Import(name="replicate")
+    private @Nullable Output<Boolean> replicate;
+
+    /**
+     * @return Will include this volume to a storage replica job
+     * 
+     */
+    public Optional<Output<Boolean>> replicate() {
+        return Optional.ofNullable(this.replicate);
     }
 
     /**
@@ -55,7 +117,11 @@ public final class ContainerDiskArgs extends com.pulumi.resources.ResourceArgs {
     private ContainerDiskArgs() {}
 
     private ContainerDiskArgs(ContainerDiskArgs $) {
+        this.acl = $.acl;
         this.datastoreId = $.datastoreId;
+        this.mountOptions = $.mountOptions;
+        this.quota = $.quota;
+        this.replicate = $.replicate;
         this.size = $.size;
     }
 
@@ -75,6 +141,27 @@ public final class ContainerDiskArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ContainerDiskArgs defaults) {
             $ = new ContainerDiskArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param acl Explicitly enable or disable ACL support
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acl(@Nullable Output<Boolean> acl) {
+            $.acl = acl;
+            return this;
+        }
+
+        /**
+         * @param acl Explicitly enable or disable ACL support
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acl(Boolean acl) {
+            return acl(Output.of(acl));
         }
 
         /**
@@ -98,6 +185,79 @@ public final class ContainerDiskArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder datastoreId(String datastoreId) {
             return datastoreId(Output.of(datastoreId));
+        }
+
+        /**
+         * @param mountOptions List of extra mount options.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mountOptions(@Nullable Output<List<String>> mountOptions) {
+            $.mountOptions = mountOptions;
+            return this;
+        }
+
+        /**
+         * @param mountOptions List of extra mount options.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mountOptions(List<String> mountOptions) {
+            return mountOptions(Output.of(mountOptions));
+        }
+
+        /**
+         * @param mountOptions List of extra mount options.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mountOptions(String... mountOptions) {
+            return mountOptions(List.of(mountOptions));
+        }
+
+        /**
+         * @param quota Enable user quotas for the container rootfs
+         * 
+         * @return builder
+         * 
+         */
+        public Builder quota(@Nullable Output<Boolean> quota) {
+            $.quota = quota;
+            return this;
+        }
+
+        /**
+         * @param quota Enable user quotas for the container rootfs
+         * 
+         * @return builder
+         * 
+         */
+        public Builder quota(Boolean quota) {
+            return quota(Output.of(quota));
+        }
+
+        /**
+         * @param replicate Will include this volume to a storage replica job
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicate(@Nullable Output<Boolean> replicate) {
+            $.replicate = replicate;
+            return this;
+        }
+
+        /**
+         * @param replicate Will include this volume to a storage replica job
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicate(Boolean replicate) {
+            return replicate(Output.of(replicate));
         }
 
         /**

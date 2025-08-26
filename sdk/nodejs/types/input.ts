@@ -5,6 +5,36 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface GetContainersFilter {
+    /**
+     * Name of the container attribute to filter on. One of [`name`, `template`, `status`, `nodeName`]
+     */
+    name: string;
+    /**
+     * Treat values as regex patterns
+     */
+    regex?: boolean;
+    /**
+     * List of values to pass the filter. Container's attribute should match at least one value in the list.
+     */
+    values: string[];
+}
+
+export interface GetContainersFilterArgs {
+    /**
+     * Name of the container attribute to filter on. One of [`name`, `template`, `status`, `nodeName`]
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Treat values as regex patterns
+     */
+    regex?: pulumi.Input<boolean>;
+    /**
+     * List of values to pass the filter. Container's attribute should match at least one value in the list.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface GetVm2Clone {
     /**
      * The ID of the VM to clone.
@@ -332,10 +362,26 @@ export namespace CT {
 
     export interface ContainerDisk {
         /**
+         * Explicitly enable or disable ACL support
+         */
+        acl?: pulumi.Input<boolean>;
+        /**
          * The identifier for the datastore to create the
          * disk in (defaults to `local`).
          */
         datastoreId?: pulumi.Input<string>;
+        /**
+         * List of extra mount options.
+         */
+        mountOptions?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Enable user quotas for the container rootfs
+         */
+        quota?: pulumi.Input<boolean>;
+        /**
+         * Will include this volume to a storage replica job
+         */
+        replicate?: pulumi.Input<boolean>;
         /**
          * The size of the root filesystem in gigabytes (defaults
          * to `4`). When set to 0 a directory or zfs/btrfs subvolume will be created.

@@ -83,7 +83,14 @@
                         "maxItemsOne": false
                     },
                     "disk": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "mount_options": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "features": {
                         "maxItemsOne": true,
@@ -635,6 +642,35 @@
                     }
                 }
             },
+            "proxmox_virtual_environment_containers": {
+                "current": "proxmoxve:index/getContainers:getContainers",
+                "majorVersion": 7,
+                "fields": {
+                    "containers": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "proxmox_virtual_environment_datastores": {
                 "current": "proxmoxve:Storage/getDatastores:getDatastores",
                 "majorVersion": 7,
@@ -1134,6 +1170,7 @@
             "proxmoxve:VM/getVirtualMachine:getVirtualMachine": 0,
             "proxmoxve:VM/getVirtualMachines:getVirtualMachines": 0,
             "proxmoxve:index/getContainer:getContainer": 0,
+            "proxmoxve:index/getContainers:getContainers": 0,
             "proxmoxve:index/getNode:getNode": 0,
             "proxmoxve:index/getVm2:getVm2": 1
         }

@@ -542,6 +542,266 @@ func (o ProviderSshNodeArrayOutput) Index(i pulumi.IntInput) ProviderSshNodeOutp
 	}).(ProviderSshNodeOutput)
 }
 
+type GetContainersContainer struct {
+	// The container name.
+	Name string `pulumi:"name"`
+	// The node name. All cluster nodes will be queried in case this is omitted
+	NodeName string `pulumi:"nodeName"`
+	// Status of the container
+	Status *string `pulumi:"status"`
+	// A list of tags to filter the containers. The container must have all
+	// the tags to be included in the result.
+	Tags []string `pulumi:"tags"`
+	// Is container a template (true) or a regular container (false)
+	Template *bool `pulumi:"template"`
+	// The container identifier.
+	VmId int `pulumi:"vmId"`
+}
+
+// GetContainersContainerInput is an input type that accepts GetContainersContainerArgs and GetContainersContainerOutput values.
+// You can construct a concrete instance of `GetContainersContainerInput` via:
+//
+//	GetContainersContainerArgs{...}
+type GetContainersContainerInput interface {
+	pulumi.Input
+
+	ToGetContainersContainerOutput() GetContainersContainerOutput
+	ToGetContainersContainerOutputWithContext(context.Context) GetContainersContainerOutput
+}
+
+type GetContainersContainerArgs struct {
+	// The container name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The node name. All cluster nodes will be queried in case this is omitted
+	NodeName pulumi.StringInput `pulumi:"nodeName"`
+	// Status of the container
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// A list of tags to filter the containers. The container must have all
+	// the tags to be included in the result.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// Is container a template (true) or a regular container (false)
+	Template pulumi.BoolPtrInput `pulumi:"template"`
+	// The container identifier.
+	VmId pulumi.IntInput `pulumi:"vmId"`
+}
+
+func (GetContainersContainerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetContainersContainer)(nil)).Elem()
+}
+
+func (i GetContainersContainerArgs) ToGetContainersContainerOutput() GetContainersContainerOutput {
+	return i.ToGetContainersContainerOutputWithContext(context.Background())
+}
+
+func (i GetContainersContainerArgs) ToGetContainersContainerOutputWithContext(ctx context.Context) GetContainersContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetContainersContainerOutput)
+}
+
+// GetContainersContainerArrayInput is an input type that accepts GetContainersContainerArray and GetContainersContainerArrayOutput values.
+// You can construct a concrete instance of `GetContainersContainerArrayInput` via:
+//
+//	GetContainersContainerArray{ GetContainersContainerArgs{...} }
+type GetContainersContainerArrayInput interface {
+	pulumi.Input
+
+	ToGetContainersContainerArrayOutput() GetContainersContainerArrayOutput
+	ToGetContainersContainerArrayOutputWithContext(context.Context) GetContainersContainerArrayOutput
+}
+
+type GetContainersContainerArray []GetContainersContainerInput
+
+func (GetContainersContainerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetContainersContainer)(nil)).Elem()
+}
+
+func (i GetContainersContainerArray) ToGetContainersContainerArrayOutput() GetContainersContainerArrayOutput {
+	return i.ToGetContainersContainerArrayOutputWithContext(context.Background())
+}
+
+func (i GetContainersContainerArray) ToGetContainersContainerArrayOutputWithContext(ctx context.Context) GetContainersContainerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetContainersContainerArrayOutput)
+}
+
+type GetContainersContainerOutput struct{ *pulumi.OutputState }
+
+func (GetContainersContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetContainersContainer)(nil)).Elem()
+}
+
+func (o GetContainersContainerOutput) ToGetContainersContainerOutput() GetContainersContainerOutput {
+	return o
+}
+
+func (o GetContainersContainerOutput) ToGetContainersContainerOutputWithContext(ctx context.Context) GetContainersContainerOutput {
+	return o
+}
+
+// The container name.
+func (o GetContainersContainerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetContainersContainer) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The node name. All cluster nodes will be queried in case this is omitted
+func (o GetContainersContainerOutput) NodeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetContainersContainer) string { return v.NodeName }).(pulumi.StringOutput)
+}
+
+// Status of the container
+func (o GetContainersContainerOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetContainersContainer) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// A list of tags to filter the containers. The container must have all
+// the tags to be included in the result.
+func (o GetContainersContainerOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetContainersContainer) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Is container a template (true) or a regular container (false)
+func (o GetContainersContainerOutput) Template() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetContainersContainer) *bool { return v.Template }).(pulumi.BoolPtrOutput)
+}
+
+// The container identifier.
+func (o GetContainersContainerOutput) VmId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetContainersContainer) int { return v.VmId }).(pulumi.IntOutput)
+}
+
+type GetContainersContainerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetContainersContainerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetContainersContainer)(nil)).Elem()
+}
+
+func (o GetContainersContainerArrayOutput) ToGetContainersContainerArrayOutput() GetContainersContainerArrayOutput {
+	return o
+}
+
+func (o GetContainersContainerArrayOutput) ToGetContainersContainerArrayOutputWithContext(ctx context.Context) GetContainersContainerArrayOutput {
+	return o
+}
+
+func (o GetContainersContainerArrayOutput) Index(i pulumi.IntInput) GetContainersContainerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetContainersContainer {
+		return vs[0].([]GetContainersContainer)[vs[1].(int)]
+	}).(GetContainersContainerOutput)
+}
+
+type GetContainersFilter struct {
+	// Name of the container attribute to filter on. One of [`name`, `template`, `status`, `nodeName`]
+	Name string `pulumi:"name"`
+	// Treat values as regex patterns
+	Regex *bool `pulumi:"regex"`
+	// List of values to pass the filter. Container's attribute should match at least one value in the list.
+	Values []string `pulumi:"values"`
+}
+
+// GetContainersFilterInput is an input type that accepts GetContainersFilterArgs and GetContainersFilterOutput values.
+// You can construct a concrete instance of `GetContainersFilterInput` via:
+//
+//	GetContainersFilterArgs{...}
+type GetContainersFilterInput interface {
+	pulumi.Input
+
+	ToGetContainersFilterOutput() GetContainersFilterOutput
+	ToGetContainersFilterOutputWithContext(context.Context) GetContainersFilterOutput
+}
+
+type GetContainersFilterArgs struct {
+	// Name of the container attribute to filter on. One of [`name`, `template`, `status`, `nodeName`]
+	Name pulumi.StringInput `pulumi:"name"`
+	// Treat values as regex patterns
+	Regex pulumi.BoolPtrInput `pulumi:"regex"`
+	// List of values to pass the filter. Container's attribute should match at least one value in the list.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetContainersFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetContainersFilter)(nil)).Elem()
+}
+
+func (i GetContainersFilterArgs) ToGetContainersFilterOutput() GetContainersFilterOutput {
+	return i.ToGetContainersFilterOutputWithContext(context.Background())
+}
+
+func (i GetContainersFilterArgs) ToGetContainersFilterOutputWithContext(ctx context.Context) GetContainersFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetContainersFilterOutput)
+}
+
+// GetContainersFilterArrayInput is an input type that accepts GetContainersFilterArray and GetContainersFilterArrayOutput values.
+// You can construct a concrete instance of `GetContainersFilterArrayInput` via:
+//
+//	GetContainersFilterArray{ GetContainersFilterArgs{...} }
+type GetContainersFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetContainersFilterArrayOutput() GetContainersFilterArrayOutput
+	ToGetContainersFilterArrayOutputWithContext(context.Context) GetContainersFilterArrayOutput
+}
+
+type GetContainersFilterArray []GetContainersFilterInput
+
+func (GetContainersFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetContainersFilter)(nil)).Elem()
+}
+
+func (i GetContainersFilterArray) ToGetContainersFilterArrayOutput() GetContainersFilterArrayOutput {
+	return i.ToGetContainersFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetContainersFilterArray) ToGetContainersFilterArrayOutputWithContext(ctx context.Context) GetContainersFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetContainersFilterArrayOutput)
+}
+
+type GetContainersFilterOutput struct{ *pulumi.OutputState }
+
+func (GetContainersFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetContainersFilter)(nil)).Elem()
+}
+
+func (o GetContainersFilterOutput) ToGetContainersFilterOutput() GetContainersFilterOutput {
+	return o
+}
+
+func (o GetContainersFilterOutput) ToGetContainersFilterOutputWithContext(ctx context.Context) GetContainersFilterOutput {
+	return o
+}
+
+// Name of the container attribute to filter on. One of [`name`, `template`, `status`, `nodeName`]
+func (o GetContainersFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetContainersFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Treat values as regex patterns
+func (o GetContainersFilterOutput) Regex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetContainersFilter) *bool { return v.Regex }).(pulumi.BoolPtrOutput)
+}
+
+// List of values to pass the filter. Container's attribute should match at least one value in the list.
+func (o GetContainersFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetContainersFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetContainersFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetContainersFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetContainersFilter)(nil)).Elem()
+}
+
+func (o GetContainersFilterArrayOutput) ToGetContainersFilterArrayOutput() GetContainersFilterArrayOutput {
+	return o
+}
+
+func (o GetContainersFilterArrayOutput) ToGetContainersFilterArrayOutputWithContext(ctx context.Context) GetContainersFilterArrayOutput {
+	return o
+}
+
+func (o GetContainersFilterArrayOutput) Index(i pulumi.IntInput) GetContainersFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetContainersFilter {
+		return vs[0].([]GetContainersFilter)[vs[1].(int)]
+	}).(GetContainersFilterOutput)
+}
+
 type GetVm2Clone struct {
 	// The ID of the VM to clone.
 	Id int `pulumi:"id"`
@@ -1500,6 +1760,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSshPtrInput)(nil)).Elem(), ProviderSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSshNodeInput)(nil)).Elem(), ProviderSshNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSshNodeArrayInput)(nil)).Elem(), ProviderSshNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainersContainerInput)(nil)).Elem(), GetContainersContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainersContainerArrayInput)(nil)).Elem(), GetContainersContainerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainersFilterInput)(nil)).Elem(), GetContainersFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainersFilterArrayInput)(nil)).Elem(), GetContainersFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2CloneInput)(nil)).Elem(), GetVm2CloneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2ClonePtrInput)(nil)).Elem(), GetVm2CloneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2CpuInput)(nil)).Elem(), GetVm2CpuArgs{})
@@ -1516,6 +1780,10 @@ func init() {
 	pulumi.RegisterOutputType(ProviderSshPtrOutput{})
 	pulumi.RegisterOutputType(ProviderSshNodeOutput{})
 	pulumi.RegisterOutputType(ProviderSshNodeArrayOutput{})
+	pulumi.RegisterOutputType(GetContainersContainerOutput{})
+	pulumi.RegisterOutputType(GetContainersContainerArrayOutput{})
+	pulumi.RegisterOutputType(GetContainersFilterOutput{})
+	pulumi.RegisterOutputType(GetContainersFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetVm2CloneOutput{})
 	pulumi.RegisterOutputType(GetVm2ClonePtrOutput{})
 	pulumi.RegisterOutputType(GetVm2CpuOutput{})

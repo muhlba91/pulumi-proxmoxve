@@ -11,11 +11,14 @@ import com.pulumi.deployment.InvokeOutputOptions;
 import io.muehlbachler.pulumi.proxmoxve.Utilities;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetContainerArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetContainerPlainArgs;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetContainersArgs;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetContainersPlainArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetNodeArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetNodePlainArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetVm2Args;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetVm2PlainArgs;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetContainerResult;
+import io.muehlbachler.pulumi.proxmoxve.outputs.GetContainersResult;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetNodeResult;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetVm2Result;
 import java.util.concurrent.CompletableFuture;
@@ -235,6 +238,489 @@ public final class ProxmoxveFunctions {
      */
     public static CompletableFuture<GetContainerResult> getContainerPlain(GetContainerPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("proxmoxve:index/getContainer:getContainer", TypeShape.of(GetContainerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about all containers in the Proxmox cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetContainersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuContainers = ProxmoxveFunctions.getContainers(GetContainersArgs.builder()
+     *             .tags("ubuntu")
+     *             .build());
+     * 
+     *         final var ubuntuTemplates = ProxmoxveFunctions.getContainers(GetContainersArgs.builder()
+     *             .filters(            
+     *                 GetContainersFilterArgs.builder()
+     *                     .name("template")
+     *                     .values("true")
+     *                     .build(),
+     *                 GetContainersFilterArgs.builder()
+     *                     .name("status")
+     *                     .values("stopped")
+     *                     .build(),
+     *                 GetContainersFilterArgs.builder()
+     *                     .name("name")
+     *                     .regex(true)
+     *                     .values("^ubuntu-20.*$")
+     *                     .build(),
+     *                 GetContainersFilterArgs.builder()
+     *                     .name("node_name")
+     *                     .regex(true)
+     *                     .values(                    
+     *                         "node_us_[1-3]",
+     *                         "node_eu_[1-3]")
+     *                     .build())
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetContainersResult> getContainers() {
+        return getContainers(GetContainersArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about all containers in the Proxmox cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetContainersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuContainers = ProxmoxveFunctions.getContainers(GetContainersArgs.builder()
+     *             .tags("ubuntu")
+     *             .build());
+     * 
+     *         final var ubuntuTemplates = ProxmoxveFunctions.getContainers(GetContainersArgs.builder()
+     *             .filters(            
+     *                 GetContainersFilterArgs.builder()
+     *                     .name("template")
+     *                     .values("true")
+     *                     .build(),
+     *                 GetContainersFilterArgs.builder()
+     *                     .name("status")
+     *                     .values("stopped")
+     *                     .build(),
+     *                 GetContainersFilterArgs.builder()
+     *                     .name("name")
+     *                     .regex(true)
+     *                     .values("^ubuntu-20.*$")
+     *                     .build(),
+     *                 GetContainersFilterArgs.builder()
+     *                     .name("node_name")
+     *                     .regex(true)
+     *                     .values(                    
+     *                         "node_us_[1-3]",
+     *                         "node_eu_[1-3]")
+     *                     .build())
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetContainersResult> getContainersPlain() {
+        return getContainersPlain(GetContainersPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about all containers in the Proxmox cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetContainersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuContainers = ProxmoxveFunctions.getContainers(GetContainersArgs.builder()
+     *             .tags("ubuntu")
+     *             .build());
+     * 
+     *         final var ubuntuTemplates = ProxmoxveFunctions.getContainers(GetContainersArgs.builder()
+     *             .filters(            
+     *                 GetContainersFilterArgs.builder()
+     *                     .name("template")
+     *                     .values("true")
+     *                     .build(),
+     *                 GetContainersFilterArgs.builder()
+     *                     .name("status")
+     *                     .values("stopped")
+     *                     .build(),
+     *                 GetContainersFilterArgs.builder()
+     *                     .name("name")
+     *                     .regex(true)
+     *                     .values("^ubuntu-20.*$")
+     *                     .build(),
+     *                 GetContainersFilterArgs.builder()
+     *                     .name("node_name")
+     *                     .regex(true)
+     *                     .values(                    
+     *                         "node_us_[1-3]",
+     *                         "node_eu_[1-3]")
+     *                     .build())
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetContainersResult> getContainers(GetContainersArgs args) {
+        return getContainers(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about all containers in the Proxmox cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetContainersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuContainers = ProxmoxveFunctions.getContainers(GetContainersArgs.builder()
+     *             .tags("ubuntu")
+     *             .build());
+     * 
+     *         final var ubuntuTemplates = ProxmoxveFunctions.getContainers(GetContainersArgs.builder()
+     *             .filters(            
+     *                 GetContainersFilterArgs.builder()
+     *                     .name("template")
+     *                     .values("true")
+     *                     .build(),
+     *                 GetContainersFilterArgs.builder()
+     *                     .name("status")
+     *                     .values("stopped")
+     *                     .build(),
+     *                 GetContainersFilterArgs.builder()
+     *                     .name("name")
+     *                     .regex(true)
+     *                     .values("^ubuntu-20.*$")
+     *                     .build(),
+     *                 GetContainersFilterArgs.builder()
+     *                     .name("node_name")
+     *                     .regex(true)
+     *                     .values(                    
+     *                         "node_us_[1-3]",
+     *                         "node_eu_[1-3]")
+     *                     .build())
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetContainersResult> getContainersPlain(GetContainersPlainArgs args) {
+        return getContainersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about all containers in the Proxmox cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetContainersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuContainers = ProxmoxveFunctions.getContainers(GetContainersArgs.builder()
+     *             .tags("ubuntu")
+     *             .build());
+     * 
+     *         final var ubuntuTemplates = ProxmoxveFunctions.getContainers(GetContainersArgs.builder()
+     *             .filters(            
+     *                 GetContainersFilterArgs.builder()
+     *                     .name("template")
+     *                     .values("true")
+     *                     .build(),
+     *                 GetContainersFilterArgs.builder()
+     *                     .name("status")
+     *                     .values("stopped")
+     *                     .build(),
+     *                 GetContainersFilterArgs.builder()
+     *                     .name("name")
+     *                     .regex(true)
+     *                     .values("^ubuntu-20.*$")
+     *                     .build(),
+     *                 GetContainersFilterArgs.builder()
+     *                     .name("node_name")
+     *                     .regex(true)
+     *                     .values(                    
+     *                         "node_us_[1-3]",
+     *                         "node_eu_[1-3]")
+     *                     .build())
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetContainersResult> getContainers(GetContainersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getContainers:getContainers", TypeShape.of(GetContainersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about all containers in the Proxmox cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetContainersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuContainers = ProxmoxveFunctions.getContainers(GetContainersArgs.builder()
+     *             .tags("ubuntu")
+     *             .build());
+     * 
+     *         final var ubuntuTemplates = ProxmoxveFunctions.getContainers(GetContainersArgs.builder()
+     *             .filters(            
+     *                 GetContainersFilterArgs.builder()
+     *                     .name("template")
+     *                     .values("true")
+     *                     .build(),
+     *                 GetContainersFilterArgs.builder()
+     *                     .name("status")
+     *                     .values("stopped")
+     *                     .build(),
+     *                 GetContainersFilterArgs.builder()
+     *                     .name("name")
+     *                     .regex(true)
+     *                     .values("^ubuntu-20.*$")
+     *                     .build(),
+     *                 GetContainersFilterArgs.builder()
+     *                     .name("node_name")
+     *                     .regex(true)
+     *                     .values(                    
+     *                         "node_us_[1-3]",
+     *                         "node_eu_[1-3]")
+     *                     .build())
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetContainersResult> getContainers(GetContainersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getContainers:getContainers", TypeShape.of(GetContainersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about all containers in the Proxmox cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetContainersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuContainers = ProxmoxveFunctions.getContainers(GetContainersArgs.builder()
+     *             .tags("ubuntu")
+     *             .build());
+     * 
+     *         final var ubuntuTemplates = ProxmoxveFunctions.getContainers(GetContainersArgs.builder()
+     *             .filters(            
+     *                 GetContainersFilterArgs.builder()
+     *                     .name("template")
+     *                     .values("true")
+     *                     .build(),
+     *                 GetContainersFilterArgs.builder()
+     *                     .name("status")
+     *                     .values("stopped")
+     *                     .build(),
+     *                 GetContainersFilterArgs.builder()
+     *                     .name("name")
+     *                     .regex(true)
+     *                     .values("^ubuntu-20.*$")
+     *                     .build(),
+     *                 GetContainersFilterArgs.builder()
+     *                     .name("node_name")
+     *                     .regex(true)
+     *                     .values(                    
+     *                         "node_us_[1-3]",
+     *                         "node_eu_[1-3]")
+     *                     .build())
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetContainersResult> getContainersPlain(GetContainersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("proxmoxve:index/getContainers:getContainers", TypeShape.of(GetContainersResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves information about node.

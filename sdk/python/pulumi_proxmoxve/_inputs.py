@@ -21,6 +21,8 @@ __all__ = [
     'ProviderSshArgsDict',
     'ProviderSshNodeArgs',
     'ProviderSshNodeArgsDict',
+    'GetContainersFilterArgs',
+    'GetContainersFilterArgsDict',
     'GetVm2CloneArgs',
     'GetVm2CloneArgsDict',
     'GetVm2CpuArgs',
@@ -365,6 +367,76 @@ class ProviderSshNodeArgs:
     @port.setter
     def port(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "port", value)
+
+
+if not MYPY:
+    class GetContainersFilterArgsDict(TypedDict):
+        name: _builtins.str
+        """
+        Name of the container attribute to filter on. One of [`name`, `template`, `status`, `node_name`]
+        """
+        values: Sequence[_builtins.str]
+        """
+        List of values to pass the filter. Container's attribute should match at least one value in the list.
+        """
+        regex: NotRequired[_builtins.bool]
+        """
+        Treat values as regex patterns
+        """
+elif False:
+    GetContainersFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetContainersFilterArgs:
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 regex: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str name: Name of the container attribute to filter on. One of [`name`, `template`, `status`, `node_name`]
+        :param Sequence[_builtins.str] values: List of values to pass the filter. Container's attribute should match at least one value in the list.
+        :param _builtins.bool regex: Treat values as regex patterns
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if regex is not None:
+            pulumi.set(__self__, "regex", regex)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the container attribute to filter on. One of [`name`, `template`, `status`, `node_name`]
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: _builtins.str):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        List of values to pass the filter. Container's attribute should match at least one value in the list.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "values", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def regex(self) -> Optional[_builtins.bool]:
+        """
+        Treat values as regex patterns
+        """
+        return pulumi.get(self, "regex")
+
+    @regex.setter
+    def regex(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "regex", value)
 
 
 if not MYPY:

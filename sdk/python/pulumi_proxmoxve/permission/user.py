@@ -414,7 +414,7 @@ class User(pulumi.CustomResource):
 
         operations_monitoring = proxmoxve.permission.Role("operationsMonitoring",
             role_id="operations-monitoring",
-            privileges=["VM.Monitor"])
+            privileges=["VM.GuestAgent.Audit"])
         operations_automation = proxmoxve.permission.User("operationsAutomation",
             acls=[{
                 "path": "/vms/1234",
@@ -467,7 +467,7 @@ class User(pulumi.CustomResource):
 
         operations_monitoring = proxmoxve.permission.Role("operationsMonitoring",
             role_id="operations-monitoring",
-            privileges=["VM.Monitor"])
+            privileges=["VM.GuestAgent.Audit"])
         operations_automation = proxmoxve.permission.User("operationsAutomation",
             acls=[{
                 "path": "/vms/1234",

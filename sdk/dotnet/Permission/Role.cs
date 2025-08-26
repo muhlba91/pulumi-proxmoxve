@@ -26,7 +26,7 @@ namespace Pulumi.ProxmoxVE.Permission
     ///     {
     ///         Privileges = new[]
     ///         {
-    ///             "VM.Monitor",
+    ///             "VM.GuestAgent.Audit",
     ///         },
     ///         RoleId = "operations-monitoring",
     ///     });

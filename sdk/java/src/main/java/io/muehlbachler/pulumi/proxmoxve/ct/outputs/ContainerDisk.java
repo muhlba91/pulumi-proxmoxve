@@ -4,8 +4,10 @@
 package io.muehlbachler.pulumi.proxmoxve.CT.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -13,11 +15,31 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ContainerDisk {
     /**
+     * @return Explicitly enable or disable ACL support
+     * 
+     */
+    private @Nullable Boolean acl;
+    /**
      * @return The identifier for the datastore to create the
      * disk in (defaults to `local`).
      * 
      */
     private @Nullable String datastoreId;
+    /**
+     * @return List of extra mount options.
+     * 
+     */
+    private @Nullable List<String> mountOptions;
+    /**
+     * @return Enable user quotas for the container rootfs
+     * 
+     */
+    private @Nullable Boolean quota;
+    /**
+     * @return Will include this volume to a storage replica job
+     * 
+     */
+    private @Nullable Boolean replicate;
     /**
      * @return The size of the root filesystem in gigabytes (defaults
      * to `4`). When set to 0 a directory or zfs/btrfs subvolume will be created.
@@ -28,12 +50,40 @@ public final class ContainerDisk {
 
     private ContainerDisk() {}
     /**
+     * @return Explicitly enable or disable ACL support
+     * 
+     */
+    public Optional<Boolean> acl() {
+        return Optional.ofNullable(this.acl);
+    }
+    /**
      * @return The identifier for the datastore to create the
      * disk in (defaults to `local`).
      * 
      */
     public Optional<String> datastoreId() {
         return Optional.ofNullable(this.datastoreId);
+    }
+    /**
+     * @return List of extra mount options.
+     * 
+     */
+    public List<String> mountOptions() {
+        return this.mountOptions == null ? List.of() : this.mountOptions;
+    }
+    /**
+     * @return Enable user quotas for the container rootfs
+     * 
+     */
+    public Optional<Boolean> quota() {
+        return Optional.ofNullable(this.quota);
+    }
+    /**
+     * @return Will include this volume to a storage replica job
+     * 
+     */
+    public Optional<Boolean> replicate() {
+        return Optional.ofNullable(this.replicate);
     }
     /**
      * @return The size of the root filesystem in gigabytes (defaults
@@ -54,19 +104,54 @@ public final class ContainerDisk {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean acl;
         private @Nullable String datastoreId;
+        private @Nullable List<String> mountOptions;
+        private @Nullable Boolean quota;
+        private @Nullable Boolean replicate;
         private @Nullable Integer size;
         public Builder() {}
         public Builder(ContainerDisk defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.acl = defaults.acl;
     	      this.datastoreId = defaults.datastoreId;
+    	      this.mountOptions = defaults.mountOptions;
+    	      this.quota = defaults.quota;
+    	      this.replicate = defaults.replicate;
     	      this.size = defaults.size;
         }
 
         @CustomType.Setter
+        public Builder acl(@Nullable Boolean acl) {
+
+            this.acl = acl;
+            return this;
+        }
+        @CustomType.Setter
         public Builder datastoreId(@Nullable String datastoreId) {
 
             this.datastoreId = datastoreId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mountOptions(@Nullable List<String> mountOptions) {
+
+            this.mountOptions = mountOptions;
+            return this;
+        }
+        public Builder mountOptions(String... mountOptions) {
+            return mountOptions(List.of(mountOptions));
+        }
+        @CustomType.Setter
+        public Builder quota(@Nullable Boolean quota) {
+
+            this.quota = quota;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder replicate(@Nullable Boolean replicate) {
+
+            this.replicate = replicate;
             return this;
         }
         @CustomType.Setter
@@ -77,7 +162,11 @@ public final class ContainerDisk {
         }
         public ContainerDisk build() {
             final var _resultValue = new ContainerDisk();
+            _resultValue.acl = acl;
             _resultValue.datastoreId = datastoreId;
+            _resultValue.mountOptions = mountOptions;
+            _resultValue.quota = quota;
+            _resultValue.replicate = replicate;
             _resultValue.size = size;
             return _resultValue;
         }

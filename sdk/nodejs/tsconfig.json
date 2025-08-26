@@ -39,6 +39,7 @@
         "download/file.ts",
         "download/index.ts",
         "getContainer.ts",
+        "getContainers.ts",
         "getNode.ts",
         "getVm2.ts",
         "ha/getHAGroup.ts",

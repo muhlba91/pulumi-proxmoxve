@@ -253,7 +253,7 @@ class Acl(pulumi.CustomResource):
             user_id="operations-automation@pve")
         operations_monitoring = proxmoxve.permission.Role("operationsMonitoring",
             role_id="operations-monitoring",
-            privileges=["VM.Monitor"])
+            privileges=["VM.GuestAgent.Audit"])
         operations_automation_monitoring = proxmoxve.Acl("operationsAutomationMonitoring",
             user_id=operations_automation.user_id,
             role_id=operations_monitoring.role_id,
@@ -304,7 +304,7 @@ class Acl(pulumi.CustomResource):
             user_id="operations-automation@pve")
         operations_monitoring = proxmoxve.permission.Role("operationsMonitoring",
             role_id="operations-monitoring",
-            privileges=["VM.Monitor"])
+            privileges=["VM.GuestAgent.Audit"])
         operations_automation_monitoring = proxmoxve.Acl("operationsAutomationMonitoring",
             user_id=operations_automation.user_id,
             role_id=operations_monitoring.role_id,

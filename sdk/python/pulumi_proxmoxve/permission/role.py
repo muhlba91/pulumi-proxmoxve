@@ -113,7 +113,7 @@ class Role(pulumi.CustomResource):
         import pulumi_proxmoxve as proxmoxve
 
         operations_monitoring = proxmoxve.permission.Role("operationsMonitoring",
-            privileges=["VM.Monitor"],
+            privileges=["VM.GuestAgent.Audit"],
             role_id="operations-monitoring")
         ```
 
@@ -148,7 +148,7 @@ class Role(pulumi.CustomResource):
         import pulumi_proxmoxve as proxmoxve
 
         operations_monitoring = proxmoxve.permission.Role("operationsMonitoring",
-            privileges=["VM.Monitor"],
+            privileges=["VM.GuestAgent.Audit"],
             role_id="operations-monitoring")
         ```
 

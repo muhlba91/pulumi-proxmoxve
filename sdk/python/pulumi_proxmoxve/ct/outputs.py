@@ -297,6 +297,8 @@ class ContainerDisk(dict):
         suggest = None
         if key == "datastoreId":
             suggest = "datastore_id"
+        elif key == "mountOptions":
+            suggest = "mount_options"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ContainerDisk. Access the value via the '{suggest}' property getter instead.")
@@ -310,19 +312,43 @@ class ContainerDisk(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 acl: Optional[_builtins.bool] = None,
                  datastore_id: Optional[_builtins.str] = None,
+                 mount_options: Optional[Sequence[_builtins.str]] = None,
+                 quota: Optional[_builtins.bool] = None,
+                 replicate: Optional[_builtins.bool] = None,
                  size: Optional[_builtins.int] = None):
         """
+        :param _builtins.bool acl: Explicitly enable or disable ACL support
         :param _builtins.str datastore_id: The identifier for the datastore to create the
                disk in (defaults to `local`).
+        :param Sequence[_builtins.str] mount_options: List of extra mount options.
+        :param _builtins.bool quota: Enable user quotas for the container rootfs
+        :param _builtins.bool replicate: Will include this volume to a storage replica job
         :param _builtins.int size: The size of the root filesystem in gigabytes (defaults
                to `4`). When set to 0 a directory or zfs/btrfs subvolume will be created.
                Requires `datastore_id` to be set.
         """
+        if acl is not None:
+            pulumi.set(__self__, "acl", acl)
         if datastore_id is not None:
             pulumi.set(__self__, "datastore_id", datastore_id)
+        if mount_options is not None:
+            pulumi.set(__self__, "mount_options", mount_options)
+        if quota is not None:
+            pulumi.set(__self__, "quota", quota)
+        if replicate is not None:
+            pulumi.set(__self__, "replicate", replicate)
         if size is not None:
             pulumi.set(__self__, "size", size)
+
+    @_builtins.property
+    @pulumi.getter
+    def acl(self) -> Optional[_builtins.bool]:
+        """
+        Explicitly enable or disable ACL support
+        """
+        return pulumi.get(self, "acl")
 
     @_builtins.property
     @pulumi.getter(name="datastoreId")
@@ -332,6 +358,30 @@ class ContainerDisk(dict):
         disk in (defaults to `local`).
         """
         return pulumi.get(self, "datastore_id")
+
+    @_builtins.property
+    @pulumi.getter(name="mountOptions")
+    def mount_options(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of extra mount options.
+        """
+        return pulumi.get(self, "mount_options")
+
+    @_builtins.property
+    @pulumi.getter
+    def quota(self) -> Optional[_builtins.bool]:
+        """
+        Enable user quotas for the container rootfs
+        """
+        return pulumi.get(self, "quota")
+
+    @_builtins.property
+    @pulumi.getter
+    def replicate(self) -> Optional[_builtins.bool]:
+        """
+        Will include this volume to a storage replica job
+        """
+        return pulumi.get(self, "replicate")
 
     @_builtins.property
     @pulumi.getter

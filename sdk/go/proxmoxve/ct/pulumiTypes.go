@@ -683,9 +683,17 @@ func (o ContainerDevicePassthroughArrayOutput) Index(i pulumi.IntInput) Containe
 }
 
 type ContainerDisk struct {
+	// Explicitly enable or disable ACL support
+	Acl *bool `pulumi:"acl"`
 	// The identifier for the datastore to create the
 	// disk in (defaults to `local`).
 	DatastoreId *string `pulumi:"datastoreId"`
+	// List of extra mount options.
+	MountOptions []string `pulumi:"mountOptions"`
+	// Enable user quotas for the container rootfs
+	Quota *bool `pulumi:"quota"`
+	// Will include this volume to a storage replica job
+	Replicate *bool `pulumi:"replicate"`
 	// The size of the root filesystem in gigabytes (defaults
 	// to `4`). When set to 0 a directory or zfs/btrfs subvolume will be created.
 	// Requires `datastoreId` to be set.
@@ -704,9 +712,17 @@ type ContainerDiskInput interface {
 }
 
 type ContainerDiskArgs struct {
+	// Explicitly enable or disable ACL support
+	Acl pulumi.BoolPtrInput `pulumi:"acl"`
 	// The identifier for the datastore to create the
 	// disk in (defaults to `local`).
 	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
+	// List of extra mount options.
+	MountOptions pulumi.StringArrayInput `pulumi:"mountOptions"`
+	// Enable user quotas for the container rootfs
+	Quota pulumi.BoolPtrInput `pulumi:"quota"`
+	// Will include this volume to a storage replica job
+	Replicate pulumi.BoolPtrInput `pulumi:"replicate"`
 	// The size of the root filesystem in gigabytes (defaults
 	// to `4`). When set to 0 a directory or zfs/btrfs subvolume will be created.
 	// Requires `datastoreId` to be set.
@@ -790,10 +806,30 @@ func (o ContainerDiskOutput) ToContainerDiskPtrOutputWithContext(ctx context.Con
 	}).(ContainerDiskPtrOutput)
 }
 
+// Explicitly enable or disable ACL support
+func (o ContainerDiskOutput) Acl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerDisk) *bool { return v.Acl }).(pulumi.BoolPtrOutput)
+}
+
 // The identifier for the datastore to create the
 // disk in (defaults to `local`).
 func (o ContainerDiskOutput) DatastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerDisk) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
+}
+
+// List of extra mount options.
+func (o ContainerDiskOutput) MountOptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ContainerDisk) []string { return v.MountOptions }).(pulumi.StringArrayOutput)
+}
+
+// Enable user quotas for the container rootfs
+func (o ContainerDiskOutput) Quota() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerDisk) *bool { return v.Quota }).(pulumi.BoolPtrOutput)
+}
+
+// Will include this volume to a storage replica job
+func (o ContainerDiskOutput) Replicate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerDisk) *bool { return v.Replicate }).(pulumi.BoolPtrOutput)
 }
 
 // The size of the root filesystem in gigabytes (defaults
@@ -827,6 +863,16 @@ func (o ContainerDiskPtrOutput) Elem() ContainerDiskOutput {
 	}).(ContainerDiskOutput)
 }
 
+// Explicitly enable or disable ACL support
+func (o ContainerDiskPtrOutput) Acl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ContainerDisk) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Acl
+	}).(pulumi.BoolPtrOutput)
+}
+
 // The identifier for the datastore to create the
 // disk in (defaults to `local`).
 func (o ContainerDiskPtrOutput) DatastoreId() pulumi.StringPtrOutput {
@@ -836,6 +882,36 @@ func (o ContainerDiskPtrOutput) DatastoreId() pulumi.StringPtrOutput {
 		}
 		return v.DatastoreId
 	}).(pulumi.StringPtrOutput)
+}
+
+// List of extra mount options.
+func (o ContainerDiskPtrOutput) MountOptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ContainerDisk) []string {
+		if v == nil {
+			return nil
+		}
+		return v.MountOptions
+	}).(pulumi.StringArrayOutput)
+}
+
+// Enable user quotas for the container rootfs
+func (o ContainerDiskPtrOutput) Quota() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ContainerDisk) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Quota
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Will include this volume to a storage replica job
+func (o ContainerDiskPtrOutput) Replicate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ContainerDisk) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Replicate
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The size of the root filesystem in gigabytes (defaults

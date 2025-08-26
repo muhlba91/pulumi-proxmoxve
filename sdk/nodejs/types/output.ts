@@ -5,6 +5,49 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface GetContainersContainer {
+    /**
+     * The container name.
+     */
+    name: string;
+    /**
+     * The node name. All cluster nodes will be queried in case this is omitted
+     */
+    nodeName: string;
+    /**
+     * Status of the container
+     */
+    status?: string;
+    /**
+     * A list of tags to filter the containers. The container must have all
+     * the tags to be included in the result.
+     */
+    tags: string[];
+    /**
+     * Is container a template (true) or a regular container (false)
+     */
+    template?: boolean;
+    /**
+     * The container identifier.
+     */
+    vmId: number;
+}
+
+export interface GetContainersFilter {
+    /**
+     * Name of the container attribute to filter on. One of [`name`, `template`, `status`, `nodeName`]
+     */
+    name: string;
+    /**
+     * Treat values as regex patterns
+     */
+    regex?: boolean;
+    /**
+     * List of values to pass the filter. Container's attribute should match at least one value in the list.
+     */
+    values: string[];
+}
+
 export interface GetVm2Clone {
     /**
      * The ID of the VM to clone.
@@ -226,10 +269,26 @@ export namespace CT {
 
     export interface ContainerDisk {
         /**
+         * Explicitly enable or disable ACL support
+         */
+        acl?: boolean;
+        /**
          * The identifier for the datastore to create the
          * disk in (defaults to `local`).
          */
         datastoreId?: string;
+        /**
+         * List of extra mount options.
+         */
+        mountOptions?: string[];
+        /**
+         * Enable user quotas for the container rootfs
+         */
+        quota?: boolean;
+        /**
+         * Will include this volume to a storage replica job
+         */
+        replicate?: boolean;
         /**
          * The size of the root filesystem in gigabytes (defaults
          * to `4`). When set to 0 a directory or zfs/btrfs subvolume will be created.

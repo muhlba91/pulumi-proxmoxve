@@ -31,7 +31,7 @@ import (
 //			operationsMonitoring, err := permission.NewRole(ctx, "operationsMonitoring", &permission.RoleArgs{
 //				RoleId: pulumi.String("operations-monitoring"),
 //				Privileges: pulumi.StringArray{
-//					pulumi.String("VM.Monitor"),
+//					pulumi.String("VM.GuestAgent.Audit"),
 //				},
 //			})
 //			if err != nil {

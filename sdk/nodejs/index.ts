@@ -35,6 +35,11 @@ export const getContainer: typeof import("./getContainer").getContainer = null a
 export const getContainerOutput: typeof import("./getContainer").getContainerOutput = null as any;
 utilities.lazyLoad(exports, ["getContainer","getContainerOutput"], () => require("./getContainer"));
 
+export { GetContainersArgs, GetContainersResult, GetContainersOutputArgs } from "./getContainers";
+export const getContainers: typeof import("./getContainers").getContainers = null as any;
+export const getContainersOutput: typeof import("./getContainers").getContainersOutput = null as any;
+utilities.lazyLoad(exports, ["getContainers","getContainersOutput"], () => require("./getContainers"));
+
 export { GetNodeArgs, GetNodeResult, GetNodeOutputArgs } from "./getNode";
 export const getNode: typeof import("./getNode").getNode = null as any;
 export const getNodeOutput: typeof import("./getNode").getNodeOutput = null as any;
