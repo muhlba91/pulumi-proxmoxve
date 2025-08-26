@@ -1,6 +1,26 @@
 # Changelog
 
 
+## [7.5.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.4.0...v7.5.0) (2025-08-26)
+
+
+### Features
+
+* prepare for upgrade upstream to v0.82.1 ([03ee989](https://github.com/muhlba91/pulumi-proxmoxve/commit/03ee9895411663938ad8870847beddbfb87b857c))
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/dependency-review-action action to v4.7.2 ([de96e20](https://github.com/muhlba91/pulumi-proxmoxve/commit/de96e20f10ad806d74b8d934db1ce30b8ea75bf7))
+* **deps:** update actions/setup-java action to v5 ([dd186ae](https://github.com/muhlba91/pulumi-proxmoxve/commit/dd186ae5c26460c100adadcbc17dd995249da461))
+* **deps:** update github/codeql-action action to v3.29.10 ([84f5a3b](https://github.com/muhlba91/pulumi-proxmoxve/commit/84f5a3ba880d8b0aa60f10490bfe516ecfa629db))
+* **deps:** update github/codeql-action action to v3.29.11 ([7e46d40](https://github.com/muhlba91/pulumi-proxmoxve/commit/7e46d4098b2932661410165d510b0427c970e7ba))
+* **deps:** update googleapis/release-please-action action to v4.3.0 ([24a62f4](https://github.com/muhlba91/pulumi-proxmoxve/commit/24a62f45585604d0904aabc2b94458e2ec1b7c25))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.82.0 ([a0ce39b](https://github.com/muhlba91/pulumi-proxmoxve/commit/a0ce39b897135cb3cbc903fc1e25fe827d5fc30e))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.82.1 ([b409552](https://github.com/muhlba91/pulumi-proxmoxve/commit/b4095529b90de4054afec5de3536d025ed28b996))
+* **deps:** update module github.com/pulumi/pulumi-terraform-bridge/v3 to v3.112.0 ([e67d48c](https://github.com/muhlba91/pulumi-proxmoxve/commit/e67d48ca217d2ccf536cc57bca5814fecd583c9c))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.191.0 ([37a9f27](https://github.com/muhlba91/pulumi-proxmoxve/commit/37a9f277f788a23429bd0afcd4cba2e1336b0156))
+
 ## [7.4.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.3.0...v7.4.0) (2025-08-17)
 
 
