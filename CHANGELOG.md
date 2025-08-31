@@ -1,6 +1,17 @@
 # Changelog
 
 
+## [7.5.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.5.0...v7.5.1) (2025-08-31)
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/attest-build-provenance action to v3 ([af901d2](https://github.com/muhlba91/pulumi-proxmoxve/commit/af901d21ee739d3218f52d6bd7012833703e35c3))
+* **deps:** update actions/dependency-review-action action to v4.7.3 ([9433ad1](https://github.com/muhlba91/pulumi-proxmoxve/commit/9433ad12fb720659813eabb3b8851dbf00ed1b01))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.83.0 ([c6ba3a8](https://github.com/muhlba91/pulumi-proxmoxve/commit/c6ba3a8f45455ec5f576edb447073a80d19a1ac4))
+* **deps:** update module github.com/pulumi/pulumi-terraform-bridge/v3 to v3.113.0 ([a8f159e](https://github.com/muhlba91/pulumi-proxmoxve/commit/a8f159e58c1f8b7f43ee3f8d8778952812613d11))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.192.0 ([5eb0f80](https://github.com/muhlba91/pulumi-proxmoxve/commit/5eb0f80e25eed8c8bfff05f33c30dc334f313b4c))
+
 ## [7.5.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.4.0...v7.5.0) (2025-08-26)
 
 
