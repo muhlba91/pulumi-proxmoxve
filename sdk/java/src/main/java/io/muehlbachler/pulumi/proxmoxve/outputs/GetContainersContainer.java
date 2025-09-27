@@ -26,7 +26,7 @@ public final class GetContainersContainer {
      */
     private String nodeName;
     /**
-     * @return Status of the container
+     * @return The status of the container.
      * 
      */
     private @Nullable String status;
@@ -37,7 +37,7 @@ public final class GetContainersContainer {
      */
     private List<String> tags;
     /**
-     * @return Is container a template (true) or a regular container (false)
+     * @return Whether the container is a template.
      * 
      */
     private @Nullable Boolean template;
@@ -63,7 +63,7 @@ public final class GetContainersContainer {
         return this.nodeName;
     }
     /**
-     * @return Status of the container
+     * @return The status of the container.
      * 
      */
     public Optional<String> status() {
@@ -78,7 +78,7 @@ public final class GetContainersContainer {
         return this.tags;
     }
     /**
-     * @return Is container a template (true) or a regular container (false)
+     * @return Whether the container is a template.
      * 
      */
     public Optional<Boolean> template() {

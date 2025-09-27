@@ -13,6 +13,7 @@ from .certifi import *
 from .dns import *
 from .get_container import *
 from .get_containers import *
+from .get_file import *
 from .get_node import *
 from .get_vm2 import *
 from .hosts import *
@@ -298,6 +299,30 @@ _utilities.register(
   "fqn": "pulumi_proxmoxve.sdnzone",
   "classes": {
    "proxmoxve:SDNZone/vxlan:Vxlan": "Vxlan"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "Sdn/applier",
+  "fqn": "pulumi_proxmoxve.sdn",
+  "classes": {
+   "proxmoxve:Sdn/applier:Applier": "Applier"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "Sdn/subnet",
+  "fqn": "pulumi_proxmoxve.sdn",
+  "classes": {
+   "proxmoxve:Sdn/subnet:Subnet": "Subnet"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "Sdn/vnet",
+  "fqn": "pulumi_proxmoxve.sdn",
+  "classes": {
+   "proxmoxve:Sdn/vnet:Vnet": "Vnet"
   }
  },
  {

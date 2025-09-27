@@ -337,6 +337,18 @@
                     }
                 }
             },
+            "proxmox_virtual_environment_sdn_applier": {
+                "current": "proxmoxve:Sdn/applier:Applier",
+                "majorVersion": 7
+            },
+            "proxmox_virtual_environment_sdn_subnet": {
+                "current": "proxmoxve:Sdn/subnet:Subnet",
+                "majorVersion": 7
+            },
+            "proxmox_virtual_environment_sdn_vnet": {
+                "current": "proxmoxve:Sdn/vnet:Vnet",
+                "majorVersion": 7
+            },
             "proxmox_virtual_environment_sdn_zone_evpn": {
                 "current": "proxmoxve:SDNZone/evpn:Evpn",
                 "majorVersion": 7,
@@ -703,6 +715,10 @@
                     }
                 }
             },
+            "proxmox_virtual_environment_file": {
+                "current": "proxmoxve:index/getFile:getFile",
+                "majorVersion": 7
+            },
             "proxmox_virtual_environment_group": {
                 "current": "proxmoxve:Permission/getGroup:getGroup",
                 "majorVersion": 7,
@@ -902,6 +918,14 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "proxmox_virtual_environment_sdn_subnet": {
+                "current": "proxmoxve:Sdn/getSubnet:getSubnet",
+                "majorVersion": 7
+            },
+            "proxmox_virtual_environment_sdn_vnet": {
+                "current": "proxmoxve:Sdn/getVnet:getVnet",
+                "majorVersion": 7
             },
             "proxmox_virtual_environment_sdn_zone_evpn": {
                 "current": "proxmoxve:SDNZone/getEvpn:getEvpn",
@@ -1119,6 +1143,9 @@
             "proxmoxve:SDNZone/simple:Simple": 1,
             "proxmoxve:SDNZone/vlan:Vlan": 1,
             "proxmoxve:SDNZone/vxlan:Vxlan": 1,
+            "proxmoxve:Sdn/applier:Applier": 1,
+            "proxmoxve:Sdn/subnet:Subnet": 1,
+            "proxmoxve:Sdn/vnet:Vnet": 1,
             "proxmoxve:Storage/file:File": 0,
             "proxmoxve:User/token:Token": 1,
             "proxmoxve:VM/virtualMachine2:VirtualMachine2": 1,
@@ -1165,12 +1192,15 @@
             "proxmoxve:SDNZone/getSimple:getSimple": 1,
             "proxmoxve:SDNZone/getVlan:getVlan": 1,
             "proxmoxve:SDNZone/getVxlan:getVxlan": 1,
+            "proxmoxve:Sdn/getSubnet:getSubnet": 1,
+            "proxmoxve:Sdn/getVnet:getVnet": 1,
             "proxmoxve:Sdn/getZones:getZones": 1,
             "proxmoxve:Storage/getDatastores:getDatastores": 1,
             "proxmoxve:VM/getVirtualMachine:getVirtualMachine": 0,
             "proxmoxve:VM/getVirtualMachines:getVirtualMachines": 0,
             "proxmoxve:index/getContainer:getContainer": 0,
             "proxmoxve:index/getContainers:getContainers": 0,
+            "proxmoxve:index/getFile:getFile": 1,
             "proxmoxve:index/getNode:getNode": 0,
             "proxmoxve:index/getVm2:getVm2": 1
         }

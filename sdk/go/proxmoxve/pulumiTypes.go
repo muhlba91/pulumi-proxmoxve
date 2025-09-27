@@ -547,12 +547,12 @@ type GetContainersContainer struct {
 	Name string `pulumi:"name"`
 	// The node name. All cluster nodes will be queried in case this is omitted
 	NodeName string `pulumi:"nodeName"`
-	// Status of the container
+	// The status of the container.
 	Status *string `pulumi:"status"`
 	// A list of tags to filter the containers. The container must have all
 	// the tags to be included in the result.
 	Tags []string `pulumi:"tags"`
-	// Is container a template (true) or a regular container (false)
+	// Whether the container is a template.
 	Template *bool `pulumi:"template"`
 	// The container identifier.
 	VmId int `pulumi:"vmId"`
@@ -574,12 +574,12 @@ type GetContainersContainerArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The node name. All cluster nodes will be queried in case this is omitted
 	NodeName pulumi.StringInput `pulumi:"nodeName"`
-	// Status of the container
+	// The status of the container.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A list of tags to filter the containers. The container must have all
 	// the tags to be included in the result.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	// Is container a template (true) or a regular container (false)
+	// Whether the container is a template.
 	Template pulumi.BoolPtrInput `pulumi:"template"`
 	// The container identifier.
 	VmId pulumi.IntInput `pulumi:"vmId"`
@@ -646,7 +646,7 @@ func (o GetContainersContainerOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainersContainer) string { return v.NodeName }).(pulumi.StringOutput)
 }
 
-// Status of the container
+// The status of the container.
 func (o GetContainersContainerOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetContainersContainer) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -657,7 +657,7 @@ func (o GetContainersContainerOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetContainersContainer) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Is container a template (true) or a regular container (false)
+// Whether the container is a template.
 func (o GetContainersContainerOutput) Template() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetContainersContainer) *bool { return v.Template }).(pulumi.BoolPtrOutput)
 }

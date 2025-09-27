@@ -22,7 +22,7 @@ namespace Pulumi.ProxmoxVE.Outputs
         /// </summary>
         public readonly string NodeName;
         /// <summary>
-        /// Status of the container
+        /// The status of the container.
         /// </summary>
         public readonly string? Status;
         /// <summary>
@@ -31,7 +31,7 @@ namespace Pulumi.ProxmoxVE.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// Is container a template (true) or a regular container (false)
+        /// Whether the container is a template.
         /// </summary>
         public readonly bool? Template;
         /// <summary>

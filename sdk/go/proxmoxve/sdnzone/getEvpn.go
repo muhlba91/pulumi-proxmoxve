@@ -95,12 +95,16 @@ type LookupEvpnResult struct {
 	Mtu int `pulumi:"mtu"`
 	// The Proxmox nodes which the zone and associated VNets are deployed on
 	Nodes []string `pulumi:"nodes"`
+	// Indicates if the zone has pending configuration changes that need to be applied.
+	Pending bool `pulumi:"pending"`
 	// Primary exit node for EVPN.
 	PrimaryExitNode string `pulumi:"primaryExitNode"`
 	// Reverse DNS API server address.
 	ReverseDns string `pulumi:"reverseDns"`
 	// Route target import for EVPN. Must be in the format '\n\n:\n\n' (e.g., '65000:65000').
 	RtImport string `pulumi:"rtImport"`
+	// Indicates the current state of the zone.
+	State string `pulumi:"state"`
 	// VRF VXLAN-ID used for dedicated routing interconnect between VNets. It must be different than the VXLAN-ID of the VNets.
 	VrfVxlan int `pulumi:"vrfVxlan"`
 }
@@ -194,6 +198,11 @@ func (o LookupEvpnResultOutput) Nodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupEvpnResult) []string { return v.Nodes }).(pulumi.StringArrayOutput)
 }
 
+// Indicates if the zone has pending configuration changes that need to be applied.
+func (o LookupEvpnResultOutput) Pending() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupEvpnResult) bool { return v.Pending }).(pulumi.BoolOutput)
+}
+
 // Primary exit node for EVPN.
 func (o LookupEvpnResultOutput) PrimaryExitNode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEvpnResult) string { return v.PrimaryExitNode }).(pulumi.StringOutput)
@@ -207,6 +216,11 @@ func (o LookupEvpnResultOutput) ReverseDns() pulumi.StringOutput {
 // Route target import for EVPN. Must be in the format '\n\n:\n\n' (e.g., '65000:65000').
 func (o LookupEvpnResultOutput) RtImport() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEvpnResult) string { return v.RtImport }).(pulumi.StringOutput)
+}
+
+// Indicates the current state of the zone.
+func (o LookupEvpnResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEvpnResult) string { return v.State }).(pulumi.StringOutput)
 }
 
 // VRF VXLAN-ID used for dedicated routing interconnect between VNets. It must be different than the VXLAN-ID of the VNets.

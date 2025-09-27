@@ -80,6 +80,10 @@ export interface GetQinqResult {
      */
     readonly nodes: string[];
     /**
+     * Indicates if the zone has pending configuration changes that need to be applied.
+     */
+    readonly pending: boolean;
+    /**
      * Reverse DNS API server address.
      */
     readonly reverseDns: string;
@@ -91,6 +95,10 @@ export interface GetQinqResult {
      * Service VLAN protocol for QinQ. The protocol must be `802.1ad` or `802.1q`.
      */
     readonly serviceVlanProtocol: string;
+    /**
+     * Indicates the current state of the zone.
+     */
+    readonly state: string;
 }
 /**
  * Retrieves information about a QinQ Zone in Proxmox SDN. QinQ also known as VLAN stacking, that uses multiple layers of VLAN tags for isolation. The QinQ zone defines the outer VLAN tag (the Service VLAN) whereas the inner VLAN tag is defined by the VNet. Your physical network switches must support stacked VLANs for this configuration. Due to the double stacking of tags, you need 4 more bytes for QinQ VLANs. For example, you must reduce the MTU to 1496 if you physical interface MTU is 1500.

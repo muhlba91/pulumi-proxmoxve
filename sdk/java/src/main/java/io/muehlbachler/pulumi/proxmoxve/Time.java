@@ -108,14 +108,14 @@ public class Time extends com.pulumi.resources.CustomResource {
         return this.timeZone;
     }
     /**
-     * The node&#39;s local time formatted as UTC.
+     * The node&#39;s time formatted as UTC.
      * 
      */
     @Export(name="utcTime", refs={String.class}, tree="[0]")
     private Output<String> utcTime;
 
     /**
-     * @return The node&#39;s local time formatted as UTC.
+     * @return The node&#39;s time formatted as UTC.
      * 
      */
     public Output<String> utcTime() {

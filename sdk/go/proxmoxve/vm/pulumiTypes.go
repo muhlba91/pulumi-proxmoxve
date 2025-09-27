@@ -6917,12 +6917,12 @@ type GetVirtualMachinesVm struct {
 	Name string `pulumi:"name"`
 	// The node name. All cluster nodes will be queried in case this is omitted
 	NodeName string `pulumi:"nodeName"`
-	// Status of the VM
+	// The status of the VM.
 	Status *string `pulumi:"status"`
 	// A list of tags to filter the VMs. The VM must have all
 	// the tags to be included in the result.
 	Tags []string `pulumi:"tags"`
-	// Is VM a template (true) or a regular VM (false)
+	// Whether the VM is a template.
 	Template *bool `pulumi:"template"`
 	// The VM identifier.
 	VmId int `pulumi:"vmId"`
@@ -6944,12 +6944,12 @@ type GetVirtualMachinesVmArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The node name. All cluster nodes will be queried in case this is omitted
 	NodeName pulumi.StringInput `pulumi:"nodeName"`
-	// Status of the VM
+	// The status of the VM.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A list of tags to filter the VMs. The VM must have all
 	// the tags to be included in the result.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	// Is VM a template (true) or a regular VM (false)
+	// Whether the VM is a template.
 	Template pulumi.BoolPtrInput `pulumi:"template"`
 	// The VM identifier.
 	VmId pulumi.IntInput `pulumi:"vmId"`
@@ -7016,7 +7016,7 @@ func (o GetVirtualMachinesVmOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVirtualMachinesVm) string { return v.NodeName }).(pulumi.StringOutput)
 }
 
-// Status of the VM
+// The status of the VM.
 func (o GetVirtualMachinesVmOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVirtualMachinesVm) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -7027,7 +7027,7 @@ func (o GetVirtualMachinesVmOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetVirtualMachinesVm) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Is VM a template (true) or a regular VM (false)
+// Whether the VM is a template.
 func (o GetVirtualMachinesVmOutput) Template() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetVirtualMachinesVm) *bool { return v.Template }).(pulumi.BoolPtrOutput)
 }

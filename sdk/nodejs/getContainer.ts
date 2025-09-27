@@ -38,11 +38,11 @@ export interface GetContainerArgs {
      */
     nodeName: string;
     /**
-     * Status of the container
+     * The status of the container.
      */
     status?: string;
     /**
-     * Is container a template (true) or a regular container (false)
+     * Whether the container is a template.
      */
     template?: boolean;
     /**
@@ -65,7 +65,7 @@ export interface GetContainerResult {
     readonly name: string;
     readonly nodeName: string;
     /**
-     * Status of the container
+     * The status of the container.
      */
     readonly status?: string;
     /**
@@ -73,7 +73,7 @@ export interface GetContainerResult {
      */
     readonly tags: string[];
     /**
-     * Is container a template (true) or a regular container (false)
+     * Whether the container is a template.
      */
     readonly template?: boolean;
     readonly vmId: number;
@@ -112,11 +112,11 @@ export interface GetContainerOutputArgs {
      */
     nodeName: pulumi.Input<string>;
     /**
-     * Status of the container
+     * The status of the container.
      */
     status?: pulumi.Input<string>;
     /**
-     * Is container a template (true) or a regular container (false)
+     * Whether the container is a template.
      */
     template?: pulumi.Input<boolean>;
     /**

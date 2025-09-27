@@ -33,14 +33,14 @@ public final class GetContainerPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Status of the container
+     * The status of the container.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return Status of the container
+     * @return The status of the container.
      * 
      */
     public Optional<String> status() {
@@ -48,14 +48,14 @@ public final class GetContainerPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Is container a template (true) or a regular container (false)
+     * Whether the container is a template.
      * 
      */
     @Import(name="template")
     private @Nullable Boolean template;
 
     /**
-     * @return Is container a template (true) or a regular container (false)
+     * @return Whether the container is a template.
      * 
      */
     public Optional<Boolean> template() {
@@ -116,7 +116,7 @@ public final class GetContainerPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param status Status of the container
+         * @param status The status of the container.
          * 
          * @return builder
          * 
@@ -127,7 +127,7 @@ public final class GetContainerPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param template Is container a template (true) or a regular container (false)
+         * @param template Whether the container is a template.
          * 
          * @return builder
          * 

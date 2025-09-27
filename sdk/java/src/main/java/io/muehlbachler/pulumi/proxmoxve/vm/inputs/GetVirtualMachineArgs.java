@@ -34,14 +34,14 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Status of the VM
+     * The status of the VM.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Status of the VM
+     * @return The status of the VM.
      * 
      */
     public Optional<Output<String>> status() {
@@ -49,14 +49,14 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Is VM a template (true) or a regular VM (false)
+     * Whether the VM is a template.
      * 
      */
     @Import(name="template")
     private @Nullable Output<Boolean> template;
 
     /**
-     * @return Is VM a template (true) or a regular VM (false)
+     * @return Whether the VM is a template.
      * 
      */
     public Optional<Output<Boolean>> template() {
@@ -127,7 +127,7 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param status Status of the VM
+         * @param status The status of the VM.
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param status Status of the VM
+         * @param status The status of the VM.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param template Is VM a template (true) or a regular VM (false)
+         * @param template Whether the VM is a template.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param template Is VM a template (true) or a regular VM (false)
+         * @param template Whether the VM is a template.
          * 
          * @return builder
          * 

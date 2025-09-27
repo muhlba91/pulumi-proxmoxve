@@ -80,8 +80,12 @@ type LookupVlanResult struct {
 	Mtu int `pulumi:"mtu"`
 	// The Proxmox nodes which the zone and associated VNets are deployed on
 	Nodes []string `pulumi:"nodes"`
+	// Indicates if the zone has pending configuration changes that need to be applied.
+	Pending bool `pulumi:"pending"`
 	// Reverse DNS API server address.
 	ReverseDns string `pulumi:"reverseDns"`
+	// Indicates the current state of the zone.
+	State string `pulumi:"state"`
 }
 
 func LookupVlanOutput(ctx *pulumi.Context, args LookupVlanOutputArgs, opts ...pulumi.InvokeOption) LookupVlanResultOutput {
@@ -153,9 +157,19 @@ func (o LookupVlanResultOutput) Nodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupVlanResult) []string { return v.Nodes }).(pulumi.StringArrayOutput)
 }
 
+// Indicates if the zone has pending configuration changes that need to be applied.
+func (o LookupVlanResultOutput) Pending() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupVlanResult) bool { return v.Pending }).(pulumi.BoolOutput)
+}
+
 // Reverse DNS API server address.
 func (o LookupVlanResultOutput) ReverseDns() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVlanResult) string { return v.ReverseDns }).(pulumi.StringOutput)
+}
+
+// Indicates the current state of the zone.
+func (o LookupVlanResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVlanResult) string { return v.State }).(pulumi.StringOutput)
 }
 
 func init() {

@@ -82,12 +82,16 @@ type LookupQinqResult struct {
 	Mtu int `pulumi:"mtu"`
 	// The Proxmox nodes which the zone and associated VNets are deployed on
 	Nodes []string `pulumi:"nodes"`
+	// Indicates if the zone has pending configuration changes that need to be applied.
+	Pending bool `pulumi:"pending"`
 	// Reverse DNS API server address.
 	ReverseDns string `pulumi:"reverseDns"`
 	// Service VLAN tag for QinQ. The tag must be between `1` and `4094`.
 	ServiceVlan int `pulumi:"serviceVlan"`
 	// Service VLAN protocol for QinQ. The protocol must be `802.1ad` or `802.1q`.
 	ServiceVlanProtocol string `pulumi:"serviceVlanProtocol"`
+	// Indicates the current state of the zone.
+	State string `pulumi:"state"`
 }
 
 func LookupQinqOutput(ctx *pulumi.Context, args LookupQinqOutputArgs, opts ...pulumi.InvokeOption) LookupQinqResultOutput {
@@ -159,6 +163,11 @@ func (o LookupQinqResultOutput) Nodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupQinqResult) []string { return v.Nodes }).(pulumi.StringArrayOutput)
 }
 
+// Indicates if the zone has pending configuration changes that need to be applied.
+func (o LookupQinqResultOutput) Pending() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupQinqResult) bool { return v.Pending }).(pulumi.BoolOutput)
+}
+
 // Reverse DNS API server address.
 func (o LookupQinqResultOutput) ReverseDns() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQinqResult) string { return v.ReverseDns }).(pulumi.StringOutput)
@@ -172,6 +181,11 @@ func (o LookupQinqResultOutput) ServiceVlan() pulumi.IntOutput {
 // Service VLAN protocol for QinQ. The protocol must be `802.1ad` or `802.1q`.
 func (o LookupQinqResultOutput) ServiceVlanProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQinqResult) string { return v.ServiceVlanProtocol }).(pulumi.StringOutput)
+}
+
+// Indicates the current state of the zone.
+func (o LookupQinqResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQinqResult) string { return v.State }).(pulumi.StringOutput)
 }
 
 func init() {

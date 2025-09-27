@@ -73,9 +73,17 @@ export interface GetSimpleResult {
      */
     readonly nodes: string[];
     /**
+     * Indicates if the zone has pending configuration changes that need to be applied.
+     */
+    readonly pending: boolean;
+    /**
      * Reverse DNS API server address.
      */
     readonly reverseDns: string;
+    /**
+     * Indicates the current state of the zone.
+     */
+    readonly state: string;
 }
 /**
  * Retrieves information about a Simple Zone in Proxmox SDN. It will create an isolated VNet bridge. This bridge is not linked to a physical interface, and VM traffic is only local on each the node. It can be used in NAT or routed setups.

@@ -63,7 +63,7 @@ namespace Pulumi.ProxmoxVE
         public Output<string> TimeZone { get; private set; } = null!;
 
         /// <summary>
-        /// The node's local time formatted as UTC.
+        /// The node's time formatted as UTC.
         /// </summary>
         [Output("utcTime")]
         public Output<string> UtcTime { get; private set; } = null!;
@@ -154,7 +154,7 @@ namespace Pulumi.ProxmoxVE
         public Input<string>? TimeZone { get; set; }
 
         /// <summary>
-        /// The node's local time formatted as UTC.
+        /// The node's time formatted as UTC.
         /// </summary>
         [Input("utcTime")]
         public Input<string>? UtcTime { get; set; }

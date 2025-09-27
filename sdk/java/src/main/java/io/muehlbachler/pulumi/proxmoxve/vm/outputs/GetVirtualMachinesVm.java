@@ -26,7 +26,7 @@ public final class GetVirtualMachinesVm {
      */
     private String nodeName;
     /**
-     * @return Status of the VM
+     * @return The status of the VM.
      * 
      */
     private @Nullable String status;
@@ -37,7 +37,7 @@ public final class GetVirtualMachinesVm {
      */
     private List<String> tags;
     /**
-     * @return Is VM a template (true) or a regular VM (false)
+     * @return Whether the VM is a template.
      * 
      */
     private @Nullable Boolean template;
@@ -63,7 +63,7 @@ public final class GetVirtualMachinesVm {
         return this.nodeName;
     }
     /**
-     * @return Status of the VM
+     * @return The status of the VM.
      * 
      */
     public Optional<String> status() {
@@ -78,7 +78,7 @@ public final class GetVirtualMachinesVm {
         return this.tags;
     }
     /**
-     * @return Is VM a template (true) or a regular VM (false)
+     * @return Whether the VM is a template.
      * 
      */
     public Optional<Boolean> template() {

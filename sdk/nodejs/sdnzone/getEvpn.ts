@@ -101,6 +101,10 @@ export interface GetEvpnResult {
      */
     readonly nodes: string[];
     /**
+     * Indicates if the zone has pending configuration changes that need to be applied.
+     */
+    readonly pending: boolean;
+    /**
      * Primary exit node for EVPN.
      */
     readonly primaryExitNode: string;
@@ -112,6 +116,10 @@ export interface GetEvpnResult {
      * Route target import for EVPN. Must be in the format '\n\n:\n\n' (e.g., '65000:65000').
      */
     readonly rtImport: string;
+    /**
+     * Indicates the current state of the zone.
+     */
+    readonly state: string;
     /**
      * VRF VXLAN-ID used for dedicated routing interconnect between VNets. It must be different than the VXLAN-ID of the VNets.
      */

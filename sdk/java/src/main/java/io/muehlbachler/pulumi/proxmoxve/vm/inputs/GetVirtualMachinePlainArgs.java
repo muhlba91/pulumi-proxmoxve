@@ -33,14 +33,14 @@ public final class GetVirtualMachinePlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * Status of the VM
+     * The status of the VM.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return Status of the VM
+     * @return The status of the VM.
      * 
      */
     public Optional<String> status() {
@@ -48,14 +48,14 @@ public final class GetVirtualMachinePlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * Is VM a template (true) or a regular VM (false)
+     * Whether the VM is a template.
      * 
      */
     @Import(name="template")
     private @Nullable Boolean template;
 
     /**
-     * @return Is VM a template (true) or a regular VM (false)
+     * @return Whether the VM is a template.
      * 
      */
     public Optional<Boolean> template() {
@@ -116,7 +116,7 @@ public final class GetVirtualMachinePlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param status Status of the VM
+         * @param status The status of the VM.
          * 
          * @return builder
          * 
@@ -127,7 +127,7 @@ public final class GetVirtualMachinePlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param template Is VM a template (true) or a regular VM (false)
+         * @param template Whether the VM is a template.
          * 
          * @return builder
          * 

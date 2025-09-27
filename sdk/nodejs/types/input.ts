@@ -984,6 +984,38 @@ export namespace Permission {
 }
 
 export namespace Sdn {
+    export interface GetSubnetDhcpRange {
+        /**
+         * End of the DHCP range.
+         */
+        endAddress?: string;
+        /**
+         * Start of the DHCP range.
+         */
+        startAddress?: string;
+    }
+
+    export interface GetSubnetDhcpRangeArgs {
+        /**
+         * End of the DHCP range.
+         */
+        endAddress?: pulumi.Input<string>;
+        /**
+         * Start of the DHCP range.
+         */
+        startAddress?: pulumi.Input<string>;
+    }
+
+    export interface SubnetDhcpRange {
+        /**
+         * End of the DHCP range.
+         */
+        endAddress: pulumi.Input<string>;
+        /**
+         * Start of the DHCP range.
+         */
+        startAddress: pulumi.Input<string>;
+    }
 }
 
 export namespace Storage {

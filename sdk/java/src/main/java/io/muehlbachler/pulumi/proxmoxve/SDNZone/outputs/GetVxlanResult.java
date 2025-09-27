@@ -5,6 +5,7 @@ package io.muehlbachler.pulumi.proxmoxve.SDNZone.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -48,10 +49,20 @@ public final class GetVxlanResult {
      */
     private List<String> peers;
     /**
+     * @return Indicates if the zone has pending configuration changes that need to be applied.
+     * 
+     */
+    private Boolean pending;
+    /**
      * @return Reverse DNS API server address.
      * 
      */
     private String reverseDns;
+    /**
+     * @return Indicates the current state of the zone.
+     * 
+     */
+    private String state;
 
     private GetVxlanResult() {}
     /**
@@ -104,11 +115,25 @@ public final class GetVxlanResult {
         return this.peers;
     }
     /**
+     * @return Indicates if the zone has pending configuration changes that need to be applied.
+     * 
+     */
+    public Boolean pending() {
+        return this.pending;
+    }
+    /**
      * @return Reverse DNS API server address.
      * 
      */
     public String reverseDns() {
         return this.reverseDns;
+    }
+    /**
+     * @return Indicates the current state of the zone.
+     * 
+     */
+    public String state() {
+        return this.state;
     }
 
     public static Builder builder() {
@@ -127,7 +152,9 @@ public final class GetVxlanResult {
         private Integer mtu;
         private List<String> nodes;
         private List<String> peers;
+        private Boolean pending;
         private String reverseDns;
+        private String state;
         public Builder() {}
         public Builder(GetVxlanResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -138,7 +165,9 @@ public final class GetVxlanResult {
     	      this.mtu = defaults.mtu;
     	      this.nodes = defaults.nodes;
     	      this.peers = defaults.peers;
+    	      this.pending = defaults.pending;
     	      this.reverseDns = defaults.reverseDns;
+    	      this.state = defaults.state;
         }
 
         @CustomType.Setter
@@ -204,11 +233,27 @@ public final class GetVxlanResult {
             return peers(List.of(peers));
         }
         @CustomType.Setter
+        public Builder pending(Boolean pending) {
+            if (pending == null) {
+              throw new MissingRequiredPropertyException("GetVxlanResult", "pending");
+            }
+            this.pending = pending;
+            return this;
+        }
+        @CustomType.Setter
         public Builder reverseDns(String reverseDns) {
             if (reverseDns == null) {
               throw new MissingRequiredPropertyException("GetVxlanResult", "reverseDns");
             }
             this.reverseDns = reverseDns;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder state(String state) {
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetVxlanResult", "state");
+            }
+            this.state = state;
             return this;
         }
         public GetVxlanResult build() {
@@ -220,7 +265,9 @@ public final class GetVxlanResult {
             _resultValue.mtu = mtu;
             _resultValue.nodes = nodes;
             _resultValue.peers = peers;
+            _resultValue.pending = pending;
             _resultValue.reverseDns = reverseDns;
+            _resultValue.state = state;
             return _resultValue;
         }
     }

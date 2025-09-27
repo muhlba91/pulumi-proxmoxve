@@ -13,6 +13,318 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type SubnetDhcpRange struct {
+	// End of the DHCP range.
+	EndAddress string `pulumi:"endAddress"`
+	// Start of the DHCP range.
+	StartAddress string `pulumi:"startAddress"`
+}
+
+// SubnetDhcpRangeInput is an input type that accepts SubnetDhcpRangeArgs and SubnetDhcpRangeOutput values.
+// You can construct a concrete instance of `SubnetDhcpRangeInput` via:
+//
+//	SubnetDhcpRangeArgs{...}
+type SubnetDhcpRangeInput interface {
+	pulumi.Input
+
+	ToSubnetDhcpRangeOutput() SubnetDhcpRangeOutput
+	ToSubnetDhcpRangeOutputWithContext(context.Context) SubnetDhcpRangeOutput
+}
+
+type SubnetDhcpRangeArgs struct {
+	// End of the DHCP range.
+	EndAddress pulumi.StringInput `pulumi:"endAddress"`
+	// Start of the DHCP range.
+	StartAddress pulumi.StringInput `pulumi:"startAddress"`
+}
+
+func (SubnetDhcpRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetDhcpRange)(nil)).Elem()
+}
+
+func (i SubnetDhcpRangeArgs) ToSubnetDhcpRangeOutput() SubnetDhcpRangeOutput {
+	return i.ToSubnetDhcpRangeOutputWithContext(context.Background())
+}
+
+func (i SubnetDhcpRangeArgs) ToSubnetDhcpRangeOutputWithContext(ctx context.Context) SubnetDhcpRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetDhcpRangeOutput)
+}
+
+func (i SubnetDhcpRangeArgs) ToSubnetDhcpRangePtrOutput() SubnetDhcpRangePtrOutput {
+	return i.ToSubnetDhcpRangePtrOutputWithContext(context.Background())
+}
+
+func (i SubnetDhcpRangeArgs) ToSubnetDhcpRangePtrOutputWithContext(ctx context.Context) SubnetDhcpRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetDhcpRangeOutput).ToSubnetDhcpRangePtrOutputWithContext(ctx)
+}
+
+// SubnetDhcpRangePtrInput is an input type that accepts SubnetDhcpRangeArgs, SubnetDhcpRangePtr and SubnetDhcpRangePtrOutput values.
+// You can construct a concrete instance of `SubnetDhcpRangePtrInput` via:
+//
+//	        SubnetDhcpRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type SubnetDhcpRangePtrInput interface {
+	pulumi.Input
+
+	ToSubnetDhcpRangePtrOutput() SubnetDhcpRangePtrOutput
+	ToSubnetDhcpRangePtrOutputWithContext(context.Context) SubnetDhcpRangePtrOutput
+}
+
+type subnetDhcpRangePtrType SubnetDhcpRangeArgs
+
+func SubnetDhcpRangePtr(v *SubnetDhcpRangeArgs) SubnetDhcpRangePtrInput {
+	return (*subnetDhcpRangePtrType)(v)
+}
+
+func (*subnetDhcpRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubnetDhcpRange)(nil)).Elem()
+}
+
+func (i *subnetDhcpRangePtrType) ToSubnetDhcpRangePtrOutput() SubnetDhcpRangePtrOutput {
+	return i.ToSubnetDhcpRangePtrOutputWithContext(context.Background())
+}
+
+func (i *subnetDhcpRangePtrType) ToSubnetDhcpRangePtrOutputWithContext(ctx context.Context) SubnetDhcpRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetDhcpRangePtrOutput)
+}
+
+type SubnetDhcpRangeOutput struct{ *pulumi.OutputState }
+
+func (SubnetDhcpRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetDhcpRange)(nil)).Elem()
+}
+
+func (o SubnetDhcpRangeOutput) ToSubnetDhcpRangeOutput() SubnetDhcpRangeOutput {
+	return o
+}
+
+func (o SubnetDhcpRangeOutput) ToSubnetDhcpRangeOutputWithContext(ctx context.Context) SubnetDhcpRangeOutput {
+	return o
+}
+
+func (o SubnetDhcpRangeOutput) ToSubnetDhcpRangePtrOutput() SubnetDhcpRangePtrOutput {
+	return o.ToSubnetDhcpRangePtrOutputWithContext(context.Background())
+}
+
+func (o SubnetDhcpRangeOutput) ToSubnetDhcpRangePtrOutputWithContext(ctx context.Context) SubnetDhcpRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubnetDhcpRange) *SubnetDhcpRange {
+		return &v
+	}).(SubnetDhcpRangePtrOutput)
+}
+
+// End of the DHCP range.
+func (o SubnetDhcpRangeOutput) EndAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v SubnetDhcpRange) string { return v.EndAddress }).(pulumi.StringOutput)
+}
+
+// Start of the DHCP range.
+func (o SubnetDhcpRangeOutput) StartAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v SubnetDhcpRange) string { return v.StartAddress }).(pulumi.StringOutput)
+}
+
+type SubnetDhcpRangePtrOutput struct{ *pulumi.OutputState }
+
+func (SubnetDhcpRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubnetDhcpRange)(nil)).Elem()
+}
+
+func (o SubnetDhcpRangePtrOutput) ToSubnetDhcpRangePtrOutput() SubnetDhcpRangePtrOutput {
+	return o
+}
+
+func (o SubnetDhcpRangePtrOutput) ToSubnetDhcpRangePtrOutputWithContext(ctx context.Context) SubnetDhcpRangePtrOutput {
+	return o
+}
+
+func (o SubnetDhcpRangePtrOutput) Elem() SubnetDhcpRangeOutput {
+	return o.ApplyT(func(v *SubnetDhcpRange) SubnetDhcpRange {
+		if v != nil {
+			return *v
+		}
+		var ret SubnetDhcpRange
+		return ret
+	}).(SubnetDhcpRangeOutput)
+}
+
+// End of the DHCP range.
+func (o SubnetDhcpRangePtrOutput) EndAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetDhcpRange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// Start of the DHCP range.
+func (o SubnetDhcpRangePtrOutput) StartAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetDhcpRange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StartAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetSubnetDhcpRange struct {
+	// End of the DHCP range.
+	EndAddress string `pulumi:"endAddress"`
+	// Start of the DHCP range.
+	StartAddress string `pulumi:"startAddress"`
+}
+
+// GetSubnetDhcpRangeInput is an input type that accepts GetSubnetDhcpRangeArgs and GetSubnetDhcpRangeOutput values.
+// You can construct a concrete instance of `GetSubnetDhcpRangeInput` via:
+//
+//	GetSubnetDhcpRangeArgs{...}
+type GetSubnetDhcpRangeInput interface {
+	pulumi.Input
+
+	ToGetSubnetDhcpRangeOutput() GetSubnetDhcpRangeOutput
+	ToGetSubnetDhcpRangeOutputWithContext(context.Context) GetSubnetDhcpRangeOutput
+}
+
+type GetSubnetDhcpRangeArgs struct {
+	// End of the DHCP range.
+	EndAddress pulumi.StringInput `pulumi:"endAddress"`
+	// Start of the DHCP range.
+	StartAddress pulumi.StringInput `pulumi:"startAddress"`
+}
+
+func (GetSubnetDhcpRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubnetDhcpRange)(nil)).Elem()
+}
+
+func (i GetSubnetDhcpRangeArgs) ToGetSubnetDhcpRangeOutput() GetSubnetDhcpRangeOutput {
+	return i.ToGetSubnetDhcpRangeOutputWithContext(context.Background())
+}
+
+func (i GetSubnetDhcpRangeArgs) ToGetSubnetDhcpRangeOutputWithContext(ctx context.Context) GetSubnetDhcpRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubnetDhcpRangeOutput)
+}
+
+func (i GetSubnetDhcpRangeArgs) ToGetSubnetDhcpRangePtrOutput() GetSubnetDhcpRangePtrOutput {
+	return i.ToGetSubnetDhcpRangePtrOutputWithContext(context.Background())
+}
+
+func (i GetSubnetDhcpRangeArgs) ToGetSubnetDhcpRangePtrOutputWithContext(ctx context.Context) GetSubnetDhcpRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubnetDhcpRangeOutput).ToGetSubnetDhcpRangePtrOutputWithContext(ctx)
+}
+
+// GetSubnetDhcpRangePtrInput is an input type that accepts GetSubnetDhcpRangeArgs, GetSubnetDhcpRangePtr and GetSubnetDhcpRangePtrOutput values.
+// You can construct a concrete instance of `GetSubnetDhcpRangePtrInput` via:
+//
+//	        GetSubnetDhcpRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetSubnetDhcpRangePtrInput interface {
+	pulumi.Input
+
+	ToGetSubnetDhcpRangePtrOutput() GetSubnetDhcpRangePtrOutput
+	ToGetSubnetDhcpRangePtrOutputWithContext(context.Context) GetSubnetDhcpRangePtrOutput
+}
+
+type getSubnetDhcpRangePtrType GetSubnetDhcpRangeArgs
+
+func GetSubnetDhcpRangePtr(v *GetSubnetDhcpRangeArgs) GetSubnetDhcpRangePtrInput {
+	return (*getSubnetDhcpRangePtrType)(v)
+}
+
+func (*getSubnetDhcpRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSubnetDhcpRange)(nil)).Elem()
+}
+
+func (i *getSubnetDhcpRangePtrType) ToGetSubnetDhcpRangePtrOutput() GetSubnetDhcpRangePtrOutput {
+	return i.ToGetSubnetDhcpRangePtrOutputWithContext(context.Background())
+}
+
+func (i *getSubnetDhcpRangePtrType) ToGetSubnetDhcpRangePtrOutputWithContext(ctx context.Context) GetSubnetDhcpRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubnetDhcpRangePtrOutput)
+}
+
+type GetSubnetDhcpRangeOutput struct{ *pulumi.OutputState }
+
+func (GetSubnetDhcpRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubnetDhcpRange)(nil)).Elem()
+}
+
+func (o GetSubnetDhcpRangeOutput) ToGetSubnetDhcpRangeOutput() GetSubnetDhcpRangeOutput {
+	return o
+}
+
+func (o GetSubnetDhcpRangeOutput) ToGetSubnetDhcpRangeOutputWithContext(ctx context.Context) GetSubnetDhcpRangeOutput {
+	return o
+}
+
+func (o GetSubnetDhcpRangeOutput) ToGetSubnetDhcpRangePtrOutput() GetSubnetDhcpRangePtrOutput {
+	return o.ToGetSubnetDhcpRangePtrOutputWithContext(context.Background())
+}
+
+func (o GetSubnetDhcpRangeOutput) ToGetSubnetDhcpRangePtrOutputWithContext(ctx context.Context) GetSubnetDhcpRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetSubnetDhcpRange) *GetSubnetDhcpRange {
+		return &v
+	}).(GetSubnetDhcpRangePtrOutput)
+}
+
+// End of the DHCP range.
+func (o GetSubnetDhcpRangeOutput) EndAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubnetDhcpRange) string { return v.EndAddress }).(pulumi.StringOutput)
+}
+
+// Start of the DHCP range.
+func (o GetSubnetDhcpRangeOutput) StartAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubnetDhcpRange) string { return v.StartAddress }).(pulumi.StringOutput)
+}
+
+type GetSubnetDhcpRangePtrOutput struct{ *pulumi.OutputState }
+
+func (GetSubnetDhcpRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSubnetDhcpRange)(nil)).Elem()
+}
+
+func (o GetSubnetDhcpRangePtrOutput) ToGetSubnetDhcpRangePtrOutput() GetSubnetDhcpRangePtrOutput {
+	return o
+}
+
+func (o GetSubnetDhcpRangePtrOutput) ToGetSubnetDhcpRangePtrOutputWithContext(ctx context.Context) GetSubnetDhcpRangePtrOutput {
+	return o
+}
+
+func (o GetSubnetDhcpRangePtrOutput) Elem() GetSubnetDhcpRangeOutput {
+	return o.ApplyT(func(v *GetSubnetDhcpRange) GetSubnetDhcpRange {
+		if v != nil {
+			return *v
+		}
+		var ret GetSubnetDhcpRange
+		return ret
+	}).(GetSubnetDhcpRangeOutput)
+}
+
+// End of the DHCP range.
+func (o GetSubnetDhcpRangePtrOutput) EndAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSubnetDhcpRange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// Start of the DHCP range.
+func (o GetSubnetDhcpRangePtrOutput) StartAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSubnetDhcpRange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StartAddress
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetZonesZone struct {
 	AdvertiseSubnets        bool     `pulumi:"advertiseSubnets"`
 	Bridge                  string   `pulumi:"bridge"`
@@ -27,11 +339,13 @@ type GetZonesZone struct {
 	Mtu                     int      `pulumi:"mtu"`
 	Nodes                   []string `pulumi:"nodes"`
 	Peers                   []string `pulumi:"peers"`
+	Pending                 bool     `pulumi:"pending"`
 	PrimaryExitNode         string   `pulumi:"primaryExitNode"`
 	ReverseDns              string   `pulumi:"reverseDns"`
 	RtImport                string   `pulumi:"rtImport"`
 	ServiceVlan             int      `pulumi:"serviceVlan"`
 	ServiceVlanProtocol     string   `pulumi:"serviceVlanProtocol"`
+	State                   string   `pulumi:"state"`
 	Type                    string   `pulumi:"type"`
 	VrfVxlan                int      `pulumi:"vrfVxlan"`
 }
@@ -61,11 +375,13 @@ type GetZonesZoneArgs struct {
 	Mtu                     pulumi.IntInput         `pulumi:"mtu"`
 	Nodes                   pulumi.StringArrayInput `pulumi:"nodes"`
 	Peers                   pulumi.StringArrayInput `pulumi:"peers"`
+	Pending                 pulumi.BoolInput        `pulumi:"pending"`
 	PrimaryExitNode         pulumi.StringInput      `pulumi:"primaryExitNode"`
 	ReverseDns              pulumi.StringInput      `pulumi:"reverseDns"`
 	RtImport                pulumi.StringInput      `pulumi:"rtImport"`
 	ServiceVlan             pulumi.IntInput         `pulumi:"serviceVlan"`
 	ServiceVlanProtocol     pulumi.StringInput      `pulumi:"serviceVlanProtocol"`
+	State                   pulumi.StringInput      `pulumi:"state"`
 	Type                    pulumi.StringInput      `pulumi:"type"`
 	VrfVxlan                pulumi.IntInput         `pulumi:"vrfVxlan"`
 }
@@ -173,6 +489,10 @@ func (o GetZonesZoneOutput) Peers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetZonesZone) []string { return v.Peers }).(pulumi.StringArrayOutput)
 }
 
+func (o GetZonesZoneOutput) Pending() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZonesZone) bool { return v.Pending }).(pulumi.BoolOutput)
+}
+
 func (o GetZonesZoneOutput) PrimaryExitNode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZonesZone) string { return v.PrimaryExitNode }).(pulumi.StringOutput)
 }
@@ -191,6 +511,10 @@ func (o GetZonesZoneOutput) ServiceVlan() pulumi.IntOutput {
 
 func (o GetZonesZoneOutput) ServiceVlanProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZonesZone) string { return v.ServiceVlanProtocol }).(pulumi.StringOutput)
+}
+
+func (o GetZonesZoneOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesZone) string { return v.State }).(pulumi.StringOutput)
 }
 
 func (o GetZonesZoneOutput) Type() pulumi.StringOutput {
@@ -222,8 +546,16 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetDhcpRangeInput)(nil)).Elem(), SubnetDhcpRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetDhcpRangePtrInput)(nil)).Elem(), SubnetDhcpRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetDhcpRangeInput)(nil)).Elem(), GetSubnetDhcpRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetDhcpRangePtrInput)(nil)).Elem(), GetSubnetDhcpRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
+	pulumi.RegisterOutputType(SubnetDhcpRangeOutput{})
+	pulumi.RegisterOutputType(SubnetDhcpRangePtrOutput{})
+	pulumi.RegisterOutputType(GetSubnetDhcpRangeOutput{})
+	pulumi.RegisterOutputType(GetSubnetDhcpRangePtrOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneArrayOutput{})
 }

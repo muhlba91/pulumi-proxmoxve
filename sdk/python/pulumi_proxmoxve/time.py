@@ -66,7 +66,7 @@ class _TimeState:
         :param pulumi.Input[_builtins.str] local_time: The node's local time.
         :param pulumi.Input[_builtins.str] node_name: A node name.
         :param pulumi.Input[_builtins.str] time_zone: The node's time zone.
-        :param pulumi.Input[_builtins.str] utc_time: The node's local time formatted as UTC.
+        :param pulumi.Input[_builtins.str] utc_time: The node's time formatted as UTC.
         """
         if local_time is not None:
             pulumi.set(__self__, "local_time", local_time)
@@ -117,7 +117,7 @@ class _TimeState:
     @pulumi.getter(name="utcTime")
     def utc_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The node's local time formatted as UTC.
+        The node's time formatted as UTC.
         """
         return pulumi.get(self, "utc_time")
 
@@ -252,7 +252,7 @@ class Time(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] local_time: The node's local time.
         :param pulumi.Input[_builtins.str] node_name: A node name.
         :param pulumi.Input[_builtins.str] time_zone: The node's time zone.
-        :param pulumi.Input[_builtins.str] utc_time: The node's local time formatted as UTC.
+        :param pulumi.Input[_builtins.str] utc_time: The node's time formatted as UTC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -292,7 +292,7 @@ class Time(pulumi.CustomResource):
     @pulumi.getter(name="utcTime")
     def utc_time(self) -> pulumi.Output[_builtins.str]:
         """
-        The node's local time formatted as UTC.
+        The node's time formatted as UTC.
         """
         return pulumi.get(self, "utc_time")
 

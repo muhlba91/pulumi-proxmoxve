@@ -125,6 +125,12 @@ namespace Pulumi.ProxmoxVE.SDNZone
         public Output<ImmutableArray<string>> Nodes { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates if the zone has pending configuration changes that need to be applied.
+        /// </summary>
+        [Output("pending")]
+        public Output<bool> Pending { get; private set; } = null!;
+
+        /// <summary>
         /// Primary exit node for EVPN.
         /// </summary>
         [Output("primaryExitNode")]
@@ -141,6 +147,12 @@ namespace Pulumi.ProxmoxVE.SDNZone
         /// </summary>
         [Output("rtImport")]
         public Output<string?> RtImport { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates the current state of the zone.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
 
         /// <summary>
         /// VRF VXLAN-ID used for dedicated routing interconnect between VNets. It must be different than the VXLAN-ID of the VNets.
@@ -384,6 +396,12 @@ namespace Pulumi.ProxmoxVE.SDNZone
         }
 
         /// <summary>
+        /// Indicates if the zone has pending configuration changes that need to be applied.
+        /// </summary>
+        [Input("pending")]
+        public Input<bool>? Pending { get; set; }
+
+        /// <summary>
         /// Primary exit node for EVPN.
         /// </summary>
         [Input("primaryExitNode")]
@@ -400,6 +418,12 @@ namespace Pulumi.ProxmoxVE.SDNZone
         /// </summary>
         [Input("rtImport")]
         public Input<string>? RtImport { get; set; }
+
+        /// <summary>
+        /// Indicates the current state of the zone.
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
 
         /// <summary>
         /// VRF VXLAN-ID used for dedicated routing interconnect between VNets. It must be different than the VXLAN-ID of the VNets.

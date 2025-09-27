@@ -78,9 +78,17 @@ export interface GetVlanResult {
      */
     readonly nodes: string[];
     /**
+     * Indicates if the zone has pending configuration changes that need to be applied.
+     */
+    readonly pending: boolean;
+    /**
      * Reverse DNS API server address.
      */
     readonly reverseDns: string;
+    /**
+     * Indicates the current state of the zone.
+     */
+    readonly state: string;
 }
 /**
  * Retrieves information about a VLAN Zone in Proxmox SDN. It uses an existing local Linux or OVS bridge to connect to the node's physical interface. It uses VLAN tagging defined in the VNet to isolate the network segments. This allows connectivity of VMs between different nodes.

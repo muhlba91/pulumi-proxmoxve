@@ -59,7 +59,7 @@ type Time struct {
 	NodeName pulumi.StringOutput `pulumi:"nodeName"`
 	// The node's time zone.
 	TimeZone pulumi.StringOutput `pulumi:"timeZone"`
-	// The node's local time formatted as UTC.
+	// The node's time formatted as UTC.
 	UtcTime pulumi.StringOutput `pulumi:"utcTime"`
 }
 
@@ -105,7 +105,7 @@ type timeState struct {
 	NodeName *string `pulumi:"nodeName"`
 	// The node's time zone.
 	TimeZone *string `pulumi:"timeZone"`
-	// The node's local time formatted as UTC.
+	// The node's time formatted as UTC.
 	UtcTime *string `pulumi:"utcTime"`
 }
 
@@ -116,7 +116,7 @@ type TimeState struct {
 	NodeName pulumi.StringPtrInput
 	// The node's time zone.
 	TimeZone pulumi.StringPtrInput
-	// The node's local time formatted as UTC.
+	// The node's time formatted as UTC.
 	UtcTime pulumi.StringPtrInput
 }
 
@@ -241,7 +241,7 @@ func (o TimeOutput) TimeZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Time) pulumi.StringOutput { return v.TimeZone }).(pulumi.StringOutput)
 }
 
-// The node's local time formatted as UTC.
+// The node's time formatted as UTC.
 func (o TimeOutput) UtcTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Time) pulumi.StringOutput { return v.UtcTime }).(pulumi.StringOutput)
 }

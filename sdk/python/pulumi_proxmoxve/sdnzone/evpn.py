@@ -273,9 +273,11 @@ class _EvpnState:
                  ipam: Optional[pulumi.Input[_builtins.str]] = None,
                  mtu: Optional[pulumi.Input[_builtins.int]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 pending: Optional[pulumi.Input[_builtins.bool]] = None,
                  primary_exit_node: Optional[pulumi.Input[_builtins.str]] = None,
                  reverse_dns: Optional[pulumi.Input[_builtins.str]] = None,
                  rt_import: Optional[pulumi.Input[_builtins.str]] = None,
+                 state: Optional[pulumi.Input[_builtins.str]] = None,
                  vrf_vxlan: Optional[pulumi.Input[_builtins.int]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -290,9 +292,11 @@ class _EvpnState:
         :param pulumi.Input[_builtins.str] ipam: IP Address Management system.
         :param pulumi.Input[_builtins.int] mtu: MTU value for the zone.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: The Proxmox nodes which the zone and associated VNets should be deployed on
+        :param pulumi.Input[_builtins.bool] pending: Indicates if the zone has pending configuration changes that need to be applied.
         :param pulumi.Input[_builtins.str] primary_exit_node: Primary exit node for EVPN.
         :param pulumi.Input[_builtins.str] reverse_dns: Reverse DNS API server address.
         :param pulumi.Input[_builtins.str] rt_import: Route target import for EVPN.
+        :param pulumi.Input[_builtins.str] state: Indicates the current state of the zone.
         :param pulumi.Input[_builtins.int] vrf_vxlan: VRF VXLAN-ID used for dedicated routing interconnect between VNets. It must be different than the VXLAN-ID of the VNets.
         :param pulumi.Input[_builtins.str] zone_id: The unique identifier of the SDN zone.
         """
@@ -316,12 +320,16 @@ class _EvpnState:
             pulumi.set(__self__, "mtu", mtu)
         if nodes is not None:
             pulumi.set(__self__, "nodes", nodes)
+        if pending is not None:
+            pulumi.set(__self__, "pending", pending)
         if primary_exit_node is not None:
             pulumi.set(__self__, "primary_exit_node", primary_exit_node)
         if reverse_dns is not None:
             pulumi.set(__self__, "reverse_dns", reverse_dns)
         if rt_import is not None:
             pulumi.set(__self__, "rt_import", rt_import)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
         if vrf_vxlan is not None:
             pulumi.set(__self__, "vrf_vxlan", vrf_vxlan)
         if zone_id is not None:
@@ -448,6 +456,18 @@ class _EvpnState:
         pulumi.set(self, "nodes", value)
 
     @_builtins.property
+    @pulumi.getter
+    def pending(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates if the zone has pending configuration changes that need to be applied.
+        """
+        return pulumi.get(self, "pending")
+
+    @pending.setter
+    def pending(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "pending", value)
+
+    @_builtins.property
     @pulumi.getter(name="primaryExitNode")
     def primary_exit_node(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -482,6 +502,18 @@ class _EvpnState:
     @rt_import.setter
     def rt_import(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "rt_import", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Indicates the current state of the zone.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="vrfVxlan")
@@ -696,6 +728,8 @@ class Evpn(pulumi.CustomResource):
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["pending"] = None
+            __props__.__dict__["state"] = None
         super(Evpn, __self__).__init__(
             'proxmoxve:SDNZone/evpn:Evpn',
             resource_name,
@@ -716,9 +750,11 @@ class Evpn(pulumi.CustomResource):
             ipam: Optional[pulumi.Input[_builtins.str]] = None,
             mtu: Optional[pulumi.Input[_builtins.int]] = None,
             nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            pending: Optional[pulumi.Input[_builtins.bool]] = None,
             primary_exit_node: Optional[pulumi.Input[_builtins.str]] = None,
             reverse_dns: Optional[pulumi.Input[_builtins.str]] = None,
             rt_import: Optional[pulumi.Input[_builtins.str]] = None,
+            state: Optional[pulumi.Input[_builtins.str]] = None,
             vrf_vxlan: Optional[pulumi.Input[_builtins.int]] = None,
             zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Evpn':
         """
@@ -738,9 +774,11 @@ class Evpn(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ipam: IP Address Management system.
         :param pulumi.Input[_builtins.int] mtu: MTU value for the zone.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: The Proxmox nodes which the zone and associated VNets should be deployed on
+        :param pulumi.Input[_builtins.bool] pending: Indicates if the zone has pending configuration changes that need to be applied.
         :param pulumi.Input[_builtins.str] primary_exit_node: Primary exit node for EVPN.
         :param pulumi.Input[_builtins.str] reverse_dns: Reverse DNS API server address.
         :param pulumi.Input[_builtins.str] rt_import: Route target import for EVPN.
+        :param pulumi.Input[_builtins.str] state: Indicates the current state of the zone.
         :param pulumi.Input[_builtins.int] vrf_vxlan: VRF VXLAN-ID used for dedicated routing interconnect between VNets. It must be different than the VXLAN-ID of the VNets.
         :param pulumi.Input[_builtins.str] zone_id: The unique identifier of the SDN zone.
         """
@@ -758,9 +796,11 @@ class Evpn(pulumi.CustomResource):
         __props__.__dict__["ipam"] = ipam
         __props__.__dict__["mtu"] = mtu
         __props__.__dict__["nodes"] = nodes
+        __props__.__dict__["pending"] = pending
         __props__.__dict__["primary_exit_node"] = primary_exit_node
         __props__.__dict__["reverse_dns"] = reverse_dns
         __props__.__dict__["rt_import"] = rt_import
+        __props__.__dict__["state"] = state
         __props__.__dict__["vrf_vxlan"] = vrf_vxlan
         __props__.__dict__["zone_id"] = zone_id
         return Evpn(resource_name, opts=opts, __props__=__props__)
@@ -846,6 +886,14 @@ class Evpn(pulumi.CustomResource):
         return pulumi.get(self, "nodes")
 
     @_builtins.property
+    @pulumi.getter
+    def pending(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Indicates if the zone has pending configuration changes that need to be applied.
+        """
+        return pulumi.get(self, "pending")
+
+    @_builtins.property
     @pulumi.getter(name="primaryExitNode")
     def primary_exit_node(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
@@ -868,6 +916,14 @@ class Evpn(pulumi.CustomResource):
         Route target import for EVPN.
         """
         return pulumi.get(self, "rt_import")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[_builtins.str]:
+        """
+        Indicates the current state of the zone.
+        """
+        return pulumi.get(self, "state")
 
     @_builtins.property
     @pulumi.getter(name="vrfVxlan")

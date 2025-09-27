@@ -91,12 +91,16 @@ type Evpn struct {
 	Mtu pulumi.IntPtrOutput `pulumi:"mtu"`
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes pulumi.StringArrayOutput `pulumi:"nodes"`
+	// Indicates if the zone has pending configuration changes that need to be applied.
+	Pending pulumi.BoolOutput `pulumi:"pending"`
 	// Primary exit node for EVPN.
 	PrimaryExitNode pulumi.StringPtrOutput `pulumi:"primaryExitNode"`
 	// Reverse DNS API server address.
 	ReverseDns pulumi.StringPtrOutput `pulumi:"reverseDns"`
 	// Route target import for EVPN.
 	RtImport pulumi.StringPtrOutput `pulumi:"rtImport"`
+	// Indicates the current state of the zone.
+	State pulumi.StringOutput `pulumi:"state"`
 	// VRF VXLAN-ID used for dedicated routing interconnect between VNets. It must be different than the VXLAN-ID of the VNets.
 	VrfVxlan pulumi.IntOutput `pulumi:"vrfVxlan"`
 	// The unique identifier of the SDN zone.
@@ -165,12 +169,16 @@ type evpnState struct {
 	Mtu *int `pulumi:"mtu"`
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes []string `pulumi:"nodes"`
+	// Indicates if the zone has pending configuration changes that need to be applied.
+	Pending *bool `pulumi:"pending"`
 	// Primary exit node for EVPN.
 	PrimaryExitNode *string `pulumi:"primaryExitNode"`
 	// Reverse DNS API server address.
 	ReverseDns *string `pulumi:"reverseDns"`
 	// Route target import for EVPN.
 	RtImport *string `pulumi:"rtImport"`
+	// Indicates the current state of the zone.
+	State *string `pulumi:"state"`
 	// VRF VXLAN-ID used for dedicated routing interconnect between VNets. It must be different than the VXLAN-ID of the VNets.
 	VrfVxlan *int `pulumi:"vrfVxlan"`
 	// The unique identifier of the SDN zone.
@@ -198,12 +206,16 @@ type EvpnState struct {
 	Mtu pulumi.IntPtrInput
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes pulumi.StringArrayInput
+	// Indicates if the zone has pending configuration changes that need to be applied.
+	Pending pulumi.BoolPtrInput
 	// Primary exit node for EVPN.
 	PrimaryExitNode pulumi.StringPtrInput
 	// Reverse DNS API server address.
 	ReverseDns pulumi.StringPtrInput
 	// Route target import for EVPN.
 	RtImport pulumi.StringPtrInput
+	// Indicates the current state of the zone.
+	State pulumi.StringPtrInput
 	// VRF VXLAN-ID used for dedicated routing interconnect between VNets. It must be different than the VXLAN-ID of the VNets.
 	VrfVxlan pulumi.IntPtrInput
 	// The unique identifier of the SDN zone.
@@ -418,6 +430,11 @@ func (o EvpnOutput) Nodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Evpn) pulumi.StringArrayOutput { return v.Nodes }).(pulumi.StringArrayOutput)
 }
 
+// Indicates if the zone has pending configuration changes that need to be applied.
+func (o EvpnOutput) Pending() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Evpn) pulumi.BoolOutput { return v.Pending }).(pulumi.BoolOutput)
+}
+
 // Primary exit node for EVPN.
 func (o EvpnOutput) PrimaryExitNode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Evpn) pulumi.StringPtrOutput { return v.PrimaryExitNode }).(pulumi.StringPtrOutput)
@@ -431,6 +448,11 @@ func (o EvpnOutput) ReverseDns() pulumi.StringPtrOutput {
 // Route target import for EVPN.
 func (o EvpnOutput) RtImport() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Evpn) pulumi.StringPtrOutput { return v.RtImport }).(pulumi.StringPtrOutput)
+}
+
+// Indicates the current state of the zone.
+func (o EvpnOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Evpn) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
 // VRF VXLAN-ID used for dedicated routing interconnect between VNets. It must be different than the VXLAN-ID of the VNets.

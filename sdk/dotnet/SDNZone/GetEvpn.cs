@@ -225,6 +225,10 @@ namespace Pulumi.ProxmoxVE.SDNZone
         /// </summary>
         public readonly ImmutableArray<string> Nodes;
         /// <summary>
+        /// Indicates if the zone has pending configuration changes that need to be applied.
+        /// </summary>
+        public readonly bool Pending;
+        /// <summary>
         /// Primary exit node for EVPN.
         /// </summary>
         public readonly string PrimaryExitNode;
@@ -236,6 +240,10 @@ namespace Pulumi.ProxmoxVE.SDNZone
         /// Route target import for EVPN. Must be in the format '\n\n:\n\n' (e.g., '65000:65000').
         /// </summary>
         public readonly string RtImport;
+        /// <summary>
+        /// Indicates the current state of the zone.
+        /// </summary>
+        public readonly string State;
         /// <summary>
         /// VRF VXLAN-ID used for dedicated routing interconnect between VNets. It must be different than the VXLAN-ID of the VNets.
         /// </summary>
@@ -265,11 +273,15 @@ namespace Pulumi.ProxmoxVE.SDNZone
 
             ImmutableArray<string> nodes,
 
+            bool pending,
+
             string primaryExitNode,
 
             string reverseDns,
 
             string rtImport,
+
+            string state,
 
             int vrfVxlan)
         {
@@ -284,9 +296,11 @@ namespace Pulumi.ProxmoxVE.SDNZone
             Ipam = ipam;
             Mtu = mtu;
             Nodes = nodes;
+            Pending = pending;
             PrimaryExitNode = primaryExitNode;
             ReverseDns = reverseDns;
             RtImport = rtImport;
+            State = state;
             VrfVxlan = vrfVxlan;
         }
     }

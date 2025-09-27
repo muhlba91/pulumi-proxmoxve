@@ -5,6 +5,7 @@ package io.muehlbachler.pulumi.proxmoxve.SDNZone.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -48,6 +49,11 @@ public final class GetQinqResult {
      */
     private List<String> nodes;
     /**
+     * @return Indicates if the zone has pending configuration changes that need to be applied.
+     * 
+     */
+    private Boolean pending;
+    /**
      * @return Reverse DNS API server address.
      * 
      */
@@ -62,6 +68,11 @@ public final class GetQinqResult {
      * 
      */
     private String serviceVlanProtocol;
+    /**
+     * @return Indicates the current state of the zone.
+     * 
+     */
+    private String state;
 
     private GetQinqResult() {}
     /**
@@ -114,6 +125,13 @@ public final class GetQinqResult {
         return this.nodes;
     }
     /**
+     * @return Indicates if the zone has pending configuration changes that need to be applied.
+     * 
+     */
+    public Boolean pending() {
+        return this.pending;
+    }
+    /**
      * @return Reverse DNS API server address.
      * 
      */
@@ -134,6 +152,13 @@ public final class GetQinqResult {
     public String serviceVlanProtocol() {
         return this.serviceVlanProtocol;
     }
+    /**
+     * @return Indicates the current state of the zone.
+     * 
+     */
+    public String state() {
+        return this.state;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -151,9 +176,11 @@ public final class GetQinqResult {
         private String ipam;
         private Integer mtu;
         private List<String> nodes;
+        private Boolean pending;
         private String reverseDns;
         private Integer serviceVlan;
         private String serviceVlanProtocol;
+        private String state;
         public Builder() {}
         public Builder(GetQinqResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -164,9 +191,11 @@ public final class GetQinqResult {
     	      this.ipam = defaults.ipam;
     	      this.mtu = defaults.mtu;
     	      this.nodes = defaults.nodes;
+    	      this.pending = defaults.pending;
     	      this.reverseDns = defaults.reverseDns;
     	      this.serviceVlan = defaults.serviceVlan;
     	      this.serviceVlanProtocol = defaults.serviceVlanProtocol;
+    	      this.state = defaults.state;
         }
 
         @CustomType.Setter
@@ -229,6 +258,14 @@ public final class GetQinqResult {
             return nodes(List.of(nodes));
         }
         @CustomType.Setter
+        public Builder pending(Boolean pending) {
+            if (pending == null) {
+              throw new MissingRequiredPropertyException("GetQinqResult", "pending");
+            }
+            this.pending = pending;
+            return this;
+        }
+        @CustomType.Setter
         public Builder reverseDns(String reverseDns) {
             if (reverseDns == null) {
               throw new MissingRequiredPropertyException("GetQinqResult", "reverseDns");
@@ -252,6 +289,14 @@ public final class GetQinqResult {
             this.serviceVlanProtocol = serviceVlanProtocol;
             return this;
         }
+        @CustomType.Setter
+        public Builder state(String state) {
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetQinqResult", "state");
+            }
+            this.state = state;
+            return this;
+        }
         public GetQinqResult build() {
             final var _resultValue = new GetQinqResult();
             _resultValue.bridge = bridge;
@@ -261,9 +306,11 @@ public final class GetQinqResult {
             _resultValue.ipam = ipam;
             _resultValue.mtu = mtu;
             _resultValue.nodes = nodes;
+            _resultValue.pending = pending;
             _resultValue.reverseDns = reverseDns;
             _resultValue.serviceVlan = serviceVlan;
             _resultValue.serviceVlanProtocol = serviceVlanProtocol;
+            _resultValue.state = state;
             return _resultValue;
         }
     }

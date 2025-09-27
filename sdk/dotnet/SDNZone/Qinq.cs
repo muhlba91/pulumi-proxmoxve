@@ -92,6 +92,12 @@ namespace Pulumi.ProxmoxVE.SDNZone
         public Output<ImmutableArray<string>> Nodes { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates if the zone has pending configuration changes that need to be applied.
+        /// </summary>
+        [Output("pending")]
+        public Output<bool> Pending { get; private set; } = null!;
+
+        /// <summary>
         /// Reverse DNS API server address.
         /// </summary>
         [Output("reverseDns")]
@@ -108,6 +114,12 @@ namespace Pulumi.ProxmoxVE.SDNZone
         /// </summary>
         [Output("serviceVlanProtocol")]
         public Output<string?> ServiceVlanProtocol { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates the current state of the zone.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
 
         /// <summary>
         /// The unique identifier of the SDN zone.
@@ -279,6 +291,12 @@ namespace Pulumi.ProxmoxVE.SDNZone
         }
 
         /// <summary>
+        /// Indicates if the zone has pending configuration changes that need to be applied.
+        /// </summary>
+        [Input("pending")]
+        public Input<bool>? Pending { get; set; }
+
+        /// <summary>
         /// Reverse DNS API server address.
         /// </summary>
         [Input("reverseDns")]
@@ -295,6 +313,12 @@ namespace Pulumi.ProxmoxVE.SDNZone
         /// </summary>
         [Input("serviceVlanProtocol")]
         public Input<string>? ServiceVlanProtocol { get; set; }
+
+        /// <summary>
+        /// Indicates the current state of the zone.
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
 
         /// <summary>
         /// The unique identifier of the SDN zone.

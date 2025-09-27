@@ -26,11 +26,13 @@ namespace Pulumi.ProxmoxVE.Sdn.Outputs
         public readonly int Mtu;
         public readonly ImmutableArray<string> Nodes;
         public readonly ImmutableArray<string> Peers;
+        public readonly bool Pending;
         public readonly string PrimaryExitNode;
         public readonly string ReverseDns;
         public readonly string RtImport;
         public readonly int ServiceVlan;
         public readonly string ServiceVlanProtocol;
+        public readonly string State;
         public readonly string Type;
         public readonly int VrfVxlan;
 
@@ -62,6 +64,8 @@ namespace Pulumi.ProxmoxVE.Sdn.Outputs
 
             ImmutableArray<string> peers,
 
+            bool pending,
+
             string primaryExitNode,
 
             string reverseDns,
@@ -71,6 +75,8 @@ namespace Pulumi.ProxmoxVE.Sdn.Outputs
             int serviceVlan,
 
             string serviceVlanProtocol,
+
+            string state,
 
             string type,
 
@@ -89,11 +95,13 @@ namespace Pulumi.ProxmoxVE.Sdn.Outputs
             Mtu = mtu;
             Nodes = nodes;
             Peers = peers;
+            Pending = pending;
             PrimaryExitNode = primaryExitNode;
             ReverseDns = reverseDns;
             RtImport = rtImport;
             ServiceVlan = serviceVlan;
             ServiceVlanProtocol = serviceVlanProtocol;
+            State = state;
             Type = type;
             VrfVxlan = vrfVxlan;
         }

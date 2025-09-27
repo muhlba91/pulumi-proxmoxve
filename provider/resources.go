@@ -47,6 +47,7 @@ const (
 	networkMod    = "network"
 	firewallMod   = "firewall"
 	downloadMod   = "download"
+	sdnMod        = "sdn"
 	sdnZoneMod    = "sdnzone"
 	haMod         = "ha"
 )
@@ -276,6 +277,18 @@ func Provider() tfbridge.ProviderInfo {
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"id": {
 						Name: "zoneId",
+					},
+				},
+			},
+			"proxmox_virtual_environment_sdn_vnet": {
+				Tok: tfbridge.MakeResource(mainPkg, "Sdn", "Vnet"),
+				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
+					const resourceIDPropertyKey = resource.PropertyKey("id")
+					return resource.ID(state[resourceIDPropertyKey].V.(string)), nil
+				},
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"id": {
+						Name: "vnetId",
 					},
 				},
 			},
