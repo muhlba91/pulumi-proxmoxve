@@ -74,7 +74,7 @@ class GetContainerResult:
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
         """
-        Status of the container
+        The status of the container.
         """
         return pulumi.get(self, "status")
 
@@ -90,7 +90,7 @@ class GetContainerResult:
     @pulumi.getter
     def template(self) -> Optional[_builtins.bool]:
         """
-        Is container a template (true) or a regular container (false)
+        Whether the container is a template.
         """
         return pulumi.get(self, "template")
 
@@ -135,8 +135,8 @@ def get_container(node_name: Optional[_builtins.str] = None,
 
 
     :param _builtins.str node_name: The node name.
-    :param _builtins.str status: Status of the container
-    :param _builtins.bool template: Is container a template (true) or a regular container (false)
+    :param _builtins.str status: The status of the container.
+    :param _builtins.bool template: Whether the container is a template.
     :param _builtins.int vm_id: The container identifier.
     """
     __args__ = dict()
@@ -175,8 +175,8 @@ def get_container_output(node_name: Optional[pulumi.Input[_builtins.str]] = None
 
 
     :param _builtins.str node_name: The node name.
-    :param _builtins.str status: Status of the container
-    :param _builtins.bool template: Is container a template (true) or a regular container (false)
+    :param _builtins.str status: The status of the container.
+    :param _builtins.bool template: Whether the container is a template.
     :param _builtins.int vm_id: The container identifier.
     """
     __args__ = dict()

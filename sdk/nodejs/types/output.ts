@@ -15,7 +15,7 @@ export interface GetContainersContainer {
      */
     nodeName: string;
     /**
-     * Status of the container
+     * The status of the container.
      */
     status?: string;
     /**
@@ -24,7 +24,7 @@ export interface GetContainersContainer {
      */
     tags: string[];
     /**
-     * Is container a template (true) or a regular container (false)
+     * Whether the container is a template.
      */
     template?: boolean;
     /**
@@ -1031,6 +1031,17 @@ export namespace Permission {
 }
 
 export namespace Sdn {
+    export interface GetSubnetDhcpRange {
+        /**
+         * End of the DHCP range.
+         */
+        endAddress: string;
+        /**
+         * Start of the DHCP range.
+         */
+        startAddress: string;
+    }
+
     export interface GetZonesZone {
         advertiseSubnets: boolean;
         bridge: string;
@@ -1045,13 +1056,26 @@ export namespace Sdn {
         mtu: number;
         nodes: string[];
         peers: string[];
+        pending: boolean;
         primaryExitNode: string;
         reverseDns: string;
         rtImport: string;
         serviceVlan: number;
         serviceVlanProtocol: string;
+        state: string;
         type: string;
         vrfVxlan: number;
+    }
+
+    export interface SubnetDhcpRange {
+        /**
+         * End of the DHCP range.
+         */
+        endAddress: string;
+        /**
+         * Start of the DHCP range.
+         */
+        startAddress: string;
     }
 
 }
@@ -1193,7 +1217,7 @@ export namespace VM {
          */
         nodeName: string;
         /**
-         * Status of the VM
+         * The status of the VM.
          */
         status?: string;
         /**
@@ -1202,7 +1226,7 @@ export namespace VM {
          */
         tags: string[];
         /**
-         * Is VM a template (true) or a regular VM (false)
+         * Whether the VM is a template.
          */
         template?: boolean;
         /**

@@ -53,9 +53,9 @@ func LookupVirtualMachine(ctx *pulumi.Context, args *LookupVirtualMachineArgs, o
 type LookupVirtualMachineArgs struct {
 	// The node name.
 	NodeName string `pulumi:"nodeName"`
-	// Status of the VM
+	// The status of the VM.
 	Status *string `pulumi:"status"`
-	// Is VM a template (true) or a regular VM (false)
+	// Whether the VM is a template.
 	Template *bool `pulumi:"template"`
 	// The VM identifier.
 	VmId int `pulumi:"vmId"`
@@ -68,11 +68,11 @@ type LookupVirtualMachineResult struct {
 	// The virtual machine name.
 	Name     string `pulumi:"name"`
 	NodeName string `pulumi:"nodeName"`
-	// Status of the VM
+	// The status of the VM.
 	Status *string `pulumi:"status"`
 	// A list of tags of the VM.
 	Tags []string `pulumi:"tags"`
-	// Is VM a template (true) or a regular VM (false)
+	// Whether the VM is a template.
 	Template *bool `pulumi:"template"`
 	VmId     int   `pulumi:"vmId"`
 }
@@ -90,9 +90,9 @@ func LookupVirtualMachineOutput(ctx *pulumi.Context, args LookupVirtualMachineOu
 type LookupVirtualMachineOutputArgs struct {
 	// The node name.
 	NodeName pulumi.StringInput `pulumi:"nodeName"`
-	// Status of the VM
+	// The status of the VM.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// Is VM a template (true) or a regular VM (false)
+	// Whether the VM is a template.
 	Template pulumi.BoolPtrInput `pulumi:"template"`
 	// The VM identifier.
 	VmId pulumi.IntInput `pulumi:"vmId"`
@@ -131,7 +131,7 @@ func (o LookupVirtualMachineResultOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.NodeName }).(pulumi.StringOutput)
 }
 
-// Status of the VM
+// The status of the VM.
 func (o LookupVirtualMachineResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -141,7 +141,7 @@ func (o LookupVirtualMachineResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Is VM a template (true) or a regular VM (false)
+// Whether the VM is a template.
 func (o LookupVirtualMachineResultOutput) Template() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *bool { return v.Template }).(pulumi.BoolPtrOutput)
 }

@@ -95,10 +95,22 @@ namespace Pulumi.ProxmoxVE.SDNZone
         public Output<ImmutableArray<string>> Peers { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates if the zone has pending configuration changes that need to be applied.
+        /// </summary>
+        [Output("pending")]
+        public Output<bool> Pending { get; private set; } = null!;
+
+        /// <summary>
         /// Reverse DNS API server address.
         /// </summary>
         [Output("reverseDns")]
         public Output<string?> ReverseDns { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates the current state of the zone.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
 
         /// <summary>
         /// The unique identifier of the SDN zone.
@@ -270,10 +282,22 @@ namespace Pulumi.ProxmoxVE.SDNZone
         }
 
         /// <summary>
+        /// Indicates if the zone has pending configuration changes that need to be applied.
+        /// </summary>
+        [Input("pending")]
+        public Input<bool>? Pending { get; set; }
+
+        /// <summary>
         /// Reverse DNS API server address.
         /// </summary>
         [Input("reverseDns")]
         public Input<string>? ReverseDns { get; set; }
+
+        /// <summary>
+        /// Indicates the current state of the zone.
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
 
         /// <summary>
         /// The unique identifier of the SDN zone.

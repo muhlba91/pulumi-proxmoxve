@@ -80,8 +80,12 @@ type LookupVxlanResult struct {
 	Nodes []string `pulumi:"nodes"`
 	// A list of IP addresses of each node in the VXLAN zone. This can be external nodes reachable at this IP address. All nodes in the cluster need to be mentioned here
 	Peers []string `pulumi:"peers"`
+	// Indicates if the zone has pending configuration changes that need to be applied.
+	Pending bool `pulumi:"pending"`
 	// Reverse DNS API server address.
 	ReverseDns string `pulumi:"reverseDns"`
+	// Indicates the current state of the zone.
+	State string `pulumi:"state"`
 }
 
 func LookupVxlanOutput(ctx *pulumi.Context, args LookupVxlanOutputArgs, opts ...pulumi.InvokeOption) LookupVxlanResultOutput {
@@ -153,9 +157,19 @@ func (o LookupVxlanResultOutput) Peers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupVxlanResult) []string { return v.Peers }).(pulumi.StringArrayOutput)
 }
 
+// Indicates if the zone has pending configuration changes that need to be applied.
+func (o LookupVxlanResultOutput) Pending() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupVxlanResult) bool { return v.Pending }).(pulumi.BoolOutput)
+}
+
 // Reverse DNS API server address.
 func (o LookupVxlanResultOutput) ReverseDns() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVxlanResult) string { return v.ReverseDns }).(pulumi.StringOutput)
+}
+
+// Indicates the current state of the zone.
+func (o LookupVxlanResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVxlanResult) string { return v.State }).(pulumi.StringOutput)
 }
 
 func init() {

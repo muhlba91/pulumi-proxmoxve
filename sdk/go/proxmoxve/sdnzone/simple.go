@@ -70,8 +70,12 @@ type Simple struct {
 	Mtu pulumi.IntPtrOutput `pulumi:"mtu"`
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes pulumi.StringArrayOutput `pulumi:"nodes"`
+	// Indicates if the zone has pending configuration changes that need to be applied.
+	Pending pulumi.BoolOutput `pulumi:"pending"`
 	// Reverse DNS API server address.
 	ReverseDns pulumi.StringPtrOutput `pulumi:"reverseDns"`
+	// Indicates the current state of the zone.
+	State pulumi.StringOutput `pulumi:"state"`
 	// The unique identifier of the SDN zone.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -122,8 +126,12 @@ type simpleState struct {
 	Mtu *int `pulumi:"mtu"`
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes []string `pulumi:"nodes"`
+	// Indicates if the zone has pending configuration changes that need to be applied.
+	Pending *bool `pulumi:"pending"`
 	// Reverse DNS API server address.
 	ReverseDns *string `pulumi:"reverseDns"`
+	// Indicates the current state of the zone.
+	State *string `pulumi:"state"`
 	// The unique identifier of the SDN zone.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -139,8 +147,12 @@ type SimpleState struct {
 	Mtu pulumi.IntPtrInput
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes pulumi.StringArrayInput
+	// Indicates if the zone has pending configuration changes that need to be applied.
+	Pending pulumi.BoolPtrInput
 	// Reverse DNS API server address.
 	ReverseDns pulumi.StringPtrInput
+	// Indicates the current state of the zone.
+	State pulumi.StringPtrInput
 	// The unique identifier of the SDN zone.
 	ZoneId pulumi.StringPtrInput
 }
@@ -296,9 +308,19 @@ func (o SimpleOutput) Nodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Simple) pulumi.StringArrayOutput { return v.Nodes }).(pulumi.StringArrayOutput)
 }
 
+// Indicates if the zone has pending configuration changes that need to be applied.
+func (o SimpleOutput) Pending() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Simple) pulumi.BoolOutput { return v.Pending }).(pulumi.BoolOutput)
+}
+
 // Reverse DNS API server address.
 func (o SimpleOutput) ReverseDns() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Simple) pulumi.StringPtrOutput { return v.ReverseDns }).(pulumi.StringPtrOutput)
+}
+
+// Indicates the current state of the zone.
+func (o SimpleOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Simple) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
 // The unique identifier of the SDN zone.

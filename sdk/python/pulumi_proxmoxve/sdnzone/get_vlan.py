@@ -26,7 +26,7 @@ class GetVlanResult:
     """
     A collection of values returned by getVlan.
     """
-    def __init__(__self__, bridge=None, dns=None, dns_zone=None, id=None, ipam=None, mtu=None, nodes=None, reverse_dns=None):
+    def __init__(__self__, bridge=None, dns=None, dns_zone=None, id=None, ipam=None, mtu=None, nodes=None, pending=None, reverse_dns=None, state=None):
         if bridge and not isinstance(bridge, str):
             raise TypeError("Expected argument 'bridge' to be a str")
         pulumi.set(__self__, "bridge", bridge)
@@ -48,9 +48,15 @@ class GetVlanResult:
         if nodes and not isinstance(nodes, list):
             raise TypeError("Expected argument 'nodes' to be a list")
         pulumi.set(__self__, "nodes", nodes)
+        if pending and not isinstance(pending, bool):
+            raise TypeError("Expected argument 'pending' to be a bool")
+        pulumi.set(__self__, "pending", pending)
         if reverse_dns and not isinstance(reverse_dns, str):
             raise TypeError("Expected argument 'reverse_dns' to be a str")
         pulumi.set(__self__, "reverse_dns", reverse_dns)
+        if state and not isinstance(state, str):
+            raise TypeError("Expected argument 'state' to be a str")
+        pulumi.set(__self__, "state", state)
 
     @_builtins.property
     @pulumi.getter
@@ -109,12 +115,28 @@ class GetVlanResult:
         return pulumi.get(self, "nodes")
 
     @_builtins.property
+    @pulumi.getter
+    def pending(self) -> _builtins.bool:
+        """
+        Indicates if the zone has pending configuration changes that need to be applied.
+        """
+        return pulumi.get(self, "pending")
+
+    @_builtins.property
     @pulumi.getter(name="reverseDns")
     def reverse_dns(self) -> _builtins.str:
         """
         Reverse DNS API server address.
         """
         return pulumi.get(self, "reverse_dns")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        Indicates the current state of the zone.
+        """
+        return pulumi.get(self, "state")
 
 
 class AwaitableGetVlanResult(GetVlanResult):
@@ -130,7 +152,9 @@ class AwaitableGetVlanResult(GetVlanResult):
             ipam=self.ipam,
             mtu=self.mtu,
             nodes=self.nodes,
-            reverse_dns=self.reverse_dns)
+            pending=self.pending,
+            reverse_dns=self.reverse_dns,
+            state=self.state)
 
 
 def get_vlan(id: Optional[_builtins.str] = None,
@@ -173,7 +197,9 @@ def get_vlan(id: Optional[_builtins.str] = None,
         ipam=pulumi.get(__ret__, 'ipam'),
         mtu=pulumi.get(__ret__, 'mtu'),
         nodes=pulumi.get(__ret__, 'nodes'),
-        reverse_dns=pulumi.get(__ret__, 'reverse_dns'))
+        pending=pulumi.get(__ret__, 'pending'),
+        reverse_dns=pulumi.get(__ret__, 'reverse_dns'),
+        state=pulumi.get(__ret__, 'state'))
 def get_vlan_output(id: Optional[pulumi.Input[_builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVlanResult]:
     """
@@ -213,4 +239,6 @@ def get_vlan_output(id: Optional[pulumi.Input[_builtins.str]] = None,
         ipam=pulumi.get(__response__, 'ipam'),
         mtu=pulumi.get(__response__, 'mtu'),
         nodes=pulumi.get(__response__, 'nodes'),
-        reverse_dns=pulumi.get(__response__, 'reverse_dns')))
+        pending=pulumi.get(__response__, 'pending'),
+        reverse_dns=pulumi.get(__response__, 'reverse_dns'),
+        state=pulumi.get(__response__, 'state')))

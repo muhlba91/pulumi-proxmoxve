@@ -69,8 +69,8 @@ class GetContainersContainerResult(dict):
         :param Sequence[_builtins.str] tags: A list of tags to filter the containers. The container must have all
                the tags to be included in the result.
         :param _builtins.int vm_id: The container identifier.
-        :param _builtins.str status: Status of the container
-        :param _builtins.bool template: Is container a template (true) or a regular container (false)
+        :param _builtins.str status: The status of the container.
+        :param _builtins.bool template: Whether the container is a template.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "node_name", node_name)
@@ -118,7 +118,7 @@ class GetContainersContainerResult(dict):
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
         """
-        Status of the container
+        The status of the container.
         """
         return pulumi.get(self, "status")
 
@@ -126,7 +126,7 @@ class GetContainersContainerResult(dict):
     @pulumi.getter
     def template(self) -> Optional[_builtins.bool]:
         """
-        Is container a template (true) or a regular container (false)
+        Whether the container is a template.
         """
         return pulumi.get(self, "template")
 

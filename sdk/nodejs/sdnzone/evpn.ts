@@ -114,6 +114,10 @@ export class Evpn extends pulumi.CustomResource {
      */
     declare public readonly nodes: pulumi.Output<string[]>;
     /**
+     * Indicates if the zone has pending configuration changes that need to be applied.
+     */
+    declare public /*out*/ readonly pending: pulumi.Output<boolean>;
+    /**
      * Primary exit node for EVPN.
      */
     declare public readonly primaryExitNode: pulumi.Output<string | undefined>;
@@ -125,6 +129,10 @@ export class Evpn extends pulumi.CustomResource {
      * Route target import for EVPN.
      */
     declare public readonly rtImport: pulumi.Output<string | undefined>;
+    /**
+     * Indicates the current state of the zone.
+     */
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * VRF VXLAN-ID used for dedicated routing interconnect between VNets. It must be different than the VXLAN-ID of the VNets.
      */
@@ -157,9 +165,11 @@ export class Evpn extends pulumi.CustomResource {
             resourceInputs["ipam"] = state?.ipam;
             resourceInputs["mtu"] = state?.mtu;
             resourceInputs["nodes"] = state?.nodes;
+            resourceInputs["pending"] = state?.pending;
             resourceInputs["primaryExitNode"] = state?.primaryExitNode;
             resourceInputs["reverseDns"] = state?.reverseDns;
             resourceInputs["rtImport"] = state?.rtImport;
+            resourceInputs["state"] = state?.state;
             resourceInputs["vrfVxlan"] = state?.vrfVxlan;
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
@@ -191,6 +201,8 @@ export class Evpn extends pulumi.CustomResource {
             resourceInputs["rtImport"] = args?.rtImport;
             resourceInputs["vrfVxlan"] = args?.vrfVxlan;
             resourceInputs["zoneId"] = args?.zoneId;
+            resourceInputs["pending"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Evpn.__pulumiType, name, resourceInputs, opts);
@@ -242,6 +254,10 @@ export interface EvpnState {
      */
     nodes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Indicates if the zone has pending configuration changes that need to be applied.
+     */
+    pending?: pulumi.Input<boolean>;
+    /**
      * Primary exit node for EVPN.
      */
     primaryExitNode?: pulumi.Input<string>;
@@ -253,6 +269,10 @@ export interface EvpnState {
      * Route target import for EVPN.
      */
     rtImport?: pulumi.Input<string>;
+    /**
+     * Indicates the current state of the zone.
+     */
+    state?: pulumi.Input<string>;
     /**
      * VRF VXLAN-ID used for dedicated routing interconnect between VNets. It must be different than the VXLAN-ID of the VNets.
      */

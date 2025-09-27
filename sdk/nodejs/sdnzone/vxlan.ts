@@ -92,9 +92,17 @@ export class Vxlan extends pulumi.CustomResource {
      */
     declare public readonly peers: pulumi.Output<string[]>;
     /**
+     * Indicates if the zone has pending configuration changes that need to be applied.
+     */
+    declare public /*out*/ readonly pending: pulumi.Output<boolean>;
+    /**
      * Reverse DNS API server address.
      */
     declare public readonly reverseDns: pulumi.Output<string | undefined>;
+    /**
+     * Indicates the current state of the zone.
+     */
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The unique identifier of the SDN zone.
      */
@@ -119,7 +127,9 @@ export class Vxlan extends pulumi.CustomResource {
             resourceInputs["mtu"] = state?.mtu;
             resourceInputs["nodes"] = state?.nodes;
             resourceInputs["peers"] = state?.peers;
+            resourceInputs["pending"] = state?.pending;
             resourceInputs["reverseDns"] = state?.reverseDns;
+            resourceInputs["state"] = state?.state;
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as VxlanArgs | undefined;
@@ -140,6 +150,8 @@ export class Vxlan extends pulumi.CustomResource {
             resourceInputs["peers"] = args?.peers;
             resourceInputs["reverseDns"] = args?.reverseDns;
             resourceInputs["zoneId"] = args?.zoneId;
+            resourceInputs["pending"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Vxlan.__pulumiType, name, resourceInputs, opts);
@@ -175,9 +187,17 @@ export interface VxlanState {
      */
     peers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Indicates if the zone has pending configuration changes that need to be applied.
+     */
+    pending?: pulumi.Input<boolean>;
+    /**
      * Reverse DNS API server address.
      */
     reverseDns?: pulumi.Input<string>;
+    /**
+     * Indicates the current state of the zone.
+     */
+    state?: pulumi.Input<string>;
     /**
      * The unique identifier of the SDN zone.
      */

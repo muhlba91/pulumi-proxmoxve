@@ -97,13 +97,13 @@ namespace Pulumi.ProxmoxVE
         public string NodeName { get; set; } = null!;
 
         /// <summary>
-        /// Status of the container
+        /// The status of the container.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
 
         /// <summary>
-        /// Is container a template (true) or a regular container (false)
+        /// Whether the container is a template.
         /// </summary>
         [Input("template")]
         public bool? Template { get; set; }
@@ -129,13 +129,13 @@ namespace Pulumi.ProxmoxVE
         public Input<string> NodeName { get; set; } = null!;
 
         /// <summary>
-        /// Status of the container
+        /// The status of the container.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Is container a template (true) or a regular container (false)
+        /// Whether the container is a template.
         /// </summary>
         [Input("template")]
         public Input<bool>? Template { get; set; }
@@ -166,7 +166,7 @@ namespace Pulumi.ProxmoxVE
         public readonly string Name;
         public readonly string NodeName;
         /// <summary>
-        /// Status of the container
+        /// The status of the container.
         /// </summary>
         public readonly string? Status;
         /// <summary>
@@ -174,7 +174,7 @@ namespace Pulumi.ProxmoxVE
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// Is container a template (true) or a regular container (false)
+        /// Whether the container is a template.
         /// </summary>
         public readonly bool? Template;
         public readonly int VmId;

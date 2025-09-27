@@ -169,6 +169,21 @@ public final class EvpnState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Indicates if the zone has pending configuration changes that need to be applied.
+     * 
+     */
+    @Import(name="pending")
+    private @Nullable Output<Boolean> pending;
+
+    /**
+     * @return Indicates if the zone has pending configuration changes that need to be applied.
+     * 
+     */
+    public Optional<Output<Boolean>> pending() {
+        return Optional.ofNullable(this.pending);
+    }
+
+    /**
      * Primary exit node for EVPN.
      * 
      */
@@ -214,6 +229,21 @@ public final class EvpnState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Indicates the current state of the zone.
+     * 
+     */
+    @Import(name="state")
+    private @Nullable Output<String> state;
+
+    /**
+     * @return Indicates the current state of the zone.
+     * 
+     */
+    public Optional<Output<String>> state() {
+        return Optional.ofNullable(this.state);
+    }
+
+    /**
      * VRF VXLAN-ID used for dedicated routing interconnect between VNets. It must be different than the VXLAN-ID of the VNets.
      * 
      */
@@ -256,9 +286,11 @@ public final class EvpnState extends com.pulumi.resources.ResourceArgs {
         this.ipam = $.ipam;
         this.mtu = $.mtu;
         this.nodes = $.nodes;
+        this.pending = $.pending;
         this.primaryExitNode = $.primaryExitNode;
         this.reverseDns = $.reverseDns;
         this.rtImport = $.rtImport;
+        this.state = $.state;
         this.vrfVxlan = $.vrfVxlan;
         this.zoneId = $.zoneId;
     }
@@ -512,6 +544,27 @@ public final class EvpnState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param pending Indicates if the zone has pending configuration changes that need to be applied.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pending(@Nullable Output<Boolean> pending) {
+            $.pending = pending;
+            return this;
+        }
+
+        /**
+         * @param pending Indicates if the zone has pending configuration changes that need to be applied.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pending(Boolean pending) {
+            return pending(Output.of(pending));
+        }
+
+        /**
          * @param primaryExitNode Primary exit node for EVPN.
          * 
          * @return builder
@@ -572,6 +625,27 @@ public final class EvpnState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder rtImport(String rtImport) {
             return rtImport(Output.of(rtImport));
+        }
+
+        /**
+         * @param state Indicates the current state of the zone.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(@Nullable Output<String> state) {
+            $.state = state;
+            return this;
+        }
+
+        /**
+         * @param state Indicates the current state of the zone.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(String state) {
+            return state(Output.of(state));
         }
 
         /**

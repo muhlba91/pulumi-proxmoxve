@@ -22,7 +22,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly string NodeName;
         /// <summary>
-        /// Status of the VM
+        /// The status of the VM.
         /// </summary>
         public readonly string? Status;
         /// <summary>
@@ -31,7 +31,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// Is VM a template (true) or a regular VM (false)
+        /// Whether the VM is a template.
         /// </summary>
         public readonly bool? Template;
         /// <summary>

@@ -8,13 +8,89 @@ import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.deployment.InvokeOutputOptions;
+import io.muehlbachler.pulumi.proxmoxve.Sdn.inputs.GetSubnetArgs;
+import io.muehlbachler.pulumi.proxmoxve.Sdn.inputs.GetSubnetPlainArgs;
+import io.muehlbachler.pulumi.proxmoxve.Sdn.inputs.GetVnetArgs;
+import io.muehlbachler.pulumi.proxmoxve.Sdn.inputs.GetVnetPlainArgs;
 import io.muehlbachler.pulumi.proxmoxve.Sdn.inputs.GetZonesArgs;
 import io.muehlbachler.pulumi.proxmoxve.Sdn.inputs.GetZonesPlainArgs;
+import io.muehlbachler.pulumi.proxmoxve.Sdn.outputs.GetSubnetResult;
+import io.muehlbachler.pulumi.proxmoxve.Sdn.outputs.GetVnetResult;
 import io.muehlbachler.pulumi.proxmoxve.Sdn.outputs.GetZonesResult;
 import io.muehlbachler.pulumi.proxmoxve.Utilities;
 import java.util.concurrent.CompletableFuture;
 
 public final class SdnFunctions {
+    /**
+     * Retrieve details about a specific SDN Subnet in Proxmox VE.
+     * 
+     */
+    public static Output<GetSubnetResult> getSubnet(GetSubnetArgs args) {
+        return getSubnet(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieve details about a specific SDN Subnet in Proxmox VE.
+     * 
+     */
+    public static CompletableFuture<GetSubnetResult> getSubnetPlain(GetSubnetPlainArgs args) {
+        return getSubnetPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieve details about a specific SDN Subnet in Proxmox VE.
+     * 
+     */
+    public static Output<GetSubnetResult> getSubnet(GetSubnetArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:Sdn/getSubnet:getSubnet", TypeShape.of(GetSubnetResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieve details about a specific SDN Subnet in Proxmox VE.
+     * 
+     */
+    public static Output<GetSubnetResult> getSubnet(GetSubnetArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:Sdn/getSubnet:getSubnet", TypeShape.of(GetSubnetResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieve details about a specific SDN Subnet in Proxmox VE.
+     * 
+     */
+    public static CompletableFuture<GetSubnetResult> getSubnetPlain(GetSubnetPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("proxmoxve:Sdn/getSubnet:getSubnet", TypeShape.of(GetSubnetResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about an existing SDN VNet.
+     * 
+     */
+    public static Output<GetVnetResult> getVnet(GetVnetArgs args) {
+        return getVnet(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about an existing SDN VNet.
+     * 
+     */
+    public static CompletableFuture<GetVnetResult> getVnetPlain(GetVnetPlainArgs args) {
+        return getVnetPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about an existing SDN VNet.
+     * 
+     */
+    public static Output<GetVnetResult> getVnet(GetVnetArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:Sdn/getVnet:getVnet", TypeShape.of(GetVnetResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about an existing SDN VNet.
+     * 
+     */
+    public static Output<GetVnetResult> getVnet(GetVnetArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:Sdn/getVnet:getVnet", TypeShape.of(GetVnetResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about an existing SDN VNet.
+     * 
+     */
+    public static CompletableFuture<GetVnetResult> getVnetPlain(GetVnetPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("proxmoxve:Sdn/getVnet:getVnet", TypeShape.of(GetVnetResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Retrieves information about all SDN Zones in Proxmox. This data source can optionally filter zones by type.
      * 

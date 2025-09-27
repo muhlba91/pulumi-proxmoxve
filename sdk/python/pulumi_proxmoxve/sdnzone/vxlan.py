@@ -158,7 +158,9 @@ class _VxlanState:
                  mtu: Optional[pulumi.Input[_builtins.int]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  peers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 pending: Optional[pulumi.Input[_builtins.bool]] = None,
                  reverse_dns: Optional[pulumi.Input[_builtins.str]] = None,
+                 state: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Vxlan resources.
@@ -168,7 +170,9 @@ class _VxlanState:
         :param pulumi.Input[_builtins.int] mtu: MTU value for the zone.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: The Proxmox nodes which the zone and associated VNets should be deployed on
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] peers: A list of IP addresses of each node in the VXLAN zone. This can be external nodes reachable at this IP address. All nodes in the cluster need to be mentioned here
+        :param pulumi.Input[_builtins.bool] pending: Indicates if the zone has pending configuration changes that need to be applied.
         :param pulumi.Input[_builtins.str] reverse_dns: Reverse DNS API server address.
+        :param pulumi.Input[_builtins.str] state: Indicates the current state of the zone.
         :param pulumi.Input[_builtins.str] zone_id: The unique identifier of the SDN zone.
         """
         if dns is not None:
@@ -183,8 +187,12 @@ class _VxlanState:
             pulumi.set(__self__, "nodes", nodes)
         if peers is not None:
             pulumi.set(__self__, "peers", peers)
+        if pending is not None:
+            pulumi.set(__self__, "pending", pending)
         if reverse_dns is not None:
             pulumi.set(__self__, "reverse_dns", reverse_dns)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -261,6 +269,18 @@ class _VxlanState:
         pulumi.set(self, "peers", value)
 
     @_builtins.property
+    @pulumi.getter
+    def pending(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates if the zone has pending configuration changes that need to be applied.
+        """
+        return pulumi.get(self, "pending")
+
+    @pending.setter
+    def pending(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "pending", value)
+
+    @_builtins.property
     @pulumi.getter(name="reverseDns")
     def reverse_dns(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -271,6 +291,18 @@ class _VxlanState:
     @reverse_dns.setter
     def reverse_dns(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "reverse_dns", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Indicates the current state of the zone.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
@@ -431,6 +463,8 @@ class Vxlan(pulumi.CustomResource):
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["pending"] = None
+            __props__.__dict__["state"] = None
         super(Vxlan, __self__).__init__(
             'proxmoxve:SDNZone/vxlan:Vxlan',
             resource_name,
@@ -447,7 +481,9 @@ class Vxlan(pulumi.CustomResource):
             mtu: Optional[pulumi.Input[_builtins.int]] = None,
             nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             peers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            pending: Optional[pulumi.Input[_builtins.bool]] = None,
             reverse_dns: Optional[pulumi.Input[_builtins.str]] = None,
+            state: Optional[pulumi.Input[_builtins.str]] = None,
             zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Vxlan':
         """
         Get an existing Vxlan resource's state with the given name, id, and optional extra
@@ -462,7 +498,9 @@ class Vxlan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] mtu: MTU value for the zone.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: The Proxmox nodes which the zone and associated VNets should be deployed on
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] peers: A list of IP addresses of each node in the VXLAN zone. This can be external nodes reachable at this IP address. All nodes in the cluster need to be mentioned here
+        :param pulumi.Input[_builtins.bool] pending: Indicates if the zone has pending configuration changes that need to be applied.
         :param pulumi.Input[_builtins.str] reverse_dns: Reverse DNS API server address.
+        :param pulumi.Input[_builtins.str] state: Indicates the current state of the zone.
         :param pulumi.Input[_builtins.str] zone_id: The unique identifier of the SDN zone.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -475,7 +513,9 @@ class Vxlan(pulumi.CustomResource):
         __props__.__dict__["mtu"] = mtu
         __props__.__dict__["nodes"] = nodes
         __props__.__dict__["peers"] = peers
+        __props__.__dict__["pending"] = pending
         __props__.__dict__["reverse_dns"] = reverse_dns
+        __props__.__dict__["state"] = state
         __props__.__dict__["zone_id"] = zone_id
         return Vxlan(resource_name, opts=opts, __props__=__props__)
 
@@ -528,12 +568,28 @@ class Vxlan(pulumi.CustomResource):
         return pulumi.get(self, "peers")
 
     @_builtins.property
+    @pulumi.getter
+    def pending(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Indicates if the zone has pending configuration changes that need to be applied.
+        """
+        return pulumi.get(self, "pending")
+
+    @_builtins.property
     @pulumi.getter(name="reverseDns")
     def reverse_dns(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Reverse DNS API server address.
         """
         return pulumi.get(self, "reverse_dns")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[_builtins.str]:
+        """
+        Indicates the current state of the zone.
+        """
+        return pulumi.get(self, "state")
 
     @_builtins.property
     @pulumi.getter(name="zoneId")

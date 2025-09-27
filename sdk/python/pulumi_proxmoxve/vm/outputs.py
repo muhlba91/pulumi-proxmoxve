@@ -2842,8 +2842,8 @@ class GetVirtualMachinesVmResult(dict):
         :param Sequence[_builtins.str] tags: A list of tags to filter the VMs. The VM must have all
                the tags to be included in the result.
         :param _builtins.int vm_id: The VM identifier.
-        :param _builtins.str status: Status of the VM
-        :param _builtins.bool template: Is VM a template (true) or a regular VM (false)
+        :param _builtins.str status: The status of the VM.
+        :param _builtins.bool template: Whether the VM is a template.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "node_name", node_name)
@@ -2891,7 +2891,7 @@ class GetVirtualMachinesVmResult(dict):
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
         """
-        Status of the VM
+        The status of the VM.
         """
         return pulumi.get(self, "status")
 
@@ -2899,7 +2899,7 @@ class GetVirtualMachinesVmResult(dict):
     @pulumi.getter
     def template(self) -> Optional[_builtins.bool]:
         """
-        Is VM a template (true) or a regular VM (false)
+        Whether the VM is a template.
         """
         return pulumi.get(self, "template")
 

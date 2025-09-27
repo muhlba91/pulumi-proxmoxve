@@ -78,9 +78,17 @@ export interface GetVxlanResult {
      */
     readonly peers: string[];
     /**
+     * Indicates if the zone has pending configuration changes that need to be applied.
+     */
+    readonly pending: boolean;
+    /**
      * Reverse DNS API server address.
      */
     readonly reverseDns: string;
+    /**
+     * Indicates the current state of the zone.
+     */
+    readonly state: string;
 }
 /**
  * Retrieves information about a VXLAN Zone in Proxmox SDN. It establishes a tunnel (overlay) on top of an existing network (underlay). This encapsulates layer 2 Ethernet frames within layer 4 UDP datagrams using the default destination port 4789. You have to configure the underlay network yourself to enable UDP connectivity between all peers. Because VXLAN encapsulation uses 50 bytes, the MTU needs to be 50 bytes lower than the outgoing physical interface.

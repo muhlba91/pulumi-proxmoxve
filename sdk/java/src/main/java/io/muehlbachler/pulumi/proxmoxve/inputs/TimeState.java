@@ -61,14 +61,14 @@ public final class TimeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The node&#39;s local time formatted as UTC.
+     * The node&#39;s time formatted as UTC.
      * 
      */
     @Import(name="utcTime")
     private @Nullable Output<String> utcTime;
 
     /**
-     * @return The node&#39;s local time formatted as UTC.
+     * @return The node&#39;s time formatted as UTC.
      * 
      */
     public Optional<Output<String>> utcTime() {
@@ -166,7 +166,7 @@ public final class TimeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param utcTime The node&#39;s local time formatted as UTC.
+         * @param utcTime The node&#39;s time formatted as UTC.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class TimeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param utcTime The node&#39;s local time formatted as UTC.
+         * @param utcTime The node&#39;s time formatted as UTC.
          * 
          * @return builder
          * 

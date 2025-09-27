@@ -194,6 +194,10 @@ namespace Pulumi.ProxmoxVE.SDNZone
         /// </summary>
         public readonly ImmutableArray<string> Nodes;
         /// <summary>
+        /// Indicates if the zone has pending configuration changes that need to be applied.
+        /// </summary>
+        public readonly bool Pending;
+        /// <summary>
         /// Reverse DNS API server address.
         /// </summary>
         public readonly string ReverseDns;
@@ -205,6 +209,10 @@ namespace Pulumi.ProxmoxVE.SDNZone
         /// Service VLAN protocol for QinQ. The protocol must be `802.1ad` or `802.1q`.
         /// </summary>
         public readonly string ServiceVlanProtocol;
+        /// <summary>
+        /// Indicates the current state of the zone.
+        /// </summary>
+        public readonly string State;
 
         [OutputConstructor]
         private GetQinqResult(
@@ -222,11 +230,15 @@ namespace Pulumi.ProxmoxVE.SDNZone
 
             ImmutableArray<string> nodes,
 
+            bool pending,
+
             string reverseDns,
 
             int serviceVlan,
 
-            string serviceVlanProtocol)
+            string serviceVlanProtocol,
+
+            string state)
         {
             Bridge = bridge;
             Dns = dns;
@@ -235,9 +247,11 @@ namespace Pulumi.ProxmoxVE.SDNZone
             Ipam = ipam;
             Mtu = mtu;
             Nodes = nodes;
+            Pending = pending;
             ReverseDns = reverseDns;
             ServiceVlan = serviceVlan;
             ServiceVlanProtocol = serviceVlanProtocol;
+            State = state;
         }
     }
 }

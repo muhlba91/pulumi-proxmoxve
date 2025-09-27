@@ -15,8 +15,87 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'SubnetDhcpRange',
+    'GetSubnetDhcpRangeResult',
     'GetZonesZoneResult',
 ]
+
+@pulumi.output_type
+class SubnetDhcpRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endAddress":
+            suggest = "end_address"
+        elif key == "startAddress":
+            suggest = "start_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SubnetDhcpRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SubnetDhcpRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SubnetDhcpRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 end_address: _builtins.str,
+                 start_address: _builtins.str):
+        """
+        :param _builtins.str end_address: End of the DHCP range.
+        :param _builtins.str start_address: Start of the DHCP range.
+        """
+        pulumi.set(__self__, "end_address", end_address)
+        pulumi.set(__self__, "start_address", start_address)
+
+    @_builtins.property
+    @pulumi.getter(name="endAddress")
+    def end_address(self) -> _builtins.str:
+        """
+        End of the DHCP range.
+        """
+        return pulumi.get(self, "end_address")
+
+    @_builtins.property
+    @pulumi.getter(name="startAddress")
+    def start_address(self) -> _builtins.str:
+        """
+        Start of the DHCP range.
+        """
+        return pulumi.get(self, "start_address")
+
+
+@pulumi.output_type
+class GetSubnetDhcpRangeResult(dict):
+    def __init__(__self__, *,
+                 end_address: _builtins.str,
+                 start_address: _builtins.str):
+        """
+        :param _builtins.str end_address: End of the DHCP range.
+        :param _builtins.str start_address: Start of the DHCP range.
+        """
+        pulumi.set(__self__, "end_address", end_address)
+        pulumi.set(__self__, "start_address", start_address)
+
+    @_builtins.property
+    @pulumi.getter(name="endAddress")
+    def end_address(self) -> _builtins.str:
+        """
+        End of the DHCP range.
+        """
+        return pulumi.get(self, "end_address")
+
+    @_builtins.property
+    @pulumi.getter(name="startAddress")
+    def start_address(self) -> _builtins.str:
+        """
+        Start of the DHCP range.
+        """
+        return pulumi.get(self, "start_address")
+
 
 @pulumi.output_type
 class GetZonesZoneResult(dict):
@@ -34,11 +113,13 @@ class GetZonesZoneResult(dict):
                  mtu: _builtins.int,
                  nodes: Sequence[_builtins.str],
                  peers: Sequence[_builtins.str],
+                 pending: _builtins.bool,
                  primary_exit_node: _builtins.str,
                  reverse_dns: _builtins.str,
                  rt_import: _builtins.str,
                  service_vlan: _builtins.int,
                  service_vlan_protocol: _builtins.str,
+                 state: _builtins.str,
                  type: _builtins.str,
                  vrf_vxlan: _builtins.int):
         pulumi.set(__self__, "advertise_subnets", advertise_subnets)
@@ -54,11 +135,13 @@ class GetZonesZoneResult(dict):
         pulumi.set(__self__, "mtu", mtu)
         pulumi.set(__self__, "nodes", nodes)
         pulumi.set(__self__, "peers", peers)
+        pulumi.set(__self__, "pending", pending)
         pulumi.set(__self__, "primary_exit_node", primary_exit_node)
         pulumi.set(__self__, "reverse_dns", reverse_dns)
         pulumi.set(__self__, "rt_import", rt_import)
         pulumi.set(__self__, "service_vlan", service_vlan)
         pulumi.set(__self__, "service_vlan_protocol", service_vlan_protocol)
+        pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "vrf_vxlan", vrf_vxlan)
 
@@ -128,6 +211,11 @@ class GetZonesZoneResult(dict):
         return pulumi.get(self, "peers")
 
     @_builtins.property
+    @pulumi.getter
+    def pending(self) -> _builtins.bool:
+        return pulumi.get(self, "pending")
+
+    @_builtins.property
     @pulumi.getter(name="primaryExitNode")
     def primary_exit_node(self) -> _builtins.str:
         return pulumi.get(self, "primary_exit_node")
@@ -151,6 +239,11 @@ class GetZonesZoneResult(dict):
     @pulumi.getter(name="serviceVlanProtocol")
     def service_vlan_protocol(self) -> _builtins.str:
         return pulumi.get(self, "service_vlan_protocol")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        return pulumi.get(self, "state")
 
     @_builtins.property
     @pulumi.getter

@@ -13,12 +13,15 @@ import io.muehlbachler.pulumi.proxmoxve.inputs.GetContainerArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetContainerPlainArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetContainersArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetContainersPlainArgs;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetFileArgs;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetFilePlainArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetNodeArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetNodePlainArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetVm2Args;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetVm2PlainArgs;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetContainerResult;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetContainersResult;
+import io.muehlbachler.pulumi.proxmoxve.outputs.GetFileResult;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetNodeResult;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetVm2Result;
 import java.util.concurrent.CompletableFuture;
@@ -721,6 +724,461 @@ public final class ProxmoxveFunctions {
      */
     public static CompletableFuture<GetContainersResult> getContainersPlain(GetContainersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("proxmoxve:index/getContainers:getContainers", TypeShape.of(GetContainersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about an existing file in a Proxmox Virtual Environment node.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetFileArgs;
+     * import io.muehlbachler.pulumi.proxmoxve.VM.VirtualMachine;
+     * import io.muehlbachler.pulumi.proxmoxve.VM.VirtualMachineArgs;
+     * import com.pulumi.proxmoxve.VM.inputs.VirtualMachineCdromArgs;
+     * import com.pulumi.proxmoxve.VM.inputs.VirtualMachineCpuArgs;
+     * import com.pulumi.proxmoxve.VM.inputs.VirtualMachineMemoryArgs;
+     * import com.pulumi.proxmoxve.VM.inputs.VirtualMachineDiskArgs;
+     * import com.pulumi.proxmoxve.VM.inputs.VirtualMachineNetworkDeviceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuIso = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("iso")
+     *             .fileName("ubuntu-22.04.3-live-server-amd64.iso")
+     *             .build());
+     * 
+     *         final var ubuntuContainerTemplate = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("vztmpl")
+     *             .fileName("ubuntu-22.04-standard_22.04-1_amd64.tar.zst")
+     *             .build());
+     * 
+     *         final var cloudInitSnippet = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("snippets")
+     *             .fileName("cloud-init-config.yaml")
+     *             .build());
+     * 
+     *         ctx.export("ubuntuIsoId", ubuntuIso.id());
+     *         ctx.export("ubuntuIsoSize", ubuntuIso.fileSize());
+     *         ctx.export("containerTemplateFormat", ubuntuContainerTemplate.fileFormat());
+     *         var example = new VirtualMachine("example", VirtualMachineArgs.builder()
+     *             .nodeName("pve")
+     *             .vmId(100)
+     *             .cdrom(VirtualMachineCdromArgs.builder()
+     *                 .fileId(ubuntuIso.id())
+     *                 .build())
+     *             .cpu(VirtualMachineCpuArgs.builder()
+     *                 .cores(2)
+     *                 .build())
+     *             .memory(VirtualMachineMemoryArgs.builder()
+     *                 .dedicated(2048)
+     *                 .build())
+     *             .disks(VirtualMachineDiskArgs.builder()
+     *                 .datastoreId("local-lvm")
+     *                 .fileFormat("qcow2")
+     *                 .size(20)
+     *                 .build())
+     *             .networkDevices(VirtualMachineNetworkDeviceArgs.builder()
+     *                 .bridge("vmbr0")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetFileResult> getFile(GetFileArgs args) {
+        return getFile(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about an existing file in a Proxmox Virtual Environment node.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetFileArgs;
+     * import io.muehlbachler.pulumi.proxmoxve.VM.VirtualMachine;
+     * import io.muehlbachler.pulumi.proxmoxve.VM.VirtualMachineArgs;
+     * import com.pulumi.proxmoxve.VM.inputs.VirtualMachineCdromArgs;
+     * import com.pulumi.proxmoxve.VM.inputs.VirtualMachineCpuArgs;
+     * import com.pulumi.proxmoxve.VM.inputs.VirtualMachineMemoryArgs;
+     * import com.pulumi.proxmoxve.VM.inputs.VirtualMachineDiskArgs;
+     * import com.pulumi.proxmoxve.VM.inputs.VirtualMachineNetworkDeviceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuIso = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("iso")
+     *             .fileName("ubuntu-22.04.3-live-server-amd64.iso")
+     *             .build());
+     * 
+     *         final var ubuntuContainerTemplate = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("vztmpl")
+     *             .fileName("ubuntu-22.04-standard_22.04-1_amd64.tar.zst")
+     *             .build());
+     * 
+     *         final var cloudInitSnippet = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("snippets")
+     *             .fileName("cloud-init-config.yaml")
+     *             .build());
+     * 
+     *         ctx.export("ubuntuIsoId", ubuntuIso.id());
+     *         ctx.export("ubuntuIsoSize", ubuntuIso.fileSize());
+     *         ctx.export("containerTemplateFormat", ubuntuContainerTemplate.fileFormat());
+     *         var example = new VirtualMachine("example", VirtualMachineArgs.builder()
+     *             .nodeName("pve")
+     *             .vmId(100)
+     *             .cdrom(VirtualMachineCdromArgs.builder()
+     *                 .fileId(ubuntuIso.id())
+     *                 .build())
+     *             .cpu(VirtualMachineCpuArgs.builder()
+     *                 .cores(2)
+     *                 .build())
+     *             .memory(VirtualMachineMemoryArgs.builder()
+     *                 .dedicated(2048)
+     *                 .build())
+     *             .disks(VirtualMachineDiskArgs.builder()
+     *                 .datastoreId("local-lvm")
+     *                 .fileFormat("qcow2")
+     *                 .size(20)
+     *                 .build())
+     *             .networkDevices(VirtualMachineNetworkDeviceArgs.builder()
+     *                 .bridge("vmbr0")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetFileResult> getFilePlain(GetFilePlainArgs args) {
+        return getFilePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about an existing file in a Proxmox Virtual Environment node.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetFileArgs;
+     * import io.muehlbachler.pulumi.proxmoxve.VM.VirtualMachine;
+     * import io.muehlbachler.pulumi.proxmoxve.VM.VirtualMachineArgs;
+     * import com.pulumi.proxmoxve.VM.inputs.VirtualMachineCdromArgs;
+     * import com.pulumi.proxmoxve.VM.inputs.VirtualMachineCpuArgs;
+     * import com.pulumi.proxmoxve.VM.inputs.VirtualMachineMemoryArgs;
+     * import com.pulumi.proxmoxve.VM.inputs.VirtualMachineDiskArgs;
+     * import com.pulumi.proxmoxve.VM.inputs.VirtualMachineNetworkDeviceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuIso = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("iso")
+     *             .fileName("ubuntu-22.04.3-live-server-amd64.iso")
+     *             .build());
+     * 
+     *         final var ubuntuContainerTemplate = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("vztmpl")
+     *             .fileName("ubuntu-22.04-standard_22.04-1_amd64.tar.zst")
+     *             .build());
+     * 
+     *         final var cloudInitSnippet = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("snippets")
+     *             .fileName("cloud-init-config.yaml")
+     *             .build());
+     * 
+     *         ctx.export("ubuntuIsoId", ubuntuIso.id());
+     *         ctx.export("ubuntuIsoSize", ubuntuIso.fileSize());
+     *         ctx.export("containerTemplateFormat", ubuntuContainerTemplate.fileFormat());
+     *         var example = new VirtualMachine("example", VirtualMachineArgs.builder()
+     *             .nodeName("pve")
+     *             .vmId(100)
+     *             .cdrom(VirtualMachineCdromArgs.builder()
+     *                 .fileId(ubuntuIso.id())
+     *                 .build())
+     *             .cpu(VirtualMachineCpuArgs.builder()
+     *                 .cores(2)
+     *                 .build())
+     *             .memory(VirtualMachineMemoryArgs.builder()
+     *                 .dedicated(2048)
+     *                 .build())
+     *             .disks(VirtualMachineDiskArgs.builder()
+     *                 .datastoreId("local-lvm")
+     *                 .fileFormat("qcow2")
+     *                 .size(20)
+     *                 .build())
+     *             .networkDevices(VirtualMachineNetworkDeviceArgs.builder()
+     *                 .bridge("vmbr0")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetFileResult> getFile(GetFileArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getFile:getFile", TypeShape.of(GetFileResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about an existing file in a Proxmox Virtual Environment node.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetFileArgs;
+     * import io.muehlbachler.pulumi.proxmoxve.VM.VirtualMachine;
+     * import io.muehlbachler.pulumi.proxmoxve.VM.VirtualMachineArgs;
+     * import com.pulumi.proxmoxve.VM.inputs.VirtualMachineCdromArgs;
+     * import com.pulumi.proxmoxve.VM.inputs.VirtualMachineCpuArgs;
+     * import com.pulumi.proxmoxve.VM.inputs.VirtualMachineMemoryArgs;
+     * import com.pulumi.proxmoxve.VM.inputs.VirtualMachineDiskArgs;
+     * import com.pulumi.proxmoxve.VM.inputs.VirtualMachineNetworkDeviceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuIso = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("iso")
+     *             .fileName("ubuntu-22.04.3-live-server-amd64.iso")
+     *             .build());
+     * 
+     *         final var ubuntuContainerTemplate = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("vztmpl")
+     *             .fileName("ubuntu-22.04-standard_22.04-1_amd64.tar.zst")
+     *             .build());
+     * 
+     *         final var cloudInitSnippet = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("snippets")
+     *             .fileName("cloud-init-config.yaml")
+     *             .build());
+     * 
+     *         ctx.export("ubuntuIsoId", ubuntuIso.id());
+     *         ctx.export("ubuntuIsoSize", ubuntuIso.fileSize());
+     *         ctx.export("containerTemplateFormat", ubuntuContainerTemplate.fileFormat());
+     *         var example = new VirtualMachine("example", VirtualMachineArgs.builder()
+     *             .nodeName("pve")
+     *             .vmId(100)
+     *             .cdrom(VirtualMachineCdromArgs.builder()
+     *                 .fileId(ubuntuIso.id())
+     *                 .build())
+     *             .cpu(VirtualMachineCpuArgs.builder()
+     *                 .cores(2)
+     *                 .build())
+     *             .memory(VirtualMachineMemoryArgs.builder()
+     *                 .dedicated(2048)
+     *                 .build())
+     *             .disks(VirtualMachineDiskArgs.builder()
+     *                 .datastoreId("local-lvm")
+     *                 .fileFormat("qcow2")
+     *                 .size(20)
+     *                 .build())
+     *             .networkDevices(VirtualMachineNetworkDeviceArgs.builder()
+     *                 .bridge("vmbr0")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetFileResult> getFile(GetFileArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getFile:getFile", TypeShape.of(GetFileResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about an existing file in a Proxmox Virtual Environment node.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetFileArgs;
+     * import io.muehlbachler.pulumi.proxmoxve.VM.VirtualMachine;
+     * import io.muehlbachler.pulumi.proxmoxve.VM.VirtualMachineArgs;
+     * import com.pulumi.proxmoxve.VM.inputs.VirtualMachineCdromArgs;
+     * import com.pulumi.proxmoxve.VM.inputs.VirtualMachineCpuArgs;
+     * import com.pulumi.proxmoxve.VM.inputs.VirtualMachineMemoryArgs;
+     * import com.pulumi.proxmoxve.VM.inputs.VirtualMachineDiskArgs;
+     * import com.pulumi.proxmoxve.VM.inputs.VirtualMachineNetworkDeviceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuIso = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("iso")
+     *             .fileName("ubuntu-22.04.3-live-server-amd64.iso")
+     *             .build());
+     * 
+     *         final var ubuntuContainerTemplate = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("vztmpl")
+     *             .fileName("ubuntu-22.04-standard_22.04-1_amd64.tar.zst")
+     *             .build());
+     * 
+     *         final var cloudInitSnippet = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("snippets")
+     *             .fileName("cloud-init-config.yaml")
+     *             .build());
+     * 
+     *         ctx.export("ubuntuIsoId", ubuntuIso.id());
+     *         ctx.export("ubuntuIsoSize", ubuntuIso.fileSize());
+     *         ctx.export("containerTemplateFormat", ubuntuContainerTemplate.fileFormat());
+     *         var example = new VirtualMachine("example", VirtualMachineArgs.builder()
+     *             .nodeName("pve")
+     *             .vmId(100)
+     *             .cdrom(VirtualMachineCdromArgs.builder()
+     *                 .fileId(ubuntuIso.id())
+     *                 .build())
+     *             .cpu(VirtualMachineCpuArgs.builder()
+     *                 .cores(2)
+     *                 .build())
+     *             .memory(VirtualMachineMemoryArgs.builder()
+     *                 .dedicated(2048)
+     *                 .build())
+     *             .disks(VirtualMachineDiskArgs.builder()
+     *                 .datastoreId("local-lvm")
+     *                 .fileFormat("qcow2")
+     *                 .size(20)
+     *                 .build())
+     *             .networkDevices(VirtualMachineNetworkDeviceArgs.builder()
+     *                 .bridge("vmbr0")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetFileResult> getFilePlain(GetFilePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("proxmoxve:index/getFile:getFile", TypeShape.of(GetFileResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves information about node.

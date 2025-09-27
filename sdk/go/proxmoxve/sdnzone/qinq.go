@@ -75,12 +75,16 @@ type Qinq struct {
 	Mtu pulumi.IntPtrOutput `pulumi:"mtu"`
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes pulumi.StringArrayOutput `pulumi:"nodes"`
+	// Indicates if the zone has pending configuration changes that need to be applied.
+	Pending pulumi.BoolOutput `pulumi:"pending"`
 	// Reverse DNS API server address.
 	ReverseDns pulumi.StringPtrOutput `pulumi:"reverseDns"`
 	// Service VLAN tag for QinQ. The tag must be between `1` and `4094`.
 	ServiceVlan pulumi.IntOutput `pulumi:"serviceVlan"`
 	// Service VLAN protocol for QinQ. The protocol must be `802.1ad` or `802.1q`.
 	ServiceVlanProtocol pulumi.StringPtrOutput `pulumi:"serviceVlanProtocol"`
+	// Indicates the current state of the zone.
+	State pulumi.StringOutput `pulumi:"state"`
 	// The unique identifier of the SDN zone.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -139,12 +143,16 @@ type qinqState struct {
 	Mtu *int `pulumi:"mtu"`
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes []string `pulumi:"nodes"`
+	// Indicates if the zone has pending configuration changes that need to be applied.
+	Pending *bool `pulumi:"pending"`
 	// Reverse DNS API server address.
 	ReverseDns *string `pulumi:"reverseDns"`
 	// Service VLAN tag for QinQ. The tag must be between `1` and `4094`.
 	ServiceVlan *int `pulumi:"serviceVlan"`
 	// Service VLAN protocol for QinQ. The protocol must be `802.1ad` or `802.1q`.
 	ServiceVlanProtocol *string `pulumi:"serviceVlanProtocol"`
+	// Indicates the current state of the zone.
+	State *string `pulumi:"state"`
 	// The unique identifier of the SDN zone.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -162,12 +170,16 @@ type QinqState struct {
 	Mtu pulumi.IntPtrInput
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes pulumi.StringArrayInput
+	// Indicates if the zone has pending configuration changes that need to be applied.
+	Pending pulumi.BoolPtrInput
 	// Reverse DNS API server address.
 	ReverseDns pulumi.StringPtrInput
 	// Service VLAN tag for QinQ. The tag must be between `1` and `4094`.
 	ServiceVlan pulumi.IntPtrInput
 	// Service VLAN protocol for QinQ. The protocol must be `802.1ad` or `802.1q`.
 	ServiceVlanProtocol pulumi.StringPtrInput
+	// Indicates the current state of the zone.
+	State pulumi.StringPtrInput
 	// The unique identifier of the SDN zone.
 	ZoneId pulumi.StringPtrInput
 }
@@ -340,6 +352,11 @@ func (o QinqOutput) Nodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Qinq) pulumi.StringArrayOutput { return v.Nodes }).(pulumi.StringArrayOutput)
 }
 
+// Indicates if the zone has pending configuration changes that need to be applied.
+func (o QinqOutput) Pending() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Qinq) pulumi.BoolOutput { return v.Pending }).(pulumi.BoolOutput)
+}
+
 // Reverse DNS API server address.
 func (o QinqOutput) ReverseDns() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Qinq) pulumi.StringPtrOutput { return v.ReverseDns }).(pulumi.StringPtrOutput)
@@ -353,6 +370,11 @@ func (o QinqOutput) ServiceVlan() pulumi.IntOutput {
 // Service VLAN protocol for QinQ. The protocol must be `802.1ad` or `802.1q`.
 func (o QinqOutput) ServiceVlanProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Qinq) pulumi.StringPtrOutput { return v.ServiceVlanProtocol }).(pulumi.StringPtrOutput)
+}
+
+// Indicates the current state of the zone.
+func (o QinqOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Qinq) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
 // The unique identifier of the SDN zone.

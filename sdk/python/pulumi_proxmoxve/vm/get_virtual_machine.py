@@ -74,7 +74,7 @@ class GetVirtualMachineResult:
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
         """
-        Status of the VM
+        The status of the VM.
         """
         return pulumi.get(self, "status")
 
@@ -90,7 +90,7 @@ class GetVirtualMachineResult:
     @pulumi.getter
     def template(self) -> Optional[_builtins.bool]:
         """
-        Is VM a template (true) or a regular VM (false)
+        Whether the VM is a template.
         """
         return pulumi.get(self, "template")
 
@@ -135,8 +135,8 @@ def get_virtual_machine(node_name: Optional[_builtins.str] = None,
 
 
     :param _builtins.str node_name: The node name.
-    :param _builtins.str status: Status of the VM
-    :param _builtins.bool template: Is VM a template (true) or a regular VM (false)
+    :param _builtins.str status: The status of the VM.
+    :param _builtins.bool template: Whether the VM is a template.
     :param _builtins.int vm_id: The VM identifier.
     """
     __args__ = dict()
@@ -175,8 +175,8 @@ def get_virtual_machine_output(node_name: Optional[pulumi.Input[_builtins.str]] 
 
 
     :param _builtins.str node_name: The node name.
-    :param _builtins.str status: Status of the VM
-    :param _builtins.bool template: Is VM a template (true) or a regular VM (false)
+    :param _builtins.str status: The status of the VM.
+    :param _builtins.bool template: Whether the VM is a template.
     :param _builtins.int vm_id: The VM identifier.
     """
     __args__ = dict()

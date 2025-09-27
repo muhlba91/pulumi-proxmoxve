@@ -26,7 +26,7 @@ class GetEvpnResult:
     """
     A collection of values returned by getEvpn.
     """
-    def __init__(__self__, advertise_subnets=None, controller=None, disable_arp_nd_suppression=None, dns=None, dns_zone=None, exit_nodes=None, exit_nodes_local_routing=None, id=None, ipam=None, mtu=None, nodes=None, primary_exit_node=None, reverse_dns=None, rt_import=None, vrf_vxlan=None):
+    def __init__(__self__, advertise_subnets=None, controller=None, disable_arp_nd_suppression=None, dns=None, dns_zone=None, exit_nodes=None, exit_nodes_local_routing=None, id=None, ipam=None, mtu=None, nodes=None, pending=None, primary_exit_node=None, reverse_dns=None, rt_import=None, state=None, vrf_vxlan=None):
         if advertise_subnets and not isinstance(advertise_subnets, bool):
             raise TypeError("Expected argument 'advertise_subnets' to be a bool")
         pulumi.set(__self__, "advertise_subnets", advertise_subnets)
@@ -60,6 +60,9 @@ class GetEvpnResult:
         if nodes and not isinstance(nodes, list):
             raise TypeError("Expected argument 'nodes' to be a list")
         pulumi.set(__self__, "nodes", nodes)
+        if pending and not isinstance(pending, bool):
+            raise TypeError("Expected argument 'pending' to be a bool")
+        pulumi.set(__self__, "pending", pending)
         if primary_exit_node and not isinstance(primary_exit_node, str):
             raise TypeError("Expected argument 'primary_exit_node' to be a str")
         pulumi.set(__self__, "primary_exit_node", primary_exit_node)
@@ -69,6 +72,9 @@ class GetEvpnResult:
         if rt_import and not isinstance(rt_import, str):
             raise TypeError("Expected argument 'rt_import' to be a str")
         pulumi.set(__self__, "rt_import", rt_import)
+        if state and not isinstance(state, str):
+            raise TypeError("Expected argument 'state' to be a str")
+        pulumi.set(__self__, "state", state)
         if vrf_vxlan and not isinstance(vrf_vxlan, int):
             raise TypeError("Expected argument 'vrf_vxlan' to be a int")
         pulumi.set(__self__, "vrf_vxlan", vrf_vxlan)
@@ -162,6 +168,14 @@ class GetEvpnResult:
         return pulumi.get(self, "nodes")
 
     @_builtins.property
+    @pulumi.getter
+    def pending(self) -> _builtins.bool:
+        """
+        Indicates if the zone has pending configuration changes that need to be applied.
+        """
+        return pulumi.get(self, "pending")
+
+    @_builtins.property
     @pulumi.getter(name="primaryExitNode")
     def primary_exit_node(self) -> _builtins.str:
         """
@@ -184,6 +198,14 @@ class GetEvpnResult:
         Route target import for EVPN. Must be in the format '\\n\\n:\\n\\n' (e.g., '65000:65000').
         """
         return pulumi.get(self, "rt_import")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        Indicates the current state of the zone.
+        """
+        return pulumi.get(self, "state")
 
     @_builtins.property
     @pulumi.getter(name="vrfVxlan")
@@ -211,9 +233,11 @@ class AwaitableGetEvpnResult(GetEvpnResult):
             ipam=self.ipam,
             mtu=self.mtu,
             nodes=self.nodes,
+            pending=self.pending,
             primary_exit_node=self.primary_exit_node,
             reverse_dns=self.reverse_dns,
             rt_import=self.rt_import,
+            state=self.state,
             vrf_vxlan=self.vrf_vxlan)
 
 
@@ -268,9 +292,11 @@ def get_evpn(id: Optional[_builtins.str] = None,
         ipam=pulumi.get(__ret__, 'ipam'),
         mtu=pulumi.get(__ret__, 'mtu'),
         nodes=pulumi.get(__ret__, 'nodes'),
+        pending=pulumi.get(__ret__, 'pending'),
         primary_exit_node=pulumi.get(__ret__, 'primary_exit_node'),
         reverse_dns=pulumi.get(__ret__, 'reverse_dns'),
         rt_import=pulumi.get(__ret__, 'rt_import'),
+        state=pulumi.get(__ret__, 'state'),
         vrf_vxlan=pulumi.get(__ret__, 'vrf_vxlan'))
 def get_evpn_output(id: Optional[pulumi.Input[_builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEvpnResult]:
@@ -322,7 +348,9 @@ def get_evpn_output(id: Optional[pulumi.Input[_builtins.str]] = None,
         ipam=pulumi.get(__response__, 'ipam'),
         mtu=pulumi.get(__response__, 'mtu'),
         nodes=pulumi.get(__response__, 'nodes'),
+        pending=pulumi.get(__response__, 'pending'),
         primary_exit_node=pulumi.get(__response__, 'primary_exit_node'),
         reverse_dns=pulumi.get(__response__, 'reverse_dns'),
         rt_import=pulumi.get(__response__, 'rt_import'),
+        state=pulumi.get(__response__, 'state'),
         vrf_vxlan=pulumi.get(__response__, 'vrf_vxlan')))

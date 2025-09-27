@@ -70,7 +70,7 @@ export class Time extends pulumi.CustomResource {
      */
     declare public readonly timeZone: pulumi.Output<string>;
     /**
-     * The node's local time formatted as UTC.
+     * The node's time formatted as UTC.
      */
     declare public /*out*/ readonly utcTime: pulumi.Output<string>;
 
@@ -126,7 +126,7 @@ export interface TimeState {
      */
     timeZone?: pulumi.Input<string>;
     /**
-     * The node's local time formatted as UTC.
+     * The node's time formatted as UTC.
      */
     utcTime?: pulumi.Input<string>;
 }

@@ -77,8 +77,12 @@ type Vxlan struct {
 	Nodes pulumi.StringArrayOutput `pulumi:"nodes"`
 	// A list of IP addresses of each node in the VXLAN zone. This can be external nodes reachable at this IP address. All nodes in the cluster need to be mentioned here
 	Peers pulumi.StringArrayOutput `pulumi:"peers"`
+	// Indicates if the zone has pending configuration changes that need to be applied.
+	Pending pulumi.BoolOutput `pulumi:"pending"`
 	// Reverse DNS API server address.
 	ReverseDns pulumi.StringPtrOutput `pulumi:"reverseDns"`
+	// Indicates the current state of the zone.
+	State pulumi.StringOutput `pulumi:"state"`
 	// The unique identifier of the SDN zone.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -134,8 +138,12 @@ type vxlanState struct {
 	Nodes []string `pulumi:"nodes"`
 	// A list of IP addresses of each node in the VXLAN zone. This can be external nodes reachable at this IP address. All nodes in the cluster need to be mentioned here
 	Peers []string `pulumi:"peers"`
+	// Indicates if the zone has pending configuration changes that need to be applied.
+	Pending *bool `pulumi:"pending"`
 	// Reverse DNS API server address.
 	ReverseDns *string `pulumi:"reverseDns"`
+	// Indicates the current state of the zone.
+	State *string `pulumi:"state"`
 	// The unique identifier of the SDN zone.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -153,8 +161,12 @@ type VxlanState struct {
 	Nodes pulumi.StringArrayInput
 	// A list of IP addresses of each node in the VXLAN zone. This can be external nodes reachable at this IP address. All nodes in the cluster need to be mentioned here
 	Peers pulumi.StringArrayInput
+	// Indicates if the zone has pending configuration changes that need to be applied.
+	Pending pulumi.BoolPtrInput
 	// Reverse DNS API server address.
 	ReverseDns pulumi.StringPtrInput
+	// Indicates the current state of the zone.
+	State pulumi.StringPtrInput
 	// The unique identifier of the SDN zone.
 	ZoneId pulumi.StringPtrInput
 }
@@ -319,9 +331,19 @@ func (o VxlanOutput) Peers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Vxlan) pulumi.StringArrayOutput { return v.Peers }).(pulumi.StringArrayOutput)
 }
 
+// Indicates if the zone has pending configuration changes that need to be applied.
+func (o VxlanOutput) Pending() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Vxlan) pulumi.BoolOutput { return v.Pending }).(pulumi.BoolOutput)
+}
+
 // Reverse DNS API server address.
 func (o VxlanOutput) ReverseDns() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Vxlan) pulumi.StringPtrOutput { return v.ReverseDns }).(pulumi.StringPtrOutput)
+}
+
+// Indicates the current state of the zone.
+func (o VxlanOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vxlan) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
 // The unique identifier of the SDN zone.

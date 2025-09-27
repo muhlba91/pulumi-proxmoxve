@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import io.muehlbachler.pulumi.proxmoxve.SDNZone.QinqArgs;
 import io.muehlbachler.pulumi.proxmoxve.SDNZone.inputs.QinqState;
 import io.muehlbachler.pulumi.proxmoxve.Utilities;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -161,6 +162,20 @@ public class Qinq extends com.pulumi.resources.CustomResource {
         return this.nodes;
     }
     /**
+     * Indicates if the zone has pending configuration changes that need to be applied.
+     * 
+     */
+    @Export(name="pending", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> pending;
+
+    /**
+     * @return Indicates if the zone has pending configuration changes that need to be applied.
+     * 
+     */
+    public Output<Boolean> pending() {
+        return this.pending;
+    }
+    /**
      * Reverse DNS API server address.
      * 
      */
@@ -201,6 +216,20 @@ public class Qinq extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> serviceVlanProtocol() {
         return Codegen.optional(this.serviceVlanProtocol);
+    }
+    /**
+     * Indicates the current state of the zone.
+     * 
+     */
+    @Export(name="state", refs={String.class}, tree="[0]")
+    private Output<String> state;
+
+    /**
+     * @return Indicates the current state of the zone.
+     * 
+     */
+    public Output<String> state() {
+        return this.state;
     }
     /**
      * The unique identifier of the SDN zone.

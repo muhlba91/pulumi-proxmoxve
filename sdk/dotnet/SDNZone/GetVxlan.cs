@@ -188,9 +188,17 @@ namespace Pulumi.ProxmoxVE.SDNZone
         /// </summary>
         public readonly ImmutableArray<string> Peers;
         /// <summary>
+        /// Indicates if the zone has pending configuration changes that need to be applied.
+        /// </summary>
+        public readonly bool Pending;
+        /// <summary>
         /// Reverse DNS API server address.
         /// </summary>
         public readonly string ReverseDns;
+        /// <summary>
+        /// Indicates the current state of the zone.
+        /// </summary>
+        public readonly string State;
 
         [OutputConstructor]
         private GetVxlanResult(
@@ -208,7 +216,11 @@ namespace Pulumi.ProxmoxVE.SDNZone
 
             ImmutableArray<string> peers,
 
-            string reverseDns)
+            bool pending,
+
+            string reverseDns,
+
+            string state)
         {
             Dns = dns;
             DnsZone = dnsZone;
@@ -217,7 +229,9 @@ namespace Pulumi.ProxmoxVE.SDNZone
             Mtu = mtu;
             Nodes = nodes;
             Peers = peers;
+            Pending = pending;
             ReverseDns = reverseDns;
+            State = state;
         }
     }
 }

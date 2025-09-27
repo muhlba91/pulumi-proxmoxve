@@ -38,11 +38,11 @@ export interface GetVirtualMachineArgs {
      */
     nodeName: string;
     /**
-     * Status of the VM
+     * The status of the VM.
      */
     status?: string;
     /**
-     * Is VM a template (true) or a regular VM (false)
+     * Whether the VM is a template.
      */
     template?: boolean;
     /**
@@ -65,7 +65,7 @@ export interface GetVirtualMachineResult {
     readonly name: string;
     readonly nodeName: string;
     /**
-     * Status of the VM
+     * The status of the VM.
      */
     readonly status?: string;
     /**
@@ -73,7 +73,7 @@ export interface GetVirtualMachineResult {
      */
     readonly tags: string[];
     /**
-     * Is VM a template (true) or a regular VM (false)
+     * Whether the VM is a template.
      */
     readonly template?: boolean;
     readonly vmId: number;
@@ -112,11 +112,11 @@ export interface GetVirtualMachineOutputArgs {
      */
     nodeName: pulumi.Input<string>;
     /**
-     * Status of the VM
+     * The status of the VM.
      */
     status?: pulumi.Input<string>;
     /**
-     * Is VM a template (true) or a regular VM (false)
+     * Whether the VM is a template.
      */
     template?: pulumi.Input<boolean>;
     /**

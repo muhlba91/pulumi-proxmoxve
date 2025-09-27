@@ -26,7 +26,7 @@ class GetQinqResult:
     """
     A collection of values returned by getQinq.
     """
-    def __init__(__self__, bridge=None, dns=None, dns_zone=None, id=None, ipam=None, mtu=None, nodes=None, reverse_dns=None, service_vlan=None, service_vlan_protocol=None):
+    def __init__(__self__, bridge=None, dns=None, dns_zone=None, id=None, ipam=None, mtu=None, nodes=None, pending=None, reverse_dns=None, service_vlan=None, service_vlan_protocol=None, state=None):
         if bridge and not isinstance(bridge, str):
             raise TypeError("Expected argument 'bridge' to be a str")
         pulumi.set(__self__, "bridge", bridge)
@@ -48,6 +48,9 @@ class GetQinqResult:
         if nodes and not isinstance(nodes, list):
             raise TypeError("Expected argument 'nodes' to be a list")
         pulumi.set(__self__, "nodes", nodes)
+        if pending and not isinstance(pending, bool):
+            raise TypeError("Expected argument 'pending' to be a bool")
+        pulumi.set(__self__, "pending", pending)
         if reverse_dns and not isinstance(reverse_dns, str):
             raise TypeError("Expected argument 'reverse_dns' to be a str")
         pulumi.set(__self__, "reverse_dns", reverse_dns)
@@ -57,6 +60,9 @@ class GetQinqResult:
         if service_vlan_protocol and not isinstance(service_vlan_protocol, str):
             raise TypeError("Expected argument 'service_vlan_protocol' to be a str")
         pulumi.set(__self__, "service_vlan_protocol", service_vlan_protocol)
+        if state and not isinstance(state, str):
+            raise TypeError("Expected argument 'state' to be a str")
+        pulumi.set(__self__, "state", state)
 
     @_builtins.property
     @pulumi.getter
@@ -115,6 +121,14 @@ class GetQinqResult:
         return pulumi.get(self, "nodes")
 
     @_builtins.property
+    @pulumi.getter
+    def pending(self) -> _builtins.bool:
+        """
+        Indicates if the zone has pending configuration changes that need to be applied.
+        """
+        return pulumi.get(self, "pending")
+
+    @_builtins.property
     @pulumi.getter(name="reverseDns")
     def reverse_dns(self) -> _builtins.str:
         """
@@ -138,6 +152,14 @@ class GetQinqResult:
         """
         return pulumi.get(self, "service_vlan_protocol")
 
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        Indicates the current state of the zone.
+        """
+        return pulumi.get(self, "state")
+
 
 class AwaitableGetQinqResult(GetQinqResult):
     # pylint: disable=using-constant-test
@@ -152,9 +174,11 @@ class AwaitableGetQinqResult(GetQinqResult):
             ipam=self.ipam,
             mtu=self.mtu,
             nodes=self.nodes,
+            pending=self.pending,
             reverse_dns=self.reverse_dns,
             service_vlan=self.service_vlan,
-            service_vlan_protocol=self.service_vlan_protocol)
+            service_vlan_protocol=self.service_vlan_protocol,
+            state=self.state)
 
 
 def get_qinq(id: Optional[_builtins.str] = None,
@@ -199,9 +223,11 @@ def get_qinq(id: Optional[_builtins.str] = None,
         ipam=pulumi.get(__ret__, 'ipam'),
         mtu=pulumi.get(__ret__, 'mtu'),
         nodes=pulumi.get(__ret__, 'nodes'),
+        pending=pulumi.get(__ret__, 'pending'),
         reverse_dns=pulumi.get(__ret__, 'reverse_dns'),
         service_vlan=pulumi.get(__ret__, 'service_vlan'),
-        service_vlan_protocol=pulumi.get(__ret__, 'service_vlan_protocol'))
+        service_vlan_protocol=pulumi.get(__ret__, 'service_vlan_protocol'),
+        state=pulumi.get(__ret__, 'state'))
 def get_qinq_output(id: Optional[pulumi.Input[_builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQinqResult]:
     """
@@ -243,6 +269,8 @@ def get_qinq_output(id: Optional[pulumi.Input[_builtins.str]] = None,
         ipam=pulumi.get(__response__, 'ipam'),
         mtu=pulumi.get(__response__, 'mtu'),
         nodes=pulumi.get(__response__, 'nodes'),
+        pending=pulumi.get(__response__, 'pending'),
         reverse_dns=pulumi.get(__response__, 'reverse_dns'),
         service_vlan=pulumi.get(__response__, 'service_vlan'),
-        service_vlan_protocol=pulumi.get(__response__, 'service_vlan_protocol')))
+        service_vlan_protocol=pulumi.get(__response__, 'service_vlan_protocol'),
+        state=pulumi.get(__response__, 'state')))

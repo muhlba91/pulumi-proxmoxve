@@ -225,6 +225,20 @@ public class Evpn extends com.pulumi.resources.CustomResource {
         return this.nodes;
     }
     /**
+     * Indicates if the zone has pending configuration changes that need to be applied.
+     * 
+     */
+    @Export(name="pending", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> pending;
+
+    /**
+     * @return Indicates if the zone has pending configuration changes that need to be applied.
+     * 
+     */
+    public Output<Boolean> pending() {
+        return this.pending;
+    }
+    /**
      * Primary exit node for EVPN.
      * 
      */
@@ -265,6 +279,20 @@ public class Evpn extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> rtImport() {
         return Codegen.optional(this.rtImport);
+    }
+    /**
+     * Indicates the current state of the zone.
+     * 
+     */
+    @Export(name="state", refs={String.class}, tree="[0]")
+    private Output<String> state;
+
+    /**
+     * @return Indicates the current state of the zone.
+     * 
+     */
+    public Output<String> state() {
+        return this.state;
     }
     /**
      * VRF VXLAN-ID used for dedicated routing interconnect between VNets. It must be different than the VXLAN-ID of the VNets.

@@ -5,6 +5,7 @@ package io.muehlbachler.pulumi.proxmoxve.SDNZone.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -108,6 +109,21 @@ public final class QinqState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Indicates if the zone has pending configuration changes that need to be applied.
+     * 
+     */
+    @Import(name="pending")
+    private @Nullable Output<Boolean> pending;
+
+    /**
+     * @return Indicates if the zone has pending configuration changes that need to be applied.
+     * 
+     */
+    public Optional<Output<Boolean>> pending() {
+        return Optional.ofNullable(this.pending);
+    }
+
+    /**
      * Reverse DNS API server address.
      * 
      */
@@ -153,6 +169,21 @@ public final class QinqState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Indicates the current state of the zone.
+     * 
+     */
+    @Import(name="state")
+    private @Nullable Output<String> state;
+
+    /**
+     * @return Indicates the current state of the zone.
+     * 
+     */
+    public Optional<Output<String>> state() {
+        return Optional.ofNullable(this.state);
+    }
+
+    /**
      * The unique identifier of the SDN zone.
      * 
      */
@@ -176,9 +207,11 @@ public final class QinqState extends com.pulumi.resources.ResourceArgs {
         this.ipam = $.ipam;
         this.mtu = $.mtu;
         this.nodes = $.nodes;
+        this.pending = $.pending;
         this.reverseDns = $.reverseDns;
         this.serviceVlan = $.serviceVlan;
         this.serviceVlanProtocol = $.serviceVlanProtocol;
+        this.state = $.state;
         this.zoneId = $.zoneId;
     }
 
@@ -337,6 +370,27 @@ public final class QinqState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param pending Indicates if the zone has pending configuration changes that need to be applied.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pending(@Nullable Output<Boolean> pending) {
+            $.pending = pending;
+            return this;
+        }
+
+        /**
+         * @param pending Indicates if the zone has pending configuration changes that need to be applied.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pending(Boolean pending) {
+            return pending(Output.of(pending));
+        }
+
+        /**
          * @param reverseDns Reverse DNS API server address.
          * 
          * @return builder
@@ -397,6 +451,27 @@ public final class QinqState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder serviceVlanProtocol(String serviceVlanProtocol) {
             return serviceVlanProtocol(Output.of(serviceVlanProtocol));
+        }
+
+        /**
+         * @param state Indicates the current state of the zone.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(@Nullable Output<String> state) {
+            $.state = state;
+            return this;
+        }
+
+        /**
+         * @param state Indicates the current state of the zone.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(String state) {
+            return state(Output.of(state));
         }
 
         /**

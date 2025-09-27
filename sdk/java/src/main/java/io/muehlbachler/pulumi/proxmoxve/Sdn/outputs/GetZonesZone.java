@@ -26,11 +26,13 @@ public final class GetZonesZone {
     private Integer mtu;
     private List<String> nodes;
     private List<String> peers;
+    private Boolean pending;
     private String primaryExitNode;
     private String reverseDns;
     private String rtImport;
     private Integer serviceVlan;
     private String serviceVlanProtocol;
+    private String state;
     private String type;
     private Integer vrfVxlan;
 
@@ -74,6 +76,9 @@ public final class GetZonesZone {
     public List<String> peers() {
         return this.peers;
     }
+    public Boolean pending() {
+        return this.pending;
+    }
     public String primaryExitNode() {
         return this.primaryExitNode;
     }
@@ -88,6 +93,9 @@ public final class GetZonesZone {
     }
     public String serviceVlanProtocol() {
         return this.serviceVlanProtocol;
+    }
+    public String state() {
+        return this.state;
     }
     public String type() {
         return this.type;
@@ -118,11 +126,13 @@ public final class GetZonesZone {
         private Integer mtu;
         private List<String> nodes;
         private List<String> peers;
+        private Boolean pending;
         private String primaryExitNode;
         private String reverseDns;
         private String rtImport;
         private Integer serviceVlan;
         private String serviceVlanProtocol;
+        private String state;
         private String type;
         private Integer vrfVxlan;
         public Builder() {}
@@ -141,11 +151,13 @@ public final class GetZonesZone {
     	      this.mtu = defaults.mtu;
     	      this.nodes = defaults.nodes;
     	      this.peers = defaults.peers;
+    	      this.pending = defaults.pending;
     	      this.primaryExitNode = defaults.primaryExitNode;
     	      this.reverseDns = defaults.reverseDns;
     	      this.rtImport = defaults.rtImport;
     	      this.serviceVlan = defaults.serviceVlan;
     	      this.serviceVlanProtocol = defaults.serviceVlanProtocol;
+    	      this.state = defaults.state;
     	      this.type = defaults.type;
     	      this.vrfVxlan = defaults.vrfVxlan;
         }
@@ -264,6 +276,14 @@ public final class GetZonesZone {
             return peers(List.of(peers));
         }
         @CustomType.Setter
+        public Builder pending(Boolean pending) {
+            if (pending == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "pending");
+            }
+            this.pending = pending;
+            return this;
+        }
+        @CustomType.Setter
         public Builder primaryExitNode(String primaryExitNode) {
             if (primaryExitNode == null) {
               throw new MissingRequiredPropertyException("GetZonesZone", "primaryExitNode");
@@ -304,6 +324,14 @@ public final class GetZonesZone {
             return this;
         }
         @CustomType.Setter
+        public Builder state(String state) {
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "state");
+            }
+            this.state = state;
+            return this;
+        }
+        @CustomType.Setter
         public Builder type(String type) {
             if (type == null) {
               throw new MissingRequiredPropertyException("GetZonesZone", "type");
@@ -334,11 +362,13 @@ public final class GetZonesZone {
             _resultValue.mtu = mtu;
             _resultValue.nodes = nodes;
             _resultValue.peers = peers;
+            _resultValue.pending = pending;
             _resultValue.primaryExitNode = primaryExitNode;
             _resultValue.reverseDns = reverseDns;
             _resultValue.rtImport = rtImport;
             _resultValue.serviceVlan = serviceVlan;
             _resultValue.serviceVlanProtocol = serviceVlanProtocol;
+            _resultValue.state = state;
             _resultValue.type = type;
             _resultValue.vrfVxlan = vrfVxlan;
             return _resultValue;

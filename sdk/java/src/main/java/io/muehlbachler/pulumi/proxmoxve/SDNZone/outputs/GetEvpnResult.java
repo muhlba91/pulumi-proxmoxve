@@ -69,6 +69,11 @@ public final class GetEvpnResult {
      */
     private List<String> nodes;
     /**
+     * @return Indicates if the zone has pending configuration changes that need to be applied.
+     * 
+     */
+    private Boolean pending;
+    /**
      * @return Primary exit node for EVPN.
      * 
      */
@@ -83,6 +88,11 @@ public final class GetEvpnResult {
      * 
      */
     private String rtImport;
+    /**
+     * @return Indicates the current state of the zone.
+     * 
+     */
+    private String state;
     /**
      * @return VRF VXLAN-ID used for dedicated routing interconnect between VNets. It must be different than the VXLAN-ID of the VNets.
      * 
@@ -168,6 +178,13 @@ public final class GetEvpnResult {
         return this.nodes;
     }
     /**
+     * @return Indicates if the zone has pending configuration changes that need to be applied.
+     * 
+     */
+    public Boolean pending() {
+        return this.pending;
+    }
+    /**
      * @return Primary exit node for EVPN.
      * 
      */
@@ -187,6 +204,13 @@ public final class GetEvpnResult {
      */
     public String rtImport() {
         return this.rtImport;
+    }
+    /**
+     * @return Indicates the current state of the zone.
+     * 
+     */
+    public String state() {
+        return this.state;
     }
     /**
      * @return VRF VXLAN-ID used for dedicated routing interconnect between VNets. It must be different than the VXLAN-ID of the VNets.
@@ -216,9 +240,11 @@ public final class GetEvpnResult {
         private String ipam;
         private Integer mtu;
         private List<String> nodes;
+        private Boolean pending;
         private String primaryExitNode;
         private String reverseDns;
         private String rtImport;
+        private String state;
         private Integer vrfVxlan;
         public Builder() {}
         public Builder(GetEvpnResult defaults) {
@@ -234,9 +260,11 @@ public final class GetEvpnResult {
     	      this.ipam = defaults.ipam;
     	      this.mtu = defaults.mtu;
     	      this.nodes = defaults.nodes;
+    	      this.pending = defaults.pending;
     	      this.primaryExitNode = defaults.primaryExitNode;
     	      this.reverseDns = defaults.reverseDns;
     	      this.rtImport = defaults.rtImport;
+    	      this.state = defaults.state;
     	      this.vrfVxlan = defaults.vrfVxlan;
         }
 
@@ -335,6 +363,14 @@ public final class GetEvpnResult {
             return nodes(List.of(nodes));
         }
         @CustomType.Setter
+        public Builder pending(Boolean pending) {
+            if (pending == null) {
+              throw new MissingRequiredPropertyException("GetEvpnResult", "pending");
+            }
+            this.pending = pending;
+            return this;
+        }
+        @CustomType.Setter
         public Builder primaryExitNode(String primaryExitNode) {
             if (primaryExitNode == null) {
               throw new MissingRequiredPropertyException("GetEvpnResult", "primaryExitNode");
@@ -359,6 +395,14 @@ public final class GetEvpnResult {
             return this;
         }
         @CustomType.Setter
+        public Builder state(String state) {
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetEvpnResult", "state");
+            }
+            this.state = state;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vrfVxlan(Integer vrfVxlan) {
             if (vrfVxlan == null) {
               throw new MissingRequiredPropertyException("GetEvpnResult", "vrfVxlan");
@@ -379,9 +423,11 @@ public final class GetEvpnResult {
             _resultValue.ipam = ipam;
             _resultValue.mtu = mtu;
             _resultValue.nodes = nodes;
+            _resultValue.pending = pending;
             _resultValue.primaryExitNode = primaryExitNode;
             _resultValue.reverseDns = reverseDns;
             _resultValue.rtImport = rtImport;
+            _resultValue.state = state;
             _resultValue.vrfVxlan = vrfVxlan;
             return _resultValue;
         }

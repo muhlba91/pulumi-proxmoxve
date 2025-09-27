@@ -69,64 +69,64 @@
         "variables": {
             "apiToken": {
                 "type": "string",
-                "description": "The API token for the Proxmox VE API.\n",
+                "description": "The API token for the Proxmox VE API.",
                 "secret": true
             },
             "authTicket": {
                 "type": "string",
-                "description": "The pre-authenticated Ticket for the Proxmox VE API.\n",
+                "description": "The pre-authenticated Ticket for the Proxmox VE API.",
                 "secret": true
             },
             "csrfPreventionToken": {
                 "type": "string",
-                "description": "The pre-authenticated CSRF Prevention Token for the Proxmox VE API.\n",
+                "description": "The pre-authenticated CSRF Prevention Token for the Proxmox VE API.",
                 "secret": true
             },
             "endpoint": {
                 "type": "string",
-                "description": "The endpoint for the Proxmox VE API.\n"
+                "description": "The endpoint for the Proxmox VE API."
             },
             "insecure": {
                 "type": "boolean",
-                "description": "Whether to skip the TLS verification step.\n"
+                "description": "Whether to skip the TLS verification step."
             },
             "minTls": {
                 "type": "string",
-                "description": "The minimum required TLS version for API calls.Supported values: `1.0|1.1|1.2|1.3`. Defaults to `1.3`.\n"
+                "description": "The minimum required TLS version for API calls.Supported values: `1.0|1.1|1.2|1.3`. Defaults to `1.3`."
             },
             "otp": {
                 "type": "string",
-                "description": "The one-time password for the Proxmox VE API.\n",
+                "description": "The one-time password for the Proxmox VE API.",
                 "deprecationMessage": "The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead."
             },
             "password": {
                 "type": "string",
-                "description": "The password for the Proxmox VE API.\n",
+                "description": "The password for the Proxmox VE API.",
                 "secret": true
             },
             "randomVmIdEnd": {
                 "type": "integer",
-                "description": "The ending number for random VM / Container IDs.\n"
+                "description": "The ending number for random VM / Container IDs."
             },
             "randomVmIdStart": {
                 "type": "integer",
-                "description": "The starting number for random VM / Container IDs.\n"
+                "description": "The starting number for random VM / Container IDs."
             },
             "randomVmIds": {
                 "type": "boolean",
-                "description": "Whether to generate random VM / Container IDs.\n"
+                "description": "Whether to generate random VM / Container IDs."
             },
             "ssh": {
                 "$ref": "#/types/proxmoxve:config/ssh:ssh",
-                "description": "The SSH configuration for the Proxmox nodes.\n"
+                "description": "The SSH configuration for the Proxmox nodes."
             },
             "tmpDir": {
                 "type": "string",
-                "description": "The alternative temporary directory.\n"
+                "description": "The alternative temporary directory."
             },
             "username": {
                 "type": "string",
-                "description": "The username for the Proxmox VE API.\n"
+                "description": "The username for the Proxmox VE API."
             }
         }
     },
@@ -1213,6 +1213,45 @@
                 }
             }
         },
+        "proxmoxve:Sdn/SubnetDhcpRange:SubnetDhcpRange": {
+            "properties": {
+                "endAddress": {
+                    "type": "string",
+                    "description": "End of the DHCP range.\n"
+                },
+                "startAddress": {
+                    "type": "string",
+                    "description": "Start of the DHCP range.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "endAddress",
+                "startAddress"
+            ]
+        },
+        "proxmoxve:Sdn/getSubnetDhcpRange:getSubnetDhcpRange": {
+            "properties": {
+                "endAddress": {
+                    "type": "string",
+                    "description": "End of the DHCP range.\n"
+                },
+                "startAddress": {
+                    "type": "string",
+                    "description": "Start of the DHCP range.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "endAddress",
+                "startAddress"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "proxmoxve:Sdn/getZonesZone:getZonesZone": {
             "properties": {
                 "advertiseSubnets": {
@@ -1263,6 +1302,9 @@
                         "type": "string"
                     }
                 },
+                "pending": {
+                    "type": "boolean"
+                },
                 "primaryExitNode": {
                     "type": "string"
                 },
@@ -1276,6 +1318,9 @@
                     "type": "integer"
                 },
                 "serviceVlanProtocol": {
+                    "type": "string"
+                },
+                "state": {
                     "type": "string"
                 },
                 "type": {
@@ -1300,11 +1345,13 @@
                 "mtu",
                 "nodes",
                 "peers",
+                "pending",
                 "primaryExitNode",
                 "reverseDns",
                 "rtImport",
                 "serviceVlan",
                 "serviceVlanProtocol",
+                "state",
                 "type",
                 "vrfVxlan"
             ],
@@ -2467,7 +2514,7 @@
                 },
                 "status": {
                     "type": "string",
-                    "description": "Status of the VM\n"
+                    "description": "The status of the VM.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -2478,7 +2525,7 @@
                 },
                 "template": {
                     "type": "boolean",
-                    "description": "Is VM a template (true) or a regular VM (false)\n"
+                    "description": "Whether the VM is a template.\n"
                 },
                 "vmId": {
                     "type": "integer",
@@ -2684,7 +2731,7 @@
                 },
                 "status": {
                     "type": "string",
-                    "description": "Status of the container\n"
+                    "description": "The status of the container.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -2695,7 +2742,7 @@
                 },
                 "template": {
                     "type": "boolean",
-                    "description": "Is container a template (true) or a regular container (false)\n"
+                    "description": "Whether the container is a template.\n"
                 },
                 "vmId": {
                     "type": "integer",
@@ -2897,127 +2944,127 @@
         "properties": {
             "apiToken": {
                 "type": "string",
-                "description": "The API token for the Proxmox VE API.\n",
+                "description": "The API token for the Proxmox VE API.",
                 "secret": true
             },
             "authTicket": {
                 "type": "string",
-                "description": "The pre-authenticated Ticket for the Proxmox VE API.\n",
+                "description": "The pre-authenticated Ticket for the Proxmox VE API.",
                 "secret": true
             },
             "csrfPreventionToken": {
                 "type": "string",
-                "description": "The pre-authenticated CSRF Prevention Token for the Proxmox VE API.\n",
+                "description": "The pre-authenticated CSRF Prevention Token for the Proxmox VE API.",
                 "secret": true
             },
             "endpoint": {
                 "type": "string",
-                "description": "The endpoint for the Proxmox VE API.\n"
+                "description": "The endpoint for the Proxmox VE API."
             },
             "insecure": {
                 "type": "boolean",
-                "description": "Whether to skip the TLS verification step.\n"
+                "description": "Whether to skip the TLS verification step."
             },
             "minTls": {
                 "type": "string",
-                "description": "The minimum required TLS version for API calls.Supported values: `1.0|1.1|1.2|1.3`. Defaults to `1.3`.\n"
+                "description": "The minimum required TLS version for API calls.Supported values: `1.0|1.1|1.2|1.3`. Defaults to `1.3`."
             },
             "otp": {
                 "type": "string",
-                "description": "The one-time password for the Proxmox VE API.\n",
+                "description": "The one-time password for the Proxmox VE API.",
                 "deprecationMessage": "The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead."
             },
             "password": {
                 "type": "string",
-                "description": "The password for the Proxmox VE API.\n",
+                "description": "The password for the Proxmox VE API.",
                 "secret": true
             },
             "randomVmIdEnd": {
                 "type": "integer",
-                "description": "The ending number for random VM / Container IDs.\n"
+                "description": "The ending number for random VM / Container IDs."
             },
             "randomVmIdStart": {
                 "type": "integer",
-                "description": "The starting number for random VM / Container IDs.\n"
+                "description": "The starting number for random VM / Container IDs."
             },
             "randomVmIds": {
                 "type": "boolean",
-                "description": "Whether to generate random VM / Container IDs.\n"
+                "description": "Whether to generate random VM / Container IDs."
             },
             "ssh": {
                 "$ref": "#/types/proxmoxve:index/ProviderSsh:ProviderSsh",
-                "description": "The SSH configuration for the Proxmox nodes.\n"
+                "description": "The SSH configuration for the Proxmox nodes."
             },
             "tmpDir": {
                 "type": "string",
-                "description": "The alternative temporary directory.\n"
+                "description": "The alternative temporary directory."
             },
             "username": {
                 "type": "string",
-                "description": "The username for the Proxmox VE API.\n"
+                "description": "The username for the Proxmox VE API."
             }
         },
         "inputProperties": {
             "apiToken": {
                 "type": "string",
-                "description": "The API token for the Proxmox VE API.\n",
+                "description": "The API token for the Proxmox VE API.",
                 "secret": true
             },
             "authTicket": {
                 "type": "string",
-                "description": "The pre-authenticated Ticket for the Proxmox VE API.\n",
+                "description": "The pre-authenticated Ticket for the Proxmox VE API.",
                 "secret": true
             },
             "csrfPreventionToken": {
                 "type": "string",
-                "description": "The pre-authenticated CSRF Prevention Token for the Proxmox VE API.\n",
+                "description": "The pre-authenticated CSRF Prevention Token for the Proxmox VE API.",
                 "secret": true
             },
             "endpoint": {
                 "type": "string",
-                "description": "The endpoint for the Proxmox VE API.\n"
+                "description": "The endpoint for the Proxmox VE API."
             },
             "insecure": {
                 "type": "boolean",
-                "description": "Whether to skip the TLS verification step.\n"
+                "description": "Whether to skip the TLS verification step."
             },
             "minTls": {
                 "type": "string",
-                "description": "The minimum required TLS version for API calls.Supported values: `1.0|1.1|1.2|1.3`. Defaults to `1.3`.\n"
+                "description": "The minimum required TLS version for API calls.Supported values: `1.0|1.1|1.2|1.3`. Defaults to `1.3`."
             },
             "otp": {
                 "type": "string",
-                "description": "The one-time password for the Proxmox VE API.\n",
+                "description": "The one-time password for the Proxmox VE API.",
                 "deprecationMessage": "The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead."
             },
             "password": {
                 "type": "string",
-                "description": "The password for the Proxmox VE API.\n",
+                "description": "The password for the Proxmox VE API.",
                 "secret": true
             },
             "randomVmIdEnd": {
                 "type": "integer",
-                "description": "The ending number for random VM / Container IDs.\n"
+                "description": "The ending number for random VM / Container IDs."
             },
             "randomVmIdStart": {
                 "type": "integer",
-                "description": "The starting number for random VM / Container IDs.\n"
+                "description": "The starting number for random VM / Container IDs."
             },
             "randomVmIds": {
                 "type": "boolean",
-                "description": "Whether to generate random VM / Container IDs.\n"
+                "description": "Whether to generate random VM / Container IDs."
             },
             "ssh": {
                 "$ref": "#/types/proxmoxve:index/ProviderSsh:ProviderSsh",
-                "description": "The SSH configuration for the Proxmox nodes.\n"
+                "description": "The SSH configuration for the Proxmox nodes."
             },
             "tmpDir": {
                 "type": "string",
-                "description": "The alternative temporary directory.\n"
+                "description": "The alternative temporary directory."
             },
             "username": {
                 "type": "string",
-                "description": "The username for the Proxmox VE API.\n"
+                "description": "The username for the Proxmox VE API."
             }
         },
         "methods": {
@@ -3330,7 +3377,7 @@
                     "items": {
                         "$ref": "#/types/proxmoxve:CT/ContainerMountPoint:ContainerMountPoint"
                     },
-                    "description": "A mount point\n"
+                    "description": "A mount point"
                 },
                 "networkInterfaces": {
                     "type": "array",
@@ -3392,7 +3439,7 @@
                 },
                 "timeoutStart": {
                     "type": "integer",
-                    "description": "Start container timeout\n",
+                    "description": "Start container timeout",
                     "deprecationMessage": "This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead."
                 },
                 "timeoutUpdate": {
@@ -3464,7 +3511,7 @@
                     "items": {
                         "$ref": "#/types/proxmoxve:CT/ContainerMountPoint:ContainerMountPoint"
                     },
-                    "description": "A mount point\n"
+                    "description": "A mount point"
                 },
                 "networkInterfaces": {
                     "type": "array",
@@ -3530,7 +3577,7 @@
                 },
                 "timeoutStart": {
                     "type": "integer",
-                    "description": "Start container timeout\n",
+                    "description": "Start container timeout",
                     "deprecationMessage": "This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead."
                 },
                 "timeoutUpdate": {
@@ -3616,7 +3663,7 @@
                         "items": {
                             "$ref": "#/types/proxmoxve:CT/ContainerMountPoint:ContainerMountPoint"
                         },
-                        "description": "A mount point\n"
+                        "description": "A mount point"
                     },
                     "networkInterfaces": {
                         "type": "array",
@@ -3682,7 +3729,7 @@
                     },
                     "timeoutStart": {
                         "type": "integer",
-                        "description": "Start container timeout\n",
+                        "description": "Start container timeout",
                         "deprecationMessage": "This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead."
                     },
                     "timeoutUpdate": {
@@ -5304,7 +5351,7 @@
                 },
                 "containerId": {
                     "type": "integer",
-                    "description": "The ID of the container to manage the firewall for.\n"
+                    "description": "The ID of the container to manage the firewall for."
                 },
                 "name": {
                     "type": "string",
@@ -5312,7 +5359,7 @@
                 },
                 "nodeName": {
                     "type": "string",
-                    "description": "The name of the node.\n"
+                    "description": "The name of the node."
                 },
                 "rules": {
                     "type": "array",
@@ -5323,7 +5370,7 @@
                 },
                 "vmId": {
                     "type": "integer",
-                    "description": "The ID of the VM to manage the firewall for.\n"
+                    "description": "The ID of the VM to manage the firewall for."
                 }
             },
             "required": [
@@ -5337,7 +5384,7 @@
                 },
                 "containerId": {
                     "type": "integer",
-                    "description": "The ID of the container to manage the firewall for.\n"
+                    "description": "The ID of the container to manage the firewall for."
                 },
                 "name": {
                     "type": "string",
@@ -5345,7 +5392,7 @@
                 },
                 "nodeName": {
                     "type": "string",
-                    "description": "The name of the node.\n"
+                    "description": "The name of the node."
                 },
                 "rules": {
                     "type": "array",
@@ -5357,7 +5404,7 @@
                 },
                 "vmId": {
                     "type": "integer",
-                    "description": "The ID of the VM to manage the firewall for.\n"
+                    "description": "The ID of the VM to manage the firewall for."
                 }
             },
             "requiredInputs": [
@@ -5372,7 +5419,7 @@
                     },
                     "containerId": {
                         "type": "integer",
-                        "description": "The ID of the container to manage the firewall for.\n"
+                        "description": "The ID of the container to manage the firewall for."
                     },
                     "name": {
                         "type": "string",
@@ -5380,7 +5427,7 @@
                     },
                     "nodeName": {
                         "type": "string",
-                        "description": "The name of the node.\n"
+                        "description": "The name of the node."
                     },
                     "rules": {
                         "type": "array",
@@ -5392,7 +5439,7 @@
                     },
                     "vmId": {
                         "type": "integer",
-                        "description": "The ID of the VM to manage the firewall for.\n"
+                        "description": "The ID of the VM to manage the firewall for."
                     }
                 },
                 "type": "object"
@@ -6136,6 +6183,10 @@
                     },
                     "description": "The Proxmox nodes which the zone and associated VNets should be deployed on\n"
                 },
+                "pending": {
+                    "type": "boolean",
+                    "description": "Indicates if the zone has pending configuration changes that need to be applied.\n"
+                },
                 "primaryExitNode": {
                     "type": "string",
                     "description": "Primary exit node for EVPN.\n"
@@ -6147,6 +6198,10 @@
                 "rtImport": {
                     "type": "string",
                     "description": "Route target import for EVPN.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "Indicates the current state of the zone.\n"
                 },
                 "vrfVxlan": {
                     "type": "integer",
@@ -6162,6 +6217,8 @@
                 "exitNodes",
                 "zoneId",
                 "nodes",
+                "pending",
+                "state",
                 "vrfVxlan"
             ],
             "inputProperties": {
@@ -6287,6 +6344,10 @@
                         },
                         "description": "The Proxmox nodes which the zone and associated VNets should be deployed on\n"
                     },
+                    "pending": {
+                        "type": "boolean",
+                        "description": "Indicates if the zone has pending configuration changes that need to be applied.\n"
+                    },
                     "primaryExitNode": {
                         "type": "string",
                         "description": "Primary exit node for EVPN.\n"
@@ -6298,6 +6359,10 @@
                     "rtImport": {
                         "type": "string",
                         "description": "Route target import for EVPN.\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "Indicates the current state of the zone.\n"
                     },
                     "vrfVxlan": {
                         "type": "integer",
@@ -6341,6 +6406,10 @@
                     },
                     "description": "The Proxmox nodes which the zone and associated VNets should be deployed on\n"
                 },
+                "pending": {
+                    "type": "boolean",
+                    "description": "Indicates if the zone has pending configuration changes that need to be applied.\n"
+                },
                 "reverseDns": {
                     "type": "string",
                     "description": "Reverse DNS API server address.\n"
@@ -6353,6 +6422,10 @@
                     "type": "string",
                     "description": "Service VLAN protocol for QinQ. The protocol must be `802.1ad` or `802.1q`.\n"
                 },
+                "state": {
+                    "type": "string",
+                    "description": "Indicates the current state of the zone.\n"
+                },
                 "zoneId": {
                     "type": "string",
                     "description": "The unique identifier of the SDN zone.\n"
@@ -6362,7 +6435,9 @@
                 "bridge",
                 "zoneId",
                 "nodes",
-                "serviceVlan"
+                "pending",
+                "serviceVlan",
+                "state"
             ],
             "inputProperties": {
                 "bridge": {
@@ -6445,6 +6520,10 @@
                         },
                         "description": "The Proxmox nodes which the zone and associated VNets should be deployed on\n"
                     },
+                    "pending": {
+                        "type": "boolean",
+                        "description": "Indicates if the zone has pending configuration changes that need to be applied.\n"
+                    },
                     "reverseDns": {
                         "type": "string",
                         "description": "Reverse DNS API server address.\n"
@@ -6456,6 +6535,10 @@
                     "serviceVlanProtocol": {
                         "type": "string",
                         "description": "Service VLAN protocol for QinQ. The protocol must be `802.1ad` or `802.1q`.\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "Indicates the current state of the zone.\n"
                     },
                     "zoneId": {
                         "type": "string",
@@ -6491,9 +6574,17 @@
                     },
                     "description": "The Proxmox nodes which the zone and associated VNets should be deployed on\n"
                 },
+                "pending": {
+                    "type": "boolean",
+                    "description": "Indicates if the zone has pending configuration changes that need to be applied.\n"
+                },
                 "reverseDns": {
                     "type": "string",
                     "description": "Reverse DNS API server address.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "Indicates the current state of the zone.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -6502,7 +6593,9 @@
             },
             "required": [
                 "zoneId",
-                "nodes"
+                "nodes",
+                "pending",
+                "state"
             ],
             "inputProperties": {
                 "dns": {
@@ -6567,9 +6660,17 @@
                         },
                         "description": "The Proxmox nodes which the zone and associated VNets should be deployed on\n"
                     },
+                    "pending": {
+                        "type": "boolean",
+                        "description": "Indicates if the zone has pending configuration changes that need to be applied.\n"
+                    },
                     "reverseDns": {
                         "type": "string",
                         "description": "Reverse DNS API server address.\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "Indicates the current state of the zone.\n"
                     },
                     "zoneId": {
                         "type": "string",
@@ -6609,9 +6710,17 @@
                     },
                     "description": "The Proxmox nodes which the zone and associated VNets should be deployed on\n"
                 },
+                "pending": {
+                    "type": "boolean",
+                    "description": "Indicates if the zone has pending configuration changes that need to be applied.\n"
+                },
                 "reverseDns": {
                     "type": "string",
                     "description": "Reverse DNS API server address.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "Indicates the current state of the zone.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -6621,7 +6730,9 @@
             "required": [
                 "bridge",
                 "zoneId",
-                "nodes"
+                "nodes",
+                "pending",
+                "state"
             ],
             "inputProperties": {
                 "bridge": {
@@ -6695,9 +6806,17 @@
                         },
                         "description": "The Proxmox nodes which the zone and associated VNets should be deployed on\n"
                     },
+                    "pending": {
+                        "type": "boolean",
+                        "description": "Indicates if the zone has pending configuration changes that need to be applied.\n"
+                    },
                     "reverseDns": {
                         "type": "string",
                         "description": "Reverse DNS API server address.\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "Indicates the current state of the zone.\n"
                     },
                     "zoneId": {
                         "type": "string",
@@ -6740,9 +6859,17 @@
                     },
                     "description": "A list of IP addresses of each node in the VXLAN zone. This can be external nodes reachable at this IP address. All nodes in the cluster need to be mentioned here\n"
                 },
+                "pending": {
+                    "type": "boolean",
+                    "description": "Indicates if the zone has pending configuration changes that need to be applied.\n"
+                },
                 "reverseDns": {
                     "type": "string",
                     "description": "Reverse DNS API server address.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "Indicates the current state of the zone.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -6752,7 +6879,9 @@
             "required": [
                 "zoneId",
                 "nodes",
-                "peers"
+                "peers",
+                "pending",
+                "state"
             ],
             "inputProperties": {
                 "dns": {
@@ -6832,13 +6961,226 @@
                         },
                         "description": "A list of IP addresses of each node in the VXLAN zone. This can be external nodes reachable at this IP address. All nodes in the cluster need to be mentioned here\n"
                     },
+                    "pending": {
+                        "type": "boolean",
+                        "description": "Indicates if the zone has pending configuration changes that need to be applied.\n"
+                    },
                     "reverseDns": {
                         "type": "string",
                         "description": "Reverse DNS API server address.\n"
                     },
+                    "state": {
+                        "type": "string",
+                        "description": "Indicates the current state of the zone.\n"
+                    },
                     "zoneId": {
                         "type": "string",
                         "description": "The unique identifier of the SDN zone.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "proxmoxve:Sdn/applier:Applier": {
+            "description": "**EXPERIMENTAL** Triggers Proxmox's SDN **Apply** (equivalent to `PUT /cluster/sdn`).Intended to be used with `replace_triggered_by` so it runs after SDN objects change.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst finalizer = new proxmoxve.sdn.Applier(\"finalizer\", {});\n// SDN Zone (Simple) - First zone for applier demonstration\nconst exampleZone1 = new proxmoxve.sdnzone.Simple(\"exampleZone1\", {\n    zoneId: \"zone1\",\n    nodes: [\"pve\"],\n    mtu: 1500,\n    dns: \"1.1.1.1\",\n    dnsZone: \"example.com\",\n    ipam: \"pve\",\n    reverseDns: \"1.1.1.1\",\n}, {\n    dependsOn: [finalizer],\n});\n// SDN Zone (Simple) - Second zone for applier demonstration\nconst exampleZone2 = new proxmoxve.sdnzone.Simple(\"exampleZone2\", {\n    zoneId: \"zone2\",\n    nodes: [\"pve\"],\n    mtu: 1500,\n}, {\n    dependsOn: [finalizer],\n});\n// SDN Applier - Applies SDN configuration changes\nconst exampleApplier = new proxmoxve.sdn.Applier(\"exampleApplier\", {}, {\n    dependsOn: [\n        exampleZone1,\n        exampleZone2,\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nfinalizer = proxmoxve.sdn.Applier(\"finalizer\")\n# SDN Zone (Simple) - First zone for applier demonstration\nexample_zone1 = proxmoxve.sdnzone.Simple(\"exampleZone1\",\n    zone_id=\"zone1\",\n    nodes=[\"pve\"],\n    mtu=1500,\n    dns=\"1.1.1.1\",\n    dns_zone=\"example.com\",\n    ipam=\"pve\",\n    reverse_dns=\"1.1.1.1\",\n    opts = pulumi.ResourceOptions(depends_on=[finalizer]))\n# SDN Zone (Simple) - Second zone for applier demonstration\nexample_zone2 = proxmoxve.sdnzone.Simple(\"exampleZone2\",\n    zone_id=\"zone2\",\n    nodes=[\"pve\"],\n    mtu=1500,\n    opts = pulumi.ResourceOptions(depends_on=[finalizer]))\n# SDN Applier - Applies SDN configuration changes\nexample_applier = proxmoxve.sdn.Applier(\"exampleApplier\", opts = pulumi.ResourceOptions(depends_on=[\n        example_zone1,\n        example_zone2,\n    ]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var finalizer = new ProxmoxVE.Sdn.Applier(\"finalizer\");\n\n    // SDN Zone (Simple) - First zone for applier demonstration\n    var exampleZone1 = new ProxmoxVE.SDNZone.Simple(\"exampleZone1\", new()\n    {\n        ZoneId = \"zone1\",\n        Nodes = new[]\n        {\n            \"pve\",\n        },\n        Mtu = 1500,\n        Dns = \"1.1.1.1\",\n        DnsZone = \"example.com\",\n        Ipam = \"pve\",\n        ReverseDns = \"1.1.1.1\",\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            finalizer,\n        },\n    });\n\n    // SDN Zone (Simple) - Second zone for applier demonstration\n    var exampleZone2 = new ProxmoxVE.SDNZone.Simple(\"exampleZone2\", new()\n    {\n        ZoneId = \"zone2\",\n        Nodes = new[]\n        {\n            \"pve\",\n        },\n        Mtu = 1500,\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            finalizer,\n        },\n    });\n\n    // SDN Applier - Applies SDN configuration changes\n    var exampleApplier = new ProxmoxVE.Sdn.Applier(\"exampleApplier\", new()\n    {\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            exampleZone1,\n            exampleZone2,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/sdn\"\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/sdnzone\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfinalizer, err := sdn.NewApplier(ctx, \"finalizer\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// SDN Zone (Simple) - First zone for applier demonstration\n\t\texampleZone1, err := sdnzone.NewSimple(ctx, \"exampleZone1\", \u0026sdnzone.SimpleArgs{\n\t\t\tZoneId: pulumi.String(\"zone1\"),\n\t\t\tNodes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"pve\"),\n\t\t\t},\n\t\t\tMtu:        pulumi.Int(1500),\n\t\t\tDns:        pulumi.String(\"1.1.1.1\"),\n\t\t\tDnsZone:    pulumi.String(\"example.com\"),\n\t\t\tIpam:       pulumi.String(\"pve\"),\n\t\t\tReverseDns: pulumi.String(\"1.1.1.1\"),\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tfinalizer,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// SDN Zone (Simple) - Second zone for applier demonstration\n\t\texampleZone2, err := sdnzone.NewSimple(ctx, \"exampleZone2\", \u0026sdnzone.SimpleArgs{\n\t\t\tZoneId: pulumi.String(\"zone2\"),\n\t\t\tNodes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"pve\"),\n\t\t\t},\n\t\t\tMtu: pulumi.Int(1500),\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tfinalizer,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// SDN Applier - Applies SDN configuration changes\n\t\t_, err = sdn.NewApplier(ctx, \"exampleApplier\", nil, pulumi.DependsOn([]pulumi.Resource{\n\t\t\texampleZone1,\n\t\t\texampleZone2,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport io.muehlbachler.pulumi.proxmoxve.Sdn.Applier;\nimport io.muehlbachler.pulumi.proxmoxve.SDNZone.Simple;\nimport io.muehlbachler.pulumi.proxmoxve.SDNZone.SimpleArgs;\nimport io.muehlbachler.pulumi.proxmoxve.Sdn.ApplierArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var finalizer = new Applier(\"finalizer\");\n\n        // SDN Zone (Simple) - First zone for applier demonstration\n        var exampleZone1 = new Simple(\"exampleZone1\", SimpleArgs.builder()\n            .zoneId(\"zone1\")\n            .nodes(\"pve\")\n            .mtu(1500)\n            .dns(\"1.1.1.1\")\n            .dnsZone(\"example.com\")\n            .ipam(\"pve\")\n            .reverseDns(\"1.1.1.1\")\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(finalizer)\n                .build());\n\n        // SDN Zone (Simple) - Second zone for applier demonstration\n        var exampleZone2 = new Simple(\"exampleZone2\", SimpleArgs.builder()\n            .zoneId(\"zone2\")\n            .nodes(\"pve\")\n            .mtu(1500)\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(finalizer)\n                .build());\n\n        // SDN Applier - Applies SDN configuration changes\n        var exampleApplier = new Applier(\"exampleApplier\", ApplierArgs.Empty, CustomResourceOptions.builder()\n            .dependsOn(            \n                exampleZone1,\n                exampleZone2)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # SDN Zone (Simple) - First zone for applier demonstration\n  exampleZone1:\n    type: proxmoxve:SDNZone:Simple\n    properties:\n      zoneId: zone1\n      nodes:\n        - pve\n      mtu: 1500\n      # Optional attributes\n      dns: 1.1.1.1\n      dnsZone: example.com\n      ipam: pve\n      reverseDns: 1.1.1.1\n    options:\n      dependsOn:\n        - ${finalizer}\n  # SDN Zone (Simple) - Second zone for applier demonstration\n  exampleZone2:\n    type: proxmoxve:SDNZone:Simple\n    properties:\n      zoneId: zone2\n      nodes:\n        - pve\n      mtu: 1500\n    options:\n      dependsOn:\n        - ${finalizer}\n  # SDN Applier - Applies SDN configuration changes\n  exampleApplier:\n    type: proxmoxve:Sdn:Applier\n    options:\n      dependsOn:\n        - ${exampleZone1}\n        - ${exampleZone2}\n  finalizer:\n    type: proxmoxve:Sdn:Applier\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Applier resources.\n",
+                "type": "object"
+            }
+        },
+        "proxmoxve:Sdn/subnet:Subnet": {
+            "description": "Manages SDN Subnets in Proxmox VE.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  # SDN Zone (Simple) - Basic zone for simple vnets\n  exampleZone1:\n    type: proxmoxve:SDNZone:Simple\n    properties:\n      zoneId: zone1\n      nodes:\n        - pve\n      mtu: 1500\n      # Optional attributes\n      dns: 1.1.1.1\n      dnsZone: example.com\n      ipam: pve\n      reverseDns: 1.1.1.1\n    options:\n      dependsOn:\n        - ${finalizer}\n  # SDN Zone (Simple) - Second zone for demonstration\n  exampleZone2:\n    type: proxmoxve:SDNZone:Simple\n    properties:\n      zoneId: zone2\n      nodes:\n        - pve\n      mtu: 1500\n    options:\n      dependsOn:\n        - ${finalizer}\n  # SDN VNet - Basic vnet\n  exampleVnet1:\n    type: proxmoxve:Sdn:Vnet\n    properties:\n      vnetId: vnet1\n      zone: ${exampleZone1.zoneId}\n    options:\n      dependsOn:\n        - ${finalizer}\n  # SDN VNet - VNet with alias and port isolation\n  exampleVnet2:\n    type: proxmoxve:Sdn:Vnet\n    properties:\n      vnetId: vnet2\n      zone: ${exampleZone2.zoneId}\n      alias: Example VNet 2\n      isolatePorts: true\n      vlanAware: false\n    options:\n      dependsOn:\n        - ${finalizer}\n  # Basic Subnet\n  basicSubnet:\n    type: proxmoxve:Sdn:Subnet\n    properties:\n      cidr: 192.168.1.0/24\n      vnet: ${exampleVnet1.vnetId}\n      gateway: 192.168.1.1\n    options:\n      dependsOn:\n        - ${finalizer}\n  # Subnet with DHCP Configuration\n  dhcpSubnet:\n    type: proxmoxve:Sdn:Subnet\n    properties:\n      cidr: 192.168.2.0/24\n      vnet: ${exampleVnet2.vnetId}\n      gateway: 192.168.2.1\n      dhcpDnsServer: 192.168.2.53\n      dnsZonePrefix: internal.example.com\n      snat: true\n      dhcpRange:\n        start_address: 192.168.2.10\n        end_address: 192.168.2.100\n    options:\n      dependsOn:\n        - ${finalizer}\n  # SDN Applier for all resources\n  subnetApplier:\n    type: proxmoxve:Sdn:Applier\n    options:\n      dependsOn:\n        - ${exampleZone1}\n        - ${exampleZone2}\n        - ${exampleVnet1}\n        - ${exampleVnet2}\n        - ${basicSubnet}\n        - ${dhcpSubnet}\n  finalizer:\n    type: proxmoxve:Sdn:Applier\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n#!/usr/bin/env sh\n\nSDN subnet can be imported using its unique identifier in the format: \u003cvnet\u003e/\u003csubnet-id\u003e\n\nThe \u003csubnet-id\u003e is the canonical ID from Proxmox, e.g., \"zone1-192.168.1.0-24\"\n\n```sh\n$ pulumi import proxmoxve:Sdn/subnet:Subnet basic_subnet vnet1/zone1-192.168.1.0-24\n```\n\n```sh\n$ pulumi import proxmoxve:Sdn/subnet:Subnet dhcp_subnet vnet2/zone2-192.168.2.0-24\n```\n\n",
+            "properties": {
+                "cidr": {
+                    "type": "string",
+                    "description": "A CIDR network address, for example 10.0.0.0/8\n"
+                },
+                "dhcpDnsServer": {
+                    "type": "string",
+                    "description": "The DNS server used for DHCP.\n"
+                },
+                "dhcpRange": {
+                    "$ref": "#/types/proxmoxve:Sdn/SubnetDhcpRange:SubnetDhcpRange",
+                    "description": "DHCP range (start and end IPs).\n"
+                },
+                "dnsZonePrefix": {
+                    "type": "string",
+                    "description": "Prefix used for DNS zone delegation.\n"
+                },
+                "gateway": {
+                    "type": "string",
+                    "description": "The gateway address for the subnet.\n"
+                },
+                "snat": {
+                    "type": "boolean",
+                    "description": "Whether SNAT is enabled for the subnet.\n"
+                },
+                "vnet": {
+                    "type": "string",
+                    "description": "The VNet to which this subnet belongs.\n"
+                }
+            },
+            "required": [
+                "cidr",
+                "vnet"
+            ],
+            "inputProperties": {
+                "cidr": {
+                    "type": "string",
+                    "description": "A CIDR network address, for example 10.0.0.0/8\n"
+                },
+                "dhcpDnsServer": {
+                    "type": "string",
+                    "description": "The DNS server used for DHCP.\n"
+                },
+                "dhcpRange": {
+                    "$ref": "#/types/proxmoxve:Sdn/SubnetDhcpRange:SubnetDhcpRange",
+                    "description": "DHCP range (start and end IPs).\n"
+                },
+                "dnsZonePrefix": {
+                    "type": "string",
+                    "description": "Prefix used for DNS zone delegation.\n"
+                },
+                "gateway": {
+                    "type": "string",
+                    "description": "The gateway address for the subnet.\n"
+                },
+                "snat": {
+                    "type": "boolean",
+                    "description": "Whether SNAT is enabled for the subnet.\n"
+                },
+                "vnet": {
+                    "type": "string",
+                    "description": "The VNet to which this subnet belongs.\n"
+                }
+            },
+            "requiredInputs": [
+                "cidr",
+                "vnet"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Subnet resources.\n",
+                "properties": {
+                    "cidr": {
+                        "type": "string",
+                        "description": "A CIDR network address, for example 10.0.0.0/8\n"
+                    },
+                    "dhcpDnsServer": {
+                        "type": "string",
+                        "description": "The DNS server used for DHCP.\n"
+                    },
+                    "dhcpRange": {
+                        "$ref": "#/types/proxmoxve:Sdn/SubnetDhcpRange:SubnetDhcpRange",
+                        "description": "DHCP range (start and end IPs).\n"
+                    },
+                    "dnsZonePrefix": {
+                        "type": "string",
+                        "description": "Prefix used for DNS zone delegation.\n"
+                    },
+                    "gateway": {
+                        "type": "string",
+                        "description": "The gateway address for the subnet.\n"
+                    },
+                    "snat": {
+                        "type": "boolean",
+                        "description": "Whether SNAT is enabled for the subnet.\n"
+                    },
+                    "vnet": {
+                        "type": "string",
+                        "description": "The VNet to which this subnet belongs.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "proxmoxve:Sdn/vnet:Vnet": {
+            "description": "Manages Proxmox VE SDN VNet.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst finalizer = new proxmoxve.sdn.Applier(\"finalizer\", {});\n// SDN Zone (Simple) - Basic zone for simple vnets\nconst exampleZone1 = new proxmoxve.sdnzone.Simple(\"exampleZone1\", {\n    zoneId: \"zone1\",\n    nodes: [\"pve\"],\n    mtu: 1500,\n    dns: \"1.1.1.1\",\n    dnsZone: \"example.com\",\n    ipam: \"pve\",\n    reverseDns: \"1.1.1.1\",\n}, {\n    dependsOn: [finalizer],\n});\n// SDN Zone (Simple) - Second zone for demonstration\nconst exampleZone2 = new proxmoxve.sdnzone.Simple(\"exampleZone2\", {\n    zoneId: \"zone2\",\n    nodes: [\"pve\"],\n    mtu: 1500,\n}, {\n    dependsOn: [finalizer],\n});\n// Basic VNet (Simple)\nconst basicVnet = new proxmoxve.sdn.Vnet(\"basicVnet\", {\n    vnetId: \"vnet1\",\n    zone: exampleZone1.zoneId,\n}, {\n    dependsOn: [finalizer],\n});\n// VNet with Alias and Port Isolation\nconst isolatedVnet = new proxmoxve.sdn.Vnet(\"isolatedVnet\", {\n    vnetId: \"vnet2\",\n    zone: exampleZone2.zoneId,\n    alias: \"Isolated VNet\",\n    isolatePorts: true,\n    vlanAware: false,\n}, {\n    dependsOn: [finalizer],\n});\n// SDN Applier for all resources\nconst vnetApplier = new proxmoxve.sdn.Applier(\"vnetApplier\", {}, {\n    dependsOn: [\n        exampleZone1,\n        exampleZone2,\n        basicVnet,\n        isolatedVnet,\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nfinalizer = proxmoxve.sdn.Applier(\"finalizer\")\n# SDN Zone (Simple) - Basic zone for simple vnets\nexample_zone1 = proxmoxve.sdnzone.Simple(\"exampleZone1\",\n    zone_id=\"zone1\",\n    nodes=[\"pve\"],\n    mtu=1500,\n    dns=\"1.1.1.1\",\n    dns_zone=\"example.com\",\n    ipam=\"pve\",\n    reverse_dns=\"1.1.1.1\",\n    opts = pulumi.ResourceOptions(depends_on=[finalizer]))\n# SDN Zone (Simple) - Second zone for demonstration\nexample_zone2 = proxmoxve.sdnzone.Simple(\"exampleZone2\",\n    zone_id=\"zone2\",\n    nodes=[\"pve\"],\n    mtu=1500,\n    opts = pulumi.ResourceOptions(depends_on=[finalizer]))\n# Basic VNet (Simple)\nbasic_vnet = proxmoxve.sdn.Vnet(\"basicVnet\",\n    vnet_id=\"vnet1\",\n    zone=example_zone1.zone_id,\n    opts = pulumi.ResourceOptions(depends_on=[finalizer]))\n# VNet with Alias and Port Isolation\nisolated_vnet = proxmoxve.sdn.Vnet(\"isolatedVnet\",\n    vnet_id=\"vnet2\",\n    zone=example_zone2.zone_id,\n    alias=\"Isolated VNet\",\n    isolate_ports=True,\n    vlan_aware=False,\n    opts = pulumi.ResourceOptions(depends_on=[finalizer]))\n# SDN Applier for all resources\nvnet_applier = proxmoxve.sdn.Applier(\"vnetApplier\", opts = pulumi.ResourceOptions(depends_on=[\n        example_zone1,\n        example_zone2,\n        basic_vnet,\n        isolated_vnet,\n    ]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var finalizer = new ProxmoxVE.Sdn.Applier(\"finalizer\");\n\n    // SDN Zone (Simple) - Basic zone for simple vnets\n    var exampleZone1 = new ProxmoxVE.SDNZone.Simple(\"exampleZone1\", new()\n    {\n        ZoneId = \"zone1\",\n        Nodes = new[]\n        {\n            \"pve\",\n        },\n        Mtu = 1500,\n        Dns = \"1.1.1.1\",\n        DnsZone = \"example.com\",\n        Ipam = \"pve\",\n        ReverseDns = \"1.1.1.1\",\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            finalizer,\n        },\n    });\n\n    // SDN Zone (Simple) - Second zone for demonstration\n    var exampleZone2 = new ProxmoxVE.SDNZone.Simple(\"exampleZone2\", new()\n    {\n        ZoneId = \"zone2\",\n        Nodes = new[]\n        {\n            \"pve\",\n        },\n        Mtu = 1500,\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            finalizer,\n        },\n    });\n\n    // Basic VNet (Simple)\n    var basicVnet = new ProxmoxVE.Sdn.Vnet(\"basicVnet\", new()\n    {\n        VnetId = \"vnet1\",\n        Zone = exampleZone1.ZoneId,\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            finalizer,\n        },\n    });\n\n    // VNet with Alias and Port Isolation\n    var isolatedVnet = new ProxmoxVE.Sdn.Vnet(\"isolatedVnet\", new()\n    {\n        VnetId = \"vnet2\",\n        Zone = exampleZone2.ZoneId,\n        Alias = \"Isolated VNet\",\n        IsolatePorts = true,\n        VlanAware = false,\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            finalizer,\n        },\n    });\n\n    // SDN Applier for all resources\n    var vnetApplier = new ProxmoxVE.Sdn.Applier(\"vnetApplier\", new()\n    {\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            exampleZone1,\n            exampleZone2,\n            basicVnet,\n            isolatedVnet,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/sdn\"\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/sdnzone\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfinalizer, err := sdn.NewApplier(ctx, \"finalizer\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// SDN Zone (Simple) - Basic zone for simple vnets\n\t\texampleZone1, err := sdnzone.NewSimple(ctx, \"exampleZone1\", \u0026sdnzone.SimpleArgs{\n\t\t\tZoneId: pulumi.String(\"zone1\"),\n\t\t\tNodes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"pve\"),\n\t\t\t},\n\t\t\tMtu:        pulumi.Int(1500),\n\t\t\tDns:        pulumi.String(\"1.1.1.1\"),\n\t\t\tDnsZone:    pulumi.String(\"example.com\"),\n\t\t\tIpam:       pulumi.String(\"pve\"),\n\t\t\tReverseDns: pulumi.String(\"1.1.1.1\"),\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tfinalizer,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// SDN Zone (Simple) - Second zone for demonstration\n\t\texampleZone2, err := sdnzone.NewSimple(ctx, \"exampleZone2\", \u0026sdnzone.SimpleArgs{\n\t\t\tZoneId: pulumi.String(\"zone2\"),\n\t\t\tNodes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"pve\"),\n\t\t\t},\n\t\t\tMtu: pulumi.Int(1500),\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tfinalizer,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Basic VNet (Simple)\n\t\tbasicVnet, err := sdn.NewVnet(ctx, \"basicVnet\", \u0026sdn.VnetArgs{\n\t\t\tVnetId: pulumi.String(\"vnet1\"),\n\t\t\tZone:   exampleZone1.ZoneId,\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tfinalizer,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// VNet with Alias and Port Isolation\n\t\tisolatedVnet, err := sdn.NewVnet(ctx, \"isolatedVnet\", \u0026sdn.VnetArgs{\n\t\t\tVnetId:       pulumi.String(\"vnet2\"),\n\t\t\tZone:         exampleZone2.ZoneId,\n\t\t\tAlias:        pulumi.String(\"Isolated VNet\"),\n\t\t\tIsolatePorts: pulumi.Bool(true),\n\t\t\tVlanAware:    pulumi.Bool(false),\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tfinalizer,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// SDN Applier for all resources\n\t\t_, err = sdn.NewApplier(ctx, \"vnetApplier\", nil, pulumi.DependsOn([]pulumi.Resource{\n\t\t\texampleZone1,\n\t\t\texampleZone2,\n\t\t\tbasicVnet,\n\t\t\tisolatedVnet,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport io.muehlbachler.pulumi.proxmoxve.Sdn.Applier;\nimport io.muehlbachler.pulumi.proxmoxve.SDNZone.Simple;\nimport io.muehlbachler.pulumi.proxmoxve.SDNZone.SimpleArgs;\nimport io.muehlbachler.pulumi.proxmoxve.Sdn.Vnet;\nimport io.muehlbachler.pulumi.proxmoxve.Sdn.VnetArgs;\nimport io.muehlbachler.pulumi.proxmoxve.Sdn.ApplierArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var finalizer = new Applier(\"finalizer\");\n\n        // SDN Zone (Simple) - Basic zone for simple vnets\n        var exampleZone1 = new Simple(\"exampleZone1\", SimpleArgs.builder()\n            .zoneId(\"zone1\")\n            .nodes(\"pve\")\n            .mtu(1500)\n            .dns(\"1.1.1.1\")\n            .dnsZone(\"example.com\")\n            .ipam(\"pve\")\n            .reverseDns(\"1.1.1.1\")\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(finalizer)\n                .build());\n\n        // SDN Zone (Simple) - Second zone for demonstration\n        var exampleZone2 = new Simple(\"exampleZone2\", SimpleArgs.builder()\n            .zoneId(\"zone2\")\n            .nodes(\"pve\")\n            .mtu(1500)\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(finalizer)\n                .build());\n\n        // Basic VNet (Simple)\n        var basicVnet = new Vnet(\"basicVnet\", VnetArgs.builder()\n            .vnetId(\"vnet1\")\n            .zone(exampleZone1.zoneId())\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(finalizer)\n                .build());\n\n        // VNet with Alias and Port Isolation\n        var isolatedVnet = new Vnet(\"isolatedVnet\", VnetArgs.builder()\n            .vnetId(\"vnet2\")\n            .zone(exampleZone2.zoneId())\n            .alias(\"Isolated VNet\")\n            .isolatePorts(true)\n            .vlanAware(false)\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(finalizer)\n                .build());\n\n        // SDN Applier for all resources\n        var vnetApplier = new Applier(\"vnetApplier\", ApplierArgs.Empty, CustomResourceOptions.builder()\n            .dependsOn(            \n                exampleZone1,\n                exampleZone2,\n                basicVnet,\n                isolatedVnet)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # SDN Zone (Simple) - Basic zone for simple vnets\n  exampleZone1:\n    type: proxmoxve:SDNZone:Simple\n    properties:\n      zoneId: zone1\n      nodes:\n        - pve\n      mtu: 1500\n      # Optional attributes\n      dns: 1.1.1.1\n      dnsZone: example.com\n      ipam: pve\n      reverseDns: 1.1.1.1\n    options:\n      dependsOn:\n        - ${finalizer}\n  # SDN Zone (Simple) - Second zone for demonstration\n  exampleZone2:\n    type: proxmoxve:SDNZone:Simple\n    properties:\n      zoneId: zone2\n      nodes:\n        - pve\n      mtu: 1500\n    options:\n      dependsOn:\n        - ${finalizer}\n  # Basic VNet (Simple)\n  basicVnet:\n    type: proxmoxve:Sdn:Vnet\n    properties:\n      vnetId: vnet1\n      zone: ${exampleZone1.zoneId}\n    options:\n      dependsOn:\n        - ${finalizer}\n  # VNet with Alias and Port Isolation\n  isolatedVnet:\n    type: proxmoxve:Sdn:Vnet\n    properties:\n      vnetId: vnet2\n      zone: ${exampleZone2.zoneId}\n      alias: Isolated VNet\n      isolatePorts: true\n      vlanAware: false\n    options:\n      dependsOn:\n        - ${finalizer}\n  # SDN Applier for all resources\n  vnetApplier:\n    type: proxmoxve:Sdn:Applier\n    options:\n      dependsOn:\n        - ${exampleZone1}\n        - ${exampleZone2}\n        - ${basicVnet}\n        - ${isolatedVnet}\n  finalizer:\n    type: proxmoxve:Sdn:Applier\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n#!/usr/bin/env sh\n\nSDN vnet can be imported using its unique identifier (vnet ID)\n\n```sh\n$ pulumi import proxmoxve:Sdn/vnet:Vnet basic_vnet vnet1\n```\n\n```sh\n$ pulumi import proxmoxve:Sdn/vnet:Vnet isolated_vnet vnet2\n```\n\n",
+            "properties": {
+                "alias": {
+                    "type": "string",
+                    "description": "An optional alias for this VNet.\n"
+                },
+                "isolatePorts": {
+                    "type": "boolean",
+                    "description": "Isolate ports within this VNet.\n"
+                },
+                "tag": {
+                    "type": "integer",
+                    "description": "Tag value for VLAN/VXLAN (can't be used with other zone types).\n"
+                },
+                "vlanAware": {
+                    "type": "boolean",
+                    "description": "Allow VM VLANs to pass through this VNet.\n"
+                },
+                "vnetId": {
+                    "type": "string",
+                    "description": "The unique identifier of the SDN VNet.\n"
+                },
+                "zone": {
+                    "type": "string",
+                    "description": "The zone to which this VNet belongs.\n"
+                }
+            },
+            "required": [
+                "vnetId",
+                "zone"
+            ],
+            "inputProperties": {
+                "alias": {
+                    "type": "string",
+                    "description": "An optional alias for this VNet.\n"
+                },
+                "isolatePorts": {
+                    "type": "boolean",
+                    "description": "Isolate ports within this VNet.\n"
+                },
+                "tag": {
+                    "type": "integer",
+                    "description": "Tag value for VLAN/VXLAN (can't be used with other zone types).\n"
+                },
+                "vlanAware": {
+                    "type": "boolean",
+                    "description": "Allow VM VLANs to pass through this VNet.\n"
+                },
+                "vnetId": {
+                    "type": "string",
+                    "description": "The unique identifier of the SDN VNet.\n"
+                },
+                "zone": {
+                    "type": "string",
+                    "description": "The zone to which this VNet belongs.\n"
+                }
+            },
+            "requiredInputs": [
+                "vnetId",
+                "zone"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Vnet resources.\n",
+                "properties": {
+                    "alias": {
+                        "type": "string",
+                        "description": "An optional alias for this VNet.\n"
+                    },
+                    "isolatePorts": {
+                        "type": "boolean",
+                        "description": "Isolate ports within this VNet.\n"
+                    },
+                    "tag": {
+                        "type": "integer",
+                        "description": "Tag value for VLAN/VXLAN (can't be used with other zone types).\n"
+                    },
+                    "vlanAware": {
+                        "type": "boolean",
+                        "description": "Allow VM VLANs to pass through this VNet.\n"
+                    },
+                    "vnetId": {
+                        "type": "string",
+                        "description": "The unique identifier of the SDN VNet.\n"
+                    },
+                    "zone": {
+                        "type": "string",
+                        "description": "The zone to which this VNet belongs.\n"
                     }
                 },
                 "type": "object"
@@ -7526,7 +7868,7 @@
                 },
                 "timeoutMoveDisk": {
                     "type": "integer",
-                    "description": "MoveDisk timeout\n",
+                    "description": "MoveDisk timeout",
                     "deprecationMessage": "This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead."
                 },
                 "timeoutReboot": {
@@ -7796,7 +8138,7 @@
                 },
                 "timeoutMoveDisk": {
                     "type": "integer",
-                    "description": "MoveDisk timeout\n",
+                    "description": "MoveDisk timeout",
                     "deprecationMessage": "This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead."
                 },
                 "timeoutReboot": {
@@ -8088,7 +8430,7 @@
                     },
                     "timeoutMoveDisk": {
                         "type": "integer",
-                        "description": "MoveDisk timeout\n",
+                        "description": "MoveDisk timeout",
                         "deprecationMessage": "This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead."
                     },
                     "timeoutReboot": {
@@ -8479,7 +8821,7 @@
                 },
                 "overwrite": {
                     "type": "boolean",
-                    "description": "Whether to overwrite an existing certificate\n"
+                    "description": "Whether to overwrite an existing certificate"
                 },
                 "privateKey": {
                     "type": "string",
@@ -8544,7 +8886,7 @@
                 },
                 "overwrite": {
                     "type": "boolean",
-                    "description": "Whether to overwrite an existing certificate\n"
+                    "description": "Whether to overwrite an existing certificate"
                 },
                 "privateKey": {
                     "type": "string",
@@ -8587,7 +8929,7 @@
                     },
                     "overwrite": {
                         "type": "boolean",
-                        "description": "Whether to overwrite an existing certificate\n"
+                        "description": "Whether to overwrite an existing certificate"
                     },
                     "privateKey": {
                         "type": "string",
@@ -8824,7 +9166,7 @@
                 },
                 "utcTime": {
                     "type": "string",
-                    "description": "The node's local time formatted as UTC.\n"
+                    "description": "The node's time formatted as UTC.\n"
                 }
             },
             "required": [
@@ -8864,7 +9206,7 @@
                     },
                     "utcTime": {
                         "type": "string",
-                        "description": "The node's local time formatted as UTC.\n"
+                        "description": "The node's time formatted as UTC.\n"
                     }
                 },
                 "type": "object"
@@ -8897,7 +9239,7 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource."
                     },
                     "location": {
                         "type": "string",
@@ -8936,7 +9278,7 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource."
                     }
                 },
                 "type": "object",
@@ -8981,7 +9323,7 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource."
                     },
                     "plugin": {
                         "type": "string",
@@ -9015,7 +9357,7 @@
                 "properties": {
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource."
                     },
                     "plugins": {
                         "type": "array",
@@ -9223,7 +9565,7 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource."
                     },
                     "memoryAvailables": {
                         "type": "array",
@@ -9755,7 +10097,7 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource."
                     },
                     "nodeName": {
                         "type": "string"
@@ -9825,7 +10167,7 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource."
                     },
                     "nodeName": {
                         "type": "string"
@@ -9862,7 +10204,7 @@
                 "properties": {
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource."
                     },
                     "localTime": {
                         "type": "string",
@@ -9955,7 +10297,7 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource."
                     },
                     "members": {
                         "type": "array",
@@ -9996,7 +10338,7 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource."
                     }
                 },
                 "type": "object",
@@ -10031,7 +10373,7 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource."
                     },
                     "members": {
                         "type": "array",
@@ -10060,7 +10402,7 @@
                 "properties": {
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource."
                     },
                     "poolIds": {
                         "type": "array",
@@ -10097,7 +10439,7 @@
                 "properties": {
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource."
                     },
                     "privileges": {
                         "type": "array",
@@ -10125,7 +10467,7 @@
                 "properties": {
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource."
                     },
                     "privileges": {
                         "type": "array",
@@ -10215,7 +10557,7 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource."
                     },
                     "keys": {
                         "type": "string",
@@ -10297,7 +10639,7 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource."
                     },
                     "keys": {
                         "type": "array",
@@ -10404,6 +10746,10 @@
                         },
                         "description": "The Proxmox nodes which the zone and associated VNets are deployed on\n"
                     },
+                    "pending": {
+                        "type": "boolean",
+                        "description": "Indicates if the zone has pending configuration changes that need to be applied.\n"
+                    },
                     "primaryExitNode": {
                         "type": "string",
                         "description": "Primary exit node for EVPN.\n"
@@ -10415,6 +10761,10 @@
                     "rtImport": {
                         "type": "string",
                         "description": "Route target import for EVPN. Must be in the format '\\n\\n:\\n\\n' (e.g., '65000:65000').\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "Indicates the current state of the zone.\n"
                     },
                     "vrfVxlan": {
                         "type": "integer",
@@ -10434,9 +10784,11 @@
                     "ipam",
                     "mtu",
                     "nodes",
+                    "pending",
                     "primaryExitNode",
                     "reverseDns",
                     "rtImport",
+                    "state",
                     "vrfVxlan"
                 ]
             }
@@ -10490,6 +10842,10 @@
                         },
                         "description": "The Proxmox nodes which the zone and associated VNets are deployed on\n"
                     },
+                    "pending": {
+                        "type": "boolean",
+                        "description": "Indicates if the zone has pending configuration changes that need to be applied.\n"
+                    },
                     "reverseDns": {
                         "type": "string",
                         "description": "Reverse DNS API server address.\n"
@@ -10501,6 +10857,10 @@
                     "serviceVlanProtocol": {
                         "type": "string",
                         "description": "Service VLAN protocol for QinQ. The protocol must be `802.1ad` or `802.1q`.\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "Indicates the current state of the zone.\n"
                     }
                 },
                 "type": "object",
@@ -10512,9 +10872,11 @@
                     "ipam",
                     "mtu",
                     "nodes",
+                    "pending",
                     "reverseDns",
                     "serviceVlan",
-                    "serviceVlanProtocol"
+                    "serviceVlanProtocol",
+                    "state"
                 ]
             }
         },
@@ -10563,9 +10925,17 @@
                         },
                         "description": "The Proxmox nodes which the zone and associated VNets are deployed on\n"
                     },
+                    "pending": {
+                        "type": "boolean",
+                        "description": "Indicates if the zone has pending configuration changes that need to be applied.\n"
+                    },
                     "reverseDns": {
                         "type": "string",
                         "description": "Reverse DNS API server address.\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "Indicates the current state of the zone.\n"
                     }
                 },
                 "type": "object",
@@ -10576,7 +10946,9 @@
                     "ipam",
                     "mtu",
                     "nodes",
-                    "reverseDns"
+                    "pending",
+                    "reverseDns",
+                    "state"
                 ]
             }
         },
@@ -10629,9 +11001,17 @@
                         },
                         "description": "The Proxmox nodes which the zone and associated VNets are deployed on\n"
                     },
+                    "pending": {
+                        "type": "boolean",
+                        "description": "Indicates if the zone has pending configuration changes that need to be applied.\n"
+                    },
                     "reverseDns": {
                         "type": "string",
                         "description": "Reverse DNS API server address.\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "Indicates the current state of the zone.\n"
                     }
                 },
                 "type": "object",
@@ -10643,7 +11023,9 @@
                     "ipam",
                     "mtu",
                     "nodes",
-                    "reverseDns"
+                    "pending",
+                    "reverseDns",
+                    "state"
                 ]
             }
         },
@@ -10699,9 +11081,17 @@
                         },
                         "description": "A list of IP addresses of each node in the VXLAN zone. This can be external nodes reachable at this IP address. All nodes in the cluster need to be mentioned here\n"
                     },
+                    "pending": {
+                        "type": "boolean",
+                        "description": "Indicates if the zone has pending configuration changes that need to be applied.\n"
+                    },
                     "reverseDns": {
                         "type": "string",
                         "description": "Reverse DNS API server address.\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "Indicates the current state of the zone.\n"
                     }
                 },
                 "type": "object",
@@ -10713,7 +11103,136 @@
                     "mtu",
                     "nodes",
                     "peers",
-                    "reverseDns"
+                    "pending",
+                    "reverseDns",
+                    "state"
+                ]
+            }
+        },
+        "proxmoxve:Sdn/getSubnet:getSubnet": {
+            "description": "Retrieve details about a specific SDN Subnet in Proxmox VE.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getSubnet.\n",
+                "properties": {
+                    "cidr": {
+                        "type": "string",
+                        "description": "A CIDR network address, for example 10.0.0.0/8\n"
+                    },
+                    "dhcpRange": {
+                        "$ref": "#/types/proxmoxve:Sdn/getSubnetDhcpRange:getSubnetDhcpRange",
+                        "description": "DHCP range (start and end IPs).\n"
+                    },
+                    "vnet": {
+                        "type": "string",
+                        "description": "The VNet this subnet belongs to.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "cidr",
+                    "vnet"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getSubnet.\n",
+                "properties": {
+                    "cidr": {
+                        "type": "string",
+                        "description": "A CIDR network address, for example 10.0.0.0/8\n"
+                    },
+                    "dhcpDnsServer": {
+                        "type": "string",
+                        "description": "The DNS server used for DHCP.\n"
+                    },
+                    "dhcpRange": {
+                        "$ref": "#/types/proxmoxve:Sdn/getSubnetDhcpRange:getSubnetDhcpRange",
+                        "description": "DHCP range (start and end IPs).\n"
+                    },
+                    "dnsZonePrefix": {
+                        "type": "string",
+                        "description": "Prefix used for DNS zone delegation.\n"
+                    },
+                    "gateway": {
+                        "type": "string",
+                        "description": "The gateway address for the subnet.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The full ID in the format 'vnet-id/subnet-id'.\n"
+                    },
+                    "snat": {
+                        "type": "boolean",
+                        "description": "Whether SNAT is enabled for the subnet.\n"
+                    },
+                    "vnet": {
+                        "type": "string",
+                        "description": "The VNet this subnet belongs to.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "cidr",
+                    "dhcpDnsServer",
+                    "dhcpRange",
+                    "dnsZonePrefix",
+                    "gateway",
+                    "id",
+                    "snat",
+                    "vnet"
+                ]
+            }
+        },
+        "proxmoxve:Sdn/getVnet:getVnet": {
+            "description": "Retrieves information about an existing SDN VNet.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getVnet.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of the SDN VNet.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getVnet.\n",
+                "properties": {
+                    "alias": {
+                        "type": "string",
+                        "description": "An optional alias for this VNet.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of the SDN VNet.\n"
+                    },
+                    "isolatePorts": {
+                        "type": "boolean",
+                        "description": "Isolate ports within this VNet.\n"
+                    },
+                    "tag": {
+                        "type": "integer",
+                        "description": "Tag value for VLAN/VXLAN (can't be used with other zone types).\n"
+                    },
+                    "vlanAware": {
+                        "type": "boolean",
+                        "description": "Allow VM VLANs to pass through this VNet.\n"
+                    },
+                    "zone": {
+                        "type": "string",
+                        "description": "The zone to which this VNet belongs.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "alias",
+                    "id",
+                    "isolatePorts",
+                    "tag",
+                    "vlanAware",
+                    "zone"
                 ]
             }
         },
@@ -10734,7 +11253,7 @@
                 "properties": {
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource."
                     },
                     "type": {
                         "type": "string",
@@ -10797,7 +11316,7 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource."
                     },
                     "nodeName": {
                         "type": "string",
@@ -10822,11 +11341,11 @@
                     },
                     "status": {
                         "type": "string",
-                        "description": "Status of the VM\n"
+                        "description": "The status of the VM.\n"
                     },
                     "template": {
                         "type": "boolean",
-                        "description": "Is VM a template (true) or a regular VM (false)\n"
+                        "description": "Whether the VM is a template.\n"
                     },
                     "vmId": {
                         "type": "integer",
@@ -10844,7 +11363,7 @@
                 "properties": {
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource."
                     },
                     "name": {
                         "type": "string",
@@ -10855,7 +11374,7 @@
                     },
                     "status": {
                         "type": "string",
-                        "description": "Status of the VM\n"
+                        "description": "The status of the VM.\n"
                     },
                     "tags": {
                         "type": "array",
@@ -10866,7 +11385,7 @@
                     },
                     "template": {
                         "type": "boolean",
-                        "description": "Is VM a template (true) or a regular VM (false)\n"
+                        "description": "Whether the VM is a template.\n"
                     },
                     "vmId": {
                         "type": "integer"
@@ -10919,7 +11438,7 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource."
                     },
                     "nodeName": {
                         "type": "string",
@@ -10958,11 +11477,11 @@
                     },
                     "status": {
                         "type": "string",
-                        "description": "Status of the container\n"
+                        "description": "The status of the container.\n"
                     },
                     "template": {
                         "type": "boolean",
-                        "description": "Is container a template (true) or a regular container (false)\n"
+                        "description": "Whether the container is a template.\n"
                     },
                     "vmId": {
                         "type": "integer",
@@ -10980,7 +11499,7 @@
                 "properties": {
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource."
                     },
                     "name": {
                         "type": "string",
@@ -10991,7 +11510,7 @@
                     },
                     "status": {
                         "type": "string",
-                        "description": "Status of the container\n"
+                        "description": "The status of the container.\n"
                     },
                     "tags": {
                         "type": "array",
@@ -11002,7 +11521,7 @@
                     },
                     "template": {
                         "type": "boolean",
-                        "description": "Is container a template (true) or a regular container (false)\n"
+                        "description": "Whether the container is a template.\n"
                     },
                     "vmId": {
                         "type": "integer"
@@ -11062,7 +11581,7 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource."
                     },
                     "nodeName": {
                         "type": "string",
@@ -11080,6 +11599,85 @@
                 "required": [
                     "containers",
                     "id"
+                ]
+            }
+        },
+        "proxmoxve:index/getFile:getFile": {
+            "description": "Retrieves information about an existing file in a Proxmox Virtual Environment node.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst ubuntuIso = proxmoxve.getFile({\n    nodeName: \"pve\",\n    datastoreId: \"local\",\n    contentType: \"iso\",\n    fileName: \"ubuntu-22.04.3-live-server-amd64.iso\",\n});\nconst ubuntuContainerTemplate = proxmoxve.getFile({\n    nodeName: \"pve\",\n    datastoreId: \"local\",\n    contentType: \"vztmpl\",\n    fileName: \"ubuntu-22.04-standard_22.04-1_amd64.tar.zst\",\n});\nconst cloudInitSnippet = proxmoxve.getFile({\n    nodeName: \"pve\",\n    datastoreId: \"local\",\n    contentType: \"snippets\",\n    fileName: \"cloud-init-config.yaml\",\n});\nexport const ubuntuIsoId = ubuntuIso.then(ubuntuIso =\u003e ubuntuIso.id);\nexport const ubuntuIsoSize = ubuntuIso.then(ubuntuIso =\u003e ubuntuIso.fileSize);\nexport const containerTemplateFormat = ubuntuContainerTemplate.then(ubuntuContainerTemplate =\u003e ubuntuContainerTemplate.fileFormat);\nconst example = new proxmoxve.vm.VirtualMachine(\"example\", {\n    nodeName: \"pve\",\n    vmId: 100,\n    cdrom: {\n        fileId: ubuntuIso.then(ubuntuIso =\u003e ubuntuIso.id),\n    },\n    cpu: {\n        cores: 2,\n    },\n    memory: {\n        dedicated: 2048,\n    },\n    disks: [{\n        datastoreId: \"local-lvm\",\n        fileFormat: \"qcow2\",\n        size: 20,\n    }],\n    networkDevices: [{\n        bridge: \"vmbr0\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nubuntu_iso = proxmoxve.get_file(node_name=\"pve\",\n    datastore_id=\"local\",\n    content_type=\"iso\",\n    file_name=\"ubuntu-22.04.3-live-server-amd64.iso\")\nubuntu_container_template = proxmoxve.get_file(node_name=\"pve\",\n    datastore_id=\"local\",\n    content_type=\"vztmpl\",\n    file_name=\"ubuntu-22.04-standard_22.04-1_amd64.tar.zst\")\ncloud_init_snippet = proxmoxve.get_file(node_name=\"pve\",\n    datastore_id=\"local\",\n    content_type=\"snippets\",\n    file_name=\"cloud-init-config.yaml\")\npulumi.export(\"ubuntuIsoId\", ubuntu_iso.id)\npulumi.export(\"ubuntuIsoSize\", ubuntu_iso.file_size)\npulumi.export(\"containerTemplateFormat\", ubuntu_container_template.file_format)\nexample = proxmoxve.vm.VirtualMachine(\"example\",\n    node_name=\"pve\",\n    vm_id=100,\n    cdrom={\n        \"file_id\": ubuntu_iso.id,\n    },\n    cpu={\n        \"cores\": 2,\n    },\n    memory={\n        \"dedicated\": 2048,\n    },\n    disks=[{\n        \"datastore_id\": \"local-lvm\",\n        \"file_format\": \"qcow2\",\n        \"size\": 20,\n    }],\n    network_devices=[{\n        \"bridge\": \"vmbr0\",\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var ubuntuIso = ProxmoxVE.GetFile.Invoke(new()\n    {\n        NodeName = \"pve\",\n        DatastoreId = \"local\",\n        ContentType = \"iso\",\n        FileName = \"ubuntu-22.04.3-live-server-amd64.iso\",\n    });\n\n    var ubuntuContainerTemplate = ProxmoxVE.GetFile.Invoke(new()\n    {\n        NodeName = \"pve\",\n        DatastoreId = \"local\",\n        ContentType = \"vztmpl\",\n        FileName = \"ubuntu-22.04-standard_22.04-1_amd64.tar.zst\",\n    });\n\n    var cloudInitSnippet = ProxmoxVE.GetFile.Invoke(new()\n    {\n        NodeName = \"pve\",\n        DatastoreId = \"local\",\n        ContentType = \"snippets\",\n        FileName = \"cloud-init-config.yaml\",\n    });\n\n    var example = new ProxmoxVE.VM.VirtualMachine(\"example\", new()\n    {\n        NodeName = \"pve\",\n        VmId = 100,\n        Cdrom = new ProxmoxVE.VM.Inputs.VirtualMachineCdromArgs\n        {\n            FileId = ubuntuIso.Apply(getFileResult =\u003e getFileResult.Id),\n        },\n        Cpu = new ProxmoxVE.VM.Inputs.VirtualMachineCpuArgs\n        {\n            Cores = 2,\n        },\n        Memory = new ProxmoxVE.VM.Inputs.VirtualMachineMemoryArgs\n        {\n            Dedicated = 2048,\n        },\n        Disks = new[]\n        {\n            new ProxmoxVE.VM.Inputs.VirtualMachineDiskArgs\n            {\n                DatastoreId = \"local-lvm\",\n                FileFormat = \"qcow2\",\n                Size = 20,\n            },\n        },\n        NetworkDevices = new[]\n        {\n            new ProxmoxVE.VM.Inputs.VirtualMachineNetworkDeviceArgs\n            {\n                Bridge = \"vmbr0\",\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"ubuntuIsoId\"] = ubuntuIso.Apply(getFileResult =\u003e getFileResult.Id),\n        [\"ubuntuIsoSize\"] = ubuntuIso.Apply(getFileResult =\u003e getFileResult.FileSize),\n        [\"containerTemplateFormat\"] = ubuntuContainerTemplate.Apply(getFileResult =\u003e getFileResult.FileFormat),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve\"\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/vm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tubuntuIso, err := proxmoxve.GetFile(ctx, \u0026proxmoxve.GetFileArgs{\n\t\t\tNodeName:    \"pve\",\n\t\t\tDatastoreId: \"local\",\n\t\t\tContentType: \"iso\",\n\t\t\tFileName:    \"ubuntu-22.04.3-live-server-amd64.iso\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tubuntuContainerTemplate, err := proxmoxve.GetFile(ctx, \u0026proxmoxve.GetFileArgs{\n\t\t\tNodeName:    \"pve\",\n\t\t\tDatastoreId: \"local\",\n\t\t\tContentType: \"vztmpl\",\n\t\t\tFileName:    \"ubuntu-22.04-standard_22.04-1_amd64.tar.zst\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = proxmoxve.GetFile(ctx, \u0026proxmoxve.GetFileArgs{\n\t\t\tNodeName:    \"pve\",\n\t\t\tDatastoreId: \"local\",\n\t\t\tContentType: \"snippets\",\n\t\t\tFileName:    \"cloud-init-config.yaml\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"ubuntuIsoId\", ubuntuIso.Id)\n\t\tctx.Export(\"ubuntuIsoSize\", ubuntuIso.FileSize)\n\t\tctx.Export(\"containerTemplateFormat\", ubuntuContainerTemplate.FileFormat)\n\t\t_, err = vm.NewVirtualMachine(ctx, \"example\", \u0026vm.VirtualMachineArgs{\n\t\t\tNodeName: pulumi.String(\"pve\"),\n\t\t\tVmId:     pulumi.Int(100),\n\t\t\tCdrom: \u0026vm.VirtualMachineCdromArgs{\n\t\t\t\tFileId: pulumi.String(ubuntuIso.Id),\n\t\t\t},\n\t\t\tCpu: \u0026vm.VirtualMachineCpuArgs{\n\t\t\t\tCores: pulumi.Int(2),\n\t\t\t},\n\t\t\tMemory: \u0026vm.VirtualMachineMemoryArgs{\n\t\t\t\tDedicated: pulumi.Int(2048),\n\t\t\t},\n\t\t\tDisks: vm.VirtualMachineDiskArray{\n\t\t\t\t\u0026vm.VirtualMachineDiskArgs{\n\t\t\t\t\tDatastoreId: pulumi.String(\"local-lvm\"),\n\t\t\t\t\tFileFormat:  pulumi.String(\"qcow2\"),\n\t\t\t\t\tSize:        pulumi.Int(20),\n\t\t\t\t},\n\t\t\t},\n\t\t\tNetworkDevices: vm.VirtualMachineNetworkDeviceArray{\n\t\t\t\t\u0026vm.VirtualMachineNetworkDeviceArgs{\n\t\t\t\t\tBridge: pulumi.String(\"vmbr0\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.ProxmoxveFunctions;\nimport com.pulumi.proxmoxve.inputs.GetFileArgs;\nimport io.muehlbachler.pulumi.proxmoxve.VM.VirtualMachine;\nimport io.muehlbachler.pulumi.proxmoxve.VM.VirtualMachineArgs;\nimport com.pulumi.proxmoxve.VM.inputs.VirtualMachineCdromArgs;\nimport com.pulumi.proxmoxve.VM.inputs.VirtualMachineCpuArgs;\nimport com.pulumi.proxmoxve.VM.inputs.VirtualMachineMemoryArgs;\nimport com.pulumi.proxmoxve.VM.inputs.VirtualMachineDiskArgs;\nimport com.pulumi.proxmoxve.VM.inputs.VirtualMachineNetworkDeviceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var ubuntuIso = ProxmoxveFunctions.getFile(GetFileArgs.builder()\n            .nodeName(\"pve\")\n            .datastoreId(\"local\")\n            .contentType(\"iso\")\n            .fileName(\"ubuntu-22.04.3-live-server-amd64.iso\")\n            .build());\n\n        final var ubuntuContainerTemplate = ProxmoxveFunctions.getFile(GetFileArgs.builder()\n            .nodeName(\"pve\")\n            .datastoreId(\"local\")\n            .contentType(\"vztmpl\")\n            .fileName(\"ubuntu-22.04-standard_22.04-1_amd64.tar.zst\")\n            .build());\n\n        final var cloudInitSnippet = ProxmoxveFunctions.getFile(GetFileArgs.builder()\n            .nodeName(\"pve\")\n            .datastoreId(\"local\")\n            .contentType(\"snippets\")\n            .fileName(\"cloud-init-config.yaml\")\n            .build());\n\n        ctx.export(\"ubuntuIsoId\", ubuntuIso.id());\n        ctx.export(\"ubuntuIsoSize\", ubuntuIso.fileSize());\n        ctx.export(\"containerTemplateFormat\", ubuntuContainerTemplate.fileFormat());\n        var example = new VirtualMachine(\"example\", VirtualMachineArgs.builder()\n            .nodeName(\"pve\")\n            .vmId(100)\n            .cdrom(VirtualMachineCdromArgs.builder()\n                .fileId(ubuntuIso.id())\n                .build())\n            .cpu(VirtualMachineCpuArgs.builder()\n                .cores(2)\n                .build())\n            .memory(VirtualMachineMemoryArgs.builder()\n                .dedicated(2048)\n                .build())\n            .disks(VirtualMachineDiskArgs.builder()\n                .datastoreId(\"local-lvm\")\n                .fileFormat(\"qcow2\")\n                .size(20)\n                .build())\n            .networkDevices(VirtualMachineNetworkDeviceArgs.builder()\n                .bridge(\"vmbr0\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: proxmoxve:VM:VirtualMachine\n    properties:\n      nodeName: pve\n      vmId: 100\n      cdrom:\n        fileId: ${ubuntuIso.id}\n      cpu:\n        cores: 2\n      memory:\n        dedicated: 2048\n      disks:\n        - datastoreId: local-lvm\n          fileFormat: qcow2\n          size: 20\n      networkDevices:\n        - bridge: vmbr0\nvariables:\n  ubuntuIso:\n    fn::invoke:\n      function: proxmoxve:getFile\n      arguments:\n        nodeName: pve\n        datastoreId: local\n        contentType: iso\n        fileName: ubuntu-22.04.3-live-server-amd64.iso\n  ubuntuContainerTemplate:\n    fn::invoke:\n      function: proxmoxve:getFile\n      arguments:\n        nodeName: pve\n        datastoreId: local\n        contentType: vztmpl\n        fileName: ubuntu-22.04-standard_22.04-1_amd64.tar.zst\n  cloudInitSnippet:\n    fn::invoke:\n      function: proxmoxve:getFile\n      arguments:\n        nodeName: pve\n        datastoreId: local\n        contentType: snippets\n        fileName: cloud-init-config.yaml\noutputs:\n  ubuntuIsoId: ${ubuntuIso.id}\n  ubuntuIsoSize: ${ubuntuIso.fileSize}\n  containerTemplateFormat: ${ubuntuContainerTemplate.fileFormat}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getFile.\n",
+                "properties": {
+                    "contentType": {
+                        "type": "string",
+                        "description": "The content type of the file.\n"
+                    },
+                    "datastoreId": {
+                        "type": "string",
+                        "description": "The identifier of the datastore.\n"
+                    },
+                    "fileName": {
+                        "type": "string",
+                        "description": "The name of the file.\n"
+                    },
+                    "nodeName": {
+                        "type": "string",
+                        "description": "The name of the node.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "contentType",
+                    "datastoreId",
+                    "fileName",
+                    "nodeName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getFile.\n",
+                "properties": {
+                    "contentType": {
+                        "type": "string",
+                        "description": "The content type of the file.\n"
+                    },
+                    "datastoreId": {
+                        "type": "string",
+                        "description": "The identifier of the datastore.\n"
+                    },
+                    "fileFormat": {
+                        "type": "string",
+                        "description": "The format of the file.\n"
+                    },
+                    "fileName": {
+                        "type": "string",
+                        "description": "The name of the file.\n"
+                    },
+                    "fileSize": {
+                        "type": "integer",
+                        "description": "The size of the file in bytes.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of the file (volume ID).\n"
+                    },
+                    "nodeName": {
+                        "type": "string",
+                        "description": "The name of the node.\n"
+                    },
+                    "vmid": {
+                        "type": "integer",
+                        "description": "The VM ID associated with the file (if applicable).\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "contentType",
+                    "datastoreId",
+                    "fileFormat",
+                    "fileName",
+                    "fileSize",
+                    "id",
+                    "nodeName",
+                    "vmid"
                 ]
             }
         },
@@ -11115,7 +11713,7 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource."
                     },
                     "memoryAvailable": {
                         "type": "integer",
