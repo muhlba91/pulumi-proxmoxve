@@ -1462,12 +1462,10 @@ github.com/blang/semver v3.5.1+incompatible h1:cQNTCjp13qL8KC3Nbxr/y2Bqb63oX6wdn
 github.com/blang/semver v3.5.1+incompatible/go.mod h1:kRBLl5iJ+tD4TcOOxsy/0fnwebNt5EWlYSAyrTnjyyk=
 github.com/boombuler/barcode v1.0.0/go.mod h1:paBWMcWSl3LHKBqUq+rly7CNSldXjb2rDl3JlRe0mD8=
 github.com/boombuler/barcode v1.0.1/go.mod h1:paBWMcWSl3LHKBqUq+rly7CNSldXjb2rDl3JlRe0mD8=
-github.com/bpg/terraform-provider-proxmox v0.84.0 h1:/OSSCaUxmikkm0iq+KZF0pg9wfIWoV380+qIiAgjZqo=
-github.com/bpg/terraform-provider-proxmox v0.84.0/go.mod h1:SMmD8PkJ9FP1/aUBwpm3vrr5R/uxd3Z5JMNTB6DGR0Y=
 github.com/bpg/terraform-provider-proxmox v0.84.1 h1:vjv/eM9/loVevV/vm1MV724lcuXlBL4Tu9vqU48L2mU=
 github.com/bpg/terraform-provider-proxmox v0.84.1/go.mod h1:jTUe0CvRmNMKQc36SfwD2rAD8N28mTlYdrPVzDHrGUI=
-github.com/brianvoe/gofakeit/v7 v7.7.1 h1:Z74GFLZz57rAUHjpNbaKOr8c7nXdUohsiwF/jhkqE0k=
-github.com/brianvoe/gofakeit/v7 v7.7.1/go.mod h1:QXuPeBw164PJCzCUZVmgpgHJ3Llj49jSLVkKPMtxtxA=
+github.com/brianvoe/gofakeit/v7 v7.7.3 h1:RWOATEGpJ5EVg2nN8nlaEyaV/aB4d6c3GqYrbqQekss=
+github.com/brianvoe/gofakeit/v7 v7.7.3/go.mod h1:QXuPeBw164PJCzCUZVmgpgHJ3Llj49jSLVkKPMtxtxA=
 github.com/bufbuild/protocompile v0.4.0/go.mod h1:3v93+mbWn/v3xzN+31nwkJfrEpAUwp+BagBSZWx+TP8=
 github.com/bufbuild/protocompile v0.14.1 h1:iA73zAf/fyljNjQKwYzUHD6AD4R8KMasmwa/FBatYVw=
 github.com/bufbuild/protocompile v0.14.1/go.mod h1:ppVdAIhbr2H8asPk6k4pY7t9zB1OU5DoEw9xY/FUi1c=
