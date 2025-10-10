@@ -1,6 +1,21 @@
 # Changelog
 
 
+## [7.6.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.6.0...v7.6.1) (2025-10-10)
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency go to v1.25.2 ([a760cce](https://github.com/muhlba91/pulumi-proxmoxve/commit/a760cce2385eeb100e4a8ec7e6392fcf366c7e80))
+* **deps:** update github/codeql-action action to v3.30.6 ([b646b39](https://github.com/muhlba91/pulumi-proxmoxve/commit/b646b39dc17525676f2a56192d191d804fa794da))
+* **deps:** update github/codeql-action action to v3.30.7 ([75cf148](https://github.com/muhlba91/pulumi-proxmoxve/commit/75cf148c6172e8300c589f98a106a73152bae56d))
+* **deps:** update github/codeql-action action to v4 ([de84a05](https://github.com/muhlba91/pulumi-proxmoxve/commit/de84a0528dacf71e90073a0d4676e5e028766425))
+* **deps:** update gradle/actions action to v4.4.4 ([31e5ea4](https://github.com/muhlba91/pulumi-proxmoxve/commit/31e5ea46d5eafa9b6369105ae0cadc8e602131da))
+* **deps:** update gradle/actions action to v5 ([d4536d1](https://github.com/muhlba91/pulumi-proxmoxve/commit/d4536d11428a405ce8d24b0b2fd86affbd9adaab))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.84.1 ([8c20f27](https://github.com/muhlba91/pulumi-proxmoxve/commit/8c20f278c1d3ade28d71f0843548edac81cf5762))
+* **deps:** update ossf/scorecard-action action to v2.4.3 ([d480fe8](https://github.com/muhlba91/pulumi-proxmoxve/commit/d480fe83859ca9b168c4cc319c48fc8d668ff83b))
+* **deps:** update pulumi/actions action to v6.6.0 ([16c472c](https://github.com/muhlba91/pulumi-proxmoxve/commit/16c472c4a63e22c6ce354c12bb1ba53bd66c41f9))
+
 ## [7.6.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.5.0...v7.6.0) (2025-09-27)
 
 
