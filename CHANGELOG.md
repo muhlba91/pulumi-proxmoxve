@@ -1,6 +1,14 @@
 # Changelog
 
 
+## [7.6.2](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.6.1...v7.6.2) (2025-10-11)
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/dependency-review-action action to v4.8.1 ([5e24cb6](https://github.com/muhlba91/pulumi-proxmoxve/commit/5e24cb6d1ad1010b811ac31e9777039ed49f15d2))
+* **deps:** update github/codeql-action action to v4.30.8 ([738d6fb](https://github.com/muhlba91/pulumi-proxmoxve/commit/738d6fb0c2aed26511cf34dd264a0fba66b6ad23))
+
 ## [7.6.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.6.0...v7.6.1) (2025-10-10)
 
 
