@@ -1,6 +1,20 @@
 # Changelog
 
 
+## [7.7.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.6.1...v7.7.0) (2025-10-12)
+
+
+### Features
+
+* prepare for upstream v0.85.0 ([e57f208](https://github.com/muhlba91/pulumi-proxmoxve/commit/e57f20890d607c2d169b40daf1f32f05a0fb8a34))
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/dependency-review-action action to v4.8.1 ([5e24cb6](https://github.com/muhlba91/pulumi-proxmoxve/commit/5e24cb6d1ad1010b811ac31e9777039ed49f15d2))
+* **deps:** update github/codeql-action action to v4.30.8 ([738d6fb](https://github.com/muhlba91/pulumi-proxmoxve/commit/738d6fb0c2aed26511cf34dd264a0fba66b6ad23))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.85.0 ([1324019](https://github.com/muhlba91/pulumi-proxmoxve/commit/13240199c0fe72404e24715aedf478849763026c))
+
 ## [7.6.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.6.0...v7.6.1) (2025-10-10)
 
 
