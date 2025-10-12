@@ -19,6 +19,21 @@ public final class SimpleState extends com.pulumi.resources.ResourceArgs {
     public static final SimpleState Empty = new SimpleState();
 
     /**
+     * The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
+     * 
+     */
+    @Import(name="dhcp")
+    private @Nullable Output<String> dhcp;
+
+    /**
+     * @return The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
+     * 
+     */
+    public Optional<Output<String>> dhcp() {
+        return Optional.ofNullable(this.dhcp);
+    }
+
+    /**
      * DNS API server address.
      * 
      */
@@ -156,6 +171,7 @@ public final class SimpleState extends com.pulumi.resources.ResourceArgs {
     private SimpleState() {}
 
     private SimpleState(SimpleState $) {
+        this.dhcp = $.dhcp;
         this.dns = $.dns;
         this.dnsZone = $.dnsZone;
         this.ipam = $.ipam;
@@ -183,6 +199,27 @@ public final class SimpleState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(SimpleState defaults) {
             $ = new SimpleState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param dhcp The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dhcp(@Nullable Output<String> dhcp) {
+            $.dhcp = dhcp;
+            return this;
+        }
+
+        /**
+         * @param dhcp The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dhcp(String dhcp) {
+            return dhcp(Output.of(dhcp));
         }
 
         /**

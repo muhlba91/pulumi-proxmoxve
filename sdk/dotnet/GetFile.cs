@@ -48,6 +48,14 @@ namespace Pulumi.ProxmoxVE
         ///         FileName = "cloud-init-config.yaml",
         ///     });
         /// 
+        ///     var importedFile = ProxmoxVE.GetFile.Invoke(new()
+        ///     {
+        ///         NodeName = "pve",
+        ///         DatastoreId = "local",
+        ///         ContentType = "import",
+        ///         FileName = "imported-config.yaml",
+        ///     });
+        /// 
         ///     var example = new ProxmoxVE.VM.VirtualMachine("example", new()
         ///     {
         ///         NodeName = "pve",
@@ -131,6 +139,14 @@ namespace Pulumi.ProxmoxVE
         ///         FileName = "cloud-init-config.yaml",
         ///     });
         /// 
+        ///     var importedFile = ProxmoxVE.GetFile.Invoke(new()
+        ///     {
+        ///         NodeName = "pve",
+        ///         DatastoreId = "local",
+        ///         ContentType = "import",
+        ///         FileName = "imported-config.yaml",
+        ///     });
+        /// 
         ///     var example = new ProxmoxVE.VM.VirtualMachine("example", new()
         ///     {
         ///         NodeName = "pve",
@@ -212,6 +228,14 @@ namespace Pulumi.ProxmoxVE
         ///         DatastoreId = "local",
         ///         ContentType = "snippets",
         ///         FileName = "cloud-init-config.yaml",
+        ///     });
+        /// 
+        ///     var importedFile = ProxmoxVE.GetFile.Invoke(new()
+        ///     {
+        ///         NodeName = "pve",
+        ///         DatastoreId = "local",
+        ///         ContentType = "import",
+        ///         FileName = "imported-config.yaml",
         ///     });
         /// 
         ///     var example = new ProxmoxVE.VM.VirtualMachine("example", new()

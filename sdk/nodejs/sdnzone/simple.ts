@@ -63,6 +63,10 @@ export class Simple extends pulumi.CustomResource {
     }
 
     /**
+     * The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
+     */
+    declare public readonly dhcp: pulumi.Output<string | undefined>;
+    /**
      * DNS API server address.
      */
     declare public readonly dns: pulumi.Output<string | undefined>;
@@ -112,6 +116,7 @@ export class Simple extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SimpleState | undefined;
+            resourceInputs["dhcp"] = state?.dhcp;
             resourceInputs["dns"] = state?.dns;
             resourceInputs["dnsZone"] = state?.dnsZone;
             resourceInputs["ipam"] = state?.ipam;
@@ -129,6 +134,7 @@ export class Simple extends pulumi.CustomResource {
             if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
+            resourceInputs["dhcp"] = args?.dhcp;
             resourceInputs["dns"] = args?.dns;
             resourceInputs["dnsZone"] = args?.dnsZone;
             resourceInputs["ipam"] = args?.ipam;
@@ -148,6 +154,10 @@ export class Simple extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Simple resources.
  */
 export interface SimpleState {
+    /**
+     * The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
+     */
+    dhcp?: pulumi.Input<string>;
     /**
      * DNS API server address.
      */
@@ -190,6 +200,10 @@ export interface SimpleState {
  * The set of arguments for constructing a Simple resource.
  */
 export interface SimpleArgs {
+    /**
+     * The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
+     */
+    dhcp?: pulumi.Input<string>;
     /**
      * DNS API server address.
      */

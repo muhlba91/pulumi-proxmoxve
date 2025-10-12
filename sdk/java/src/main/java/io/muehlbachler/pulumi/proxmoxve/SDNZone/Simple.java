@@ -75,6 +75,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="proxmoxve:SDNZone/simple:Simple")
 public class Simple extends com.pulumi.resources.CustomResource {
     /**
+     * The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
+     * 
+     */
+    @Export(name="dhcp", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> dhcp;
+
+    /**
+     * @return The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
+     * 
+     */
+    public Output<Optional<String>> dhcp() {
+        return Codegen.optional(this.dhcp);
+    }
+    /**
      * DNS API server address.
      * 
      */

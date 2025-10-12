@@ -31,6 +31,12 @@ import * as utilities from "./utilities";
  *     contentType: "snippets",
  *     fileName: "cloud-init-config.yaml",
  * });
+ * const importedFile = proxmoxve.getFile({
+ *     nodeName: "pve",
+ *     datastoreId: "local",
+ *     contentType: "import",
+ *     fileName: "imported-config.yaml",
+ * });
  * export const ubuntuIsoId = ubuntuIso.then(ubuntuIso => ubuntuIso.id);
  * export const ubuntuIsoSize = ubuntuIso.then(ubuntuIso => ubuntuIso.fileSize);
  * export const containerTemplateFormat = ubuntuContainerTemplate.then(ubuntuContainerTemplate => ubuntuContainerTemplate.fileFormat);
@@ -152,6 +158,12 @@ export interface GetFileResult {
  *     datastoreId: "local",
  *     contentType: "snippets",
  *     fileName: "cloud-init-config.yaml",
+ * });
+ * const importedFile = proxmoxve.getFile({
+ *     nodeName: "pve",
+ *     datastoreId: "local",
+ *     contentType: "import",
+ *     fileName: "imported-config.yaml",
  * });
  * export const ubuntuIsoId = ubuntuIso.then(ubuntuIso => ubuntuIso.id);
  * export const ubuntuIsoSize = ubuntuIso.then(ubuntuIso => ubuntuIso.fileSize);

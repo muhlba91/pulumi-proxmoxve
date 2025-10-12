@@ -781,6 +781,13 @@ public final class ProxmoxveFunctions {
      *             .fileName("cloud-init-config.yaml")
      *             .build());
      * 
+     *         final var importedFile = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("import")
+     *             .fileName("imported-config.yaml")
+     *             .build());
+     * 
      *         ctx.export("ubuntuIsoId", ubuntuIso.id());
      *         ctx.export("ubuntuIsoSize", ubuntuIso.fileSize());
      *         ctx.export("containerTemplateFormat", ubuntuContainerTemplate.fileFormat());
@@ -870,6 +877,13 @@ public final class ProxmoxveFunctions {
      *             .datastoreId("local")
      *             .contentType("snippets")
      *             .fileName("cloud-init-config.yaml")
+     *             .build());
+     * 
+     *         final var importedFile = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("import")
+     *             .fileName("imported-config.yaml")
      *             .build());
      * 
      *         ctx.export("ubuntuIsoId", ubuntuIso.id());
@@ -963,6 +977,13 @@ public final class ProxmoxveFunctions {
      *             .fileName("cloud-init-config.yaml")
      *             .build());
      * 
+     *         final var importedFile = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("import")
+     *             .fileName("imported-config.yaml")
+     *             .build());
+     * 
      *         ctx.export("ubuntuIsoId", ubuntuIso.id());
      *         ctx.export("ubuntuIsoSize", ubuntuIso.fileSize());
      *         ctx.export("containerTemplateFormat", ubuntuContainerTemplate.fileFormat());
@@ -1054,6 +1075,13 @@ public final class ProxmoxveFunctions {
      *             .fileName("cloud-init-config.yaml")
      *             .build());
      * 
+     *         final var importedFile = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("import")
+     *             .fileName("imported-config.yaml")
+     *             .build());
+     * 
      *         ctx.export("ubuntuIsoId", ubuntuIso.id());
      *         ctx.export("ubuntuIsoSize", ubuntuIso.fileSize());
      *         ctx.export("containerTemplateFormat", ubuntuContainerTemplate.fileFormat());
@@ -1143,6 +1171,13 @@ public final class ProxmoxveFunctions {
      *             .datastoreId("local")
      *             .contentType("snippets")
      *             .fileName("cloud-init-config.yaml")
+     *             .build());
+     * 
+     *         final var importedFile = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("import")
+     *             .fileName("imported-config.yaml")
      *             .build());
      * 
      *         ctx.export("ubuntuIsoId", ubuntuIso.id());

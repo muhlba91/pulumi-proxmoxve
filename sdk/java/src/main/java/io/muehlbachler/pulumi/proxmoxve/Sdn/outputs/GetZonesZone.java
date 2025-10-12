@@ -16,6 +16,7 @@ public final class GetZonesZone {
     private Boolean advertiseSubnets;
     private String bridge;
     private String controller;
+    private String dhcp;
     private Boolean disableArpNdSuppression;
     private String dns;
     private String dnsZone;
@@ -45,6 +46,9 @@ public final class GetZonesZone {
     }
     public String controller() {
         return this.controller;
+    }
+    public String dhcp() {
+        return this.dhcp;
     }
     public Boolean disableArpNdSuppression() {
         return this.disableArpNdSuppression;
@@ -116,6 +120,7 @@ public final class GetZonesZone {
         private Boolean advertiseSubnets;
         private String bridge;
         private String controller;
+        private String dhcp;
         private Boolean disableArpNdSuppression;
         private String dns;
         private String dnsZone;
@@ -141,6 +146,7 @@ public final class GetZonesZone {
     	      this.advertiseSubnets = defaults.advertiseSubnets;
     	      this.bridge = defaults.bridge;
     	      this.controller = defaults.controller;
+    	      this.dhcp = defaults.dhcp;
     	      this.disableArpNdSuppression = defaults.disableArpNdSuppression;
     	      this.dns = defaults.dns;
     	      this.dnsZone = defaults.dnsZone;
@@ -184,6 +190,14 @@ public final class GetZonesZone {
               throw new MissingRequiredPropertyException("GetZonesZone", "controller");
             }
             this.controller = controller;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dhcp(String dhcp) {
+            if (dhcp == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "dhcp");
+            }
+            this.dhcp = dhcp;
             return this;
         }
         @CustomType.Setter
@@ -352,6 +366,7 @@ public final class GetZonesZone {
             _resultValue.advertiseSubnets = advertiseSubnets;
             _resultValue.bridge = bridge;
             _resultValue.controller = controller;
+            _resultValue.dhcp = dhcp;
             _resultValue.disableArpNdSuppression = disableArpNdSuppression;
             _resultValue.dns = dns;
             _resultValue.dnsZone = dnsZone;

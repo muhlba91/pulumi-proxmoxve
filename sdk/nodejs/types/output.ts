@@ -1046,6 +1046,7 @@ export namespace Sdn {
         advertiseSubnets: boolean;
         bridge: string;
         controller: string;
+        dhcp: string;
         disableArpNdSuppression: boolean;
         dns: string;
         dnsZone: string;

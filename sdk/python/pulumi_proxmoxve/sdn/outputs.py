@@ -103,6 +103,7 @@ class GetZonesZoneResult(dict):
                  advertise_subnets: _builtins.bool,
                  bridge: _builtins.str,
                  controller: _builtins.str,
+                 dhcp: _builtins.str,
                  disable_arp_nd_suppression: _builtins.bool,
                  dns: _builtins.str,
                  dns_zone: _builtins.str,
@@ -125,6 +126,7 @@ class GetZonesZoneResult(dict):
         pulumi.set(__self__, "advertise_subnets", advertise_subnets)
         pulumi.set(__self__, "bridge", bridge)
         pulumi.set(__self__, "controller", controller)
+        pulumi.set(__self__, "dhcp", dhcp)
         pulumi.set(__self__, "disable_arp_nd_suppression", disable_arp_nd_suppression)
         pulumi.set(__self__, "dns", dns)
         pulumi.set(__self__, "dns_zone", dns_zone)
@@ -159,6 +161,11 @@ class GetZonesZoneResult(dict):
     @pulumi.getter
     def controller(self) -> _builtins.str:
         return pulumi.get(self, "controller")
+
+    @_builtins.property
+    @pulumi.getter
+    def dhcp(self) -> _builtins.str:
+        return pulumi.get(self, "dhcp")
 
     @_builtins.property
     @pulumi.getter(name="disableArpNdSuppression")

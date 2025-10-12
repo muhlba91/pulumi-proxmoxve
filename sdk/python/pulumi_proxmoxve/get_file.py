@@ -159,6 +159,10 @@ def get_file(content_type: Optional[_builtins.str] = None,
         datastore_id="local",
         content_type="snippets",
         file_name="cloud-init-config.yaml")
+    imported_file = proxmoxve.get_file(node_name="pve",
+        datastore_id="local",
+        content_type="import",
+        file_name="imported-config.yaml")
     pulumi.export("ubuntuIsoId", ubuntu_iso.id)
     pulumi.export("ubuntuIsoSize", ubuntu_iso.file_size)
     pulumi.export("containerTemplateFormat", ubuntu_container_template.file_format)
@@ -233,6 +237,10 @@ def get_file_output(content_type: Optional[pulumi.Input[_builtins.str]] = None,
         datastore_id="local",
         content_type="snippets",
         file_name="cloud-init-config.yaml")
+    imported_file = proxmoxve.get_file(node_name="pve",
+        datastore_id="local",
+        content_type="import",
+        file_name="imported-config.yaml")
     pulumi.export("ubuntuIsoId", ubuntu_iso.id)
     pulumi.export("ubuntuIsoSize", ubuntu_iso.file_size)
     pulumi.export("containerTemplateFormat", ubuntu_container_template.file_format)

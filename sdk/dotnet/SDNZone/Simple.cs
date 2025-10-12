@@ -53,6 +53,12 @@ namespace Pulumi.ProxmoxVE.SDNZone
     public partial class Simple : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
+        /// </summary>
+        [Output("dhcp")]
+        public Output<string?> Dhcp { get; private set; } = null!;
+
+        /// <summary>
         /// DNS API server address.
         /// </summary>
         [Output("dns")]
@@ -154,6 +160,12 @@ namespace Pulumi.ProxmoxVE.SDNZone
     public sealed class SimpleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
+        /// </summary>
+        [Input("dhcp")]
+        public Input<string>? Dhcp { get; set; }
+
+        /// <summary>
         /// DNS API server address.
         /// </summary>
         [Input("dns")]
@@ -209,6 +221,12 @@ namespace Pulumi.ProxmoxVE.SDNZone
 
     public sealed class SimpleState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
+        /// </summary>
+        [Input("dhcp")]
+        public Input<string>? Dhcp { get; set; }
+
         /// <summary>
         /// DNS API server address.
         /// </summary>

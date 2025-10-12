@@ -21,6 +21,7 @@ class SimpleArgs:
     def __init__(__self__, *,
                  nodes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  zone_id: pulumi.Input[_builtins.str],
+                 dhcp: Optional[pulumi.Input[_builtins.str]] = None,
                  dns: Optional[pulumi.Input[_builtins.str]] = None,
                  dns_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  ipam: Optional[pulumi.Input[_builtins.str]] = None,
@@ -30,6 +31,7 @@ class SimpleArgs:
         The set of arguments for constructing a Simple resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: The Proxmox nodes which the zone and associated VNets should be deployed on
         :param pulumi.Input[_builtins.str] zone_id: The unique identifier of the SDN zone.
+        :param pulumi.Input[_builtins.str] dhcp: The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
         :param pulumi.Input[_builtins.str] dns: DNS API server address.
         :param pulumi.Input[_builtins.str] dns_zone: DNS domain name. Used to register hostnames, such as `<hostname>.<domain>`. The DNS zone must already exist on the DNS server.
         :param pulumi.Input[_builtins.str] ipam: IP Address Management system.
@@ -38,6 +40,8 @@ class SimpleArgs:
         """
         pulumi.set(__self__, "nodes", nodes)
         pulumi.set(__self__, "zone_id", zone_id)
+        if dhcp is not None:
+            pulumi.set(__self__, "dhcp", dhcp)
         if dns is not None:
             pulumi.set(__self__, "dns", dns)
         if dns_zone is not None:
@@ -72,6 +76,18 @@ class SimpleArgs:
     @zone_id.setter
     def zone_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "zone_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def dhcp(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
+        """
+        return pulumi.get(self, "dhcp")
+
+    @dhcp.setter
+    def dhcp(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "dhcp", value)
 
     @_builtins.property
     @pulumi.getter
@@ -137,6 +153,7 @@ class SimpleArgs:
 @pulumi.input_type
 class _SimpleState:
     def __init__(__self__, *,
+                 dhcp: Optional[pulumi.Input[_builtins.str]] = None,
                  dns: Optional[pulumi.Input[_builtins.str]] = None,
                  dns_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  ipam: Optional[pulumi.Input[_builtins.str]] = None,
@@ -148,6 +165,7 @@ class _SimpleState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Simple resources.
+        :param pulumi.Input[_builtins.str] dhcp: The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
         :param pulumi.Input[_builtins.str] dns: DNS API server address.
         :param pulumi.Input[_builtins.str] dns_zone: DNS domain name. Used to register hostnames, such as `<hostname>.<domain>`. The DNS zone must already exist on the DNS server.
         :param pulumi.Input[_builtins.str] ipam: IP Address Management system.
@@ -158,6 +176,8 @@ class _SimpleState:
         :param pulumi.Input[_builtins.str] state: Indicates the current state of the zone.
         :param pulumi.Input[_builtins.str] zone_id: The unique identifier of the SDN zone.
         """
+        if dhcp is not None:
+            pulumi.set(__self__, "dhcp", dhcp)
         if dns is not None:
             pulumi.set(__self__, "dns", dns)
         if dns_zone is not None:
@@ -176,6 +196,18 @@ class _SimpleState:
             pulumi.set(__self__, "state", state)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def dhcp(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
+        """
+        return pulumi.get(self, "dhcp")
+
+    @dhcp.setter
+    def dhcp(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "dhcp", value)
 
     @_builtins.property
     @pulumi.getter
@@ -292,6 +324,7 @@ class Simple(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 dhcp: Optional[pulumi.Input[_builtins.str]] = None,
                  dns: Optional[pulumi.Input[_builtins.str]] = None,
                  dns_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  ipam: Optional[pulumi.Input[_builtins.str]] = None,
@@ -331,6 +364,7 @@ class Simple(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] dhcp: The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
         :param pulumi.Input[_builtins.str] dns: DNS API server address.
         :param pulumi.Input[_builtins.str] dns_zone: DNS domain name. Used to register hostnames, such as `<hostname>.<domain>`. The DNS zone must already exist on the DNS server.
         :param pulumi.Input[_builtins.str] ipam: IP Address Management system.
@@ -389,6 +423,7 @@ class Simple(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 dhcp: Optional[pulumi.Input[_builtins.str]] = None,
                  dns: Optional[pulumi.Input[_builtins.str]] = None,
                  dns_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  ipam: Optional[pulumi.Input[_builtins.str]] = None,
@@ -405,6 +440,7 @@ class Simple(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SimpleArgs.__new__(SimpleArgs)
 
+            __props__.__dict__["dhcp"] = dhcp
             __props__.__dict__["dns"] = dns
             __props__.__dict__["dns_zone"] = dns_zone
             __props__.__dict__["ipam"] = ipam
@@ -428,6 +464,7 @@ class Simple(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            dhcp: Optional[pulumi.Input[_builtins.str]] = None,
             dns: Optional[pulumi.Input[_builtins.str]] = None,
             dns_zone: Optional[pulumi.Input[_builtins.str]] = None,
             ipam: Optional[pulumi.Input[_builtins.str]] = None,
@@ -444,6 +481,7 @@ class Simple(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] dhcp: The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
         :param pulumi.Input[_builtins.str] dns: DNS API server address.
         :param pulumi.Input[_builtins.str] dns_zone: DNS domain name. Used to register hostnames, such as `<hostname>.<domain>`. The DNS zone must already exist on the DNS server.
         :param pulumi.Input[_builtins.str] ipam: IP Address Management system.
@@ -458,6 +496,7 @@ class Simple(pulumi.CustomResource):
 
         __props__ = _SimpleState.__new__(_SimpleState)
 
+        __props__.__dict__["dhcp"] = dhcp
         __props__.__dict__["dns"] = dns
         __props__.__dict__["dns_zone"] = dns_zone
         __props__.__dict__["ipam"] = ipam
@@ -468,6 +507,14 @@ class Simple(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         __props__.__dict__["zone_id"] = zone_id
         return Simple(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter
+    def dhcp(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
+        """
+        return pulumi.get(self, "dhcp")
 
     @_builtins.property
     @pulumi.getter

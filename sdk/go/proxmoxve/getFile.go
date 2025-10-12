@@ -55,6 +55,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			_, err = proxmoxve.GetFile(ctx, &proxmoxve.GetFileArgs{
+//				NodeName:    "pve",
+//				DatastoreId: "local",
+//				ContentType: "import",
+//				FileName:    "imported-config.yaml",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			ctx.Export("ubuntuIsoId", ubuntuIso.Id)
 //			ctx.Export("ubuntuIsoSize", ubuntuIso.FileSize)
 //			ctx.Export("containerTemplateFormat", ubuntuContainerTemplate.FileFormat)

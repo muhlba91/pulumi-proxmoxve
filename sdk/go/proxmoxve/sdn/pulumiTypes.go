@@ -329,6 +329,7 @@ type GetZonesZone struct {
 	AdvertiseSubnets        bool     `pulumi:"advertiseSubnets"`
 	Bridge                  string   `pulumi:"bridge"`
 	Controller              string   `pulumi:"controller"`
+	Dhcp                    string   `pulumi:"dhcp"`
 	DisableArpNdSuppression bool     `pulumi:"disableArpNdSuppression"`
 	Dns                     string   `pulumi:"dns"`
 	DnsZone                 string   `pulumi:"dnsZone"`
@@ -365,6 +366,7 @@ type GetZonesZoneArgs struct {
 	AdvertiseSubnets        pulumi.BoolInput        `pulumi:"advertiseSubnets"`
 	Bridge                  pulumi.StringInput      `pulumi:"bridge"`
 	Controller              pulumi.StringInput      `pulumi:"controller"`
+	Dhcp                    pulumi.StringInput      `pulumi:"dhcp"`
 	DisableArpNdSuppression pulumi.BoolInput        `pulumi:"disableArpNdSuppression"`
 	Dns                     pulumi.StringInput      `pulumi:"dns"`
 	DnsZone                 pulumi.StringInput      `pulumi:"dnsZone"`
@@ -447,6 +449,10 @@ func (o GetZonesZoneOutput) Bridge() pulumi.StringOutput {
 
 func (o GetZonesZoneOutput) Controller() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZonesZone) string { return v.Controller }).(pulumi.StringOutput)
+}
+
+func (o GetZonesZoneOutput) Dhcp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesZone) string { return v.Dhcp }).(pulumi.StringOutput)
 }
 
 func (o GetZonesZoneOutput) DisableArpNdSuppression() pulumi.BoolOutput {

@@ -16,6 +16,7 @@ namespace Pulumi.ProxmoxVE.Sdn.Outputs
         public readonly bool AdvertiseSubnets;
         public readonly string Bridge;
         public readonly string Controller;
+        public readonly string Dhcp;
         public readonly bool DisableArpNdSuppression;
         public readonly string Dns;
         public readonly string DnsZone;
@@ -43,6 +44,8 @@ namespace Pulumi.ProxmoxVE.Sdn.Outputs
             string bridge,
 
             string controller,
+
+            string dhcp,
 
             bool disableArpNdSuppression,
 
@@ -85,6 +88,7 @@ namespace Pulumi.ProxmoxVE.Sdn.Outputs
             AdvertiseSubnets = advertiseSubnets;
             Bridge = bridge;
             Controller = controller;
+            Dhcp = dhcp;
             DisableArpNdSuppression = disableArpNdSuppression;
             Dns = dns;
             DnsZone = dnsZone;

@@ -60,6 +60,8 @@ import (
 type Simple struct {
 	pulumi.CustomResourceState
 
+	// The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
+	Dhcp pulumi.StringPtrOutput `pulumi:"dhcp"`
 	// DNS API server address.
 	Dns pulumi.StringPtrOutput `pulumi:"dns"`
 	// DNS domain name. Used to register hostnames, such as `<hostname>.<domain>`. The DNS zone must already exist on the DNS server.
@@ -116,6 +118,8 @@ func GetSimple(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Simple resources.
 type simpleState struct {
+	// The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
+	Dhcp *string `pulumi:"dhcp"`
 	// DNS API server address.
 	Dns *string `pulumi:"dns"`
 	// DNS domain name. Used to register hostnames, such as `<hostname>.<domain>`. The DNS zone must already exist on the DNS server.
@@ -137,6 +141,8 @@ type simpleState struct {
 }
 
 type SimpleState struct {
+	// The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
+	Dhcp pulumi.StringPtrInput
 	// DNS API server address.
 	Dns pulumi.StringPtrInput
 	// DNS domain name. Used to register hostnames, such as `<hostname>.<domain>`. The DNS zone must already exist on the DNS server.
@@ -162,6 +168,8 @@ func (SimpleState) ElementType() reflect.Type {
 }
 
 type simpleArgs struct {
+	// The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
+	Dhcp *string `pulumi:"dhcp"`
 	// DNS API server address.
 	Dns *string `pulumi:"dns"`
 	// DNS domain name. Used to register hostnames, such as `<hostname>.<domain>`. The DNS zone must already exist on the DNS server.
@@ -180,6 +188,8 @@ type simpleArgs struct {
 
 // The set of arguments for constructing a Simple resource.
 type SimpleArgs struct {
+	// The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
+	Dhcp pulumi.StringPtrInput
 	// DNS API server address.
 	Dns pulumi.StringPtrInput
 	// DNS domain name. Used to register hostnames, such as `<hostname>.<domain>`. The DNS zone must already exist on the DNS server.
@@ -281,6 +291,11 @@ func (o SimpleOutput) ToSimpleOutput() SimpleOutput {
 
 func (o SimpleOutput) ToSimpleOutputWithContext(ctx context.Context) SimpleOutput {
 	return o
+}
+
+// The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
+func (o SimpleOutput) Dhcp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Simple) pulumi.StringPtrOutput { return v.Dhcp }).(pulumi.StringPtrOutput)
 }
 
 // DNS API server address.
