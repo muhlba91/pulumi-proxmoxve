@@ -76,15 +76,14 @@ jobs:
           version: latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
+
       - uses: actions/attest-build-provenance@977bb373ede98d70efdf65b84cb5f73e068dcc2a # v3.0.0
         with:
           subject-path: |
             dist/*.tar.gz
             dist/*.sbom.json
             dist/*_checksums.txt
-            dist/*.sig
-            dist/*.pem
+            dist/*.sigstore.json
 
   publish_sdk:
     if: needs.release.outputs.release_created
