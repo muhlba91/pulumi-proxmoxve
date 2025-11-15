@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [7.8.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.8.0...v7.8.1) (2025-11-15)
+
+
+### Bug Fixes
+
+* **ci:** update goreleaser for cosign ([d535674](https://github.com/muhlba91/pulumi-proxmoxve/commit/d53567442b314b599ed9689ea6e43fb8b2ab29c7))
+
 ## [7.8.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.7.0...v7.8.0) (2025-11-15)
 
 
